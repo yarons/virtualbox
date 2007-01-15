@@ -1,5 +1,5 @@
+/* $Id: SELMAll.cpp 23 2007-01-15 14:08:28Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * SELM All contexts.
  */
 

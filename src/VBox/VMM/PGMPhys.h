@@ -1,5 +1,5 @@
+/* $Id: PGMPhys.h 23 2007-01-15 14:08:28Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 

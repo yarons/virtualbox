@@ -1,5 +1,5 @@
+/* $Id: TRPMR0.cpp 23 2007-01-15 14:08:28Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * TRPM - The Trap Monitor - HC Ring 0
  */
 

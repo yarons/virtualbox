@@ -1,5 +1,5 @@
+/* $Id: STAM.cpp 23 2007-01-15 14:08:28Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * STAM - The Statistics Manager.
  */
 
