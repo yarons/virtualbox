@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 115 2007-01-17 16:18:06Z knut.osmundsen@oracle.com $
+; $Id: PATMA.asm 156 2007-01-18 17:42:04Z noreply@oracle.com $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1082,7 +1082,7 @@ iret_notring0:
     push    eax
     push    ecx
     push    edx
-    mov     edx, dword [ss:esp+12+4]        ;3 pushes + pushed flags -> iret eip
+    lea     edx, dword [ss:esp+12+4]        ;3 pushes + pushed flags -> iret eip
     mov     eax, PATM_ACTION_LOG_IRET
     lock    or dword [ss:PATM_PENDINGACTION], eax
     mov     ecx, PATM_ACTION_MAGIC
