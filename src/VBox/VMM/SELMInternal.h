@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 98 2007-01-17 13:47:34Z noreply@oracle.com $ */
+/* $Id: SELMInternal.h 161 2007-01-18 18:25:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -130,6 +130,8 @@ typedef struct SELM
 
     /** Indicates whether the TSS stack selector & base address need to be refreshed.  */
     bool                    fSyncTSSRing0Stack;
+    /** alignment . */
+    RTUINT                  uPadding2;
 
     /** SELMR3UpdateFromCPUM() profiling. */
     STAMPROFILE             StatUpdateFromCPUM;
