@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 1  klaus.espenlaub@oracle.com $ */
+/* $Id: the-darwin-kernel.h 217 2007-01-21 21:41:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Include all necessary headers for the Darwing kernel.
  */
@@ -59,6 +59,8 @@
 #include <sys/proc.h>
 #include <IOKit/IOTypes.h>
 #include <IOKit/IOLib.h>
+#include <IOKit/IOMemoryDescriptor.h>
+#include <IOKit/IOMapper.h>
 
 
 __BEGIN_DECLS
