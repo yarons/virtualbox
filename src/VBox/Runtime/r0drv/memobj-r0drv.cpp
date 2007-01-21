@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 197 2007-01-20 01:22:45Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv.cpp 207 2007-01-21 10:42:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
@@ -30,7 +30,7 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/param.h>
-#include "r0drv/memobj-r0drv.h"
+#include "internal/memobj.h"
 
 
 /**
