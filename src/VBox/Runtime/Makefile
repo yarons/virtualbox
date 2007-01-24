@@ -1,4 +1,4 @@
-# $Id: Makefile 197 2007-01-20 01:22:45Z knut.osmundsen@oracle.com $
+# $Id: Makefile 282 2007-01-24 18:29:39Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -118,6 +118,7 @@ RuntimeR3_INCS.l4       = \
 
 RuntimeR3_SOURCES       = \
 	alloc.cpp \
+	alloc/heapsimple.cpp \
 	assert.cpp \
 	table/avlhcphys.cpp \
 	table/avlgcptr.cpp \
