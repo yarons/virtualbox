@@ -1,4 +1,4 @@
-# $Id: Makefile 282 2007-01-24 18:29:39Z knut.osmundsen@oracle.com $
+# $Id: Makefile 289 2007-01-25 05:41:27Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -545,6 +545,8 @@ RuntimeR0Drv_SOURCES.linux = \
 	r0drv/linux/semaphore-r0drv-linux.c \
 	r0drv/linux/spinlock-r0drv-linux.c \
 	r0drv/linux/thread-r0drv-linux.c
+RuntimeR0Drv_SOURCES.linux.amd64 = \
+	alloc/heapsimple.cpp
 
 RuntimeR0Drv_SOURCES.win = \
 	nt/RTErrConvertFromNtStatus.cpp \
