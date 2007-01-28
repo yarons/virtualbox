@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 1  klaus.espenlaub@oracle.com $ */
+/* $Id: thread-r0drv-linux.c 403 2007-01-28 08:45:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Threads, Ring-0 Driver, Linux.
  */
@@ -28,9 +28,9 @@
 #include <iprt/err.h>
 
 
-RTDECL(RTTHREAD) RTThreadSelf(void)
+RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 {
-    return (RTTHREAD)current;
+    return (RTNATIVETHREAD)current;
 }
 
 

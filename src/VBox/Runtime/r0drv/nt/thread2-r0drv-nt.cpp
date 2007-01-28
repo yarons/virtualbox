@@ -1,6 +1,6 @@
-/* $Id: thread-r0drv-darwin.cpp 403 2007-01-28 08:45:05Z knut.osmundsen@oracle.com $ */
+/* $Id: thread2-r0drv-nt.cpp 403 2007-01-28 08:45:05Z knut.osmundsen@oracle.com $ */
 /** @file
- * InnoTek Portable Runtime - Threads, Ring-0 Driver, Darwin.
+ * InnoTek Portable Runtime - Threads (Part 2), Ring-0 Driver, NT.
  */
 
 /*
@@ -22,30 +22,16 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-darwin-kernel.h"
+#include "the-nt-kernel.h"
+
 #include <iprt/thread.h>
 #include <iprt/err.h>
 
+#include "internal/thread.h"
 
 
-RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
+RTDECL(RTTHREAD) RTThreadSelf(void)
 {
-    return (RTNATIVETHREAD)current_thread();
-}
-
-
-RTDECL(int) RTThreadSleep(unsigned cMillies)
-{
-    uint64_t u64Deadline;
-    clock_interval_to_deadline(cMillies, kMillisecondScale, &u64Deadline);
-    clock_delay_until(u64Deadline);
-    return VINF_SUCCESS;
-}
-
-
-RTDECL(bool) RTThreadYield(void)
-{
-    thread_block(THREAD_CONTINUE_NULL);
-    return true; /* this is fishy */
+    return rtThreadGetByNative((RTNATIVETHREAD)PsGetCurrentThread());
 }
 
