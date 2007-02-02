@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 1  klaus.espenlaub@oracle.com $ */
+/* $Id: stream.cpp 537 2007-02-02 06:08:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - I/O Stream.
  */
@@ -36,7 +36,7 @@
 #include <stdio.h>
 #include <errno.h>
 
-#if defined(__LINUX__) || defined(__FREEBSD__)
+#if defined(__LINUX__) /* PORTME: check for the _unlocked functions in stdio.h */
 #define HAVE_FWRITE_UNLOCKED
 #endif
 
