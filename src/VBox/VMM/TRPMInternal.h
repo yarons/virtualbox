@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 415 2007-01-29 18:04:13Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMInternal.h 624 2007-02-05 10:03:11Z noreply@oracle.com $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -155,6 +155,9 @@ typedef struct TRPM
     STAMCOUNTER     StatForwardFailPatchAddr;
     STAMCOUNTER     StatForwardFailGC;
     STAMCOUNTER     StatForwardFailHC;
+
+    STAMPROFILEADV  StatForwardProfGC;
+    STAMPROFILEADV  StatForwardProfHC;
 
     /* R3: Statistics for interrupt handlers (allocated on the hypervisor heap). */
     R3PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR3;
