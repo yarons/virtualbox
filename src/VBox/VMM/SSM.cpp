@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 901 2007-02-14 13:30:10Z noreply@oracle.com $ */
+/* $Id: SSM.cpp 990 2007-02-19 18:30:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -619,6 +619,7 @@ static int ssmR3DeregisterByNameAndType(PVM pVM, const char *pszName, SSMUNITTYP
     return rc;
 }
 
+
 /**
  * Deregister an internal data unit.
  *
@@ -645,6 +646,7 @@ SSMR3DECL(int) SSMR3DeregisterExternal(PVM pVM, const char *pszName)
 {
     return ssmR3DeregisterByNameAndType(pVM, pszName, SSMUNITTYPE_EXTERNAL);
 }
+
 
 /**
  * Calculate the checksum of a file portion.
