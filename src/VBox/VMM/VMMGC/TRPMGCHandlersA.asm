@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 1130 2007-03-01 12:57:34Z noreply@oracle.com $
+; $Id: TRPMGCHandlersA.asm 1131 2007-03-01 13:04:53Z noreply@oracle.com $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -431,7 +431,7 @@ gt_continue_guest:
 
     ; restore guest state and start executing again.
     test    dword [esp + CPUMCTXCORE.eflags], X86_EFL_VM
-    jnz short gt_V86Return
+    jnz     gt_V86Return
 
     ; enable WP
     mov     eax, cr0
