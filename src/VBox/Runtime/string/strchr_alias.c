@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: strchr_alias.c 1176 2007-03-04 00:04:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - No-CRT strchr() alias for gcc.
  */
