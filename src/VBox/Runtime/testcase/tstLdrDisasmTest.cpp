@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 919 2007-02-15 04:48:55Z knut.osmundsen@oracle.com $ */
+/* $Id: tstLdrDisasmTest.cpp 1190 2007-03-04 20:42:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - RTLdr test object.
  *
@@ -33,7 +33,7 @@
 #include <VBox/disopcode.h>
 #include <iprt/string.h>
 
-#if defined(IN_RING0) && !defined(__WIN__) && !defined(__OS2__) /* Too lazy to make import libs. */
+#if defined(IN_RING0) && !defined(__WIN__) /* Too lazy to make import libs. */
 extern "C" DECLIMPORT(int) MyPrintf(const char *pszFormat, ...);
 # define MY_PRINTF(a) MyPrintf a
 #else
