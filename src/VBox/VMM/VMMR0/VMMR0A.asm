@@ -1,4 +1,4 @@
-; $Id: VMMR0A.asm 727 2007-02-06 19:38:36Z knut.osmundsen@oracle.com $
+; $Id: VMMR0A.asm 1232 2007-03-05 16:47:35Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM - R0 assembly routines.
 ;
@@ -70,9 +70,10 @@ BEGINPROC vmmR0CallHostSetJmp
 
     mov     ecx, [esp + 0ch]            ; pvArg
     mov     eax, [esp + 08h]            ; pfn
-    push    ecx
+    sub     esp, 12                     ; align the stack on a 16-byte boundrary.
+    mov     [esp], ecx
     call    eax
-    add     esp, 4
+    add     esp, 12
     mov     edx, [esp + 4h]             ; pJmpBuf
     and     dword [edx + VMMR0JMPBUF.eip], byte 0 ; used for valid check.
     ret
