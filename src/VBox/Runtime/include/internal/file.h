@@ -1,4 +1,4 @@
-/* $Id: file.h 1  klaus.espenlaub@oracle.com $ */
+/* $Id: file.h 1300 2007-03-07 14:16:35Z klaus.espenlaub@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Internal RTFile header.
  */

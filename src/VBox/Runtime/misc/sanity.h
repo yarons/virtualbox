@@ -1,4 +1,4 @@
-/* $Id: sanity.h 888 2007-02-14 08:52:46Z knut.osmundsen@oracle.com $ */
+/* $Id: sanity.h 1300 2007-03-07 14:16:35Z klaus.espenlaub@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Setup Sanity Checks, C and C++.
  */
