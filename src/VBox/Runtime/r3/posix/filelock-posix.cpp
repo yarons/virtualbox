@@ -1,4 +1,4 @@
-/* $Id: filelock-posix.cpp 1387 2007-03-09 20:15:26Z knut.osmundsen@oracle.com $ */
+/* $Id: filelock-posix.cpp 1389 2007-03-09 20:34:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - File Locking, POSIX.
  */
@@ -28,7 +28,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
-#include <sys/fcntl.hs>
+#include <sys/fcntl.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/time.h>
