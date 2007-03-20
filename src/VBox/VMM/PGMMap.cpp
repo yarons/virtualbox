@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 1575 2007-03-20 10:23:17Z noreply@oracle.com $ */
+/* $Id: PGMMap.cpp 1576 2007-03-20 11:51:40Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -108,7 +108,6 @@ PGMR3DECL(int) PGMR3MapPT(PVM pVM, RTGCPTR GCPtr, size_t cb, PFNPGMRELOCATE pfnR
         pPrev = pCur;
         pCur = pCur->pNextHC;
     }
-/** @todo this needs fixing, the function must relocate on conflict, not fail! */
 
     /*
      * Check for conflicts with intermediate mappings.
