@@ -1,4 +1,4 @@
-; $Id: AMD64ToPAE.asm 1283 2007-03-07 00:02:11Z knut.osmundsen@oracle.com $
+; $Id: AMD64ToPAE.asm 1645 2007-03-22 18:13:16Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM - World Switchers, AMD64 to PAE.
 ;
@@ -20,7 +20,7 @@
 ;
 
 ;%define DEBUG_STUFF 1
-%define STRICT_IF 1
+;%define STRICT_IF 1
 
 ;*******************************************************************************
 ;*  Defined Constants And Macros                                               *
