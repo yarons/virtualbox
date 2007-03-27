@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 736 2007-02-07 01:15:17Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 1723 2007-03-27 11:49:09Z noreply@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -56,6 +56,8 @@
 #endif
 #undef LOG_GROUP
 #include "VMMDev/VBoxDev.cpp"
+#undef LOG_GROUP
+#include "Serial/DevSerial.cpp"
 
 #include <stdio.h>
 
