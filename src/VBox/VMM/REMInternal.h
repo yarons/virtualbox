@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 983 2007-02-19 14:57:38Z knut.osmundsen@oracle.com $ */
+/* $Id: REMInternal.h 1945 2007-04-05 09:02:32Z noreply@oracle.com $ */
 /** @file
  * REM - Internal header file.
  */
@@ -43,7 +43,7 @@
  */
 
 /** The saved state version number. */
-#define REM_SAVED_STATE_VERSION     4
+#define REM_SAVED_STATE_VERSION     5
 
 
 /** @def REM_MONITOR_CODE_PAGES
