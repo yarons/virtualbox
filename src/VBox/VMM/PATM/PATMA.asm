@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 2043 2007-04-12 13:04:07Z noreply@oracle.com $
+; $Id: PATMA.asm 2046 2007-04-12 13:23:27Z noreply@oracle.com $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -2556,8 +2556,8 @@ GLOBALNAME PATMMovFromSSRecord
     RTCCPTR_DEF PATMMovFromSS_Start
     DD      0
     DD      0
-    DD      PATMMovFromSS_Start_End - PATMMovFromSS_Start
     DD      0
+    DD      PATMMovFromSS_Start_End - PATMMovFromSS_Start
     DD      0
     DD      0ffffffffh
 
