@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 2090 2007-04-14 15:24:02Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 2091 2007-04-14 15:24:38Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -255,7 +255,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
 
         switch (pPage->enmKind)
         {
-             case PGMPOOLKIND_32BIT_PT_FOR_32BIT_PT:
+            case PGMPOOLKIND_32BIT_PT_FOR_32BIT_PT:
             {
                 const unsigned iShw = off / sizeof(X86PTE);
                 if (uShw.pPT->a[iShw].n.u1Present)
