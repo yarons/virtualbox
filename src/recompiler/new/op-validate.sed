@@ -1,4 +1,4 @@
-# $Id: op-validate.sed 121 2007-01-17 16:57:56Z knut.osmundsen@oracle.com $
+# $Id: op-validate.sed 2207 2007-04-19 09:39:49Z klaus.espenlaub@oracle.com $
 ## @file
 #
 # Just some quit sed hacks for validating an op.S assembly file.
