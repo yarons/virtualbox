@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 2260 2007-04-20 09:18:48Z noreply@oracle.com $ */
+/* $Id: SELMAll.cpp 2267 2007-04-20 12:56:15Z noreply@oracle.com $ */
 /** @file
  * SELM All contexts.
  */
@@ -90,7 +90,7 @@ static RTGCPTR selmToFlat(PVM pVM, RTSEL Sel, RTGCPTR Addr)
  */
 SELMDECL(RTGCPTR) SELMToFlat(PVM pVM, X86EFLAGS eflags, RTSEL Sel, CPUMSELREGHID *pHiddenSel, RTGCPTR Addr)
 {
-    Assert(pHiddenSel);
+    Assert(pHiddenSel || !CPUMAreHiddenSelRegsValid(pVM));
 
    /*
     * Deal with real & v86 mode first.
