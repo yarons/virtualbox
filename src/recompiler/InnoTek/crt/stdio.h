@@ -1,4 +1,4 @@
-/* $Id: stdio.h 1  klaus.espenlaub@oracle.com $ */
+/* $Id: stdio.h 2422 2007-04-30 12:03:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * Our minimal stdio
  */
