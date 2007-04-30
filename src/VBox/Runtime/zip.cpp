@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 1  klaus.espenlaub@oracle.com $ */
+/* $Id: zip.cpp 2441 2007-04-30 18:23:06Z noreply@oracle.com $ */
 /** @file
  * InnoTek Portable Runtime - Compression.
  */
@@ -28,6 +28,7 @@
 //#define RTZIP_USE_BZLIB 1
 #define RTZIP_USE_LZF 1
 
+#error halt
 
 /*******************************************************************************
 *   Header Files                                                               *
