@@ -1,3 +1,4 @@
+// $Id: vbox.dsl 2781 2007-05-22 22:56:27Z knut.osmundsen@oracle.com $
 /// @file
 //
 // VirtualBox ACPI

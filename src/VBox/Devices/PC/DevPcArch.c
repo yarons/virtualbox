@@ -1,7 +1,6 @@
+/* $Id: DevPcArch.c 2781 2007-05-22 22:56:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox basic PC devices:
- * PC architechture device
+ * PC Architechture Device.
  */
 
 /*
