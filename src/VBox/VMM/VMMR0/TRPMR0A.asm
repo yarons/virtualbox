@@ -1,10 +1,10 @@
-; $Id: TRPMR0A.asm 1570 2007-03-20 04:45:47Z knut.osmundsen@oracle.com $
+; $Id: TRPMR0A.asm 2988 2007-06-01 17:36:09Z noreply@oracle.com $
 ;; @file
 ; TRPM - Host Context Ring-0
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
