@@ -1,6 +1,6 @@
-/* $Id: avlu32.cpp 1  klaus.espenlaub@oracle.com $ */
+/* $Id: avlu32.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
 /** @file
- * InnoTek Portable Runtime - AVL tree, uint32_t, unique keys.
+ * innotek Portable Runtime - AVL tree, uint32_t, unique keys.
  */
 
 /*

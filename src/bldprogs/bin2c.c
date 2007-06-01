@@ -1,10 +1,10 @@
-/* $Id: bin2c.c 1786 2007-03-28 22:27:22Z knut.osmundsen@oracle.com $ */
+/* $Id: bin2c.c 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
 /** @file
  * PC-BIOS - Binary 2 C Structure Converter.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,6 +1,6 @@
-/* $Id: avlgcptr.cpp 96 2007-01-17 13:22:21Z knut.osmundsen@oracle.com $ */
+/* $Id: avlgcptr.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
 /** @file
- * InnoTek Portable Runtime - AVL tree, RTGCPTR, unique keys.
+ * innotek Portable Runtime - AVL tree, RTGCPTR, unique keys.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: time-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z knut.osmundsen@oracle.com $ */
+/* $Id: time-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
 /** @file
- * InnoTek Portable Runtime - Time, Ring-0 Driver, OS/2.
+ * innotek Portable Runtime - Time, Ring-0 Driver, OS/2.
  */
 
 /*

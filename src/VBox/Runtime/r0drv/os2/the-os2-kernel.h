@@ -1,6 +1,6 @@
-/* $Id: the-os2-kernel.h 1191 2007-03-04 20:46:04Z knut.osmundsen@oracle.com $ */
+/* $Id: the-os2-kernel.h 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
 /** @file
- * InnoTek Portable Runtime - Ring-0 Driver, The OS/2 Kernel Headers.
+ * innotek Portable Runtime - Ring-0 Driver, The OS/2 Kernel Headers.
  */
 
 /*
