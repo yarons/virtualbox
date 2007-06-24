@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 3239 2007-06-23 00:35:15Z knut.osmundsen@oracle.com $ */
+/* $Id: strformatrt.cpp 3253 2007-06-24 03:08:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - IPRT String Formatter Extensions.
  */
@@ -661,7 +661,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 s_aTypes[] =
                 {
 #define STRMEM(str) sizeof(str) - 1, str
-                    { STRMEM("timespec"),   sizeof(PCRTTIMESPEC),  RTST_FLAGS_POINTER, RTST_TIMESPEC},
+                    { STRMEM("Dtimespec"),   sizeof(PCRTTIMESPEC),  RTST_FLAGS_POINTER, RTST_TIMESPEC},
 #undef STRMEM
                 };
 
