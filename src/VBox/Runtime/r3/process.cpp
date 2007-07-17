@@ -1,4 +1,4 @@
-/* $Id: process.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
+/* $Id: process.cpp 3672 2007-07-17 12:39:30Z noreply@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Process, Common.
  */
@@ -30,7 +30,7 @@
 #include "internal/process.h"
 #include "internal/thread.h"
 
-#ifdef __WIN__
+#ifdef RT_OS_WINDOWS
 # include <process.h>
 #else
 # include <unistd.h>
