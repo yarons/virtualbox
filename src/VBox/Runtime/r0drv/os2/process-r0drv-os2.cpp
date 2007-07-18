@@ -1,6 +1,6 @@
-/* $Id: process-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
+/* $Id: process-r0drv-os2.cpp 3676 2007-07-18 04:26:04Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Initialization & Termination, Ring-0 Driver, OS/2.
+ * innotek Portable Runtime - Process Management, Ring-0 Driver, OS/2.
  */
 
 /*
