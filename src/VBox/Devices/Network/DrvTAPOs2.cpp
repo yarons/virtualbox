@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 4014 2007-08-03 00:44:13Z knut.osmundsen@oracle.com $ */
+/** $Id: DrvTAPOs2.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -14,11 +14,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
- *
  */
 
 /*******************************************************************************
