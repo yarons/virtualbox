@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4264 2007-08-21 15:23:28Z noreply@oracle.com $
+# $Id: Makefile.kmk 4266 2007-08-21 15:45:55Z noreply@oracle.com $
 ## @file
 # Sub-Makefile for VBoxService.
 #
@@ -29,6 +29,7 @@ VBoxService_SOURCES  = \
 	VBoxService.cpp \
 	VBoxSeamless.cpp \
 	VBoxClipboard.cpp \
+	VBoxDisplay.cpp \
 	helpers.cpp \
 	VBoxService.rc
 VBoxService_LIBS     = \
