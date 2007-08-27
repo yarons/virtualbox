@@ -1,4 +1,4 @@
-; $Id: VBoxSFA.asm 3655 2007-07-16 18:47:26Z knut.osmundsen@oracle.com $
+; $Id: VBoxSFA.asm 4377 2007-08-27 08:45:40Z noreply@oracle.com $
 ;; @file
 ; VBoxSF - OS/2 Shared Folders, all assembly code (16 -> 32 thunking mostly).
 ;
@@ -1364,7 +1364,7 @@ segment CODE16
     je near .quiet
 segment DATA16
 .szMessage:
-    db 'VirtualBox.org Guest Additions IFS for OS/2', 0dh, 0ah, 0
+    db 'VirtualBox Guest Additions IFS for OS/2', 0dh, 0ah, 0
 segment CODE16
     mov     bx, .szMessage
     call    NAME(FS_INIT_FPUTS)
