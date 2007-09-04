@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 4503 2007-09-04 05:57:53Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGM.cpp 4506 2007-09-04 06:14:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -66,6 +66,7 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
+#include <iprt/uuid.h>
 
 
 /*******************************************************************************

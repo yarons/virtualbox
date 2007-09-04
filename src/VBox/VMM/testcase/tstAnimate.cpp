@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 4502 2007-09-04 05:51:32Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAnimate.cpp 4506 2007-09-04 06:14:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -41,6 +41,7 @@
 #include <iprt/file.h>
 #include <iprt/thread.h>
 #include <iprt/ctype.h>
+#include <iprt/uuid.h>
 
 #include <signal.h>
 
