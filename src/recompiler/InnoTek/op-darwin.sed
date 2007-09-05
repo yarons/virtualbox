@@ -1,4 +1,4 @@
-# $Id: op-darwin.sed 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+# $Id: op-darwin.sed 4541 2007-09-05 19:32:48Z knut.osmundsen@oracle.com $
 ## @file
 #
 # SED script for transforming op.S (i386 ELF from GNU/linux) into
