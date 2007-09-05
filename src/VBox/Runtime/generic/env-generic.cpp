@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 4476 2007-09-01 01:30:34Z knut.osmundsen@oracle.com $ */
+/* $Id: env-generic.cpp 4534 2007-09-05 14:02:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Environment, Generic.
  */
@@ -34,7 +34,7 @@
 #ifdef RT_OS_DARWIN
 # include <crt_externs.h>
 #endif
-#if defined(RT_OS_SOLARIS)
+#if defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD) || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD)
 __BEGIN_DECLS
 extern char **environ;
 __END_DECLS
