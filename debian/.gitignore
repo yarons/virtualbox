@@ -1,0 +1,17 @@
+/AutoConfig.kmk
+/builddir
+/configure.log
+/env.sh
+/build-stamp
+/configure-stamp
+/modules-stamp
+/files
+/modules
+/vboxdrv.init
+/vboxnet.init
+/virtualbox-ose
+/virtualbox-ose-dbg
+/virtualbox-ose.substvars
+/virtualbox-ose.postinst.debhelper
+/virtualbox-ose.postrm.debhelper
+/virtualbox-ose.prerm.debhelper
