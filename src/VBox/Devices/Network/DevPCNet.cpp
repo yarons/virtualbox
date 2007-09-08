@@ -1,7 +1,6 @@
+/** $Id: DevPCNet.cpp 4623 2007-09-08 06:29:24Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox network devices:
- * AMD PC-Net II (Am79C970A + Am79C973) Ethernet Controller
+ * AMD PC-Net II (Am79C970A + Am79C973) Ethernet Controller Emulation.
  */
 
 /*
