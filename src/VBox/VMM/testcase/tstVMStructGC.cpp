@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 4738 2007-09-12 16:00:54Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructGC.cpp 4752 2007-09-13 07:11:02Z noreply@oracle.com $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
