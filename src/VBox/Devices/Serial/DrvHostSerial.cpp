@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 4748 2007-09-13 06:49:17Z noreply@oracle.com $ */
+/** $Id: DrvHostSerial.cpp 4749 2007-09-13 06:49:58Z noreply@oracle.com $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
