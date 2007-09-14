@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 4620 2007-09-08 00:39:30Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMHandler.cpp 4787 2007-09-14 09:08:56Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -260,7 +260,7 @@ PGMR3DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
 PGMDECL(int) PGMHandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, RTGCPTR GCPtr, RTGCPTR GCPtrLast,
                                          PFNPGMHCVIRTINVALIDATE pfnInvalidateHC,
                                          PFNPGMHCVIRTHANDLER pfnHandlerHC, RTGCPTR pfnHandlerGC,
-                                         HCPTRTYPE(const char *) pszDesc)
+                                         R3PTRTYPE(const char *) pszDesc)
 {
     Log(("PGMR3HandlerVirtualRegister: enmType=%d GCPtr=%RGv GCPtrLast=%RGv pfnHandlerGC=%RGv pszDesc=%s\n", enmType, GCPtr, GCPtrLast, pfnHandlerGC, pszDesc));
 
