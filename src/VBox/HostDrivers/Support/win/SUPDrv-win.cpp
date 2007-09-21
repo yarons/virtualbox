@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 4960 2007-09-21 14:58:57Z noreply@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 4961 2007-09-21 14:59:25Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -283,8 +283,8 @@ NTSTATUS _stdcall VBoxDrvNtDeviceControl(PDEVICE_OBJECT pDevObj, PIRP pIrp)
         int   rc;
 
 	 	/* Raise the IRQL to DISPATCH_LEVEl to prevent Windows from rescheduling us to another CPU/core. */ 
-	 	Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
-	 	KeRaiseIrql(DISPATCH_LEVEL, &oldIrql);        
+        Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
+        KeRaiseIrql(DISPATCH_LEVEL, &oldIrql);        
         rc = supdrvIOCtlFast(ulCmd, pDevExt, pSession);
         KeLowerIrql(oldIrql);
 
