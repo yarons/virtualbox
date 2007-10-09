@@ -1,4 +1,4 @@
-/* $Id: gvm.h 5167 2007-10-05 13:33:36Z knut.osmundsen@oracle.com $ */
+/* $Id: gvm.h 5211 2007-10-09 18:16:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -54,7 +54,7 @@ typedef struct GVM
 #ifdef ___GVMMR0Internal_h
         struct GVMMPERVM    s;
 #endif
-        uint8_t             padding[128];
+        uint8_t             padding[256];
     } gvmm;
 
     /** The GMM per vm data. */
