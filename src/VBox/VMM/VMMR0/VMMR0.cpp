@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 5211 2007-10-09 18:16:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 5233 2007-10-10 18:02:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -709,6 +709,11 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
             return GVMMR0SchedPoll(pVM, (bool)u64Arg);
 
         case VMMR0_DO_GVMM_QUERY_STATISTICS:
+            if (u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GVMMR0QueryStatisticsReq(pVM, (PGVMMQUERYSTATISTICSSREQ)pReqHdr);
+
+        case VMMR0_DO_GVMM_RESET_STATISTICS:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
             return GVMMR0QueryStatisticsReq(pVM, (PGVMMQUERYSTATISTICSSREQ)pReqHdr);
