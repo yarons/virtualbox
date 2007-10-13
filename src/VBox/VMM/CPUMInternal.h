@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 4958 2007-09-21 14:54:04Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 5285 2007-10-13 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -331,6 +331,8 @@ typedef struct CPUM
     CPUMCPUID               aGuestCpuIdStd[5];
     /** The extended set of CpuId leafs. */
     CPUMCPUID               aGuestCpuIdExt[10];
+    /** The centaur set of CpuId leafs. */
+    CPUMCPUID               aGuestCpuIdCentaur[2];
     /** The default set of CpuId leafs. */
     CPUMCPUID               GuestCpuIdDef;
 
