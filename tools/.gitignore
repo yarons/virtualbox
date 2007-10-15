@@ -1,4 +1,4 @@
-/wine_x11drv
-/wine_ttydrv
+/wine_x11drv*
+/wine_ttydrv*
 /common
 /FetchDir
