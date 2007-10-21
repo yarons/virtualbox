@@ -1,6 +1,6 @@
-/* $Id: strcmp_alias.c 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: strchr_alias.c 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - No-CRT strcmp() alias for gcc.
+ * innotek Portable Runtime - No-CRT strchr() alias for gcc.
  */
 
 /*
@@ -20,25 +20,25 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/nocrt/string.h>
-#undef strcmp
+#undef strchr
 
 #if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
 # ifndef __MINGW32__
-#  pragma weak strcmp
+#  pragma weak strchr
 # endif
 
 /* No alias support here (yet in the ming case). */
-extern int (strcmp)(const char *psz1, const char *psz2)
+extern char *(strchr)(const char *psz, int ch)
 {
-    return RT_NOCRT(strcmp)(psz1, psz2);
+    return RT_NOCRT(strchr)(psz, ch);
 }
 
 #elif __GNUC__ >= 4
 /* create a weak alias. */
-__asm__(".weak strcmp\t\n"
-        " .set strcmp," RT_NOCRT_STR(strcmp) "\t\n");
+__asm__(".weak strchr\t\n"
+        " .set strchr," RT_NOCRT_STR(strchr) "\t\n");
 #else
 /* create a weak alias. */
-extern __typeof(RT_NOCRT(strcmp)) strcmp __attribute__((weak, alias(RT_NOCRT_STR(strcmp))));
+extern __typeof(RT_NOCRT(strchr)) strchr __attribute__((weak, alias(RT_NOCRT_STR(strchr))));
 #endif
 

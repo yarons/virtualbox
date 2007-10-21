@@ -1,4 +1,4 @@
-; $Id: strchr.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: strchr.asm 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $
 ;; @file
 ; innotek Portable Runtime - No-CRT strchr - AMD64 & X86.
 ;

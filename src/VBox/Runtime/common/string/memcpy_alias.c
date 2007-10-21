@@ -1,6 +1,6 @@
-/* $Id: strcpy.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: memcpy_alias.c 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - CRT Strings, strcpy().
+ * innotek Portable Runtime - No-CRT memcpy() alias for gcc.
  */
 
 /*
@@ -19,21 +19,26 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/string.h>
+#include <iprt/nocrt/string.h>
+#undef memcpy
 
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
+# ifndef __MINGW32__
+#  pragma weak memcpy
+# endif
 
-/**
- * Copy a string
- *
- * @returns Pointer to destination string
- * @param   pszDst      Will contain a copy of pszSrc.
- * @param   pszSrc      Zero terminated string.
- */
-char* strcpy(char *pszDst, register const char *pszSrc)
+/* No alias support here (yet in the ming case). */
+extern void *(memcpy)(void *pvDst, const void *pvSrc, size_t cb)
 {
-    register char *psz = pszDst;
-    while ((*psz++ = *pszSrc++))
-        ;
-
-    return pszDst;
+    return RT_NOCRT(memcpy)(pvDst, pvSrc, cb);
 }
+
+#elif __GNUC__ >= 4
+/* create a weak alias. */
+__asm__(".weak memcpy\t\n"
+        " .set memcpy," RT_NOCRT_STR(memcpy) "\t\n");
+#else
+/* create a weak alias. */
+extern __typeof(RT_NOCRT(memcpy)) memcpy __attribute__((weak, alias(RT_NOCRT_STR(memcpy))));
+#endif
+

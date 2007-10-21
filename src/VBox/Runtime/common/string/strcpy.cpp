@@ -1,6 +1,6 @@
-/* $Id: strchr_alias.c 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: strcpy.cpp 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - No-CRT strchr() alias for gcc.
+ * innotek Portable Runtime - CRT Strings, strcpy().
  */
 
 /*
@@ -19,26 +19,21 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/nocrt/string.h>
-#undef strchr
+#include <iprt/string.h>
 
-#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
-# ifndef __MINGW32__
-#  pragma weak strchr
-# endif
 
-/* No alias support here (yet in the ming case). */
-extern char *(strchr)(const char *psz, int ch)
+/**
+ * Copy a string
+ *
+ * @returns Pointer to destination string
+ * @param   pszDst      Will contain a copy of pszSrc.
+ * @param   pszSrc      Zero terminated string.
+ */
+char* strcpy(char *pszDst, register const char *pszSrc)
 {
-    return RT_NOCRT(strchr)(psz, ch);
+    register char *psz = pszDst;
+    while ((*psz++ = *pszSrc++))
+        ;
+
+    return pszDst;
 }
-
-#elif __GNUC__ >= 4
-/* create a weak alias. */
-__asm__(".weak strchr\t\n"
-        " .set strchr," RT_NOCRT_STR(strchr) "\t\n");
-#else
-/* create a weak alias. */
-extern __typeof(RT_NOCRT(strchr)) strchr __attribute__((weak, alias(RT_NOCRT_STR(strchr))));
-#endif
-

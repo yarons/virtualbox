@@ -1,6 +1,6 @@
-/* $Id: strpbrk.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: strlen.cpp 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - strpbrk().
+ * innotek Portable Runtime - CRT Strings, strlen().
  */
 
 /*
@@ -23,33 +23,24 @@
 
 
 /**
- * Find the first occurrence of a character in pszChars in pszStr.
+ * Find the length of a zeroterminated byte string.
  *
- * @returns
+ * @returns String length in bytes.
+ * @param   pszString   Zero terminated string.
  */
 #ifdef _MSC_VER
 # if _MSC_VER >= 1400
-_CRTIMP __checkReturn _CONST_RETURN char *  __cdecl strpbrk(__in_z const char *pszStr, __in_z const char *pszChars)
+__checkReturn size_t  __cdecl strlen(__in_z  const char *pszString)
 # else
-_CRTIMP char * __cdecl strpbrk(const char *pszStr, const char *pszChars)
+size_t strlen(const char *pszString)
 # endif
 #else
-char *strpbrk(const char *pszStr, const char *pszChars)
-# if defined(__THROW) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
-    __THROW
-# endif
+size_t strlen(const char *pszString)
 #endif
 {
-    int chCur;
-    while ((chCur = *pszStr++) != '\0')
-    {
-        int ch;
-        const char *psz = pszChars;
-        while ((ch = *psz++) != '\0')
-            if (ch == chCur)
-                return (char *)(pszStr - 1);
-
-    }
-    return NULL;
+    register const char *psz = pszString;
+    while (*psz)
+        psz++;
+    return psz - pszString;
 }
 

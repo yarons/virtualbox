@@ -1,6 +1,6 @@
-/* $Id: memcmp_alias.c 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: memchr_alias.c 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - No-CRT memcmp() alias for gcc.
+ * innotek Portable Runtime - No-CRT memchr() alias for gcc.
  */
 
 /*
@@ -20,25 +20,25 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/nocrt/string.h>
-#undef memcmp
+#undef memchr
 
 #if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
 # ifndef __MINGW32__
-#  pragma weak memcmp
+#  pragma weak memchr
 # endif
 
 /* No alias support here (yet in the ming case). */
-extern int (memcmp)(const void *pv1, const void *pv2, size_t cb)
+extern void *(memchr)(const void *pv, int ch, size_t cb)
 {
-    return RT_NOCRT(memcmp)(pv1, pv2, cb);
+    return RT_NOCRT(memchr)(pv, ch, cb);
 }
 
 #elif __GNUC__ >= 4
 /* create a weak alias. */
-__asm__(".weak memcmp\t\n"
-        " .set memcmp," RT_NOCRT_STR(memcmp) "\t\n");
+__asm__(".weak memchr\t\n"
+        " .set memchr," RT_NOCRT_STR(memchr) "\t\n");
 #else
 /* create a weak alias. */
-extern __typeof(RT_NOCRT(memcmp)) memcmp __attribute__((weak, alias(RT_NOCRT_STR(memcmp))));
+extern __typeof(RT_NOCRT(memchr)) memchr __attribute__((weak, alias(RT_NOCRT_STR(memchr))));
 #endif
 

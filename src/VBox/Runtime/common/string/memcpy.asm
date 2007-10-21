@@ -1,6 +1,6 @@
-; $Id: mempcpy.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: memcpy.asm 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT mempcpy - AMD64 & X86.
+; innotek Portable Runtime - No-CRT memcpy - AMD64 & X86.
 ;
 
 ;
@@ -22,8 +22,8 @@ BEGINCODE
 ; @param    pvDst   gcc: rdi  msc: rcx  x86:[esp+4]
 ; @param    pvSrc   gcc: rsi  msc: rdx  x86:[esp+8]
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch]
-BEGINPROC RT_NOCRT(mempcpy)
-        cld                             ; paranoia
+BEGINPROC RT_NOCRT(memcpy)
+        cld
 
         ; Do the bulk of the work.
 %ifdef RT_ARCH_AMD64
@@ -37,16 +37,18 @@ BEGINPROC RT_NOCRT(mempcpy)
  %else
         mov     rcx, rdx
  %endif
+        mov     rax, rdi                ; save the return value
         shr     rcx, 3
         rep movsq
 %else
-        mov     eax, edi                ; saving edi in eax
+        push    edi
         push    esi
 
-        mov     ecx, [esp + 0ch + 4]
-        mov     edi, [esp + 04h + 4]
-        mov     esi, [esp + 08h + 4]
+        mov     ecx, [esp + 0ch + 8]
+        mov     edi, [esp + 04h + 8]
+        mov     esi, [esp + 08h + 8]
         mov     edx, ecx
+        mov     eax, edi                ; save the return value
         shr     ecx, 2
         rep movsd
 %endif
@@ -67,17 +69,15 @@ BEGINPROC RT_NOCRT(mempcpy)
         movsb
 .dont_move_byte:
 
-        ; restore & return
 %ifdef RT_ARCH_AMD64
-        mov     rax, rdi
  %ifdef ASM_CALL64_MSC
-        mov     rsi, r11
         mov     rdi, r10
+        mov     rsi, r11
  %endif
 %else
         pop     esi
-        xchg    eax, edi
+        pop     edi
 %endif
         ret
-ENDPROC RT_NOCRT(mempcpy)
+ENDPROC RT_NOCRT(memcpy)
 

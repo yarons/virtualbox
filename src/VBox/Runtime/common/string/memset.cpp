@@ -1,6 +1,6 @@
-/* $Id: memcpy.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: memset.cpp 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - CRT Strings, memcpy().
+ * innotek Portable Runtime - CRT Strings, memset().
  */
 
 /*
@@ -23,48 +23,42 @@
 
 
 /**
- * Copies a memory.
+ * Fill a memory block with specific byte.
  *
  * @returns pvDst.
- * @param   pvDst       Pointer to the target block.
- * @param   pvSrc       Pointer to the source block.
- * @param   cb          The size of the block.
+ * @param   pvDst      Pointer to the block.
+ * @param   ch      The filler char.
+ * @param   cb      The size of the block.
  */
 #ifdef _MSC_VER
 # if _MSC_VER >= 1400
-_CRT_INSECURE_DEPRECATE_MEMORY(memcpy_s) void *  __cdecl memcpy(__out_bcount_full_opt(_Size) void * pvDst, __in_bcount_opt(_Size) const void * pvSrc, __in size_t cb)
+void *  __cdecl memset(__out_bcount_full_opt(_Size) void *pvDst, __in int ch, __in size_t cb)
 # else
-void *memcpy(void *pvDst, const void *pvSrc, size_t cb)
+void *memset(void *pvDst, int ch, size_t cb)
 # endif
 #else
-void *memcpy(void *pvDst, const void *pvSrc, size_t cb)
+void *memset(void *pvDst, int ch, size_t cb)
 #endif
 {
     register union
     {
         uint8_t  *pu8;
         uint32_t *pu32;
-        void     *pv;
-    } uTrg;
-    uTrg.pv = pvDst;
-
-    register union
-    {
-        uint8_t const  *pu8;
-        uint32_t const *pu32;
-        void const     *pv;
-    } uSrc;
-    uSrc.pv = pvSrc;
+        void     *pvDst;
+    } u;
+    u.pvDst = pvDst;
 
     /* 32-bit word moves. */
+    register uint32_t u32 = ch | (ch << 8);
+    u32 |= u32 << 16;
     register size_t c = cb >> 2;
     while (c-- > 0)
-        *uTrg.pu32++ = *uSrc.pu32++;
+        *u.pu32++ = u32;
 
     /* Remaining byte moves. */
     c = cb & 3;
     while (c-- > 0)
-        *uTrg.pu8++ = *uSrc.pu8++;
+        *u.pu8++ = (uint8_t)u32;
 
     return pvDst;
 }

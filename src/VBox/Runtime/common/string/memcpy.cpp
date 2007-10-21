@@ -1,6 +1,6 @@
-/* $Id: memcmp.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: memcpy.cpp 5409 2007-10-21 20:35:42Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - CRT Strings, memcmp().
+ * innotek Portable Runtime - CRT Strings, memcpy().
  */
 
 /*
@@ -20,58 +20,52 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/string.h>
-#include <iprt/types.h>
 
 
 /**
  * Copies a memory.
  *
- * @returns 0 if pvDst and pvSrc are equal
- * @returns <0 if pvDst is 'smaller' than pvSrc.
- * @returns >0 if pvDst is 'larger' than pvSrc.
- *
+ * @returns pvDst.
  * @param   pvDst       Pointer to the target block.
  * @param   pvSrc       Pointer to the source block.
  * @param   cb          The size of the block.
  */
 #ifdef _MSC_VER
 # if _MSC_VER >= 1400
-__checkReturn int __cdecl memcmp(__in_bcount_opt(_Size) const void * pvDst, __in_bcount_opt(_Size) const void * pvSrc, __in size_t cb)
+_CRT_INSECURE_DEPRECATE_MEMORY(memcpy_s) void *  __cdecl memcpy(__out_bcount_full_opt(_Size) void * pvDst, __in_bcount_opt(_Size) const void * pvSrc, __in size_t cb)
 # else
-int memcmp(const void *pvDst, const void *pvSrc, size_t cb)
+void *memcpy(void *pvDst, const void *pvSrc, size_t cb)
 # endif
 #else
-int memcmp(const void *pvDst, const void *pvSrc, size_t cb)
+void *memcpy(void *pvDst, const void *pvSrc, size_t cb)
 #endif
 {
+    register union
+    {
+        uint8_t  *pu8;
+        uint32_t *pu32;
+        void     *pv;
+    } uTrg;
+    uTrg.pv = pvDst;
+
     register union
     {
         uint8_t const  *pu8;
         uint32_t const *pu32;
         void const     *pv;
-    } uDst, uSrc;
-    uDst.pv = pvDst;
+    } uSrc;
     uSrc.pv = pvSrc;
 
-    /* 32-bit word compare. */
+    /* 32-bit word moves. */
     register size_t c = cb >> 2;
     while (c-- > 0)
-    {
-        /* ASSUMES int is at least 32-bit! */
-        register int32_t iDiff = *uDst.pu32++ - *uSrc.pu32++;
-        if (iDiff)
-            return iDiff;
-    }
+        *uTrg.pu32++ = *uSrc.pu32++;
 
     /* Remaining byte moves. */
     c = cb & 3;
     while (c-- > 0)
-    {
-        register int8_t iDiff = *uDst.pu8++ - *uSrc.pu8++;
-        if (iDiff)
-            return iDiff;
-    }
+        *uTrg.pu8++ = *uSrc.pu8++;
 
-    return 0;
+    return pvDst;
 }
 
