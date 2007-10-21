@@ -1,4 +1,4 @@
-/* $Id: strprintf.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: strprintf.cpp 5413 2007-10-21 20:47:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - String Formatters.
  */
