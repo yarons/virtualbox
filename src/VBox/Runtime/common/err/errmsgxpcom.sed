@@ -1,4 +1,4 @@
-# $Id: errmsgxpcom.sed 4774 2007-09-13 14:28:34Z noreply@oracle.com $
+# $Id: errmsgxpcom.sed 5419 2007-10-21 20:58:59Z knut.osmundsen@oracle.com $
 ## @file
 # innotek Portable Runtime - SED script for converting XPCOM errors
 #
