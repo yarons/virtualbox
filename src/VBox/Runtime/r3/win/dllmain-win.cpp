@@ -1,6 +1,6 @@
-/* $Id: system-win32.cpp 5427 2007-10-21 21:23:00Z knut.osmundsen@oracle.com $ */
+/* $Id: dllmain-win.cpp 5428 2007-10-21 21:27:47Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - System, Win32.
+ * IPRT - Win32 DllMain (Ring-3).
  */
 
 /*
@@ -19,31 +19,29 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP RTLOGGROUP_SYSTEM
 #include <Windows.h>
-#include <iprt/system.h>
-#include <iprt/assert.h>
+#include <iprt/thread.h>
+#include "internal/thread.h"
 
 
 
-RTDECL(unsigned) RTSystemProcessorGetCount(void)
+/**
+ * The Dll main entry point.
+ */
+BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
 {
-    SYSTEM_INFO SysInfo;
+    switch (dwReason)
+    {
+        case DLL_PROCESS_ATTACH:
+        case DLL_PROCESS_DETACH:
+        case DLL_THREAD_ATTACH:
+        default:
+            /* ignore */
+            break;
 
-    GetSystemInfo(&SysInfo);
-
-    unsigned cCpus = (unsigned)SysInfo.dwNumberOfProcessors;
-    Assert((DWORD)cCpus == SysInfo.dwNumberOfProcessors);
-    return cCpus;
+        case DLL_THREAD_DETACH:
+            rtThreadNativeDetach();
+            break;
+    }
+    return TRUE;
 }
-
-
-RTDECL(uint64_t) RTSystemProcessorGetActiveMask(void)
-{
-    SYSTEM_INFO SysInfo;
-
-    GetSystemInfo(&SysInfo);
-
-    return SysInfo.dwActiveProcessorMask;
-}
-

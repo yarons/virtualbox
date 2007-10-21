@@ -1,6 +1,6 @@
-/* $Id: dllmain-win32.cpp 5427 2007-10-21 21:23:00Z knut.osmundsen@oracle.com $ */
+/* $Id: utf16locale-win.cpp 5428 2007-10-21 21:27:47Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Win32 DllMain (Ring-3).
+ * innotek Portable Runtime - UTF-16 Locale Specific Manipulation, Win32.
  */
 
 /*
@@ -19,29 +19,21 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP RTLOGGROUP_UTF16
 #include <Windows.h>
-#include <iprt/thread.h>
-#include "internal/thread.h"
+
+#include <iprt/string.h>
 
 
-
-/**
- * The Dll main entry point.
- */
-BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
+RTDECL(int) RTUtf16LocaleICmp(PCRTUTF16 pusz1, PCRTUTF16 pusz2)
 {
-    switch (dwReason)
-    {
-        case DLL_PROCESS_ATTACH:
-        case DLL_PROCESS_DETACH:
-        case DLL_THREAD_ATTACH:
-        default:
-            /* ignore */
-            break;
+    if (pusz1 == pusz2)
+        return 0;
+    if (pusz1 == NULL)
+        return -1;
+    if (pusz2 == NULL)
+        return 1;
 
-        case DLL_THREAD_DETACH:
-            rtThreadNativeDetach();
-            break;
-    }
-    return TRUE;
+    return CompareStringW(LOCALE_USER_DEFAULT, NORM_IGNORECASE, pusz1, -1, pusz2, -1) - 2;
 }
+
