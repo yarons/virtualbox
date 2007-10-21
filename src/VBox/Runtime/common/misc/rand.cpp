@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 4750 2007-09-13 07:05:03Z noreply@oracle.com $ */
+/* $Id: rand.cpp 5416 2007-10-21 20:51:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Random Number
  */

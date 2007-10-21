@@ -1,6 +1,6 @@
-/* $Id: sanity-cpp.cpp 4750 2007-09-13 07:05:03Z noreply@oracle.com $ */
+/* $Id: sanity-c.c 5416 2007-10-21 20:51:39Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Setup Sanity Checks, C++.
+ * innotek Portable Runtime - Setup Sanity Checks, C.
  */
 
 /*
@@ -16,4 +16,3 @@
  */
 
 #include "sanity.h"
-
