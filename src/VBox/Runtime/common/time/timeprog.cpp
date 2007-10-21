@@ -1,4 +1,4 @@
-/* $Id: timeprog.cpp 5404 2007-10-21 20:26:23Z knut.osmundsen@oracle.com $ */
+/* $Id: timeprog.cpp 5408 2007-10-21 20:34:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Time Relative to Program Start.
  */
