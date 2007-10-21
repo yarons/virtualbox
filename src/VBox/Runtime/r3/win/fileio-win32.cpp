@@ -1,4 +1,4 @@
-/* $Id: fileio-win32.cpp 4372 2007-08-24 21:21:51Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-win32.cpp 5427 2007-10-21 21:23:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */

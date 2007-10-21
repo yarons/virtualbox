@@ -1,6 +1,6 @@
-/* $Id: dllmain-win32.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: RTLogWriteDebugger-win32.cpp 5427 2007-10-21 21:23:00Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Win32 DllMain (Ring-3).
+ * innotek Portable Runtime - Log To Debugger, Win32.
  */
 
 /*
@@ -20,28 +20,16 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <Windows.h>
-#include <iprt/thread.h>
-#include "internal/thread.h"
+
+#include <iprt/log.h>
+#include <iprt/assert.h>
 
 
-
-/**
- * The Dll main entry point.
- */
-BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
+RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
-    switch (dwReason)
-    {
-        case DLL_PROCESS_ATTACH:
-        case DLL_PROCESS_DETACH:
-        case DLL_THREAD_ATTACH:
-        default:
-            /* ignore */
-            break;
-
-        case DLL_THREAD_DETACH:
-            rtThreadNativeDetach();
-            break;
-    }
-    return TRUE;
+    if (pch[cb] != '\0')
+        AssertBreakpoint();
+    OutputDebugStringA(pch);
+    return;
 }
+
