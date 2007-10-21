@@ -1,6 +1,6 @@
-; $Id: llrintf.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: lrintf.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT llrintf - AMD64 & X86.
+; innotek Portable Runtime - No-CRT lrintf - AMD64 & X86.
 ;
 
 ;
@@ -20,9 +20,9 @@ BEGINCODE
 
 ;;
 ; Round rd to the nearest integer value, rounding according to the current rounding direction.
-; @returns 32-bit: edx:eax  64-bit: rax
+; @returns 32-bit: eax  64-bit: rax
 ; @param    rf     32-bit: [esp + 4h]  64-bit: xmm0
-BEGINPROC RT_NOCRT(llrintf)
+BEGINPROC RT_NOCRT(lrintf)
 %ifdef RT_ARCH_AMD64
     cvtss2si rax, xmm0
 %else
@@ -31,13 +31,12 @@ BEGINPROC RT_NOCRT(llrintf)
     sub     esp, 8h
 
     fld     dword [ebp + 8h]
-    fistp   qword [esp]
+    fistp   dword [esp]
     fwait
     mov     eax, [esp]
-    mov     edx, [esp + 4]
 
     leave
 %endif
     ret
-ENDPROC   RT_NOCRT(llrintf)
+ENDPROC   RT_NOCRT(lrintf)
 

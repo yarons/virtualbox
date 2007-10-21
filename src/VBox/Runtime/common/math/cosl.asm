@@ -1,6 +1,6 @@
-; $Id: ldexpl.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: cosl.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT ldexpl - AMD64 & X86.
+; innotek Portable Runtime - No-CRT cosl - AMD64 & X86.
 ;
 
 ;
@@ -29,27 +29,34 @@ BEGINCODE
 %endif
 
 ;;
-; Computes lrd * 2^exp
+; compute the cosine of ldr, measured in radians.
 ; @returns st(0)
 ; @param    lrd     [rbp + _S*2]
-; @param    exp     [ebp + 14h]  GCC:edi  MSC:ecx
-BEGINPROC RT_NOCRT(ldexpl)
+BEGINPROC RT_NOCRT(cosl)
     push    _BP
     mov     _BP, _SP
     sub     _SP, 10h
 
-    ; load exp
-%ifdef RT_ARCH_AMD64 ; ASSUMES ONLY GCC HERE!
-    mov     [rsp], edi
-    fild    dword [rsp]
-%else
-    fild    dword [ebp + _S*2 + RTLRD_CB]
-%endif
     fld     tword [_BP + _S*2]
-    fscale
-    fstp    st1
+    fcos
+    fnstsw  ax
+    test    ah, 4
+    jz      .done
 
+    fldpi
+    fadd    st0, st0
+    fxch    st1
+.again:
+    fprem1
+    fnstsw  ax
+    test    ah, 4
+    jnz     .again
+
+    fstp    st0
+    fcos
+
+.done:
     leave
     ret
-ENDPROC   RT_NOCRT(ldexpl)
+ENDPROC   RT_NOCRT(cosl)
 

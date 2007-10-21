@@ -1,6 +1,6 @@
-; $Id: sinl.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: remainder.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT sinl - AMD64 & X86.
+; innotek Portable Runtime - No-CRT remainder - AMD64 & X86.
 ;
 
 ;
@@ -14,7 +14,6 @@
 ;  distribution. VirtualBox OSE is distributed in the hope that it will
 ;  be useful, but WITHOUT ANY WARRANTY of any kind.
 
-
 %include "iprt/asmdefs.mac"
 
 BEGINCODE
@@ -22,41 +21,45 @@ BEGINCODE
 %ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
- %define _S  8
 %else
  %define _SP esp
  %define _BP ebp
- %define _S  4
 %endif
 
 ;;
-; Compute the sine of lrd
+; See SUS.
 ; @returns st(0)
-; @param    lrd     [_SP + _S*2]
-BEGINPROC RT_NOCRT(sinl)
+; @param    rd1    [ebp + 8h]  xmm0
+; @param    rd2    [ebp + 10h]  xmm1
+BEGINPROC RT_NOCRT(remainder)
     push    _BP
     mov     _BP, _SP
-    sub     _SP, 10h
+    sub     _SP, 20h
+;int3
 
-    fld     tword [_BP + _S*2]
-    fsin
-    fnstsw  ax
-    test    ah, 04h
-    jz      .done
+%ifdef RT_ARCH_AMD64
+    movsd   [rsp + 10h], xmm1
+    movsd   [rsp], xmm0
+    fld     qword [rsp + 10h]
+    fld     qword [rsp]
+%else
+    fld     qword [ebp + 10h]
+    fld     qword [ebp + 8h]
+%endif
 
-    fldpi
-    fadd    st0
-    fxch    st1
-.again:
     fprem1
-    fnstsw  ax
+    fstsw   ax
     test    ah, 04h
-    jnz     .again
+    jnz     .done
     fstp    st1
-    fsin
 
 .done:
+%ifdef RT_ARCH_AMD64
+    fstp    qword [rsp]
+    movsd   xmm0, [rsp]
+%endif
+
     leave
     ret
-ENDPROC   RT_NOCRT(sinl)
+ENDPROC   RT_NOCRT(remainder)
 

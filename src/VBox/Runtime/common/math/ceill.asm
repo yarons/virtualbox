@@ -1,6 +1,6 @@
-; $Id: tanl.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: ceill.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT tanl - AMD64 & X86.
+; innotek Portable Runtime - No-CRT ceill - AMD64 & X86.
 ;
 
 ;
@@ -13,6 +13,7 @@
 ;  in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
 ;  distribution. VirtualBox OSE is distributed in the hope that it will
 ;  be useful, but WITHOUT ANY WARRANTY of any kind.
+
 
 %include "iprt/asmdefs.mac"
 
@@ -29,34 +30,31 @@ BEGINCODE
 %endif
 
 ;;
-; Compute the sine of lrd
+; Compute the smallest integral value not less than lrd.
 ; @returns st(0)
-; @param    lrd     [_SP + _S*2]
-BEGINPROC RT_NOCRT(tanl)
+; @param    lrd     [rbp + 8]
+BEGINPROC RT_NOCRT(ceill)
     push    _BP
     mov     _BP, _SP
     sub     _SP, 10h
 
     fld     tword [_BP + _S*2]
-    fptan
-    fnstsw  ax
-    test    ah, 04h                     ; check for C2
-    jz      .done
 
-    fldpi
-    fadd    st0
-    fxch    st1
-.again:
-    fprem1
-    fnstsw  ax
-    test    ah, 04h
-    jnz     .again
-    fstp    st1
-    fptan
+    ; Make it round up by modifying the fpu control word.
+    fstcw   [_BP - 10h]
+    mov     eax, [_BP - 10h]
+    or      eax, 00800h
+    and     eax, 0fbffh
+    mov     [_BP - 08h], eax
+    fldcw   [_BP - 08h]
 
-.done:
-    fstp    st0
+    ; Round ST(0) to integer.
+    frndint
+
+    ; Restore the fpu control word.
+    fldcw   [_BP - 10h]
+
     leave
     ret
-ENDPROC   RT_NOCRT(tanl)
+ENDPROC   RT_NOCRT(ceill)
 

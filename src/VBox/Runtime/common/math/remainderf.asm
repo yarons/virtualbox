@@ -1,6 +1,6 @@
-; $Id: floorf.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: remainderf.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT floorf - AMD64 & X86.
+; innotek Portable Runtime - No-CRT remainderf - AMD64 & X86.
 ;
 
 ;
@@ -21,48 +21,45 @@ BEGINCODE
 %ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
- %define _S  8
 %else
  %define _SP esp
  %define _BP ebp
- %define _S  4
 %endif
 
 ;;
-; Compute the largest integral value not greater than rf.
+; See SUS.
 ; @returns st(0)
-; @param    rf      32-bit: [ebp + 8]   64-bit: xmm0
-BEGINPROC RT_NOCRT(floorf)
+; @param    rf1    [ebp + 08h]  xmm0
+; @param    rf2    [ebp + 0ch]  xmm1
+BEGINPROC RT_NOCRT(remainderf)
     push    _BP
     mov     _BP, _SP
-    sub     _SP, 10h
+    sub     _SP, 20h
 
 %ifdef RT_ARCH_AMD64
-    movss   [_SP], xmm0
-    fld     dword [_SP]
+    movss   [rsp], xmm1
+    movss   [rsp + 10h], xmm0
+    fld     dword [rsp]
+    fld     dword [rsp + 10h]
 %else
-    fld     dword [_BP + _S*2]
+    fld     dword [ebp + 0ch]
+    fld     dword [ebp + 8h]
 %endif
 
-    ; Make it round down by modifying the fpu control word.
-    fstcw   [_BP - 10h]
-    mov     eax, [_BP - 10h]
-    or      eax, 00400h
-    and     eax, 0f7ffh
-    mov     [_BP - 08h], eax
-    fldcw   [_BP - 08h]
+    fprem1
+    fstsw   ax
+    test    ah, 04h
+    jnz     .done
+    fstp    st1
 
-    ; Round ST(0) to integer.
-    frndint
-
-    ; Restore the fpu control word.
-    fldcw   [_BP - 10h]
-
+.done:
 %ifdef RT_ARCH_AMD64
-    fstp    dword [_SP]
-    movss   xmm0, [_SP]
+    fstp    dword [rsp]
+    movss   xmm0, [rsp]
 %endif
+
     leave
     ret
-ENDPROC   RT_NOCRT(floorf)
+ENDPROC   RT_NOCRT(remainderf)
+
 

@@ -1,6 +1,6 @@
-; $Id: truncf.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: trunc.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT truncf - AMD64 & X86.
+; innotek Portable Runtime - No-CRT trunc - AMD64 & X86.
 ;
 
 ;
@@ -32,17 +32,17 @@ BEGINCODE
 ;;
 ; Round to truncated integer value.
 ; @returns 32-bit: st(0)   64-bit: xmm0
-; @param    rf      32-bit: [ebp + 8]   64-bit: xmm0
-BEGINPROC RT_NOCRT(truncf)
+; @param    rd      32-bit: [ebp + 8]   64-bit: xmm0
+BEGINPROC RT_NOCRT(trunc)
     push    _BP
     mov     _BP, _SP
     sub     _SP, 10h
 
 %ifdef RT_ARCH_AMD64
-    movss   [_SP], xmm0
-    fld     dword [_SP]
+    movsd   [_SP], xmm0
+    fld     qword [_SP]
 %else
-    fld     dword [_BP + _S*2]
+    fld     qword [_BP + _S*2]
 %endif
 
     ; Make it truncate up by modifying the fpu control word.
@@ -59,10 +59,10 @@ BEGINPROC RT_NOCRT(truncf)
     fldcw   [_BP - 10h]
 
 %ifdef RT_ARCH_AMD64
-    fstp    dword [_SP]
-    movss   xmm0, [_SP]
+    fstp    qword [_SP]
+    movsd   xmm0, [_SP]
 %endif
     leave
     ret
-ENDPROC   RT_NOCRT(truncf)
+ENDPROC   RT_NOCRT(trunc)
 

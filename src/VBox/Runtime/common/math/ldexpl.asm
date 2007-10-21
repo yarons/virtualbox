@@ -1,6 +1,6 @@
-; $Id: remainder.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: ldexpl.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT remainder - AMD64 & X86.
+; innotek Portable Runtime - No-CRT ldexpl - AMD64 & X86.
 ;
 
 ;
@@ -21,45 +21,35 @@ BEGINCODE
 %ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
+ %define _S  8
 %else
  %define _SP esp
  %define _BP ebp
+ %define _S  4
 %endif
 
 ;;
-; See SUS.
+; Computes lrd * 2^exp
 ; @returns st(0)
-; @param    rd1    [ebp + 8h]  xmm0
-; @param    rd2    [ebp + 10h]  xmm1
-BEGINPROC RT_NOCRT(remainder)
+; @param    lrd     [rbp + _S*2]
+; @param    exp     [ebp + 14h]  GCC:edi  MSC:ecx
+BEGINPROC RT_NOCRT(ldexpl)
     push    _BP
     mov     _BP, _SP
-    sub     _SP, 20h
-;int3
+    sub     _SP, 10h
 
-%ifdef RT_ARCH_AMD64
-    movsd   [rsp + 10h], xmm1
-    movsd   [rsp], xmm0
-    fld     qword [rsp + 10h]
-    fld     qword [rsp]
+    ; load exp
+%ifdef RT_ARCH_AMD64 ; ASSUMES ONLY GCC HERE!
+    mov     [rsp], edi
+    fild    dword [rsp]
 %else
-    fld     qword [ebp + 10h]
-    fld     qword [ebp + 8h]
+    fild    dword [ebp + _S*2 + RTLRD_CB]
 %endif
-
-    fprem1
-    fstsw   ax
-    test    ah, 04h
-    jnz     .done
+    fld     tword [_BP + _S*2]
+    fscale
     fstp    st1
-
-.done:
-%ifdef RT_ARCH_AMD64
-    fstp    qword [rsp]
-    movsd   xmm0, [rsp]
-%endif
 
     leave
     ret
-ENDPROC   RT_NOCRT(remainder)
+ENDPROC   RT_NOCRT(ldexpl)
 

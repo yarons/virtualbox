@@ -1,6 +1,6 @@
-; $Id: cosl.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: floorl.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT cosl - AMD64 & X86.
+; innotek Portable Runtime - No-CRT floorl - AMD64 & X86.
 ;
 
 ;
@@ -29,34 +29,31 @@ BEGINCODE
 %endif
 
 ;;
-; compute the cosine of ldr, measured in radians.
+; Compute the largest integral value not greater than lrd.
 ; @returns st(0)
-; @param    lrd     [rbp + _S*2]
-BEGINPROC RT_NOCRT(cosl)
+; @param    lrd     [rbp + 8]
+BEGINPROC RT_NOCRT(floorl)
     push    _BP
     mov     _BP, _SP
     sub     _SP, 10h
 
     fld     tword [_BP + _S*2]
-    fcos
-    fnstsw  ax
-    test    ah, 4
-    jz      .done
 
-    fldpi
-    fadd    st0, st0
-    fxch    st1
-.again:
-    fprem1
-    fnstsw  ax
-    test    ah, 4
-    jnz     .again
+    ; Make it round down by modifying the fpu control word.
+    fstcw   [_BP - 10h]
+    mov     eax, [_BP - 10h]
+    or      eax, 00400h
+    and     eax, 0f7ffh
+    mov     [_BP - 08h], eax
+    fldcw   [_BP - 08h]
 
-    fstp    st0
-    fcos
+    ; Round ST(0) to integer.
+    frndint
 
-.done:
+    ; Restore the fpu control word.
+    fldcw   [_BP - 10h]
+
     leave
     ret
-ENDPROC   RT_NOCRT(cosl)
+ENDPROC   RT_NOCRT(floorl)
 

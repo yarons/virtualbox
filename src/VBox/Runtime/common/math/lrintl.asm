@@ -1,6 +1,6 @@
-; $Id: lrintf.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: lrintl.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
-; innotek Portable Runtime - No-CRT lrintf - AMD64 & X86.
+; innotek Portable Runtime - No-CRT lrintl - AMD64 & X86.
 ;
 
 ;
@@ -14,29 +14,42 @@
 ;  distribution. VirtualBox OSE is distributed in the hope that it will
 ;  be useful, but WITHOUT ANY WARRANTY of any kind.
 
+
 %include "iprt/asmdefs.mac"
 
 BEGINCODE
 
+%ifdef RT_ARCH_AMD64
+ %define _SP rsp
+ %define _BP rbp
+ %define _S  8
+%else
+ %define _SP esp
+ %define _BP ebp
+ %define _S  4
+%endif
+
 ;;
 ; Round rd to the nearest integer value, rounding according to the current rounding direction.
 ; @returns 32-bit: eax  64-bit: rax
-; @param    rf     32-bit: [esp + 4h]  64-bit: xmm0
-BEGINPROC RT_NOCRT(lrintf)
-%ifdef RT_ARCH_AMD64
-    cvtss2si rax, xmm0
-%else
-    push    ebp
-    mov     ebp, esp
-    sub     esp, 8h
+; @param    lrd     [rbp + _S*2]
+BEGINPROC RT_NOCRT(lrintl)
+    push    _BP
+    mov     _BP, _SP
+    sub     _SP, 10h
 
-    fld     dword [ebp + 8h]
-    fistp   dword [esp]
+    fld     tword [_BP + _S*2]
+%ifdef RT_ARCH_AMD64
+    fistp   qword [_SP]
     fwait
-    mov     eax, [esp]
+    mov     rax, [_SP]
+%else
+    fistp   dword [_SP]
+    fwait
+    mov     eax, [_SP]
+%endif
 
     leave
-%endif
     ret
-ENDPROC   RT_NOCRT(lrintf)
+ENDPROC   RT_NOCRT(lrintl)
 

@@ -1,4 +1,4 @@
-; $Id: truncl.asm 4071 2007-08-07 17:07:59Z noreply@oracle.com $
+; $Id: truncl.asm 5424 2007-10-21 21:12:03Z knut.osmundsen@oracle.com $
 ;; @file
 ; innotek Portable Runtime - No-CRT truncl - AMD64 & X86.
 ;
