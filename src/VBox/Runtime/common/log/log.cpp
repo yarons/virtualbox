@@ -1,4 +1,4 @@
-/* $Id: log.cpp 4699 2007-09-11 11:27:25Z noreply@oracle.com $ */
+/* $Id: log.cpp 5415 2007-10-21 20:50:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
