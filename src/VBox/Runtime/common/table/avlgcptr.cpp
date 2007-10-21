@@ -1,6 +1,6 @@
-/* $Id: avlpv.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: avlgcptr.cpp 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - AVL tree, void *, unique keys.
+ * innotek Portable Runtime - AVL tree, RTGCPTR, unique keys.
  */
 
 /*
@@ -25,25 +25,25 @@ static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird E
 /*
  * AVL configuration.
  */
-#define KAVL_FN(a)                  RTAvlPV##a
+#define KAVL_FN(a)                  RTAvlGCPtr##a
 #define KAVL_MAX_STACK              27  /* Up to 2^24 nodes. */
 #define KAVL_CHECK_FOR_EQUAL_INSERT 1   /* No duplicate keys! */
-#define KAVLNODECORE                AVLPVNODECORE
-#define PKAVLNODECORE               PAVLPVNODECORE
-#define PPKAVLNODECORE              PPAVLPVNODECORE
-#define KAVLKEY                     AVLPVKEY
-#define PKAVLKEY                    PAVLPVKEY
-#define KAVLENUMDATA                AVLPVENUMDATA
-#define PKAVLENUMDATA               PAVLPVENUMDATA
-#define PKAVLCALLBACK               PAVLPVCALLBACK
+#define KAVLNODECORE                AVLGCPTRNODECORE
+#define PKAVLNODECORE               PAVLGCPTRNODECORE
+#define PPKAVLNODECORE              PPAVLGCPTRNODECORE
+#define KAVLKEY                     RTGCPTR
+#define PKAVLKEY                    PRTGCPTR
+#define KAVLENUMDATA                AVLGCPTRENUMDATA
+#define PKAVLENUMDATA               PAVLGCPTRENUMDATA
+#define PKAVLCALLBACK               PAVLGCPTRCALLBACK
 
 
 /*
  * AVL Compare macros
  */
-#define KAVL_G(key1, key2)          ( (const char*)(key1) >  (const char*)(key2) )
-#define KAVL_E(key1, key2)          ( (const char*)(key1) == (const char*)(key2) )
-#define KAVL_NE(key1, key2)         ( (const char*)(key1) != (const char*)(key2) )
+#define KAVL_G(key1, key2)          ( (RTGCUINTPTR)(key1) >  (RTGCUINTPTR)(key2) )
+#define KAVL_E(key1, key2)          ( (RTGCUINTPTR)(key1) == (RTGCUINTPTR)(key2) )
+#define KAVL_NE(key1, key2)         ( (RTGCUINTPTR)(key1) != (RTGCUINTPTR)(key2) )
 
 
 /*******************************************************************************

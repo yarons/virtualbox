@@ -1,4 +1,4 @@
-/* $Id: avl_Get.cpp.h 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: avl_Get.cpp.h 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * kAVLGet - get routine for AVL trees.
  */

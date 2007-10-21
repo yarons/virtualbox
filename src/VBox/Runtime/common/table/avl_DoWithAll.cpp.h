@@ -1,4 +1,4 @@
-/* $Id: avl_DoWithAll.cpp.h 4687 2007-09-11 09:13:32Z knut.osmundsen@oracle.com $ */
+/* $Id: avl_DoWithAll.cpp.h 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * kAVLDoWithAll - Do with all nodes routine for AVL trees.
  */

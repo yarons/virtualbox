@@ -1,6 +1,6 @@
-/* $Id: avloioport.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: avlrogcptr.cpp 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - AVL tree, RTIOPORT, unique keys, offset pointers.
+ * innotek Portable Runtime - AVL tree, RTGCPTR, range, unique keys, offset pointers.
  */
 
 /*
@@ -25,26 +25,31 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 /*
  * AVL configuration.
  */
-#define KAVL_FN(a)                  RTAvloIOPort##a
+#define KAVL_FN(a)                  RTAvlroGCPtr##a
 #define KAVL_MAX_STACK              27  /* Up to 2^24 nodes. */
 #define KAVL_CHECK_FOR_EQUAL_INSERT 1   /* No duplicate keys! */
-#define KAVLNODECORE                AVLOIOPORTNODECORE
-#define PKAVLNODECORE               PAVLOIOPORTNODECORE
-#define PPKAVLNODECORE              PPAVLOIOPORTNODECORE
-#define KAVLKEY                     RTIOPORT
-#define PKAVLKEY                    PRTIOPORT
-#define KAVLENUMDATA                AVLOIOPORTENUMDATA
-#define PKAVLENUMDATA               PAVLOIOPORTENUMDATA
-#define PKAVLCALLBACK               PAVLOIOPORTCALLBACK
+#define KAVLNODECORE                AVLROGCPTRNODECORE
+#define PKAVLNODECORE               PAVLROGCPTRNODECORE
+#define PPKAVLNODECORE              PPAVLROGCPTRNODECORE
+#define KAVLKEY                     RTGCPTR
+#define PKAVLKEY                    PRTGCPTR
+#define KAVLENUMDATA                AVLROGCPTRENUMDATA
+#define PKAVLENUMDATA               PAVLROGCPTRENUMDATA
+#define PKAVLCALLBACK               PAVLROGCPTRCALLBACK
 #define KAVL_OFFSET                 1
+#define KAVL_RANGE                  1
 
 
 /*
  * AVL Compare macros
  */
-#define KAVL_G( key1, key2)         ( (key1) >  (key2) )
-#define KAVL_E( key1, key2)         ( (key1) == (key2) )
-#define KAVL_NE(key1, key2)         ( (key1) != (key2) )
+#define KAVL_G( key1, key2)         ( (RTGCUINTPTR)(key1) >  (RTGCUINTPTR)(key2) )
+#define KAVL_E( key1, key2)         ( (RTGCUINTPTR)(key1) == (RTGCUINTPTR)(key2) )
+#define KAVL_NE(key1, key2)         ( (RTGCUINTPTR)(key1) != (RTGCUINTPTR)(key2) )
+#define KAVL_R_IS_IDENTICAL(key1B, key2B, key1E, key2E)     ( (RTGCUINTPTR)(key1B) == (RTGCUINTPTR)(key2B) && (RTGCUINTPTR)(key1E) == (RTGCUINTPTR)(key2E) )
+#define KAVL_R_IS_INTERSECTING(key1B, key2B, key1E, key2E)  ( (RTGCUINTPTR)(key1B) <= (RTGCUINTPTR)(key2E) && (RTGCUINTPTR)(key1E) >= (RTGCUINTPTR)(key2B) )
+#define KAVL_R_IS_IN_RANGE(key1B, key1E, key2)              KAVL_R_IS_INTERSECTING(key1B, key2, key1E, key2)
+
 
 
 /*******************************************************************************
@@ -61,8 +66,9 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 #define kASSERT     Assert
 #include "avl_Base.cpp.h"
 #include "avl_Get.cpp.h"
+#include "avl_Range.cpp.h"
 #include "avl_DoWithAll.cpp.h"
-#include "avl_GetBestFit.cpp.h"
-#include "avl_RemoveBestFit.cpp.h"
 #include "avl_Destroy.cpp.h"
+#include "avl_GetBestFit.cpp.h"
+#include "avl_Enum.cpp.h"
 

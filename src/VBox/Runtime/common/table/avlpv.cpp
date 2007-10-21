@@ -1,10 +1,10 @@
-/* $Id: avlu32.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: avlpv.cpp 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - AVL tree, uint32_t, unique keys.
+ * innotek Portable Runtime - AVL tree, void *, unique keys.
  */
 
 /*
- * Copyright (C) 2001-2006 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 2001-2003 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,7 +16,7 @@
  */
 
 #ifndef NOFILEID
-static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird Exp $";
+static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird Exp $";
 #endif
 
 /*******************************************************************************
@@ -25,25 +25,25 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 /*
  * AVL configuration.
  */
-#define KAVL_FN(a)                  RTAvlU32##a
+#define KAVL_FN(a)                  RTAvlPV##a
 #define KAVL_MAX_STACK              27  /* Up to 2^24 nodes. */
 #define KAVL_CHECK_FOR_EQUAL_INSERT 1   /* No duplicate keys! */
-#define KAVLNODECORE                AVLU32NODECORE
-#define PKAVLNODECORE               PAVLU32NODECORE
-#define PPKAVLNODECORE              PPAVLU32NODECORE
-#define KAVLKEY                     AVLU32KEY
-#define PKAVLKEY                    PAVLU32KEY
-#define KAVLENUMDATA                AVLU32ENUMDATA
-#define PKAVLENUMDATA               PAVLU32ENUMDATA
-#define PKAVLCALLBACK               PAVLU32CALLBACK
+#define KAVLNODECORE                AVLPVNODECORE
+#define PKAVLNODECORE               PAVLPVNODECORE
+#define PPKAVLNODECORE              PPAVLPVNODECORE
+#define KAVLKEY                     AVLPVKEY
+#define PKAVLKEY                    PAVLPVKEY
+#define KAVLENUMDATA                AVLPVENUMDATA
+#define PKAVLENUMDATA               PAVLPVENUMDATA
+#define PKAVLCALLBACK               PAVLPVCALLBACK
 
 
 /*
  * AVL Compare macros
  */
-#define KAVL_G(key1, key2)          ( (key1) >  (key2) )
-#define KAVL_E(key1, key2)          ( (key1) == (key2) )
-#define KAVL_NE(key1, key2)         ( (key1) != (key2) )
+#define KAVL_G(key1, key2)          ( (const char*)(key1) >  (const char*)(key2) )
+#define KAVL_E(key1, key2)          ( (const char*)(key1) == (const char*)(key2) )
+#define KAVL_NE(key1, key2)         ( (const char*)(key1) != (const char*)(key2) )
 
 
 /*******************************************************************************
@@ -51,6 +51,7 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 *******************************************************************************/
 #include <iprt/avl.h>
 #include <iprt/assert.h>
+
 
 /*
  * Include the code.
@@ -64,5 +65,4 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 #include "avl_RemoveBestFit.cpp.h"
 #include "avl_DoWithAll.cpp.h"
 #include "avl_Destroy.cpp.h"
-
 

@@ -1,4 +1,4 @@
-/* $Id: table.cpp 4751 2007-09-13 07:10:32Z noreply@oracle.com $ */
+/* $Id: table.cpp 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - AVL tree, RTHCPHYS, unique keys.
  */

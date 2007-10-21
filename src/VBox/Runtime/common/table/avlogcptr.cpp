@@ -1,10 +1,10 @@
-/* $Id: avlgcptr.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: avlogcptr.cpp 5422 2007-10-21 21:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
- * innotek Portable Runtime - AVL tree, RTGCPTR, unique keys.
+ * innotek Portable Runtime - AVL tree, RTGCPTR, unique keys, offset pointers.
  */
 
 /*
- * Copyright (C) 2001-2003 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 2006-2007 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,7 +16,7 @@
  */
 
 #ifndef NOFILEID
-static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird Exp $";
+static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird Exp $";
 #endif
 
 /*******************************************************************************
@@ -25,25 +25,27 @@ static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird E
 /*
  * AVL configuration.
  */
-#define KAVL_FN(a)                  RTAvlGCPtr##a
+#define KAVL_FN(a)                  RTAvloGCPtr##a
 #define KAVL_MAX_STACK              27  /* Up to 2^24 nodes. */
 #define KAVL_CHECK_FOR_EQUAL_INSERT 1   /* No duplicate keys! */
-#define KAVLNODECORE                AVLGCPTRNODECORE
-#define PKAVLNODECORE               PAVLGCPTRNODECORE
-#define PPKAVLNODECORE              PPAVLGCPTRNODECORE
+#define KAVLNODECORE                AVLOGCPTRNODECORE
+#define PKAVLNODECORE               PAVLOGCPTRNODECORE
+#define PPKAVLNODECORE              PPAVLOGCPTRNODECORE
 #define KAVLKEY                     RTGCPTR
 #define PKAVLKEY                    PRTGCPTR
-#define KAVLENUMDATA                AVLGCPTRENUMDATA
-#define PKAVLENUMDATA               PAVLGCPTRENUMDATA
-#define PKAVLCALLBACK               PAVLGCPTRCALLBACK
+#define KAVLENUMDATA                AVLOGCPTRENUMDATA
+#define PKAVLENUMDATA               PAVLOGCPTRENUMDATA
+#define PKAVLCALLBACK               PAVLOGCPTRCALLBACK
+#define KAVL_OFFSET                 1
 
 
 /*
  * AVL Compare macros
  */
-#define KAVL_G(key1, key2)          ( (RTGCUINTPTR)(key1) >  (RTGCUINTPTR)(key2) )
-#define KAVL_E(key1, key2)          ( (RTGCUINTPTR)(key1) == (RTGCUINTPTR)(key2) )
+#define KAVL_G( key1, key2)         ( (RTGCUINTPTR)(key1) >  (RTGCUINTPTR)(key2) )
+#define KAVL_E( key1, key2)         ( (RTGCUINTPTR)(key1) == (RTGCUINTPTR)(key2) )
 #define KAVL_NE(key1, key2)         ( (RTGCUINTPTR)(key1) != (RTGCUINTPTR)(key2) )
+
 
 
 /*******************************************************************************
@@ -52,17 +54,16 @@ static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird E
 #include <iprt/avl.h>
 #include <iprt/assert.h>
 
-
 /*
  * Include the code.
  */
 #define SSToDS(ptr) ptr
-#define KMAX RT_MAX
-#define kASSERT Assert
+#define KMAX        RT_MAX
+#define kASSERT     Assert
 #include "avl_Base.cpp.h"
 #include "avl_Get.cpp.h"
+#include "avl_DoWithAll.cpp.h"
 #include "avl_GetBestFit.cpp.h"
 #include "avl_RemoveBestFit.cpp.h"
-#include "avl_DoWithAll.cpp.h"
 #include "avl_Destroy.cpp.h"
 
