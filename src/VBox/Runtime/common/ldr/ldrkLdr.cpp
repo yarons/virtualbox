@@ -1,4 +1,4 @@
-/* $Id: ldrkLdr.cpp 4750 2007-09-13 07:05:03Z noreply@oracle.com $ */
+/* $Id: ldrkLdr.cpp 5421 2007-10-21 21:02:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, kLdr Interface.
  */
