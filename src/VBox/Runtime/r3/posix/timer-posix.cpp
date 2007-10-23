@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 4071 2007-08-07 17:07:59Z noreply@oracle.com $ */
+/* $Id: timer-posix.cpp 5449 2007-10-23 17:37:05Z noreply@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Timer, POSIX.
  */
@@ -351,6 +351,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigne
         pTimer->pfnTimer    = pfnTimer;
         pTimer->pvUser      = pvUser;
         pTimer->u64NanoInterval = u64NanoInterval;
+        pTimer->u64NanoFirst = 0;
         pTimer->iError      = 0;
         rc = RTSemEventCreate(&pTimer->Event);
         AssertRC(rc);
