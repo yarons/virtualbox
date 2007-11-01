@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 5509 2007-10-26 11:20:37Z knut.osmundsen@oracle.com $ */
+/* $Id: TM.cpp 5605 2007-11-01 16:09:26Z noreply@oracle.com $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -561,7 +561,7 @@ static bool tmR3HasFixedTSC(void)
             if (uEAX >= 0x80000007)
             {
                 ASMCpuId(0x80000007, &uEAX, &uEBX, &uECX, &uEDX);
-                if (uEDX & BIT(8) /* TscInvariant */)
+                if (uEDX & RT_BIT(8) /* TscInvariant */)
                     return true;
             }
         }
