@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 5344 2007-10-17 08:20:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 5632 2007-11-06 12:58:24Z noreply@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1051,11 +1051,8 @@ DECLEXPORT(bool) RTCALL RTAssertDoBreakpoint(void)
             return RT_FAILURE_NP(rc);
         }
     }
-#ifdef RT_OS_LINUX
-    return true;
-#else
+    /* Never ever trigger breakpoints in ring 0 */
     return false;
-#endif
 }
 
 
