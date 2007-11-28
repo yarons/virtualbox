@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 5751 2007-11-14 20:33:23Z noreply@oracle.com $ */
+/** $Id: DBGCEmulateCodeView.cpp 5873 2007-11-28 19:21:20Z michal.necasek@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -957,7 +957,7 @@ static DECLCALLBACK(int) dbgcCmdUnassemble(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
             DBGCVAR VarTmp;
             rc = pCmdHlp->pfnEval(pCmdHlp, &VarTmp, "%%(%Dv)", &pDbgc->DisasmPos);
             if (VBOX_FAILURE(rc))
-                return pCmdHlp->pfnPrintf(pCmdHlp, NULL, "error: failed to evaluate '%%(%Dv)' -> %Vrc .\n", pDbgc->DisasmPos, rc);
+                return pCmdHlp->pfnPrintf(pCmdHlp, NULL, "error: failed to evaluate '%%(%Dv)' -> %Vrc .\n", &pDbgc->DisasmPos, rc);
             pDbgc->DisasmPos = VarTmp;
             break;
         }
