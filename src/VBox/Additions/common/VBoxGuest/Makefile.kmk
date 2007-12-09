@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 6022 2007-12-09 17:59:27Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 6024 2007-12-09 18:00:38Z knut.osmundsen@oracle.com $
 ## @file
-# Makefile for the OS/2 Guest Additions Driver.
+# Makefile for the Cross Platform Guest Additions Driver.
 #
 
 #
