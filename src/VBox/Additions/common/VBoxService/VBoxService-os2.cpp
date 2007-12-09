@@ -1,4 +1,4 @@
-/** $Id: VBoxService-os2.cpp 5999 2007-12-07 15:05:06Z noreply@oracle.com $ */
+/** $Id: VBoxService-os2.cpp 6029 2007-12-09 21:51:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
