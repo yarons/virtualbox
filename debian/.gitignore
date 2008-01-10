@@ -9,6 +9,7 @@
 /modules
 /vboxdrv.init
 /vboxnet.init
+/preinst
 /virtualbox-ose
 /virtualbox-ose-dbg
 /virtualbox-ose.substvars
