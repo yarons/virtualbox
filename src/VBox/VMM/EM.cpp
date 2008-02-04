@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 5999 2007-12-07 15:05:06Z noreply@oracle.com $ */
+/* $Id: EM.cpp 6796 2008-02-04 18:19:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2983,7 +2983,7 @@ static int emR3ForcedActions(PVM pVM, int rc)
          */
         if (VM_FF_ISSET(pVM, VM_FF_REQUEST))
         {
-            rc2 = VMR3ReqProcess(pVM);
+            rc2 = VMR3ReqProcessU(pVM->pUVM);
             if (rc2 == VINF_EM_OFF || rc2 == VINF_EM_TERMINATE)
             {
                 Log2(("emR3ForcedActions: returns %Vrc\n", rc2));

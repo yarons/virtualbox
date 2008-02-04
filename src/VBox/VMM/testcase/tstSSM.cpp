@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 5999 2007-12-07 15:05:06Z noreply@oracle.com $ */
+/* $Id: tstSSM.cpp 6796 2008-02-04 18:19:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -572,7 +572,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    rc = STAMR3Init(pVM);
+///@todo    rc = STAMR3Init(pVM);
     if (VBOX_FAILURE(rc))
     {
         RTPrintf("Fatal error: STAMR3Init failed! rc=%Vrc\n", rc);
