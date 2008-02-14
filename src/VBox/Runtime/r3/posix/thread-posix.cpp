@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 5999 2007-12-07 15:05:06Z noreply@oracle.com $ */
+/* $Id: thread-posix.cpp 6945 2008-02-14 12:48:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Threads, POSIX.
  */
@@ -45,7 +45,7 @@
 
 
 /*******************************************************************************
-*   Header Files                                                               *
+*   Global Variables                                                           *
 *******************************************************************************/
 /** The pthread key in which we store the pointer to our own PRTTHREAD structure. */
 static pthread_key_t    g_SelfKey;
