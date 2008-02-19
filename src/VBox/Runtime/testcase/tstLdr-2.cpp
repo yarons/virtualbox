@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 5999 2007-12-07 15:05:06Z noreply@oracle.com $ */
+/* $Id: tstLdr-2.cpp 7016 2008-02-19 13:32:39Z noreply@oracle.com $ */
 /** @file
  * innotek Portable Runtime - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -117,7 +117,9 @@ static int testLdrOne(const char *pszFilename)
                     unsigned off = Value - Addr;
                     if (off < cb)
                     {
-                        DISCPUSTATE Cpu = {0};
+                        DISCPUSTATE Cpu;
+
+                        memset(&Cpu, 0, sizeof(Cpu));
                         Cpu.mode = CPUMODE_32BIT;
                         if (MyDisBlock(&Cpu, (RTUINTPTR)pvBits + off, 200, Addr - (uintptr_t)pvBits))
                         {
