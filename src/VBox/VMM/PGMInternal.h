@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6927 2008-02-12 20:44:35Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 7037 2008-02-20 14:02:58Z noreply@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -923,7 +923,7 @@ typedef struct PGMRAMRANGE
 #else
 # if HC_ARCH_BITS == 32
     /** Padding to make aPage aligned on sizeof(PGMPAGE). */
-    uint32_t                            u32Reserved;
+    uint32_t                            u32Reserved[2];
 # endif
 #endif
 
