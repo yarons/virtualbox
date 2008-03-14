@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 7442 2008-03-13 14:33:18Z noreply@oracle.com $ */
+/* $Id: SATAControllerImpl.cpp 7457 2008-03-14 12:17:16Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -221,11 +221,6 @@ STDMETHODIMP SATAController::GetIDEEmulationPort(LONG DevicePosition, LONG *aPor
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
-
-    /* the machine needs to be mutable */
-    Machine::AutoMutableStateDependency adep (mParent);
-    CheckComRCReturnRC (adep.rc());
-    AutoLock alock (this);
 
     switch (DevicePosition)
     {
