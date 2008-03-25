@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 7496 2008-03-19 10:22:50Z noreply@oracle.com $ */
+/* $Id: VMMR0.cpp 7530 2008-03-25 10:56:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -65,9 +65,6 @@ __END_DECLS
 PINTNET g_pIntNet = 0;
 #endif
 
-/*******************************************************************************
-*   Local Variables                                                            *
-*******************************************************************************/
 
 /**
  * Initialize the module.
