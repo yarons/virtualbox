@@ -1,4 +1,4 @@
-/* $Id: log.cpp 7709 2008-04-02 16:40:00Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 7710 2008-04-02 16:52:01Z noreply@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2047,6 +2047,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                     const RTCPUID idCpu = RTMpCpuId();
 #endif
                     psz += RTStrFormatNumber(psz, idCpu, 16, sizeof(idCpu) * 2, 0, RTSTR_F_ZEROPAD);
+                    psz++ = ' ';
                 }
                 if (pLogger->fFlags & RTLOGFLAGS_PREFIX_FLAG_NO)
                 {
