@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 6597 2008-01-30 12:55:54Z noreply@oracle.com $ */
+/* $Id: Builtins.h 7759 2008-04-05 11:36:02Z noreply@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -23,9 +23,9 @@
 __BEGIN_DECLS
 
 /** The default BIOS logo data. */
-extern const unsigned char  g_abPcDefBiosLogo[];
+extern const unsigned char  g_abVgaDefBiosLogo[];
 /** The size of the default BIOS logo data. */
-extern const unsigned       g_cbPcDefBiosLogo;
+extern const unsigned       g_cbVgaDefBiosLogo;
 
 extern const PDMDEVREG g_DevicePCI;
 extern const PDMDEVREG g_DevicePcArch;
