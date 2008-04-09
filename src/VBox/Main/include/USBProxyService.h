@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 7850 2008-04-09 16:46:16Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyService.h 7851 2008-04-09 17:10:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -408,6 +408,9 @@ protected:
     virtual int interruptWait (void);
     virtual PUSBDEVICE getDevices (void);
     int addDeviceToChain (PUSBDEVICE pDev, PUSBDEVICE *ppFirst, PUSBDEVICE **pppNext, int rc);
+
+private:
+    RTSEMEVENT mNotifyEventSem;
 };
 #endif  /* RT_OS_SOLARIS */
 
