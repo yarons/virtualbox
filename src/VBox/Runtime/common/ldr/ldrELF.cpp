@@ -1,6 +1,6 @@
-/* $Id: ldrELF.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: ldrELF.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Binary Image Loader, Executable and Linker Format (ELF).
+ * Incredibly Portable Runtime - Binary Image Loader, Executable and Linker Format (ELF).
  */
 
 /*

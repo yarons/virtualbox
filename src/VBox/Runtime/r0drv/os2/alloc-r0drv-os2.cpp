@@ -1,6 +1,6 @@
-/* $Id: alloc-r0drv-os2.cpp 7042 2008-02-20 14:57:07Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
+ * Incredibly Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
  */
 
 /*

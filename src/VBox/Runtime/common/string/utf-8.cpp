@@ -1,6 +1,6 @@
-/* $Id: utf-8.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: utf-8.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - UTF-8 Decoding.
+ * Incredibly Portable Runtime - UTF-8 Decoding.
  */
 
 /*

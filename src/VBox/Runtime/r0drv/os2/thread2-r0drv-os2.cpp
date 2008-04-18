@@ -1,6 +1,6 @@
-/* $Id: thread2-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z noreply@oracle.com $ */
+/* $Id: thread2-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Threads (Part 2), Ring-0 Driver, Generic Stubs.
+ * Incredibly Portable Runtime - Threads (Part 2), Ring-0 Driver, Generic Stubs.
  */
 
 /*

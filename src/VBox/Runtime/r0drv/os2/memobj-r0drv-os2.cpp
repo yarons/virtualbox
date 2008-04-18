@@ -1,6 +1,6 @@
-/* $Id: memobj-r0drv-os2.cpp 4155 2007-08-15 19:41:26Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Ring-0 Memory Objects, OS/2.
+ * Incredibly Portable Runtime - Ring-0 Memory Objects, OS/2.
  */
 
 /*

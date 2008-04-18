@@ -1,6 +1,6 @@
-/* $Id: assert-r0drv-freebsd.c 3705 2007-07-19 00:24:50Z knut.osmundsen@oracle.com $ */
+/* $Id: assert-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Assertion Workers, Ring-0 Drivers, FreeBSD.
+ * Incredibly Portable Runtime - Assertion Workers, Ring-0 Drivers, FreeBSD.
  */
 
 /*

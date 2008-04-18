@@ -1,6 +1,6 @@
-/* $Id: tls-generic.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: tls-generic.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Thread Local Storage (TSL), Generic Implementation.
+ * Incredibly Portable Runtime - Thread Local Storage (TSL), Generic Implementation.
  */
 
 /*

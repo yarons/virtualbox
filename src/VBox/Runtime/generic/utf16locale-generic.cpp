@@ -1,6 +1,6 @@
-/* $Id: utf16locale-generic.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: utf16locale-generic.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - UTF-16 Locale Specific Manipulation, Generic.
+ * Incredibly Portable Runtime - UTF-16 Locale Specific Manipulation, Generic.
  */
 
 /*

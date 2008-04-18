@@ -1,6 +1,6 @@
-/* $Id: initterm-r0drv-freebsd.c 3680 2007-07-18 04:31:28Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Initialization & Termination, Ring-0 Driver, FreeBSD.
+ * Incredibly Portable Runtime - Initialization & Termination, Ring-0 Driver, FreeBSD.
  */
 
 /*

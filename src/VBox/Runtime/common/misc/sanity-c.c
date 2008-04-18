@@ -1,6 +1,6 @@
-/* $Id: sanity-c.c 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: sanity-c.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Setup Sanity Checks, C.
+ * Incredibly Portable Runtime - Setup Sanity Checks, C.
  */
 
 /*

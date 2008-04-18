@@ -1,6 +1,6 @@
-/* $Id: thread2-r0drv-freebsd.c 7517 2008-03-22 23:15:44Z alexander.eichner@oracle.com $ */
+/* $Id: thread2-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
 /** @file
- * innotek Portable Runtime - Threads (Part 2), Ring-0 Driver, FreeBSD.
+ * Incredibly Portable Runtime - Threads (Part 2), Ring-0 Driver, FreeBSD.
  */
 
 /*
