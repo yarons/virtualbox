@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 6445 2008-01-22 14:19:50Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxService.cpp 8130 2008-04-18 09:27:47Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -102,7 +102,7 @@ static int VBoxServiceUsage(void)
         RTPrintf("%s", g_aServices[j].pDesc->pszOptions);
     }
     RTPrintf("\n"
-             " Copyright (C) 2007-2008 innotek GmbH\n");
+             " Copyright (C) 2008 Sun Microsystems, Inc.\n");
 
     return 1;
 }
