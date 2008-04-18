@@ -1,4 +1,4 @@
-/* $Id: structs.h 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: structs.h 8174 2008-04-18 19:26:36Z noreply@oracle.com $ */
 /** @file
  * VBox Recompiler - structure offset tables.
  *
