@@ -1,6 +1,6 @@
-/* $Id: config-host.h 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: config-host.h 8168 2008-04-18 16:58:27Z noreply@oracle.com $ */
 /** @file
- * Innotek Host Config - Maintained by hand
+ * Sun host config - maintained by hand
  */
 
 /*
