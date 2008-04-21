@@ -1,6 +1,6 @@
-/* $Id: ldrELF.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: ldrELF.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Binary Image Loader, Executable and Linker Format (ELF).
+ * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
 
 /*

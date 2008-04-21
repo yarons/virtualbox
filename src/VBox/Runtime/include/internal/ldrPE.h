@@ -1,6 +1,6 @@
-/* $Id: ldrPE.h 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: ldrPE.h 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Windows NT PE Structures and Constants.
+ * IPRT - Windows NT PE Structures and Constants.
  */
 
 /*

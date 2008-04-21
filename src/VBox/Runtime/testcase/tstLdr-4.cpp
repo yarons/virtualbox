@@ -1,6 +1,6 @@
-/* $Id: tstLdr-4.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: tstLdr-4.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
+ * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
 
 /*

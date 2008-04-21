@@ -1,6 +1,6 @@
-/* $Id: strcmp_alias.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: strcmp_alias.c 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - No-CRT strcmp() alias for gcc.
+ * IPRT - No-CRT strcmp() alias for gcc.
  */
 
 /*

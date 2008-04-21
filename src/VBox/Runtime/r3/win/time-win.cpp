@@ -1,6 +1,6 @@
-/* $Id: time-win.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: time-win.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Time, win32.
+ * IPRT - Time, win32.
  */
 
 /*

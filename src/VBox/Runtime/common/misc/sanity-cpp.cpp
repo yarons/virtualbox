@@ -1,6 +1,6 @@
-/* $Id: sanity-cpp.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: sanity-cpp.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Setup Sanity Checks, C++.
+ * IPRT - Setup Sanity Checks, C++.
  */
 
 /*

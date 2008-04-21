@@ -1,6 +1,6 @@
-/* $Id: tstNoCrt-1.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: tstNoCrt-1.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime Testcase - Testcase for the No-CRT assembly bits.
+ * IPRT Testcase - Testcase for the No-CRT assembly bits.
  */
 
 /*

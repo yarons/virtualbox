@@ -1,6 +1,6 @@
-/* $Id: strchr_alias.c 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: strchr_alias.c 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - No-CRT strchr() alias for gcc.
+ * IPRT - No-CRT strchr() alias for gcc.
  */
 
 /*

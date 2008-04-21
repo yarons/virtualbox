@@ -1,6 +1,6 @@
-/* $Id: memobj-r0drv-darwin.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: memobj-r0drv-darwin.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Ring-0 Memory Objects, Darwin.
+ * IPRT - Ring-0 Memory Objects, Darwin.
  */
 
 /*

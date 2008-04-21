@@ -1,6 +1,6 @@
-/* $Id: heapsimple.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: heapsimple.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - A Simple Heap.
+ * IPRT - A Simple Heap.
  */
 
 /*

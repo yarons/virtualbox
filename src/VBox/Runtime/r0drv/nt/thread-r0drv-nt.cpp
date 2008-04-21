@@ -1,6 +1,6 @@
-/* $Id: thread-r0drv-nt.cpp 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: thread-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
 /** @file
- * Incredibly Portable Runtime - Threads, Ring-0 Driver, NT.
+ * IPRT - Threads, Ring-0 Driver, NT.
  */
 
 /*
