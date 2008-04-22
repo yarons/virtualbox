@@ -1,6 +1,6 @@
-; $Id: timesupA.mac 8170 2008-04-18 17:52:25Z noreply@oracle.com $
+; $Id: timesupA.mac 8272 2008-04-22 11:18:25Z knut.osmundsen@oracle.com $
 ;; @file
-; Incredibly Portable Runtime - Time using SUPLib, the Assembly Code Template.
+; IPRT - Time using SUPLib, the Assembly Code Template.
 ;
 
 ;
