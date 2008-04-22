@@ -1,6 +1,6 @@
-; $Id: timesupA.asm 8170 2008-04-18 17:52:25Z noreply@oracle.com $%ifndef IN_GUEST
+; $Id: timesupA.asm 8273 2008-04-22 11:18:54Z knut.osmundsen@oracle.com $%ifndef IN_GUEST
 ;; @file
-; Incredibly Portable Runtime - Time using SUPLib, the Assembly Implementation.
+; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
 
 ;
