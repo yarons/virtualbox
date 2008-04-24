@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 8367 2008-04-24 15:28:31Z noreply@oracle.com $ */
+/** $Id: ConsoleImpl2.cpp 8368 2008-04-24 15:58:20Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1093,10 +1093,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 RTStrFree(pszBootFile);
 
                 hrc = networkAdapter->COMGETTER(NATNetwork)(&str);                  H();
-                STR_CONV();
-                if (psz && *psz)
-                    rc = CFGMR3InsertString(pCfg, "Network", psz);                  RC_CHECK();
-                STR_FREE();
+                if (str)
+                {
+                    STR_CONV();
+                    if (psz && *psz)
+                        rc = CFGMR3InsertString(pCfg, "Network", psz);              RC_CHECK();
+                    STR_FREE();
+                }
                 break;
             }
 
