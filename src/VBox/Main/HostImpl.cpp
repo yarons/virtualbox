@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 8471 2008-04-29 15:20:44Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 8475 2008-04-29 15:55:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -481,7 +481,7 @@ static bool IsTAPDevice(const char *guid)
 
                 if (   !strcmp(szNetCfgInstanceId, guid)
                     && !strcmp(szNetProductName, "VirtualBox TAP Adapter")
-                    && !strcmp(szNetProviderName, "innotek GmbH"))
+                    && (!strcmp(szNetProviderName, "innotek GmbH") || !strcmp(szNetProviderName, "Sun Microsystems, Inc.")))
                 {
                     ret = true;
                     RegCloseKey(hNetCardGUID);
