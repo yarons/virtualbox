@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 8569 2008-05-05 12:32:51Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAllVirtual.cpp 8579 2008-05-05 13:54:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -255,7 +255,7 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
             break;
         if (ASMAtomicCmpXchgU64(&pVM->tm.s.u64VirtualRawPrev, u64NanoTS, u64PrevNanoTS))
             break;
-        AssertBreakVoid(--cTries <= 0);
+        AssertBreak(--cTries <= 0);
         if (cTries < 25 && !VM_IS_EMT(pVM)) /* give up early */
             break;
     }
