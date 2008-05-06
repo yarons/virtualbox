@@ -1,6 +1,6 @@
-/* $Id: PGMPhys.h 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: PGMPhys.h 8626 2008-05-06 13:27:07Z knut.osmundsen@oracle.com $ */
 /** @file
- * PGM - Page Manager and Monitor, Physical Memory Addressing.
+ * PGM - Page Manager and Monitor, Physical Memory Access Template.
  */
 
 /*
