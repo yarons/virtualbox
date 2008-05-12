@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 8744 2008-05-09 14:51:58Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.h 8765 2008-05-12 00:59:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -33,7 +33,7 @@ class USBProxyService;
 #endif
 
 #ifdef RT_OS_WINDOWS
-# include "win32/svchlp.h"
+# include "win/svchlp.h"
 #endif
 
 class VirtualBox;
