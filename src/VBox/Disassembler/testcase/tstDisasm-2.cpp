@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 8934 2008-05-19 20:28:08Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDisasm-2.cpp 8935 2008-05-19 20:39:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -252,7 +252,7 @@ static int MyDisasmBlock(const char *argv0, DISCPUMODE enmCpuMode, uint64_t uAdd
         {
             State.fInvalid = State.Cpu.pCurInstr->opcode == OP_INVALID
                           || State.Cpu.pCurInstr->opcode == OP_ILLUD2;
-            if (!State.fInvalid || !fAllInvalid)
+            if (!fAllInvalid || State.fInvalid)
                 pfnFormatter(&State);
             else
             {
