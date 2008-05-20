@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-3.asm 8937 2008-05-20 00:52:26Z knut.osmundsen@oracle.com $
+; $Id: tstAsmLock-3.asm 8966 2008-05-20 16:48:02Z knut.osmundsen@oracle.com $
 ;; @file
 ; Disassembly testcase - Invalid lock sequences for non-locking instructions.
 ;
@@ -21,6 +21,8 @@
 ; Clara, CA 95054 USA or visit http://www.sun.com if you need
 ; additional information or have any questions.
 ;
+
+%include "tstAsm.mac"
 
     BITS TEST_BITS
 
