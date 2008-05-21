@@ -1,5 +1,4 @@
-#define VBOX_WITH_STATISTICS
-/* $Id: TRPMAll.cpp 8985 2008-05-20 21:03:33Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMAll.cpp 8994 2008-05-21 07:47:09Z noreply@oracle.com $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
