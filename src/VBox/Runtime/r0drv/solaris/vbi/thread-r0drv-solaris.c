@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 9149 2008-05-27 09:27:29Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-r0drv-solaris.c 9176 2008-05-27 15:22:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -47,7 +47,7 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
 {
     clock_t cTicks;
     unsigned long timeout;
-    
+
     if (!cMillies)
     {
         RTThreadYield();
