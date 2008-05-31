@@ -1,6 +1,6 @@
+/* $Id: DBGCTcp.cpp 9269 2008-05-31 14:53:24Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * Debugger TCP backend
+ * DBGC - Debugger Console, TCP backend.
  */
 
 /*

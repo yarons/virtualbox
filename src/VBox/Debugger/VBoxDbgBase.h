@@ -1,5 +1,5 @@
+/* $Id: VBoxDbgBase.h 9269 2008-05-31 14:53:24Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VBox Debugger GUI - Base class.
  */
 
