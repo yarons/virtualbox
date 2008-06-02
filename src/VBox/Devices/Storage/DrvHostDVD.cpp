@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: DrvHostDVD.cpp 9330 2008-06-02 22:56:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -24,6 +24,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_DVD
+#define __STDC_LIMIT_MACROS
+#define __STDC_CONSTANT_MACROS
 #ifdef RT_OS_DARWIN
 # include <mach/mach.h>
 # include <Carbon/Carbon.h>
