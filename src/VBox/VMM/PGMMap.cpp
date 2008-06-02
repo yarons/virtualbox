@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 8543 2008-05-02 17:48:42Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMMap.cpp 9303 2008-06-02 13:47:21Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -781,8 +781,8 @@ static void pgmR3MapSetPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
  */
 void pgmR3MapRelocate(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOldMapping, RTGCPTR GCPtrNewMapping)
 {
-    int iPDOld = GCPtrOldMapping >> X86_PD_SHIFT;
-    int iPDNew = GCPtrNewMapping >> X86_PD_SHIFT;
+    unsigned iPDOld = GCPtrOldMapping >> X86_PD_SHIFT;
+    unsigned iPDNew = GCPtrNewMapping >> X86_PD_SHIFT;
 
     Log(("PGM: Relocating %s from %VGv to %VGv\n", pMapping->pszDesc, GCPtrOldMapping, GCPtrNewMapping));
     Assert(((unsigned)iPDOld << X86_PD_SHIFT) == pMapping->GCPtr);
