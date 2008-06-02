@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 9322 2008-06-02 20:27:44Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGM.cpp 9323 2008-06-02 20:28:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -51,7 +51,6 @@
  *        objects.
  *
  */
-
 
 /*******************************************************************************
 *   Header Files                                                               *
