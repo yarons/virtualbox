@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 9355 2008-06-03 15:32:05Z knut.osmundsen@oracle.com $ */
+/* $Id: dir.cpp 9357 2008-06-03 15:39:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Directory Manipulation.
  */
@@ -38,6 +38,7 @@
 #else
 # include <dirent.h>
 # include <unistd.h>
+# include <limits.h>
 #endif
 
 #include <iprt/dir.h>
