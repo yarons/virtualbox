@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 9583 2008-06-10 23:45:10Z knut.osmundsen@oracle.com $ */
+/* $Id: timer-r0drv-nt.cpp 9586 2008-06-11 00:36:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -430,7 +430,7 @@ RTDECL(int) RTTimerRequestSystemGranularity(uint32_t u32Request, uint32_t *pu32G
 
     ULONG ulGranted = g_pfnrtNtExSetTimerResolution(u32Request / 100, TRUE);
     if (pu32Granted)
-        *pu32Granted = ulGranted;
+        *pu32Granted = ulGranted * 100; /* NT -> ns */
     return VINF_SUCCESS;
 }
 
