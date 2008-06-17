@@ -1,4 +1,4 @@
-/* $Id: RTUuidCreate-win.cpp 9744 2008-06-16 22:53:34Z knut.osmundsen@oracle.com $ */
+/* $Id: RTUuidCreate-win.cpp 9749 2008-06-17 08:42:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UUID, Windows RTUuidCreate implementation.
  */
@@ -46,7 +46,7 @@ RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
     AssertPtrReturn(pUuid, VERR_INVALID_POINTER);
 
     RPC_STATUS rc = UuidCreate((UUID *)pUuid);
-    if (    rc == RPC_S_OK
+    if (   rc == RPC_S_OK
         || rc == RPC_S_UUID_LOCAL_ONLY)
         return VINF_SUCCESS;
 
