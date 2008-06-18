@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 9687 2008-06-13 13:58:27Z noreply@oracle.com $ */
+/* $Id: VMM.cpp 9793 2008-06-18 15:26:42Z noreply@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2621,6 +2621,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
         { "mappings",       NULL },
         { "hma",            NULL },
         { "cpumguest",      "verbose" },
+        { "cpumguestinstr", "verbose" },
         { "cpumhyper",      "verbose" },
         { "cpumhost",       "verbose" },
         { "mode",           "all" },
