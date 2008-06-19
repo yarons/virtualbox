@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9750 2008-06-17 09:50:20Z noreply@oracle.com $ */
+/* $Id: EMAll.cpp 9817 2008-06-19 11:47:38Z noreply@oracle.com $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2243,11 +2243,11 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
         break;
 
     case MSR_K8_FS_BASE:
-        val = pCtx->msrFSBASE;
+        val = pCtx->fsHid.u64Base;
         break;
 
     case MSR_K8_GS_BASE:
-        val = pCtx->msrGSBASE;
+        val = pCtx->gsHid.u64Base;
         break;
 
     case MSR_K8_KERNEL_GS_BASE:
@@ -2372,11 +2372,11 @@ EMDECL(int) EMInterpretWrmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
         break;
 
     case MSR_K8_FS_BASE:
-        pCtx->msrFSBASE = val;
+        pCtx->fsHid.u64Base = val;
         break;
 
     case MSR_K8_GS_BASE:
-        pCtx->msrGSBASE = val;
+        pCtx->gsHid.u64Base = val;
         break;
 
     case MSR_K8_KERNEL_GS_BASE:
