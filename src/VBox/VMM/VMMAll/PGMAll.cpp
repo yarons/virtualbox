@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9990 2008-06-27 11:46:14Z noreply@oracle.com $ */
+/* $Id: PGMAll.cpp 9999 2008-06-27 14:10:34Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -580,7 +580,7 @@ PGMDECL(int) PGMInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
 {
     int rc;
 
-    Log2(("PGMInvalidatePage: GCPtrPage=%VGv\n", GCPtrPage));
+    Log3(("PGMInvalidatePage: GCPtrPage=%VGv\n", GCPtrPage));
 
     /** @todo merge PGMGCInvalidatePage with this one */
 
