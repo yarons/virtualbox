@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 10067 2008-07-01 11:07:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: vboxvfs.h 10140 2008-07-03 08:45:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -63,6 +63,7 @@ typedef struct vboxvfs_globinfo
     vfs_t           *pVFS;
     vnode_t         *pVNodeDev;
     vboxvfs_vnode_t *pVNodeRoot;
+    kmutex_t        MtxFS;
 } vboxvfs_globinfo_t;
 
 extern struct vnodeops *g_pVBoxVFS_vnodeops;
