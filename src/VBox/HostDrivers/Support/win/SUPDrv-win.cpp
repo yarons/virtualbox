@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 10248 2008-07-04 20:02:38Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 10254 2008-07-04 20:19:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -33,7 +33,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #include <excpt.h>
 #include <iprt/assert.h>
 #include <iprt/process.h>
