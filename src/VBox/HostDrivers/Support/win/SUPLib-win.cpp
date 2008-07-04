@@ -1,4 +1,4 @@
-/** $Id: SUPLib-win.cpp 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/** $Id: SUPLib-win.cpp 10256 2008-07-04 20:28:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -43,8 +43,8 @@
 #include <iprt/assert.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
-#include "SUPLibInternal.h"
-#include "SUPDRVIOC.h"
+#include "../SUPLibInternal.h"
+#include "../SUPDrvIOC.h"
 
 
 /*******************************************************************************
