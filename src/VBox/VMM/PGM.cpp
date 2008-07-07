@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 10033 2008-06-30 17:06:31Z noreply@oracle.com $ */
+/* $Id: PGM.cpp 10300 2008-07-07 09:12:43Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3152,7 +3152,10 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
             }
             break;
 
-        //case PGMMODE_PAE_NX:
+        case PGMMODE_PAE_NX:    /* VT-x/AMD-V only */
+            Assert(HWACCMIsEnabled(pVM));
+            /* no break */
+
         case PGMMODE_PAE:
         {
             uint32_t u32Dummy, u32Features;
