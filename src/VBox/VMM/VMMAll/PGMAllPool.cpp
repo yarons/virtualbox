@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10397 2008-07-09 09:05:42Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 10401 2008-07-09 11:14:02Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -720,6 +720,7 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PPGMPOOLPAGE pPage, PCPUMCTXCORE pRegFra
         case OP_MOVNTDQ:    /* solaris - hwblkclr & hwblkpagecopy */
             Log4(("pgmPoolMonitorIsReused: MOVNTDQ\n"));
             return true;
+        case OP_MOVSWD:
         case OP_STOSWD:
             if (    pRegFrame
                 &&  pCpu->prefix == PREFIX_REP
