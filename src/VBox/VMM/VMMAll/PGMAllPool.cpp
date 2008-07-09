@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10404 2008-07-09 11:19:50Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 10405 2008-07-09 11:24:56Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -722,14 +722,13 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PPGMPOOLPAGE pPage, PCPUMCTXCORE pRegFra
             return true;
         case OP_MOVSWD:
         case OP_STOSWD:
-            if (    pRegFrame
-                &&  pCpu->prefix == (PREFIX_REP|PREFIX_REX)
-                &&  pRegFrame->rcx == 0x200
+            if (    pCpu->prefix == (PREFIX_REP|PREFIX_REX)
+                &&  pRegFrame->rcx >= 0x40
                )
             {
                 Assert(pCpu->mode == CPUMODE_64BIT);
 
-                Log4(("pgmPoolMonitorIsReused: OP_STOSQ\n"));
+                Log(("pgmPoolMonitorIsReused: OP_STOSQ\n"));
                 return true;
             }
             return false;
