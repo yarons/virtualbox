@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 10333 2008-07-07 15:16:04Z noreply@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 10400 2008-07-09 10:15:55Z noreply@oracle.com $ */
 
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
@@ -488,7 +488,7 @@ STDMETHODIMP VirtualBox::COMGETTER(PackageType) (BSTR *aPackageType)
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    sVersion.cloneTo (aPackageType);
+    sPackageType.cloneTo (aPackageType);
     return S_OK;
 }
 
