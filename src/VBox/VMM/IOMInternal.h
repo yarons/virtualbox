@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 9776 2008-06-17 14:58:11Z noreply@oracle.com $ */
+/* $Id: IOMInternal.h 10473 2008-07-10 15:02:53Z noreply@oracle.com $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -389,6 +389,9 @@ typedef struct IOM
     STAMPROFILE             StatGCInstMov;
     STAMPROFILE             StatGCInstCmp;
     STAMPROFILE             StatGCInstAnd;
+    STAMPROFILE             StatGCInstOr;
+    STAMPROFILE             StatGCInstXor;
+    STAMPROFILE             StatGCInstBt;
     STAMPROFILE             StatGCInstTest;
     STAMPROFILE             StatGCInstXchg;
     STAMPROFILE             StatGCInstStos;
