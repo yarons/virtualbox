@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 10630 2008-07-15 09:06:33Z noreply@oracle.com $
+; $Id: CPUMAllA.asm 10633 2008-07-15 09:14:26Z noreply@oracle.com $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -248,7 +248,6 @@ ENDPROC   CPUMRestoreHostFPUStateAsm
 ;;
 ; Restores the guest's FPU/XMM state
 ;
-; @returns  0
 ; @param    pCtx  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCTX pointer
 ;
 align 16
@@ -269,7 +268,6 @@ ENDPROC     CPUMLoadFPUAsm
 ;;
 ; Restores the host's FPU/XMM state
 ;
-; @returns  0
 ; @param    pCtx  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCTX pointer
 ;
 align 16
