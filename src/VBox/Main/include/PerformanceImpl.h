@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 10679 2008-07-15 18:59:56Z aleksey.ilyushin@oracle.com $ */
+/* $Id: PerformanceImpl.h 10713 2008-07-16 20:28:43Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  *
@@ -204,7 +204,7 @@ public:
     STDMETHOD(GetMetrics) (ComSafeArrayIn (const BSTR, metricNames),
                            ComSafeArrayIn (IUnknown *, objects),
                            ComSafeArrayOut (IPerformanceMetric *, metrics));
-    STDMETHOD(SetupMetrics) (ComSafeArrayIn (const BSTR, metricNames),
+    STDMETHOD(SetupMetrics) (ComSafeArrayIn (INPTR BSTR, metricNames),
                              ComSafeArrayIn (IUnknown *, objects),
                              ULONG aPeriod, ULONG aCount);
     STDMETHOD(EnableMetrics) (ComSafeArrayIn (const BSTR, metricNames),
@@ -241,6 +241,13 @@ private:
 
     typedef std::list<pm::Metric*> MetricList;
     typedef std::list<pm::BaseMetric*> BaseMetricList;
+
+    enum
+    {
+        MAGIC = 0xABBA1972u
+    };
+
+    unsigned int mMagic;
 
     struct Data {
         Data() : mFactory(0) {};
