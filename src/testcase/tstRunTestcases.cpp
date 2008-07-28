@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 10904 2008-07-28 11:12:32Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRunTestcases.cpp 10906 2008-07-28 11:31:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -55,6 +55,8 @@ static const char  *g_apszExclude[] =
     "testcase/tstCritSectW32",
     "testcase/tstDeadlock",
     "testcase/tstDisasm-2",
+    "testcase/tstFileAppendWin-1",
+    "testcase/tstGlobalConfig",
     "testcase/tstLdr-2",
     "testcase/tstLdr-3",
     "testcase/tstLdr",
