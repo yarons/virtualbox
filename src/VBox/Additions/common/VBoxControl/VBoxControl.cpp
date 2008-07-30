@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 10931 2008-07-29 13:26:38Z noreply@oracle.com $ */
+/** $Id: VBoxControl.cpp 10976 2008-07-30 11:53:26Z noreply@oracle.com $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -29,7 +29,7 @@
 #include <iprt/stream.h>
 #include <iprt/path.h>
 #include <iprt/initterm.h>
-#include <iprt/autores>
+#include <iprt/autores.h>
 #include <VBox/log.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/version.h>
