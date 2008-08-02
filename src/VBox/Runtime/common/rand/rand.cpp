@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 11064 2008-08-01 14:12:37Z knut.osmundsen@oracle.com $ */
+/* $Id: rand.cpp 11078 2008-08-02 18:41:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Random Number
  */
