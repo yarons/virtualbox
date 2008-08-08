@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 11284 2008-08-08 22:32:08Z knut.osmundsen@oracle.com $ */
+/** $Id: DrvVD.cpp 11287 2008-08-08 22:35:40Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox storage devices:
@@ -393,7 +393,7 @@ static DECLCALLBACK(int) drvvdGetUuid(PPDMIMEDIA pInterface, PRTUUID pUuid)
     LogFlow(("%s:\n", __FUNCTION__));
     PVBOXDISK pThis = PDMIMEDIA_2_VBOXDISK(pInterface);
     int rc = VDGetUuid(pThis->pDisk, 0, pUuid);
-    LogFlow(("%s: returns %Rrc ({%Vuuid})\n", __FUNCTION__, rc, pUuid));
+    LogFlow(("%s: returns %Rrc ({%RTuuid})\n", __FUNCTION__, rc, pUuid));
     return rc;
 }
 
