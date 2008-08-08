@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11241 2008-08-08 12:51:27Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-solaris.cpp 11256 2008-08-08 14:17:59Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -188,3 +188,18 @@ RTDECL(uint32_t) RTMpGetMaxFrequency(RTCPUID idCpu)
     return rtMpSolarisGetFrequency(idCpu, "clock_MHz");
 }
 
+RTDECL(RTCPUID) RTMpGetCount(void)
+{
+    /*
+     * Solaris has sysconf.
+     */
+    return sysconf(_SC_NPROCESSORS_CONF);
+}
+
+RTDECL(RTCPUID) RTMpGetOnlineCount(void)
+{
+    /*
+     * Solaris has sysconf.
+     */
+    return sysconf(_SC_NPROCESSORS_ONLN);
+}
