@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
+/* $Id: VBoxRTDeps.cpp 11320 2008-08-11 10:11:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -40,10 +40,6 @@
 *******************************************************************************/
 PFNRT g_VBoxRTDeps[] =
 {
-#ifdef __L4ENV__
-    (PFNRT)RTSystemProcessorGetActiveMask,
-    (PFNRT)RTSystemProcessorGetCount,
-#endif /* __L4ENV__ */
     (PFNRT)SUPInit,
     (PFNRT)SUPPageLock
 };
