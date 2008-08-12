@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 11349 2008-08-12 10:46:05Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 11366 2008-08-12 16:43:29Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -702,6 +702,10 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PPGMPOOLPAGE pPage, PCPUMCTXCORE pRegFra
 {
     switch (pCpu->pCurInstr->opcode)
     {
+        /* call implies the actual push of the return address faulted */
+        case OP_CALL:
+            Log4(("pgmPoolMonitorIsReused: CALL\n"));
+            return true;
         case OP_PUSH:
             Log4(("pgmPoolMonitorIsReused: PUSH\n"));
             return true;
