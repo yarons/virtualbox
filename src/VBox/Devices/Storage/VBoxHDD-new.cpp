@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 11421 2008-08-14 12:06:14Z klaus.espenlaub@oracle.com $ */
+/** $Id: VBoxHDD-new.cpp 11435 2008-08-14 18:23:31Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -818,7 +818,7 @@ VBOXDDU_DECL(int) VDCreate(PVDINTERFACE pInterfaces, PVBOXHDD *ppDisk)
             pDisk->pInterfaceError = NULL;
             pDisk->pInterfaceErrorCallbacks = NULL;
 
-            pDisk->pInterfaceError = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ERROR);
+            pDisk->pInterfaceError = VDInterfaceGet(pInterfaces, VDINTERFACETYPE_ERROR);
             if (pDisk->pInterfaceError)
                 pDisk->pInterfaceErrorCallbacks = VDGetInterfaceError(pDisk->pInterfaceError);
             *ppDisk = pDisk;
