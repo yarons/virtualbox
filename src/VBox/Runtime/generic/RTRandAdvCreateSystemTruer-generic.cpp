@@ -1,6 +1,6 @@
-/* $Id: RTRandAdvCreateNonPseudo-generic.cpp 11523 2008-08-20 20:48:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTRandAdvCreateSystemTruer-generic.cpp 11557 2008-08-21 21:47:31Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Random Numbers, generic RTRandAdvCreateNonPseudo.
+ * IPRT - Random Numbers, generic RTRandAdvCreateSystemTruer.
  */
 
 /*
@@ -35,10 +35,9 @@
 #include <iprt/err.h>
 
 
-RTDECL(int) RTRandAdvCreateNonPseudo(PRTRAND phRand)
+RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand)
 {
     NOREF(phRand);
     return VERR_NOT_SUPPORTED;
 }
-
 
