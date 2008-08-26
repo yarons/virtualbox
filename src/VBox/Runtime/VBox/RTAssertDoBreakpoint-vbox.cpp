@@ -1,4 +1,4 @@
-/* $Id: RTAssertDoBreakpoint-vbox.cpp 11679 2008-08-26 17:16:22Z knut.osmundsen@oracle.com $ */
+/* $Id: RTAssertDoBreakpoint-vbox.cpp 11680 2008-08-26 17:17:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Assertions, generic RTAssertDoBreakpoint.
  */
@@ -45,8 +45,6 @@
      && !defined(RT_OS_OS2) \
      && !defined(RT_OS_WINDOWS))
 # define VBOX_RTASSERT_WITH_GDB
-#else
-# error VBOX_RTASSERT_WITH_GDB
 #endif
 
 #ifdef VBOX_RTASSERT_WITH_GDB
