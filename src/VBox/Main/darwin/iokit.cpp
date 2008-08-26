@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11676 2008-08-26 17:08:16Z knut.osmundsen@oracle.com $ */
+/* $Id: iokit.cpp 11681 2008-08-26 17:25:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1577,8 +1577,9 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                                 {
                                     pPrev = NULL;
                                     for (PDARWINETHERNIC pCur = pHead; pCur; pPrev = pCur, pCur = pCur->pNext)
-                                        if (    (int)pNew->fPrimaryIf - (int)pCur->fPrimaryIf >= 0
-                                            &&  strcmp(pNew->szBSDName, pCur->szBSDName) >= 0)
+                                        if (    (int)pNew->fPrimaryIf - (int)pCur->fPrimaryIf > 0
+                                            ||  (   (int)pNew->fPrimaryIf - (int)pCur->fPrimaryIf == 0
+                                                 && strcmp(pNew->szBSDName, pCur->szBSDName) >= 0))
                                             break;
                                 }
                                 if (pPrev)
