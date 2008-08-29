@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 11311 2008-08-08 23:31:54Z knut.osmundsen@oracle.com $ */
+/* $Id: PDM.cpp 11792 2008-08-29 08:51:20Z noreply@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -567,7 +567,7 @@ static DECLCALLBACK(int) pdmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
      */
     if (u32Version != PDM_SAVED_STATE_VERSION)
     {
-        Log(("pdmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("pdmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 
