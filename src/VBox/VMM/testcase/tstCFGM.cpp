@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 11794 2008-08-29 09:13:37Z knut.osmundsen@oracle.com $ */
+/* $Id: tstCFGM.cpp 11822 2008-08-29 14:21:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -42,7 +42,7 @@ int main()
     /*
      * Init runtime.
      */
-    RTR3Init();
+    RTR3InitAndSUPLib();
 
     /*
      * Create empty VM structure and init SSM.
