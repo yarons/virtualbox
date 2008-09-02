@@ -1,8 +1,8 @@
-/* $Id: structs.h 8174 2008-04-18 19:26:36Z noreply@oracle.com $ */
+/* $Id: structs.h 11982 2008-09-02 13:09:44Z noreply@oracle.com $ */
 /** @file
  * VBox Recompiler - structure offset tables.
  *
- * Used by op.c and VBoxRecompiler.c to verify they have the 
+ * Used by op.c and VBoxRecompiler.c to verify they have the
  * same understanding of the internal structures when using
  * different compilers (GCC 4.x vs. 3.x/ELF).
  */

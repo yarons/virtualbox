@@ -19,13 +19,22 @@
 *
 *    This code is based on the DOWNLOAD_PROTO_TFTM section of 
 *    Etherboot 5.3 core/nic.c and:
+
+/*
+ * Sun GPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Sun elects to use only
+ * the General Public License version 2 (GPLv2) at this time for any software where
+ * a choice of GPL license versions is made available with the language indicating
+ * that GPLv2 or any later version may be used, or where a choice of which version
+ * of the GPL is applied is otherwise unspecified.
+ */
 *    
 *    Anselm Martin Hoffmeister's previous proto_tftm.c multicast work
 *    Eric Biederman's proto_slam.c
 *
-*    $Revision: 1 $
-*    $Author: klaus.espenlaub@oracle.com $
-*    $Date: $
+*    $Revision: 11982 $
+*    $Author: noreply@oracle.com $
+*    $Date: 2008-09-02 15:09:44 +0200 (Tue, 02 Sep 2008) $
 *
 *    REVISION HISTORY:
 *    ================
