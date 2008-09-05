@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 12085 2008-09-04 11:50:30Z aleksey.ilyushin@oracle.com $ */
+/* $Id: tstCollector.cpp 12133 2008-09-05 14:13:33Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  *
@@ -75,9 +75,9 @@ pm::CollectorHAL *createCollector()
     if (RT_FAILURE(rc)) \
     { \
         RTPrintf("tstCollector: "#fn" -> %Vrc\n", rc); \
-        return 1; \
     } \
-    RTPrintf("%50s -- %u calls per second\n", #fn, nCalls)
+    else \
+        RTPrintf("%50s -- %u calls per second\n", #fn, nCalls)
 
 int main(int argc, char *argv[])
 {
