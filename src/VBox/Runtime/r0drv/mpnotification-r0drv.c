@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv.c 11982 2008-09-02 13:09:44Z noreply@oracle.com $ */
+/* $Id: mpnotification-r0drv.c 12292 2008-09-09 13:16:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Event Notifications.
  */
@@ -329,8 +329,7 @@ void rtR0MpNotificationTerm(void)
                 RTMemFree(pFree);
             }
 
-            RTSpinlockDestroy(g_hRTMpNotifySpinLock);
-            g_hRTMpNotifySpinLock = NULL;
+            RTSpinlockDestroy(hSpinlock);
         }
     }
 }
