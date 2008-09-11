@@ -1,4 +1,4 @@
-/* $Id: PerformanceOs2.cpp 11180 2008-08-06 15:34:11Z aleksey.ilyushin@oracle.com $ */
+/* $Id: PerformanceOs2.cpp 12400 2008-09-11 10:34:58Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  *
@@ -36,10 +36,9 @@ public:
 };
 
 
-MetricFactoryOS2::MetricFactoryOS2()
+CollectorHAL *createHAL()
 {
-    mHAL = new CollectorOS2();
-    Assert(mHAL);
+    return new CollectorOS2();
 }
 
 int CollectorOS2::getHostCpuLoad(ULONG *user, ULONG *kernel, ULONG *idle)
