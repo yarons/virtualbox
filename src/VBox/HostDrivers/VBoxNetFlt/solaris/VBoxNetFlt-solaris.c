@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 12604 2008-09-19 15:06:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxNetFlt-solaris.c 12606 2008-09-19 15:48:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2313,7 +2313,7 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
     if (vboxNetFltPortOsIsHostMac(pThis, &pEthHdr->SrcMac))
         fSrc = INTNETTRUNKDIR_HOST;
 
-#if 0
+#if 1
     if (fSrc & INTNETTRUNKDIR_HOST)
     {
         mblk_t *pCorrectedMsg = vboxNetFltSolarisFixChecksums(pMsg);
