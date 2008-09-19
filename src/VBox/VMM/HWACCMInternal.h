@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12578 2008-09-18 14:58:57Z noreply@oracle.com $ */
+/* $Id: HWACCMInternal.h 12610 2008-09-19 16:42:31Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -32,8 +32,6 @@
 #include <iprt/memobj.h>
 #include <iprt/cpuset.h>
 #include <iprt/mp.h>
-
-#define VBOX_WITH_HWACCM_DEBUG_REGISTER_SUPPORT
 
 #if HC_ARCH_BITS == 64
 /* Enable 64 bits guest support. */
@@ -443,6 +441,7 @@ typedef struct HWACCM
     STAMCOUNTER             StatExitReasonNPF;
     STAMCOUNTER             StatDRxArmed;
     STAMCOUNTER             StatDRxContextSwitch;
+    STAMCOUNTER             StatDRxIOCheck;
 
 
     R3PTRTYPE(PSTAMCOUNTER) pStatExitReason;
