@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 11444 2008-08-15 14:33:02Z klaus.espenlaub@oracle.com $ */
+/* $Id: VDICore.h 12639 2008-09-22 13:19:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */

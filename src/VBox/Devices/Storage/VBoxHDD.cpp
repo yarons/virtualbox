@@ -1,8 +1,6 @@
-/** $Id: VBoxHDD.cpp 11287 2008-08-08 22:35:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHDD.cpp 12639 2008-09-22 13:19:14Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox storage devices:
- * VBox HDD container implementation
+ * VBoxHDD - VBox HDD container implementation.
  */
 
 /*
