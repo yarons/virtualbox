@@ -1,4 +1,4 @@
-/** $Id: vl_vbox.h 11266 2008-08-08 16:14:51Z knut.osmundsen@oracle.com $ */
+/* $Id: vl_vbox.h 12640 2008-09-22 13:19:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox vl.h Replacement.
  *
