@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 11311 2008-08-08 23:31:54Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAll.cpp 12688 2008-09-24 14:22:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -127,3 +127,4 @@ DBGFDECL(bool) DBGFIsStepping(PVM pVM)
 {
     return pVM->dbgf.s.fSingleSteppingRaw;
 }
+
