@@ -1,6 +1,6 @@
-/* $Id: DBGFSym.cpp 12663 2008-09-23 10:16:45Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFSym.cpp 12677 2008-09-24 07:19:03Z knut.osmundsen@oracle.com $ */
 /** @file
- * VMM DBGF - Debugger Facility, Symbol Management.
+ * DBGF - Debugger Facility, Symbol Management.
  */
 
 /*

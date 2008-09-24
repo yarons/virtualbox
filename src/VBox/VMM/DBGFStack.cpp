@@ -1,6 +1,6 @@
-/* $Id: DBGFStack.cpp 12663 2008-09-23 10:16:45Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFStack.cpp 12677 2008-09-24 07:19:03Z knut.osmundsen@oracle.com $ */
 /** @file
- * VMM DBGF - Debugger Facility, Call Stack Analyser.
+ * DBGF - Debugger Facility, Call Stack Analyser.
  */
 
 /*

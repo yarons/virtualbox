@@ -1,6 +1,6 @@
-/* $Id: DBGFOS.cpp 8800 2008-05-14 03:03:54Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFOS.cpp 12677 2008-09-24 07:19:03Z knut.osmundsen@oracle.com $ */
 /** @file
- * VMM DBGF - Debugger Facility, Guest OS Diggers.
+ * DBGF - Debugger Facility, Guest OS Diggers.
  */
 
 /*

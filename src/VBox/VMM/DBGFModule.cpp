@@ -1,6 +1,6 @@
-/* $Id: DBGFModule.cpp 12541 2008-09-17 12:59:55Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFModule.cpp 12677 2008-09-24 07:19:03Z knut.osmundsen@oracle.com $ */
 /** @file
- * VMM DBGF - Debugger Facility, Module & Segment Management.
+ * DBGF - Debugger Facility, Module & Segment Management.
  */
 
 /*
