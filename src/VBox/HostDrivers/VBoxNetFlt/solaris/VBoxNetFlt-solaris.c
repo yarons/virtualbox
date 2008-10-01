@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 12862 2008-10-01 12:55:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxNetFlt-solaris.c 12863 2008-10-01 13:04:30Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1522,15 +1522,14 @@ static int vboxNetFltSolarisOpenStream(PVBOXNETFLTINS pThis)
          */
         RTStrPrintf(szDev, sizeof(szDev), "/dev/%s", pThis->szName);
         rc = ldi_open_by_name(szDev, FREAD | FWRITE, kcred, &pThis->u.s.hIface, DevId);
-        ldi_ident_release(DevId);
-        if (rc)
-        {
-            LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenStream Failed to open '%s' rc=%d\n", szDev, rc));
-            return VERR_INTNET_FLT_IF_FAILED;
-        }
     }
-    else
-        ldi_ident_release(DevId);    
+
+    ldi_ident_release(DevId);
+    if (rc)
+    {
+        LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenStream Failed to open '%s' rc=%d\n", szDev, rc));
+        return VERR_INTNET_FLT_IF_FAILED;
+    }
 
     rc = ldi_ioctl(pThis->u.s.hIface, I_FIND, (intptr_t)DEVICE_NAME, FKIOCTL, kcred, &ret);
     if (!rc)
