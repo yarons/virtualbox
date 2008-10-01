@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 12877 2008-10-01 21:11:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 12881 2008-10-01 22:44:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -892,8 +892,7 @@ DBGFR3DECL(int) DBGFR3Detach(PVM pVM)
     /*
      * Wait for the OK event.
      */
-    PCDBGFEVENT pEvent;
-    rc = DBGFR3EventWait(pVM, RT_INDEFINITE_WAIT, &pEvent);
+    rc = RTSemPongWait(&pVM->dbgf.s.PingPong, RT_INDEFINITE_WAIT);
     AssertLogRelMsgRCReturn(rc, ("Wait on detach command failed, rc=%Rrc\n", rc), rc);
 
     /*
