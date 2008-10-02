@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 8706 2008-05-08 13:25:41Z knut.osmundsen@oracle.com $ */
+/* $Id: semeventmulti-posix.cpp 12907 2008-10-02 09:17:01Z noreply@oracle.com $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -177,7 +177,7 @@ RTDECL(int)  RTSemEventMultiDestroy(RTSEMEVENTMULTI EventMultiSem)
             break;
         pthread_cond_broadcast(&pThis->Cond);
         usleep(1000);
-    } while (rc == EBUSY);
+    };
     if (rc)
     {
         AssertMsgFailed(("Failed to destroy event sem %p, rc=%d.\n", EventMultiSem, rc));
