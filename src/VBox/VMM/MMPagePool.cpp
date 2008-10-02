@@ -1,6 +1,6 @@
-/* $Id: MMPagePool.cpp 12815 2008-09-29 18:33:17Z knut.osmundsen@oracle.com $ */
+/* $Id: MMPagePool.cpp 12967 2008-10-02 23:49:04Z knut.osmundsen@oracle.com $ */
 /** @file
- * MM - Memory Monitor(/Manager) - Page Pool.
+ * MM - Memory Manager - Page Pool.
  */
 
 /*

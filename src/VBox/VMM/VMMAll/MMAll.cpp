@@ -1,6 +1,6 @@
-/* $Id: MMAll.cpp 12814 2008-09-29 18:14:37Z knut.osmundsen@oracle.com $ */
+/* $Id: MMAll.cpp 12967 2008-10-02 23:49:04Z knut.osmundsen@oracle.com $ */
 /** @file
- * MM - Memory Monitor(/Manager) - Any Context.
+ * MM - Memory Manager - Any Context.
  */
 
 /*
