@@ -1,4 +1,4 @@
-/* $Id: pdmasynccompletion.h 12989 2008-10-06 02:15:39Z knut.osmundsen@oracle.com $ */
+/* $Id: pdmasynccompletion.h 13005 2008-10-06 12:35:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion.
  */
@@ -37,7 +37,7 @@
 
 __BEGIN_DECLS
 
-/** @defgroup grp_pdm_async_completion  Async I/O Completion
+/** @defgroup grp_pdm_async_completion  The PDM Async I/O Completion API
  * @ingroup grp_pdm
  * @{
  */

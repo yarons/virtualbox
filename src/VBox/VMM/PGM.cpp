@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13001 2008-10-06 11:06:14Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM.cpp 13005 2008-10-06 12:35:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -22,7 +22,9 @@
 
 /** @page pg_pgm PGM - The Page Manager and Monitor
  *
- * See also @ref pg_pgmPhys, @ref pg_pgm_pool.
+ * @see grp_pgm,
+ * @ref pg_pgm_pool,
+ * @ref pg_pgm_phys.
  *
  *
  * @section         sec_pgm_modes           Paging Modes
@@ -199,7 +201,7 @@
  */
 
 
-/** @page pg_pgmPhys PGMPhys - Physical Guest Memory Management.
+/** @page pg_pgm_phys   PGM Physical Guest Memory Management
  *
  *
  * Objectives:
