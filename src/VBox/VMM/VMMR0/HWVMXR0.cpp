@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13253 2008-10-14 12:28:39Z noreply@oracle.com $ */
+/* $Id: HWVMXR0.cpp 13263 2008-10-14 13:22:36Z noreply@oracle.com $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -901,7 +901,6 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
                     VTX_CORRECT_PROT_SEL(es);
                     VTX_CORRECT_PROT_SEL(fs);
                     VTX_CORRECT_PROT_SEL(gs);
-                    VTX_CORRECT_PROT_SEL(ss);
                     pVM->hwaccm.s.vmx.RealMode.fValid = false;
                 }
             }
