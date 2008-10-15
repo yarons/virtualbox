@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-solaris.c 13307 2008-10-15 21:20:50Z knut.osmundsen@oracle.com $ */
+/* $Id: assert-r0drv-solaris.c 13309 2008-10-15 21:29:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
  */
@@ -38,6 +38,7 @@
 #include <iprt/log.h>
 #include <iprt/string.h>
 #include <iprt/stdarg.h>
+#include <iprt/asm.h>
 
 
 /*******************************************************************************
