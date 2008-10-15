@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 12774 2008-09-26 16:34:59Z michal.necasek@oracle.com $ */
+/* $Id: VBoxHDD-new.cpp 13295 2008-10-15 18:07:59Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1967,6 +1967,8 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
                 pTmp = pImg->pPrev;
             vdRemoveImageFromList(pDisk, pImg);
             pImg->Backend->pfnClose(pImg->pvBackendData, true);
+            RTMemFree(pImg->pszFilename);
+            RTMemFree(pImg);
             pImg = pTmp;
         }
     } while (0);
