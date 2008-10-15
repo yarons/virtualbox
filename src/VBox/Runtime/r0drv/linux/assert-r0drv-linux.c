@@ -1,10 +1,10 @@
-/* $Id: assert-r0drv-solaris.c 13314 2008-10-15 22:46:08Z knut.osmundsen@oracle.com $ */
+/* $Id: assert-r0drv-linux.c 13314 2008-10-15 22:46:08Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
+ * IPRT -  Assertion Workers, Ring-0 Drivers, Linux.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2007 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-solaris-kernel.h"
+#include "the-linux-kernel.h"
 
 #include <iprt/assert.h>
 #include <iprt/log.h>
@@ -48,19 +48,18 @@
 RTDATADECL(char)                    g_szRTAssertMsg1[1024];
 /** The last assert message, 2nd part. */
 RTDATADECL(char)                    g_szRTAssertMsg2[2048];
-/** The last assert message, expression. */
-RTDATADECL(const char * volatile)   g_pszRTAssertExpr;
 /** The last assert message, file name. */
-RTDATADECL(const char * volatile)   g_pszRTAssertFile;
+RTDATADECL(const char *) volatile   g_pszRTAssertExpr;
+/** The last assert message, file name. */
+RTDATADECL(const char *) volatile   g_pszRTAssertFile;
 /** The last assert message, line number. */
-RTDATADECL(uint32_t volatile)       g_u32RTAssertLine;
+RTDATADECL(uint32_t) volatile       g_u32RTAssertLine;
 /** The last assert message, function name. */
-RTDATADECL(const char * volatile)   g_pszRTAssertFunction;
+RTDATADECL(const char *) volatile   g_pszRTAssertFunction;
 
 
 RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
-
 #ifdef IN_GUEST_R0
     RTLogBackdoorPrintf("\n!!Assertion Failed!!\n"
                         "Expression: %s\n"
@@ -68,10 +67,10 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
                         pszExpr, pszFile, uLine, pszFunction);
 #endif
 
-    uprintf("\r\n!!Assertion Failed!!\r\n"
-            "Expression: %s\r\n"
-            "Location  : %s(%d) %s\r\n",
-            pszExpr, pszFile, uLine, pszFunction);
+    printk("\r\n!!Assertion Failed!!\r\n"
+           "Expression: %s\r\n"
+           "Location  : %s(%d) %s\r\n",
+           pszExpr, pszFile, uLine, pszFunction);
 
     RTStrPrintf(g_szRTAssertMsg1, sizeof(g_szRTAssertMsg1),
                 "\n!!Assertion Failed!!\n"
@@ -100,7 +99,7 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
     va_end(va);
-    uprintf("%s", szMsg);
+    printk("%s", szMsg);
 
     va_start(va, pszFormat);
     RTStrPrintfV(g_szRTAssertMsg2, sizeof(g_szRTAssertMsg2), pszFormat, va);
@@ -110,15 +109,6 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
 
 RTR0DECL(void) RTR0AssertPanicSystem(void)
 {
-    const char *psz    = &g_szRTAssertMsg2[0];
-    const char *pszEnd = &g_szRTAssertMsg2[sizeof(g_szRTAssertMsg2)];
-    while (psz < pszEnd && (*psz == ' ' || *psz == '\t' || *psz == '\n' || *psz == '\r'))
-        psz++;
-
-    if (psz >= pszEnd || *psz)
-        assfail(psz, g_pszRTAssertFile, g_u32RTAssertLine);
-    else
-        assfail(g_szRTAssertMsg1, g_pszRTAssertFile, g_u32RTAssertLine);
-    g_szRTAssertMsg2[0] = '\0';
+    panic("%s%s", g_szRTAssertMsg1, g_szRTAssertMsg2);
 }
 
