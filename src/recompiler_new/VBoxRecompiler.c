@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13230 2008-10-13 19:03:16Z noreply@oracle.com $ */
+/* $Id: VBoxRecompiler.c 13337 2008-10-16 11:59:21Z noreply@oracle.com $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -25,6 +25,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_REM
 #include "vl.h"
+#include "osdep.h"
 #include "exec-all.h"
 
 #include <VBox/rem.h>
