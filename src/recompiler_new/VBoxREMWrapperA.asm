@@ -1,4 +1,4 @@
-; $Id: VBoxREMWrapperA.asm 13168 2008-10-10 11:46:18Z noreply@oracle.com $
+; $Id: VBoxREMWrapperA.asm 13456 2008-10-21 16:55:48Z noreply@oracle.com $
 ;; @file
 ;
 ; VBoxREM Wrapper, Assembly routines and wrapper Templates.
