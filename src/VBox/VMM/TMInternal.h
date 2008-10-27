@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 13572 2008-10-27 11:02:33Z noreply@oracle.com $ */
+/* $Id: TMInternal.h 13586 2008-10-27 16:33:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Internal header file.
  */
@@ -487,12 +487,17 @@ typedef struct TM
     /** The timer callback. */
     STAMCOUNTER                 StatTimerCallbackSetFF;
 
-
+    /** @name Reasons for refusing TSC offsetting in TMCpuTickCanUseRealTSC.
+     * @{ */
     STAMCOUNTER                 StatTSCNotFixed;
     STAMCOUNTER                 StatTSCNotTicking;
-    STAMCOUNTER                 StatTSCCatchup;
+    STAMCOUNTER                 StatTSCCatchupLE010;
+    STAMCOUNTER                 StatTSCCatchupLE025;
+    STAMCOUNTER                 StatTSCCatchupLE100;
+    STAMCOUNTER                 StatTSCCatchupOther;
     STAMCOUNTER                 StatTSCWarp;
     STAMCOUNTER                 StatTSCSyncNotTicking;
+    /** @} */
 } TM;
 /** Pointer to TM VM instance data. */
 typedef TM *PTM;
