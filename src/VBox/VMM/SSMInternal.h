@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 12440 2008-09-12 18:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: SSMInternal.h 13597 2008-10-27 18:57:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -161,6 +161,8 @@ typedef struct SSMUNIT
 /**
  * SSM VM Instance data.
  * Changes to this must checked against the padding of the cfgm union in VM!
+ *
+ * @todo Move this to UVM.
  */
 typedef struct SSM
 {
