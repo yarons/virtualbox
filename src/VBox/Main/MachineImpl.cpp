@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13591 2008-10-27 17:42:06Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 13638 2008-10-28 22:33:59Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6805,9 +6805,9 @@ HRESULT Machine::createImplicitDiffs (const Bstr &aFolder,
 
     if (FAILED (rc))
     {
-        MultiResultRef rc (rc);
+        MultiResultRef mrc (rc);
 
-        rc = deleteImplicitDiffs();
+        mrc = deleteImplicitDiffs();
     }
 
     return rc;
