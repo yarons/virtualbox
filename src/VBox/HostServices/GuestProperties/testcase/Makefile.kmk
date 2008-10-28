@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 13628 2008-10-28 15:35:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 13629 2008-10-28 15:37:52Z knut.osmundsen@oracle.com $
 ## @file
-# Sub-Makefile for the Shared Folders Host Service testcases.
+# Sub-Makefile for the Guest Properties Host Service testcases.
 #
 
 #
