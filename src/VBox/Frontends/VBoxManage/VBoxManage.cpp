@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 13587 2008-10-27 16:46:54Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManage.cpp 13692 2008-10-30 21:30:33Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1003,7 +1003,7 @@ static HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> mac
     if (details == VMINFO_MACHINEREADABLE)
         RTPrintf("vtxvpid=\"%s\"\n", HWVirtExVPIDEnabled ? "on" : "off");
     else
-        RTPrintf("VT-x VPID:   %s\n", HWVirtExVPIDEnabled ? "on" : "off");
+        RTPrintf("VT-x VPID:       %s\n", HWVirtExVPIDEnabled ? "on" : "off");
 
     MachineState_T machineState;
     const char *pszState = NULL;
