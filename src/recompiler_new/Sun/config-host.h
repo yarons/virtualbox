@@ -1,4 +1,4 @@
-/* $Id: config-host.h 13168 2008-10-10 11:46:18Z noreply@oracle.com $ */
+/* $Id: config-host.h 13731 2008-11-01 19:39:12Z noreply@oracle.com $ */
 /** @file
  * Sun host config - maintained by hand
  */
@@ -20,7 +20,7 @@
  */
 
 
-#if defined(RT_ARCH_AMD64) || defined(HOST_X86_64) /* The latter, for dyngen when cross compiling (windows, l4, etc). */
+#if defined(RT_ARCH_AMD64)
 # define HOST_X86_64 1
 # define HOST_LONG_BITS 64
 #else
