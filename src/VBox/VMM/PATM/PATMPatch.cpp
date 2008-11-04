@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 13144 2008-10-09 22:44:11Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMPatch.cpp 13816 2008-11-04 22:52:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -413,7 +413,7 @@ static int patmPatchReadBytes(PVM pVM, uint8_t *pDest, RTRCPTR pSrc, uint32_t cb
         uint8_t temp;
 
         int rc2 = PATMR3QueryOpcode(pVM, pSrc+i, &temp);
-        if (VBOX_SUCCESS(rc2))
+        if (RT_SUCCESS(rc2))
         {
             pDest[i] = temp;
         }
