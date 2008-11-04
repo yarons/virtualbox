@@ -1,6 +1,6 @@
-; $Id: VMMGCA.asm 12989 2008-10-06 02:15:39Z knut.osmundsen@oracle.com $
+; $Id: VMMGCA.asm 13813 2008-11-04 21:55:34Z knut.osmundsen@oracle.com $
 ;; @file
-; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
+; VMMGC - Raw-mode Context Virtual Machine Monitor assembly routines.
 ;
 
 ; Copyright (C) 2006-2007 Sun Microsystems, Inc.
