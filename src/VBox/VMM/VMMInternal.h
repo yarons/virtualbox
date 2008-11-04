@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 13796 2008-11-04 18:37:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMInternal.h 13798 2008-11-04 18:57:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -422,6 +422,10 @@ typedef enum VMMGCOPERATION
 
 __BEGIN_DECLS
 
+#ifdef IN_RING3
+int  vmmR3SwitcherInit(PVM pVM);
+void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta);
+#endif /* IN_RING3 */
 
 #ifdef IN_RING0
 /**
