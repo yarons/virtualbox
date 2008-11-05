@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_utils.c 13835 2008-11-05 02:34:43Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxvfs_utils.c 13837 2008-11-05 02:54:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Utility functions.
  */
@@ -76,7 +76,7 @@ int vboxvfs_Stat(const char *pszCaller, vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, 
     rc = vboxCallCreate(&g_VBoxVFSClient, &pVBoxVFSGlobalInfo->Map, pPath, &Params);
     if (RT_FAILURE(rc))
     {
-        Log((DEVICE_NAME ":vboxCallCreate failed! caller=%s rc=%Vrc\n", pszCaller, rc));
+        Log((DEVICE_NAME ":vboxCallCreate failed! caller=%s rc=%Rrc\n", pszCaller, rc));
         return EPROTO;
     }
 
