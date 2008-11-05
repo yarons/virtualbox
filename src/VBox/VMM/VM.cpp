@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 13818 2008-11-04 22:59:47Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 13823 2008-11-05 01:10:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -946,7 +946,7 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
  */
 VMMR3DECL(void)   VMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 {
-    LogFlow(("VMR3Relocate: offDelta=%VGv\n", offDelta));
+    LogFlow(("VMR3Relocate: offDelta=%RGv\n", offDelta));
 
     /*
      * The order here is very important!
