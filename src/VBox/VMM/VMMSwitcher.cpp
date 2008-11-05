@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 13821 2008-11-05 01:07:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMSwitcher.cpp 13822 2008-11-05 01:08:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -182,7 +182,7 @@ int vmmR3SwitcherInit(PVM pVM)
         {
             pVM->vmm.s.pvCoreCodeRC = GCPtr;
             MMR3HyperReserve(pVM, PAGE_SIZE, "fence", NULL);
-            LogRel(("CoreCode: R3=%RHv R0=%RHv RC=%VRv Phys=%RHp cb=%#x\n",
+            LogRel(("CoreCode: R3=%RHv R0=%RHv RC=%RRv Phys=%RHp cb=%#x\n",
                     pVM->vmm.s.pvCoreCodeR3, pVM->vmm.s.pvCoreCodeR0, pVM->vmm.s.pvCoreCodeRC, pVM->vmm.s.HCPhysCoreCode, pVM->vmm.s.cbCoreCode));
 
             /*
