@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 13837 2008-11-05 02:54:02Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib-solaris.cpp 13858 2008-11-05 13:45:41Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -159,7 +159,7 @@ int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cb
 }
 
 
-int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction)
+int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, unsigned idCpu)
 {
     int rc = ioctl(pThis->hDevice, uFunction, NULL);
     if (rc == -1)
