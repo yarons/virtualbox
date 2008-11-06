@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-os2.cpp 11838 2008-08-29 17:14:02Z knut.osmundsen@oracle.com $ */
+/* $Id: rtProcInitExePath-os2.cpp 13908 2008-11-06 11:53:47Z noreply@oracle.com $ */
 /** @file
  * IPRT - rtProcInitName, OS/2.
  */
@@ -53,7 +53,7 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath)
 
     char *pszTmp;
     int rc = rtPathFromNative(&pszTmp, pszPath);
-    AssertMsgRCReturn(rc, ("rc=%Rrc pszLink=\"%s\"\nhex: %.*Rhsx\n", rc, pszPath, cchImageName, pszPath), rc);
+    AssertMsgRCReturn(rc, ("rc=%Rrc pszLink=\"%s\"\nhex: %.*Rhsx\n", rc, pszPath, cchPath, pszPath), rc);
 
     size_t cch = strlen(pszTmp);
     AssertReturn(cch <= cchPath, VERR_BUFFER_OVERFLOW);
