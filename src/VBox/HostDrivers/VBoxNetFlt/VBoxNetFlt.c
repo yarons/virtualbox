@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 13769 2008-11-03 19:13:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxNetFlt.c 13929 2008-11-06 18:37:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -747,7 +747,7 @@ DECLHIDDEN(void) vboxNetFltRetain(PVBOXNETFLTINS pThis, bool fBusy)
     if (fBusy)
     {
         cRefs = ASMAtomicIncU32(&pThis->cBusy);
-        Assert(cRefs > 1 && cRefs < UINT32_MAX / 2);
+        Assert(cRefs > 0 && cRefs < UINT32_MAX / 2);
     }
 
     NOREF(cRefs);
