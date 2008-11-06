@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13936 2008-11-06 20:44:09Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM.cpp 13937 2008-11-06 20:52:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2321,7 +2321,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
             return rc;
         RTGCPTR GCPtr;
         SSMR3GetGCPtr(pSSM,     &GCPtr);
-        RTGCUINTPTR cPTs;
+        RTGCPTR cPTs;
         rc = SSMR3GetGCUIntPtr(pSSM, &cPTs);
         if (RT_FAILURE(rc))
             return rc;
