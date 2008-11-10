@@ -1,6 +1,6 @@
-; $Id: memchr.asm 14021 2008-11-10 16:31:22Z knut.osmundsen@oracle.com $
+; $Id: strcpy.asm 14021 2008-11-10 16:31:22Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - No-CRT memchr - AMD64 & X86.
+; IPRT - No-CRT strcpy - AMD64 & X86.
 ;
 
 ;
@@ -33,58 +33,61 @@
 BEGINCODE
 
 ;;
-; @param    pv      gcc: rdi  msc: ecx  x86:[esp+4]
-; @param    ch      gcc: esi  msc: edx  x86:[esp+8]
-; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch]
-RT_NOCRT_BEGINPROC memchr
-        cld
+; @param    psz1   gcc: rdi  msc: rcx  x86:[esp+4]
+; @param    psz2   gcc: rsi  msc: rdx  x86:[esp+8]
+RT_NOCRT_BEGINPROC strcpy
+        ; input
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
-        or      r8, r8
-        jz      .not_found_early
-
-        mov     r9, rdi                 ; save rdi
-        mov     eax, edx
-        mov     rdi, rcx
-        mov     rcx, r8
+  %define psz1 rcx
+  %define psz2 rdx
  %else
-        mov     rcx, rdx
-        jrcxz   .not_found_early
-
-        mov     eax, esi
+  %define psz1 rdi
+  %define psz2 rsi
  %endif
-
+        mov     r8, psz1
 %else
-        mov     ecx, [esp + 0ch]
-        jecxz   .not_found_early
-        mov     edx, edi                ; save edi
-        mov     eax, [esp + 8]
-        mov     edi, [esp + 4]
+        mov     ecx, [esp + 4]
+        mov     edx, [esp + 8]
+  %define psz1 ecx
+  %define psz2 edx
+        push    psz1
 %endif
 
-        ; do the search
-        repne   scasb
-        jne     .not_found
+        ;
+        ; The loop.
+        ;
+.next:
+        mov     al, [psz1]
+        mov     [psz2], al
+        test    al, al
+        jz      .done
 
-        ; found it
-        lea     xAX, [xDI - 1]
-%ifdef ASM_CALL64_MSC
-        mov     rdi, r9
-%endif
-%ifdef RT_ARCH_X86
-        mov     edi, edx
+        mov     al, [psz1 + 1]
+        mov     [psz2 + 1], al
+        test    al, al
+        jz      .done
+
+        mov     al, [psz1 + 2]
+        mov     [psz2 + 2], al
+        test    al, al
+        jz      .done
+
+        mov     al, [psz1 + 3]
+        mov     [psz2 + 3], al
+        test    al, al
+        jz      .done
+
+        add     psz1, 4
+        add     psz2, 4
+        jmp     .next
+
+.done:
+%ifdef RT_ARCH_AMD64
+        mov     rax, r8
+%else
+        pop     eax
 %endif
         ret
-
-.not_found:
-%ifdef ASM_CALL64_MSC
-        mov     rdi, r9
-%endif
-%ifdef RT_ARCH_X86
-        mov     edi, edx
-%endif
-.not_found_early:
-        xor     eax, eax
-        ret
-ENDPROC RT_NOCRT(memchr)
+ENDPROC RT_NOCRT(strcpy)
 
