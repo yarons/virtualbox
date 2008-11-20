@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14109 2008-11-11 19:39:53Z noreply@oracle.com $ */
+/* $Id: HWACCM.cpp 14411 2008-11-20 13:26:47Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -763,6 +763,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 hwaccmR3DisableRawMode(pVM);
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SEP);
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SYSCALL);
+                CPUMSetGuestCpuidFeature(pVM, CPUMCPUIDFEATURE_RDTSCP);
 #ifdef VBOX_ENABLE_64_BITS_GUESTS
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LONG_MODE);
