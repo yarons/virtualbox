@@ -1,3 +1,5 @@
+/* $Id: HardDisk2Impl.cpp 14628 2008-11-26 10:25:52Z noreply@oracle.com $ */
+
 /** @file
  *
  * VirtualBox COM class implementation
