@@ -1,7 +1,6 @@
-/* $Id: VBoxManageInfo.cpp 14646 2008-11-26 14:30:34Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 14732 2008-11-27 18:44:11Z knut.osmundsen@oracle.com $ */
 /** @file
- * VBoxManage - VirtualBox's command-line interface.
- * Information dumping code.
+ * VBoxManage - The 'showvminfo' command and helper routines.
  */
 
 /*
