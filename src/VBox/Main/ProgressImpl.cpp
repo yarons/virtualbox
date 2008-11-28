@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 14715 2008-11-27 15:34:57Z noreply@oracle.com $ */
+/* $Id: ProgressImpl.cpp 14772 2008-11-28 12:41:22Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -1533,4 +1533,4 @@ HRESULT CombinedProgress::checkProgress()
 
     return rc;
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
