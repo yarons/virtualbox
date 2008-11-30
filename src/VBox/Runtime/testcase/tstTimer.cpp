@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 13836 2008-11-05 02:42:54Z knut.osmundsen@oracle.com $ */
+/* $Id: tstTimer.cpp 14831 2008-11-30 10:31:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -34,7 +34,7 @@
 #include <iprt/timer.h>
 #include <iprt/time.h>
 #include <iprt/thread.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
 

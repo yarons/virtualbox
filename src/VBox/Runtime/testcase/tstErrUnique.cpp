@@ -1,4 +1,4 @@
-/* $Id: tstErrUnique.cpp 13836 2008-11-05 02:42:54Z knut.osmundsen@oracle.com $ */
+/* $Id: tstErrUnique.cpp 14831 2008-11-30 10:31:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Error Messages.
  */
@@ -35,7 +35,7 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <VBox/err.h>
 
 
