@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 14831 2008-11-30 10:31:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxInternalManage.cpp 14838 2008-11-30 21:31:28Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -66,6 +66,7 @@
 # include <sys/utsname.h>
 # include <linux/hdreg.h>
 # include <linux/fs.h>
+# include <stdlib.h> /* atoi() */
 #endif /* RT_OS_LINUX */
 #ifdef RT_OS_DARWIN
 # include <sys/disk.h>
