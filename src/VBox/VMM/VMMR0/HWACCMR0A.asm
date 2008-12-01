@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 14804 2008-11-29 03:17:08Z knut.osmundsen@oracle.com $
+; $Id: HWACCMR0A.asm 14875 2008-12-01 16:24:22Z noreply@oracle.com $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -1166,7 +1166,7 @@ BITS 32
     ret
 ENDPROC   VMXR0StartVM64
 
-;DECLASM(int) SVMR0VMRun(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx);
+;DECLASM(int) SVMR0VMRun(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
 BEGINPROC SVMR0VMRun
     cmp     byte [NAME(g_fVMXIs64bitHost)], 0
     je near NAME(SVMR0VMRun_32)
@@ -1218,7 +1218,7 @@ BITS 32
     ret
 ENDPROC   SVMR0VMRun
 
-; DECLASM(int) SVMR0VMRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx);
+; DECLASM(int) SVMR0VMRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
 BEGINPROC SVMR0VMRun64
     cmp     byte [NAME(g_fVMXIs64bitHost)], 0
     jne     .longmode
