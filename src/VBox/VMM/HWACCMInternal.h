@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14875 2008-12-01 16:24:22Z noreply@oracle.com $ */
+/* $Id: HWACCMInternal.h 14899 2008-12-02 12:39:34Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -224,6 +224,13 @@ typedef struct HWACCM
 
     /* RC handler to setup the 64 bits debug state. */
     RTRCPTR                     pfnSaveGuestDebug64;
+
+# ifdef DEBUG
+    /* Test handler */
+    RTRCPTR                     pfnTest64;
+
+    RTRCPTR                     uAlignment[1];
+# endif
 #endif
 
     struct
