@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.h 14596 2008-11-25 20:23:51Z noreply@oracle.com $ */
+/* $Id: HardDiskFormatImpl.h 14949 2008-12-03 15:17:16Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -131,3 +131,4 @@ private:
 
 #endif // ____H_HARDDISKFORMAT
 
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

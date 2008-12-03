@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.h 8155 2008-04-18 15:16:47Z noreply@oracle.com $ */
+/* $Id: SATAControllerImpl.h 14949 2008-12-03 15:17:16Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -146,3 +146,4 @@ private:
 };
 
 #endif //!____H_SATACONTROLLERIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

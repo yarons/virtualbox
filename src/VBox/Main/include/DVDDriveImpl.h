@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.h 13580 2008-10-27 14:04:18Z noreply@oracle.com $ */
+/* $Id: DVDDriveImpl.h 14949 2008-12-03 15:17:16Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -127,3 +127,4 @@ private:
 
 #endif // ____H_DVDDRIVEIMPL
 
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
