@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14820 2008-11-30 00:24:50Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 14938 2008-12-03 12:10:57Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1557,8 +1557,7 @@ STDMETHODIMP Host::CreateUSBDeviceFilter (INPTR BSTR aName, IHostUSBDeviceFilter
     if (!aFilter)
         return E_POINTER;
 
-    if (!aName || *aName == 0)
-        return E_INVALIDARG;
+    CheckComArgStrNotEmptyOrNull(aName);
 
     AutoWriteLock alock (this);
     CHECK_READY();
