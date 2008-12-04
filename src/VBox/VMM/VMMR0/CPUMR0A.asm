@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 40189 2008-12-01 14:01:55Z sandervl $
+; $Id: CPUMR0A.asm 14978 2008-12-04 13:12:47Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
