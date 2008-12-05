@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 13580 2008-10-27 14:04:18Z noreply@oracle.com $ */
+/* $Id: VirtualBoxErrorInfo.cpp 15051 2008-12-05 17:20:00Z noreply@oracle.com $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -68,7 +68,7 @@ STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(ResultCode) (HRESULT *aResultCode)
     return S_OK;
 }
 
-STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(InterfaceID) (GUIDPARAMOUT aIID)
+STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(InterfaceID) (OUT_GUID aIID)
 {
     if (!aIID)
         return E_POINTER;
