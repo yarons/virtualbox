@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 15160 2008-12-09 13:02:46Z noreply@oracle.com $ */
+/* $Id: HWACCMAll.cpp 15161 2008-12-09 13:03:20Z noreply@oracle.com $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -106,7 +106,7 @@ VMMDECL(PGMMODE) HWACCMGetShwPagingMode(PVM pVM)
         PGMMODE enmShwPagingMode;
 
 #if HC_ARCH_BITS == 32 
-        if (CPUMIsGuestInLongMode(pVM))
+        if (CPUMIsGuestInLongModeEx(pCtx))
             enmShwPagingMode = PGMMODE_AMD64_NX;
         else
 #endif
