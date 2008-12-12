@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15354 2008-12-12 08:51:41Z noreply@oracle.com $
+; $Id: HWACCMGCA.asm 15361 2008-12-12 12:25:44Z noreply@oracle.com $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -257,7 +257,7 @@ ALIGNCODE(16)
     jz      near .vmstart64_start_failed
 
     push    rdi
-    mov     rdi, [rsp + 8 * 2]         ; pCtx
+    mov     rdi, [rsp + 8]         ; pCtx
 
     mov     qword [rdi + CPUMCTX.eax], rax
     mov     qword [rdi + CPUMCTX.ebx], rbx
