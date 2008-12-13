@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 15434 2008-12-13 11:37:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 15436 2008-12-13 11:59:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2683,6 +2683,7 @@ typedef struct PGM
     //STAMCOUNTER StatR0DynMapPageSlowLostHits;       /**< R0: Lost hits. */
     STAMCOUNTER StatR0DynMapSubsets;                /**< R0: Times PGMDynMapPushAutoSubset was called. */
     STAMCOUNTER StatR0DynMapPopFlushes;             /**< R0: Times PGMDynMapPopAutoSubset flushes the subset. */
+    STAMCOUNTER aStatR0DynMapSetSize[11];           /**< R0: Set size distribution. */
 
     /* RC only: */
     STAMCOUNTER StatRCDynMapCacheMisses;            /**< RC: The number of dynamic page mapping cache hits */
