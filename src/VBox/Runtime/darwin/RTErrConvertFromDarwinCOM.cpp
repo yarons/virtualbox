@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwinCOM.cpp 8288 2008-04-22 13:25:55Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromDarwinCOM.cpp 15459 2008-12-14 11:23:14Z noreply@oracle.com $ */
 /** @file
  * IPRT - Convert Darwin COM returns codes to iprt status codes.
  */
