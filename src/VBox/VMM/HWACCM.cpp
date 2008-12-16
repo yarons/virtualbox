@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15584 2008-12-16 13:59:05Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCM.cpp 15588 2008-12-16 14:20:54Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1173,6 +1173,10 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
         PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
         for (unsigned j=0;j<pCache->Read.cValidEntries;j++)
             pCache->Read.aFieldVal[j] = 0;
+
+        /* Magic marker for searching in crash dumps. */
+        strcpy((char *)pCache->aMagic, "VMCSCACHE Magic");
+
     }
 }
 
