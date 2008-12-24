@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 14298 2008-11-18 12:47:26Z noreply@oracle.com $ */
+/* $Id: thread.cpp 15740 2008-12-24 10:16:41Z noreply@oracle.com $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1011,7 +1011,6 @@ static int rtThreadWait(RTTHREAD Thread, unsigned cMillies, int *prc, bool fAuto
             else
             {
                 rc = VERR_THREAD_NOT_WAITABLE;
-                AssertRC(rc);
             }
             rtThreadRelease(pThread);
         }
