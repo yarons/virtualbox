@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 15762 2008-12-25 23:53:50Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 15766 2008-12-28 17:12:54Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3105,6 +3105,7 @@ STDMETHODIMP Machine::SetGuestProperty (IN_BSTR aName, IN_BSTR aValue, IN_BSTR a
                         mHWData->mGuestProperties.erase (it);
                     }
                     found = true;
+                    break; /* don't do ++it before we leave the loop */
                 }
         }
         if (found && SUCCEEDED (rc))
