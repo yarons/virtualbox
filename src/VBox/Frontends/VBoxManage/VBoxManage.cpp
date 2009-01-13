@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 15687 2008-12-19 12:48:34Z noreply@oracle.com $ */
+/* $Id: VBoxManage.cpp 15906 2009-01-13 09:52:20Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -223,7 +223,7 @@ static void showLogo(void)
     {
         RTPrintf("VirtualBox Command Line Management Interface Version "
                  VBOX_VERSION_STRING  "\n"
-                 "(C) 2005-2008 Sun Microsystems, Inc.\n"
+                 "(C) 2005-2009 Sun Microsystems, Inc.\n"
                  "All rights reserved.\n"
                  "\n");
         fShown = true;
