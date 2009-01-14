@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15938 2009-01-14 12:58:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 15939 2009-01-14 13:14:35Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -874,5 +874,3 @@ snapshot:
 	    -f $(TARBALLPATH)/$(TARBALLNAME) \
 	    $(TARBALLROOT)
 	$(QUIET)$(RM) $(TARBALLPATH)/$(TARBALLROOT)
-
-
