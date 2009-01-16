@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 15051 2008-12-05 17:20:00Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestProp.cpp 15994 2009-01-16 14:16:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -352,7 +352,7 @@ static int handleEnumGuestProperty(int argc, char *argv[],
 /*
  * Pack the patterns
  */
-    Utf8Str Utf8Patterns(argc > 2 ? argv[2] : "");
+    Utf8Str Utf8Patterns(argc > 2 ? argv[2] : "*");
     for (ssize_t i = 3; i < argc; ++i)
         Utf8Patterns = Utf8StrFmt ("%s,%s", Utf8Patterns.raw(), argv[i]);
 
