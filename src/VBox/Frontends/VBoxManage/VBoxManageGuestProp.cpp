@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 16052 2009-01-19 18:24:29Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestProp.cpp 16104 2009-01-20 21:52:07Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -209,7 +209,7 @@ void usageGuestProperty(void)
              "                            [-patterns <patterns>]\n"
              "\n");
     RTPrintf("VBoxManage guestproperty    wait <vmname>|<uuid> <patterns>\n"
-             "                            [--timeout <timeout>]\n"
+             "                            [-timeout <timeout>]\n"
              "\n");
 }
 
