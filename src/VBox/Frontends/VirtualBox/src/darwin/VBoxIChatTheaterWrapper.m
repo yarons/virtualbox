@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.m 8170 2008-04-18 17:52:25Z noreply@oracle.com $ */
+/* $Id: VBoxIChatTheaterWrapper.m 16174 2009-01-22 15:15:31Z noreply@oracle.com $ */
 /** @file
  * Qt GUI - iChat Theater cocoa wrapper.
  */
