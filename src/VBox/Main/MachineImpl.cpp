@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 16174 2009-01-22 15:15:31Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 16216 2009-01-24 16:30:43Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -901,13 +901,19 @@ STDMETHODIMP Machine::COMSETTER(OSTypeId) (IN_BSTR aOSTypeId)
                                           guestOSType.asOutParam());
     CheckComRCReturnRC (rc);
 
+    /* when setting, always use the "etalon" value for consistency -- lookup
+     * by ID is case-insensitive and the input value may have different case */
+    Bstr osTypeId;
+    rc = guestOSType->COMGETTER(Id) (osTypeId.asOutParam());
+    CheckComRCReturnRC (rc);
+
     AutoWriteLock alock (this);
 
     rc = checkStateDependency (MutableStateDep);
     CheckComRCReturnRC (rc);
 
     mUserData.backup();
-    mUserData->mOSTypeId = aOSTypeId;
+    mUserData->mOSTypeId = osTypeId;
 
     return S_OK;
 }
