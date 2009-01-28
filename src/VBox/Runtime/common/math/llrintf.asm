@@ -1,4 +1,4 @@
-; $Id: llrintf.asm 8256 2008-04-21 20:53:28Z noreply@oracle.com $
+; $Id: llrintf.asm 16316 2009-01-28 14:26:48Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT llrintf - AMD64 & X86.
 ;
