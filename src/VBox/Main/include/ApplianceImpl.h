@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16557 2009-02-06 16:35:42Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.h 16558 2009-02-06 16:41:43Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -26,10 +26,7 @@
 
 #include "VirtualBoxBase.h"
 
-namespace xml
-{
-    class Node;
-}
+// #include <string>
 
 class VirtualBox;
 
