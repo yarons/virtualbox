@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16732 2009-02-13 09:49:01Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 16780 2009-02-16 10:42:14Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2416,7 +2416,7 @@ DECLINLINE(int) pgmPoolTrackInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS 
     int rc = VINF_SUCCESS;
     PPGMPOOLUSER paUsers = pPool->CTX_SUFF(paUsers);
 
-    LogFlow(("pgmPoolTrackInsert iUser %x iUserTable %x\n", iUser, iUserTable));
+    LogFlow(("pgmPoolTrackInsert GCPhys=%RGp iUser %x iUserTable %x\n", GCPhys, iUser, iUserTable));
 
 #ifdef VBOX_STRICT
     /*
