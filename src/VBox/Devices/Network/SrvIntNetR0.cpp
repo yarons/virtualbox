@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 16854 2009-02-17 15:50:47Z noreply@oracle.com $ */
+/* $Id: SrvIntNetR0.cpp 16856 2009-02-17 16:05:48Z noreply@oracle.com $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -4122,7 +4122,7 @@ INTNETR0DECL(int) INTNETR0Open(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
             break;
 
         case kIntNetTrunkType_NetFlt:
-        case kIntNetTrunkType_NetTap:
+        case kIntNetTrunkType_NetAdp:
             AssertReturn(pszTrunk, VERR_INVALID_PARAMETER);
             break;
 
