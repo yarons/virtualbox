@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 16918 2009-02-18 15:58:38Z noreply@oracle.com $ */
+/* $Id: PGMPool.cpp 16921 2009-02-18 16:31:09Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -585,7 +585,9 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
         STAM_PROFILE_STOP(&pPool->StatMonitorR3, a);
     }
     else if (    (   pPage->cModifications < 96 /* it's cheaper here. */
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+                  || pgmPoolIsActiveRootpage(pVM, pPage)
+#else
                   || pPage->fCR3Mix
 #endif
                   )
