@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 15841 2009-01-07 16:40:02Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib.cpp 16933 2009-02-18 23:42:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1529,7 +1529,7 @@ static int supLoadModule(const char *pszFilename, const char *pszModule, const c
      * Open image file and figure its size.
      */
     RTLDRMOD hLdrMod;
-    int rc = RTLdrOpen(pszFilename, &hLdrMod);
+    int rc = RTLdrOpen(pszFilename, 0, RTLDRARCH_HOST, &hLdrMod);
     if (!RT_SUCCESS(rc))
         return rc;
 
