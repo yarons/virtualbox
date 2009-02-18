@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 16546 2009-02-06 13:07:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-solaris.c 16888 2009-02-18 10:49:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -179,9 +179,6 @@ static void *g_pVBoxDrvSolarisState;
 
 /** Device extention & session data association structure */
 static SUPDRVDEVEXT         g_DevExt;
-
-/* GCC C++ hack. */
-unsigned __gxx_personality_v0 = 0xcccccccc;
 
 /** Hash table */
 static PSUPDRVSESSION       g_apSessionHashTab[19];
