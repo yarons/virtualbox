@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 16854 2009-02-17 15:50:47Z noreply@oracle.com $ */
+/* $Id: VBoxNetFlt.c 16927 2009-02-18 18:27:52Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1273,7 +1273,7 @@ DECLHIDDEN(int) vboxNetFltInitGlobalsBase(PVBOXNETFLTGLOBALS pGlobals)
             pGlobals->TrunkFactory.pfnRelease = vboxNetFltFactoryRelease;
             pGlobals->TrunkFactory.pfnCreateAndConnect = vboxNetFltFactoryCreateAndConnect;
 #if defined(RT_OS_WINDOWS) && defined(VBOX_TAPMINIPORT)
-            strcpy(pGlobals->SupDrvFactory.szName, "VBoxNetTap");
+            strcpy(pGlobals->SupDrvFactory.szName, "VBoxNetAdp");
 #else
             strcpy(pGlobals->SupDrvFactory.szName, "VBoxNetFlt");
 #endif
