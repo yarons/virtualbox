@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 16195 2009-01-23 11:56:46Z aleksey.ilyushin@oracle.com $ */
+/* $Id: log-vbox.cpp 17095 2009-02-24 20:08:20Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -417,7 +417,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
 # endif
 # if defined(DEBUG_aleksey)  /* Guest ring-0 as well */
-        RTLogGroupSettings(pLogger, "+net_flt_drv.e.l.f+srv_intnet.e.l.f");
+        RTLogGroupSettings(pLogger, "+net_tap_drv.e.l.f+net_flt_drv.e.l.f+srv_intnet.e.l.f");
         RTLogFlags(pLogger, "enabled unbuffered");
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER | RTLOGDEST_STDOUT;
 # endif
