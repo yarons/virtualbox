@@ -1,5 +1,5 @@
 /*
- * $Id: renderedge.h 17233 2009-03-02 10:37:38Z noreply@oracle.com $
+ * $Id: renderedge.h 43555 2009-03-02 10:37:38Z michael $
  *
  * Copyright © 2004 Keith Packard
  *
