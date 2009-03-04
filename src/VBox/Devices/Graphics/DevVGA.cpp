@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 17325 2009-03-04 08:44:25Z noreply@oracle.com $ */
+/* $Id: DevVGA.cpp 17326 2009-03-04 08:45:50Z noreply@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5280,7 +5280,7 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
     pThis->uMaskLatchAccess     = 0x3ff;
     pThis->cLatchAccesses       = 0;
     pThis->u64LastLatchedAccess = 0;
-
+    pThis->iMask                = 0;
 }
 
 
