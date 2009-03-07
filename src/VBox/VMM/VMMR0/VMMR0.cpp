@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 17421 2009-03-05 20:17:00Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 17525 2009-03-07 08:32:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1041,8 +1041,6 @@ VMMR0DECL(int) VMMR0EntryEx(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQHD
             case VMMR0_DO_GMM_FREE_PAGES:
             case VMMR0_DO_GMM_BALLOONED_PAGES:
             case VMMR0_DO_GMM_DEFLATED_BALLOON:
-            case VMMR0_DO_GMM_MAP_UNMAP_CHUNK:
-            case VMMR0_DO_GMM_SEED_CHUNK:
             /* On the mac we might not have a valid jmp buf, so check these as well. */
             case VMMR0_DO_VMMR0_INIT:
             case VMMR0_DO_VMMR0_TERM:
