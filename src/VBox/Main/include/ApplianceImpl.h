@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 17646 2009-03-10 17:47:31Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.h 17688 2009-03-11 12:38:18Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -187,3 +187,4 @@ private:
 };
 
 #endif // ____H_APPLIANCEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
