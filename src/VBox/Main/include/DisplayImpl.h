@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 16185 2009-01-22 17:34:15Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.h 17669 2009-03-11 09:56:29Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -175,6 +175,11 @@ public:
     }
 
     STDMETHOD(OnParallelPortChange) (IParallelPort *aParallelPort)
+    {
+        return S_OK;
+    }
+
+    STDMETHOD(OnStorageControllerChange) ()
     {
         return S_OK;
     }

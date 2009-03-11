@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 15916 2009-01-13 14:12:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 17669 2009-03-11 09:56:29Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -136,6 +136,11 @@ public:
     }
 
     STDMETHOD(OnParallelPortChange) (IParallelPort *aParallelPort)
+    {
+        return S_OK;
+    }
+
+    STDMETHOD(OnStorageControllerChange) ()
     {
         return S_OK;
     }
