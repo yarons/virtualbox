@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17755 2009-03-12 15:03:46Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 17756 2009-03-12 15:21:01Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1964,7 +1964,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
             if (vsdeHDCSATA.size() > 0)
             {
                 ComPtr<IStorageController> pController;
-                const Utf8Str &hdcVBox = vsdeHDCIDE.front()->strVbox;
+                const Utf8Str &hdcVBox = vsdeHDCSATA.front()->strVbox;
                 if (hdcVBox == "AHCI")
                 {
                     rc = pNewMachine->AddStorageController(Bstr("SATA"), StorageBus_SATA, pController.asOutParam());
@@ -1986,7 +1986,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
             {
                 ComPtr<IStorageController> pController;
                 StorageControllerType_T controllerType;
-                const Utf8Str &hdcVBox = vsdeHDCIDE.front()->strVbox;
+                const Utf8Str &hdcVBox = vsdeHDCSCSI.front()->strVbox;
                 if (hdcVBox == "LsiLogic")
                     controllerType = StorageControllerType_LsiLogic;
                 else if (hdcVBox == "BusLogic")
