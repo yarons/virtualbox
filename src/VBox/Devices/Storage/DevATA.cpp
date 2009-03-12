@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 17732 2009-03-12 11:15:24Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevATA.cpp 17733 2009-03-12 11:17:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5594,7 +5594,7 @@ static DECLCALLBACK(void) ataDetach(PPDMDEVINS pDevIns, unsigned iLUN)
  */
 static int ataConfigLun(PPDMDEVINS pDevIns, ATADevState *pIf)
 {
-    int             rc;
+    int             rc = VINF_SUCCESS;
     PDMBLOCKTYPE    enmType;
 
     /*
