@@ -1,4 +1,4 @@
-/* $Id: hardenedmain.cpp 17862 2009-03-13 22:51:44Z knut.osmundsen@oracle.com $ */
+/* $Id: hardenedmain.cpp 17863 2009-03-13 22:52:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox - Hardened main().
  */
@@ -21,12 +21,6 @@
 
 #include <VBox/sup.h>
 
-#ifdef RT_OS_DARWIN
-extern "C" DECLEXPORT(int) issetugid(void)
-{
-    return 0;
-}
-#endif
 
 int main(int argc, char **argv, char **envp)
 {
