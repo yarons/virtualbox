@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 17660 2009-03-11 08:18:09Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 18046 2009-03-17 22:30:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -355,6 +355,8 @@ VMMDECL(int) PGMR3PhysWriteExternal(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf,
  */
 static void pgmR3PhysLinkRamRange(PVM pVM, PPGMRAMRANGE pNew, PPGMRAMRANGE pPrev)
 {
+    AssertMsg(pNew->pszDesc, ("%RGp-%RGp\n", pNew->GCPhys, pNew->GCPhysLast));
+
     pgmLock(pVM);
 
     PPGMRAMRANGE pRam = pPrev ? pPrev->pNextR3 : pVM->pgm.s.pRamRangesR3;
