@@ -1,6 +1,6 @@
-/* $Id: VBoxManageDHCPServer.cpp 18023 2009-03-17 13:48:59Z noreply@oracle.com $ */
+/* $Id: VBoxManageDHCPServer.cpp 18072 2009-03-18 16:58:40Z noreply@oracle.com $ */
 /** @file
- * VBoxManage - Implementation of hostonlyif command.
+ * VBoxManage - Implementation of dhcpserver command.
  */
 
 /*
