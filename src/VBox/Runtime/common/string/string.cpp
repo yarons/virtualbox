@@ -1,4 +1,4 @@
-/* $Id: string.cpp 18055 2009-03-18 12:01:51Z noreply@oracle.com $ */
+/* $Id: string.cpp 18096 2009-03-19 16:25:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -37,6 +37,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include "internal/string.h"
+
 
 /**
  * Free string allocated by any of the non-UCS-2 string functions.
