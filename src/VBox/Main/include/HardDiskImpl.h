@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 17970 2009-03-16 19:08:16Z klaus.espenlaub@oracle.com $ */
+/* $Id: HardDiskImpl.h 18115 2009-03-20 13:10:58Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -55,6 +55,7 @@ public:
         List;
 
     class MergeChain;
+    class CloneChain;
 
     VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE (HardDisk)
 
