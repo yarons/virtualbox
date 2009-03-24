@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 18108 2009-03-20 11:04:44Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 18180 2009-03-24 13:26:12Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -334,8 +334,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage modifyhd         <uuid>|<filename>\n"
                  "                            settype normal|writethrough|immutable |\n"
-                 "                            autoreset on|off |\n"
-                 "                            compact\n"
+                 "                            autoreset on|off\n"
                  "\n");
     }
 
