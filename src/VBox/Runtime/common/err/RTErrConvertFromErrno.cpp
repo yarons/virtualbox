@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 16808 2009-02-17 01:28:43Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromErrno.cpp 18329 2009-03-26 17:20:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -435,6 +435,9 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 
 #ifdef EPROCLIM
         case EPROCLIM:          return VERR_MAX_PROCS_REACHED;
+#endif
+#ifdef EDOOFUS
+        case EDOOFUS:           return VERR_INTERNAL_ERROR;
 #endif
 
         default:
