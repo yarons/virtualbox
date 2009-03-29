@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18489 2009-03-29 01:38:31Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageImport.cpp 18490 2009-03-29 01:39:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -221,7 +221,7 @@ int handleImportAppliance(HandlerArg *a)
             uint32_t ulVsys = it->first;
             if (ulVsys >= cVirtualSystemDescriptions)
                 return errorSyntax(USAGE_IMPORTAPPLIANCE,
-                                   "Invalid index %RI32 with -vsys option; the OVF contains only %RI32 virtual system(s).",
+                                   "Invalid index %RI32 with -vsys option; the OVF contains only %zu virtual system(s).",
                                    ulVsys, cVirtualSystemDescriptions);
         }
 
