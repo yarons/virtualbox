@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 18615 2009-04-01 20:19:22Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructGC.cpp 18617 2009-04-01 22:11:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -520,7 +520,7 @@ int main()
     GEN_CHECK_OFF(PGM, HCPhysZeroPg);
     GEN_CHECK_OFF(PGM, pvZeroPgR3);
     GEN_CHECK_OFF(PGM, pvZeroPgR0);
-    GEN_CHECK_OFF(PGM, pvZeroPgGC);
+    GEN_CHECK_OFF(PGM, pvZeroPgRC);
     GEN_CHECK_OFF(PGM, cHandyPages);
     GEN_CHECK_OFF(PGM, aHandyPages);
     GEN_CHECK_OFF(PGM, aHandyPages[1]);
