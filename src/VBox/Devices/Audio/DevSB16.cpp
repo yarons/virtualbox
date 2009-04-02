@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 18497 2009-03-29 02:20:28Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSB16.cpp 18645 2009-04-02 15:38:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1835,7 +1835,7 @@ static DECLCALLBACK(int) sb16Construct (PPDMDEVINS pDevIns, int iInstance, PCFGM
         AUD_close_out(&s->card, s->voice);
         s->voice = NULL;
         AUD_init_null();
-        PDMDevHlpVMSetRuntimeError(pDevIns, false, "HostAudioNotResponding",
+        PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "HostAudioNotResponding",
             N_("No audio devices could be opened. Selecting the NULL audio backend "
                "with the consequence that no sound is audible"));
     }
