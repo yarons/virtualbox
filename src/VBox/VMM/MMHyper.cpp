@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 18718 2009-04-05 13:47:09Z knut.osmundsen@oracle.com $ */
+/* $Id: MMHyper.cpp 18719 2009-04-05 13:48:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -587,7 +587,7 @@ VMMR3DECL(int) MMR3HyperMapPages(PVM pVM, void *pvR3, RTR0PTR pvR0, size_t cPage
                 for (size_t i = 0; i < cPages; i++)
                 {
                     rc = PGMMap(pVM, GCPtr + (i << PAGE_SHIFT), paHCPhysPages[i], PAGE_SIZE, 0);
-                    AssertRCReturn(rc, rc);
+                    AssertRCBreak(rc);
                 }
             }
             if (RT_SUCCESS(rc))
