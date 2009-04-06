@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 18773 2009-04-06 15:12:27Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 18774 2009-04-06 15:18:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1869,7 +1869,7 @@ int handleShowVMInfo(HandlerArg *a)
     {
         switch (c)
         {
-            case 'V':   // --details
+            case 'D':   // --details
                 fDetails = true;
                 break;
 
