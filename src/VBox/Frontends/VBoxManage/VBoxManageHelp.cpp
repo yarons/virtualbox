@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 18782 2009-04-06 15:58:23Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 18809 2009-04-07 11:57:07Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -241,6 +241,15 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_EXPORTAPPLIANCE)
     {
         RTPrintf("VBoxManage export           <machines> --output|-o <ovf>\n"
+                 "                            [--legacy09]\n"
+                 "                            [--vsys <number of virtual system>]\n"
+                 "                                    [--product <product name>]\n"
+                 "                                    [--producturl <product url>]\n"
+                 "                                    [--vendor <vendor name>]\n"
+                 "                                    [--vendorurl <vendor url>]\n"
+                 "                                    [--version <version info>]\n"
+                 "                                    [--eula <license text>]\n"
+                 "                                    [--eulafile <filename>]\n"
                  "\n");
     }
 
