@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 18976 2009-04-17 07:22:59Z noreply@oracle.com $ */
+/* $Id: HWVMXR0.cpp 18984 2009-04-17 09:00:22Z noreply@oracle.com $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2135,7 +2135,7 @@ ResumeExecution:
     }
 #endif
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
-    PGMDynMapFlushAutoSet(pVM);
+    PGMDynMapFlushAutoSet(pVCpu);
 #endif
 
     /*
