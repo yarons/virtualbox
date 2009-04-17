@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 18972 2009-04-16 23:43:08Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-freebsd.c 19005 2009-04-17 20:06:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -626,10 +626,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RT
                 vm_object_deallocate(pObjectNew);
         }
         else
-        {
-            AssertMsgFailed(("Could not allocate VM object\n"));
-            rc = 1; /* @todo fix */
-        }
+            return VERR_NO_MEMORY;
     }
     else
     {
