@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 18927 2009-04-16 11:41:38Z noreply@oracle.com $ */
+/* $Id: TRPMGC.cpp 19015 2009-04-20 07:54:29Z noreply@oracle.com $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -87,7 +87,7 @@ VMMRCDECL(void) TRPMGCHyperReturnToHost(PVM pVM, int rc)
     PVMCPU pVCpu = VMMGetCpu0(pVM);
 
     LogFlow(("TRPMGCHyperReturnToHost: rc=%Rrc\n", rc));
-    TRPMResetTrap(pVM);
+    TRPMResetTrap(pVCpu);
     CPUMHyperSetCtxCore(pVCpu, NULL);
     VMMGCGuestToHost(pVM, rc);
     AssertReleaseFailed();
