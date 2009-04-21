@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 19068 2009-04-21 11:47:42Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageList.cpp 19070 2009-04-21 12:29:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -416,7 +416,6 @@ int handleList(HandlerArg *a)
             CHECK_ERROR (Host, COMGETTER(MemoryAvailable)(&memoryAvailable));
             RTPrintf("Memory available: %lu MByte\n", memoryAvailable);
 
-#if 0 /* not yet implemented in Main */
             Bstr operatingSystem;
             CHECK_ERROR (Host, COMGETTER(OperatingSystem)(operatingSystem.asOutParam()));
             RTPrintf("Operating system: %lS\n", operatingSystem.raw());
@@ -424,7 +423,6 @@ int handleList(HandlerArg *a)
             Bstr oSVersion;
             CHECK_ERROR (Host, COMGETTER(OSVersion)(oSVersion.asOutParam()));
             RTPrintf("Operating system version: %lS\n", oSVersion.raw());
-#endif
         }
         break;
 
