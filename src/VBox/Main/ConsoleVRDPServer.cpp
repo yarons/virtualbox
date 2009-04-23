@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 17669 2009-03-11 09:56:29Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 19134 2009-04-23 09:21:43Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -40,7 +40,8 @@
 #include <VBox/VRDPOrders.h>
 #endif /* VBOX_WITH_VRDP */
 
-class VRDPConsoleCallback : public IConsoleCallback
+class VRDPConsoleCallback : 
+    VBOX_SCRIPTABLE_IMPL(IConsoleCallback)
 {
 public:
     VRDPConsoleCallback (ConsoleVRDPServer *server) :

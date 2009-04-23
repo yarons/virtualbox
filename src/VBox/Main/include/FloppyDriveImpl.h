@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.h 16867 2009-02-17 17:00:56Z noreply@oracle.com $ */
+/* $Id: FloppyDriveImpl.h 19134 2009-04-23 09:21:43Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE FloppyDrive :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <FloppyDrive, IFloppyDrive>,
     public VirtualBoxSupportTranslation <FloppyDrive>,
-    public IFloppyDrive
+    VBOX_SCRIPTABLE_IMPL(IFloppyDrive)
 {
 public:
 

@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 17684 2009-03-11 12:15:33Z noreply@oracle.com $ */
+/* $Id: RemoteUSBDeviceImpl.h 19134 2009-04-23 09:21:43Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -34,7 +34,7 @@ class ATL_NO_VTABLE RemoteUSBDevice :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <RemoteUSBDevice, IHostUSBDevice>,
     public VirtualBoxSupportTranslation <RemoteUSBDevice>,
-    public IHostUSBDevice
+    VBOX_SCRIPTABLE_IMPL(IHostUSBDevice)
 {
 public:
 

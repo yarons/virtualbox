@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 17013 2009-02-23 12:37:31Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 19134 2009-04-23 09:21:43Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@ class ATL_NO_VTABLE AudioAdapter :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <AudioAdapter, IAudioAdapter>,
     public VirtualBoxSupportTranslation <AudioAdapter>,
-    public IAudioAdapter
+    VBOX_SCRIPTABLE_IMPL(IAudioAdapter)
 {
 public:
 
