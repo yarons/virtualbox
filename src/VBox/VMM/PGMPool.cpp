@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 18927 2009-04-16 11:41:38Z noreply@oracle.com $ */
+/* $Id: PGMPool.cpp 19141 2009-04-23 13:52:18Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -127,6 +127,8 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
  */
 int pgmR3PoolInit(PVM pVM)
 {
+    AssertCompile(NIL_PGMPOOL_IDX == 0);
+
     /*
      * Query Pool config.
      */
