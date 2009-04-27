@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19032 2009-04-20 15:03:08Z noreply@oracle.com $ */
+/* $Id: TMAll.cpp 19217 2009-04-27 15:00:59Z noreply@oracle.com $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -145,7 +145,7 @@ DECLINLINE(void) tmSchedule(PTMTIMER pTimer)
         VM_FF_SET(pVM, VM_FF_TIMER);
 #ifdef IN_RING3
         REMR3NotifyTimerPending(pVM);
-        VMR3NotifyFF(pVM, true);
+        VMR3NotifyGlobalFF(pVM, true);
 #endif
     }
 }
