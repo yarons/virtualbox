@@ -1,4 +1,4 @@
-# $Id: deftoimp.sed 13168 2008-10-10 11:46:18Z noreply@oracle.com $
+# $Id: deftoimp.sed 19297 2009-05-01 17:03:40Z knut.osmundsen@oracle.com $
 ## @file
 # SED script for generating a dummy .so from a windows .def file.
 #

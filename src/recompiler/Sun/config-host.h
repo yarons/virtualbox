@@ -1,4 +1,4 @@
-/* $Id: config-host.h 13731 2008-11-01 19:39:12Z noreply@oracle.com $ */
+/* $Id: config-host.h 19297 2009-05-01 17:03:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Sun host config - maintained by hand
  */

@@ -1,4 +1,4 @@
-/* $Id: config.h 15278 2008-12-10 19:22:20Z noreply@oracle.com $ */
+/* $Id: config.h 19297 2009-05-01 17:03:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Sun config - Maintained by hand
  */
