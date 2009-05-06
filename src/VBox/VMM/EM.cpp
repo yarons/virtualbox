@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19366 2009-05-05 11:58:07Z noreply@oracle.com $ */
+/* $Id: EM.cpp 19414 2009-05-06 08:36:26Z noreply@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3595,11 +3595,8 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
         /*
          * Start the virtual time.
          */
-        if (pVCpu->idCpu == 0)
-        {
-            rc = TMVirtualResume(pVM);
-            Assert(rc == VINF_SUCCESS);
-        }
+        rc = TMVirtualResume(pVM);
+        Assert(rc == VINF_SUCCESS);
         rc = TMCpuTickResume(pVCpu);
         Assert(rc == VINF_SUCCESS);
 
