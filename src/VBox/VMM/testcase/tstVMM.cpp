@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 19467 2009-05-07 00:44:03Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMM.cpp 19500 2009-05-07 18:23:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Testcase.
  */
@@ -104,11 +104,11 @@ DECLCALLBACK(int) tstTMWorker(PVM pVM, RTTEST hTest)
         {
             PTMTIMER pTimer = apTimers[i];
 
-            if (cLeft == RT_ELEMENTS(apTimers) / 2
-                && TMTimerIsActive(pTimer))
+            if (    cLeft == RT_ELEMENTS(apTimers) / 2
+                &&  TMTimerIsActive(pTimer))
             {
-                rc = TMTimerStop(pTimer);
-                RTTEST_CHECK_MSG(hTest, RT_SUCCESS(rc), (hTest, "TMTimerStop: %Rrc\n",  rc));
+//                rc = TMTimerStop(pTimer);
+//                RTTEST_CHECK_MSG(hTest, RT_SUCCESS(rc), (hTest, "TMTimerStop: %Rrc\n",  rc));
             }
             else
             {
