@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 19526 2009-05-08 14:06:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxService.cpp 19527 2009-05-08 14:09:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -501,6 +501,10 @@ int main(int argc, char **argv)
                     }
                 }
             } while (psz && *++psz);
+        }
+        else
+        {
+            /* @todo put in here commands without dashes (- or --). */
         }
     }
 
