@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19752 2009-05-15 18:32:16Z knut.osmundsen@oracle.com $ */
+/* $Id: TMInternal.h 19753 2009-05-15 18:35:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Internal header file.
  */
@@ -459,6 +459,7 @@ typedef struct TM
     STAMCOUNTER                 StatVirtualSyncGet;
     STAMCOUNTER                 StatVirtualSyncGetSetFF;
     STAMCOUNTER                 StatVirtualSyncGetELoop;
+    STAMCOUNTER                 StatVirtualSyncGetLocked;
     STAMCOUNTER                 StatVirtualPause;
     STAMCOUNTER                 StatVirtualResume;
     /* @} */
