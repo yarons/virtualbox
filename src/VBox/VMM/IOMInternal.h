@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 19470 2009-05-07 09:06:57Z noreply@oracle.com $ */
+/* $Id: IOMInternal.h 19716 2009-05-15 09:00:17Z noreply@oracle.com $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -323,7 +323,7 @@ typedef struct IOM
     R0PTRTYPE(PFNPGMR0PHYSHANDLER)  pfnMMIOHandlerR0;
     /** The RC address of IOMMMIOHandler. */
     RCPTRTYPE(PFNPGMRCPHYSHANDLER)  pfnMMIOHandlerRC;
-#if GC_ARCH_BITS == 64
+#if HC_ARCH_BITS == 64
     RTRCPTR                         padding;
 #endif
 
