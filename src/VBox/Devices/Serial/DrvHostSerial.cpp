@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 18645 2009-04-02 15:38:31Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostSerial.cpp 19809 2009-05-19 09:32:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -357,6 +357,10 @@ static DECLCALLBACK(int) drvHostSerialSetParameters(PPDMICHAR pInterface, unsign
 
     /* set serial port to raw input */
     termiosSetup->c_lflag = ~(ICANON | ECHO | ECHOE | ISIG);
+#ifdef RT_OS_SOLARIS
+    /* turn off other extended special characters in line mode */
+    termiosSetup->c_lflag &= ~(IEXTEN);
+#endif
 
     tcsetattr(pThis->DeviceFile, TCSANOW, termiosSetup);
     RTMemTmpFree(termiosSetup);
