@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19803 2009-05-19 08:33:18Z knut.osmundsen@oracle.com $ */
+/* $Id: TMInternal.h 19810 2009-05-19 09:59:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Internal header file.
  */
@@ -469,10 +469,12 @@ typedef struct TM
      * @{ */
     STAMCOUNTER                 StatPoll;
     STAMCOUNTER                 StatPollAlreadySet;
-    STAMCOUNTER                 StatPollVirtual;
-    STAMCOUNTER                 StatPollVirtualSync;
+    STAMCOUNTER                 StatPollELoop;
     STAMCOUNTER                 StatPollMiss;
     STAMCOUNTER                 StatPollRunning;
+    STAMCOUNTER                 StatPollSimple;
+    STAMCOUNTER                 StatPollVirtual;
+    STAMCOUNTER                 StatPollVirtualSync;
     /** @} */
     /** TMTimerPollGIP
      * @{ */
