@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 19866 2009-05-20 13:35:36Z knut.osmundsen@oracle.com $
+; $Id: SUPR0.def 19932 2009-05-23 01:42:49Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -118,6 +118,10 @@ EXPORTS
     RTThreadNativeSelf
     RTThreadSleep
     RTThreadYield
+    RTThreadPreemptIsEnabled
+    RTThreadPreemptIsPending
+    RTThreadPreemptDisable
+    RTThreadPreemptRestore
     RTMpOnAll
     RTMpOnOthers
     RTMpOnSpecific
