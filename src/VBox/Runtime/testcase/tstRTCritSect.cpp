@@ -1,4 +1,4 @@
-/* $Id: tstCritSect.cpp 19953 2009-05-23 23:59:06Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCritSect.cpp 19954 2009-05-24 00:00:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
