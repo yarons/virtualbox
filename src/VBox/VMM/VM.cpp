@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 20158 2009-05-29 15:25:31Z noreply@oracle.com $ */
+/* $Id: VM.cpp 20198 2009-06-02 14:45:01Z noreply@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2203,6 +2203,10 @@ static DECLCALLBACK(int) vmR3Reset(PVM pVM)
      * thru here and been told to enter the EMSTATE_WAIT_SIPI state.
      */
     VMCPU_ASSERT_STATE(pVCpu, VMCPUSTATE_STARTED);
+
+    /* Clear all pending forced actions. */
+    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_ALL_MASK & ~VMCPU_FF_REQUEST);
+
     if (pVCpu->idCpu != 0)
         return VINF_EM_RESET;
 
