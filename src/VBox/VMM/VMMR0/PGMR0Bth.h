@@ -1,4 +1,4 @@
-/* $Id: PGMR0Bth.h 20365 2009-06-08 00:19:18Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0Bth.h 20374 2009-06-08 00:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -23,8 +23,8 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault);
-RT_END_DECLS
+RT_C_DECLS_END
 
 

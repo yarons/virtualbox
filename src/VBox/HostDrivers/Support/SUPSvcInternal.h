@@ -1,4 +1,4 @@
-/* $Id: SUPSvcInternal.h 20366 2009-06-08 00:21:10Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPSvcInternal.h 20374 2009-06-08 00:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Service - Internal header.
  */
@@ -36,7 +36,7 @@
 #include <iprt/stdarg.h>
 #include <iprt/getopt.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** @name Common Helpers
  * @{ */
@@ -89,7 +89,7 @@ DECLCALLBACK(int)  supSvcGlobalTryStop(void *pvInstance);
 DECLCALLBACK(void) supSvcGlobalStopAndDestroy(void *pvInstance, bool fRunning);
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

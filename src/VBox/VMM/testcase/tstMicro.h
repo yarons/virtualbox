@@ -1,4 +1,4 @@
-/* $Id: tstMicro.h 20365 2009-06-08 00:19:18Z knut.osmundsen@oracle.com $ */
+/* $Id: tstMicro.h 20374 2009-06-08 00:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -117,7 +117,7 @@ typedef struct TSTMICRO
 } TSTMICRO, *PTSTMICRO;
 
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 DECLASM(void) idtOnly42(PTSTMICRO pTst);
 
@@ -142,6 +142,6 @@ DECLASM(void) tstTrapHandlerNoErr(void);
 DECLASM(void) tstTrapHandler(void);
 DECLASM(void) tstInterrupt42(void);
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif

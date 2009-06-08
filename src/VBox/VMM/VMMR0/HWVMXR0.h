@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 20365 2009-06-08 00:19:18Z knut.osmundsen@oracle.com $ */
+/* $Id: HWVMXR0.h 20374 2009-06-08 00:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -31,7 +31,7 @@
 #include <VBox/pgm.h>
 #include <VBox/hwacc_vmx.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** @defgroup grp_vmx_int   Internal
  * @ingroup grp_vmx
@@ -367,7 +367,7 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
 
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 
