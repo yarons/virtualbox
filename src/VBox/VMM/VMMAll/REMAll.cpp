@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 20421 2009-06-09 09:34:53Z noreply@oracle.com $ */
+/* $Id: REMAll.cpp 20431 2009-06-09 11:52:48Z noreply@oracle.com $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -100,7 +100,7 @@ static void remNotifyHandlerInsert(PVM pVM, PREMHANDLERNOTIFICATION pRec)
     do
     {
         idxFree = pVM->rem.s.idxFreeList;
-        if (idxFree == -1)
+        if (idxFree == (uint32_t)-1)
         {
             pFree = NULL;
             break;
