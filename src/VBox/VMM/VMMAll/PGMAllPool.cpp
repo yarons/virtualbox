@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 20763 2009-06-22 11:10:35Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 20764 2009-06-22 11:13:45Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1118,6 +1118,8 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
         pgmUnlock(pVM);
         return VINF_SUCCESS;
     }
+
+    Assert(pPage->enmKind != PGMPOOLKIND_FREE);
 
     /*
      * We should ALWAYS have the list head as user parameter. This
