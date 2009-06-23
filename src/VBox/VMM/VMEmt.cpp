@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 20663 2009-06-17 12:47:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VMEmt.cpp 20855 2009-06-23 16:33:25Z noreply@oracle.com $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -135,7 +135,10 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                  */
                 rc = VMR3WaitU(pUVCpu);
                 if (RT_FAILURE(rc))
+                {
+                    AssertFailed();
                     break;
+                }
             }
         }
         else
