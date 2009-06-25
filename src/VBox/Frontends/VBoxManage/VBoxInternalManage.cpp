@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 20864 2009-06-23 19:19:42Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxInternalManage.cpp 20928 2009-06-25 11:53:37Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,7 +32,7 @@
 #include <VBox/com/string.h>
 #include <VBox/com/Guid.h>
 #include <VBox/com/ErrorInfo.h>
-#include <VBox/com/errorprint2.h>
+#include <VBox/com/errorprint.h>
 
 #include <VBox/com/VirtualBox.h>
 
