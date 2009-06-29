@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 21025 2009-06-29 14:48:34Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxHDD.cpp 21030 2009-06-29 15:25:03Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2043,6 +2043,8 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
 
             pImageTo = pDiskTo->pLast;
             AssertPtrBreakStmt(pImageTo, rc = VERR_VD_IMAGE_NOT_FOUND);
+
+            cbSize = RT_MIN(cbSize, cbSizeFrom);
         }
         else
         {
