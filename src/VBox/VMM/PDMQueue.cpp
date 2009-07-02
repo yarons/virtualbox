@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21152 2009-07-02 11:49:05Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMQueue.cpp 21153 2009-07-02 11:50:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -800,7 +800,7 @@ static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
                 while (pCur->pNextR3)
                     pCur = pCur->pNextR3;
                 pCur->pNextR3 = pItems;
-                pItem = pPending;
+                pItems = pPending;
             }
         }
         return false;
