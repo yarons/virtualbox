@@ -1,6 +1,6 @@
-/* $Id: uvm.h 19217 2009-04-27 15:00:59Z noreply@oracle.com $ */
+/* $Id: uvm.h 21217 2009-07-04 14:26:39Z knut.osmundsen@oracle.com $ */
 /** @file
- * GVM - The Global VM Data.
+ * GVM - The Global VM Data. (VMM)
  */
 
 /*
