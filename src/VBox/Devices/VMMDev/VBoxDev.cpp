@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 21226 2009-07-05 17:37:04Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDev.cpp 21227 2009-07-05 19:50:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -28,7 +28,6 @@
 
 #define LOG_GROUP LOG_GROUP_DEV_VMM
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxGuest.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <VBox/mm.h>

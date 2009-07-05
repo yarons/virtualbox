@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 20814 2009-06-23 10:40:53Z noreply@oracle.com $ */
+/* $Id: DisplayImpl.h 21227 2009-07-05 19:50:18Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -29,7 +29,7 @@
 
 #include <iprt/semaphore.h>
 #include <VBox/pdmdrv.h>
-#include <VBox/VBoxGuest.h>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxVideo.h>
 
 class Console;
