@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 14303 2008-11-18 13:45:38Z noreply@oracle.com $ */
+/* $Id: darwin.cpp 21293 2009-07-07 08:01:25Z noreply@oracle.com $ */
 /** @file
  * Shared Clipboard: Mac OS X host.
  */
