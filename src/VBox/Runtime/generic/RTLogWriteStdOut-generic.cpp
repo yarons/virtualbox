@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteStdOut-generic.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
+/* $Id: RTLogWriteStdOut-generic.cpp 21337 2009-07-07 14:58:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Log To StdOut, Generic.
  */
@@ -28,12 +28,19 @@
  * additional information or have any questions.
  */
 
+
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
 #include <iprt/log.h>
+#include "internal/iprt.h"
 #include <stdio.h>
+
 
 RTDECL(void) RTLogWriteStdOut(const char *pch, size_t cb)
 {
     fwrite(pch, 1, cb, stdout);
     fflush(stdout);
 }
+RT_EXPORT_SYMBOL(RTLogWriteStdOut);
 

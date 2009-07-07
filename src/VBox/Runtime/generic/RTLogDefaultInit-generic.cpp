@@ -1,4 +1,4 @@
-/* $Id: RTLogDefaultInit-generic.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
+/* $Id: RTLogDefaultInit-generic.cpp 21337 2009-07-07 14:58:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Default Log Init, Generic Dummy.
  */
@@ -28,11 +28,16 @@
  * additional information or have any questions.
  */
 
+
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
 #include <iprt/log.h>
+
 
 RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 {
     return NULL;
 }
-
+RT_EXPORT_SYMBOL(RTLogDefaultInit);
 

@@ -1,10 +1,10 @@
-/** $Id: RTTimerLRCreate-generic.cpp 21337 2009-07-07 14:58:27Z knut.osmundsen@oracle.com $ */
+/* $Id: iprt.h 21337 2009-07-07 14:58:27Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Low Resolution Timers, Generic RTTimerLRCreate() Implementation.
+ * IPRT - Internal header for miscellaneous global defs and types.
  */
 
 /*
- * Copyright (C) 2006-2008 Sun Microsystems, Inc.
+ * Copyright (C) 2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,29 +28,27 @@
  * additional information or have any questions.
  */
 
+#ifndef ___internal_iprt_h
+#define ___internal_iprt_h
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
-#include <iprt/timer.h>
-#include "internal/iprt.h"
+#include <iprt/cdefs.h>
+#include <iprt/types.h>
 
-#include <iprt/err.h>
-#include <iprt/assert.h>
+/** @def RT_EXPORT_SYMBOL
+ * This define is really here just for the linux kernel.
+ * @param   Name        The symbol name.
+ */
+#if defined(RT_OS_LINUX) \
+ && defined(IN_RING0) \
+ && defined(IN_MODULE)
+# define bool linux_bool /* see r0drv/linux/the-linux-kernel.h */
+# include <linux/autoconf.h>
+# include <linux/module.h>
+# undef bool
+# define RT_EXPORT_SYMBOL(Name) EXPORT_SYMBOL(Name)
+#else
+# define RT_EXPORT_SYMBOL(Name) extern int g_rtExportSymbolDummyVariable
+#endif
 
-
-RTDECL(int) RTTimerLRCreate(PRTTIMERLR phTimerLR, uint32_t uMilliesInterval, PFNRTTIMERLR pfnTimer, void *pvUser)
-{
-    int rc = RTTimerLRCreateEx(phTimerLR, uMilliesInterval * UINT64_C(1000000), 0, pfnTimer, pvUser);
-    if (RT_SUCCESS(rc))
-    {
-        rc = RTTimerLRStart(*phTimerLR, 0);
-        if (RT_SUCCESS(rc))
-            return rc;
-        int rc2 = RTTimerLRDestroy(*phTimerLR); AssertRC(rc2);
-        *phTimerLR = NIL_RTTIMERLR;
-    }
-    return rc;
-}
-RT_EXPORT_SYMBOL(RTTimerLRCreate);
+#endif
 

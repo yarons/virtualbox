@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAll-generic.cpp 18805 2009-04-07 11:38:27Z noreply@oracle.com $ */
+/* $Id: RTFileReadAll-generic.cpp 21337 2009-07-07 14:58:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTFileReadAll, generic implementation.
  */
@@ -29,15 +29,16 @@
  */
 
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/file.h>
+#include "internal/iprt.h"
 
 
 RTDECL(int) RTFileReadAll(const char *pszFilename, void **ppvFile, size_t *pcbFile)
 {
     return RTFileReadAllEx(pszFilename, 0, RTFOFF_MAX, 0, ppvFile, pcbFile);
 }
+RT_EXPORT_SYMBOL(RTFileReadAll);
 
