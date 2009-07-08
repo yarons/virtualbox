@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 21227 2009-07-05 19:50:18Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.cpp 21410 2009-07-08 15:51:23Z michal.necasek@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5379,7 +5379,11 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
 # endif
                     RTLogPrintf("%c", ch);
 
+#ifndef VBOX
                     src += 4;
+#else
+                    src += 8; /* Every second byte of a plane is used in text mode. */
+#endif
                 }
                 if (cx_max != -1)
                     RTLogPrintf("\n");
