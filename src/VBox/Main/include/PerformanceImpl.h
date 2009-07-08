@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 19239 2009-04-28 13:19:14Z noreply@oracle.com $ */
+/* $Id: PerformanceImpl.h 21395 2009-07-08 13:30:34Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -187,6 +187,9 @@ public:
     void registerMetric (pm::Metric *metric);
     void unregisterBaseMetricsFor (const ComPtr <IUnknown> &object);
     void unregisterMetricsFor (const ComPtr <IUnknown> &object);
+
+    void suspendSampling();
+    void resumeSampling();
 
     // public methods for internal purposes only
     // (ensure there is a caller and a read lock before calling them!)
