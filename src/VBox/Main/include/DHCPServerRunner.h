@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.h 18208 2009-03-24 17:01:32Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DHCPServerRunner.h 21387 2009-07-08 10:34:06Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -63,14 +63,14 @@ public:
             return VERR_INVALID_STATE;
 
 #ifdef RT_OS_WINDOWS
-        if(val && strlen(val))
+        if (val && *val)
         {
             mOptions[opt] = "\"";
             mOptions[opt].append(val);
             mOptions[opt].append("\"");
         }
-#endif
         else
+#endif
         {
             mOptions[opt] = val;
         }
