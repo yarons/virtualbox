@@ -1,4 +1,4 @@
-/* $Id: fileaio-linux.cpp 21501 2009-07-10 21:18:54Z noreply@oracle.com $ */
+/* $Id: fileaio-linux.cpp 21503 2009-07-10 21:26:58Z noreply@oracle.com $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
@@ -62,7 +62,6 @@
 #include <iprt/thread.h>
 #include "internal/fileaio.h"
 
-#define _LINUX_BYTEORDER_SWAB_H
 #define _LINUX_BYTEORDER_SWABB_H
 #include <linux/aio_abi.h>
 #include <unistd.h>
