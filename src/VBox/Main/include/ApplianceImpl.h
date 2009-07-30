@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 21827 2009-07-28 09:20:30Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.h 21878 2009-07-30 12:42:08Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -85,7 +85,7 @@ public:
     /* private instance data */
 private:
     /** weak VirtualBox parent */
-    const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
+    const ComObjPtr<VirtualBox, ComWeakRef> mVirtualBox;
 
     struct Data;            // opaque, defined in ApplianceImpl.cpp
     Data *m;

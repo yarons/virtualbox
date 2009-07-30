@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 21823 2009-07-27 18:46:11Z noreply@oracle.com $ */
+/* $Id: HostNetworkInterfaceImpl.h 21878 2009-07-30 12:42:08Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -96,7 +96,7 @@ private:
     const Guid mGuid;
     HostNetworkInterfaceType_T mIfType;
 
-    ComObjPtr <VirtualBox, ComWeakRef> mVBox;
+    ComObjPtr<VirtualBox, ComWeakRef> mVBox;
 
     struct Data
     {
