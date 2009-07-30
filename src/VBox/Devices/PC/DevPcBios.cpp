@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 21874 2009-07-30 12:12:23Z noreply@oracle.com $ */
+/* $Id: DevPcBios.cpp 21883 2009-07-30 13:10:21Z noreply@oracle.com $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1533,7 +1533,6 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
                               "DmiChassisVersion\0"
                               "DmiChassisSerial\0"
                               "DmiChassisAssetTag\0"
-                              "DmiSystemVersion\0"
                               "DmiOEMVBoxVer\0"
                               "DmiOEMVBoxRev\0"))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
