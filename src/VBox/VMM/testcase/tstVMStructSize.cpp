@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 21987 2009-08-05 12:14:31Z noreply@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 21989 2009-08-05 12:22:13Z noreply@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -312,7 +312,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HWACCM, u64RegisterMask, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCM, vmx.hostCR4, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCM, vmx.msr.feature_ctrl, 8);
-    CHECK_MEMBER_ALIGNMENT(HWACCM, StatPatchSuccess, 8);
+    CHECK_MEMBER_ALIGNMENT(HWACCM, StatTPRPatchSuccess, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, StatEntry, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.proc_ctls, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, Event.intInfo, 8);

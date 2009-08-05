@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 21987 2009-08-05 12:14:31Z noreply@oracle.com $ */
+/* $Id: HWACCMInternal.h 21989 2009-08-05 12:22:13Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -450,8 +450,10 @@ typedef struct HWACCM
     bool                    fHWACCMR0Init;
     bool                    u8Alignment[7];
 
-    STAMCOUNTER             StatPatchSuccess;
-    STAMCOUNTER             StatPatchFailure;
+    STAMCOUNTER             StatTPRPatchSuccess;
+    STAMCOUNTER             StatTPRPatchFailure;
+    STAMCOUNTER             StatTPRReplaceSuccess;
+    STAMCOUNTER             StatTPRReplaceFailure;
 } HWACCM;
 /** Pointer to HWACCM VM instance data. */
 typedef HWACCM *PHWACCM;
