@@ -1,7 +1,6 @@
+/* $Id: tstPin.cpp 22077 2009-08-07 16:01:57Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Testcases:
- * Test the memory locking interface
+ * SUP Testcase - Memory locking interface (ring 3).
  */
 
 /*

@@ -1,6 +1,6 @@
-/** $Id: tstInt.cpp 20864 2009-06-23 19:19:42Z knut.osmundsen@oracle.com $ */
+/* $Id: tstInt.cpp 22077 2009-08-07 16:01:57Z knut.osmundsen@oracle.com $ */
 /** @file
- * Testcase: Test the interrupt gate feature of the support library.
+ * SUP Testcase - Test the interrupt gate feature of the support library.
  */
 
 /*

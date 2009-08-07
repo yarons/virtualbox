@@ -1,4 +1,4 @@
-/* $Id: SUPSvc-win.cpp 17091 2009-02-24 19:55:23Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPSvc-win.cpp 22077 2009-08-07 16:01:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Service - Windows Specific Code.
  */

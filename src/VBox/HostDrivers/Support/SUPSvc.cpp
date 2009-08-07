@@ -1,4 +1,4 @@
-/* $Id: SUPSvc.cpp 11725 2008-08-27 22:21:47Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPSvc.cpp 22077 2009-08-07 16:01:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Service - Common Code.
  */
