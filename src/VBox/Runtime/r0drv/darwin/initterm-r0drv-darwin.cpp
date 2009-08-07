@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-darwin.cpp 19919 2009-05-22 17:02:55Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Darwin.
  */
@@ -33,6 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-darwin-kernel.h"
+#include "internal/iprt.h"
+
 #include <iprt/err.h>
 #include <iprt/assert.h>
 #include "internal/initterm.h"
