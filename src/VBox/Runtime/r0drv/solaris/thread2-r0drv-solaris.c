@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 22073 2009-08-07 15:26:56Z knut.osmundsen@oracle.com $ */
+/* $Id: thread2-r0drv-solaris.c 22076 2009-08-07 15:45:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -111,7 +111,7 @@ int rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
                                 (void *)RTR0ProcHandleSelf(), TS_RUN, minclsyspri);
     if (pKernThread)
     {
-        *pNativeThread = (RTNATIVETHREAD)pvKernThread;
+        *pNativeThread = (RTNATIVETHREAD)pKernThread;
         return VINF_SUCCESS;
     }
 
