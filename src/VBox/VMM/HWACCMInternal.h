@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 22059 2009-08-07 11:46:14Z noreply@oracle.com $ */
+/* $Id: HWACCMInternal.h 22064 2009-08-07 12:31:24Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -601,6 +601,7 @@ typedef struct HWACCMCPU
 
         /* Number of automatically loaded/restored MSRs. */
         uint32_t                    cCachedMSRs;
+        uint32_t                    uAlignement;
 
         /** VMCS cache. */
         VMCSCACHE                   VMCSCache;
