@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 22173 2009-08-11 15:38:59Z noreply@oracle.com $ */
+/* $Id: HostImpl.h 22183 2009-08-11 17:00:33Z noreply@oracle.com $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -49,7 +49,7 @@ class Progress;
 
 namespace settings
 {
-    class Host;
+    struct Host;
 }
 
 #include <list>

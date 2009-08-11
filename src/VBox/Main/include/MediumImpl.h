@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 22173 2009-08-11 15:38:59Z noreply@oracle.com $ */
+/* $Id: MediumImpl.h 22183 2009-08-11 17:00:33Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -33,7 +33,7 @@
 class VirtualBox;
 namespace settings
 {
-    class Medium;
+    struct Medium;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

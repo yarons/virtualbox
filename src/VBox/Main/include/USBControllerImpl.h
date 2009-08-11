@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 22173 2009-08-11 15:38:59Z noreply@oracle.com $ */
+/* $Id: USBControllerImpl.h 22183 2009-08-11 17:00:33Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -36,7 +36,7 @@ class HostUSBDevice;
 
 namespace settings
 {
-    class USBController;
+    struct USBController;
 }
 
 /**
