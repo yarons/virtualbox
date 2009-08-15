@@ -1,4 +1,4 @@
-/* $Id: vbox.c 22248 2009-08-13 21:10:19Z noreply@oracle.com $ */
+/* $Id: vbox.c 22274 2009-08-15 20:44:22Z noreply@oracle.com $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -710,6 +710,9 @@ VBOXVHWACMD* vboxVHWACommandCreate (PPDEV ppdev, VBOXVHWACMD_TYPE enmCmd, VBOXVH
         pHdr->rc = VERR_GENERAL_FAILURE;
         pHdr->enmCmd = enmCmd;
     }
+
+    /* temporary hack */
+    vboxVHWACommandCheckHostCmds(ppdev);
 
     return pHdr;
 }
