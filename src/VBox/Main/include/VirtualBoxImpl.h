@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 22173 2009-08-11 15:38:59Z noreply@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 22305 2009-08-17 17:37:41Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -482,6 +482,5 @@ private:
      */
     ComObjPtr<VirtualBox, ComWeakRef> mVirtualBox;
 };
-
 #endif // ____H_VIRTUALBOXIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
