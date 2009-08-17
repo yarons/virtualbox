@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 22165 2009-08-11 13:50:17Z noreply@oracle.com $ */
+/* $Id: crservice.cpp 22284 2009-08-17 08:44:47Z noreply@oracle.com $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -70,7 +70,7 @@ static ULONG64 g_winId = 0;
 #define CR_USE_HGCM
 
 static const char* gszVBoxOGLSSMMagic = "***OpenGL state data***";
-#define SHCROGL_SSM_VERSION 5
+#define SHCROGL_SSM_VERSION 6
 
 typedef struct
 {
