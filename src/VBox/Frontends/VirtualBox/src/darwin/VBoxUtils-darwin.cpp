@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 22312 2009-08-17 23:33:30Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 22313 2009-08-17 23:34:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -409,7 +409,7 @@ void darwinDebugPrintEvent (const char *psz, EventRef evtRef)
       UInt32 keyCode = 0;
       ::GetEventParameter (evtRef, kEventParamKeyCode, typeUInt32, NULL,
                            sizeof (keyCode), NULL, &keyCode);
-      printf(" keyCode=%d (%#x) ", (unsigned)keyCode, (unsigned)keyCode);
+      printf(" keyCode=%d (%#x) ", (int)keyCode, (unsigned)keyCode);
 
       char macCharCodes[8] = {0,0,0,0, 0,0,0,0};
       ::GetEventParameter (evtRef, kEventParamKeyCode, typeChar, NULL,
