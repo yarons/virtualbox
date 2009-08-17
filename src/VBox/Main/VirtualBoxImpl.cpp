@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22295 2009-08-17 13:10:16Z noreply@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 22304 2009-08-17 15:55:30Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1560,7 +1560,10 @@ STDMETHODIMP VirtualBox::SetExtraData(IN_BSTR aKey,
 
         AutoWriteLock alock(this);
 
-        m_pMainConfigFile->mapExtraDataItems[strKey] = strValue;
+        if (strValue.isEmpty())
+            m_pMainConfigFile->mapExtraDataItems.erase(strKey);
+        else
+            m_pMainConfigFile->mapExtraDataItems[strKey] = strValue;
                 // creates a new key if needed
 
         /* save settings on success */
