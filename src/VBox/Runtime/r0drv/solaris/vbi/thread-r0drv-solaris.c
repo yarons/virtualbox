@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22424 2009-08-24 16:45:25Z noreply@oracle.com $ */
+/* $Id: thread-r0drv-solaris.c 22427 2009-08-25 08:50:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -40,7 +40,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mp.h>
-
+#include <sys/spl.h>
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
