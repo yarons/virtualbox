@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 22211 2009-08-12 16:05:19Z noreply@oracle.com $ */
+/* $Id: NetIf-win.cpp 22472 2009-08-26 14:19:20Z noreply@oracle.com $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -629,7 +629,7 @@ int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
             Bstr name;
             Bstr bstrErr;
 
-            hrc = VBoxNetCfgWinCreateHostOnlyNetworkInterface (guid.asOutParam(), name.asOutParam(), bstrErr.asOutParam());
+            hrc = VBoxNetCfgWinCreateHostOnlyNetworkInterface (NULL, false, guid.asOutParam(), name.asOutParam(), bstrErr.asOutParam());
 
             if (hrc == S_OK)
             {
