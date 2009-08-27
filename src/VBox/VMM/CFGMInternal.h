@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 14070 2008-11-10 23:45:24Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGMInternal.h 22526 2009-08-27 13:52:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -48,7 +48,7 @@ typedef union CFGMVALUE
     struct CFGMVALUE_STRING
     {
         /** Length of string. (In bytes, including the terminator.) */
-        size_t          cch;
+        size_t          cb;
         /** Pointer to the string. */
         char           *psz;
     } String;
