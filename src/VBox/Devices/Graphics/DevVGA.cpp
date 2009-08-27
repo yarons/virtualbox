@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 22483 2009-08-26 17:29:20Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA.cpp 22498 2009-08-27 09:33:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5387,6 +5387,7 @@ static DECLCALLBACK(int) vgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
 #endif
 }
 
+/** @copydoc FNSSMDEVLOADDONE */
 static DECLCALLBACK(int) vgaR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
 #ifndef VBOX_WITH_HGSMI
