@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 22480 2009-08-26 17:14:13Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 22560 2009-08-28 17:17:17Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -430,6 +430,7 @@ private:
     HRESULT removeSharedFolder (CBSTR aName);
 
     static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
+    static DECLCALLBACK(int) configGuestProperties(void *pvConsole);
     static int configNetwork(Console *pThis, const char *pszDevice,
                              unsigned uInstance, unsigned uLun,
                              INetworkAdapter *aNetworkAdapter,
