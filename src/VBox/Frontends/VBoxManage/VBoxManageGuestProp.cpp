@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22730 2009-09-03 09:43:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestProp.cpp 22734 2009-09-03 10:14:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -300,8 +300,8 @@ static int handleSetGuestProperty(HandlerArg *a)
     else if (a->argc == 5)
     {
         pszValue = a->argv[2];
-        if (   !strcmp(a->argv[3], "--flags")
-            && !strcmp(a->argv[3], "-flags"))
+        if (   strcmp(a->argv[3], "--flags")
+            && strcmp(a->argv[3], "-flags"))
             usageOK = false;
         pszFlags = a->argv[4];
     }
