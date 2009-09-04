@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22755 2009-09-03 15:25:09Z noreply@oracle.com $ */
+/* $Id: PGMInternal.h 22759 2009-09-04 08:06:30Z noreply@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -69,7 +69,7 @@
  * Optimization for PAE page tables that are modified often
  */
 #ifndef IN_RC
-# define PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+//# define PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
 #endif
 
 /**
