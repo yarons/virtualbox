@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22836 2009-09-08 12:57:09Z noreply@oracle.com $ */
+/* $Id: VBoxFBQGL.cpp 22846 2009-09-08 19:33:55Z noreply@oracle.com $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -129,7 +129,7 @@ void VBoxQGLFrameBuffer::paintEvent (QPaintEvent *pe)
         pw->vboxDoUpdateViewport(vp);
     }
 
-    pw->performDisplay();
+    pw->performDisplay(true);
 
     pw->swapBuffers();
 }
