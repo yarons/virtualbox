@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 20864 2009-06-23 19:19:42Z knut.osmundsen@oracle.com $ */
+/* $Id: tstMMHyperHeap.cpp 22890 2009-09-09 23:11:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -72,8 +72,8 @@ int main(int argc, char **argv)
     pUVM->pVM = pVM;
     pVM->pUVM = pUVM;
 
-    pVM->cCPUs = NUM_CPUS;
-    pVM->cbSelf = RT_UOFFSETOF(VM, aCpus[pVM->cCPUs]);
+    pVM->cCpus = NUM_CPUS;
+    pVM->cbSelf = RT_UOFFSETOF(VM, aCpus[pVM->cCpus]);
 
     rc = STAMR3InitUVM(pUVM);
     if (RT_FAILURE(rc))
