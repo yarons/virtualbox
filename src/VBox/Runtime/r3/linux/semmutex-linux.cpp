@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 22957 2009-09-11 13:04:19Z noreply@oracle.com $ */
+/* $Id: semmutex-linux.cpp 22958 2009-09-11 13:30:27Z noreply@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -231,14 +231,14 @@ static int rtsemMutexRequest(RTSEMMUTEX MutexSem, unsigned cMillies, bool fAutoR
             /* adjust the relative timeout */
             if (pTimeout)
             {
-                int64_t u64Diff = u64End - RTTimeSystemNanoTS();
-                if (u64Diff < 1000)
+                int64_t i64Diff = u64End - RTTimeSystemNanoTS();
+                if (i64Diff < 1000)
                 {
                     rc = VERR_TIMEOUT;
                     break;
                 }
-                ts.tv_sec  = u64Diff / 1000000000;
-                ts.tv_nsec = u64Diff % 1000000000;
+                ts.tv_sec  = i64Diff / 1000000000;
+                ts.tv_nsec = i64Diff % 1000000000;
             }
         }
 

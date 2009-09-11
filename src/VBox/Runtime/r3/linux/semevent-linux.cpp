@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 22956 2009-09-11 12:55:18Z noreply@oracle.com $ */
+/* $Id: semevent-linux.cpp 22958 2009-09-11 13:30:27Z noreply@oracle.com $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -251,14 +251,14 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fAutoResu
         /* adjust the relative timeout */
         if (pTimeout)
         {
-            int64_t u64Diff = u64End - RTTimeSystemNanoTS();
-            if (u64Diff < 1000)
+            int64_t i64Diff = u64End - RTTimeSystemNanoTS();
+            if (i64Diff < 1000)
             {
                 rc = VERR_TIMEOUT;
                 break;
             }
-            ts.tv_sec  = u64Diff / 1000000000;
-            ts.tv_nsec = u64Diff % 1000000000;
+            ts.tv_sec  = i64Diff / 1000000000;
+            ts.tv_nsec = i64Diff % 1000000000;
         }
     }
 
