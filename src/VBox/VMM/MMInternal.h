@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 22935 2009-09-10 23:43:12Z knut.osmundsen@oracle.com $ */
+/* $Id: MMInternal.h 22939 2009-09-11 00:00:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Internal header file.
  */
@@ -87,7 +87,7 @@ typedef struct MMHEAPSTAT
     size_t                  cbCurAllocated;
 #endif
 } MMHEAPSTAT;
-#if defined(MMR3HEAP_WITH_STATISTICS) && !defined(IN_RING3)
+#if defined(MMR3HEAP_WITH_STATISTICS) && defined(IN_RING3)
 AssertCompileMemberAlignment(MMHEAPSTAT, cAllocations, 8);
 #endif
 /** Pointer to heap statistics record. */
