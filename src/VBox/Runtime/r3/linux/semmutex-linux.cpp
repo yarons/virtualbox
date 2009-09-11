@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 22958 2009-09-11 13:30:27Z noreply@oracle.com $ */
+/* $Id: semmutex-linux.cpp 22959 2009-09-11 13:45:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -37,6 +37,7 @@
 #include <iprt/thread.h>
 #include <iprt/asm.h>
 #include <iprt/err.h>
+#include <iprt/time.h>
 #include "internal/magics.h"
 #include "internal/strict.h"
 
