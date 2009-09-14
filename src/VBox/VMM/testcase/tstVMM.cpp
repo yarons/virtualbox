@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 19537 2009-05-08 18:09:57Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMM.cpp 23011 2009-09-14 15:57:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Testcase.
  */
@@ -295,8 +295,7 @@ int main(int argc, char **argv)
                 RTTestSub(hTest, "TM");
                 for (VMCPUID idCpu = 1; idCpu < g_cCpus; idCpu++)
                 {
-                    PVMREQ pReq = NULL;
-                    rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,  (PFNRT)tstTMWorker, 2, pVM, hTest);
+                    rc = VMR3ReqCallNoWaitU(pVM->pUVM, idCpu, (PFNRT)tstTMWorker, 2, pVM, hTest);
                     if (RT_FAILURE(rc))
                         RTTestFailed(hTest, "VMR3ReqCall failed: rc=%Rrc\n", rc);
                 }

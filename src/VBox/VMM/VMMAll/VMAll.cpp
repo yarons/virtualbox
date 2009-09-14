@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 22915 2009-09-10 13:43:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VMAll.cpp 23011 2009-09-14 15:57:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -260,7 +260,6 @@ VMMDECL(int) VMSetRuntimeErrorV(PVM pVM, uint32_t fFlags, const char *pszErrorId
      * va_end and return.
      */
     int rc;
-    PVMREQ pReq;
     if (    !(fFlags & VMSETRTERR_FLAGS_NO_WAIT)
         ||  VM_IS_EMT(pVM))
     {
@@ -268,22 +267,18 @@ VMMDECL(int) VMSetRuntimeErrorV(PVM pVM, uint32_t fFlags, const char *pszErrorId
 
         va_list va2;
         va_copy(va2, va); /* Have to make a copy here or GCC will break. */
-        rc = VMR3ReqCallU(pVM->pUVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, VMREQFLAGS_VBOX_STATUS,
-                          (PFNRT)vmR3SetRuntimeErrorV, 5, pVM, fFlags, pszErrorId, pszFormat, &va2);
+        rc = VMR3ReqCallWaitU(pVM->pUVM, VMCPUID_ANY,
+                              (PFNRT)vmR3SetRuntimeErrorV, 5, pVM, fFlags, pszErrorId, pszFormat, &va2);
         va_end(va2);
-        if (RT_SUCCESS(rc))
-            rc = pReq->iStatus;
     }
     else
     {
         char *pszMessage = MMR3HeapAPrintfV(pVM, MM_TAG_VM, pszFormat, va);
-
-        rc = VMR3ReqCallU(pVM->pUVM, VMCPUID_ANY, &pReq, 0, VMREQFLAGS_VBOX_STATUS | VMREQFLAGS_NO_WAIT,
-                          (PFNRT)vmR3SetRuntimeError, 4, pVM, fFlags, pszErrorId, pszMessage);
+        rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY,
+                                (PFNRT)vmR3SetRuntimeError, 4, pVM, fFlags, pszErrorId, pszMessage);
         if (RT_FAILURE(rc))
             MMR3HeapFree(pszMessage);
     }
-    VMR3ReqFree(pReq);
 
 #else
     /*
