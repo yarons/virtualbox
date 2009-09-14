@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 23011 2009-09-14 15:57:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDev.cpp 23015 2009-09-14 17:00:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -245,14 +245,9 @@ void VMMDevCtlSetGuestFilterMask (VMMDevState *pVMMDevState,
     }
     else
     {
-        int rc;
-        PVMREQ pReq;
-
-        rc = VMR3ReqCallVoid (pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT,
-                              (PFNRT) vmmdevCtlGuestFilterMask_EMT,
-                              3, pVMMDevState, u32OrMask, u32NotMask);
+        int rc = VMR3ReqCallVoidWait (pVM, VMCPUID_ANY, (PFNRT) vmmdevCtlGuestFilterMask_EMT,
+                                      3, pVMMDevState, u32OrMask, u32NotMask);
         AssertReleaseRC (rc);
-        VMR3ReqFree (pReq);
     }
 }
 
