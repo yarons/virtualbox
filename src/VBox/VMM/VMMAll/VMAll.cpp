@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 23011 2009-09-14 15:57:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VMAll.cpp 23012 2009-09-14 16:38:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -84,10 +84,8 @@ VMMDECL(int) VMSetErrorV(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat
      */
     va_list va2;
     va_copy(va2, args); /* Have to make a copy here or GCC will break. */
-    PVMREQ pReq;
-    VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetErrorUV, 7,   /* ASSUMES 3 source pos args! */
-                pVM->pUVM, rc, RT_SRC_POS_ARGS, pszFormat, &va2);
-    VMR3ReqFree(pReq);
+    VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)vmR3SetErrorUV, 7,   /* ASSUMES 3 source pos args! */
+                    pVM->pUVM, rc, RT_SRC_POS_ARGS, pszFormat, &va2);
     va_end(va2);
 
 #else

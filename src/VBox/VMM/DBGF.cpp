@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 22890 2009-09-09 23:11:31Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 23012 2009-09-14 16:38:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -852,13 +852,8 @@ VMMR3DECL(int) DBGFR3Attach(PVM pVM)
     /*
      * Call the VM, use EMT for serialization.
      */
-    PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3Attach, 1, pVM);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-
-    return rc;
+    /** @todo SMP */
+    return VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)dbgfR3Attach, 1, pVM);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 23011 2009-09-14 15:57:38Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMM.cpp 23012 2009-09-14 16:38:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Testcase.
  */
@@ -280,13 +280,9 @@ int main(int argc, char **argv)
             case kTstVMMTest_VMM:
             {
                 RTTestSub(hTest, "VMM");
-                PVMREQ pReq1 = NULL;
-                rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)VMMDoTest, 1, pVM);
+                rc = VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)VMMDoTest, 1, pVM);
                 if (RT_FAILURE(rc))
-                    RTTestFailed(hTest, "VMR3ReqCall failed: rc=%Rrc\n", rc);
-                else if (RT_FAILURE(pReq1->iStatus))
                     RTTestFailed(hTest, "VMMDoTest failed: rc=%Rrc\n", rc);
-                VMR3ReqFree(pReq1);
                 break;
             }
 
@@ -300,13 +296,9 @@ int main(int argc, char **argv)
                         RTTestFailed(hTest, "VMR3ReqCall failed: rc=%Rrc\n", rc);
                 }
 
-                PVMREQ pReq1 = NULL;
-                rc = VMR3ReqCall(pVM, 0, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)tstTMWorker, 2, pVM, hTest);
+                rc = VMR3ReqCallWait(pVM, 0 /*idDstCpu*/, (PFNRT)tstTMWorker, 2, pVM, hTest);
                 if (RT_FAILURE(rc))
-                    RTTestFailed(hTest, "VMR3ReqCall failed: rc=%Rrc\n", rc);
-                else if (RT_FAILURE(pReq1->iStatus))
                     RTTestFailed(hTest, "VMMDoTest failed: rc=%Rrc\n", rc);
-                VMR3ReqFree(pReq1);
                 break;
             }
         }
