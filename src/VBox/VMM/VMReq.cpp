@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 23016 2009-09-14 17:05:37Z knut.osmundsen@oracle.com $ */
+/* $Id: VMReq.cpp 23017 2009-09-14 17:08:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -72,6 +72,8 @@ static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq);
  * @param   cArgs           Number of arguments following in the ellipsis.
  *                          Not possible to pass 64-bit arguments!
  * @param   ...             Function arguments.
+ *
+ * @todo    Add fFlags...
  */
 VMMR3DECL(int) VMR3ReqCall(PVM pVM, VMCPUID idDstCpu, PVMREQ *ppReq, unsigned cMillies, PFNRT pfnFunction, unsigned cArgs, ...)
 {
