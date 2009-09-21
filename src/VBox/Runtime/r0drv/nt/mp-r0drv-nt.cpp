@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23173 2009-09-21 09:53:51Z noreply@oracle.com $ */
+/* $Id: mp-r0drv-nt.cpp 23177 2009-09-21 10:05:18Z noreply@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -40,6 +40,7 @@
 #include <iprt/asm.h>
 #include "r0drv/mp-r0drv.h"
 #include "internal-r0drv-nt.h"
+#include "internal/mp.h"
 
 
 /*******************************************************************************
