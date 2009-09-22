@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 22173 2009-08-11 15:38:59Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 23223 2009-09-22 15:50:03Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -94,8 +94,6 @@ public:
         COM_INTERFACE_ENTRY  (IStorageController)
         COM_INTERFACE_ENTRY2 (IDispatch, IStorageController)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (StorageController)
 

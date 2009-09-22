@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 22982 2009-09-13 22:17:34Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxInternalManage.cpp 23223 2009-09-22 15:50:03Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1351,7 +1351,7 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
 
     if (fRegister)
     {
-        ComPtr<IHardDisk> hardDisk;
+        ComPtr<IMedium> hardDisk;
         CHECK_ERROR(aVirtualBox, OpenHardDisk(filename, AccessMode_ReadWrite, false, Bstr(""), false, Bstr(""), hardDisk.asOutParam()));
     }
 
