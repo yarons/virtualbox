@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 23235 2009-09-22 18:15:56Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumImpl.cpp 23257 2009-09-23 13:30:15Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -38,6 +38,8 @@
 #include <iprt/path.h>
 #include <iprt/file.h>
 #include <iprt/tcp.h>
+
+#include <VBox/VBoxHDD.h>
 
 #include <algorithm>
 
