@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 23223 2009-09-22 15:50:03Z klaus.espenlaub@oracle.com $ */
+/* $Id: DHCPServerImpl.h 23319 2009-09-25 09:20:29Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -25,7 +25,8 @@
 #define ____H_H_DHCPSERVERIMPL
 
 #include "VirtualBoxBase.h"
-#include "VirtualBoxImpl.h"
+
+class VirtualBox;
 
 #ifdef VBOX_WITH_HOSTNETIF_API
 struct NETIFINFO;
