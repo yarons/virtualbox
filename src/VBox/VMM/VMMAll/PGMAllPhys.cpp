@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 22753 2009-09-03 14:15:18Z noreply@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 23393 2009-09-28 17:24:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -447,6 +447,9 @@ int pgmPhysPageMakeWritable(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
         case PGM_PAGE_STATE_WRITE_MONITORED:
             PGM_PAGE_SET_WRITTEN_TO(pPage);
             PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_ALLOCATED);
+            Assert(pVM->pgm.s.cMonitoredPages > 0);
+            pVM->pgm.s.cMonitoredPages--;
+            pVM->pgm.s.cWrittenToPages++;
             /* fall thru */
         default: /* to shut up GCC */
         case PGM_PAGE_STATE_ALLOCATED:
