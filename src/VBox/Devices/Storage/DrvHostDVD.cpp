@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 22277 2009-08-16 21:12:50Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostDVD.cpp 23408 2009-09-29 14:48:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -362,7 +362,7 @@ DECLCALLBACK(int) drvHostDvdPoll(PDRVHOSTBASE pThis)
             fMediaChanged = true;
     }
     else
-        fMediaChanged = true;
+        fMediaPresent = false;
 
 #else
 # error "Unsupported platform."
