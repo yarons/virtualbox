@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17626 2009-03-10 13:17:19Z ramshankar.venkataraman@oracle.com $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
