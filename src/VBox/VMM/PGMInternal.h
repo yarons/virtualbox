@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 23478 2009-10-01 13:12:06Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 23479 2009-10-01 13:12:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1016,7 +1016,7 @@ typedef PPGMPAGE *PPPGMPAGE;
 
 
 /** Max number of locks on a page. */
-#define PGM_PAGE_MAX_LOCKS                  256
+#define PGM_PAGE_MAX_LOCKS                  254
 
 /** Get the read lock count.
  * @returns count.
