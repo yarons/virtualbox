@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 19171 2009-04-24 15:35:54Z klaus.espenlaub@oracle.com $ */
+/* $Id: fs.cpp 23620 2009-10-08 14:22:42Z noreply@oracle.com $ */
 /** @file
  * IPRT - File System.
  */
@@ -195,7 +195,7 @@ bool rtFsModeIsValidPermissions(RTFMODE fMode)
 void rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat, const char *pszName, unsigned cbName)
 {
     pObjInfo->cbObject    = pStat->st_size;
-    pObjInfo->cbAllocated = pStat->st_size;
+    pObjInfo->cbAllocated = pStat->st_blocks * 512;
 
 #ifdef HAVE_STAT_NSEC
     RTTimeSpecAddNano(RTTimeSpecSetSeconds(&pObjInfo->AccessTime,       pStat->st_atime),     pStat->st_atimensec);
