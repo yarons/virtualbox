@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23664 2009-10-10 00:23:35Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 23670 2009-10-10 03:08:58Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10410,7 +10410,12 @@ HRESULT SessionMachine::setMachineState (MachineState_T aMachineState)
         }
     }
 
+#ifdef VBOX_WITH_LIVE_MIGRATION /** @todo fix this properly... a new state for indicating migration? */
+    if (   deleteSavedState
+        && !mSSData->mStateFilePath.isNull())
+#else
     if (deleteSavedState)
+#endif
     {
         if (mRemoveSavedState)
         {
