@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 23700 2009-10-12 15:12:21Z noreply@oracle.com $ */
+/* $Id: SUPLib.cpp 23704 2009-10-12 15:45:34Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -468,6 +468,7 @@ static int supInitFake(PSUPDRVSESSION *ppSession)
         { "RTAssertMsg1",                           0xefef0043 },
         { "RTAssertMsg2",                           0xefef0044 },
         { "RTAssertMsg2V",                          0xefef0045 },
+        { "SUPR0QueryVTCaps",                       0xefef0046 },
     };
 
     /* fake r0 functions. */
