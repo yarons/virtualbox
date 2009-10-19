@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 23539 2009-10-04 20:42:05Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 23853 2009-10-19 11:33:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3666,7 +3666,7 @@ DECLINLINE(int) pgmR0DynMapHCPageInlined(PPGM pPGM, RTHCPHYS HCPhys, void **ppv)
  *
  * @returns See PGMDynMapGCPage.
  * @param   pPGM        Pointer to the PVM instance data.
- * @param   HCPhys      The physical address of the page.
+ * @param   GCPhys      The guest physical address of the page.
  * @param   ppv         Where to store the mapping address.
  */
 DECLINLINE(int) pgmR0DynMapGCPageInlined(PPGM pPGM, RTGCPHYS GCPhys, void **ppv)
