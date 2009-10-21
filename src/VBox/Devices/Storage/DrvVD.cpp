@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 23194 2009-09-21 14:51:49Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVD.cpp 23950 2009-10-21 19:25:12Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -246,7 +246,7 @@ static DECLCALLBACK(int) drvvdAsyncIOOpen(void *pvUser, const char *pszLocation,
         pStorageBackend->fSyncIoPending = false;
         pStorageBackend->pfnCompleted   = pfnCompleted;
 
-        int rc = RTSemEventCreate(&pStorageBackend->EventSem);
+        rc = RTSemEventCreate(&pStorageBackend->EventSem);
         if (RT_SUCCESS(rc))
         {
             rc = PDMDrvHlpPDMAsyncCompletionTemplateCreate(pDrvVD->pDrvIns, &pStorageBackend->pTemplate,
