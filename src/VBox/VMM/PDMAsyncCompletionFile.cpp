@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 23973 2009-10-22 12:34:22Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFile.cpp 24047 2009-10-23 17:52:58Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -666,15 +666,16 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                         }
                     }
 
-                    /* Check for an idling one or create new if not found */
-                    if (!pEpClassFile->pAioMgrHead)
+                    pAioMgr = pEpClassFile->pAioMgrHead;
+
+                    /* Check for an idling not failsafe one or create new if not found */
+                    while (pAioMgr && pAioMgr->fFailsafe)
+                        pAioMgr = pAioMgr->pNext;
+
+                    if (!pAioMgr)
                     {
                         rc = pdmacFileAioMgrCreate(pEpClassFile, &pAioMgr, false);
                         AssertRC(rc);
-                    }
-                    else
-                    {
-                        pAioMgr = pEpClassFile->pAioMgrHead;
                     }
                 }
 
