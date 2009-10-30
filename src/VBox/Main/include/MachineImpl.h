@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24136 2009-10-28 12:48:41Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 24196 2009-10-30 14:39:34Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -205,7 +205,7 @@ public:
      */
     struct SSData
     {
-        Bstr mStateFilePath;
+        Utf8Str mStateFilePath;
     };
 
     /**
@@ -1018,7 +1018,7 @@ private:
 
         // used when saving state
         Guid mProgressId;
-        Bstr mStateFilePath;
+        Utf8Str mStateFilePath;
     };
 
     struct Uninit
