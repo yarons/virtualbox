@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24215 2009-10-30 18:35:42Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumImpl.cpp 24230 2009-10-30 22:58:21Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -89,8 +89,8 @@ struct Medium::Data
     Data()
         : state(MediumState_NotCreated),
           size(0),
-          preLockState(MediumState_NotCreated),
           readers(0),
+          preLockState(MediumState_NotCreated),
           queryInfoSem(NIL_RTSEMEVENTMULTI),
           queryInfoRunning(false),
           type(MediumType_Normal),
