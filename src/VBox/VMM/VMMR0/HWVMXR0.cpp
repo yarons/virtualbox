@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 24283 2009-11-03 10:45:09Z noreply@oracle.com $ */
+/* $Id: HWVMXR0.cpp 24284 2009-11-03 10:46:27Z noreply@oracle.com $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2736,7 +2736,7 @@ ResumeExecution:
 
     /* Sync back the TPR if it was changed. */
     if (    fSetupTPRCaching
-        &&  u8LastTPR != pVCpu->hwaccm.s.vmx.pVAPIC[0x80]
+        &&  u8LastTPR != pVCpu->hwaccm.s.vmx.pVAPIC[0x80])
     {
         rc = PDMApicSetTPR(pVCpu, pVCpu->hwaccm.s.vmx.pVAPIC[0x80]);
         AssertRC(rc);
