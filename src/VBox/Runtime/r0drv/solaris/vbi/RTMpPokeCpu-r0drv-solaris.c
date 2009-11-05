@@ -1,4 +1,4 @@
-/* $Id: RTMpPokeCpu-r0drv-solaris.c 22073 2009-08-07 15:26:56Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpPokeCpu-r0drv-solaris.c 24386 2009-11-05 14:17:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - RTMpPokeCpu, Solaris Implementation.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-solaris-kernel.h"
+#include "../the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/mp.h>
 
