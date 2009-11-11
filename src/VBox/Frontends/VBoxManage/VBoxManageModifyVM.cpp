@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24493 2009-11-09 11:59:49Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 24599 2009-11-11 17:09:45Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -301,9 +301,17 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_FIRMWARE:
             {
-                if (!strcmp(ValueUnion.psz, "efi"))
+                if (!strcmp(ValueUnion.psz, "efi") || !strcmp(ValueUnion.psz, "efi32"))
                 {
                     CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_EFI));
+                }
+                else if (!strcmp(ValueUnion.psz, "efi64"))
+                {
+                    CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_EFI64));
+                }
+                else if (!strcmp(ValueUnion.psz, "efidual"))
+                {
+                    CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_EFIDUAL));
                 }
                 else if (!strcmp(ValueUnion.psz, "bios"))
                 {
