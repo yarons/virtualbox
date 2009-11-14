@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24558 2009-11-10 15:59:07Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 24663 2009-11-14 23:55:15Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -311,7 +311,7 @@ public:
         typedef std::list<GuestProperty> GuestPropertyList;
         GuestPropertyList mGuestProperties;
         BOOL           mPropertyServiceActive;
-        Bstr           mGuestPropertyNotificationPatterns;
+        Utf8Str        mGuestPropertyNotificationPatterns;
 
         FirmwareType_T mFirmwareType;
     };
