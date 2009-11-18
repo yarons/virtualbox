@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltMp-win.c 24190 2009-10-30 14:03:30Z noreply@oracle.com $ */
+/* $Id: VBoxNetFltMp-win.c 24758 2009-11-18 12:57:48Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Miniport edge of ndis filter driver
  */
@@ -740,11 +740,12 @@ static NDIS_STATUS vboxNetFltWinMpInitialize(
                             {
                                 Assert(vboxNetFltWinGetOpState(&pAdapt->MPState) == kVBoxNetDevOpState_Initialized);
                                 vboxNetFltWinSetOpState(&pAdapt->MPState, kVBoxNetDevOpState_Initialized);
-
+#if 0
                                 NdisMIndicateStatus(pAdapt->hMiniportHandle,
                                                          NDIS_STATUS_MEDIA_CONNECT,
                                                          (PVOID)NULL,
                                                          0);
+#endif
                             }
                             else
                             {
