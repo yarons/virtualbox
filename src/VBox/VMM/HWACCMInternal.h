@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 24243 2009-11-02 10:24:15Z noreply@oracle.com $ */
+/* $Id: HWACCMInternal.h 24813 2009-11-20 08:44:56Z noreply@oracle.com $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -413,6 +413,9 @@ typedef struct HWACCM
         RTHCPHYS                    pIOBitmapPhys;
         /** Virtual address of the IO bitmap. */
         R0PTRTYPE(void *)           pIOBitmap;
+
+        /* HWCR msr (for diagnostics) */
+        uint64_t                    msrHWCR;
 
         /** SVM revision. */
         uint32_t                    u32Rev;
