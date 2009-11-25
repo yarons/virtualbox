@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 24706 2009-11-16 17:57:20Z noreply@oracle.com $ */
+/* $Id: DevFwCommon.cpp 24964 2009-11-25 16:28:29Z noreply@oracle.com $ */
 /** @file
  * Shared firmware code.
  */
@@ -629,4 +629,3 @@ void sharedfwPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t numCpus
     floatPtr.u8Checksum            = sharedfwChecksum((uint8_t*)&floatPtr, 16);
     PDMDevHlpPhysWrite (pDevIns, 0x9fff0, &floatPtr, 16);
 }
-
