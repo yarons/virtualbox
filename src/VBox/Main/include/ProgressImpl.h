@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 24961 2009-11-25 16:02:32Z knut.osmundsen@oracle.com $ */
+/* $Id: ProgressImpl.h 24969 2009-11-25 16:56:40Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -98,6 +98,7 @@ public:
     double calcTotalPercent();
 
 protected:
+    void checkForAutomaticTimeout(void);
 
 #if !defined (VBOX_COM_INPROC)
     /** Weak parent. */
