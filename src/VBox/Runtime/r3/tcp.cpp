@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 24219 2009-10-30 21:52:35Z knut.osmundsen@oracle.com $ */
+/* $Id: tcp.cpp 25000 2009-11-26 14:22:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -602,7 +602,7 @@ static int rtTcpServerListen(PRTTCPSERVER pServer)
                  * Reset the server socket and change the state to stopped. After that state change
                  * we cannot safely access the handle so we'll have to return here.
                  */
-                RTSOCKET SockServer = rtTcpAtomicXchgSock(&pServer->SockServer, NIL_RTSOCKET);
+                SockServer = rtTcpAtomicXchgSock(&pServer->SockServer, NIL_RTSOCKET);
                 rtTcpServerSetState(pServer, RTTCPSERVERSTATE_STOPPED, RTTCPSERVERSTATE_STOPPING);
                 rtTcpClose(SockServer, "Listener: server stopped", false /*fTryGracefulShutdown*/);
             }
