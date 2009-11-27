@@ -1,4 +1,4 @@
-/* $Id: tstHeapSimple.cpp 22273 2009-08-14 23:00:51Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTHeapSimple.cpp 25057 2009-11-27 17:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple Heap.
  */
