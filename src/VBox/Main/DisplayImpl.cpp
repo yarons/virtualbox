@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 24995 2009-11-26 12:44:36Z noreply@oracle.com $ */
+/* $Id: DisplayImpl.cpp 25036 2009-11-27 07:29:34Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
@@ -3183,7 +3183,14 @@ DECLCALLBACK(void) Display::displayVBVAUpdateProcess(PPDMIDISPLAYCONNECTOR pInte
 
     if (RT_LIKELY(pFBInfo->cVBVASkipUpdate == 0))
     {
-         pThis->mParent->consoleVRDPServer()->SendUpdate (uScreenId, pCmd, cbCmd);
+        if (pFBInfo->fDefaultFormat)
+        {
+            pDrv->pUpPort->pfnUpdateDisplayRect (pDrv->pUpPort, pCmd->x, pCmd->y, pCmd->w, pCmd->h);
+            pThis->handleDisplayUpdate (pCmd->x + pFBInfo->xOrigin,
+                                        pCmd->y + pFBInfo->yOrigin, pCmd->w, pCmd->h);
+        }
+
+        pThis->mParent->consoleVRDPServer()->SendUpdate (uScreenId, pCmd, cbCmd);
     }
 }
 
