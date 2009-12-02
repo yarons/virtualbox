@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 25099 2009-11-30 10:02:27Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 25149 2009-12-02 14:34:47Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -146,7 +146,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
 
     BOOL accessible = FALSE;
     CHECK_ERROR(machine, COMGETTER(Accessible)(&accessible));
-    CheckComRCReturnRC(rc);
+    if (FAILED(rc)) return rc;
 
     Bstr uuid;
     rc = machine->COMGETTER(Id)(uuid.asOutParam());
