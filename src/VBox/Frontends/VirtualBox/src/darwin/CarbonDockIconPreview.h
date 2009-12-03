@@ -1,8 +1,8 @@
-/* $Id: CocoaDockIconPreview.h 24377 2009-11-05 11:18:52Z noreply@oracle.com $ */
+/* $Id: CarbonDockIconPreview.h 25171 2009-12-03 15:53:14Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
- * CocoaDockIconPreview class declaration
+ * CarbonDockIconPreview class declaration
  */
 
 /*
@@ -21,29 +21,28 @@
  * additional information or have any questions.
  */
 
-#ifndef ___CocoaDockIconPreview_h___
-#define ___CocoaDockIconPreview_h___
+#ifndef ___CarbonDockIconPreview_h___
+#define ___CarbonDockIconPreview_h___
 
-/* Qt includes */
+/* VBox includes */
 #include "AbstractDockIconPreview.h"
 
-class CocoaDockIconPreviewPrivate;
-
-class CocoaDockIconPreview: public AbstractDockIconPreview
+class CarbonDockIconPreview: public AbstractDockIconPreview, protected AbstractDockIconPreviewHelper
 {
 public:
-    CocoaDockIconPreview (VBoxConsoleWnd *aMainWnd, const QPixmap& aOverlayImage);
-    ~CocoaDockIconPreview();
+    CarbonDockIconPreview (VBoxConsoleWnd *aMainWnd, const QPixmap& aOverlayImage);
+    ~CarbonDockIconPreview();
 
     virtual void updateDockOverlay();
     virtual void updateDockPreview (CGImageRef aVMImage);
     virtual void updateDockPreview (VBoxFrameBuffer *aFrameBuffer);
 
-    virtual void setOriginalSize (int aWidth, int aHeight);
-
 private:
-    CocoaDockIconPreviewPrivate *d;
+    inline void initOverlayData (int aBitmapByteCount);
+    void updateDockPreviewImpl (CGContextRef aContext, CGImageRef aVMImage);
+
+    void *mBitmapData;
 };
 
-#endif /* ___CocoaDockIconPreview_h___ */
+#endif /* ___CarbonDockIconPreview_h___ */
 

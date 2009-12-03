@@ -1,11 +1,10 @@
+/* $Id: VBoxIChatTheaterWrapper.h 25171 2009-12-03 15:53:14Z sergey.dubov@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QIStatusBar class implementation
+ * Qt GUI - iChat Theater cocoa wrapper.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2008 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -20,15 +19,21 @@
  * additional information or have any questions.
  */
 
-#include "QIStatusBar.h"
+#ifndef ___VBoxIChatTheaterWrapper_h
+#define ___VBoxIChatTheaterWrapper_h
 
-QIStatusBar::QIStatusBar (QWidget *aParent)
-    : QStatusBar (aParent)
-{
-    connect (this, SIGNAL (messageChanged (const QString&)),
-             this, SLOT (rememberLastMessage (const QString&)));
+#if defined (Q_WS_MAC) && defined (VBOX_WITH_ICHAT_THEATER)
 
-    /* Remove that ugly border around the statusbar items on every platform */
-    setStyleSheet ("QStatusBar::item { border: 0px none black; }");
-}
+# include <ApplicationServices/ApplicationServices.h>
+
+RT_C_DECLS_BEGIN
+
+void initSharedAVManager();
+void setImageRef (CGImageRef aImage);
+
+RT_C_DECLS_END
+
+#endif
+
+#endif
 
