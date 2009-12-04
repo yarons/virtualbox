@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25151 2009-12-02 15:23:18Z noreply@oracle.com $ */
+/* $Id: HostImpl.cpp 25200 2009-12-04 18:19:05Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -29,6 +29,7 @@
 # include "VirtualBoxImpl.h"
 #endif // VBOX_WITH_USB
 
+#include "MediumImpl.h"
 #include "HostPower.h"
 
 #if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
