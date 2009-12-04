@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 25149 2009-12-02 14:34:47Z noreply@oracle.com $ */
+/* $Id: USBDeviceImpl.cpp 25198 2009-12-04 17:53:00Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -22,7 +22,7 @@
  */
 
 #include "USBDeviceImpl.h"
-
+#include "Logging.h"
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
