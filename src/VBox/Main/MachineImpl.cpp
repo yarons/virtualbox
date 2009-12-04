@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25170 2009-12-03 15:40:52Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 25179 2009-12-04 09:55:55Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -164,7 +164,11 @@ Machine::HWData::HWData()
     mHWVirtExEnabled = true;
     mHWVirtExNestedPagingEnabled = false;
     mHWVirtExVPIDEnabled = false;
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
+    mHWVirtExExclusive = false;
+#else
     mHWVirtExExclusive = true;
+#endif
 #if HC_ARCH_BITS == 64 || defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN)
     mPAEEnabled = true;
 #else
