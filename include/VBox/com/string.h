@@ -1,4 +1,4 @@
-/* $Id: string.h 24657 2009-11-14 22:46:02Z knut.osmundsen@oracle.com $ */
+/* $Id: string.h 25346 2009-12-13 16:21:19Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -48,7 +48,7 @@
 #include "VBox/com/defs.h"
 #include "VBox/com/assert.h"
 
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 #include <iprt/alloc.h>
 #include <iprt/ministring_cpp.h>
 
