@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSect.cpp 20606 2009-06-15 23:49:07Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCritSect.cpp 25345 2009-12-13 15:56:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -42,7 +42,7 @@
 #include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/getopt.h>
-#include <iprt/lock.h>
+#include <iprt/cpp/lock.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/semaphore.h>
