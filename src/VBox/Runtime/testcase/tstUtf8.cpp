@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 25000 2009-11-26 14:22:44Z knut.osmundsen@oracle.com $ */
+/* $Id: tstUtf8.cpp 25349 2009-12-13 17:23:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -41,7 +41,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/test.h>
-#include <iprt/ministring_cpp.h>
+#include <iprt/cpp/ministring.h>
 
 #include <stdlib.h> /** @todo use our random. */
 
