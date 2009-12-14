@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 25373 2009-12-14 19:20:27Z knut.osmundsen@oracle.com $ */
+/* $Id: semmutex-linux.cpp 25378 2009-12-14 19:30:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -83,6 +83,11 @@ struct RTSEMMUTEXINTERNAL
     RTLOCKVALIDATORREC  ValidatorRec;
 #endif
 };
+
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 /**

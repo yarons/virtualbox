@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-nt.cpp 25373 2009-12-14 19:20:27Z knut.osmundsen@oracle.com $ */
+/* $Id: semmutex-r0drv-nt.cpp 25378 2009-12-14 19:30:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -62,6 +62,10 @@ typedef struct RTSEMMUTEXINTERNAL
 #endif
 } RTSEMMUTEXINTERNAL, *PRTSEMMUTEXINTERNAL;
 
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX pMutexSem)
