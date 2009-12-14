@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 22707 2009-09-02 11:02:48Z knut.osmundsen@oracle.com $ */
+/* $Id: REMInternal.h 25368 2009-12-14 16:31:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * REM - Internal header file.
  */
@@ -216,8 +216,8 @@ typedef struct REM
     /** Time spent switching state back. */
     STAMPROFILE             StatsStateBack;
 
-    /** Padding the CPUX86State structure to 32 byte. */
-    uint32_t                abPadding[HC_ARCH_BITS == 32 ? 2 : 6];
+    /** Padding the CPUX86State structure to 64 byte. */
+    uint32_t                abPadding[HC_ARCH_BITS == 32 ? 4 : 4];
 
 # define REM_ENV_SIZE       0xff00
 
