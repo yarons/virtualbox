@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25502 2009-12-18 17:43:04Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 25503 2009-12-18 17:46:19Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1952,9 +1952,8 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
 
     /*
      * Found a usable page, flush it and return.
-     */
-    pgmPoolFlushPage(pPool, pPage); 
-    return rc; 
+     */   
+    return pgmPoolFlushPage(pPool, pPage);  
 }
 
 
