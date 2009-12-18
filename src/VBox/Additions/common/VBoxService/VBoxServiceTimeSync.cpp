@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 25407 2009-12-15 14:29:05Z noreply@oracle.com $ */
+/* $Id: VBoxServiceTimeSync.cpp 25480 2009-12-18 13:25:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -410,6 +410,8 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
 static void VBoxServiceTimeSyncCancelAdjust(void)
 {
 #ifdef RT_OS_WINDOWS
+    if (g_hTokenProcess == NULL) /* No process token (anymore)? */
+        return;
     if (SetSystemTimeAdjustment(0, TRUE /* Periodic adjustments disabled. */))
         VBoxServiceVerbose(3, "Windows Time Adjustment is now disabled.\n");
     else if (g_cTimeSyncErrors++ < 10)
