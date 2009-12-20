@@ -1,10 +1,10 @@
-/* $Id: assert-r0drv-solaris.c 25528 2009-12-20 23:24:59Z knut.osmundsen@oracle.com $ */
+/* $Id: RTAssertMsg2WeakV.cpp 25528 2009-12-20 23:24:59Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
+ * IPRT - RTAssertMsg2WeakV.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,51 +32,13 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-solaris-kernel.h"
-#include "internal/iprt.h"
 #include <iprt/assert.h>
-
-#include <iprt/asm.h>
-#include <iprt/log.h>
-#include <iprt/stdarg.h>
-#include <iprt/string.h>
-
-#include "internal/assert.h"
+#include "internal/iprt.h"
 
 
-void rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+RTDECL(void) RTAssertMsg2WeakV(const char *pszFormat, va_list va)
 {
-    uprintf("\r\n!!Assertion Failed!!\r\n"
-            "Expression: %s\r\n"
-            "Location  : %s(%d) %s\r\n",
-            pszExpr, pszFile, uLine, pszFunction);
+    RTAssertMsg2V(pszFormat, va);
 }
-
-
-void rtR0AssertNativeMsg2V(const char *pszFormat, va_list va)
-{
-    va_list va;
-    char    szMsg[256];
-
-    va_start(va, pszFormat);
-    RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
-    szMsg[sizeof(szMsg) - 1] = '\0';
-    va_end(va);
-    uprintf("%s", szMsg);
-}
-
-
-RTR0DECL(void) RTR0AssertPanicSystem(void)
-{
-    const char *psz    = &g_szRTAssertMsg2[0];
-    const char *pszEnd = &g_szRTAssertMsg2[sizeof(g_szRTAssertMsg2)];
-    while (psz < pszEnd && (*psz == ' ' || *psz == '\t' || *psz == '\n' || *psz == '\r'))
-        psz++;
-
-    if (psz >= pszEnd || *psz)
-        assfail(psz, g_pszRTAssertFile, g_u32RTAssertLine);
-    else
-        assfail(g_szRTAssertMsg1, g_pszRTAssertFile, g_u32RTAssertLine);
-    g_szRTAssertMsg2[0] = '\0';
-}
+RT_EXPORT_SYMBOL(RTAssertMsg2WeakV);
 
