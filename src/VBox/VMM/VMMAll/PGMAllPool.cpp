@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25551 2009-12-21 17:22:45Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 25577 2009-12-23 16:37:26Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2926,7 +2926,6 @@ DECLINLINE(unsigned) pgmPoolTrackGetGuestEntrySize(PGMPOOLKIND enmKind)
  * @param   fFlushPTEs  Flush PTEs or allow them to be updated (e.g. in case of an RW bit change)
  * @param   iShw        The shadow page table.
  * @param   cRefs       The number of references made in that PT.
- * @param   pfKeptPTEs  Flag indicating removal of all relevant PTEs (out)
  */
 static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlushPTEs, uint16_t iShw, uint16_t cRefs)
 {
