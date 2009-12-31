@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25607 2009-12-31 13:21:39Z knut.osmundsen@oracle.com $ */
+/* $Id: lockvalidator.h 25609 2009-12-31 13:41:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -45,7 +45,7 @@ typedef union RTLOCKVALRECUNION
     RTLOCKVALRECCORE      Core;
     RTLOCKVALRECEXCL      Excl;
     RTLOCKVALRECSHRD      Shared;
-    RTLOCKVALRECSHRDOWN   SharedOwn;
+    RTLOCKVALRECSHRDOWN   ShrdOwner;
 } RTLOCKVALRECUNION;
 
 
