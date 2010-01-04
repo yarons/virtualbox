@@ -1,4 +1,4 @@
-/* $Id: semevent-win.cpp 25638 2010-01-04 16:08:04Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-win.cpp 25640 2010-01-04 16:44:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Event Sempahore, Windows.
  */
@@ -136,7 +136,7 @@ RTDECL(void) RTSemEventAddSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
 }
 
 
-RTDECL(void) RTSemEventRemoverSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+RTDECL(void) RTSemEventRemoveSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
 {
 
 }
