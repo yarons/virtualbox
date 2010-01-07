@@ -1,4 +1,4 @@
-/* $Id: semrw-generic.cpp 25638 2010-01-04 16:08:04Z knut.osmundsen@oracle.com $ */
+/* $Id: semrw-generic.cpp 25682 2010-01-07 15:23:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -134,8 +134,8 @@ RTDECL(int) RTSemRWCreate(PRTSEMRW pRWSem)
                         pThis->fNeedResetReadEvent  = true;
                         pThis->u32Magic             = RTSEMRW_MAGIC;
 #ifdef RTSEMRW_STRICT
-                        RTLockValidatorRecExclInit(&pThis->ValidatorWrite, NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, "RTSemRW", pThis);
-                        RTLockValidatorRecSharedInit(&pThis->ValidatorRead,  NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, "RTSemRW", pThis, false /*fSignaller*/);
+                        RTLockValidatorRecExclInit(&pThis->ValidatorWrite, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTSemRW", pThis);
+                        RTLockValidatorRecSharedInit(&pThis->ValidatorRead, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTSemRW", pThis, false /*fSignaller*/);
                         RTLockValidatorRecMakeSiblings(&pThis->ValidatorWrite.Core, &pThis->ValidatorRead.Core);
 #endif
                         *pRWSem = pThis;
