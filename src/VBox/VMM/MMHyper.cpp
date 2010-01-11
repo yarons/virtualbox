@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 22890 2009-09-09 23:11:31Z knut.osmundsen@oracle.com $ */
+/* $Id: MMHyper.cpp 25732 2010-01-11 16:23:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -175,7 +175,7 @@ VMMR3DECL(int) MMR3HyperInitFinalize(PVM pVM)
     /*
      * Initialize the hyper heap critical section.
      */
-    int rc = PDMR3CritSectInit(pVM, &pVM->mm.s.pHyperHeapR3->Lock, "MM-HYPER");
+    int rc = PDMR3CritSectInit(pVM, &pVM->mm.s.pHyperHeapR3->Lock, RT_SRC_POS, "MM-HYPER");
     AssertRC(rc);
 
     /*
