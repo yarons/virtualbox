@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 24999 2009-11-26 13:36:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 25728 2010-01-11 15:12:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -957,7 +957,7 @@ VMMR3DECL(int) DBGFR3Detach(PVM pVM)
  * @param   cMillies    Number of millies to wait.
  * @param   ppEvent     Where to store the event pointer.
  */
-VMMR3DECL(int) DBGFR3EventWait(PVM pVM, unsigned cMillies, PCDBGFEVENT *ppEvent)
+VMMR3DECL(int) DBGFR3EventWait(PVM pVM, RTMSINTERVAL cMillies, PCDBGFEVENT *ppEvent)
 {
     /*
      * Check state.

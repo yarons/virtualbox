@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 23643 2009-10-09 12:23:32Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 25728 2010-01-11 15:12:52Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -125,7 +125,7 @@ public:
 
     void notifyRemoteUSBThreadRunning (RTTHREAD thread);
     bool isRemoteUSBThreadRunning (void);
-    void waitRemoteUSBThreadEvent (unsigned cMillies);
+    void waitRemoteUSBThreadEvent (RTMSINTERVAL cMillies);
 
     void ClipboardCreate (uint32_t u32ClientId);
     void ClipboardDelete (uint32_t u32ClientId);
