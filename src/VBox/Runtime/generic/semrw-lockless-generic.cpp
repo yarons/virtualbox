@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 25723 2010-01-11 14:28:57Z knut.osmundsen@oracle.com $ */
+/* $Id: semrw-lockless-generic.cpp 25751 2010-01-12 10:55:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTSemXRoads, generic implementation.
  */
@@ -779,7 +779,6 @@ RTDECL(int) RTSemRWReleaseWrite(RTSEMRW hRWSem)
          * Update the state.
          */
         ASMAtomicWriteU32(&pThis->cWriteRecursions, 0);
-        /** @todo validate order. */
         ASMAtomicWriteHandle(&pThis->hNativeWriter, NIL_RTNATIVETHREAD);
 
         for (;;)
