@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 25842 2010-01-14 18:50:03Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 25859 2010-01-15 13:27:16Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -25,7 +25,6 @@
 #define ____H_MACHINEIMPL
 
 #include "VirtualBoxBase.h"
-#include "ProgressImpl.h"
 #include "SnapshotImpl.h"
 #include "VRDPServerImpl.h"
 #include "MediumAttachmentImpl.h"
