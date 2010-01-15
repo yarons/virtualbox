@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 25149 2009-12-02 14:34:47Z noreply@oracle.com $ */
+/* $Id: MediumFormatImpl.cpp 25860 2010-01-15 13:27:26Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -22,6 +22,7 @@
  */
 
 #include "MediumFormatImpl.h"
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <VBox/VBoxHDD.h>

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 25310 2009-12-10 17:06:44Z noreply@oracle.com $ */
+/* $Id: ConsoleImplTeleporter.cpp 25860 2010-01-15 13:27:26Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -25,8 +25,10 @@
 *******************************************************************************/
 #include "ConsoleImpl.h"
 #include "Global.h"
-#include "Logging.h"
 #include "ProgressImpl.h"
+
+#include "AutoCaller.h"
+#include "Logging.h"
 
 #include <iprt/err.h>
 #include <iprt/rand.h>
