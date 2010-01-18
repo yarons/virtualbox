@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 25069 2009-11-28 10:17:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.h 25901 2010-01-18 16:52:21Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -189,6 +189,11 @@ public:
     }
 
     STDMETHOD(OnMediumChange)(IMediumAttachment *aMediumAttachment)
+    {
+        return S_OK;
+    }
+
+    STDMETHOD(OnCPUChange)(ULONG aCPU, BOOL aRemove)
     {
         return S_OK;
     }
