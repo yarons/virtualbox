@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 25838 2010-01-14 16:55:55Z alexander.eichner@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 25946 2010-01-20 23:52:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
