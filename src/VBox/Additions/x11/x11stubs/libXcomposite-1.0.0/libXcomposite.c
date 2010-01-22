@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: libXcomposite.c 25964 2010-01-22 10:34:00Z noreply@oracle.com $ */
 
 /** @file
  * X.Org libXcomposite.so linker stub
