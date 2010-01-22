@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 25966 2010-01-22 11:15:43Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvRawImage.cpp 25974 2010-01-22 14:49:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -345,8 +345,7 @@ static DECLCALLBACK(void *) drvRawImageQueryInterface(PPDMIBASE pInterface, cons
 
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_MEDIA) == 0)
-        return &pThis->IMedia;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIMEDIA, &pThis->IMedia);
     return NULL;
 }
 
