@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 25974 2010-01-22 14:49:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvRawFile.cpp 25985 2010-01-23 00:51:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -102,8 +102,7 @@ static DECLCALLBACK(void *) drvRawFileQueryInterface(PPDMIBASE pInterface, const
     PPDMDRVINS  pDrvIns = PDMIBASE_2_DRVINS(pInterface);
     PDRVRAWFILE pThis   = PDMINS_2_DATA(pDrvIns, PDRVRAWFILE);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMISTREAM, &pThis->IStream);
     return NULL;
 }

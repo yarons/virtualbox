@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 25974 2010-01-22 14:49:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvBlock.cpp 25985 2010-01-23 00:51:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -657,8 +657,7 @@ static DECLCALLBACK(void *)  drvblockQueryInterface(PPDMIBASE pInterface, const 
     PPDMDRVINS  pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVBLOCK   pThis = PDMINS_2_DATA(pDrvIns, PDRVBLOCK);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCK, &pThis->IBlock);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCKBIOS, pThis->fBiosVisible ? &pThis->IBlockBios : NULL);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIMOUNT, pThis->fMountable ? &pThis->IMount : NULL);

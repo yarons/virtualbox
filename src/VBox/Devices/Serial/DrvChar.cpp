@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 25974 2010-01-22 14:49:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvChar.cpp 25985 2010-01-23 00:51:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox stream I/O devices: Generic char driver
  */
@@ -98,10 +98,8 @@ static DECLCALLBACK(void *) drvCharQueryInterface(PPDMIBASE pInterface, const ch
     PPDMDRVINS  pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVCHAR    pThis = PDMINS_2_DATA(pDrvIns, PDRVCHAR);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMICHARCONNECTOR_IID) == 0)
-        return &pThis->ICharConnector;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMICHARCONNECTOR, &pThis->ICharConnector);
     return NULL;
 }
 

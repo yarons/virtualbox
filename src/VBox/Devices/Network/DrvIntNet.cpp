@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 25981 2010-01-22 18:42:01Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvIntNet.cpp 25985 2010-01-23 00:51:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -585,8 +585,7 @@ static DECLCALLBACK(void *) drvIntNetQueryInterface(PPDMIBASE pInterface, const 
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVINTNET pThis   = PDMINS_2_DATA(pDrvIns, PDRVINTNET);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMINETWORKCONNECTOR, &pThis->INetworkConnector);
     return NULL;
 }
