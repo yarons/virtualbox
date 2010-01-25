@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 25985 2010-01-23 00:51:04Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIchAc97.cpp 26001 2010-01-25 14:21:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1575,6 +1575,7 @@ static DECLCALLBACK(int) ichac97Construct (PPDMDEVINS pDevIns, int iInstance,
     int               rc;
 
     Assert(iInstance == 0);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Validations.
