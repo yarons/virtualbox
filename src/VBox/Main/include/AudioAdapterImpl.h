@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 25310 2009-12-10 17:06:44Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 26044 2010-01-26 12:21:34Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -25,8 +25,6 @@
 #define ____H_AUDIOADAPTER
 
 #include "VirtualBoxBase.h"
-
-class Machine;
 
 namespace settings
 {
