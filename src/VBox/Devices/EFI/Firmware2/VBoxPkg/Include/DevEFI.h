@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 24798 2009-11-19 15:34:31Z noreply@oracle.com $ */
+/* $Id: DevEFI.h 26109 2010-01-31 10:29:08Z noreply@oracle.com $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -53,6 +53,7 @@ typedef enum
     EFI_INFO_INDEX_TEMPMEM_SIZE,
     EFI_INFO_INDEX_STACK_BASE,
     EFI_INFO_INDEX_STACK_SIZE,
+    EFI_INFO_INDEX_BOOT_ARGS,
     EFI_INFO_INDEX_END
 } EfiInfoIndex;
 
@@ -142,4 +143,3 @@ typedef DEVEFIINFO const *PCDEVEFIINFO;
 #define MB(x) ((KB(x)) * 1024)
 
 #endif
-
