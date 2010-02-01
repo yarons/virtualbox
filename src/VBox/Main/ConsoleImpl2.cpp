@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26112 2010-02-01 01:44:02Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 26118 2010-02-01 13:16:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -105,6 +105,7 @@
 #include "DHCPServerRunner.h"
 
 #include <VBox/param.h>
+#include <VBox/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach */
 
 #undef PVM
 
