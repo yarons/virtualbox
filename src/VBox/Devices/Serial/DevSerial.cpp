@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 26160 2010-02-02 18:23:29Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSerial.cpp 26165 2010-02-02 19:50:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -974,7 +974,7 @@ const PDMDEVREG g_DeviceSerialPort =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "serial",
     /* szRCMod */
     "VBoxDDGC.gc",

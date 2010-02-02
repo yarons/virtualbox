@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 26160 2010-02-02 18:23:29Z knut.osmundsen@oracle.com $ */
+/* $Id: DevRTC.cpp 26165 2010-02-02 19:50:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -986,7 +986,7 @@ const PDMDEVREG g_DeviceMC146818 =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "mc146818",
     /* szRCMod */
     "VBoxDDGC.gc",

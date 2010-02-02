@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 26160 2010-02-02 18:23:29Z knut.osmundsen@oracle.com $ */
+/* $Id: DevINIP.cpp 26165 2010-02-02 19:50:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -677,7 +677,7 @@ const PDMDEVREG g_DeviceINIP =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "IntNetIP",
     /* szRCMod/szR0Mod */
     "",
