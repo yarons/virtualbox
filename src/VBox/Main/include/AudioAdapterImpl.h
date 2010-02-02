@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 26167 2010-02-02 19:59:09Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -43,14 +43,6 @@ public:
     {
         Data();
 
-        bool operator== (const Data &that) const
-        {
-            return this == &that ||
-                   (mEnabled == that.mEnabled &&
-                    mAudioDriver == that.mAudioDriver &&
-                    mAudioController == that.mAudioController);
-        }
-
         BOOL mEnabled;
         AudioDriverType_T mAudioDriver;
         AudioControllerType_T mAudioController;
@@ -91,7 +83,7 @@ public:
     HRESULT loadSettings(const settings::AudioAdapter &data);
     HRESULT saveSettings(settings::AudioAdapter &data);
 
-    bool rollback();
+    void rollback();
     void commit();
     void copyFrom(AudioAdapter *aThat);
 

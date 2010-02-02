@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 26167 2010-02-02 19:59:09Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -88,7 +88,7 @@ public:
     StorageBus_T getStorageBus() const;
     ULONG getInstance() const;
 
-    bool rollback();
+    void rollback();
     void commit();
 
     // public methods for internal purposes only

@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 26167 2010-02-02 19:59:09Z noreply@oracle.com $ */
+/* $Id: USBControllerImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -82,7 +82,7 @@ public:
     HRESULT loadSettings(const settings::USBController &data);
     HRESULT saveSettings(settings::USBController &data);
 
-    bool rollback();
+    void rollback();
     void commit();
     void copyFrom (USBController *aThat);
 
