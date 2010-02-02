@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 26156 2010-02-02 16:30:28Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 26167 2010-02-02 19:59:09Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -88,7 +88,6 @@ public:
     StorageBus_T getStorageBus() const;
     ULONG getInstance() const;
 
-    bool isModified();
     bool rollback();
     void commit();
 
