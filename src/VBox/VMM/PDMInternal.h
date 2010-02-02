@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 26160 2010-02-02 18:23:29Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMInternal.h 26161 2010-02-02 18:47:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -408,7 +408,7 @@ typedef struct PDMDRV
     /** Pointer to the next device. */
     PPDMDRV                         pNext;
     /** Registration structure. */
-    const struct PDMDRVREG *        pDrvReg;
+    const struct PDMDRVREG *        pReg;
     /** Current number of instances. */
     uint32_t                        cInstances;
     /** The next instance number. */
