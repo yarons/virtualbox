@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 20808 2009-06-23 08:43:53Z noreply@oracle.com $ */
+/* $Id: PGMHandler.cpp 26150 2010-02-02 15:52:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -40,6 +40,7 @@
 #include <VBox/ssm.h>
 #include "PGMInternal.h"
 #include <VBox/vm.h>
+#include "PGMInline.h"
 #include <VBox/dbg.h>
 
 #include <VBox/log.h>
