@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 26001 2010-01-25 14:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 26166 2010-02-02 19:54:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMDisplay class
@@ -1239,7 +1239,7 @@ const PDMDRVREG VMDisplay::DrvReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MainDisplay",
     /* szRCMod */
     "",

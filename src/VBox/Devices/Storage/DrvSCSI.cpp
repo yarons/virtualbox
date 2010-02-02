@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 26001 2010-01-25 14:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvSCSI.cpp 26166 2010-02-02 19:54:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1024,7 +1024,7 @@ const PDMDRVREG g_DrvSCSI =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "SCSI",
     /* szRCMod */
     "",

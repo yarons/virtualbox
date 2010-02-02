@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 26001 2010-01-25 14:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvACPI.cpp 26166 2010-02-02 19:54:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -768,7 +768,7 @@ const PDMDRVREG g_DrvACPI =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "ACPIHost",
     /* szRCMod */
     "",

@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 26147 2010-02-02 13:55:20Z alexander.eichner@oracle.com $ */
+/* $Id: DrvVD.cpp 26166 2010-02-02 19:54:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1333,7 +1333,7 @@ const PDMDRVREG g_DrvVD =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "VD",
     /* szRCMod */
     "",
