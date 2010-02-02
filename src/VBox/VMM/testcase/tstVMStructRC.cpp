@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 26107 2010-01-30 14:18:03Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructRC.cpp 26160 2010-02-02 18:23:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -374,7 +374,7 @@ int main()
     GEN_CHECK_OFF(PDMDEVINS, pvInstanceDataR0);
     GEN_CHECK_OFF(PDMDEVINS, pDevHlpR3);
     GEN_CHECK_OFF(PDMDEVINS, pvInstanceDataR3);
-    GEN_CHECK_OFF(PDMDEVINS, pDevReg);
+    GEN_CHECK_OFF(PDMDEVINS, pReg);
     GEN_CHECK_OFF(PDMDEVINS, pCfgHandle);
     GEN_CHECK_OFF(PDMDEVINS, IBase);
     GEN_CHECK_OFF(PDMDEVINS, Internal);
