@@ -1,4 +1,4 @@
-/* $Id: NetIf-os2.cpp 21878 2009-07-30 12:42:08Z noreply@oracle.com $ */
+/* $Id: NetIf-os2.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, OS/2 implementation.
  */

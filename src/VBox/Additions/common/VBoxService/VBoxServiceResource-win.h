@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceResource-win.h 19376 2009-05-05 13:41:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceResource-win.h 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service, resource IDs.
  */

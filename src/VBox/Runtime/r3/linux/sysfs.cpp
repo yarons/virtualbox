@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 25292 2009-12-10 10:29:57Z vitali.pelenjow@oracle.com $ */
+/* $Id: sysfs.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Linux sysfs access.
  */

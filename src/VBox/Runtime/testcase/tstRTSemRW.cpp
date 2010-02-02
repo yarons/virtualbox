@@ -1,4 +1,4 @@
-/* $Id: tstRTSemRW.cpp 25524 2009-12-20 16:56:30Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTSemRW.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */

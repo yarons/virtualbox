@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.rc 19376 2009-05-05 13:41:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxService-win.rc 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Resouce file containing version info and icon.
  */

@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 25334 2009-12-11 15:50:23Z klaus.espenlaub@oracle.com $ */
+/* $Id: errorprint.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:

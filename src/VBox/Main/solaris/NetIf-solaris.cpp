@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 25140 2009-12-02 08:55:13Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NetIf-solaris.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */

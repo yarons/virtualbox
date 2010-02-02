@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 25755 2010-01-12 11:59:39Z noreply@oracle.com $ */
+/* $Id: VBoxManageSnapshot.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */

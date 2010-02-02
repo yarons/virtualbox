@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 25019 2009-11-26 15:38:39Z noreply@oracle.com $ */
+/* $Id: VBoxManageMetrics.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the shared clipboard code for both host and guest.
 #

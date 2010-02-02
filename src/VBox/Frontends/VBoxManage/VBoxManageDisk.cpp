@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 25149 2009-12-02 14:34:47Z noreply@oracle.com $ */
+/* $Id: VBoxManageDisk.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */

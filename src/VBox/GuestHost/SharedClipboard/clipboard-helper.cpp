@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.cpp 21293 2009-07-07 08:01:25Z noreply@oracle.com $ */
+/* $Id: clipboard-helper.cpp 26163 2010-02-02 18:58:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
