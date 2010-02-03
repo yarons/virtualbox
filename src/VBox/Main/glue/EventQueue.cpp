@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 23128 2009-09-18 12:50:55Z knut.osmundsen@oracle.com $ */
+/* $Id: EventQueue.cpp 26186 2010-02-03 13:07:12Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -484,7 +484,7 @@ BOOL EventQueue::postEvent (Event *event)
  */
 BOOL EventQueue::waitForEvent (Event **event)
 {
-    Assert (event);
+    Assert(event);
     if (!event)
         return FALSE;
 
@@ -517,7 +517,7 @@ BOOL EventQueue::waitForEvent (Event **event)
     {
         rc = mEventQ->WaitForEvent (&ev);
         // check for error
-        if (FAILED (rc))
+        if (FAILED(rc))
             return FALSE;
         // check for EINTR signal
         if (!ev)
@@ -544,7 +544,7 @@ BOOL EventQueue::waitForEvent (Event **event)
  */
 BOOL EventQueue::handleEvent (Event *event)
 {
-    Assert (event);
+    Assert(event);
     if (!event)
         return FALSE;
 
