@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 26154 2010-02-02 16:09:14Z noreply@oracle.com $ */
+/* $Id: MachineDebuggerImpl.cpp 26235 2010-02-04 13:55:00Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -74,7 +74,7 @@ HRESULT MachineDebugger::init (Console *aParent)
 {
     LogFlowThisFunc(("aParent=%p\n", aParent));
 
-    ComAssertRet (aParent, E_INVALIDARG);
+    ComAssertRet(aParent, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
