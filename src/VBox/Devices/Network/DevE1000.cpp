@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 26173 2010-02-02 21:11:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 26300 2010-02-05 16:02:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -52,6 +52,7 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 #include <VBox/pdmdev.h>
+#include <VBox/pdmnetifs.h>
 #include <VBox/tm.h>
 #include <VBox/vm.h>
 #include "../Builtins.h"
