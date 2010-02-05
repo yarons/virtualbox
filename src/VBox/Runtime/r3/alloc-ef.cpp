@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 19547 2009-05-08 20:39:39Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-ef.cpp 26258 2010-02-05 01:30:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -66,7 +66,7 @@ static volatile size_t      g_cbBlocksDelay;
 #endif
 #endif
 /** Array of pointers free watches for. */
-void   *gapvRTMemFreeWatch[4] = {0};
+void   *gapvRTMemFreeWatch[4] = {NULL, NULL, NULL, NULL};
 /** Enable logging of all freed memory. */
 bool    gfRTMemFreeLog = false;
 

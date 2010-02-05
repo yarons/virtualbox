@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 21725 2009-07-20 13:10:08Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpGetDescription-generic.cpp 26258 2010-02-05 01:30:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription.
  */
@@ -69,7 +69,8 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
     /*
      * Construct the description string in a temporary buffer.
      */
-    char        szString[4*4*3+1] = {0};
+    char        szString[4*4*3+1];
+    RT_ZERO(szString);
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     if (!ASMHasCpuId())
         return rtMpGetDescriptionUnknown(pszBuf, cbBuf);
