@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 26136 2010-02-01 17:45:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 26292 2010-02-05 14:28:23Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -92,6 +92,10 @@ static struct
 #endif
 #ifdef VBOXSERVICE_CPUHOTPLUG /* Disabled by default. Use --enable-cpuhotplug to enable */
     { &g_CpuHotPlug, NIL_RTTHREAD, false, false, false, false },
+#endif
+#ifdef VBOXSERVICE_MANAGEMENT
+    { &g_MemBalloon, NIL_RTTHREAD, false, false, false, false },
+    { &g_VMStatistics, NIL_RTTHREAD, false, false, false, false },
 #endif
 };
 
