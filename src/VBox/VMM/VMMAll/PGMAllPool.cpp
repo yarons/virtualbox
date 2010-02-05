@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 26180 2010-02-02 22:52:04Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 26271 2010-02-05 04:04:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -891,7 +891,7 @@ static int pgmPoolAccessHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PPGM
     else if (rc2 == VERR_EM_INTERPRETER)
     {
 #ifdef IN_RC
-        if (PATMIsPatchGCAddr(pVM, (RTRCPTR)pRegFrame->eip))
+        if (PATMIsPatchGCAddr(pVM, pRegFrame->eip))
         {
             LogFlow(("pgmPoolAccessHandlerPTWorker: Interpretation failed for patch code %04x:%RGv, ignoring.\n",
                      pRegFrame->cs, (RTGCPTR)pRegFrame->eip));
