@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26335 2010-02-08 19:08:02Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 26349 2010-02-09 09:11:40Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -107,7 +107,7 @@
 #include <VBox/param.h>
 #include <VBox/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach */
 
-#if defined(RT_OS_DARWIN)
+#if defined(RT_OS_DARWIN) && !defined(VBOX_OSE)
 
 # include "IOKit/IOKitLib.h"
 
