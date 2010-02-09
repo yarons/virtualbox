@@ -1,4 +1,4 @@
-/* $Id: rand-posix.cpp 11557 2008-08-21 21:47:31Z knut.osmundsen@oracle.com $ */
+/* $Id: rand-posix.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Random Numbers and Byte Streams, POSIX.
  */
@@ -137,5 +137,4 @@ RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand) RT_NO_THROW
 {
     return rtRandAdvPosixCreateSystem(phRand, "/dev/random");
 }
-
 

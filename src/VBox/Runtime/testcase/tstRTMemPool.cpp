@@ -1,4 +1,4 @@
-/* $Id: tstRTMemPool.cpp 20606 2009-06-15 23:49:07Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTMemPool.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - MemPool.
  */
@@ -338,5 +338,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

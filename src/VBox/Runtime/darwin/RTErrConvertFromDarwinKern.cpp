@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwinKern.cpp 15459 2008-12-14 11:23:14Z noreply@oracle.com $ */
+/* $Id: RTErrConvertFromDarwinKern.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert Darwin Mach returns codes to iprt status codes.
  */
@@ -46,5 +46,4 @@ RTDECL(int) RTErrConvertFromDarwinKern(int iNativeCode)
         return VINF_SUCCESS;
     return RTErrConvertFromDarwin(iNativeCode);
 }
-
 

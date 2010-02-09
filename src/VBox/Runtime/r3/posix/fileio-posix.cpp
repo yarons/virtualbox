@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 25953 2010-01-21 10:20:58Z noreply@oracle.com $ */
+/* $Id: fileio-posix.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -737,5 +737,4 @@ RTR3DECL(int) RTFileRename(const char *pszSrc, const char *pszDst, unsigned fRen
              pszSrc, pszSrc, pszDst, pszDst, fRename, rc));
     return rc;
 }
-
 

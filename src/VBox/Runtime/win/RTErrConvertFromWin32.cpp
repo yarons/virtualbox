@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 26343 2010-02-09 03:37:33Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -405,5 +405,4 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 #endif
     return VERR_UNRESOLVED_ERROR;
 }
-
 

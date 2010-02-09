@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 15954 2009-01-14 19:46:17Z andreas.loeffler@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -483,6 +483,4 @@ RTDECL(int) RTSystemQueryOSInfo(RTSYSOSINFO enmInfo, char *pszInfo, size_t cchIn
             return VERR_NOT_SUPPORTED;
     }
 }
-
-
 

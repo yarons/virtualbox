@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 24034 2009-10-23 13:04:13Z noreply@oracle.com $ */
+/* $Id: internal-r0drv-nt.h 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -67,5 +67,4 @@ int rtMpSendIpiDummy(RTCPUID idCpu);
 RT_C_DECLS_END
 
 #endif
-
 

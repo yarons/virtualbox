@@ -1,4 +1,4 @@
-/* $Id: message.cpp 24826 2009-11-20 14:41:26Z knut.osmundsen@oracle.com $ */
+/* $Id: message.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Error reporting to standard error.
  */
@@ -96,5 +96,4 @@ RTDECL(int)  RTMsgErrorV(const char *pszFormat, va_list va)
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTMsgErrorV);
-
 

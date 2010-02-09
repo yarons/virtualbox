@@ -1,4 +1,4 @@
-/* $Id: tstTimerLR.cpp 25000 2009-11-26 14:22:44Z knut.osmundsen@oracle.com $ */
+/* $Id: tstTimerLR.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Low Resolution Timers.
  */
@@ -224,6 +224,4 @@ int main()
         RTPrintf("tstTimer: FAILURE %d errors\n", cErrors);
     return !!cErrors;
 }
-
-
 

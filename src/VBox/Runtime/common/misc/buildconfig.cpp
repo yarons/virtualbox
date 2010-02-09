@@ -1,4 +1,4 @@
-/* $Id: buildconfig.cpp 22561 2009-08-28 17:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: buildconfig.cpp 26344 2010-02-09 03:39:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Build Configuration Information.
  */
@@ -81,5 +81,4 @@ RTDECL(uint32_t) RTBldCfgVersionBuild(void)
     return IPRT_BLDCFG_VERSION_BUILD;
 }
 #endif
-
 
