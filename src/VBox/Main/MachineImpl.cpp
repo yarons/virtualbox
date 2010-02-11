@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26323 2010-02-08 11:13:28Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 26426 2010-02-11 12:45:34Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4081,9 +4081,9 @@ static int readSavedDisplayScreenshot(Utf8Str *pStateFilePath, uint32_t u32Type,
                     }
                     else
                     {
-                        if (cbBlock != 0)
+                        if (cbBlock > 2 * sizeof (uint32_t))
                         {
-                            rc = SSMR3Skip(pSSM, cbBlock);
+                            rc = SSMR3Skip(pSSM, cbBlock - 2 * sizeof (uint32_t));
                             AssertRCBreak(rc);
                         }
                     }
