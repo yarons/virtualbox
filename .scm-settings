@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26494 2010-02-14 07:59:33Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26501 2010-02-14 08:26:24Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -53,6 +53,8 @@
 --filter-out-dirs  "*/src/VBox/Devices/EFI/Firmware2/VBoxPkg/Include/*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip/."
 --filter-out-dirs  "*/src/VBox/Devices/Storage/VBoxHDDFormats/StorageCraft/*/."
+--filter-out-dirs  "*/src/VBox/RDP/client/."
+--filter-out-dirs  "*/src/recompiler/tests/."
 
 
 #
@@ -80,4 +82,6 @@
 --filter-out-dirs  "*/src/VBox/Additions/os2/VBoxGrext/."
 --filter-out-dirs  "*/src/VBox/Additions/os2/VBoxMouse/."
 --filter-out-dirs  "*/src/VBox/Devices/PC/PXE/."
+
+--no-convert-tabs
 
