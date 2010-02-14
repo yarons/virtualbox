@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26512 2010-02-14 09:47:37Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26513 2010-02-14 09:50:47Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -103,6 +103,7 @@ vboxvideo_drm.c: --no-convert-tabs
 --filter-out-dirs  "*/src/VBox/Devices/PC/PXE/."
 */src/VBox/Additions/solaris/Installer/postinstall.sh: --no-convert-tabs
 */src/VBox/HostDrivers/Support/solaris/mod.sh: --no-convert-tabs
+*/src/VBox/Installer/solaris/vboxconfig.sh: --no-convert-tabs
 
 # --no-convert-tabs
 
