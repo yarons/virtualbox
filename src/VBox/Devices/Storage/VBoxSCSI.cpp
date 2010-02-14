@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 26157 2010-02-02 18:02:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSCSI.cpp 26495 2010-02-14 07:59:48Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox storage devices:
@@ -353,6 +353,4 @@ int vboxscsiWriteString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegist
 
     return VERR_MORE_DATA;
 }
-
-
 
