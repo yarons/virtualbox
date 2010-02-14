@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26490 2010-02-14 07:46:09Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26494 2010-02-14 07:59:33Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -67,8 +67,17 @@
 --filter-out-files "*/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxFsDxe/fsw_strfunc.h"
 
 
-# temporary
+#
+# Other options.
+#
+*/src/Devices/slirp/*: --no-convert-tabs
+
+
+#
+# Temporary exclusions, awaiting cleanup.
+#
 --filter-out-dirs  "*/src/VBox/Additions/os2/VBoxGradd/."
 --filter-out-dirs  "*/src/VBox/Additions/os2/VBoxGrext/."
 --filter-out-dirs  "*/src/VBox/Additions/os2/VBoxMouse/."
+--filter-out-dirs  "*/src/VBox/Devices/PC/PXE/."
 
