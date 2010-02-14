@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26483 2010-02-14 02:12:15Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26487 2010-02-14 07:07:53Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -58,6 +58,8 @@
 # Same format as for the directories, except that we'll also apply them to
 # files specified directly on the command line.
 #
-##--filter-out-files "*/src/VBox/Runtime/common/checksum/md5.cpp"
+--filter-out-files "*/include/VBox/HostServices/glext.h"
+--filter-out-files "*/include/VBox/HostServices/glxext.h"
+--filter-out-files "*/include/VBox/HostServices/wglext.h"
 
 
