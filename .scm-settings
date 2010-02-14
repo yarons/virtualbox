@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26501 2010-02-14 08:26:24Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26502 2010-02-14 08:29:01Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -42,7 +42,6 @@
 --filter-out-dirs  "*/SlickEdit/."
 --filter-out-dirs  "*/src/libs/."
 --filter-out-dirs  "*/src/apps/."
---filter-out-dirs  "*/src/VBox/Frontends/."
 --filter-out-dirs  "*/src/VBox/Additions/x11/x11include/."
 --filter-out-dirs  "*/src/VBox/Additions/WINNT/Graphics/Wine/."
 --filter-out-dirs  "*/src/VBox/Additions/WINNT/i8042prt/include/."
