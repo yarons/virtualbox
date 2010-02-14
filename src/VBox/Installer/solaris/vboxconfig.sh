@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 25852 2010-01-15 10:53:09Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxconfig.sh 26498 2010-02-14 08:18:26Z knut.osmundsen@oracle.com $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -557,7 +557,7 @@ cleanup_install()
                 fi
             fi
         fi
-    
+
         inst=`expr $inst + 1`
     done
 }
