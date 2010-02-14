@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26513 2010-02-14 09:50:47Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26514 2010-02-14 10:02:43Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -73,6 +73,7 @@
 --filter-out-files "*/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxFsDxe/fsw_strfunc.h"
 --filter-out-files "*/src/VBox/Devices/Audio/sys-queue.h"
 --filter-out-files "*/src/VBox/HostDrivers/VBoxUSB/os2/usbcalls.h"
+--filter-out-files "*/src/VBox/RDP/x11server/Init*.c"
 
 
 #
