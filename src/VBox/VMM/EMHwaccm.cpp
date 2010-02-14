@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 26146 2010-02-02 13:51:26Z noreply@oracle.com $ */
+/* $Id: EMHwaccm.cpp 26491 2010-02-14 07:47:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -597,5 +597,4 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
 #endif
     return rc;
 }
-
 

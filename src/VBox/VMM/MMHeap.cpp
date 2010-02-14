@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 20774 2009-06-22 12:59:53Z noreply@oracle.com $ */
+/* $Id: MMHeap.cpp 26491 2010-02-14 07:47:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -695,5 +695,4 @@ VMMR3DECL(void) MMR3HeapFree(void *pv)
      */
     RTMemFree(pHdr);
 }
-
 
