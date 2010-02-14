@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26509 2010-02-14 09:35:03Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26511 2010-02-14 09:39:55Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -88,6 +88,7 @@
 */src/apps/tunctl/tunctl.c: --no-convert-tabs
 vboxvideo_drm.c: --no-convert-tabs
 *linux.mod.c: --no-convert-tabs
+*/src/VBox/Main/DisplayResampleImage.cpp: --no-convert-tabs
 
 
 #
