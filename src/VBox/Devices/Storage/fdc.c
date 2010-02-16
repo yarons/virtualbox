@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: $ */
+/* $Id: fdc.c 26562 2010-02-16 01:05:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */

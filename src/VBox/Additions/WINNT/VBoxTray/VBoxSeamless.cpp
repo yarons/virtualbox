@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: VBoxSeamless.cpp 26562 2010-02-16 01:05:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
