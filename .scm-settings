@@ -1,4 +1,4 @@
-# $Id: .scm-settings 26516 2010-02-14 21:37:33Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 26557 2010-02-16 00:02:37Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -29,7 +29,11 @@
 #
 # Global settings.
 #
+# Only consider directories and files that are part of a SVN working set.
+#
 --only-svn-dirs
+--only-svn-files
+--set-svn-eol
 
 #
 # Directories to ignore.
