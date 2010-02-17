@@ -1,4 +1,4 @@
-/* $Id: tstSystemQueryOsInfo.cpp 26604 2010-02-17 12:32:58Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTSystemQueryOsInfo.cpp 26605 2010-02-17 12:33:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTSystemQueryOSInfo.
  */
