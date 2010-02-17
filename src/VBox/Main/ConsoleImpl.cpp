@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 26603 2010-02-17 12:24:34Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 26615 2010-02-17 15:05:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1793,7 +1793,7 @@ HRESULT Console::doCPURemove(ULONG aCpu)
         vrc = getVMMDev()->getVMMDevPort()->pfnCpuHotUnplug(getVMMDev()->getVMMDevPort(), idCpuCore, idCpuPackage);
         if (RT_SUCCESS(vrc))
         {
-            unsigned cTries = 10;
+            unsigned cTries = 100;
 
             do
             {
