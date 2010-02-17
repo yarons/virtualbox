@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 26587 2010-02-16 16:57:09Z noreply@oracle.com $ */
+/* $Id: ErrorInfo.cpp 26603 2010-02-17 12:24:34Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -169,7 +169,7 @@ void ErrorInfo::init (IUnknown *aI, const GUID &aIID, bool aKeepObj /* = false *
     if (mIsBasicAvailable)
     {
         mCalleeIID = aIID;
-        GetInterfaceNameByIID(aIID, mCalleeName.asOutParam());
+        GetInterfaceNameByIID (aIID, mCalleeName.asOutParam());
     }
 }
 
