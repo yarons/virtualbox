@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 26662 2010-02-19 15:11:13Z noreply@oracle.com $ */
+/* $Id: CPUM.cpp 26664 2010-02-19 15:16:39Z noreply@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -627,7 +627,7 @@ static int cpumR3CpuIdInit(PVM pVM)
     bool fMWaitExtensions;
     rc = CFGMR3QueryBoolDef(pCpumCfg, "MWaitExtensions", &fMWaitExtensions, false); AssertRCReturn(rc, rc);
     if (fMWaitExtensions)
-        pCPUM->aGuestCpuIdStd[5].ecx = 3;
+        pCPUM->aGuestCpuIdStd[5].ecx = X86_CPUID_MWAIT_ECX_EXT | X86_CPUID_MWAIT_ECX_BREAKIRQIF0;
 
     /*
      * Determine the default.
