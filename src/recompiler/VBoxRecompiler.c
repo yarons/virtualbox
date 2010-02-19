@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 26508 2010-02-14 09:26:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxRecompiler.c 26640 2010-02-19 10:12:21Z noreply@oracle.com $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2824,8 +2824,7 @@ REMR3DECL(void) REMR3ReplayHandlerNotifications(PVM pVM)
             } while (!ASMAtomicCmpXchgU32(&pVM->rem.s.idxFreeList, idxCur, idxNext));
         } while (idxHead != UINT32_MAX);
 
-/* Temporarily turned on for release builds to investigate #4113 */
-#if 1 //def VBOX_STRICT
+#ifdef VBOX_STRICT
         if (pVM->cCpus == 1)
         {
             unsigned c;
