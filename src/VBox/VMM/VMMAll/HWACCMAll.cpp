@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 26152 2010-02-02 16:00:35Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCMAll.cpp 26685 2010-02-22 17:48:23Z noreply@oracle.com $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -337,4 +337,3 @@ VMMDECL(bool) HWACCMHasPendingIrq(PVM pVM)
     PVMCPU pVCpu = VMMGetCpu(pVM);
     return !!pVCpu->hwaccm.s.Event.fPending;
 }
-
