@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26603 2010-02-17 12:24:34Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 26704 2010-02-23 13:57:25Z ramshankar.venkataraman@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10061,7 +10061,6 @@ bool SessionMachine::hasMatchingUSBFilter(const ComObjPtr<HostUSBDevice> &aDevic
     if (!autoCaller.isOk())
         return false;
 
-    AssertReturn(isWriteLockOnCurrentThread(), false);
 
 #ifdef VBOX_WITH_USB
     switch (mData->mMachineState)
