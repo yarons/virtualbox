@@ -1,3 +1,4 @@
+/* $Id: VBoxUtils-darwin-cocoa.mm 26716 2010-02-23 16:03:46Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
