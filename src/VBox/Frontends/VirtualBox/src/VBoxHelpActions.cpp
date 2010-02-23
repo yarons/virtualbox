@@ -1,3 +1,4 @@
+/* $Id: VBoxHelpActions.cpp 26719 2010-02-23 16:18:14Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
