@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 26759 2010-02-24 18:41:59Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxconfig.sh 26760 2010-02-24 18:44:02Z ramshankar.venkataraman@oracle.com $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -717,7 +717,8 @@ do
             DIR_CONF="/usr/kernel/drv"
             ;;
         *)
-            break
+            errorprint "Invalid operation: $1"
+            exit 1
             ;;
     esac
     shift
