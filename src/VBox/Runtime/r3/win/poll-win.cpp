@@ -1,4 +1,4 @@
-/* $Id: poll-win.cpp 26786 2010-02-25 12:04:05Z knut.osmundsen@oracle.com $ */
+/* $Id: poll-win.cpp 26788 2010-02-25 12:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows Implementation.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/pipe.h>
+#include <iprt/poll.h>
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
