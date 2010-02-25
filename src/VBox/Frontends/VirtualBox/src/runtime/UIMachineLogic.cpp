@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26773 2010-02-25 01:53:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 26781 2010-02-25 11:11:32Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1016,7 +1016,7 @@ void UIMachineLogic::sltShowInformationDialog()
         return;
 
     // TODO: Call for singleton information dialog for this machine!
-    //VBoxVMInformationDlg::createInformationDlg(session(), machineWindowWrapper()->machineWindow());
+//    VBoxVMInformationDlg::createInformationDlg(session(), machineWindowWrapper()->machineWindow());
 }
 
 void UIMachineLogic::sltReset()
