@@ -1,6 +1,6 @@
-/* $Id: pipe-posix.cpp 26784 2010-02-25 11:56:52Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-posix.cpp 26785 2010-02-25 12:00:00Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Anonymouse Pipes, POSIX Implementation.
+ * IPRT - Anonymous Pipes, POSIX Implementation.
  */
 
 /*

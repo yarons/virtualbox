@@ -1,6 +1,6 @@
-/* $Id: pipe-os2.cpp 26762 2010-02-24 19:09:54Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-os2.cpp 26785 2010-02-25 12:00:00Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Anonymouse Pipes, OS/2 Implementation.
+ * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
 
 /*

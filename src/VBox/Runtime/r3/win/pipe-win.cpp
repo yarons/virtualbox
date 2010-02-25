@@ -1,6 +1,6 @@
-/* $Id: pipe-win.cpp 26765 2010-02-24 19:25:21Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-win.cpp 26785 2010-02-25 12:00:00Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Anonymouse Pipes, Windows Implementation.
+ * IPRT - Anonymous Pipes, Windows Implementation.
  */
 
 /*
