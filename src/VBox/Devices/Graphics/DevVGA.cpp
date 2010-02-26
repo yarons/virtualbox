@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 26173 2010-02-02 21:11:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.cpp 26856 2010-02-26 14:33:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5745,7 +5745,8 @@ static DECLCALLBACK(int)  vgaAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t 
                     if(rc == VINF_SUCCESS)
                     {
                         rc = vbvaVHWAConstruct(pThis);
-                        AssertRC(rc);
+                        if (rc != VERR_NOT_IMPLEMENTED)
+                            AssertRC(rc);
                     }
 #endif
                 }
