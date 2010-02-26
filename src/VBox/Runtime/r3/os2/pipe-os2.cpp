@@ -1,4 +1,4 @@
-/* $Id: pipe-os2.cpp 26785 2010-02-25 12:00:00Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-os2.cpp 26824 2010-02-26 10:36:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
@@ -63,7 +63,7 @@ RTDECL(int) RTPipeRead(RTPIPE hPipe, void *pvBuf, size_t cbToRead, size_t *pcbRe
 }
 
 
-RTDECL(int) RTPipeReadBlocking(RTPIPE hPipe, void *pvBuf, size_t cbToRead)
+RTDECL(int) RTPipeReadBlocking(RTPIPE hPipe, void *pvBuf, size_t cbToRead, size_t *pcbRead)
 {
     return VERR_NOT_IMPLEMENTED;
 }
@@ -75,7 +75,7 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
 }
 
 
-RTDECL(int) RTPipeWriteBlocking(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite)
+RTDECL(int) RTPipeWriteBlocking(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_t *pcbWritten)
 {
     return VERR_NOT_IMPLEMENTED;
 }
