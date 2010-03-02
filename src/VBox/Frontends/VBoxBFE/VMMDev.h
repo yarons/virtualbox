@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.h 26173 2010-02-02 21:11:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDev.h 26980 2010-03-02 23:30:00Z noreply@oracle.com $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMMDev: driver interface to VMM device
