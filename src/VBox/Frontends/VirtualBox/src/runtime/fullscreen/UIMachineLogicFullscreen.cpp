@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 26955 2010-03-02 16:02:37Z noreply@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 26961 2010-03-02 17:13:50Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -107,7 +107,6 @@ bool UIMachineLogicFullscreen::checkAvailability()
                 return false;
         }
     }
-
 
     return true;
 }
