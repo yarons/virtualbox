@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 26753 2010-02-24 16:24:33Z noreply@oracle.com $ */
+/* $Id: USBControllerImpl.cpp 26968 2010-03-02 19:51:39Z noreply@oracle.com $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -347,6 +347,24 @@ STDMETHODIMP USBController::COMSETTER(EnabledEhci) (BOOL aEnabled)
 
         m->pParent->onUSBControllerChange();
     }
+
+    return S_OK;
+}
+
+STDMETHODIMP USBController::COMGETTER(ProxyAvailable) (BOOL *aEnabled)
+{
+    CheckComArgOutPointerValid(aEnabled);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+#ifdef VBOX_WITH_USB
+    *aEnabled = true;
+#else
+    *aEnabled = false;
+#endif
 
     return S_OK;
 }

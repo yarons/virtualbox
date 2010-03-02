@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
+/* $Id: USBControllerImpl.h 26968 2010-03-02 19:51:39Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -69,6 +69,7 @@ public:
     STDMETHOD(COMSETTER(Enabled)) (BOOL aEnabled);
     STDMETHOD(COMGETTER(EnabledEhci)) (BOOL *aEnabled);
     STDMETHOD(COMSETTER(EnabledEhci)) (BOOL aEnabled);
+    STDMETHOD(COMGETTER(ProxyAvailable)) (BOOL *aEnabled);
     STDMETHOD(COMGETTER(USBStandard)) (USHORT *aUSBStandard);
     STDMETHOD(COMGETTER(DeviceFilters)) (ComSafeArrayOut (IUSBDeviceFilter *, aDevicesFilters));
 
