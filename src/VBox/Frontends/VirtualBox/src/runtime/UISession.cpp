@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26964 2010-03-02 17:53:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 26977 2010-03-02 21:33:25Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -589,9 +589,10 @@ QMenuBar* UISession::newMenuBar()
     {
         /* USB Stuff: */
         CUSBController usbController = machine.GetUSBController();
-        if (usbController.isNull())
+        if (   usbController.isNull()
+            || !usbController.GetProxyAvailable())
         {
-            /* Hide USB menu if controller is NULL: */
+            /* Hide USB menu if controller is NULL or no USB proxy available: */
             uimachine()->actionsPool()->action(UIActionIndex_Menu_USBDevices)->setVisible(false);
         }
         else
