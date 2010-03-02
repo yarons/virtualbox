@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 26952 2010-03-02 15:44:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 26955 2010-03-02 16:02:37Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -288,7 +288,7 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualStateType)
         m_pVisualState->finishChange();
     }
     else
-        /* Discard the temporary create new state: */
+        /* Discard the temporary created new state: */
         delete pNewVisualState;
 }
 
