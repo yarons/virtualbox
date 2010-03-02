@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 26959 2010-03-02 17:08:52Z klaus.espenlaub@oracle.com $ */
+/* $Id: ISCSIHDDCore.cpp 26960 2010-03-02 17:11:36Z klaus.espenlaub@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -941,7 +941,7 @@ restart:
     {
         rc = iscsiTransportOpen(pImage);
         if (RT_FAILURE(rc))
-        goto out;
+            goto out;
     }
 
     pImage->state = ISCSISTATE_IN_LOGIN;
