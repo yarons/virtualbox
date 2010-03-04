@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27057 2010-03-04 19:45:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27058 2010-03-04 20:02:45Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,7 +38,7 @@
 #include "UIMachineWindowFullscreen.h"
 
 UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId)
-    : QIWithRetranslateUI2<QIMainDialog>(0, Qt::Window)
+    : QIWithRetranslateUI2<QIMainDialog>(0, Qt::FramelessWindowHint)
     , UIMachineWindow(pMachineLogic, uScreenId)
 {
     /* "This" is machine window: */
