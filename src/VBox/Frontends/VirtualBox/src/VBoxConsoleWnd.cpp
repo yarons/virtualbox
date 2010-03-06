@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleWnd.cpp 27096 2010-03-05 14:35:10Z noreply@oracle.com $ */
+/* $Id: VBoxConsoleWnd.cpp 27131 2010-03-06 13:32:31Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -355,6 +355,8 @@ VBoxConsoleWnd::VBoxConsoleWnd (VBoxConsoleWnd **aSelf, QWidget* aParent, Qt::Wi
 #endif /* DEBUG_poetzsch */
     if (aSelf)
         *aSelf = this;
+
+    vboxGlobal().setMainWindow (this);
 
     /* Cache IMedium data! */
     vboxGlobal().startEnumeratingMedia();
