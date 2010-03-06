@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 26950 2010-03-02 15:08:43Z noreply@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 27132 2010-03-06 13:33:12Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -67,6 +67,11 @@ void UIMachineLogicNormal::initialize()
 
         /* Prepare normal machine window: */
         prepareMachineWindows();
+
+#ifdef Q_WS_MAC
+        /* Prepare dock: */
+        prepareDock();
+#endif /* Q_WS_MAC */
 
         /* Initialization: */
         sltMachineStateChanged();
