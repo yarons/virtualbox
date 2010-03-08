@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 26459 2010-02-12 11:42:36Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 27166 2010-03-08 14:16:00Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -274,6 +274,7 @@ public:
         BOOL                 mHWVirtExEnabled;
         BOOL                 mHWVirtExExclusive;
         BOOL                 mHWVirtExNestedPagingEnabled;
+        BOOL                 mHWVirtExLargePagesEnabled;
         BOOL                 mHWVirtExVPIDEnabled;
         BOOL                 mAccelerate2DVideoEnabled;
         BOOL                 mPAEEnabled;
