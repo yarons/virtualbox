@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27175 2010-03-08 16:02:01Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 27176 2010-03-08 16:11:46Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1747,7 +1747,9 @@ STDMETHODIMP Machine::SetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
             break;
 
         case HWVirtExPropertyType_LargePages:
-            pb = &mHWData->mHWVirtExLargePagesEnabled;
+            setModified(IsModified_MachineData);
+            mHWData.backup();
+            mHWData->mHWVirtExLargePagesEnabled = !!aVal;
             break;
 
         default:
