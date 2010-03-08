@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27155 2010-03-08 11:05:25Z noreply@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 27161 2010-03-08 12:13:13Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -241,12 +241,8 @@ void UIMachineWindowSeamless::cleanupMachineView()
 
 void UIMachineWindowSeamless::cleanupMenu()
 {
-#ifdef Q_WS_MAC
-    // Sync with UIMachineWindowSeamless::prepareMenu()!
-#else /* To NaN: Please uncomment below for mac too and test! */
     delete m_pMainMenu;
     m_pMainMenu = 0;
-#endif /* Q_WS_MAC */
 }
 
 void UIMachineWindowSeamless::showSeamless()
