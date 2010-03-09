@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 27191 2010-03-09 00:20:05Z noreply@oracle.com $ */
+/* $Id: VBoxConsoleView.cpp 27192 2010-03-09 00:24:53Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1407,8 +1407,7 @@ bool VBoxConsoleView::event (QEvent *e)
                                                      0);
                         captureMouse (false, false);
                     }
-                    else
-                        updateHostCursor();
+                    updateHostCursor();
                     emitMouseStateChanged();
                     vboxProblem().remindAboutMouseIntegration (mMouseCanAbsolute);
                 }
