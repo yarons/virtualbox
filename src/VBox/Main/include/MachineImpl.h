@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27166 2010-03-08 14:16:00Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 27256 2010-03-10 16:50:08Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -717,8 +717,8 @@ protected:
         SaveSTS_StateTimeStamp = 0x80,
     };
 
-    HRESULT prepareSaveSettings(bool &aRenamed, bool &aNew);
-    HRESULT saveSettings(int aFlags = 0);
+    HRESULT prepareSaveSettings(bool *pfNeedsGlobalSaveSettings);
+    HRESULT saveSettings(bool *pfNeedsGlobalSaveSettings, int aFlags = 0);
 
     HRESULT saveAllSnapshots();
 
