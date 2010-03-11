@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 27277 2010-03-11 12:29:09Z noreply@oracle.com $ */
+/* $Id: PGMPool.cpp 27285 2010-03-11 15:42:16Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -640,7 +640,8 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                     {
                         void *pvShw = PGMPOOL_PAGE_2_PTR(pPool->CTX_SUFF(pVM), pPage);
                         STAM_PROFILE_START(&pPool->StatZeroPage, z);
-#ifdef DEBUG_sandervl
+#if 0
+                        /* Useful check for leaking references; *very* expensive though. */
                         switch (pPage->enmKind)
                         {
                             case PGMPOOLKIND_PAE_PT_FOR_32BIT_PT:
