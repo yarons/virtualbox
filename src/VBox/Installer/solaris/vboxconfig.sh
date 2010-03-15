@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 27355 2010-03-15 12:23:08Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxconfig.sh 27356 2010-03-15 12:42:03Z ramshankar.venkataraman@oracle.com $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -611,7 +611,6 @@ postinstall()
                 # add the netmask to stay persistent across host reboots
                 nmaskfile=/etc/netmasks
                 nmaskbackupfile=$nmaskfile.vbox
-                networkn=56
                 if test -f $nmaskfile; then
                     sed -e '/#VirtualBox_SectionStart,/#VirtualBox_SectionEnd/d' $nmaskfile > $nmaskbackupfile
                     echo "#VirtualBox_SectionStart" >> $nmaskbackupfile
