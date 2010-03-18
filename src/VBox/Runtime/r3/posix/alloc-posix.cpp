@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 11020 2008-07-30 22:48:35Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-posix.cpp 27492 2010-03-18 16:56:32Z noreply@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
@@ -71,8 +71,6 @@ typedef struct RTMEMEXECHDR
 #endif  /* RT_USE_MMAP */
 
 
-
-#ifdef IN_RING3
 
 /**
  * Allocates memory which may contain code.
@@ -273,5 +271,3 @@ RTDECL(int) RTMemProtect(void *pv, size_t cb, unsigned fProtect) RT_NO_THROW
         return rc;
     return RTErrConvertFromErrno(errno);
 }
-
-#endif
