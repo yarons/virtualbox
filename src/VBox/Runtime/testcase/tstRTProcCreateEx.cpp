@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 27451 2010-03-17 15:06:44Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTProcCreateEx.cpp 27509 2010-03-18 23:47:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -117,7 +117,7 @@ static int tstRTCreateProcEx5Child(int argc, char **argv)
         AssertPtr(pSid);
         char *pszDomain = (char *)RTMemAlloc(cbDomain); /* Size in TCHAR! */
         AssertPtr(pszDomain);
-    
+
         if (!LookupAccountName(NULL /* Current system */,
                                szUser,
                                pSid,
