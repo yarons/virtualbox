@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 27567 2010-03-22 00:03:02Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 27570 2010-03-22 08:32:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -72,7 +72,9 @@ typedef struct CLISTAT
     /** Occurrences. */
     STAMCOUNTER             Counter;
 } CLISTAT, *PCLISTAT;
+#ifdef IN_RING3
 AssertCompileMemberAlignment(CLISTAT, Counter, 8);
+#endif
 
 
 /**
