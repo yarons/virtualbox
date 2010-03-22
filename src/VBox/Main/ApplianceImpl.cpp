@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 26753 2010-02-24 16:24:33Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -317,7 +317,14 @@ STDMETHODIMP VirtualBox::CreateAppliance(IAppliance** anAppliance)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR(Appliance)
+Appliance::Appliance()
+    : mVirtualBox(NULL)
+{
+}
+
+Appliance::~Appliance()
+{
+}
 
 /**
  * Appliance COM initializer.

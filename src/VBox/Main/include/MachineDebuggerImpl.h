@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 23223 2009-09-22 15:50:03Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineDebuggerImpl.h 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -95,7 +95,7 @@ private:
     // private methods
     bool queueSettings() const;
 
-    const ComObjPtr<Console, ComWeakRef> mParent;
+    Console * const mParent;
     // flags whether settings have been queued because
     // they could not be sent to the VM (not up yet, etc.)
     int mSinglestepQueued;

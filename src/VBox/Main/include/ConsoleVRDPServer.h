@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 25728 2010-01-11 15:12:52Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -286,7 +286,7 @@ public:
 
 private:
 
-    const ComObjPtr<Console, ComWeakRef> mParent;
+    Console * const         mParent;
 };
 
 #endif // ____H_CONSOLEVRDPSERVER

@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -97,7 +97,7 @@ public:
     void unshare();
 
     /** @note this doesn't require a read lock since mParent is constant. */
-    const ComObjPtr<Machine, ComWeakRef>& getMachine();
+    Machine* getMachine();
 
     ComObjPtr<StorageController> getPeer();
 

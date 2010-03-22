@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 27537 2010-03-19 14:04:54Z noreply@oracle.com $ */
+/* $Id: HostImpl.cpp 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -156,8 +156,7 @@ struct Host::Data
 #endif
     {};
 
-    ComObjPtr<VirtualBox, ComWeakRef>
-                            pParent;
+    VirtualBox              *pParent;
 
 #ifdef VBOX_WITH_USB
     WriteLockHandle         usbListsLock;               // protects the below two lists
