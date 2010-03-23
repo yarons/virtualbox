@@ -1,4 +1,4 @@
-/* $Id: pipe-os2.cpp 27129 2010-03-06 00:16:08Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-os2.cpp 27613 2010-03-23 01:12:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
@@ -51,9 +51,15 @@ RTDECL(int)  RTPipeClose(RTPIPE hPipe)
 }
 
 
+RTDECL(int)  RTPipeFromNative(PRTPIPE phPipe, RTHCINTPTR hNativePipe, uint32_t fFlags)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
 RTDECL(RTHCINTPTR) RTPipeToNative(RTPIPE hPipe)
 {
-    return (RTHCINTPTR)(unsigned int)-1;
+    return -1;
 }
 
 
