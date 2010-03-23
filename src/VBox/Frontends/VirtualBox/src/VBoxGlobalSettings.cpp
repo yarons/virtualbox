@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 26719 2010-02-23 16:18:14Z noreply@oracle.com $ */
+/* $Id: VBoxGlobalSettings.cpp 27632 2010-03-23 14:18:15Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -120,7 +120,7 @@ static struct
 }
 gPropertyMap[] =
 {
-    { "GUI/Input/HostKey",                         "hostKey",                 "\\d*[1-9]\\d*", true },
+    { "GUI/Input/HostKey",                         "hostKey",                 "0|\\d*[1-9]\\d*", true },
     { "GUI/Input/AutoCapture",                     "autoCapture",             "true|false", true },
     { "GUI/Customizations",                        "guiFeatures",             "\\S+", true },
     { "GUI/LanguageID",                            "languageId",              gVBoxLangIDRegExp, true },
