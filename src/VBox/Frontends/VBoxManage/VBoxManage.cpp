@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 26548 2010-02-15 15:26:04Z noreply@oracle.com $ */
+/* $Id: VBoxManage.cpp 27703 2010-03-25 13:17:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -383,6 +383,9 @@ int main(int argc, char *argv[])
         { "vmstatistics",     handleVMStatistics },
 #ifdef VBOX_WITH_GUEST_PROPS
         { "guestproperty",    handleGuestProperty },
+#endif
+#ifdef VBOX_WITH_GUEST_CONTROL
+        { "guestcontrol",     handleGuestControl },
 #endif
         { "metrics",          handleMetrics },
         { "import",           handleImportAppliance },
