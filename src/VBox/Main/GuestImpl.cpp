@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 27707 2010-03-25 14:04:08Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestImpl.cpp 27712 2010-03-25 15:24:30Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -316,6 +316,8 @@ STDMETHODIMP Guest::ExecuteProgram(IN_BSTR aExecName, ULONG aFlags,
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
 #else  /* VBOX_WITH_GUEST_CONTROL */
+    CheckComArgStrNotEmptyOrNull(aExecName);
+    CheckComArgOutPointerValid(aPID);
     return E_NOTIMPL;
 #endif
 }
