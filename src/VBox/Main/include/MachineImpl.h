@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27761 2010-03-26 21:48:25Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 27792 2010-03-29 13:08:44Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -354,6 +354,7 @@ public:
                  InitMode aMode,
                  CBSTR aName = NULL,
                  GuestOSType *aOsType = NULL,
+                 BOOL aOverride = FALSE,
                  BOOL aNameSync = TRUE,
                  const Guid *aId = NULL);
     void uninit();
