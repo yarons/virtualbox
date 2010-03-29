@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27792 2010-03-29 13:08:44Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 27793 2010-03-29 13:16:54Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -135,6 +135,7 @@ Machine::UserData::UserData()
     mNameSync = TRUE;
     mTeleporterEnabled = FALSE;
     mTeleporterPort = 0;
+    mRTCUseUTC = FALSE;
 
     /* mName, mOSTypeId, mSnapshotFolder, mSnapshotFolderFull are initialized in
      * Machine::init() */
