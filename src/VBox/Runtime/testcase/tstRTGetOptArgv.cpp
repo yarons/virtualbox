@@ -1,4 +1,4 @@
-/* $Id: tstRTGetOptArgv.cpp 27386 2010-03-15 22:39:19Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTGetOptArgv.cpp 27797 2010-03-29 16:09:43Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT Testcase - RTGetOptArgv*.
  */
@@ -146,8 +146,6 @@ static void tst1(void)
 
 int main()
 {
-    char szPath[RTPATH_MAX];
-
     /*
      * Init RT+Test.
      */
