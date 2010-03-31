@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 27857 2010-03-31 09:02:32Z noreply@oracle.com $ */
+/* $Id: NetworkAdapterImpl.cpp 27872 2010-03-31 09:59:38Z noreply@oracle.com $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -124,7 +124,7 @@ HRESULT NetworkAdapter::init(Machine *aParent, NetworkAdapter *aThat)
 
     unconst(mParent) = aParent;
     unconst(mPeer) = aThat;
-    mNATEngine.createObject();
+    unconst(mNATEngine).createObject();
     mNATEngine->init(aParent, aThat->mNATEngine);
 
     AutoCaller thatCaller (aThat);
