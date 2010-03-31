@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 27903 2010-03-31 14:11:15Z noreply@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 27904 2010-03-31 14:15:44Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -834,7 +834,7 @@ HRESULT Appliance::readS3(TaskOVF *pTask)
     LogFlowFunc(("rc=%Rhrc\n", rc));
     LogFlowFuncLeave();
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 /**
