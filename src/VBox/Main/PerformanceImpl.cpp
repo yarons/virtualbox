@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 28004 2010-04-06 13:23:44Z noreply@oracle.com $ */
+/* $Id: PerformanceImpl.cpp 28007 2010-04-06 14:02:00Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
