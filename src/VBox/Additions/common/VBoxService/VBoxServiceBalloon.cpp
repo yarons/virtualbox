@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 27972 2010-04-02 22:59:54Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceBalloon.cpp 28048 2010-04-07 13:14:34Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -61,7 +61,7 @@ static bool g_fSysMadviseWorks;
 
 
 /**
- * Check weather madvise() works.
+ * Check whether madvise() works.
  */
 static void VBoxServiceBalloonInitMadvise(void)
 {
