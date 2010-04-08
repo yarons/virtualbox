@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 28109 2010-04-08 17:14:34Z michal.necasek@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 28111 2010-04-08 18:52:29Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -46,6 +46,8 @@
 # include <iprt/env.h>
 #endif
 #include <iprt/file.h>
+
+#include <limits.h>
 
 #include <VBox/vmapi.h>
 #include <VBox/err.h>
