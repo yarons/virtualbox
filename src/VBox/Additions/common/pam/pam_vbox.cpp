@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 27867 2010-03-31 09:31:10Z noreply@oracle.com $ */
+/* $Id: pam_vbox.cpp 28081 2010-04-08 10:13:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28080 2010-04-08 10:04:53Z ramshankar.venkataraman@oracle.com $
+# $Id: Makefile.kmk 28081 2010-04-08 10:13:04Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for VBox PAM module for automated logons.
 #
