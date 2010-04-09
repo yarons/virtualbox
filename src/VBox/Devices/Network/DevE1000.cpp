@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 28121 2010-04-09 07:58:35Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 28126 2010-04-09 08:16:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -26,7 +26,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  *
  * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
- * Clara, CA 95054 USA or visit http://www.sun.com if you need.
+ * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
 
