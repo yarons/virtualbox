@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 28224 2010-04-12 19:45:20Z alexander.eichner@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 28225 2010-04-12 20:31:31Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -440,7 +440,8 @@ static int pdmacFileAioMgrNormalReqsEnqueue(PPDMACEPFILEMGR pAioMgr,
                     pTasksWaiting = pdmacFileAioMgrNormalRangeLockFree(pAioMgr, pEndpoint, pTask->pRangeLock);
 
                     pdmacFileAioMgrEpAddTask(pEndpoint, pTask);
-                    pdmacFileAioMgrEpAddTaskList(pEndpoint, pTasksWaiting);
+                    if (pTasksWaiting)
+                        pdmacFileAioMgrEpAddTaskList(pEndpoint, pTasksWaiting);
 
                     pAioMgr->cRequestsActive--;
                     pEndpoint->AioMgr.cRequestsActive--;
