@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 27927 2010-04-01 09:19:12Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestProp.cpp 28205 2010-04-12 13:39:18Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -143,8 +143,8 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnSnapshotDiscarded)(IN_BSTR aMachineId,
-                                   IN_BSTR aSnapshotId)
+    STDMETHOD(OnSnapshotDeleted)(IN_BSTR aMachineId,
+                                 IN_BSTR aSnapshotId)
     {
         return S_OK;
     }
