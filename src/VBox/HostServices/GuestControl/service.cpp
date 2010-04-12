@@ -1,4 +1,4 @@
-/* $Id: service.cpp 28177 2010-04-12 08:14:52Z andreas.loeffler@oracle.com $ */
+/* $Id: service.cpp 28180 2010-04-12 08:25:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -557,7 +557,8 @@ void Service::call(VBOXHGCMCALLHANDLE callHandle, uint32_t u32ClientID,
                 break;
 
             default:
-                rc = VERR_NOT_IMPLEMENTED;
+                rc = VERR_NOT_SUPPORTED;
+                break;
         }
         /*
          * If current call is not deferred, call the completion function.
