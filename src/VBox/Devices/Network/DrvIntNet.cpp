@@ -1,5 +1,4 @@
-#define VBOX_WITH_R0_AND_RC_DRIVERS
-/* $Id: DrvIntNet.cpp 28258 2010-04-13 14:51:16Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvIntNet.cpp 28259 2010-04-13 14:52:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
