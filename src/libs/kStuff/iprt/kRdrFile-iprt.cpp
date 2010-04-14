@@ -1,4 +1,4 @@
-/* $Id: kRdrFile-iprt.cpp 8245 2008-04-21 17:24:28Z noreply@oracle.com $ */
+/* $Id: kRdrFile-iprt.cpp 28337 2010-04-14 22:03:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - kRdr Backend.
  */
@@ -178,7 +178,7 @@ static int      krdrRTFileUnmap(PKRDR pRdr, void *pvBase, KU32 cSegments, PCKLDR
 static int krdrRTFileGenericUnmap(PKRDR pRdr, PKRDRFILEPREP pPrep, KU32 cSegments, PCKLDRSEG paSegments)
 {
     krdrRTFileGenericProtect(pRdr, pPrep, cSegments, paSegments, 1 /* unprotect */);
-    RTMemPageFree(pPrep->pv);
+    RTMemPageFree(pPrep->pv, pPrep->cb);
     return 0;
 }
 
@@ -425,7 +425,7 @@ static int  krdrRTFileGenericMap(PKRDR pRdr, PKRDRFILEPREP pPrep, KU32 cSegments
     }
 
     /* bailout */
-    RTMemPageFree(pPrep->pv);
+    RTMemPageFree(pPrep->pv, pPrep->cb);
     return rc;
 }
 
