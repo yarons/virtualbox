@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28338 2010-04-14 22:13:58Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 28340 2010-04-14 22:21:12Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -765,7 +765,7 @@ endif
 if1of ($(VBOX_LDR_FMT), pe lx)
 VBoxDDR0_LIBS           = \
 	$(PATH_LIB)/VMMR0Imp$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/SUP0$(VBOX_SUFF_LIB)
+	$(PATH_LIB)/SUPR0$(VBOX_SUFF_LIB)
 endif
 
 
