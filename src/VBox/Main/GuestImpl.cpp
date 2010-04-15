@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28358 2010-04-15 13:26:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestImpl.cpp 28369 2010-04-15 14:52:36Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -819,7 +819,11 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, BSTR *aBuffer)
 #else  /* VBOX_WITH_GUEST_CONTROL */
     using namespace guestControl;
 
-    CheckComArgOutPointerValid(aBuffer);
+    NOREF(aPID);
+    NOREF(aFlags);
+    NOREF(aBuffer);
+
+    return S_OK;
 #endif
 }
 
