@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 28245 2010-04-13 12:25:12Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.h 28368 2010-04-15 14:46:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -136,6 +136,10 @@ public:
     {
         return maFramebuffers[VBOX_VIDEO_PRIMARY_SCREEN].pFramebuffer;
     }
+#ifdef MMSEAMLESS
+    int handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect);
+    int handleQueryVisibleRegion(uint32_t *pcRect, PRTRECT pRect);
+#endif
 
     int VideoAccelEnable (bool fEnable, VBVAMEMORY *pVbvaMemory);
     void VideoAccelFlush (void);
