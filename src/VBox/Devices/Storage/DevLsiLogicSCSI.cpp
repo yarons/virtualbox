@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 28412 2010-04-16 12:49:03Z alexander.eichner@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 28413 2010-04-16 12:51:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3392,8 +3392,6 @@ static DECLCALLBACK(bool) lsilogicNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQU
         /* Get new task state. */
         rc = RTMemCacheAllocEx(pLsiLogic->hTaskCache, (void **)&pTaskState);
         AssertRC(rc);
-
-        memset(pTaskState, 0, sizeof(LSILOGICTASKSTATE));
 
         pTaskState->GCPhysMessageFrameAddr = GCPhysMessageFrameAddr;
 
