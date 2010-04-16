@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 28291 2010-04-14 10:47:39Z noreply@oracle.com $ */
+/* $Id: UIMachineView.cpp 28407 2010-04-16 11:38:06Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1918,7 +1918,6 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
 
 LRESULT CALLBACK UIMachineView::lowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-    Assert(gView);
     if (gView && nCode == HC_ACTION && gView->winLowKeyboardEvent(wParam, *(KBDLLHOOKSTRUCT *)lParam))
         return 1;
 
