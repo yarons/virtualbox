@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 26171 2010-02-02 20:37:36Z noreply@oracle.com $ */
+/* $Id: ParallelPortImpl.h 28398 2010-04-16 08:38:37Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VirtualBox COM class implementation.

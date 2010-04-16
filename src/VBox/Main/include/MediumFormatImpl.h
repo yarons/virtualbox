@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: MediumFormatImpl.h 28398 2010-04-16 08:38:37Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
