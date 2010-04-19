@@ -1,6 +1,6 @@
-/** $Id: ext.h 25352 2009-12-14 10:06:49Z noreply@oracle.com $ */
+/** $Id: ext.h 28449 2010-04-19 09:52:59Z noreply@oracle.com $ */
 /** @file
- * some externals helpers
+ * NAT - some externals helpers
  */
 
 /*
