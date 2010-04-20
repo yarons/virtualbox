@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 28342 2010-04-14 23:33:05Z noreply@oracle.com $ */
+/* $Id: UICocoaDockIconPreview.mm 28540 2010-04-20 23:44:21Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -326,6 +326,7 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
 
 - (void)resizeMonitor:(NSSize)size;
 {
+    [self restoreMonitor];
     [mMonitor resize:size];
 }
 @end
