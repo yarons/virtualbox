@@ -1,4 +1,4 @@
-/* $Id: udp.c 28482 2010-04-19 16:44:22Z noreply@oracle.com $ */
+/* $Id: udp.c 28522 2010-04-20 13:42:15Z noreply@oracle.com $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -249,12 +249,12 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
          */
         if ((so = socreate()) == NULL)
         {
-            Log3(("NAT: IP(id: %hd) failed to create socket\n", ip->ip_id));
+            Log2(("NAT: IP(id: %hd) failed to create socket\n", ip->ip_id));
             goto bad;
         }
         if (udp_attach(pData, so, 0) == -1)
         {
-            Log3(("NAT: IP(id: %hd) udp_attach errno = %d-%s\n",
+            Log2(("NAT: IP(id: %hd) udp_attach errno = %d-%s\n",
                         ip->ip_id, errno, strerror(errno)));
             sofree(pData, so);
             goto bad;
