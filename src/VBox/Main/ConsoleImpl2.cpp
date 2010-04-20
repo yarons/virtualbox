@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 28489 2010-04-19 18:06:52Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 28513 2010-04-20 11:15:38Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2246,7 +2246,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pCfg,  "HpetEnabled", fHpetEnabled);               RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "SmcEnabled", fSmcEnabled);                 RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "ShowRtc",    fExtProfile);                 RC_CHECK();
-        if (fExtProfile)
+        if (fExtProfile && !llBootNics.empty())
         {
             BootNic aNic = llBootNics.front();
             uint32_t u32NicPciAddr = (aNic.mPciDev << 16) | aNic.mPciFn;
