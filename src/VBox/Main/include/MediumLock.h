@@ -1,4 +1,4 @@
-/* $Id: MediumLock.h 28582 2010-04-22 08:09:21Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumLock.h 28584 2010-04-22 09:47:55Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -170,7 +170,7 @@ public:
     /**
      * Update a medium lock declaration.
      *
-     * @note May be only used in unlocked state.
+     * @note May be used in locked state.
      *
      * @return COM status code
      * @param aMedium       Reference to medium object
