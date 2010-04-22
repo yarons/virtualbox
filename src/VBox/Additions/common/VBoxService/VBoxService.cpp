@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 28603 2010-04-22 15:48:25Z noreply@oracle.com $ */
+/* $Id: VBoxService.cpp 28604 2010-04-22 15:50:45Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -648,7 +648,8 @@ int main(int argc, char **argv)
          */
         rc = VBoxServiceStartServices(iMain);
 #ifndef RT_OS_WINDOWS
-        VBoxServiceWaitSignal();
+        if (RT_SUCCESS(rc))
+            VBoxServiceWaitSignal();
 #endif
         VBoxServiceStopServices();
 #ifdef RT_OS_WINDOWS
