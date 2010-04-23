@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28634 2010-04-23 09:38:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28660 2010-04-23 15:35:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -92,6 +92,9 @@ static int handleExecProgram(HandlerArg *a)
     bool waitForStdErr = false;
     bool verbose = false;
     bool have_timeout = false;
+
+    /* Always use the actual command line as argv[0]. */
+    args.push_back(Bstr(Utf8Cmd));
 
     /* Iterate through all possible commands (if available). */
     bool usageOK = true;
