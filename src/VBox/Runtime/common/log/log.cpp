@@ -1,4 +1,4 @@
-/* $Id: log.cpp 28696 2010-04-24 22:17:07Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 28708 2010-04-25 18:09:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2615,7 +2615,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                  * Done, figure what we've used and advance the buffer and free size.
                  */
                 cb = psz - &pLogger->achScratch[pLogger->offScratch];
-                Assert(cb <= 198);
+                AssertMsg(cb <= 223, ("%#zx (%zd) - fFlags=%#x\n", cb, cb, pLogger->fFlags)));
                 pLogger->offScratch += (uint32_t)cb;
                 cb = sizeof(pLogger->achScratch) - pLogger->offScratch - 1;
             }
