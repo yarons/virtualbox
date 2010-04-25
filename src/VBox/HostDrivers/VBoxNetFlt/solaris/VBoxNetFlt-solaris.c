@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 28714 2010-04-25 20:04:02Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFlt-solaris.c 28723 2010-04-25 21:50:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2619,6 +2619,7 @@ static int vboxNetFltSolarisAttachToInterface(PVBOXNETFLTINS pThis)
              * counter. Currently we just return false.  */
             pThis->pSwitchPort->pfnReportPromiscuousMode(pThis->pSwitchPort, false);
             pThis->pSwitchPort->pfnReportGsoCapabilities(pThis->pSwitchPort, 0,  INTNETTRUNKDIR_WIRE | INTNETTRUNKDIR_HOST);
+            pThis->pSwitchPort->pfnReportNoPreemptDsts(pThis->pSwitchPort, 0 /* none */);
 
             /*
              * Ipv4 is successful, and maybe Ipv6, we're ready for transfers.
