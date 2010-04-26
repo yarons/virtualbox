@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28765 2010-04-26 16:15:25Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 28766 2010-04-26 16:22:46Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7304,14 +7304,6 @@ DECLCALLBACK(int) Console::fntTakeSnapshotWorker(RTTHREAD Thread, void *pvUser)
     {
         that->mptrCancelableProgress.setNull();
         return autoCaller.rc();
-    }
-
-    /* protect mpVM */
-    AutoVMCaller autoVMCaller(that);
-    if (FAILED(autoVMCaller.rc()))
-    {
-        that->mptrCancelableProgress.setNull();
-        return autoVMCaller.rc();
     }
 
     AutoWriteLock alock(that COMMA_LOCKVAL_SRC_POS);
