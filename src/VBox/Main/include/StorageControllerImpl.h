@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 27607 2010-03-22 18:13:07Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 28764 2010-04-26 16:12:49Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -76,6 +76,8 @@ public:
     STDMETHOD(COMSETTER(PortCount)) (ULONG aPortCount);
     STDMETHOD(COMGETTER(Instance)) (ULONG *aInstance);
     STDMETHOD(COMSETTER(Instance)) (ULONG aInstance);
+    STDMETHOD(COMGETTER(IoBackend)) (IoBackendType_T *aIoBackend);
+    STDMETHOD(COMSETTER(IoBackend)) (IoBackendType_T aIoBackend);
 
     // StorageController methods
     STDMETHOD(GetIDEEmulationPort) (LONG DevicePosition, LONG *aPortNumber);
