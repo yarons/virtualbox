@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 28768 2010-04-26 16:44:29Z noreply@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 28773 2010-04-26 17:17:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -301,7 +301,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--iobackend buffered|unbuffered]\n"
                  "                            [--iocache on|off]\n"
                  "                            [--iocachesize <I/O cache size in MB>]\n"
-                 "                            [--iobandwidthmax <Maximum I/O bandwidth in MB>]\n"
+                 "                            [--iobandwidthmax <Maximum I/O bandwidth in MB/s>]\n"
 #endif
                 );
         RTPrintf("\n");
