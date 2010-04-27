@@ -1,10 +1,10 @@
-/* $Id: pam_vbox.cpp 28081 2010-04-08 10:13:04Z andreas.loeffler@oracle.com $ */
+/* $Id: pam_vbox.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
 
 /*
- * Copyright (C) 2008-2010 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -13,10 +13,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
- * Clara, CA 95054 USA or visit http://www.sun.com if you need
- * additional information or have any questions.
  */
 
 /*******************************************************************************

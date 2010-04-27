@@ -1,4 +1,4 @@
-/* $Id: avlruintptr.cpp 19559 2009-05-10 04:36:23Z knut.osmundsen@oracle.com $ */
+/* $Id: avlruintptr.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
 /** @file
  * IPRT - AVL tree, RTUINTPTR, range, unique keys.
  */
@@ -22,10 +22,6 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
- *
- * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
- * Clara, CA 95054 USA or visit http://www.sun.com if you need
- * additional information or have any questions.
  */
 
 #ifndef NOFILEID
