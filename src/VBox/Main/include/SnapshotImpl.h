@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: SnapshotImpl.h 28835 2010-04-27 14:46:23Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -107,6 +107,7 @@ public:
     }
 
     const ComObjPtr<Snapshot>& getParent() const;
+    const ComObjPtr<Snapshot> getFirstChild() const;
 
     const Utf8Str& stateFilePath() const;
     HRESULT deleteStateFile();
