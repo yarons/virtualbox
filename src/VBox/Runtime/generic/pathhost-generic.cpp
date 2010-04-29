@@ -1,4 +1,4 @@
-/* $Id: pathhost-generic.cpp 28908 2010-04-29 16:23:15Z klaus.espenlaub@oracle.com $ */
+/* $Id: pathhost-generic.cpp 28910 2010-04-29 16:40:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Path Convertions, generic.
  */
@@ -184,7 +184,7 @@ int rtPathToNative(char **ppszNativePath, const char *pszPath)
     if (RT_SUCCESS(rc))
     {
         if (g_fPassthruUtf8 || !*pszPath)
-            *ppszNativePath = RTStrDup(pszPath);
+            *ppszNativePath = (char *)pszPath;
         else
             rc = rtStrConvert(pszPath, strlen(pszPath), "UTF-8",
                               ppszNativePath, 0, g_szFsCodeset,
