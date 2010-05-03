@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28887 2010-04-29 11:19:17Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControl.cpp 28967 2010-05-03 11:44:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -338,7 +338,7 @@ static DECLCALLBACK(void) VBoxServiceControlTerm(void)
         RTMemFree(pNode);
 
         if (pNext && RTListNodeIsLast(&g_GuestControlExecThreads, &pNext->Node))
-              break;
+            break;
 
         pNode = pNext;
     }
