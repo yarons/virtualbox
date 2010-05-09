@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 29250 2010-05-09 17:53:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -21,6 +21,7 @@
 
 #include <VBox/pdmdev.h>
 #include <VBox/pdmnetifs.h>
+#include <iprt/asm.h>
 #include <iprt/semaphore.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>

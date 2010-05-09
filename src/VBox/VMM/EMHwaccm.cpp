@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: EMHwaccm.cpp 29250 2010-05-09 17:53:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -60,6 +60,8 @@
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 #include <VBox/dbgf.h>
+
+#include <iprt/asm.h>
 
 
 /*******************************************************************************

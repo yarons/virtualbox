@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: DrvHostDVD.cpp 29250 2010-05-09 17:53:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -91,6 +91,7 @@
 #endif
 
 #include <VBox/pdmdrv.h>
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
