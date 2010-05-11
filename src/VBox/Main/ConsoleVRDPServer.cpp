@@ -1,7 +1,5 @@
-/* $Id: ConsoleVRDPServer.cpp 29385 2010-05-11 18:05:44Z knut.osmundsen@oracle.com $ */
-
+/* $Id: ConsoleVRDPServer.cpp 29386 2010-05-11 18:07:09Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VBox Console VRDP Helper class
  */
 

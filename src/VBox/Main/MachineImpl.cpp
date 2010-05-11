@@ -1,5 +1,4 @@
-/* $Id: MachineImpl.cpp 29385 2010-05-11 18:05:44Z knut.osmundsen@oracle.com $ */
-
+/* $Id: MachineImpl.cpp 29386 2010-05-11 18:07:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */

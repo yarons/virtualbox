@@ -1,7 +1,5 @@
-/* $Id: MediumImpl.cpp 29336 2010-05-11 10:38:03Z noreply@oracle.com $ */
-
+/* $Id: MediumImpl.cpp 29386 2010-05-11 18:07:09Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 

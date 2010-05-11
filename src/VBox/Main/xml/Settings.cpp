@@ -1,3 +1,4 @@
+/* $Id: Settings.cpp 29386 2010-05-11 18:07:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
