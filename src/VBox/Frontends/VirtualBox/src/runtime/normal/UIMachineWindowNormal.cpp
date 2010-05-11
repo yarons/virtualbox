@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 29337 2010-05-11 10:50:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 29339 2010-05-11 10:52:38Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -567,9 +567,9 @@ void UIMachineWindowNormal::loadWindowSettings()
         if (machineView())
 #if defined(Q_WS_MAC) || defined(Q_WS_WIN)
             machineView()->normalizeGeometry(true);
-#else /* Q_WS_MAC */
+#else /* Q_WS_MAC || Q_WS_WIN */
             QTimer::singleShot(0, machineView(), SLOT(sltNormalizeGeometry()));
-#endif /* Q_WS_MAC */
+#endif /* Q_WS_MAC || Q_WS_WIN */
     }
 
     /* Load availability settings: */
