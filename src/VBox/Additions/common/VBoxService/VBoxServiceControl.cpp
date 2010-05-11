@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 29316 2010-05-11 08:12:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControl.cpp 29345 2010-05-11 12:22:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -88,18 +88,17 @@ static DECLCALLBACK(int) VBoxServiceControlInit(void)
     }
     else
     {
+        /* If the service was not found, we disable this service without
+           causing VBoxService to fail. */
         if (rc == VERR_HGCM_SERVICE_NOT_FOUND) /* Host service is not available. */
+        {
             VBoxServiceVerbose(0, "Control: Guest control service is not available\n");
+            rc = VERR_SERVICE_DISABLED;
+        }
         else
             VBoxServiceError("Control: Failed to connect to the guest control service! Error: %Rrc\n", rc);
         RTSemEventMultiDestroy(g_hControlEvent);
         g_hControlEvent = NIL_RTSEMEVENTMULTI;
-
-        /* 
-         * Not having the guest control service on the host renders this whole service
-         * unusable, so report that we are not able to continue. 
-         */
-        rc = VERR_NOT_SUPPORTED;
     }
     return rc;
 }
