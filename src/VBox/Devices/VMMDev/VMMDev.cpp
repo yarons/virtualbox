@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 29321 2010-05-11 09:56:58Z noreply@oracle.com $ */
+/* $Id: VMMDev.cpp 29348 2010-05-11 13:00:18Z noreply@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1819,7 +1819,8 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
-                pRequestHeader->rc = pThis->fPageSharingEnabled;
+                pReqStatus->fEnabled = pThis->fPageSharingEnabled;
+                pRequestHeader->rc = VINF_SUCCESS;
             }
             break;
         }
