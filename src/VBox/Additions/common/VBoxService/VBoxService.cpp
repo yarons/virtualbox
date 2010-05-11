@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 29258 2010-05-09 18:45:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 29313 2010-05-11 07:08:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -86,9 +86,6 @@ static struct
 #endif
 #ifdef VBOXSERVICE_VMINFO
     { &g_VMInfo,    NIL_RTTHREAD, false, false, false, true },
-#endif
-#ifdef VBOXSERVICE_EXEC
-    { &g_Exec,      NIL_RTTHREAD, false, false, false, true },
 #endif
 #ifdef VBOXSERVICE_CPUHOTPLUG
     { &g_CpuHotPlug, NIL_RTTHREAD, false, false, false, true },
