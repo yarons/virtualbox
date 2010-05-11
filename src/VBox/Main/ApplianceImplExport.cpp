@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 29331 2010-05-11 10:22:16Z noreply@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 29353 2010-05-11 13:42:11Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1296,7 +1296,8 @@ void Appliance::buildXMLForOneVirtualSystem(xml::ElementNode &elmToAddVirtualSys
         vsdescThis->m->pMachine->copyMachineDataToSettings(*pConfig);
         // write the machine config to the vbox:Machine element
         pConfig->buildMachineXML(*pelmVBoxMachine,
-                                 settings::MachineConfigFile::BuildMachineXML_WriteVboxVersionAttribute);
+                                   settings::MachineConfigFile::BuildMachineXML_WriteVboxVersionAttribute
+                                 | settings::MachineConfigFile::BuildMachineXML_SkipRemovableMedia);
                                         // but not BuildMachineXML_IncludeSnapshots
         delete pConfig;
     }
