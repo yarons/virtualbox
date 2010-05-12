@@ -1,4 +1,4 @@
-/* $Id: tstFileAppend-1.cpp 29392 2010-05-12 00:18:31Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTFileAppend-1.cpp 29393 2010-05-12 00:20:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - File Appending.
  */
