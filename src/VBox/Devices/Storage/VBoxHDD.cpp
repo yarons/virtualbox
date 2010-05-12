@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 29244 2010-05-08 21:16:00Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxHDD.cpp 29413 2010-05-12 12:28:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1283,6 +1283,7 @@ static int vdWriteHelperOptimizedCmpAndWriteAsync(PVDIOCTX pIoCtx)
             /* Block is completely unchanged, so no need to write anything. */
             LogFlowFunc(("Block didn't changed\n"));
             ASMAtomicWriteU32(&pIoCtx->cbTransferLeft, 0);
+            RTSgBufAdvance(&pIoCtxParent->SgBuf, cbThisWrite);
             return VINF_VD_ASYNC_IO_FINISHED;
         }
     }
