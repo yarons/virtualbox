@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29420 2010-05-12 13:07:46Z noreply@oracle.com $ */
+/* $Id: VBoxServicePageSharing.cpp 29424 2010-05-12 15:11:09Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -298,6 +298,9 @@ void VBoxServicePageSharingInspectGuest()
 
     /* Delete leftover modules in the old tree. */
     RTAvlPVDestroy(&pKnownModuleTree, VBoxServicePageSharingEmptyTreeCallback, NULL);
+
+    /* Check all registered modules. */
+    VbglR3CheckSharedModules();
 
     /* Activate new module tree. */
     pKnownModuleTree = pNewTree;
