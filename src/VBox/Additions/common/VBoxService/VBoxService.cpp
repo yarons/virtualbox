@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 29633 2010-05-18 13:29:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 29644 2010-05-18 15:30:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -458,7 +458,8 @@ static void VBoxServiceWaitSignal(void)
         iSignal = -1;
     while (   sigwait(&signalMask, &iSignal) == -1
            && (   errno == EINTR
-               || errno == ERESTART));
+               || errno == ERESTART
+               || errno == ENOENT));
 
     VBoxServiceVerbose(3, "VBoxServiceWaitSignal: Received signal %d (errno=%d)\n", iSignal, errno);
 }
