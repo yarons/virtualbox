@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 29609 2010-05-18 10:08:16Z alexander.eichner@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 29614 2010-05-18 11:48:31Z alexander.eichner@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1458,6 +1458,7 @@ int main()
     GEN_CHECK_OFF(BUSLOGIC, IBase);
     GEN_CHECK_OFF(BUSLOGIC, ILeds);
     GEN_CHECK_OFF(BUSLOGIC, pLedsConnector);
+    GEN_CHECK_OFF(BUSLOGIC, fSignalIdle);
 #endif /* VBOX_WITH_BUSLOGIC */
 
 #ifdef VBOX_WITH_LSILOGIC
