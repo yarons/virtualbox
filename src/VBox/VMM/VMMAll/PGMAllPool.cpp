@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 29698 2010-05-20 14:08:44Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 29699 2010-05-20 14:08:58Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4091,7 +4091,7 @@ void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCP
         pRam = pRam->CTX_SUFF(pNext);
     }
 
-    AssertFatalMsgFailed(("HCPhys=%RHp GCPhysHint=%RGp (Expected HCPhys with hint = %RHp\n", HCPhys, GCPhysHint, HCPhysExpected));
+    AssertFatalMsgFailed(("HCPhys=%RHp GCPhysHint=%RGp (Expected HCPhys with hint = %RHp)\n", HCPhys, GCPhysHint, HCPhysExpected));
 }
 
 
