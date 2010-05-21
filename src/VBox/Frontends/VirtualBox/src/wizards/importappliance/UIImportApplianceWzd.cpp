@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 29722 2010-05-21 11:50:41Z noreply@oracle.com $ */
+/* $Id: UIImportApplianceWzd.cpp 29730 2010-05-21 12:48:19Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -178,6 +178,8 @@ void UIImportApplianceWzdPage1::retranslateUi()
 
 void UIImportApplianceWzdPage1::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
 }
 
 bool UIImportApplianceWzdPage1::isComplete() const
@@ -213,6 +215,9 @@ UIImportApplianceWzdPage2::UIImportApplianceWzdPage2()
     /* Register 'applianceWidget' field! */
     registerField("applianceWidget", this, "applianceWidget");
     m_pApplianceWidget = m_pSettingsCnt;
+
+    /* Fill and translate */
+    retranslateUi();
 }
 
 void UIImportApplianceWzdPage2::retranslateUi()
