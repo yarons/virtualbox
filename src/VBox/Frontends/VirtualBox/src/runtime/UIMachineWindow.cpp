@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 29818 2010-05-26 13:59:05Z noreply@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 29824 2010-05-26 15:08:31Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -22,6 +22,9 @@
 #include <QTimer>
 
 #include <VBox/version.h>
+#ifdef VBOX_BLEEDING_EDGE
+# include <iprt/buildconfig.h>
+#endif /* VBOX_BLEEDING_EDGE */
 
 /* Local includes */
 #include "COMDefs.h"
