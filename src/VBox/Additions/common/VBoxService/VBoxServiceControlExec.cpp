@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29829 2010-05-26 19:22:41Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlExec.cpp 29830 2010-05-26 19:56:05Z noreply@oracle.com $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -780,7 +780,7 @@ int VBoxServiceControlExecCreateProcess(const char *pszExec, const char * const 
     }
     else
     {
-#else
+#endif
         /* Do normal execution. */
         rc = RTProcCreateEx(pszExec, papszArgs, hEnv, fFlags,
                             phStdIn, phStdOut, phStdErr, pszAsUser,
