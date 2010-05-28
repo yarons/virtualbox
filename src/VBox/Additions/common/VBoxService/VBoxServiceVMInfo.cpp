@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 29858 2010-05-28 12:54:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 29861 2010-05-28 13:19:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -248,10 +248,10 @@ int VBoxServiceVMInfoWriteUsers()
         {
             if (cUsersInList > 0)
             {
-                rc = RTStrAAppend(pszUserList, ",");
+                rc = RTStrAAppend(&pszUserList, ",");
                 AssertRCReturn(rc, rc);
             }
-            rc = RTStrAAppend(pszUserList, ut_user->ut_user);
+            rc = RTStrAAppend(&pszUserList, ut_user->ut_user);
             AssertRCReturn(rc, rc);
             cUsersInList++;
         }
