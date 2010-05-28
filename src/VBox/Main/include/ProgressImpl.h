@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: ProgressImpl.h 29863 2010-05-28 13:33:59Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -260,7 +260,13 @@ public:
     HRESULT notifyComplete(HRESULT aResultCode,
                            const GUID &aIID,
                            const Bstr &aComponent,
-                           const char *aText, ...);
+                           const char *aText,
+                           ...);
+    HRESULT notifyCompleteV(HRESULT aResultCode,
+                            const GUID &aIID,
+                            const Bstr &aComponent,
+                            const char *aText,
+                            va_list va);
     bool notifyPointOfNoReturn(void);
 
     /** For com::SupportErrorInfoImpl. */
