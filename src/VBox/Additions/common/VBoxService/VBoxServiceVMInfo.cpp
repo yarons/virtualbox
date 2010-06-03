@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 29861 2010-05-28 13:19:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 30013 2010-06-03 14:40:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -268,7 +268,7 @@ int VBoxServiceVMInfoWriteUsers()
     {
         VBoxServicePropCacheUpdate(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/NoLoggedInUsers", cUsersInList == 0 ? "true" : "false");
         g_cVMInfoLoggedInUsers = cUsersInList;
-    }    
+    }
     if (pszUserList)
         RTStrFree(pszUserList);
     return VINF_SUCCESS;

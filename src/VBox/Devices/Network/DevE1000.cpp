@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 29685 2010-05-20 11:36:28Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 30013 2010-06-03 14:40:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2648,7 +2648,7 @@ static int e1kRegWriteRDT(E1KSTATE* pState, uint32_t offset, uint32_t index, uin
  *        wait condition before bothering to queue the item as we're currently
  *        queuing thousands of items per second here in a normal transmit
  *        scenario.  Expect performance changes when fixing this! */
-#ifdef IN_RING3 
+#ifdef IN_RING3
             /* Signal that we have more receive descriptors avalable. */
             e1kWakeupReceive(pState->CTX_SUFF(pDevIns));
 #else
