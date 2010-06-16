@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 30111 2010-06-09 12:14:59Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVD.cpp 30221 2010-06-16 01:50:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -681,7 +681,7 @@ static DECLCALLBACK(int) drvvdINIPRead(RTSOCKET Sock, void *pvBuffer, size_t cbB
                                         RT_MIN(cbToRead, 32768), 0);
         if (cbBytesRead < 0)
             return VERR_NET_CONNECTION_REFUSED; /** @todo real solution */
-        if (cbBytesRead == 0 && errno)
+        if (cbBytesRead == 0 && errno) /** @todo r=bird: lwip_recv will not touch errno on Windows.  This may apply to other hosts as well  */
             return VERR_NET_CONNECTION_REFUSED; /** @todo real solution */
         if (pcbRead)
         {
