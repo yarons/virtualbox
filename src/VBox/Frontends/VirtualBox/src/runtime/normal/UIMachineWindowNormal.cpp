@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 30213 2010-06-15 18:19:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 30347 2010-06-21 17:44:06Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -472,7 +472,6 @@ void UIMachineWindowNormal::prepareMachineView()
     centralWidget()->setLayout(m_pMachineViewContainer);
 
     m_pMachineView = UIMachineView::create(  this
-                                           , vboxGlobal().vmRenderMode()
 #ifdef VBOX_WITH_VIDEOHWACCEL
                                            , bAccelerate2DVideo
 #endif
