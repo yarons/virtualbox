@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30300 2010-06-18 08:37:16Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 30324 2010-06-21 11:50:02Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -474,7 +474,8 @@ Console::Console()
     , mVMDestroying(false)
     , mVMPoweredOff(false)
     , mVMIsAlreadyPoweringOff(false)
-    , mfSnapshotFolderWarningShown(false)
+    , mfSnapshotFolderSizeWarningShown(false)
+    , mfSnapshotFolderExt4WarningShown(false)
     , mVMMDev(NULL)
     , mAudioSniffer(NULL)
     , mVMStateChangeCallbackDisabled(false)
