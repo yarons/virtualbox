@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 29027 2010-05-04 14:33:41Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 30383 2010-06-23 09:30:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -182,7 +182,9 @@ int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS 
     /*
      * The contig_alloc() way of allocating NC pages is broken or does not match our semantics. Refer #4716 for details.
      */
-    /* caddr_t virtAddr  = vbi_phys_alloc(&physAddr, cb, PAGE_SIZE, 0 /* non-contiguous */); */
+#if 0
+    /* caddr_t virtAddr  = vbi_phys_alloc(&physAddr, cb, PAGE_SIZE, 0 /* non-contiguous */);
+#endif
     caddr_t virtAddr = ddi_umem_alloc(cb, DDI_UMEM_SLEEP, &pMemSolaris->Cookie);
     if (RT_UNLIKELY(virtAddr == NULL))
     {
