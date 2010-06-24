@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 30420 2010-06-24 11:56:43Z noreply@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 30422 2010-06-24 12:00:10Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -35,6 +35,9 @@
 #include <VBox/param.h>
 #include <VBox/settings.h>
 #include <VBox/VBoxHDD.h>
+#ifdef RT_OS_WINDOWS
+#include <windows.h>
+#endif
 
 // defines
 /////////////////////////////////////////////////////////////////////////////
