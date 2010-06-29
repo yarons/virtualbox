@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30326 2010-06-21 12:35:33Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 30493 2010-06-29 11:59:47Z noreply@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -32,6 +32,7 @@
 #include <VBox/log.h>
 #include <VBox/gmm.h>
 #include <VBox/hwaccm.h>
+#include <include/internal/pgm.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/avl.h>
