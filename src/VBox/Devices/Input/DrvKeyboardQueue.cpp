@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 28909 2010-04-29 16:34:17Z michal.necasek@oracle.com $ */
+/* $Id: DrvKeyboardQueue.cpp 30594 2010-07-04 12:53:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -146,6 +146,8 @@ static DECLCALLBACK(void) drvKbdPassThruLedsChange(PPDMIKEYBOARDCONNECTOR pInter
 static DECLCALLBACK(void) drvKbdPassThruSetActive(PPDMIKEYBOARDCONNECTOR pInterface, bool fActive)
 {
     PDRVKBDQUEUE pDrv = PPDMIKEYBOARDCONNECTOR_2_DRVKBDQUEUE(pInterface);
+
+    AssertPtr(pDrv->pDownConnector->pfnSetActive);
     pDrv->pDownConnector->pfnSetActive(pDrv->pDownConnector, fActive);
 }
 
