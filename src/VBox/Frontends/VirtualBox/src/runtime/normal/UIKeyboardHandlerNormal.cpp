@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.cpp 30637 2010-07-05 22:36:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandlerNormal.cpp 30643 2010-07-06 00:13:24Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,6 +25,10 @@
 /* Local includes */
 #include "UIKeyboardHandlerNormal.h"
 #include "UIMachineWindow.h"
+
+#ifdef Q_WS_MAC
+# include <Carbon/Carbon.h>
+#endif /* Q_WS_MAC */
 
 /* Fullscreen keyboard-handler constructor: */
 UIKeyboardHandlerNormal::UIKeyboardHandlerNormal(UIMachineLogic* pMachineLogic)
