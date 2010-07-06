@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 30670 2010-07-06 14:37:09Z noreply@oracle.com $ */
+/* $Id: MouseImpl.cpp 30676 2010-07-06 16:36:43Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/cpp/utils.h>
-
 #include "MouseImpl.h"
 #include "DisplayImpl.h"
 #include "VMMDev.h"
@@ -25,9 +23,7 @@
 #include "Logging.h"
 
 #include <VBox/pdmdrv.h>
-
 #include <iprt/asm.h>
-
 #include <VBox/VMMDev.h>
 
 /** @name Mouse device capabilities bitfield
