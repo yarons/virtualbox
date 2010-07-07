@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 30674 2010-07-06 14:54:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 30709 2010-07-07 15:26:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,8 +32,8 @@
 /* Local includes */
 #include "VBoxGlobal.h"
 #include "UISession.h"
-#include "UIMachineWindow.h"
 #include "UIMachineLogicSeamless.h"
+#include "UIMachineWindow.h"
 #include "UIMachineViewSeamless.h"
 #include "UIFrameBuffer.h"
 
