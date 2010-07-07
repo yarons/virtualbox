@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 30714 2010-07-07 16:20:03Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.h 30716 2010-07-07 16:40:45Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -97,6 +97,12 @@ public:
     STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
 
     /* public methods only for internal purposes */
+
+    static HRESULT setErrorStatic(HRESULT aResultCode,
+                                  const Utf8Str &aText)
+    {
+        return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
+    }
 
     /* private instance data */
 private:
