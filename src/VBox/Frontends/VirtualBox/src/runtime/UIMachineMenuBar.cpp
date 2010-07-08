@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 30677 2010-07-06 16:39:25Z noreply@oracle.com $ */
+/* $Id: UIMachineMenuBar.cpp 30753 2010-07-08 23:01:51Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -142,6 +142,7 @@ void UIMachineMenuBar::prepareMenuMachine(QMenu *pMenu, UIActionsPool *pActionsP
     /* Machine submenu: */
     pMenu->addAction(pActionsPool->action(UIActionIndex_Toggle_Fullscreen));
     pMenu->addAction(pActionsPool->action(UIActionIndex_Toggle_Seamless));
+    pMenu->addAction(pActionsPool->action(UIActionIndex_Toggle_Scale));
     pMenu->addAction(pActionsPool->action(UIActionIndex_Toggle_GuestAutoresize));
     pMenu->addAction(pActionsPool->action(UIActionIndex_Simple_AdjustWindow));
     pMenu->addSeparator();
