@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 30714 2010-07-07 16:20:03Z noreply@oracle.com $ */
+/* $Id: BIOSSettingsImpl.h 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -30,7 +30,6 @@ namespace settings
 }
 
 class ATL_NO_VTABLE BIOSSettings :
-    public VirtualBoxSupportTranslation<BIOSSettings>,
     public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(IBIOSSettings)
 {

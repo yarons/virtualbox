@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 30469 2010-06-28 13:59:14Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplTeleporter.cpp 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -38,7 +38,7 @@
 #include <VBox/err.h>
 #include <VBox/version.h>
 #include <VBox/com/string.h>
-
+#include "VBox/com/ErrorInfo.h"
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *

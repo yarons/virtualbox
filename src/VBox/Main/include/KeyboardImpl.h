@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 30714 2010-07-07 16:20:03Z noreply@oracle.com $ */
+/* $Id: KeyboardImpl.h 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -45,7 +45,6 @@ class Console;
 
 class ATL_NO_VTABLE Keyboard :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<Keyboard>,
     VBOX_SCRIPTABLE_IMPL(IKeyboard)
 {
 public:
