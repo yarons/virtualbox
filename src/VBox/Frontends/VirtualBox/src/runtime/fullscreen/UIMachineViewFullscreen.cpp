@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 30674 2010-07-06 14:54:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.cpp 30752 2010-07-08 22:31:34Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -56,6 +56,9 @@ UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWind
 {
     /* Load machine view settings: */
     loadMachineViewSettings();
+
+    /* Prepare viewport: */
+    prepareViewport();
 
     /* Prepare frame buffer: */
     prepareFrameBuffer();
