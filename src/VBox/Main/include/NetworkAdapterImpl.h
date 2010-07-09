@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
+/* $Id: NetworkAdapterImpl.h 30764 2010-07-09 14:12:12Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -21,6 +21,14 @@
 #define ____H_NETWORKADAPTER
 
 #include "VirtualBoxBase.h"
+#include "NATEngineImpl.h"
+
+class GuestOSType;
+
+namespace settings
+{
+    struct NetworkAdapter;
+}
 
 class ATL_NO_VTABLE NetworkAdapter :
     public VirtualBoxBase,

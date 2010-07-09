@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
+/* $Id: MediumFormatImpl.h 30764 2010-07-09 14:12:12Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -21,6 +21,10 @@
 #define ____H_MEDIUMFORMAT
 
 #include "VirtualBoxBase.h"
+
+#include <VBox/com/array.h>
+
+#include <list>
 
 struct VDBACKENDINFO;
 
