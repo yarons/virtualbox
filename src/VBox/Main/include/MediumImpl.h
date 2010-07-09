@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
+/* $Id: MediumImpl.h 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -21,15 +21,6 @@
 #define ____H_MEDIUMIMPL
 
 #include "VirtualBoxBase.h"
-#include "MediumLock.h"
-
-class Progress;
-class MediumFormat;
-
-namespace settings
-{
-    struct Medium;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 

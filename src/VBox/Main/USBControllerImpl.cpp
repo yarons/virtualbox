@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
+/* $Id: USBControllerImpl.cpp 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -33,6 +33,7 @@
 
 #include <VBox/err.h>
 #include <VBox/settings.h>
+#include <VBox/com/array.h>
 
 #include <algorithm>
 

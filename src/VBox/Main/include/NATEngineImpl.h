@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
+/* $Id: NATEngineImpl.h 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -23,11 +23,6 @@
 
 #include "VirtualBoxBase.h"
 #include <VBox/settings.h>
-
-namespace settings
-{
-    struct NAT;
-}
 
 class ATL_NO_VTABLE NATEngine :
     public VirtualBoxBase,

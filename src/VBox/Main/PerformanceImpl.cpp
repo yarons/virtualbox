@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 29620 2010-05-18 12:15:55Z noreply@oracle.com $ */
+/* $Id: PerformanceImpl.cpp 30760 2010-07-09 13:12:04Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -26,6 +26,8 @@
 
 #include <VBox/err.h>
 #include <VBox/settings.h>
+
+#include <VBox/com/array.h>
 
 #include <vector>
 #include <algorithm>
