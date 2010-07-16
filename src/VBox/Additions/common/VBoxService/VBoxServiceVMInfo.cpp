@@ -1,4 +1,4 @@
-266/* $Id: VBoxServiceVMInfo.cpp 30874 2010-07-16 11:12:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 30875 2010-07-16 11:13:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
