@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 30872 2010-07-16 10:31:31Z noreply@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 30879 2010-07-16 12:48:47Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -72,8 +72,8 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
             this, SIGNAL(sigMachineDataChange(QString)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigMachineRegistere(QString, bool)),
-            this, SIGNAL(sigMachineRegistere(QString, bool)),
+    connect(pListener, SIGNAL(sigMachineRegistered(QString, bool)),
+            this, SIGNAL(sigMachineRegistered(QString, bool)),
             Qt::QueuedConnection);
 
     connect(pListener, SIGNAL(sigSessionStateChange(QString, KSessionState)),
