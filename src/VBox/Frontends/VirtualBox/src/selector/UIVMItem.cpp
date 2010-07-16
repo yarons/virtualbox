@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 30691 2010-07-07 09:10:21Z noreply@oracle.com $ */
+/* $Id: UIVMItem.cpp 30868 2010-07-16 09:42:12Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
