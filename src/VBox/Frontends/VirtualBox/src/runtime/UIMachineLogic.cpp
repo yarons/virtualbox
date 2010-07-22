@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 30936 2010-07-20 16:59:35Z noreply@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 30996 2010-07-22 14:11:08Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1456,6 +1456,8 @@ void UIMachineLogic::sltOpenSharedFoldersDialog()
 
     /* Show shared folders settings dialog: */
     UISharedFoldersDialog dlg(defaultMachineWindow()->machineWindow(), session());
+    if (!uisession()->isGuestAdditionsActive())
+        vboxProblem().remindAboutGuestAdditionsAreNotActive(defaultMachineWindow()->machineWindow());
     dlg.exec();
 }
 
