@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 30956 2010-07-21 12:59:12Z noreply@oracle.com $ */
+/* $Id: UINewVMWzd.cpp 31070 2010-07-23 16:00:09Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -776,7 +776,7 @@ bool UINewVMWzdPage5::constructMachine()
                     vboxProblem().cannotSaveMachineSettings(m, this);
             }
 
-            session.Close();
+            session.UnlockMachine();
         }
         if (!success)
         {

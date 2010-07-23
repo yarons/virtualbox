@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIWin.cpp 31008 2010-07-22 15:24:27Z noreply@oracle.com $ */
+/* $Id: tstVBoxAPIWin.cpp 31070 2010-07-23 16:00:09Z noreply@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIWin - sample program to illustrate the VirtualBox
@@ -237,7 +237,7 @@ int testStartVM(IVirtualBox *virtualBox)
             rc = progress->WaitForCompletion (-1);
 
             /* Close the session. */
-            rc = session->Close();
+            rc = session->UnlockMachine();
 
         } while (0);
 
