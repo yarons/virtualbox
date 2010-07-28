@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 31185 2010-07-28 20:40:14Z alexander.eichner@oracle.com $ */
+/* $Id: DrvVD.cpp 31186 2010-07-28 21:00:49Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -348,7 +348,7 @@ static DECLCALLBACK(int) drvvdAsyncIOOpen(void *pvUser, const char *pszLocation,
                                    : 0;
                 if (pThis->fShareable)
                 {
-                    Assert(fFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_DONT_LOCK);
+                    Assert(uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_DONT_LOCK);
 
                     fFlags |= PDMACEP_FILE_FLAGS_DONT_LOCK;
                 }
