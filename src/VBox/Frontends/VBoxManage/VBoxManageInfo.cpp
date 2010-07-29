@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 31217 2010-07-29 15:00:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 31219 2010-07-29 15:16:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1944,7 +1944,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
 
             if (details == VMINFO_FULL)
             {
-                rc = guest->COMGETTER(AdditionsVBoxVersion)(guestString.asOutParam());
+                rc = guest->COMGETTER(AdditionsVersion)(guestString.asOutParam());
                 if (   SUCCEEDED(rc)
                     && !guestString.isEmpty())
                 {
