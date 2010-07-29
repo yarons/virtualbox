@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31218 2010-07-29 15:07:48Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 31220 2010-07-29 15:25:57Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2386,7 +2386,7 @@ STDMETHODIMP Console::AdoptSavedState(IN_BSTR aSavedStateFile)
     return mControl->AdoptSavedState(aSavedStateFile);
 }
 
-STDMETHODIMP Console::ForgetSavedState()
+STDMETHODIMP Console::DiscardSavedState()
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
