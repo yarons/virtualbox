@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31218 2010-07-29 15:07:48Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 31228 2010-07-29 19:44:50Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -777,7 +777,11 @@ protected:
 
     HRESULT detachDevice(MediumAttachment *pAttach,
                          AutoWriteLock &writeLock,
+                         Snapshot *pSnapshot,
                          bool *pfNeedsSaveSettings);
+    HRESULT detachAllMedia(AutoWriteLock &writeLock,
+                           Snapshot *pSnapshot,
+                           MediaList &llMedia);
 
     void commitMedia(bool aOnline = false);
     void rollbackMedia();
