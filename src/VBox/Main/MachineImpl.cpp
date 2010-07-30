@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31236 2010-07-30 11:25:13Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 31239 2010-07-30 11:58:45Z noreply@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9006,8 +9006,8 @@ void Machine::rollbackMedia()
 
     /* enumerate new attachments */
     for (MediaData::AttachmentList::const_iterator it = mMediaData->mAttachments.begin();
-            it != mMediaData->mAttachments.end();
-            ++it)
+         it != mMediaData->mAttachments.end();
+         ++it)
     {
         MediumAttachment *pAttach = *it;
         /* Fix up the backrefs for DVD/floppy media. */
