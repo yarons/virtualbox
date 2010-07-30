@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 31157 2010-07-28 03:15:35Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc.cpp 31252 2010-07-30 15:38:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -28,7 +28,7 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#ifdef RTMEM_WRAP_TO_EF_APIS
+#if defined(RTMEM_WRAP_TO_EF_APIS) && !defined(RTMEM_NO_WRAP_TO_EF_APIS)
 # undef RTMEM_WRAP_TO_EF_APIS
 # define RTALLOC_USE_EFENCE 1
 #endif
