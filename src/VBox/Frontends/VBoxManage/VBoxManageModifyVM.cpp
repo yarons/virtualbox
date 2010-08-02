@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31291 2010-08-02 12:29:35Z noreply@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 31298 2010-08-02 13:16:21Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -155,7 +155,7 @@ enum
     MODIFYVM_HARDWARE_UUID,
     MODIFYVM_HPET,
     MODIFYVM_IOCACHE,
-    MODIFYVM_IOCACHESIZE,
+    MODIFYVM_IOCACHESIZE
 };
 
 static const RTGETOPTDEF g_aModifyVMOptions[] =
