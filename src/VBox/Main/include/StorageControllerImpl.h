@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 30739 2010-07-08 12:27:42Z noreply@oracle.com $ */
+/* $Id: StorageControllerImpl.h 31308 2010-08-02 14:55:22Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -83,6 +83,9 @@ public:
     StorageControllerType_T getControllerType() const;
     StorageBus_T getStorageBus() const;
     ULONG getInstance() const;
+
+    HRESULT checkPortAndDeviceValid(LONG aControllerPort,
+                                    LONG aDevice);
 
     void rollback();
     void commit();
