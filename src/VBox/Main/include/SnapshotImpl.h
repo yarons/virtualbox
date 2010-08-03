@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 31228 2010-07-29 19:44:50Z noreply@oracle.com $ */
+/* $Id: SnapshotImpl.h 31333 2010-08-03 13:00:54Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -124,6 +124,7 @@ public:
     HRESULT saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly);
 
     HRESULT uninitRecursively(AutoWriteLock &writeLock,
+                              CleanupMode_T cleanupMode,
                               MediaList &llMedia,
                               std::list<Utf8Str> &llFilenames);
 
