@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 31360 2010-08-04 15:34:27Z noreply@oracle.com $ */
+/* $Id: VMMAll.cpp 31361 2010-08-04 15:38:35Z noreply@oracle.com $ */
 /** @file
  * VMM All Contexts.
  */
@@ -83,7 +83,7 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
 
-        if (pVCpu->hNativeThread == hThread)
+        if (pVCpu->hNativeThreadR0 == hThread)
             return pVCpu->idCpu;
     }
     return NIL_VMCPUID;
@@ -138,7 +138,7 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
 
-        if (pVCpu->hNativeThread == hThread)
+        if (pVCpu->hNativeThreadR0 == hThread)
             return pVCpu;
     }
     return NULL;
