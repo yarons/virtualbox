@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 31437 2010-08-06 12:01:55Z knut.osmundsen@oracle.com $ */
+/* $Id: PATM.cpp 31438 2010-08-06 12:19:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5899,7 +5899,7 @@ static int patmR3HandleDirtyInstr(PVM pVM, PCPUMCTX pCtx, PPATMPATCHREC pPatch, 
 
         /* Remove old lookup record. */
         patmr3RemoveP2GLookupRecord(pVM, &pPatch->patch, pCurPatchInstrGC);
-        pCurPatchInstrGC = NULL;
+        pPatchToGuestRec = NULL;
 
         pCurPatchInstrGC += CpuOld.opsize;
         cbDirty          += CpuOld.opsize;
