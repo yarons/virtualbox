@@ -1,4 +1,4 @@
-/* $Id: tstVDSetUuidStubs.cpp 31504 2010-08-10 06:36:02Z noreply@oracle.com $ */
+/* $Id: tstVDSetUuidStubs.cpp 31508 2010-08-10 08:31:48Z noreply@oracle.com $ */
 /** @file
  * dummy stubs for RuntimeR3
  */
@@ -17,7 +17,9 @@
 
 #include <iprt/assert.h>
 
+#ifndef RT_OS_WINDOWS
 RTDECL(bool) RTAssertShouldPanic(void)
 {
     return true;
 }
+#endif
