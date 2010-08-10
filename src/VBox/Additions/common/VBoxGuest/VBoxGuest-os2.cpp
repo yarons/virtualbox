@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 28854 2010-04-27 19:41:12Z noreply@oracle.com $ */
+/* $Id: VBoxGuest-os2.cpp 31517 2010-08-10 11:28:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */

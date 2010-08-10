@@ -1,4 +1,4 @@
-; $Id: VBoxGuestA-os2.asm 28800 2010-04-27 08:22:32Z noreply@oracle.com $
+; $Id: VBoxGuestA-os2.asm 31517 2010-08-10 11:28:35Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuest - OS/2 assembly file, the first file in the link.
 ;
