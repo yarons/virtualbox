@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 31539 2010-08-10 15:40:18Z noreply@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 31562 2010-08-11 10:02:40Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1482,7 +1482,7 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
             ComPtr<IProgress> pProgress2;
 
             Log(("Finding source disk \"%ls\"\n", bstrSrcFilePath.raw()));
-            rc = mVirtualBox->FindHardDisk(bstrSrcFilePath, pSourceDisk.asOutParam());
+            rc = mVirtualBox->FindMedium(bstrSrcFilePath, DeviceType_HardDisk, pSourceDisk.asOutParam());
             if (FAILED(rc)) throw rc;
 
             Bstr uuidSource;
