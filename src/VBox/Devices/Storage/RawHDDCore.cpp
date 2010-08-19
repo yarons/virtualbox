@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 30555 2010-07-01 13:43:04Z alexander.eichner@oracle.com $ */
+/* $Id: RawHDDCore.cpp 31776 2010-08-19 09:48:44Z alexander.eichner@oracle.com $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1342,6 +1342,8 @@ VBOXHDDBACKEND g_RawBackend =
     /* pfnComposeName */
     genericFileComposeName,
     /* pfnCompact */
+    NULL,
+    /* pfnResize */
     NULL
 };
 

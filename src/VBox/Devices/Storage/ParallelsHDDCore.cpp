@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 31184 2010-07-28 20:23:47Z alexander.eichner@oracle.com $ */
+/* $Id: ParallelsHDDCore.cpp 31776 2010-08-19 09:48:44Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1434,6 +1434,8 @@ VBOXHDDBACKEND g_ParallelsBackend =
     /* pfnComposeName */
     genericFileComposeName,
     /* pfnCompact */
+    NULL,
+    /* pfnResize */
     NULL
 };
 
