@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 31782 2010-08-19 11:18:51Z noreply@oracle.com $ */
+/* $Id: FTM.cpp 31785 2010-08-19 11:42:19Z noreply@oracle.com $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
