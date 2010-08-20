@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.cpp 31821 2010-08-20 13:53:41Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: coredumper-solaris.cpp 31822 2010-08-20 13:55:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
