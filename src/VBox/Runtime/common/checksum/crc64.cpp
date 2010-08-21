@@ -1,4 +1,4 @@
-/* $Id: crc64.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: crc64.cpp 31847 2010-08-21 20:33:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRC64.
  *
@@ -33,7 +33,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/crc64.h>
+#include <iprt/crc.h>
 #include "internal/iprt.h"
 
 

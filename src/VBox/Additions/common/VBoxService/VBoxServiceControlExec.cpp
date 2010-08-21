@@ -1,5 +1,4 @@
-
-/* $Id: VBoxServiceControlExec.cpp 30662 2010-07-06 12:16:31Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlExec.cpp 31847 2010-08-21 20:33:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -21,7 +20,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/assert.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/ctype.h>
 #include <iprt/env.h>
 #include <iprt/file.h>

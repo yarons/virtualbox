@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest.cpp 29906 2010-05-31 13:01:17Z noreply@oracle.com $ */
+/* $Id: tstRTDigest.cpp 31847 2010-08-21 20:33:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTSha*, RTMd5, RTCrc*.
  */
@@ -30,8 +30,7 @@
 *******************************************************************************/
 #include <iprt/sha.h>
 #include <iprt/md5.h>
-#include <iprt/crc32.h>
-#include <iprt/crc64.h>
+#include <iprt/crc.h>
 
 #include <iprt/ctype.h>
 #include <iprt/err.h>
