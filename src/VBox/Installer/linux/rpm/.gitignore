@@ -1,0 +1,10 @@
+/AutoConfig.kmk
+/VirtualBox.tar.bz2
+/configure.log
+/env.sh
+/build-stamp
+/configure-stamp
+/VirtualBox.spec
+/builddir
+/buildroot
+/VirtualBox-*
