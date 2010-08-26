@@ -8,11 +8,12 @@
 /files
 /modules
 /vboxdrv.init
-/vboxnet.init
+/vboxweb-service.init
 /preinst
+/postinst
 /virtualbox-ose
 /virtualbox-ose-dbg
 /virtualbox-ose.substvars
-/virtualbox-ose.postinst.debhelper
-/virtualbox-ose.postrm.debhelper
-/virtualbox-ose.prerm.debhelper
+/virtualbox-ose-dbg.substvars
+/virtualbox-*.debhelper
+/virtualbox-*.debhelper.log
