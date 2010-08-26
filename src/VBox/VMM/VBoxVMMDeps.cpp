@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMDeps.cpp 31727 2010-08-17 12:52:13Z noreply@oracle.com $ */
+/* $Id: VBoxVMMDeps.cpp 32006 2010-08-26 16:14:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxVMM link dependencies - drag all we want into the link!
  */
@@ -42,6 +42,7 @@ PFNRT g_apfnDeps[] =
     (PFNRT)DBGFR3StackWalkEnd,
     (PFNRT)DBGFR3AsSymbolByAddr,
     (PFNRT)DBGFR3CpuGetMode,
+    (PFNRT)DBGFR3CoreWrite,
     (PFNRT)DBGFR3MemScan,
     (PFNRT)DBGFR3RegQueryU8,
     (PFNRT)EMInterpretInstruction,
