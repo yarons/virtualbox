@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 31966 2010-08-25 16:15:25Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFMem.cpp 31987 2010-08-26 12:33:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -601,7 +601,7 @@ static DECLCALLBACK(int) dbgfR3PagingDumpEx(PVM pVM, VMCPUID idCpu, uint32_t fFl
                 AssertCompile(DBGFPGDMP_FLAGS_PSE == X86_CR4_PSE);      AssertCompile(DBGFPGDMP_FLAGS_PAE == X86_CR4_PAE);
                 fFlags |= CPUMGetGuestCR4(pVCpu)  & (X86_CR4_PSE | X86_CR4_PAE);
                 AssertCompile(DBGFPGDMP_FLAGS_LME == MSR_K6_EFER_LME);  AssertCompile(DBGFPGDMP_FLAGS_NXE == MSR_K6_EFER_NXE);
-                fFlags |= CPUMGetGuestEFER(pVCpu) & (MSR_K6_EFER_LME & MSR_K6_EFER_NXE);
+                fFlags |= CPUMGetGuestEFER(pVCpu) & (MSR_K6_EFER_LME | MSR_K6_EFER_NXE);
             }
         }
     }
