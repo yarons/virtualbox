@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 31389 2010-08-05 11:02:51Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 32056 2010-08-27 16:04:23Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -127,7 +127,9 @@ extern bool is3DAccelerationSupported();
 #include <iprt/time.h>
 #include <iprt/param.h>
 #include <iprt/env.h>
+#ifndef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
 #include <iprt/mem.h>
+#endif /* !VBOX_WITH_VRDP_MEMLEAK_DETECTOR */
 #include <iprt/system.h>
 #ifdef RT_OS_SOLARIS
 # include <iprt/path.h>
