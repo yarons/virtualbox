@@ -10,6 +10,7 @@
 /vboxdrv.init
 /vboxweb-service.init
 /preinst
+/prerm
 /postinst
 /virtualbox-ose
 /virtualbox-ose-dbg
