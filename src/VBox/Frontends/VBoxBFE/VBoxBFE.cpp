@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 30724 2010-07-08 08:30:20Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBFE.cpp 32191 2010-09-02 12:30:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1170,7 +1170,7 @@ DECLCALLBACK(int) VMPowerUpThread(RTTHREAD Thread, void *pvUser)
     /*
      * Create empty VM.
      */
-    rc = VMR3Create(1, setVMErrorCallback, NULL, vboxbfeConfigConstructor, NULL, &gpVM);
+    rc = VMR3Create(1, NULL, setVMErrorCallback, NULL, vboxbfeConfigConstructor, NULL, &gpVM);
     if (RT_FAILURE(rc))
     {
         RTPrintf("Error: VM creation failed with %Rrc.\n", rc);
