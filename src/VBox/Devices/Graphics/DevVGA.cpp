@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32250 2010-09-06 13:55:20Z noreply@oracle.com $ */
+/* $Id: DevVGA.cpp 32259 2010-09-06 21:51:20Z noreply@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5338,7 +5338,7 @@ static DECLCALLBACK(void) vgaPortUpdateDisplayRect (PPDMIDISPLAYPORT pInterface,
      * This is true because coordinates were verified.
      */
     pu8Src = s->vram_ptrR3;
-    pu8Src += u32OffsetSrc + y * cbLineSrc + x * cbPixelSrc;
+    pu8Src += u32OffsetSrc * 4 + y * cbLineSrc + x * cbPixelSrc;
 
     /* Render VRAM to framebuffer. */
 
