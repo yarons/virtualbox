@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 31815 2010-08-20 12:40:07Z knut.osmundsen@oracle.com $ */
+/* $Id: UINewVMWzd.cpp 32298 2010-09-07 17:01:59Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -482,6 +482,8 @@ void UINewVMWzdPage4::getWithMediaManager()
         if (m_pDiskSelector->id() != newId)
             m_pDiskSelector->setCurrentItem(newId);
     }
+
+    hardDiskSourceChanged();
 
     m_pDiskSelector->setFocus();
 }
