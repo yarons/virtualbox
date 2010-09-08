@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32297 2010-09-07 16:05:07Z noreply@oracle.com $ */
+/* $Id: FTMInternal.h 32302 2010-09-08 09:21:30Z noreply@oracle.com $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -108,7 +108,12 @@ typedef struct FTM
     STAMCOUNTER         StatFullSync;
     STAMCOUNTER         StatCheckpointNetwork;
     STAMCOUNTER         StatCheckpointStorage;
+#ifdef VBOX_WITH_STATISTICS
     STAMPROFILE         StatCheckpoint;
+    STAMCOUNTER         StatSentMemRAM;
+    STAMCOUNTER         StatSentMemMMIO2;
+    STAMCOUNTER         StatSentMemShwROM;
+#endif
 } FTM;
 AssertCompileMemberAlignment(FTM, CritSect, 8);
 
