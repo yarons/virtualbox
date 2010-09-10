@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32403 2010-09-10 13:09:44Z knut.osmundsen@oracle.com $ */
+/* $Id: coredumper-solaris.cpp 32406 2010-09-10 13:37:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -60,12 +60,12 @@
 /*******************************************************************************
 *   Globals                                                                    *
 *******************************************************************************/
-volatile static RTNATIVETHREAD volatile g_CoreDumpThread = NIL_RTNATIVETHREAD;
-volatile static bool volatile      g_fCoreDumpSignalSetup       = false;
-volatile static bool volatile      g_fCoreDumpDeliberate        = false;
-volatile static uint32_t volatile  g_fCoreDumpFlags             = 0;
-static char                        g_szCoreDumpDir[PATH_MAX]    = { 0 };
-static char                        g_szCoreDumpFile[PATH_MAX]   = { 0 };
+static RTNATIVETHREAD volatile  g_CoreDumpThread = NIL_RTNATIVETHREAD;
+static bool volatile            g_fCoreDumpSignalSetup       = false;
+static bool volatile            g_fCoreDumpDeliberate        = false;
+static uint32_t volatile        g_fCoreDumpFlags             = 0;
+static char                     g_szCoreDumpDir[PATH_MAX]    = { 0 };
+static char                     g_szCoreDumpFile[PATH_MAX]   = { 0 };
 
 
 /*******************************************************************************
