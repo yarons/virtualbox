@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 32191 2010-09-02 12:30:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBFE.cpp 32388 2010-09-10 10:13:07Z noreply@oracle.com $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -428,7 +428,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
 #endif
     int rc = VINF_SUCCESS;
 
-    RTPrintf("Sun VirtualBox Simple SDL GUI built %s %s\n", __DATE__, __TIME__);
+    RTPrintf(VBOX_PRODUCT " Simple SDL GUI built %s %s\n", __DATE__, __TIME__);
 
     // less than one parameter is not possible
     if (argc < 2)
