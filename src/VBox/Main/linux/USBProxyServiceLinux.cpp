@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 32324 2010-09-08 15:43:32Z noreply@oracle.com $ */
+/* $Id: USBProxyServiceLinux.cpp 32431 2010-09-11 18:02:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -205,7 +205,7 @@ int USBProxyServiceLinux::initUsbfs(void)
                 }
                 RTFileClose(mFile);
             }
-            
+
         }
         RTStrFree(pszDevices);
     }

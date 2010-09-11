@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 32296 2010-09-07 15:56:10Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 32431 2010-09-11 18:02:17Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -445,7 +445,7 @@ void UISession::sltCloseVirtualSession()
     /* Recursevely close all the opened warnings... */
     if (vboxProblem().isAnyWarningShown())
     {
-    	vboxProblem().closeAllWarnings();
+        vboxProblem().closeAllWarnings();
         QTimer::singleShot(0, this, SLOT(sltCloseVirtualSession()));
         return;
     }

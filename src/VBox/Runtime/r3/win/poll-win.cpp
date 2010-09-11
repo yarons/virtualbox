@@ -1,4 +1,4 @@
-/* $Id: poll-win.cpp 32131 2010-08-31 11:55:27Z alexander.eichner@oracle.com $ */
+/* $Id: poll-win.cpp 32431 2010-09-11 18:02:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows Implementation.
  *
@@ -583,5 +583,4 @@ RTDECL(int) RTPollSetEventsChange(RTPOLLSET hPollSet, uint32_t id, uint32_t fEve
     ASMAtomicWriteBool(&pThis->fBusy, false);
     return rc;
 }
-
 

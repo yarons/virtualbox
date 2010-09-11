@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32401 2010-09-10 12:51:43Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 32431 2010-09-11 18:02:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1246,7 +1246,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      */
     if (    pPage->cModifications >= cMaxModifications
         &&  !fForcedFlush
-# if 1 
+# if 1
         &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT)
 # else /* test code */
         &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT || pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_32BIT_PT)
