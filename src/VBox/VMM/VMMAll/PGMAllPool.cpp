@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32481 2010-09-14 13:37:53Z noreply@oracle.com $ */
+/* $Id: PGMAllPool.cpp 32544 2010-09-16 10:00:23Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1247,7 +1247,11 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      */
     if (    pPage->cModifications >= cMaxModifications
         &&  !fForcedFlush
+# if 1
+        &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT)
+# else
         &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT || pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_32BIT_PT)
+# endif
         &&  (   fNotReusedNotForking
              || (   !pgmPoolMonitorIsReused(pVM, pVCpu, pRegFrame, pDis, pvFault)
                  && !pgmPoolMonitorIsForking(pPool, pDis, GCPhysFault & PAGE_OFFSET_MASK))
