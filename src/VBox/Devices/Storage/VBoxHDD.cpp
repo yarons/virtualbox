@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32600 2010-09-17 12:59:18Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxHDD.cpp 32604 2010-09-17 13:32:59Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3813,6 +3813,7 @@ VBOXDDU_DECL(int) VDGetFormat(PVDINTERFACE pVDIfsDisk, PVDINTERFACE pVDIfsImage,
                      && rc != VERR_VD_ISCSI_INVALID_HEADER
                      && rc != VERR_VD_VHD_INVALID_HEADER
                      && rc != VERR_VD_RAW_INVALID_HEADER
+                     && rc != VERR_VD_PARALLELS_INVALID_HEADER
                      && rc != VERR_VD_DMG_INVALID_HEADER))
             {
                 /* Copy the name into the new string. */
