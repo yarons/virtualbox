@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: DrvHostParallel.cpp 32678 2010-09-21 17:14:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -276,6 +276,11 @@ static DECLCALLBACK(void) drvHostParallelDestruct(PPDMDRVINS pDrvIns)
         int rc = RTFileClose(pThis->FileDevice);
         AssertRC(rc);
         pThis->FileDevice = NIL_RTFILE;
+    }
+    if (pThis->pszDevicePath)
+    {
+        MMR3HeapFree(pThis->pszDevicePath);
+        pThis->pszDevicePath = NULL;
     }
 }
 
