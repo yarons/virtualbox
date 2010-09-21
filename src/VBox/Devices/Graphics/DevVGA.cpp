@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32622 2010-09-17 20:18:39Z noreply@oracle.com $ */
+/* $Id: DevVGA.cpp 32676 2010-09-21 17:02:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6059,6 +6059,12 @@ static DECLCALLBACK(int) vgaR3Destruct(PPDMDEVINS pDevIns)
         pThis->pu8VBEExtraData = NULL;
     }
 #endif
+
+    if (pThis->pszLogoFile)
+    {
+        MMR3HeapFree(pThis->pszLogoFile);
+        pThis->pszLogoFile = NULL;
+    }
 
     PDMR3CritSectDelete(&pThis->lock);
     return VINF_SUCCESS;
