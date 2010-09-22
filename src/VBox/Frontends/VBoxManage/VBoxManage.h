@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 31461 2010-08-09 08:13:58Z noreply@oracle.com $ */
+/* $Id: VBoxManage.h 32701 2010-09-22 17:12:01Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -26,6 +26,7 @@
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/types.h>
+#include <iprt/message.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 //
