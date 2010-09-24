@@ -1,4 +1,4 @@
-/* $Id: precomp.h 32667 2010-09-21 14:04:49Z sergey.dubov@oracle.com $*/
+/* $Id: precomp.h 32760 2010-09-24 13:41:31Z noreply@oracle.com $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -243,7 +243,7 @@
 #include "VBoxSnapshotsWgt.h"
 #include "VBoxSpecialControls.h"
 #include "VBoxTakeSnapshotDlg.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "VBoxUpdateDlg.h"
 #include "VBoxUtils-darwin.h"
 #include "VBoxUtils.h"
