@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 32718 2010-09-23 12:57:52Z klaus.espenlaub@oracle.com $ */
+/* $Id: ProgressProxyImpl.cpp 32780 2010-09-27 19:00:22Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -374,7 +374,7 @@ void ProgressProxy::copyProgressInfo(IProgress *pOtherProgress, bool fEarly)
                         Utf8Str strText(bstrText);
                         LogFlowThisFunc(("Got ErrorInfo(%s); hrcResult=%Rhrc\n", strText.c_str(), hrcResult));
                         Progress::notifyComplete((HRESULT)hrcResult,
-                                                 Guid(bstrIID),
+                                                 Guid(bstrIID).ref(),
                                                  Utf8Str(bstrComponent).c_str(),
                                                  "%s", strText.c_str());
                     }
