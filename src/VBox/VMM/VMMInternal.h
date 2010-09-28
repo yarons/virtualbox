@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 32791 2010-09-28 13:45:48Z noreply@oracle.com $ */
+/* $Id: VMMInternal.h 32792 2010-09-28 13:52:18Z noreply@oracle.com $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -368,6 +368,7 @@ typedef struct VMM
     STAMCOUNTER                 StatRZRetToR3PDMQueues;
     STAMCOUNTER                 StatRZRetToR3Rendezvous;
     STAMCOUNTER                 StatRZRetToR3Timer;
+    STAMCOUNTER                 StatRZRetToR3DMA;
     STAMCOUNTER                 StatRZRetTimerPending;
     STAMCOUNTER                 StatRZRetInterruptPending;
     STAMCOUNTER                 StatRZRetCallRing3;

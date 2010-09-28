@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 32791 2010-09-28 13:45:48Z noreply@oracle.com $ */
+/* $Id: VMMR0.cpp 32792 2010-09-28 13:52:18Z noreply@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -434,6 +434,9 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             else
             if (VM_FF_ISPENDING(pVM, VM_FF_EMT_RENDEZVOUS))
                 STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3Rendezvous);
+            else
+            if (VM_FF_ISPENDING(pVM, VM_FF_PDM_DMA))
+                STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3DMA);
             else
             if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_TIMER))
                 STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3Timer);
