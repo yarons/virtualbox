@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 32821 2010-09-29 16:29:46Z noreply@oracle.com $ */
+/* $Id: MsiCommon.cpp 32822 2010-09-29 16:32:59Z noreply@oracle.com $ */
 /** @file
  * MSI support routines
  */
@@ -31,12 +31,12 @@ DECLINLINE(uint16_t) msiGetMessageControl(PPCIDEVICE pDev)
 
 DECLINLINE(bool) msiIs64Bit(PPCIDEVICE pDev)
 {
-    return (msiGetMessageControl(pDev) & VBOX_PCI_MSI_FLAGS_64BIT != 0);
+    return (msiGetMessageControl(pDev) & VBOX_PCI_MSI_FLAGS_64BIT) != 0;
 }
 
 DECLINLINE(bool) msiIsEnabled(PPCIDEVICE pDev)
 {
-    return msiGetMessageControl(pDev) & VBOX_PCI_MSI_FLAGS_ENABLE;
+    return (msiGetMessageControl(pDev) & VBOX_PCI_MSI_FLAGS_ENABLE) != 0;
 }
 
 DECLINLINE(bool) msiIsMME(PPCIDEVICE pDev)
