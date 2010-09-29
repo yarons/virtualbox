@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 32776 2010-09-27 13:31:42Z noreply@oracle.com $ */
+/* $Id: DevPCI.cpp 32820 2010-09-29 16:25:16Z noreply@oracle.com $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2411,6 +2411,7 @@ static DECLCALLBACK(int)   pcibridgeConstruct(PPDMDEVINS pDevIns, int iInstance,
     PDMPCIBUSREG PciBusReg;
     PciBusReg.u32Version              = PDM_PCIBUSREG_VERSION;
     PciBusReg.pfnRegisterR3           = pcibridgeRegister;
+    PciBusReg.pfnRegisterMsiR3        = NULL;
     PciBusReg.pfnIORegionRegisterR3   = pciIORegionRegister;
     PciBusReg.pfnSetConfigCallbacksR3 = pciSetConfigCallbacks;
     PciBusReg.pfnSetIrqR3             = pcibridgeSetIrq;
