@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 32831 2010-09-29 20:06:00Z noreply@oracle.com $ */
+/* $Id: MouseImpl.cpp 32851 2010-09-30 15:12:55Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -564,7 +564,7 @@ void Mouse::sendMouseCapsNotifications(void)
     bool fAbsDev = false;
     bool fRelDev = false;
     uint32_t u32MouseCaps;
-    
+
     {
         AutoWriteLock aLock(this COMMA_LOCKVAL_SRC_POS);
 
