@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 32351 2010-09-09 12:34:56Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 32842 2010-09-30 12:46:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -532,7 +532,7 @@ int main(int argc, char **argv)
     {
         rc = g_aServices[j].pDesc->pfnPreInit();
         if (RT_FAILURE(rc))
-            return VBoxServiceError("Service '%s' failed pre-init: %Rrc\n", g_aServices[j].pDesc->pszName);
+            return VBoxServiceError("Service '%s' failed pre-init: %Rrc\n", g_aServices[j].pDesc->pszName, rc);
     }
 
 #ifdef RT_OS_WINDOWS
