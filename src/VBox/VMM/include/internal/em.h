@@ -1,4 +1,4 @@
-/* $Id: em.h 32171 2010-09-01 09:54:45Z noreply@oracle.com $ */
+/* $Id: em.h 32912 2010-10-05 13:04:39Z noreply@oracle.com $ */
 /** @file
  * EM - Internal VMM header file.
  */
@@ -20,7 +20,7 @@
 
 #include <VBox/em.h>
 
-VMMR3DECL(int) EMR3NotifyResume(PVM pVM);
-VMMR3DECL(int) EMR3NotifySuspend(PVM pVM);
+VMMR3DECL(int)  EMR3NotifyResume(PVM pVM);
+VMMR3DECL(int)  EMR3NotifySuspend(PVM pVM);
 
 #endif
