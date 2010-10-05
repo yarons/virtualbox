@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 32905 2010-10-05 11:43:35Z noreply@oracle.com $ */
+/* $Id: thread-posix.cpp 32914 2010-10-05 13:25:58Z noreply@oracle.com $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -386,7 +386,7 @@ RTDECL(int) RTThreadPoke(RTTHREAD hThread)
 }
 #endif
 
-RTR3DECL(int) RTThreadGetExecutionTimeMilli(RTTHREAD hThread, uint64_t *pKernelTime, uint64_t *pUserTime)
+RTR3DECL(int) RTThreadGetExecutionTimeMilli(uint64_t *pKernelTime, uint64_t *pUserTime)
 {
     return VERR_NOT_IMPLEMENTED;
 }
