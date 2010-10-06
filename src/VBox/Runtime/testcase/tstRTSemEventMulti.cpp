@@ -1,10 +1,10 @@
-/* $Id: tstSemEvent.cpp 32946 2010-10-06 14:21:29Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTSemEventMulti.cpp 32949 2010-10-06 14:39:02Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT Testcase - Event Semaphore Test.
+ * IPRT Testcase - Multiple Release Event Semaphores.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
