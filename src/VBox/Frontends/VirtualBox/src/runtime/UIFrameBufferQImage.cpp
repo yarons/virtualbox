@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 32150 2010-08-31 14:14:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBufferQImage.cpp 32981 2010-10-07 14:19:22Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -165,8 +165,7 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
         }
         if (!bFallback)
         {
-            ulong virtWdt = bitsPerLine / pEvent->bitsPerPixel();
-            m_img = QImage ((uchar *) pEvent->VRAM(), virtWdt, m_height, format);
+            m_img = QImage ((uchar *) pEvent->VRAM(), m_width, m_height, bitsPerLine / 8, format);
             m_uPixelFormat = FramebufferPixelFormat_FOURCC_RGB;
             m_bUsesGuestVRAM = true;
         }
