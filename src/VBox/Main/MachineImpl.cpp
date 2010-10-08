@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 32886 2010-10-04 13:04:26Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 33000 2010-10-08 09:43:03Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10702,8 +10702,12 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
                 break;
 
             default:
+#ifndef DEBUG_sunlover
                 AssertMsgFailedReturn(("%s\n", Global::stringifyMachineState(mData->mMachineState)),
                                       VBOX_E_INVALID_VM_STATE);
+#else
+                return VBOX_E_INVALID_VM_STATE;
+#endif
         }
 
         setModified(IsModified_MachineData);
