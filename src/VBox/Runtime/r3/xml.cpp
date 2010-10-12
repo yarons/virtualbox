@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 32565 2010-09-16 14:39:24Z noreply@oracle.com $ */
+/* $Id: xml.cpp 33056 2010-10-12 12:09:42Z noreply@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1382,6 +1382,29 @@ void XmlMemParser::read(const void* pvBuf, int cbSize,
         throw XmlError(xmlCtxtGetLastError(m_ctxt));
 
     doc.refreshInternals();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// XmlMemWriter class
+//
+////////////////////////////////////////////////////////////////////////////////
+
+XmlMemWriter::XmlMemWriter()
+{
+}
+
+XmlMemWriter::~XmlMemWriter()
+{
+}
+
+void XmlMemWriter::write(const Document &doc, void **ppvBuf, size_t *pcbSize)
+{
+    xmlChar* pBuf;
+    int size;
+    xmlDocDumpFormatMemory(doc.m->plibDocument, &pBuf, &size, 1);
+    *ppvBuf = pBuf;
+    *pcbSize = size;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
