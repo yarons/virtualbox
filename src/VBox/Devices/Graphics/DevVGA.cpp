@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 33041 2010-10-11 13:12:32Z michal.necasek@oracle.com $ */
+/* $Id: DevVGA.cpp 33076 2010-10-12 15:33:57Z michal.necasek@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5172,6 +5172,8 @@ static DECLCALLBACK(int) vgaPortTakeScreenshot(PPDMIDISPLAYPORT pInterface, uint
             }
         }
     }
+    else
+        rc = VERR_NOT_SUPPORTED;
 
     PDMCritSectLeave(&pThis->lock);
 
