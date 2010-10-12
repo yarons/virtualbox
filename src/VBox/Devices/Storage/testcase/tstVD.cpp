@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 32536 2010-09-15 18:25:32Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVD.cpp 33083 2010-10-12 20:27:08Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -742,7 +742,8 @@ static int tstVmdkRename(const char *src, const char *dst)
 
     rc = VDOpen(pVD, "VMDK", src, VD_OPEN_FLAGS_NORMAL, NULL);
     CHECK("VDOpen()");
-    rc = VDCopy(pVD, 0, pVD, "VMDK", dst, true, 0, VD_IMAGE_FLAGS_NONE, NULL, NULL, NULL, NULL);
+    rc = VDCopy(pVD, 0, pVD, "VMDK", dst, true, 0, VD_IMAGE_FLAGS_NONE, NULL,
+                VD_OPEN_FLAGS_NORMAL, NULL, NULL, NULL);
     CHECK("VDCopy()");
 
     VDDestroy(pVD);
