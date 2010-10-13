@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.h 29081 2010-05-05 13:32:04Z noreply@oracle.com $ */
+/* $Id: VBoxVga.h 33086 2010-10-13 07:27:19Z noreply@oracle.com $ */
 /** @file
  * VBoxVga.h
  */
@@ -71,7 +71,7 @@
 //
 // Cirrus Logic Graphical Mode Data
 //
-#define VBOX_VGA_MODE_COUNT         5
+#define VBOX_VGA_MODE_COUNT         6
 
 typedef struct {
   UINT32  ModeNumber;
