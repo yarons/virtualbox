@@ -1,6 +1,6 @@
-/* $Id: semevent-r0drv-solaris.c 33149 2010-10-15 11:26:24Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-r0drv-solaris.c 33151 2010-10-15 11:36:36Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - Semaphores, Ring-0 Driver, Solaris.
+ * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
 
 /*
