@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-freebsd.c 25724 2010-01-11 14:45:34Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-r0drv-freebsd.c 33155 2010-10-15 12:07:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -291,5 +291,11 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventWait(hEventSem, cMillies, true /* interruptible */);
+}
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    return 1000000000 / hz;
 }
 
