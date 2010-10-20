@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33230 2010-10-19 13:42:22Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxService.cpp 33247 2010-10-20 10:01:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -217,7 +217,6 @@ void VBoxServiceVerbose(int iLevel, const char *pszFormat, ...)
         va_start(va, pszFormat);
         RTStrmPrintfV(g_pStdOut, pszFormat, va);
         va_end(va);
-
         va_start(va, pszFormat);
         LogRel(("%s: %N", g_pszProgName, pszFormat, &va));
         va_end(va);
