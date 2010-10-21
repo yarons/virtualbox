@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33293 2010-10-21 10:41:47Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlExec.cpp 33297 2010-10-21 10:54:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -704,7 +704,7 @@ static int VBoxServiceControlExecInitPipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf
  *
  * @param   pBuf            The pipe buffer.
  */
-static void VBoxServiceControlExecDeletePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
+void VBoxServiceControlExecDeletePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
 {
     AssertPtr(pBuf);
     if (pBuf->pbData)
