@@ -1,6 +1,6 @@
-/* $Id: tstRTStrAlloc.cpp 31231 2010-07-30 07:50:52Z noreply@oracle.com $ */
+/* $Id: tstRTStrAlloc.cpp 33285 2010-10-21 09:41:51Z noreply@oracle.com $ */
 /** @file
- * IPRT Testcase - String allocation APIs and related manimuplators.
+ * IPRT Testcase - String allocation APIs and related manipulators.
  */
 
 /*
