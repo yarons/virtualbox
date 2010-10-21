@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33292 2010-10-21 10:33:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlExec.cpp 33293 2010-10-21 10:41:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -45,8 +45,6 @@
 using namespace guestControl;
 
 extern RTLISTNODE g_GuestControlExecThreads;
-
-void VBoxServiceControlExecDeletePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf);
 
 
 /**
