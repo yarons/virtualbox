@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 33289 2010-10-21 10:00:15Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.h 33353 2010-10-22 13:29:33Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -177,7 +177,7 @@ private:
                                      int32_t &lDevice);
 
     void importOneDiskImage(const ovf::DiskImage &di,
-                            const Utf8Str &strTargetPath,
+                            Utf8Str strTargetPath,
                             ComObjPtr<Medium> &pTargetHD,
                             ImportStack &stack,
                             PVDINTERFACEIO pCallbacks,
