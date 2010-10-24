@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33294 2010-10-21 10:45:26Z noreply@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 33386 2010-10-24 15:57:55Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
@@ -153,6 +153,9 @@ public:
     STDMETHOD(CheckFirmwarePresent)(FirmwareType_T aFirmwareType, IN_BSTR aVersion,
                                     BSTR * aUrl, BSTR * aFile, BOOL * aResult);
 
+    STDMETHOD(VRDERegisterLibrary)(IN_BSTR aName);
+    STDMETHOD(VRDEUnregisterLibrary)(IN_BSTR aName);
+    STDMETHOD(VRDEListLibraries)(ComSafeArrayOut(BSTR, aNames));
     /* public methods only for internal purposes */
 
     /**
