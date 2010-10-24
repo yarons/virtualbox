@@ -1,4 +1,4 @@
-/* $Id: test.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: test.cpp 33374 2010-10-24 12:19:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1463,7 +1463,7 @@ RTR3DECL(int) RTTestValue(RTTEST hTest, const char *pszName, uint64_t u64Value, 
     RTCritSectLeave(&pTest->Lock);
 
     RTCritSectEnter(&pTest->OutputLock);
-    rtTestPrintf(pTest, "  %-48s: %'12llu %s\n", pszName, u64Value, pszUnit);
+    rtTestPrintf(pTest, "  %-48s: %'16llu %s\n", pszName, u64Value, pszUnit);
     RTCritSectLeave(&pTest->OutputLock);
 
     return VINF_SUCCESS;
