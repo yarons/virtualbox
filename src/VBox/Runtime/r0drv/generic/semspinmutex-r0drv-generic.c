@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 29250 2010-05-09 17:53:58Z knut.osmundsen@oracle.com $ */
+/* $Id: semspinmutex-r0drv-generic.c 33393 2010-10-24 16:17:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -88,7 +88,7 @@ typedef struct RTSEMSPINMUTEXINTERNAL
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-//#define RTSEMSPINMUTEX_INT_FLAGS_MUST
+/*#define RTSEMSPINMUTEX_INT_FLAGS_MUST*/
 
 /** Validates the handle, returning if invalid. */
 #define RTSEMSPINMUTEX_VALIDATE_RETURN(pThis) \
