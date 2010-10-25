@@ -1,4 +1,4 @@
-/* $Id: symlink-win.cpp 33426 2010-10-25 14:32:38Z knut.osmundsen@oracle.com $ */
+/* $Id: symlink-win.cpp 33429 2010-10-25 14:37:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Symbolic Links, Windows.
  */
@@ -40,6 +40,7 @@
 #include <iprt/string.h>
 #include "internal/path.h"
 
+#include <Windows.h>
 
 
 RTDECL(bool) RTSymlinkExists(const char *pszSymlink)
