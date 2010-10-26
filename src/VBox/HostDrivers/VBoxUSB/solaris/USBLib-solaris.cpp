@@ -1,4 +1,4 @@
-/** $Id: USBLib-solaris.cpp 31939 2010-08-24 19:06:56Z noreply@oracle.com $ */
+/** $Id: USBLib-solaris.cpp 33464 2010-10-26 12:27:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
@@ -206,7 +206,7 @@ USBLIB_DECL(int) USBLibGetClientInfo(char *pszDeviceIdent, char **ppszClientPath
     if (RT_SUCCESS(rc))
     {
         *pInstance = Req.Instance;
-        rc = RTStrAPrintf(ppszClientPath, "%s", Req.achClientPath);
+        rc = RTStrDupEx(ppszClientPath, Req.achClientPath);
         if (RT_SUCCESS(rc))
             return VINF_SUCCESS;
 
