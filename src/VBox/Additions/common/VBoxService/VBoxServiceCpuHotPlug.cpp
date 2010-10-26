@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 33464 2010-10-26 12:27:50Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 33468 2010-10-26 12:49:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot Plugging Service.
  */
@@ -22,6 +22,7 @@
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
+#include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <VBox/VBoxGuestLib.h>
