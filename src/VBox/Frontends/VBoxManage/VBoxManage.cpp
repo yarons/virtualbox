@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: VBoxManage.cpp 33556 2010-10-28 13:16:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -398,6 +398,7 @@ int main(int argc, char *argv[])
         { "hostonlyif",       USAGE_HOSTONLYIFS,       handleHostonlyIf },
 #endif
         { "dhcpserver",       USAGE_DHCPSERVER,        handleDHCPServer},
+        { "vrde",             USAGE_VRDE,              handleVRDE},
         { NULL,               0,                       NULL }
     };
 

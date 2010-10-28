@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 33386 2010-10-24 15:57:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 33556 2010-10-28 13:16:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -583,8 +583,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         { "--vrdp", 'v', RTGETOPT_REQ_STRING },        /* VRDE: deprecated. */
         { "-vrde", 'v', RTGETOPT_REQ_STRING },
         { "--vrde", 'v', RTGETOPT_REQ_STRING },
-        { "-vrdesetproperty", 'e', RTGETOPT_REQ_STRING },
-        { "--vrdesetproperty", 'e', RTGETOPT_REQ_STRING },
+        { "-vrdeproperty", 'e', RTGETOPT_REQ_STRING },
+        { "--vrdeproperty", 'e', RTGETOPT_REQ_STRING },
 #endif /* VBOX_WITH_VRDP defined */
 #ifdef VBOX_WITH_VNC
         { "--vncport", 'm', RTGETOPT_REQ_INT32 },
