@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 32428 2010-09-11 14:44:03Z alexander.eichner@oracle.com $ */
+/* $Id: fileaio-win.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -99,7 +99,7 @@ typedef struct RTFILEAIOREQINTERNAL
     void                 *pvUser;
     /** Flag whether the request completed. */
     bool                  fCompleted;
-    /** Number of bytes transfered successfully. */
+    /** Number of bytes transferred successfully. */
     size_t                cbTransfered;
     /** Error code of the completed request. */
     int                   Rc;

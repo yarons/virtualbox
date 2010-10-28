@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSupportInfo.cpp 29206 2010-05-07 12:59:29Z noreply@oracle.com $ */
+/* $Id: VBoxGLSupportInfo.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -573,7 +573,7 @@ bool VBoxVHWAInfo::isVHWASupported() const
     }
 
 #ifndef DEBUGVHWASTRICT
-    /* in case we do not support shaders & multitexturing we can not supprt dst colorkey,
+    /* in case we do not support shaders & multitexturing we can not support dst colorkey,
      * no sense to report Video Acceleration supported */
     if(!mglInfo.isFragmentShaderSupported())
     {

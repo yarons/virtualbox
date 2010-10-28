@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 31530 2010-08-10 12:24:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgConsole.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -256,7 +256,7 @@ VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NUL
     setLayout(pVLayout);
 
     /*
-     * The tab order is from input to output, not the otherway around as it is by default.
+     * The tab order is from input to output, not the other way around as it is by default.
      */
     setTabOrder(m_pInput, m_pOutput);
 

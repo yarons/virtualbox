@@ -1,6 +1,6 @@
-/* $Id: semevent-win.cpp 33269 2010-10-20 15:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-win.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
- * IPRT - Event Sempahore, Windows.
+ * IPRT - Event Semaphore, Windows.
  */
 
 /*

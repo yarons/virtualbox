@@ -1,6 +1,6 @@
-/* $Id: pathhost-posix.cpp 33426 2010-10-25 14:32:38Z knut.osmundsen@oracle.com $ */
+/* $Id: pathhost-posix.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
- * IPRT - Path Convertions, POSIX.
+ * IPRT - Path Conversions, POSIX.
  */
 
 /*

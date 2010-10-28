@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 33269 2010-10-20 15:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-linux.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -33,7 +33,7 @@
  * will fall back on the pthread-based implementation if glibc is known to
  * contain the bug fix.
  *
- * The external refernce to epoll_pwait is a hack which prevents that we link
+ * The external reference to epoll_pwait is a hack which prevents that we link
  * against glibc < 2.6.
  */
 #include "../posix/semevent-posix.cpp"

@@ -1,6 +1,6 @@
-/* $Id: handle.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: handle.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
- * IPRT - Generic Handle Manipluation.
+ * IPRT - Generic Handle Manipulation.
  */
 
 /*

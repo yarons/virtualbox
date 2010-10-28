@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 28863 2010-04-28 12:24:32Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-linux.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -40,7 +40,7 @@
 
 
 /**
- * Internal worker that determins the max possible CPU count.
+ * Internal worker that determines the max possible CPU count.
  *
  * @returns Max cpus.
  */

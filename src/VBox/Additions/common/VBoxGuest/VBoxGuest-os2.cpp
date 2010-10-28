@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 31517 2010-08-10 11:28:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-os2.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -328,7 +328,7 @@ static int vboxGuestOS2MapMemory(void)
 
 
 /**
- * Called fromn VBoxGuestOS2Init to determin which OS/2 version this is.
+ * Called fromn VBoxGuestOS2Init to determine which OS/2 version this is.
  *
  * @returns VBox OS/2 type.
  */

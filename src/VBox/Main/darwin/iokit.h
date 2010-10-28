@@ -1,4 +1,4 @@
-/* $Id: iokit.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: iokit.h 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -39,7 +39,7 @@ typedef DARWINDVD *PDARWINDVD;
 
 
 /**
- * Darwin ethernet controler descriptor as returned by DarwinGetEthernetControllers().
+ * Darwin ethernet controller descriptor as returned by DarwinGetEthernetControllers().
  */
 typedef struct DARWINETHERNIC
 {

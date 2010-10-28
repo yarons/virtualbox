@@ -1,6 +1,6 @@
-/* $Id: tstRunTestcases.cpp 33351 2010-10-22 13:18:25Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRunTestcases.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
- * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
+ * tstRunTestcases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
 
 /*

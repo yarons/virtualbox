@@ -1,6 +1,6 @@
-/* $Id: pathhost-darwin.cpp 33426 2010-10-25 14:32:38Z knut.osmundsen@oracle.com $ */
+/* $Id: pathhost-darwin.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
 /** @file
- * IPRT - Path Convertions, Darwin.
+ * IPRT - Path Conversions, Darwin.
  *
  * On darwin path names on the disk are decomposed using normalization
  * form D (NFD).  Since this behavior is unique for the Mac, we will precompose
