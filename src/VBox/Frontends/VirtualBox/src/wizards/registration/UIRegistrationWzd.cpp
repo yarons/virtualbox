@@ -1,4 +1,4 @@
-/* $Id: UIRegistrationWzd.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: UIRegistrationWzd.cpp 33550 2010-10-28 10:53:57Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -641,7 +641,7 @@ void UIRegistrationWzdPage1::populateCountries()
          << "Andorra"
          << "Angola"
          << "Anguilla"
-         << "Antartica"
+         << "Antarctica"
          << "Antigua & Barbuda"
          << "Argentina"
          << "Armenia"
