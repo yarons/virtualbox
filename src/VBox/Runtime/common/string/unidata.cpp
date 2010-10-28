@@ -1,4 +1,4 @@
-/* $Id: unidata.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: unidata.cpp 33560 2010-10-28 14:25:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Unicode Tables
  *
@@ -22569,7 +22569,7 @@ static const uint8_t g_afRTUniFlags0x02f800[] =
 };
 
 
-const RTUNIFLAGSRANGE g_aRTUniFlagRanges[] =
+const RTUNIFLAGSRANGE g_aRTUniFlagsRanges[] =
 {
     { 0x000000, 0x003401, &g_afRTUniFlags0x000000[0] },
     { 0x004db5, 0x004e01, &g_afRTUniFlags0x004db5[0] },
