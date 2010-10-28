@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: VHD.cpp 33567 2010-10-28 15:37:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_VHD
-#include <VBox/VBoxHDD-Plugin.h>
+#include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>
