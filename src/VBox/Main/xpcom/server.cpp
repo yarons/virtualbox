@@ -1,4 +1,4 @@
-/* $Id: server.cpp 33590 2010-10-29 08:55:09Z vitali.pelenjow@oracle.com $ */
+/* $Id: server.cpp 33592 2010-10-29 09:36:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -71,7 +71,7 @@
 #include <MediumFormatImpl.h>
 #include <ProgressCombinedImpl.h>
 #include <ProgressProxyImpl.h>
-#include <VRDPServerImpl.h>
+#include <VRDEServerImpl.h>
 #include <SharedFolderImpl.h>
 #include <HostImpl.h>
 #include <HostNetworkInterfaceImpl.h>

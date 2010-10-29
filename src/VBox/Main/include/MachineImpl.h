@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 33592 2010-10-29 09:36:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -20,7 +20,7 @@
 
 #include "VirtualBoxBase.h"
 #include "SnapshotImpl.h"
-#include "VRDPServerImpl.h"
+#include "VRDEServerImpl.h"
 #include "MediumAttachmentImpl.h"
 #include "MediumLock.h"
 #include "NetworkAdapterImpl.h"

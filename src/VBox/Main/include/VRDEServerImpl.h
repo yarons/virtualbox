@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 33556 2010-10-28 13:16:42Z vitali.pelenjow@oracle.com $ */
+/* $Id: VRDEServerImpl.h 33592 2010-10-29 09:36:56Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
