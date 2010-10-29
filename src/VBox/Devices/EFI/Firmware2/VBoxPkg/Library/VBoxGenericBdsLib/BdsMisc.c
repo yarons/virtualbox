@@ -1,4 +1,4 @@
-/* $Id: BdsMisc.c 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: BdsMisc.c 33595 2010-10-29 10:35:00Z noreply@oracle.com $ */
 /** @file
  * BdsMisc.c - Misc BDS library function.
  */
@@ -1333,7 +1333,7 @@ BdsLibSaveMemoryTypeInformation (
            &ReadyToBootEvent
            );
   if (EFI_ERROR (Status)) {
-    DEBUG ((DEBUG_ERROR,"Bds Set Memory Type Informationa Variable Fails\n"));
+    DEBUG ((DEBUG_ERROR,"Bds Set Memory Type Information Variable Fails\n"));
   }
 
 }
