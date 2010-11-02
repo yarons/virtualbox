@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsUpdate.cpp 33631 2010-11-01 06:35:05Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGLSettingsUpdate.cpp 33686 2010-11-02 12:49:41Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -21,8 +21,8 @@
 #include "VBoxGlobal.h"
 
 VBoxGLSettingsUpdate::VBoxGLSettingsUpdate()
-    : mSettingsChanged (false)
-    , mLastChosen (0)
+    : mSettingsChanged(false)
+    , mLastChosen(0)
 {
     /* Apply UI decorations */
     Ui::VBoxGLSettingsUpdate::setupUi (this);
