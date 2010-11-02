@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 33269 2010-10-20 15:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-r0drv-solaris.c 33676 2010-11-02 09:48:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -339,5 +339,4 @@ RTDECL(uint32_t) RTSemEventGetResolution(void)
 {
     return rtR0SemSolWaitGetResolution();
 }
-
 

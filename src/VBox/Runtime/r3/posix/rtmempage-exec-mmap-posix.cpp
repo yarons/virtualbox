@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 33279 2010-10-20 21:37:58Z knut.osmundsen@oracle.com $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 33676 2010-11-02 09:48:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -142,5 +142,4 @@ RTDECL(void) RTMemExecFree(void *pv, size_t cb) RT_NO_THROW
 {
     return rtMemPagePosixFree(pv, cb);
 }
-
 
