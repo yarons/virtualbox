@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 33590 2010-10-29 08:55:09Z vitali.pelenjow@oracle.com $ */
+/* $Id: HostImpl.cpp 33777 2010-11-04 15:20:35Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2076,6 +2076,10 @@ static int solarisWalkDeviceNodeForDVD(di_node_t Node, void *pvArg)
                                         if (*ppDrives)
                                             pDrive->pNext = *ppDrives;
                                         *ppDrives = pDrive;
+
+                                        /* We're not interested in any of the other slices, stop minor nodes traversal. */
+                                        free(pszDevLinkPath);
+                                        break;
                                     }
                                 }
                                 free(pszDevLinkPath);
