@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33793 2010-11-05 14:21:25Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33796 2010-11-05 16:03:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -782,10 +782,12 @@ int ctrlCopyInit(const char *pszSource, const char *pszDest, uint32_t uFlags,
                 if (RT_SUCCESS(rc))
                     rc = RTStrAAppend(&pszDestAbs, RTPathFilename(pszSourceAbs));
 
-                RTListInit(pList);
-                rc = ctrlCopyDirectoryEntryAppend(pszSourceAbs, pszDestAbs, pList);
-                *pcObjects = 1;
-
+                if (RT_SUCCESS(rc))
+                {
+                    RTListInit(pList);
+                    rc = ctrlCopyDirectoryEntryAppend(pszSourceAbs, pszDestAbs, pList);
+                    *pcObjects = 1;
+                }
                 RTStrFree(pszDestAbs);
             }
             else
