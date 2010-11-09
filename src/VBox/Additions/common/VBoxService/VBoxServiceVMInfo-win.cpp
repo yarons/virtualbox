@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 33891 2010-11-09 12:09:25Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 33895 2010-11-09 12:41:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -392,7 +392,7 @@ bool VBoxServiceVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER a_pUserInfo, PLUID a_
                               &dwDomainNameSize,
                               &enmOwnerType))
         {
-            DWOR dwErr = GetLastError();
+            DWORD dwErr = GetLastError();
             /*
              * If a network time-out prevents the function from finding the name or
              * if a SID that does not have a corresponding account name (such as a
