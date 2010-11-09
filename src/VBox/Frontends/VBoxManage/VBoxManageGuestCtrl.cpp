@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33900 2010-11-09 14:08:13Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33901 2010-11-09 14:10:09Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -48,7 +48,6 @@
 #endif
 
 #include <signal.h>
-#include <stdlib.h>
 
 #ifdef RT_OS_DARWIN
 # include <CoreFoundation/CFRunLoop.h>
