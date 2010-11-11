@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 33959 2010-11-11 09:41:52Z noreply@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 33963 2010-11-11 10:23:42Z noreply@oracle.com $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -33,6 +33,7 @@
 
 #include <VBox/err.h>
 #include <VBox/RemoteDesktop/VRDEOrders.h>
+#include <VBox/com/listeners.h>
 
 class VRDPConsoleListener
 {
