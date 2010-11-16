@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayMsg.h 34097 2010-11-16 10:39:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTrayMsg.h 34117 2010-11-16 15:27:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTrayMsg - Globally registered messages (RPC) to/from VBoxTray.
  */
@@ -34,8 +34,10 @@ typedef struct _VBOXTRAYIPCHEADER
 {
     /** Message type. */
     ULONG ulMsg;
-    /** Version of message type. */
-    ULONG ulVer;
+    /** User-supplied wParam. */
+    ULONG wParam;
+    /** User-supplied lParam. */
+    ULONG lParam;
 } VBOXTRAYIPCHEADER, *PVBOXTRAYIPCHEADER;
 
 typedef struct _VBOXTRAYIPCMSG_SHOWBALLOONMSG

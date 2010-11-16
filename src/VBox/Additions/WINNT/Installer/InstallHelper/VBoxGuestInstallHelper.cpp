@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 34098 2010-11-16 10:40:59Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestInstallHelper.cpp 34117 2010-11-16 15:27:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -145,7 +145,6 @@ VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
 
     VBOXTRAYIPCHEADER hdr;
     hdr.ulMsg = VBOXTRAYIPCMSGTYPE_SHOWBALLOONMSG;
-    hdr.ulVer = 1;
 
     VBOXTRAYIPCMSG_SHOWBALLOONMSG msg;
     HRESULT hr = VBoxPopString(msg.szBody, sizeof(msg.szBody) / sizeof(TCHAR));
