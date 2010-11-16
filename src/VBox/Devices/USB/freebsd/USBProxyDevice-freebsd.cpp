@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 34014 2010-11-11 21:34:56Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-freebsd.cpp 34127 2010-11-16 17:19:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -19,9 +19,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define    LOG_GROUP LOG_GROUP_DRV_USBPROXY
+#define LOG_GROUP LOG_GROUP_DRV_USBPROXY
 #ifdef VBOX
-#include <iprt/stdint.h>
+# include <iprt/stdint.h>
 #endif
 #include <sys/types.h>
 #include <sys/stat.h>
