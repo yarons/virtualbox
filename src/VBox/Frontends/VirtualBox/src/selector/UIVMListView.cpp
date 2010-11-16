@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 34104 2010-11-16 11:19:07Z noreply@oracle.com $ */
+/* $Id: UIVMListView.cpp 34108 2010-11-16 11:44:48Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -655,7 +655,7 @@ QModelIndex UIVMListView::moveItemTo(const QModelIndex &index, int row)
     pModel->removeRows(perIndex.row(), 1, QModelIndex());
     m_fItemInMove = false;
     setUpdatesEnabled(true);
-    return newIndex;
+    return QModelIndex(newIndex);
 }
 
 /* UIVMItemPainter class */
