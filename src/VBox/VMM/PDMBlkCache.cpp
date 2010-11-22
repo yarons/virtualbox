@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 34223 2010-11-21 23:51:36Z alexander.eichner@oracle.com $ */
+/* $Id: PDMBlkCache.cpp 34246 2010-11-22 15:13:19Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Block Cache.
  */
@@ -608,6 +608,7 @@ static int pdmBlkCacheRequestPassthrough(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEREQ
     pIoXfer->cbXfer      = cbData;
     pIoXfer->enmXferDir  = enmXferDir;
     RTSgBufClone(&pIoXfer->SgBuf, pSgBuf);
+    RTSgBufAdvance(pSgBuf, cbData);
 
     return pdmBlkCacheEnqueue(pBlkCache, offStart, pIoXfer);
 }
