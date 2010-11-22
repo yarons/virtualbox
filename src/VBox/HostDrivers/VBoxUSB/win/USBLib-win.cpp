@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34263 2010-11-22 18:18:11Z noreply@oracle.com $ */
+/* $Id: USBLib-win.cpp 34264 2010-11-22 18:20:59Z noreply@oracle.com $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2990,7 +2990,7 @@ failure:
         RTMemFree((void *)pDevice->pszSerialNumber);
         RTMemFree(pDevice);
 
-        pDevice = Next;
+        pDevice = pNext;
     }
 
     /* free captured devices */
