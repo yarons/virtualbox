@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 34287 2010-11-23 15:20:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 34373 2010-11-25 14:36:40Z noreply@oracle.com $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1407,7 +1407,7 @@ STDMETHODIMP VirtualBox::FindMachine(IN_BSTR aNameOrId, IMachine **aMachine)
                 pMachineFound = pMachine2;
                 break;
             }
-            if (pMachine2->getSettingsFileFull() == strName)
+            if (!RTPathCompare(pMachine2->getSettingsFileFull().c_str(), strName.c_str()))
             {
                 pMachineFound = pMachine2;
                 break;
