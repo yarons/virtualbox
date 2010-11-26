@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 34393 2010-11-26 14:13:35Z noreply@oracle.com $ */
+/* $Id: MouseImpl.cpp 34395 2010-11-26 14:33:47Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -22,7 +22,6 @@
 #include "VMMDev.h"
 
 #include "AutoCaller.h"
-#include "VBoxEvents.h"
 #include "Logging.h"
 
 #include <VBox/pdmdrv.h>
