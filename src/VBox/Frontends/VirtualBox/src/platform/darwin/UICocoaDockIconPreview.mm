@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 30151 2010-06-10 16:12:33Z noreply@oracle.com $ */
+/* $Id: UICocoaDockIconPreview.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

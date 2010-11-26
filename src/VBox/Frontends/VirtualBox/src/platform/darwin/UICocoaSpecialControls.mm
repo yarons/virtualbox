@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 30693 2010-07-07 09:21:11Z noreply@oracle.com $ */
+/* $Id: UICocoaSpecialControls.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

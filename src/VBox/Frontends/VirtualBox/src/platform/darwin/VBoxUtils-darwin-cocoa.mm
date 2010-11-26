@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 34192 2010-11-19 12:27:13Z noreply@oracle.com $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -296,11 +296,6 @@ bool darwinIsWindowMaximized(NativeNSWindowRef pWindow)
     bool fResult = [pWindow isZoomed];
 
     return fResult;
-}
-
-bool darwinShowFileInFinder(NativeNSStringRef pstrFile)
-{
-    return [[NSWorkspace sharedWorkspace] selectFile:pstrFile inFileViewerRootedAtPath:@""];
 }
 
 bool darwinOpenFile(NativeNSStringRef pstrFile)

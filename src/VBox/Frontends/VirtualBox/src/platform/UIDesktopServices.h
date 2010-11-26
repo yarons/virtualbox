@@ -1,10 +1,11 @@
-/* $Id: VBoxIChatTheaterWrapper.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
 /** @file
- * Qt GUI - iChat Theater cocoa wrapper.
+ *
+ * VBox frontends: Qt GUI ("VirtualBox"):
+ * Desktop Services.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,21 +16,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxIChatTheaterWrapper_h
-#define ___VBoxIChatTheaterWrapper_h
+#ifndef ___UIDesktopServices_h___
+#define ___UIDesktopServices_h___
 
-#if defined (Q_WS_MAC) && defined (VBOX_WITH_ICHAT_THEATER)
+/* Qt forward declarations */
+class QString;
 
-# include <ApplicationServices/ApplicationServices.h>
+class UIDesktopServices
+{
+public:
+    static bool createMachineShortcut(const QString &strSrcFile, const QString &strDstPath, const QString &strName, const QString &strUuid);
+    static bool openInFileManager(const QString &strFile);
+};
 
-RT_C_DECLS_BEGIN
-
-void initSharedAVManager();
-void setImageRef (CGImageRef aImage);
-
-RT_C_DECLS_END
-
-#endif
-
-#endif
+#endif /* !___UIDesktopServices_h___ */
 

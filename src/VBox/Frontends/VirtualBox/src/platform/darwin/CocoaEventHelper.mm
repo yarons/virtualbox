@@ -1,4 +1,4 @@
-/* $Id: CocoaEventHelper.mm 30122 2010-06-09 13:50:26Z noreply@oracle.com $ */
+/* $Id: CocoaEventHelper.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

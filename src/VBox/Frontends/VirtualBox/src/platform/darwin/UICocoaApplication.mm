@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 30154 2010-06-10 16:28:15Z noreply@oracle.com $ */
+/* $Id: UICocoaApplication.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
 /** @file
  * UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
