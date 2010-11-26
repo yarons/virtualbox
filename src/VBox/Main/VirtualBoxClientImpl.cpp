@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 34423 2010-11-26 18:02:26Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxClientImpl.cpp 34424 2010-11-26 18:40:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -33,8 +33,6 @@
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
-
-DEFINE_EMPTY_CTOR_DTOR(VirtualBoxClient)
 
 HRESULT VirtualBoxClient::FinalConstruct()
 {
