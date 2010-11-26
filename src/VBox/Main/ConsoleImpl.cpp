@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 34393 2010-11-26 14:13:35Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 34397 2010-11-26 15:06:16Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -260,7 +260,6 @@ class VmEventListener {
 public:
     VmEventListener(Console *aConsole)
     {
-        mfNoLoggedInUsers = true;
         mConsole = aConsole;
     }
 
@@ -314,7 +313,6 @@ public:
         return S_OK;
     }
 private:
-    bool mfNoLoggedInUsers;
     Console *mConsole;
 };
 
