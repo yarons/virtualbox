@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
+/* $Id: UIDesktopServices_x11.cpp 34462 2010-11-29 13:14:35Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,6 +62,6 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
 bool UIDesktopServices::openInFileManager(const QString &strFile)
 {
     QFileInfo fi(strFile);
-    return QDesktopServices::openUrl(QUrl::fromLocalFile(QDir::toNativeSeparators(fi.absolutePath())));
+    return QDesktopServices::openUrl(QUrl("file://" + QDir::toNativeSeparators(fi.absolutePath()), QUrl::TolerantMode));
 }
 
