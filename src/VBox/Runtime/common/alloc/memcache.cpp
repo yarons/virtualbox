@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 33278 2010-10-20 21:36:48Z knut.osmundsen@oracle.com $ */
+/* $Id: memcache.cpp 34507 2010-11-30 13:14:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -527,7 +527,7 @@ RTDECL(void) RTMemCacheFree(RTMEMCACHE hMemCache, void *pvObj)
         uintptr_t iObj   = offObj / pThis->cbObject;
         Assert(iObj * pThis->cbObject == offObj);
         Assert(iObj < pThis->cPerPage);
-        AssertReturnVoid(ASMBitTest(pPage->pbmAlloc, iObj));
+        AssertReturnVoid(ASMBitTest(pPage->pbmAlloc, (int32_t)iObj));
 # endif
 
         /*
