@@ -18,4 +18,5 @@
 /virtualbox-*.substvars
 /virtualbox-*.debhelper
 /virtualbox-*.debhelper.log
+/virtualbox-*.sharedmimeinfo
 /wine.x86
