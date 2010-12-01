@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 34558 2010-12-01 10:56:44Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 34563 2010-12-01 11:39:52Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
@@ -23,7 +23,7 @@
 #include "RemoteUSBBackend.h"
 #include <hgcm/HGCM.h>
 
-#include <VBox/VRDPAuth.h>
+#include <VBox/VBoxAuth.h>
 
 #include <VBox/HostServices/VBoxClipboardExt.h>
 
