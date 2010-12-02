@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.cpp 34063 2010-11-15 10:59:13Z noreply@oracle.com $ */
+/* $Id: UIBootTable.cpp 34614 2010-12-02 14:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -170,6 +170,6 @@ QModelIndex UIBootTable::moveItemTo(const QModelIndex &index, int row)
     QPersistentModelIndex newIndex = model()->index(row, 0);
     delete takeItem(oldIndex.row());
     setCurrentRow(newIndex.row());
-    return newIndex;
+    return QModelIndex(newIndex);
 }
 
