@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 34014 2010-11-11 21:34:56Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 34604 2010-12-02 12:50:36Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of controlvm command.
  */
@@ -141,7 +141,7 @@ int handleControlVM(HandlerArg *a)
 
             unsigned n = parseNum(a->argv[2], 100, "ExecutionCap");
 
-            CHECK_ERROR_BREAK(machine, COMSETTER(CPUExecutionCap)(n));
+            CHECK_ERROR_BREAK(sessionMachine, COMSETTER(CPUExecutionCap)(n));
         }
         else if (!strcmp(a->argv[1], "poweroff"))
         {
