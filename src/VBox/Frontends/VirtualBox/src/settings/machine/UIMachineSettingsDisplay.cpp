@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 34567 2010-12-01 13:20:13Z noreply@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 34615 2010-12-02 14:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -312,10 +312,6 @@ bool UIMachineSettingsDisplay::revalidate (QString &aWarning, QString & /* aTitl
     }
 #endif
     checkVRAMRequirements();
-
-    /* 3D Acceleration support test */
-    // TODO : W8 for NaN //
-
     return true;
 }
 
