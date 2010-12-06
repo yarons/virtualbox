@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 34605 2010-12-02 13:13:28Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINewVMWzd.cpp 34728 2010-12-06 10:40:42Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -496,7 +496,7 @@ void UINewVMWzdPage4::ensureNewHardDiskDeleted()
     CProgress progress = m_HardDisk.DeleteStorage();
     if (m_HardDisk.isOk())
     {
-        vboxProblem().showModalProgressDialog(progress, windowTitle(), "", this);
+        vboxProblem().showModalProgressDialog(progress, windowTitle(), ":/progress_delete_90px.png", this, true);
         if (progress.isOk() && progress.GetResultCode() == S_OK)
             success = true;
     }
