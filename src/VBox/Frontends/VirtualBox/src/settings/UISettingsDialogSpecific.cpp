@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 34735 2010-12-06 11:18:06Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 34740 2010-12-06 11:56:28Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -261,6 +261,8 @@ protected:
              * it can be busy idle-processing for loaded pages: */
             if (!m_fConditionDone)
                 m_condition.wakeAll();
+            if (pPage->failed())
+                break;
         }
         /* Notify listeners about all pages were processed: */
         emit sigNotifyAboutPagesProcessed();
