@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 34811 2010-12-07 18:23:35Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxLicenseViewer.cpp 34812 2010-12-07 18:50:43Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -119,7 +119,7 @@ void VBoxLicenseViewer::unlockButtons()
 void VBoxLicenseViewer::showEvent (QShowEvent *aEvent)
 {
     QDialog::showEvent (aEvent);
-    bool isScrollBarHidden = mLicenseText->verticalScrollBar()->isHidden()
+    bool isScrollBarHidden = !mLicenseText->verticalScrollBar()->isVisible()
         && !(windowState() & Qt::WindowMinimized);
     mAgreeButton->setEnabled (isScrollBarHidden);
     mDisagreeButton->setEnabled (isScrollBarHidden);
