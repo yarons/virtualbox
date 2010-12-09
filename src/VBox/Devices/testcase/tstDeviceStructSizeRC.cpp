@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 34183 2010-11-18 20:38:31Z alexander.eichner@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 34851 2010-12-09 00:45:04Z alexander.eichner@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1190,6 +1190,7 @@ int main()
     GEN_CHECK_OFF(AHCIPort, u32TasksFinished);
     GEN_CHECK_OFF(AHCIPort, u32QueuedTasksFinished);
     GEN_CHECK_OFF(AHCIPort, u32TasksNew);
+    GEN_CHECK_OFF(AHCIPort, u32CurrentCommandSlot);
     GEN_CHECK_OFF(AHCIPort, pDrvBase);
     GEN_CHECK_OFF(AHCIPort, pDrvBlock);
     GEN_CHECK_OFF(AHCIPort, pDrvBlockAsync);
