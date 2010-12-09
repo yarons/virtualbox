@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 34847 2010-12-08 20:27:14Z noreply@oracle.com $ */
+/* $Id: DevIchIntelHDA.cpp 34852 2010-12-09 06:18:05Z noreply@oracle.com $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -696,7 +696,7 @@ static int hdaProcessInterrupt(INTELHDLinkState* pState)
     if(   INTCTL_CIE(pState)
        && (   RIRBSTS_RINTFL(pState)
            || RIRBSTS_RIRBOIS(pState)
-           || STATESTS(pState)))
+           || (STATESTS(pState) & WAKEEN(pState))))
     {
         fIrq = true;
     }
