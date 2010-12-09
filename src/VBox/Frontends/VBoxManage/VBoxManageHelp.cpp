@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34663 2010-12-02 22:44:22Z noreply@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 34888 2010-12-09 14:17:58Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -494,7 +494,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--type normal|writethrough|immutable|shareable]\n"
                      "                            [--autoreset on|off]\n"
                      "                            [--compact]\n"
-                     "                            [--resize <megabytes>]\n"
+                     "                            [--resize <megabytes>|--resizebyte <bytes>]\n"
                      "\n");
 
     if (u64Cmd & USAGE_CLONEHD)
