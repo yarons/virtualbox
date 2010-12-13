@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 33039 2010-10-11 12:00:41Z ramshankar.venkataraman@oracle.com $
+# $Id: vboxconfig.sh 35022 2010-12-13 15:23:34Z klaus.espenlaub@oracle.com $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -791,6 +791,16 @@ postinstall()
         if test -f $PKG_INSTALL_ROOT/var/svc/manifest/application/virtualbox/virtualbox-webservice.xml || test -f $PKG_INSTALL_ROOT/var/svc/manifest/application/virtualbox/virtualbox-zoneaccess.xml; then
             infoprint "Configuring services..."
             if test "$REMOTEINST" -eq 1; then
+                subprint "Skipped for targetted installs."
+            fi
+        fi
+
+        if test -d $PKG_INSTALL_ROOT/usr/share/icons; then
+            infoprint "Installing MIME types and icons"
+            if test "$REMOTEINST" -eq 0; then
+                update-mime-database -q 2>/dev/null
+                update-desktop-database -q 2>/dev/null
+            else
                 subprint "Skipped for targetted installs."
             fi
         fi
