@@ -1,4 +1,4 @@
-/* $Id: time.cpp 34990 2010-12-13 11:12:42Z andreas.loeffler@oracle.com $ */
+/* $Id: time.cpp 34993 2010-12-13 12:00:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Time.
  */
@@ -282,7 +282,7 @@ RTDECL(PRTTIME) RTTimeExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
     pTime->u32Nanosecond = i32Rem;
 
     /* second */
-    i32Rem = ASMDivS64ByS32RetS32(i64Div, 60);
+    i32Rem = (int32_t)ASMModU64ByU32RetU32(i64Div, 60);
     i64Div /= 60;
     if (i32Rem < 0)
     {
