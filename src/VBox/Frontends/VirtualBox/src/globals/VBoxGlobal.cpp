@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35114 2010-12-15 09:36:27Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 35152 2010-12-15 16:45:42Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -5114,7 +5114,7 @@ void VBoxGlobal::init()
     {
         char szErr[8192];
         szErr[0] = '\0';
-        int vrc = SUPR3HardenedLdrLoadAppPriv("VBoxDbg", &mhVBoxDbg, szErr, sizeof(szErr));
+        int vrc = SUPR3HardenedLdrLoadAppPriv("VBoxDbg", &mhVBoxDbg, 0 /*=fFlags*/, szErr, sizeof(szErr));
         if (RT_FAILURE(vrc))
         {
             mhVBoxDbg = NIL_RTLDRMOD;
