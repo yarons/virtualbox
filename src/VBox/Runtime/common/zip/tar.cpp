@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 34952 2010-12-10 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tar.cpp 35122 2010-12-15 11:28:30Z noreply@oracle.com $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -254,7 +254,7 @@ DECLINLINE(uint64_t) rtTarRecToSize(PRTTARRECORD pRecord)
             cbSize = (cbSize << 8) | *puchField++;
         }
     }else
-        cbSize = rtTarRecToSize(pRecord);
+        RTStrToInt64Full(pRecord->h.size, 8, &cbSize);
 
     if (cbSize < 0)
         cbSize = 0;
