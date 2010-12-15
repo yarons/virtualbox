@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 35136 2010-12-15 14:40:30Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageStorageController.cpp 35137 2010-12-15 14:43:28Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -563,7 +563,8 @@ int handleStorageAttach(HandlerArg *a)
             if (pMedium2Mount && fSetMediumType)
             {
                 CHECK_ERROR(pMedium2Mount, COMSETTER(Type)(mediumType));
-                throw  Utf8Str("Failed to set the medium type");
+                if (FAILED(rc))
+                    throw  Utf8Str("Failed to set the medium type");
             }
 
             if (pMedium2Mount && !bstrComment.isEmpty())
