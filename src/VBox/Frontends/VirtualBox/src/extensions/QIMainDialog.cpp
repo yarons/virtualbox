@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 33778 2010-11-04 15:25:25Z noreply@oracle.com $ */
+/* $Id: QIMainDialog.cpp 35131 2010-12-15 13:19:00Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -327,8 +327,9 @@ bool QIMainDialog::eventFilter (QObject *aObject, QEvent *aEvent)
                         {
                             reject();
                             return true;
-                            break;
                         }
+                        default:
+                            break;
                     }
                 }
         }
