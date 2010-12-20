@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 34496 2010-11-30 10:17:59Z noreply@oracle.com $ */
+/* $Id: UIImportApplianceWzd.cpp 35234 2010-12-20 09:40:31Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -250,6 +250,14 @@ void UIImportApplianceWzdPage2::retranslateUi()
 }
 
 bool UIImportApplianceWzdPage2::validatePage()
+{
+    startProcessing();
+    bool fResult = import();
+    endProcessing();
+    return fResult;
+}
+
+bool UIImportApplianceWzdPage2::import()
 {
     /* Make sure the final values are puted back */
     m_pSettingsCnt->prepareImport();

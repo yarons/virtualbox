@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 35120 2010-12-15 11:01:41Z noreply@oracle.com $ */
+/* $Id: UINewVMWzd.cpp 35234 2010-12-20 09:40:31Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -687,8 +687,11 @@ void UINewVMWzdPage5::initializePage()
 
 bool UINewVMWzdPage5::validatePage()
 {
+    startProcessing();
     /* Try to construct machine */
-    return constructMachine();
+    bool fResult = constructMachine();
+    endProcessing();
+    return fResult;
 }
 
 bool UINewVMWzdPage5::constructMachine()
