@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 35333 2010-12-27 12:10:56Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMLdr.cpp 35345 2010-12-27 14:41:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -344,7 +344,7 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
     /*
      * Builtin module.
      */
-    if (!pszModule || !strcmp(pszModule, "VMMGCBuiltin.gc"))
+    if (!pszModule || !strcmp(pszModule, "VMMRCBuiltin.rc"))
     {
         int rc = VINF_SUCCESS;
         if (!strcmp(pszSymbol, "g_VM"))
