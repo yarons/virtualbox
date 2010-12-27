@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: TRPMRCHandlers.cpp 35335 2010-12-27 12:34:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */

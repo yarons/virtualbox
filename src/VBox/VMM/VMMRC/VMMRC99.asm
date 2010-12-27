@@ -1,9 +1,8 @@
-; $Id: VMMGC0.asm 28800 2010-04-27 08:22:32Z noreply@oracle.com $
+; $Id: VMMRC99.asm 35335 2010-12-27 12:34:40Z knut.osmundsen@oracle.com $
 ;; @file
-; VMMGC0 - The first object module in the link.
+; VMMGC99 - The last object module in the link.
 ;
 
-;
 ; Copyright (C) 2006-2007 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
@@ -15,22 +14,26 @@
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
 
-%include "VMMGC.mac"
+%include "VMMRC.mac"
 
 
 ;;
-; Start the Trap0b segment.
+; End the Trap0b segment.
 VMMR0_SEG Trap0b
-GLOBALNAME g_aTrap0bHandlers
+GLOBALNAME g_aTrap0bHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
 
 ;;
-; Start the Trap0d segment.
+; End the Trap0d segment.
 VMMR0_SEG Trap0d
-GLOBALNAME g_aTrap0dHandlers
+GLOBALNAME g_aTrap0dHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
 
 ;;
-; Start the Trap0e segment.
+; End the Trap0e segment.
 VMMR0_SEG Trap0e
-GLOBALNAME g_aTrap0eHandlers
-
+GLOBALNAME g_aTrap0eHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
