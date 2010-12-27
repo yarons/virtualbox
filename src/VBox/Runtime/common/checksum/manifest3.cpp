@@ -1,4 +1,4 @@
-/* $Id: manifest3.cpp 34537 2010-11-30 18:11:51Z knut.osmundsen@oracle.com $ */
+/* $Id: manifest3.cpp 35351 2010-12-27 17:04:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
@@ -547,6 +547,4 @@ RTDECL(int) RTManifestEntryAddIoStream(RTMANIFEST hManifest, RTVFSIOSTREAM hVfsI
     }
     return rc;
 }
-
-
 

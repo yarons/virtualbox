@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 35306 2010-12-22 17:30:04Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageDebugVM.cpp 35351 2010-12-27 17:04:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -301,5 +301,4 @@ int handleDebugVM(HandlerArg *pArgs)
 
     return rcExit;
 }
-
 

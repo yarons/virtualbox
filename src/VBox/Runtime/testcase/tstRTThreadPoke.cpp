@@ -1,4 +1,4 @@
-/* $Id: tstRTThreadPoke.cpp 34174 2010-11-18 14:52:35Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTThreadPoke.cpp 35351 2010-12-27 17:04:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTThreadPoke.
  */
@@ -76,5 +76,4 @@ int main()
     return RTTestSummaryAndDestroy(g_hTest);
 #endif
 }
-
 
