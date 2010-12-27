@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: TMAllCpu.cpp 35333 2010-12-27 12:10:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_TM
 #include <VBox/tm.h>
 #include <iprt/asm-amd64-x86.h> /* for SUPGetCpuHzFromGIP */
-#include "../TMInternal.h"
+#include "TMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/sup.h>
 

@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 35308 2010-12-23 11:45:59Z alexander.eichner@oracle.com $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 35333 2010-12-27 12:10:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -22,7 +22,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
 
-#include "../VMInternal.h" /* UVM */
+#include "VMInternal.h" /* UVM */
 #include <VBox/vm.h>
 #include <VBox/uvm.h>
 #include <VBox/pdmasynccompletion.h>
