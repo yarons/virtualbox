@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostDVD.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -111,7 +111,7 @@
 #include <iprt/critsect.h>
 #include <VBox/scsi.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 #include "DrvHostBase.h"
 
 

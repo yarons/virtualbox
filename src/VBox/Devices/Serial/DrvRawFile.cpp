@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvRawFile.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -29,7 +29,7 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************

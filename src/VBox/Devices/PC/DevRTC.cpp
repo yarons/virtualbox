@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DevRTC.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -55,7 +55,7 @@
 # include <iprt/uuid.h>
 #endif /* IN_RING3 */
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 struct RTCState;
 typedef struct RTCState RTCState;
