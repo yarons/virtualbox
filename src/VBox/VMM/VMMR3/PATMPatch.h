@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: PATMPatch.h 35348 2010-12-27 16:35:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATMPatch - Internal header file.
  */
