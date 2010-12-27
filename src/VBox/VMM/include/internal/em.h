@@ -1,4 +1,4 @@
-/* $Id: em.h 32953 2010-10-06 15:53:27Z noreply@oracle.com $ */
+/* $Id: em.h 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal VMM header file.
  */
@@ -18,7 +18,7 @@
 #ifndef ___EM_include_internal_h
 #define ___EM_include_internal_h
 
-#include <VBox/em.h>
+#include <VBox/vmm/em.h>
 
 VMMR3DECL(int)  EMR3NotifyResume(PVM pVM);
 VMMR3DECL(int)  EMR3NotifySuspend(PVM pVM);

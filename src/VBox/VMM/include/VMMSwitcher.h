@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 35333 2010-12-27 12:10:56Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMSwitcher.h 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -18,7 +18,7 @@
 #ifndef ___VMMSwitcher_h
 #define ___VMMSwitcher_h
 
-#include <VBox/vmm.h>
+#include <VBox/vmm/vmm.h>
 
 /** @name   Fixup Types.
  * @{

@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 35333 2010-12-27 12:10:56Z knut.osmundsen@oracle.com $ */
+/* $Id: TMInternal.h 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Internal header file.
  */
@@ -23,8 +23,8 @@
 #include <iprt/time.h>
 #include <iprt/timer.h>
 #include <iprt/assert.h>
-#include <VBox/stam.h>
-#include <VBox/pdmcritsect.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/pdmcritsect.h>
 
 RT_C_DECLS_BEGIN
 

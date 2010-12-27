@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 32010 2010-08-26 16:51:26Z michal.necasek@oracle.com $ */
+/* $Id: VUSBInternal.h 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -26,7 +26,7 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/vusb.h>
-#include <VBox/stam.h>
+#include <VBox/vmm/stam.h>
 #include <iprt/assert.h>
 
 RT_C_DECLS_BEGIN

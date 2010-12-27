@@ -1,4 +1,4 @@
-/* $Id: CPUMRC.cpp 35335 2010-12-27 12:34:40Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMRC.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Guest Context Code.
  */
@@ -20,11 +20,11 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_CPUM
-#include <VBox/cpum.h>
-#include <VBox/vmm.h>
-#include <VBox/trpm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/trpm.h>
 #include "CPUMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include <VBox/log.h>
