@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 35374 2010-12-30 14:42:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -29,8 +29,8 @@
 #include <iprt/asm.h>
 
 #ifdef VBOX_WITH_HGCM
-#include "hgcm/HGCM.h"
-#include "hgcm/HGCMObjects.h"
+# include "HGCM.h"
+# include "HGCMObjects.h"
 # if defined(RT_OS_DARWIN) && defined(VBOX_WITH_CROGL)
 #  include <VBox/HostServices/VBoxCrOpenGLSvc.h>
 # endif
