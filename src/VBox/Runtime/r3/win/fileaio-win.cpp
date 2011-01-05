@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: fileaio-win.cpp 35408 2011-01-05 15:43:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -455,7 +455,12 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
         if (fSucceeded)
             pReqInt->Rc = VINF_SUCCESS;
         else
-            pReqInt->Rc = RTErrConvertFromWin32(GetLastError());
+        {
+            DWORD errCode = GetLastError();
+            pReqInt->Rc = RTErrConvertFromWin32(errCode);
+            if (pReqInt->Rc == VERR_UNRESOLVED_ERROR)
+                LogRel(("AIO/win: Request %#p returned rc=%Rrc (native %u\n)", pReqInt, pReqInt->Rc, errCode));
+        }
 
         pahReqs[cRequestsCompleted++] = (RTFILEAIOREQ)pReqInt;
 
