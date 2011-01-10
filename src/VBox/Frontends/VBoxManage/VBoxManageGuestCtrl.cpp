@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35057 2010-12-14 09:52:23Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35457 2011-01-10 14:12:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -567,6 +567,9 @@ static int handleCtrlExecProgram(HandlerArg *a)
                     {
                         break;
                     }
+
+                    /* Make sure the loop is not too tight. */
+                    RTThreadYield();
                 }
 
                 /* Undo signal handling */
