@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35457 2011-01-10 14:12:01Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35459 2011-01-10 14:18:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -41,6 +41,7 @@
 #include <iprt/getopt.h>
 #include <iprt/list.h>
 #include <iprt/path.h>
+#include <iprt/thread.h>
 
 #ifdef USE_XPCOM_QUEUE
 # include <sys/select.h>
