@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 33882 2010-11-09 09:32:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 35476 2011-01-11 10:52:14Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,11 +189,5 @@ void UIMachineSettingsGeneral::retranslateUi()
     mCbClipboard->setItemText (1, vboxGlobal().toString (KClipboardMode_HostToGuest));
     mCbClipboard->setItemText (2, vboxGlobal().toString (KClipboardMode_GuestToHost));
     mCbClipboard->setItemText (3, vboxGlobal().toString (KClipboardMode_Bidirectional));
-}
-
-void UIMachineSettingsGeneral::showEvent (QShowEvent *aEvent)
-{
-    QCoreApplication::sendPostedEvents();
-    UISettingsPage::showEvent (aEvent);
 }
 
