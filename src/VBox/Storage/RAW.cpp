@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 35045 2010-12-13 21:14:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: RAW.cpp 35480 2011-01-11 12:16:06Z alexander.eichner@oracle.com $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -555,6 +555,8 @@ static int rawCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
             else
                 rc = VERR_VD_RAW_INVALID_HEADER;
         }
+        else
+            rc = VERR_VD_RAW_INVALID_HEADER;
     }
     else
         rc = VERR_VD_RAW_INVALID_HEADER;
