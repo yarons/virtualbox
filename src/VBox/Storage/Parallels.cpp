@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 34147 2010-11-17 20:46:42Z noreply@oracle.com $ */
+/* $Id: Parallels.cpp 35486 2011-01-11 13:44:31Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -967,7 +967,7 @@ static int parallelsSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     }
 
     /* Implement this operation via reopening the image. */
-    parallelsFreeImage(pImage, true);
+    parallelsFreeImage(pImage, false);
     rc = parallelsOpenImage(pImage, uOpenFlags);
 
 out:
