@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 35487 2011-01-11 13:45:20Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevCodec.h 35496 2011-01-12 04:29:24Z noreply@oracle.com $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -456,8 +456,6 @@ typedef struct CODECState
     SWVoiceIn               *SwVoiceIn;
     /** PCM out */
     SWVoiceOut              *SwVoiceOut;
-    /** Mic in */
-    SWVoiceIn               *voice_mc;
 #else
     CODECAUDIOOUTFORMAT        aSwVoiceOut;
     CODECAUDIOINFORMAT        aSwVoiceIn;
