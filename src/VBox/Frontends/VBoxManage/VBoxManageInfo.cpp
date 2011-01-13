@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 35146 2010-12-15 16:31:56Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 35517 2011-01-13 10:47:12Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -169,7 +169,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                 ComPtr<IVirtualBoxErrorInfo> accessError;
                 rc = machine->COMGETTER(AccessError)(accessError.asOutParam());
                 RTPrintf("Access error details:\n");
-                ErrorInfo ei(accessError, COM_IIDOF(IVirtualBoxErrorInfo));
+                ErrorInfo ei(accessError);
                 GluePrintErrorInfo(ei);
                 RTPrintf("\n");
             }
