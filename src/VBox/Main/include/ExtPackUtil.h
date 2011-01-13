@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 34938 2010-12-10 09:15:46Z noreply@oracle.com $ */
+/* $Id: ExtPackUtil.h 35523 2011-01-13 13:12:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -109,6 +109,7 @@ typedef VBOXEXTPACKDESC *PVBOXEXTPACKDESC;
 typedef VBOXEXTPACKDESC const *PCVBOXEXTPACKDESC;
 
 
+void                VBoxExtPackInitDesc(PVBOXEXTPACKDESC a_pExtPackDesc);
 iprt::MiniString   *VBoxExtPackLoadDesc(const char *a_pszDir, PVBOXEXTPACKDESC a_pExtPackDesc, PRTFSOBJINFO a_pObjInfo);
 iprt::MiniString   *VBoxExtPackLoadDescFromVfsFile(RTVFSFILE hVfsFile, PVBOXEXTPACKDESC a_pExtPackDesc, PRTFSOBJINFO a_pObjInfo);
 iprt::MiniString   *VBoxExtPackExtractNameFromTarballPath(const char *pszTarball);
