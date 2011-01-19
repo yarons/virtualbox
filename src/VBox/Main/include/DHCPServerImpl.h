@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 30764 2010-07-09 14:12:12Z noreply@oracle.com $ */
+/* $Id: DHCPServerImpl.h 35638 2011-01-19 19:10:49Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -44,9 +44,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP (DHCPServer)
-        COM_INTERFACE_ENTRY (ISupportErrorInfo)
-        COM_INTERFACE_ENTRY (IDHCPServer)
-        COM_INTERFACE_ENTRY (IDispatch)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IDHCPServer)
     END_COM_MAP()
 
     DECLARE_EMPTY_CTOR_DTOR (DHCPServer)

@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: USBControllerImpl.cpp 35638 2011-01-19 19:10:49Z noreply@oracle.com $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -89,12 +89,13 @@ DEFINE_EMPTY_CTOR_DTOR (USBController)
 
 HRESULT USBController::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void USBController::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

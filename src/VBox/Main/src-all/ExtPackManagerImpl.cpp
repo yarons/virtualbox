@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 35523 2011-01-13 13:12:03Z knut.osmundsen@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 35638 2011-01-19 19:10:49Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -211,7 +211,7 @@ DEFINE_EMPTY_CTOR_DTOR(ExtPackFile)
 HRESULT ExtPackFile::FinalConstruct()
 {
     m = NULL;
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 /**
@@ -330,6 +330,7 @@ HRESULT ExtPackFile::initFailed(const char *a_pszWhyFmt, ...)
 void ExtPackFile::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 /**
