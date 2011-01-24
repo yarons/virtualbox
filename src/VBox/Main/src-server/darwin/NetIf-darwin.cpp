@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 35691 2011-01-24 16:59:46Z aleksey.ilyushin@oracle.com $ */
+/* $Id: NetIf-darwin.cpp 35693 2011-01-24 17:27:05Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -249,7 +249,7 @@ static int getDefaultIfaceIndex(unsigned short *pu16Index)
         {
             /* Extract addresses from the message. */
             extractAddresses(pRtMsg->rtm_addrs, (char *)(pRtMsg + 1),
-                             pRtMsg->rtm_msglen + (char *)pRtMsg, addresses);
+                             pRtMsg->rtm_msglen + 1 + (char *)pRtMsg, addresses);
             if ((pRtMsg->rtm_addrs & RTA_DST)
                 && (pRtMsg->rtm_addrs & RTA_NETMASK))
             {
