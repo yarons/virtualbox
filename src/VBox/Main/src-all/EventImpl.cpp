@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 35722 2011-01-26 16:37:16Z noreply@oracle.com $ */
+/* $Id: EventImpl.cpp 35728 2011-01-27 09:56:35Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -901,7 +901,6 @@ HRESULT ListenerRecord::eventProcessed (IEvent* aEvent, PendingEventsMap::iterat
         mOwner->m->mPendingMap.erase(pit);
     }
 
-    Assert(pit->second >= 0);
     return S_OK;
 }
 
