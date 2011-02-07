@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 34080 2010-11-15 17:18:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.h 35863 2011-02-07 10:59:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -101,8 +101,8 @@ typedef struct _VBOXGLOBALMESSAGE
     UINT     uMsgID;
 } VBOXGLOBALMESSAGE, *PVBOXGLOBALMESSAGE;
 
-extern HWND         gToolWindow;
-extern HINSTANCE    gInstance;
+extern HWND         ghwndToolWindow;
+extern HINSTANCE    ghInstance;
 
 #endif /* !___VBOXTRAY_H */
 
