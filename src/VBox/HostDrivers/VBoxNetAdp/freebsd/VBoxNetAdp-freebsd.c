@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 35824 2011-02-02 13:32:03Z aleksey.ilyushin@oracle.com $ */
+/* $Id: VBoxNetAdp-freebsd.c 35898 2011-02-08 15:58:19Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -254,9 +254,8 @@ int vboxNetAdpOsInit(PVBOXNETADP pThis)
     return VINF_SUCCESS;;
 }
 
-int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac, const char *pcszName)
+int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac)
 {
-    /* TODO: Use pcszName */
     struct ifnet *ifp;
 
     ifp = if_alloc(IFT_ETHER);
