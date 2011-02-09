@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35832 2011-02-03 11:35:42Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35907 2011-02-09 11:20:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -256,7 +256,7 @@ static int ctrlInitVM(HandlerArg *pArg, const char *pszNameOrId, ComPtr<IGuest> 
     if (machineState != MachineState_Running)
     {
         RTMsgError("Machine \"%s\" is not running (currently %s)!\n",
-                   pszNameOrId, stateToName(machineState, false));
+                   pszNameOrId, machineStateToName(machineState, false));
         return VERR_VM_INVALID_VM_STATE;
     }
 
