@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35931 2011-02-10 17:08:31Z noreply@oracle.com $ */
+/* $Id: vboxvideo.c 35933 2011-02-10 17:35:31Z noreply@oracle.com $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -61,9 +61,6 @@
 
 /* All drivers initialising the SW cursor need this */
 #include "mipointer.h"
-
-/* All drivers implementing backing store need this */
-#include "mibstore.h"
 
 /* Colormap handling */
 #include "micmap.h"
@@ -1029,8 +1026,6 @@ VBOXScreenInit(int scrnIndex, ScreenPtr pScreen, int argc, char **argv)
     fbPictureInit(pScreen, 0, 0);
 
     xf86SetBlackWhitePixels(pScreen);
-    miInitializeBackingStore(pScreen);
-    xf86SetBackingStore(pScreen);
 
     /* We need to keep track of whether we are currently switched to a virtual
      * terminal to know whether a mode set operation is currently safe to do.
