@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35982 2011-02-15 16:02:28Z noreply@oracle.com $ */
+/* $Id: MediumImpl.cpp 35983 2011-02-15 16:12:09Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3152,11 +3152,11 @@ bool Medium::removeRegistry(const Guid& id, bool fRecurse)
 
             if (fRecurse)
             {
-                for (MediaList::iterator it = m->llChildren.begin();
-                     it != m->llChildren.end();
-                     ++it)
+                for (MediaList::iterator it2 = m->llChildren.begin();
+                     it2 != m->llChildren.end();
+                     ++it2)
                 {
-                    Medium *pChild = *it;
+                    Medium *pChild = *it2;
                     pChild->removeRegistry(id, true);
                 }
             }
