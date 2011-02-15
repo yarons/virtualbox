@@ -1,4 +1,4 @@
-/* $Id: server.cpp 35972 2011-02-15 11:07:02Z andreas.loeffler@oracle.com $ */
+/* $Id: server.cpp 35973 2011-02-15 11:14:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -75,6 +75,7 @@
 #include <SharedFolderImpl.h>
 #include <HostImpl.h>
 #include <HostNetworkInterfaceImpl.h>
+#include <AdditionsFacilityImpl.h>
 #include <GuestOSTypeImpl.h>
 #include <NetworkAdapterImpl.h>
 #include <NATEngineImpl.h>
