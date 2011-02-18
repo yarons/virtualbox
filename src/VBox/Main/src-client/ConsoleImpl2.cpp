@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 35921 2011-02-09 19:57:58Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 36021 2011-02-18 14:59:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -3348,15 +3348,15 @@ int Console::configMedium(PCFGMNODE pLunL0,
                         }
                     }
 
-                    /* Custom code: put marker to not use host IP stack to driver
-                     * configuration node. Simplifies life of DrvVD a bit. */
-                    if (!fHostIP)
-                        InsertConfigInteger(pCfg, "HostIPStack", 0);
-
                     /* next */
                     pParent = pCur;
                     pParentMedium = pMedium;
                 }
+
+                /* Custom code: put marker to not use host IP stack to driver
+                 * configuration node. Simplifies life of DrvVD a bit. */
+                if (!fHostIP)
+                    InsertConfigInteger(pCfg, "HostIPStack", 0);
             }
         }
 #undef H
