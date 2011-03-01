@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36121 2011-03-01 15:25:18Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 36124 2011-03-01 16:44:58Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -525,6 +525,7 @@ static HRESULT attachRawPciDevices(BusAssignmentManager* BusMgr,
         InsertConfigNode(pInst,        "Config",  &pCfg);
         InsertConfigString(pCfg,       "DeviceName",  aDevName);
 
+        InsertConfigInteger(pCfg,      "DetachHostDriver",  1);
         InsertConfigInteger(pCfg,      "HostPCIBusNo",      HostPciAddress.iBus);
         InsertConfigInteger(pCfg,      "HostPCIDeviceNo",   HostPciAddress.iDevice);
         InsertConfigInteger(pCfg,      "HostPCIFunctionNo", HostPciAddress.iFn);
