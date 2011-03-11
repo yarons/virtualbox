@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 36232 2011-03-09 16:41:09Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-nt.cpp 36262 2011-03-11 14:50:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -82,10 +82,8 @@ int rtR0InitNative(void)
     KAFFINITY ActiveProcessors = KeQueryActiveProcessors();
 #endif
     RTCpuSetEmpty(&g_rtMpNtCpuSet);
-#ifdef RT_WITH_LOTS_OF_CPUS
-# error "port me"
-#endif
     RTCpuSetFromU64(&g_rtMpNtCpuSet, ActiveProcessors);
+/** @todo Port to W2K8 with > 64 cpus/threads. */
 
 #ifdef IPRT_TARGET_NT4
     g_pfnrtNtExSetTimerResolution = NULL;
