@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 35438 2011-01-07 19:47:06Z noreply@oracle.com $ */
+/* $Id: UsbKbd.cpp 36322 2011-03-21 10:53:25Z noreply@oracle.com $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1464,7 +1464,7 @@ const PDMUSBREG g_UsbHidKbd =
     NULL,
     /* pfnUsbReset */
     usbHidUsbReset,
-    /* pfnUsbGetCachedDescriptors */
+    /* pfnUsbGetDescriptorCache */
     usbHidUsbGetDescriptorCache,
     /* pfnUsbSetConfiguration */
     usbHidUsbSetConfiguration,
