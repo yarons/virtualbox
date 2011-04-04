@@ -1,4 +1,4 @@
-/* $Id: string.cpp 36429 2011-03-25 12:56:50Z knut.osmundsen@oracle.com $ */
+/* $Id: string.cpp 36527 2011-04-04 13:16:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -150,7 +150,7 @@ Utf8Str& Utf8Str::stripExt()
  * @param   a_pbstr         The source string.  The caller guarantees that this
  *                          is valid UTF-16.
  *
- * @sa      iprt::MiniString::copyFromN
+ * @sa      RTCString::copyFromN
  */
 void Utf8Str::copyFrom(CBSTR a_pbstr)
 {

@@ -1,4 +1,4 @@
-/* $Id: tstIprtList.cpp 36525 2011-04-04 12:59:38Z noreply@oracle.com $ */
+/* $Id: tstIprtList.cpp 36527 2011-04-04 13:16:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - iprt::list.
  */
@@ -566,8 +566,8 @@ int main()
     /*
      * Big size type (translate to internal pointer list).
      */
-    test1<iprt::list,   iprt::MiniString, iprt::MiniString*, const char *>("ST: Class type", g_apszTestStrings, RT_ELEMENTS(g_apszTestStrings));
-    test1<iprt::mtlist, iprt::MiniString, iprt::MiniString*, const char *>("MT: Class type", g_apszTestStrings, RT_ELEMENTS(g_apszTestStrings));
+    test1<iprt::list,   RTCString, RTCString *, const char *>("ST: Class type", g_apszTestStrings, RT_ELEMENTS(g_apszTestStrings));
+    test1<iprt::mtlist, RTCString, RTCString *, const char *>("MT: Class type", g_apszTestStrings, RT_ELEMENTS(g_apszTestStrings));
 
     /*
      * Multi-threading test.
