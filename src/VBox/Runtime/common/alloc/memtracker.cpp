@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 36599 2011-04-06 20:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: memtracker.cpp 36605 2011-04-06 23:03:15Z noreply@oracle.com $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -155,6 +155,9 @@ typedef struct RTMEMTRACKERINT
     AVLU32TREE          TagDbRoot;
     /** List of RTMEMTRACKERTAG records. */
     RTLISTNODE          TagList;
+#ifdef RT_ARCH_X86
+    uint32_t            dummy;
+#endif
     /** The global user record (fallback). */
     RTMEMTRACKERUSER    FallbackUser;
     /** The global statistics. */
