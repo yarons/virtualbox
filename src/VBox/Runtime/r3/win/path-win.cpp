@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 36611 2011-04-07 10:35:29Z noreply@oracle.com $ */
+/* $Id: path-win.cpp 36613 2011-04-07 10:38:30Z noreply@oracle.com $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -30,6 +30,7 @@
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_PATH
 #include <Windows.h>
+#include <Shlobj.h>
 
 #include <iprt/path.h>
 #include <iprt/assert.h>
