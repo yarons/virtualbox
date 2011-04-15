@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autorun.sh 36681 2011-04-15 10:17:02Z noreply@oracle.com $
+# $Id: autorun.sh 36684 2011-04-15 13:09:20Z noreply@oracle.com $
 #
 # VirtualBox Guest Additions installation script for *nix guests
 #
@@ -49,7 +49,7 @@ if test "$ostype" = "Linux"; then
             getxterm
             case "$gxtpath" in ?*)
                 TITLE="VirtualBox Guest Additions installation"
-               BINARY="`quotify "$i"`"
+                BINARY="`quotify "$i"`"
                 exec "$gxtpath" "$gxttitle" "$TITLE" "$gxtexec" "$path/runasroot.sh" --has-terminal "$TITLE" "$BINARY --xwin" "Please try running "\""$i"\"" manually."
                 exit
                 ;;
