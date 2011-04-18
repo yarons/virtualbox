@@ -1,4 +1,4 @@
-/* $Id: VBoxBalloonCtrl.cpp 36708 2011-04-18 12:31:10Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxBalloonCtrl.cpp 36709 2011-04-18 12:35:15Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxBalloonCtrl - VirtualBox Ballooning Control Service.
  */
@@ -965,7 +965,6 @@ RTEXITCODE balloonCtrlMain(HandlerArg *a)
         /* VirtualBox callback unregistration. */
         if (g_pVBoxEventListener)
         {
-            HRESULT rc;
             if (!g_pEventSource.isNull())
                 CHECK_ERROR(g_pEventSource, UnregisterListener(g_pVBoxEventListener));
             g_pVBoxEventListener.setNull();
