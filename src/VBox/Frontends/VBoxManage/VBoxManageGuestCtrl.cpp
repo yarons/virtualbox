@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36690 2011-04-17 08:44:16Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36722 2011-04-18 19:31:55Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -577,7 +577,6 @@ static int handleCtrlExecProgram(ComPtr<IGuest> guest, HandlerArg *pArg)
         /* Wait for process to exit ... */
         BOOL fCompleted    = FALSE;
         BOOL fCanceled     = FALSE;
-        int  cMilliesSleep = 0;
         while (SUCCEEDED(progress->COMGETTER(Completed(&fCompleted))))
         {
             SafeArray<BYTE> aOutputData;
