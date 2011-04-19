@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36722 2011-04-18 19:31:55Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36726 2011-04-19 12:35:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -496,6 +496,9 @@ static int handleCtrlExecProgram(ComPtr<IGuest> guest, HandlerArg *pArg)
 
             case VINF_GETOPT_NOT_OPTION:
             {
+                if (!strlen(ValueUnion.psz))
+                    continue;
+
                 if (args.size() == 0 && Utf8Cmd.isEmpty())
                     Utf8Cmd = ValueUnion.psz;
                 args.push_back(Bstr(ValueUnion.psz).raw());
