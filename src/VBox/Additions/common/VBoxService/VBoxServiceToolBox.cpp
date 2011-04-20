@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 36547 2011-04-05 09:25:38Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 36754 2011-04-20 14:20:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -194,7 +194,7 @@ static int VBoxServiceToolboxCatOutput(RTFILE hInput, RTFILE hOutput)
             {
                 if (rc == VERR_BROKEN_PIPE)
                     rc = VINF_SUCCESS;
-                else
+                else if (RT_FAILURE(rc))
                     RTMsgError("cat: Error while reading input, rc=%Rrc\n", rc);
                 break;
             }
