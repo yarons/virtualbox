@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 36771 2011-04-20 19:09:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 36772 2011-04-20 19:11:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4861,6 +4861,7 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Cd_Rd, uint8_t, iCrReg, uint8_t, iGReg)
          */
         case 2:
             pCtx->cr2 = NewCrX;
+            rcStrict  = VINF_SUCCESS;
             break;
 
         /*
