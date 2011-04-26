@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 36839 2011-04-25 17:29:21Z aleksey.ilyushin@oracle.com $ */
+/* $Id: PerformanceImpl.cpp 36842 2011-04-26 07:54:09Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  *
@@ -508,6 +508,7 @@ STDMETHODIMP PerformanceCollector::QueryMetricsData(ComSafeArrayIn (IN_BSTR, met
         LogFlow (("PerformanceCollector::QueryMetricsData() querying metric %s "
                   "returned %d values.\n", (*it)->getName(), length));
         memcpy(retData.raw() + flatIndex, values, length * sizeof(*values));
+        RTMemFree(values);
         Bstr tmp((*it)->getName());
         tmp.detachTo(&retNames[i]);
         (*it)->getObject().queryInterfaceTo(&retObjects[i]);
