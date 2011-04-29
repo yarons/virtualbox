@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 34103 2010-11-16 11:18:55Z noreply@oracle.com $ */
+/* $Id: dnsproxy.c 36901 2011-04-29 18:03:48Z noreply@oracle.com $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -132,7 +132,7 @@ timeout(PNATState pData, struct socket *so, void *arg)
             sofree(pData, so1);
             return;
         }
-        m = m_getcl(pData, M_NOWAIT, MT_HEADER, M_PKTHDR);
+        m = slirpDnsMbufAlloc(pData);
         if (m == NULL)
         {
             LogRel(("NAT: Can't allocate mbuf\n"));
