@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 36519 2011-04-04 10:44:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 36918 2011-05-03 06:52:28Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -567,6 +567,6 @@ void UIMachineSettingsSystem::polishPage()
     /* Acceleration tab: */
     mLbVirt->setEnabled(isMachineOffline());
     mCbVirt->setEnabled(isMachineOffline());
-    mCbNestedPaging->setEnabled(isMachineOffline());
+    mCbNestedPaging->setEnabled(mCbVirt->isChecked() && isMachineOffline());
 }
 
