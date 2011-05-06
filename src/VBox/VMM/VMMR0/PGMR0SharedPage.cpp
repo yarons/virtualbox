@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 36891 2011-04-29 13:22:57Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0SharedPage.cpp 36983 2011-05-06 13:48:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -142,5 +142,5 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHA
 
     return rc;
 }
-#endif
+#endif /* VBOX_WITH_PAGE_SHARING */
 
