@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.h 36968 2011-05-05 08:55:16Z noreply@oracle.com $ */
+/* $Id: VBoxUsbMon.h 37038 2011-05-11 14:57:23Z noreply@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
@@ -22,6 +22,13 @@
 #include <VBox/sup.h>
 #include <iprt/asm.h>
 #include <VBox/log.h>
+
+#ifdef DEBUG
+/* disables filters */
+//#define VBOXUSBMON_DBG_NO_FILTERS
+/* disables pnp hooking */
+//#define VBOXUSBMON_DBG_NO_PNPHOOK
+#endif
 
 #include "../cmn/VBoxDrvTool.h"
 
