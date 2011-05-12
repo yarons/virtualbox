@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 36917 2011-05-03 06:47:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 37051 2011-05-12 13:48:15Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -73,6 +73,9 @@ void UIMachineSettingsGeneral::loadToCacheFrom(QVariant &data)
 {
     /* Fetch data to machine: */
     UISettingsPageMachine::fetchData(data);
+
+    /* Clear cache initially: */
+    m_cache.clear();
 
     /* Prepare general data: */
     UIDataSettingsMachineGeneral generalData;
