@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37074 2011-05-13 14:32:50Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 37075 2011-05-13 14:43:27Z noreply@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6303,7 +6303,7 @@ HRESULT Machine::cloneVMTaskWorker(CloneVMTask *pTask)
                 if (FAILED(rc)) throw rc;
 
                 Bstr bstrSrcFormat     = "VDI";
-                MediumVariant_T srcVar = MediumVariant_Standard;
+                ULONG srcVar = MediumVariant_Standard;
                 /* Is the source file based? */
                 if ((uSrcCaps & MediumFormatCapabilities_File) == MediumFormatCapabilities_File)
                 {
