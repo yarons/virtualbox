@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 37051 2011-05-12 13:48:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 37126 2011-05-17 13:56:50Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -295,8 +295,12 @@ void UIMachineSettingsSerialPage::getFromCache()
     /* Applying language settings: */
     retranslateUi();
 
+    /* Polish page finally: */
+    polishPage();
+
     /* Revalidate if possible: */
-    if (mValidator) mValidator->revalidate();
+    if (mValidator)
+        mValidator->revalidate();
 }
 
 /* Save data from corresponding widgets to cache,
