@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 37168 2011-05-20 16:56:46Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 37169 2011-05-20 17:00:27Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -759,6 +759,9 @@ void UISettingsDialogMachine::saveData()
 
     /* Call for base-class: */
     UISettingsDialog::saveData();
+
+    /* Disconnect global VBox events from this dialog: */
+    gVBoxEvents->disconnect(this);
 
     /* Prepare session: */
     bool fSessionShared = dialogType() != SettingsDialogType_Offline;
