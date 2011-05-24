@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 37200 2011-05-24 15:34:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 37202 2011-05-24 15:57:55Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -663,7 +663,7 @@ int handleControlVM(HandlerArg *a)
                         }
                         CHECK_ERROR_RET(adapter, COMSETTER(Enabled)(TRUE), 1);
                         CHECK_ERROR_RET(adapter, COMSETTER(AttachmentType)(NetworkAttachmentType_Generic), 1);
-                        CHECK_ERROR_RET(adapter, SetProperty((CBSTR)L"name", Bstr(a->argv[3]).raw()), 1);
+                        CHECK_ERROR_RET(adapter, SetProperty(Bstr("name").raw(), Bstr(a->argv[3]).raw()), 1);
                     }
                     else
                     {
