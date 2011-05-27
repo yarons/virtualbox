@@ -1,4 +1,4 @@
-/* $Id: gvm.h 36448 2011-03-28 12:37:43Z noreply@oracle.com $ */
+/* $Id: gvm.h 37242 2011-05-27 16:17:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -99,9 +99,9 @@ typedef struct GVM
 #ifdef ___GMMR0Internal_h
         struct GMMPERVM     s;
 #endif
-        uint8_t             padding[256];
+        uint8_t             padding[512];
     } gmm;
-    
+
     /** The RAWPCIVM per vm data. */
     union
     {
