@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 28854 2010-04-27 19:41:12Z noreply@oracle.com $ */
+/* $Id: SUPDrv-os2.cpp 37249 2011-05-30 10:03:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -396,9 +396,9 @@ int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAG
 }
 
 
-int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits)
+int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits, PSUPLDRLOAD pReq)
 {
-    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits);
+    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits); NOREF(pReq);
     return VERR_NOT_SUPPORTED;
 }
 
