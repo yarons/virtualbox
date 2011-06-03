@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 37313 2011-06-03 09:03:27Z knut.osmundsen@oracle.com $ */
+/* $Id: process-win.cpp 37318 2011-06-03 13:11:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_PROCESS
+#include <iprt/asm.h> /* hack */
 
 #include <Userenv.h>
 #include <Windows.h>
