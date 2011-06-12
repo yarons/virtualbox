@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 35817 2011-02-01 17:07:26Z noreply@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 37423 2011-06-12 18:37:56Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -356,7 +356,7 @@ STDMETHODIMP SystemProperties::GetMaxNetworkAdaptersOfType(ChipsetType_T aChipse
     /* no need for locking, no state */
     switch (aType)
     {
-        case NetworkAttachmentType_NAT:        
+        case NetworkAttachmentType_NAT:
         case NetworkAttachmentType_Internal:
             /* chipset default is OK */
             break;
