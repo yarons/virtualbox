@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 36074 2011-02-24 15:38:25Z noreply@oracle.com $ */
+/* $Id: SnapshotImpl.h 37449 2011-06-14 16:34:16Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -82,6 +82,7 @@ public:
     STDMETHOD(COMGETTER(Children)) (ComSafeArrayOut (ISnapshot *, aChildren));
 
     // ISnapshot methods
+    STDMETHOD(GetChildrenCount)(ULONG* count);
 
     // public methods only for internal purposes
 
