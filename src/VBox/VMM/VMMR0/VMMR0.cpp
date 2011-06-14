@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 37320 2011-06-03 15:05:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 37452 2011-06-14 18:13:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -516,6 +516,9 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
         case VINF_VMM_CALL_HOST:
             switch (pVCpu->vmm.s.enmCallRing3Operation)
             {
+                case VMMCALLRING3_PDM_CRIT_SECT_ENTER:
+                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPDMCritSectEnter);
+                    break;
                 case VMMCALLRING3_PDM_LOCK:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPDMLock);
                     break;
