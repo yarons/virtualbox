@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37406 2011-06-10 13:04:03Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37445 2011-06-14 14:40:45Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1054,15 +1054,7 @@ void VBoxMediaManagerDlg::doCopyMedium()
                          QFileInfo(pItem->location()).absolutePath() /* default path */,
                          0 /* default size, not important for copying */,
                          pItem->medium().medium() /* base medium for copying */);
-
-    if (wizard.exec() == QDialog::Accepted)
-    {
-        /* Search for the newly created hard disk: */
-        MediaItem *pItem = searchItem(mTwHD, wizard.hardDisk().GetId());
-        AssertReturnVoid(pItem);
-        /* Select the newly created hard disk: */
-        mTwHD->setCurrentItem(pItem);
-    }
+    wizard.exec();
 }
 
 void VBoxMediaManagerDlg::doRemoveMedium()
