@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 37435 2011-06-14 13:17:28Z noreply@oracle.com $ */
+/* $Id: tstClipboardServiceHost.cpp 37437 2011-06-14 13:36:25Z noreply@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -19,6 +19,7 @@
 
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 
+#define IN_VMM_R3 /* so that the SSM function stubs are exports not imports */
 #include <VBox/vmm/ssm.h>
 
 #include <iprt/assert.h>
