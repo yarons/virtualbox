@@ -1,4 +1,4 @@
-/* $Id: DevApic.h 37477 2011-06-15 17:18:33Z knut.osmundsen@oracle.com $ */
+/* $Id: DevApic.h 37481 2011-06-15 18:59:27Z noreply@oracle.com $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device Definitions.
  */
@@ -13,7 +13,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
  * --------------------------------------------------------------------
  *
  * This code is based on:
