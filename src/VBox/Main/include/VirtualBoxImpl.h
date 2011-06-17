@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 37244 2011-05-30 08:28:07Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 37525 2011-06-17 10:09:21Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -139,6 +139,7 @@ public:
     STDMETHOD(OpenMedium)(IN_BSTR aLocation,
                           DeviceType_T deviceType,
                           AccessMode_T accessMode,
+                          BOOL fForceNewUuid,
                           IMedium **aMedium);
     STDMETHOD(FindMedium)(IN_BSTR aLocation,
                           DeviceType_T deviceType,
