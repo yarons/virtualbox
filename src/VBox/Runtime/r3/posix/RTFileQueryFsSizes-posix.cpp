@@ -1,4 +1,4 @@
-/* $Id: RTFileQueryFsSizes-posix.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: RTFileQueryFsSizes-posix.cpp 37596 2011-06-22 19:30:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, RTFileFsQuerySizes, POSIX.
  */
@@ -47,7 +47,7 @@ RTR3DECL(int) RTFileQueryFsSizes(RTFILE hFile, PRTFOFF pcbTotal, RTFOFF *pcbFree
 {
     struct statvfs StatVFS;
     RT_ZERO(StatVFS);
-    if (fstatvfs(hFile, &StatVFS))
+    if (fstatvfs(RTFileToNative(hFile), &StatVFS))
         return RTErrConvertFromErrno(errno);
 
     /*

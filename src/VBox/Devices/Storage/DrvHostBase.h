@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: DrvHostBase.h 37596 2011-06-22 19:30:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -82,11 +82,11 @@ typedef struct DRVHOSTBASE
     uint64_t volatile       cbSize;
 #if !defined(RT_OS_DARWIN)
     /** The filehandle of the device. */
-    RTFILE                  FileDevice;
+    RTFILE                  hFileDevice;
 #endif
 #ifdef RT_OS_SOLARIS
     /** The raw filehandle of the device. */
-    RTFILE                  FileRawDevice;
+    RTFILE                  hFileRawDevice;
 #endif
 
     /** Handle of the poller thread. */
