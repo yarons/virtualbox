@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 37571 2011-06-21 11:34:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 37585 2011-06-22 09:57:30Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -239,6 +239,13 @@ bool UIMachineSettingsNetwork::revalidate(QString &strWarning, QString &strTitle
             if (alternativeName().isNull())
             {
                 strWarning = tr("no host-only network adapter is selected");
+                fValid = false;
+            }
+            break;
+        case KNetworkAttachmentType_Generic:
+            if (alternativeName().isNull())
+            {
+                strWarning = tr("no generic driver is selected");
                 fValid = false;
             }
             break;

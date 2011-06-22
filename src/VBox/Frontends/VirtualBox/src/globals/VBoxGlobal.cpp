@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 37525 2011-06-17 10:09:21Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 37585 2011-06-22 09:57:30Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2985,7 +2985,7 @@ void VBoxGlobal::retranslateUi()
     mNetworkAttachmentTypes [KNetworkAttachmentType_HostOnly] =
         tr ("Host-only Adapter", "NetworkAttachmentType");
     mNetworkAttachmentTypes [KNetworkAttachmentType_Generic] =
-        tr ("Generic", "NetworkAttachmentType");
+        tr ("Generic Driver", "NetworkAttachmentType");
 
     mNetworkAdapterPromiscModePolicyTypes [KNetworkAdapterPromiscModePolicy_Deny] =
         tr ("Deny", "NetworkAdapterPromiscModePolicyType");
