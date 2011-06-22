@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceSolaris.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyServiceSolaris.cpp 37599 2011-06-22 21:06:38Z noreply@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -67,12 +67,6 @@ USBProxyServiceSolaris::USBProxyServiceSolaris (Host *aHost)
  */
 HRESULT USBProxyServiceSolaris::init(void)
 {
-    /*
-     * Call the superclass method first.
-     */
-    HRESULT hrc = USBProxyService::init();
-    AssertComRCReturn(hrc, hrc);
-
     /*
      * Create semaphore.
      */
