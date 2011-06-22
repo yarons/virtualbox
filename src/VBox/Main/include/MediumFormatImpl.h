@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 37586 2011-06-22 11:49:40Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumFormatImpl.h 37587 2011-06-22 12:02:13Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -58,7 +58,7 @@ public:
 
     struct Data
     {
-        Data() : capabilities(0) {}
+        Data() : capabilities((MediumFormatCapabilities_T)0) {}
 
         const Utf8Str        strId;
         const Utf8Str        strName;
