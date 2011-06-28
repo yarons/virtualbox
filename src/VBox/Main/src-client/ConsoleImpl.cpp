@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 37591 2011-06-22 15:58:22Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 37661 2011-06-28 11:40:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9601,7 +9601,7 @@ DECLCALLBACK(int) Console::drvStatus_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
 
 
 /**
- * Keyboard driver registration record.
+ * Console status driver (LED) registration record.
  */
 const PDMDRVREG Console::DrvStatusReg =
 {
