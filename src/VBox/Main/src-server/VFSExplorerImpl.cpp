@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VFSExplorerImpl.cpp 37678 2011-06-29 08:24:09Z noreply@oracle.com $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -249,7 +249,7 @@ DECLCALLBACK(int) VFSExplorer::TaskVFSExplorer::taskThread(RTTHREAD /* aThread *
             break;
     }
 
-    LogFlowFunc(("rc=%Rhrc\n", rc));
+    LogFlowFunc(("rc=%Rhrc\n", rc)); NOREF(rc);
     LogFlowFuncLeave();
 
     return VINF_SUCCESS;
