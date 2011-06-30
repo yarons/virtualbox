@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: REMAll.cpp 37702 2011-06-30 10:09:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -46,7 +46,7 @@ VMMDECL(void) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
      * Try take the REM lock and push the address onto the array.
      */
     if (   pVM->rem.s.cInvalidatedPages < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages)
-        && EMTryEnterRemLock(pVM) == VINF_SUCCESS)
+        && EMRemTryLock(pVM) == VINF_SUCCESS)
     {
         uint32_t iPage = pVM->rem.s.cInvalidatedPages;
         if (iPage < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages))
