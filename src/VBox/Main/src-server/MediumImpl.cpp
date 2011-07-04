@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37625 2011-06-24 11:51:52Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumImpl.cpp 37768 2011-07-04 14:49:46Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3462,6 +3462,11 @@ const Guid* Medium::getFirstMachineBackrefSnapshotId() const
         return NULL;
 
     return &ref.llSnapshotIds.front();
+}
+
+size_t Medium::getMachineBackRefCount() const
+{
+    return m->backRefs.size();
 }
 
 #ifdef DEBUG
