@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 33294 2010-10-21 10:45:26Z noreply@oracle.com $ */
+/* $Id: tstOVF.cpp 37862 2011-07-11 10:09:29Z noreply@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -232,7 +232,8 @@ void importOVF(const char *pcszPrefix,
     }
 
     RTPrintf("%s: importing %d machine(s)...\n", pcszPrefix, aDescriptions.size());
-    rc = pAppl->ImportMachines(pProgress.asOutParam());
+    SafeArray<ImportOptions_T> sfaOptions;
+    rc = pAppl->ImportMachines(ComSafeArrayAsInParam(sfaOptions), pProgress.asOutParam());
     if (FAILED(rc)) throw MyError(rc, "Appliance::ImportMachines() failed\n");
     rc = pProgress->WaitForCompletion(-1);
     if (FAILED(rc)) throw MyError(rc, "Progress::WaitForCompletion() failed\n");
