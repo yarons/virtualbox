@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37893 2011-07-12 12:31:43Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37894 2011-07-12 12:43:06Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1494,8 +1494,16 @@ void VBoxMediaManagerDlg::processDoubleClick (QTreeWidgetItem * /* aItem */, int
 {
     QTreeWidget *tree = currentTreeWidget();
 
-    if (mDoSelect && selectedItem (tree) && mButtonBox->button (QDialogButtonBox::Ok)->isEnabled())
-        accept();
+    if (mDoSelect)
+    {
+        if (selectedItem (tree) && mButtonBox->button (QDialogButtonBox::Ok)->isEnabled())
+            accept();
+    }
+    else
+    {
+        if (currentTreeWidgetType() == VBoxDefs::MediumType_HardDisk)
+            doModifyMedium();
+    }
 }
 
 void VBoxMediaManagerDlg::showContextMenu (const QPoint &aPos)
