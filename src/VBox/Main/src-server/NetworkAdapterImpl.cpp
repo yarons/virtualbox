@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 37200 2011-05-24 15:34:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: NetworkAdapterImpl.cpp 37927 2011-07-13 15:48:41Z noreply@oracle.com $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -454,7 +454,7 @@ STDMETHODIMP NetworkAdapter::COMSETTER(AttachmentType)(
         /* there must an internal network name */
         if (mData->mInternalNetwork.isEmpty())
         {
-            LogRel(("Internal network name not defined, setting to default \"intnet\"\n"));
+            Log(("Internal network name not defined, setting to default \"intnet\"\n"));
             mData->mInternalNetwork = "intnet";
         }
 
