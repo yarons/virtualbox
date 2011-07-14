@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $
+; $Id: CPUMRCA.asm 37955 2011-07-14 12:23:02Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -22,7 +22,7 @@
 %include "VBox/err.mac"
 %include "VBox/vmm/stam.mac"
 %include "CPUMInternal.mac"
-%include "VBox/x86.mac"
+%include "iprt/x86.mac"
 %include "VBox/vmm/cpum.mac"
 
 
