@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 38055 2011-07-19 08:55:42Z noreply@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 38099 2011-07-21 13:39:27Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -334,7 +334,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                      "VBoxManage clonevm          <uuid>|<name>\n"
                      "                            [--snapshot <uuid>|<name>]\n"
-                     "                            [--mode machine|all]\n"
+                     "                            [--mode machine|machineandchildren|all]\n"
                      "                            [--options link|keepallmacs|keepnatmacs|\n"
                      "                                       keepdisknames]\n"
                      "                            [--name <name>]\n"
