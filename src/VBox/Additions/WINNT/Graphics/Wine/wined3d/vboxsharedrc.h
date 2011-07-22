@@ -1,7 +1,7 @@
-/* $Id: vboxsharedrc.h 37870 2011-07-11 13:17:25Z noreply@oracle.com $ */
+/* $Id: vboxsharedrc.h 38112 2011-07-22 13:26:19Z noreply@oracle.com $ */
 /** @file
  *
- * VBox extension to Wine D3D
+ * VBox extension to Wine D3D - shared resource
  *
  * Copyright (C) 2010 Oracle Corporation
  *
