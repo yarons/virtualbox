@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 36956 2011-05-04 12:54:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxNetFltInternal.h 38140 2011-07-25 10:01:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -183,8 +183,6 @@ typedef struct VBOXNETFLTINS
             bool fIsVNICTemplate;
             /** Handle to list of created VNICs. */
             list_t hVNICs;
-            /** Instance number while creating VNICs. */
-            uint64_t uInstance;
             /** The MAC address of the host interface. */
             RTMAC MacAddr;
             /** Handle of this interface (lower MAC). */
