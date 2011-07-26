@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 38099 2011-07-21 13:39:27Z noreply@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 38191 2011-07-26 17:02:38Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -370,7 +370,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_STARTVM)
     {
         RTStrmPrintf(pStrm,
-                     "VBoxManage startvm          <uuid>|<name>\n");
+                     "VBoxManage startvm          <uuid>|<name>...\n");
         RTStrmPrintf(pStrm,
                      "                            [--type gui");
         if (fVBoxSDL)
