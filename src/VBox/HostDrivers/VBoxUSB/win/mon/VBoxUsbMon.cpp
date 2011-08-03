@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 38289 2011-08-03 07:45:20Z noreply@oracle.com $ */
+/* $Id: VBoxUsbMon.cpp 38292 2011-08-03 09:28:22Z noreply@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
@@ -1275,10 +1275,10 @@ RT_C_DECLS_END
  */
 NTSTATUS _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
 {
-//#ifdef DEBUG_misha
+#ifdef DEBUG_misha
     RTLogGroupSettings(0, "+default.e.l.f.l2.l3");
     RTLogDestinations(0, "debugger");
-//#endif
+#endif
 
     LOG(("VBoxUSBMon::DriverEntry\n"));
 
