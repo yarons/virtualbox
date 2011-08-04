@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 35247 2010-12-20 14:19:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 38311 2011-08-04 13:08:39Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,7 +26,7 @@
 
 /* Local includes */
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "UIFrameBuffer.h"
 #include "UIFrameBufferQGL.h"
 #include "UIFrameBufferQImage.h"
