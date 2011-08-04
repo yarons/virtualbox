@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 37900 2011-07-12 13:31:46Z noreply@oracle.com $ */
+/* $Id: MediumImpl.h 38308 2011-08-04 09:29:51Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -261,6 +261,10 @@ public:
                        void *aVDImageIOCallbacks, void *aVDImageIOUser,
                        const ComObjPtr<Medium> &aParent,
                        const ComObjPtr<Progress> &aProgress);
+
+    HRESULT cloneToEx(const ComObjPtr<Medium> &aTarget, ULONG aVariant,
+                      const ComObjPtr<Medium> &aParent, const ComObjPtr<Progress> &aProgress,
+                      uint32_t idxSrcImageSame, uint32_t idxDstImageSame);
 
 private:
 
