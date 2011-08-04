@@ -1,8 +1,8 @@
-/* $Id: UIIndicatorsPool.cpp 37753 2011-07-04 10:09:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 38318 2011-08-04 15:51:15Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
- * UIActionsPool class implementation
+ * UIIndicatorsPool class implementation
  */
 
 /*
