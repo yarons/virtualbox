@@ -1,4 +1,4 @@
-/* $Id: precomp.h 38311 2011-08-04 13:08:39Z noreply@oracle.com $*/
+/* $Id: precomp.h 38355 2011-08-08 15:27:10Z sergey.dubov@oracle.com $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -215,7 +215,6 @@
 #include "VBoxGlobal.h"
 #include "VBoxGlobalSettings.h"
 #include "VBoxGuestRAMSlider.h"
-#include "VBoxHelpActions.h"
 #ifdef Q_WS_MAC
 # include "VBoxIChatTheaterWrapper.h"
 #endif
