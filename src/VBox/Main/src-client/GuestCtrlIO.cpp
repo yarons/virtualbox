@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlIO.cpp 38437 2011-08-12 15:05:41Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlIO.cpp 38439 2011-08-12 15:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * IO helper for IGuest COM class implementations.
@@ -397,15 +397,5 @@ int GuestProcessStream::ParseBlock(GuestProcessStreamBlock &streamBlock)
     m_cbOffset += uDistance;
 
     return rc;
-}
-
-void GuestProcessStream::FreeBlock(GuestProcessStreamBlock *pStreamBlock)
-{
-    if (pStreamBlock)
-    {
-        pStreamBlock->Clear();
-        delete pStreamBlock;
-        pStreamBlock = NULL;
-    }
 }
 
