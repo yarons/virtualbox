@@ -1,4 +1,4 @@
-/* $Id: tstLow.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $  */
+/* $Id: tstLow.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $  */
 /** @file
  * SUP Testcase - Low (<4GB) Memory Allocate interface (ring 3).
  */
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     int rc;
     int rcRet = 0;
 
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     RTPrintf("tstLow: TESTING...\n");
 
     rc = SUPR3Init(NULL);

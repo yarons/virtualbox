@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: VBoxControl.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1541,7 +1541,7 @@ int main(int argc, char **argv)
     /** Will we be executing a command or just printing information? */
     bool fOnlyInfo = false;
 
-    rrc = RTR3Init();
+    rrc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rrc))
         return RTMsgInitFailure(rrc);
 

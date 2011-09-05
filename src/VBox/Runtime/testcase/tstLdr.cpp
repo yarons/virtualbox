@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: tstLdr.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*.
  */
@@ -315,7 +315,7 @@ static int testLdrOne(const char *pszFilename)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     int rcRet = 0;
     if (argc <= 1)

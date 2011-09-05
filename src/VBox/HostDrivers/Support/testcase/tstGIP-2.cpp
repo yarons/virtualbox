@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 33595 2010-10-29 10:35:00Z noreply@oracle.com $ */
+/* $Id: tstGIP-2.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -42,7 +42,7 @@
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Parse args

@@ -1,4 +1,4 @@
-/* $Id: tstDarwinKeyboard.cpp 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
+/* $Id: tstDarwinKeyboard.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * Common GUI Library - Testcase - Darwin Keyboard routines.
  *
@@ -31,7 +31,7 @@
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     AssertReleaseRCReturn(rc, 1);
 
     /*

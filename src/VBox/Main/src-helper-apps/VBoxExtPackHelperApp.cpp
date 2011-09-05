@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 36527 2011-04-04 13:16:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxExtPackHelperApp.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1745,7 +1745,7 @@ int main(int argc, char **argv)
     /*
      * Initialize IPRT and check that we're correctly installed.
      */
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 
@@ -1884,7 +1884,7 @@ extern "C" int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPST
     g_hInstance = hInstance;
     NOREF(hPrevInstance); NOREF(nShowCmd); NOREF(lpCmdLine);
 
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

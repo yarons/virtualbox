@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: tstMicro.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -338,7 +338,7 @@ int main(int argc, char **argv)
 {
     int     rcRet = 0;                  /* error count. */
 
-    RTR3InitAndSUPLib();
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
     /*
      * Create empty VM.

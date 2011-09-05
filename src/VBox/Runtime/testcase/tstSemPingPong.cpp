@@ -1,4 +1,4 @@
-/* $Id: tstSemPingPong.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: tstSemPingPong.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTSemPing/RTSemPong.
  */
@@ -85,7 +85,7 @@ static DECLCALLBACK(int) tstSemPingPongThread(RTTHREAD hThread, void *pvPP)
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     /*
      * Create a ping pong and kick off a second thread which we'll

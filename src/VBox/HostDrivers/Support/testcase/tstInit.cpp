@@ -1,4 +1,4 @@
-/* $Id: tstInit.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: tstInit.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Support Library initialization and termination.
  */
@@ -37,7 +37,7 @@
 int main(int argc, char **argv)
 {
     int rc;
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     rc = SUPR3Init(NULL);
     RTPrintf("tstInit: SUPR3Init -> rc=%d\n", rc);
     if (!rc)

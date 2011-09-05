@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: iokit.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1682,7 +1682,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
  */
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     if (1)
     {
