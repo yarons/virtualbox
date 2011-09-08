@@ -1,10 +1,10 @@
-/* $Id: HWSVMR0.cpp 38683 2011-09-08 08:34:02Z knut.osmundsen@oracle.com $ */
+/* $Id: HWSVMR0.cpp 38684 2011-09-08 08:36:48Z knut.osmundsen@oracle.com $ */
 /** @file
- * HWACCM SVM - Host Context Ring 0.
+ * HM SVM (AMD-V) - Host Context Ring 0.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
