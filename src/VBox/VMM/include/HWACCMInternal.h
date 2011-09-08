@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 37386 2011-06-08 15:15:11Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCMInternal.h 38683 2011-09-08 08:34:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -245,7 +245,7 @@ typedef FNHWACCMSWITCHERHC *PFNHWACCMSWITCHERHC;
 
 /**
  * HWACCM VM Instance data.
- * Changes to this must checked against the padding of the cfgm union in VM!
+ * Changes to this must checked against the padding of the hwaccm union in VM!
  */
 typedef struct HWACCM
 {
