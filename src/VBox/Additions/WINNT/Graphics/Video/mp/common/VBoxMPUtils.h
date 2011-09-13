@@ -1,5 +1,4 @@
-/* $Id: VBoxMPUtils.h 38112 2011-07-22 13:26:19Z noreply@oracle.com $ */
-
+/* $Id: VBoxMPUtils.h 38739 2011-09-13 14:36:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Miniport common utils header
  */
