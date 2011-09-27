@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 38623 2011-09-04 17:23:24Z alexander.eichner@oracle.com $ */
+/* $Id: QED.cpp 38876 2011-09-27 09:03:15Z alexander.eichner@oracle.com $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -2920,5 +2920,7 @@ VBOXHDDBACKEND g_QedBackend =
     /* pfnResize */
     qedResize,
     /* pfnDiscard */
+    NULL,
+    /* pfnAsyncDiscard */
     NULL
 };

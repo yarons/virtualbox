@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 38623 2011-09-04 17:23:24Z alexander.eichner@oracle.com $ */
+/* $Id: DMG.cpp 38876 2011-09-27 09:03:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -2333,5 +2333,7 @@ VBOXHDDBACKEND g_DmgBackend =
     /* pfnResize */
     NULL,
     /* pfnDiscard */
+    NULL,
+    /* pfnAsyncDiscard */
     NULL
 };

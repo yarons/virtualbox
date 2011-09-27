@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 38621 2011-09-04 16:56:56Z alexander.eichner@oracle.com $ */
+/* $Id: ISCSI.cpp 38876 2011-09-27 09:03:15Z alexander.eichner@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5571,5 +5571,7 @@ VBOXHDDBACKEND g_ISCSIBackend =
     /* pfnResize */
     NULL,
     /* pfnDiscard */
+    NULL,
+    /* pfnAsyncDiscard */
     NULL
 };
