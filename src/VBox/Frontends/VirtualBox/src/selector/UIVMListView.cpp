@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 38800 2011-09-20 11:51:31Z noreply@oracle.com $ */
+/* $Id: UIVMListView.cpp 38977 2011-10-12 11:44:56Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,7 +24,6 @@
 /* Local includes */
 #include "UIVMListView.h"
 #include "UIMessageCenter.h"
-#include "VBoxSelectorWnd.h"
 
 /* Global includes */
 #include <QScrollBar>

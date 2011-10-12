@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 38373 2011-08-09 10:25:57Z noreply@oracle.com $ */
+/* $Id: QIMessageBox.cpp 38977 2011-10-12 11:44:56Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,9 +25,6 @@
 #include "QILabel.h"
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
-#ifdef Q_WS_MAC
-# include "VBoxSelectorWnd.h"
-#endif /* Q_WS_MAC */
 
 /* Qt includes */
 #include <QHBoxLayout>
