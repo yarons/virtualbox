@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 38112 2011-07-22 13:26:19Z noreply@oracle.com $ */
+/* $Id: VBoxMPVdma.h 38982 2011-10-12 20:20:21Z noreply@oracle.com $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -177,7 +177,8 @@ typedef struct VBOXWDDM_DMA_ALLOCINFO
 {
     PVBOXWDDM_ALLOCATION pAlloc;
     VBOXVIDEOOFFSET offAlloc;
-    UINT segmentIdAlloc;
+    UINT segmentIdAlloc : 31;
+    UINT fWriteOp : 1;
     D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId;
 } VBOXWDDM_DMA_ALLOCINFO, *PVBOXWDDM_DMA_ALLOCINFO;
 
