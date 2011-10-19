@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 39034 2011-10-19 11:43:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 39035 2011-10-19 11:50:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -339,7 +339,7 @@ static int pdmacFileAioMgrNormalGrow(PPDMACEPFILEMGR pAioMgr)
     while (pCurr)
     {
         RTFileClose(pCurr->hFile);
-        int rc2 = RTFileOpen(&pCurr->hFile, pCurr->Core.pszUri, pCurr->fFlags); AssertRC(rc);
+        int rc2 = RTFileOpen(&pCurr->hFile, pCurr->Core.pszUri, pCurr->fFlags); AssertRC(rc2);
 
         pCurr = pCurr->AioMgr.pEndpointNext;
     }
