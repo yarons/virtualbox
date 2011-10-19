@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 37467 2011-06-15 13:08:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMInline.h 39034 2011-10-19 11:43:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -85,6 +85,7 @@ DECLINLINE(void) iomMmioRetainRange(PIOMMMIORANGE pRange)
     uint32_t cRefs = ASMAtomicIncU32(&pRange->cRefs);
     Assert(cRefs > 1);
     Assert(cRefs < _1M);
+    NOREF(cRefs);
 }
 
 
