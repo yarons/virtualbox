@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 37702 2011-06-30 10:09:59Z knut.osmundsen@oracle.com $ */
+/* $Id: REMAll.cpp 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -207,7 +207,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalModify(PVM pVM, PGMPHYSHANDLERTYPE enmType
  */
 VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
 {
-    Assert(pVM->cCpus == 1);
+    Assert(pVM->cCpus == 1); NOREF(pVCpu);
 
     /*
      * Less than 48 items means we should flush.

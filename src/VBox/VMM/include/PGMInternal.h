@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 39034 2011-10-19 11:43:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3974,7 +3974,7 @@ void            pgmPoolAddDirtyPage(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 void            pgmPoolResetDirtyPages(PVM pVM);
 void            pgmPoolResetDirtyPage(PVM pVM, RTGCPTR GCPtrPage);
 
-int             pgmR3ExitShadowModeBeforePoolFlush(PVM pVM, PVMCPU pVCpu);
+int             pgmR3ExitShadowModeBeforePoolFlush(PVMCPU pVCpu);
 int             pgmR3ReEnterShadowModeAfterPoolFlush(PVM pVM, PVMCPU pVCpu);
 
 void            pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE);

@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 36788 2011-04-21 09:33:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -44,6 +44,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 
 VMMR3DECL(int)      IEMR3Term(PVM pVM)
 {
+    NOREF(pVM);
     return VINF_SUCCESS;
 }
 
