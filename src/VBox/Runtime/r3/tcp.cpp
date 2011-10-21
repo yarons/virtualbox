@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 33540 2010-10-28 09:27:05Z noreply@oracle.com $ */
+/* $Id: tcp.cpp 39070 2011-10-21 09:41:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -147,7 +147,6 @@ typedef struct RTTCPSERVER
 static DECLCALLBACK(int)  rtTcpServerThread(RTTHREAD ThreadSelf, void *pvServer);
 static int  rtTcpServerListen(PRTTCPSERVER pServer);
 static int  rtTcpServerListenCleanup(PRTTCPSERVER pServer);
-static int  rtTcpServerDestroySocket(RTSOCKET volatile *pSockClient, const char *pszMsg);
 static int  rtTcpClose(RTSOCKET Sock, const char *pszMsg, bool fTryGracefulShutdown);
 
 
