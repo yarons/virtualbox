@@ -1,4 +1,4 @@
-/* $Id: tstLdrObj.cpp 38325 2011-08-05 14:11:58Z knut.osmundsen@oracle.com $ */
+/* $Id: tstLdrObj.cpp 39083 2011-10-22 00:28:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -81,12 +81,14 @@ extern "C" DECLEXPORT(uint32_t) SomeExportFunction1(void *pvBuf)
 
 extern "C" DECLEXPORT(char *) SomeExportFunction2(void *pvBuf)
 {
+    NOREF(pvBuf);
     return (char *)memcpy(achBss, szStr1, sizeof(szStr1));
 }
 
 
 extern "C" DECLEXPORT(char *) SomeExportFunction3(void *pvBuf)
 {
+    NOREF(pvBuf);
     return (char *)memcpy(achBss, szStr2, strlen(szStr2));
 }
 

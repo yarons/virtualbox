@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 36232 2011-03-09 16:41:09Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-darwin.cpp 39083 2011-10-22 00:28:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -160,6 +160,7 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 RTDECL(uint32_t) RTMpGetCurFrequency(RTCPUID idCpu)
 {
     /** @todo figure out how to get the current cpu speed on darwin. Have to check what powermanagement does. */
+    NOREF(idCpu);
     return 0;
 }
 

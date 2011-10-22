@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 37024 2011-05-10 11:23:44Z knut.osmundsen@oracle.com $ */
+/* $Id: dvmgpt.cpp 39083 2011-10-22 00:28:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -324,6 +324,7 @@ static DECLCALLBACK(int) rtDvmFmtGptOpen(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFm
 
 static DECLCALLBACK(int) rtDvmFmtGptInitialize(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFmt)
 {
+    NOREF(pDisk); NOREF(phVolMgrFmt);
     return VERR_NOT_IMPLEMENTED;
 }
 
