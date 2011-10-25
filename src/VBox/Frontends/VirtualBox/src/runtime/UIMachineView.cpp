@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39107 2011-10-25 10:09:41Z noreply@oracle.com $ */
+/* $Id: UIMachineView.cpp 39108 2011-10-25 10:18:06Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -905,12 +905,12 @@ bool UIMachineView::guestResizeEvent(QEvent *pEvent,
     return true;
 }
 
-UIVisualStateType UIMachineView::visualStateType()
+UIVisualStateType UIMachineView::visualStateType() const
 {
     return machineLogic()->visualStateType();
 }
 
-bool UIMachineView::isFullscreenOrSeamless()
+bool UIMachineView::isFullscreenOrSeamless() const
 {
     return    visualStateType() == UIVisualStateType_Fullscreen
            || visualStateType() == UIVisualStateType_Seamless;
