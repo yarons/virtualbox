@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoWinDbg.cpp 38903 2011-09-29 16:20:22Z noreply@oracle.com $ */
+/* $Id: VBoxVideoWinDbg.cpp 39130 2011-10-27 16:36:48Z noreply@oracle.com $ */
 
 /** @file
  * Copyright (C) 2011 Oracle Corporation
@@ -155,11 +155,7 @@ DECLARE_API(ms)
         return;
     }
     ULONG uRc = 0;
-#if 0
     if(u64DefaultPitch == u64Pitch)
-#else
-    if(0)
-#endif
     {
         ULONG cbRead = 0;
         dprintf("reading the entire memory buffer...\n");
