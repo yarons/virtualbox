@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 39150 2011-10-31 13:37:06Z noreply@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 39160 2011-11-01 14:35:23Z noreply@oracle.com $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -3842,10 +3842,15 @@ DxgkDdiEscape(
 #if defined(DEBUG_misha) || defined(DEBUG_leo)
                     DbgPrint("%s", pDbgPrint->aStringBuf);
 #else
-                    LOGREL(("%s", pDbgPrint->aStringBuf));
+                    LOGREL_EXACT(("%s", pDbgPrint->aStringBuf));
 #endif
                 }
                 Status = STATUS_SUCCESS;
+                break;
+            }
+            case VBOXESC_DBGDUMPBUF:
+            {
+                Status = vboxUmdDumpBuf((PVBOXDISPIFESCAPE_DBGDUMPBUF)pEscapeHdr, pEscape->PrivateDriverDataSize);
                 break;
             }
             default:
