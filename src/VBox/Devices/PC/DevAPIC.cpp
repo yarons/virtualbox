@@ -1,6 +1,6 @@
-/* $Id: DevAPIC.cpp 39370 2011-11-18 15:24:55Z knut.osmundsen@oracle.com $ */
+/* $Id: DevAPIC.cpp 39371 2011-11-18 15:25:01Z knut.osmundsen@oracle.com $ */
 /** @file
- * Advanced Programmable Interrupt Controller (APIC) Device and
+ * Advanced Programmable Interrupt Controller (APIC) Device.
  */
 
 /*
