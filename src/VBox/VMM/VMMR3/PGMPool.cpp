@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPool.cpp 39402 2011-11-23 16:25:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -458,7 +458,7 @@ void pgmR3PoolRelocate(PVM pVM)
 VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
 {
     PPGMPOOL pPool = pVM->pgm.s.pPoolR3;
-    AssertReturn(pPool->cCurPages < pPool->cMaxPages, VERR_INTERNAL_ERROR);
+    AssertReturn(pPool->cCurPages < pPool->cMaxPages, VERR_PGM_POOL_MAXED_OUT_ALREADY);
 
     pgmLock(pVM);
 

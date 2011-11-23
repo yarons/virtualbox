@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCM.cpp 39402 2011-11-23 16:25:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2560,8 +2560,7 @@ VMMR3DECL(VBOXSTRICTRC) HWACCMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PCP
         break;
 
     default:
-        AssertFailed();
-        return VERR_INTERNAL_ERROR;
+        AssertLogRelFailedReturn(VERR_INTERNAL_ERROR);
     }
 
     return rcStrict;
