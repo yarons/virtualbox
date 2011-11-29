@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39409 2011-11-24 15:28:32Z noreply@oracle.com $ */
+/* $Id: slirp.c 39444 2011-11-29 07:00:19Z noreply@oracle.com $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -604,7 +604,7 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
     pData->socket_snd = 64 * _1K;
     tcp_sndspace = 64 * _1K;
     tcp_rcvspace = 64 * _1K;
-    pData->soMaxConn = 1; /* historical value */
+    pData->soMaxConn = 10;
 
 #ifdef RT_OS_WINDOWS
     {
