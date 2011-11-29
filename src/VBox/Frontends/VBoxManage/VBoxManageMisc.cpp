@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 38735 2011-09-13 13:25:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 39445 2011-11-29 09:17:36Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -455,7 +455,7 @@ int handleCloneVM(HandlerArg *a)
 
 int handleStartVM(HandlerArg *a)
 {
-    HRESULT rc;
+    HRESULT rc = S_OK;
     std::list<const char *> VMs;
     Bstr sessionType = "gui";
 
