@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 38876 2011-09-27 09:03:15Z alexander.eichner@oracle.com $ */
+/* $Id: VHD.cpp 39519 2011-12-02 21:12:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3142,5 +3142,7 @@ VBOXHDDBACKEND g_VhdBackend =
     /* pfnDiscard */
     NULL,
     /* pfnAsyncDiscard */
+    NULL,
+    /* pfnRepair */
     NULL
 };
