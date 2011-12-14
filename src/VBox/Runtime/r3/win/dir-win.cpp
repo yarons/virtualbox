@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 34507 2010-11-30 13:14:14Z knut.osmundsen@oracle.com $ */
+/* $Id: dir-win.cpp 39612 2011-12-14 14:19:55Z noreply@oracle.com $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -47,7 +47,7 @@
 
 
 
-RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
+RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
 {
     /*
      * Validate the file mode.
