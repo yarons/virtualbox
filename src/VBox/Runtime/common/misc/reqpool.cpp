@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39620 2011-12-15 01:10:48Z knut.osmundsen@oracle.com $ */
+/* $Id: reqpool.cpp 39621 2011-12-15 09:56:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -836,8 +836,7 @@ RTDECL(uint64_t) RTReqPoolGetStat(RTREQPOOL hPool, RTREQPOOLSTAT enmStat)
 
     RTCritSectEnter(&pPool->CritSect);
 
-    uint64_t         u64;
-    PRTREQPOOLTHREAD pThread;
+    uint64_t u64;
     switch (enmStat)
     {
         case RTREQPOOLSTAT_THREADS:                     u64 = pPool->cCurThreads; break;
