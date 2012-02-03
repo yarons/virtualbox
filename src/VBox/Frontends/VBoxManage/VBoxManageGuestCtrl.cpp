@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 39843 2012-01-23 18:38:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 39991 2012-02-03 16:45:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -874,9 +874,17 @@ static int handleCtrlExecProgram(ComPtr<IGuest> pGuest, HandlerArg *pArg)
                 ExecuteProcessStatus_T retStatus;
                 ULONG uRetExitCode, uRetFlags;
                 rc = pGuest->GetProcessStatus(uPID, &uRetExitCode, &uRetFlags, &retStatus);
-                if (SUCCEEDED(rc) && fVerbose)
-                    RTPrintf("Exit code=%u (Status=%u [%s], Flags=%u)\n", uRetExitCode, retStatus, ctrlExecProcessStatusToText(retStatus), uRetFlags);
-                rcProc = ctrlExecProcessStatusToExitCode(retStatus, uRetExitCode);
+                if (SUCCEEDED(rc))
+                {
+                    if (fVerbose)
+                        RTPrintf("Exit code=%u (Status=%u [%s], Flags=%u)\n", uRetExitCode, retStatus, ctrlExecProcessStatusToText(retStatus), uRetFlags);
+                    rcProc = ctrlExecProcessStatusToExitCode(retStatus, uRetExitCode);
+                }
+                else
+                {
+                    ctrlPrintError(pGuest, COM_IIDOF(IGuest));
+                    rcProc = RTEXITCODE_FAILURE;
+                }
             }
         }
         else
