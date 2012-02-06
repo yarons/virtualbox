@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 40010 2012-02-06 22:23:09Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWatchdog.cpp 40011 2012-02-06 22:26:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -105,7 +105,7 @@ static struct
     { &g_ModAPIMonitor, false /* Pre-inited */, true /* Enabled */ }
 };
 
-static enum GETOPTDEF_WATCHDOG
+enum GETOPTDEF_WATCHDOG
 {
     GETOPTDEF_WATCHDOG_DRYRUN = 1000
 };
