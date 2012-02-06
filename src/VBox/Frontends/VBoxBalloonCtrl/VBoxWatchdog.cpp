@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 40011 2012-02-06 22:26:52Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWatchdog.cpp 40012 2012-02-06 22:30:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -452,7 +452,7 @@ static int machineDestroy(const Bstr &strUuid)
         vecMembers.erase(itMember);
 
         serviceLogVerbose(("Group \"%ls\" has %ld machines left\n",
-                           itGroup->first, vecMembers.size()));
+                           itGroup->first.raw(), vecMembers.size()));
         if (!vecMembers.size())
             g_mapGroup.erase(itGroup);
     }
@@ -713,7 +713,7 @@ static RTEXITCODE watchdogMain(HandlerArg *a)
              * Do the actual work.
              */
 
-            int rc = RTCritSectEnter(&g_csMachines);
+            rc = RTCritSectEnter(&g_csMachines);
             if (RT_SUCCESS(rc))
             {
                 for (unsigned j = 0; j < RT_ELEMENTS(g_aModules); j++)
