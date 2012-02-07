@@ -1,3 +1,4 @@
+/* $Id: VDI.cpp 40033 2012-02-07 23:30:12Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
