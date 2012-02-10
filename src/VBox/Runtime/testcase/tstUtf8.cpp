@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 33595 2010-10-29 10:35:00Z noreply@oracle.com $ */
+/* $Id: tstUtf8.cpp 40065 2012-02-10 14:51:05Z noreply@oracle.com $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -782,7 +782,7 @@ void TstRTStrXCmp(RTTEST hTest)
 
 
 /**
- * Check case insensitivity.
+ * Check UTF-8 encoding purging.
  */
 void TstRTStrPurgeEncoding(RTTEST hTest)
 {
