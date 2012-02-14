@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 32813 2010-09-29 11:50:19Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceBalloon.cpp 40128 2012-02-14 12:56:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -240,7 +240,8 @@ static DECLCALLBACK(int) VBoxServiceBalloonOption(const char **ppszShort, int ar
     NOREF(argc);
     NOREF(argv);
     NOREF(pi);
-    return VINF_SUCCESS;
+
+    return -1;
 }
 
 
