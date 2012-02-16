@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 39906 2012-01-30 12:50:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceInternal.h 40158 2012-02-16 17:06:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -410,11 +410,12 @@ extern void                     VBoxServiceControlThreadRequestFree(PVBOXSERVICE
 #endif /* VBOX_WITH_GUEST_CONTROL */
 
 #ifdef VBOXSERVICE_MANAGEMENT
-extern uint32_t     VBoxServiceBalloonQueryPages(uint32_t cbPage);
+extern uint32_t                 VBoxServiceBalloonQueryPages(uint32_t cbPage);
 #endif
 #if defined(VBOX_WITH_PAGE_SHARING) && defined(RT_OS_WINDOWS)
-extern RTEXITCODE   VBoxServicePageSharingInitFork(void);
+extern RTEXITCODE               VBoxServicePageSharingInitFork(void);
 #endif
+extern int                      VBoxServiceVMInfoSignal(void);
 
 RT_C_DECLS_END
 
