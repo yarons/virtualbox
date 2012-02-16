@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 40142 2012-02-16 09:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIImportApplianceWzd.cpp 40146 2012-02-16 11:11:26Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -131,7 +131,7 @@ UIImportApplianceWzd::UIImportApplianceWzd(const QString &strFile /* = "" */, QW
 #endif /* Q_WS_MAC */
 
     /* Resize to 'golden ratio' */
-    resizeToGoldenRatio();
+    resizeToGoldenRatio(1.8);
 
     /* Configure 'Restore Defaults' button */
     AssertMsg(!field("applianceWidget").value<ImportAppliancePointer>().isNull(), ("Appliance Widget is not set!\n"));
