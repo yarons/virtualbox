@@ -1,4 +1,4 @@
-/* $Id: UICloneVMWizard.cpp 40142 2012-02-16 09:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UICloneVMWizard.cpp 40245 2012-02-24 11:54:42Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -60,7 +60,7 @@ UICloneVMWizard::UICloneVMWizard(QWidget *pParent, const CMachine &machine, CSna
 #endif /* Q_WS_MAC */
 
     /* Resize wizard to 'golden ratio': */
-    resizeToGoldenRatio();
+    resizeToGoldenRatio(UIWizardType_CloneVM);
 }
 
 void UICloneVMWizard::retranslateUi()
