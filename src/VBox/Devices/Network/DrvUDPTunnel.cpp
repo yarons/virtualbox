@@ -1,4 +1,4 @@
-/* $Id: DrvUDPTunnel.cpp 37259 2011-05-30 13:31:21Z klaus.espenlaub@oracle.com $ */
+/* $Id: DrvUDPTunnel.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DrvUDPTunnel - UDP tunnel network transport driver
  *
@@ -617,7 +617,7 @@ const PDMDRVREG g_DrvUDPTunnel =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVUDPTUNNEL),
     /* pfnConstruct */

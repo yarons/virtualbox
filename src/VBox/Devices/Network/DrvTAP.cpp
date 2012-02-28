@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 39955 2012-02-02 12:19:41Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DrvTAP.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -1010,7 +1010,7 @@ const PDMDRVREG g_DrvHostInterface =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVTAP),
     /* pfnConstruct */

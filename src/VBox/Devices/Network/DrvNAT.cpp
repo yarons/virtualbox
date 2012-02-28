@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 39784 2012-01-17 18:47:26Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNAT.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1461,7 +1461,7 @@ const PDMDRVREG g_DrvNAT =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVNAT),
     /* pfnConstruct */

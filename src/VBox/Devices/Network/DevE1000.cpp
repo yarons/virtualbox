@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 40280 2012-02-28 19:47:00Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6200,7 +6200,7 @@ const PDMDEVREG g_DeviceE1000 =
     /* Device class(es), combination of the PDM_DEVREG_CLASS_* \#defines. */
     PDM_DEVREG_CLASS_NETWORK,
     /* Maximum number of instances (per VM). */
-    ~0,
+    ~0U,
     /* Size of the instance data. */
     sizeof(E1KSTATE),
 

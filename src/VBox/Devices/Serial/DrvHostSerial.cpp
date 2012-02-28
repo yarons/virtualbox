@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 37597 2011-06-22 20:54:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostSerial.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -1314,7 +1314,7 @@ const PDMDRVREG g_DrvHostSerial =
     /* fClass. */
     PDM_DRVREG_CLASS_CHAR,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVHOSTSERIAL),
     /* pfnConstruct */

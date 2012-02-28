@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 40280 2012-02-28 19:47:00Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPCI.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2565,7 +2565,7 @@ const PDMDEVREG g_DevicePCIBridge =
     /* fClass */
     PDM_DEVREG_CLASS_BUS_PCI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(PCIBUS),
     /* pfnConstruct */

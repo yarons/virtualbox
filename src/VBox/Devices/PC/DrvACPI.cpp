@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvACPI.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -1014,7 +1014,7 @@ const PDMDRVREG g_DrvACPI =
     /* fClass. */
     PDM_DRVREG_CLASS_ACPI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVACPI),
     /* pfnConstruct */

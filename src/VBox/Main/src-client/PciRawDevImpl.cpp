@@ -1,4 +1,4 @@
-/* $Id: PciRawDevImpl.cpp 37802 2011-07-06 13:32:15Z noreply@oracle.com $ */
+/* $Id: PciRawDevImpl.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to raw PCI device.
  */
@@ -197,7 +197,7 @@ const PDMDRVREG PciRawDev::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_PCIRAW,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINPCIRAWDEV),
     /* pfnConstruct */

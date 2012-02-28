@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvKeyboardQueue.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -347,7 +347,7 @@ const PDMDRVREG g_DrvKeyboardQueue =
     /* fClass. */
     PDM_DRVREG_CLASS_KEYBOARD,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVKBDQUEUE),
     /* pfnConstruct */

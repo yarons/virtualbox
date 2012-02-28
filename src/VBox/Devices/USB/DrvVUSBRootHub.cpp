@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1115,7 +1115,7 @@ const PDMDRVREG g_DrvVUSBRootHub =
     /* fClass. */
     PDM_DRVREG_CLASS_USB,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(VUSBROOTHUB),
     /* pfnConstruct */

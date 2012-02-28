@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 37795 2011-07-06 10:28:24Z noreply@oracle.com $ */
+/* $Id: UsbMsd.cpp 40282 2012-02-28 21:02:40Z noreply@oracle.com $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1604,7 +1604,7 @@ const PDMUSBREG g_UsbMsd =
     /* fFlags */
     0,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(USBMSD),
     /* pfnConstruct */
