@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxCredProvPoller.cpp 40271 2012-02-28 11:22:04Z noreply@oracle.com $ */
 /** @file
  * VBoxCredPoller - Thread for querying / retrieving user credentials.
  */
