@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 40277 2012-02-28 14:10:07Z noreply@oracle.com $ */
+/* $Id: DevEFI.cpp 40280 2012-02-28 19:47:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -273,7 +273,7 @@ static DECLCALLBACK(int) efiIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
            return PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "EFI Panic: panic port read!\n");
 #else
            /* Reschedule to R3 */
-           return VINF_IOM_HC_IOPORT_READ;
+           return VINF_IOM_R3_IOPORT_READ;
 #endif
     }
 
