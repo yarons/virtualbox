@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 39078 2011-10-21 14:18:22Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMRC.cpp 40447 2012-03-13 15:30:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -124,7 +124,7 @@ VMMRCDECL(int) trpmRCGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
         &&  !ASMBitTest(&pVM->trpm.s.au32IdtPatched[0], iGate)) /* Passthru gates need special attention too. */
     {
         uint32_t cb;
-        int rc = EMInterpretInstruction(pVM, pVCpu, pRegFrame, pvFault, &cb);
+        int rc = EMInterpretInstructionEx(pVM, pVCpu, pRegFrame, pvFault, &cb);
         if (RT_SUCCESS(rc) && cb)
         {
             uint32_t iGate1 = (offRange + cb - 1)/sizeof(VBOXIDTE);
