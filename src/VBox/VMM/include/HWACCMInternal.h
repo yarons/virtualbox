@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 38683 2011-09-08 08:34:02Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCMInternal.h 40561 2012-03-21 11:57:10Z michal.necasek@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -837,6 +837,7 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatExitIrqWindow;
     STAMCOUNTER             StatExitMaxResume;
     STAMCOUNTER             StatExitPreemptPending;
+    STAMCOUNTER             StatExitMTF;
     STAMCOUNTER             StatIntReinject;
     STAMCOUNTER             StatPendingHostIrq;
 
