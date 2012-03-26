@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 40561 2012-03-21 11:57:10Z michal.necasek@oracle.com $ */
+/* $Id: HWACCMInternal.h 40656 2012-03-26 20:07:36Z michal.necasek@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -800,6 +800,7 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatExitShadowNM;
     STAMCOUNTER             StatExitGuestNM;
     STAMCOUNTER             StatExitShadowPF;
+    STAMCOUNTER             StatExitShadowPFEM;
     STAMCOUNTER             StatExitGuestPF;
     STAMCOUNTER             StatExitGuestUD;
     STAMCOUNTER             StatExitGuestSS;
@@ -808,6 +809,9 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatExitGuestDE;
     STAMCOUNTER             StatExitGuestDB;
     STAMCOUNTER             StatExitGuestMF;
+    STAMCOUNTER             StatExitGuestBP;
+    STAMCOUNTER             StatExitGuestXF;
+    STAMCOUNTER             StatExitGuestXcpUnk;
     STAMCOUNTER             StatExitInvpg;
     STAMCOUNTER             StatExitInvd;
     STAMCOUNTER             StatExitCpuid;
