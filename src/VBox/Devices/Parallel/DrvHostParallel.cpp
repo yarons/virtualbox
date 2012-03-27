@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 40665 2012-03-27 13:52:22Z noreply@oracle.com $ */
+/* $Id: DrvHostParallel.cpp 40666 2012-03-27 14:02:07Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -995,6 +995,7 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
         rc = VERR_INVALID_HANDLE;
     }*/
 # endif /* VBOX_WITH_WIN_PARPORT_SUP  */
+#endif
     return VINF_SUCCESS;
 }
 
