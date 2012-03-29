@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 40652 2012-03-26 16:36:16Z aleksey.ilyushin@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 40706 2012-03-29 12:16:40Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3707,8 +3707,6 @@ int Console::configNetwork(const char *pszDevice,
 #ifdef VBOX_WITH_NETSHAPER
         ComObjPtr<IBandwidthGroup> pBwGroup;
         Bstr strBwGroup;
-        PNETSHAPER pShaper = NULL;
-        PNETSHAPERFILTER pFilter = NULL;
         hrc = aNetworkAdapter->COMGETTER(BandwidthGroup)(pBwGroup.asOutParam());            H();
 
         if (!pBwGroup.isNull())
