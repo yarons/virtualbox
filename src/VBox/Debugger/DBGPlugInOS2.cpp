@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 40726 2012-03-30 12:04:07Z michal.necasek@oracle.com $ */
+/* $Id: DBGPlugInOS2.cpp 40728 2012-03-30 14:42:08Z noreply@oracle.com $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -33,7 +33,7 @@
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
 
-/** @name Internal OS/2 structures
+/** @name Internal OS/2 structures */
 
 /** @} */
 
