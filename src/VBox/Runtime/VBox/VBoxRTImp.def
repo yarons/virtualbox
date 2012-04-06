@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 39851 2012-01-24 15:39:31Z vitali.pelenjow@oracle.com $
+; $Id: VBoxRTImp.def 40806 2012-04-06 21:05:19Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -1035,11 +1035,9 @@ EXPORTS
     RTSocketWrite
     RTSocketWriteNB
     RTSpinlockAcquire
-    RTSpinlockAcquireNoInts
     RTSpinlockCreate
     RTSpinlockDestroy
     RTSpinlockRelease
-    RTSpinlockReleaseNoInts
     RTStrAAppendExNVTag
     RTStrAAppendNTag
     RTStrAAppendTag
