@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40819 2012-04-07 20:53:40Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 40822 2012-04-08 12:42:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1127,14 +1127,7 @@ void VBOXCALL supdrvTracerCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION p
      * Clean up instance data the trace may have associated with the session.
      */
     if (pSession->uTracerData)
-    {
-        RTSemFastMutexRequest(pDevExt->mtxTracer);
-        if (   pSession->uTracerData
-            && pDevExt->pTracerOps)
-            pDevExt->pTracerOps->pfnTracerClose(pDevExt->pTracerOps, pSession, pSession->uTracerData);
-        pSession->uTracerData = 0;
-        RTSemFastMutexRelease(pDevExt->mtxTracer);
-    }
+        supdrvIOCtl_TracerClose(pDevExt, pSession);
 }
 
 
