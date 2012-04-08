@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 40571 2012-03-21 21:54:31Z knut.osmundsen@oracle.com $ */
+/* $Id: process-creation-posix.cpp 40825 2012-04-08 17:06:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -271,7 +271,7 @@ static DECLCALLBACK(int) rtPathFindExec(char const *pchPath, size_t cchPath, voi
     if (   errno == EACCES
         || errno == EPERM)
         return RTErrConvertFromErrno(errno);
-    return VINF_TRY_AGAIN;
+    return VERR_TRY_AGAIN;
 }
 
 
