@@ -1,4 +1,4 @@
-/* $Id: OpenGLTest.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: OpenGLTest.cpp 40845 2012-04-10 13:07:39Z noreply@oracle.com $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
@@ -25,7 +25,9 @@
 #include <iprt/time.h>
 #include <iprt/thread.h>
 
-bool is3DAccelerationSupported()
+#include <VBox/VBoxOGLTest.h>
+
+bool RTCALL VBoxOglIs3DAccelerationSupported()
 {
     static char pszVBoxPath[RTPATH_MAX];
     const char *papszArgs[4] = { NULL, "-test", "3D", NULL};
