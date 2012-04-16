@@ -1,4 +1,4 @@
-/* $Id: handletable.h 40934 2012-04-16 05:53:05Z noreply@oracle.com $ */
+/* $Id: handletable.h 40938 2012-04-16 11:58:26Z noreply@oracle.com $ */
 /** @file
  * IPRT - Handle Tables, internal header.
  */
@@ -165,7 +165,7 @@ DECLINLINE(PRTHTENTRY) rtHandleTableLookupSimpleIdx(PRTHANDLETABLEINT pThis, uin
         if (paTable)
             return &paTable[i % RTHT_LEVEL2_ENTRIES];
     }
-    return (PRTHTENTRY)NULL;
+    return NULL;
 }
 
 
@@ -197,7 +197,7 @@ DECLINLINE(PRTHTENTRYCTX) rtHandleTableLookupWithCtxIdx(PRTHANDLETABLEINT pThis,
         if (paTable)
             return &paTable[i % RTHT_LEVEL2_ENTRIES];
     }
-    return (PRTHTENTRYCTX)NULL;
+    return NULL;
 }
 
 

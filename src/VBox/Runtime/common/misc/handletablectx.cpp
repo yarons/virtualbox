@@ -1,4 +1,4 @@
-/* $Id: handletablectx.cpp 40934 2012-04-16 05:53:05Z noreply@oracle.com $ */
+/* $Id: handletablectx.cpp 40938 2012-04-16 11:58:26Z noreply@oracle.com $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -120,7 +120,7 @@ RTDECL(int)     RTHandleTableAllocWithCtx(RTHANDLETABLE hHandleTable, void *pvOb
              * Do the allocation(s).
              */
             rc = VERR_TRY_AGAIN;
-            papvLevel1 = (void **)NULL;
+            papvLevel1 = NULL;
             if (cLevel1)
             {
                 papvLevel1 = (void **)RTMemAlloc(sizeof(void *) * cLevel1);

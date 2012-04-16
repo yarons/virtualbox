@@ -1,4 +1,4 @@
-/* $Id: RTPathStripFilename.cpp 40934 2012-04-16 05:53:05Z noreply@oracle.com $ */
+/* $Id: RTPathStripFilename.cpp 40938 2012-04-16 11:58:26Z noreply@oracle.com $ */
 /** @file
  * IPRT - RTPathStripFilename
  */
@@ -43,7 +43,7 @@
 RTDECL(void) RTPathStripFilename(char *pszPath)
 {
     char *psz = pszPath;
-    char *pszLastSep = (char *)NULL;
+    char *pszLastSep = NULL;
 
 
     for (;; psz++)

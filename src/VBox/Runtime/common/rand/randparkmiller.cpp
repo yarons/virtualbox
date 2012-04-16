@@ -1,4 +1,4 @@
-/* $Id: randparkmiller.cpp 40934 2012-04-16 05:53:05Z noreply@oracle.com $ */
+/* $Id: randparkmiller.cpp 40938 2012-04-16 11:58:26Z noreply@oracle.com $ */
 /** @file
  * IPRT - Random Numbers, Park-Miller Pseudo Random.
  */
@@ -151,7 +151,7 @@ static DECLCALLBACK(int) rtRandParkMillerRestoreState(PRTRANDINT pThis, char con
     pszState += 3;
 
     /* u32Ctx */
-    char *pszNext = (char *)NULL;
+    char *pszNext = NULL;
     uint32_t u32Ctx;
     int rc = RTStrToUInt32Ex(pszState, &pszNext, 16, &u32Ctx);
     if (    rc != VWRN_TRAILING_CHARS
