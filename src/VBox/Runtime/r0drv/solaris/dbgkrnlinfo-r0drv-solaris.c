@@ -1,4 +1,4 @@
-/* $Id: dbg-r0drv-solaris.c 40966 2012-04-17 16:43:28Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 40969 2012-04-17 17:38:28Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
