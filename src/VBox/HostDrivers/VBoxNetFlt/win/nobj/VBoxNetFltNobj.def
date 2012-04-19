@@ -1,4 +1,4 @@
-; $Id: VBoxNetFltNobj.def 36184 2011-03-07 10:57:04Z noreply@oracle.com $ 
+; $Id: VBoxNetFltNobj.def 40986 2012-04-19 10:32:03Z noreply@oracle.com $
 ; @file
 ; VBoxNetFltNobj.def - Notify Object for Bridged Networking Driver.
 ; Library def file
