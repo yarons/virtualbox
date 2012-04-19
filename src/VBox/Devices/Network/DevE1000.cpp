@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 40992 2012-04-19 13:55:42Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevE1000.cpp 40996 2012-04-19 17:42:18Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -87,7 +87,7 @@
  * resource control as it allows to compute exact sizes of packets prior
  * to allocating their buffers (see #5582).
  */
-#define E1K_WITH_TXD_CACHE 1
+//#define E1K_WITH_TXD_CACHE 1
 /* End of Options ************************************************************/
 
 #ifdef E1K_WITH_TXD_CACHE
