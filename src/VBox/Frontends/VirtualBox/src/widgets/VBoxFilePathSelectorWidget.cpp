@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 33778 2010-11-04 15:25:25Z noreply@oracle.com $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 41021 2012-04-23 11:02:30Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -675,6 +675,16 @@ void VBoxEmptyFileSelector::setDefaultSaveExt (const QString &aExt)
 QString VBoxEmptyFileSelector::defaultSaveExt() const
 {
     return mDefaultSaveExt;
+}
+
+void VBoxEmptyFileSelector::setChooseButtonText(const QString &strText)
+{
+    mSelectButton->setText(strText);
+}
+
+QString VBoxEmptyFileSelector::chooseButtonText() const
+{
+    return mSelectButton->text();
 }
 
 void VBoxEmptyFileSelector::setFileDialogTitle (const QString& aTitle)
