@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 39932 2012-02-01 13:33:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineMenuBar.cpp 41047 2012-04-24 15:56:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -254,6 +254,7 @@ void UIMachineMenuBar::prepareMenuDebug(QMenu *pMenu)
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_Statistics));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_CommandLine));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_Logging));
+    pMenu->addAction(gActionPool->action(UIActionIndex_Simple_LogDialog));
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
