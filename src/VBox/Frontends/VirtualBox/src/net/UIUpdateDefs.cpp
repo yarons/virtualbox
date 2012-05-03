@@ -1,10 +1,12 @@
-/* $Id: UIUpdateDefs.cpp 39666 2011-12-20 21:00:07Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 41143 2012-05-03 16:00:11Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - Update routine related implementations.
+ *
+ * VBox frontends: Qt4 GUI ("VirtualBox"):
+ * Update routine related implementations
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
