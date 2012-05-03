@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 41130 2012-05-03 11:35:25Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 41133 2012-05-03 13:19:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -865,7 +865,7 @@ static int supdrvTracerRegisterVtgObj(PSUPDRVDEVEXT pDevExt, PVTGOBJHDR pVtgHdr,
     rc = RTSemFastMutexRequest(pDevExt->mtxTracer);
     if (RT_FAILURE(rc))
         return rc;
-    if (pImage || pSession->R0Process == NIL_RTPROCESS)
+    if (pImage || !pSession || pSession->R0Process == NIL_RTPROCESS)
     {
         RTListForEach(&pDevExt->TracerProviderList, pProv, SUPDRVTPPROVIDER, ListEntry)
         {
