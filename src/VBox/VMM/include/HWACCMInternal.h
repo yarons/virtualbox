@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 41205 2012-05-08 13:01:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HWACCMInternal.h 41312 2012-05-15 13:43:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -167,9 +167,6 @@ typedef struct HMGLOBLCPUINFO
 
     /** Whether to flush each new ASID/VPID before use. */
     bool                fFlushASIDBeforeUse;
-
-    /** Set the first time a cpu is used to make sure we start with a clean TLB. */
-    bool                fFlushTLB;
 
     /** Configured for VT-x or AMD-V. */
     bool                fConfigured;
