@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 41021 2012-04-23 11:02:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 41372 2012-05-21 16:53:33Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -231,7 +231,7 @@ void UIWizardExportApp::retranslateUi()
     UIWizard::retranslateUi();
 
     /* Translate wizard: */
-    setWindowTitle(tr("Appliance Export Wizard"));
+    setWindowTitle(tr("Export Virtual Appliance"));
     setButtonText(QWizard::CustomButton2, tr("Restore Defaults"));
     setButtonText(QWizard::FinishButton, tr("Export"));
 }
