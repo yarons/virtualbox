@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 41373 2012-05-21 17:41:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 41415 2012-05-23 12:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -278,6 +278,11 @@ void UIWizardNewVM::prepare()
         case UIWizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardNewVMPageExpert);
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }
