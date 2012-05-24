@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 41420 2012-05-23 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 41437 2012-05-24 14:47:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2522,7 +2522,7 @@ DECLINLINE(void *) pgmPoolMapPageStrict(PPGMPOOLPAGE a_pPage)
 
 /** @name A20 gate macros
  * @{ */
-/*#define PGM_WITH_A20*/
+#define PGM_WITH_A20
 #ifdef PGM_WITH_A20
 # define PGM_A20_IS_ENABLED(a_pVCpu)                        ((a_pVCpu)->pgm.s.fA20Enabled)
 # define PGM_A20_APPLY(a_pVCpu, a_GCPhys)                   ((a_GCPhys) & (a_pVCpu)->pgm.s.GCPhysA20Mask)
