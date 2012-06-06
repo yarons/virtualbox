@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 41114 2012-05-02 13:07:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicScale.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,8 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes: */
-#include "COMDefs.h"
+/* GUI includes: */
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "UISession.h"

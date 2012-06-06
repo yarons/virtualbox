@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 41389 2012-05-22 13:04:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,17 +17,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QIntValidator>
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QSpacerItem>
 #include <QLabel>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVM.h"
-#include "COMDefs.h"
 #include "VBoxGlobal.h"
 #include "VBoxGuestRAMSlider.h"
 #include "QILineEdit.h"

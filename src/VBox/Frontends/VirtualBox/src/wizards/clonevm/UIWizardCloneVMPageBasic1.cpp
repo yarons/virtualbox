@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 41479 2012-05-29 13:42:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,15 +17,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QCheckBox>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardCloneVMPageBasic1.h"
 #include "UIWizardCloneVM.h"
-#include "COMDefs.h"
 #include "QIRichTextLabel.h"
 
 UIWizardCloneVMPage1::UIWizardCloneVMPage1(const QString &strOriginalName)

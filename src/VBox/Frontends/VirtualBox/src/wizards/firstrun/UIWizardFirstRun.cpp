@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 41415 2012-05-23 12:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardFirstRun.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,11 +17,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardFirstRun.h"
 #include "UIWizardFirstRunPageBasic.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CStorageController.h"
+#include "CMediumAttachment.h"
 
 UIWizardFirstRun::UIWizardFirstRun(QWidget *pParent, const CMachine &machine)
     : UIWizard(pParent, UIWizardType_FirstRun)
