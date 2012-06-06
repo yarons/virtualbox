@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 41590 2012-06-06 06:15:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 41591 2012-06-06 07:04:53Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,6 +38,7 @@
 #include "UIVMCloseDialog.h"
 
 /* COM includes: */
+#include "CConsole.h"
 #include "CSnapshot.h"
 
 /* Other VBox includes: */
