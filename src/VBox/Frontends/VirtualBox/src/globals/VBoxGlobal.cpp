@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 41608 2012-06-07 02:02:19Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 41610 2012-06-07 12:12:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -100,6 +100,7 @@
 #endif /* VBOX_GUI_WITH_SYSTRAY */
 
 /* COM includes: */
+#include "CMachine.h"
 #include "CSystemProperties.h"
 #include "CUSBDevice.h"
 #include "CUSBDeviceFilter.h"

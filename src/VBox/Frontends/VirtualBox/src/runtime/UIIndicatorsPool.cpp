@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 41608 2012-06-07 02:02:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 41610 2012-06-07 12:12:48Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,6 +29,7 @@
 
 /* COM includes: */
 #include "CConsole.h"
+#include "CMachine.h"
 #include "CSystemProperties.h"
 #include "CMachineDebugger.h"
 #include "CGuest.h"
