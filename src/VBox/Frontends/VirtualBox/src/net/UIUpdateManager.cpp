@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 41613 2012-06-07 14:07:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 41614 2012-06-07 14:25:53Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -43,6 +43,7 @@
 
 /* Other VBox includes: */
 #include <iprt/path.h>
+#include <iprt/system.h>
 
 /* Forward declarations: */
 class UIUpdateStep;
