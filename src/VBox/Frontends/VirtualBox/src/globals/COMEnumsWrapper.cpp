@@ -1,4 +1,4 @@
-/* $Id: COMEnumsWrapper.cpp 41685 2012-06-13 15:34:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: COMEnumsWrapper.cpp 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 
 /* GUI includes: */
 #include "COMEnumsWrapper.h"
+#include "UIDefs.h"
 
 /* static */
 COMEnumsWrapper* COMEnumsWrapper::m_spInstance = 0;

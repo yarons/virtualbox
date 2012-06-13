@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 41402 2012-05-22 16:31:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -231,7 +231,7 @@ bool UIWizardExportAppPageExpert::isComplete() const
     if (fResult)
     {
         const QString &strFile = m_pFileSelector->path().toLower();
-        fResult = VBoxGlobal::hasAllowedExtension(strFile, VBoxDefs::OVFFileExts);
+        fResult = VBoxGlobal::hasAllowedExtension(strFile, OVFFileExts);
         if (fResult)
         {
             StorageType st = storageType();

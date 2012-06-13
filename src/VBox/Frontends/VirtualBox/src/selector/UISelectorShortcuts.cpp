@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 39932 2012-02-01 13:33:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorShortcuts.cpp 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -56,6 +56,6 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[UpdateShortcut]              = UIKeySequence("Update");
     m_Shortcuts[AboutShortcut]               = UIKeySequence("About");
     /* Get a list of overwritten keys */
-    loadExtraData(VBoxDefs::GUI_Input_SelectorShortcuts, EndShortcutType);
+    loadExtraData(GUI_Input_SelectorShortcuts, EndShortcutType);
 }
 
