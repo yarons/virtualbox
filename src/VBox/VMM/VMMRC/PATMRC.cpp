@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41675 2012-06-12 20:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMRC.cpp 41692 2012-06-13 19:32:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -522,7 +522,7 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                                              pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
             rc = VBOXSTRICTRC_TODO(rcStrict);
 #else
-            rc = DISInstr(&pRec->patch.aPrivInstr[0], cpu.mode, &cpu, &cbOp);
+            rc = DISInstr(&pRec->patch.aPrivInstr[0], (DISCPUMODE)cpu.mode, &cpu, &cbOp);
             if (RT_FAILURE(rc))
             {
                 Log(("DISCoreOne failed with %Rrc\n", rc));
