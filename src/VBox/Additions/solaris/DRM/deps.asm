@@ -1,4 +1,4 @@
-; $Id: deps.s 41705 2012-06-14 11:41:34Z noreply@oracle.com $
+; $Id: deps.asm 41725 2012-06-14 20:15:48Z noreply@oracle.com $
 ;; @file
 ; Solaris kernel module dependency
 ;
@@ -30,10 +30,8 @@ kmoddeps_header  ; ELF header, section table and shared string table
 
 kmoddeps_dynstr_start  ; ELF .dynstr section
 kmoddeps_dynstr_string str_misc_ctf, "misc/ctf"
-kmoddeps_dynstr_string str_drv_vboxguest, "drv/vboxguest"
 kmoddeps_dynstr_end
 
 kmoddeps_dynamic_start  ; ELF .dynamic section
 kmoddeps_dynamic_needed str_misc_ctf
-kmoddeps_dynamic_needed str_drv_vboxguest
 kmoddeps_dynamic_end

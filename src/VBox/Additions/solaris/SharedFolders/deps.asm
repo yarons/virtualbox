@@ -1,4 +1,4 @@
-; $Id: deps.s 41721 2012-06-14 18:50:22Z noreply@oracle.com $
+; $Id: deps.asm 41725 2012-06-14 20:15:48Z noreply@oracle.com $
 ;; @file
 ; Solaris kernel module dependency
 ;
