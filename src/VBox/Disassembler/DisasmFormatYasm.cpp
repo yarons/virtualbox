@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41744 2012-06-15 02:29:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatYasm.cpp 41761 2012-06-15 16:03:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -392,9 +392,8 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
     if (    pOp->uOpcode == OP_INVALID
         ||  (   pOp->uOpcode == OP_ILLUD2
              && (pCpu->fPrefix & DISPREFIX_LOCK)))
-    {
-
-    }
+        PUT_SZ("Illegal opcode");
+        //cchOutput += RTStrPrintf(pszDst, cchDst, "Illegal opcode %.*Rhxs", pCpu->cbInstr, pCpu->abInstr);
     else
     {
         /*
