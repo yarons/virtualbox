@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 40274 2012-02-28 13:17:35Z knut.osmundsen@oracle.com $ */
+/* $Id: REMAll.cpp 41777 2012-06-16 18:49:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -238,7 +238,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
 /**
  * Make REM flush all translation block upon the next call to REMR3State().
  *
- * @param   pVM             Pointer to the shared VM structure.
+ * @param   pVM             Pointer to the VM.
  */
 VMMDECL(void) REMFlushTBs(PVM pVM)
 {
