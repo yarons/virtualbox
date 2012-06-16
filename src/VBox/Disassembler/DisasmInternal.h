@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 41789 2012-06-16 20:24:50Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmInternal.h 41790 2012-06-16 20:33:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -170,7 +170,7 @@ extern const PCDISOPCODE g_apMapX86_FP_High[8];
 #endif
 
 
-size_t disFormatBytes(PCDISCPUSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFlags);
+size_t disFormatBytes(PCDISSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFlags);
 
 /** @} */
 #endif

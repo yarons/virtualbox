@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatBytes.cpp 41789 2012-06-16 20:24:50Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatBytes.cpp 41790 2012-06-16 20:33:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Helper for formatting the opcode bytes.
  */
@@ -35,7 +35,7 @@
  * @param   cchDst  The size of the output buffer.
  * @param   fFlags  The flags passed to the formatter.
  */
-size_t disFormatBytes(PCDISCPUSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFlags)
+size_t disFormatBytes(PCDISSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFlags)
 {
     size_t      cchOutput = 0;
     uint32_t    cb        = pDis->cbInstr;
