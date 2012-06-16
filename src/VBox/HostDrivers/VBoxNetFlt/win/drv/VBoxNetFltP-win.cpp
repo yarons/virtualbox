@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltP-win.cpp 40806 2012-04-06 21:05:19Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltP-win.cpp 41783 2012-06-16 19:24:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetFltP-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Protocol edge
@@ -1190,7 +1190,7 @@ static NDIS_STATUS vboxNetFltWinPtReceive(IN NDIS_HANDLE hProtocolBindingContext
             Assert(fWinIfActive);
 
             vboxNetFltWinRecvIndicatePassThru(pNetFlt, MacReceiveContext, pHeaderBuffer, cbHeaderBuffer, pLookAheadBuffer, cbLookAheadBuffer, cbPacket);
-            /* the status could contain an error value here in case the the IntNet recv failed,
+            /* the status could contain an error value here in case the IntNet recv failed,
              * ensure we return back success status */
             Status = NDIS_STATUS_SUCCESS;
 
