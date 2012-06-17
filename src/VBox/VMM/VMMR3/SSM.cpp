@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 41783 2012-06-16 19:24:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SSM.cpp 41800 2012-06-17 16:18:26Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -7776,7 +7776,7 @@ static int ssmR3ValidateDirectory(PSSMFILEDIR pDir, size_t cbDir, uint64_t offDi
  * @returns Pointer to the unit.
  * @returns NULL if not found.
  *
- * @param   pVM             VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pszName         Data unit name.
  * @param   uInstance       The data unit instance id.
  */
