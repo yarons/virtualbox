@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 41783 2012-06-16 19:24:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: STAM.cpp 41801 2012-06-17 16:46:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -258,7 +258,7 @@ static const STAMR0SAMPLE g_aGMMStats[] =
  * Initializes the STAM.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  */
 VMMR3DECL(int) STAMR3InitUVM(PUVM pUVM)
 {
