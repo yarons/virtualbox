@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 39402 2011-11-23 16:25:04Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAllCritSect.cpp 41802 2012-06-17 17:01:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -639,7 +639,7 @@ VMMDECL(int) PDMCritSectLeave(PPDMCRITSECT pCritSect)
 /**
  * Process the critical sections queued for ring-3 'leave'.
  *
- * @param   pVCpu         The VMCPU handle.
+ * @param   pVCpu         Pointer to the VMCPU.
  */
 VMMDECL(void) PDMCritSectFF(PVMCPU pVCpu)
 {
