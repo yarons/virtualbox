@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 41801 2012-06-17 16:46:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DBGF.cpp 41906 2012-06-24 15:44:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -587,7 +587,7 @@ VMMR3DECL(int) DBGFR3EventBreakpoint(PVM pVM, DBGFEVENTTYPE enmEvent)
 #else
         /* @todo SMP support!! */
         PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu(pVM));
-        RTGCPTR  eip = pCtx->rip + pCtx->csHid.u64Base;
+        RTGCPTR  eip = pCtx->rip + pCtx->cs.u64Base;
 #endif
         for (iBp = 0; iBp < RT_ELEMENTS(pVM->dbgf.s.aBreakpoints); iBp++)
             if (    pVM->dbgf.s.aBreakpoints[iBp].enmType == DBGFBPTYPE_REM
