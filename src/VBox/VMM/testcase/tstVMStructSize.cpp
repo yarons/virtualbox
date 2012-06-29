@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 41906 2012-06-24 15:44:03Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same

@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41939 2012-06-27 23:59:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HWSVMR0.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */

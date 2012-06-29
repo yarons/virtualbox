@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 41931 2012-06-27 16:12:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */

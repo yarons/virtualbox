@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 41800 2012-06-17 16:18:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstAnimate.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */

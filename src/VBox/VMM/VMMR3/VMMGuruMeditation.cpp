@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 41802 2012-06-17 17:01:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMMGuruMeditation.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */

@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 41321 2012-05-15 20:11:21Z noreply@oracle.com $ */
+/* $Id: tstMicro.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 41906 2012-06-24 15:44:03Z knut.osmundsen@oracle.com $ */
+/* $Id: HWACCM.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */

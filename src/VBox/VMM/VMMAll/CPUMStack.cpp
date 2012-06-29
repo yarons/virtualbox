@@ -1,4 +1,4 @@
-/* $Id: CPUMStack.cpp 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMStack.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Stack manipulation.
  */

@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41964 2012-06-29 02:41:23Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMRC.cpp 41965 2012-06-29 02:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
