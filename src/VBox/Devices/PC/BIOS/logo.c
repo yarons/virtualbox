@@ -1,4 +1,4 @@
-/* $Id: logo.c 41774 2012-06-16 14:44:06Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: logo.c 42057 2012-07-09 12:54:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */

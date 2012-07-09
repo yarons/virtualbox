@@ -1,4 +1,4 @@
-/* $Id: ahci.c 39651 2011-12-17 13:13:49Z michal.necasek@oracle.com $ */
+/* $Id: ahci.c 42057 2012-07-09 12:54:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */

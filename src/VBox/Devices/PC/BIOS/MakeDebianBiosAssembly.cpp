@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 42051 2012-07-09 12:42:18Z knut.osmundsen@oracle.com $ */
+/* $Id: MakeDebianBiosAssembly.cpp 42057 2012-07-09 12:54:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -188,7 +188,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 42051 2012-07-09 12:42:18Z knut.osmundsen@oracle.com $ \n"
+    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 42057 2012-07-09 12:54:37Z knut.osmundsen@oracle.com $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
