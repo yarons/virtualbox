@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 42129 2012-07-12 17:32:31Z klaus.espenlaub@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 42131 2012-07-12 18:16:06Z klaus.espenlaub@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1948,9 +1948,10 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
     if (FAILED(rc)) throw rc;
 
     /* Create the machine */
+    SafeArray<BSTR> groups; /* no groups */
     rc = mVirtualBox->CreateMachine(NULL, /* machine name: use default */
                                     Bstr(stack.strNameVBox).raw(),
-                                    NULL, /* no groups */
+                                    ComSafeArrayAsInParam(groups),
                                     Bstr(stack.strOsTypeVBox).raw(),
                                     NULL, /* uuid */
                                     FALSE, /* fForceOverwrite */
