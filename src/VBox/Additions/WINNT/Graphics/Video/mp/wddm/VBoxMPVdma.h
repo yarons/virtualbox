@@ -1,5 +1,4 @@
-/* $Id: VBoxMPVdma.h 42081 2012-07-10 09:47:29Z noreply@oracle.com $ */
-
+/* $Id: VBoxMPVdma.h 42154 2012-07-13 23:00:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */

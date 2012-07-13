@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: the-nt-kernel.h 42154 2012-07-13 23:00:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -29,6 +29,9 @@
 
 #include <iprt/cdefs.h>
 
+#if defined(RT_ARCH_X86) && !defined(NO_INTERLOCKED_INTRINSICS)
+# define NO_INTERLOCKED_INTRINSICS /* avoid trouble */
+#endif
 #if (_MSC_VER >= 1400) && !defined(VBOX_WITH_PATCHED_DDK)
 # include <iprt/asm.h>
 # define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
