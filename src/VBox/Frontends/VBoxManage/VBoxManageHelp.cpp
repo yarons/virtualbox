@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42176 2012-07-17 12:23:50Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 42178 2012-07-17 12:35:07Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -590,6 +590,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            vrdeauthlibrary default|<library> |\n"
                      "                            websrvauthlibrary default|null|<library> |\n"
                      "                            vrdeextpack null|<library> |\n"
+                     "                            autostartdbpath null|<folder> |\n"
                      "                            loghistorycount <value>\n"
                      "\n");
 
