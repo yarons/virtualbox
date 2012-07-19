@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 42232 2012-07-19 16:06:17Z noreply@oracle.com $ */
+/* $Id: VBoxDispDriver.cpp 42233 2012-07-19 16:25:49Z noreply@oracle.com $ */
 
 /** @file
  * VBox XPDM Display driver interface functions
@@ -1004,9 +1004,13 @@ ULONG APIENTRY VBoxDispDrvEscape(SURFOBJ *pso, ULONG iEsc, ULONG cjIn, PVOID pvI
         {
             if (pvOut && cjOut == sizeof(DWORD))
             {
-                /* @todo: impl */
-                *(DWORD *)pvOut = TRUE;
-                return 1;
+                DWORD cbReturned;
+                DWORD dwrc = EngDeviceIoControl(pDev->hDriver, IOCTL_VIDEO_VBOX_ISANYX, NULL, 0,
+                        pvOut, sizeof (uint32_t), &cbReturned);
+                if (dwrc == NO_ERROR && cbReturned == sizeof (uint32_t))
+                    return 1;
+                WARN(("EngDeviceIoControl failed, dwrc(%d), cbReturned(%d)", dwrc, cbReturned));
+                return 0;
             }
             else
             {
