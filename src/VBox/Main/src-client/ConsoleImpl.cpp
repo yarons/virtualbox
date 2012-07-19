@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 41925 2012-06-27 14:04:09Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 42238 2012-07-19 17:38:26Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -673,7 +673,7 @@ void Console::uninit()
     if (mVRDEServerInfo)
     {
         mVRDEServerInfo->uninit();
-        unconst(mVRDEServerInfo).setNull();;
+        unconst(mVRDEServerInfo).setNull();
     }
 
     if (mDebugger)
@@ -697,13 +697,13 @@ void Console::uninit()
     if (mKeyboard)
     {
         mKeyboard->uninit();
-        unconst(mKeyboard).setNull();;
+        unconst(mKeyboard).setNull();
     }
 
     if (mGuest)
     {
         mGuest->uninit();
-        unconst(mGuest).setNull();;
+        unconst(mGuest).setNull();
     }
 
     if (mConsoleVRDPServer)
