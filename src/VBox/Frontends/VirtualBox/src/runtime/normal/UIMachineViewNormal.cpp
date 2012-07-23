@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 42318 2012-07-23 09:27:05Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,6 +62,9 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
 
     /* Prepare event-filters: */
     prepareFilters();
+
+    /* Prepare connections: */
+    prepareConnections();
 
     /* Prepare console connections: */
     prepareConsoleConnections();
