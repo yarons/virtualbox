@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 41972 2012-06-29 13:35:30Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxGuest.cpp 42366 2012-07-24 13:32:30Z noreply@oracle.com $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -89,6 +89,15 @@ PFNRT g_apfnVBoxGuestIPRTDeps[] =
 {
     /* VirtioNet */
     (PFNRT)RTRandBytes,
+    /* RTSemMutex* */
+    (PFNRT)RTSemMutexCreate,
+    (PFNRT)RTSemMutexDestroy,
+    (PFNRT)RTSemMutexRequest,
+    (PFNRT)RTSemMutexRequestNoResume,
+    (PFNRT)RTSemMutexRequestDebug,
+    (PFNRT)RTSemMutexRequestNoResumeDebug,
+    (PFNRT)RTSemMutexRelease,
+    (PFNRT)RTSemMutexIsOwned,
     NULL
 };
 #endif  /* RT_OS_SOLARIS */
