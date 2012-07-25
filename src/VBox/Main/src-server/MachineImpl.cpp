@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42382 2012-07-25 09:35:56Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 42383 2012-07-25 10:07:58Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12210,6 +12210,9 @@ STDMETHODIMP SessionMachine::OnSessionEnd(ISession *aSession,
         // very nasty use after free due to the place where the value "lives".
         mData->mSession.mRemoteControls.erase(it);
     }
+
+    /* signal the client watcher thread, because the client is going away */
+    mParent->updateClientWatcher();
 
     LogFlowThisFuncLeave();
     return S_OK;
