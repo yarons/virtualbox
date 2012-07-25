@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 41549 2012-06-01 17:29:05Z alexander.eichner@oracle.com $ */
+/* $Id: dvmgpt.cpp 42387 2012-07-25 11:55:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -346,6 +346,8 @@ static DECLCALLBACK(int) rtDvmFmtGptQueryRangeUse(RTDVMFMT hVolMgrFmt,
                                                   bool *pfUsed)
 {
     PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
+
+    NOREF(cbRange);
 
     if (off < 33*pThis->pDisk->cbSector)
         *pfUsed = true;
