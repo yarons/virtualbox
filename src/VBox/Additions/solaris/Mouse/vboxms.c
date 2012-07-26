@@ -1,6 +1,6 @@
-/* $Id: vboxms.c 42368 2012-07-24 13:50:40Z noreply@oracle.com $ */
+/* $Id: vboxms.c 42424 2012-07-26 19:34:30Z noreply@oracle.com $ */
 /** @file
- * VirtualBox Guest Additions Driver for Solaris.
+ * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
 
 /*
