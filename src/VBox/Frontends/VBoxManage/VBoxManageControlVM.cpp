@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 42445 2012-07-30 12:55:12Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 42551 2012-08-02 16:44:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -494,7 +494,7 @@ int handleControlVM(HandlerArg *a)
                 rc = E_FAIL;
                 break;
             }
-            CHECK_ERROR(adapter, COMGETTER(NatDriver)(engine.asOutParam()));
+            CHECK_ERROR(adapter, COMGETTER(NATEngine)(engine.asOutParam()));
             if (!engine)
             {
                 rc = E_FAIL;
