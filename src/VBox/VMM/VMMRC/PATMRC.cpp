@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 42186 2012-07-17 13:32:15Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMRC.cpp 42556 2012-08-02 20:08:12Z noreply@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -181,7 +181,7 @@ VMMDECL(int) PATMRCHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                  *  edx = GC address to find
                  *  edi = PATCHJUMPTABLE ptr
                  */
-                AssertMsg(!pRegFrame->edi || PATMIsPatchGCAddr(pVM, pRegFrame->edi), ("edx = %x\n", pRegFrame->edi));
+                AssertMsg(!pRegFrame->edi || PATMIsPatchGCAddr(pVM, pRegFrame->edi), ("edi = %x\n", pRegFrame->edi));
 
                 Log(("PATMRC: lookup %x jump table=%x\n", pRegFrame->edx, pRegFrame->edi));
 
