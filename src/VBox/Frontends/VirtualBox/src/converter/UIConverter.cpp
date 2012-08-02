@@ -1,4 +1,4 @@
-/* $Id: UIConverter.cpp 41850 2012-06-20 14:45:58Z noreply@oracle.com $ */
+/* $Id: UIConverter.cpp 42526 2012-08-02 10:31:28Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

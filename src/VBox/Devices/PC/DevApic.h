@@ -1,4 +1,4 @@
-/* $Id: DevApic.h 40956 2012-04-16 22:58:48Z knut.osmundsen@oracle.com $ */
+/* $Id: DevApic.h 42526 2012-08-02 10:31:28Z sergey.dubov@oracle.com $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device Definitions.
  */

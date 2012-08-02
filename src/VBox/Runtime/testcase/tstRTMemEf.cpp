@@ -1,4 +1,4 @@
-/* $Id: tstRTMemEf.cpp 38636 2011-09-05 13:49:45Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTMemEf.cpp 42526 2012-08-02 10:31:28Z sergey.dubov@oracle.com $ */
 /** @file
  * IPRT - Testcase for the RTMemEf* functions.
  */
