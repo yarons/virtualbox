@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 42529 2012-08-02 11:53:21Z noreply@oracle.com $ */
+/* $Id: UIGDetailsItem.cpp 42600 2012-08-05 14:32:11Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -141,14 +141,14 @@ void UIGDetailsItem::paintText(QPainter *pPainter, const QRect &rect, const QFon
     pPainter->restore();
 }
 
-UIPrepareStep::UIPrepareStep(QObject *pParent)
+UIPrepareStep::UIPrepareStep(QObject *pParent, const QString &strStepId /* = QString() */)
     : QObject(pParent)
+    , m_strStepId(strStepId)
 {
-    connect(this, SIGNAL(sigStepDone()), pParent, SLOT(sltStepDone()), Qt::QueuedConnection);
 }
 
 void UIPrepareStep::sltStepDone()
 {
-    emit sigStepDone();
+    emit sigStepDone(m_strStepId);
 }
 
