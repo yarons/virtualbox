@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 42600 2012-08-05 14:32:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsItem.cpp 42608 2012-08-05 21:52:41Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,6 +78,11 @@ UIGDetailsModel* UIGDetailsItem::model() const
 UIGDetailsItem* UIGDetailsItem::parentItem() const
 {
     return m_pParent;
+}
+
+void UIGDetailsItem::updateSizeHint()
+{
+    updateGeometry();
 }
 
 #if 0
