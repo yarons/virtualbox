@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 37955 2011-07-14 12:23:02Z knut.osmundsen@oracle.com $
+; $Id: HWACCMR0A.asm 42671 2012-08-08 06:01:09Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -854,7 +854,7 @@ BEGINPROC VMXR0InvVPID
  %ifdef ASM_CALL64_GCC
     and         edi, 0ffffffffh
     xor         rax, rax
-    ;invvpid     rdi, qword [rsi]
+;    invvpid     rdi, qword [rsi]
     DB          0x66, 0x0F, 0x38, 0x81, 0x3E
  %else
     and         ecx, 0ffffffffh
