@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42690 2012-08-08 18:27:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItemGroup.cpp 42710 2012-08-09 13:08:27Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -355,7 +355,7 @@ QVariant UIGChooserItemGroup::data(int iKey) const
             if (isMainRoot())
                 return QSizeF(0, 0);
             QFontMetrics fm(data(GroupItemData_NameFont).value<QFont>());
-            return QSize(fm.width(data(GroupItemData_Name).toString()) + 1, fm.height());
+            return QSize(fm.width(data(GroupItemData_Name).toString()) + 2, fm.height());
         }
         case GroupItemData_NameEditorSize:
         {
