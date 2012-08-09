@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 42655 2012-08-07 11:39:09Z noreply@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 42708 2012-08-09 10:15:38Z noreply@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1235,7 +1235,7 @@ static RTEXITCODE VBoxServiceToolboxMkTemp(int argc, char **argv)
 
     if (RT_SUCCESS(rc))
     {
-        rc = RTDirCreateTemp(pszName);
+        rc = RTDirCreateTemp(pszName, 0700);
         toolboxMkTempReport("Created temporary directory '%s'.\n",
                             pszName, RT_SUCCESS(rc), rc, fOutputFlags, NULL);
         toolboxMkTempReport("The following error occurred while creating a temporary directory with template '%s': %Rrc.\n",
