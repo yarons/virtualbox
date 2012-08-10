@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 42631 2012-08-06 17:01:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorShortcuts.cpp 42751 2012-08-10 11:24:04Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -42,6 +42,7 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[DiscardVMShortcut]           = UIKeySequence("DiscardVM",           "Ctrl+J");
     m_Shortcuts[PauseVMShortcut]             = UIKeySequence("PauseVM",             "Ctrl+P");
     m_Shortcuts[ResetVMShortcut]             = UIKeySequence("ResetVM",             "Ctrl+T");
+    m_Shortcuts[SaveVMShortcut]              = UIKeySequence("SaveVM",              "Ctrl+V");
     m_Shortcuts[ACPIShutdownVMShortcut]      = UIKeySequence("ACPIShutdownVM",      "Ctrl+H");
     m_Shortcuts[PowerOffVMShortcut]          = UIKeySequence("PowerOffVM",          "Ctrl+F");
     m_Shortcuts[RefreshVMShortcut]           = UIKeySequence("RefreshVM");
