@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42783 2012-08-12 20:25:38Z noreply@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 42787 2012-08-13 09:49:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -256,7 +256,8 @@ int SessionTaskCopyTo::Run(void)
             rc = pProcess->waitFor(ProcessWaitForFlag_StdIn,
                                    30 * 1000 /* Timeout */, waitRes);
             if (   RT_FAILURE(rc)
-                || waitRes.mResult != ProcessWaitForFlag_StdIn)
+                || (   waitRes.mResult != ProcessWaitResult_StdIn
+                    && waitRes.mResult != ProcessWaitResult_Any))
             {
                 break;
             }
