@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 42838 2012-08-16 09:21:09Z noreply@oracle.com $ */
+/* $Id: DisplayImpl.cpp 42844 2012-08-16 12:24:54Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -51,7 +51,6 @@
 # include "VideoRec.h"
   PVIDEORECCONTEXT pVideoRecContext;
 #endif
-#define DEBUG_sunlover
 /**
  * Display driver instance data.
  *
