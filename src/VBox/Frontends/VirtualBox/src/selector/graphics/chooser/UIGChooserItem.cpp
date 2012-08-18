@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42872 2012-08-18 12:54:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItem.cpp 42873 2012-08-18 14:37:25Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,7 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent, bool fTemporary)
     , m_iHighlightDarkness(90)
     , m_iStrokeDarkness(130)
     , m_iAnimationDarkness(m_iDefaultDarkness)
+    , m_iDragTokenDarkness(150)
 {
     /* Basic item setup: */
     setOwnedByLayout(false);
