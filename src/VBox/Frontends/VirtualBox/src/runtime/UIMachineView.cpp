@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 42961 2012-08-23 19:05:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 43014 2012-08-27 21:25:26Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1111,10 +1111,6 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
 void UIMachineView::resizeEvent(QResizeEvent *pEvent)
 {
     updateSliders();
-    /* We call this on every resize as on X11 it sets information which becomes
-     * available asynchronously at an unknown time after window creation.  As
-     * long as the information is not available we make a best guess. */
-    setMaxGuestSize();
     return QAbstractScrollArea::resizeEvent(pEvent);
 }
 
