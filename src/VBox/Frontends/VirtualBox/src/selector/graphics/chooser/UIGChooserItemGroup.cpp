@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43009 2012-08-27 19:10:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItemGroup.cpp 43011 2012-08-27 19:26:11Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -239,6 +239,10 @@ void UIGChooserItemGroup::sltNameEditingFinished()
     QString strNewName = m_pNameEditorWidget->text().trimmed();
     if (strNewName.isEmpty() || groupNames.contains(strNewName))
         return;
+
+    /* Since '/' symbol is forbidden,
+     * we should replace it: */
+    strNewName.replace('/', '_');
 
     /* Set new name / update model: */
     m_strName = strNewName;
