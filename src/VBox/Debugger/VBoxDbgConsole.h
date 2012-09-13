@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 38813 2011-09-21 12:28:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgConsole.h 43324 2012-09-13 21:33:37Z noreply@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -117,8 +117,6 @@ private slots:
     void returnPressed();
 
 protected:
-    /** The current blank entry. */
-    int m_iBlankItem;
     /** The handle to the GUI thread. */
     RTNATIVETHREAD m_hGUIThread;
 };
