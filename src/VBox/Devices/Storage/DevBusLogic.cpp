@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 43335 2012-09-14 17:35:00Z michal.necasek@oracle.com $ */
+/* $Id: DevBusLogic.cpp 43336 2012-09-14 18:16:57Z michal.necasek@oracle.com $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -422,6 +422,10 @@ typedef struct BUSLOGIC
 
     /** Pending (delayed) interrupt. */
     uint8_t                         uPendingIntr;
+
+# if HC_ARCH_BITS == 64
+    uint32_t                        Alignment5;
+# endif
 
 } BUSLOGIC, *PBUSLOGIC;
 
