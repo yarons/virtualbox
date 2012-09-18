@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 43298 2012-09-11 13:02:58Z noreply@oracle.com $ */
+/* $Id: VBoxMPMisc.cpp 43341 2012-09-18 11:14:16Z noreply@oracle.com $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2546,7 +2546,7 @@ NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pGet
     VBOXWDDM_TARGET *pTarget = &pDevExt->aTargets[pGetScanLine->VidPnTargetId];
     Assert(pTarget->HeightTotal);
     Assert(pTarget->HeightVisible);
-    Assert(pTarget->HeightTotal > pTarget->HeightVisible);
+    Assert(pTarget->HeightTotal >= pTarget->HeightVisible);
     Assert(pTarget->ScanLineState < pTarget->HeightTotal);
     if (pTarget->HeightTotal)
     {
