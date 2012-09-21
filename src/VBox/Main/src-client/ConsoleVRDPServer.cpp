@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43351 2012-09-18 14:42:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 43384 2012-09-21 08:27:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2319,7 +2319,7 @@ void ConsoleVRDPServer::setupTSMF(void)
             }
 
             VBOXHOSTCHANNELEVENTRECV ev;
-            ev.u32SizeAvailable = pCtx->cbDataReceived;
+            ev.u32SizeAvailable = p->cbData;
 
             pCtx->pCallbacks->HostChannelCallbackEvent(pCtx->pvCallbacks, pCtx,
                                                        VBOX_HOST_CHANNEL_EVENT_RECV,
