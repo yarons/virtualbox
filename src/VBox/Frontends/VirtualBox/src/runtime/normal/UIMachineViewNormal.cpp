@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 43022 2012-08-28 06:25:05Z noreply@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 43395 2012-09-21 11:38:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -225,10 +225,6 @@ void UIMachineViewNormal::normalizeGeometry(bool bAdjustPosition)
 {
 #ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     QWidget *pTopLevelWidget = window();
-
-    /* Make no normalizeGeometry in case we are in manual resize mode or main window is maximized: */
-    if (pTopLevelWidget->isMaximized())
-        return;
 
     /* Calculate client window offsets: */
     QRect frameGeo = pTopLevelWidget->frameGeometry();
