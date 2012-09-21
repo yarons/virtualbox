@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 43163 2012-09-04 14:12:53Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPool.cpp 43387 2012-09-21 09:40:25Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -458,8 +458,8 @@ VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
        (below 4 GB) memory. */
     /** @todo change the pool to handle ROOT page allocations specially when
      *        required. */
-    bool fCanUseHighMemory = HWACCMIsNestedPagingActive(pVM)
-                          && HWACCMGetShwPagingMode(pVM) == PGMMODE_EPT;
+    bool fCanUseHighMemory = HMIsNestedPagingActive(pVM)
+                          && HMGetShwPagingMode(pVM) == PGMMODE_EPT;
 
     pgmLock(pVM);
 

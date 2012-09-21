@@ -1,6 +1,6 @@
-;$Id: HWACCMInternal.mac 43150 2012-09-03 11:44:17Z ramshankar.venkataraman@oracle.com $
+;$Id: HMInternal.mac 43387 2012-09-21 09:40:25Z ramshankar.venkataraman@oracle.com $
 ;; @file
-; HWACCM - Internal header file.
+; HM - Internal header file.
 ;
 ;
 ; Copyright (C) 2006-2007 Oracle Corporation
