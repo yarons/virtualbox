@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-haiku.c 43366 2012-09-20 12:31:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: time-r0drv-haiku.c 43403 2012-09-22 11:48:24Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Haiku.
  */
@@ -76,3 +76,4 @@ RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
     return RTTimeSpecSetNano(pTime, real_time_clock_usecs() * 1000);
 }
+

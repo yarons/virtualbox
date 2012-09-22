@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-haiku.c 43373 2012-09-20 15:04:11Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: assert-r0drv-haiku.c 43403 2012-09-22 11:48:24Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Haiku.
  */
@@ -65,3 +65,4 @@ RTR0DECL(void) RTR0AssertPanicSystem(void)
 {
     panic("%s%s", g_szRTAssertMsg1, g_szRTAssertMsg2);
 }
+
