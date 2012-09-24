@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 43327 2012-09-14 05:02:41Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevE1000.cpp 43416 2012-09-24 13:34:38Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5078,7 +5078,7 @@ static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
                       e1kGetTxLen(pState)));
                 e1kDumpTxDCache(pState);
                 pState->iTxDCurrent = pState->nTxDFetched = 0;
-                rc = VERR_NET_IO_ERROR;
+                rc = VERR_NET_INCOMPLETE_TX_PACKET;
                 goto out;
             }
             if (u8Remain > 0)
