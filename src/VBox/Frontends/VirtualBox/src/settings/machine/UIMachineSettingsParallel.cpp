@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsParallel.cpp 43459 2012-09-28 07:19:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -200,7 +200,7 @@ UIMachineSettingsParallelPage::UIMachineSettingsParallelPage()
     }
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsParallelPage::loadToCacheFrom(QVariant &data)
 {

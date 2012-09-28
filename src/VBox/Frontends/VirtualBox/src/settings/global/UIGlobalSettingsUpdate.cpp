@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 43459 2012-09-28 07:19:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -40,7 +40,7 @@ UIGlobalSettingsUpdate::UIGlobalSettingsUpdate()
     retranslateUi();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIGlobalSettingsUpdate::loadToCacheFrom(QVariant &data)
 {

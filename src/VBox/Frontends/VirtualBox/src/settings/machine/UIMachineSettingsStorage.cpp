@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 43424 2012-09-25 09:01:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 43459 2012-09-28 07:19:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1891,7 +1891,7 @@ void UIMachineSettingsStorage::setChipsetType(KChipsetType type)
     updateActionsState();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsStorage::loadToCacheFrom(QVariant &data)
 {

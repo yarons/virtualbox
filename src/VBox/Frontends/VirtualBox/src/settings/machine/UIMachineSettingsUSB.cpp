@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 42551 2012-08-02 16:44:39Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 43459 2012-09-28 07:19:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -241,7 +241,7 @@ bool UIMachineSettingsUSB::isOHCIEnabled() const
     return mGbUSB->isChecked();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsUSB::loadToCacheFrom(QVariant &data)
 {
