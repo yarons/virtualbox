@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43446 2012-09-27 08:59:42Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 43462 2012-09-28 10:46:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2213,6 +2213,19 @@ typedef struct TSMFHOSTCHANNELCTX
                                                                          uint32_t *pcbDataReturned)
 {
     LogFlowFunc(("\n"));
+    if (!pvChannel)
+    {
+        /* Special case, the provider must answer rather than a channel instance. */
+        if (u32Code == VBOX_HOST_CHANNEL_CTRL_EXISTS)
+        {
+            *pcbDataReturned = 0;
+            return VINF_SUCCESS;
+        }
+
+        return VERR_NOT_IMPLEMENTED;
+    }
+
+    /* Channels do not support this. */
     return VERR_NOT_IMPLEMENTED;
 }
 
