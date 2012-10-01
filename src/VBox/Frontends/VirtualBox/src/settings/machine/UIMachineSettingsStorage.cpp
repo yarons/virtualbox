@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 43477 2012-10-01 09:04:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 43484 2012-10-01 10:15:57Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -540,8 +540,7 @@ int ControllerItem::childCount() const
 
 QString ControllerItem::text() const
 {
-    QString strControllerNameWrapper = UIMachineSettingsStorage::tr("%1: %2", "controller name wrapper");
-    return strControllerNameWrapper.arg(UIMachineSettingsStorage::tr("Controller"), ctrName());
+    return UIMachineSettingsStorage::tr("Controller: %1").arg(ctrName());
 }
 
 QString ControllerItem::tip() const
