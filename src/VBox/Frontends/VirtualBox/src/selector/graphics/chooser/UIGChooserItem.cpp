@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43153 2012-09-03 17:06:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItem.cpp 43577 2012-10-09 10:16:20Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -152,6 +152,11 @@ void UIGChooserItem::setHovered(bool fHovered)
         emit sigHoverEnter();
     else
         emit sigHoverLeave();
+}
+
+void UIGChooserItem::updateGeometry()
+{
+    QIGraphicsWidget::updateGeometry();
 }
 
 void UIGChooserItem::makeSureItsVisible()
