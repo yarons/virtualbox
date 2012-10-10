@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43577 2012-10-09 10:16:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItemGroup.cpp 43597 2012-10-10 14:37:37Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -729,6 +729,20 @@ void UIGChooserItemGroup::clearItems(UIGChooserItemType type /* = UIGChooserItem
     }
 
     updateToolTip();
+}
+
+UIGChooserItemMachine* UIGChooserItemGroup::firstMachineItem()
+{
+    /* If this group-item have at least one machine-item: */
+    if (hasItems(UIGChooserItemType_Machine))
+        /* Return the first machine-item: */
+        return items(UIGChooserItemType_Machine).first()->firstMachineItem();
+    /* If this group-item have at least one group-item: */
+    else if (hasItems(UIGChooserItemType_Group))
+        /* Return the first machine-item of the first group-item: */
+        return items(UIGChooserItemType_Group).first()->firstMachineItem();
+    /* Found nothing? */
+    return 0;
 }
 
 void UIGChooserItemGroup::updateLayout()
