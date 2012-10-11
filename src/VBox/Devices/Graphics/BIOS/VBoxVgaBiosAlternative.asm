@@ -1,4 +1,4 @@
-; $Id: VBoxVgaBiosAlternative.asm 43316 2012-09-13 05:03:17Z noreply@oracle.com $ 
+; $Id: VBoxVgaBiosAlternative.asm 43609 2012-10-11 09:19:32Z noreply@oracle.com $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
