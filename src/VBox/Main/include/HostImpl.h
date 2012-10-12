@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 43445 2012-09-27 08:28:59Z aleksey.ilyushin@oracle.com $ */
+/* $Id: HostImpl.h 43629 2012-10-12 09:26:07Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -148,6 +148,7 @@ private:
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics(PerformanceCollector *aCollector);
+    void registerDiskMetrics(PerformanceCollector *aCollector);
     void unregisterMetrics(PerformanceCollector *aCollector);
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
