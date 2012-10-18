@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 43640 2012-10-15 12:39:52Z michal.necasek@oracle.com $ */
+/* $Id: VSCSIDevice.cpp 43687 2012-10-18 17:45:35Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -114,6 +114,7 @@ static bool vscsiDeviceReqProcess(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVS
                 *prcReq = vscsiReqSenseErrorSet(&pVScsiDevice->VScsiSense, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_INV_FIELD_IN_CMD_PACKET, 0x00);
             else
                 *prcReq = vscsiReqSenseCmd(&pVScsiDevice->VScsiSense, pVScsiReq);
+            break;
         }
         default:
             fProcessed = false;
