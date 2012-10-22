@@ -14,6 +14,7 @@
 /vboxdrv.init
 /vboxweb-service.init
 /vboxballoonctrl-service.init
+/vboxautostart-service.init
 /virtualbox-?.?
 /virtualbox-?.?-dbg
 /virtualbox-*.substvars

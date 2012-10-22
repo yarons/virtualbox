@@ -10,6 +10,7 @@
 /vboxdrv.init
 /vboxweb-service.init
 /vboxballoonctrl-service.init
+/vboxautostart-service.init
 /preinst
 /prerm
 /postinst
