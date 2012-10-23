@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 43707 2012-10-22 16:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 43711 2012-10-23 13:02:05Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -145,7 +145,11 @@ public:
     /* Constructor: */
     UIUpdateStepVirtualBox(UIUpdateQueue *pQueue, bool fForceCall)
         : UIUpdateStep(pQueue, fForceCall)
+#ifdef Q_WS_X11
+        , m_url("https://update.virtualbox.org/query.php")
+#else /* Q_WS_X11 */
         , m_url("http://update.virtualbox.org/query.php")
+#endif /* !Q_WS_X11 */
     {
     }
 
