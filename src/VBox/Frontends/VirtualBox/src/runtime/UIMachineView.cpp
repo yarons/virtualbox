@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 43758 2012-10-26 14:38:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 43760 2012-10-26 15:52:17Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -915,10 +915,6 @@ bool UIMachineView::guestResizeEvent(QEvent *pEvent,
     /* Some situations require framebuffer resize events to be ignored at all,
      * leaving machine-window, machine-view and framebuffer sizes preserved: */
     if (uisession()->isGuestResizeIgnored())
-        return true;
-
-    /* We should not process resize-event if parent window is hidden: */
-    if (!uisession()->isScreenVisible(m_uScreenId))
         return true;
 
     /* Get guest resize-event: */
