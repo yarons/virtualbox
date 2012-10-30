@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 43631 2012-10-12 12:03:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 43778 2012-10-30 13:13:59Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -332,9 +332,9 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                 {
                     /* Toggle that group: */
                     UIGChooserItemGroup *pGroupItem = pFocusItem->toGroupItem();
-                    if (pGroupItem->closed())
+                    if (pGroupItem->isClosed())
                         pGroupItem->open();
-                    else
+                    else if (pGroupItem->isOpened())
                         pGroupItem->close();
                     /* Filter that event out: */
                     return true;
