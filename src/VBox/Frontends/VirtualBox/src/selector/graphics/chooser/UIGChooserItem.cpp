@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43809 2012-11-06 09:07:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItem.cpp 43841 2012-11-08 14:05:46Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -90,6 +90,9 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent, bool fTemporary)
         /* Start state-machine: */
         m_pHighlightMachine->start();
     }
+
+    /* Geometry-change handler: */
+    connect(this, SIGNAL(geometryChanged()), this, SLOT(sltHandleGeometryChange()));
 }
 
 UIGChooserItemGroup* UIGChooserItem::toGroupItem()
