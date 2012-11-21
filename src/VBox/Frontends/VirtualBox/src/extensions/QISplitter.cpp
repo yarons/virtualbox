@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 43885 2012-11-15 18:10:23Z sergey.dubov@oracle.com $ */
+/* $Id: QISplitter.cpp 43926 2012-11-21 09:28:18Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -36,7 +36,7 @@ public:
     QIShadeSplitterHandle(Qt::Orientation orientation, QISplitter *pParent)
         : QSplitterHandle(orientation, pParent)
     {
-        QPalette pal = palette();
+        QPalette pal = qApp->palette();
         QColor windowColor = pal.color(QPalette::Active, QPalette::Window);
         QColor darkColor = pal.color(QPalette::Active, QPalette::Dark);
         m_color1 = windowColor;
