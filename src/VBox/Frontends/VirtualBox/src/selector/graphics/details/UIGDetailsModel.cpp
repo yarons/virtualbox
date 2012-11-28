@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 43983 2012-11-28 13:48:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsModel.cpp 43990 2012-11-28 16:49:12Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,8 +86,8 @@ void UIGDetailsModel::updateLayout()
     /* Layout root content: */
     m_pRoot->updateLayout();
 
-    /* Notify listener about root-item relayouted: */
-    emit sigRootItemResized(m_pRoot->geometry().size(), m_pRoot->minimumSizeHint().toSize().width());
+    /* Notify view about root minimum-size-hint changed: */
+    emit sigRootMinimumSizeHintChanged(m_pRoot->minimumSizeHint());
 }
 
 void UIGDetailsModel::setItems(const QList<UIVMItem*> &items)
