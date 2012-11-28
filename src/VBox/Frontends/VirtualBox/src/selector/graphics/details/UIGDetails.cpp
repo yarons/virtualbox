@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 43936 2012-11-22 12:11:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetails.cpp 43983 2012-11-28 13:48:00Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -103,6 +103,6 @@ void UIGDetails::prepareConnections()
 
     /* Setup details-view connections: */
     connect(m_pDetailsView, SIGNAL(sigResized()),
-            m_pDetailsModel, SLOT(sltHandleViewResized()));
+            m_pDetailsModel, SLOT(sltHandleViewResize()));
 }
 
