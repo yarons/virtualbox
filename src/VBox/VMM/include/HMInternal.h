@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44032 2012-12-04 14:11:49Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 44033 2012-12-04 18:25:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -657,8 +657,8 @@ typedef struct HMCPU
     struct
     {
         uint32_t                    fPending;
-        uint32_t                    errCode;
-        uint64_t                    intInfo;
+        uint32_t                    uErrCode;
+        uint64_t                    uIntrInfo;
     } Event;
 
     /** IO Block emulation state. */
