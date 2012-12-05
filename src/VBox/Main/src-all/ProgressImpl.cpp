@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 41184 2012-05-07 13:28:04Z klaus.espenlaub@oracle.com $ */
+/* $Id: ProgressImpl.cpp 44039 2012-12-05 12:08:52Z valery.portnyagin@oracle.com $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -199,7 +199,7 @@ void ProgressBase::protectedUninit(AutoUninitSpan &aAutoUninitSpan)
     if (mParent)
     {
         /* remove the added progress on failure to complete the initialization */
-        if (aAutoUninitSpan.initFailed() && !mId.isEmpty())
+        if (aAutoUninitSpan.initFailed() && mId.isValid() && !mId.isZero())
             mParent->removeProgress(mId.ref());
 
         unconst(mParent) = NULL;
