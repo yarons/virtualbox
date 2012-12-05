@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 44039 2012-12-05 12:08:52Z valery.portnyagin@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 44043 2012-12-05 15:48:04Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2997,8 +2997,8 @@ struct SnapshotEvent : public VirtualBox::CallbackEvent
 
     virtual HRESULT prepareEventDesc(IEventSource* aSource, VBoxEventDesc& aEvDesc)
     {
-        return aEvDesc.init(aSource, VBoxEventType_OnSnapshotTaken,
-                            machineId.toUtf16().raw(), snapshotId.toUtf16().raw());
+        return aEvDesc.init(aSource, mWhat, machineId.toUtf16().raw(),
+                            snapshotId.toUtf16().raw());
     }
 
     Guid machineId;
