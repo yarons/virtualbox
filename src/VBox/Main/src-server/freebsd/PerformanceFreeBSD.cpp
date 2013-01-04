@@ -1,4 +1,4 @@
-/* $Id: PerformanceFreeBSD.cpp 35368 2010-12-30 13:38:23Z knut.osmundsen@oracle.com $ */
+/* $Id: PerformanceFreeBSD.cpp 44234 2013-01-04 20:46:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Performance Collector, FreeBSD Specialization.
  */
@@ -107,6 +107,11 @@ int CollectorFreeBSD::getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *k
 int CollectorFreeBSD::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
 {
     return E_NOTIMPL;
+}
+
+int getDiskListByFs(const char *name, DiskList& list)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 
 } /* namespace pm */
