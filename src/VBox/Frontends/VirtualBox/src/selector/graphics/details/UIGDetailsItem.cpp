@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 44064 2012-12-07 15:10:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsItem.cpp 44304 2013-01-16 11:54:25Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 #include "UIGDetailsModel.h"
 
 UIGDetailsItem::UIGDetailsItem(UIGDetailsItem *pParent)
-    : QIGraphicsWidget(pParent)
+    : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
     , m_pParent(pParent)
 {
     /* Basic item setup: */
