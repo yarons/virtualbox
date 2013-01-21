@@ -1,4 +1,4 @@
-/* $Id: precomp.h 41689 2012-06-13 17:13:36Z sergey.dubov@oracle.com $*/
+/* $Id: precomp.h 44315 2013-01-21 08:24:44Z sergey.dubov@oracle.com $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -246,7 +246,6 @@
 #include "VBoxUtils.h"
 #include "VBoxVMFirstRunWzd.h"
 #include "VBoxVMInformationDlg.h"
-#include "UIVMListView.h"
 #include "UIVMLogViewer.h"
 #include "UIMachineSettingsAudio.h"
 #include "UIMachineSettingsDisplay.h"
