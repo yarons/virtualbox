@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 44340 2013-01-23 16:20:07Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMMFork.cpp 44347 2013-01-24 00:27:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Fork Test.
  */
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
                 RTPrintf(TESTCASE ": testing VM after fork.\n");
                 VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)VMMDoTest, 1, pVM);
 
-                STAMR3Dump(pVM, "*");
+                STAMR3Dump(pUVM, "*");
             }
         }
 

@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 44340 2013-01-23 16:20:07Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMREQ.cpp 44347 2013-01-24 00:27:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Testcase.
  */
@@ -272,7 +272,7 @@ int main(int argc, char **argv)
         /*
          * Print stats.
          */
-        STAMR3Print(VMR3GetVM(pUVM), "/VM/Req/*");
+        STAMR3Print(pUVM, "/VM/Req/*");
 
         /*
          * Testing va_list fun.
