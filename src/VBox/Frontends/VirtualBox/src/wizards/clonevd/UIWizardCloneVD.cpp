@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 41587 2012-06-06 04:19:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 44365 2013-01-25 10:24:45Z valery.portnyagin@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -70,8 +70,16 @@ bool UIWizardCloneVD::copyVirtualDisk()
         return false;
     }
 
+    QVector<KMediumVariant> l_variants(sizeof(uVariant)*8);
+
+    for (int i = 0; i < l_variants.size(); ++i)
+    {
+        qulonglong temp = uVariant;
+        l_variants [i] = (KMediumVariant)(temp & (1<<i));
+    }
+
     /* Copy existing virtual-disk to the new virtual-disk: */
-    progress = sourceVirtualDisk.CloneTo(virtualDisk, uVariant, CMedium());
+    progress = sourceVirtualDisk.CloneTo(virtualDisk, l_variants, CMedium());
     if (!virtualDisk.isOk())
     {
         msgCenter().cannotCreateHardDiskStorage(this, vbox, strMediumPath, virtualDisk, progress);
