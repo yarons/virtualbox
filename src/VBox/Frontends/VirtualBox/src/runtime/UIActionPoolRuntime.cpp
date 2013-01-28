@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 44435 2013-01-28 17:24:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 44436 2013-01-28 18:21:14Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,7 +19,7 @@
 
 /* Local includes: */
 #include "UIActionPoolRuntime.h"
-#include "UIShortcuts.h"
+#include "UIShortcutPool.h"
 #include "VBoxGlobal.h"
 
 class UIActionMenuMachineRuntime : public UIActionMenu
