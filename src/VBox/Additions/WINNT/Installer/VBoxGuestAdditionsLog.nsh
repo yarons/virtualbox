@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsLog.nsh 44352 2013-01-24 12:05:12Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsLog.nsh 44484 2013-01-31 11:36:25Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionLog.nsh - Logging functions.
 ;
@@ -38,7 +38,7 @@
 ;
 !macro _logVerbose text
 
-  LogText  "${text}"
+  LogText "${text}"
   IfSilent +2
     DetailPrint "${text}"
 
