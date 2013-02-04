@@ -1,10 +1,10 @@
-/* $Id: vboxvideo_drm.c 38736 2011-09-13 13:58:47Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxvideo_drm.c 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

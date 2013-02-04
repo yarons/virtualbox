@@ -1,10 +1,10 @@
-; $Id: truncf.asm 28800 2010-04-27 08:22:32Z noreply@oracle.com $
+; $Id: truncf.asm 44528 2013-02-04 14:27:54Z noreply@oracle.com $
 ;; @file
 ; IPRT - No-CRT truncf - AMD64 & X86.
 ;
 
 ;
-; Copyright (C) 2006-2007 Oracle Corporation
+; Copyright (C) 2006-2010 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

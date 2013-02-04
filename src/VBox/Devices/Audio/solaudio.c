@@ -1,10 +1,10 @@
-/* $Id: solaudio.c 40844 2012-04-10 10:37:46Z noreply@oracle.com $ */
+/* $Id: solaudio.c 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

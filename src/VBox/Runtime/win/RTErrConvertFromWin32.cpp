@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromWin32.cpp 39801 2012-01-18 18:01:11Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxIChatTheaterWrapper.m 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
+/* $Id: VBoxIChatTheaterWrapper.m 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * Qt GUI - iChat Theater cocoa wrapper.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

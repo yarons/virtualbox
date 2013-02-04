@@ -1,10 +1,10 @@
-/* $Id: manifest3.cpp 39439 2011-11-28 13:56:13Z knut.osmundsen@oracle.com $ */
+/* $Id: manifest3.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltM-win.cpp 40806 2012-04-06 21:05:19Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltM-win.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFltM-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Miniport edge
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: PGMMap.cpp 43872 2012-11-15 08:52:11Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMMap.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

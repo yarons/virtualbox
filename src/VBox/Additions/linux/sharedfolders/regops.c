@@ -1,10 +1,10 @@
-/* $Id: regops.c 40900 2012-04-13 12:33:25Z knut.osmundsen@oracle.com $ */
+/* $Id: regops.c 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders, Regular file inode and file operations.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
