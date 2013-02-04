@@ -1,10 +1,10 @@
-/* $Id: NtProcessStartup-stub.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: NtProcessStartup-stub.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
 /** @file
  * IPRT - NtProcessStartup stub to make the link happy.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2009-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

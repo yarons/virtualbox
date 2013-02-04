@@ -1,10 +1,10 @@
-/* $Id: semspinmutex-r0drv-generic.c 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: semspinmutex-r0drv-generic.c 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2009-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
