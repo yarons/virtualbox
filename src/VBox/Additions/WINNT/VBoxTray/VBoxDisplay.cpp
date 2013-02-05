@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 44550 2013-02-05 16:11:03Z noreply@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -375,6 +375,8 @@ static BOOL ResizeDisplayDevice(ULONG Id, DWORD Width, DWORD Height, DWORD BitsP
 
     ZeroMemory(&DisplayDevice, sizeof(DisplayDevice));
     DisplayDevice.cb = sizeof(DisplayDevice);
+
+    VBoxDispIfCancelPendingResize(&pCtx->pEnv->dispIf);
 
     /* Find out how many display devices the system has */
     DWORD NumDevices = 0;
