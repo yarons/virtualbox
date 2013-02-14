@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 44704 2013-02-14 20:48:47Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPcArch.cpp 44705 2013-02-14 20:51:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
