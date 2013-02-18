@@ -1,3 +1,4 @@
+/* $Id: UIShortcutPool.cpp 44734 2013-02-18 13:46:38Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
