@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 44737 2013-02-18 14:08:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 44753 2013-02-19 14:57:00Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -263,6 +263,16 @@ void UINativeHotKey::retranslateKeyNames()
 namespace UIHostCombo
 {
     int m_iMaxComboSize = 3;
+}
+
+int UIHostCombo::hostComboModifierIndex()
+{
+    return -1;
+}
+
+QString UIHostCombo::hostComboModifierName()
+{
+    return UIHostComboEditor::tr("Host+");
 }
 
 QString UIHostCombo::hostComboCacheKey()
