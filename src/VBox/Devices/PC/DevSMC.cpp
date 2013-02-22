@@ -1,6 +1,8 @@
-/* $Id: DevSMC.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: DevSMC.cpp 44805 2013-02-22 19:54:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSMC - SMC device emulation.
+ *
+ * @todo Rainy day: Rewrite from scratch!!
  */
 
 /*
