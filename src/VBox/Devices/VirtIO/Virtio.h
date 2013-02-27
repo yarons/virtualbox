@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 44849 2013-02-27 20:22:06Z knut.osmundsen@oracle.com $ */
+/* $Id: Virtio.h 44852 2013-02-27 20:27:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -182,7 +182,7 @@ typedef struct VPCIState_st
     /** TODO */
     PCIDEVICE              pciDevice;
     /** Base port of I/O space region. */
-    RTIOPORT               addrIOPort;
+    RTIOPORT               IOPortBase;
 
     /* Read/write part, protected with critical section. */
     /** Status LED. */
