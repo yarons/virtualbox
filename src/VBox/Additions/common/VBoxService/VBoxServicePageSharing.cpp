@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: VBoxServicePageSharing.cpp 44863 2013-02-28 12:18:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -695,7 +695,7 @@ DECLCALLBACK(int) VBoxServicePageSharingWorkerProcess(bool volatile *pfShutdown)
             {
                 char const *papszArgs[3];
                 papszArgs[0] = pszExeName;
-                papszArgs[1] = "--pagefusionfork";
+                papszArgs[1] = "pagefusion";
                 papszArgs[2] = NULL;
                 rc = RTProcCreate(pszExeName, papszArgs, RTENV_DEFAULT, 0 /* normal child */, &hProcess);
                 if (RT_FAILURE(rc))
