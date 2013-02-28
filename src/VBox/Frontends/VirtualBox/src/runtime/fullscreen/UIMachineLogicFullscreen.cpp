@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44861 2013-02-28 10:52:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44865 2013-02-28 12:23:20Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -133,6 +133,15 @@ void UIMachineLogicFullscreen::sltGuestMonitorChange(KGuestMonitorChangedEventTy
 
     /* Call to base-class: */
     UIMachineLogic::sltGuestMonitorChange(changeType, uScreenId, screenGeo);
+}
+
+void UIMachineLogicFullscreen::sltHostScreenCountChanged(int cScreenCount)
+{
+    /* Update multi-screen layout before any window update: */
+    m_pScreenLayout->rebuild();
+
+    /* Call to base-class: */
+    UIMachineLogic::sltHostScreenCountChanged(cScreenCount);
 }
 
 void UIMachineLogicFullscreen::prepareActionGroups()
