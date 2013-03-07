@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 44893 2013-03-01 18:58:52Z noreply@oracle.com $ */
+/* $Id: server_muralfbo.c 44951 2013-03-07 12:33:54Z noreply@oracle.com $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -100,6 +100,9 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
 {
     int tlS, brS, trS, blS;
     int overlappingScreenCount, primaryS, i;
+
+    if (!mural->CreateInfo.externalID)
+        return;
 
     if (!mural->width || !mural->height)
         return;
