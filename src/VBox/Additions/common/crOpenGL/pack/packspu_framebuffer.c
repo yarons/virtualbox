@@ -1,4 +1,4 @@
-/* $Id: packspu_framebuffer.c 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: packspu_framebuffer.c 45008 2013-03-12 17:13:13Z noreply@oracle.com $ */
 
 /** @file
  * VBox OpenGL FBO related functions
@@ -59,8 +59,8 @@ packspu_DeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers)
 void PACKSPU_APIENTRY
 packspu_DeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 {
-	crStateDeleteFramebuffersEXT(n, renderbuffers);
-    crPackDeleteFramebuffersEXT(n, renderbuffers);
+	crStateDeleteRenderbuffersEXT(n, renderbuffers);
+    crPackDeleteRenderbuffersEXT(n, renderbuffers);
 }
 
 void PACKSPU_APIENTRY
