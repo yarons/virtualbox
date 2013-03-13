@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 44961 2013-03-07 21:36:47Z alexander.eichner@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5338,7 +5338,7 @@ const PDMDEVREG g_DeviceLsiLogicSCSI =
     lsilogicR3Destruct,
     /* pfnRelocate */
     lsilogicR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,
@@ -5395,7 +5395,7 @@ const PDMDEVREG g_DeviceLsiLogicSAS =
     lsilogicR3Destruct,
     /* pfnRelocate */
     lsilogicR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

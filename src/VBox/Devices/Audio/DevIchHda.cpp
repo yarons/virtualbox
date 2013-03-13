@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 44902 2013-03-02 02:28:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIchHda.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3052,7 +3052,7 @@ const PDMDEVREG g_DeviceICH6_HDA =
     hdaDestruct,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

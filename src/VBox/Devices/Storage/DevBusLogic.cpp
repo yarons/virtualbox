@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 44902 2013-03-02 02:28:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DevBusLogic.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3998,7 +3998,7 @@ const PDMDEVREG g_DeviceBusLogic =
     buslogicR3Destruct,
     /* pfnRelocate */
     buslogicR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

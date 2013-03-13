@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 44702 2013-02-14 20:21:35Z knut.osmundsen@oracle.com $ */
+/* $Id: DevParallel.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -818,7 +818,7 @@ const PDMDEVREG g_DeviceParallelPort =
     NULL,
     /* pfnRelocate */
     parallelR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

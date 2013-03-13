@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 44902 2013-03-02 02:28:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOHCI.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5530,7 +5530,7 @@ const PDMDEVREG g_DeviceOHCI =
     ohciR3Destruct,
     /* pfnRelocate */
     ohciR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

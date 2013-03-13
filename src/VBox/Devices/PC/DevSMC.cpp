@@ -1,4 +1,4 @@
-/* $Id: DevSMC.cpp 44805 2013-02-22 19:54:41Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSMC.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSMC - SMC device emulation.
  *
@@ -599,7 +599,7 @@ const PDMDEVREG g_DeviceSMC =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,
