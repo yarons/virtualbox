@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 44742 2013-02-18 17:26:05Z aleksey.ilyushin@oracle.com $ */
+/* $Id: NetIf-win.cpp 45073 2013-03-18 19:09:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1554,7 +1554,7 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
         }
         else
         {
-            LogRel(("failed to get the sun_VBoxNetFlt component, error (0x%x)", hr));
+            LogRel(("failed to get the sun_VBoxNetFlt component, error (0x%x)\n", hr));
         }
 
         VBoxNetCfgWinReleaseINetCfg(pNc, FALSE);
