@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: DrvNetSniffer.cpp 45061 2013-03-18 14:09:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -357,8 +357,11 @@ static DECLCALLBACK(void) drvNetSnifferDestruct(PPDMDRVINS pDrvIns)
     if (RTCritSectIsInitialized(&pThis->XmitLock))
         RTCritSectDelete(&pThis->XmitLock);
 
-    RTFileClose(pThis->hFile);
-    pThis->hFile = NIL_RTFILE;
+    if (pThis->hFile != NIL_RTFILE)
+    {
+        RTFileClose(pThis->hFile);
+        pThis->hFile = NIL_RTFILE;
+    }
 }
 
 
