@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 44503 2013-02-01 06:28:53Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageList.cpp 45065 2013-03-18 16:58:34Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -268,7 +268,7 @@ static HRESULT listHddBackends(const ComPtr<IVirtualBox> pVirtualBox)
 
         Bstr description;
         CHECK_ERROR(mediumFormats[i],
-                    COMGETTER(Id)(description.asOutParam()));
+                    COMGETTER(Name)(description.asOutParam()));
 
         ULONG caps = 0;
         com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
