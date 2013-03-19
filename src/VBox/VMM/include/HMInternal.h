@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45094 2013-03-19 17:51:30Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 45095 2013-03-19 18:02:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -615,6 +615,9 @@ typedef struct HMCPU
         RTR0MEMOBJ                  hMemObjVirtApic;
         /** Virtual address of the virtual APIC page for TPR caching. */
         R0PTRTYPE(uint8_t *)        pbVirtApic;
+#if HC_ARCH_BITS == 32
+        uint32_t                    u32Alignment2;
+#endif
 
         /** Current CR0 mask. */
         uint64_t                    cr0_mask;
