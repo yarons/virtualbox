@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 45193 2013-03-26 14:00:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 45274 2013-04-01 13:50:01Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1353,7 +1353,7 @@ bool UIMediumManager::releaseMediumFrom (const UIMedium &aMedium, const QString 
         machine.SaveSettings();
         if (!machine.isOk())
         {
-            msgCenter().cannotSaveMachineSettings (machine);
+            msgCenter().cannotSaveMachineSettings(machine, this);
             success = false;
         }
     }
