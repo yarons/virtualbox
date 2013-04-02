@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 45292 2013-04-02 16:39:35Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,7 +91,7 @@ void UIMediumTypeChangeDialog::sltAccept()
     if (!m_medium.isOk())
     {
         /* Show error message: */
-        msgCenter().cannotChangeMediumType(this, m_medium, m_oldMediumType, m_newMediumType);
+        msgCenter().cannotChangeMediumType(m_medium, m_oldMediumType, m_newMediumType, this);
         return;
     }
     /* Accept dialog with parent class method: */
