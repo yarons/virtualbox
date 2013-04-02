@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 45274 2013-04-01 13:50:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 45290 2013-04-02 15:23:00Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -580,6 +580,12 @@ void UIMediumManager::showModeless (QWidget *aCenterWidget /* = 0 */, bool aRefr
     mModelessDialog->show();
     mModelessDialog->setWindowState (mModelessDialog->windowState() & ~Qt::WindowMinimized);
     mModelessDialog->activateWindow();
+}
+
+/* static */
+UIMediumManager* UIMediumManager::modelessInstance()
+{
+    return mModelessDialog;
 }
 
 QString UIMediumManager::selectedId() const
