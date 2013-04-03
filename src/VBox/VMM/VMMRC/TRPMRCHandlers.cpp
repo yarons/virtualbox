@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 45276 2013-04-02 08:17:11Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMRCHandlers.cpp 45305 2013-04-03 11:15:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1071,7 +1071,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
     if (    pVCpu->trpm.s.uActiveErrorCode == 0
         &&  (Cpu.pCurInstr->fOpType & DISOPTYPE_PORTIO))
     {
-        VBOXSTRICTRC rcStrict = IOMRCIOPortHandler(pVM, pRegFrame, &Cpu);
+        VBOXSTRICTRC rcStrict = IOMRCIOPortHandler(pVM, pVCpu, pRegFrame, &Cpu);
         if (IOM_SUCCESS(rcStrict))
             pRegFrame->rip += cbOp;
         rc = VBOXSTRICTRC_TODO(rcStrict);
