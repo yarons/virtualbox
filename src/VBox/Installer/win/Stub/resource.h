@@ -1,4 +1,4 @@
-/* $Id: resource.h 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: resource.h 45320 2013-04-03 20:16:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStub - resource header file.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+
 #define IDI_VIRTUALBOX 101
 
-#define RT_MANIFEST 24
+#ifndef RT_MANIFEST
+# define RT_MANIFEST 24
+#endif
 #define APP_MANIFEST 1
 
