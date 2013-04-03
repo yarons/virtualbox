@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 45233 2013-03-28 13:40:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 45316 2013-04-03 17:40:32Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -276,7 +276,7 @@ bool UIWizardNewVDPageExpert::validatePage()
     QString strMediumPath(mediumPath());
     fResult = !QFileInfo(strMediumPath).exists();
     if (!fResult)
-        msgCenter().cannotOverwriteHardDiskStorage(this, strMediumPath);
+        msgCenter().cannotOverwriteHardDiskStorage(strMediumPath, this);
 
     /* Try to create virtual-disk: */
     if (fResult)
