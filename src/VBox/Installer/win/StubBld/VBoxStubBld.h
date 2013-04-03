@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.h 45317 2013-04-03 17:46:20Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxStubBld.h 45319 2013-04-03 17:59:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -39,7 +39,7 @@ typedef VBOXSTUBPKGHEADER *PVBOXSTUBPKGHEADER;
 typedef enum VBOXSTUBPKGARCH
 {
     VBOXSTUBPKGARCH_ALL = 0,
-    VBOXSTUBPKGARCH_X86
+    VBOXSTUBPKGARCH_X86,
     VBOXSTUBPKGARCH_AMD64
 } VBOXSTUBPKGARCH;
 
