@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45235 2013-03-28 14:36:52Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 45349 2013-04-04 19:51:49Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -881,7 +881,8 @@ typedef struct HMCPU
 
     STAMCOUNTER             StatSwitchGuestIrq;
     STAMCOUNTER             StatSwitchHmToR3FF;
-    STAMCOUNTER             StatSwitchToR3;
+    STAMCOUNTER             StatSwitchExitToR3;
+    STAMCOUNTER             StatSwitchLongJmpToR3;
 
     STAMCOUNTER             StatTscOffset;
     STAMCOUNTER             StatTscIntercept;
