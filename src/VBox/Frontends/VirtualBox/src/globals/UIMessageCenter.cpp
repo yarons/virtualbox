@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45362 2013-04-05 09:49:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 45364 2013-04-05 10:34:20Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -113,6 +113,50 @@ int UIMessageCenter::message(QWidget *pParent, MessageType type,
                           iButton1, iButton2, iButton3,
                           strButtonText1, strButtonText2, strButtonText3,
                           QString(pcszAutoConfirmId));
+}
+
+int UIMessageCenter::message(QWidget *pParent, MessageType type,
+                              const QString &strMessage,
+                              const char *pcszAutoConfirmId,
+                              int iButton1 /*= 0*/,
+                              int iButton2 /*= 0*/,
+                              int iButton3 /*= 0*/,
+                              const QString &strButtonText1 /*= QString()*/,
+                              const QString &strButtonText2 /*= QString()*/,
+                              const QString &strButtonText3 /*= QString()*/) const
+{
+    return message(pParent, type, strMessage, QString(), pcszAutoConfirmId,
+                   iButton1, iButton2, iButton3, strButtonText1, strButtonText2, strButtonText3);
+}
+
+bool UIMessageCenter::messageOkCancel(QWidget *pParent, MessageType type,
+                                      const QString &strMessage,
+                                      const QString &strDetails /*= QString()*/,
+                                      const char *pcszAutoConfirmId /*= 0*/,
+                                      const QString &strOkButtonText /*= QString()*/,
+                                      const QString &strCancelButtonText /*= QString()*/,
+                                      bool fOkByDefault /*= true*/) const
+{
+    /* Which button will be the default one? Ok or Cancel? */
+    int iOkButton = fOkByDefault ? AlertButton_Ok | AlertButtonOption_Default :
+                                   AlertButton_Ok;
+    int iCancelButton = fOkByDefault ? AlertButton_Cancel | AlertButtonOption_Escape :
+                                       AlertButton_Cancel | AlertButtonOption_Escape | AlertButtonOption_Default;
+    /* Show the message wrapping main function: */
+    return (message(pParent, type, strMessage, strDetails, pcszAutoConfirmId,
+                    iOkButton, iCancelButton, 0, strOkButtonText, strCancelButtonText, QString()) &
+            AlertButtonMask) == AlertButton_Ok;
+}
+
+bool UIMessageCenter::messageOkCancel(QWidget *pParent, MessageType type,
+                                      const QString &strMessage,
+                                      const char *pcszAutoConfirmId,
+                                      const QString &strOkButtonText /*= QString()*/,
+                                      const QString &strCancelButtonText /*= QString()*/,
+                                      bool fOkByDefault /*= true*/) const
+{
+    return messageOkCancel(pParent, type, strMessage, QString(), pcszAutoConfirmId,
+                           strOkButtonText, strCancelButtonText, fOkByDefault);
 }
 
 int UIMessageCenter::messageWithOption(QWidget *pParent, MessageType type,
