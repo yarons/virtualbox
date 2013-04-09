@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 45428 2013-04-09 12:32:35Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -119,8 +119,6 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
                         return VINF_SUCCESS;
                 }
             }
-            else if (RT_UNLIKELY(rc == VERR_EM_INTERNAL_DISAS_ERROR))
-                return rc;
             break;
         }
 
