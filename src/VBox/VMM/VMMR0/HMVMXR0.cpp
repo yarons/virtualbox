@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45455 2013-04-10 12:24:35Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 45464 2013-04-10 16:21:50Z michal.necasek@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8471,7 +8471,7 @@ static DECLCALLBACK(int) hmR0VmxExitXcptGP(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixe
             case OP_POPF:
             {
                 Log(("POPF CS:RIP %04x:%#RX64\n", pMixedCtx->cs.Sel, pMixedCtx->rip));
-                size_t   cbParm = 0;
+                uint32_t cbParm = 0;
                 uint32_t uMask  = 0;
                 if (pDis->fPrefix & DISPREFIX_OPSIZE)
                 {
@@ -8515,7 +8515,7 @@ static DECLCALLBACK(int) hmR0VmxExitXcptGP(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixe
 
             case OP_PUSHF:
             {
-                size_t   cbParm = 0;
+                uint32_t cbParm = 0;
                 uint32_t uMask  = 0;
                 if (pDis->fPrefix & DISPREFIX_OPSIZE)
                 {
