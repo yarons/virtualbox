@@ -1,4 +1,4 @@
-/* $Id: server.cpp 45138 2013-03-22 11:52:24Z noreply@oracle.com $ */
+/* $Id: server.cpp 45518 2013-04-12 12:01:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -126,9 +126,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Snapshot, ISnapshot)
 
 NS_DECL_CLASSINFO(Medium)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Medium, IMedium)
-
-NS_DECL_CLASSINFO(MediumFormat)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(MediumFormat, IMediumFormat)
 
 NS_DECL_CLASSINFO(MediumAttachment)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(MediumAttachment, IMediumAttachment)
