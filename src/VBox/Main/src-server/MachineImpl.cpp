@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45563 2013-04-16 11:13:16Z alexander.eichner@oracle.com $ */
+/* $Id: MachineImpl.cpp 45591 2013-04-17 16:56:35Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11379,7 +11379,7 @@ void Machine::commit()
     mHWData.commit();
 
     if (mMediaData.isBackedUp())
-        commitMedia();
+        commitMedia(Global::IsOnline(mData->mMachineState));
 
     mBIOSSettings->commit();
     mVRDEServer->commit();
