@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45533 2013-04-13 16:13:22Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 45620 2013-04-18 20:07:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -163,8 +163,11 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
 
         pVCpu->em.s.pCtx         = CPUMQueryGuestCtxPtr(pVCpu);
 #ifdef VBOX_WITH_RAW_MODE
-        pVCpu->em.s.pPatmGCState = PATMR3QueryGCStateHC(pVM);
-        AssertMsg(pVCpu->em.s.pPatmGCState, ("PATMR3QueryGCStateHC failed!\n"));
+        if (!HMIsEnabled(pVM))
+        {
+            pVCpu->em.s.pPatmGCState = PATMR3QueryGCStateHC(pVM);
+            AssertMsg(pVCpu->em.s.pPatmGCState, ("PATMR3QueryGCStateHC failed!\n"));
+        }
 #endif
 
         /* Force reset of the time slice. */

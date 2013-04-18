@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 44362 2013-01-24 21:11:05Z knut.osmundsen@oracle.com $ */
+/* $Id: CSAMRC.cpp 45620 2013-04-18 20:07:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -76,7 +76,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     REMFlushTBs(pVM);
 #endif
 
-    pPATMGCState = PATMQueryGCState(pVM);
+    pPATMGCState = PATMGetGCState(pVM);
     Assert(pPATMGCState);
 
     Assert(pPATMGCState->fPIF || fPatchCode);
