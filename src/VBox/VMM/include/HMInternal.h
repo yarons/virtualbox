@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45737 2013-04-25 18:06:14Z knut.osmundsen@oracle.com $ */
+/* $Id: HMInternal.h 45781 2013-04-26 15:22:07Z michal.necasek@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -687,12 +687,17 @@ typedef struct HMCPU
             uint32_t                padding;
         } lasterror;
 
+#ifdef VBOX_WITH_OLD_VTX_CODE
         /** The last seen guest paging mode (by VT-x). */
         PGMMODE                     enmLastSeenGuestMode;
         /** Current guest paging mode (as seen by HMR3PagingModeChanged). */
         PGMMODE                     enmCurrGuestMode;
         /** Previous guest paging mode (as seen by HMR3PagingModeChanged). */
         PGMMODE                     enmPrevGuestMode;
+#else
+        /** Set if guest was executing in real mode (extra checks). */
+        bool                        fWasInRealMode;
+#endif
     } vmx;
 
     struct
