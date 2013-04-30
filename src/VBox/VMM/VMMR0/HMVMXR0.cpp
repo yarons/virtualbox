@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45848 2013-04-30 18:00:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 45849 2013-04-30 18:01:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -966,7 +966,6 @@ VMMR0DECL(int) VMXR0DisableCpu(PHMGLOBLCPUINFO pCpu, void *pvCpuPage, RTHCPHYS H
     NOREF(pCpu);
     NOREF(pvCpuPage);
     NOREF(HCPhysCpuPage);
-    Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
     hmR0VmxLeaveRootMode();
     return VINF_SUCCESS;
