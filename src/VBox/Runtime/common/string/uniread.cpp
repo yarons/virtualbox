@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: uniread.cpp 45927 2013-05-07 08:05:43Z noreply@oracle.com $ */
 /** @file
  * IPRT - Unicode Specification Reader.
  */
@@ -919,7 +919,7 @@ static int Stream1Printf(const char *pszFormat, ...)
     if (!g_fQuiet)
         cch = vfprintf(stdout, pszFormat, va);
     else
-        cch = strlen(pszFormat);
+        cch = (int)strlen(pszFormat);
     va_end(va);
     return cch;
 }
