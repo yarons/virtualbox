@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45980 2013-05-10 11:22:45Z michal.necasek@oracle.com $ */
+/* $Id: DisplayImpl.cpp 45991 2013-05-11 23:36:34Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -33,7 +33,7 @@
 #include <iprt/cpp/utils.h>
 
 #include <VBox/vmm/pdmdrv.h>
-#ifdef DEBUG /* for VM_ASSERT_EMT(). */
+#if defined(DEBUG) || defined(VBOX_STRICT) /* for VM_ASSERT_EMT(). */
 # include <VBox/vmm/vm.h>
 #endif
 
