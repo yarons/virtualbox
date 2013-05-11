@@ -1,4 +1,4 @@
-﻿/* $Id: dbgcfg.cpp 45986 2013-05-11 14:14:11Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgcfg.cpp 45988 2013-05-11 20:10:27Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
