@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 45987 2013-05-11 17:43:41Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAddrSpace.cpp 45993 2013-05-12 19:12:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -286,6 +286,19 @@ void dbgfR3AsRelocate(PUVM pUVM, RTGCUINTPTR offDelta)
 {
     /** @todo */
     NOREF(pUVM); NOREF(offDelta);
+}
+
+
+/**
+ * Gets the IPRT debugging configuration handle (no refs retained).
+ *
+ * @returns Config handle or NIL_RTDBGCFG.
+ * @param   pUVM        The user mode VM handle.
+ */
+VMMR3DECL(RTDBGCFG)     DBGFR3AsGetConfig(PUVM pUVM)
+{
+    UVM_ASSERT_VALID_EXT_RETURN(pUVM, NIL_RTDBGCFG);
+    return pUVM->dbgf.s.hDbgCfg;
 }
 
 
