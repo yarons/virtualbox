@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: env-generic.cpp 46035 2013-05-13 16:47:40Z noreply@oracle.com $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -101,9 +101,6 @@ static const char * const *rtEnvDefault(void)
 {
 #ifdef RT_OS_DARWIN
     return *(_NSGetEnviron());
-#elif defined(RT_OS_L4)
-    /* So far, our L4 libraries do not include environment support. */
-    return NULL;
 #else
     return environ;
 #endif
