@@ -1,4 +1,4 @@
-/* $Id: ldr.h 46161 2013-05-19 13:31:13Z knut.osmundsen@oracle.com $ */
+/* $Id: ldr.h 46164 2013-05-19 16:58:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -428,6 +428,8 @@ typedef struct RTLDRMODINTERNAL
     RTLDRTYPE               enmType;
     /** Image endianness.  */
     RTLDRENDIAN             enmEndian;
+    /** Image target architecture.  */
+    RTLDRARCH               enmArch;
 } RTLDRMODINTERNAL;
 
 
