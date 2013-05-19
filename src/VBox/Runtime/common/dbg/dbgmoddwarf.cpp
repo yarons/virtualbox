@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 46164 2013-05-19 16:58:01Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmoddwarf.cpp 46165 2013-05-19 19:07:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -3695,7 +3695,7 @@ static int rtDwarfInfo_SnoopSymbols(PRTDBGMODDWARF pThis, PRTDWARFDIE pDie)
                                 rc = RTDbgModSymbolAdd(pThis->hCnt, pSubProgram->pszName, iSeg, offSeg,
                                                        pSubProgram->PcRange.uHighAddress - pSubProgram->PcRange.uLowAddress,
                                                        0 /*fFlags*/, NULL /*piOrdinal*/);
-                                AssertRC(rc);
+                                AssertMsg(RT_SUCCESS(rc) || rc == VERR_DBG_DUPLICATE_SYMBOL, ("%Rrc\n", rc));
                             }
                             else
                                 Log5(("rtDbgModDwarfLinkAddressToSegOffset failed: %Rrc\n", rc));
