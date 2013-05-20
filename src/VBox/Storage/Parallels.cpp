@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: Parallels.cpp 46170 2013-05-20 09:14:04Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -181,6 +181,7 @@ static int parallelsOpenImage(PPARALLELSIMAGE pImage, unsigned uOpenFlags)
 
     pImage->pIfError = VDIfErrorGet(pImage->pVDIfsDisk);
     pImage->pIfIo = VDIfIoIntGet(pImage->pVDIfsImage);
+    pImage->uOpenFlags = uOpenFlags;
     AssertPtrReturn(pImage->pIfIo, VERR_INVALID_PARAMETER);
 
     rc = vdIfIoIntFileOpen(pImage->pIfIo, pImage->pszFilename,
