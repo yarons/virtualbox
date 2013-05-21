@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 44318 2013-01-21 10:15:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMDesktop.cpp 46193 2013-05-21 14:31:39Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -248,7 +248,9 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
         else
             pSpace->setFixedSize(10, 1);
         pToolBar->addWidget(pSpace);
+#ifdef Q_WS_MAC
         pToolBar->updateLayout();
+#endif /* Q_WS_MAC */
     }
     else
 #else /* USE_TOOLBAR */
