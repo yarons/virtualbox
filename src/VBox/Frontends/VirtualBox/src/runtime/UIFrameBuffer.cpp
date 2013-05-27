@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 46129 2013-05-16 15:35:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 46283 2013-05-27 11:22:29Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -263,6 +263,7 @@ STDMETHODIMP UIFrameBuffer::SetVisibleRegion(BYTE *pRectangles, ULONG uCount)
         ++ rects;
     }
     lock(); /* See comment in setView(). */
+    m_syncVisibleRegion = reg;
     if (m_pMachineView)
         QApplication::postEvent(m_pMachineView, new UISetRegionEvent(reg));
     unlock();
