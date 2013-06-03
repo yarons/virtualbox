@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 46364 2013-06-03 15:02:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 46366 2013-06-03 15:05:02Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -145,7 +145,7 @@ STDMETHODIMP UIFrameBufferQuartz2D::SetVisibleRegion(BYTE *pRectangles, ULONG aC
 
     /* Send async signal to update asynchronous visible-region: */
     if (m_pMachineView)
-        emit sigSetVisibleRegion(region);
+        emit sigSetVisibleRegion(reg);
 
     /* Confirm SetVisibleRegion: */
     return S_OK;
