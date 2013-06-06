@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: REMAll.cpp 46420 2013-06-06 16:27:25Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -223,7 +223,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
         if (++cFree >= 48)
             return;
     }
-    AssertRelease(VM_FF_ISSET(pVM, VM_FF_REM_HANDLER_NOTIFY));
+    AssertRelease(VM_FF_IS_SET(pVM, VM_FF_REM_HANDLER_NOTIFY));
     AssertRelease(pVM->rem.s.idxPendingList != UINT32_MAX);
 
     /* Ok, we gotta flush them. */
