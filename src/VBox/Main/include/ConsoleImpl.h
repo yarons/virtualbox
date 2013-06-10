@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 45675 2013-04-23 09:13:50Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl.h 46465 2013-06-10 14:11:26Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -200,6 +200,7 @@ public:
     HRESULT onClipboardModeChange(ClipboardMode_T aClipboardMode);
     HRESULT onDragAndDropModeChange(DragAndDropMode_T aDragAndDropMode);
     HRESULT onVRDEServerChange(BOOL aRestart);
+    HRESULT onVideoCaptureChange();
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
     HRESULT onUSBDeviceAttach(IUSBDevice *aDevice, IVirtualBoxErrorInfo *aError, ULONG aMaskedIfs);
