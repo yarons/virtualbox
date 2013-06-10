@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 46465 2013-06-10 14:11:26Z noreply@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 46466 2013-06-10 14:18:51Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1376,8 +1376,6 @@ int handleControlVM(HandlerArg *a)
                 }
             }
 
-            for (unsigned i = 0; i < cMonitors; i++)
-                RTPrintf("  %d\n", saScreens[i]);
             CHECK_ERROR_BREAK(sessionMachine, COMSETTER(VideoCaptureScreens)(ComSafeArrayAsInParam(saScreens)));
         }
         else
