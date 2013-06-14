@@ -1,4 +1,4 @@
-; $Id: truncf.asm 44528 2013-02-04 14:27:54Z noreply@oracle.com $
+; $Id: truncf.asm 46548 2013-06-14 09:42:21Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT truncf - AMD64 & X86.
 ;
@@ -42,7 +42,7 @@ BEGINPROC RT_NOCRT(truncf)
     movss   [xSP], xmm0
     fld     dword [xSP]
 %else
-    fld     dword [xBP + xS*2]
+    fld     dword [xBP + xCB*2]
 %endif
 
     ; Make it truncate up by modifying the fpu control word.
