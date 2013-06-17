@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 46542 2013-06-13 16:49:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineMenuBar.cpp 46582 2013-06-17 10:47:06Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -243,6 +243,7 @@ void UIMachineMenuBar::prepareMenuDevices(QMenu *pMenu)
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_DragAndDrop)->menu());
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_NetworkAdaptersDialog));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersDialog));
+    pMenu->addSeparator();
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VRDEServer));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VideoCapture));
     pMenu->addSeparator();
