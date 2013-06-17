@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.cpp 43407 2012-09-22 14:19:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxGuestDeskbarView.cpp 46593 2013-06-17 14:32:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, implementation.
  */
@@ -260,7 +260,7 @@ status_t VBoxGuestDeskbarView::_Init(BMessage *archive)
         fIcon = BTranslationUtils::GetBitmap(&mem);
     }
 
-    int rc = RTR3InitDll(0);
+    int rc = RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
     if (RT_SUCCESS(rc))
     {
         rc = VbglR3Init();
