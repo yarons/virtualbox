@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 44940 2013-03-06 22:12:24Z alexander.eichner@oracle.com $ */
+/* $Id: QCOW.cpp 46613 2013-06-18 10:27:13Z alexander.eichner@oracle.com $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -995,7 +995,7 @@ static int qcowFreeImage(PQCOWIMAGE pImage, bool fDelete)
             if (!fDelete)
                 qcowFlushImage(pImage);
 
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 
