@@ -1,4 +1,4 @@
-/* $Id: tstMp-1.cpp 46632 2013-06-18 16:58:49Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTMp-1.cpp 46638 2013-06-18 17:12:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
