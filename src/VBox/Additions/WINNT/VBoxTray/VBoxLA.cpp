@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 46593 2013-06-17 14:32:51Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLA.cpp 46625 2013-06-18 13:28:52Z noreply@oracle.com $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -1248,7 +1248,7 @@ int VBoxLAInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThrea
 
     RT_ZERO(gCtx.activeClient);
 
-    *(void **)&gCtx.pfnProcessIdToSessionId = RTLdrGetSystemSymbol("KERNEL32", "ProcessIdToSessionId");
+    *(void **)&gCtx.pfnProcessIdToSessionId = RTLdrGetSystemSymbol("kernel32.dll", "ProcessIdToSessionId");
     *pfStartThread = true;
     *ppInstance = &gCtx;
     return VINF_SUCCESS;
