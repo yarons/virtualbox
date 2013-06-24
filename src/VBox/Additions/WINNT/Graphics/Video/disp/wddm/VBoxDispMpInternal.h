@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpInternal.h 38114 2011-07-22 13:58:48Z noreply@oracle.com $ */
+/* $Id: VBoxDispMpInternal.h 46757 2013-06-24 14:30:18Z noreply@oracle.com $ */
 
 /** @file
  * VBoxVideo Display external interface config
@@ -21,8 +21,10 @@
 
 #include <windows.h>
 
+#if 0
 HRESULT vboxDispMpInternalInit();
 HRESULT vboxDispMpInternalTerm();
 HRESULT vboxDispMpInternalCancel(struct VBOXWDDMDISP_CONTEXT *pContext, struct VBOXWDDMDISP_SWAPCHAIN *pSwapchain);
+#endif
 
 #endif /* #ifndef ___VBoxDispMpInternal_h__ */
