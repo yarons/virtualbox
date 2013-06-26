@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 46807 2013-06-26 14:34:19Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 46815 2013-06-26 19:32:21Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4933,13 +4933,13 @@ HRESULT Console::onVideoCaptureChange()
                 {
                     vrc = mDisplay->VideoCaptureStart();
                     if (RT_FAILURE(vrc))
-                        rc = E_FAIL;
+                        rc = setError(E_FAIL, tr("Unable to start video capturing (%Rrc)"), vrc);
                 }
                 else
                     mDisplay->VideoCaptureStop();
             }
             else
-                rc = E_FAIL;
+                rc = setError(E_FAIL, tr("Unable to set screens for capturing (%Rrc)"), vrc);
         }
         ptrVM.release();
     }
