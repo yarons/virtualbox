@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46832 2013-06-27 12:15:01Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 46842 2013-06-27 13:34:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2177,7 +2177,7 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
 
     SVMEVENT Event;
     Event.u = 0;
-    if (pVCpu->hm.s.Event.fPending)                            /* First, inject any pending HM events. */
+    if (pVCpu->hm.s.Event.fPending)                                /* First, inject any pending HM events. */
     {
         Event.u = pVCpu->hm.s.Event.u64IntrInfo;
         Assert(Event.n.u1Valid);
