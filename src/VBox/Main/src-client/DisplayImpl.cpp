@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46667 2013-06-19 15:30:23Z klaus.espenlaub@oracle.com $ */
+/* $Id: DisplayImpl.cpp 46826 2013-06-27 11:09:55Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2751,8 +2751,7 @@ int Display::VideoCaptureStart()
                 pszName = NULL;
 
                 static RTTIMESPEC ts = { 0 };
-                if (!RTTimeSpecGetNano(&ts))
-                    RTTimeNow(&ts);
+                RTTimeNow(&ts);
                 RTTIME time;
                 RTTimeExplode(&time, &ts);
                 if (mcMonitors > 1)
