@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.h 44991 2013-03-11 14:55:10Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-win.h 46858 2013-06-28 08:28:21Z noreply@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -134,7 +134,8 @@ typedef enum VBGDNTVER
     VBGDNTVER_WIN2K3,
     VBGDNTVER_WINVISTA,
     VBGDNTVER_WIN7,
-    VBGDNTVER_WIN8
+    VBGDNTVER_WIN8,
+    VBGDNTVER_WIN8_1,
 } VBGDNTVER;
 extern VBGDNTVER g_enmVbgdNtVer;
 
