@@ -1,4 +1,4 @@
-; $Id: $
+; $Id: ASMGetLDTR.asm 46941 2013-07-03 14:48:42Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - ASMGetLDTR().
 ;
