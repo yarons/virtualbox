@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 46981 2013-07-04 11:42:07Z knut.osmundsen@oracle.com $ */
+/* $Id: manifest.cpp 46982 2013-07-04 11:54:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -270,7 +270,7 @@ RTR3DECL(int) RTManifestWriteFiles(const char *pszManifestFile, RTDIGESTTYPE enm
 }
 
 
-RTR3DECL(int) RTManifestVerifyDigestType(void *pvBuf, size_t cbSize, RTDIGESTTYPE *penmDigestType)
+RTR3DECL(int) RTManifestVerifyDigestType(void const *pvBuf, size_t cbSize, RTDIGESTTYPE *penmDigestType)
 {
     /* Validate input */
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
