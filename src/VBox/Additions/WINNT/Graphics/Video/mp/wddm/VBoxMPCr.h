@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.h 46783 2013-06-25 16:09:37Z noreply@oracle.com $ */
+/* $Id: VBoxMPCr.h 47070 2013-07-10 11:39:19Z noreply@oracle.com $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -26,6 +26,8 @@ typedef struct VBOXMP_CRCTLCON
     HVBOXCRCTL hCrCtl;
     uint32_t cCrCtlRefs;
 } VBOXMP_CRCTLCON, *PVBOXMP_CRCTLCON;
+
+void VBoxMpCrCtlConInit();
 
 bool VBoxMpCrCtlConIs3DSupported();
 
