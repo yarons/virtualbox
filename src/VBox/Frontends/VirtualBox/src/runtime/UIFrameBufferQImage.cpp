@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 47067 2013-07-10 11:11:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBufferQImage.cpp 47073 2013-07-10 12:11:46Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,9 +34,6 @@
 # include "VBoxGlobal.h"
 # include "UISession.h"
 # include "UIMachineLogic.h"
-# ifdef Q_WS_X11
-#  include "UIMachineWindow.h"
-# endif /* Q_WS_X11 */
 
 /* COM includes: */
 #include "COMEnums.h"
