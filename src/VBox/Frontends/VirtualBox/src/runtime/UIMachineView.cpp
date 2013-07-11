@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 46538 2013-06-13 15:28:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 47103 2013-07-11 15:52:27Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -288,6 +288,11 @@ void UIMachineView::sltHandleSetVisibleRegion(QRegion region)
 {
     /* Used only in seamless-mode. */
     Q_UNUSED(region);
+}
+
+void UIMachineView::sltNotify3DEvent()
+{
+    machineLogic()->notifyAbout3DEvent();
 }
 
 void UIMachineView::sltDesktopResized()
