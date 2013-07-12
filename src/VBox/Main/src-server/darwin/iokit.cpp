@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: iokit.cpp 47117 2013-07-12 12:48:17Z noreply@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -373,7 +373,7 @@ static void darwinDumpDictCallback(const void *pvKey, const void *pvValue, void 
             double rd;
             CFIndex iCF;
         } u;
-        memset(&u, 0, sizeof(u));
+        RT_ZERO(u);
         CFNumberType NumType = CFNumberGetType((CFNumberRef)pvValue);
         if (CFNumberGetValue((CFNumberRef)pvValue, NumType, &u))
         {
