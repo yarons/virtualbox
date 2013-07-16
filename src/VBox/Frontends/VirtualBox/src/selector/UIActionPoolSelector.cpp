@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 47160 2013-07-15 13:50:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolSelector.cpp 47177 2013-07-16 08:10:06Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -359,7 +359,7 @@ class UIActionSimpleGroupSort : public UIActionSimple
 public:
 
     UIActionSimpleGroupSort(UIActionPool *pParent)
-        : UIActionSimple(pParent)
+        : UIActionSimple(pParent, ":/sort_16px.png", ":/sort_disabled_16px.png")
     {
         retranslateUi();
     }
@@ -841,7 +841,7 @@ class UIActionSimpleMachineSortParent : public UIActionSimple
 public:
 
     UIActionSimpleMachineSortParent(UIActionPool *pParent)
-        : UIActionSimple(pParent)
+        : UIActionSimple(pParent, ":/sort_16px.png", ":/sort_disabled_16px.png")
     {
         retranslateUi();
     }
