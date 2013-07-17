@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 47108 2013-07-12 10:12:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupPane.cpp 47209 2013-07-17 11:58:03Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -48,6 +48,12 @@ UIPopupPane::UIPopupPane(QWidget *pParent,
 {
     /* Prepare: */
     prepare();
+}
+
+void UIPopupPane::recall()
+{
+    /* Close popup-pane with *escape* button: */
+    done(m_pButtonPane->escapeButton());
 }
 
 void UIPopupPane::setMessage(const QString &strMessage)
