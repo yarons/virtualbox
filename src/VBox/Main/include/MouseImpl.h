@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 47190 2013-07-16 13:44:46Z noreply@oracle.com $ */
+/* $Id: MouseImpl.h 47208 2013-07-17 11:01:51Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -65,6 +65,8 @@ public:
                              LONG buttonState);
     STDMETHOD(PutMouseEventAbsolute)(LONG x, LONG y, LONG dz, LONG dw,
                                      LONG buttonState);
+    STDMETHOD(PutMouseEventMultiTouch)(LONG x, LONG y, LONG contactID,
+                                       BOOL inContact);
     STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
 
     static const PDMDRVREG  DrvReg;
@@ -116,8 +118,8 @@ private:
     struct DRVMAINMOUSE    *mpDrv[MOUSE_MAX_DEVICES];
 
     uint32_t mfVMMDevGuestCaps;  /** We cache this to avoid access races */
-    int32_t mcLastAbsX;
-    int32_t mcLastAbsY;
+    int32_t mcLastX;
+    int32_t mcLastY;
     uint32_t mfLastButtons;
 
     const ComObjPtr<EventSource> mEventSource;
