@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47192 2013-07-16 13:59:25Z noreply@oracle.com $ */
+/* $Id: tstMouseImpl.cpp 47257 2013-07-19 13:37:51Z noreply@oracle.com $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -169,7 +169,7 @@ void TestDisplay::getFramebufferDimensions(int32_t *px1, int32_t *py1,
         *py2 = 240;
 }
 
-int TestDisplay::getScreenResolution(uint32_t cScreen, ULONGt *pcx,
+int TestDisplay::getScreenResolution(uint32_t cScreen, ULONG *pcx,
                                      ULONG *pcy, ULONG *pcBPP)
 {
     NOREF(cScreen);
