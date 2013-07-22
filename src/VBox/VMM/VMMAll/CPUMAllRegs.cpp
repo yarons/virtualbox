@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 47242 2013-07-19 00:16:13Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 47328 2013-07-22 22:50:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2201,7 +2201,7 @@ VMMDECL(int) CPUMRecalcHyperDRx(PVMCPU pVCpu)
          * Ok, something is enabled. Recalc each of the breakpoints.
          * Straight forward code, not optimized/minimized in any way.
          */
-        RTGCUINTREG uNewDr7 = X86_DR7_GE | X86_DR7_LE | X86_DR7_MB1_MASK;
+        RTGCUINTREG uNewDr7 = X86_DR7_GE | X86_DR7_LE | X86_DR7_RA1_MASK;
 
         /* bp 0 */
         RTGCUINTREG uNewDr0;

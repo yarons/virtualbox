@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47327 2013-07-22 22:11:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 47328 2013-07-22 22:50:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -8459,7 +8459,7 @@ static void iemExecVerificationModeCheck(PIEMCPU pIemCpu)
         CHECK_FIELD(dr[2]);
         CHECK_FIELD(dr[3]);
         CHECK_FIELD(dr[6]);
-        if ((pOrgCtx->dr[7] & ~X86_DR7_MB1_MASK) != (pDebugCtx->dr[7] & ~X86_DR7_MB1_MASK)) /* REM 'mov drX,greg' bug.*/
+        if ((pOrgCtx->dr[7] & ~X86_DR7_RA1_MASK) != (pDebugCtx->dr[7] & ~X86_DR7_RA1_MASK)) /* REM 'mov drX,greg' bug.*/
             CHECK_FIELD(dr[7]);
         CHECK_FIELD(gdtr.cbGdt);
         CHECK_FIELD(gdtr.pGdt);
