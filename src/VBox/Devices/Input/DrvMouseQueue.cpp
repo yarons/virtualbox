@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 47259 2013-07-19 13:58:26Z noreply@oracle.com $ */
+/* $Id: DrvMouseQueue.cpp 47360 2013-07-24 03:46:46Z noreply@oracle.com $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -91,7 +91,7 @@ typedef struct DRVMOUSEQUEUEITEM
         } Absolute;
         struct
         {
-            bool        fContact;
+            uint32_t    fContact;
             uint32_t    x;
             uint32_t    y;
             uint32_t    cContact;
