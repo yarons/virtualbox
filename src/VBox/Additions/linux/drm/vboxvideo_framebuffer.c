@@ -1,10 +1,10 @@
-/** @file $Id: vboxvideo_kms.c 47417 2013-07-26 08:36:22Z noreply@oracle.com $
+/** @file $Id: vboxvideo_framebuffer.c 47417 2013-07-26 08:36:22Z noreply@oracle.com $
  *
- * VirtualBox Additions Linux kernel video driver, KMS support
+ * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,7 +16,7 @@
  * --------------------------------------------------------------------
  *
  * This code is based on
- * glint_kms.c
+ * glint_framebuffer.c
  * with the following copyright and permission notice:
  *
  * Copyright 2010 Matt Turner.
@@ -41,57 +41,40 @@
  *
  * Authors: Matt Turner
  */
+#include "drm/drmP.h"
+#include "drm/drm.h"
+#include "drm/drm_crtc_helper.h"
 
-#include <linux/version.h>
-
+#include "vboxvideo.h"
 #include "vboxvideo_drv.h"
 
-int vboxvideo_driver_load(struct drm_device * dev, unsigned long flags)
+static void vboxvideo_user_framebuffer_destroy(struct drm_framebuffer *fb)
 {
-    struct vboxvideo_device *gdev;
-    int r;
-
-    gdev = kzalloc(sizeof(struct vboxvideo_device), GFP_KERNEL);
-    if (gdev == NULL) {
-        return -ENOMEM;
-    }
-    dev->dev_private = (void *)gdev;
-
-    r = vboxvideo_device_init(gdev, dev, dev->pdev, flags);
-    if (r) {
-        dev_err(&dev->pdev->dev, "Fatal error during GPU init\n");
-        goto out;
-    }
-
-    r = vboxvideo_modeset_init(gdev);
-    if (r) {
-        dev_err(&dev->pdev->dev, "Fatal error during modeset init\n");
-        goto out;
-    }
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28)
-    r = drm_vblank_init(dev, 1);
-    if (r)
-        dev_err(&dev->pdev->dev, "Fatal error during vblank init\n");
-#endif
-out:
-    if (r)
-        vboxvideo_driver_unload(dev);
-    return r;
+    drm_framebuffer_cleanup(fb);
 }
 
-int vboxvideo_driver_unload(struct drm_device * dev)
+static int vboxvideo_user_framebuffer_create_handle(struct drm_framebuffer *fb,
+                                                    struct drm_file *file_priv,
+                                                    unsigned int *handle)
 {
-    struct vboxvideo_device *gdev = dev->dev_private;
-
-    if (gdev == NULL)
-        return 0;
-    vboxvideo_modeset_fini(gdev);
-    vboxvideo_device_fini(gdev);
-    kfree(gdev);
-    dev->dev_private = NULL;
     return 0;
 }
 
-struct drm_ioctl_desc vboxvideo_ioctls[] = {
+static const struct drm_framebuffer_funcs vboxvideo_fb_funcs = {
+    .destroy = vboxvideo_user_framebuffer_destroy,
+    .create_handle = vboxvideo_user_framebuffer_create_handle,
 };
-int vboxvideo_max_ioctl = DRM_ARRAY_SIZE(vboxvideo_ioctls);
+
+int vboxvideo_framebuffer_init(struct drm_device *dev,
+                               struct vboxvideo_framebuffer *gfb,
+                               struct DRM_MODE_FB_CMD *mode_cmd)
+{
+    int ret = drm_framebuffer_init(dev, &gfb->base, &vboxvideo_fb_funcs);
+    if (ret) {
+        VBOXVIDEO_ERROR("drm_framebuffer_init failed: %d\n", ret);
+        return ret;
+    }
+    drm_helper_mode_fill_fb_struct(&gfb->base, mode_cmd);
+
+    return 0;
+}

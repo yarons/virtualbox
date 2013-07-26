@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_device.c 47388 2013-07-25 12:12:10Z noreply@oracle.com $
+/** @file $Id: vboxvideo_device.c 47417 2013-07-26 08:36:22Z noreply@oracle.com $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -44,8 +44,6 @@
 
 #include <linux/version.h>
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
-
 #include "the-linux-kernel.h"
 
 #include "vboxvideo_drv.h"
@@ -54,25 +52,33 @@
 
 static int vboxvideo_vram_init(struct vboxvideo_device *gdev)
 {
-    /* work out accessible VRAM */
-    gdev->mc.aper_base = pci_resource_start(gdev->ddev->pdev, 1);
-    gdev->mc.aper_size = pci_resource_len(gdev->ddev->pdev, 1);
+    unsigned size;
+    int ret;
 
-    gdev->mc.vram = ioremap(gdev->mc.aper_base, gdev->mc.aper_size);
-    if (!gdev->mc.vram) {
-        VBOXVIDEO_ERROR("Unable to ioremap %lu MB of VRAM. Bailing out.\n", (unsigned long)gdev->mc.aper_size / MB);
-        return -1;
-    }
+    /* set accessible VRAM */
+    gdev->mc.vram_base = pci_resource_start(gdev->ddev->pdev, 1);
+    gdev->mc.vram_size = pci_resource_len(gdev->ddev->pdev, 1);
+
     gdev->fAnyX        = VBoxVideoAnyWidthAllowed();
     gdev->mc.vram_size = VBoxVideoGetVRAMSize();
 
+    if (!request_region(gdev->mc.vram_base, gdev->mc.vram_size, "vboxvideofb_vram")) {
+        VBOXVIDEO_ERROR("can't region_reserve VRAM\n");
+        return -ENXIO;
+    }
+
+    ret = drm_addmap(gdev->ddev, gdev->mc.vram_base, gdev->mc.vram_size,
+        _DRM_FRAME_BUFFER, _DRM_WRITE_COMBINING,
+        &gdev->framebuffer);
     return 0;
 }
 
 static void vboxvideo_vram_fini(struct vboxvideo_device *gdev)
 {
-    iounmap(gdev->mc.vram);
-    gdev->mc.vram = NULL;
+    if (gdev->framebuffer)
+        drm_rmmap(gdev->ddev, gdev->framebuffer);
+    if (gdev->mc.vram_base)
+        release_region(gdev->mc.vram_base, gdev->mc.vram_size);
 }
 
 int vboxvideo_device_init(struct vboxvideo_device *gdev,
@@ -102,4 +108,3 @@ void vboxvideo_device_fini(struct vboxvideo_device *gdev)
 {
     vboxvideo_vram_fini(gdev);
 }
-#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */
