@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 47465 2013-07-29 15:04:41Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMMInternal.h 47467 2013-07-29 16:35:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -422,8 +422,9 @@ typedef struct VMMCPU
     R0PTRTYPE(RTTHREADCTX)      hR0ThreadCtx;
 #if HC_ARCH_BITS == 32
     uint32_t                    u32Padding;
-#endif
+#else
     uint64_t                    u64Padding;
+#endif
     /** @} */
 
     /** @name Rendezvous
