@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 47235 2013-07-18 18:16:57Z knut.osmundsen@oracle.com $ */
+/* $Id: HWSVMR0.cpp 47472 2013-07-30 11:57:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -45,7 +45,7 @@
 # include <iprt/thread.h>
 #endif
 #include <iprt/x86.h>
-#include "HWSVMR0.h"
+#include "HMSVMR0.h"
 
 #include "dtrace/VBoxVMM.h"
 
