@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 47158 2013-07-15 12:37:15Z vitali.pelenjow@oracle.com $ */
+/* $Id: crservice.cpp 47485 2013-07-31 12:44:53Z noreply@oracle.com $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -243,7 +243,7 @@ static DECLCALLBACK(void) svcNotifyEventCB(int32_t screenId, uint32_t uEvent, vo
     if (!pFramebuffer)
         return;
 
-    CHECK_ERROR2_STMT(pFramebuffer, Notify3DEvent(VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_WINDOW, NULL), return);
+    CHECK_ERROR2_STMT(pFramebuffer, Notify3DEvent(uEvent, (BYTE*)pvData), return);
 }
 
 
