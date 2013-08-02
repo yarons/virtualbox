@@ -1,4 +1,4 @@
-/* $Id: Logging.h 41040 2012-04-24 10:13:40Z klaus.espenlaub@oracle.com $ */
+/* $Id: Logging.h 47525 2013-08-02 17:07:41Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -39,6 +39,9 @@
 # define LOG_GROUP LOG_GROUP_MAIN_OVERRIDE
 #else
 # define LOG_GROUP LOG_GROUP_MAIN
+#endif
+#ifndef VBOXSVC_LOG_DEFAULT
+# define VBOXSVC_LOG_DEFAULT "all"
 #endif
 
 #include <VBox/log.h>
