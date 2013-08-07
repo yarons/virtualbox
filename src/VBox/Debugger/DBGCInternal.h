@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: DBGCInternal.h 47569 2013-08-07 03:13:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -139,6 +139,8 @@ typedef struct DBGC
 
     /** Current disassembler position. */
     DBGCVAR             DisasmPos;
+    /** The flags that goes with DisasmPos. */
+    uint32_t            fDisasm;
     /** Current source position. (flat GC) */
     DBGCVAR             SourcePos;
     /** Current memory dump position. */
