@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 47627 2013-08-09 08:31:24Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestProcessImpl.cpp 47630 2013-08-09 09:45:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1222,7 +1222,7 @@ DECLCALLBACK(int) GuestProcess::startProcessThread(RTTHREAD Thread, void *pvUser
                                      NULL /* Guest rc, ignored */);
     /* Nothing to do here anymore. */
 
-    LogFlowFunc(("pProcess=%p returning rc=%Rrc\n", pProcess, vrc));
+    LogFlowFunc(("pProcess=%p returning rc=%Rrc\n", (GuestProcess *)pProcess, vrc));
     return vrc;
 }
 
