@@ -1,4 +1,4 @@
-/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 46326 2013-05-30 12:16:53Z noreply@oracle.com $ */
+/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 47659 2013-08-11 14:43:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Debug kernel information, driver program.
  */
@@ -83,7 +83,7 @@ int main (int argc, char **argv)
 
     void *pvImageBase;
     rc = SUPR3LoadServiceModule(szPath, "tstRTR0DbgKrnlInfo",
-                                "tstRTR0DbgKrnlInfoSrvReqHandler",
+                                "TSTR0DbgKrnlInfoSrvReqHandler",
                                 &pvImageBase);
     if (RT_FAILURE(rc))
     {
