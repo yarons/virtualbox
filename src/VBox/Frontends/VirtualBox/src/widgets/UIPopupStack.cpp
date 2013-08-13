@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 47644 2013-08-09 13:40:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupStack.cpp 47693 2013-08-13 13:09:31Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -115,6 +115,8 @@ void UIPopupStack::sltAdjustGeometry()
 
     /* Read parent geometry: */
     QRect geo(parentWidget()->geometry());
+    if (!parentWidget()->isWindow())
+        geo.moveTo(parentWidget()->mapToGlobal(QPoint(0, 0)));
 
     /* Determine size: */
     int iWidth = parentWidget()->width();
