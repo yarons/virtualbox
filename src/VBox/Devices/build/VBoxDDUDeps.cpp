@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 35353 2010-12-27 17:25:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDDUDeps.cpp 47716 2013-08-14 05:33:22Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -35,6 +35,7 @@
 PFNRT g_apfnVBoxDDUDeps[] =
 {
     (PFNRT)VDInit,
+    (PFNRT)VDIfCreateVfsStream,
 #ifdef VBOX_WITH_USB
     (PFNRT)USBFilterInit,
     (PFNRT)USBLibHashSerial,
