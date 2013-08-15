@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47718 2013-08-14 10:33:22Z knut.osmundsen@oracle.com $ */
+/* $Id: HMInternal.h 47760 2013-08-15 12:57:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -656,6 +656,9 @@ typedef struct HMCPU
         VMXRESTOREHOST              RestoreHost;
         /** Set if guest was executing in real mode (extra checks). */
         bool                        fWasInRealMode;
+        /** Whether we've completed the restoration procedure while leaving the inner
+         *  VT-x context. */
+        bool                        fVmxLeaveDone;
     } vmx;
 
     struct
