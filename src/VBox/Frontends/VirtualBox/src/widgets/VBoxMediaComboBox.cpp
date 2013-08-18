@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaComboBox.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: VBoxMediaComboBox.cpp 47831 2013-08-18 16:19:10Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -89,7 +89,7 @@ void VBoxMediaComboBox::refresh()
 void VBoxMediaComboBox::repopulate()
 {
     if (!vboxGlobal().isMediaEnumerationStarted())
-        vboxGlobal().startEnumeratingMedia();
+        vboxGlobal().startEnumeratingMedia(true /*fReallyNecessary*/);
     else
         refresh();
 }
