@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 43898 2012-11-16 14:14:48Z andreas.loeffler@oracle.com $ */
+/* $Id: EventImpl.cpp 47852 2013-08-19 17:06:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -706,10 +706,10 @@ static BOOL implies(VBoxEventType_T who, VBoxEventType_T what)
         case VBoxEventType_Invalid:
             return FALSE;
         default:
-            return who == what;
+            break;
     }
 
-    return FALSE; /* Never reached. */
+    return who == what;
 }
 
 ListenerRecord::ListenerRecord(IEventListener*                  aListener,
