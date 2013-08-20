@@ -1,4 +1,4 @@
-/* $Id: NATNetworkServiceRunner.cpp 46970 2013-07-04 06:43:15Z noreply@oracle.com $ */
+/* $Id: NATNetworkServiceRunner.cpp 47894 2013-08-20 11:37:09Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for VBox NAT Network service
  */
@@ -26,9 +26,9 @@ struct ARGDEF
 };
 
 #ifdef RT_OS_WINDOWS
-# define NATSR_EXECUTABLE_NAME "VBoxNetLwipNAT.exe"
+# define NATSR_EXECUTABLE_NAME "VBoxNetNAT.exe"
 #else
-# define NATSR_EXECUTABLE_NAME "VBoxNetLwipNAT"
+# define NATSR_EXECUTABLE_NAME "VBoxNetNAT"
 #endif
 
 static const ARGDEF g_aArgDefs[] =
