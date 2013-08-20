@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 47403 2013-07-25 19:32:54Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 47908 2013-08-20 12:57:00Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -443,8 +443,8 @@ int handleModifyVM(HandlerArg *a)
     Bstr name;
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetOptState;
-    ComPtr <IMachine> machine;
-    ComPtr <IBIOSSettings> biosSettings;
+    ComPtr<IMachine> machine;
+    ComPtr<IBIOSSettings> biosSettings;
 
     /* VM ID + at least one parameter. Parameter arguments are checked
      * individually. */

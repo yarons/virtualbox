@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 45156 2013-03-25 05:50:09Z noreply@oracle.com $ */
+/* $Id: VBoxManage.h 47908 2013-08-20 12:57:00Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -205,7 +205,7 @@ int handleShowVMInfo(HandlerArg *a);
 HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                    ComPtr<IMachine> machine,
                    VMINFO_DETAILS details = VMINFO_NONE,
-                   ComPtr <IConsole> console = ComPtr<IConsole>());
+                   ComPtr<IConsole> console = ComPtr<IConsole>());
 const char *machineStateToName(MachineState_T machineState, bool fShort);
 HRESULT showBandwidthGroups(ComPtr<IBandwidthControl> &bwCtrl,
                             VMINFO_DETAILS details);
