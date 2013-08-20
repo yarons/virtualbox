@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 47906 2013-08-20 12:48:38Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 47918 2013-08-20 14:09:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -165,6 +165,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--name <name>]\n"
                      "                            [--groups <group>, ...]\n"
                      "                            [--ostype <ostype>]\n"
+                     "                            [--iconfile <filename>]\n"
                      "                            [--memory <memorysize in MB>]\n"
                      "                            [--pagefusion on|off]\n"
                      "                            [--vram <vramsize in MB>]\n"
