@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 47944 2013-08-21 07:36:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 47946 2013-08-21 07:50:32Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,6 +38,8 @@ UIGlobalSettingsProxy::UIGlobalSettingsProxy()
 
     /* Setup connections: */
     connect(m_pCheckboxProxy, SIGNAL(toggled(bool)), this, SLOT(sltProxyToggled()));
+    connect(m_pHostEditor, SIGNAL(textEdited(const QString&)), this, SLOT(revalidate()));
+    connect(m_pPortEditor, SIGNAL(textEdited(const QString&)), this, SLOT(revalidate()));
 
     /* Apply language settings: */
     retranslateUi();
