@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 46820 2013-06-27 07:58:37Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 48101 2013-08-27 18:23:47Z vadim.galitsyn@oracle.com $ */
 
 /** @file
  *
@@ -79,6 +79,7 @@ HRESULT HostNetworkInterface::init(Bstr aInterfaceName, Bstr aShortName, Guid aG
 
     unconst(mInterfaceName) = aInterfaceName;
     unconst(mNetworkName) = composeNetworkName(aShortName);
+    unconst(mShortName) = aShortName;
     unconst(mGuid) = aGuid;
     mIfType = ifType;
 
@@ -250,6 +251,24 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(Name)(BSTR *aInterfaceName)
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     mInterfaceName.cloneTo(aInterfaceName);
+
+    return S_OK;
+}
+
+/**
+ * Returns the short name of the host network interface.
+ *
+ * @returns COM status code
+ * @param   aShortName address of result pointer
+ */
+STDMETHODIMP HostNetworkInterface::COMGETTER(ShortName)(BSTR *aShortName)
+{
+    CheckComArgOutPointerValid(aShortName);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    mShortName.cloneTo(aShortName);
 
     return S_OK;
 }
