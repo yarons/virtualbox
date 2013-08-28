@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48133 2013-08-28 17:33:30Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 48134 2013-08-28 17:41:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2450,10 +2450,9 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     const bool fBlockInt  = !(pCtx->eflags.u32 & X86_EFL_IF);
     PSVMVMCB pVmcb        = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
 
-    SVMEVENT Event;
-    Event.u = 0;
     if (pVCpu->hm.s.Event.fPending)                                /* First, inject any pending HM events. */
     {
+        SVMEVENT Event;
         Event.u = pVCpu->hm.s.Event.u64IntrInfo;
         Assert(Event.n.u1Valid);
 #ifdef VBOX_STRICT
