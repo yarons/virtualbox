@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 48212 2013-08-30 23:02:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 48213 2013-08-30 23:17:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -403,7 +403,7 @@ typedef struct HM
         R0PTRTYPE(void *)           pvIOBitmap;
 
         /* HWCR MSR (for diagnostics) */
-        uint64_t                    msrHwcr;
+        uint64_t                    u64MsrHwcr;
 
         /** SVM revision. */
         uint32_t                    u32Rev;
