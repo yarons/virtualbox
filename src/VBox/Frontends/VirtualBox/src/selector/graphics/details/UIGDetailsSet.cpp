@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 47998 2013-08-22 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsSet.cpp 48260 2013-09-04 11:42:46Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -346,7 +346,7 @@ void UIGDetailsSet::prepareConnections()
 
     /* Meidum-enumeration connections: */
     connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationStarted()), this, SLOT(sltUpdateAppearance()));
-    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished(const VBoxMediaList &)), this, SLOT(sltUpdateAppearance()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished()), this, SLOT(sltUpdateAppearance()));
 }
 
 int UIGDetailsSet::minimumWidthHint() const
