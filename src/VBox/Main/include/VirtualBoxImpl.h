@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 47561 2013-08-06 15:18:17Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 48297 2013-09-05 09:57:44Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -310,6 +310,7 @@ public:
 
     AutostartDb* getAutostartDb() const;
 
+    RWLockHandle& getMachinesListLockHandle();
     RWLockHandle& getMediaTreeLockHandle();
 
     int  encryptSetting(const Utf8Str &aPlaintext, Utf8Str *aCiphertext);
