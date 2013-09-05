@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 48259 2013-09-04 10:22:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 48314 2013-09-05 15:54:32Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,6 +30,7 @@
 #include "QILabel.h"
 #include "QIDialogButtonBox.h"
 #include "UIConverter.h"
+#include "UIMedium.h"
 
 /* Constructor: */
 UIMediumTypeChangeDialog::UIMediumTypeChangeDialog(QWidget *pParent, const QString &strMediumId)
