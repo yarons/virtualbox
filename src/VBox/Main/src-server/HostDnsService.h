@@ -1,6 +1,6 @@
-/* $Id: HostDnsService.h 48330 2013-09-06 03:16:32Z noreply@oracle.com $ */
+/* $Id: HostDnsService.h 48346 2013-09-06 09:50:19Z noreply@oracle.com $ */
 /** @file
- * Host DNS listener. 
+ * Host DNS listener.
  */
 
 /*

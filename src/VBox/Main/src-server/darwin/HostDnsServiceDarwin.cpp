@@ -1,6 +1,6 @@
-/* $Id: HostDnsServiceDarwin.cpp 48330 2013-09-06 03:16:32Z noreply@oracle.com $ */
+/* $Id: HostDnsServiceDarwin.cpp 48346 2013-09-06 09:50:19Z noreply@oracle.com $ */
 /** @file
- * Darwin specific DNS information fetching. 
+ * Darwin specific DNS information fetching.
  */
 
 /*
