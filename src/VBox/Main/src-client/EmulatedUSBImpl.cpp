@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 48406 2013-09-10 12:53:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: EmulatedUSBImpl.cpp 48408 2013-09-10 13:10:53Z vitali.pelenjow@oracle.com $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -223,7 +223,7 @@ void EmulatedUSB::FinalRelease()
  */
 HRESULT EmulatedUSB::init(ComObjPtr<Console> pConsole)
 {
-    LogFlowThisFunc(("pConsole=%p\n", pConsole));
+    LogFlowThisFunc(("\n"));
 
     ComAssertRet(!pConsole.isNull(), E_INVALIDARG);
 
@@ -253,9 +253,11 @@ void EmulatedUSB::uninit()
     WebcamsMap::iterator it = m.webcams.begin();
     while (it != m.webcams.end())
     {
+        WebcamsMap::iterator itNext = ++it;
         EUSBWEBCAM *p = it->second;
-        it = m.webcams.erase(it);
+        m.webcams.erase(it);
         p->Release();
+        it = itNext;
     }
     alock.release();
 
