@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 48353 2013-09-06 12:28:50Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 48425 2013-09-11 11:41:57Z vitali.pelenjow@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -477,6 +477,9 @@ STDMETHODIMP Machine::ExportTo(IAppliance *aAppliance, IN_BSTR location, IVirtua
 
                 case DeviceType_DVD:
                 {
+                    if (!pMedium)
+                        break;
+
                     /* get info about whether medium is a real drive/device or not */
                     BOOL fHostDrive = false;
                     rc = pMedium->COMGETTER(HostDrive)(&fHostDrive);
