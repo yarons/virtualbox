@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.h 48297 2013-09-05 09:57:44Z klaus.espenlaub@oracle.com $ */
+/* $Id: TokenImpl.h 48431 2013-09-11 14:08:36Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -39,7 +39,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(const ComObjPtr<SessionMachine> &pSessionMachine);
-    void uninit();
+    void uninit(bool fAbandon);
 
 private:
 
