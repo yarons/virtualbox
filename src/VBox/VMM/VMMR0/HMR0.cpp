@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48448 2013-09-12 12:53:17Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 48469 2013-09-13 12:33:41Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -426,7 +426,7 @@ static int hmR0InitIntel(uint32_t u32FeaturesECX, uint32_t u32FeaturesEDX)
                 rc = RTR0MemObjAllocCont(&hScatchMemObj, PAGE_SIZE, false /* fExecutable */);
                 if (RT_FAILURE(rc))
                 {
-                    LogRel(("hmR0InitIntel: RTR0MemObjAllocCont(,PAGE_SIZE,true) -> %Rrc\n", rc));
+                    LogRel(("hmR0InitIntel: RTR0MemObjAllocCont(,PAGE_SIZE,false) -> %Rrc\n", rc));
                     return rc;
                 }
 
