@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48428 2013-09-11 13:07:23Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 48471 2013-09-13 12:55:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3727,6 +3727,9 @@ bool VBoxGlobal::openURL (const QString &aURL)
 
 void VBoxGlobal::sltGUILanguageChange(QString strLang)
 {
+    /* Make sure medium-enumeration is not in progress! */
+    AssertReturnVoid(!isMediumEnumerationInProgress());
+    /* Load passed language: */
     loadLanguage(strLang);
 }
 
