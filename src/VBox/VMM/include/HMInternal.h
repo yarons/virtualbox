@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 48565 2013-09-19 22:16:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 48570 2013-09-19 23:41:35Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -512,7 +512,9 @@ typedef struct HMCPU
     bool                        fClearTrapFlag;
     /** Whether we've completed the inner HM leave function. */
     bool                        fLeaveDone;
-    uint8_t                     abAlignment[2];
+    /** Whether we're using the hyper DR7 or guest DR7. */
+    bool                        fUsingHyperDR7;
+    uint8_t                     abAlignment[1];
 
     /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExits;
