@@ -1,10 +1,10 @@
-; $Id: CPUMAllA.asm 48542 2013-09-19 15:52:25Z ramshankar.venkataraman@oracle.com $
+; $Id: CPUMAllA.asm 48567 2013-09-19 22:51:40Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
 
 ;
-; Copyright (C) 2006-2011 Oracle Corporation
+; Copyright (C) 2006-2013 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
