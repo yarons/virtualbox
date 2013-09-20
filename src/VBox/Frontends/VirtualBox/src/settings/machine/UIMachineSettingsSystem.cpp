@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 47944 2013-08-21 07:36:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 48576 2013-09-20 09:08:41Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -366,7 +366,7 @@ bool UIMachineSettingsSystem::validate(QList<UIValidationMessage> &messages)
         if (m_pSliderCPUCount->value() > 1 && !m_pCheckBoxApic->isChecked())
         {
             message.second << tr(
-                "The IO APIC feature is not currently enabled in the Motherboard section of the System page. "
+                "The I/O APIC feature is not currently enabled in the Motherboard section of the System page. "
                 "This is needed in order to support more than one virtual processor. "
                 "It will be done automatically if you confirm your changes.");
         }
