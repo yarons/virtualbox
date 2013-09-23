@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48538 2013-09-19 15:17:43Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 48630 2013-09-23 10:42:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -128,7 +128,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif
                      "                            hostinfo|hostcpuids|hddbackends|hdds|dvds|floppies|\n"
                      "                            usbhost|usbfilters|systemproperties|extpacks|\n"
-                     "                            groups\n"
+                     "                            groups|webcams\n"
                      "\n", SEP);
 
     if (u64Cmd & USAGE_SHOWVMINFO)
