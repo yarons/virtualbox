@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 44601 2013-02-08 12:27:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEFI.h 48659 2013-09-24 13:58:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
