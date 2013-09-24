@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 48368 2013-09-06 17:28:13Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 48646 2013-09-24 08:03:21Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -249,6 +249,7 @@ static const SSMFIELD g_aCpumCtxFields[] =
     SSMFIELD_ENTRY(         CPUMCTX, msrCSTAR),
     SSMFIELD_ENTRY(         CPUMCTX, msrSFMASK),
     SSMFIELD_ENTRY(         CPUMCTX, msrKERNELGSBASE),
+    /* msrApicBase is not included here, it resides in the APIC device state. */
     SSMFIELD_ENTRY(         CPUMCTX, ldtr.Sel),
     SSMFIELD_ENTRY(         CPUMCTX, ldtr.ValidSel),
     SSMFIELD_ENTRY(         CPUMCTX, ldtr.fFlags),
