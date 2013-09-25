@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48576 2013-09-20 09:08:41Z noreply@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 48685 2013-09-25 14:29:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4008,6 +4008,11 @@ void VBoxGlobal::prepare()
         {"QNX",             ":/os_qnx.png"},
         {"MacOS",           ":/os_macosx.png"},
         {"MacOS_64",        ":/os_macosx_64.png"},
+        {"MacOS106",        ":/os_macosx.png"},
+        {"MacOS106_64",     ":/os_macosx_64.png"},
+        {"MacOS107_64",     ":/os_macosx_64.png"},
+        {"MacOS108_64",     ":/os_macosx_64.png"},
+        {"MacOS109_64",     ":/os_macosx_64.png"},
         {"JRockitVE",       ":/os_jrockitve.png"},
     };
     for (uint n = 0; n < SIZEOF_ARRAY(s_kOSTypeIcons); ++ n)
