@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48700 2013-09-26 07:34:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 48723 2013-09-27 08:05:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2879,7 +2879,7 @@ static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
         STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchHmToR3FF);
         return VINF_EM_RAW_TO_R3;
     }
-    else if (RTThreadPreemptIsPending(NIL_RTTHREAD))
+    if (RTThreadPreemptIsPending(NIL_RTTHREAD))
     {
         ASMSetFlags(pSvmTransient->uEflags);
         VMMRZCallRing3Enable(pVCpu);
