@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 48765 2013-09-30 08:51:08Z noreply@oracle.com $ */
+/* $Id: HostImpl.cpp 48805 2013-10-02 05:16:26Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -305,7 +305,7 @@ HRESULT Host::init(VirtualBox *aParent)
     m->pHostDnsService = new HostDnsService();
 # endif
 
-    hrc = m->pHostDnsService->init();
+    hrc = m->pHostDnsService->init(m->pParent);
     AssertComRCReturn(hrc, hrc);
 
     hrc = m->pHostDnsService->start();
