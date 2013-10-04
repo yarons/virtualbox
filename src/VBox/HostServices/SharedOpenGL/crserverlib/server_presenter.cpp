@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 48733 2013-09-27 13:07:23Z noreply@oracle.com $ */
+/* $Id: server_presenter.cpp 48897 2013-10-04 19:35:58Z noreply@oracle.com $ */
 
 /** @file
  * Presenter API
@@ -945,6 +945,11 @@ crServerDispatchVBoxTexPresent(GLuint texture, GLuint cfg, GLint xPos, GLint yPo
             /* no display initialized, and nothing to present */
             return;
         }
+    }
+
+    if (!(cfg & CR_PRESENT_FLAG_CLEAR_RECTS))
+    {
+        CR_SERVER_DUMP_TEXPRESENT(&pEntry->CEntry.Tex);
     }
 
     CrDpEnter(pDisplay);
