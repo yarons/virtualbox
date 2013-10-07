@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInit.cpp 21227 2009-07-05 19:50:18Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSFInit.cpp 48942 2013-10-07 21:30:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
