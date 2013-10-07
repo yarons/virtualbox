@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/** $Id: clipboard.cpp 48945 2013-10-07 21:33:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
