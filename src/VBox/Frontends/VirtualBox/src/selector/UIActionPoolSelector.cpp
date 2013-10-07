@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 48577 2013-09-20 10:10:18Z noreply@oracle.com $ */
+/* $Id: UIActionPoolSelector.cpp 48950 2013-10-07 21:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1047,5 +1047,4 @@ void UIActionPoolSelector::createMenus()
 }
 
 #include "UIActionPoolSelector.moc"
-
 
