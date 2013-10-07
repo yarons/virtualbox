@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: SUPLib-solaris.cpp 48952 2013-10-07 21:54:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */

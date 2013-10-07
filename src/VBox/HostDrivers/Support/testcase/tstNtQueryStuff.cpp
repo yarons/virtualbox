@@ -1,4 +1,4 @@
-/* $Id: tstNtQueryStuff.cpp 45161 2013-03-25 11:08:50Z knut.osmundsen@oracle.com $ */
+/* $Id: tstNtQueryStuff.cpp 48952 2013-10-07 21:54:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Exploring some NT Query APIs.
  */
@@ -449,5 +449,4 @@ int main()
 
     return RTTestSummaryAndDestroy(g_hTest);
 }
-
 
