@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 48755 2013-09-28 20:08:36Z knut.osmundsen@oracle.com $ */
+/* $Id: DevFwCommon.cpp 48947 2013-10-07 21:41:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -810,7 +810,7 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         pProcessorInf->u8CoreCount         = cCpus;  /*  */
         pProcessorInf->u8CoreEnabled       = cCpus;
         pProcessorInf->u8ThreadCount       = 1;
-        pProcessorInf->u16ProcessorCharacteristics 
+        pProcessorInf->u16ProcessorCharacteristics
                                            = RT_BIT(2); /* 64-bit capable */
         pProcessorInf->u16ProcessorFamily2 = 0;
         DMI_TERM_STRUCT;

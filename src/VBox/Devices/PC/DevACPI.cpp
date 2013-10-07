@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 46491 2013-06-11 13:02:32Z noreply@oracle.com $ */
+/* $Id: DevACPI.cpp 48947 2013-10-07 21:41:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */

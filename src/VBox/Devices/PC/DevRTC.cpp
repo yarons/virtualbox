@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 45208 2013-03-27 13:03:13Z michal.necasek@oracle.com $ */
+/* $Id: DevRTC.cpp 48947 2013-10-07 21:41:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */

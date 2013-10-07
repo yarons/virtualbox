@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 45025 2013-03-13 16:45:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DevParallel.cpp 48947 2013-10-07 21:41:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
