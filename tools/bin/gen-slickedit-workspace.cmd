@@ -1,5 +1,5 @@
 @echo off
-rem $Id: gen-slickedit-workspace.cmd 37821 2011-07-07 14:18:26Z knut.osmundsen@oracle.com $
+rem $Id: gen-slickedit-workspace.cmd 48961 2013-10-07 22:17:08Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for launching gen-slickedit-workspace.sh
 rem
