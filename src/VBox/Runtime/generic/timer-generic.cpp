@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 47552 2013-08-06 10:02:19Z alexander.eichner@oracle.com $ */
+/* $Id: timer-generic.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timers, Generic.
  */

@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 48233 2013-09-02 16:10:38Z noreply@oracle.com $ */
+/* $Id: log-vbox.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */

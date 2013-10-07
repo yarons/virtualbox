@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 45123 2013-03-21 10:42:26Z noreply@oracle.com $ */
+/* $Id: netaddrstr2.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -69,5 +69,4 @@ RTDECL(int) RTNetStrToIPv4Addr(const char *pszAddr, PRTNETADDRIPV4 pAddr)
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTNetStrToIPv4Addr);
-
 

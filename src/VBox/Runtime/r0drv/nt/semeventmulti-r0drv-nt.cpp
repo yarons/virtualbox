@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-nt.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: semeventmulti-r0drv-nt.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */

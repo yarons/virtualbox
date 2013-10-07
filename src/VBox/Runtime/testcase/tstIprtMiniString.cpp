@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 39903 2012-01-27 19:05:59Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstIprtMiniString.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTCString.
  */

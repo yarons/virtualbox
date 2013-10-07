@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 43363 2012-09-20 09:56:07Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: semeventmulti-posix.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */

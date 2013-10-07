@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 46624 2013-06-18 13:17:23Z noreply@oracle.com $ */
+/* $Id: path-win.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Path manipulation.
  */

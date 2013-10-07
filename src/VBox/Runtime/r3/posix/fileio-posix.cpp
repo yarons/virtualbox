@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: fileio-posix.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */

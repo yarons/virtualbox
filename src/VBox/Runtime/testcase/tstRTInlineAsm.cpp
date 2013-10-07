@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 48131 2013-08-28 17:21:06Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */

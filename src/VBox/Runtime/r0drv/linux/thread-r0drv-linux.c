@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 48462 2013-09-12 22:35:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: thread-r0drv-linux.c 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */

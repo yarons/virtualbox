@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 48813 2013-10-02 09:36:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: mp-solaris.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */

@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: utf-8.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */

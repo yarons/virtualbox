@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 47535 2013-08-05 01:54:25Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */

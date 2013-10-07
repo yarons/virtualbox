@@ -1,4 +1,4 @@
-/* $Id: RTPathStripTrailingSlash.cpp 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: RTPathStripTrailingSlash.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathSTripTrailingSlash
  */

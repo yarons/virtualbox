@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 48396 2013-09-10 06:32:55Z noreply@oracle.com $ */
+/* $Id: strformatrt.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */

@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 45338 2013-04-04 14:51:43Z noreply@oracle.com $ */
+/* $Id: stream.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */

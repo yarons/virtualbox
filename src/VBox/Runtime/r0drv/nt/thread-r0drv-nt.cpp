@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 48384 2013-09-09 10:24:25Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-r0drv-nt.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */

@@ -1,4 +1,4 @@
-/* $Id: logbackdoor-redirect.cpp 36408 2011-03-24 16:25:47Z knut.osmundsen@oracle.com $ */
+/* $Id: logbackdoor-redirect.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Runtime - RTLog stubs for the stripped down IPRT used by
  *                      RuntimeGuestR3Shared (X11), output is redirected

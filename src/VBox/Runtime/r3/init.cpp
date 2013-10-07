@@ -1,4 +1,4 @@
-/* $Id: init.cpp 48681 2013-09-25 13:00:44Z knut.osmundsen@oracle.com $ */
+/* $Id: init.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3.
  */

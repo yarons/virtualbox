@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 47168 2013-07-15 14:53:55Z andreas.loeffler@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */

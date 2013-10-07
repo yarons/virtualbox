@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-os2.cpp 39443 2011-11-28 15:01:21Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-r0drv-os2.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, OS/2.
  */

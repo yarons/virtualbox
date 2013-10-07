@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-nt.cpp 46231 2013-05-23 11:23:15Z knut.osmundsen@oracle.com $ */
+/* $Id: time-r0drv-nt.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Nt.
  */

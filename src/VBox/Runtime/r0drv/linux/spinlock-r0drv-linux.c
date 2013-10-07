@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-linux.c 44579 2013-02-07 11:03:25Z vadim.galitsyn@oracle.com $ */
+/* $Id: spinlock-r0drv-linux.c 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */

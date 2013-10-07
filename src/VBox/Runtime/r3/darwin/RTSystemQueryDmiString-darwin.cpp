@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-darwin.cpp 29560 2010-05-17 15:08:09Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryDmiString-darwin.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, darwin ring-3.
  */

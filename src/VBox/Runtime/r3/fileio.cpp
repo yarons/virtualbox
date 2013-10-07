@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 46251 2013-05-24 07:38:51Z alexander.eichner@oracle.com $ */
+/* $Id: fileio.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O.
  */

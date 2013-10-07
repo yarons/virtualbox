@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 43560 2012-10-08 08:12:25Z noreply@oracle.com $ */
+/* $Id: semmutex-posix.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */

@@ -1,4 +1,4 @@
-/* $Id: spinlock-generic.cpp 40951 2012-04-16 19:25:26Z alexander.eichner@oracle.com $ */
+/* $Id: spinlock-generic.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Spinlock, generic implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: tstTime-4.cpp 46210 2013-05-22 10:06:57Z vadim.galitsyn@oracle.com $ */
+/* $Id: tstTime-4.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple RTTime vs. RTTimeSystem test.
  */

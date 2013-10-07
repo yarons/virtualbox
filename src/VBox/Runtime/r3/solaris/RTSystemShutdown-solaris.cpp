@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-solaris.cpp 47126 2013-07-12 19:49:20Z alexander.eichner@oracle.com $ */
+/* $Id: RTSystemShutdown-solaris.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemShutdown, linux implementation.
  */
@@ -99,5 +99,4 @@ RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char 
 
     return rc;
 }
-
 

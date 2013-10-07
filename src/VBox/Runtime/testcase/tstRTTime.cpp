@@ -1,4 +1,4 @@
-/* $Id: tstRTTime.cpp 46298 2013-05-28 15:29:05Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTTime.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple RTTime tests (requires GIP).
  */

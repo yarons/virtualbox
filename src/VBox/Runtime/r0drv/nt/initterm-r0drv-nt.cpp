@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 45445 2013-04-09 19:08:33Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-nt.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */

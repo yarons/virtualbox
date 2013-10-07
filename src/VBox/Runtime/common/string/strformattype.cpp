@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 46326 2013-05-30 12:16:53Z noreply@oracle.com $ */
+/* $Id: strformattype.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions, Dynamic Types.
  */

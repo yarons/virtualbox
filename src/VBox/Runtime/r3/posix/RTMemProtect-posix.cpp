@@ -1,4 +1,4 @@
-/* $Id: RTMemProtect-posix.cpp 33269 2010-10-20 15:42:28Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMemProtect-posix.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
