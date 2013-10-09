@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 48832 2013-10-03 13:04:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 49013 2013-10-09 15:49:57Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -438,7 +438,7 @@ void UIMachineWindow::handleScreenCountChange()
     showInNecessaryMode();
 }
 
-void UIMachineWindow::handleScreenResize()
+void UIMachineWindow::handleScreenGeometryChange()
 {
     showInNecessaryMode();
 }
