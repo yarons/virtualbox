@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrNative-win.cpp 49039 2013-10-10 18:27:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -57,7 +57,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
     /*
      * Do we need to add an extension?
      */
-    if (!RTPathHaveExt(pszFilename))
+    if (!RTPathHasSuffix(pszFilename))
     {
         size_t cch = strlen(pszFilename);
         char *psz = (char *)alloca(cch + sizeof(".DLL"));
