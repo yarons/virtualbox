@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgLog.h 38433 2011-08-12 12:04:34Z noreply@oracle.com $ */
+/* $Id: VBoxDbgLog.h 49137 2013-10-16 12:28:02Z ramshankar.venkataraman@oracle.com $ */
 
 /** @file
  * Logging helper
@@ -40,7 +40,7 @@
 #ifdef DEBUG_misha
 # define BP_WARN() AssertFailed()
 #else
-# define BP_WARN() do {} while(0)
+# define BP_WARN() do {} while (0)
 #endif
 
 #define _LOGMSG_EXACT(_logger, _a)                                          \
