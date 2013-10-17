@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 49168 2013-10-17 18:28:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 49169 2013-10-17 18:41:54Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -73,7 +73,7 @@ UIFrameBufferQuartz2D::~UIFrameBufferQuartz2D()
 STDMETHODIMP UIFrameBufferQuartz2D::SetVisibleRegion(BYTE *pRectangles, ULONG aCount)
 {
     LogRel2(("UIFrameBufferQuartz2D::SetVisibleRegion: Rectangle count=%lu\n",
-             (unsigned long)uCount));
+             (unsigned long)aCount));
 
     /* Make sure frame-buffer is used: */
     if (isMarkedAsUnused())
