@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 48070 2013-08-26 18:13:22Z noreply@oracle.com $ */
+/* $Id: VBoxDispD3D.h 49180 2013-10-18 12:35:36Z noreply@oracle.com $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -210,6 +210,8 @@ typedef struct VBOXWDDMDISP_DEVICE
 
     UINT cSamplerTextures;
     struct VBOXWDDMDISP_RESOURCE *aSamplerTextures[VBOXWDDMDISP_TOTAL_SAMPLERS];
+
+    HMODULE hHgsmiTransportModule;
 
 #ifdef VBOX_WDDMDISP_WITH_PROFILE
     VBoxDispProfileFpsCounter ProfileDdiFps;
