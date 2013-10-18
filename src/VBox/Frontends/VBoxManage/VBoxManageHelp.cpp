@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 49103 2013-10-15 06:20:39Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 49190 2013-10-18 15:26:52Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -534,6 +534,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--tempeject on|off]\n"
                      "                            [--nonrotational on|off]\n"
                      "                            [--discard on|off]\n"
+                     "                            [--hotpluggable on|off]\n"
                      "                            [--bandwidthgroup <name>]\n"
                      "                            [--forceunmount]\n"
                      "                            [--server <name>|<ip>]\n"
