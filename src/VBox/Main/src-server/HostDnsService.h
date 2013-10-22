@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 49223 2013-10-22 08:48:39Z noreply@oracle.com $ */
+/* $Id: HostDnsService.h 49224 2013-10-22 08:50:57Z noreply@oracle.com $ */
 /** @file
  * Host DNS listener.
  */
@@ -31,7 +31,7 @@ typedef Utf8StrList::iterator Utf8StrListIterator;
 
 class HostDnsService
 {
-    puvlic:
+    public:
     HostDnsService();
     virtual ~HostDnsService();
     virtual HRESULT init(const VirtualBox *aParent);
