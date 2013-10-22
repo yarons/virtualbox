@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49221 2013-10-22 07:35:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49222 2013-10-22 08:38:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2903,8 +2903,6 @@ static DECLCALLBACK(RTEXITCODE) handleCtrlStat(PGCTLCMDCTX pCtx)
 
     while ((ch = RTGetOpt(&GetState, &ValueUnion)))
     {
-                        RTPrintf("val: %s=%d\n", ValueUnion.psz, ch);
-
         /* For options that require an argument, ValueUnion has received the value. */
         switch (ch)
         {
