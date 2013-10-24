@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 49272 2013-10-24 11:54:09Z noreply@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 49277 2013-10-24 14:04:28Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -162,7 +162,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "Session I&nformation..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Show Session Information Dialog"));
+        setStatusTip(QApplication::translate("UIActionPool", "Show Session Information Window"));
     }
 };
 
