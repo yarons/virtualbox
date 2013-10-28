@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 49039 2013-10-10 18:27:32Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 49311 2013-10-28 16:43:28Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -680,7 +680,7 @@ int Display::handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM
 
     mLastAddress = pvVRAM;
     mLastBytesPerLine = cbLine;
-    mLastBitsPerPixel = bpp,
+    mLastBitsPerPixel = bpp;
     mLastWidth = w;
     mLastHeight = h;
     mLastFlags = flags;
