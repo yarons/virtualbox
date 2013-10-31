@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49349 2013-10-31 16:40:46Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49351 2013-10-31 17:14:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -862,8 +862,9 @@ static RTEXITCODE ctrlInitVM(HandlerArg *pArg,
                         pCtx->iArgc++;
 #ifdef DEBUG_andy
                         RTPrintf("\targv[%d]=%s\n", i, pArg->argv[i]);
-                    }
 #endif
+                    }
+
                     iArgIdx = GetState.iNext;
                 }
 
