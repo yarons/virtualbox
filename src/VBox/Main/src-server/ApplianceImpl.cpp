@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 49103 2013-10-15 06:20:39Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 49408 2013-11-07 13:18:13Z noreply@oracle.com $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1558,8 +1558,8 @@ std::list<VirtualSystemDescriptionEntry*> VirtualSystemDescription::findByType(V
 }
 
 /**
- * Private method; delete all records from the list 
- * m->llDescriptions that match the given type. 
+ * Private method; delete all records from the list
+ * m->llDescriptions that match the given type.
  * @param aType
  * @return
  */
