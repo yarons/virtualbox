@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 49408 2013-11-07 13:18:13Z noreply@oracle.com $ */
+/* $Id: HostImpl.cpp 49409 2013-11-07 13:36:15Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -832,7 +832,7 @@ STDMETHODIMP Host::COMGETTER(NameServers)(ComSafeArrayOut(BSTR, aNameServers))
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    return m->hostDnsMonitorProxy.COMGETTER(NameServers)(ComSafeArrayOutArg(aNameServers));
+    return m->hostDnsMonitorProxy.GetNameServers(ComSafeArrayOutArg(aNameServers));
 }
 
 
@@ -847,7 +847,7 @@ STDMETHODIMP Host::COMGETTER(DomainName)(BSTR *aDomainName)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    return m->hostDnsMonitorProxy.COMGETTER(DomainName)(aDomainName);
+    return m->hostDnsMonitorProxy.GetDomainName(aDomainName);
 }
 
 
@@ -863,7 +863,7 @@ STDMETHODIMP Host::COMGETTER(SearchStrings)(ComSafeArrayOut(BSTR, aSearchStrings
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    return m->hostDnsMonitorProxy.COMGETTER(SearchStrings)(ComSafeArrayOutArg(aSearchStrings));
+    return m->hostDnsMonitorProxy.GetSearchStrings(ComSafeArrayOutArg(aSearchStrings));
 }
 
 
