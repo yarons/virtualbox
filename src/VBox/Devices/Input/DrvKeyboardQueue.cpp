@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 49423 2013-11-08 16:25:35Z michal.necasek@oracle.com $ */
+/* $Id: DrvKeyboardQueue.cpp 49451 2013-11-12 12:38:05Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -224,6 +224,7 @@ static DECLCALLBACK(void)  drvKbdQueueSuspend(PPDMDRVINS pDrvIns)
 static DECLCALLBACK(void)  drvKbdQueueResume(PPDMDRVINS pDrvIns)
 {
     PDRVKBDQUEUE        pThis = PDMINS_2_DATA(pDrvIns, PDRVKBDQUEUE);
+    pThis->fInactive = false;
     pThis->fSuspended = false;
 }
 
