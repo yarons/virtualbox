@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 48955 2013-10-07 21:59:25Z knut.osmundsen@oracle.com $ */
+/* $Id: DHCPServerImpl.h 49494 2013-11-15 10:32:10Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -42,6 +42,10 @@ class DHCPServerRunner: public NetworkServiceRunner
 public:
     DHCPServerRunner():NetworkServiceRunner(DHCP_EXECUTABLE_NAME){}
     virtual ~DHCPServerRunner(){};
+
+    static const std::string kDsrKeyGateway;
+    static const std::string kDsrKeyLowerIp;
+    static const std::string kDsrKeyUpperIp;
 };
 
 /**
