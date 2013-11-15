@@ -1,7 +1,6 @@
-
-/* $Id: GuestFsObjInfoImpl.cpp 42897 2012-08-21 10:03:52Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestFsObjInfoImpl.cpp 49504 2013-11-15 13:19:45Z andreas.loeffler@oracle.com $ */
 /** @file
- * VirtualBox Main - XXX.
+ * VirtualBox Main - Guest file system object information handling.
  */
 
 /*
