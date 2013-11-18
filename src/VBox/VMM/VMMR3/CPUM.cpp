@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 49182 2013-10-18 14:14:27Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 49538 2013-11-18 16:21:40Z noreply@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3939,7 +3939,7 @@ static DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
     if (iVerbosity && cCentaurMax >= 1)
     {
         ASMCpuIdExSlow(0xc0000001, 0, 0, 0, &Host.eax, &Host.ebx, &Host.ecx, &Host.edx);
-        uint32_t uEdxGst = pVM->cpum.s.aGuestCpuIdExt[1].edx;
+        uint32_t uEdxGst = pVM->cpum.s.aGuestCpuIdCentaur[1].edx;
         uint32_t uEdxHst = Host.edx;
 
         if (iVerbosity == 1)
