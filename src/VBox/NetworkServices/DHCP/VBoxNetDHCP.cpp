@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49543 2013-11-19 02:43:09Z noreply@oracle.com $ */
+/* $Id: VBoxNetDHCP.cpp 49558 2013-11-20 02:43:14Z noreply@oracle.com $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -365,7 +365,7 @@ int VBoxNetDhcp::init()
     netManager->setOurNetmask(m_Ipv4Netmask);
     netManager->setOurMac(m_MacAddress);
     
-    if (m_fNeedMain)
+    if (isMainNeeded())
         rc = initWithMain();
     else
         rc = initNoMain();
