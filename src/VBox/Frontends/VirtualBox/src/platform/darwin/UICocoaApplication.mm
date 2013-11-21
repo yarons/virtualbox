@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
+/* $Id: UICocoaApplication.mm 49595 2013-11-21 09:16:03Z vadim.galitsyn@oracle.com $ */
 /** @file
  * UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
@@ -171,6 +171,11 @@ UICocoaApplication* UICocoaApplication::instance()
         m_pInstance = new UICocoaApplication();
 
     return m_pInstance;
+}
+
+void UICocoaApplication::hide()
+{
+    [m_pNative hide:m_pNative];
 }
 
 UICocoaApplication::UICocoaApplication()
