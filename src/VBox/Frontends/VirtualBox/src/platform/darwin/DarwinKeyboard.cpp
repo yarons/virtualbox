@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 49463 2013-11-13 12:35:28Z vadim.galitsyn@oracle.com $ */
+/* $Id: DarwinKeyboard.cpp 49601 2013-11-21 12:55:00Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -503,11 +503,11 @@ void DarwinDisableGlobalHotKeys(bool fDisable)
     {
         if (enmMode != kCGSGlobalHotKeyEnable)
             return;
-        enmMode = kCGSGlobalHotKeyDisable;
+        enmMode = kCGSGlobalHotKeyDisableExceptUniversalAccess;
     }
     else
     {
-        if (enmMode != kCGSGlobalHotKeyDisable)
+        if (enmMode != kCGSGlobalHotKeyDisableExceptUniversalAccess)
             return;
         enmMode = kCGSGlobalHotKeyEnable;
     }
