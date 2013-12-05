@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.cpp 48431 2013-09-11 14:08:36Z klaus.espenlaub@oracle.com $ */
+/* $Id: TokenImpl.cpp 49795 2013-12-05 18:53:18Z noreply@oracle.com $ */
 /** @file
  *
  * Token COM class implementation: MachineToken and MediumLockToken
@@ -176,12 +176,12 @@ void MediumLockToken::uninit()
     {
         if (m.fWrite)
         {
-            HRESULT rc = m.pMedium->unlockWrite(NULL);
+            HRESULT rc = m.pMedium->i_unlockWrite(NULL);
             AssertComRC(rc);
         }
         else
         {
-            HRESULT rc = m.pMedium->unlockRead(NULL);
+            HRESULT rc = m.pMedium->i_unlockRead(NULL);
             AssertComRC(rc);
         }
         m.pMedium.setNull();
