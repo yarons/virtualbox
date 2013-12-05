@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 49634 2013-11-22 18:11:29Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvInternal.h 49787 2013-12-05 11:26:00Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -748,6 +748,9 @@ int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq);
 
 #endif /* SUPDRV_WITH_MSR_PROBER */
 
+#if defined(RT_OS_DARWIN)
+int VBOXCALL    supdrvDarwinResumeBuiltinKbd(void);
+#endif
 
 /*******************************************************************************
 *   Shared Functions                                                           *
