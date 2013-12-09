@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 49825 2013-12-09 09:12:47Z noreply@oracle.com $ */
+/* $Id: ComHostUtils.cpp 49828 2013-12-09 09:30:15Z noreply@oracle.com $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -209,4 +209,6 @@ int createNatListener(ComNatListenerPtr& listener, const ComVirtualBoxPtr& vboxp
 
     hrc = esVBox->RegisterListener(listener, ComSafeArrayAsInParam(events), true);
     AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
+
+    return VINF_SUCCESS;
 }
