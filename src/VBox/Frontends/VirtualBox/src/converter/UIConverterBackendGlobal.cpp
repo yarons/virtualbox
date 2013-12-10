@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 49698 2013-11-28 11:44:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 49868 2013-12-10 14:49:04Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

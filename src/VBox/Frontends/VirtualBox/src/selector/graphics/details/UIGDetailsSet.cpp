@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 49645 2013-11-25 18:03:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsSet.cpp 49868 2013-12-10 14:49:04Z noreply@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

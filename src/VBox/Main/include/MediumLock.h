@@ -1,4 +1,4 @@
-/* $Id: MediumLock.h 48297 2013-09-05 09:57:44Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumLock.h 49868 2013-12-10 14:49:04Z noreply@oracle.com $ */
 
 /** @file
  *
