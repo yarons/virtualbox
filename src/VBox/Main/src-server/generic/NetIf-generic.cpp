@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 49586 2013-11-20 13:58:46Z noreply@oracle.com $ */
+/* $Id: NetIf-generic.cpp 49871 2013-12-10 16:49:59Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -265,7 +265,7 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVBox,
                             ComObjPtr<HostNetworkInterface> iface;
                             iface.createObject();
                             iface->init(IfName, HostNetworkInterfaceType_HostOnly, pInfo);
-                            iface->setVirtualBox(pVBox);
+                            iface->i_setVirtualBox(pVBox);
                             iface.queryInterfaceTo(aHostNetworkInterface);
                         }
                         RTMemFree(pInfo);
