@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 49874 2013-12-11 12:28:07Z vitali.pelenjow@oracle.com $ */
+/* $Id: NATEngineImpl.cpp 49875 2013-12-11 12:32:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -69,7 +69,7 @@ struct NATEngine::Data
 // constructor / destructor
 ////////////////////////////////////////////////////////////////////////////////
 
-NATEngine::NATEngine():mParent(NULL), mAdapter(NULL), mData(NULL) {}
+NATEngine::NATEngine():mData(NULL), mParent(NULL), mAdapter(NULL) {}
 NATEngine::~NATEngine(){}
 
 HRESULT NATEngine::FinalConstruct()
