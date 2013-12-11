@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 49871 2013-12-10 16:49:59Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 49874 2013-12-11 12:28:07Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
@@ -64,7 +64,7 @@ private:
     Machine * const     mParent;
     const ComObjPtr<AudioAdapter> mPeer;
     struct Data;
-    Backupable<Data>    mData;
+    Data *mData;
 };
 
 #endif // ____H_AUDIOADAPTER
