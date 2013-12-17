@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 49927 2013-12-16 12:17:39Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 49952 2013-12-17 13:43:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -178,6 +178,7 @@ typedef struct CPUMDBENTRY
 #include "cpus/Intel_Xeon_X5482_3_20GHz.h"
 
 #include "cpus/AMD_FX_8150_Eight_Core.h"
+#include "cpus/AMD_Phenom_II_X6_1100T.h"
 #include "cpus/Quad_Core_AMD_Opteron_2384.h"
 
 
