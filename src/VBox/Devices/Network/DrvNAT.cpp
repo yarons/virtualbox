@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 50047 2014-01-10 02:16:31Z noreply@oracle.com $ */
+/* $Id: DrvNAT.cpp 50048 2014-01-10 03:00:08Z noreply@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -25,7 +25,7 @@
 #include "slirp/libslirp.h"
 extern "C" {
 #include "slirp/slirp_dns.h"
-};
+}
 #include "slirp/ctl.h"
 
 #include <VBox/vmm/dbgf.h>
