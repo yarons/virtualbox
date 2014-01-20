@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50079 2014-01-15 12:26:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA.cpp 50119 2014-01-20 14:09:00Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2357,12 +2357,11 @@ static int vga_draw_graphic(PVGASTATE pThis, bool full_update, bool fFailOnResiz
          * Can happen if the resize request was ignored by the driver.
          */
         if (   pThis->pDrv->cx != (uint32_t)width
-            || pThis->pDrv->cy != (uint32_t)height
-            || pThis->pDrv->cBits != (uint32_t)bits)
+            || pThis->pDrv->cy != (uint32_t)height)
         {
-            Log(("Framebuffer mismatch: vga %dx%d@%d, drv %dx%d@%d!!!\n",
-                 width, height, bits,
-                 pThis->pDrv->cx, pThis->pDrv->cy, pThis->pDrv->cBits));
+            LogRel(("Framebuffer mismatch: vga %dx%d, drv %dx%d!!!\n",
+                    width, height,
+                    pThis->pDrv->cx, pThis->pDrv->cy));
             return VINF_SUCCESS;
         }
     }
