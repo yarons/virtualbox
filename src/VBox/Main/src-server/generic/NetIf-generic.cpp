@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 50174 2014-01-23 09:22:22Z noreply@oracle.com $ */
+/* $Id: NetIf-generic.cpp 50196 2014-01-23 18:15:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -363,7 +363,7 @@ int NetIfGetConfig(HostNetworkInterface * /* pIf */, NETIFINFO *)
     return VERR_NOT_IMPLEMENTED;
 }
 
-int NetIfDhcpRediscover(VirtualBox * /* pVbox */, HostNetworkInterface * /* pIf */)
+int NetIfDhcpRediscover(VirtualBox * /* pVBox */, HostNetworkInterface * /* pIf */)
 {
     return VERR_NOT_IMPLEMENTED;
 }
