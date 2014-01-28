@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 50178 2014-01-23 12:04:44Z noreply@oracle.com $ */
+/* $Id: DisplayImpl.h 50260 2014-01-28 14:19:18Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -91,6 +91,7 @@ typedef struct _DISPLAYFBINFO
 
 #ifdef VBOX_WITH_HGSMI
     bool fVBVAEnabled;
+    bool fVBVAForceResize;
     uint32_t cVBVASkipUpdate;
     struct
     {
