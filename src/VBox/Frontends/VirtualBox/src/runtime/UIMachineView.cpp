@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 50248 2014-01-27 16:28:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 50265 2014-01-29 11:12:44Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1168,7 +1168,7 @@ void UIMachineView::dropEvent(QDropEvent *pEvent)
     pEvent->accept();
 }
 
-void UIMachineView::handleGHDnd()
+void UIMachineView::handleGHDnd(void)
 {
     /* The guest object to talk to. */
     CGuest guest = session().GetConsole().GetGuest();
