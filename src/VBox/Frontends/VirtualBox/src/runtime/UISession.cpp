@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 50302 2014-01-31 13:55:49Z vadim.galitsyn@oracle.com $ */
+/* $Id: UISession.cpp 50309 2014-02-03 14:41:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1259,6 +1259,7 @@ void UISession::updateSessionSettings()
 {
     bool fAllowReconfiguration = m_machineState != KMachineState_Stuck && m_fReconfigurable;
     gActionPool->action(UIActionIndexRuntime_Simple_SettingsDialog)->setEnabled(fAllowReconfiguration);
+    gActionPool->action(UIActionIndexRuntime_Simple_StorageSettings)->setEnabled(fAllowReconfiguration);
     gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersSettings)->setEnabled(fAllowReconfiguration);
     gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureSettings)->setEnabled(fAllowReconfiguration);
     gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setEnabled(fAllowReconfiguration);
