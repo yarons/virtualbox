@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 49934 2013-12-16 14:51:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 50333 2014-02-05 15:44:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -808,7 +808,7 @@ static DECLCALLBACK(void) hmR0InitIntelCpu(RTCPUID idCpu, void *pvUser1, void *p
     {
         if (fInSmxMode && !fSmxVmxAllowed)
             rc = VERR_VMX_MSR_SMX_VMXON_DISABLED;
-        else if (!fVmxAllowed)
+        else if (!fInSmxMode && !fVmxAllowed)
             rc = VERR_VMX_MSR_VMXON_DISABLED;
         else
             rc = VINF_SUCCESS;
