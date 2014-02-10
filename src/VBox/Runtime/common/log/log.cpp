@@ -1,4 +1,4 @@
-/* $Id: log.cpp 50403 2014-02-10 18:53:47Z noreply@oracle.com $ */
+/* $Id: log.cpp 50404 2014-02-10 19:00:08Z noreply@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1500,7 +1500,7 @@ static unsigned rtlogGroupFlags(const char *psz)
                 }
             } /* strincmp */
         } /* for each flags */
-        // AssertMsg(fFound, ("%.15s...", psz));
+        AssertMsg(fFound, ("%.15s...", psz));
     }
 
     /*
