@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 50358 2014-02-06 20:18:34Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 50380 2014-02-10 10:31:35Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -296,7 +296,7 @@ private:
                        AccessMode_T aAccessMode,
                        BOOL aForceNewUuid,
                        ComPtr<IMedium> &aMedium);
-    HRESULT getGuestOSType(const com::Guid &aId,
+    HRESULT getGuestOSType(const com::Utf8Str &aId,
                            ComPtr<IGuestOSType> &aType);
     HRESULT createSharedFolder(const com::Utf8Str &aName,
                                const com::Utf8Str &aHostPath,
