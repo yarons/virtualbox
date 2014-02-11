@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 50406 2014-02-10 20:35:11Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAddrSpace.cpp 50407 2014-02-11 01:58:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -177,7 +177,7 @@ int dbgfR3AsInit(PUVM pUVM)
     for (unsigned i = 0; i < RT_ELEMENTS(s_aProps); i++)
     {
         char szEnvValue[8192];
-        int rcEnv = RTEnvGetEx(RTENV_DEFAULT, s_aProps[i].pszEnvName, szEnvValue, sizeof(szEnvValue), NULL);
+        rc = RTEnvGetEx(RTENV_DEFAULT, s_aProps[i].pszEnvName, szEnvValue, sizeof(szEnvValue), NULL);
         if (RT_SUCCESS(rc))
         {
             rc = RTDbgCfgChangeString(pUVM->dbgf.s.hDbgCfg, s_aProps[i].enmProp, RTDBGCFGOP_PREPEND, szEnvValue);
