@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 50355 2014-02-06 17:55:07Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 50444 2014-02-13 12:22:13Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1482,6 +1482,8 @@ void VirtualSystemDescription::i_addEntry(VirtualSystemDescriptionType_T aType,
         = vsde.strExtraConfigCurrent
         = strExtraConfig;
     vsde.ulSizeMB = ulSizeMB;
+
+    vsde.skipIt = false;
 
     m->maDescriptions.push_back(vsde);
 }
