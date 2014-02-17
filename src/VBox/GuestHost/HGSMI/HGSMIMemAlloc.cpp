@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.cpp 50481 2014-02-17 15:18:46Z vitali.pelenjow@oracle.com $ */
+/* $Id: HGSMIMemAlloc.cpp 50486 2014-02-17 16:02:08Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -568,7 +568,7 @@ HGSMIOFFSET HGSMIMAPointerToOffset(const HGSMIMADATA *pMA, const void *pv)
     }
 
     AssertFailed();
-    return NULL;
+    return HGSMIOFFSET_VOID;
 }
 
 void *HGSMIMAOffsetToPointer(const HGSMIMADATA *pMA, HGSMIOFFSET off)
