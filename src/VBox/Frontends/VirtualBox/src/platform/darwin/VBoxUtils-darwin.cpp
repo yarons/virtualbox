@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 48950 2013-10-07 21:52:10Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 50476 2014-02-17 11:20:37Z sergey.dubov@oracle.com $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -136,6 +136,11 @@ bool darwinIsWindowMaximized(QWidget *pWidget)
 void darwinMinaturizeWindow(QWidget *pWidget)
 {
     return ::darwinMinaturizeWindow(::darwinToNativeWindow(pWidget));
+}
+
+void darwinEnableFullscreenSupport(QWidget *pWidget)
+{
+    return ::darwinEnableFullscreenSupport(::darwinToNativeWindow(pWidget));
 }
 
 void darwinInstallResizeDelegate(QWidget *pWidget)
