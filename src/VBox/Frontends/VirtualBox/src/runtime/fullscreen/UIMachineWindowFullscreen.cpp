@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 50505 2014-02-19 15:03:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.cpp 50521 2014-02-20 11:38:52Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,8 +78,9 @@ void UIMachineWindowFullscreen::sltToggleNativeFullscreenMode()
     /* Make sure this method is only used for ML and next: */
     AssertReturnVoid(vboxGlobal().osRelease() > MacOSXRelease_Lion);
 
-    /* Toggle native fullscreen mode: */
-    darwinToggleFullscreenMode(this);
+    /* Enter native fullscreen mode: */
+    if (!darwinIsInFullscreenMode(this))
+        darwinToggleFullscreenMode(this);
 }
 #endif /* RT_OS_DARWIN */
 
