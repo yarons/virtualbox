@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 50526 2014-02-20 17:01:32Z alexander.eichner@oracle.com $ */
+/* $Id: VHDX.cpp 50531 2014-02-20 19:39:40Z alexander.eichner@oracle.com $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -18,7 +18,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEFAULT /** @todo: Log group */
+#define LOG_GROUP LOG_GROUP_VD_VHDX
 #include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 
