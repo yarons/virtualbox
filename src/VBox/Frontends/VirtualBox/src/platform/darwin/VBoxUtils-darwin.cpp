@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 50505 2014-02-19 15:03:24Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 50520 2014-02-20 11:15:10Z sergey.dubov@oracle.com $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -151,6 +151,11 @@ void darwinEnableTransienceSupport(QWidget *pWidget)
 void darwinToggleFullscreenMode(QWidget *pWidget)
 {
     return ::darwinToggleFullscreenMode(::darwinToNativeWindow(pWidget));
+}
+
+bool darwinIsInFullscreenMode(QWidget *pWidget)
+{
+    return ::darwinIsInFullscreenMode(::darwinToNativeWindow(pWidget));
 }
 
 void darwinInstallResizeDelegate(QWidget *pWidget)
