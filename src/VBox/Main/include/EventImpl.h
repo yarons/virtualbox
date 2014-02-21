@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 39714 2012-01-07 02:04:33Z knut.osmundsen@oracle.com $ */
+/* $Id: EventImpl.h 50544 2014-02-21 14:47:22Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -144,7 +144,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(IUnknown *aParent);
+    HRESULT init();
     void uninit();
 
     // IEventSource methods
