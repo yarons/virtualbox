@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 50540 2014-02-21 12:51:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv.c 50541 2014-02-21 13:02:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3550,7 +3550,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
 
     RTThreadPreemptRestore(&PreemptState);
     if (fIsSmxModeAmbiguous)
-        SUPR0Printf(("Warning!!! CR4 hints SMX mode but your CPU is too secretive. Proceeding anyway... Wish us luck!\n"));
+        SUPR0Printf(("WARNING! CR4 hints SMX mode but your CPU is too secretive. Proceeding anyway... We wish you good luck!\n"));
     return rc;
 }
 
