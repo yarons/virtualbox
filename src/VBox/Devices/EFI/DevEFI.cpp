@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 50584 2014-02-25 16:06:26Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEFI.cpp 50590 2014-02-25 18:51:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -2241,7 +2241,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      */
     pThis->u64TscFrequency = TMCpuTicksPerSecond(PDMDevHlpGetVM(pDevIns));
     pThis->u64CpuFrequency = pThis->u64TscFrequency;
-    pThis->u64FsbFrequency = CPUMGetGuestBusFrequency(PDMDevHlpGetVM(pDevIns));
+    pThis->u64FsbFrequency = CPUMGetGuestScalableBusFrequency(PDMDevHlpGetVM(pDevIns));
 
     /*
      * GOP graphics.
