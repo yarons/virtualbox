@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 50592 2014-02-25 19:56:18Z noreply@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 50613 2014-02-26 16:07:35Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -338,7 +338,7 @@ DECLCALLBACK(void) vmmdevUpdateMouseCapabilities(PPDMIVMMDEVCONNECTOR pInterface
      */
     Mouse *pMouse = pConsole->getMouse();
     if (pMouse)  /** @todo and if not?  Can that actually happen? */
-        pMouse->onVMMDevGuestCapsChange(fNewCaps & VMMDEV_MOUSE_GUEST_MASK);
+        pMouse->i_onVMMDevGuestCapsChange(fNewCaps & VMMDEV_MOUSE_GUEST_MASK);
 }
 
 /**
