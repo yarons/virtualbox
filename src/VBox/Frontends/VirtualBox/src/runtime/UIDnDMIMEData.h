@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 50593 2014-02-26 08:44:58Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDMIMEData.h 50595 2014-02-26 09:48:29Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,7 +62,7 @@ public:
 
     UIDnDMimeData(CSession &session, QStringList formats,
                   Qt::DropAction defAction,
-                  Qt::DropActions actions, QWidget *pParent);
+                  Qt::DropActions actions, UIDnDDrag *pParent);
 
     int setData(const QString &mimeType);
 
@@ -100,7 +100,7 @@ protected:
 
 private:
 
-    QWidget          *m_pParent;
+    UIDnDDrag        *m_pParent;
     CSession          m_session;
     QStringList       m_lstFormats;
     Qt::DropAction    m_defAction;
