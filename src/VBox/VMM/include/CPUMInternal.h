@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 50590 2014-02-25 18:51:23Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 50617 2014-02-26 19:34:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -206,6 +206,7 @@ typedef enum CPUMMSRRDFN
     kCpumMsrRdFn_Amd64TscAux,
 
     kCpumMsrRdFn_IntelEblCrPowerOn,
+    kCpumMsrRdFn_IntelI7CoreThreadCount,
     kCpumMsrRdFn_IntelP4EbcHardPowerOn,
     kCpumMsrRdFn_IntelP4EbcSoftPowerOn,
     kCpumMsrRdFn_IntelP4EbcFrequencyId,
