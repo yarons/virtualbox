@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 50603 2014-02-26 12:56:01Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDDataObject_win.h 50604 2014-02-26 13:30:01Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,6 +27,7 @@
 #include <QVariant>
 
 /* COM includes: */
+#include "COMEnums.h"
 #include "CSession.h"
 
 /* Forward declarations: */
