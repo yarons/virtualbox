@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 50525 2014-02-20 13:35:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxNetAdp-solaris.c 50633 2014-02-27 15:03:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -162,7 +162,8 @@ static struct dev_ops g_VBoxNetAdpSolarisDevOps =
     nodev,                          /* reset */
     &g_VBoxNetAdpSolarisCbOps,
     (struct bus_ops *)0,
-    nodev                           /* power */
+    nodev,                          /* power */
+    ddi_quiesce_not_needed
 };
 
 /**
