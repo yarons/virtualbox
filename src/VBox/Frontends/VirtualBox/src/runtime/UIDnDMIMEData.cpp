@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 50602 2014-02-26 12:50:39Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDMIMEData.cpp 50640 2014-02-27 20:18:59Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -195,8 +195,8 @@ bool UIDnDMimeData::eventFilter(QObject * /* pObject */, QEvent *pEvent)
             {
                 QMouseEvent *pMouseEvent = (QMouseEvent*)(pEvent);
                 AssertPtr(pMouseEvent);
-                LogFlowFunc(("MouseMove: x=%d, y=%d, buttons=0x%x\n",
-                             pMouseEvent->globalX(), pMouseEvent->globalY(), pMouseEvent->buttons()));
+                LogFlowFunc(("MouseMove: x=%d, y=%d\n",
+                             pMouseEvent->globalX(), pMouseEvent->globalY()));
                 break;
             }
 #endif
