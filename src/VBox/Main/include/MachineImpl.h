@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 49976 2013-12-18 14:58:43Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.h 50650 2014-02-28 15:27:51Z noreply@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1218,6 +1218,8 @@ private:
 
     /** client token for this machine */
     ClientToken *mClientToken;
+
+    int iNATNetworksStarted;
 
     static DECLCALLBACK(int) taskHandler(RTTHREAD thread, void *pvUser);
 };
