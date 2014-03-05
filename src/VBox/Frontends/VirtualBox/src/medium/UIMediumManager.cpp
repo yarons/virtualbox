@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 50700 2014-03-05 11:51:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 50704 2014-03-05 13:14:20Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -266,7 +266,7 @@ UIMediumManager::~UIMediumManager()
 /* static */
 void UIMediumManager::showModeless(QWidget *pCenterWidget /* = 0 */, bool fRefresh /* = true */)
 {
-    /* Prepare instance if not prepared: */
+    /* Create instance if not yet created: */
     if (!m_spInstance)
         m_spInstance = new UIMediumManager(pCenterWidget, fRefresh);
 
