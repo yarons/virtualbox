@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 47223 2013-07-17 19:26:28Z klaus.espenlaub@oracle.com $ */
+/* $Id: BusAssignmentManager.cpp 50721 2014-03-06 21:40:39Z michal.necasek@oracle.com $ */
 
 /** @file
  *
@@ -71,6 +71,7 @@ static const DeviceAssignmentRule aGenericRules[] =
     /* USB controllers */
     {"usb-ohci",      0,  6,  0, 0},
     {"usb-ehci",      0, 11,  0, 0},
+    {"usb-xhci",      0, 12,  0, 0},
 
     /* ACPI controller */
     {"acpi",          0,  7,  0, 0},
