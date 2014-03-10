@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 50602 2014-02-26 12:50:39Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDMIMEData.h 50734 2014-03-10 13:54:03Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -80,7 +80,7 @@ protected:
     virtual QVariant retrieveData(const QString &mimeType, QVariant::Type type) const;
 
 #ifndef RT_OS_WINDOWS
-    bool eventFilter(QObject * /* pObject */, QEvent *pEvent);
+    bool eventFilter(QObject *pObject, QEvent *pEvent);
 #endif
     /** @}  */
 
