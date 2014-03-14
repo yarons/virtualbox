@@ -1,6 +1,6 @@
-/* $Id: RTPathStripExt.cpp 49039 2013-10-10 18:27:32Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathStripExt.cpp 50791 2014-03-14 16:19:08Z noreply@oracle.com $ */
 /** @file
- * IPRT - RTPathStripExt
+ * IPRT - RTPathStripSuffix
  */
 
 /*
