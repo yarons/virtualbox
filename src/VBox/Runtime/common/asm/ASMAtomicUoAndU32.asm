@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoAndU32.asm 49724 2013-11-29 13:28:54Z knut.osmundsen@oracle.com $
+; $Id: ASMAtomicUoAndU32.asm 50840 2014-03-21 12:04:35Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; IPRT - ASMAtomicUoAndU32().
 ;
@@ -53,6 +53,4 @@ BEGINPROC_EXPORTED ASMAtomicUoAndU32
 %endif
         ret
 ENDPROC ASMAtomicUoAndU32
-
-
 
