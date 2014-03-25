@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 48011 2013-08-23 08:10:06Z noreply@oracle.com $ */
+/* $Id: tstCollector.cpp 50865 2014-03-25 15:45:26Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -379,7 +379,7 @@ int main(int argc, char *argv[])
     pm::CollectorHAL *collector = pm::createHAL();
     if (!collector)
     {
-        RTPrintf("tstCollector: createMetricFactory() failed\n", rc);
+        RTPrintf("tstCollector: createMetricFactory() failed\n");
         return 1;
     }
 
