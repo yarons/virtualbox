@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 46942 2013-07-03 14:53:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstVMStructRC.cpp 50953 2014-04-02 14:47:00Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -73,6 +73,7 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "PATMInternal.h"
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
+#include "GIMInternal.h"
 #include "STAMInternal.h"
 #include "CSAMInternal.h"
 #include "EMInternal.h"
