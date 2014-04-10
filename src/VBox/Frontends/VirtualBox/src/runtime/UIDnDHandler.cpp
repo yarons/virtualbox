@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 50593 2014-02-26 08:44:58Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDHandler.cpp 51033 2014-04-10 12:11:13Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -330,6 +330,4 @@ Qt::DropActions UIDnDHandler::toQtDnDActions(const QVector<KDragAndDropAction> &
     LogFlowFunc(("dropActions=0x%x\n", int(dropActs)));
     return dropActs;
 }
-
-#include "UIDnDHandler.moc"
 
