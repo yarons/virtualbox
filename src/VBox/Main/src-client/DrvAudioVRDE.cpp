@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 50686 2014-03-04 19:21:18Z noreply@oracle.com $ */
+/* $Id: DrvAudioVRDE.cpp 51092 2014-04-16 17:57:25Z noreply@oracle.com $ */
 /** @file
  *
  * VBox Audio VRDE backend
@@ -569,7 +569,8 @@ static int fltRecordingCallback(PVRDEVoice pVRDEVoice, uint32_t cbSamples, const
 }
 
 
-STDMETHODIMP AudioVRDE::handleVRDESvrCmdAudioInputEventBegin(void *pvContext, int iSampleHz, int cChannels, int cBits, bool fUnsigned)
+STDMETHODIMP AudioVRDE::handleVRDESvrCmdAudioInputEventBegin(void *pvContext, int iSampleHz, int cChannels,
+                                                             int cBits, bool fUnsigned)
 {
     int bitIdx;
     PVRDEVoice pVRDEVoice = (PVRDEVoice)pvContext;
