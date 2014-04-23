@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 51128 2014-04-23 15:29:16Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxStub.cpp 51129 2014-04-23 16:00:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -840,9 +840,9 @@ int WINAPI WinMain(HINSTANCE  hInstance,
         { "/path",              'p', RTGETOPT_REQ_STRING  },
         { "--msiparams",        'm', RTGETOPT_REQ_STRING  },
         { "-msiparams",         'm', RTGETOPT_REQ_STRING  },
-        { "--reinstall",        "f", RTGETOPT_REQ_NOTHING },
-        { "-reinstall",         "f", RTGETOPT_REQ_NOTHING },
-        { "/reinstall",         "f", RTGETOPT_REQ_NOTHING },
+        { "--reinstall",        'f', RTGETOPT_REQ_NOTHING },
+        { "-reinstall",         'f', RTGETOPT_REQ_NOTHING },
+        { "/reinstall",         'f', RTGETOPT_REQ_NOTHING },
         { "--version",          'V', RTGETOPT_REQ_NOTHING },
         { "-version",           'V', RTGETOPT_REQ_NOTHING },
         { "/version",           'V', RTGETOPT_REQ_NOTHING },
