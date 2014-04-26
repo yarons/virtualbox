@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51133 2014-04-24 11:26:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 51149 2014-04-26 16:07:34Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -438,6 +438,7 @@ void UIMachineView::prepareFrameBuffer()
 # else /* VBOX_WITH_VIDEOHWACCEL */
                 pFrameBuffer = new UIFrameBufferQImage(this);
 # endif /* !VBOX_WITH_VIDEOHWACCEL */
+                pFrameBuffer->setHiDPIOptimizationType(uisession()->hiDPIOptimizationType());
                 uisession()->setFrameBuffer(screenId(), pFrameBuffer);
             }
             m_pFrameBuffer = pFrameBuffer;
