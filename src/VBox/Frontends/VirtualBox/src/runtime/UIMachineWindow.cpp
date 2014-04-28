@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 51004 2014-04-08 17:13:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 51158 2014-04-28 17:33:21Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -467,7 +467,8 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
             strMachineName += " [" + gpConverter->toString(state) + "]";
         /* Unusual on the Mac. */
 #ifndef Q_WS_MAC
-        strMachineName += " - " + defaultWindowTitle();
+        const QString strUserProductName = uisession()->machineWindowNamePostfix();
+        strMachineName += " - " + (strUserProductName.isEmpty() ? defaultWindowTitle() : strUserProductName);
 #endif /* !Q_WS_MAC */
         if (m.GetMonitorCount() > 1)
             strMachineName += QString(" : %1").arg(m_uScreenId + 1);
