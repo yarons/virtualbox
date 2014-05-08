@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51217 2014-05-08 17:42:50Z noreply@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 51219 2014-05-08 18:52:20Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2880,7 +2880,7 @@ STDMETHODIMP Console::GetDeviceActivity(DeviceType_T aDeviceType,
             break;
         }
 
-        case DeviceType_Graphics:
+        case DeviceType_Graphics3D:
         {
             SumLed.u32 |= readAndClearLed(mapCrOglLed);
             break;
