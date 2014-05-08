@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 48314 2013-09-05 15:54:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardFirstRun.cpp 51214 2014-05-08 13:23:04Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -29,7 +29,7 @@
 #include "CMediumAttachment.h"
 
 UIWizardFirstRun::UIWizardFirstRun(QWidget *pParent, const CMachine &machine)
-    : UIWizard(pParent, UIWizardType_FirstRun)
+    : UIWizard(pParent, WizardType_FirstRun)
     , m_machine(machine)
     , m_fHardDiskWasSet(isBootHardDiskAttached(m_machine))
 {
