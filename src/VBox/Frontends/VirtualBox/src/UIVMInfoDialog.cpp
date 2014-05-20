@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 51310 2014-05-20 17:23:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMInfoDialog.cpp 51311 2014-05-20 18:05:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -33,6 +33,9 @@
 #include "UIConverter.h"
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
+#include "QITabWidget.h"
+#include "VBoxUtils.h"
+#include "QIDialogButtonBox.h"
 
 /* COM includes: */
 #include "COMEnums.h"
