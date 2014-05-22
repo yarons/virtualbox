@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 50089 2014-01-17 12:02:20Z michal.necasek@oracle.com $ */
+/* $Id: DrvSCSI.cpp 51342 2014-05-22 10:24:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -122,7 +122,8 @@ static bool drvscsiIsRedoPossible(int rc)
     if (   rc == VERR_DISK_FULL
         || rc == VERR_FILE_TOO_BIG
         || rc == VERR_BROKEN_PIPE
-        || rc == VERR_NET_CONNECTION_REFUSED)
+        || rc == VERR_NET_CONNECTION_REFUSED
+        || rc == VERR_VD_DEK_MISSING)
         return true;
 
     return false;
