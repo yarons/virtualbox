@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 51397 2014-05-26 13:48:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineMenuBar.cpp 51398 2014-05-26 14:04:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -249,6 +249,15 @@ void UIMachineMenuBar::prepareMenuMachine(QMenu *pMenu)
 
     /* Separator #2? */
     bool fSeparator2 = false;
+
+    /* Keyboard Settings action: */
+    if (m_pSession->allowedActionsMenuMachine() & RuntimeMenuMachineActionType_KeyboardSettings)
+    {
+//        pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_KeyboardSettings));
+//        fSeparator2 = true;
+    }
+    else
+        gActionPool->action(UIActionIndexRuntime_Simple_KeyboardSettings)->setEnabled(false);
 
     /* Mouse Integration action: */
     if (m_pSession->allowedActionsMenuMachine() & RuntimeMenuMachineActionType_MouseIntegration)
