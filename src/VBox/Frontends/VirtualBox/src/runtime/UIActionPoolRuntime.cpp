@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 51398 2014-05-26 14:04:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 51401 2014-05-26 16:45:43Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Local includes: */
 #include "UIActionPoolRuntime.h"
+#include "UIExtraDataDefs.h"
 #include "UIShortcutPool.h"
 #include "VBoxGlobal.h"
 

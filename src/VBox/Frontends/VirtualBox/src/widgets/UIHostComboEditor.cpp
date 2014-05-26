@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 50553 2014-02-24 10:33:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 51401 2014-05-26 16:45:43Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,9 +26,10 @@
 
 /* GUI includes: */
 #include "UIHostComboEditor.h"
-#include "VBoxGlobal.h"
-#include "QIToolButton.h"
+#include "UIExtraDataDefs.h"
 #include "UIIconPool.h"
+#include "QIToolButton.h"
+#include "VBoxGlobal.h"
 
 #ifdef Q_WS_WIN
 # undef LOWORD
