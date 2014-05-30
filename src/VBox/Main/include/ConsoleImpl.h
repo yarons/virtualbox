@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 51342 2014-05-22 10:24:53Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 51476 2014-05-30 14:58:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -219,7 +219,7 @@ public:
     HRESULT onCPUChange(ULONG aCPU, BOOL aRemove);
     HRESULT onCPUExecutionCapChange(ULONG aExecutionCap);
     HRESULT onClipboardModeChange(ClipboardMode_T aClipboardMode);
-    HRESULT onDragAndDropModeChange(DragAndDropMode_T aDragAndDropMode);
+    HRESULT onDnDModeChange(DnDMode_T aDnDMode);
     HRESULT onVRDEServerChange(BOOL aRestart);
     HRESULT onVideoCaptureChange();
     HRESULT onUSBControllerChange();
@@ -698,7 +698,7 @@ private:
                                                      INetworkAdapter *aNetworkAdapter);
 
     void changeClipboardMode(ClipboardMode_T aClipboardMode);
-    void changeDragAndDropMode(DragAndDropMode_T aDragAndDropMode);
+    int changeDnDMode(DnDMode_T aDnDMode);
 
 #ifdef VBOX_WITH_USB
     HRESULT attachUSBDevice(IUSBDevice *aHostDevice, ULONG aMaskedIfs);
