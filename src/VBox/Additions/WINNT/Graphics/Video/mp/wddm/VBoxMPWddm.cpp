@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 51466 2014-05-30 10:07:26Z noreply@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 51468 2014-05-30 11:42:14Z noreply@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3629,7 +3629,7 @@ DxgkDdiBuildPagingBufferNew(
             {
                 WARN(("pBuildPagingBuffer->DmaSize(%d) < sizeof VBOXCMDVBVA_PAGING_TRANSFER (%d)", pBuildPagingBuffer->DmaSize , sizeof (VBOXCMDVBVA_PAGING_TRANSFER)));
                 /* @todo: can this actually happen? what status to return? */
-                return STATUS_INVALID_PARAMETER;
+                return STATUS_GRAPHICS_INSUFFICIENT_DMA_BUFFER;
             }
 
             VBOXCMDVBVA_PAGING_TRANSFER *pPaging = (VBOXCMDVBVA_PAGING_TRANSFER*)pBuildPagingBuffer->pDmaBuffer;
