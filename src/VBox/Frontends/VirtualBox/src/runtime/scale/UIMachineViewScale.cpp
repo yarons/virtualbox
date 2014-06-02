@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 51484 2014-06-02 10:41:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 51493 2014-06-02 16:30:27Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,6 @@
 #include "UIMachineWindow.h"
 #include "UIMachineViewScale.h"
 #include "UIFrameBuffer.h"
-#include "UIFrameBufferQImage.h"
 
 /* COM includes: */
 #include "CConsole.h"
