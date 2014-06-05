@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 51321 2014-05-21 13:02:44Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.h 51556 2014-06-05 14:38:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -63,8 +63,8 @@ private:
     /** @name Wrapped Private internal methods.
      * @{ */
     /** @}  */
-     HRESULT close();
-     HRESULT read(ComPtr<IFsObjInfo> &aObjInfo);
+    HRESULT close();
+    HRESULT read(ComPtr<IFsObjInfo> &aObjInfo);
 
     struct Data
     {
