@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51604 2014-06-11 12:16:51Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.cpp 51605 2014-06-11 12:57:05Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1122,12 +1122,8 @@ void Display::handleDisplayUpdate (unsigned uScreenId, int x, int y, int w, int 
     IFramebuffer *pFramebuffer = maFramebuffers[uScreenId].pFramebuffer;
     if (pFramebuffer != NULL)
     {
-        pFramebuffer->Lock();
-
         if (w != 0 && h != 0)
             pFramebuffer->NotifyUpdate(x, y, w, h);
-
-        pFramebuffer->Unlock();
     }
 
 #ifndef VBOX_WITH_HGSMI
