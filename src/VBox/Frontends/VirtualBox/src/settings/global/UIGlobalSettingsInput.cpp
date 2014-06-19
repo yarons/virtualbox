@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 51649 2014-06-18 13:43:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.cpp 51668 2014-06-19 14:46:04Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -32,6 +32,10 @@
 #include "UIHotKeyEditor.h"
 #include "UIHostComboEditor.h"
 #include "VBoxGlobalSettings.h"
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+
 
 /* Input page constructor: */
 UIGlobalSettingsInput::UIGlobalSettingsInput()

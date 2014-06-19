@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 51649 2014-06-18 13:43:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostComboEditor.cpp 51668 2014-06-19 14:46:04Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -59,6 +59,9 @@
 # include "VBoxUtils.h"
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
 
 
 #ifdef Q_WS_X11
