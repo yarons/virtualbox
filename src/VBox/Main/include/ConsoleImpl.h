@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 51752 2014-06-27 20:59:43Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 51753 2014-06-27 21:03:59Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -569,7 +569,7 @@ public:
 
     /**
      * Class for managing cryptographic keys.
-     * @ŧodo: Replace with a keystore implementation once it is ready.
+     * @todo: Replace with a keystore implementation once it is ready.
      */
     class SecretKey
     {
