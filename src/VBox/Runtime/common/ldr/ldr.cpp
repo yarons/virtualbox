@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 49044 2013-10-11 01:06:28Z knut.osmundsen@oracle.com $ */
+/* $Id: ldr.cpp 51770 2014-07-01 18:14:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -38,23 +38,6 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include "internal/ldr.h"
-
-
-RTDECL(bool) RTLdrIsLoadable(const char *pszFilename)
-{
-    /*
-     * Try to load the library.
-     */
-    RTLDRMOD hLib;
-    int rc = RTLdrLoad(pszFilename, &hLib);
-    if (RT_SUCCESS(rc))
-    {
-        RTLdrClose(hLib);
-        return true;
-    }
-    return false;
-}
-RT_EXPORT_SYMBOL(RTLdrIsLoadable);
 
 
 RTDECL(int) RTLdrGetSymbol(RTLDRMOD hLdrMod, const char *pszSymbol, void **ppvValue)
