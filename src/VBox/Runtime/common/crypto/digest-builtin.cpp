@@ -1,4 +1,4 @@
-/* $Id: digest-builtin.cpp 51770 2014-07-01 18:14:02Z knut.osmundsen@oracle.com $ */
+/* $Id: digest-builtin.cpp 51820 2014-07-02 19:32:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, Built-in providers.
  */
@@ -307,6 +307,7 @@ static RTCRDIGESTDESC const g_rtCrDigestSha512Desc =
  */
 static PCRTCRDIGESTDESC const g_apDigestOps[] =
 {
+    &g_rtCrDigestMd2Desc,
     &g_rtCrDigestMd5Desc,
     &g_rtCrDigestSha1Desc,
     &g_rtCrDigestSha256Desc,
