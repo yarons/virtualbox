@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 48657 2013-09-24 13:14:57Z noreply@oracle.com $ */
+/* $Id: tstMMHyperHeap.cpp 51906 2014-07-07 16:28:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -37,7 +37,10 @@
 #define NUM_CPUS  16
 
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
 
     /*
@@ -240,3 +243,15 @@ int main(int argc, char **argv)
 #endif
     return 0;
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
+
