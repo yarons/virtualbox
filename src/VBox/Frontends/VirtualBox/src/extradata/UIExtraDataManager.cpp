@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51996 2014-07-11 15:36:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 52013 2014-07-14 11:10:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2818,6 +2818,17 @@ QList<IndicatorType> UIExtraDataManager::restrictedStatusBarIndicators(const QSt
     }
     /* Return result: */
     return result;
+}
+
+void UIExtraDataManager::setRestrictedStatusBarIndicators(const QList<IndicatorType> &list, const QString &strID)
+{
+    /* Parse passed list: */
+    QStringList data;
+    foreach (const IndicatorType &indicatorType, list)
+        data << gpConverter->toInternalString(indicatorType);
+
+    /* Re-cache corresponding extra-data: */
+    setExtraDataStringList(GUI_RestrictedStatusBarIndicators, data, strID);
 }
 
 #ifdef Q_WS_MAC
