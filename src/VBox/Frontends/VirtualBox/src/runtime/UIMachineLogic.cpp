@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52014 2014-07-14 11:16:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 52055 2014-07-16 17:03:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -370,6 +370,9 @@ void UIMachineLogic::notifyAbout3DOverlayVisibilityChange(bool fVisible)
         popupCenter().setPopupStackType(activeMachineWindow(), fVisible ? UIPopupStackType_Separate : UIPopupStackType_Embedded);
         popupCenter().showPopupStack(activeMachineWindow());
     }
+
+    /* Notify other listeners: */
+    emit sigNotifyAbout3DOverlayVisibilityChange(fVisible);
 }
 
 void UIMachineLogic::sltChangeVisualStateToNormal()
