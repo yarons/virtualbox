@@ -1,4 +1,4 @@
-/* $Id: memsafer-r3.cpp 52050 2014-07-16 13:53:24Z knut.osmundsen@oracle.com $ */
+/* $Id: memsafer-r3.cpp 52051 2014-07-16 14:01:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -342,6 +342,8 @@ static int rtMemSaferMemAllocPages(PRTMEMSAFERNODE pThis)
         /* failed. */
         RTMemPageFree(pvPages, (size_t)pThis->cPages * PAGE_SIZE);
     }
+    else
+        rc = VERR_NO_PAGE_MEMORY;
 
     return rc;
 }
