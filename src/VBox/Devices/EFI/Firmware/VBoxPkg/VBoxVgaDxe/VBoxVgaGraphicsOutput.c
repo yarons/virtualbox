@@ -1,6 +1,6 @@
-/* $Id: VBoxVgaGraphicsOutput.c 48674 2013-09-25 08:26:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVgaGraphicsOutput.c 52069 2014-07-17 08:40:36Z klaus.espenlaub@oracle.com $ */
 /** @file
- * LegacyBiosMpTable.h
+ * VBoxVgaGraphicsOutput.c
  */
 
 /*
