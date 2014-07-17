@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 51720 2014-06-25 04:57:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAll.cpp 52077 2014-07-17 13:03:19Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10915,6 +10915,10 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMInjectTrap(PVMCPU pVCpu, uint8_t u8TrapNo, TRPMEVE
                 case X86_XCPT_PF:
                 case X86_XCPT_AC:
                     fFlags |= IEM_XCPT_FLAGS_ERR;
+                    break;
+
+                case X86_XCPT_NMI:
+                    VMCPU_FF_SET(pVCpu, VMCPU_FF_BLOCK_NMIS);
                     break;
             }
             break;
