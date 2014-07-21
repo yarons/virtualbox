@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 52064 2014-07-16 21:23:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.h 52117 2014-07-21 20:12:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -224,6 +224,7 @@ private:
                                  ULONG aWidth,
                                  ULONG aHeight);
     virtual HRESULT invalidateAndUpdate();
+    virtual HRESULT invalidateAndUpdateScreen(ULONG aScreenId);
     virtual HRESULT completeVHWACommand(BYTE *aCommand);
     virtual HRESULT viewportChanged(ULONG aScreenId,
                                     ULONG aX,
