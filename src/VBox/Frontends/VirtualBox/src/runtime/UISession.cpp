@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52129 2014-07-22 15:17:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 52130 2014-07-22 15:52:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -33,7 +33,6 @@
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"
 #include "UIMachineWindow.h"
-#include "UIMachineMenuBar.h"
 #include "UIMessageCenter.h"
 #include "UIPopupCenter.h"
 #include "UIWizardFirstRun.h"
