@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 51328 2014-05-21 17:26:31Z noreply@oracle.com $ */
+/* $Id: VBoxMPDevExt.h 52136 2014-07-22 19:36:45Z noreply@oracle.com $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -143,7 +143,11 @@ typedef struct _VBOXMP_DEVEXT
 #ifdef VBOX_WITH_VIDEOHWACCEL
    VBOXVTLIST VhwaCmdList;
 #endif
-   BOOL bNotifyDxDpc;
+   BOOLEAN bNotifyDxDpc;
+
+   BOOLEAN fDisableTargetUpdate;
+
+
 
 #ifdef VBOX_VDMA_WITH_WATCHDOG
    PKTHREAD pWdThread;
