@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52130 2014-07-22 15:52:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 52132 2014-07-22 16:23:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1008,9 +1008,6 @@ void UIMachineLogic::prepareHandlers()
 
 void UIMachineLogic::prepareMenu()
 {
-    /* Update action-pool visibility: */
-    uisession()->updateActionPoolVisibility();
-
     /* Update 'Machine' menu: */
     updateMenuMachine();
     /* Update 'View' menu: */
