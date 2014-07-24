@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 52118 2014-07-22 07:04:03Z vitali.pelenjow@oracle.com $ */
+/* $Id: UIMachineView.cpp 52179 2014-07-24 23:39:00Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -241,8 +241,8 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
 #endif /* Q_WS_MAC */
     }
 
-    /* Emit a signal about guest was resized: */
-    emit resizeHintDone();
+    /* Notify frame-buffer resize: */
+    emit sigFrameBufferResize();
 
     CDisplay dsp = session().GetConsole().GetDisplay();
     dsp.InvalidateAndUpdateScreen(m_uScreenId);
