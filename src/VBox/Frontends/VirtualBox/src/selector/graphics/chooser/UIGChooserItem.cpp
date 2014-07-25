@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 50932 2014-03-31 16:01:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItem.cpp 52202 2014-07-25 20:34:38Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -112,6 +112,11 @@ UIGChooserModel* UIGChooserItem::model() const
     UIGChooserModel *pModel = qobject_cast<UIGChooserModel*>(QIGraphicsWidget::scene()->parent());
     AssertMsg(pModel, ("Incorrect graphics scene parent set!"));
     return pModel;
+}
+
+UIActionPool* UIGChooserItem::actionPool() const
+{
+    return model()->actionPool();
 }
 
 UIGChooserItem* UIGChooserItem::parentItem() const
