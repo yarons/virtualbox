@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 52312 2014-08-07 12:54:38Z noreply@oracle.com $ */
+/* $Id: EbmlWriter.h 52316 2014-08-07 14:11:55Z noreply@oracle.com $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -112,7 +112,7 @@ public:
     {
         serializeConst<classId>();
         serializeConstEbml<sizeof(T)>();
-        write(value.value);
+        write<T>(value.value);
         return *this;
     }
 
