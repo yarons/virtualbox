@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 52080 2014-07-17 14:46:47Z michal.necasek@oracle.com $ */
+/* $Id: IEMAll.cpp 52361 2014-08-12 19:04:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -975,7 +975,8 @@ static VBOXSTRICTRC iemInitDecoderAndPrefetchOpcodes(PIEMCPU pIemCpu, bool fBypa
             Assert(GCPtrPC32 == 0); Assert(pCtx->cs.u32Limit == UINT32_MAX);
             cbToTryRead = UINT32_MAX;
         }
-        GCPtrPC = pCtx->cs.u64Base + GCPtrPC32;
+        GCPtrPC = (uint32_t)pCtx->cs.u64Base + GCPtrPC32;
+        Assert(GCPtrPC <= UINT32_MAX);
     }
 
 #ifdef VBOX_WITH_RAW_MODE_NOT_R0
