@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52366 2014-08-13 10:35:55Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain.cpp 52403 2014-08-18 20:35:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -974,7 +974,7 @@ DECLHIDDEN(void) supR3HardenedOpenLog(int *pcArgs, char **papszArgs)
                                                 FILE_SHARE_READ | FILE_SHARE_WRITE,
                                                 NULL,
                                                 OPEN_ALWAYS,
-                                                FILE_ATTRIBUTE_NORMAL | FILE_FLAG_WRITE_THROUGH,
+                                                FILE_ATTRIBUTE_NORMAL /*| FILE_FLAG_WRITE_THROUGH*/,
                                                 NULL);
                     RTUtf16Free(pwszPath);
                 }
