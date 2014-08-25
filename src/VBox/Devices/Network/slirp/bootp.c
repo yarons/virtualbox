@@ -1,4 +1,4 @@
-/* $Id: bootp.c 51071 2014-04-14 17:53:44Z vadim.galitsyn@oracle.com $ */
+/* $Id: bootp.c 52499 2014-08-25 17:48:11Z michal.necasek@oracle.com $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -71,7 +71,10 @@ static uint8_t *dhcp_find_option(uint8_t *vend, uint8_t tag)
     while(*q != RFC1533_END)
     {
         if (*q == RFC1533_PAD)
+        {
+            q++;
             continue;
+        }
         if (*q == tag)
             return q;
         q++;
