@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 52494 2014-08-25 13:23:57Z noreply@oracle.com $ */
+/* $Id: server_presenter.cpp 52531 2014-08-29 15:25:02Z noreply@oracle.com $ */
 
 /** @file
  * Presenter API
@@ -5651,7 +5651,7 @@ static void crPMgrPrimaryUpdateScreen(HCR_FRAMEBUFFER hFb, uint32_t idScreen, ui
     const VBVAINFOSCREEN *pScreen = CrFbGetScreenInfo(hFb);
 
     bool fDirtyEmpty = true;
-    RTRECT dirtyRect;
+    RTRECT dirtyRect = {0};
     cr_server.CrCmdClientInfo.pfnCltScrUpdateBegin(cr_server.CrCmdClientInfo.hCltScr, idScreen);
 
     VBVACMDHDR hdr;
