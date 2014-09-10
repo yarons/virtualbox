@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 51291 2014-05-19 14:51:00Z klaus.espenlaub@oracle.com $ */
+/* $Id: PDM.cpp 52670 2014-09-10 11:04:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -485,6 +485,7 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         pVM->pdm.s.Apic.pfnBusDeliverRC     += offDelta;
         if (pVM->pdm.s.Apic.pfnLocalInterruptRC)
             pVM->pdm.s.Apic.pfnLocalInterruptRC += offDelta;
+        pVM->pdm.s.Apic.pfnGetTimerFreqRC   += offDelta;
         pVM->pdm.s.Apic.pfnWriteMSRRC       += offDelta;
         pVM->pdm.s.Apic.pfnReadMSRRC        += offDelta;
     }
