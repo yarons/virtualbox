@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 52657 2014-09-09 15:05:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 52678 2014-09-10 15:10:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2147,7 +2147,7 @@ void UIActionPoolRuntime::updateMenus()
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* 'Debug' menu: */
-    addMenu(m_mainMenus, action(UIActionIndexRT_M_Debug));
+    addMenu(m_mainMenus, action(UIActionIndexRT_M_Debug), vboxGlobal().isDebuggerEnabled());
     updateMenuDebug();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
