@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52705 2014-09-11 15:12:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 52706 2014-09-11 15:14:07Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -222,7 +222,7 @@ void UIMachineWindowSeamless::adjustMachineViewSize()
     if (m_pMiniToolBar)
     {
         /* Make sure this window has seamless logic: */
-        const UIMachineLogicFullscreen *pSeamlessLogic = qobject_cast<UIMachineLogicSeamless*>(machineLogic());
+        const UIMachineLogicSeamless *pSeamlessLogic = qobject_cast<UIMachineLogicSeamless*>(machineLogic());
         AssertPtrReturnVoid(pSeamlessLogic);
 
         /* Which host-screen should that machine-window located on? */
