@@ -1,8 +1,6 @@
-/* $Id: UIGraphicsToolBar.cpp 42526 2012-08-02 10:31:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsToolBar.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGraphicsToolBar class definition
+ * VBox Qt GUI - UIGraphicsToolBar class definition.
  */
 
 /*

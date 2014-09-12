@@ -1,8 +1,6 @@
-/* $Id: QILabel.cpp 46834 2013-06-27 12:19:51Z sergey.dubov@oracle.com $ */
+/* $Id: QILabel.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QILabel class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: QILabel class implementation.
  */
 
 /*

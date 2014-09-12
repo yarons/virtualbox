@@ -1,6 +1,6 @@
-/* $Id: VirtualBoxHardened.rc 51900 2014-07-07 10:59:18Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxHardened.rc 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- * Windows resource file for the Hardened VirtualBox.exe.
+ * VBox Qt GUI - Windows resource file for the Hardened VirtualBox.exe.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: DockIconPreview.h 34401 2010-11-26 16:37:51Z noreply@oracle.com $ */
+/* $Id: DockIconPreview.h 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDockIconPreview class declaration
+ * VBox Qt GUI - UIDockIconPreview class declaration.
  */
 
 /*

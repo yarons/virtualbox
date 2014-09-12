@@ -1,8 +1,6 @@
-/* $Id: UIGlobalSettingsProxy.cpp 47946 2013-08-21 07:50:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIGlobalSettingsProxy class implementation
+ * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
 
 /*

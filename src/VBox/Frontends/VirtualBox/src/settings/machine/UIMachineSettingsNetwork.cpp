@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsNetwork.cpp 51873 2014-07-04 16:22:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsNetwork class implementation
+ * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
 
 /*

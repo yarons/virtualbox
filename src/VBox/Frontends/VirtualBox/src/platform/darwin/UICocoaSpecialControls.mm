@@ -1,8 +1,6 @@
-/* $Id: UICocoaSpecialControls.mm 51265 2014-05-15 18:04:22Z sergey.dubov@oracle.com $ */
+/* $Id: UICocoaSpecialControls.mm 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UICocoaSpecialControls implementation
+ * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: QIListView.cpp 42261 2012-07-20 13:27:47Z noreply@oracle.com $ */
+/* $Id: QIListView.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * QIListView, QIItemDelegate class implementation
+ * VBox Qt GUI - QIListView, QIItemDelegate class implementation.
  */
 
 /*

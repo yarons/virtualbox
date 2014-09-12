@@ -1,8 +1,6 @@
-/* $Id: UIShortcutPool.cpp 51668 2014-06-19 14:46:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutPool.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIShortcutPool class implementation
+ * VBox Qt GUI - UIShortcutPool class implementation.
  */
 
 /*

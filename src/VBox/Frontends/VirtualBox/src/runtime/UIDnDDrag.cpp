@@ -1,8 +1,6 @@
-/* $Id: UIDnDDrag.cpp 51476 2014-05-30 14:58:02Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDDrag.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDDrag class implementation. This class acts as a wrapper
+ * VBox Qt GUI - UIDnDDrag class implementation. This class acts as a wrapper
  * for OS-dependent guest->host drag'n drop operations.
  */
 

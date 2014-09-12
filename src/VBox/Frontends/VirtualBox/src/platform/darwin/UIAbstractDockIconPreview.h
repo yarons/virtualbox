@@ -1,8 +1,6 @@
-/* $Id: UIAbstractDockIconPreview.h 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: UIAbstractDockIconPreview.h 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Abstract class for the dock icon preview
+ * VBox Qt GUI - Abstract class for the dock icon preview.
  */
 
 /*

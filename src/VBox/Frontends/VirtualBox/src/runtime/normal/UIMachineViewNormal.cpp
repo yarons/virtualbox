@@ -1,8 +1,6 @@
-/* $Id: UIMachineViewNormal.cpp 52705 2014-09-11 15:12:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineViewNormal class implementation
+ * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
 
 /*

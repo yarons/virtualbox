@@ -1,8 +1,6 @@
-/* $Id: UISpecialControls.cpp 50931 2014-03-31 15:56:57Z sergey.dubov@oracle.com $ */
+/* $Id: UISpecialControls.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VBoxSpecialButtons implementation
+ * VBox Qt GUI - VBoxSpecialButtons implementation.
  */
 
 /*

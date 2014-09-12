@@ -1,8 +1,6 @@
-/* $Id: UINameAndSystemEditor.cpp 50332 2014-02-05 15:23:20Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UINameAndSystemEditor class implementation
+ * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
 
 /*

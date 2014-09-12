@@ -1,8 +1,6 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 49266 2013-10-23 18:54:12Z noreply@oracle.com $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: VBoxFilePathSelectorWidget class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: VBoxFilePathSelectorWidget class implementation.
  */
 
 /*

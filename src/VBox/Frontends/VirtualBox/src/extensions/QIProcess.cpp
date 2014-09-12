@@ -1,8 +1,6 @@
-/* $Id: QIProcess.cpp 50041 2014-01-09 16:13:28Z noreply@oracle.com $ */
+/* $Id: QIProcess.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * QIProcess class implementation
+ * VBox Qt GUI - QIProcess class implementation.
  */
 
 /*

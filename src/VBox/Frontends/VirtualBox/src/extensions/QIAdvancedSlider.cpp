@@ -1,8 +1,6 @@
-/* $Id: QIAdvancedSlider.cpp 46831 2013-06-27 12:03:39Z sergey.dubov@oracle.com $ */
+/* $Id: QIAdvancedSlider.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QIAdvancedSlider class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: QIAdvancedSlider class implementation.
  */
 
 /*

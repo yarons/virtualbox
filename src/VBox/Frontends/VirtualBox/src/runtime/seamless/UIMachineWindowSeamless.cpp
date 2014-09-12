@@ -1,8 +1,6 @@
-/* $Id: UIMachineWindowSeamless.cpp 52706 2014-09-11 15:14:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineWindowSeamless class implementation
+ * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
 
 /*

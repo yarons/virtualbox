@@ -1,8 +1,6 @@
-/* $Id: UIMachineViewScale.cpp 52246 2014-07-31 12:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineViewScale class implementation
+ * VBox Qt GUI - UIMachineViewScale class implementation.
  */
 
 /*

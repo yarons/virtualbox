@@ -1,8 +1,6 @@
-/* $Id: UILineTextEdit.cpp 49418 2013-11-08 11:25:36Z sergey.dubov@oracle.com $ */
+/* $Id: UILineTextEdit.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UILineTextEdit class definitions
+ * VBox Qt GUI - UILineTextEdit class definitions.
  */
 
 /*

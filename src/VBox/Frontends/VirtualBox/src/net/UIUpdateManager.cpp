@@ -1,8 +1,6 @@
-/* $Id: UIUpdateManager.cpp 51679 2014-06-20 17:15:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIUpdateManager class implementation
+ * VBox Qt GUI - UIUpdateManager class implementation.
  */
 
 /*

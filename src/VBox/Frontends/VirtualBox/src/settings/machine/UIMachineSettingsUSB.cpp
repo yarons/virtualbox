@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsUSB.cpp 51937 2014-07-08 16:01:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsUSB class implementation
+ * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
 
 /*

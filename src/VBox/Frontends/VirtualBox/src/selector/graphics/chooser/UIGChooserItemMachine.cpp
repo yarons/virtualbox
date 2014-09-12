@@ -1,8 +1,6 @@
-/* $Id: UIGChooserItemMachine.cpp 52202 2014-07-25 20:34:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItemMachine.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGChooserItemMachine class implementation
+ * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: UIAbstractDockIconPreview.cpp 48950 2013-10-07 21:52:10Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAbstractDockIconPreview.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- * Qt GUI - Realtime Dock Icon Preview
+ * VBox Qt GUI - Realtime Dock Icon Preview
  */
 
 /*

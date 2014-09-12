@@ -1,8 +1,6 @@
-/* $Id: UIAnimationFramework.cpp 51956 2014-07-09 14:32:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIAnimationFramework.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIAnimationFramework class implementation
+ * VBox Qt GUI - UIAnimationFramework class implementation.
  */
 
 /*

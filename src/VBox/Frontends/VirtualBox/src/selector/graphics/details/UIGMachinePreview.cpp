@@ -1,8 +1,6 @@
-/* $Id: UIGMachinePreview.cpp 52200 2014-07-25 20:00:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: UIGMachinePreview.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGMachinePreview class implementation
+ * VBox Qt GUI - UIGMachinePreview class implementation.
  */
 
 /*

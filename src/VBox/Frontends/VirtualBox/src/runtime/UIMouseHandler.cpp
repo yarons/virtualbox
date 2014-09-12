@@ -1,8 +1,6 @@
-/* $Id: UIMouseHandler.cpp 52195 2014-07-25 15:32:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMouseHandler class implementation
+ * VBox Qt GUI - UIMouseHandler class implementation.
  */
 
 /*

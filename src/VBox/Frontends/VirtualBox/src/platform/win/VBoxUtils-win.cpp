@@ -1,8 +1,6 @@
-/* $Id: VBoxUtils-win.cpp 35940 2011-02-11 11:58:32Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-win.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Utility classes and functions for handling Win specific tasks
+ * VBox Qt GUI - Utility classes and functions for handling Win specific tasks.
  */
 
 /*

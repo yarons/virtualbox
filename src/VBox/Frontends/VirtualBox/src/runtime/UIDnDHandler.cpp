@@ -1,8 +1,6 @@
-/* $Id: UIDnDHandler.cpp 51479 2014-05-30 16:32:11Z noreply@oracle.com $ */
+/* $Id: UIDnDHandler.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDHandler class implementation
+ * VBox Qt GUI - UIDnDHandler class implementation.
  */
 
 /*

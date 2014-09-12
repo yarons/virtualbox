@@ -1,8 +1,6 @@
-/* $Id: UIPopupStack.cpp 50138 2014-01-21 13:00:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupStack.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIPopupStack class implementation
+ * VBox Qt GUI - UIPopupStack class implementation.
  */
 
 /*

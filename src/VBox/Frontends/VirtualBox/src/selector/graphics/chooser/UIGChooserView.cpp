@@ -1,8 +1,6 @@
-/* $Id: UIGChooserView.cpp 45007 2013-03-12 15:16:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserView.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGChooserView class implementation
+ * VBox Qt GUI - UIGChooserView class implementation.
  */
 
 /*

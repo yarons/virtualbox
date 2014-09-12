@@ -1,8 +1,6 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 50881 2014-03-26 09:31:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIApplianceImportEditorWidget class implementation
+ * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
 
 /*

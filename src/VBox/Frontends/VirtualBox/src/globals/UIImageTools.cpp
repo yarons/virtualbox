@@ -1,8 +1,6 @@
-/* $Id: UIImageTools.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: UIImageTools.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Implementation of utility classes and functions for image manipulation
+ * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
 
 /*

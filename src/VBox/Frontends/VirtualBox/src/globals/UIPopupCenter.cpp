@@ -1,8 +1,6 @@
-/* $Id: UIPopupCenter.cpp 51199 2014-05-06 16:06:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupCenter.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIPopupCenter class implementation
+ * VBox Qt GUI - UIPopupCenter class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 43778 2012-10-30 13:13:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGChooserHandlerKeyboard class implementation
+ * VBox Qt GUI - UIGChooserHandlerKeyboard class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIMultiScreenLayout.cpp 52239 2014-07-30 19:05:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMultiScreenLayout class implementation
+ * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
 
 /*

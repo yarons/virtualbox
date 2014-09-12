@@ -1,6 +1,6 @@
-/* $Id: UICocoaApplication.mm 52511 2014-08-28 11:59:52Z sergey.dubov@oracle.com $ */
+/* $Id: UICocoaApplication.mm 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- * UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
+ * VBox Qt GUI - UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
 
 /*

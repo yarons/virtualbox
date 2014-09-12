@@ -1,8 +1,6 @@
-/* $Id: UINetworkReply.cpp 51736 2014-06-26 09:53:45Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UINetworkReply stuff implementation
+ * VBox Qt GUI - UINetworkReply stuff implementation.
  */
 
 /*

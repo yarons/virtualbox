@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsAudio.cpp 46641 2013-06-18 18:40:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsAudio class implementation
+ * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
 
 /*

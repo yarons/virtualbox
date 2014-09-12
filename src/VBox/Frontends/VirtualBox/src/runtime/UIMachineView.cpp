@@ -1,8 +1,6 @@
-/* $Id: UIMachineView.cpp 52246 2014-07-31 12:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineView class implementation
+ * VBox Qt GUI - UIMachineView class implementation.
  */
 
 /*

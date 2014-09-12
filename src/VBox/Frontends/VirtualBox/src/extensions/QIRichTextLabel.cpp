@@ -1,8 +1,6 @@
-/* $Id: QIRichTextLabel.cpp 49472 2013-11-13 17:17:21Z sergey.dubov@oracle.com $ */
+/* $Id: QIRichTextLabel.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QIRichTextLabel class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: QIRichTextLabel class implementation.
  */
 
 /*

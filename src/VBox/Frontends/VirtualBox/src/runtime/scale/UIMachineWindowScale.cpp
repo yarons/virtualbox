@@ -1,8 +1,6 @@
-/* $Id: UIMachineWindowScale.cpp 52642 2014-09-08 11:21:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowScale.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineWindowScale class implementation
+ * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
 
 /*

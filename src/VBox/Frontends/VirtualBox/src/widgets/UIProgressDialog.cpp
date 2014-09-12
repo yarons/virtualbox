@@ -1,8 +1,6 @@
-/* $Id: UIProgressDialog.cpp 48576 2013-09-20 09:08:41Z noreply@oracle.com $ */
+/* $Id: UIProgressDialog.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIProgressDialog class implementation
+ * VBox Qt GUI - UIProgressDialog class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIGChooserModel.cpp 52579 2014-09-03 11:56:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserModel.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGChooserModel class implementation
+ * VBox Qt GUI - UIGChooserModel class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIVMCloseDialog.cpp 51663 2014-06-19 11:20:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIVMCloseDialog class implementation
+ * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
 
 /*
