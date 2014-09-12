@@ -1,8 +1,6 @@
-/* $Id: UIWizardPage.cpp 41372 2012-05-21 16:53:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardPage.cpp 52721 2014-09-12 13:39:22Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardPage class implementation
+ * VBox Qt GUI - UIWizardPage class implementation.
  */
 
 /*

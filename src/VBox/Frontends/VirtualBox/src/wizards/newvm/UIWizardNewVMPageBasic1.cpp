@@ -1,8 +1,6 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 51388 2014-05-26 10:24:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 52721 2014-09-12 13:39:22Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardNewVMPageBasic1 class implementation
+ * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
 
 /*

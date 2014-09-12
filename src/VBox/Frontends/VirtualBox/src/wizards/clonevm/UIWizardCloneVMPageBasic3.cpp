@@ -1,8 +1,6 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 41479 2012-05-29 13:42:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 52721 2014-09-12 13:39:22Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardCloneVMPageBasic3 class implementation
+ * VBox Qt GUI - UIWizardCloneVMPageBasic3 class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 45085 2013-03-19 09:28:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 52721 2014-09-12 13:39:22Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardImportAppPageBasic1 class implementation
+ * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
 
 /*

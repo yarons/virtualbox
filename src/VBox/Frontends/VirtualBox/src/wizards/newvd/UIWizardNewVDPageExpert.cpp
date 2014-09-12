@@ -1,8 +1,6 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 47184 2013-07-16 09:28:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 52721 2014-09-12 13:39:22Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardNewVDPageExpert class implementation
+ * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
 
 /*
