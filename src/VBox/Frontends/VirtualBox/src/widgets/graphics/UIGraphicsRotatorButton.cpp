@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsRotatorButton.cpp 52730 2014-09-12 16:19:53Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGraphicsRotatorButton.cpp 52733 2014-09-12 17:57:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsRotatorButton class definition.
  */
@@ -23,13 +23,14 @@
 # include <QStateMachine>
 # include <QPropertyAnimation>
 # include <QSignalTransition>
-# include <QMouseEventTransition>
 
 /* GUI includes: */
 # include "UIGraphicsRotatorButton.h"
 # include "UIIconPool.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QMouseEventTransition>
 
 
 UIGraphicsRotatorButton::UIGraphicsRotatorButton(QIGraphicsWidget *pParent,
