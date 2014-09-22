@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 52508 2014-08-27 14:23:25Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 52817 2014-09-22 13:47:20Z michal.necasek@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -300,7 +300,8 @@ int main()
 #  endif
 # endif
 # ifdef VBOX_WITH_XHCI_IMPL
-    CHECK_MEMBER_ALIGNMENT(XHCI, RootHub, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, RootHub2, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, RootHub3, 8);
     CHECK_MEMBER_ALIGNMENT(XHCI, cmdr_dqp, 8);
 #  ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(XHCI, StatCanceledIsocUrbs, 8);
