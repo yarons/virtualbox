@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 51730 2014-06-26 07:37:27Z noreply@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 52849 2014-09-24 19:15:46Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -522,6 +522,9 @@ static int vbvaEnable (unsigned uScreenId, PVGASTATE pVGAState, VBVACONTEXT *pCt
 
         pCtx->aViews[uScreenId].pVBVA = pVBVA;
         pCtx->aViews[uScreenId].u32VBVAOffset = u32Offset;
+
+        /* VBVA is working so disable the pause. */
+        pCtx->fPaused = false;
     }
 
     return rc;
