@@ -1,4 +1,4 @@
-/* $Id: tsmfhook.cpp 46593 2013-06-17 14:32:51Z knut.osmundsen@oracle.com $ */
+/* $Id: tsmfhook.cpp 52857 2014-09-25 11:16:12Z noreply@oracle.com $ */
 /** @file
  * VBoxMMR - Multimedia Redirection
  */
@@ -1257,9 +1257,7 @@ ReadTSMF(uint32_t u32ChannelHandle, uint32_t u32HGCMClientId, uint32_t u32SizeAv
         pChannel->PushBuffer(pBuffer);
     }
     else
-    {
-        delete [] pBuffer;
-    }
+        delete pBuffer;
 }
 
 DECLCALLBACK(int)
