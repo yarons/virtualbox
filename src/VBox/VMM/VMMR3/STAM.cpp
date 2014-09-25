@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 52847 2014-09-24 15:45:35Z knut.osmundsen@oracle.com $ */
+/* $Id: STAM.cpp 52862 2014-09-25 12:50:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1132,7 +1132,6 @@ static void stamR3LookupMaybeFree(PSTAMLOOKUP pLookup)
     if (!pParent)
         return;
 
-#if 0 /** @todo Asserts in stamR3LookupDestroyTree. */
     if (pParent->cDescsInTree == 0 && pParent->pParent)
     {
         pCur = pParent;
@@ -1151,12 +1150,12 @@ static void stamR3LookupMaybeFree(PSTAMLOOKUP pLookup)
         papChildren[i] = pChild;
     }
     pCur->pParent = NULL;
+    pCur->iParent = UINT16_MAX;
 
     /*
      * Destroy pCur.
      */
     stamR3LookupDestroyTree(pCur);
-#endif
 }
 
 
