@@ -1,4 +1,4 @@
-/* $Id: QMTranslator.h 52559 2014-09-01 17:10:15Z klaus.espenlaub@oracle.com $ */
+/* $Id: QMTranslator.h 52901 2014-09-30 15:32:03Z noreply@oracle.com $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -20,14 +20,14 @@
 
 class QMTranslator_Impl;
 
-class QMTranslator 
+class QMTranslator
 {
 public:
     QMTranslator();
     virtual ~QMTranslator();
 
-    /* Gets translation from loaded QM file 
-     * 
+    /* Gets translation from loaded QM file
+     *
      * @param	context	  QM context to look for translation
      * @param   source    Source string in one-byte encoding
      * @param   disamb    Disambiguationg comment, empty by default
