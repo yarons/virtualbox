@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 52618 2014-09-05 12:07:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-solaris.c 52896 2014-09-30 11:04:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -258,7 +258,7 @@ int _init(void)
         else
         {
             LogRel(("VBoxDrvSolarisAttach: supdrvInitDevExt failed\n"));
-            rc = RTErrConvertToErrno(rc);
+            rc = EINVAL;
         }
         RTR0TermForced();
     }
