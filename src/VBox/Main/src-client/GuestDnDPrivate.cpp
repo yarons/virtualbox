@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 52082 2014-07-17 17:18:56Z noreply@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 52978 2014-10-08 07:09:11Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -477,8 +477,9 @@ int GuestDnD::adjustScreenCoordinates(ULONG uScreenId, ULONG *puX, ULONG *puY) c
 
     ULONG dummy;
     LONG xShift, yShift;
+    GuestMonitorStatus_T monitorStatus;
     hr = pDisplay->GetScreenResolution(uScreenId, &dummy, &dummy, &dummy,
-                                       &xShift, &yShift);
+                                       &xShift, &yShift, &monitorStatus);
     if (FAILED(hr))
         return hr;
 
