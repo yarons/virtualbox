@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 53041 2014-10-13 13:38:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 53043 2014-10-13 13:51:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -314,6 +314,4 @@ void UIMachine::enterInitialVisualState()
 {
     sltChangeVisualState(m_initialVisualState);
 }
-
-#include "UIMachine.moc"
 
