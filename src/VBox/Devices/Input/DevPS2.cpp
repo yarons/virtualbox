@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 52052 2014-07-16 14:25:52Z michal.necasek@oracle.com $ */
+/* $Id: DevPS2.cpp 53055 2014-10-14 15:01:40Z michal.necasek@oracle.com $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -500,7 +500,7 @@ static int kbd_write_command(void *opaque, uint32_t addr, uint32_t val)
         kbd_update_irq(s);
         break;
     case KBD_CCMD_READ_INPORT:
-        kbc_dbb_out(s, 0x00);
+        kbc_dbb_out(s, 0xBF);
         break;
     case KBD_CCMD_READ_OUTPORT:
         /* XXX: check that */
