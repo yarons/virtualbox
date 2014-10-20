@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 51658 2014-06-19 03:25:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: EMAll.cpp 53101 2014-10-20 18:34:37Z michal.necasek@oracle.com $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2750,6 +2750,12 @@ static int emInterpretMov(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCORE
 
     rc = DISQueryParamVal(pRegFrame, pDis, &pDis->Param2, &param2, DISQPVWHICH_SRC);
     if(RT_FAILURE(rc))
+        return VERR_EM_INTERPRETER;
+
+    /* If destination is a segment register, punt. We can't handle it here.
+     * NB: Source can be a register and still trigger a #PF!
+     */
+    if (RT_UNLIKELY(pDis->Param1.fUse == DISUSE_REG_SEG))
         return VERR_EM_INTERPRETER;
 
     if (param1.type == DISQPV_TYPE_ADDRESS)
