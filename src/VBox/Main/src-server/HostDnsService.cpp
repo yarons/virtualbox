@@ -1,6 +1,6 @@
-/* $Id: HostDnsService.cpp 53122 2014-10-22 20:43:04Z noreply@oracle.com $ */
+/* $Id: HostDnsService.cpp 53123 2014-10-22 20:46:01Z noreply@oracle.com $ */
 /** @file
- * Base class fo Host DNS & Co services.
+ * Base class for Host DNS & Co services.
  */
 
 /*
