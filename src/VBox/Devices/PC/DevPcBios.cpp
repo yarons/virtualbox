@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 51520 2014-06-04 05:17:41Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DevPcBios.cpp 53148 2014-10-26 18:03:09Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -297,7 +297,7 @@ static int biosGuessDiskLCHS(PPDMIBLOCK pBlock, PPDMMEDIAGEOMETRY pLCHSGeometry)
 
     if (!pBlock)
         return VERR_INVALID_PARAMETER;
-    rc = pBlock->pfnRead(pBlock, 0, aMBR, sizeof(aMBR));
+    rc = pBlock->pfnReadPcBios(pBlock, 0, aMBR, sizeof(aMBR));
     if (RT_FAILURE(rc))
         return rc;
     /* Test MBR magic number. */
