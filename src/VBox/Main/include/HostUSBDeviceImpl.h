@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 53062 2014-10-15 12:34:18Z alexander.eichner@oracle.com $ */
+/* $Id: HostUSBDeviceImpl.h 53297 2014-11-10 21:57:22Z michal.necasek@oracle.com $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -256,6 +256,7 @@ private:
     HRESULT getPort(USHORT *aPort);
     HRESULT getVersion(USHORT *aVersion);
     HRESULT getPortVersion(USHORT *aPortVersion);
+    HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
     HRESULT getName(com::Utf8Str &aName);
     HRESULT getState(USBDeviceState_T *aState);
