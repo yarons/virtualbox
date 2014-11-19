@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 52095 2014-07-18 09:14:01Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImplCloneVM.cpp 53354 2014-11-19 18:32:03Z noreply@oracle.com $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -676,7 +676,8 @@ HRESULT MachineCloneVMPrivate::createDifferencingMedium(const ComObjPtr<Machine>
         rc = diff->init(p->i_getVirtualBox(),
                         pParent->i_getPreferredDiffFormat(),
                         Utf8StrFmt("%s%c", strSnapshotFolder.c_str(), RTPATH_DELIMITER),
-                                   Guid::Empty /* empty media registry */);
+                                   Guid::Empty /* empty media registry */,
+                                   DeviceType_HardDisk);
         if (FAILED(rc)) throw rc;
 
         MediumLockList *pMediumLockList(new MediumLockList());
@@ -1203,7 +1204,8 @@ HRESULT MachineCloneVM::run()
                         rc = pTarget->init(p->mParent,
                                            Utf8Str(bstrSrcFormat),
                                            strFile,
-                                           Guid::Empty /* empty media registry */);
+                                           Guid::Empty /* empty media registry */,
+                                           DeviceType_HardDisk);
                         if (FAILED(rc)) throw rc;
 
                         /* Update the new uuid. */
