@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 50949 2014-04-02 00:53:08Z noreply@oracle.com $ */
+/* $Id: libslirp.h 53399 2014-11-25 22:49:59Z noreply@oracle.com $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -55,7 +55,7 @@ void slirp_link_down(PNATState);
 #if defined(RT_OS_WINDOWS)
 void slirp_select_fill(PNATState pData, int *pndfs);
 
-void slirp_select_poll(PNATState pData, int fTimeout, int fIcmp);
+void slirp_select_poll(PNATState pData, int fTimeout);
 #else /* RT_OS_WINDOWS */
 void slirp_select_fill(PNATState pData, int *pnfds, struct pollfd *polls);
 void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs);
