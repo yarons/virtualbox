@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53389 2014-11-24 16:19:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 53401 2014-11-26 13:37:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3272,6 +3272,12 @@ double UIExtraDataManager::scaleFactor(const QString &strID)
 
     /* Return value: */
     return dValue;
+}
+
+void UIExtraDataManager::setScaleFactor(double dScaleFactor, const QString &strID)
+{
+    /* Set corresponding extra-data value: */
+    setExtraDataString(GUI_ScaleFactor, QString::number(dScaleFactor), strID);
 }
 
 QRect UIExtraDataManager::informationWindowGeometry(QWidget *pWidget, QWidget *pParentWidget, const QString &strID)
