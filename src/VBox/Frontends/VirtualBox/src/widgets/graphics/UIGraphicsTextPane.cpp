@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 52733 2014-09-12 17:57:50Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGraphicsTextPane.cpp 53412 2014-11-28 15:05:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane and UITask class implementation.
  */
@@ -313,6 +313,9 @@ void UIGraphicsTextPane::updateHoverStuff()
 
     /* Update text-layout: */
     updateTextLayout();
+
+    /* Update tool-tip: */
+    setToolTip(m_strHoveredAnchor.section(',', -1));
 
     /* Update text-pane: */
     update();
