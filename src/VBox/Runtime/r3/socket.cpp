@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 53536 2014-12-14 21:30:26Z alexander.eichner@oracle.com $ */
+/* $Id: socket.cpp 53537 2014-12-14 21:33:57Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1780,7 +1780,7 @@ int rtSocketConnect(RTSOCKET hSocket, PCRTNETADDR pAddr, RTMSINTERVAL cMillies)
                             {
                                 int iSockError = 0;
                                 socklen_t cbSockOpt = sizeof(iSockError);
-                                rcSock = getsockopt(pThis->hNative, SOL_SOCKET, SO_ERROR, &iSockError, &cbSockOpt);
+                                rcSock = getsockopt(pThis->hNative, SOL_SOCKET, SO_ERROR, &iSockError, (char *)&cbSockOpt);
                                 if (rcSock == 0)
                                 {
                                     if (iSockError == 0)
