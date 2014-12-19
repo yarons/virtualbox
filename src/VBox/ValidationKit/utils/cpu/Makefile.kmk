@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53573 2014-12-19 10:52:49Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 53578 2014-12-19 15:56:59Z noreply@oracle.com $
 ## @file
 # VirtualBox Validation Kit - CPU Test Utilities.
 #
@@ -43,7 +43,9 @@ PROGRAMS += cpu-alloc-all-mem
 cpu-alloc-all-mem_TEMPLATE = VBoxValidationKitR3
 cpu-alloc-all-mem_SOURCES  = cpu-alloc-all-mem.cpp
 
+ifneq ($(KBUILD_HOST),os2)
 PROGRAMS += cidet-app
+endif
 cidet-app_TEMPLATE = VBoxValidationKitR3
 cidet-app_SOURCES  = \
 	cidet-app.cpp \
