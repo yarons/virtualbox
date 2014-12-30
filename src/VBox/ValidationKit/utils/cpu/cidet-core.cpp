@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 53608 2014-12-30 17:06:09Z knut.osmundsen@oracle.com $ */
+/* $Id: cidet-core.cpp 53609 2014-12-30 18:34:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -1545,7 +1545,8 @@ bool CideCoreSetInstruction(PCIDETCORE pThis, PCCIDETINSTR pInstr)
     /*
      * Reset various things.
      */
-    pThis->iInOut = 0;
+    for (uint32_t i = 0; i < RT_ELEMENTS(pThis->aiInOut); i++)
+        pThis->aiInOut[i] = 0;
 
     return true;
 }
