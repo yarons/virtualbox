@@ -1,4 +1,4 @@
-# $Id: .scm-settings 53622 2014-12-31 14:19:33Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 53624 2014-12-31 14:59:44Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -66,7 +66,7 @@
 --filter-out-dirs  "*/src/VBox/Devices/Graphics/vmsvga/."
 --filter-out-dirs  "*/src/VBox/Devices/Graphics/vmsvga_glext/."
 --filter-out-dirs  "*/src/VBox/Devices/PC/ipxe/*/."
---filter-out-dirs  "*/src/VBox/Devices/EFI/Firmware/*/."
+--filter-out-dirs  "*/src/VBox/Devices/EFI/Firmware*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/src*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/doc*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/test*/."
@@ -85,7 +85,6 @@
 --filter-out-files "*/include/VBox/HostServices/glxext.h"
 --filter-out-files "*/include/VBox/HostServices/wglext.h"
 --filter-out-files "*/src/VBox/Devices/Audio/sys-queue.h"
---filter-out-files "*/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxFsDxe/fsw_strfunc.h"
 --filter-out-files "*/src/VBox/HostDrivers/VBoxUSB/os2/usbcalls.h"
 --filter-out-files "*/src/VBox/RDP/x11server/Init*.c"
 --filter-out-files "*/vslick.h"

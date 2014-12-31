@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 53482 2014-12-08 15:16:33Z noreply@oracle.com $ */
+/** $Id: clipboard.cpp 53624 2014-12-31 14:59:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -303,7 +303,7 @@ struct VBCLSERVICE vbclClipboardInterface =
     run,
     VBClServiceDefaultHandler, /* pause */
     VBClServiceDefaultHandler, /* resume */
-    VBClServiceDefaultCleanup    
+    VBClServiceDefaultCleanup
 };
 
 struct CLIPBOARDSERVICE

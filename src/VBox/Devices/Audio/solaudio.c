@@ -1,4 +1,4 @@
-/* $Id: solaudio.c 47498 2013-07-31 17:36:16Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: solaudio.c 53624 2014-12-31 14:59:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */

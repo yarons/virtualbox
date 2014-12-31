@@ -1,4 +1,4 @@
-/* $Id: spc-sanity.cpp 51862 2014-07-03 23:51:54Z knut.osmundsen@oracle.com $ */
+/* $Id: spc-sanity.cpp 53624 2014-12-31 14:59:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Sanity Checkers.
  */
@@ -164,5 +164,4 @@ RTDECL(int) RTCrSpcIndirectDataContent_CheckSanityEx(PCRTCRSPCINDIRECTDATACONTEN
  * Generate the standard core code.
  */
 #include <iprt/asn1-generator-sanity.h>
-
 
