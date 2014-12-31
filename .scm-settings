@@ -1,4 +1,4 @@
-# $Id: .scm-settings 53621 2014-12-31 14:12:43Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 53622 2014-12-31 14:19:33Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -66,7 +66,7 @@
 --filter-out-dirs  "*/src/VBox/Devices/Graphics/vmsvga/."
 --filter-out-dirs  "*/src/VBox/Devices/Graphics/vmsvga_glext/."
 --filter-out-dirs  "*/src/VBox/Devices/PC/ipxe/*/."
---filter-out-dirs  "*/src/VBox/Devices/EFI/Firmware2/*/."
+--filter-out-dirs  "*/src/VBox/Devices/EFI/Firmware/*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/src*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/doc*/."
 --filter-out-dirs  "*/src/VBox/Devices/Network/lwip*/test*/."
