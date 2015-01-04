@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 51944 2014-07-08 18:57:43Z noreply@oracle.com $ */
+/* $Id: vboxhgcm.c 53726 2015-01-04 05:05:41Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox HGCM connection
