@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 53333 2014-11-14 16:25:32Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 53764 2015-01-09 16:03:52Z noreply@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -260,7 +260,7 @@ static int VBoxServiceVMInfoWinProcessesGetTokenInfo(PVBOXSERVICEVMINFOPROC pPro
                 break;
 
             default:
-                VBoxServiceError("Token class not implemented: %ld", tkClass);
+                VBoxServiceError("Token class not implemented: %ld\n", tkClass);
                 rc = VERR_NOT_IMPLEMENTED;
                 break;
         }
