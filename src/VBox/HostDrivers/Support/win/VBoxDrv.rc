@@ -1,6 +1,6 @@
-/* $Id: VBoxDrv.rc 53781 2015-01-13 11:30:48Z noreply@oracle.com $ */
+/* $Id: VBoxDrv.rc 53784 2015-01-13 12:44:09Z noreply@oracle.com $ */
 /** @file
- * VirtualBox Support Driver - Windows Resource File.
+ * VBoxDrv - Resource file containing version info and icon.
  */
 
 /*
