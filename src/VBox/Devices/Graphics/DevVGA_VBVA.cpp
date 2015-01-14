@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 53551 2014-12-16 20:43:24Z noreply@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 53809 2015-01-14 19:49:30Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1821,6 +1821,7 @@ int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Vers
                 {
                     rc = SSMR3GetU32 (pSSM, &pVGAState->fGuestCaps);
                     AssertRCReturn(rc, rc);
+                    pVGAState->pDrv->pfnVBVAGuestCapabilityUpdate(pVGAState->pDrv, pVGAState->fGuestCaps);
                     cbExtra -= 4;
                 }
 #endif
