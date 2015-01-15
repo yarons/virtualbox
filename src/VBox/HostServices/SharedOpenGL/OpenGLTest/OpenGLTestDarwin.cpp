@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 53594 2014-12-21 19:18:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: OpenGLTestDarwin.cpp 53815 2015-01-15 11:15:07Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox host opengl support test
  */
@@ -19,7 +19,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 
 #include <IOKit/IOKitLib.h>
 #include <OpenGL/OpenGL.h>
