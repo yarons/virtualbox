@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 53847 2015-01-16 08:53:12Z vadim.galitsyn@oracle.com $ */
+/* $Id: DisplayImpl.h 53849 2015-01-16 09:34:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -169,7 +169,7 @@ public:
     bool i_handleCrVRecScreenshotBegin(uint32_t uScreen, uint64_t u64TimeStamp);
     void i_handleCrVRecScreenshotEnd(uint32_t uScreen, uint64_t u64TimeStamp);
     void i_handleVRecCompletion();
-    HRESULT notifyScaleFactorChange(uint32_t uScreen, uint32_t u32ScaleFactorWMultiplied, uint32_t u32ScaleFactorHMultiplied);
+    HRESULT notifyScaleFactorChange(ULONG uScreen, ULONG u32ScaleFactorWMultiplied, ULONG u32ScaleFactorHMultiplied);
 #endif
 
     int i_notifyCroglResize(const PVBVAINFOVIEW pView, const PVBVAINFOSCREEN pScreen, void *pvVRAM);
