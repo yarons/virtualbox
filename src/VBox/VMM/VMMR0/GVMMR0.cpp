@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 52618 2014-09-05 12:07:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GVMMR0.cpp 54191 2015-02-13 02:46:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -84,7 +84,7 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#if defined(RT_OS_LINUX) || defined(DOXYGEN_RUNNING)
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(DOXYGEN_RUNNING)
 /** Define this to enable the periodic preemption timer. */
 # define GVMM_SCHED_WITH_PPT
 #endif
