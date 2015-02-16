@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 54224 2015-02-16 22:41:32Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibAll.cpp 54225 2015-02-16 22:43:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -51,7 +51,7 @@
  *
  * @internal
  */
-DECLINLINE(uint64_t) SUPReadTscWithDelta(void)
+SUPDECL(uint64_t) SUPReadTscWithDelta(void)
 {
     PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
     Assert(GIP_ARE_TSC_DELTAS_APPLICABLE(pGip));
