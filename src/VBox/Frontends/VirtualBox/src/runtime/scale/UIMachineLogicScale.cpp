@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 53065 2014-10-15 13:00:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicScale.cpp 54217 2015-02-16 15:02:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -86,7 +86,8 @@ void UIMachineLogicScale::prepareActionGroups()
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_MenuBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
-                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize |
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_ScaleFactor));
 
     /* Take care of view-action toggle state: */
     UIAction *pActionScale = actionPool()->action(UIActionIndexRT_M_View_T_Scale);
