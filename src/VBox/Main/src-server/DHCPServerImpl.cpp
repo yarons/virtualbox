@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 50355 2014-02-06 17:55:07Z noreply@oracle.com $ */
+/* $Id: DHCPServerImpl.cpp 54265 2015-02-18 15:24:36Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -265,7 +265,7 @@ HRESULT DHCPServer::addGlobalOption(DhcpOpt_T aOption, const com::Utf8Str &aValu
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    m->GlobalDhcpOptions.insert(DhcpOptValuePair(aOption, aValue));
+    m->GlobalDhcpOptions[aOption] = aValue;
 
     /* Indirect way to understand that we're on NAT network */
     if (aOption == DhcpOpt_Router)
