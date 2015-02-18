@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54264 2015-02-18 14:56:16Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv.c 54274 2015-02-18 18:30:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -8444,7 +8444,7 @@ static int supdrvIOCtl_TscRead(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
                 /* Give up after a few times. */
                 if (cTries >= 4)
                 {
-                    rc = VERR_INTERNAL_ERROR_3; /** @todo change to warning. */
+                    rc = VWRN_SUPDRV_TSC_DELTA_MEASUREMENT_FAILED;
                     break;
                 }
 
