@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 54308 2015-02-19 19:43:51Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibAll.cpp 54335 2015-02-20 15:48:26Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -56,7 +56,7 @@
  *
  * @internal
  */
-SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE  pGip)
+SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE pGip)
 {
     uint64_t            uTsc;
     uint16_t            iGipCpu;
