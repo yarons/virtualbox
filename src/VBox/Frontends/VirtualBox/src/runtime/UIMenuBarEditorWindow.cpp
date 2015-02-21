@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 54349 2015-02-21 01:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMenuBarEditorWindow.cpp 54350 2015-02-21 01:13:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -568,6 +568,7 @@ void UIMenuBarEditorWidget::prepareMenuWindow()
     AssertPtrReturnVoid(pMenu);
     {
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Window_S_Minimize));
+        pMenu->addSeparator();
         prepareNamedAction(pMenu, tr("Switch"),
                            UIExtraDataMetaDefs::MenuWindowActionType_Switch,
                            gpConverter->toInternalString(UIExtraDataMetaDefs::MenuWindowActionType_Switch));
