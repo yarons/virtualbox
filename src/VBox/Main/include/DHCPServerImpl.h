@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 54347 2015-02-20 22:43:16Z noreply@oracle.com $ */
+/* $Id: DHCPServerImpl.h 54351 2015-02-21 01:27:45Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -90,6 +90,8 @@ public:
                                             LONG Slot);
 
 private:
+    HRESULT encodeOption(com::Utf8Str &aEncoded,
+			 uint32_t aOptCode, const DhcpOptValue &aOptValue);
 
     // wrapped IDHCPServer properties
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
