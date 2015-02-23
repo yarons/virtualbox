@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 54230 2015-02-17 13:13:02Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 54399 2015-02-23 19:10:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -286,8 +286,8 @@ static int drvAudioProcessOptions(PCFGMNODE pCfgHandle, const char *pszPrefix, s
             }
 
             default:
-                LogFlowFunc(("Bad value tag for option `%s' - %d\n",
-                             opt->name, opt->tag));
+                LogFlowFunc(("Bad value tag for option `%s' - %d\n", opt->name, opt->tag));
+                fUseDefault = false;
                 break;
         }
 
