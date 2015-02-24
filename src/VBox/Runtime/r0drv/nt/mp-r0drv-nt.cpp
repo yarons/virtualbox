@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 54410 2015-02-24 02:52:10Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-r0drv-nt.cpp 54413 2015-02-24 03:00:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -561,7 +561,7 @@ RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, uint32_t fFlags, PFNRTMPW
 
 RTDECL(bool) RTMpOnPairIsConcurrentExecSupported(void)
 {
-    return RTMpOnAllIsConcurrentSafe();
+    return g_pfnrtKeIpiGenericCall != NULL;
 }
 
 
