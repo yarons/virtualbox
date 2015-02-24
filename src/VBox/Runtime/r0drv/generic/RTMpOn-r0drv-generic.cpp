@@ -1,4 +1,4 @@
-/* $Id: RTMpOn-r0drv-generic.cpp 54408 2015-02-24 02:06:56Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpOn-r0drv-generic.cpp 54416 2015-02-24 03:27:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Generic Stubs.
  */
@@ -79,7 +79,7 @@ RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, PFNRTMPWORKER pfnWorker, 
     NOREF(pfnWorker);
     NOREF(pvUser1);
     NOREF(pvUser2);
-    return VERR_NOT_SUP_IN_RAW_MODE;
+    return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTMpOnPair);
 
