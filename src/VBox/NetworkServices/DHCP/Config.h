@@ -1,4 +1,4 @@
-/* $Id: Config.h 50587 2014-02-25 16:37:29Z noreply@oracle.com $ */
+/* $Id: Config.h 54499 2015-02-25 15:42:17Z noreply@oracle.com $ */
 /** @file
  * Config.h
  */
@@ -516,6 +516,9 @@ private:
     int prepareReplyPacket4Client(const Client& client, uint32_t u32Xid);
     int doReply(const Client& client, const std::vector<RawOption>& extra);
     int processParameterReqList(const Client& client, const uint8_t *pu8ReqList, int cReqList, std::vector<RawOption>& extra);
+
+private:
+    static NetworkManager *g_NetworkManager;
 
 private:
     struct Data;
