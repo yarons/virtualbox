@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 53396 2014-11-25 15:01:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-os2.cpp 54581 2015-03-02 14:56:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -402,6 +402,12 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
     NOREF(pDevExt);
+    return false;
+}
+
+
+bool VBOXCALL  supdrvOSAreCpusOfflinedOnSuspend(void)
+{
     return false;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 53396 2014-11-25 15:01:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-freebsd.c 54581 2015-03-02 14:56:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -535,6 +535,13 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
+    return false;
+}
+
+
+bool VBOXCALL  supdrvOSAreCpusOfflinedOnSuspend(void)
+{
+    /** @todo verify this. */
     return false;
 }
 
