@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 54627 2015-03-04 14:47:32Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 54629 2015-03-04 16:17:42Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4553,7 +4553,8 @@ bool VBoxGlobal::launchMachine(CMachine &machine, LaunchMode enmLaunchMode /* = 
     if (enmLaunchMode != LaunchMode_Separate)
     {
         /* Switch to machine window(s) if possible: */
-        if (machine.CanShowConsoleWindow())
+        if (   machine.GetSessionState() == KSessionState_Locked /* precondition for CanShowConsoleWindow() */
+            && machine.CanShowConsoleWindow())
             return VBoxGlobal::switchToMachine(machine);
 
         /* Make sure machine-state is one of required: */
