@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 54622 2015-03-04 14:23:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIGMachinePreview.cpp 54627 2015-03-04 14:47:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -40,12 +40,6 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else /* !VBOX_WITH_XPCOM */
-# include "VirtualBox_XPCOM.h"
-#endif /* VBOX_WITH_XPCOM */
 
 UIGMachinePreview::UIGMachinePreview(QIGraphicsWidget *pParent)
     : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
