@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 52733 2014-09-12 17:57:50Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 54622 2015-03-04 14:23:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -41,13 +41,18 @@
 # include "CUSBDevice.h"
 # include "CUSBDeviceFilter.h"
 # include "CHostUSBDevice.h"
+# include "CHostUSBDeviceFilter.h"
 # include "CExtPackManager.h"
 # include "CExtPack.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-#include "CHostUSBDeviceFilter.h"
-
+/* VirtualBox interface declarations: */
+#ifndef VBOX_WITH_XPCOM
+# include "VirtualBox.h"
+#else /* !VBOX_WITH_XPCOM */
+# include "VirtualBox_XPCOM.h"
+#endif /* VBOX_WITH_XPCOM */
 
 /**
  *  USB popup menu class.
