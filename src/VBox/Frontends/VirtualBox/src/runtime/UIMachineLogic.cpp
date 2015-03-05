@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54562 2015-02-27 17:21:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 54646 2015-03-05 12:28:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -64,6 +64,13 @@
 #  include "DockIconPreview.h"
 #  include "UIExtraDataManager.h"
 # endif /* Q_WS_MAC */
+
+/* VirtualBox interface declarations: */
+#ifndef VBOX_WITH_XPCOM
+# include "VirtualBox.h"
+#else /* !VBOX_WITH_XPCOM */
+# include "VirtualBox_XPCOM.h"
+#endif /* VBOX_WITH_XPCOM */
 
 /* COM includes: */
 # include "CVirtualBoxErrorInfo.h"
