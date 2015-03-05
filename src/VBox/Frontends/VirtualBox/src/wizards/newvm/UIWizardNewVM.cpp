@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 54644 2015-03-05 11:21:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 54652 2015-03-05 14:34:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -37,13 +37,6 @@
 # include "CStorageController.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else /* !VBOX_WITH_XPCOM */
-# include "VirtualBox_XPCOM.h"
-#endif /* VBOX_WITH_XPCOM */
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;
