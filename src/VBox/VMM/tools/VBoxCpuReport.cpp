@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 51288 2014-05-19 12:47:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport.cpp 54714 2015-03-11 14:00:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -4672,10 +4672,10 @@ static int produceCpuReport(void)
                    szNameC,
                    szNameC,
                    CPUMR3CpuIdUnknownLeafMethodName(enmUnknownMethod),
-                   DefUnknown.eax,
-                   DefUnknown.ebx,
-                   DefUnknown.ecx,
-                   DefUnknown.edx,
+                   DefUnknown.uEax,
+                   DefUnknown.uEbx,
+                   DefUnknown.uEcx,
+                   DefUnknown.uEdx,
                    szMsrMask,
                    szNameC,
                    szNameC,
