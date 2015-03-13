@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54733 2015-03-12 17:49:10Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 54742 2015-03-13 13:54:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -262,7 +262,7 @@ bool UISession::powerUp()
             const CMedium medium = attachment.GetMedium();
             /* Append our map if this medium has encryption: */
             const QString strKeyId = medium.GetProperty("CRYPT/KeyId");
-            if (!strKeyId.isNull())
+            if (!strKeyId.isEmpty())
                 encryptedPasswordIds.insert(strKeyId, medium.GetId());
         }
     }
