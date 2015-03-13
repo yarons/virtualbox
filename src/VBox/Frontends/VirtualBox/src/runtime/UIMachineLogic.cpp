@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54753 2015-03-13 17:03:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 54754 2015-03-13 17:17:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2436,7 +2436,9 @@ void UIMachineLogic::askUserForTheDiskEncryptionPasswords()
     {
         /* Create corresponding dialog: */
         QPointer<UIAddDiskEncryptionPasswordDialog> pDlg =
-             new UIAddDiskEncryptionPasswordDialog(activeMachineWindow(), encryptedMediums);
+             new UIAddDiskEncryptionPasswordDialog(activeMachineWindow(),
+                                                   machineName(),
+                                                   encryptedMediums);
         /* Execute it and acquire the result: */
         if (pDlg->exec() == QDialog::Accepted)
             encryptionPasswords = pDlg->encryptionPasswords();
