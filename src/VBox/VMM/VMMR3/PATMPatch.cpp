@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 54761 2015-03-13 21:35:30Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMPatch.cpp 54762 2015-03-13 21:36:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -103,7 +103,9 @@ int patmPatchAddReloc32(PVM pVM, PPATCHINFO pPatch, uint8_t *pRelocHC, uint32_t 
     PRELOCREC pRec;
 
     Assert(   uType == FIXUP_ABSOLUTE
-           || (uType == FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL && pSource == pDest && PATM_IS_FIXUP_TYPE(pSource))
+           || (   (uType == FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL || uType == FIXUP_CONSTANT_IN_PATCH_ASM_TMPL)
+               && pSource == pDest
+               && PATM_IS_FIXUP_TYPE(pSource))
            || ((uType == FIXUP_REL_JMPTOPATCH || uType == FIXUP_REL_JMPTOGUEST) && pSource && pDest));
 
     LogFlow(("patmPatchAddReloc32 type=%d pRelocGC=%RRv source=%RRv dest=%RRv\n", uType, pRelocHC - pVM->patm.s.pPatchMemGC + pVM->patm.s.pPatchMemGC , pSource, pDest));
