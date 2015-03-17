@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 54793 2015-03-16 16:10:51Z michal.necasek@oracle.com $ */
+/* $Id: PGMPhys.cpp 54819 2015-03-17 17:58:30Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4573,8 +4573,10 @@ int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PP
     }
 
     /** @todo What about ballooning of large pages??! */
+#if 0
     Assert(   PGM_PAGE_GET_PDE_TYPE(pPage) != PGM_PAGE_PDE_TYPE_PDE
            && PGM_PAGE_GET_PDE_TYPE(pPage) != PGM_PAGE_PDE_TYPE_PDE_DISABLED);
+#endif
 
     if (    PGM_PAGE_IS_ZERO(pPage)
         ||  PGM_PAGE_IS_BALLOONED(pPage))
