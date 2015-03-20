@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 54883 2015-03-20 16:55:47Z alexander.eichner@oracle.com $ */
+/* $Id: MediumImpl.cpp 54884 2015-03-20 17:06:54Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -9052,7 +9052,9 @@ HRESULT Medium::i_taskEncryptHandler(Medium::EncryptTask &task)
             if (it != pBase->m->mapProperties.end())
                 pBase->m->mapProperties.erase(it);
 
-            if (task.mstrNewPasswordId.isEmpty())
+            /* Delete KeyId if encryption is removed or the password did change. */
+            if (   task.mstrNewPasswordId.isNotEmpty()
+                || task.mstrCipher.isEmpty())
             {
                 it = pBase->m->mapProperties.find("CRYPT/KeyId");
                 if (it != pBase->m->mapProperties.end())
