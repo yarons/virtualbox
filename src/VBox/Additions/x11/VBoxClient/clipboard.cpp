@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 54858 2015-03-20 08:25:45Z noreply@oracle.com $ */
+/** $Id: clipboard.cpp 54859 2015-03-20 09:10:04Z noreply@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -292,6 +292,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     if (RT_FAILURE(rc))
         VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
     rc = vboxClipboardConnect();
+    /* Not RT_SUCCESS: VINF_PERMISSION_DENIED is host service not present. */
     if (rc == VINF_SUCCESS)
         rc = vboxClipboardMain();
     if (rc == VERR_NOT_SUPPORTED)
