@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 54906 2015-03-23 12:00:31Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostALSAAudio.cpp 54907 2015-03-23 12:02:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -873,7 +873,7 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
                 }
 
                 default:
-                    LogFunc(("Failed to read input frames: %s\n", snd_strerror(cRead));
+                    LogFunc(("Failed to read input frames: %s\n", snd_strerror(cRead)));
                     rc = VERR_GENERAL_FAILURE; /** @todo Fudge! */
                     break;
             }
