@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 54938 2015-03-25 13:04:20Z klaus.espenlaub@oracle.com $
+# $Id: tdTreeDepth1.py 54939 2015-03-25 13:11:17Z klaus.espenlaub@oracle.com $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,15 +27,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54938 $"
+__version__ = "$Revision: 54939 $"
 
 
 # Standard Python imports.
 import os
 import sys
-import time
-import threading
-import types
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -45,7 +42,6 @@ sys.path.append(g_ksValidationKitDir)
 
 # Validation Kit imports.
 from testdriver import reporter
-from testdriver import base
 from testdriver import vbox
 from testdriver import vboxcon
 
