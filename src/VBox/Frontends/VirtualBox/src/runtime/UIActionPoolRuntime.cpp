@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 54989 2015-03-27 13:45:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 54990 2015-03-27 14:28:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2060,7 +2060,7 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_Machine_S_ShowInformation] = new UIActionSimpleShowInformationDialog(this);
     m_pool[UIActionIndexRT_M_Machine_T_Pause] = new UIActionTogglePause(this);
     m_pool[UIActionIndexRT_M_Machine_S_Reset] = new UIActionSimplePerformReset(this);
-    m_pool[UIActionIndexRT_M_Machine_S_Save] = new UIActionSimplePerformSaveState(this);
+    m_pool[UIActionIndexRT_M_Machine_S_SaveState] = new UIActionSimplePerformSaveState(this);
     m_pool[UIActionIndexRT_M_Machine_S_Shutdown] = new UIActionSimplePerformShutdown(this);
     m_pool[UIActionIndexRT_M_Machine_S_PowerOff] = new UIActionSimplePerformPowerOff(this);
 #ifndef RT_OS_DARWIN
@@ -2357,8 +2357,8 @@ void UIActionPoolRuntime::updateMenuMachine()
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_T_Pause)) || fSeparator;
     /* 'Reset' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Reset)) || fSeparator;
-    /* 'Save' action: */
-    fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Save)) || fSeparator;
+    /* 'SaveState' action: */
+    fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_SaveState)) || fSeparator;
     /* 'Shutdown' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Shutdown)) || fSeparator;
     /* 'PowerOff' action: */
