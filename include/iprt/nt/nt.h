@@ -1,4 +1,4 @@
-/* $Id: nt.h 53819 2015-01-15 13:50:29Z knut.osmundsen@oracle.com $ */
+/* $Id: nt.h 54997 2015-03-28 00:19:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2163,6 +2163,19 @@ NTSYSAPI NTSTATUS NTAPI RtlCreateProcessParameters(PRTL_USER_PROCESS_PARAMETERS 
 NTSYSAPI VOID     NTAPI RtlDestroyProcessParameters(PRTL_USER_PROCESS_PARAMETERS);
 NTSYSAPI NTSTATUS NTAPI RtlCreateUserThread(HANDLE, PSECURITY_DESCRIPTOR, BOOLEAN, ULONG, SIZE_T, SIZE_T,
                                             PFNRT, PVOID, PHANDLE, PCLIENT_ID);
+
+#ifndef RTL_CRITICAL_SECTION_FLAG_NO_DEBUG_INFO
+typedef struct _RTL_CRITICAL_SECTION
+{
+    struct _RTL_CRITICAL_SECTION_DEBUG *DebugInfo;
+    LONG            LockCount;
+    LONG            Recursioncount;
+    HANDLE          OwningThread;
+    HANDLE          LockSemaphore;
+    ULONG_PTR       SpinCount;
+} RTL_CRITICAL_SECTION;
+typedef RTL_CRITICAL_SECTION *PRTL_CRITICAL_SECTION;
+#endif
 
 RT_C_DECLS_END
 /** @} */
