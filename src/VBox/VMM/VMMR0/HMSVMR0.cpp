@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 55037 2015-03-31 14:09:10Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 55039 2015-03-31 15:01:05Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5226,18 +5226,10 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     if (   pVM->hm.s.fTrapXcptUD
         && GIMAreHypercallsEnabled(pVCpu))
-    {
-        int rc = GIMXcptUD(pVCpu, pCtx);
-        if (RT_SUCCESS(rc))
-        {
-            /* If the exception handler changes anything other than guest general-purpose registers,
-               we would need to reload the guest changed bits on VM-reentry. */
-            hmR0SvmUpdateRip(pVCpu, pCtx, 3);
-            return VINF_SUCCESS;
-        }
-    }
+        GIMXcptUD(pVCpu, pCtx);
+    else
+        hmR0SvmSetPendingXcptUD(pVCpu);
 
-    hmR0SvmSetPendingXcptUD(pVCpu);
     return VINF_SUCCESS;
 }
 
