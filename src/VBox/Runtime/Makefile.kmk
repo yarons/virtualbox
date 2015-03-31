@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55046 2015-03-31 17:19:58Z noreply@oracle.com $
+# $Id: Makefile.kmk 55047 2015-03-31 18:17:45Z noreply@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2742,6 +2742,12 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e '/^g_hDbgModStrCache/d'\
 			-e '/^g_pfnR0Darwin/d'\
 			-e '/^g_pDarwinLockGroup/d'\
+			$(if-expr "$(KBUILD_TARGET)" == "solaris", \
+			-e '/^g_kLdrRdrFileOps/d' \
+			-e '/^g_pSUPGlobalInfoPage/d' \
+			-e '/^g_Logger/d' \
+			-e '/^g_RelLogger/d' \
+			-e '/^g_VM/d',) \
 			\
 			-e '/^RTDBusLoadLib/d' \
 			\
