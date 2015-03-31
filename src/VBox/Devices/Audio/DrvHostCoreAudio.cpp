@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 55030 2015-03-31 13:20:21Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostCoreAudio.cpp 55031 2015-03-31 13:22:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -286,7 +286,7 @@ typedef struct COREAUDIOSTREAMOUT
      * or the device itself is changed during the runtime. */
     volatile uint32_t           status;
     /** Flag whether the "default device changed" listener was registered. */
- 	bool                        fDefDevChgListReg;
+    bool                        fDefDevChgListReg;
 } COREAUDIOSTREAMOUT, *PCOREAUDIOSTREAMOUT;
 
 typedef struct COREAUDIOSTREAMIN
@@ -315,7 +315,7 @@ typedef struct COREAUDIOSTREAMIN
      * or the device itself is changed during the runtime. */
     volatile uint32_t           status;
     /** Flag whether the "default device changed" listener was registered. */
- 	bool                        fDefDevChgListReg;
+    bool                        fDefDevChgListReg;
 } COREAUDIOSTREAMIN, *PCOREAUDIOSTREAMIN;
 
 static int drvHostCoreAudioControlIn(PPDMIHOSTAUDIO pInterface, PPDMAUDIOHSTSTRMIN pHstStrmIn, PDMAUDIOSTREAMCMD enmStreamCmd);
