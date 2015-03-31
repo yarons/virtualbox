@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54484 2015-02-25 12:21:33Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 55046 2015-03-31 17:19:58Z noreply@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2722,7 +2722,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 		| $(SED) -nf "$@"
   endif
 	$(call MSG_L1,IPRT: Testing mangling using nm...)
-	$(QUIET)nm $^  2> /dev/null \
+	$(QUIET)$(VBOX_NM) $^  2> /dev/null \
 		| $(SED) -n \
 			-e 's/^[0-9a-f][0-9a-f]* //' \
 			-e '/^[TUDB] /!d' \
