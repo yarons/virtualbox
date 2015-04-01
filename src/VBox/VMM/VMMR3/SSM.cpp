@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 55048 2015-03-31 18:49:19Z knut.osmundsen@oracle.com $ */
+/* $Id: SSM.cpp 55063 2015-04-01 00:51:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -3702,7 +3702,7 @@ VMMR3DECL(int) SSMR3PutStructEx(PSSMHANDLE pSSM, const void *pvStruct, size_t cb
     /*
      * Begin marker.
      */
-    if (!(fFlags & SSMSTRUCT_FLAGS_NO_MARKERS))
+    if (!(fFlags & (SSMSTRUCT_FLAGS_NO_MARKERS | SSMSTRUCT_FLAGS_NO_LEAD_MARKER)))
     {
         rc = SSMR3PutU32(pSSM, SSMR3STRUCT_BEGIN);
         if (RT_FAILURE(rc))
@@ -3935,7 +3935,7 @@ VMMR3DECL(int) SSMR3PutStructEx(PSSMHANDLE pSSM, const void *pvStruct, size_t cb
     /*
      * End marker
      */
-    if (!(fFlags & SSMSTRUCT_FLAGS_NO_MARKERS))
+    if (!(fFlags & (SSMSTRUCT_FLAGS_NO_MARKERS | SSMSTRUCT_FLAGS_NO_TAIL_MARKER)))
     {
         rc = SSMR3PutU32(pSSM, SSMR3STRUCT_END);
         if (RT_FAILURE(rc))

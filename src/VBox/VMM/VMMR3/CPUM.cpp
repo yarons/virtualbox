@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 55062 2015-04-01 00:45:12Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 55063 2015-04-01 00:51:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1002,7 +1002,10 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper, sizeof(pVCpu->cpum.s.Hyper), 0, g_aCpumCtxFields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper.pXStateR3->x87, sizeof(*pVCpu->cpum.s.Hyper.pXStateR3),
+                         SSMSTRUCT_FLAGS_NO_TAIL_MARKER, g_aCpumX87Fields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper, sizeof(pVCpu->cpum.s.Hyper),
+                         SSMSTRUCT_FLAGS_NO_LEAD_MARKER, g_aCpumCtxFields, NULL);
     }
 
     SSMR3PutU32(pSSM, pVM->cCpus);
@@ -1011,7 +1014,10 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
     {
         PVMCPU pVCpu = &pVM->aCpus[iCpu];
 
-        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest, sizeof(pVCpu->cpum.s.Guest), 0, g_aCpumCtxFields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest.pXStateR3->x87, sizeof(*pVCpu->cpum.s.Guest.pXStateR3),
+                         SSMSTRUCT_FLAGS_NO_TAIL_MARKER, g_aCpumX87Fields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest, sizeof(pVCpu->cpum.s.Guest),
+                         SSMSTRUCT_FLAGS_NO_LEAD_MARKER, g_aCpumCtxFields, NULL);
         SSMR3PutU32(pSSM, pVCpu->cpum.s.fUseFlags);
         SSMR3PutU32(pSSM, pVCpu->cpum.s.fChanged);
         AssertCompileSizeAlignment(pVCpu->cpum.s.GuestMsrs.msr, sizeof(uint64_t));
