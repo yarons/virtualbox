@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 55103 2015-04-06 15:14:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMedium.cpp 55104 2015-04-06 15:18:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -232,11 +232,15 @@ void UIMedium::refresh()
             if (!parentMedium.isNull())
                 m_strParentId = parentMedium.GetId();
 
-            /* Refresh hard drive ID: */
-            while (!parentMedium.isNull())
+            /* Only for created and accessible mediums: */
+            if (m_state != KMediumState_Inaccessible && m_state != KMediumState_NotCreated)
             {
-                m_strRootId = parentMedium.GetId();
-                parentMedium = parentMedium.GetParent();
+                /* Refresh root hard drive ID: */
+                while (!parentMedium.isNull())
+                {
+                    m_strRootId = parentMedium.GetId();
+                    parentMedium = parentMedium.GetParent();
+                }
             }
         }
 
