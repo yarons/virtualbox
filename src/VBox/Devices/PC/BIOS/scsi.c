@@ -1,4 +1,4 @@
-/* $Id: scsi.c 55136 2015-04-08 14:25:23Z michal.necasek@oracle.com $ */
+/* $Id: scsi.c 55137 2015-04-08 14:31:27Z michal.necasek@oracle.com $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -428,7 +428,6 @@ void scsi_enumerate_attached_devices(uint16_t io_base)
                           | ((uint32_t)buffer[1] << 16)
                           | ((uint32_t)buffer[2] << 8)
                           | ((uint32_t)buffer[3]);
-                ++sectors;  /* Returned value is the last LBA, zero-based. */
 
                 sector_size =   ((uint32_t)buffer[4] << 24)
                               | ((uint32_t)buffer[5] << 16)
