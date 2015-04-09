@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55167 2015-04-09 17:25:33Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 55168 2015-04-09 17:36:51Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7371,7 +7371,7 @@ HRESULT Machine::i_launchVMProcess(IInternalSessionControl *aControl,
 
     if (fSeparate)
     {
-        if (mData->mSession.mState != SessionState_Unlocked && mData->mSession.mType != "headless")
+        if (mData->mSession.mState != SessionState_Unlocked && mData->mSession.mType.compare("headless", Utf8Str::CaseInsensitive))
             return setError(VBOX_E_INVALID_OBJECT_STATE,
                             tr("The machine '%s' is in a state which is incompatible with launching a separate UI process"),
                             mUserData->s.strName.c_str());
