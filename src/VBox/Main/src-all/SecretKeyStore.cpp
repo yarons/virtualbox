@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.cpp 55182 2015-04-10 14:26:59Z alexander.eichner@oracle.com $ */
+/* $Id: SecretKeyStore.cpp 55183 2015-04-10 14:31:02Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -151,7 +151,7 @@ int SecretKeyStore::addSecretKey(const com::Utf8Str &strKeyId, const uint8_t *pb
 
 int SecretKeyStore::deleteSecretKey(const com::Utf8Str &strKeyId)
 {
-    SecretKeyMap::const_iterator it = m_mapSecretKeys.find(strKeyId);
+    SecretKeyMap::iterator it = m_mapSecretKeys.find(strKeyId);
     if (it == m_mapSecretKeys.end())
         return VERR_NOT_FOUND;
 
