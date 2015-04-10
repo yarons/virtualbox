@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 55175 2015-04-10 09:42:37Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DevPcBios.cpp 55176 2015-04-10 09:43:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -267,7 +267,7 @@ static DECLCALLBACK(int) pcbiosIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTI
             if (pThis->iShutdown == 8)
             {
                 pThis->iShutdown = 0;
-                LogRel(("DevPcBios: 8900h shutdown request.\n"));
+                LogRel(("DevPcBios: 8900h shutdown request\n"));
                 return PDMDevHlpVMPowerOff(pDevIns);
             }
         }
