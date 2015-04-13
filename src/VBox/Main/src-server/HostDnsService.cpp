@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 55198 2015-04-13 01:59:07Z noreply@oracle.com $ */
+/* $Id: HostDnsService.cpp 55199 2015-04-13 02:10:39Z noreply@oracle.com $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -272,7 +272,7 @@ void HostDnsMonitorProxy::notify() const
 {
     LogRel(("HostDnsMonitorProxy::notify\n"));
     m->fModified = true;
-    const_cast<VirtualBox *>(m->virtualbox)->i_onHostNameResolutionConfigurationChange();
+    m->virtualbox->i_onHostNameResolutionConfigurationChange();
 }
 
 HRESULT HostDnsMonitorProxy::GetNameServers(std::vector<com::Utf8Str> &aNameServers)
