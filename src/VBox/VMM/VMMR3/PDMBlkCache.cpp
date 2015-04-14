@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 55186 2015-04-10 15:26:11Z alexander.eichner@oracle.com $ */
+/* $Id: PDMBlkCache.cpp 55228 2015-04-14 06:30:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Block Cache.
  */
@@ -923,7 +923,7 @@ static DECLCALLBACK(int) pdmR3BlkCacheLoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_
             break;
         }
 
-        RTStrFree(pszId);
+        RTMemFree(pszId);
         pszId = NULL;
 
         while (cEntries > 0)
@@ -966,7 +966,7 @@ static DECLCALLBACK(int) pdmR3BlkCacheLoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_
     }
 
     if (pszId)
-        RTStrFree(pszId);
+        RTMemFree(pszId);
 
     if (cRefs && RT_SUCCESS(rc))
         rc = SSMR3SetCfgError(pSSM, RT_SRC_POS,
