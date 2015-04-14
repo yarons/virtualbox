@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 55252 2015-04-14 14:56:12Z knut.osmundsen@oracle.com $ */
+/* $Id: memcache.cpp 55253 2015-04-14 14:56:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -224,23 +224,6 @@ RTDECL(int) RTMemCacheCreate(PRTMEMCACHE phMemCache, size_t cbObject, size_t cbA
     pThis->cFree            = 0;
     pThis->pPageHint        = NULL;
     pThis->pFreeTop         = NULL;
-
-#if 1 /* should be fixed now, enable shortly... */
-    /** @todo
-     * Here is a puzzler (or maybe I'm just blind), the free list code breaks
-     * badly on my macbook pro (i7) (32-bit).
-     *
-     * I tried changing the reads from unordered to ordered to no avail.  Then I
-     * tried optimizing the code with the ASMAtomicCmpXchgExPtr function to
-     * avoid some reads - no change. Inserting pause instructions did nothing
-     * (as expected).  The only thing which seems to make a difference is
-     * reading the pFreeTop pointer twice in the free code... This is weird or I'm
-     * overlooking something..
-     *
-     * No time to figure it out, so I'm disabling the broken code paths for
-     * now. */
-    pThis->fUseFreeList = false;
-#endif
 
     *phMemCache = pThis;
     return VINF_SUCCESS;
