@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 55263 2015-04-15 05:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSerializer.cpp 55264 2015-04-15 06:01:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -234,7 +234,7 @@ void UISettingsSerializerProgress::prepare()
             AssertPtrReturnVoid(pLabelPixmap);
             {
                 /* Configure label: */
-                const QIcon icon = UIIconPool::iconSet(":/progress_refresh_90px.png");
+                const QIcon icon = UIIconPool::iconSet(":/progress_settings_90px.png");
                 pLabelPixmap->setPixmap(icon.pixmap(icon.availableSizes().first()));
                 /* Add label into layout: */
                 pLayoutTop->addWidget(pLabelPixmap);
