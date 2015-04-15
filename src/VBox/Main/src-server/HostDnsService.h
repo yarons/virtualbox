@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 55223 2015-04-13 18:06:30Z noreply@oracle.com $ */
+/* $Id: HostDnsService.h 55278 2015-04-15 11:27:50Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Host DNS listener.
  */
@@ -73,6 +73,7 @@ class HostDnsMonitor
     HostDnsMonitor(const HostDnsMonitor &);
     HostDnsMonitor& operator= (const HostDnsMonitor &);
     static int threadMonitoringRoutine(RTTHREAD, void *);
+    void pollGlobalExtraData();
 
   protected:
     mutable RTCLockMtx m_LockMtx;
@@ -101,7 +102,7 @@ class HostDnsMonitorProxy
 
     private:
     void updateInfo();
- 
+
   private:
     mutable RTCLockMtx m_LockMtx;
 
