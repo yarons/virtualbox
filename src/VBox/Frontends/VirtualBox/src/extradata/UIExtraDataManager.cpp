@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55187 2015-04-10 15:52:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 55273 2015-04-15 10:17:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -777,7 +777,9 @@ void UIExtraDataManagerWindow::sltDataHandleCustomContextMenuRequested(const QPo
 {
     /* Prepare menu: */
     QMenu menu;
+    menu.addAction(m_pActionAdd);
     menu.addAction(m_pActionDel);
+    menu.addSeparator();
     menu.addAction(m_pActionSave);
     /* Execute menu: */
     m_pActionSave->setProperty("CalledFromContextMenu", true);
