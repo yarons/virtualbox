@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55273 2015-04-15 10:17:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 55274 2015-04-15 10:22:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1203,7 +1203,7 @@ void UIExtraDataManagerWindow::prepareMenu()
             connect(m_pActionLoad, SIGNAL(triggered(bool)), this, SLOT(sltLoad()));
         }
         /* Create 'Save' action: */
-        m_pActionSave = pActionsMenu->addAction("Save");
+        m_pActionSave = pActionsMenu->addAction("Save As...");
         AssertReturnVoid(m_pActionSave);
         {
             /* Configure 'Save' action: */
