@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 55290 2015-04-15 15:04:30Z knut.osmundsen@oracle.com $
+; $Id: HMR0A.asm 55299 2015-04-16 09:47:21Z noreply@oracle.com $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -1520,8 +1520,8 @@ BITS 64
     mov     rdi, [rsp + 20h + 14h]      ; pVMCBHostPhys
     mov     rsi, [rsp + 20h + 1Ch]      ; pVMCBPhys
     mov     edx, [rsp + 20h + 24h]      ; pCtx
-    mov     ecx, [rsp + 20h + 20h]      ; pVM
-    mov     r8,  [rsp + 20h + 24h]      ; pVCpu
+    mov     ecx, [rsp + 20h + 28h]      ; pVM
+    mov     r8,  [rsp + 20h + 2Ch]      ; pVCpu
     call    NAME(SVMR0VMRun_64)
     add     esp, 20h
     jmp far [.fpthunk32 wrt rip]
