@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 54910 2015-03-23 14:38:39Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostPulseAudio.cpp 55335 2015-04-17 16:00:22Z michal.necasek@oracle.com $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -153,36 +153,36 @@ static pa_sample_format_t drvHostPulseAudioFmtToPulse(PDMAUDIOFMT fmt)
 }
 
 static int drvHostPulseAudioPulseToFmt(pa_sample_format_t pulsefmt,
-                                       PDMAUDIOFMT *pFmt, PDMAUDIOENDIANESS *pEndianess)
+                                       PDMAUDIOFMT *pFmt, PDMAUDIOENDIANNESS *pEndianess)
 {
     switch (pulsefmt)
     {
         case PA_SAMPLE_U8:
             *pFmt = AUD_FMT_U8;
-            *pEndianess = PDMAUDIOENDIANESS_LITTLE;
+            *pEndianess = PDMAUDIOENDIANNESS_LITTLE;
             break;
 
         case PA_SAMPLE_S16LE:
             *pFmt = AUD_FMT_S16;
-            *pEndianess = PDMAUDIOENDIANESS_LITTLE;
+            *pEndianess = PDMAUDIOENDIANNESS_LITTLE;
             break;
 
         case PA_SAMPLE_S16BE:
             *pFmt = AUD_FMT_S16;
-            *pEndianess = PDMAUDIOENDIANESS_BIG;
+            *pEndianess = PDMAUDIOENDIANNESS_BIG;
             break;
 
 #ifdef PA_SAMPLE_S32LE
         case PA_SAMPLE_S32LE:
             *pFmt = AUD_FMT_S32;
-            *pEndianess = PDMAUDIOENDIANESS_LITTLE;
+            *pEndianess = PDMAUDIOENDIANNESS_LITTLE;
             break;
 #endif
 
 #ifdef PA_SAMPLE_S32BE
         case PA_SAMPLE_S32BE:
             *pFmt = AUD_FMT_S32;
-            *pEndianess = PDMAUDIOENDIANESS_BIG;
+            *pEndianess = PDMAUDIOENDIANNESS_BIG;
             break;
 #endif
 

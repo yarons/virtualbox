@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 55057 2015-03-31 21:38:44Z noreply@oracle.com $ */
+/* $Id: DrvAudio.h 55335 2015-04-17 16:00:22Z michal.necasek@oracle.com $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -176,7 +176,7 @@ static struct {
             44100,              /* freq */
             2,                  /* nchannels */
             AUD_FMT_S16,        /* fmt */
-            PDMAUDIOHOSTENDIANESS
+            PDMAUDIOHOSTENDIANNESS
         }
     },
 
@@ -189,7 +189,7 @@ static struct {
             44100,              /* freq */
             2,                  /* nchannels */
             AUD_FMT_S16,        /* fmt */
-            PDMAUDIOHOSTENDIANESS
+            PDMAUDIOHOSTENDIANNESS
         }
     },
 
