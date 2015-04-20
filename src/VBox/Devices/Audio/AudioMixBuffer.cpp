@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55338 2015-04-20 12:44:58Z michal.necasek@oracle.com $ */
+/* $Id: AudioMixBuffer.cpp 55339 2015-04-20 12:52:33Z michal.necasek@oracle.com $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -271,7 +271,7 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
  * Be careful what to pass in/out, as most of the macros are optimized for speed and
  * thus don't do any bounds checking!
  *
- * Note: Currently does not handle any endianess conversion yet!
+ * Note: Currently does not handle any endianness conversion yet!
  */
 #define AUDMIXBUF_CONVERT(_aName, _aType, _aMin, _aMax, _aSigned, _aShift) \
     /* Clips a specific output value to a single sample value. */ \
