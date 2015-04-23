@@ -1,3 +1,4 @@
+/* $Id: SHGSMIHost.h 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
 /*
  * Copyright (C) 2010 Oracle Corporation
  *

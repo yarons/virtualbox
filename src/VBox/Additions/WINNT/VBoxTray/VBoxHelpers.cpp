@@ -1,3 +1,4 @@
+/* $Id: VBoxHelpers.cpp 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
 /** @file
  * helpers - Guest Additions Service helper functions
  */
