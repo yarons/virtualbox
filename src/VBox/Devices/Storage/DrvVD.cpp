@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 54977 2015-03-26 20:26:54Z noreply@oracle.com $ */
+/* $Id: DrvVD.cpp 55431 2015-04-24 15:54:54Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -165,7 +165,7 @@ typedef struct VBOXDISK
     /** Flag whether boot acceleration is currently active. */
     bool                     fBootAccelActive;
     /** Size of the disk, used for read truncation. */
-    size_t                   cbDisk;
+    uint64_t                 cbDisk;
     /** Size of the configured buffer. */
     size_t                   cbBootAccelBuffer;
     /** Start offset for which the buffer holds data. */
