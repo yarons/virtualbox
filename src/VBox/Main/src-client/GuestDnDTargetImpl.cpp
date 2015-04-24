@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 55422 2015-04-24 13:52:33Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 55423 2015-04-24 14:17:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -26,8 +26,8 @@
 #include "Global.h"
 #include "AutoCaller.h"
 
-#include <algorithm> /* For std::find(). */
-#include <memory>    /* For unique_ptr, see #7179. */
+#include <algorithm>        /* For std::find(). */
+#include <memory>           /* For auto_ptr (deprecated) / unique_ptr, seee #7179. */
 
 #include <iprt/file.h>
 #include <iprt/dir.h>
@@ -484,7 +484,7 @@ DECLCALLBACK(int) GuestDnDTarget::i_sendDataThread(RTTHREAD Thread, void *pvUser
 {
     LogFlowFunc(("pvUser=%p\n", pvUser));
 
-    std::unique_ptr<SendDataTask> pTask(static_cast<SendDataTask*>(pvUser));
+    std::auto_ptr<SendDataTask> pTask(static_cast<SendDataTask*>(pvUser));
     AssertPtr(pTask.get());
 
     const ComObjPtr<GuestDnDTarget> pTarget(pTask->getTarget());
@@ -543,7 +543,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
             pSendCtx->mFormat   = aFormat;
             pSendCtx->mData     = aData;
 
-            std::unique_ptr<SendDataTask> pTask(new SendDataTask(this, pSendCtx));
+            std::auto_ptr<SendDataTask> pTask(new SendDataTask(this, pSendCtx));
             AssertReturn(pTask->isOk(), pTask->getRC());
 
             vrc = RTThreadCreate(NULL, GuestDnDTarget::i_sendDataThread,

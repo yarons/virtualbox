@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55422 2015-04-24 13:52:33Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 55423 2015-04-24 14:17:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -26,7 +26,7 @@
 #include "Global.h"
 #include "AutoCaller.h"
 
-#include <memory>    /* For unique_ptr, seee #7179. */
+#include <memory>           /* For auto_ptr (deprecated) / unique_ptr, seee #7179. */
 
 #include <iprt/dir.h>
 #include <iprt/file.h>
@@ -327,7 +327,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat,
             pRecvCtx->mpResp    = pResp;
             pRecvCtx->mFormat   = aFormat;
 
-            std::unique_ptr <RecvDataTask> pTask(new RecvDataTask(this, pRecvCtx));
+            std::auto_ptr <RecvDataTask> pTask(new RecvDataTask(this, pRecvCtx));
             AssertReturn(pTask->isOk(), pTask->getRC());
 
             rc = RTThreadCreate(NULL, GuestDnDSource::i_receiveDataThread,
@@ -699,7 +699,7 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveDataThread(RTTHREAD Thread, void *pvU
 {
     LogFlowFunc(("pvUser=%p\n", pvUser));
 
-    std::unique_ptr<RecvDataTask> pTask(static_cast<RecvDataTask*>(pvUser));
+    std::auto_ptr<RecvDataTask> pTask(static_cast<RecvDataTask*>(pvUser));
     AssertPtr(pTask.get());
 
     const ComObjPtr<GuestDnDSource> pTarget(pTask->getSource());
