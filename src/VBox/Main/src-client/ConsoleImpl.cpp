@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55437 2015-04-27 09:35:19Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 55441 2015-04-27 11:36:11Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3050,7 +3050,7 @@ HRESULT Console::removeSharedFolder(const com::Utf8Str &aName)
          * folder. */
 
         /* first, remove the given folder */
-        rc = removeSharedFolder(strName);
+        rc = i_removeSharedFolder(strName);
         if (FAILED(rc)) return rc;
 
         /* first, remove the machine or the global folder if there is any */
