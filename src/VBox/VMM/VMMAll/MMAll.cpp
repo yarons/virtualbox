@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 49893 2013-12-13 00:40:20Z knut.osmundsen@oracle.com $ */
+/* $Id: MMAll.cpp 55489 2015-04-28 15:40:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -623,6 +623,7 @@ const char *mmGetTagName(MMTAG enmTag)
         TAG2STR(PGM);
         TAG2STR(PGM_CHUNK_MAPPING);
         TAG2STR(PGM_HANDLERS);
+        TAG2STR(PGM_HANDLER_TYPES);
         TAG2STR(PGM_MAPPINGS);
         TAG2STR(PGM_PHYS);
         TAG2STR(PGM_POOL);
