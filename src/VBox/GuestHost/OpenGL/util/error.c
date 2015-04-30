@@ -1,4 +1,4 @@
-/* $Id: error.c 55572 2015-04-30 17:58:22Z vadim.galitsyn@oracle.com $ */
+/* $Id: error.c 55573 2015-04-30 18:06:07Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -96,14 +96,12 @@ DECLEXPORT(void) crError(const char *pszFormat, ...)
     logMessageV("OpenGL Error: ", pszFormat, va);
     va_end(va);
 
-    /* Dump core or activate the debugger in debug builds. */
-    AssertFailed();
-
 #ifdef IN_GUEST
     /* Give things a chance to close down. */
-    //raise(SIGTERM);
-    //exit(1);
     ASMBreakpoint();
+#else
+    /* Dump core or activate the debugger in debug builds. */
+    AssertFailed();
 #endif
 }
 
