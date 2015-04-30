@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 55550 2015-04-30 12:58:49Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorWindow.h 55554 2015-04-30 13:55:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -57,8 +57,6 @@ public:
 
 private slots:
 
-    /** Handles event-source state change (listener added or removed). */
-    void sltEventSourceChange();
     /* Handlers: Global-event stuff: */
     void sltStateChanged(QString strId);
     void sltSnapshotChanged(QString strId);
