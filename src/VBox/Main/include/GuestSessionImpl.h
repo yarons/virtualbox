@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 55588 2015-05-01 19:37:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.h 55590 2015-05-01 20:24:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -311,9 +311,6 @@ private:
                             const std::vector<PathRenameFlag_T> &aFlags);
     HRESULT directorySetACL(const com::Utf8Str &aPath,
                              const com::Utf8Str &aAcl);
-    HRESULT environmentClear();
-    HRESULT environmentGet(const com::Utf8Str &aName,
-                           com::Utf8Str &aValue);
     HRESULT environmentSet(const com::Utf8Str &aName,
                            const com::Utf8Str &aValue);
     HRESULT environmentUnset(const com::Utf8Str &aName);
