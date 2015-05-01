@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 55584 2015-05-01 19:11:32Z knut.osmundsen@oracle.com $ */
+/* $Id: env-generic.cpp 55585 2015-05-01 19:15:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -1001,7 +1001,7 @@ RT_EXPORT_SYMBOL(RTEnvQueryUtf8Block);
 
 RTDECL(void) RTEnvFreeUtf8Block(char *pszzBlock)
 {
-    RTMemFree(RTEnvQueryUtf8Block);
+    RTMemFree(pszzBlock);
 }
 RT_EXPORT_SYMBOL(RTEnvFreeUtf8Block);
 
