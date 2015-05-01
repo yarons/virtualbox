@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 50063 2014-01-13 16:48:33Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 55576 2015-05-01 01:00:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -1823,7 +1823,7 @@ int GstCntlSessionThreadCreate(PRTLISTANCHOR pList,
 
         /* Is this an anonymous session? */
         /* Anonymous sessions run with the same privileges as the main VBoxService executable. */
-        bool fAnonymous = !RT_BOOL(strlen(pSessionThread->StartupInfo.szUser));
+        bool const fAnonymous = pSessionThread->StartupInfo.szUser[0] == '\0';
         if (fAnonymous)
         {
             Assert(!strlen(pSessionThread->StartupInfo.szPassword));
