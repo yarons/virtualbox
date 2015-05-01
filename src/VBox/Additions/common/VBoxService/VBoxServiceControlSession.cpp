@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 55578 2015-05-01 01:45:30Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 55579 2015-05-01 10:02:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -2349,9 +2349,9 @@ RTEXITCODE VBoxServiceControlSessionForkInit(int argc, char **argv)
         switch (ch)
         {
             case VBOXSERVICESESSIONOPT_LOG_FILE:
-                if (!RTStrPrintf(g_szLogFile, sizeof(g_szLogFile), "%s", ValueUnion.psz))
-                    return RTMsgErrorExit(RTEXITCODE_FAILURE, "Unable to set logfile name to '%s'",
-                                          ValueUnion.psz);
+                rc = RTStrCopy(g_szLogFile, sizeof(g_szLogFile), ValueUnion.psz);
+                if (RT_FAILURE(rc))
+                    return RTMsgErrorExit(RTEXITCODE_FAILURE, "Error copying log file name: %Rrc", rc);
                 break;
 #ifdef DEBUG
             case VBOXSERVICESESSIONOPT_DUMP_STDOUT:
