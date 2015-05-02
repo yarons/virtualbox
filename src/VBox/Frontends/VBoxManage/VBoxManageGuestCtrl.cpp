@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 55606 2015-05-02 20:32:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 55607 2015-05-02 20:36:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -4242,6 +4242,10 @@ int handleGuestControl(HandlerArg *pArg)
      */
     if (pArg->argc >= 2)
     {
+        /** @todo bird: From a syntax diagram point of view, it's tempting to start
+         *        common option parsing here, stop on the first non-option and using
+         *        it as the command.  We will of course allow common options after
+         *        the command, no problems. */
         const char *pszCmd = pArg->argv[1];
         uint32_t    iCmd;
         for (iCmd = 0; iCmd < RT_ELEMENTS(s_aCmdDefs); iCmd++)
