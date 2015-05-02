@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 55604 2015-05-02 20:21:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManage.h 55605 2015-05-02 20:30:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -125,7 +125,6 @@
 # define USAGE_GSTCTRL_STAT         RT_BIT(12)
 # define USAGE_GSTCTRL_UPDATEGA     RT_BIT(13)
 # define USAGE_GSTCTRL_WATCH        RT_BIT(14)
-# define USAGE_GSTCTRL_EXEC         RT_BIT(31) /**< @deprecated Remember to remove. */
 #endif
 
 typedef uint64_t USAGECATEGORY;
