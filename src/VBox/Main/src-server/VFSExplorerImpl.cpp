@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 50874 2014-03-25 18:29:02Z noreply@oracle.com $ */
+/* $Id: VFSExplorerImpl.cpp 55610 2015-05-03 01:06:37Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -617,7 +617,7 @@ HRESULT VFSExplorer::entryList(std::vector<com::Utf8Str> &aNames,
         const VFSExplorer::Data::DirEntry &entry = (*it);
         aNames[i] = entry.name;
         aTypes[i] = entry.type;
-        aSizes[i] = entry.type;
+        aSizes[i] = entry.size;
         aModes[i] = entry.mode;
     }
 
