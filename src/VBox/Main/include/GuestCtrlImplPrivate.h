@@ -1,6 +1,5 @@
-/* $Id: GuestCtrlImplPrivate.h 55631 2015-05-04 04:08:10Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 55644 2015-05-04 13:27:35Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * Internal helpers/structures for guest control functionality.
  */
 
