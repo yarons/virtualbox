@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 55631 2015-05-04 04:08:10Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 55632 2015-05-04 04:10:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3266,7 +3266,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMv(PGCTLCMDCTX pCtx, int argc, char **
         Utf8Str strCurSource = (*it);
 
         ComPtr<IGuestFsObjInfo> pFsObjInfo;
-        FsObjType enmObjType;
+        FsObjType_T enmObjType;
         rc = pCtx->pGuestSession->FsObjQueryInfo(Bstr(strCurSource).raw(), FALSE /*followSymlinks*/, pFsObjInfo.asOutParam());
         if (SUCCEEDED(rc))
             rc = pFsObjInfo->COMGETTER(Type)(&enmObjType);
