@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55511 2015-04-29 10:16:01Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 55642 2015-05-04 13:04:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -38,7 +38,6 @@
 #include "SharedFolderImpl.h"
 #include "GuestOSTypeImpl.h"
 #include "VirtualBoxErrorInfoImpl.h"
-#include "GuestImpl.h"
 #include "StorageControllerImpl.h"
 #include "DisplayImpl.h"
 #include "DisplayUtils.h"
