@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55259 2015-04-14 17:59:42Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 55674 2015-05-05 17:58:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -188,7 +188,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--vtxux on|off]\n"
                      "                            [--pae on|off]\n"
                      "                            [--longmode on|off]\n"
-                     "                            [--synthcpu on|off]\n"
+                     "                            [--cpuid-portability-level <0..3>\n"
                      "                            [--cpuidset <leaf> <eax> <ebx> <ecx> <edx>]\n"
                      "                            [--cpuidremove <leaf>]\n"
                      "                            [--cpuidremoveall]\n"
