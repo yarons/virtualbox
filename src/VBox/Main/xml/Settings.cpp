@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 55674 2015-05-05 17:58:10Z knut.osmundsen@oracle.com $ */
+/* $Id: Settings.cpp 55676 2015-05-05 18:09:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2759,8 +2759,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                     pelmCPUChild->getAttributeValue("count", hw.cCPUs);
             }
 
-            pelmHwChild->getAttributeValue("hotplug", hw.fCpuHotPlug);
-            pelmHwChild->getAttributeValue("executionCap", hw.ulCpuExecutionCap);
+            pelmCPUChild->getAttributeValue("hotplug", hw.fCpuHotPlug);
+            pelmCPUChild->getAttributeValue("executionCap", hw.ulCpuExecutionCap);
 
             const xml::ElementNode *pelmCPUChild;
             if (hw.fCpuHotPlug)
