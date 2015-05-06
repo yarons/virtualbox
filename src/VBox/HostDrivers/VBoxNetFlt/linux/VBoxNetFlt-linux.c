@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 55653 2015-05-05 04:14:35Z noreply@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 55679 2015-05-06 01:00:14Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -67,6 +67,20 @@
 #define VBOX_FLT_PT_TO_INST(pPT)    RT_FROM_MEMBER(pPT, VBOXNETFLTINS, u.s.PacketType)
 #ifndef VBOXNETFLT_LINUX_NO_XMIT_QUEUE
 # define VBOX_FLT_XT_TO_INST(pXT)   RT_FROM_MEMBER(pXT, VBOXNETFLTINS, u.s.XmitTask)
+#endif
+
+#if 0
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 22)
+# define VBOX_NETDEV_NAME(dev)              netdev_name(dev)
+#else
+# define VBOX_NETDEV_NAME(dev)              ((dev)->reg_state != NETREG_REGISTERED ? "(unregistered net_device)" : (dev)->name)
+#endif
+#endif
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 26)
+# define VBOX_DEV_NET(dev)                  dev_net(dev)
+#else
+# define VBOX_DEV_NET(dev)                  ((dev)->nd_net)
 #endif
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 22)
@@ -2159,7 +2173,7 @@ int  vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
 #if 0 /* XXX: temporarily disable */
     if (pThis->pSwitchPort->pfnNotifyHostAddress)
     {
-        struct net *net = dev_net(pThis->u.s.pDev);
+        struct net *net = VBOX_DEV_NET(pThis->u.s.pDev);
         struct net_device *dev;
 
         rcu_read_lock();
