@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 55434 2015-04-27 03:25:11Z noreply@oracle.com $ */
+/* $Id: DrvVD.cpp 55686 2015-05-06 08:30:56Z noreply@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -3109,7 +3109,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
         {
            rc = PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                     N_("Failed to open image '%s' in %s mode"), pszName,
-                                    (uOpenFlags & VD_OPEN_FLAGS_READONLY) ? "read-only" : "read-write", rc);
+                                    (uOpenFlags & VD_OPEN_FLAGS_READONLY) ? "read-only" : "read-write");
            break;
         }
 
