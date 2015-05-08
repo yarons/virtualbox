@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55728 2015-05-07 13:58:38Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 55769 2015-05-08 20:01:46Z noreply@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5871,7 +5871,7 @@ HRESULT Machine::i_enumerateGuestPropertiesInService(const com::Utf8Str &aPatter
                                             NULL)
            )
             propMap.insert(*it);
-        it++;
+        ++it;
     }
 
     alock.release();
