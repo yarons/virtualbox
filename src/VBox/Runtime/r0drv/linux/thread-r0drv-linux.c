@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 48935 2013-10-07 21:19:37Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-r0drv-linux.c 55859 2015-05-14 09:20:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -199,10 +199,12 @@ RT_EXPORT_SYMBOL(RTThreadPreemptDisable);
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
 #ifdef CONFIG_PREEMPT
+    IPRT_LINUX_SAVE_EFL_AC(); /* paranoia */
     AssertPtr(pState);
     Assert(pState->u32Reserved == 42);
     RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
     preempt_enable();
+    IPRT_LINUX_RESTORE_EFL_ONLY_AC();  /* paranoia */
 
 #else
     int32_t volatile *pc;
