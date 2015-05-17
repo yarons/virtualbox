@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 55889 2015-05-17 18:01:37Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 55895 2015-05-17 19:42:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -710,7 +710,7 @@ typedef struct PGMVIRTANDLERTYPEINT
     bool                                fRelocUserRC;
     bool                                afPadding[3];
     /** Pointer to RC callback function. */
-    RCPTRTYPE(PFNPGMRCVIRTHANDLER)      pfnHandlerRC;
+    RCPTRTYPE(PFNPGMRCVIRTPFHANDLER)    pfnPfHandlerRC;
     /** Pointer to the R3 callback function for invalidation. */
     R3PTRTYPE(PFNPGMR3VIRTINVALIDATE)   pfnInvalidateR3;
     /** Pointer to R3 callback function. */

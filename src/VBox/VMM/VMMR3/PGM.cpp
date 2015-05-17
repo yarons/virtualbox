@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 55889 2015-05-17 18:01:37Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM.cpp 55895 2015-05-17 19:42:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2439,8 +2439,8 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     PPGMVIRTHANDLERTYPEINT pCurVirtType;
     RTListOff32ForEach(&pVM->pgm.s.pTreesR3->HeadVirtHandlerTypes, pCurVirtType, PGMVIRTHANDLERTYPEINT, ListNode)
     {
-        if (pCurVirtType->pfnHandlerRC != NIL_RTRCPTR)
-            pCurVirtType->pfnHandlerRC += offDelta;
+        if (pCurVirtType->pfnPfHandlerRC != NIL_RTRCPTR)
+            pCurVirtType->pfnPfHandlerRC += offDelta;
     }
 
     /*

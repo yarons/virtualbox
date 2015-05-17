@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 55889 2015-05-17 18:01:37Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStruct.h 55895 2015-05-17 19:42:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -810,7 +810,7 @@
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, enmKind);
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, uState);
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, fRelocUserRC);
-    GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, pfnHandlerRC);
+    GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, pfnPfHandlerRC);
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, pfnInvalidateR3);
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, pfnHandlerR3);
     GEN_CHECK_OFF(PGMVIRTHANDLERTYPEINT, pszDesc);
