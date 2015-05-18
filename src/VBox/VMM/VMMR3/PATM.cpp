@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 55895 2015-05-17 19:42:38Z knut.osmundsen@oracle.com $ */
+/* $Id: PATM.cpp 55897 2015-05-18 09:02:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -224,7 +224,7 @@ VMMR3_INT_DECL(int) PATMR3Init(PVM pVM)
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_ALL, false /*fRelocUserRC*/,
                                          NULL /*pfnInvalidateR3*/,
                                          patmR3VirtPageHandler,
-                                         "patmRCVirtPagePfHandler", NULL /*pszModRC*/,
+                                         "patmRCVirtPagePfHandler",
                                          "PATMMonitorPatchJump", &pVM->patm.s.hMonitorPageType);
     AssertRCReturn(rc, rc);
 

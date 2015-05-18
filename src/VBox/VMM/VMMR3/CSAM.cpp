@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 55895 2015-05-17 19:42:38Z knut.osmundsen@oracle.com $ */
+/* $Id: CSAM.cpp 55897 2015-05-18 09:02:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -255,14 +255,14 @@ VMMR3_INT_DECL(int) CSAMR3Init(PVM pVM)
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                          NULL /*pfnInvalidateR3 */,
                                          csamR3CodePageWriteHandler,
-                                         "csamRCCodePageWritePfHandler", NULL /*pszModRC*/,
+                                         "csamRCCodePageWritePfHandler",
                                          "CSAM code page write handler",
                                          &pVM->csam.s.hCodePageWriteType);
     AssertLogRelRCReturn(rc, rc);
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                          csamR3CodePageInvalidate,
                                          csamR3CodePageWriteHandler,
-                                         "csamRCCodePageWritePfHandler", NULL /*pszModRC*/,
+                                         "csamRCCodePageWritePfHandler",
                                          "CSAM code page write and invlpg handler",
                                          &pVM->csam.s.hCodePageWriteAndInvPgType);
     AssertLogRelRCReturn(rc, rc);
