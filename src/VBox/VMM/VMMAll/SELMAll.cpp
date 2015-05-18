@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 52363 2014-08-12 20:03:48Z knut.osmundsen@oracle.com $ */
+/* $Id: SELMAll.cpp 55899 2015-05-18 09:47:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * SELM All contexts.
  */
@@ -495,7 +495,7 @@ static void selLoadHiddenSelectorRegFromGuestTable(PVMCPU pVCpu, PCCPUMCTX pCtx,
      * Try read the entry.
      */
     X86DESC GstDesc;
-    int rc = PGMPhysReadGCPtr(pVCpu, &GstDesc, GCPtrDesc, sizeof(GstDesc));
+    int rc = PGMPhysReadGCPtr(pVCpu, &GstDesc, GCPtrDesc, sizeof(GstDesc), PGMACCESSORIGIN_IOM);
     if (RT_FAILURE(rc))
     {
         Log(("SELMLoadHiddenSelectorReg: Error reading descriptor %s=%#x: %Rrc\n", g_aszSRegNms[iSReg], Sel, rc));

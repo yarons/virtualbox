@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 55896 2015-05-17 20:20:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMAllMMIO.cpp 55899 2015-05-18 09:47:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -677,7 +677,7 @@ DECLINLINE(int) iomRamRead(PVMCPU pVCpu, void *pDest, RTGCPTR GCSrc, uint32_t cb
         rc = VINF_IOM_R3_IOPORT_WRITE;
     return rc;
 #else
-    return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb);
+    return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb, PGMACCESSORIGIN_IOM);
 #endif
 }
 
@@ -695,7 +695,7 @@ DECLINLINE(int) iomRamWrite(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, RTGCPTR GCPtrDs
     return PGMPhysInterpretedWriteNoHandlers(pVCpu, pCtxCore, GCPtrDst, pvSrc, cb, false /*fRaiseTrap*/);
 #else
     NOREF(pCtxCore);
-    return PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb);
+    return PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb, PGMACCESSORIGIN_IOM);
 #endif
 }
 
