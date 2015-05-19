@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55843 2015-05-13 11:33:39Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 55923 2015-05-19 08:35:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -498,7 +498,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            cpuexecutioncap <1-100>\n"
                      "                            webcam <attach [path [settings]]> | <detach [path]> | <list>\n"
                      "                            addencpassword <id>\n"
-                     "                                           <password>\n"
+                     "                                           <password file>|-\n"
                      "                                           [--removeonsuspend <yes|no>]\n"
                      "                            removeencpassword <id>\n"
                      "                            removeallencpasswords\n"
