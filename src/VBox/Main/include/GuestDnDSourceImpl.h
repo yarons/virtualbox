@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 55549 2015-04-30 12:28:26Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.h 55963 2015-05-20 11:18:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -73,7 +73,13 @@ protected:
 
 protected:
 
+    static Utf8Str i_guestErrorToString(int guestRc);
+    static Utf8Str i_hostErrorToString(int hostRc);
+
+    /** @name Thread callbacks.
+     * @{ */
     static DECLCALLBACK(int) i_receiveDataThread(RTTHREAD Thread, void *pvUser);
+    /** @}  */
 
     /** @name Callbacks for dispatch handler.
      * @{ */
