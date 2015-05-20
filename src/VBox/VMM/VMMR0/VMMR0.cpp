@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 55864 2015-05-14 18:44:04Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 55980 2015-05-20 17:35:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2075,7 +2075,7 @@ DECLEXPORT(void) RTCALL RTAssertMsg2WeakV(const char *pszFormat, va_list va)
         RTLogFormatV(rtLogOutput, pLog, pszFormat, vaCopy);
         va_end(vaCopy);
     }
-    pLog = RTLogRelDefaultInstance();
+    pLog = RTLogRelGetDefaultInstance();
     if (pLog)
     {
         va_copy(vaCopy, va);
