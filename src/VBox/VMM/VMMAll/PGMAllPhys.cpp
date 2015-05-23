@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 56048 2015-05-23 20:28:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 56049 2015-05-23 21:21:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2748,6 +2748,8 @@ static VBOXSTRICTRC pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys
         else /* The handler is somewhere else in the page, deal with it below. */
             rcStrict = VINF_SUCCESS;
     }
+    else
+        rcStrict = VINF_SUCCESS;
 
     /*
      * Deal with all the odd ends.
