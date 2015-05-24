@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 56052 2015-05-24 14:56:38Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 56053 2015-05-24 15:12:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -710,7 +710,7 @@ typedef struct PGMVIRTANDLERTYPEINT
     uint32_t                            uState;
     /** Whether the pvUserRC argument should be automatically relocated or not. */
     bool                                fRelocUserRC;
-    bool                                afPadding[HC_ARCH_BITS == 64 ? 3 : 7];
+    bool                                afPadding[HC_ARCH_BITS == 64 ? 7 : 3];
     /** Pointer to RC callback function. */
     RCPTRTYPE(PFNPGMVIRTHANDLER)        pfnHandlerRC;
     /** Pointer to RC callback function for \#PFs. */
