@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 56052 2015-05-24 14:56:38Z knut.osmundsen@oracle.com $ */
+/* $Id: CSAM.cpp 56054 2015-05-24 15:52:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2168,6 +2168,9 @@ static DECLCALLBACK(void) CSAMDelayedWriteHandler(PVM pVM, RTRCPTR GCPtr, size_t
  * @param   pVCpu           Pointer to the cross context CPU context for the
  *                          calling EMT.
  * @param   GCPtr           The virtual address the guest has changed.
+ *
+ * @remarks Not currently called by PGM. It was actually only called for a month
+ *          back in 2006...
  */
 static DECLCALLBACK(int) csamR3CodePageInvalidate(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvUser)
 {
