@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 55697 2015-05-06 16:50:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 56059 2015-05-25 14:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -266,6 +266,7 @@ private slots:
 
     /* "View" menu functionality: */
     void sltToggleGuestAutoresize(bool fEnabled);
+    void sltMinimizeWindow();
     void sltAdjustWindow();
     void sltTakeScreenshot();
     void sltOpenVideoCaptureOptions();

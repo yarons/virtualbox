@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 56058 2015-05-25 13:42:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 56059 2015-05-25 14:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -494,6 +494,41 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "S&caled Mode"));
         setStatusTip(QApplication::translate("UIActionPool", "Switch between normal and scaled mode"));
+    }
+};
+
+class UIActionSimplePerformMinimizeWindow : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimplePerformMinimizeWindow(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/minimize_16px.png") {}
+
+protected:
+
+    /** Returns action extra-data ID. */
+    virtual int extraDataID() const { return UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow; }
+    /** Returns action extra-data key. */
+    virtual QString extraDataKey() const { return gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow); }
+    /** Returns whether action is allowed. */
+    virtual bool isAllowed() const { return actionPool()->toRuntime()->isAllowedInMenuView(UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow); }
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("WindowMinimize");
+    }
+
+    QKeySequence defaultShortcut(UIActionPoolType) const
+    {
+        return QKeySequence("M");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "&Minimize Window"));
+        setStatusTip(QApplication::translate("UIActionPool", "Minimize currently active window"));
     }
 };
 
@@ -2030,6 +2065,7 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_View_T_Fullscreen] = new UIActionToggleFullscreenMode(this);
     m_pool[UIActionIndexRT_M_View_T_Seamless] = new UIActionToggleSeamlessMode(this);
     m_pool[UIActionIndexRT_M_View_T_Scale] = new UIActionToggleScaleMode(this);
+    m_pool[UIActionIndexRT_M_View_S_MinimizeWindow] = new UIActionSimplePerformMinimizeWindow(this);
     m_pool[UIActionIndexRT_M_View_S_AdjustWindow] = new UIActionSimplePerformWindowAdjust(this);
     m_pool[UIActionIndexRT_M_View_T_GuestAutoresize] = new UIActionToggleGuestAutoresize(this);
     m_pool[UIActionIndexRT_M_View_S_TakeScreenshot] = new UIActionSimplePerformTakeScreenshot(this);
