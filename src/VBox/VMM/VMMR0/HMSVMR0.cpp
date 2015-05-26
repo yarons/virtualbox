@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 56080 2015-05-26 14:36:27Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 56081 2015-05-26 14:40:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4776,6 +4776,7 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
     }
 
     VBOXSTRICTRC rcStrict;
+    bool fUpdateRipAlready = false;
     if (IoExitInfo.n.u1STR)
     {
 #ifdef VBOX_WITH_2ND_IEM_STEP
@@ -4822,6 +4823,7 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
             AssertMsgFailed(("IoExitInfo=%RX64\n", IoExitInfo.u));
             rcStrict = IEMExecOne(pVCpu);
         }
+        fUpdateRipAlready = true;
 
 #else
         /* INS/OUTS - I/O String instruction. */
@@ -4883,7 +4885,8 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
     if (IOM_SUCCESS(rcStrict))
     {
         /* AMD-V saves the RIP of the instruction following the IO instruction in EXITINFO2. */
-        pCtx->rip = pVmcb->ctrl.u64ExitInfo2;
+        if (!fUpdateRipAlready)
+            pCtx->rip = pVmcb->ctrl.u64ExitInfo2;
 
         /*
          * If any I/O breakpoints are armed, we need to check if one triggered
