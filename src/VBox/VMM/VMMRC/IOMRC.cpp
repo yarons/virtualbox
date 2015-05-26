@@ -1,4 +1,4 @@
-/* $Id: IOMRC.cpp 56080 2015-05-26 14:36:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMRC.cpp 56083 2015-05-26 16:24:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Raw-Mode Context.
  */
@@ -268,9 +268,9 @@ static VBOXSTRICTRC iomRCInterpretOUTS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegF
      * And get the I/O register size from the opcode / prefix.
      */
     uint64_t    Port = 0;
+    unsigned    cb;
     bool fRc = iomGetRegImmData(pCpu, &pCpu->Param1, pRegFrame, &Port, &cb);
     AssertMsg(fRc, ("Failed to get reg/imm port number!\n")); NOREF(fRc);
-    unsigned cb;
     if (pCpu->pCurInstr->uOpcode == OP_OUTSB)
         cb = 1;
     else
