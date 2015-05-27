@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 56118 2015-05-27 19:49:50Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 56119 2015-05-27 20:11:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -111,10 +111,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         CHECK_ERROR_BREAK(a->session, COMGETTER(Machine)(sessionMachine.asOutParam()));
 
         if (!console)
-        {
-            errorArgument("Machine '%s' is not currently running", a->argv[0]);
-            return RTEXITCODE_FAILURE;
-        }
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Machine '%s' is not currently running", a->argv[0]);
 
         /* which command? */
         if (!strcmp(a->argv[1], "pause"))
