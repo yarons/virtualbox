@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 55528 2015-04-29 16:38:59Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 56088 2015-05-27 08:55:54Z valery.portnyagin@oracle.com $ */
 
 /** @file
  *
@@ -64,6 +64,9 @@ private:
     HRESULT setAudioDriver(AudioDriverType_T aAudioDriver);
     HRESULT getAudioController(AudioControllerType_T *aAudioController);
     HRESULT setAudioController(AudioControllerType_T aAudioController);
+    HRESULT getPropertiesList(std::vector<com::Utf8Str>& aProperties);
+    HRESULT getProperty(const com::Utf8Str &aKey, com::Utf8Str &aValue);
+    HRESULT setProperty(const com::Utf8Str &aKey, const com::Utf8Str &aValue);
 
     Machine * const     mParent;
     const ComObjPtr<AudioAdapter> mPeer;
