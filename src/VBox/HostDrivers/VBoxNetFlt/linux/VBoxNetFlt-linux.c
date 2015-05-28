@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 56143 2015-05-28 19:47:00Z noreply@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 56144 2015-05-28 20:04:50Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -28,6 +28,7 @@
 #include <linux/rtnetlink.h>
 #include <linux/miscdevice.h>
 #include <linux/inetdevice.h>
+#include <linux/in.h>
 #include <linux/ip.h>
 #include <linux/if_vlan.h>
 #include <net/if_inet6.h>
