@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 56145 2015-05-29 10:58:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 56150 2015-05-29 12:45:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -788,7 +788,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&About VirtualBox..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Display window with product information"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display a window with product information"));
     }
 };
 
