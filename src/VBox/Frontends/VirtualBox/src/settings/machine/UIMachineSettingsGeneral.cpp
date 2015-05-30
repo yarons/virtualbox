@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 55329 2015-04-17 13:27:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 56165 2015-05-30 23:53:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -478,7 +478,7 @@ void UIMachineSettingsGeneral::retranslateUi()
     AssertPtrReturnVoid(mPsSnapshot);
     mPsSnapshot->setWhatsThis(tr("Holds the path where snapshots of this "
                                  "virtual machine will be stored. Be aware that "
-                                 "snapshots can take quite a lot of disk space."));
+                                 "snapshots can take quite a lot of storage space."));
     /* Translate Shared Clipboard mode combo: */
     AssertPtrReturnVoid(mCbClipboard);
     mCbClipboard->setItemText(0, gpConverter->toString(KClipboardMode_Disabled));
