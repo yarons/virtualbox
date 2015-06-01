@@ -1,4 +1,4 @@
-/* $Id: error.c 55624 2015-05-03 15:42:51Z vadim.galitsyn@oracle.com $ */
+/* $Id: error.c 56179 2015-06-01 13:22:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -159,7 +159,7 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
         case DLL_PROCESS_ATTACH:
         {
             int rc;
-            rc = RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE); CRASSERT(rc);
+            rc = RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE); CRASSERT(rc==0);
 # ifdef IN_GUEST
             rc = VbglR3Init();
 # endif
