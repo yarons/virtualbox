@@ -1,4 +1,4 @@
-/* $Id: vbva.c 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
+/* $Id: vbva.c 56211 2015-06-03 08:48:19Z noreply@oracle.com $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -239,7 +239,6 @@ vboxEnableVbva(ScrnInfoPtr pScrn)
 void
 vboxDisableVbva(ScrnInfoPtr pScrn)
 {
-    int rc;
     unsigned i;
     VBOXPtr pVBox = pScrn->driverPrivate;
 
