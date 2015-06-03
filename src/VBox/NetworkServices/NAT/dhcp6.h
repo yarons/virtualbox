@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: dhcp6.h 56230 2015-06-03 21:25:33Z noreply@oracle.com $ */
 /** @file
  * NAT Network - DHCPv6 protocol definitions.
  */
