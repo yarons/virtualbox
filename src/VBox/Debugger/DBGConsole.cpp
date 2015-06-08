@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 55881 2015-05-16 01:02:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGConsole.cpp 56272 2015-06-08 10:46:19Z noreply@oracle.com $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -582,7 +582,7 @@ static const char *dbgcGetEventCtx(DBGFEVENTCTX enmCtx)
     {
         case DBGFEVENTCTX_RAW:      return "raw";
         case DBGFEVENTCTX_REM:      return "rem";
-        case DBGFEVENTCTX_HM:   return "hwaccl";
+        case DBGFEVENTCTX_HM:       return "hwaccl";
         case DBGFEVENTCTX_HYPER:    return "hyper";
         case DBGFEVENTCTX_OTHER:    return "other";
 
