@@ -1,10 +1,10 @@
-/* $Id: scmdiff.cpp 52836 2014-09-24 13:02:36Z knut.osmundsen@oracle.com $ */
+/* $Id: scmdiff.cpp 56310 2015-06-09 22:36:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
