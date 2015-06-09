@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 51373 2014-05-23 15:32:55Z michal.necasek@oracle.com $ */
+/* $Id: DevIoApic.cpp 56284 2015-06-09 10:46:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -865,7 +865,7 @@ const PDMDEVREG g_DeviceIOAPIC =
     /* szName */
     "ioapic",
     /* szRCMod */
-    "VBoxDD2GC.gc",
+    "VBoxDD2RC.rc",
     /* szR0Mod */
     "VBoxDD2R0.r0",
     /* pszDescription */
