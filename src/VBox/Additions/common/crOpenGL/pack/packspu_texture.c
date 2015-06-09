@@ -1,11 +1,11 @@
-/* $Id: packspu_texture.c 46174 2013-05-20 12:17:39Z noreply@oracle.com $ */
+/* $Id: packspu_texture.c 56294 2015-06-09 14:26:20Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
