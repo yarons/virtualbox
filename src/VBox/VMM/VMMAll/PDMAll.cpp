@@ -1,10 +1,10 @@
-/* $Id: PDMAll.cpp 52670 2014-09-10 11:04:10Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PDMAll.cpp 56287 2015-06-09 11:15:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Critical Sections
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

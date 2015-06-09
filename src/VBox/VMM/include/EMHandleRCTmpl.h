@@ -1,10 +1,10 @@
-/* $Id: EMHandleRCTmpl.h 56064 2015-05-25 16:09:01Z knut.osmundsen@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 56287 2015-06-09 11:15:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

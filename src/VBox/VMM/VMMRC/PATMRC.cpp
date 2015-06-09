@@ -1,10 +1,10 @@
-/* $Id: PATMRC.cpp 56045 2015-05-22 21:05:29Z knut.osmundsen@oracle.com $ */
+/* $Id: PATMRC.cpp 56287 2015-06-09 11:15:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

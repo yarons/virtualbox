@@ -1,10 +1,10 @@
-/* $Id: FTMInternal.h 35346 2010-12-27 16:13:13Z knut.osmundsen@oracle.com $ */
+/* $Id: FTMInternal.h 56287 2015-06-09 11:15:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * FTM - Internal header file.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
