@@ -1,10 +1,10 @@
-/* $Id: nt.h 55124 2015-04-08 09:45:01Z noreply@oracle.com $ */
+/* $Id: nt.h 56291 2015-06-09 14:12:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
