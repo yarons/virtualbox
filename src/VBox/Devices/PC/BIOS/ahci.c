@@ -1,10 +1,10 @@
-/* $Id: ahci.c 55206 2015-04-13 11:05:11Z michal.necasek@oracle.com $ */
+/* $Id: ahci.c 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

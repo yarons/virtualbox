@@ -1,10 +1,10 @@
-/* $Id: fsw_strfunc.h 48947 2013-10-07 21:41:00Z knut.osmundsen@oracle.com $ */
+/* $Id: fsw_strfunc.h 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * fsw_strfunc.h
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

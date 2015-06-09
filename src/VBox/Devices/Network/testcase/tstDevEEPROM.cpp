@@ -1,10 +1,10 @@
-/* $Id: tstDevEEPROM.cpp 31885 2010-08-24 07:22:23Z noreply@oracle.com $ */
+/* $Id: tstDevEEPROM.cpp 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * EEPROM 93C46 unit tests.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

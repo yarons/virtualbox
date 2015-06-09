@@ -1,10 +1,10 @@
-/* $Id: ComponentName.c 53335 2014-11-14 17:20:13Z michal.necasek@oracle.com $ */
+/* $Id: ComponentName.c 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * ComponentName.c
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

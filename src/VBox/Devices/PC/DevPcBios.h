@@ -1,10 +1,10 @@
-/* $Id: DevPcBios.h 44820 2013-02-25 14:45:13Z vadim.galitsyn@oracle.com $ */
+/* $Id: DevPcBios.h 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

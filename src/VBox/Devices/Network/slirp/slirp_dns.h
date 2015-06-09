@@ -1,10 +1,10 @@
-/* $Id: slirp_dns.h 41977 2012-07-02 08:52:58Z noreply@oracle.com $ */
+/* $Id: slirp_dns.h 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - Slirp's dns header.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
