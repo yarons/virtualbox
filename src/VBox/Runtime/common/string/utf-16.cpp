@@ -1,10 +1,10 @@
-/* $Id: utf-16.cpp 52944 2014-10-05 04:37:10Z knut.osmundsen@oracle.com $ */
+/* $Id: utf-16.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UTF-16.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

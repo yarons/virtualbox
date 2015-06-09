@@ -1,10 +1,10 @@
-/* $Id: openssl-sha256.cpp 51856 2014-07-03 18:39:21Z knut.osmundsen@oracle.com $ */
+/* $Id: openssl-sha256.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - SHA-256 hash functions.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

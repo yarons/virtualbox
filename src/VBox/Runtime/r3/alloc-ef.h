@@ -1,10 +1,10 @@
-/* $Id: alloc-ef.h 53278 2014-11-09 21:01:25Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-ef.h 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

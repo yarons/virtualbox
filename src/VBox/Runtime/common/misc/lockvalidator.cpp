@@ -1,10 +1,10 @@
-/* $Id: lockvalidator.cpp 55446 2015-04-27 12:52:19Z knut.osmundsen@oracle.com $ */
+/* $Id: lockvalidator.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Lock Validator.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

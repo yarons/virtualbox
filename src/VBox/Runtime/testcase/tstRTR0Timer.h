@@ -1,10 +1,10 @@
-/* $Id: tstRTR0Timer.h 48411 2013-09-10 14:36:31Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTR0Timer.h 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Timers, common header.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

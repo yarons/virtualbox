@@ -1,10 +1,10 @@
-/* $Id: errvars-generic.cpp 37233 2011-05-27 13:31:57Z knut.osmundsen@oracle.com $ */
+/* $Id: errvars-generic.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Save and Restore Error Variables, generic stub implementation.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

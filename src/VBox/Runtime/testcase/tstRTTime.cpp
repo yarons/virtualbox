@@ -1,10 +1,10 @@
-/* $Id: tstRTTime.cpp 54252 2015-02-17 19:24:45Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTTime.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple RTTime tests (requires GIP).
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

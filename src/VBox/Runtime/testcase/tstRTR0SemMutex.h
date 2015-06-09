@@ -1,10 +1,10 @@
-/* $Id: tstRTR0SemMutex.h 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: tstRTR0SemMutex.h 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Mutex Semaphores, common header.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

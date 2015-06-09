@@ -1,10 +1,10 @@
-/* $Id: memuserkernel-r0drv-linux.c 53427 2014-12-02 21:18:18Z noreply@oracle.com $ */
+/* $Id: memuserkernel-r0drv-linux.c 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

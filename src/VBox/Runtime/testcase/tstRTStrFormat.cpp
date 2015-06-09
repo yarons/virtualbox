@@ -1,10 +1,10 @@
-/* $Id: tstRTStrFormat.cpp 50392 2014-02-10 14:55:53Z noreply@oracle.com $ */
+/* $Id: tstRTStrFormat.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

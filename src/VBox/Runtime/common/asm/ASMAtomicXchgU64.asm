@@ -1,10 +1,10 @@
-; $Id: ASMAtomicXchgU64.asm 33540 2010-10-28 09:27:05Z noreply@oracle.com $
+; $Id: ASMAtomicXchgU64.asm 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - ASMAtomicXchgU64().
 ;
 
 ;
-; Copyright (C) 2006-2010 Oracle Corporation
+; Copyright (C) 2006-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstIprtList.cpp 45520 2013-04-12 14:22:41Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIprtList.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTCList/RTCMTList.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstRTCoreDump.h 31796 2010-08-19 16:18:42Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstRTCoreDump.h 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
