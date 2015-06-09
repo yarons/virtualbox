@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbMon.h 38488 2011-08-18 10:26:06Z noreply@oracle.com $ */
+/* $Id: VBoxUsbMon.h 56293 2015-06-09 14:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstContiguous.cpp 44528 2013-02-04 14:27:54Z noreply@oracle.com $ */
+/* $Id: tstContiguous.cpp 56293 2015-06-09 14:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Contiguous Memory Interface (ring-3).
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

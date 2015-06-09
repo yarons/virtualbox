@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-win.cpp 54666 2015-03-06 13:44:04Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 56293 2015-06-09 14:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

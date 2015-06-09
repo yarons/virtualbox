@@ -1,10 +1,10 @@
-/* $Id: tstGIP-2.cpp 54352 2015-02-22 01:32:45Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGIP-2.cpp 56293 2015-06-09 14:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

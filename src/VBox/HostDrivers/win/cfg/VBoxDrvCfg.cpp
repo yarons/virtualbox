@@ -1,9 +1,9 @@
-/* $Id: VBoxDrvCfg.cpp 54810 2015-03-17 12:15:29Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvCfg.cpp 56293 2015-06-09 14:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
