@@ -11,13 +11,12 @@
     Foundation, in version 2 as it comes in the "COPYING" file of the
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-
  -->
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <refentry id="vboxmanage-extpack" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2015-06-02 18:44:49 +0200 (Tue, 02 Jun 2015) $</pubdate>
+    <pubdate>$Date: 2015-06-10 09:25:05 +0200 (Wed, 10 Jun 2015) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
