@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 56431 2015-06-15 13:50:23Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 56438 2015-06-15 17:00:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -527,7 +527,7 @@ static int vbvaFlush(PVGASTATE pVGAState, VBVACONTEXT *pCtx)
     if (RT_FAILURE(rc))
     {
         /* Turn off VBVA processing. */
-        LogRel(("VBVA: disabling\n", rc));
+        LogRel(("VBVA: Disabling\n", rc));
         for (uScreenId = 0; uScreenId < pCtx->cViews; uScreenId++)
         {
             VBVADATA *pVBVAData = &pCtx->aViews[uScreenId].vbva;
