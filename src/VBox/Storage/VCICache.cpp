@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 56369 2015-06-11 17:29:19Z alexander.eichner@oracle.com $ */
+/* $Id: VCICache.cpp 56754 2015-07-02 12:08:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -588,6 +588,8 @@ static int vciBlkMapLoad(PVCICACHE pStorage, uint64_t offBlkMap, uint32_t cBlkMa
                             pBlkMap->pRangesHead = pRangeCur;
                             pBlkMap->pRangesTail = pRangeCur;
                         }
+                        else
+                            RTMemFree(pRangeCur);
 
                         while (   RT_SUCCESS(rc)
                                && cBlocksLeft)
