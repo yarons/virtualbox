@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 56797 2015-07-03 17:54:05Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 56799 2015-07-03 19:13:19Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2338,7 +2338,7 @@ static int vbvaHandleEnable(PVGASTATE pVGAState, const VBVAENABLE *pVbvaEnable, 
 
         if (RT_FAILURE(rc))
         {
-            LogRel(("VBVA: can not enable: %Rrc\n", rc));
+            LogRelMax(8, ("VBVA: can not enable: %Rrc\n", rc));
         }
     }
     else if ((parms.u32Flags & (VBVA_F_ENABLE | VBVA_F_DISABLE)) == VBVA_F_DISABLE)
