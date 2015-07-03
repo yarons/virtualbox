@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 56791 2015-07-03 16:19:59Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMKvm.cpp 56794 2015-07-03 16:26:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -264,6 +264,8 @@ VMMR3_INT_DECL(void) gimR3KvmReset(PVM pVM)
     {
         PGIMKVMCPU pKvmCpu = &pVM->aCpus[iCpu].gim.s.u.KvmCpu;
         pKvmCpu->u64SystemTimeMsr = 0;
+        pKvmCpu->uTsc = 0;
+        pKvmCpu->uVirtNanoTS = 0;
     }
 }
 
