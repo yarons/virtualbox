@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 56872 2015-07-08 15:30:50Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 56877 2015-07-08 17:02:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2440,6 +2440,8 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM)
         if (fSupportsLongMode)
             pVCpu->cpum.s.fUseFlags |= CPUM_USE_SUPPORTS_LONGMODE;
     }
+
+    cpumR3MsrRegStats(pVM);
     return VINF_SUCCESS;
 }
 
