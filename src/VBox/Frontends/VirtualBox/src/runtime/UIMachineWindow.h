@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 56869 2015-07-08 15:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 56870 2015-07-08 15:12:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -96,6 +96,9 @@ protected slots:
 
     /* Session event-handlers: */
     virtual void sltMachineStateChanged();
+
+    /** Shows window minimized. */
+    virtual void showMinimized() { QMainWindow::showMinimized(); }
 
 protected:
 
