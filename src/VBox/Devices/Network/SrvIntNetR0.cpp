@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 56316 2015-06-09 22:52:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SrvIntNetR0.cpp 56879 2015-07-09 01:39:09Z noreply@oracle.com $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -1525,7 +1525,7 @@ DECLINLINE(void) intnetR0IfAddrCacheAdd(PINTNETIF pIf, INTNETADDRTYPE enmAddrTyp
     if (RT_LIKELY(   i > 0
                   && (   intnetR0AddrUIsEqualEx((PCRTNETADDRU)pCache->pbEntries, pAddr, cbAddr)
                       || (i > 1
-                          && intnetR0AddrUIsEqualEx((PCRTNETADDRU)(pCache->pbEntries + pCache->cbEntry * i), pAddr, cbAddr))) ))
+                          && intnetR0AddrUIsEqualEx((PCRTNETADDRU)(pCache->pbEntries + pCache->cbEntry * (i-1)), pAddr, cbAddr))) ))
         return;
 
     intnetR0IfAddrCacheAddSlow(pIf, enmAddrType, pAddr, pszMsg);
