@@ -1,4 +1,4 @@
-' $Id: configure.vbs 55124 2015-04-08 09:45:01Z noreply@oracle.com $
+' $Id: configure.vbs 56905 2015-07-09 16:03:52Z klaus.espenlaub@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -758,7 +758,6 @@ sub DisableCOM(strReason)
       CfgPrint "VBOX_WITH_QTGUI="
       CfgPrint "VBOX_WITH_VBOXSDL="
       CfgPrint "VBOX_WITH_DEBUGGER_GUI="
-      CfgPrint "VBOX_WITHOUT_COM=1"
    end if
 end sub
 
