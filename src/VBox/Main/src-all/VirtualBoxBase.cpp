@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 55988 2015-05-20 23:24:44Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.cpp 56994 2015-07-18 23:15:01Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -181,7 +181,6 @@ HRESULT VirtualBoxBase::setErrorInternal(HRESULT aResultCode,
                 &aIID,
                 pcszComponent,
                 aText.c_str(),
-                aWarning,
                 preserve,
                 aResultDetail));
 
