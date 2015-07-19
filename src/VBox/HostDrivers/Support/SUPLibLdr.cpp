@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 56982 2015-07-18 18:59:45Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLibLdr.cpp 57004 2015-07-19 00:53:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -279,6 +279,7 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
                          "Unable to local imported symbol '%s%s%s' for module '%s'",
                          pszModule ? pszModule : "",
                          pszModule && *pszModule ? "." : "",
+                         pszSymbol,
                          pArgs->pszModule);
 }
 
