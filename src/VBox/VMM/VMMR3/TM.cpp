@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 57075 2015-07-24 16:27:27Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: TM.cpp 57078 2015-07-24 20:16:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1360,7 +1360,7 @@ static DECLCALLBACK(int) tmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, u
      * switches during VM runtime (e.g. by GIM).
      */
     uint64_t uGipCpuHz;
-    bool fRelax  = SUPIsHostVirtualized();
+    bool fRelax  = RTSystemIsInsideVM();
     bool fCompat = SUPIsTscFreqCompatible(pVM->tm.s.cTSCTicksPerSecond, &uGipCpuHz, fRelax);
     if (!fCompat)
     {
