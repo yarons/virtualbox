@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 57100 2015-07-27 15:06:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.cpp 57103 2015-07-27 17:58:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -129,6 +129,9 @@ void UIMachineWindowFullscreen::sltRevokeWindowActivation()
         return;
 
     /* Revoke stolen activation: */
+#ifdef Q_WS_X11
+    raise();
+#endif /* Q_WS_X11 */
     activateWindow();
 }
 #endif /* Q_WS_WIN || Q_WS_X11 */
