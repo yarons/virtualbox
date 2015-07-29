@@ -1,4 +1,4 @@
-/* $Id: TemplateRsrcDefs.h 55788 2015-05-09 20:29:31Z knut.osmundsen@oracle.com $ */
+/* $Id: TemplateRsrcDefs.h 57112 2015-07-29 09:43:26Z noreply@oracle.com $ */
 /** @file
  * Defines for templates that does not have Windows.h handy.
  */

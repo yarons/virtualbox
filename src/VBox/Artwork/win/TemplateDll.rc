@@ -1,4 +1,4 @@
-/* $Id: TemplateDll.rc 55792 2015-05-09 23:57:04Z knut.osmundsen@oracle.com $ */
+/* $Id: TemplateDll.rc 57112 2015-07-29 09:43:26Z noreply@oracle.com $ */
 /** @file
  * Resource file template for a dynamic link library (DLL).
  */

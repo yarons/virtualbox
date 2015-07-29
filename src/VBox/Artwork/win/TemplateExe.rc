@@ -1,6 +1,6 @@
-/* $Id: TemplateR0.rc 55792 2015-05-09 23:57:04Z knut.osmundsen@oracle.com $ */
+/* $Id: TemplateExe.rc 57112 2015-07-29 09:43:26Z noreply@oracle.com $ */
 /** @file
- * Resource file template for a ring-0 module.
+ * Resource file template for an executable.
  */
 
 /*
@@ -57,7 +57,9 @@
  * The product name string, optional.
  */
 #ifndef IN_PRODUCT_NAME
-# ifdef VBOX_IN_PUEL_EXTPACK
+# ifdef IN_GUEST
+#  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_GA
+# elif defined(VBOX_IN_PUEL_EXTPACK)
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_PUEL_EXTPACK
 # elif defined(VBOX_IN_DTRACE_EXTPACK)
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_DTRACE_EXTPACK
@@ -65,15 +67,12 @@
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME
 # endif
 #endif
-#ifdef IN_GUEST
-# error "No R0 modules with IN_GUEST defined!"
-#endif
 
 
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "TemplateRsrcDefs.h"
+#include <Windows.h>
 #include <VBox/version.h>
 
 
@@ -89,7 +88,7 @@ PRODUCTVERSION  VBOX_RC_FILE_VERSION
 FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
 FILEFLAGS       VBOX_RC_FILE_FLAGS
 FILEOS          VBOX_RC_FILE_OS
-FILETYPE        VBOX_RC_TYPE_DRV
+FILETYPE        VBOX_RC_TYPE_APP
 FILESUBTYPE     VFT2_UNKNOWN
 BEGIN
     BLOCK "StringFileInfo"
