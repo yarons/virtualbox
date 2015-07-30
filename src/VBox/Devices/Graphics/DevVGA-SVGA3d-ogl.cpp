@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 57136 2015-07-30 19:56:59Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 57138 2015-07-30 20:09:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -219,7 +219,7 @@ static void *MyNSGLGetProcAddress(const char *pszSymbol)
             Assert(fMakeCurrentRc == True); \
             LogFlowFunc(("Changing context: %#x -> %#x\n", (pState)->idActiveContext, (pContext)->id)); \
             (pState)->idActiveContext = (pContext)->id; \
-        }
+        } \
     } while (0)
 #endif
 
