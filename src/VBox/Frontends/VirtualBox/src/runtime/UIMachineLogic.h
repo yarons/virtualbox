@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 56443 2015-06-16 10:20:52Z noreply@oracle.com $ */
+/* $Id: UIMachineLogic.h 57128 2015-07-30 12:34:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -238,7 +238,7 @@ protected:
     //virtual void cleanupOtherConnections() {}
     virtual void cleanupActionConnections() {}
     virtual void cleanupActionGroups() {}
-    //virtual void cleanupSessionConnections() {}
+    virtual void cleanupSessionConnections();
     //virtual void cleanupRequiredFeatures() {}
 
     /* Handler: Event-filter stuff: */
