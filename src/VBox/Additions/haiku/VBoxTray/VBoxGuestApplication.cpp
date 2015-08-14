@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestApplication.cpp 43407 2012-09-22 14:19:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxGuestApplication.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestApplication, Haiku Guest Additions, implementation.
  */
@@ -44,9 +44,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/log.h>
 
 #include <errno.h>

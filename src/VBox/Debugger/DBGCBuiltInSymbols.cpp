@@ -1,4 +1,4 @@
-/* $Id: DBGCBuiltInSymbols.cpp 56296 2015-06-09 14:30:56Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCBuiltInSymbols.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Built-In Symbols.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGC
 #include "DBGCInternal.h"
 

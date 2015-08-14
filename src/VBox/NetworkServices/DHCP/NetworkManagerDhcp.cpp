@@ -1,4 +1,4 @@
-/* $Id: NetworkManagerDhcp.cpp 56300 2015-06-09 14:36:22Z knut.osmundsen@oracle.com $ */
+/* $Id: NetworkManagerDhcp.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * NetworkManagerDhcp - Network Manager part handling Dhcp.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/asm.h>
 #include <iprt/cdefs.h>
 #include <iprt/getopt.h>

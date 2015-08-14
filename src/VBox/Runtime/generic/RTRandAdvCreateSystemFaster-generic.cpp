@@ -1,4 +1,4 @@
-/* $Id: RTRandAdvCreateSystemFaster-generic.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
+/* $Id: RTRandAdvCreateSystemFaster-generic.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Random Numbers, generic RTRandAdvCreateSystemFaster.
  */
@@ -25,9 +25,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/rand.h>
 #include "internal/iprt.h"
 

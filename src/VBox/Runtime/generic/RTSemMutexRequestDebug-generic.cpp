@@ -1,4 +1,4 @@
-/* $Id: RTSemMutexRequestDebug-generic.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSemMutexRequestDebug-generic.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSemMutexRequestDebug, generic RTSemMutexRequestNoResumeDebug wrapper.
  */
@@ -25,9 +25,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SEM
 #include <iprt/semaphore.h>
 #include "internal/iprt.h"

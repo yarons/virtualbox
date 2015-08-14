@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 56439 2015-06-15 17:14:02Z michal.necasek@oracle.com $ */
+/* $Id: VSCSIDevice.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -14,9 +14,11 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_VSCSI
 #include <VBox/log.h>
 #include <VBox/err.h>

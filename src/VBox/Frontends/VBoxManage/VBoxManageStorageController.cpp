@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 56821 2015-07-06 15:07:40Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageStorageController.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -17,9 +17,10 @@
 
 #ifndef VBOX_ONLY_DOCS
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/com/com.h>
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>

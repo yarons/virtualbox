@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwinCOM.cpp 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromDarwinCOM.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert Darwin COM returns codes to iprt status codes.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <IOKit/IOCFPlugIn.h>
 
 #include <iprt/err.h>

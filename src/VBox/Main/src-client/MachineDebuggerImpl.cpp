@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 56567 2015-06-20 17:15:56Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineDebuggerImpl.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "MachineDebuggerImpl.h"
 
 #include "Global.h"
