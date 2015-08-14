@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 55600 2015-05-02 08:05:53Z noreply@oracle.com $ */
+/* $Id: hostversion.cpp 57357 2015-08-14 15:04:46Z noreply@oracle.com $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -207,8 +207,6 @@ struct VBCLSERVICE vbclHostVersionInterface =
     getPidFilePath,
     VBClServiceDefaultHandler, /* init */
     run,
-    VBClServiceDefaultHandler, /* pause */
-    VBClServiceDefaultHandler, /* resume */
     VBClServiceDefaultCleanup
 };
 
