@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: seamless-x11.cpp 57372 2015-08-14 22:01:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -39,6 +39,8 @@
 #endif
 
 /*****************************************************************************
+* Static functions                                                           *
+*****************************************************************************/
 
 static unsigned char *XXGetProperty (Display *aDpy, Window aWnd, Atom aPropType,
                                     const char *aPropName, unsigned long *nItems)

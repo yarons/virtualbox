@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVD.cpp 57372 2015-08-14 22:01:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -669,6 +669,7 @@ static int drvvdCfgQueryBytes(void *pvUser, const char *pszName, void *ppvData, 
 
 
 /*******************************************************************************
+*   VD Crypto interface implementation for the encryption support       *
 *******************************************************************************/
 
 static DECLCALLBACK(int) drvvdCryptoKeyRetain(void *pvUser, const char *pszId, const uint8_t **ppbKey, size_t *pcbKey)

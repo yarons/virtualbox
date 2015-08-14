@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 56911 2015-07-10 09:21:10Z andreas.loeffler@oracle.com $ */
+/* $Id: DnDURIObject.cpp 57372 2015-08-14 22:01:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -16,9 +16,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/******************************************************************************
- *   Header Files                                                             *
- ******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 
 #include <iprt/dir.h>
 #include <iprt/file.h>
