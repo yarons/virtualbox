@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 57332 2015-08-13 15:21:13Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 57403 2015-08-18 08:32:34Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10220,6 +10220,7 @@ HRESULT Machine::i_saveHardware(settings::Hardware &data, settings::Debugging *p
         if (FAILED(rc)) throw rc;
 
         /* USB Controller (required) */
+        data.usbSettings.llUSBControllers.clear();
         for (USBControllerList::const_iterator it = mUSBControllers->begin(); it != mUSBControllers->end(); ++it)
         {
             ComObjPtr<USBController> ctrl = *it;
