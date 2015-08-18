@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 56864 2015-07-08 13:01:44Z noreply@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 57437 2015-08-18 15:36:33Z noreply@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1276,7 +1276,7 @@ DECLCALLBACK(int) Appliance::i_taskThreadImportOrExport(RTTHREAD /* aThread */, 
 }
 
 /* static */
-int Appliance::TaskOVF::updateProgress(unsigned uPercent, void *pvUser)
+DECLCALLBACK(int) Appliance::TaskOVF::updateProgress(unsigned uPercent, void *pvUser)
 {
     Appliance::TaskOVF* pTask = *(Appliance::TaskOVF**)pvUser;
 
