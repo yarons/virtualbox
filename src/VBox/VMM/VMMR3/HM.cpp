@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 57477 2015-08-20 14:20:26Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HM.cpp 57478 2015-08-20 14:21:54Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -437,7 +437,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
     rc = CFGMR3QueryU32Def(pCfgHM, "VmxPleWindow", &pVM->hm.s.vmx.cPleWindowTicks, 0);
     AssertRCReturn(rc, rc);
 
-    /** @cfgm{/HM/SvmPauseFilterCount, int16_t, 0}
+    /** @cfgm{/HM/SvmPauseFilterCount, uint16_t, 0}
      * A counter that is decrement each time a PAUSE instruction is executed by the
      * guest. When the counter is 0, a #VMEXIT is triggered.
      */
