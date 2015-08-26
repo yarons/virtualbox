@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 57524 2015-08-25 10:20:15Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 57552 2015-08-26 16:41:41Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2988,7 +2988,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 }
                 else
                 {
-                    LogRel(("Shared crOpenGL service loaded\n"));
+                    LogRel(("Shared OpenGL service loaded -- 3D enabled\n"));
 
                     /* Setup the service. */
                     VBOXHGCMSVCPARM parm;
