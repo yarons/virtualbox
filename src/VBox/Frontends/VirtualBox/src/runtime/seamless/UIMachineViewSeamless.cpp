@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 57495 2015-08-21 12:50:43Z noreply@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 57591 2015-09-01 14:23:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -21,7 +21,6 @@
 
 /* Qt includes: */
 # include <QApplication>
-# include <QDesktopWidget>
 # include <QMainWindow>
 # include <QTimer>
 # ifdef Q_WS_MAC
