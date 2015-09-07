@@ -1,4 +1,4 @@
-/* $Id: pipe.h 57643 2015-09-07 13:47:08Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe.h 57645 2015-09-07 13:53:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTPipe header.
  */
@@ -111,6 +111,7 @@ DECLINLINE(void) rtPipeFakeQueryInfo(PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAd
         case RTFSOBJATTRADD_EASIZE:
             break;
         case RTFSOBJATTRADD_32BIT_SIZE_HACK:
+        case RTFSOBJATTRADD_NOTHING:
             /* shut up gcc. */
             break;
         /* no default, want warnings. */
