@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 57704 2015-09-11 07:41:39Z noreply@oracle.com $ */
+/* $Id: tstRTFileAio.cpp 57706 2015-09-11 07:50:28Z noreply@oracle.com $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -226,6 +226,8 @@ int main()
             /* Cleanup */
             RTFileDelete("tstFileAio#1.tst");
         }
+        else
+            RTTestSkipped(g_hTest, "rc=%Rrc", rc);
     }
 
     /*
