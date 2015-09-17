@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 56329 2015-06-10 11:05:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 57810 2015-09-17 17:04:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -364,7 +364,7 @@ void UIMachineSettingsNetwork::polishTab()
                                         attachmentType() == KNetworkAttachmentType_NAT);
 
     /* Postprocessing: */
-    if ((m_pParent->isMachineSaved() || m_pParent->isMachineOnline()) && !m_pAdvancedArrow->isExpanded())
+    if ((m_pParent->isMachinePoweredOff() || m_pParent->isMachineSaved() || m_pParent->isMachineOnline()) && !m_pAdvancedArrow->isExpanded())
         m_pAdvancedArrow->animateClick();
     sltHandleAdvancedButtonStateChange();
 }
