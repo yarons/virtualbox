@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltBow-solaris.c 57867 2015-09-23 09:14:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -328,7 +328,7 @@ int _fini(void)
     rc = vboxNetFltTryDeleteIdcAndGlobals(&g_VBoxNetFltSolarisGlobals);
     if (RT_FAILURE(rc))
     {
-        LogRel((DEVICE_NAME ":_fini - busy!\n"));
+        LogRel((DEVICE_NAME ":_fini - busy! rc=%d\n", rc));
         return EBUSY;
     }
 
