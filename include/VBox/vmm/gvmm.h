@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 56291 2015-06-09 14:12:00Z knut.osmundsen@oracle.com $ */
+/* $Id: gvmm.h 58110 2015-10-07 18:36:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -34,7 +34,8 @@
 
 RT_C_DECLS_BEGIN
 
-/** @defgroup grp_GVMM  GVMM - The Global VM Manager.
+/** @defgroup grp_gvmm  GVMM - The Global VM Manager.
+ * @ingroup grp_vmm
  * @{
  */
 
