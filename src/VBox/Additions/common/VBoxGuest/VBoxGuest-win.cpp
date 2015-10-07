@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 58053 2015-10-06 14:42:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 58089 2015-10-07 12:33:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -554,7 +554,7 @@ NTSTATUS vbgdNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_STR
  * Cleans up hardware resources.
  * Do not delete DevExt here.
  *
- * @param   pDrvObj     Driver object.
+ * @param   pDevObj     Device object.
  */
 NTSTATUS vbgdNtCleanup(PDEVICE_OBJECT pDevObj)
 {
