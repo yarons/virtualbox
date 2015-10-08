@@ -1,5 +1,5 @@
-/** @file $Id: vboxvideo_drm.c 54171 2015-02-12 10:56:53Z noreply@oracle.com $
- *
+/* $Id: vboxvideo_drm.c 58129 2015-10-08 22:29:48Z knut.osmundsen@oracle.com $ */
+/** @file
  * VirtualBox Additions Linux kernel driver, DRM support
  */
 
