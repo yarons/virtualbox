@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0SharedPage.cpp 58122 2015-10-08 17:11:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -39,7 +39,7 @@
  *
  * @returns The following VBox status codes.
  *
- * @param   pVM                 Pointer to the VM.
+ * @param   pVM                 The cross context VM structure.
  * @param   pGVM                Pointer to the GVM instance data.
  * @param   idCpu               The ID of the calling virtual CPU.
  * @param   pModule             Global module description.

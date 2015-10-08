@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 57989 2015-10-01 16:44:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 58122 2015-10-08 17:11:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -32,7 +32,7 @@
  * @returns VINF_SUCCESS if it's ok to continue raw mode.
  * @returns VBox status code to return to the EM main loop.
  *
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  * @param   pVCpu   Pointer to the VMCPU.
  * @param   rc      The return code.
  * @param   pCtx    Pointer to the guest CPU context.

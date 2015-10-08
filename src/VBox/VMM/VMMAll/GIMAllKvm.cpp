@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 58119 2015-10-08 16:07:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMAllKvm.cpp 58122 2015-10-08 17:11:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -148,7 +148,7 @@ VMM_INT_DECL(bool) gimKvmAreHypercallsEnabled(PVMCPU pVCpu)
  * paravirtualized TSC.
  *
  * @returns true if paravirt. TSC is enabled, false otherwise.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMM_INT_DECL(bool) gimKvmIsParavirtTscEnabled(PVM pVM)
 {
