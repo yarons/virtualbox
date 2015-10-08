@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 58122 2015-10-08 17:11:58Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFBp.cpp 58126 2015-10-08 20:59:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -561,7 +561,9 @@ VMMR3DECL(int) DBGFR3BpSetReg(PUVM pUVM, PCDBGFADDRESS pAddress, uint64_t iHitTr
 }
 
 
-/** @callback_method_impl{FNVMMEMTRENDEZVOUS}  */
+/**
+ * @callback_method_impl{FNVMMEMTRENDEZVOUS}
+ */
 DECLCALLBACK(VBOXSTRICTRC) dbgfR3BpRegRecalcOnCpu(PVM pVM, PVMCPU pVCpu, void *pvUser)
 {
     NOREF(pVM); NOREF(pvUser);

@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 58123 2015-10-08 18:09:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMAll.cpp 58126 2015-10-08 20:59:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM All Contexts.
  */
@@ -42,7 +42,7 @@ static volatile uint32_t g_cFormatTypeUsers = 0;
  *
  * @returns The length of the formatted number.
  * @param   pszBuf              Output buffer with sufficient space.
- * @param   uNum                The number to format.
+ * @param   uNumber             The number to format.
  */
 static unsigned vmmFormatTypeShortNumber(char *pszBuf, uint32_t uNumber)
 {
