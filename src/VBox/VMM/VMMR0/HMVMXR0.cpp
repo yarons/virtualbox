@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 58123 2015-10-08 18:09:45Z knut.osmundsen@oracle.com $ */
+/* $Id: HMVMXR0.cpp 58124 2015-10-08 18:30:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -530,9 +530,10 @@ static const char * const g_apszVmxInstrErrors[HMVMX_INSTR_ERROR_MAX + 1] =
 
 
 /**
- * Updates the VM's last error record. If there was a VMX instruction error,
- * reads the error data from the VMCS and updates VCPU's last error record as
- * well.
+ * Updates the VM's last error record.
+ *
+ * If there was a VMX instruction error, reads the error data from the VMCS and
+ * updates VCPU's last error record as well.
  *
  * @param   pVM     The cross context VM structure.
  * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
