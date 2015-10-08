@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 58122 2015-10-08 17:11:58Z knut.osmundsen@oracle.com $ */
+/* $Id: PDM.cpp 58123 2015-10-08 18:09:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1465,7 +1465,7 @@ DECLINLINE(void) pdmR3ResetDev(PPDMDEVINS pDevIns, PPDMNOTIFYASYNCSTATS pAsync)
  *
  * Used by PDMR3Reset and CPU hot plugging.
  *
- * @param   pVCpu               Pointer to the VMCPU.
+ * @param   pVCpu               The cross context virtual CPU structure.
  */
 VMMR3_INT_DECL(void) PDMR3ResetCpu(PVMCPU pVCpu)
 {
