@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 58064 2015-10-06 18:08:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowScale.cpp 58140 2015-10-09 11:32:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -72,7 +72,7 @@ void UIMachineWindowScale::prepareVisualState()
 
     /* No 'Zoom' button since El Capitan for now: */
     if (vboxGlobal().osRelease() >= MacOSXRelease_ElCapitan)
-        darwinDisableZoomButtonFullscreenCheck(this);
+        darwinSetHideTitleButton(this, CocoaWindowButtonType_Zoom);
 }
 #endif /* Q_WS_MAC */
 
