@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 58126 2015-10-08 20:59:48Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 58157 2015-10-09 16:56:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1150,7 +1150,7 @@ DECLEXPORT(VBOXSTRICTRC) pgmPoolAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT 
      */
     bool fReused = false;
     bool fNotReusedNotForking = false;
-    if (    (   pPage->cModifications < cMaxModifications   /** @todo #define */ /** @todo need to check that it's not mapping EIP. */ /** @todo adjust this! */
+    if (    (   pPage->cModifications < cMaxModifications   /** @todo \#define */ /** @todo need to check that it's not mapping EIP. */ /** @todo adjust this! */
              || pgmPoolIsPageLocked(pPage)
             )
         &&  !(fReused = pgmPoolMonitorIsReused(pVM, pVCpu, pRegFrame, pDis, pvFault))
