@@ -1,8 +1,6 @@
-/* $Id: VBoxClipboard.cpp 57741 2015-09-14 15:24:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 58144 2015-10-09 12:44:44Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * VBoxClipboard - Shared clipboard
- *
+ * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
 
 /*
@@ -712,7 +710,7 @@ DECLCALLBACK(int) VBoxClipboardWorker(void *pInstance, bool volatile *pfShutdown
             LogFlowFunc(("u32Msg=%RU32, u32Formats=0x%x\n", u32Msg, u32Formats));
             switch (u32Msg)
             {
-                /** @todo r=andy Use a #define for WM_USER (+1). */
+                /** @todo r=andy: Use a \#define for WM_USER (+1). */
                 case VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS:
                 {
                     /* The host has announced available clipboard formats.
