@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 57027 2015-07-20 16:41:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowScale.h 58142 2015-10-09 12:07:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -45,6 +45,10 @@ private:
 
     /** Save settings routine. */
     void saveSettings();
+#ifdef Q_WS_MAC
+    /** Cleanup visual-state routine. */
+    void cleanupVisualState();
+#endif /* Q_WS_MAC */
 
     /** Updates visibility according to visual-state. */
     void showInNecessaryMode();
