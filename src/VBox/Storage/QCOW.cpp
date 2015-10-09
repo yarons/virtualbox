@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 57388 2015-08-17 14:20:55Z noreply@oracle.com $ */
+/* $Id: QCOW.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -2550,11 +2550,11 @@ const VBOXHDDBACKEND g_QCowBackend =
     qcowSetParentModificationUuid,
     /* pfnDump */
     qcowDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     qcowGetParentFilename,

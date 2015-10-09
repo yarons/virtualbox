@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 57393 2015-08-17 15:02:05Z noreply@oracle.com $ */
+/* $Id: DrvSCSI.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -618,7 +618,7 @@ static void drvscsiDumpScsiRequest(PPDMSCSIREQUEST pRequest)
 }
 #endif
 
-/** @copydoc PDMISCSICONNECTOR::pfnSCSIRequestSend. */
+/** @interface_method_impl{PDMISCSICONNECTOR,pfnSCSIRequestSend} */
 static DECLCALLBACK(int) drvscsiRequestSend(PPDMISCSICONNECTOR pInterface, PPDMSCSIREQUEST pSCSIRequest)
 {
     int rc;
@@ -648,7 +648,7 @@ static DECLCALLBACK(int) drvscsiRequestSend(PPDMISCSICONNECTOR pInterface, PPDMS
     return rc;
 }
 
-/** @copydoc PDMISCSICONNECTOR::pfnQueryLUNType. */
+/** @interface_method_impl{PDMISCSICONNECTOR,pfnQueryLUNType} */
 static DECLCALLBACK(int) drvscsiQueryLUNType(PPDMISCSICONNECTOR pInterface, uint32_t iLun, PPDMSCSILUNTYPE pLunType)
 {
     int rc;

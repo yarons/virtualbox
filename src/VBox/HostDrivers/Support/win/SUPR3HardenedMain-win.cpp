@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 57501 2015-08-22 19:15:54Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-win.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -312,7 +312,7 @@ static PVERIFIERCACHEENTRY  volatile g_pVerifierCacheTodoWvt = NULL;
 static PVERIFIERCACHEIMPORT volatile g_pVerifierCacheTodoImports = NULL;
 
 /** The windows path to dir \\SystemRoot\\System32 directory (technically
- *  this whatever \KnownDlls\KnownDllPath points to). */
+ *  this whatever \\KnownDlls\\KnownDllPath points to). */
 SUPSYSROOTDIRBUF            g_System32WinPath;
 /** @ */
 

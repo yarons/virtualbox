@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 57529 2015-08-25 10:28:21Z alexander.eichner@oracle.com $ */
+/* $Id: ISCSI.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5538,11 +5538,11 @@ const VBOXHDDBACKEND g_ISCSIBackend =
     iscsiSetParentModificationUuid,
     /* pfnDump */
     iscsiDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     NULL,
