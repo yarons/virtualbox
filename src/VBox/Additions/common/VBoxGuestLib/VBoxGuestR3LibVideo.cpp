@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 58183 2015-10-12 13:46:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 58185 2015-10-12 13:49:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -323,8 +323,8 @@ VBGLR3DECL(int) VbglR3VideoModeGetHighestSavedScreen(unsigned *pcScreen)
     rc = VbglR3GuestPropConnect(&idClient);
     if (RT_SUCCESS(rc))
         rc = VbglR3GuestPropEnum(idClient, &pszPattern, 1, &pHandle, &pszName, NULL, NULL, NULL);
-    if (u32ClientId != 0)
-        rc2 = VbglR3GuestPropDisconnect(u32ClientId);
+    if (idClientId != 0)
+        rc2 = VbglR3GuestPropDisconnect(idClientId);
     if (RT_SUCCESS(rc))
         rc = rc2;
     while (pszName != NULL && RT_SUCCESS(rc))
