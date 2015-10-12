@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFolders.h 58203 2015-10-12 15:56:32Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestLibSharedFolders.h 58204 2015-10-12 16:10:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -31,6 +31,11 @@
 #include <VBox/shflsvc.h>
 
 RT_C_DECLS_BEGIN
+
+
+/** @addtogroup grp_vboxguest_lib_r0
+ * @{
+ */
 
 typedef struct VBGLSFCLIENT
 {
@@ -96,7 +101,7 @@ DECLVBGL(int)  VbglR0SfWritePageList(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHF
 DECLVBGL(int)  VbglR0SfLock(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile, uint64_t offset, uint64_t cbSize, uint32_t fLock);
 
 DECLVBGL(int)  VbglR0SfDirInfo(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile,PSHFLSTRING ParsedPath, uint32_t flags,
-                                 uint32_t index, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer, uint32_t *pcFiles);
+                               uint32_t index, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer, uint32_t *pcFiles);
 DECLVBGL(int)  VbglR0SfFsInfo(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile, uint32_t flags, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer);
 
 DECLVBGL(int)  VbglR0SfMapFolder(PVBGLSFCLIENT pClient, PSHFLSTRING szFolderName, PVBGLSFMAP pMap);
@@ -106,6 +111,8 @@ DECLVBGL(int)  VbglR0SfSetUtf8(PVBGLSFCLIENT pClient);
 DECLVBGL(int)  VbglR0SfReadLink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING ParsedPath, uint32_t pcbBuffer, uint8_t *pBuffer);
 DECLVBGL(int)  VbglR0SfSymlink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING pNewPath, PSHFLSTRING pOldPath, PSHFLFSOBJINFO pBuffer);
 DECLVBGL(int)  VbglR0SfSetSymlinks(PVBGLSFCLIENT pClient);
+
+/** @} */
 
 RT_C_DECLS_END
 
