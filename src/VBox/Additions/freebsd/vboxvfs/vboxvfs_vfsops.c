@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 58195 2015-10-12 15:13:47Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxvfs_vfsops.c 58196 2015-10-12 15:18:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * Description.
  */
@@ -39,7 +39,7 @@ SYSCTL_NODE(_vfs, OID_AUTO, vboxvfs, CTLFLAG_RW, 0, "VirtualBox shared filesyste
 SYSCTL_INT(_vfs_vboxvfs, OID_AUTO, version, CTLFLAG_RD, &vboxvfs_version, 0, "");
 
 /* global connection to the host service. */
-static VBSFCLIENT g_vboxSFClient;
+static VBGLSFCLIENT g_vboxSFClient;
 
 static vfs_init_t       vboxvfs_init;
 static vfs_uninit_t     vboxvfs_uninit;

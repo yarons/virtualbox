@@ -1,4 +1,4 @@
-/* $Id: vboxsf.c 58195 2015-10-12 15:13:47Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxsf.c 58196 2015-10-12 15:18:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared folders - Haiku Guest Additions, implementation.
  */
@@ -49,7 +49,7 @@
 #define FS_NAME         "vboxsf"
 #define FS_PRETTY_NAME  "VirtualBox Shared Folders"
 
-VBSFCLIENT g_clientHandle;
+VBGLSFCLIENT g_clientHandle;
 static fs_volume_ops vboxsf_volume_ops;
 static fs_vnode_ops vboxsf_vnode_ops;
 

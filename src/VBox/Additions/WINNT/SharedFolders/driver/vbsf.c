@@ -1,4 +1,4 @@
-/* $Id: vbsf.c 58195 2015-10-12 15:13:47Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.c 58196 2015-10-12 15:18:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders.
  *
@@ -410,7 +410,7 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT  DriverObject,
     PMRX_VBOX_DEVICE_EXTENSION pDeviceExtension;
     ULONG i;
     int vboxRC;
-    VBSFCLIENT hgcmClient;
+    VBGLSFCLIENT hgcmClient;
 
     Log(("VBOXSF: DriverEntry: Driver object %p\n", DriverObject));
 
