@@ -1,4 +1,4 @@
-/* $Id: Apple.c 56292 2015-06-09 14:20:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Apple.c 58179 2015-10-12 12:04:16Z alexander.eichner@oracle.com $ */
 /** @file
  * Apple.c
  */
