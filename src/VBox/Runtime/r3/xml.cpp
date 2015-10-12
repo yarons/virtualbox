@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 58168 2015-10-12 07:59:42Z noreply@oracle.com $ */
+/* $Id: xml.cpp 58169 2015-10-12 08:50:55Z noreply@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1875,13 +1875,20 @@ void XmlFileParser::read(const RTCString &strFilename,
 
     ReadContext context(pcszFilename);
     doc.m->reset();
+    const int options = XML_PARSE_NOBLANKS /* remove blank nodes */
+                      | XML_PARSE_NONET    /* forbit any network access */
+#if LIBXML_VERSION >= 20700
+                      | XML_PARSE_HUGE     /* don't restrict the node depth
+                                              to 256 (bad for snapshots!) */
+#endif
+                ;
     if (!(doc.m->plibDocument = xmlCtxtReadIO(m_ctxt,
                                               ReadCallback,
                                               CloseCallback,
                                               &context,
                                               pcszFilename,
                                               NULL,       // encoding = auto
-                                              XML_PARSE_NOBLANKS | XML_PARSE_NONET)))
+                                              options)))
         throw XmlError(xmlCtxtGetLastError(m_ctxt));
 
     doc.refreshInternals();
