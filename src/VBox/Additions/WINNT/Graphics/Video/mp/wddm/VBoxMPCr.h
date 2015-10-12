@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.h 58181 2015-10-12 12:54:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPCr.h 58184 2015-10-12 13:48:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -23,7 +23,7 @@
 
 typedef struct VBOXMP_CRCTLCON
 {
-    HVBOXCRCTL hCrCtl;
+    VBGLCRCTLHANDLE hCrCtl;
     uint32_t cCrCtlRefs;
 } VBOXMP_CRCTLCON, *PVBOXMP_CRCTLCON;
 
