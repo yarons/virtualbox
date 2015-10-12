@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 58127 2015-10-08 22:09:23Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInline.h 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -196,7 +196,7 @@ DECLINLINE(int) pgmPhysGetPageAndRangeEx(PVM pVM, RTGCPHYS GCPhys, PPPGMPAGE ppP
 /**
  * Convert GC Phys to HC Phys.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   GCPhys      The GC physical address.
  * @param   pHCPhys     Where to store the corresponding HC physical address.

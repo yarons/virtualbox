@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvBlock.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -832,7 +832,7 @@ static DECLCALLBACK(void)  drvblockDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
 /**
  * Reset notification.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The driver instance data.
  */
 static DECLCALLBACK(void)  drvblockReset(PPDMDRVINS pDrvIns)

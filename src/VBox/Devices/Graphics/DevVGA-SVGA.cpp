@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 58148 2015-10-09 13:04:48Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -4444,7 +4444,7 @@ static const char * const g_apszVmSvgaDevCapNames[] =
 /**
  * Power On notification.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  *
  * @remarks Caller enters the device critical section.

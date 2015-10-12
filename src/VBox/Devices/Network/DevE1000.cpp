@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7311,7 +7311,7 @@ static DECLCALLBACK(void) e1kR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
  *
  * We need to free non-VM resources only.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  * @thread  EMT
  */
