@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: VBoxMFInternal.cpp 58178 2015-10-12 11:40:57Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox Mouse filter internal functions
@@ -332,7 +332,7 @@ VOID VBoxDeviceAdded(PVBOXMOUSE_DEVEXT pDevExt)
     {
         if (!vboxIsVBGLInited() && !vboxIsVBGLInitFailed())
         {
-            int rc = VbglInit();
+            int rc = VbglInitClient();
 
             if (RT_SUCCESS(rc))
             {

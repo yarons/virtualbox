@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 58178 2015-10-12 11:40:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -64,7 +64,7 @@ DECLVBGL(int) vboxInit (void)
 {
     int rc = VINF_SUCCESS;
 
-    rc = VbglInit ();
+    rc = VbglInitClient();
     return rc;
 }
 
