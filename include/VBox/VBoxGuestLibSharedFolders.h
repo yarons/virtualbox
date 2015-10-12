@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.h 58200 2015-10-12 15:28:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestLibSharedFolders.h 58203 2015-10-12 15:56:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -24,11 +24,13 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h
-#define ___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h
+#ifndef ___VBox_VBoxGuestLibSharedFolders_h_
+#define ___VBox_VBoxGuestLibSharedFolders_h_
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/shflsvc.h>
+
+RT_C_DECLS_BEGIN
 
 typedef struct VBGLSFCLIENT
 {
@@ -105,5 +107,7 @@ DECLVBGL(int)  VbglR0SfReadLink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTR
 DECLVBGL(int)  VbglR0SfSymlink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING pNewPath, PSHFLSTRING pOldPath, PSHFLFSOBJINFO pBuffer);
 DECLVBGL(int)  VbglR0SfSetSymlinks(PVBGLSFCLIENT pClient);
 
-#endif /* !___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h */
+RT_C_DECLS_END
+
+#endif
 
