@@ -1,5 +1,4 @@
-/* $Id: VBoxMPCr.h 50940 2014-04-01 11:22:34Z noreply@oracle.com $ */
-
+/* $Id: VBoxMPCr.h 58181 2015-10-12 12:54:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -20,8 +19,7 @@
 
 #ifdef VBOX_WITH_CROGL
 
-#include <VBox/VBoxGuestLib.h>
-#include <VBoxGuestR0LibCrOgl.h>
+# include <VBox/VBoxGuestLib.h>
 
 typedef struct VBOXMP_CRCTLCON
 {
@@ -220,3 +218,4 @@ uint32_t VBoxMpCrGetHostCaps();
 #endif /* #ifdef VBOX_WITH_CROGL */
 
 #endif /* #ifndef ___VBoxMPCr_h__ */
+
