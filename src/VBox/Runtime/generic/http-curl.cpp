@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 58201 2015-10-12 15:36:52Z noreply@oracle.com $ */
+/* $Id: http-curl.cpp 58202 2015-10-12 15:42:07Z noreply@oracle.com $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -2330,7 +2330,7 @@ static int rtHttpGetToMem(RTHTTP hHttp, const char *pszUrl, bool fNoBody, uint8_
         if (!CURL_FAILURE(rcCurl))
             rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_WRITEDATA, (void *)pThis);
         if (!CURL_FAILURE(rcCurl))
-            rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_NOBODY, fNoBody : 1L : 0L);
+            rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_NOBODY, fNoBody ? 1L : 0L);
         if (!CURL_FAILURE(rcCurl))
         {
             /*
