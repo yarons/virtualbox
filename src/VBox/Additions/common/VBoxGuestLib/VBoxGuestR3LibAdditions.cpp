@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 58176 2015-10-12 11:10:47Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 58177 2015-10-12 11:19:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -39,9 +39,6 @@
 
 #ifdef RT_OS_WINDOWS
 
-# define WIDE_STR_2(a) L##a
-# define WIDE_STR(a) WIDE_STR_2(a)
-
 /**
  * Opens the "VirtualBox Guest Additions" registry key.
  *
@@ -57,9 +54,9 @@ static int vbglR3WinOpenAdditionRegisterKey(PHKEY phKey)
      */
     static PCRTUTF16 s_apwszKeys[] =
     {
-        L"SOFTWARE\\" WIDE_STR(VBOX_VENDOR_SHORT) L"\\VirtualBox Guest Additions",
+        L"SOFTWARE\\" RT_LSTR(VBOX_VENDOR_SHORT) L"\\VirtualBox Guest Additions",
 #ifdef RT_ARCH_AMD64
-        L"SOFTWARE\\Wow6432Node\\" WIDE_STR(VBOX_VENDOR_SHORT) L"\\VirtualBox Guest Additions",
+        L"SOFTWARE\\Wow6432Node\\" RT_LSTR(VBOX_VENDOR_SHORT) L"\\VirtualBox Guest Additions",
 #endif
         L"SOFTWARE\\Sun\\VirtualBox Guest Additions",
 #ifdef RT_ARCH_AMD64
