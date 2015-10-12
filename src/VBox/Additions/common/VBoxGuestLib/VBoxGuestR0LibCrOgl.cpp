@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibCrOgl.cpp 58181 2015-10-12 12:54:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibCrOgl.cpp 58183 2015-10-12 13:46:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Ring-3 Support Library for VirtualBox guest additions, Chromium OpenGL Service.
  */
@@ -74,12 +74,12 @@ DECLVBGL(int) VbglR0CrCtlDestroy(HVBOXCRCTL hCtl)
     return VINF_SUCCESS;
 }
 
-DECLVBGL(int) VbglR0CrCtlConConnect(HVBOXCRCTL hCtl, uint32_t *pu32ClientID)
+DECLVBGL(int) VbglR0CrCtlConConnect(HVBOXCRCTL hCtl, HGCMCLIENTID *pidClient)
 {
     VBoxGuestHGCMConnectInfo info;
     int rc;
 
-    if (!hCtl || !pu32ClientID)
+    if (!hCtl || !pidClient)
         return VERR_INVALID_PARAMETER;
 
     RT_ZERO(info);
@@ -92,21 +92,21 @@ DECLVBGL(int) VbglR0CrCtlConConnect(HVBOXCRCTL hCtl, uint32_t *pu32ClientID)
         if (RT_SUCCESS(rc))
         {
             Assert(info.u32ClientID);
-            *pu32ClientID = info.u32ClientID;
+            *pidClient = info.u32ClientID;
             return rc;
         }
     }
 
     AssertRC(rc);
-    *pu32ClientID = 0;
+    *pidClient = 0;
     return rc;
 }
 
-DECLVBGL(int) VbglR0CrCtlConDisconnect(HVBOXCRCTL hCtl, uint32_t u32ClientID)
+DECLVBGL(int) VbglR0CrCtlConDisconnect(HVBOXCRCTL hCtl, HGCMCLIENTID idClient)
 {
     VBoxGuestHGCMDisconnectInfo info;
     RT_ZERO(info);
-    info.u32ClientID = u32ClientID;
+    info.u32ClientID = idClient;
     return vbglDriverIOCtl(&hCtl->driver, VBOXGUEST_IOCTL_HGCM_DISCONNECT, &info, sizeof(info));
 }
 
