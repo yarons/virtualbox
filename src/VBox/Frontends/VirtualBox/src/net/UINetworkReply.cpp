@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58236 2015-10-14 13:09:13Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.cpp 58237 2015-10-14 13:13:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -373,33 +373,34 @@ void UINetworkReplyPrivateThread::run()
     /* Init: */
     RTR3InitExeNoArguments(RTR3INIT_FLAGS_SUPLIB); /** @todo r=bird: WTF? */
 
-    /* Create HTTP object: */
+    /* Create HTTP client: */
+    m_iError = RTHttpCreate(&m_hHttp);
     if (RT_SUCCESS(m_iError))
-        m_iError = RTHttpCreate(&m_hHttp);
-
-    /* Apply proxy-rules: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyProxyRules();
-
-    /* Apply https-certificates: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyHttpsCertificates();
-
-    /* Assign raw-headers: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyRawHeaders();
-
-    /* Perform main request: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = performMainRequest();
-
-    /* Destroy HTTP client instance: */
-    RTHTTP hHttp = m_hHttp;
-    if (hHttp != NIL_RTHTTP)
     {
-        /** @todo r=bird: There is a race here between this and abort()! */
-        m_hHttp = NIL_RTHTTP;
-        RTHttpDestroy(hHttp);
+        /* Apply proxy-rules: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyProxyRules();
+
+        /* Apply https-certificates: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyHttpsCertificates();
+
+        /* Assign raw-headers: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyRawHeaders();
+
+        /* Perform main request: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = performMainRequest();
+
+        /* Destroy HTTP client: */
+        RTHTTP hHttp = m_hHttp;
+        if (hHttp != NIL_RTHTTP)
+        {
+            /** @todo r=bird: There is a race here between this and abort()! */
+            m_hHttp = NIL_RTHTTP;
+            RTHttpDestroy(hHttp);
+        }
     }
 }
 
