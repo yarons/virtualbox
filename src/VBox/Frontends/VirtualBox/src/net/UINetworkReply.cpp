@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58237 2015-10-14 13:13:00Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.cpp 58238 2015-10-14 13:21:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -355,16 +355,20 @@ int UINetworkReplyPrivateThread::performMainRequest()
     /* Paranoia: */
     m_reply.clear();
 
+    /* Prepare result: */
+    int rc = 0;
+
     /* Perform blocking HTTP GET request: */
-    char *pszResponse;
-    /** @todo r=bird: Use RTHttpGetBinary? */
-    int rc = RTHttpGetText(m_hHttp, m_request.url().toString().toUtf8().constData(), &pszResponse);
+    void   *pvResponse = 0;
+    size_t  cbResponse = 0;
+    rc = RTHttpGetBinary(m_hHttp, m_request.url().toString().toUtf8().constData(), &pvResponse, &cbResponse);
     if (RT_SUCCESS(rc))
     {
-        m_reply = QByteArray(pszResponse);
-        RTHttpFreeResponseText(pszResponse);
+        m_reply = QByteArray((char*)pvResponse, cbResponse);
+        RTHttpFreeResponse(pvResponse);
     }
 
+    /* Return result: */
     return rc;
 }
 
