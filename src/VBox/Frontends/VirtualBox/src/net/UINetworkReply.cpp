@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 57677 2015-09-09 17:28:16Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkReply.cpp 58236 2015-10-14 13:09:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -246,6 +246,10 @@ int UINetworkReplyPrivateThread::applyProxyRules()
 
 int UINetworkReplyPrivateThread::applyHttpsCertificates()
 {
+    /* Check if we really need SSL: */
+    if (!m_request.url().toString().startsWith("https:", Qt::CaseInsensitive))
+        return VINF_SUCCESS;
+
     /* Set thread context: */
     m_strContext = tr("During certificate downloading");
 
