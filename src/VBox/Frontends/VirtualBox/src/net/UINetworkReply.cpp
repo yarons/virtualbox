@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58242 2015-10-14 13:53:49Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.cpp 58243 2015-10-14 13:57:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -90,6 +90,8 @@ public:
         /* Return null-string by default: */
         return QString();
     }
+    /** Returns URL of the reply which is the URL of the request for now. */
+    QUrl url() const { return m_request.url(); }
     /** @} */
 
 private:
@@ -266,7 +268,7 @@ int UINetworkReplyPrivateThread::applyProxyRules()
 int UINetworkReplyPrivateThread::applyHttpsCertificates()
 {
     /* Check if we really need SSL: */
-    if (!m_request.url().toString().startsWith("https:", Qt::CaseInsensitive))
+    if (!url().toString().startsWith("https:", Qt::CaseInsensitive))
         return VINF_SUCCESS;
 
     /* Set thread context: */
@@ -862,6 +864,9 @@ public:
     /** Returns value for the cached reply header of the passed @a type. */
     QString header(QNetworkRequest::KnownHeaders type) const { return m_pThread->header(type); }
 
+    /** Returns URL of the reply. */
+    QUrl url() const { return m_pThread->url(); }
+
 private slots:
 
     /* Handler: Thread finished: */
@@ -1015,7 +1020,7 @@ QUrl UINetworkReply::url() const
     switch (m_replyType)
     {
         case UINetworkReplyType_Qt: result = qobject_cast<QNetworkReply*>(m_pReply)->url(); break;
-        case UINetworkReplyType_Our: /* TODO: url() */ break;
+        case UINetworkReplyType_Our: result = qobject_cast<UINetworkReplyPrivate*>(m_pReply)->url(); break;
     }
     return result;
 }
