@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 57959 2015-09-30 00:21:09Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-darwin.cpp 58275 2015-10-15 21:23:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -127,6 +127,8 @@ public:
     virtual void stop(IOService *pProvider);
     virtual IOService *probe(IOService *pProvider, SInt32 *pi32Score);
     virtual bool terminate(IOOptionBits fOptions);
+
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
 };
 
 OSDefineMetaClassAndStructors(org_virtualbox_SupDrv, IOService);
@@ -155,6 +157,8 @@ public:
     virtual bool terminate(IOOptionBits fOptions = 0);
     virtual bool finalize(IOOptionBits fOptions);
     virtual void stop(IOService *pProvider);
+
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
 };
 
 OSDefineMetaClassAndStructors(org_virtualbox_SupDrvClient, IOUserClient);
