@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 58269 2015-10-15 18:29:21Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-ef-r0drv.cpp 58270 2015-10-15 18:41:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -30,18 +30,19 @@
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
 #include <iprt/mem.h>
-#include <iprt/memobj.h>
-#include <iprt/log.h>
-#include <iprt/asm.h>
-#include <iprt/thread.h>
-#include <VBox/sup.h>
-#include <iprt/err.h>
 
 #include <iprt/alloc.h>
+#include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
+#include <iprt/log.h>
+#include <iprt/memobj.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
+#include <iprt/thread.h>
 
+#include "internal/mem.h"
 
 
 /*******************************************************************************
