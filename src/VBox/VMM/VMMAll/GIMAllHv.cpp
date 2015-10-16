@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58283 2015-10-16 15:20:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMAllHv.cpp 58284 2015-10-16 15:39:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -185,7 +185,6 @@ VMM_INT_DECL(int) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
             {
                 if (pHv->uPartFlags & GIM_HV_PART_FLAGS_DEBUGGING)
                 {
-                    RTGCPHYS GCPhysOut;
                     rc  = gimHvReadSlowHypercallParamsInOut(pVM, pCtx, fIs64BitMode, &rcHv);
                     if (   RT_SUCCESS(rc)
                         && rcHv == GIM_HV_STATUS_SUCCESS)
