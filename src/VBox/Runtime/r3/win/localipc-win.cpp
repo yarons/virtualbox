@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 58282 2015-10-16 14:51:40Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-win.cpp 58288 2015-10-17 19:05:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -804,11 +804,7 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, si
         {
             pThis->cRefs++;
 
-            /*
-             * If pcbRead is non-NULL this indicates the maximum number of bytes to read.
-             * If pcbRead is NULL then this is the exact number of bytes to read.
-             */
-            size_t cbToRead = pcbRead ? *pcbRead : cbBuffer;
+            size_t cbToRead = cbBuffer;
             size_t cbTotalRead = 0;
             while (cbToRead > 0)
             {
