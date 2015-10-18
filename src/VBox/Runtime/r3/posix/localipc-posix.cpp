@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58300 2015-10-18 19:52:19Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 58301 2015-10-18 19:52:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -658,7 +658,6 @@ RTDECL(int) RTLocalIpcSessionClose(RTLOCALIPCSESSION hSession)
      * Invalidate the session, releasing the caller's reference to the instance
      * data and making sure any other thread in the listen API will wake up.
      */
-    AssertReturn(ASMAtomicCmpXchgU32(&pThis->u32Magic, ~RTLOCALIPCSESSION_MAGIC, RTLOCALIPCSESSION_MAGIC), VERR_WRONG_ORDER);
     Log(("RTLocalIpcSessionClose:\n"));
 
     rtLocalIpcSessionCancel(pThis);
