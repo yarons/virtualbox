@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpers.cpp 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
+/* $Id: VBoxHelpers.cpp 58307 2015-10-18 23:47:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * helpers - Guest Additions Service helper functions
  */
@@ -21,8 +21,6 @@
 #include <iprt/string.h>
 #include <VBox/Log.h>
 #include <VBox/VBoxGuestLib.h>
-
-#include <VBoxGuestInternal.h>
 
 #include "VBoxHelpers.h"
 #include "resource.h"

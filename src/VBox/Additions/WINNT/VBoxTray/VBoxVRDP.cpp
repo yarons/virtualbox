@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 57741 2015-09-14 15:24:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxVRDP.cpp 58307 2015-10-18 23:47:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -29,7 +29,6 @@
 #endif
 #include <VBox/log.h>
 
-#include <VBoxGuestInternal.h>
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 

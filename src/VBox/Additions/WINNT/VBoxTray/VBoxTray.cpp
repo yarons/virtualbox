@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 57741 2015-09-14 15:24:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.cpp 58307 2015-10-18 23:47:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -39,7 +39,6 @@
 #include <VBoxHook.h>
 #include "resource.h"
 #include <malloc.h>
-#include <VBoxGuestInternal.h>
 
 #include <sddl.h>
 
