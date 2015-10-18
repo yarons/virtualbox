@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58297 2015-10-18 15:12:50Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 58300 2015-10-18 19:52:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -556,6 +556,18 @@ DECLINLINE(void) rtLocalIpcSessionRetain(PRTLOCALIPCSESSIONINT pThis)
 }
 
 
+RTDECL(uint32_t) RTLocalIpcSessionRetain(RTLOCALIPCSESSION hSession)
+{
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    return cRefs;
+}
+
+
 /**
  * Session instance destructor.
  *
@@ -589,6 +601,25 @@ DECLINLINE(int) rtLocalIpcSessionRelease(PRTLOCALIPCSESSIONINT pThis)
         return rtLocalIpcSessionDtor(pThis);
     Log(("rtLocalIpcSessionRelease: %u refs left\n", cRefs));
     return VINF_SUCCESS;
+}
+
+
+RTDECL(uint32_t) RTLocalIpcSessionRelease(RTLOCALIPCSESSION hSession)
+{
+    if (hSession == NIL_RTLOCALIPCSESSION)
+        return 0;
+
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2);
+    if (cRefs)
+        Log(("RTLocalIpcSessionRelease: %u refs left\n", cRefs));
+    else
+        rtLocalIpcSessionDtor(pThis);
+    return cRefs;
 }
 
 
