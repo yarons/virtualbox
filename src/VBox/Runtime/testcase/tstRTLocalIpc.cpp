@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 58295 2015-10-18 13:28:34Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTLocalIpc.cpp 58296 2015-10-18 14:15:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -240,6 +240,16 @@ static DECLCALLBACK(int) testSessionWaitThread(RTTHREAD hSelf, void *pvUser)
 
             /* Wait for the client to trigger a disconnect by writing us something. */
             RTTESTI_CHECK_RC(RTLocalIpcSessionWaitForData(hIpcSession, RT_MS_1MIN), VINF_SUCCESS);
+
+#ifndef RT_OS_WINDOWS
+            size_t cbRead;
+            char szCmd[64];
+            RT_ZERO(szCmd);
+            RTTESTI_CHECK_RC(rc = RTLocalIpcSessionReadNB(hIpcSession, szCmd, sizeof(szCmd) - 1, &cbRead), VINF_SUCCESS);
+            if (RT_SUCCESS(rc) && (cbRead != sizeof("disconnect") - 1 || strcmp(szCmd, "disconnect")) )
+                RTTestIFailed("cbRead=%zu, expected %zu; szCmd='%s', expected 'disconnect'\n",
+                              cbRead, sizeof("disconnect") - 1, szCmd);
+#endif
 
             RTTESTI_CHECK_RC(RTLocalIpcSessionClose(hIpcSession), VINF_OBJECT_DESTROYED);
             RTTESTI_CHECK_RC_OK(RTThreadUserSignal(hSelf));
