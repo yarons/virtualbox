@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58294 2015-10-17 22:39:09Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 58295 2015-10-18 13:28:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -708,6 +708,63 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_
 
                     if (   rc == VERR_INTERRUPTED
                         || rc == VERR_TRY_AGAIN)
+                        continue;
+                }
+                else
+                    rc = VERR_CANCELLED;
+                break;
+            }
+
+            pThis->hReadThread = NIL_RTTHREAD;
+        }
+        int rc2 = RTCritSectLeave(&pThis->CritSect);
+        AssertStmt(RT_SUCCESS(rc2), rc = RT_SUCCESS(rc) ? rc2 : rc);
+    }
+
+    rtLocalIpcSessionRelease(pThis);
+    return rc;
+}
+
+
+RTDECL(int) RTLocalIpcSessionReadNB(RTLOCALIPCSESSION hSession, void *pvBuf, size_t cbToRead, size_t *pcbRead)
+{
+    /*
+     * Validate input.
+     */
+    PRTLOCALIPCSESSIONINT pThis = hSession;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, VERR_INVALID_HANDLE);
+
+    /*
+     * Do the job.
+     */
+    rtLocalIpcSessionRetain(pThis);
+
+    int rc = RTCritSectEnter(&pThis->CritSect);
+    if (RT_SUCCESS(rc))
+    {
+        if (pThis->hReadThread == NIL_RTTHREAD)
+        {
+            pThis->hReadThread = RTThreadSelf(); /* not really required, but whatever. */
+
+            for (;;)
+            {
+                if (!pThis->fCancelled)
+                {
+                    rc = RTSocketReadNB(pThis->hSocket, pvBuf, cbToRead, pcbRead);
+
+                    /* Detect broken pipe. */
+                    if (rc == VINF_SUCCESS)
+                    {
+                        if (!pcbRead || *pcbRead)
+                        { /* likely */ }
+                        else if (rtLocalIpcPosixHasHup(pThis))
+                            rc = VERR_BROKEN_PIPE;
+                    }
+                    else if (rc == VERR_NET_CONNECTION_RESET_BY_PEER || rc == VERR_NET_SHUTDOWN)
+                        rc = VERR_BROKEN_PIPE;
+
+                    if (rc == VERR_INTERRUPTED)
                         continue;
                 }
                 else
