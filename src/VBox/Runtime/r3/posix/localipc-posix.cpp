@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58319 2015-10-19 19:30:29Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 58320 2015-10-19 19:32:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -48,8 +48,8 @@
 #include <sys/un.h>
 #ifndef RT_OS_OS2
 # include <sys/poll.h>
-# include <errno.h>
 #endif
+#include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <unistd.h>
