@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 58340 2015-10-20 13:58:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltBow-solaris.c 58349 2015-10-20 23:06:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -453,6 +453,7 @@ LOCAL int VBoxNetFltSolarisGetInfo(dev_info_t *pDip, ddi_info_cmd_t enmCmd, void
  *
  * @param   pThis           The instance.
  * @param   pSG             Pointer to the scatter-gather list.
+ * @param   fDst            INTNETTRUNKDIR_XXX.
  *
  * @returns Solaris message block.
  */
