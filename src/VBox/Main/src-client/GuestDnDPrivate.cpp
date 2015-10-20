@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 58329 2015-10-20 10:05:12Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 58330 2015-10-20 10:10:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -313,7 +313,7 @@ int GuestDnDResponse::setProgress(unsigned uPercentage,
                 {
                     hr = m_pProgress->Cancel();
                     AssertComRC(hr);
-                    hr = m_pProgress->i_notifyComplete(S_FALSE);
+                    hr = m_pProgress->i_notifyComplete(S_OK);
                     AssertComRC(hr);
 
                     reset();
@@ -847,7 +847,7 @@ int GuestDnDBase::getProtocolVersion(uint32_t *puProto)
         && (uRevAdditions = m_pGuest->i_getAdditionsRevision()) > 0)
     {
 #ifdef DEBUG
-# if 1
+# if 0
         /* Hardcode the to-used protocol version; nice for testing side effects. */
         uProto = 3;
         rc = VINF_SUCCESS;
