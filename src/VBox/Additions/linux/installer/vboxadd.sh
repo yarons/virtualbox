@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 58348 $)
+# Linux Additions kernel module init script ($Revision: 58356 $)
 #
 
 #
@@ -418,9 +418,10 @@ setup()
     if [ "$mod_succ" -eq "0" ]; then
         if running_vboxguest || running_vboxadd; then
             begin "You should restart your guest to make sure the new modules are actually used" console
+        else
+            start
         fi
     fi
-    return "${mod_succ}"
 }
 
 # cleanup_script
@@ -470,7 +471,7 @@ restart)
     restart
     ;;
 setup)
-    setup && start
+    setup
     ;;
 cleanup)
     cleanup
