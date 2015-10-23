@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 58396 2015-10-23 21:16:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 58397 2015-10-23 21:26:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -45,6 +45,7 @@
  *  - @subpage pg_selm
  *  - @subpage pg_ssm
  *  - @subpage pg_stam
+ *  - @subpage pg_tm
  *  - @subpage pg_trpm
  *  - @subpage pg_vm
  *
