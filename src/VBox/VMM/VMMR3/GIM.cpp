@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58390 2015-10-23 12:35:35Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIM.cpp 58391 2015-10-23 12:37:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -176,7 +176,7 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
     STAM_REL_REG_USED(pVM, &pVM->gim.s.StatDbgRecv,      STAMTYPE_COUNTER, "/GIM/Debug/Receive",       STAMUNIT_OCCURENCES, "Debug packets received.");
     STAM_REL_REG_USED(pVM, &pVM->gim.s.StatDbgRecvBytes, STAMTYPE_COUNTER, "/GIM/Debug/ReceiveBytes",  STAMUNIT_OCCURENCES, "Debug bytes received.");
 
-    STAM_REL_REG_USED(pVM, &pVM->gim.s.StatHypercalls,   STAMTYPE_COUNTER, "/GIM/Hypercalls",          STAMUNIT_OCCURENCES, "Number of hypercalls performed.");
+    STAM_REL_REG_USED(pVM, &pVM->gim.s.StatHypercalls,   STAMTYPE_COUNTER, "/GIM/Hypercalls",          STAMUNIT_OCCURENCES, "Number of hypercalls initiated.");
     return rc;
 }
 
