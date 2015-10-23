@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 58397 2015-10-23 21:26:44Z knut.osmundsen@oracle.com $ */
+/* $Id: PDM.cpp 58398 2015-10-23 22:27:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -32,7 +32,7 @@
  * asynchronous I/O framework, and so on.
  *
  * @sa  @ref grp_pdm
- *      @subpage grp_pdm_block_cache
+ *      @subpage pg_pdm_block_cache
  *
  *
  * @section sec_pdm_dev     The Pluggable Devices
