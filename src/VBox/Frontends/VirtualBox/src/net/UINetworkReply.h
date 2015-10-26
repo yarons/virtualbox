@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.h 58422 2015-10-26 15:59:25Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.h 58423 2015-10-26 18:00:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
@@ -83,8 +83,8 @@ public:
         RedirectionTargetAttribute,
     };
 
-    /** Constructs reply for the passed @a request of the passed @a type. */
-    UINetworkReply(const QNetworkRequest &request, UINetworkRequestType type);
+    /** Constructs network-reply of the passed @a type for the passed @a request. */
+    UINetworkReply(UINetworkRequestType type, const QNetworkRequest &request);
     /** Destructs reply. */
     ~UINetworkReply();
 
