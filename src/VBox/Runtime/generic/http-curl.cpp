@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 58418 2015-10-26 12:17:33Z knut.osmundsen@oracle.com $ */
+/* $Id: http-curl.cpp 58419 2015-10-26 12:20:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -723,7 +723,9 @@ static int rtHttpConfigureProxyForUrlFromEnv(PRTHTTPINTERNAL pThis, const char *
         rc = RTEnvGetEx(RTENV_DEFAULT, pszNoProxyVar, pszNoProxy, cchActual + _1K, NULL);
     }
     AssertMsg(rc == VINF_SUCCESS || rc == VERR_ENV_VAR_NOT_FOUND, ("rc=%Rrc\n", rc));
-    bool fNoProxy = rtHttpUrlInNoProxyList(pszUrl, RTStrStrip(pszNoProxy));
+    bool fNoProxy = false;
+    if (RT_SUCCESS(rc))
+        fNoProxy = rtHttpUrlInNoProxyList(pszUrl, RTStrStrip(pszNoProxy));
     RTMemTmpFree(pszNoProxyFree);
     if (!fNoProxy)
     {
