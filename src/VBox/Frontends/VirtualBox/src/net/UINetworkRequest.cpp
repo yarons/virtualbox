@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 58394 2015-10-23 14:29:12Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequest.cpp 58422 2015-10-26 15:59:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff implementation.
  */
@@ -106,16 +106,16 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
         return;
 
     /* If network-request was canceled: */
-    if (m_pReply->error() == QNetworkReply::OperationCanceledError)
+    if (m_pReply->error() == UINetworkReply::OperationCanceledError)
     {
         /* Notify network-manager: */
         emit sigCanceled(m_uuid);
     }
     /* If network-reply has no errors: */
-    else if (m_pReply->error() == QNetworkReply::NoError)
+    else if (m_pReply->error() == UINetworkReply::NoError)
     {
         /* Check if redirection required: */
-        QUrl redirect = m_pReply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+        QUrl redirect = m_pReply->attribute(UINetworkReply::RedirectionTargetAttribute).toUrl();
         if (redirect.isValid())
         {
             /* Cleanup current network-reply first: */
