@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 58426 2015-10-27 11:59:56Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkManager.h 58427 2015-10-27 12:02:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff declaration.
  */
@@ -19,7 +19,7 @@
 #define __UINetworkManager_h__
 
 /* Qt includes: */
-#include <QNetworkAccessManager>
+#include <QObject>
 #include <QUuid>
 
 /* Local inludes: */
@@ -33,9 +33,9 @@ class UINetworkCustomer;
 class UINetworkManagerDialog;
 class UINetworkManagerIndicator;
 
-/* QNetworkAccessManager class reimplementation.
+/* QObject class reimplementation.
  * Providing network access for VirtualBox application purposes. */
-class UINetworkManager : public QNetworkAccessManager
+class UINetworkManager : public QObject
 {
     Q_OBJECT;
 
