@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 58423 2015-10-26 18:00:31Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequest.cpp 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff implementation.
  */
@@ -36,12 +36,14 @@
 
 UINetworkRequest::UINetworkRequest(UINetworkRequestType type,
                                    const QList<QNetworkRequest> &requests,
+                                   const UserDictionary &requestHeaders,
                                    UINetworkCustomer *pCustomer,
                                    UINetworkManager *pNetworkManager)
     : QObject(pNetworkManager)
     , m_type(type)
     , m_uuid(QUuid::createUuid())
     , m_requests(requests)
+    , m_requestHeaders(requestHeaders)
     , m_iCurrentRequestIndex(0)
     , m_pCustomer(pCustomer)
     , m_fRunning(false)
@@ -187,7 +189,7 @@ void UINetworkRequest::initialize()
 void UINetworkRequest::prepareNetworkReply()
 {
     /* Make network-request: */
-    m_pReply = new UINetworkReply(m_type, m_request);
+    m_pReply = new UINetworkReply(m_type, m_request, m_requestHeaders);
     AssertMsg(m_pReply, ("Unable to make network-request!\n"));
     /* Prepare listeners for m_pReply: */
     connect(m_pReply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(sltHandleNetworkReplyProgress(qint64, qint64)));

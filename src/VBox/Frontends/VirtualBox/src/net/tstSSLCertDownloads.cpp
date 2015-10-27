@@ -1,4 +1,4 @@
-/* $Id: tstSSLCertDownloads.cpp 58423 2015-10-26 18:00:31Z sergey.dubov@oracle.com $ */
+/* $Id: tstSSLCertDownloads.cpp 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -44,8 +44,9 @@
 /*static*/ void UINetworkReplyPrivateThread::testIt(RTTEST hTest)
 {
     NOREF(hTest);
-    QNetworkRequest Dummy;
-    UINetworkReplyPrivateThread TestObj(UINetworkRequestType_GET, Dummy);
+    QNetworkRequest Dummy1;
+    UserDictionary Dummy2;
+    UINetworkReplyPrivateThread TestObj(UINetworkRequestType_GET, Dummy1, Dummy2);
 
     /*
      * Do the first setup things that UINetworkReplyPrivateThread::run.

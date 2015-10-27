@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 58423 2015-10-26 18:00:31Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequest.h 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff declaration.
  */
@@ -57,10 +57,11 @@ signals:
 public:
 
     /** Constructs network-request of the passed @a type
-      * on the basis of the @a requests
+      * on the basis of the passed @a requests and the @a requestHeaders
       * for the @a pCustomer and @a pNetworkManager specified. */
     UINetworkRequest(UINetworkRequestType type,
                      const QList<QNetworkRequest> &requests,
+                     const UserDictionary &requestHeaders,
                      UINetworkCustomer *pCustomer,
                      UINetworkManager *pNetworkManager);
     /** Destructs network request. */
@@ -102,6 +103,8 @@ private:
     UINetworkRequestType m_type;
     QUuid m_uuid;
     QList<QNetworkRequest> m_requests;
+    /** Holds the request headers. */
+    const UserDictionary m_requestHeaders;
     QNetworkRequest m_request;
     int m_iCurrentRequestIndex;
     QString m_strDescription;

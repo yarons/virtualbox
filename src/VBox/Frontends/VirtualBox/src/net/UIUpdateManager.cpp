@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 58423 2015-10-26 18:00:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -197,8 +197,9 @@ private:
         /* Send GET request: */
         QNetworkRequest request;
         request.setUrl(url);
-        request.setRawHeader("User-Agent", strUserAgent.toAscii());
-        createNetworkRequest(UINetworkRequestType_GET, QList<QNetworkRequest>() << request);
+        UserDictionary headers;
+        headers["User-Agent"] = strUserAgent;
+        createNetworkRequest(UINetworkRequestType_GET, QList<QNetworkRequest>() << request, headers);
     }
 
     /* Handle network reply canceled: */
