@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkCustomer.h 58426 2015-10-27 11:59:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -26,7 +26,7 @@
 
 /* Forward declarations: */
 class UINetworkReply;
-class QNetworkRequest;
+class QUrl;
 
 /* Interface to access UINetworkManager protected functionality: */
 class UINetworkCustomer : public QObject
@@ -54,8 +54,8 @@ public:
 
 protected:
 
-    /** Creates network-request of the passed @a type on the basis of the passed @a requests and the @a requestHeaders. */
-    void createNetworkRequest(UINetworkRequestType type, const QList<QNetworkRequest> requests,
+    /** Creates network-request of the passed @a type on the basis of the passed @a urls and the @a requestHeaders. */
+    void createNetworkRequest(UINetworkRequestType type, const QList<QUrl> urls,
                               const UserDictionary requestHeaders = UserDictionary());
 
 private:

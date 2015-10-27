@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 58425 2015-10-27 11:20:26Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkManager.cpp 58426 2015-10-27 11:59:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Global includes: */
 # include <QWidget>
+# include <QUrl>
 
 /* Local includes: */
 # include "UINetworkManager.h"
@@ -106,11 +107,11 @@ void UINetworkManager::show()
     m_pNetworkManagerDialog->showNormal();
 }
 
-void UINetworkManager::createNetworkRequest(UINetworkRequestType type, const QList<QNetworkRequest> &requests,
+void UINetworkManager::createNetworkRequest(UINetworkRequestType type, const QList<QUrl> &urls,
                                             const UserDictionary &requestHeaders, UINetworkCustomer *pCustomer)
 {
     /* Create network-request: */
-    UINetworkRequest *pNetworkRequest = new UINetworkRequest(type, requests, requestHeaders, pCustomer, this);
+    UINetworkRequest *pNetworkRequest = new UINetworkRequest(type, urls, requestHeaders, pCustomer, this);
     /* Prepare created network-request: */
     prepareNetworkRequest(pNetworkRequest);
 }
