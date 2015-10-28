@@ -3,7 +3,7 @@ EFI firmware
 ============
 
 EFI firmware based on the opensource EDK2 project.  The current base is
-revision 13361 from: https://svn.code.sf.net/p/edk2/code/branches/UDK2010.SR1
+revision 18601 from: https://svn.code.sf.net/p/edk2/code/branches/UDK2014.SP1
 
 We have removed the following files and directories because we don't need them
 and they take up space:
@@ -27,5 +27,5 @@ and they take up space:
         ./EdkShellBinPkg/ \
         ./ShellBinPkg/ \
 
-:Status: $Id: ReadMe.vbox 48674 2013-09-25 08:26:15Z knut.osmundsen@oracle.com $
+:Status: $Id: ReadMe.vbox 58459 2015-10-28 20:17:18Z knut.osmundsen@oracle.com $
 
