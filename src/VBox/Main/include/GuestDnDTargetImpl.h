@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 58212 2015-10-13 11:49:33Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.h 58519 2015-10-30 08:17:19Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -101,6 +101,8 @@ protected:
         /** Maximum data block size (in bytes) the target can handle. */
         uint32_t mcbBlockSize;
     } mData;
+
+    friend class SendDataTask;
 };
 
 #endif /* !____H_GUESTDNDTARGETIMPL */
