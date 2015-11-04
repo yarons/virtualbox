@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 58568 2015-11-04 14:20:54Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 58569 2015-11-04 14:28:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -209,6 +209,9 @@ typedef struct CPUMDBENTRY
  */
 static CPUMDBENTRY const * const g_apCpumDbEntries[] =
 {
+#ifdef VBOX_CPUDB_Intel_Core_i7_6700K
+    &g_Entry_Intel_Core_i7_6700K,
+#endif
 #ifdef VBOX_CPUDB_Intel_Core_i7_5600U
     &g_Entry_Intel_Core_i7_5600U,
 #endif
