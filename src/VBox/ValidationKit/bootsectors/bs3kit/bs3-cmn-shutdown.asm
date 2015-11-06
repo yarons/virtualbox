@@ -1,4 +1,4 @@
-; $Id: bs3-shutdown.asm 58588 2015-11-05 15:45:36Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-shutdown.asm 58593 2015-11-06 03:17:20Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3Shutdown
 ;
@@ -26,7 +26,7 @@
 
 %include "bs3kit-template-header.mac"
 
-extern TMPL_CMN_NM(Bs3Panic)
+EXTERN_CMN_NM Bs3Panic
 
 BEGINPROC TMPL_CMN_NM(Bs3Shutdown)
         cli
@@ -43,7 +43,7 @@ BEGINPROC TMPL_CMN_NM(Bs3Shutdown)
         dec     bl
         jnz     .retry
         ; Shutdown failed!
-        jmp     TMPL_CMN_NM(Bs3Panic)
+        jmp     Bs3Panic
 .s_szShutdown:
         db      'Shutdown', 0
 ENDPROC TMPL_CMN_NM(Bs3Shutdown)
