@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 58605 2015-11-06 13:25:50Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp.h 58606 2015-11-06 13:46:31Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -16,7 +16,6 @@
  */
 
 
-#define IEM_IMPLEMENTS_CALLGATE
 /** @name Misc Helpers
  * @{
  */
