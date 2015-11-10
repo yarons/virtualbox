@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-panic.asm 58594 2015-11-06 03:17:56Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-Panic.asm 58628 2015-11-10 01:25:13Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3Panic, Common.
 ;
@@ -27,10 +27,10 @@
 %include "bs3kit-template-header.mac"
 
 
-BEGINPROC TMPL_CMN_NM(Bs3Panic)
+BS3_PROC_BEGIN_CMN Bs3Panic
         cli
 .panic_again:
         hlt
         jmp     .panic_again
-ENDPROC TMPL_CMN_NM(Bs3Panic)
+BS3_PROC_END_CMN   Bs3Panic
 
