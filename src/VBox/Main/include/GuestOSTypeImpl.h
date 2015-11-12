@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 56459 2015-06-16 16:24:14Z michal.necasek@oracle.com $ */
+/* $Id: GuestOSTypeImpl.h 58677 2015-11-12 16:44:55Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -77,6 +77,7 @@ private:
     HRESULT getRecommendedAudioCodec(AudioCodecType_T *aAudioCodec);
     HRESULT getRecommendedFloppy(BOOL *aRecommendedFloppy);
     HRESULT getRecommendedUSB(BOOL *aRecommendedUSB);
+    HRESULT getRecommendedUSB3(BOOL *aRecommendedUSB3);
     HRESULT getRecommendedTFReset(BOOL *aRecommendedTFReset);
 
 
