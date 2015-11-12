@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemPCpy.c 58666 2015-11-12 00:04:31Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-MemPCpy.c 58667 2015-11-12 00:22:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3MemPCpy
  */
@@ -45,6 +45,4 @@ BS3_DECL(void BS3_FAR *) BS3_CMN_NM(Bs3MemPCpy)(void BS3_FAR *pvDst, const void 
 
     return uDst.pv;
 }
-
-
 
