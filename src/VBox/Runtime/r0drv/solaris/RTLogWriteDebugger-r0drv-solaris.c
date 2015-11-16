@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 58697 2015-11-16 14:42:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 58698 2015-11-16 14:57:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -46,6 +46,10 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
     if (pch[cb] != '\0')
         AssertBreakpoint();
 
+    /* cmn_err() acquires adaptive mutexes. Not preemption safe, see @bugref{6657}. */
+    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
+        return;
+
     if (    !g_frtSolSplSetsEIF
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
         ||  ASMIntAreEnabled()
@@ -54,11 +58,7 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 #endif
         )
     {
-        /* cmn_err() acquires adaptive mutexes. Not preemption safe, see @bugref{6657}. */
-        if (RTThreadPreemptIsEnabled(NIL_RTTHREAD))
-            cmn_err(CE_CONT, pch);
-        else
-            cmn_err(CE_CONT, "[!BadPreemptCtx!] %s", pch);
+        cmn_err(CE_CONT, pch);
     }
 
     return;
