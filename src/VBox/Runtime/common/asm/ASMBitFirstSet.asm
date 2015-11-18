@@ -1,6 +1,6 @@
-; $Id: $
+; $Id: ASMBitFirstSet.asm 58755 2015-11-18 20:48:25Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - ASMBitFirstClear().
+; IPRT - ASMBitFirstSet().
 ;
 
 ;
