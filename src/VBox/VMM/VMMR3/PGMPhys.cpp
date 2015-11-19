@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 58781 2015-11-19 22:33:00Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 58782 2015-11-19 22:34:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3575,11 +3575,9 @@ int pgmR3PhysRomReset(PVM pVM)
          * Restore the original ROM pages after a saved state load.
          * Also, in strict builds check that ROM pages remain unmodified.
          */
-        if (   pRom->pvOriginal
 #ifndef VBOX_STRICT
-            && pVM->pgm.s.fRestoreRomPagesAtReset
+        if (pVM->pgm.s.fRestoreRomPagesAtReset)
 #endif
-            )
         {
             size_t         cbSrcLeft = pRom->cbOriginal;
             uint8_t const *pbSrcPage = (uint8_t const *)pRom->pvOriginal;
