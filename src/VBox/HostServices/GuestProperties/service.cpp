@@ -1,4 +1,4 @@
-/* $Id: service.cpp 58775 2015-11-19 16:54:17Z noreply@oracle.com $ */
+/* $Id: service.cpp 58776 2015-11-19 17:05:47Z noreply@oracle.com $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1587,7 +1587,7 @@ int Service::uninit()
         int rc = RTReqQueueCall(mhReqQNotifyHost, &pReq, 10000, (PFNRT)wakeupNotifyHost, 0);
         if (RT_SUCCESS(rc))
             RTReqRelease(pReq);
-        rc = RTThreadWait(mhThreadNotifyHost, 1000, NULL);
+        rc = RTThreadWait(mhThreadNotifyHost, 10000, NULL);
         AssertRC(rc);
         rc = RTReqQueueDestroy(mhReqQNotifyHost);
         AssertRC(rc);
