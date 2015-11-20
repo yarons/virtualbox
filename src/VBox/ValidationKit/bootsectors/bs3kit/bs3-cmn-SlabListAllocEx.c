@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabListAllocEx.c 58777 2015-11-19 17:20:00Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SlabListAllocEx.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3SlabListAllocEx
  */
@@ -33,70 +33,22 @@ BS3_DECL(void BS3_FAR *) Bs3SlabListAllocEx(PBS3SLABHEAD pHead, uint16_t cChunks
     BS3_ASSERT(!(fFlags & ~BS3_SLAB_ALLOC_F_SAME_TILE));
     if (pHead->cFreeChunks >= cChunks)
     {
-        PBS3SLABCLT pCur;
-        for (pCur = BS3_XPTR_GET(BS3SLABCLT, pHead->pFirst);
+        PBS3SLABCTL pCur;
+        for (pCur = BS3_XPTR_GET(BS3SLABCTL, pHead->pFirst);
              pCur != NULL;
-             pCur = BS3_XPTR_GET(BS3SLABCLT, pCur->pNext))
+             pCur = BS3_XPTR_GET(BS3SLABCTL, pCur->pNext))
         {
             if (pCur->cFreeChunks >= cChunks)
             {
-                int32_t iBit = ASMBitFirstClear(&pCur->bmAllocated, pCur->cChunks);
-                if (iBit >= 0)
+                void BS3_FAR *pvRet = Bs3SlabAllocEx(pCur, cChunks, fFlags);
+                if (pvRet)
                 {
-                    while ((uint32_t)iBit + cChunks <= pCur->cChunks)
-                    {
-                        /* Check that we've got the requested number of free chunks here. */
-                        uint16_t i;
-                        for (i = 1; i < cChunks; i++)
-                            if (!ASMBitTest(&pCur->bmAllocated, iBit + i))
-                                break;
-                        if (i == cChunks)
-                        {
-                            BS3_XPTR_AUTO(void, pvRet);
-
-                            /* Check if the chunks are all in the same tiled segment. */
-                            BS3_XPTR_SET_FLAT(void, pvRet,
-                                              BS3_XPTR_GET_FLAT(uint8_t, pCur->pbStart) + ((uint32_t)iBit << pCur->cChunkShift));
-                            if (   !(fFlags & BS3_SLAB_ALLOC_F_SAME_TILE)
-                                ||    (BS3_XPTR_GET_FLAT(void, pvRet) >> 16)
-                                   == (BS3_XPTR_GET_FLAT(void, pvRet) + ((uint32_t)cChunks << pCur->cChunkShift)) )
-                            {
-                                /* Complete the allocation. */
-                                for (i = 0; i < cChunks; i++)
-                                    ASMBitSet(&pCur->bmAllocated, iBit + i);
-                                pCur->cFreeChunks  -= cChunks;
-                                pHead->cFreeChunks -= cChunks;
-
-                                return BS3_XPTR_GET(void, pvRet);
-                            }
-
-                            /*
-                             * We're crossing a tiled segment boundrary.
-                             * Skip to the start of the next segment and retry there.
-                             * (We already know that the first chunk in the next tiled
-                             * segment is free, otherwise we wouldn't have a crossing.)
-                             */
-                            BS3_ASSERT(((uint32_t)cChunks << pCur->cChunkShift) <= _64K);
-                            i = BS3_XPTR_GET_FLAT_LOW(void, pvRet);
-                            i = UINT16_C(0) - i;
-                            i >>= pCur->cChunkShift;
-                            iBit += i;
-                        }
-                        else
-                        {
-                            /*
-                             * Continue searching.
-                             */
-                            iBit = ASMBitNextClear(&pCur->bmAllocated, pCur->cChunks, iBit + i);
-                            if (iBit < 0)
-                                break;
-                        }
-                    }
+                    pHead->cFreeChunks -= cChunks;
+                    return pvRet;
                 }
             }
         }
     }
     return NULL;
 }
-
 

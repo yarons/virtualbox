@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-SlabListAdd.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-MemAllocZ.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3SlabListAdd
+ * BS3Kit - Bs3MemAllocZ
  */
 
 /*
@@ -24,19 +24,19 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
+#include "bs3-cmn-memory.h"
+#include <iprt/asm.h>
 
 
-BS3_DECL(void) Bs3SlabListAdd(PBS3SLABHEAD pHead, PBS3SLABCTL pSlabCtl)
+BS3_DECL(void BS3_FAR *) Bs3MemAllocZ(BS3MEMKIND enmKind, size_t cb)
 {
-    BS3_ASSERT(pHead->cbChunk == pSlabCtl->cbChunk);
-    BS3_ASSERT(BS3_XPTR_IS_NULL(BS3SLABHEAD, pSlabCtl->pNext));
-
-    BS3_XPTR_SET_FLAT(BS3SLABCTL, pSlabCtl->pNext, BS3_XPTR_GET_FLAT(BS3SLABCTL, pHead->pFirst));
-    BS3_XPTR_SET(BS3SLABCTL, pHead->pFirst, pSlabCtl);
-
-    pHead->cSlabs      += 1;
-    pHead->cChunks     += pSlabCtl->cChunks;
-    pHead->cFreeChunks += pSlabCtl->cFreeChunks;
+    void BS3_FAR *pvRet = Bs3MemAlloc(enmKind, cb);
+    if (pvRet)
+        Bs3MemZero(pvRet, cb);
+    return pvRet;
 }
 

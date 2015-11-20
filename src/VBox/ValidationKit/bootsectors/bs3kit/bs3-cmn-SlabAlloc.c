@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-SlabListAdd.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SlabAlloc.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3SlabListAdd
+ * BS3Kit - Bs3SlabAlloc
  */
 
 /*
@@ -25,18 +25,25 @@
  */
 
 #include "bs3kit-template-header.h"
+#include <iprt/asm.h>
 
 
-BS3_DECL(void) Bs3SlabListAdd(PBS3SLABHEAD pHead, PBS3SLABCTL pSlabCtl)
+BS3_DECL(void BS3_FAR *) Bs3SlabAlloc(PBS3SLABCTL pSlabCtl)
 {
-    BS3_ASSERT(pHead->cbChunk == pSlabCtl->cbChunk);
-    BS3_ASSERT(BS3_XPTR_IS_NULL(BS3SLABHEAD, pSlabCtl->pNext));
+    if (pSlabCtl->cFreeChunks)
+    {
+        int32_t iBit = ASMBitFirstClear(&pSlabCtl->bmAllocated, pSlabCtl->cChunks);
+        if (iBit >= 0)
+        {
+            BS3_XPTR_AUTO(void, pvRet);
+            ASMBitSet(&pSlabCtl->bmAllocated, iBit);
+            pSlabCtl->cFreeChunks  -= 1;
 
-    BS3_XPTR_SET_FLAT(BS3SLABCTL, pSlabCtl->pNext, BS3_XPTR_GET_FLAT(BS3SLABCTL, pHead->pFirst));
-    BS3_XPTR_SET(BS3SLABCTL, pHead->pFirst, pSlabCtl);
-
-    pHead->cSlabs      += 1;
-    pHead->cChunks     += pSlabCtl->cChunks;
-    pHead->cFreeChunks += pSlabCtl->cFreeChunks;
+            BS3_XPTR_SET_FLAT(void, pvRet,
+                              BS3_XPTR_GET_FLAT(uint8_t, pSlabCtl->pbStart) + ((uint32_t)iBit << pSlabCtl->cChunkShift));
+            return BS3_XPTR_GET(void, pvRet);
+        }
+    }
+    return NULL;
 }
 
