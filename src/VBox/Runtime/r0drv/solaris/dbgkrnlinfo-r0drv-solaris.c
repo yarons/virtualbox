@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-solaris.c 58800 2015-11-20 14:39:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 58801 2015-11-20 14:47:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -138,8 +138,8 @@ static void rtR0DbgKrnlInfoModRelease(modctl_t *pMod, ctf_file_t *pCTF)
  * Helper for opening the specified kernel module.
  *
  * @param pszModule         The name of the module.
- * @param pMod              Where to store the module handle.
- * @param pCtf              Where to store the CTF handle.
+ * @param ppMod             Where to store the module handle.
+ * @param ppCtf             Where to store the module's CTF handle.
  *
  * @returns Pointer to the CTF structure for the module.
  */
