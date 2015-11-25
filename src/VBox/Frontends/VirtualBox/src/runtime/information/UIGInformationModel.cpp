@@ -1,4 +1,4 @@
-/* $Id: UIGInformationModel.cpp 58726 2015-11-17 16:37:24Z noreply@oracle.com $ */
+/* $Id: UIGInformationModel.cpp 58855 2015-11-25 13:35:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGInformationModel class implementation.
  */
@@ -80,7 +80,7 @@ QGraphicsView* UIGInformationModel::paintDevice() const
 
 QGraphicsItem* UIGInformationModel::itemAt(const QPointF &position) const
 {
-    return scene()->itemAt(position);
+    return scene()->itemAt(position, QTransform());
 }
 
 void UIGInformationModel::updateLayout()

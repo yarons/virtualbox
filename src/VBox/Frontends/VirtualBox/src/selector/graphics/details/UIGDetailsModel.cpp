@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 53302 2014-11-11 13:32:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIGDetailsModel.cpp 58855 2015-11-25 13:35:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGDetailsModel class implementation.
  */
@@ -80,7 +80,7 @@ QGraphicsView* UIGDetailsModel::paintDevice() const
 
 QGraphicsItem* UIGDetailsModel::itemAt(const QPointF &position) const
 {
-    return scene()->itemAt(position);
+    return scene()->itemAt(position, QTransform());
 }
 
 void UIGDetailsModel::updateLayout()
