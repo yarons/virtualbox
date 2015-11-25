@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 52730 2014-09-12 16:19:53Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGChooserItem.cpp 58867 2015-11-25 16:19:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class definition.
  */
@@ -29,6 +29,7 @@
 # include <QStateMachine>
 # include <QPropertyAnimation>
 # include <QSignalTransition>
+# include <QDrag>
 
 /* GUI includes: */
 # include "UIGChooserItem.h"
