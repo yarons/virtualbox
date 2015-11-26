@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 58616 2015-11-09 13:07:18Z noreply@oracle.com $ */
+/* $Id: UIVMInformationDialog.h 58879 2015-11-26 12:49:07Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -157,3 +157,4 @@ private:
 };
 
 #endif /* !___UIVMInformationDialog_h___ */
+
