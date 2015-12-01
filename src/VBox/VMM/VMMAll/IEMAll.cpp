@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 58878 2015-11-26 12:17:33Z michal.necasek@oracle.com $ */
+/* $Id: IEMAll.cpp 58934 2015-12-01 10:51:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -67,6 +67,7 @@
  *      - Level 4 (Log4): Decoding mnemonics w/ EIP.
  *      - Level 5 (Log5): Decoding details.
  *      - Level 6 (Log6): Enables/disables the lockstep comparison with REM.
+ *      - Level 7 (Log7): iret++ execution logging.
  *
  */
 
