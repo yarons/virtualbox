@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 56398 2015-06-12 20:44:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 59087 2015-12-11 11:04:51Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -380,8 +380,10 @@ private:
     static DECLCALLBACK(int) AsyncEventHandler(RTTHREAD thread, void *pvUser);
 
 #ifdef RT_OS_WINDOWS
+    friend class StartSVCHelperClientData;
     static DECLCALLBACK(int) SVCHelperClientThread(RTTHREAD aThread, void *aUser);
 #endif
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////
