@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 58383 2015-10-23 09:24:16Z vitali.pelenjow@oracle.com $ */
+/* $Id: ConsoleImpl.h 59117 2015-12-14 14:04:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -706,7 +706,7 @@ private:
     HRESULT i_detachUSBDevice(const ComObjPtr<OUSBDevice> &aHostDevice);
 
     static DECLCALLBACK(int) i_usbAttachCallback(Console *that, PUVM pUVM, IUSBDevice *aHostDevice, PCRTUUID aUuid,
-                                                 bool aRemote, const char *aAddress, void *pvRemoteBackend,
+                                                 const char *aBackend, const char *aAddress, void *pvRemoteBackend,
                                                  USHORT aPortVersion, ULONG aMaskedIfs, const char *pszCaptureFilename);
     static DECLCALLBACK(int) i_usbDetachCallback(Console *that, PUVM pUVM, PCRTUUID aUuid);
 #endif

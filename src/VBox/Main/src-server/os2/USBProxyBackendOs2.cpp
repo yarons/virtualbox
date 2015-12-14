@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceOs2.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendOs2.cpp 59117 2015-12-14 14:04:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, OS/2 Specialization.
  */
