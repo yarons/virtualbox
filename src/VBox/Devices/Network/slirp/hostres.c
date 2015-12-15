@@ -1,4 +1,4 @@
-/* $Id: hostres.c 59142 2015-12-15 23:12:29Z noreply@oracle.com $ */
+/* $Id: hostres.c 59144 2015-12-15 23:28:11Z noreply@oracle.com $ */
 /** @file
  * Host resolver
  */
@@ -29,7 +29,7 @@
 /* see RFC 1035(4.1.1) */
 struct dnsmsg_header
 {
-    uint16_t id;
+    unsigned id:16;
 
     /* XXX: endianness */
     unsigned rd:1;
