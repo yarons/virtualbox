@@ -1,4 +1,4 @@
-/* $Id: sched-posix.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: sched-posix.cpp 59158 2015-12-16 15:44:59Z noreply@oracle.com $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -400,7 +400,7 @@ static int rtSchedCreateThread(void *(*pfnThread)(void *pvArg), void *pvArg)
                     do
                     {
                         rc = pthread_join(Thread, &pvRet);
-                    } while (errno == EINTR);
+                    } while (rc == EINTR);
                     if (rc)
                         return RTErrConvertFromErrno(rc);
                     return (int)(uintptr_t)pvRet;
