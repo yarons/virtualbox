@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 55759 2015-05-08 15:46:09Z noreply@oracle.com $ */
+/* $Id: VBoxMPMisc.cpp 59179 2015-12-18 08:51:00Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1806,6 +1806,8 @@ static int vboxWddmWdProgram(PVBOXMP_DEVEXT pDevExt, uint32_t cMillis)
                 if (offCmd != HGSMIOFFSET_VOID)
                 {
                     VBoxVideoCmnPortWriteUlong(VBoxCommonFromDeviceExt(pDevExt)->guestCtx.port, offCmd);
+                    /* Make the compiler aware that the host has changed memory. */
+                    ASMCompilerBarrier();
                     rc = VBoxSHGSMICommandDoneSynch(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx, pHdr);
                     AssertRC(rc);
                     if (RT_SUCCESS(rc))
