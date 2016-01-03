@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-paging.h 59237 2015-12-31 21:47:49Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-paging.h 59244 2016-01-03 21:24:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Internal Paging Structures, Variables and Functions.
  */
@@ -43,6 +43,7 @@ extern uint32_t BS3_DATA_NM(g_PhysPagingRootPAE);
 extern uint32_t BS3_DATA_NM(g_PhysPagingRootLM);
 
 RT_C_DECLS_END;
+
 
 #endif
 
