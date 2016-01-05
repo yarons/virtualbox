@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 59248 2016-01-04 14:13:22Z alexander.eichner@oracle.com $ */
+/* $Id: DevFdc.cpp 59252 2016-01-05 10:54:49Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -47,6 +47,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_FDC
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>

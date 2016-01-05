@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbMsd.cpp 59252 2016-01-05 10:54:49Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP   LOG_GROUP_USB_MSD
 #include <VBox/vmm/pdmusb.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/scsi.h>

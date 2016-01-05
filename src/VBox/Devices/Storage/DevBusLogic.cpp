@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DevBusLogic.cpp 59252 2016-01-05 10:54:49Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -23,7 +23,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_BUSLOGIC
 #include <VBox/vmm/pdmdev.h>
-#include <VBox/vmm/pdmifs.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/scsi.h>
 #include <iprt/asm.h>

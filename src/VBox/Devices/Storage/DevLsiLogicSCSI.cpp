@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 59252 2016-01-05 10:54:49Z alexander.eichner@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_LSILOGICSCSI
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmqueue.h>
 #include <VBox/vmm/pdmthread.h>
 #include <VBox/vmm/pdmcritsect.h>
