@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-MemAllocZ.c 59286 2016-01-08 00:23:32Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 59286 2016-01-08 00:23:32Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3MemAllocZ
+ * BS3Kit - Bs3TrapDefaultHandler
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,14 +28,12 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-memory.h"
 
 
-BS3_DECL(void BS3_FAR *) Bs3MemAllocZ(BS3MEMKIND enmKind, size_t cb)
+BS3_DECL(void) Bs3TrapDefaultHandler(PBS3TRAPFRAME pTrapFrame)
 {
-    void BS3_FAR *pvRet = Bs3MemAlloc(enmKind, cb);
-    if (pvRet)
-        Bs3MemZero(pvRet, cb);
-    return pvRet;
+    Bs3TrapPrintFrame(pTrapFrame);
+    Bs3Panic();
 }
+
 
