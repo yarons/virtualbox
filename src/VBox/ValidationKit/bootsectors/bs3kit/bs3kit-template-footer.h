@@ -1,4 +1,4 @@
-/* $Id: bs3kit-template-footer.h 58628 2015-11-10 01:25:13Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit-template-footer.h 59311 2016-01-12 01:16:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit footer for multi-mode code templates.
  */
@@ -48,6 +48,7 @@
 #undef TMPL_CMN_PAE
 #undef TMPL_CMN_LM
 #undef TMPL_CMN_V86
+#undef TMPL_CMN_PAGING
 
 #undef TMPL_CMN_P16
 #undef TMPL_CMN_P32
