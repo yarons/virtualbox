@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 58013 2015-10-02 15:35:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.cpp 59380 2016-01-18 17:04:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -58,12 +58,6 @@ UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWind
                     )
     , m_bIsGuestAutoresizeEnabled(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked())
 {
-}
-
-UIMachineViewFullscreen::~UIMachineViewFullscreen()
-{
-    /* Cleanup frame buffer: */
-    cleanupFrameBuffer();
 }
 
 void UIMachineViewFullscreen::sltAdditionsStateChanged()
