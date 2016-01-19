@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 58949 2015-12-02 13:36:52Z noreply@oracle.com $ */
+/* $Id: internal-r3-win.h 59404 2016-01-19 10:10:39Z noreply@oracle.com $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -84,7 +84,8 @@ typedef enum RTR3WINLDRPROT
     RTR3WINLDRPROT_INVALID = 0,
     RTR3WINLDRPROT_NONE,
     RTR3WINLDRPROT_NO_CWD,
-    RTR3WINLDRPROT_SAFE
+    RTR3WINLDRPROT_SAFE,
+    RTR3WINLDRPROT_SAFER
 } RTR3WINLDRPROT;
 
 
