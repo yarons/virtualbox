@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 59409 2016-01-19 13:37:10Z noreply@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 59410 2016-01-19 13:43:37Z noreply@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -49,6 +49,7 @@ using namespace com;
 #endif
 
 #ifdef RT_OS_DARWIN
+# include <iprt/asm.h>
 # include <dlfcn.h>
 # include <sys/mman.h>
 #endif
