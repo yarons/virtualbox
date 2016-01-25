@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 59455 2016-01-25 12:23:10Z alexander.eichner@oracle.com $ */
+/* $Id: VDI.cpp 59458 2016-01-25 12:48:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -533,8 +533,6 @@ static int vdiCreateImage(PVDIIMAGEDESC pImage, uint64_t cbSize,
 {
     int rc;
     uint64_t cbTotal;
-    uint64_t cbFill;
-    uint64_t uOff;
     uint32_t cbDataAlign = VDI_DATA_ALIGN;
 
     AssertPtr(pPCHSGeometry);
