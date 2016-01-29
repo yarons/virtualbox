@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 59517 2016-01-29 09:07:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlProcess.cpp 59520 2016-01-29 10:40:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -717,7 +717,7 @@ static int vgsvcGstCtrlProcessProcLoop(PVBOXSERVICECTRLPROCESS pProcess)
                 fProcessAlive = false;
             }
             else if (RT_FAILURE(rc2))
-                VGSvcError("PID %RU32]: Killing process failed with rc=%Rrc\n", pProcess->uPID, rc2);
+                VGSvcError("[PID %RU32]: Killing process failed with rc=%Rrc\n", pProcess->uPID, rc2);
             RTThreadSleep(500);
         }
 
