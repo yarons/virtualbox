@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59589 2016-02-04 18:50:48Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 59591 2016-02-04 19:09:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -903,8 +903,7 @@ HRESULT Appliance::i_readFS(TaskOVF *pTask)
 
     AutoWriteLock appLock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = S_OK;
-
+    HRESULT rc;
     if (pTask->locInfo.strPath.endsWith(".ovf", Utf8Str::CaseInsensitive))
         rc = i_readFSOVF(pTask);
     else
