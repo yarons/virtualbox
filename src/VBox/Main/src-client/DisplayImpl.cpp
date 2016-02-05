@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DisplayImpl.cpp 59596 2016-02-05 14:35:20Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -111,6 +111,7 @@ HRESULT Display::FinalConstruct()
 
     mfSeamlessEnabled = false;
     mpRectVisibleRegion = NULL;
+    mcRectVisibleRegion = 0;
 
 #ifdef VBOX_WITH_CROGL
     mfCrOglDataHidden = false;
