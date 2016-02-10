@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 59575 2016-02-04 13:46:53Z knut.osmundsen@oracle.com $ */
+/* $Id: manifest2.cpp 59620 2016-02-10 00:47:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -526,7 +526,7 @@ static DECLCALLBACK(int) rtManifestEntryCompare(PRTSTRSPACECORE pStr, void *pvUs
     PRTMANIFESTENTRY  pEntry2;
 
     /*
-     * Ignore this entry.
+     * Ignore this entry?
      */
     char const * const *ppsz = pEquals->papszIgnoreEntries;
     if (ppsz)
