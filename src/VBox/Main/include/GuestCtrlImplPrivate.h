@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 56681 2015-06-29 20:01:17Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 59747 2016-02-19 23:18:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -279,7 +279,7 @@ public:
         /* The remainder must be zero padded. */
         if (RT_SUCCESS(rc))
         {
-            if (ASMMemIsAll8(pszzBlock, cbBlock, 0))
+            if (ASMMemIsZero(pszzBlock, cbBlock))
                 return VINF_SUCCESS;
             return VERR_TOO_MUCH_DATA;
         }
