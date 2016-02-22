@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 59737 2016-02-19 11:26:16Z alexander.eichner@oracle.com $ */
+/* $Id: VUSBDevice.cpp 59767 2016-02-22 10:35:42Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1089,7 +1089,8 @@ static DECLCALLBACK(int) vusbDevCancelAllUrbsWorker(PVUSBDEV pDev, bool fDetachi
                 AssertMsgFailed(("pUrb=%p enmState=%d\n", pUrb, pUrb->enmState));
             if (pRipe)
             {
-                if (pRipe == pNext->pUrb)
+                if (   pNext
+                    && pRipe == pNext->pUrb)
                     pNext = RTListGetNext(&pDev->LstAsyncUrbs, pNext, VUSBURBVUSBINT, NdLst);
                 vusbUrbRipe(pRipe);
                 cReaped++;
