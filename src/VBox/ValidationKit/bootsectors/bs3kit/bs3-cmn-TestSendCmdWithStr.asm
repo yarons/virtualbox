@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestSendStrCmd.asm 58675 2015-11-12 15:47:57Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-TestSendCmdWithStr.asm 59863 2016-02-26 20:59:52Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3TestSendStrCmd.
 ;
@@ -31,9 +31,9 @@ BS3_EXTERN_DATA16 g_fbBs3VMMDevTesting
 TMPL_BEGIN_TEXT
 
 ;;
-; @cproto   BS3_DECL(void) bs3TestSendStrCmd_c16(uint32_t uCmd, const char BS3_FAR *pszString);
+; @cproto   BS3_DECL(void) bs3TestSendCmdWithStr_c16(uint32_t uCmd, const char BS3_FAR *pszString);
 ;
-BS3_PROC_BEGIN_CMN bs3TestSendStrCmd
+BS3_PROC_BEGIN_CMN bs3TestSendCmdWithStr
         BS3_CALL_CONV_PROLOG 2
         push    xBP
         mov     xBP, xSP
@@ -47,15 +47,15 @@ BS3_PROC_BEGIN_CMN bs3TestSendStrCmd
 
         ; The command (uCmd).
         mov     dx, VMMDEV_TESTING_IOPORT_CMD
-        mov     eax, [xBP + xCB]
+        mov     eax, [xBP + xCB*2]
         out     dx, eax
 
         ; The string.
         mov     dx, VMMDEV_TESTING_IOPORT_DATA
 %ifdef TMPL_16BIT
-        lds     si, [xBP + xCB + sCB]
+        lds     si, [xBP + xCB*2 + sCB]
 %else
-        mov     xSI, [xBP + xCB + sCB]
+        mov     xSI, [xBP + xCB*2 + sCB]
 %endif
 .next_char:
         lodsb
@@ -71,5 +71,5 @@ BS3_PROC_BEGIN_CMN bs3TestSendStrCmd
         leave
         BS3_CALL_CONV_EPILOG 2
         ret
-BS3_PROC_END_CMN   bs3TestSendStrCmd
+BS3_PROC_END_CMN   bs3TestSendCmdWithStr
 

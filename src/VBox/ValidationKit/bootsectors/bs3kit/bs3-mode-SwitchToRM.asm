@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 59287 2016-01-08 10:08:40Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-SwitchToRM.asm 59863 2016-02-26 20:59:52Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -33,7 +33,7 @@ TMPL_BEGIN_TEXT
 ;;
 ; Switch to real mode from any other mode.
 ;
-; @cproto   BS3_DECL(void) Bs3SwitchToRealMode(void);
+; @cproto   BS3_DECL(void) Bs3SwitchToRM(void);
 ;
 ; @uses     Nothing (except high 32-bit register parts).
 ;
