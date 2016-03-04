@@ -1,6 +1,6 @@
-; $Id: bs3-mode-SwitchToPE16_32.asm 59934 2016-03-04 20:32:23Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-SwitchToPAE16_32.asm 59934 2016-03-04 20:32:23Z knut.osmundsen@oracle.com $
 ;; @file
-; BS3Kit - Bs3SwitchToPE16_32
+; BS3Kit - Bs3SwitchToPAE16_32
 ;
 
 ;
@@ -28,7 +28,7 @@
 
 
 ;;
-; Switch to 32-bit code under 16-bit unpaged protected mode sys/tss from any other mode.
+; Switch to 32-bit code under 16-bit PAE paged protected mode sys/tss from any other mode.
 ;
 ; @cproto   BS3_DECL(void) Bs3SwitchToPE16_32(void);
 ;
@@ -39,13 +39,13 @@
 ;
 ; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
-BS3_PROC_BEGIN_MODE Bs3SwitchToPE16_32
-%ifdef TMPL_PE16_32
+BS3_PROC_BEGIN_MODE Bs3SwitchToPAE16_32
+%ifdef TMPL_PAE16_32
         ret
 
 %else
         ;
-        ; Make sure we're in the 16-bit segment and then call Bs3SwitchToPE16.
+        ; Make sure we're in the 16-bit segment and then call Bs3SwitchToPAE16.
         ;
  %if TMPL_BITS != 16
         jmp     .sixteen_bit_segment
@@ -53,8 +53,8 @@ BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
 .sixteen_bit_segment:
  %endif
-        extern  TMPL_NM(Bs3SwitchToPE16)
-        call    TMPL_NM(Bs3SwitchToPE16)
+        extern  TMPL_NM(Bs3SwitchToPAE16)
+        call    TMPL_NM(Bs3SwitchToPAE16)
         BS3_SET_BITS 16
 
         ;
@@ -73,5 +73,5 @@ BS3_BEGIN_TEXT16
   %endif
  %endif
 %endif
-BS3_PROC_END_MODE   Bs3SwitchToPE16_32
+BS3_PROC_END_MODE   Bs3SwitchToPAE16_32
 

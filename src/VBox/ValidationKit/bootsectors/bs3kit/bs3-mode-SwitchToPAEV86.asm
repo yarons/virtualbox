@@ -1,6 +1,6 @@
-; $Id: bs3-mode-SwitchToPE16_32.asm 59934 2016-03-04 20:32:23Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-SwitchToPAEV86.asm 59934 2016-03-04 20:32:23Z knut.osmundsen@oracle.com $
 ;; @file
-; BS3Kit - Bs3SwitchToPE16_32
+; BS3Kit - Bs3SwitchToPAEV86
 ;
 
 ;
@@ -28,50 +28,46 @@
 
 
 ;;
-; Switch to 32-bit code under 16-bit unpaged protected mode sys/tss from any other mode.
+; Switch to 16-bit v8086 PAE paged protected mode with 32-bit sys+tss from any other mode.
 ;
-; @cproto   BS3_DECL(void) Bs3SwitchToPE16_32(void);
+; @cproto   BS3_DECL(void) Bs3SwitchToPAEV86(void);
 ;
 ; @uses     Nothing (except high 32-bit register parts).
 ;
-; @remarks  Obviously returns to 32-bit mode, even if the caller was
-;           in 16-bit or 64-bit mode.
+; @remarks  Obviously returns to 16-bit v8086 mode, even if the caller was
+;           in 32-bit or 64-bit mode.
 ;
 ; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
-BS3_PROC_BEGIN_MODE Bs3SwitchToPE16_32
-%ifdef TMPL_PE16_32
+BS3_PROC_BEGIN_MODE Bs3SwitchToPAEV86
+%if TMPL_MODE == BS3_MODE_PAEV86
         ret
 
 %else
         ;
-        ; Make sure we're in the 16-bit segment and then call Bs3SwitchToPE16.
+        ; Convert the return address and jump to the 16-bit code segment.
         ;
  %if TMPL_BITS != 16
+        shl     xPRE [xSP], TMPL_BITS - 16
+        add     xSP, (TMPL_BITS - 16) / 8
         jmp     .sixteen_bit_segment
 BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
 .sixteen_bit_segment:
  %endif
-        extern  TMPL_NM(Bs3SwitchToPE16)
-        call    TMPL_NM(Bs3SwitchToPE16)
-        BS3_SET_BITS 16
 
         ;
-        ; Switch to 32-bit mode.
+        ; Switch to 32-bit PAE32 and from there to V8086.
         ;
-        extern  _Bs3SwitchTo32Bit_c16
- %if TMPL_BITS == 16
-        jmp     _Bs3SwitchTo32Bit_c16
- %else
-        call    _Bs3SwitchTo32Bit_c16
+        extern  TMPL_NM(Bs3SwitchToPAE32)
+        call    TMPL_NM(Bs3SwitchToPAE32)
         BS3_SET_BITS 32
-  %if TMPL_BITS == 32
-        ret
-  %else
-        ret     4                       ; Return and pop 4 bytes of "parameters" (unused return address).
-  %endif
- %endif
+
+        ;
+        ; Switch to v8086 mode (return address is already 16-bit).
+        ;
+        extern  _Bs3SwitchToV86_pae32
+        jmp     _Bs3SwitchToV86_pae32
 %endif
-BS3_PROC_END_MODE   Bs3SwitchToPE16_32
+BS3_PROC_END_MODE   Bs3SwitchToPAEV86
 
