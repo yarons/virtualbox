@@ -1,4 +1,4 @@
-; $Id: bs3-mode-CpuDetect.asm 59878 2016-02-29 22:02:23Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-CpuDetect.asm 59938 2016-03-07 08:13:01Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3CpuDetect
 ;
@@ -253,5 +253,5 @@ CPU 8086
         pop     xCX
         pop     xBP
         ret
-BS3_PROC_END_MODE   Bs3EnteredMode
+BS3_PROC_END_MODE   Bs3CpuDetect
 
