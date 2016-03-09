@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapPrintFrame.c 59286 2016-01-08 00:23:32Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapPrintFrame.c 59975 2016-03-09 23:00:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TrapPrintFrame
  */
@@ -37,6 +37,6 @@ BS3_DECL(void) Bs3TrapPrintFrame(PCBS3TRAPFRAME pTrapFrame)
               pTrapFrame->bXcpt,
               pTrapFrame->uErrCd,
               pTrapFrame->Ctx.cs,
-              pTrapFrame->Ctx.rip);
+              pTrapFrame->Ctx.rip.u64);
 }
 
