@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 59987 2016-03-11 12:03:37Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostOSSAudio.cpp 59989 2016-03-11 12:29:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -1066,3 +1066,4 @@ const PDMDRVREG g_DrvHostOSSAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
+
