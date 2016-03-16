@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 60063 2016-03-16 15:00:06Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManage.cpp 60065 2016-03-16 17:51:42Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -678,6 +678,7 @@ int main(int argc, char *argv[])
          * Terminate COM, make sure the virtualBox object has been released.
          */
         virtualBox.setNull();
+        virtualBoxClient.setNull();
         NativeEventQueue::getMainEventQueue()->processEventQueue(0);
         com::Shutdown();
     }
