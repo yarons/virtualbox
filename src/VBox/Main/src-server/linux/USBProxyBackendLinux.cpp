@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 60106 2016-03-18 22:03:05Z alexander.eichner@oracle.com $ */
+/* $Id: USBProxyBackendLinux.cpp 60107 2016-03-19 10:22:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -83,6 +83,8 @@ int USBProxyBackendLinux::init(USBProxyService *pUsbProxyService, const com::Utf
 {
     USBProxyBackend::init(pUsbProxyService, strId, strAddress);
 
+    unconst(m_strBackend) = Utf8Str("host");
+
     const char *pcszDevicesRoot;
     int rc = USBProxyLinuxChooseMethod(&mUsingUsbfsDevices, &pcszDevicesRoot);
     if (RT_SUCCESS(rc))
@@ -117,6 +119,7 @@ void USBProxyBackendLinux::uninit()
 
     USBProxyBackend::uninit();
 }
+
 
 /**
  * Initialization routine for the usbfs based operation.
