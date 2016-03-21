@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 60085 2016-03-17 19:06:05Z noreply@oracle.com $ */
+/* $Id: vbox_drv.h 60123 2016-03-21 14:40:17Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -118,6 +118,9 @@ struct vbox_private {
 
     struct mutex hw_mutex;
     bool isr_installed;
+    /** Have we finished fbdev initialisation?  We limit reported display
+     * modes to 800x600 until this point to get a sensible console size. */
+    bool fbdev_init;
     struct work_struct hotplug_work;
 };
 
