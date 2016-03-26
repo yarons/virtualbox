@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxRestore.asm 60194 2016-03-26 13:17:53Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-RegCtxRestore.asm 60196 2016-03-26 13:21:27Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3RegCtxRestore.
 ;
@@ -191,7 +191,6 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxRestore
         mov     sDX, cr4
         cmp     sAX, sDX
         je      .skip_cr4
-hlt
         mov     cr4, sAX
 .skip_cr4:
 
