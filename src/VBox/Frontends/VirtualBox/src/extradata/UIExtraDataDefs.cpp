@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 58689 2015-11-13 15:19:03Z noreply@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 60260 2016-03-30 12:31:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -27,6 +27,7 @@
 
 /* General: */
 const char* UIExtraDataDefs::GUI_LanguageId = "GUI/LanguageID";
+const char* UIExtraDataDefs::GUI_EventHandlingType = "GUI/EventHandlingType";
 
 /* Messaging: */
 const char* UIExtraDataDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
