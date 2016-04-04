@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60291 2016-04-01 20:51:29Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60311 2016-04-04 17:01:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TrapSetJmpAndRestore
  */
@@ -35,7 +35,7 @@ BS3_DECL(void) Bs3TrapSetJmpAndRestore(PCBS3REGCTX pCtxRestore, PBS3TRAPFRAME pT
     if (Bs3TrapSetJmp(pTrapFrame))
     {
 #if TMPL_BITS == 32
-        BS3_DATA_NM(g_uBs3TrapEipHint) = pCtxRestore->rip.u32;
+        g_uBs3TrapEipHint = pCtxRestore->rip.u32;
 #endif
         Bs3RegCtxRestore(pCtxRestore, 0);
     }

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSubErrorCount.c 59865 2016-02-29 10:27:24Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TestSubErrorCount.c 60311 2016-04-04 17:01:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TestSubErrorCount.
  */
@@ -38,6 +38,6 @@
  */
 BS3_DECL(uint16_t) Bs3TestSubErrorCount(void)
 {
-    return BS3_DATA_NM(g_cusBs3TestErrors) - BS3_DATA_NM(g_cusBs3SubTestAtErrors);
+    return g_cusBs3TestErrors - g_cusBs3SubTestAtErrors;
 }
 
