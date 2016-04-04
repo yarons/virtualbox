@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-c.c 60302 2016-04-04 11:39:14Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2-c.c 60319 2016-04-04 22:02:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <bs3kit.h>
+#include <iprt/asm-amd64-x86.h>
 
 
 /*********************************************************************************************************************************
@@ -56,7 +57,7 @@ BS3_DECL(void) Main_rm()
 {
     Bs3InitAll_rm();
     Bs3TestInit("bs3-cpu-basic-2");
-Bs3TestPrintf("g_uBs3CpuDetected=%#x\n", g_uBs3CpuDetected);
+    Bs3TestPrintf("g_uBs3CpuDetected=%#x\n", g_uBs3CpuDetected);
 
     Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
 
