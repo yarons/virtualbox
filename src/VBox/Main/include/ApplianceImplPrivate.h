@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 60334 2016-04-05 13:55:31Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplPrivate.h 60337 2016-04-05 14:46:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -23,6 +23,7 @@ class VirtualSystemDescription;
 #include "ovfreader.h"
 #include "SecretKeyStore.h"
 #include "ThreadTask.h"
+#include "CertificateImpl.h"
 #include <map>
 #include <vector>
 #include <iprt/manifest.h>
