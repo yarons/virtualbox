@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VSCSIDevice.cpp 60348 2016-04-06 09:35:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -343,9 +343,7 @@ VBOXDDU_DECL(int) VSCSIDeviceReqCreate(VSCSIDEVICE hVScsiDevice, PVSCSIREQ phVSc
     pVScsiReq->pbSense        = pbSense;
     pVScsiReq->cbSense        = cbSense;
     pVScsiReq->pvVScsiReqUser = pvVScsiReqUser;
-
-    if (cSGListEntries)
-        RTSgBufInit(&pVScsiReq->SgBuf, paSGList, cSGListEntries);
+    RTSgBufInit(&pVScsiReq->SgBuf, paSGList, cSGListEntries);
 
     *phVScsiReq = pVScsiReq;
 
