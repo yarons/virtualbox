@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.h 52727 2014-09-12 14:09:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxIChatTheaterWrapper.h 60362 2016-04-06 14:29:17Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - iChat Theater cocoa wrapper.
  */
@@ -18,7 +18,7 @@
 #ifndef ___VBoxIChatTheaterWrapper_h
 #define ___VBoxIChatTheaterWrapper_h
 
-#if defined (Q_WS_MAC) && defined (VBOX_WITH_ICHAT_THEATER)
+#if defined (VBOX_WS_MAC) && defined (VBOX_WITH_ICHAT_THEATER)
 
 # include <ApplicationServices/ApplicationServices.h>
 
