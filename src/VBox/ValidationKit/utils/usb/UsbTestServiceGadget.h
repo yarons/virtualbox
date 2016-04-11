@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.h 60324 2016-04-05 08:33:05Z alexander.eichner@oracle.com $ */
+/* $Id: UsbTestServiceGadget.h 60417 2016-04-11 10:37:04Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
@@ -75,6 +75,7 @@ typedef enum UTSGADGETCFGTYPE
     UTSGADGETCFGTYPE_INT32,
     /** Signed 64bit integer. */
     UTSGADGETCFGTYPE_INT64,
+    /** 32bit hack. */
     UTSGADGETCFGTYPE_32BIT_HACK = 0x7fffffff
 } UTSGADGETCFGTYPE;
 
