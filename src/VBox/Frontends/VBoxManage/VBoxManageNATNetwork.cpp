@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 60501 2016-04-14 16:17:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageNATNetwork.cpp 60507 2016-04-14 17:23:48Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -114,7 +114,7 @@ static HRESULT printNATNetwork(const ComPtr<INATNetwork> &pNATNet)
     return rc;
 }
 
-static RTEXITCODE handleList(HandlerArg *a)
+RTEXITCODE handleList(HandlerArg *a)
 {
     HRESULT rc;
 
