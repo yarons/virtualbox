@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap32SetGate.c 60311 2016-04-04 17:01:14Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-Trap32SetGate.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3Trap32SetGate
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3Trap32SetGate(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint32_t off, uint8_t cParams)
+#undef Bs3Trap32SetGate
+BS3_CMN_DEF(void, Bs3Trap32SetGate,(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint32_t off, uint8_t cParams))
 {
     X86DESC BS3_FAR *pIdte = &Bs3Idt32[iIdt];
 

@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-TestSubErrorCount.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapRmV86SetGate.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3TestSubErrorCount.
+ * BS3Kit - Bs3TrapRmV86SetGate
  */
 
 /*
@@ -24,21 +24,17 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
 
 
-
-/**
- * Equivalent to RTTestSubErrorCount.
- */
-#undef Bs3TestSubErrorCount
-BS3_CMN_DEF(uint16_t, Bs3TestSubErrorCount,(void))
+#undef Bs3TrapRmV86SetGate
+BS3_CMN_DEF(void, Bs3TrapRmV86SetGate,(uint8_t iIvt, uint16_t uSeg, uint16_t off))
 {
-    return g_cusBs3TestErrors - g_cusBs3SubTestAtErrors;
+    RTFAR16 BS3_FAR *paIvt = Bs3XptrFlatToCurrent(0);
+    paIvt[iIvt].off = off;
+    paIvt[iIvt].sel = uSeg;
 }
 

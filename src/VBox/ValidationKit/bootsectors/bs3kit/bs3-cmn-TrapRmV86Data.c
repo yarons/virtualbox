@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-TestSubErrorCount.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapRmV86Data.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3TestSubErrorCount.
+ * BS3Kit - Real mode and V86 trap data.
  */
 
 /*
@@ -24,21 +24,19 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
 
 
-
-/**
- * Equivalent to RTTestSubErrorCount.
- */
-#undef Bs3TestSubErrorCount
-BS3_CMN_DEF(uint16_t, Bs3TestSubErrorCount,(void))
-{
-    return g_cusBs3TestErrors - g_cusBs3SubTestAtErrors;
-}
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
+#if ARCH_BITS == 16
+/** Copy of the original real-mode interrupt vector table. */
+RTFAR16 g_aBs3RmIvtOriginal[256];
+/** Indicates whether we've copied the real-mode IVT or not. */
+bool    g_fBs3RmIvtCopied = false;
+#endif
 

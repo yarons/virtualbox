@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabListFree.c 58789 2015-11-20 03:38:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SlabListFree.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3SlabListFree
  */
@@ -27,7 +27,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3SlabListFree(PBS3SLABHEAD pHead, void BS3_FAR *pvChunks, uint16_t cChunks)
+#undef Bs3SlabListFree
+BS3_CMN_DEF(void, Bs3SlabListFree,(PBS3SLABHEAD pHead, void BS3_FAR *pvChunks, uint16_t cChunks))
 {
     BS3_ASSERT(cChunks > 0);
     if (cChunks > 0)
