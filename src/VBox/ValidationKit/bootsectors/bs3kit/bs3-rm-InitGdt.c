@@ -1,6 +1,6 @@
-/* $Id: bs3-cpu-basic-2-c.c 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-rm-InitGdt.c 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
+ * BS3Kit - Bs3InitGdt
  */
 
 /*
@@ -24,46 +24,31 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <bs3kit.h>
-#include <iprt/asm-amd64-x86.h>
+#define BS3_USE_RM_TEXT_SEG 1
+#include "bs3kit-template-header.h"
+#include <iprt/asm.h>
 
-
-/*********************************************************************************************************************************
-*   Internal Functions                                                                                                           *
-*********************************************************************************************************************************/
-BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_TssGateEsp);
-BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_RaiseXcpt1);
-//BS3TESTMODE_PROTOTYPES_CMN(bs3CpuBasic2_iret);
-BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_iret);
-BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_sidt);
+#ifdef __WATCOMC__
+# pragma code_seg("BS3RMTEXT16", "BS3CLASS16RMCODE")
+#endif
 
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-static const BS3TESTMODEENTRY g_aModeTest[] =
+
+
+BS3_DECL_FAR(void) Bs3InitGdt_rm(void)
 {
-    //BS3TESTMODEENTRY_MODE("tss / gate / esp", bs3CpuBasic2_TssGateEsp),
-    BS3TESTMODEENTRY_MODE("raise xcpt #1", bs3CpuBasic2_RaiseXcpt1),
-    //BS3TESTMODEENTRY_CMN("iret", bs3CpuBasic2_iret),
-    BS3TESTMODEENTRY_MODE("iret", bs3CpuBasic2_iret),
-//    BS3TESTMODEENTRY_MODE("sidt", bs3CpuBasic2_sidt),
-};
-
-
-BS3_DECL(void) Main_rm()
-{
-    Bs3InitAll_rm();
-    Bs3TestInit("bs3-cpu-basic-2");
-    Bs3TestPrintf("g_uBs3CpuDetected=%#x\n", g_uBs3CpuDetected);
-
-    Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
-
-    Bs3TestTerm();
-for (;;) { }
+    Bs3Gdte_X0TEXT16_CS.Gen.u16LimitLow = Bs3X0Text16_Size - 1;
+    Bs3Gdte_X1TEXT16_CS.Gen.u16LimitLow = Bs3X0Text16_Size - 1;
+    Bs3Gdte_X0TEXT16_CS.Gen.u16BaseLow  = (uint16_t)Bs3X0Text16_FlatAddr;
+    Bs3Gdte_X1TEXT16_CS.Gen.u16BaseLow  = (uint16_t)Bs3X1Text16_FlatAddr;
+    Bs3Gdte_X0TEXT16_CS.Gen.u8BaseHigh1 = (uint8_t)(Bs3X0Text16_FlatAddr >> 16);
+    Bs3Gdte_X1TEXT16_CS.Gen.u8BaseHigh1 = (uint8_t)(Bs3X1Text16_FlatAddr >> 16);
 }
+
 

@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 60527 2016-04-18 09:11:04Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-rm-InitAll.c 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -42,6 +42,7 @@ BS3_DECL(void) Bs3InitAll_rm(void)
 {
     Bs3CpuDetect_rm();
     Bs3InitMemory_rm();
+    Bs3InitGdt_rm();
 
     ASMIntDisable();
     Bs3PicMaskAll();

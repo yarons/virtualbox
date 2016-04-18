@@ -1,4 +1,4 @@
-; $Id: bs3-first-pe16.asm 59932 2016-03-04 16:01:18Z knut.osmundsen@oracle.com $
+; $Id: bs3-first-pe16.asm 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
@@ -28,7 +28,6 @@
 ;*********************************************************************************************************************************
 ;*  Header Files                                                                                                                 *
 ;*********************************************************************************************************************************
-%include "bs3kit.mac"
 
 ;
 ; Segment defs, grouping and related variables.
