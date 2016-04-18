@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 57714 2015-09-11 11:51:35Z noreply@oracle.com $ */
+/* $Id: UIMessageCenter.h 60547 2016-04-18 17:12:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -159,6 +159,7 @@ public:
     void cannotInitUserHome(const QString &strUserHome) const;
     void cannotInitCOM(HRESULT rc) const;
     void cannotCreateVirtualBoxClient(const CVirtualBoxClient &client) const;
+    void cannotAcquireVirtualBox(const CVirtualBoxClient &client) const;
 
     /* API: Global warnings: */
     void cannotFindLanguage(const QString &strLangId, const QString &strNlsPath) const;
