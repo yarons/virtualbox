@@ -1,4 +1,4 @@
-# $Id: Makefile 55095 2015-04-02 16:52:46Z alexander.eichner@oracle.com $
+# $Id: Makefile 60603 2016-04-20 14:32:19Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -148,6 +148,7 @@ SRCS += \
 .PATH:	${.CURDIR}/r0drv
 SRCS += \
 	alloc-r0drv.c \
+	alloc-ef-r0drv.c \
 	initterm-r0drv.c \
 	memobj-r0drv.c \
 	powernotification-r0drv.c
