@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-c.c 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 60609 2016-04-20 17:21:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
