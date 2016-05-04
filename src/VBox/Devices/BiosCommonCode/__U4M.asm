@@ -1,4 +1,4 @@
-; $Id: __U4M.asm 60484 2016-04-14 09:25:51Z knut.osmundsen@oracle.com $
+; $Id: __U4M.asm 60841 2016-05-04 19:51:26Z michal.necasek@oracle.com $
 ;; @file
 ; Compiler support routines.
 ;
@@ -62,8 +62,6 @@ if VBOX_BIOS_CPU ge 80386
                 .8086
 
 else
-                push    bp
-                mov     bp, sp
                 push    si              ; high result
                 push    di              ; low result
 
