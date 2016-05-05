@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 60849 2016-05-05 15:34:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMInternal.h 60854 2016-05-05 18:18:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -417,7 +417,7 @@ typedef struct IOMCPU
         /** Guest physical MMIO address. */
         RTGCPHYS                        GCPhys;
         /** The value to write. */
-        uint8_t                         abValue[16];
+        uint8_t                         abValue[24];
         /** The number of bytes to write (0 if nothing pending). */
         uint32_t                        cbValue;
         /** Alignment padding. */
