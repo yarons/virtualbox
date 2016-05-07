@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 60032 2016-03-15 11:08:38Z alexander.eichner@oracle.com $ */
+/* $Id: VD.cpp 60873 2016-05-07 17:53:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3750,7 +3750,8 @@ static int vdPluginLoadFromPath(const char *pszPath)
         goto out;
     }
 
-    while ((rc = RTDirReadEx(pPluginDir, pPluginDirEntry, &cbPluginDirEntry, RTFSOBJATTRADD_NOTHING, RTPATH_F_ON_LINK)) != VERR_NO_MORE_FILES)
+    while (   (rc = RTDirReadEx(pPluginDir, pPluginDirEntry, &cbPluginDirEntry, RTFSOBJATTRADD_NOTHING, RTPATH_F_ON_LINK))
+           != VERR_NO_MORE_FILES)
     {
         char *pszPluginPath = NULL;
 
