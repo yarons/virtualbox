@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60885 2016-05-09 09:16:02Z alexander.eichner@oracle.com $
+# $Id: tdUsb1.py 60886 2016-05-09 09:26:42Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60885 $"
+__version__ = "$Revision: 60886 $"
 
 
 # Standard Python imports.
@@ -358,6 +358,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         else:
             reporter.testFailure('Failed to connect to USB gadget');
 
+        _ = sUsbCtrl;
         return fRc;
 
     def testUsbReattach(self, oSession, oTxsSession, sUsbCtrl, sSpeed): # pylint: disable=W0613
