@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 60839 2016-05-04 15:52:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.h 60932 2016-05-10 16:34:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -63,6 +63,9 @@ private slots:
     void sltRamEditorValueChanged();
     void sltVirtualDiskSourceChanged();
     void sltGetWithFileOpenDialog();
+
+    /** Adjusts tool-tip according to @a strNewName. */
+    void sltAdjustToolTip(const QString &strNewName);
 
 private:
 
