@@ -1,4 +1,4 @@
-/* $Id: udp.c 60142 2016-03-22 21:44:59Z noreply@oracle.com $ */
+/* $Id: udp.c 61198 2016-05-25 16:55:32Z noreply@oracle.com $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -63,7 +63,6 @@
 
 #include <slirp.h>
 #include "ip_icmp.h"
-#include "ctl.h"
 
 
 /*
