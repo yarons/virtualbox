@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 61211 2016-05-26 14:12:15Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 61212 2016-05-26 14:14:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -790,18 +790,20 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
                 Log(("pgmPoolMonitorIsReused: OP_STOSQ\n"));
                 return true;
             }
-            return false;
-    }
+            break;
 
-    /*
-     * Anything having ESP on the left side means stack writes.
-     */
-    if (    (    (pDis->Param1.fUse & DISUSE_REG_GEN32)
-             ||  (pDis->Param1.fUse & DISUSE_REG_GEN64))
-        &&  (pDis->Param1.Base.idxGenReg == DISGREG_ESP))
-    {
-        Log4(("pgmPoolMonitorIsReused: ESP\n"));
-        return true;
+        default:
+            /*
+             * Anything having ESP on the left side means stack writes.
+             */
+            if (    (    (pDis->Param1.fUse & DISUSE_REG_GEN32)
+                     ||  (pDis->Param1.fUse & DISUSE_REG_GEN64))
+                &&  (pDis->Param1.Base.idxGenReg == DISGREG_ESP))
+            {
+                Log4(("pgmPoolMonitorIsReused: ESP\n"));
+                return true;
+            }
+            break;
     }
 
     /*
