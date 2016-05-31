@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 61167 2016-05-24 15:48:51Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostALSAAudio.cpp 61320 2016-05-31 08:43:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1432,6 +1432,17 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostALSAAudioStreamGetStatus(PPDMIHOSTAU
     NOREF(pStream);
 
     return (PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED);
+}
+
+static DECLCALLBACK(int) drvHostALSAAudioStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
+{
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
+
+    /* Nothing to do here for ALSA. */
+    return VINF_SUCCESS;
 }
 
 /**
