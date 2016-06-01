@@ -1,11 +1,11 @@
-/* $Id: AudioAdapterImpl.cpp 61216 2016-05-26 18:51:17Z noreply@oracle.com $ */
+/* $Id: AudioAdapterImpl.cpp 61380 2016-06-01 17:19:30Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
