@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 61544 2016-06-07 14:42:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMAllKvm.cpp 61545 2016-06-07 14:55:19Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -478,7 +478,6 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTAT
     if (RT_UNLIKELY(!pKvm->fTrapXcptUD))
         return VERR_GIM_IPE_3;
 
-    VBOXSTRICTRC rcStrict = VINF_SUCCESS;
     if (!pDis)
     {
         unsigned    cbInstr;
