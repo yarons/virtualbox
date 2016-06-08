@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 61560 2016-06-08 08:33:31Z vitali.pelenjow@oracle.com $ */
+/* $Id: DisplayImpl.cpp 61564 2016-06-08 09:16:07Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2803,9 +2803,9 @@ HRESULT Display::querySourceBitmap(ULONG aScreenId,
     return hr;
 }
 
-HRESULT Display::queryScreenLayout(std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo)
+HRESULT Display::getGuestScreenLayout(std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenLayout)
 {
-    NOREF(aGuestScreenInfo);
+    NOREF(aGuestScreenLayout);
     return E_NOTIMPL;
 }
 
