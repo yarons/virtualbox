@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61581 2016-06-08 14:35:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAll.cpp 61582 2016-06-08 14:36:54Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2318,7 +2318,7 @@ VMMDECL(VBOXSTRICTRC) APICLocalInterrupt(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint8
 #endif
                     if (!fActive)
                     {
-                        ASMAtomicWriteBool(pfActiveLine, false);
+                        ASMAtomicCmpXchgBool(pfActiveLine, false, true);
                         break;
                     }
 
