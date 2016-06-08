@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 61571 2016-06-08 11:40:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructions.cpp.h 61590 2016-06-08 19:34:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1796,7 +1796,7 @@ FNIEMOP_STUB(iemOp_cvtpi2ps_Vps_Qpi__cvtpi2pd_Vpd_Qpi__cvtsi2ss_Vss_Ey__cvtsi2sd
 
 
 /** Opcode 0x0f 0x2b. */
-#ifndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
+#if 1 //ndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
 FNIEMOP_DEF(iemOp_movntps_Mps_Vps__movntpd_Mpd_Vpd)
 {
     IEMOP_MNEMONIC(!(pIemCpu->fPrefixes & IEM_OP_PRF_SIZE_OP) ? "movntps mr,r" : "movntpd mr,r");
