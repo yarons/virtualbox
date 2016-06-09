@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 60020 2016-03-14 12:41:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 61620 2016-06-09 11:36:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -459,6 +459,7 @@ DWORD VBoxDisplayGetConfig(const DWORD NumDevices, DWORD *pDevPrimaryNum, DWORD 
     }
 
     *pNumDevices = DevNum;
+    *pDevPrimaryNum = DevPrimaryNum;
 
     return NO_ERROR;
 }
