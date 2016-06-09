@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 61442 2016-06-03 13:13:15Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 61600 2016-06-09 07:02:13Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3342,6 +3342,7 @@ void UIMachineSettingsStorage::onMouseClicked (QMouseEvent *aEvent)
 
 void UIMachineSettingsStorage::addControllerWrapper (const QString &aName, KStorageBus aBus, KStorageControllerType aType)
 {
+#ifdef RT_STRICT
     QModelIndex index = mTwStorageTree->currentIndex();
     switch (aBus)
     {
@@ -3369,6 +3370,7 @@ void UIMachineSettingsStorage::addControllerWrapper (const QString &aName, KStor
         default:
             break;
     }
+#endif
 
     mStorageModel->addController (aName, aBus, aType);
     emit storageChanged();
