@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 58564 2015-11-04 13:53:54Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMMinimal.cpp 61632 2016-06-09 18:06:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -20,17 +20,17 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
+#include <VBox/vmm/gim.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/tm.h>
+#include <VBox/vmm/pdmapi.h>
 #include "GIMInternal.h"
+#include <VBox/vmm/vm.h>
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
-
-#include <VBox/vmm/cpum.h>
-#include <VBox/vmm/vm.h>
-#include <VBox/vmm/tm.h>
-#include <VBox/vmm/pdmapi.h>
 
 
 /*********************************************************************************************************************************
