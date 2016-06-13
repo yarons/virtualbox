@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 61675 2016-06-13 12:39:34Z noreply@oracle.com $ */
+/* $Id: DrvACPI.cpp 61676 2016-06-13 12:40:45Z noreply@oracle.com $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -643,7 +643,9 @@ static DECLCALLBACK(int) drvACPIPoller(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
                                     }
                                     RTStrmClose(pStrmStatus);
                                 }
-                                rc = POWER_OPEN(&pStrmStatus, "current_now");
+                                rc = POWER_OPEN(&pStrmStatus, "power_now");
+                                if (RT_FAILURE(rc))
+                                    rc = POWER_OPEN(&pStrmStatus, "current_now");
                                 if (RT_SUCCESS(rc))
                                 {
                                     rc = RTStrmGetLine(pStrmStatus, szLine, sizeof(szLine));
