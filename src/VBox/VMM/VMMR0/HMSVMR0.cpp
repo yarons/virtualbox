@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61666 2016-06-10 16:58:56Z michal.necasek@oracle.com $ */
+/* $Id: HMSVMR0.cpp 61683 2016-06-13 15:11:12Z michal.necasek@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4676,7 +4676,8 @@ HMSVM_EXIT_DECL hmR0SvmExitMsr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTr
             if (RT_LIKELY(rc == VINF_SUCCESS))
                 HMSVM_CHECK_SINGLE_STEP(pVCpu, rc);     /* RIP updated by EMInterpretInstruction(). */
             else
-                AssertMsg(rc == VERR_EM_INTERPRETER, ("hmR0SvmExitMsr: WrMsr. EMInterpretInstruction failed rc=%Rrc\n", rc));
+                AssertMsg(   rc == VERR_EM_INTERPRETER
+                          || rc == VINF_CPUM_R3_MSR_WRITE, ("hmR0SvmExitMsr: WrMsr. EMInterpretInstruction failed rc=%Rrc\n", rc));
         }
 
         if (rc == VINF_SUCCESS)
