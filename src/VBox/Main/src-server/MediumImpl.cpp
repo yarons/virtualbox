@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 61790 2016-06-21 13:19:35Z valery.portnyagin@oracle.com $ */
+/* $Id: MediumImpl.cpp 61863 2016-06-23 17:03:24Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5356,7 +5356,7 @@ HRESULT Medium::i_queryPreferredMergeDirection(const ComObjPtr<Medium> &pOther,
                  * media are used by a running VM.
                  */
                 bool fMergeIntoThis = cbMediumThis > cbMediumOther;
-                fMergeForward = fMergeIntoThis ^ fThisParent;
+                fMergeForward = fMergeIntoThis != fThisParent;
             }
         }
     }
