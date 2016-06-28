@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 61911 2016-06-28 09:27:16Z andreas.loeffler@oracle.com $ */
+/* $Id: StorageControllerImpl.cpp 61917 2016-06-28 14:29:34Z noreply@oracle.com $ */
 
 /** @file
  *
@@ -36,9 +36,6 @@
 
 // defines
 /////////////////////////////////////////////////////////////////////////////
-//
-//
-DEFINE_EMPTY_CTOR_DTOR(StorageController)
 
 struct StorageController::Data
 {
@@ -62,6 +59,8 @@ struct StorageController::Data
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
+
+DEFINE_EMPTY_CTOR_DTOR(StorageController)
 
 HRESULT StorageController::FinalConstruct()
 {
