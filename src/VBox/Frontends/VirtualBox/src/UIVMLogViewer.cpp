@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 61961 2016-06-30 15:56:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: UIVMLogViewer.cpp 61962 2016-06-30 15:57:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -25,7 +25,7 @@
 # include <QDateTime>
 # include <QDir>
 # include <QFileDialog>
-#if defined(RT_OS_SOLARIS)
+# if defined(RT_OS_SOLARIS)
 #  include <QFontDatabase>
 # endif
 # include <QKeyEvent>
