@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 61943 2016-06-30 02:18:11Z noreply@oracle.com $ */
+/* $Id: VBoxDispIf.cpp 61944 2016-06-30 02:34:49Z noreply@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -923,7 +923,6 @@ static LRESULT CALLBACK vboxRrWndProc(HWND hwnd,
     LPARAM lParam
 )
 {
-    /* TODO: AM need to check that the thread retrieves these events */
     switch(uMsg)
     {
         case WM_DISPLAYCHANGE:
