@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 62016 2016-07-04 21:46:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 62017 2016-07-04 23:11:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -454,7 +454,7 @@ typedef struct IEMCPU
     /** The opcode bytes. */
     uint8_t                 abOpcode[15];
     /** Explicit alignment padding. */
-    uint8_t                 abAlignment2[HC_ARCH_BITS == 64 ? 5 : 1];
+    uint8_t                 abAlignment2[HC_ARCH_BITS == 64 ? 5 : 5];
     /** @} */
 
     /** The flags of the current exception / interrupt. */
