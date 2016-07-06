@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.h 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
+/* $Id: QIArrowSplitter.h 62038 2016-07-06 09:29:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIArrowSplitter class declaration.
  */
@@ -81,8 +81,7 @@ private:
     /** Prepare routine. */
     void prepare();
 
-    /** Retranslation routine.
-      * @todo Fix translation context. */
+    /** Retranslation routine. */
     void retranslateUi();
 
     /** Updates details. */
