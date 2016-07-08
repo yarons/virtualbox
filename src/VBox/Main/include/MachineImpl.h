@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 62014 2016-07-04 16:18:43Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.h 62141 2016-07-08 15:25:44Z noreply@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -798,6 +798,7 @@ protected:
               m_strTaskName(t),
               m_machineStateBackup(m->mData->mMachineState) // save the current machine state
         {}
+        virtual ~Task(){}
 
         HRESULT createThread()
         {
