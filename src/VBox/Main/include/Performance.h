@@ -1,4 +1,4 @@
-/* $Id: Performance.h 56587 2015-06-22 19:31:59Z klaus.espenlaub@oracle.com $ */
+/* $Id: Performance.h 62157 2016-07-11 11:59:22Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -813,6 +813,7 @@ namespace pm
     public:
         virtual ULONG compute(ULONG *data, ULONG length) = 0;
         virtual const char *getName() = 0;
+        virtual ~Aggregate() {}
     };
 
     class AggregateAvg : public Aggregate
