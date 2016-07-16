@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: MMPagePool.cpp 62291 2016-07-16 13:37:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -28,7 +28,6 @@
 #include <VBox/param.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
-#include "internal/pgm.h"
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #define USE_INLINE_ASM_BIT_OPS
