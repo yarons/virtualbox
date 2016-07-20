@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 62370 2016-07-20 17:12:05Z noreply@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 62372 2016-07-20 17:25:41Z noreply@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -86,7 +86,6 @@ public:
     void handler()
     {
         int vrc = GuestDnDSource::i_receiveDataThread(*m_pThread, this);
-        NOREF(vrc);
     }
 
     virtual ~RecvDataTask(void) { }

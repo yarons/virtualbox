@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 62370 2016-07-20 17:12:05Z noreply@oracle.com $ */
+/* $Id: VMMDevInterface.cpp 62372 2016-07-20 17:25:41Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -534,6 +534,7 @@ DECLCALLBACK(int) vmmdevIsPageFusionEnabled(PPDMIVMMDEVCONNECTOR pInterface, boo
 {
     PDRVMAINVMMDEV pDrv = RT_FROM_MEMBER(pInterface, DRVMAINVMMDEV, Connector);
     Console *pConsole = pDrv->pVMMDev->getParent();
+    BOOL           val = 0;
 
     if (!pfPageFusionEnabled)
         return VERR_INVALID_POINTER;
