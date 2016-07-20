@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 62354 2016-07-20 12:19:28Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMHvInternal.h 62357 2016-07-20 13:03:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1121,6 +1121,8 @@ typedef struct GIMHVCPU
     uint64_t                    uSimpMsr;
     /** Interrupt source 2 MSR. */
     uint64_t                    uSint2Msr;
+    /** APIC-assist page MSR. */
+    uint64_t                    uApicAssistPageMsr;
     /** @} */
 } GIMHVCPU;
 /** Pointer to per-VCPU GIM Hyper-V instance data. */
