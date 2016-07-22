@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 62097 2016-07-07 09:08:21Z noreply@oracle.com $ */
+/* $Id: VBoxServiceStats.cpp 62470 2016-07-22 18:02:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -23,6 +23,7 @@
  * See IPerformanceCollector, CollectorGuest and the "Guest/" submetrics that
  * gets registered by Machine::i_registerMetrics in Main.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
