@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 56296 2015-06-09 14:30:56Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugIns.h 62480 2016-07-22 18:29:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
