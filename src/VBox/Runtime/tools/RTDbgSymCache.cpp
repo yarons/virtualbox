@@ -1,10 +1,10 @@
-/* $Id: RTDbgSymCache.cpp 56978 2015-07-18 18:55:25Z knut.osmundsen@oracle.com $ */
+/* $Id: RTDbgSymCache.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Symbol Cache Utility.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

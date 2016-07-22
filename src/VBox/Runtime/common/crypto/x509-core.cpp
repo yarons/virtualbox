@@ -1,10 +1,10 @@
-/* $Id: x509-core.cpp 60245 2016-03-29 14:43:16Z knut.osmundsen@oracle.com $ */
+/* $Id: x509-core.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

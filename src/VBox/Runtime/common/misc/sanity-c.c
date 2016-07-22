@@ -1,10 +1,10 @@
-/* $Id: sanity-c.c 56290 2015-06-09 14:01:31Z knut.osmundsen@oracle.com $ */
+/* $Id: sanity-c.c 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Setup Sanity Checks, C.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
