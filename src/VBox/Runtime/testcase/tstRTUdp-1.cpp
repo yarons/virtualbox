@@ -1,4 +1,4 @@
-/* $Id: tstRTUdp-1.cpp 57970 2015-09-30 14:56:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstRTUdp-1.cpp 62461 2016-07-22 16:21:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT testcase - UDP.
  */
@@ -33,6 +33,7 @@
 /* Server address must be "localhost" */
 #define RT_TEST_UDP_LOCAL_HOST         "localhost"
 #define RT_TEST_UDP_SERVER_PORT        52000
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
