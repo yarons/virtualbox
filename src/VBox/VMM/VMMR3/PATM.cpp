@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 62291 2016-07-16 13:37:33Z knut.osmundsen@oracle.com $ */
+/* $Id: PATM.cpp 62460 2016-07-22 16:20:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -29,6 +29,7 @@
  *
  * @sa @ref grp_patm
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62384 2016-07-20 21:30:47Z noreply@oracle.com $
+# $Id: Makefile.kmk 62460 2016-07-22 16:20:18Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -562,7 +562,7 @@ if defined(VBOX_WITH_RAW_MODE) && !defined(VBOX_ONLY_EXTPACKS)
  ifdef VBOX_WITH_NEW_APIC
   VMMRC_SOURCES += \
   	VMMAll/APICAll.cpp
- endif 
+ endif
  ifdef VBOX_WITH_REM
   VMMRC_SOURCES += \
   	VMMAll/REMAll.cpp

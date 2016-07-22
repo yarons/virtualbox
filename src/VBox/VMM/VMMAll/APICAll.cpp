@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 62309 2016-07-19 09:15:58Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APICAll.cpp 62460 2016-07-22 16:20:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -24,6 +24,7 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmcpuset.h>
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
