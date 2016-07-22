@@ -1,4 +1,4 @@
-/* $Id: RTPathExt.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathExt.cpp 62448 2016-07-22 14:51:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathExt
  */
@@ -64,7 +64,6 @@ RTDECL(char *) RTPathSuffix(const char *pszPath)
         }
     }
 
-    /* will never get here */
-    return NULL;
+    /* not reached */
 }
 
