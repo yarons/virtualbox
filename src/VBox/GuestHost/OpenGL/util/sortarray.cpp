@@ -1,11 +1,11 @@
-/* $Id: sortarray.cpp 52136 2014-07-22 19:36:45Z noreply@oracle.com $ */
+/* $Id: sortarray.cpp 62492 2016-07-22 18:42:47Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * Sorted array impl
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
