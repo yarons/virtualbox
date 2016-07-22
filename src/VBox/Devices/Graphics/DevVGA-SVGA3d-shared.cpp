@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 57517 2015-08-24 22:53:20Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 62514 2016-07-22 19:13:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
