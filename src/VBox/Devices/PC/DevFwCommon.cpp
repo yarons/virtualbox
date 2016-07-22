@@ -1,10 +1,10 @@
-/* $Id: DevFwCommon.cpp 59281 2016-01-07 19:22:50Z michal.necasek@oracle.com $ */
+/* $Id: DevFwCommon.cpp 62509 2016-07-22 19:12:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
