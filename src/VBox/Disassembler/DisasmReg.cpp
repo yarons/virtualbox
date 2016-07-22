@@ -1,10 +1,10 @@
-/* $Id: DisasmReg.cpp 61136 2016-05-23 15:19:35Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmReg.cpp 62479 2016-07-22 18:29:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
