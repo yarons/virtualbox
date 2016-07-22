@@ -1,10 +1,10 @@
-; $Id: deps.asm 41725 2012-06-14 20:15:48Z noreply@oracle.com $
+; $Id: deps.asm 62529 2016-07-22 19:19:25Z knut.osmundsen@oracle.com $
 ;; @file
 ; Solaris kernel module dependency
 ;
 
 ;
-; Copyright (C) 2012 Oracle Corporation
+; Copyright (C) 2012-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
