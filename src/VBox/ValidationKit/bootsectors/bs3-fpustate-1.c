@@ -1,4 +1,4 @@
-/* $Id: bs3-fpustate-1.c 61385 2016-06-01 18:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-fpustate-1.c 62471 2016-07-22 18:04:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-fpustate-1, 16-bit C code.
  */
@@ -81,6 +81,4 @@ BS3_DECL(void) Main_rm()
 
     Bs3TestTerm();
 }
-
-
 

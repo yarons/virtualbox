@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 61962 2016-06-30 15:57:09Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: UIVMLogViewer.cpp 62471 2016-07-22 18:04:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -1107,7 +1107,7 @@ void UIVMLogViewer::showEvent(QShowEvent *pEvent)
     /* Make sure the log view widget has the focus: */
     QWidget *pCurrentLogPage = currentLogPage();
     if (pCurrentLogPage)
-        pCurrentLogPage->setFocus(); 
+        pCurrentLogPage->setFocus();
 }
 
 void UIVMLogViewer::keyPressEvent(QKeyEvent *pEvent)

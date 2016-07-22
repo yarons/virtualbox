@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxSetGrpSegFromCurPtr.c 60676 2016-04-24 11:04:57Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-RegCtxSetGrpSegFromCurPtr.c 62471 2016-07-22 18:04:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3RegCtxSetGrpSegFromCurPtr, Bs3RegCtxSetGrpDsFromCurPtr
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
