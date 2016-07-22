@@ -1,10 +1,10 @@
-/* $Id: vbsfpath.cpp 57849 2015-09-22 08:39:31Z vitali.pelenjow@oracle.com $ */
+/* $Id: vbsfpath.cpp 62489 2016-07-22 18:41:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
