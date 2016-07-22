@@ -1,9 +1,9 @@
-/* $Id: vboxsharedrc.h 46521 2013-06-13 10:44:58Z noreply@oracle.com $ */
+/* $Id: vboxsharedrc.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox extension to Wine D3D - shared resource
  *
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

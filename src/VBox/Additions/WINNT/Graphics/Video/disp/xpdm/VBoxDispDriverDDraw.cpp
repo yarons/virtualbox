@@ -1,11 +1,11 @@
-/* $Id: VBoxDispDriverDDraw.cpp 39606 2011-12-14 11:23:58Z noreply@oracle.com $ */
+/* $Id: VBoxDispDriverDDraw.cpp 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox XPDM Display driver interface functions related to DirectDraw
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

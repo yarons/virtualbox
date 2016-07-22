@@ -1,10 +1,10 @@
-/* $Id: VBoxMPCr.h 58184 2015-10-12 13:48:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPCr.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
