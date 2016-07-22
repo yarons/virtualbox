@@ -1,10 +1,10 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 53250 2014-11-06 10:06:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

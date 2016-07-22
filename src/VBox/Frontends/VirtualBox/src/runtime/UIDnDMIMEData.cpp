@@ -1,10 +1,10 @@
-/* $Id: UIDnDMIMEData.cpp 58866 2015-11-25 15:55:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDMIMEData.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

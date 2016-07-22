@@ -1,10 +1,10 @@
-/* $Id: UIWizard.h 60362 2016-04-06 14:29:17Z noreply@oracle.com $ */
+/* $Id: UIWizard.h 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizard class declaration.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

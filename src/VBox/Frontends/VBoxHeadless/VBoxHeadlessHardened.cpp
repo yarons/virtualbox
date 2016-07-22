@@ -1,10 +1,10 @@
-/* $Id: VBoxHeadlessHardened.cpp 44529 2013-02-04 15:54:15Z noreply@oracle.com $ */
+/* $Id: VBoxHeadlessHardened.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHeadless - Hardened main().
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

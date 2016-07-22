@@ -1,10 +1,10 @@
-/* $Id: UIEmptyFilePathSelector.cpp 60770 2016-04-29 16:21:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIEmptyFilePathSelector class implementation.
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

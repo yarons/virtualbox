@@ -1,10 +1,10 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 58856 2015-11-25 13:46:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

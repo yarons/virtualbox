@@ -1,10 +1,10 @@
-/* $Id: VBoxManageUSB.cpp 62183 2016-07-12 09:39:30Z noreply@oracle.com $ */
+/* $Id: VBoxManageUSB.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

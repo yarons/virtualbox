@@ -1,10 +1,10 @@
-/* $Id: QIArrowButtonPress.h 61868 2016-06-23 18:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: QIArrowButtonPress.h 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonPress class declaration.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
