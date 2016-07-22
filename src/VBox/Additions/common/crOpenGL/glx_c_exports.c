@@ -1,11 +1,11 @@
-/* $Id: glx_c_exports.c 56294 2015-06-09 14:26:20Z knut.osmundsen@oracle.com $ */
+/* $Id: glx_c_exports.c 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox guest OpenGL DRI GLX C stubs
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
