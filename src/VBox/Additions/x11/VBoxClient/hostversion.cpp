@@ -1,10 +1,10 @@
-/* $Id: hostversion.cpp 57357 2015-08-14 15:04:46Z noreply@oracle.com $ */
+/* $Id: hostversion.cpp 62530 2016-07-22 19:25:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 guest client - host version check.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

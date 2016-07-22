@@ -1,11 +1,11 @@
-/* $Id: libXdamage.c 28800 2010-04-27 08:22:32Z noreply@oracle.com $ */
+/* $Id: libXdamage.c 62530 2016-07-22 19:25:14Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * X.Org libXdamage.so linker stub
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
