@@ -1,10 +1,10 @@
-/* $Id: Config.h 56300 2015-06-09 14:36:22Z knut.osmundsen@oracle.com $ */
+/* $Id: Config.h 62481 2016-07-22 18:30:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Config.h
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
