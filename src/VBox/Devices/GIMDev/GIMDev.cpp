@@ -1,10 +1,10 @@
-/* $Id: GIMDev.cpp 59631 2016-02-10 13:06:49Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: GIMDev.cpp 62515 2016-07-22 19:13:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Interface Manager Device.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
