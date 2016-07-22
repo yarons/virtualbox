@@ -1,11 +1,11 @@
-/* $Id: Parallels.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: Parallels.cpp 62482 2016-07-22 18:30:37Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

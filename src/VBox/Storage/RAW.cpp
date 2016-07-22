@@ -1,10 +1,10 @@
-/* $Id: RAW.cpp 59460 2016-01-25 13:38:32Z alexander.eichner@oracle.com $ */
+/* $Id: RAW.cpp 62482 2016-07-22 18:30:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

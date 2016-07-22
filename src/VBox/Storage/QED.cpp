@@ -1,10 +1,10 @@
-/* $Id: QED.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: QED.cpp 62482 2016-07-22 18:30:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * QED - QED Disk image.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

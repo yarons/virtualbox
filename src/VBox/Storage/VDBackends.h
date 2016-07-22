@@ -1,10 +1,10 @@
-/* $Id: VDBackends.h 50988 2014-04-07 19:36:54Z alexander.eichner@oracle.com $ */
+/* $Id: VDBackends.h 62482 2016-07-22 18:30:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VD - builtin backends.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
