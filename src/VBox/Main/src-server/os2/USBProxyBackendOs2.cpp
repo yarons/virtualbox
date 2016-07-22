@@ -1,10 +1,10 @@
-/* $Id: USBProxyBackendOs2.cpp 60089 2016-03-18 10:51:02Z alexander.eichner@oracle.com $ */
+/* $Id: USBProxyBackendOs2.cpp 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, OS/2 Specialization.
  */
 
 /*
- * Copyright (C) 2005-2012 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

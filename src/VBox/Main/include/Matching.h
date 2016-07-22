@@ -1,11 +1,11 @@
-/* $Id: Matching.h 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: Matching.h 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Declaration of template classes that provide simple API to
  * do matching between values and value filters constructed from strings.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

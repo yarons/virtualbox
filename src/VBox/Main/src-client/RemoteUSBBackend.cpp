@@ -1,10 +1,10 @@
-/* $Id: RemoteUSBBackend.cpp 58111 2015-10-07 19:54:48Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBBackend.cpp 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Remote USB backend
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

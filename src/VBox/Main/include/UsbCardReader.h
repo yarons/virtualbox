@@ -1,11 +1,11 @@
-/* $Id: UsbCardReader.h 41363 2012-05-21 12:26:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: UsbCardReader.h 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VirtualBox Driver interface to the virtual Usb Card Reader.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
