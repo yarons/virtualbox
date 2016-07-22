@@ -1,10 +1,10 @@
-/* $Id: Debug.cpp 61949 2016-06-30 08:33:50Z noreply@oracle.com $ */
+/* $Id: Debug.cpp 62506 2016-07-22 19:09:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: debug helpers
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
