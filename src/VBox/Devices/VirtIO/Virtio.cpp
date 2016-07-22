@@ -1,10 +1,10 @@
-/* $Id: Virtio.cpp 58170 2015-10-12 09:27:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: Virtio.cpp 62504 2016-07-22 19:09:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
