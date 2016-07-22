@@ -1,4 +1,4 @@
-/* $Id: DrvDedicatedNic.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvDedicatedNic.cpp 62428 2016-07-22 11:33:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
@@ -166,7 +166,6 @@ PDMBOTHCBDECL(int) drvR0DedicatedNicReqHandler(PPDMDRVINS pDrvIns, uint32_t uOpe
         default:
             return VERR_INVALID_FUNCTION;
     }
-    return VINF_SUCCESS;
 }
 
 #endif /* IN_RING0 */
