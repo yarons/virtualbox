@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 58132 2015-10-09 00:09:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DevParallel.cpp 62510 2016-07-22 19:12:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
