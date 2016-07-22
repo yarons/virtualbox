@@ -1,10 +1,10 @@
-/* $Id: tstSSM.cpp 59847 2016-02-26 11:35:07Z noreply@oracle.com $ */
+/* $Id: tstSSM.cpp 62478 2016-07-22 18:29:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * Saved State Manager Testcase.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

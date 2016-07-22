@@ -1,10 +1,10 @@
-/* $Id: VMInternal.h 61643 2016-06-10 01:07:04Z knut.osmundsen@oracle.com $ */
+/* $Id: VMInternal.h 62478 2016-07-22 18:29:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
