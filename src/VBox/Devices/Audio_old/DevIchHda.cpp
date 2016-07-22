@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 61413 2016-06-02 13:24:16Z andreas.loeffler@oracle.com $ */
+/* $Id: DevIchHda.cpp 62463 2016-07-22 16:32:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -768,6 +768,7 @@ typedef struct HDACALLBACKCTX
     PHDADRIVER pDriver;
 } HDACALLBACKCTX, *PHDACALLBACKCTX;
 #endif
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
