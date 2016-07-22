@@ -1,10 +1,10 @@
-/* $Id: VBoxMouse.cpp 43419 2012-09-24 15:19:44Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxMouse.cpp 62526 2016-07-22 19:18:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxMouse; input_server add-on - Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
