@@ -1,4 +1,7 @@
-/* $Id: SHGSMIHost.cpp 62498 2016-07-22 19:04:20Z knut.osmundsen@oracle.com $ */
+/* $Id: SHGSMIHost.cpp 62541 2016-07-25 13:33:28Z knut.osmundsen@oracle.com $ */
+/** @file
+ * Missing description.
+ */
 
 /*
  * Copyright (C) 2010-2016 Oracle Corporation
