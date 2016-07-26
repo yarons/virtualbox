@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 62564 2016-07-26 14:43:03Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrkStuff.cpp 62565 2016-07-26 14:49:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -855,11 +855,11 @@ static DECLCALLBACK(int) rtkldr_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmP
             break;
 
         default:
-            RT_NOREF_PV(pvBits);
             return VERR_NOT_FOUND;
     }
     if (pcbRet)
         *pcbRet = cbBuf;
+    RT_NOREF_PV(pvBits);
     return VINF_SUCCESS;
 }
 
