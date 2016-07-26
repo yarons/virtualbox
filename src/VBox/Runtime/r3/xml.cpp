@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: xml.cpp 62566 2016-07-26 15:16:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1470,6 +1470,7 @@ AttributeNode::AttributeNode(const ElementNode *pElmRoot,
            pLibAttr)
 {
     m_pcszName = (const char *)pLibAttr->name;
+    RT_NOREF_PV(pElmRoot);
 
     if (   pLibAttr->ns
         && pLibAttr->ns->prefix)

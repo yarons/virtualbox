@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: semmutex-r0drv-linux.c 62566 2016-07-26 15:16:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -323,6 +323,7 @@ RT_EXPORT_SYMBOL(RTSemMutexRequest);
 
 RTDECL(int) RTSemMutexRequestDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_NOREF_PV(uId); RT_SRC_POS_NOREF();
     return RTSemMutexRequest(hMutexSem, cMillies);
 }
 RT_EXPORT_SYMBOL(RTSemMutexRequestDebug);
@@ -337,6 +338,7 @@ RT_EXPORT_SYMBOL(RTSemMutexRequestNoResume);
 
 RTDECL(int) RTSemMutexRequestNoResumeDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_NOREF_PV(uId); RT_SRC_POS_NOREF();
     return RTSemMutexRequestNoResume(hMutexSem, cMillies);
 }
 RT_EXPORT_SYMBOL(RTSemMutexRequestNoResumeDebug);
