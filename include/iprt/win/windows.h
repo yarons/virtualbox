@@ -1,10 +1,9 @@
-/* $Id: utf16locale-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - UTF-16 Locale Specific Manipulation, Win32.
+ * Safe way to include Windows.h.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,24 +24,19 @@
  */
 
 
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
-#define LOG_GROUP RTLOGGROUP_UTF16
-#include <iprt/win/windows.h>
+#ifndef ___iprt_win_windows_h___
+#define ___iprt_win_windows_h___
 
-#include <iprt/string.h>
+/*
+ * Unfortunately, the Windows.h file in SDK 7.1 is not clean wrt warning C4668:
+ *      wincrypt.h(1848) : warning C4668: 'NTDDI_WINLH' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
+ */
+#pragma warning(push)
+#pragma warning(disable:4668)
 
+#include <Windows.h>
 
-RTDECL(int) RTUtf16LocaleICmp(PCRTUTF16 pusz1, PCRTUTF16 pusz2)
-{
-    if (pusz1 == pusz2)
-        return 0;
-    if (pusz1 == NULL)
-        return -1;
-    if (pusz2 == NULL)
-        return 1;
+#pragma warning(pop)
 
-    return CompareStringW(LOCALE_USER_DEFAULT, NORM_IGNORECASE, pusz1, -1, pusz2, -1) - 2;
-}
+#endif
 

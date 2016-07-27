@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 62584 2016-07-27 11:46:03Z knut.osmundsen@oracle.com $ */
+/* $Id: dir-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Directory, Windows.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DIR
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/dir.h>
 #include <iprt/path.h>

@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-win.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: RTLogWriteDebugger-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Log To Debugger, Win32.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/log.h>
 #include <iprt/assert.h>

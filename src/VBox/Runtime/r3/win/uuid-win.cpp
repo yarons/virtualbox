@@ -1,4 +1,4 @@
-/* $Id: uuid-win.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: uuid-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - UUID, Windows implementation.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_UUID
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/uuid.h>
 #include <iprt/assert.h>

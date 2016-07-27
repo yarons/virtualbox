@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryTotalRam-win.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryTotalRam-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, windows ring-3.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <iprt/system.h>
 #include "internal/iprt.h"
 
