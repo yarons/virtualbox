@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 62637 2016-07-28 17:12:17Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFOS.cpp 62638 2016-07-28 17:22:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -92,7 +92,7 @@ typedef DBGFOSEMTWRAPPER *PDBGFOSEMTWRAPPER;
  */
 int dbgfR3OSInit(PUVM pUVM)
 {
-    RT_NOREF_PV(pVM);
+    RT_NOREF_PV(pUVM);
     return VINF_SUCCESS;
 }
 
