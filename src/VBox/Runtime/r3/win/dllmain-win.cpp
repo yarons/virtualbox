@@ -1,4 +1,4 @@
-/* $Id: dllmain-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
+/* $Id: dllmain-win.cpp 62635 2016-07-28 16:42:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Win32 DllMain (Ring-3).
  */
@@ -40,6 +40,8 @@
  */
 BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
 {
+    RT_NOREF_PV(pvReserved);
+
     switch (dwReason)
     {
         /*
