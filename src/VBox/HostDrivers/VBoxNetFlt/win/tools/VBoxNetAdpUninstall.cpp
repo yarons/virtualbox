@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpUninstall.cpp 62490 2016-07-22 18:41:49Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdpUninstall.cpp 62688 2016-07-29 13:30:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * NetAdpUninstall - VBoxNetAdp uninstaller command line tool
  */
@@ -75,5 +75,6 @@ static int VBoxNetAdpUninstall()
 
 int __cdecl main(int argc, char **argv)
 {
+    RT_NOREF2(argc, argv);
     return VBoxNetAdpUninstall();
 }
