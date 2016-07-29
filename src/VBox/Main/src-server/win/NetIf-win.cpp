@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 60509 2016-04-14 17:29:15Z klaus.espenlaub@oracle.com $ */
+/* $Id: NetIf-win.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -31,7 +31,7 @@
 #define _WIN32_DCOM
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <tchar.h>
 
 #ifdef VBOX_WITH_NETFLT

@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService-win.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -25,7 +25,7 @@
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <process.h>
 #include <aclapi.h>
 

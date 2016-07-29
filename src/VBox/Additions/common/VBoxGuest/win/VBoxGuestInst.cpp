@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestInst.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include <stdio.h>
 #include <stdlib.h>

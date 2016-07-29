@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceUtils.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <iprt/param.h>
 # include <iprt/path.h>
 #endif

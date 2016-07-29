@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -16,7 +16,7 @@
  */
 
 #define _WIN32_WINNT 0x0500
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/assert.h>
 #include <iprt/ldr.h>

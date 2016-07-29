@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DBase.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispD3DBase.h 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D Base Include
  */
@@ -26,7 +26,7 @@
 #       define _interlockedbittestandset64    _interlockedbittestandset64_StupidDDKVsCompilerCrap
 #       define _interlockedbittestandreset64  _interlockedbittestandreset64_StupidDDKVsCompilerCrap
 #       pragma warning(disable : 4163)
-#include <windows.h>
+#include <iprt/win/windows.h>
 #       pragma warning(default : 4163)
 #       undef  _InterlockedExchange
 #       undef  _InterlockedExchangeAdd

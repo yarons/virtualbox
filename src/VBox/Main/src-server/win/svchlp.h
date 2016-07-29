@@ -1,4 +1,4 @@
-/* $Id: svchlp.h 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
+/* $Id: svchlp.h 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  *  Declaration of SVC Helper Process control routines.
@@ -24,7 +24,7 @@
 
 #include <VBox/err.h>
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 struct SVCHlpMsg
 {

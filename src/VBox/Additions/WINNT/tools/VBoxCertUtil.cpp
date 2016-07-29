@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCertUtil.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -19,7 +19,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <Wincrypt.h>
 
 #include <iprt/buildconfig.h>

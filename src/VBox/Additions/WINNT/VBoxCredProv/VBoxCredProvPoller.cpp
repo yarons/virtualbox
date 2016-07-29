@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvPoller.cpp 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvPoller.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredPoller - Thread for querying / retrieving user credentials.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
