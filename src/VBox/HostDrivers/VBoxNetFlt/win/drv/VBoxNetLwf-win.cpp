@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 62683 2016-07-29 13:16:22Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetLwf-win.cpp 62697 2016-07-29 15:56:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -48,7 +48,7 @@
 
 #include <iprt/nt/ntddk.h>
 #include <iprt/nt/ndis.h>
-#include <netioapi.h>
+#include <iprt/win/netioapi.h>
 #include <mstcpip.h>
 
 #define LogError(x) DbgPrint x
