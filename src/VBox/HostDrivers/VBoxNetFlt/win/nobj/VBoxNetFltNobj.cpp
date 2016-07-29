@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.cpp 60765 2016-04-29 14:26:58Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxNetFltNobj.cpp 62691 2016-07-29 13:53:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #include "VBoxNetFltNobj.h"
-#include <Ntddndis.h>
+#include <iprt/win/ntddndis.h>
 #include <assert.h>
 #include <stdio.h>
 
