@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernelDriver.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTR0MemUserKernelDriver.cpp 62721 2016-07-29 22:31:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -48,6 +48,7 @@
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF3(argc, argv, envp);
 #ifndef VBOX
     RTPrintf("tstSup: SKIPPED\n");
     return 0;
