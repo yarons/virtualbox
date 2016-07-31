@@ -1,5 +1,6 @@
-# $Id: Makefile.kmk 62762 2016-07-31 14:43:45Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 62763 2016-07-31 14:44:04Z knut.osmundsen@oracle.com $
 ## @file
+# Sub-makefile for NAT Networking
 #
 
 #
