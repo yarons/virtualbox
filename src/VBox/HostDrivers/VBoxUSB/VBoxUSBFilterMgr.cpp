@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 62717 2016-07-29 22:03:37Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUSBFilterMgr.cpp 62805 2016-08-01 09:55:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -258,6 +258,8 @@ int VBoxUSBFilterAdd(PCUSBFILTER pFilter, VBOXUSBFILTER_CONTEXT Owner, uintptr_t
 
         VBOXUSBFILTERMGR_UNLOCK();
     }
+    else
+        RTMemFree(pNew);
 
     return rc;
 }
