@@ -1,6 +1,5 @@
-/* $Id: tstGuestControlSvc.cpp 62800 2016-08-01 09:41:36Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestControlSvc.cpp 62801 2016-08-01 09:44:15Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * Testcase for the guest control service.
  */
 
@@ -24,8 +23,6 @@
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/test.h>
-
-#include "../gctrl.h"
 
 
 /*********************************************************************************************************************************
