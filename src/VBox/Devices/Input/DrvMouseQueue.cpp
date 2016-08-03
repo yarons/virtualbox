@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 62513 2016-07-22 19:13:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvMouseQueue.cpp 62906 2016-08-03 11:20:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -278,6 +278,7 @@ static DECLCALLBACK(void)  drvMouseQueueReset(PPDMDRVINS pDrvIns)
 {
     //PDRVKBDQUEUE        pThis = PDMINS_2_DATA(pDrvIns, PDRVKBDQUEUE);
     /** @todo purge the queue on reset. */
+    RT_NOREF(pDrvIns);
 }
 
 
