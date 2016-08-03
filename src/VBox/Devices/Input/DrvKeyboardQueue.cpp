@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 62906 2016-08-03 11:20:21Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvKeyboardQueue.cpp 62907 2016-08-03 11:21:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -350,7 +350,7 @@ static DECLCALLBACK(void)  drvKbdQueueReset(PPDMDRVINS pDrvIns)
 {
     //PDRVKBDQUEUE        pThis = PDMINS_2_DATA(pDrvIns, PDRVKBDQUEUE);
     /** @todo purge the queue on reset. */
-    RT_NOREF(pDrVIns);
+    RT_NOREF(pDrvIns);
 }
 
 
