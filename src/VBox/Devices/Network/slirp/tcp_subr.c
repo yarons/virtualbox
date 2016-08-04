@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 62511 2016-07-22 19:12:58Z knut.osmundsen@oracle.com $ */
+/* $Id: tcp_subr.c 63013 2016-08-04 21:42:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - TCP support.
  */
@@ -314,7 +314,7 @@ tcp_close(PNATState pData, register struct tcpcb *tp)
 }
 
 void
-tcp_drain()
+tcp_drain(void)
 {
     /* XXX */
 }
