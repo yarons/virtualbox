@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 63012 2016-08-04 21:25:17Z knut.osmundsen@oracle.com $ */
+/* $Id: ip_icmp.c 63016 2016-08-04 22:47:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -435,7 +435,7 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
 
     /* int code; */
 
-    LogFlowFunc(("ENTER: m = %lx, m_len = %d\n", (long)m, m ? m->m_len : 0));
+    LogFlowFunc(("ENTER: m = %p, m_len = %d\n", m, m ? m->m_len : 0));
 
     icmpstat.icps_received++;
 
