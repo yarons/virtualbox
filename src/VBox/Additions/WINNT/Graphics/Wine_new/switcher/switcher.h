@@ -1,5 +1,4 @@
-/* $Id: switcher.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
-
+/* $Id: switcher.h 63024 2016-08-05 00:47:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox D3D8/9 dll switcher
  */
