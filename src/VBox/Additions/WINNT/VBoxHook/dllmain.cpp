@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 62679 2016-07-29 12:52:10Z knut.osmundsen@oracle.com $ */
+/* $Id: dllmain.cpp 63094 2016-08-06 15:19:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -25,10 +25,11 @@
  * @returns type size or 0 if unknown type
  * @param   hDLLInst        Dll instance handle
  * @param   fdwReason       Callback reason
- * @param   lpvReserved     Reserved
+ * @param   pvReserved      Reserved
  */
-BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
+BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID pvReserved)
 {
+    RT_NOREF(hDLLInst, pvReserved)
     switch (fdwReason)
     {
         case DLL_PROCESS_ATTACH:
