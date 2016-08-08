@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63054 2016-08-05 15:37:38Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 63162 2016-08-08 13:25:35Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4257,6 +4257,8 @@ void VBoxGlobal::prepare()
                               szError,
                               sizeof(szError));
     }
+
+    LogRel(("Qt version: %s\n", qtRTVersionString().toUtf8().constData()));
 
     if (mSettingsPwSet)
         m_vbox.SetSettingsSecret(mSettingsPw);
