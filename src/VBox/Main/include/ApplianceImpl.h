@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 61003 2016-05-17 13:41:19Z klaus.espenlaub@oracle.com $ */
+/* $Id: ApplianceImpl.h 63184 2016-08-08 16:55:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -134,7 +134,7 @@ private:
     void i_disksWeight();
     void i_parseBucket(Utf8Str &aPath, Utf8Str &aBucket);
 
-    static DECLCALLBACK(int) i_taskThreadImportOrExport(RTTHREAD aThread, void *pvUser);
+    static void i_importOrExportThreadTask(TaskOVF *pTask);
 
     HRESULT i_initSetOfSupportedStandardsURI();
 
