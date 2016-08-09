@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 62964 2016-08-04 09:34:03Z knut.osmundsen@oracle.com $ */
+/* $Id: DevBusLogic.cpp 63218 2016-08-09 15:52:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -989,7 +989,9 @@ typedef struct BUSLOGICTASKSTATE
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+#ifdef IN_RING3
 static int buslogicR3RegisterISARange(PBUSLOGIC pBusLogic, uint8_t uBaseCode);
+#endif
 
 
 /**
