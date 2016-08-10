@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 63187 2016-08-08 17:49:42Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.cpp 63256 2016-08-10 12:04:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6419,6 +6419,7 @@ HRESULT Medium::i_preparationForMoving(const Utf8Str &aLocation)
  */
 bool Medium::i_isMoveOperation(const ComObjPtr<Medium> &aTarget) const
 {
+    RT_NOREF(aTarget);
     return (m->fMoveThisMedium == true) ? true:false;
 }
 
