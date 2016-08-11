@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-netbsd.c 63191 2016-08-09 03:01:52Z noreply@oracle.com $ */
+/* $Id: semmutex-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z noreply@oracle.com $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NetBSD.
  */

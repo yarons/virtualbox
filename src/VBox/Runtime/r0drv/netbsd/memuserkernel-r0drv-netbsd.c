@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-netbsd.c 63191 2016-08-09 03:01:52Z noreply@oracle.com $ */
+/* $Id: memuserkernel-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z noreply@oracle.com $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, NetBSD.
  */
