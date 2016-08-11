@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 62686 2016-07-29 13:25:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvCfg.cpp 63311 2016-08-11 00:02:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
@@ -22,7 +22,7 @@
 #include <VBox/VBoxDrvCfg-win.h>
 
 #include <iprt/win/setupapi.h>
-#include <shlobj.h>
+#include <iprt/win/shlobj.h>
 
 #include <string.h>
 
