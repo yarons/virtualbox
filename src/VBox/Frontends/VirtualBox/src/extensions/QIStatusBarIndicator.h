@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.h 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: QIStatusBarIndicator.h 63319 2016-08-11 10:44:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface declaration.
  */
@@ -86,7 +86,7 @@ public slots:
     /** Defines int @a state. */
     virtual void setState(int iState) { m_iState = iState; repaint(); }
     /** Defines bool @a state. */
-    virtual void setState(bool fState) { setState((int)fState); }
+    void setState(bool fState) { setState((int)fState); }
 
 protected:
 
