@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPool.cpp 63317 2016-08-11 10:30:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1391,7 +1391,7 @@ void UIActionPool::retranslateUi()
 bool UIActionPool::event(QEvent *pEvent)
 {
     /* Depending on event-type: */
-    switch (pEvent->type())
+    switch ((UIEventType)pEvent->type())
     {
         case ActivateActionEventType:
         {
