@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 63322 2016-08-11 11:07:49Z knut.osmundsen@oracle.com $ */
+/* $Id: UIInformationItem.cpp 63344 2016-08-11 17:52:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -24,6 +24,7 @@
 # include <QApplication>
 # include <QAbstractTextDocumentLayout>
 # include <QTextDocument>
+# include <QUrl>
 
 /* GUI includes: */
 # include "UIIconPool.h"
