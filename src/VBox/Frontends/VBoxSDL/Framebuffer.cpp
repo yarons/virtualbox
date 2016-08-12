@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 63298 2016-08-10 16:35:00Z knut.osmundsen@oracle.com $ */
+/* $Id: Framebuffer.cpp 63384 2016-08-12 18:57:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -628,7 +628,7 @@ STDMETHODIMP VBoxSDLFB::ProcessVHWACommand(BYTE *pCommand)
 
 STDMETHODIMP VBoxSDLFB::Notify3DEvent(ULONG uType, ComSafeArrayIn(BYTE, aData))
 {
-    RT_NOREF(uType, aData);
+    RT_NOREF(uType); ComSafeArrayNoRef(aData);
     return E_NOTIMPL;
 }
 
