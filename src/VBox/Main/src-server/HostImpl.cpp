@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 63311 2016-08-11 00:02:38Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 63423 2016-08-13 22:05:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -811,6 +811,7 @@ HRESULT Host::getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &
 # endif
 #else
     /* Not implemented / supported on this platform. */
+    RT_NOREF(aNetworkInterfaces);
     ReturnComNotImplemented();
 #endif
 }
