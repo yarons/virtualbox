@@ -1,4 +1,4 @@
-/* $Id: Global.h 62485 2016-07-22 18:36:43Z knut.osmundsen@oracle.com $ */
+/* $Id: Global.h 63431 2016-08-14 00:40:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -82,7 +82,7 @@ public:
     };
 
     static const OSType sOSTypes[];
-    static uint32_t cOSTypes;
+    static size_t cOSTypes;
 
     /**
      * Maps VBOXOSTYPE to the OS type which is used in VM configs.
