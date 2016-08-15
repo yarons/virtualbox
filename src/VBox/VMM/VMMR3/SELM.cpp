@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 63429 2016-08-13 23:39:36Z knut.osmundsen@oracle.com $ */
+/* $Id: SELM.cpp 63465 2016-08-15 10:00:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -106,7 +106,7 @@ static DECLCALLBACK(void) selmR3InfoLdtGuest(PVM pVM, PCDBGFINFOHLP pHlp, const 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#ifdef LOG_ENABLED
+#if defined(VBOX_WITH_RAW_MODE) && defined(LOG_ENABLED)
 /** Segment register names. */
 static char const g_aszSRegNms[X86_SREG_COUNT][4] = { "ES", "CS", "SS", "DS", "FS", "GS" };
 #endif
