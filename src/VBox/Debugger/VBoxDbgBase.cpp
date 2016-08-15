@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 62480 2016-07-22 18:29:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgBase.cpp 63452 2016-08-15 00:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -35,6 +35,8 @@
 VBoxDbgBase::VBoxDbgBase(VBoxDbgGui *a_pDbgGui)
     : m_pDbgGui(a_pDbgGui), m_pUVM(NULL), m_hGUIThread(RTThreadNativeSelf())
 {
+    NOREF(m_pDbgGui); /* shut up warning. */
+
     /*
      * Register
      */
