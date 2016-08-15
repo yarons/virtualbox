@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceBalloon.cpp 63495 2016-08-15 17:19:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -74,8 +74,10 @@ static RTSEMEVENTMULTI  g_MemBalloonEvent = NIL_RTSEMEVENTMULTI;
 /** The array holding the R3 pointers of the balloon. */
 static void **g_pavBalloon = NULL;
 
+#ifdef RT_OS_LINUX
 /** True = madvise(MADV_DONTFORK) works, false otherwise. */
 static bool g_fSysMadviseWorks;
+#endif
 
 
 /**
