@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 63567 2016-08-16 14:06:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -705,7 +705,7 @@ void UISettingsDialog::assignValidator(UISettingsPage *pPage)
     pPage->setValidator(pValidator);
     m_pWarningPane->registerValidator(pValidator);
 
-    // TODO: Why here?
+    /// @todo Why here?
     /* Configure navigation (tab-order): */
     pPage->setOrderAfter(m_pSelector->widget());
 }

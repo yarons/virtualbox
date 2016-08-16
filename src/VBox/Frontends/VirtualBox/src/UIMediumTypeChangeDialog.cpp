@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 62082 2016-07-06 17:54:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 63567 2016-08-16 14:06:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTypeChangeDialog class implementation.
  */
@@ -121,7 +121,7 @@ void UIMediumTypeChangeDialog::sltValidate()
 void UIMediumTypeChangeDialog::prepare()
 {
 #ifdef VBOX_WS_MAC
-    // TODO: Is that necessary?
+    /// @todo Is that necessary?
     setWindowFlags(Qt::Sheet);
 #else /* !VBOX_WS_MAC */
     /* Enable size-grip: */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 63567 2016-08-16 14:06:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -623,7 +623,7 @@ void UIMachineSettingsSystem::prepareTabMotherboard()
 #endif /* VBOX_WS_MAC */
     /* Install global event filter
      * to handle boot-table focus in/out events: */
-    // TODO: Get rid of that *crap*!
+    /// @todo Get rid of that *crap*!
     qApp->installEventFilter(this);
 
     /* Populate possible boot items list.
