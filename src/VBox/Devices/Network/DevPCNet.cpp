@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 63226 2016-08-09 16:41:16Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPCNet.cpp 63562 2016-08-16 14:04:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4711,7 +4711,7 @@ static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_
 
     PDMCritSectEnter(&pThis->CritSect, VERR_SEM_BUSY);
 
-    /** @todo: r=pritesh still need to check if i missed
+    /** @todo r=pritesh still need to check if i missed
      * to clean something in this function
      */
 

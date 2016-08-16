@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 63549 2016-08-16 12:55:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostCoreAudio.cpp 63562 2016-08-16 14:04:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -50,7 +50,7 @@
 # endif
 #endif
 
-/* TODO:
+/** @todo
  * - Maybe make sure the threads are immediately stopped if playing/recording stops.
  */
 
