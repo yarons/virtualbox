@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 62776 2016-07-31 21:58:30Z knut.osmundsen@oracle.com $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 63560 2016-08-16 14:01:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -396,7 +396,7 @@ static DECLCALLBACK(void) tstPDMACStressTestFileTaskCompleted(PVM pVM, void *pvU
 
     if (pTestTask->fWrite)
     {
-        /* @todo Do something sensible here. */
+        /** @todo Do something sensible here. */
     }
     else
     {
