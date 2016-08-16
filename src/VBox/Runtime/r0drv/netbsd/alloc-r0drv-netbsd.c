@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-netbsd.c 63329 2016-08-11 11:35:50Z noreply@oracle.com $ */
+/* $Id: alloc-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NetBSD.
  */
@@ -38,6 +38,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
