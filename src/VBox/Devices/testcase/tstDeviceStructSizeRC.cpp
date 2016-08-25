@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 62957 2016-08-04 07:50:52Z alexander.eichner@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 63632 2016-08-25 10:58:22Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -772,6 +772,8 @@ int main()
     GEN_CHECK_OFF(APICCPU, StatMaskedByPpr);
     GEN_CHECK_OFF(APICCPU, StatTimerIcrWrite);
     GEN_CHECK_OFF(APICCPU, StatIcrLoWrite);
+    GEN_CHECK_OFF(APICCPU, StatIcrHiWrite);
+    GEN_CHECK_OFF(APICCPU, StatIcrFullWrite);
 # endif /* VBOX_WITH_STATISTICS */
 #else
     /* PC/DevAPIC.cpp */
