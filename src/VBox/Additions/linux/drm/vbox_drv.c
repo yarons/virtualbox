@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 63551 2016-08-16 13:02:19Z noreply@oracle.com $ */
+/*  $Id: vbox_drv.c 63755 2016-09-07 16:55:01Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -244,9 +244,14 @@ static int vbox_master_set(struct drm_device *dev,
     return 0;
 }
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 8, 0)
 static void vbox_master_drop(struct drm_device *dev,
                              struct drm_file *file_priv,
                              bool from_release)
+#else
+static void vbox_master_drop(struct drm_device *dev,
+                             struct drm_file *file_priv)
+#endif
 {
     struct vbox_private *vbox = dev->dev_private;
     vbox->initial_mode_queried = false;
