@@ -1,4 +1,4 @@
-/* $Id: VBoxTakeSnapshotDlg.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTakeSnapshotDlg.cpp 63804 2016-09-12 15:18:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxTakeSnapshotDlg class implementation.
  */
@@ -28,7 +28,7 @@
 # include "VBoxUtils.h"
 # ifdef VBOX_WS_MAC
 #  include "UIMachineWindowNormal.h"
-#  include "VBoxSnapshotsWgt.h"
+#  include "UISnapshotPane.h"
 # endif /* VBOX_WS_MAC */
 
 /* COM includes: */
