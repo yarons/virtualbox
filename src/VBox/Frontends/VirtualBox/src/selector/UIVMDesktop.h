@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.h 63923 2016-09-21 14:40:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMDesktop.h 63924 2016-09-21 14:44:02Z sergey.dubov@oracle.com $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -61,8 +61,10 @@ public:
     /* Constructor: */
     UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *pParent);
 
-    /* API: Current pane index: */
+    /** Returns current widget index. */
     int widgetIndex() const;
+    /** Defines current widget @a iIndex. */
+    void setWidgetIndex(int iIndex);
 
     /* Helpers: Update stuff: */
     void updateDetailsText(const QString &strText);
