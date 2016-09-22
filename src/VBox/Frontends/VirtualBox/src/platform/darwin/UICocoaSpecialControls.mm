@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 63803 2016-09-12 14:21:32Z sergey.dubov@oracle.com $ */
+/* $Id: UICocoaSpecialControls.mm 63962 2016-09-22 18:02:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -619,6 +619,11 @@ void UICocoaSegmentedButton::setIcon(int iSegment, const QIcon& icon)
 void UICocoaSegmentedButton::setEnabled(int iSegment, bool fEnabled)
 {
     [[nativeRef() cell] setEnabled: fEnabled forSegment: iSegment];
+}
+
+void UICocoaSegmentedButton::setSelected(int iSegment)
+{
+    [nativeRef() setSelectedSegment: iSegment];
 }
 
 void UICocoaSegmentedButton::animateClick(int iSegment)
