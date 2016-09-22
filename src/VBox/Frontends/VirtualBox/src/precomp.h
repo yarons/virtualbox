@@ -1,4 +1,4 @@
-/* $Id: precomp.h 63932 2016-09-21 19:38:37Z knut.osmundsen@oracle.com $*/
+/* $Id: precomp.h 63952 2016-09-22 14:33:40Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -593,7 +593,7 @@
 # include "UIUpdateManager.h"
 #endif
 #include "UIVMCloseDialog.h"
-#include "UIVMDesktop.h"
+#include "UIDesktopPane.h"
 #include "UIVMInfoDialog.h"
 #include "UIVMItem.h"
 #include "UIVMLogViewer.h"
