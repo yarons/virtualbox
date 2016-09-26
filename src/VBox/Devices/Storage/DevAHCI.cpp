@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 64026 2016-09-26 18:54:02Z alexander.eichner@oracle.com $ */
+/* $Id: DevAHCI.cpp 64030 2016-09-26 21:22:44Z alexander.eichner@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5837,7 +5837,7 @@ static PAHCIREQ ahciR3ReqAlloc(PAHCIPort pAhciPort, uint32_t uTag)
     PDMMEDIAEXIOREQ hIoReq = NULL;
 
     int rc = pAhciPort->pDrvMediaEx->pfnIoReqAlloc(pAhciPort->pDrvMediaEx, &hIoReq, (void **)&pAhciReq,
-                                                   uTag, PDMIMEDIAEX_F_SYNC); /** @todo: REMOVE sync flag after the bug is fixed! */
+                                                   uTag, PDMIMEDIAEX_F_DEFAULT);
     if (RT_SUCCESS(rc))
     {
         pAhciReq->hIoReq = hIoReq;
