@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.cpp 63019 2016-08-04 23:41:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispMpLogger.cpp 64186 2016-10-10 10:25:32Z noreply@oracle.com $ */
 
 /** @file
  * VBox WDDM Display backdoor logger implementation
@@ -55,6 +55,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 
 #include <stdio.h>
