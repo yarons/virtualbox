@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 64064 2016-09-28 08:51:22Z alexander.eichner@oracle.com $ */
+/* $Id: VSCSILunSbc.cpp 64412 2016-10-25 11:57:44Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -587,6 +587,10 @@ VSCSILUNDESC g_VScsiLunTypeSbc =
     "SBC",
     /** cbLun */
     sizeof(VSCSILUNSBC),
+    /** cSupOpcInfo */
+    0,
+    /** paSupOpcInfo */
+    NULL,
     /** pfnVScsiLunInit */
     vscsiLunSbcInit,
     /** pfnVScsiLunDestroy */
