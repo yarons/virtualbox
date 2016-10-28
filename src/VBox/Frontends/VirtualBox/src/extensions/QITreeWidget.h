@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 64302 2016-10-17 14:51:52Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeWidget.h 64479 2016-10-28 16:01:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -58,6 +58,7 @@ public:
     QITreeWidget *parentTree() const;
     /** Returns the parent tree-widget item. */
     QITreeWidgetItem *parentItem() const;
+
     /** Returns the child tree-widget item with @a iIndex. */
     QITreeWidgetItem *childItem(int iIndex) const;
 
