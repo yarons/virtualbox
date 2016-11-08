@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 64606 2016-11-08 18:30:40Z knut.osmundsen@oracle.com $ */
+/* $Id: TestBoxHelper.cpp 64607 2016-11-08 18:32:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -213,7 +213,7 @@ static RTEXITCODE handlerWipeFreeSpace(int argc, char **argv)
                 cbMinLeftOpt = ValueUnion.u64;
                 break;
             case 'h':
-                RTPrintf("usage: wipefrespace [options] [filename1 [..]]\n",
+                RTPrintf("usage: wipefrespace [options] [filename1 [..]]\n"
                          "\n"
                          "Options:\n"
                          "  -a, --all\n"
