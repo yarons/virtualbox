@@ -1,4 +1,4 @@
-/* $Id: tstRTPathQueryInfo.cpp 64647 2016-11-10 20:32:01Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTPathQueryInfo.cpp 64648 2016-11-10 20:33:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTPathQueryInfoEx testcase
  */
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
         else
         {
             RTFSOBJINFO ObjInfo;
-            int rc = RTPathQueryInfoEx(argv[i], &ObjInfo, enmAdditionalAttribs, fFlags);
+            rc = RTPathQueryInfoEx(argv[i], &ObjInfo, enmAdditionalAttribs, fFlags);
             if (RT_SUCCESS(rc))
             {
                 RTPrintf("  File: '%s'\n", argv[i]);
