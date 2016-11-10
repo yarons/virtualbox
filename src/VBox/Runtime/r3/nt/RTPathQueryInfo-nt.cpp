@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryInfo-nt.cpp 64640 2016-11-10 15:27:09Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathQueryInfo-nt.cpp 64641 2016-11-10 15:30:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryInfo[Ex], Native NT.
  */
@@ -260,6 +260,7 @@ RTR3DECL(int) RTPathQueryInfoEx(const char *pszPath, PRTFSOBJINFO pObjInfo, RTFS
                 NtDirName.Length = (USHORT)(off * sizeof(NtName.Buffer[0]));
             else
             {
+                AssertFailed(); /* This is impossible and won't work (NT doesn't know '.' or '..').  */
                 NtDirName.Buffer = L".";
                 NtDirName.Length = sizeof(NtName.Buffer[0]);
                 NtDirName.MaximumLength = 2 * sizeof(NtName.Buffer[0]);
