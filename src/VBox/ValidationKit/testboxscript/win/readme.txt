@@ -1,4 +1,4 @@
-$Id: readme.txt 59549 2016-02-01 15:57:21Z andreas.loeffler@oracle.com $
+$Id: readme.txt 64665 2016-11-14 23:26:17Z knut.osmundsen@oracle.com $
 
 
 Preparations:
@@ -16,6 +16,14 @@ Preparations:
    "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\EnableLUA"
 
 5. Disable Automatic updates. (No rebooting during tests, thank you!)
+
+   Ideally we would prevent windows from even checking for updates to avoid
+   influencing benchmarks and such, however the microsofties aren't keen on it.
+   So, disable it as much as possible.
+
+   W10: gpedit.msc -> "Administrative Templates" -> "Windows Components"
+   -> "Windows Update" -> "Configure Automatic Updates":  Enable and select
+   "2 - Notify for download and notiy for install".
 
 6. Go to the group policy editor (gpedit.msc) and change "Computer Configuration"
    -> "Windows Settings" -> "Security Settings" -> "Local Policies"
