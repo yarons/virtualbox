@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardImportApp.cpp 64683 2016-11-16 14:22:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -21,7 +21,9 @@
 
 /* Global includes: */
 # include <QDialogButtonBox>
+# include <QLabel>
 # include <QPushButton>
+# include <QTextEdit>
 # include <QTextStream>
 
 /* Local includes: */
