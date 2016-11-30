@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 63564 2016-08-16 14:05:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltRt-win.cpp 64766 2016-11-30 10:59:48Z noreply@oracle.com $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
@@ -3372,8 +3372,8 @@ void vboxNetFltWinNotifyHostAddress(PTA_ADDRESS pAddress, bool fAdded)
     {
         NdisAcquireSpinLock(&g_VBoxNetFltGlobalsWin.lockFilters);
         /* At this point the list must contain at least one element. */
-        PVBOXNETFLTWIN pFilter   = NULL;
         PVBOXNETFLTINS pInstance = NULL;
+        PVBOXNETFLTWIN pFilter;
         RTListForEach(&g_VBoxNetFltGlobalsWin.listFilters, pFilter, VBOXNETFLTWIN, node)
         {
             pInstance = RT_FROM_MEMBER(pFilter, VBOXNETFLTINS, u.s.WinIf);
