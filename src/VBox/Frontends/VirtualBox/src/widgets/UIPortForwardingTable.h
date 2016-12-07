@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPortForwardingTable.h 64803 2016-12-07 15:08:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -132,7 +132,7 @@ public:
     UIPortForwardingTable(const UIPortForwardingDataList &rules, bool fIPv6, bool fAllowEmptyGuestIPs);
 
     /* API: Rules stuff: */
-    const UIPortForwardingDataList& rules() const;
+    const UIPortForwardingDataList rules() const;
     bool validate() const;
 
     /** Returns whether the table data was changed. */
