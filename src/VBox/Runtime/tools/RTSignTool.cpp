@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 64867 2016-12-14 13:40:07Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 64870 2016-12-14 13:42:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -976,7 +976,6 @@ static int HandleShowExeWorkerPkcs7DisplaySpcIdirectDataContent(PSHOWEXEPKCS7 pT
                                                      cPages, pPgHashes->RawData.Asn1Core.cb);
                                             if (pThis->cVerbosity > 0)
                                             {
-                                                uint32_t cbHash = RTCrDigestTypeToHashSize(enmDigestType);
                                                 PCRTCRSPCPEIMAGEPAGEHASHES pPg = pPgHashes->pData;
                                                 for (unsigned iPg = 0; iPg < cPages; iPg++)
                                                 {
