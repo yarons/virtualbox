@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 62511 2016-07-22 19:12:58Z knut.osmundsen@oracle.com $ */
+/** $Id: DevE1000Phy.h 64925 2016-12-16 19:28:31Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -27,6 +27,7 @@
 #define PCTRL_RESET   0x8000
 
 #define PSTATUS_LNKSTAT 0x0004
+#define PSTATUS_NEGCOMP 0x0020
 
 /*
  * Speed: 1000 Mb/s
