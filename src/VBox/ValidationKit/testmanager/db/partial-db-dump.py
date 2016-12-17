@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 62471 2016-07-22 18:04:30Z knut.osmundsen@oracle.com $
+# $Id: partial-db-dump.py 64948 2016-12-17 20:40:09Z knut.osmundsen@oracle.com $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62471 $"
+__version__ = "$Revision: 64948 $"
 
 # Standard python imports
 import sys;
@@ -90,6 +90,7 @@ class PartialDbDump(object): # pylint: disable=R0903
         'FailureCategories',
         'FailureReasons',
         'GlobalResources',
+        'TestBoxStrTab',
         'Testcases',
         'TestcaseArgs',
         'TestcaseDeps',
