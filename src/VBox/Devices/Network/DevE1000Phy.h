@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 64925 2016-12-16 19:28:31Z aleksey.ilyushin@oracle.com $ */
+/** $Id: DevE1000Phy.h 64966 2016-12-20 11:38:55Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -37,7 +37,8 @@
  * Link up
  * Receive Pause Enable
  */
-#define PSSTAT_LINK     0xBC08
+#define PSSTAT_LINK_ALL 0xBC08
+#define PSSTAT_LINK     0x0400
 
 namespace Phy
 {
