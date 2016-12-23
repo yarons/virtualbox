@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 64998 2016-12-22 14:53:56Z noreply@oracle.com $ */
+/* $Id: DevIchAc97.cpp 65002 2016-12-23 14:17:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3199,6 +3199,10 @@ static DECLCALLBACK(int) ichac97Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = PDMDevHlpSSMRegister(pDevIns, AC97_SSM_VERSION, sizeof(*pThis), ichac97SaveExec, ichac97LoadExec);
     if (RT_FAILURE(rc))
         return rc;
+
+#ifdef VBOX_WITH_AUDIO_AC97_ASYNC_IO
+    LogRel(("AC97: Asynchronous I/O enabled\n"));
+#endif
 
     /*
      * Attach driver.
