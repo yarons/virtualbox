@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 64997 2016-12-22 07:41:39Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManage.h 65049 2017-01-02 09:01:46Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -329,4 +329,3 @@ RTEXITCODE handleBandwidthControl(HandlerArg *a);
 #endif /* !VBOX_ONLY_DOCS */
 
 #endif /* !___H_VBOXMANAGE */
-
