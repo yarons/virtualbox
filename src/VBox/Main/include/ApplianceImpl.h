@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 63184 2016-08-08 16:55:15Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImpl.h 65088 2017-01-03 20:52:49Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -177,7 +177,7 @@ private:
 
     void i_convertDiskAttachmentValues(const ovf::HardDiskController &hdc,
                                        uint32_t ulAddressOnParent,
-                                       Utf8Str &controllerType,
+                                       Utf8Str &controllerName,
                                        int32_t &lControllerPort,
                                        int32_t &lDevice);
 

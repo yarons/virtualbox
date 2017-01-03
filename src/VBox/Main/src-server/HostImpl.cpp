@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 63563 2016-08-16 14:04:28Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 65088 2017-01-03 20:52:49Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1153,7 +1153,7 @@ HRESULT Host::getMemoryAvailable(ULONG *aAvailable)
  * Returns the name string of the host operating system
  *
  * @returns COM status code
- * @param   os address of result variable
+ * @param   aOperatingSystem result variable
  */
 HRESULT Host::getOperatingSystem(com::Utf8Str &aOperatingSystem)
 {
