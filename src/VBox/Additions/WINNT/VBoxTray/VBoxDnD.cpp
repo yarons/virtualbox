@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 65099 2017-01-04 12:05:31Z noreply@oracle.com $ */
+/* $Id: VBoxDnD.cpp 65122 2017-01-04 17:11:20Z noreply@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1654,7 +1654,6 @@ static LRESULT CALLBACK vboxDnDWndProc(HWND hWnd, UINT uMsg,
  * @return  IPRT status code.
  * @param   pEnv                        The DnD service's environment.
  * @param   ppInstance                  The instance pointer which refer to this object.
- * @param   pfStartThread               Pointer to flag whether the DnD service can be started or not.
  */
 DECLCALLBACK(int) VBoxDnDInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
 {
