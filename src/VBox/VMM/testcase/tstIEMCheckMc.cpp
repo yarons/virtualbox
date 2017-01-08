@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 64545 2016-11-04 01:58:05Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 65194 2017-01-08 22:34:40Z michal.necasek@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -239,6 +239,7 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define iemAImpl_fscale_r80_by_r80      NULL
 
 #define iemAImpl_fpatan_r80_by_r80      NULL
+#define iemAImpl_fyl2x_r80_by_r80       NULL
 #define iemAImpl_fyl2xp1_r80_by_r80     NULL
 
 #define iemAImpl_fcom_r80_by_r80        NULL
@@ -248,7 +249,6 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define iemAImpl_ftst_r80               NULL
 #define iemAImpl_fxam_r80               NULL
 #define iemAImpl_f2xm1_r80              NULL
-#define iemAImpl_fyl2x_r80              NULL
 #define iemAImpl_fsqrt_r80              NULL
 #define iemAImpl_frndint_r80            NULL
 #define iemAImpl_fsin_r80               NULL
