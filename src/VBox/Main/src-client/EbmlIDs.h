@@ -1,4 +1,4 @@
-/* $Id: EbmlIDs.h 63160 2016-08-08 12:47:24Z knut.osmundsen@oracle.com $ */
+/* $Id: EbmlIDs.h 65281 2017-01-13 13:21:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * EbmlIDs.h - Matroska EBML Class IDs.
  */
@@ -133,6 +133,8 @@ enum Mkv
 //  TrackTranslateEditionUID = 0x66FC,
 //  TrackTranslateCodec = 0x66BF,
 //  TrackTranslateTrackID = 0x66A5,
+    CodecDelay = 0x56AA,
+    SeekPreRoll = 0x56BB,
     //video
     Video = 0xE0,
     FlagInterlaced = 0x9A,
