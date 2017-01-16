@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.h 65333 2017-01-16 13:57:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIInformationModel.h 65334 2017-01-16 14:00:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class declaration.
  */
@@ -81,6 +81,8 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Returns the list of role-names supported by model. */
     QHash<int, QByteArray> roleNames() const;
