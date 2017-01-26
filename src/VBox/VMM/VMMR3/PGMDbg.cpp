@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 65468 2017-01-26 21:39:49Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMDbg.cpp 65469 2017-01-26 21:40:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -2485,7 +2485,7 @@ VMMR3_INT_DECL(int) PGMR3DumpHierarchyGst(PVM pVM, uint64_t cr3, uint32_t fFlags
  */
 void pgmLogState(PVM pVM)
 {
-#if 1
+#if 0
     RTLogRelPrintf("\npgmLogState pgmLogState pgmLogState pgmLogState pgmLogState\n");
 
     /*
