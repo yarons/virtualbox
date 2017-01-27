@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 65410 2017-01-24 10:06:12Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 65482 2017-01-27 14:10:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -646,6 +646,7 @@ private:
                                  StorageBus_T enmBus,
                                  bool fUseHostIOCache,
                                  bool fBuiltinIoCache,
+                                 bool fInsertDiskIntegrityDrv,
                                  bool fSetupMerge,
                                  unsigned uMergeSource,
                                  unsigned uMergeTarget,
@@ -663,6 +664,7 @@ private:
                        DeviceType_T enmType,
                        bool fUseHostIOCache,
                        bool fBuiltinIoCache,
+                       bool fInsertDiskIntegrityDrv,
                        bool fSetupMerge,
                        unsigned uMergeSource,
                        unsigned uMergeTarget,
@@ -680,6 +682,7 @@ private:
                                                            StorageBus_T enmBus,
                                                            bool fUseHostIOCache,
                                                            bool fBuiltinIoCache,
+                                                           bool fInsertDiskIntegrityDrv,
                                                            bool fSetupMerge,
                                                            unsigned uMergeSource,
                                                            unsigned uMergeTarget,
