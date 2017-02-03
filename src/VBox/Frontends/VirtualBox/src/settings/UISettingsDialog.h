@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 63978 2016-09-23 15:27:40Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 65600 2017-02-03 13:34:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -146,6 +146,8 @@ private:
     UISettingsSerializer *m_pSerializeProcess;
     /** Holds whether the serialization is in progress. */
     bool m_fSerializationIsInProgress;
+    /** Holds whether there were no serialization errors. */
+    bool m_fSerializationClean;
 
     /* Status bar widget: */
     QStackedWidget *m_pStatusBar;
