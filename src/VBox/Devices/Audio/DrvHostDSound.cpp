@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 65626 2017-02-06 14:32:03Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostDSound.cpp 65671 2017-02-07 19:30:08Z noreply@oracle.com $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -889,6 +889,7 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pSt
 {
     AssertPtrReturn(pThis,     NULL);
     AssertPtrReturn(pStreamDS, NULL);
+    AssertPtrReturn(pStreamDS->pCfg, NULL);
 
     int rc = VINF_SUCCESS;
 
