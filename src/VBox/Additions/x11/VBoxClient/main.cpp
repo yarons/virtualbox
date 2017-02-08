@@ -1,4 +1,4 @@
-/* $Id: main.cpp 64167 2016-10-06 14:44:38Z noreply@oracle.com $ */
+/* $Id: main.cpp 65672 2017-02-08 10:29:06Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -18,6 +18,7 @@
  */
 
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <stdlib.h>       /* For exit */
 #include <stdio.h>
 #include <string.h>
