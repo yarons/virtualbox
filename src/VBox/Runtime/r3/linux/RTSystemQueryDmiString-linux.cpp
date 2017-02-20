@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-linux.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryDmiString-linux.cpp 65813 2017-02-20 12:19:15Z noreply@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, linux ring-3.
  */
@@ -67,6 +67,7 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
         {
             case VINF_SUCCESS:
                 AssertFailed();
+                break;
             case VERR_FILE_NOT_FOUND:
             case VERR_PATH_NOT_FOUND:
             case VERR_IS_A_DIRECTORY:
