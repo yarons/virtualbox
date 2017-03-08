@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66002 2017-03-08 20:43:32Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMAll.cpp 66003 2017-03-08 21:05:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -196,7 +196,7 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx)
  * @returns Strict VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pCtx        The guest-CPU context.
- * @param   uExitCode   The exit reason.
+ * @param   iExitCode   The exit reason.
  * @param   uExitInfo1  The exit info. 1 field.
  * @param   uExitInfo1  The exit info. 2 field.
  */
