@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66004 2017-03-08 21:18:17Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMAll.cpp 66005 2017-03-08 21:26:18Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -191,7 +191,7 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx)
 
 
 /**
- * SVM nested-guest \#VMEXIT handler.
+ * SVM nested-guest VMEXIT handler.
  *
  * @returns Strict VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
