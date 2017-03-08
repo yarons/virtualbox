@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 65989 2017-03-07 21:36:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMAll.cpp 66000 2017-03-08 20:29:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - All contexts.
  */
@@ -554,19 +554,6 @@ VMM_INT_DECL(void) HMTrapXcptUDForGIMDisable(PVMCPU pVCpu)
 {
     pVCpu->hm.s.fGIMTrapXcptUD = false;
     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_XCPT_INTERCEPTS);
-}
-
-
-
-/**
- * SVM nested-guest \#VMEXIT handler.
- * 
- * @param   pVCpu       The cross context virtual CPU structure. 
- * @param   uExitCode   The exit reason.
- */
-VMM_INT_DECL(void) HMNstGstSvmVmExit(PVMCPU pVCpu, uint64_t uExitCode)
-{
-    RT_NOREF2(pVCpu, uExitCode);
 }
 
 
