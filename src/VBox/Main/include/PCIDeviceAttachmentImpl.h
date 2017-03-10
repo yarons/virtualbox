@@ -1,4 +1,4 @@
-/* $Id: PCIDeviceAttachmentImpl.h 65088 2017-01-03 20:52:49Z noreply@oracle.com $ */
+/* $Id: PCIDeviceAttachmentImpl.h 66046 2017-03-10 16:58:36Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -40,7 +40,7 @@ public:
                  LONG          aHostAddess,
                  LONG          aGuestAddress,
                  BOOL          fPhysical);
-
+    HRESULT initCopy(IMachine *aParent, PCIDeviceAttachment *aThat);
     void uninit();
 
     // settings
