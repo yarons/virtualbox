@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 66075 2017-03-14 09:30:32Z alexander.eichner@oracle.com $ */
+/* $Id: DrvHostBase-win.cpp 66076 2017-03-14 09:34:19Z noreply@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -564,8 +564,8 @@ DECLHIDDEN(void) drvHostBaseDestructOs(PDRVHOSTBASE pThis)
         int cTimes = 50;
         do
         {
-            if (pThis->hwndDeviceChange)
-                PostMessage(pThis->hwndDeviceChange, WM_CLOSE, 0, 0); /* default win proc will destroy the window */
+            if (pThis->Os.hwndDeviceChange)
+                PostMessage(pThis->Os.hwndDeviceChange, WM_CLOSE, 0, 0); /* default win proc will destroy the window */
 
             rc = RTThreadWait(pThis->Os.hThrdMediaChange, 100, NULL);
         } while (cTimes-- > 0 && rc == VERR_TIMEOUT);
