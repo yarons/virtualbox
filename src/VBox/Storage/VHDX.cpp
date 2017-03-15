@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 64272 2016-10-14 08:25:05Z alexander.eichner@oracle.com $ */
+/* $Id: VHDX.cpp 66110 2017-03-15 12:18:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -2533,6 +2533,10 @@ const VDIMAGEBACKEND g_VhdxBackend =
     vhdxGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     vhdxSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     vhdxGetImageFlags,
     /* pfnGetOpenFlags */
