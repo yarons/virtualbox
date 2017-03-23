@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 62592 2016-07-27 13:24:48Z knut.osmundsen@oracle.com $ */
+/* $Id: init-win.cpp 66220 2017-03-23 12:11:13Z noreply@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -173,7 +173,7 @@ static RTWINOSTYPE rtR3InitWinSimplifiedVersion(OSVERSIONINFOEXW const *pOSInfoE
                  && dwMinorVersion == 3)
         {
             if (bProductType != VER_NT_WORKSTATION)
-               enmVer = kRTWinOSType_2012R2;
+                enmVer = kRTWinOSType_2012R2;
             else
                 enmVer = kRTWinOSType_81;
         }
