@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 66225 2017-03-23 12:52:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsExtension.h 66290 2017-03-28 11:19:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -80,6 +80,11 @@ private slots:
     void sltRemovePackage();
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Uploads @a package data into passed @a item. */
     void loadData(const CExtPack &package, UIDataSettingsGlobalExtensionItem &item) const;
