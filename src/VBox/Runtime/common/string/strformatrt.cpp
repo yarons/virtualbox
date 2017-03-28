@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 66292 2017-03-28 11:33:36Z noreply@oracle.com $ */
+/* $Id: strformatrt.cpp 66299 2017-03-28 12:40:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -485,8 +485,6 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXXXXXX"));
 # elif R0_ARCH_BITS == 64
                     cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXXXXXXXXXXXXXX"));
-# elif R0_ARCH_BITS == 16
-                    cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXX"));
 # else
 #  error implement me!
 # endif
