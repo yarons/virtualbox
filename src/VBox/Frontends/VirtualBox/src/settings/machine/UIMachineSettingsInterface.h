@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66246 2017-03-24 13:52:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.h 66345 2017-03-29 18:03:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -70,7 +70,6 @@ private:
 
     /** Prepares all. */
     void prepare();
-
     /** Cleanups all. */
     void cleanup();
 
