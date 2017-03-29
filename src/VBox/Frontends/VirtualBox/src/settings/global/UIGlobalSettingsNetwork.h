@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 66290 2017-03-28 11:19:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsNetwork.h 66343 2017-03-29 17:05:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */
@@ -99,10 +99,12 @@ private:
 
     /** Prepares all. */
     void prepare();
-    /** Prepares NAT Network tab. */
+    /** Prepares 'NAT Network' tab. */
     void prepareTabNAT();
-    /** Prepares Host Network tab. */
+    /** Prepares 'Host Network' tab. */
     void prepareTabHost();
+    /** Prepares connections. */
+    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 
