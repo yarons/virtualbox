@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 66397 2017-04-03 11:54:11Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorWindow.h 66398 2017-04-03 12:04:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -293,6 +293,10 @@ private:
         static bool isAtLeastOneItemInaccessible(const QList<UIVMItem*> &items);
         /** Returns whether at least one of passed @a items is removable. */
         static bool isAtLeastOneItemRemovable(const QList<UIVMItem*> &items);
+        /** Returns whether at least one of passed @a items can be started. */
+        static bool isAtLeastOneItemCanBeStarted(const QList<UIVMItem*> &items);
+        /** Returns whether at least one of passed @a items can be shown. */
+        static bool isAtLeastOneItemCanBeShown(const QList<UIVMItem*> &items);
         /** Returns whether at least one of passed @a items can be started or shown. */
         static bool isAtLeastOneItemCanBeStartedOrShown(const QList<UIVMItem*> &items);
         /** Returns whether at least one of passed @a items can be discarded. */
