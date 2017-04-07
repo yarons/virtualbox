@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 66463 2017-04-06 17:58:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructions.cpp.h 66469 2017-04-07 09:32:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -731,6 +731,9 @@ FNIEMOP_DEF(iemOp_InvalidNeed3ByteEscRMImm8)
  * Include the tables.
  */
 #include "IEMAllInstructionsTwoByte0f.cpp.h"
+#ifdef IEM_WITH_VEX
+# include "IEMAllInstructionsVexMap1.cpp.h"
+#endif
 #include "IEMAllInstructionsOneByte.cpp.h"
 
 
