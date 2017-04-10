@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 66366 2017-03-30 14:06:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.h 66502 2017-04-10 15:27:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -75,6 +75,11 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing serial data from the cache. */
+    bool saveSerialData();
+    /** Saves existing port data from the cache. */
+    bool savePortData(int iPort);
 
     /** Holds the tab-widget instance. */
     QITabWidget *m_pTabWidget;
