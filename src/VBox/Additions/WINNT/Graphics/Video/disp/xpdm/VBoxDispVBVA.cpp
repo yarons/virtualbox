@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 65381 2017-01-20 09:23:53Z noreply@oracle.com $ */
+/* $Id: VBoxDispVBVA.cpp 66537 2017-04-12 14:42:47Z noreply@oracle.com $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -17,6 +17,7 @@
 
 #include "VBoxDisp.h"
 #include "VBoxDispMini.h"
+#include <HGSMI.h>
 #include <HGSMIChSetup.h>
 
 #ifdef VBOX_VBVA_ADJUST_RECT
