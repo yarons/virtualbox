@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 66541 2017-04-12 16:03:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.h 66543 2017-04-12 16:44:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -767,8 +767,8 @@ private:
     /** Adds 'Choose Recent Medium' actions of passed @a enmRecentMediumType into passed @a pOpenMediumMenu. */
     void addRecentMediumActions(QMenu *pOpenMediumMenu, UIMediumType enmRecentMediumType);
 
-    /** Updates existing storage data from the cache. */
-    bool updateStorageData();
+    /** Saves existing storage data from the cache. */
+    bool saveStorageData();
     /** Removes existing storage controller described by the @a controllerCache. */
     bool removeStorageController(const UISettingsCacheMachineStorageController &controllerCache);
     /** Creates existing storage controller described by the @a controllerCache. */
