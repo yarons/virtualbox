@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupCenter.cpp 66569 2017-04-14 11:13:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -433,7 +433,7 @@ void UIPopupCenter::remindAboutAutoCapture(QWidget *pParent)
                                                      "and mouse capture state.</p>") +
           QApplication::translate("UIMessageCenter", "<p>The host key is currently defined as <b>%1</b>.</p>",
                                                      "additional message box paragraph")
-                                                     .arg(UIHostCombo::toReadableString(vboxGlobal().settings().hostCombo())),
+                                                     .arg(UIHostCombo::toReadableString(gEDataManager->hostKeyCombination())),
           true);
 }
 
