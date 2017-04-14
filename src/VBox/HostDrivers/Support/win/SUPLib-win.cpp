@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 66573 2017-04-14 13:24:58Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib-win.cpp 66577 2017-04-14 15:01:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -645,7 +645,7 @@ int suplibOsTerm(PSUPLIBDATA pThis)
      */
     if (pThis->hDevice != NULL)
     {
-        if (!CloseHandle((HANDLE)pThis->hDevice))
+        if (!NtClose((HANDLE)pThis->hDevice))
             AssertFailed();
         pThis->hDevice = NIL_RTFILE; /* yes, that's right */
     }
