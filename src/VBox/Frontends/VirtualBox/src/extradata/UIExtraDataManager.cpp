@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 66588 2017-04-17 13:02:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 66589 2017-04-17 14:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2477,6 +2477,18 @@ void UIExtraDataManager::setAutoCaptureEnabled(bool fEnabled)
     /* Store actual feature state, whether it is "true" or "false",
      * because absent state means default, different on various hosts: */
     setExtraDataString(GUI_Input_AutoCapture, toFeatureState(fEnabled));
+}
+
+QString UIExtraDataManager::remappedScanCodes()
+{
+    /* Acquire remapped scan codes: */
+    QString strRemappedScanCodes = extraDataString(GUI_RemapScancodes);
+    /* Clear the record if it's absolutely wrong: */
+    QRegularExpression reTemplate("(\\d+=\\d+,)*\\d+=\\d+");
+    if (!reTemplate.match(strRemappedScanCodes).hasMatch())
+        strRemappedScanCodes.clear();
+    /* Return remapped scan codes: */
+    return strRemappedScanCodes;
 }
 
 QString UIExtraDataManager::recentFolderForHardDrives()

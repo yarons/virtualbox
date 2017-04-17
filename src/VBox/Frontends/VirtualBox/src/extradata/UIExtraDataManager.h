@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66588 2017-04-17 13:02:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 66589 2017-04-17 14:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -227,6 +227,9 @@ public:
         bool autoCaptureEnabled();
         /** Defines whether the Runtime UI auto-capture is @a fEnabled. */
         void setAutoCaptureEnabled(bool fEnabled);
+
+        /** Returns the Runtime UI remapped scan codes. */
+        QString remappedScanCodes();
     /** @} */
 
     /** @name Settings: Storage
