@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 66290 2017-03-28 11:19:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.h 66600 2017-04-18 09:25:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -65,6 +65,9 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing general data from the cache. */
+    bool saveGeneralData();
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalGeneral *m_pCache;
