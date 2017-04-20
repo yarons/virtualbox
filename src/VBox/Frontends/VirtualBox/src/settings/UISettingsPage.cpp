@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 66593 2017-04-17 15:18:57Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 66626 2017-04-20 11:57:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -38,6 +38,14 @@ UISettingsPage::UISettingsPage(UISettingsPageType pageType)
     , m_pValidator(0)
     , m_fIsValidatorBlocked(true)
 {
+}
+
+void UISettingsPage::notifyOperationProgressError(const QString &strErrorInfo)
+{
+    QMetaObject::invokeMethod(this,
+                              "sigOperationProgressError",
+                              Qt::BlockingQueuedConnection,
+                              Q_ARG(QString, strErrorInfo));
 }
 
 void UISettingsPage::setValidator(UIPageValidator *pValidator)
