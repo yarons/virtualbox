@@ -1,4 +1,4 @@
-/* $Id: precomp.h 66628 2017-04-20 13:57:05Z sergey.dubov@oracle.com $*/
+/* $Id: precomp.h 66678 2017-04-26 15:16:31Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -342,7 +342,7 @@
 #include "CBIOSSettings.h"
 //#include "CCanShowWindowEvent.h" - only used once
 #include "CConsole.h"
-//#include "CDHCPServer.h" - only used once
+#include "CDHCPServer.h"
 #include "CDisplay.h"
 #include "CDisplaySourceBitmap.h"
 #include "CDnDSource.h"
