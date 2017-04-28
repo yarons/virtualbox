@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66711 2017-04-28 07:06:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAll.cpp 66712 2017-04-28 07:07:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3309,7 +3309,7 @@ VMM_INT_DECL(IEMXCPTRAISE) IEMEvaluateRecursiveXcpt(PVMCPU pVCpu, uint32_t fPrev
             if (uPrevVector == X86_XCPT_NMI)
             {
                 fRaiseInfo = IEMXCPTRAISEINFO_NMI_XCPT;
-                if (uCurVector  == X86_XCPT_PF)
+                if (uCurVector == X86_XCPT_PF)
                 {
                     fRaiseInfo |= IEMXCPTRAISEINFO_NMI_PF;
                     Log2(("IEMEvaluateRecursiveXcpt: NMI delivery caused a page fault\n"));
