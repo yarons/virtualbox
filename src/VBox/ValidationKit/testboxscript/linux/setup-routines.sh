@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: setup-routines.sh 66784 2017-05-04 11:26:24Z klaus.espenlaub@oracle.com $
+# $Id: setup-routines.sh 66786 2017-05-04 11:49:05Z klaus.espenlaub@oracle.com $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup.
 #
@@ -74,7 +74,7 @@ os_install_service() {
 }
 
 os_enable_service() {
-    stop_init_script testboxscript-service
+    start_init_script testboxscript-service
     return 0;
 }
 
