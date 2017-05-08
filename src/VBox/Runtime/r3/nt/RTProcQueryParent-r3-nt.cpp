@@ -1,4 +1,4 @@
-/* $Id: RTProcQueryParent-r3-nt.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: RTProcQueryParent-r3-nt.cpp 66824 2017-05-08 16:52:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -53,7 +53,7 @@ RTR3DECL(int) RTProcQueryParent(RTPROCESS hProcess, PRTPROCESS phParent)
     else
     {
         CLIENT_ID ClientId;
-        ClientId.UniqueProcess = (HANDLE)hProcess;
+        ClientId.UniqueProcess = (HANDLE)(uintptr_t)hProcess;
         ClientId.UniqueThread  = NULL;
 
         OBJECT_ATTRIBUTES ObjAttrs;
