@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 66862 2017-05-10 13:02:36Z klaus.espenlaub@oracle.com $ */
+/* $Id: RTErrConvertFromErrno.cpp 66863 2017-05-10 13:11:58Z noreply@oracle.com $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -33,6 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/errno.h>
+#include <iprt/log.h>
 
 
 RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
