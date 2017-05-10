@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwinCOM.cpp 62477 2016-07-22 18:27:37Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromDarwinCOM.cpp 66862 2017-05-10 13:02:36Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Convert Darwin COM returns codes to iprt status codes.
  */
@@ -57,7 +57,7 @@ RTDECL(int) RTErrConvertFromDarwinCOM(int32_t iNativeCode)
     }
 
     /* unknown error. */
-    AssertMsgFailed(("Unhandled error %#x\n", iNativeCode));
+    AssertLogRelMsgFailed(("Unhandled error %#x\n", iNativeCode));
     return VERR_UNRESOLVED_ERROR;
 }
 
