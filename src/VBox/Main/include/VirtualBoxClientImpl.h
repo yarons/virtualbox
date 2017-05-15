@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 66629 2017-04-20 14:05:28Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxClientImpl.h 66902 2017-05-15 23:21:57Z noreply@oracle.com $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -93,6 +93,7 @@ private:
         }
 
         ComPtr<IVirtualBox> m_pVirtualBox;
+        ComPtr<IToken> m_pToken;
         const ComObjPtr<EventSource> m_pEventSource;
 
         RTTHREAD m_ThreadWatcher;
