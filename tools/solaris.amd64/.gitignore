@@ -1,4 +1,7 @@
 /libSDL
 /libsdl
-/qt
 /libXcursor
+/nasm
+/qt
+/s10libs
+/yasm
