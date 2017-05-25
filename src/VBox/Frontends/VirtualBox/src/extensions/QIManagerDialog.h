@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 67017 2017-05-22 14:44:36Z sergey.dubov@oracle.com $ */
+/* $Id: QIManagerDialog.h 67075 2017-05-25 08:44:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class declaration.
  */
@@ -27,6 +27,14 @@ class QIManagerDialog;
 #ifdef VBOX_WS_MAC
 class UIToolBar;
 #endif
+
+
+/** Widget embedding type. */
+enum EmbedTo
+{
+    EmbedTo_Dialog,
+    EmbedTo_Stack
+};
 
 
 /** Manager dialog factory insterface. */
