@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 67116 2017-05-26 12:51:18Z knut.osmundsen@oracle.com $ */
+/* $Id: pkzipvfs.cpp 67123 2017-05-28 12:19:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -1238,6 +1238,7 @@ static const RTVFSFSSTREAMOPS rtZipPkzipFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipPkzipFss_Next,
+    NULL,
     NULL,
     RTVFSFSSTREAMOPS_VERSION
 };
