@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67262 2017-06-05 16:37:11Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.h 67275 2017-06-06 14:26:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -152,6 +152,9 @@ private:
 
     /** @name Toolbar helpers.
       * @{ */
+        /** Updates action states. */
+        void updateActionStates();
+
         /** Proposes to take a snapshot. */
         bool takeSnapshot();
         /** Proposes to delete the snapshot. */
