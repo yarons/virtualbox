@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintHex.c 62500 2016-07-22 19:06:59Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxPrintHex.c 67350 2017-06-12 17:42:14Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxPrintHex.c - Implementation of the VBoxPrintHex() debug logging routine.
  */
@@ -31,6 +31,7 @@
 *******************************************************************************/
 #include "VBoxDebugLib.h"
 #include "DevEFI.h"
+#include "iprt/asm.h"
 
 
 /**
