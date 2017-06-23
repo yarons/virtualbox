@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 67590 2017-06-23 19:24:52Z michal.necasek@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 67593 2017-06-23 19:53:19Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -988,7 +988,7 @@ static DECLCALLBACK(uint32_t) vusbRhGetPeriodicFrameRate(PVUSBIROOTHUBCONNECTOR 
     return pThis->uFrameRate;
 }
 
-/** @interface_method_impl{VUSBIROOTHUBCONNECTOR,pfnGetPeriodicFrameRate} */
+/** @interface_method_impl{VUSBIROOTHUBCONNECTOR,pfnUpdateIsocFrameDelta} */
 static DECLCALLBACK(uint32_t) vusbRhUpdateIsocFrameDelta(PVUSBIROOTHUBCONNECTOR pInterface, PVUSBIDEVICE pDevice,
                                                          int EndPt, VUSBDIRECTION enmDir, uint16_t uNewFrame, uint8_t uBits)
 {
