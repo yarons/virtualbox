@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 67250 2017-06-02 15:39:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.h 67573 2017-06-23 08:59:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -356,10 +356,18 @@ protected:
 
     /** @name Prepare/cleanup cascade.
       * @{ */
-        /** Prepares dialog. */
-        void prepareDialog();
-        /** Prepares widget. */
-        void prepareWidget();
+        /** Configures all. */
+        virtual void configure() /* override */;
+        /** Configures central-widget. */
+        virtual void configureCentralWidget() /* override */;
+        /** Perform final preparations. */
+        virtual void finalize() /* override */;
+    /** @} */
+
+    /** @name Widget stuff.
+      * @{ */
+        /** Returns the widget. */
+        virtual UIMediumManagerWidget *widget() /* override */;
     /** @} */
 
     /** Allow factory access to private/protected members: */
