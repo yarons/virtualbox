@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 67562 2017-06-22 14:10:15Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevPciIch9.cpp 67583 2017-06-23 12:00:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3268,9 +3268,6 @@ static DECLCALLBACK(void) ich9pciReset(PPDMDEVINS pDevIns)
 {
     /* Reset everything under the root bridge. */
     ich9pciResetBridge(pDevIns);
-
-    /* Do a fresh Fake PCI BIOS setup. */
-    ich9pciFakePCIBIOS(pDevIns);
 }
 
 
