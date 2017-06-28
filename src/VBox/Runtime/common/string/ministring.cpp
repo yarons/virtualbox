@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 67651 2017-06-27 17:11:00Z knut.osmundsen@oracle.com $ */
+/* $Id: ministring.cpp 67673 2017-06-28 20:21:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -149,7 +149,7 @@ RTCString &RTCString::append(const char *pszThat)
     return *this;
 }
 
-RTCString& RTCString::append(char ch)
+RTCString &RTCString::append(char ch)
 {
     Assert((unsigned char)ch < 0x80);                  /* Don't create invalid UTF-8. */
     if (ch)
