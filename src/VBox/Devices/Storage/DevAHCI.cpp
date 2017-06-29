@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 65648 2017-02-07 11:43:22Z noreply@oracle.com $ */
+/* $Id: DevAHCI.cpp 67678 2017-06-29 08:16:37Z noreply@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5860,7 +5860,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
     PCIDevSetVendorId    (&pThis->dev, 0x8086); /* Intel */
     PCIDevSetDeviceId    (&pThis->dev, 0x2829); /* ICH-8M */
-    PCIDevSetCommand     (&pThis->dev, 0x0000);
+    PCIDevSetCommand     (&pThis->dev, PCI_COMMAND_IOACCESS | PCI_COMMAND_MEMACCESS | PCI_COMMAND_BUSMASTER);
 #ifdef VBOX_WITH_MSI_DEVICES
     PCIDevSetStatus      (&pThis->dev, VBOX_PCI_STATUS_CAP_LIST);
     PCIDevSetCapabilityList(&pThis->dev, 0x80);
