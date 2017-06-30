@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 67730 2017-06-30 12:42:20Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 67738 2017-06-30 14:49:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -43,6 +43,9 @@
 #include "DisplayUtils.h"
 #include "MachineImplCloneVM.h"
 #include "AutostartDb.h"
+#ifdef VBOX_WITH_UNATTENDED
+# include "UnattendedImpl.h"
+#endif
 #include "SystemPropertiesImpl.h"
 
 // generated header
