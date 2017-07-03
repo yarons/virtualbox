@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.h 62499 2016-07-22 19:06:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLwipCore.h 67763 2017-07-03 16:25:01Z noreply@oracle.com $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
@@ -19,8 +19,8 @@
 #define __VBOXLWIPCORE_H__
 
 
-typedef DECLCALLBACK(void) FNRT1(void *);
-typedef FNRT1 *PFNRT1;
+typedef DECLCALLBACKPTR(void, PFNRT1)(void *);
+
 /**
  * initiliazes LWIP core, and do callback on tcp/ip thread
  */
