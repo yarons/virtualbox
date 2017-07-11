@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 63259 2016-08-10 12:37:42Z knut.osmundsen@oracle.com $ */
+/* $Id: Nvram.cpp 67914 2017-07-11 20:46:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_DEV_EFI
+#include "LoggingNew.h"
+
 #include "Nvram.h"
 #include "ConsoleImpl.h"
 #include "Global.h"

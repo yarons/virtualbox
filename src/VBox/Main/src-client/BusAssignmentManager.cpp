@@ -1,7 +1,5 @@
-/* $Id: BusAssignmentManager.cpp 63747 2016-09-07 12:00:41Z alexander.eichner@oracle.com $ */
-
+/* $Id: BusAssignmentManager.cpp 67914 2017-07-11 20:46:37Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VirtualBox bus slots assignment manager
  */
 
@@ -16,6 +14,10 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN
+#include "LoggingNew.h"
+
 #include "BusAssignmentManager.h"
 
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 66266 2017-03-27 12:20:38Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioVideoRec.cpp 67914 2017-07-11 20:46:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -33,7 +33,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
-#include <VBox/log.h>
+#include "LoggingNew.h"
+
 #include "DrvAudioVideoRec.h"
 #include "ConsoleImpl.h"
 

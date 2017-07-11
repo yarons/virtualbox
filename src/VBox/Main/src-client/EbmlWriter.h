@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 65435 2017-01-24 16:53:55Z andreas.loeffler@oracle.com $ */
+/* $Id: EbmlWriter.h 67914 2017-07-11 20:46:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -144,4 +144,4 @@ private:
     DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(WebMWriter);
 };
 
-#endif /* ____EBMLWRITER */
+#endif /* !____EBMLWRITER */
