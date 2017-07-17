@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 67994 2017-07-17 12:57:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 68001 2017-07-17 15:27:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1654,7 +1654,7 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
         case VMMR0_DO_PGM_PHYS_SETUP_IOMMU:
             if (idCpu != 0)
                 return VERR_INVALID_CPU_ID;
-            rc = PGMR0PhysSetupIommu(pVM);
+            rc = PGMR0PhysSetupIoMmu(pGVM, pVM);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
