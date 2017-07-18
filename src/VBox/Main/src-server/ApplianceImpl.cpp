@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 67184 2017-05-31 20:32:04Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 68016 2017-07-18 11:09:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -377,16 +377,15 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
  */
 HRESULT VirtualBox::createAppliance(ComPtr<IAppliance> &aAppliance)
 {
-    HRESULT rc;
-
     ComObjPtr<Appliance> appliance;
-    appliance.createObject();
-    rc = appliance->init(this);
-
-    if (SUCCEEDED(rc))
-        appliance.queryInterfaceTo(aAppliance.asOutParam());
-
-    return rc;
+    HRESULT hrc = appliance.createObject();
+    if (SUCCEEDED(hrc))
+    {
+        hrc = appliance->init(this);
+        if (SUCCEEDED(hrc))
+            hrc = appliance.queryInterfaceTo(aAppliance.asOutParam());
+    }
+    return hrc;
 }
 
 /**
