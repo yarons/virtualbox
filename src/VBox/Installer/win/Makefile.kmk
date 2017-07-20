@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68064 2017-07-20 11:18:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 68065 2017-07-20 11:53:42Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -757,6 +757,7 @@ ifdef VBOX_UNATTENDED_TEMPLATES
 		'  </Directory>'
 endif
 	$(APPEND) $@ '</Include>'
+	$(CAT) $@
 
 
 #
