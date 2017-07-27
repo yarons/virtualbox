@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 68024 2017-07-18 13:54:10Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 68133 2017-07-27 09:44:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1197,7 +1197,6 @@ private:
                                 ComPtr<IProgress> &aProgress);
     HRESULT restoreSnapshot(const ComPtr<ISnapshot> &aSnapshot,
                             ComPtr<IProgress> &aProgress);
-    HRESULT createUnattendedInstaller(ComPtr<IUnattended> &aUnattended);
     HRESULT applyDefaults(const com::Utf8Str &aFlags);
 
     // wrapped IInternalMachineControl properties
