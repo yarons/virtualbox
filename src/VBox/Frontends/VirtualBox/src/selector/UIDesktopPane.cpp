@@ -1,4 +1,4 @@
-/* $Id: UIDesktopPane.cpp 63977 2016-09-23 14:44:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopPane.cpp 68157 2017-07-28 14:34:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopPane class implementation.
  */
@@ -226,7 +226,7 @@ void UIDesktopPanePrivate::prepareErrorPane()
 *   Class UIDesktopPane implementation.                                                                                          *
 *********************************************************************************************************************************/
 
-UIDesktopPane::UIDesktopPane(QAction *pRefreshAction, QWidget *pParent)
+UIDesktopPane::UIDesktopPane(QAction *pRefreshAction, QWidget *pParent /* = 0 */)
     : QWidget(pParent)
 {
     /* Prepare main layout: */
