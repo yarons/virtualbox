@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 68230 2017-08-02 09:40:44Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorWindow.h 68277 2017-08-03 10:18:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -74,6 +74,9 @@ protected:
     virtual bool shouldBeMaximized() const /* override */;
 
 private slots:
+
+    /** Handles polishing in the async way. */
+    void sltHandlePolishEvent();
 
 #if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
     /** Handles host-screen available-area change. */
