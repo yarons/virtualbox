@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 68315 2017-08-07 12:50:54Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxGlobal.cpp 68394 2017-08-11 13:14:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -102,7 +102,6 @@
 # include "CAudioAdapter.h"
 # include "CNetworkAdapter.h"
 # include "CSerialPort.h"
-# include "CParallelPort.h"
 # include "CUSBController.h"
 # include "CHostUSBDevice.h"
 # include "CHostVideoInputDevice.h"

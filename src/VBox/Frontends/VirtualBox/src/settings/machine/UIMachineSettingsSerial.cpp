@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 66626 2017-04-20 11:57:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 68394 2017-08-11 13:14:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -352,7 +352,7 @@ void UIMachineSettingsSerialPage::loadToCacheFrom(QVariant &data)
     /* Clear cache initially: */
     m_pCache->clear();
 
-    /* Prepare old parallel data: */
+    /* Prepare old serial data: */
     UIDataSettingsMachineSerial oldSerialData;
 
     /* For each port: */
