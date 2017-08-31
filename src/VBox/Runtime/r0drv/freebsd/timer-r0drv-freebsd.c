@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: timer-r0drv-freebsd.c 68580 2017-08-31 12:11:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -166,7 +166,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
     if (!pTimer->fSuspended)
         return VERR_TIMER_ACTIVE;
     if (   pTimer->fSpecificCpu
-        && !RTMpIsCpuOnline(pTimer->idCpu))
+        && !RTMpIsCpuOnline(RTMpCpuIdFromSetIndex(pTimer->iCpu)))
         return VERR_CPU_OFFLINE;
 
     /*
