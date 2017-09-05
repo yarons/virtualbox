@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 62851 2016-08-01 22:13:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServicePageSharing.cpp 68660 2017-09-05 18:35:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -59,6 +59,7 @@
 #include <iprt/system.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
