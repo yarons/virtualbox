@@ -1,4 +1,4 @@
-/* $Id: VbglR0CanUsePhysPageList.cpp 68642 2017-09-05 13:53:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VbglR0CanUsePhysPageList.cpp 68645 2017-09-05 14:17:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Physical memory heap.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 
 
 /**

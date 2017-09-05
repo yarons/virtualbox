@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibMouse.cpp 68642 2017-09-05 13:53:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibMouse.cpp 68645 2017-09-05 14:17:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Mouse Integration.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 
 /**
  * Sets the function which is called back on each mouse pointer event.  Only
