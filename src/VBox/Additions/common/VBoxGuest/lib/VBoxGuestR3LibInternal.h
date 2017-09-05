@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 68642 2017-09-05 13:53:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibInternal.h 68650 2017-09-05 14:34:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */

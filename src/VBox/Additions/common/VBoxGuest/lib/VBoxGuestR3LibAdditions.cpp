@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 68642 2017-09-05 13:53:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 68650 2017-09-05 14:34:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -33,7 +33,7 @@
 #include <iprt/string.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 
