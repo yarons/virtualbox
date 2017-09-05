@@ -1,4 +1,4 @@
-/* $Id: HGCMInternal.cpp 68550 2017-08-31 12:09:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 68641 2017-09-05 13:51:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
