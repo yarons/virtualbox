@@ -1,4 +1,4 @@
-/* $Id: VBoxMouseFilter.cpp 68633 2017-09-05 11:56:00Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMouseFilter.cpp 68664 2017-09-05 18:48:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxMouse; input_server filter - Haiku Guest Additions, implementation.
  */
@@ -56,7 +56,6 @@
 #include "VBoxMouseFilter.h"
 #include <VBox/VBoxGuestLib.h>
 #include <VBoxGuestInternal.h>
-#include <VBox/VMMDev.h>
 #include <VBox/log.h>
 #include <iprt/err.h>
 
