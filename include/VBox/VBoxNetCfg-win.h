@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 62688 2016-07-29 13:30:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetCfg-win.h 68670 2017-09-06 09:02:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -41,6 +41,7 @@
 #include <Netcfgn.h>
 #include <iprt/win/Setupapi.h>
 #include <VBox/cdefs.h>
+#include <iprt/types.h>
 
 /** @defgroup grp_vboxnetcfgwin     The Windows Network Configration Library
  * @{ */
