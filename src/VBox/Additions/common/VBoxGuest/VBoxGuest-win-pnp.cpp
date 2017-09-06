@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-pnp.cpp 68654 2017-09-05 17:22:12Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-win-pnp.cpp 68688 2017-09-06 18:18:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest-win-pnp - Windows Plug'n'Play specifics.
  */
@@ -25,6 +25,7 @@
 #include <VBox/log.h>
 #include <VBox/version.h>
 #include <VBox/VBoxGuestLib.h>
+#include <iprt/assert.h>
 
 
 /*********************************************************************************************************************************
