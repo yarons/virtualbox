@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 66823 2017-05-08 16:51:09Z knut.osmundsen@oracle.com $ */
+/* $Id: bldprog-strtab-template.cpp.h 68675 2017-09-06 10:08:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -900,6 +900,7 @@ static void BldProgStrTab_PrintCStringLitteral(PBLDPROGSTRTAB pThis, PBLDPROGSTR
 #else
         else
             fprintf(pOut, "\\x%02", (unsigned)uch);
+        NOREF(pThis);
 #endif
     }
 }
