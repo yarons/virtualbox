@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 68804 2017-09-20 13:09:10Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 68828 2017-09-22 14:15:57Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -824,6 +824,10 @@ void Console::uninit()
 
     // we don't perform uninit() as it's possible that some pending event refers to this source
     unconst(mEventSource).setNull();
+
+#ifdef VBOX_WITH_EXTPACK
+    unconst(mptrExtPackManager).setNull();
+#endif
 
     LogFlowThisFuncLeave();
 }
