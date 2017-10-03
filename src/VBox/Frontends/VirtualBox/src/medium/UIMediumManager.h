@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 68326 2017-08-07 18:03:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.h 68962 2017-10-03 13:26:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -182,6 +182,8 @@ private:
         void prepareDetailsWidget();
 //        /** Prepares progress-bar. */
 //        void prepareProgressBar();
+        /** Load settings: */
+        void loadSettings();
 
         /** Repopulates tree-widgets content. */
         void repopulateTreeWidgets();
