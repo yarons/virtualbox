@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 62511 2016-07-22 19:12:58Z knut.osmundsen@oracle.com $ */
+/* $Id: dnsproxy.c 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 
 /*
  * Copyright (C) 2009-2016 Oracle Corporation
@@ -614,7 +614,7 @@ main(int argc, char *argv[])
         case 'V':
             fprintf(stderr, PACKAGE_STRING "\n");
             exit(0);
-        /* FALLTHROUGH */
+        RT_FALL_THRU();
         case 'h':
         default:
             fprintf(stderr,

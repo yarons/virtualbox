@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68826 2017-09-22 13:32:01Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5554,7 +5554,7 @@ static DECLCALLBACK(int) rtFsIsoMakerOutFile_QueryInfo(void *pvThis, PRTFSOBJINF
     {
         case RTFSOBJATTRADD_NOTHING:
             enmAddAttr = RTFSOBJATTRADD_UNIX;
-            /* fall thru */
+            RT_FALL_THRU();
         case RTFSOBJATTRADD_UNIX:
             pObjInfo->Attr.u.Unix.uid           = NIL_RTUID;
             pObjInfo->Attr.u.Unix.gid           = NIL_RTGID;

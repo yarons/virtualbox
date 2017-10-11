@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 65919 2017-03-01 18:24:27Z noreply@oracle.com $ */
+/* $Id: DevFdc.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -201,7 +201,7 @@ static void fd_init(fdrive_t *drv, bool fInit)
                     break;
                 default:
                     AssertFailed();
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_2_88:
                     drv->drive = FDRIVE_DRV_288;
                     break;

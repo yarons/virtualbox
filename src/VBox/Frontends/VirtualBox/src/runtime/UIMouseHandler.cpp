@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 68315 2017-08-07 12:50:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -724,7 +724,7 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
 
                     /* This event should be also processed using next 'case': */
                 }
-                /* fall thru */
+                RT_FALL_THRU();
                 case QEvent::MouseButtonPress:
                 case QEvent::MouseButtonDblClick:
                 {

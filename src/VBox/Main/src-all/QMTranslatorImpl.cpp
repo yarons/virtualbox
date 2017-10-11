@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 65665 2017-02-07 14:14:42Z noreply@oracle.com $ */
+/* $Id: QMTranslatorImpl.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -241,7 +241,7 @@ public:
                     /* Only get size information to speed-up vector filling
                      * if Hashes section goes in the file before Message section */
                     m_messageArray.reserve(sLen >> 3);
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case Context:
                     stream.seek(sLen);
                     break;

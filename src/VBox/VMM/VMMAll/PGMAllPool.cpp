@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 65957 2017-03-06 20:41:43Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3985,7 +3985,7 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
              */
             ASMReloadCR3();
 #endif
-            /* fall thru */
+            RT_FALL_THRU();
         case PGMPOOLKIND_PAE_PD_PHYS:
         case PGMPOOLKIND_PAE_PDPT_PHYS:
         case PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD:
