@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69048 2017-10-11 16:34:05Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 69049 2017-10-11 16:36:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2701,8 +2701,8 @@ static int rtFsIsoDir_FindEntryUdf(PRTFSISODIRSHRD pThis, const char *pszEntry, 
     for (;;)
     {
         RTUNICP uc;
-        int rc = RTStrGetCpEx(&pszSrc, &uc);
-        AssertRCReturn(rc, rc);
+        int rc2 = RTStrGetCpEx(&pszSrc, &uc);
+        AssertRCReturn(rc2, rc2);
         if (uc <= 0x7f)
         {
             if (uc)
