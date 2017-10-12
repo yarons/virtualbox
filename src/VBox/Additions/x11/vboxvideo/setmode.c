@@ -1,4 +1,4 @@
-/* $Id: setmode.c 69064 2017-10-12 18:18:01Z noreply@oracle.com $ */
+/* $Id: setmode.c 69065 2017-10-12 18:48:38Z noreply@oracle.com $ */
 /** @file
  * Linux Additions X11 graphics driver, mode setting
  */
@@ -47,8 +47,6 @@
 # include <string.h>
 #endif
 #include "vboxvideo.h"
-#include "version-generated.h"
-#include "product-generated.h"
 #include "xf86.h"
 
 /* VGA hardware functions for setting and restoring text mode */
