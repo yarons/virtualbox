@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
+/* $Id: Settings.cpp 69070 2017-10-13 12:41:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4135,6 +4135,7 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
             pelmHwChild->getAttributeValue("rate",      hw.ulVideoCaptureRate);
             pelmHwChild->getAttributeValue("fps",       hw.ulVideoCaptureFPS);
             pelmHwChild->getAttributeValue("maxTime",   hw.ulVideoCaptureMaxTime);
+            pelmHwChild->getAttributeValue("maxSize",   hw.ulVideoCaptureMaxSize);
             pelmHwChild->getAttributeValue("options",   hw.strVideoCaptureOptions);
         }
         else if (pelmHwChild->nameEquals("RemoteDisplay"))
