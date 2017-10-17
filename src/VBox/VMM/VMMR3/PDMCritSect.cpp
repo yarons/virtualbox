@@ -1,10 +1,10 @@
-/* $Id: PDMCritSect.cpp 62644 2016-07-28 21:40:25Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMCritSect.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

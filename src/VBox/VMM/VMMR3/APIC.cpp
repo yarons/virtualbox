@@ -1,10 +1,10 @@
-/* $Id: APIC.cpp 65380 2017-01-20 09:00:28Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: APIC.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

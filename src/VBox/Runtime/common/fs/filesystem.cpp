@@ -1,10 +1,10 @@
-/* $Id: filesystem.cpp 66727 2017-04-28 21:04:23Z knut.osmundsen@oracle.com $ */
+/* $Id: filesystem.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Filesystem API (Filesystem) - generic code.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

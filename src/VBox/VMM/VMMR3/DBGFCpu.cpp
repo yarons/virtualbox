@@ -1,10 +1,10 @@
-/* $Id: DBGFCpu.cpp 64720 2016-11-20 02:00:02Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFCpu.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

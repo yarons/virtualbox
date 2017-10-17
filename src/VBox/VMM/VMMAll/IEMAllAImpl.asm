@@ -1,9 +1,9 @@
-; $Id: IEMAllAImpl.asm 65506 2017-01-29 14:25:45Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
 
-; Copyright (C) 2011-2016 Oracle Corporation
+; Copyright (C) 2011-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

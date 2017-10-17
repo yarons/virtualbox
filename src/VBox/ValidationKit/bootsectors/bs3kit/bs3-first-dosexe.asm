@@ -1,10 +1,10 @@
-; $Id: bs3-first-dosexe.asm 60539 2016-04-18 14:09:39Z knut.osmundsen@oracle.com $
+; $Id: bs3-first-dosexe.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - First Object for DOS executables, defines segments only.
 ;
 
 ;
-; Copyright (C) 2007-2016 Oracle Corporation
+; Copyright (C) 2007-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

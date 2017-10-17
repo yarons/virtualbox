@@ -1,10 +1,10 @@
- ; $Id: CPUMRZA.asm 66878 2017-05-12 12:40:17Z knut.osmundsen@oracle.com $
+ ; $Id: CPUMRZA.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Raw-mode and Ring-0 Context Assembly Routines.
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

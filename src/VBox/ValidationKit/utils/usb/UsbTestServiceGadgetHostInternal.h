@@ -1,10 +1,10 @@
-/* $Id: UsbTestServiceGadgetHostInternal.h 60324 2016-04-05 08:33:05Z alexander.eichner@oracle.com $ */
+/* $Id: UsbTestServiceGadgetHostInternal.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

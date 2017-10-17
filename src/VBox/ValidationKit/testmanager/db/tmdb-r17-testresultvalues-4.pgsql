@@ -1,10 +1,10 @@
--- $Id: tmdb-r17-testresultvalues-4.pgsql 61457 2016-06-03 23:27:04Z knut.osmundsen@oracle.com $
+-- $Id: tmdb-r17-testresultvalues-4.pgsql 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
 --- @file
 -- VBox Test Manager Database - Log viewer related optimizations for TestResultValues.
 --
 
 --
--- Copyright (C) 2013-2016 Oracle Corporation
+-- Copyright (C) 2013-2017 Oracle Corporation
 --
 -- This file is part of VirtualBox Open Source Edition (OSE), as
 -- available from http://www.virtualbox.org. This file is free software;
