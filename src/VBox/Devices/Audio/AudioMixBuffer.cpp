@@ -1,6 +1,6 @@
-/* $Id: AudioMixBuffer.cpp 68271 2017-08-03 08:19:14Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixBuffer.cpp 69119 2017-10-17 19:08:38Z knut.osmundsen@oracle.com $ */
 /** @file
- * VBox audio: Audio mixing buffer for converting reading/writing audio data.
+ * Audio mixing buffer for converting reading/writing audio data.
  */
 
 /*

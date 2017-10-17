@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 69118 2017-10-17 18:50:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostDSound.cpp 69119 2017-10-17 19:08:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2719,3 +2719,4 @@ const PDMDRVREG g_DrvHostDSound =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
+

@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 68752 2017-09-13 20:06:33Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxMMNotificationClient.h 69119 2017-10-17 19:08:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -84,5 +84,5 @@ private:
     IFACEMETHODIMP_(ULONG) AddRef();
     /** @} */
 };
-#endif /* ___VBOX_MMNOTIFICATIONCLIENT_H___ */
+#endif /* !___VBOX_MMNOTIFICATIONCLIENT_H___ */
 

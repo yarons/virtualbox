@@ -1,6 +1,6 @@
-/* $Id: AudioMixBuffer.h 68132 2017-07-27 08:15:43Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixBuffer.h 69119 2017-10-17 19:08:38Z knut.osmundsen@oracle.com $ */
 /** @file
- * VBox audio - Mixing buffer to convert audio samples to/from different rates / formats.
+ * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
 
 /*
