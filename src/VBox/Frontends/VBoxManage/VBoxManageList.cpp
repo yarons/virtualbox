@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 69046 2017-10-11 16:11:23Z noreply@oracle.com $ */
+/* $Id: VBoxManageList.cpp 69164 2017-10-23 14:13:55Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -170,6 +170,9 @@ static HRESULT listNetworkInterfaces(const ComPtr<IVirtualBox> pVirtualBox,
         HostNetworkInterfaceMediumType_T Type;
         networkInterface->COMGETTER(MediumType)(&Type);
         RTPrintf("MediumType:      %s\n", getHostIfMediumTypeText(Type));
+        BOOL fWireless;
+        networkInterface->COMGETTER(Wireless)(&fWireless);
+        RTPrintf("Wireless:        %s\n", fWireless ? "Yes" : "No");
         HostNetworkInterfaceStatus_T Status;
         networkInterface->COMGETTER(Status)(&Status);
         RTPrintf("Status:          %s\n", getHostIfStatusText(Status));
