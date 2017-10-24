@@ -1,4 +1,4 @@
-; $Id: assertA-r0drv-os2.asm 8256 2008-04-21 20:53:28Z noreply@oracle.com $
+; $Id: assertA-r0drv-os2.asm 69218 2017-10-24 14:57:36Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - DevHelp_GetDOSVar, Ring-0 Driver, OS/2.
 ;
