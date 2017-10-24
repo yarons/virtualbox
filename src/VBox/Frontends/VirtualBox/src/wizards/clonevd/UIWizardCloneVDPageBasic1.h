@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.h 69197 2017-10-24 10:19:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVDPageBasic1.h 69200 2017-10-24 11:28:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class declaration.
  */
@@ -64,7 +64,7 @@ public:
 
     /** Constructs basic page.
       * @param  comSourceVirtualDisk  Brings the initial source disk to make copy from. */
-    UIWizardCloneVDPageBasic1(const CMedium &comSourceVirtualDisk);
+    UIWizardCloneVDPageBasic1(const CMedium &comSourceVirtualDisk, KDeviceType enmDeviceType);
 
 protected:
 
