@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69186 2017-10-24 07:44:17Z michal.necasek@oracle.com $ */
+/* $Id: HMSVMR0.cpp 69221 2017-10-24 15:07:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -322,6 +322,7 @@ static int hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMTRANSIENT pSv
 #ifdef VBOX_WITH_NESTED_HWVIRT
 static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient);
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

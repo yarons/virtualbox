@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: CPUMRCA.asm 69221 2017-10-24 15:07:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
