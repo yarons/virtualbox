@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 69197 2017-10-24 10:19:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 69198 2017-10-24 10:41:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -51,17 +51,13 @@ public:
     /** Constructs wizard to clone @a comSourceVirtualDisk passing @a pParent to the base-class. */
     UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtualDisk);
 
+    /** Returns source virtual-disk. */
+    CMedium sourceVirtualDisk() const { return m_comSourceVirtualDisk; }
     /** Returns target virtual-disk. */
     CMedium targetVirtualDisk() const { return m_comTargetVirtualDisk; }
 
-protected:
-
     /** Makes a copy of source virtual-disk. */
     bool copyVirtualDisk();
-
-    /** Who will be able to copy virtual-disk. */
-    friend class UIWizardCloneVDPageBasic4;
-    friend class UIWizardCloneVDPageExpert;
 
 private:
 
