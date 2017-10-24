@@ -1,4 +1,4 @@
-; $Id: bootsector-empty.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: bootsector-empty.asm 69222 2017-10-24 15:10:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; Empty bootsector can be used as example
 ;
@@ -57,5 +57,4 @@ hlt_again:
 padding:
 times 510 - (padding - start) db 0
     db 055h, 0aah
-
 

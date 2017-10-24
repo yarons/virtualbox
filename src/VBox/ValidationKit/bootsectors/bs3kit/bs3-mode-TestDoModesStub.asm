@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TestDoModesStub.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-TestDoModesStub.asm 69222 2017-10-24 15:10:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3TestDoModes near stub.
 ;
@@ -50,5 +50,4 @@ BS3_PROC_BEGIN_MODE Bs3TestDoModes, BS3_PBC_NEAR
  %endif
 BS3_PROC_END_MODE   Bs3TestDoModes
 %endif
-
 

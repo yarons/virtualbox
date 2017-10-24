@@ -1,4 +1,4 @@
-; $Id: bs3-first-dosexe.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: bs3-first-dosexe.asm 69222 2017-10-24 15:10:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - First Object for DOS executables, defines segments only.
 ;
@@ -30,5 +30,4 @@
 ; Defines the entry point 'start' as well, leaving us in BS3TEXT16.
 ;
 %include "bs3-first-common.mac"
-
 

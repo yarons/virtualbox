@@ -1,4 +1,4 @@
-; $Id: bootsector-pae.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: bootsector-pae.asm 69222 2017-10-24 15:10:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; Bootsector that switches the CPU info PAE mode.
 ;
@@ -162,5 +162,4 @@ szShutdown:
 padding:
 times 510 - (padding - start) db 0
     db 055h, 0aah
-
 
