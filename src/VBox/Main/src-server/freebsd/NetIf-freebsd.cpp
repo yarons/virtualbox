@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 68026 2017-07-18 14:15:32Z aleksey.ilyushin@oracle.com $ */
+/* $Id: NetIf-freebsd.cpp 69238 2017-10-24 16:11:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -196,7 +196,7 @@ static bool isWireless(const char *pszName)
     }
 
     return fWireless;
-}    
+}
 
 int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 {
