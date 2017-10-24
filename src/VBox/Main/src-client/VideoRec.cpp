@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 69189 2017-10-24 09:00:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VideoRec.cpp 69193 2017-10-24 09:18:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -31,7 +31,7 @@
 
 #include <VBox/com/VirtualBox.h>
 
-#include "EbmlWriter.h"
+#include "EBMLWriter.h"
 #include "VideoRec.h"
 
 #ifdef VBOX_WITH_LIBVPX
