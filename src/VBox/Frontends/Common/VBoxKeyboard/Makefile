@@ -1,4 +1,4 @@
-# $Id
+# $Id: Makefile 69255 2017-10-24 19:39:05Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for building the VirtualBox keyboard handler library.
 #
