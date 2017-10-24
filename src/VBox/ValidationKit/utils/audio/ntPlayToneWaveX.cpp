@@ -1,4 +1,4 @@
-/* $Id: ntPlayToneWaveX.cpp 69226 2017-10-24 15:19:10Z knut.osmundsen@oracle.com $ */
+/* $Id: ntPlayToneWaveX.cpp 69227 2017-10-24 15:19:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * ????
  */
@@ -209,7 +209,7 @@ int main(int argc, char **argv)
     {
         waveOutClose(g_hWaveOut);
     }
-    
+
     HeapFree(GetProcessHeap(), 0, i16Samples1);
     HeapFree(GetProcessHeap(), 0, i16Samples2);
 }

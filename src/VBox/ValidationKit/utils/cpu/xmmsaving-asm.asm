@@ -1,4 +1,4 @@
-; $Id: xmmsaving-asm.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: xmmsaving-asm.asm 69227 2017-10-24 15:19:58Z knut.osmundsen@oracle.com $
 ;; @file
 ; xmmsaving - assembly helpers.
 ;
@@ -149,5 +149,4 @@ BEGINPROC XmmSavingTestLoadSet
     leave
     ret
 ENDPROC   XmmSavingTestLoadSet
-
 
