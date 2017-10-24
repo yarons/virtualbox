@@ -1,4 +1,4 @@
-; $Id: ASMGetTR.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: ASMGetTR.asm 69219 2017-10-24 15:01:30Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - ASMGetTR().
 ;
@@ -34,7 +34,7 @@ BEGINCODE
 ;;
 ; Get the TR register.
 ; @returns TR.
-; 
+;
 BEGINPROC_EXPORTED ASMGetTR
         str     ax
         movzx   eax, ax

@@ -1,4 +1,4 @@
-; $Id: RTUInt128MulByU64.asm 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+; $Id: RTUInt128MulByU64.asm 69219 2017-10-24 15:01:30Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - RTUInt128MulByU64 - AMD64 implementation.
 ;
@@ -78,5 +78,4 @@ SEH64_END_PROLOGUE
 
         ret
 ENDPROC RTUInt128MulByU64
-
 
