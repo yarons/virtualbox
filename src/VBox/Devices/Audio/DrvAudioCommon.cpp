@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 69119 2017-10-17 19:08:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioCommon.cpp 69288 2017-10-25 11:32:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -17,6 +17,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
