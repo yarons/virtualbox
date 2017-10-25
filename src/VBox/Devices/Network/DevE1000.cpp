@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 69001 2017-10-06 12:12:04Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevE1000.cpp 69298 2017-10-25 12:56:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4429,7 +4429,7 @@ static int e1kFallbackAddToFrame(PE1KSTATE pThis, E1KTXDESC *pDesc, bool fOnWork
         e1kXmitFreeBuf(pThis);
     }
 
-    return VINF_SUCCESS; // @todo consider rc;
+    return VINF_SUCCESS; /// @todo consider rc;
 }
 #endif /* E1K_WITH_TXD_CACHE */
 
