@@ -1,7 +1,5 @@
-/* $Id: fakedri_drv.h 62521 2016-07-22 19:16:33Z knut.osmundsen@oracle.com $ */
-
+/* $Id: fakedri_drv.h 69310 2017-10-25 14:24:45Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VirtualBox guest OpenGL DRI header
  */
 
@@ -118,5 +116,5 @@ extern void VBOXGLXENTRYTAG(glXSelectEvent)(Display *dpy, GLXDrawable draw, unsi
 # undef GLXAPI_ENTRY
 #endif
 
-#endif /* ___CROPENGL_FAKEDRIDRV_H */
+#endif /* !___CROPENGL_FAKEDRIDRV_H */
 
