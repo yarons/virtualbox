@@ -1,6 +1,6 @@
 #!/bin/sh
-# $Id: autorun.sh 59583 2016-02-04 16:40:36Z noreply@oracle.com $
-#
+# $Id: autorun.sh 69327 2017-10-25 19:49:49Z knut.osmundsen@oracle.com $
+## @file
 # VirtualBox Guest Additions installation script for *nix guests
 #
 

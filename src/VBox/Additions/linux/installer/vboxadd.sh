@@ -1,6 +1,7 @@
 #! /bin/sh
-#
-# Linux Additions kernel module init script ($Revision: 69086 $)
+# $Id: vboxadd.sh 69327 2017-10-25 19:49:49Z knut.osmundsen@oracle.com $
+## @file
+# Linux Additions kernel module init script ($Revision: 69327 $)
 #
 
 #
