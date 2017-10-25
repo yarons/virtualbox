@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInternal.h 68652 2017-09-05 14:37:04Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibInternal.h 69308 2017-10-25 13:51:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -113,5 +113,4 @@ DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const ch
 RT_C_DECLS_END
 
 #endif
-
 
