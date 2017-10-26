@@ -1,7 +1,9 @@
+/* $Id: VBoxGINA.cpp 69360 2017-10-26 14:47:05Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * VBoxGINA -- Windows Logon DLL for VirtualBox
- *
+ */
+
+/*
  * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
