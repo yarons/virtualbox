@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69392 2017-10-26 17:24:52Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69393 2017-10-26 17:25:32Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the OpenGL guest/host code.
 #
@@ -46,5 +46,4 @@
 --filter-out-files *_special
 --filter-out-files /LICENSE
 --filter-out-files *.txt
-
 
