@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpers.cpp 63100 2016-08-06 15:44:22Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHelpers.cpp 69361 2017-10-26 14:51:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * helpers - Guest Additions Service helper functions
  */
@@ -15,10 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <malloc.h>
 #include <iprt/win/windows.h>
 
 #include <iprt/string.h>
+#include <iprt/alloca.h>
 #include <VBox/Log.h>
 #include <VBox/VBoxGuestLib.h>
 
