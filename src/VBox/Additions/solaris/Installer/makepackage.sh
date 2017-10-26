@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: makepackage.sh 69343 2017-10-26 12:11:00Z knut.osmundsen@oracle.com $
+## @file
 # VirtualBox Solaris Guest Additions package creation script.
+#
+
 #
 # Copyright (C) 2008-2012 Oracle Corporation
 #
