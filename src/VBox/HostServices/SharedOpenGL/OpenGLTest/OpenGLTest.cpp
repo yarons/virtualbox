@@ -1,4 +1,4 @@
-/* $Id: OpenGLTest.cpp 66393 2017-04-03 06:09:51Z noreply@oracle.com $ */
+/* $Id: OpenGLTest.cpp 69390 2017-10-26 17:17:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
