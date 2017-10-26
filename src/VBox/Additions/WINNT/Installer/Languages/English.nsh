@@ -1,5 +1,6 @@
-; $Id$
-; @file NLS for English language.
+; $Id: English.nsh 69354 2017-10-26 14:38:32Z knut.osmundsen@oracle.com $
+;; @file
+; NLS for English language.
 ;
 
 ;
