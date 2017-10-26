@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69266 2017-10-25 10:10:44Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69332 2017-10-26 10:30:59Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -97,6 +97,9 @@
 --filter-out-files "*/*-PkgInfo"
 --filter-out-files "*.plist"
 --filter-out-files "*/Doxyfile*"
+--filter-out-files "*/COPYING"
+--filter-out-files "*/COPYING.LIB"
+--filter-out-files "*.desktop"
 
 
 #
