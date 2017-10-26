@@ -1,5 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 68550 2017-08-31 12:09:41Z knut.osmundsen@oracle.com $ */
-
+/* $Id: VBoxCrHgsmi.cpp 69350 2017-10-26 14:18:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */

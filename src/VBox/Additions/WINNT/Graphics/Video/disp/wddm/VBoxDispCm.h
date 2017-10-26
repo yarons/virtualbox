@@ -1,5 +1,4 @@
-/* $Id: VBoxDispCm.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
-
+/* $Id: VBoxDispCm.h 69350 2017-10-26 14:18:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */

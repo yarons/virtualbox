@@ -1,5 +1,4 @@
-/* $Id: VBoxMPCommon.cpp 65381 2017-01-20 09:23:53Z noreply@oracle.com $ */
-
+/* $Id: VBoxMPCommon.cpp 69350 2017-10-26 14:18:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Miniport common utils
  */

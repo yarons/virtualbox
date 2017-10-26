@@ -1,5 +1,4 @@
-/* $Id: VBoxDispVrdpBmp.h 62522 2016-07-22 19:17:25Z knut.osmundsen@oracle.com $ */
-
+/* $Id: VBoxDispVrdpBmp.h 69350 2017-10-26 14:18:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -79,4 +78,4 @@ typedef struct _VRDPBC
 void vrdpbmpReset (VRDPBC *pCache);
 int vrdpbmpCacheSurface (VRDPBC *pCache, const SURFOBJ *pso, VRDPBCHASH *phash, VRDPBCHASH *phashDeleted, BOOL bForce);
 
-#endif /*VBOXDISPVRDPBMP_H*/
+#endif /* !VBOXDISPVRDPBMP_H */
