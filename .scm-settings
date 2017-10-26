@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69392 2017-10-26 17:24:52Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69394 2017-10-26 17:32:06Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -61,7 +61,6 @@
 --filter-out-dirs  "/src/VBox/Devices/Network/lwip*/src*/."
 --filter-out-dirs  "/src/VBox/Devices/Network/lwip*/doc*/."
 --filter-out-dirs  "/src/VBox/Devices/Network/lwip*/test*/."
---filter-out-dirs  "/src/VBox/Storage/VDFormats/StorageCraft/*/."
 --filter-out-dirs  "/src/VBox/RDP/client-*/."
 --filter-out-dirs  "/src/recompiler/tests/."
 
