@@ -1,9 +1,8 @@
-# $Id: Makefile 68682 2017-09-06 14:54:29Z noreply@oracle.com $
+# $Id: Makefile 69371 2017-10-26 15:34:57Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
 
-#
 #
 # Copyright (C) 2006-2017 Oracle Corporation
 #
