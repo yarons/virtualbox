@@ -1,4 +1,4 @@
--- $Id: tmdb-r15-index-sorting.pgsql 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $
+-- $Id: tmdb-r15-index-sorting.pgsql 69448 2017-10-27 16:57:29Z knut.osmundsen@oracle.com $
 --- @file
 -- VBox Test Manager Database - Index tuning effort.
 --
@@ -60,7 +60,7 @@ ANALYZE VERBOSE TestBoxes;
 
 
 DROP INDEX IF EXISTS BuildBlacklistIdx;
-CREATE INDEX BuildBlacklistIdx ON BuildBlacklist (iLastRevision DESC, iFirstRevision ASC, sProduct, sBranch, 
+CREATE INDEX BuildBlacklistIdx ON BuildBlacklist (iLastRevision DESC, iFirstRevision ASC, sProduct, sBranch,
                                                   tsExpire DESC, tsEffective ASC);
 \d BuildBlacklist;
 ANALYZE VERBOSE BuildBlacklist;
