@@ -1,10 +1,11 @@
 #!/bin/sh
-# $Id: prerm-common.sh 68027 2017-07-18 14:21:17Z noreply@oracle.com $
+# $Id: prerm-common.sh 69402 2017-10-27 00:06:50Z knut.osmundsen@oracle.com $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
 #
 
+#
 # Copyright (C) 2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
