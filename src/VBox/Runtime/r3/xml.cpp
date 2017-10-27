@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: xml.cpp 69434 2017-10-27 15:48:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1282,7 +1282,7 @@ ContentNode *ElementNode::addContent(const char *pcszContent)
 }
 
 /**
- * Changes the contents of node and appends it to the list of 
+ * Changes the contents of node and appends it to the list of
  * children
  *
  * @param pcszContent
