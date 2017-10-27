@@ -1,4 +1,4 @@
-/* $Id: VBoxPeCoffExtraActionLib.c 62500 2016-07-22 19:06:59Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxPeCoffExtraActionLib.c 69429 2017-10-27 13:27:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox implementation of DebugAgentLib that reports EFI state transitions
  * to DevEFI for debugging purposes.
@@ -26,9 +26,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <Base.h>
 #include <Library/PeCoffExtraActionLib.h>
 #include <Library/DebugLib.h>

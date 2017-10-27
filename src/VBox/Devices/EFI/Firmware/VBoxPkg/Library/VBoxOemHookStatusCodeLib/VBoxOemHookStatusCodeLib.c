@@ -1,4 +1,4 @@
-/* $Id: VBoxOemHookStatusCodeLib.c 62500 2016-07-22 19:06:59Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxOemHookStatusCodeLib.c 69429 2017-10-27 13:27:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * DxeVBoxOemHookStatusCodeLib.c - Logging.
  */
@@ -26,9 +26,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <Library/ReportStatusCodeLib.h>
 #include <Library/OemHookStatusCodeLib.h>
 #include <Library/PrintLib.h>
