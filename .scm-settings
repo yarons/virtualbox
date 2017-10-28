@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69468 2017-10-28 12:30:35Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69470 2017-10-28 12:33:00Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -76,7 +76,6 @@
 #
 # Files and sub-trees where we don't convert tabs.
 #
-/src/apps/tunctl/tunctl.c: --no-convert-tabs
 vboxvideo_drm.c: --no-convert-tabs
 *linux.mod.c: --no-convert-tabs
 
