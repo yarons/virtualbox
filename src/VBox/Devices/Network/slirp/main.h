@@ -1,10 +1,10 @@
-/* $Id: main.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: main.h 69498 2017-10-28 15:07:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - main.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
