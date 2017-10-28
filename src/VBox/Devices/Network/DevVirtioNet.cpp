@@ -1,10 +1,10 @@
-/* $Id: DevVirtioNet.cpp 67975 2017-07-14 13:52:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

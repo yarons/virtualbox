@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportAppPageExpert.h 68068 2017-07-20 14:46:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

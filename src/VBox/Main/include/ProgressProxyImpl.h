@@ -1,10 +1,10 @@
-/* $Id: ProgressProxyImpl.h 60765 2016-04-29 14:26:58Z klaus.espenlaub@oracle.com $ */
+/* $Id: ProgressProxyImpl.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IProgress implementation for Machine::LaunchVMProcess in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

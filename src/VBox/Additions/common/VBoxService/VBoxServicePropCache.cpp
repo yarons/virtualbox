@@ -1,10 +1,10 @@
-/* $Id: VBoxServicePropCache.cpp 64766 2016-11-30 10:59:48Z noreply@oracle.com $ */
+/* $Id: VBoxServicePropCache.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

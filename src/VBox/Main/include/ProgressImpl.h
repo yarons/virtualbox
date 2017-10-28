@@ -1,11 +1,11 @@
-/* $Id: ProgressImpl.h 69002 2017-10-06 12:49:53Z valery.portnyagin@oracle.com $ */
+/* $Id: ProgressImpl.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

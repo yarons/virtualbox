@@ -1,10 +1,10 @@
-/* $Id: HostDnsServiceLinux.cpp 64324 2016-10-19 16:50:12Z noreply@oracle.com $ */
+/* $Id: HostDnsServiceLinux.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Linux specific DNS information fetching.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

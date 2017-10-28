@@ -1,10 +1,10 @@
-/* $Id: DrvHostBase.h 65078 2017-01-03 13:24:58Z alexander.eichner@oracle.com $ */
+/* $Id: DrvHostBase.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxDispIf.h 69361 2017-10-26 14:51:38Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispIf.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

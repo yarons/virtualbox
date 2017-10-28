@@ -1,10 +1,10 @@
-/* $Id: VBoxAutostart-win.cpp 63567 2016-08-16 14:06:54Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

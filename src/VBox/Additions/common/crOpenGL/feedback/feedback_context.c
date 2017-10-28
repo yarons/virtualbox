@@ -1,10 +1,10 @@
-/* $Id: feedback_context.c 69310 2017-10-25 14:24:45Z knut.osmundsen@oracle.com $ */
+/* $Id: feedback_context.c 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox feedback spu, context tracking.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

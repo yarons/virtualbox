@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 66518 2017-04-11 16:46:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxDrvInst.cpp 65122 2017-01-04 17:11:20Z noreply@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

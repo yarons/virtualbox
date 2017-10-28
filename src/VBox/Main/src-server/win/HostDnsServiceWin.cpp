@@ -1,10 +1,10 @@
-/* $Id: HostDnsServiceWin.cpp 62692 2016-07-29 13:56:04Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceWin.cpp 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host DNS listener for Windows.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

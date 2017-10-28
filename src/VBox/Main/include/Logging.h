@@ -1,10 +1,10 @@
-/* $Id: Logging.h 67927 2017-07-12 11:47:45Z knut.osmundsen@oracle.com $ */
+/* $Id: Logging.h 69496 2017-10-28 14:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions
  */
 
 /*
- * Copyright (C) 2004-2016 Oracle Corporation
+ * Copyright (C) 2004-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
