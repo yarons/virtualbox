@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: MediumAttachmentImpl.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation

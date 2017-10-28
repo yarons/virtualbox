@@ -1,4 +1,4 @@
-/* $Id: VBoxHlp.h 62493 2016-07-22 18:44:18Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHlp.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declaration of OS/2-specific helpers that require to reside in a DLL.
  */

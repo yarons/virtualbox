@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGMInternal.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Internal header file.
  */

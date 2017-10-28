@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 65122 2017-01-04 17:11:20Z noreply@oracle.com $ */
+/* $Id: seamless-x11.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * Seamless mode:

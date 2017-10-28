@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 69250 2017-10-24 19:18:49Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltInternal.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */

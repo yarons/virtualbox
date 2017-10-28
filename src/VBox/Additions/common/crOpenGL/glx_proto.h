@@ -1,4 +1,4 @@
-/* $Id: glx_proto.h 69310 2017-10-25 14:24:45Z knut.osmundsen@oracle.com $ */
+/* $Id: glx_proto.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox guest OpenGL DRI GLX header C prototypes
  */

@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: QISplitter.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class declaration.
  */

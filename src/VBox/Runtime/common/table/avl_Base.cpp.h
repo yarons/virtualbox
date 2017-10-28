@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 65892 2017-02-27 17:04:46Z knut.osmundsen@oracle.com $ */
+/* $Id: avl_Base.cpp.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */

@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vfs.h 62529 2016-07-22 19:19:25Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxfs_vfs.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VFS header.
  */

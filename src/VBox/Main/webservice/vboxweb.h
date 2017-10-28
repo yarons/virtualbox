@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: vboxweb.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxweb.h - header file for "real" web server code.
  */
