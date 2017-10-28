@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69465 2017-10-28 11:01:38Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69468 2017-10-28 12:30:35Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -51,7 +51,6 @@
 --filter-out-dirs  "/SlickEdit/."
 --filter-out-dirs  "/doc/manual/texfiles/."
 --filter-out-dirs  "/src/libs/*/."
---filter-out-dirs  "/src/apps/kchmviewer*/."
 
 
 #
