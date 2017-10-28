@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69470 2017-10-28 12:33:00Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69487 2017-10-28 13:56:13Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -71,11 +71,4 @@
 --filter-out-files "*/COPYING"
 --filter-out-files "*/COPYING.LIB"
 --filter-out-files "*.desktop"
-
-
-#
-# Files and sub-trees where we don't convert tabs.
-#
-vboxvideo_drm.c: --no-convert-tabs
-*linux.mod.c: --no-convert-tabs
 
