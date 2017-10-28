@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69463 2017-10-28 10:58:50Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 69465 2017-10-28 11:01:38Z knut.osmundsen@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -80,14 +80,4 @@
 /src/apps/tunctl/tunctl.c: --no-convert-tabs
 vboxvideo_drm.c: --no-convert-tabs
 *linux.mod.c: --no-convert-tabs
-/src/recompiler/*: --no-convert-tabs
-/src/recompiler/VBox*: --convert-tabs
-
-
-#
-# Files and sub-trees where we don't set forcibly set svn:keywords.
-#
-/src/recompiler/*: --dont-set-svn-keywords
-/src/recompiler/VBox*: --set-svn-keywords
-
 

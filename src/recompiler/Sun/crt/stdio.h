@@ -1,4 +1,4 @@
-/* $Id: stdio.h 62536 2016-07-22 19:31:57Z knut.osmundsen@oracle.com $ */
+/* $Id: stdio.h 69465 2017-10-28 11:01:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * Our minimal stdio
  */
