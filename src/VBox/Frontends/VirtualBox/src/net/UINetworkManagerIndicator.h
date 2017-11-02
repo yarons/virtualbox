@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkManagerIndicator.h 69550 2017-11-02 10:22:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff declaration.
  */
@@ -49,12 +49,14 @@ public:
     /** Update routine. */
     void updateAppearance();
 
-private slots:
+public slots:
 
     /** Adds @a pNetworkRequest to network-manager state-indicators. */
     void sltAddNetworkManagerIndicatorDescription(UINetworkRequest *pNetworkRequest);
     /** Removes network-request with @a uuid from network-manager state-indicators. */
     void sldRemoveNetworkManagerIndicatorDescription(const QUuid &uuid);
+
+private slots:
 
     /* Set particular network-request progress to 'started': */
     void sltSetProgressToStarted(const QUuid &uuid);
