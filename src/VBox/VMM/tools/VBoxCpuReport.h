@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 69582 2017-11-04 20:41:14Z michal.necasek@oracle.com $ */
+/* $Id: VBoxCpuReport.h 69584 2017-11-04 22:31:10Z michal.necasek@oracle.com $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -24,7 +24,7 @@ typedef struct VBMSRFNS {
 
 extern void vbCpuRepDebug(const char *pszMsg, ...);
 extern void vbCpuRepPrintf(const char *pszMsg, ...);
-extern int SupDrvMsrProberInit(VBMSRFNS *fnsMsr);
-extern int PlatformMsrProberInit(VBMSRFNS *fnsMsr);
+extern int SupDrvMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod);
+extern int PlatformMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod);
 
 
