@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69219 2017-10-24 15:01:30Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 69594 2017-11-06 12:44:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -4127,7 +4127,7 @@ static DECLCALLBACK(int) rtFsIsoVol_QueryInfo(void *pvThis, PRTFSOBJINFO pObjInf
 
 
 /**
- * @interface_method_impl{RTVFSOPS,pfnOpenRoo}
+ * @interface_method_impl{RTVFSOPS,pfnOpenRoot}
  */
 static DECLCALLBACK(int) rtFsIsoVol_OpenRoot(void *pvThis, PRTVFSDIR phVfsDir)
 {
