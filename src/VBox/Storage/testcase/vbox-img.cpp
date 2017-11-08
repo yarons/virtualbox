@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 69611 2017-11-07 19:02:47Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox-img.cpp 69616 2017-11-08 13:58:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1441,7 +1441,7 @@ static int handleCompact(HandlerArg *a)
                     while (RT_SUCCESS(rc))
                     {
                         RTVFSFILE hVfsFile;
-                        rc = RTDvmVolumeCreateVfsFile(hVol, &hVfsFile);
+                        rc = RTDvmVolumeCreateVfsFile(hVol, RTFILE_O_READWRITE, &hVfsFile);
                         if (RT_FAILURE(rc))
                             break;
 
