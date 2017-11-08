@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 69616 2017-11-08 13:58:58Z knut.osmundsen@oracle.com $ */
+/* $Id: dvm.cpp 69618 2017-11-08 15:45:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -117,6 +117,7 @@ static const char * const g_apszDvmVolTypes[] =
     "Invalid",
     "Unknown",
     "NTFS",
+    "FAT12",
     "FAT16",
     "FAT32",
     "Linux swap",
