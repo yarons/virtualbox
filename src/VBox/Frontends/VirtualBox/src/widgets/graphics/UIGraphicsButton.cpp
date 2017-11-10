@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.cpp 69640 2017-11-10 12:27:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsButton.cpp 69641 2017-11-10 12:31:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class definition.
  */
@@ -34,14 +34,6 @@
 UIGraphicsButton::UIGraphicsButton(QIGraphicsWidget *pParent, const QIcon &icon)
     : QIGraphicsWidget(pParent)
     , m_icon(icon)
-    , m_fParentSelected(false)
-{
-    /* Refresh finally: */
-    refresh();
-}
-
-UIGraphicsButton::UIGraphicsButton(QIGraphicsWidget *pParent, UIGraphicsButtonType buttonType)
-    : QIGraphicsWidget(pParent)
     , m_fParentSelected(false)
 {
     /* Refresh finally: */
