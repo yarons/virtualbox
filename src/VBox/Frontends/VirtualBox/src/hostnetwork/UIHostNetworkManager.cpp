@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 68962 2017-10-03 13:26:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostNetworkManager.cpp 69672 2017-11-13 14:26:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -1138,6 +1138,11 @@ void UIHostNetworkManager::configureButtonBox()
             button(ButtonType_Reset), &QPushButton::setEnabled);
     connect(buttonBox(), &QIDialogButtonBox::clicked,
             this, &UIHostNetworkManager::sltHandleButtonBoxClick);
+    // WORKAROUND:
+    // Since we connected signals later than extra-data loaded
+    // for signals above, we should handle that stuff here again:
+    button(ButtonType_Apply)->setVisible(gEDataManager->hostNetworkManagerDetailsExpanded());
+    button(ButtonType_Reset)->setVisible(gEDataManager->hostNetworkManagerDetailsExpanded());
 }
 
 void UIHostNetworkManager::finalize()
