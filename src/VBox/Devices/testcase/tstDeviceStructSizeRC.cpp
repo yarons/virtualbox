@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 69719 2017-11-16 15:11:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1898,7 +1898,7 @@ int main()
     GEN_CHECK_OFF(HDASTATE, SinkMicIn);
 #endif
     GEN_CHECK_OFF(HDASTATE, u64WalClk);
-    GEN_CHECK_OFF(HDASTATE, u8RespIntCnt);
+    GEN_CHECK_OFF(HDASTATE, u16RespIntCnt);
     GEN_CHECK_OFF(HDASTATE, u8IRQL);
 
 #ifdef VBOX_WITH_NVME_IMPL
