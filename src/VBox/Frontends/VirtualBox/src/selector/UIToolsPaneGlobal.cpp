@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.cpp 69057 2017-10-12 09:43:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsPaneGlobal.cpp 69726 2017-11-17 15:48:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class implementation.
  */
@@ -218,12 +218,6 @@ void UIToolsPaneGlobal::prepare()
 {
     /* Create stacked-layout: */
     m_pLayout = new QStackedLayout(this);
-    AssertPtrReturnVoid(m_pLayout);
-    {
-        /* Configure layout: */
-        m_pLayout->setSpacing(0);
-        m_pLayout->setContentsMargins(3, 4, 5, 0);
-    }
 
     /* Create desktop pane: */
     openTool(ToolTypeGlobal_Desktop);

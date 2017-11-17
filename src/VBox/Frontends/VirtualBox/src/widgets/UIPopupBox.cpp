@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupBox.cpp 69726 2017-11-17 15:48:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -49,7 +49,6 @@ UIPopupBox::UIPopupBox(QWidget *pParent)
 {
     /* Setup main-layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-    pMainLayout->setContentsMargins(10, 5, 5, 5);
     /* Setup title-layout: */
     QHBoxLayout *pTitleLayout = new QHBoxLayout;
     pTitleLayout->addWidget(m_pTitleIcon);
