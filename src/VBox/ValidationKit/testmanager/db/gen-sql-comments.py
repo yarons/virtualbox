@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: gen-sql-comments.py 69448 2017-10-27 16:57:29Z knut.osmundsen@oracle.com $
+# $Id: gen-sql-comments.py 69778 2017-11-20 17:57:01Z knut.osmundsen@oracle.com $
 
 """
 Converts doxygen style comments in SQL script to COMMENT ON statements.
@@ -213,7 +213,10 @@ def main(asArgs):
     print("--");
     print("");
     for sLine in __copyright__.split('\n'):
-        print("-- %s" % (sLine,));
+        if len(sLine) > 0:
+            print("-- %s" % (sLine,));
+        else:
+            print("--");
     print("");
     print("");
     me = SqlDox(oFile, sInput);
