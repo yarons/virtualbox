@@ -1,4 +1,4 @@
-/* $Id: log.cpp 69750 2017-11-19 12:51:16Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 69779 2017-11-20 18:14:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -895,7 +895,8 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
             {
                 /** @todo validate the length, fail on overflow. */
                 RTStrPrintfV(pLogger->pInt->szFilename, sizeof(pLogger->pInt->szFilename), pszFilenameFmt, args);
-                pLogger->fDestFlags |= RTLOGDEST_FILE;
+                if (pLogger->pInt->szFilename[0])
+                    pLogger->fDestFlags |= RTLOGDEST_FILE;
             }
 
             /*
