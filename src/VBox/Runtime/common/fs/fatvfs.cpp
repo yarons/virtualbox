@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 69813 2017-11-23 18:33:30Z knut.osmundsen@oracle.com $ */
+/* $Id: fatvfs.cpp 69814 2017-11-23 18:47:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -2073,7 +2073,6 @@ static int rtFsFatObj_QueryInfo(PRTFSFATOBJ pThis, PRTFSOBJINFO pObjInfo, RTFSOB
  */
 static int rtFsFatObj_SetMode(PRTFSFATOBJ pThis, RTFMODE fMode, RTFMODE fMask)
 {
-    __debugbreak();
 #if 0
     if (fMask != ~RTFS_TYPE_MASK)
     {
