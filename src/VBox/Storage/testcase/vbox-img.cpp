@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 69841 2017-11-27 15:24:08Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox-img.cpp 69844 2017-11-27 15:44:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1336,7 +1336,7 @@ static DECLCALLBACK(int) vboximgQueryBlockStatus(void *pvUser, uint64_t off,
                                                  uint64_t cb, bool *pfAllocated)
 {
     RTVFS hVfs = (RTVFS)pvUser;
-    return RTVfsIsRangeInUse(hVfs, off, cb, pfAllocated);
+    return RTVfsQueryRangeState(hVfs, off, cb, pfAllocated);
 }
 
 
