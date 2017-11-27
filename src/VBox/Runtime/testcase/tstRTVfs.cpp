@@ -1,4 +1,4 @@
-/* $Id: tstRTVfs.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTVfs.cpp 69840 2017-11-27 15:19:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - IPRT Virtual File System (VFS) API
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/filesystem.h>
 #include <iprt/vfs.h>
 #include <iprt/err.h>
 #include <iprt/test.h>
