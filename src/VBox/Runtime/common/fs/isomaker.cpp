@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 69955 2017-12-06 12:26:37Z knut.osmundsen@oracle.com $ */
+/* $Id: isomaker.cpp 69977 2017-12-07 13:02:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -7380,6 +7380,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtFsIsoMakerOutputFileOps =
     },
     rtFsIsoMakerOutFile_Seek,
     rtFsIsoMakerOutFile_QuerySize,
+    NULL /*SetSize*/,
+    NULL /*QueryMaxSize*/,
     RTVFSFILEOPS_VERSION
 };
 
