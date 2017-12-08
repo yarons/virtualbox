@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70027 2017-12-08 13:36:57Z noreply@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 70029 2017-12-08 13:52:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -114,7 +114,7 @@ private:
     bool m_fIsPolished;
 
     /** Holds the machine instance. */
-    CMachine m_machine;
+    CMachine m_comMachine;
 
     /** Holds container for log-pages. */
     QITabWidget *m_pViewerContainer;
@@ -148,3 +148,4 @@ private:
 };
 
 #endif /* !___UIVMLogViewerWidget_h___ */
+
