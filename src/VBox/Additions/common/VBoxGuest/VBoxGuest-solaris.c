@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-solaris.c 70066 2017-12-11 16:33:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -1079,6 +1079,13 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
      * Wake up poll waiters.
      */
     pollwakeup(&g_PollHead, POLLIN | POLLRDNORM);
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 
