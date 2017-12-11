@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70059 2017-12-11 15:11:15Z noreply@oracle.com $ */
+/* $Id: VBoxGuest-netbsd.c 70065 2017-12-11 16:07:43Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -485,7 +485,7 @@ static int VBoxGuestNetBSDISR(void *pvState)
 
     bool fOurIRQ = VGDrvCommonISR(&g_DevExt);
 
-    return fOurIRQ ? 0 : 1;
+    return fOurIRQ ? 1 : 0;
 }
 
 
