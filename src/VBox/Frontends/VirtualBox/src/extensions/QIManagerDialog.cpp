@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 70029 2017-12-08 13:52:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIManagerDialog.cpp 70074 2017-12-12 09:26:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -190,6 +190,8 @@ void QIManagerDialog::prepareMenuBar()
 #ifdef VBOX_WS_MAC
 void QIManagerDialog::prepareToolBar()
 {
+    if(!m_pWidgetToolbar)
+        return;
     /* Enable unified toolbar on macOS: */
     addToolBar(m_pWidgetToolbar);
     m_pWidgetToolbar->enableMacToolbar();
