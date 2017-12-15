@@ -1,4 +1,4 @@
-# $Id: Makefile 70159 2017-12-15 16:48:51Z knut.osmundsen@oracle.com $
+# $Id: Makefile 70160 2017-12-15 16:54:43Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -92,6 +92,7 @@ SRCS += \
 	RTStrICmpAscii.c \
 	RTStrNICmpAscii.c \
 	RTStrNCmp.c \
+	RTStrNLen.c \
 	stringalloc.c \
 	strformat.c \
 	strformatnum.c \
