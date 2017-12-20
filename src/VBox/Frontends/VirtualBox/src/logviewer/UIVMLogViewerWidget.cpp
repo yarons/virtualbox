@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70207 2017-12-18 16:01:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 70242 2017-12-20 13:04:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -164,6 +164,8 @@ void UIVMLogViewerWidget::sltRefresh()
     m_pActionSave->setEnabled(!noLogsToShow);
     m_pViewerContainer->setEnabled(!noLogsToShow);
     m_pViewerContainer->show();
+    if (m_pSearchPanel && m_pSearchPanel->isVisible())
+        m_pSearchPanel->refresh();
 }
 
 void UIVMLogViewerWidget::sltSave()
