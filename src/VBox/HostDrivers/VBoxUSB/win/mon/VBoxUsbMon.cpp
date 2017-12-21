@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbMon.cpp 70294 2017-12-21 16:42:22Z michal.necasek@oracle.com $ */
 /** @file
  * VBox USB Monitor
  */
@@ -33,7 +33,6 @@
 #include <vbox/err.h>
 #include <VBox/usblib.h>
 #include <excpt.h>
-#include <stdio.h>
 
 
 /*********************************************************************************************************************************
