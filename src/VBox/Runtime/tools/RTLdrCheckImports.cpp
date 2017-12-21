@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 70271 2017-12-21 12:26:39Z knut.osmundsen@oracle.com $ */
+/* $Id: RTLdrCheckImports.cpp 70275 2017-12-21 13:44:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -280,7 +280,7 @@ static int rtCheckImportsForImage(PCRTCHECKIMPORTSOPTS pOpts, const char *pszIma
                     if (RT_SUCCESS(rc))
                         rc = pState->iRc;
                     else
-                        RTMsgError("%s: RTLdrGetBits failed: %Rrc", rc);
+                        RTMsgError("%s: RTLdrGetBits failed: %Rrc", pszImage, rc);
 
                     RTMemFree(pvImage);
                 }
