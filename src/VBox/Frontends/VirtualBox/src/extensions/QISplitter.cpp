@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: QISplitter.cpp 70474 2018-01-07 09:10:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QISplitter class implementation.
  */
@@ -220,7 +220,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
                                 return true;
                             }
                         }
-                        else if(pEvent->type() == QEvent::MouseMove)
+                        else if (pEvent->type() == QEvent::MouseMove)
                         {
                             /* If we are in the near of the handle or currently
                              * dragging, forward the mouse event. */
@@ -290,4 +290,3 @@ QSplitterHandle* QISplitter::createHandle()
 }
 
 #include "QISplitter.moc"
-

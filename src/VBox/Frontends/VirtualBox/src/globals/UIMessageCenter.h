@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 69553 2017-11-02 15:11:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.h 70474 2018-01-07 09:10:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -426,4 +426,3 @@ private:
 inline UIMessageCenter& msgCenter() { return *UIMessageCenter::instance(); }
 
 #endif // __UIMessageCenter_h__
-
