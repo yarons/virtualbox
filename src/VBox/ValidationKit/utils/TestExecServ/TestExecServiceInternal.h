@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceInternal.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: TestExecServiceInternal.h 70488 2018-01-08 20:40:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, Internal Header.
  */
@@ -210,6 +210,8 @@ extern TXSTRANSPORT const g_SerialTransport;
 extern TXSTRANSPORT const g_FileSysTransport;
 extern TXSTRANSPORT const g_GuestPropTransport;
 extern TXSTRANSPORT const g_TestDevTransport;
+
+extern uint32_t           g_cVerbose;
 
 RT_C_DECLS_END
 
