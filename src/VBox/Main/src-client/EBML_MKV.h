@@ -1,4 +1,4 @@
-/* $Id: EBML_MKV.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
+/* $Id: EBML_MKV.h 70619 2018-01-18 09:40:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * EbmlMkvIDs.h - Matroska EBML Class IDs.
  */
@@ -69,6 +69,7 @@ enum MkvElem
     MkvElem_Video                   = 0xE0,
     MkvElem_PixelWidth              = 0xB0,
     MkvElem_PixelHeight             = 0xBA,
+    MkvElem_FrameRate               = 0x2383E3,
 
     MkvElem_Audio                   = 0xE1,
     MkvElem_SamplingFrequency       = 0xB5,
