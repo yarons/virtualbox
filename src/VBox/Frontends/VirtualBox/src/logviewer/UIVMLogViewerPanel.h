@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70539 2018-01-11 14:11:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 70645 2018-01-19 12:27:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,9 +41,6 @@ public:
 
     UIVMLogViewerPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer);
 
-
-public slots:
-
 protected:
 
     virtual void prepare();
@@ -69,11 +66,8 @@ protected:
     QPlainTextEdit *textEdit();
     /* Return the unmodified log. */
     const QString* logString() const;
-private slots:
-
 
 private:
-
 
     /** Holds the reference to VM Log-Viewer this panel belongs to. */
     UIVMLogViewerWidget *m_pViewer;
