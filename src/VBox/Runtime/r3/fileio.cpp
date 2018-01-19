@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 70637 2018-01-19 10:02:45Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio.cpp 70638 2018-01-19 10:06:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -506,7 +506,7 @@ RTDECL(int) RTFileCopyByHandlesEx(RTFILE FileSrc, RTFILE FileDst, PFNRTPROGRESS 
                         {
                             uPercentage++;
                             offNextPercent += cbPercent;
-                        } while (offNextPercent < off && uPercentage < 100)
+                        } while (offNextPercent < off && uPercentage < 100);
                         rc = pfnProgress(uPercentage, pvUser);
                         if (RT_FAILURE(rc))
                             break;
