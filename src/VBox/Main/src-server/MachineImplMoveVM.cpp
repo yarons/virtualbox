@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 70691 2018-01-22 20:52:05Z valery.portnyagin@oracle.com $ */
+/* $Id: MachineImplMoveVM.cpp 70692 2018-01-22 20:55:41Z valery.portnyagin@oracle.com $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -678,8 +678,6 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM* task)
         /* Moving Machine log files */
         {
             RTPrintf("\nMoving Machine log files \n");
-            Machine::Data *machineData = taskMoveVM->m_pMachine->mData.data();
-            settings::MachineConfigFile *machineConfFile = machineData->pMachineConfigFile;
 
             Utf8Str strTargetLogFolderPath = strTargetFolder;
 
