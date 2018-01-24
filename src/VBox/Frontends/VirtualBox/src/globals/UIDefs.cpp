@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDefs.cpp 70723 2018-01-24 12:00:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -25,7 +25,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-/* Extension-pack definitions: */
+/* File name definitions: */
+const char* UIDefs::GUI_GuestAdditionsName = "VBoxGuestAdditions";
 const char* UIDefs::GUI_ExtPackName = "Oracle VM VirtualBox Extension Pack";
 
 /* File extensions definitions: */
