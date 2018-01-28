@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 70712 2018-01-23 16:18:22Z knut.osmundsen@oracle.com $ */
+/* $Id: Settings.cpp 70768 2018-01-28 20:57:18Z alexander.eichner@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4729,6 +4729,7 @@ void MachineConfigFile::readStorageControllers(const xml::ElementNode &elmStorag
             att.fDiscard = false;
             att.fNonRotational = false;
             att.fHotPluggable = false;
+            att.fPassThrough = false;
 
             if (strTemp == "HardDisk")
             {
