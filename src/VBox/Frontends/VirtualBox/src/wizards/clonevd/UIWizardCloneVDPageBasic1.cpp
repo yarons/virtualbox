@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.cpp 69200 2017-10-24 11:28:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVDPageBasic1.cpp 70805 2018-01-30 08:30:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class implementation.
  */
@@ -93,8 +93,10 @@ UIWizardCloneVDPageBasic1::UIWizardCloneVDPageBasic1(const CMedium &comSourceVir
     }
 
     /* Setup connections: */
-    connect(m_pSourceDiskSelector, SIGNAL(currentIndexChanged(int)), this, SIGNAL(completeChanged()));
-    connect(m_pSourceDiskOpenButton, SIGNAL(clicked()), this, SLOT(sltHandleOpenSourceDiskClick()));
+    connect(m_pSourceDiskSelector, static_cast<void(VBoxMediaComboBox::*)(int)>(&VBoxMediaComboBox::currentIndexChanged),
+            this, &UIWizardCloneVDPageBasic1::completeChanged);
+    connect(m_pSourceDiskOpenButton, &QIToolButton::clicked,
+            this, &UIWizardCloneVDPageBasic1::sltHandleOpenSourceDiskClick);
 
     /* Register classes: */
     qRegisterMetaType<CMedium>();
