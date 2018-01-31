@@ -1,4 +1,4 @@
-/* $Id: precomp.h 69917 2017-12-04 11:25:44Z serkan.bayraktar@oracle.com $*/
+/* $Id: precomp.h 70824 2018-01-31 11:45:40Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -657,7 +657,7 @@
          are used as enum constants in VBoxUtils.h.  Don't bother undefining
          the redefinitions, just prevent the inclusion of the header! */
 #include "VBoxUtils.h"
-#include "VBoxVersion.h"
+#include "UIVersion.h"
 #ifdef VBOX_WS_X11
 # include "VBoxX11Helper.h"
 #endif
