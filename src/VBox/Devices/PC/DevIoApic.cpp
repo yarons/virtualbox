@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIoApic.cpp 70829 2018-01-31 13:12:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -898,7 +898,7 @@ static DECLCALLBACK(int) ioapicDbgReg_GetVersion(void *pvUser, PCDBGFREGDESC pDe
 static DECLCALLBACK(int) ioapicDbgReg_GetArb(void *pvUser, PCDBGFREGDESC pDesc, PDBGFREGVAL pValue)
 {
     RT_NOREF(pvUser, pDesc);
-    pValue->u32 = ioapicGetArb(PDMINS_2_DATA((PPDMDEVINS)pvUser, PCIOAPIC));
+    pValue->u32 = ioapicGetArb();
     return VINF_SUCCESS;
 }
 #endif
