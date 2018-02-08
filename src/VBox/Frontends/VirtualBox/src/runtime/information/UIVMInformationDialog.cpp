@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 70882 2018-02-06 12:22:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 70899 2018-02-08 09:03:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -243,7 +243,7 @@ void UIVMInformationDialog::prepareTabWidget()
         }
 
         UIInformationGuestSession *pGuestSessionWidget =
-            new UIInformationGuestSession(this, m_pMachineWindow->machine(), m_pMachineWindow->console());
+            new UIInformationGuestSession(this, m_pMachineWindow->console());
         if (pGuestSessionWidget)
         {
             m_tabs.insert(2, pGuestSessionWidget);
