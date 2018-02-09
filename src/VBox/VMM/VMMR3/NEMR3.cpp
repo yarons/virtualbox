@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 70945 2018-02-09 23:45:56Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3.cpp 70946 2018-02-09 23:48:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -144,6 +144,8 @@ VMMR3_INT_DECL(int) NEMR3InitAfterCPUM(PVM pVM)
 #ifdef VBOX_WITH_NATIVE_NEM
     if (pVM->fNEMActive)
         rc = nemR3NativeInitAfterCPUM(pVM);
+#else
+    RT_NOREF(pVM);
 #endif
     return rc;
 }
