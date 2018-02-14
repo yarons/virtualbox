@@ -1,4 +1,4 @@
-/* $Id: RTStrNICmpAscii.cpp 70107 2017-12-13 12:22:13Z knut.osmundsen@oracle.com $ */
+/* $Id: RTStrNICmpAscii.cpp 71015 2018-02-14 17:38:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTStrNICmpAscii.
  */
@@ -66,7 +66,7 @@ RTDECL(int) RTStrNICmpAscii(const char *psz1, const char *psz2, size_t cchMax)
                     return iDiff;
             }
 
-            if (uch2)
+            if (uch2 && cchMax)
             { /* likely */ }
             else
                 return 0;
