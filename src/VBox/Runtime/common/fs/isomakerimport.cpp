@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 71002 2018-02-13 19:04:56Z knut.osmundsen@oracle.com $ */
+/* $Id: isomakerimport.cpp 71013 2018-02-14 17:27:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -591,9 +591,9 @@ static int rtFsIsoImportProcessIso9660AddAndNameFile(PRTFSISOMKIMPORTER pThis, P
             }
             else
             {
+                pBlock2File->Core.pLeft  = NULL;
+                pBlock2File->Core.pRight = NULL;
                 pBlock2FilePrev->pNext = pBlock2File;
-                pBlock2FilePrev->Core.pLeft  = NULL;
-                pBlock2FilePrev->Core.pRight = NULL;
             }
         }
     }
