@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71021 2018-02-15 13:50:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlInterface.cpp 71022 2018-02-15 13:58:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -179,8 +179,6 @@ bool UIGuestControlInterface::handleStart(int argc, char** argv)
             {
                 emit sigOutputString(generateErrorString(ch, ValueUnion));
                 return false;
-                printf("hoppala %d\n", ch);
-                break;
             }
         }
     }
