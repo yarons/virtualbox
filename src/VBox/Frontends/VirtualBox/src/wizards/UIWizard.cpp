@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 71006 2018-02-14 11:21:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizard.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */

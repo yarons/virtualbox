@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 67535 2017-06-21 10:47:28Z sergey.dubov@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */

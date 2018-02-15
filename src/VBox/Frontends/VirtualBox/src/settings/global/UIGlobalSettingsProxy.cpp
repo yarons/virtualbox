@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 66626 2017-04-20 11:57:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */

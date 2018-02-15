@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 69519 2017-10-30 10:31:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */

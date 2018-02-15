@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 69957 2017-12-06 13:35:06Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxFBOverlay.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */

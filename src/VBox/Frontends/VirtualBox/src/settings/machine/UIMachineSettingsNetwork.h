@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 66566 2017-04-13 16:44:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */

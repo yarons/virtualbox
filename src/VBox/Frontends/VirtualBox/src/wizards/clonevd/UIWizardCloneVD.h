@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 69200 2017-10-24 11:28:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */

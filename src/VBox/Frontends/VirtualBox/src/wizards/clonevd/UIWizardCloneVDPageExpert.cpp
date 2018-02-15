@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 70805 2018-01-30 08:30:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 69646 2017-11-10 15:29:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */

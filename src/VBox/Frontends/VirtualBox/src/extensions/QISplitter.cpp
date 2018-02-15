@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 70474 2018-01-07 09:10:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: QISplitter.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QISplitter class implementation.
  */

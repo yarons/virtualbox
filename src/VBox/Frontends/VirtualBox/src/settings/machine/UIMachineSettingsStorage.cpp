@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 70523 2018-01-10 17:22:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */

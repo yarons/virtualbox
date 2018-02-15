@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66490 2017-04-10 08:45:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */

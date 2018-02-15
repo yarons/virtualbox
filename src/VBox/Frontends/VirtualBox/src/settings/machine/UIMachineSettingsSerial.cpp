@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 69726 2017-11-17 15:48:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 69538 2017-10-31 11:48:08Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */

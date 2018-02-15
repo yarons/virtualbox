@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 69607 2017-11-07 16:27:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumDetailsWidget.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */

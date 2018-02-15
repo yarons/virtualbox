@@ -1,4 +1,4 @@
-/* $Id: mainOverlayNoDiscard.c 55401 2015-04-23 10:03:17Z noreply@oracle.com $ */
+/* $Id: mainOverlayNoDiscard.c 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 #extension GL_ARB_texture_rectangle : enable
 uniform sampler2DRect uDstTex;
 uniform vec4 uDstClr;

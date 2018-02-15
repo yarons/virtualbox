@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 66600 2017-04-18 09:25:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsLanguage.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */

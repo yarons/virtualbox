@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.cpp 70603 2018-01-16 17:56:07Z sergey.dubov@oracle.com $ */
+/* $Id: QIMainWindow.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class implementation.
  */

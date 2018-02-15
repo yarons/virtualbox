@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 70185 2017-12-18 10:32:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolSelector.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
