@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 71142 2018-02-27 20:12:26Z noreply@oracle.com $ */
+/* $Id: svcmain.cpp 71143 2018-02-27 21:29:47Z noreply@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -170,7 +170,7 @@ static int CloseActiveClients()
         hrc = ptrClientList->get_Clients(aCllients.__asOutParam());
         RTCList<LONG> clientsList = aCllients.toList();
         LogRel(("==========Client list begin ========\n"));
-        for (int i = 0; i < clientsList.size(); i++)
+        for (size_t i = 0; i < clientsList.size(); i++)
         {
             LogRel(("About to close client pid: %d\n", clientsList[i]));
             SendCloseToAllThreads(clientsList[i]);
