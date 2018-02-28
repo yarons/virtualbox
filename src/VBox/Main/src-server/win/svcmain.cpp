@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 71144 2018-02-27 22:45:00Z noreply@oracle.com $ */
+/* $Id: svcmain.cpp 71161 2018-02-28 19:50:04Z noreply@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -45,6 +45,7 @@
 #include <iprt/asm.h>
 
 #include <TlHelp32.h>
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
