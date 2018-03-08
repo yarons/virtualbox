@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71270 2018-03-08 11:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManager.cpp 71274 2018-03-08 14:09:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -420,6 +420,7 @@ void UIGuestControlFileManager::sltCreateSession(QString strUserName, QString st
         if (m_pLogOutput)
         {
             m_pLogOutput->appendPlainText("Could not find Guest Additions");
+            postSessionClosed();
             return;
         }
     }
