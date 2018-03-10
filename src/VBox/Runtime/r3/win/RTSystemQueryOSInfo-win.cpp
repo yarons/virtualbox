@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 70215 2017-12-19 03:25:24Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 71294 2018-03-10 00:06:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -338,5 +338,11 @@ RTDECL(int) RTSystemQueryOSInfo(RTSYSOSINFO enmInfo, char *pszInfo, size_t cchIn
     }
 
     return VERR_NOT_SUPPORTED;
+}
+
+
+RTDECL(uint32_t) RTSystemGetNtBuildNo(void)
+{
+    return g_WinOsInfoEx.dwBuildNumber;
 }
 
