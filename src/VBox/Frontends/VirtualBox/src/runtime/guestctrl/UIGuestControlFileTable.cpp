@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71350 2018-03-15 13:22:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileTable.cpp 71352 2018-03-15 14:09:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1213,6 +1213,7 @@ FileObjectType UIGuestFileTable::getFileType(const CFsObjInfo &fsInfo)
 
     return FileObjectType_Other;
 }
+
 
 /*********************************************************************************************************************************
 *   UIHostFileTable implementation.                                                                                              *
