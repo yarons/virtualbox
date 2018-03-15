@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 70523 2018-01-10 17:22:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostNetworkManager.cpp 71355 2018-03-15 15:13:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -23,6 +23,7 @@
 # include <QHeaderView>
 # include <QMenuBar>
 # include <QPushButton>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "QIDialogButtonBox.h"

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.cpp 71310 2018-03-13 09:39:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlWidget.cpp 71355 2018-03-15 15:13:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QApplication>
+# include <QMenu>
 # include <QSplitter>
 # include <QVBoxLayout>
 

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 71355 2018-03-15 15:13:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -21,9 +21,10 @@
 
 /* Qt includes: */
 # include <QAccessibleWidget>
-# include <QTimer>
-# include <QPainter>
 # include <QHBoxLayout>
+# include <QPainter>
+# include <QStyle>
+# include <QTimer>
 
 /* GUI includes: */
 # include "UIIndicatorsPool.h"

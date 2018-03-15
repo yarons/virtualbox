@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 71355 2018-03-15 15:13:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -20,14 +20,15 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
+# include <QCheckBox>
 # include <QComboBox>
 # include <QDir>
-# include <QCheckBox>
 # include <QHeaderView>
 # include <QLabel>
 # include <QLineEdit>
 # include <QSpinBox>
 # include <QTextEdit>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "QITreeView.h"
