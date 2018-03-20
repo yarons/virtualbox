@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestFileImpl.h 71406 2018-03-20 14:44:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -122,8 +122,6 @@ private:
         GuestFileOpenInfo       mOpenInfo;
         /** The file's initial size on open. */
         uint64_t                mInitialSize;
-        /** The file's ID. */
-        uint32_t                mID;
         /** The current file status. */
         FileStatus_T            mStatus;
         /** The last returned process status
