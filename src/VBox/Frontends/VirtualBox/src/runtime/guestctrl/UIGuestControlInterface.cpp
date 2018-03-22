@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71270 2018-03-08 11:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlInterface.cpp 71467 2018-03-22 16:56:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -72,7 +72,7 @@
         commandData.m_strPassword = ValueUnion.psz;   \
         break;
 
-QString UIGuestControlInterface::getFsObjTypeString(KFsObjType type)
+/* static */ QString UIGuestControlInterface::getFsObjTypeString(KFsObjType type)
 {
     QString strType;
     switch(type)
@@ -663,7 +663,7 @@ bool UIGuestControlInterface::createSession(const CommandData &commandData, CGue
     return true;
 }
 
-bool UIGuestControlInterface::isGuestAdditionsAvailable(const CGuest &guest)
+/* static */ bool UIGuestControlInterface::isGuestAdditionsAvailable(const CGuest &guest)
 {
     if (!guest.isOk())
         return false;
