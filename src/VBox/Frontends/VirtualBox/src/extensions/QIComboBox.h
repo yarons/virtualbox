@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIComboBox.h 71509 2018-03-26 12:16:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -127,4 +127,3 @@ private:
 };
 
 #endif /* !___QIComboBox_h___ */
-
