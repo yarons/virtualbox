@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.h 71270 2018-03-08 11:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlWidget.h 71523 2018-03-27 09:52:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class declaration.
  */
@@ -47,6 +47,7 @@ class UIGuestControlWidget : public QWidget
 public:
 
     UIGuestControlWidget(QWidget *pParent, const CGuest &comGuest);
+    ~UIGuestControlWidget();
 
 private slots:
 
@@ -70,6 +71,8 @@ private:
     void updateTreeWidget();
     void cleanupListener();
     void addGuestSession(CGuestSession guestSession);
+    void saveSettings();
+    void loadSettings();
 
     CGuest                    m_comGuest;
     QVBoxLayout              *m_pMainLayout;
