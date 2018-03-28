@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 71505 2018-03-26 09:03:32Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostFileTable.h 71531 2018-03-28 07:25:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -45,7 +45,7 @@ protected:
 
 private slots:
 
-    void sltReceiveDirectoryStatistics(UIDirectoryStatistics statictics, QString path);
+    void sltReceiveDirectoryStatistics(UIDirectoryStatistics statictics);
 
 private:
 
