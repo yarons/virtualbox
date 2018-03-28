@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.cpp 71350 2018-03-15 13:22:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileModel.cpp 71536 2018-03-28 12:03:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class implementation.
  */
@@ -36,7 +36,6 @@ UIGuestControlFileModel::UIGuestControlFileModel(QObject *parent)
     : QAbstractItemModel(parent)
     , m_pParent(qobject_cast<UIGuestControlFileTable*>(parent))
 {
-    QList<QVariant> rootData;
 }
 
 UIFileTableItem* UIGuestControlFileModel::rootItem() const
