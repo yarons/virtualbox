@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70792 2018-01-29 13:12:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchPanel.h 71577 2018-03-29 17:13:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -30,7 +30,6 @@ class QFrame;
 class QHBoxLayout;
 class QLabel;
 class QIToolButton;
-class UISearchField;
 class UIVMLogViewerSearchField;
 class UIVMLogViewerWidget;
 
