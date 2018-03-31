@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispInternal.h 71592 2018-03-31 19:51:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -130,7 +130,7 @@ int VBoxDispSetPalette8BPP(PVBOXDISPDEV pDev);
 
 /* VBVA related */
 int VBoxDispVBVAInit(PVBOXDISPDEV pDev);
-void VBoxDispVBVAHostCommandComplete(PVBOXDISPDEV pDev, VBVAHOSTCMD *pCmd);
+void VBoxDispVBVAHostCommandComplete(PVBOXDISPDEV pDev, VBVAHOSTCMD RT_UNTRUSTED_VOLATILE_HOST *pCmd);
 
 void vrdpReportDirtyRect(PVBOXDISPDEV pDev, RECTL *prcl);
 void vbvaReportDirtyRect(PVBOXDISPDEV pDev, RECTL *prcl);
