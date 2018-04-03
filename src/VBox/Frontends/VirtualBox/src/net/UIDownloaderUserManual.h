@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.h 71434 2018-03-21 14:12:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIDownloaderUserManual.h 71630 2018-04-03 16:37:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class declaration.
  */
@@ -22,7 +22,7 @@
 #include "UIDownloader.h"
 
 /** UIDownloader extension for background user-manual downloading. */
-class UIDownloaderUserManual : public UIDownloader
+class SHARED_LIBRARY_STUFF UIDownloaderUserManual : public UIDownloader
 {
     Q_OBJECT;
 

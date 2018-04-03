@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.h 71466 2018-03-22 16:39:35Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.h 71630 2018-04-03 16:37:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
@@ -23,6 +23,7 @@
 #include <QUrl>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UINetworkDefs.h"
 
 /* Forward declarations: */
@@ -30,7 +31,7 @@ class UINetworkReplyPrivate;
 
 /** QObject extension
   * used as network-reply interface. */
-class UINetworkReply : public QObject
+class SHARED_LIBRARY_STUFF UINetworkReply : public QObject
 {
     Q_OBJECT;
 
