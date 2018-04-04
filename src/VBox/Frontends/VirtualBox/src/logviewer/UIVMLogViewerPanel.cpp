@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 71477 2018-03-23 10:04:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 71638 2018-04-04 05:11:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -165,3 +165,4 @@ const QString* UIVMLogViewerPanel::logString() const
         return 0;
     return &(page->logString());
 }
+
