@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.h 71270 2018-03-08 11:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlConsole.h 71639 2018-04-04 06:01:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class declaration.
  */
@@ -73,3 +73,4 @@ private:
 };
 
 #endif /* !___UIGuestControlConsole_h___ */
+

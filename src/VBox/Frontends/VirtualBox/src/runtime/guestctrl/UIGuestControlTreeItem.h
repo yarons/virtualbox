@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 71270 2018-03-08 11:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlTreeItem.h 71639 2018-04-04 06:01:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -147,3 +147,4 @@ private:
 };
 
 #endif /* !___UIGuestControlTreeItem_h___ */
+
