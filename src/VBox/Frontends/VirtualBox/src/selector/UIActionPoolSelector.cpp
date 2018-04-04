@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 71632 2018-04-03 16:58:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolSelector.cpp 71644 2018-04-04 06:55:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -1674,3 +1674,4 @@ QString UIActionPoolSelector::shortcutsExtraDataID() const
 
 
 #include "UIActionPoolSelector.moc"
+

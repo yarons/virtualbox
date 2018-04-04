@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 70474 2018-01-07 09:10:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolsPaneMachine.cpp 71644 2018-04-04 06:55:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -319,3 +319,4 @@ void UIToolsPaneMachine::cleanup()
         delete pWidget;
     }
 }
+
