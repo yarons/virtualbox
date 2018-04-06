@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 70131 2017-12-14 14:48:35Z andreas.loeffler@oracle.com $ */
+/* $Id: HDAStreamMap.cpp 71724 2018-04-06 21:11:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -33,6 +33,7 @@
 #include "HDAStreamMap.h"
 
 #ifdef IN_RING3
+
 /**
  * Initializes a stream mapping structure according to the given PCM properties.
  *
@@ -139,5 +140,6 @@ void hdaStreamMapReset(PHDASTREAMMAPPING pMapping)
         pMapping->cChannels = 0;
     }
 }
+
 #endif /* IN_RING3 */
 
