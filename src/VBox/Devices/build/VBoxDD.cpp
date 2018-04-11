@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 69121 2017-10-17 19:14:35Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDD.cpp 71829 2018-04-11 17:17:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -196,6 +196,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceGIMDev);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_NEW_LPC_DEVICE
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceLPC);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
 #ifdef VBOX_WITH_VIRTUALKD
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtualKD);
     if (RT_FAILURE(rc))
