@@ -1,6 +1,6 @@
-/* $Id: QIArrowButtonPress.h 71630 2018-04-03 16:37:08Z sergey.dubov@oracle.com $ */
+/* $Id: QIArrowButtonPress.h 71900 2018-04-18 14:40:43Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - QIArrowButtonPress class declaration.
+ * VBox Qt GUI - Qt extensions: QIArrowButtonPress class declaration.
  */
 
 /*
@@ -54,4 +54,3 @@ private:
 };
 
 #endif /* !___QIArrowButtonPress_h___ */
-
