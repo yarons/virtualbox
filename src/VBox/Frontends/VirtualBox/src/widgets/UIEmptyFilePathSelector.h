@@ -1,6 +1,6 @@
-/* $Id: UIEmptyFilePathSelector.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.h 71901 2018-04-18 14:50:52Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: UIEmptyFilePathSelector class declaration.
+ * VBox Qt GUI - UIEmptyFilePathSelector class declaration.
  */
 
 /*
