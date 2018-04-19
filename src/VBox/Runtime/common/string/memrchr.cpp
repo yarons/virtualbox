@@ -1,4 +1,4 @@
-/* $Id: memrchr.cpp 71916 2018-04-19 10:05:28Z alexander.eichner@oracle.com $ */
+/* $Id: memrchr.cpp 71917 2018-04-19 10:09:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, memrchr().
  */
@@ -47,7 +47,7 @@ void *memrchr(const char *pb, int ch, size_t cb)
 
         while (cb)
         {
-            if (*pbCur == cb)
+            if (*pbCur == ch)
                 return (void *)pbCur;
             pbCur--;
             cb--;
