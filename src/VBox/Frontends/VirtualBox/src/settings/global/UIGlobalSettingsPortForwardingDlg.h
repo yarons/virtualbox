@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.h 72107 2018-05-04 10:45:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -28,7 +28,7 @@ class QTabWidget;
 class QIDialogButtonBox;
 
 /* Global settings / Network page / NAT network tab / Port forwarding dialog: */
-class UIGlobalSettingsPortForwardingDlg : public QIWithRetranslateUI<QIDialog>
+class SHARED_LIBRARY_STUFF UIGlobalSettingsPortForwardingDlg : public QIWithRetranslateUI<QIDialog>
 {
     Q_OBJECT;
 

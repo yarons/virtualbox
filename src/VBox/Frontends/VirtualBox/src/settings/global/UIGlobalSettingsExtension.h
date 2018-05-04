@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 71448 2018-03-22 10:58:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsExtension.h 72107 2018-05-04 10:45:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -27,10 +27,9 @@ struct UIDataSettingsGlobalExtension;
 struct UIDataSettingsGlobalExtensionItem;
 typedef UISettingsCache<UIDataSettingsGlobalExtension> UISettingsCacheGlobalExtension;
 
-
 /** Global settings: Extension page. */
-class UIGlobalSettingsExtension : public UISettingsPageGlobal,
-                                  public Ui::UIGlobalSettingsExtension
+class SHARED_LIBRARY_STUFF UIGlobalSettingsExtension : public UISettingsPageGlobal,
+                                                       public Ui::UIGlobalSettingsExtension
 {
     Q_OBJECT;
 
@@ -92,4 +91,3 @@ private:
 };
 
 #endif /* !___UIGlobalSettingsExtension_h___ */
-
