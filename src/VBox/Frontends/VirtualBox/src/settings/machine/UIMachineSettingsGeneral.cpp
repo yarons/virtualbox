@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 72173 2018-05-09 13:38:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 72174 2018-05-09 13:45:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -553,7 +553,7 @@ void UIMachineSettingsGeneral::prepareTabBasic()
         AssertPtrReturnVoid(m_pNameAndSystemEditor);
         {
             /* Configure widget: */
-            //m_pNameAndSystemEditor->nameEditor()->setValidator(new QRegExpValidator(QRegExp(".+"), this));
+            m_pNameAndSystemEditor->nameEditor()->setValidator(new QRegExpValidator(QRegExp(".+"), this));
         }
     }
 }
