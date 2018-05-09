@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 72182 2018-05-09 20:03:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 72183 2018-05-09 20:18:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -312,6 +312,7 @@ void UIWizardNewVMPageBasic1::sltNameChanged(const QString &strNewName)
 
 void UIWizardNewVMPageBasic1::sltPathChanged(const QString &strNewPath)
 {
+    RT_NOREF(strNewPath);
     composeMachineFilePath();
 }
 
