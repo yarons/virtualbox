@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 72177 2018-05-09 15:57:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.h 72185 2018-05-10 07:29:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -58,6 +58,7 @@ private slots:
 
     /* Handlers: */
     void sltNameChanged(const QString &strNewText);
+    void sltPathChanged(const QString &strNewPath);
     void sltOsTypeChanged();
     void sltRamSliderValueChanged();
     void sltRamEditorValueChanged();
