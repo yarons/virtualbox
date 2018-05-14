@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 72191 2018-05-10 17:24:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 72199 2018-05-14 12:57:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -235,7 +235,7 @@ void UIWizardNewVMPage1::composeMachineFilePath()
     m_strMachineBaseName = fileInfo.completeBaseName();
 
     if (m_pNameAndSystemEditor)
-        m_pNameAndSystemEditor->setMachineFilePath(m_strMachineFolder);
+        m_pNameAndSystemEditor->setMachineFolder(m_strMachineFolder);
 }
 
 bool UIWizardNewVMPage1::createMachineFolder()
