@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumManager.h 72344 2018-05-25 13:27:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -160,6 +160,8 @@ private slots:
 
     /** @name Menu/action stuff.
       * @{ */
+        /** Handles command to add medium. */
+        void sltAddMedium();
         /** Handles command to copy medium. */
         void sltCopyMedium();
         /** Handles command to move medium. */
@@ -343,6 +345,8 @@ private:
         QMenu     *m_pContextMenu;
         /** Holds the menu object instance. */
         QMenu     *m_pMenu;
+        /** Holds the Add action instance. */
+        QAction   *m_pActionAdd;
         /** Holds the Copy action instance. */
         QAction   *m_pActionCopy;
         /** Holds the Move action instance. */
@@ -437,4 +441,3 @@ private:
 };
 
 #endif /* !___UIMediumManager_h___ */
-
