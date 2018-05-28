@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 72257 2018-05-18 10:12:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISelectorWindow.cpp 72363 2018-05-28 16:49:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1415,6 +1415,15 @@ bool UISelectorWindow::eventFilter(QObject *pObject, QEvent *pEvent)
     return QIWithRetranslateUI<QIMainWindow>::eventFilter(pObject, pEvent);
 }
 #endif /* VBOX_WS_MAC */
+
+void UISelectorWindow::closeEvent(QCloseEvent *pEvent)
+{
+    /* Call to base-class: */
+    QIWithRetranslateUI<QIMainWindow>::closeEvent(pEvent);
+
+    /* Quit application: */
+    QApplication::quit();
+}
 
 void UISelectorWindow::prepare()
 {
