@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 72347 2018-05-25 16:38:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIStarter.cpp 72360 2018-05-28 16:34:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -108,7 +108,7 @@ void UIStarter::cleanup()
     sltDestroyUI();
 }
 
-void UIStarter::sltShowUI()
+void UIStarter::sltStartUI()
 {
     /* Exit if VBoxGlobal is not valid: */
     if (!vboxGlobal().isValid())
