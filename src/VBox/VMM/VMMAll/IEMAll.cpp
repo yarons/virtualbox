@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72441 2018-06-05 05:45:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAll.cpp 72448 2018-06-05 10:51:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1091,6 +1091,7 @@ IEM_STATIC void iemReInitExec(PVMCPU pVCpu)
     pVCpu->iem.s.offOpcode        = 0;
     pVCpu->iem.s.cbOpcode         = 0;
 #endif
+    pVCpu->iem.s.rcPassUp         = VINF_SUCCESS;
 }
 #endif
 
