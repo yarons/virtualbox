@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 72209 2018-05-15 04:12:25Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp.h 72451 2018-06-05 14:35:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -15,9 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-# include "IEMAllCImplSvmInstr.cpp.h"
-#endif
+#include "IEMAllCImplSvmInstr.cpp.h"
+#include "IEMAllCImplVmxInstr.cpp.h"
+
 
 /** @name Misc Helpers
  * @{

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72448 2018-06-05 10:51:37Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAll.cpp 72451 2018-06-05 14:35:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -101,6 +101,7 @@
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/hm.h>
+#include <VBox/vmm/gim.h>
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
 # include <VBox/vmm/em.h>
 # include <VBox/vmm/hm_svm.h>
