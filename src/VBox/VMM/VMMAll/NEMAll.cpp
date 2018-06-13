@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 72522 2018-06-12 08:45:27Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMAll.cpp 72546 2018-06-13 15:45:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -130,10 +130,21 @@ VMM_INT_DECL(int) NEMImportStateOnDemand(PVMCPU pVCpu, PCPUMCTX pCtx, uint64_t f
 }
 #endif
 
+
 #ifndef VBOX_WITH_NATIVE_NEM
 VMM_INT_DECL(int) NEMHCQueryCpuTick(PVMCPU pVCpu, uint64_t *pcTicks, uint32_t *puAux)
 {
     RT_NOREF(pVCpu, pcTicks, puAux);
+    AssertFailed();
+    return VERR_NEM_IPE_9;
+}
+#endif
+
+
+#ifndef VBOX_WITH_NATIVE_NEM
+VMM_INT_DECL(int) NEMHCResumeCpuTickOnAll(PVM pVM, PVMCPU pVCpu, uint64_t uPausedTscValue)
+{
+    RT_NOREF(pVM, pVCpu, uPausedTscValue);
     AssertFailed();
     return VERR_NEM_IPE_9;
 }
