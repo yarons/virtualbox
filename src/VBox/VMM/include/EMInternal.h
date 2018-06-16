@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 72582 2018-06-16 16:55:15Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 72583 2018-06-16 16:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -400,7 +400,7 @@ typedef struct EMCPU
 #endif
 
     /** Pointer to the guest CPUM state. (R3 Ptr)
-     * @obsolete Use pVCpu->cpum.GstCtx!  */
+     * @deprecated Use pVCpu->cpum.GstCtx!  */
     R3PTRTYPE(PCPUMCTX)     pCtx;
 
 #if GC_ARCH_BITS == 64
