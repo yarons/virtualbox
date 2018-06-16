@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 72492 2018-06-09 15:16:55Z knut.osmundsen@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 72580 2018-06-16 15:57:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -216,6 +216,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          */
         case VINF_IOM_R3_IOPORT_READ:
         case VINF_IOM_R3_IOPORT_WRITE:
+        case VINF_EM_RESUME_R3_HISTORY_EXEC: /* Resume EMHistoryExec after VMCPU_FF_IOM. */
             rc = emR3ExecuteIOInstruction(pVM, pVCpu);
             break;
 
