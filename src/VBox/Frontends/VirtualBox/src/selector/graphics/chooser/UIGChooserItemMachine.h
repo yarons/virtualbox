@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.h 72707 2018-06-27 17:24:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIGChooserItemMachine.h 72708 2018-06-27 17:51:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
@@ -68,7 +68,7 @@ public:
                                       QList<UIGChooserItemMachine*> &ol,
                                       int iEnumerationFlags = 0);
 
-public slots:
+private slots:
 
     /** Handles top-level window remaps. */
     void sltHandleWindowRemapped();
