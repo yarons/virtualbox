@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 72701 2018-06-27 14:03:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 72706 2018-06-27 15:43:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -44,7 +44,7 @@ class SHARED_LIBRARY_STUFF UIVMLogViewerDialogFactory : public QIManagerDialogFa
 {
 public:
     UIVMLogViewerDialogFactory(const CMachine &machine);
-    
+
 protected:
     /** Creates derived @a pDialog instance.
       * @param  pCenterWidget  Brings the widget to center wrt. pCenterWidget. */
