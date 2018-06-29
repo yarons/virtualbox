@@ -1,4 +1,4 @@
-/* $Id: ValidationKitCodingGuidelines.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ValidationKitCodingGuidelines.cpp 72760 2018-06-29 09:44:13Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Coding Guidelines.
  */
@@ -70,6 +70,8 @@
  *
  * The type collection qualifiers comes first, then the other qualifiers and
  * finally the type qualifier.
+ *
+ * Python statements are terminated by semicolons (';') as a convention.
  *
  */
 
