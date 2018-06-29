@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 72762 2018-06-29 10:14:33Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 72764 2018-06-29 10:38:24Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1614,7 +1614,6 @@ VMMR0_INT_DECL(int) HMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMMR0_INT_DECL(int) HMR0SaveDebugState(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
-    RT_NOREF(pVM);
     STAM_COUNTER_INC(&pVCpu->hm.s.StatDebug64SwitchBack);
     if (pVM->hm.s.vmx.fSupported)
         return VMXR0Execute64BitsHandler(pVCpu, HM64ON32OP_HMRCSaveGuestDebug64, 0, NULL);
