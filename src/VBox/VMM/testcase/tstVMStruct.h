@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 72643 2018-06-21 16:02:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstVMStruct.h 72866 2018-07-04 10:42:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -304,6 +304,8 @@
     GEN_CHECK_OFF(IEMCPU, aBounceBuffers[1]);
     GEN_CHECK_OFF(IEMCPU, aMemBbMappings);
     GEN_CHECK_OFF(IEMCPU, aMemBbMappings[1]);
+    GEN_CHECK_OFF(IEMCPU, cLogRelRdMsr);
+    GEN_CHECK_OFF(IEMCPU, cLogRelWrMsr);
     GEN_CHECK_OFF(IEMCPU, DataTlb);
     GEN_CHECK_OFF(IEMCPU, CodeTlb);
 
