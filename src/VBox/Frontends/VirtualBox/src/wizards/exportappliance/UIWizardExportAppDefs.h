@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppDefs.h 72920 2018-07-05 14:51:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppDefs.h 72930 2018-07-06 11:10:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppDefs class declaration.
  */
@@ -27,7 +27,7 @@
 #include "UIApplianceExportEditorWidget.h"
 
 /** Storage types. */
-enum StorageType { Filesystem, SunCloud, S3 };
+enum StorageType { LocalFilesystem, CloudProvider };
 Q_DECLARE_METATYPE(StorageType);
 
 /* Typedefs: */
