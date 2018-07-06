@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72903 2018-07-04 19:59:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 72927 2018-07-06 07:29:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -483,7 +483,7 @@ void UIMediumSelector::sltCreateMedium()
     UIFDCreationDialog *pDialog = new UIFDCreationDialog(this, m_strMachineName, strMachineFolder);
     if (pDialog->exec())
     {
-        sltHandleRefresh();
+        repopulateTreeWidget();
     }
     delete pDialog;
 }
