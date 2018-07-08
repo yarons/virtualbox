@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 66126 2017-03-16 14:06:27Z klaus.espenlaub@oracle.com $ */
+/* $Id: StorageControllerImpl.cpp 72973 2018-07-08 13:23:58Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -164,6 +164,9 @@ HRESULT StorageController::init(Machine *aParent,
             m->bd->controllerType = StorageControllerType_NVMe;
             break;
         case StorageBus_Null: break; /* Shut up MSC. */
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+        case StorageBus_32BitHack: break; /* Shut up GCC. */
+#endif
     }
 
     /* Confirm a successful initialization */
