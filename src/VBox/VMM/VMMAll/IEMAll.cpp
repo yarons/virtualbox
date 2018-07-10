@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72895 2018-07-04 17:03:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 73021 2018-07-10 09:14:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -13611,6 +13611,7 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PVMCPU pVCpu, VBOXSTRI
                       || rcStrict == VINF_EM_RAW_TO_R3
                       || rcStrict == VINF_EM_RAW_EMULATE_IO_BLOCK
                       || rcStrict == VINF_EM_TRIPLE_FAULT
+                      || rcStrict == VINF_GIM_R3_HYPERCALL
                       /* raw-mode / virt handlers only: */
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT
