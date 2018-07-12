@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 71591 2018-03-31 18:40:01Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMICommon.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -118,7 +118,7 @@ uint32_t HGSMIChecksum(HGSMIOFFSET offBuffer, const HGSMIBUFFERHEADER RT_UNTRUST
 
     u32Checksum = hgsmiHashProcess(u32Checksum, &offBuffer, sizeof(offBuffer));
     u32Checksum = hgsmiHashProcess(u32Checksum, pHeader, sizeof(HGSMIBUFFERHEADER));
-    u32Checksum = hgsmiHashProcess(u32Checksum, pTail, RT_OFFSETOF(HGSMIBUFFERTAIL, u32Checksum));
+    u32Checksum = hgsmiHashProcess(u32Checksum, pTail, RT_UOFFSETOF(HGSMIBUFFERTAIL, u32Checksum));
 
     return hgsmiHashEnd(u32Checksum);
 }

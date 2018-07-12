@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmod.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1441,7 +1441,7 @@ RTDECL(int) RTDbgModCreateFromMachOImage(PRTDBGMOD phDbgMod, const char *pszFile
                      */
                     PRTDBGMODDEFERRED pDeferred;
                     rc = rtDbgModDeferredCreate(pDbgMod, rtDbgModFromMachOImageDeferredCallback, cbImage, hDbgCfg,
-                                                RT_OFFSETOF(RTDBGMODDEFERRED, u.MachO.aSegs[cSegs]),
+                                                RT_UOFFSETOF_DYN(RTDBGMODDEFERRED, u.MachO.aSegs[cSegs]),
                                                 &pDeferred);
                     if (RT_SUCCESS(rc))
                     {
