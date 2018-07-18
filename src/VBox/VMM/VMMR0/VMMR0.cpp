@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 73203 2018-07-18 13:00:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -864,9 +864,6 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
         case VINF_EM_RAW_EMULATE_INSTR:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetEmulate);
-            break;
-        case VINF_EM_RAW_EMULATE_IO_BLOCK:
-            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetIOBlockEmulate);
             break;
         case VINF_PATCH_EMULATE_INSTR:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPatchEmulate);
