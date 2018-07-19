@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 73242 2018-07-19 15:06:55Z andreas.loeffler@oracle.com $ */
+/* $Id: HDAStream.h 73244 2018-07-19 15:09:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -174,7 +174,7 @@ typedef struct HDASTREAMSTATE
      *  stuff like interleaved surround streams. */
     uint16_t                cbDMALeft;
     /** Unused, padding. */
-    uint8_t                 abPadding3[1+4];
+    uint8_t                 abPadding3[2+4];
 } HDASTREAMSTATE;
 AssertCompileSizeAlignment(HDASTREAMSTATE, 8);
 typedef HDASTREAMSTATE *PHDASTREAMSTATE;
