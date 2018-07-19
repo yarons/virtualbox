@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 73003 2018-07-09 11:09:32Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 73239 2018-07-19 13:16:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -621,6 +621,8 @@ private:
     void    i_resumeAfterConfigChange(PUVM pUVM);
 
     static DECLCALLBACK(int) i_configConstructor(PUVM pUVM, PVM pVM, void *pvConsole);
+    int i_configAudioDriver(IAudioAdapter *pAudioAdapter, IVirtualBox *pVirtualBox, IMachine *pMachine,
+                            PCFGMNODE pLUN, const char *pszDriverName);
     int i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock);
     int i_configCfgmOverlay(PCFGMNODE pRoot, IVirtualBox *pVirtualBox, IMachine *pMachine);
     int i_configDumpAPISettingsTweaks(IVirtualBox *pVirtualBox, IMachine *pMachine);
