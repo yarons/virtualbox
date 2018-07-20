@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 73203 2018-07-18 13:00:43Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMInternal.h 73260 2018-07-20 10:50:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -932,7 +932,7 @@ typedef struct HMCPU
      *  VMCPU_FF_HM_UPDATE_PAE_PDPES is set). */
     X86PDPE                 aPdpes[4];
 
-    /** Current shadow paging mode. */
+    /** Current shadow paging mode for updating CR4. */
     PGMMODE                 enmShadowMode;
 
     /** The CPU ID of the CPU currently owning the VMCS. Set in
