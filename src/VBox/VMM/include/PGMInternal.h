@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 73277 2018-07-20 18:30:34Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 73285 2018-07-21 01:49:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3474,7 +3474,7 @@ typedef struct PGM
 
     /** Pointer to the 5 page CR3 content mapping.
      * The first page is always the CR3 (in some form) while the 4 other pages
-     * are used of the PDs in PAE mode. */
+     * are used for the PDs in PAE mode. */
     RTGCPTR                         GCPtrCR3Mapping;
 
     /** @name Intermediate Context
