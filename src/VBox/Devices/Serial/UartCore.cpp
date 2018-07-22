@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73303 2018-07-22 14:54:24Z alexander.eichner@oracle.com $ */
+/* $Id: UartCore.cpp 73304 2018-07-22 14:56:25Z alexander.eichner@oracle.com $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -617,7 +617,7 @@ static void uartR3RecvFifoFill(PUARTCORE pThis)
         AssertRC(rc); Assert(cbRead <= UINT8_MAX); RT_NOREF(rc);
 
         pFifo->offWrite = (pFifo->offWrite + (uint8_t)cbRead) % pFifo->cbMax;
-        pFifo->cbUsed   += cbRead;
+        pFifo->cbUsed   += (uint8_t)cbRead;
         cbFilled        += cbRead;
 
         if (cbRead < cbThisRead)
