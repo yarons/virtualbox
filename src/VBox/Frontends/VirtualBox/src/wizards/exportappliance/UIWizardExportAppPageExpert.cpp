@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 73325 2018-07-23 14:18:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 73326 2018-07-23 14:20:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -603,6 +603,7 @@ void UIWizardExportAppPageExpert::sltHandleFormatComboChange()
     refreshFileSelectorExtension();
     refreshManifestCheckBoxAccess();
     refreshIncludeISOsCheckBoxAccess();
+    refreshApplianceSettingsWidget();
 }
 
 void UIWizardExportAppPageExpert::sltHandleMACAddressPolicyComboChange()
