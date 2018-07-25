@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
+/* $Id: VMInternal.h 73351 2018-07-25 13:02:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
@@ -165,6 +165,12 @@ typedef struct VMINT
     bool                            fTeleportedAndNotFullyResumedYet;
     /** The VM should power off instead of reset. */
     bool                            fPowerOffInsteadOfReset;
+    /** Reset counter (soft + hard). */
+    uint32_t                        cResets;
+    /** Hard reset counter. */
+    uint32_t                        cHardResets;
+    /** Soft reset counter. */
+    uint32_t                        cSoftResets;
 } VMINT;
 /** Pointer to the VM Internal Data (part of the VM structure). */
 typedef VMINT *PVMINT;
