@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 72864 2018-07-04 10:17:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolSelector.cpp 73384 2018-07-27 09:40:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
