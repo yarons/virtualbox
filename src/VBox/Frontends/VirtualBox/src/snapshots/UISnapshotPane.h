@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 71027 2018-02-15 14:33:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISnapshotPane.h 73382 2018-07-27 09:19:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
