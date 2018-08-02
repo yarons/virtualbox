@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 73460 2018-08-02 21:06:59Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInWinNt.cpp 73461 2018-08-02 21:15:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -486,7 +486,7 @@ static DECLCALLBACK(int) dbgDiggerWinNtStackUnwindAssist(PUVM pUVM, void *pvData
         }
     }
 
-    RT_NOREF(pUVM, pvData, idCpu, hAs, puScratch);
+    RT_NOREF(pUVM, pvData, idCpu, hAs, pInitialCtx, puScratch);
     return VINF_SUCCESS;
 }
 
