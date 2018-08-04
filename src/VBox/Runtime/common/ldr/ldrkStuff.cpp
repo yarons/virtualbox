@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 73442 2018-08-02 10:50:25Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrkStuff.cpp 73494 2018-08-04 19:41:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -905,6 +905,7 @@ static const RTLDROPS g_rtkldrOps =
     rtkldr_QueryProp,
     NULL,
     NULL,
+    NULL /*pfnUnwindFrame*/,
     42
 };
 
