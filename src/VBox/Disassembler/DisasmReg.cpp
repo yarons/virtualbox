@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 73508 2018-08-05 14:11:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmReg.cpp 73514 2018-08-05 14:33:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -339,7 +339,7 @@ DISDECL(uint8_t) DISQuerySegPrefixByte(PCDISSTATE pDis)
  */
 DISDECL(int) DISFetchReg8(PCCPUMCTXCORE pCtx, unsigned reg8, uint8_t *pVal)
 {
-    AssertReturnStmt(reg8 < RT_ELEMENTS(g_aReg8Index), *pVal, VERR_INVALID_PARAMETER);
+    AssertReturnStmt(reg8 < RT_ELEMENTS(g_aReg8Index), *pVal = 0, VERR_INVALID_PARAMETER);
 
     *pVal = DIS_READ_REG8(pCtx, reg8);
     return VINF_SUCCESS;
