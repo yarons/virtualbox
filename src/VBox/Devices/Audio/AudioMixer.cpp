@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73556 2018-08-08 11:26:03Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 73557 2018-08-08 11:39:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1065,9 +1065,7 @@ int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t 
     }
     else
     {
-        uint32_t cbToRead    = RT_MIN(cbBuf,
-                                      pStreamRecSource->pConn->pfnStreamGetReadable(pStreamRecSource->pConn,
-                                                                                    pStreamRecSource->pStream));
+        uint32_t cbToRead = cbBuf;
         while (cbToRead)
         {
             uint32_t cbReadStrm;
