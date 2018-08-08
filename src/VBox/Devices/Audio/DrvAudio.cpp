@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73558 2018-08-08 11:41:25Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 73559 2018-08-08 11:48:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2319,7 +2319,9 @@ static DECLCALLBACK(int) drvAudioStreamRead(PPDMIAUDIOCONNECTOR pInterface, PPDM
     {
         if (!pThis->In.fEnabled)
         {
-            RT_BZERO(pvBuf, cbBuf);
+            /* If the stream is not enabled, return silence. */
+            DrvAudioHlpClearBuf(&pStream->Guest.Cfg.Props, pvBuf, cbBuf,
+                                PDMAUDIOPCMPROPS_B2F(&pStream->Guest.Cfg.Props, cbBuf));
             cbReadTotal = cbBuf;
             break;
         }
