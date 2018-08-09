@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 73384 2018-07-27 09:40:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 73578 2018-08-09 08:19:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -976,7 +976,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Video Capture"));
+        setName(QApplication::translate("UIActionPool", "Audio/&Video Capture"));
     }
 };
 
@@ -1065,7 +1065,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Video Capture"));
+        setName(QApplication::translate("UIActionPool", "Audio/&Video Capture"));
         setStatusTip(QApplication::translate("UIActionPool", "Enable guest display video capture"));
     }
 };
@@ -4170,4 +4170,3 @@ QString UIActionPoolRuntime::shortcutsExtraDataID() const
 
 
 #include "UIActionPoolRuntime.moc"
-
