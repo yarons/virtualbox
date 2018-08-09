@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73564 2018-08-08 14:03:05Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioVRDE.cpp 73584 2018-08-09 12:29:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -405,10 +405,7 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvAudioVRDEGetStatus(PPDMIHOSTAUDIO pIn
 
     RT_NOREF(enmDir);
 
-    if (pDrv->cClients) /* If any clients are connected via VRDE, return the backend as being operational. */
-        return PDMAUDIOBACKENDSTS_RUNNING;
-
-    return PDMAUDIOBACKENDSTS_STOPPED;
+    return PDMAUDIOBACKENDSTS_RUNNING;
 }
 
 
