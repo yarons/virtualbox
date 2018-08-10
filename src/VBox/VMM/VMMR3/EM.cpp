@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 73606 2018-08-10 07:38:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: EM.cpp 73617 2018-08-10 14:09:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1450,7 +1450,7 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu)
         {
             if (VM_IS_HM_ENABLED(pVM))
             {
-                if (HMR3CanExecuteGuest(pVM, &pVCpu->cpum.GstCtx))
+                if (HMCanExecuteGuest(pVCpu, &pVCpu->cpum.GstCtx))
                     return EMSTATE_HM;
             }
             else if (NEMR3CanExecuteGuest(pVM, pVCpu))
