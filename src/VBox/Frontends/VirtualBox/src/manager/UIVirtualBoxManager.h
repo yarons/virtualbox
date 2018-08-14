@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 73492 2018-08-03 15:30:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 73673 2018-08-14 18:43:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -111,6 +111,9 @@ private slots:
         void sltHandleChooserPaneIndexChange();
         /** Handles signal about group saving progress change. */
         void sltHandleGroupSavingProgressChange();
+
+        /** Handles singal about Tool type change.  */
+        void sltHandleToolTypeChange();
     /** @} */
 
     /** @name CVirtualBox event handling stuff.
