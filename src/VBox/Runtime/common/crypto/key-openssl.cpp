@@ -1,4 +1,4 @@
-/* $Id: key-openssl.cpp 73665 2018-08-14 17:49:23Z knut.osmundsen@oracle.com $ */
+/* $Id: key-openssl.cpp 73672 2018-08-14 18:40:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, OpenSSL glue.
  */
@@ -60,7 +60,7 @@
  * @param   pErrInfo        Where to optionally return more error details.
  */
 DECLHIDDEN(int) rtCrKeyToOpenSslKey(RTCRKEY hKey, bool fNeedPublic, const char *pszAlgoObjId,
-                                    EVP_PKEY **ppEvpKey, const EVP_MD **ppEvpMdType, PRTERRINFO pErrInfo)
+                                    void /*EVP_PKEY*/ **ppEvpKey, const void /*EVP_MD*/ **ppEvpMdType, PRTERRINFO pErrInfo)
 {
     *ppEvpKey = NULL;
     if (ppEvpMdType)
