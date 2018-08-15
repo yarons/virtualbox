@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 73671 2018-08-14 18:21:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolSelector.cpp 73694 2018-08-15 15:07:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -1880,6 +1880,9 @@ void UIActionPoolSelector::updateMenus()
 {
     /* 'Help' menu: */
     updateMenuHelp();
+
+    /* 'Log Viewer' menu: */
+    updateMenuLogViewer();
 }
 
 void UIActionPoolSelector::updateShortcuts()

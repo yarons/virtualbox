@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 73693 2018-08-15 14:33:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 73694 2018-08-15 15:07:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2388,7 +2388,7 @@ void UIMachineLogic::sltShowLogDialog()
         return;
 
     QIManagerDialog *pLogViewerDialog;
-    UIVMLogViewerDialogFactory dialogFactory(machine());
+    UIVMLogViewerDialogFactory dialogFactory(actionPool(), machine());
     dialogFactory.prepare(pLogViewerDialog, activeMachineWindow());
     if (pLogViewerDialog)
     {
