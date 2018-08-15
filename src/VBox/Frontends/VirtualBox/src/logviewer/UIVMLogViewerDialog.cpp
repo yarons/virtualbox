@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 73694 2018-08-15 15:07:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 73697 2018-08-15 15:58:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -94,7 +94,7 @@ void UIVMLogViewerDialog::configure()
 void UIVMLogViewerDialog::configureCentralWidget()
 {
     /* Create widget: */
-    UIVMLogViewerWidget *pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, m_pActionPool, m_comMachine, this);
+    UIVMLogViewerWidget *pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, m_pActionPool, true /* show toolbar */, m_comMachine, this);
     if (pWidget)
     {
         /* Configure widget: */
