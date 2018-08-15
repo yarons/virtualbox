@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73533 2018-08-06 18:26:58Z sergey.dubov@oracle.com $ */
+/* $Id: UISelectorWindow.cpp 73693 2018-08-15 14:33:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1130,7 +1130,7 @@ void UISelectorWindow::sltCloseLogViewerWindow()
        done before closing the dialog which will incur a second call to
        this function and result in double delete!!!: */
     m_logViewers.erase(sendersIterator);
-    UIVMLogViewerDialogFactory(CMachine()).cleanup(pDialog);
+    UIVMLogViewerDialogFactory().cleanup(pDialog);
 }
 
 void UISelectorWindow::sltShowMachineInFileManager()
