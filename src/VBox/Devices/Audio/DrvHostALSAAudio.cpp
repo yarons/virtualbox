@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 73689 2018-08-15 09:55:52Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostALSAAudio.cpp 73838 2018-08-22 16:15:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * ALSA audio driver.
  */
@@ -1161,6 +1161,8 @@ static DECLCALLBACK(int) drvHostALSAAudioGetConfig(PPDMIHOSTAUDIO pInterface, PP
 {
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
+
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "ALSA audio driver");
 
     pBackendCfg->cbStreamIn  = sizeof(ALSAAUDIOSTREAM);
     pBackendCfg->cbStreamOut = sizeof(ALSAAUDIOSTREAM);

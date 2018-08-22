@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73831 2018-08-22 14:28:07Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostPulseAudio.cpp 73838 2018-08-22 16:15:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1123,6 +1123,8 @@ static int paEnumerate(PDRVHOSTPULSEAUDIO pThis, PPDMAUDIOBACKENDCFG pCfg, uint3
 
     PDMAUDIOBACKENDCFG Cfg;
     RT_ZERO(Cfg);
+
+    RTStrPrintf2(Cfg.szName, sizeof(Cfg.szName), "PulseAudio driver");
 
     Cfg.cbStreamOut    = sizeof(PULSEAUDIOSTREAM);
     Cfg.cbStreamIn     = sizeof(PULSEAUDIOSTREAM);
