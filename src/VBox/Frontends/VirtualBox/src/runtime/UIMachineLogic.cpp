@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 73847 2018-08-22 19:03:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 73871 2018-08-24 10:41:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1682,6 +1682,8 @@ void UIMachineLogic::sltTypeAltPrintScreen()
 
 void UIMachineLogic::sltTypeHostKeyComboPressRelease(bool fToggleSequence)
 {
+    if (keyboardHandler())
+        keyboardHandler()->setHostKeyComboPressedFlag(fToggleSequence);
     QList<unsigned> shortCodes = UIHostCombo::modifiersToScanCodes(gEDataManager->hostKeyCombination());
     QVector<LONG> codes;
     foreach (unsigned idxCode, shortCodes)
