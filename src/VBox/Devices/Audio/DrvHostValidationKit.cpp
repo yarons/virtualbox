@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 73838 2018-08-22 16:15:08Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvHostValidationKit.cpp 73877 2018-08-24 16:10:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -88,7 +88,7 @@ static DECLCALLBACK(int) drvHostVaKitAudioGetConfig(PPDMIHOSTAUDIO pInterface, P
     pBackendCfg->cbStreamIn     = sizeof(VAKITAUDIOSTREAM);
 
     pBackendCfg->cMaxStreamsOut = 1; /* Output */
-    pBackendCfg->cMaxStreamsIn  = 2; /* Line input + microphone input. */
+    pBackendCfg->cMaxStreamsIn  = 0; /* No input supported yet. */
 
     return VINF_SUCCESS;
 }
