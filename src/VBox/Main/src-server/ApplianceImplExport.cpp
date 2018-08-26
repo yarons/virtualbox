@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 73893 2018-08-26 15:40:27Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 73894 2018-08-26 15:47:31Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -890,7 +890,10 @@ HRESULT Appliance::i_writeOCIImpl(const LocationInfo &aLocInfo, ComObjPtr<Progre
                 mode = WriteFile;
                 break;
             case VFSType_WebDav:
+                mode = WriteFile;
+                break;
             case VFSType_32BitHack:
+                mode = WriteFile;
                 break;
         }
         rc = i_setUpProgress(aProgress,
