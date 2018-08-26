@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 73892 2018-08-26 15:30:15Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 73893 2018-08-26 15:40:27Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1034,6 +1034,8 @@ HRESULT Appliance::i_setUpProgress(ComObjPtr<Progress> &pProgress,
             ulTotalOperationsWeight += ulOVFCreationWeight;
             break;
         }
+        case ExportOCI:
+            break;
     }
     Log(("Setting up progress object: ulTotalMB = %d, cDisks = %d, => cOperations = %d, ulTotalOperationsWeight = %d, m->ulWeightForXmlOperation = %d\n",
          m->ulTotalDisksMB, m->cDisks, cOperations, ulTotalOperationsWeight, m->ulWeightForXmlOperation));
