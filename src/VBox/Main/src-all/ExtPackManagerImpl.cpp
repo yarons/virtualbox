@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 73829 2018-08-22 13:35:07Z klaus.espenlaub@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 73916 2018-08-27 14:10:00Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2383,7 +2383,7 @@ HRESULT ExtPackManager::i_runSetUidToRootHelper(Utf8Str const *a_pstrDisplayInfo
         apszArgs[cArgs++] = a_pstrDisplayInfo->c_str();
     }
 
-    LogRel(("'%s'", a_pszCommand));
+    LogRel((" '%s'", a_pszCommand));
     apszArgs[cArgs++] = a_pszCommand;
 
     va_list va;
