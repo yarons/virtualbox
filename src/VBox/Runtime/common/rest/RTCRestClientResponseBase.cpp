@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 73922 2018-08-28 07:30:28Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCRestClientResponseBase.cpp 73923 2018-08-28 07:44:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -60,8 +60,8 @@ RTCRestClientResponseBase::~RTCRestClientResponseBase()
 RTCRestClientResponseBase::RTCRestClientResponseBase(RTCRestClientResponseBase const &a_rThat)
     : m_rcStatus(a_rThat.m_rcStatus)
     , m_rcHttp(a_rThat.m_rcHttp)
-    , m_strContentType(a_rThat.m_strContentType)
     , m_pErrInfo(NULL)
+    , m_strContentType(a_rThat.m_strContentType)
 {
     if (m_pErrInfo)
         copyErrInfo(m_pErrInfo);
