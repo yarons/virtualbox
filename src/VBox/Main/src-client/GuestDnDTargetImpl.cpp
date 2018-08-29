@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 73003 2018-07-09 11:09:32Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 73940 2018-08-29 08:11:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -1185,7 +1185,8 @@ DECLCALLBACK(int) GuestDnDTarget::i_sendURIDataCallback(uint32_t uMsg, void *pvP
                 if (RT_SUCCESS(rc))
                 {
                     LogFlowFunc(("Returning uMsg=%RU32\n", uMsg));
-                    rc = HGCM::Message::copyParms(pCBData->paParms, pCBData->cParms,  pMsg->getParms(), pMsg->getCount());
+                    rc = HGCM::Message::CopyParms(pCBData->paParms, pCBData->cParms, pMsg->getParms(), pMsg->getCount(),
+                                                  false /* fDeepCopy */);
                     if (RT_SUCCESS(rc))
                     {
                         pCBData->cParms = pMsg->getCount();
