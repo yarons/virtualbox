@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74014 2018-09-01 02:12:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 74016 2018-09-01 05:25:49Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -591,7 +591,6 @@ static const char * const g_apszVmxInstrErrors[HMVMX_INSTR_ERROR_MAX + 1] =
     /* 28 */ "Invalid operand to INVEPT/INVVPID."
 };
 #endif /* VBOX_STRICT */
-
 
 
 /**
