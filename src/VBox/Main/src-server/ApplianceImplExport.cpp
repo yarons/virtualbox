@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74092 2018-09-05 18:29:21Z alexander.rudnev@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 74123 2018-09-06 15:43:18Z alexander.rudnev@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2481,7 +2481,8 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
             cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
         } else {
             //TODO: fail here
-        }    }
+        }
+    }
 #endif
 
     LogFlowFuncLeave();
