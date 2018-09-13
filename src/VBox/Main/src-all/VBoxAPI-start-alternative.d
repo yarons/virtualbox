@@ -1,4 +1,4 @@
-/* $Id: VBoxAPI-start-alternative.d 74238 2018-09-13 13:29:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAPI-start-alternative.d 74243 2018-09-13 14:14:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxAPI - Static dtrace probes.
  */
@@ -15,11 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#pragma D attributes Evolving/Evolving/Common provider vboxapi provider
+/*#pragma D attributes Evolving/Evolving/Common provider vboxapi provider
 #pragma D attributes Private/Private/Unknown  provider vboxapi module
 #pragma D attributes Private/Private/Unknown  provider vboxapi function
 #pragma D attributes Evolving/Evolving/Common provider vboxapi name
-#pragma D attributes Evolving/Evolving/Common provider vboxapi args
+#pragma D attributes Evolving/Evolving/Common provider vboxapi args*/
 
 provider vboxapi
 {
