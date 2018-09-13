@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 74184 2018-09-10 19:08:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 74246 2018-09-13 15:42:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -20,8 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QStatusBar>
-# include <QStyle>
 # include <QVBoxLayout>
 
 /* GUI includes: */
