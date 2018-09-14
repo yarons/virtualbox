@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74260 2018-09-14 11:11:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74265 2018-09-14 13:42:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -560,6 +560,9 @@ void UIVirtualBoxManagerWidget::loadSettings()
                                        ? Qt::ToolButtonTextUnderIcon
                                        : Qt::ToolButtonIconOnly);
     }
+
+    /* Open tool currently chosen in Tools-pane:  */
+    sltHandleToolsPaneIndexChange();
 }
 
 void UIVirtualBoxManagerWidget::updateToolbar()
