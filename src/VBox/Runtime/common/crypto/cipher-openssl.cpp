@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 74352 2018-09-18 21:50:57Z knut.osmundsen@oracle.com $ */
+/* $Id: cipher-openssl.cpp 74362 2018-09-19 09:50:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -234,7 +234,7 @@ RTDECL(int) RTCrCipherEncrypt(RTCRCIPHER hCipher, void const *pvKey, size_t cbKe
             {
                 Assert(cbEncrypted1 <= (ssize_t)cbNeeded);
                 int cbEncrypted2 = 0;
-                rcOssl = EVP_DecryptFinal(pCipherCtx, (unsigned char *)pvEncrypted + cbEncrypted1, &cbEncrypted1);
+                rcOssl = EVP_DecryptFinal(pCipherCtx, (unsigned char *)pvEncrypted + cbEncrypted1, &cbEncrypted2);
                 if (rcOssl > 0)
                 {
                     Assert(cbEncrypted1 + cbEncrypted2 == (ssize_t)cbNeeded);
