@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74277 2018-09-14 16:08:36Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCRest-1.cpp 74414 2018-09-21 18:23:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -32,6 +32,7 @@
 #include <iprt/cpp/restarray.h>
 #include <iprt/cpp/reststringmap.h>
 #include <iprt/cpp/restclient.h>
+#include <iprt/cpp/restoutput.h>
 
 #include <iprt/ctype.h>
 #include <iprt/err.h>
