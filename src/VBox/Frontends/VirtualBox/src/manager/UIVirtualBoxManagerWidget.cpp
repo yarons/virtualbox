@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74322 2018-09-17 17:53:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74464 2018-09-25 18:13:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -350,6 +350,8 @@ void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
                 switchToTool(enmType);
             break;
         }
+        default:
+            break;
     }
 }
 
