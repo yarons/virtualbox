@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 71355 2018-03-15 15:13:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 74553 2018-10-01 14:43:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -42,7 +42,6 @@
 # include "UIGuestControlWidget.h"
 # include "UIInformationRuntime.h"
 # include "UIMachine.h"
-# include "UIVMItem.h"
 
 /* COM includes: */
 # include "COMEnums.h"
