@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74640 2018-10-06 19:14:10Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrMachO.cpp 74641 2018-10-06 19:28:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -2291,7 +2291,6 @@ static int kldrModMachOQueryMainEntrypoint(PRTLDRMODINTERNAL pMod, const void *p
 
 #endif
 
-/** @copydoc kLdrModQueryImageUuid */
 static int kldrModMachOQueryImageUuid(PKLDRMODMACHO pThis, const void *pvBits, void *pvUuid, size_t cbUuid)
 {
     RT_NOREF(pvBits);
@@ -3684,7 +3683,7 @@ static DECLCALLBACK(int) rtldrMachO_LinkAddressToSegOffset(PRTLDRMODINTERNAL pMo
 
 
 /**
- * @interface_method_impl{RTLDROPS,pfnLinkAddressToRva}.
+ * @interface_method_impl{RTLDROPS,pfnLinkAddressToRva}
  */
 static DECLCALLBACK(int) rtldrMachO_LinkAddressToRva(PRTLDRMODINTERNAL pMod, RTLDRADDR LinkAddress, PRTLDRADDR pRva)
 {
