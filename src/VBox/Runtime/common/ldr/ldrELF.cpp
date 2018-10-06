@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 73531 2018-08-06 17:08:57Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELF.cpp 74638 2018-10-06 18:31:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -120,7 +120,7 @@ static const char *rtldrElfGetShdrType(uint32_t iType)
  * @param   phLdrMod    Where to store the handle.
  * @param   pErrInfo    Where to return extended error information. Optional.
  */
-int rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     const char *pszLogName = pReader->pfnLogName(pReader); NOREF(pszLogName);
 
