@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 74677 2018-10-08 12:51:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.h 74682 2018-10-08 13:40:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -54,9 +54,6 @@ private:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-
-    /* Helper: Prepare stuff: */
-    void preparePalette();
 
     /* Handler: Resize-event stuff: */
     void resizeEvent(QResizeEvent *pEvent);
