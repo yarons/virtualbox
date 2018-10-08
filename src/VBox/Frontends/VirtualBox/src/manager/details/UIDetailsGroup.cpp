@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 74685 2018-10-08 15:31:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGroup.cpp 74686 2018-10-08 15:33:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -104,10 +104,9 @@ QList<UIDetailsItem*> UIDetailsGroup::items(UIDetailsItemType enmType /* = UIDet
 void UIDetailsGroup::updateLayout()
 {
     /* Prepare variables: */
-    const int iMargin = data(GroupData_Margin).toInt();
     const int iSpacing = data(GroupData_Spacing).toInt();
     const int iMaximumWidth = geometry().size().toSize().width();
-    int iVerticalIndent = iMargin;
+    int iVerticalIndent = 0;
 
     /* Layout all the sets: */
     foreach (UIDetailsItem *pItem, items())
