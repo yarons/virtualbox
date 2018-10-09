@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 74393 2018-09-20 17:05:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.h 74717 2018-10-09 13:44:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -310,7 +310,7 @@ private:
         /** Paints background using specified @a pPainter and certain @a rect. */
         void paintBackground(QPainter *pPainter, const QRect &rect);
         /** Paints frame rectangle using specified @a pPainter and certain @a rect. */
-        void paintFrameRectangle(QPainter *pPainter, const QRect &rect);
+        void paintFrame(QPainter *pPainter, const QRect &rect);
         /** Paints header using specified @a pPainter and certain @a rect. */
         void paintHeader(QPainter *pPainter, const QRect &rect);
     /** @} */
