@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 73560 2018-08-08 12:27:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 74701 2018-10-09 07:24:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -408,6 +408,9 @@ void UIMachineSettingsDisplay::getFromCache()
 
     /* Load old 'Screen' data from the cache: */
     m_pEditorVideoScreenCount->setValue(oldDisplayData.m_cGuestScreenCount);
+    m_pScaleFactorEditor->setMonitorCount(oldDisplayData.m_cGuestScreenCount);
+    m_pScaleFactorEditor->hide();
+    m_pLabelGuestScreenScaleFactorEditor->hide();
     m_pEditorGuestScreenScale->setValue((int)(oldDisplayData.m_dScaleFactor * 100));
     m_pCheckbox3D->setChecked(oldDisplayData.m_f3dAccelerationEnabled);
 #ifdef VBOX_WITH_VIDEOHWACCEL
