@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74748 2018-10-10 15:28:17Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrMachO.cpp 74750 2018-10-10 17:42:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -4550,7 +4550,7 @@ static int rtldrMachO_VerifySignatureValidateCdHashesPlist(PRTLDRMACHOSIGNATURE 
                                        "Code directory #%u hash mismatch (plist):\n"
                                        "signed: %.*Rhxs\n"
                                        "our:    %.*Rhxs\n",
-                                       cbActualHash, pbHash,
+                                       iCodeDir, cbActualHash, pbHash,
                                        RTCrDigestGetHashSize(hDigest), RTCrDigestGetHash(hDigest));
             }
             else
