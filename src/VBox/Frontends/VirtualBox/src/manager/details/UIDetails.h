@@ -1,4 +1,4 @@
-/* $Id: UIDetails.h 74679 2018-10-08 12:57:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetails.h 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetails class declaration.
  */
@@ -40,7 +40,7 @@ signals:
       * @param  strId        Brings machine ID. */
     void sigLinkClicked(const QString &strCategory,
                         const QString &strControl,
-                        const QString &strId);
+                        const QUuid &aId);
 
     /** Notifies listeners about sliding started. */
     void sigSlidingStarted();
