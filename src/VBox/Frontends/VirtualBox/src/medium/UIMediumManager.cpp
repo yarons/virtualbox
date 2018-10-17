@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
+/* $Id: UIMediumManager.cpp 74894 2018-10-17 22:17:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -913,6 +913,7 @@ void UIMediumManagerWidget::loadSettings()
 {
     /* Details action/widget: */
     m_pActionPool->action(UIActionIndexST_M_Medium_T_Details)->setChecked(gEDataManager->virtualMediaManagerDetailsExpanded());
+    sltToggleMediumDetailsVisibility(m_pActionPool->action(UIActionIndexST_M_Medium_T_Details)->isChecked());
 }
 
 void UIMediumManagerWidget::repopulateTreeWidgets()
