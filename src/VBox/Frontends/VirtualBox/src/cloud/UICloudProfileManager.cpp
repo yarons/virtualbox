@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74929 2018-10-18 17:23:49Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 74930 2018-10-18 17:31:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -289,7 +289,7 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
 
     /* Acquire profile name if not proposed by details widget: */
     QString strProfileName = m_pDetailsWidget->data().m_strName;
-    if (strProfileName.isNull())
+    if (strProfileName.isEmpty())
     {
         QPointer<QInputDialog> pDialog = new QInputDialog(this);
         pDialog->setInputMode(QInputDialog::TextInput);
