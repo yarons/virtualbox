@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 74893 2018-10-17 18:48:46Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileDetailsWidget.h 74897 2018-10-18 00:17:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -73,6 +73,7 @@ struct UIDataCloudProfile
     {
         return true
                && (m_strName == other.m_strName)
+               && (m_data == other.m_data)
                ;
     }
 
