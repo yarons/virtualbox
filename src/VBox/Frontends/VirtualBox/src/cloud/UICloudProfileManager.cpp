@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74921 2018-10-18 14:15:19Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 74922 2018-10-18 14:36:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -252,6 +252,12 @@ void UICloudProfileManagerWidget::sltApplyCloudProfileDetailsChanges()
 
                     /* Make sure current item fetched: */
                     sltHandleCurrentItemChange();
+
+                    /* Save profile changes: */
+                    comCloudProvider.SaveProfiles();
+                    /* Show error message if necessary: */
+                    if (!comCloudProvider.isOk())
+                        msgCenter().cannotSaveCloudProfiles(comCloudProvider, this);
                 }
             }
         }
@@ -321,6 +327,12 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
                     UIDataCloudProfile data;
                     loadCloudProfile(comCloudProfile, data);
                     createItemForCloudProfile(pProviderItem, data, true);
+
+                    /* Save profile changes: */
+                    comCloudProvider.SaveProfiles();
+                    /* Show error message if necessary: */
+                    if (!comCloudProvider.isOk())
+                        msgCenter().cannotSaveCloudProfiles(comCloudProvider, this);
                 }
             }
         }
@@ -375,6 +387,12 @@ void UICloudProfileManagerWidget::sltRemoveCloudProfile()
 
                 /* Remove interface from the tree: */
                 delete pProfileItem;
+
+                /* Save profile changes: */
+                comCloudProvider.SaveProfiles();
+                /* Show error message if necessary: */
+                if (!comCloudProvider.isOk())
+                    msgCenter().cannotSaveCloudProfiles(comCloudProvider, this);
             }
         }
     }
