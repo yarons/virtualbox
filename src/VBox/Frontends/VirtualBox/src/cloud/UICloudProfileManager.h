@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 74920 2018-10-18 13:49:12Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.h 74923 2018-10-18 15:14:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -94,8 +94,8 @@ private slots:
         void sltRemoveCloudProfile();
         /** Handles command to make cloud profile details @a fVisible. */
         void sltToggleCloudProfileDetailsVisibility(bool fVisible);
-        /** Handles command to refresh cloud profiles. */
-        void sltRefreshCloudProfiles();
+        /** Handles command to import cloud profiles. */
+        void sltImportCloudProfiles();
     /** @} */
 
     /** @name Tree-widget stuff.
