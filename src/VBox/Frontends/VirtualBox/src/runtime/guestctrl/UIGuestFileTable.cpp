@@ -1,6 +1,6 @@
-/* $Id: UIGuestFileTable.cpp 72086 2018-05-03 12:17:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestFileTable.cpp 74947 2018-10-19 15:03:34Z serkan.bayraktar@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIGuestControlFileTable class implementation.
+ * VBox Qt GUI - UIGuestFileTable class implementation.
  */
 
 /*
