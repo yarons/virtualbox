@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
+/* $Id: UIMediumSelector.h 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -99,7 +99,7 @@ private:
     void          performMediumSearch();
     /** Remember the default foreground brush of the tree so that we can reset tree items' foreground later */
     void          saveDefaultForeground();
-    void          selectMedium(const QUuid &aMediumID);
+    void          selectMedium(const QUuid &uMediumID);
 
     QVBoxLayout          *m_pMainLayout;
     QITreeWidget         *m_pTreeWidget;

@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.h 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
+/* $Id: UIGDetailsElement.h 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class declaration.
  */
@@ -58,7 +58,7 @@ signals:
     void sigToggleElementFinished();
 
     /* Notifier: Link-click stuff: */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &aId);
+    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
 
 public:
 

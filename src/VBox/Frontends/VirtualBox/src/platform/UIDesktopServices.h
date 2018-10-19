@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices.h 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
+/* $Id: UIDesktopServices.h 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - Desktop Services..
  */
@@ -27,7 +27,7 @@ class QString;
 class UIDesktopServices
 {
 public:
-    static bool createMachineShortcut(const QString &strSrcFile, const QString &strDstPath, const QString &strName, const QUuid &aUuid);
+    static bool createMachineShortcut(const QString &strSrcFile, const QString &strDstPath, const QString &strName, const QUuid &uUuid);
     static bool openInFileManager(const QString &strFile);
 };
 

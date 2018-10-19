@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 74914 2018-10-18 12:06:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -121,8 +121,8 @@
 struct USBTarget
 {
     USBTarget() : attach(false), id(QUuid()) {}
-    USBTarget(bool fAttach, const QUuid &aId)
-        : attach(fAttach), id(aId) {}
+    USBTarget(bool fAttach, const QUuid &uId)
+        : attach(fAttach), id(uId) {}
     bool attach;
     QUuid id;
 };

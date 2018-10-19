@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 74878 2018-10-17 13:34:24Z noreply@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -51,7 +51,7 @@ signals:
     /** Redirects signal from UIVirtualBoxManager to UIDetails. */
     void sigToggleFinished();
     /** Redirects signal from UIDetails to UIVirtualBoxManager. */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &aId);
+    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
 
 public:
 
