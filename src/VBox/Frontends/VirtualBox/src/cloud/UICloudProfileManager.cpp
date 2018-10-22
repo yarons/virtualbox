@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74958 2018-10-21 12:26:57Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 74976 2018-10-22 16:58:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -947,7 +947,6 @@ void UICloudProfileManager::retranslateUi()
 void UICloudProfileManager::configure()
 {
     /* Apply window icons: */
-    /// @todo apply proper cloud profile manager icons!
     setWindowIcon(UIIconPool::iconSetFull(":/cloud_profile_manager_32px.png", ":/cloud_profile_manager_16px.png"));
 }
 
