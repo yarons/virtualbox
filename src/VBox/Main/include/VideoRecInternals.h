@@ -1,4 +1,4 @@
-/* $Id: VideoRecInternals.h 74996 2018-10-23 12:44:34Z andreas.loeffler@oracle.com $ */
+/* $Id: VideoRecInternals.h 74999 2018-10-23 13:50:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording internals header.
  */
