@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 70623 2018-01-18 10:05:23Z andreas.loeffler@oracle.com $ */
+/* $Id: WebMWriter.h 74992 2018-10-23 11:09:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
