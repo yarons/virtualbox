@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 75029 2018-10-24 11:41:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 75054 2018-10-25 07:22:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -55,6 +55,9 @@ signals:
 
     /** Notifies about Tool type change. */
     void sigToolTypeChange();
+
+    /** Notifies listeners about Cloud Profile Manager change. */
+    void sigCloudProfileManagerChange();
 
 public:
 
