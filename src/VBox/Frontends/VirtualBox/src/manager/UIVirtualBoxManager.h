@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 75055 2018-10-25 08:03:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 75093 2018-10-26 12:22:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -120,6 +120,9 @@ private slots:
 
         /** Handles singal about Tool type change.  */
         void sltHandleToolTypeChange();
+
+        /** Handles current snapshot item change. */
+        void sltCurrentSnapshotItemChange();
     /** @} */
 
     /** @name CVirtualBox event handling stuff.
