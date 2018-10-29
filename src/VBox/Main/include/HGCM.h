@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCM.h 75167 2018-10-29 21:03:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -60,4 +60,4 @@ int HGCMHostLoadState (PSSMHANDLE pSSM);
 
 RT_C_DECLS_END
 
-#endif /* __HGCM_h__ */
+#endif /* !__HGCM_h__ */
