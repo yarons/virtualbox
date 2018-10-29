@@ -1,6 +1,6 @@
-/* $Id: UIGuestFileTable.h 75148 2018-10-29 13:56:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostFileTable.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIGuestFileTable class declaration.
+ * VBox Qt GUI - UIHostFileTable class declaration.
  */
 
 /*
@@ -15,12 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIGuestTable_h___
-#define ___UIGuestTable_h___
-
-/* COM includes: */
-#include "COMEnums.h"
-#include "CGuestSession.h"
+#ifndef ___UIHostFileTable_h___
+#define ___UIHostFileTable_h___
 
 /* GUI includes: */
 #include "UIGuestControlFileTable.h"
@@ -28,21 +24,19 @@
 /* Forward declarations: */
 class UIActionPool;
 
-/** This class scans the guest file system by using the VBox Guest Control API
- *  and populates the UIGuestControlFileModel*/
-class UIGuestFileTable : public UIGuestControlFileTable
+/** This class scans the host file system by using the Qt API
+    and connects to the UIGuestControlFileModel*/
+class UIHostFileTable : public UIGuestControlFileTable
 {
     Q_OBJECT;
 
 public:
 
-    UIGuestFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
-    void initGuestFileTable(const CGuestSession &session);
-    void copyGuestToHost(const QString& hostDestinationPath);
-    void copyHostToGuest(const QStringList &hostSourcePathList);
+    UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
 
 protected:
 
+    FileObjectType  fileType(const QFileInfo &fsInfo);
     void            retranslateUi() /* override */;
     virtual void    readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
     virtual void    deleteByItem(UIFileTableItem *item) /* override */;
@@ -54,16 +48,9 @@ protected:
     virtual void    determineDriveLetters() /* override */;
     virtual void    prepareToolbar() /* override */;
 
-
 private:
 
-    FileObjectType  fileType(const CFsObjInfo &fsInfo);
-    FileObjectType  fileType(const CGuestFsObjInfo &fsInfo);
-
-    bool copyGuestToHost(const QString &guestSourcePath, const QString& hostDestinationPath);
-    bool copyHostToGuest(const QString& hostSourcePath, const QString &guestDestinationPath);
-    mutable CGuestSession m_comGuestSession;
-
+    QString permissionString(QFileDevice::Permissions permissions);
 };
 
-#endif /* !___UIGuestFileTable_h___ */
+#endif /* !___UIHostFileTable_h___ */

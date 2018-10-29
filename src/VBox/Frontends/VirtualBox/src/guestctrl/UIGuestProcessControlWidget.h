@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 75087 2018-10-26 09:59:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */

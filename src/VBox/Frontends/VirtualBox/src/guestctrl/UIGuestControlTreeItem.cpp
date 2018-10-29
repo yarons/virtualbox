@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71639 2018-04-04 06:01:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlTreeItem.cpp 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */

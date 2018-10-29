@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.h 74947 2018-10-19 15:03:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileModel.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class declaration.
  */

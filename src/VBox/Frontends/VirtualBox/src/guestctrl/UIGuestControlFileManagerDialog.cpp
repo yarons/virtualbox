@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75136 2018-10-29 08:47:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */

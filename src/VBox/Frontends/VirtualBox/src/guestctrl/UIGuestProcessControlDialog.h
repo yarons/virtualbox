@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.h 75087 2018-10-26 09:59:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestProcessControlDialog.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class declaration.
  */
