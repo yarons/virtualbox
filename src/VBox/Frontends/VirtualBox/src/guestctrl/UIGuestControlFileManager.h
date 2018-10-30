@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManager.h 75184 2018-10-30 15:07:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -60,7 +60,7 @@ public:
     bool bAskDeleteConfirmation;
 private:
     UIGuestControlFileManagerSettings();
-
+    ~UIGuestControlFileManagerSettings();
 
     static UIGuestControlFileManagerSettings *m_pInstance;
 };

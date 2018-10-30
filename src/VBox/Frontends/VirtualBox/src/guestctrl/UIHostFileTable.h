@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostFileTable.h 75184 2018-10-30 15:07:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -51,6 +51,8 @@ protected:
 private:
 
     QString permissionString(QFileDevice::Permissions permissions);
+    void    prepareActionConnections();
+
 };
 
 #endif /* !___UIHostFileTable_h___ */

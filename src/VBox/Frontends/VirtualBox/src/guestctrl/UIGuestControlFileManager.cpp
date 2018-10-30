@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManager.cpp 75184 2018-10-30 15:07:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -74,6 +74,12 @@ void UIGuestControlFileManagerSettings::create()
 void UIGuestControlFileManagerSettings::destroy()
 {
     delete m_pInstance;
+    m_pInstance = 0;
+}
+
+ UIGuestControlFileManagerSettings::~UIGuestControlFileManagerSettings()
+{
+
 }
 
 UIGuestControlFileManagerSettings::UIGuestControlFileManagerSettings()
@@ -670,7 +676,6 @@ bool UIGuestControlFileManager::createSession(const QString& strUserName, const 
         sltCloseSession();
         return false;
     }
-
     return true;
 }
 
