@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 75181 2018-10-30 14:55:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.cpp 75182 2018-10-30 14:57:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -197,6 +197,10 @@ UIChooserItemGroup::UIChooserItemGroup(UIChooserItem *pParent,
 
 UIChooserItemGroup::~UIChooserItemGroup()
 {
+    /* Delete group name editor: */
+    delete m_pNameEditorWidget;
+    m_pNameEditorWidget = 0;
+
     /* Delete all the items: */
     clearItems();
 
