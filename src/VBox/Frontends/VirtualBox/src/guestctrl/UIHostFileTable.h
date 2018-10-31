@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75184 2018-10-30 15:07:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostFileTable.h 75202 2018-10-31 09:30:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -47,6 +47,7 @@ protected:
     virtual void    showProperties() /* override */;
     virtual void    determineDriveLetters() /* override */;
     virtual void    prepareToolbar() /* override */;
+    virtual void    createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) /* override */;
 
 private:
 
