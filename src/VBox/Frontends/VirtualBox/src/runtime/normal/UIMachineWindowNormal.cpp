@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 75211 2018-10-31 18:27:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -273,8 +273,8 @@ void UIMachineWindowNormal::prepareMenu()
         menuBar()->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(menuBar(), SIGNAL(customContextMenuRequested(const QPoint&)),
                 this, SLOT(sltHandleMenuBarContextMenuRequest(const QPoint&)));
-        connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange(const QString&)),
-                this, SLOT(sltHandleMenuBarConfigurationChange(const QString&)));
+        connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange(const QUuid &)),
+                this, SLOT(sltHandleMenuBarConfigurationChange(const QUuid &)));
         /* Update menu-bar: */
         updateMenu();
     }
