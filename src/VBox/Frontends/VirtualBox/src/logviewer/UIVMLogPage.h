@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 72030 2018-04-26 08:34:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.h 75212 2018-10-31 19:42:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -112,10 +112,6 @@ public:
 
     QFont currentFont() const;
     void setCurrentFont(QFont font);
-
-protected:
-
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:
 
