@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75203 2018-10-31 09:30:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileTable.cpp 75220 2018-11-02 08:07:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -958,6 +958,13 @@ void UIGuestControlFileTable::refresh()
     m_pModel->endReset();
     m_pView->setRootIndex(m_pProxyModel->mapFromSource(currentIndex));
     setSelectionDependentActionsEnabled(m_pView->hasSelection());
+}
+
+void UIGuestControlFileTable::relist()
+{
+    if (!m_pProxyModel)
+        return;
+    m_pProxyModel->invalidate();
 }
 
 void UIGuestControlFileTable::sltDelete()
