@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSettingsPanel.h 75220 2018-11-02 08:07:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManagerSettingsPanel.h 75224 2018-11-02 12:45:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -37,6 +37,7 @@ public:
 
     UIGuestControlFileManagerSettingsPanel(UIGuestControlFileManager *pManagerWidget,
                                            QWidget *pParent, UIGuestControlFileManagerSettings *pFileManagerSettings);
+    virtual QString panelName() const /* override */;
 
 signals:
 
