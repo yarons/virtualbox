@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 75251 2018-11-05 17:55:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 75255 2018-11-05 18:43:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2974,7 +2974,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                         }
 
                         if (cMonitors > saCaptureScreenScreens.size()) /* Paranoia. */
-                            cMonitors = saCaptureScreenScreens.size();
+                            cMonitors = (ULONG)saCaptureScreenScreens.size();
 
                         for (size_t i = 0; i < cMonitors; ++i)
                             CHECK_ERROR_BREAK(saCaptureScreenScreens[i], COMSETTER(Enabled)(screens[i]));
