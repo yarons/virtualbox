@@ -1,10 +1,11 @@
-/* $Id: VBoxVFS-VNODEOps.cpp 75292 2018-11-06 15:06:31Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSF-VNodeOps.cpp 75293 2018-11-06 16:15:09Z knut.osmundsen@oracle.com $ */
 /** @file
- * VBoxVFS - vnode operations.
+ * VBoxSF - Darwin Shared Folders, VNode Operations.
  */
 
+
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,17 +16,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <sys/mount.h>
-#include <sys/vnode.h>
-#include <sys/errno.h>
-#include <sys/dirent.h>
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
+#include "VBoxSFInternal.h"
 
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 
-#include "vboxvfs.h"
+
 
 #define VNODEOPFUNC int(*)(void *)
+
 
 static int vboxvfs_dfl_error()
 {
