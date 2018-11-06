@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 75282 2018-11-06 12:57:54Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 75288 2018-11-06 14:38:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5154,7 +5154,7 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
      * Allocate and copy the tables if non-native.
      * (No need to do try/except as this is a buffered request.)
      */
-    if (pImage->fNative)
+    if (!pImage->fNative)
     {
         pImage->cbStrTab = pReq->u.In.cbStrTab;
         if (pImage->cbStrTab)
