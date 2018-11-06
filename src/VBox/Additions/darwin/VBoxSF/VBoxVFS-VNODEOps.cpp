@@ -1,4 +1,4 @@
-/* $Id: VBoxVFS-VNODEOps.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVFS-VNODEOps.cpp 75292 2018-11-06 15:06:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVFS - vnode operations.
  */
