@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.h 75155 2018-10-29 15:24:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManagerDialog.h 75268 2018-11-06 10:10:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class declaration.
  */
@@ -71,6 +71,7 @@ public:
 
 protected:
 
+    virtual void prepare() /* override */;
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
@@ -104,6 +105,7 @@ private slots:
 
 private:
 
+    void manageEscapeShortCut();
     UIActionPool *m_pActionPool;
     CGuest      m_comGuest;
     QString     m_strMachineName;
