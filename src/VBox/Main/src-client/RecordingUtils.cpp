@@ -1,6 +1,6 @@
-/* $Id: VideoRecUtils.cpp 74999 2018-10-23 13:50:28Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.cpp 75344 2018-11-09 09:17:06Z andreas.loeffler@oracle.com $ */
 /** @file
- * Video recording utility code.
+ * Recording utility code.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "VideoRec.h"
-#include "VideoRecUtils.h"
+#include "Recording.h"
+#include "RecordingUtils.h"
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>

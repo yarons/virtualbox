@@ -1,4 +1,4 @@
-/* $Id: VBoxDriversRegister.cpp 70496 2018-01-09 16:09:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDriversRegister.cpp 75344 2018-11-09 09:17:06Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * Main driver registration.
@@ -31,7 +31,7 @@
 # include "DrvAudioVRDE.h"
 #endif
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-# include "DrvAudioVideoRec.h"
+# include "DrvAudioRec.h"
 #endif
 #include "Nvram.h"
 #include "UsbWebcamInterface.h"

@@ -1,6 +1,6 @@
-/* $Id: VideoRecUtils.h 74999 2018-10-23 13:50:28Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.h 75344 2018-11-09 09:17:06Z andreas.loeffler@oracle.com $ */
 /** @file
- * Video recording utility header.
+ * Recording utility header.
  */
 
 /*

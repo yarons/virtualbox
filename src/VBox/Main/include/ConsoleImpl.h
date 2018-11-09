@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75341 2018-11-09 08:37:28Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 75344 2018-11-09 09:17:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -24,7 +24,7 @@
 #include "SecretKeyStore.h"
 #include "ConsoleWrap.h"
 #ifdef VBOX_WITH_VIDEOREC
-# include "VideoRec.h"
+# include "Recording.h"
 #endif
 
 class Guest;
