@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 75380 2018-11-09 22:25:30Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 75381 2018-11-09 22:30:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1095,7 +1095,7 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
         bool fTransient = false;
         bool fWritable = true;
         bool fAutoMount = false;
-        char *pszAutoMountPoint = "";
+        const char *pszAutoMountPoint = "";
 
         for (int i = 2; i < a->argc; i++)
         {
