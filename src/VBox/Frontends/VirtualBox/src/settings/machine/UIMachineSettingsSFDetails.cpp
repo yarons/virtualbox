@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 75380 2018-11-09 22:25:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -107,6 +107,16 @@ void UIMachineSettingsSFDetails::setAutoMount(bool fAutoMount)
 bool UIMachineSettingsSFDetails::isAutoMounted() const
 {
     return mCbAutoMount->isChecked();
+}
+
+void UIMachineSettingsSFDetails::setAutoMountPoint(const QString &strAutoMountPoint)
+{
+    mLeAutoMountPoint->setText(strAutoMountPoint);
+}
+
+QString UIMachineSettingsSFDetails::autoMountPoint() const
+{
+    return mLeAutoMountPoint->text();
 }
 
 void UIMachineSettingsSFDetails::setPermanent(bool fPermanent)
