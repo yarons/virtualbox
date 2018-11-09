@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 75054 2018-10-25 07:22:29Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.h 75376 2018-11-09 19:11:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -137,8 +137,8 @@ private:
         void loadCloudStuff();
         /** Loads cloud @a comProvider data to passed @a data container. */
         void loadCloudProvider(const CCloudProvider &comProvider, UIDataCloudProvider &data);
-        /** Loads cloud @a comProfile data to passed @a data container. */
-        void loadCloudProfile(const CCloudProfile &comProfile, UIDataCloudProfile &data);
+        /** Loads cloud @a comProfile data to passed @a profileData container, using @a providerData as hint. */
+        void loadCloudProfile(const CCloudProfile &comProfile, const UIDataCloudProvider &providerData, UIDataCloudProfile &profileData);
     /** @} */
 
     /** @name Tree-widget stuff.
