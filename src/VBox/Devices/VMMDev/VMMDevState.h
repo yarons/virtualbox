@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 72352 2018-05-26 12:37:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: VMMDevState.h 75410 2018-11-12 20:17:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -144,8 +144,6 @@ typedef struct VMMDevState
     /** HGCM connector interface */
     R3PTRTYPE(PPDMIHGCMCONNECTOR) pHGCMDrv;
 #endif
-    /** Alignment padding. */
-    RTR3PTR PtrR3Alignment1;
     /** message buffer for backdoor logging. */
     char szMsg[512];
     /** message buffer index. */
