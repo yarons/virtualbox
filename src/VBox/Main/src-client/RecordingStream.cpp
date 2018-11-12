@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 75392 2018-11-12 09:48:37Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 75393 2018-11-12 09:53:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -348,11 +348,11 @@ int RecordingStream::Process(RecordingBlockMap &mapBlocksCommon)
             {
                 PRECORDINGVIDEOFRAME pVideoFrame  = (PRECORDINGVIDEOFRAME)pBlock->pvData;
 
-                rc = recordingRGBToYUV(pVideoFrame->uPixelFormat,
-                                       /* Destination */
-                                       this->Video.Codec.VPX.pu8YuvBuf, pVideoFrame->uWidth, pVideoFrame->uHeight,
-                                       /* Source */
-                                       pVideoFrame->pu8RGBBuf, this->ScreenSettings.Video.ulWidth, this->ScreenSettings.Video.ulHeight);
+                rc = RecordingUtilsRGBToYUV(pVideoFrame->uPixelFormat,
+                                            /* Destination */
+                                            this->Video.Codec.VPX.pu8YuvBuf, pVideoFrame->uWidth, pVideoFrame->uHeight,
+                                            /* Source */
+                                            pVideoFrame->pu8RGBBuf, this->ScreenSettings.Video.ulWidth, this->ScreenSettings.Video.ulHeight);
                 if (RT_SUCCESS(rc))
                 {
                     rc = writeVideoVPX(uTimeStampMs, pVideoFrame);
