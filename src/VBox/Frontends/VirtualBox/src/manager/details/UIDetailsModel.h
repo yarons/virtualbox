@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
+/* $Id: UIDetailsModel.h 75427 2018-11-13 16:39:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -92,6 +92,9 @@ public slots:
     void sltHandleSlidingStarted();
     void sltHandleToggleStarted();
     void sltHandleToggleFinished();
+
+    /** Handle extra-data options change. */
+    void sltHandleExtraDataOptionsChange(DetailsElementType enmType);
 
 private slots:
 

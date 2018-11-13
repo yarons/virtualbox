@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 74681 2018-10-08 13:36:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsModel.cpp 75427 2018-11-13 16:39:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -128,6 +128,11 @@ void UIDetailsModel::sltHandleToggleStarted()
 }
 
 void UIDetailsModel::sltHandleToggleFinished()
+{
+    m_pRoot->rebuildGroup();
+}
+
+void UIDetailsModel::sltHandleExtraDataOptionsChange(DetailsElementType)
 {
     m_pRoot->rebuildGroup();
 }
