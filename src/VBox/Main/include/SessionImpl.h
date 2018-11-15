@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 75361 2018-11-09 12:56:40Z andreas.loeffler@oracle.com $ */
+/* $Id: SessionImpl.h 75488 2018-11-15 16:12:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -101,7 +101,7 @@ private:
                         BOOL aAdd);
     HRESULT onCPUExecutionCapChange(ULONG aExecutionCap);
     HRESULT onVRDEServerChange(BOOL aRestart);
-    HRESULT onRecordingChange();
+    HRESULT onRecordingChange(BOOL aEnable);
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
     HRESULT onUSBDeviceAttach(const ComPtr<IUSBDevice> &aDevice,
