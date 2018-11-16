@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 75512 2018-11-16 11:33:38Z aleksey.ilyushin@oracle.com $ */
+/* $Id: NetworkServiceRunner.h 75513 2018-11-16 11:57:04Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -35,7 +35,6 @@ public:
     virtual ~NetworkServiceRunner();
 
     int setOption(const std::string& key, const std::string& val);
-    void clearOptions();
 
     int  start(bool aKillProcOnStop);
     int  stop();
