@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 75498 2018-11-16 00:03:41Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.cpp 75506 2018-11-16 02:38:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

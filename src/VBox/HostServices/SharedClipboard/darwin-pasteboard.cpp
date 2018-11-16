@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 75498 2018-11-16 00:03:41Z knut.osmundsen@oracle.com $ */
+/* $Id: darwin-pasteboard.cpp 75506 2018-11-16 02:38:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -16,6 +16,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
