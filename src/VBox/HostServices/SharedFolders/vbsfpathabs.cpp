@@ -1,6 +1,6 @@
-/* $Id: vbsfpathabs.cpp 66090 2017-03-14 14:02:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: vbsfpathabs.cpp 75498 2018-11-16 00:03:41Z knut.osmundsen@oracle.com $ */
 /** @file
- * Shared Folders - guest/host path convertion and verification.
+ * Shared Folders Service - guest/host path convertion and verification.
  */
 
 /*
@@ -15,8 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
 #include <iprt/path.h>
 #include <iprt/string.h>
+
 
 #if defined(RT_OS_WINDOWS)
 static void vbsfPathResolveRelative(char *pszPathBegin)
