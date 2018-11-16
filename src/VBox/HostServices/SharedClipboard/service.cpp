@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75498 2018-11-16 00:03:41Z knut.osmundsen@oracle.com $ */
+/* $Id: service.cpp 75500 2018-11-16 01:24:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -405,8 +405,10 @@ static DECLCALLBACK(void) svcCall (void *,
                                    void *pvClient,
                                    uint32_t u32Function,
                                    uint32_t cParms,
-                                   VBOXHGCMSVCPARM paParms[])
+                                   VBOXHGCMSVCPARM paParms[],
+                                   uint64_t tsArrival)
 {
+    RT_NOREF_PV(tsArrival);
     int rc = VINF_SUCCESS;
 
     LogRel2(("svcCall: u32ClientID = %d, fn = %d, cParms = %d, pparms = %d\n",
