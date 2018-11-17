@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.cpp 75539 2018-11-17 02:35:23Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCMObjects.cpp 75541 2018-11-17 03:50:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects
  */
@@ -245,7 +245,7 @@ HGCMObject *hgcmObjReference (uint32_t handle, HGCMOBJ_TYPE enmObjType)
     return pObject;
 }
 
-void hgcmObjDereference(HGCMReferencedObject *pObject)
+void hgcmObjDereference(HGCMObject *pObject)
 {
     LogFlow(("MAIN::hgcmObjDereference: pObject %p\n", pObject));
 
