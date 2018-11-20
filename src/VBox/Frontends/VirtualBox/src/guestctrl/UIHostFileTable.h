@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75610 2018-11-20 11:14:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostFileTable.h 75619 2018-11-20 13:05:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -33,7 +33,7 @@ class UIHostFileTable : public UIGuestControlFileTable
 public:
 
     UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
-    void setDeleteAfterCopyCache(const QUuid &progressId, const QStringList &sourceObjectsList);
+    void updateDeleteAfterCopyCache(const QUuid &progressId, const QStringList &sourceObjectsList);
 
 protected:
 
