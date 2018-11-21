@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75633 2018-11-21 10:03:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileTable.h 75643 2018-11-21 14:27:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -245,7 +245,7 @@ class UIGuestControlFileTable : public QIWithRetranslateUI<QWidget>
 signals:
 
     void sigLogOutput(QString strLog, FileManagerLogType eLogType);
-    void sigDeleteConfirmationSettingChanged();
+    void sigDeleteConfirmationOptionChanged();
 
 public:
 
