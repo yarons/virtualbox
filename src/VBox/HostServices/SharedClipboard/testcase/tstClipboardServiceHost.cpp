@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 75737 2018-11-26 15:44:41Z noreply@oracle.com $ */
+/* $Id: tstClipboardServiceHost.cpp 75749 2018-11-26 18:57:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -36,9 +36,10 @@ struct VBOXHGCMCALLHANDLE_TYPEDEF
 };
 
 /** Call completion callback for guest calls. */
-static DECLCALLBACK(void) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
+static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
 {
     callHandle->rc = rc;
+    return VINF_SUCCESS;
 }
 
 static int setupTable(VBOXHGCMSVCFNTABLE *pTable)
