@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 75742 2018-11-26 16:44:04Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 75744 2018-11-26 17:13:12Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -51,8 +51,6 @@
   * Represented as a tree structure with a parent & multiple children. */
 class UIApplianceModelItem : public QITreeViewItem
 {
-    Q_OBJECT;
-
 public:
 
     /** Constructs root item with specified @a iNumber, @a enmType and @a pParent. */
