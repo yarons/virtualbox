@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 75732 2018-11-26 12:38:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestFileTable.h 75760 2018-11-27 07:22:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class declaration.
  */
@@ -63,6 +63,12 @@ protected:
     virtual void    determineDriveLetters() /* override */;
     virtual void    prepareToolbar() /* override */;
     virtual void    createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) /* override */;
+    /** @name Copy/Cut guest-to-guest stuff.
+     * @{ */
+        /** Disable/enable paste action depending on the m_eFileOperationType. */
+        virtual void  setPasteActionEnabled(bool fEnabled) /* override */;
+        virtual void  pasteCutCopiedObjects() /* override */;
+    /** @} */
 
 private:
 
