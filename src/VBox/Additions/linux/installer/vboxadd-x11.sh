@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd-x11.sh 75439 2018-11-14 01:45:41Z knut.osmundsen@oracle.com $
+# $Id: vboxadd-x11.sh 75837 2018-11-30 10:55:38Z noreply@oracle.com $
 ## @file
-# Linux Additions X11 setup init script ($Revision: 75439 $)
+# Linux Additions X11 setup init script ($Revision: 75837 $)
 #
 
 #
@@ -481,6 +481,8 @@ EOF
     case "${x_version}" in 4.* | 6.* | 7.* | 1.?.* | 1.1* )
         setup_opengl
     esac
+    # Try enabling VMSVGA drm device resizing.
+    VBoxClient --vmsvga
 }
 
 cleanup()
