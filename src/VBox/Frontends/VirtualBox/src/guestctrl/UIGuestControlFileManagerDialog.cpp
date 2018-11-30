@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75809 2018-11-29 07:57:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75835 2018-11-30 10:34:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */
@@ -97,7 +97,7 @@ void UIGuestControlFileManagerDialog::configureCentralWidget()
         setWidget(pWidget);
         setWidgetMenu(pWidget->menu());
 #ifdef VBOX_WS_MAC
-        //setWidgetToolbar(pWidget->toolbar());
+        setWidgetToolbar(pWidget->toolbar());
 #endif
         connect(pWidget, &UIGuestControlFileManager::sigSetCloseButtonShortCut,
                 this, &UIGuestControlFileManagerDialog::sltSetCloseButtonShortCut);
