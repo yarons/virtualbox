@@ -1,3 +1,4 @@
+/* $Id: client.cpp 75953 2018-12-04 18:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Base class for a host-guest service.
  */
