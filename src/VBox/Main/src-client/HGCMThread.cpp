@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 75798 2018-11-28 23:47:11Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCMThread.cpp 75990 2018-12-05 19:51:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -703,7 +703,7 @@ DECLINLINE(int) hgcmMsgPostInternal(HGCMMsgCore *pMsg, PHGCMMSGCALLBACK pfnCallb
 
     pMsg->Dereference();
 
-    LogFlow(("MAIN::hgcmMsgPostInternal: pMsg %p, rc = %Rrc\n", pMsg, rc));
+    LogFlow(("MAIN::hgcmMsgPostInternal: pMsg = %p, rc = %Rrc\n", pMsg, rc));
     return rc;
 }
 
