@@ -1,8 +1,6 @@
-/* $Id: VirtualBoxClientListImpl.cpp 73368 2018-07-26 10:03:25Z vitali.pelenjow@oracle.com $ */
+/* $Id: VirtualBoxClientListImpl.cpp 76064 2018-12-07 20:12:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Global COM Class implementation.
- *
- * @todo r=bird: Why is this file in src-all? Shouldn't it be in src-global/win/?!?
  */
 
 /*
