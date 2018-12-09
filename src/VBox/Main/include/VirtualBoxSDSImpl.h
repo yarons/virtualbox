@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 76082 2018-12-09 19:25:00Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxSDSImpl.h 76083 2018-12-09 19:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -20,10 +20,10 @@
 
 #include "VirtualBoxBase.h"
 
-///* Enable the watcher code in debug builds. */
-//#ifdef DEBUG
-//# define WITH_WATCHER
-//#endif
+/* Enable the watcher code in debug builds. */
+#ifdef DEBUG
+# define WITH_WATCHER
+#endif
 
 
 class VBoxSDSPerUserData; /* See VirtualBoxSDSImpl.cpp. */
