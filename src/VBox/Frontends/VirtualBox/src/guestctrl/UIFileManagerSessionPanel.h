@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSessionPanel.h 75761 2018-11-27 09:10:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerSessionPanel.h 76177 2018-12-12 13:38:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -15,25 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIGuestControlFileManagerSessionPanel_h___
-#define ___UIGuestControlFileManagerSessionPanel_h___
+#ifndef ___UIFileManagerSessionPanel_h___
+#define ___UIFileManagerSessionPanel_h___
 
 /* GUI includes: */
-#include "UIGuestControlFileManagerPanel.h"
+#include "UIFileManagerPanel.h"
 
 /* Forward declarations: */
 class QTextEdit;
-class UIGuestControlFileManager;
+class UIFileManager;
 class UIGuestSessionCreateWidget;
 
-/** UIGuestControlFileManagerPanel extension providing GUI for creating/stopping a guest session. */
-class UIGuestControlFileManagerSessionPanel : public UIGuestControlFileManagerPanel
+/** UIFileManagerPanel extension providing GUI for creating/stopping a guest session. */
+class UIFileManagerSessionPanel : public UIFileManagerPanel
 {
     Q_OBJECT;
 
 public:
 
-    UIGuestControlFileManagerSessionPanel(UIGuestControlFileManager *pManagerWidget, QWidget *pParent);
+    UIFileManagerSessionPanel(UIFileManager *pManagerWidget, QWidget *pParent);
     /** @name Enable/disable member widget wrt. guest session status.
       * @{ */
         void switchSessionCloseMode();
@@ -57,4 +57,4 @@ private:
     UIGuestSessionCreateWidget *m_pSessionCreateWidget;
 };
 
-#endif /* !___UIGuestControlFileManagerSessionPanel_h___ */
+#endif /* !___UIFileManagerSessionPanel_h___ */
