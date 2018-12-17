@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76263 2018-12-17 15:03:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76267 2018-12-17 15:47:31Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -349,7 +349,7 @@ GLPFN Window (* pfn_XDefaultRootWindow)(Display *display);
 GLPFN int (* pfn_XDestroyWindow)(Display *display, Window w);
 #define XDestroyWindow pfn_XDestroyWindow
 
-GLPFN int (* pfn_XNextEvent)(Display *display, XEvent *event_return); 
+GLPFN int (* pfn_XNextEvent)(Display *display, XEvent *event_return);
 #define XNextEvent pfn_XNextEvent
 
 GLPFN Display *(* pfn_XOpenDisplay)(char *display_name);
