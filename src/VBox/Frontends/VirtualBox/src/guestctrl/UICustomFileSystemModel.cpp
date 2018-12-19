@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76301 2018-12-19 19:24:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 76303 2018-12-19 19:53:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -222,8 +222,9 @@ void UICustomFileSystemProxyModel::setListDirectoriesOnTop(bool fListDirectories
     m_fListDirectoriesOnTop = fListDirectoriesOnTop;
 }
 
+
 /*********************************************************************************************************************************
-*   UICustomFileSystemProxyModel implementation.                                                                                  *
+*   UICustomFileSystemProxyModel implementation.                                                                                 *
 *********************************************************************************************************************************/
 
 bool UICustomFileSystemProxyModel::listDirectoriesOnTop() const
