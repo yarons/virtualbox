@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.cpp 76329 2018-12-21 07:43:48Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPathOperations.cpp 76332 2018-12-21 10:27:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPathOperations class implementation.
  */
