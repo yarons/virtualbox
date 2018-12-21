@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPVbva.cpp 76343 2018-12-21 19:06:19Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1092,6 +1092,9 @@ bool VBoxCmdVbvaPreempt(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, uint32_t u32
 
 bool VBoxCmdVbvaCheckCompletedIrq(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva)
 {
+    if (pVbva->Vbva.pVBVA == NULL)
+        return false;
+
     VBVAEXBUFFERFORWARDITER Iter;
     VBoxVBVAExCFIterInit(&pVbva->Vbva, &Iter);
 
