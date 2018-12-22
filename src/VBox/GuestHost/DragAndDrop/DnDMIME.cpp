@@ -1,6 +1,6 @@
-/* $Id: DnDMIME.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DnDMIME.cpp 76379 2018-12-22 22:48:10Z knut.osmundsen@oracle.com $ */
 /** @file
- * DnD: Path list class.
+ * DnD - Path list class.
  */
 
 /*
@@ -19,10 +19,11 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/GuestHost/DragAndDrop.h>
 
 #include <iprt/string.h>
 
-#include <VBox/GuestHost/DragAndDrop.h>
 
 bool DnDMIMEHasFileURLs(const char *pcszFormat, size_t cchFormatMax)
 {
