@@ -1,4 +1,4 @@
-/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 74312 2018-09-17 14:47:59Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 76358 2018-12-22 01:33:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - RTCrPkcs5Pbkdf2Hmac implementation using OpenSSL.
  */
@@ -32,6 +32,7 @@
 # include "internal/iprt.h"
 # include <iprt/crypto/misc.h>
 
+# include <iprt/err.h>
 # include <iprt/rand.h>
 # include <iprt/assert.h>
 
