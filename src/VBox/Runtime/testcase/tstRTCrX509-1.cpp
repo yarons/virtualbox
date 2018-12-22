@@ -1,4 +1,4 @@
-/* $Id: tstRTCrX509-1.cpp 73705 2018-08-16 09:31:18Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCrX509-1.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT testcase - Crypto - X.509 \#1.
  */
@@ -30,6 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/crypto/x509.h>
 
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 

@@ -1,4 +1,4 @@
-/* $Id: RTDbgSymCache.cpp 69753 2017-11-19 14:27:58Z knut.osmundsen@oracle.com $ */
+/* $Id: RTDbgSymCache.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Symbol Cache Utility.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/buildconfig.h>
 #include <iprt/dbg.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/formats/mach-o.h>
 #include <iprt/getopt.h>

@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: resolv_conf_parser.c 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -24,6 +24,7 @@
 #endif
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/net.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>

@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 72036 2018-04-26 11:41:27Z knut.osmundsen@oracle.com $ */
+/* $Id: tarcmd.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -34,6 +34,7 @@
 #include <iprt/buildconfig.h>
 #include <iprt/ctype.h>
 #include <iprt/dir.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

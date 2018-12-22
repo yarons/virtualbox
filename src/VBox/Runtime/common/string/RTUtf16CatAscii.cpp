@@ -1,4 +1,4 @@
-/* $Id: RTUtf16CatAscii.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: RTUtf16CatAscii.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTUtf16CatAscii.
  */
@@ -30,6 +30,8 @@
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "internal/iprt.h"
+
+#include <iprt/err.h>
 
 
 RTDECL(int) RTUtf16CatAscii(PRTUTF16 pwszDst, size_t cwcDst, const char *pszSrc)

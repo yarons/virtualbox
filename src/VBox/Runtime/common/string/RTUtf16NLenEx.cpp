@@ -1,4 +1,4 @@
-/* $Id: RTUtf16NLenEx.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: RTUtf16NLenEx.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTUtf16NLenEx.
  */
@@ -30,6 +30,8 @@
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "internal/iprt.h"
+
+#include <iprt/err.h>
 
 
 RTDECL(int) RTUtf16NLenEx(PCRTUTF16 pwszString, size_t cwcMax, size_t *pcwc)
