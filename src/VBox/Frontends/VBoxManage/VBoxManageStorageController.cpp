@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 69693 2017-11-14 16:30:25Z noreply@oracle.com $ */
+/* $Id: VBoxManageStorageController.cpp 76366 2018-12-22 02:16:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -27,6 +27,7 @@
 #include <VBox/com/errorprint.h>
 #include <VBox/com/VirtualBox.h>
 
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
