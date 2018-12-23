@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 76419 2018-12-23 19:43:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -94,6 +94,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/assert.h>
+#include <VBox/err.h>
 #include <VBox/version.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
