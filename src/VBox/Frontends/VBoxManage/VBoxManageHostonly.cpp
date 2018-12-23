@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 76366 2018-12-22 02:16:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageHostonly.cpp 76433 2018-12-23 22:55:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -28,7 +28,6 @@
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/cidr.h>
-#include <iprt/err.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 76366 2018-12-22 02:16:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 76433 2018-12-23 22:55:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -34,7 +34,6 @@
 #include <map>
 #endif /* !VBOX_ONLY_DOCS */
 
-#include <iprt/err.h>
 #include <iprt/stream.h>
 #include <iprt/getopt.h>
 #include <iprt/ctype.h>
