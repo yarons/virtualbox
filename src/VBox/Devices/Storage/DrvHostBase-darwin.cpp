@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-darwin.cpp 76396 2018-12-23 04:28:07Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostBase-darwin.cpp 76404 2018-12-23 15:48:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver, OS X specifics.
  */
@@ -29,6 +29,7 @@
 #include <IOKit/IOBSD.h>
 #include <DiskArbitration/DiskArbitration.h>
 #include <mach/mach_error.h>
+#include <VBox/err.h>
 #include <VBox/scsi.h>
 #include <iprt/string.h>
 
