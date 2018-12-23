@@ -1,4 +1,4 @@
-/* $Id: json.cpp 74349 2018-09-18 19:53:31Z knut.osmundsen@oracle.com $ */
+/* $Id: json.cpp 76408 2018-12-23 16:38:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -38,6 +38,7 @@
 #include <iprt/mem.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include <stdlib.h> /* strtod() */
 #include <errno.h>  /* errno */

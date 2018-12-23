@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 75171 2018-10-30 09:30:43Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGM.cpp 76408 2018-12-23 16:38:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -69,6 +69,7 @@
 #include <iprt/mem.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/uuid.h>
 
 

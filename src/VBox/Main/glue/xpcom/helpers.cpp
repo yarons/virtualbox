@@ -1,6 +1,5 @@
-/* $Id: helpers.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: helpers.cpp 76408 2018-12-23 16:38:11Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * COM helper functions for XPCOM
  */
 
@@ -20,7 +19,7 @@
 
 #include <nsMemory.h>
 
-#include <iprt/string.h>
+#include <iprt/utf16.h>
 
 
 //
