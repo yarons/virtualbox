@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDisasm-1.cpp 76455 2018-12-25 01:49:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -23,7 +23,7 @@
 #include <iprt/test.h>
 #include <iprt/ctype.h>
 #include <iprt/string.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/time.h>
 
 
