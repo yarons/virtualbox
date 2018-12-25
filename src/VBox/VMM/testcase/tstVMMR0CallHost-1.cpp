@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 73502 2018-08-05 12:40:50Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMMR0CallHost-1.cpp 76454 2018-12-25 01:48:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <iprt/alloca.h>
 #include <iprt/initterm.h>
