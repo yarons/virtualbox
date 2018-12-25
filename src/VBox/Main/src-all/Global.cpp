@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 76165 2018-12-11 16:37:21Z knut.osmundsen@oracle.com $ */
+/* $Id: Global.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -21,7 +21,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 /* static */
 const Global::OSType Global::sOSTypes[] =

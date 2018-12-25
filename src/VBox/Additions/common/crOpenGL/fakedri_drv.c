@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.c 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: fakedri_drv.c 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -24,7 +24,7 @@
 #include "fakedri_drv.h"
 #include "dri_glx.h"
 #include "iprt/mem.h"
-#include "iprt/err.h"
+#include <iprt/errcore.h>
 #include <dlfcn.h>
 #include <elf.h>
 #include <unistd.h>

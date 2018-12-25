@@ -1,4 +1,4 @@
-/* $Id: dlm_state.c 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: dlm_state.c 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of saving and restoring Display Lists.
  */
@@ -21,7 +21,7 @@
 #include "dlm_generated.h"
 
 #include "VBox/vmm/ssm.h"
-#include "iprt/err.h"
+#include <iprt/errcore.h>
 
 
 typedef struct {

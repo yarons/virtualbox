@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 75764 2018-11-27 10:57:02Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxVNC.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -37,7 +37,7 @@
 #include <iprt/thread.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/RemoteDesktop/VRDEOrders.h>
 #include <VBox/RemoteDesktop/VRDE.h>
 

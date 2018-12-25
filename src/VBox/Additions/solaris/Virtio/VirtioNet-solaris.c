@@ -1,4 +1,4 @@
-/* $Id: VirtioNet-solaris.c 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioNet-solaris.c 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Network Driver for Solaris.
  */
@@ -39,7 +39,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/mem.h>
 #include <iprt/rand.h>

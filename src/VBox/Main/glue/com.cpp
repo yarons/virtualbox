@@ -1,4 +1,4 @@
-/* $Id: com.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: com.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -45,7 +45,7 @@
 
 #include <iprt/string.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 

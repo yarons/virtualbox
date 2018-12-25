@@ -1,4 +1,4 @@
-/* $Id: ip_output.c 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
+/* $Id: ip_output.c 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT - IP output.
  */
@@ -62,7 +62,7 @@
  */
 
 #include <slirp.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "alias.h"
 
 static const uint8_t broadcast_ethaddr[6] =

@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 73639 2018-08-13 15:00:49Z alexander.eichner@oracle.com $ */
+/* $Id: SerialTest.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

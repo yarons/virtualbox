@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: seamless-x11.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -20,7 +20,7 @@
 *   Header files                                                                                                                 *
 *********************************************************************************************************************************/
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/vector.h>
 #include <VBox/log.h>

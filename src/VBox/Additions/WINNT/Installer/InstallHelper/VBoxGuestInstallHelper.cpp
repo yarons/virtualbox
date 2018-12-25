@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 68743 2017-09-13 13:14:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestInstallHelper.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -28,7 +28,7 @@
 #include "exdll.h"
 #pragma warning(pop)
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/ldr.h>
 #include <iprt/localipc.h>

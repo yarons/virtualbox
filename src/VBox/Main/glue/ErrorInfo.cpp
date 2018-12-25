@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ErrorInfo.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@
 #include <iprt/stream.h>
 #include <iprt/string.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 namespace com
 {

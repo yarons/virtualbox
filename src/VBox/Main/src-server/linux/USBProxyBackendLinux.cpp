@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendLinux.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -25,7 +25,7 @@
 
 #include <VBox/usb.h>
 #include <VBox/usblib.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/string.h>
 #include <iprt/alloc.h>
@@ -34,7 +34,7 @@
 #include <iprt/dir.h>
 #include <iprt/env.h>
 #include <iprt/file.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/param.h>
 #include <iprt/path.h>

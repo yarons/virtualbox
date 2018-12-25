@@ -1,4 +1,4 @@
-/** $Id: USBLib-darwin.cpp 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/** $Id: USBLib-darwin.cpp 76474 2018-12-25 07:21:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Darwin flavor.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/usblib.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include "VBoxUSBInterface.h"
 
