@@ -1,4 +1,4 @@
-/* $Id: RTGzip.cpp 70423 2018-01-02 11:51:48Z knut.osmundsen@oracle.com $ */
+/* $Id: RTGzip.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - GZIP Utility.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/zip.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 

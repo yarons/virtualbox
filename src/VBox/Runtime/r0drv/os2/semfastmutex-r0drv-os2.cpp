@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z knut.osmundsen@oracle.com $ */
+/* $Id: semfastmutex-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fast Mutex Semaphores, Ring-0 Driver, OS/2.
  */
@@ -35,7 +35,7 @@
 #include "the-os2-kernel.h"
 
 #include <iprt/semaphore.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

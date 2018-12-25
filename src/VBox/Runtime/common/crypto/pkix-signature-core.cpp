@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-core.cpp 73665 2018-08-14 17:49:23Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-core.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, Core API.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/crypto/digest.h>

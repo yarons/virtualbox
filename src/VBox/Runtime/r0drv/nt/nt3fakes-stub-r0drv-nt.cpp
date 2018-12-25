@@ -1,4 +1,4 @@
-/* $Id: nt3fakes-stub-r0drv-nt.cpp 70336 2017-12-24 14:38:14Z knut.osmundsen@oracle.com $ */
+/* $Id: nt3fakes-stub-r0drv-nt.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - NT 3.x fakes for NT 4.0+ KPIs, init stub.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "the-nt-kernel.h"
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/dbg.h>
 #include "internal-r0drv-nt.h"
 

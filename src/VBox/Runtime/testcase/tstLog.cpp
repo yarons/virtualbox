@@ -1,4 +1,4 @@
-/* $Id: tstLog.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: tstLog.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Log Formatting.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/log.h>
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include <stdio.h>
 

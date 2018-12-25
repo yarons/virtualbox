@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 70690 2018-01-22 20:35:54Z noreply@oracle.com $ */
+/* $Id: initterm-r0drv-linux.c 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include "the-linux-kernel.h"
 #include "internal/iprt.h"
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include "internal/initterm.h"
 

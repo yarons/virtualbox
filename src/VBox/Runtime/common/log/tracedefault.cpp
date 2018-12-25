@@ -1,4 +1,4 @@
-/* $Id: tracedefault.cpp 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: tracedefault.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Tracebuffer common functions.
  */
@@ -32,7 +32,7 @@
 #include <iprt/trace.h>
 
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/thread.h>
 
 

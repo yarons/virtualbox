@@ -1,4 +1,4 @@
-/* $Id: RTLocaleQueryNormalizedBaseLocaleName-r3-generic.cpp 69219 2017-10-24 15:01:30Z knut.osmundsen@oracle.com $ */
+/* $Id: RTLocaleQueryNormalizedBaseLocaleName-r3-generic.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTLocaleQueryNormalizedBaseLocaleName, ring-3 generic.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 

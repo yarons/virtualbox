@@ -1,4 +1,4 @@
-/* $Id: avlgcptr.cpp 65892 2017-02-27 17:04:46Z knut.osmundsen@oracle.com $ */
+/* $Id: avlgcptr.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - AVL tree, RTGCPTR, unique keys.
  */
@@ -61,7 +61,7 @@ static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird E
 *********************************************************************************************************************************/
 #include <iprt/avl.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 /*
  * Include the code.

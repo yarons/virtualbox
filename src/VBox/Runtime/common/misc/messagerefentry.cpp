@@ -1,4 +1,4 @@
-/* $Id: messagerefentry.cpp 76346 2018-12-22 00:51:28Z knut.osmundsen@oracle.com $ */
+/* $Id: messagerefentry.cpp 76452 2018-12-25 01:41:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Program usage and help formatting.
  */
@@ -32,7 +32,7 @@
 #include <iprt/message.h>
 
 #include <iprt/env.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
