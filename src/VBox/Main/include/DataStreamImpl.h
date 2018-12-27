@@ -1,4 +1,4 @@
-/* $Id: DataStreamImpl.h 74822 2018-10-12 18:40:09Z alexander.eichner@oracle.com $ */
+/* $Id: DataStreamImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -18,6 +18,9 @@
 
 #ifndef ____H_DATASTREAMIMPL
 #define ____H_DATASTREAMIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "DataStreamWrap.h"
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_CONSOLEVRDPSERVER
 #define ____H_CONSOLEVRDPSERVER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VRDEServerInfoWrap.h"
 #include "RemoteUSBBackend.h"

@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ProgressProxyImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IProgress implementation for Machine::LaunchVMProcess in VBoxSVC.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_PROGRESSPROXYIMPL
 #define ____H_PROGRESSPROXYIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "ProgressImpl.h"
 #include "AutoCaller.h"

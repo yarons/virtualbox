@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 71406 2018-03-20 14:44:24Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTDIRECTORYIMPL
 #define ____H_GUESTDIRECTORYIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "GuestDirectoryWrap.h"
 #include "GuestFsObjInfoImpl.h"

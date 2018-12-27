@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ovfreader.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_OVFREADER
 #define ____H_OVFREADER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "iprt/cpp/xml.h"
 #include <map>

@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: NATEngineImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_NATENGINE
 #define ____H_NATENGINE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "NATEngineWrap.h"
 

@@ -1,4 +1,4 @@
-/* $Id: Recording.h 75499 2018-11-16 01:23:14Z knut.osmundsen@oracle.com $ */
+/* $Id: Recording.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording code header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_RECORDING
 #define ____H_RECORDING
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/array.h>
 #include <VBox/com/string.h>

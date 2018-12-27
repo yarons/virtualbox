@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBBackend.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBBackend.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox Remote USB backend
@@ -18,6 +18,9 @@
 
 #ifndef ____H_REMOTEUSBBACKEND
 #define ____H_REMOTEUSBBACKEND
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "RemoteUSBDeviceImpl.h"
 

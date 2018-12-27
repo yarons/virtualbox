@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: KeyboardImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_KEYBOARDIMPL
 #define ____H_KEYBOARDIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "KeyboardWrap.h"
 #include "EventImpl.h"

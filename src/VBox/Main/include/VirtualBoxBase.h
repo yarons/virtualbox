@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_VIRTUALBOXBASEIMPL
 #define ____H_VIRTUALBOXBASEIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/thread.h>

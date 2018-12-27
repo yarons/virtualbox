@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 75926 2018-12-03 21:52:50Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 76487 2018-12-27 03:31:39Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_RecordingScreenSettings
 #define ____H_RecordingScreenSettings
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "RecordingScreenSettingsWrap.h"
 
