@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 76366 2018-12-22 02:16:26Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsService.h 76542 2018-12-30 06:33:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host DNS listener.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___H_DNSHOSTSERVICE
 #define ___H_DNSHOSTSERVICE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 #include "VirtualBoxBase.h"
 
 #include <iprt/err.h> /* VERR_IGNORED */

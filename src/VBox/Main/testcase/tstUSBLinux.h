@@ -1,4 +1,4 @@
-/* $Id: tstUSBLinux.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: tstUSBLinux.h 76542 2018-12-30 06:33:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service class, test version for Linux hosts.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ____H_TSTUSBLINUX
 #define ____H_TSTUSBLINUX
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef int HRESULT;
 enum { S_OK = 0, E_NOTIMPL = 1 };
