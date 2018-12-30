@@ -1,4 +1,4 @@
-/* $Id: winoverride.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: winoverride.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVMWare/Shaderlib - Wine Function Portability Overrides
  */
@@ -17,6 +17,9 @@
 
 #ifndef __WINOVERRIDE_H__
 #define __WINOVERRIDE_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define GetProcessHeap()    ((HANDLE)0)
 #define HeapAlloc           VBoxHeapAlloc

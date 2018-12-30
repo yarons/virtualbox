@@ -1,4 +1,4 @@
-/* $Id: PciInline.h 69124 2017-10-17 19:17:23Z knut.osmundsen@oracle.com $ */
+/* $Id: PciInline.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * PCI - The PCI Controller And Devices, inline device helpers.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Bus_PciInline_h
 #define ___Bus_PciInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 DECLINLINE(void) pciDevSetPci2PciBridge(PPDMPCIDEV pDev)
 {

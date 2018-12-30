@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 76249 2018-12-16 09:36:17Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -16,6 +16,9 @@
 
 #ifndef ___DevVGA_SVGA_h___
 #define ___DevVGA_SVGA_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_WITH_VMSVGA
 # error "VBOX_WITH_VMSVGA is not defined"

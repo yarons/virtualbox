@@ -1,4 +1,4 @@
-/* $Id: alsa_stubs.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: alsa_stubs.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * Stubs for libasound.
  */
@@ -16,7 +16,10 @@
  */
 
 #ifndef AUDIO_ALSA_STUBS_H
-# define AUDIO_ALSA_STUBS_H
+#define AUDIO_ALSA_STUBS_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 extern int audioLoadAlsaLib(void);
 #endif
 

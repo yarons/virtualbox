@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-cocoa.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __DevVGA_SVGA3d_cocoa_h
 #define __DevVGA_SVGA3d_cocoa_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/VBoxCocoa.h>

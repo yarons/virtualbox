@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 74006 2018-08-31 17:23:27Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.h 76520 2018-12-30 05:39:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef DRV_AUDIO_H
 #define DRV_AUDIO_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <limits.h>
 
