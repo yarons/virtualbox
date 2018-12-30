@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPwr.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbPwr.h 76527 2018-12-30 05:55:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB Power state Handling
  */
@@ -25,6 +25,9 @@
 
 #ifndef ___VBoxUsbPwr_h___
 #define ___VBoxUsbPwr_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef struct VBOXUSB_PWRSTATE
 {
