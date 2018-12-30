@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceInternal.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceInternal.h 76531 2018-12-30 06:03:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___UsbTestServiceInternal_h___
 #define ___UsbTestServiceInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/getopt.h>
 #include <iprt/stream.h>

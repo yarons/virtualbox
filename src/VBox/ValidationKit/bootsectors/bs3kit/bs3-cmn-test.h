@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-test.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-test.h 76531 2018-12-30 06:03:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3Test internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___bs3_cmn_test_h
 #define ___bs3_cmn_test_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "bs3kit.h"
 #include <VBox/VMMDevTesting.h>
