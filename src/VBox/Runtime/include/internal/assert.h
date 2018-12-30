@@ -1,4 +1,4 @@
-/* $Id: assert.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: assert.h 76513 2018-12-30 05:16:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTAssert header
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_assert_h
 #define ___internal_assert_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 
