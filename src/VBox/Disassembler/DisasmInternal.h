@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 69111 2017-10-17 14:26:02Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmInternal.h 76516 2018-12-30 05:18:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DisasmInternal_h___
 #define ___DisasmInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/dis.h>
