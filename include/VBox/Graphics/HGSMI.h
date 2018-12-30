@@ -1,4 +1,4 @@
-/* $Id: HGSMI.h 71590 2018-03-31 18:34:28Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMI.h 76507 2018-12-30 03:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Host/Guest shared part.
  */
@@ -28,9 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBox_Graphics_HGSMI_h
 #define ___VBox_Graphics_HGSMI_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxVideoIPRT.h"
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoVBE.h 71146 2018-02-28 09:54:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxVideoVBE.h 76507 2018-12-30 03:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox graphics card port I/O definitions
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___VBox_Graphics_VBoxVideoVBE_h
 #define ___VBox_Graphics_VBoxVideoVBE_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUEST <-> HOST Communication API */
 
