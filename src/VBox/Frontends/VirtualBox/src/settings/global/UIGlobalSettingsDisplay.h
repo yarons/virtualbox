@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 72107 2018-05-04 10:45:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGlobalSettingsDisplay_h___
 #define ___UIGlobalSettingsDisplay_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

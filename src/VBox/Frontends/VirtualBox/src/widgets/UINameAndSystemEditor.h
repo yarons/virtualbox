@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 73251 2018-07-19 19:30:16Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UINameAndSystemEditor_h___
 #define ___UINameAndSystemEditor_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

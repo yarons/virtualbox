@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsWidget.h 67811 2017-07-05 18:56:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostNetworkDetailsWidget.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIHostNetworkDetailsWidget_h___
 #define ___UIHostNetworkDetailsWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.h 71870 2018-04-17 11:25:31Z sergey.dubov@oracle.com $ */
+/* $Id: QIMainDialog.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIMainDialog_h___
 #define ___QIMainDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QDialog>

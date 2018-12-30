@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkUtils.h 66860 2017-05-10 11:51:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostNetworkUtils.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkUtils namespace declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIHostNetworkUtils_h___
 #define ___UIHostNetworkUtils_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QStringList>

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.h 72109 2018-05-04 11:40:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIMachineSettingsUSBFilterDetails_h__
 #define __UIMachineSettingsUSBFilterDetails_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "UIMachineSettingsUSBFilterDetails.gen.h"
 #include "QIWithRetranslateUI.h"

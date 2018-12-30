@@ -1,4 +1,4 @@
-/* $Id: CIShared.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: CIShared.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Common VirtualBox classes: CIShared class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __CIShared_h__
 #define __CIShared_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef VBOX_CHECK_STATE
 #include <stdio.h>

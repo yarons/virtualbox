@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineLogicSeamless_h___
 #define ___UIMachineLogicSeamless_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Local includes: */
 #include "UIMachineLogic.h"

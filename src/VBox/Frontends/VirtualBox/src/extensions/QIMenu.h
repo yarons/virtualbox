@@ -1,4 +1,4 @@
-/* $Id: QIMenu.h 71896 2018-04-18 13:20:23Z sergey.dubov@oracle.com $ */
+/* $Id: QIMenu.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMenu class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIMenu_h___
 #define ___QIMenu_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMenu>

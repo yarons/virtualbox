@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.h 72109 2018-05-04 11:40:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSF.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsSF_h___
 #define ___UIMachineSettingsSF_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

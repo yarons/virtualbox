@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 71665 2018-04-04 15:46:55Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxUtils_darwin_h___
 #define ___VBoxUtils_darwin_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QRect>

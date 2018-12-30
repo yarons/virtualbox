@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.h 71630 2018-04-03 16:37:08Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkManagerDialog.h 76532 2018-12-30 06:08:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UINetworkManagerDialog_h___
 #define ___UINetworkManagerDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMainWindow>
