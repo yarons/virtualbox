@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPHGSMI.h 76540 2018-12-30 06:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Miniport HGSMI related header
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXMPHGSMI_H
 #define VBOXMPHGSMI_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxMPDevExt.h"
 

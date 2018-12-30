@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvProvider.h 76540 2018-12-30 06:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOX_CREDPROV_PROVIDER_H___
 #define ___VBOX_CREDPROV_PROVIDER_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <credentialprovider.h>
 #include <iprt/win/windows.h>

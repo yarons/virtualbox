@@ -1,4 +1,4 @@
-/* $Id: vbsfshared.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsfshared.h 76540 2018-12-30 06:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -20,6 +20,9 @@
 
 #ifndef VBSFSHARED_H
 #define VBSFSHARED_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* The network provider name for shared folders. */
 #define MRX_VBOX_PROVIDER_NAME_U L"VirtualBox Shared Folders"

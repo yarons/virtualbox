@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvPoller.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvPoller.h 76540 2018-12-30 06:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredPoller - Thread for retrieving user credentials.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOX_CREDPROV_POLLER_H___
 #define ___VBOX_CREDPROV_POLLER_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 #include <iprt/thread.h>

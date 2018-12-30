@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIOCTL.h 71592 2018-03-31 19:51:41Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoIOCTL.h 76540 2018-12-30 06:26:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Miniport IOCTL related header
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXVIDEOIOCTL_H
 #define VBOXVIDEOIOCTL_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VMMDev.h> /* VBVAMEMORY */
 #include <HGSMI.h>
