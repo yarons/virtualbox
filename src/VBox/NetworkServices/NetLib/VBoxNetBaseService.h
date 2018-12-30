@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetBaseService.h 76525 2018-12-30 05:51:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxNetBaseService_h___
 #define ___VBoxNetBaseService_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 

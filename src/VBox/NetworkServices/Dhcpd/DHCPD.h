@@ -1,4 +1,4 @@
-/* $Id: DHCPD.h 70836 2018-01-31 14:55:44Z knut.osmundsen@oracle.com $ */
+/* $Id: DHCPD.h 76525 2018-12-30 05:51:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCPD_DHCPD_H_
 #define _DHCPD_DHCPD_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "Defs.h"
 #include "Config.h"
