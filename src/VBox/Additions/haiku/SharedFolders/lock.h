@@ -1,4 +1,4 @@
-/* $Id: lock.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: lock.h 76538 2018-12-30 06:19:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * Lock.h - Haiku, private locking internals.
  */
@@ -28,6 +28,9 @@
 
 #ifndef _KERNEL_LOCK_H
 #define _KERNEL_LOCK_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <OS.h>
 

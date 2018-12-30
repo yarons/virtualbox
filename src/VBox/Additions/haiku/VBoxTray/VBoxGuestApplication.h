@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestApplication.h 69500 2017-10-28 15:14:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestApplication.h 76538 2018-12-30 06:19:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestApplication, Haiku Guest Additions, header.
  */
@@ -46,6 +46,9 @@
 
 #ifndef ___VBOXGUESTAPPLICATION__H
 #define ___VBOXGUESTAPPLICATION__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @todo r=ramshankar; why are we including all the headers here!?? Do it in
  *        the .cpp please. */
