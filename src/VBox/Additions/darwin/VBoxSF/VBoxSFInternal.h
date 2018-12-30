@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInternal.h 75678 2018-11-22 21:39:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSFInternal.h 76536 2018-12-30 06:17:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxSFInternal_h___
 #define ___VBoxSFInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*********************************************************************************************************************************
