@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
+/* $Id: REMInternal.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * REM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___REMInternal_h
 #define ___REMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/vmm/cpum.h>

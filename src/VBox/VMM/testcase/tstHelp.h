@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
+/* $Id: tstHelp.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___tstHelp_h
 #define ___tstHelp_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/vmm/cpum.h>

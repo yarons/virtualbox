@@ -1,4 +1,4 @@
-/* $Id: Intel_80386.h 70399 2018-01-01 12:31:26Z knut.osmundsen@oracle.com $ */
+/* $Id: Intel_80386.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel 80386".
  * Handcrafted.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_80386
 #define VBOX_CPUDB_Intel_80386
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef CPUM_DB_STANDALONE
 /**

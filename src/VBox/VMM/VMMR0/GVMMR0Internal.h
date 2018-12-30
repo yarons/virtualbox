@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 69474 2017-10-28 13:12:06Z knut.osmundsen@oracle.com $ */
+/* $Id: GVMMR0Internal.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GVMMR0Internal_h
 #define ___GVMMR0Internal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/mem.h>
 

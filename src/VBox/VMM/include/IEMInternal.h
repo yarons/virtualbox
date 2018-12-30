@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 75611 2018-11-20 11:20:25Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMInternal.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___IEMInternal_h
 #define ___IEMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/iem.h>

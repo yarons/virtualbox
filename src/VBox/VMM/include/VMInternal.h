@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 73351 2018-07-25 13:02:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VMInternal.h 76543 2018-12-30 06:38:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VMInternal_h
 #define ___VMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/vmm/vmapi.h>
