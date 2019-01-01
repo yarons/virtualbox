@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: the-linux-kernel.h 76557 2019-01-01 02:37:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -430,7 +430,7 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 /*
  * There are some conflicting defines in iprt/param.h, sort them out here.
  */
-#ifndef ___iprt_param_h
+#ifndef IPRT_INCLUDED_param_h
 # undef PAGE_SIZE
 # undef PAGE_OFFSET_MASK
 # include <iprt/param.h>
