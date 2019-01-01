@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ $Revision: 76553 $ $Date: 2019-01-01 02:45:53 +0100 (Tue, 01 Jan 2019) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: vboximgMedia.h 76574 2019-01-01 05:59:26Z knut.osmundsen@oracle.com $ $Revision: 76574 $ $Date: 2019-01-01 06:59:26 +0100 (Tue, 01 Jan 2019) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * vboximgMedia.h
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VBOXIMGMEDIA
-#define ____H_VBOXIMGMEDIA
+#ifndef VBOX_INCLUDED_SRC_vboximg_mount_vboximgMedia_h
+#define VBOX_INCLUDED_SRC_vboximg_mount_vboximgMedia_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
