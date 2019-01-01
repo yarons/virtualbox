@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: UICocoaSpecialControls.h 76581 2019-01-01 06:24:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UICocoaSpecialControls_h___
-#define ___UICocoaSpecialControls_h___
+#ifndef FEQT_INCLUDED_SRC_platform_darwin_UICocoaSpecialControls_h
+#define FEQT_INCLUDED_SRC_platform_darwin_UICocoaSpecialControls_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -76,5 +76,5 @@ private:
     NativeNSButtonRef nativeRef() const { return static_cast<NativeNSButtonRef>(cocoaView()); }
 };
 
-#endif /* !___UICocoaSpecialControls_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_darwin_UICocoaSpecialControls_h */
 
