@@ -1,10 +1,10 @@
-/* $Id: VBoxRTStableCheck.cpp 74327 2018-09-17 22:13:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxRTStableCheck.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testing that stable exports are all present in VBoxRT.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

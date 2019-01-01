@@ -1,10 +1,10 @@
-; $Id: vbdmismi.inc 69300 2017-10-25 13:38:41Z knut.osmundsen@oracle.com $
+; $Id: vbdmismi.inc 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $
 ;; @file
 ; DMI and SMBIOS definitions for VBox.
 ;
 
 ;
-; Copyright (C) 2006-2017 Oracle Corporation
+; Copyright (C) 2006-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

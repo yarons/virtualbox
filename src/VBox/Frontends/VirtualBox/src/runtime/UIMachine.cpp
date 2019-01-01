@@ -1,10 +1,10 @@
-/* $Id: UIMachine.cpp 74942 2018-10-19 12:51:20Z noreply@oracle.com $ */
+/* $Id: UIMachine.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

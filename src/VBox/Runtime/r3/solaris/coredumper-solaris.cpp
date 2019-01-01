@@ -1,10 +1,10 @@
-/* $Id: coredumper-solaris.cpp 73097 2018-07-12 21:06:33Z knut.osmundsen@oracle.com $ */
+/* $Id: coredumper-solaris.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

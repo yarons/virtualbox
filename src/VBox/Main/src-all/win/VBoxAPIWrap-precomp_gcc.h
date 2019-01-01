@@ -1,10 +1,10 @@
-/* $Id: VBoxAPIWrap-precomp_gcc.h 76522 2018-12-30 05:44:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAPIWrap-precomp_gcc.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM - GCC precompiled header for the API wrappers.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

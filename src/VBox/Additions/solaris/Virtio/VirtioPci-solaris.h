@@ -1,10 +1,10 @@
-/* $Id: VirtioPci-solaris.h 76537 2018-12-30 06:17:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioPci-solaris.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, PCI Hypervisor Interface.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

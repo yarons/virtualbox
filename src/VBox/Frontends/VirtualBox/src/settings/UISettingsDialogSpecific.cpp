@@ -1,10 +1,10 @@
-/* $Id: UISettingsDialogSpecific.cpp 75972 2018-12-05 13:35:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

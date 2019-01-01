@@ -1,10 +1,10 @@
-/* $Id: QIAdvancedSlider.cpp 71864 2018-04-16 13:59:06Z sergey.dubov@oracle.com $ */
+/* $Id: QIAdvancedSlider.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIAdvancedSlider class implementation.
  */
 
 /*
- * Copyright (C) 2009-2018 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIWindowMenuManager.cpp 72166 2018-05-08 15:57:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIWindowMenuManager.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

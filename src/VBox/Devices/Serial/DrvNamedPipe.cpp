@@ -1,10 +1,10 @@
-  /* $Id: DrvNamedPipe.cpp 69664 2017-11-12 23:46:38Z alexander.eichner@oracle.com $ */
+  /* $Id: DrvNamedPipe.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

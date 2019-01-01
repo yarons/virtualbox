@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControlSession.cpp 75895 2018-12-03 12:12:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
 
 /*
- * Copyright (C) 2013-2018 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

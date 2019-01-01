@@ -1,10 +1,10 @@
-/* $Id: log.cpp 73120 2018-07-13 13:22:09Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

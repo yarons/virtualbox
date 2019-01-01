@@ -1,10 +1,10 @@
-/* $Id: DoUInt32Div.c 69120 2017-10-17 19:13:23Z knut.osmundsen@oracle.com $ */
+/* $Id: DoUInt32Div.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

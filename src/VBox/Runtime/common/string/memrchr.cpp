@@ -1,10 +1,10 @@
-/* $Id: memrchr.cpp 71917 2018-04-19 10:09:31Z alexander.eichner@oracle.com $ */
+/* $Id: memrchr.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, memrchr().
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: VBoxMMNotificationClient.cpp 70471 2018-01-05 15:37:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxMMNotificationClient.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
  */
 
 /*
- * Copyright (C) 2017-2018 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

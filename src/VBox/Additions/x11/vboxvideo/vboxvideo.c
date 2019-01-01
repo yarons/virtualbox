@@ -1,11 +1,10 @@
-/* $Id: vboxvideo.c 69346 2017-10-26 13:36:28Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxvideo.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Linux Additions X11 graphics driver
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
- *
+ * Copyright (C) 2006-2019 Oracle Corporation
  * This file is based on the X.Org VESA driver:
  *
  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)

@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 74518 2018-09-28 11:47:33Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

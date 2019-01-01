@@ -1,10 +1,10 @@
-/* $Id: SvgaCmd.cpp 75655 2018-11-21 23:30:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: SvgaCmd.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

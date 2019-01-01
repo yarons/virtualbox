@@ -1,10 +1,10 @@
-/* $Id: service.cpp 76395 2018-12-23 03:31:31Z knut.osmundsen@oracle.com $ */
+/* $Id: service.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

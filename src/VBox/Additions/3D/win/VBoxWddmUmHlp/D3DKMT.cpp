@@ -1,10 +1,10 @@
-/* $Id: D3DKMT.cpp 75556 2018-11-18 19:21:02Z vitali.pelenjow@oracle.com $ */
+/* $Id: D3DKMT.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * WDDM Kernel Mode Thunks helpers.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-weird-1.c 72176 2018-05-09 15:28:30Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-weird-1.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-1, 16-bit C code.
  */
 
 /*
- * Copyright (C) 2007-2018 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 76358 2018-12-22 01:33:23Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCrPkcs5Pbkdf2Hmac-openssl.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - RTCrPkcs5Pbkdf2Hmac implementation using OpenSSL.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

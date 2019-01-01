@@ -1,10 +1,10 @@
-/* $Id: server.cpp 72975 2018-07-08 13:46:07Z knut.osmundsen@oracle.com $ */
+/* $Id: server.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
 
 /*
- * Copyright (C) 2004-2017 Oracle Corporation
+ * Copyright (C) 2004-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

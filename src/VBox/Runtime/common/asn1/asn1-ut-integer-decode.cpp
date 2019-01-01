@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-integer-decode.cpp 72369 2018-05-28 20:02:03Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-integer-decode.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASN.1, INTEGER Type, Decoding.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

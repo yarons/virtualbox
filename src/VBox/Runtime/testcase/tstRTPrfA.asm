@@ -1,10 +1,10 @@
-; $Id: tstRTPrfA.asm 69434 2017-10-27 15:48:25Z knut.osmundsen@oracle.com $
+; $Id: tstRTPrfA.asm 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Comparing CPU registers and memory (cache).
 ;
 
 ;
-; Copyright (C) 2007-2017 Oracle Corporation
+; Copyright (C) 2007-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: Hello.d 69282 2017-10-25 11:04:03Z knut.osmundsen@oracle.com $ */
+/* $Id: Hello.d 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDTrace - Hello world sample.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

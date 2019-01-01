@@ -1,10 +1,10 @@
-/* $Id: shflhandle.h 76526 2018-12-30 05:52:33Z knut.osmundsen@oracle.com $ */
+/* $Id: shflhandle.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders Host Service - Handles helper functions header.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
