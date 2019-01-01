@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: KeyboardImpl.h 76562 2019-01-01 03:22:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_KEYBOARDIMPL
-#define ____H_KEYBOARDIMPL
+#ifndef MAIN_INCLUDED_KeyboardImpl_h
+#define MAIN_INCLUDED_KeyboardImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -95,5 +95,5 @@ private:
     const ComObjPtr<EventSource> mEventSource;
 };
 
-#endif // !____H_KEYBOARDIMPL
+#endif /* !MAIN_INCLUDED_KeyboardImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
