@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoHost3D.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_Graphics_VBoxVideoHost3D_h
-#define ___VBox_Graphics_VBoxVideoHost3D_h
+#ifndef VBOX_INCLUDED_Graphics_VBoxVideoHost3D_h
+#define VBOX_INCLUDED_Graphics_VBoxVideoHost3D_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

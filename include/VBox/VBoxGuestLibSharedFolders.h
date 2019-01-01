@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFolders.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestLibSharedFolders.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBox_VBoxGuestLibSharedFolders_h_
-#define ___VBox_VBoxGuestLibSharedFolders_h_
+#ifndef VBOX_INCLUDED_VBoxGuestLibSharedFolders_h
+#define VBOX_INCLUDED_VBoxGuestLibSharedFolders_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

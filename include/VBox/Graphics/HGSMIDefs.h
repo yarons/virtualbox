@@ -1,4 +1,4 @@
-/* $Id: HGSMIDefs.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMIDefs.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - shared part - types and defines.
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBox_Graphics_HGSMIDefs_h
-#define ___VBox_Graphics_HGSMIDefs_h
+#ifndef VBOX_INCLUDED_Graphics_HGSMIDefs_h
+#define VBOX_INCLUDED_Graphics_HGSMIDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

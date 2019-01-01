@@ -1,4 +1,4 @@
-/* $Id: VBoxOGL.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxOGL.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox 3D Support API
  */
@@ -23,8 +23,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxOGL_h
-#define ___VBoxOGL_h
+#ifndef VBOX_INCLUDED_VBoxOGL_h
+#define VBOX_INCLUDED_VBoxOGL_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
