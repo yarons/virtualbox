@@ -1,4 +1,4 @@
-/* $Id: AuthLibrary.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: AuthLibrary.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - External authentication library interface.
  */
@@ -15,8 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN
 #include "AuthLibrary.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/err.h>
 #include <iprt/ldr.h>

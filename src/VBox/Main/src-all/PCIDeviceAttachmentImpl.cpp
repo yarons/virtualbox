@@ -1,7 +1,5 @@
-/* $Id: PCIDeviceAttachmentImpl.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
-
+/* $Id: PCIDeviceAttachmentImpl.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * PCI attachment information implmentation.
  */
 
@@ -17,10 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_PCIDEVICEATTACHMENT
 #include "PCIDeviceAttachmentImpl.h"
 #include "AutoCaller.h"
 #include "Global.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/settings.h>
 

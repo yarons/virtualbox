@@ -1,7 +1,6 @@
-/* $Id: TokenImpl.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: TokenImpl.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * Token COM class implementation: MachineToken and MediumLockToken
+ * Token COM class implementation - MachineToken and MediumLockToken
  */
 
 /*
@@ -16,11 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_TOKEN
 #include "TokenImpl.h"
 #include "MachineImpl.h"
 #include "MediumImpl.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////

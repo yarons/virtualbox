@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: CloudProviderManagerImpl.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -16,13 +16,14 @@
  */
 
 
+#define LOG_GROUP LOG_GROUP_MAIN_CLOUDPROVIDERMANAGER
 #include <VBox/com/array.h>
 
 #include "VirtualBoxImpl.h"
 #include "CloudProviderManagerImpl.h"
 #include "ExtPackManagerImpl.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

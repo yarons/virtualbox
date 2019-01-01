@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendWindows.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendWindows.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -19,8 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_USBPROXYBACKEND
 #include "USBProxyBackend.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/usb.h>
 #include <iprt/errcore.h>
