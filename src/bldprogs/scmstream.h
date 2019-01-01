@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.h 76584 2019-01-01 06:29:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___scmstream_h___
-#define ___scmstream_h___
+#ifndef VBOX_INCLUDED_SRC_bldprogs_scmstream_h
+#define VBOX_INCLUDED_SRC_bldprogs_scmstream_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
