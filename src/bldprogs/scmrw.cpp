@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw.cpp 76554 2019-01-01 01:51:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2863,7 +2863,7 @@ bool rewrite_FixHeaderGuards(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut
 
     RTERRINFOSTATIC ErrInfo;
     char            szNormalized[168];
-    size_t          cchNormalized;
+    size_t          cchNormalized = 0;
     int             rc;
     bool            fRet = false;
 
