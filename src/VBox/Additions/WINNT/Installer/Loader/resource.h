@@ -1,4 +1,4 @@
-/* $Id: resource.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: resource.h 76563 2019-01-01 03:53:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * AutoStartMenu - resource header file.
  */
@@ -15,13 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_Installer_Loader_resource_h
-#define VBOX_INCLUDED_Installer_Loader_resource_h
+#ifndef GA_INCLUDED_SRC_WINNT_Installer_Loader_resource_h
+#define GA_INCLUDED_SRC_WINNT_Installer_Loader_resource_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 #define IDI_VIRTUALBOX 101
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Installer_Loader_resource_h */
 
