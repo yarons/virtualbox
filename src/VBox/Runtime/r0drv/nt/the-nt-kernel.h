@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: the-nt-kernel.h 76560 2019-01-01 03:01:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___the_nt_kernel_h
-#define ___the_nt_kernel_h
+#ifndef IPRT_INCLUDED_SRC_r0drv_nt_the_nt_kernel_h
+#define IPRT_INCLUDED_SRC_r0drv_nt_the_nt_kernel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
