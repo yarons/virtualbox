@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-darwin.cpp 76596 2019-01-01 23:59:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -30,8 +30,6 @@
 #include <iprt/types.h>
 #include <sys/param.h>
 #undef PVM
-
-#define LOG_GROUP LOG_GROUP_MAIN
 
 #include <iprt/errcore.h>
 #include <iprt/alloc.h>
