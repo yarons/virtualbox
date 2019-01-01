@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: FTMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___FTMInternal_h
-#define ___FTMInternal_h
+#ifndef VMM_INCLUDED_SRC_include_FTMInternal_h
+#define VMM_INCLUDED_SRC_include_FTMInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

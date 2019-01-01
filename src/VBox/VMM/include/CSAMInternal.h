@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: CSAMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___CSAMInternal_h
-#define ___CSAMInternal_h
+#ifndef VMM_INCLUDED_SRC_include_CSAMInternal_h
+#define VMM_INCLUDED_SRC_include_CSAMInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

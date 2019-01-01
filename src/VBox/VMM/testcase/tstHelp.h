@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: tstHelp.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___tstHelp_h
-#define ___tstHelp_h
+#ifndef VMM_INCLUDED_SRC_testcase_tstHelp_h
+#define VMM_INCLUDED_SRC_testcase_tstHelp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
