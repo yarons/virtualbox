@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -562,5 +562,5 @@ int pdmacFileEpCacheFlush(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PDMAsyncCompletionFileInternal_h */
 

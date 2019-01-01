@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -300,4 +300,4 @@ DECLASM(void) trpmR0DispatchHostInterruptSimple(RTUINT uActiveVector);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_TRPMInternal_h */

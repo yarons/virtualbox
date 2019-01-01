@@ -1,4 +1,4 @@
-/* $Id: magics.h 76559 2019-01-01 02:55:59Z knut.osmundsen@oracle.com $ */
+/* $Id: magics.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -278,5 +278,5 @@
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_magics_h */
 

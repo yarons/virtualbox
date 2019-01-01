@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: FTMInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -125,4 +125,4 @@ AssertCompileMemberAlignment(FTM, CritSect, 8);
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_FTMInternal_h */

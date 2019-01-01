@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: TMInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Internal header file.
  */
@@ -818,5 +818,5 @@ DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_TMInternal_h */
 

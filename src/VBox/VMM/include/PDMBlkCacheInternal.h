@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMBlkCacheInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Block Cache.
  */
@@ -330,5 +330,5 @@ typedef struct PDMBLKCACHEWAITER
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PDMBlkCacheInternal_h */
 

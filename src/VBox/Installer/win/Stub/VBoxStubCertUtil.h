@@ -1,4 +1,4 @@
-/* $Id: VBoxStubCertUtil.h 76575 2019-01-01 06:01:16Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxStubCertUtil.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub (certificate manipulations).
  */
@@ -23,5 +23,5 @@
 
 extern bool addCertToStore(DWORD dwDst, const char *pszStoreNm, const unsigned char kpCertBuf[], DWORD cbCertBuf);
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Stub_VBoxStubCertUtil_h */
 

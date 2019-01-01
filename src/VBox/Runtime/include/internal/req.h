@@ -1,4 +1,4 @@
-/* $Id: req.h 76559 2019-01-01 02:55:59Z knut.osmundsen@oracle.com $ */
+/* $Id: req.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTReq header.
  */
@@ -169,5 +169,5 @@ DECLHIDDEN(bool) rtReqPoolRecycle(PRTREQPOOLINT pPool, PRTREQINT pReq);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_req_h */
 

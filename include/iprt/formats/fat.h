@@ -1,4 +1,4 @@
-/* $Id: fat.h 76557 2019-01-01 02:37:24Z knut.osmundsen@oracle.com $ */
+/* $Id: fat.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, File Allocation Table (FAT).
  */
@@ -745,5 +745,5 @@ typedef FATDIRENTRYUNION const *PCFATDIRENTRYUNION;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_fat_h */
 

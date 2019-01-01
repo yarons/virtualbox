@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoGuest.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoGuest.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - OS-independent guest structures.
  */
@@ -183,5 +183,5 @@ DECLHIDDEN(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideoGuest_h */
 

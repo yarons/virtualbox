@@ -1,4 +1,4 @@
-/* $Id: EventQueue.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: EventQueue.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Event queue class declaration.
  */
@@ -137,5 +137,5 @@ private:
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_com_EventQueue_h */
 

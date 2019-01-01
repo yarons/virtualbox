@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoHost3D.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -208,5 +208,5 @@ typedef struct VBOXCRCMDCTL_DISABLE
 } VBOXCRCMDCTL_DISABLE;
 #pragma pack()
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideoHost3D_h */
 

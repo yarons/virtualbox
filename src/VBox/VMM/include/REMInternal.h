@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: REMInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * REM - Internal header file.
  */
@@ -284,5 +284,5 @@ void remR3ProfileStop(int statcode);
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_REMInternal_h */
 

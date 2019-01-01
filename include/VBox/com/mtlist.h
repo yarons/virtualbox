@@ -1,4 +1,4 @@
-/* $Id: mtlist.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: mtlist.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Thread-safe list classes declaration.
  */
@@ -206,5 +206,5 @@ public:
 
 /** @} */
 
-#endif /* !___VBox_com_mtlist_h */
+#endif /* !VBOX_INCLUDED_com_mtlist_h */
 

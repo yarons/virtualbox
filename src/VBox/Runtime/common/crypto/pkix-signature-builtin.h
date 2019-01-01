@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-builtin.h 76560 2019-01-01 03:01:10Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-builtin.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
@@ -34,5 +34,5 @@
 
 extern DECLHIDDEN(RTCRPKIXSIGNATUREDESC const) g_rtCrPkixSigningHashWithRsaDesc;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_common_crypto_pkix_signature_builtin_h */
 

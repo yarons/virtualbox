@@ -1,4 +1,4 @@
-/* $Id: process.h 76559 2019-01-01 02:55:59Z knut.osmundsen@oracle.com $ */
+/* $Id: process.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTProc header.
  */
@@ -68,5 +68,5 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_process_h */
 

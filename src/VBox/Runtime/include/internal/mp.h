@@ -1,4 +1,4 @@
-/* $Id: mp.h 76559 2019-01-01 02:55:59Z knut.osmundsen@oracle.com $ */
+/* $Id: mp.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTMp header
  */
@@ -81,5 +81,5 @@ DECLINLINE(uint8_t) rtMpCpuIdGetGroupMember(RTCPUID idCpu)
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_mp_h */
 

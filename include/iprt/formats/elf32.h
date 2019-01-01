@@ -1,4 +1,4 @@
-/* $Id: elf32.h 76557 2019-01-01 02:37:24Z knut.osmundsen@oracle.com $ */
+/* $Id: elf32.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ELF 32-bit header.
  */
@@ -186,5 +186,5 @@ typedef struct
 #define ELF32_R_INFO(sym, type)     (((sym) << 8) + (unsigned char)(type))
 
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_elf32_h */
 

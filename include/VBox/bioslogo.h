@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: bioslogo.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface. (DEV)
  */
@@ -94,5 +94,5 @@ typedef LOGOHDR const *PCLOGOHDR;
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_bioslogo_h */
 

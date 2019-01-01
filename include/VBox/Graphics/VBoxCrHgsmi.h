@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCrHgsmi.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * Document me, pretty please.
  */
@@ -59,5 +59,5 @@ VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConCall(PVBOXUHGSMI pHgsmi, struct VBGLIOCHG
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxCrHgsmi_h */
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernel.h 76560 2019-01-01 03:01:10Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTR0MemUserKernel.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - User & Kernel Memory, common header.
  */
@@ -47,5 +47,5 @@ typedef enum TSTRTR0MEMUSERKERNEL
     TSTRTR0MEMUSERKERNEL_INVALID_ADDRESS
 } TSTRTR0MEMUSERKERNEL;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0MemUserKernel_h */
 

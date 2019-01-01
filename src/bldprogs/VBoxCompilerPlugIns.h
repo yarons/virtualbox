@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugIns.h 76584 2019-01-01 06:29:03Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCompilerPlugIns.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
@@ -123,5 +123,5 @@ bool            VFmtChkRequireVaListPtrArg(PVFMTCHKSTATE pState, const char *psz
 void            MyCheckFormatCString(PVFMTCHKSTATE pState, const char *pszFmt);
 
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_bldprogs_VBoxCompilerPlugIns_h */
 

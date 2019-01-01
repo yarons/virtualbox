@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -277,5 +277,5 @@ RT_C_DECLS_END
 
 extern const PDMASYNCCOMPLETIONEPCLASSOPS g_PDMAsyncCompletionEndpointClassFile;
 
-#endif /* !___PDMAsyncCompletionInternal_h */
+#endif /* !VMM_INCLUDED_SRC_include_PDMAsyncCompletionInternal_h */
 

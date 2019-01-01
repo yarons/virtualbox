@@ -1,4 +1,4 @@
-/* $Id: gvm.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: gvm.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -179,5 +179,5 @@ AssertCompileMemberOffset(GVM, aCpus,  64 + 256 + 512 + 64);
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_vmm_gvm_h */
 

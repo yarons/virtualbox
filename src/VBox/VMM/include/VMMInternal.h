@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 76561 2019-01-01 03:13:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMInternal.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -787,4 +787,4 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_VMMInternal_h */

@@ -1,4 +1,4 @@
-/* $Id: list.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: list.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -209,5 +209,5 @@ public:
 
 /** @} */
 
-#endif /* !___VBox_com_list_h */
+#endif /* !VBOX_INCLUDED_com_list_h */
 

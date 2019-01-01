@@ -1,4 +1,4 @@
-/* $Id: nt-and-windows.h 76557 2019-01-01 02:37:24Z knut.osmundsen@oracle.com $ */
+/* $Id: nt-and-windows.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using both NT native and Windows APIs.
  */
@@ -54,5 +54,5 @@
 
 #include <iprt/nt/nt.h>
 
-#endif
+#endif /* !IPRT_INCLUDED_nt_nt_and_windows_h */
 

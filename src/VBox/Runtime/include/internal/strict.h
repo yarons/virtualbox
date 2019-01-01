@@ -1,4 +1,4 @@
-/* $Id: strict.h 76559 2019-01-01 02:55:59Z knut.osmundsen@oracle.com $ */
+/* $Id: strict.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal Header Defining Strictness Indicators.
  */
@@ -79,4 +79,4 @@
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_strict_h */

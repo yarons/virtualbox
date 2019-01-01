@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 76558 2019-01-01 02:51:45Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetCfg-win.h 76585 2019-01-01 06:31:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -128,5 +128,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_VBoxNetCfg_win_h */
 
