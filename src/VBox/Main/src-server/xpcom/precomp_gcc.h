@@ -1,6 +1,6 @@
-/* $Id: VBoxAPIWrap-precomp_gcc.h 76562 2019-01-01 03:22:50Z knut.osmundsen@oracle.com $ */
+/* $Id: precomp_gcc.h 76598 2019-01-02 00:59:08Z knut.osmundsen@oracle.com $ */
 /** @file
- * VirtualBox COM - GCC precompiled header for the API wrappers.
+ * VirtualBox COM - GNU C++ precompiled header for VBoxSVC.
  */
 
 /*
@@ -15,13 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef MAIN_INCLUDED_SRC_src_all_win_VBoxAPIWrap_precomp_gcc_h
-#define MAIN_INCLUDED_SRC_src_all_win_VBoxAPIWrap_precomp_gcc_h
 
 #include <iprt/cdefs.h>
 #include <VBox/cdefs.h>
 #include <iprt/types.h>
-#include <iprt/stdarg.h>
 #include <iprt/cpp/list.h>
 #include <iprt/cpp/meta.h>
 #include <iprt/cpp/ministring.h>
@@ -29,19 +26,17 @@
 #include <VBox/com/array.h>
 #include <VBox/com/Guid.h>
 #include <VBox/com/string.h>
+#include <VBox/com/VirtualBox.h>
 
-#include "VBox/com/VirtualBox.h"
-
-#include "VirtualBoxBase.h"
-#include "Wrapper.h"
-
-#ifdef VBOX_WITH_DTRACE_R3_MAIN
-# include "dtrace/VBoxAPI.h"
+#if 1
+# include "VirtualBoxBase.h"
+# include <list>
+# include <vector>
+# include <new>
+# include <iprt/time.h>
 #endif
 
 #if defined(Log) || defined(LogIsEnabled)
 # error "Log() from iprt/log.h cannot be defined in the precompiled header!"
 #endif
-
-#endif /* !MAIN_INCLUDED_SRC_src_all_win_VBoxAPIWrap_precomp_gcc_h */
 
