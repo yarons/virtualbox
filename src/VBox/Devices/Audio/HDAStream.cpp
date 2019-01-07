@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: HDAStream.cpp 76672 2019-01-07 12:19:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -335,6 +335,10 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
             rc = VERR_NOT_SUPPORTED;
             break;
     }
+
+    /* Set scheduling hint (if available). */
+    if (pStream->State.uTimerHz)
+        pCfg->Device.uSchedulingHintMs = 1000 /* ms */ / pStream->State.uTimerHz;
 
     LogFunc(("[SD%RU8] DMA @ 0x%x (%RU32 bytes), LVI=%RU16, FIFOS=%RU16\n",
              pStream->u8SD, pStream->u64BDLBase, pStream->u32CBL, pStream->u16LVI, pStream->u16FIFOS));
