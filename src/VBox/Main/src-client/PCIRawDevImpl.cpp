@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: PCIRawDevImpl.cpp 76760 2019-01-10 18:07:47Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Driver Interface to raw PCI device.
  */
@@ -24,6 +24,9 @@
 
 // generated header for events
 #include "VBoxEvents.h"
+
+#include <VBox/err.h>
+
 
 /**
  * PCI raw driver instance data.
