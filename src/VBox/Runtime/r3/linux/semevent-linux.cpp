@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: semevent-linux.cpp 76823 2019-01-15 12:29:48Z noreply@oracle.com $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -37,7 +37,7 @@
  * against glibc < 2.6.
  */
 #include "../posix/semevent-posix.cpp"
-asm volatile (".global epoll_pwait");
+__asm__ (".global epoll_pwait");
 
 #else /* glibc < 2.6 */
 
