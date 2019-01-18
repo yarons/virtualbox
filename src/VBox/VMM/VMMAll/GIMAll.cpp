@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMAll.cpp 76886 2019-01-18 10:57:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -435,6 +435,7 @@ VMM_INT_DECL(int) GIMQueryHypercallOpcodeBytes(PVM pVM, void *pvBuf, size_t cbBu
 
         case CPUMCPUVENDOR_INTEL:
         case CPUMCPUVENDOR_VIA:
+        case CPUMCPUVENDOR_SHANGHAI:
         {
             if (puDisOpcode)
                 *puDisOpcode = OP_VMCALL;
