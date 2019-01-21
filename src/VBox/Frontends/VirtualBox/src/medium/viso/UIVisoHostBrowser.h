@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 76826 2019-01-15 18:19:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 76913 2019-01-21 11:48:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -32,7 +32,7 @@
 class QItemSelection;
 class UIVisoHostBrowserModel;
 
-class SHARED_LIBRARY_STUFF UIVisoHostBrowser : public UIVisoBrowserBase
+class UIVisoHostBrowser : public UIVisoBrowserBase
 {
     Q_OBJECT;
 

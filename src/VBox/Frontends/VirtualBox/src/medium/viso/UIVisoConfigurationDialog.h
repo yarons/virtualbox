@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationDialog.h 76768 2019-01-11 10:54:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoConfigurationDialog.h 76913 2019-01-21 11:48:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationDialog class declaration.
  */
@@ -33,7 +33,7 @@ class QIDialogButtonBox;
 class QILineEdit;
 class QITabWidget;
 
-class SHARED_LIBRARY_STUFF UIVisoConfigurationDialog : public QIDialog
+class UIVisoConfigurationDialog : public QIDialog
 {
     Q_OBJECT;
 
