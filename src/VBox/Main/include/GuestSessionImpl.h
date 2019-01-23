@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 76562 2019-01-01 03:22:50Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.h 76958 2019-01-23 18:23:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -324,7 +324,7 @@ public:
     int                     i_processCreateEx(GuestProcessStartupInfo &procInfo, ComObjPtr<GuestProcess> &pProgress);
     inline bool             i_processExists(uint32_t uProcessID, ComObjPtr<GuestProcess> *pProcess);
     inline int              i_processGetByPID(ULONG uPID, ComObjPtr<GuestProcess> *pProcess);
-    int                     i_sendCommand(uint32_t uFunction, uint32_t uParms, PVBOXHGCMSVCPARM paParms,
+    int                     i_sendMessage(uint32_t uFunction, uint32_t uParms, PVBOXHGCMSVCPARM paParms,
                                           uint64_t fDst = VBOX_GUESTCTRL_DST_SESSION);
     static HRESULT          i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     int                     i_setSessionStatus(GuestSessionStatus_T sessionStatus, int sessionRc);
