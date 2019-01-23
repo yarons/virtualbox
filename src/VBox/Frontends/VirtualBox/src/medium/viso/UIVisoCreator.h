@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 76947 2019-01-23 09:26:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 76959 2019-01-23 18:45:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -58,6 +58,9 @@ public:
     QStringList entryList() const;
     const QString &visoName() const;
     const QStringList &customOptions() const;
+    /** Returns the current path that the host browser is listing. */
+    QString currentPath() const;
+    void setCurrentPath(const QString &strPath);
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
