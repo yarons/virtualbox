@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorDefs.h 76768 2019-01-11 10:54:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreatorDefs.h 76944 2019-01-23 07:39:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorDefs class declaration.
  */
@@ -39,12 +39,12 @@ struct VisoOptions
 struct BrowserOptions
 {
     BrowserOptions()
-        :m_bShowHiddenObjects(true){}
+        :m_fShowHiddenObjects(true){}
     bool operator==(const BrowserOptions &otherOptions) const
     {
-        return m_bShowHiddenObjects == otherOptions.m_bShowHiddenObjects;
+        return m_fShowHiddenObjects == otherOptions.m_fShowHiddenObjects;
     }
-    bool m_bShowHiddenObjects;
+    bool m_fShowHiddenObjects;
 };
 
 
