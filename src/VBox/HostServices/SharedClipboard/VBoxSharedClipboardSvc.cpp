@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 76970 2019-01-24 08:54:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
