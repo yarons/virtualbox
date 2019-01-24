@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHostChannelSvc.cpp 76966 2019-01-24 08:45:41Z andreas.loeffler@oracle.com $ */
 /* @file
  * Host Channel: Host service entry points.
  */
