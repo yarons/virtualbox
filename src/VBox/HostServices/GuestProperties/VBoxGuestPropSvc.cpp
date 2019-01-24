@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestPropSvc.cpp 76965 2019-01-24 08:43:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
