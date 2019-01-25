@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 76993 2019-01-25 14:34:46Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3421,7 +3421,7 @@ VMM_INT_DECL(int) PGMHCChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
     /*
      * Notify HM.
      */
-    HMHCPagingModeChanged(pVM, pVCpu, pVCpu->pgm.s.enmShadowMode, pVCpu->pgm.s.enmGuestMode);
+    HMHCChangedPagingMode(pVM, pVCpu, pVCpu->pgm.s.enmShadowMode, pVCpu->pgm.s.enmGuestMode);
     return rc;
 }
 
