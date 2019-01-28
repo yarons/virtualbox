@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 76996 2019-01-25 21:36:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.h 77014 2019-01-28 08:24:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -369,6 +369,10 @@ public:
         bool virtualMediaManagerDetailsExpanded();
         /** Defines whether Virtual Media Manager details @a fExpanded. */
         void setVirtualMediaManagerDetailsExpanded(bool fExpanded);
+        /** Returns whether Virtual Media Manager search widget expanded. */
+        bool virtualMediaManagerSearchWidgetExpanded();
+        /** Defines whether Virtual Media Manager search widget @a fExpanded. */
+        void setVirtualMediaManagerSearchWidgetExpanded(bool fExpanded);
     /** @} */
 
     /** @name Host Network Manager
