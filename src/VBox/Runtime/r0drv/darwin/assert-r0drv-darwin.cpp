@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: assert-r0drv-darwin.cpp 77120 2019-02-01 15:08:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -67,6 +67,7 @@ DECLHIDDEN(void) rtR0AssertNativeMsg2V(bool fInitial, const char *pszFormat, va_
 
 RTR0DECL(void) RTR0AssertPanicSystem(void)
 {
+ASMBreakpoint();// temp
     panic("%s%s", g_szRTAssertMsg1, g_szRTAssertMsg2);
 }
 
