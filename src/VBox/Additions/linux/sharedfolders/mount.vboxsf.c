@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 77138 2019-02-01 19:00:23Z knut.osmundsen@oracle.com $ */
+/* $Id: mount.vboxsf.c 77139 2019-02-01 19:35:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -34,6 +34,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 #include <sys/mount.h>
 #include <sys/stat.h>
