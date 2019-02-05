@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76959 2019-01-23 18:45:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 77166 2019-02-05 14:09:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -51,6 +51,7 @@ UIVisoCreator::UIVisoCreator(QWidget *pParent /* =0 */, const QString& strMachin
     , m_pCreatorOptionsPanel(0)
     , m_pConfigurationPanel(0)
 {
+    m_visoOptions.m_strVisoName = strMachineName;
     prepareActions();
     prepareObjects();
     prepareConnections();
