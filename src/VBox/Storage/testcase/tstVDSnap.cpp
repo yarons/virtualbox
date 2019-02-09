@@ -1,5 +1,5 @@
+/* $Id: tstVDSnap.cpp 77232 2019-02-09 01:55:37Z knut.osmundsen@oracle.com $ */
 /** @file
- *
  * Snapshot VBox HDD container test utility.
  */
 
