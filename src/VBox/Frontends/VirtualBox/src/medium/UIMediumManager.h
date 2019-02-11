@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 77014 2019-01-28 08:24:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.h 77255 2019-02-11 11:11:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -167,6 +167,8 @@ private slots:
       * @{ */
         /** Handles command to add medium. */
         void sltAddMedium();
+        /** Handles command to create medium. */
+        void sltCreateMedium();
         /** Handles command to copy medium. */
         void sltCopyMedium();
         /** Handles command to move medium. */
