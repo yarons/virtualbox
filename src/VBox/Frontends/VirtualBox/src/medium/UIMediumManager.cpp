@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 77255 2019-02-11 11:11:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.cpp 77277 2019-02-12 14:45:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -493,6 +493,7 @@ void UIMediumManagerWidget::sltAddMedium()
 
 void UIMediumManagerWidget::sltCreateMedium()
 {
+    vboxGlobal().openMediumCreatorDialog(this, currentMediumType());
 }
 
 void UIMediumManagerWidget::sltCopyMedium()
