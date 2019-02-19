@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77346 2019-02-18 13:07:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.h 77366 2019-02-19 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -101,6 +101,12 @@ public:
 
         /** Makes sure passed child @a pItem is visible. */
         virtual void makeSureItemIsVisible(UIChooserItem *pItem) /* override */;
+    /** @} */
+
+    /** @name Children stuff.
+      * @{ */
+        /** Updates positions of favorite items. */
+        void updateFavorites();
     /** @} */
 
 protected:
