@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77369 2019-02-19 17:45:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 77372 2019-02-20 11:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -373,7 +373,7 @@ void UIMediumSelector::prepareWidgets()
 
     m_pMainMenu = menuBar()->addMenu(tr("Medium"));
 
-    m_pToolBar = new UIToolBar(parentWidget());
+    m_pToolBar = new UIToolBar;
     if (m_pToolBar)
     {
         /* Configure toolbar: */
