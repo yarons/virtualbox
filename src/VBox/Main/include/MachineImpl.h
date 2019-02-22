@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 76678 2019-01-07 13:48:16Z alexander.eichner@oracle.com $ */
+/* $Id: MachineImpl.h 77436 2019-02-22 17:40:00Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -579,7 +579,7 @@ public:
 
     HRESULT i_prepareRegister();
 
-    HRESULT i_getSharedFolder(CBSTR aName,
+    HRESULT i_getSharedFolder(const Utf8Str &aName,
                               ComObjPtr<SharedFolder> &aSharedFolder,
                               bool aSetError = false)
     {

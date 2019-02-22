@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 76592 2019-01-01 20:13:07Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-linux.cpp 77436 2019-02-22 17:40:00Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -256,7 +256,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                     else
                         enmType = HostNetworkInterfaceType_HostOnly;
 
-                    if (SUCCEEDED(IfObj->init(Bstr(pszName), enmType, &Info)))
+                    if (SUCCEEDED(IfObj->init(pszName, enmType, &Info)))
                     {
                         if (strcmp(pszName, szDefaultIface) == 0)
                             list.push_front(IfObj);
