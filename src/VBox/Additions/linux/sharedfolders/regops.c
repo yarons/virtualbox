@@ -1,4 +1,4 @@
-/* $Id: regops.c 77421 2019-02-22 02:27:06Z knut.osmundsen@oracle.com $ */
+/* $Id: regops.c 77422 2019-02-22 02:28:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -1137,7 +1137,6 @@ static int sf_readpage(struct file *file, struct page *page)
 
 			    flush_dcache_page(page);
 			    SetPageUptodate(page);
-			    unlock_page(page);
 			    err = 0;
 		    } else
 			    err = -EPROTO;
