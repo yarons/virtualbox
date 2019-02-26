@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.h 77465 2019-02-26 08:16:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationDataItem.h 77466 2019-02-26 09:25:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* Qt includes: */
-#include <QIcon>
+#include <QPixmap>
 #include <QModelIndex>
 
 /* GUI includes: */
