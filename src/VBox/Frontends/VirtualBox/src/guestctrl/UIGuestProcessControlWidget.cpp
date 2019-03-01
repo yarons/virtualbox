@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 77528 2019-03-01 13:07:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -157,7 +157,6 @@ private slots:
             }
         }
     }
-
 };
 
 UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,

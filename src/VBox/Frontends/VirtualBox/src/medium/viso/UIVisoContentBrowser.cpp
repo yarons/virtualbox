@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 77519 2019-03-01 10:19:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 77528 2019-03-01 13:07:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -71,6 +71,7 @@ protected:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const /* override */;
 };
 
+
 /*********************************************************************************************************************************
 *   UIVisoContentTableView implementation.                                                                                       *
 *********************************************************************************************************************************/
@@ -110,6 +111,7 @@ void UIVisoContentTableView::dropEvent(QDropEvent *pEvent)
     }
 }
 
+
 /*********************************************************************************************************************************
 *   UIVisoContentTreeProxyModel implementation.                                                                                  *
 *********************************************************************************************************************************/
@@ -136,6 +138,7 @@ bool UIVisoContentTreeProxyModel::filterAcceptsRow(int iSourceRow, const QModelI
 
     return false;
 }
+
 
 /*********************************************************************************************************************************
 *   UIVisoContentBrowser implementation.                                                                                         *
