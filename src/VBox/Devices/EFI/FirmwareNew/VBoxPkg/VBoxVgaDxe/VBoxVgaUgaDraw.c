@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaUgaDraw.c 77599 2019-03-07 14:10:56Z michal.necasek@oracle.com $ */
+/* $Id: VBoxVgaUgaDraw.c 77669 2019-03-12 16:34:13Z michal.necasek@oracle.com $ */
 /** @file
  * VBoxVgaUgaDraw.c
  */
@@ -399,8 +399,8 @@ VBoxVgaUgaDrawConstructor (
     Private->ModeData[Private->CurrentMode].VerticalResolution
     );
 
-  PcdSet32(PcdVideoHorizontalResolution, HorizontalResolution);
-  PcdSet32(PcdVideoVerticalResolution, VerticalResolution);
+  PcdSet32S(PcdVideoHorizontalResolution, HorizontalResolution);
+  PcdSet32S(PcdVideoVerticalResolution, VerticalResolution);
 
   return EFI_SUCCESS;
 }
