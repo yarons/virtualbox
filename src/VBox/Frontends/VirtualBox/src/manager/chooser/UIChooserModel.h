@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77638 2019-03-10 19:21:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 77677 2019-03-13 13:07:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -276,6 +276,8 @@ private slots:
         void sltEditGroupName();
         /** Handles group sort request. */
         void sltSortGroup();
+        /** Handles machine search request. */
+        void sltMachineSearch();
         /** Handles group destroy request. */
         void sltUngroupSelectedGroup();
 
