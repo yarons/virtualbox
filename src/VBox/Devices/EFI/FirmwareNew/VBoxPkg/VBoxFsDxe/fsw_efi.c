@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.c 77599 2019-03-07 14:10:56Z michal.necasek@oracle.com $ */
+/* $Id: fsw_efi.c 77672 2019-03-13 08:25:50Z michal.necasek@oracle.com $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
@@ -230,7 +230,6 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL
 
     // first, open DiskIO
     VBoxLogFlowFuncEnter();
-    VBoxLogFlowFuncMarkDP(RemainingDevicePath);
 
     Status = BS->OpenProtocol(ControllerHandle,
                               &PROTO_NAME(DiskIoProtocol),
