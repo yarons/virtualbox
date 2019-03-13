@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: Parallels.cpp 77699 2019-03-13 23:22:08Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -263,6 +263,8 @@ static int parallelsOpenImage(PPARALLELSIMAGE pImage, unsigned uOpenFlags)
         pRegion->cbMetadata           = 0;
         pRegion->cRegionBlocksOrBytes = pImage->cbSize;
     }
+    else
+        parallelsFreeImage(pImage, false);
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
