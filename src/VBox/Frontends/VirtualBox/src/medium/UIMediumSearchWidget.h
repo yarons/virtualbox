@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77261 2019-02-11 13:41:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSearchWidget.h 77702 2019-03-14 14:02:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -30,7 +30,6 @@ class QIComboBox;
 class QIToolButton;
 class QITreeWidget;
 class UISearchLineEdit;
-
 
 /** QWidget extension providing a simple way to enter a earch term and search type for medium searching
  *  in virtual media manager, medium selection dialog, etc. */
