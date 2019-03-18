@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77723 2019-03-15 12:52:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIChooserModel.cpp 77748 2019-03-18 10:59:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -531,6 +531,7 @@ void UIChooserModel::scrollToSearchResult(bool fIsNext)
         if (pItem)
         {
             pItem->makeSureItsVisible();
+            setCurrentItem(pItem);
         }
     }
 
