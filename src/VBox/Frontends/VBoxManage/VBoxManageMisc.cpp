@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 77777 2019-03-19 10:00:28Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 77778 2019-03-19 10:08:37Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1939,10 +1939,6 @@ RTEXITCODE handleUnattended(HandlerArg *a)
     /* Consider some kind of create-vm-and-install-guest-os command. */
     return errorUnknownSubcommand(a->argv[0]);
 }
-
-/*********************************************************************************************************************************
-*   Cloud profile functions                                                                                                      *
-*********************************************************************************************************************************/
 
 /**
  * Common Cloud profile options.
