@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77723 2019-03-15 12:52:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIChooserItemGroup.h 77826 2019-03-21 14:27:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -215,8 +215,9 @@ private:
     enum GroupItemData
     {
         /* Layout hints: */
-        GroupItemData_HorizonalMargin,
-        GroupItemData_VerticalMargin,
+        GroupItemData_MarginHL,
+        GroupItemData_MarginHR,
+        GroupItemData_MarginV,
         GroupItemData_HeaderSpacing,
         GroupItemData_ChildrenSpacing,
         GroupItemData_ParentIndent,
