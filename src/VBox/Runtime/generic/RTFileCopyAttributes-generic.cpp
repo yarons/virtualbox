@@ -1,6 +1,6 @@
-/* $Id: RTFileCopyRange-generic.cpp 77797 2019-03-19 17:14:25Z knut.osmundsen@oracle.com $ */
+/* $Id: RTFileCopyAttributes-generic.cpp 77830 2019-03-21 18:07:40Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - RTFileCopyPart, generic implementation.
+ * IPRT - RTFileCopyAttributes, generic implementation.
  */
 
 /*
@@ -28,23 +28,35 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/file.h>
 #include "internal/iprt.h"
+#include <iprt/file.h>
 
+#include <iprt/assert.h>
 #include <iprt/errcore.h>
 
 
-RTDECL(int) RTFileCopyPart(RTFILE hFileSrc, RTFOFF offSrc, RTFILE hFileDst, RTFOFF offDst, uint64_t cbToCopy,
-                           uint32_t fFlags, uint64_t *pcbCopied)
+RTDECL(int) RTFileCopyAttributes(RTFILE hFileSrc, RTFILE hFileDst, uint32_t fFlags)
 {
-    RTFILECOPYPARTBUFSTATE BufState;
-    int rc = RTFileCopyPartPrep(&BufState, cbToCopy);
+    AssertReturn(fFlags == 0, VERR_INVALID_FLAGS);
+
+    RTFSOBJINFO ObjInfo;
+    int rc = RTFileQueryInfo(hFileSrc, &ObjInfo, RTFSOBJATTRADD_NOTHING);
     if (RT_SUCCESS(rc))
     {
-        rc = RTFileCopyPartEx(hFileSrc, offSrc, hFileDst, offDst, cbToCopy, fFlags, &BufState, pcbCopied);
-        RTFileCopyPartCleanup(&BufState);
+        /*
+         * The file mode.
+         */
+        rc = RTFileSetMode(hFileDst, ObjInfo.Attr.fMode);
+        if (RT_FAILURE(rc) && (ObjInfo.Attr.fMode & (RTFS_UNIX_ALL_ACCESS_PERMS & ~RTFS_UNIX_ALL_ACCESS_PERMS)))
+            rc = RTFileSetMode(hFileDst, ObjInfo.Attr.fMode & ~(RTFS_UNIX_ALL_ACCESS_PERMS & ~RTFS_UNIX_ALL_ACCESS_PERMS));
+
+        /*
+         * As many of the timestamps as we are able to, except the birth time.
+         * Ignoring the status here because of hardend builds on older linux
+         * systems (see RTFileSetTimes).
+         */
+        RTFileSetTimes(hFileDst, &ObjInfo.AccessTime, &ObjInfo.ModificationTime, &ObjInfo.ChangeTime, NULL /*pBirthTime*/);
     }
     return rc;
 }
-RT_EXPORT_SYMBOL(RTFileCopyPart);
 
