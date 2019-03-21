@@ -1,6 +1,6 @@
-/* $Id: RTFileCopyPartEx-linux.cpp 77834 2019-03-21 20:47:07Z knut.osmundsen@oracle.com $ */
+/* $Id: RTFileCopyPartEx-linux.cpp 77836 2019-03-21 20:52:08Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - RTFileCopyPartEx, generic implementation.
+ * IPRT - RTFileCopyPartEx, linux specific implementation.
  */
 
 /*
