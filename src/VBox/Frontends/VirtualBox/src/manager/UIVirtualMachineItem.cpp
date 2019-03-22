@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItem.cpp 77845 2019-03-22 12:35:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -155,7 +155,7 @@ bool UIVirtualMachineItem::recache()
             m_configurationAccessLevel = ConfigurationAccessLevel_Null;
 
         /* Should we show details for this item? */
-        m_fHasDetails = gEDataManager->showMachineInSelectorDetails(m_uId);
+        m_fHasDetails = gEDataManager->showMachineInVirtualBoxManagerDetails(m_uId);
     }
     else
     {
