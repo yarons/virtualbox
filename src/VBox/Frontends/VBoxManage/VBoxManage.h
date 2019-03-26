@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 77801 2019-03-19 17:44:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManage.h 77883 2019-03-26 16:01:42Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -339,6 +339,9 @@ RTEXITCODE handleNATNetwork(HandlerArg *a);
 
 /* VBoxManageBandwidthControl.cpp */
 RTEXITCODE handleBandwidthControl(HandlerArg *a);
+
+/* VBoxManageCloud.cpp */
+RTEXITCODE handleCloud(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 
