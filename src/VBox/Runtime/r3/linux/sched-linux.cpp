@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 77911 2019-03-27 11:51:44Z noreply@oracle.com $ */
+/* $Id: sched-linux.cpp 77917 2019-03-27 12:46:46Z noreply@oracle.com $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -63,7 +63,7 @@
 #include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/log.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/sched.h"
 #include "internal/thread.h"
 
