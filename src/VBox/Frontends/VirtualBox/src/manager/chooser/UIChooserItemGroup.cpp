@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77922 2019-03-27 14:38:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.cpp 77923 2019-03-27 14:43:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -137,6 +137,11 @@ void UIChooserItemGroup::updateFavorites()
 
     /* Relayout model: */
     model()->updateLayout();
+}
+
+void UIChooserItemGroup::scrollBy(int iDelta)
+{
+    m_pScrollArea->scrollBy(iDelta);
 }
 
 void UIChooserItemGroup::makeSureItemIsVisible(UIChooserItem *pItem)
