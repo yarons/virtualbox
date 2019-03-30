@@ -1,4 +1,4 @@
-/* $Id: regops.c 77959 2019-03-29 21:12:05Z knut.osmundsen@oracle.com $ */
+/* $Id: regops.c 77961 2019-03-30 01:46:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -929,6 +929,7 @@ static ssize_t vbsf_splice_write(struct pipe_inode_info *pPipe, struct file *fil
                     /* Check that we don't have signals pending before we issue the write, as
                        we'll only end up having to cancel the HGCM request 99% of the time: */
                     if (!signal_pending(current)) {
+                        struct vbsf_inode_info *sf_i = VBSF_GET_INODE_INFO(inode);
                         vrc = VbglR0SfHostReqWritePgLst(pSuperInfo->map.root, pReq, sf_r->Handle.hHost, offFile,
                                                         cbToWrite, cPagesToWrite);
                         sf_i->ModificationTimeAtOurLastWrite = sf_i->ModificationTime;
