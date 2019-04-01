@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 77256 2019-02-11 12:19:52Z alexander.eichner@oracle.com $ */
+/* $Id: dvmbsdlabel.cpp 77970 2019-04-01 01:35:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -482,11 +482,11 @@ static DECLCALLBACK(uint64_t) rtDvmFmtBsdLblVolumeGetFlags(RTDVMVOLUMEFMT hVolFm
     return DVMVOLUME_F_CONTIGUOUS;
 }
 
-static DECLCALLBACK(int) rtDvmFmtBsdLblVolumeQueryRange(RTDVMVOLUMEFMT hVolFmt, uint64_t *poffStart, uint64_t *poffEnd)
+static DECLCALLBACK(int) rtDvmFmtBsdLblVolumeQueryRange(RTDVMVOLUMEFMT hVolFmt, uint64_t *poffStart, uint64_t *poffLast)
 {
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
     *poffStart = pVol->offStart;
-    *poffEnd   = pVol->offStart + pVol->cbVolume - 1;
+    *poffLast  = pVol->offStart + pVol->cbVolume - 1;
     return VINF_SUCCESS;
 }
 
