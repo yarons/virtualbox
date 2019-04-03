@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 77997 2019-04-03 15:42:27Z andreas.loeffler@oracle.com $ */
+/* $Id: HostDnsServiceDarwin.cpp 77998 2019-04-03 15:50:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -96,9 +96,13 @@ HRESULT HostDnsServiceDarwin::init(HostDnsMonitorProxy *pProxy)
 
     CFRunLoopSourceContext sctx;
     RT_ZERO(sctx);
+    sctx.info    = this;
     sctx.perform = HostDnsServiceDarwin::Data::performShutdownCallback;
+
     m->m_Stopper = CFRunLoopSourceCreate(kCFAllocatorDefault, 0, &sctx);
     AssertReturn(m->m_Stopper, E_FAIL);
+
+    CFRunLoopAddSource(m->m_RunLoopRef, m->m_Stopper, kCFRunLoopCommonModes);
 
     return updateInfo();
 }
