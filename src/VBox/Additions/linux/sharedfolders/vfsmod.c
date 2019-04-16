@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 78137 2019-04-16 01:30:52Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmod.c 78138 2019-04-16 01:32:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -405,7 +405,7 @@ static int vbsf_init_backing_dev(struct super_block *sb, struct vbsf_super_info 
 #  endif
 # endif /* >= 2.6.12 */
 
-# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24) && LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24) && LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
     rc = bdi_init(&pSuperInfo->bdi);
 #  if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 26)
     if (!rc)
