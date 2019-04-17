@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: darwin-pasteboard.cpp 78152 2019-04-17 12:15:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -31,6 +31,7 @@
 
 #include "VBox/log.h"
 #include "VBox/HostServices/VBoxClipboardSvc.h"
+#include "VBox/GuestHost/SharedClipboard.h"
 #include "VBox/GuestHost/clipboard-helper.h"
 
 
