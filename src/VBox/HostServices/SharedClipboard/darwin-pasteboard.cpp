@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 78152 2019-04-17 12:15:54Z andreas.loeffler@oracle.com $ */
+/* $Id: darwin-pasteboard.cpp 78160 2019-04-17 13:43:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: x11-clipboard.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 78160 2019-04-17 13:43:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
