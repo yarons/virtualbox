@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPIC.cpp 78208 2019-04-18 15:54:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -810,6 +810,8 @@ static DECLCALLBACK(int) picLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
         SSMR3GetU8(pSSM, &pThis->aPics[i].init4);
         SSMR3GetU8(pSSM, &pThis->aPics[i].elcr);
     }
+
+    /* Note! PDM will restore the VMCPU_FF_INTERRUPT_PIC state. */
     return VINF_SUCCESS;
 }
 
