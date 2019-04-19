@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 78127 2019-04-15 17:24:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageBasic1.h 78213 2019-04-19 13:55:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -125,6 +125,10 @@ protected:
     /** Holds the stacked layout instance. */
     QStackedLayout *m_pStackedLayout;
 
+    /** Holds the local container layout instance. */
+    QGridLayout             *m_pLocalContainerLayout;
+    /** Holds the file label instance. */
+    QLabel                  *m_pFileLabel;
     /** Holds the file selector instance. */
     UIEmptyFilePathSelector *m_pFileSelector;
 
