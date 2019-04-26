@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78327 2019-04-26 14:46:29Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.h 78328 2019-04-26 15:34:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -44,7 +44,9 @@
 #include "vbsfshared.h"
 #include <VBox/log.h>
 #include <VBox/VBoxGuestLibSharedFolders.h>
-#include <VBox/VBoxGuestLibSharedFoldersInline.h>
+#ifndef __cplusplus /* not for Win2kWorkarounds.c */
+# include <VBox/VBoxGuestLibSharedFoldersInline.h>
+#endif
 
 
 RT_C_DECLS_BEGIN
