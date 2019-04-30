@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78355 2019-04-30 03:48:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.h 78357 2019-04-30 11:26:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -118,9 +118,9 @@ typedef struct VBSFNTFCBEXT
      * non-windows host systems or not.
      *
      * @{ */
-    MRX_VBOX_FOBX            *pFobxLastAccessTime;
-    MRX_VBOX_FOBX            *pFobxLastWriteTime;
-    MRX_VBOX_FOBX            *pFobxChangeTime;
+    PMRX_VBOX_FOBX            pFobxLastAccessTime;
+    PMRX_VBOX_FOBX            pFobxLastWriteTime;
+    PMRX_VBOX_FOBX            pFobxChangeTime;
     /** @} */
 } VBSFNTFCBEXT;
 /** Pointer to the VBox FCB extension data. */
