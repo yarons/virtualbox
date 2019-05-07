@@ -1,4 +1,4 @@
-/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 78440 2019-05-07 17:44:31Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 78443 2019-05-07 18:00:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardEnumFormatEtcImpl-win.cpp - Shared Clipboard IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
