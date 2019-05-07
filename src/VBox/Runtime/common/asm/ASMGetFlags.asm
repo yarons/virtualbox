@@ -1,3 +1,4 @@
+; $Id: ASMGetFlags.asm 78425 2019-05-07 10:15:39Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - ASMGetFlags().
 ;
@@ -31,8 +32,12 @@
 BEGINCODE
 
 BEGINPROC_EXPORTED ASMGetFlags
+%if    ARCH_BITS == 32
+        pushfd
+%else
         pushf
-        pop     rax
+%endif
+        pop     xAX
         ret
 ENDPROC ASMGetFlags
 
