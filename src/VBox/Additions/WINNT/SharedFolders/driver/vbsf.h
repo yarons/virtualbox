@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78368 2019-05-03 03:02:54Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.h 78468 2019-05-11 01:05:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -55,6 +55,7 @@ RT_C_DECLS_BEGIN
  * Global data.
  */
 extern PRDBSS_DEVICE_OBJECT VBoxMRxDeviceObject;
+extern uint32_t             g_uSfLastFunction;
 
 /**
  * Maximum drive letters (A - Z).
