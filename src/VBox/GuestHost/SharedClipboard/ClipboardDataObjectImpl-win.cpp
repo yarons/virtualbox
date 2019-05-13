@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 78474 2019-05-13 07:44:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 78476 2019-05-13 08:06:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -38,7 +38,7 @@
 #include <iprt/uri.h>
 #include <iprt/utf16.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 VBoxClipboardWinDataObject::VBoxClipboardWinDataObject(LPFORMATETC pFormatEtc, LPSTGMEDIUM pStgMed, ULONG cFormats)
