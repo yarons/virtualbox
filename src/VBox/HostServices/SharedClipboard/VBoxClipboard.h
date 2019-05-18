@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 78580 2019-05-18 15:38:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.h 78581 2019-05-18 15:48:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -48,12 +48,12 @@ typedef struct _VBOXCLIPBOARDSVCCTX
 
     struct {
         VBOXHGCMCALLHANDLE callHandle;
-        VBOXHGCMSVCPARM *paParms;
+        VBOXHGCMSVCPARM   *paParms;
     } async;
 
     struct {
         VBOXHGCMCALLHANDLE callHandle;
-        VBOXHGCMSVCPARM *paParms;
+        VBOXHGCMSVCPARM   *paParms;
     } asyncRead;
 
     struct {
