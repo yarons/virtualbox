@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 78208 2019-04-18 15:54:40Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPIC.cpp 78599 2019-05-20 14:56:38Z michal.necasek@oracle.com $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -332,7 +332,7 @@ PDMBOTHCBDECL(void) picSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel, uint32_t
     Assert(pThis->CTX_SUFF(pDevIns) == pDevIns);
     Assert(pThis->aPics[0].CTX_SUFF(pDevIns) == pDevIns);
     Assert(pThis->aPics[1].CTX_SUFF(pDevIns) == pDevIns);
-    AssertMsg(iIrq < 16, ("iIrq=%d\n", iIrq));
+    AssertMsgReturnVoid(iIrq < 16, ("iIrq=%d\n", iIrq));
 
     Log(("picSetIrq %d %d\n", iIrq, iLevel));
     DumpPICState(&pThis->aPics[0], "picSetIrq");
