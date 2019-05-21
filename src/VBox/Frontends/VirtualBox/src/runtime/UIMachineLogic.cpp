@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 78567 2019-05-17 12:27:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 78635 2019-05-21 14:27:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1607,7 +1607,7 @@ void UIMachineLogic::sltShowSoftKeyboard()
         return;
 
     QIManagerDialog *pSoftKeyboardDialog;
-    UISoftKeyboardDialogFactory dialogFactory(actionPool(), machine().GetName());
+    UISoftKeyboardDialogFactory dialogFactory(uisession(), actionPool(), machine().GetName());
     dialogFactory.prepare(pSoftKeyboardDialog, activeMachineWindow());
     if (pSoftKeyboardDialog)
     {
