@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 78296 2019-04-25 15:52:38Z noreply@oracle.com $ */
+/* $Id: MachineImpl.h 78632 2019-05-21 13:56:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -289,6 +289,8 @@ public:
         BOOL                mSpecCtrlByHost;
         BOOL                mL1DFlushOnSched;
         BOOL                mL1DFlushOnVMEntry;
+        BOOL                mMDSClearOnSched;
+        BOOL                mMDSClearOnVMEntry;
         BOOL                mNestedHWVirt;
         ULONG               mCPUCount;
         BOOL                mCPUHotPlugEnabled;
