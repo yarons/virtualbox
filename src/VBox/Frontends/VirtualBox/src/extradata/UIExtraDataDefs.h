@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 78567 2019-05-17 12:27:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 78680 2019-05-23 07:11:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -379,6 +379,11 @@ namespace UIExtraDataDefs
         extern const char *GUI_GuestControl_FileManagerVisiblePanels;
         extern const char *GUI_GuestControl_ProcessControlSplitterHints;
         extern const char *GUI_GuestControl_ProcessControlDialogGeometry;
+    /** @} */
+
+    /** @name Soft Keyboard related data
+      * @{ */
+        extern const char *GUI_SoftKeyboard_DialogGeometry;
     /** @} */
 
     /** @name File Manager options
