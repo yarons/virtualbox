@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 78721 2019-05-24 12:01:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 78722 2019-05-24 12:09:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -168,7 +168,7 @@ void UIVMInformationDialog::prepare()
 
     /* This is needed at least for some vm to show correct storage info. For the manager UI enumeration has been done already: */
     if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
-        vboxGlobal().startMediaEnumeration();
+        vboxGlobal().startMediumEnumeration();
 }
 
 void UIVMInformationDialog::prepareThis()
