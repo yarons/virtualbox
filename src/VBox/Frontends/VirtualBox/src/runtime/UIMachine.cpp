@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachine.cpp 78721 2019-05-24 12:01:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -209,7 +209,7 @@ bool UIMachine::prepare()
     if (vboxGlobal().agressiveCaching())
     {
         AssertReturn(m_pSession, false);
-        vboxGlobal().startMediumEnumeration(m_pSession->getMachineMedia());
+        vboxGlobal().startMediaEnumeration(m_pSession->getMachineMedia());
     }
     /* Prepare machine-logic: */
     prepareMachineLogic();
