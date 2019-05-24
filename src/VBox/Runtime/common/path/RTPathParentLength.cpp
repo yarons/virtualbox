@@ -1,4 +1,4 @@
-/* $Id: RTPathParentLength.cpp 78702 2019-05-24 00:11:00Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathParentLength.cpp 78705 2019-05-24 01:42:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathParentLength
  */
@@ -69,7 +69,7 @@ RTDECL(size_t) RTPathParentLengthEx(const char *pszPath, uint32_t fFlags)
             return rtPathParentLengthStyleUnix(pszPath, fFlags);
 
         default:
-            AssertFailedReturn(VERR_INVALID_FLAGS); /* impossible */
+            AssertFailedReturn(0); /* impossible */
     }
 }
 
