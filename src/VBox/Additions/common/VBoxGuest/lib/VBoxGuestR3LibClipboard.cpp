@@ -1,6 +1,6 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 78725 2019-05-24 13:15:59Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 78809 2019-05-28 10:54:53Z andreas.loeffler@oracle.com $ */
 /** @file
- * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
+ * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
 
 /*
