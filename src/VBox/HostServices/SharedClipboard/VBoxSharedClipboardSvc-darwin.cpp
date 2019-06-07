@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 79041 2019-06-07 15:26:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 79042 2019-06-07 16:06:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -201,16 +201,15 @@ int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA pClientData)
 
 int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t u32Formats)
 {
-    Log(("vboxClipboardFormatAnnounce u32Formats %02X\n", u32Formats));
+    LogFlowFunc(("u32Formats=%02X\n", u32Formats));
+
     if (u32Formats == 0)
     {
         /* This is just an automatism, not a genuine announcement */
-        return;
+        return VINF_SUCCESS;
     }
 
-    vboxSvcClipboardReportMsg(pClientData, VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA, u32Formats);
-
-    return VINF_SUCCESS;
+    return vboxSvcClipboardReportMsg(pClientData, VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA, u32Formats);
 }
 
 /**
