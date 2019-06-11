@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reader.py 78782 2019-05-27 10:34:52Z knut.osmundsen@oracle.com $
+# $Id: reader.py 79087 2019-06-11 11:58:28Z knut.osmundsen@oracle.com $
 
 """
 XML reader module.
@@ -29,14 +29,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78782 $"
+__version__ = "$Revision: 79087 $"
 __all__     = ['ParseTestResult', ]
 
 # Standard python imports.
 import os
 import traceback
 
-# pylint: disable=C0111
+# pylint: disable=missing-docstring
 
 class Value(object):
     """
