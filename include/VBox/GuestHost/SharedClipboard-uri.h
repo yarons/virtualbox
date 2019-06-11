@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 79036 2019-06-07 14:56:19Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-uri.h 79088 2019-06-11 12:16:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -376,6 +376,9 @@ protected:
      *        on 32-bit guests. */
     uint64_t                            m_cbTotal;
 };
+
+int SharedClipboardDataHeaderInit(PVBOXCLIPBOARDDATAHDR pDataHdr);
+void SharedClipboardDataHeaderDestroy(PVBOXCLIPBOARDDATAHDR pDataHdr);
 
 /**
  * Structure for keeping Shared Clipboard meta data.
