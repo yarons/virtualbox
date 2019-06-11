@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79082 2019-06-11 08:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.h 79089 2019-06-11 13:03:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -63,6 +63,7 @@ private slots:
     void sltHandleLayoutChange(const QString &strLayoutName);
     void sltHandleKeyCapFileChange(const QString &strKeyCapFileName);
     void sltHandleStatusBarContextMenuRequest(const QPoint &point);
+
 private:
 
     void prepareObjects();
