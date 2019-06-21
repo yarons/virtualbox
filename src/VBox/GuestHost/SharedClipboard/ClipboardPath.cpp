@@ -1,4 +1,4 @@
-/* $Id: ClipboardPath.cpp 78501 2019-05-14 11:36:25Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardPath.cpp 79267 2019-06-21 10:11:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Path handling.
  */
@@ -73,8 +73,10 @@ int SharedClipboardPathSanitizeFilename(char *pszPath, size_t cbPath)
  */
 int SharedClipboardPathSanitize(char *pszPath, size_t cbPath)
 {
-    /** @todo */
     RT_NOREF(pszPath, cbPath);
+
+    /** @todo */
+
     return VINF_SUCCESS;
 }
 
