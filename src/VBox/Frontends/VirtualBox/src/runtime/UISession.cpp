@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 77841 2019-03-22 08:08:35Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 79358 2019-06-26 12:25:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1396,7 +1396,8 @@ void UISession::cleanupFramebuffers()
     m_frameBufferVector.clear();
 
     /* Make sure action-pool knows guest-screen count: */
-    actionPool()->toRuntime()->setGuestScreenCount(m_frameBufferVector.size());
+    if (actionPool())
+        actionPool()->toRuntime()->setGuestScreenCount(m_frameBufferVector.size());
 }
 
 void UISession::cleanupConsoleEventHandlers()
