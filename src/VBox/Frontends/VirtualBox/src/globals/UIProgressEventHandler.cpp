@@ -1,4 +1,4 @@
-/* $Id: UIProgressEventHandler.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIProgressEventHandler.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressEventHandler class implementation.
  */
@@ -19,7 +19,7 @@
 #include "UIExtraDataManager.h"
 #include "UIMainEventListener.h"
 #include "UIProgressEventHandler.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif /* VBOX_WS_MAC */
@@ -101,7 +101,7 @@ void UIProgressEventHandler::cleanupListener()
     }
 
     /* Make sure VBoxSVC is available: */
-    if (!vboxGlobal().isVBoxSVCAvailable())
+    if (!uiCommon().isVBoxSVCAvailable())
         return;
 
     /* Get CProgress event source: */

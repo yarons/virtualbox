@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSF.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -25,7 +25,7 @@
 #include "UIMachineSettingsSF.h"
 #include "UIMachineSettingsSFDetails.h"
 #include "UIErrorString.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "VBoxUtils.h"
 
 

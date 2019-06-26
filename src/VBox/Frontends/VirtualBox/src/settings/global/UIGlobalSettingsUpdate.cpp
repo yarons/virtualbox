@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -19,7 +19,7 @@
 #include "UIGlobalSettingsUpdate.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 /** Global settings: Update page data structure. */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -21,7 +21,7 @@
 
 /* Other includes */
 #include "UIMachineSettingsSFDetails.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 UIMachineSettingsSFDetails::UIMachineSettingsSFDetails(DialogType type,

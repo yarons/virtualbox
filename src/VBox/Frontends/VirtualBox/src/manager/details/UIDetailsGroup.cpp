@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsGroup.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UIDetailsSet.h"
 #include "UIExtraDataManager.h"
 #include "UIVirtualMachineItem.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 UIDetailsGroup::UIDetailsGroup(QGraphicsScene *pParent)

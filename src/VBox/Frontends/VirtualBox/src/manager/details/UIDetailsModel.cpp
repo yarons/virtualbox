@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsModel.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIDetailsGroup.h"
 #include "UIDetailsElement.h"
 #include "UIExtraDataManager.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 
 /*********************************************************************************************************************************

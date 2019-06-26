@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxFBOverlay.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -40,7 +40,7 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIPopupCenter.h"
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 
 /* COM includes: */
 #include "CSession.h"

@@ -1,4 +1,4 @@
-/* $Id: UIWizardPage.cpp 76606 2019-01-02 05:40:39Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardPage.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardPage class implementation.
  */
@@ -19,7 +19,7 @@
 #include <QAbstractButton>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
+#include "UICommon.h"
 #include "UIWizard.h"
 #include "UIWizardPage.h"
 
