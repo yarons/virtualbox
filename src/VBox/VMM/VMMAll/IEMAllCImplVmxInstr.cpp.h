@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 79377 2019-06-27 08:05:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 79382 2019-06-27 09:48:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3404,9 +3404,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitTaskSwitch(PVMCPU pVCpu, IEMTASKSWITCH enmTa
 IEM_STATIC VBOXSTRICTRC iemVmxVmexitTaskSwitchWithInfo(PVMCPU pVCpu, PCVMXVEXITINFO pExitInfo,
                                                        PCVMXVEXITEVENTINFO pExitEventInfo)
 {
-    Assert(pExitInfo);
-    Assert(pExitEventInfo);
-
     /* The Exit qualification is mandatory for all task-switch VM-exits. */
     uint64_t const u64ExitQual = pExitInfo->u64Qual;
     iemVmxVmcsSetExitQual(pVCpu, u64ExitQual);
