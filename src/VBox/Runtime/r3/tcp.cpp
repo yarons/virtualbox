@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 78821 2019-05-28 14:16:34Z knut.osmundsen@oracle.com $ */
+/* $Id: tcp.cpp 79413 2019-06-28 13:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -873,9 +873,11 @@ RTR3DECL(int) RTTcpClientCancelConnect(PRTTCPCLIENTCONNECTCANCEL volatile *ppCan
 {
     AssertPtrReturn(ppCancelCookie, VERR_INVALID_POINTER);
 
+    RTSOCKET const hSockCancelled = (RTSOCKET)(uintptr_t)0xdead9999;
+
     AssertCompile(NIL_RTSOCKET == NULL);
-    RTSOCKET hSock = (RTSOCKET)ASMAtomicXchgPtr((void * volatile *)ppCancelCookie, (void *)(uintptr_t)0xdead9999);
-    if (hSock != NIL_RTSOCKET)
+    RTSOCKET hSock = (RTSOCKET)ASMAtomicXchgPtr((void * volatile *)ppCancelCookie, hSockCancelled);
+    if (hSock != NIL_RTSOCKET && hSock != hSockCancelled)
     {
         int rc = rtTcpClose(hSock, "RTTcpClientCancelConnect", false /*fTryGracefulShutdown*/);
         AssertRCReturn(rc, rc);
