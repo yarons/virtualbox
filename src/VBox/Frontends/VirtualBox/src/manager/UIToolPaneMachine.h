@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 76581 2019-01-01 06:24:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 79461 2019-07-02 09:41:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -50,8 +50,6 @@ class UIToolPaneMachine : public QWidget
 
 signals:
 
-    /** Redirects signal from UIVirtualBoxManager to UIDetails. */
-    void sigSlidingStarted();
     /** Redirects signal from UIVirtualBoxManager to UIDetails. */
     void sigToggleStarted();
     /** Redirects signal from UIVirtualBoxManager to UIDetails. */

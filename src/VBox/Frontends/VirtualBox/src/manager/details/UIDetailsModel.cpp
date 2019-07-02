@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsModel.cpp 79461 2019-07-02 09:41:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -182,11 +182,6 @@ void UIDetailsModel::setOptionsDescription(UIExtraDataMetaDefs::DetailsElementOp
 void UIDetailsModel::sltHandleViewResize()
 {
     updateLayout();
-}
-
-void UIDetailsModel::sltHandleSlidingStarted()
-{
-    m_pRoot->stopBuildingGroup();
 }
 
 void UIDetailsModel::sltHandleToggleStarted()
