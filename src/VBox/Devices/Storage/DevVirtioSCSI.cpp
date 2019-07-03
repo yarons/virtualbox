@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 79492 2019-07-03 11:41:12Z noreply@oracle.com $ $Revision: 79492 $ $Date: 2019-07-03 13:41:12 +0200 (Wed, 03 Jul 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 79493 2019-07-03 12:00:43Z noreply@oracle.com $ $Revision: 79493 $ $Date: 2019-07-03 14:00:43 +0200 (Wed, 03 Jul 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -15,6 +15,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -39,6 +40,7 @@
 #endif
 #include "VBoxSCSI.h"
 #include "VBoxDD.h"
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -522,7 +524,7 @@ static DECLCALLBACK(int) devVirtioScsiConstruct(PPDMDEVINS pDevIns, int iInstanc
     LogFunc(("NumTargets=%d\n", pThis->fGCEnabled));
 
 
-LogFunc(("Register PCI device\n"));
+LogFunc(("Register PCI device and map mmio and ports\n"));
     rc = PDMDevHlpPCIRegister(pDevIns, &pThis->dev);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("virtio-scsi cannot register with PCI bus"));
