@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 79493 2019-07-03 12:00:43Z noreply@oracle.com $ $Revision: 79493 $ $Date: 2019-07-03 14:00:43 +0200 (Wed, 03 Jul 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 79494 2019-07-03 12:18:32Z noreply@oracle.com $ $Revision: 79494 $ $Date: 2019-07-03 14:18:32 +0200 (Wed, 03 Jul 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -197,7 +197,7 @@ static DECLCALLBACK(int) virtioScsiR3LiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     return VINF_SSM_DONT_CALL_AGAIN;
 }
 
-/** @callback_method_impl{FNSSMDEVLOADEEXEC}  */
+/** @callback_method_impl{FNSSMDEVLOADEXEC}  */
 static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
     RT_NOREF(uPass);
