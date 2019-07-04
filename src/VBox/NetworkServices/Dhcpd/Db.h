@@ -1,4 +1,4 @@
-/* $Id: Db.h 76576 2019-01-01 06:05:25Z knut.osmundsen@oracle.com $ */
+/* $Id: Db.h 79514 2019-07-04 08:01:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - address database
  */
@@ -23,6 +23,7 @@
 
 #include <iprt/net.h>
 
+#include <iprt/cpp/ministring.h>
 #include <iprt/cpp/xml.h>
 
 #include <list>
@@ -144,10 +145,10 @@ public:
     void expire();
 
 public:
-    int loadLeases(const std::string &strFileName);
+    int loadLeases(const RTCString &strFileName);
     void loadLease(const xml::ElementNode *ndLease);
 
-    int writeLeases(const std::string &strFileName) const;
+    int writeLeases(const RTCString &strFileName) const;
 
 private:
     Binding *createBinding(const ClientId &id = ClientId());
