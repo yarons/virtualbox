@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79514 2019-07-04 08:01:58Z knut.osmundsen@oracle.com $ */
+/* $Id: Config.cpp 79524 2019-07-04 10:14:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "DhcpdInternal.h"
 #include "Config.h"
 
 #include <iprt/ctype.h>
