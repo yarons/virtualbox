@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 79566 2019-07-06 11:41:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageBasic2.h 79567 2019-07-06 12:43:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -269,7 +269,7 @@ protected:
     virtual bool event(QEvent *pEvent) /* override */;
 
     /** Allows access wizard from base part. */
-    UIWizard *wizardImp() { return UIWizardPage::wizard(); }
+    UIWizard *wizardImp() const { return UIWizardPage::wizard(); }
     /** Allows access wizard-field from base part. */
     QVariant fieldImp(const QString &strFieldName) const { return UIWizardPage::field(strFieldName); }
 
