@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79659 2019-07-10 08:38:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 79660 2019-07-10 08:39:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10632,7 +10632,7 @@ static int hmR0VmxExitHostNmi(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo)
      *   - We would need to perform VMREADs with interrupts disabled and is orders of
      *     magnitude worse with nested virtualization.
      *
-     *   - It affects the common VM-exit scenario and keep interrupts disabled for a
+     *   - It affects the common VM-exit scenario and keeps interrupts disabled for a
      *     longer period of time just for handling an edge case like host NMIs.
      *
      * Let's cover the most likely scenario first. Check if we are on the target CPU
