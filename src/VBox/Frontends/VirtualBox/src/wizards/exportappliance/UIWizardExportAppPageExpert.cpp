@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 79590 2019-07-08 12:01:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 79699 2019-07-11 14:16:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -390,8 +390,6 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
                             m_pRadioAskThenExport = new QRadioButton;
                             if (m_pRadioAskThenExport)
                             {
-                                m_pRadioAskThenExport->setEnabled(false);
-
                                 /* Add into layout: */
                                 m_pSettingsLayout2->addWidget(m_pRadioAskThenExport, 3, 1);
                             }
