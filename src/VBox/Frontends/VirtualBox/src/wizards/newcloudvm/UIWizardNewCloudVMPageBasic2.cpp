@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79587 2019-07-08 10:01:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79683 2019-07-11 07:27:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -176,4 +176,5 @@ void UIWizardNewCloudVMPageBasic2::sltInitShortWizardForm()
 
     /* Refresh form properties table: */
     refreshFormPropertiesTable();
+    emit completeChanged();
 }
