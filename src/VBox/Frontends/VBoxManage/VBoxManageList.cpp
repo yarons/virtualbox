@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 79771 2019-07-14 21:10:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageList.cpp 79778 2019-07-15 00:36:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -833,7 +833,7 @@ static HRESULT showDhcpConfig(ComPtr<IDHCPConfig> ptrConfig)
         {
             switch (Encodings[i])
             {
-                case DHCPOptionEncoding_Legacy:
+                case DHCPOptionEncoding_Normal:
                     RTPrintf("      %3d/legacy: %ls\n", Options[i], Values[i]);
                     break;
                 case DHCPOptionEncoding_Hex:
