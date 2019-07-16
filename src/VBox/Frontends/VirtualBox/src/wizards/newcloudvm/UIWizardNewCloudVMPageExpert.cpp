@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79752 2019-07-13 11:16:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79814 2019-07-16 15:59:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -265,6 +265,9 @@ bool UIWizardNewCloudVMPageExpert::validatePage()
 
     /* Lock finish button: */
     startProcessing();
+
+    /* Make sure table has own data committed: */
+    m_pFormEditor->makeSureEditorDataCommitted();
 
     /* Check whether we have proper VSD form: */
     CVirtualSystemDescriptionForm comForm = UIWizardNewCloudVMPage1::vsdForm();

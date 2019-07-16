@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 79242 2019-06-19 12:01:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.h 79814 2019-07-16 15:59:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -42,6 +42,9 @@ public:
 
     /** Defines virtual system description @a comForm to be edited. */
     void setVirtualSystemDescriptionForm(const CVirtualSystemDescriptionForm &comForm);
+
+    /** Makes sure current editor data committed. */
+    void makeSureEditorDataCommitted();
 
 protected:
 
