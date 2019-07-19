@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 79885 2019-07-19 12:32:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -325,7 +325,7 @@ UIWizardNewVMPageBasic1::UIWizardNewVMPageBasic1(const QString &strGroup)
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     {
         m_pLabel = new QIRichTextLabel(this);
-        m_pNameAndSystemEditor = new UINameAndSystemEditor(this, true);
+        m_pNameAndSystemEditor = new UINameAndSystemEditor(this, true, true, true);
         pMainLayout->addWidget(m_pLabel);
         pMainLayout->addWidget(m_pNameAndSystemEditor);
         pMainLayout->addStretch();
