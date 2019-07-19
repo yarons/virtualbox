@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 77557 2019-03-04 15:58:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLogRelCreate.cpp 79904 2019-07-19 19:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <VBox/com/com.h>
+#include <VBox/com/utils.h>
 
 #include <iprt/buildconfig.h>
 #include <iprt/param.h>

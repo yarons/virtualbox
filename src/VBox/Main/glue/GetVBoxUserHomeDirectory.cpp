@@ -1,4 +1,4 @@
-/* $Id: GetVBoxUserHomeDirectory.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: GetVBoxUserHomeDirectory.cpp 79904 2019-07-19 19:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - GetVBoxUserHomeDirectory.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_MAIN
-#include <VBox/com/com.h>
+#include <VBox/com/utils.h>
 
 #include <iprt/env.h>
 #include <iprt/dir.h>
