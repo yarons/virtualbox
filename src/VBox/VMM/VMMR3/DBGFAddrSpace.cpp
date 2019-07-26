@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAddrSpace.cpp 80007 2019-07-26 13:57:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -42,9 +42,6 @@
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/mm.h>
-#ifdef VBOX_WITH_RAW_MODE
-# include <VBox/vmm/patm.h>
-#endif
 #include "DBGFInternal.h"
 #include <VBox/vmm/uvm.h>
 #include <VBox/vmm/vm.h>
