@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 80083 2019-07-31 16:48:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 80100 2019-08-01 12:42:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -866,8 +866,8 @@ UITextTable UIDetailsGenerator::generateMachineInformationUI(CMachine &comMachin
     return table;
 }
 
-UITextTable UIDetailsGenerator::generateMachineInformationDetails(CMachine &comMachine,
-                                                                  const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &fOptions)
+UITextTable UIDetailsGenerator::generateMachineInformationDescription(CMachine &comMachine,
+                                                                      const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &fOptions)
 {
     Q_UNUSED(fOptions);
 
