@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 79921 2019-07-22 11:54:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 80129 2019-08-05 11:35:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -1007,6 +1007,7 @@ enum ScalingOptimizationType
 /** Runtime UI: Mini-toolbar alignment. */
 enum MiniToolbarAlignment
 {
+    MiniToolbarAlignment_Disabled,
     MiniToolbarAlignment_Bottom,
     MiniToolbarAlignment_Top
 };
