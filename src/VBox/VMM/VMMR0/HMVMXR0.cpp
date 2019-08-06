@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80150 2019-08-06 07:44:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 80151 2019-08-06 08:22:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4741,7 +4741,6 @@ static int hmR0VmxExportGuestEntryExitCtls(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
 /**
  * Sets the TPR threshold in the VMCS.
  *
- * @param   pVCpu               The cross context virtual CPU structure.
  * @param   pVmcsInfo           The VMCS info. object.
  * @param   u32TprThreshold     The TPR threshold (task-priority class only).
  */
