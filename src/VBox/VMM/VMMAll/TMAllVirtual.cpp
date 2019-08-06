@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAllVirtual.cpp 80161 2019-08-06 18:10:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -89,7 +89,7 @@ DECLCALLBACK(DECLEXPORT(uint64_t)) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA p
     {
         case SUPGIPMODE_SYNC_TSC:
         case SUPGIPMODE_INVARIANT_TSC:
-#if defined(IN_RC) || defined(IN_RING0)
+#ifdef IN_RING0
             if (pGip->enmUseTscDelta <= SUPGIPUSETSCDELTA_ROUGHLY_ZERO)
                 pfnWorker = fLFence ? RTTimeNanoTSLFenceSyncInvarNoDelta    : RTTimeNanoTSLegacySyncInvarNoDelta;
             else
@@ -111,7 +111,7 @@ DECLCALLBACK(DECLEXPORT(uint64_t)) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA p
             break;
 
         case SUPGIPMODE_ASYNC_TSC:
-#if defined(IN_RC) || defined(IN_RING0)
+#ifdef IN_RING0
             pfnWorker = fLFence ? RTTimeNanoTSLFenceAsync : RTTimeNanoTSLegacyAsync;
 #else
             if (pGip->fGetGipCpu & SUPGIPGETCPU_IDTR_LIMIT_MASK_MAX_SET_CPUS)
