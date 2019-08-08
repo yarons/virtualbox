@@ -1,4 +1,4 @@
-/* $Id: DBGFR3ModInMem.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3ModInMem.cpp 80191 2019-08-08 00:36:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGFR3ModInMemPe - In memory PE module 'loader'.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 
