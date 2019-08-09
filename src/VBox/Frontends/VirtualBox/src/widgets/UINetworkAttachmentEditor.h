@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 80200 2019-08-08 16:09:02Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.h 80213 2019-08-09 13:12:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -73,6 +73,17 @@ public:
     void setValueName(KNetworkAttachmentType enmType, const QString &strName);
     /** Returns current name for specified @a enmType. */
     QString valueName(KNetworkAttachmentType enmType) const;
+
+    /** Returns bridged adapter list. */
+    static QStringList bridgedAdapters();
+    /** Returns internal network list. */
+    static QStringList internalNetworks();
+    /** Returns host-only interface list. */
+    static QStringList hostInterfaces();
+    /** Returns generic driver list. */
+    static QStringList genericDrivers();
+    /** Returns NAT network list. */
+    static QStringList natNetworks();
 
 protected:
 
