@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 80276 2019-08-14 14:36:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 80277 2019-08-14 15:00:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1068,7 +1068,7 @@ void UIMachineSettingsNetworkPage::refreshInternalNetworkList(bool fFullRefresh 
 void UIMachineSettingsNetworkPage::refreshHostInterfaceList()
 {
     /* Reload host interfaces: */
-    m_bridgedAdapterList = UINetworkAttachmentEditor::hostInterfaces();
+    m_hostInterfaceList = UINetworkAttachmentEditor::hostInterfaces();
 }
 
 void UIMachineSettingsNetworkPage::refreshGenericDriverList(bool fFullRefresh /* = false */)
