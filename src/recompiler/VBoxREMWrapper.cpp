@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 80268 2019-08-14 11:25:13Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxREMWrapper.cpp 80281 2019-08-15 07:29:37Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -689,6 +689,7 @@ static const REMPARMDESC g_aArgsEMSetInhibitInterruptsPC[] =
 };
 static const REMPARMDESC g_aArgsHMCanExecuteGuest[] =
 {
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PCPUMCTX),           NULL },
 };
