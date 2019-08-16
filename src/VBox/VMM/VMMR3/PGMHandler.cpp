@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 80264 2019-08-14 08:49:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMHandler.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PGM
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>

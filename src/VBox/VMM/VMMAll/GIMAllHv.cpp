@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 80268 2019-08-14 11:25:13Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMAllHv.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_GIM
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/em.h>

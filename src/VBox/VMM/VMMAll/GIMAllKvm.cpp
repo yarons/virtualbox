@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 80317 2019-08-16 08:05:54Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMAllKvm.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_GIM
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/hm.h>

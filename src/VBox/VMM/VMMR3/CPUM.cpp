@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 80262 2019-08-14 05:02:49Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -105,7 +105,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_CPUM
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/cpumdis.h>

@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 80281 2019-08-15 07:29:37Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -97,7 +97,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_VMM
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmapi.h>

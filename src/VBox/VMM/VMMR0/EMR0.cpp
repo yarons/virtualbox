@@ -1,4 +1,4 @@
-/* $Id: EMR0.cpp 80274 2019-08-14 14:34:38Z knut.osmundsen@oracle.com $ */
+/* $Id: EMR0.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Host Context Ring 0.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_EM
 #include <VBox/vmm/em.h>
 #include "EMInternal.h"

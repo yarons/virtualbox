@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 80281 2019-08-15 07:29:37Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMAll.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_IOM
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/mm.h>
