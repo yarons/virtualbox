@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 80353 2019-08-20 09:48:48Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.cpp 80355 2019-08-20 09:54:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -87,10 +87,6 @@ void UIInformationConfiguration::prepareObjects()
         m_pTableWidget->setShowGrid(false);
         m_pMainLayout->addWidget(m_pTableWidget);
     }
-}
-
-void UIInformationConfiguration::updateTable()
-{
 }
 
 void UIInformationConfiguration::createTableItems()
