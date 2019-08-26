@@ -1,4 +1,5 @@
 /out
+/tbox_patches
 /AutoConfig.kmk
 /LocalConfig.kmk
 /configure.log
