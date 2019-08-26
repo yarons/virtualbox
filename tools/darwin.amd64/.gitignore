@@ -1,6 +1,5 @@
 /nasm
-/yasm
+/osxfuse
 /qt
-/gsoap
-/packagemaker
 /xcode
+/yasm
