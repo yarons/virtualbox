@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 79497 2019-07-03 13:28:33Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 80444 2019-08-27 17:47:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard; Haiku Guest Additions, implementation.
  */
@@ -379,7 +379,7 @@ status_t VBoxClipboardService::_ServiceThread()
         {
             switch (u32Msg)
             {
-                case VBOX_SHARED_CLIPBOARD_HOST_MSG_REPORT_FORMATS:
+                case VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS_WRITE:
                 {
                     /*
                      * The host has announced available clipboard formats. Forward
