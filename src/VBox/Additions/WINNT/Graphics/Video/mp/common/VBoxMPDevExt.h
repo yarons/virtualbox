@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 80482 2019-08-28 15:53:17Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDevExt.h 80483 2019-08-28 16:07:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -149,8 +149,6 @@ typedef struct _VBOXMP_DEVEXT
    BOOLEAN f3DEnabled;
    BOOLEAN fCmdVbvaEnabled;
    BOOLEAN fComplexTopologiesEnabled;
-
-   VBOXCMDVBVA CmdVbva;
 
    VBOXWDDM_GLOBAL_POINTER_INFO PointerInfo;
 
