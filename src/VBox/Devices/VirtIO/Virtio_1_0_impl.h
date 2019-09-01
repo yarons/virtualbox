@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80522 2019-08-31 21:19:08Z noreply@oracle.com $ $Revision: 80522 $ $Date: 2019-08-31 23:19:08 +0200 (Sat, 31 Aug 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 80527 2019-09-01 16:28:56Z noreply@oracle.com $ $Revision: 80527 $ $Date: 2019-09-01 18:28:56 +0200 (Sun, 01 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -511,7 +511,7 @@ DECLINLINE(void) virtioWriteUsedAvailEvent(PVIRTIOSTATE pVirtio, uint16_t qIdx, 
 DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
 {
     if (status == 0)
-        Log(("RESET"));
+        Log3(("RESET"));
     else
     {
         int primed = 0;
