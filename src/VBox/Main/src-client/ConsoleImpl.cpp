@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 80074 2019-07-31 14:18:34Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 80559 2019-09-03 07:00:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8426,7 +8426,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
             /* The guest announces clipboard formats. This must be delivered to all clients. */
             if (pThis->mConsoleVRDPServer)
                 pThis->mConsoleVRDPServer->SendClipboard(VRDE_CLIPBOARD_FUNCTION_FORMAT_ANNOUNCE,
-                                                         pParms->u32Format,
+                                                         pParms->uFormat,
                                                          NULL,
                                                          0,
                                                          NULL);
@@ -8445,7 +8445,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
              */
             if (pThis->mConsoleVRDPServer)
                 pThis->mConsoleVRDPServer->SendClipboard(VRDE_CLIPBOARD_FUNCTION_DATA_READ,
-                                                         pParms->u32Format,
+                                                         pParms->uFormat,
                                                          pParms->u.pvData,
                                                          pParms->cbData,
                                                          &pParms->cbData);
@@ -8460,7 +8460,7 @@ DECLCALLBACK(int) Console::i_sharedClipboardServiceCallback(void *pvExtension, u
 
             if (pThis->mConsoleVRDPServer)
                 pThis->mConsoleVRDPServer->SendClipboard(VRDE_CLIPBOARD_FUNCTION_DATA_WRITE,
-                                                         pParms->u32Format,
+                                                         pParms->uFormat,
                                                          pParms->u.pvData,
                                                          pParms->cbData,
                                                          NULL);
