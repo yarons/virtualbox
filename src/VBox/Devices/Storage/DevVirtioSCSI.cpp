@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80575 2019-09-04 06:51:34Z noreply@oracle.com $ $Revision: 80575 $ $Date: 2019-09-04 08:51:34 +0200 (Wed, 04 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 80577 2019-09-04 07:32:56Z noreply@oracle.com $ $Revision: 80577 $ $Date: 2019-09-04 09:32:56 +0200 (Wed, 04 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -930,7 +930,7 @@ static int virtioScsiReqFinish(PVIRTIOSCSI pThis, PVIRTIOSCSIREQ pReq, int rcReq
  *
  * @param pThis     - PDM driver instance state
  * @param qIdx      - Queue index
- * @param respHdr   - Response header
+ * @param pRespHdr  - Response header
  * @param pbSense   - Pointer to sense buffer or NULL if none.
  *
  * @returns virtual box status code
