@@ -1,4 +1,4 @@
-/* $Id: tftp.c 78104 2019-04-10 17:33:18Z knut.osmundsen@oracle.com $ */
+/* $Id: tftp.c 80585 2019-09-04 14:05:50Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -448,7 +448,7 @@ DECLINLINE(int) tftpSessionEvaluateOptions(PNATState pData, PTFTPSESSION pTftpSe
         return rc;
     }
 
-    rc = RTFileGetSize(hSessionFile, &cbSessionFile);
+    rc = RTFileQuerySize(hSessionFile, &cbSessionFile);
     RTFileClose(hSessionFile);
     if (RT_FAILURE(rc))
     {

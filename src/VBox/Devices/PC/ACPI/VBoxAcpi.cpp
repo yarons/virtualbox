@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAcpi.cpp 80585 2019-09-04 14:05:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -306,7 +306,7 @@ static int acpiAmlLoadExternal(PPDMDEVINS pDevIns, const char *pcszCfgName, cons
              * is equal to the size of the DSDT.
              */
             uint64_t cbAmlFile = 0;
-            rc = RTFileGetSize(FileAml, &cbAmlFile);
+            rc = RTFileQuerySize(FileAml, &cbAmlFile);
 
             cbAmlCode = (size_t)cbAmlFile;
 
