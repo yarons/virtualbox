@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79815 2019-07-16 17:31:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 80610 2019-09-05 18:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -285,7 +285,6 @@ bool UIWizardNewCloudVMPageExpert::validatePage()
         fResult = comForm.isOk();
         if (!fResult)
             msgCenter().cannotAcquireVirtualSystemDescriptionFormProperty(comForm);
-        UIWizardNewCloudVMPage1::setVSDForm(CVirtualSystemDescriptionForm());
     }
 
     /* Try to create cloud VM: */
