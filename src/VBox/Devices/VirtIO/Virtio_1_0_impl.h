@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80527 2019-09-01 16:28:56Z noreply@oracle.com $ $Revision: 80527 $ $Date: 2019-09-01 18:28:56 +0200 (Sun, 01 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 80596 2019-09-05 07:12:46Z noreply@oracle.com $ $Revision: 80596 $ $Date: 2019-09-05 09:12:46 +0200 (Thu, 05 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -408,7 +408,6 @@ DECLINLINE(uint16_t) virtioReadAvailRingIdx(PVIRTIOSTATE pVirtio, uint16_t qIdx)
     PDMDevHlpPhysRead(pVirtio->CTX_SUFF(pDevIns),
                       pVirtio->pGcPhysQueueAvail[qIdx] + RT_UOFFSETOF(VIRTQ_AVAIL_T, uIdx),
                       &uIdx, sizeof(uIdx));
-    Log3Func(("%s actual avail_idx=%d\n", pVirtio->virtqProxy[qIdx].szVirtqName, uIdx));
     return uIdx;
 }
 
@@ -511,22 +510,22 @@ DECLINLINE(void) virtioWriteUsedAvailEvent(PVIRTIOSTATE pVirtio, uint16_t qIdx, 
 DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
 {
     if (status == 0)
-        Log3(("RESET"));
+        Log6(("RESET"));
     else
     {
         int primed = 0;
         if (status & VIRTIO_STATUS_ACKNOWLEDGE)
-            Log3(("ACKNOWLEDGE",   primed++));
+            Log6(("ACKNOWLEDGE",   primed++));
         if (status & VIRTIO_STATUS_DRIVER)
-            Log3(("%sDRIVER",      primed++ ? " | " : ""));
+            Log6(("%sDRIVER",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_FEATURES_OK)
-            Log3(("%sFEATURES_OK", primed++ ? " | " : ""));
+            Log6(("%sFEATURES_OK", primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_DRIVER_OK)
-            Log3(("%sDRIVER_OK",   primed++ ? " | " : ""));
+            Log6(("%sDRIVER_OK",   primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_FAILED)
-            Log3(("%sFAILED",      primed++ ? " | " : ""));
+            Log6(("%sFAILED",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_DEVICE_NEEDS_RESET)
-            Log3(("%sNEEDS_RESET", primed++ ? " | " : ""));
+            Log6(("%sNEEDS_RESET", primed++ ? " | " : ""));
     }
 }
 
