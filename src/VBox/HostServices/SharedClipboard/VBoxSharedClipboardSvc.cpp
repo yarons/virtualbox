@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80623 2019-09-06 10:05:11Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80624 2019-09-06 10:08:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1700,6 +1700,8 @@ static void vboxSvcClipboardClientStateReset(PVBOXCLIPBOARDCLIENTSTATE pClientSt
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
     pClientState->URI.fTransferStart = false;
     pClientState->URI.enmTransferDir = SHAREDCLIPBOARDURITRANSFERDIR_UNKNOWN;
+#else
+    RT_NOREF(pClientState);
 #endif
 }
 
