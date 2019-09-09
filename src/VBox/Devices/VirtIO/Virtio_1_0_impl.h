@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80647 2019-09-06 21:20:04Z noreply@oracle.com $ $Revision: 80647 $ $Date: 2019-09-06 23:20:04 +0200 (Fri, 06 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 80683 2019-09-09 19:57:50Z noreply@oracle.com $ $Revision: 80683 $ $Date: 2019-09-09 21:57:50 +0200 (Mon, 09 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -534,8 +534,8 @@ DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
 }
 
 static void virtioResetQueue        (PVIRTIOSTATE pVirtio, uint16_t qIdx);
-static void virtioNotifyGuestDriver (PVIRTIOSTATE pVirtio, uint16_t qIdx);
-static int  virtioRaiseInterrupt    (PVIRTIOSTATE pVirtio, uint8_t uCause);
+static void virtioNotifyGuestDriver (PVIRTIOSTATE pVirtio, uint16_t qIdx, bool fForce);
+static int  virtioRaiseInterrupt    (PVIRTIOSTATE pVirtio, uint8_t uCause, bool fForce);
 static void virtioLowerInterrupt    (PVIRTIOSTATE pVirtio);
 static void virtioQueueNotified     (PVIRTIOSTATE pVirtio, uint16_t qidx, uint16_t uDescIdx);
 static int  virtioCommonCfgAccessed (PVIRTIOSTATE pVirtio, int fWrite, off_t uOffset, unsigned cb, void const *pv);
