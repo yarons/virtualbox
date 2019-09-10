@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80683 2019-09-09 19:57:50Z noreply@oracle.com $ $Revision: 80683 $ $Date: 2019-09-09 21:57:50 +0200 (Mon, 09 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 80701 2019-09-10 14:42:31Z knut.osmundsen@oracle.com $ $Revision: 80701 $ $Date: 2019-09-10 16:42:31 +0200 (Tue, 10 Sep 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2380,7 +2380,7 @@ const PDMDEVREG g_DeviceVirtioSCSI =
     /* .cbInstanceShared = */       sizeof(VIRTIOSCSI),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "Virtio Host SCSI.\n",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",
