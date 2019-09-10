@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 80701 2019-09-10 14:42:31Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPciIch9.cpp 80702 2019-09-10 14:46:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3677,7 +3677,7 @@ const PDMDEVREG g_DevicePciIch9Bridge =
     /* .cbInstanceShared = */       sizeof(DEVPCIBUS),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "ICH9 PCI to PCI bridge",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",
