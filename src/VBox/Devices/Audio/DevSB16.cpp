@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 80703 2019-09-10 14:50:27Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSB16.cpp 80704 2019-09-10 15:19:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2607,6 +2607,7 @@ const PDMDEVREG g_DeviceSB16 =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Sound Blaster 16 Controller",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

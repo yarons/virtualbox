@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 80703 2019-09-10 14:50:27Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSmc.cpp 80704 2019-09-10 15:19:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSmc - Apple System Management Controller.
  *
@@ -1507,6 +1507,7 @@ const PDMDEVREG g_DeviceSmc =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Apple System Management Controller",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

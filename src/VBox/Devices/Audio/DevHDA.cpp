@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 80701 2019-09-10 14:42:31Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHDA.cpp 80704 2019-09-10 15:19:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -5325,6 +5325,7 @@ const PDMDEVREG g_DeviceHDA =
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         1,
+    /* .cMaxMsixVectors = */        0,
     /* .pszDescription = */         "Intel HD Audio Controller",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",
