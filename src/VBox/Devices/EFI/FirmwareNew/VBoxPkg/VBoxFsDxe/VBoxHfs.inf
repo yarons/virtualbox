@@ -1,4 +1,4 @@
-# $Id: VBoxHfs.inf 77599 2019-03-07 14:10:56Z michal.necasek@oracle.com $
+# $Id: VBoxHfs.inf 80721 2019-09-11 08:46:37Z alexander.eichner@oracle.com $
 ## @file
 # VBoxHfs - VBox HFS FS driver.
 #
@@ -45,7 +45,6 @@
 [Packages]
         MdePkg/MdePkg.dec
         MdeModulePkg/MdeModulePkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]
