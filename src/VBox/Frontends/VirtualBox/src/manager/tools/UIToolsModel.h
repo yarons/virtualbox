@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 76581 2019-01-01 06:24:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsModel.h 80802 2019-09-15 20:58:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -223,6 +223,8 @@ private:
 
         /** Saves last selected items. */
         void saveLastSelectedItems();
+        /** Cleanups connections. */
+        void cleanupConnections();
         /** Cleanups connections. */
         void cleanupHandlers();
         /** Cleanups items. */
