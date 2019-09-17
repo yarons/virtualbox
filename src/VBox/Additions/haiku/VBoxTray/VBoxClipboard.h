@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 76563 2019-01-01 03:53:56Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxClipboard.h 80847 2019-09-17 09:38:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard, Haiku Guest Additions, header.
  */
@@ -52,11 +52,11 @@
 
 #include <Handler.h>
 
-class VBoxClipboardService : public BHandler
+class VBoxShClService : public BHandler
 {
     public:
-        VBoxClipboardService();
-        virtual ~VBoxClipboardService();
+        VBoxShClService();
+        virtual ~VBoxShClService();
 
         virtual status_t    Connect();
         virtual status_t    Disconnect();
