@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80858 2019-09-17 13:03:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80862 2019-09-17 14:45:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -214,7 +214,7 @@
 
 #include "VBoxSharedClipboardSvc-internal.h"
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-# include "VBoxSharedClipboardSvc-uri.h"
+# include "VBoxSharedClipboardSvc-transfers.h"
 #endif
 
 using namespace HGCM;

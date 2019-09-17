@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.h 80858 2019-09-17 13:03:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.h 80862 2019-09-17 14:45:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header for transfer (list) handling.
  */
