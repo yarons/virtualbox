@@ -1,4 +1,4 @@
-# $Id: VBoxAppleSim.inf 80721 2019-09-11 08:46:37Z alexander.eichner@oracle.com $
+# $Id: VBoxAppleSim.inf 80902 2019-09-18 21:02:07Z alexander.eichner@oracle.com $
 ## @file
 # VBoxAppleSim - VBox Apple interfaces simulation support.
 #
@@ -39,6 +39,7 @@
         VBoxAppleSim.c
         Cpu.c
         Console.c
+        DataHub.c
 
 [Packages]
         MdePkg/MdePkg.dec
