@@ -1,4 +1,4 @@
-/* $Id: UISession.h 80543 2019-09-02 09:34:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.h 80890 2019-09-18 13:46:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -297,7 +297,7 @@ public:
     QList<int> listOfVisibleWindows() const;
 
     /** Returns a vector of media attached to the machine. */
-    CMediumVector getMachineMedia() const;
+    CMediumVector machineMedia() const;
 
 signals:
 
