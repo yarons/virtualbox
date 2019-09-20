@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 80884 2019-09-18 11:23:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 80926 2019-09-20 13:24:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -579,7 +579,7 @@ void UIMediumManagerWidget::sltToggleMediumSearchVisibility(bool fVisible)
 void UIMediumManagerWidget::sltRefreshAll()
 {
     /* Start medium-enumeration: */
-    uiCommon().startMediumEnumeration();
+    uiCommon().enumerateMedia();
 }
 
 void UIMediumManagerWidget::sltHandleCurrentTabChanged()
@@ -695,7 +695,7 @@ void UIMediumManagerWidget::prepare()
 
     /* Start medium-enumeration (if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
-        uiCommon().startMediumEnumeration();
+        uiCommon().enumerateMedia();
     /* Emulate medium-enumeration otherwise: */
     else
     {
