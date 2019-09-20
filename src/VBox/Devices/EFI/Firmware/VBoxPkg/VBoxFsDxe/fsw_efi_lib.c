@@ -1,4 +1,4 @@
-/* $Id: fsw_efi_lib.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: fsw_efi_lib.c 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
 /** @file
  * fsw_efi_lib.c - EFI host environment library functions.
  */

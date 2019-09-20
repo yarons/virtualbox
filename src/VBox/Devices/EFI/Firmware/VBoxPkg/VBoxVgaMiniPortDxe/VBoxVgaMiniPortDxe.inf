@@ -1,4 +1,4 @@
-# $Id: VBoxVgaMiniPortDxe.inf 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $
+# $Id: VBoxVgaMiniPortDxe.inf 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $
 ## @file
 # VBoxVgaMiniPortDxe.inf - VgaMiniPort Protocol module declaration.
 #
@@ -44,7 +44,7 @@
 
 [Packages]
         MdePkg/MdePkg.dec
-        IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+        OvmfPkg/OvmfPkg.dec
         VBoxPkg/VBoxPkg.dec
 
 [LibraryClasses]

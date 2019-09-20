@@ -1,4 +1,4 @@
-/* $Id: Apple.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: Apple.c 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
 /** @file
  * Apple.c
  */
@@ -105,8 +105,9 @@ PartitionInstallAppleChildHandles (
   UINT32                    VolSpaceSize;
   UINT32                    SubBlockSize;
   UINT32                    BlkPerSec;
+  EFI_PARTITION_INFO_PROTOCOL  PartitionInfo;
 
-  VBoxLogFlowFuncMarkDP(DevicePath);
+  VBoxLogFlowFuncEnter();
   Found         = EFI_NOT_FOUND;
   Media         = BlockIo->Media;
   VolSpaceSize  = 0;
@@ -212,10 +213,11 @@ PartitionInstallAppleChildHandles (
               BlockIo2,
               DevicePath,
               (EFI_DEVICE_PATH_PROTOCOL *) &CdDev,
+              &PartitionInfo,
               CdDev.PartitionStart,
               CdDev.PartitionStart + CdDev.PartitionSize - 1,
               SubBlockSize,
-              FALSE);
+              NULL);
 
           if (!EFI_ERROR (Status)) {
               Found = EFI_SUCCESS;
