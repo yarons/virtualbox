@@ -1,4 +1,4 @@
-/* $Id: VBoxSysTables.c 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxSysTables.c 80934 2019-09-22 15:37:49Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxSysTables.c - VirtualBox system tables
  */
@@ -147,7 +147,10 @@ DxeInitializeVBoxSysTables(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *Syste
     DEBUG((DEBUG_INFO, "SMBIOS=%p\n", Ptr));
     ASSERT(Ptr != NULL);
     if (Ptr)
+    {
         rc = ConvertAndInstallTable(&gEfiSmbiosTableGuid, Ptr);
+        ASSERT_EFI_ERROR (rc);
+    }
 
     Ptr = FindMPSPtr();
     DEBUG((DEBUG_INFO, "MPS=%p\n", Ptr));
