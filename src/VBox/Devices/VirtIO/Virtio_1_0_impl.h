@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80931 2019-09-22 09:56:37Z noreply@oracle.com $ $Revision: 80931 $ $Date: 2019-09-22 11:56:37 +0200 (Sun, 22 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 80943 2019-09-23 09:36:14Z knut.osmundsen@oracle.com $ $Revision: 80943 $ $Date: 2019-09-23 11:36:14 +0200 (Mon, 23 Sep 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -176,9 +176,6 @@ typedef struct VIRTIOSTATE
 
     VIRTQSTATE                virtqState[VIRTQ_MAX_CNT];         /**< Local impl-specific queue context         */
     VIRTIOCALLBACKS           virtioCallbacks;                   /**< Callback vectors to client                */
-
-    PFNPCICONFIGREAD          pfnPciConfigReadOld;               /**< Prev rd. cb. intercepting PCI Cfg I/O     */
-    PFNPCICONFIGWRITE         pfnPciConfigWriteOld;              /**< Prev wr. cb. intercepting PCI Cfg I/O     */
 
     PVIRTIO_PCI_CFG_CAP_T     pPciCfgCap;                        /**< Pointer to struct in configuration area   */
     PVIRTIO_PCI_NOTIFY_CAP_T  pNotifyCap;                        /**< Pointer to struct in configuration area   */
