@@ -1,4 +1,4 @@
-# $Id: .scm-settings 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $
+# $Id: .scm-settings 80957 2019-09-23 18:27:03Z alexander.eichner@oracle.com $
 ## @file
 # Source code massager settings for the EFI Firmware.
 #
@@ -121,6 +121,9 @@
 --filter-out-files *.ps
 --filter-out-files /BaseTools/Source/Python/Rsa2048Sha256Sign/TestSigningPrivateKey.pem
 --filter-out-dirs  /StdLib/Efi/StdLib/etc/.
+
+# @todo Temporary until openssl is updated and we can cleanup the eol style mess
+--filter-out-dirs  /CryptoPkg/Library/OpensslLib
 
 #
 # VBoxPkg
