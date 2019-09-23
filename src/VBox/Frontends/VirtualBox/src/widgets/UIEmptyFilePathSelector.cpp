@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 79365 2019-06-26 15:57:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 80955 2019-09-23 17:27:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -61,7 +61,7 @@ UIEmptyFilePathSelector::UIEmptyFilePathSelector (QWidget *aParent /* = NULL */)
     mSelectButton->setAutoRaise(true);
 #endif
     mSelectButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_disabled_16px.png"));
-    connect(mSelectButton, SIGNAL(clicked()), this, SLOT(choose()));
+    connect(mSelectButton, &QToolButton::clicked, this, &UIEmptyFilePathSelector::choose);
     mMainLayout->addWidget(mSelectButton);
 
     setEditable (false);
@@ -253,4 +253,3 @@ void UIEmptyFilePathSelector::textChanged (const QString& aPath)
         emit pathChanged (mPath);
     }
 }
-
