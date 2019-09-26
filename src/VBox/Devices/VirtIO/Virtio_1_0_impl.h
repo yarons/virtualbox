@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80943 2019-09-23 09:36:14Z knut.osmundsen@oracle.com $ $Revision: 80943 $ $Date: 2019-09-23 11:36:14 +0200 (Mon, 23 Sep 2019) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 81019 2019-09-26 12:46:26Z noreply@oracle.com $ $Revision: 81019 $ $Date: 2019-09-26 14:46:26 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -502,7 +502,7 @@ DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
     {
         int primed = 0;
         if (status & VIRTIO_STATUS_ACKNOWLEDGE)
-            Log6(("ACKNOWLEDGE",   primed++));
+            Log6(("%sACKNOWLEDGE", primed++ ? "" : ""));
         if (status & VIRTIO_STATUS_DRIVER)
             Log6(("%sDRIVER",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_FEATURES_OK)
