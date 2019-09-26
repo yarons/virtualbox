@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 81019 2019-09-26 12:46:26Z noreply@oracle.com $ $Revision: 81019 $ $Date: 2019-09-26 14:46:26 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: Virtio_1_0_impl.h 81031 2019-09-26 19:26:33Z knut.osmundsen@oracle.com $ $Revision: 81031 $ $Date: 2019-09-26 21:26:33 +0200 (Thu, 26 Sep 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -141,7 +141,6 @@ typedef struct virtio_pci_cfg_cap
  */
 typedef struct VIRTIOSTATE
 {
-    PDMPCIDEV                 dev;                               /**< PCI device                                */
     char                      szInstance[16];                    /**< Instance name, e.g. "VIRTIOSCSI0"         */
     void *                    pClientContext;                    /**< Client callback returned on callbacks     */
 
