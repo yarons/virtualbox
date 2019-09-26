@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81019 2019-09-26 12:46:26Z noreply@oracle.com $ $Revision: 81019 $ $Date: 2019-09-26 14:46:26 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81020 2019-09-26 13:12:58Z noreply@oracle.com $ $Revision: 81020 $ $Date: 2019-09-26 15:12:58 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -886,6 +886,7 @@ static DECLCALLBACK(int) virtioScsiIoReqFinish(PPDMIMEDIAEXPORT pInterface, PDMM
                     respHdr.uResponse = VIRTIOSCSI_S_OK;
                     break;
                 }
+                [[fallthrough]]
             case SCSI_STATUS_CHECK_CONDITION:
                 {
                     uint8_t uSenseKey = pReq->pbSense[2];
