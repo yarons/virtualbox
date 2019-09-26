@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81020 2019-09-26 13:12:58Z noreply@oracle.com $ $Revision: 81020 $ $Date: 2019-09-26 15:12:58 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81021 2019-09-26 13:25:11Z noreply@oracle.com $ $Revision: 81021 $ $Date: 2019-09-26 15:25:11 +0200 (Thu, 26 Sep 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -881,12 +881,36 @@ static DECLCALLBACK(int) virtioScsiIoReqFinish(PPDMIMEDIAEXPORT pInterface, PDMM
         switch(rcReq)
         {
             case SCSI_STATUS_OK:
+            {
                 if (pReq->uStatus != SCSI_STATUS_CHECK_CONDITION)
                 {
                     respHdr.uResponse = VIRTIOSCSI_S_OK;
                     break;
                 }
-                [[fallthrough]]
+                uint8_t uSenseKey = pReq->pbSense[2];
+                switch (uSenseKey)
+                {
+                    case SCSI_SENSE_ABORTED_COMMAND:
+                        respHdr.uResponse = VIRTIOSCSI_S_ABORTED;
+                        break;
+                    case SCSI_SENSE_COPY_ABORTED:
+                        respHdr.uResponse = VIRTIOSCSI_S_ABORTED;
+                        break;
+                    case SCSI_SENSE_UNIT_ATTENTION:
+                        respHdr.uResponse = VIRTIOSCSI_S_TARGET_FAILURE;
+                        break;
+                    case SCSI_SENSE_HARDWARE_ERROR:
+                        respHdr.uResponse = VIRTIOSCSI_S_TARGET_FAILURE;
+                        break;
+                    case SCSI_SENSE_NOT_READY:
+                        respHdr.uResponse = VIRTIOSCSI_S_BUSY; /* e.g. re-tryable */
+                        break;
+                    default:
+                        respHdr.uResponse = VIRTIOSCSI_S_FAILURE;
+                        break;
+                }
+                break;
+            }
             case SCSI_STATUS_CHECK_CONDITION:
                 {
                     uint8_t uSenseKey = pReq->pbSense[2];
