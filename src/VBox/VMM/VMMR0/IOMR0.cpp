@@ -1,4 +1,4 @@
-/* $Id: IOMR0.cpp 80960 2019-09-23 20:54:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMR0.cpp 81056 2019-09-27 13:11:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Host Context Ring 0.
  */
@@ -130,6 +130,9 @@ VMMR0_INT_DECL(int)  IOMR0IoPortSetUpContext(PGVM pGVM, PPDMDEVINS pDevIns, IOMI
 #else
     pGVM->iomr0.s.paIoPortRegs[hIoPorts].idxStats           = UINT16_MAX;
 #endif
+
+    pGVM->iomr0.s.paIoPortRing3Regs[hIoPorts].fRing0 = true;
+
     return VINF_SUCCESS;
 }
 
