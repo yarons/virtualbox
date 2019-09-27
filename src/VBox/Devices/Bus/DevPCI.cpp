@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 81034 2019-09-26 20:04:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPCI.cpp 81048 2019-09-27 12:17:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -939,7 +939,7 @@ static int pciR3CommonSaveExec(PDEVPCIBUS pBus, PSSMHANDLE pSSM)
         if (pDev)
         {
             SSMR3PutU32(pSSM, uDevFn);
-            SSMR3PutMem(pSSM, pDev->abConfig, sizeof(pDev->abConfig));
+            SSMR3PutMem(pSSM, pDev->abConfig, 256); /* Only save 256 bytes here! */
 
             SSMR3PutS32(pSSM, pDev->Int.s.uIrqPinState);
 
