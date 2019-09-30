@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 76562 2019-01-01 03:22:50Z knut.osmundsen@oracle.com $ */
+/* $Id: BIOSSettingsImpl.h 81087 2019-09-30 18:55:28Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  *
@@ -80,6 +80,8 @@ private:
     HRESULT setTimeOffset(LONG64 offset);
     HRESULT getPXEDebugEnabled(BOOL *enabled);
     HRESULT setPXEDebugEnabled(BOOL enable);
+    HRESULT getNonVolatileStorageEnabled(BOOL *enabled);
+    HRESULT setNonVolatileStorageEnabled(BOOL enable);
     HRESULT getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorageFile);
 
     struct Data;
