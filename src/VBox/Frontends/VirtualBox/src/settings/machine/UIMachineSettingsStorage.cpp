@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 81104 2019-10-03 12:47:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 81105 2019-10-03 13:27:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3803,6 +3803,7 @@ void UIMachineSettingsStorage::sltSetInformation()
     }
 
     emit sigStorageChanged();
+    sltUpdateActionStates();
     sltGetInformation();
 }
 
