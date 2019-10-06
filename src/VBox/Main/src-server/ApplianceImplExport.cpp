@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 80603 2019-09-05 10:42:53Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 81119 2019-10-06 12:37:56Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2322,7 +2322,7 @@ HRESULT Appliance::i_exportCloudImpl(TaskCloud *pTask)
     if (m->virtualSystemDescriptions.size() == 1)
     {
         ComPtr<IVirtualBox> VBox(mVirtualBox);
-        hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress, VBox);
+        hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
     }
     else
         hrc = setErrorVrc(VERR_MISMATCH, tr("Export to Cloud isn't supported for more than one VM instance."));
