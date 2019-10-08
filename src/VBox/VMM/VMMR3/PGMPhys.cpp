@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 80333 2019-08-16 20:28:38Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 81150 2019-10-08 12:53:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -26,9 +26,6 @@
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/stam.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/pdmdev.h>
 #include "PGMInternal.h"
 #include <VBox/vmm/vmcc.h>
