@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 81074 2019-09-30 11:18:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 81224 2019-10-11 12:27:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -291,7 +291,7 @@ void UIVMInformationDialog::prepareButtonBox()
 
 void UIVMInformationDialog::loadSettings()
 {
-    /* Restore window geometry: */
+    /* Load window geometry: */
     {
         /* Load geometry: */
         m_geometry = gEDataManager->sessionInformationDialogGeometry(this, m_pMachineWindow);
