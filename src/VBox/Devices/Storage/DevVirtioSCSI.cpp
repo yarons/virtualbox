@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81300 2019-10-17 05:51:54Z noreply@oracle.com $ $Revision: 81300 $ $Date: 2019-10-17 07:51:54 +0200 (Thu, 17 Oct 2019) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81301 2019-10-17 06:04:59Z noreply@oracle.com $ $Revision: 81301 $ $Date: 2019-10-17 08:04:59 +0200 (Thu, 17 Oct 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -560,14 +560,6 @@ typedef struct VIRTIOSCSIREQ
     PDMMEDIAEXIOREQSCSITXDIR       enmTxDir;                 /**< Receives transfer direction of I/O req            */
     uint8_t                        uStatus;                  /**< SCSI status code                                  */
 } VIRTIOSCSIREQ;
-
-DECLINLINE(bool) isBufZero(uint8_t *pv, uint32_t cb)
-{
-    for (uint32_t i = 0; i < cb; i++)
-        if (pv[i])
-            return false;
-    return true;
-}
 
 DECLINLINE(const char *) virtioGetTxDirText(uint32_t enmTxDir)
 {
