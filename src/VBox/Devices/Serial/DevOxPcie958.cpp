@@ -1,4 +1,4 @@
-/* $Id: DevOxPcie958.cpp 81031 2019-09-26 19:26:33Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOxPcie958.cpp 81369 2019-10-18 21:13:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
@@ -39,7 +39,7 @@
 
 
 /** @name PCI device related constants.
- * @} */
+ * @{ */
 /** The PCI device ID. */
 #define OX958_PCI_DEVICE_ID             0xc308
 /** The PCI vendor ID. */

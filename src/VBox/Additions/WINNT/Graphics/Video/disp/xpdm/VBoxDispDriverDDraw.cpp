@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriverDDraw.cpp 80748 2019-09-12 09:44:16Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDispDriverDDraw.cpp 81369 2019-10-18 21:13:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver interface functions related to DirectDraw
  */
@@ -26,7 +26,7 @@ static void VBoxDispGetDDHalInfo(PVBOXDISPDEV pDev, DD_HALINFO *pHalInfo)
     /* memory info */
 
     pHalInfo->vmiData.fpPrimary = pDev->layout.offFramebuffer;
-    /*pHalInfo->vmiData.dwFlags /*unused*/
+    /*pHalInfo->vmiData.dwFlags  - unused*/
     pHalInfo->vmiData.dwDisplayWidth = pDev->mode.ulWidth;
     pHalInfo->vmiData.dwDisplayHeight = pDev->mode.ulHeight;
     pHalInfo->vmiData.lDisplayPitch = pDev->mode.lScanlineStride;
