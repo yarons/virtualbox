@@ -1,4 +1,4 @@
-/* $Id: VBoxSysTables.c 80934 2019-09-22 15:37:49Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxSysTables.c 81344 2019-10-18 09:02:18Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxSysTables.c - VirtualBox system tables
  */
@@ -118,7 +118,7 @@ ConvertAndInstallTable(EFI_GUID* Guid, VOID* Ptr)
     EFI_STATUS  rc = EFI_SUCCESS;
 
     rc = ConvertSystemTable(Guid, &Ptr);
-    ASSERT_EFI_ERROR (rc);
+    //ASSERT_EFI_ERROR (rc);
 
     rc = gBS->InstallConfigurationTable(Guid, Ptr);
     ASSERT_EFI_ERROR (rc);
