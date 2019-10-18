@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81346 2019-10-18 10:40:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81347 2019-10-18 10:42:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1712,7 +1712,7 @@ int shclSvcTransferHandler(PSHCLCLIENT pClient,
         }
 
         default:
-            LogFunc(("Not implemented\n"));
+            rc = VERR_NOT_IMPLEMENTED;
             break;
     }
 
