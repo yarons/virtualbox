@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81379 2019-10-19 14:52:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMAllMmioNew.cpp 81383 2019-10-19 23:58:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_IOM
+#define LOG_GROUP LOG_GROUP_IOM_MMIO
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/cpum.h>
