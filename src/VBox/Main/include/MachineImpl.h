@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 81425 2019-10-21 18:19:39Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.h 81427 2019-10-21 18:37:15Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -202,7 +202,7 @@ public:
 
         // list of files to delete in Delete(); this list is filled by Unregister()
         std::list<Utf8Str>  llFilesToDelete;
-    
+
 #ifdef VBOX_WITH_CLOUD_NET
         GatewayInfo         mGatewayInfo;
 #endif /* VBOX_WITH_CLOUD_NET */

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 81422 2019-10-21 18:04:10Z aleksey.ilyushin@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 81427 2019-10-21 18:37:15Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1528,7 +1528,7 @@ HRESULT VirtualBox::i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
         }
     }
     return rc;
-}                                 
+}
 #endif /* VBOX_WITH_CLOUD_NET */
 
 HRESULT VirtualBox::createCloudNetwork(const com::Utf8Str &aNetworkName,
