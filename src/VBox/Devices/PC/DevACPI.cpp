@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 81369 2019-10-18 21:13:03Z knut.osmundsen@oracle.com $ */
+/* $Id: DevACPI.cpp 81514 2019-10-24 11:25:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -4186,7 +4186,7 @@ const PDMDEVREG g_DeviceACPI =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "acpi",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
     /* .fClass = */                 PDM_DEVREG_CLASS_ACPI,
     /* .cMaxInstances = */          ~0U,
     /* .uSharedVersion = */         42,

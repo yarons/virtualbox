@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81369 2019-10-18 21:13:03Z knut.osmundsen@oracle.com $ $Revision: 81369 $ $Date: 2019-10-18 23:13:03 +0200 (Fri, 18 Oct 2019) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81514 2019-10-24 11:25:11Z knut.osmundsen@oracle.com $ $Revision: 81514 $ $Date: 2019-10-24 13:25:11 +0200 (Thu, 24 Oct 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2456,7 +2456,7 @@ const PDMDEVREG g_DeviceVirtioSCSI =
     /* .uReserved0 = */             0,
     /* .szName = */                 "virtio-scsi",
 #ifdef VIRTIOSCSI_GC_SUPPORT
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ
                                     | PDM_DEVREG_FLAGS_FIRST_SUSPEND_NOTIFICATION
                                     | PDM_DEVREG_FLAGS_FIRST_POWEROFF_NOTIFICATION,
 #else
