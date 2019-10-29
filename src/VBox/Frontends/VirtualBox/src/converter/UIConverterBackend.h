@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 78547 2019-05-16 13:10:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackend.h 81572 2019-10-29 12:25:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -103,6 +103,7 @@ template<> SHARED_LIBRARY_STUFF bool canConvert<UIExtraDataMetaDefs::DetailsElem
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeSharedFolders>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeUserInterface>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeDescription>();
+template<> SHARED_LIBRARY_STUFF bool canConvert<UIExtraDataMetaDefs::RestrictedDialogs>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIToolType>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIVisualStateType>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<DetailsElementType>();
