@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 81581 2019-10-30 09:45:55Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 81603 2019-10-31 09:25:18Z michal.necasek@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1467,6 +1467,10 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "Am79C973"))
                 {
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Am79C973));
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "Am79C960"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Am79C960));
                 }
 #ifdef VBOX_WITH_E1000
                 else if (!RTStrICmp(ValueUnion.psz, "82540EM"))
