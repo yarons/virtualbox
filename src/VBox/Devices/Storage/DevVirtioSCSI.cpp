@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81634 2019-11-04 01:58:52Z knut.osmundsen@oracle.com $ $Revision: 81634 $ $Date: 2019-11-04 02:58:52 +0100 (Mon, 04 Nov 2019) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81635 2019-11-04 02:00:42Z knut.osmundsen@oracle.com $ $Revision: 81635 $ $Date: 2019-11-04 03:00:42 +0100 (Mon, 04 Nov 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1760,7 +1760,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSS
 
 
 /*********************************************************************************************************************************
-*   Device Interface - Misplaced.                                                                                                             *
+*   Device Interface - Misplaced.                                                                                                *
 *********************************************************************************************************************************/
 
 /**
