@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 77262 2019-02-11 13:44:23Z alexander.eichner@oracle.com $ */
+/* $Id: rest-primary-object-types.cpp 81670 2019-11-05 11:17:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -64,6 +64,14 @@ RTCRestObjectBase::RTCRestObjectBase(RTCRestObjectBase const &a_rThat) RT_NOEXCE
 RTCRestObjectBase::~RTCRestObjectBase()
 {
     /* nothing to do */
+}
+
+
+/** Copy assignment operator. */
+RTCRestObjectBase &RTCRestObjectBase::operator=(RTCRestObjectBase const &a_rThat) RT_NOEXCEPT
+{
+    m_fNullIndicator = a_rThat.m_fNullIndicator;
+    return *this;
 }
 
 
