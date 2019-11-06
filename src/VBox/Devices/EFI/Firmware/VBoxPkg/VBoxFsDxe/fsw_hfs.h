@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.h 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
+/* $Id: fsw_hfs.h 81717 2019-11-06 16:19:09Z alexander.eichner@oracle.com $ */
 /** @file
  * fsw_hfs.h - HFS file system driver header.
  */
@@ -39,6 +39,7 @@
 #include "iprt/formats/hfs.h"
 #include "iprt/asm.h"           /* endian conversion */
 
+#include <Library/BaseLib.h>
 
 //! Block size for HFS volumes.
 #define HFS_BLOCKSIZE            512
@@ -149,7 +150,11 @@ be32_to_cpu(fsw_u32 x)
 DECLINLINE(fsw_u64)
 be64_to_cpu(fsw_u64 x)
 {
-    return RT_BE2H_U64(x);
+#ifdef RT_LITTLE_ENDIAN
+    return SwapBytes64(x);
+#else
+    return x;
+#endif
 }
 
 #endif
