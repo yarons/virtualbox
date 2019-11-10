@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 79791 2019-07-15 11:55:51Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 81754 2019-11-10 19:14:26Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -395,14 +395,14 @@ uint32_t vmsvga3dSurfaceFormatSize(SVGA3dSurfaceFormat format,
         return 1;
 
     case SVGA3D_UYVY:
-        *pcxBlock = 1;
+        *pcxBlock = 2;
         *pcyBlock = 1;
-        return 2;
+        return 4;
 
     case SVGA3D_YUY2:
-        *pcxBlock = 1;
+        *pcxBlock = 2;
         *pcyBlock = 1;
-        return 2;
+        return 4;
 
     case SVGA3D_V16U16:
         *pcxBlock = 1;
