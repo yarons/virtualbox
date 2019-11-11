@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81689 2019-11-06 00:52:45Z knut.osmundsen@oracle.com $ $Revision: 81689 $ $Date: 2019-11-06 01:52:45 +0100 (Wed, 06 Nov 2019) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 81765 2019-11-11 16:00:31Z knut.osmundsen@oracle.com $ $Revision: 81765 $ $Date: 2019-11-11 17:00:31 +0100 (Mon, 11 Nov 2019) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2010,7 +2010,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     pHlp->pfnSSMGetU16(pSSM, &pThis->virtioScsiConfig.uMaxTarget);
     pHlp->pfnSSMGetU32(pSSM, &pThis->virtioScsiConfig.uMaxLun);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fAsyncEvtsEnabled);
-    pHlp->pfnSSMGetU32(pSSM, (uint32_t *)&pThis->cActiveReqs);
+    pHlp->pfnSSMGetU32V(pSSM, &pThis->cActiveReqs);
     pHlp->pfnSSMGetBool(pSSM, &pThis->fEventsMissed);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fVirtioReady);
     pHlp->pfnSSMGetU32(pSSM, &pThis->fHasT10pi);
