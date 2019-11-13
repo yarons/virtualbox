@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81824 2019-11-13 13:28:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81825 2019-11-13 13:32:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -169,7 +169,8 @@ int ShClSvcImplConnect(PSHCLCLIENT pClient, bool fHeadless)
     pClient->State.pCtx->pClient = pClient;
 
     ShClSvcUnlock();
-    return rc;
+
+    return VINF_SUCCESS;
 }
 
 int ShClSvcImplSync(PSHCLCLIENT pClient)
