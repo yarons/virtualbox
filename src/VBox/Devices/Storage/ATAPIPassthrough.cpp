@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.cpp 81844 2019-11-14 18:16:36Z knut.osmundsen@oracle.com $ */
+/* $Id: ATAPIPassthrough.cpp 81858 2019-11-15 00:22:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
@@ -538,7 +538,7 @@ DECLHIDDEN(void) ATAPIPassthroughTrackListClear(PTRACKLIST pTrackList)
  *
  * @returns VBox status code.
  * @param   pTrackList  The track list to update.
- * @param   pCDB        The CDB buffer.
+ * @param   pbCDB       The CDB buffer.
  * @param   pvBuf       The data buffer.
  * @param   cbBuf       The buffer isze.
  */
