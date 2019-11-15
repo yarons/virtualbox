@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 81733 2019-11-07 04:43:30Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 81861 2019-11-15 03:58:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -783,7 +783,7 @@ static int hmR0EnableCpu(PVMCC pVM, RTCPUID idCpu)
  */
 static DECLCALLBACK(void) hmR0EnableCpuCallback(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
-    PVMCC             pVM      = (PVMCC)pvUser1;     /* can be NULL! */
+    PVMCC           pVM      = (PVMCC)pvUser1;     /* can be NULL! */
     PHMR0FIRSTRC    pFirstRc = (PHMR0FIRSTRC)pvUser2;
     AssertReturnVoid(g_HmR0.fGlobalInit);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
