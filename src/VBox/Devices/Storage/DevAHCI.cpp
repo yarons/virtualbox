@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 81877 2019-11-15 15:09:00Z knut.osmundsen@oracle.com $ */
+/* $Id: DevAHCI.cpp 81878 2019-11-15 15:21:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5817,7 +5817,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns,
                                   "PrimaryMaster|PrimarySlave|SecondaryMaster"
                                   "|SecondarySlave|PortCount|Bootable|CmdSlotsAvail|TigerHack",
-                                  "");
+                                  "Port*");
 
     rc = pHlp->pfnCFGMQueryU32Def(pCfg, "PortCount", &pThis->cPortsImpl, AHCI_MAX_NR_PORTS_IMPL);
     if (RT_FAILURE(rc))
