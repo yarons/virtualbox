@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82046 2019-11-20 19:55:31Z noreply@oracle.com $ $Revision: 82046 $ $Date: 2019-11-20 20:55:31 +0100 (Wed, 20 Nov 2019) $ $Author: noreply@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 82054 2019-11-20 20:56:22Z noreply@oracle.com $ $Revision: 82054 $ $Date: 2019-11-20 21:56:22 +0100 (Wed, 20 Nov 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1996,6 +1996,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     pHlp->pfnSSMGetU32(pSSM,  &pThis->fResetting);
 
     /** @todo Ask aeichner about BIOS-related changes */
+
     pHlp->pfnSSMGetU32(pSSM, &pThis->cTargets);
 
 
@@ -2076,8 +2077,9 @@ static DECLCALLBACK(int) virtioScsiR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     pHlp->pfnSSMPutU32(pSSM,  pThis->fResetting);
 
     /* Save suspended I/O requests */
-    /* TODO: Ask aiechner about BIOS-related changes */
 
+
+    /** @todo Ask aeichner about BIOS-related changes */
 
     AssertMsg(!pThis->cActiveReqs, ("There are still outstanding requests on this device\n"));
 
