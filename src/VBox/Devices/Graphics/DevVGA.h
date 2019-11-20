@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82048 2019-11-20 20:30:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.h 82060 2019-11-20 22:06:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -315,7 +315,7 @@ typedef struct VGAState {
     R3PTRTYPE(PPDMILEDCONNECTORS)   pLedsConnector;
 
     /** Refresh timer handle - HC. */
-    PTMTIMERR3                  RefreshTimer;
+    TMTIMERHANDLE               hRefreshTimer;
 
     /** Pointer to the device instance - R0 Ptr. */
     PPDMDEVINSR0                pDevInsR0;
