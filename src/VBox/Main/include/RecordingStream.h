@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 76760 2019-01-10 18:07:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: RecordingStream.h 82422 2019-12-05 15:59:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -25,8 +25,6 @@
 #include <vector>
 
 #include <iprt/critsect.h>
-
-#include <VBox/settings.h>
 
 #include "RecordingInternals.h"
 

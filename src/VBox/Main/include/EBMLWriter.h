@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.h 76760 2019-01-10 18:07:47Z klaus.espenlaub@oracle.com $ */
+/* $Id: EBMLWriter.h 82422 2019-12-05 15:59:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
@@ -21,12 +21,9 @@
 # pragma once
 #endif
 
-#include <iprt/file.h>
-#include <VBox/com/string.h>
-
 #include <stack>
 
-#include <iprt/cdefs.h>
+#include <iprt/critsect.h>
 #include <iprt/file.h>
 
 /** No flags set. */
