@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81843 2019-11-14 16:30:44Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 82480 2019-12-07 00:32:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -34,7 +34,7 @@
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
 /** Global clipboard context information */
-struct _SHCLCONTEXT
+struct SHCLCONTEXT
 {
     /** We have a separate thread to poll for new clipboard content */
     RTTHREAD                thread;
