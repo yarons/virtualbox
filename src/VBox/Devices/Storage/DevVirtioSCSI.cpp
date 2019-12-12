@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82559 2019-12-12 06:55:29Z noreply@oracle.com $ $Revision: 82559 $ $Date: 2019-12-12 07:55:29 +0100 (Thu, 12 Dec 2019) $ $Author: noreply@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 82571 2019-12-12 16:36:08Z noreply@oracle.com $ $Revision: 82571 $ $Date: 2019-12-12 17:36:08 +0100 (Thu, 12 Dec 2019) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -209,7 +209,7 @@ typedef struct VIRTIOSCSI_REQ_CMD_T
     REQ_CMD_HDR_T  ReqHdr;
     uint8_t  uCdb[1];                                           /**< cdb                                          */
 
-    REQ_CMD_PI_T piHdr;                                         /** T10 Pi block integrity (optional feature)     */
+    REQ_CMD_PI_T piHdr;                                         /**< T10 Pi block integrity (optional feature)     */
     uint8_t  uPiOut[1];                                         /**< pi_out[]          T10 pi block integrity     */
     uint8_t  uDataOut[1];                                       /**< dataout                                      */
     /** @} */
