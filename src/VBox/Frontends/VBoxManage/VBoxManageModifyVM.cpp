@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 82442 2019-12-05 23:20:16Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 82681 2020-01-09 04:31:04Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1497,6 +1497,12 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Virtio));
                 }
 #endif /* VBOX_WITH_VIRTIO */
+#ifdef VBOX_WITH_VIRTIO_NET_1_0
+                else if (!RTStrICmp(ValueUnion.psz, "virtio_1.0"))
+                {
+                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_Virtio_1_0));
+                }
+#endif /* VBOX_WITH_VIRTIO_NET_1_0 */
                 else
                 {
                     errorArgument("Invalid NIC type '%s' specified for NIC %u", ValueUnion.psz, GetOptState.uIndex);
