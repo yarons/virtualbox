@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82775 2020-01-16 11:50:12Z noreply@oracle.com $ $Revision: 82775 $ $Date: 2020-01-16 12:50:12 +0100 (Thu, 16 Jan 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 82776 2020-01-16 12:01:53Z noreply@oracle.com $ $Revision: 82776 $ $Date: 2020-01-16 13:01:53 +0100 (Thu, 16 Jan 2020) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1110,7 +1110,7 @@ static int virtioNetR3HandleRxPacket(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRT
 
         AssertRC(rc == VINF_SUCCESS || rc == VERR_NOT_AVAILABLE, rc);
 
-        /* todo:  Find a better way to deal with this */
+        /** @todo:  Find a better way to deal with this */
         AssertMsgReturn(rc == VINF_SUCCESS && pDescChain->cbPhysSend,
                         ("Not enough Rx buffers in queue to accomodate ethernet packet\n"),
                         VERR_INTERNAL_ERROR);
