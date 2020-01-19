@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 81758 2019-11-11 13:08:12Z ramshankar.venkataraman@oracle.com $
+# $Id: gen-slickedit-workspace.sh 82787 2020-01-19 00:29:05Z knut.osmundsen@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -497,10 +497,10 @@ my_generate_usercpp_h()
     # Probe the slickedit user config, picking the most recent version.
     #
     if test -z "${MY_SLICK_CONFIG}"; then
-        if test -d "${HOME}/Library/Application Support/Slickedit"; then
-            MY_SLICKDIR_="${HOME}/Library/Application Support/Slickedit"
+        if test -d "${HOME}/Library/Application Support/SlickEdit"; then
+            MY_SLICKDIR_="${HOME}/Library/Application Support/SlickEdit"
             MY_USERCPP_H="unxcpp.h"
-            MY_VSLICK_DB="vslick.stu"
+            MY_VSLICK_DB="vslick.sta" # was .stu earlier, 24 is using .sta.
         elif test -d "${HOMEDRIVE}${HOMEPATH}/Documents/My SlickEdit Config"; then
             MY_SLICKDIR_="${HOMEDRIVE}${HOMEPATH}/Documents/My SlickEdit Config"
             MY_USERCPP_H="usercpp.h"
