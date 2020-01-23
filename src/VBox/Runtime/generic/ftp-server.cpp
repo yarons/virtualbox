@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82838 2020-01-23 09:15:08Z andreas.loeffler@oracle.com $ */
+/* $Id: ftp-server.cpp 82839 2020-01-23 09:19:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -909,11 +909,10 @@ static int rtFtpServerDataConnFlush(PRTFTPSERVERDATACONN pDataConn)
         RTCircBufAcquireReadBlock(pDataConn->pCircBuf, cbUsed, &pvBlock, &cbBlock);
         if (cbBlock)
         {
-            size_t cbWritten;
+            size_t cbWritten = 0;
             rc = rtFtpServerDataConnWrite(pDataConn, pvBlock, cbBlock, &cbWritten);
             if (RT_SUCCESS(rc))
             {
-
                 AssertBreak(cbUsed >= cbWritten);
                 cbUsed -= cbWritten;
             }
