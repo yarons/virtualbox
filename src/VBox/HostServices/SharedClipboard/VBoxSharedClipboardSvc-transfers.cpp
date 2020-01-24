@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 82848 2020-01-24 10:32:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 82852 2020-01-24 15:12:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -736,6 +736,8 @@ bool shClSvcTransferMsgIsAllowed(uint32_t uMode, uint32_t uMsg)
             break;
 
         case VBOX_SHCL_GUEST_FN_CONNECT:
+            RT_FALL_THROUGH();
+        case VBOX_SHCL_GUEST_FN_NEGOTIATE_CHUNK_SIZE:
             RT_FALL_THROUGH();
         case VBOX_SHCL_GUEST_FN_MSG_PEEK_WAIT:
             RT_FALL_THROUGH();
