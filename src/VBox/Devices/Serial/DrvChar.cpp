@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 82798 2020-01-20 15:35:50Z alexander.eichner@oracle.com $ */
+/* $Id: DrvChar.cpp 82867 2020-01-27 10:23:13Z alexander.eichner@oracle.com $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -217,8 +217,7 @@ static DECLCALLBACK(int) drvCharQueuesFlush(PPDMISERIALCONNECTOR pInterface, boo
     }
 
     LogFlowFunc(("-> %Rrc\n", rc));
-    return VINF_SUCCESS; /** @todo r=bird: return rc? */
-}
+    return rc;
 
 
 /* -=-=-=-=- I/O thread -=-=-=-=- */
