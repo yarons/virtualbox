@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 82846 2020-01-24 09:36:52Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 82870 2020-01-27 12:30:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -180,6 +180,8 @@ static DECLCALLBACK(int) vboxClipboardOnTransferStartCallback(PSHCLTRANSFERCALLB
 
             ShClEventUnregister(&pTransfer->Events, idEvent);
         }
+        else
+            AssertFailedStmt(rc = VERR_SHCLPB_MAX_EVENTS_REACHED);
     }
     else
         AssertFailedStmt(rc = VERR_NOT_SUPPORTED);
