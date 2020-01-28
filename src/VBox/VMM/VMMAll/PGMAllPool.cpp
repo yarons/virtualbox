@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 82896 2020-01-28 21:43:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 82897 2020-01-28 22:47:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4994,14 +4994,8 @@ const char *pszTmp = "pgmPoolMakeMoreFreePages/no-growth";
 #else
         int rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PGM_POOL_GROW, 0);
 #endif
-        if (rc == VINF_SUCCESS)
-        { /* likely */ }
-        else
-        {
-            if (RT_FAILURE(rc))
-                return rc;
-        }
-
+        if (RT_FAILURE(rc))
+            return rc;
         STAM_PROFILE_ADV_RESUME(&pPool->StatAlloc, a);
         if (pPool->iFreeHead != NIL_PGMPOOL_IDX)
             return VINF_SUCCESS;
