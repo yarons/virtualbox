@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 82917 2020-01-29 18:28:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNodeMachine.h 82944 2020-01-31 15:00:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -23,7 +23,10 @@
 
 /* GUI includes: */
 #include "UIChooserNode.h"
-#include "UIVirtualMachineItem.h"
+
+/* Forward declarations: */
+class UIVirtualMachineItem;
+class CMachine;
 
 
 /** UIChooserNode subclass used as interface for invisible tree-view machine nodes. */
