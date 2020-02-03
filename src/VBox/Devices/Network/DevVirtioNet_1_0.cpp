@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82961 2020-02-03 16:59:10Z noreply@oracle.com $ $Revision: 82961 $ $Date: 2020-02-03 17:59:10 +0100 (Mon, 03 Feb 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 82962 2020-02-03 17:09:30Z noreply@oracle.com $ $Revision: 82962 $ $Date: 2020-02-03 18:09:30 +0100 (Mon, 03 Feb 2020) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -646,10 +646,6 @@ DECLINLINE(bool) virtioNetValidateRequiredFeatures(uint32_t fFeatures)
                     return false;
     return true;
 }
-
-/*********************************************************************************************************************************
-*   Virtio Net config.                                                                                                           *
-*********************************************************************************************************************************/
 
 /**
  * Resolves to boolean true if uOffset matches a field offset and size exactly,
