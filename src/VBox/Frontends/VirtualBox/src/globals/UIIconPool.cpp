@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 82438 2019-12-05 19:42:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIIconPool.cpp 82960 2020-02-03 15:50:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -365,6 +365,7 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("MacOS1013_64",    ":/os_macosx_64.png");
     m_guestOSTypeIconNames.insert("JRockitVE",       ":/os_jrockitve.png");
     m_guestOSTypeIconNames.insert("VBoxBS_64",       ":/os_other_64.png");
+    m_guestOSTypeIconNames.insert("Cloud",           ":/os_cloud.png");
 }
 
 QIcon UIIconPoolGeneral::userMachineIcon(const CMachine &comMachine) const
