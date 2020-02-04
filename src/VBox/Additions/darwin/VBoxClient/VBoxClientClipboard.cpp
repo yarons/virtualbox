@@ -1,10 +1,10 @@
-/** $Id: VBoxClientClipboard.cpp 82514 2019-12-09 13:26:25Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxClientClipboard.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxManageModifyVM.cpp 82681 2020-01-09 04:31:04Z noreply@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

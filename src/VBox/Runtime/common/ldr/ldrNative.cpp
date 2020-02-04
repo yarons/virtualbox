@@ -1,10 +1,10 @@
-/* $Id: ldrNative.cpp 79559 2019-07-05 15:42:51Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrNative.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

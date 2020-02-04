@@ -1,10 +1,10 @@
-/* $Id: xfs.h 77008 2019-01-26 18:54:44Z alexander.eichner@oracle.com $ */
+/* $Id: xfs.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT, XFS format.
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

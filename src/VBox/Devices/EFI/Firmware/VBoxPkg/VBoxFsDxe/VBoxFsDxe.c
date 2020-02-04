@@ -1,10 +1,10 @@
-/* $Id: VBoxFsDxe.c 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxFsDxe.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxFsDxe.c - VirtualBox FS wrapper
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

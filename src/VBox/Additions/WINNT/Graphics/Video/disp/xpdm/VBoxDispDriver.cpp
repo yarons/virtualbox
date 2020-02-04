@@ -1,10 +1,10 @@
-/* $Id: VBoxDispDriver.cpp 80487 2019-08-28 20:34:19Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDispDriver.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver interface functions
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

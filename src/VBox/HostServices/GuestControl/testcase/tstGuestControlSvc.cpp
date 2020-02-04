@@ -1,10 +1,10 @@
-/* $Id: tstGuestControlSvc.cpp 76958 2019-01-23 18:23:04Z andreas.loeffler@oracle.com $ */
+/* $Id: tstGuestControlSvc.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Testcase for the guest control service.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

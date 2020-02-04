@@ -1,10 +1,10 @@
-/* $Id: VBoxDisplay.cpp 78937 2019-06-03 13:52:06Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

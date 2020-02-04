@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82863 2020-01-27 05:11:30Z noreply@oracle.com $ $Revision: 82863 $ $Date: 2020-01-27 06:11:30 +0100 (Mon, 27 Jan 2020) $ $Author: noreply@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ $Revision: 82968 $ $Date: 2020-02-04 11:35:17 +0100 (Tue, 04 Feb 2020) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

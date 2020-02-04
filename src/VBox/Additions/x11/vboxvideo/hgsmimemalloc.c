@@ -1,6 +1,6 @@
-/* $Id: hgsmimemalloc.c 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $ */
+/* $Id: hgsmimemalloc.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: tracebuf.cpp 81072 2019-09-30 10:30:01Z knut.osmundsen@oracle.com $ */
+/* $Id: tracebuf.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Tracebuffer common functions.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

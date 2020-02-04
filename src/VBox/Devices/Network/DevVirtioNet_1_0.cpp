@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82962 2020-02-03 17:09:30Z noreply@oracle.com $ $Revision: 82962 $ $Date: 2020-02-03 18:09:30 +0100 (Mon, 03 Feb 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ $Revision: 82968 $ $Date: 2020-02-04 11:35:17 +0100 (Tue, 04 Feb 2020) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -12,7 +12,7 @@
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: rdpusb.c 76779 2019-01-11 14:44:34Z noreply@oracle.com $ */
+/* $Id: rdpusb.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Remote Desktop Protocol client - USB Channel Process Functions
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

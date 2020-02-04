@@ -1,10 +1,10 @@
-/* $Id: NetIf-linux.cpp 77436 2019-02-22 17:40:00Z klaus.espenlaub@oracle.com $ */
+/* $Id: NetIf-linux.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

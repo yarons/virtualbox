@@ -1,10 +1,10 @@
-/* $Id: fsw_core.c 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
+/* $Id: fsw_core.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * fsw_core.c - Core file system wrapper abstraction layer code.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

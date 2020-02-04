@@ -1,10 +1,10 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 81460 2019-10-22 19:36:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

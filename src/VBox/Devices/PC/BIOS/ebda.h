@@ -1,10 +1,10 @@
-/* $Id: ebda.h 82180 2019-11-25 14:53:03Z alexander.eichner@oracle.com $ */
+/* $Id: ebda.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * PC BIOS - EBDA (Extended BIOS Data Area) Definition
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

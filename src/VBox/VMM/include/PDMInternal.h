@@ -1,10 +1,10 @@
-/* $Id: PDMInternal.h 82067 2019-11-21 09:01:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMInternal.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

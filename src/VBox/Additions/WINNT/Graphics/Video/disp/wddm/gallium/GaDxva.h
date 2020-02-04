@@ -1,10 +1,10 @@
-/* $Id: GaDxva.h 82415 2019-12-05 12:56:36Z vitali.pelenjow@oracle.com $ */
+/* $Id: GaDxva.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox WDDM DXVA for the Gallium based driver.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

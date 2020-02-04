@@ -1,10 +1,10 @@
-; $Id: pcibio32.asm 76553 2019-01-01 01:45:53Z knut.osmundsen@oracle.com $
+; $Id: pcibio32.asm 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $
 ;; @file
 ; BIOS32 service directory and 32-bit PCI BIOS entry point
 ;
 
 ;
-; Copyright (C) 2006-2019 Oracle Corporation
+; Copyright (C) 2006-2020 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
