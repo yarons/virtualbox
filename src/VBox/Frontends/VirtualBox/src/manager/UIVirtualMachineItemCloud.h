@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 82960 2020-02-03 15:50:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 83000 2020-02-05 19:35:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
  */
@@ -41,6 +41,8 @@ public:
 
     /** Constructs fake cloud VM item. */
     UIVirtualMachineItemCloud();
+    /** Constructs real cloud VM item. */
+    UIVirtualMachineItemCloud(const QString &strName);
     /** Destructs cloud VM item. */
     virtual ~UIVirtualMachineItemCloud();
 

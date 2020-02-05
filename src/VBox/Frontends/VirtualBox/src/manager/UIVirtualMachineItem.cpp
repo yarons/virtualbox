@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.cpp 82960 2020-02-03 15:50:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItem.cpp 83000 2020-02-05 19:35:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -46,7 +46,8 @@ UIVirtualMachineItemLocal *UIVirtualMachineItem::toLocal()
 
 UIVirtualMachineItemCloud *UIVirtualMachineItem::toCloud()
 {
-    return   itemType() == ItemType_CloudFake
+    return   (   itemType() == ItemType_CloudFake
+              || itemType() == ItemType_CloudReal)
            ? static_cast<UIVirtualMachineItemCloud*>(this)
            : 0;
 }
