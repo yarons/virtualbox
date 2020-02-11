@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83055 2020-02-11 20:29:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83056 2020-02-11 20:41:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -62,8 +62,11 @@ void UIVirtualMachineItemCloud::updateState(QWidget *pParent)
     states["STOPPED"] = KMachineState_Paused;
     m_enmMachineState = states.value(strState, KMachineState_PoweredOff);
 
-    /* Recache finally: */
+    /* Recache: */
     recache();
+
+    /* Notify listeners finally: */
+    emit sigStateChange();
 }
 
 QString UIVirtualMachineItemCloud::acquireInstanceInfo(KVirtualSystemDescriptionType enmType, QWidget *pParent)
