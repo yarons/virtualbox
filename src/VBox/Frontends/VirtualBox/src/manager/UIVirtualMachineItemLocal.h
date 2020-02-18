@@ -1,6 +1,6 @@
-/* $Id: UIVirtualMachineItemLocal.h 82944 2020-01-31 15:00:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemLocal.h 83108 2020-02-18 15:29:54Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIVirtualMachineItemLocal class declarations.
+ * VBox Qt GUI - UIVirtualMachineItemLocal class declaration.
  */
 
 /*
