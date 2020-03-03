@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 83186 2020-03-02 17:50:00Z noreply@oracle.com $ $Revision: 83186 $ $Date: 2020-03-02 18:50:00 +0100 (Mon, 02 Mar 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 83188 2020-03-03 07:16:11Z alexander.rudnev@oracle.com $ $Revision: 83188 $ $Date: 2020-03-03 08:16:11 +0100 (Tue, 03 Mar 2020) $ $Author: alexander.rudnev@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1307,7 +1307,7 @@ static bool virtioNetR3AddressFilter(PVIRTIONET pThis, const void *pvBuf, size_t
         Log11Func(("\n%s not our VLAN, returning false\n", INSTANCE(pThis)));
         return false;
     }
-/* @todo remove this debug hack that detects ARP from specific ping on development setup - pk */
+/** @todo remove this debug hack that detects ARP from specific ping on development setup - pk */
 uint8_t src[6] = { 0xA8, 0x20, 0x66, 0x57, 0x50, 0x3C };
 uint8_t dst[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 if (memcmp(pvBuf, dst, 6) == 0 && memcmp(((uint8_t *)pvBuf) + 6, src, 6) == 0)
