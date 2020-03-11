@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevMiscHlp.cpp 83263 2020-03-11 16:34:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -235,6 +235,14 @@ const PDMPCIHLPR3 g_pdmR3DevPciHlp =
 /** @} */
 
 
+/**
+ * IOMMU Device Helpers.
+ */
+const PDMIOMMUHLPR3 g_pdmR3DevIommuHlp =
+{
+    PDM_IOMMUHLPR3_VERSION,
+    PDM_IOMMUHLPR3_VERSION /* the end */
+};
 
 
 /** @name Ring-3 HPET Helpers
