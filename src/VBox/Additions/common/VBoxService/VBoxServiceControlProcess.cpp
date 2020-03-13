@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 83286 2020-03-13 15:35:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlProcess.cpp 83287 2020-03-13 15:37:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -153,7 +153,7 @@ int VGSvcGstCtrlProcessFree(PVBOXSERVICECTRLPROCESS pProcess)
         /*
          * Destroy other thread data.
          */
-        int rc = RTPollSetDestroy(pProcess->hPollSet);
+        rc = RTPollSetDestroy(pProcess->hPollSet);
         AssertRC(rc);
 
         rc = RTReqQueueDestroy(pProcess->hReqQueue);
