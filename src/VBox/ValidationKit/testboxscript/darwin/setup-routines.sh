@@ -1,4 +1,4 @@
-# $Id: setup-routines.sh 83114 2020-02-19 11:51:42Z ksenia.s.stepanova@oracle.com $
+# $Id: setup-routines.sh 83297 2020-03-16 12:04:34Z ksenia.s.stepanova@oracle.com $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Mac OS X (darwin).
 #
@@ -177,4 +177,4 @@ Additional things to do:"
 Enjoy!
 EOF
 }
-ß
+
