@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ $Revision: 82968 $ $Date: 2020-02-04 11:35:17 +0100 (Tue, 04 Feb 2020) $ $Author: knut.osmundsen@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 83492 2020-03-31 03:41:14Z noreply@oracle.com $ $Revision: 83492 $ $Date: 2020-03-31 05:41:14 +0200 (Tue, 31 Mar 2020) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2009,6 +2009,11 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     {
         uint16_t cReqsRedo;
         pHlp->pfnSSMGetU16(pSSM, &cReqsRedo);
+        if (cReqsRedo >= VIRTQ_MAX_SIZE)
+        {
+            LogFunc(("Bad count of I/O transactions to re-do in SSM state data. Skipping\n"));
+            continue;
+        }
 
         for (uint16_t qIdx = VIRTQ_REQ_BASE; qIdx < VIRTIOSCSI_QUEUE_CNT; qIdx++)
         {
@@ -2023,6 +2028,16 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
             pHlp->pfnSSMGetU16(pSSM, &qIdx);
             pHlp->pfnSSMGetU16(pSSM, &uHeadIdx);
 
+            if (qIdx >= VIRTIOSCSI_QUEUE_CNT)
+            {
+                LogFunc(("Bad queue index in SSM state data. Skipping\n"));
+                continue;
+            }
+            if (uHeadIdx >= VIRTQ_MAX_SIZE)
+            {
+                LogFunc(("Bad queue elem index in SSM state data. Skipping\n"));
+                continue;
+            }
             PVIRTIOSCSIWORKERR3 pWorkerR3 = &pThisCC->aWorkers[qIdx];
             pWorkerR3->auRedoDescs[pWorkerR3->cRedoDescs++] = uHeadIdx;
             pWorkerR3->cRedoDescs %= VIRTQ_MAX_SIZE;
