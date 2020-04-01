@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 83504 2020-04-01 15:28:53Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestControlSvc.cpp 83506 2020-04-01 15:31:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1226,6 +1226,8 @@ int GstCtrlService::clientReportFeatures(ClientState *pClient, VBOXHGCMCALLHANDL
 int GstCtrlService::clientQueryFeatures(ClientState *pClient,
                                         VBOXHGCMCALLHANDLE hCall, uint32_t cParms, VBOXHGCMSVCPARM paParms[])
 {
+    RT_NOREF(pClient);
+
     /*
      * Validate the request.
      */
