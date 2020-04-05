@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 83574 2020-04-05 22:39:18Z knut.osmundsen@oracle.com $ $Revision: 83574 $ $Date: 2020-04-06 00:39:18 +0200 (Mon, 06 Apr 2020) $ $Author: knut.osmundsen@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 83577 2020-04-05 22:59:08Z knut.osmundsen@oracle.com $ $Revision: 83577 $ $Date: 2020-04-06 00:59:08 +0200 (Mon, 06 Apr 2020) $ $Author: knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1127,11 +1127,11 @@ static int virtioScsiR3ReqSubmit(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOS
     union
     {
         /*VIRTIOSCSI_REQ_CMD_T    ReqCmd; - not needed */
-        struct
+        RT_GCC_EXTENSION struct
         {
             REQ_CMD_HDR_T       ReqHdr;
             uint8_t             abCdb[VIRTIOSCSI_CDB_SIZE_MAX];
-        };
+        } ;
         uint8_t                 ab[sizeof(REQ_CMD_HDR_T) + VIRTIOSCSI_CDB_SIZE_MAX];
         uint64_t                au64Align[(sizeof(REQ_CMD_HDR_T) + VIRTIOSCSI_CDB_SIZE_MAX) / sizeof(uint64_t)];
     } VirtqReq;
