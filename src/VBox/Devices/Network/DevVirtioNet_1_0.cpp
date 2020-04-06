@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 83587 2020-04-06 12:31:32Z knut.osmundsen@oracle.com $ $Revision: 83587 $ $Date: 2020-04-06 14:31:32 +0200 (Mon, 06 Apr 2020) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 83593 2020-04-06 17:54:04Z alexander.rudnev@oracle.com $ $Revision: 83593 $ $Date: 2020-04-06 19:54:04 +0200 (Mon, 06 Apr 2020) $ $Author: alexander.rudnev@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1426,7 +1426,7 @@ static int virtioNetR3HandleRxPacket(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRT
 
     uint16_t cSegsAllocated = VIRTIONET_PREALLOCATE_RX_SEG_COUNT;
 
-    /**  @todo r=bird: error codepaths below are almost all leaky!  Maybe keep
+    /** @todo r=bird: error codepaths below are almost all leaky!  Maybe keep
      *         allocations and cleanup here and put the code doing the complicated
      *         work into a helper that can AssertReturn at will without needing to
      *         care about cleaning stuff up. */
