@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 83577 2020-04-05 22:59:08Z knut.osmundsen@oracle.com $ $Revision: 83577 $ $Date: 2020-04-06 00:59:08 +0200 (Mon, 06 Apr 2020) $ $Author: knut.osmundsen@oracle.com $ */
+    /* $Id: DevVirtioSCSI.cpp 83582 2020-04-06 01:54:09Z noreply@oracle.com $ $Revision: 83582 $ $Date: 2020-04-06 03:54:09 +0200 (Mon, 06 Apr 2020) $ $Author: noreply@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -822,7 +822,6 @@ static int virtioScsiR3ReqErr(PPDMDEVINS pDevIns, PVIRTIOSCSI pThis, PVIRTIOSCSI
  * @param   pThisCC     VirtIO SCSI ring-3 instance data.
  * @param   qIdx        Queue index
  * @param   pDescChain  Pointer to pre-processed descriptor chain pulled from virtq
- * @param   pRespHdr    Response header
  * @param   cbResidual  The number of residual bytes or something like that.
  * @param   bStatus     The SCSI status code.
  * @param   bResponse   The virtio SCSI response code.
