@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 83465 2020-03-27 12:26:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 83651 2020-04-09 15:06:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1637,6 +1637,9 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
 
             case VERR_NET_PATH_NOT_FOUND:
                 return (RTEXITCODE)VBOXSERVICETOOLBOX_STAT_EXITCODE_NET_PATH_NOT_FOUND;
+
+            case VERR_INVALID_NAME:
+                return (RTEXITCODE)VBOXSERVICETOOLBOX_STAT_EXITCODE_INVALID_NAME;
 
             default:
 #ifdef DEBUG_andy
