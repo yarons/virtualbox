@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83672 2020-04-10 16:27:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 83673 2020-04-10 17:31:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -945,6 +945,7 @@ void UIChooserModel::sltGroupSelectedMachines()
                                                                false /* favorite */,
                                                                invisibleRoot()->nodes().size() /* position */,
                                                                uniqueGroupName(invisibleRoot()),
+                                                               UIChooserNodeGroupType_Local,
                                                                true /* opened */);
     UIChooserItemGroup *pNewGroupItem = new UIChooserItemGroup(root(), pNewGroupNode);
 
