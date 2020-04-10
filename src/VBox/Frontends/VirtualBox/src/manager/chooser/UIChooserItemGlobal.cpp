@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 83317 2020-03-18 12:55:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 83672 2020-04-10 16:27:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -189,7 +189,7 @@ void UIChooserItemGlobal::updateToolTip()
     // Nothing for now..
 }
 
-QList<UIChooserItem*> UIChooserItemGlobal::items(UIChooserItemType) const
+QList<UIChooserItem*> UIChooserItemGlobal::items(UIChooserNodeType) const
 {
     AssertMsgFailedReturn(("Global graphics item do NOT support children!"), QList<UIChooserItem*>());
 }
