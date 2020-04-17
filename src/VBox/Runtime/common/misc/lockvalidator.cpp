@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: lockvalidator.cpp 83739 2020-04-17 08:51:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -2726,7 +2726,7 @@ static int rtLockValidatorDdDoDetection(PRTLOCKVALDDSTACK pStack, PRTLOCKVALRECU
             case RTLOCKVALRECSHRDOWN_MAGIC:
             case RTLOCKVALRECSHRDOWN_MAGIC_DEAD:
             default:
-                AssertMsgFailed(("%p: %#x\n", pRec, pRec->Core));
+                AssertMsgFailed(("%p: %#x\n", pRec, pRec->Core.u32Magic));
                 break;
         }
 
