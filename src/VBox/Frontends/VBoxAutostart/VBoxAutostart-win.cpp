@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 83327 2020-03-19 12:54:50Z noreply@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 83797 2020-04-18 13:52:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -834,7 +834,7 @@ static RTEXITCODE autostartStartVMs()
         PCFGAST pNode = pCfgAst->u.Compound.apAstNodes[i];
         com::Utf8Str sDomain;
         com::Utf8Str sUserTmp;
-        int rc = autostartGetDomainAndUser(pNode->pszKey, sDomain, sUserTmp);
+        rc = autostartGetDomainAndUser(pNode->pszKey, sDomain, sUserTmp);
         if (RT_FAILURE(rc))
             continue;
         com::Utf8StrFmt sDomainUser("%s\\%s", sDomain.c_str(), sUserTmp.c_str());
@@ -874,12 +874,12 @@ static RTEXITCODE autostartStartVMs()
         return autostartSvcLogError("User is not allowed to autostart VMs.\n");
     }
 
-    RTEXITCODE ec = autostartStartMain(pCfgAstUser);
+    RTEXITCODE rcExit = autostartStartMain(pCfgAstUser);
     autostartConfigAstDestroy(pCfgAst);
-    if (ec != RTEXITCODE_SUCCESS)
+    if (rcExit != RTEXITCODE_SUCCESS)
         autostartSvcLogError("Starting VMs failed\n");
 
-    return ec;
+    return rcExit;
 }
 
 /**
