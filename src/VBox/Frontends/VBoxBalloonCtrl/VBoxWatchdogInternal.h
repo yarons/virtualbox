@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdogInternal.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWatchdogInternal.h 83798 2020-04-18 14:13:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxWatchdog - VirtualBox Watchdog Service.
  */
@@ -34,10 +34,7 @@
 # include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
 
-#include <algorithm>
 #include <map>
-#include <sstream>
-#include <string>
 #include <vector>
 
 using namespace com;
