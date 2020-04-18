@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 83794 2020-04-18 13:25:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -25,6 +25,7 @@
 #include <iprt/zip.h>
 
 #include <VBox/version.h>
+#include <revision-generated.h> /* VBOX_SVN_REV - PCH prevents putting it in DEFS. */
 
 #include "ApplianceImpl.h"
 #include "VirtualBoxImpl.h"
