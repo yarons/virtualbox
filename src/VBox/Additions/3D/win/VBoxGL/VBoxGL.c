@@ -1,4 +1,4 @@
-/* $Id: VBoxGL.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGL.c 83832 2020-04-19 14:12:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - OpenGL driver.
  */
@@ -271,7 +271,7 @@ wddm_shared_surface_open(struct pipe_screen *screen,
         if (surface)
         {
             D3DKMT_HANDLE hDevice = GaDrvEnvKmtDeviceHandle(pEnv);
-            NTSTATUS Status = vboxKmtOpenSharedSurface(hDevice, (D3DKMT_HANDLE)hSharedSurface, surface);
+            NTSTATUS Status = vboxKmtOpenSharedSurface(hDevice, (D3DKMT_HANDLE)(uintptr_t)hSharedSurface, surface);
             if (Status != STATUS_SUCCESS)
             {
                 free(surface);
