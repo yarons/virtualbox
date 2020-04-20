@@ -1,6 +1,6 @@
-; $Id: vcc100-shell32-fakesA.asm 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $
+; $Id: vcc-fakes-ntdll-A.asm 83861 2020-04-20 15:01:48Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - Wrappers for shell32 APIs missing in NT 4 and earlier.
+; IPRT - Wrappers for ntdll APIs misisng NT4.
 ;
 
 ;
@@ -24,7 +24,6 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
-
 %include "iprt/asmdefs.mac"
 
 %ifndef RT_ARCH_X86
@@ -42,8 +41,7 @@ __imp__ %+ %1 %+ @ %+ %2:
 
 
 BEGINDATA
-GLOBALNAME vcc100_shell32_fakes_asm
+GLOBALNAME vcc100_ntdll_fakes_asm
 
-; NT 3.1
-MAKE_IMPORT_ENTRY CommandLineToArgvW, 8
+MAKE_IMPORT_ENTRY RtlGetLastWin32Error, 0
 

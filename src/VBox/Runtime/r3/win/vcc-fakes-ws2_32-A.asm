@@ -1,4 +1,4 @@
-; $Id: vcc100-ws2_32-fakesA.asm 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $
+; $Id: vcc-fakes-ws2_32-A.asm 83861 2020-04-20 15:01:48Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Wrappers for ws2_32 APIs misisng NT4.
 ;
