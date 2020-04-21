@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83905 2020-04-21 16:50:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 83906 2020-04-21 17:36:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -228,7 +228,7 @@ void UIChooserModel::setSelectedItem(const QString &strDefinition)
         /* Search for group-item with passed descriptor (name): */
         pItem = root()->searchForItem(strItemDescriptor,
                                       UIChooserItemSearchFlag_Group |
-                                      UIChooserItemSearchFlag_ExactName);
+                                      UIChooserItemSearchFlag_ExactId);
     }
     /* Its a global-item definition? */
     else if (strItemType == "n")
