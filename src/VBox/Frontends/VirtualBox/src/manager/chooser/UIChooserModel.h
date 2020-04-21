@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 83896 2020-04-21 15:16:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 83897 2020-04-21 15:30:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -362,6 +362,8 @@ private:
       * @{ */
         /** Build tree for main root. */
         void buildTreeForMainRoot();
+        /** Update tree for main root. */
+        void updateTreeForMainRoot();
 
         /** Removes machine @a items. */
         void removeItems(const QList<UIChooserItem*> &items);
