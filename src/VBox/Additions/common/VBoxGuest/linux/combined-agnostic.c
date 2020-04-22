@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: combined-agnostic.c 83918 2020-04-22 09:37:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -94,6 +94,8 @@
 #include "common/string/RTStrCopyEx.c"
 #undef LOG_GROUP
 #include "common/string/RTStrCopyP.c"
+#undef LOG_GROUP
+#include "common/string/RTStrEnd.c"
 #undef LOG_GROUP
 #include "common/string/RTStrICmpAscii.c"
 #undef LOG_GROUP
