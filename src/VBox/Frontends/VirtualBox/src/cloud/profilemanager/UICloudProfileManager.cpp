@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 83950 2020-04-23 14:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
