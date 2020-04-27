@@ -1,6 +1,6 @@
-/* $Id: nocrt-startup-exe-win.cpp 83997 2020-04-27 11:25:19Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-startup-exe-win.cpp 83998 2020-04-27 11:25:33Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - No-CRT windows EXE startup code.
+ * IPRT - No-CRT - Windows EXE startup code.
  *
  * @note Does not run static constructors and destructors!
  */
