@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 84009 2020-04-27 14:30:35Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 84010 2020-04-27 14:46:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -110,4 +110,7 @@ void UICloudMachineSettingsDialogPage::updateEditor()
             m_pFormEditor->setValues(filteredValues);
         }
     }
+
+    /* Revalidate: */
+    emit sigValidChanged(m_comForm.isNotNull());
 }
