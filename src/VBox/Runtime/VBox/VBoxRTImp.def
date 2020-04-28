@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 84054 2020-04-28 16:05:00Z knut.osmundsen@oracle.com $
+; $Id: VBoxRTImp.def 84063 2020-04-28 19:32:41Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -985,7 +985,6 @@ EXPORTS
     RTEnvSetEx
     RTEnvUnset
     RTEnvUnsetEx
-    RTErrCOMGet
     RTErrConvertFromErrno
     RTErrConvertToErrno
     RTErrIsKnown
