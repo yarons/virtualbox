@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 84054 2020-04-28 16:05:00Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 84055 2020-04-28 16:11:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -77,12 +77,13 @@
 #include <VBox/param.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/alloc.h>
+#include <iprt/alloca.h>
 #include <iprt/asm.h>
 #include <iprt/env.h>
+#include <iprt/mem.h>
+#include <iprt/semaphore.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
-#include <iprt/semaphore.h>
 #include <iprt/thread.h>
 #include <iprt/uuid.h>
 
