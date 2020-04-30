@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84087 2020-04-29 15:24:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 84102 2020-04-30 13:20:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -84,6 +84,8 @@ public:
       * @{ */
         /** Returns whether this item is editable. */
         virtual bool isItemEditable() const /* override */;
+        /** Returns whether this item is removable. */
+        virtual bool isItemRemovable() const /* override */;
         /** Returns whether this item is saved. */
         virtual bool isItemSaved() const /* override */;
         /** Returns whether this item is powered off. */
