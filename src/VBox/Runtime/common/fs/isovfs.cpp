@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 83739 2020-04-17 08:51:27Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 84155 2020-05-06 07:18:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -5135,7 +5135,8 @@ static int rtFsIsoVolHandleUdfDetection(PRTFSISOVOL pThis, uint8_t *puUdfLevel, 
      * again when alternative AVDP sectors points to the same sequences.
      */
     pThis->Udf.uLevel = *puUdfLevel;
-    RTFSISOSEENSEQENCES SeenSequences = { 0 };
+    RTFSISOSEENSEQENCES SeenSequences;
+    RT_ZERO(SeenSequences);
     int rc1 = rtFsIsoVolReadAndHandleUdfAvdp(pThis, 256 * pThis->cbSector, pbBuf, cbBuf,
                                              &SeenSequences, pErrInfo);
     if (RT_SUCCESS(rc1))
