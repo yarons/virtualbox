@@ -1,4 +1,4 @@
-/* $Id: pemfile-write.cpp 84230 2020-05-10 00:52:05Z knut.osmundsen@oracle.com $ */
+/* $Id: pemfile-write.cpp 84263 2020-05-11 17:42:24Z alexander.rudnev@oracle.com $ */
 /** @file
  * IPRT - Crypto - PEM file writer.
  */
@@ -254,5 +254,3 @@ RTDECL(ssize_t) RTCrPemWriteAsn1ToVfsFile(RTVFSFILE hVfsFile, PRTASN1CORE pRoot,
     RTVfsIoStrmRelease(hVfsIos);
     return cchRet;
 }
-
-
