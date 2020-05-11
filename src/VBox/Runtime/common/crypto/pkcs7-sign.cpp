@@ -1,4 +1,4 @@
-/* $Id: pkcs7-sign.cpp 84248 2020-05-11 11:46:40Z knut.osmundsen@oracle.com $ */
+/* $Id: pkcs7-sign.cpp 84256 2020-05-11 15:15:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Signing
  */
@@ -31,7 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/crypto/pkcs7.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/crypto/digest.h>
 #include <iprt/crypto/key.h>
