@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 84275 2020-05-12 17:04:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 84284 2020-05-13 12:03:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -82,6 +82,8 @@ private:
 
     /** Holds the location container instance. */
     QGroupBox *m_pCntLocation;
+    /** Holds the source container instance. */
+    QGroupBox *m_pCntSource;
     /** Holds the settings container instance. */
     QGroupBox *m_pSettingsCnt;
 };
