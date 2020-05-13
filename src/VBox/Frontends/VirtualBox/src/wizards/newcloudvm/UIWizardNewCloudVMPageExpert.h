@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 84284 2020-05-13 12:03:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 84289 2020-05-13 15:19:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -71,6 +71,9 @@ private slots:
     void sltHandleAccountComboChange();
     /** Handles account tool-button click. */
     void sltHandleAccountButtonClick();
+
+    /** Handles change in source tab-bar. */
+    void sltHandleSourceChange();
 
     /** Handles change in instance list. */
     void sltHandleInstanceListChange();
