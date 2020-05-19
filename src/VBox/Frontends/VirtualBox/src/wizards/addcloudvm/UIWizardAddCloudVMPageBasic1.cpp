@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageBasic1.cpp 83857 2020-04-20 13:54:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageBasic1.cpp 84362 2020-05-19 11:01:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageBasic1 class implementation.
  */
@@ -294,16 +294,12 @@ void UIWizardAddCloudVMPage1::populateAccountInstances()
             /* Remember Cloud Client: */
             setClient(comCloudClient);
 
-            /* Gather instance names, ids and states.
-             * Currently we are interested in Running and Stopped instances only. */
+            /* Gather instance names and ids: */
             CStringArray comNames;
             CStringArray comIDs;
-            const QVector<KCloudMachineState> cloudMachineStates  = QVector<KCloudMachineState>()
-                                                                 << KCloudMachineState_Running
-                                                                 << KCloudMachineState_Stopped;
 
             /* Ask for cloud instances: */
-            CProgress comProgress = comCloudClient.ListInstances(cloudMachineStates, comNames, comIDs);
+            CProgress comProgress = comCloudClient.ListSourceInstances(comNames, comIDs);
             if (!comCloudClient.isOk())
             {
                 msgCenter().cannotAcquireCloudClientParameter(comCloudClient);
