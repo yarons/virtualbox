@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84389 2020-05-20 06:19:44Z noreply@oracle.com $ $Revision: 84389 $ $Date: 2020-05-20 08:19:44 +0200 (Wed, 20 May 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 84390 2020-05-20 06:27:41Z noreply@oracle.com $ $Revision: 84390 $ $Date: 2020-05-20 08:27:41 +0200 (Wed, 20 May 2020) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1862,7 +1862,10 @@ static uint8_t virtioNetR3CtrlRx(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIONE
     }
 
     if (pThisCC->pDrv && fPromiscChanged)
-        pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, pThis->fPromiscuous | pThis->fAllMulticast);
+        if (pThis->fPromiscuous | pThis->fAllMulticast)
+            pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, true);
+        else
+            pThisCC->pDrv->pfnSetPromiscuousMode(pThisCC->pDrv, false);
 
     return VIRTIONET_OK;
 }
