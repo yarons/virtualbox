@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84461 2020-05-22 13:31:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 84463 2020-05-22 14:53:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -98,6 +98,12 @@ bool UIChooser::isAllItemsOfOneGroupSelected() const
 {
     AssertPtrReturn(model(), false);
     return model()->isAllItemsOfOneGroupSelected();
+}
+
+QString UIChooser::fullGroupName() const
+{
+    AssertPtrReturn(model(), QString());
+    return model()->fullGroupName();
 }
 
 bool UIChooser::isGroupSavingInProgress() const
