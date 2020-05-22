@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 84456 2020-05-22 12:43:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 84461 2020-05-22 13:31:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -110,6 +110,12 @@ void UIChooser::openGroupNameEditor()
 {
     AssertPtrReturnVoid(model());
     model()->startEditingSelectedGroupItemName();
+}
+
+void UIChooser::disbandGroup()
+{
+    AssertPtrReturnVoid(model());
+    model()->disbandSelectedGroupItem();
 }
 
 void UIChooser::performGroupSorting()
