@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84516 2020-05-25 16:12:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 84517 2020-05-25 16:23:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -135,6 +135,8 @@ public:
         void openGroupNameEditor();
         /** Disbands group. */
         void disbandGroup();
+        /** Removes machine. */
+        void removeMachine();
         /** Moves machine to a new group. */
         void moveMachineToNewGroup();
         /** Refreshes machine. */
