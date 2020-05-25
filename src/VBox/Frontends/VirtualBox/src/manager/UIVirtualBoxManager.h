@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 84463 2020-05-22 14:53:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 84512 2020-05-25 15:44:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -207,7 +207,7 @@ private slots:
         /** Handles call to open Clone Machine wizard. */
         void sltOpenCloneMachineWizard();
 
-        /** Handles the Move Machine action. */
+        /** Handles call to move machine. */
         void sltPerformMachineMove();
 
         /** Handles call to start or show machine. */

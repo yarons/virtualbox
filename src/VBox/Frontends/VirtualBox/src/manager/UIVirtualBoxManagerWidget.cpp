@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84463 2020-05-22 14:53:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84512 2020-05-25 15:44:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -125,9 +125,9 @@ void UIVirtualBoxManagerWidget::disbandGroup()
     m_pPaneChooser->disbandGroup();
 }
 
-void UIVirtualBoxManagerWidget::performGroupSorting()
+void UIVirtualBoxManagerWidget::sortGroup()
 {
-    m_pPaneChooser->performGroupSorting();
+    m_pPaneChooser->sortGroup();
 }
 
 void UIVirtualBoxManagerWidget::setToolsType(UIToolType enmType)
