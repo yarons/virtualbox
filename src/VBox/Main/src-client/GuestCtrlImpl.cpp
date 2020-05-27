@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 84554 2020-05-27 08:16:59Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImpl.cpp 84555 2020-05-27 08:37:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -521,7 +521,8 @@ HRESULT Guest::shutdown(const std::vector<GuestShutdownFlag_T> &aFlags)
 
     GuestCredentials guestCreds;
 
-    HRESULT hrc;
+    HRESULT hrc = S_OK;
+
     ComObjPtr<GuestSession> pSession;
     int vrc = i_sessionCreate(startupInfo, guestCreds, pSession);
     if (RT_SUCCESS(vrc))
