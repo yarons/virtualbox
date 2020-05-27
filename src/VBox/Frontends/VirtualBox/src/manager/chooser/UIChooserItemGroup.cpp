@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 84462 2020-05-22 13:47:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.cpp 84578 2020-05-27 17:49:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -567,7 +567,7 @@ void UIChooserItemGroup::updateGeometry()
     /* Special handling for root-groups: */
     if (isRoot())
     {
-        /* Root-group should notify chooser-view if minimum-width-hint was changed: */
+        /* Root-group should notify Chooser-view if minimum-width-hint was changed: */
         const int iMinimumWidthHint = minimumWidthHint();
         if (m_iPreviousMinimumWidthHint != iMinimumWidthHint)
         {
