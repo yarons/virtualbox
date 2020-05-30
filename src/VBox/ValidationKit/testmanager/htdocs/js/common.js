@@ -1,4 +1,4 @@
-/* $Id: common.js 84599 2020-05-29 01:12:32Z knut.osmundsen@oracle.com $ */
+/* $Id: common.js 84619 2020-05-30 19:05:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * Common JavaScript functions
  */
@@ -1202,7 +1202,6 @@ function svnHistoryTooltipNewOnLoad()
 
 function svnHistoryTooltipNewOnReadState(oTooltip, oRestReq, oParent)
 {
-    console.log('svnHistoryTooltipNewOnReadState');
     console.log('svnHistoryTooltipNewOnReadState');
 
     /*
