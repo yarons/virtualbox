@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 83088 2020-02-16 20:12:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGConsole.cpp 84627 2020-06-01 20:13:57Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1033,7 +1033,8 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
                                   "Enabled|"
                                   "HistoryFile|"
                                   "LocalInitScript|"
-                                  "GlobalInitScript",
+                                  "GlobalInitScript|"
+                                  "GdbStub",
                                   "", "DBGC", 0);
     AssertRCReturn(rc, rc);
 
