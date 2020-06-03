@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 84654 2020-06-03 09:37:14Z alexander.eichner@oracle.com $ */
+/* $Id: DBGConsole.cpp 84660 2020-06-03 11:52:41Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1089,7 +1089,7 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
 
 
 /**
- * @copydoc{DBGC,pfnOutput}
+ * @copydoc DBGC::pfnOutput
  */
 static DECLCALLBACK(int) dbgcOutputNative(void *pvUser, const char *pachChars, size_t cbChars)
 {
