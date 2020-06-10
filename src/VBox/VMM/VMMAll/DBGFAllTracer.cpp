@@ -1,4 +1,4 @@
-/* $Id: DBGFAllTracer.cpp 84552 2020-05-27 07:34:40Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFAllTracer.cpp 84766 2020-06-10 17:40:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code tracing part.
  */
@@ -115,7 +115,8 @@ static int dbgfTracerEvtPostEx(PVMCC pVM, PDBGFTRACERINSCC pThisCC, DBGFTRACEREV
     }
 
     /* Write the event and kick the flush thread if necessary. */
-    memcpy(pEvtHdr + 1, pvEvtDesc, cbEvtDesc);
+    if (cbEvtDesc)
+        memcpy(pEvtHdr + 1, pvEvtDesc, cbEvtDesc);
     pEvtHdr->idEvtPrev   = idEvtPrev;
     pEvtHdr->hEvtSrc     = hEvtSrc;
     pEvtHdr->enmEvt      = enmTraceEvt;
