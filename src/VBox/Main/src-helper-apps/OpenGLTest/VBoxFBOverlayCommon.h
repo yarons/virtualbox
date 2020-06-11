@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlayCommon.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxFBOverlayCommon.h 84790 2020-06-11 10:30:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overlay classes declarations.
  */
