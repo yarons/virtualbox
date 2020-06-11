@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 84790 2020-06-11 10:30:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 84792 2020-06-11 13:12:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -217,7 +217,7 @@ void UIMachineView::applyMachineViewScaleFactor()
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
     /* Propagate the scale-factor related attributes to 3D service if necessary: */
-    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
     {
         double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
@@ -493,7 +493,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QUuid &uMachineID)
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
     /* Propagate the scale-factor related attributes to 3D service if necessary: */
-    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
     {
         double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
@@ -713,7 +713,7 @@ void UIMachineView::prepareFrameBuffer()
         m_pFrameBuffer->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
         /* Propagate the scale-factor related attributes to 3D service if necessary: */
-        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
         {
             double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
