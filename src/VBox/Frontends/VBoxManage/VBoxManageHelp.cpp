@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 84576 2020-05-27 17:18:25Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageHelp.cpp 84814 2020-06-12 12:43:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -833,7 +833,7 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                            "%s controlvm %s       <uuid|vmname>\n"
                      "                            pause|resume|reset|poweroff|savestate|\n"
 #ifdef VBOX_WITH_GUEST_CONTROL
-                     "                            reboot|shutdown|\n"
+                     "                            reboot|shutdown [--force]|\n"
 #endif
                      "                            acpipowerbutton|acpisleepbutton|\n"
                      "                            keyboardputscancode <hex> [<hex> ...]|\n"
