@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 84826 2020-06-15 08:20:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: MsixCommon.cpp 84827 2020-06-15 08:25:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * MSI-X support routines
  */
@@ -28,7 +28,7 @@
 #include <iprt/assert.h>
 
 #include "MsiCommon.h"
-#include "DevPCIInternal.h"
+#include "DevPciInternal.h"
 #include "PciInline.h"
 
 typedef struct
