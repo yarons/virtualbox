@@ -1,4 +1,4 @@
-/* $Id: DBGFR0Tracer.cpp 84485 2020-05-25 09:06:35Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFR0Tracer.cpp 84823 2020-06-15 06:58:36Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, R0 tracing part.
  */
@@ -55,6 +55,8 @@
  */
 DECLHIDDEN(int) dbgfR0TracerDestroy(PGVM pGVM, PDBGFTRACERINSR0 pTracer)
 {
+    RT_NOREF(pGVM);
+
     /*
      * Free the ring-3 mapping and instance memory.
      */
