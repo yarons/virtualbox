@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84869 2020-06-18 09:33:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 84870 2020-06-18 10:59:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -57,7 +57,7 @@ public:
     void prepare();
 
     /** Returns the Id of newly created VM. */
-    QUuid createdMachineId() const { return m_machine.GetId(); }
+    QUuid createdMachineId() const;
     QString unattendedISOFilePath() const;
     bool isUnattendedInstallEnabled() const;
     bool startHeadless() const;
