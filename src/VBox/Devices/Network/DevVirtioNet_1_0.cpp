@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 84876 2020-06-19 06:17:29Z noreply@oracle.com $ $Revision: 84876 $ $Date: 2020-06-19 08:17:29 +0200 (Fri, 19 Jun 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 84882 2020-06-19 13:07:08Z noreply@oracle.com $ $Revision: 84882 $ $Date: 2020-06-19 15:07:08 +0200 (Fri, 19 Jun 2020) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3085,7 +3085,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
 
     RTStrPrintf(pThis->szInst, sizeof(pThis->szInst), "VNET%d", iInstance);
 
-    /** todo Remove next line (temporary hack used for less logging clutter for single-instance debugging) */
+    /** @todo Remove next line (temporary hack used for less logging clutter for single-instance debugging) */
     *pThis->szInst = '\0';
 
     pThisCC->pDevIns     = pDevIns;
