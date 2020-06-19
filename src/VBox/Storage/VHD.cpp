@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VHD.cpp 84883 2020-06-19 17:18:56Z brent.paulson@oracle.com $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2724,7 +2724,7 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
     int rc;
     PVDINTERFACEERROR pIfError;
     PVDINTERFACEIOINT pIfIo;
-    PVDIOSTORAGE pStorage;
+    PVDIOSTORAGE pStorage = NULL;
     uint64_t cbFile;
     VHDFooter vhdFooter;
     VHDDynamicDiskHeader dynamicDiskHeader;
