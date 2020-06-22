@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 84890 2020-06-22 09:16:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 84892 2020-06-22 10:23:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -508,6 +508,11 @@ QUuid UIWizardNewVM::createdMachineId() const
     if (m_machine.isOk())
         return m_machine.GetId();
     return QUuid();
+}
+
+void UIWizardNewVM::setDefaultUnattendedInstallData(const UIUnattendedInstallData &unattendedInstallData)
+{
+    m_unattendedInstallData = unattendedInstallData;
 }
 
 const UIUnattendedInstallData &UIWizardNewVM::unattendedInstallData() const
