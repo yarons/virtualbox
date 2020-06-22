@@ -1,4 +1,4 @@
-/* $Id: UIMenuToolBar.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMenuToolBar.cpp 84911 2020-06-22 18:24:00Z noreply@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuToolBar class implementation.
  */
@@ -19,6 +19,8 @@
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QPainter>
+#include <QPainterPath>
+#include <QPainterPathStroker>
 #include <QStyle>
 #include <QToolButton>
 
