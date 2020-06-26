@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 84961 2020-06-25 18:49:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 84965 2020-06-26 09:06:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -45,6 +45,7 @@ struct UIUnattendedInstallData
     QString m_strDetectedOSFlavor;
     QString m_strDetectedOSLanguages;
     QString m_strDetectedOSHints;
+    QString m_strProductKey;
 };
 
 /** New Virtual Machine wizard: */
