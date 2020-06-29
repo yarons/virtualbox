@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachine.cpp 84990 2020-06-29 11:34:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -165,6 +165,9 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
 
         /* Remember new visual state: */
         m_visualState = visualState;
+
+        /* Save requested visual state: */
+        gEDataManager->setRequestedVisualState(m_visualState, uiCommon().managedVMUuid());
     }
     else
     {
