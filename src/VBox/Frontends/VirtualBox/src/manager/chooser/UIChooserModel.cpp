@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84635 2020-06-02 11:56:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 85038 2020-07-01 18:37:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1156,6 +1156,15 @@ void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
     UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(pTask);
 
     /* Rebuild tree for main root: */
+    buildTreeForMainRoot(true /* preserve selection */);
+}
+
+void UIChooserModel::sltHandleCloudProfileManagerRestrictionChange()
+{
+    /* Call to base-class: */
+    UIChooserAbstractModel::sltHandleCloudProfileManagerRestrictionChange();
+
+    /* Build tree for main root: */
     buildTreeForMainRoot(true /* preserve selection */);
 }
 
