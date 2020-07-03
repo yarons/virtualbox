@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasicNameType.h 85042 2020-07-03 06:10:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic1.h 85044 2020-07-03 06:18:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameType class declaration.
  */
