@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt-win.cpp 85093 2020-07-07 18:23:08Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedNoCrt-win.cpp 85094 2020-07-07 18:46:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -61,6 +61,7 @@ RTDATADECL(const char * volatile)    g_pszRTAssertExpr;
 RTDATADECL(const char * volatile)    g_pszRTAssertFile;
 RTDATADECL(uint32_t volatile)        g_u32RTAssertLine;
 RTDATADECL(const char * volatile)    g_pszRTAssertFunction;
+
 
 RTDECL(bool) RTAssertMayPanic(void)
 {
