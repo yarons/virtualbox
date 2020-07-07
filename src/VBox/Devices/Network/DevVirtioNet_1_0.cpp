@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 85045 2020-07-03 07:07:42Z noreply@oracle.com $ $Revision: 85045 $ $Date: 2020-07-03 09:07:42 +0200 (Fri, 03 Jul 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 85083 2020-07-07 14:34:36Z noreply@oracle.com $ $Revision: 85083 $ $Date: 2020-07-07 16:34:36 +0200 (Tue, 07 Jul 2020) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2306,6 +2306,8 @@ static int virtioNetR3TransmitFrame(PVIRTIONET pThis, PVIRTIONETCC pThisCC, PPDM
                 case PDMNETWORKGSOTYPE_IPV6_TCP:
                     pGso->cbHdrsTotal = pPktHdr->uChksumStart +
                         ((PRTNETTCP)(((uint8_t*)pSgBuf->aSegs[0].pvSeg) + pPktHdr->uChksumStart))->th_off * 4;
+                    AssertMsgReturn(pSgBuf->cbUsed > pGso->cbHdrsTotal,
+                                    ("cbHdrsTotal exceeds size of frame"), VERR_BUFFER_OVERFLOW);
                     pGso->cbHdrsSeg   = pGso->cbHdrsTotal;
                     break;
                 case PDMNETWORKGSOTYPE_IPV4_UDP:
