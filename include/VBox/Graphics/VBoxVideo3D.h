@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo3D.h 84740 2020-06-09 15:28:30Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxVideo3D.h 85121 2020-07-08 19:33:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox 3D common tooling
  */
@@ -49,7 +49,7 @@
 # define VBoxTlsRefAssertImpl(_a) do {} while (0)
 #endif
 
-typedef DECLCALLBACK(void) FNVBOXTLSREFDTOR(void*);
+typedef DECLCALLBACKTYPE(void, FNVBOXTLSREFDTOR,(void *));
 typedef FNVBOXTLSREFDTOR *PFNVBOXTLSREFDTOR;
 
 typedef enum {

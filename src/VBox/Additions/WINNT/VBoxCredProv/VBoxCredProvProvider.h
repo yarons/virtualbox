@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvProvider.h 85121 2020-07-08 19:33:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-#include <credentialprovider.h>
+#include <iprt/win/credentialprovider.h>
 #include <iprt/win/windows.h>
 #include <strsafe.h>
 
