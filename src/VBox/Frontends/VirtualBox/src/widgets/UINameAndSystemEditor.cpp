@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 85052 2020-07-03 11:18:35Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 85104 2020-07-08 08:48:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -332,6 +332,9 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
 
     /* Unlock the signals of m_pComboType: */
     m_pComboType->blockSignals(false);
+
+    /* Notify listeners about this change: */
+    emit sigOSFamilyChanged();
 }
 
 void UINameAndSystemEditor::sltTypeChanged(int iIndex)
