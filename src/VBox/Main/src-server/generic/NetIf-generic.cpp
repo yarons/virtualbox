@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 85264 2020-07-12 00:56:45Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-generic.cpp 85267 2020-07-12 01:09:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -199,7 +199,7 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVirtualBox,
     /* Note vrc and hrc are competing about tracking the error state here. */
     int vrc = VINF_SUCCESS;
     ComPtr<IHost> host;
-    HRESULT hrc = pVirtualBox->COMGETTER(Host)(host.asOutParam());
+    hrc = pVirtualBox->COMGETTER(Host)(host.asOutParam());
     if (SUCCEEDED(hrc))
     {
         hrc = progress->init(pVirtualBox, host,
