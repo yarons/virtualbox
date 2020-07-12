@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 85219 2020-07-11 14:28:23Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 85283 2020-07-12 14:54:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -749,7 +749,7 @@ HRESULT Appliance::interpret()
                     if (di.strCompression.compare("gzip", Utf8Str::CaseInsensitive)==0)
                         strFilename.stripSuffix();
 
-                    i_searchUniqueImageFilePath(strMachineFolder, devType, strFilename); /** @todo check the return code! */
+                    i_ensureUniqueImageFilePath(strMachineFolder, devType, strFilename); /** @todo check the return code! */
 
                     /* find the description for the storage controller
                      * that has the same ID as hd.idController */
