@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 82922 2020-01-30 11:41:25Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardGH-X11.cpp 85296 2020-07-13 09:08:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */

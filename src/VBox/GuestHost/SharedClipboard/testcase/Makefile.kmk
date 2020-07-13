@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82934 2020-01-30 18:16:09Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 85296 2020-07-13 09:08:12Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Clipboard Guest/Host testcases.
 #

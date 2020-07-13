@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11Smoke.cpp 82911 2020-01-29 16:54:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardGH-X11Smoke.cpp 85296 2020-07-13 09:08:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard guest/host X11 code smoke tests.
  */
