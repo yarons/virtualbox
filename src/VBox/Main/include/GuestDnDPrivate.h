@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 85373 2020-07-17 12:45:56Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 85376 2020-07-17 16:43:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -204,7 +204,7 @@ struct GuestDnDData
 
     uint64_t addProcessed(uint32_t cbDataAdd)
     {
-        const uint64_t cbTotal = Meta.cbData + cbExtra;
+        const uint64_t cbTotal = Meta.cbData + cbExtra; RT_NOREF(cbTotal);
         Assert(cbProcessed + cbDataAdd <= cbTotal);
         cbProcessed += cbDataAdd;
         return cbProcessed;
