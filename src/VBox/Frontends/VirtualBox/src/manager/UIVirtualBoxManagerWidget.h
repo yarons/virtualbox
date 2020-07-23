@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84595 2020-05-28 14:47:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 85439 2020-07-23 16:11:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -213,6 +213,12 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name CVirtualBox event handling stuff.
+      * @{ */
+        /** Handles CVirtualBox event about state change for machine with @a uId. */
+        void sltHandleStateChange(const QUuid &uId);
+    /** @} */
 
     /** @name Tool-bar stuff.
       * @{ */
