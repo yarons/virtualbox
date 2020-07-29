@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 85493 2020-07-28 17:56:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIResourceMonitor.cpp 85508 2020-07-29 10:11:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -1477,10 +1477,10 @@ void UIResourceMonitorWidget::sltHandleShowPerformanceMonitor()
 {
     if (!m_pTableView || !m_pModel)
         return;
-    QUuid machineId = m_pModel->itemUid(m_pTableView->selectedItemIndex());
-    if (machineId.isNull())
+    const QUuid uMachineId = m_pModel->itemUid(m_pTableView->selectedItemIndex());
+    if (uMachineId.isNull())
         return;
-    emit sigSwitchMachinePerformancePane(machineId);
+    emit sigSwitchToMachinePerformancePane(uMachineId);
 }
 
 void UIResourceMonitorWidget::setColumnVisible(int iColumnId, bool fVisible)
