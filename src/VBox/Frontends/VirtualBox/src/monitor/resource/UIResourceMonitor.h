@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 85508 2020-07-29 10:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIResourceMonitor.h 85515 2020-07-29 10:46:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -97,6 +97,7 @@ private:
         void prepareHostStatsWidgets();
         void prepareToolBar();
         void prepareActions();
+        void updateColumnsMenu();
         void loadSettings();
         void loadHiddenColumnList();
         void saveSettings();
