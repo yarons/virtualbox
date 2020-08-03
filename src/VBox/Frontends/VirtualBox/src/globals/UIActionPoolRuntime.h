@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPoolRuntime.h 85597 2020-08-03 12:17:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -31,7 +31,7 @@
 #include "UILibraryDefs.h"
 
 
-/** Runtime action-pool index enum.
+/** VirtualBox Runtime action-pool index enum.
   * Naming convention is following:
   * 1. Every menu index prepended with 'M',
   * 2. Every simple-action index prepended with 'S',
