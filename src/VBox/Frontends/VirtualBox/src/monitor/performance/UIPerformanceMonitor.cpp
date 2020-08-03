@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.cpp 85571 2020-07-31 07:22:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPerformanceMonitor.cpp 85593 2020-08-03 10:25:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class implementation.
  */
@@ -769,6 +769,8 @@ UIPerformanceMonitor::UIPerformanceMonitor(EmbedTo enmEmbedding, QWidget *pParen
 
 UIPerformanceMonitor::~UIPerformanceMonitor()
 {
+    if (!m_comSession.isNull())
+        m_comSession.UnlockMachine();
 }
 
 void UIPerformanceMonitor::setMachine(const CMachine &comMachine)
