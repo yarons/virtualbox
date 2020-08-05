@@ -1,4 +1,4 @@
-/* $Id: openssl-sha3.cpp 85614 2020-08-05 13:27:58Z knut.osmundsen@oracle.com $ */
+/* $Id: openssl-sha3.cpp 85618 2020-08-05 13:51:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - SHA-3 hash functions, OpenSSL based implementation.
  */
@@ -27,6 +27,7 @@
 #if 1 /* For now: */
 # include "alt-sha3.cpp"
 #else
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
