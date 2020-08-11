@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 85705 2020-08-11 19:17:09Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox_irq.c 85707 2020-08-11 19:43:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -34,12 +34,12 @@
 #include "vbox_drv.h"
 
 #if RTLNX_VER_MAX(5,1,0)
-#include <drm/drm_crtc_helper.h>
+# include <drm/drm_crtc_helper.h>
 # if RTLNX_RHEL_MAJ_PREREQ(8,1)
 #  include <drm/drm_probe_helper.h>
 # endif
 #else
-#include <drm/drm_probe_helper.h>
+# include <drm/drm_probe_helper.h>
 #endif
 #include <VBoxVideo.h>
 
