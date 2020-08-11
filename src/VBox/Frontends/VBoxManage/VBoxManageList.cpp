@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 85683 2020-08-11 11:03:42Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageList.cpp 85688 2020-08-11 12:37:34Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -857,7 +857,7 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
     RTPrintf("Update check target:             %s\n", psz);
     systemProperties->COMGETTER(VBoxUpdateLastCheckDate)(str.asOutParam());
     RTPrintf("Last check date:                 %ls\n", str.raw());
- 
+
     return S_OK;
 }
 
