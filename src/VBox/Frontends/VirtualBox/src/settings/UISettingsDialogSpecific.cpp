@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 84790 2020-06-11 10:30:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 85711 2020-08-12 11:48:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Qt includes: */
+#include <QStackedWidget>
 
 /* GUI includes: */
 #include "QIWidgetValidator.h"
