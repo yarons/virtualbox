@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.h 85750 2020-08-13 12:35:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -23,7 +23,6 @@
 
 /* GUI includes: */
 #include "UISettingsPage.h"
-#include "UIMachineSettingsSerial.gen.h"
 
 /* Forward declarations: */
 class QITabWidget;
