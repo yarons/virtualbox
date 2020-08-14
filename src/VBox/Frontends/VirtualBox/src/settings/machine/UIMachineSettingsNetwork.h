@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 85764 2020-08-14 11:06:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -23,7 +23,6 @@
 
 /* GUI includes: */
 #include "UISettingsPage.h"
-#include "UIMachineSettingsNetwork.gen.h"
 #include "UIMachineSettingsPortForwardingDlg.h"
 
 /* Forward declarations: */
