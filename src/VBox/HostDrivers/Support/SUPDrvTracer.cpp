@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 85606 2020-08-04 15:57:21Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 85766 2020-08-14 12:27:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -2468,7 +2468,9 @@ void VBOXCALL supdrvTracerTerm(PSUPDRVDEVEXT pDevExt)
     LOG_TRACER(("supdrvTracerTerm\n"));
 
     supdrvTracerRemoveAllProviders(pDevExt);
-
+#ifdef VBOX_WITH_NATIVE_DTRACE
+    supdrvDTraceFini();
+#endif
     RTSemFastMutexDestroy(pDevExt->mtxTracer);
     pDevExt->mtxTracer = NIL_RTSEMFASTMUTEX;
     LOG_TRACER(("supdrvTracerTerm: Done\n"));
