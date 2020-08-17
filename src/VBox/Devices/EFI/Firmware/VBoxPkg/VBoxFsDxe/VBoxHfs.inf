@@ -1,4 +1,4 @@
-# $Id: VBoxHfs.inf 85788 2020-08-17 07:03:03Z alexander.eichner@oracle.com $
+# $Id: VBoxHfs.inf 85801 2020-08-17 16:09:43Z alexander.eichner@oracle.com $
 ## @file
 # VBoxHfs - VBox HFS FS driver.
 #
@@ -78,8 +78,8 @@
   gEfiMdePkgTokenSpaceGuid.PcdUefiVariableDefaultPlatformLang
 
 [BuildOptions.common]
-    GCC:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DEFI_LOG_ENABLED=1
+    GCC:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DFSTYPE_HFS=1 -DEFI_LOG_ENABLED=1
 # -DFSW_DEBUG_LEVEL=3
-  INTEL:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DEFI_LOG_ENABLED=1
-   MSFT:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DEFI_LOG_ENABLED=1
+  INTEL:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DFSTYPE_HFS=1 -DEFI_LOG_ENABLED=1
+   MSFT:*_*_*_CC_FLAGS = -DFSTYPE=hfs -DFSTYPE_HFS=1 -DEFI_LOG_ENABLED=1
 
