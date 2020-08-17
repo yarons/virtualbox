@@ -1,4 +1,4 @@
-/* $Id: Edid.c 84675 2020-06-04 12:04:10Z knut.osmundsen@oracle.com $ */
+/* $Id: Edid.c 85788 2020-08-17 07:03:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Edid.c
  */

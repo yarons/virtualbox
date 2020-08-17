@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaFont-8x16.h 80924 2019-09-20 13:08:32Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVgaFont-8x16.h 85788 2020-08-17 07:03:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VGA-ROM.F16 from ftp://ftp.simtel.net/pub/simtelnet/msdos/screen/fntcol16.zip .
  * The package is (C) Joseph (Yossi) Gil.
