@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.cpp 85957 2020-08-31 13:32:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.cpp 85960 2020-08-31 16:27:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class implementation.
  */
@@ -102,9 +102,13 @@ void UIMachineSettingsUSBFilterDetails::prepare()
     /* Apply language settings: */
     retranslateUi();
 
-    /* Adjust size: */
-    resize(minimumSize());
+    /* Adjust dialog size: */
+    adjustSize();
+
+#ifdef VBOX_WS_MAC
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    setFixedSize(minimumSize());
+#endif /* VBOX_WS_MAC */
 }
 
 void UIMachineSettingsUSBFilterDetails::prepareWidgets()
