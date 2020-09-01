@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 85981 2020-09-01 15:26:46Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 85983 2020-09-01 16:55:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1726,7 +1726,14 @@ int shClSvcClientWriteData(PSHCLCLIENT pClient, uint32_t cParms, VBOXHGCMSVCPARM
         rc = VINF_SUCCESS;
     }
     else
+    {
+        /* Let the backend implementation know. */
         rc = ShClBackendWriteData(pClient, &cmdCtx, uFormat, pvData, cbData);
+
+        int rc2; /* Don't return internals back to the guest. */
+        rc2 = ShClSvcGuestDataReceived(pClient, &cmdCtx, uFormat, pvData, cbData); /* To complete pending events, if any. */
+        AssertRC(rc2);
+    }
 
     LogFlowFuncLeaveRC(rc);
     return rc;
