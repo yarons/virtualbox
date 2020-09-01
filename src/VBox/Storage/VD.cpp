@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 85947 2020-08-28 22:41:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VD.cpp 85975 2020-09-01 11:31:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -6219,7 +6219,7 @@ VBOXDDU_DECL(int) VDCreateBase(PVDISK pDisk, const char *pszBackend,
                  pLCHSGeometry->cHeads, pLCHSGeometry->cSectors, pUuid,
                  uOpenFlags, pVDIfsImage, pVDIfsOperation));
 
-    AssertPtrReturn(pVDIfsOperation, VERR_INVALID_PARAMETER);
+    AssertPtrNullReturn(pVDIfsOperation, VERR_INVALID_PARAMETER);
     PVDINTERFACEPROGRESS pIfProgress = VDIfProgressGet(pVDIfsOperation);
 
     do
