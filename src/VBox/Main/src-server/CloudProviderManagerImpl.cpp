@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 86012 2020-09-03 00:08:56Z noreply@oracle.com $ */
+/* $Id: CloudProviderManagerImpl.cpp 86013 2020-09-03 00:22:47Z noreply@oracle.com $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -74,7 +74,9 @@ void CloudProviderManager::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
+#ifdef VBOX_WITH_EXTPACK
     m_mapCloudProviderManagers.clear();
+#endif
     m_apCloudProviders.clear();
 
     unconst(m_pVirtualBox) = NULL; // not a ComPtr, but be pedantic
