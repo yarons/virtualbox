@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.h 84904 2020-06-22 14:12:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisualStateEditor.h 86085 2020-09-10 13:57:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class declaration.
  */

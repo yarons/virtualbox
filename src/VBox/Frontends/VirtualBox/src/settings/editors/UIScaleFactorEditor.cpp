@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 85869 2020-08-21 14:34:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 86085 2020-09-10 13:57:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */

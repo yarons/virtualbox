@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.h 84790 2020-06-11 10:30:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.h 86085 2020-09-10 13:57:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class declaration.
  */

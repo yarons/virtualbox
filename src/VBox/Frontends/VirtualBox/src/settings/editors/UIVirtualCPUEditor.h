@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.h 84879 2020-06-19 10:29:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.h 86085 2020-09-10 13:57:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class declaration.
  */
