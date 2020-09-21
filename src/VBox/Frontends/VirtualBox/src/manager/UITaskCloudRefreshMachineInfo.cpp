@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.cpp 86199 2020-09-21 14:33:29Z sergey.dubov@oracle.com $ */
+/* $Id: UITaskCloudRefreshMachineInfo.cpp 86200 2020-09-21 14:34:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class implementation.
  */
@@ -26,6 +26,11 @@ UITaskCloudRefreshMachineInfo::UITaskCloudRefreshMachineInfo(const CCloudMachine
     : UITask(Type_CloudRefreshMachineInfo)
     , m_comCloudMachine(comCloudMachine)
 {
+}
+
+void UITaskCloudRefreshMachineInfo::cancel()
+{
+    m_comCloudMachineRefreshProgress.Cancel();
 }
 
 QString UITaskCloudRefreshMachineInfo::errorInfo() const
