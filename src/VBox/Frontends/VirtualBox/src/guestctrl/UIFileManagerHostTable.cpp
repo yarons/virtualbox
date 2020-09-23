@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 86233 2020-09-23 12:10:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UICustomFileSystemModel.h"
 #include "UIFileManagerHostTable.h"
 #include "UIPathOperations.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 85597 2020-08-03 12:17:47Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 86233 2020-09-23 12:10:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -41,7 +41,7 @@
 #include "UISnapshotDetailsWidget.h"
 #include "UISnapshotPane.h"
 #include "UITakeSnapshotDialog.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIWizardCloneVM.h"
 
@@ -1276,7 +1276,7 @@ void UISnapshotPane::prepareWidgets()
 void UISnapshotPane::prepareToolbar()
 {
     /* Create snapshot toolbar: */
-    m_pToolBar = new UIToolBar(this);
+    m_pToolBar = new QIToolBar(this);
     if (m_pToolBar)
     {
         /* Configure toolbar: */

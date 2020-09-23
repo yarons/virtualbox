@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 86233 2020-09-23 12:10:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -29,7 +29,7 @@
 #include "UIFileManagerGuestTable.h"
 #include "UIMessageCenter.h"
 #include "UIPathOperations.h"
-#include "UIToolBar.h"
+#include "QIToolBar.h"
 
 /* COM includes: */
 #include "CFsObjInfo.h"
