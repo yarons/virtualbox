@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 84645 2020-06-02 17:21:10Z aleksey.ilyushin@oracle.com $ */
+/* $Id: UnattendedImpl.h 86274 2020-09-24 19:52:56Z valery.portnyagin@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -77,6 +77,7 @@ public:
     bool           i_isRtcUsingUtc() const;
     bool           i_isGuestOs64Bit() const;
     VBOXOSTYPE     i_getGuestOsType() const;
+    Utf8Str const &i_getDetectedOSVersion();
 
 
 private:

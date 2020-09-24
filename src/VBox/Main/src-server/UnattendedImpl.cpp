@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 85277 2020-07-12 13:58:25Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 86274 2020-09-24 19:52:56Z valery.portnyagin@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -2679,6 +2679,12 @@ VBOXOSTYPE Unattended::i_getGuestOsType() const
 {
     Assert(isReadLockedOnCurrentThread());
     return meGuestOsType;
+}
+
+Utf8Str const & Unattended::i_getDetectedOSVersion()
+{
+    Assert(isReadLockedOnCurrentThread());
+    return mStrDetectedOSVersion;
 }
 
 HRESULT Unattended::i_attachImage(UnattendedInstallationDisk const *pImage, ComPtr<IMachine> const &rPtrSessionMachine,
