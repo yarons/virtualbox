@@ -1,4 +1,4 @@
-; $Id: xptcinvoke_amd64_vbox.asm 86260 2020-09-24 10:23:45Z knut.osmundsen@oracle.com $
+; $Id: xptcinvoke_amd64_vbox.asm 86262 2020-09-24 11:22:20Z knut.osmundsen@oracle.com $
 ;; @file
 ; XPCOM - Implementation XPTC_InvokeByIndex in assembly.
 ;
@@ -61,6 +61,8 @@ endstruc
  %define XPTC_InvokeByIndex VBoxNsxpXPTC_InvokeByIndex
 %endif
 
+
+BEGINCODE
 
 ;;
 ;
