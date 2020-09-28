@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 86206 2020-09-21 19:41:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIProgressDialog.h 86321 2020-09-28 14:32:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -220,10 +220,6 @@ private:
 
     /** Prepares all. */
     void prepare();
-    /** Prepares event handler. */
-    void prepareEventHandler();
-    /** Cleanups event handler. */
-    void cleanupEventHandler();
     /** Cleanups all. */
     void cleanup();
 
