@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 86337 2020-09-29 11:56:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 86338 2020-09-29 12:02:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -49,8 +49,6 @@
 /* COM includes: */
 #include "CSystemProperties.h"
 
-/** Limit the read string size to avoid bloated log viewer pages. */
-const ULONG uAllowedLogSize = _256M;
 UIHelpBrowserWidget::UIHelpBrowserWidget(EmbedTo enmEmbedding,
                                          bool fShowToolbar /* = true */,
                                          QWidget *pParent /* = 0 */)
