@@ -1,4 +1,4 @@
-/* $Id: tstStrSimplePattern.cpp 86358 2020-09-30 18:09:08Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTStrSimplePattern.cpp 86360 2020-09-30 18:14:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTStrSimplePattern.
  */
