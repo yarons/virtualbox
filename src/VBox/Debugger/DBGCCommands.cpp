@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 86100 2020-09-13 08:15:53Z alexander.eichner@oracle.com $ */
+/* $Id: DBGCCommands.cpp 86361 2020-09-30 18:59:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -414,6 +414,7 @@ DBGDECL(int)    DBGCRegisterCommands(PCDBGCCMD paCommands, unsigned cCommands)
      */
     int rc = 0;
     pCur = (PDBGCEXTCMDS)RTMemAlloc(sizeof(*pCur));
+    RTMEM_MAY_LEAK(pCur);
     if (pCur)
     {
         pCur->cCmds  = cCommands;
