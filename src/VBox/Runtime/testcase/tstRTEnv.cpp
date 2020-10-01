@@ -1,4 +1,4 @@
-/* $Id: tstRTEnv.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTEnv.cpp 86379 2020-10-01 14:16:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Environment.
  */
@@ -314,6 +314,12 @@ int main()
     CHECK(papsz != NULL);
 
     CHECK_RC(RTEnvDestroy(Env), VINF_SUCCESS);
+
+    /*
+     * Cleanups.
+     */
+    RTTESTI_CHECK_RC(RTEnvDestroy(hEnvEq), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTEnvDestroy(hEnvNoEq), VINF_SUCCESS);
 
     /*
      * Summary
