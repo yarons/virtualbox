@@ -1,4 +1,4 @@
-/* $Id: tstRTStrCache.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTStrCache.cpp 86384 2020-10-01 14:24:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - StrCache.
  */
@@ -132,6 +132,9 @@ static void tst2(void)
 
     tstShowStats(hStrCache);
     RTTESTI_CHECK_RC(RTStrCacheDestroy(hStrCache), VINF_SUCCESS);
+
+    for (uint32_t i = 0; i < 8192; i++)
+        RTMemFree(apszTests[i]);
 }
 
 
