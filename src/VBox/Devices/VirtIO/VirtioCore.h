@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 86405 2020-10-02 05:58:42Z noreply@oracle.com $ */
+/* $Id: VirtioCore.h 86406 2020-10-02 06:09:58Z noreply@oracle.com $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -62,6 +62,7 @@ DECLINLINE(void) virtioLogLevel(int logLevel, const char *format...)
     if (LogIsItEnabled(logLevel, LOG_GROUP))
         VIRTIOLOG(format);
     va_end(arglist);
+    RT_NOREF(logLevel);
 }
 
 /** Pointer to the shared VirtIO state. */
