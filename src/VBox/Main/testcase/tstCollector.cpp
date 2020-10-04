@@ -1,8 +1,6 @@
-/* $Id: tstCollector.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
-
+/* $Id: tstCollector.cpp 86441 2020-10-04 12:05:24Z knut.osmundsen@oracle.com $ */
 /** @file
- *
- * Collector classes test cases.
+ * VirtualBox Main - Performance collector classes test cases.
  */
 
 /*
