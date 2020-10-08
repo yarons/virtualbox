@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 86294 2020-09-25 20:58:28Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 86498 2020-10-08 17:00:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9604,10 +9604,11 @@ HRESULT Machine::i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
             if (newConfigFile != configFile)
             {
                 /* get the path to old settings file in renamed directory */
+                Assert(mData->m_strConfigFileFull == configFile);
                 configFile.printf("%s%c%s",
                                   newConfigDir.c_str(),
                                   RTPATH_DELIMITER,
-                                  RTPathFilename(configFile.c_str()));
+                                  RTPathFilename(mData->m_strConfigFileFull.c_str()));
                 if (!fSettingsFileIsNew)
                 {
                     /* perform real rename only if the machine is not new */
