@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 85707 2020-08-11 19:43:16Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox_fb.c 86542 2020-10-12 13:35:53Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -405,7 +405,11 @@ void vbox_fbdev_fini(struct drm_device *dev)
 				vbox_bo_unpin(bo);
 			vbox_bo_unreserve(bo);
 		}
+#if RTLNX_VER_MIN(5,9,0)
+		drm_gem_object_put(afb->obj);
+#else
 		drm_gem_object_put_unlocked(afb->obj);
+#endif
 		afb->obj = NULL;
 	}
 	drm_fb_helper_fini(&fbdev->helper);
