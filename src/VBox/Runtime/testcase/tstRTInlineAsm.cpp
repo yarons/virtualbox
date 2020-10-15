@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 86585 2020-10-15 10:31:09Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 86586 2020-10-15 10:34:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -46,10 +46,11 @@
 #else
 # include <iprt/time.h>
 #endif
+#include <iprt/mem.h>
+#include <iprt/param.h>
 #include <iprt/rand.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/param.h>
 #include <iprt/thread.h>
 #include <iprt/test.h>
 #include <iprt/time.h>
