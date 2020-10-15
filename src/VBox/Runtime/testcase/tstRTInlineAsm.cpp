@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 85963 2020-08-31 20:12:01Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 86585 2020-10-15 10:31:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -119,8 +119,9 @@ const char *getCacheAss(unsigned u)
     if (u >= 256)
         return "???";
 
-    char *pszRet;
-    RTStrAPrintf(&pszRet, "%d way", u);     /* intentional leak! */
+    char *pszRet = NULL;
+    RTStrAPrintf(&pszRet, "%d way", u);
+    RTMEM_WILL_LEAK(pszRet);
     return pszRet;
 }
 
