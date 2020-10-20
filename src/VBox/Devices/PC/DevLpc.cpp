@@ -1,4 +1,4 @@
-/* $Id: DevLpc-new.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: DevLpc.cpp 86639 2020-10-20 10:16:15Z alexander.eichner@oracle.com $ */
 /** @file
  * DevLPC - Minimal ICH9 LPC device emulation.
  */
