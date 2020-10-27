@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86718 2020-10-27 09:39:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 86719 2020-10-27 09:44:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -93,7 +93,7 @@ private:
     void saveOptions();
     void cleanup();
     QUrl findIndexHtml() const;
-    void show404Error();
+    void show404Error(const QUrl &url);
     /** @name Event handling stuff.
       * @{ */
         /** Handles translation event. */
