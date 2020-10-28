@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86745 2020-10-28 17:42:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 86748 2020-10-28 19:14:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -179,8 +179,10 @@ public slots:
 
     /** @name Cloud machine stuff.
       * @{ */
-        /** Handles cloud machine state change. */
-        void sltHandleCloudMachineStateChange();
+        /** Handles cloud machine refresh started. */
+        void sltHandleCloudMachineRefreshStarted();
+        /** Handles cloud machine refresh finished. */
+        void sltHandleCloudMachineRefreshFinished();
     /** @} */
 
     /** @name Group saving stuff.
