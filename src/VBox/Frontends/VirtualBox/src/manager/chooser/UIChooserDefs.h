@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 84412 2020-05-20 14:43:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserDefs.h 86744 2020-10-28 17:35:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -83,7 +83,8 @@ enum UIChooserItemSearchFlag
     UIChooserItemSearchFlag_CloudProvider = RT_BIT(3),
     UIChooserItemSearchFlag_CloudProfile  = RT_BIT(4),
     UIChooserItemSearchFlag_ExactId       = RT_BIT(5),
-    UIChooserItemSearchFlag_ExactName     = RT_BIT(6)
+    UIChooserItemSearchFlag_ExactName     = RT_BIT(6),
+    UIChooserItemSearchFlag_FullName      = RT_BIT(7),
 };
 
 
