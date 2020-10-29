@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 86566 2020-10-14 09:36:15Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 86761 2020-10-29 21:11:19Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2004,7 +2004,6 @@ ifndef VBOX_OSE
 else
 	$(MAKE) -C tools -f Makefile-ose.kmk fetch
 endif
-
 
 
 #
