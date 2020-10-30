@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 86231 2020-09-23 10:55:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 86764 2020-10-30 10:08:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -114,7 +114,7 @@ void UIVMLogViewerDialog::finalize()
 
 void UIVMLogViewerDialog::loadSettings()
 {
-    /* Invent default window geometry: */
+
     const QRect availableGeo = gpDesktop->availableGeometry(this);
     int iDefaultWidth = availableGeo.width() / 2;
     int iDefaultHeight = availableGeo.height() * 3 / 4;
