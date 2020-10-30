@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 86769 2020-10-30 12:27:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 86771 2020-10-30 13:18:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -406,8 +406,6 @@ void UIVirtualBoxManagerWidget::sltHandleCloudMachineStateChange(const QUuid &uI
             {
                 /* Propagate current items to update the Details-pane: */
                 m_pPaneToolsMachine->setItems(currentItems());
-                /* Repeat the task a bit delayed: */
-                pItem->toCloud()->updateInfoAsync(true /* delayed? */);
             }
         }
         else
