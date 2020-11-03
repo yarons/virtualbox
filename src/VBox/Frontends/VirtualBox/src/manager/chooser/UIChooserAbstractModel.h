@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 86795 2020-11-03 12:29:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 86802 2020-11-03 20:07:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -248,8 +248,6 @@ private:
         /** Prepares connections. */
         void prepareConnections();
 
-        /** Cleanups tasks. */
-        void cleanupTasks();
         /** Cleanups connections. */
         void cleanupConnections();
         /** Cleanups all. */
