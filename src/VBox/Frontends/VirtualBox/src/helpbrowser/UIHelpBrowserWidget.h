@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 86807 2020-11-04 14:22:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 86812 2020-11-05 13:50:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -149,7 +149,8 @@ private:
     QString       m_strHelpFilePath;
     QHelpEngine  *m_pHelpEngine;
     QSplitter           *m_pSplitter;
-    QMenu               *m_pMenu;
+    QMenu               *m_pFileMenu;
+    QMenu               *m_pViewMenu;
     QHelpContentWidget  *m_pContentWidget;
     QHelpIndexWidget    *m_pIndexWidget;
     QHelpContentModel   *m_pContentModel;
