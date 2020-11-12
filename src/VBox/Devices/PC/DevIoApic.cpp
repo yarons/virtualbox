@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 86865 2020-11-12 06:57:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DevIoApic.cpp 86868 2020-11-12 07:42:30Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -538,6 +538,7 @@ static void ioapicSignalIntrForRte(PPDMDEVINS pDevIns, PIOAPIC pThis, PIOAPICCC 
         {
             ioapicGetApicIntrFromMsi(&MsiOut, &ApicIntr);
             Assert(ApicIntr.u8Polarity == IOAPIC_RTE_GET_POLARITY(u64Rte)); /* Ensure polarity hasn't changed. */
+            Assert(ApicIntr.u8TriggerMode == u8TriggerMode);                /* Ensure trigger mode hasn't changed. */
         }
         else
         {
