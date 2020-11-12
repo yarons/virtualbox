@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 86873 2020-11-12 10:30:55Z andreas.loeffler@oracle.com $ */
+/* $Id: hostversion.cpp 86874 2020-11-12 10:54:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - Host version check.
  */
@@ -119,10 +119,11 @@ static int showNotify(const char *pszHeader, const char *pszBody)
 /**
  * @interface_method_impl{VBCLSERVICE,pfnWorker}
  */
-/** @todo Move this part in VbglR3 and just provide a callback for the platform-specific
-          notification stuff, since this is very similar to the VBoxTray code. */
 static DECLCALLBACK(int) vbclHostVerWorker(bool volatile *pfShutdown)
 {
+    /** @todo Move this part in VbglR3 and just provide a callback for the platform-specific
+              notification stuff, since this is very similar to the VBoxTray code. */
+
     RT_NOREF(pfShutdown);
 
     LogFlowFuncEnter();
