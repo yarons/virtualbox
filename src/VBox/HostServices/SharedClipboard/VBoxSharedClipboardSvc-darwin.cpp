@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 85989 2020-09-02 07:32:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 86889 2020-11-16 14:23:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -260,6 +260,8 @@ int ShClBackendReadData(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORM
     *pcbActual = 0;
 
     int rc = readFromPasteboard(pClient->State.pCtx->hPasteboard, fFormat, pvData, cbData, pcbActual);
+    if (RT_FAILURE(rc))
+        LogRel(("Shared Clipboard: Error reading host clipboard data from macOS, rc=%Rrc\n", rc));
 
     ShClSvcUnlock();
 
