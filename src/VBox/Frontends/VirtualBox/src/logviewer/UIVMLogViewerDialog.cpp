@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 86764 2020-10-30 10:08:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 86939 2020-11-20 16:44:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -103,6 +103,11 @@ void UIVMLogViewerDialog::configureCentralWidget()
         /* Add into layout: */
         centralWidget()->layout()->addWidget(pWidget);
     }
+}
+
+void UIVMLogViewerDialog::configureButtonBox()
+{
+    configureButtonBoxHelpButton("collect-debug-info");
 }
 
 void UIVMLogViewerDialog::finalize()
