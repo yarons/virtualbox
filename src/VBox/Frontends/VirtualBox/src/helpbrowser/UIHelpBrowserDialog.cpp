@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 86964 2020-11-24 09:49:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 86965 2020-11-24 10:06:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -81,6 +81,9 @@ void UIHelpBrowserDialog::prepareCentralWidget()
     setWidgetToolbar(m_pWidget->toolbar());
 #endif
     setCentralWidget((m_pWidget));
+
+    connect(m_pWidget, &UIHelpBrowserWidget::sigCloseDialog,
+            this, &UIHelpBrowserDialog::close);
 
     const QList<QMenu*> menuList = m_pWidget->menus();
     foreach (QMenu *pMenu, menuList)
