@@ -1,10 +1,10 @@
-/* $Id: UIDownloaderUserManual.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDownloaderAdditions.h 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIDownloaderUserManual class declaration.
+ * VBox Qt GUI - UIDownloaderAdditions class declaration.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h
-#define FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h
+#ifndef FEQT_INCLUDED_SRC_networking_UIDownloaderAdditions_h
+#define FEQT_INCLUDED_SRC_networking_UIDownloaderAdditions_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -24,8 +24,11 @@
 /* GUI includes: */
 #include "UIDownloader.h"
 
-/** UIDownloader extension for background user-manual downloading. */
-class SHARED_LIBRARY_STUFF UIDownloaderUserManual : public UIDownloader
+/* Forward declarations: */
+class QByteArray;
+
+/** UIDownloader extension for background additions downloading. */
+class SHARED_LIBRARY_STUFF UIDownloaderAdditions : public UIDownloader
 {
     Q_OBJECT;
 
@@ -38,16 +41,16 @@ signals:
 public:
 
     /** Creates downloader instance. */
-    static UIDownloaderUserManual *create();
+    static UIDownloaderAdditions *create();
     /** Returns current downloader instance. */
-    static UIDownloaderUserManual *current() { return s_pInstance; }
+    static UIDownloaderAdditions *current() { return s_pInstance; }
 
 private:
 
     /** Constructs downloader. */
-    UIDownloaderUserManual();
+    UIDownloaderAdditions();
     /** Destructs downloader. */
-    ~UIDownloaderUserManual();
+    ~UIDownloaderAdditions();
 
     /** Returns description of the current network operation. */
     virtual const QString description() const /* override */;
@@ -56,10 +59,15 @@ private:
     virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) /* override */;
     /** Handles downloaded object for passed @a pReply. */
     virtual void handleDownloadedObject(UINetworkReply *pReply) /* override */;
+    /** Handles verified object for passed @a pReply. */
+    virtual void handleVerifiedObject(UINetworkReply *pReply) /* override */;
 
     /** Holds the static singleton instance. */
-    static UIDownloaderUserManual *s_pInstance;
+    static UIDownloaderAdditions *s_pInstance;
+
+    /** Holds the cached received data awaiting for verification. */
+    QByteArray m_receivedData;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_net_UIDownloaderUserManual_h */
+#endif /* !FEQT_INCLUDED_SRC_networking_UIDownloaderAdditions_h */
 

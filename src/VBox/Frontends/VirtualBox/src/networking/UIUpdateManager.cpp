@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateManager.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -30,7 +30,7 @@
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
-#include "UINetworkManager.h"
+#include "UINetworkRequestManager.h"
 #include "UINetworkCustomer.h"
 #include "UINetworkRequest.h"
 #include "UIUpdateDefs.h"

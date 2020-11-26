@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 86128 2020-09-15 16:14:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */

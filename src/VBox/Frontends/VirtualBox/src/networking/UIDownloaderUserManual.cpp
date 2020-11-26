@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDownloaderUserManual.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIModalWindowManager.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
@@ -18,8 +18,8 @@
 /* GUI includes: */
 #include "UIModalWindowManager.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-# include "UINetworkManager.h"
-# include "UINetworkManagerDialog.h"
+# include "UINetworkRequestManager.h"
+# include "UINetworkRequestManagerWindow.h"
 #endif
 #include "UIProgressDialog.h"
 
