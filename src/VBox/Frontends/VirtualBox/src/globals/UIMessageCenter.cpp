@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 86963 2020-11-24 09:43:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 86979 2020-11-26 07:04:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3462,7 +3462,7 @@ void UIMessageCenter::sltHelpBrowserClosed()
 void UIMessageCenter::sltHandleDialogHelpButtonPress()
 {
 # if defined(VBOX_WITH_DOCS_QHELP) && (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    QAbstractButton *pSender = qobject_cast<QAbstractButton*>(sender());
+    QWidget *pSender = qobject_cast<QWidget*>(sender());
     if (!pSender)
         return;
     QVariant keyWordProp = pSender->property("helptag");
