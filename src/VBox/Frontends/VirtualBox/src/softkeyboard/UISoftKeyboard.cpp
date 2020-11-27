@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 86998 2020-11-26 17:26:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 87001 2020-11-27 09:48:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -3912,7 +3912,7 @@ bool UISoftKeyboard::event(QEvent *pEvent)
         QKeyEvent *pKeyEvent = dynamic_cast<QKeyEvent*>(pEvent);
         if (pKeyEvent)
         {
-            if (pKeyEvent->key() == Qt::Key_F1)
+            if (QKeySequence(pKeyEvent->key()) == QKeySequence::HelpContents)
                 sltHandleHelpRequest();
         }
     }
