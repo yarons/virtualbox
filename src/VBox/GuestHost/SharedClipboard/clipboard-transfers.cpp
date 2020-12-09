@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 87069 2020-12-09 14:55:12Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 87070 2020-12-09 14:56:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -2713,7 +2713,7 @@ void ShClTransferCtxReset(PSHCLTRANSFERCTX pTransferCtx)
         ShClTransferReset(pTransfer);
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-    /* @todo Anything to do here? */
+    /** @todo Anything to do here? */
 #endif
 }
 
