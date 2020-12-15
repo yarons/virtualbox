@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 86542 2020-10-12 13:35:53Z klaus.espenlaub@oracle.com $ */
+/* $Id: vbox_fb.c 87092 2020-12-15 22:29:56Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -295,7 +295,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	if (ret)
 		return ret;
 
-	ret = vbox_bo_pin(bo, TTM_PL_FLAG_VRAM, NULL);
+	ret = vbox_bo_pin(bo, VBOX_MEM_TYPE_VRAM, NULL);
 	if (ret) {
 		vbox_bo_unreserve(bo);
 		return ret;
