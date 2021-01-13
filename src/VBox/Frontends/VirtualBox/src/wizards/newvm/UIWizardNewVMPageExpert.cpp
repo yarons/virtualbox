@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87243 2021-01-13 16:32:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87244 2021-01-13 19:38:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -43,24 +43,18 @@
 
 UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     : UIWizardNewVMPage1(strGroup)
-    , m_pNameAndSystemContainer(0)
     , m_pToolBox(0)
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     {
         m_pToolBox = new QToolBox;
-        m_pNameAndSystemContainer = new QWidget(this);
-        QGridLayout *pNameContainerLayout = new QGridLayout(m_pNameAndSystemContainer);
-        createNameOSTypeWidgets(pNameContainerLayout, false);
-        m_pGAInstallContainer = createGAInstallWidgets();
-        m_pUsernameHostnameContainer = createUserNameHostNameWidgets();
 
-        m_pToolBox->insertItem(ExpertToolboxItems_NameAndOSType, m_pNameAndSystemContainer, "");
+        m_pToolBox->insertItem(ExpertToolboxItems_NameAndOSType, createNameOSTypeWidgets(WizardMode_Expert, false), "");
         m_pToolBox->insertItem(ExpertToolboxItems_Disk, createDiskWidgets(), "");
         m_pToolBox->insertItem(ExpertToolboxItems_Hardware, createHardwareWidgets(), "");
-        m_pToolBox->insertItem(ExpertToolboxItems_UsernameHostname, m_pUsernameHostnameContainer, "");
-        m_pToolBox->insertItem(ExpertToolboxItems_GAInstall, m_pGAInstallContainer, "");
+        m_pToolBox->insertItem(ExpertToolboxItems_UsernameHostname, createUserNameHostNameWidgets(), "");
+        m_pToolBox->insertItem(ExpertToolboxItems_GAInstall, createGAInstallWidgets(), "");
         m_pToolBox->insertItem(ExpertToolboxItems_ProductKey, createProductKeyWidgets(), "");
         pMainLayout->addWidget(m_pToolBox);
         pMainLayout->addStretch();
