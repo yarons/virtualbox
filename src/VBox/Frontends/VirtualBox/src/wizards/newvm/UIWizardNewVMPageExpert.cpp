@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 87240 2021-01-13 14:41:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 87243 2021-01-13 16:32:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -94,9 +94,26 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     registerField("productKey", this, "productKey");
     registerField("VCPUCount", this, "VCPUCount");
 
-    m_pToolBox->setStyleSheet("QToolBox::tab:selected { font: bold; }");
-    //m_pToolBox->setStyleSheet("QToolBox::tab:hover { font: bold; }");
-    //qApp->setStyleSheet("QWidget#bla {  background: blue; }");
+    m_pToolBox->setStyleSheet(QString::fromUtf8("QToolBox::tab {\n"
+                                                "    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+                                                "                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
+                                                "                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+                                                "    border-radius: 5px;\n"
+                                                "    color: black;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QToolBox::tab:selected {\n"
+                                                "    font: bold;\n"
+                                                "}\n"
+                                                "\n"
+                                                "QToolBox::tab:hover {\n"
+                                                "    font: bold;\n"
+                                                "}\n"
+                                                "QToolBox::tab:disabled {\n"
+                                                "    font: italic;\n"
+                                                "    color: gray;\n"
+                                                "}"));
+
     if (m_pEnableUnattendedInstallCheckBox)
         disableEnableUnattendedRelatedWidgets(m_pEnableUnattendedInstallCheckBox->isChecked());
 }
