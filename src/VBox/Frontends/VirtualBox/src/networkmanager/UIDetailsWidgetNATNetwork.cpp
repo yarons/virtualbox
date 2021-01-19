@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.cpp 87305 2021-01-19 09:56:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsWidgetNATNetwork.cpp 87306 2021-01-19 16:00:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class implementation.
  */
@@ -73,7 +73,7 @@ void UIDetailsWidgetNATNetwork::setData(const UIDataNATNetwork &data, bool fHold
     loadDataForForwarding();
 }
 
-bool UIDetailsWidgetNATNetwork::revalidate()
+bool UIDetailsWidgetNATNetwork::revalidate() const
 {
     return m_pForwardingTableIPv4->validate() && m_pForwardingTableIPv6->validate();
 }
