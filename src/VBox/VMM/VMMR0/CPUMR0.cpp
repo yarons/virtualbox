@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 87345 2021-01-21 11:37:30Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR0.cpp 87346 2021-01-21 11:42:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -687,7 +687,7 @@ VMMR0_INT_DECL(void) CPUMR0LoadHyperDebugState(PVMCPUCC pVCpu, bool fDr6)
     /*
      * Make sure the hypervisor values are up to date.
      */
-    CPUMRecalcHyperDRx(pVCpu, UINT8_MAX /* no loading, please */, true);
+    CPUMRecalcHyperDRx(pVCpu, UINT8_MAX /* no loading, please */);
 
     /*
      * Activate the guest state DR0-3.
