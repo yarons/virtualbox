@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 86098 2020-09-13 07:17:19Z alexander.eichner@oracle.com $ */
+/* $Id: tstVMStruct.h 87349 2021-01-21 12:11:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -53,7 +53,7 @@
     GEN_CHECK_OFF(CPUMCPU, fApicDisVectors);
     GEN_CHECK_OFF(CPUMCPU, fX2Apic);
 #endif
-    GEN_CHECK_OFF(CPUMCPU, fRemEntered);
+    GEN_CHECK_OFF(CPUMCPU, fCpuIdApicFeatureVisible);
 
     GEN_CHECK_SIZE(CPUMHOSTCTX);
     GEN_CHECK_OFF(CPUMHOSTCTX, pXStateR3);
