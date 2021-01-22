@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 87381 2021-01-22 22:27:07Z noreply@oracle.com $ */
+/* $Id: VBoxNetLwipNAT.cpp 87382 2021-01-22 22:42:20Z noreply@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1268,7 +1268,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     }
 #endif
 
-    vboxNetNATLogInit(argc, argv);
+    VBoxNetLwipNAT::logInit(argc, argv);
 
     hrc = com::Initialize();
     if (FAILED(hrc))
