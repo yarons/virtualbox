@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 87488 2021-01-29 18:17:10Z knut.osmundsen@oracle.com $ */
+/* $Id: HMVMXAll.cpp 87489 2021-01-29 18:24:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1107,7 +1107,7 @@ VMM_INT_DECL(PVMXVMCSINFOSHARED) hmGetVmxActiveVmcsInfoShared(PVMCPUCC pVCpu)
 #ifdef IN_RING0
     if (!pVCpu->hmr0.s.vmx.fSwitchedToNstGstVmcs)
 #else
-    if (!pVCpu->hm.s.vmx.fSwitchedToNstGstVmcsShadow)
+    if (!pVCpu->hm.s.vmx.fSwitchedToNstGstVmcsCopyForRing3)
 #endif
         return &pVCpu->hm.s.vmx.VmcsInfo;
     return &pVCpu->hm.s.vmx.VmcsInfoNstGst;
