@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 87354 2021-01-21 16:08:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 87516 2021-02-01 19:32:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -135,6 +135,12 @@ bool UIVirtualBoxManagerWidget::isGroupSavingInProgress() const
 bool UIVirtualBoxManagerWidget::isCloudProfileUpdateInProgress() const
 {
     return m_pPaneChooser->isCloudProfileUpdateInProgress();
+}
+
+void UIVirtualBoxManagerWidget::switchToGlobalItem()
+{
+    AssertPtrReturnVoid(m_pPaneChooser);
+    m_pPaneChooser->setCurrentGlobal();
 }
 
 void UIVirtualBoxManagerWidget::openGroupNameEditor()
