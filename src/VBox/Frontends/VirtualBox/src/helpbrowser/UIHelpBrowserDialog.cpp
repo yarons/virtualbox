@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 87663 2021-02-09 14:37:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 87665 2021-02-09 15:07:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -33,6 +33,7 @@
 #endif
 
 #include <iprt/assert.h>
+
 
 /*********************************************************************************************************************************
 *   Class UIHelpBrowserDialog implementation.                                                                                    *
