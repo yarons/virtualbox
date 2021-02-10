@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 87675 2021-02-10 11:45:30Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 87677 2021-02-10 11:57:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3056,7 +3056,7 @@ VBoxDbgStats::VBoxDbgStats(VBoxDbgGui *a_pDbgGui, const char *pszPat/* = NULL*/,
     pLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     m_pPatCB = new QComboBox();
-    m_pPatCB->setCompleter(nullptr);
+    m_pPatCB->setCompleter(0);
     pHLayout->addWidget(m_pPatCB);
     if (!m_PatStr.isEmpty())
         m_pPatCB->addItem(m_PatStr);
