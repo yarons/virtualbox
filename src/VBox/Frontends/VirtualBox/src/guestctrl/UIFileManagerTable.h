@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 86233 2020-09-23 12:10:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileManagerTable.h 87718 2021-02-11 08:50:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -113,7 +113,7 @@ class UIPropertiesDialog : public QIDialog
 
 public:
 
-    UIPropertiesDialog(QWidget *pParent = 0, Qt::WindowFlags flags = 0);
+    UIPropertiesDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags());
     void setPropertyText(const QString &strProperty);
     void addDirectoryStatistics(UIDirectoryStatistics statictics);
 
