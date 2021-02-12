@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 87734 2021-02-12 13:47:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.cpp 87736 2021-02-12 15:03:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -244,7 +244,7 @@ bool UIUserNamePasswordEditor::isUserNameComplete()
 {
     bool fComplete = (m_pUserNameLineEdit && !m_pUserNameLineEdit->text().isEmpty());
     if (m_pUserNameLineEdit)
-        m_pUserNameLineEdit->mark(!fComplete);
+        m_pUserNameLineEdit->mark(!fComplete, UIUserNamePasswordEditor::tr("Invalid username"));
     return fComplete;
 }
 
