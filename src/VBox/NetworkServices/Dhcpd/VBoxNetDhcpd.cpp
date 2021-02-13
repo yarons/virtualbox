@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 86822 2020-11-06 12:46:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetDhcpd.cpp 87745 2021-02-13 02:36:05Z noreply@oracle.com $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -145,8 +145,6 @@ private:
 
     void ifPump();
     int ifInput(void *pvSegFrame, uint32_t cbSegFrame);
-
-    int ifOutput(PCINTNETSEG paSegs, size_t cSegs, size_t cbFrame);
 
 
     /*
