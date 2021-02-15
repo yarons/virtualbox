@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 86407 2020-10-02 06:26:15Z noreply@oracle.com $ $Revision: 86407 $ $Date: 2020-10-02 08:26:15 +0200 (Fri, 02 Oct 2020) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 87760 2021-02-15 22:45:27Z knut.osmundsen@oracle.com $ $Revision: 87760 $ $Date: 2021-02-15 23:45:27 +0100 (Mon, 15 Feb 2021) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3035,7 +3035,8 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
     pThis->cVirtVirtqs += pThis->cVirtqPairs * 2 + 1;
 
     /* Create Link Up Timer */
-    rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, virtioNetR3LinkUpTimer, NULL, TMTIMER_FLAGS_NO_CRIT_SECT,
+    rc = PDMDevHlpTimerCreate(pDevIns, TMCLOCK_VIRTUAL, virtioNetR3LinkUpTimer, NULL,
+                              TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
                               "VirtioNet Link Up Timer", &pThisCC->hLinkUpTimer);
 
     /*
