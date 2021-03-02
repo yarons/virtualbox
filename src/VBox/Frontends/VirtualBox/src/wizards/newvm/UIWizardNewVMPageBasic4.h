@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87912 2021-03-02 12:46:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87913 2021-03-02 13:25:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -111,7 +111,6 @@ public:
     /** For the guide wizard mode medium path, name and extention is static and we have
       * no UI element for this. thus override. */
     virtual QString mediumPath() const /*override */;
-    virtual int nextId() const /* override */;
     CMediumFormat mediumFormat() const;
 
 protected:
