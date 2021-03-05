@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic4.h 87956 2021-03-04 17:56:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageBasic4.h 87981 2021-03-05 17:46:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic4 class declaration.
  */
@@ -118,8 +118,8 @@ protected:
 
 private slots:
 
-    void sltHandleSelectedDiskSourceChange();
-    void sltVirtualSelectedDiskSourceChanged();
+    void sltSelectedDiskSourceChanged();
+    void sltMediaComboBoxIndexChanged();
     void sltGetWithFileOpenDialog();
     void sltHandleSizeEditorChange();
 
