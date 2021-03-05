@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 87975 2021-03-05 16:12:18Z knut.osmundsen@oracle.com $ */
+/* $Id: HDAStream.cpp 87977 2021-03-05 16:20:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -694,7 +694,17 @@ int hdaR3StreamSetUp(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStreamShar
         ASSERT_GUEST_LOGREL_MSG_STMT(cbCircBuf, ("Ring buffer size for stream #%RU8 is invalid\n", uSD),
                                      rc = VERR_INVALID_PARAMETER);
         if (RT_SUCCESS(rc))
+        {
             rc = RTCircBufCreate(&pStreamR3->State.pCircBuf, cbCircBuf);
+            if (RT_SUCCESS(rc))
+            {
+                /*
+                 * Forward the timer frequency hint to TM as well for better accuracy on
+                 * systems w/o preemption timers (also good for 'info timers').
+                 */
+                PDMDevHlpTimerSetFrequencyHint(pDevIns, pStreamShared->hTimer, uTransferHz);
+            }
+        }
     }
 
     if (RT_FAILURE(rc))
