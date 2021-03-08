@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 87810 2021-02-19 16:08:22Z andreas.loeffler@oracle.com $ */
+/* $Id: HDAStreamPeriod.cpp 88016 2021-03-08 13:14:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -82,7 +82,7 @@ int hdaR3StreamPeriodInit(PHDASTREAMPERIOD pPeriod,
 {
     if (   !u16LVI
         || !u32CBL
-        || !DrvAudioHlpPCMPropsAreValid(&pStreamCfg->Props))
+        || !DrvAudioHlpPcmPropsAreValid(&pStreamCfg->Props))
     {
         return VERR_INVALID_PARAMETER;
     }
