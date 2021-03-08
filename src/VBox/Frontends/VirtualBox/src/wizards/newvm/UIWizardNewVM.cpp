@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 88001 2021-03-08 10:50:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 88014 2021-03-08 12:52:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -629,7 +629,7 @@ CMedium &UIWizardNewVM::virtualDisk()
 
 void UIWizardNewVM::setVirtualDisk(const CMedium &medium)
 {
-    m_virtualDisk == medium;
+    m_virtualDisk = medium;
 }
 
 const UIUnattendedInstallData &UIWizardNewVM::unattendedInstallData() const
