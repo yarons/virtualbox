@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 88027 2021-03-08 18:55:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHDA.cpp 88028 2021-03-08 19:31:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -28,6 +28,7 @@
 
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
+#include <VBox/vmm/pdmaudioinline.h>
 #ifdef HDA_DEBUG_GUEST_RIP
 # include <VBox/vmm/cpum.h>
 #endif
