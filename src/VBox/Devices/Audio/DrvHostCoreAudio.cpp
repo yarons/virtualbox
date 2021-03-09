@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 88055 2021-03-09 14:39:16Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostCoreAudio.cpp 88061 2021-03-09 18:14:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -100,7 +100,7 @@ typedef struct DRVHOSTCOREAUDIO
     /** Critical section to serialize access. */
     RTCRITSECT              CritSect;
     /** Current (last reported) device enumeration. */
-    PDMAUDIOHOSTENUM      Devices;
+    PDMAUDIOHOSTENUM        Devices;
     /** Pointer to the currently used input device in the device enumeration.
      *  Can be NULL if none assigned. */
     PCOREAUDIODEVICEDATA    pDefaultDevIn;
