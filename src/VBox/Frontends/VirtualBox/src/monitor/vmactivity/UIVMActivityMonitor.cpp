@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 88072 2021-03-10 15:49:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 88074 2021-03-10 18:14:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1155,7 +1155,7 @@ void UIVMActivityMonitor::prepareActions()
         connect(pExportAction, &QAction::triggered, this, &UIVMActivityMonitor::sltExportMetricsToFile);
 
     QAction *pToResourcesAction =
-        m_pActionPool->action(UIActionIndex_M_Performance_S_ToResources);
+        m_pActionPool->action(UIActionIndex_M_Performance_S_ToVMActivityOverview);
     if (pToResourcesAction)
         connect(pToResourcesAction, &QAction::triggered, this, &UIVMActivityMonitor::sigSwitchToResourcesPane);
 }

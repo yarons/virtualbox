@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 88071 2021-03-10 15:10:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 88074 2021-03-10 18:14:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -270,7 +270,7 @@ bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
                 case UIToolType_Network:
                 case UIToolType_Cloud:
                 case UIToolType_CloudConsole:
-                case UIToolType_Resources:
+                case UIToolType_VMActivityOverview:
                     return true;
                 default:
                     break;
