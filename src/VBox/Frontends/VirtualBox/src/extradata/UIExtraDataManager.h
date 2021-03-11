@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 86977 2020-11-25 15:18:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 88082 2021-03-11 10:57:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -797,8 +797,8 @@ public:
 
     /** @name Manager UI: VM Resource Monitor
       * @{ */
-        void setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList);
-        QStringList VMResourceMonitorHiddenColumnList();
+        void setVMActivityOverviewHiddenColumnList(const QStringList &hiddenColumnList);
+        QStringList VMActivityOverviewHiddenColumnList();
     /** @} */
 
 private slots:

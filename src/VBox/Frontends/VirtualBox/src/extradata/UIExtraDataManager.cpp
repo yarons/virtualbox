@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 86977 2020-11-25 15:18:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 88082 2021-03-11 10:57:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4643,12 +4643,12 @@ QStringList UIExtraDataManager::helpBrowserBookmarks()
     return extraDataStringList(GUI_HelpBrowserBookmarks);
 }
 
-void UIExtraDataManager::setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList)
+void UIExtraDataManager::setVMActivityOverviewHiddenColumnList(const QStringList &hiddenColumnList)
 {
     setExtraDataStringList(GUI_VMResourceManager_HiddenColumns, hiddenColumnList);
 }
 
-QStringList UIExtraDataManager::VMResourceMonitorHiddenColumnList()
+QStringList UIExtraDataManager::VMActivityOverviewHiddenColumnList()
 {
     return extraDataStringList(GUI_VMResourceManager_HiddenColumns);
 }
