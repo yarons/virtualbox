@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 88089 2021-03-11 13:40:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 88118 2021-03-15 11:13:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */

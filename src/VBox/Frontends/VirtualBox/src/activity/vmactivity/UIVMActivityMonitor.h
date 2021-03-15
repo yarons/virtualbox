@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 88073 2021-03-10 17:29:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 88118 2021-03-15 11:13:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
