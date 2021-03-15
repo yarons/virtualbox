@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 88118 2021-03-15 11:13:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCommon.h 88119 2021-03-15 11:26:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_monitor_UIMonitorCommon_h
-#define FEQT_INCLUDED_SRC_monitor_UIMonitorCommon_h
+#ifndef FEQT_INCLUDED_SRC_activity_UIMonitorCommon_h
+#define FEQT_INCLUDED_SRC_activity_UIMonitorCommon_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -69,4 +69,4 @@ private:
 
 };
 
-#endif /* !FEQT_INCLUDED_SRC_monitor_UIMonitorCommon_h */
+#endif /* !FEQT_INCLUDED_SRC_activity_UIMonitorCommon_h */
