@@ -1,6 +1,6 @@
-/* $Id: DevHdaStreamMap.cpp 88234 2021-03-22 10:25:25Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStreamMap.cpp 88235 2021-03-22 10:44:43Z knut.osmundsen@oracle.com $ */
 /** @file
- * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
+ * Intel HD Audio Controller Emulation - Stream mapping (e.g. 5.1 -> stereo).
  */
 
 /*

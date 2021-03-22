@@ -1,6 +1,6 @@
-/* $Id: DevHdaStreamChannel.h 88231 2021-03-22 09:56:20Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStreamChannel.h 88235 2021-03-22 10:44:43Z knut.osmundsen@oracle.com $ */
 /** @file
- * HDAStreamChannel.h - Stream channel functions for HD Audio.
+ * Intel HD Audio Controller Emulation - Stream channel.
  */
 
 /*

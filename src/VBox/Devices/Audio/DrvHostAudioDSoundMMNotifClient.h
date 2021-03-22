@@ -1,7 +1,6 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.h 88233 2021-03-22 10:06:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.h 88235 2021-03-22 10:44:43Z knut.osmundsen@oracle.com $ */
 /** @file
- * DrvHostAudioDSoundMMNotifClient.h - Implementation of the IMMNotificationClient interface
- *                              to detect audio endpoint changes.
+ * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
 
 /*

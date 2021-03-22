@@ -1,9 +1,6 @@
-/* $Id: DrvAudio.cpp 88234 2021-03-22 10:25:25Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudio.cpp 88235 2021-03-22 10:44:43Z knut.osmundsen@oracle.com $ */
 /** @file
- * Intermediate audio driver header.
- *
- * @remarks Intermediate audio driver for connecting the audio device emulation
- *          with the host backend.
+ * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
 
 /*

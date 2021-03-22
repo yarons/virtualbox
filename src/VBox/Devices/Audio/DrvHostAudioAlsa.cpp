@@ -1,6 +1,6 @@
-/* $Id: DrvHostAudioAlsa.cpp 88230 2021-03-22 09:55:26Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioAlsa.cpp 88235 2021-03-22 10:44:43Z knut.osmundsen@oracle.com $ */
 /** @file
- * ALSA audio driver.
+ * Host audio driver - Advanced Linux Sound Architecture (ALSA).
  */
 
 /*
