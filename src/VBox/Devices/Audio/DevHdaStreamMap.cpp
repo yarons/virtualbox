@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 88112 2021-03-12 20:41:05Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStreamMap.cpp 88228 2021-03-22 09:28:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -31,8 +31,8 @@
 
 #include "DrvAudio.h"
 
-#include "HDAStreamChannel.h"
-#include "HDAStreamMap.h"
+#include "DevHdaStreamChannel.h"
+#include "DevHdaStreamMap.h"
 
 
 
