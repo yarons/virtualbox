@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 88229 2021-03-22 09:33:04Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHda.cpp 88230 2021-03-22 09:55:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -58,7 +58,7 @@
 #include "DevHdaStream.h"
 #include "DevHdaStreamMap.h"
 
-#include "DrvAudio.h"
+#include "DrvAudioCommon.h"
 
 
 /*********************************************************************************************************************************

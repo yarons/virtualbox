@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 88228 2021-03-22 09:28:22Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStream.cpp 88230 2021-03-22 09:55:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -30,7 +30,7 @@
 #include <VBox/vmm/pdmaudioifs.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
-#include "DrvAudio.h"
+#include "DrvAudioCommon.h"
 
 #include "DevHda.h"
 #include "DevHdaStream.h"
