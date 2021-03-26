@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88269 2021-03-24 11:45:54Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioVRDE.cpp 88300 2021-03-26 14:31:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -622,7 +622,7 @@ int AudioVRDE::onVRDEControl(bool fEnable, uint32_t uFlags)
  * Marks the beginning of sending captured audio data from a connected
  * RDP client.
  *
- * @return  IPRT status code.
+ * @returns VBox status code.
  * @param   pvContext               The context; in this case a pointer to a
  *                                  VRDESTREAMIN structure.
  * @param   pVRDEAudioBegin         Pointer to a VRDEAUDIOINBEGIN structure.
