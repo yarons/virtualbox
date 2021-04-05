@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 88357 2021-04-04 22:58:35Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDebug.cpp 88362 2021-04-05 00:31:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -421,7 +421,6 @@ static DECLCALLBACK(int) drvHostDebugAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
     pThis->IHostAudio.pfnStreamIterate      = drvHostDebugAudioHA_StreamIterate;
     pThis->IHostAudio.pfnStreamPlay         = drvHostDebugAudioHA_StreamPlay;
     pThis->IHostAudio.pfnStreamCapture      = drvHostDebugAudioHA_StreamCapture;
-    pThis->IHostAudio.pfnSetCallback        = NULL;
     pThis->IHostAudio.pfnGetDevices         = NULL;
     pThis->IHostAudio.pfnStreamGetPending   = NULL;
     pThis->IHostAudio.pfnStreamPlayBegin    = NULL;
