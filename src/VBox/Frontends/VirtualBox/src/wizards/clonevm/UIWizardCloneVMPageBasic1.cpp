@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 88446 2021-04-09 18:04:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -94,7 +94,7 @@ void UIWizardCloneVMPage1::composeCloneFilePath()
     CVirtualBox vbox = uiCommon().virtualBox();
     setCloneFilePath(vbox.ComposeMachineFilename(m_pNameLineEdit ? m_pNameLineEdit->text() : QString(),
                                                  m_strGroup,
-                                                 QString::null,
+                                                 QString(),
                                                  m_pPathSelector ? m_pPathSelector->path() : QString()));
     const QFileInfo fileInfo(m_strCloneFilePath);
     m_strCloneFolder = fileInfo.absolutePath();
