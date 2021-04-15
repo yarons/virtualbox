@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 88469 2021-04-12 12:43:41Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioVRDE.cpp 88534 2021-04-15 12:16:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -231,8 +231,8 @@ static DECLCALLBACK(int) drvAudioVrdeHA_GetConfig(PPDMIHOSTAUDIO pInterface, PPD
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
     RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "VRDE");
-    pBackendCfg->cbStreamOut    = sizeof(VRDESTREAM);
-    pBackendCfg->cbStreamIn     = sizeof(VRDESTREAM);
+    pBackendCfg->cbStream       = sizeof(VRDESTREAM);
+    pBackendCfg->fFlags         = 0;
     pBackendCfg->cMaxStreamsIn  = UINT32_MAX;
     pBackendCfg->cMaxStreamsOut = UINT32_MAX;
 

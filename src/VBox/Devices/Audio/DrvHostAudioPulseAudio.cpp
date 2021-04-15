@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 88513 2021-04-14 19:23:36Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 88534 2021-04-15 12:16:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -645,8 +645,8 @@ static DECLCALLBACK(int) drvHostAudioPaHA_GetConfig(PPDMIHOSTAUDIO pInterface, P
      * The configuration.
      */
     RTStrCopy(pBackendCfg->szName, sizeof(pBackendCfg->szName), "PulseAudio");
-    pBackendCfg->cbStreamOut    = sizeof(PULSEAUDIOSTREAM);
-    pBackendCfg->cbStreamIn     = sizeof(PULSEAUDIOSTREAM);
+    pBackendCfg->cbStream       = sizeof(PULSEAUDIOSTREAM);
+    pBackendCfg->fFlags         = 0;
     pBackendCfg->cMaxStreamsOut = UINT32_MAX;
     pBackendCfg->cMaxStreamsIn  = UINT32_MAX;
 
