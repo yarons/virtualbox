@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 88153 2021-03-17 12:56:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VBoxDD.cpp 88626 2021-04-21 09:58:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -317,6 +317,9 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 #if defined(RT_OS_WINDOWS)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostDSound);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostAudioWas);
     if (RT_FAILURE(rc))
         return rc;
 #endif
