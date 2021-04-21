@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 86233 2020-09-23 12:10:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolBar.h 88635 2021-04-21 14:05:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -64,6 +64,10 @@ signals:
 
     /** Notifies listeners about we stole window activation. */
     void sigNotifyAboutWindowActivationStolen();
+
+    /** Notifies listeners about auto-hide toggled.
+      * @param  fEnabled  Brings whether auto-hide is enabled. */
+    void sigAutoHideToggled(bool fEnabled);
 
 public:
 
