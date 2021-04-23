@@ -1,4 +1,4 @@
-/* $Id: UISession.h 88633 2021-04-21 12:43:05Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 88678 2021-04-23 13:33:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -364,6 +364,8 @@ private slots:
     /** Marks machine started. */
     void sltMarkInitialized() { m_fInitialized = true; }
 
+    /** Detaches COM. */
+    void sltDetachCOM();
     /** Close Runtime UI. */
     void sltCloseRuntimeUI();
 
