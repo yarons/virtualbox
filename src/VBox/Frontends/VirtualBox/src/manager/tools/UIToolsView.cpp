@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.cpp 88805 2021-04-30 13:29:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -183,8 +183,7 @@ void UIToolsView::preparePalette()
 {
     /* Setup palette: */
     QPalette pal = qApp->palette();
-    const QColor bodyColor = pal.color(QPalette::Active, QPalette::Midlight).darker(110);
-    pal.setColor(QPalette::Base, bodyColor);
+    pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
     setPalette(pal);
 }
 
