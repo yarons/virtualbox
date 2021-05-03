@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 88824 2021-05-03 10:50:04Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudio.cpp 88825 2021-05-03 11:00:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -893,7 +893,8 @@ static int drvAudioStreamAdjustConfig(PDRVAUDIO pThis, PPDMAUDIOSTREAMCFG pCfgRe
 
 
 /**
- * @interface_method_impl{PDMIAUDIOCONNECTOR,pfnStreamConfigHint}
+ * Worker thread function for drvAudioStreamConfigHint that's used when
+ * PDMAUDIOBACKEND_F_ASYNC_HINT is in effect.
  */
 static DECLCALLBACK(void) drvAudioStreamConfigHintWorker(PPDMIHOSTAUDIO pHostDrvAudio, PPDMAUDIOSTREAMCFG pCfg)
 {
