@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 88901 2021-05-06 13:10:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 88903 2021-05-06 13:47:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -77,6 +77,7 @@ public:
       * @param  pActionPool    Brings the action-pool reference.
       * @param  comMachine     Brings the machine reference. */
     UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const CMachine &comMachine);
+    ~UIVMLogViewerDialog();
 
 protected:
 
