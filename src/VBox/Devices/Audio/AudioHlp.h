@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.h 88357 2021-04-04 22:58:35Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioHlp.h 88923 2021-05-07 13:34:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio helper routines.
  */
@@ -28,8 +28,6 @@
 #include <iprt/file.h>
 #include <iprt/path.h>
 
-#include <VBox/vmm/pdmdev.h>
-#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pdmaudioifs.h>
 
 /** @name Audio calculation helper methods.

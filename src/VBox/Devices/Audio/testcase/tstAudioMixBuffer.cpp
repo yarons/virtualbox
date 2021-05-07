@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 88433 2021-04-09 12:55:19Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAudioMixBuffer.cpp 88923 2021-05-07 13:34:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -27,6 +27,7 @@
 #include <iprt/string.h>
 #include <iprt/test.h>
 
+#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pdmaudioinline.h>
 
 #include "../AudioMixBuffer.h"
