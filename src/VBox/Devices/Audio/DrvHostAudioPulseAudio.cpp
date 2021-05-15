@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 88992 2021-05-12 00:50:41Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 89055 2021-05-15 16:03:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -43,11 +43,7 @@
 # define PA_CONTEXT_NOFLAGS (pa_context_flags_t)0x0000U /* since 0.9.19 */
 #endif
 
-#ifdef VBOX_AUDIO_VKAT
-# include "VBoxDDVKAT.h"
-#else
-# include "VBoxDD.h"
-#endif
+#include "VBoxDD.h"
 
 
 /*********************************************************************************************************************************
