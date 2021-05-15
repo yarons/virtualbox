@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 89055 2021-05-15 16:03:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 89056 2021-05-15 16:07:46Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -45,7 +45,7 @@ VKAT_PATH_AUDIO = $(PATH_ROOT)/src/VBox/Devices/Audio
 
 PROGRAMS += AudioTest
 AudioTest_TEMPLATE = VBoxValidationKitR3
-AudioTest_DEFS     = VBOX_AUDIO_VKAT
+AudioTest_DEFS     = VBOX_AUDIO_VKAT IN_VMM_R3 IN_VMM_STATIC
 AudioTest_INCS     = \
 	$(PATH_ROOT)/src/VBox/Devices/build
 AudioTest_SOURCES  = \
