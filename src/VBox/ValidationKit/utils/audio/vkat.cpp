@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89072 2021-05-17 07:20:36Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 89077 2021-05-17 08:49:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -2238,8 +2238,8 @@ static RTEXITCODE audioTestUsage(PRTSTREAM pStrm)
                 RTStrmPrintf(pStrm, "  %s\n", g_aCmdTestOptions[i].pszLong);
 
             const char *pszHelp = NULL;
-            if (g_aCommands[i].pfnOptionHelp)
-                pszHelp = g_aCommands[i].pfnOptionHelp(&paOptions[i]);
+            if (g_aCommands[iCmd].pfnOptionHelp)
+                pszHelp = g_aCommands[iCmd].pfnOptionHelp(&paOptions[i]);
             if (pszHelp)
                 RTStrmPrintf(pStrm, "    %s\n", pszHelp);
         }
