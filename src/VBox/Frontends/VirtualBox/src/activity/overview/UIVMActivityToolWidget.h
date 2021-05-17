@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 89093 2021-05-17 11:35:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.h 89094 2021-05-17 11:56:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -44,7 +44,7 @@ class UIVMActivityToolWidget : public QIWithRetranslateUI<QTabWidget>
 
 signals:
 
-    void sigSwitchToResourcesPane();
+    void sigSwitchToActivityOverviewPane();
 
 public:
 

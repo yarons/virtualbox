@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 89036 2021-05-14 08:14:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 89094 2021-05-17 11:56:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -207,8 +207,8 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
                 m_pLayout->addWidget(m_pPaneVMActivityMonitor);
                 m_pLayout->setCurrentWidget(m_pPaneVMActivityMonitor);
 
-                connect(m_pPaneVMActivityMonitor, &UIVMActivityToolWidget::sigSwitchToResourcesPane,
-                        this, &UIToolPaneMachine::sigSwitchToResourcesPane);
+                connect(m_pPaneVMActivityMonitor, &UIVMActivityToolWidget::sigSwitchToActivityOverviewPane,
+                        this, &UIToolPaneMachine::sigSwitchToActivityOverviewPane);
                 break;
             }
             default:
