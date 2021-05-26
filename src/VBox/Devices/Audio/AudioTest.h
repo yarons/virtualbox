@@ -1,4 +1,4 @@
-/* $Id: AudioTest.h 89265 2021-05-25 11:10:40Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioTest.h 89289 2021-05-26 09:48:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testing routines.
  * Common code which is being used by the ValidationKit audio test (VKAT)
@@ -292,6 +292,7 @@ typedef struct AUDIOTESTWAVEFILE
 typedef AUDIOTESTWAVEFILE *PAUDIOTESTWAVEFILE;
 
 
+void   AudioTestToneInit(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps, double dbFreq);
 double AudioTestToneInitRandom(PAUDIOTESTTONE pTone, PPDMAUDIOPCMPROPS pProps);
 int    AudioTestToneGenerate(PAUDIOTESTTONE pTone, void *pvBuf, uint32_t cbBuf, uint32_t *pcbWritten);
 
