@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 88550 2021-04-15 16:45:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 89318 2021-05-27 13:02:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -57,6 +57,7 @@ signals:
     void sigCloseDialog();
     void sigLinkHighlighted(const QString &strLink);
     void sigStatusBarVisible(bool fToggled);
+    void sigZoomPercentageChanged(int iPercentage);
 
 public:
 
@@ -67,6 +68,7 @@ public:
 #ifdef VBOX_WS_MAC
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
+    int zoomPercentage() const;
 
 protected:
 
