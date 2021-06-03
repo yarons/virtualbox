@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioPulseAudio.cpp 89482 2021-06-03 12:56:20Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioPulseAudio.cpp 89483 2021-06-03 12:58:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Pulse Audio.
  */
@@ -208,7 +208,7 @@ typedef struct DRVHSTAUDPA
      *  VMs are running at the same time. */
     char                    szStreamName[64];
     /** Don't want to put this on the stack... */
-    DRVHSTAUDPASTATECHGCTX   InitStateChgCtx;
+    DRVHSTAUDPASTATECHGCTX  InitStateChgCtx;
     /** Pointer to host audio interface. */
     PDMIHOSTAUDIO           IHostAudio;
 } DRVHSTAUDPA;
