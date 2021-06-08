@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 89558 2021-06-08 08:11:48Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioMixer.cpp 89559 2021-06-08 08:40:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -2289,7 +2289,7 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConn, PPD
                 rc = pConn->pfnStreamCreate(pConn, 0 /*fFlags*/, &CfgHost, &pStream);
                 if (RT_SUCCESS(rc))
                 {
-                    pMixStream->cFramesBackendBuffer = CfgHost.Backend.cFramesBufferSize;
+                    pMixStream->cFramesBackendBuffer = pStream->Cfg.Backend.cFramesBufferSize;
 
                     /* Set up the mixing buffer conversion state. */
                     if (pSink->enmDir == PDMAUDIODIR_IN)
