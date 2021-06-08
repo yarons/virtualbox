@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioOss.cpp 89519 2021-06-04 22:51:37Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioOss.cpp 89551 2021-06-08 01:25:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - OSS (Open Sound System).
  */
@@ -966,7 +966,7 @@ static DECLCALLBACK(int) drvHstAudOssConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
 
 
 /**
- * Char driver registration record.
+ * OSS driver registration record.
  */
 const PDMDRVREG g_DrvHostOSSAudio =
 {
