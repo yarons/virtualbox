@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 89641 2021-06-13 12:44:53Z knut.osmundsen@oracle.com $ */
+/* $Id: vkatInternal.h 89642 2021-06-13 13:38:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -362,13 +362,13 @@ typedef struct VKATCMD
     /** Gets help for an option. */
     DECLCALLBACKMEMBER(const char *, pfnOptionHelp,(PCRTGETOPTDEF pOpt));
 } VKATCMD;
-/** Pointer to a single VKAT command. */
-typedef VKATCMD *PVKATCMD;
+/** Pointer to a const VKAT command entry. */
+typedef VKATCMD const *PCVKATCMD;
 
-extern const VKATCMD g_cmdEnum;
-extern const VKATCMD g_cmdPlay;
-extern const VKATCMD g_cmdRec;
-extern const VKATCMD g_cmdSelfTest;
+extern const VKATCMD g_CmdEnum;
+extern const VKATCMD g_CmdPlay;
+extern const VKATCMD g_CmdRec;
+extern const VKATCMD g_CmdSelfTest;
 
 extern AUDIOTESTDESC g_aTests[];
 extern unsigned      g_cTests;

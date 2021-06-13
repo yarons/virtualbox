@@ -1,4 +1,4 @@
-/* $Id: vkatCmdGeneric.cpp 89641 2021-06-13 12:44:53Z knut.osmundsen@oracle.com $ */
+/* $Id: vkatCmdGeneric.cpp 89642 2021-06-13 13:38:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -148,7 +148,7 @@ static DECLCALLBACK(RTEXITCODE) audioTestCmdEnumHandler(PRTGETOPTSTATE pGetState
 /**
  * Command table entry for 'enum'.
  */
-const VKATCMD g_cmdEnum =
+const VKATCMD g_CmdEnum =
 {
     "enum",
     audioTestCmdEnumHandler,
@@ -477,7 +477,7 @@ static DECLCALLBACK(RTEXITCODE) audioTestCmdPlayHandler(PRTGETOPTSTATE pGetState
 /**
  * Command table entry for 'play'.
  */
-const VKATCMD g_cmdPlay =
+const VKATCMD g_CmdPlay =
 {
     "play",
     audioTestCmdPlayHandler,
@@ -857,7 +857,7 @@ static DECLCALLBACK(RTEXITCODE) audioTestCmdRecHandler(PRTGETOPTSTATE pGetState)
 /**
  * Command table entry for 'rec'.
  */
-const VKATCMD g_cmdRec =
+const VKATCMD g_CmdRec =
 {
     "rec",
     audioTestCmdRecHandler,
