@@ -1,4 +1,4 @@
-/* $Id: DBGFR3SampleReport.cpp 89682 2021-06-14 14:29:35Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFR3SampleReport.cpp 89683 2021-06-14 14:32:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Sample report creation.
  */
@@ -49,6 +49,7 @@
 
 /** Maximum stack frame depth. */
 #define DBGF_SAMPLE_REPORT_FRAME_DEPTH_MAX 64
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
