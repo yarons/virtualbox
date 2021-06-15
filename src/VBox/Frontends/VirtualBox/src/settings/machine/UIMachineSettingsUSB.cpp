@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 87251 2021-01-14 16:20:01Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 89700 2021-06-15 10:21:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -194,6 +194,8 @@ private slots:
         CHost host = uiCommon().host();
 
         bool fIsUSBEmpty = host.GetUSBDevices().size() == 0;
+        printf("%d %d %d warning\n", host.lastRC(), host.isReallyOk(), host.isWarning());
+
         if (fIsUSBEmpty)
         {
             QAction *pAction = addAction(tr("<no devices available>", "USB devices"));
