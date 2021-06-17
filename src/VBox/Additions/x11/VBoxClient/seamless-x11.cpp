@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 86394 2020-10-01 17:06:30Z knut.osmundsen@oracle.com $ */
+/* $Id: seamless-x11.cpp 89766 2021-06-17 15:36:13Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -522,7 +522,11 @@ bool SeamlessX11::interruptEventWait(void)
 
     LogRelFlowFuncEnter();
     if (pDisplay == NULL)
+    {
         VBClLogFatalError("Failed to open X11 display\n");
+        return false;
+    }
+
     /* Message contents set to zero. */
     XClientMessageEvent clientMessage = { ClientMessage, 0, 0, 0, 0, 0, 8 };
 
