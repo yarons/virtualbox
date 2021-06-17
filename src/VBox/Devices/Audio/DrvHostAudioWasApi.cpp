@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioWasApi.cpp 89596 2021-06-10 11:37:53Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioWasApi.cpp 89765 2021-06-17 13:38:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Windows Audio Session API.
  */
@@ -2715,6 +2715,7 @@ static DECLCALLBACK(int) drvHostAudioWasHA_StreamPlay(PPDMIHOSTAUDIO pInterface,
             LogRelMax(64, ("WasAPI: Failed to stop draining stream '%s': %Rhrc\n", pStreamWas->Cfg.szName, hrc));
         pStreamWas->fDraining = false;
         pStreamWas->fStarted  = false;
+        pStreamWas->fEnabled  = false;
     }
 
     /*
