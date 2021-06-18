@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 89719 2021-06-15 18:51:56Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 89777 2021-06-18 12:45:13Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1115,6 +1115,7 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                         case VirtualSystemDescriptionType_CloudPublicSSHKey:
                         case VirtualSystemDescriptionType_BootingFirmware:
                         case VirtualSystemDescriptionType_CloudInitScriptPath:
+                        case VirtualSystemDescriptionType_CloudCompartmentId:
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
 
