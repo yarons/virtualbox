@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 89806 2021-06-21 06:28:53Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTestServiceClient.cpp 89807 2021-06-21 06:37:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -162,7 +162,7 @@ static int audioTestSvcClientRecvReply(PATSCLIENT pClient, PATSSRVREPLY pReply, 
                             rc = VERR_NET_PROTOCOL_ERROR;
                     }
 
-                    cbPayloadRead += cbRead;
+                    cbPayloadRead += (uint32_t)cbRead;
                     Assert(cbPayloadRead <= pReply->cbPayload);
                 }
             }
