@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 89815 2021-06-21 12:06:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxX11Helper.cpp 89817 2021-06-21 12:29:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -202,7 +202,7 @@ static void X11IntrorespectInterfaceNode(const QDomElement &interface,
             newMethod->m_strPath = "/";
             newMethod->m_strPath.append(interface.attribute("name"));
             newMethod->m_strPath.replace(".", "/");
-            methods << newMethod;
+            methods.append(newMethod);
         }
         child = child.nextSiblingElement();
     }
