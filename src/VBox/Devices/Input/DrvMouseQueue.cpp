@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 89831 2021-06-22 13:09:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvMouseQueue.cpp 89832 2021-06-22 13:12:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -248,7 +248,7 @@ static DECLCALLBACK(bool) drvMouseQueueConsumer(PPDMDRVINS pDrvIns, PPDMQUEUEITE
                                             pItem->u.Absolute.dw,
                                             pItem->u.Absolute.fButtons);
     else
-        AssertMsgFailedReturn(("enmType=%d\n"), true /* remove buggy data */);
+        AssertMsgFailedReturn(("enmType=%d\n", pItem->enmType), true /* remove buggy data */);
     return rc != VERR_TRY_AGAIN;
 }
 
