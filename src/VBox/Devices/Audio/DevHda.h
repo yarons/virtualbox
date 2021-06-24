@@ -1,4 +1,4 @@
-/* $Id: DevHda.h 89869 2021-06-23 19:06:11Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHda.h 89872 2021-06-24 09:06:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Structures.
  */
@@ -22,9 +22,7 @@
 #endif
 
 #include <iprt/path.h>
-
 #include <VBox/vmm/pdmdev.h>
-
 #include "AudioMixer.h"
 
 /*
