@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 88837 2021-05-03 13:50:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.h 89916 2021-06-25 16:12:46Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -101,6 +101,7 @@ private slots:
     void sltMediumFormatChanged();
     void sltMediumSizeChanged();
     void sltSelectedDiskSourceChanged();
+    void sltSelectLocationButtonClicked();
 
 private:
 
