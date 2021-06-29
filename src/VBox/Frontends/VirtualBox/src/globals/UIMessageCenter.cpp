@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 89954 2021-06-29 13:48:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 89959 2021-06-29 15:20:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -3483,12 +3483,12 @@ void UIMessageCenter::prepare()
                                              const QString&, const QString&,
                                              int, int, int,
                                              const QString&, const QString&, const QString&,
-                                             const QString&)),
+                                             const QString&, const QString&)),
             this, SLOT(sltShowMessageBox(QWidget*, MessageType,
                                          const QString&, const QString&,
                                          int, int, int,
                                          const QString&, const QString&, const QString&,
-                                         const QString&)),
+                                         const QString&, const QString&)),
             Qt::BlockingQueuedConnection);
 
     /* Translations for Main.
