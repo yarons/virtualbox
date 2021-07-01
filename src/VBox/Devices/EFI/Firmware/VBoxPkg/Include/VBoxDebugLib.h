@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugLib.h 85788 2020-08-17 07:03:03Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDebugLib.h 89989 2021-07-01 12:10:28Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDebugLib.h - Debug and logging routines implemented by VBoxDebugLib.
  */

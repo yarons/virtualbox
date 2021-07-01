@@ -1,4 +1,4 @@
-# $Id: VBoxHfs.inf 85801 2020-08-17 16:09:43Z alexander.eichner@oracle.com $
+# $Id: VBoxHfs.inf 89989 2021-07-01 12:10:28Z alexander.eichner@oracle.com $
 ## @file
 # VBoxHfs - VBox HFS FS driver.
 #

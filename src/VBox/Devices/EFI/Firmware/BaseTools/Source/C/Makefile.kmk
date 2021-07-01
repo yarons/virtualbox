@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 85788 2020-08-17 07:03:03Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 89989 2021-07-01 12:10:28Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for EFI C build programs.
 #
@@ -34,7 +34,6 @@ include $(PATH_SUB_CURRENT)/LzmaCompress/Makefile.kmk
 include $(PATH_SUB_CURRENT)/GenFw/Makefile.kmk
 include $(PATH_SUB_CURRENT)/TianoCompress/Makefile.kmk
 include $(PATH_SUB_CURRENT)/EfiRom/Makefile.kmk
-include $(PATH_SUB_CURRENT)/Split/Makefile.kmk
 include $(PATH_SUB_CURRENT)/GenSec/Makefile.kmk
 include $(PATH_SUB_CURRENT)/GenFfs/Makefile.kmk
 include $(PATH_SUB_CURRENT)/GenCrc32/Makefile.kmk
