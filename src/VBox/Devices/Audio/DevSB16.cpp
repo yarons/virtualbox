@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 90011 2021-07-04 20:26:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSB16.cpp 90012 2021-07-04 21:08:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1944,7 +1944,7 @@ static int sb16StreamDoDmaOutput(PSB16STATE pThis, PSB16STREAM pStream, int uDma
         if (RT_LIKELY(!pStream->Dbg.Runtime.fEnabled))
         { /* likely */ }
         else
-            AudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, pv, cbRead, 0 /* fFlags */);
+            AudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, pv, cbRead);
 
         RTCircBufReleaseWriteBlock(pStream->State.pCircBuf, cbRead);
 

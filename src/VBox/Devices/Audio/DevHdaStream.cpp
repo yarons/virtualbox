@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 90011 2021-07-04 20:26:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStream.cpp 90012 2021-07-04 21:08:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1593,7 +1593,7 @@ static void hdaR3StreamDoDmaInput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREA
                 if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufSrc, cbBufSrc, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufSrc, cbBufSrc);
 
 # ifdef VBOX_WITH_DTRACE
                 VBOXDD_HDA_STREAM_DMA_IN((uint32_t)uSD, (uint32_t)cbBufSrc, pStreamShared->State.offRead);
@@ -1777,7 +1777,7 @@ static void hdaR3StreamDoDmaOutput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTRE
             if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
             { /* likely */ }
             else
-                AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst, 0 /* fFlags */);
+                AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst);
 
 # ifdef VBOX_WITH_DTRACE
             VBOXDD_HDA_STREAM_DMA_OUT((uint32_t)uSD, (uint32_t)cbBufDst, pStreamShared->State.offWrite);
@@ -2200,7 +2200,7 @@ static void hdaR3StreamFlushDmaBounceBufferOutput(PHDASTREAM pStreamShared, PHDA
                 if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst);
 
                 RTCircBufReleaseWriteBlock(pCircBuf, cbBufDst);
 

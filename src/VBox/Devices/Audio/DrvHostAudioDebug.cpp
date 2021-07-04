@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 90011 2021-07-04 20:26:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDebug.cpp 90012 2021-07-04 21:08:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -239,7 +239,7 @@ static DECLCALLBACK(int) drvHstAudDebugHA_StreamPlay(PPDMIHOSTAUDIO pInterface, 
     RT_NOREF(pInterface);
     PDRVHSTAUDDEBUGSTREAM pStreamDbg = (PDRVHSTAUDDEBUGSTREAM)pStream;
 
-    int rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbBuf, 0 /* fFlags */);
+    int rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbBuf);
     if (RT_SUCCESS(rc))
         *pcbWritten = cbBuf;
     else
@@ -277,7 +277,7 @@ static DECLCALLBACK(int) drvHstAudDebugHA_StreamCapture(PPDMIHOSTAUDIO pInterfac
         /*
          * Write it.
          */
-        rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbWritten, 0 /* fFlags */);
+        rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbWritten);
         if (RT_SUCCESS(rc))
             *pcbRead = cbWritten;
     }

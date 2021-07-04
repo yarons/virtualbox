@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 90011 2021-07-04 20:26:51Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIchAc97.cpp 90012 2021-07-04 21:08:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1098,7 +1098,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
                 if (RT_LIKELY(!pStreamCC->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvDst, cbDst, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvDst, cbDst);
             }
 
             RTCircBufReleaseWriteBlock(pCircBuf, cbDst);
@@ -1122,7 +1122,7 @@ static int ichac97R3StreamTransfer(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97ST
                 if (RT_LIKELY(!pStreamCC->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvSrc, cbSrc, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamCC->Dbg.Runtime.pFileDMA, pvSrc, cbSrc);
             }
 
             RTCircBufReleaseReadBlock(pCircBuf, cbSrc);
