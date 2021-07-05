@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 90037 2021-07-05 19:14:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.h 90039 2021-07-05 19:39:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -43,7 +43,6 @@ signals:
 
     void sigUserNameChanged(const QString &strUserName);
     void sigPasswordChanged(const QString &strPassword);
-
 
 public:
 
