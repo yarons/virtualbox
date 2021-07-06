@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 87762 2021-02-15 23:38:29Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBInternal.h 90049 2021-07-06 10:23:26Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -531,6 +531,8 @@ DECLHIDDEN(int) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode);
 DECLHIDDEN(uint64_t) vusbRhR3ProcessFrame(PVUSBROOTHUB pThis, bool fCallback);
 
 int  vusbUrbQueueAsyncRh(PVUSBURB pUrb);
+
+bool vusbDevIsDescriptorInCache(PVUSBDEV pDev, PCVUSBSETUP pSetup);
 
 /**
  * Initializes the given URB pool.
