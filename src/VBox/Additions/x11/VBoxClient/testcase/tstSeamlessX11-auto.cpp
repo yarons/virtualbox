@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 90057 2021-07-06 11:19:50Z vadim.galitsyn@oracle.com $ */
+/* $Id: tstSeamlessX11-auto.cpp 90059 2021-07-06 11:40:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -317,7 +317,7 @@ int XNextEvent(Display *display, XEvent *event_return)
     return True;
 }
 
-/* Mock XNextEvent(): this also should not be needed. Just in case, always
+/* Mock XPending(): this also should not be needed. Just in case, always
  * return that at least one event is pending to be processed. */
 extern "C" int XPending(Display *display);
 int XPending(Display *display)
