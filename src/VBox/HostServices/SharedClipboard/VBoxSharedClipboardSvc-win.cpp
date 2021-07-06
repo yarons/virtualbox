@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 86890 2020-11-16 14:34:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 90050 2021-07-06 10:27:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -414,11 +414,12 @@ static LRESULT CALLBACK vboxClipboardSvcWinWndProcMain(PSHCLCONTEXT pCtx,
         }
 
         default:
+            lresultRc = DefWindowProc(hWnd, uMsg, wParam, lParam);
             break;
     }
 
-    LogFlowFunc(("LEAVE hWnd=%p, WM_ %u\n", hWnd, uMsg));
-    return DefWindowProc(hWnd, uMsg, wParam, lParam);
+    LogFlowFunc(("LEAVE hWnd=%p, WM_ %u -> %#zx\n", hWnd, uMsg, lresultRc));
+    return lresultRc;
 }
 
 /**
