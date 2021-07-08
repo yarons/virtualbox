@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 90016 2021-07-04 21:19:22Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStream.cpp 90097 2021-07-08 13:14:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -343,7 +343,7 @@ static int hdaR3StreamAddScheduleItem(PHDASTREAM pStreamShared, uint32_t cbCur, 
         /* Reduce till we've below the threshold. */
         uint32_t cbLoop = cbCurAligned;
         do
-            cbLoop = cbCurAligned / 2;
+            cbLoop = cbLoop / 2;
         while (cbLoop > cbMaxPeriod);
         cbLoop = PDMAudioPropsRoundUpBytesToFrame(pProps, cbLoop);
 
