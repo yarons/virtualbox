@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90060 2021-07-06 12:12:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90093 2021-07-08 11:36:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -53,7 +53,7 @@ public:
 
 protected:
 
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
+    virtual void showEvent(QShowEvent *pEvent) /* override final*/;
     /** Don't reset the user entered values in case of "back" button press. */
     virtual void cleanupPage() /* override */;
 
