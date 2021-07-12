@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 90157 2021-07-12 11:14:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 90159 2021-07-12 17:27:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -96,7 +96,7 @@ void UIHostnameDomainNameEditor::retranslateUi()
         m_pHostnameLineEdit->setToolTip(strHostnameTooltip);
     if (m_pDomainNameLabel)
     {
-        m_pDomainNameLabel->setText(tr("&Domain"));
+        m_pDomainNameLabel->setText(tr("&Domain Name"));
         m_pDomainNameLabel->setToolTip(strDomainTooltip);
     }
     m_pDomainNameLineEdit->setToolTip(strDomainTooltip);
