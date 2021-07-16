@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90225 2021-07-16 10:56:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90233 2021-07-16 15:57:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -468,6 +468,7 @@ void UIWizardNewVMNameOSTypePageBasic::sltGuestOSFamilyChanged(const QString &st
 
 void UIWizardNewVMNameOSTypePageBasic::sltSkipUnattendedInstallChanged(bool fSkip)
 {
+    m_userModifiedParameters << "SkipUnattendedInstall";
     newVMWizardPropertySet(SkipUnattendedInstall, fSkip);
 }
 
