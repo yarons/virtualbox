@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 86869 2020-11-12 07:59:52Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDragAndDropSvc.cpp 90238 2021-07-19 13:48:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -180,6 +180,18 @@ void DragAndDropClient::disconnect(void) RT_NOEXCEPT
 
 int DragAndDropService::init(VBOXHGCMSVCFNTABLE *pTable) RT_NOEXCEPT
 {
+    /* Legacy clients map to the root category. */
+    pTable->idxLegacyClientCategory = HGCM_CLIENT_CATEGORY_ROOT;
+
+    /* Limit to 255 clients (see also DragAndDropService::clientConnect). */
+    for (uintptr_t i = 0; i < RT_ELEMENTS(pTable->acMaxClients); i++)
+        pTable->acMaxClients[i] = UINT8_MAX;
+
+    /* Limit the number of concurrent calls to 256 (playing safe).  */
+    /** @todo Properly determin the max number of pending/concurrent calls for DnD. */
+    for (uintptr_t i = 0; i < RT_ELEMENTS(pTable->acMaxClients); i++)
+        pTable->acMaxCallsPerClient[i] = 256;
+
     /* Register functions. */
     pTable->pfnHostCall          = svcHostCall;
     pTable->pfnSaveState         = NULL;  /* The service is stateless, so the normal */
