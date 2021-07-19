@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 90157 2021-07-12 11:14:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.h 90236 2021-07-19 11:13:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -56,6 +56,7 @@ public:
     QString hostnameDomainName() const;
 
     bool isComplete() const;
+    void mark();
 
 protected:
 

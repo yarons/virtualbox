@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90232 2021-07-16 14:27:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.cpp 90236 2021-07-19 11:13:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class implementation.
  */
@@ -254,5 +254,5 @@ void UIWizardNewVMUnattendedPageBasic::markWidgets() const
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(wizard());
     if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)
-        m_pGAInstallationISOContainer->mark(!UIWizardNewVMUnattendedPage::checkGAISOFile(m_pGAInstallationISOContainer->path()));
+        m_pGAInstallationISOContainer->mark();
 }
