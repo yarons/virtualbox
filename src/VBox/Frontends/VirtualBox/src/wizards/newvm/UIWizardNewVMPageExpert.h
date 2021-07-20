@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 90252 2021-07-20 09:54:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMPageExpert.h 90263 2021-07-20 14:30:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -134,7 +134,7 @@ private:
     QWidget *createNameOSTypeWidgets();
 
     void updateVirtualMediumPathFromMachinePathName();
-    void updateWidgetAterMediumFormatChange();
+    void updateWidgetAfterMediumFormatChange();
     void updateHostnameDomainNameFromMachineName();
     void setEnableNewDiskWidgets(bool fEnable);
     void setVirtualDiskFromDiskCombo();
