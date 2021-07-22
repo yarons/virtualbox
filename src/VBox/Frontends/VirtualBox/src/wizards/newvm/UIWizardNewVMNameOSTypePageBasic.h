@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90223 2021-07-16 08:49:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.h 90280 2021-07-22 07:50:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePageBasic class declaration.
  */
@@ -39,7 +39,7 @@ class UIWizardNewVM;
 
 namespace UIWizardNewVMNameOSTypePage
 {
-    void guessOSTypeFromName(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
+    bool guessOSTypeFromName(UINameAndSystemEditor *pNameAndSystemEditor, QString strNewName);
     bool createMachineFolder(UINameAndSystemEditor *pNameAndSystemEditor,
                              UINativeWizardPage *pCaller,
                              UIWizardNewVM *pWizard);
