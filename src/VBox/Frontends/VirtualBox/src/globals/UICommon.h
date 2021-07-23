@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90086 2021-07-08 08:51:06Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 90301 2021-07-23 12:47:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -726,6 +726,12 @@ public slots:
      * @{ */
         /** Handles language change to new @a strLanguage. */
         void sltGUILanguageChange(QString strLanguage);
+    /** @} */
+
+    /** @name Media related stuff.
+     * @{ */
+        /** Handles signal about medium was created. */
+        void sltHandleMediumCreated(const CMedium &comMedium);
     /** @} */
 
 protected:
