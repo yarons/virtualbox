@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 87971 2021-03-05 14:31:15Z michal.necasek@oracle.com $ */
+/* $Id: DevOHCI.cpp 90332 2021-07-26 12:57:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -6023,7 +6023,7 @@ static DECLCALLBACK(int) ohciR3Destruct(PPDMDEVINS pDevIns)
 
     if (RTCritSectIsInitialized(&pThisCC->CritSect))
         RTCritSectDelete(&pThisCC->CritSect);
-    PDMR3CritSectDelete(&pThis->CsIrq);
+    PDMDevHlpCritSectDelete(pDevIns, &pThis->CsIrq);
 
     /*
      * Tear down the per endpoint in-flight tracking...
