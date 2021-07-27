@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.cpp 90356 2021-07-27 14:06:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageVariant.cpp 90362 2021-07-27 18:00:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class implementation.
  */
@@ -232,5 +232,5 @@ void UIWizardNewVDPageVariant::initializePage()
 bool UIWizardNewVDPageVariant::isComplete() const
 {
     //return mediumVariant() != (qulonglong)KMediumVariant_Max;
-    return false;
+    return true;
 }
