@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 90326 2021-07-26 09:36:52Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 90352 2021-07-27 11:08:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -84,6 +84,12 @@ signals:
         void sigAskToCommitData();
         /** Asks listeners to detach COM. */
         void sigAskToDetachCOM();
+    /** @} */
+
+    /** @name COM: Extension Pack stuff.
+     * @{ */
+        /** Notifies listeners about extension pack @a strName was installed. */
+        void sigExtensionPackInstalled(const QString &strName);
     /** @} */
 
     /** @name Cloud Virtual Machine stuff.
