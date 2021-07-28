@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.h 90370 2021-07-28 14:18:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageVariant.h 90372 2021-07-28 15:30:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class declaration.
  */
@@ -56,6 +56,10 @@ class SHARED_LIBRARY_STUFF UIWizardNewVDPageVariant : public UINativeWizardPage
 public:
 
     UIWizardNewVDPageVariant();
+
+private slots:
+
+    void sltMediumVariantChanged(qulonglong uVariant);
 
 private:
 
