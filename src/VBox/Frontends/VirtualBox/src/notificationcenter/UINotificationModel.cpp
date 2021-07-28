@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 90288 2021-07-22 14:16:13Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationModel.cpp 90371 2021-07-28 14:38:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -60,7 +60,7 @@ QUuid UINotificationModel::appendObject(UINotificationObject *pObject)
 void UINotificationModel::revokeObject(const QUuid &uId)
 {
     /* Remove ID and object: */
-    m_objects.remove(uId);
+    delete m_objects.take(uId);
     m_ids.removeAll(uId);
     /* Notify listeners: */
     emit sigChanged();
