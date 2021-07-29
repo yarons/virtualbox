@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 90300 2021-07-23 11:26:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumItem.h 90412 2021-07-29 14:55:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -123,6 +123,9 @@ protected slots:
 
     /** Handles medium move progress result. */
     void sltHandleMoveProgressFinished();
+
+    /** Handles @a comMedium remove request. */
+    void sltHandleMediumRemoveRequest(CMedium comMedium);
 
 private:
 
