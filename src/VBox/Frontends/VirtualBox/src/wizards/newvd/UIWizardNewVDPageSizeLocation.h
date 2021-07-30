@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageSizeLocation.h 90407 2021-07-29 13:17:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageSizeLocation.h 90427 2021-07-30 13:38:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageSizeLocation class declaration.
  */
@@ -27,6 +27,12 @@
 /* Forward declarations: */
 class CMediumFormat;
 class UIMediumSizeAndPathGroupBox;
+class UIWizardNewVD;
+
+namespace UIWizardNewVDSizeLocation
+{
+    QString selectNewMediumLocation(UIWizardNewVD *pWizard);
+}
 
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageSizeLocation : public UINativeWizardPage
 {
