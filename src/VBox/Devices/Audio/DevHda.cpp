@@ -1,4 +1,4 @@
-/* $Id: DevHda.cpp 90447 2021-07-31 00:44:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHda.cpp 90448 2021-07-31 00:54:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation.
  *
@@ -4753,7 +4753,10 @@ static DECLCALLBACK(int) hdaR3Destruct(PPDMDEVINS pDevIns)
     PHDASTATER3 pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PHDASTATER3);
 
     if (PDMDevHlpCritSectIsInitialized(pDevIns, &pThis->CritSect))
-        (void)PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+    {
+        int rc = PDMDevHlpCritSectEnter(pDevIns, &pThis->CritSect, VERR_IGNORED);
+        AssertRC(rc);
+    }
 
     PHDADRIVER pDrv;
     while (!RTListIsEmpty(&pThisCC->lstDrv))
