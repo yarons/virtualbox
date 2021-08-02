@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 90242 2021-07-19 14:31:08Z michal.necasek@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 90475 2021-08-02 13:12:02Z michal.necasek@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1011,6 +1011,7 @@ void UIKeyboardHandler::prepareCommon()
 
     /* Pressed keys: */
     ::memset(m_pressedKeys, 0, sizeof(m_pressedKeys));
+    ::memset(m_pressedKeysCopy, 0, sizeof(m_pressedKeysCopy));
 }
 
 void UIKeyboardHandler::loadSettings()
