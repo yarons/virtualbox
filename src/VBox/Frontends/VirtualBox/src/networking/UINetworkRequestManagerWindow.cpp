@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManagerWindow.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequestManagerWindow.cpp 90527 2021-08-05 11:24:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManagerWindow stuff implementation.
  */
@@ -91,7 +91,7 @@ UINetworkRequestManagerWindow::UINetworkRequestManagerWindow()
     retranslateUi();
 }
 
-void UINetworkRequestManagerWindow::addNetworkRequestWidget(UINetworkRequest *pNetworkRequest)
+void UINetworkRequestManagerWindow::addNetworkRequestWidget(const QUuid &uuid, UINetworkRequest *pNetworkRequest)
 {
     /* Make sure network-request is really exists: */
     AssertMsg(pNetworkRequest, ("Network-request doesn't exists!\n"));
@@ -99,7 +99,7 @@ void UINetworkRequestManagerWindow::addNetworkRequestWidget(UINetworkRequest *pN
     /* Create new network-request widget: */
     UINetworkRequestWidget *pNetworkRequestWidget = new UINetworkRequestWidget(this, pNetworkRequest);
     m_pWidgetsLayout->addWidget(pNetworkRequestWidget);
-    m_widgets.insert(pNetworkRequest->uuid(), pNetworkRequestWidget);
+    m_widgets.insert(uuid, pNetworkRequestWidget);
 
     /* Hide label: */
     m_pLabel->hide();
