@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 90525 2021-08-05 10:14:37Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequest.cpp 90526 2021-08-05 11:21:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -186,9 +186,6 @@ void UINetworkRequest::prepare()
     m_iUrlIndex = 0;
     m_url = m_urls.at(m_iUrlIndex);
 
-    /* Register network-request in network-manager: */
-    manager()->registerNetworkRequest(this);
-
     /* Prepare network-reply: */
     prepareNetworkReply();
 }
@@ -228,7 +225,4 @@ void UINetworkRequest::cleanup()
 {
     /* Cleanup network-reply: */
     cleanupNetworkReply();
-
-    /* Unregister network-request from network-manager: */
-    manager()->unregisterNetworkRequest(m_uuid);
 }
