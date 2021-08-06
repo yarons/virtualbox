@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 90300 2021-07-23 11:26:26Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 90552 2021-08-06 14:22:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -59,6 +59,9 @@ public:
     static void destroy();
     /** Returns notification-center singleton instance. */
     static UINotificationCenter *instance();
+
+    /** Invokes notification-center. */
+    void invoke();
 
     /** Appends a notification @a pObject to intenal model. */
     QUuid append(UINotificationObject *pObject);
