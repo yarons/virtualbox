@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManager.h 90546 2021-08-06 13:17:21Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequestManager.h 90547 2021-08-06 13:43:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff declaration.
  */
@@ -60,6 +60,9 @@ public:
                                const QString &strTarget,
                                const UserDictionary &requestHeaders,
                                UINetworkCustomer *pCustomer);
+
+    /** Aborts network-request. */
+    void cancelNetworkRequest(const QUuid &uId);
 
 protected:
 
