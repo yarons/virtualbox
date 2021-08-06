@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManager.h 90540 2021-08-06 09:10:55Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkRequestManager.h 90546 2021-08-06 13:17:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff declaration.
  */
@@ -78,6 +78,9 @@ private slots:
     void sltHandleNetworkRequestCancel();
     /** Handles request finishing. */
     void sltHandleNetworkRequestFinish();
+
+    /** Handles signal about @a pNetworkCustomer being destroyed. */
+    void sltHandleNetworkCustomerBeingDestroyed(UINetworkCustomer *pNetworkCustomer);
 
 private:
 
