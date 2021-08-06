@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 90541 2021-08-06 10:19:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIDownloader.h 90542 2021-08-06 10:24:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -48,6 +48,11 @@ signals:
     void sigToStartDownloading();
     /** Signals to start verifying. */
     void sigToStartVerifying();
+
+    /** Notifies listeners about progress change to @a iPercent. */
+    void sigProgressChange(ulong uPercent);
+    /** Notifies listeners about operation progress failed with @a strError. */
+    void sigProgressFailed(const QString &strError);
 
 public:
 
