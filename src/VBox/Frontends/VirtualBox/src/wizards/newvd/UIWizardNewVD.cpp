@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90430 2021-07-30 14:23:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 90564 2021-08-07 11:12:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -143,7 +143,7 @@ bool UIWizardNewVD::createVirtualDisk()
                                                                                                variants);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
             &uiCommon(), &UICommon::sltHandleMediumCreated);
-    notificationCenter().append(pNotification);
+    gpNotificationCenter->append(pNotification);
 
     /* Positive: */
     return true;
