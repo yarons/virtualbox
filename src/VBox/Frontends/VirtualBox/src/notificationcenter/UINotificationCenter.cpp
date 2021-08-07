@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 90552 2021-08-06 14:22:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 90562 2021-08-07 11:04:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -508,8 +508,11 @@ int UINotificationCenter::animatedValue() const
 
 void UINotificationCenter::adjustGeometry()
 {
-    /* Acquire parent width and height: */
+    /* Make sure parent exists: */
     QWidget *pParent = parentWidget();
+    if (!pParent)
+        return;
+    /* Acquire parent width and height: */
     const int iParentWidth = pParent->width();
     const int iParentHeight = pParent->height();
 
