@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 90638 2021-08-11 21:35:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMInternal.h 90639 2021-08-11 21:41:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -469,7 +469,7 @@ typedef struct IOM
     /** @} */
 } IOM;
 #ifdef IOM_WITH_CRIT_SECT_RW
-AssertCompileMemberAlignment(IOM, CritSect, 32);
+AssertCompileMemberAlignment(IOM, CritSect, 64);
 #endif
 /** Pointer to IOM instance data. */
 typedef IOM *PIOM;
