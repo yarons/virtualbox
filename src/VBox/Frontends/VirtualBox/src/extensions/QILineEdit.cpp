@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 90633 2021-08-11 18:25:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: QILineEdit.cpp 90641 2021-08-12 05:39:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -100,7 +100,6 @@ bool QILineEdit::event(QEvent *pEvent)
 
 void QILineEdit::paintEvent(QPaintEvent *pPaintEvent)
 {
-    printf("%d\n", QTime::currentTime().second());
     QLineEdit::paintEvent(pPaintEvent);
 
     if (m_fMarkForError)
