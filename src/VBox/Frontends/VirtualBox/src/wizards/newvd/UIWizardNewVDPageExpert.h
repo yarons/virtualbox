@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 90430 2021-07-30 14:23:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageExpert.h 90669 2021-08-12 19:04:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -63,7 +63,6 @@ private:
     bool isComplete() const;
     bool validatePage();
     void updateDiskWidgetsAfterMediumFormatChange();
-
 
     /* Widgets: */
     UIMediumSizeAndPathGroupBox *m_pSizeAndPathGroup;
