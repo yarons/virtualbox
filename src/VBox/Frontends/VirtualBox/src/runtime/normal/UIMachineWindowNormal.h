@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 90567 2021-08-07 11:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 90685 2021-08-13 16:32:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -108,6 +108,8 @@ private:
     void cleanupVisualState();
     /** Cleanup notification-center routine. */
     void cleanupNotificationCenter();
+    /** Cleanup status-bar routine. */
+    void cleanupStatusBar();
     /** Cleanup session connections routine. */
     void cleanupSessionConnections();
 
