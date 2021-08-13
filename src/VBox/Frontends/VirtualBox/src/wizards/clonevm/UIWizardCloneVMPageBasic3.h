@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.h 90661 2021-08-12 13:25:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMPageBasic3.h 90674 2021-08-13 09:58:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class declaration.
  */
@@ -31,7 +31,6 @@
 #include "COMEnums.h"
 
 /* Forward declaration: */
-class QRadioButton;
 class QIRichTextLabel;
 class UICloneVMCloneModeGroupBox;
 
