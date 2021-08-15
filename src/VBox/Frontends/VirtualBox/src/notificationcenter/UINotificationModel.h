@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.h 90485 2021-08-02 17:27:06Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationModel.h 90688 2021-08-15 14:36:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class declaration.
  */
@@ -62,8 +62,9 @@ public:
 
 private slots:
 
-    /** Handles request about to close sender() notification object. */
-    void sltHandleAboutToClose();
+    /** Handles request about to close sender() notification object.
+      * @param  fDismiss  Brings whether message closed as dismissed. */
+    void sltHandleAboutToClose(bool fDismiss);
 
     /** Handles broadcast request to detach COM stuff. */
     void sltDetachCOM();
