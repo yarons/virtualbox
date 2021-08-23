@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 90049 2021-07-06 10:23:26Z michal.necasek@oracle.com $ */
+/* $Id: VUSBInternal.h 90791 2021-08-23 10:28:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -616,7 +616,7 @@ DECLINLINE(void) vusbUrbUnlink(PVUSBURB pUrb)
  */
 #ifdef VBOX_STRICT
 # define vusbUrbAssert(pUrb) do { \
-    AssertMsg(VALID_PTR((pUrb)),  ("%p\n", (pUrb))); \
+    AssertPtr((pUrb)); \
     AssertMsg((pUrb)->u32Magic == VUSBURB_MAGIC, ("%#x", (pUrb)->u32Magic)); \
     AssertMsg((pUrb)->enmState > VUSBURBSTATE_INVALID && (pUrb)->enmState < VUSBURBSTATE_END, \
               ("%d\n", (pUrb)->enmState)); \
