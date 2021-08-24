@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.h 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumAttachmentImpl.h 90828 2021-08-24 09:44:46Z noreply@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -29,7 +29,7 @@ class ATL_NO_VTABLE MediumAttachment :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(MediumAttachment)
+    DECLARE_COMMON_CLASS_METHODS(MediumAttachment)
 
     HRESULT FinalConstruct();
     void FinalRelease();

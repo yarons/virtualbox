@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 87949 2021-03-04 12:49:43Z noreply@oracle.com $ */
+/* $Id: NATNetworkImpl.h 90828 2021-08-24 09:44:46Z noreply@oracle.com $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -63,7 +63,7 @@ class ATL_NO_VTABLE NATNetwork :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(NATNetwork)
+    DECLARE_COMMON_CLASS_METHODS(NATNetwork)
 
     HRESULT FinalConstruct();
     void FinalRelease();

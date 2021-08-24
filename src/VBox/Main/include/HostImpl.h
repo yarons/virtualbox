@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 86331 2020-09-28 17:21:43Z noreply@oracle.com $ */
+/* $Id: HostImpl.h 90828 2021-08-24 09:44:46Z noreply@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -43,7 +43,7 @@ class ATL_NO_VTABLE Host :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR(Host)
+    DECLARE_COMMON_CLASS_METHODS(Host)
 
     HRESULT FinalConstruct();
     void FinalRelease();

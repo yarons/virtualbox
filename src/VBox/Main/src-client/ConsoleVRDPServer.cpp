@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 90790 2021-08-23 10:28:01Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 90828 2021-08-24 09:44:46Z noreply@oracle.com $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3199,7 +3199,7 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
         int vrc = AuthLibLoad(&mAuthLibCtx, filename.c_str());
         if (RT_FAILURE(vrc))
         {
-            mConsole->setErrorBoth(E_FAIL, vrc, mConsole->tr("Could not load the external authentication library '%s' (%Rrc)"),
+            mConsole->setErrorBoth(E_FAIL, vrc, tr("Could not load the external authentication library '%s' (%Rrc)"),
                                    filename.c_str(), vrc);
             return AuthResultAccessDenied;
         }
