@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90855 2021-08-24 17:51:34Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 90856 2021-08-24 18:08:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -521,6 +521,12 @@ private:
 class SHARED_LIBRARY_STUFF UINotificationProgressMachineSaveState : public UINotificationProgress
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about machine state saved.
+      * @param  fSuccess  Brings whether state was saved successfully. */
+    void sigMachineStateSaved(bool fSuccess);
 
 public:
 
