@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 90830 2021-08-24 10:47:52Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatCommon.cpp 90831 2021-08-24 11:01:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -472,7 +472,7 @@ static DECLCALLBACK(int) audioTestGstAtsHowdyCallback(void const *pvUser)
 {
     PATSCALLBACKCTX pCtx = (PATSCALLBACKCTX)pvUser;
 
-    AssertReturn(pCtx->cClients <= UINT8_MAX, VERR_BUFFER_OVERFLOW);
+    AssertReturn(pCtx->cClients <= UINT8_MAX - 1, VERR_BUFFER_OVERFLOW);
 
     pCtx->cClients++;
 
