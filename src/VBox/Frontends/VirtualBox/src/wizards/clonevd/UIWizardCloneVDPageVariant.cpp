@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageVariant.cpp 90827 2021-08-24 08:50:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPageVariant.cpp 90854 2021-08-24 17:34:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageVariant class implementation.
  */
@@ -115,7 +115,7 @@ void UIWizardCloneVDPageVariant::setWidgetVisibility(const CMediumFormat &medium
 {
     AssertReturnVoid(m_pVariantGroupBox);
 
-    m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat, true /* hide disabled widgets*/);
+    m_pVariantGroupBox->updateMediumVariantWidgetsAfterFormatChange(mediumFormat);
 
     if (m_pDynamicLabel)
         m_pDynamicLabel->setHidden(!m_pVariantGroupBox->isCreateDynamicPossible());
