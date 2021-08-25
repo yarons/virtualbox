@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 90881 2021-08-25 13:28:50Z noreply@oracle.com $ */
+/* $Id: VirtualBoxClientImpl.cpp 90884 2021-08-25 14:26:58Z noreply@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -78,7 +78,6 @@ public:
 
     STDMETHOD(HandleEvent)(VBoxEventType_T aType, IEvent *aEvent)
     {
-        NOREF(aEvent);
         switch(aType)
         {
             case VBoxEventType_OnLanguageChanged:
