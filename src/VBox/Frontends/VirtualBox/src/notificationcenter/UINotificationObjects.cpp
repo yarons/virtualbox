@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90923 2021-08-26 16:20:11Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 90925 2021-08-26 16:25:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1753,6 +1753,9 @@ void UINotificationProgressSnapshotRestore::sltHandleProgressFinished()
 {
     /* Unlock session finally: */
     m_comSession.UnlockMachine();
+
+    /* Notifies listeners: */
+    emit sigSnapshotRestored(error().isEmpty());
 }
 
 
