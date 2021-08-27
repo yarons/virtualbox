@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 90917 2021-08-26 15:26:00Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTestServiceTcp.cpp 90954 2021-08-27 13:25:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -593,7 +593,10 @@ static DECLCALLBACK(int) atsTcpRecvPkt(PATSTRANSPORTINST pThis, PATSTRANSPORTCLI
             }
         }
         else
+        {
+            LogRelFunc(("Received invalid packet size (%zu)\n", cbData));
             rc = VERR_NET_PROTOCOL_ERROR;
+        }
     }
     if (RT_SUCCESS(rc))
         *ppPktHdr = (PATSPKTHDR)pbData;
