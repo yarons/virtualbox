@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 90977 2021-08-29 07:33:02Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 90979 2021-08-29 07:37:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1308,12 +1308,12 @@ int main(int argc, char **argv)
         }
     }
 
+    audioTestShowLogo(g_pStdOut);
+
     if (fDaemonize)
     {
         if (!fDaemonized)
         {
-            audioTestShowLogo(g_pStdOut);
-
             rc = RTProcDaemonize(argv, "--daemonized");
             if (RT_FAILURE(rc))
                 return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTProcDaemonize() failed with %Rrc\n", rc);
