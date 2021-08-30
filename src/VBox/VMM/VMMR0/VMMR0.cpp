@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 90981 2021-08-29 12:50:29Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 90997 2021-08-30 14:04:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1404,12 +1404,6 @@ static void vmmR0RecordRC(PVMCC pVM, PVMCPUCC pVCpu, int rc)
                     break;
                 case VMMCALLRING3_PGM_ALLOCATE_HANDY_PAGES:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallPGMAllocHandy);
-                    break;
-                case VMMCALLRING3_VM_SET_ERROR:
-                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallVMSetError);
-                    break;
-                case VMMCALLRING3_VM_SET_RUNTIME_ERROR:
-                    STAM_COUNTER_INC(&pVM->vmm.s.StatRZCallVMSetRuntimeError);
                     break;
                 case VMMCALLRING3_VM_R0_ASSERTION:
                 default:
