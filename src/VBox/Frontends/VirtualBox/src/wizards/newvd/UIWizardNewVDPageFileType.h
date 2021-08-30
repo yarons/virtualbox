@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageFileType.h 90413 2021-07-29 15:54:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageFileType.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageFileType class declaration.
  */
@@ -27,6 +27,7 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UIDiskFormatsGroupBox;
+class UIWizardNewVD;
 
 namespace UIWizardNewVDFileType
 {

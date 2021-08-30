@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPageBasic.h 90413 2021-07-29 15:54:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPageBasic.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPageBasic class declaration.
  */
@@ -29,6 +29,7 @@ class QIRichTextLabel;
 class UIAdditionalUnattendedOptions;
 class UIGAInstallationGroupBox;
 class UIUserNamePasswordGroupBox;
+class UIWizardNewVM;
 
 namespace UIWizardNewVMUnattendedPage
 {

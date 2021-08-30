@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageVariant.h 90827 2021-08-24 08:50:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPageVariant.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageVariant class declaration.
  */
@@ -51,7 +51,6 @@ private:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
     void prepare();
-    UIWizardCloneVD *cloneWizard() const;
 
     /** Prepares the page. */
     virtual void initializePage() /* override */;

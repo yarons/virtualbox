@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90413 2021-07-29 15:54:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -30,6 +30,7 @@
 /* Forward declarations: */
 class QIRichTextLabel;
 class UINewVMHardwareContainer;
+class UIWizardNewVM;
 
 namespace UIWizardNewVMHardwarePage
 {

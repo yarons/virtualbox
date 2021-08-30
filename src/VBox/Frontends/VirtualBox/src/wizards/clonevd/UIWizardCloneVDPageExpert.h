@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.h 90854 2021-08-24 17:34:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPageExpert.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
  */
@@ -74,7 +74,6 @@ private:
 
     /** Sets the target disk name and location. */
     void setTargetLocation();
-    UIWizardCloneVD *cloneWizard();
     void updateDiskWidgetsAfterMediumFormatChange();
 
     UIDiskFormatsGroupBox *m_pFormatGroupBox;
