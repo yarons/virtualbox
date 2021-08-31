@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePageBasic.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePageBasic.h 91025 2021-08-31 10:52:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePageBasic class declaration.
  */
@@ -60,7 +60,6 @@ private:
     void createConnections();
     void retranslateUi();
     void initializePage();
-    void cleanupPage();
     bool isComplete() const;
 
     /** @name Widgets
