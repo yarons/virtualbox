@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 90752 2021-08-19 15:34:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVM.cpp 91035 2021-08-31 15:57:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -27,7 +27,6 @@
 #include "UIWizardCloneVMPageExpert.h"
 
 /* COM includes: */
-#include "CConsole.h"
 #include "CSystemProperties.h"
 
 

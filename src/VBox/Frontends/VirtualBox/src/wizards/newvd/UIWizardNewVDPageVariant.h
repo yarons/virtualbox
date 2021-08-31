@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageVariant.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDPageVariant.h 91035 2021-08-31 15:57:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageVariant class declaration.
  */
@@ -28,7 +28,6 @@
 class CMediumFormat;
 class QIRichTextLabel;
 class UIDiskVariantGroupBox;
-class UIWizardNewVD;
 
 class SHARED_LIBRARY_STUFF UIWizardNewVDPageVariant : public UINativeWizardPage
 {

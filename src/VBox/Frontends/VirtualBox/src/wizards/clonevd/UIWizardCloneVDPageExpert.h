@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.h 90990 2021-08-30 09:38:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPageExpert.h 91035 2021-08-31 15:57:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
  */
@@ -31,7 +31,6 @@
 class UIDiskFormatsGroupBox;
 class UIDiskVariantGroupBox;
 class UIMediumSizeAndPathGroupBox;
-class UIWizardCloneVD;
 
 /** Expert page of the Clone Virtual Disk Image wizard: */
 class UIWizardCloneVDPageExpert : public UINativeWizardPage
