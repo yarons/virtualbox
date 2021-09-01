@@ -1,6 +1,6 @@
-/* $Id: UIWizardCloneVDPageFormat.h 91035 2021-08-31 15:57:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPathSizePage.h 91062 2021-09-01 14:43:18Z serkan.bayraktar@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIWizardCloneVDPageFormat class declaration.
+ * VBox Qt GUI - UIWizardCloneVDPathSizePage class declaration.
  */
 
 /*
@@ -15,13 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageFormat_h
-#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageFormat_h
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 /* Qt includes: */
+#include <QVariant>
 #include <QSet>
 
 /* GUI includes: */
@@ -31,29 +32,30 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
-class QIRichTextLabel;
-class UIDiskFormatsGroupBox;
+class UIMediumSizeAndPathGroupBox;
 
-/** 2nd page of the Clone Virtual Disk Image wizard (basic extension): */
-class UIWizardCloneVDPageFormat : public UINativeWizardPage
+/** 4th page of the Clone Virtual Disk Image wizard (basic extension): */
+class UIWizardCloneVDPathSizePage : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructs basic page.
-      * @param  enmDeviceType  Brings the device type to limit format to. */
-    UIWizardCloneVDPageFormat(KDeviceType enmDeviceType);
+    /** Constructs basic page. */
+    UIWizardCloneVDPathSizePage(qulonglong uSourceDiskLogicaSize);
 
 private slots:
 
-    void sltMediumFormatChanged();
+    /** Handles command to open target disk. */
+    void sltSelectLocationButtonClicked();
+    void sltMediumPathChanged(const QString &strPath);
+    void sltMediumSizeChanged(qulonglong uSize);
 
 private:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
-    void prepare(KDeviceType enmDeviceType);
+    void prepare(qulonglong uSourceDiskLogicaSize);
 
     /** Prepares the page. */
     virtual void initializePage() /* override */;
@@ -61,11 +63,11 @@ private:
     /** Returns whether the page is complete. */
     virtual bool isComplete() const /* override */;
 
-    /** Holds the description label instance. */
-    QIRichTextLabel *m_pLabel;
-    UIDiskFormatsGroupBox *m_pFormatGroupBox;
+    /** Returns whether the page is valid. */
+    virtual bool validatePage() /* override */;
 
+    UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroupBox;
     QSet<QString> m_userModifiedParameters;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageFormat_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPathSizePage_h */
