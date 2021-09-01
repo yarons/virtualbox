@@ -1,6 +1,6 @@
-/* $Id: UIWizardCloneVMPageExpert.h 91041 2021-08-31 18:09:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMNamePathPage.h 91060 2021-09-01 13:58:48Z serkan.bayraktar@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIWizardCloneVMPageExpert class declaration.
+ * VBox Qt GUI - UIWizardCloneVMNamePathPage class declaration.
  */
 
 /*
@@ -15,11 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageExpert_h
-#define FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageExpert_h
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMNamePathPage_h
+#define FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMNamePathPage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QSet>
 
 /* Local includes: */
 #include "UINativeWizardPage.h"
@@ -27,20 +30,21 @@
 
 /* Forward declarations: */
 class UICloneVMAdditionalOptionsEditor;
-class UICloneVMCloneModeGroupBox;
-class UICloneVMCloneTypeGroupBox;
 class UICloneVMNamePathEditor;
+class QIRichTextLabel;
 
-/** Expert page of the Clone Virtual Machine wizard. */
-class UIWizardCloneVMPageExpert : public UINativeWizardPage
+namespace UIWizardCloneVMNamePathCommon
+{
+    QString composeCloneFilePath(const QString &strCloneName, const QString &strGroup, const QString &strFolderPath);
+}
+
+class UIWizardCloneVMNamePathPage : public UINativeWizardPage
 {
     Q_OBJECT;
 
 public:
 
-    /** Constructor. */
-    UIWizardCloneVMPageExpert(const QString &strOriginalName, const QString &strDefaultPath,
-                              bool fAdditionalInfo, bool fShowChildsOption, const QString &strGroup);
+    UIWizardCloneVMNamePathPage(const QString &strOriginalName, const QString &strDefaultPath, const QString &strGroup);
 
 private slots:
 
@@ -52,22 +56,18 @@ private slots:
 
 private:
 
-    /** Translation stuff. */
     void retranslateUi();
-
-    /** Prepare stuff. */
     void initializePage();
-    void prepare(const QString &strOriginalName, const QString &strDefaultPath, bool fShowChildsOption);
-
-    /** Validation stuff. */
+    void prepare(const QString &strDefaultClonePath);
+    /** Validation stuff */
     bool isComplete() const;
-    bool validatePage();
 
-    UICloneVMNamePathEditor *m_pNamePathGroupBox;
-    UICloneVMCloneTypeGroupBox *m_pCloneTypeGroupBox;
-    UICloneVMCloneModeGroupBox *m_pCloneModeGroupBox;
-    UICloneVMAdditionalOptionsEditor *m_pAdditionalOptionsGroupBox;
-    QString m_strGroup;
+    QIRichTextLabel *m_pMainLabel;
+    UICloneVMNamePathEditor *m_pNamePathEditor;
+    UICloneVMAdditionalOptionsEditor *m_pAdditionalOptionsEditor;
+    QString      m_strOriginalName;
+    QString      m_strGroup;
+    QSet<QString> m_userModifiedParameters;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMPageExpert_h */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevm_UIWizardCloneVMNamePathPage_h */
