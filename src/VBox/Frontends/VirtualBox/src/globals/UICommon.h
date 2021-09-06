@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 91121 2021-09-06 12:32:06Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 91122 2021-09-06 13:07:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -467,13 +467,13 @@ public:
 #endif
 
         /** Generates details for passed USB @a comDevice. */
-        static QString details(const CUSBDevice &comDevice);
+        static QString usbDetails(const CUSBDevice &comDevice);
         /** Generates tool-tip for passed USB @a comDevice. */
-        static QString toolTip(const CUSBDevice &comDevice);
+        static QString usbToolTip(const CUSBDevice &comDevice);
         /** Generates tool-tip for passed USB @a comFilter. */
-        static QString toolTip(const CUSBDeviceFilter &comFilter);
+        static QString usbToolTip(const CUSBDeviceFilter &comFilter);
         /** Generates tool-tip for passed USB @a comWebcam. */
-        static QString toolTip(const CHostVideoInputDevice &comWebcam);
+        static QString usbToolTip(const CHostVideoInputDevice &comWebcam);
     /** @} */
 
     /** @name File-system stuff.
