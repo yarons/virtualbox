@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 90828 2021-08-24 09:44:46Z noreply@oracle.com $ */
+/* $Id: MachineImpl.cpp 91130 2021-09-06 19:00:34Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6974,11 +6974,15 @@ HRESULT Machine::moveTo(const com::Utf8Str &aTargetPath,
     HRESULT hrc = ptrProgress.createObject();
     if (SUCCEEDED(hrc))
     {
+        com::Utf8Str strDefaultPath;
+        if (aTargetPath.isEmpty())
+            i_calculateFullPath(".", strDefaultPath);
+
         /* Initialize our worker task */
         MachineMoveVM *pTask = NULL;
         try
         {
-            pTask = new MachineMoveVM(this, aTargetPath, aType, ptrProgress);
+            pTask = new MachineMoveVM(this, aTargetPath.isEmpty() ? strDefaultPath : aTargetPath, aType, ptrProgress);
         }
         catch (std::bad_alloc &)
         {
