@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 91132 2021-09-06 19:05:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 91169 2021-09-08 18:45:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -464,7 +464,7 @@ void UIMachineLogic::sltMachineStateChanged()
                 /* Ask how to proceed; Power off VM if proposal accepted: */
                 case GuruMeditationHandlerType_Default:
                 {
-                    if (msgCenter().remindAboutGuruMeditation(QDir::toNativeSeparators(strLogFolder)))
+                    if (msgCenter().warnAboutGuruMeditation(QDir::toNativeSeparators(strLogFolder)))
                     {
                         LogRel(("GUI: User requested to power VM off on Guru Meditation.\n"));
                         uisession()->powerOff(false /* do NOT restore current snapshot */);
