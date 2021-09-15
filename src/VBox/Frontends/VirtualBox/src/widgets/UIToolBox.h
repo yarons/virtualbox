@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.h 90333 2021-07-26 13:00:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolBox.h 91242 2021-09-15 10:09:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolBox class declaration.
  */
@@ -55,7 +55,7 @@ public:
 
 protected:
 
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() /* override final */;
 
 private slots:
 
