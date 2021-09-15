@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 91259 2021-09-15 18:47:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 91261 2021-09-15 19:03:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -63,7 +63,8 @@ bool UIWizardExportApp::exportAppliance()
     if (fIsFormatCloudOne)
     {
         /* Get appliance: */
-        CAppliance comAppliance = field("appliance").value<CAppliance>();
+        CAppliance comAppliance = field("cloudAppliance").value<CAppliance>();
+        AssertReturn(comAppliance.isNotNull(), false);
 
         /* Export the VMs, on success we are finished: */
         return exportVMs(comAppliance);
