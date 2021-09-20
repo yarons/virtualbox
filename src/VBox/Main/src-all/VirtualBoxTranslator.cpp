@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxTranslator.cpp 91312 2021-09-20 11:06:57Z noreply@oracle.com $ */
+/* $Id: VirtualBoxTranslator.cpp 91315 2021-09-20 12:34:30Z noreply@oracle.com $ */
 /** @file
  * VirtualBox Translator class.
  */
@@ -24,6 +24,8 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/strcache.h>
+
+#include <VBox/com/AutoLock.h>
 
 #include "Global.h"
 #include "VirtualBoxBase.h"
