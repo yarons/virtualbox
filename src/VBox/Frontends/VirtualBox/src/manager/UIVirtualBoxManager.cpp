@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 91363 2021-09-24 13:08:32Z brent.paulson@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 91368 2021-09-24 16:31:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -910,11 +910,11 @@ void UIVirtualBoxManager::sltOpenExportApplianceWizard()
 
     /* Use the "safe way" to open stack of Mac OS X Sheets: */
     QWidget *pWizardParent = windowManager().realParentWindow(this);
-    UISafePointerWizard pWizard = new UIWizardExportApp(pWizardParent, names,
-                                                        pAction &&
-                                                        pAction == actionPool()->action(UIActionIndexMN_M_Machine_S_ExportToOCI));
+    UINativeWizardPointer pWizard = new UIWizardExportApp(pWizardParent,
+                                                          names,
+                                                          pAction &&
+                                                          pAction == actionPool()->action(UIActionIndexMN_M_Machine_S_ExportToOCI));
     windowManager().registerNewParent(pWizard, pWizardParent);
-    pWizard->prepare();
     pWizard->exec();
     delete pWizard;
 }
