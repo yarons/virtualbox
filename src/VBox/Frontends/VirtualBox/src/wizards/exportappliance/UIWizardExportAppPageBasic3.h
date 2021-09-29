@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 91461 2021-09-29 15:15:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91462 2021-09-29 15:17:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -52,7 +52,7 @@ namespace UIWizardExportAppPage3
                                         bool fIsFormatCloudOne);
     /** Refreshes form properties table. */
     void refreshFormPropertiesTable(UIFormEditorWidget *pFormEditor,
-                                    const CVirtualSystemDescriptionForm &comVsdExportForm,
+                                    const CVirtualSystemDescriptionForm &comVsdForm,
                                     bool fIsFormatCloudOne);
 }
 
