@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 86996 2020-11-26 16:54:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 91511 2021-10-01 12:36:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -77,15 +77,6 @@ VBoxUpdateData::VBoxUpdateData(PeriodType enmPeriodIndex, BranchType enmBranchIn
     , m_enmBranchIndex(enmBranchIndex)
 {
     encode();
-}
-
-VBoxUpdateData::VBoxUpdateData(const VBoxUpdateData &another)
-    : m_strData(another.data())
-    , m_enmPeriodIndex(another.periodIndex())
-    , m_date(another.internalDate())
-    , m_enmBranchIndex(another.branchIndex())
-    , m_version(another.version())
-{
 }
 
 bool VBoxUpdateData::isNoNeedToCheck() const
