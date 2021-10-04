@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 91533 2021-10-04 06:36:46Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTest.cpp 91534 2021-10-04 06:38:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -2709,8 +2709,10 @@ bool AudioTestSetVerifyOptsAreEqual(PAUDIOTESTVERIFYOPTS pOptsA, PAUDIOTESTVERIF
 
     return (   pOptsA->cMaxDiff        == pOptsB->cMaxDiff
             && pOptsA->fKeepGoing      == pOptsB->fKeepGoing
+            && pOptsA->fNormalize      == pOptsB->fNormalize
             && pOptsA->uMaxDiffPercent == pOptsB->uMaxDiffPercent
-            && pOptsA->uMaxSizePercent == pOptsB->uMaxSizePercent);
+            && pOptsA->uMaxSizePercent == pOptsB->uMaxSizePercent
+            && pOptsA->msSearchWindow  == pOptsB->msSearchWindow);
 }
 
 /**
