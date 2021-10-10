@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 91488 2021-09-30 08:17:37Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatDriverStack.cpp 91654 2021-10-10 08:32:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -1415,7 +1415,7 @@ int AudioTestMixStreamDrain(PAUDIOTESTDRVMIXSTREAM pMix, bool fSync)
     }
 
     /*
-     * Then we do the regular workt.
+     * Then we do the regular work.
      */
     return audioTestDriverStackStreamDrain(pMix->pDrvStack, pMix->pStream, fSync);
 }
