@@ -1,4 +1,4 @@
-# $Id: routines.sh 88548 2021-04-15 15:51:27Z vadim.galitsyn@oracle.com $
+# $Id: routines.sh 91700 2021-10-12 19:20:16Z klaus.espenlaub@oracle.com $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
