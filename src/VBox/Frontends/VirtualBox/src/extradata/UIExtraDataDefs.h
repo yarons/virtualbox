@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 91713 2021-10-13 12:13:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 91717 2021-10-13 15:23:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -494,6 +494,7 @@ public:
     {
         DialogType_Invalid     = 0,
         DialogType_VISOCreator = RT_BIT(0),
+        DialogType_BootFailure = RT_BIT(1),
         DialogType_All         = 0xFFFF
     };
     Q_ENUM(DialogType);
