@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 91035 2021-08-31 15:57:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVM.h 91714 2021-10-13 13:05:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -29,7 +29,7 @@
 #include "CMachine.h"
 #include "CSnapshot.h"
 
-/* Clone VM wizard: */
+/** Clone Virtual Machine wizard: */
 class UIWizardCloneVM : public UINativeWizard
 {
     Q_OBJECT;
