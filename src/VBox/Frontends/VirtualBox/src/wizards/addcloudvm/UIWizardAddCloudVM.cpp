@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.cpp 91367 2021-09-24 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVM.cpp 91752 2021-10-15 09:21:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class implementation.
  */
@@ -25,7 +25,6 @@
 
 /* COM includes: */
 #include "CCloudMachine.h"
-#include "CProgress.h"
 
 
 UIWizardAddCloudVM::UIWizardAddCloudVM(QWidget *pParent,
