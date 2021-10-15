@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 91503 2021-10-01 08:57:59Z noreply@oracle.com $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 91769 2021-10-15 19:24:43Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -602,7 +602,7 @@ HRESULT HostNetworkInterface::enableStaticIPConfig(const com::Utf8Str &aIPAddres
             else
             {
                 LogRel(("Failed to EnableStaticIpConfig with rc=%Rrc\n", rc));
-                return rc == VERR_NOT_IMPLEMENTED ? E_NOTIMPL : E_FAIL;
+                return rc == VERR_NOT_IMPLEMENTED ? E_NOTIMPL : (rc == VERR_ACCESS_DENIED ? E_ACCESSDENIED : E_FAIL);
             }
 
         }
