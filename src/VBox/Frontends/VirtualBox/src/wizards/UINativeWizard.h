@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 91755 2021-10-15 09:45:40Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.h 91877 2021-10-20 11:26:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -80,7 +80,7 @@ class SHARED_LIBRARY_STUFF UINativeWizard : public QIWithRetranslateUI<QDialog>
 public:
 
     /** Immediately handles notification @a pProgress object. */
-    void handleNotificationProgressNow(UINotificationProgress *pProgress);
+    bool handleNotificationProgressNow(UINotificationProgress *pProgress);
 
 public slots:
 
