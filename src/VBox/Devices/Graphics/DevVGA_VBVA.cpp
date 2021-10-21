@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 90447 2021-07-31 00:44:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA_VBVA.cpp 91942 2021-10-21 12:59:54Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2827,10 +2827,8 @@ DECLCALLBACK(int) vbvaR3PortSendModeHint(PPDMIDISPLAYPORT pInterface,  uint32_t 
 
 int VBVAInit(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC)
 {
-    PVM pVM = PDMDevHlpGetVM(pDevIns);
-
     int rc = HGSMICreate(&pThisCC->pHGSMI,
-                         pVM,
+                         pDevIns,
                          "VBVA",
                          0,
                          pThisCC->pbVRam,
