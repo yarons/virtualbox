@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 91080 2021-09-02 06:20:27Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTestServiceTcp.cpp 91996 2021-10-22 07:13:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -710,9 +710,9 @@ static DECLCALLBACK(bool) atsTcpPollIn(PATSTRANSPORTINST pThis, PATSTRANSPORTCLI
 }
 
 /**
- * @interface_method_impl{ATSTRANSPORT,pfnTerm}
+ * @interface_method_impl{ATSTRANSPORT,pfnStop}
  */
-static DECLCALLBACK(void) atsTcpTerm(PATSTRANSPORTINST pThis)
+static DECLCALLBACK(void) atsTcpStop(PATSTRANSPORTINST pThis)
 {
     LogRelFlowFuncEnter();
 
@@ -906,7 +906,7 @@ const ATSTRANSPORT g_TcpTransport =
     /* .pfnDestroy        = */ atsTcpDestroy,
     /* .pfnOption         = */ atsTcpOption,
     /* .pfnStart          = */ atsTcpStart,
-    /* .pfnTerm           = */ atsTcpTerm,
+    /* .pfnStop           = */ atsTcpStop,
     /* .pfnWaitForConnect = */ atsTcpWaitForConnect,
     /* .pfnPollIn         = */ atsTcpPollIn,
     /* .pfnPollSetAdd     = */ atsTcpPollSetAdd,
