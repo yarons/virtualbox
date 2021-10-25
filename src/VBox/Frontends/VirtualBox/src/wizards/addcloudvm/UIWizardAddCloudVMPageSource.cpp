@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 91697 2021-10-12 17:34:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 92033 2021-10-25 13:33:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -28,7 +28,6 @@
 #include "QIToolButton.h"
 #include "UICloudNetworkingStuff.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualBoxManager.h"
 #include "UIWizardAddCloudVM.h"
