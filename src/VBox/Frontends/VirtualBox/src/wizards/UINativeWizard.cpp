@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 91877 2021-10-20 11:26:48Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 92035 2021-10-25 13:38:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -78,6 +78,11 @@ void UIFrame::paintEvent(QPaintEvent *pEvent)
 }
 #endif /* VBOX_WS_MAC */
 
+
+UINotificationCenter *UINativeWizard::notificationCenter() const
+{
+    return m_pNotificationCenter;
+}
 
 bool UINativeWizard::handleNotificationProgressNow(UINotificationProgress *pProgress)
 {
