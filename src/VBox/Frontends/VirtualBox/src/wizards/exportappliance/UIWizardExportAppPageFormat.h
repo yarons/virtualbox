@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.h 91707 2021-10-13 10:43:17Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.h 92089 2021-10-26 17:02:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class declaration.
  */
@@ -98,6 +98,7 @@ namespace UIWizardExportAppFormat
                                           bool fIsFormatCloudOne);
     /** Refresh local stuff. */
     void refreshLocalStuff(CAppliance &comLocalAppliance,
+                           UIWizardExportApp *pWizard,
                            const QList<QUuid> &machineIDs,
                            const QString &strUri);
 
@@ -118,6 +119,7 @@ namespace UIWizardExportAppFormat
                            CCloudClient &comCloudClient,
                            CVirtualSystemDescription &comCloudVsd,
                            CVirtualSystemDescriptionForm &comCloudVsdExportForm,
+                           UIWizardExportApp *pWizard,
                            const CCloudProfile &comCloudProfile,
                            const QList<QUuid> &machineIDs,
                            const QString &strUri,
