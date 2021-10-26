@@ -1,4 +1,4 @@
-/* $Id: QMTranslator.h 91720 2021-10-14 11:59:23Z noreply@oracle.com $ */
+/* $Id: QMTranslator.h 92068 2021-10-26 08:35:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -43,7 +43,7 @@ public:
      * @returns Pointer to a translation (UTF-8 encoding), source string on failure.
      */
     const char *translate(const char *pszContext, const char *pszSource, const char **ppszSafeSource,
-                          const char *pszDisamb = NULL, const size_t aNum = (~(size_t)0)) const RT_NOEXCEPT;
+                          const char *pszDisamb = NULL, const size_t aNum = ~(size_t)0) const RT_NOEXCEPT;
 
     /**
      * Loads and parses QM file
