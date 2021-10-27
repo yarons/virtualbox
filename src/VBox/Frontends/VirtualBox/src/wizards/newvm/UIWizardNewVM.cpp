@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 92086 2021-10-26 15:16:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 92095 2021-10-27 11:46:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -131,12 +131,11 @@ bool UIWizardNewVM::createVM()
         m_machine = vbox.CreateMachine(m_strMachineFilePath,
                                        m_strMachineBaseName,
                                        groups, strTypeId, QString());
-        /* Try to delete the hard disk: */
-        deleteVirtualDisk();
-
         if (!vbox.isOk())
         {
             msgCenter().cannotCreateMachine(vbox, this);
+            /* Try to delete the hard disk: */
+            deleteVirtualDisk();
             return false;
         }
     }
