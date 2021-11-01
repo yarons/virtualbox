@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 92096 2021-10-27 12:03:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 92165 2021-11-01 13:08:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -484,6 +484,8 @@ void UIWizardImportAppPageSettings::retranslateUi()
 
 void UIWizardImportAppPageSettings::initializePage()
 {
+    /* Make sure form-editor knows notification-center: */
+    m_pFormEditor->setNotificationCenter(wizard()->notificationCenter());
     /* Translate page: */
     retranslateUi();
 
