@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 92200 2021-11-03 21:46:36Z knut.osmundsen@oracle.com $ */
+/* $Id: GVMMR0.cpp 92201 2021-11-03 21:55:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1663,7 +1663,7 @@ GVMMR0DECL(int) GVMMR0RegisterWorkerThread(PGVM pGVM, GVMMWORKERTHREAD enmWorker
 }
 
 
-/** 
+/**
  * Deregisters a workinger thread (caller).
  *
  * The worker thread cannot be re-created and re-registered, instead the given
