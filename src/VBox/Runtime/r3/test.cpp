@@ -1,4 +1,4 @@
-/* $Id: test.cpp 92258 2021-11-08 09:18:20Z knut.osmundsen@oracle.com $ */
+/* $Id: test.cpp 92325 2021-11-10 14:39:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -808,6 +808,7 @@ static void rtTestXmlStart(PRTTESTINT pTest, const char *pszTest)
     }
 }
 
+
 /**
  * Emit an XML element that doesn't have any value and instead ends immediately.
  *
@@ -845,6 +846,7 @@ static void rtTestXmlElemV(PRTTESTINT pTest, const char *pszTag, const char *psz
         pTest->eXmlState = RTTESTINT::kXmlPos_ElementEnd;
     }
 }
+
 
 /**
  * Wrapper around rtTestXmlElemV.
