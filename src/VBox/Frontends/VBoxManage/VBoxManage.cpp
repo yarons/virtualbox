@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 92373 2021-11-11 14:56:09Z noreply@oracle.com $ */
+/* $Id: VBoxManage.cpp 92375 2021-11-11 15:04:51Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -83,6 +83,7 @@ typedef VBMGCMD const *PCVBMGCMD;
 #endif
 
 DECLARE_TRANSLATION_CONTEXT(VBoxManage);
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

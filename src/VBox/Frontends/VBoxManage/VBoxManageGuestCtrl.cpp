@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 92373 2021-11-11 14:56:09Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 92375 2021-11-11 15:04:51Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -64,6 +64,7 @@
 #endif
 
 using namespace com;
+
 
 /*********************************************************************************************************************************
  * Defined Constants And Macros                                                                                                  *
