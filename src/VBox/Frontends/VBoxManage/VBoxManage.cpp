@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 92372 2021-11-11 14:45:18Z noreply@oracle.com $ */
+/* $Id: VBoxManage.cpp 92373 2021-11-11 14:56:09Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -47,9 +47,11 @@
 
 #include "VBoxManage.h"
 
+
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
+
 /** The command doesn't need the COM stuff. */
 #define VBMG_CMD_F_NO_COM       RT_BIT_32(0)
 
