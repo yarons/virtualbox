@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 92375 2021-11-11 15:04:51Z noreply@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 92403 2021-11-12 15:59:12Z noreply@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2930,6 +2930,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleUpdateAdditions(PGCTLCMDCTX pCtx, int 
                 RTStrPrintf(szValue, sizeof(szValue), "%ls r%u", guestString.raw(), uRevision);
                 SHOW_UTF8_STRING("GuestAdditionsVersion", GuestCtrl::tr("Additions version:"), szValue);
             }
+        }
 #endif
 
     if (RT_SUCCESS(vrc))
