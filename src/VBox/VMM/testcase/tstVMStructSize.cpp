@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 91306 2021-09-17 21:11:01Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 92392 2021-11-12 10:39:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -264,7 +264,6 @@ int main()
 
     PVM pVM = NULL; NOREF(pVM);
 
-    CHECK_MEMBER_ALIGNMENT(VMCPU, vmm.s.u64CallRing3Arg, 8);
 #if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
     CHECK_MEMBER_ALIGNMENT(VMCPU, vmm.s.CallRing3JmpBufR0, 16);
     CHECK_MEMBER_ALIGNMENT(VMCPU, vmm.s.CallRing3JmpBufR0.xmm6, 16);
