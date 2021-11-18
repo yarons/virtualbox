@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 92471 2021-11-17 09:47:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 92504 2021-11-18 19:30:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -52,6 +52,7 @@ public:
     /* Returns true if tree view is currently visible: */
     bool isTreeViewVisible() const;
     void hideTreeView();
+    virtual bool tableViewHasSelection() const = 0;
 
 public slots:
 
