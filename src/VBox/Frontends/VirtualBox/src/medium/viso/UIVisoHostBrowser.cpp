@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 91328 2021-09-22 15:15:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 92492 2021-11-18 14:00:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -21,9 +21,9 @@
 #include <QMimeData>
 #include <QTextEdit>
 #include <QTreeView>
+#include <QTableView>
 
 /* GUI includes: */
-#include "QITableView.h"
 #include "UIVisoHostBrowser.h"
 
 /*********************************************************************************************************************************
@@ -149,7 +149,7 @@ void UIVisoHostBrowser::prepareObjects()
         m_pTreeView->hideColumn(3);
     }
 
-    m_pTableView = new QITableView;
+    m_pTableView = new QTableView;
     if (m_pTableView)
     {
         m_pTableView->setContextMenuPolicy(Qt::CustomContextMenu);
