@@ -1,6 +1,6 @@
-; $Id: bs3-cmn-TestQueryCfgU32.asm 92529 2021-11-21 02:46:44Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-TestQueryCfgU32.asm 92531 2021-11-21 14:10:09Z knut.osmundsen@oracle.com $
 ;; @file
-; BS3Kit - bs3TestSendCmdWithU32.
+; BS3Kit - Bs3TestQueryCfgU8.
 ;
 
 ;
@@ -73,6 +73,7 @@ TNOT16  pop     xDX
         pop     xBP
         BS3_CALL_CONV_EPILOG 1
         BS3_HYBRID_RET
+
 .no_vmmdev:
         xor     xAX, xAX
 %if TMPL_BITS == 16
