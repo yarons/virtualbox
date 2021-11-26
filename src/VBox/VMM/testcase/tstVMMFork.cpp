@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 82968 2020-02-04 10:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMMFork.cpp 92613 2021-11-26 21:53:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Fork Test.
  */
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     /*
      * Initialize the runtime.
      */
-    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
 
 #ifndef AUTO_TEST_ARGS
     if (argc < 2)
