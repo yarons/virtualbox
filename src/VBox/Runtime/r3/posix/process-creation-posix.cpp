@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 92619 2021-11-29 01:53:09Z knut.osmundsen@oracle.com $ */
+/* $Id: process-creation-posix.cpp 92620 2021-11-29 02:08:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -893,7 +893,8 @@ static int rtProcPosixProfileEnvRunAndHarvest(RTENV hEnvToUse, const char *pszAs
                         if (   strcmp(pszShellNm, "bash") == 0
                             || strcmp(pszShellNm, "ksh") == 0
                             || strcmp(pszShellNm, "ksh93") == 0
-                            || strcmp(pszShellNm, "zsh") == 0)
+                            || strcmp(pszShellNm, "zsh") == 0
+                            || strcmp(pszShellNm, "fish") == 0)
                         {
                             pszExec      = pszShell;
                             apszArgs[0]  = szDashShell;
