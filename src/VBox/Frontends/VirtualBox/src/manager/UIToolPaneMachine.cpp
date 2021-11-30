@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 92638 2021-11-30 07:20:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 92640 2021-11-30 08:40:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -314,6 +314,12 @@ void UIToolPaneMachine::setItems(const QList<UIVirtualMachineItem*> &items)
     {
         AssertPtrReturnVoid(m_pPaneVMActivityMonitor);
         m_pPaneVMActivityMonitor->setSelectedVMListItems(m_items);
+    }
+    if (isToolOpened(UIToolType_FileManager))
+    {
+        AssertPtrReturnVoid(m_pPaneFileManager);
+        if (!m_items.isEmpty() && m_items[0])
+            m_pPaneFileManager->setMachine(m_items[0]->id());
     }
 }
 
