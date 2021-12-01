@@ -1,4 +1,4 @@
-/* $Id: RTEnvDupEx-generic.cpp 92669 2021-12-01 09:14:24Z knut.osmundsen@oracle.com $ */
+/* $Id: RTEnvDupEx-generic.cpp 92670 2021-12-01 09:14:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Environment, RTEnvDupEx, generic.
  */
@@ -34,7 +34,6 @@
 #include <iprt/assert.h>
 #include <iprt/errcore.h>
 #include <iprt/string.h>
-#include <iprt/mem.h>
 
 
 
