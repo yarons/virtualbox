@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 92676 2021-12-01 14:59:59Z vadim.galitsyn@oracle.com $ */
+/* $Id: localipc-posix.cpp 92677 2021-12-01 15:03:12Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -1082,6 +1082,7 @@ static int rtLocalIpcSessionQueryUcred(RTLOCALIPCSESSION hSession, PRTPROCESS pP
 
     return VINF_SUCCESS;
 #else
+    RT_NOREF4(hSession, pProcess, pUid, pGid);
     return VERR_NOT_SUPPORTED;
 #endif
 }
