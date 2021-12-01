@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 92660 2021-12-01 02:09:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlProcess.cpp 92661 2021-12-01 02:11:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1344,7 +1344,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
 #endif
     if (RT_SUCCESS(rc))
     {
-        /**
+        /*
          * This one is a bit tricky to also support older hosts:
          *
          * - If the host does not provide a dedicated argv[0] (< VBox 6.1.x), we use the
