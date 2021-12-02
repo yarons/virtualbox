@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 92668 2021-12-01 03:38:24Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlProcess.cpp 92687 2021-12-02 10:19:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1152,7 +1152,6 @@ static int vgsvcGstCtrlProcessAllocateArgv(const char *pszArgv0, const char * co
         {
             /* Terminate array. */
             papszNewArgv[iDst] = NULL;
-            Assert(iDst < cArgs);
 
             *ppapszArgv = papszNewArgv;
             return VINF_SUCCESS;
