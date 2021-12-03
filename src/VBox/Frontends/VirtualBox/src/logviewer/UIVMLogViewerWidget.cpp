@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 92743 2021-12-03 18:20:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 92744 2021-12-03 18:48:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -190,7 +190,7 @@ UITabWidget::UITabWidget(QWidget *pParent /* = 0 */)
 UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
                                          UIActionPool *pActionPool,
                                          bool fShowToolbar /* = true */,
-                                         const CMachine &comMachine /* = CMachine() */,
+                                         const QUuid &uMachineId /* = QUuid() */,
                                          QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
@@ -214,8 +214,8 @@ UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
     /* Prepare VM Log-Viewer: */
     prepare();
     restorePanelVisibility();
-    if (!comMachine.isNull())
-        setMachines(QVector<QUuid>(1, comMachine.GetId()));
+    if (!uMachineId.isNull())
+        setMachines(QVector<QUuid>() << uMachineId);
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIVMLogViewerWidget::sltCommitDataSignalReceived);
 }
