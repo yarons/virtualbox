@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 92772 2021-12-06 19:09:30Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 92785 2021-12-07 12:13:49Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1383,11 +1383,6 @@ int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLF
         ShClPayloadFree(pPayload);
         LogRel(("Shared Clipboard: Signalling of guest clipboard data to the host failed: %Rrc\n", rc));
     }
-
-    /*
-     * Release reference (and free it if not used anymore).
-     */
-    ShClEventRelease(pEvent);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
