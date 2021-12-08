@@ -1,4 +1,4 @@
-; $Id: RTStrEnd.asm 83886 2020-04-21 11:14:20Z knut.osmundsen@oracle.com $
+; $Id: RTStrEnd.asm 92799 2021-12-08 00:47:27Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - RTStrEnd - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; @param    pszString   gcc: rdi  msc: rcx  x86:[esp+4]   wcall: eax
 ; @param    cchMax      gcc: rsi  msc: rdx  x86:[esp+8]   wcall: edx
 ;
-BEGINPROC_EXPORTED RTStrEnd
+RT_BEGINPROC RTStrEnd
         cld
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
