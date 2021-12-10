@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrlListener.cpp 92862 2021-12-10 13:32:55Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrlListener.cpp 92865 2021-12-10 14:37:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Guest control listener implementations.
  */
@@ -476,6 +476,7 @@ STDMETHODIMP GuestEventListener::HandleEvent(VBoxEventType_T aType, IEvent *aEve
                     com::SafeArray<VBoxEventType_T> eventTypes;
                     eventTypes.push_back(VBoxEventType_OnGuestFileRegistered);
                     eventTypes.push_back(VBoxEventType_OnGuestProcessRegistered);
+                    eventTypes.push_back(VBoxEventType_OnGuestSessionStateChanged);
                     CHECK_ERROR_BREAK(es, RegisterListener(pListener, ComSafeArrayAsInParam(eventTypes),
                                                            true /* Active listener */));
 
