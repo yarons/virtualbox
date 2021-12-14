@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 86329 2020-09-28 16:40:45Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDbgConsole.h 92906 2021-12-14 22:14:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -37,6 +37,7 @@
 #ifdef VBOX_WITH_XPCOM
 # include <VirtualBox_XPCOM.h>
 #else
+# include <iprt/win/windows.h> /* Include via cleanup wrapper before VirtualBox.h includes it via rpc.h. */
 # include <VirtualBox.h>
 #endif
 
