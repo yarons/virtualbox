@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92951 2021-12-15 21:03:29Z noreply@oracle.com $ $Revision: 92951 $ $Date: 2021-12-15 22:03:29 +0100 (Wed, 15 Dec 2021) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 92994 2021-12-16 20:33:17Z noreply@oracle.com $ $Revision: 92994 $ $Date: 2021-12-16 21:33:17 +0100 (Thu, 16 Dec 2021) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3586,7 +3586,7 @@ static DECLCALLBACK(int) virtioNetRZConstruct(PPDMDEVINS pDevIns)
 /**
  * The device registration structure.
  */
-const PDMDEVREG g_DeviceVirtioNet =
+const PDMDEVREG g_DeviceVirtioNet_1_0  =
 {
     /* .uVersion = */               PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
