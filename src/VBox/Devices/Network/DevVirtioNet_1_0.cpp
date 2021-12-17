@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93013 2021-12-17 10:11:56Z noreply@oracle.com $ $Revision: 93013 $ $Date: 2021-12-17 11:11:56 +0100 (Fri, 17 Dec 2021) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 93014 2021-12-17 10:29:39Z alexander.eichner@oracle.com $ $Revision: 93014 $ $Date: 2021-12-17 11:29:39 +0100 (Fri, 17 Dec 2021) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -635,7 +635,7 @@ DECLINLINE(const char *) virtioNetThreadStateName(PPDMTHREAD pThread)
 /**
  * Wakeup PDM managed downstream (e.g. hierarchically inferior device's) RX thread
  */
-static void virtioNetWakeupRxBufWaiter(PPDMDEVINS pDevIns)
+static DECLCALLBACK(void) virtioNetWakeupRxBufWaiter(PPDMDEVINS pDevIns)
 {
     PVIRTIONET pThis = PDMDEVINS_2_DATA(pDevIns, PVIRTIONET);
 
