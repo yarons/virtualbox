@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93012 2021-12-17 10:07:36Z noreply@oracle.com $ $Revision: 93012 $ $Date: 2021-12-17 11:07:36 +0100 (Fri, 17 Dec 2021) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 93013 2021-12-17 10:11:56Z noreply@oracle.com $ $Revision: 93013 $ $Date: 2021-12-17 11:11:56 +0100 (Fri, 17 Dec 2021) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -99,7 +99,7 @@
 #define VIRTIONET_F_CTRL_MAC_ADDR        RT_BIT_64(23)         /**< Set MAC address through control channel         */
 /** @} */
 
-#if LOG_ENABLED
+#ifdef IN_RING3
 static const VIRTIO_FEATURES_LIST s_aDevSpecificFeatures[] =
 {
     { VIRTIONET_F_STATUS,              "   STATUS               Configuration status field is available.\n" },
@@ -2540,7 +2540,7 @@ static int virtioNetR3ReadVirtioTxPktHdr(PVIRTIOCORE pVirtio, PVIRTIONET pThis, 
                     ("Header plus message exceeds packet size"), VERR_BUFFER_OVERFLOW);
     }
 
-    AssertMsgReturn(  !pPktHdr->uFlags & VIRTIONET_HDR_F_NEEDS_CSUM
+    AssertMsgReturn( !(pPktHdr->uFlags & VIRTIONET_HDR_F_NEEDS_CSUM)
                     || sizeof(uint16_t) + pPktHdr->uChksumStart + pPktHdr->uChksumOffset <= cbFrame,
                  ("Checksum (%d bytes) doesn't fit into pkt header (%d bytes)\n",
                  sizeof(uint16_t) + pPktHdr->uChksumStart + pPktHdr->uChksumOffset, cbFrame),
