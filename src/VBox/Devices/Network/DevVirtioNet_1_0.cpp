@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 92998 2021-12-17 08:32:37Z noreply@oracle.com $ $Revision: 92998 $ $Date: 2021-12-17 09:32:37 +0100 (Fri, 17 Dec 2021) $ $Author: noreply@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 92999 2021-12-17 08:36:40Z noreply@oracle.com $ $Revision: 92999 $ $Date: 2021-12-17 09:36:40 +0100 (Fri, 17 Dec 2021) $ $Author: noreply@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1890,7 +1890,7 @@ static int virtioNetR3RxPktMultibufXfer(PPDMDEVINS pDevIns, PVIRTIONET pThis, ui
     Log7Func(("  Sending packet header to guest...\n"));
 
     /* Copy packet header to rx buf provided by caller. */
-    uint32_t cbHdrEnqueued = pVirtqBuf->cbPhysReturn == cbPktHdr ? cbPktHdr : 0;
+    size_t cbHdrEnqueued = pVirtqBuf->cbPhysReturn == cbPktHdr ? cbPktHdr : 0;
     virtioCoreR3VirtqUsedBufPut(pDevIns, &pThis->Virtio, pRxVirtq->uIdx, cbPktHdr, pRxPktHdr, pVirtqBuf, cbHdrEnqueued);
 
     /* Cache address of uNumBuffers field of pkthdr to update ex post facto */
