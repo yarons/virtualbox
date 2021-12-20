@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 90780 2021-08-23 09:25:17Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 93033 2021-12-20 18:53:42Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1719,7 +1719,7 @@ static int supR3HardenedVerifyDirRecursive(char *pszDirPath, size_t cchDirPath, 
     }
 
     closedir(pDir);
-    return VINF_SUCCESS;
+    return rc;
 #endif
 }
 
