@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 93033 2021-12-20 18:53:42Z alexander.eichner@oracle.com $ */
+/* $Id: SUPR3HardenedVerify.cpp 93049 2021-12-21 15:14:52Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1685,7 +1685,7 @@ static int supR3HardenedVerifyDirRecursive(char *pszDirPath, size_t cchDirPath, 
                                         4, "Path grew too long during recursion: '", pszDirPath, pEntry->d_name, "'");
             break;
         }
-        suplibHardenedMemCopy(&pszDirPath[cchName], pEntry->d_name, cchName + 1);
+        suplibHardenedMemCopy(&pszDirPath[cchDirPath], pEntry->d_name, cchName + 1);
 
         /*
          * Query the information about the entry and verify it.
