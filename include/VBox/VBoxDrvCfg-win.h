@@ -1,10 +1,10 @@
-/* $Id: VBoxDrvCfg-win.h 85121 2020-07-08 19:33:26Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvCfg-win.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Windows Driver Manipulation API.
  */
 
 /*
- * Copyright (C) 2011-2020 Oracle Corporation
+ * Copyright (C) 2011-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

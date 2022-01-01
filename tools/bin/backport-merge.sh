@@ -1,11 +1,11 @@
 # !kmk_ash
-# $Id: backport-merge.sh 84270 2020-05-12 09:20:36Z andreas.loeffler@oracle.com $
+# $Id: backport-merge.sh 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
 ## @file
 # Script for merging a backport from trunk.
 #
 
 #
-# Copyright (C) 2020 Oracle Corporation
+# Copyright (C) 2020-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

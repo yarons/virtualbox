@@ -1,10 +1,10 @@
-/* $Id: VBoxMimicry.h 89989 2021-07-01 12:10:28Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxMimicry.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxMimicry.h - Debug and logging routines implemented by VBoxDebugLib.
  */
 
 /*
- * Copyright (C) 2009-2020 Oracle Corporation
+ * Copyright (C) 2009-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

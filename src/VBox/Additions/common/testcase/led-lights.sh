@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: led-lights.sh 87392 2021-01-22 23:51:04Z bela.lubkin@oracle.com $
+# $Id: led-lights.sh 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox guest LED demonstration test
 #
 
 #
-# Copyright (C) 2021 Oracle Corporation
+# Copyright (C) 2021-2022 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevPciInternal.h 91890 2021-10-20 12:11:19Z alexander.eichner@oracle.com $ */
+/* $Id: DevPciInternal.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
 
 /*
- * Copyright (C) 2010-2020 Oracle Corporation
+ * Copyright (C) 2010-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

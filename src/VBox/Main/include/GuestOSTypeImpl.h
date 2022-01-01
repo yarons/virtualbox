@@ -1,11 +1,11 @@
-/* $Id: GuestOSTypeImpl.h 92154 2021-10-29 17:11:00Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestOSTypeImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

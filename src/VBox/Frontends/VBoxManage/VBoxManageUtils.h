@@ -1,10 +1,10 @@
-/* $Id: VBoxManageUtils.h 88086 2021-03-11 12:50:12Z noreply@oracle.com $ */
+/* $Id: VBoxManageUtils.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManageUtils.h - Declarations for VBoxManage utility functions.
  */
 
 /*
- * Copyright (C) 2006-2021 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

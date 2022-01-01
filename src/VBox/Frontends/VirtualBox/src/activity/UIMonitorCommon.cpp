@@ -1,10 +1,10 @@
-/* $Id: UIMonitorCommon.cpp 88118 2021-03-15 11:13:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCommon.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class implementation.
  */
 
 /*
- * Copyright (C) 2016-2020 Oracle Corporation
+ * Copyright (C) 2016-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

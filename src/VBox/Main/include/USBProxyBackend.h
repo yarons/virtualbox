@@ -1,10 +1,10 @@
-/* $Id: USBProxyBackend.h 91333 2021-09-22 16:24:48Z alexander.eichner@oracle.com $ */
+/* $Id: USBProxyBackend.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
 
 /*
- * Copyright (C) 2005-2020 Oracle Corporation
+ * Copyright (C) 2005-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: d3d11render.h 86815 2020-11-05 21:45:32Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d11render.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Interface for D3D11 tests.
  */
 
 /*
- * Copyright (C) 2017-2020 Oracle Corporation
+ * Copyright (C) 2017-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

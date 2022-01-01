@@ -1,10 +1,10 @@
-/* $Id: tstRTLdrVerifyPeImage.cpp 86549 2020-10-12 23:59:53Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTLdrVerifyPeImage.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * SUP Testcase - Testing the Authenticode signature verification code.
  */
 
 /*
- * Copyright (C) 2014-2020 Oracle Corporation
+ * Copyright (C) 2014-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

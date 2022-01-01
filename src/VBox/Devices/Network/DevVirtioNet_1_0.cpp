@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 93014 2021-12-17 10:29:39Z alexander.eichner@oracle.com $ $Revision: 93014 $ $Date: 2021-12-17 11:29:39 +0100 (Fri, 17 Dec 2021) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ $Revision: 93115 $ $Date: 2022-01-01 12:31:46 +0100 (Sat, 01 Jan 2022) $ $Author: knut.osmundsen@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -12,7 +12,7 @@
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

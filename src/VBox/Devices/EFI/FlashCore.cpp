@@ -1,4 +1,4 @@
-/* $Id: FlashCore.cpp 91383 2021-09-27 09:59:01Z alexander.eichner@oracle.com $ */
+/* $Id: FlashCore.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

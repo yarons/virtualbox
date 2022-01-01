@@ -1,10 +1,10 @@
-/* $Id: http-server.h 87042 2020-12-04 12:10:36Z andreas.loeffler@oracle.com $ */
+/* $Id: http-server.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Header file for HTTP server implementation.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

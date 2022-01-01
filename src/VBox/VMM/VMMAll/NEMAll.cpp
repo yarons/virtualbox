@@ -1,10 +1,10 @@
-/* $Id: NEMAll.cpp 92449 2021-11-16 10:37:10Z alexander.eichner@oracle.com $ */
+/* $Id: NEMAll.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

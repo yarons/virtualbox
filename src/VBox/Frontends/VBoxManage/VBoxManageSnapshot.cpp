@@ -1,10 +1,10 @@
-/* $Id: VBoxManageSnapshot.cpp 92372 2021-11-11 14:45:18Z noreply@oracle.com $ */
+/* $Id: VBoxManageSnapshot.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

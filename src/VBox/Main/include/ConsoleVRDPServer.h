@@ -1,10 +1,10 @@
-/* $Id: ConsoleVRDPServer.h 91312 2021-09-20 11:06:57Z noreply@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
 
 /*
- * Copyright (C) 2006-2020 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

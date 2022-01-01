@@ -1,10 +1,10 @@
-/* $Id: DBGFR0.cpp 87594 2021-02-03 20:23:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR0.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, R0 part.
  */
 
 /*
- * Copyright (C) 2020 Oracle Corporation
+ * Copyright (C) 2020-2022 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
