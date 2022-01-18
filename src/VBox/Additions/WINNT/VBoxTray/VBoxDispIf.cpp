@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispIf.cpp 93299 2022-01-18 11:23:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1422,7 +1422,7 @@ static DWORD vboxDispIfWaitDisplayDataInited(VBOXDISPIF_OP *pOp)
 static DWORD vboxDispIfUpdateModesWDDM(VBOXDISPIF_OP *pOp, uint32_t u32TargetId, const RTRECTSIZE *pSize)
 {
     DWORD winEr = ERROR_SUCCESS;
-    VBOXDISPIFESCAPE_UPDATEMODES EscData = {0};
+    VBOXDISPIFESCAPE_UPDATEMODES EscData = {{0}};
     EscData.EscapeHdr.escapeCode = VBOXESC_UPDATEMODES;
     EscData.u32TargetId = u32TargetId;
     EscData.Size = *pSize;
