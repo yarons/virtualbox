@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 93293 2022-01-18 08:46:25Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMAllMsrs.cpp 93294 2022-01-18 08:48:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1407,7 +1407,10 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32VmxMisc(PVMCPUCC pVCpu, uint32_t
 static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32VmxCr0Fixed0(PVMCPUCC pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue)
 {
     RT_NOREF_PV(idMsr); RT_NOREF_PV(pRange);
-    *puValue = pVCpu->cpum.s.Guest.hwvirt.vmx.Msrs.u64Cr0Fixed0;
+    if (pVCpu->CTX_SUFF(pVM)->cpum.s.GuestFeatures.fVmx)
+        *puValue = pVCpu->cpum.s.Guest.hwvirt.vmx.Msrs.u64Cr0Fixed0;
+    else
+        *puValue = 0;
     return VINF_SUCCESS;
 }
 
