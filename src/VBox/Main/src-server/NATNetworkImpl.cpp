@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 93348 2022-01-19 17:02:18Z noreply@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -410,6 +410,13 @@ HRESULT NATNetwork::setIPv6Enabled(const BOOL aIPv6Enabled)
 
         if (RT_BOOL(aIPv6Enabled) == m->s.fIPv6Enabled)
             return S_OK;
+
+        /*
+         * If we are enabling ipv6 and the prefix is not set, provide
+         * the default based on ipv4.
+         */
+        if (aIPv6Enabled && m->s.strIPv6Prefix.isEmpty())
+            i_recalculateIPv6Prefix();
 
         m->s.fIPv6Enabled = RT_BOOL(aIPv6Enabled);
     }
