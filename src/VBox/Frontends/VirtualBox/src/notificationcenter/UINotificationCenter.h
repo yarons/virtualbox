@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 93342 2022-01-19 12:26:59Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 93366 2022-01-20 17:13:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -54,8 +54,6 @@ signals:
     void sigOpen();
     /** Requests sliding state-machine to close overlay. */
     void sigClose();
-    /** Notifies listeners about animation step. */
-    void sigAnimationStep();
 
 public:
 
