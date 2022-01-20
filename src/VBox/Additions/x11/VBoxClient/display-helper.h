@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 93380 2022-01-20 19:06:55Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-helper.h 93383 2022-01-20 19:32:38Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * Definitions for Desktop Environment helpers.
@@ -87,8 +87,6 @@ typedef struct
 
     /**
      * Unregister notification callback for display offsets change event.
-     *
-     * @param   pfnNotificationCallback     Notification callback.
      */
     DECLCALLBACKMEMBER(void, pfnUnsubscribeDisplayOffsetChangeNotification, (void));
 
