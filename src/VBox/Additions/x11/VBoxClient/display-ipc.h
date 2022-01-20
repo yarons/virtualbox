@@ -1,4 +1,4 @@
-/* $Id: display-ipc.h 93369 2022-01-20 17:42:41Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-ipc.h 93375 2022-01-20 18:11:54Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * Definitions for IPC communication in between VBoxDRMClient and VBoxClient.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef GA_INCLUDED_SRC_x11_VBoxClient_Display_Ipc_h
-#define GA_INCLUDED_SRC_x11_VBoxClient_Display_Ipc_h
+#ifndef GA_INCLUDED_SRC_x11_VBoxClient_display_ipc_h
+#define GA_INCLUDED_SRC_x11_VBoxClient_display_ipc_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -229,4 +229,4 @@ RTDECL(int) vbDrmIpcSetPrimaryDisplay(PVBOX_DRMIPC_CLIENT pClient, uint32_t idDi
  */
 RTDECL(int) vbDrmIpcReportDisplayOffsets(PVBOX_DRMIPC_CLIENT pClient, uint32_t cOffsets, RTPOINT *paOffsets);
 
-#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_Display_Ipc_h */
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_display_ipc_h */

@@ -1,4 +1,4 @@
-/* $Id: display-helper-generic.cpp 93370 2022-01-20 17:44:36Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-helper-generic.cpp 93375 2022-01-20 18:11:54Z vadim.galitsyn@oracle.com $ */
 /** @file
  * A generic helper for X11 Client which performs Desktop Environment
  * specific actions.
@@ -25,7 +25,7 @@
 #include <VBox/log.h>
 #include <VBox/xrandr.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 #include <iprt/thread.h>
 #include <iprt/mem.h>
