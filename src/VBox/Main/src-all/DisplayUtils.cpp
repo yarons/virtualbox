@@ -1,6 +1,6 @@
-/* $Id: DisplayUtils.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayUtils.cpp 93444 2022-01-26 18:01:15Z knut.osmundsen@oracle.com $ */
 /** @file
- * Implementation of IDisplay helpers.
+ * Implementation of IDisplay helpers, currently only used in VBoxSVC.
  */
 
 /*
