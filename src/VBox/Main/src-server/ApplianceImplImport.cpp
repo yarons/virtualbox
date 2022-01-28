@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 93480 2022-01-28 16:09:52Z brent.paulson@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 93481 2022-01-28 16:31:30Z brent.paulson@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -5747,7 +5747,7 @@ l_skipped:
 
                             if (uOrigControllerPortValue != uNewControllerPortValue)
                             {
-                                AD.lPort = uNewControllerPortValue;
+                                AD.lPort = (int32_t)uNewControllerPortValue;
                             }
                             if (uOrigControllerIndex != uTargetControllerIndex)
                             {
