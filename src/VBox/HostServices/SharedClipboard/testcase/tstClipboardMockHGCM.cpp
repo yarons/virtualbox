@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 93495 2022-01-31 13:08:33Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardMockHGCM.cpp 93504 2022-01-31 16:17:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -1178,8 +1178,8 @@ static void tstShClUserMockInit(PTSTUSERMOCK pUsrMock, const char *pszName)
 #if defined(RT_OS_LINUX)
     SHCLCALLBACKS Callbacks;
     RT_ZERO(Callbacks);
-    Callbacks.pfnReportFormats = tstShClUserMockReportFormatsCallback;
-    Callbacks.pfnOnClipboardRead     = tstShClUserMockOnGetDataCallback;
+    Callbacks.pfnReportFormats   = tstShClUserMockReportFormatsCallback;
+    Callbacks.pfnOnClipboardRead = tstShClUserMockOnGetDataCallback;
 
     pUsrMock->pCtx = (PSHCLCONTEXT)RTMemAllocZ(sizeof(SHCLCONTEXT));
     AssertPtrReturnVoid(pUsrMock->pCtx);
