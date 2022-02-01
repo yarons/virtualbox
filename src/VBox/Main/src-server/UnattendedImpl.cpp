@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 93529 2022-02-01 12:23:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 93530 2022-02-01 12:29:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -3063,7 +3063,7 @@ HRESULT Unattended::setImageIndex(ULONG index)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     AssertReturn(mpInstaller == NULL, setErrorBoth(E_FAIL, VERR_WRONG_ORDER, tr("Cannot change after prepare() has been called")));
-    AssertReturn(index >= mDetectedImages.size(), setErrorBoth(E_FAIL, VERR_OUT_OF_RANGE, tr("Image index is larger than the number of detected images")));
+    AssertReturn(index < mDetectedImages.size(), setErrorBoth(E_FAIL, VERR_OUT_OF_RANGE, tr("Image index is larger than the number of detected images")));
     midxImage = index;
     return S_OK;
 }
