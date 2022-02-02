@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scmsubversion.cpp 93553 2022-02-02 22:53:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -1509,6 +1509,7 @@ int ScmSvnQueryParentProperty(PSCMRWSTATE pState, const char *pszName, char **pp
         SCMRWSTATE ParentState;
         ParentState.pszFilename         = szPath;
         ParentState.fFirst              = false;
+        ParentState.fNeedsManualRepair  = false;
         ParentState.fIsInSvnWorkingCopy = true;
         ParentState.cSvnPropChanges     = 0;
         ParentState.paSvnPropChanges    = NULL;
