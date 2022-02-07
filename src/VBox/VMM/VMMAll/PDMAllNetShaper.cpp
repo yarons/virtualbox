@@ -1,4 +1,4 @@
-/* $Id: PDMAllNetShaper.cpp 93632 2022-02-07 01:15:44Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAllNetShaper.cpp 93633 2022-02-07 01:27:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -107,6 +107,7 @@ VMM_INT_DECL(bool) PDMNetShaperAllocateBandwidth(PVMCC pVM, PPDMNSFILTER pFilter
                         else
                             Log2(("pdmNsAllocateBandwidth/%s: refused - cbTransfer=%#zx cTokens=%#x cTokensAdded=%#x\n",
                                   pGroup->szName, cbTransfer, cTokens, cTokensAdded));
+                        ASMAtomicIncU64(&pGroup->cTotalChokings);
                         fAllowed = false;
                     }
                 }
