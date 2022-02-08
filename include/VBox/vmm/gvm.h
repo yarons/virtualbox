@@ -1,4 +1,4 @@
-/* $Id: gvm.h 93655 2022-02-08 13:56:01Z knut.osmundsen@oracle.com $ */
+/* $Id: gvm.h 93658 2022-02-08 14:09:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -338,5 +338,4 @@ AssertCompileSizeAlignment(GVM,             16384);
 /** @} */
 
 #endif /* !VBOX_INCLUDED_vmm_gvm_h */
-
 
