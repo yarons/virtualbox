@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 93674 2022-02-10 07:33:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -94,7 +94,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
 void UIWizardCloneVD::retranslateUi()
 {
     /* Translate wizard: */
-    setWindowTitle(tr("Copy Virtual Disk Image"));
+    setWindowTitle(tr("Copy Virtual Disk"));
     UINativeWizard::retranslateUi();
 }
 
