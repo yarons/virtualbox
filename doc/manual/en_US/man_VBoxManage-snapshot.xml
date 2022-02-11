@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-snapshot" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-06-25 20:35:48 +0200 (Fri, 25 Jun 2021) $</pubdate>
+    <pubdate>$Date: 2022-02-11 21:10:19 +0100 (Fri, 11 Feb 2022) $</pubdate>
     <title>VBoxManage snapshot</title>
   </refentryinfo>
 
@@ -30,8 +30,8 @@
 
   <refnamediv>
     <refname>VBoxManage-snapshot</refname>
-    <refpurpose>manage &product-name; virtual machine snapshots</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refpurpose>manage virtual machine snapshots</refpurpose>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>
