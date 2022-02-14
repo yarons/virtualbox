@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 93742 2022-02-14 20:59:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmReg.cpp 93746 2022-02-14 21:04:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -828,5 +828,4 @@ DISDECL(int) DISQueryParamRegPtr(PCPUMCTXCORE pCtx, PCDISSTATE pDis, PCDISOPPARA
     }
     return VERR_INVALID_PARAMETER;
 }
-
 
