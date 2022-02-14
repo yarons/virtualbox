@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 93635 2022-02-07 10:43:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 93725 2022-02-14 13:46:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -34,7 +34,6 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 
 
