@@ -19,8 +19,8 @@
 ]>
 <refentry id="vboxmanage-cloud" lang="en">
   <refentryinfo>
+    <pubdate>$Date: 2022-02-16 20:28:38 +0100 (Wed, 16 Feb 2022) $</pubdate>
     <title>VBoxManage cloud</title>
-    <pubdate>$Date: 2022-02-11 21:10:19 +0100 (Fri, 11 Feb 2022) $</pubdate>
   </refentryinfo>
 
   <refmeta>

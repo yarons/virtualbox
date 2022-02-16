@@ -12,11 +12,14 @@
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  -->
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % all.entities SYSTEM "all-entities.ent">
+%all.entities;
+]>
 <refentry id="vboxmanage-extpack" lang="en">
-
   <refentryinfo>
-    <pubdate>$Date: 2022-02-11 21:10:19 +0100 (Fri, 11 Feb 2022) $</pubdate>
+    <pubdate>$Date: 2022-02-16 20:28:38 +0100 (Wed, 16 Feb 2022) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
