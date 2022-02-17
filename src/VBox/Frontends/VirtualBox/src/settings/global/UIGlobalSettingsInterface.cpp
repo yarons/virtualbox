@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.cpp 93818 2022-02-17 09:23:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -119,7 +119,7 @@ void UIGlobalSettingsInterface::saveFromCacheTo(QVariant &data)
 void UIGlobalSettingsInterface::retranslateUi()
 {
     m_pLabelColorTheme->setText(tr("Color &Theme:"));
-    m_pEditorColorTheme->setWhatsThis(tr("Selects the color theme. It can be Light, Dark or automatically detected (default)."));
+    m_pEditorColorTheme->setToolTip(tr("Selects the color theme. It can be Light, Dark or automatically detected (default)."));
 }
 
 void UIGlobalSettingsInterface::prepare()
