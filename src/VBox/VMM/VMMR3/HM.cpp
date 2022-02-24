@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 93905 2022-02-24 09:13:26Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 93922 2022-02-24 15:14:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1079,7 +1079,7 @@ static void hmR3DisableRawMode(PVM pVM)
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU pVCpu = pVM->apCpusR3[idCpu];
-        PGMHCChangeMode(pVM, pVCpu, PGMMODE_REAL);
+        PGMHCChangeMode(pVM, pVCpu, PGMMODE_REAL, false /* fForce */);
     }
 }
 
