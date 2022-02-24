@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSizeRC.cpp 93944 2022-02-24 21:15:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -395,7 +395,7 @@ int main()
     GEN_CHECK_OFF(VGASTATE, cMilliesRefreshInterval);
     GEN_CHECK_OFF(VGASTATE, au32DirtyBitmap);
     GEN_CHECK_OFF(VGASTATE, au32DirtyBitmap[1]);
-    GEN_CHECK_OFF(VGASTATE, au32DirtyBitmap[(VGA_VRAM_MAX / PAGE_SIZE / 32) - 1]);
+    GEN_CHECK_OFF(VGASTATE, au32DirtyBitmap[(VGA_VRAM_MAX / GUEST_PAGE_SIZE / 32) - 1]);
     GEN_CHECK_OFF(VGASTATE, fHasDirtyBits);
     GEN_CHECK_OFF(VGASTATE, fLFBUpdated);
     GEN_CHECK_OFF(VGASTATE, fGCEnabled);
