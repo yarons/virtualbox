@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 93918 2022-02-24 13:58:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedScript.cpp 93920 2022-02-24 14:00:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -104,6 +104,8 @@ static bool detectComparisonOperator(char *pszComparisonOperator, const char *pa
     }
     return false;
 }
+
+
 /*********************************************************************************************************************************
 *   UnattendedScriptTemplate Implementation                                                                                      *
 *********************************************************************************************************************************/
