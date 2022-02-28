@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 93884 2022-02-22 11:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -140,7 +140,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

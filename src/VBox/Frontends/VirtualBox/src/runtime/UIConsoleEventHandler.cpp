@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIConsoleEventHandler.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -92,7 +92,7 @@ public:
     /** Constructs event proxy object on the basis of passed @a pParent and @a pSession. */
     UIConsoleEventHandlerProxy(QObject *pParent, UISession *pSession);
     /** Destructs event proxy object. */
-    virtual ~UIConsoleEventHandlerProxy() /* override */;
+    virtual ~UIConsoleEventHandlerProxy() RT_OVERRIDE;
 
 private slots:
 

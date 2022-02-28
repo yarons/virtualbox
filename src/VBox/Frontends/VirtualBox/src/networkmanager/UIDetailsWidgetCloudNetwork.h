@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetCloudNetwork.h 93328 2022-01-18 16:33:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsWidgetCloudNetwork.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class declaration.
  */
@@ -208,7 +208,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

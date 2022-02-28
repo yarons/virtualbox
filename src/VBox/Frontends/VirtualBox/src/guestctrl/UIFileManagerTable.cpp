@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 93649 2022-02-08 10:04:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -67,7 +67,7 @@ public:
 
     UIFileManagerHistoryComboBox(QWidget *pParent = 0);
     /** Emit sigHidePopup as the popup is hidded. */
-    virtual void hidePopup() /* override */;
+    virtual void hidePopup() RT_OVERRIDE;
 };
 
 
@@ -89,7 +89,7 @@ public:
 
 protected:
 
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
 private:
 
