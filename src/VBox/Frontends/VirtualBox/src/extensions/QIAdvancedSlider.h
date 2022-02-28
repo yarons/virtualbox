@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIAdvancedSlider.h 93992 2022-02-28 17:56:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIAdvancedSlider class declaration.
  */
@@ -102,6 +102,9 @@ public:
     void setWarningHint(int iMin, int iMax);
     /** Defines the error hint to be from @a iMin to @a iMax. */
     void setErrorHint(int iMin, int iMax);
+
+    /** Defines slider @a strToolTip. */
+    void setToolTip(const QString &strToolTip);
 
 public slots:
 
