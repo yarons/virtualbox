@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachinePreview.cpp 94014 2022-03-01 09:13:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QActionGroup>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QMenu>
 #include <QPainter>
