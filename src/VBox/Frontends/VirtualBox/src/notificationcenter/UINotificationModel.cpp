@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationModel.cpp 94037 2022-03-01 12:04:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -105,9 +105,12 @@ void UINotificationModel::sltHandleAboutToClose(bool fDismiss)
     /* Dismiss message if requested: */
     if (fDismiss && !pSender->internalName().isEmpty())
     {
-        QSet<QString> suppressedMessages = gEDataManager->suppressedMessages().toSet();
-        suppressedMessages << pSender->internalName();
-        gEDataManager->setSuppressedMessages(suppressedMessages.toList());
+        QStringList suppressedMessages = gEDataManager->suppressedMessages();
+        if (!suppressedMessages.contains(pSender->internalName()))
+        {
+            suppressedMessages.push_back(pSender->internalName());
+            gEDataManager->setSuppressedMessages(suppressedMessages);
+        }
     }
 
     /* Revoke it from internal storage: */
