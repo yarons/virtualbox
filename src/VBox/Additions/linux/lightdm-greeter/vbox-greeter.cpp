@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox-greeter.cpp 94184 2022-03-11 18:24:17Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -327,7 +327,7 @@ static int vbox_wait_prop(uint32_t uClientID,
             rc = VbglR3GuestPropWait(uClientID, pszKey, pvBuf, cbBuf,
                                      0 /* Last timestamp; just wait for next event */, uTimeoutMS,
                                      &pszName, &pszValue, &u64TimestampOut,
-                                     &pszFlags, &cbBuf);
+                                     &pszFlags, &cbBuf, NULL);
         }
         else
             rc = VERR_NO_MEMORY;
