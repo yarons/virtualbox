@@ -19,7 +19,7 @@
 ]>
 <refentry id="vboxmanage-getextradata" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2021-06-25 20:39:58 +0200 (Fri, 25 Jun 2021) $</pubdate>
+    <pubdate>$Date: 2022-03-12 20:57:40 +0100 (Sat, 12 Mar 2022) $</pubdate>
     <title>VBoxManage getextradata</title>
   </refentryinfo>
 
@@ -32,7 +32,7 @@
     <refname>VBoxManage-getextradata</refname>
     <refpurpose>view keyword values that are associated with a virtual machine or
       configuration</refpurpose>
-    <refclass>Oracle VM VirtualBox</refclass>
+    <refclass>&product-name;</refclass>
   </refnamediv>
 
   <refsynopsisdiv>
