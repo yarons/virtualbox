@@ -12,11 +12,15 @@
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  -->
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % all.entities SYSTEM "all-entities.ent">
+%all.entities;
+]>
 <refentry id="vboxmanage-cloudprofile" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2022-03-14 10:39:06 +0100 (Mon, 14 Mar 2022) $</pubdate>
+    <pubdate>$Date: 2022-03-16 14:23:16 +0100 (Wed, 16 Mar 2022) $</pubdate>
     <title>VBoxManage cloudprofile</title>
   </refentryinfo>
 
