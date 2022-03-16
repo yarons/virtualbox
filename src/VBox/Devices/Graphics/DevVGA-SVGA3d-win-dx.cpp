@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 94265 2022-03-16 10:33:19Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 94266 2022-03-16 10:35:55Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1696,7 +1696,6 @@ static HRESULT dxShaderCreate(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext
 
                 SVGACOTableDXStreamOutputEntry const *pEntry = &pDXContext->cot.paStreamOutput[soid];
                 DXSTREAMOUTPUT *pDXStreamOutput = &pDXContext->pBackendDXContext->paStreamOutput[soid];
-                uint32_t const cSOTarget = pDXContext->pBackendDXContext->cSOTarget;
 
                 for (uint32_t i = 0; i < pDXStreamOutput->cDeclarationEntry; ++i)
                 {
