@@ -1,4 +1,4 @@
-/* $Id: manifest3.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: manifest3.cpp 94291 2022-03-17 13:29:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
@@ -505,6 +505,7 @@ static RTVFSIOSTREAMOPS g_rtManifestPassthruIosOps =
         "manifest passthru I/O stream",
         rtManifestPtIos_Close,
         rtManifestPtIos_QueryInfo,
+        NULL,
         RTVFSOBJOPS_VERSION
     },
     RTVFSIOSTREAMOPS_VERSION,
