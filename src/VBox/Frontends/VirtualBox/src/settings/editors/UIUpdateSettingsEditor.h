@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 94059 2022-03-02 14:41:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.h 94395 2022-03-29 16:29:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -42,7 +42,7 @@ class SHARED_LIBRARY_STUFF UIUpdateSettingsEditor : public QIWithRetranslateUI<Q
 
 public:
 
-    /** Constructs update settings editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIUpdateSettingsEditor(QWidget *pParent = 0);
 
     /** Defines editor @a guiValue. */

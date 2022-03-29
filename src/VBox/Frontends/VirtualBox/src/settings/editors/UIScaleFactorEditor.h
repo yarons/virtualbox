@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 94357 2022-03-24 14:42:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIScaleFactorEditor.h 94395 2022-03-29 16:29:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */
@@ -42,7 +42,7 @@ class SHARED_LIBRARY_STUFF UIScaleFactorEditor : public QIWithRetranslateUI<QWid
 
 public:
 
-    /** Creates scale factor editor passing @a pParent to the base-class. */
+    /** Constructs editor passing @a pParent to the base-class. */
     UIScaleFactorEditor(QWidget *pParent);
 
     /** Defines @a iMonitorCount. */
