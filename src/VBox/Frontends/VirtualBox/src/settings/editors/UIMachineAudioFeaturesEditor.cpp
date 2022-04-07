@@ -1,4 +1,4 @@
-/* $Id: UIMachineAudioFeaturesEditor.cpp 94395 2022-03-29 16:29:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineAudioFeaturesEditor.cpp 94515 2022-04-07 14:13:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineAudioFeaturesEditor class implementation.
  */
@@ -22,9 +22,6 @@
 
 /* GUI includes: */
 #include "UIMachineAudioFeaturesEditor.h"
-#ifdef VBOX_WS_X11
-# include "VBoxUtils-x11.h"
-#endif
 
 
 UIMachineAudioFeaturesEditor::UIMachineAudioFeaturesEditor(QWidget *pParent /* = 0 */)
