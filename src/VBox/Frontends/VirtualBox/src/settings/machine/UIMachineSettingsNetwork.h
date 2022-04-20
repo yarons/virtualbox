@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 94555 2022-04-11 13:34:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 94653 2022-04-20 15:15:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -66,8 +66,8 @@ public:
 
  public slots:
 
-    /** Handles particular tab update. */
-    void sltHandleTabUpdate();
+    /** Handles adapter alternative name change. */
+    void sltHandleAlternativeNameChange();
 
 protected:
 

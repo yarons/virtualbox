@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 94623 2022-04-18 12:00:35Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 94653 2022-04-20 15:15:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -297,7 +297,7 @@ void UINetworkFeaturesEditor::sltHandleAdvancedButtonStateChange()
     /* Update widget visibility: */
     m_pWidgetSettings->setVisible(fExpanded);
     /* Notify listeners about the button state change: */
-    emit sigNotifyAdvancedButtonStateChange(fExpanded);
+    emit sigAdvancedButtonStateChange(fExpanded);
 }
 
 void UINetworkFeaturesEditor::sltOpenPortForwardingDlg()
