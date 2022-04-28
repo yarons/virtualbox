@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 94734 2022-04-28 12:42:09Z vadim.galitsyn@oracle.com $ */
+/* $Id: UINotificationCenter.h 94737 2022-04-28 14:26:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -107,6 +107,9 @@ private slots:
     void sltIssueOrderChange();
     /** Handles order changes. */
     void sltHandleOrderChange();
+
+    /** @todo EXAMPLE -- REMOVE THIS */
+    void sltUpdateAgentAvailable(CUpdateAgent comAgent, QString, KUpdateChannel, KUpdateSeverity, QString, QString, QString);
 
     /** Issues request to make open button @a fToggled. */
     void sltHandleOpenButtonToggled(bool fToggled);
