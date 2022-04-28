@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 94449 2022-04-02 14:09:02Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 94741 2022-04-28 17:56:12Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -37,6 +37,7 @@
 typedef struct DXShaderInfo
 {
     VGPU10_PROGRAM_TYPE enmProgramType;
+    bool fGuestSignatures : 1;
     void *pvBytecode;
     uint32_t cbBytecode;
     uint32_t cInputSignature;
