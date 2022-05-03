@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 94744 2022-04-28 18:12:39Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 94793 2022-05-03 11:47:03Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -324,6 +324,7 @@ public:
 
     int i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf);
     int i_releaseCryptoIf(PCVBOXCRYPTOIF pCryptoIf);
+    HRESULT i_unloadCryptoIfModule(void);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     // VMMDev needs:
