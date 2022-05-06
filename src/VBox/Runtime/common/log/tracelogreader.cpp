@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tracelogreader.cpp 94888 2022-05-06 10:53:59Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -815,7 +815,7 @@ static DECLCALLBACK(int) rtTraceLogRdrEvtDescRecvd(PRTTRACELOGRDRINT pThis, RTTR
             /* Allocate new internal event descriptor state. */
             size_t cbEvtDesc = RT_UOFFSETOF_DYN(RTTRACELOGRDREVTDESC, aEvtItemDesc[pEvtDesc->cEvtItems]);
             PRTTRACELOGRDREVTDESC pEvtDescInt = (PRTTRACELOGRDREVTDESC)RTMemAllocZ(cbEvtDesc);
-            if (RT_LIKELY(pEvtDesc))
+            if (RT_LIKELY(pEvtDescInt))
             {
                 pEvtDescInt->cbStrId               = pEvtDesc->cbStrId;
                 pEvtDescInt->cbStrDesc             = pEvtDesc->cbStrDesc;
