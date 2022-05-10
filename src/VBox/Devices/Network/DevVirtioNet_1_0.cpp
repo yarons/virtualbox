@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 94969 2022-05-09 17:06:17Z alexander.eichner@oracle.com $ $Revision: 94969 $ $Date: 2022-05-09 19:06:17 +0200 (Mon, 09 May 2022) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 94976 2022-05-10 09:43:49Z alexander.eichner@oracle.com $ $Revision: 94976 $ $Date: 2022-05-10 11:43:49 +0200 (Tue, 10 May 2022) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1152,6 +1152,9 @@ static DECLCALLBACK(int) virtioNetR3LegacyDeviceLoadExec(PPDMDEVINS pDevIns, PSS
 
         if (uVersion > VIRTIONET_SAVEDSTATE_VERSION_3_1_BETA1_LEGACY)
         {
+            /* Zero-out the the Unicast/Multicast filter table */
+            memset(&pThis->aMacUnicastFilter[0], 0, VIRTIONET_MAC_FILTER_LEN * sizeof(RTMAC));
+
             rc = pHlp->pfnSSMGetU8( pSSM, &pThis->fPromiscuous);
             AssertRCReturn(rc, rc);
             rc = pHlp->pfnSSMGetU8( pSSM, &pThis->fAllMulticast);
@@ -1175,8 +1178,6 @@ static DECLCALLBACK(int) virtioNetR3LegacyDeviceLoadExec(PPDMDEVINS pDevIns, PSS
             pThis->cUnicastFilterMacs = cCombinedUnicastMulticastEntries;
             rc = pHlp->pfnSSMGetMem(pSSM, pThis->aMacUnicastFilter, cCombinedUnicastMulticastEntries * sizeof(RTMAC));
             AssertRCReturn(rc, rc);
-            /* Zero-out the remainder of the Unicast/Multicast filter table */
-            memset(&pThis->aMacUnicastFilter[pThis->cUnicastFilterMacs], 0, VIRTIONET_MAC_FILTER_LEN * sizeof(RTMAC));
             rc = pHlp->pfnSSMGetMem(pSSM, pThis->aVlanFilter, sizeof(pThis->aVlanFilter));
             AssertRCReturn(rc, rc);
         }
