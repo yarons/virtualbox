@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWelcomePane.h 95019 2022-05-16 13:19:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
@@ -48,6 +48,11 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+private slots:
+
+    /** Handles activated @a strLink. */
+    void sltHandleLinkActivated(const QString &strLink);
 
 private:
 
