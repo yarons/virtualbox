@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 94748 2022-04-28 18:45:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 95064 2022-05-23 16:21:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -3632,6 +3632,15 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
     if (mEnmOsType == VBOXOSTYPE_Oracle || mEnmOsType == VBOXOSTYPE_Oracle_x64)
     {
         if (RTStrVersionCompare(mStrDetectedOSVersion.c_str(), "6.4") < 0)
+        {
+            *aIsUnattendedInstallSupported = false;
+            return S_OK;
+        }
+    }
+    /* Old Debians fail since package repos have been move to some other mirror location. */
+    if (mEnmOsType == VBOXOSTYPE_Debian || mEnmOsType == VBOXOSTYPE_Debian_x64)
+    {
+        if (RTStrVersionCompare(mStrDetectedOSVersion.c_str(), "9.0") < 0)
         {
             *aIsUnattendedInstallSupported = false;
             return S_OK;
