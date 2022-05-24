@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -131,7 +131,7 @@ void darwinSetShowsToolbarButtonImpl(NativeNSWindowRef pWindow, bool fEnabled)
     [pWindow setShowsToolbarButton:fEnabled];
 }
 
-void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage, bool fCenter)
+void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage)
 {
     /* Get the parent view of the close button. */
     NSView *wv = [[pWindow standardWindowButton:NSWindowCloseButton] superview];
@@ -140,10 +140,9 @@ void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage, bool 
         /* We have to calculate the size of the title bar for the center case. */
         NSSize s = [pImage size];
         NSSize s1 = [wv frame].size;
-        NSSize s2 = [[pWindow contentView] frame].size;
         /* Correctly position the label. */
-        NSImageView *iv = [[NSImageView alloc] initWithFrame:NSMakeRect(s1.width - s.width - (fCenter ? 10 : 0),
-                                                                        fCenter ? s2.height + (s1.height - s2.height - s.height) / 2 : s1.height - s.height - 1,
+        NSImageView *iv = [[NSImageView alloc] initWithFrame:NSMakeRect(s1.width - s.width,
+                                                                        s1.height - s.height - 1,
                                                                         s.width, s.height)];
         /* Configure the NSImageView for auto moving. */
         [iv setImage:pImage];
@@ -712,4 +711,3 @@ void *darwinCocoaToCarbonEvent(void *pvCocoaEvent)
     NSEvent *pEvent = (NSEvent*)pvCocoaEvent;
     return (void*)[pEvent eventRef];
 }
-

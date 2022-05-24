@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 94065 2022-03-02 20:58:24Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -72,9 +72,9 @@ void darwinSetShowsToolbarButton(QToolBar *aToolBar, bool fEnabled)
         ::darwinSetShowsToolbarButtonImpl(::darwinToNativeWindow(parent), fEnabled);
 }
 
-void darwinLabelWindow(QWidget *pWidget, QPixmap *pPixmap, bool fCenter)
+void darwinLabelWindow(QWidget *pWidget, QPixmap *pPixmap)
 {
-    ::darwinLabelWindow(::darwinToNativeWindow(pWidget), ::darwinToNSImageRef(pPixmap), fCenter);
+    ::darwinLabelWindow(::darwinToNativeWindow(pWidget), ::darwinToNSImageRef(pPixmap));
 }
 
 void darwinSetHidesAllTitleButtons(QWidget *pWidget)
@@ -760,4 +760,3 @@ void darwinDebugPrintEvent(const char *psz, EventRef evtRef)
 }
 
 #endif /* DEBUG */
-

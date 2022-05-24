@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 94998 2022-05-12 15:35:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -347,7 +347,7 @@ void UIMachineWindowNormal::prepareVisualState()
     if (uiCommon().isBeta())
     {
         QPixmap betaLabel = ::betaLabel(QSize(74, 26));
-        ::darwinLabelWindow(this, &betaLabel, false);
+        ::darwinLabelWindow(this, &betaLabel);
     }
 
     /* For 'Yosemite' and above: */
