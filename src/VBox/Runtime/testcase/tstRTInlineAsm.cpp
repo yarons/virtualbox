@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 95072 2022-05-24 11:22:21Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 95074 2022-05-24 13:38:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -1448,6 +1448,7 @@ DECLINLINE(void) tstASMAtomicCmpXchgU32Worker(uint32_t volatile *pu32)
     CHECK_OP_AND_VAL_EX(bool, "%d", "%d", pi32, ASMAtomicCmpXchgS32(pi32, INT32_MAX, 19), true, INT32_MAX);
 
 #if ARCH_BITS == 32
+    *pu32 = 29;
     void * volatile *ppv = (void * volatile *)pu32;
     CHECK_OP_AND_VAL_EX(bool, "%d", "%p", ppv, ASMAtomicCmpXchgPtrVoid(ppv, NULL, (void *)(intptr_t)-29), false, (void *)(intptr_t)29);
     CHECK_OP_AND_VAL_EX(bool, "%d", "%p", ppv, ASMAtomicCmpXchgPtrVoid(ppv, NULL, (void *)(intptr_t)29), true, NULL);
