@@ -1,4 +1,4 @@
-/* $Id: d3d11render.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: d3d11render.h 95081 2022-05-24 17:24:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Interface for D3D11 tests.
  */
@@ -59,6 +59,7 @@ public:
     virtual ID3D11Device *Device() = 0;
     virtual ID3D11DeviceContext *ImmediateContext() = 0;
     virtual ID3D11RenderTargetView *RenderTargetView() = 0;
+    virtual ID3D11DepthStencilView *DepthStencilView() = 0;
 };
 
 class D3D11Render
