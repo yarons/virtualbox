@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 95082 2022-05-24 18:06:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -212,6 +212,11 @@ int darwinWindowToolBarHeight(QWidget *pWidget)
 {
     NOREF(pWidget);
     return 0;
+}
+
+int darwinWindowTitleHeight(QWidget *pWidget)
+{
+    return ::darwinWindowTitleHeight(::darwinToNativeWindow(pWidget));
 }
 
 bool darwinIsToolbarVisible(QToolBar *pToolBar)

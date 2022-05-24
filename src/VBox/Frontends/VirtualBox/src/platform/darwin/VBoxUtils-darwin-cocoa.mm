@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 95082 2022-05-24 18:06:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -404,6 +404,13 @@ int darwinWindowToolBarHeight(NativeNSWindowRef pWindow)
         toolbarHeight = NSHeight(windowFrame) - NSHeight([[pWindow contentView] frame]) - theight;
 
     return toolbarHeight;
+}
+
+int darwinWindowTitleHeight(NativeNSWindowRef pWindow)
+{
+    NSView *pSuperview = [[pWindow standardWindowButton:NSWindowCloseButton] superview];
+    NSSize sz = [pSuperview frame].size;
+    return sz.height;
 }
 
 bool darwinIsToolbarVisible(NativeNSWindowRef pWindow)

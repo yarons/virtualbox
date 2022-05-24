@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 95078 2022-05-24 15:45:28Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.h 95082 2022-05-24 18:06:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -104,6 +104,7 @@ void darwinTest(NativeNSViewRef pView, NativeNSViewRef pView1, int h);
 void darwinWindowInvalidateShapeImpl(NativeNSWindowRef pWindow);
 void darwinWindowInvalidateShadowImpl(NativeNSWindowRef pWindow);
 int  darwinWindowToolBarHeight(NativeNSWindowRef pWindow);
+SHARED_LIBRARY_STUFF int darwinWindowTitleHeight(NativeNSWindowRef pWindow);
 bool darwinIsToolbarVisible(NativeNSWindowRef pWindow);
 SHARED_LIBRARY_STUFF bool darwinIsWindowMaximized(NativeNSWindowRef pWindow);
 void darwinMinaturizeWindow(NativeNSWindowRef pWindow);
@@ -279,6 +280,7 @@ void darwinWindowAnimateResizeNew(QWidget *pWidget, int h, bool fAnimate);
 void darwinWindowInvalidateShape(QWidget *pWidget);
 void darwinWindowInvalidateShadow(QWidget *pWidget);
 int  darwinWindowToolBarHeight(QWidget *pWidget);
+SHARED_LIBRARY_STUFF int darwinWindowTitleHeight(QWidget *pWidget);
 bool darwinIsToolbarVisible(QToolBar *pToolBar);
 SHARED_LIBRARY_STUFF bool darwinIsWindowMaximized(QWidget *pWidget);
 void darwinMinaturizeWindow(QWidget *pWidget);
