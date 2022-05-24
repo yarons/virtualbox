@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 94064 2022-03-02 15:49:12Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 95069 2022-05-24 09:40:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -63,6 +63,7 @@ signals:
     void sigReloadPage();
     void sigAddBookmark();
     void sigStatusBarMessage(const QString &strMessage, int iTimeOut);
+
 public:
 
     UIHelpBrowserWidget(EmbedTo enmEmbedding, const QString &strHelpFilePath, QWidget *pParent = 0);
