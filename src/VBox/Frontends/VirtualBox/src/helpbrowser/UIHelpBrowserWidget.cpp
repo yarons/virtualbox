@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 94064 2022-03-02 15:49:12Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 95068 2022-05-24 08:04:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -803,7 +803,7 @@ void UIHelpBrowserTab::retranslateUi()
 {
     setActionTextAndToolTip(m_pHomeAction, tr("Home"), tr("Return to Start Page"));
     setActionTextAndToolTip(m_pBackwardAction, tr("Backward"), tr("Go Back to Previous Page"));
-    setActionTextAndToolTip(m_pForwardAction, tr("Forward"), tr("Go Froward to Next Page"));
+    setActionTextAndToolTip(m_pForwardAction, tr("Forward"), tr("Go Forward to Next Page"));
     setActionTextAndToolTip(m_pAddBookmarkAction, tr("Add Bookmark"), tr("Add a New Bookmark"));
     setActionTextAndToolTip(m_pReloadPageAction, tr("Reload"), tr("Reload the Current Page"));
     setActionTextAndToolTip(m_pFindInPageAction, tr("Find in Page"), tr("Find a String in the Current Page"));
