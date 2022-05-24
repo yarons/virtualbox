@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 95071 2022-05-24 11:06:24Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 95072 2022-05-24 11:22:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -3253,7 +3253,6 @@ void tstASMBench(void)
     BENCH(ASMCountTrailingZerosU32(s_u32),       "ASMCountTrailingZerosU32");
     BENCH(ASMCountTrailingZerosU64(s_u64),       "ASMCountTrailingZerosU64");
 
-s_u32 = 0; if (s_u32) { /// remove me
     /* The Darwin gcc does not like this ... */
 #if !defined(RT_OS_DARWIN) && !defined(GCC44_32BIT_PIC) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
     BENCH(s_u8 = ASMGetApicId(),                "ASMGetApicId");
