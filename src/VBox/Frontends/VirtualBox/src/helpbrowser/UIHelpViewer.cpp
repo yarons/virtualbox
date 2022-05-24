@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 95069 2022-05-24 09:40:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 95076 2022-05-24 14:25:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -42,6 +42,7 @@
 /* GUI includes: */
 #include "QIToolButton.h"
 #include "UICursor.h"
+#include "UICommon.h"
 #include "UIHelpViewer.h"
 #include "UIHelpBrowserWidget.h"
 #include "UIIconPool.h"
