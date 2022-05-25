@@ -1,4 +1,4 @@
-# $Id: DefToAsmExterns.sed 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: DefToAsmExterns.sed 95113 2022-05-25 20:47:13Z knut.osmundsen@oracle.com $
 ## @file
 # SED script for generating assembly externs from a VBoxRT windows .def file.
 #
@@ -28,6 +28,11 @@
 # Remove uncertain exports.
 #
 /not-some-systems/d
+
+#
+# Check the external side of function aliases.
+#
+s/=[^ ;]*//
 
 #
 # Remove comments and space. Skip empty lines.
