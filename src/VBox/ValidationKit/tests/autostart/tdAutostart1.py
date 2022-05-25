@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Autostart testcase using.
+Autostart testcase using <please-tell-what-I-am-doing>.
 """
 
 __copyright__ = \
@@ -25,7 +25,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $"
+__version__ = "$Id: tdAutostart1.py 95094 2022-05-25 11:46:01Z andreas.loeffler@oracle.com $"
 
 # Standard Python imports.
 import os;
@@ -1363,12 +1363,12 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
         """
         Execute the testcase.
         """
-        return self.oTestVmSet.actionExecute(self, self.testAutostartOneVfg)
+        return self.oTestVmSet.actionExecute(self, self.testAutostartOneCfg)
 
     #
     # Test execution helpers.
     #
-    def testAutostartOneVfg(self, oVM, oTestVm):
+    def testAutostartOneCfg(self, oVM, oTestVm):
         # Reconfigure the VM
         fRc = True;
         self.logVmInfo(oVM);
