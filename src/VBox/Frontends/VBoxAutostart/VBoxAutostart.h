@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostart.h 95103 2022-05-25 14:37:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -197,18 +197,20 @@ DECLHIDDEN(RTEXITCODE) autostartStopMain(PCFGAST pCfgAst);
 /**
  * Logs a verbose message to the appropriate system log.
  *
+ * @param   cVerbosity  Verbosity level when logging should happen.
  * @param   pszFormat   The log string. No trailing newline.
  * @param   ...         Format arguments.
  */
-DECLHIDDEN(void) autostartSvcLogVerboseV(const char *pszFormat, va_list va);
+DECLHIDDEN(void) autostartSvcLogVerboseV(unsigned cVerbosity, const char *pszFormat, va_list va);
 
 /**
  * Logs a verbose message to the appropriate system log.
  *
+ * @param   cVerbosity  Verbosity level when logging should happen.
  * @param   pszFormat   The log string. No trailing newline.
  * @param   ...         Format arguments.
  */
-DECLHIDDEN(void) autostartSvcLogVerbose(const char *pszFormat, ...);
+DECLHIDDEN(void) autostartSvcLogVerbose(unsigned cVerbosity, const char *pszFormat, ...);
 
 /**
  * Logs a warning message to the appropriate system log.

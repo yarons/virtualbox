@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStart.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostartStart.cpp 95103 2022-05-25 14:37:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
@@ -32,6 +32,8 @@
 #include <list>
 
 #include "VBoxAutostart.h"
+
+extern unsigned g_cVerbosity;
 
 using namespace com;
 
@@ -71,7 +73,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
 
     if (uStartupDelay)
     {
-        autostartSvcLogVerbose("Delay starting for %d seconds ...\n", uStartupDelay);
+        autostartSvcLogVerbose(1, "Delaying start for %RU32 seconds ...\n", uStartupDelay);
         vrc = RTThreadSleep(uStartupDelay * 1000);
     }
 
@@ -136,7 +138,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
 
                 if ((*it).uStartupDelay > uDelayCurr)
                 {
-                    autostartSvcLogVerbose("Delay starting of the next VMs for %d seconds ...\n",
+                    autostartSvcLogVerbose(1, "Delaying start of the next VMs for %ul seconds ...\n",
                                            (*it).uStartupDelay - uDelayCurr);
                     RTThreadSleep(((*it).uStartupDelay - uDelayCurr) * 1000);
                     uDelayCurr = (*it).uStartupDelay;
@@ -149,7 +151,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
                                                            ComSafeArrayNullInParam(), progress.asOutParam()));
                 if (SUCCEEDED(rc) && !progress.isNull())
                 {
-                    autostartSvcLogVerbose("Waiting for VM \"%ls\" to power on...\n", (*it).strId.raw());
+                    autostartSvcLogVerbose(1, "Waiting for VM '%ls' to power on...\n", (*it).strId.raw());
                     CHECK_ERROR(progress, WaitForCompletion(-1));
                     if (SUCCEEDED(rc))
                     {
@@ -169,7 +171,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
                                     com::GluePrintErrorInfo(info);
                                 }
                                 else
-                                    autostartSvcLogVerbose("VM \"%ls\" has been successfully started.\n", (*it).strId.raw());
+                                    autostartSvcLogVerbose(1, "VM '%ls' has been successfully started.\n", (*it).strId.raw());
                             }
                         }
                     }
