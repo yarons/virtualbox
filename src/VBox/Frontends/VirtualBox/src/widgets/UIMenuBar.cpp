@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 94021 2022-03-01 10:32:11Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMenuBar.cpp 95104 2022-05-25 14:42:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -22,6 +22,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIImageTools.h"
 #include "UIMenuBar.h"
 
@@ -47,12 +48,13 @@ void UIMenuBar::paintEvent(QPaintEvent *pEvent)
         const QString key("vbox:betaLabel");
         if (!QPixmapCache::find(key, &betaLabel))
         {
-            betaLabel = ::betaLabel();
+            betaLabel = ::betaLabel(QSize(80, 16), this);
             QPixmapCache::insert(key, betaLabel);
         }
         QSize s = size();
         QPainter painter(this);
         painter.setClipRect(pEvent->rect());
-        painter.drawPixmap(s.width() - betaLabel.width() - 10, (height() - betaLabel.height()) / 2, betaLabel);
+        const double dDpr = gpDesktop->devicePixelRatio(this);
+        painter.drawPixmap(s.width() - betaLabel.width() / dDpr - 10, (height() - betaLabel.height() / dDpr) / 2, betaLabel);
     }
 }
