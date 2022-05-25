@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 95085 2022-05-25 05:02:14Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 95091 2022-05-25 10:29:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1279,7 +1279,6 @@ static int dxDefineStreamOutput(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXConte
     PVMSVGAMOB pMob = NULL;
     if (pEntry->usesMob)
     {
-        DEBUG_BREAKPOINT_TEST();
         pMob = vmsvgaR3MobGet(pSvgaR3State, pEntry->mobid);
         ASSERT_GUEST_RETURN(pMob, VERR_INVALID_PARAMETER);
 
@@ -1305,9 +1304,16 @@ static int dxDefineStreamOutput(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXConte
         unsigned const iLastBit = ASMBitLastSetU32(registerMask);
 
         pDst->Stream         = pSrc->stream;
-        pDst->SemanticName   = NULL; /* Will be taken from the shader output declaration. */
+        pDst->SemanticName   = NULL; /* Semantic name and index will be taken from the shader output declaration. */
         pDst->SemanticIndex  = 0;
-        pDst->StartComponent = iFirstBit > 0 ? iFirstBit - 1 : 0;
+        /* A geometry shader may return an attribute as a component:
+         *   Name   Index Mask Register
+         *   ATTRIB 3       z  2
+         * In this case SO declaration expects StartComponent = 0 and ComponentCount = 1
+         * (not StartComponent = 2 and ComponentCount = 1)
+         * This 'StartComponent = iFirstBit > 0 ? iFirstBit - 1 : 0;' did not work with a sample from a D3D11 book.
+         */
+        pDst->StartComponent = 0;
         pDst->ComponentCount = iFirstBit > 0 ? iLastBit - (iFirstBit - 1) : 0;
         pDst->OutputSlot     = pSrc->outputSlot;
     }

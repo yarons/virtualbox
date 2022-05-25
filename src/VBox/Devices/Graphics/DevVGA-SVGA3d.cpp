@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 95008 2022-05-13 16:20:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.cpp 95091 2022-05-25 10:29:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -1467,7 +1467,7 @@ int vmsvga3dSurfaceMap(PVGASTATECC pThisCC, SVGA3dSurfaceImageId const *pImage, 
     vmsvga3dSurfaceMapInit(pMap, enmMapType, &clipBox, pSurface,
                            pMipLevel->pSurfaceData, pMipLevel->cbSurfacePitch, pMipLevel->cbSurfacePlane);
 
-    LogFunc(("SysMem: pvData %p\n", pMap->pvData));
+    LogFunc(("SysMem: sid = %u, pvData %p\n", pImage->sid, pMap->pvData));
     return VINF_SUCCESS;
 }
 
