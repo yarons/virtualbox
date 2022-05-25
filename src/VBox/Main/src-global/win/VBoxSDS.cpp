@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSDS.cpp 95119 2022-05-25 20:59:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -691,7 +691,7 @@ protected:
         }
     }
 
-    virtual HRESULT preMessageLoop(int nShowCmd)
+    virtual HRESULT preMessageLoop(int nShowCmd) throw()
     {
         Assert(m_fInitialized);
         LogFunc(("Enter\n"));
