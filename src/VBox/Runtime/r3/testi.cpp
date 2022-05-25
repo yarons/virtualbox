@@ -1,4 +1,4 @@
-/* $Id: testi.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: testi.cpp 95095 2022-05-25 12:18:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework, the implicit test handle API variation.
  */
@@ -181,11 +181,11 @@ RTR3DECL(int) RTTestIErrContextV(const char *pszFormat, va_list va)
 }
 
 
-RTR3DECL(int) RTTestErrContext(const char *pszFormat, ...)
+RTR3DECL(int) RTTestIErrContext(const char *pszFormat, ...)
 {
     va_list va;
     va_start(va, pszFormat);
-    int rc = RTTestIErrContextV(pszFormat, va);
+    int rc = RTTestErrContextV(NIL_RTTEST, pszFormat, va);
     va_end(va);
     return rc;
 }
