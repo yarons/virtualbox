@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 94126 2022-03-08 14:18:58Z knut.osmundsen@oracle.com $
+# $Id: vboxtestvms.py 95093 2022-05-25 11:32:39Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94126 $"
+__version__ = "$Revision: 95093 $"
 
 # Standard Python imports.
 import copy;
@@ -1977,7 +1977,7 @@ class TestVmManager(object):
                sKind = 'WindowsNT4', acCpusSup = range(1, 33)),
 
         # W2K
-        TestVm('tst-2ksp4',                 kfGrpStdSmoke,        sHd = '4.2/win2ksp4/t-win2ksp4.vdi',
+        TestVm('tst-w2ksp4',                kfGrpStdSmoke,        sHd = '4.2/win2ksp4/t-win2ksp4.vdi',
                sKind = 'Windows2000', acCpusSup = range(1, 33)),
 
         # XP
