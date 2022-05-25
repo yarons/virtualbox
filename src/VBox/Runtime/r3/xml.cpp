@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: xml.cpp 95109 2022-05-25 20:37:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -426,7 +426,7 @@ GlobalLock::~GlobalLock()
 
 void GlobalLock::setExternalEntityLoader(PFNEXTERNALENTITYLOADER pfnLoader)
 {
-    m->pfnOldLoader = xmlGetExternalEntityLoader();
+    m->pfnOldLoader = (PFNEXTERNALENTITYLOADER)xmlGetExternalEntityLoader();
     xmlSetExternalEntityLoader(pfnLoader);
 }
 
