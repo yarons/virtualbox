@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 95090 2022-05-25 09:26:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-netbsd.c 95092 2022-05-25 11:21:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -170,16 +170,16 @@ extern struct cfattach vboxguest_ca; /* CFATTACH_DECL */
  */
 static struct cdevsw g_VBoxGuestNetBSDChrDevSW =
 {
-    VBoxGuestNetBSDOpen,
-    noclose,
-    noread,
-    nowrite,
-    noioctl,
-    nostop,
-    notty,
-    nopoll,
-    nommap,
-    nokqfilter,
+    .d_open = VBoxGuestNetBSDOpen,
+    .d_close = noclose,
+    .d_read = noread,
+    .d_write = nowrite,
+    .d_ioctl = noioctl,
+    .d_stop = nostop,
+    .d_tty = notty,
+    .d_poll = nopoll,
+    .d_mmap = nommap,
+    .d_kqfilter = nokqfilter,
 };
 
 static const struct fileops vboxguest_fileops = {
