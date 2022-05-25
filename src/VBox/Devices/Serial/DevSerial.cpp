@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSerial.cpp 95108 2022-05-25 20:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -103,7 +103,7 @@ typedef CTX_SUFF(PDEVSERIAL) PDEVSERIALCC;
 
 
 
-PDMBOTHCBDECL(void) serialIrqReq(PPDMDEVINS pDevIns, PUARTCORE pUart, unsigned iLUN, int iLvl)
+static DECLCALLBACK(void) serialIrqReq(PPDMDEVINS pDevIns, PUARTCORE pUart, unsigned iLUN, int iLvl)
 {
     RT_NOREF(pUart, iLUN);
     PDEVSERIAL pThis = PDMDEVINS_2_DATA(pDevIns, PDEVSERIAL);

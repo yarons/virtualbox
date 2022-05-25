@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 93944 2022-02-24 21:15:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOHCI.cpp 95108 2022-05-25 20:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5547,7 +5547,7 @@ static DECLCALLBACK(VBOXSTRICTRC) ohciMmioRead(PPDMDEVINS pDevIns, void *pvUser,
 /**
  * @callback_method_impl{FNIOMMMIONEWWRITE}
  */
-PDMBOTHCBDECL(VBOXSTRICTRC) ohciMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
+static DECLCALLBACK(VBOXSTRICTRC) ohciMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
 {
     POHCI pThis = PDMDEVINS_2_DATA(pDevIns, POHCI);
     RT_NOREF(pvUser);

@@ -1,4 +1,4 @@
-/* $Id: DevOxPcie958.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOxPcie958.cpp 95108 2022-05-25 20:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
@@ -286,7 +286,7 @@ static VBOXSTRICTRC ox958UartRegWrite(PPDMDEVINS pDevIns, PDEVOX958 pThis, POX95
  * @param   iLUN        The UART index.
  * @param   iLvl        IRQ level requested.
  */
-PDMBOTHCBDECL(void) ox958IrqReq(PPDMDEVINS pDevIns, PUARTCORE pUart, unsigned iLUN, int iLvl)
+static DECLCALLBACK(void) ox958IrqReq(PPDMDEVINS pDevIns, PUARTCORE pUart, unsigned iLUN, int iLvl)
 {
     RT_NOREF(pUart);
     PDEVOX958 pThis = PDMDEVINS_2_DATA(pDevIns, PDEVOX958);

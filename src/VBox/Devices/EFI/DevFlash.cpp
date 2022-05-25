@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevFlash.cpp 95108 2022-05-25 20:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -74,7 +74,7 @@ typedef DEVFLASHR3 *PDEVFLASHR3;
 /**
  * @callback_method_impl{FNIOMMMIONEWWRITE, Flash memory write}
  */
-PDMBOTHCBDECL(VBOXSTRICTRC) flashMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
+static DECLCALLBACK(VBOXSTRICTRC) flashMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
 {
     PDEVFLASH pThis = PDMDEVINS_2_DATA(pDevIns, PDEVFLASH);
     RT_NOREF1(pvUser);
@@ -85,7 +85,7 @@ PDMBOTHCBDECL(VBOXSTRICTRC) flashMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTG
 /**
  * @callback_method_impl{FNIOMMMIONEWREAD, Flash memory read}
  */
-PDMBOTHCBDECL(VBOXSTRICTRC) flashMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb)
+static DECLCALLBACK(VBOXSTRICTRC) flashMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb)
 {
     PDEVFLASH pThis = PDMDEVINS_2_DATA(pDevIns, PDEVFLASH);
     RT_NOREF1(pvUser);
