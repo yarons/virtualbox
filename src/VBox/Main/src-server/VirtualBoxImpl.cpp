@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 94863 2022-05-05 18:17:34Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 95118 2022-05-25 20:57:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3085,7 +3085,7 @@ public:
     bool init(VirtualBox* aVbox,
               Progress* aProgress,
               bool aPrivileged,
-              VirtualBox::SVCHelperClientFunc aFunc,
+              VirtualBox::PFN_SVC_HELPER_CLIENT_T aFunc,
               void *aUser)
     {
         LogFlowFuncEnter();
@@ -3108,7 +3108,7 @@ public:
     ComObjPtr<VirtualBox> that;
     ComObjPtr<Progress> progress;
     bool privileged;
-    VirtualBox::SVCHelperClientFunc func;
+    VirtualBox::PFN_SVC_HELPER_CLIENT_T func;
     void *user;
     ThreadVoidData *threadVoidData;
 
@@ -3170,7 +3170,7 @@ private:
  *  @note Doesn't lock anything.
  */
 HRESULT VirtualBox::i_startSVCHelperClient(bool aPrivileged,
-                                           SVCHelperClientFunc aFunc,
+                                           PFN_SVC_HELPER_CLIENT_T aFunc,
                                            void *aUser, Progress *aProgress)
 {
     LogFlowFuncEnter();
