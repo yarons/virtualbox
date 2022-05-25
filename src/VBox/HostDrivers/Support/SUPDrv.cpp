@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 94504 2022-04-06 18:08:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: SUPDrv.cpp 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -275,6 +275,8 @@ static SUPFUNC g_aFunctions[] =
     SUPEXP_STK_BACK(    2,  SUPR0ContFree),
     SUPEXP_STK_BACK(    2,  SUPR0ChangeCR4),
     SUPEXP_STK_BACK(    1,  SUPR0EnableVTx),
+    SUPEXP_STK_OKAY(    1,  SUPR0FpuBegin),
+    SUPEXP_STK_OKAY(    1,  SUPR0FpuEnd),
     SUPEXP_STK_BACK(    0,  SUPR0SuspendVTxOnCpu),
     SUPEXP_STK_BACK(    1,  SUPR0ResumeVTxOnCpu),
     SUPEXP_STK_OKAY(    1,  SUPR0GetCurrentGdtRw),

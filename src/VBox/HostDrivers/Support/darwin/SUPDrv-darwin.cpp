@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 93515 2022-01-31 22:17:19Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-darwin.cpp 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -2043,6 +2043,18 @@ SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
     return g_fKernelFeatures;
 }
 
+
+SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+    return false;
+}
+
+
+SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+}
 
 /*
  *

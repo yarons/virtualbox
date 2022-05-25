@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-linux.c 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1727,6 +1727,21 @@ SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
     return fFlags;
 }
 SUPR0_EXPORT_SYMBOL(SUPR0GetKernelFeatures);
+
+
+SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+    return false;
+}
+SUPR0_EXPORT_SYMBOL(SUPR0FpuBegin);
+
+
+SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+}
+SUPR0_EXPORT_SYMBOL(SUPR0FpuEnd);
 
 
 int VBOXCALL    supdrvOSGetCurrentGdtRw(RTHCUINTPTR *pGdtRw)

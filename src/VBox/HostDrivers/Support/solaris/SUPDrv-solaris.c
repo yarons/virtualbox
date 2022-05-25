@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-solaris.c 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1320,5 +1320,18 @@ RTDECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 {
     return 0;
+}
+
+
+SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+    return false;
+}
+
+
+SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
 }
 

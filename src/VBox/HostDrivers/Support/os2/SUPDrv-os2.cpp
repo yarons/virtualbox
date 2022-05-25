@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 91789 2021-10-17 18:16:11Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-os2.cpp 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -552,5 +552,18 @@ SUPR0DECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 {
     return 0;
+}
+
+
+SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+    return false;
+}
+
+
+SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
 }
 

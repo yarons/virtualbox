@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 93325 2022-01-18 16:00:55Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3027,6 +3027,19 @@ SUPR0DECL(int) SUPR0PrintfV(const char *pszFormat, va_list va)
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 {
     return 0;
+}
+
+
+SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
+    return false;
+}
+
+
+SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+{
+    RT_NOREF(fCtxHook);
 }
 
 
