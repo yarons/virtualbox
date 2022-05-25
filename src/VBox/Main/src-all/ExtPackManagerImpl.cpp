@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 94912 2022-05-08 19:05:31Z alexander.eichner@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 95115 2022-05-25 20:53:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -44,6 +44,9 @@
 #include <VBox/log.h>
 #include <VBox/sup.h>
 #include <VBox/version.h>
+
+#include <algorithm>
+
 #include "AutoCaller.h"
 #include "Global.h"
 #include "ProgressImpl.h"
@@ -2463,11 +2466,8 @@ HRESULT ExtPackManager::getInstalledExtPacks(std::vector<ComPtr<IExtPack> > &aIn
 
     AutoReadLock autoLock(this COMMA_LOCKVAL_SRC_POS);
 
-
-    SafeIfaceArray<IExtPack> SaExtPacks(m->llInstalledExtPacks);
-    aInstalledExtPacks.resize(SaExtPacks.size());
-    for(size_t i = 0; i < SaExtPacks.size(); ++i)
-        aInstalledExtPacks[i] = SaExtPacks[i];
+    aInstalledExtPacks.resize(m->llInstalledExtPacks.size());
+    std::copy(m->llInstalledExtPacks.begin(), m->llInstalledExtPacks.end(), aInstalledExtPacks.begin());
 
     return S_OK;
 }
