@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: svcmain.cpp 95120 2022-05-25 21:00:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -56,7 +56,7 @@
 class CExeModule : public ATL::CComModule
 {
 public:
-    LONG Unlock();
+    LONG Unlock() throw();
     DWORD dwThreadID;
     HANDLE hEventShutdown;
     void MonitorShutdown();
@@ -103,7 +103,7 @@ static DWORD WINAPI MonitorProc(void *pv) RT_NOTHROW_DEF
     return 0;
 }
 
-LONG CExeModule::Unlock()
+LONG CExeModule::Unlock() throw()
 {
     LONG cLocks = ATL::CComModule::Unlock();
     if (isIdleLockCount(cLocks))
