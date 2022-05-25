@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 95091 2022-05-25 10:29:30Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 95102 2022-05-25 14:23:59Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -7357,13 +7357,6 @@ static int dxDefineDepthStencilView(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXC
 
     DXVIEW *pView = &pDXContext->pBackendDXContext->paDepthStencilView[depthStencilViewId];
     Assert(pView->u.pView == NULL);
-
-    if (   pSurface->pBackendSurface != NULL
-        && pDXContext->cid != pSurface->idAssociatedContext)
-    {
-        /* Supposed to be per context. Sometimes the guest reuses the texture in another context. */
-        vmsvga3dBackSurfaceDestroy(pThisCC, pSurface);
-    }
 
     if (pSurface->pBackendSurface == NULL)
     {
