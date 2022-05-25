@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 95082 2022-05-24 18:06:45Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.h 95100 2022-05-25 12:59:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -87,7 +87,7 @@ QString darwinFromNativeString(NativeNSStringRef pString);
 void darwinSetShowsToolbarButtonImpl(NativeNSWindowRef pWindow, bool fEnabled);
 void darwinSetShowsResizeIndicatorImpl(NativeNSWindowRef pWindow, bool fEnabled);
 void darwinSetHidesAllTitleButtonsImpl(NativeNSWindowRef pWindow);
-SHARED_LIBRARY_STUFF void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage);
+SHARED_LIBRARY_STUFF void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage, double dDpr);
 void darwinSetShowsWindowTransparentImpl(NativeNSWindowRef pWindow, bool fEnabled);
 SHARED_LIBRARY_STUFF void darwinSetWindowHasShadow(NativeNSWindowRef pWindow, bool fEnabled);
 SHARED_LIBRARY_STUFF void darwinSetMouseCoalescingEnabled(bool fEnabled);

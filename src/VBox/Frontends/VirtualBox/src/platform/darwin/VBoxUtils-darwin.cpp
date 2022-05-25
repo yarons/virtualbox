@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 95082 2022-05-24 18:06:45Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-darwin.cpp 95100 2022-05-25 12:59:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -74,7 +74,7 @@ void darwinSetShowsToolbarButton(QToolBar *aToolBar, bool fEnabled)
 
 void darwinLabelWindow(QWidget *pWidget, QPixmap *pPixmap)
 {
-    ::darwinLabelWindow(::darwinToNativeWindow(pWidget), ::darwinToNSImageRef(pPixmap));
+    ::darwinLabelWindow(::darwinToNativeWindow(pWidget), ::darwinToNSImageRef(pPixmap), pPixmap->devicePixelRatio());
 }
 
 void darwinSetHidesAllTitleButtons(QWidget *pWidget)

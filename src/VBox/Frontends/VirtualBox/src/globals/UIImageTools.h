@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIImageTools.h 95100 2022-05-25 12:59:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -45,7 +45,7 @@ namespace UIImageTools
     SHARED_LIBRARY_STUFF void blurImageVertical(const QImage &source, QImage &destination, int iRadius);
 
     /** Applies BET-label of passed @a size. */
-    SHARED_LIBRARY_STUFF QPixmap betaLabel(const QSize &size = QSize(80, 16));
+    SHARED_LIBRARY_STUFF QPixmap betaLabel(const QSize &size = QSize(80, 16), QWidget *pHint = 0);
 }
 using namespace UIImageTools /* if header included */;
 
