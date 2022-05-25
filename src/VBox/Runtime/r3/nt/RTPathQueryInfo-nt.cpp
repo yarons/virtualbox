@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryInfo-nt.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathQueryInfo-nt.cpp 95110 2022-05-25 20:38:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryInfo[Ex], Native NT.
  */
@@ -50,7 +50,8 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-extern decltype(NtQueryFullAttributesFile) *g_pfnNtQueryFullAttributesFile; /* init-win.cpp */
+typedef NTSTATUS (NTAPI *PFNNTQUERYFULLATTRIBUTESFILE)(struct _OBJECT_ATTRIBUTES *, struct _FILE_NETWORK_OPEN_INFORMATION *);
+extern PFNNTQUERYFULLATTRIBUTESFILE g_pfnNtQueryFullAttributesFile; /* init-win.cpp */
 
 
 /* ASSUMES FileID comes after ShortName and the structs are identical up to that point. */
