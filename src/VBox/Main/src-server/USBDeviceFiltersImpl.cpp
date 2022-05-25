@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBDeviceFiltersImpl.cpp 95116 2022-05-25 20:54:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
@@ -298,11 +298,8 @@ HRESULT USBDeviceFilters::getDeviceFilters(std::vector<ComPtr<IUSBDeviceFilter> 
 #ifdef VBOX_WITH_USB
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    SafeIfaceArray<IUSBDeviceFilter> collection(*m->llDeviceFilters.data());
-    aDeviceFilters.resize(collection.size());
-    if (collection.size())
-        for (size_t i = 0; i < collection.size(); ++i)
-            aDeviceFilters[i] = collection[i];
+    aDeviceFilters.resize(m->llDeviceFilters.data()->size());
+    std::copy(m->llDeviceFilters.data()->begin(), m->llDeviceFilters.data()->end(), aDeviceFilters.begin());
 
     return S_OK;
 #else
