@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95121 2022-05-25 21:12:06Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 95122 2022-05-26 14:48:34Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3420,9 +3420,7 @@ VBOX_GCC_std := -std=c++0x
 endif
 ifndef VBOX_VCC_std
  if $(VBOX_VCC_TOOL_STEM) >= VCC141 # since 2017 15.3
-  if 0 # not yet enabled
   VBOX_VCC_std := -std:c++17 -Zc:__cplusplus
-  endif
  endif
 endif
 
@@ -8974,7 +8972,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95121 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95122 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
