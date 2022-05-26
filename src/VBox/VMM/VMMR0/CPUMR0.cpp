@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 95088 2022-05-25 06:58:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR0.cpp 95123 2022-05-26 14:59:46Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -567,9 +567,6 @@ VMMR0_INT_DECL(bool) CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(PVMCPUCC pVCpu)
     Assert(ASMGetCR4() & X86_CR4_OSFXSR);
     if (pVCpu->cpum.s.fUseFlags & (CPUM_USED_FPU_GUEST | CPUM_USED_FPU_HOST))
     {
-        /* Notify the support driver prior to loading the host-FPU register state. */
-        SUPR0FpuEnd(false /* unused */);
-
         fSavedGuest = RT_BOOL(pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST);
         Assert(fSavedGuest == pVCpu->cpum.s.Guest.fUsedFpuGuest);
         if (!(pVCpu->cpum.s.fUseFlags & CPUM_USED_MANUAL_XMM_RESTORE))
@@ -591,6 +588,9 @@ VMMR0_INT_DECL(bool) CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(PVMCPUCC pVCpu)
                 cpumR0SaveGuestRestoreHostFPUState(&pVCpu->cpum.s);
             pVCpu->cpum.s.fUseFlags &= ~CPUM_USED_MANUAL_XMM_RESTORE;
         }
+
+        /* Notify the support driver after loading the host-FPU register state. */
+        SUPR0FpuEnd(false /* unused */);
     }
     else
         fSavedGuest = false;
