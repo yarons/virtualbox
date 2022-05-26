@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 95089 2022-05-25 07:02:46Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-linux.c 95125 2022-05-26 15:40:20Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1732,7 +1732,7 @@ SUPR0_EXPORT_SYMBOL(SUPR0GetKernelFeatures);
 SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
 {
     RT_NOREF(fCtxHook);
-#if RTLNX_VER_MIN(5,18,0)
+#if RTLNX_VER_MIN(4,19,0)
     kernel_fpu_begin();
     /* if (fCtxHook) */
         preempt_enable();  /* HACK ALERT! undo the implicit preempt_disable() in kernel_fpu_begin(). */
@@ -1747,7 +1747,7 @@ SUPR0_EXPORT_SYMBOL(SUPR0FpuBegin);
 SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
 {
     RT_NOREF(fCtxHook);
-#if RTLNX_VER_MIN(5,18,0)
+#if RTLNX_VER_MIN(4,19,0)
     /* if (fCtxHook) */
         preempt_disable();  /* HACK ALERT! undo the implicit preempt_enable() in SUPR0FpuBegin(). */
     kernel_fpu_end();
