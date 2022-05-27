@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 95126 2022-05-27 06:59:25Z vitali.pelenjow@oracle.com $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -675,18 +675,16 @@ static int rtR0DbgKrnlNtInit(PRTDBGNTKRNLMODINFO pModInfo)
 
                 rc = rtR0DbgKrnlNtQueryModules(&pInfo, cModules, &cModules);
                 if (RT_SUCCESS(rc))
-                {
                     rc = rtR0DbgKrnlNtSearchForModuleWorker(pInfo, cModules, pModInfo);
-                    RTMemFree(pInfo);
-                }
             }
         }
         else
         {
-            RTMemFree(pInfo);
             RTR0DBG_NT_ERROR_LOG(("rtR0DbgKrnlNtInit: Error! Only %u module(s) returned!\n", cModules));
             rc = VERR_BUFFER_UNDERFLOW;
         }
+
+        RTMemFree(pInfo);
     }
 
     RTR0DBG_NT_DEBUG_LOG(("rtR0DbgKrnlNtInit: returns %d\n", rc));
