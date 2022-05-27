@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: the-linux-kernel.h 95131 2022-05-27 12:19:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -182,6 +182,11 @@
 /* for __flush_tlb_all() */
 #if RTLNX_VER_MIN(2,6,28) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
 # include <asm/tlbflush.h>
+#endif
+
+/* for kernel_fpu_begin / kernel_fpu_end() */
+#if RTLNX_VER_MIN(4,20,0)
+# include <asm/fpu/api.h>
 #endif
 
 #if RTLNX_VER_MIN(3,7,0)
