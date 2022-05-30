@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 94737 2022-04-28 14:26:49Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 95138 2022-05-30 14:05:48Z michal.necasek@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -172,7 +172,7 @@ void UIMainEventListeningThread::run()
             if (comEvent.GetWaitable())
             {
                 comSource.EventProcessed(comListener, comEvent);
-                LogRel(("GUI: UIMainEventListener/ThreadRun: EventProcessed set for waitable event\n"));
+                LogRel2(("GUI: UIMainEventListener/ThreadRun: EventProcessed set for waitable event\n"));
             }
 
             /* Check whether we should finish our job on this event: */
