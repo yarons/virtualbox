@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 95051 2022-05-20 19:48:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 95135 2022-05-30 11:46:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -2621,6 +2621,9 @@ int DXShaderUpdateResources(DXShaderInfo const *pInfo, VGPU10_RESOURCE_DIMENSION
 
         uint32_t const offToken = pInfo->aOffDclResource[i];
         AssertContinue(offToken < pInfo->cbBytecode);
+        if (offToken == 0) /* nothing at this index */
+            continue;
+
         uint32_t *paToken = (uint32_t *)((uintptr_t)pInfo->pvBytecode + offToken);
 
         VGPU10OpcodeToken0 *pOpcode = (VGPU10OpcodeToken0 *)&paToken[0];
