@@ -1,4 +1,4 @@
-/* $Id: PasswordInput.cpp 93648 2022-02-08 09:09:44Z noreply@oracle.com $ */
+/* $Id: PasswordInput.cpp 95140 2022-05-31 09:11:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * Frontend shared bits - Password file and console input helpers.
  */
@@ -93,9 +93,9 @@ RTEXITCODE settingsPasswordFile(ComPtr<IVirtualBox> virtualBox, const char *pszF
     RTEXITCODE rcExit = readPasswordFile(pszFilename, &passwd);
     if (rcExit == RTEXITCODE_SUCCESS)
     {
-        int rc;
+        HRESULT hrc;
         CHECK_ERROR(virtualBox, SetSettingsSecret(com::Bstr(passwd).raw()));
-        if (FAILED(rc))
+        if (FAILED(hrc))
             rcExit = RTEXITCODE_FAILURE;
     }
 

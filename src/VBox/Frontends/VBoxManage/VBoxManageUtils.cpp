@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUtils.cpp 94234 2022-03-15 09:19:29Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageUtils.cpp 95140 2022-05-31 09:11:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManageUtils.h - VBoxManage utility functions.
  */
@@ -34,7 +34,7 @@ unsigned int getMaxNics(const ComPtr<IVirtualBox> &pVirtualBox,
 {
     ULONG NetworkAdapterCount = 0;
     do {
-        HRESULT rc;
+        HRESULT hrc;
 
         ComPtr<ISystemProperties> info;
         CHECK_ERROR_BREAK(pVirtualBox, COMGETTER(SystemProperties)(info.asOutParam()));

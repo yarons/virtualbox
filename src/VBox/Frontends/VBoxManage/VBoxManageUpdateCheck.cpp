@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUpdateCheck.cpp 94981 2022-05-10 14:48:36Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageUpdateCheck.cpp 95140 2022-05-31 09:11:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'updatecheck' command.
  */
@@ -276,14 +276,14 @@ static RTEXITCODE doUpdateCheck(int argc, char **argv, ComPtr<IUpdateAgent> pUpd
      * return value indicating update checks are disabled.
      */
     ComPtr<IProgress> pProgress;
-    HRESULT rc = pUpdateAgent->CheckFor(pProgress.asOutParam());
-    if (FAILED(rc))
+    HRESULT hrc = pUpdateAgent->CheckFor(pProgress.asOutParam());
+    if (FAILED(hrc))
     {
         if (pProgress.isNull())
-            RTStrmPrintf(g_pStdErr, UpdateCheck::tr("Failed to create update progress object: %Rhrc\n"), rc);
+            RTStrmPrintf(g_pStdErr, UpdateCheck::tr("Failed to create update progress object: %Rhrc\n"), hrc);
         else
             com::GlueHandleComError(pUpdateAgent, "HostUpdate(UpdateChannel_Stable, pProgress.asOutParam())",
-                                    rc, __FILE__, __LINE__);
+                                    hrc, __FILE__, __LINE__);
         return RTEXITCODE_FAILURE;
     }
 
