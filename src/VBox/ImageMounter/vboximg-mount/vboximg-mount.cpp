@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 94554 2022-04-11 10:39:02Z alexander.eichner@oracle.com $ */
+/* $Id: vboximg-mount.cpp 95142 2022-05-31 09:36:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -989,7 +989,7 @@ static int vboxImgMntImageSetup(struct fuse_args *args)
      */
     if (g_vboximgOpts.pszImageUuidOrPath)
     {
-        HRESULT rc;
+        HRESULT hrc;
 
         /* compiler was too fussy about access mode's data type in conditional expr, so... */
         if (g_vboximgOpts.fRW)
@@ -1036,14 +1036,14 @@ static int vboxImgMntImageSetup(struct fuse_args *args)
             {
                 if (VERBOSE)
                     RTPrintf(" ... Locking for write\n");
-                CHECK_ERROR_RET(pVDiskMedium, LockWrite((pNewEntry->pLockToken).asOutParam()), rc);
+                CHECK_ERROR_RET(pVDiskMedium, LockWrite((pNewEntry->pLockToken).asOutParam()), hrc);
                 pNewEntry->fWriteable = true;
             }
             else
             {
                 if (VERBOSE)
                     RTPrintf(" ... Locking for read\n");
-                CHECK_ERROR_RET(pVDiskMedium, LockRead((pNewEntry->pLockToken).asOutParam()), rc);
+                CHECK_ERROR_RET(pVDiskMedium, LockRead((pNewEntry->pLockToken).asOutParam()), hrc);
             }
 
             IMAGELIST *pCurImageEntry = &listHeadLockList;
