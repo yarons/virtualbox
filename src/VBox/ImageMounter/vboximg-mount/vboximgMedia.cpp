@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ $Revision: 93115 $ */
+/* $Id: vboximgMedia.cpp 95141 2022-05-31 09:31:45Z andreas.loeffler@oracle.com $ $Revision: 95141 $ */
 /** @file
  * vboximgMedia.cpp - Disk Image Flattening FUSE Program.
  */
@@ -315,7 +315,7 @@ listMedia(IVirtualBox *pVirtualBox, IMachine *pMachine, char *vmName, char *vmUu
 int
 vboximgListVMs(IVirtualBox *pVirtualBox)
 {
-    HRESULT rc = 0;
+    HRESULT hrc = 0;
     com::SafeIfaceArray<IMachine> pMachines;
     CHECK_ERROR(pVirtualBox, COMGETTER(Machines)(ComSafeArrayAsOutParam(pMachines)));
     if (g_vboximgOpts.fWide)
@@ -371,12 +371,12 @@ vboximgListVMs(IVirtualBox *pVirtualBox)
                             RTPrintf("UUID: %s\n", CSTR(machineUuid));
                         }
                     }
-                    rc = listMedia(pVirtualBox, pMachine,
+                    hrc = listMedia(pVirtualBox, pMachine,
                             RTStrDup(CSTR(machineName)), RTStrDup(CSTR(machineUuid)));
                     RTPrintf("\n");
                 }
             }
         }
     }
-    return rc;
+    return hrc;
 }
