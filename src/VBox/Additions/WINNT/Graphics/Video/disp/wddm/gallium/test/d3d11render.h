@@ -1,4 +1,4 @@
-/* $Id: d3d11render.h 95081 2022-05-24 17:24:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d11render.h 95152 2022-05-31 17:39:55Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Interface for D3D11 tests.
  */
@@ -33,6 +33,11 @@
         (ptr)->Release();     \
         (ptr) = 0;            \
     }                         \
+} while (0)
+
+#define D3D_RELEASE_ARRAY(a_Count, a_papArray) do { \
+    for (uint32_t i = 0; i < (a_Count); ++i) \
+        D3D_RELEASE((a_papArray)[i]); \
 } while (0)
 
 inline void D3DTestShowError(HRESULT hr, const char *pszString)
