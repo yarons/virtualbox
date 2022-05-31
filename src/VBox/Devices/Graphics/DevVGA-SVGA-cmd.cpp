@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 95101 2022-05-25 14:16:27Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 95149 2022-05-31 17:01:25Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -2733,10 +2733,9 @@ static int vmsvga3dCmdDXPredCopy(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA
 static int vmsvga3dCmdDXPresentBlt(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXPresentBlt const *pCmd, uint32_t cbCmd)
 {
 #ifdef VMSVGA3D_DX
-    DEBUG_BREAKPOINT_TEST();
-    PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
-    RT_NOREF(pSvgaR3State, pCmd, cbCmd);
-    return vmsvga3dDXPresentBlt(pThisCC, idDXContext);
+    //DEBUG_BREAKPOINT_TEST();
+    RT_NOREF(cbCmd);
+    return vmsvga3dDXPresentBlt(pThisCC, idDXContext, pCmd);
 #else
     RT_NOREF(pThisCC, idDXContext, pCmd, cbCmd);
     return VERR_NOT_SUPPORTED;

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 95136 2022-05-30 11:47:27Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 95149 2022-05-31 17:01:25Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -1383,7 +1383,7 @@ int vmsvga3dDXPredCopy(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXPre
 }
 
 
-int vmsvga3dDXPresentBlt(PVGASTATECC pThisCC, uint32_t idDXContext)
+int vmsvga3dDXPresentBlt(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXPresentBlt const *pCmd)
 {
     int rc;
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
@@ -1395,7 +1395,9 @@ int vmsvga3dDXPresentBlt(PVGASTATECC pThisCC, uint32_t idDXContext)
     rc = vmsvga3dDXContextFromCid(p3dState, idDXContext, &pDXContext);
     AssertRCReturn(rc, rc);
 
-    rc = pSvgaR3State->pFuncsDX->pfnDXPresentBlt(pThisCC, pDXContext);
+    rc = pSvgaR3State->pFuncsDX->pfnDXPresentBlt(pThisCC, pDXContext,
+                                                 pCmd->dstSid, pCmd->destSubResource, &pCmd->boxDest,
+                                                 pCmd->srcSid, pCmd->srcSubResource, &pCmd->boxSrc, pCmd->mode);
     return rc;
 }
 
