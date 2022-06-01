@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 95086 2022-05-25 05:31:21Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 95158 2022-06-01 11:00:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -1535,6 +1535,7 @@ NTSTATUS SvgaDefineCursor(PVBOXWDDM_EXT_VMSVGA pSvga,
                                      pvCmd, cbSubmit, NULL);
         Assert(Status == STATUS_SUCCESS);
         SvgaCommit(pSvga, cbSubmit);
+        SvgaFlush(pSvga);
     }
     else
     {
@@ -1595,6 +1596,7 @@ NTSTATUS SvgaDefineAlphaCursor(PVBOXWDDM_EXT_VMSVGA pSvga,
                                           pvCmd, cbSubmit, NULL);
         Assert(Status == STATUS_SUCCESS);
         SvgaCommit(pSvga, cbSubmit);
+        SvgaFlush(pSvga);
     }
     else
     {
