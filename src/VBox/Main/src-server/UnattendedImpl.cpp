@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 95154 2022-06-01 08:09:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 95155 2022-06-01 08:13:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -3653,7 +3653,7 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
         }
     }
     /* Skip all OpenSUSE variants for now. */
-    if ((mEnmOsType & 0xff000) == VBOXOSTYPE_OpenSUSE)
+    if ((mEnmOsType & VBOXOSTYPE_OsTypeMask) == VBOXOSTYPE_OpenSUSE)
     {
         *aIsUnattendedInstallSupported = false;
         return S_OK;
