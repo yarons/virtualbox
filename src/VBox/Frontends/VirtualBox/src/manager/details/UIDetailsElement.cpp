@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 94530 2022-04-08 12:20:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 95163 2022-06-01 14:03:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -929,7 +929,7 @@ void UIDetailsElement::popupBaseMemoryEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIBaseMemoryEditor *pEditor = new UIBaseMemoryEditor(pPopup, true /* with label */);
+        UIBaseMemoryEditor *pEditor = new UIBaseMemoryEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(strValue.toInt());
@@ -963,7 +963,7 @@ void UIDetailsElement::popupBootOrderEditor(const QString &strValue)
     if (pPopup)
     {
         /* Prepare editor: */
-        UIBootOrderEditor *pEditor = new UIBootOrderEditor(pPopup, true /* with label */);
+        UIBootOrderEditor *pEditor = new UIBootOrderEditor(pPopup);
         if (pEditor)
         {
             pEditor->setValue(bootItemsFromSerializedString(strValue));

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 95162 2022-06-01 13:06:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 95163 2022-06-01 14:03:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -38,7 +38,6 @@ class UIBootOrderEditor;
 class UIChipsetEditor;
 class UIMotherboardFeaturesEditor;
 class UIPointingHIDEditor;
-class CMachine;
 
 /** Machine settings: System page. */
 class SHARED_LIBRARY_STUFF UIMachineSettingsSystem : public UISettingsPageMachine
@@ -177,12 +176,8 @@ private:
 
         /** Holds the 'Motherboard' tab instance. */
         QWidget                     *m_pTabMotherboard;
-        /** Holds the base memory label instance. */
-        QLabel                      *m_pLabelBaseMemory;
         /** Holds the base memory editor instance. */
         UIBaseMemoryEditor          *m_pEditorBaseMemory;
-        /** Holds the boot order label instance. */
-        QLabel                      *m_pLabelBootOrder;
         /** Holds the boot order editor instance. */
         UIBootOrderEditor           *m_pEditorBootOrder;
         /** Holds the chipset editor instance. */

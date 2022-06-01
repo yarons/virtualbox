@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 94052 2022-03-02 08:16:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 95163 2022-06-01 14:03:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -383,7 +383,7 @@ void UINewVMHardwareContainer::prepare()
     QGridLayout *pHardwareLayout = new QGridLayout(this);
     pHardwareLayout->setContentsMargins(0, 0, 0, 0);
 
-    m_pBaseMemoryEditor = new UIBaseMemoryEditor(0, true);
+    m_pBaseMemoryEditor = new UIBaseMemoryEditor;
     m_pVirtualCPUEditor = new UIVirtualCPUEditor(0, true);
     m_pEFICheckBox      = new QCheckBox;
     pHardwareLayout->addWidget(m_pBaseMemoryEditor, 0, 0, 1, 4);
