@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 94660 2022-04-21 08:38:34Z alexander.eichner@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 95166 2022-06-01 18:58:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -715,10 +715,6 @@ QString UIWizardNewVM::ISOFilePath() const
 
 void UIWizardNewVM::setISOFilePath(const QString &strISOFilePath)
 {
-    QFileInfo isoFileInfo(strISOFilePath);
-    if (!isoFileInfo.exists())
-        return;
-
     AssertReturnVoid(!m_comUnattended.isNull());
     m_comUnattended.SetIsoPath(strISOFilePath);
     AssertReturnVoid(checkUnattendedInstallError(m_comUnattended));
