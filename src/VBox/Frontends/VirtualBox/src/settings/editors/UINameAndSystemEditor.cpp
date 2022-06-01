@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 94593 2022-04-13 17:33:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 95165 2022-06-01 18:00:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -349,7 +349,7 @@ void UINameAndSystemEditor::retranslateUi()
                                     "(called a guest operating system)."));
     if (m_pSelectorImage)
         m_pSelectorImage->setToolTip(tr("Selects an ISO image to be attached to the new "
-                                        "virtual machine or used in attended install."));
+                                        "virtual machine or used in unattended install."));
 }
 
 void UINameAndSystemEditor::sltFamilyChanged(int iIndex)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 94593 2022-04-13 17:33:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 95165 2022-06-01 18:00:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -88,6 +88,7 @@ private:
     bool isUnattendedEnabled() const;
     bool isUnattendedInstallSupported() const;
     void setEditionSelectorEnabled();
+    void updateInfoLabel();
 
     /** @name Widgets
      * @{ */
@@ -95,6 +96,7 @@ private:
         UINameAndSystemEditor *m_pNameAndSystemEditor;
         QCheckBox             *m_pSkipUnattendedCheckBox;
         QIRichTextLabel       *m_pNameOSTypeLabel;
+        QIRichTextLabel       *m_pInfoLabel;
     /** @} */
     QSet<QString> m_userModifiedParameters;
 };
