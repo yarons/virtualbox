@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 95064 2022-05-23 16:21:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 95154 2022-06-01 08:09:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -1364,6 +1364,12 @@ static bool detectLinuxDistroName(const char *pszOsAndVersion, VBOXOSTYPE *penmO
         }
         else
             fRet = false;
+    }
+    else if (   RTStrNICmp(pszOsAndVersion, RT_STR_TUPLE("OpenSUSE")) == 0
+             && !RT_C_IS_ALNUM(pszOsAndVersion[8]))
+    {
+        *penmOsType = (VBOXOSTYPE)((*penmOsType & VBOXOSTYPE_x64) | VBOXOSTYPE_OpenSUSE);
+        pszOsAndVersion = RTStrStripL(pszOsAndVersion + 8);
     }
     else if (   RTStrNICmp(pszOsAndVersion, RT_STR_TUPLE("Oracle")) == 0
              && !RT_C_IS_ALNUM(pszOsAndVersion[6]))
@@ -3646,7 +3652,12 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
             return S_OK;
         }
     }
-
+    /* Skip all OpenSUSE variants for now. */
+    if ((mEnmOsType & 0xff000) == VBOXOSTYPE_OpenSUSE)
+    {
+        *aIsUnattendedInstallSupported = false;
+        return S_OK;
+    }
     *aIsUnattendedInstallSupported = true;
     return S_OK;
 }
