@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 94975 2022-05-10 07:36:42Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 95157 2022-06-01 10:59:12Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1650,7 +1650,7 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
         case DXGKQAITYPE_DRIVERCAPS:
         {
             DXGK_DRIVERCAPS *pCaps = (DXGK_DRIVERCAPS*)pQueryAdapterInfo->pOutputData;
-            memset(pCaps, 0, sizeof (*pCaps));
+            memset(pCaps, 0, pQueryAdapterInfo->OutputDataSize);
 
             pCaps->HighestAcceptableAddress.LowPart = ~0UL;
 #ifdef RT_ARCH_AMD64
