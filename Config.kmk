@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95122 2022-05-26 14:48:34Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 95176 2022-06-02 17:57:03Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -764,8 +764,10 @@ VBOX_WITH_FE_BALLOONCTRL = 1
 VBOX_WITH_FE_AUTOSTART = 1
 # VBox Bug Report tool.
 VBOX_WITH_FE_BUGREPORT = 1
-# The SDL based GUI.
-VBOX_WITH_VBOXSDL = 1
+# Enable this to get the SDL based GUI built. Mostly useful for development
+# purposes. For production use it's recommended to use the Qt GUI which can
+# be also stripped down. See VBOX_WITH_QTGUI.
+VBOX_WITH_VBOXSDL =
 # Build VBoxSDL with secure label support.
 ifeq ($(filter win.amd64,$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)),) # too much work with freetype and all that.
 VBOX_WITH_SECURELABEL = 1
@@ -8972,7 +8974,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95122 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95176 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
