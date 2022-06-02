@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 95172 2022-06-02 14:43:45Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 95174 2022-06-02 15:18:51Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2750,8 +2750,8 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                 LogRel(("CPUM: WARNING! Can't expose \"Unrestricted Guest\" to the guest when EPT is not exposed!\n"));
                 pVM->cpum.s.fNestedVmxUnrestrictedGuest = false;
             }
-        }
 #endif
+        }
     }
 
     /*
