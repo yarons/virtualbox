@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.cpp 94395 2022-03-29 16:29:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.cpp 95169 2022-06-02 11:10:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class implementation.
  */
@@ -162,10 +162,11 @@ void UIVideoMemoryEditor::retranslateUi()
     if (m_pLabelMemory)
         m_pLabelMemory->setText(tr("Video &Memory:"));
 
+    const QString strToolTip(tr("Holds the amount of video memory provided to the virtual machine."));
     if (m_pSlider)
-        m_pSlider->setToolTip(tr("Holds the amount of video memory provided to the virtual machine."));
+        m_pSlider->setToolTip(strToolTip);
     if (m_pSpinBox)
-        m_pSpinBox->setToolTip(tr("Holds the amount of video memory provided to the virtual machine."));
+        m_pSpinBox->setToolTip(strToolTip);
 
     if (m_pLabelMemoryMin)
     {
