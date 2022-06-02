@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 95169 2022-06-02 11:10:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 95170 2022-06-02 12:27:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -42,6 +42,11 @@ UIVirtualCPUEditor::UIVirtualCPUEditor(QWidget *pParent /* = 0 */)
     , m_pLabelVCPUMax(0)
 {
     prepare();
+}
+
+int UIVirtualCPUEditor::maxVCPUCount() const
+{
+    return (int)m_uMaxVCPUCount;
 }
 
 void UIVirtualCPUEditor::setValue(int iValue)
@@ -132,7 +137,7 @@ void UIVirtualCPUEditor::prepare()
     {
         m_pLayout->setContentsMargins(0, 0, 0, 0);
 
-        /* Create VCPU label: */
+        /* Create main label: */
         m_pLabelVCPU = new QLabel(this);
         if (m_pLabelVCPU)
         {
@@ -201,7 +206,7 @@ void UIVirtualCPUEditor::prepare()
             m_pSpinBox->setMaximum(m_uMaxVCPUCount);
             connect(m_pSpinBox, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
                     this, &UIVirtualCPUEditor::sltHandleSpinBoxChange);
-            m_pLayout->addWidget(m_pSpinBox, 0, 2, 1, 1);
+            m_pLayout->addWidget(m_pSpinBox, 0, 2);
         }
     }
 
