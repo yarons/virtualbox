@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 95177 2022-06-02 21:03:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageList.cpp 95178 2022-06-02 21:06:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -213,21 +213,21 @@ static HRESULT listHostOnlyNetworks(const ComPtr<IVirtualBox> pVirtualBox)
         Bstr bstrNetworkName;
         CHECK_ERROR2I(hostOnlyNetwork, COMGETTER(NetworkName)(bstrNetworkName.asOutParam()));
         RTPrintf(List::tr("Name:            %ls\n"), bstrNetworkName.raw());
-        
+
         Bstr bstr;
         CHECK_ERROR(hostOnlyNetwork, COMGETTER(Id)(bstr.asOutParam()));
         RTPrintf("GUID:            %ls\n\n", bstr.raw());
-        
+
         BOOL fEnabled = FALSE;
         CHECK_ERROR2I(hostOnlyNetwork, COMGETTER(Enabled)(&fEnabled));
         RTPrintf(List::tr("State:           %s\n"), fEnabled ? List::tr("Enabled") : List::tr("Disabled"));
 
         CHECK_ERROR2I(hostOnlyNetwork, COMGETTER(NetworkMask)(bstr.asOutParam()));
         RTPrintf(List::tr("NetworkMask:     %ls\n"), bstr.raw());
-        
+
         CHECK_ERROR2I(hostOnlyNetwork, COMGETTER(LowerIP)(bstr.asOutParam()));
         RTPrintf(List::tr("LowerIP:         %ls\n"), bstr.raw());
-        
+
         CHECK_ERROR2I(hostOnlyNetwork, COMGETTER(UpperIP)(bstr.asOutParam()));
         RTPrintf(List::tr("UpperIP:         %ls\n"), bstr.raw());
 
