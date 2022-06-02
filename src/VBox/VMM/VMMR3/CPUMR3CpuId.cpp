@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 94931 2022-05-09 08:24:47Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 95172 2022-06-02 14:43:45Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2728,6 +2728,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
             rc = CFGMR3QueryBoolDef(pCpumCfg, "NestedVmxPreemptTimer", &pVM->cpum.s.fNestedVmxPreemptTimer, false);
             AssertLogRelRCReturn(rc, rc);
 
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
             /** @cfgm{/CPUM/NestedVmxEpt, bool, true}
              * Whether to expose the EPT feature to the guest. The default is false. When
              * disabled will automatically prevent exposing features that rely on
@@ -2750,6 +2751,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                 pVM->cpum.s.fNestedVmxUnrestrictedGuest = false;
             }
         }
+#endif
     }
 
     /*
