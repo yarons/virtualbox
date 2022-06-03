@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 95181 2022-06-03 10:07:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 95183 2022-06-03 12:06:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -326,7 +326,7 @@ DECLHIDDEN(void) autostartSvcOsLogStr(const char *pszMsg, AUTOSTARTLOGTYPE enmLo
  */
 static int autostartUpdatePolicy(const com::Utf8Str &sUser)
 {
-    LSA_OBJECT_ATTRIBUTES objectAttributes = { 0 };
+    LSA_OBJECT_ATTRIBUTES objectAttributes;
     /* Object attributes are reserved, so initialize to zeros. */
     RT_ZERO(objectAttributes);
 
