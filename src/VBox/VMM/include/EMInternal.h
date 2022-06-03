@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 95184 2022-06-03 13:36:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -28,7 +28,7 @@
 #include <VBox/dis.h>
 #include <VBox/vmm/pdmcritsect.h>
 #include <iprt/avl.h>
-#include <setjmp.h>
+#include <iprt/setjmp-without-sigmask.h>
 
 RT_C_DECLS_BEGIN
 

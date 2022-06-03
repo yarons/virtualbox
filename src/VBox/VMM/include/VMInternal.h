@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VMInternal.h 95184 2022-06-03 13:36:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Internal header file.
  */
@@ -25,7 +25,7 @@
 #include <VBox/vmm/vmapi.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
-#include <setjmp.h>
+#include <iprt/setjmp-without-sigmask.h>
 
 
 
