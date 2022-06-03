@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPWddm.h 95191 2022-06-03 18:49:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -121,6 +121,7 @@ DECLINLINE(VOID) vboxWddmAssignPrimary(PVBOXWDDM_SOURCE pSource, PVBOXWDDM_ALLOC
         pOldAlloc->bVisible = FALSE;
         pOldAlloc->bAssigned = FALSE;
         Assert(pOldAlloc->AllocData.SurfDesc.VidPnSourceId == srcId);
+        pOldAlloc->CurVidPnSourceId = -1;
     }
 
     if (pAllocation)
@@ -128,6 +129,7 @@ DECLINLINE(VOID) vboxWddmAssignPrimary(PVBOXWDDM_SOURCE pSource, PVBOXWDDM_ALLOC
         Assert(pAllocation->AllocData.SurfDesc.VidPnSourceId == srcId);
         pAllocation->bAssigned = TRUE;
         pAllocation->bVisible = pSource->bVisible;
+        pAllocation->CurVidPnSourceId = srcId;
 
         if (pSource->AllocData.hostID != pAllocation->AllocData.hostID)
         {

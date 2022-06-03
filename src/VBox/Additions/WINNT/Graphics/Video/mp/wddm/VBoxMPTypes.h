@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 94927 2022-05-09 06:48:47Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPTypes.h 95191 2022-06-03 18:49:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -201,6 +201,7 @@ typedef struct VBOXWDDM_ALLOCATION
     AVLPVNODECORE ShRcTreeEntry;
 #endif
     VBOXUHGSMI_BUFFER_TYPE_FLAGS fUhgsmiType;
+    int                         CurVidPnSourceId;              /* Source index if used for a source, otherwise -1. */
 #ifdef VBOX_WITH_VMSVGA3D_DX
     /* Direct3D driver data for .enmType == VBOXWDDM_ALLOC_TYPE_D3D. */
     struct
