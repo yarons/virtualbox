@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 95194 2022-06-03 20:51:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1485,7 +1485,7 @@ static NTSTATUS vgdrvNt4CreateDevice(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRe
                 rc = vgdrvNtSetupDevice(pDevExt, pDeviceObject, NULL /*pIrp*/, pDrvObj, pRegPath);
                 if (NT_SUCCESS(rc))
                 {
-                    Log(("vgdrvNt4CreateDevice: Returning rc = 0x%x (succcess)\n", rc));
+                    Log(("vgdrvNt4CreateDevice: Returning rc = 0x%x (success)\n", rc));
                     return rc;
                 }
 

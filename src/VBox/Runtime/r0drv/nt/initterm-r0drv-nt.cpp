@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm-r0drv-nt.cpp 95194 2022-06-03 20:51:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -261,7 +261,7 @@ static bool rtR0NtTryMatchSymSet(PCRTNTSDBSET pSet, uint8_t *pbPrcb, const char 
     }
 
     /*
-     * Got a match, update the global variables and report succcess.
+     * Got a match, update the global variables and report success.
      */
     g_offrtNtPbQuantumEnd    = pSet->KPRCB.offQuantumEnd;
     g_cbrtNtPbQuantumEnd     = pSet->KPRCB.cbQuantumEnd;
