@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 95189 2022-06-03 14:53:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -40,6 +40,10 @@
 
 #ifndef RT_OS_WINDOWS
 # include <signal.h>
+# ifdef RT_OS_DARWIN
+#  include <pthread.h>
+#  define sigprocmask pthread_sigmask /* On xnu sigprocmask works on the process, not the calling thread as elsewhere. */
+# endif
 #endif
 
 #include "VBoxGuestR3LibInternal.h"
