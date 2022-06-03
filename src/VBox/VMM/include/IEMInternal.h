@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 94956 2022-05-09 13:53:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 95185 2022-06-03 13:36:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -27,7 +27,7 @@
 #include <VBox/vmm/stam.h>
 #include <VBox/param.h>
 
-#include <setjmp.h>
+#include <iprt/setjmp-without-sigmask.h>
 
 
 RT_C_DECLS_BEGIN
