@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: timer-posix.cpp 95190 2022-06-03 15:11:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -72,6 +72,9 @@
 #include <signal.h>
 #include <errno.h>
 #include <pthread.h>
+#if defined(RT_OS_DARWIN)
+# define sigprocmask pthread_sigmask /* On xnu sigprocmask works on the process, not the calling thread as elsewhere. */
+#endif
 
 
 /*********************************************************************************************************************************
