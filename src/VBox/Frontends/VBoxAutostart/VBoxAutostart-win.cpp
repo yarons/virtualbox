@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 95180 2022-06-03 10:05:30Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 95181 2022-06-03 10:07:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -1113,7 +1113,7 @@ static VOID WINAPI autostartSvcWinServiceMain(DWORD cArgs, LPWSTR *papwszArgs)
 static RTEXITCODE autostartSvcWinRunIt(int argc, char **argv)
 {
     int vrc;
-RT_BREAKPOINT();
+
     LogFlowFuncEnter();
 
     /*
