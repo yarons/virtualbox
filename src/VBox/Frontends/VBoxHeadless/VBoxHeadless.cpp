@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 95201 2022-06-05 20:29:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 95202 2022-06-05 20:30:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -422,7 +422,7 @@ static void HandleSignal(int sig)
         aSegs[cSegs++].iov_base = (char *)"\n";
     for (int i = 0; i < cSegs; i++)
         aSegs[i].iov_len = strlen((const char *)aSegs[i].iov_base);
-    writev(2, aSegs, cSegs);
+    (void)writev(2, aSegs, cSegs);
 # else
     LogRel(("VBoxHeadless: received signal %d\n", sig)); /** @todo r=bird: This is not at all safe. */
 # endif    
