@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 95206 2022-06-05 20:38:32Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 95207 2022-06-05 21:31:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -495,7 +495,6 @@ static DECLCALLBACK(int) SigThreadProc(RTTHREAD hThreadSelf, void *pvUser)
             g_fTerminateFE = true;
         }
 
-        /** @todo this is a little bit racy...   */
         if (g_fTerminateFE && g_fEventQueueSafe && gEventQ != NULL)
             gEventQ->interruptEventQueueProcessing();
     }
