@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 95196 2022-06-05 19:20:38Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-posix.cpp 95203 2022-06-05 20:31:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -251,7 +251,7 @@ static void rtThreadPosixBlockSignals(PRTTHREADINT pThread)
         sigset_t SigSet;
         sigfillset(&SigSet);
         sigdelset(&SigSet, SIGILL);  /* On the m1 we end up spinning on UDF ... */
-        sigdelset(&SigSet, SIGTRAP); /* ... and BRK instruction if these signals are masked. */ 
+        sigdelset(&SigSet, SIGTRAP); /* ... and BRK instruction if these signals are masked. */
         sigdelset(&SigSet, SIGFPE);  /* Just adding the rest here to be on the safe side. */
         sigdelset(&SigSet, SIGBUS);
         sigdelset(&SigSet, SIGSEGV);
