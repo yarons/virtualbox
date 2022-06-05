@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 95202 2022-06-05 20:30:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 95204 2022-06-05 20:33:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -415,7 +415,7 @@ static void HandleSignal(int sig)
     if (pszThread)
     {
         aSegs[cSegs++].iov_base = (char *)"(on thread ";
-        aSegs[cSegs++].iov_base = (char *)pszThread;        
+        aSegs[cSegs++].iov_base = (char *)pszThread;
         aSegs[cSegs++].iov_base = (char *)")\n";
     }
     else
@@ -425,7 +425,7 @@ static void HandleSignal(int sig)
     (void)writev(2, aSegs, cSegs);
 # else
     LogRel(("VBoxHeadless: received signal %d\n", sig)); /** @todo r=bird: This is not at all safe. */
-# endif    
+# endif
     g_fTerminateFE = true;
 }
 
@@ -470,7 +470,7 @@ static void SetSignalMask(bool fBlock, bool fProcess)
     }
 }
 
-/** 
+/**
  * @callback_method_impl{FNRTTHREAD, Signal wait thread}
  */
 static DECLCALLBACK(int) SigThreadProc(RTTHREAD hThreadSelf, void *pvUser)
@@ -482,7 +482,7 @@ static DECLCALLBACK(int) SigThreadProc(RTTHREAD hThreadSelf, void *pvUser)
     sigemptyset(&SigSetWait);
     for (unsigned i = 0; i < RT_ELEMENTS(g_aiSigs); i++)
         sigaddset(&SigSetWait, g_aiSigs[i]);
-    
+
     /* The wait + processing loop: */
     for (;;)
     {
@@ -520,7 +520,7 @@ static void SetUpSignalHandlers(void)
         if (sigaction(g_aiSigs[i], &sa, NULL) != 0)
             RTMsgError("sigaction failed for signal #%u: %d", g_aiSigs[i], errno);
     }
-    
+
 # if defined(RT_OS_DARWIN)
     /*
      * On darwin processEventQueue() does not return with VERR_INTERRUPTED or
@@ -1450,7 +1450,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
          */
 #if !defined(RT_OS_WINDOWS)
         ::SetUpSignalHandlers();
-#else 
+#else
         /*
          * Register windows console signal handler to react to Ctrl-C,
          * Ctrl-Break, Close, non-interactive session termination.
