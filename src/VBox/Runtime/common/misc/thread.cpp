@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: thread.cpp 95200 2022-06-05 20:16:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -915,9 +915,9 @@ RTDECL(const char *) RTThreadSelfName(void)
         PRTTHREADINT pThread = rtThreadGet(Thread);
         if (pThread)
         {
-            const char *szName = pThread->szName;
+            const char *pszName = pThread->szName;
             rtThreadRelease(pThread);
-            return szName;
+            return pszName;
         }
     }
     return NULL;
