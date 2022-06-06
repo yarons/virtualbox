@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 94330 2022-03-22 19:23:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_fb.c 95212 2022-06-06 19:57:30Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -362,6 +362,9 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	info->screen_size = size;
 
 #ifdef CONFIG_FB_DEFERRED_IO
+# if RTLNX_VER_MIN(5,19,0)
+	info->fix.smem_len = info->screen_size;
+# endif
 	info->fbdefio = &vbox_defio;
 	fb_deferred_io_init(info);
 #endif
