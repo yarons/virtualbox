@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95220 2022-06-08 07:47:46Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95225 2022-06-08 11:44:55Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4822,7 +4822,7 @@ SDK_VBOX_SOFTFLOATR0_LIBS       = \
 ifdef VBOX_WITH_LIBSSH
  SDK_VBOX_SSH                  := libssh for dll linking.
  SDK_VBOX_SSH_DEFS             ?= LIBSSH_STATIC=1
- SDK_VBOX_SSH_INCS             ?= $(PATH_ROOT)/src/libs/libssh-0.9.5/include
+ SDK_VBOX_SSH_INCS             ?= $(PATH_ROOT)/src/libs/libssh-0.9.6/include
  SDK_VBOX_SSH_LIBS             ?= \
  	$(PATH_STAGE_LIB)/VBox-libssh$(VBOX_SUFF_LIB)
 endif
@@ -8958,7 +8958,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95220 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95225 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
