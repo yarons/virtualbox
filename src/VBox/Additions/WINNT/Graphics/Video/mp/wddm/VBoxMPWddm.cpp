@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 95191 2022-06-03 18:49:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3457,6 +3457,14 @@ DxgkDdiEscape(
                 {
                     WARN(("failed to get allocation from handle"));
                     Status = STATUS_INVALID_PARAMETER;
+                    break;
+                }
+
+                if (pAlloc->enmType == VBOXWDDM_ALLOC_TYPE_D3D)
+                {
+                    pSetHostID->EscapeHdr.u32CmdSpecific = pAlloc->dx.sid;
+                    pSetHostID->rc = VERR_NOT_EQUAL;
+                    Status = STATUS_SUCCESS;
                     break;
                 }
 

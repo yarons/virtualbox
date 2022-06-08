@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispD3D.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -243,6 +243,9 @@ typedef struct VBOXWDDMDISP_ALLOCATION
     VBOXWDDM_SURFACE_DESC SurfDesc;
 #ifdef VBOX_WITH_MESA3D
     uint32_t hostID;
+#endif
+#ifdef VBOX_WITH_VMSVGA3D_DX9
+    VBOXDXALLOCATIONDESC AllocDesc;
 #endif
 } VBOXWDDMDISP_ALLOCATION, *PVBOXWDDMDISP_ALLOCATION;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxD3DIf.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -50,6 +50,11 @@ DECLINLINE(IUnknown*) vboxD3DIfGet(PVBOXWDDMDISP_ALLOCATION pAlloc)
 {
     if (pAlloc->pD3DIf)
         return pAlloc->pD3DIf;
+
+#ifdef VBOX_WITH_VMSVGA3D_DX9
+    if (pAlloc->enmType == VBOXWDDM_ALLOC_TYPE_D3D)
+        return pAlloc->pRc->pDevice->pfnCreateSharedPrimary(pAlloc);
+#endif
 
     if (pAlloc->enmType != VBOXWDDM_ALLOC_TYPE_STD_SHAREDPRIMARYSURFACE)
     {

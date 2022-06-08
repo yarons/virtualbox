@@ -1,4 +1,4 @@
-/* $Id: VBoxGaHwSVGA.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGaHwSVGA.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -45,8 +45,8 @@ typedef struct VBOXGAHWINFOSVGA
     /* Copy of FIFO registers, up to 1024, currently 290 are used. */
     uint32_t au32Fifo[1024];
 
-    /* Currently SVGA has 244 caps, 512 should be ok for near future.
-     * This is a copy of SVGA_REG_DEV_CAP enumeration.
+    /* Currently SVGA has 260 caps, 512 should be ok for near future.
+     * This is a copy of SVGA3D_DEVCAP_* values returned by the host.
      * Only valid if SVGA_CAP_GBOBJECTS is set in SVGA_REG_CAPABILITIES.
      */
     uint32_t au32Caps[512];

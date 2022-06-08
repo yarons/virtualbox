@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 95191 2022-06-03 18:49:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDX.cpp 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -952,12 +952,14 @@ NTSTATUS APIENTRY DxgkDdiDXPatch(PVBOXMP_DEVEXT pDevExt, const DXGKARG_PATCH *pP
                 Assert(pAllocation->dx.mobid != SVGA3D_INVALID_ID);
                 *(uint32_t *)pPatchAddress = pAllocation->dx.mobid;
             }
-            else
+            else if (   pAllocation->enmType == VBOXWDDM_ALLOC_TYPE_STD_SHADOWSURFACE
+                     || pAllocation->enmType == VBOXWDDM_ALLOC_TYPE_STD_STAGINGSURFACE)
             {
-                AssertFailed();
                 uint32_t *poffVRAM = (uint32_t *)pPatchAddress;
                 *poffVRAM = pAllocationListEntry->PhysicalAddress.LowPart + pPatchListEntry->AllocationOffset;
             }
+            else
+                AssertFailed();
         }
         else
             AssertFailed(); /* Render should have already filtered out such patches. */

@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvWddm.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GaDrvEnvWddm.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -94,6 +94,10 @@ class GaDrvEnvWddm
         static DECLCALLBACK(void) gaEnvWddmRegionDestroy(void *pvEnv,
                                                          uint32_t u32GmrId,
                                                          void *pvMap);
+
+        /* VGPU10 */
+        static DECLCALLBACK(int) gaEnvWddmGBSurfaceDefine(void *pvEnv,
+                                                          SVGAGBSURFCREATE *pCreateParms);
 };
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_GaDrvEnvWddm_h */

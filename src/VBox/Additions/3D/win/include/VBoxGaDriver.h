@@ -1,4 +1,4 @@
-/* $Id: VBoxGaDriver.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGaDriver.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -70,6 +70,9 @@ typedef struct WDDMGalliumDriverEnv
     DECLCALLBACKMEMBER(void, pfnRegionDestroy,(void *pvEnv,
                                                uint32_t u32GmrId,
                                                void *pvMap));
+    /* VGPU10 */
+    DECLCALLBACKMEMBER(int, pfnGBSurfaceDefine,(void *pvEnv,
+                                                SVGAGBSURFCREATE *pCreateParms));
 } WDDMGalliumDriverEnv;
 
 struct pipe_context;

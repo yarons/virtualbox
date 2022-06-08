@@ -1,4 +1,4 @@
-/* $Id: VBoxGaTypes.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGaTypes.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -22,6 +22,11 @@
 #endif
 
 #include <iprt/types.h>
+
+#pragma pack(1) /* VMSVGA structures are '__packed'. */
+#include <svga3d_caps.h>
+#include <svga3d_reg.h>
+#pragma pack()
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,6 +74,25 @@ typedef struct GAFENCEQUERY
     /* OUT: GA_FENCE_STATUS_*. */
     uint32_t u32FenceStatus;
 } GAFENCEQUERY;
+
+typedef struct SVGAGBSURFCREATE
+{
+    /* Surface data. */
+    struct
+    {
+        uint64_t flags; /* SVGA3dSurfaceAllFlags */
+        SVGA3dSurfaceFormat format;
+        unsigned usage;
+        SVGA3dSize size;
+        uint32_t numFaces;
+        uint32_t numMipLevels;
+        unsigned sampleCount;
+    } s;
+    uint32_t gmrid; /* In/Out: Backing GMR. */
+    uint32_t cbGB; /* Out: Size of backing memory. */
+    uint64_t u64UserAddress; /* Out: R3 mapping of the backing memory. */
+    uint32_t u32Sid; /* Out: Surface id. */
+} SVGAGBSURFCREATE, *PSVGAGBSURFCREATE;
 
 #ifdef __cplusplus
 }
