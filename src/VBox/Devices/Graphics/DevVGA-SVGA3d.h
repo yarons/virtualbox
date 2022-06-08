@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 95149 2022-05-31 17:01:25Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 95231 2022-06-08 15:26:23Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -345,7 +345,7 @@ typedef struct
     DECLCALLBACKMEMBER(int,  pfnQueryCaps,                (PVGASTATECC pThisCC, SVGA3dDevCapIndex idx3dCaps, uint32_t *pu32Val));
     DECLCALLBACKMEMBER(int,  pfnChangeMode,               (PVGASTATECC pThisCC));
     DECLCALLBACKMEMBER(int,  pfnCreateTexture,            (PVGASTATECC pThisCC, PVMSVGA3DCONTEXT pContext, uint32_t idAssociatedContext, PVMSVGA3DSURFACE pSurface));
-    DECLCALLBACKMEMBER(void, pfnSurfaceDestroy,           (PVGASTATECC pThisCC, PVMSVGA3DSURFACE pSurface));
+    DECLCALLBACKMEMBER(void, pfnSurfaceDestroy,           (PVGASTATECC pThisCC, bool fClearCOTableEntry, PVMSVGA3DSURFACE pSurface));
     DECLCALLBACKMEMBER(void, pfnSurfaceInvalidateImage,   (PVGASTATECC pThisCC, PVMSVGA3DSURFACE pSurface, uint32_t uFace, uint32_t uMipmap));
     DECLCALLBACKMEMBER(int,  pfnSurfaceCopy,              (PVGASTATECC pThisCC, SVGA3dSurfaceImageId dest, SVGA3dSurfaceImageId src, uint32_t cCopyBoxes, SVGA3dCopyBox *pBox));
     DECLCALLBACKMEMBER(int,  pfnSurfaceDMACopyBox,        (PVGASTATE pThis, PVGASTATECC pThisCC, PVMSVGA3DSTATE pState, PVMSVGA3DSURFACE pSurface,

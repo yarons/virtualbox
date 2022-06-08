@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 95008 2022-05-13 16:20:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 95231 2022-06-08 15:26:23Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2051,8 +2051,10 @@ D3DMULTISAMPLE_TYPE vmsvga3dMultipeSampleCount2D3D(uint32_t multisampleCount)
  * @param   pThisCC             The device state.
  * @param   pSurface            The surface being destroyed.
  */
-static DECLCALLBACK(void) vmsvga3dBackSurfaceDestroy(PVGASTATECC pThisCC, PVMSVGA3DSURFACE pSurface)
+static DECLCALLBACK(void) vmsvga3dBackSurfaceDestroy(PVGASTATECC pThisCC, bool fClearCOTableEntry, PVMSVGA3DSURFACE pSurface)
 {
+    RT_NOREF(fClearCOTableEntry);
+
     PVMSVGA3DSTATE pState = pThisCC->svga.p3dState;
     AssertReturnVoid(pState);
 
