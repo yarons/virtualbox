@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95225 2022-06-08 11:44:55Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95235 2022-06-08 17:06:53Z vitali.pelenjow@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -599,6 +599,12 @@ endif
 # Gallium based WDDM driver
 if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_MESA3D = 1
+endif
+# VGPU10 UMD driver for Vista+ guests in the guest additions installer
+ifdef VBOX_WITH_VMSVGA3D_DX
+ if1of ($(KBUILD_TARGET), win)
+  VBOX_WITH_WDDM_DX = 1
+ endif
 endif
 # Disable the Intel PXE ROM (uses Etherboot).
 VBOX_WITH_INTEL_PXE =
@@ -8958,7 +8964,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95225 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95235 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
