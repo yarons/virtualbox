@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.h 95163 2022-06-01 14:03:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.h 95233 2022-06-08 15:46:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
@@ -20,9 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-/* Qt includes: */
-#include <QListWidget>
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"

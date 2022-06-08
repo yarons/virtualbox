@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 93996 2022-02-28 22:04:49Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 95233 2022-06-08 15:46:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QApplication>
 #include <QDir>
+#include <QRegularExpression>
 
 /* GUI includes: */
 #include "UIBootOrderEditor.h"
