@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 95162 2022-06-01 13:06:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 95227 2022-06-08 12:41:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
@@ -113,7 +113,7 @@ void UIMotherboardFeaturesEditor::retranslateUi()
     {
         m_pCheckBoxEnableIoApic->setText(tr("Enable &I/O APIC"));
         m_pCheckBoxEnableIoApic->setToolTip(tr("When checked, the virtual machine will support the Input Output APIC (I/O APIC), "
-                                               "which may slightly decrease performance. <b>Note:</b> don't disable this feature "
+                                               "which may slightly decrease performance. Note: don't disable this feature "
                                                "after having installed a Windows guest operating system!"));
     }
     if (m_pCheckBoxEnableEfi)
