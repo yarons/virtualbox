@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 95231 2022-06-08 15:26:23Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 95232 2022-06-08 15:34:49Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1119,6 +1119,7 @@ D3DMULTISAMPLE_TYPE vmsvga3dMultipeSampleCount2D3D(uint32_t multisampleCount)
  * Destroy backend specific surface bits (part of SVGA_3D_CMD_SURFACE_DESTROY).
  *
  * @param   pThisCC             The device state.
+ * @param   fClearCOTableEntry  Not relevant for this backend.
  * @param   pSurface            The surface being destroyed.
  */
 static DECLCALLBACK(void) vmsvga3dBackSurfaceDestroy(PVGASTATECC pThisCC, bool fClearCOTableEntry, PVMSVGA3DSURFACE pSurface)
