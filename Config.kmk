@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95239 2022-06-09 09:09:44Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95240 2022-06-09 10:20:23Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4849,7 +4849,7 @@ endif
 
 # libxml2
 SDK_VBOX_LIBXML2               := libxml2 for dll linking.
-SDK_VBOX_LIBXML2_INCS          ?= $(PATH_ROOT)/src/libs/libxml2-2.9.4/include
+SDK_VBOX_LIBXML2_INCS          ?= $(PATH_ROOT)/src/libs/libxml2-2.9.14/include
 SDK_VBOX_LIBXML2_DEFS          ?= _REENTRANT LIBXML_STATIC LIBXML_STATIC_FOR_DLL
 SDK_VBOX_LIBXML2_DEFS.win      ?= WIN32 _WINDOWS _MBCS HAVE_WIN32_THREADS HAVE_COMPILER_TLS
 # Note: no linking to LIB here, we do that explicitly in src/VBox/Runtime/Makefile.kmk to link
@@ -8964,7 +8964,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95239 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95240 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
