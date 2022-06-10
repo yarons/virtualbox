@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 95149 2022-05-31 17:01:25Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 95249 2022-06-10 22:48:04Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -3685,7 +3685,7 @@ static int vmsvga3dCmdDXGrowCOTable(PVGASTATECC pThisCC, SVGA3dCmdDXGrowCOTable 
     RT_NOREF(cbCmd);
     return vmsvga3dDXGrowCOTable(pThisCC, pCmd);
 #else
-    RT_NOREF(pThisCC, idDXContext, pCmd, cbCmd);
+    RT_NOREF(pThisCC, pCmd, cbCmd);
     return VERR_NOT_SUPPORTED;
 #endif
 }
