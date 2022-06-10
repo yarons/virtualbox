@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95222 2022-06-08 10:16:27Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 95245 2022-06-10 09:05:10Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -932,6 +932,7 @@ UICommon_QT_MOCHDRS = \
 	src/settings/editors/UISharedFoldersEditor.h \
 	src/settings/editors/UIShortcutConfigurationEditor.h \
 	src/settings/editors/UISnapshotFolderEditor.h \
+	src/settings/editors/UIUSBControllerEditor.h \
 	src/settings/editors/UIVideoMemoryEditor.h \
 	src/settings/editors/UIVirtualCPUEditor.h \
 	src/settings/editors/UIVisualStateEditor.h \
@@ -1509,6 +1510,7 @@ UICommon_SOURCES = \
 	src/settings/editors/UISharedFoldersEditor.cpp \
 	src/settings/editors/UIShortcutConfigurationEditor.cpp \
 	src/settings/editors/UISnapshotFolderEditor.cpp \
+	src/settings/editors/UIUSBControllerEditor.cpp \
 	src/settings/editors/UIVideoMemoryEditor.cpp \
 	src/settings/editors/UIVirtualCPUEditor.cpp \
 	src/settings/editors/UIVisualStateEditor.cpp \
