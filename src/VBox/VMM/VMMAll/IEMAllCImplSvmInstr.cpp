@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 94800 2022-05-03 21:49:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1501,7 +1501,7 @@ IEM_CIMPL_DEF_0(iemCImpl_skinit)
 
     uint32_t uIgnore;
     uint32_t fFeaturesECX;
-    CPUMGetGuestCpuId(pVCpu, 0x80000001, 0 /* iSubLeaf */, &uIgnore, &uIgnore, &fFeaturesECX, &uIgnore);
+    CPUMGetGuestCpuId(pVCpu, 0x80000001, 0 /* iSubLeaf */, -1 /*f64BitMode*/, &uIgnore, &uIgnore, &fFeaturesECX, &uIgnore);
     if (!(fFeaturesECX & X86_CPUID_AMD_FEATURE_ECX_SKINIT))
         return iemRaiseUndefinedOpcode(pVCpu);
 

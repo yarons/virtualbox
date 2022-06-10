@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 94369 2022-03-25 07:42:32Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4615,7 +4615,7 @@ static DECLCALLBACK(void) pdmR3DevHlp_GetCpuId(PPDMDEVINS pDevIns, uint32_t iLea
              pDevIns->pReg->szName, pDevIns->iInstance, iLeaf, pEax, pEbx, pEcx, pEdx));
     AssertPtr(pEax); AssertPtr(pEbx); AssertPtr(pEcx); AssertPtr(pEdx);
 
-    CPUMGetGuestCpuId(VMMGetCpu(pDevIns->Internal.s.pVMR3), iLeaf, 0 /*iSubLeaf*/, pEax, pEbx, pEcx, pEdx);
+    CPUMGetGuestCpuId(VMMGetCpu(pDevIns->Internal.s.pVMR3), iLeaf, 0 /*iSubLeaf*/, -1 /*f64BitMode*/, pEax, pEbx, pEcx, pEdx);
 
     LogFlow(("pdmR3DevHlp_GetCpuId: caller='%s'/%d: returns void - *pEax=%#x *pEbx=%#x *pEcx=%#x *pEdx=%#x\n",
              pDevIns->pReg->szName, pDevIns->iInstance, *pEax, *pEbx, *pEcx, *pEdx));

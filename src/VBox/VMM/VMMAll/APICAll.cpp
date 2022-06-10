@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 93655 2022-02-08 13:56:01Z knut.osmundsen@oracle.com $ */
+/* $Id: APICAll.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2328,7 +2328,7 @@ void apicResetCpu(PVMCPUCC pVCpu, bool fResetApicBaseMsr)
     /* Verify that the initial APIC ID reported via CPUID matches our VMCPU ID assumption. */
     uint32_t uEax, uEbx, uEcx, uEdx;
     uEax = uEbx = uEcx = uEdx = UINT32_MAX;
-    CPUMGetGuestCpuId(pVCpu, 1, 0, &uEax, &uEbx, &uEcx, &uEdx);
+    CPUMGetGuestCpuId(pVCpu, 1, 0, -1 /*f64BitMode*/, &uEax, &uEbx, &uEcx, &uEdx);
     Assert(((uEbx >> 24) & 0xff) == pVCpu->idCpu);
 #endif
 
