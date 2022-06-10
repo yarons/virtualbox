@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 95077 2022-05-24 15:10:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 95247 2022-06-10 12:33:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -881,6 +881,16 @@ enum UISharedFolderType
     UISharedFolderType_Machine,
     UISharedFolderType_Console
 };
+
+
+/** Remote mode types. */
+enum UIRemoteMode
+{
+    UIRemoteMode_Any,
+    UIRemoteMode_On,
+    UIRemoteMode_Off
+};
+Q_DECLARE_METATYPE(UIRemoteMode);
 
 
 /** Common UI: Wizard types. */

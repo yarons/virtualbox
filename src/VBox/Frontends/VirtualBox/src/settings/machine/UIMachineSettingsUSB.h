@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 95245 2022-06-10 09:05:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.h 95247 2022-06-10 12:33:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -44,9 +44,6 @@ class SHARED_LIBRARY_STUFF UIMachineSettingsUSB : public UISettingsPageMachine
     Q_OBJECT;
 
 public:
-
-    /** Remote mode types. */
-    enum { ModeAny, ModeOn, ModeOff };
 
     /** Constructs USB settings page. */
     UIMachineSettingsUSB();
