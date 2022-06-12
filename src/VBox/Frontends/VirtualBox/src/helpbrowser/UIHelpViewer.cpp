@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 95251 2022-06-12 17:01:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 95252 2022-06-12 17:29:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -53,6 +53,7 @@
 #include "CSystemProperties.h"
 
 #ifdef VBOX_WITH_QHELP_VIEWER
+
 
 /*********************************************************************************************************************************
 *   UIContextMenuNavigationAction definition.                                                                                    *
