@@ -1,4 +1,4 @@
-/* $Id: Svga.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.h 95250 2022-06-12 09:48:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -609,9 +609,6 @@ NTSTATUS SvgaGboFillPageTableForMDL(PVMSVGAGBO pGbo,
                                     uint32_t MdlOffset);
 NTSTATUS SvgaGboFillPageTableForMemObj(PVMSVGAGBO pGbo,
                                        RTR0MEMOBJ hMemObj);
-NTSTATUS SvgaGboFillPageTableForArray(PVMSVGAGBO pGbo,
-                                      uint32_t u32NumPages,
-                                      RTHCPHYS *paPhys);
 
 void SvgaMobFree(VBOXWDDM_EXT_VMSVGA *pSvga,
                  PVMSVGAMOB pMob);

@@ -1,4 +1,4 @@
-/* $Id: Present.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Present.cpp 95250 2022-06-12 09:48:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - ID3DPresent and ID3DPresentGroup implementation.
  */
@@ -265,9 +265,12 @@ HRESULT WINAPI WDDMPresent::GetPresentStats(D3DPRESENTSTATS *pStats)
 
 HRESULT WINAPI WDDMPresent::GetCursorPos(POINT *pPoint)
 {
-    RT_NOREF(pPoint);
-    TRAPNOTIMPL;
-    return D3DERR_INVALIDCALL;
+    if (!::GetCursorPos(pPoint))
+    {
+        pPoint->x = 0;
+        pPoint->y = 0;
+    }
+    return S_OK;
 }
 
 HRESULT WINAPI WDDMPresent::SetCursorPos(POINT *pPoint)
