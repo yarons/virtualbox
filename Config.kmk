@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95242 2022-06-09 12:19:11Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95260 2022-06-13 15:38:05Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1851,7 +1851,8 @@ endif
 
 # Temporary measure while kBuild / tools updates their define quoting.
 ifdef KMK_WITH_QUOTING
- if "$(VBOX_VCC_TOOL_STEM)" >= "VCC140" && "$(KBUILD_TARGET)" == "win"
+ if   ("$(VBOX_VCC_TOOL_STEM)" >= "VCC140" && "$(KBUILD_TARGET)" == "win") \
+   || ("$(KBUILD_TARGET)" != "darwin" && "$(KBUILD_TARGET)" != "win" && "$(KMK_REVISION)" >= 3566)
   VBOX_WITH_AUTOMATIC_DEFS_QUOTING := 1
  endif
 endif
@@ -8964,7 +8965,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95242 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95260 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
