@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3.cpp 95256 2022-06-13 10:44:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -208,9 +208,6 @@ VMMR3_INT_DECL(int) NEMR3InitAfterCPUM(PVM pVM)
     int rc = VINF_SUCCESS;
     if (pVM->bMainExecutionEngine == VM_EXEC_ENGINE_NATIVE_API)
     {
-        if (pVM->nem.s.fAllow64BitGuests)
-            CPUMR3CpuIdEnable64BitGuests(pVM);
-
         /*
          * Do native after-CPUM init.
          */

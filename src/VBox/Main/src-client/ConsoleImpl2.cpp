@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 95254 2022-06-13 09:47:43Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 95256 2022-06-13 10:44:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -852,6 +852,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
     Bstr bstrCpuProfile;
     hrc = pMachine->COMGETTER(CPUProfile)(bstrCpuProfile.asOutParam());                     H();
 
+    /* Check if long mode is enabled. */
+    BOOL fIsGuest64Bit;
+    hrc = pMachine->GetCPUProperty(CPUPropertyType_LongMode, &fIsGuest64Bit);               H();
+
     /*
      * Figure out the IOMMU config.
      */
@@ -1107,7 +1111,11 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         /* Physical Address Extension (PAE) */
         BOOL fEnablePAE = false;
         hrc = pMachine->GetCPUProperty(CPUPropertyType_PAE, &fEnablePAE);                   H();
+        fEnablePAE |= fIsGuest64Bit;
         InsertConfigInteger(pRoot, "EnablePAE", fEnablePAE);
+
+        /* 64-bit guests (long mode) */
+        InsertConfigInteger(pCPUM, "Enable64bit", fIsGuest64Bit);
 
         /* APIC/X2APIC configuration */
         BOOL fEnableAPIC = true;
@@ -1169,9 +1177,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         /*
          * Hardware virtualization extensions.
          */
-        BOOL fIsGuest64Bit;
-        hrc = pMachine->GetCPUProperty(CPUPropertyType_LongMode, &fIsGuest64Bit);           H();
-
         /* Sanitize valid/useful APIC combinations, see @bugref{8868}. */
         if (!fEnableAPIC)
         {

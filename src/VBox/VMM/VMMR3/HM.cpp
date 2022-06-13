@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 95256 2022-06-13 10:44:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1738,12 +1738,6 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     hmR3DisableRawMode(pVM); /** @todo make this go away! */
 
     /*
-     * Change the CPU features.
-     */
-    if (pVM->hm.s.fAllow64BitGuestsCfg)
-        CPUMR3CpuIdEnable64BitGuests(pVM);
-
-    /*
      * Log configuration details.
      */
     if (pVM->hm.s.fNestedPagingCfg)
@@ -1947,12 +1941,6 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
         LogRel(("HM:   Enabled posted-interrupt processing support\n"));
 
     hmR3DisableRawMode(pVM);
-
-    /*
-     * Change the CPU features.
-     */
-    if (pVM->hm.s.fAllow64BitGuestsCfg)
-        CPUMR3CpuIdEnable64BitGuests(pVM);
 
     LogRel((pVM->hm.s.fTprPatchingAllowed ? "HM: Enabled TPR patching\n"
                                           : "HM: Disabled TPR patching\n"));
