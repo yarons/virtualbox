@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 95066 2022-05-23 20:06:48Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 95254 2022-06-13 09:47:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1213,11 +1213,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         {
             /* Indicate whether 64-bit guests are supported or not. */
             InsertConfigInteger(pHM, "64bitEnabled", fIsGuest64Bit);
-#if ARCH_BITS == 32 /* The recompiler must use VBoxREM64 (32-bit host only). */
-            PCFGMNODE pREM;
-            InsertConfigNode(pRoot, "REM", &pREM);
-            InsertConfigInteger(pREM, "64bitEnabled", 1);
-#endif
 
             /** @todo Not exactly pretty to check strings; VBOXOSTYPE would be better,
                 but that requires quite a bit of API change in Main. */
