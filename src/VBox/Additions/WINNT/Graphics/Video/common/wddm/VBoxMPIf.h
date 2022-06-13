@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPIf.h 95267 2022-06-13 18:03:44Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -101,12 +101,12 @@ typedef struct VBOXDXALLOCATIONDESC
     uint32_t               cbAllocation;
     struct
     {
-        uint64 surfaceFlags; /*SVGA3dSurfaceAllFlags*/ /** @todo Restore types after Mesa update. */
+        SVGA3dSurfaceAllFlags surfaceFlags;
         SVGA3dSurfaceFormat format;
         uint32 numMipLevels;
         uint32 multisampleCount;
-        uint32 multisamplePattern; /*SVGA3dMSPattern*/
-        uint32 qualityLevel; /*SVGA3dMSQualityLevel*/
+        SVGA3dMSPattern multisamplePattern;
+        SVGA3dMSQualityLevel qualityLevel;
         SVGA3dTextureFilter autogenFilter;
         SVGA3dSize size;
         uint32 arraySize;
