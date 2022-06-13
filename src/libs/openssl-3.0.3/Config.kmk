@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95219 2022-06-08 07:43:44Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95261 2022-06-13 16:29:49Z alexander.eichner@oracle.com $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -90,6 +90,7 @@ crypto-headers_SOURCES = \
 	include/openssl/conftypes.h=>conftypes.h \
 	include/openssl/core.h=>core.h \
 	include/openssl/core_dispatch.h=>core_dispatch.h \
+	include/openssl/core_names.h=>core_names.h \
 	include/openssl/cryptoerr.h=>cryptoerr.h \
 	include/openssl/cryptoerr_legacy.h=>cryptoerr_legacy.h \
 	include/openssl/cterr.h=>cterr.h \
