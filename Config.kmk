@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95260 2022-06-13 15:38:05Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 95268 2022-06-13 18:22:53Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4733,12 +4733,12 @@ endif
 
 ifdef VBOX_WITH_LIBCURL
  SDK_VBOX_LIBCURL              := libcurl for dll linking.
- SDK_VBOX_LIBCURL_INCS         ?= $(PATH_ROOT)/src/libs/curl-7.64.0/include
+ SDK_VBOX_LIBCURL_INCS         ?= $(PATH_ROOT)/src/libs/curl-7.83.1/include
  SDK_VBOX_LIBCURL_LIBS         ?= $(PATH_STAGE_LIB)/VBox-libcurl$(VBOX_SUFF_LIB)
  SDK_VBOX_LIBCURL_DEFS         ?= BUILDING_LIBCURL
 
  SDK_VBOX_LIBCURL-x86           = libcurl/x86 for dll linking.
- SDK_VBOX_LIBCURL-x86_INCS     ?= $(PATH_ROOT)/src/libs/curl-7.64.0/include
+ SDK_VBOX_LIBCURL-x86_INCS     ?= $(PATH_ROOT)/src/libs/curl-7.83.1/include
  SDK_VBOX_LIBCURL-x86_LIBS.x86 ?= $(PATH_STAGE_LIB)/VBox-libcurl-x86$(VBOX_SUFF_LIB)
  SDK_VBOX_LIBCURL-x86_DEFS     ?= BUILDING_LIBCURL
 endif
@@ -8965,7 +8965,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95260 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95268 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
