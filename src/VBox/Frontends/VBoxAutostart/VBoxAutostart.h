@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart.h 95139 2022-05-30 17:19:09Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxAutostart.h 95255 2022-06-13 09:55:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -356,8 +356,20 @@ DECLHIDDEN(RTEXITCODE) autostartSvcDisplayError(const char *pszFormat, ...);
  */
 DECLHIDDEN(RTEXITCODE) autostartSvcDisplayGetOptError(const char *pszAction, int rc, PCRTGETOPTUNION pValue);
 
+/**
+ * Starts the autostart environment by initializing all needed (global) objects.
+ *
+ * @returns VBox status code.
+ *
+ * @note    This currently does NOT support multiple instances, be aware of this!
+ */
 DECLHIDDEN(int) autostartSetup(void);
 
+/**
+ * Stops the autostart environment.
+ *
+ * @note    This currently does NOT support multiple instances, be aware of this!
+ */
 DECLHIDDEN(void) autostartShutdown(void);
 
 #endif /* !VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h */
