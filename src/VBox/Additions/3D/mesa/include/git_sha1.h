@@ -1,4 +1,4 @@
-/* $Id: git_sha1.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: git_sha1.h 95262 2022-06-13 17:26:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Provides this include file for Mesa.
  *
@@ -23,6 +23,6 @@
 # pragma once
 #endif
 
-/* Nothing. */
+#define MESA_GIT_SHA1 ""
 
 #endif /* !GA_INCLUDED_3D_MESA_git_sha1_h */

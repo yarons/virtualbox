@@ -1,4 +1,4 @@
-/* $Id: VBoxGaTypes.h 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxGaTypes.h 95262 2022-06-13 17:26:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -80,13 +80,15 @@ typedef struct SVGAGBSURFCREATE
     /* Surface data. */
     struct
     {
-        uint64_t flags; /* SVGA3dSurfaceAllFlags */
+        SVGA3dSurfaceAllFlags flags;
         SVGA3dSurfaceFormat format;
         unsigned usage;
         SVGA3dSize size;
         uint32_t numFaces;
         uint32_t numMipLevels;
         unsigned sampleCount;
+        SVGA3dMSPattern multisamplePattern;
+        SVGA3dMSQualityLevel qualityLevel;
     } s;
     uint32_t gmrid; /* In/Out: Backing GMR. */
     uint32_t cbGB; /* Out: Size of backing memory. */

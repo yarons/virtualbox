@@ -1,4 +1,4 @@
-/* $Id: assert.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: assert.h 95262 2022-06-13 17:26:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Replaces C runtime assert with a simplified version which just hits breakpoint.
  *
@@ -28,6 +28,10 @@
 #include <iprt/asm.h>
 
 #undef assert
+#ifdef DEBUG
 #define assert(_e) (void)( (!!(_e)) || (ASMBreakpoint(), 0) )
+#else
+#define assert(_e) (void)(0)
+#endif
 
 #endif /* !GA_INCLUDED_3D_MESA_assert_h */

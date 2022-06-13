@@ -1,4 +1,4 @@
-/* $Id: VBoxSVGA.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSVGA.c 95262 2022-06-13 17:26:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA hardware driver.
  */
@@ -21,7 +21,7 @@
 #include "svga_screen.h"
 #include "pipe/p_screen.h"
 #include "pipe/p_context.h"
-#include "state_tracker/drm_driver.h"
+#include "frontend/drm_driver.h"
 
 #include "wddm_screen.h"
 
@@ -55,9 +55,9 @@ GaDrvGetSurfaceId(struct pipe_screen *pScreen, struct pipe_resource *pResource)
         /* Get the sid (surface id). */
         struct winsys_handle whandle;
         memset(&whandle, 0, sizeof(whandle));
-        whandle.type = DRM_API_HANDLE_TYPE_SHARED;
+        whandle.type = WINSYS_HANDLE_TYPE_SHARED;
 
-        if (pScreen->resource_get_handle(pScreen, NULL, pResource, &whandle, PIPE_HANDLE_USAGE_READ))
+        if (pScreen->resource_get_handle(pScreen, NULL, pResource, &whandle, 0))
         {
             u32Sid = (uint32_t)whandle.handle;
         }
