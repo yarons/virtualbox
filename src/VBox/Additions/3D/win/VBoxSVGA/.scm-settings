@@ -1,4 +1,4 @@
-# $Id: .scm-settings 95263 2022-06-13 17:34:28Z vitali.pelenjow@oracle.com $
+# $Id: .scm-settings 95265 2022-06-13 17:54:13Z vitali.pelenjow@oracle.com $
 ## @file
 # Source code massager settings for VBoxDTrace.
 #
@@ -17,4 +17,3 @@
 
 
 --filter-out-dirs  "*/winsys/."
---filter-out-dirs  "*/winsys_21/."
