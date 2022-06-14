@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MouseImpl.h 95271 2022-06-14 09:52:49Z michal.necasek@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -93,7 +93,7 @@ private:
 
 
     static DECLCALLBACK(void *) i_drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
-    static DECLCALLBACK(void)   i_mouseReportModes(PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs, bool fMT);
+    static DECLCALLBACK(void)   i_mouseReportModes(PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs, bool fMTAbs, bool fMTRel);
     static DECLCALLBACK(int)    i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   i_drvDestruct(PPDMDRVINS pDrvIns);
 
