@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95270 2022-06-14 07:57:18Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95274 2022-06-14 10:48:33Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -778,6 +778,8 @@ VBOX_WITH_VBOXSDL =
 ifeq ($(filter win.amd64,$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)),) # too much work with freetype and all that.
 VBOX_WITH_SECURELABEL = 1
 endif
+# Start VBoxSVC in windows session 0 (services session).
+VBOX_WITH_VBOXSVC_SESSION_0 =
 # The headless frontend.
 VBOX_WITH_HEADLESS = 1
 # Enable the build of VRDP server.
@@ -8965,7 +8967,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95270 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95274 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
