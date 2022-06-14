@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95268 2022-06-13 18:22:53Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 95270 2022-06-14 07:57:18Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -136,7 +136,7 @@ if defined(VBOX_WITH_MAIN) \
   # libvpx is used for video capture.
   if   defined(VBOX_WITH_LIBVPX) \
     && ("$(SDK_VBOX_VPX_INCS)" == "$(SDK_VBOX_VPX_DEFAULT_INCS)")
-   include $(PATH_SUB_CURRENT)/libvpx-1.6.1/Makefile.kmk
+   include $(PATH_SUB_CURRENT)/libvpx-1.11.0/Makefile.kmk
   endif
 
  endif
