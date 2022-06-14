@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95274 2022-06-14 10:48:33Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 95283 2022-06-14 20:00:07Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3245,6 +3245,7 @@ endif
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_mavx2                 ?= $(call VBOX_GCC_CHECK_CC,-mavx2,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_no-pie                ?= $(call VBOX_GCC_CHECK_CC,-no-pie,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_fdiagnostics-show-option ?= $(call VBOX_GCC_CHECK_CC,-fdiagnostics-show-option,)'
+	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_fno-printf-return-value ?= $(call VBOX_GCC_CHECK_CC,-fno-printf-return-value,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wa_cma_nocompress_debug_sections ?= $(call VBOX_GCC_CHECK_CC,-Wa$(COMMA)--nocompress-debug-sections,)'
 # Produce code optimized for the most common IA32/AMD64/EM64T processors. Introduced with gcc version 4.2.
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_mtune-generic         ?= $(call VBOX_GCC_CHECK_CC,-mtune=generic,)'
@@ -8967,7 +8968,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95274 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95283 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
