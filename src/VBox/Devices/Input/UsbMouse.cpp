@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 95275 2022-06-14 11:14:07Z michal.necasek@oracle.com $ */
+/* $Id: UsbMouse.cpp 95276 2022-06-14 11:20:21Z michal.necasek@oracle.com $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -1840,7 +1840,8 @@ static DECLCALLBACK(int) usbHidMousePutEventAbs(PPDMIMOUSEPORT pInterface,
 }
 
 /**
- * @interface_method_impl{PDMIMOUSEPORT,pfnPutEventTouchScreen}
+ * Worker for usbHidMousePutEventTouchScreen and
+ * usbHidMousePutEventTouchPad.
  */
 static DECLCALLBACK(int) usbHidMousePutEventMultiTouch(PUSBHID pThis,
                                                        uint8_t cContacts,
