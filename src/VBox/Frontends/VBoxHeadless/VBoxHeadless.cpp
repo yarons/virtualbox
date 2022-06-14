@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 95279 2022-06-14 16:10:11Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 95280 2022-06-14 16:20:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -51,7 +51,7 @@ using namespace com;
 # include <iprt/process.h>
 #endif
 
-#ifdef RT_OS_LINUX
+#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
 # include <cerrno>
 #endif
 
