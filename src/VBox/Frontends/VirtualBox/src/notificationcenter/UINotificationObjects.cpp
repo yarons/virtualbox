@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 94785 2022-05-02 14:17:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 95278 2022-06-14 16:08:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -83,7 +83,7 @@ void UINotificationMessage::cannotFindHelpFile(const QString &strLocation)
 {
     createMessage(
         QApplication::translate("UIMessageCenter", "Can't find help file ..."),
-        QApplication::translate("UIMessageCenter", "Failed to find the following help file:")
+        QApplication::translate("UIMessageCenter", "Failed to find the following help file: <b>%1</b>")
                                                    .arg(strLocation));
 }
 
