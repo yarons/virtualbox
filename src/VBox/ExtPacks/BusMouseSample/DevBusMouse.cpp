@@ -1,4 +1,4 @@
-/* $Id: DevBusMouse.cpp 94987 2022-05-12 09:05:55Z michal.necasek@oracle.com $ */
+/* $Id: DevBusMouse.cpp 95273 2022-06-14 10:16:00Z michal.necasek@oracle.com $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -217,7 +217,7 @@ static void bmsR3UpdateDownstreamStatus(PBMSSTATE pThis, PBMSSTATER3 pThisCC)
     PPDMIMOUSECONNECTOR pDrv = pThisCC->Mouse.pDrv;
     bool fEnabled = !!pThis->mouse_enabled;
     if (pDrv)   /* pDrv may be NULL if no mouse interface attached. */
-        pDrv->pfnReportModes(pDrv, fEnabled, false, false);
+        pDrv->pfnReportModes(pDrv, fEnabled, false, false, false);
 }
 
 /**
@@ -711,7 +711,8 @@ static DECLCALLBACK(int) bmsR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     pThisCC->Mouse.IBase.pfnQueryInterface      = bmsR3Base_QueryMouseInterface;
     pThisCC->Mouse.IPort.pfnPutEvent            = bmsR3MousePort_PutEvent;
     pThisCC->Mouse.IPort.pfnPutEventAbs         = bmsR3MousePort_PutEventAbs;
-    pThisCC->Mouse.IPort.pfnPutEventMultiTouch  = bmsR3MousePort_PutEventMultiTouch;
+    pThisCC->Mouse.IPort.pfnPutEventTouchScreen = bmsR3MousePort_PutEventMultiTouch;
+    pThisCC->Mouse.IPort.pfnPutEventTouchPad    = bmsR3MousePort_PutEventMultiTouch;
 
     /*
      * Create the interrupt timer.
