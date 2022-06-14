@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 95129 2022-05-27 12:12:37Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 95277 2022-06-14 12:06:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -268,7 +268,12 @@ void SFTreeViewItem::processColumn(int iColumn)
 UISharedFoldersEditor::UISharedFoldersEditor(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pLabelSeparator(0)
+    , m_pLayoutTree(0)
     , m_pTreeWidget(0)
+    , m_pToolbar(0)
+    , m_pActionAdd(0)
+    , m_pActionEdit(0)
+    , m_pActionRemove(0)
 {
     prepare();
 }
@@ -362,19 +367,16 @@ void UISharedFoldersEditor::retranslateUi()
     {
         m_pActionAdd->setText(tr("Add Shared Folder"));
         m_pActionAdd->setToolTip(tr("Adds new shared folder."));
-        m_pActionAdd->setToolTip(m_pActionAdd->whatsThis());
     }
     if (m_pActionEdit)
     {
         m_pActionEdit->setText(tr("Edit Shared Folder"));
         m_pActionEdit->setToolTip(tr("Edits selected shared folder."));
-        m_pActionEdit->setToolTip(m_pActionEdit->whatsThis());
     }
     if (m_pActionRemove)
     {
         m_pActionRemove->setText(tr("Remove Shared Folder"));
         m_pActionRemove->setToolTip(tr("Removes selected shared folder."));
-        m_pActionRemove->setToolTip(m_pActionRemove->whatsThis());
     }
 }
 
