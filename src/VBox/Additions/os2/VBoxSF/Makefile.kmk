@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95284 2022-06-15 10:31:10Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95285 2022-06-15 10:48:53Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the OS/2 Guest Additions Shared Folder FSD.
 #
@@ -66,14 +66,14 @@ TOOL_VBoxNasmDot_COMPILE_AS_DEPORD =
 define TOOL_VBoxNasmDot_COMPILE_AS_CMDS
 ifdef TOOL_VBoxNasmDot_USE_KSUBMIT
 	$(QUIET)kmk_builtin_kSubmit -C $(PATH_OUT_BASE) -- $(TOOL_VBoxNasmDot_AS)\
-		$(flags) ,$(qaddprefix sh,-i, $(addsuffix /,$(incs))) $(qaddprefix sh,-D, $(defs))\
+		$(flags) ,$(qaddprefix sh,-i, $(qaddsuffix ,/,$(incs))) $(qaddprefix sh,-D, $(defs))\
 		-l $(outbase).lst\
 		-o $(obj)\
                -MD "$(dep)" -MP\
 		$(abspath $(source))
 else
 	$(QUIET)$(REDIRECT) -C $(PATH_OUT_BASE) -- $(TOOL_VBoxNasmDot_AS)\
-		$(flags) ,$(qaddprefix sh,-i, $(addsuffix /$(incs))) $(qaddprefix sh,-D, $(defs))\
+		$(flags) ,$(qaddprefix sh,-i, $(qaddsuffix ,/,$(incs))) $(qaddprefix sh,-D, $(defs))\
 		-l $(outbase).lst\
 		-o $(obj)\
                -MD "$(dep)" -MP\
