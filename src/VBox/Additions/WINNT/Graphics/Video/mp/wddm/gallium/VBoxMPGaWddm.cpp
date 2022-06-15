@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 95290 2022-06-15 15:15:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1275,7 +1275,7 @@ NTSTATUS APIENTRY GaDxgkDdiPatch(const HANDLE hAdapter, const DXGKARG_PATCH *pPa
 
     SvgaFlush(pDevExt->pGa->hw.pSvga);
 
-    GALOG(("pDmaBuffer %p, cbDmaBuffer %u, PatchStart %u, cPatches %u, Flags 0xx, context type %d\n",
+    GALOG(("pDmaBuffer %p, cbDmaBuffer %u, PatchStart %u, cPatches %u, Flags 0x%x, context type %d\n",
            pPatch->pDmaBuffer, pPatch->DmaBufferSubmissionEndOffset - pPatch->DmaBufferSubmissionStartOffset,
            pPatch->PatchLocationListSubmissionStart, pPatch->PatchLocationListSubmissionLength, pPatch->Flags.Value,
            ((PVBOXWDDM_CONTEXT)pPatch->hContext)->enmType));

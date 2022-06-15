@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 95250 2022-06-12 09:48:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 95290 2022-06-15 15:15:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -1006,9 +1006,6 @@ static NTSTATUS svgaUpdateCommand(VBOXWDDM_EXT_VMSVGA *pSvga,
         case SVGA_3D_CMD_LOGICOPS_CLEARTYPEBLEND:
         case SVGA_3D_CMD_DEFINE_GB_SURFACE:
         case SVGA_3D_CMD_DESTROY_GB_SURFACE:
-        case SVGA_3D_CMD_BIND_GB_SURFACE:
-        case SVGA_3D_CMD_BIND_GB_SURFACE_WITH_PITCH:
-        case SVGA_3D_CMD_COND_BIND_GB_SURFACE:
         case SVGA_3D_CMD_READBACK_GB_SURFACE:
         case SVGA_3D_CMD_READBACK_GB_IMAGE:
         case SVGA_3D_CMD_READBACK_GB_IMAGE_PARTIAL:
@@ -1020,6 +1017,9 @@ static NTSTATUS svgaUpdateCommand(VBOXWDDM_EXT_VMSVGA *pSvga,
         case SVGA_3D_CMD_DRAW_INDEXED:
             AssertFailed();
             break;
+        case SVGA_3D_CMD_BIND_GB_SURFACE:
+        case SVGA_3D_CMD_BIND_GB_SURFACE_WITH_PITCH:
+        case SVGA_3D_CMD_COND_BIND_GB_SURFACE:
         case SVGA_3D_CMD_UPDATE_GB_IMAGE:
         case SVGA_3D_CMD_UPDATE_GB_SURFACE:
         case SVGA_3D_CMD_INVALIDATE_GB_IMAGE:

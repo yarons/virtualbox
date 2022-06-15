@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPWddm.cpp 95290 2022-06-15 15:15:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2157,6 +2157,13 @@ NTSTATUS vboxWddmAllocationCreate(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_RESOURCE pRe
                     switch (pAllocInfo->enmType)
                     {
                         case VBOXWDDM_ALLOC_TYPE_STD_SHAREDPRIMARYSURFACE:
+                            if (SvgaIsDXSupported(pDevExt))
+                            {
+                                pAllocationInfo->PreferredSegment.Value      = 0;
+                                pAllocationInfo->SupportedReadSegmentSet     = 1; /* VRAM */
+                                pAllocationInfo->SupportedWriteSegmentSet    = 1; /* VRAM */
+                                /// @todo Required?  pAllocationInfo->Flags.CpuVisible = 1;
+                            }
                             break;
                         case VBOXWDDM_ALLOC_TYPE_UMD_RC_GENERIC:
 #ifdef VBOX_WITH_VIDEOHWACCEL
@@ -2223,6 +2230,12 @@ NTSTATUS vboxWddmAllocationCreate(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_RESOURCE pRe
                             break;
                         case VBOXWDDM_ALLOC_TYPE_STD_SHADOWSURFACE:
                         case VBOXWDDM_ALLOC_TYPE_STD_STAGINGSURFACE:
+                            if (SvgaIsDXSupported(pDevExt))
+                            {
+                                pAllocationInfo->PreferredSegment.Value      = 0;
+                                pAllocationInfo->SupportedReadSegmentSet     = 1; /* VRAM */
+                                pAllocationInfo->SupportedWriteSegmentSet    = 1; /* VRAM */
+                            }
                             pAllocationInfo->Flags.CpuVisible = 1;
                             break;
                         default: AssertFailedBreak(); /* Shut up MSC.*/
