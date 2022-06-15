@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 94449 2022-04-02 14:09:02Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 95294 2022-06-15 17:27:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -650,7 +650,7 @@ DECLINLINE(uint32_t) vmsvgaR3MobId(PVMSVGAMOB pMob)
     return SVGA_ID_INVALID;
 }
 
-#ifdef DEBUG
+#ifdef DEBUG_sunlover
 #define DEBUG_BREAKPOINT_TEST() do { ASMBreakpoint(); } while (0)
 #else
 #define DEBUG_BREAKPOINT_TEST() do { } while (0)
