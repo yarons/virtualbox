@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 95296 2022-06-15 22:06:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2555,6 +2555,13 @@ typedef union BS3REG
     uint16_t    au16[4];
     /** 32-bit view. */
     uint32_t    au32[2];
+    /** Unsigned integer, depending on compiler context.
+     * This generally follows ARCH_BITS. */
+    RTCCUINTREG  uCcReg;
+    /** Extended unsigned integer, depending on compiler context.
+     * This is 32-bit in 16-bit and 32-bit compiler contexts, and 64-bit in
+     * 64-bit. */
+    RTCCUINTXREG uCcXReg;
 } BS3REG;
 /** Pointer to an integer register. */
 typedef BS3REG BS3_FAR *PBS3REG;
