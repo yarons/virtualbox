@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 95140 2022-05-31 09:11:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 95289 2022-06-15 15:15:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3600,11 +3600,6 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleWatch(PGCTLCMDCTX pCtx, int argc, char
 RTEXITCODE handleGuestControl(HandlerArg *pArg)
 {
     AssertPtr(pArg);
-
-#ifdef DEBUG_andy_disabled
-    if (RT_FAILURE(tstTranslatePath()))
-        return RTEXITCODE_FAILURE;
-#endif
 
     /*
      * Command definitions.
