@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 95252 2022-06-12 17:29:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 95287 2022-06-15 14:11:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -662,7 +662,7 @@ void UIHelpViewer::wheelEvent(QWheelEvent *pEvent)
     }
 }
 
-void UIHelpViewer::mousePressEvent(QMouseEvent *pEvent)
+void UIHelpViewer::mouseReleaseEvent(QMouseEvent *pEvent)
 {
     bool fOverlayMode = m_fOverlayMode;
     clearOverlay();
@@ -694,9 +694,9 @@ void UIHelpViewer::mousePressEvent(QMouseEvent *pEvent)
         loadImageAtPosition(pEvent->globalPos());
 }
 
-void UIHelpViewer::mouseReleaseEvent(QMouseEvent *pEvent)
+void UIHelpViewer::mousePressEvent(QMouseEvent *pEvent)
 {
-    QIWithRetranslateUI<QTextBrowser>::mouseReleaseEvent(pEvent);
+    QIWithRetranslateUI<QTextBrowser>::mousePressEvent(pEvent);
 }
 
 void UIHelpViewer::setImageOverCursor(QPoint globalPosition)
