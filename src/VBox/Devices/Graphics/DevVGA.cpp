@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 94450 2022-04-04 08:20:58Z michal.necasek@oracle.com $ */
+/* $Id: DevVGA.cpp 95292 2022-06-15 16:09:59Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -801,6 +801,7 @@ static uint32_t vbe_read_cfg(PVGASTATE pThis)
         case VBE_DISPI_CFG_ID_3D:        val = pThis->f3DEnabled; break;
 # ifdef VBOX_WITH_VMSVGA
         case VBE_DISPI_CFG_ID_VMSVGA:    val = pThis->fVMSVGAEnabled; break;
+        case VBE_DISPI_CFG_ID_VMSVGA_DX: val = pThis->fVMSVGA10; break;
 # endif
         default:
            return 0; /* Not supported. */
