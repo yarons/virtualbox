@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoVBE.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoVBE.h 95291 2022-06-15 16:08:44Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox graphics card port I/O definitions
  */
@@ -98,6 +98,7 @@
 #define VBE_DISPI_CFG_ID_VRAM_SIZE      0x0001 /* VRAM size. */
 #define VBE_DISPI_CFG_ID_3D             0x0002 /* 3D support. */
 #define VBE_DISPI_CFG_ID_VMSVGA         0x0003 /* VMSVGA FIFO and ports are available. */
+#define VBE_DISPI_CFG_ID_VMSVGA_DX      0x0004 /* VGPU10 is enabled. */
 
 #define VGA_PORT_HGSMI_HOST             0x3b0
 #define VGA_PORT_HGSMI_GUEST            0x3d0
