@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 95231 2022-06-08 15:26:23Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 95288 2022-06-15 15:11:14Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -115,6 +115,10 @@ int vmsvga3dChangeMode(PVGASTATECC pThisCC);
 
 int vmsvga3dDefineScreen(PVGASTATE pThis, PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
 int vmsvga3dDestroyScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen);
+
+int vmsvga3dScreenUpdate(PVGASTATECC pThisCC, uint32_t idDstScreen, SVGASignedRect const &dstRect,
+                         SVGA3dSurfaceImageId const &srcImage, SVGASignedRect const &srcRect,
+                         uint32_t cDstClipRects, SVGASignedRect *paDstClipRect);
 
 int vmsvga3dSetTransform(PVGASTATECC pThisCC, uint32_t cid, SVGA3dTransformType type, float matrix[16]);
 int vmsvga3dSetZRange(PVGASTATECC pThisCC, uint32_t cid, SVGA3dZRange zRange);
