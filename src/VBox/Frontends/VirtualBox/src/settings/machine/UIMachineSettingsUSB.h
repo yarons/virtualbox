@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 95277 2022-06-14 12:06:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.h 95286 2022-06-15 13:30:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -25,9 +25,7 @@
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
-class QCheckBox;
-class UIUSBControllerEditor;
-class UIUSBFiltersEditor;
+class UIUSBSettingsEditor;
 struct UIDataSettingsMachineUSB;
 struct UIDataSettingsMachineUSBFilter;
 typedef UISettingsCache<UIDataSettingsMachineUSBFilter> UISettingsCacheMachineUSBFilter;
@@ -79,11 +77,6 @@ protected:
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
 
-private slots:
-
-    /** Handles whether USB adapted is @a fEnabled. */
-    void sltHandleUsbAdapterToggle(bool fEnabled);
-
 private:
 
     /** Prepares all. */
@@ -111,14 +104,8 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the USB check-box instance. */
-        QCheckBox             *m_pCheckBoxUSB;
-        /** Holds the USB settings widget instance. */
-        QWidget               *m_pWidgetUSBSettings;
-        /** Holds the USB controller editor instance. */
-        UIUSBControllerEditor *m_pEditorController;
-        /** Holds the USB filters editor instance. */
-        UIUSBFiltersEditor    *m_pEditorFilters;
+        /** Holds the USB settings editor instance. */
+        UIUSBSettingsEditor *m_pEditorUsbSettings;
     /** @} */
 };
 
