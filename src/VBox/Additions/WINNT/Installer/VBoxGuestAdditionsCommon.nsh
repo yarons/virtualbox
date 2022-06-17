@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 94485 2022-04-06 07:00:56Z vitali.pelenjow@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 95302 2022-06-17 13:45:15Z vitali.pelenjow@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -89,7 +89,6 @@ Function ExtractFiles
   !if $%VBOX_WITH_MESA3D% == "1"
     FILE "$%PATH_OUT%\bin\additions\VBoxNine.dll"
     FILE "$%PATH_OUT%\bin\additions\VBoxSVGA.dll"
-    FILE "$%PATH_OUT%\bin\additions\VBoxICD.dll"
     FILE "$%PATH_OUT%\bin\additions\VBoxGL.dll"
   !endif
 
@@ -101,7 +100,6 @@ Function ExtractFiles
     !if $%VBOX_WITH_MESA3D% == "1"
       FILE "$%PATH_OUT%\bin\additions\VBoxNine-x86.dll"
       FILE "$%PATH_OUT%\bin\additions\VBoxSVGA-x86.dll"
-      FILE "$%PATH_OUT%\bin\additions\VBoxICD-x86.dll"
       FILE "$%PATH_OUT%\bin\additions\VBoxGL-x86.dll"
     !endif
 
