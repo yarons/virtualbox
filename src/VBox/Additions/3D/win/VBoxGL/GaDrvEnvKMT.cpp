@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.cpp 95234 2022-06-08 16:31:28Z vitali.pelenjow@oracle.com $ */
+/* $Id: GaDrvEnvKMT.cpp 95300 2022-06-17 13:13:24Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
@@ -393,6 +393,7 @@ static D3DDDIFORMAT svgaToD3DDDIFormat(SVGA3dSurfaceFormat format)
         case SVGA3D_R8_UNORM:       /* R8->A8 conversion is not correct, but it does not matter here,
                                      * because the D3DDDIFMT_ value is used only to compute bpp, pitch, etc. */
         case SVGA3D_A8_UNORM:       return D3DDDIFMT_A8;
+        case SVGA3D_B5G5R5A1_UNORM: return D3DDDIFMT_A1R5G5B5;
         default: break;
     }
 
