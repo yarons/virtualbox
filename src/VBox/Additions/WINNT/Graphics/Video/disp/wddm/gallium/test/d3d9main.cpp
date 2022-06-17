@@ -1,4 +1,4 @@
-/* $Id: d3d9main.cpp 94469 2022-04-05 14:21:09Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d9main.cpp 95301 2022-06-17 13:15:07Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
@@ -348,6 +348,8 @@ int D3D9Test::Run()
 
             /* Time in seconds since the previous render step. */
             float dt = fFirst ? 0.0f : (float)(CurrTS.QuadPart - PrevTS.QuadPart) * PerfPeriod;
+            if (dt > 0.1f)
+                dt = 0.1f;
             if (mpRender)
             {
                 mpRender->TimeAdvance(dt);
