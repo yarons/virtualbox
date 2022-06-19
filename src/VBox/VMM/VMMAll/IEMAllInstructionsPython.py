@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 95167 2022-06-01 19:38:29Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 95308 2022-06-19 20:40:26Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95167 $"
+__version__ = "$Revision: 95308 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -373,6 +373,9 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]         opcodesub      ),
     'VEX_RMV':      ( 'VEX.ModR/M', [ 'reg', 'rm', 'vvvv' ], '',            ),
     'VEX_RMV_REG':  ( 'VEX.ModR/M', [ 'reg', 'rm', 'vvvv' ], '11 mr/reg',   ),
     'VEX_RMV_MEM':  ( 'VEX.ModR/M', [ 'reg', 'rm', 'vvvv' ], '!11 mr/reg',  ),
+    'VEX_RMI':      ( 'VEX.ModR/M', [ 'reg', 'rm', 'imm' ],  '',            ),
+    'VEX_RMI_REG':  ( 'VEX.ModR/M', [ 'reg', 'rm', 'imm' ],  '11 mr/reg',   ),
+    'VEX_RMI_MEM':  ( 'VEX.ModR/M', [ 'reg', 'rm', 'imm' ],  '!11 mr/reg',  ),
     'VEX_MVR':      ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '',            ),
     'VEX_MVR_REG':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '11 mr/reg',   ),
     'VEX_MVR_MEM':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '!11 mr/reg',  ),
@@ -528,6 +531,7 @@ g_kdHints = {
     'ignores_op_sizes':      '',                                ##< Shorthand for "ignores_oz_pfx | ignores_op_sizes".
     'vex_l_zero':            '',                                ##< VEX.L must be 0.
     'vex_l_ignored':         '',                                ##< VEX.L is ignored.
+    'vex_v_zero':            '',                                ##< VEX.V must be 0. (generate sub-table?)
     'lock_allowed':          '',                                ##< Lock prefix allowed.
 };
 
