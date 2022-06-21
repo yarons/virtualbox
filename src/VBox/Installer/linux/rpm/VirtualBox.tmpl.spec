@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 95322 2022-06-21 13:34:42Z alexander.eichner@oracle.com $
+# $Id: VirtualBox.tmpl.spec 95323 2022-06-21 13:46:49Z alexander.eichner@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -160,13 +160,6 @@ PATH="$old_path"
 unset old_path
 %endif
 rm -r src
-%endif
-%if %{?is_ose:0}%{!?is_ose:1}
-  for i in rdesktop-vrdp.tar.gz rdesktop-vrdp-keymaps; do
-    mv $i $RPM_BUILD_ROOT/usr/share/virtualbox; done
-  # Very little needed tool causing python compatibility trouble. Do not ship.
-  rm -f $RPM_BUILD_ROOT/usr/share/virtualbox/rdesktop-vrdp-keymaps/convert-map
-  mv rdesktop-vrdp $RPM_BUILD_ROOT/usr/bin
 %endif
 for i in additions/VBoxGuestAdditions.iso; do
   mv $i $RPM_BUILD_ROOT/usr/share/virtualbox; done

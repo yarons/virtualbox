@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95322 2022-06-21 13:34:42Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 95323 2022-06-21 13:46:49Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -302,14 +302,6 @@ ifdef VBOX_WITH_VRDP
   VBOX_LNX_STRIP_BIN += \
   	VBoxVRDP.so
  endif
-endif
-ifdef VBOX_WITH_VRDP_RDESKTOP
- VBOX_LNX_NO_STRIP += \
-	rdesktop-vrdp.tar.gz
- VBOX_LNX_NO_STRIP += \
- 	rdesktop-vrdp-keymaps
- VBOX_LNX_STRIP_BIN += \
- 	rdesktop-vrdp
 endif
 
 # Python XPCOM glue
