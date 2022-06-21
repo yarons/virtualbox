@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: VirtualBox.tmpl.spec 95322 2022-06-21 13:34:42Z alexander.eichner@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -120,7 +120,6 @@ cd icons
 cd -
 rmdir icons
 mv virtualbox.xml $RPM_BUILD_ROOT/usr/share/mime/packages
-mv VBoxTunctl $RPM_BUILD_ROOT/usr/bin
 %if %{?is_ose:0}%{!?is_ose:1}
 %if "%BUILDREL%" == "el7"
 # For el7 we use gcc from devtoolset-4, which is not suitable for kernel work.

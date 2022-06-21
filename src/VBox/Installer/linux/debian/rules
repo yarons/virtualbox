@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 95040 2022-05-18 17:05:45Z vadim.galitsyn@oracle.com $
+# $Id: rules 95322 2022-06-21 13:34:42Z alexander.eichner@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -268,7 +268,6 @@ binary: build $(if $(NOMODS),,$(bldbase)/modules-stamp)
 	if [ -r $(archdir)/VBoxDTrace ]; then \
 	    mv $(archdir)/VBoxDTrace $(prefix)/usr/bin; \
 	fi
-	mv $(archdir)/VBoxTunctl $(prefix)/usr/bin
 	$(if $(NOMODS),,for d in $(moddir)/*; do \
 	    if [ -f $$d/vboxdrv.ko -a -f $$d/vboxnetflt.ko -a -f $$d/vboxnetadp.ko ]; then \
 	        install -D -g 0 -o 0 -m 0644 \
