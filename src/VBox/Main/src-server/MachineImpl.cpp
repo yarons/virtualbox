@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 95338 2022-06-21 21:20:50Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 95339 2022-06-21 22:33:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6011,10 +6011,10 @@ HRESULT Machine::setGuestProperty(const com::Utf8Str &aProperty, const com::Utf8
 #else // VBOX_WITH_GUEST_PROPS
 
     int vrc = GuestPropValidateName(aProperty.c_str(), aProperty.length() + 1 /* '\0' */);
-    AssertRCReturn(rc, setErrorBoth(E_INVALIDARG, vrc));
+    AssertRCReturn(vrc, setErrorBoth(E_INVALIDARG, vrc));
 
     vrc = GuestPropValidateValue(aValue.c_str(), aValue.length() + 1  /* '\0' */);
-    AssertRCReturn(rc, setErrorBoth(E_INVALIDARG, vrc));
+    AssertRCReturn(vrc, setErrorBoth(E_INVALIDARG, vrc));
 
     HRESULT rc = i_setGuestPropertyToVM(aProperty, aValue, aFlags, /* fDelete = */ false);
     if (rc == E_ACCESSDENIED)
