@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 95167 2022-06-01 19:38:29Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmInternal.h 95314 2022-06-21 00:25:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -63,6 +63,7 @@ enum IDX_Parse
   IDX_ParseGrp14,
   IDX_ParseGrp15,
   IDX_ParseGrp16,
+  IDX_ParseGrp17,
   IDX_ParseModFence,
   IDX_ParseYv,
   IDX_ParseYb,
@@ -185,6 +186,7 @@ extern const DISOPCODE g_aMapX86_Group14[8*2];
 extern const DISOPCODE g_aMapX86_Group15_mem[8];
 extern const DISOPCODE g_aMapX86_Group15_mod11_rm000[8];
 extern const DISOPCODE g_aMapX86_Group16[8];
+extern const DISOPCODE g_aMapX86_Group17[8];
 extern const DISOPCODE g_aMapX86_NopPause[2];
 /** @} */
 
