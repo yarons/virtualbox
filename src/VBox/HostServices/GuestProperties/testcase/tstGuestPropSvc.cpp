@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 95331 2022-06-21 19:42:54Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestPropSvc.cpp 95333 2022-06-21 19:46:32Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -808,7 +808,7 @@ static void testAsyncNotification(VBOXHGCMSVCFNTABLE *pTable)
 {
     RT_NOREF1(pTable);
     uint64_t u64Timestamp;
-    uint32_t cb;
+    uint32_t cb = 0;
     if (   g_AsyncNotification.callHandle.rc != VINF_SUCCESS
         || RT_FAILURE(HGCMSvcGetU64(&g_AsyncNotification.aParms[1], &u64Timestamp))
         || RT_FAILURE(HGCMSvcGetU32(&g_AsyncNotification.aParms[3], &cb))
