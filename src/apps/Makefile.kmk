@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95031 2022-05-17 12:05:21Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 95321 2022-06-21 13:23:04Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the external apps.
 #
@@ -17,14 +17,6 @@
 
 SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
-
-if1of ($(KBUILD_TARGET_ARCH), $(VBOX_SUPPORTED_HOST_ARCHS))
- ifeq ($(KBUILD_TARGET),linux)
-  ifneq ($(wildcard $(PATH_SUB_CURRENT)/tunctl),)
-   include $(PATH_SUB_CURRENT)/tunctl/Makefile.kmk
-  endif
- endif
-endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
