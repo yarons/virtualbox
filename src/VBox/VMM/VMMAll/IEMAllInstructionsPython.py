@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 95308 2022-06-19 20:40:26Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 95341 2022-06-22 10:37:37Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95308 $"
+__version__ = "$Revision: 95341 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -379,6 +379,10 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]         opcodesub      ),
     'VEX_MVR':      ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '',            ),
     'VEX_MVR_REG':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '11 mr/reg',   ),
     'VEX_MVR_MEM':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg' ], '!11 mr/reg',  ),
+
+    'VEX_VM':       ( 'VEX.ModR/M', [ 'vvvv', 'rm' ],        '',            ),
+    'VEX_VM_REG':   ( 'VEX.ModR/M', [ 'vvvv', 'rm' ],        '11 mr/reg',   ),
+    'VEX_VM_MEM':   ( 'VEX.ModR/M', [ 'vvvv', 'rm' ],        '!11 mr/reg',  ),
 
     'FIXED':        ( 'fixed',      None,                    '',            ),
 };
