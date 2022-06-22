@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2.c 95342 2022-06-22 13:48:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2.c 95346 2022-06-22 20:50:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, 16-bit C code.
  */
@@ -52,6 +52,7 @@ BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_rorx);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_shlx);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_sarx);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_shrx);
+BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_mulx);
 BS3TESTMODE_PROTOTYPES_CMN_64(bs3CpuInstr2_cmpxchg16b);
 BS3TESTMODE_PROTOTYPES_CMN_64(bs3CpuInstr2_wrfsbase);
 BS3TESTMODE_PROTOTYPES_CMN_64(bs3CpuInstr2_wrgsbase);
@@ -89,6 +90,7 @@ static const BS3TESTMODEENTRY g_aModeTests[] =
     BS3TESTMODEENTRY_CMN("shlx",  bs3CpuInstr2_shlx),
     BS3TESTMODEENTRY_CMN("sarx",  bs3CpuInstr2_sarx),
     BS3TESTMODEENTRY_CMN("shrx",  bs3CpuInstr2_shrx),
+    BS3TESTMODEENTRY_CMN("mulx",  bs3CpuInstr2_mulx),
 #endif
 #if 1
     BS3TESTMODEENTRY_CMN_64("cmpxchg16b", bs3CpuInstr2_cmpxchg16b),
