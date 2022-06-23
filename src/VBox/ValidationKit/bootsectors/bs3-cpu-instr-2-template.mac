@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-2-template.mac 95346 2022-06-22 20:50:05Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-instr-2-template.mac 95357 2022-06-23 15:13:43Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-2 assembly template.
 ;
@@ -492,6 +492,59 @@ BS3_PROC_BEGIN_CMN bs3CpuInstr2_mulx_EAX_ECX_FSxBX_EDX_icebp, BS3_PBC_NEAR
         icebp
         jmp     .again
 BS3_PROC_END_CMN   bs3CpuInstr2_mulx_EAX_ECX_FSxBX_EDX_icebp
+
+
+;
+; POPCNT
+;
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_AX_BX_icebp, BS3_PBC_NEAR
+        popcnt  ax, bx
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_AX_BX_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_EAX_EBX_icebp, BS3_PBC_NEAR
+        popcnt  eax, ebx
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_EAX_EBX_icebp
+
+ %if TMPL_BITS == 64
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_RAX_RBX_icebp, BS3_PBC_NEAR
+        popcnt  rax, rbx
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_RAX_RBX_icebp
+ %endif
+
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_AX_FSxBX_icebp, BS3_PBC_NEAR
+        popcnt  ax, [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_AX_FSxBX_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_EAX_FSxBX_icebp, BS3_PBC_NEAR
+        popcnt  eax, [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_EAX_FSxBX_icebp
+
+ %if TMPL_BITS == 64
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_popcnt_RAX_FSxBX_icebp, BS3_PBC_NEAR
+        popcnt  rax, [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_popcnt_RAX_FSxBX_icebp
+ %endif
+
+
 
 ;
 ; CMPXCHG16B
