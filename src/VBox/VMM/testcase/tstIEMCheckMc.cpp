@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 95347 2022-06-22 22:14:17Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 95360 2022-06-23 21:45:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -237,6 +237,9 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define IEMTARGETCPU_EFL_BEHAVIOR_SELECT_NON_NATIVE(a_aArray)       NULL
 #undef  IEMTARGETCPU_EFL_BEHAVIOR_SELECT_EX
 #define IEMTARGETCPU_EFL_BEHAVIOR_SELECT_EX(a_aaArray, a_fNative)   NULL
+
+#undef  IEM_SELECT_HOST_OR_FALLBACK
+#define IEM_SELECT_HOST_OR_FALLBACK(a_fCpumFeatureMember, a_pfnNative, a_pfnFallback)   NULL
 
 #define iemAImpl_fpu_r32_to_r80         NULL
 #define iemAImpl_fcom_r80_by_r32        NULL

@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 95347 2022-06-22 22:14:17Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 95360 2022-06-23 21:45:55Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1044,6 +1044,57 @@ IEMIMPL_BIT_OP2 bsf,   (X86_EFL_ZF), (X86_EFL_OF | X86_EFL_SF | X86_EFL_AF | X86
 IEMIMPL_BIT_OP2 bsr,   (X86_EFL_ZF), (X86_EFL_OF | X86_EFL_SF | X86_EFL_AF | X86_EFL_PF | X86_EFL_CF), 1
 IEMIMPL_BIT_OP2 tzcnt, (X86_EFL_ZF | X86_EFL_CF), (X86_EFL_OF | X86_EFL_SF | X86_EFL_AF | X86_EFL_PF), 0
 IEMIMPL_BIT_OP2 lzcnt, (X86_EFL_ZF | X86_EFL_CF), (X86_EFL_OF | X86_EFL_SF | X86_EFL_AF | X86_EFL_PF), 0
+
+
+;;
+; Macro for implementing POPCNT.
+;
+; This will generate code for the 16, 32 and 64 bit accesses, except on 32-bit
+; system where the 64-bit accesses requires hand coding.
+;
+; All the functions takes a pointer to the destination memory operand in A0,
+; the source register operand in A1 and a pointer to eflags in A2.
+;
+; ASSUMES Intel and AMD set EFLAGS the same way.
+;
+; ASSUMES the instruction does not support memory destination.
+;
+; @param        1       The instruction mnemonic.
+; @param        2       The modified flags.
+; @param        3       The undefined flags.
+;
+%macro IEMIMPL_BIT_OP3 3
+BEGINCODE
+BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u16, 12
+        PROLOGUE_3_ARGS
+        IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
+        %1      T0_16, A1_16
+        mov     [A0], T0_16
+        IEM_SAVE_FLAGS                 A2, %2, %3
+        EPILOGUE_3_ARGS
+ENDPROC iemAImpl_ %+ %1 %+ _u16
+
+BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u32, 12
+        PROLOGUE_3_ARGS
+        IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
+        %1      T0_32, A1_32
+        mov     [A0], T0_32
+        IEM_SAVE_FLAGS                 A2, %2, %3
+        EPILOGUE_3_ARGS
+ENDPROC iemAImpl_ %+ %1 %+ _u32
+
+ %ifdef RT_ARCH_AMD64
+BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u64, 16
+        PROLOGUE_3_ARGS
+        IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
+        %1      T0, A1
+        mov     [A0], T0
+        IEM_SAVE_FLAGS                 A2, %2, %3
+        EPILOGUE_3_ARGS_EX 8
+ENDPROC iemAImpl_ %+ %1 %+ _u64
+ %endif ; RT_ARCH_AMD64
+%endmacro
+IEMIMPL_BIT_OP3 popcnt, (X86_EFL_ZF | X86_EFL_CF | X86_EFL_OF | X86_EFL_SF | X86_EFL_AF | X86_EFL_PF), 0
 
 
 ;

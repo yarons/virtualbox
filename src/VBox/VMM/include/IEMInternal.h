@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 95347 2022-06-22 22:14:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 95360 2022-06-23 21:45:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1393,6 +1393,9 @@ FNIEMAIMPLBINU64 iemAImpl_lzcnt_u64, iemAImpl_lzcnt_u64_amd, iemAImpl_lzcnt_u64_
 FNIEMAIMPLBINU16 iemAImpl_tzcnt_u16, iemAImpl_tzcnt_u16_amd, iemAImpl_tzcnt_u16_intel;
 FNIEMAIMPLBINU32 iemAImpl_tzcnt_u32, iemAImpl_tzcnt_u32_amd, iemAImpl_tzcnt_u32_intel;
 FNIEMAIMPLBINU64 iemAImpl_tzcnt_u64, iemAImpl_tzcnt_u64_amd, iemAImpl_tzcnt_u64_intel;
+FNIEMAIMPLBINU16 iemAImpl_popcnt_u16, iemAImpl_popcnt_u16_fallback;
+FNIEMAIMPLBINU32 iemAImpl_popcnt_u32, iemAImpl_popcnt_u32_fallback;
+FNIEMAIMPLBINU64 iemAImpl_popcnt_u64, iemAImpl_popcnt_u64_fallback;
 /** @}  */
 
 /** @name Signed multiplication operations (thrown in with the binary ops).
