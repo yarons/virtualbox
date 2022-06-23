@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxSDSImpl.h 95353 2022-06-23 10:35:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -105,6 +105,14 @@ private:
      * Gets the client user SID of the
      */
     static bool i_getClientUserSid(com::Utf8Str *a_pStrSid, com::Utf8Str *a_pStrUsername);
+
+    /**
+     * Returns whether a VBoxSDS feature is enabled or not.
+     *
+     * @returns \c true if enabled, \c false if not.
+     * @param   a_rStrFeature   Feature to check enabled status for.
+     */
+    static bool i_isFeatureEnabled(com::Utf8Str const &a_rStrFeature);
 
     /**
      * Looks up the given user.
