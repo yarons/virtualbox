@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 94714 2022-04-27 07:41:12Z alexander.eichner@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 95364 2022-06-24 16:51:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1792,10 +1792,12 @@ HRESULT SystemProperties::getSupportedAudioDriverTypes(std::vector<AudioDriverTy
 {
     static const AudioDriverType_T aAudioDriverTypes[] =
     {
+        AudioDriverType_Default,
 #ifdef RT_OS_WINDOWS
 # if 0 /* deprecated for many years now */
         AudioDriverType_WinMM,
 # endif
+        AudioDriverType_WAS,
         AudioDriverType_DirectSound,
 #endif
 #ifdef RT_OS_DARWIN
