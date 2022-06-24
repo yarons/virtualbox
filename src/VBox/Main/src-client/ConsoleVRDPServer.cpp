@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 94960 2022-05-09 14:22:27Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleVRDPServer.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -2878,6 +2878,7 @@ int ConsoleVRDPServer::VideoInControl(void *pvUser, const VRDEVIDEOINDEVICEHANDL
 
                     pMouse->PutEventMultiTouch(pFrame->u16ContactCount,
                                                ComSafeArrayAsInParam(aContacts),
+                                               true /* isTouchScreen */,
                                                (ULONG)(pThis->mu64TouchInputTimestampMCS / 1000)); /* Micro->milliseconds. */
                 }
             }

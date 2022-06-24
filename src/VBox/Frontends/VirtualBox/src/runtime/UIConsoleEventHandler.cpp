@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIConsoleEventHandler.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -43,8 +43,11 @@ signals:
 
     /** Notifies about mouse pointer @a shapeData change. */
     void sigMousePointerShapeChange(const UIMousePointerShapeData &shapeData);
-    /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative, @a fSupportsMultiTouch and @a fNeedsHostCursor. */
-    void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative, bool fSupportsMultiTouch, bool fNeedsHostCursor);
+    /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative,
+      * @a fSupportsTouchScreen, @a fSupportsTouchPad, and @a fNeedsHostCursor. */
+    void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative,
+                                  bool fSupportsTouchScreen, bool fSupportsTouchPad,
+                                  bool fNeedsHostCursor);
     /** Notifies about guest request to change the cursor position to @a uX * @a uY.
       * @param  fContainsData  Brings whether the @a uX and @a uY values are valid and could be used by the GUI now. */
     void sigCursorPositionChange(bool fContainsData, unsigned long uX, unsigned long uY);

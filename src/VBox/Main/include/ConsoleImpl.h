@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 94804 2022-05-04 08:02:56Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -121,8 +121,12 @@ public:
     virtual DisplayMouseInterface *i_getDisplayMouseInterface(){return NULL;}
     virtual void i_onMouseCapabilityChange(BOOL supportsAbsolute,
                                            BOOL supportsRelative,
-                                           BOOL supportsMT,
-                                           BOOL needsHostCursor){NOREF(supportsAbsolute); NOREF(supportsRelative); NOREF(supportsMT); NOREF(needsHostCursor);}
+                                           BOOL supportsTouchScreen,
+                                           BOOL supportsTouchPad,
+                                           BOOL needsHostCursor)
+    {
+        RT_NOREF(supportsAbsolute, supportsRelative, supportsTouchScreen, supportsTouchPad, needsHostCursor);
+    }
 };
 
 /** IConsole implementation class */
@@ -276,7 +280,8 @@ public:
                                      const uint8_t *pu8Shape,
                                      uint32_t cbShape);
     void i_onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative,
-                                   BOOL supportsMT, BOOL needsHostCursor);
+                                   BOOL supportsTouchScreen, BOOL supportsTouchPad,
+                                   BOOL needsHostCursor);
     void i_onStateChange(MachineState_T aMachineState);
     void i_onAdditionsStateChange();
     void i_onAdditionsOutdated();

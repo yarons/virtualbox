@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 95366 2022-06-24 16:55:30Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2279,6 +2279,12 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "usbmultitouch"))
                 {
                     CHECK_ERROR(sessionMachine, COMSETTER(PointingHIDType)(PointingHIDType_USBMultiTouch));
+                    if (SUCCEEDED(hrc))
+                        fEnableUsb = true;
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "usbmtscreenpluspad"))
+                {
+                    CHECK_ERROR(sessionMachine, COMSETTER(PointingHIDType)(PointingHIDType_USBMultiTouchScreenPlusPad));
                     if (SUCCEEDED(hrc))
                         fEnableUsb = true;
                 }

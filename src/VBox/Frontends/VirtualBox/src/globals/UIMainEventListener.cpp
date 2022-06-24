@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 95138 2022-05-30 14:05:48Z michal.necasek@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -427,7 +427,8 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         {
             CMouseCapabilityChangedEvent comEventSpecific(pEvent);
             emit sigMouseCapabilityChange(comEventSpecific.GetSupportsAbsolute(), comEventSpecific.GetSupportsRelative(),
-                                          comEventSpecific.GetSupportsMultiTouch(), comEventSpecific.GetNeedsHostCursor());
+                                          comEventSpecific.GetSupportsTouchScreen(), comEventSpecific.GetSupportsTouchPad(),
+                                          comEventSpecific.GetNeedsHostCursor());
             break;
         }
         case KVBoxEventType_OnCursorPositionChanged:

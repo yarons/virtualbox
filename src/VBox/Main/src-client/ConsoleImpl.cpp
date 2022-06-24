@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 95330 2022-06-21 14:50:11Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7524,15 +7524,15 @@ void Console::i_onMousePointerShapeChange(bool fVisible, bool fAlpha,
 }
 
 void Console::i_onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative,
-                                        BOOL supportsMT, BOOL needsHostCursor)
+                                        BOOL supportsTouchScreen, BOOL supportsTouchPad, BOOL needsHostCursor)
 {
-    LogFlowThisFunc(("supportsAbsolute=%d supportsRelative=%d needsHostCursor=%d\n",
-                     supportsAbsolute, supportsRelative, needsHostCursor));
+    LogFlowThisFunc(("supportsAbsolute=%d supportsRelative=%d supportsTouchScreen=%d supportsTouchPad=%d needsHostCursor=%d\n",
+                     supportsAbsolute, supportsRelative, supportsTouchScreen, supportsTouchPad, needsHostCursor));
 
     AutoCaller autoCaller(this);
     AssertComRCReturnVoid(autoCaller.rc());
 
-    ::FireMouseCapabilityChangedEvent(mEventSource, supportsAbsolute, supportsRelative, supportsMT, needsHostCursor);
+    ::FireMouseCapabilityChangedEvent(mEventSource, supportsAbsolute, supportsRelative, supportsTouchScreen, supportsTouchPad, needsHostCursor);
 }
 
 void Console::i_onStateChange(MachineState_T machineState)

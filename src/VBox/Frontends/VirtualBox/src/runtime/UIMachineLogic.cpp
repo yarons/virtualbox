@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 94660 2022-04-21 08:38:34Z alexander.eichner@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -592,11 +592,13 @@ void UIMachineLogic::sltMouseCapabilityChanged()
     /* Variable falgs: */
     bool fIsMouseSupportsAbsolute = uisession()->isMouseSupportsAbsolute();
     bool fIsMouseSupportsRelative = uisession()->isMouseSupportsRelative();
-    bool fIsMouseSupportsMultiTouch = uisession()->isMouseSupportsMultiTouch();
+    bool fIsMouseSupportsTouchScreen = uisession()->isMouseSupportsTouchScreen();
+    bool fIsMouseSupportsTouchPad = uisession()->isMouseSupportsTouchPad();
     bool fIsMouseHostCursorNeeded = uisession()->isMouseHostCursorNeeded();
 
     /* For now MT stuff is not important for MI action: */
-    Q_UNUSED(fIsMouseSupportsMultiTouch);
+    Q_UNUSED(fIsMouseSupportsTouchScreen);
+    Q_UNUSED(fIsMouseSupportsTouchPad);
 
     /* Update action state: */
     QAction *pAction = actionPool()->action(UIActionIndexRT_M_Input_M_Mouse_T_Integration);
