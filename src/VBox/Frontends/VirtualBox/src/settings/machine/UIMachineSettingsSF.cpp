@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 95286 2022-06-15 13:30:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSF.cpp 95363 2022-06-24 14:01:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -229,7 +229,7 @@ void UIMachineSettingsSF::prepareWidgets()
     if (pLayout)
     {
         /* Prepare settings editor: */
-        m_pEditorSharedFolders = new UISharedFoldersEditor;
+        m_pEditorSharedFolders = new UISharedFoldersEditor(this);
         if (m_pEditorSharedFolders)
             pLayout->addWidget(m_pEditorSharedFolders);
     }
