@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: MouseImpl.cpp 95369 2022-06-24 20:39:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1191,13 +1191,23 @@ bool Mouse::i_supportsAbs(void)
 }
 
 
-/** Can we currently send absolute events to the guest? */
+/** Can we currently send multi-touch events (touchscreen variant) to the guest? */
 bool Mouse::i_supportsTS(void)
 {
     bool fTSDev;
 
     i_getDeviceCaps(NULL, NULL, &fTSDev, NULL);
     return fTSDev;
+}
+
+
+/** Can we currently send multi-touch events (touchpad variant) to the guest? */
+bool Mouse::i_supportsTP(void)
+{
+    bool fTPDev;
+
+    i_getDeviceCaps(NULL, NULL, NULL, &fTPDev);
+    return fTPDev;
 }
 
 
