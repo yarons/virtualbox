@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: bs3kit.mac 95371 2022-06-24 23:11:42Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1514,8 +1514,12 @@ endstruc
 %define BS3_SYSCALL_SET_LDTR        000eh
 ;; Get the LDT register (value returned in ax).
 %define BS3_SYSCALL_GET_LDTR        000fh
+;; Set XCR0 register (value in edx:esi).
+%define BS3_SYSCALL_SET_XCR0        0010h
+;; Get XCR0 register (value returned in edx:eax).
+%define BS3_SYSCALL_GET_XCR0        0011h
 ;; The last system call value.
-%define BS3_SYSCALL_LAST            BS3_SYSCALL_GET_LDTR
+%define BS3_SYSCALL_LAST            BS3_SYSCALL_GET_XCR0
 ;; @}
 
 

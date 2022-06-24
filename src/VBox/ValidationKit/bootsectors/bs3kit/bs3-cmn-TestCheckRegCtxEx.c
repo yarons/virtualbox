@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestCheckRegCtxEx.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TestCheckRegCtxEx.c 95371 2022-06-24 23:11:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - TestCheckRegCtxEx
  */
@@ -33,7 +33,7 @@
 
 #undef Bs3TestCheckRegCtxEx
 BS3_CMN_DEF(bool, Bs3TestCheckRegCtxEx,(PCBS3REGCTX pActualCtx, PCBS3REGCTX pExpectedCtx, uint16_t cbPcAdjust, int16_t cbSpAcjust,
-                                        uint32_t fExtraEfl, const char *pszMode, uint16_t idTestStep))
+                                        uint32_t fExtraEfl, const char BS3_FAR *pszMode, uint16_t idTestStep))
 {
     uint16_t const cErrorsBefore = Bs3TestSubErrorCount();
     uint8_t  const fbFlags       = pActualCtx->fbFlags | pExpectedCtx->fbFlags;

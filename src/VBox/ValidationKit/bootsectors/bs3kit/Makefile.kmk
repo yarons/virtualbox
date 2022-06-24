@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95371 2022-06-24 23:11:42Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -137,6 +137,9 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegSetTr.asm \
        bs3-cmn-RegGetLdtr.asm \
        bs3-cmn-RegSetLdtr.asm \
+       bs3-cmn-RegGetXcr0.asm \
+       bs3-cmn-RegGetXcr0Asm.asm \
+       bs3-cmn-RegSetXcr0.asm \
        bs3-cmn-ExtCtxInit.c \
        bs3-cmn-ExtCtxSave.asm \
        bs3-cmn-ExtCtxRestore.asm \
