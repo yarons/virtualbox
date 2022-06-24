@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 95364 2022-06-24 16:51:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 95366 2022-06-24 16:55:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2605,7 +2605,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 }
                 else if (!RTStrICmp(ValueUnion.psz, "was"))
                 {
-                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_was));
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_WAS));
                     CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
                 }
 #endif /* RT_OS_WINDOWS */
