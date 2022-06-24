@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMainEventListener.h 95370 2022-06-24 20:50:11Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -148,8 +148,11 @@ signals:
       * @{ */
         /** Notifies about mouse pointer @a shapeData change. */
         void sigMousePointerShapeChange(const UIMousePointerShapeData &shapeData);
-        /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative, @a fSupportsMTAbsolute, @a fSupportsMTRelative and @a fNeedsHostCursor. */
-        void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative, bool fSupportsMTAbsolute, bool fSupportsMTRelative, bool fNeedsHostCursor);
+        /** Notifies about mouse capability change to @a fSupportsAbsolute, @a fSupportsRelative,
+          * @a fSupportsTouchScreen, @a fSupportsTouchPad and @a fNeedsHostCursor. */
+        void sigMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative,
+                                      bool fSupportsTouchScreen, bool fSupportsTouchPad,
+                                      bool fNeedsHostCursor);
         /** Notifies about guest request to change the cursor position to @a uX * @a uY.
           * @param  fContainsData  Brings whether the @a uX and @a uY values are valid and could be used by the GUI now. */
         void sigCursorPositionChange(bool fContainsData, unsigned long uX, unsigned long uY);
