@@ -1,6 +1,6 @@
-/* $Id: bs3-cpu-instr-3.c 95373 2022-06-26 01:22:03Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c 95377 2022-06-26 21:33:17Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - bs3-cpu-instr-3, SSE and AVX instructions, 16-bit C code.
+ * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, 16-bit C code.
  */
 
 /*
