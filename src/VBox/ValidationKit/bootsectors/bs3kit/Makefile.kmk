@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95371 2022-06-24 23:11:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95372 2022-06-26 00:27:49Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -138,7 +138,6 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegGetLdtr.asm \
        bs3-cmn-RegSetLdtr.asm \
        bs3-cmn-RegGetXcr0.asm \
-       bs3-cmn-RegGetXcr0Asm.asm \
        bs3-cmn-RegSetXcr0.asm \
        bs3-cmn-ExtCtxInit.c \
        bs3-cmn-ExtCtxSave.asm \
@@ -147,6 +146,10 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-ExtCtxAlloc.c \
        bs3-cmn-ExtCtxFree.c \
        bs3-cmn-ExtCtxCopy.c \
+       bs3-cmn-ExtCtxGetMxCsr.c \
+       bs3-cmn-ExtCtxSetMxCsr.c \
+       bs3-cmn-ExtCtxGetYmm.c \
+       bs3-cmn-ExtCtxSetYmm.c \
        bs3-cmn-SelFar32ToFlat32.c \
        bs3-cmn-SelFar32ToFlat32NoClobber.asm \
        bs3-cmn-SelProtFar32ToFlat32.c \
