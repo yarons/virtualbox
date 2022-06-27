@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 94888 2022-05-06 10:53:59Z alexander.eichner@oracle.com $ */
+/* $Id: tracelogreader.cpp 95382 2022-06-27 08:11:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -1717,6 +1717,7 @@ RTDECL(int) RTTraceLogRdrQueryIterator(RTTRACELOGRDR hTraceLogRdr, PRTTRACELOGRD
     {
         pIt->pRdr = pThis;
         pIt->pEvt = RTListGetFirst(&pThis->LstEvts, RTTRACELOGRDREVTINT, NdGlob);
+        *phIt = pIt;
     }
     else
         rc = VERR_NO_MEMORY;
