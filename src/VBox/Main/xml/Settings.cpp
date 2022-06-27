@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 95367 2022-06-24 17:06:23Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 95395 2022-06-27 15:49:05Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4929,6 +4929,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                     hw.pointingHIDType = PointingHIDType_ComboMouse;
                 else if (strHIDType == "USBMultiTouch")
                     hw.pointingHIDType = PointingHIDType_USBMultiTouch;
+                else if (strHIDType == "USBMTScreenPlusPad")
+                    hw.pointingHIDType = PointingHIDType_USBMultiTouchScreenPlusPad;
                 else
                     throw ConfigFileError(this,
                                           pelmHwChild,
@@ -6538,6 +6540,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                 case PointingHIDType_PS2Mouse:      pcszHID = "PS2Mouse";     break;
                 case PointingHIDType_ComboMouse:    pcszHID = "ComboMouse";   break;
                 case PointingHIDType_USBMultiTouch: pcszHID = "USBMultiTouch";break;
+                case PointingHIDType_USBMultiTouchScreenPlusPad: pcszHID = "USBMTScreenPlusPad";break;
                 case PointingHIDType_None:          pcszHID = "None";         break;
                 default:            Assert(false);  pcszHID = "PS2Mouse";     break;
             }

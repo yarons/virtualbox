@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: MouseImpl.h 95395 2022-06-27 15:49:05Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -27,7 +27,7 @@
 #include <VBox/vmm/pdmdrv.h>
 
 /** Maximum number of devices supported */
-enum { MOUSE_MAX_DEVICES = 3 };
+enum { MOUSE_MAX_DEVICES = 4 };
 /** Mouse driver instance data. */
 typedef struct DRVMAINMOUSE DRVMAINMOUSE, *PDRVMAINMOUSE;
 
