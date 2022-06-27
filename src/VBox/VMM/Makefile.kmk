@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 94955 2022-05-09 13:37:02Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95403 2022-06-27 23:38:38Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -297,13 +297,6 @@ endif
 
 $(call VBOX_SET_VER_INFO_DLL,VBoxVMM,VirtualBox VMM) # Version info / description.
 
-
-#
-# This'll apply to both VBoxVMM and VMMR0.
-#
-ifdef IEM_WITHOUT_ASSEMBLY
-VMMAll/IEMAllAImplC.cpp_DEFS = IEM_WITHOUT_ASSEMBLY
-endif
 
 
 #

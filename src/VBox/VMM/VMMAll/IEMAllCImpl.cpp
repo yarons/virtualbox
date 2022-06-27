@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 95248 2022-06-10 16:40:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 95403 2022-06-27 23:38:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -8369,13 +8369,11 @@ IEM_CIMPL_DEF_3(iemCImpl_fxsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, e
         /* Save upper 16-bits of FPUIP (IP:CS:Rsvd1) and FPUDP (DP:DS:Rsvd2). */
         pDst->Rsrvd1 = pSrc->Rsrvd1;
         pDst->Rsrvd2 = pSrc->Rsrvd2;
-        pDst->au32RsrvdForSoftware[0] = 0;
     }
     else
     {
         pDst->Rsrvd1 = 0;
         pDst->Rsrvd2 = 0;
-        pDst->au32RsrvdForSoftware[0] = X86_FXSTATE_RSVD_32BIT_MAGIC;
     }
 
     /* XMM registers. */
@@ -8600,13 +8598,11 @@ IEM_CIMPL_DEF_3(iemCImpl_xsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, en
             /* Save upper 16-bits of FPUIP (IP:CS:Rsvd1) and FPUDP (DP:DS:Rsvd2). */
             pDst->Rsrvd1 = pSrc->Rsrvd1;
             pDst->Rsrvd2 = pSrc->Rsrvd2;
-            pDst->au32RsrvdForSoftware[0] = 0;
         }
         else
         {
             pDst->Rsrvd1 = 0;
             pDst->Rsrvd2 = 0;
-            pDst->au32RsrvdForSoftware[0] = X86_FXSTATE_RSVD_32BIT_MAGIC;
         }
         for (uint32_t i = 0; i < RT_ELEMENTS(pDst->aRegs); i++)
         {

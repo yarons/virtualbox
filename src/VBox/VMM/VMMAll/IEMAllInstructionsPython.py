@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 95347 2022-06-22 22:14:17Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 95403 2022-06-27 23:38:38Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95347 $"
+__version__ = "$Revision: 95403 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -301,9 +301,12 @@ g_kdOpTypes = {
 
     # VEX.vvvv
     'By':           ( 'IDX_UseModRM',       'vvvv',   '%By',  'By',      'V',     ),
+    'Hps':          ( 'IDX_UseModRM',       'vvvv',   '%Hps', 'Hps',     'V',     ),
+    'Hpd':          ( 'IDX_UseModRM',       'vvvv',   '%Hpd', 'Hpd',     'V',     ),
     'HssHi':        ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HssHi',   'V',     ),
     'HsdHi':        ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HsdHi',   'V',     ),
     'HqHi':         ( 'IDX_UseModRM',       'vvvv',   '%Hq',  'HqHi',    'V',     ),
+    'Hx':           ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'Hx',      'V',     ),
 
     # Immediate values.
     'Ib':           ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',   '', ), ##< NB! Could be IDX_ParseImmByteSX for some instrs.
