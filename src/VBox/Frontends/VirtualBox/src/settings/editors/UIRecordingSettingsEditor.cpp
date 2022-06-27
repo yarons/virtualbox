@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.cpp 94436 2022-04-01 12:07:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.cpp 95394 2022-06-27 15:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class implementation.
  */
@@ -313,7 +313,9 @@ void UIRecordingSettingsEditor::retranslateUi()
                                        "will be skipped. Reducing this value will increase the number of skipped "
                                        "frames and reduce the file size."));
     m_pLabelFrameRateMin->setText(tr("%1 fps").arg(m_pSliderFrameRate->minimum()));
+    m_pLabelFrameRateMin->setToolTip(tr("Minimum possible frame rate."));
     m_pLabelFrameRateMax->setText(tr("%1 fps").arg(m_pSliderFrameRate->maximum()));
+    m_pLabelFrameRateMax->setToolTip(tr("Maximum possible frame rate."));
 
     m_pLabelVideoQuality->setText(tr("&Video Quality:"));
     m_pSliderVideoQuality->setToolTip(tr("Holds the quality. Increasing this value will make the video "

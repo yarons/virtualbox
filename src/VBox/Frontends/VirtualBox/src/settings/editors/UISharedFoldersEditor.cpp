@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 95277 2022-06-14 12:06:41Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 95394 2022-06-27 15:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -344,7 +344,7 @@ void UISharedFoldersEditor::retranslateUi()
     if (m_pTreeWidget)
     {
         m_pTreeWidget->setWhatsThis(tr("Lists all shared folders accessible to this machine. Use 'net use x: \\\\vboxsvr\\share' "
-                                       "to access a shared folder named <i>share</i> from a DOS-like OS, or 'mount -t vboxsf "
+                                       "to access a shared folder named 'share' from a DOS-like OS, or 'mount -t vboxsf "
                                        "share mount_point' to access it from a Linux OS. This feature requires Guest Additions."));
 
         /* Translate tree-widget header: */

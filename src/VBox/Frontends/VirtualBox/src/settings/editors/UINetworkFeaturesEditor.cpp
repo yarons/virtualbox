@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 94653 2022-04-20 15:15:43Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 95394 2022-06-27 15:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -274,8 +274,8 @@ void UINetworkFeaturesEditor::retranslateUi()
         m_pLabelGenericProperties->setText(tr("Generic Properties:"));
     if (m_pEditorGenericProperties)
         m_pEditorGenericProperties->setToolTip(tr("Holds the configuration settings for the network attachment driver. The "
-                                                  "settings should be of the form <b>name=value</b> and will depend on the "
-                                                  "driver. Use <b>shift-enter</b> to add a new entry."));
+                                                  "settings should be of the form name=value and will depend on the "
+                                                  "driver. Use shift-enter to add a new entry."));
 
     if (m_pCheckBoxCableConnected)
     {

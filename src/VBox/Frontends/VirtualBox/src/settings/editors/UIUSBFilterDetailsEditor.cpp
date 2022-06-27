@@ -1,4 +1,4 @@
-/* $Id: UIUSBFilterDetailsEditor.cpp 95247 2022-06-10 12:33:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFilterDetailsEditor.cpp 95394 2022-06-27 15:16:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFilterDetailsEditor class implementation.
  */
@@ -219,7 +219,7 @@ void UIUSBFilterDetailsEditor::retranslateUi()
             m_pComboRemote->setItemText(i, gpConverter->toString(enmType));
         }
         m_pComboRemote->setToolTip(tr("Holds whether this filter applies to USB devices attached locally to the host computer "
-                                      "(<i>No</i>), to a VRDP client's computer (<i>Yes</i>), or both (<i>Any</i>)."));
+                                      "(No), to a VRDP client's computer (Yes), or both (Any)."));
     }
 }
 
