@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 94189 2022-03-11 19:02:57Z vadim.galitsyn@oracle.com $
+# $Id: vboxshell.py 95396 2022-06-27 16:07:40Z klaus.espenlaub@oracle.com $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 94189 $"
+__version__ = "$Revision: 95396 $"
 
 
 import gc
@@ -334,13 +334,14 @@ def guestExec(ctx, machine, console, cmds):
     exec(cmds)
 
 def printMouseEvent(_ctx, mev):
-    print("Mouse : mode=%d x=%d y=%d z=%d w=%d buttons=%x" % (mev.mode, mev.x, mev.y, mev.z, mev.w, mev.buttons))
+    print("Mouse: mode=%d x=%d y=%d z=%d w=%d buttons=%x" % (mev.mode, mev.x, mev.y, mev.z, mev.w, mev.buttons))
 
 def printKbdEvent(ctx, kev):
     print("Kbd: ", ctx['global'].getArray(kev, 'scancodes'))
 
 def printMultiTouchEvent(ctx, mtev):
-    print("MultiTouch : contacts=%d time=%d" % (mtev.contactCount, mtev.scanTime))
+    print("MultiTouch: %s contacts=%d time=%d" \
+        % ("touchscreen" if mtev.isTouchScreen else "touchpad", mtev.contactCount, mtev.scanTime))
     xPositions = ctx['global'].getArray(mtev, 'xPositions')
     yPositions = ctx['global'].getArray(mtev, 'yPositions')
     contactIds = ctx['global'].getArray(mtev, 'contactIds')

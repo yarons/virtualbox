@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 95369 2022-06-24 20:39:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 95396 2022-06-27 16:07:40Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -1200,6 +1200,9 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
 #else
     bool fTouchScreen = (pTouchEvent->device()->type() == QTouchDevice::TouchScreen);
 #endif
+    /* Compatibility with previous behavior. If there is no touchpad configured
+     * then treat all multitouch events as touchscreen ones: */
+    fTouchScreen |= !uisession()->isMouseSupportsTouchPad();
 
     if (fTouchScreen)
     {
