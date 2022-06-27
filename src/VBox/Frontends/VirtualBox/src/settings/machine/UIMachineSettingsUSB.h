@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 95286 2022-06-15 13:30:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.h 95390 2022-06-27 12:48:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -63,7 +63,7 @@ protected:
     virtual void putToCache() RT_OVERRIDE;
     /** Saves settings from cache to external object(s) packed inside @a data.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
-    virtual void saveFromCacheTo(QVariant &data) /* overrride */;
+    virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 94498 2022-04-06 16:03:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.h 95390 2022-06-27 12:48:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -72,7 +72,7 @@ protected:
     virtual void putToCache() RT_OVERRIDE;
     /** Save data from cache into the corresponding external object(s).
       * @note This task COULD be performed in other than GUI thread. */
-    virtual void saveFromCacheTo(QVariant &data) /* overrride */;
+    virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;

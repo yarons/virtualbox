@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 94675 2022-04-21 17:52:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 95390 2022-06-27 12:48:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -81,7 +81,7 @@ protected:
     virtual void putToCache() RT_OVERRIDE;
     /** Saves settings from cache to external object(s) packed inside @a data.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
-    virtual void saveFromCacheTo(QVariant &data) /* overrride */;
+    virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;

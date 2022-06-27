@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 94708 2022-04-25 14:55:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.h 95390 2022-06-27 12:48:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -58,7 +58,7 @@ protected:
     virtual void putToCache() RT_OVERRIDE;
     /** Saves settings from cache to external object(s) packed inside @a data.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
-    virtual void saveFromCacheTo(QVariant &data) /* overrride */;
+    virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
