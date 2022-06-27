@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-ExtCtxSetMxCsr.c 95372 2022-06-26 00:27:49Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-ExtCtxSetMxCsr.c 95399 2022-06-27 20:21:13Z knut.osmundsen@oracle.com $ */
 /** @file
- * BS3Kit - Bs3ExtCtxInit
+ * BS3Kit - Bs3ExtCtxSetMxCsr
  */
 
 /*
@@ -32,11 +32,15 @@
 
 
 #undef Bs3ExtCtxSetMxCsr
-BS3_CMN_DEF(void, Bs3ExtCtxSetMxCsr,(PBS3EXTCTX pExtCtx, uint32_t uValue))
+BS3_CMN_DEF(bool, Bs3ExtCtxSetMxCsr,(PBS3EXTCTX pExtCtx, uint32_t uValue))
 {
     AssertCompileMembersAtSameOffset(BS3EXTCTX, Ctx.x87.MXCSR, BS3EXTCTX, Ctx.x.x87.MXCSR);
     if (   pExtCtx->enmMethod == BS3EXTCTXMETHOD_FXSAVE
         || pExtCtx->enmMethod == BS3EXTCTXMETHOD_XSAVE)
+    {
         pExtCtx->Ctx.x87.MXCSR = uValue;
+        return true;
+    }
+    return false;
 }
 
