@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 93168 2022-01-10 18:00:59Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 95385 2022-06-27 09:04:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -4273,6 +4273,20 @@ HRESULT GuestSession::fileQuerySize(const com::Utf8Str &aPath, BOOL aFollowSymli
     }
 
     return hrc;
+}
+
+HRESULT GuestSession::fsQueryFreeSpace(const com::Utf8Str &aPath, LONG64 *aFreeSpace)
+{
+    RT_NOREF(aPath, aFreeSpace);
+
+    return E_NOTIMPL;
+}
+
+HRESULT GuestSession::fsQueryInfo(const com::Utf8Str &aPath, ComPtr<IGuestFsInfo> &aInfo)
+{
+    RT_NOREF(aPath, aInfo);
+
+    return E_NOTIMPL;
 }
 
 HRESULT GuestSession::fsObjExists(const com::Utf8Str &aPath, BOOL aFollowSymlinks, BOOL *aExists)

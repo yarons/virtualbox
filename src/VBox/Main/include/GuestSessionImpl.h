@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.h 95385 2022-06-27 09:04:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -170,6 +170,8 @@ private:
     HRESULT fileQuerySize(const com::Utf8Str &aPath,
                           BOOL aFollowSymlinks,
                           LONG64 *aSize);
+    HRESULT fsQueryFreeSpace(const com::Utf8Str &aPath, LONG64 *aFreeSpace);
+    HRESULT fsQueryInfo(const com::Utf8Str &aPath, ComPtr<IGuestFsInfo> &aInfo);
     HRESULT fsObjExists(const com::Utf8Str &aPath,
                         BOOL aFollowSymlinks,
                         BOOL *pfExists);
