@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 95317 2022-06-21 08:00:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 95393 2022-06-27 14:34:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1324,7 +1324,6 @@ void UIFileManagerGuestTable::sltGuestSessionStateChanged(const CGuestSessionSta
         emit sigLogOutput(QString("%1: %2").arg("Guest session status has changed").arg(gpConverter->toString(m_comGuestSession.GetStatus())),
                   m_strTableName, FileManagerLogType_Info);
 
-        printf("session status %d\n", m_comGuestSession.GetStatus());
         switch (m_comGuestSession.GetStatus())
         {
             case KGuestSessionStatus_Started:
