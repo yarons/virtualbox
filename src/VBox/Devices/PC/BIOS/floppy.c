@@ -1,4 +1,4 @@
-/* $Id: floppy.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: floppy.c 95388 2022-06-27 11:55:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * PC BIOS - ???
  */
@@ -1119,7 +1119,7 @@ void BIOSCALL int13_diskette_function(disk_regs_t r)
             SET_AH(0x01); // invalid drive
             set_diskette_ret_status(0x01);
             SET_CF();
-        return;
+            return;
         }
 
         SET_AH(0x06); // change line not supported
