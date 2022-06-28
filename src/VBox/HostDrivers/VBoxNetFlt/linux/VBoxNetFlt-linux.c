@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 94967 2022-05-09 16:58:18Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1702,12 +1702,10 @@ static void vboxNetFltLinuxReportNicGsoCapabilities(PVBOXNETFLTINS pThis)
     if (vboxNetFltTryRetainBusyNotDisconnected(pThis))
     {
         struct net_device  *pDev;
-        PINTNETTRUNKSWPORT  pSwitchPort;
         unsigned int        fFeatures;
 
         RTSpinlockAcquire(pThis->hSpinlock);
 
-        pSwitchPort = pThis->pSwitchPort; /* this doesn't need to be here, but it doesn't harm. */
         pDev = ASMAtomicUoReadPtrT(&pThis->u.s.pDev, struct net_device *);
         if (pDev)
             fFeatures = pDev->features;

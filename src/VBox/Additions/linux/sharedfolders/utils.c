@@ -1,4 +1,4 @@
-/* $Id: utils.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: utils.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -47,7 +47,6 @@ int vbsf_nlscpy(struct vbsf_super_info *pSuperInfo, char *name, size_t name_boun
         size_t      in_bound_len    = utf8_len;
         char       *out             = name;
         size_t      out_bound_len   = name_bound_len - 1;
-        size_t      out_len         = 0;
 
         while (in_bound_len) {
 #if RTLNX_VER_MIN(2,6,31)
@@ -63,7 +62,6 @@ int vbsf_nlscpy(struct vbsf_super_info *pSuperInfo, char *name, size_t name_boun
                     /*SFLOG3(("vbsf_nlscpy: cbOutEnc=%d cbInEnc=%d uni=%#x in_bound_len=%u\n", cbOutEnc, cbInEnc, uni, in_bound_len));*/
                     out           += cbOutEnc;
                     out_bound_len -= cbOutEnc;
-                    out_len       += cbOutEnc;
 
                     in            += cbInEnc;
                     in_bound_len  -= cbInEnc;

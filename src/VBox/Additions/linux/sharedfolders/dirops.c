@@ -1,4 +1,4 @@
-/* $Id: dirops.c 94531 2022-04-08 13:28:01Z vadim.galitsyn@oracle.com $ */
+/* $Id: dirops.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -829,7 +829,7 @@ static int vbsf_create_worker(struct inode *parent, struct dentry *dentry, umode
             pReq->Create.CreateParms.CreateFlags             = fCreateFlags;
             pReq->Create.CreateParms.Info.Attr.fMode         = (S_ISDIR(mode) ? RTFS_TYPE_DIRECTORY : RTFS_TYPE_FILE)
                                                              | sf_access_permissions_to_vbox(mode);
-            pReq->Create.CreateParms.Info.Attr.enmAdditional = RTFSOBJATTRADD_NOTHING;
+            pReq->Create.CreateParms.Info.Attr.enmAdditional = SHFLFSOBJATTRADD_NOTHING;
 
             SFLOGFLOW(("%s calling VbglR0SfHostReqCreate(%s, %#x)\n", pszPrefix, path->String.ach, pReq->Create.CreateParms.CreateFlags));
             rc = VbglR0SfHostReqCreate(pSuperInfo->map.root, &pReq->Create);
