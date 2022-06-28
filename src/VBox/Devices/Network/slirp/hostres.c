@@ -1,4 +1,4 @@
-/* $Id: hostres.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: hostres.c 95408 2022-06-28 14:21:38Z alexander.eichner@oracle.com $ */
 /** @file
  * Host resolver
  */
@@ -512,7 +512,7 @@ respond(struct response *res)
         && qclass != Class_ANY)
     {
         LogErr(("NAT: hostres: unsupported qclass %d\n", qclass));
-        return refuse(res, RCode_NXDomain);
+        return refuse(res, RCode_NoError);
     }
 
     if (   qtype != Type_A
@@ -521,7 +521,7 @@ respond(struct response *res)
         && qtype != Type_ANY)
     {
         LogErr(("NAT: hostres: unsupported qtype %d\n", qtype));
-        return refuse(res, RCode_NXDomain);
+        return refuse(res, RCode_NoError);
     }
 
 
