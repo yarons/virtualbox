@@ -1,4 +1,4 @@
-/* $Id: HostAudioDeviceImpl.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: HostAudioDeviceImpl.cpp 95424 2022-06-29 11:23:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Host audio device implementation.
  */
@@ -87,5 +87,3 @@ void HostAudioDevice::uninit()
 
 // IHostAudioDevice properties
 ////////////////////////////////////////////////////////////////////////////////
-
-
