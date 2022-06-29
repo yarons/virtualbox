@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 94660 2022-04-21 08:38:34Z alexander.eichner@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -4486,9 +4486,12 @@ void Appliance::i_importMachineGeneric(const ovf::VirtualSystem &vsysThis,
     if (!stack.strAudioAdapter.isEmpty())
         if (stack.strAudioAdapter.compare("null", Utf8Str::CaseInsensitive) != 0)
         {
+            ComPtr<IAudioSettings> audioSettings;
+            rc = pNewMachine->COMGETTER(AudioSettings)(audioSettings.asOutParam());
+            if (FAILED(rc)) throw rc;
             uint32_t audio = RTStrToUInt32(stack.strAudioAdapter.c_str());       // should be 0 for AC97
             ComPtr<IAudioAdapter> audioAdapter;
-            rc = pNewMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
+            rc = audioSettings->COMGETTER(Adapter)(audioAdapter.asOutParam());
             if (FAILED(rc)) throw rc;
             rc = audioAdapter->COMSETTER(Enabled)(true);
             if (FAILED(rc)) throw rc;

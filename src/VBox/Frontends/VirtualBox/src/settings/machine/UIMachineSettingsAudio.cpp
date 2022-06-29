@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 94708 2022-04-25 14:55:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -25,6 +25,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 
 
 /** Machine settings: Audio page data structure. */
@@ -102,7 +103,8 @@ void UIMachineSettingsAudio::loadToCacheFrom(QVariant &data)
     UIDataSettingsMachineAudio oldAudioData;
 
     /* Check whether adapter is valid: */
-    const CAudioAdapter &comAdapter = m_machine.GetAudioAdapter();
+    const CAudioSettings &comAudioSettings = m_machine.GetAudioSettings();
+    const CAudioAdapter  &comAdapter       = comAudioSettings.GetAdapter();
     if (!comAdapter.isNull())
     {
         /* Gather old data: */
@@ -249,7 +251,9 @@ bool UIMachineSettingsAudio::saveData()
         const UIDataSettingsMachineAudio &newAudioData = m_pCache->data();
 
         /* Get audio adapter for further activities: */
-        CAudioAdapter comAdapter = m_machine.GetAudioAdapter();
+        const CAudioSettings comAudioSettings = m_machine.GetAudioSettings();
+
+        CAudioAdapter comAdapter = comAudioSettings.GetAdapter();
         fSuccess = m_machine.isOk() && comAdapter.isNotNull();
 
         /* Show error message if necessary: */

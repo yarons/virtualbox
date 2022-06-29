@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineAttributeSetter.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -27,6 +27,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 #include "CGraphicsAdapter.h"
 #include "CNetworkAdapter.h"
 #include "CUSBController.h"
@@ -176,8 +177,9 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             case MachineAttribute_AudioHostDriverType:
             {
                 /* Acquire audio adapter: */
-                CAudioAdapter comAdapter = comMachine.GetAudioAdapter();
-                if (!comMachine.isOk())
+                CAudioSettings const comAudioSettings = comMachine.GetAudioSettings();
+                CAudioAdapter        comAdapter       = comAudioSettings.GetAdapter();
+                if (!comAudioSettings.isOk())
                 {
                     UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;
@@ -195,8 +197,9 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             case MachineAttribute_AudioControllerType:
             {
                 /* Acquire audio adapter: */
-                CAudioAdapter comAdapter = comMachine.GetAudioAdapter();
-                if (!comMachine.isOk())
+                CAudioSettings const comAudioSettings = comMachine.GetAudioSettings();
+                CAudioAdapter        comAdapter       = comAudioSettings.GetAdapter();
+                if (!comAudioSettings.isOk())
                 {
                     UINotificationMessage::cannotAcquireMachineParameter(comMachine);
                     fErrorHappened = true;

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 95065 2022-05-23 20:06:47Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1008,6 +1008,12 @@ HRESULT Host::getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &
     RT_NOREF(aNetworkInterfaces);
     ReturnComNotImplemented();
 #endif
+}
+
+HRESULT Host::getAudioDevices(std::vector<ComPtr<IHostAudioDevice> > &aAudioDevices)
+{
+    RT_NOREF(aAudioDevices);
+    ReturnComNotImplemented();
 }
 
 HRESULT Host::getUSBDevices(std::vector<ComPtr<IHostUSBDevice> > &aUSBDevices)

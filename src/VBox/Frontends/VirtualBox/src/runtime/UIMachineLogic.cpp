@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 95368 2022-06-24 19:41:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -75,6 +75,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 #include "CDisplay.h"
 #include "CEmulatedUSB.h"
 #include "CGraphicsAdapter.h"
@@ -2181,7 +2182,8 @@ void UIMachineLogic::sltToggleAudioOutput(bool fEnabled)
         return;
 
     /* Access audio adapter: */
-    CAudioAdapter comAdapter = machine().GetAudioAdapter();
+    CAudioSettings const comAudioSettings = machine().GetAudioSettings();
+    CAudioAdapter        comAdapter       = comAudioSettings.GetAdapter();
     AssertMsgReturnVoid(machine().isOk() && comAdapter.isNotNull(),
                         ("Audio adapter should NOT be null!\n"));
 
@@ -2217,7 +2219,8 @@ void UIMachineLogic::sltToggleAudioInput(bool fEnabled)
         return;
 
     /* Access audio adapter: */
-    CAudioAdapter comAdapter = machine().GetAudioAdapter();
+    CAudioSettings const comAudioSettings = machine().GetAudioSettings();
+    CAudioAdapter        comAdapter       = comAudioSettings.GetAdapter();
     AssertMsgReturnVoid(machine().isOk() && comAdapter.isNotNull(),
                         ("Audio adapter should NOT be null!\n"));
 

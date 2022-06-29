@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SessionImpl.h 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -90,6 +90,9 @@ private:
     HRESULT onNetworkAdapterChange(const ComPtr<INetworkAdapter> &aNetworkAdapter,
                                    BOOL aChangeAdapter);
     HRESULT onAudioAdapterChange(const ComPtr<IAudioAdapter> &aAudioAdapter);
+    HRESULT onHostAudioDeviceChange(const ComPtr<IHostAudioDevice> &aDevice,
+                                    BOOL aNew, AudioDeviceState_T aState,
+                                    const ComPtr<IVirtualBoxErrorInfo> &aErrInfo);
     HRESULT onSerialPortChange(const ComPtr<ISerialPort> &aSerialPort);
     HRESULT onParallelPortChange(const ComPtr<IParallelPort> &aParallelPort);
     HRESULT onStorageControllerChange(const Guid &aMachineId, const com::Utf8Str& aControllerName);

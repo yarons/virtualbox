@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 94643 2022-04-20 09:08:37Z andreas.loeffler@oracle.com $ */
+/* $Id: HostImpl.h 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -100,6 +100,7 @@ private:
     // wrapped IHost properties
     HRESULT getDVDDrives(std::vector<ComPtr<IMedium> > &aDVDDrives);
     HRESULT getFloppyDrives(std::vector<ComPtr<IMedium> > &aFloppyDrives);
+    HRESULT getAudioDevices(std::vector<ComPtr<IHostAudioDevice> > &aAudioDevices);
     HRESULT getUSBDevices(std::vector<ComPtr<IHostUSBDevice> > &aUSBDevices);
     HRESULT getUSBDeviceFilters(std::vector<ComPtr<IHostUSBDeviceFilter> > &aUSBDeviceFilters);
     HRESULT getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &aNetworkInterfaces);

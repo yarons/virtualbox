@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 95369 2022-06-24 20:39:25Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3058,9 +3058,12 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         /*
          * AC'97 ICH / SoundBlaster16 audio / Intel HD Audio.
          */
+        ComPtr<IAudioSettings> audioSettings;
+        hrc = pMachine->COMGETTER(AudioSettings)(audioSettings.asOutParam());               H();
+
         BOOL fAudioEnabled = FALSE;
         ComPtr<IAudioAdapter> audioAdapter;
-        hrc = pMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());                 H();
+        hrc = audioSettings->COMGETTER(Adapter)(audioAdapter.asOutParam());                 H();
         if (audioAdapter)
         {
             hrc = audioAdapter->COMGETTER(Enabled)(&fAudioEnabled);                         H();

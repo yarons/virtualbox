@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -114,7 +114,9 @@ HRESULT Machine::exportTo(const ComPtr<IAppliance> &aAppliance, const com::Utf8S
         // request the machine lock while accessing internal members
         AutoReadLock alock1(this COMMA_LOCKVAL_SRC_POS);
 
-        ComPtr<IAudioAdapter> pAudioAdapter = mAudioAdapter;
+        ComPtr<IAudioAdapter> pAudioAdapter;
+        rc = mAudioSettings->COMGETTER(Adapter)(pAudioAdapter.asOutParam());
+        if (FAILED(rc)) throw rc;
         BOOL fAudioEnabled;
         rc = pAudioAdapter->COMGETTER(Enabled)(&fAudioEnabled);
         if (FAILED(rc)) throw rc;

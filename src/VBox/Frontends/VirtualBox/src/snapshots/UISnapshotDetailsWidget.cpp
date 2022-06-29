@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 93996 2022-02-28 22:04:49Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -46,6 +46,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 #include "CRecordingSettings.h"
 #include "CRecordingScreenSettings.h"
 #include "CMachine.h"
@@ -1815,7 +1816,8 @@ QStringList UISnapshotDetailsWidget::audioReport(CMachine comMachine)
     /* Prepare report: */
     QStringList aReport;
     /* Acquire audio adapter: */
-    const CAudioAdapter &comAdapter = comMachine.GetAudioAdapter();
+    const CAudioSettings comAudioSettings = comMachine.GetAudioSettings();
+    const CAudioAdapter &comAdapter       = comAudioSettings.GetAdapter();
     if (comAdapter.GetEnabled())
     {
         /* Host Driver: */

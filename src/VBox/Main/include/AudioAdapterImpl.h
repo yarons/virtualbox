@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -23,6 +23,8 @@
 # pragma once
 #endif
 
+class AudioSettings;
+
 #include "AudioAdapterWrap.h"
 namespace settings
 {
@@ -40,11 +42,10 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *aParent);
-    HRESULT init(Machine *aParent, AudioAdapter *aThat);
-    HRESULT initCopy(Machine *aParent, AudioAdapter *aThat);
+    HRESULT init(AudioSettings *aParent);
+    HRESULT init(AudioSettings *aParent, AudioAdapter *aThat);
+    HRESULT initCopy(AudioSettings *aParent, AudioAdapter *aThat);
     void uninit();
-
 
     // public methods only for internal purposes
     HRESULT i_loadSettings(const settings::AudioAdapter &data);
@@ -73,8 +74,8 @@ private:
     HRESULT getProperty(const com::Utf8Str &aKey, com::Utf8Str &aValue);
     HRESULT setProperty(const com::Utf8Str &aKey, const com::Utf8Str &aValue);
 
-    Machine * const     mParent;
-    const ComObjPtr<AudioAdapter> mPeer;
+    AudioSettings * const              mParent;
+    const ComObjPtr<AudioAdapter>      mPeer;
     Backupable<settings::AudioAdapter> mData;
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -38,6 +38,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 #include "CGraphicsAdapter.h"
 #include "CRecordingSettings.h"
 #include "CRecordingScreenSettings.h"
@@ -418,7 +419,8 @@ private:
         QString strFullData;
 
         /* Get audio adapter: */
-        const CAudioAdapter comAdapter = comMachine.GetAudioAdapter();
+        const CAudioSettings comAudioSettings = comMachine.GetAudioSettings();
+        const CAudioAdapter  comAdapter       = comAudioSettings.GetAdapter();
         const bool fAudioEnabled = comAdapter.GetEnabled();
         if (fAudioEnabled)
         {
