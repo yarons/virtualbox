@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: timer-r0drv-linux.c 95418 2022-06-29 01:19:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -544,12 +544,14 @@ static void rtTimerLnxCallbackHandleMigration(PRTTIMER pTimer, PRTTIMERLNXSUBTIM
         {
             case RTTIMERLNXSTATE_STOPPING:
             case RTTIMERLNXSTATE_MP_STOPPING:
-                enmState = RTTIMERLNXSTATE_STOPPED; RT_FALL_THRU();
+                enmState = RTTIMERLNXSTATE_STOPPED;
+                RT_FALL_THRU();
             case RTTIMERLNXSTATE_STOPPED:
                 break;
 
             default:
-                AssertMsgFailed(("%d\n", enmState)); RT_FALL_THRU();
+                AssertMsgFailed(("%d\n", enmState));
+                RT_FALL_THRU();
             case RTTIMERLNXSTATE_STARTING:
             case RTTIMERLNXSTATE_MP_STARTING:
             case RTTIMERLNXSTATE_ACTIVE:
