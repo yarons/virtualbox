@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxConvertToRingX.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-RegCtxConvertToRingX.c 95430 2022-06-29 14:21:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3RegCtxConvertToRingX
  */
@@ -138,6 +138,9 @@ static uint16_t bs3RegCtxConvertProtSelToRingX(uint16_t uSel, uint8_t bRing, uin
  *
  * @param   pRegCtx     The register context.
  * @param   bRing       The target ring (0..3).
+ *
+ * @note    Do _NOT_ call this for creating real mode or v8086 contexts, because
+ *          it will always output a protected mode context!
  */
 #undef Bs3RegCtxConvertToRingX
 BS3_CMN_DEF(void, Bs3RegCtxConvertToRingX,(PBS3REGCTX pRegCtx, uint8_t bRing))

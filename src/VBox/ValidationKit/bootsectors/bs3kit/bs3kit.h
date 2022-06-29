@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 95399 2022-06-27 20:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 95430 2022-06-29 14:21:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2662,6 +2662,9 @@ BS3_CMN_PROTO_FARSTUB(8, void, Bs3RegCtxSaveEx,(PBS3REGCTX pRegCtx, uint8_t bBit
  *
  * @param   pRegCtx     The register context.
  * @param   bRing       The target ring (0..3).
+ *
+ * @note    Do _NOT_ call this for creating real mode or v8086 contexts, because
+ *          it will always output a protected mode context!
  */
 BS3_CMN_PROTO_STUB(void, Bs3RegCtxConvertToRingX,(PBS3REGCTX pRegCtx, uint8_t bRing));
 
