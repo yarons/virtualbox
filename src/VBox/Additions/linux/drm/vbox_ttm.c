@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 95415 2022-06-28 19:20:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 95420 2022-06-29 02:15:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -805,7 +805,7 @@ int vbox_mmap(struct file *filp, struct vm_area_struct *vma)
 	vbox = file_priv->minor->dev->dev_private;
 
 #if RTLNX_VER_MIN(5,14,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
-	RT_NOREF(vbox);
+	(void)vbox;
 	if (drm_dev_is_unplugged(file_priv->minor->dev))
 		return -ENODEV;
 	ret = drm_gem_mmap(filp, vma);
