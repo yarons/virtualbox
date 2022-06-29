@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 94912 2022-05-08 19:05:31Z alexander.eichner@oracle.com $ */
+/* $Id: EventImpl.cpp 95428 2022-06-29 13:15:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -392,7 +392,7 @@ HRESULT VBoxVetoEvent::getApprovals(std::vector<com::Utf8Str> &aResult)
 }
 
 static const int FirstEvent = (int)VBoxEventType_LastWildcard + 1;
-static const int LastEvent = (int)VBoxEventType_Last;
+static const int LastEvent = (int)VBoxEventType_End;
 static const int NumEvents = LastEvent - FirstEvent;
 
 /**
