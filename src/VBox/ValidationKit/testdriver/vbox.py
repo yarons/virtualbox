@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 94669 2022-04-21 14:38:18Z alexander.eichner@oracle.com $
+# $Id: vbox.py 95429 2022-06-29 14:07:34Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94669 $"
+__version__ = "$Revision: 95429 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2176,11 +2176,15 @@ class TestDriver(base.TestDriver):                                              
             reporter.log("  Controllers:");
         for oCtrl in aoControllers:
             reporter.log("    %s %s bus: %s type: %s" % (oCtrl.name, oCtrl.controllerType, oCtrl.bus, oCtrl.controllerType,));
+        if self.fpApiVer >= 7.0:
+            oAdapter = oVM.audioSettings.adapter;
+        else:
+            oAdapter = oVM.audioAdapter;
         reporter.log("    AudioController:  %s"
-                     % (self.oVBoxMgr.getEnumValueName('AudioControllerType', oVM.audioAdapter.audioController),));               # pylint: disable=not-callable
-        reporter.log("    AudioEnabled:     %s" % (oVM.audioAdapter.enabled,));
+                     % (self.oVBoxMgr.getEnumValueName('AudioControllerType', oAdapter.audioController),));               # pylint: disable=not-callable
+        reporter.log("    AudioEnabled:     %s" % (oAdapter.enabled,));
         reporter.log("    Host AudioDriver: %s"
-                     % (self.oVBoxMgr.getEnumValueName('AudioDriverType', oVM.audioAdapter.audioDriver),));                       # pylint: disable=not-callable
+                     % (self.oVBoxMgr.getEnumValueName('AudioDriverType', oAdapter.audioDriver),));                       # pylint: disable=not-callable
 
         self.processPendingEvents();
         aoAttachments = self.oVBoxMgr.getArray(oVM, 'mediumAttachments')
