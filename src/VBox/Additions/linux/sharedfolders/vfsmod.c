@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: vfsmod.c 95416 2022-06-29 00:59:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -193,7 +193,7 @@ static void vbsf_super_info_copy_remount_options(struct vbsf_super_info *pSuperI
     pSuperInfo->enmCacheMode = kVbsfCacheMode_Strict;
     if ((unsigned)info->length >= RT_UOFFSETOF(struct vbsf_mount_info_new, enmCacheMode)) {
         switch (info->enmCacheMode) {
-            case kVbsfCacheMode_Default: RT_FALL_THRU();
+            case kVbsfCacheMode_Default:
             case kVbsfCacheMode_Strict:
                 break;
             case kVbsfCacheMode_None:
