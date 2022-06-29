@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c 95400 2022-06-27 20:43:08Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c 95439 2022-06-29 22:35:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, 16-bit C code.
  */
@@ -34,6 +34,9 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+BS3TESTMODEBYMAX_PROTOTYPES_CMN(bs3CpuInstr3_v_andps_andpd_pand);
+BS3TESTMODEBYMAX_PROTOTYPES_CMN(bs3CpuInstr3_v_andnps_andnpd_pandn);
+BS3TESTMODEBYMAX_PROTOTYPES_CMN(bs3CpuInstr3_v_orps_orpd_por);
 BS3TESTMODEBYMAX_PROTOTYPES_CMN(bs3CpuInstr3_v_xorps_xorpd_pxor);
 
 
@@ -42,7 +45,10 @@ BS3TESTMODEBYMAX_PROTOTYPES_CMN(bs3CpuInstr3_v_xorps_xorpd_pxor);
 *********************************************************************************************************************************/
 static const BS3TESTMODEBYMAXENTRY g_aTests[] =
 {
-    BS3TESTMODEBYMAXENTRY_CMN("[v]xorps/[v]xorpd/[v]pxor", bs3CpuInstr3_v_xorps_xorpd_pxor),
+    BS3TESTMODEBYMAXENTRY_CMN("[v]andps/[v]andpd/[v]pand",      bs3CpuInstr3_v_andps_andpd_pand),
+    BS3TESTMODEBYMAXENTRY_CMN("[v]andnps/[v]andnpd/[v]pandn",   bs3CpuInstr3_v_andnps_andnpd_pandn),
+    BS3TESTMODEBYMAXENTRY_CMN("[v]orps/[v]orpd/[v]or",          bs3CpuInstr3_v_orps_orpd_por),
+    BS3TESTMODEBYMAXENTRY_CMN("[v]xorps/[v]xorpd/[v]pxor",      bs3CpuInstr3_v_xorps_xorpd_pxor),
 };
 
 
