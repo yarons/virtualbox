@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.cpp 95432 2022-06-29 14:30:13Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioSettingsImpl.cpp 95433 2022-06-29 14:32:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Audio settings for a VM.
  */
@@ -156,10 +156,10 @@ HRESULT AudioSettings::initCopy(Machine *aParent, AudioSettings *aThat)
 
     AutoReadLock thatlock(aThat COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT hr = unconst(m->pAdapter).createObject();
-    ComAssertComRCRet(hr, hr);
-    hr = m->pAdapter->init(this);
-    ComAssertComRCRet(hr, hr);
+    HRESULT hrc = unconst(m->pAdapter).createObject();
+    ComAssertComRCRet(hrc, hrc);
+    hrc = m->pAdapter->init(this);
+    ComAssertComRCRet(hrc, hrc);
     m->pAdapter->i_copyFrom(aThat->m->pAdapter);
 
     autoInitSpan.setSucceeded();
