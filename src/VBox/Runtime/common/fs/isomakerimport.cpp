@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 94279 2022-03-17 01:34:09Z knut.osmundsen@oracle.com $ */
+/* $Id: isomakerimport.cpp 95434 2022-06-29 16:48:52Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -835,7 +835,7 @@ static void rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge(PRTFSISOMKIMPORT
                             RT_BE2H_U32(pUnion->PN.Major.be),      RT_LE2H_U32(pUnion->PN.Major.le),
                             RT_BE2H_U32(pUnion->PN.Minor.be),      RT_LE2H_U32(pUnion->PN.Minor.le) ));
                 else if (RTFS_IS_DIRECTORY(pObjInfo->Attr.fMode))
-                    LogRel(("rtFsIsoImport/Rock: Ignorning 'PN' entry for directory (%#x/%#x)\n",
+                    LogRel(("rtFsIsoImport/Rock: Ignoring 'PN' entry for directory (%#x/%#x)\n",
                             ISO9660_GET_ENDIAN(&pUnion->PN.Major), ISO9660_GET_ENDIAN(&pUnion->PN.Minor) ));
                 else
                     pObjInfo->Attr.u.Unix.Device = RTDEV_MAKE(ISO9660_GET_ENDIAN(&pUnion->PN.Major),
@@ -1060,7 +1060,7 @@ static void rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge(PRTFSISOMKIMPORT
             case MAKE_SIG(ISO9660RRIPCL_SIG1, ISO9660RRIPCL_SIG2): /* CL - just warn for now. */
             case MAKE_SIG(ISO9660RRIPPL_SIG1, ISO9660RRIPPL_SIG2): /* PL - just warn for now. */
             case MAKE_SIG(ISO9660RRIPRE_SIG1, ISO9660RRIPRE_SIG2): /* RE - just warn for now. */
-                LogRel(("rtFsIsoImport/Rock: Ignorning directory relocation entry '%c%c'!\n", pUnion->Hdr.bSig1, pUnion->Hdr.bSig2));
+                LogRel(("rtFsIsoImport/Rock: Ignoring directory relocation entry '%c%c'!\n", pUnion->Hdr.bSig1, pUnion->Hdr.bSig2));
                 break;
 
             default:
