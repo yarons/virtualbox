@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 95410 2022-06-28 18:33:26Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 95421 2022-06-29 02:41:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -889,9 +889,9 @@
  * The purpose is to pass it to an operand implementation, thus the a_iArg.
  * @remarks     May return.
  */
-#define IEM_MC_MEM_MAP_EX(a_pvMem, a_fAccess, a_cbMem, a_iSeg, a_GCPtrMem, a_iArg) \
+#define IEM_MC_MEM_MAP_EX(a_pvMem, a_fAccess, a_cbMem, a_iSeg, a_GCPtrMem, a_cbAlign, a_iArg) \
     IEM_MC_RETURN_ON_FAILURE(iemMemMap(pVCpu, (void **)&(a_pvMem), (a_cbMem), (a_iSeg), \
-                                       (a_GCPtrMem), (a_fAccess), (a_cbMem) - 1))
+                                       (a_GCPtrMem), (a_fAccess), (a_cbAlign)))
 
 /** Commits the memory and unmaps the guest memory.
  * @remarks     May return.
