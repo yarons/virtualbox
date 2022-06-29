@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 94768 2022-05-01 22:02:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp.h 95441 2022-06-29 22:40:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -412,6 +412,23 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
         if (RT_LIKELY(   !(  pVCpu->iem.s.fPrefixes \
                            & (IEM_OP_PRF_LOCK | IEM_OP_PRF_REPZ | IEM_OP_PRF_REPNZ | IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REX)) \
                       && !IEM_IS_REAL_OR_V86_MODE(pVCpu) )) \
+        { /* likely */ } \
+        else \
+            return IEMOP_RAISE_INVALID_LOCK_PREFIX(); \
+    } while (0)
+
+/**
+ * Done decoding VEX instruction, raise \#UD exception if any lock, rex, repz,
+ * repnz or size prefixes are present, if in real or v8086 mode, or if the
+ * a_fFeature is present in the guest CPU.
+ */
+#define IEMOP_HLP_DONE_VEX_DECODING_EX(a_fFeature) \
+    do \
+    { \
+        if (RT_LIKELY(   !(  pVCpu->iem.s.fPrefixes \
+                           & (IEM_OP_PRF_LOCK | IEM_OP_PRF_REPZ | IEM_OP_PRF_REPNZ | IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REX)) \
+                      && !IEM_IS_REAL_OR_V86_MODE(pVCpu) \
+                      && IEM_GET_GUEST_CPU_FEATURES(pVCpu)->a_fFeature)) \
         { /* likely */ } \
         else \
             return IEMOP_RAISE_INVALID_LOCK_PREFIX(); \
