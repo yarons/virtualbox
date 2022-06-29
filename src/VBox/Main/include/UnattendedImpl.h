@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 94533 2022-04-08 17:09:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.h 95436 2022-06-29 18:18:57Z alexander.eichner@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -256,6 +256,7 @@ private:
     HRESULT i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *puBuf);
     HRESULT i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *puBuf);
     HRESULT i_innerDetectIsoOSOs2(RTVFS hVfsIso, DETECTBUFFER *puBuf);
+    HRESULT i_innerDetectIsoOSFreeBsd(RTVFS hVfsIso, DETECTBUFFER *puBuf);
 
     /**
      * Worker for reconfigureVM().

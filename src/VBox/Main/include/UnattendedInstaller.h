@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 94751 2022-04-28 19:12:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedInstaller.h 95436 2022-06-29 18:18:57Z alexander.eichner@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -843,5 +843,25 @@ public:
     HRESULT setupScriptOnAuxiliaryCD(const Utf8Str &path);
 };
 #endif
+
+/**
+ * Base class for the unattended FreeBSD installers.
+ */
+class UnattendedFreeBsdInstaller : public UnattendedInstaller
+{
+public:
+    UnattendedFreeBsdInstaller(Unattended *pParent)
+        : UnattendedInstaller(pParent,
+                              "freebsd_installer.cfg", "freebsd_postinstall.sh",
+                              "installerconfig", "vboxpostinstall.sh") {}
+    ~UnattendedFreeBsdInstaller() {}
+
+    bool isAuxiliaryIsoNeeded() const       { return true;  }
+    bool isOriginalIsoNeeded() const        { return false; }
+
+protected:
+    HRESULT addFilesToAuxVisoVectors(RTCList<RTCString> &rVecArgs, RTCList<RTCString> &rVecFiles,
+                                     RTVFS hVfsOrgIso, bool fOverwrite);
+};
 
 #endif /* !MAIN_INCLUDED_UnattendedInstaller_h */
