@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 93944 2022-02-24 21:15:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.h 95461 2022-06-30 12:56:31Z michal.necasek@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -351,6 +351,8 @@ typedef struct VGAState
     uint32_t                    cMilliesRefreshInterval;
     /** Bitmap tracking dirty pages. */
     uint64_t                    bmDirtyBitmap[VGA_VRAM_MAX / GUEST_PAGE_SIZE / 64];
+    /** Bitmap tracking remapped pages (only needs 16 bits). */
+    uint64_t                    bmPageMapBitmap;
 
     /** Flag indicating that there are dirty bits. This is used to optimize the handler resetting. */
     bool                        fHasDirtyBits;
@@ -525,6 +527,7 @@ AssertCompileMemberAlignment(VGASTATE, bank_offset, 8);
 AssertCompileMemberAlignment(VGASTATE, font_offsets, 8);
 AssertCompileMemberAlignment(VGASTATE, last_ch_attr, 8);
 AssertCompileMemberAlignment(VGASTATE, u32Marker, 8);
+AssertCompile(sizeof(uint64_t)/*bmPageMapBitmap*/ >= (_64K / GUEST_PAGE_SIZE / 8));
 #endif
 
 
