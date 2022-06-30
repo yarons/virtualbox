@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.h 95450 2022-06-30 08:58:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -724,6 +724,8 @@ protected:
     HRESULT i_saveStateSettings(int aFlags);
 
     void i_addMediumToRegistry(ComObjPtr<Medium> &pMedium);
+
+    HRESULT i_deleteFile(const Utf8Str &strFile, bool fIgnoreFailures = false, const Utf8Str &strWhat = "", int *prc = NULL);
 
     HRESULT i_createImplicitDiffs(IProgress *aProgress,
                                   ULONG aWeight,
