@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 95458 2022-06-30 11:03:53Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 95460 2022-06-30 12:52:13Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -3863,4 +3863,56 @@ IEMIMPL_MEDIA_F3 vpaddb
 IEMIMPL_MEDIA_F3 vpaddw
 IEMIMPL_MEDIA_F3 vpaddd
 IEMIMPL_MEDIA_F3 vpaddq
+
+
+;
+; The SSE 4.2 crc32
+;
+; @param    1       The instruction
+;
+; @param    A1      Pointer to the 32-bit destination.
+; @param    A2      The source operand, sized according to the suffix.
+;
+
+BEGINPROC_FASTCALL iemAImpl_crc32_u8, 8
+        PROLOGUE_2_ARGS
+
+        mov     T0_32, [A0]
+        crc32   T0_32, A1_8
+        mov     [A0], T0_32
+
+        EPILOGUE_2_ARGS
+ENDPROC iemAImpl_crc32_u8
+
+BEGINPROC_FASTCALL iemAImpl_crc32_u16, 8
+        PROLOGUE_2_ARGS
+
+        mov     T0_32, [A0]
+        crc32   T0_32, A1_16
+        mov     [A0], T0_32
+
+        EPILOGUE_2_ARGS
+ENDPROC iemAImpl_crc32_u16
+
+BEGINPROC_FASTCALL iemAImpl_crc32_u32, 8
+        PROLOGUE_2_ARGS
+
+        mov     T0_32, [A0]
+        crc32   T0_32, A1_32
+        mov     [A0], T0_32
+
+        EPILOGUE_2_ARGS
+ENDPROC iemAImpl_crc32_u32
+
+%ifdef RT_ARCH_AMD64
+BEGINPROC_FASTCALL iemAImpl_crc32_u64, 8
+        PROLOGUE_2_ARGS
+
+        mov     T0_32, [A0]
+        crc32   T0, A1
+        mov     [A0], T0_32
+
+        EPILOGUE_2_ARGS
+ENDPROC iemAImpl_crc32_u64
+%endif
 

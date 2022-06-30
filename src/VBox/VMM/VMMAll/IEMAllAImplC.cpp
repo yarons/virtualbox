@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 95458 2022-06-30 11:03:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 95460 2022-06-30 12:52:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -25,6 +25,7 @@
 #include <iprt/x86.h>
 #include <iprt/uint128.h>
 #include <iprt/uint256.h>
+#include <iprt/crc.h>
 
 RT_C_DECLS_BEGIN
 #include <softfloat.h>
@@ -8143,3 +8144,30 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_punpcklqdq_u128,(PCX86FXSTATE pFpuState, PRTUIN
 }
 
 #endif /* IEM_WITHOUT_ASSEMBLY */
+
+
+/*
+ * CRC32 (SEE 4.2).
+ */
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u8_fallback,(uint32_t *puDst, uint8_t uSrc))
+{
+    *puDst = RTCrc32CProcess(*puDst, &uSrc, sizeof(uSrc));
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u16_fallback,(uint32_t *puDst, uint16_t uSrc))
+{
+    *puDst = RTCrc32CProcess(*puDst, &uSrc, sizeof(uSrc));
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u32_fallback,(uint32_t *puDst, uint32_t uSrc))
+{
+    *puDst = RTCrc32CProcess(*puDst, &uSrc, sizeof(uSrc));
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u64_fallback,(uint32_t *puDst, uint64_t uSrc))
+{
+    *puDst = RTCrc32CProcess(*puDst, &uSrc, sizeof(uSrc));
+}
+
