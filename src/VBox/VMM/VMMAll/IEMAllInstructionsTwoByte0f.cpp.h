@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 95449 2022-06-30 08:24:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 95453 2022-06-30 09:43:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -86,6 +86,8 @@ FNIEMOP_DEF_1(iemOpCommonMmx_FullFull_To_Full, PCIEMOPMEDIAF2, pImpl)
  *
  * Proper alignment of the 128-bit operand is enforced.
  * Exceptions type 4. SSE2 cpuid checks.
+ *
+ * @sa iemOpCommonSse41_FullFull_To_Full, iemOpCommonSse2_FullFull_To_Full
  */
 FNIEMOP_DEF_1(iemOpCommonSse2_FullFull_To_Full, PCIEMOPMEDIAF2, pImpl)
 {
