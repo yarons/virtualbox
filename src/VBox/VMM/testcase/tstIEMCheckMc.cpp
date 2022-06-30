@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 95441 2022-06-29 22:40:14Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 95449 2022-06-30 08:24:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -234,6 +234,9 @@ IEMOPMEDIAF2 g_iemAImpl_pxor;
 IEMOPMEDIAF2 g_iemAImpl_pcmpeqb;
 IEMOPMEDIAF2 g_iemAImpl_pcmpeqw;
 IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
+IEMOPMEDIAF2 g_iemAImpl_pcmpgtb;
+IEMOPMEDIAF2 g_iemAImpl_pcmpgtw;
+IEMOPMEDIAF2 g_iemAImpl_pcmpgtd;
 
 #undef  IEMTARGETCPU_EFL_BEHAVIOR_SELECT
 #define IEMTARGETCPU_EFL_BEHAVIOR_SELECT(a_aArray)                  NULL
