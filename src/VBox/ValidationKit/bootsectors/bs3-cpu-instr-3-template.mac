@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 95451 2022-06-30 09:43:12Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 95456 2022-06-30 10:42:30Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -340,6 +340,8 @@ EMIT_TYPE1_ONE_INSTR pcmpgtq, vpcmpgtq, 0
 EMIT_TYPE1_INSTR pcmpeqb, vpcmpeqb, pcmpeqw, vpcmpeqw, pcmpeqd, vpcmpeqd, 1
 EMIT_TYPE1_ONE_INSTR pcmpeqq, vpcmpeqq, 0
 
+EMIT_TYPE1_INSTR paddb, vpaddb, paddw, vpaddw, paddd, vpaddd, 1
+EMIT_TYPE1_ONE_INSTR paddq, vpaddq, 1
 
 %endif ; BS3_INSTANTIATING_CMN
 
