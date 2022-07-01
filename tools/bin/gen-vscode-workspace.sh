@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-vscode-workspace.sh 95313 2022-06-20 17:18:18Z andreas.loeffler@oracle.com $
+# $Id: gen-vscode-workspace.sh 95469 2022-07-01 10:51:23Z andreas.loeffler@oracle.com $
 ## @file
 # Script for generating a Visual Studio Code (vscode) workspace.
 #
@@ -60,7 +60,7 @@ MY_VSCODE_DIR=".vscode"
 MY_VSCODE_FILE_DOT_EXT=".json"
 MY_OUT_DIR=${MY_VSCODE_DIR}
 MY_PRJ_PRF="VBox-"
-MY_WS_NAME="virtualbox.code-workspace"
+MY_WS_NAME="virtualbox.vscode-workspace"
 MY_DBG=""
 MY_WINDOWS_HOST=""
 MY_OPT_MINIMAL=""
