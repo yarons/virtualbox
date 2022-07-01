@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 95466 2022-07-01 10:27:14Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-svga-x11.cpp 95467 2022-07-01 10:35:27Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1329,10 +1329,10 @@ static bool configureOutput(int iOutputIndex, struct RANDROUTPUT *paOutputs)
     if (x11Context.pXRRAddOutputMode)
         x11Context.pXRRAddOutputMode(x11Context.pDisplay, outputId, pModeInfo->id);
 #endif
-
-    /* Destroy and forget mode created on previous guest screen resize event. */
-    if (   aPrevMode[outputId] > 0
-        && pModeInfo->id != aPrevMode[outputId])
+    /* If mode has been newly created, destroy and forget mode created on previous guest screen resize event. */
+    if (   aPrevMode[iOutputIndex] > 0
+        && pModeInfo->id != aPrevMode[iOutputIndex]
+        && fNewMode)
     {
         VBClLogInfo("removing unused mode %u\n", aPrevMode[outputId]);
 #ifdef WITH_DISTRO_XRAND_XINERAMA
