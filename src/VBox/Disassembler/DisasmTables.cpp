@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 95459 2022-06-30 12:42:30Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables.cpp 95472 2022-07-01 11:20:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -3495,10 +3495,10 @@ static const DISOPCODE g_aDisasVexMap1_66[] =
     OPVEX("vpmaddwd %Vx,%Hx,%Wx",     IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PMADDWD,   OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpsadbw %Vx,%Hx,%Wx",      IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PSADBW,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vmaskmovdqu %Vdq,%Udq",    IDX_ParseModRM,    IDX_UseModRM,                  0,                0,  OP_MASKMOVDQU,OP_PARM_Vdq,  OP_PARM_Udq,  OP_PARM_NONE, OP_PARM_NONE, DISOPTYPE_HARMLESS),
-    OPVEX("vpsubb %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PSUBB,     OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
-    OPVEX("vpsubw %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PSUBW,     OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
-    OPVEX("vpsubd %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PSUBD,     OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
-    OPVEX("vpsubq %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_PSUBQ,     OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
+    OPVEX("vpsubb %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPSUBB,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
+    OPVEX("vpsubw %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPSUBW,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
+    OPVEX("vpsubd %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPSUBD,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
+    OPVEX("vpsubq %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPSUBQ,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpaddb %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPADDB,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpaddw %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPADDW,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpaddd %Vx,%Hx,%Wx",       IDX_ParseModRM,    IDX_ParseVexDest,   IDX_UseModRM,                0,  OP_VPADDD,    OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
