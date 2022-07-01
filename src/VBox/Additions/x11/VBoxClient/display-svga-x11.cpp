@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 95145 2022-05-31 10:40:51Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-svga-x11.cpp 95466 2022-07-01 10:27:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1246,7 +1246,10 @@ static XRRModeInfo *createMode(int iXRes, int iYRes)
 
     DisplayModeR mode = f86CVTMode(iXRes, iYRes, 60 /*VRefresh */, true /*Reduced */, false  /* Interlaced */);
 
-    pModeInfo->dotClock = mode.Clock;
+    /* Convert kHz to Hz: f86CVTMode returns clock value in units of kHz,
+     * XRRCreateMode will expect it in units of Hz. */
+    pModeInfo->dotClock = mode.Clock * 1000;
+
     pModeInfo->hSyncStart = mode.HSyncStart;
     pModeInfo->hSyncEnd = mode.HSyncEnd;
     pModeInfo->hTotal = mode.HTotal;
