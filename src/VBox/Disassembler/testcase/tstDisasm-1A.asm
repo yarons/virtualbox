@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 95319 2022-06-21 09:53:39Z knut.osmundsen@oracle.com $
+; $Id: tstDisasm-1A.asm 95479 2022-07-01 21:07:44Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -232,6 +232,11 @@ BEGINPROC   TestProc32
         blsmsk eax, [ebx+edi*2]
         shlx eax, ebx, ecx
 
+        pmovmskb eax, mm2
+        pmovmskb eax, xmm3
+        vpmovmskb eax, xmm3
+        vpmovmskb eax, ymm3
+
 ENDPROC   TestProc32
 
 
@@ -433,6 +438,14 @@ BEGINPROC TestProc64
 
         shlx   eax, ebx, ecx
         shlx   r8, rax, r15
+
+        pmovmskb eax, mm2
+        pmovmskb r9, mm2
+        pmovmskb eax, xmm3
+        pmovmskb r10, xmm3
+        vpmovmskb eax, xmm3
+        vpmovmskb rax, xmm3
+        vpmovmskb r11, ymm9
 
         ret
 ENDPROC   TestProc64

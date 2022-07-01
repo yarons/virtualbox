@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 95314 2022-06-21 00:25:45Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatYasm.cpp 95479 2022-07-01 21:07:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -824,7 +824,8 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                     case 'Q': /* ModRM byte selects MMX register or memory address (ParseModRM / UseModRM). */
                     case 'R': /* ModRM byte may only refer to a general register (ParseModRM / UseModRM). */
                     case 'W': /* ModRM byte selects an XMM/SSE register or a memory address (ParseModRM / UseModRM). */
-                    case 'M': /* ModRM may only refer to memory (ParseModRM / UseModRM). */
+                    case 'U': /* ModRM byte may only refer to a XMM/SSE register (ParseModRM / UseModRM). */
+                    case 'M': /* ModRM byte may only refer to memory (ParseModRM / UseModRM). */
                     {
                         pszFmt += RT_C_IS_ALPHA(pszFmt[0]) ? RT_C_IS_ALPHA(pszFmt[1]) ? 2 : 1 : 0;
 
