@@ -6,6 +6,8 @@
 /LocalConfig.kmk
 /prebuild
 /SlickEdit
+/virtualbox.vscode-workspace
 /SVN_REVISION
 /tbox_patches
 /tinderclient.log
+.vscode
