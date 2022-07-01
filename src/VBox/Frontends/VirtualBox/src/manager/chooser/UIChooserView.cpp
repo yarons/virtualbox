@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserView.cpp 95477 2022-07-01 14:35:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -70,6 +70,23 @@ public:
 
         /* Return the model child with the passed iIndex if model really assigned: */
         return QAccessible::queryAccessibleInterface(view()->model() ? view()->model()->root()->items().at(iIndex) : 0);
+    }
+
+    /** Returns the index of passed @a pChild. */
+    virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE
+    {
+        /* Make sure view still alive: */
+        AssertPtrReturn(view(), -1);
+        /* Make sure child is valid: */
+        AssertReturn(pChild, -1);
+
+        /* Acquire item itself: */
+        UIChooserItem *pChildItem = qobject_cast<UIChooserItem*>(pChild->object());
+
+        /* Return the index of item in it's parent: */
+        return   pChildItem && pChildItem->parentItem()
+               ? pChildItem->parentItem()->items().indexOf(pChildItem)
+               : -1;;
     }
 
     /** Returns a text for the passed @a enmTextRole. */

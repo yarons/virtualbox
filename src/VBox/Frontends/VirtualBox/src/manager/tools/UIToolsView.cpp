@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.cpp 95477 2022-07-01 14:35:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -71,6 +71,18 @@ public:
 
         /* Return the child with the passed iIndex: */
         return QAccessible::queryAccessibleInterface(view()->tools()->model()->items().at(iIndex));
+    }
+
+    /** Returns the index of passed @a pChild. */
+    virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE
+    {
+        /* Make sure view still alive: */
+        AssertPtrReturn(view(), -1);
+        /* Make sure child is valid: */
+        AssertReturn(pChild, -1);
+
+        /* Return the index of passed model child: */
+        return view()->tools()->model()->items().indexOf(qobject_cast<UIToolsItem*>(pChild->object()));
     }
 
     /** Returns a text for the passed @a enmTextRole. */
