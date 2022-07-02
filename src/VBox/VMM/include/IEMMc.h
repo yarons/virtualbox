@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 95473 2022-07-01 11:20:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 95483 2022-07-02 00:02:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -158,6 +158,8 @@
             return iemRaiseUndefinedOpcode(pVCpu); \
         if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS) \
             return iemRaiseDeviceNotAvailable(pVCpu); \
+        if (pVCpu->cpum.GstCtx.XState.x87.FSW & X86_FSW_ES) \
+            return iemRaiseMathFault(pVCpu); \
     } while (0)
 #define IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO() \
     do { \
