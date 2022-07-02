@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 95430 2022-06-29 14:21:45Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 95481 2022-07-02 00:01:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2763,6 +2763,17 @@ BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromLnkPtr,(PBS3REGCTX pRegCtx, FPFNBS
  * @sa      Bs3RegCtxSetRipCsFromLnkPtr, Bs3RegCtxSetRipCsFromFlat
  */
 BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromCurPtr,(PBS3REGCTX pRegCtx, FPFNBS3FAR pfnCode));
+
+/**
+ * Sets a GPR by number.
+ *
+ * @return  true if @a iGpr is valid, false if not.
+ * @param   pRegCtx     The register context.
+ * @param   iGpr        The GPR number.
+ * @param   uValue      The new value.
+ * @param   cbValue     The size of the value: 1, 2, 4 or 8.
+ */
+BS3_CMN_PROTO_STUB(bool, Bs3RegCtxSetGpr,(PBS3REGCTX pRegCtx, uint8_t iGpr, uint64_t uValue, uint8_t cb));
 
 
 /**

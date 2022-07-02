@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95399 2022-06-27 20:21:13Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95481 2022-07-02 00:01:18Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -111,6 +111,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegCtxSetRipCsFromCurPtr.c \
        bs3-cmn-RegCtxSetRipCsFromFlat.c \
        bs3-cmn-RegCtxSetRipCsFromLnkPtr.c \
+       bs3-cmn-RegCtxSetGpr.c \
        bs3-cmn-RegGetCr0.asm \
        bs3-cmn-RegGetCr2.asm \
        bs3-cmn-RegGetCr3.asm \
