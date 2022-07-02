@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 95462 2022-06-30 12:57:56Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 95482 2022-07-02 00:02:11Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95462 $"
+__version__ = "$Revision: 95482 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -247,6 +247,7 @@ g_kdOpTypes = {
     'Uss_WO':       ( 'IDX_UseModRM',       'rm',     '%Uss', 'Uss',     'REG'    ),
     'Usd':          ( 'IDX_UseModRM',       'rm',     '%Usd', 'Usd',     'REG'    ),
     'Usd_WO':       ( 'IDX_UseModRM',       'rm',     '%Usd', 'Usd',     'REG'    ),
+    'Ux':           ( 'IDX_UseModRM',       'rm',     '%Ux',  'Ux',      'REG'    ),
     'Nq':           ( 'IDX_UseModRM',       'rm',     '%Qq',  'Nq',      'REG'    ),
 
     # ModR/M.rm - memory only.
@@ -3547,8 +3548,9 @@ class SimpleParser(object):
                 self.parseFunctionTable(sLine);
 
         self.doneInstructions();
-        self.debug('%3s stubs out of %3s instructions in %s'
-                   % (self.cTotalStubs, self.cTotalInstr, os.path.basename(self.sSrcFile),));
+        self.debug('%3s%% / %3s stubs out of %4s instructions in %s'
+                   % (self.cTotalStubs * 100 // self.cTotalInstr, self.cTotalStubs, self.cTotalInstr,
+                      os.path.basename(self.sSrcFile),));
         return self.printErrors();
 
 
@@ -3644,6 +3646,13 @@ def __parseAll():
         cErrors += __parseFileByName(os.path.join(sSrcDir, sName), sDefaultMap);
     cErrors += __doTestCopying();
     cErrors += __applyOnlyTest();
+
+    # Total stub stats:
+    cTotalStubs = 0;
+    for oInstr in g_aoAllInstructions:
+        cTotalStubs += oInstr.fStub;
+    print('debug: %3s%% / %3s stubs out of %4s instructions in total'
+          % (cTotalStubs * 100 // len(g_aoAllInstructions), cTotalStubs, len(g_aoAllInstructions),));
 
     if cErrors != 0:
         #raise Exception('%d parse errors' % (cErrors,));
