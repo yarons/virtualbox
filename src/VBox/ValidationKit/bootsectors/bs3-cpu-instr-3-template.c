@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3-template.c 95485 2022-07-03 13:58:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-3-template.c 95488 2022-07-03 14:18:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -916,7 +916,7 @@ static uint8_t bs3CpuInstr3_WorkerTestType1(uint8_t bMode, BS3CPUINSTR3_TEST1_T 
                      */
                     cErrors = Bs3TestSubErrorCount();
 
-                    if (bXcptExpect == X86_XCPT_DB)
+                    if (fMmxInstr && bXcptExpect == X86_XCPT_DB)
                     {
                         uSavedFtw = Bs3ExtCtxGetAbridgedFtw(pExtCtx);
                         Bs3ExtCtxSetAbridgedFtw(pExtCtx, 0xff); /* Observed on 10980xe after pxor mm1, mm2. */
