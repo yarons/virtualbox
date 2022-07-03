@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -161,11 +161,21 @@ int UIMediumSelector::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceT
 void UIMediumSelector::retranslateUi()
 {
     if (m_pCancelButton)
+    {
         m_pCancelButton->setText(tr("&Cancel"));
+        m_pCancelButton->setToolTip(tr("Cancel"));
+    }
     if (m_pLeaveEmptyButton)
+    {
         m_pLeaveEmptyButton->setText(tr("Leave &Empty"));
+        m_pLeaveEmptyButton->setToolTip(tr("Leave the drive empty"));
+    }
+
     if (m_pChooseButton)
+    {
         m_pChooseButton->setText(tr("C&hoose"));
+        m_pChooseButton->setToolTip(tr("Attached the selected medium to the drive"));
+    }
 
     if (m_pTreeWidget)
     {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 94182 2022-03-11 17:25:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -505,6 +505,10 @@ void UIWizardExportAppPageExpert::retranslateUi()
     m_exportModeButtons.value(CloudExportMode_DoNotAsk)->setText(UIWizardExportApp::tr("Do not ask me about it, leave custom &image for future usage"));
     m_exportModeButtons.value(CloudExportMode_AskThenExport)->setText(UIWizardExportApp::tr("Ask me about it &before exporting disk as custom image"));
     m_exportModeButtons.value(CloudExportMode_ExportThenAsk)->setText(UIWizardExportApp::tr("Ask me about it &after exporting disk as custom image"));
+
+    /* Translate file selector's tooltip: */
+    if (m_pFileSelector)
+        m_pFileSelector->setToolTip(UIWizardExportApp::tr("Holds the path of the file selected for export."));
 
     /* Adjust label widths: */
     QList<QWidget*> labels;

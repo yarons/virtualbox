@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -98,7 +98,13 @@ void UIBootFailureDialog::retranslateUi()
     if (m_pBootImageLabel)
         m_pBootImageLabel->setText(tr("DVD:"));
     if (m_pSuppressDialogCheckBox)
+    {
         m_pSuppressDialogCheckBox->setText(tr("Do not show this dialog again"));
+        m_pSuppressDialogCheckBox->setToolTip(tr("When checked this dialog will not be shown again."));
+    }
+    if (m_pBootImageSelector)
+        m_pBootImageSelector->setToolTip(tr("Holds the path of the ISO to be attached to machine as boot medium."));
+
 }
 
 void UIBootFailureDialog::configure()

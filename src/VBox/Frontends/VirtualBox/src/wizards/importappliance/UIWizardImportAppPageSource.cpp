@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 94182 2022-03-11 17:25:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -632,6 +632,9 @@ void UIWizardImportAppPageSource::retranslateUi()
                                             "supports importing appliances saved in the Open Virtualization Format (OVF).  "
                                             "To continue, select the file to import below.</p>"));
     }
+
+    if (m_pFileSelector)
+        m_pFileSelector->setToolTip(UIWizardImportApp::tr("Holds the path of the file selected for import."));
 
     /* Translate source label: */
     if (m_pSourceLabel)

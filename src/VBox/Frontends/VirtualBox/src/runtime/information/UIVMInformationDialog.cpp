@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 93731 2022-02-14 15:11:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -104,7 +104,7 @@ void UIVMInformationDialog::retranslateUi()
         m_pButtonBox->button(QDialogButtonBox::Help)->setStatusTip(tr("Show dialog help"));
         m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
         m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
-        m_pButtonBox->button(QDialogButtonBox::Close)->setToolTip(tr("Reset Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Close)->shortcut().toString()));
+        m_pButtonBox->button(QDialogButtonBox::Close)->setToolTip(tr("Close this dialog (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Close)->shortcut().toString()));
         m_pButtonBox->button(QDialogButtonBox::Help)->setToolTip(tr("Show Help (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Help)->shortcut().toString()));
     }
 }

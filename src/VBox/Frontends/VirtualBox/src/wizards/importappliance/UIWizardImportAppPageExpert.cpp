@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 94435 2022-04-01 11:13:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 95490 2022-07-03 15:33:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -402,6 +402,9 @@ void UIWizardImportAppPageExpert::retranslateUi()
         m_pCheckboxImportHDsAsVDI->setText(tr("&Import hard drives as VDI"));
         m_pCheckboxImportHDsAsVDI->setToolTip(tr("Import all the hard drives that belong to this appliance in VDI format."));
     }
+    /* Translate file selector's tooltip: */
+    if (m_pFileSelector)
+        m_pFileSelector->setToolTip(UIWizardImportApp::tr("Holds the path of the file selected for import."));
 
     /* Translate separate stuff: */
     retranslateMACImportPolicyCombo(m_pComboMACImportPolicy);
