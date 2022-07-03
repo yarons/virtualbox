@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreatorOptionsPanel.cpp 95484 2022-07-03 13:08:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class implementation.
  */
@@ -51,6 +51,9 @@ void UIVisoCreatorOptionsPanel::retranslateUi()
 {
     if (m_pShowHiddenObjectsLabel)
         m_pShowHiddenObjectsLabel->setText(QApplication::translate("UIVisoCreatorWidget", "Show Hidden Objects"));
+    if (m_pShowHiddenObjectsCheckBox)
+        m_pShowHiddenObjectsCheckBox->setToolTip(QApplication::translate("UIVisoCreatorWidget", "When checked, "
+                                                                         "multiple hidden objects are shown in the file browser"));
 }
 
 void UIVisoCreatorOptionsPanel::sltHandlShowHiddenObjectsChange(int iState)

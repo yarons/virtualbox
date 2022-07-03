@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoConfigurationPanel.cpp 95484 2022-07-03 13:08:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class implementation.
  */
@@ -116,6 +116,10 @@ void UIVisoConfigurationPanel::retranslateUi()
         m_pCustomOptionsLabel->setText(QApplication::translate("UIVisoCreatorWidget", "Custom VISO options:"));
     if (m_pDeleteButton)
         m_pDeleteButton->setToolTip(QApplication::translate("UIVisoCreatorWidget", "Remove current option."));
+    if (m_pVisoNameLineEdit)
+        m_pVisoNameLineEdit->setToolTip(QApplication::translate("UIVisoCreatorWidget", "Holds the name of the VISO medium."));
+    if (m_pCustomOptionsComboBox)
+        m_pCustomOptionsComboBox->setToolTip(QApplication::translate("UIVisoCreatorWidget", "Holds options for VISO creation."));
 }
 
 void UIVisoConfigurationPanel::addCustomVisoOption()
