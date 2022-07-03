@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-ExtCtxSetMm.c 95399 2022-06-27 20:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-ExtCtxSetMm.c 95485 2022-07-03 13:58:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3ExtCtxSetMm
  */
@@ -32,7 +32,7 @@
 
 
 #undef Bs3ExtCtxSetMm
-BS3_CMN_DEF(bool, Bs3ExtCtxSetMm,(PBS3EXTCTX pExtCtx, uint8_t iReg, uint64_t uValue))
+BS3_CMN_DEF(bool, Bs3ExtCtxSetMm,(PBS3EXTCTX pExtCtx, uint8_t iReg, uint64_t uValue, BS3EXTCTXTOPMM enmTop))
 {
     AssertCompileMembersAtSameOffset(BS3EXTCTX, Ctx.x87.aRegs, BS3EXTCTX, Ctx.x.x87.aRegs);
     if (iReg < RT_ELEMENTS(pExtCtx->Ctx.x87.aRegs))
@@ -40,14 +40,15 @@ BS3_CMN_DEF(bool, Bs3ExtCtxSetMm,(PBS3EXTCTX pExtCtx, uint8_t iReg, uint64_t uVa
         {
             case BS3EXTCTXMETHOD_FXSAVE:
             case BS3EXTCTXMETHOD_XSAVE:
-                /* pxor mm1, mm2 on 10980XE sets mm1's sign and exponent to all 1's. */
-                pExtCtx->Ctx.x87.aRegs[iReg].au16[4]    = UINT16_MAX;
-                pExtCtx->Ctx.x87.aRegs[iReg].mmx        = uValue;
+                pExtCtx->Ctx.x87.aRegs[iReg].mmx = uValue;
+                if (enmTop == BS3EXTCTXTOPMM_SET || enmTop == BS3EXTCTXTOPMM_ZERO)
+                    pExtCtx->Ctx.x87.aRegs[iReg].au16[4] = enmTop == BS3EXTCTXTOPMM_SET ? UINT16_MAX : 0;
                 return true;
 
             case BS3EXTCTXMETHOD_ANCIENT:
-                pExtCtx->Ctx.Ancient.regs[iReg].au16[4] = UINT16_MAX; /* see above */
-                pExtCtx->Ctx.Ancient.regs[iReg].mmx     = uValue;
+                pExtCtx->Ctx.Ancient.regs[iReg].mmx = uValue;
+                if (enmTop == BS3EXTCTXTOPMM_SET || enmTop == BS3EXTCTXTOPMM_ZERO)
+                    pExtCtx->Ctx.Ancient.regs[iReg].au16[4] = enmTop == BS3EXTCTXTOPMM_SET ? UINT16_MAX : 0;
                 return true;
         }
     return false;
