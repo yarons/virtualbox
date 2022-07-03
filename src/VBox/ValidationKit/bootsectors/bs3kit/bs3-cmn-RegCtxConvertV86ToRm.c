@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxConvertV86ToRm.c 95491 2022-07-03 23:37:29Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-RegCtxConvertV86ToRm.c 95493 2022-07-03 23:49:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3RegCtxConvertV86ToRm
  */
@@ -42,5 +42,4 @@ BS3_CMN_DEF(void, Bs3RegCtxConvertV86ToRm,(PBS3REGCTX pRegCtx))
     pRegCtx->bCpl        = 0;
     pRegCtx->bMode       = BS3_MODE_RM;
 }
-
 
