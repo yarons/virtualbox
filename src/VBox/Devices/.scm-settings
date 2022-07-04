@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93944 2022-02-24 21:15:14Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 95506 2022-07-04 19:28:56Z alexander.eichner@oracle.com $
 ## @file
 # Source code massager settings for the PDM Devices and Drivers.
 #
@@ -26,3 +26,6 @@
 
 # This defines it's own PAGE_XXX macros.
 /PC/ipxe/src/include/ipxe/virtio-ring.h: --no-page-restrictions
+
+# Temporary until ipxe-new is fully integrated
+--filter-out-dirs /PC/ipxe-new/.
