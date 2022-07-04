@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 95501 2022-07-04 16:20:43Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 95502 2022-07-04 16:26:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3253,8 +3253,9 @@ int GuestSession::i_waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionW
 
         unregisterWaitEvent(pEvent);
 
-        /* Wait result not None, e.g. some result acquired? Bail out. */
-        if (waitResult != GuestSessionWaitResult_None)
+        /* Wait result not None, e.g. some result acquired or a wait error occurred? Bail out. */
+        if (   waitResult != GuestSessionWaitResult_None
+            || RT_FAILURE(vrc))
             break;
 
         tsNow = RTTimeMilliTS();
