@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 95502 2022-07-04 16:26:47Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 95503 2022-07-04 16:28:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3183,7 +3183,7 @@ int GuestSession::i_waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionW
         return RT_SUCCESS(mData.mRC) ? VINF_SUCCESS : VERR_GSTCTL_GUEST_ERROR;
     }
 
-    int vrc;
+    int vrc = VINF_SUCCESS;
 
     uint64_t const tsStart = RTTimeMilliTS();
     uint64_t       tsNow   = tsStart;
