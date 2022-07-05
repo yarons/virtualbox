@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 95461 2022-06-30 12:56:31Z michal.necasek@oracle.com $ */
+/* $Id: DevVGA.h 95513 2022-07-05 13:20:52Z michal.necasek@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -512,7 +512,8 @@ typedef struct VGAState
     STAMPROFILE                 StatR3MemoryRead;
     STAMPROFILE                 StatRZMemoryWrite;
     STAMPROFILE                 StatR3MemoryWrite;
-    STAMCOUNTER                 StatMapPage;            /**< Counts IOMMMIOMapMMIO2Page calls.  */
+    STAMCOUNTER                 StatMapPage;            /**< Counts IOMMmioMapMmio2Page calls.  */
+    STAMCOUNTER                 StatMapReset;           /**< Counts IOMMmioResetRegion calls.  */
     STAMCOUNTER                 StatUpdateDisp;         /**< Counts vgaPortUpdateDisplay calls.  */
 #ifdef VBOX_WITH_HGSMI
     STAMCOUNTER                 StatHgsmiMdaCgaAccesses;
