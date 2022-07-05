@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 95477 2022-07-01 14:35:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.cpp 95520 2022-07-05 19:20:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -111,7 +111,7 @@ public:
 
         /* Return view tool-tip: */
         Q_UNUSED(enmTextRole);
-        return view()->toolTip();
+        return view()->whatsThis();
     }
 
 private:
@@ -150,9 +150,7 @@ void UIDetailsView::sltMinimumWidthHintChanged(int iHint)
 void UIDetailsView::retranslateUi()
 {
     /* Translate this: */
-#if 0 /* we will leave that for accessibility needs. */
-    setToolTip(tr("Contains a list of Virtual Machine details"));
-#endif  /* to be integrated to accessibility interface. */
+    setWhatsThis(tr("Contains a list of Virtual Machine details"));
 }
 
 void UIDetailsView::resizeEvent(QResizeEvent *pEvent)

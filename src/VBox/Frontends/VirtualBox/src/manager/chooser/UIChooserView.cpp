@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 95477 2022-07-01 14:35:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 95520 2022-07-05 19:20:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -97,7 +97,7 @@ public:
 
         /* Return view tool-tip: */
         Q_UNUSED(enmTextRole);
-        return view()->toolTip();
+        return view()->whatsThis();
     }
 
 private:
@@ -238,9 +238,7 @@ void UIChooserView::sltHandleSearchWidgetVisibilityToggle(bool fVisible)
 void UIChooserView::retranslateUi()
 {
     /* Translate this: */
-#if 0 /* we will leave that for accessibility needs. */
-    setToolTip(tr("Contains a tree of Virtual Machines and their groups"));
-#endif  /* to be integrated to accessibility interface. */
+    setWhatsThis(tr("Contains a tree of Virtual Machines and their groups"));
 }
 
 void UIChooserView::prepare()
