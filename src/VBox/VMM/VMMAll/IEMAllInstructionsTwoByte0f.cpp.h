@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 95522 2022-07-05 21:36:07Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 95524 2022-07-05 23:53:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -1235,7 +1235,7 @@ FNIEMOP_DEF(iemOp_3Dnow)
  */
 FNIEMOP_DEF(iemOp_movups_Vps_Wps)
 {
-    IEMOP_MNEMONIC2(RM, MOVUPS, movups, Vps_WO, Wps, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
+    IEMOP_MNEMONIC2(RM, MOVUPS, movups, Vps_WO, Wps, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OP_SIZES);
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {
@@ -1287,7 +1287,7 @@ FNIEMOP_DEF(iemOp_movups_Vps_Wps)
  */
 FNIEMOP_DEF(iemOp_movupd_Vpd_Wpd)
 {
-    IEMOP_MNEMONIC2(RM, MOVUPD, movupd, Vpd_WO, Wpd, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
+    IEMOP_MNEMONIC2(RM, MOVUPD, movupd, Vpd_WO, Wpd, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OP_SIZES);
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {
