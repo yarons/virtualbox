@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 95505 2022-07-04 19:06:19Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 95518 2022-07-05 16:02:21Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2698,6 +2698,11 @@ int VGSvcGstCtrlSessionThreadDestroy(PVBOXSERVICECTRLSESSIONTHREAD pThread, uint
     {
         VbglR3GuestCtrlSessionStartupInfoFree(pThread->pStartupInfo);
         pThread->pStartupInfo = NULL;
+
+        RTPipeClose(pThread->hKeyPipe);
+        pThread->hKeyPipe = NIL_RTPIPE;
+
+        RTCritSectDelete(&pThread->CritSect);
 
         /* Remove session from list and destroy object. */
         RTListNodeRemove(&pThread->Node);
