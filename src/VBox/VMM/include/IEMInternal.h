@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 95514 2022-07-05 14:23:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 95515 2022-07-05 14:25:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1984,6 +1984,21 @@ typedef struct IEMOPSHIFTDBLSIZES
 /** Pointer to a double precision shift function table. */
 typedef IEMOPSHIFTDBLSIZES const *PCIEMOPSHIFTDBLSIZES;
 
+
+/**
+ * Function table for media instruction taking two full sized media registers,
+ * optionally the 2nd being a memory reference (only modifying the first op.)
+ *
+ * @deprecated This won't be needed as MMX and SSE decoding needs to be handled
+ *             separate from one another.
+ */
+typedef struct IEMOPMEDIAF2
+{
+    PFNIEMAIMPLMEDIAF2U64  pfnU64;
+    PFNIEMAIMPLMEDIAF2U128 pfnU128;
+} IEMOPMEDIAF2;
+/** Pointer to a media operation function table for full sized ops. */
+typedef IEMOPMEDIAF2 const *PCIEMOPMEDIAF2;
 
 /**
  * Function table for media instruction taking two full sized media source
