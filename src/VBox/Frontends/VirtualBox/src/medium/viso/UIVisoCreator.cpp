@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 93987 2022-02-28 14:54:47Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 95529 2022-07-06 14:32:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -671,6 +671,7 @@ void UIVisoCreatorDialog::prepareWidgets()
     m_pButtonBox = new QIDialogButtonBox;
     if (m_pButtonBox)
     {
+        m_pButtonBox->setDoNotPickDefaultButton(true);
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
         m_pButtonBox->button(QDialogButtonBox::Cancel)->setShortcut(QKeySequence(Qt::Key_Escape));
         pMainLayout->addWidget(m_pButtonBox);
