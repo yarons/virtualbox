@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-generated-1.h 95534 2022-07-06 18:52:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -163,6 +163,7 @@ typedef enum BS3CG1ENC
     BS3CG1ENC_MODRM_PdZx_WO_Ed_WZ,
     BS3CG1ENC_MODRM_Pq_WO_Eq_WNZ,
     BS3CG1ENC_MODRM_VdZx_WO_Ed_WZ,
+    BS3CG1ENC_MODRM_Vq_Mq,
     BS3CG1ENC_MODRM_Vq_WO_UqHi,
     BS3CG1ENC_MODRM_Vq_WO_Mq,
     BS3CG1ENC_MODRM_VqHi_WO_Uq,
