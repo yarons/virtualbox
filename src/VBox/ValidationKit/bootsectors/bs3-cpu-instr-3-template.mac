@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 95528 2022-07-06 14:13:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 95530 2022-07-06 16:03:35Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -996,6 +996,24 @@ EMIT_INSTR_PLUS_ICEBP movss,  FSxBX, XMM11
 EMIT_INSTR_PLUS_ICEBP vmovss, XMM9, XMM10
 EMIT_INSTR_PLUS_ICEBP vmovss, XMM10, FSxBX
 EMIT_INSTR_PLUS_ICEBP vmovss, FSxBX, XMM9
+ %endif
+
+;
+; [V]MOVSD - not testing the 2nd register variant.
+;
+EMIT_INSTR_PLUS_ICEBP movsd,  XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP movsd,  XMM1, FSxBX
+EMIT_INSTR_PLUS_ICEBP movsd,  FSxBX, XMM1
+EMIT_INSTR_PLUS_ICEBP vmovsd, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP vmovsd, XMM1, FSxBX
+EMIT_INSTR_PLUS_ICEBP vmovsd, FSxBX, XMM1
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP movsd,  XMM11, XMM8
+EMIT_INSTR_PLUS_ICEBP movsd,  XMM8, FSxBX
+EMIT_INSTR_PLUS_ICEBP movsd,  FSxBX, XMM11
+EMIT_INSTR_PLUS_ICEBP vmovsd, XMM9, XMM10
+EMIT_INSTR_PLUS_ICEBP vmovsd, XMM10, FSxBX
+EMIT_INSTR_PLUS_ICEBP vmovsd, FSxBX, XMM9
  %endif
 
 %endif ; BS3_INSTANTIATING_CMN
