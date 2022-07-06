@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 95522 2022-07-05 21:36:07Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 95537 2022-07-06 19:43:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -6952,9 +6952,8 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_fyl2xp1_r80_by_r80_amd,(PCX86FXSTATE pFpuState,
 *   MMX, SSE & AVX                                                                                                               *
 *********************************************************************************************************************************/
 
-IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, PCRTUINT128U puSrc))
+IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PRTUINT128U puDst, PCRTUINT128U puSrc))
 {
-    RT_NOREF(pFpuState);
     puDst->au32[0] = puSrc->au32[0];
     puDst->au32[1] = puSrc->au32[0];
     puDst->au32[2] = puSrc->au32[2];
