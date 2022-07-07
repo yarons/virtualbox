@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 93470 2022-01-27 23:51:28Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCCommands.cpp 95559 2022-07-07 23:40:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -669,7 +669,7 @@ static void dbgcCmdHelpCommands(PDBGC pDbgc, PDBGCCMDHLP pCmdHlp, uint32_t *pcHi
     const char *pszDesc = "\nExternal Commands:\n";
     for (PDBGCEXTCMDS pExtCmd = g_pExtCmdsHead; pExtCmd; pExtCmd = pExtCmd->pNext)
     {
-        dbgcCmdHelpCommandsWorker(pDbgc, pCmdHlp, pExtCmd->paCmds, pExtCmd->cCmds, false, pszDesc);
+        dbgcCmdHelpCommandsWorker(pDbgc, pCmdHlp, pExtCmd->paCmds, pExtCmd->cCmds, true, pszDesc);
         pszDesc = NULL;
     }
     DBGCEXTLISTS_UNLOCK_RD();
