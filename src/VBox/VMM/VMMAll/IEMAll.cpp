@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 95558 2022-07-07 22:18:40Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 95560 2022-07-07 23:43:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3828,6 +3828,13 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
         Log3(("%s%s\n", szRegs, szInstr));
     }
 #endif /* LOG_ENABLED */
+
+    /*
+     * Stats.
+     */
+    STAM_REL_COUNTER_INC(&pVCpu->iem.s.aStatXcpts[u8Vector]);
+    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector),
+                     pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, 0);
 
     /*
      * #PF's implies a INVLPG for the CR2 value (see 4.10.1.1 in Intel SDM Vol 3)

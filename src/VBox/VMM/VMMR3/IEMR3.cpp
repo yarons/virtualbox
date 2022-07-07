@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 95557 2022-07-07 22:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 95560 2022-07-07 23:43:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -129,6 +129,13 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Data TLB revision",                        "/IEM/CPU%u/DataTlb-Revision", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.DataTlb.uTlbPhysRev, STAMTYPE_X64,       STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Data TLB physical revision",               "/IEM/CPU%u/DataTlb-PhysRev", idCpu);
+
+        for (uint32_t i = 0; i < RT_MIN(0x20, RT_ELEMENTS(pVCpu->iem.s.aStatXcpts)); i++)
+            STAMR3RegisterF(pVM, &pVCpu->iem.s.aStatXcpts[i], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
+                            "", "/IEM/CPU%u/xcpts/00-1f/%02x", idCpu, i);
+        for (uint32_t i = 0x20; i < RT_ELEMENTS(pVCpu->iem.s.aStatXcpts); i++)
+            STAMR3RegisterF(pVM, &pVCpu->iem.s.aStatXcpts[i], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
+                            "", "/IEM/CPU%u/xcpts/20-ff/%02x", idCpu, i);
 
 #if defined(VBOX_WITH_STATISTICS) && !defined(DOXYGEN_RUNNING)
         /* Instruction statistics: */
