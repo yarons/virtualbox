@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 95560 2022-07-07 23:43:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 95561 2022-07-07 23:56:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -717,8 +717,10 @@ typedef struct IEMCPU
      * @remarks Must be 64-byte aligned. */
     IEMTLB                  CodeTlb;
 
-    /** Exception and interrupt statistics. */
-    STAMCOUNTER             aStatXcpts[256];
+    /** Exception statistics. */
+    STAMCOUNTER             aStatXcpts[32];
+    /** Interrupt statistics. */
+    uint32_t                aStatInts[256];
 
 #if defined(VBOX_WITH_STATISTICS) && !defined(IN_TSTVMSTRUCT) && !defined(DOXYGEN_RUNNING)
     /** Instruction statistics for ring-0/raw-mode. */

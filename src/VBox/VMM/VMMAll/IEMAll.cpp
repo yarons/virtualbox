@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 95560 2022-07-07 23:43:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 95561 2022-07-07 23:56:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3832,9 +3832,14 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
     /*
      * Stats.
      */
-    STAM_REL_COUNTER_INC(&pVCpu->iem.s.aStatXcpts[u8Vector]);
-    EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector),
-                     pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, 0);
+    if (!(fFlags & IEM_XCPT_FLAGS_T_CPU_XCPT))
+        STAM_REL_STATS({ pVCpu->iem.s.aStatInts[u8Vector] += 1; });
+    else if (u8Vector <= X86_XCPT_LAST)
+    {
+        STAM_REL_COUNTER_INC(&pVCpu->iem.s.aStatXcpts[u8Vector]);
+        EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector),
+                         pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, SUPReadTSC());
+    }
 
     /*
      * #PF's implies a INVLPG for the CR2 value (see 4.10.1.1 in Intel SDM Vol 3)
