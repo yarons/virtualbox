@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerOptionsPanel.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerOptionsPanel.cpp 95555 2022-07-07 14:50:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -112,6 +112,8 @@ void UIVMLogViewerOptionsPanel::prepareWidgets()
     if (m_pFontSizeLabel)
     {
         mainLayout()->addWidget(m_pFontSizeLabel, 0, Qt::AlignLeft);
+        if (m_pFontSizeSpinBox)
+            m_pFontSizeLabel->setBuddy(m_pFontSizeSpinBox);
     }
 
     /* Create combo/button layout: */
