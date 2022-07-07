@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 95450 2022-06-30 08:58:34Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 95556 2022-07-07 18:48:44Z jack.doherty@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4882,6 +4882,10 @@ HRESULT Machine::mountMedium(const com::Utf8Str &aName,
     ComObjPtr<Medium> pMedium = static_cast<Medium*>(iM);
     if (aMedium && pMedium.isNull())
         return setError(E_INVALIDARG, tr("The given medium pointer is invalid"));
+
+    /* Check if potential medium is already mounted */
+    if (pMedium == oldmedium)
+        return S_OK;
 
     AutoCaller mediumCaller(pMedium);
     if (FAILED(mediumCaller.rc())) return mediumCaller.rc();
