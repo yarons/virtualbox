@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 95552 2022-07-07 13:29:49Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 95553 2022-07-07 14:04:45Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -959,6 +959,19 @@ EMIT_INSTR_PLUS_ICEBP movntdqa,  XMM10, FSxBX
 EMIT_INSTR_PLUS_ICEBP vmovntdqa, XMM11, FSxBX
 EMIT_INSTR_PLUS_ICEBP vmovntdqa, YMM12, FSxBX
  %endif
+
+;
+; [V]MOVNTDQ
+;
+EMIT_INSTR_PLUS_ICEBP movntdq,  FSxBX, XMM1
+EMIT_INSTR_PLUS_ICEBP vmovntdq, FSxBX, XMM1
+EMIT_INSTR_PLUS_ICEBP vmovntdq, FSxBX, YMM1
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP movntdq,  FSxBX, XMM10
+EMIT_INSTR_PLUS_ICEBP vmovntdq, FSxBX, XMM10
+EMIT_INSTR_PLUS_ICEBP vmovntdq, FSxBX, YMM10
+ %endif
+
 
 ;
 ; [V]MOVNTPS
