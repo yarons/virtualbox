@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 93922 2022-02-24 15:14:31Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMSavedState.cpp 95571 2022-07-08 15:01:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -466,7 +466,12 @@ static int pgmR3SaveRomVirginPages(PVM pVM, PSSMHANDLE pSSM, bool fLiveSave)
                 &&  !PGM_PAGE_IS_BALLOONED(pPage))
             {
                 void const *pvPage;
-                rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvPage);
+#ifdef VBOX_WITH_PGM_NEM_MODE
+                if (!PGMROMPROT_IS_ROM(enmProt))
+                    pvPage = &pRom->pbR3Alternate[iPage << GUEST_PAGE_SHIFT];
+                else
+#endif
+                    rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvPage);
                 if (RT_SUCCESS(rc))
                     memcpy(abPage, pvPage, GUEST_PAGE_SIZE);
             }
@@ -552,7 +557,12 @@ static int pgmR3SaveShadowedRomPages(PVM pVM, PSSMHANDLE pSSM, bool fLiveSave, b
                     if (!fZero)
                     {
                         void const *pvPage;
-                        rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvPage);
+#ifdef VBOX_WITH_PGM_NEM_MODE
+                        if (PGMROMPROT_IS_ROM(enmProt))
+                            pvPage = &pRom->pbR3Alternate[iPage << GUEST_PAGE_SHIFT];
+                        else
+#endif
+                            rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvPage);
                         if (RT_SUCCESS(rc))
                             memcpy(abPage, pvPage, GUEST_PAGE_SIZE);
                     }
@@ -2881,6 +2891,9 @@ static int pgmR3LoadMemory(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t
 
                     default: AssertLogRelFailedReturn(VERR_IPE_NOT_REACHED_DEFAULT_CASE); /* shut up gcc */
                 }
+#ifdef VBOX_WITH_PGM_NEM_MODE
+                bool const fAltPage = pRealPage != NULL;
+#endif
                 if (!pRealPage)
                 {
                     rc = pgmPhysGetPageWithHintEx(pVM, GCPhys, &pRealPage, &pRamHint);
@@ -2901,11 +2914,16 @@ static int pgmR3LoadMemory(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t
                         RT_FALL_THRU();
                     case PGM_STATE_REC_ROM_VIRGIN:
                     case PGM_STATE_REC_ROM_SHW_RAW:
-                    {
-                        rc = pgmPhysPageMakeWritableAndMap(pVM, pRealPage, GCPhys, &pvDstPage);
-                        AssertLogRelMsgRCReturn(rc, ("GCPhys=%RGp rc=%Rrc\n", GCPhys, rc), rc);
+#ifdef VBOX_WITH_PGM_NEM_MODE
+                        if (fAltPage)
+                            pvDstPage = &pRom->pbR3Alternate[iPage << GUEST_PAGE_SHIFT];
+                        else
+#endif
+                        {
+                            rc = pgmPhysPageMakeWritableAndMap(pVM, pRealPage, GCPhys, &pvDstPage);
+                            AssertLogRelMsgRCReturn(rc, ("GCPhys=%RGp rc=%Rrc\n", GCPhys, rc), rc);
+                        }
                         break;
-                    }
                 }
 
                 /*
