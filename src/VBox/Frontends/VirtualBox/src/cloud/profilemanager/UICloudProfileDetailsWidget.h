@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileDetailsWidget.h 95569 2022-07-08 08:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -34,9 +34,9 @@
 class QAbstractButton;
 class QLabel;
 class QLineEdit;
-class QTableWidget;
 class QTableWidgetItem;
 class QIDialogButtonBox;
+class QITableWidget;
 
 
 /** Cloud Provider data structure. */
@@ -212,9 +212,9 @@ private:
         QLineEdit *m_pEditorName;
 
         /** Holds the table-widget label instance. */
-        QLabel       *m_pLabelTableWidget;
+        QLabel        *m_pLabelTableWidget;
         /** Holds the table-widget instance. */
-        QTableWidget *m_pTableWidget;
+        QITableWidget *m_pTableWidget;
 
         /** Holds the button-box instance. */
         QIDialogButtonBox *m_pButtonBox;
