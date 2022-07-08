@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 95562 2022-07-07 23:58:02Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 95563 2022-07-08 00:00:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -111,8 +111,12 @@
 #include <VBox/param.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <VBox/sup.h>
 #include <iprt/asm-math.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <iprt/asm-arm.h>
+#endif
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/x86.h>
@@ -3839,7 +3843,7 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
     {
         STAM_REL_COUNTER_INC(&pVCpu->iem.s.aStatXcpts[u8Vector]);
         EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FT(EMEXIT_F_KIND_XCPT, u8Vector),
-                         pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, SUPReadTSC());
+                         pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base, ASMReadTSC());
     }
 
     /*
