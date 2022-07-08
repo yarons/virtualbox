@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95363 2022-06-24 14:01:08Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 95567 2022-07-08 08:31:45Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -817,6 +817,7 @@ UICommon_QT_MOCHDRS = \
 	src/extensions/QIStatusBarIndicator.h \
 	src/extensions/QIStyledItemDelegate.h \
 	src/extensions/QITableView.h \
+	src/extensions/QITableWidget.h \
 	src/extensions/QITabWidget.h \
 	src/extensions/QIToolBar.h \
 	src/extensions/QIToolButton.h \
@@ -1378,6 +1379,7 @@ UICommon_SOURCES = \
 	src/extensions/QIStatusBarIndicator.cpp \
 	src/extensions/QIStyledItemDelegate.cpp \
 	src/extensions/QITableView.cpp \
+	src/extensions/QITableWidget.cpp \
 	src/extensions/QITabWidget.cpp \
 	src/extensions/QIToolBar.cpp \
 	src/extensions/QIToolButton.cpp \
