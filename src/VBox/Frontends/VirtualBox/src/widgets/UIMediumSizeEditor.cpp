@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 93996 2022-02-28 22:04:49Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumSizeEditor.cpp 95565 2022-07-08 08:15:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -76,6 +76,8 @@ void UIMediumSizeEditor::retranslateUi()
     /* Translate fields: */
     m_pSlider->setToolTip(tr("Holds the size of this medium."));
     m_pEditor->setToolTip(tr("Holds the size of this medium."));
+    m_pLabelMinSize->setToolTip(tr("Minimum size for this medium."));
+    m_pLabelMaxSize->setToolTip(tr("Maximum size for this medium."));
 }
 
 void UIMediumSizeEditor::sltSizeSliderChanged(int iValue)
