@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95403 2022-06-27 23:38:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95575 2022-07-08 21:54:36Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -325,6 +325,7 @@ $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMInstructionStatisticsTmpl.h.ts \
 	$(call KB_FN_AUTO_CMD_DEPS_COMMANDS)
 	$(QUIET)$(SED) \
 		-e '/IEMOP_MNEMONIC\(\|[01234]\|[01234]EX\)(/!d' \
+		-e '/^ *# *define  *IEMOP_MNEMONIC/d' \
 		-e ':look-for-end-of-invocation' \
 		-e '/)/bend-of-invocation' \
 		-e 'N' \
