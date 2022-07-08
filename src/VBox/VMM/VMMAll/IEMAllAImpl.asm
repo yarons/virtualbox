@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 95522 2022-07-05 21:36:07Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 95574 2022-07-08 21:33:43Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -3026,6 +3026,7 @@ BEGINPROC_FASTCALL iemAImpl_fld_r80_from_r64, 12
         PROLOGUE_3_ARGS
         sub     xSP, 20h
 
+        fninit
         FPU_LD_FXSTATE_FCW_AND_SAFE_FSW A0
         fld     qword [A2]
 
