@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 95574 2022-07-08 21:33:43Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 95578 2022-07-09 00:09:50Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4053,12 +4053,9 @@ IEMIMPL_MEDIA_OPT_F3 vpackusdw
 ;
 ; The SSE 4.2 crc32
 ;
-; @param    1       The instruction
-;
 ; @param    A1      Pointer to the 32-bit destination.
 ; @param    A2      The source operand, sized according to the suffix.
 ;
-
 BEGINPROC_FASTCALL iemAImpl_crc32_u8, 8
         PROLOGUE_2_ARGS
 
@@ -4100,4 +4097,38 @@ BEGINPROC_FASTCALL iemAImpl_crc32_u64, 8
         EPILOGUE_2_ARGS
 ENDPROC iemAImpl_crc32_u64
 %endif
+
+
+;
+; PTEST (SSE 4.1)
+;
+; @param    A0      Pointer to the first source operand (aka readonly destination).
+; @param    A1      Pointer to the second source operand.
+; @param    A2      Pointer to the EFLAGS register.
+;
+BEGINPROC_FASTCALL  iemAImpl_ptest_u128, 12
+        PROLOGUE_3_ARGS
+        IEMIMPL_SSE_PROLOGUE
+
+        movdqu  xmm0, [A0]
+        movdqu  xmm1, [A1]
+        ptest   xmm0, xmm1
+        IEM_SAVE_FLAGS A2, X86_EFL_STATUS_BITS, 0
+
+        IEMIMPL_SSE_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC             iemAImpl_ptest_u128
+
+BEGINPROC_FASTCALL  iemAImpl_vptest_u256, 12
+        PROLOGUE_3_ARGS
+        IEMIMPL_SSE_PROLOGUE
+
+        vmovdqu ymm0, [A0]
+        vmovdqu ymm1, [A1]
+        vptest  ymm0, ymm1
+        IEM_SAVE_FLAGS A2, X86_EFL_STATUS_BITS, 0
+
+        IEMIMPL_SSE_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC             iemAImpl_vptest_u256
 

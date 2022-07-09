@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 95561 2022-07-07 23:56:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 95578 2022-07-09 00:09:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1927,6 +1927,11 @@ FNIEMAIMPLCR32U8  iemAImpl_crc32_u8,  iemAImpl_crc32_u8_fallback;
 FNIEMAIMPLCR32U16 iemAImpl_crc32_u16, iemAImpl_crc32_u16_fallback;
 FNIEMAIMPLCR32U32 iemAImpl_crc32_u32, iemAImpl_crc32_u32_fallback;
 FNIEMAIMPLCR32U64 iemAImpl_crc32_u64, iemAImpl_crc32_u64_fallback;
+
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLF2EFL128,(PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint32_t *pEFlags));
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLF2EFL256,(PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint32_t *pEFlags));
+FNIEMAIMPLF2EFL128 iemAImpl_ptest_u128;
+FNIEMAIMPLF2EFL256 iemAImpl_vptest_u256, iemAImpl_vptest_u256_fallback;
 /** @} */
 
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 95543 2022-07-06 21:02:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 95578 2022-07-09 00:09:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -9635,5 +9635,39 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u32_fallback,(uint32_t *puDst, uint32_t u
 IEM_DECL_IMPL_DEF(void, iemAImpl_crc32_u64_fallback,(uint32_t *puDst, uint64_t uSrc))
 {
     *puDst = RTCrc32CProcess(*puDst, &uSrc, sizeof(uSrc));
+}
+
+
+/*
+ * PTEST (SSE 4.1) - special as it output only EFLAGS.
+ */
+#ifdef IEM_WITHOUT_ASSEMBLY
+IEM_DECL_IMPL_DEF(void, iemAImpl_ptest_u128,(PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint32_t *pfEFlags))
+{
+    uint32_t fEfl = *pfEFlags & ~X86_EFL_STATUS_BITS;
+    if (   (puSrc1->au64[0] & puSrc2->au64[0]) == 0
+        && (puSrc1->au64[1] & puSrc2->au64[1]) == 0)
+        fEfl |= X86_EFL_ZF;
+    if (   (~puSrc1->au64[0] & puSrc2->au64[0]) == 0
+        && (~puSrc1->au64[1] & puSrc2->au64[1]) == 0)
+        fEfl |= X86_EFL_CF;
+    *pfEFlags = fEfl;
+}
+#endif
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vptest_u256_fallback,(PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint32_t *pfEFlags))
+{
+    uint32_t fEfl = *pfEFlags & ~X86_EFL_STATUS_BITS;
+    if (   (puSrc1->au64[0] & puSrc2->au64[0]) == 0
+        && (puSrc1->au64[1] & puSrc2->au64[1]) == 0
+        && (puSrc1->au64[2] & puSrc2->au64[2]) == 0
+        && (puSrc1->au64[3] & puSrc2->au64[3]) == 0)
+        fEfl |= X86_EFL_ZF;
+    if (   (~puSrc1->au64[0] & puSrc2->au64[0]) == 0
+        && (~puSrc1->au64[1] & puSrc2->au64[1]) == 0
+        && (~puSrc1->au64[2] & puSrc2->au64[2]) == 0
+        && (~puSrc1->au64[3] & puSrc2->au64[3]) == 0)
+        fEfl |= X86_EFL_CF;
+    *pfEFlags = fEfl;
 }
 
