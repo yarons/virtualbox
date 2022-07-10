@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 95164 2022-06-01 14:10:36Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 95582 2022-07-10 09:37:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3406,7 +3406,7 @@ static void vmsvgaR3CmdBufSubmit(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATEC
 
     if (CBstatus != SVGA_CB_STATUS_NONE)
     {
-        LogFunc(("Write status %#x, offNextCmd %#x (of %#x), fIRQ %#x\n", CBstatus, offNextCmd, pCmdBuf ? pCmdBuf->hdr.length : 0, fIRQ));
+        LogFunc(("Write status %#x, offNextCmd %#x, fIRQ %#x\n", CBstatus, offNextCmd, fIRQ));
         vmsvgaR3CmdBufWriteStatus(pDevIns, GCPhysCB, CBstatus, offNextCmd);
         if (fIRQ)
             vmsvgaR3CmdBufRaiseIRQ(pDevIns, pThis, fIRQ);
