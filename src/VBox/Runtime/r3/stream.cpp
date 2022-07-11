@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 95586 2022-07-11 09:51:30Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 95587 2022-07-11 09:52:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -1307,14 +1307,6 @@ RTR3DECL(int) RTPrintf(const char *pszFormat, ...)
     return rc;
 }
 
-
-
-#define RTSTRMWRAPPED_F_LINE_OFFSET_MASK            UINT32_C(0x00000fff)
-#define RTSTRMWRAPPED_F_NON_TERMINAL_WIDTH_MASK     UINT32_C(0x000ff000)
-#define RTSTRMWRAPPED_F_NON_TERMINAL_WIDTH_SHIFT    12
-#define RTSTRMWRAPPED_F_HANGING_INDENT_MASK         UINT32_C(0x01f00000)
-#define RTSTRMWRAPPED_F_HANGING_INDENT_SHIFT        20
-#define RTSTRMWRAPPED_F_HANGING_INDENT              UINT32_C(0x80000000)
 
 /**
  * Outputs @a cchIndent spaces.
