@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 94976 2022-05-10 09:43:49Z alexander.eichner@oracle.com $ $Revision: 94976 $ $Date: 2022-05-10 11:43:49 +0200 (Tue, 10 May 2022) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 95592 2022-07-11 22:32:41Z klaus.espenlaub@oracle.com $ $Revision: 95592 $ $Date: 2022-07-12 00:32:41 +0200 (Tue, 12 Jul 2022) $ $Author: klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1694,6 +1694,9 @@ DECLINLINE(PPDMNETWORKGSO) virtioNetR3SetupGsoCtx(PPDMNETWORKGSO pGso, VIRTIONET
     pGso->offHdr1     = sizeof(RTNETETHERHDR);
     pGso->cbHdrsTotal = pPktHdr->uHdrLen;
     pGso->cbMaxSeg    = pPktHdr->uGsoSize;
+    /* Mark GSO frames with zero MSS as PDMNETWORKGSOTYPE_INVALID, so they will be ignored by send. */
+    if (pPktHdr->uGsoType != VIRTIONET_HDR_GSO_NONE && pPktHdr->uGsoSize == 0)
+        pGso->u8Type = PDMNETWORKGSOTYPE_INVALID;
     return pGso;
 }
 
@@ -2615,6 +2618,9 @@ static int virtioNetR3TransmitFrame(PVIRTIONET pThis, PVIRTIONETCC pThisCC, PPDM
                 pGso->cbHdrsTotal = (uint8_t)(pPktHdr->uChksumStart + sizeof(RTNETUDP));
                 pGso->cbHdrsSeg = pPktHdr->uChksumStart;
                 break;
+            case PDMNETWORKGSOTYPE_INVALID:
+                LogFunc(("%s ignoring invalid GSO frame\n", pThis->szInst));
+                return VERR_INVALID_PARAMETER;
         }
         /* Update GSO structure embedded into the frame */
         ((PPDMNETWORKGSO)pSgBuf->pvUser)->cbHdrsTotal = pGso->cbHdrsTotal;
