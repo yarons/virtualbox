@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 95595 2022-07-12 02:20:48Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 95597 2022-07-12 02:26:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2459,7 +2459,7 @@ static int doAddPkcs7Signature(PCRTCRX509CERTIFICATE pCertificate, RTCRKEY hPriv
                 {
                     rc = RTCrPkcs7SimpleSignSignedData(RTCRPKCS7SIGN_SD_F_DEATCHED | RTCRPKCS7SIGN_SD_F_NO_SMIME_CAP,
                                                        pCertificate, hPrivateKey, pvManifest, (size_t)cbManifest, enmDigestType,
-                                                       hIntermediateCerts, , NULL /*pAdditionalAuthenticatedAttribs*/,
+                                                       hIntermediateCerts, NULL /*pAdditionalAuthenticatedAttribs*/,
                                                        pvResult, &cbResult, RTErrInfoInitStatic(pErrInfo));
                     if (RT_SUCCESS(rc))
                     {
