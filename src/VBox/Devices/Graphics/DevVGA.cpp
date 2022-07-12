@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 95513 2022-07-05 13:20:52Z michal.necasek@oracle.com $ */
+/* $Id: DevVGA.cpp 95601 2022-07-12 04:56:46Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6479,7 +6479,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     AssertLogRelRCReturn(rc, rc);
     Log(("VMSVGA: VMSVGAEnabled   = %d\n", pThis->fVMSVGAEnabled));
 
-    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA10", &pThis->fVMSVGA10, false);
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA10", &pThis->fVMSVGA10, true);
     AssertLogRelRCReturn(rc, rc);
     Log(("VMSVGA: VMSVGA10        = %d\n", pThis->fVMSVGA10));
 
