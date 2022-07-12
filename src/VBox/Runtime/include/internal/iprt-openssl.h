@@ -1,4 +1,4 @@
-/* $Id: iprt-openssl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: iprt-openssl.h 95604 2022-07-12 09:37:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal header for the OpenSSL helpers.
  */
@@ -31,6 +31,7 @@
 #endif
 
 #include <iprt/crypto/x509.h>
+#include <iprt/crypto/pkcs7.h>
 
 RT_C_DECLS_BEGIN
 struct evp_md_st;
@@ -42,6 +43,8 @@ DECLHIDDEN(int)  rtCrOpenSslConvertX509Cert(void **ppvOsslCert, PCRTCRX509CERTIF
 DECLHIDDEN(void) rtCrOpenSslFreeConvertedX509Cert(void *pvOsslCert);
 DECLHIDDEN(int)  rtCrOpenSslAddX509CertToStack(void *pvOsslStack, PCRTCRX509CERTIFICATE pCert, PRTERRINFO pErrInfo);
 DECLHIDDEN(const void /*EVP_MD*/ *) rtCrOpenSslConvertDigestType(RTDIGESTTYPE enmDigestType, PRTERRINFO pErrInfo);
+DECLHIDDEN(int) rtCrOpenSslConvertPkcs7Attribute(void **ppvOsslAttrib, PCRTCRPKCS7ATTRIBUTE pAttrib, PRTERRINFO pErrInfo);
+DECLHIDDEN(void) rtCrOpenSslFreeConvertedPkcs7Attribute(void *pvOsslAttrib);
 
 DECLHIDDEN(int)  rtCrKeyToOpenSslKey(RTCRKEY hKey, bool fNeedPublic, void /*EVP_PKEY*/ **ppEvpKey, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  rtCrKeyToOpenSslKeyEx(RTCRKEY hKey, bool fNeedPublic, const char *pszAlgoObjId,
