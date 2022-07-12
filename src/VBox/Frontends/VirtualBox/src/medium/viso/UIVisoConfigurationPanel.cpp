@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.cpp 95484 2022-07-03 13:08:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoConfigurationPanel.cpp 95607 2022-07-12 11:16:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class implementation.
  */
@@ -59,9 +59,7 @@ void UIVisoConfigurationPanel::setVisoCustomOptions(const QStringList& visoCusto
         return;
     m_pCustomOptionsComboBox->clear();
     foreach (const QString &strOption, visoCustomOptions)
-    {
         m_pCustomOptionsComboBox->addItem(strOption);
-    }
 }
 
 void UIVisoConfigurationPanel::prepareObjects()
