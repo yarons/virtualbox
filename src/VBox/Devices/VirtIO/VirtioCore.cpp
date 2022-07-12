@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 94969 2022-05-09 17:06:17Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.cpp 95609 2022-07-12 20:28:41Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -1735,11 +1735,11 @@ static DECLCALLBACK(VBOXSTRICTRC) virtioLegacyIOPortOut(PPDMDEVINS pDevIns, void
                       VIRTIO_DEV_INDEPENDENT_LEGACY_FEATURES_OFFERED, pVirtio->uDriverFeatures));
                 pVirtio->uDriverFeatures &= VIRTIO_DEV_INDEPENDENT_LEGACY_FEATURES_OFFERED;
         }
-        if (!((pVirtio->fDriverFeaturesWritten ^= 1) & 1))
+        if (!(pVirtio->fDriverFeaturesWritten & DRIVER_FEATURES_COMPLETE_HANDLED))
         {
 #ifdef IN_RING0
             Log6(("%-23s: RING0 => RING3 (demote)\n", __FUNCTION__));
-            return VINF_IOM_R3_MMIO_WRITE;
+            return VINF_IOM_R3_IOPORT_WRITE;
 #endif
 #ifdef IN_RING3
             PVIRTIOCORECC pVirtioCC = PDMINS_2_DATA_CC(pDevIns, PVIRTIOCORECC);

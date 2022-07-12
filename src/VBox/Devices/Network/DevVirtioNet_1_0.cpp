@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 95592 2022-07-11 22:32:41Z klaus.espenlaub@oracle.com $ $Revision: 95592 $ $Date: 2022-07-12 00:32:41 +0200 (Tue, 12 Jul 2022) $ $Author: klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 95609 2022-07-12 20:28:41Z klaus.espenlaub@oracle.com $ $Revision: 95609 $ $Date: 2022-07-12 22:28:41 +0200 (Tue, 12 Jul 2022) $ $Author: klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1015,7 +1015,7 @@ static int virtioNetR3DevCfgAccess(PVIRTIONET pThis, uint32_t uOffsetOfAccess, v
         VIRTIO_DEV_CONFIG_ACCESS_READONLY( uMacAddress,      VIRTIONET_CONFIG_T, uOffsetOfAccess, &pThis->virtioNetConfig);
 #if FEATURE_OFFERED(STATUS)
     else
-    if (VIRTIO_DEV_CONFIG_MATCH_MEMBER(    uStatus,          VIRTIONET_CONFIG_T, uOffsetOfAccess))
+    if (VIRTIO_DEV_CONFIG_SUBMATCH_MEMBER( uStatus,          VIRTIONET_CONFIG_T, uOffsetOfAccess))
         VIRTIO_DEV_CONFIG_ACCESS_READONLY( uStatus,          VIRTIONET_CONFIG_T, uOffsetOfAccess, &pThis->virtioNetConfig);
 #endif
 #if FEATURE_OFFERED(MQ)
@@ -1198,6 +1198,7 @@ static DECLCALLBACK(int) virtioNetR3LegacyDeviceLoadExec(PPDMDEVINS pDevIns, PSS
          * Log the restored VirtIO feature selection.
          */
         pThis->fNegotiatedFeatures = virtioCoreGetNegotiatedFeatures(&pThis->Virtio);
+        /* @todo: shouldn't we update the virtio header size here? it depends on the negotiated features. */
         virtioCorePrintDeviceFeatures(&pThis->Virtio, NULL, s_aDevSpecificFeatures, RT_ELEMENTS(s_aDevSpecificFeatures));
 
         /*
@@ -3222,6 +3223,8 @@ static DECLCALLBACK(void) virtioNetR3StatusChg(PVIRTIOCORE pVirtio, PVIRTIOCOREC
 #endif
         pThis->fResetting = false;
         pThis->fNegotiatedFeatures = virtioCoreGetNegotiatedFeatures(pVirtio);
+        /* Now we can properly figure out the size of virtio header! */
+        virtioNetConfigurePktHdr(pThis, pThis->Virtio.fLegacyDriver);
         pThis->virtioNetConfig.uStatus = pThis->fCableConnected ? VIRTIONET_F_LINK_UP : 0;
 
         for (unsigned uVirtqNbr = 0; uVirtqNbr < pThis->cVirtqs; uVirtqNbr++)
@@ -3549,6 +3552,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("virtio-net: failed to initialize VirtIO"));
 
     pThis->fNegotiatedFeatures = virtioCoreGetNegotiatedFeatures(&pThis->Virtio);
+    /* @todo: validating features at this point is most probably pointless, as the negotiation hasn't started yet. */
     if (!virtioNetValidateRequiredFeatures(pThis->fNegotiatedFeatures))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("virtio-net: Required features not successfully negotiated."));
     pThis->cVirtqPairs = pThis->virtioNetConfig.uMaxVirtqPairs;
