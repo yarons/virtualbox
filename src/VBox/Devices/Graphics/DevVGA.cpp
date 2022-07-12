@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 95601 2022-07-12 04:56:46Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA.cpp 95602 2022-07-12 06:30:31Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6143,7 +6143,8 @@ static DECLCALLBACK(void) vgaR3PowerOn(PPDMDEVINS pDevIns)
     PVGASTATE   pThis = PDMDEVINS_2_DATA(pDevIns, PVGASTATE);
     PVGASTATECC pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PVGASTATECC);
 # ifdef VBOX_WITH_VMSVGA
-    vmsvgaR3PowerOn(pDevIns);
+    if (pThis->fVMSVGAEnabled)
+        vmsvgaR3PowerOn(pDevIns);
 # endif
     VBVAOnResume(pDevIns, pThis, pThisCC);
 }
@@ -6158,7 +6159,8 @@ static DECLCALLBACK(void) vgaR3PowerOff(PPDMDEVINS pDevIns)
     PVGASTATECC pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PVGASTATECC);
     RT_NOREF(pThis, pThisCC);
 # ifdef VBOX_WITH_VMSVGA
-    vmsvgaR3PowerOff(pDevIns);
+    if (pThis->fVMSVGAEnabled)
+        vmsvgaR3PowerOff(pDevIns);
 # endif
 }
 
