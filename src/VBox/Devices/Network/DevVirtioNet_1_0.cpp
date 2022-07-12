@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 95610 2022-07-12 21:12:26Z klaus.espenlaub@oracle.com $ $Revision: 95610 $ $Date: 2022-07-12 23:12:26 +0200 (Tue, 12 Jul 2022) $ $Author: klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 95611 2022-07-12 21:20:28Z klaus.espenlaub@oracle.com $ $Revision: 95611 $ $Date: 2022-07-12 23:20:28 +0200 (Tue, 12 Jul 2022) $ $Author: klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1198,7 +1198,7 @@ static DECLCALLBACK(int) virtioNetR3LegacyDeviceLoadExec(PPDMDEVINS pDevIns, PSS
          * Log the restored VirtIO feature selection.
          */
         pThis->fNegotiatedFeatures = virtioCoreGetNegotiatedFeatures(&pThis->Virtio);
-        /** @todo: shouldn't we update the virtio header size here? it depends on the negotiated features. */
+        /** @todo shouldn't we update the virtio header size here? it depends on the negotiated features. */
         virtioCorePrintDeviceFeatures(&pThis->Virtio, NULL, s_aDevSpecificFeatures, RT_ELEMENTS(s_aDevSpecificFeatures));
 
         /*
@@ -3552,7 +3552,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("virtio-net: failed to initialize VirtIO"));
 
     pThis->fNegotiatedFeatures = virtioCoreGetNegotiatedFeatures(&pThis->Virtio);
-    /** @todo: validating features at this point is most probably pointless, as the negotiation hasn't started yet. */
+    /** @todo validating features at this point is most probably pointless, as the negotiation hasn't started yet. */
     if (!virtioNetValidateRequiredFeatures(pThis->fNegotiatedFeatures))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("virtio-net: Required features not successfully negotiated."));
     pThis->cVirtqPairs = pThis->virtioNetConfig.uMaxVirtqPairs;
