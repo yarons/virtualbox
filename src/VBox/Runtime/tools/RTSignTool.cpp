@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95599 2022-07-12 02:38:38Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95600 2022-07-12 03:07:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1568,7 +1568,7 @@ static RTEXITCODE HandleAddNestedCatSignature(int cArgs, char **papszArgs)
 
 
 /*********************************************************************************************************************************
-*   The 'add-timestamp-exe-signature' command.                                                                                      *
+*   The 'add-timestamp-exe-signature' command.                                                                                   *
 *********************************************************************************************************************************/
 #ifndef IPRT_IN_BUILD_TOOL
 
