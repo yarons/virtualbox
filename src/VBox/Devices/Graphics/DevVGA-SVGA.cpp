@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 95591 2022-07-11 18:17:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 95603 2022-07-12 06:49:31Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4509,14 +4509,6 @@ static DECLCALLBACK(int) vmsvgaR3FifoLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread
     PVMSVGAR3STATE  pSVGAState = pThisCC->svga.pSvgaR3State;
     int             rc;
 
-# if defined(VBOX_WITH_VMSVGA3D) && defined(RT_OS_LINUX)
-    if (pThis->svga.f3DEnabled)
-    {
-        /* The FIFO thread may use X API for accelerated screen output. */
-        XInitThreads();
-    }
-# endif
-
     if (pThread->enmState == PDMTHREADSTATE_INITIALIZING)
         return VINF_SUCCESS;
 
@@ -6901,6 +6893,17 @@ static void vmsvgaR3PowerOnDevice(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATE
             LogRel(("VMSVGA3d: 3D support disabled! (vmsvga3dInit -> %Rrc)\n", rc));
             pThis->svga.f3DEnabled = false;
         }
+    }
+# endif
+
+# if defined(VBOX_WITH_VMSVGA3D) && defined(RT_OS_LINUX)
+    if (pThis->svga.f3DEnabled)
+    {
+        /* The FIFO thread may use X API for accelerated screen output. */
+        /* This must be done after backend initialization by vmsvgaR3Init3dInterfaces,
+         * because it dynamically resolves XInitThreads.
+         */
+        XInitThreads();
     }
 # endif
 
