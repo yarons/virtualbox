@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 95140 2022-05-31 09:11:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 95595 2022-07-12 02:20:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -2447,7 +2447,8 @@ static int doAddPkcs7Signature(PCRTCRX509CERTIFICATE pCertificate, RTCRKEY hPriv
             size_t cbResult = 0;
             rc = RTCrPkcs7SimpleSignSignedData(RTCRPKCS7SIGN_SD_F_DEATCHED | RTCRPKCS7SIGN_SD_F_NO_SMIME_CAP,
                                                pCertificate, hPrivateKey, pvManifest, (size_t)cbManifest, enmDigestType,
-                                               hIntermediateCerts, NULL /*pvResult*/, &cbResult, RTErrInfoInitStatic(pErrInfo));
+                                               hIntermediateCerts, NULL /*pAdditionalAuthenticatedAttribs*/,
+                                               NULL /*pvResult*/, &cbResult, RTErrInfoInitStatic(pErrInfo));
             if (rc == VERR_BUFFER_OVERFLOW)
             {
                 /*
@@ -2458,7 +2459,8 @@ static int doAddPkcs7Signature(PCRTCRX509CERTIFICATE pCertificate, RTCRKEY hPriv
                 {
                     rc = RTCrPkcs7SimpleSignSignedData(RTCRPKCS7SIGN_SD_F_DEATCHED | RTCRPKCS7SIGN_SD_F_NO_SMIME_CAP,
                                                        pCertificate, hPrivateKey, pvManifest, (size_t)cbManifest, enmDigestType,
-                                                       hIntermediateCerts, pvResult, &cbResult, RTErrInfoInitStatic(pErrInfo));
+                                                       hIntermediateCerts, , NULL /*pAdditionalAuthenticatedAttribs*/,
+                                                       pvResult, &cbResult, RTErrInfoInitStatic(pErrInfo));
                     if (RT_SUCCESS(rc))
                     {
                         /*
