@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: BIOSSettingsImpl.cpp 95606 2022-07-12 09:47:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine BIOS settings.
  */
@@ -149,7 +149,7 @@ HRESULT BIOSSettings::initCopy(Machine *aParent, BIOSSettings *that)
     unconst(m->pMachine) = aParent;
     // mPeer is left null
 
-    AutoWriteLock thatlock(that COMMA_LOCKVAL_SRC_POS);
+    AutoWriteLock thatlock(that COMMA_LOCKVAL_SRC_POS); /** @todo r=andy Shouldn't a read lock be sufficient here? */
     m->bd.attachCopy(that->m->bd);
 
     autoInitSpan.setSucceeded();
