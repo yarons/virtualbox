@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: vboxconfig.sh 95622 2022-07-13 17:49:31Z brent.paulson@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1268,19 +1268,6 @@ cleanup_install()
 postinstall()
 {
     infoprint "Detected Solaris $HOST_OS_MAJORVERSION Version $HOST_OS_MINORVERSION"
-
-    # Install the S10 legacy library links.
-    # We do this early so that when we invoke services or other VirtualBox processes, the dependent libraries are resolved.
-    if test -d "/opt/VirtualBox/legacy/"; then
-        if test "$HOST_OS_MAJORVERSION" -eq 10; then
-            for lib in `ls -1 /opt/VirtualBox/legacy/`; do
-            /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/$lib=legacy/$lib s
-            done
-            for lib in `ls -1 /opt/VirtualBox/amd64/legacy/`; do
-                /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/amd64/$lib=legacy/$lib s
-            done
-        fi
-    fi
 
     infoprint "Loading VirtualBox kernel modules..."
     install_drivers
