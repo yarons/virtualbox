@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95631 2022-07-13 22:53:13Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95632 2022-07-13 22:55:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -968,24 +968,6 @@ static PRTCRPKCS7ATTRIBUTE SignToolPkcs7_AuthAttribAppend(PRTCRPKCS7ATTRIBUTES p
     if (iPos >= 0)
         return pAuthAttribs->papItems[iPos];
     RTMsgError("RTCrPkcs7Attributes_Append failed: %Rrc", iPos);
-    return NULL;
-}
-
-static PRTCRPKCS7ATTRIBUTE SignToolPkcs7_AuthAttribAppend(PRTCRPKCS7ATTRIBUTES pAuthAttribs, const char *pszAttrId)
-{
-    int32_t iPos = RTCrPkcs7Attributes_Append(pAuthAttribs);
-    if (iPos >= 0)
-    {
-        /* Create the attrib and its sub-set of timestamps. */
-        PRTCRPKCS7ATTRIBUTE pAttr = pAuthAttribs->papItems[iPos];
-        int rc = RTAsn1ObjId_InitFromString(&pAttr->Type, pszAttrId, pAttr->Allocation.pAllocator);
-        if (RT_SUCCESS(rc))
-            return pAttr;
-        RTMsgError("RTAsn1ObjId_InitFromString/%s failed: %Rrc", pszAttrId, rc);
-    }
-    else
-        RTMsgError("RTCrPkcs7Attributes_Append failed: %Rrc", iPos);
-
     return NULL;
 }
 
