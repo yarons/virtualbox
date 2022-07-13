@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-objid.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-objid.cpp 95624 2022-07-13 20:31:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASN.1, OBJECT IDENTIFIER Type.
  */
@@ -332,6 +332,16 @@ RTDECL(int) RTAsn1ObjId_InitFromString(PRTASN1OBJID pThis, const char *pszObjId,
             rc = VERR_ASN1_OBJID_INVALID_DOTTED_STRING;
     }
     RT_ZERO(*pThis);
+    return rc;
+}
+
+
+RTDECL(int) RTAsn1ObjId_SetFromString(PRTASN1OBJID pThis, const char *pszObjId, PCRTASN1ALLOCATORVTABLE pAllocator)
+{
+    RTAsn1ObjId_Delete(pThis);
+    int rc = RTAsn1ObjId_InitFromString(pThis, pszObjId, pAllocator);
+    if (RT_FAILURE(rc))
+        RTAsn1ObjId_Init(pThis, pAllocator);
     return rc;
 }
 
