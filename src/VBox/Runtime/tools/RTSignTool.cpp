@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95615 2022-07-13 01:25:01Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95616 2022-07-13 01:29:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1477,7 +1477,7 @@ static RTEXITCODE SignToolPkcs7_SpcCompleteWithoutPageHashes(SIGNTOOLPKCS7EXE *p
     PRTCRSPCPEIMAGEDATA pPeImage = pSpcIndData->Data.uValue.pPeImage;
     Assert(pPeImage);
     //pPeImage->Flags
-    RT_NOREF(pPeImage)
+    RT_NOREF(pPeImage);
 
     return RTEXITCODE_SUCCESS;
 }
