@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95625 2022-07-13 20:32:39Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95626 2022-07-13 20:35:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1487,7 +1487,7 @@ static RTEXITCODE SignToolPkcs7_SignSpcIndData(SIGNTOOLPKCS7EXE *pThis, RTCRSPCI
                 SIGNTOOLPKCS7  Src     = { NULL, 0, NULL };
                 PSIGNTOOLPKCS7 pSigDst = !pThis->pSignedData ? pThis : &Src;
                 rcExit = Pkcs7SignStuff("image", pvSpcEncoded, cbSpcEncoded, &AuthAttribs, hAddCerts, 0 /*fExtraFlags*/,
-                                        RTDIGESTTYPE_SHA1 /** @todo*/, pSigningCertKey, cVerbosity,
+                                        RTDIGESTTYPE_SHA1 /** @todo */, pSigningCertKey, cVerbosity,
                                         (void **)&pSigDst->pbBuf, &pSigDst->cbBuf, &pSigDst->ContentInfo, &pSigDst->pSignedData);
                 if (rcExit == RTEXITCODE_SUCCESS)
                 {
