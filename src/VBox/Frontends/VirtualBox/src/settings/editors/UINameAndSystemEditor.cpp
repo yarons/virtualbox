@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 95165 2022-06-01 18:00:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -271,7 +271,7 @@ CGuestOSType UINameAndSystemEditor::type() const
 void UINameAndSystemEditor::markNameEditor(bool fError)
 {
     if (m_pEditorName)
-        m_pEditorName->mark(fError, tr("Invalid name"));
+        m_pEditorName->mark(fError, fError ? tr("Invalid name") : QString("Name is valid"));
 }
 
 void UINameAndSystemEditor::markImageEditor(bool fError, const QString &strErrorMessage)
@@ -481,7 +481,7 @@ void UINameAndSystemEditor::prepareWidgets()
                 m_pLayout->addWidget(m_pLabelName, iRow, 0);
             }
             /* Prepare name editor: */
-            m_pEditorName = new QILineEdit(this);
+            m_pEditorName = new UIMarkableLineEdit(this);
             if (m_pEditorName)
             {
                 m_pLabelName->setBuddy(m_pEditorName);
@@ -675,7 +675,7 @@ void UINameAndSystemEditor::prepareConnections()
 {
     /* Prepare connections: */
     if (m_pEditorName)
-        connect(m_pEditorName, &QILineEdit::textChanged,
+        connect(m_pEditorName, &UIMarkableLineEdit::textChanged,
                 this, &UINameAndSystemEditor::sigNameChanged);
     if (m_pSelectorPath)
         connect(m_pSelectorPath, &UIFilePathSelector::pathChanged,

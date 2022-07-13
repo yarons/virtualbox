@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.cpp 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -330,7 +330,7 @@ void UIUserNamePasswordEditor::prepare()
         return;
     setLayout(pMainLayout);
     int iRow = 0;
-    addLineEdit<QILineEdit>(iRow, m_pUserNameLabel, m_pUserNameLineEdit, pMainLayout);
+    addLineEdit<UIMarkableLineEdit>(iRow, m_pUserNameLabel, m_pUserNameLineEdit, pMainLayout);
     addLineEdit<UIPasswordLineEdit>(iRow, m_pPasswordLabel, m_pPasswordLineEdit, pMainLayout);
     addLineEdit<UIPasswordLineEdit>(iRow, m_pPasswordRepeatLabel, m_pPasswordRepeatLineEdit, pMainLayout);
 
@@ -342,7 +342,7 @@ void UIUserNamePasswordEditor::prepare()
             this, &UIUserNamePasswordEditor::sltPasswordChanged);
     connect(m_pPasswordRepeatLineEdit, &UIPasswordLineEdit::textChanged,
             this, &UIUserNamePasswordEditor::sltPasswordChanged);
-    connect(m_pUserNameLineEdit, &QILineEdit::textChanged,
+    connect(m_pUserNameLineEdit, &UIMarkableLineEdit::textChanged,
             this, &UIUserNamePasswordEditor::sltUserNameChanged);
 
     retranslateUi();

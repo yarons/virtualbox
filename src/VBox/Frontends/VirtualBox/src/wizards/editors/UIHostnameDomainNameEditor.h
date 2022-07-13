@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 94837 2022-05-05 09:37:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.h 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -32,6 +32,7 @@
 class QGridLayout;
 class QLabel;
 class QILineEdit;
+class UIMarkableLineEdit;
 class UIPasswordLineEdit;
 
 class UIHostnameDomainNameEditor : public QIWithRetranslateUI<QWidget>
@@ -74,10 +75,11 @@ private slots:
 private:
 
     void prepare();
-    void addLineEdit(int &iRow, QLabel *&pLabel, QILineEdit *&pLineEdit, QGridLayout *pLayout);
+    template<class T>
+    void addLineEdit(int &iRow, QLabel *&pLabel, T *&pLineEdit, QGridLayout *pLayout);
 
-    QILineEdit  *m_pHostnameLineEdit;
-    QILineEdit  *m_pDomainNameLineEdit;
+    UIMarkableLineEdit *m_pHostnameLineEdit;
+    QILineEdit         *m_pDomainNameLineEdit;
 
     QLabel *m_pHostnameLabel;
     QLabel *m_pDomainNameLabel;

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 94593 2022-04-13 17:33:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -39,6 +39,7 @@ class QLabel;
 class QILineEdit;
 class QString;
 class UIFilePathSelector;
+class UIMarkableLineEdit;
 
 /** QWidget subclass providing complex editor for basic VM parameters. */
 class SHARED_LIBRARY_STUFF UINameAndSystemEditor : public QIWithRetranslateUI<QWidget>
@@ -231,7 +232,7 @@ private:
         QLabel *m_pIconType;
 
         /** Holds the VM name editor instance. */
-        QILineEdit         *m_pEditorName;
+        UIMarkableLineEdit *m_pEditorName;
         /** Holds the VM path editor instance. */
         UIFilePathSelector *m_pSelectorPath;
         /** Holds the file selector for ISO image (either for unattended install or to be attached to vm). */

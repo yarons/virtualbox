@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.h 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -41,6 +41,7 @@ class QLabel;
 class QRadioButton;
 class QILineEdit;
 class UIFilePathSelector;
+class UIMarkableLineEdit;
 
 /** MAC address policies. */
 enum MACAddressClonePolicy
@@ -84,8 +85,8 @@ private:
     virtual void retranslateUi() /* override final */;
 
     QGridLayout *m_pContainerLayout;
-    QILineEdit  *m_pNameLineEdit;
-    UIFilePathSelector *m_pPathSelector;
+    UIMarkableLineEdit  *m_pNameLineEdit;
+    UIFilePathSelector  *m_pPathSelector;
     QLabel      *m_pNameLabel;
     QLabel      *m_pPathLabel;
 

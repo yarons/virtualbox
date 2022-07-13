@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 94837 2022-05-05 09:37:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 95618 2022-07-13 08:51:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -122,7 +122,8 @@ void UIHostnameDomainNameEditor::retranslateUi()
         m_pDomainNameLineEdit->setToolTip(tr("Holds the domain name."));
 }
 
-void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, QILineEdit *&pLineEdit, QGridLayout *pLayout)
+template<class T>
+void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, T *&pLineEdit, QGridLayout *pLayout)
 {
     AssertReturnVoid(pLayout);
     if (pLabel || pLineEdit)
@@ -135,7 +136,7 @@ void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, QILineE
 
     pLayout->addWidget(pLabel, iRow, 0, 1, 1);
 
-    pLineEdit = new QILineEdit;
+    pLineEdit = new T;
     AssertReturnVoid(pLineEdit);
 
     pLayout->addWidget(pLineEdit, iRow, 1, 1, 3);
@@ -153,15 +154,15 @@ void UIHostnameDomainNameEditor::prepare()
         return;
     setLayout(m_pMainLayout);
     int iRow = 0;
-    addLineEdit(iRow, m_pHostnameLabel, m_pHostnameLineEdit, m_pMainLayout);
-    addLineEdit(iRow, m_pDomainNameLabel, m_pDomainNameLineEdit, m_pMainLayout);
+    addLineEdit<UIMarkableLineEdit>(iRow, m_pHostnameLabel, m_pHostnameLineEdit, m_pMainLayout);
+    addLineEdit<QILineEdit>(iRow, m_pDomainNameLabel, m_pDomainNameLineEdit, m_pMainLayout);
 
     /* Host name and domain should be strings of minimum length of 2 and composed of alpha numerics, '-', and '.'
      * Exclude strings with . at the end: */
     m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
     m_pDomainNameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
 
-    connect(m_pHostnameLineEdit, &QILineEdit::textChanged,
+    connect(m_pHostnameLineEdit, &UIMarkableLineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltHostnameChanged);
     connect(m_pDomainNameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltDomainChanged);
