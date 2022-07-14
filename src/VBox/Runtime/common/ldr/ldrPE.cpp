@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 95635 2022-07-14 02:10:42Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 95638 2022-07-14 02:44:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2474,8 +2474,9 @@ static int rtLdrPE_CalcPageHashes(PRTLDRMODPE pModPe, RTDIGESTTYPE const enmDige
         uint32_t cPagesInSection = (cbRawData + cbPage - 1) / cbPage;
         for (uint32_t iPage = 0; iPage < cPagesInSection; iPage++)
         {
-            uint32_t const offPageInFile = offRawData + iPage * cbPage;
-            uint32_t const cbPageInFile  = RT_MIN(cbPage, offPageInFile - cbRawData);
+            uint32_t const offPageInSect = iPage * cbPage;
+            uint32_t const offPageInFile = offRawData + offPageInSect;
+            uint32_t const cbPageInFile  = RT_MIN(cbPage, cbRawData - offPageInSect);
             offLastPage = offPageInFile;
 
             /* Calculate and output the page offset. */
@@ -2577,7 +2578,7 @@ static int rtLdrPE_CalcPageHashes(PRTLDRMODPE pModPe, RTDIGESTTYPE const enmDige
     /*
      * Add the terminator entry.
      */
-    *(uint32_t *)pbDst = offLastPage;
+    *(uint32_t *)pbDst = offLastPage + cbPage;
     RT_BZERO(&pbDst[sizeof(uint32_t)], cbHash);
 
     return VINF_SUCCESS;
