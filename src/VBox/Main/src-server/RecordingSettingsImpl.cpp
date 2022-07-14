@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 95639 2022-07-14 08:30:45Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 95640 2022-07-14 08:35:31Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -545,7 +545,7 @@ HRESULT RecordingSettings::i_saveSettings(settings::RecordingSettings &data)
 
     data.common = *m->bd.data();
 
-    HRESULT hrc;
+    HRESULT hrc = S_OK;
 
     for (RecordingScreenSettingsObjMap::const_iterator itScreen  = m->mapScreenObj.begin();
                                                        itScreen != m->mapScreenObj.end();
