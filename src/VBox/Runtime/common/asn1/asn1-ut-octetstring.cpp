@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-octetstring.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-octetstring.cpp 95634 2022-07-14 02:09:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASN.1, Octet String.
  *
@@ -123,6 +123,27 @@ RTDECL(int) RTAsn1OctetString_RefreshContent(PRTASN1OCTETSTRING pThis, uint32_t 
             rc = RTErrInfoSetF(pErrInfo, rc, "Error allocating %#x bytes for storing content\n", cbEncoded);
     }
     return rc;
+}
+
+
+RTDECL(int) RTAsn1OctetString_AllocContent(PRTASN1OCTETSTRING pThis, void const *pvSrc, size_t cb,
+                                           PCRTASN1ALLOCATORVTABLE pAllocator)
+{
+    AssertReturn(!pThis->pEncapsulated, VERR_INVALID_STATE);
+    int rc;
+    if (pvSrc)
+        rc = RTAsn1ContentDup(&pThis->Asn1Core, pvSrc, cb, pAllocator);
+    else
+        rc = RTAsn1ContentAllocZ(&pThis->Asn1Core, cb, pAllocator);
+    return rc;
+}
+
+
+RTDECL(int) RTAsn1OctetString_SetContent(PRTASN1OCTETSTRING pThis, void const *pvSrc, size_t cbSrc,
+                                         PCRTASN1ALLOCATORVTABLE pAllocator)
+{
+    AssertPtrReturn(pvSrc, VERR_INVALID_POINTER);
+    return RTAsn1OctetString_AllocContent(pThis, pvSrc, cbSrc, pAllocator);
 }
 
 
