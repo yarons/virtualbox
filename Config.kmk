@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95650 2022-07-14 13:07:40Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95651 2022-07-14 13:14:53Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1004,9 +1004,10 @@ if1of ($(KBUILD_TARGET), darwin linux)
  VBOX_WITH_VBOXIMGMOUNT = 1
 endif
 # Set this to enable packaging the fuse related bits into our installer.
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.amd64)
- VBOX_WITH_FUSE_PACKING = 1
-endif
+# Newer versions prohibit from distributing with commercial software @bugref{8515}
+#if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.amd64)
+# VBOX_WITH_FUSE_PACKING = 1
+#endif
 # Enables updating checking through Main.
 # Only available if cURL is being used.
 ifdef VBOX_WITH_LIBCURL
@@ -8931,7 +8932,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95650 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95651 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
