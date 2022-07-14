@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 95644 2022-07-14 09:57:58Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 95654 2022-07-14 14:10:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -74,6 +74,7 @@
 #include "VBox/settings.h"
 #include <iprt/base64.h>
 #include <iprt/cpp/lock.h>
+#include <iprt/cpp/utils.h>
 #include <iprt/cpp/xml.h>
 #include <iprt/ctype.h>
 #include <iprt/err.h>
@@ -6380,7 +6381,7 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
                 readDebugging(*pelmMachineChild, debugging);
             else if (pelmMachineChild->nameEquals("Autostart"))
                 readAutostart(*pelmMachineChild, autostart);
-            else if (pelmMachineChild->nameEquals("Recording"))
+            else if (pelmMachineChild->nameEquals("Recording")) /* Only exists for settings >= 1.19 (VBox 7.0). */
                 readRecordingSettings(*pelmMachineChild, recordingSettings);
             else if (pelmMachineChild->nameEquals("Groups"))
                 readGroups(*pelmMachineChild, machineUserData.llGroups);
@@ -8344,7 +8345,18 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
     buildHardwareXML(elmMachine, hardwareMachine, fl, pllElementsWithUuidAttributes);
     buildDebuggingXML(elmMachine, debugging);
     buildAutostartXML(elmMachine, autostart);
-    buildRecordingXML(elmMachine, recordingSettings);
+
+    /* Note: Must come *after* buildHardwareXML(), as the "Hardware" branch is needed. */
+    if (   m->sv >= SettingsVersion_v1_14
+        && m->sv  < SettingsVersion_v1_19) /* < VBox 7.0. */
+    {
+        xml::ElementNode *pelHardware = unconst(elmMachine.findChildElement("Hardware"));
+        if (pelHardware)
+            buildRecordingXML(*pelHardware, recordingSettings);
+    }
+    else if (m->sv >= SettingsVersion_v1_19) /* Now lives outside of "Hardware", in "Machine". */
+        buildRecordingXML(elmMachine, recordingSettings);
+
     buildGroupsXML(elmMachine, machineUserData.llGroups);
 }
 
