@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 95639 2022-07-14 08:30:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -167,7 +167,7 @@ public:
     int i_recordingCreate(void);
     void i_recordingDestroy(void);
     int i_recordingEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock);
-    int i_recordingGetSettings(settings::RecordingSettings &Settings);
+    int i_recordingGetSettings(settings::RecordingSettings &recording);
     int i_recordingStart(util::AutoWriteLock *pAutoLock = NULL);
     int i_recordingStop(util::AutoWriteLock *pAutoLock = NULL);
 # ifdef VBOX_WITH_AUDIO_RECORDING

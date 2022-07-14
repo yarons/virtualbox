@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingSettingsImpl.h 95639 2022-07-14 08:30:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -51,25 +51,25 @@ public:
     HRESULT i_loadSettings(const settings::RecordingSettings &data);
     HRESULT i_saveSettings(settings::RecordingSettings &data);
 
-    void i_rollback();
-    void i_commit();
-    void i_copyFrom(RecordingSettings *aThat);
-    void i_applyDefaults(void);
+    void    i_rollback(void);
+    void    i_commit(void);
+    HRESULT i_copyFrom(RecordingSettings *aThat);
+    void    i_applyDefaults(void);
 
-    int i_getDefaultFilename(Utf8Str &strFile, bool fWithFileExtension);
+    int i_getDefaultFilename(Utf8Str &strFile, uint32_t idScreen, bool fWithFileExtension);
     bool i_canChangeSettings(void);
     void i_onSettingsChanged(void);
 
 private:
 
     /** Map of screen settings objects. The key specifies the screen ID. */
-    typedef std::map <uint32_t, ComObjPtr<RecordingScreenSettings> > RecordScreenSettingsMap;
+    typedef std::map <uint32_t, ComObjPtr<RecordingScreenSettings> > RecordingScreenSettingsObjMap;
 
     void i_reset(void);
-    int i_syncToMachineDisplays(uint32_t cMonitors);
-    int i_createScreenObj(RecordScreenSettingsMap &screenSettingsMap, uint32_t uScreenId, const settings::RecordingScreenSettings &data);
-    int i_destroyScreenObj(RecordScreenSettingsMap &screenSettingsMap, uint32_t uScreenId);
-    int i_destroyAllScreenObj(RecordScreenSettingsMap &screenSettingsMap);
+    int i_syncToMachineDisplays(uint32_t cDisplays);
+    int i_createScreenObj(RecordingScreenSettingsObjMap &screenSettingsMap, uint32_t idScreen, const settings::RecordingScreenSettings &data);
+    int i_destroyScreenObj(RecordingScreenSettingsObjMap &screenSettingsMap, uint32_t idScreen);
+    int i_destroyAllScreenObj(RecordingScreenSettingsObjMap &screenSettingsMap);
 
 private:
 
