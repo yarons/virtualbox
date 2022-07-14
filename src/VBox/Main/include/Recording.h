@@ -1,4 +1,4 @@
-/* $Id: Recording.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Recording.h 95645 2022-07-14 10:33:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording code header.
  */
@@ -35,7 +35,9 @@ class RecordingContext
 {
 public:
 
-    RecordingContext(Console *pConsole, const settings::RecordingSettings &a_Settings);
+    RecordingContext();
+
+    RecordingContext(Console *ptrConsole, const settings::RecordingSettings &settings);
 
     virtual ~RecordingContext(void);
 
@@ -45,7 +47,7 @@ public:
     RecordingStream *GetStream(unsigned uScreen) const;
     size_t GetStreamCount(void) const;
 
-    int Create(const settings::RecordingSettings &a_Settings);
+    int Create(Console *pConsole, const settings::RecordingSettings &settings);
     void Destroy(void);
 
     int Start(void);
@@ -69,7 +71,7 @@ public:
 
 protected:
 
-    int createInternal(const settings::RecordingSettings &a_Settings);
+    int createInternal(Console *ptrConsole, const settings::RecordingSettings &settings);
     int startInternal(void);
     int stopInternal(void);
 
