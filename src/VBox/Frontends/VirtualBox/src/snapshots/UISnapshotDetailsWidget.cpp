@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 95646 2022-07-14 10:35:51Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 95660 2022-07-15 11:03:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -88,8 +88,6 @@ public:
         : QAccessibleWidget(pWidget, QAccessible::StaticText)
     {}
 
-    /** Returns the parent. */
-    virtual QAccessibleInterface *parent() const RT_OVERRIDE;
     /** Returns a text for the passed @a enmTextRole. */
     virtual QString text(QAccessible::Text enmTextRole) const RT_OVERRIDE;
 
@@ -226,15 +224,6 @@ private:
 /*********************************************************************************************************************************
 *   Class UIAccessibilityInterfaceForUISnapshotDetailsElement implementation.                                                    *
 *********************************************************************************************************************************/
-
-QAccessibleInterface *UIAccessibilityInterfaceForUISnapshotDetailsElement::parent() const
-{
-    /* Make sure item still alive: */
-    AssertPtrReturn(browser(), 0);
-
-    /* Always return parent object: */
-    return QAccessible::queryAccessibleInterface(browser()->parent());
-}
 
 QString UIAccessibilityInterfaceForUISnapshotDetailsElement::text(QAccessible::Text enmTextRole) const
 {
