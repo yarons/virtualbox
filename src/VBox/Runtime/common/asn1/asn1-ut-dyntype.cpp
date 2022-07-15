@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-dyntype.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: asn1-ut-dyntype.cpp 95658 2022-07-15 10:14:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -99,6 +99,14 @@ RTDECL(void) RTAsn1DynType_Delete(PRTASN1DYNTYPE pThis)
             pThis->u.Core.pOps->pfnDtor(&pThis->u.Core);
         RT_ZERO(*pThis);
     }
+}
+
+
+RTDECL(int) RTAsn1DynType_SetToNull(PRTASN1DYNTYPE pThis)
+{
+    RTAsn1DynType_Delete(pThis);
+    pThis->enmType = RTASN1TYPE_NULL;
+    return RTAsn1Null_Init(&pThis->u.Asn1Null, NULL /*pAllocator*/);
 }
 
 
