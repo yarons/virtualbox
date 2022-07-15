@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 95640 2022-07-14 08:35:31Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 95663 2022-07-15 13:48:24Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -405,7 +405,7 @@ int RecordingSettings::i_destroyScreenObj(RecordingScreenSettingsObjMap &screenS
     LogFlowThisFunc(("Screen %RU32\n", idScreen));
 
     AssertReturn(idScreen > 0, VERR_INVALID_PARAMETER); /* Removing screen 0 isn't a good idea. */
-    AssertReturn(screenSettingsMap.find(idScreen) == screenSettingsMap.end(), VERR_NOT_FOUND);
+    AssertReturn(screenSettingsMap.find(idScreen) != screenSettingsMap.end(), VERR_NOT_FOUND);
 
     RecordingScreenSettingsObjMap::iterator itScreen = screenSettingsMap.find(idScreen);
 
