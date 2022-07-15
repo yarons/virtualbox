@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 94962 2022-05-09 14:27:49Z alexander.eichner@oracle.com $ */
+/* $Id: WebMWriter.cpp 95665 2022-07-15 15:50:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -150,14 +150,7 @@ int WebMWriter::Close(void)
 
     close();
 
-    int vrc = VINF_SUCCESS;
-
-    /* If no clusters (= data) was written, delete the file again. */
-    if (!CurSeg.cClusters)
-        vrc = RTFileDelete(strFileName.c_str());
-
-    LogFlowFuncLeaveRC(vrc);
-    return vrc;
+    return VINF_SUCCESS;
 }
 
 /**

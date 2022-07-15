@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: WebMWriter.h 95665 2022-07-15 15:50:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -551,6 +551,13 @@ public:
     uint64_t GetFileSize(void);
 
     uint64_t GetAvailableSpace(void);
+
+    /**
+     * Returns the number of written WebM clusters.
+     *
+     * @returns Number of written WebM clusters; 0 when no clusters written (empty file).
+     */
+    uint64_t GetClusters(void) const { return CurSeg.cClusters; }
 
 protected:
 
