@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 94064 2022-03-02 15:49:12Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 95661 2022-07-15 11:06:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -589,7 +589,7 @@ void UISettingsDialog::sltUpdateWhatsThis(bool fGotFocus)
     }
 
     if (pWhatsThisWidget && !strWhatsThisText.isEmpty())
-        pWhatsThisWidget->setToolTip(QString("<qt>%1</qt>").arg(strWhatsThisText));
+        pWhatsThisWidget->setToolTip(strWhatsThisText);
 }
 
 void UISettingsDialog::prepare()

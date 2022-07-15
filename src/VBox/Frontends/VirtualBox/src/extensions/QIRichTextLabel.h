@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIRichTextLabel.h 95661 2022-07-15 11:06:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -46,6 +46,8 @@ public:
 
     /** Returns text. */
     QString text() const;
+    /** Returns plain text. */
+    QString plainText() const;
 
     /** Registers @a image under a passed @a strName. */
     void registerImage(const QImage &image, const QString &strName);
