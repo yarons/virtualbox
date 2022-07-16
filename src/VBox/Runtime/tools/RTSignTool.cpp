@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95673 2022-07-16 17:20:55Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95674 2022-07-16 17:29:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -2174,7 +2174,7 @@ static RTEXITCODE SignToolPkcs7_AddTimestampSignature(SIGNTOOLPKCS7EXE *pThis, u
 typedef enum SIGNDATATWEAK
 {
     kSignDataTweak_NoTweak = 1,
-    kSignDataTweak_RootIsParent,
+    kSignDataTweak_RootIsParent
 } SIGNDATATWEAK;
 
 static RTEXITCODE SignToolPkcs7_SignData(SIGNTOOLPKCS7 *pThis, PRTASN1CORE pToSignRoot, SIGNDATATWEAK enmTweak,
