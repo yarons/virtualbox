@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95651 2022-07-14 13:14:53Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95676 2022-07-17 03:01:19Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -902,6 +902,10 @@ endif
 #VBOX_WITH_MSM_INSTALL = 1
 # Enables full VM encryption support @bugref{9955}.
 VBOX_WITH_FULL_VM_ENCRYPTION = 1
+# Enables the 'sign' command in bldRTSignTool.  We may need this on windows.
+if1of ($(KBUILD_TARGET), win)
+ VBOX_WITH_BLD_RTSIGNTOOL_SIGNING = 1
+endif
 ## @}
 
 
@@ -4778,6 +4782,19 @@ endif
 SDK_VBOX_OPENSSL-x86_LIBS               ?= \
 	$(PATH_STAGE_LIB)/VBox-libssl-x86$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/VBox-libcrypto-x86$(VBOX_SUFF_LIB)
+
+ifdef VBOX_WITH_BLD_RTSIGNTOOL_SIGNING
+ SDK_VBOX_OPENSSL_BLDPROG               := OpenSSL - Build tools verison (i.e. bldRTSignTool)
+ SDK_VBOX_OPENSSL_BLDPROG_INCS          ?= $(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)
+ SDK_VBOX_OPENSSL_BLDPROG_ORDERDEPS     ?= $(crypto-headers_1_TARGET)
+ if  !defined(VBOX_ONLY_SDK) \
+  && ("$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)")
+  SDK_VBOX_OPENSSL_BLDPROG_DEPS         ?= $(SDK_VBOX_OPENSSL_INCS)/openssl/openssl-mangling.h
+ endif
+ SDK_VBOX_OPENSSL_BLDPROG_LIBS          ?= \
+ 	$(PATH_STAGE_LIB)/VBoxBldProg-libssl$(VBOX_SUFF_LIB) \
+ 	$(PATH_STAGE_LIB)/VBoxBldProg-libcrypto$(VBOX_SUFF_LIB)
+endif
 
 SDK_VBOX_OPENSSL2              := This is what you should be using!  It links against VBoxRT.
 SDK_VBOX_OPENSSL2_EXTENDS      := VBOX_OPENSSL
@@ -8932,7 +8949,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95651 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95676 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
