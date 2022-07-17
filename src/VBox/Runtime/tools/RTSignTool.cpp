@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 95682 2022-07-17 18:45:45Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 95683 2022-07-17 18:48:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -830,7 +830,11 @@ public:
          * We don't need to consider RTCRCERTCTX::pTaInfo here as we're not
          * after trust anchors, only intermediate certificates.
          */
+#ifdef RT_OS_WINDOWS
         PCRTCRX509CERTIFICATE pChildCert = pPrev ? pPrev->pCert : pCertificateReal ? pCertificateReal : pCertificate;
+#else
+        PCRTCRX509CERTIFICATE pChildCert = pPrev ? pPrev->pCert : pCertificate;
+#endif
         AssertReturnStmt(pChildCert, RTCrCertCtxRelease(pPrev), NULL);
 
         RTCRSTORECERTSEARCH Search;
@@ -879,7 +883,11 @@ public:
             /* Add the signing certificate: */
             RTERRINFOSTATIC ErrInfo;
             rc = RTCrStoreCertAddX509(hRetStore, RTCRCERTCTX_F_ENC_X509_DER | RTCRCERTCTX_F_ADD_IF_NOT_FOUND,
+#ifdef RT_OS_WINDOWS
                                       (PRTCRX509CERTIFICATE)(pCertificateReal ? pCertificateReal : pCertificate),
+#else
+                                      (PRTCRX509CERTIFICATE)pCertificate,
+#endif
                                       RTErrInfoInitStatic(&ErrInfo));
             if (RT_SUCCESS(rc))
             {
