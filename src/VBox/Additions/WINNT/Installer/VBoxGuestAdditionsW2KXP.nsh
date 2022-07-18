@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 95700 2022-07-18 10:13:54Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 95719 2022-07-18 17:52:27Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -169,14 +169,15 @@ Function W2K_Prepare
 
 !ifdef VBOX_SIGN_ADDITIONS && VBOX_WITH_VBOX_LEGACY_TS_CA
   ; On guest OSes < Windows 10 we always go for the PreW10 drivers and install our legacy timestamp CA.
-  ${If} $g_strWinVersion != "10"
+  ; Note: We now also install this on Win10+ guests, as those would complain about untrusted certification chains otherwise.
+  ;${If} $g_strWinVersion != "10"
     ${LogVerbose} "Installing legacy timestamp CA certificate ..."
     SetOutPath "$INSTDIR\cert"
     FILE "$%PATH_OUT%\bin\additions\vbox-legacy-timestamp-ca.cer"
     FILE "$%PATH_OUT%\bin\additions\VBoxCertUtil.exe"
     ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" add-trusted-publisher --root $\"$INSTDIR\cert\vbox-legacy-timestamp-ca.cer$\"" "false"
     ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" display-all" "false"
-  ${EndIf}
+  ;${EndIf}
 !endif
 
 FunctionEnd
