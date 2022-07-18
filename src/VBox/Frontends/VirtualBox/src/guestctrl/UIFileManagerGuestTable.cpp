@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 95711 2022-07-18 13:23:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 95716 2022-07-18 16:42:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -485,7 +485,7 @@ void UIFileManagerGuestTable::retranslateUi()
                 icon = UIIconPool::iconSet(":/status_check_16px.png");
                 break;
             case State_SessionError:
-                strWarningText = UIFileManager::tr("<p>Some error has occurred. PLease check the log panel.</p>");
+                strWarningText = UIFileManager::tr("<p>Some error has occurred. Please check the log panel.</p>");
                 icon = UIIconPool::iconSet(":/status_error_16px.png");
                 break;
             default:
