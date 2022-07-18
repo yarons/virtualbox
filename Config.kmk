@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95695 2022-07-18 08:17:40Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 95702 2022-07-18 12:11:00Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2437,6 +2437,17 @@ ifdef VBOX_OSE ## @todo try get rid of this crap! People can use the latest and 
  endif
 endif
 
+# bison and flex for windows. Needed by mesa and also used by VBoxDTrace.
+ifeq ($(KBUILD_HOST),win)
+ ifndef TOOL_BISON_YACC
+TOOL_BISON_YACC     := $(firstfile $(rversortfiles $(qwildcard ,$(KBUILD_DEVTOOLS)/win.x86/win_flex_bison/v*/*bison*$(HOSTSUFF_EXE))) bison.exe)
+ endif
+ ifndef TOOL_FLEX_LEX
+TOOL_FLEX_LEX       := $(firstfile $(rversortfiles $(qwildcard ,$(KBUILD_DEVTOOLS)/win.x86/win_flex_bison/v*/*flex*$(HOSTSUFF_EXE))) flex.exe)
+ endif
+endif
+
+
 # The Microsoft IDL compiler (the SDK build needs this on non-Windows).
 VBOX_WIN_MIDL ?= $(EXEC_X86_WIN32) $(call VBOX_FN_MAKE_WIN_PATH,$(qfirstfile ,$(qwildcard ,$(qaddsuffix ,/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee], \
 	$(PATH_SDK_$(VBOX_WINPSDK)_BIN) \
@@ -3352,13 +3363,12 @@ ifdef VBOX_PATH_PREFIX_MINGW64
 	$(QUIET)$(APPEND) '$@' 'VBOX_MINGW64_Wno-maybe-uninitialized     ?= $(call VBOX_GCC_CHECK_EX_CXX,$(VBOX_PATH_PREFIX_MINGW64)g++ -m64,-Wno-maybe-uninitialized,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_MINGW64_USER_LABEL_PREFIX           ?= $(shell echo "__USER_LABEL_PREFIX__" | $(VBOX_PATH_PREFIX_MINGW64)g++ -m64 -E -xc++ - | $(SED) -e "/^$(HASH)/d")'
 endif
-ifeq ($(KBUILD_HOST),darwin)
-	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_FLEX    ?= 1'
-	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_BISON   ?= 1'
-else
-	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_FLEX    ?= $(if $(which flex),1,)'
-	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_BISON   ?= $(if $(which bison),1,)'
+if defined(TOOL_FLEX) || defined(TOOL_BISON)
+	echo "Do NOT include the flex or bison tools before Config.kmk gets loaded"
+	exit 1 #
 endif
+	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_FLEX    ?= $(firstfile $(TOOL_FLEX_LEX) $(which flex))'
+	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_BISON   ?= $(firstfile $(TOOL_BISON_YACC) $(which bison))'
 	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_XMLLINT ?= $(which xmllint)'
 if "$(KBUILD_HOST)" == "solaris" && $(KBUILD_HOST_VERSION_MAJOR) == 5 && $(KBUILD_HOST_VERSION_MINOR) == 11
 # BRANCH_VERSION format on S11 - S11.3:
@@ -8960,7 +8970,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95695 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95702 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
