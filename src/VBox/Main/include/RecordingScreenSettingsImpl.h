@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 95639 2022-07-14 08:30:45Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 95714 2022-07-18 16:13:16Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -58,6 +58,10 @@ public:
     void i_applyDefaults(void);
 
     settings::RecordingScreenSettings &i_getData(void);
+
+    int32_t i_reference(void);
+    int32_t i_release(void);
+    int32_t i_getReferences(void);
 
 private:
 
