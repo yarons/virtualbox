@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 93726 2022-02-14 14:24:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 95711 2022-07-18 13:23:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -113,6 +113,7 @@ private:
         State_SessionPossible,
         State_SessionRunning,
         State_MachinePaused,
+        State_SessionError,
         State_Max
     };
 
