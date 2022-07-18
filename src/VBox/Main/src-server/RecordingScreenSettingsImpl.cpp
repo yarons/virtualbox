@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.cpp 95714 2022-07-18 16:13:16Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.cpp 95718 2022-07-18 17:01:42Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Recording settings of one virtual screen.
@@ -23,6 +23,7 @@
 #include "RecordingSettingsImpl.h"
 #include "MachineImpl.h"
 
+#include <iprt/asm.h> /* For ASMAtomicXXX. */
 #include <iprt/path.h>
 #include <iprt/cpp/utils.h>
 #include <VBox/settings.h>
