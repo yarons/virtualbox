@@ -1,4 +1,4 @@
-/* $Id: system-get-nt-xxx-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: system-get-nt-xxx-win.cpp 95698 2022-07-18 09:49:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -47,5 +47,12 @@ RTDECL(uint64_t) RTSystemGetNtVersion(void)
 {
     Assert(g_WinOsInfoEx.dwOSVersionInfoSize > 0);
     return RTSYSTEM_MAKE_NT_VERSION(g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion, g_WinOsInfoEx.dwBuildNumber);
+}
+
+
+RTDECL(uint8_t) RTSystemGetNtProductType(void)
+{
+    Assert(g_WinOsInfoEx.dwOSVersionInfoSize > 0);
+    return g_WinOsInfoEx.wProductType; /* It's a byte, not a word as 'w' normally indicates. (Baka Maikurosofuto!) */
 }
 
