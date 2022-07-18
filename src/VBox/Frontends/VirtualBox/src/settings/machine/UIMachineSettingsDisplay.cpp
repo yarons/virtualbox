@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 95642 2022-07-14 09:48:42Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 95717 2022-07-18 16:42:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -942,8 +942,9 @@ void UIMachineSettingsDisplay::prepareTabRecording()
 
             pLayoutRecording->addStretch();
         }
-
+#ifdef VBOX_WITH_RECORDING
         m_pTabWidget->addTab(m_pTabRecording, QString());
+#endif
     }
 }
 
