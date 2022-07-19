@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 95520 2022-07-05 19:20:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.cpp 95724 2022-07-19 12:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -150,7 +150,7 @@ void UIDetailsView::sltMinimumWidthHintChanged(int iHint)
 void UIDetailsView::retranslateUi()
 {
     /* Translate this: */
-    setWhatsThis(tr("Contains a list of Virtual Machine details"));
+    setWhatsThis(tr("Contains a list of Virtual Machine details."));
 }
 
 void UIDetailsView::resizeEvent(QResizeEvent *pEvent)

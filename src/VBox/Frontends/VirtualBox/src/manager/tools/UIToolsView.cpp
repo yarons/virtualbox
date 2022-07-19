@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 95477 2022-07-01 14:35:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsView.cpp 95724 2022-07-19 12:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -163,9 +163,7 @@ void UIToolsView::sltMinimumHeightHintChanged(int iHint)
 void UIToolsView::retranslateUi()
 {
     /* Translate this: */
-#if 0 /* we will leave that for accessibility needs. */
-    setToolTip(tr("Contains a list of VirtualBox tools"));
-#endif  /* to be integrated to accessibility interface. */
+    setWhatsThis(tr("Contains a list of VirtualBox tools."));
 }
 
 void UIToolsView::prepare()
