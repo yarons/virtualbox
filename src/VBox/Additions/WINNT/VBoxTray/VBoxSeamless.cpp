@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 95733 2022-07-19 21:35:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -59,7 +59,7 @@ static VBOXSEAMLESSCONTEXT g_Ctx = { 0 };
 
 void VBoxLogString(HANDLE hDriver, char *pszStr);
 
-DECLCALLBACK(int) VBoxSeamlessInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
+static DECLCALLBACK(int) VBoxSeamlessInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
 {
     LogFlowFuncEnter();
 
@@ -112,7 +112,7 @@ DECLCALLBACK(int) VBoxSeamlessInit(const PVBOXSERVICEENV pEnv, void **ppInstance
     return rc;
 }
 
-void VBoxSeamlessDestroy(void *pInstance)
+static DECLCALLBACK(void) VBoxSeamlessDestroy(void *pInstance)
 {
     LogFlowFuncEnter();
 
