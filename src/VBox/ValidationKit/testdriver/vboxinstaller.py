@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95715 $"
+__version__ = "$Revision: 95722 $"
 
 
 # Standard Python imports.
@@ -911,7 +911,8 @@ class VBoxInstallerTestDriver(TestDriverBase):
         sVBoxInstallPath = os.environ.get('VBOX_INSTALL_PATH', None);
         if sVBoxInstallPath is not None:
             asArgs.extend(['INSTALLDIR="%s"' % (sVBoxInstallPath,)]);
-        if self.fpApiVer >= 6.1:
+        fGreaterOrEqual61 = True; ## @todo Parse the version from the executable.
+        if fGreaterOrEqual61:
             # We need to explicitly specify the location, otherwise the log would end up at a random location.
             sLogFile = os.path.join(tempfile.gettempdir(), 'VBoxInstallLog.txt');
             asArgs.extend(['--msi-log-file', sLogFile]);
