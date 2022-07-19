@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFormEditorWidget.h 95725 2022-07-19 12:08:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -56,10 +56,14 @@ public:
     /** Defines the @a pNotificationCenter reference. */
     void setNotificationCenter(UINotificationCenter *pNotificationCenter) { m_pNotificationCenter = pNotificationCenter; }
 
+    /** Returns table-view reference. */
+    UIFormEditorView *view() const;
     /** Returns horizontal header reference. */
     QHeaderView *horizontalHeader() const;
     /** Returns vertical header reference. */
     QHeaderView *verticalHeader() const;
+    /** Defines table-view @a strWhatsThis help text. */
+    void setWhatsThis(const QString &strWhatsThis);
 
     /** Clears form. */
     void clearForm();
