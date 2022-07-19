@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 95730 2022-07-19 16:27:31Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 95731 2022-07-19 19:18:09Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -174,8 +174,8 @@ Function W2K_Prepare
     SetOutPath "$INSTDIR\cert"
     FILE "$%PATH_OUT%\bin\additions\vbox-legacy-timestamp-ca.cer"
     FILE "$%PATH_OUT%\bin\additions\VBoxCertUtil.exe"
-    ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" add-trusted-publisher --root $\"$INSTDIR\cert\vbox-legacy-timestamp-ca.cer$\"" "false"
-    ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" display-all" "false"
+    ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" add-trusted-publisher --root $\"$INSTDIR\cert\vbox-legacy-timestamp-ca.cer$\"" "true"
+    ${CmdExecute} "$\"$INSTDIR\cert\VBoxCertUtil.exe$\" display-all" "true"
   ${EndIf}
 !endif
 
