@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialogPage.h 95726 2022-07-19 12:12:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class declaration.
  */
@@ -26,6 +26,7 @@
 #include <QWidget>
 
 /* GUI includes: */
+#include "QIWithRetranslateUI.h"
 #include "UIFormEditorWidget.h"
 
 /* COM includes: */
@@ -36,7 +37,7 @@
 class UICloudMachineSettingsDialog;
 
 /** Cloud machine settings dialog page. */
-class UICloudMachineSettingsDialogPage : public QWidget
+class UICloudMachineSettingsDialogPage : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -65,6 +66,11 @@ public slots:
 
     /** Makes sure page data committed. */
     void makeSureDataCommitted();
+
+protected:
+
+    /** Handles translation event. */
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private:
 
