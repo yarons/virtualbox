@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 95728 2022-07-19 13:11:47Z michal.necasek@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -989,7 +989,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         fWinGuest = guestTypeFamilyId == Bstr("Windows");
         fOs2Guest = osTypeId.startsWith("OS2");
         fW9xGuest = osTypeId.startsWith("Windows9");    /* Does not include Windows Me. */
-        fDosGuest = osTypeId.startsWith("DOS");
+        fDosGuest = osTypeId.startsWith("DOS") || osTypeId.startsWith("Windows31");
     }
 
     ULONG maxNetworkAdapters;
