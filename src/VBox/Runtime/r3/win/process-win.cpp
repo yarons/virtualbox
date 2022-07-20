@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 95735 2022-07-20 01:49:32Z knut.osmundsen@oracle.com $ */
+/* $Id: process-win.cpp 95736 2022-07-20 01:50:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -333,7 +333,7 @@ static DECLCALLBACK(int) rtProcWinResolveOnce(void *pvUser)
         rc = RTLdrLoadSystem("psapi.dll", true /*fNoUnload*/, &hMod);
         if (RT_SUCCESS(rc))
         {
-            rc = RTLdrGetSymbol(hMod, "GetModuleBaseName", (void **)&g_pfnGetModuleBaseName);
+            rc = RTLdrGetSymbol(hMod, "GetModuleBaseNameA", (void **)&g_pfnGetModuleBaseName);
             AssertStmt(RT_SUCCESS(rc), g_pfnGetModuleBaseName = NULL);
 
             rc = RTLdrGetSymbol(hMod, "EnumProcesses", (void **)&g_pfnEnumProcesses);
