@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 95751 2022-07-20 11:47:45Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -40,7 +40,6 @@
 # include <OpenGL/gl3ext.h>
 # define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED
 # include <OpenGL/gl.h>
-# include <OpenGL/glext.h>
 # include "DevVGA-SVGA3d-cocoa.h"
 // HACK
 typedef void (APIENTRYP PFNGLFOGCOORDPOINTERPROC) (GLenum type, GLsizei stride, const GLvoid *pointer);
@@ -59,7 +58,6 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 # include <X11/Xatom.h>
 # include <GL/gl.h>
 # include <GL/glx.h>
-# include <GL/glext.h>
 # define VBOX_VMSVGA3D_GL_HACK_LEVEL 0x103
 #endif
 
