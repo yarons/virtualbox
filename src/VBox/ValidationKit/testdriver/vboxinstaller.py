@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95760 $"
+__version__ = "$Revision: 95761 $"
 
 
 # Standard Python imports.
@@ -915,7 +915,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
             return None; # There shouldn't be anything to uninstall, and if there is, it's not our fault.
 
         fGreaterOrEqual61 = True; ## @todo Parse the --version output from the executable.
-        fSupportsForceInstallTimestampCA = True; ## @todo Parse the --help output.
+        fSupportsForceTsCAInstall = True; ## @todo Parse the --help output.
 
         # Gather installer arguments.
         asArgs = [sExe, '-vvvv', '--silent', '--logging'];
@@ -931,7 +931,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         else: # Prior to 6.1 the location was hardcoded.
             sLogFile = os.path.join(tempfile.gettempdir(), 'VirtualBox', 'VBoxInstallLog.txt');
 
-        if fSupportsForceInstallTimestampCA and self._fWinForcedInstallTimestampCA:
+        if fSupportsForceTsCAInstall and self._fWinForcedInstallTimestampCA:
             asArgs.extend(['--force-install-timestamp-ca']);
 
         # Install it.
