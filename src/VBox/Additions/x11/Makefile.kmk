@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95746 2022-07-20 10:21:38Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 95747 2022-07-20 10:31:52Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the X11 Guest Additions.
 #
@@ -25,13 +25,6 @@ if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris)
   include $(PATH_SUB_CURRENT)/vboxvideo/Makefile.kmk
   ifn1of ($(KBUILD_TARGET), netbsd solaris)
    include $(PATH_SUB_CURRENT)/vboxmouse/Makefile.kmk
-  endif
-  # This should logically only be controlled by VBOX_NO_LEGACY_XORG_X11,
-  # as it is not used for drivers at all, but rather to build X11 clients
-  # on systems missing needed libraries.
-  ## @todo fix at some later point when it will not break people's workflows.
-  ifndef VBOX_USE_SYSTEM_XORG_HEADERS
-   include $(PATH_SUB_CURRENT)/x11stubs/Makefile.kmk
   endif
  endif
 endif
