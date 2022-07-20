@@ -1,4 +1,4 @@
-# $Id: .scm-settings 95751 2022-07-20 11:47:45Z alexander.eichner@oracle.com $
+# $Id: .scm-settings 95752 2022-07-20 11:48:23Z alexander.eichner@oracle.com $
 ## @file
 # Source code massager settings for graphics.
 #
@@ -68,6 +68,5 @@
 --filter-out-dirs  "/shaders/."
 
 /vmsvga_glext/*.h: --external-copyright --no-convert-tabs --no-strip-trailing-blanks
-/vmsvga_glext-new/*.h: --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 
 /DevVGATmpl.h:                          --no-fix-header-guards
