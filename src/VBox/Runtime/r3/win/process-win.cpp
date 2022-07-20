@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 95274 2022-06-14 10:48:33Z andreas.loeffler@oracle.com $ */
+/* $Id: process-win.cpp 95735 2022-07-20 01:49:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -34,9 +34,11 @@
 #include <iprt/nt/nt-and-windows.h>
 #include <Userenv.h>
 #include <tlhelp32.h>
-#include <process.h>
-#include <errno.h>
-#include <Strsafe.h>
+#ifndef IPRT_NO_CRT
+# include <process.h>
+# include <errno.h>
+# include <Strsafe.h>
+#endif
 #include <LsaLookup.h>
 #include <Lmcons.h>
 
