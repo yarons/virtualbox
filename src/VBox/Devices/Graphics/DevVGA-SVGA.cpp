@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 95603 2022-07-12 06:49:31Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 95739 2022-07-20 06:58:00Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3401,7 +3401,7 @@ static void vmsvgaR3CmdBufSubmit(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATEC
     else
     {
         LogFunc(("Can't allocate buffer for context id %#x\n", CBCtx));
-        ASSERT_GUEST_FAILED();
+        AssertFailed();
         CBstatus = SVGA_CB_STATUS_QUEUE_FULL;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 95588 2022-07-11 12:40:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 95739 2022-07-20 06:58:00Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6023,7 +6023,11 @@ static void dxSetupPipeline(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
 
                 PVMSVGA3DSURFACE pSurface;
                 rc = vmsvga3dSurfaceFromSid(pThisCC->svga.p3dState, sid, &pSurface);
-                AssertRCReturnVoid(rc);
+                if (RT_FAILURE(rc))
+                {
+                    AssertMsgFailed(("sid = %u, rc = %Rrc\n", sid, rc));
+                    continue;
+                }
 
                 /* The guest might have invalidated the surface in which case pSurface->pBackendSurface is NULL. */
                 /** @todo This is not needed for "single DX device" mode. */
