@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 95731 2022-07-19 19:18:09Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 95753 2022-07-20 12:20:35Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -168,8 +168,21 @@ Function W2K_Prepare
   Delete /REBOOTOK "$INSTDIR\VBoxService.exe"
 
 !ifdef VBOX_SIGN_ADDITIONS && VBOX_WITH_VBOX_LEGACY_TS_CA
-  ; On guest OSes < Windows 10 we always go for the PreW10 drivers and install our legacy timestamp CA.
-  ${If} $g_strWinVersion != "10"
+  ; NSIS only supports global vars, even in functions -- great
+  Var /GLOBAL bDoInstallCA
+  StrCpy $bDoInstallCA "false" ; Set a default value
+
+  ; If not explicitly specified, let the detected Windows version decide what to do.
+  ${If} $g_bInstallTimestampCA == 'unset':
+    ${If} $g_strWinVersion != "10"
+      ; On guest OSes < Windows 10 we always go for the PreW10 drivers and install our legacy timestamp CA.
+      StrCpy $bDoInstallCA "true"
+    ${EndIf}
+  ${Else}
+    StrCpy $bDoInstallCA $g_bInstallTimestampCA
+  ${EndIf}
+
+  ${If} $bDoInstallCA == "true"
     ${LogVerbose} "Installing legacy timestamp CA certificate ..."
     SetOutPath "$INSTDIR\cert"
     FILE "$%PATH_OUT%\bin\additions\vbox-legacy-timestamp-ca.cer"
