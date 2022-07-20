@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 95739 2022-07-20 06:58:00Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 95742 2022-07-20 09:31:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6292,6 +6292,10 @@ static int vmsvgaR3Init3dInterfaces(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
  */
 static void vmsvgaR3GetCaps(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t *pu32DeviceCaps, uint32_t *pu32FIFOCaps)
 {
+#ifndef VBOX_WITH_VMSVGA3D
+    RT_NOREF(pThisCC);
+#endif
+
     /* Device caps. */
     *pu32DeviceCaps = SVGA_CAP_GMR
                     | SVGA_CAP_GMR2
