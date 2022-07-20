@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-win.cpp 95766 2022-07-20 19:37:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -34,6 +34,7 @@
 #include <iprt/mp.h>
 #include "internal/iprt.h"
 
+#include <iprt/alloca.h>
 #include <iprt/assert.h>
 #include <iprt/cpuset.h>
 #include <iprt/ldr.h>
