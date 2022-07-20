@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 95753 2022-07-20 12:20:35Z andreas.loeffler@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 95757 2022-07-20 15:11:37Z andreas.loeffler@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -173,7 +173,7 @@ Function W2K_Prepare
   StrCpy $bDoInstallCA "false" ; Set a default value
 
   ; If not explicitly specified, let the detected Windows version decide what to do.
-  ${If} $g_bInstallTimestampCA == 'unset':
+  ${If} $g_bInstallTimestampCA == "unset"
     ${If} $g_strWinVersion != "10"
       ; On guest OSes < Windows 10 we always go for the PreW10 drivers and install our legacy timestamp CA.
       StrCpy $bDoInstallCA "true"
