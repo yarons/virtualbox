@@ -1,4 +1,4 @@
-/* $Id: strpbrk.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: strpbrk.cpp 95767 2022-07-20 19:40:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - strpbrk().
  */
@@ -36,16 +36,18 @@
  *
  * @returns
  */
-#ifdef _MSC_VER
+#ifdef IPRT_NO_CRT
+char *strpbrk(const char *pszStr, const char *pszBreakChars)
+#elif defined(_MSC_VER)
 # if _MSC_VER >= 1400
-_CRTIMP __checkReturn _CONST_RETURN char *  __cdecl strpbrk(__in_z const char *pszStr, __in_z const char *pszChars)
+_CRTIMP __checkReturn _CONST_RETURN char *  __cdecl strpbrk(__in_z const char *pszStr, __in_z const char *pszBreakChars)
 # else
-_CRTIMP char * __cdecl strpbrk(const char *pszStr, const char *pszChars)
+_CRTIMP char * __cdecl strpbrk(const char *pszStr, const char *pszBreakChars)
 # endif
 #elif defined(__WATCOMC__)
-_WCRTLINK char *std::strpbrk(const char *pszStr, const char *pszChars)
+_WCRTLINK char *std::strpbrk(const char *pszStr, const char *pszBreakChars)
 #else
-char *strpbrk(const char *pszStr, const char *pszChars)
+char *strpbrk(const char *pszStr, const char *pszBreakChars)
 # if defined(__THROW) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
     __THROW
 # endif
@@ -54,10 +56,10 @@ char *strpbrk(const char *pszStr, const char *pszChars)
     int chCur;
     while ((chCur = *pszStr++) != '\0')
     {
-        int ch;
-        const char *psz = pszChars;
-        while ((ch = *psz++) != '\0')
-            if (ch == chCur)
+        int chBreak;
+        const char *psz = pszBreakChars;
+        while ((chBreak = *psz++) != '\0')
+            if (chBreak == chCur)
                 return (char *)(pszStr - 1);
 
     }
