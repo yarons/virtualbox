@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 95395 2022-06-27 15:49:05Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1572,6 +1572,24 @@ HRESULT SystemProperties::getSupportedExportOptions(std::vector<ExportOptions_T>
     };
     aSupportedExportOptions.assign(aExportOptions,
                                    aExportOptions + RT_ELEMENTS(aExportOptions));
+    return S_OK;
+}
+
+HRESULT SystemProperties::getSupportedRecordingFeatures(std::vector<RecordingFeature_T> &aSupportedRecordingFeatures)
+{
+#ifdef VBOX_WITH_RECORDING
+    static const RecordingFeature_T aRecordingFeatures[] =
+    {
+# ifdef VBOX_WITH_AUDIO_RECORDING
+        RecordingFeature_Audio,
+# endif
+        RecordingFeature_Video,
+    };
+    aSupportedRecordingFeatures.assign(aRecordingFeatures,
+                                       aRecordingFeatures + RT_ELEMENTS(aRecordingFeatures));
+#else  /* !VBOX_WITH_RECORDING */
+    aSupportedRecordingFeatures.clear();
+#endif /* VBOX_WITH_RECORDING */
     return S_OK;
 }
 

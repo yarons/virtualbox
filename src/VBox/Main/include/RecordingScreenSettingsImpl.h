@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 95714 2022-07-18 16:13:16Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -88,6 +88,8 @@ private:
 
     HRESULT getAudioCodec(RecordingAudioCodec_T *aCodec);
     HRESULT setAudioCodec(RecordingAudioCodec_T aCodec);
+    HRESULT getAudioDeadline(RecordingCodecDeadline_T *aDeadline);
+    HRESULT setAudioDeadline(RecordingCodecDeadline_T aDeadline);
     HRESULT getAudioHz(ULONG *aHz);
     HRESULT setAudioHz(ULONG aHz);
     HRESULT getAudioBits(ULONG *aBits);
@@ -97,6 +99,8 @@ private:
 
     HRESULT getVideoCodec(RecordingVideoCodec_T *aCodec);
     HRESULT setVideoCodec(RecordingVideoCodec_T aCodec);
+    HRESULT getVideoDeadline(RecordingCodecDeadline_T *aDeadline);
+    HRESULT setVideoDeadline(RecordingCodecDeadline_T aDeadline);
     HRESULT getVideoWidth(ULONG *aVideoWidth);
     HRESULT setVideoWidth(ULONG aVideoWidth);
     HRESULT getVideoHeight(ULONG *aVideoHeight);

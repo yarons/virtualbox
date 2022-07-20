@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 94714 2022-04-27 07:41:12Z alexander.eichner@oracle.com $ */
+/* $Id: SystemPropertiesImpl.h 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -125,6 +125,7 @@ private:
     HRESULT getSupportedVFSTypes(std::vector<VFSType_T> &aSupportedVFSTypes) RT_OVERRIDE;
     HRESULT getSupportedImportOptions(std::vector<ImportOptions_T> &aSupportedImportOptions) RT_OVERRIDE;
     HRESULT getSupportedExportOptions(std::vector<ExportOptions_T> &aSupportedExportOptions) RT_OVERRIDE;
+    HRESULT getSupportedRecordingFeatures(std::vector<RecordingFeature_T> &aSupportedRecordingFeatures) RT_OVERRIDE;
     HRESULT getSupportedRecordingAudioCodecs(std::vector<RecordingAudioCodec_T> &aSupportedRecordingAudioCodecs) RT_OVERRIDE;
     HRESULT getSupportedRecordingVideoCodecs(std::vector<RecordingVideoCodec_T> &aSupportedRecordingVideoCodecs) RT_OVERRIDE;
     HRESULT getSupportedRecordingVSMethods(std::vector<RecordingVideoScalingMethod_T> &aSupportedRecordingVideoScalingMethods) RT_OVERRIDE;
