@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.h 95773 2022-07-21 11:26:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.h 95774 2022-07-21 11:42:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class declaration.
  */
@@ -139,6 +139,11 @@ private:
     /** Prepares connections. */
     void prepareConnections();
 
+    /** Populates mode combo-box. */
+    void populateComboMode();
+
+    /** Updates widget visibility. */
+    void updateWidgetVisibility();
     /** Updates widget availability. */
     void updateWidgetAvailability();
     /** Updates recording file size hint. */
@@ -163,8 +168,10 @@ private:
         /** Holds whether screen options are available. */
         bool  m_fScreenOptionsAvailable;
 
+        /** Holds the list of supported modes. */
+        QVector<UISettingsDefs::RecordingMode>  m_supportedValues;
         /** Holds the mode. */
-        UISettingsDefs::RecordingMode  m_enmMode;
+        UISettingsDefs::RecordingMode           m_enmMode;
 
         /** Holds the folder. */
         QString  m_strFolder;
