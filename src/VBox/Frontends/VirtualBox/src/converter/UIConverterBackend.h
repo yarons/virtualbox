@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 95247 2022-06-10 12:33:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackend.h 95772 2022-07-21 10:21:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -287,7 +287,6 @@ template<> SHARED_LIBRARY_STUFF QString toString(const UIMediumFormat &enmUIMedi
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIMediumFormat &enmUIMediumFormat);
 template<> SHARED_LIBRARY_STUFF UIMediumFormat fromInternalString<UIMediumFormat>(const QString &strUIMediumFormat);
 template<> SHARED_LIBRARY_STUFF QString toString(const UISettingsDefs::RecordingMode &enmRecordingMode);
-template<> SHARED_LIBRARY_STUFF UISettingsDefs::RecordingMode fromString<UISettingsDefs::RecordingMode>(const QString &enmRecordingMode);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const VMActivityOverviewColumn &enmVMActivityOverviewColumn);
 template<> SHARED_LIBRARY_STUFF VMActivityOverviewColumn fromInternalString<VMActivityOverviewColumn>(const QString &strVMActivityOverviewColumn);
 
