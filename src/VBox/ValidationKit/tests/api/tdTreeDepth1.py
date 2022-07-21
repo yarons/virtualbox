@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 94599 2022-04-13 21:53:39Z klaus.espenlaub@oracle.com $
+# $Id: tdTreeDepth1.py 95777 2022-07-21 15:03:58Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94599 $"
+__version__ = "$Revision: 95777 $"
 
 
 # Standard Python imports.
@@ -123,7 +123,11 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
-            oVM = oVBox.openMachine(sSettingsFile)
+            if self.fpApiVer >= 7.0:
+                # Needs a password parameter since 7.0.
+                oVM = oVBox.openMachine(sSettingsFile, "")
+            else:
+                oVM = oVBox.openMachine(sSettingsFile)
             ## @todo r=klaus: count known hard disk images, should be cImages
 
             reporter.log('unregistering VM')
@@ -195,7 +199,11 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
-            oVM = oVBox.openMachine(sSettingsFile)
+            if self.fpApiVer >= 7.0:
+                # Needs a password parameter since 7.0.
+                oVM = oVBox.openMachine(sSettingsFile, "")
+            else:
+                oVM = oVBox.openMachine(sSettingsFile)
             reporter.log('API reports %i snapshots' % (oVM.snapshotCount))
             fRc = fRc and oVM.snapshotCount == cSnapshots
 
@@ -218,4 +226,3 @@ if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from tdApi1 import tdApi1;      # pylint: disable=relative-import
     sys.exit(tdApi1([SubTstDrvTreeDepth1]).main(sys.argv))
-
