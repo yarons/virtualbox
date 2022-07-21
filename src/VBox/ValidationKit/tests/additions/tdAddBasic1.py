@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 94127 2022-03-08 14:44:28Z knut.osmundsen@oracle.com $
+# $Id: tdAddBasic1.py 95776 2022-07-21 12:31:34Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94127 $"
+__version__ = "$Revision: 95776 $"
 
 # Standard Python imports.
 import os;
@@ -403,15 +403,22 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         for sGstFile, _ in aasLogFiles:
             self.txsRmFile(oSession, oTxsSession, sGstFile, 10 * 1000, fIgnoreErrors = True);
 
-        #
-        # The actual install.
         # Enable installing the optional auto-logon modules (VBoxGINA/VBoxCredProv).
         # Also tell the installer to produce the appropriate log files.
+        sExe   = '${CDROM}/%s/VBoxWindowsAdditions.exe' % self.sGstPathGaPrefix;
+        asArgs = [ sExe, '/S', '/l', '/with_autologon' ];
+
+        # As we don't have a console command line to parse for the Guest Additions installer (only a message box) and
+        # unknown / unsupported parameters get ignored with silent installs anyway, we safely can add the following parameter(s)
+        # even if older Guest Addition installers might not support those.
+        if self.fpApiVer >= 6.1:
+            asArgs.extend([ '/install_timestamp_ca' ]);
+
+        #
+        # Do the actual install.
         #
         fRc = self.txsRunTest(oTxsSession, 'VBoxWindowsAdditions.exe', 5 * 60 * 1000,
-                               '${CDROM}/%s/VBoxWindowsAdditions.exe' % self.sGstPathGaPrefix,
-                              ('${CDROM}/%s/VBoxWindowsAdditions.exe' % self.sGstPathGaPrefix, '/S', '/l', '/with_autologon'),
-                              fCheckSessionStatus = True);
+                              sExe, asArgs, fCheckSessionStatus = True);
 
         # Add the Windows Guest Additions installer files to the files we want to download
         # from the guest. Note: There won't be a install_ui.log because of the silent installation.
