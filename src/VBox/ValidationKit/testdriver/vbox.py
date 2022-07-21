@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 95429 2022-06-29 14:07:34Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 95781 2022-07-21 16:05:55Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95429 $"
+__version__ = "$Revision: 95781 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -805,7 +805,11 @@ class VirtualBoxEventHandlerBase(EventHandlerBase):
         elif eType == vboxcon.VBoxEventType_OnGuestPropertyChanged:
             try:
                 oEvtIt = self.oVBoxMgr.queryInterface(oEvtBase, 'IGuestPropertyChangedEvent');
-                return self.onGuestPropertyChange(oEvtIt.machineId, oEvtIt.name, oEvtIt.value, oEvtIt.flags, oEvtIt.fWasDeleted);
+                if hasattr(oEvtIt, 'fWasDeleted'): # Since 7.0 we have a dedicated flag
+                    fWasDeleted = oEvtIt.fWasDeleted;
+                else:
+                    fWasDeleted = False; # Don't indicate deletion here -- there can be empty guest properties.
+                return self.onGuestPropertyChange(oEvtIt.machineId, oEvtIt.name, oEvtIt.value, oEvtIt.flags, fWasDeleted);
             except:
                 reporter.logXcpt();
         ## @todo implement the other events.
