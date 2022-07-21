@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 95777 2022-07-21 15:03:58Z andreas.loeffler@oracle.com $
+# $Id: tdTreeDepth1.py 95779 2022-07-21 15:32:41Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95777 $"
+__version__ = "$Revision: 95779 $"
 
 
 # Standard Python imports.
@@ -123,7 +123,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
-            if self.fpApiVer >= 7.0:
+            if self.oTstDrv.fpApiVer >= 7.0:
                 # Needs a password parameter since 7.0.
                 oVM = oVBox.openMachine(sSettingsFile, "")
             else:
@@ -199,7 +199,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
-            if self.fpApiVer >= 7.0:
+            if self.oTstDrv.fpApiVer >= 7.0:
                 # Needs a password parameter since 7.0.
                 oVM = oVBox.openMachine(sSettingsFile, "")
             else:
