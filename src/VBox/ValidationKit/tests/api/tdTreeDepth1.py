@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 95779 2022-07-21 15:32:41Z andreas.loeffler@oracle.com $
+# $Id: tdTreeDepth1.py 95786 2022-07-22 10:14:40Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95779 $"
+__version__ = "$Revision: 95786 $"
 
 
 # Standard Python imports.
@@ -77,10 +77,11 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             oVM = self.oTstDrv.createTestVM('test-medium', 1, None, 4)
             assert oVM is not None
 
-            # create chain with 300 disk images (medium tree depth limit)
+            # create chain with up to 64 disk images (medium tree depth limit)
             fRc = True
             oSession = self.oTstDrv.openSession(oVM)
-            cImages = 38 #00
+            cImages = random.randrange(1, 64);
+            reporter.log('Creating chain with %d disk images' % (cImages))
             for i in range(1, cImages + 1):
                 sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'Test' + str(i) + '.vdi')
                 if i == 1:
@@ -120,6 +121,8 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             cBaseImages = len(self.oTstDrv.oVBoxMgr.getArray(oVBox, 'hardDisks'))
             reporter.log('API reports %i base images' % (cBaseImages))
             fRc = fRc and cBaseImages == 0
+            if cBaseImages != 0:
+                reporter.error('Got %d initial base images, expected %d' % (cBaseImages, 0));
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
@@ -137,8 +140,9 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             cBaseImages = len(self.oTstDrv.oVBoxMgr.getArray(oVBox, 'hardDisks'))
             reporter.log('API reports %i base images' % (cBaseImages))
             fRc = fRc and cBaseImages == 0
+            if cBaseImages != 0:
+                reporter.error('Got %d base images after unregistering, expected %d' % (cBaseImages, 0));
 
-            assert fRc is True
         except:
             reporter.errorXcpt()
 
@@ -162,16 +166,17 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             fRc = fRc and oSession.createAndAttachHd(sHddPath, cb=1024*1024, sController='SATA Controller', fImmutable=False)
             fRc = fRc and oSession.saveSettings()
 
-            # take 250 snapshots (snapshot tree depth limit)
-            cSnapshots = 13 #00
+            # take up to 200 snapshots (255 is the snapshot tree depth limit)
+            cSnapshots = random.randrange(1, 200); ## @todo r=andy BUGBUG When specifying 254 here, it fails with object 251.
+            reporter.log('Taking %d snapshots' % (cSnapshots))
             for i in range(1, cSnapshots + 1):
                 fRc = fRc and oSession.takeSnapshot('Snapshot ' + str(i))
             fRc = oSession.close() and fRc
             oSession = None
             reporter.log('API reports %i snapshots' % (oVM.snapshotCount))
             fRc = fRc and oVM.snapshotCount == cSnapshots
-
-            assert fRc is True
+            if oVM.snapshotCount != cSnapshots:
+                reporter.error('Got %d initial snapshots, expected %d' % (oVM.snapshotCount, cSnapshots));
 
             # unregister, making sure the images are closed
             sSettingsFile = oVM.settingsFilePath
@@ -196,6 +201,8 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             cBaseImages = len(self.oTstDrv.oVBoxMgr.getArray(oVBox, 'hardDisks'))
             reporter.log('API reports %i base images' % (cBaseImages))
             fRc = fRc and cBaseImages == 0
+            if cBaseImages != 0:
+                reporter.error('Got %d initial base images, expected %d' % (cBaseImages, 0));
 
             # re-register to test loading of settings
             reporter.log('opening VM %s, testing config reading' % (sSettingsFile))
@@ -206,6 +213,8 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
                 oVM = oVBox.openMachine(sSettingsFile)
             reporter.log('API reports %i snapshots' % (oVM.snapshotCount))
             fRc = fRc and oVM.snapshotCount == cSnapshots
+            if oVM.snapshotCount != cSnapshots:
+                reporter.error('Got %d snapshots after re-registering, expected %d' % (oVM.snapshotCount, cSnapshots));
 
             reporter.log('unregistering VM')
             oVM.unregister(vboxcon.CleanupMode_UnregisterOnly)
@@ -214,8 +223,8 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             cBaseImages = len(self.oTstDrv.oVBoxMgr.getArray(oVBox, 'hardDisks'))
             reporter.log('API reports %i base images' % (cBaseImages))
             fRc = fRc and cBaseImages == 0
-
-            assert fRc is True
+            if cBaseImages != 0:
+                reporter.error('Got %d base images after unregistering, expected %d' % (cBaseImages, 0));
         except:
             reporter.errorXcpt()
 
