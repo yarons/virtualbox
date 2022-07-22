@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 95093 2022-05-25 11:32:39Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 95787 2022-07-22 15:06:05Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95093 $"
+__version__ = "$Revision: 95787 $"
 
 # Standard Python imports.
 import copy;
@@ -2001,8 +2001,11 @@ class TestVmManager(object):
                sKind = 'Windows2003', acCpusSup = range(1, 33), fPae = True, sNic0AttachType = 'bridged'),
 
         # W7
-        TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32.vdi',
+        TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32-1.vdi',
                sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
+        # Note: Deprecated due to activation issues; use t-win7-32-1 instead.
+        #TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32.vdi',
+        #       sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
         # Note: Deprecated; use the one in the 6.1 folder.
         #TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '4.2/win7-32/t-win7.vdi',
         #       sKind = 'Windows7', acCpusSup = range(1, 33), fIoApic = True),
