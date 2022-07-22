@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 94139 2022-03-08 22:42:18Z knut.osmundsen@oracle.com $
+# $Id: base.py 95783 2022-07-22 08:33:53Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94139 $"
+__version__ = "$Revision: 95783 $"
 
 
 # Standard Python imports.
@@ -642,7 +642,10 @@ class Process(TdTaskBase):
             if sys.platform == 'win32':
                 if winbase.processPollByHandle(self.hWin):
                     try:
-                        (uPid, uStatus) = os.waitpid(self.hWin, 0);
+                        if hasattr(self.hWin, '__int__'): # Needed for newer pywin32 versions.
+                            (uPid, uStatus) = os.waitpid(self.hWin.__int__(), 0);
+                        else:
+                            (uPid, uStatus) = os.waitpid(self.hWin, 0);
                         if uPid in (self.hWin, self.uPid,):
                             self.hWin.Detach(); # waitpid closed it, so it's now invalid.
                             self.hWin = None;
