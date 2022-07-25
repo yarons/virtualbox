@@ -1,4 +1,4 @@
-; $Id: nocrt-stack.asm 95818 2022-07-25 14:48:00Z knut.osmundsen@oracle.com $
+; $Id: nocrt-stack.asm 95820 2022-07-25 15:21:11Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Stack related Visual C++ support routines.
 ;
@@ -94,6 +94,4 @@ ENDPROC   __report_rangecheckfailure
 BEGINPROC __guard_dispatch_icall_fptr
         int3
 ENDPROC   __guard_dispatch_icall_fptr
-
-
 
