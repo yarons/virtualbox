@@ -1,4 +1,4 @@
-/* $Id: process.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: process.cpp 95805 2022-07-25 12:37:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -37,7 +37,7 @@
 #include "internal/thread.h"
 
 #ifdef RT_OS_WINDOWS
-# include <process.h>
+# include <iprt/win/windows.h>
 #else
 # include <unistd.h>
 #endif
@@ -56,7 +56,7 @@ RTDECL(RTPROCESS) RTProcSelf(void)
 
     /* lazy init. */
 #ifdef _MSC_VER
-    Self = _getpid(); /* crappy ansi compiler */
+    Self = GetCurrentProcessId(); /* since NT 3.1, not 3.51+ as listed on geoffchappell.com */
 #else
     Self = getpid();
 #endif
