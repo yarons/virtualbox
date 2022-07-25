@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 95821 2022-07-25 16:00:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -571,6 +571,8 @@ int GuestDnDState::onDispatch(uint32_t u32Function, void *pvParms, uint32_t cbPa
             AssertReturn(sizeof(DragAndDropSvc::VBOXDNDCBHGACKOPDATA) == cbParms, VERR_INVALID_PARAMETER);
             AssertReturn(DragAndDropSvc::CB_MAGIC_DND_HG_ACK_OP == pCBData->hdr.uMagic, VERR_INVALID_PARAMETER);
 
+            LogRel2(("DnD: Guest responded with action '%s' for host->guest drag event\n", DnDActionToStr(pCBData->uAction)));
+
             setActionDefault(pCBData->uAction);
             rc = notifyAboutGuestResponse();
             break;
@@ -626,6 +628,9 @@ int GuestDnDState::onDispatch(uint32_t u32Function, void *pvParms, uint32_t cbPa
             AssertPtr(pCBData);
             AssertReturn(sizeof(DragAndDropSvc::VBOXDNDCBGHACKPENDINGDATA) == cbParms, VERR_INVALID_PARAMETER);
             AssertReturn(DragAndDropSvc::CB_MAGIC_DND_GH_ACK_PENDING == pCBData->hdr.uMagic, VERR_INVALID_PARAMETER);
+
+            LogRel2(("DnD: Host responded with default action '%s' (%RU32 bytes format data) to guest->host drag event\n",
+                     DnDActionToStr(pCBData->uDefAction), pCBData->cbFormat));
 
             if (   pCBData->cbFormat  == 0
                 || pCBData->cbFormat  > _64K /** @todo Make the maximum size configurable? */

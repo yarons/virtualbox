@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95821 2022-07-25 16:00:26Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the shared DnD code for both, host and guest.
 #
@@ -27,7 +27,8 @@ VBOX_DND_GUESTHOST_FILES := \
 	DnDMIME.cpp \
 	DnDPath.cpp \
 	DnDTransferObject.cpp \
-	DnDTransferList.cpp
+	DnDTransferList.cpp \
+	DnDUtils.cpp
 
 #
 # DnDGuestR3Lib - For tools on the guest side,
@@ -60,4 +61,3 @@ VBoxDnDHostR3Lib_SOURCES   += \
 	$(VBOX_PATH_HOSTSERVICES_COMMON)/message.cpp
 
 include $(FILE_KBUILD_SUB_FOOTER)
-

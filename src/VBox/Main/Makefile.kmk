@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 95821 2022-07-25 16:00:26Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1161,7 +1161,8 @@ ifdef VBOX_WITH_DRAG_AND_DROP
  VBoxC_SOURCES += \
 	src-client/GuestDnDPrivate.cpp \
 	src-client/GuestDnDSourceImpl.cpp \
-	src-client/GuestDnDTargetImpl.cpp
+	src-client/GuestDnDTargetImpl.cpp \
+	$(PATH_ROOT)/src/VBox/GuestHost/DragAndDrop/DnDUtils.cpp
 endif
 ifdef VBOX_WITH_XPCOM
  VBoxC_SOURCES += \
