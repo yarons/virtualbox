@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 95795 2022-07-25 11:22:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -312,7 +312,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsInstallationPath(char **ppszPath)
     rc = vbglR3WinOpenAdditionRegisterKey(&hKey);
     if (RT_SUCCESS(rc))
     {
-        rc = vbglR3QueryRegistryString(hKey, L"InstallDir", _MAX_PATH * sizeof(RTUTF16), ppszPath);
+        rc = vbglR3QueryRegistryString(hKey, L"InstallDir", MAX_PATH * sizeof(RTUTF16), ppszPath);
         if (RT_SUCCESS(rc))
             RTPathChangeToUnixSlashes(*ppszPath, true /*fForce*/);
         rc = vbglR3WinCloseRegKey(hKey, rc);
