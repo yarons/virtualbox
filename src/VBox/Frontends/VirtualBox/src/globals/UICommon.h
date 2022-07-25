@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UICommon.h 95808 2022-07-25 13:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -454,6 +454,12 @@ public:
         static QString usbToolTip(const CUSBDeviceFilter &comFilter);
         /** Generates tool-tip for passed USB @a comWebcam. */
         static QString usbToolTip(const CHostVideoInputDevice &comWebcam);
+    /** @} */
+
+    /** @name COM: Recording stuff.
+     * @{ */
+        /** Returns supported recording features flag. */
+        int supportedRecordingFeatures() const;
     /** @} */
 
     /** @name File-system stuff.

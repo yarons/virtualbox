@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.cpp 95774 2022-07-21 11:42:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.cpp 95808 2022-07-25 13:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class implementation.
  */
@@ -828,10 +828,7 @@ void UIRecordingSettingsEditor::populateComboMode()
         m_pComboMode->clear();
 
         /* Load currently supported recording features: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
-        int iSupportedFlag = 0;
-        foreach (const KRecordingFeature &enmFeature, comProperties.GetSupportedRecordingFeatures())
-            iSupportedFlag |= enmFeature;
+        const int iSupportedFlag = uiCommon().supportedRecordingFeatures();
         m_supportedValues.clear();
         if (!iSupportedFlag)
             m_supportedValues << UISettingsDefs::RecordingMode_None;

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 95756 2022-07-20 12:56:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 95808 2022-07-25 13:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1491,6 +1491,11 @@ void UIIndicatorsPool::updatePool()
 
     /* Acquire status-bar restrictions: */
     m_restrictions = gEDataManager->restrictedStatusBarIndicators(uiCommon().managedVMUuid());
+    /* Make sure 'Recording' is restricted as well if no features supported: */
+    if (   !m_restrictions.contains(IndicatorType_Recording)
+        && !uiCommon().supportedRecordingFeatures())
+        m_restrictions << IndicatorType_Recording;
+
     /* Remove restricted indicators: */
     foreach (const IndicatorType &indicatorType, m_restrictions)
     {

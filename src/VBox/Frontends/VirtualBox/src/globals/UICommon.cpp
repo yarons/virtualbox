@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 95045 2022-05-19 16:20:25Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 95808 2022-07-25 13:00:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2303,6 +2303,15 @@ QString UICommon::usbToolTip(const CHostVideoInputDevice &comWebcam)
         records << strPath;
 
     return records.join("<br>");
+}
+
+int UICommon::supportedRecordingFeatures() const
+{
+    int iSupportedFlag = 0;
+    CSystemProperties comProperties = virtualBox().GetSystemProperties();
+    foreach (const KRecordingFeature &enmFeature, comProperties.GetSupportedRecordingFeatures())
+        iSupportedFlag |= enmFeature;
+    return iSupportedFlag;
 }
 
 /* static */
