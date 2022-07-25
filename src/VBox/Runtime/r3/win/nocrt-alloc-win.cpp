@@ -1,4 +1,4 @@
-/* $Id: nocrt-alloc-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-alloc-win.cpp 95802 2022-07-25 12:27:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Basic allocators, Windows.
  */
@@ -77,6 +77,20 @@ RTDECL(void *) RTMemAllocZTag(size_t cb, const char *pszTag)
 {
     RT_NOREF(pszTag);
     return HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cb);
+}
+
+
+#undef RTMemAllocVarTag
+RTDECL(void *) RTMemAllocVarTag(size_t cbUnaligned, const char *pszTag)
+{
+    return RTMemAllocTag(cbUnaligned, pszTag);
+}
+
+
+#undef RTMemAllocZVarTag
+RTDECL(void *) RTMemAllocZVarTag(size_t cbUnaligned, const char *pszTag)
+{
+    return RTMemAllocZTag(cbUnaligned, pszTag);
 }
 
 
