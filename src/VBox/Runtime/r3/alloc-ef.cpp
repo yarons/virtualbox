@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-ef.cpp 95818 2022-07-25 14:48:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -35,9 +35,11 @@
 #include <iprt/thread.h>
 #include <VBox/sup.h>
 #include <iprt/errcore.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef IPRT_NO_CRT
+# include <errno.h>
+# include <stdio.h>
+# include <stdlib.h>
+#endif
 
 #include <iprt/alloc.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95815 2022-07-25 13:25:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95818 2022-07-25 14:48:00Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2273,6 +2273,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
  	r3/win/nocrt-RTLogWriteStdErr-win.cpp \
  	r3/win/nocrt-RTLogWriteStdOut-win.cpp
  RuntimeGuestR3_SOURCES.x86 += \
+ 	r3/win/nocrt-atexit.asm \
+ 	r3/win/nocrt-mainCRTStartup.asm \
+ 	r3/win/nocrt-stack.asm \
  	common/string/memcpy.asm \
  	common/string/memchr.asm \
  	common/string/memcmp.asm \
@@ -2284,6 +2287,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
  	common/string/strncmp.asm \
  	common/string/strcpy.asm
  RuntimeGuestR3_SOURCES.amd64 += \
+ 	r3/win/nocrt-atexit.asm \
+ 	r3/win/nocrt-mainCRTStartup.asm \
+ 	r3/win/nocrt-stack.asm \
  	common/string/memcpy.asm \
  	common/string/memchr.asm \
  	common/string/memcmp.asm \
