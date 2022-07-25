@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: zip.cpp 95807 2022-07-25 12:39:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Compression.
  */
@@ -71,7 +71,9 @@
 #include <iprt/log.h>
 #include <iprt/string.h>
 
-#include <errno.h>
+#ifndef IPRT_NO_CRT
+# include <errno.h>
+#endif
 
 
 /*********************************************************************************************************************************
