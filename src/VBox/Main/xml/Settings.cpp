@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 95771 2022-07-21 10:19:46Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 95796 2022-07-25 11:31:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -8671,6 +8671,9 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
             || strStateKeyStore.isNotEmpty()
             || hardwareMachine.nvramSettings.strKeyId.isNotEmpty()
             || hardwareMachine.nvramSettings.strKeyStore.isNotEmpty()
+            /* Default for newly created VMs in VBox 7.0.
+             * Older VMs might have a specific audio driver set (also for VMs created with < VBox 7.0). */
+            || hardwareMachine.audioAdapter.driverType == AudioDriverType_Default
             || recordingSettings.areDefaultSettings() == false
             || strLogKeyId.isNotEmpty()
             || strLogKeyStore.isEmpty())
