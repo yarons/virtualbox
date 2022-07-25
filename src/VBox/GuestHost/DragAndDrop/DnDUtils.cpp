@@ -1,4 +1,4 @@
-/* $Id: DnDUtils.cpp 95821 2022-07-25 16:00:26Z andreas.loeffler@oracle.com $ */
+/* $Id: DnDUtils.cpp 95823 2022-07-25 16:08:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - Common utility functions.
  */
@@ -19,18 +19,10 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/GuestHost/DragAndDrop.h>
 
 #include <iprt/assert.h>
-#include <iprt/dir.h>
-#include <iprt/err.h>
-#include <iprt/file.h>
-#include <iprt/mem.h>
-#include <iprt/path.h>
-#include <iprt/string.h>
-
-#include <VBox/log.h>
+#include <iprt/errcore.h>
 
 
 /**
