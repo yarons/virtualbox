@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 95361 2022-06-23 21:47:01Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 95793 2022-07-25 11:07:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3720,6 +3720,29 @@ VMMR3_INT_DECL(void) CPUMR3ClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmF
     {
         PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->cpum.s.fChanged |= CPUM_CHANGED_CPUID;
+    }
+}
+
+
+/**
+ * Do some final polishing after all calls to CPUMR3SetGuestCpuIdFeature and
+ * CPUMR3ClearGuestCpuIdFeature are (probably) done.
+ *
+ * @param   pVM             The cross context VM structure.
+ */
+void cpumR3CpuIdRing3InitDone(PVM pVM)
+{
+    /*
+     * Do not advertise NX w/o PAE, seems to confuse windows 7 (black screen very
+     * early in real mode).
+     */
+    PCPUMCPUIDLEAF pStdLeaf = cpumCpuIdGetLeaf(pVM, UINT32_C(0x00000001));
+    PCPUMCPUIDLEAF pExtLeaf = cpumCpuIdGetLeaf(pVM, UINT32_C(0x80000001));
+    if (pStdLeaf && pExtLeaf)
+    {
+        if (   !(pStdLeaf->uEdx & X86_CPUID_FEATURE_EDX_PAE)
+            && (pExtLeaf->uEdx & X86_CPUID_EXT_FEATURE_EDX_NX))
+            pExtLeaf->uEdx &= ~X86_CPUID_EXT_FEATURE_EDX_NX;
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 94943 2022-05-09 09:39:04Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 95793 2022-07-25 11:07:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4392,6 +4392,10 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
 
             /* Register statistic counters for MSRs. */
             cpumR3MsrRegStats(pVM);
+
+            /* There shouldn't be any more calls to CPUMR3SetGuestCpuIdFeature and
+               CPUMR3ClearGuestCpuIdFeature now, so do some final CPUID polishing (NX). */
+            cpumR3CpuIdRing3InitDone(pVM);
 
             /* Create VMX-preemption timer for nested guests if required.  Must be
                done here as CPUM is initialized before TM. */
