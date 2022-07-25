@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 95734 2022-07-19 21:50:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDnDDataObject.cpp 95824 2022-07-25 16:09:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -485,8 +485,13 @@ STDMETHODIMP VBoxDnDDataObject::EnumDAdvise(IEnumSTATDATA **ppEnumAdvise)
 int VBoxDnDDataObject::Abort(void)
 {
     LogFlowFunc(("Aborting ...\n"));
-    m_enmStatus = Status_Aborted;
-    return RTSemEventSignal(m_EvtDropped);
+    if (m_enmStatus == Status_Dropping)
+    {
+        m_enmStatus = Status_Aborted;
+        return RTSemEventSignal(m_EvtDropped);
+    }
+
+    return VINF_SUCCESS;
 }
 
 /**
