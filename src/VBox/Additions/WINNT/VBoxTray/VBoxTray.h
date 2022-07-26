@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 95827 2022-07-26 09:55:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.h 95828 2022-07-26 09:59:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -42,7 +42,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** Title of the program to show. 
+/** Title of the program to show.
  *  Also shown as part of message boxes. */
 #define VBOX_VBOXTRAY_TITLE                     "VBoxTray"
 
