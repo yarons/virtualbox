@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 95853 2022-07-26 23:40:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -19,8 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <stdio.h>
-
 #include <iprt/assert.h>
 #include <iprt/buildconfig.h>
 #include <iprt/dir.h>
@@ -236,7 +234,7 @@ static int vgsvcToolboxStrmInit(void)
 {
     /* Set stdout's mode to binary. This is required for outputting all the machine-readable
      * data correctly. */
-    int rc = RTStrmSetMode(g_pStdOut, 1 /* Binary mode */, -1 /* Current code set, not changed */);
+    int rc = RTStrmSetMode(g_pStdOut, true /* Binary mode */, -1 /* Current code set, not changed */);
     if (RT_FAILURE(rc))
         RTMsgError("Unable to set stdout to binary mode, rc=%Rrc\n", rc);
 
