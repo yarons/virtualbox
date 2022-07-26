@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: HMR0A.asm 95830 2022-07-26 11:26:22Z knut.osmundsen@oracle.com $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines.
 ;
@@ -1041,7 +1041,7 @@ size NAME(RT_CONCAT(hmR0VmxStartVmHostRIP,%1))  NAME(RT_CONCAT(hmR0VmxStartVm,%1
 
 %endmacro ; hmR0VmxStartVmTemplate
 
-%macro hmR0VmxStartVmSseTemplate 3
+%macro hmR0VmxStartVmSseTemplate 2
 hmR0VmxStartVmTemplate _SansXcr0_SansIbpbEntry_SansL1dEntry_SansMdsEntry_SansIbpbExit %+ %2, 0, 0                 | 0                | 0                | 0               , %1
 hmR0VmxStartVmTemplate _WithXcr0_SansIbpbEntry_SansL1dEntry_SansMdsEntry_SansIbpbExit %+ %2, 1, 0                 | 0                | 0                | 0               , %1
 hmR0VmxStartVmTemplate _SansXcr0_WithIbpbEntry_SansL1dEntry_SansMdsEntry_SansIbpbExit %+ %2, 0, HM_WSF_IBPB_ENTRY | 0                | 0                | 0               , %1
@@ -1076,10 +1076,10 @@ hmR0VmxStartVmTemplate _SansXcr0_WithIbpbEntry_WithL1dEntry_WithMdsEntry_WithIbp
 hmR0VmxStartVmTemplate _WithXcr0_WithIbpbEntry_WithL1dEntry_WithMdsEntry_WithIbpbExit %+ %2, 1, HM_WSF_IBPB_ENTRY | HM_WSF_L1D_ENTRY | HM_WSF_MDS_ENTRY | HM_WSF_IBPB_EXIT, %1
 %endmacro
 
-hmR0VmxStartVmSseTemplate 0,,RT_NOTHING
+hmR0VmxStartVmSseTemplate 0,,
 %ifdef VBOX_WITH_KERNEL_USING_XMM
-hmR0VmxStartVmSseTemplate 1,_SseManual,RT_NOTHING
-hmR0VmxStartVmSseTemplate 2,_SseXSave,RT_NOTHING
+hmR0VmxStartVmSseTemplate 1,_SseManual
+hmR0VmxStartVmSseTemplate 2,_SseXSave
 %endif
 
 
