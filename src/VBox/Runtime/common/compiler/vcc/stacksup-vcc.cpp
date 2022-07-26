@@ -1,4 +1,4 @@
-/* $Id: nocrt-stacksup-win.cpp 95831 2022-07-26 11:44:36Z knut.osmundsen@oracle.com $ */
+/* $Id: stacksup-vcc.cpp 95832 2022-07-26 11:53:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Basic allocators, Windows.
  */
