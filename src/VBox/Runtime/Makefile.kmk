@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95834 2022-07-26 14:46:59Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95842 2022-07-26 21:11:14Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2259,7 +2259,6 @@ ifdef VBOX_WITH_NOCRT_STATIC
 	r3/stream.cpp \
  	common/misc/json.cpp \
  	common/string/ministring.cpp \
- 	generic/env-generic.cpp \
 	generic/RTLogWriteStdErr-generic.cpp \
 	generic/RTLogWriteStdOut-generic.cpp \
  	,$(RuntimeGuestR3_SOURCES)) \

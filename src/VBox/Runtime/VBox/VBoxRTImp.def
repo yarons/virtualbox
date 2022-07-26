@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 94871 2022-05-05 23:56:27Z knut.osmundsen@oracle.com $
+; $Id: VBoxRTImp.def 95842 2022-07-26 21:11:14Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1003,7 +1003,6 @@ EXPORTS
     RTEnvFreeUtf16Block
     RTEnvGet
     RTEnvGetEx
-    RTEnvGetExecEnvP
     RTEnvPut
     RTEnvPutEx
     RTEnvQueryUtf16Block

@@ -1,4 +1,4 @@
-/* $Id: tstRTEnv.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTEnv.cpp 95842 2022-07-26 21:11:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Environment.
  */
@@ -302,8 +302,9 @@ int main()
     /*
      * execve envp and we're done.
      */
+#ifndef RT_OS_WINDOWS
     RTTestSub(hTest, "RTEnvGetExecEnvP");
-    const char * const *papsz = RTEnvGetExecEnvP(RTENV_DEFAULT);
+    papsz = RTEnvGetExecEnvP(RTENV_DEFAULT);
     CHECK(papsz != NULL);
     papsz = RTEnvGetExecEnvP(RTENV_DEFAULT);
     CHECK(papsz != NULL);
@@ -312,6 +313,7 @@ int main()
     CHECK(papsz != NULL);
     papsz = RTEnvGetExecEnvP(Env);
     CHECK(papsz != NULL);
+#endif
 
     CHECK_RC(RTEnvDestroy(Env), VINF_SUCCESS);
 
