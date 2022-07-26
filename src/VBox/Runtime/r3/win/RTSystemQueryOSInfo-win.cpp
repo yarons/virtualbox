@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 95846 2022-07-26 22:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 95858 2022-07-26 23:56:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -110,7 +110,8 @@ static RTWINPRODTYPE rtSystemWinGetProductInfo(DWORD dwOSMajorVersion, DWORD dwO
 /**
  * Appends the product type if available (Vista & 2003 only for some reason).
  *
- * @param   pszTmp      The buffer. Assumes it's big enough.
+ * @param   pszTmp      The buffer.
+ * @param   cbTmp       The buffer size.
  */
 static void rtSystemWinAppendProductType(char *pszTmp, size_t cbTmp)
 {
