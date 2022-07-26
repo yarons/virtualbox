@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 94624 2022-04-19 09:20:51Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxService.cpp 95852 2022-07-26 23:39:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -56,7 +56,6 @@
 #ifndef _MSC_VER
 # include <unistd.h>
 #endif
-#include <errno.h>
 #ifndef RT_OS_WINDOWS
 # include <signal.h>
 # ifdef RT_OS_OS2
