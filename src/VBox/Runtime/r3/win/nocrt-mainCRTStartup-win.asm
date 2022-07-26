@@ -1,4 +1,4 @@
-; $Id: nocrt-mainCRTStartup.asm 95820 2022-07-25 15:21:11Z knut.osmundsen@oracle.com $
+; $Id: nocrt-mainCRTStartup-win.asm 95831 2022-07-26 11:44:36Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Alias mainCRTStartup to CustomMainEntrypoint in nocrt-startup-exe-win.cpp.
 ;
