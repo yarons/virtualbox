@@ -1,4 +1,4 @@
-/* $Id: nt.h 95111 2022-05-25 20:41:02Z knut.osmundsen@oracle.com $ */
+/* $Id: nt.h 95841 2022-07-26 21:07:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1612,6 +1612,10 @@ DECL_FORCE_INLINE(uint32_t) RTNtLastErrorValue(void)  { return __readgsdword(RT_
 #endif
 #define NtCurrentPeb()           RTNtCurrentPeb()
 
+#ifdef IN_RING3
+RT_DECL_NTAPI(void) RtlAcquirePebLock(void);
+RT_DECL_NTAPI(void) RtlReleasePebLock(void);
+#endif
 
 /** @} */
 
