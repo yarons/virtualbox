@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDnD.h 95837 2022-07-26 16:16:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -72,6 +72,8 @@ public:
 
     static const char* ClipboardFormatToString(CLIPFORMAT fmt);
 
+    int Init(LPFORMATETC pFormatEtc, LPSTGMEDIUM pStgMed, ULONG cFormats);
+    int Destroy(void);
     int Abort(void);
     void SetStatus(Status status);
     int Signal(const RTCString &strFormat, const void *pvData, size_t cbData);
@@ -209,7 +211,7 @@ class VBoxDnDEnumFormatEtc : public IEnumFORMATETC
 {
 public:
 
-    VBoxDnDEnumFormatEtc(LPFORMATETC pFormatEtc, ULONG cFormats);
+    VBoxDnDEnumFormatEtc(LPFORMATETC pFormatEtc, ULONG uIdx, ULONG cToCopy, ULONG cTotal);
     virtual ~VBoxDnDEnumFormatEtc(void);
 
 public:
@@ -225,7 +227,11 @@ public:
 
 public:
 
-    static void CopyFormat(LPFORMATETC pFormatDest, LPFORMATETC pFormatSource);
+    int Init(LPFORMATETC pFormatEtc, ULONG uIdx, ULONG cToCopy, ULONG cTotal);
+
+public:
+
+    static int     CopyFormat(LPFORMATETC pFormatDest, LPFORMATETC pFormatSource);
     static HRESULT CreateEnumFormatEtc(UINT cFormats, LPFORMATETC pFormatEtc, IEnumFORMATETC **ppEnumFormatEtc);
 
 private:
