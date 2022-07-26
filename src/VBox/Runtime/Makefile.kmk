@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95832 2022-07-26 11:53:47Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95834 2022-07-26 14:46:59Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2304,6 +2304,8 @@ ifdef VBOX_WITH_NOCRT_STATIC
  	common/string/strcpy.asm
  RuntimeGuestR3_SOURCES.win += \
  	common/compiler/vcc/loadcfg-vcc.c \
+ 	common/compiler/vcc/tlsdir-vcc.c \
+ 	common/compiler/vcc/initializers-c-cpp-vcc.cpp \
  	common/compiler/vcc/stacksup-vcc.cpp \
  	r3/win/nocrt-startup-exe-win.cpp \
  	r3/win/nocrt-alloc-win.cpp \
