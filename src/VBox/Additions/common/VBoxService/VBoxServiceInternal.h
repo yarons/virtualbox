@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceInternal.h 95854 2022-07-26 23:40:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -21,10 +21,8 @@
 # pragma once
 #endif
 
-#include <stdio.h>
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
-# include <process.h> /* Needed for file version information. */
 #endif
 
 #include <iprt/list.h>
