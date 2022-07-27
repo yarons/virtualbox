@@ -1,4 +1,4 @@
-/* $Id: tstHook.cpp 95871 2022-07-27 02:38:21Z knut.osmundsen@oracle.com $ */
+/* $Id: tstHook.cpp 95873 2022-07-27 07:44:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHook testcase.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 #include <VBoxHook.h>
+#include <iprt/types.h>
 
 
 int main()
