@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDisplay.h 95867 2022-07-27 01:24:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications
  */
@@ -20,6 +20,18 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/** @todo r=bird: This file has the same name as ../include/VBoxDisplay.h
+ *        which some of the VBoxTray source files also wish to include.
+ *
+ *        The result is a certifiable mess. To quote a Tina Fey's character in
+ *        Ponyo: "BAKA BAKA BAKA BAKA BAKA BAKA BAKA BAKA BAKA BAKA BAKA!!!"
+ *
+ *        There are too many 'ing header files here.  Most of them can be merged
+ *        into VBoxTray.h (or a VBoxTrayInternal.h file).
+ *
+ */
+
 
 DWORD VBoxDisplayGetCount();
 DWORD VBoxDisplayGetConfig(const DWORD NumDevices, DWORD *pDevPrimaryNum, DWORD *pNumDevices, DISPLAY_DEVICE *paDisplayDevices, DEVMODE *paDeviceModes);
