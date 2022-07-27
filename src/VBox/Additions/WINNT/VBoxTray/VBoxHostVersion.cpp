@@ -1,4 +1,4 @@
-/* $Id: VBoxHostVersion.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHostVersion.cpp 95866 2022-07-27 01:19:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
@@ -42,20 +42,21 @@ int VBoxCheckHostVersion(void)
     {
         char *pszHostVersion;
         char *pszGuestVersion;
-        bool bUpdate;
-        rc = VbglR3HostVersionCheckForUpdate(uGuestPropSvcClientID, &bUpdate, &pszHostVersion, &pszGuestVersion);
+        bool fUpdate;
+        rc = VbglR3HostVersionCheckForUpdate(uGuestPropSvcClientID, &fUpdate, &pszHostVersion, &pszGuestVersion);
         if (RT_SUCCESS(rc))
         {
-            if (bUpdate)
+            if (fUpdate)
             {
                 char szMsg[256]; /* Sizes according to MSDN. */
                 char szTitle[64];
 
                 /** @todo Add some translation macros here. */
-                _snprintf(szTitle, sizeof(szTitle), "VirtualBox Guest Additions update available!");
-                _snprintf(szMsg, sizeof(szMsg), "Your guest is currently running the Guest Additions version %s. "
-                                                "We recommend updating to the latest version (%s) by choosing the "
-                                                "install option from the Devices menu.", pszGuestVersion, pszHostVersion);
+                RTStrPrintf(szTitle, sizeof(szTitle), "VirtualBox Guest Additions update available!");
+                RTStrPrintf(szMsg, sizeof(szMsg),
+                            "Your guest is currently running the Guest Additions version %s. "
+                            "We recommend updating to the latest version (%s) by choosing the "
+                            "install option from the Devices menu.", pszGuestVersion, pszHostVersion);
 
                 rc = hlpShowBalloonTip(g_hInstance, g_hwndToolWindow, ID_TRAYICON,
                                        szMsg, szTitle,
