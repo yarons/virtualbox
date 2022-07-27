@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 95863 2022-07-27 01:10:09Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTray.cpp 95864 2022-07-27 01:16:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1046,15 +1046,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             { "/help",              'h',                         RTGETOPT_REQ_NOTHING },
             { "/?",                 'h',                         RTGETOPT_REQ_NOTHING },
             { "--logfile",          'l',                         RTGETOPT_REQ_STRING  },
-            { "-l",                 'l',                         RTGETOPT_REQ_STRING  },
-            { "/l",                 'l',                         RTGETOPT_REQ_STRING  },
             { "--verbose",          'v',                         RTGETOPT_REQ_NOTHING },
-            { "-v",                 'v',                         RTGETOPT_REQ_NOTHING },
-            { "/v",                 'v',                         RTGETOPT_REQ_NOTHING },
             { "--version",          'V',                         RTGETOPT_REQ_NOTHING },
-            { "-version",           'V',                         RTGETOPT_REQ_NOTHING },
-            { "/version",           'V',                         RTGETOPT_REQ_NOTHING },
-            { "/V",                 'V',                         RTGETOPT_REQ_NOTHING }
         };
 
         RTGETOPTSTATE GetState;
