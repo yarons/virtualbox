@@ -1,4 +1,4 @@
-# $Id: Config.kmk 95883 2022-07-27 19:14:12Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 95884 2022-07-27 20:16:27Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2347,9 +2347,6 @@ VBOX_RTISOMAKER  ?= $(PATH_OBJ)/bldRTIsoMaker/bldRTIsoMaker$(HOSTSUFF_EXE)
 
 # RTLdrCheckImports (checks imports against oldest supported OS version (GAs typically))
 VBOX_RTLDRCHECKIMPORTS ?= $(PATH_OBJ)/bldRTLdrCheckImports/bldRTLdrCheckImports$(HOSTSUFF_EXE)
-
-# RTTar (our tar clone).
-VBOX_RTTAR      ?= $(PATH_OBJ)/bldRTTar/bldRTTar$(HOSTSUFF_EXE)
 
 # VBoxCmp (simple /bin/cmp with more sensible output)
 VBOX_VBOXCMP    ?= $(PATH_OBJ)/VBoxCmp/VBoxCmp$(HOSTSUFF_EXE)
@@ -8968,7 +8965,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95883 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 95884 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
