@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95862 2022-07-27 00:58:01Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -30,6 +30,7 @@ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 else
  VBoxTray_DEFS   := VBOX_WITH_HGCM VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"
 endif
+VBoxTray_LDFLAGS  = -SubSystem:Windows
 VBoxTray_INCS     = \
 	../include \
 	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video/disp/wddm/shared \
