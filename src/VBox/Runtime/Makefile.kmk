@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95870 2022-07-27 02:38:01Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95872 2022-07-27 02:44:18Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2861,6 +2861,7 @@ RuntimeR3NoCrt_SOURCES.amd64 := \
 
 RuntimeR3NoCrt_SOURCES.win := \
 	r3/win/nocrt-startup-exe-win.cpp \
+	r3/win/nocrt-startup-common-win.cpp \
 	r3/win/nocrt-alloc-win.cpp \
 	r3/win/nocrt-streams-win.cpp \
 	\
