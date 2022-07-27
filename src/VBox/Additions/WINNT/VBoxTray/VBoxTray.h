@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 95828 2022-07-26 09:59:28Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.h 95869 2022-07-27 01:29:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -22,11 +22,6 @@
 #endif
 
 #include <iprt/win/windows.h>
-
-#include <tchar.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <process.h>
 
 #include <iprt/initterm.h>
 #include <iprt/string.h>
