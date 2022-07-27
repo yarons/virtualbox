@@ -1,4 +1,4 @@
-/* $Id: tstVBoxGINA.cpp 95874 2022-07-27 08:01:09Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxGINA.cpp 95875 2022-07-27 08:02:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVBoxGINA.cpp - Simple testcase for invoking VBoxGINA.dll.
  */
@@ -34,7 +34,7 @@ int main()
         RTPrintf("VBoxGINA found\n");
 
         FARPROC pfnDebug = GetProcAddress(hMod, "VBoxGINADebug");
-        if (!pfnDebug)
+        if (pfnDebug)
         {
             RTPrintf("Calling VBoxGINA ...\n");
             dwErr = pfnDebug();
