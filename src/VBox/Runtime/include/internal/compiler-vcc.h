@@ -1,4 +1,4 @@
-/* $Id: compiler-vcc.h 95845 2022-07-26 22:28:44Z knut.osmundsen@oracle.com $ */
+/* $Id: compiler-vcc.h 95870 2022-07-27 02:38:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal header for the Visual C++ Compiler Support Code.
  */
@@ -88,8 +88,11 @@ RT_C_DECLS_BEGIN
 
 extern unsigned _fltused;
 
+void rtVccInitSecurityCookie(void) RT_NOEXCEPT;
+void rtVccWinInitProcExecPath(void) RT_NOEXCEPT;
 int  rtVccInitializersRunInit(void) RT_NOEXCEPT;
 void rtVccInitializersRunTerm(void) RT_NOEXCEPT;
+void rtVccTermRunAtExit(void) RT_NOEXCEPT;
 
 
 RT_C_DECLS_END
