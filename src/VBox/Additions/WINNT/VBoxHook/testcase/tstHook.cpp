@@ -1,4 +1,4 @@
-/* $Id: tstHook.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstHook.cpp 95871 2022-07-27 02:38:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxHook testcase.
  */
@@ -21,19 +21,23 @@
 *********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 #include <VBoxHook.h>
-#include <stdio.h>
 
 
 int main()
 {
-    printf("Enabling global hook\n");
+    DWORD cbIgnores;
+    WriteFile(GetStdHandle(STD_OUTPUT_HANDLE), RT_STR_TUPLE("Enabling global hook\r\n"), &cbIgnores, NULL);
 
     HANDLE hEvent = CreateEvent(NULL, FALSE, FALSE, VBOXHOOK_GLOBAL_WT_EVENT_NAME);
 
     VBoxHookInstallWindowTracker(GetModuleHandle("VBoxHook.dll"));
-    getchar();
 
-    printf("Disabling global hook\n");
+    /* wait for input. */
+    uint8_t ch;
+    ReadFile(GetStdHandle(STD_INPUT_HANDLE), &ch, sizeof(ch), &cbIgnores, NULL);
+
+    /* disable hook. */
+    WriteFile(GetStdHandle(STD_OUTPUT_HANDLE), RT_STR_TUPLE("Disabling global hook\r\n"), &cbIgnores, NULL);
     VBoxHookRemoveWindowTracker();
     CloseHandle(hEvent);
 
