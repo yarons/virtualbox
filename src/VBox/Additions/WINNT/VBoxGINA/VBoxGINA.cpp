@@ -1,4 +1,4 @@
-/* $Id: VBoxGINA.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGINA.cpp 95874 2022-07-27 08:01:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGINA -- Windows Logon DLL for VirtualBox
  */
@@ -15,8 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 
 #include <iprt/buildconfig.h>
@@ -31,10 +33,9 @@
 #include "Helper.h"
 #include "Dialog.h"
 
-/*
- * Global variables.
- */
-
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 /** DLL instance handle. */
 HINSTANCE hDllInstance;
 
