@@ -1,4 +1,4 @@
-; $Id: guard-vcc.asm 95832 2022-07-26 11:53:47Z knut.osmundsen@oracle.com $
+; $Id: guard-vcc.asm 95916 2022-07-28 14:29:03Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Control Flow Guard related Visual C++ support routines.
 ;
@@ -45,7 +45,7 @@
 section .0000cfg rdata align=8
 
 GLOBALNAME __guard_check_icall_fptr
-        RTCCPTR_DEF     __guard_check_icall_nop
+        RTCCPTR_DEF     NAME(__guard_check_icall_nop)
 
 %ifdef RT_ARCH_AMD64
 GLOBALNAME __guard_dispatch_icall_fptr
