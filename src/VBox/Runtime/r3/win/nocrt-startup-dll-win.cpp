@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-dll-win.cpp 95870 2022-07-27 02:38:01Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-startup-dll-win.cpp 95887 2022-07-28 01:40:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -57,8 +57,6 @@ static volatile int32_t g_cAttached = 0;
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-extern DECLHIDDEN(void) InitStdHandles(PRTL_USER_PROCESS_PARAMETERS pParams); /* nocrt-streams-win.cpp */ /** @todo put in header */
-
 extern "C" BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID pvReserved);
 
 
@@ -76,8 +74,6 @@ DECL_NO_INLINE(static, BOOL) rtVccDllMainProcessAttach(HINSTANCE hInstance, LPVO
      */
     if (g_cAttached == 0)
     {
-        PPEB pPeb = RTNtCurrentPeb();
-        InitStdHandles(pPeb->ProcessParameters);
         rtVccWinInitProcExecPath();
 
         int rc = rtVccInitializersRunInit();
