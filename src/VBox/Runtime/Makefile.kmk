@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95887 2022-07-28 01:40:23Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95915 2022-07-28 14:28:38Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2308,6 +2308,7 @@ ifdef VBOX_WITH_NOCRT_STATIC
  	common/compiler/vcc/initializers-c-cpp-vcc.cpp \
  	common/compiler/vcc/stacksup-vcc.cpp \
  	common/compiler/vcc/fltused-vcc.cpp \
+ 	common/compiler/vcc/purecall-vcc.cpp \
  	r3/win/nocrt-startup-exe-win.cpp \
  	r3/win/nocrt-startup-dll-win.cpp \
  	r3/win/nocrt-startup-common-win.cpp \
