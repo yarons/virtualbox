@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95900 2022-07-28 11:50:14Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 95904 2022-07-28 11:58:38Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -23,7 +23,7 @@ vboxmouse_xorg_INCS = \
 	$(VBOX_PATH_X11_ROOT)/libpciaccess-0.10.8 \
 	$(VBOX_PATH_X11_ROOT)/pixman-0.40.0 \
 	$(VBOX_PATH_X11_ROOT)/xextproto-7.1.1 \
-	$(VBOX_PATH_X11_ROOT)/xproto-7.0.18
+	$(VBOX_PATH_X11_ROOT)/xproto-7.0.31
 
 #
 # vboxmouse_drv
