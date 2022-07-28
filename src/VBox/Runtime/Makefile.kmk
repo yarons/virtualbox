@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95925 2022-07-28 22:49:32Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95928 2022-07-28 23:04:12Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2302,6 +2302,8 @@ RuntimeGuestR3_SOURCES                   = $(filter-out \
 	common/time/timesupref.cpp \
 	common/time/timesupA.asm \
 	common/time/timesup.cpp \
+ 	common/zip/xarvfs.cpp \
+ 	r3/xml.cpp \
 	generic/RTLogWriteUser-generic.cpp \
 	, $(RuntimeR3_SOURCES)) \
 	\
