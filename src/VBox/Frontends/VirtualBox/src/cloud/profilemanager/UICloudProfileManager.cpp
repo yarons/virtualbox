@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 93868 2022-02-21 12:56:10Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 95912 2022-07-28 14:19:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -202,9 +202,9 @@ void UICloudProfileManagerWidget::retranslateUi()
 
     /* Translate tree-widget: */
     m_pTreeWidget->setHeaderLabels(   QStringList()
-                                   << tr("Source")
-                                   << tr("List VMs"));
-    m_pTreeWidget->setWhatsThis(tr("Registered cloud providers and profiles"));
+                                   << UICloudProfileManager::tr("Source")
+                                   << UICloudProfileManager::tr("List VMs"));
+    m_pTreeWidget->setWhatsThis(UICloudProfileManager::tr("Registered cloud providers and profiles"));
 }
 
 bool UICloudProfileManagerWidget::makeSureChangesResolved()

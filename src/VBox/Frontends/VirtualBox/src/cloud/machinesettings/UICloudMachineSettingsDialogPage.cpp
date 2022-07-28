@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 95726 2022-07-19 12:12:40Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 95912 2022-07-28 14:19:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -57,7 +57,7 @@ void UICloudMachineSettingsDialogPage::makeSureDataCommitted()
 void UICloudMachineSettingsDialogPage::retranslateUi()
 {
     AssertPtrReturnVoid(m_pFormEditor.data());
-    m_pFormEditor->setWhatsThis(tr("Contains a list of cloud machine settings."));
+    m_pFormEditor->setWhatsThis(UICloudMachineSettingsDialog::tr("Contains a list of cloud machine settings."));
 }
 
 void UICloudMachineSettingsDialogPage::prepare()
