@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 95252 2022-06-12 17:29:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 95919 2022-07-28 14:58:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -789,12 +789,12 @@ void UIHelpBrowserTab::setActionTextAndToolTip(QAction *pAction, const QString &
 
 void UIHelpBrowserTab::retranslateUi()
 {
-    setActionTextAndToolTip(m_pHomeAction, tr("Home"), tr("Return to Start Page"));
-    setActionTextAndToolTip(m_pBackwardAction, tr("Backward"), tr("Go Back to Previous Page"));
-    setActionTextAndToolTip(m_pForwardAction, tr("Forward"), tr("Go Forward to Next Page"));
-    setActionTextAndToolTip(m_pAddBookmarkAction, tr("Add Bookmark"), tr("Add a New Bookmark"));
-    setActionTextAndToolTip(m_pReloadPageAction, tr("Reload"), tr("Reload the Current Page"));
-    setActionTextAndToolTip(m_pFindInPageAction, tr("Find in Page"), tr("Find a String in the Current Page"));
+    setActionTextAndToolTip(m_pHomeAction, UIHelpBrowserWidget::tr("Home"), UIHelpBrowserWidget::tr("Return to Start Page"));
+    setActionTextAndToolTip(m_pBackwardAction, UIHelpBrowserWidget::tr("Backward"), UIHelpBrowserWidget::tr("Go Back to Previous Page"));
+    setActionTextAndToolTip(m_pForwardAction, UIHelpBrowserWidget::tr("Forward"), UIHelpBrowserWidget::tr("Go Forward to Next Page"));
+    setActionTextAndToolTip(m_pAddBookmarkAction, UIHelpBrowserWidget::tr("Add Bookmark"), UIHelpBrowserWidget::tr("Add a New Bookmark"));
+    setActionTextAndToolTip(m_pReloadPageAction, UIHelpBrowserWidget::tr("Reload"), UIHelpBrowserWidget::tr("Reload the Current Page"));
+    setActionTextAndToolTip(m_pFindInPageAction, UIHelpBrowserWidget::tr("Find in Page"), UIHelpBrowserWidget::tr("Find a String in the Current Page"));
 }
 
 void UIHelpBrowserTab::sltHomeAction()

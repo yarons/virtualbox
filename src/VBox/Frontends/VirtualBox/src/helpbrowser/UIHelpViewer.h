@@ -1,6 +1,6 @@
-/* $Id: UIHelpViewer.h 95251 2022-06-12 17:01:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.h 95919 2022-07-28 14:58:06Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIHelpBrowserWidget class declaration.
+ * VBox Qt GUI - UIHelpViewer class declaration.
  */
 
 /*
