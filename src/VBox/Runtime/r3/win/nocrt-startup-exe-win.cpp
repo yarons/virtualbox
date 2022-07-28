@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 95887 2022-07-28 01:40:23Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-startup-exe-win.cpp 95892 2022-07-28 01:51:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -47,7 +47,7 @@
 *   External Symbols                                                                                                             *
 *********************************************************************************************************************************/
 extern int main(int argc, char **argv, char **envp);    /* in program */
-#ifdef IPRT_NO_CRT
+#ifndef IPRT_NO_CRT
 extern DECLHIDDEN(void) InitStdHandles(PRTL_USER_PROCESS_PARAMETERS pParams); /* nocrt-streams-win.cpp */ /** @todo put in header */
 #endif
 
