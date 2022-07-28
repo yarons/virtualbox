@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvCredential.h 95890 2022-07-28 01:49:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -22,15 +22,11 @@
 #endif
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
 #include <iprt/win/windows.h>
 #include <NTSecAPI.h>
 #define SECURITY_WIN32
 #include <Security.h>
 #include <ShlGuid.h>
-#include <strsafe.h>
 
 #include <iprt/win/shlwapi.h>
 
@@ -95,7 +91,7 @@ public:
     HRESULT Initialize(CREDENTIAL_PROVIDER_USAGE_SCENARIO cpus);
     int RetrieveCredentials(void);
     BOOL TranslateAccountName(PWSTR pwszDisplayName, PWSTR *ppwszAccoutName);
-    BOOL ExtractAccoutData(PWSTR pwszAccountData, PWSTR *ppwszAccoutName, PWSTR *ppwszDomain);
+    static bool ExtractAccountData(PWSTR pwszAccountData, PWSTR *ppwszAccountName, PWSTR *ppwszDomain);
 
 protected:
     HRESULT RTUTF16ToUnicode(PUNICODE_STRING pUnicodeDest, PRTUTF16 pwszSource, bool fCopy);

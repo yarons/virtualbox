@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvProvider.h 95890 2022-07-28 01:49:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -23,7 +23,6 @@
 
 #include <iprt/win/credentialprovider.h>
 #include <iprt/win/windows.h>
-#include <strsafe.h>
 
 #include <VBox/VBoxGuestLib.h>
 
