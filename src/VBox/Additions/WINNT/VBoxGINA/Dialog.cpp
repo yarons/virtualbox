@@ -1,4 +1,4 @@
-/* $Id: Dialog.cpp 95874 2022-07-27 08:01:09Z knut.osmundsen@oracle.com $ */
+/* $Id: Dialog.cpp 95891 2022-07-28 01:50:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Dialog Code.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
