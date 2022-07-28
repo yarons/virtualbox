@@ -1,6 +1,6 @@
-/* $Id: UIVisoCreator.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreator.h 95914 2022-07-28 14:26:18Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIVisoCreator class declaration.
+ * VBox Qt GUI - UIVisoCreator classes declaration.
  */
 
 /*

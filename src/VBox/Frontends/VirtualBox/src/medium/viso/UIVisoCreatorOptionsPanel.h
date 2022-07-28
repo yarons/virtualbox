@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.h 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreatorOptionsPanel.h 95914 2022-07-28 14:26:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class declaration.
  */
@@ -59,8 +59,6 @@ private:
 
     QCheckBox *m_pShowHiddenObjectsCheckBox;
     QILabel *m_pShowHiddenObjectsLabel;
-
-    friend class UIVisoCreator;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoCreatorOptionsPanel_h */
