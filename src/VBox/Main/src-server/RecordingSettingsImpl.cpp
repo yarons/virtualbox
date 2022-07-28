@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 95714 2022-07-18 16:13:16Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 95918 2022-07-28 14:56:13Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -772,7 +772,7 @@ int RecordingSettings::i_syncToMachineDisplays(uint32_t cDisplays)
     {
         if (m->mapScreenObj.find(i) == m->mapScreenObj.end())
         {
-            settings::RecordingScreenSettings defaultScreenSettings; /* Apply default settings. */
+            settings::RecordingScreenSettings defaultScreenSettings(i /* Screen ID */); /* Apply default settings. */
 
             int vrc2 = i_createScreenObj(m->mapScreenObj, i /* Screen ID */, defaultScreenSettings);
             AssertRC(vrc2);
