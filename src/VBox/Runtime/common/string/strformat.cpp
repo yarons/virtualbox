@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 95926 2022-07-28 22:51:39Z knut.osmundsen@oracle.com $ */
+/* $Id: strformat.cpp 95927 2022-07-28 22:55:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -784,7 +784,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                             RTFLOAT80U2 r80;
                             r80.lrd = va_arg(args, long double);
 #  ifndef IN_BLD_PROG
-                            cchNum = RTStrFormatR80U2(&szTmp[0], sizeof(szTmp), &r80, cchWidth, cchPrecision, 0);
+                            cchNum = RTStrFormatR80u2(&szTmp[0], sizeof(szTmp), &r80, cchWidth, cchPrecision, 0);
 #  else
                             cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("<long double>"));
                             RT_NOREF_PV(r80);
