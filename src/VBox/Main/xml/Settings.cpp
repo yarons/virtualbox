@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 95918 2022-07-28 14:56:13Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 95920 2022-07-28 15:00:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6278,8 +6278,7 @@ bool MachineConfigFile::readSnapshot(const Guid &curSnapshotUuid,
             readAutostart(*pelmAutostart, pSnap->autostart);
         if (m->sv < SettingsVersion_v1_19)
         {
-            /* The recording settings were part of the Hardware branch, called "VideoCapture". */
-            const xml::ElementNode *pelmVideoCapture = pelmHardware->findChildElement("VideoCapture");
+            const xml::ElementNode *pelmVideoCapture = pElement->findChildElement("VideoCapture");
             if (pelmVideoCapture)
                 readRecordingSettings(*pelmVideoCapture, pSnap->hardware.graphicsAdapter.cMonitors, pSnap->recordingSettings);
         }
