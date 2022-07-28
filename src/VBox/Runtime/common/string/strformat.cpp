@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 95927 2022-07-28 22:55:01Z knut.osmundsen@oracle.com $ */
+/* $Id: strformat.cpp 95931 2022-07-28 23:21:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -776,7 +776,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                     case 'a': /* [-]0xh.hhhhhhp+-dd */
                     case 'A': /* [-]0Xh.hhhhhhP+-dd */
                     {
-#ifdef IN_RING3
+#if defined(IN_RING3) && !defined(IN_SUP_HARDENED_R3)
                         size_t cchNum;
 # ifdef RT_COMPILER_WITH_80BIT_LONG_DOUBLE
                         if (chArgSize == 'L')
