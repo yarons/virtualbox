@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 95903 2022-07-28 11:56:03Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 95942 2022-07-29 14:19:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -1880,6 +1880,8 @@ static int rtStrmWriteLocked(PRTSTREAM pStream, const void *pvBuf, size_t cbToWr
     HANDLE hCon;
     if (rtStrmIsConsoleUnlocked(pStream, &hCon))
         rc = rtStrmWriteWinConsoleLocked(pStream, pvBuf, cbToWrite, pcbWritten, hCon);
+#else
+    if (0) { }
 #endif /* RT_OS_WINDOWS && !RTSTREAM_STANDALONE */
 
     /*
