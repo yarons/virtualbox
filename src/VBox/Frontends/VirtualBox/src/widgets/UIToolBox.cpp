@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 94053 2022-03-02 09:29:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolBox.cpp 95950 2022-07-29 15:52:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -345,7 +345,7 @@ void UIToolBoxPage::setExpandCollapseIcon()
 void UIToolBoxPage::retranslateUi()
 {
     if (m_pTitleButton)
-        m_pTitleButton->setToolTip(tr("Expands the page \"%1\"").arg(m_strTitle.remove('&')));
+        m_pTitleButton->setToolTip(UIToolBox::tr("Expands the page \"%1\"").arg(m_strTitle.remove('&')));
 }
 
 

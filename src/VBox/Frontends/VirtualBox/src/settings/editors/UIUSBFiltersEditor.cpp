@@ -1,4 +1,4 @@
-/* $Id: UIUSBFiltersEditor.cpp 95277 2022-06-14 12:06:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 95950 2022-07-29 15:52:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
@@ -111,8 +111,8 @@ void USBFilterTreeWidgetItem::updateFields()
 QString USBFilterTreeWidgetItem::defaultText() const
 {
     return   checkState(0) == Qt::Checked
-           ? tr("%1, Active", "col.1 text, col.1 state").arg(text(0))
-           : tr("%1",         "col.1 text")             .arg(text(0));
+           ? UIUSBFiltersEditor::tr("%1, Active", "col.1 text, col.1 state").arg(text(0))
+           : text(0);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 94014 2022-03-01 09:13:50Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachinePreview.cpp 95950 2022-07-29 15:52:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -69,7 +69,7 @@ void UIMachinePreview::setMachine(const CMachine& comMachine)
     m_strPreviewName = tr("No preview");
     if (!m_comMachine.isNull())
         m_strPreviewName = m_comMachine.GetAccessible() ? m_comMachine.GetName() :
-                           QApplication::translate("UIVMListView", "Inaccessible");
+                           tr("Inaccessible");
 
     /* Resume: */
     restart();

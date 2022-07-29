@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 94005 2022-03-01 00:58:47Z knut.osmundsen@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 95950 2022-07-29 15:52:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -483,8 +483,8 @@ QVariant UIShortcutConfigurationModel::headerData(int iSection,
             /* Switch for different columns: */
             switch (iSection)
             {
-                case TableColumnIndex_Description: return tr("Name");
-                case TableColumnIndex_Sequence: return tr("Shortcut");
+                case TableColumnIndex_Description: return UIShortcutConfigurationEditor::tr("Name");
+                case TableColumnIndex_Sequence: return UIShortcutConfigurationEditor::tr("Shortcut");
                 default: break;
             }
             /* Invalid for other cases: */
@@ -516,7 +516,7 @@ QVariant UIShortcutConfigurationModel::data(const QModelIndex &index, int iRole 
                     /* Return shortcut scope and description: */
                     const QString strScope = m_filteredShortcuts[iIndex].scope();
                     const QString strDescription = m_filteredShortcuts[iIndex].description();
-                    return strScope.isNull() ? strDescription : tr("%1: %2", "scope: description").arg(strScope, strDescription);
+                    return strScope.isNull() ? strDescription : QString("%1: %2").arg(strScope, strDescription);
                 }
                 case TableColumnIndex_Sequence:
                 {
