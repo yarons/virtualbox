@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 95946 2022-07-29 14:55:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.cpp 95947 2022-07-29 15:03:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -182,9 +182,9 @@ void UICloneVMNamePathEditor::retranslateUi()
     if (m_pPathLabel)
         m_pPathLabel->setText(UIWizardCloneVM::tr("&Path:"));
     if (m_pNameLineEdit)
-        m_pNameLineEdit->setToolTip("Holds a name for the new virtual machine.");
+        m_pNameLineEdit->setToolTip(UIWizardCloneVM::tr("Holds a name for the new virtual machine."));
     if (m_pPathSelector)
-        m_pPathSelector->setToolTip("Specifies The location of the new virtual machine in host's storage.");
+        m_pPathSelector->setToolTip(UIWizardCloneVM::tr("Specifies The location of the new virtual machine in host's storage."));
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMEditors.cpp 95946 2022-07-29 14:55:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMEditors.cpp 95947 2022-07-29 15:03:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -162,8 +162,7 @@ void UIGAInstallationGroupBox::retranslateUi()
     if (m_pGAISOPathLabel)
         m_pGAISOPathLabel->setText(UIWizardNewVM::tr("GA I&nstallation ISO:"));
     setTitle(UIWizardNewVM::tr("Gu&est Additions"));
-    setToolTip(UIWizardNewVM::tr("Enables installation of the guest additions  "
-                                 "after the guest OS install."));
+    setToolTip(UIWizardNewVM::tr("Enables installation of the guest additions after the guest OS install."));
 }
 
 QString UIGAInstallationGroupBox::path() const
