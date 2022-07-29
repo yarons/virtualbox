@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 95890 2022-07-28 01:49:20Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCredProvCredential.cpp 95933 2022-07-29 01:19:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -841,7 +841,7 @@ BOOL VBoxCredProvCredential::TranslateAccountName(PWSTR pwszDisplayName, PWSTR *
  *
  * This might be a principal or FQDN string.
  *
- * @return  success indicator. Will fail if input not in a user@domain format.
+ * @return  success indicator. Will fail if input not in a user\@domain format.
  * @param   pwszAccountData     Raw account data string to extract data from.
  * @param   ppwszAccountName    Where to store the extracted account name on
  *                              success. Needs to be freed with CoTaskMemFree().
