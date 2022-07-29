@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxWddmUmHlp.h 95955 2022-07-29 20:52:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -29,13 +29,19 @@
 #include <iprt/cdefs.h>
 
 /* Do not require IPRT library. */
-#if defined(Assert)
-#undef Assert
-#endif
-#ifdef RT_STRICT
-#define Assert(_e) (void)( (!!(_e)) || (ASMBreakpoint(), 0) )
-#else
-#define Assert(_e) (void)( 0 )
+/** @todo r=bird: It is *NOT* okay to redefine Assert* (or Log*) macros!  It
+ * causes confusing as the code no longer behaves in the way one expect.  Thus,
+ * it is strictly forbidden. */
+#ifndef IPRT_NO_CRT
+# undef Assert
+# undef AssertReturnVoid
+# ifdef RT_STRICT
+#  define Assert(_e) (void)( (!!(_e)) || (ASMBreakpoint(), 0) )
+#  define AssertReturnVoid(a_Expr) do { if (RT_LIKELY(a_Expr)) {} else { ASMBreakpoint(); return; } } while (0)
+# else
+#  define Assert(_e) (void)( 0 )
+#  define AssertReturnVoid(a_Expr) do { if (RT_LIKELY(a_Expr)) {} else return; } while (0)
+# endif
 #endif
 
 /* Do not require ntstatus.h.
@@ -87,7 +93,7 @@ DECLCALLBACK(void) VBoxWddmLoadAdresses(HMODULE hmod, VBOXWDDMDLLPROC *paProcs);
 DECLCALLBACK(int) D3DKMTLoad(void);
 DECLCALLBACK(D3DKMTFUNCTIONS const *) D3DKMTFunctions(void);
 
-DECLCALLBACK(void) VBoxDispMpLoggerLogF(const char *pszString, ...);
+DECLCALLBACK(void) VBoxDispMpLoggerLogF(const char *pszFormat, ...);
 DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString);
 
 /** @todo Rename to VBoxWddm* */

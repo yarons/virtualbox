@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispMpLogger.h 95955 2022-07-29 20:52:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Display backdoor logger API
  */
@@ -39,7 +39,7 @@ VBOXDISPMPLOGGER_DECL(int) VBoxDispMpLoggerTerm(void);
 
 VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerLog(const char *pszString);
 
-VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerLogF(const char *pszString, ...);
+VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerLogF(const char *pszFormat, ...);
 
 DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString);
 
