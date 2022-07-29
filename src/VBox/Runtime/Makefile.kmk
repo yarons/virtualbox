@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95928 2022-07-28 23:04:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95932 2022-07-29 00:11:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2810,7 +2810,8 @@ RuntimeR3NoCrt_DEFS     := \
 	RT_NO_STRICT \
 	IPRT_NO_ALLOCA_TROUBLE \
 	IPRT_GETOPT_WITHOUT_NETWORK_ADDRESSES \
-       IPRT_MINIMAL_STREAM
+       IPRT_MINIMAL_STREAM \
+       IPRT_NO_FLOAT_FORMATTING
 RuntimeR3NoCrt_SOURCES  := \
 	common/string/straprintf.cpp \
 	common/string/strformat.cpp \
