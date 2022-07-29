@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 95540 2022-07-06 20:44:32Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 95940 2022-07-29 12:01:11Z michal.necasek@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -368,6 +368,74 @@ IEMOPUNARYSIZES g_iemAImpl_not;
 #define iemAImpl_psubd_u128             NULL
 #define iemAImpl_psubq_u128             NULL
 
+#define iemAImpl_psllw_u64              NULL
+#define iemAImpl_psrlw_u64              NULL
+#define iemAImpl_psraw_u64              NULL
+#define iemAImpl_pslld_u64              NULL
+#define iemAImpl_psrld_u64              NULL
+#define iemAImpl_psrad_u64              NULL
+#define iemAImpl_psllq_u64              NULL
+#define iemAImpl_psrlq_u64              NULL
+#define iemAImpl_psraq_u64              NULL
+
+#define iemAImpl_psllw_u128             NULL
+#define iemAImpl_psrlw_u128             NULL
+#define iemAImpl_psraw_u128             NULL
+#define iemAImpl_pslld_u128             NULL
+#define iemAImpl_psrld_u128             NULL
+#define iemAImpl_psrad_u128             NULL
+#define iemAImpl_psllq_u128             NULL
+#define iemAImpl_psrlq_u128             NULL
+#define iemAImpl_psraq_u128             NULL
+
+#define iemAImpl_psllw_imm_u64          NULL
+#define iemAImpl_psrlw_imm_u64          NULL
+#define iemAImpl_psraw_imm_u64          NULL
+#define iemAImpl_pslld_imm_u64          NULL
+#define iemAImpl_psrld_imm_u64          NULL
+#define iemAImpl_psrad_imm_u64          NULL
+#define iemAImpl_psllq_imm_u64          NULL
+#define iemAImpl_psrlq_imm_u64          NULL
+#define iemAImpl_psraq_imm_u64          NULL
+
+#define iemAImpl_psllw_imm_u128         NULL
+#define iemAImpl_psrlw_imm_u128         NULL
+#define iemAImpl_psraw_imm_u128         NULL
+#define iemAImpl_pslld_imm_u128         NULL
+#define iemAImpl_psrld_imm_u128         NULL
+#define iemAImpl_psrad_imm_u128         NULL
+#define iemAImpl_psllq_imm_u128         NULL
+#define iemAImpl_psrlq_imm_u128         NULL
+#define iemAImpl_psraq_imm_u128         NULL
+
+#define iemAImpl_pslldq_imm_u128        NULL
+#define iemAImpl_psrldq_imm_u128        NULL
+
+#define iemAImpl_paddsb_u64             NULL
+#define iemAImpl_paddusb_u64            NULL
+#define iemAImpl_paddsw_u64             NULL
+#define iemAImpl_paddusw_u64            NULL
+#define iemAImpl_psubsb_u64             NULL
+#define iemAImpl_psubusb_u64            NULL
+#define iemAImpl_psubsw_u64             NULL
+#define iemAImpl_psubusw_u64            NULL
+
+#define iemAImpl_paddsb_u128            NULL
+#define iemAImpl_paddusb_u128           NULL
+#define iemAImpl_paddsw_u128            NULL
+#define iemAImpl_paddusw_u128           NULL
+#define iemAImpl_psubsb_u128            NULL
+#define iemAImpl_psubusb_u128           NULL
+#define iemAImpl_psubsw_u128            NULL
+#define iemAImpl_psubusw_u128           NULL
+
+#define iemAImpl_pmullw_u64             NULL
+#define iemAImpl_pmulhw_u64             NULL
+#define iemAImpl_pmaddwd_u64            NULL
+
+#define iemAImpl_pmullw_u128            NULL
+#define iemAImpl_pmulhw_u128            NULL
+#define iemAImpl_pmaddwd_u128           NULL
 
 /** @}  */
 
