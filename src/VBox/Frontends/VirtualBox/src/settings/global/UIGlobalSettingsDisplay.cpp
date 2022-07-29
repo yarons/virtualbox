@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 94666 2022-04-21 11:30:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 95937 2022-07-29 08:35:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -21,7 +21,7 @@
 /* GUI includes: */
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
-#include "UIGlobalDisplayFeaturesEditor.h"
+#include "UIDisplayFeaturesEditor.h"
 #include "UIGlobalSettingsDisplay.h"
 #include "UIMaximumGuestScreenSizeEditor.h"
 #include "UIScaleFactorEditor.h"
@@ -206,7 +206,7 @@ void UIGlobalSettingsDisplay::prepareWidgets()
             pLayout->addWidget(m_pEditorScaleFactor);
 
         /* Prepare 'global display features' editor: */
-        m_pEditorGlobalDisplayFeatures = new UIGlobalDisplayFeaturesEditor(this);
+        m_pEditorGlobalDisplayFeatures = new UIDisplayFeaturesEditor(this);
         if (m_pEditorGlobalDisplayFeatures)
             pLayout->addWidget(m_pEditorGlobalDisplayFeatures);
 
