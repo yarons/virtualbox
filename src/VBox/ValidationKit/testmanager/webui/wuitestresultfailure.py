@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresultfailure.py 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: wuitestresultfailure.py 95941 2022-07-29 13:46:07Z serkan.bayraktar@oracle.com $
 
 """
 Test Manager WUI - Dummy Test Result Failure Reason Edit Dialog - just for error handling!
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 93115 $"
+__version__ = "$Revision: 95941 $"
 
 # Validation Kit imports.
 from testmanager.webui.wuicontentbase           import WuiFormContentBase, WuiContentBase, WuiTmLink;
@@ -92,10 +92,9 @@ class WuiTestResultFailure(WuiFormContentBase):
         We add a way to get back to the test set to the actions.
         """
         aoActions = super(WuiTestResultFailure, self)._generateTopRowFormActions(oData);
-        if oData and oData.idTestResult is not None and oData.idTestResult > 0:
+        if oData and oData.idTestResult and int(oData.idTestResult) > 0:
             aoActions.append(WuiTmLink('Associated Test Set', WuiMain.ksScriptName,
                                        { WuiMain.ksParamAction: WuiMain.ksActionTestSetDetailsFromResult,
                                          TestSetData.ksParam_idTestResult: oData.idTestResult }
                                        ));
         return aoActions;
-
