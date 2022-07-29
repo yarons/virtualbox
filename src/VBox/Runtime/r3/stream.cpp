@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 95942 2022-07-29 14:19:29Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 95943 2022-07-29 14:42:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -273,7 +273,7 @@ static RTSTREAM    g_StdOut =
     /* .u32Magic = */           RTSTREAM_MAGIC,
     /* .i32Error = */           0,
 #ifndef RTSTREAM_STANDALONE
-    /* .pFile = */              stderr,
+    /* .pFile = */              stdout,
 #else
     /* .enmStdHandle = */       RTHANDLESTD_OUTPUT,
     /* .hFile = */              NIL_RTFILE,
