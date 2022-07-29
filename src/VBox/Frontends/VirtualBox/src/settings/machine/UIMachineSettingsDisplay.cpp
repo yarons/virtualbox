@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 95817 2022-07-25 13:49:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 95944 2022-07-29 14:44:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UIExtraDataManager.h"
 #include "UIGraphicsControllerEditor.h"
 #ifdef VBOX_WITH_3D_ACCELERATION
-# include "UIMachineDisplayScreenFeaturesEditor.h"
+# include "UIDisplayScreenFeaturesEditor.h"
 #endif
 #include "UIMachineSettingsDisplay.h"
 #include "UIMonitorCountEditor.h"
@@ -900,7 +900,7 @@ void UIMachineSettingsDisplay::prepareTabScreen()
 
 #ifdef VBOX_WITH_3D_ACCELERATION
             /* Prepare display screen features editor: */
-            m_pEditorDisplayScreenFeatures = new UIMachineDisplayScreenFeaturesEditor(m_pTabScreen);
+            m_pEditorDisplayScreenFeatures = new UIDisplayScreenFeaturesEditor(m_pTabScreen);
             if (m_pEditorDisplayScreenFeatures)
                 pLayoutScreen->addWidget(m_pEditorDisplayScreenFeatures);
 #endif /* VBOX_WITH_3D_ACCELERATION */
@@ -966,7 +966,7 @@ void UIMachineSettingsDisplay::prepareConnections()
     connect(m_pEditorGraphicsController, &UIGraphicsControllerEditor::sigValueChanged,
             this, &UIMachineSettingsDisplay::sltHandleGraphicsControllerComboChange);
 #ifdef VBOX_WITH_3D_ACCELERATION
-    connect(m_pEditorDisplayScreenFeatures, &UIMachineDisplayScreenFeaturesEditor::sig3DAccelerationFeatureStatusChange,
+    connect(m_pEditorDisplayScreenFeatures, &UIDisplayScreenFeaturesEditor::sig3DAccelerationFeatureStatusChange,
             this, &UIMachineSettingsDisplay::sltHandle3DAccelerationFeatureStateChange);
 #endif
 

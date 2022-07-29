@@ -1,6 +1,6 @@
-/* $Id: UIMachineDisplayScreenFeaturesEditor.h 94395 2022-03-29 16:29:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIDisplayScreenFeaturesEditor.h 95944 2022-07-29 14:44:32Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIMachineDisplayScreenFeaturesEditor class declaration.
+ * VBox Qt GUI - UIDisplayScreenFeaturesEditor class declaration.
  */
 
 /*
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_settings_editors_UIMachineDisplayScreenFeaturesEditor_h
-#define FEQT_INCLUDED_SRC_settings_editors_UIMachineDisplayScreenFeaturesEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UIDisplayScreenFeaturesEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UIDisplayScreenFeaturesEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -30,7 +30,7 @@ class QGridLayout;
 class QLabel;
 
 /** QWidget subclass used as machine display screen features editor. */
-class SHARED_LIBRARY_STUFF UIMachineDisplayScreenFeaturesEditor : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIDisplayScreenFeaturesEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -42,7 +42,7 @@ signals:
 public:
 
     /** Constructs editor passing @a pParent to the base-class. */
-    UIMachineDisplayScreenFeaturesEditor(QWidget *pParent = 0);
+    UIDisplayScreenFeaturesEditor(QWidget *pParent = 0);
 
     /** Defines whether 'enable 3D acceleration' feature in @a fOn. */
     void setEnable3DAcceleration(bool fOn);
@@ -81,4 +81,4 @@ private:
     /** @} */
 };
 
-#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIMachineDisplayScreenFeaturesEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIDisplayScreenFeaturesEditor_h */

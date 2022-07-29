@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 95390 2022-06-27 12:48:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 95944 2022-07-29 14:44:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -31,7 +31,7 @@
 class QITabWidget;
 class UIGraphicsControllerEditor;
 #ifdef VBOX_WITH_3D_ACCELERATION
-class UIMachineDisplayScreenFeaturesEditor;
+class UIDisplayScreenFeaturesEditor;
 #endif
 class UIMonitorCountEditor;
 class UIRecordingSettingsEditor;
@@ -168,7 +168,7 @@ private:
         UIGraphicsControllerEditor           *m_pEditorGraphicsController;
 #ifdef VBOX_WITH_3D_ACCELERATION
         /** Holds the display screen features editor instance. */
-        UIMachineDisplayScreenFeaturesEditor *m_pEditorDisplayScreenFeatures;
+        UIDisplayScreenFeaturesEditor        *m_pEditorDisplayScreenFeatures;
 #endif
 
         /** Holds the 'Remote Display' tab instance. */
