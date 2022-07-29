@@ -1,6 +1,6 @@
-/* $Id: UIMachineDescriptionEditor.cpp 94445 2022-04-01 17:19:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 95945 2022-07-29 14:50:47Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIMachineDescriptionEditor class implementation.
+ * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
 
 /*
@@ -20,17 +20,17 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "UIMachineDescriptionEditor.h"
+#include "UIDescriptionEditor.h"
 
 
-UIMachineDescriptionEditor::UIMachineDescriptionEditor(QWidget *pParent /* = 0 */)
+UIDescriptionEditor::UIDescriptionEditor(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pTextEdit(0)
 {
     prepare();
 }
 
-void UIMachineDescriptionEditor::setValue(const QString &strValue)
+void UIDescriptionEditor::setValue(const QString &strValue)
 {
     /* Update cached value and
      * text-edit if value has changed: */
@@ -42,19 +42,19 @@ void UIMachineDescriptionEditor::setValue(const QString &strValue)
     }
 }
 
-QString UIMachineDescriptionEditor::value() const
+QString UIDescriptionEditor::value() const
 {
     return m_pTextEdit ? m_pTextEdit->toPlainText() : m_strValue;
 }
 
-void UIMachineDescriptionEditor::retranslateUi()
+void UIDescriptionEditor::retranslateUi()
 {
     if (m_pTextEdit)
         m_pTextEdit->setToolTip(tr("Holds the description of the virtual machine. The description field is useful "
                                    "for commenting on configuration details of the installed guest OS."));
 }
 
-void UIMachineDescriptionEditor::prepare()
+void UIDescriptionEditor::prepare()
 {
     /* Prepare main layout: */
     QVBoxLayout *pLayout = new QVBoxLayout(this);

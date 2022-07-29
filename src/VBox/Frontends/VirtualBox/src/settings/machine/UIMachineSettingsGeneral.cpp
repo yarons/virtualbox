@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 94667 2022-04-21 11:31:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 95945 2022-07-29 14:50:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -24,10 +24,10 @@
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UICommon.h"
 #include "UIConverter.h"
+#include "UIDescriptionEditor.h"
 #include "UIDiskEncryptionSettingsEditor.h"
 #include "UIDragAndDropEditor.h"
 #include "UIErrorString.h"
-#include "UIMachineDescriptionEditor.h"
 #include "UIMachineSettingsGeneral.h"
 #include "UIModalWindowManager.h"
 #include "UINameAndSystemEditor.h"
@@ -633,7 +633,7 @@ void UIMachineSettingsGeneral::prepareTabDescription()
         if (pLayoutDescription)
         {
             /* Prepare description editor: */
-            m_pEditorDescription = new UIMachineDescriptionEditor(m_pTabDescription);
+            m_pEditorDescription = new UIDescriptionEditor(m_pTabDescription);
             if (m_pEditorDescription)
             {
                 m_pEditorDescription->setObjectName(QStringLiteral("m_pEditorDescription"));
