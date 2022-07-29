@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 94991 2022-05-12 12:29:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 95948 2022-07-29 15:46:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2789,7 +2789,7 @@ protected:
         setName(QApplication::translate("UIActionPool", "&Clear"));
         setShortcutScope(QApplication::translate("UIActionPool", "Media Manager"));
         setStatusTip(QApplication::translate("UIActionPool", "remove all inaccessible media"));
-        setToolTip(  QApplication::translate("UIActionPool", "Remove All Inaccessible Media")
+        setToolTip(  QApplication::translate("UIActionPool", "Remove Inaccessible Media")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
