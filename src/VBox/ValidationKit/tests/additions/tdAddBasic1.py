@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 95936 2022-07-29 08:32:38Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 95939 2022-07-29 09:24:45Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 95936 $"
+__version__ = "$Revision: 95939 $"
 
 # Standard Python imports.
 import os;
@@ -412,10 +412,10 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Note: Don't force installing when the Guest Additions installer should do this automatically,
         #       i.e, only force it for Windows Server 2016 and up.
         fForceInstallTimeStampCA = False;
-        if self.fpApiVer >= 6.1 \
+        if     self.fpApiVer >= 6.1 \
            and oTestVm.getNonCanonicalGuestOsType() \
-              in [ 'Windows2016', 'Windows2019', 'Windows2022', 'Windows11' ]:
-              fForceInstallTimeStampCA = True;
+           in [ 'Windows2016', 'Windows2019', 'Windows2022', 'Windows11' ]:
+            fForceInstallTimeStampCA = True;
 
         # As we don't have a console command line to parse for the Guest Additions installer (only a message box) and
         # unknown / unsupported parameters get ignored with silent installs anyway, we safely can add the following parameter(s)
