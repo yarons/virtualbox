@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95932 2022-07-29 00:11:43Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95968 2022-08-01 19:28:33Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -4380,10 +4380,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			\
 			-e '/^_ZnwjPv/d' \
 			-e '/^_ZnwmPv/d' \
-			-e '/^_ZNSt9bad_allocC1Ev/d' \
-			-e '/^_ZNSt9bad_allocC[12]ERKS_/d' \
-			-e '/^_ZNSt9exceptionC[12]Ev/d' \
-			-e '/^_ZNSt9exceptionC[12]ERKS_/d' \
+			-e '/^_ZNSt[1-9]/d' \
 			\
 			-e '/^_ZN[a-zA-Z]*St[[:digit:]]*_*[lL]ist/d' \
 			-e '/^_ZN[a-zA-Z]*[[:digit:]]*__gnu_cxx/d' \
