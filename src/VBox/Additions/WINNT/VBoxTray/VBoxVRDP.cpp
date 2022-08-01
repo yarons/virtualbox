@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVRDP.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -15,22 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <iprt/assert.h>
+#include <iprt/ldr.h>
+
 /* 0x0501 for SPI_SETDROPSHADOW */
 #define _WIN32_WINNT 0x0501
 #include <iprt/win/windows.h>
+
+#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_VRDP and VRDP_EXPERIENCE_LEVEL_XXX */
+
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxVRDP.h"
-
-#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_VRDP and VRDP_EXPERIENCE_LEVEL_XXX */
-#ifdef DEBUG
-# define LOG_ENABLED
-# define LOG_GROUP LOG_GROUP_DEFAULT
-#endif
-#include <VBox/log.h>
-
-#include <iprt/assert.h>
-#include <iprt/ldr.h>
 
 
 

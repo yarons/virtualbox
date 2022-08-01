@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 93299 2022-01-18 11:23:59Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -29,12 +29,6 @@
 # include <iprt/asm.h>
 #endif
 #include <iprt/system.h>
-
-#ifdef DEBUG /** @todo r=bird: these are all default values. sigh. */
-# define LOG_ENABLED
-# define LOG_GROUP LOG_GROUP_DEFAULT
-#endif
-#include <VBox/log.h>
 
 #include <VBoxDisplay.h>
 #include <VBoxHook.h>

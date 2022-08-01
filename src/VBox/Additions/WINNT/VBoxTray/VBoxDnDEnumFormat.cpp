@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDEnumFormat.cpp 95836 2022-07-26 16:16:02Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnDEnumFormat.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnDEnumFormat.cpp - IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -15,19 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxDnD.h"
-
-#ifdef DEBUG
-# define LOG_ENABLED
-# define LOG_GROUP LOG_GROUP_DEFAULT
-#endif
-#include <VBox/log.h>
-
 
 
 VBoxDnDEnumFormatEtc::VBoxDnDEnumFormatEtc(LPFORMATETC pFormatEtc, ULONG uIdx, ULONG cToCopy, ULONG cTotal)

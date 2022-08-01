@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 95868 2022-07-27 01:28:13Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -19,16 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEFAULT
-#define _WIN32_WINNT 0x0500
-#include <iprt/win/windows.h>
-
-#include <VBox/log.h>
-
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 #include <iprt/mem.h>
 #include <iprt/system.h>
+
+#define _WIN32_WINNT 0x0500
+#include <iprt/win/windows.h>
 
 #include <VBoxDisplay.h> /** @todo r=bird: Presumably the ../include/VBoxDisplay.h file rather than ./VBoxDisplay.h. WTF???  */
 #include <VBoxHook.h> /* from ../include/ */

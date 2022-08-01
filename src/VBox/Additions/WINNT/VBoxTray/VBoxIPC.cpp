@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxIPC.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -36,12 +36,6 @@
 #include <iprt/localipc.h>
 #include <iprt/mem.h>
 #include <iprt/process.h>
-
-#ifdef DEBUG /** @todo r=bird: these are all default settings...  */
-# define LOG_ENABLED
-# define LOG_GROUP LOG_GROUP_DEFAULT
-#endif
-#include <VBox/log.h>
 
 
 /*********************************************************************************************************************************
