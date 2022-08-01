@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpers.h 95827 2022-07-26 09:55:21Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxHelpers.h 95964 2022-08-01 14:20:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * helpers - Guest Additions Service helper functions header.
  */
@@ -20,15 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-// #define DEBUG_DISPLAY_CHANGE
-
-/** @todo r=andy WTF? Remove this!! */
-#ifdef DEBUG_DISPLAY_CHANGE
-#   define DDCLOG(a) Log(a)
-#else
-#   define DDCLOG(a) do {} while (0)
-#endif /* !DEBUG_DISPLAY_CHANGE */
 
 extern int  hlpReportStatus(VBoxGuestFacilityStatus statusCurrent);
 extern void hlpReloadCursor(void);
