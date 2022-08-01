@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 95962 2022-08-01 14:11:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -45,7 +45,7 @@ typedef struct _VBOXDISPLAYCONTEXT
     /** ChangeDisplaySettingsEx does not exist in NT. ResizeDisplayDevice uses the function. */
     DECLCALLBACKMEMBER_EX(LONG,WINAPI, pfnChangeDisplaySettingsEx,(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode, HWND hwnd,
                                                                    DWORD dwflags, LPVOID lParam));
-    /** EnumDisplayDevices does not exist in NT. isVBoxDisplayDriverActive et al. are using these functions. */
+    /** EnumDisplayDevices does not exist in NT. */
     DECLCALLBACKMEMBER_EX(BOOL, WINAPI, pfnEnumDisplayDevices,(IN LPCSTR lpDevice, IN DWORD iDevNum,
                                                                OUT PDISPLAY_DEVICEA lpDisplayDevice, IN DWORD dwFlags));
     /** Display driver interface, XPDM - WDDM abstraction see VBOXDISPIF** definitions above */

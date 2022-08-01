@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispIf.h 95962 2022-08-01 14:11:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -63,10 +63,10 @@ typedef struct VBOXDISPIF
 #ifdef VBOX_WITH_WDDM
         struct
         {
-            /* ChangeDisplaySettingsEx does not exist in NT. ResizeDisplayDevice uses the function. */
+            /** ChangeDisplaySettingsEx does not exist in NT. ResizeDisplayDevice uses the function. */
             DECLCALLBACKMEMBER_EX(LONG, WINAPI, pfnChangeDisplaySettingsEx,(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode,
                                                                             HWND hwnd, DWORD dwflags, LPVOID lParam));
-            /* EnumDisplayDevices does not exist in NT. isVBoxDisplayDriverActive et al. are using these functions. */
+            /** EnumDisplayDevices does not exist in NT.*/
             DECLCALLBACKMEMBER_EX(BOOL, WINAPI, pfnEnumDisplayDevices,(IN LPCSTR lpDevice, IN DWORD iDevNum,
                                                                        OUT PDISPLAY_DEVICEA lpDisplayDevice, IN DWORD dwFlags));
 

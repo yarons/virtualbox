@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayInternal.h 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTrayInternal.h 95962 2022-08-01 14:11:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications
  */
@@ -26,13 +26,5 @@ DWORD VBoxDisplayGetConfig(const DWORD NumDevices, DWORD *pDevPrimaryNum, DWORD 
 
 DWORD EnableAndResizeDispDev(DEVMODE *paDeviceModes, DISPLAY_DEVICE *paDisplayDevices, DWORD totalDispNum, UINT Id, DWORD aWidth, DWORD aHeight,
                              DWORD aBitsPerPixel, LONG aPosX, LONG aPosY, BOOL fEnabled, BOOL fExtDispSup);
-
-#ifndef VBOX_WITH_WDDM
-static bool isVBoxDisplayDriverActive(void);
-#else
-/* @misha: getVBoxDisplayDriverType is used instead.
- * it seems bad to put static function declaration to header,
- * so it is moved to VBoxDisplay.cpp */
-#endif
 
 #endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_Internal_h */
