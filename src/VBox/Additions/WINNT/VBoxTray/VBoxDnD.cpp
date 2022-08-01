@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 95833 2022-07-26 13:53:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnD.cpp 95959 2022-08-01 13:26:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -20,6 +20,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/log.h>
+
 #include <iprt/win/windows.h>
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
@@ -42,7 +44,6 @@ using namespace DragAndDropSvc;
 #include <iprt/cpp/mtlist.h>
 
 #include <VBox/err.h>
-#include <VBox/log.h>
 
 
 /*********************************************************************************************************************************
