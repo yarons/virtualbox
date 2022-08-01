@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSeamless.h 95966 2022-08-01 15:40:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -21,11 +21,9 @@
 # pragma once
 #endif
 
-void VBoxSeamlessEnable();
-void VBoxSeamlessDisable();
+void VBoxSeamlessEnable(void);
+void VBoxSeamlessDisable(void);
 void VBoxSeamlessCheckWindows(bool fForce);
-
-void VBoxSeamlessSetSupported(BOOL fSupported);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxSeamless_h */
 

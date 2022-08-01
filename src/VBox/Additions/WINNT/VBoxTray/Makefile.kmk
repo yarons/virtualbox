@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95965 2022-08-01 14:34:03Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 95966 2022-08-01 15:40:29Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -38,6 +38,9 @@ VBoxTray_INCS     = \
 	$(VBOX_GRAPHICS_INCS)
 VBoxTray_SOURCES  = \
 	VBoxTray.cpp \
+	VBoxCaps.cpp \
+	VBoxConsole.cpp \
+	VBoxDesktopTracking.cpp \
 	VBoxDispIf.cpp \
 	VBoxSeamless.cpp \
 	VBoxSessionTracking.cpp \
