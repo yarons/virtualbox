@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxLA.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -23,6 +23,7 @@
 #include <iprt/alloc.h>
 #include <iprt/list.h>
 #include <iprt/ldr.h>
+#include <iprt/log.h>
 #include <iprt/utf16.h>
 
 #define _WIN32_WINNT 0x0501

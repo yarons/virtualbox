@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxIPC.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -21,12 +21,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/win/windows.h>
-#include "VBoxTray.h"
-#include "VBoxTrayMsg.h"
-#include "VBoxHelpers.h"
-#include "VBoxIPC.h"
-
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
@@ -34,8 +28,15 @@
 #include <iprt/ldr.h>
 #include <iprt/list.h>
 #include <iprt/localipc.h>
+#include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/process.h>
+#include <iprt/win/windows.h>
+
+#include "VBoxTray.h"
+#include "VBoxTrayMsg.h"
+#include "VBoxHelpers.h"
+#include "VBoxIPC.h"
 
 
 /*********************************************************************************************************************************

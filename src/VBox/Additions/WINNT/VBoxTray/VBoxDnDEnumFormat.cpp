@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDEnumFormat.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnDEnumFormat.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnDEnumFormat.cpp - IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/log.h>
+
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 

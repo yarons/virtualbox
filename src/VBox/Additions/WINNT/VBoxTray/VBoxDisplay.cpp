@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDisplay.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -28,6 +28,7 @@
 #ifdef VBOX_WITH_WDDM
 # include <iprt/asm.h>
 #endif
+#include <iprt/log.h>
 #include <iprt/system.h>
 
 #include <VBoxDisplay.h>

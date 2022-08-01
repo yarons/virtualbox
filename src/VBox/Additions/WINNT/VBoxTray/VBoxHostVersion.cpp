@@ -1,4 +1,4 @@
-/* $Id: VBoxHostVersion.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxHostVersion.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
@@ -16,11 +16,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <VBox/log.h>
+#include <VBox/VBoxGuestLib.h>
+
 #include "VBoxHostVersion.h"
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 
-#include <VBox/VBoxGuestLib.h>
 
 
 /** @todo Move this part in VbglR3 and just provide a callback for the platform-specific

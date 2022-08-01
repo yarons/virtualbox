@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 95868 2022-07-27 01:28:13Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispIf.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define _WIN32_WINNT 0x0601
 #include "VBoxTray.h"
+#include "VBoxTrayInternal.h"
 
 #include <iprt/alloca.h>
 #include <iprt/assert.h>

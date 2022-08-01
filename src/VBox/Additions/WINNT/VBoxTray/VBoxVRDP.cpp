@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxVRDP.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -17,6 +17,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
+#include <VBox/log.h>
 
 /* 0x0501 for SPI_SETDROPSHADOW */
 #define _WIN32_WINNT 0x0501

@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 95960 2022-08-01 13:54:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSeamless.cpp 95961 2022-08-01 14:08:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
+#include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/system.h>
 
