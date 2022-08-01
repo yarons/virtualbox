@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayInternal.h 95966 2022-08-01 15:40:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTrayInternal.h 95967 2022-08-01 15:46:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxSeamless - Display notifications
  */
@@ -70,7 +70,7 @@ BOOL vboxDtHandleEvent();
 BOOL vboxDtIsInputDesktop();
 HANDLE vboxDtGetNotifyEvent();
 BOOL vboxDtCheckTimer(WPARAM wParam);
-void VBoxTrayCheckDt();
+void vboxDtDoCheck();
 
 
 /*

@@ -1,4 +1,4 @@
-/* $Id: VBoxDesktopTracking.cpp 95966 2022-08-01 15:40:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDesktopTracking.cpp 95967 2022-08-01 15:46:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDesktopTracking.cpp - Desktop tracking.
  */
@@ -83,7 +83,7 @@ BOOL vboxDtCalculateIsInputDesktop()
     return fIsInputDt;
 }
 
-void VBoxTrayCheckDt()
+void vboxDtDoCheck()
 {
     BOOL fOldAllowedState = VBoxConsoleIsAllowed();
     if (vboxDtHandleEvent())
@@ -98,7 +98,7 @@ BOOL vboxDtCheckTimer(WPARAM wParam)
     if (wParam != gVBoxDt.idTimer)
         return FALSE;
 
-    VBoxTrayCheckDt();
+    vboxDtDoCheck();
 
     return TRUE;
 }

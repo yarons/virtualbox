@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 95966 2022-08-01 15:40:29Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTray.cpp 95967 2022-08-01 15:46:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -905,7 +905,7 @@ static int vboxTrayServiceMain(void)
                                 else if (hWaitEvent[waitResult] == vboxDtGetNotifyEvent())
                                 {
                                     LogFunc(("Event 'Dt' triggered\n"));
-                                    VBoxTrayCheckDt();
+                                    vboxDtDoCheck();
                                     fHandled = TRUE;
                                 }
                             }
