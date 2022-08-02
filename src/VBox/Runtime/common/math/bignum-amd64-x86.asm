@@ -1,4 +1,4 @@
-; $Id: bignum-amd64-x86.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: bignum-amd64-x86.asm 95981 2022-08-02 07:28:29Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Big Integer Numbers, AMD64 and X86 Assembly Workers
 ;
@@ -852,7 +852,7 @@ SEH64_END_PROLOGUE
 %ifdef RT_STRICT
         jnc     .uMulCarry_did_not_overflow
         int3
-.uMulCarry_did_not_overflow
+.uMulCarry_did_not_overflow:
 %endif
 
         ; Advance.
