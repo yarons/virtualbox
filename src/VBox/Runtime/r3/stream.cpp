@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 95977 2022-08-02 01:23:43Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 95979 2022-08-02 01:30:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -471,7 +471,7 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
                 fNoInherit = false;
                 break;
             default:
-                AssertMsgFailedReturn(("Invalid ch='%c' in pszMode='%s', '<a|r|w>[+][b|t][x][e|N|E]'\n", pszMode),
+                AssertMsgFailedReturn(("Invalid ch='%c' in pszMode='%s', '<a|r|w>[+][b|t][x][e|N|E]'\n", ch, pszMode),
                                       VERR_INVALID_FLAGS);
         }
     }
@@ -485,10 +485,9 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
         case 'a': fOpen = RTFILE_O_OPEN_CREATE    | RTFILE_O_WRITE | RTFILE_O_APPEND; break;
         case 'w': fOpen = !fExclusive
                         ? RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE
-                        : RTFILE_O_CREATE         | RTFILE_O_WRITE;  break;
-        case 'r': fOpen = RTFILE_O_OPEN           | RTFILE_O_READ;
-        default:
-            AssertMsgReturn(chMode, ("No main mode (a|r|w) specified in '%s'!\n", pszMode), VERR_INVALID_FLAGS);
+                        : RTFILE_O_CREATE         | RTFILE_O_WRITE; break;
+        case 'r': fOpen = RTFILE_O_OPEN           | RTFILE_O_READ; break;
+        default:  AssertMsgReturn(chMode, ("No main mode (a|r|w) specified in '%s'!\n", pszMode), VERR_INVALID_FLAGS);
     }
     AssertMsgReturn(!fExclusive || chMode == 'w', ("the 'x' flag is only allowed with 'w'! (%s)\n", pszMode),
                     VERR_INVALID_FLAGS);
