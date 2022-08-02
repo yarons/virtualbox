@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 95979 2022-08-02 01:30:48Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 95980 2022-08-02 07:27:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -487,7 +487,7 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
                         ? RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE
                         : RTFILE_O_CREATE         | RTFILE_O_WRITE; break;
         case 'r': fOpen = RTFILE_O_OPEN           | RTFILE_O_READ; break;
-        default:  AssertMsgReturn(chMode, ("No main mode (a|r|w) specified in '%s'!\n", pszMode), VERR_INVALID_FLAGS);
+        default:  AssertMsgFailedReturn(("No main mode (a|r|w) specified in '%s'!\n", pszMode), VERR_INVALID_FLAGS);
     }
     AssertMsgReturn(!fExclusive || chMode == 'w', ("the 'x' flag is only allowed with 'w'! (%s)\n", pszMode),
                     VERR_INVALID_FLAGS);
