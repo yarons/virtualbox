@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95991 2022-08-02 16:55:48Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 95992 2022-08-02 17:07:58Z andreas.loeffler@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -123,12 +123,6 @@ if defined(VBOX_WITH_MAIN) \
   if   defined(VBOX_WITH_LIBOPUS) \
     && ("$(SDK_VBOX_OPUS_INCS)" == "$(SDK_VBOX_OPUS_DEFAULT_INCS)")
    include $(PATH_SUB_CURRENT)/libopus-1.3.1/Makefile.kmk
-  endif
-
-  # libvorbis for supporting audio with video recording.
-  if   defined(VBOX_WITH_LIBVORBIS) \
-    && ("$(SDK_VBOX_VORBIS_INCS)" == "$(SDK_VBOX_VORBIS_DEFAULT_INCS)")
-   include $(PATH_SUB_CURRENT)/libvorbis-1.3.7/Makefile.kmk
   endif
 
   # libpng for screenshots in main.
