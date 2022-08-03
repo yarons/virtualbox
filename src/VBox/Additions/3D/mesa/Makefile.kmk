@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 95701 2022-07-18 12:07:16Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 95997 2022-08-03 09:56:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Mesa 3D components
 #
@@ -135,6 +135,10 @@ TEMPLATE_VBoxMesa3DGuestR3Lib_INCS          = \
 	$(VBOX_MESA_SUBDIR)/src/gallium/include \
 	$(VBOX_MESA_SUBDIR)/src/gallium/auxiliary \
 	$(VBOX_MESA_SUBDIR)/src/gallium/state_trackers/wgl
+ifdef VBOX_WITH_NOCRT_STATIC
+TEMPLATE_VBoxMesa3DGuestR3Lib_INCS         += \
+	$(TEMPLATE_VBoxMesa3DGuestR3Dll_INCS)
+endif
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 TEMPLATE_VBoxMesa3DGuestR3Lib_DEFS          = \
 	$(TEMPLATE_VBoxMesa3DGuestR3Dll_DEFS) \
