@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96007 2022-08-03 19:27:57Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96009 2022-08-03 19:54:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -9913,7 +9913,7 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpminud_u256_fallback,(PX86XSAVEAREA pExtState,
 
 
 /*
- * PMINUB / VPMINUB / PMINUW / VPMINUW / PMINUD / VPMINUD
+ * PMINSB / VPMINSB / PMINSW / VPMINSW / PMINSD / VPMINSD
  */
 #ifdef IEM_WITHOUT_ASSEMBLY
 
