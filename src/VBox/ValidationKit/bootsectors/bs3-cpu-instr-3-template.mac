@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 96003 2022-08-03 17:21:16Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 96005 2022-08-03 18:03:29Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -1048,6 +1048,54 @@ EMIT_INSTR_PLUS_ICEBP   vpminub, YMM1, YMM2, FSxBX
  %if TMPL_BITS == 64
 EMIT_INSTR_PLUS_ICEBP   vpminub, YMM8, YMM9, YMM10
 EMIT_INSTR_PLUS_ICEBP   vpminub, YMM8, YMM9, FSxBX
+ %endif
+
+;
+; [V]PMINUW
+;
+EMIT_INSTR_PLUS_ICEBP   pminuw, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP   pminuw, XMM1, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   pminuw, XMM8, XMM9
+EMIT_INSTR_PLUS_ICEBP   pminuw, XMM8, FSxBX
+ %endif
+
+EMIT_INSTR_PLUS_ICEBP   vpminuw, XMM1, XMM2, XMM3
+EMIT_INSTR_PLUS_ICEBP   vpminuw, XMM1, XMM2, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vpminuw, XMM8, XMM9, XMM10
+EMIT_INSTR_PLUS_ICEBP   vpminuw, XMM8, XMM9, FSxBX
+ %endif
+
+EMIT_INSTR_PLUS_ICEBP   vpminuw, YMM1, YMM2, YMM3
+EMIT_INSTR_PLUS_ICEBP   vpminuw, YMM1, YMM2, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vpminuw, YMM8, YMM9, YMM10
+EMIT_INSTR_PLUS_ICEBP   vpminuw, YMM8, YMM9, FSxBX
+ %endif
+
+;
+; [V]PMINUD
+;
+EMIT_INSTR_PLUS_ICEBP   pminud, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP   pminud, XMM1, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   pminud, XMM8, XMM9
+EMIT_INSTR_PLUS_ICEBP   pminud, XMM8, FSxBX
+ %endif
+
+EMIT_INSTR_PLUS_ICEBP   vpminud, XMM1, XMM2, XMM3
+EMIT_INSTR_PLUS_ICEBP   vpminud, XMM1, XMM2, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vpminud, XMM8, XMM9, XMM10
+EMIT_INSTR_PLUS_ICEBP   vpminud, XMM8, XMM9, FSxBX
+ %endif
+
+EMIT_INSTR_PLUS_ICEBP   vpminud, YMM1, YMM2, YMM3
+EMIT_INSTR_PLUS_ICEBP   vpminud, YMM1, YMM2, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vpminud, YMM8, YMM9, YMM10
+EMIT_INSTR_PLUS_ICEBP   vpminud, YMM8, YMM9, FSxBX
  %endif
 
 ;
