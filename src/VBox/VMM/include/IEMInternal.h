@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96020 2022-08-04 08:54:09Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96022 2022-08-04 09:12:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1859,6 +1859,7 @@ FNIEMAIMPLMEDIAOPTF3U128 iemAImpl_vpackuswb_u128,  iemAImpl_vpackuswb_u128_fallb
 FNIEMAIMPLMEDIAOPTF3U128 iemAImpl_vpackusdw_u128,  iemAImpl_vpackusdw_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128 iemAImpl_vpmullw_u128,    iemAImpl_vpmullw_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128 iemAImpl_vpmulld_u128,    iemAImpl_vpmulld_u128_fallback;
+FNIEMAIMPLMEDIAOPTF3U128 iemAImpl_vpmulhw_u128,    iemAImpl_vpmulhw_u128_fallback;
 
 FNIEMAIMPLMEDIAF3U256    iemAImpl_vpshufb_u256,    iemAImpl_vpshufb_u256_fallback;
 FNIEMAIMPLMEDIAF3U256    iemAImpl_vpand_u256,      iemAImpl_vpand_u256_fallback;
@@ -1899,6 +1900,7 @@ FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpackuswb_u256,  iemAImpl_vpackuswb_u256_fallb
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpackusdw_u256,  iemAImpl_vpackusdw_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpmullw_u256,    iemAImpl_vpmullw_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpmulld_u256,    iemAImpl_vpmulld_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256 iemAImpl_vpmulhw_u256,    iemAImpl_vpmulhw_u256_fallback;
 /** @} */
 
 /** @name Media (SSE/MMX/AVX) operations: lowhalf1 + lowhalf1 -> full1.
