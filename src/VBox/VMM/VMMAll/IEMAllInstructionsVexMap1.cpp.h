@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap1.cpp.h 96022 2022-08-04 09:12:54Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsVexMap1.cpp.h 96025 2022-08-04 09:39:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4133,8 +4133,17 @@ FNIEMOP_STUB(iemOp_vpavgw_Vx_Hx_Wx);
 /*  Opcode VEX.F2.0F 0xe3 - invalid */
 
 /*  Opcode VEX.0F 0xe4 - invalid */
-/** Opcode VEX.66.0F 0xe4 - vpmulhuw Vx, Hx, W */
-FNIEMOP_STUB(iemOp_vpmulhuw_Vx_Hx_W);
+
+
+/** Opcode VEX.66.0F 0xe4 - vpmulhuw Vx, Hx, Wx */
+FNIEMOP_DEF(iemOp_vpmulhuw_Vx_Hx_Wx)
+{
+    IEMOP_MNEMONIC3(VEX_RVM, VPMULHUW, vpmulhuw, Vx, Hx, Wx, DISOPTYPE_HARMLESS | DISOPTYPE_AVX, 0);
+    IEMOPMEDIAOPTF3_INIT_VARS(vpmulhuw);
+    return FNIEMOP_CALL_1(iemOpCommonAvxAvx2_Vx_Hx_Wx_Opt, IEM_SELECT_HOST_OR_FALLBACK(fAvx2, &s_Host, &s_Fallback));
+}
+
+
 /*  Opcode VEX.F3.0F 0xe4 - invalid */
 /*  Opcode VEX.F2.0F 0xe4 - invalid */
 
@@ -4735,7 +4744,7 @@ IEM_STATIC const PFNIEMOP g_apfnVexMap1[] =
     /* 0xe1 */  iemOp_InvalidNeedRM,        iemOp_vpsraw_Vx_Hx_W,       iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
     /* 0xe2 */  iemOp_InvalidNeedRM,        iemOp_vpsrad_Vx_Hx_Wx,      iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
     /* 0xe3 */  iemOp_InvalidNeedRM,        iemOp_vpavgw_Vx_Hx_Wx,      iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
-    /* 0xe4 */  iemOp_InvalidNeedRM,        iemOp_vpmulhuw_Vx_Hx_W,     iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
+    /* 0xe4 */  iemOp_InvalidNeedRM,        iemOp_vpmulhuw_Vx_Hx_Wx,    iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
     /* 0xe5 */  iemOp_InvalidNeedRM,        iemOp_vpmulhw_Vx_Hx_Wx,     iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
     /* 0xe6 */  iemOp_InvalidNeedRM,        iemOp_vcvttpd2dq_Vx_Wpd,    iemOp_vcvtdq2pd_Vx_Wpd,     iemOp_vcvtpd2dq_Vx_Wpd,
     /* 0xe7 */  iemOp_InvalidNeedRM,        iemOp_vmovntdq_Mx_Vx,       iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
