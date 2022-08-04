@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.cpp 95808 2022-07-25 13:00:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.cpp 96031 2022-08-04 13:26:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class implementation.
  */
@@ -447,7 +447,11 @@ void UIRecordingSettingsEditor::prepareWidgets()
         /* Prepare 'feature' check-box: */
         m_pCheckboxFeature = new QCheckBox(this);
         if (m_pCheckboxFeature)
+        {
+            // this name is used from outside, have a look at UIMachineLogic..
+            m_pCheckboxFeature->setObjectName("m_pCheckboxVideoCapture");
             pLayout->addWidget(m_pCheckboxFeature, 0, 0, 1, 2);
+        }
 
         /* Prepare 20-px shifting spacer: */
         QSpacerItem *pSpacerItem = new QSpacerItem(20, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
