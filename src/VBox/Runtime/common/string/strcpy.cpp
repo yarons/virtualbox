@@ -1,4 +1,4 @@
-/* $Id: strcpy.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
+/* $Id: strcpy.cpp 96044 2022-08-04 22:32:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strcpy().
  */
@@ -40,7 +40,7 @@
  * @param   pszSrc      Zero terminated string.
  */
 #ifdef IPRT_NO_CRT
-# undef strlen
+# undef strcpy
 char *RT_NOCRT(strcpy)(char *pszDst, const char *pszSrc)
 #else
 char *strcpy(char *pszDst, const char *pszSrc)
