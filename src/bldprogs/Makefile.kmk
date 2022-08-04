@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96040 2022-08-04 22:00:57Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -19,7 +19,7 @@ SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
 
 ifneq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),solaris.sparc64)
- BLDPROGS += bin2c biossums filesplitter VBoxCmp
+ BLDPROGS += bin2c biossums filesplitter genalias VBoxCmp
 endif
 
 bin2c_TEMPLATE = VBoxBldProg
@@ -30,6 +30,9 @@ biossums_SOURCES = biossums.c
 
 filesplitter_TEMPLATE = VBoxBldProg
 filesplitter_SOURCES = filesplitter.cpp
+
+genalias_TEMPLATE = VBoxBldProg
+genalias_SOURCES = genalias.cpp
 
 VBoxCmp_TEMPLATE = VBoxBldProg
 VBoxCmp_SOURCES = VBoxCmp.cpp
