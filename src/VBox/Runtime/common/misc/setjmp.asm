@@ -1,4 +1,4 @@
-; $Id: setjmp.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: setjmp.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT setjmp & longjmp - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 
 ;;
 ; @param x86:[esp+4] msc:rcx gcc:rdi     The jump buffer pointer.
-BEGINPROC RT_NOCRT(setjmp)
+RT_NOCRT_BEGINPROC setjmp
 %ifdef RT_ARCH_AMD64
  %ifndef ASM_CALL64_MSC
         mov     rcx, rdi
@@ -83,7 +83,7 @@ ENDPROC RT_NOCRT(setjmp)
 ;;
 ; @param x86:[esp+4] msc:rcx gcc:rdi     The jump buffer pointer.
 ; @param x86:[esp+8] msc:rdx gcc:rsi     Return value.
-BEGINPROC RT_NOCRT(longjmp)
+RT_NOCRT_BEGINPROC longjmp
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         mov     eax, edx                ; ret

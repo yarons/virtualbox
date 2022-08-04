@@ -1,4 +1,4 @@
-; $Id: logl.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: logl.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT logl - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; compute the natural logarithm of lrd
 ; @returns st(0)
 ; @param    lrd     [rbp + xCB*2]
-BEGINPROC RT_NOCRT(logl)
+RT_NOCRT_BEGINPROC logl
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h

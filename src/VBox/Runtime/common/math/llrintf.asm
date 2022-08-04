@@ -1,4 +1,4 @@
-; $Id: llrintf.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: llrintf.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT llrintf - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; Round rd to the nearest integer value, rounding according to the current rounding direction.
 ; @returns 32-bit: edx:eax  64-bit: rax
 ; @param    rf     32-bit: [esp + 4h]  64-bit: xmm0
-BEGINPROC RT_NOCRT(llrintf)
+RT_NOCRT_BEGINPROC llrintf
 %ifdef RT_ARCH_AMD64
     cvtss2si rax, xmm0
 %else

@@ -1,4 +1,4 @@
-; $Id: floorl.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: floorl.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT floorl - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; Compute the largest integral value not greater than lrd.
 ; @returns st(0)
 ; @param    lrd     [rbp + 8]
-BEGINPROC RT_NOCRT(floorl)
+RT_NOCRT_BEGINPROC floorl
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h

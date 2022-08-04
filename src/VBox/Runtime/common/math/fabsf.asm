@@ -1,4 +1,4 @@
-; $Id: fabsf.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: fabsf.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT fabsf - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; Compute the absolute value of rf (|rf|).
 ; @returns 32-bit: st(0)   64-bit: xmm0
 ; @param    rf      32-bit: [ebp + 8]   64-bit: xmm0
-BEGINPROC RT_NOCRT(fabsf)
+RT_NOCRT_BEGINPROC fabsf
     push    xBP
     mov     xBP, xSP
 

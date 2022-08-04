@@ -1,4 +1,4 @@
-; $Id: truncl.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: truncl.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT truncl - AMD64 & X86.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 ; Round to truncated integer value.
 ; @returns st(0)
 ; @param    rd      [rbp + 8]
-BEGINPROC RT_NOCRT(truncl)
+RT_NOCRT_BEGINPROC truncl
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h

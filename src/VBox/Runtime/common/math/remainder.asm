@@ -1,4 +1,4 @@
-; $Id: remainder.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: remainder.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT remainder - AMD64 & X86.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 ; @returns st(0)
 ; @param    rd1    [ebp + 8h]  xmm0
 ; @param    rd2    [ebp + 10h]  xmm1
-BEGINPROC RT_NOCRT(remainder)
+RT_NOCRT_BEGINPROC remainder
     push    xBP
     mov     xBP, xSP
     sub     xSP, 20h

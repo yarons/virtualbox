@@ -1,4 +1,4 @@
-; $Id: tanl.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: tanl.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT tanl - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; Compute the sine of lrd
 ; @returns st(0)
 ; @param    lrd     [xSP + xCB*2]
-BEGINPROC RT_NOCRT(tanl)
+RT_NOCRT_BEGINPROC tanl
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h

@@ -1,4 +1,4 @@
-; $Id: ceill.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: ceill.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT ceill - AMD64 & X86.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 ; Compute the smallest integral value not less than lrd.
 ; @returns st(0)
 ; @param    lrd     [rbp + 8]
-BEGINPROC RT_NOCRT(ceill)
+RT_NOCRT_BEGINPROC ceill
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h

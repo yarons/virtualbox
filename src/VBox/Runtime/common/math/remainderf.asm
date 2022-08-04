@@ -1,4 +1,4 @@
-; $Id: remainderf.asm 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+; $Id: remainderf.asm 96014 2022-08-04 01:48:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT remainderf - AMD64 & X86.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 ; @returns st(0)
 ; @param    rf1    [ebp + 08h]  xmm0
 ; @param    rf2    [ebp + 0ch]  xmm1
-BEGINPROC RT_NOCRT(remainderf)
+RT_NOCRT_BEGINPROC remainderf
     push    xBP
     mov     xBP, xSP
     sub     xSP, 20h
