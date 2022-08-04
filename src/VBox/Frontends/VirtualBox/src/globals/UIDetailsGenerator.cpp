@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 96024 2022-08-04 09:14:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -691,7 +691,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
             }
             case KNetworkAttachmentType_Bridged:
             {
-                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_BridgetAdapter)
+                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_BridgedAdapter)
                 {
                     const QString strName = comAdapter.GetBridgedInterface();
                     strAttachmentType = strAttachmentTemplate

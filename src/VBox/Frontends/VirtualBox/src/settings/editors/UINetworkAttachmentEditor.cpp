@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.cpp 94534 2022-04-08 18:18:43Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.cpp 96024 2022-08-04 09:14:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class implementation.
  */
@@ -519,7 +519,7 @@ UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork UINetworkAttachmentEditor::
     switch (comEnum)
     {
         case KNetworkAttachmentType_NAT:             return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NAT;
-        case KNetworkAttachmentType_Bridged:         return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_BridgetAdapter;
+        case KNetworkAttachmentType_Bridged:         return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_BridgedAdapter;
         case KNetworkAttachmentType_Internal:        return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_InternalNetwork;
         case KNetworkAttachmentType_HostOnly:        return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_HostOnlyAdapter;
         case KNetworkAttachmentType_Generic:         return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_GenericDriver;
