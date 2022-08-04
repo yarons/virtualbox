@@ -1,4 +1,4 @@
-/* $Id: genalias.cpp 96040 2022-08-04 22:00:57Z knut.osmundsen@oracle.com $ */
+/* $Id: genalias.cpp 96041 2022-08-04 22:02:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * genalias - generate a number of alias objects.
  *
@@ -266,7 +266,7 @@ static int WriteAliasObjectOMF(FILE *pOutput, const char *pszAlias, const char *
 {
     const uint32_t cchAlias = (uint32_t)strlen(pszAlias);
     const uint32_t cchReal  = (uint32_t)strlen(pszReal);
-    const uint32_t cchName  = cchAlias > 250 ? 250 : cchAlias;
+    //const uint32_t cchName  = cchAlias > 250 ? 250 : cchAlias;
     uint32_t       cch;
 
     if (cchReal >= 250)
