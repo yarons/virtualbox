@@ -1,4 +1,4 @@
-/* $Id: strrchr.cpp 95814 2022-07-25 13:25:01Z knut.osmundsen@oracle.com $ */
+/* $Id: strrchr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strrchr().
  */
@@ -28,12 +28,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
-char *strrchr(const char *pszString, int ch)
+#undef strrchr
+char *RT_NOCRT(strrchr)(const char *pszString, int ch)
 {
-    /** @todo check out what strrchr(psz, '\\0') is supposed to return. */
-    return (char *)memrchr(pszString, ch, strlen(pszString));
+    /* We must search the terminator too, so strrchr(str, '\0') returns a pointer to it. */
+    return (char *)memrchr(pszString, ch, strlen(pszString) + 1);
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strrchr);
 

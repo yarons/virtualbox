@@ -1,4 +1,4 @@
-/* $Id: memrchr.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: memrchr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, memrchr().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -39,7 +40,8 @@
  * @param   ch      The char to search for.
  * @param   cb      The size of the block.
  */
-void *memrchr(const void *pv, int ch, size_t cb)
+#undef memrchr
+void *RT_NOCRT(memrchr)(const void *pv, int ch, size_t cb)
 {
     if (cb)
     {
@@ -56,4 +58,5 @@ void *memrchr(const void *pv, int ch, size_t cb)
 
     return NULL;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(memrchr);
 

@@ -1,4 +1,4 @@
-/* $Id: mempcpy.cpp 93959 2022-02-27 13:52:24Z knut.osmundsen@oracle.com $ */
+/* $Id: mempcpy.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, mempcpy().
  */
@@ -28,11 +28,18 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
+#ifdef IPRT_NO_CRT
+# undef mempcpy
+void * RT_NOCRT(mempcpy)(void *pvDst, const void *pvSrc, size_t cb)
+#else
 RTDECL(void *) mempcpy(void *pvDst, const void *pvSrc, size_t cb)
+#endif
 {
     return (char *)memcpy(pvDst, pvSrc, cb) + cb;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(mempcpy);
 

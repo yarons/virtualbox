@@ -1,4 +1,4 @@
-/* $Id: iprt.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: iprt.h 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -61,6 +61,47 @@
 # define RT_EXPORT_SYMBOL(Name) EXPORT_SYMBOL(Name)
 #else
 # define RT_EXPORT_SYMBOL(Name) extern int g_rtExportSymbolDummyVariable
+#endif
+
+/** @def RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL
+ * Creates symbol alias and export a RT_NOCRT symbol.
+ *
+ * For targets using ELF this macro generates weak symbol aliases, for the other
+ * object formats the makefile scans source files for this macro and produces
+ * separate object files with the aliases.
+ *
+ * @param   a_Name      The CRT function or variable name.
+ *
+ * @todo    Does not support ELF targets using underscore prefixed symbols.
+ */
+#if defined(__ELF__) && defined(RT_WITH_NOCRT_ALIASES) && !defined(RT_WITHOUT_NOCRT_ALIASES)
+# ifdef RT_WITH_NOCRT_UNDERSCORE_ALIASES
+#  define RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(a_Name) RT_EXPORT_SYMBOL(a_Name) \
+    __asm__(".weak " #a_Name "\n\t" \
+            ".set  " #a_Name "," RT_NOCRT_STR(a_Name) "\n\t" \
+            ".weak _" #a_Name "\n\t" \
+            ".set  _" #a_Name "," RT_NOCRT_STR(a_Name) "\n\t")
+# else
+#  define RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(a_Name) RT_EXPORT_SYMBOL(a_Name) \
+    __asm__(".weak " #a_Name "\n\t" \
+            ".set  " #a_Name "," RT_NOCRT_STR(a_Name) "\n\t")
+# endif
+#else
+# define RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(a_Name) RT_EXPORT_SYMBOL(a_Name)
+#endif
+
+/** @def RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL_WITHOUT_UNDERSCORE
+ * Variant of RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL that omits the
+ * underscore-prefixed variant of the symbol.
+ *
+ * @param   a_Name      The CRT function or variable name.
+ */
+#if defined(__ELF__) && defined(RT_WITH_NOCRT_ALIASES) && !defined(RT_WITHOUT_NOCRT_ALIASES)
+# define RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL_WITHOUT_UNDERSCORE(a_Name) RT_EXPORT_SYMBOL(a_Name) \
+    __asm__(".weak " #a_Name "\n\t" \
+            ".set  " #a_Name "," RT_NOCRT_STR(a_Name) "\n\t")
+#else
+# define RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL_WITHOUT_UNDERSCORE(a_Name) RT_EXPORT_SYMBOL(a_Name)
 #endif
 
 

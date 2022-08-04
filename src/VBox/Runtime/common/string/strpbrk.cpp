@@ -1,4 +1,4 @@
-/* $Id: strpbrk.cpp 95767 2022-07-20 19:40:31Z knut.osmundsen@oracle.com $ */
+/* $Id: strpbrk.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - strpbrk().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -37,7 +38,8 @@
  * @returns
  */
 #ifdef IPRT_NO_CRT
-char *strpbrk(const char *pszStr, const char *pszBreakChars)
+# undef strpbrk
+char *RT_NOCRT(strpbrk)(const char *pszStr, const char *pszBreakChars)
 #elif defined(_MSC_VER)
 # if _MSC_VER >= 1400
 _CRTIMP __checkReturn _CONST_RETURN char *  __cdecl strpbrk(__in_z const char *pszStr, __in_z const char *pszBreakChars)
@@ -65,4 +67,5 @@ char *strpbrk(const char *pszStr, const char *pszBreakChars)
     }
     return NULL;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strpbrk);
 

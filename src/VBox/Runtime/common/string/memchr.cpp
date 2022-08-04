@@ -1,4 +1,4 @@
-/* $Id: memchr.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: memchr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, memcpy().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -40,12 +41,12 @@
  * @param   ch          The character to search for.
  * @param   cb          The size of the block.
  */
-#ifdef _MSC_VER /* Silly 'safeness' from MS. */
-# if _MSC_VER >= 1400
-_CRTIMP __checkReturn _CONST_RETURN void *  __cdecl memchr( __in_bcount_opt(_MaxCount) const void * pv, __in int ch, __in size_t cb)
-# else
-void *memchr(const void *pv, int ch, size_t cb)
-# endif
+#ifdef IPRT_NO_CRT
+# undef memchr
+void *RT_NOCRT(memchr)(const void *pv, int ch, size_t cb)
+#elif RT_MSC_PREREQ(RT_MSC_VER_VS2005)
+_CRTIMP __checkReturn _CONST_RETURN void * __cdecl
+memchr(__in_bcount_opt(_MaxCount) const void *pv, __in int ch, __in size_t cb)
 #else
 void *memchr(const void *pv, int ch, size_t cb)
 #endif
@@ -60,4 +61,5 @@ void *memchr(const void *pv, int ch, size_t cb)
     }
     return NULL;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(memchr);
 

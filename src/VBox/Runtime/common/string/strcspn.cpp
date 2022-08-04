@@ -1,4 +1,4 @@
-/* $Id: strcspn.cpp 95814 2022-07-25 13:25:01Z knut.osmundsen@oracle.com $ */
+/* $Id: strcspn.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strcspn().
  */
@@ -28,13 +28,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
 /**
  * strpbrk with a offset return instead of a pointer.
  */
-size_t strcspn(const char *pszString, const char *pszBreakChars)
+#undef strcspn
+size_t RT_NOCRT(strcspn)(const char *pszString, const char *pszBreakChars)
 {
     const char * const pszStringStart = pszString;
     int                chCur;
@@ -49,4 +51,5 @@ size_t strcspn(const char *pszString, const char *pszBreakChars)
     }
     return (size_t)(pszString - pszStringStart);
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strcspn);
 

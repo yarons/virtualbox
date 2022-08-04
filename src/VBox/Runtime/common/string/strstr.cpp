@@ -1,4 +1,4 @@
-/* $Id: strstr.cpp 95814 2022-07-25 13:25:01Z knut.osmundsen@oracle.com $ */
+/* $Id: strstr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strstr().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -39,7 +40,8 @@
  * @param   pszString   Zero terminated string to search.
  * @param   pszSubStr   The substring to search for.
  */
-char *strstr(const char *pszString, const char *pszSubStr)
+#undef strstr
+char *RT_NOCRT(strstr)(const char *pszString, const char *pszSubStr)
 {
     char const  ch0Sub = *pszSubStr;
     pszString = strchr(pszString, ch0Sub);
@@ -58,4 +60,5 @@ char *strstr(const char *pszString, const char *pszSubStr)
     }
     return NULL;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strstr);
 

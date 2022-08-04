@@ -1,4 +1,4 @@
-/* $Id: strcpy.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: strcpy.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strcpy().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -38,11 +39,18 @@
  * @param   pszDst      Will contain a copy of pszSrc.
  * @param   pszSrc      Zero terminated string.
  */
-char* strcpy(char *pszDst, const char *pszSrc)
+#ifdef IPRT_NO_CRT
+# undef strlen
+char *RT_NOCRT(strcpy)(char *pszDst, const char *pszSrc)
+#else
+char *strcpy(char *pszDst, const char *pszSrc)
+#endif
 {
-    char *psz = pszDst;
-    while ((*psz++ = *pszSrc++))
-        ;
+    char * const pszRet = pszDst;
+    while ((*pszDst = *pszSrc++) != '\0')
+        pszDst++;
 
-    return pszDst;
+    return pszRet;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strcpy);
+

@@ -1,4 +1,4 @@
-/* $Id: strlen.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: strlen.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strlen().
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -37,12 +38,11 @@
  * @returns String length in bytes.
  * @param   pszString   Zero terminated string.
  */
-#ifdef _MSC_VER
-# if _MSC_VER >= 1400
-__checkReturn size_t  __cdecl strlen(__in_z  const char *pszString)
-# else
+#ifdef IPRT_NO_CRT
+# undef strlen
 size_t strlen(const char *pszString)
-# endif
+#elif RT_MSC_PREREQ(RT_MSC_VER_VS2005)
+__checkReturn size_t  __cdecl strlen(__in_z  const char *pszString)
 #else
 size_t strlen(const char *pszString)
 #endif
@@ -52,4 +52,5 @@ size_t strlen(const char *pszString)
         psz++;
     return psz - pszString;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strlen);
 
