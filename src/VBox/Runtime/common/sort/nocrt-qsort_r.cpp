@@ -1,4 +1,4 @@
-/* $Id: nocrt-qsort_r.cpp 96070 2022-08-05 23:08:39Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-qsort_r.cpp 96071 2022-08-05 23:09:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - qsort_r().
  */
@@ -43,5 +43,4 @@ void RT_NOCRT(qsort_r)(void *pvBase, size_t cEntries, size_t cbEntry,
     RTSortShell(pvBase, cEntries, cbEntry, (PFNRTSORTCMP)pfnCompare, pvUser);
 }
 RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(qsort_r);
-
 
