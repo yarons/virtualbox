@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap2.cpp.h 96049 2022-08-05 10:17:21Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsVexMap2.cpp.h 96054 2022-08-05 11:01:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -60,8 +60,17 @@ FNIEMOP_DEF(iemOp_vphaddd_Vx_Hx_Wx)
 
 
 /*  Opcode VEX.0F38 0x03 - invalid. */
+
+
 /** Opcode VEX.66.0F38 0x03. */
-FNIEMOP_STUB(iemOp_vphaddsw_Vx_Hx_Wx);
+FNIEMOP_DEF(iemOp_vphaddsw_Vx_Hx_Wx)
+{
+    IEMOP_MNEMONIC3(VEX_RVM, VPHADDSW, vphaddsw, Vx, Hx, Wx, DISOPTYPE_HARMLESS, 0);
+    IEMOPMEDIAOPTF3_INIT_VARS(vphaddsw);
+    return FNIEMOP_CALL_1(iemOpCommonAvxAvx2_Vx_Hx_Wx_Opt, IEM_SELECT_HOST_OR_FALLBACK(fAvx2, &s_Host, &s_Fallback));
+}
+
+
 /*  Opcode VEX.0F38 0x04 - invalid. */
 /** Opcode VEX.66.0F38 0x04. */
 FNIEMOP_STUB(iemOp_vpmaddubsw_Vx_Hx_Wx);
@@ -90,8 +99,17 @@ FNIEMOP_DEF(iemOp_vphsubd_Vx_Hx_Wx)
 
 
 /*  Opcode VEX.0F38 0x07 - invalid. */
+
+
 /** Opcode VEX.66.0F38 0x07. */
-FNIEMOP_STUB(iemOp_vphsubsw_Vx_Hx_Wx);
+FNIEMOP_DEF(iemOp_vphsubsw_Vx_Hx_Wx)
+{
+    IEMOP_MNEMONIC3(VEX_RVM, VPHSUBSW, vphsubsw, Vx, Hx, Wx, DISOPTYPE_HARMLESS, 0);
+    IEMOPMEDIAOPTF3_INIT_VARS(vphsubsw);
+    return FNIEMOP_CALL_1(iemOpCommonAvxAvx2_Vx_Hx_Wx_Opt, IEM_SELECT_HOST_OR_FALLBACK(fAvx2, &s_Host, &s_Fallback));
+}
+
+
 /*  Opcode VEX.0F38 0x08 - invalid. */
 
 
