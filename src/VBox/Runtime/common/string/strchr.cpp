@@ -1,4 +1,4 @@
-/* $Id: strchr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
+/* $Id: strchr.cpp 96061 2022-08-05 13:39:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strchr().
  */
@@ -34,7 +34,7 @@
 #ifdef IPRT_NO_CRT
 # undef strchr
 char *RT_NOCRT(strchr)(const char *pszStr, int ch)
-#ifdef _MSC_VER
+#elif defined(_MSC_VER)
 _CRTIMP char * __cdecl strchr(const char *pszStr, int ch)
 #elif defined(__WATCOMC__) && !defined(IPRT_NO_CRT)
 _WCRTLINK char *std::strchr(const char *pszStr, int ch)
