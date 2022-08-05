@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96034 2022-08-04 20:00:12Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 96046 2022-08-05 09:47:28Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -3651,6 +3651,9 @@ IEMIMPL_MEDIA_F2 pabsd,   1
 IEMIMPL_MEDIA_F2 psignb,  1
 IEMIMPL_MEDIA_F2 psignw,  1
 IEMIMPL_MEDIA_F2 psignd,  1
+IEMIMPL_MEDIA_F2 phaddw,  1
+IEMIMPL_MEDIA_F2 phaddd,  1
+
 
 ;;
 ; Media instruction working on two full sized registers, but no FXSAVE state argument.
@@ -4189,6 +4192,8 @@ IEMIMPL_MEDIA_OPT_F3 vpavgw
 IEMIMPL_MEDIA_OPT_F3 vpsignb
 IEMIMPL_MEDIA_OPT_F3 vpsignw
 IEMIMPL_MEDIA_OPT_F3 vpsignd
+IEMIMPL_MEDIA_OPT_F3 vphaddw
+IEMIMPL_MEDIA_OPT_F3 vphaddd
 
 
 ;;
