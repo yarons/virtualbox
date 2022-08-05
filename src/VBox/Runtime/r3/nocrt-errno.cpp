@@ -1,6 +1,6 @@
-/* $Id: nocrt-strtok.cpp 96052 2022-08-05 10:48:48Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-errno.cpp 96052 2022-08-05 10:48:48Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - No-CRT Strings, strtok().
+ * IPRT - No-CRT - Per-thread errno variable.
  */
 
 /*
@@ -28,19 +28,18 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define IPRT_NO_CRT_FOR_3RD_PARTY
 #include "internal/nocrt.h"
-#include <iprt/string.h>
+#include <iprt/nocrt/errno.h>
 
 
-#undef strtok
-char *RT_NOCRT(strtok)(char *psz, const char *pszDelimiters)
+RTDECL(int *) rtNoCrtGetErrnoPtr(void)
 {
     PRTNOCRTTHREADDATA pNoCrtData = rtNoCrtThreadDataGet();
     if (pNoCrtData)
-        return RT_NOCRT(strtok_r)(psz, pszDelimiters, &pNoCrtData->pszStrToken);
+        return &pNoCrtData->iErrno;
 
-    static char *s_pszFallback = NULL;
-    return RT_NOCRT(strtok_r)(psz, pszDelimiters, &s_pszFallback);
+    static int s_iFallbackErrno;
+    return &s_iFallbackErrno;
 }
-RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strtok);
 

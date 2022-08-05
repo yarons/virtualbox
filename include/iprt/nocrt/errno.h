@@ -45,6 +45,7 @@
 # define EEXIST 17
 
 RT_C_DECLS_BEGIN
+
 RTDECL(int *) rtNoCrtGetErrnoPtr(void);
 # define errno (*rtNoCrtGetErrnoPtr())
 
