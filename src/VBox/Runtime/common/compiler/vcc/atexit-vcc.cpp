@@ -1,4 +1,4 @@
-/* $Id: atexit-vcc.cpp 95870 2022-07-27 02:38:01Z knut.osmundsen@oracle.com $ */
+/* $Id: atexit-vcc.cpp 96070 2022-08-05 23:08:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - Simple atexit implementation.
  */
@@ -58,7 +58,7 @@ static volatile uint32_t    g_idxNextAtExit        = 0;
 
 
 /* Note! not using atexit here because it'll clash with built-in prototype.  */
-extern "C" int rtnocrt_atexit(PFNRTNOCRTATEXITCALLBACK pfnCallback) RT_NOEXCEPT
+extern "C" int nocrt_atexit(PFNRTNOCRTATEXITCALLBACK pfnCallback) RT_NOEXCEPT
 {
     AssertPtr(pfnCallback);
 
@@ -94,6 +94,7 @@ extern "C" int rtnocrt_atexit(PFNRTNOCRTATEXITCALLBACK pfnCallback) RT_NOEXCEPT
     pChunk->apfnCallbacks[idxChunk % RT_ELEMENTS(pChunk->apfnCallbacks)] = pfnCallback;
     return 0;
 }
+RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(atexit);
 
 
 void rtVccTermRunAtExit(void) RT_NOEXCEPT

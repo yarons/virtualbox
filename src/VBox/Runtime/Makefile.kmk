@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96067 2022-08-05 19:18:37Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96070 2022-08-05 23:08:39Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1799,6 +1799,13 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	generic/RTLogWriteStdOut-generic.cpp \
   	,$(RuntimeBaseR3_SOURCES)) \
        \
+  	common/file/nocrt-fstat.cpp \
+  	common/file/nocrt-isatty.cpp \
+  	common/file/nocrt-read.cpp \
+  	common/path/nocrt-unlink.cpp \
+  	common/rand/nocrt-rand.cpp \
+  	common/sort/nocrt-qsort.cpp \
+  	common/sort/nocrt-qsort_r.cpp \
   	common/string/nocrt-strdup.cpp \
   	common/string/nocrt-stricmp.cpp \
   	common/string/nocrt-strtol.cpp \
