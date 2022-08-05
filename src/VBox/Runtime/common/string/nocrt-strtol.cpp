@@ -1,4 +1,4 @@
-/* $Id: nocrt-strtol.cpp 96052 2022-08-05 10:48:48Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-strtol.cpp 96053 2022-08-05 10:49:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - strtol.
  */
@@ -36,6 +36,7 @@
 #include <iprt/string.h>
 
 
+#undef strtol
 long RT_NOCRT(strtol)(const char *psz, char **ppszNext, int iBase)
 {
 #if LONG_BIT == 64
