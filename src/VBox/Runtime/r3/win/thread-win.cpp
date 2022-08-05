@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 95765 2022-07-20 19:37:11Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-win.cpp 96051 2022-08-05 10:30:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -367,10 +367,11 @@ static DWORD __stdcall rtThreadNativeMain(void *pvArgs) RT_NOTHROW_DEF
 
     int rc = rtThreadMain(pThread, dwThreadId, &pThread->szName[0]);
 
+    TlsSetValue(g_dwSelfTLS, NULL); /* rtThreadMain already released the structure. */
+
     if (fUninitCom && g_pfnCoUninitialize)
         g_pfnCoUninitialize();
 
-    TlsSetValue(g_dwSelfTLS, NULL);
     rtThreadNativeUninitComAndOle();
 #ifndef IPRT_NO_CRT
     _endthreadex(rc);
