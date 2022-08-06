@@ -1,4 +1,4 @@
-/* $Id: nocrt-llabs.cpp 96074 2022-08-06 00:26:39Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-llabs.cpp 96080 2022-08-06 01:59:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - llabs().
  */
@@ -34,7 +34,7 @@
 
 
 #undef llabs
-long RT_NOCRT(llabs)(long long iValue) RT_NOEXCEPT
+long long RT_NOCRT(llabs)(long long iValue) RT_NOEXCEPT
 {
     return iValue >= 0 ? iValue : -iValue;
 }
