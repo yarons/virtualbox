@@ -1,4 +1,4 @@
-/* $Id: nocrt-per-thread-2.cpp 96052 2022-08-05 10:48:48Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-per-thread-2.cpp 96084 2022-08-06 02:07:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-Crt - Per Thread Data, Managment code
  */
@@ -116,7 +116,7 @@ static DECLCALLBACK(int32_t) rtNoCrtPerThreadInit(void *pvUser)
 
 
 /**
- * @callback_method_impl{FNRTONCE}
+ * @callback_method_impl{FNRTONCECLEANUP}
  */
 static DECLCALLBACK(void) rtNoCrtPerThreadCleanup(void *pvUser, bool fLazyCleanUpOk)
 {
