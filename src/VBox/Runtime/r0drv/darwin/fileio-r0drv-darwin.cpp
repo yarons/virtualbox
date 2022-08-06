@@ -1,4 +1,4 @@
-/* $Id: fileio-r0drv-darwin.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-r0drv-darwin.cpp 96079 2022-08-06 01:58:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, R0 Driver, Darwin.
  */
@@ -80,6 +80,8 @@ typedef struct RTFILEINT
 
 RTDECL(int) RTFileOpen(PRTFILE phFile, const char *pszFilename, uint64_t fOpen)
 {
+    AssertReturn(!(fFlags & RTFILE_O_TEMP_AUTO_DELETE), VERR_NOT_SUPPORTED);
+
     RTFILEINT *pThis = (RTFILEINT *)RTMemAllocZ(sizeof(*pThis));
     if (!pThis)
         return VERR_NO_MEMORY;
