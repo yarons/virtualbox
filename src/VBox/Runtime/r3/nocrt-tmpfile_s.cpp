@@ -1,4 +1,4 @@
-/* $Id: nocrt-tmpfile_s.cpp 96081 2022-08-06 01:59:41Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-tmpfile_s.cpp 96082 2022-08-06 02:03:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - tmpfile_s().
  */
@@ -59,5 +59,4 @@ errno_t RT_NOCRT(tmpfile_s)(FILE **ppFile)
     return RTErrConvertToErrno(rc);
 }
 RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(tmpfile_s);
-
 
