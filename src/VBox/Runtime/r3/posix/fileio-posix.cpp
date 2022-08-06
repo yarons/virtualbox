@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 94277 2022-03-17 01:32:55Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-posix.cpp 96076 2022-08-06 01:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -158,6 +158,9 @@ RTDECL(int)  RTFileOpenEx(const char *pszFilename, uint64_t fOpen, PRTFILE phFil
         return rc;
 #ifndef O_NONBLOCK
     AssertReturn(!(fOpen & RTFILE_O_NON_BLOCK), VERR_INVALID_FLAGS);
+#endif
+#if defined(RT_OS_OS2) /* Cannot delete open files on OS/2. */
+    AssertReturn(!(fOpen & RTFILE_O_TEMP_AUTO_DELETE), VERR_NOT_SUPPORTED);
 #endif
 
     /*
@@ -342,6 +345,18 @@ RTDECL(int)  RTFileOpenEx(const char *pszFilename, uint64_t fOpen, PRTFILE phFil
     if (fh >= 0)
     {
         iErr = 0;
+
+        /*
+         * If temporary file, delete it.
+         */
+        if (fOpen & RTFILE_O_TEMP_AUTO_DELETE)
+        {
+            /** @todo Use funlinkat/funlink or similar here when available!  Or better,
+             *        use O_TMPFILE, only that may require fallback as not supported by
+             *        all file system on linux. */
+            iErr = unlink(pszNativeFilename);
+            Assert(iErr == 0);
+        }
 
         /*
          * Mark the file handle close on exec, unless inherit is specified.

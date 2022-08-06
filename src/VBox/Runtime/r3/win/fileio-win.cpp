@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-win.cpp 96076 2022-08-06 01:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -287,7 +287,9 @@ RTDECL(int) RTFileOpenEx(const char *pszFilename, uint64_t fOpen, PRTFILE phFile
     }
 
     DWORD dwFlagsAndAttributes;
-    dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL;
+    dwFlagsAndAttributes = !(fOpen & RTFILE_O_TEMP_AUTO_DELETE) ? FILE_ATTRIBUTE_NORMAL : FILE_ATTRIBUTE_TEMPORARY;
+    if (fOpen & RTFILE_O_TEMP_AUTO_DELETE)
+        fOpen |= FILE_FLAG_DELETE_ON_CLOSE;
     if (fOpen & RTFILE_O_WRITE_THROUGH)
         dwFlagsAndAttributes |= FILE_FLAG_WRITE_THROUGH;
     if (fOpen & RTFILE_O_ASYNC_IO)
