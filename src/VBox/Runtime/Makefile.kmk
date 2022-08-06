@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96075 2022-08-06 00:39:28Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96081 2022-08-06 01:59:41Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1827,7 +1827,13 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/string/strtok_r.cpp \
   	r3/nocrt-per-thread-1.cpp \
   	r3/nocrt-per-thread-2.cpp \
-  	r3/nocrt-errno.cpp
+  	r3/nocrt-errno.cpp \
+  	r3/nocrt-fopen.cpp \
+  	r3/nocrt-fdopen.cpp \
+  	r3/nocrt-tmpfile.cpp \
+  	r3/nocrt-tmpfile_s.cpp \
+  	r3/nocrt-fclose.cpp \
+  	r3/nocrt-fflush.cpp \
 
   RuntimeR3_SOURCES.x86 = $(RuntimeBaseR3_SOURCES.x86) \
   	common/math/cos.asm  \
