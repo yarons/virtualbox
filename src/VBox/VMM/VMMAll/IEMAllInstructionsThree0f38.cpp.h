@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f38.cpp.h 96064 2022-08-05 15:56:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f38.cpp.h 96087 2022-08-06 19:41:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -478,9 +478,25 @@ FNIEMOP_DEF(iemOp_psignd_Vx_Wx)
 
 
 /** Opcode      0x0f 0x38 0x0b. */
-FNIEMOP_STUB(iemOp_pmulhrsw_Pq_Qq);
+FNIEMOP_DEF(iemOp_pmulhrsw_Pq_Qq)
+{
+    IEMOP_MNEMONIC2(RM, PMULHRSW, pmulhrsw, Pq, Qq, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
+    return FNIEMOP_CALL_2(iemOpCommonMmx_FullFull_To_Full_Ex,
+                          IEM_SELECT_HOST_OR_FALLBACK(fSsse3, iemAImpl_pmulhrsw_u64, &iemAImpl_pmulhrsw_u64_fallback),
+                          IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSsse3);
+}
+
+
 /** Opcode 0x66 0x0f 0x38 0x0b. */
-FNIEMOP_STUB(iemOp_pmulhrsw_Vx_Wx);
+FNIEMOP_DEF(iemOp_pmulhrsw_Vx_Wx)
+{
+    IEMOP_MNEMONIC2(RM, PMULHRSW, pmulhrsw, Vx, Wx, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
+    return FNIEMOP_CALL_1(iemOpCommonSsse3_FullFull_To_Full,
+                          IEM_SELECT_HOST_OR_FALLBACK(fSsse3, iemAImpl_pmulhrsw_u128, iemAImpl_pmulhrsw_u128_fallback));
+
+}
+
+
 /*  Opcode      0x0f 0x38 0x0c - invalid. */
 /*  Opcode 0x66 0x0f 0x38 0x0c - invalid (vex only). */
 /*  Opcode      0x0f 0x38 0x0d - invalid. */
