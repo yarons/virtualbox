@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96101 2022-08-07 21:46:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96102 2022-08-07 22:56:49Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1835,6 +1835,7 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/rand/nocrt-rand.cpp \
   	common/sort/nocrt-qsort.cpp \
   	common/sort/nocrt-qsort_r.cpp \
+  	common/string/nocrt-atof.cpp \
   	common/string/nocrt-strdup.cpp \
   	common/string/nocrt-stricmp.cpp \
   	common/string/nocrt-strtol.cpp \
