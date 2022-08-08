@@ -1,4 +1,4 @@
-/* $Id: llroundl.cpp 96119 2022-08-08 22:15:00Z knut.osmundsen@oracle.com $ */
+/* $Id: llroundl.cpp 96126 2022-08-08 23:17:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - llroundl().
  */
@@ -42,10 +42,10 @@ long long RT_NOCRT(llroundl)(long double lrd)
         lrd = RT_NOCRT(roundl)(lrd);
         if (lrd >= (long double)LLONG_MIN && lrd <= (long double)LLONG_MAX)
             return (long)lrd;
-        // @todo RT_NOCRT(feraiseexcept)(FE_INVALID);
+        /** @todo RT_NOCRT(feraiseexcept)(FE_INVALID); */
         return lrd > 0 ? LLONG_MAX : LLONG_MIN;
     }
-    // @todo RT_NOCRT(feraiseexcept)(FE_INVALID);
+    /** @todo RT_NOCRT(feraiseexcept)(FE_INVALID); */
     return LLONG_MAX;
 }
 RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(llroundl);
