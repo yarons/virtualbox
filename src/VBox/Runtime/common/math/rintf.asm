@@ -1,4 +1,4 @@
-; $Id: rintf.asm 96117 2022-08-08 21:29:03Z knut.osmundsen@oracle.com $
+; $Id: rintf.asm 96121 2022-08-08 22:19:50Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT rintf - AMD64 & X86.
 ;
@@ -60,6 +60,5 @@ RT_NOCRT_BEGINPROC rintf
 
         leave
         ret
-ENDPROC   RT_NOCRT(rint)
-
+ENDPROC   RT_NOCRT(rintf)
 
