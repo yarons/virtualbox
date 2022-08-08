@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96099 2022-08-07 19:22:43Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96104 2022-08-08 09:10:25Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -13192,6 +13192,55 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpmuldq_u256_fallback,(PRTUINT256U puDst, PCRTU
     puDst->au64[1] = (int64_t)uSrc1.ai32[2] * uSrc2.ai32[2];
     puDst->au64[2] = (int64_t)uSrc1.ai32[4] * uSrc2.ai32[4];
     puDst->au64[3] = (int64_t)uSrc1.ai32[6] * uSrc2.ai32[6];
+}
+
+
+/*
+ * PMULUDQ / VPMULUDQ
+ */
+#ifdef IEM_WITHOUT_ASSEMBLY
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_pmuludq_u64,(PCX86FXSTATE pFpuState, uint64_t *puDst, uint64_t const *puSrc))
+{
+    RTUINT64U uSrc1 = { *puDst };
+    RTUINT64U uSrc2 = { *puSrc };
+    ASMCompilerBarrier();
+    *puDst = (uint64_t)uSrc1.au32[0] * uSrc2.au32[0];
+    RT_NOREF(pFpuState);
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_pmuludq_u128,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, PCRTUINT128U puSrc))
+{
+    RTUINT128U uSrc1 = *puDst;
+    RTUINT128U uSrc2 = *puSrc;
+    ASMCompilerBarrier();
+    puDst->au64[0] = (uint64_t)uSrc1.au32[0] * uSrc2.au32[0];
+    puDst->au64[1] = (uint64_t)uSrc1.au32[2] * uSrc2.au32[2];
+    RT_NOREF(pFpuState);
+}
+
+#endif
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpmuludq_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc1, PCRTUINT128U puSrc2))
+{
+    RTUINT128U uSrc1 = *puSrc1; /* Could overlap with puDst */
+    RTUINT128U uSrc2 = *puSrc2; /* Could overlap with puDst */
+    ASMCompilerBarrier();
+    puDst->au64[0] = (uint64_t)uSrc1.au32[0] * uSrc2.au32[0];
+    puDst->au64[1] = (uint64_t)uSrc1.au32[2] * uSrc2.au32[2];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpmuludq_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2))
+{
+    RTUINT256U uSrc1 = *puSrc1; /* Could overlap with puDst */
+    RTUINT256U uSrc2 = *puSrc2; /* Could overlap with puDst */
+    ASMCompilerBarrier();
+    puDst->au64[0] = (uint64_t)uSrc1.au32[0] * uSrc2.au32[0];
+    puDst->au64[1] = (uint64_t)uSrc1.au32[2] * uSrc2.au32[2];
+    puDst->au64[2] = (uint64_t)uSrc1.au32[4] * uSrc2.au32[4];
+    puDst->au64[3] = (uint64_t)uSrc1.au32[6] * uSrc2.au32[6];
 }
 
 

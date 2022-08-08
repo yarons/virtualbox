@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96099 2022-08-07 19:22:43Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 96104 2022-08-08 09:10:25Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -3659,6 +3659,7 @@ IEMIMPL_MEDIA_F2 phaddsw, 1
 IEMIMPL_MEDIA_F2 phsubsw, 1
 IEMIMPL_MEDIA_F2 pmaddubsw, 1
 IEMIMPL_MEDIA_F2 pmulhrsw,  1
+IEMIMPL_MEDIA_F2 pmuludq,   1
 
 
 ;;
@@ -4210,6 +4211,7 @@ IEMIMPL_MEDIA_OPT_F3 vpmaddubsw
 IEMIMPL_MEDIA_OPT_F3 vpmulhrsw
 IEMIMPL_MEDIA_OPT_F3 vpsadbw
 IEMIMPL_MEDIA_OPT_F3 vpmuldq
+IEMIMPL_MEDIA_OPT_F3 vpmuludq
 
 
 ;;
