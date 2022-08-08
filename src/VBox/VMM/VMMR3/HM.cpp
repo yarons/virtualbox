@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 95256 2022-06-13 10:44:19Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 96103 2022-08-08 07:55:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1848,6 +1848,10 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
         HMSVM_REPORT_FEATURE("VIRT_VMSAVE_VMLOAD",     X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD),
         HMSVM_REPORT_FEATURE("VGIF",                   X86_CPUID_SVM_FEATURE_EDX_VGIF),
         HMSVM_REPORT_FEATURE("GMET",                   X86_CPUID_SVM_FEATURE_EDX_GMET),
+        HMSVM_REPORT_FEATURE("SSSCHECK",               X86_CPUID_SVM_FEATURE_EDX_SSSCHECK),
+        HMSVM_REPORT_FEATURE("SPEC_CTRL",              X86_CPUID_SVM_FEATURE_EDX_SPEC_CTRL),
+        HMSVM_REPORT_FEATURE("HOST_MCE_OVERRIDE",      X86_CPUID_SVM_FEATURE_EDX_HOST_MCE_OVERRIDE),
+        HMSVM_REPORT_FEATURE("TLBICTL",                X86_CPUID_SVM_FEATURE_EDX_TLBICTL),
 #undef HMSVM_REPORT_FEATURE
     };
 

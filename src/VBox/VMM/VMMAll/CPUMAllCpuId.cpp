@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 95359 2022-06-23 21:45:13Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 96103 2022-08-08 07:55:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1524,6 +1524,10 @@ int cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCP
                 pFeatures->fSvmVirtVmsaveVmload     = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD);
                 pFeatures->fSvmVGif                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VGIF);
                 pFeatures->fSvmGmet                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_GMET);
+                pFeatures->fSvmSSSCheck             = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_SSSCHECK);
+                pFeatures->fSvmSpecCtrl             = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_SPEC_CTRL);
+                pFeatures->fSvmHostMceOverride      = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_HOST_MCE_OVERRIDE);
+                pFeatures->fSvmTlbiCtl              = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_TLBICTL);
                 pFeatures->uSvmMaxAsid              = pSvmLeaf->uEbx;
             }
         }
