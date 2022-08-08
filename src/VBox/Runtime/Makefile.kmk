@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96117 2022-08-08 21:29:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96118 2022-08-08 21:32:52Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1830,6 +1830,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/__signbit.cpp \
   	common/math/__signbitf.cpp \
   	common/math/__signbitl.cpp \
+  	common/math/llround.cpp \
+  	common/math/llroundf.cpp \
+  	common/math/llroundl.cpp \
   	common/math/lround.cpp \
   	common/math/lroundf.cpp \
   	common/math/lroundl.cpp \
