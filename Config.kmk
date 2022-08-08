@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96106 2022-08-08 11:13:21Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 96107 2022-08-08 11:15:19Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4865,7 +4865,7 @@ SDK_VBOX_SOFTFLOATGUESTR3SHARED_DEFS.arm64:= LITTLEENDIAN
 SDK_VBOX_SOFTFLOATGUESTR3SHARED_DEFS.x86  := LITTLEENDIAN
 SDK_VBOX_SOFTFLOATGUESTR3SHARED_INCS       = \
 	$(PATH_ROOT)/src/libs/softfloat-3e/source/include
-SDK_VBOX_SOFTFLOATR0_LIBS       = \
+SDK_VBOX_SOFTFLOATGUESTR3SHARED_LIBS       = \
 	$(PATH_STAGE_LIB)/VBox-SoftFloatGuestR3Shared$(VBOX_SUFF_LIB)
 
 ifdef VBOX_WITH_LIBSSH
@@ -8983,7 +8983,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96106 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96107 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
