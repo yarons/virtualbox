@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 96076 2022-08-06 01:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-win.cpp 96124 2022-08-08 23:14:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -402,6 +402,30 @@ RTR3DECL(int)  RTFileOpenBitBucket(PRTFILE phFile, uint64_t fAccess)
                  || fAccess == RTFILE_O_READWRITE,
                  VERR_INVALID_PARAMETER);
     return RTFileOpen(phFile, "NUL", fAccess | RTFILE_O_DENY_NONE | RTFILE_O_OPEN);
+}
+
+
+RTDECL(int)  RTFileDup(RTFILE hFileSrc, uint64_t fFlags, PRTFILE phFileNew)
+{
+    /*
+     * Validate input.
+     */
+    AssertPtrReturn(phFileNew, VERR_INVALID_POINTER);
+    *phFileNew = NIL_RTFILE;
+    AssertPtrReturn(phFileNew, VERR_INVALID_POINTER);
+    AssertReturn(!(fFlags & ~(uint64_t)RTFILE_O_INHERIT), VERR_INVALID_FLAGS);
+
+    /*
+     * Do the job.
+     */
+    HANDLE hNew = INVALID_HANDLE_VALUE;
+    if (DuplicateHandle(GetCurrentProcess(), (HANDLE)RTFileToNative(hFileSrc),
+                        GetCurrentProcess(), &hNew, 0, RT_BOOL(fFlags & RTFILE_O_INHERIT), DUPLICATE_SAME_ACCESS))
+    {
+        *phFileNew = (RTFILE)hNew;
+        return VINF_SUCCESS;
+    }
+    return RTErrConvertFromWin32(GetLastError());
 }
 
 
