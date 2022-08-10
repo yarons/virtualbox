@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstOVF.cpp 96131 2022-08-10 15:49:43Z brent.paulson@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -192,6 +192,10 @@ void importOVF(const char *pcszPrefix,
 
                 case VirtualSystemDescriptionType_HardDiskControllerSCSI:
                     pcszType = "scsi";
+                break;
+
+                case VirtualSystemDescriptionType_HardDiskControllerVirtioSCSI:
+                    pcszType = "virtio-scsi";
                 break;
 
                 case VirtualSystemDescriptionType_HardDiskImage:

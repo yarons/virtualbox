@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 96131 2022-08-10 15:49:43Z brent.paulson@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -5309,6 +5309,7 @@ void Appliance::i_importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescT
     <const name="HardDiskControllerSATA" value="15" />
     <const name="HardDiskControllerSCSI" value="16" />
     <const name="HardDiskControllerSAS" value="17" />
+    <const name="HardDiskControllerVirtioSCSI" value="60" />
 */
 
 #ifdef VBOX_WITH_USB
