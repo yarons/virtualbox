@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 96141 2022-08-11 15:37:19Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 96143 2022-08-11 16:17:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1597,6 +1597,7 @@ HRESULT SystemProperties::getSupportedRecordingAudioCodecs(std::vector<Recording
 {
     static const RecordingAudioCodec_T aRecordingAudioCodecs[] =
     {
+        RecordingAudioCodec_None,
 #ifdef DEBUG
         RecordingAudioCodec_WavPCM,
 #endif
@@ -1616,7 +1617,10 @@ HRESULT SystemProperties::getSupportedRecordingVideoCodecs(std::vector<Recording
 {
     static const RecordingVideoCodec_T aRecordingVideoCodecs[] =
     {
+        RecordingVideoCodec_None,
+#ifdef VBOX_WITH_LIBVPX
         RecordingVideoCodec_VP8,
+#endif
 #ifdef DEBUG
         RecordingVideoCodec_VP9,
         RecordingVideoCodec_AV1,
