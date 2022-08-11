@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96152 2022-08-11 23:49:45Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96154 2022-08-11 23:55:59Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2612,7 +2612,9 @@ ifdef VBOX_WITH_LIBCURL
  VBoxRT_SDKS                  += VBOX_LIBCURL
 endif
 VBoxRT_SDKS                   += VBOX_OPENSSL
+if1of ($(KBUILD_TARGET), $(VBOX_SUPPORTED_HOST_ARCHS))
 VBoxRT_SDKS                   += VBOX_SOFTFLOAT
+endif
 VBoxRT_SDKS.win                = $(VBOX_WINPSDK) $(VBOX_WINDDK) VBOX_NTDLL
 if1of ($(KBUILD_TARGET), win)
 VBoxRT_INST                    = $(INST_DLL) $(INST_TESTCASE) $(VBOX_INST_TOOLS)
