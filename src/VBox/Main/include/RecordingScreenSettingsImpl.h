@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 96141 2022-08-11 15:37:19Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -90,6 +90,8 @@ private:
     HRESULT setAudioCodec(RecordingAudioCodec_T aCodec);
     HRESULT getAudioDeadline(RecordingCodecDeadline_T *aDeadline);
     HRESULT setAudioDeadline(RecordingCodecDeadline_T aDeadline);
+    HRESULT getAudioRateControlMode(RecordingRateControlMode_T *aMode);
+    HRESULT setAudioRateControlMode(RecordingRateControlMode_T aMode);
     HRESULT getAudioHz(ULONG *aHz);
     HRESULT setAudioHz(ULONG aHz);
     HRESULT getAudioBits(ULONG *aBits);
@@ -107,12 +109,12 @@ private:
     HRESULT setVideoHeight(ULONG aVideoHeight);
     HRESULT getVideoRate(ULONG *aVideoRate);
     HRESULT setVideoRate(ULONG aVideoRate);
-    HRESULT getVideoRateControlMode(RecordingVideoRateControlMode_T *aMode);
-    HRESULT setVideoRateControlMode(RecordingVideoRateControlMode_T aMode);
+    HRESULT getVideoRateControlMode(RecordingRateControlMode_T *aMode);
+    HRESULT setVideoRateControlMode(RecordingRateControlMode_T aMode);
     HRESULT getVideoFPS(ULONG *aVideoFPS);
     HRESULT setVideoFPS(ULONG aVideoFPS);
-    HRESULT getVideoScalingMethod(RecordingVideoScalingMethod_T *aMode);
-    HRESULT setVideoScalingMethod(RecordingVideoScalingMethod_T aMode);
+    HRESULT getVideoScalingMode(RecordingVideoScalingMode_T *aMode);
+    HRESULT setVideoScalingMode(RecordingVideoScalingMode_T aMode);
 
 private:
 

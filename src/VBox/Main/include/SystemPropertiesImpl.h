@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 95741 2022-07-20 09:30:30Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.h 96141 2022-08-11 15:37:19Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -128,8 +128,9 @@ private:
     HRESULT getSupportedRecordingFeatures(std::vector<RecordingFeature_T> &aSupportedRecordingFeatures) RT_OVERRIDE;
     HRESULT getSupportedRecordingAudioCodecs(std::vector<RecordingAudioCodec_T> &aSupportedRecordingAudioCodecs) RT_OVERRIDE;
     HRESULT getSupportedRecordingVideoCodecs(std::vector<RecordingVideoCodec_T> &aSupportedRecordingVideoCodecs) RT_OVERRIDE;
-    HRESULT getSupportedRecordingVSMethods(std::vector<RecordingVideoScalingMethod_T> &aSupportedRecordingVideoScalingMethods) RT_OVERRIDE;
-    HRESULT getSupportedRecordingVRCModes(std::vector<RecordingVideoRateControlMode_T> &aSupportedRecordingVideoRateControlModes) RT_OVERRIDE;
+    HRESULT getSupportedRecordingVSModes(std::vector<RecordingVideoScalingMode_T> &aSupportedRecordingVideoScalingModes) RT_OVERRIDE;
+    HRESULT getSupportedRecordingARCModes(std::vector<RecordingRateControlMode_T> &aSupportedRecordingAudioRateControlModes) RT_OVERRIDE;
+    HRESULT getSupportedRecordingVRCModes(std::vector<RecordingRateControlMode_T> &aSupportedRecordingVideoRateControlModes) RT_OVERRIDE;
     HRESULT getSupportedGraphicsControllerTypes(std::vector<GraphicsControllerType_T> &aSupportedGraphicsControllerTypes) RT_OVERRIDE;
     HRESULT getSupportedCloneOptions(std::vector<CloneOptions_T> &aSupportedCloneOptions) RT_OVERRIDE;
     HRESULT getSupportedAutostopTypes(std::vector<AutostopType_T> &aSupportedAutostopTypes) RT_OVERRIDE;
