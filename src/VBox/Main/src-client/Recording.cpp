@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 95645 2022-07-14 10:33:14Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 96137 2022-08-11 14:35:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -195,6 +195,11 @@ int RecordingContext::createInternal(Console *ptrConsole, const settings::Record
         catch (std::bad_alloc &)
         {
             vrc = VERR_NO_MEMORY;
+            break;
+        }
+        catch (int vrc_thrown) /* Catch rc thrown by constructor. */
+        {
+            vrc = vrc_thrown;
             break;
         }
 
