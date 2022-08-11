@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 94785 2022-05-02 14:17:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 96139 2022-08-11 14:47:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -615,9 +615,10 @@ public:
                                              const QString &strMachineName, bool fConnect);
 
         /** Notifies about inability to toggle recording.
-          * @param  comMachine  Brings the machine recording being toggled for.
-          * @param  fEnable     Brings whether recording is enabled or not. */
-        static void cannotToggleRecording(const CMachine &comMachine, bool fEnable);
+          * @param  comRecording    Brings the recording settings being toggled for.
+          * @param  strMachineName  Brings the machine name.
+          * @param  fEnable         Brings whether recording is enabled or not. */
+        static void cannotToggleRecording(const CRecordingSettings &comRecording, const QString &strMachineName, bool fEnable);
 
         /** Notifies about inability to toggle VRDE server.
           * @param  comServer       Brings the server being toggled.

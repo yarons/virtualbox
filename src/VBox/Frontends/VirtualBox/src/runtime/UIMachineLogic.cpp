@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 95423 2022-06-29 11:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 96139 2022-08-11 14:47:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2085,7 +2085,7 @@ void UIMachineLogic::sltToggleRecording(bool fEnabled)
         /* Make sure action is updated: */
         uisession()->updateStatusRecording();
         /* Notify about the error: */
-        return UINotificationMessage::cannotToggleRecording(machine(), fEnabled);
+        return UINotificationMessage::cannotToggleRecording(comRecordingSettings, machine().GetName(), fEnabled);
     }
 
     /* Save machine-settings: */

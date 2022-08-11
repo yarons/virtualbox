@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 95278 2022-06-14 16:08:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 96139 2022-08-11 14:47:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -54,6 +54,7 @@
 #include "CNATNetwork.h"
 #include "CNetworkAdapter.h"
 #include "CRangedIntegerFormValue.h"
+#include "CRecordingSettings.h"
 #include "CStringFormValue.h"
 #ifdef VBOX_WITH_UPDATE_AGENT
 # include "CSystemProperties.h"
@@ -1553,9 +1554,8 @@ void UINotificationMessage::cannotToggleNetworkCable(const CNetworkAdapter &comA
 }
 
 /* static */
-void UINotificationMessage::cannotToggleRecording(const CMachine &comMachine, bool fEnable)
+void UINotificationMessage::cannotToggleRecording(const CRecordingSettings &comRecording, const QString &strMachineName, bool fEnable)
 {
-    const QString strMachineName(CMachine(comMachine).GetName());
     createMessage(
         QApplication::translate("UIMessageCenter", "Can't toggle recording ..."),
         (  fEnable
@@ -1563,7 +1563,7 @@ void UINotificationMessage::cannotToggleRecording(const CMachine &comMachine, bo
                                    .arg(strMachineName)
          : QApplication::translate("UIMessageCenter", "Failed to disable recording for the virtual machine <b>%1</b>.")
                                    .arg(strMachineName)) +
-        UIErrorString::formatErrorInfo(comMachine));
+        UIErrorString::formatErrorInfo(comRecording));
 }
 
 /* static */
