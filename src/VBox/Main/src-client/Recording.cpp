@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 96137 2022-08-11 14:35:45Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 96140 2022-08-11 15:05:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -25,7 +25,7 @@
 #ifdef LOG_GROUP
 # undef LOG_GROUP
 #endif
-#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
+#define LOG_GROUP LOG_GROUP_RECORDING
 #include "LoggingNew.h"
 
 #include <stdexcept>

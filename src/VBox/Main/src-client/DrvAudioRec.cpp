@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 94957 2022-05-09 14:05:43Z alexander.eichner@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96140 2022-08-11 15:05:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -80,7 +80,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
+#define LOG_GROUP LOG_GROUP_RECORDING
 #include "LoggingNew.h"
 
 #include "DrvAudioRec.h"
