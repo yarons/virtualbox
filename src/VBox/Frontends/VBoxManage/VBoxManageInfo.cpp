@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 95639 2022-07-14 08:30:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 96171 2022-08-12 13:05:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2823,11 +2823,6 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
 
 #ifdef VBOX_WITH_RECORDING
     {
-        BOOL fRecordVideo = FALSE;
-# ifdef VBOX_WITH_AUDIO_RECORDING
-        BOOL fRecordAudio = FALSE;
-# endif
-
         ComPtr<IRecordingSettings> recordingSettings;
         CHECK_ERROR_RET(machine, COMGETTER(RecordingSettings)(recordingSettings.asOutParam()), hrc);
 
@@ -2867,6 +2862,10 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
             Bstr  bstrOptions;
             CHECK_ERROR_RET(screenSettings, COMGETTER(Options)(bstrOptions.asOutParam()), hrc);
 
+            BOOL fRecordVideo = FALSE;
+# ifdef VBOX_WITH_AUDIO_RECORDING
+            BOOL fRecordAudio = FALSE;
+# endif
             Utf8Str strOptions(bstrOptions);
             size_t pos = 0;
             com::Utf8Str key, value;
