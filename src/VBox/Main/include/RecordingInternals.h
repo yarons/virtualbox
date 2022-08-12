@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 96176 2022-08-12 14:20:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -443,9 +443,7 @@ struct RecordingBlock
 /** List for keeping video recording (data) blocks. */
 typedef std::list<RecordingBlock *> RecordingBlockList;
 
-#ifdef VBOX_WITH_AUDIO_RECORDING
 int recordingCodecCreateAudio(PRECORDINGCODEC pCodec, RecordingAudioCodec_T enmAudioCodec);
-#endif
 int recordingCodecCreateVideo(PRECORDINGCODEC pCodec, RecordingVideoCodec_T enmVideoCodec);
 int recordingCodecInit(const PRECORDINGCODEC pCodec, const PRECORDINGCODECCALLBACKS pCallbacks, const settings::RecordingScreenSettings &Settings);
 int recordingCodecDestroy(PRECORDINGCODEC pCodec);
