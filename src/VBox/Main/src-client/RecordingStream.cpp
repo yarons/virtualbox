@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 96178 2022-08-12 14:35:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -934,7 +934,7 @@ int RecordingStream::uninitInternal(void)
 }
 
 /* static */
-int RecordingStream::codecWriteDataCallback(PRECORDINGCODEC pCodec, const void *pvData, size_t cbData, void *pvUser)
+DECLCALLBACK(int) RecordingStream::codecWriteDataCallback(PRECORDINGCODEC pCodec, const void *pvData, size_t cbData, void *pvUser)
 {
     RT_NOREF(pCodec);
 

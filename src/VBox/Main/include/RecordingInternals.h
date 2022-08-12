@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 96177 2022-08-12 14:27:58Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 96178 2022-08-12 14:35:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -26,6 +26,7 @@
 #include <iprt/assert.h>
 #include <iprt/types.h> /* drag in stdint.h before vpx does it. */
 
+#include "VBox/com/string.h"
 #include "VBox/com/VirtualBox.h"
 #include "VBox/settings.h"
 #include <VBox/vmm/pdmaudioifs.h>
@@ -112,7 +113,7 @@ typedef struct RECORDINGCODECOPS
      * @param   pCodec              Codec instance to parse options for.
      * @param   strOptions          Options string to parse.
      */
-    DECLCALLBACKMEMBER(int, pfnParseOptions, (PRECORDINGCODEC pCodec, const Utf8Str &strOptions));
+    DECLCALLBACKMEMBER(int, pfnParseOptions, (PRECORDINGCODEC pCodec, const com::Utf8Str &strOptions));
 
     /**
      * Feeds the codec encoder with data to encode.
