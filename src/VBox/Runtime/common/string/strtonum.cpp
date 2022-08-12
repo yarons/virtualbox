@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 96156 2022-08-12 00:01:44Z knut.osmundsen@oracle.com $ */
+/* $Id: strtonum.cpp 96170 2022-08-12 12:23:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Number Conversion.
  */
@@ -943,7 +943,6 @@ RT_EXPORT_SYMBOL(RTStrToInt32);
  *                          is zero the function will look for known prefixes before
  *                          defaulting to 10.  A max length of zero means no length
  *                          restriction.
- * @param   pu8             Where to store the converted number. (optional)
  * @param   pi16            Where to store the converted number. (optional)
  */
 RTDECL(int) RTStrToInt16Ex(const char *pszValue, char **ppszNext, unsigned uBaseAndMaxLen, int16_t *pi16)
