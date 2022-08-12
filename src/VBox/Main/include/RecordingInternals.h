@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 96176 2022-08-12 14:20:09Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 96177 2022-08-12 14:27:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -288,12 +288,12 @@ typedef struct RECORDINGCODEC
 
     /** Timestamp (in ms) of the last frame was encoded. */
     uint64_t            uLastTimeStampMs;
+    /** Number of encoding errors. */
+    uint64_t            cEncErrors;
 
 #ifdef VBOX_WITH_STATISTICS /** @todo Register these values with STAM. */
     struct
     {
-        /** Number of encoding errors. */
-        uint64_t        cEncErrors;
         /** Number of frames encoded. */
         uint64_t        cEncBlocks;
         /** Total time (in ms) of already encoded audio data. */
