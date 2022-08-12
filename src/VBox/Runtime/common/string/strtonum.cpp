@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 96152 2022-08-11 23:49:45Z knut.osmundsen@oracle.com $ */
+/* $Id: strtonum.cpp 96156 2022-08-12 00:01:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Number Conversion.
  */
@@ -39,12 +39,14 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+extern const unsigned char g_auchDigits[256]; /* shared with strtofloat.cpp - add header? */
+
 /** 8-bit char -> digit.
  * Non-digits have values 255 (most), 254 (zero), 253 (colon), 252 (space), 251 (dot).
  *
  * @note Also used by strtofloat.cpp
  */
-extern const unsigned char g_auchDigits[256] =
+const unsigned char g_auchDigits[256] =
 {
     254,255,255,255,255,255,255,255,255,252,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,
     252,255,255,255,255,255,255,255,255,255,255,255,255,255,251,255,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,253,255,255,255,255,255,
