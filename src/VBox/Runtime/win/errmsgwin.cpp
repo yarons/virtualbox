@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 96164 2022-08-12 11:40:11Z knut.osmundsen@oracle.com $ */
+/* $Id: errmsgwin.cpp 96165 2022-08-12 11:44:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Status code messages, Windows.
  */
@@ -35,13 +35,6 @@
 #include <iprt/string.h>
 
 #include <iprt/bldprog-strtab.h>
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
-#define ENTRY(a_pszMsg, a_pszDefine, a_iCode) \
-    { a_pszDefine, a_pszDefine, a_iCode }
 
 
 /*********************************************************************************************************************************
