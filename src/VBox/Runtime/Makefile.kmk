@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96164 2022-08-12 11:40:11Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96167 2022-08-12 12:08:47Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1896,6 +1896,10 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	r3/nocrt-ferror.cpp \
 
   RuntimeR3_SOURCES.x86 = $(RuntimeBaseR3_SOURCES.x86) \
+  	common/math/atan.asm  \
+  	common/math/atanf.asm  \
+  	common/math/atan2.asm  \
+  	common/math/atan2f.asm  \
   	common/math/cos.asm  \
   	common/math/cosf.asm  \
   	common/math/ceil.asm  \
@@ -1944,6 +1948,10 @@ ifdef VBOX_WITH_NOCRT_STATIC
    	common/string/strcspn.cpp \
    	common/string/strpbrk.cpp
   RuntimeR3_SOURCES.amd64 = $(RuntimeBaseR3_SOURCES.amd64) \
+  	common/math/atan.asm  \
+  	common/math/atanf.asm  \
+  	common/math/atan2.asm  \
+  	common/math/atan2f.asm  \
   	common/math/cos.asm  \
   	common/math/cosf.asm  \
   	common/math/ceil.asm  \
