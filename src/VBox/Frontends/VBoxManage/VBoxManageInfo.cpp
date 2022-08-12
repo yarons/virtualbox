@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 96172 2022-08-12 13:27:46Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 96173 2022-08-12 13:30:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2868,8 +2868,10 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
 # endif
             for (size_t f = 0; f < vecFeatures.size(); ++f)
             {
+# ifdef VBOX_WITH_AUDIO_RECORDING
                 if (vecFeatures[f] == RecordingFeature_Audio)
                     fRecordAudio = TRUE;
+# endif
                 else if (vecFeatures[f] == RecordingFeature_Video)
                     fRecordVideo = TRUE;
             }
