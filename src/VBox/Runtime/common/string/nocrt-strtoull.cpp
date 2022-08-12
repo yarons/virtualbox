@@ -1,4 +1,4 @@
-/* $Id: nocrt-strtoull.cpp 96059 2022-08-05 11:27:49Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-strtoull.cpp 96162 2022-08-12 11:28:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - strtoull.
  */
@@ -42,7 +42,7 @@ unsigned long long RT_NOCRT(strtoull)(const char *psz, char **ppszNext, int iBas
 {
 #if LLONG_BIT == 64
     uint64_t uValue = 0;
-    int rc = RTStrToUInt64Ex(psz, ppszNext, (unsigned)iBase, &uValue);
+    int rc = RTStrToUInt64Ex(RTStrStripL(psz), ppszNext, (unsigned)iBase, &uValue);
 #else
 # error "Unsupported LLONG_BIT value"
 #endif

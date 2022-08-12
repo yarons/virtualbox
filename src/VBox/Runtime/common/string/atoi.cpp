@@ -1,4 +1,4 @@
-/* $Id: atoi.cpp 96059 2022-08-05 11:27:49Z knut.osmundsen@oracle.com $ */
+/* $Id: atoi.cpp 96162 2022-08-12 11:28:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - atoi.
  */
@@ -40,7 +40,7 @@ int RT_NOCRT(atoi)(const char *psz)
 {
 #if INT_MAX == INT32_MAX
     int32_t iValue = 0;
-    int rc = RTStrToInt32Ex(psz, NULL, 10, &iValue);
+    int rc = RTStrToInt32Ex(RTStrStripL(psz), NULL, 10, &iValue);
 #else
 # error "Unsupported integer size"
 #endif

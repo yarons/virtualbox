@@ -1,4 +1,4 @@
-/* $Id: nocrt-strtoll.cpp 96059 2022-08-05 11:27:49Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-strtoll.cpp 96162 2022-08-12 11:28:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - strtoll.
  */
@@ -41,7 +41,7 @@ long long RT_NOCRT(strtoll)(const char *psz, char **ppszNext, int iBase)
 {
 #if LLONG_BIT == 64
     int64_t iValue = 0;
-    int rc = RTStrToInt64Ex(psz, ppszNext, (unsigned)iBase, &iValue);
+    int rc = RTStrToInt64Ex(RTStrStripL(psz), ppszNext, (unsigned)iBase, &iValue);
 #else
 # error "Unsupported LLONG_BIT value"
 #endif

@@ -1,4 +1,4 @@
-/* $Id: nocrt-strtod.cpp 96159 2022-08-12 10:13:29Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-strtod.cpp 96162 2022-08-12 11:28:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - strtod().
  */
@@ -40,7 +40,7 @@
 double RT_NOCRT(strtod)(const char *psz, char **ppszNext)
 {
     double rd = 0.0;
-    int rc = RTStrToDoubleEx(psz, ppszNext, 0, &rd);
+    int rc = RTStrToDoubleEx(RTStrStripL(psz), ppszNext, 0, &rd);
     if (rc != VINF_SUCCESS)
         errno = RTErrConvertToErrno(rc);
     return rd;
