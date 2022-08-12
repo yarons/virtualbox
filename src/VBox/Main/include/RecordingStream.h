@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 96176 2022-08-12 14:20:09Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 96179 2022-08-12 14:43:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -133,7 +133,7 @@ public:
 
 protected:
 
-    static int codecWriteDataCallback(PRECORDINGCODEC pCodec, const void *pvData, size_t cbData, void *pvUser);
+    static DECLCALLBACK(int) codecWriteDataCallback(PRECORDINGCODEC pCodec, const void *pvData, size_t cbData, void *pvUser);
 
 protected:
 
