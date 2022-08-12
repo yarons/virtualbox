@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromErrno.cpp 96159 2022-08-12 10:13:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -153,7 +153,7 @@ RTDECL(int)  RTErrConvertFromErrno(int iNativeCode)
         case EDOM:              return VERR_INVALID_PARAMETER;  /** @todo fix duplicate error */
 #endif
 #ifdef ERANGE
-        case ERANGE:            return VERR_INVALID_PARAMETER;  /** @todo fix duplicate error */
+        case ERANGE:            return VERR_OUT_OF_RANGE;
 #endif
 #ifdef EDEADLK
         case EDEADLK:           return VERR_DEADLOCK;

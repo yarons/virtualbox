@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertToErrno.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertToErrno.cpp 96159 2022-08-12 10:13:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert iprt status codes to errno.
  */
@@ -155,7 +155,11 @@ RTDECL(int) RTErrConvertToErrno(int iErr)
         //case VERR_INVALID_PARAMETER:    return EDOM;
 #endif
 #ifdef ERANGE
-        //case VERR_INVALID_PARAMETER:    return ERANGE;
+        case VERR_OUT_OF_RANGE:                     return ERANGE;
+        case VERR_FLOAT_UNDERFLOW:                  return ERANGE;
+        case VWRN_FLOAT_UNDERFLOW:                  return ERANGE;
+        case VERR_FLOAT_OVERFLOW:                   return ERANGE;
+        case VWRN_FLOAT_OVERFLOW:                   return ERANGE;
 #endif
 #ifdef EDEADLK
         case VERR_DEADLOCK:                         return EDEADLK;
