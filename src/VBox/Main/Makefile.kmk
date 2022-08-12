@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96144 2022-08-11 16:55:24Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1013,6 +1013,7 @@ ifdef VBOX_WITH_RECORDING
 	src-client/WebMWriter.cpp \
 	src-client/Recording.cpp \
 	src-client/RecordingInternals.cpp \
+	src-client/RecordingCodec.cpp \
 	src-client/RecordingStream.cpp \
 	src-client/RecordingUtils.cpp
 
@@ -1025,6 +1026,16 @@ ifdef VBOX_WITH_RECORDING
    VBoxC_DEFS += VBOX_WITH_LIBOPUS
    # Needed in VBoxSVC for ISystemProperties.
    src-server/SystemPropertiesImpl.cpp_DEFS += VBOX_WITH_LIBOPUS
+  endif
+  ifdef VBOX_WITH_LIBOGG
+   VBoxC_SDKS += VBOX_OGG
+   VBoxC_DEFS += VBOX_WITH_LIBOGG
+  endif
+  ifdef VBOX_WITH_LIBVORBIS
+   VBoxC_SDKS += VBOX_VORBIS
+   VBoxC_DEFS += VBOX_WITH_LIBVORBIS
+   # Needed in VBoxSVC for ISystemProperties.
+   src-server/SystemPropertiesImpl.cpp_DEFS += VBOX_WITH_LIBVORBIS
   endif
   VBoxC_SOURCES += src-client/DrvAudioRec.cpp
  endif # VBOX_WITH_AUDIO_RECORDING

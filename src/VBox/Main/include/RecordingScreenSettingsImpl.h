@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 96172 2022-08-12 13:27:46Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.h 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -120,10 +120,6 @@ private:
 
     // internal methods
     int i_initInternal();
-
-private:
-
-    static int i_parseOptionsString(const com::Utf8Str &strOptions, settings::RecordingScreenSettings &screenSettings);
 
 private:
 
