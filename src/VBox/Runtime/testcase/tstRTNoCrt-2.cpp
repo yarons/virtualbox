@@ -1,4 +1,4 @@
-/* $Id: tstRTNoCrt-2.cpp 96184 2022-08-13 00:56:07Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-2.cpp 96189 2022-08-13 01:17:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT math bits.
  */
@@ -175,5 +175,4 @@ int main()
 
     return RTTestSummaryAndDestroy(g_hTest);
 }
-
 
