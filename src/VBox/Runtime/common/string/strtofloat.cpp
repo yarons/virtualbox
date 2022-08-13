@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96191 2022-08-13 13:23:12Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96194 2022-08-13 17:31:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -56,7 +56,7 @@
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-typedef struct FLOATUNION
+typedef union FLOATUNION
 {
 #ifdef RT_COMPILER_WITH_128BIT_LONG_DOUBLE
     RTFLOAT128U lrd;
@@ -100,18 +100,18 @@ extern const unsigned char g_auchDigits[256];
 #define DIGITS_DOT       251
 
 /** Pair of default float quiet NaN values (indexed by fPositive). */
-static RTFLOAT32U const     g_ar32QNan[2]   = { RTFLOAT32U_INIT_QNAN(0), RTFLOAT32U_INIT_QNAN(1) };
+static RTFLOAT32U const     g_ar32QNan[2]   = { RTFLOAT32U_INIT_QNAN(1), RTFLOAT32U_INIT_QNAN(0) };
 
 /** Pair of default double quiet NaN values (indexed by fPositive). */
-static RTFLOAT64U const     g_ardQNan[2]    = { RTFLOAT64U_INIT_QNAN(0), RTFLOAT64U_INIT_QNAN(1) };
+static RTFLOAT64U const     g_ardQNan[2]    = { RTFLOAT64U_INIT_QNAN(1), RTFLOAT64U_INIT_QNAN(0) };
 
 /** Pair of default double quiet NaN values (indexed by fPositive). */
 #if defined(RT_COMPILER_WITH_128BIT_LONG_DOUBLE)
-static RTFLOAT128U const    g_alrdQNan[2]   = { RTFLOAT128U_INIT_QNAN(0), RTFLOAT128U_INIT_QNAN(1) };
+static RTFLOAT128U const    g_alrdQNan[2]   = { RTFLOAT128U_INIT_QNAN(1), RTFLOAT128U_INIT_QNAN(0) };
 #elif defined(RT_COMPILER_WITH_80BIT_LONG_DOUBLE)
-static RTFLOAT80U2 const    g_alrdQNan[2]   = { RTFLOAT80U_INIT_QNAN(0), RTFLOAT80U_INIT_QNAN(1) };
+static RTFLOAT80U2 const    g_alrdQNan[2]   = { RTFLOAT80U_INIT_QNAN(1), RTFLOAT80U_INIT_QNAN(0) };
 #else
-static RTFLOAT64U const     g_alrdQNan[2]   = { RTFLOAT64U_INIT_QNAN(0), RTFLOAT64U_INIT_QNAN(1) };
+static RTFLOAT64U const     g_alrdQNan[2]   = { RTFLOAT64U_INIT_QNAN(1), RTFLOAT64U_INIT_QNAN(0) };
 #endif
 
 /** NaN fraction value masks. */
