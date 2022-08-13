@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96185 2022-08-13 00:59:14Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96186 2022-08-13 01:08:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -852,6 +852,7 @@ RTDECL(float) RTStrNanFloat(const char *pszTag, bool fPositive)
  * @param   ppszNext    Where to return the pointer to the end of the value.
  *                      Optional.
  * @param   cchMax      Number of bytes left in the string starting at @a psz.
+ * @param   fPositive   Whether the value should be positive or negative.
  * @param   rc          The status code to return.
  * @param   iRetType    The target type.
  * @param   pRet        Where to store the result.
