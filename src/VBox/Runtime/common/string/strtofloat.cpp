@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96188 2022-08-13 01:15:24Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96191 2022-08-13 13:23:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -42,7 +42,7 @@
 # include <fenv.h>
 #endif
 #ifndef INFINITY  /* Not defined on older Solaris (like the one in the add build VM). */
-# define INFINITY HUGE_VALF
+# define INFINITY HUGE_VAL
 #endif
 
 #if defined(SOFTFLOAT_FAST_INT64) && !defined(RT_COMPILER_WITH_128BIT_LONG_DOUBLE) /** @todo better softfloat indicator? */
