@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96183 2022-08-13 00:54:25Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96185 2022-08-13 00:59:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -104,7 +104,7 @@ static RTFLOAT64U const     g_ardQNan[2]    = { RTFLOAT64U_INIT_QNAN(0), RTFLOAT
 
 /** Pair of default double quiet NaN values (indexed by fPositive). */
 #if defined(RT_COMPILER_WITH_128BIT_LONG_DOUBLE)
-static RTFLOAT128U const    g_lardQNan[2]   = { RTFLOAT128U_INIT_QNAN(0), RTFLOAT128U_INIT_QNAN(1) };
+static RTFLOAT128U const    g_alrdQNan[2]   = { RTFLOAT128U_INIT_QNAN(0), RTFLOAT128U_INIT_QNAN(1) };
 #elif defined(RT_COMPILER_WITH_80BIT_LONG_DOUBLE)
 static RTFLOAT80U2 const    g_alrdQNan[2]   = { RTFLOAT80U_INIT_QNAN(0), RTFLOAT80U_INIT_QNAN(1) };
 #else
