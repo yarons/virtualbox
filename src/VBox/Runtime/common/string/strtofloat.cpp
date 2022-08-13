@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96180 2022-08-13 00:50:40Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96181 2022-08-13 00:51:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -781,7 +781,7 @@ static int rtStrToLongDoubleReturnNan(const char *psz, char **ppszNext, size_t c
             break;
 
         case RET_TYPE_DOUBLE:
-            pRet->rd = g_alrdQNan[fPositive];
+            pRet->rd = g_ardQNan[fPositive];
             break;
 
         case RET_TYPE_LONG_DOUBLE:
