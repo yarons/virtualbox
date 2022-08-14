@@ -1,4 +1,4 @@
-/* $Id: __fpclassifyd.cpp 96093 2022-08-07 13:22:43Z knut.osmundsen@oracle.com $ */
+/* $Id: __fpclassifyd.cpp 96197 2022-08-14 01:04:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - __fpclassifyd().
  */
@@ -42,15 +42,15 @@ int RT_NOCRT(__fpclassifyd)(double rd)
     RTFLOAT64U u;
     u.rd = rd;
     if (RTFLOAT64U_IS_ZERO(&u))
-        return FP_ZERO;
+        return RT_NOCRT_FP_ZERO;
     if (RTFLOAT64U_IS_NORMAL(&u))
-        return FP_NORMAL;
+        return RT_NOCRT_FP_NORMAL;
     if (RTFLOAT64U_IS_NAN(&u))
-        return FP_NAN;
+        return RT_NOCRT_FP_NAN;
     if (RTFLOAT64U_IS_INF(&u))
-        return FP_INFINITE;
+        return RT_NOCRT_FP_INFINITE;
     Assert(RTFLOAT64U_IS_SUBNORMAL(&u));
-    return FP_SUBNORMAL;
+    return RT_NOCRT_FP_SUBNORMAL;
 }
 RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL_WITHOUT_UNDERSCORE(__fpclassifyd);
 
