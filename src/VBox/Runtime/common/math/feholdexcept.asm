@@ -1,6 +1,6 @@
-; $Id: fesetround.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: feholdexcept.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - No-CRT fesetround - AMD64 & X86.
+; IPRT - No-CRT feholdexcept - AMD64 & X86.
 ;
 
 ;
@@ -33,65 +33,57 @@
 BEGINCODE
 
 ;;
-; Sets the hardware rounding mode.
+; Gets the FPU+SSE environment and disables (masks) all exceptions.
 ;
-; @returns  eax = 0 on success, non-zero on failure.
-; @param    iRoundingMode   32-bit: [xBP+8]     msc64: ecx      gcc64: edi
+; @returns  eax = x87 exception mask (X86_FCW_XCPT_MASK)
+; @param    pEnv    32-bit: [xBP+8]     msc64: rcx      gcc64: rdi
 ;
-RT_NOCRT_BEGINPROC fesetround
+RT_NOCRT_BEGINPROC feholdexcept
         push    xBP
         SEH64_PUSH_xBP
         mov     xBP, xSP
         SEH64_SET_FRAME_xBP 0
-        sub     xSP, 10h
-        SEH64_ALLOCATE_STACK 10h
         SEH64_END_PROLOGUE
 
         ;
-        ; Load the parameter into ecx.
+        ; Load the parameter into rcx.
         ;
-        or      eax, -1
 %ifdef ASM_CALL64_GCC
-        mov     ecx, edi
+        mov     rcx, rdi
 %elifdef RT_ARCH_X86
         mov     ecx, [xBP + xCB*2]
 %endif
-        test    ecx, ~X86_FCW_RC_MASK
-        jnz     .return
 
         ;
-        ; Make the changes.
+        ; Save the FPU environment and MXCSR.
         ;
-
-        ; Set x87 rounding first (ecx preserved).
-        fstcw   [xBP - 10h]
-        mov     ax, word [xBP - 10h]
-        and     ax, ~X86_FCW_RC_MASK
-        or      ax, cx
-        mov     [xBP - 10h], ax
-        fldcw   [xBP - 10h]
+        fnstenv [xCX]
+        mov     al, [xCX]               ; Save FCW.
+        or      byte [xCX], X86_FCW_MASK_ALL
+        fldcw   [xCX]
+        mov     [xCX], al               ; Restore FCW.
 
 %ifdef RT_ARCH_X86
         ; SSE supported (ecx preserved)?
+        and     dword [xCX + 28], 0h
         extern  NAME(rtNoCrtHasSse)
         call    NAME(rtNoCrtHasSse)
         test    al, al
-        jz      .return_ok
+        jz      .return_nosse
 %endif
+        stmxcsr [xCX + 28]
+        mov     eax, [xCX + 28]         ; Save MXCSR.
+        or      dword [xCX + 28], X86_MXCSR_XCPT_MASK
+        ldmxcsr [xCX + 28]
+        mov     [xCX + 28], eax         ; Restore MXCSR.
 
-        ; Set SSE rounding (modifies ecx).
-        stmxcsr [xBP - 10h]
-        mov     eax, [xBP - 10h]
-        and     eax, ~X86_MXCSR_RC_MASK
-        shl     ecx, X86_MXCSR_RC_SHIFT - X86_FCW_RC_SHIFT
-        or      eax, ecx
-        mov     [xBP - 10h], eax
-        ldmxcsr [xBP - 10h]
+.return_nosse:
 
-.return_ok:
+        ;
+        ; Return success.
+        ;
         xor     eax, eax
-.return:
         leave
         ret
-ENDPROC   RT_NOCRT(fesetround)
+ENDPROC   RT_NOCRT(feholdexcept)
 

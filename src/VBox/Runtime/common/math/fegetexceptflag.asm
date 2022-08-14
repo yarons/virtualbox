@@ -1,6 +1,6 @@
-; $Id: fesetround.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fegetexceptflag.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - No-CRT fesetround - AMD64 & X86.
+; IPRT - No-CRT fegetexceptflag - AMD64 & X86.
 ;
 
 ;
@@ -33,12 +33,13 @@
 BEGINCODE
 
 ;;
-; Sets the hardware rounding mode.
+; Gets the pending exceptions.
 ;
 ; @returns  eax = 0 on success, non-zero on failure.
-; @param    iRoundingMode   32-bit: [xBP+8]     msc64: ecx      gcc64: edi
+; @param    pfXcpts   32-bit: [xBP+8]     msc64: rcx      gcc64: rdi   - pointer to fexcept_t (16-bit)
+; @param    fXcptMask 32-bit: [xBP+c]     msc64: edx      gcc64: esi   - X86_FSW_XCPT_MASK
 ;
-RT_NOCRT_BEGINPROC fesetround
+RT_NOCRT_BEGINPROC fegetexceptflag
         push    xBP
         SEH64_PUSH_xBP
         mov     xBP, xSP
@@ -48,28 +49,31 @@ RT_NOCRT_BEGINPROC fesetround
         SEH64_END_PROLOGUE
 
         ;
-        ; Load the parameter into ecx.
+        ; Load the parameter into rcx (pfXcpts) and edx (fXcptMask).
         ;
-        or      eax, -1
 %ifdef ASM_CALL64_GCC
-        mov     ecx, edi
+        mov     rcx, rdi
+        mov     edx, esi
 %elifdef RT_ARCH_X86
         mov     ecx, [xBP + xCB*2]
+        mov     edx, [xBP + xCB*3]
 %endif
-        test    ecx, ~X86_FCW_RC_MASK
+%if 0
+        and     edx, X86_FSW_XCPT_MASK
+%else
+        or      eax, -1
+        test    edx, ~X86_FSW_XCPT_MASK
         jnz     .return
+%endif
 
         ;
-        ; Make the changes.
+        ; Get the pending exceptions.
         ;
 
-        ; Set x87 rounding first (ecx preserved).
-        fstcw   [xBP - 10h]
-        mov     ax, word [xBP - 10h]
-        and     ax, ~X86_FCW_RC_MASK
-        or      ax, cx
-        mov     [xBP - 10h], ax
-        fldcw   [xBP - 10h]
+        ; x87.
+        fnstsw  ax
+        and     ax, dx
+        mov     [xCX], ax
 
 %ifdef RT_ARCH_X86
         ; SSE supported (ecx preserved)?
@@ -79,19 +83,16 @@ RT_NOCRT_BEGINPROC fesetround
         jz      .return_ok
 %endif
 
-        ; Set SSE rounding (modifies ecx).
+        ; Modify the SSE flags.
         stmxcsr [xBP - 10h]
-        mov     eax, [xBP - 10h]
-        and     eax, ~X86_MXCSR_RC_MASK
-        shl     ecx, X86_MXCSR_RC_SHIFT - X86_FCW_RC_SHIFT
-        or      eax, ecx
-        mov     [xBP - 10h], eax
-        ldmxcsr [xBP - 10h]
+        mov     ax, [xBP - 10h]
+        and     ax, dx
+        or      [xCX], ax
 
 .return_ok:
         xor     eax, eax
 .return:
         leave
         ret
-ENDPROC   RT_NOCRT(fesetround)
+ENDPROC   RT_NOCRT(fegetexceptflag)
 

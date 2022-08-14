@@ -1,6 +1,6 @@
-; $Id: fegetround.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fegetenv.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - No-CRT fegetround - AMD64 & X86.
+; IPRT - No-CRT fegetenv - AMD64 & X86.
 ;
 
 ;
@@ -33,37 +33,48 @@
 BEGINCODE
 
 ;;
-; Gets the hardware rounding mode.
-; @returns  eax x87 rounding mask (X86_FCW_RC_MASK)
+; Gets the FPU+SSE environment.
 ;
-RT_NOCRT_BEGINPROC fegetround
+; @returns  eax = x87 exception mask (X86_FCW_XCPT_MASK)
+; @param    pEnv    32-bit: [xBP+8]     msc64: rcx      gcc64: rdi
+;
+RT_NOCRT_BEGINPROC fegetenv
         push    xBP
         SEH64_PUSH_xBP
         mov     xBP, xSP
         SEH64_SET_FRAME_xBP 0
-        sub     xSP, 10h
-        SEH64_ALLOCATE_STACK 10h
         SEH64_END_PROLOGUE
 
         ;
-        ; Save control word and isolate the rounding mode.
+        ; Load the parameter into rcx.
         ;
-        ; On 64-bit we'll use the MXCSR since the windows compiler/CRT doesn't
-        ; necessarily keep them in sync.  We'll still return the x87-style flags.
-        ;
-%ifdef RT_ARCH_AMD64
-        stmxcsr [xBP - 10h]
-        mov     eax, [xBP - 10h]
-        and     eax, X86_MXCSR_RC_MASK
-        shr     eax, X86_MXCSR_RC_SHIFT - X86_FCW_RC_SHIFT
-%else
-        fstcw   [xBP - 10h]
-        movzx   eax, word [xBP - 10h]
-        and     eax, X86_FCW_RC_MASK
+%ifdef ASM_CALL64_GCC
+        mov     rcx, rdi
+%elifdef RT_ARCH_X86
+        mov     ecx, [xBP + xCB*2]
 %endif
 
-.return_val:
+        ;
+        ; Save the FPU environment and MXCSR.
+        ;
+        fnstenv [xCX]
+
+%ifdef RT_ARCH_X86
+        ; SSE supported (ecx preserved)?
+        and     dword [xCX + 28], 0h
+        extern  NAME(rtNoCrtHasSse)
+        call    NAME(rtNoCrtHasSse)
+        test    al, al
+        jz      .return_nosse
+%endif
+        stmxcsr [xCX + 28]
+.return_nosse:
+
+        ;
+        ; Return success.
+        ;
+        xor     eax, eax
         leave
         ret
-ENDPROC   RT_NOCRT(fegetround)
+ENDPROC   RT_NOCRT(fegetenv)
 

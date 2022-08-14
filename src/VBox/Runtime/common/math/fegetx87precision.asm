@@ -1,6 +1,6 @@
-; $Id: fegetround.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fegetx87precision.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
 ;; @file
-; IPRT - No-CRT fegetround - AMD64 & X86.
+; IPRT - No-CRT fegetx87precision - AMD64 & X86.
 ;
 
 ;
@@ -33,10 +33,11 @@
 BEGINCODE
 
 ;;
-; Gets the hardware rounding mode.
-; @returns  eax x87 rounding mask (X86_FCW_RC_MASK)
+; Gets the x87 hardware precision mode - IPRT extension.
 ;
-RT_NOCRT_BEGINPROC fegetround
+; @returns  eax = precision mode, -1 on failure.
+;
+RT_NOCRT_BEGINPROC fegetx87precision
         push    xBP
         SEH64_PUSH_xBP
         mov     xBP, xSP
@@ -46,24 +47,14 @@ RT_NOCRT_BEGINPROC fegetround
         SEH64_END_PROLOGUE
 
         ;
-        ; Save control word and isolate the rounding mode.
+        ; Extract the current from the x87 FCW and return it.
         ;
-        ; On 64-bit we'll use the MXCSR since the windows compiler/CRT doesn't
-        ; necessarily keep them in sync.  We'll still return the x87-style flags.
-        ;
-%ifdef RT_ARCH_AMD64
-        stmxcsr [xBP - 10h]
-        mov     eax, [xBP - 10h]
-        and     eax, X86_MXCSR_RC_MASK
-        shr     eax, X86_MXCSR_RC_SHIFT - X86_FCW_RC_SHIFT
-%else
-        fstcw   [xBP - 10h]
-        movzx   eax, word [xBP - 10h]
-        and     eax, X86_FCW_RC_MASK
-%endif
+        fnstcw  [xBP - 10h]
+        mov     ax, [xBP - 10h]
+        and     eax, X86_FCW_PC_MASK
 
-.return_val:
+.return:
         leave
         ret
-ENDPROC   RT_NOCRT(fegetround)
+ENDPROC   RT_NOCRT(fegetx87precision)
 

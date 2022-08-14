@@ -1,4 +1,4 @@
-; $Id: rtNoCrtHasSse.asm 96201 2022-08-14 03:26:28Z knut.osmundsen@oracle.com $
+; $Id: rtNoCrtHasSse.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT rtNoCrtHasSse - X86.
 ;
@@ -37,8 +37,8 @@ BEGINCODE
 
 ;;
 ; Checks if SSE is supported.
-; @returns  1 if supported, 0 if not.
-; @uses     eax only
+; @returns  1 if supported, 0 if not.  Entire eax/rax is set.
+; @uses     rax only
 ;
 BEGINPROC rtNoCrtHasSse
         mov     al, [g_frtNoCrtHasSse]
@@ -53,6 +53,8 @@ BEGINPROC rtNoCrtHasSse
 
         mov     eax, 1
         cpuid
+
+        mov     eax, 1
         test    edx, X86_CPUID_FEATURE_EDX_SSE
         jz      .no_supported
         xor     eax, eax
