@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96182 2022-08-13 00:53:43Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96202 2022-08-14 03:26:39Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1908,6 +1908,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/exp2f.asm  \
   	common/math/fabs.asm  \
   	common/math/fabsf.asm \
+  	common/math/rtNoCrtHasSse.asm \
+  	common/math/fegetround.asm \
+  	common/math/fesetround.asm \
   	common/math/floor.asm \
   	common/math/floorf.asm \
   	common/math/ldexp.asm \
@@ -1962,6 +1965,8 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/exp2f.asm  \
   	common/math/fabs.asm  \
   	common/math/fabsf.asm \
+  	common/math/fegetround.asm \
+  	common/math/fesetround.asm \
   	common/math/floor.asm \
   	common/math/floorf.asm \
   	common/math/ldexp.asm \
