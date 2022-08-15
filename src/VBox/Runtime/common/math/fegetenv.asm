@@ -1,4 +1,4 @@
-; $Id: fegetenv.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fegetenv.asm 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT fegetenv - AMD64 & X86.
 ;
@@ -35,8 +35,8 @@ BEGINCODE
 ;;
 ; Gets the FPU+SSE environment.
 ;
-; @returns  eax = x87 exception mask (X86_FCW_XCPT_MASK)
-; @param    pEnv    32-bit: [xBP+8]     msc64: rcx      gcc64: rdi
+; @returns  eax = 0 on success (-1 on failure),
+; @param    pEnv    32-bit: [xBP+8]; msc64: rcx; gcc64: rdi -- Pointer to where to store the enviornment.
 ;
 RT_NOCRT_BEGINPROC fegetenv
         push    xBP

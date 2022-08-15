@@ -1,4 +1,4 @@
-; $Id: fegetexcept.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fegetexcept.asm 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT fegetexcept - AMD64 & X86.
 ;
@@ -33,9 +33,10 @@
 BEGINCODE
 
 ;;
-; Gets the mask of enabled exceptions, e.g. unmaksed (BSD/GNU extension).
+; Gets the mask of enabled exceptions, e.g. unmasked (BSD/GNU extension).
 ;
-; @returns  eax = inverted x87 exception mask (X86_FCW_XCPT_MASK)
+; @returns  eax = inverted x87/sse exception mask (X86_MXCSR_XCPT_FLAGS).
+;           Will not return X86_FSW_SF.
 ;
 RT_NOCRT_BEGINPROC fegetexcept
         push    xBP
@@ -61,8 +62,8 @@ RT_NOCRT_BEGINPROC fegetexcept
         movzx   eax, word [xBP - 10h]
 %endif
 
-        not     eax                     ; Invert it as we return the enabled rather than masked exceptions.
-        and     eax, X86_FCW_XCPT_MASK
+        not     eax                         ; Invert it as we return the enabled rather than masked exceptions.
+        and     eax, X86_MXCSR_XCPT_FLAGS   ; Use the SSE mask so we don't return X86_FSW_SF here.
 
 .return_val:
         leave

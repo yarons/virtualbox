@@ -1,4 +1,4 @@
-; $Id: feholdexcept.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: feholdexcept.asm 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT feholdexcept - AMD64 & X86.
 ;
@@ -35,7 +35,7 @@ BEGINCODE
 ;;
 ; Gets the FPU+SSE environment and disables (masks) all exceptions.
 ;
-; @returns  eax = x87 exception mask (X86_FCW_XCPT_MASK)
+; @returns  eax = 0 on success (-1 on failure)
 ; @param    pEnv    32-bit: [xBP+8]     msc64: rcx      gcc64: rdi
 ;
 RT_NOCRT_BEGINPROC feholdexcept

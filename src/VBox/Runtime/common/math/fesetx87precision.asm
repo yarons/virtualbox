@@ -1,4 +1,4 @@
-; $Id: fesetx87precision.asm 96205 2022-08-14 23:40:55Z knut.osmundsen@oracle.com $
+; $Id: fesetx87precision.asm 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT fesetx87precision - AMD64 & X86.
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; Sets the x87 hardware precision mode - IPRT extension.
 ;
 ; @returns  eax = previous precision mode, -1 on failure.
-; @param    iRoundingMode   32-bit: [xBP+8]     msc64: ecx      gcc64: edi
+; @param    iPrecisionMode  32-bit: [xBP+8]     msc64: ecx      gcc64: edi
 ;
 RT_NOCRT_BEGINPROC fesetx87precision
         push    xBP

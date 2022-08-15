@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96206 2022-08-14 23:47:28Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -657,6 +657,7 @@ tstRTNoCrt-2_SOURCES += \
   	../common/math/fegetexceptflag.asm \
   	../common/math/fesetexceptflag.asm \
   	../common/math/fetestexcept.asm \
+  	../common/math/feraiseexcept.asm \
 	../common/math/floor.asm \
 	../common/math/floorf.asm \
 	../common/math/fma-asm.asm \
