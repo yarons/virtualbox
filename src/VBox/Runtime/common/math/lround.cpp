@@ -1,4 +1,4 @@
-/* $Id: lround.cpp 96196 2022-08-14 01:03:18Z knut.osmundsen@oracle.com $ */
+/* $Id: lround.cpp 96214 2022-08-15 09:46:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - lround().
  */
@@ -32,6 +32,7 @@
 #include "internal/nocrt.h"
 #include <iprt/nocrt/math.h>
 #include <iprt/nocrt/limits.h>
+#include <iprt/nocrt/fenv.h>
 
 
 #undef lround
@@ -42,10 +43,10 @@ long RT_NOCRT(lround)(double rd)
         rd = RT_NOCRT(round)(rd);
         if (rd >= (double)LONG_MIN && rd <= (double)LONG_MAX)
             return (long)rd;
-        /** @todo RT_NOCRT(feraiseexcept)(FE_INVALID); */
+        RT_NOCRT(feraiseexcept)(FE_INVALID);
         return rd > 0.0 ? LONG_MAX : LONG_MIN;
     }
-    /** @todo RT_NOCRT(feraiseexcept)(FE_INVALID); */
+    RT_NOCRT(feraiseexcept)(FE_INVALID);
     if (RT_NOCRT(isinf)(rd) && rd < 0.0)
         return LONG_MIN;
     return LONG_MAX;
