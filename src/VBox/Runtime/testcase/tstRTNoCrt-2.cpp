@@ -1,4 +1,4 @@
-/* $Id: tstRTNoCrt-2.cpp 96215 2022-08-15 10:48:50Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-2.cpp 96216 2022-08-15 11:12:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT math bits.
  */
@@ -344,6 +344,64 @@ void testAbs()
     CHECK_LONG(RT_NOCRT(llabs)(LONG_MIN),     LONG_MIN); /* oddity */
     CHECK_LONG_SAME(llabs,(LONG_MIN));
     CHECK_LONG_SAME(llabs,(LONG_MAX));
+}
+
+
+void testFAbs()
+{
+    RTTestSub(g_hTest, "fabs[fl]");
+
+    CHECK_DBL(RT_NOCRT(fabs)(              +0.0),               +0.0);
+    CHECK_DBL(RT_NOCRT(fabs)(              -0.0),               +0.0);
+    CHECK_DBL(RT_NOCRT(fabs)(             -42.5),              +42.5);
+    CHECK_DBL(RT_NOCRT(fabs)(             +42.5),              +42.5);
+    CHECK_DBL(RT_NOCRT(fabs)(+1234.60958634e+20), +1234.60958634e+20);
+    CHECK_DBL(RT_NOCRT(fabs)(-1234.60958634e+20), +1234.60958634e+20);
+    CHECK_DBL(RT_NOCRT(fabs)(      +2.1984e-310),       +2.1984e-310); /* subnormal */
+    CHECK_DBL(RT_NOCRT(fabs)(      -2.1984e-310),       +2.1984e-310); /* subnormal */
+    CHECK_DBL(RT_NOCRT(fabs)(-INFINITY),                   +INFINITY);
+    CHECK_DBL(RT_NOCRT(fabs)(+INFINITY),                   +INFINITY);
+    CHECK_DBL(RT_NOCRT(fabs)(RTStrNanDouble(NULL, true)), RTStrNanDouble(NULL, true));
+    CHECK_DBL(RT_NOCRT(fabs)(RTStrNanDouble("s", false)), RTStrNanDouble("s", true));
+    CHECK_DBL_SAME(fabs,(              -0.0));
+    CHECK_DBL_SAME(fabs,(              +0.0));
+    CHECK_DBL_SAME(fabs,(             +22.5));
+    CHECK_DBL_SAME(fabs,(             -22.5));
+    CHECK_DBL_SAME(fabs,(      +2.1984e-310)); /* subnormal */
+    CHECK_DBL_SAME(fabs,(      -2.1984e-310)); /* subnormal */
+    CHECK_DBL_SAME(fabs,(+1234.60958634e+20));
+    CHECK_DBL_SAME(fabs,(-1234.60958634e+20));
+    CHECK_DBL_SAME(fabs,(-INFINITY));
+    CHECK_DBL_SAME(fabs,(+INFINITY));
+    CHECK_DBL_SAME(fabs,(RTStrNanDouble(NULL, true)));
+    CHECK_DBL_SAME(fabs,(RTStrNanDouble("s", false)));
+
+    CHECK_FLT(RT_NOCRT(fabsf)(              +0.0f),               +0.0f);
+    CHECK_FLT(RT_NOCRT(fabsf)(              -0.0f),               +0.0f);
+    CHECK_FLT(RT_NOCRT(fabsf)(             -42.5f),              +42.5f);
+    CHECK_FLT(RT_NOCRT(fabsf)(             +42.5f),              +42.5f);
+    CHECK_FLT(RT_NOCRT(fabsf)(+1234.60958634e+20f), +1234.60958634e+20f);
+    CHECK_FLT(RT_NOCRT(fabsf)(-1234.60958634e+20f), +1234.60958634e+20f);
+    CHECK_FLT(RT_NOCRT(fabsf)(      +2.1984e-310f),       +2.1984e-310f); /* subnormal */
+    CHECK_FLT(RT_NOCRT(fabsf)(      -2.1984e-310f),       +2.1984e-310f); /* subnormal */
+    CHECK_FLT(RT_NOCRT(fabsf)(-INFINITY),                     +INFINITY);
+    CHECK_FLT(RT_NOCRT(fabsf)(+INFINITY),                     +INFINITY);
+    CHECK_FLT(RT_NOCRT(fabsf)(RTStrNanFloat(NULL, true)), RTStrNanFloat(NULL, true));
+    CHECK_FLT(RT_NOCRT(fabsf)(RTStrNanFloat("s", false)), RTStrNanFloat("s", true));
+    CHECK_FLT_SAME(fabsf,(              -0.0f));
+    CHECK_FLT_SAME(fabsf,(              +0.0f));
+    CHECK_FLT_SAME(fabsf,(             +22.5f));
+    CHECK_FLT_SAME(fabsf,(             -22.5f));
+    CHECK_FLT_SAME(fabsf,(      +2.1984e-310f)); /* subnormal */
+    CHECK_FLT_SAME(fabsf,(      -2.1984e-310f)); /* subnormal */
+    CHECK_FLT_SAME(fabsf,(+1234.60958634e+20f));
+    CHECK_FLT_SAME(fabsf,(-1234.60958634e+20f));
+    CHECK_FLT_SAME(fabsf,(-INFINITY));
+    CHECK_FLT_SAME(fabsf,(+INFINITY));
+    CHECK_FLT_SAME(fabsf,(RTStrNanFloat(NULL, true)));
+#if 0 /* UCRT on windows converts this to a quiet NaN, so skip it. */
+    CHECK_FLT_SAME(fabsf,(RTStrNanFloat("s", false)));
+#endif
 }
 
 
@@ -2350,6 +2408,7 @@ int main()
     testAbs();
 
     /* math.h */
+    testFAbs();
     testCopySign();
     testFmax();
     testFmin();
