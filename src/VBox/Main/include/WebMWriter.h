@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
+/* $Id: WebMWriter.h 96210 2022-08-15 09:18:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -110,6 +110,8 @@
             : cbHdrIdent(a_cbHdrIdent)
             , cbHdrComments(a_cbHdrComments)
         {
+            RT_NOREF(a_cbHdrSetup);
+
             /* We supply 3 headers total: The "real" header, comments header + setup header. */
             cHeaders = 3 /* Headers */ - 1; /* Note: Always "minus one" here. */
 
