@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 96208 2022-08-15 08:30:12Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -837,18 +837,18 @@ VBOX_WITH_RECORDING = 1
 # Enable VPX (VP8 / VP9 codec), required for video capturing.
 VBOX_WITH_LIBVPX = 1
 # Enables audio support for recording (depends on VBOX_WITH_RECORDING).
-VBOX_WITH_AUDIO_RECORDING =
+VBOX_WITH_AUDIO_RECORDING = 1
 if defined(VBOX_WITH_AUDIO_RECORDING) && !defined(VBOX_WITH_RECORDING)
  $(error Audio recording (VBOX_WITH_AUDIO_RECORDING) needs the general recording feature (VBOX_WITH_RECORDING) enabled)
 endif
 # Enables libopus (Opus), required for encoding audio into the recorded data.
 VBOX_WITH_LIBOPUS =
 # Enable SEE (+ AVX) optimizations for Opus.
-VBOX_WITH_OPUS_SSE = 1
+VBOX_WITH_OPUS_SSE =
 # Enables libvorbis (Ogg Vorbis), required for encoding audio into the recorded data.
-VBOX_WITH_LIBVORBIS =
+VBOX_WITH_LIBVORBIS = 1
 # Enables libogg (Ogg file format). Required for building libvorbis above.
-VBOX_WITH_LIBOGG =
+VBOX_WITH_LIBOGG = 1
 if defined(VBOX_WITH_LIBVORBIS) && !defined(VBOX_WITH_LIBOGG)
  $(error Need libogg (VBOX_WITH_LIBOGG) in order to build libvorbis (VBOX_WITH_LIBVORBIS))
 endif
@@ -9009,7 +9009,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96175 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96208 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
