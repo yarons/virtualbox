@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 96187 2022-08-13 01:12:42Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96207 2022-08-15 08:29:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -827,7 +827,7 @@ static int avRecSinkInit(PDRVAUDIORECORDING pThis, PAVRECSINK pSink, PAVRECCONTA
 {
     AssertReturn(pCodec->Parms.enmType == RECORDINGCODECTYPE_AUDIO, VERR_INVALID_PARAMETER);
 
-    int vrc;
+    int vrc = VINF_SUCCESS;
 
     pSink->pCodec = pCodec;
 
