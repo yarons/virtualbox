@@ -1,4 +1,4 @@
-/* $Id: strtofloat.cpp 96194 2022-08-13 17:31:12Z knut.osmundsen@oracle.com $ */
+/* $Id: strtofloat.cpp 96222 2022-08-15 13:53:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - String To Floating Point Conversion.
  */
@@ -684,19 +684,15 @@ static void rtStrParseNanTag(const char *pchTag, size_t cchTag, bool fPositive, 
     Assert(iRetType < RT_ELEMENTS(g_fNanMasks));
 #if defined(RT_COMPILER_WITH_128BIT_LONG_DOUBLE)
     if (iRetType == RET_TYPE_LONG_DOUBLE)
-    {
         uHiNum &= g_fNanMasks[RET_TYPE_LONG_DOUBLE];
-        if (!uLoNum && !uHiNum)
-            uLoNum = 1; /* must not be zero, or it'll turn into an infinity */
-    }
     else
 #endif
     {
         uHiNum  = 0;
         uLoNum &= g_fNanMasks[iRetType];
-        if (!uLoNum)
-            uLoNum = 1; /* must not be zero, or it'll turn into an infinity */
     }
+    if (!uLoNum && !uHiNum && !fQuiet)
+        uLoNum = 1; /* must not be zero, or it'll turn into an infinity */
 
     /*
      * Set the return value.
