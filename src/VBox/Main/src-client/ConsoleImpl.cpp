@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 96226 2022-08-16 13:53:23Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 96230 2022-08-16 15:44:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7352,7 +7352,7 @@ int Console::i_recordingGetSettings(settings::RecordingSettings &recording)
 /**
  * Creates the recording context.
  *
- * @returns IPRT status code.
+ * @returns VBox status code.
  */
 int Console::i_recordingCreate(void)
 {
@@ -7376,7 +7376,7 @@ void Console::i_recordingDestroy(void)
 /**
  * Starts recording. Does nothing if recording is already active.
  *
- * @returns IPRT status code.
+ * @returns VBox status code.
  */
 int Console::i_recordingStart(util::AutoWriteLock *pAutoLock /* = NULL */)
 {
