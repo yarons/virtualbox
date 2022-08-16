@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox_irq.c 96233 2022-08-16 18:39:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -205,7 +205,7 @@ int vbox_irq_init(struct vbox_private *vbox)
 {
 	INIT_WORK(&vbox->hotplug_work, vbox_hotplug_worker);
 	vbox_update_mode_hints(vbox);
-#if RTLNX_VER_MIN(5,15,0)
+#if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_MAJ_PREREQ(9,1)
 	return request_irq(VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq, vbox_irq_handler, IRQF_SHARED, vbox->dev->driver->name, vbox->dev);
 #elif RTLNX_VER_MIN(3,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
 	return drm_irq_install(vbox->dev, VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq);
@@ -216,7 +216,7 @@ int vbox_irq_init(struct vbox_private *vbox)
 
 void vbox_irq_fini(struct vbox_private *vbox)
 {
-#if RTLNX_VER_MIN(5,15,0)
+#if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_MAJ_PREREQ(9,1)
 	free_irq(VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq, vbox->dev);
 #else
 	drm_irq_uninstall(vbox->dev);

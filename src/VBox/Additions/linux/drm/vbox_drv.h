@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 96228 2022-08-16 15:39:33Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_drv.h 96233 2022-08-16 18:39:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -157,7 +157,7 @@
 # include <drm/drm_device.h>
 # include <drm/drm_ioctl.h>
 # include <drm/drm_fourcc.h>
-# if RTLNX_VER_MAX(5,15,0)
+# if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
 #  include <drm/drm_irq.h>
 # endif
 # include <drm/drm_vblank.h>
@@ -523,7 +523,7 @@ int vbox_gem_prime_mmap(struct drm_gem_object *obj,
 int vbox_irq_init(struct vbox_private *vbox);
 void vbox_irq_fini(struct vbox_private *vbox);
 void vbox_report_hotplug(struct vbox_private *vbox);
-#if RTLNX_VER_MAX(5,15,0)
+#if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
 irqreturn_t vbox_irq_handler(int irq, void *arg);
 #endif
 
