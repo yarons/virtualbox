@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 96234 2022-08-16 20:08:29Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 96235 2022-08-16 20:12:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -2250,8 +2250,12 @@ static int rtStrmWriteLocked(PRTSTREAM pStream, const void *pvBuf, size_t cbToWr
 
     /*
      * Update error status on failure and return.
+     *
+     * We ignore failures from RTStrUtf8ToCurrentCP and RTStrToUtf16Ex regarding
+     * invalid UTF-8 encoding, as that's an input issue and shouldn't affect the
+     * stream state.
      */
-    if (RT_FAILURE(rc))
+    if (RT_FAILURE(rc) && rc != VERR_INVALID_UTF8_ENCODING)
         ASMAtomicWriteS32(&pStream->i32Error, rc);
     return rc;
 }
