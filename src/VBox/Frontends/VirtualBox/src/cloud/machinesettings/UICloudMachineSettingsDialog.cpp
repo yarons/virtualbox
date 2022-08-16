@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialog.cpp 96232 2022-08-16 16:53:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class implementation.
  */
@@ -76,7 +76,7 @@ void UICloudMachineSettingsDialog::retranslateUi()
     if (m_strName.isNull())
         setWindowTitle(strCaption);
     else
-        setWindowTitle(tr("%1 - %2").arg(m_strName, strCaption));
+        setWindowTitle(QString("%1 - %2").arg(m_strName, strCaption));
 }
 
 void UICloudMachineSettingsDialog::setOkButtonEnabled(bool fEnabled)

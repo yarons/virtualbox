@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 95921 2022-07-28 15:06:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 96232 2022-08-16 16:53:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -154,11 +154,11 @@ void UIItemExtensionPack::updateFields()
 QString UIItemExtensionPack::defaultText() const
 {
     return   m_fIsUsable
-           ? UIExtensionPackManager::tr("%1, %2: %3, %4", "col.2 text, col.3 name: col.3 text, col.1 name")
+           ? QString("%1, %2: %3, %4")
                .arg(text(1))
                .arg(parentTree()->headerItem()->text(2)).arg(text(2))
                .arg(parentTree()->headerItem()->text(0))
-           : UIExtensionPackManager::tr("%1, %2: %3",     "col.2 text, col.3 name: col.3 text")
+           : QString("%1, %2: %3")
                .arg(text(1))
                .arg(parentTree()->headerItem()->text(2)).arg(text(2));
 }
@@ -200,7 +200,7 @@ void UIExtensionPackManagerWidget::retranslateUi()
 
     /* Translate tree-widget: */
     m_pTreeWidget->setHeaderLabels(   QStringList()
-                                   << UIExtensionPackManager::tr("Active")
+                                   << UIExtensionPackManager::tr("Active", "ext pack")
                                    << UIExtensionPackManager::tr("Name")
                                    << UIExtensionPackManager::tr("Version"));
     m_pTreeWidget->setWhatsThis(UIExtensionPackManager::tr("Registered extension packs"));

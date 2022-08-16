@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 93990 2022-02-28 15:34:57Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 96232 2022-08-16 16:53:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -375,7 +375,7 @@ void UIVirtualMachineItemCloud::retranslateUi()
                               .arg(m_strName);
 
         /* We have our own translation for Null states: */
-        m_strMachineStateName = tr("Inaccessible");
+        m_strMachineStateName = tr("Inaccessible", "VM");
     }
 }
 
