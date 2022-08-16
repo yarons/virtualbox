@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 96230 2022-08-16 15:44:23Z andreas.loeffler@oracle.com $ */
+/* $Id: WebMWriter.cpp 96231 2022-08-16 15:45:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -580,14 +580,12 @@ int WebMWriter::WriteBlock(uint8_t uTrack, const void *pvData, size_t cbData, We
     int vrc = RTCritSectEnter(&CurSeg.CritSect);
     AssertRC(vrc);
 
-#ifdef DEBUG /* Only validate in debug builds, to speed things up in release builds. */
     WebMTracks::iterator itTrack = CurSeg.mapTracks.find(uTrack);
     if (itTrack == CurSeg.mapTracks.end())
     {
         RTCritSectLeave(&CurSeg.CritSect);
         return VERR_NOT_FOUND;
     }
-#endif
 
     WebMTrack *pTrack = itTrack->second;
     AssertPtr(pTrack);
