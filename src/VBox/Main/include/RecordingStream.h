@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 96229 2022-08-16 15:41:39Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 96260 2022-08-17 12:02:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -119,6 +119,7 @@ public:
     int Uninit(void);
 
     int Process(RecordingBlockMap &mapBlocksCommon);
+    int SendAudioFrame(const void *pvData, size_t cbData, uint64_t msTimestamp);
     int SendVideoFrame(uint32_t x, uint32_t y, uint32_t uPixelFormat, uint32_t uBPP, uint32_t uBytesPerLine,
                        uint32_t uSrcWidth, uint32_t uSrcHeight, uint8_t *puSrcData, uint64_t msTimestamp);
 
