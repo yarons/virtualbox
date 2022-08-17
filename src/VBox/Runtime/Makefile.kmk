@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96269 2022-08-17 16:47:58Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96271 2022-08-17 16:48:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1788,7 +1788,7 @@ endef
 #
 RuntimeR3_TEMPLATE = VBoxR3Static
 RuntimeR3_EXTENDS  = RuntimeBaseR3
-#RuntimeR3_DEFS.win = $(RuntimeBaseR3_DEFS.win) IPRT_NO_WIN_ERROR_DATA
+RuntimeR3_DEFS.win = $(RuntimeBaseR3_DEFS.win) IPRT_NO_WIN_ERROR_DATA
 ifdef VBOX_WITH_NOCRT_STATIC
  if1of ($(KBUILD_TARGET), win)
   RuntimeR3_USES   = $(RuntimeBaseR3_USES) VBoxNoCrtAliases
