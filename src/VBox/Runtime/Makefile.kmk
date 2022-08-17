@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96213 2022-08-15 09:36:00Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96240 2022-08-17 00:59:31Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1941,6 +1941,7 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/rintf.asm \
   	common/math/sin.asm \
   	common/math/sinf.asm \
+  	common/math/sincore.asm \
   	common/math/sqrt.asm \
   	common/math/sqrtf.asm \
   	common/math/tan.asm \
@@ -2011,6 +2012,7 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/rintf.asm \
   	common/math/sin.asm \
   	common/math/sinf.asm \
+  	common/math/sincore.asm \
   	common/math/sqrt.asm \
   	common/math/sqrtf.asm \
   	common/math/tan.asm \
