@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 96261 2022-08-17 12:05:20Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96262 2022-08-17 12:16:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -544,7 +544,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface
     PRTCIRCBUF pCircBuf    = pStreamAV->pCircBuf;
     AssertPtr(pCircBuf);
 
-    uint32_t cbToWrite = RT_MIN(cbBuf, RTCircBufFree(pCircBuf));
+    uint32_t cbToWrite = RT_MIN(cbBuf, (uint32_t)RTCircBufFree(pCircBuf));
     AssertReturn(cbToWrite, VERR_BUFFER_OVERFLOW);
 
     /*
@@ -573,7 +573,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface
     /*
      * Process our internal ring buffer and send the obtained audio data to our encoding thread.
      */
-    cbToWrite = RTCircBufUsed(pCircBuf);
+    cbToWrite = (uint32_t)RTCircBufUsed(pCircBuf);
 
     /** @todo Can we encode more than a frame at a time? Optimize this! */
     uint32_t const cbFrame = pCodec->Parms.cbFrame;
