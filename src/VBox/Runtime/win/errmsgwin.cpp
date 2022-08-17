@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 96165 2022-08-12 11:44:29Z knut.osmundsen@oracle.com $ */
+/* $Id: errmsgwin.cpp 96269 2022-08-17 16:47:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Status code messages, Windows.
  */
@@ -40,7 +40,7 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#ifdef IPRT_NO_ERROR_DATA
+#if defined(IPRT_NO_ERROR_DATA) || defined(IPRT_NO_WIN_ERROR_DATA)
 /* Cook data just for VINF_SUCCESS so that code below compiles fine. */
 static const char            g_achWinStrTabData[] = { "ERROR_SUCCESS" };
 static const RTBLDPROGSTRTAB g_WinMsgStrTab = { g_achWinStrTabData, sizeof(g_achWinStrTabData) - 1, 0, NULL };
