@@ -1,4 +1,4 @@
-/* $Id: nocrt-setvbuf.cpp 96091 2022-08-07 02:18:06Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-setvbuf.cpp 96270 2022-08-17 16:48:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - setvbuf().
  */
@@ -40,8 +40,8 @@
 #undef setvbuf
 int RT_NOCRT(setvbuf)(FILE *pFile, char *pchBuf, int iBufferingType, size_t cbBuf)
 {
-    Assert(!pchBuf); /* ignored */
-    Assert(!cbBuf);  /* ignored */
+    Assert(!pchBuf); RT_NOREF(pchBuf); /* ignored */
+    Assert(!cbBuf);  RT_NOREF(cbBuf);  /* ignored */
 
     RTSTRMBUFMODE enmBufMode;
     switch (iBufferingType)

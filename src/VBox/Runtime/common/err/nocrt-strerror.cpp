@@ -1,4 +1,4 @@
-/* $Id: nocrt-strerror.cpp 96073 2022-08-06 00:20:33Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-strerror.cpp 96270 2022-08-17 16:48:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Convert errno value to string.
  */
@@ -33,6 +33,7 @@
 #include <iprt/nocrt/string.h>
 #include <iprt/nocrt/errno.h>
 #include <iprt/assert.h>
+#include <iprt/log.h>
 
 
 #undef strerror
