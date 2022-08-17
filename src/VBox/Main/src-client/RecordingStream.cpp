@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 96230 2022-08-16 15:44:23Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 96243 2022-08-17 06:28:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -982,6 +982,7 @@ int RecordingStream::codecWriteToWebM(PRECORDINGCODEC pCodec, const void *pvData
  * @param   cbData              Size (in bytes) of \a pvData.
  * @param   msAbsPTS            Absolute PTS (in ms) of written data.
  * @param   uFlags              Encoding flags of type RECORDINGCODEC_ENC_F_XXX.
+ * @param   pvUser              User-supplied pointer.
  */
 /* static */
 DECLCALLBACK(int) RecordingStream::codecWriteDataCallback(PRECORDINGCODEC pCodec, const void *pvData, size_t cbData,
