@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96253 2022-08-17 10:01:13Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96255 2022-08-17 10:15:52Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -13782,6 +13782,7 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpmovzxdq_u256_fallback,(PRTUINT256U puDst, PCR
 }
 
 
+#ifdef IEM_WITHOUT_ASSEMBLY
 /**
  * Converts from the packed IPRT 32-bit (single precision) floating point format to
  * the SoftFloat 32-bit floating point format (float32_t).
@@ -13935,7 +13936,6 @@ DECLINLINE(uint32_t) iemSseSoftStateAndR64ToMxcsrAndIprtResult(softfloat_state_t
 }
 
 
-#ifdef IEM_WITHOUT_ASSEMBLY
 /**
  * Sets the given single precision floating point input value to the given output taking the Denormals-as-zero flag
  * in MXCSR into account.
