@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 96229 2022-08-16 15:41:39Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 96265 2022-08-17 13:19:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -372,7 +372,6 @@ typedef struct RECORDINGVIDEOFRAME
     size_t              cbRGBBuf;
 } RECORDINGVIDEOFRAME, *PRECORDINGVIDEOFRAME;
 
-#ifdef VBOX_WITH_AUDIO_RECORDING
 /**
  * Structure for keeping a single recording audio frame.
  */
@@ -383,7 +382,6 @@ typedef struct RECORDINGAUDIOFRAME
     /** Size (in bytes) of audio data. */
     size_t              cbBuf;
 } RECORDINGAUDIOFRAME, *PRECORDINGAUDIOFRAME;
-#endif /* VBOX_WITH_AUDIO_RECORDING */
 
 /**
  * Structure for keeping a single recording audio frame.
@@ -410,10 +408,8 @@ typedef enum RECORDINGBLOCKTYPE
     RECORDINGBLOCKTYPE_UNKNOWN = 0,
     /** The block is a video frame. */
     RECORDINGBLOCKTYPE_VIDEO,
-#ifdef VBOX_WITH_AUDIO_RECORDING
     /** The block is an audio frame. */
     RECORDINGBLOCKTYPE_AUDIO
-#endif
 } RECORDINGBLOCKTYPE;
 
 #ifdef VBOX_WITH_AUDIO_RECORDING
