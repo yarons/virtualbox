@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96247 2022-08-17 09:08:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96250 2022-08-17 09:15:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -13808,7 +13808,7 @@ DECLINLINE(PRTFLOAT32U) iemFpSoftF32ToIprt(PRTFLOAT32U pr32Dst, float32_t const 
     return pr32Dst;
 }
 
-
+#if 0 /* Currently unused. */
 /**
  * Converts from the packed IPRT 64-bit (single precision) floating point format to
  * the SoftFloat 64-bit floating point format (float64_t).
@@ -13834,7 +13834,7 @@ DECLINLINE(PRTFLOAT64U) iemFpSoftF64ToIprt(PRTFLOAT64U pr64Dst, float64_t const 
     pr64Dst->u = r64XSrc.v;
     return pr64Dst;
 }
-
+#endif
 
 /** Initializer for the SoftFloat state structure. */
 # define IEM_SOFTFLOAT_STATE_INITIALIZER_FROM_MXCSR(a_Mxcsr) \
