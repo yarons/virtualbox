@@ -1,4 +1,4 @@
-; $Id: cos.asm 96240 2022-08-17 00:59:31Z knut.osmundsen@oracle.com $
+; $Id: cos.asm 96242 2022-08-17 01:59:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT cos - AMD64 & X86.
 ;
@@ -109,7 +109,7 @@ RT_NOCRT_BEGINPROC cos
         fabs
         fld     qword [.s_r64TinyCosTo1 xWrtRIP]
         fcomip  st1
-        jbe      .zero_extra_pop
+        ja      .zero_extra_pop
 
 .not_that_tiny_input:
         fld     qword [.s_r64FCosOkay xWrtRIP]

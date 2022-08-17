@@ -1,4 +1,4 @@
-; $Id: sin.asm 96241 2022-08-17 01:03:48Z knut.osmundsen@oracle.com $
+; $Id: sin.asm 96242 2022-08-17 01:59:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT sin - AMD64 & X86.
 ;
@@ -34,10 +34,10 @@ BEGINCODE
 
 
 ;;
-; Compute the sine of rd, measured in radians.
+; Compute the sine of rf, measured in radians.
 ;
 ; @returns  st(0) / xmm0
-; @param    rd      [rbp + xCB*2] / xmm0
+; @param    rf      [rbp + xCB*2] / xmm0
 ;
 RT_NOCRT_BEGINPROC sin
         push    xBP
@@ -159,13 +159,13 @@ RT_NOCRT_BEGINPROC sin
         jmp     .return
 
 ALIGNCODE(8)
-        ; Ca. 2**-26, absolute value. Inputs closer to zero than this can be
+        ; Ca. 2**-17, absolute value. Inputs closer to zero than this can be
         ; returns directly as the sin(input) value should be basically the same
         ; given the precision we're working with and FSIN probably won't even
         ; manage that.
         ;; @todo experiment when FSIN gets better than this.
 .s_r64Tiny:
-        dq      1.49011612e-8
+        dq      0.00000762939453125
         ; The absolute limit of FSIN "good" range.
 .s_r64FSinOkay:
         dq      2.356194490192344928845 ; 3pi/4
