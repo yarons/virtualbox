@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96240 2022-08-17 00:59:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96246 2022-08-17 08:53:53Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -55,8 +55,7 @@ else ifdef VBOX_ONLY_VALIDATIONKIT
  LIBRARIES.win += RuntimeR0Stub #RuntimeR3NoCrt
  LIBRARIES.win.x86 += RuntimeR3VccTricks
  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
- if defined(VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING)
-  DLLS += VBoxRT
+ ifdef VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING
   include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
  endif
 else ifdef VBOX_ONLY_DOCS
