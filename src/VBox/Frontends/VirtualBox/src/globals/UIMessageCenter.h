@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 96266 2022-08-17 13:43:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.h 96267 2022-08-17 16:42:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -450,7 +450,7 @@ public slots:
     void sltShowBugTracker();
     void sltShowForums();
     void sltShowOracle();
-    void sltShowOnlineManual();
+    void sltShowOnlineDocumentation();
     void sltShowHelpAboutDialog();
     void sltShowHelpHelpDialog();
     void sltResetSuppressedMessages();

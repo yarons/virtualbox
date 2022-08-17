@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 96266 2022-08-17 13:43:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 96267 2022-08-17 16:42:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -580,7 +580,7 @@ template<> QString toInternalString(const UIExtraDataMetaDefs::MenuHelpActionTyp
         case UIExtraDataMetaDefs::MenuHelpActionType_BugTracker:           strResult = "BugTracker"; break;
         case UIExtraDataMetaDefs::MenuHelpActionType_Forums:               strResult = "Forums"; break;
         case UIExtraDataMetaDefs::MenuHelpActionType_Oracle:               strResult = "Oracle"; break;
-        case UIExtraDataMetaDefs::MenuHelpActionType_OnlineManual:         strResult = "OnlineManual"; break;
+        case UIExtraDataMetaDefs::MenuHelpActionType_OnlineDocumentation:  strResult = "OnlineDocumentation"; break;
 #ifndef VBOX_WS_MAC
         case UIExtraDataMetaDefs::MenuHelpActionType_About:                strResult = "About"; break;
 #endif /* !VBOX_WS_MAC */
@@ -608,8 +608,8 @@ fromInternalString<UIExtraDataMetaDefs::MenuHelpActionType>(const QString &strMe
         return UIExtraDataMetaDefs::MenuHelpActionType_Forums;
     if (strMenuHelpActionType.compare("Oracle", Qt::CaseInsensitive) == 0)
         return UIExtraDataMetaDefs::MenuHelpActionType_Oracle;
-    if (strMenuHelpActionType.compare("OnlineManual", Qt::CaseInsensitive) == 0)
-        return UIExtraDataMetaDefs::MenuHelpActionType_OnlineManual;
+    if (strMenuHelpActionType.compare("OnlineDocumentation", Qt::CaseInsensitive) == 0)
+        return UIExtraDataMetaDefs::MenuHelpActionType_OnlineDocumentation;
 #ifndef VBOX_WS_MAC
     if (strMenuHelpActionType.compare("About", Qt::CaseInsensitive) == 0)
         return UIExtraDataMetaDefs::MenuHelpActionType_About;
