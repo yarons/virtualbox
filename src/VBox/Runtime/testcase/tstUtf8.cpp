@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 95044 2022-05-19 15:43:57Z andreas.loeffler@oracle.com $ */
+/* $Id: tstUtf8.cpp 96258 2022-08-17 11:02:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -1120,18 +1120,18 @@ static void testStrStr(RTTEST hTest)
     do { \
         const char *pszRet = expr; \
         if (pszRet != NULL) \
-            RTTestFailed(hTest, "%d: %#x -> %s expected NULL", __LINE__, #expr, pszRet); \
+            RTTestFailed(hTest, "%d: %s -> %s expected NULL", __LINE__, #expr, pszRet); \
     } while (0)
 
 #define CHECK(expr, expect) \
     do { \
-        const char *pszRet = expr; \
-        const char *pszExpect = (expect); \
+        const char * const pszRet = expr; \
+        const char * const pszExpect = (expect); \
         if (   (pszRet != NULL && pszExpect == NULL) \
             || (pszRet == NULL && pszExpect != NULL) \
             || strcmp(pszRet, pszExpect) \
             ) \
-            RTTestFailed(hTest, "%d: %#x -> %s expected %s", __LINE__, #expr, pszRet, pszExpect); \
+            RTTestFailed(hTest, "%d: %s -> %s expected %s", __LINE__, #expr, pszRet, pszExpect); \
     } while (0)
 
 

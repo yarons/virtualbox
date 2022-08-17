@@ -1,4 +1,4 @@
-/* $Id: strstr.cpp 96043 2022-08-04 22:08:07Z knut.osmundsen@oracle.com $ */
+/* $Id: strstr.cpp 96258 2022-08-17 11:02:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - CRT Strings, strstr().
  */
@@ -44,21 +44,25 @@
 char *RT_NOCRT(strstr)(const char *pszString, const char *pszSubStr)
 {
     char const  ch0Sub = *pszSubStr;
-    pszString = strchr(pszString, ch0Sub);
-    if (pszString)
+    if (ch0Sub != '\0')
     {
-        size_t const cchSubStr = strlen(pszSubStr);
-        do
+        pszString = strchr(pszString, ch0Sub);
+        if (pszString)
         {
-            if (strncmp(pszString, pszSubStr, cchSubStr) == 0)
-                return (char *)pszString;
-            if (ch0Sub)
-                pszString = strchr(pszString + 1, ch0Sub);
-            else
-                break;
-        } while (pszString != NULL);
+            size_t const cchSubStr = strlen(pszSubStr);
+            do
+            {
+                if (strncmp(pszString, pszSubStr, cchSubStr) == 0)
+                    return (char *)pszString;
+                if (ch0Sub)
+                    pszString = strchr(pszString + 1, ch0Sub);
+                else
+                    break;
+            } while (pszString != NULL);
+        }
+        return NULL;
     }
-    return NULL;
+    return (char *)pszString;
 }
 RT_ALIAS_AND_EXPORT_NOCRT_SYMBOL(strstr);
 
