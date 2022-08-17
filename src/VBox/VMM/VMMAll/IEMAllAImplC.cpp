@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96263 2022-08-17 12:49:04Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96264 2022-08-17 13:03:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -13860,8 +13860,8 @@ DECLINLINE(PRTFLOAT64U) iemFpSoftF64ToIprt(PRTFLOAT64U pr64Dst, float64_t const 
  * @param   r32Result       The result of the SoftFloat operation.
  * @param   pr32Result      Where to store the result for IEM.
  * @param   fMxcsr          The original MXCSR value.
- * @param   pr32Src1        The first source operand (for setting #DE under certain circumstances).
- * @param   pr32Src2        The second source operand (for setting #DE under certain circumstances).
+ * @param   pr32Src1        The first source operand (for setting \#DE under certain circumstances).
+ * @param   pr32Src2        The second source operand (for setting \#DE under certain circumstances).
  */
 DECLINLINE(uint32_t) iemSseSoftStateAndR32ToMxcsrAndIprtResult(softfloat_state_t const *pSoftState, float32_t r32Result,
                                                                PRTFLOAT32U pr32Result, uint32_t fMxcsr,
@@ -13902,8 +13902,8 @@ DECLINLINE(uint32_t) iemSseSoftStateAndR32ToMxcsrAndIprtResult(softfloat_state_t
  * @param   r64Result       The result of the SoftFloat operation.
  * @param   pr64Result      Where to store the result for IEM.
  * @param   fMxcsr          The original MXCSR value.
- * @param   pr64Src1        The first source operand (for setting #DE under certain circumstances).
- * @param   pr64Src2        The second source operand (for setting #DE under certain circumstances).
+ * @param   pr64Src1        The first source operand (for setting \#DE under certain circumstances).
+ * @param   pr64Src2        The second source operand (for setting \#DE under certain circumstances).
  */
 DECLINLINE(uint32_t) iemSseSoftStateAndR64ToMxcsrAndIprtResult(softfloat_state_t const *pSoftState, float64_t r64Result,
                                                                PRTFLOAT64U pr64Result, uint32_t fMxcsr,
