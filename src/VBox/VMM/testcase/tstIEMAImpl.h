@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 96248 2022-08-17 09:09:34Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 96254 2022-08-17 10:02:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -351,6 +351,15 @@ typedef struct SSE_BINARY_R32_TEST_T
     RTFLOAT32U              InVal2;
     RTFLOAT32U              OutVal;
 } SSE_BINARY_R32_TEST_T;
+
+typedef struct SSE_BINARY_R64_TEST_T
+{
+    uint32_t                fMxcsrIn;
+    uint32_t                fMxcsrOut;
+    RTFLOAT64U              InVal1;
+    RTFLOAT64U              InVal2;
+    RTFLOAT64U              OutVal;
+} SSE_BINARY_R64_TEST_T;
 
 /** @} */
 
@@ -719,6 +728,8 @@ TSTIEM_DECLARE_TEST_ARRAY(FpuOther-Amd,     FPU_UNARY_TWO_R80_TEST_T,   fsincos_
 TSTIEM_DECLARE_TEST_ARRAY(FpuOther-Intel,   FPU_UNARY_TWO_R80_TEST_T,   fsincos_r80_r80_intel    );
 
 TSTIEM_DECLARE_TEST_ARRAY(SseBinary,        SSE_BINARY_R32_TEST_T,      addps_u128               );
+
+TSTIEM_DECLARE_TEST_ARRAY(SseBinary,        SSE_BINARY_R64_TEST_T,      addpd_u128               );
 
 #endif /* !VMM_INCLUDED_SRC_testcase_tstIEMAImpl_h */
 
