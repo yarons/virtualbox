@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 96260 2022-08-17 12:02:46Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96261 2022-08-17 12:05:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -541,8 +541,6 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface
 
     uint32_t cbWrittenTotal = 0;
 
-    PAVRECSINK pSink       = pStreamAV->pSink;
-    AssertPtr(pSink);
     PRTCIRCBUF pCircBuf    = pStreamAV->pCircBuf;
     AssertPtr(pCircBuf);
 
