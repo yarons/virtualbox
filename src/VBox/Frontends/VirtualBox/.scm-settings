@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 96318 2022-08-18 19:56:07Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for VirtualBox.
 #
@@ -22,6 +22,6 @@
 /src/precomp.h:     --no-fix-header-guards
 /src/precomp_vcc.h: --no-fix-header-guards
 /src/precomp_gcc.h: --no-fix-header-guards
+/src/platform/win/VirtualBox.VisualElementsManifest.xml: --external-copyright
 
 /precomptricks/*:   --no-fix-header-guards --no-update-license --no-update-copyright-year --treat-as .h
-
