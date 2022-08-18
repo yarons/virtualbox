@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96282 2022-08-18 02:52:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96298 2022-08-18 14:28:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1825,6 +1825,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/fmin.cpp \
   	common/math/fminf.cpp \
   	common/math/fminl.cpp \
+  	common/math/frexp.cpp \
+  	common/math/frexpf.cpp \
+  	common/math/frexpl.cpp \
   	common/math/__fpclassifyd.cpp \
   	common/math/__fpclassifyf.cpp \
   	common/math/__fpclassifyl.cpp \

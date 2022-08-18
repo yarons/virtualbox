@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96282 2022-08-18 02:52:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96298 2022-08-18 14:28:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -613,6 +613,9 @@ tstRTNoCrt-2_SOURCES = \
 	../common/math/nocrt-llabs.cpp \
 	../common/math/round.cpp \
 	../common/math/roundf.cpp \
+	../common/math/frexp.cpp \
+	../common/math/frexpf.cpp \
+	../common/math/frexpl.cpp \
 	../common/math/__fpclassifyd.cpp \
 	../common/math/__fpclassifyf.cpp \
 	../common/math/__fpclassifyl.cpp \
