@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 96260 2022-08-17 12:02:46Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 96283 2022-08-18 06:17:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -738,7 +738,7 @@ bool RecordingContext::IsReady(uint32_t uScreen, uint64_t msTimestamp)
 
     if (this->enmState != RECORDINGSTS_STARTED)
     {
-        const RecordingStream *pStream = GetStream(uScreen);
+        const RecordingStream *pStream = getStreamInternal(uScreen);
         if (pStream)
             fIsReady = pStream->IsReady();
 
@@ -876,7 +876,7 @@ int RecordingContext::SendVideoFrame(uint32_t uScreen, uint32_t x, uint32_t y,
 
     lock();
 
-    RecordingStream *pStream = GetStream(uScreen);
+    RecordingStream *pStream = getStreamInternal(uScreen);
     if (!pStream)
     {
         unlock();
