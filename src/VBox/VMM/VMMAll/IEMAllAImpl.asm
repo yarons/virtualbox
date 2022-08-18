@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96286 2022-08-18 08:11:28Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 96294 2022-08-18 10:07:28Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4588,3 +4588,5 @@ IEMIMPL_FP_F2 addps
 IEMIMPL_FP_F2 addpd
 IEMIMPL_FP_F2 mulps
 IEMIMPL_FP_F2 mulpd
+IEMIMPL_FP_F2 subps
+IEMIMPL_FP_F2 subpd
