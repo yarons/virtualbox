@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 96313 2022-08-18 19:26:22Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -89,4 +89,4 @@
 /win/MsiHack/MsiHackExtension.cs:               --treat-as .c
 --filter-out-files /win/Stub/VBoxStub.manifest
 /win/NLS/*.wxl:                                 --no-convert-tabs
-
+/win/VBoxKey.wxi:                               --external-copyright
