@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96290 2022-08-18 09:17:20Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96291 2022-08-18 09:28:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -825,14 +825,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96290 $";
+    static char s_szRev[] = "$Revision: 96291 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96290 2022-08-18 09:17:20Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96291 2022-08-18 09:28:30Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -4760,7 +4760,7 @@ static void SseBinaryR64Generate(PRTSTREAM pOut, PRTSTREAM pOutCpu, uint32_t cTe
             XmmVal1.ar64[0] = InVal1_1;
             XmmVal2.ar64[0] = InVal1_2;
             XmmVal1.ar64[1] = InVal2_1;
-            XmmVal2.ar64[1] = InVal2_1;
+            XmmVal2.ar64[1] = InVal2_2;
 
             uint32_t const fMxcsr = RandMxcsr() & X86_MXCSR_XCPT_FLAGS;
             for (uint16_t iRounding = 0; iRounding < 4; iRounding++)
