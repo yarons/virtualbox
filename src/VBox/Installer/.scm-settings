@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96313 2022-08-18 19:26:22Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 96317 2022-08-18 19:45:18Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -17,6 +17,7 @@
 
 # External stuff.
 /linux/rpm-kmod-VBoxGuest/kmodtool-VBoxGuest-el6.sh: --external-copyright
+/common/virtualbox.xml:                              --external-copyright
 
 # Dual licensed code.
 /common/vboxapisetup.py: --license-ose-dual
