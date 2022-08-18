@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96292 2022-08-18 09:40:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -268,7 +268,6 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvAudioVideoRecHA_GetStatus(PPDMIHOSTAU
  * @param   pThis               Driver instance.
  * @param   pStreamAV           Audio output stream to create.
  * @param   pSink               Recording sink to associate audio output stream to.
- * @param   pCodec              The audio codec, for stream parameters.
  * @param   pCfgReq             Requested configuration by the audio backend.
  * @param   pCfgAcq             Acquired configuration by the audio output stream.
  */
