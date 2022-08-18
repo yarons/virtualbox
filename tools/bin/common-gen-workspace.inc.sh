@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: common-gen-workspace.inc.sh 96030 2022-08-04 12:20:52Z andreas.loeffler@oracle.com $
+# $Id: common-gen-workspace.inc.sh 96289 2022-08-18 08:40:39Z ramshankar.venkataraman@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -180,7 +180,7 @@ my_wildcard()
     else
         MY_FOLDER="$1-All.lst"
     fi
-    EXCLUDES="*.log;*.kup;*~;*.bak;*.bak?;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svnpatch.rej;*.svn-base;.svn/*;*.gitignore;*.gitattributes;*.gitmodules;*.swagger-codegen-ignore;*.png;*.bmp;*.jpg;*.jar"
+    EXCLUDES="*.log;*.kup;*~;*.bak;*.bak?;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svnpatch.rej;*.svn-base;.svn/*;*.gitignore;*.gitattributes;*.gitmodules;*.swagger-codegen-ignore;*.png;*.bmp;*.jpg;*.jar;*.checksrc;*.clang-format;*.dir-locals.el;*.drirc;*.editorconfig;*.htaccess"
     echo '        <F N="'"${2}"'/*" Recurse="1" Excludes="'"${EXCLUDES}"'"/>' >> "${MY_FOLDER}"
 }
 
