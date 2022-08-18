@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96253 2022-08-17 10:01:13Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96286 2022-08-18 08:11:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2417,12 +2417,18 @@ typedef FNIEMAIMPLFPAVXF3U256  *PFNIEMAIMPLFPAVXF3U256;
 
 FNIEMAIMPLFPSSEF2U128 iemAImpl_addps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_addpd_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_mulps_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_mulpd_u128;
 
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vaddps_u128, iemAImpl_vaddps_u128_fallback;
 FNIEMAIMPLFPAVXF3U128 iemAImpl_vaddpd_u128, iemAImpl_vaddpd_u128_fallback;
+FNIEMAIMPLFPAVXF3U128 iemAImpl_vmulps_u128, iemAImpl_vmulps_u128_fallback;
+FNIEMAIMPLFPAVXF3U128 iemAImpl_vmulpd_u128, iemAImpl_vmulpd_u128_fallback;
 
 FNIEMAIMPLFPAVXF3U256 iemAImpl_vaddps_u256, iemAImpl_vaddps_u256_fallback;
 FNIEMAIMPLFPAVXF3U256 iemAImpl_vaddpd_u256, iemAImpl_vaddpd_u256_fallback;
+FNIEMAIMPLFPAVXF3U256 iemAImpl_vmulps_u256, iemAImpl_vmulps_u256_fallback;
+FNIEMAIMPLFPAVXF3U256 iemAImpl_vmulpd_u256, iemAImpl_vmulpd_u256_fallback;
 /** @} */
 
 /** @name C instruction implementations for anything slightly complicated.
