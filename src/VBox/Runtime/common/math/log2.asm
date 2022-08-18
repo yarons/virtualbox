@@ -1,4 +1,4 @@
-; $Id: log2.asm 96276 2022-08-17 23:56:31Z knut.osmundsen@oracle.com $
+; $Id: log2.asm 96280 2022-08-18 02:44:56Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT log2 - AMD64 & X86.
 ;
@@ -113,7 +113,7 @@ RT_NOCRT_BEGINPROC log2
         fyl2x                               ; -> st0=1.0*log2(st0)
 
         ;
-        ; Run st0.
+        ; Return st0.
         ;
 .return_val:
 %ifdef RT_ARCH_AMD64
