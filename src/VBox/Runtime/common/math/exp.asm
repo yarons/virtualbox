@@ -1,4 +1,4 @@
-; $Id: exp.asm 96280 2022-08-18 02:44:56Z knut.osmundsen@oracle.com $
+; $Id: exp.asm 96281 2022-08-18 02:45:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - No-CRT exp - AMD64 & X86.
 ;
@@ -138,5 +138,4 @@ RT_NOCRT_BEGINPROC exp
 %endif
         jmp     .return
 ENDPROC   RT_NOCRT(exp)
-
 
