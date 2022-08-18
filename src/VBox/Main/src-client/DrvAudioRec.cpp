@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 96262 2022-08-17 12:16:13Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 96284 2022-08-18 07:11:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -600,7 +600,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface
 
             if (cbSrc == cbFrame) /* Only send full codec frames. */
             {
-                vrc = pRecStream->SendAudioFrame(pStreamAV->pvSrcBuf, cbSrc, 0);
+                vrc = pRecStream->SendAudioFrame(pStreamAV->pvSrcBuf, cbSrc, RTTimeProgramMilliTS());
                 if (RT_FAILURE(vrc))
                     break;
             }
