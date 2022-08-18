@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96271 2022-08-17 16:48:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96279 2022-08-18 00:07:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1936,6 +1936,8 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/ldexpf.asm \
   	common/math/log.asm \
   	common/math/logf.asm \
+  	common/math/log2.asm \
+  	common/math/log2f.asm \
   	common/math/llrint.asm \
   	common/math/llrintf.asm \
   	common/math/lrint.asm \
@@ -2007,6 +2009,8 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/math/ldexpf.asm \
   	common/math/log.asm \
   	common/math/logf.asm \
+  	common/math/log2.asm \
+  	common/math/log2f.asm \
   	common/math/llrint.asm \
   	common/math/llrintf.asm \
   	common/math/lrint.asm \
