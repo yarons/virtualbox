@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 96237 2022-08-16 20:54:19Z klaus.espenlaub@oracle.com $ -->
+<!-- $Id: capiidl.xsl 96308 2022-08-18 19:00:04Z klaus.espenlaub@oracle.com $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
  *  provided or needed for calling the VirtualBox API. The header file also
  *  works on Windows, by using the C bindings header created by the MS COM IDL
  *  compiler (which simultaneously supports C and C++, unlike XPCOM).
-
+-->
+<!--
     Copyright (C) 2008-2022 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as

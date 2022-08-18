@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl_iid.xsl 82969 2020-02-04 10:54:12Z knut.osmundsen@oracle.com $ -->
+<!-- $Id: xpidl_iid.xsl 96308 2022-08-18 19:00:04Z klaus.espenlaub@oracle.com $ -->
 
 <!--
  *  A template to generate a header file containing IIDs for XPCOM
  *  from the generic interface definition expressed in XML.
+-->
 
+<!--
     Copyright (C) 2006-2020 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as
