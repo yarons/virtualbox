@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     manpage, user manual, usage: VBoxManage updatecheck
-
+-->
+<!--
     Copyright (C) 2020 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as
@@ -11,7 +12,7 @@
     Foundation, in version 2 as it comes in the "COPYING" file of the
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- -->
+-->
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
 <!ENTITY % all.entities SYSTEM "all-entities.ent">
@@ -20,7 +21,7 @@
 <refentry id="vboxmanage-updatecheck" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2022-04-20 11:08:37 +0200 (Wed, 20 Apr 2022) $</pubdate>
+    <pubdate>$Date: 2022-08-18 19:27:14 +0200 (Thu, 18 Aug 2022) $</pubdate>
     <title>VBoxManage updatecheck</title>
   </refentryinfo>
 

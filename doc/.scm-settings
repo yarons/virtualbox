@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 96300 2022-08-18 17:27:14Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the docs.
 #
@@ -33,9 +33,3 @@
 /*.graphml:                     --treat-as xml --external-copyright --no-convert-eol
 
 /*.iuml:                 --treat-as plaintext --add-action copyright-tick-style
-/Changelog.2*:           --treat-as plaintext
-
---filter-out-files /Qt/qt4.darwin.patch
-
-# Not UTF-8:
-/Devices/ACPI/devids.txt: --skip-unicode-checks
