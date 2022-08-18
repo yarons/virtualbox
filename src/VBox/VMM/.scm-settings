@@ -1,4 +1,4 @@
-# $Id: .scm-settings 93862 2022-02-20 13:47:55Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 96312 2022-08-18 19:13:38Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -21,6 +21,7 @@
 --filter-out-files /testcase/dev.tar.gz
 
 /include/PGMGstDefs.h: --no-fix-header-guards
+/include/PGMSlatDefs.h: --no-fix-header-guards
 /VMMR0/PGMR0Bth.h: --no-fix-header-guards
 /VMMR3/PGMPhysRWTmpl.h: --no-fix-header-guards
 /VMMRC/PGMRCBth.h: --no-fix-header-guards
