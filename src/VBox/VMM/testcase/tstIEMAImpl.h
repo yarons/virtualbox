@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 96287 2022-08-18 08:11:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 96290 2022-08-18 09:17:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -347,18 +347,18 @@ typedef struct SSE_BINARY_R32_TEST_T
 {
     uint32_t                fMxcsrIn;
     uint32_t                fMxcsrOut;
-    RTFLOAT32U              InVal1;
-    RTFLOAT32U              InVal2;
-    RTFLOAT32U              OutVal;
+    RTFLOAT32U              aInVal1[4];
+    RTFLOAT32U              aInVal2[4];
+    RTFLOAT32U              aOutVal[4];
 } SSE_BINARY_R32_TEST_T;
 
 typedef struct SSE_BINARY_R64_TEST_T
 {
     uint32_t                fMxcsrIn;
     uint32_t                fMxcsrOut;
-    RTFLOAT64U              InVal1;
-    RTFLOAT64U              InVal2;
-    RTFLOAT64U              OutVal;
+    RTFLOAT64U              aInVal1[2];
+    RTFLOAT64U              aInVal2[2];
+    RTFLOAT64U              aOutVal[2];
 } SSE_BINARY_R64_TEST_T;
 
 /** @} */
