@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 96288 2022-08-18 08:18:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* This code makes use of the Vorbis (libvorbis):
+/* This code makes use of Vorbis (libvorbis):
  *
  * Copyright (c) 2002-2020 Xiph.org Foundation
  *
