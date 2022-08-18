@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 96143 2022-08-11 16:17:08Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1601,9 +1601,6 @@ HRESULT SystemProperties::getSupportedRecordingAudioCodecs(std::vector<Recording
 #ifdef DEBUG
         RecordingAudioCodec_WavPCM,
 #endif
-#ifdef VBOX_WITH_LIBOPUS
-        RecordingAudioCodec_Opus,
-#endif
 #ifdef VBOX_WITH_LIBVORBIS
         RecordingAudioCodec_OggVorbis,
 #endif
@@ -2397,4 +2394,3 @@ HRESULT SystemProperties::setLanguageId(const com::Utf8Str &aLanguageId)
     return E_NOTIMPL;
 #endif
 }
-

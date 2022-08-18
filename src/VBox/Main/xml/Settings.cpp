@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3025,11 +3025,8 @@ void RecordingScreenSettings::applyDefaults(void)
     Video.ulRate         = 512;
     Video.ulFPS          = 25;
 #ifdef VBOX_WITH_AUDIO_RECORDING
-    /* When both codecs are defined, prefer Ogg Vorbis as a default. */
 # if   defined(VBOX_WITH_LIBVORBIS)
     Audio.enmCodec       = RecordingAudioCodec_OggVorbis;
-# elif defined(VBOX_WITH_LIBOPUS)
-    Audio.enmCodec       = RecordingAudioCodec_Opus;
 # else
     Audio.enmCodec       = RecordingAudioCodec_None;
 # endif
@@ -3072,11 +3069,8 @@ bool RecordingScreenSettings::areDefaultSettings(void) const
            && Video.ulRate                                    == 512
            && Video.ulFPS                                     == 25
 #ifdef VBOX_WITH_AUDIO_RECORDING
-/* When both codecs are defined, prefer Ogg Vorbis as a default. */
 # if   defined(VBOX_WITH_LIBVORBIS)
            && Audio.enmCodec                                  == RecordingAudioCodec_OggVorbis
-# elif defined(VBOX_WITH_LIBOPUS)
-           && Audio.enmCodec                                  == RecordingAudioCodec_Opus
 # else
            && Audio.enmCodec                                  == RecordingAudioCodec_None
 # endif

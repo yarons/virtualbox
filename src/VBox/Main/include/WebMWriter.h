@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 96230 2022-08-16 15:44:23Z andreas.loeffler@oracle.com $ */
+/* $Id: WebMWriter.h 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -64,40 +64,6 @@
 /** Maximum time a block can store.
  *  With signed 16-bit timecodes and a default timecode scale of 1ms per unit this makes 65536ms. */
 #define VBOX_WEBM_BLOCK_MAX_LEN_MS          UINT16_MAX
-
-#ifdef VBOX_WITH_LIBOPUS
-# pragma pack(push)
-# pragma pack(1)
-    /** Opus codec private data within the MKV (WEBM) container.
-     *  Taken from: https://wiki.xiph.org/MatroskaOpus */
-    typedef struct WEBMOPUSPRIVDATA
-    {
-        WEBMOPUSPRIVDATA(uint32_t a_u32SampleRate, uint8_t a_u8Channels)
-        {
-            au64Head        = RT_MAKE_U64_FROM_U8('O', 'p', 'u', 's', 'H', 'e', 'a', 'd');
-            u8Version       = 1;
-            u8Channels      = a_u8Channels;
-            u16PreSkip      = 0;
-            u32SampleRate   = a_u32SampleRate;
-            u16Gain         = 0;
-            u8MappingFamily = 0;
-        }
-
-        uint64_t au64Head;          /**< Defaults to "OpusHead". */
-        uint8_t  u8Version;         /**< Must be set to 1. */
-        uint8_t  u8Channels;
-        uint16_t u16PreSkip;
-        /** Sample rate *before* encoding to Opus.
-         *  Note: This rate has nothing to do with the playback rate later! */
-        uint32_t u32SampleRate;
-        uint16_t u16Gain;
-        /** Must stay 0 -- otherwise a mapping table must be appended
-         *  right after this header. */
-        uint8_t  u8MappingFamily;
-    } WEBMOPUSPRIVDATA, *PWEBMOPUSPRIVDATA;
-    AssertCompileSize(WEBMOPUSPRIVDATA, 19);
-# pragma pack(pop)
-#endif /* VBOX_WITH_LIBOPUS */
 
 #ifdef VBOX_WITH_LIBVORBIS
 # pragma pack(push)

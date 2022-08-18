@@ -370,20 +370,6 @@
 
       <listitem>
         <para>
-          &product-name; may contain code from libopus ("Opus") which is
-          governed by the license in
-          <xref linkend="licOpus" xrefstyle="template: %n" /> and
-        </para>
-
-        <para>
-          Copyright 2001-2011 Xiph.Org, Skype Limited, Octasic,
-          Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory
-          Maxwell, Mark Borgerding, Erik de Castro Lopo
-        </para>
-      </listitem>
-
-      <listitem>
-        <para>
           &product-name; contains code from cURL which is governed by the
           license in
           <xref linkend="licCurl" xrefstyle="template: %n" /> and
@@ -4994,7 +4980,7 @@ jloup@gzip.org          madler@alumni.caltech.edu</screen>
       </para>
 
       <para>
-        $Id: user_ThirdParty.xml 95876 2022-07-27 08:37:27Z alexander.eichner@oracle.com $
+        $Id: user_ThirdParty.xml 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $
       </para>
 
       <para>

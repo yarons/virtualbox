@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96208 2022-08-15 08:30:12Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -841,10 +841,6 @@ VBOX_WITH_AUDIO_RECORDING = 1
 if defined(VBOX_WITH_AUDIO_RECORDING) && !defined(VBOX_WITH_RECORDING)
  $(error Audio recording (VBOX_WITH_AUDIO_RECORDING) needs the general recording feature (VBOX_WITH_RECORDING) enabled)
 endif
-# Enables libopus (Opus), required for encoding audio into the recorded data.
-VBOX_WITH_LIBOPUS =
-# Enable SEE (+ AVX) optimizations for Opus.
-VBOX_WITH_OPUS_SSE =
 # Enables libvorbis (Ogg Vorbis), required for encoding audio into the recorded data.
 VBOX_WITH_LIBVORBIS = 1
 # Enables libogg (Ogg file format). Required for building libvorbis above.
@@ -1456,7 +1452,6 @@ ifdef VBOX_OSE
  if1of ($(KBUILD_TARGET), win)
   # Undefine codec libraries which are not needed.
   VBOX_WITH_LIBVPX=
-  VBOX_WITH_LIBOPUS=
   VBOX_WITH_LIBVORBIS=
   VBOX_WITH_LIBOGG=
   # Disable recording (with audio support).
@@ -4836,13 +4831,6 @@ SDK_VBOX_OPENSSL2              := This is what you should be using!  It links ag
 SDK_VBOX_OPENSSL2_EXTENDS      := VBOX_OPENSSL
 if "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)"
  SDK_VBOX_OPENSSL2_LIBS         = $(NO_SUCH_VARIABLE)
-endif
-
-ifdef VBOX_WITH_LIBOPUS
- SDK_VBOX_OPUS                 := libopus for dll linking.
- SDK_VBOX_OPUS_DEFAULT_INCS    := $(PATH_ROOT)/src/libs/libopus-1.3.1/include
- SDK_VBOX_OPUS_INCS            ?= $(SDK_VBOX_OPUS_DEFAULT_INCS)
- SDK_VBOX_OPUS_LIBS            ?= $(PATH_STAGE_LIB)/VBox-libopus$(VBOX_SUFF_LIB)
 endif
 
 ifdef VBOX_WITH_LIBOGG
@@ -9009,7 +8997,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96208 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96285 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

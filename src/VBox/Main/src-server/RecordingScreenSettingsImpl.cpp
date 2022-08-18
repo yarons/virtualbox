@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.cpp 96175 2022-08-12 14:01:17Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingScreenSettingsImpl.cpp 96285 2022-08-18 08:01:23Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Recording settings of one virtual screen.
@@ -582,7 +582,7 @@ HRESULT RecordingScreenSettings::setAudioCodec(RecordingAudioCodec_T aCodec)
     if (!m->pParent->i_canChangeSettings())
         return setError(E_INVALIDARG, tr("Cannot change audio codec while recording is enabled"));
 
-    if (aCodec != RecordingAudioCodec_Opus)
+    if (aCodec != RecordingAudioCodec_OggVorbis)
         return setError(E_INVALIDARG, tr("Audio codec not supported"));
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -1231,4 +1231,3 @@ int32_t RecordingScreenSettings::i_getReferences(void)
 {
     return ASMAtomicReadS32(&m->cRefs);
 }
-
