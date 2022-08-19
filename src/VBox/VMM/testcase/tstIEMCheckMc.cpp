@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 96349 2022-08-19 17:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 96351 2022-08-19 17:10:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -484,6 +484,8 @@ IEMOPUNARYSIZES g_iemAImpl_not;
 #define iemAImpl_minsd_u128_r64         NULL
 #define iemAImpl_divss_u128_r32         NULL
 #define iemAImpl_divsd_u128_r64         NULL
+#define iemAImpl_maxss_u128_r32         NULL
+#define iemAImpl_maxsd_u128_r64         NULL
 
 /** @}  */
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96349 2022-08-19 17:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96351 2022-08-19 17:10:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -14664,6 +14664,20 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_maxps_u128,(PX86FXSTATE pFpuState, PIEMSSERESUL
 
 
 /**
+ * MAXSS
+ */
+#ifdef IEM_WITHOUT_ASSEMBLY
+IEM_DECL_IMPL_DEF(void, iemAImpl_maxss_u128_r32,(PX86FXSTATE pFpuState, PIEMSSERESULT pResult, PCX86XMMREG puSrc1, PCRTFLOAT32U pr32Src2))
+{
+    pResult->MXCSR = iemAImpl_maxps_u128_worker(&pResult->uResult.ar32[0], pFpuState->MXCSR, &puSrc1->ar32[0], pr32Src2);
+    pResult->uResult.ar32[1] = puSrc1->ar32[1];
+    pResult->uResult.ar32[2] = puSrc1->ar32[2];
+    pResult->uResult.ar32[3] = puSrc1->ar32[3];
+}
+#endif
+
+
+/**
  * MAXPD
  */
 #ifdef IEM_WITHOUT_ASSEMBLY
@@ -14698,5 +14712,16 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_maxpd_u128,(PX86FXSTATE pFpuState, PIEMSSERESUL
 {
     pResult->MXCSR  = iemAImpl_maxpd_u128_worker(&pResult->uResult.ar64[0], pFpuState->MXCSR, &puSrc1->ar64[0], &puSrc2->ar64[0]);
     pResult->MXCSR |= iemAImpl_maxpd_u128_worker(&pResult->uResult.ar64[1], pFpuState->MXCSR, &puSrc1->ar64[1], &puSrc2->ar64[1]);
+}
+#endif
+
+/**
+ * MAXSD
+ */
+#ifdef IEM_WITHOUT_ASSEMBLY
+IEM_DECL_IMPL_DEF(void, iemAImpl_maxsd_u128_r64,(PX86FXSTATE pFpuState, PIEMSSERESULT pResult, PCX86XMMREG puSrc1, PCRTFLOAT64U pr64Src2))
+{
+    pResult->MXCSR = iemAImpl_maxpd_u128_worker(&pResult->uResult.ar64[0], pFpuState->MXCSR, &puSrc1->ar64[0], pr64Src2);
+    pResult->uResult.ar64[1] = puSrc1->ar64[1];
 }
 #endif
