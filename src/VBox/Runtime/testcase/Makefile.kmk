@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96337 2022-08-19 14:49:44Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96338 2022-08-19 15:07:12Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -681,6 +681,7 @@ tstRTNoCrt-2_SOURCES += \
 	../common/math/lrint.asm \
 	../common/math/lrintf.asm \
 	../common/math/pow.asm \
+	../common/math/powf.asm \
 	../common/math/powcore.asm \
 	../common/math/remainder.asm \
 	../common/math/remainderf.asm \
