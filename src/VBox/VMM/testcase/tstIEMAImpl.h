@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 96327 2022-08-19 09:14:09Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 96330 2022-08-19 09:44:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -370,8 +370,8 @@ typedef struct SSE_BINARY_TEST_T
     extern uint32_t const RT_CONCAT(g_cTests_, a_Instr)
 
 #define TSTIEM_DECLARE_TEST_ARRAY_BIN(a_szFile, a_Type, a_Instr) \
-    extern a_Type   const RT_CONCAT(g_aTests_, a_Instr)[]; \
-    extern uint32_t const RT_CONCAT(g_cbTests_, a_Instr)
+    extern RTDATADECL(a_Type)   const RT_CONCAT(g_aTests_, a_Instr)[]; \
+    extern RTDATADECL(uint32_t) const RT_CONCAT(g_cbTests_, a_Instr)
 
 TSTIEM_DECLARE_TEST_ARRAY(Int,              BINU8_TEST_T,               add_u8                   );
 TSTIEM_DECLARE_TEST_ARRAY(Int,              BINU8_TEST_T,               add_u8_locked            );
