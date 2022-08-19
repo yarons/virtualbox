@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 96350 2022-08-19 17:05:35Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 96352 2022-08-19 17:10:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -762,6 +762,7 @@ TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, mulss_u1
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, subss_u128_r32           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, minss_u128_r32           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, divss_u128_r32           );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, maxss_u128_r32           );
 
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          addpd_u128               );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          mulpd_u128               );
@@ -775,6 +776,7 @@ TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R64_TEST_T, mulsd_u1
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R64_TEST_T, subsd_u128_r64           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R64_TEST_T, minsd_u128_r64           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R64_TEST_T, divsd_u128_r64           );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R64_TEST_T, maxsd_u128_r64           );
 
 RT_C_DECLS_END
 
