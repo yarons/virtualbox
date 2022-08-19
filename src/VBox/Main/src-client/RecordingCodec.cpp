@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 96288 2022-08-18 08:18:14Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -851,6 +851,17 @@ int recordingCodecFinalize(PRECORDINGCODEC pCodec)
 }
 
 /**
+ * Returns whether the codec has been initialized or not.
+ *
+ * @returns \c true if initialized, or \c false if not.
+ * @param   pCodec              Codec to return initialization status for.
+ */
+bool recordingCodecIsInitialized(const PRECORDINGCODEC pCodec)
+{
+    return pCodec->Ops.pfnInit != NULL; /* pfnInit acts as a beacon for initialization status. */
+}
+
+/**
  * Returns the number of writable bytes for a given timestamp.
  *
  * This basically is a helper function to respect the set frames per second (FPS).
@@ -859,7 +870,7 @@ int recordingCodecFinalize(PRECORDINGCODEC pCodec)
  * @param   pCodec              Codec to return number of writable bytes for.
  * @param   msTimestamp         Timestamp (PTS, in ms) return number of writable bytes for.
  */
-uint32_t recordingCodecGetWritable(PRECORDINGCODEC pCodec, uint64_t msTimestamp)
+uint32_t recordingCodecGetWritable(const PRECORDINGCODEC pCodec, uint64_t msTimestamp)
 {
     Log3Func(("%RU64 -- tsLastWrittenMs=%RU64 + uDelayMs=%RU32\n",
               msTimestamp, pCodec->State.tsLastWrittenMs,pCodec->Parms.Video.uDelayMs));

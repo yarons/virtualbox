@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 96284 2022-08-18 07:11:55Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -809,6 +809,40 @@ bool RecordingContext::IsLimitReached(uint32_t uScreen, uint64_t msTimestamp)
     unlock();
 
     return fLimitReached;
+}
+
+/**
+ * Returns if a specific screen needs to be fed with an update or not.
+ *
+ * @returns @c true if an update is needed, @c false if not.
+ * @param   uScreen             Screen ID to retrieve update stats for.
+ * @param   msTimestamp         Timestamp (PTS, in ms).
+ */
+bool RecordingContext::NeedsUpdate( uint32_t uScreen, uint64_t msTimestamp)
+{
+    lock();
+
+    bool fNeedsUpdate = false;
+
+    if (this->enmState == RECORDINGSTS_STARTED)
+    {
+        if (   recordingCodecIsInitialized(&CodecAudio)
+            && recordingCodecGetWritable(&CodecAudio, msTimestamp) > 0)
+        {
+            fNeedsUpdate = true;
+        }
+
+        if (!fNeedsUpdate)
+        {
+            const RecordingStream *pStream = getStreamInternal(uScreen);
+            if (pStream)
+                fNeedsUpdate = pStream->NeedsUpdate(msTimestamp);
+        }
+    }
+
+    unlock();
+
+    return fNeedsUpdate;
 }
 
 DECLCALLBACK(int) RecordingContext::OnLimitReached(uint32_t uScreen, int rc)

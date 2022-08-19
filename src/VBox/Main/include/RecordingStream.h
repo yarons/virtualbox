@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 96260 2022-08-17 12:02:46Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.h 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code header.
  */
@@ -129,8 +129,10 @@ public:
     PRECORDINGCODEC GetAudioCodec(void) { return this->pCodecAudio; };
 #endif
     PRECORDINGCODEC GetVideoCodec(void) { return &this->CodecVideo; };
+
     bool IsLimitReached(uint64_t msTimestamp) const;
     bool IsReady(void) const;
+    bool NeedsUpdate(uint64_t msTimestamp) const;
 
 public:
 

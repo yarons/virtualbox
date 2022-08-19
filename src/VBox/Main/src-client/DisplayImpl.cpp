@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 94916 2022-05-08 19:36:14Z alexander.eichner@oracle.com $ */
+/* $Id: DisplayImpl.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2993,6 +2993,9 @@ DECLCALLBACK(void) Display::i_displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInter
             for (uScreenId = 0; uScreenId < pDisplay->mcMonitors; uScreenId++)
             {
                 if (!pDisplay->maRecordingEnabled[uScreenId])
+                    continue;
+
+                if (!pCtx->NeedsUpdate(uScreenId, tsNowMs))
                     continue;
 
                 DISPLAYFBINFO *pFBInfo = &pDisplay->maFramebuffers[uScreenId];
