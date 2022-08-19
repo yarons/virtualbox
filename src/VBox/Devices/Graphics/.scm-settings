@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96355 2022-08-19 17:59:41Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 96356 2022-08-19 18:49:45Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for graphics.
 #
@@ -64,6 +64,7 @@
 /shaderlib/winoverride.h:                --no-external-copyright --no-lgpl-disclaimer --convert-tabs --fix-todos --strip-trailing-blanks
 
 /shaders/*.h: --external-copyright --no-fix-header-guards --dont-set-svn-keywords --no-strip-trailing-blanks
+/shaders/*.hlsl: --treat-as .cpp
 
 --filter-out-dirs  "/svgadump/."
 
