@@ -1,4 +1,4 @@
-; $Id: tstIEMAImplDataSseBinary.asm 96328 2022-08-19 09:17:06Z alexander.eichner@oracle.com $
+; $Id: tstIEMAImplDataSseBinary.asm 96332 2022-08-19 10:32:53Z alexander.eichner@oracle.com $
 ;; @file
 ; tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
 ;
@@ -50,7 +50,9 @@ type g_cbTests_ %+ %1 object
 IEM_TEST_DATA addps_u128, "tstIEMAImplDataSseBinary-addps_u128.bin"
 IEM_TEST_DATA mulps_u128, "tstIEMAImplDataSseBinary-mulps_u128.bin"
 IEM_TEST_DATA subps_u128, "tstIEMAImplDataSseBinary-subps_u128.bin"
+IEM_TEST_DATA minps_u128, "tstIEMAImplDataSseBinary-minps_u128.bin"
 
 IEM_TEST_DATA addpd_u128, "tstIEMAImplDataSseBinary-addpd_u128.bin"
 IEM_TEST_DATA mulpd_u128, "tstIEMAImplDataSseBinary-mulpd_u128.bin"
 IEM_TEST_DATA subpd_u128, "tstIEMAImplDataSseBinary-subpd_u128.bin"
+IEM_TEST_DATA minpd_u128, "tstIEMAImplDataSseBinary-minpd_u128.bin"
