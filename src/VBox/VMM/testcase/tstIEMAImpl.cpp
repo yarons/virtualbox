@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96348 2022-08-19 17:00:45Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96350 2022-08-19 17:05:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -831,14 +831,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96348 $";
+    static char s_szRev[] = "$Revision: 96350 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96348 2022-08-19 17:00:45Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96350 2022-08-19 17:05:35Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -4850,6 +4850,7 @@ static const SSE_BINARY_U128_R32_T g_aSseBinaryU128R32[] =
     ENTRY_BIN(mulss_u128_r32),
     ENTRY_BIN(subss_u128_r32),
     ENTRY_BIN(minss_u128_r32),
+    ENTRY_BIN(divss_u128_r32),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -5037,6 +5038,7 @@ static const SSE_BINARY_U128_R64_T g_aSseBinaryU128R64[] =
     ENTRY_BIN(mulsd_u128_r64),
     ENTRY_BIN(subsd_u128_r64),
     ENTRY_BIN(minsd_u128_r64),
+    ENTRY_BIN(divsd_u128_r64),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
