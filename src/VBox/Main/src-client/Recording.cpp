@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: Recording.cpp 96323 2022-08-19 07:48:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording context code.
  *
@@ -681,7 +681,7 @@ int RecordingContext::Stop(void)
  * Returns if a specific recoding feature is enabled for at least one of the attached
  * recording streams or not.
  *
- * @returns \c true if at least one recording stream has this feature enabled, or \c false if
+ * @returns @c true if at least one recording stream has this feature enabled, or @c false if
  *          no recording stream has this feature enabled.
  * @param   enmFeature          Recording feature to check for.
  */

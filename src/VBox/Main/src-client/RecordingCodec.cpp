@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingCodec.cpp 96323 2022-08-19 07:48:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -853,7 +853,7 @@ int recordingCodecFinalize(PRECORDINGCODEC pCodec)
 /**
  * Returns whether the codec has been initialized or not.
  *
- * @returns \c true if initialized, or \c false if not.
+ * @returns @c true if initialized, or @c false if not.
  * @param   pCodec              Codec to return initialization status for.
  */
 bool recordingCodecIsInitialized(const PRECORDINGCODEC pCodec)
