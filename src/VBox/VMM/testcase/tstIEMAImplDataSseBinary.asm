@@ -1,4 +1,4 @@
-; $Id: tstIEMAImplDataSseBinary.asm 96334 2022-08-19 11:37:29Z alexander.eichner@oracle.com $
+; $Id: tstIEMAImplDataSseBinary.asm 96336 2022-08-19 12:07:54Z alexander.eichner@oracle.com $
 ;; @file
 ; tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
 ;
@@ -52,9 +52,11 @@ IEM_TEST_DATA mulps_u128, "tstIEMAImplDataSseBinary-mulps_u128.bin"
 IEM_TEST_DATA subps_u128, "tstIEMAImplDataSseBinary-subps_u128.bin"
 IEM_TEST_DATA minps_u128, "tstIEMAImplDataSseBinary-minps_u128.bin"
 IEM_TEST_DATA divps_u128, "tstIEMAImplDataSseBinary-divps_u128.bin"
+IEM_TEST_DATA maxps_u128, "tstIEMAImplDataSseBinary-maxps_u128.bin"
 
 IEM_TEST_DATA addpd_u128, "tstIEMAImplDataSseBinary-addpd_u128.bin"
 IEM_TEST_DATA mulpd_u128, "tstIEMAImplDataSseBinary-mulpd_u128.bin"
 IEM_TEST_DATA subpd_u128, "tstIEMAImplDataSseBinary-subpd_u128.bin"
 IEM_TEST_DATA minpd_u128, "tstIEMAImplDataSseBinary-minpd_u128.bin"
 IEM_TEST_DATA divpd_u128, "tstIEMAImplDataSseBinary-divpd_u128.bin"
+IEM_TEST_DATA maxpd_u128, "tstIEMAImplDataSseBinary-maxpd_u128.bin"
