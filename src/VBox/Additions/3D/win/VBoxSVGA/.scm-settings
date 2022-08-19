@@ -1,6 +1,6 @@
-# $Id: .scm-settings 95265 2022-06-13 17:54:13Z vitali.pelenjow@oracle.com $
+# $Id: .scm-settings 96353 2022-08-19 17:26:36Z klaus.espenlaub@oracle.com $
 ## @file
-# Source code massager settings for VBoxDTrace.
+# Source code massager settings for VBoxSVGA.
 #
 
 #
@@ -15,5 +15,4 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-
---filter-out-dirs  "*/winsys/."
+/winsys/*.c:    --no-convert-tabs --no-strip-trailing-blanks
