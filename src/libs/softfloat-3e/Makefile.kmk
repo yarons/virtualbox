@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96146 2022-08-11 23:45:01Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96364 2022-08-19 22:07:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for SoftFloat-3e.
 #
@@ -380,6 +380,14 @@ VBox-SoftFloatGuestR3Shared_CFLAGS.win  := $(VBox-SoftFloat_CFLAGS.win) -wd4245 
  ifn1of ($(KBUILD_TARGET),win)
 VBox-SoftFloatGuestR3Shared_CFLAGS      := $(VBox-SoftFloat_CFLAGS) -Wno-sign-compare
  endif
+
+#
+# And a x86 version of that again for amd64 targets.
+#
+LIBRARIES.win.amd64 += VBox-SoftFloatGuestR3Shared-x86
+VBox-SoftFloatGuestR3Shared-x86_TEMPLATE     := NewerVccVBoxGuestR3Dll
+VBox-SoftFloatGuestR3Shared-x86_EXTENDS      := VBox-SoftFloatGuestR3Shared
+VBox-SoftFloatGuestR3Shared-x86_BLD_TRG_ARCH := x86
 endif # VBOX_WITH_NOCRT_STATIC
 
 
