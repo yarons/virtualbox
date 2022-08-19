@@ -1,4 +1,4 @@
-/* $Id: new-delete-generic.cpp 95860 2022-07-27 00:54:16Z knut.osmundsen@oracle.com $ */
+/* $Id: new-delete-generic.cpp 96345 2022-08-19 16:50:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -34,10 +34,6 @@
 #include <iprt/mem.h>
 
 
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
-/** @todo test this on MSC */
 
 void *RT_NEW_DELETE_CDECL operator new(RT_NEW_DELETE_SIZE_T cb) RT_NEW_DELETE_THROWS_BAD_ALLOC
 {
@@ -53,6 +49,13 @@ void *RT_NEW_DELETE_CDECL operator new(RT_NEW_DELETE_SIZE_T cb) RT_NEW_DELETE_TH
 void *RT_NEW_DELETE_CDECL operator new(RT_NEW_DELETE_SIZE_T cb, const std::nothrow_t &) RT_NEW_DELETE_NOTHROW
 {
     return RTMemAlloc(cb);
+}
+
+
+void *RT_NEW_DELETE_CDECL operator new(RT_NEW_DELETE_SIZE_T cb, void *pvPlacement) RT_NEW_DELETE_NOTHROW
+{
+    RT_NOREF(cb);
+    return pvPlacement;
 }
 
 
@@ -100,6 +103,13 @@ void *RT_NEW_DELETE_CDECL operator new[](RT_NEW_DELETE_SIZE_T cb) RT_NEW_DELETE_
 void *RT_NEW_DELETE_CDECL operator new[](RT_NEW_DELETE_SIZE_T cb, const std::nothrow_t &) RT_NEW_DELETE_NOTHROW
 {
     return RTMemAlloc(cb);
+}
+
+
+void *RT_NEW_DELETE_CDECL operator new[](RT_NEW_DELETE_SIZE_T cb, void *pvPlacement) RT_NEW_DELETE_NOTHROW
+{
+    RT_NOREF(cb);
+    return pvPlacement;
 }
 
 
