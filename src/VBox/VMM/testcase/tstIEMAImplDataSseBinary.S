@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImplDataSseBinary.S 96380 2022-08-20 19:25:42Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImplDataSseBinary.S 96381 2022-08-20 19:29:24Z alexander.eichner@oracle.com $ */
 /** @file
  * tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
  */
@@ -38,7 +38,7 @@ NAME(g_aTests_end_\a_Instr):
     .size   NAME(g_aTests_\a_Instr), . - NAME(g_aTests_\a_Instr)
     .type   NAME(g_aTests_\a_Instr), object
 #endif
-    
+
     .p2align 2
     .globl  NAME(g_cbTests_\a_Instr)
 NAME(g_cbTests_\a_Instr):
