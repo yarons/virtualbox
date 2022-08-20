@@ -1,4 +1,4 @@
-; $Id: nocrt-atexit-win.asm 96073 2022-08-06 00:20:33Z knut.osmundsen@oracle.com $
+; $Id: nocrt-atexit-win.asm 96369 2022-08-20 02:28:01Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Alias atexit to rtnocrt_atexit in nocrt-startup-exe-win.cpp.
 ;
@@ -27,8 +27,8 @@
 
 %include "iprt/asmdefs.mac"
 
-extern  nocrt_atexit
+extern  NAME(nocrt_atexit)
 BEGINPROC atexit
-        jmp     nocrt_atexit
+        jmp     NAME(nocrt_atexit)
 ENDPROC   atexit
 
