@@ -1,4 +1,4 @@
-/* $Id: purecall-vcc.cpp 95915 2022-07-28 14:28:38Z knut.osmundsen@oracle.com $ */
+/* $Id: purecall-vcc.cpp 96388 2022-08-20 23:08:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Pure virtual method vtable filler.
  */
@@ -28,17 +28,25 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include "internal/iprt.h"
+#include "internal/nocrt.h"
 
 #include <iprt/asm.h>
-#include <iprt/assert.h>
+#ifndef IPRT_NOCRT_WITHOUT_FATAL_WRITE
+# include <iprt/assert.h>
+#endif
 
 #include "internal/compiler-vcc.h"
 
 
 extern "C" int __cdecl _purecall(void)
 {
+#ifdef IPRT_NOCRT_WITHOUT_FATAL_WRITE
     RTAssertMsg2("\n\n!!%p called _purecall!!\n\n", ASMReturnAddress());
+#else
+    rtNoCrtFatalWriteBegin(RT_STR_TUPLE("\r\n\r\n!!_purecall called from "));
+    rtNoCrtFatalWritePtr(ASMReturnAddress());
+    rtNoCrtFatalWriteEnd(RT_STR_TUPLE("!!\r\n\r\n"));
+#endif
     RT_BREAKPOINT();
     return 0;
 }
