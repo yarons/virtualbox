@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96365 2022-08-19 22:08:58Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 96386 2022-08-20 23:05:46Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8423,11 +8423,24 @@ TEMPLATE_VBOXGUESTR3EXE_LDFLAGS.linux      += $(VBOX_LD_hash_style_sysv)
 #
 TEMPLATE_NewVBoxGuestR3Exe = VBox Guest Program w/ IPRT and VBGL.
 TEMPLATE_NewVBoxGuestR3Exe_EXTENDS  = VBOXGUESTR3EXE
-TEMPLATE_NewVBoxGuestR3Exe_LIBS     = \
+if1of ($(KBUILD_TARGET),win)
+ TEMPLATE_NewVBoxGuestR3Exe_LIBS.x86 = \
+	$(VBOX_LIB_IPRT_GUEST_R3_X86) \
+	$(VBOX_LIB_VBGL_R3_X86) \
+	$(VBOX_LIB_IPRT_GUEST_R3_X86) \
+	$(TEMPLATE_VBOXGUESTR3EXE_LIBS.x86)
+ TEMPLATE_NewVBoxGuestR3Exe_LIBS.$(KBUILD_TARGET_ARCH) = \
+	$(VBOX_LIB_IPRT_GUEST_R3) \
+	$(VBOX_LIB_VBGL_R3) \
+	$(VBOX_LIB_IPRT_GUEST_R3) \
+	$(TEMPLATE_VBOXGUESTR3EXE_LIBS.$(KBUILD_TARGET_ARCH))
+else
+ TEMPLATE_NewVBoxGuestR3Exe_LIBS     = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3) \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(TEMPLATE_VBOXGUESTR3EXE_LIBS)
+endif
 ifeq ($(KBUILD_TARGET),solaris)
 TEMPLATE_NewVBoxGuestR3Exe_LIBS += contract
 endif
@@ -9000,7 +9013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96365 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96386 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
