@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96383 2022-08-20 19:52:26Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96385 2022-08-20 20:54:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -831,14 +831,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96383 $";
+    static char s_szRev[] = "$Revision: 96385 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96383 2022-08-20 19:52:26Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96385 2022-08-20 20:54:09Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -4477,6 +4477,7 @@ static const SSE_BINARY_R32_T g_aSseBinaryR32[] =
     ENTRY_BIN(maxps_u128),
     ENTRY_BIN(haddps_u128),
     ENTRY_BIN(hsubps_u128),
+    ENTRY_BIN(sqrtps_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -4673,6 +4674,7 @@ static const SSE_BINARY_R64_T g_aSseBinaryR64[] =
     ENTRY_BIN(maxpd_u128),
     ENTRY_BIN(haddpd_u128),
     ENTRY_BIN(hsubpd_u128),
+    ENTRY_BIN(sqrtpd_u128),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -4857,6 +4859,7 @@ static const SSE_BINARY_U128_R32_T g_aSseBinaryU128R32[] =
     ENTRY_BIN(divss_u128_r32),
     ENTRY_BIN(maxss_u128_r32),
     ENTRY_BIN(cvtss2sd_u128_r32),
+    ENTRY_BIN(sqrtss_u128_r32),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -5047,6 +5050,7 @@ static const SSE_BINARY_U128_R64_T g_aSseBinaryU128R64[] =
     ENTRY_BIN(divsd_u128_r64),
     ENTRY_BIN(maxsd_u128_r64),
     ENTRY_BIN(cvtsd2ss_u128_r64),
+    ENTRY_BIN(sqrtsd_u128_r64),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
