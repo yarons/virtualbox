@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 95742 2022-07-20 09:31:39Z andreas.loeffler@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 96376 2022-08-20 08:33:58Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3949,7 +3949,8 @@ static void vmsvgaR3FifoHandleExtCmd(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGAST
             {
                 /* The 3d subsystem must be shut down from the fifo thread. */
                 PVMSVGAR3STATE pSVGAState = pThisCC->svga.pSvgaR3State;
-                pSVGAState->pFuncs3D->pfnTerminate(pThisCC);
+                if (pSVGAState->pFuncs3D && pSVGAState->pFuncs3D->pfnTerminate)
+                    pSVGAState->pFuncs3D->pfnTerminate(pThisCC);
             }
 # endif
             break;

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 95782 2022-07-21 19:27:58Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 96376 2022-08-20 08:33:58Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5845,6 +5845,22 @@ static void vboxDXMatchShaderSignatures(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT 
 }
 
 
+static void vboxDXUpdateVSInputSignature(PVMSVGA3DDXCONTEXT pDXContext, DXSHADER *pDXShader)
+{
+    SVGA3dElementLayoutId const elementLayoutId = pDXContext->svgaDXContext.inputAssembly.layoutId;
+    if (elementLayoutId != SVGA3D_INVALID_ID)
+    {
+        SVGACOTableDXElementLayoutEntry const *pElementLayout = &pDXContext->cot.paElementLayout[elementLayoutId];
+        for (uint32_t i = 0; i < RT_MIN(pElementLayout->numDescs, pDXShader->shaderInfo.cInputSignature); ++i)
+        {
+            SVGA3dInputElementDesc const *pElementDesc = &pElementLayout->descs[i];
+            SVGA3dDXSignatureEntry *pSignatureEntry = &pDXShader->shaderInfo.aInputSignature[i];
+            pSignatureEntry->componentType = DXShaderComponentTypeFromFormat(pElementDesc->format);
+        }
+    }
+}
+
+
 static void dxCreateInputLayout(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dElementLayoutId elementLayoutId, DXSHADER *pDXShader)
 {
     DXDEVICE *pDevice = dxDeviceFromContext(pThisCC->svga.p3dState, pDXContext);
@@ -6317,6 +6333,12 @@ static void dxSetupPipeline(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
 
                     rc = DXShaderUpdateResources(&pDXShader->shaderInfo, aResourceDimension, aResourceReturnType, cResources);
                     AssertRC(rc); /* Ignore rc because the shader will most likely work anyway. */
+                }
+
+                if (shaderType == SVGA3D_SHADERTYPE_VS)
+                {
+                    /* Update componentType of the vertex shader input signature to correspond to the input declaration. */
+                    vboxDXUpdateVSInputSignature(pDXContext, pDXShader);
                 }
 
                 vboxDXMatchShaderSignatures(pThisCC, pDXContext, pDXShader);
