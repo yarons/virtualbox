@@ -1,4 +1,4 @@
-/* $Id: stacksup-vcc.cpp 95870 2022-07-27 02:38:01Z knut.osmundsen@oracle.com $ */
+/* $Id: stacksup-vcc.cpp 96370 2022-08-20 02:28:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Basic allocators, Windows.
  */
@@ -120,6 +120,17 @@ DECLASM(void) _RTC_SecurityCookieMismatch(uintptr_t uCookie)
                  __security_cookie, uCookie);
     RT_BREAKPOINT();
 }
+
+
+#ifdef RT_ARCH_X86
+DECLASM(void) _RTC_CheckEspFailed(uintptr_t uEip, uintptr_t uEsp, uintptr_t uEbp)
+{
+    RTAssertMsg2("\n\n!!ESP check failed!!\n\n"
+                 "eip=%p esp=%p ebp=%p\n",
+                 uEip, uEsp, uEbp);
+    RT_BREAKPOINT();
+}
+#endif
 
 
 extern "C" void __cdecl _RTC_UninitUse(const char *pszVar)
