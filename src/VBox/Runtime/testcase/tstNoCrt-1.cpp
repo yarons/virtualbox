@@ -1,4 +1,4 @@
-/* $Id: tstNoCrt-1.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstNoCrt-1.cpp 96373 2022-08-20 03:08:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT assembly bits.
  */
@@ -491,6 +491,19 @@ int main()
     cch = RT_NOCRT(strlen)(&s_szTest1[7]);  CHECK_CCH(sizeof(s_szTest1) - 1 - 7);
     cch = RT_NOCRT(strlen)(s_szTest2);      CHECK_CCH(sizeof(s_szTest2) - 1);
     cch = RT_NOCRT(strlen)(s_szTest3);      CHECK_CCH(sizeof(s_szTest3) - 1);
+
+#ifdef _MSC_VER
+    /*
+     * Some simple wcslen checks.
+     */
+    RTPrintf("tstNoCrt-1: wcslen\n");
+    cch = RT_NOCRT(wcslen)(L"");             CHECK_CCH(0);
+    cch = RT_NOCRT(wcslen)(L"1");            CHECK_CCH(1);
+    cch = RT_NOCRT(wcslen)(L"12");           CHECK_CCH(2);
+    cch = RT_NOCRT(wcslen)(L"123");          CHECK_CCH(3);
+    cch = RT_NOCRT(wcslen)(L"1234");         CHECK_CCH(4);
+    cch = RT_NOCRT(wcslen)(L"12345");        CHECK_CCH(5);
+#endif
 
     /*
      * Summary.

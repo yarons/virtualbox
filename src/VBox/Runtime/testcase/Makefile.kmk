@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96338 2022-08-19 15:07:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96373 2022-08-20 03:08:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -581,7 +581,8 @@ tstNoCrt-1_SOURCES = \
 	../common/string/strchr.asm \
 	../common/string/strcmp.asm \
 	../common/string/strcpy.asm \
-	../common/string/strlen.asm
+	../common/string/strlen.asm \
+	../common/string/wcslen.asm
 
 tstRTNoCrt-2_TEMPLATE = VBOXR3TSTEXE
 tstRTNoCrt-2_DEFS = RT_WITHOUT_NOCRT_WRAPPER_ALIASES

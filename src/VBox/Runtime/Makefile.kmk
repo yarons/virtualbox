@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96371 2022-08-20 02:29:40Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96373 2022-08-20 03:08:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1983,7 +1983,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
    	common/string/strrchr.cpp \
    	common/string/strstr.cpp \
    	common/string/strcspn.cpp \
-   	common/string/strpbrk.cpp
+   	common/string/strpbrk.cpp \
+   	common/string/wcslen.asm
+
   RuntimeR3_SOURCES.amd64 = $(RuntimeBaseR3_SOURCES.amd64) \
   	common/math/atan.asm  \
   	common/math/atanf.asm  \
@@ -2061,7 +2063,9 @@ ifdef VBOX_WITH_NOCRT_STATIC
    	common/string/strrchr.cpp \
    	common/string/strstr.cpp \
    	common/string/strcspn.cpp \
-   	common/string/strpbrk.cpp
+   	common/string/strpbrk.cpp \
+   	common/string/wcslen.asm
+
   RuntimeR3_SOURCES.win = $(filter-out \
   	r3/generic/RTLocaleQueryLocaleName-r3-generic.cpp \
   	,$(RuntimeBaseR3_SOURCES.win)) \
