@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartUtils.cpp 95255 2022-06-13 09:55:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxAutostartUtils.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  *                 Utils used by the windows and posix frontends.
@@ -98,8 +98,7 @@ DECLHIDDEN(const char *) machineStateToName(MachineState_T machineState, bool fS
 DECLHIDDEN(void) autostartSvcShowHeader(void)
 {
     RTPrintf(VBOX_PRODUCT " VirtualBox Autostart Service Version " VBOX_VERSION_STRING " - r%s\n"
-             "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n\n", RTBldCfgRevisionStr());
+             "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n", RTBldCfgRevisionStr());
 }
 
 DECLHIDDEN(void) autostartSvcShowVersion(bool fBrief)

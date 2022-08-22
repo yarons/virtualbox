@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 95141 2022-05-31 09:31:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxWatchdog.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -819,8 +819,7 @@ void serviceLog(const char *pszFormat, ...)
 static void displayHeader()
 {
     RTStrmPrintf(g_pStdErr, VBOX_PRODUCT " Watchdog " VBOX_VERSION_STRING "\n"
-                 "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                 "All rights reserved.\n\n");
+                 "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n");
 }
 
 /**

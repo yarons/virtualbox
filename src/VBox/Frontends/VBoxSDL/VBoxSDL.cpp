@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 95141 2022-05-31 09:31:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSDL.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -981,8 +981,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
     LogFlow(("SDL GUI started\n"));
     RTPrintf(VBOX_PRODUCT " SDL GUI version %s\n"
-             "(C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n\n",
+             "Copyright (C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
              VBOX_VERSION_STRING);
 
     // less than one parameter is not possible

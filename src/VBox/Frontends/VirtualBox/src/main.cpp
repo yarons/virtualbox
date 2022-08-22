@@ -1,4 +1,4 @@
-/* $Id: main.cpp 93462 2022-01-27 16:53:54Z knut.osmundsen@oracle.com $ */
+/* $Id: main.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -299,8 +299,7 @@ static void ShowHelp()
         ;
 
     RTPrintf("%s v%s\n"
-             "(C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n"
+             "Copyright (C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
              "\n"
              "%s",
              s_szTitle, RTBldCfgVersion(), s_szUsage);

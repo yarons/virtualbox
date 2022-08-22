@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 95280 2022-06-14 16:20:24Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -965,8 +965,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
     LogFlow(("VBoxHeadless STARTED.\n"));
     RTPrintf(VBOX_PRODUCT " Headless Interface " VBOX_VERSION_STRING "\n"
-             "(C) 2008-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n\n");
+             "Copyright (C) 2008-" VBOX_C_YEAR " " VBOX_VENDOR "\n\n");
 
 #ifdef VBOX_WITH_RECORDING
     /* Parse the environment */

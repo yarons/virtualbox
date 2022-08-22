@@ -1,4 +1,4 @@
-/* $Id: VBoxIntnetPcap.cpp 95107 2022-05-25 20:19:59Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxIntnetPcap.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxIntnetPcap - packet capture for VirtualBox internal networks
  */
@@ -122,8 +122,7 @@ main(int argc, char *argv[])
 
             case 'h':           /* --help */
                 RTPrintf("%s Version %sr%u\n"
-                         "(C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                         "All rights reserved.\n"
+                         "Copyright (C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
                          "\n"
                          "Usage: %s <options>\n"
                          "\n"

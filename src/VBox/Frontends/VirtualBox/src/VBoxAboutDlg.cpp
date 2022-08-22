@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 96402 2022-08-22 15:27:17Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -93,7 +93,7 @@ void VBoxAboutDlg::retranslateUi()
     m_strAboutText = strAboutText + "\n" + strVersionText.arg(m_strVersion);
 #endif
     m_strAboutText = m_strAboutText + QString(" (Qt%1)").arg(qVersion());
-    m_strAboutText = m_strAboutText + "\n" + QString("Copyright %1 %2 %3 and/or its affiliates. All rights reserved.")
+    m_strAboutText = m_strAboutText + "\n" + QString("Copyright %1 %2 %3.")
                                                      .arg(QChar(0xa9)).arg(VBOX_C_YEAR).arg(VBOX_VENDOR);
     AssertPtrReturnVoid(m_pLabel);
     m_pLabel->setText(m_strAboutText);
