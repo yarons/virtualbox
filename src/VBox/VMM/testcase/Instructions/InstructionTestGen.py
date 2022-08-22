@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: InstructionTestGen.py 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: InstructionTestGen.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
 
 """
 Instruction Test Generator.
@@ -10,17 +10,27 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2012-2022 Oracle Corporation
+Copyright (C) 2012-2022 Oracle and/or its affiliates.
 
-This file is part of VirtualBox Open Source Edition (OSE), as
-available from http://www.virtualbox.org. This file is free software;
-you can redistribute it and/or modify it under the terms of the GNU
-General Public License (GPL) as published by the Free Software
-Foundation, in version 2 as it comes in the "COPYING" file of the
-VirtualBox OSE distribution. VirtualBox OSE is distributed in the
-hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+This file is part of VirtualBox base platform packages, as
+available from https://www.virtualbox.org.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, in version 3 of the
+License.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see <https://www.gnu.org/licenses>.
+
+SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 93115 $";
+__version__ = "$Revision: 96407 $";
 
 
 # pylint: disable=C0103,R0913
@@ -1713,7 +1723,7 @@ class InstructionTestGen(object): # pylint: disable=R0902
         Writes the file header.
         Raises exception on trouble.
         """
-        self.write('; $Id: InstructionTestGen.py 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $\n'
+        self.write('; $Id: InstructionTestGen.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $\n'
                    ';; @file %s\n'
                    '; Autogenerate by %s %s. DO NOT EDIT\n'
                    ';\n'

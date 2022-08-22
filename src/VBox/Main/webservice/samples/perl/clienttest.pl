@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: clienttest.pl 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $
+# $Id: clienttest.pl 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
 ## @file
 # This little perl program attempts to connect to a running VirtualBox
 # webservice and calls various methods on it. Please refer to the SDK
@@ -9,7 +9,7 @@
 #
 
 #
-# Copyright (C) 2008-2022 Oracle Corporation
+# Copyright (C) 2008-2022 Oracle and/or its affiliates.
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation

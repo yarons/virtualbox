@@ -1,4 +1,4 @@
-/* $Id: d3d11blitter.hlsl 95148 2022-05-31 16:55:16Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d11blitter.hlsl 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
 /*
  * Blitter for dxgiBlt/SVGA_3D_CMD_DX_PRESENTBLT.
  *
@@ -7,15 +7,25 @@
  */
 
 /*
- * Copyright (C) 2022 Oracle Corporation
+ * Copyright (C) 2022 Oracle and/or its affiliates.
  *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ * This file is part of VirtualBox base platform packages, as
+ * available from https://www.virtualbox.org.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, in version 3 of the
+ * License.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <https://www.gnu.org/licenses>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-only
  */
 
 Texture2D t;

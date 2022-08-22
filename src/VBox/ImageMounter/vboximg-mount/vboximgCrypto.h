@@ -1,19 +1,29 @@
-/* $Id: vboximgCrypto.h 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ $Revision: 93115 $ $Date: 2022-01-01 12:31:46 +0100 (Sat, 01 Jan 2022) $ $Author: knut.osmundsen@oracle.com $ */
+/* $Id: vboximgCrypto.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ $Revision: 96407 $ $Date: 2022-08-22 19:43:14 +0200 (Mon, 22 Aug 2022) $ $Author: klaus.espenlaub@oracle.com $ */
 
 /** @file
  * vboximgCrypto.h
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle Corporation
+ * Copyright (C) 2008-2022 Oracle and/or its affiliates.
  *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ * This file is part of VirtualBox base platform packages, as
+ * available from https://www.virtualbox.org.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, in version 3 of the
+ * License.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <https://www.gnu.org/licenses>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-only
  */
 
 #ifndef VBOX_INCLUDED_SRC_vboximg_mount_vboximgCrypto_h

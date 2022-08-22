@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibPhysHeap.cpp 94314 2022-03-20 02:04:30Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibPhysHeap.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Physical memory heap.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

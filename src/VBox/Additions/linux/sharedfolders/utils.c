@@ -1,4 +1,4 @@
-/* $Id: utils.c 95411 2022-06-28 18:50:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: utils.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

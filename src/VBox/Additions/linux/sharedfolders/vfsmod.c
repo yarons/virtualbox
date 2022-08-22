@@ -1,10 +1,10 @@
-/* $Id: vfsmod.c 95416 2022-06-29 00:59:01Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmod.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle Corporation
+ * Copyright (C) 2006-2022 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
