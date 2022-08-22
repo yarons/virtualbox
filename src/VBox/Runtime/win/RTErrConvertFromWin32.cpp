@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 96415 2022-08-22 20:28:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -456,7 +456,8 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
     }
 
     /* unknown error. */
-#ifndef IN_SUP_HARDENED_R3
+#if !defined(IN_SUP_HARDENED_R3) \
+ && !defined(IPRT_NO_CRT) /* Please, don't drag log.cpp into the no-CRT images! */
     AssertLogRelMsgFailed(("Unhandled error %u\n", uNativeCode));
 #else
     /* hardened main has no LogRel */

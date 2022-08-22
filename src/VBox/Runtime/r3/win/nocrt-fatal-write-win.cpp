@@ -1,4 +1,4 @@
-/* $Id: nocrt-fatal-write-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-fatal-write-win.cpp 96415 2022-08-22 20:28:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Fatal Message Writing Primitives, Windows.
  */
@@ -51,7 +51,7 @@
 void rtNoCrtFatalWrite(const char *pchMsg, size_t cchMsg)
 {
     DWORD cbIgn;
-    WriteFile(GetStdHandle(STD_ERROR_HANDLE ), pchMsg, (DWORD)cchMsg, &cbIgn, NULL);
+    WriteFile(GetStdHandle(STD_ERROR_HANDLE), pchMsg, (DWORD)cchMsg, &cbIgn, NULL);
 }
 
 
