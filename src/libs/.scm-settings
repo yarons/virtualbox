@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 96408 2022-08-22 18:20:49Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for src/libs.
 #
@@ -29,4 +29,5 @@
 --filter-files *.kmk|.scm-settings|genjifaces.xsl|VBoxObjectBase.java|gen_python_deps.py|vboxxpcom.py|_iprt_atomic.h|xptc*_vbox.*|xpcom-namespace-cleanup.map|VBoxXPCOM*.def|openssl-mangling.h|threads_iprt.c|extF80_scale_extF80.c|platform.h|VBoxDxVkDeps.cpp
 --filter-out-files /openssl-*/platform.h|/softfloat-*/build/Linux-*/platform.h|/softfloat-*/build/template-*/platform.h|/softfloat-*/build/Win*/platform.h|/softfloat-*/testfloat/*/platform.h
 
+/openssl-*/openssl-mangling.h: --no-fix-header-guards
 /xpcom18a4/xpcom-namespace-cleanup.map: --treat-as .scm-settings

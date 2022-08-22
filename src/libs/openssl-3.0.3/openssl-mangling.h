@@ -1,4 +1,4 @@
-/* $Id: openssl-mangling.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: openssl-mangling.h 96408 2022-08-22 18:20:49Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Autogenerate symbol mangling header for openssl.
  */
@@ -25,11 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef VBOX_INCLUDED_SRC_openssl_3_0_3_openssl_mangling_h
-#define VBOX_INCLUDED_SRC_openssl_3_0_3_openssl_mangling_h
-#ifndef RT_WITHOUT_PRAGMA_ONCE
-# pragma once
-#endif
+#ifndef ___openssl_mangling_h___
+#define ___openssl_mangling_h___
 # ifdef VBOX_IN_EXTPACK
 #  define OPENSSL_MANGLER(a_Name) OracleExtPack_ ## a_Name
 #  define OPENSSL_MANGLER_ASM(a_Name) _OracleExtPack_ ## a_Name
@@ -77599,5 +77596,5 @@
 #  define _xor128_encrypt_n_pad OPENSSL_MANGLER_ASM(xor128_encrypt_n_pad)
 # endif
 #endif
-#endif /* !VBOX_INCLUDED_SRC_openssl_3_0_3_openssl_mangling_h */
+#endif
 
