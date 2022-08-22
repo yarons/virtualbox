@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 96416 2022-08-22 20:36:29Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the tools.
 #
@@ -27,7 +27,7 @@
 
 --filter-out-dirs /common/.
 --filter-out-dirs /freebsd.*/.
---filter-out-dirs /linux.*/.
+--filter-out-dirs /linux.amd64/.
 --filter-out-dirs /os2.*/.
 --filter-out-dirs /solaris.*/.
 --filter-out-dirs /win.*/.

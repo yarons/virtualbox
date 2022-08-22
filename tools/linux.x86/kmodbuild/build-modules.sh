@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# $Id: build-modules.sh 78140 2019-04-16 02:20:36Z knut.osmundsen@oracle.com $
+# $Id: build-modules.sh 96416 2022-08-22 20:36:29Z klaus.espenlaub@oracle.com $
 ## @file
 # Script for test building the VirtualBox kernel modules against a kernel.
 #
@@ -9,15 +9,25 @@
 #
 
 #
-# Copyright (C) 2019 Oracle Corporation
+# Copyright (C) 2019-2022 Oracle and/or its affiliates.
 #
-# This file is part of VirtualBox Open Source Edition (OSE), as
-# available from http://www.virtualbox.org. This file is free software;
-# you can redistribute it and/or modify it under the terms of the GNU
-# General Public License (GPL) as published by the Free Software
-# Foundation, in version 2 as it comes in the "COPYING" file of the
-# VirtualBox OSE distribution. VirtualBox OSE is distributed in the
-# hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+# This file is part of VirtualBox base platform packages, as
+# available from https://www.virtualbox.org.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation, in version 3 of the
+# License.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses>.
+#
+# SPDX-License-Identifier: GPL-3.0-only
 #
 
 if [ $# -lt 2 ]; then
