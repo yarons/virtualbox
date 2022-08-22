@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96412 2022-08-22 19:52:30Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -841,28 +841,38 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96407 $";
+    static char s_szRev[] = "$Revision: 96412 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96412 2022-08-22 19:52:30Z klaus.espenlaub@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
                  "\n"
                  "/*\n"
-                 " * Copyright (C) 2022 Oracle Corporation\n"
+                 " * Copyright (C) 2022 Oracle and/or its affiliates.\n"
                  " *\n"
-                 " * This file is part of VirtualBox Open Source Edition (OSE), as\n"
-                 " * available from http://www.virtualbox.org. This file is free software;\n"
-                 " * you can redistribute it and/or modify it under the terms of the GNU\n"
-                 " * General Public License (GPL) as published by the Free Software\n"
-                 " * Foundation, in version 2 as it comes in the \"COPYING\" file of the\n"
-                 " * VirtualBox OSE distribution. VirtualBox OSE is distributed in the\n"
-                 " * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.\n"
+                 " * This file is part of VirtualBox base platform packages, as\n"
+                 " * available from https://www.virtualbox.org.\n"
+                 " *\n"
+                 " * This program is free software; you can redistribute it and/or\n"
+                 " * modify it under the terms of the GNU General Public License\n"
+                 " * as published by the Free Software Foundation, in version 3 of the\n"
+                 " * License.\n"
+                 " *\n"
+                 " * This program is distributed in the hope that it will be useful, but\n"
+                 " * WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+                 " * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+                 " * General Public License for more details.\n"
+                 " *\n"
+                 " * You should have received a copy of the GNU General Public License\n"
+                 " * along with this program; if not, see <https://www.gnu.org/licenses>.\n"
+                 " *\n"
+                 " * SPDX-License-Identifier: GPL-3.0-only\n"
                  " */\n"
                  "\n"
                  "#include \"tstIEMAImpl.h\"\n"
