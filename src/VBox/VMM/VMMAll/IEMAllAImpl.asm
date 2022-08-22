@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96384 2022-08-20 20:51:52Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 96392 2022-08-22 08:01:49Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4633,6 +4633,9 @@ IEMIMPL_FP_F2 haddps, 3
 IEMIMPL_FP_F2 haddpd, 3
 IEMIMPL_FP_F2 hsubps, 3
 IEMIMPL_FP_F2 hsubpd, 3
+IEMIMPL_FP_F2 addsubps, 3
+IEMIMPL_FP_F2 addsubpd, 3
+
 
 ;;
 ; These are actually unary operations but to keep it simple
