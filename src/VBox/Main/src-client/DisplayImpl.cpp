@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 96322 2022-08-19 07:45:57Z andreas.loeffler@oracle.com $ */
+/* $Id: DisplayImpl.cpp 96391 2022-08-22 07:23:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -50,17 +50,6 @@
 #ifdef VBOX_WITH_RECORDING
 # include <iprt/path.h>
 # include "Recording.h"
-
-# ifdef VBOX_WITH_LIBVPX
-#  ifdef _MSC_VER
-#   pragma warning(push)
-#   pragma warning(disable: 4668) /* vpx_codec.h(64) : warning C4668: '__GNUC__' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif' */
-#   include <vpx/vpx_encoder.h>
-#   pragma warning(pop)
-#  else
-#   include <vpx/vpx_encoder.h>
-#  endif
-# endif
 
 # include <VBox/vmm/pdmapi.h>
 # include <VBox/vmm/pdmaudioifs.h>
@@ -3025,8 +3014,8 @@ DECLCALLBACK(void) Display::i_displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInter
                                                                      &bitmapFormat);
                         if (SUCCEEDED(hrc) && pbAddress)
                             vrc = pCtx->SendVideoFrame(uScreenId, 0, 0, BitmapFormat_BGR,
-                                                      ulBitsPerPixel, ulBytesPerLine, ulWidth, ulHeight,
-                                                      pbAddress, tsNowMs);
+                                                       ulBitsPerPixel, ulBytesPerLine, ulWidth, ulHeight,
+                                                       pbAddress, tsNowMs);
                         else
                             vrc = VERR_NOT_SUPPORTED;
 
