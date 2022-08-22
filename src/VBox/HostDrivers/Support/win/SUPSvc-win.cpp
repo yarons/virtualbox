@@ -1,4 +1,4 @@
-/* $Id: SUPSvc-win.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPSvc-win.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Service - Windows Specific Code.
  */
@@ -719,8 +719,7 @@ static int supSvcWinShowVersion(int argc, char **argv)
         RTPrintf("%s\n", VBOX_VERSION_STRING);
     else
         RTPrintf("VirtualBox System Service Version %s\n"
-                 "(C) 2008-2010 Oracle Corporation\n"
-                 "All rights reserved.\n",
+                 "Copyright (C) 2008-2022 Oracle and/or its affiliates\n\n",
                  VBOX_VERSION_STRING);
     return 0;
 }
@@ -734,9 +733,7 @@ static int supSvcWinShowVersion(int argc, char **argv)
 static int supSvcWinShowHelp(void)
 {
     RTPrintf("VirtualBox System Service Version %s\n"
-             "(C) 2008-2010 Oracle Corporation\n"
-             "All rights reserved.\n"
-             "\n",
+             "Copyright (C) 2008-2022 Oracle and/or its affiliates\n\n",
              VBOX_VERSION_STRING);
     RTPrintf("Usage:\n"
              "\n"

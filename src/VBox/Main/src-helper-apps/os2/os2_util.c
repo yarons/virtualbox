@@ -1,4 +1,4 @@
-/* $Id: os2_util.c 93231 2022-01-14 02:05:23Z knut.osmundsen@oracle.com $ */
+/* $Id: os2_util.c 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Os2Util - Unattended Installation Helper Utility for OS/2.
  *
@@ -414,7 +414,7 @@ static void CopyFileToBackdoorAndQuit(PSZ psz, BOOL fLongOpt, PSZ pszBuf, USHORT
 /** Displays version string and quits.   */
 static DECL_NO_RETURN(void) ShowVersionAndQuit(void)
 {
-    CHAR szVer[] = "$Rev: 93231 $\r\n";
+    CHAR szVer[] = "$Rev: 96399 $\r\n";
     USHORT usIgnored;
     DosWrite(g_hStdOut, szVer, sizeof(szVer) - 1, &usIgnored);
     DosExit(EXIT_PROCESS, 0);
@@ -426,7 +426,7 @@ static DECL_NO_RETURN(void) ShowUsageAndQuit(void)
 {
     static char s_szHelp[] =
         VBOX_PRODUCT " OS/2 Unattended Helper Version " VBOX_VERSION_STRING "\r\n"
-        "(C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\r\n"
+        "Copyright (C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\r\n"
         "\r\n"
         "Os2Util.exe is tiny helper utility that implements TEE'ing to the VBox release\r\n"
         "log, files and shows the actual exit code of a program.  Standard error and\r\n"

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 95853 2022-07-26 23:40:02Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -183,9 +183,7 @@ static void vgsvcToolboxShowUsageHeader(void)
 {
     RTPrintf(VBOX_PRODUCT " Guest Toolbox Version "
              VBOX_VERSION_STRING "\n"
-             "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n"
-             "\n");
+             "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n");
     RTPrintf("Usage:\n\n");
 }
 

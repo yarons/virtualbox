@@ -1,4 +1,4 @@
-/** $Id: VBoxOs2AdditionsInstall.cpp 93155 2022-01-09 13:02:41Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxOs2AdditionsInstall.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxOs2AdditionsInstall - Barebone OS/2 Guest Additions Installer.
  */
@@ -1529,7 +1529,7 @@ static RTEXITCODE ShowUsage(void)
 {
     static const char g_szUsage[] =
         VBOX_PRODUCT " OS/2 Additions Installer " VBOX_VERSION_STRING "\r\n"
-        "(C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\r\n"
+        "Copyright (C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\r\n"
         "\r\n"
         "This is a very barebone OS/2 guest additions installer which main purpose is\r\n"
         "to help with unattended installation.  Do not expect it to handle complicated\r\n"
@@ -1582,7 +1582,7 @@ static RTEXITCODE ShowVersion(void)
 {
     DoWriteNStr(g_hStdOut, RT_STR_TUPLE(VBOX_VERSION_STRING " r"));
 
-    const char *pszRev = "$Rev: 93155 $";
+    const char *pszRev = "$Rev: 96399 $";
     while (!RT_C_IS_DIGIT(*pszRev))
         pszRev++;
     size_t cchRev = 1;

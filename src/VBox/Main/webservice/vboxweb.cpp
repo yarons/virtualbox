@@ -1,4 +1,4 @@
-/* $Id: vboxweb.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxweb.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * vboxweb.cpp:
  *      hand-coded parts of the webservice server. This is linked with the
@@ -1076,8 +1076,7 @@ int main(int argc, char *argv[])
     g_mapThreads[RTThreadSelf()] = "[M  ]";
 
     RTStrmPrintf(g_pStdErr, VBOX_PRODUCT " web service Version " VBOX_VERSION_STRING "\n"
-                            "(C) 2007-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                            "All rights reserved.\n");
+                            "Copyright (C) 2007-" VBOX_C_YEAR " " VBOX_VENDOR "\n");
 
     int c;
     const char *pszLogFile = NULL;

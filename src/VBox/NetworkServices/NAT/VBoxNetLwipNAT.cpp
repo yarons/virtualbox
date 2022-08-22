@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetLwipNAT.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -327,8 +327,7 @@ RTEXITCODE
 VBoxNetLwipNAT::usage()
 {
     RTPrintf("%s Version %sr%u\n"
-             "(C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-             "All rights reserved.\n"
+             "Copyright (C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
              "\n"
              "Usage: %s <options>\n"
              "\n"

@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 94624 2022-04-19 09:20:51Z alexander.eichner@oracle.com $ */
+/* $Id: OpenGLTestApp.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -442,8 +442,7 @@ int main(int argc, char **argv)
 #endif
                 case 'h':
                     RTPrintf(VBOX_PRODUCT " Helper for testing 2D/3D OpenGL capabilities %u.%u.%u\n"
-                             "(C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                             "All rights reserved.\n"
+                             "Copyright (C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
                              "\n"
                              "Parameters:\n"
 #ifdef VBOX_WITH_VIDEOHWACCEL
@@ -462,7 +461,7 @@ int main(int argc, char **argv)
                     return RTEXITCODE_SUCCESS;
 
                 case 'V':
-                    RTPrintf("$Revision: 94624 $\n");
+                    RTPrintf("$Revision: 96399 $\n");
                     return RTEXITCODE_SUCCESS;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

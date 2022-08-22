@@ -1,4 +1,4 @@
-/* $Id: vboxmslnk.c 93115 2022-01-01 11:31:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxmslnk.c 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris: user space loader tool.
  */
@@ -105,8 +105,7 @@ void handleArgs(int argc, char *argv[], int *pfNoLogo)
         printf(VBOX_PRODUCT
                " Guest Additions enabling utility for Solaris pointer\nintegration Version "
                VBOX_VERSION_STRING "\n"
-               "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-               "All rights reserved.\n\n");
+               "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n");
     if (fShowUsage)
     {
         printf("Usage:\n  -V|--version  print the tool version.\n"

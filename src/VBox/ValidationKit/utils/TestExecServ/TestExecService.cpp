@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 94624 2022-04-19 09:20:51Z alexander.eichner@oracle.com $ */
+/* $Id: TestExecService.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -3768,7 +3768,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 94624 $\n");
+                RTPrintf("$Revision: 96399 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
@@ -3851,8 +3851,7 @@ static DECLCALLBACK(void) logHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE e
         {
             pfnLog(pLoggerRelease,
                    "TestExecService (Validation Kit TxS) %s r%s (verbosity: %u) %s %s (%s %s) release log\n"
-                   "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                   "All rights reserved.\n\n"
+                   "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n"
                    "Log opened %s\n",
                    RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbose,
                    KBUILD_TARGET, KBUILD_TARGET_ARCH,

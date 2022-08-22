@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 93751 2022-02-15 13:13:15Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1361,8 +1361,7 @@ RTEXITCODE audioTestVersion(void)
 void audioTestShowLogo(PRTSTREAM pStream)
 {
     RTStrmPrintf(pStream, VBOX_PRODUCT " VKAT (Validation Kit Audio Test) Version " VBOX_VERSION_STRING " - r%s\n"
-                 "(C) " VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                 "All rights reserved.\n\n", RTBldCfgRevisionStr());
+                 "Copyright (C) " VBOX_C_YEAR " " VBOX_VENDOR "\n\n", RTBldCfgRevisionStr());
 }
 
 int main(int argc, char **argv)

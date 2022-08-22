@@ -20,7 +20,7 @@
 ]>
 <refentry id="vboxmanage-getextradata" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-08-18 19:27:14 +0200 (Thu, 18 Aug 2022) $</pubdate>
+    <pubdate>$Date: 2022-08-22 16:47:39 +0200 (Mon, 22 Aug 2022) $</pubdate>
     <title>VBoxManage getextradata</title>
   </refentryinfo>
 
@@ -98,8 +98,7 @@
     </para>
 <screen>$ VBoxManage getextradata Fedora5 installdate
 VirtualBox Command Line Management Interface Version <replaceable>номер-версии</replaceable>
-(C) 2005-2019 Oracle Corporation
-All rights reserved.
+Copyright (C) 2005-2022 Oracle and/or its affiliates
 
 Значение: 2006.01.01</screen>
     <para>

@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 95763 2022-07-20 19:33:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxControl.cpp 96399 2022-08-22 14:47:39Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -2144,8 +2144,7 @@ int main(int argc, char **argv)
     if (fShowLogo)
         RTPrintf(VBOX_PRODUCT " Guest Additions Command Line Management Interface Version "
                  VBOX_VERSION_STRING "\n"
-                 "(C) 2008-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
-                 "All rights reserved.\n\n");
+                 "Copyright (C) 2008-" VBOX_C_YEAR " " VBOX_VENDOR "\n\n");
     if (fDoHelp)
         usage();
 
