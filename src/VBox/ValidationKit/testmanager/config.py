@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 94129 2022-03-08 14:57:25Z knut.osmundsen@oracle.com $
+# $Id: config.py 96397 2022-08-22 14:05:56Z klaus.espenlaub@oracle.com $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 94129 $"
+__version__ = "$Revision: 96397 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 94129 $')[11:-2];
+g_ksRevision            = ('$Revision: 96397 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -183,9 +183,9 @@ g_ksAlertFrom           = 'vsheriff@oracle.com';
 ## Subject for email alert.
 g_ksAlertSubject        = 'Virtual Test Sheriff Alert';
 ## List of users to send alerts.
-g_asAlertList           = ['lelik', 'werner'];
+g_asAlertList           = ['alertuser1', 'alertuser2'];
 ## iLOM password.
-g_ksLomPassword         = 'password';
+g_ksLomPassword         = 'put_your_ILOM_password_here_if_applicable';
 
 ## @}
 
