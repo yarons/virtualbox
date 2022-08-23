@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1211,9 +1211,9 @@ void UIVMActivityMonitor::sltExportMetricsToFile()
         arg(m_comMachine.GetName()).
         arg(QDateTime::currentDateTime().toString("dd-MM-yyyy_hh-mm-ss"));
     QString strFileName = QIFileDialog::getSaveFileName(strStartFileName,"",this,
-                                                        QString("%1\"%2\"").
-                                                        arg(QApplication::translate("UIVMInformationDialog", "Export activity data of the machine ")).
-                                                        arg(m_comMachine.GetName()));
+                                                        QString("%1 \"%2\"")
+                                                        .arg(QApplication::translate("UIVMInformationDialog", "Export activity data of the machine"))
+                                                        .arg(m_comMachine.GetName()));
     QFile dataFile(strFileName);
     if (dataFile.open(QFile::WriteOnly | QFile::Truncate))
     {

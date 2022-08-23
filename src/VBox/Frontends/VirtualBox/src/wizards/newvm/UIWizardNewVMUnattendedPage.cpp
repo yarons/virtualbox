@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -112,9 +112,9 @@ void UIWizardNewVMUnattendedPage::retranslateUi()
 {
     setTitle(UIWizardNewVM::tr("Unattended Guest OS Install Setup"));
     if (m_pLabel)
-        m_pLabel->setText(UIWizardNewVM::tr("<p>You can configure the unattended guest OS install by modifying username, password, and "
-                                            "hostname. Additionally you can enable guest additions install. "
-                                            "For Microsoft Windows guests it is possible to provide a product key.</p>"));
+        m_pLabel->setText(UIWizardNewVM::tr("You can configure the unattended guest OS install by modifying username, password, "
+                                            "and hostname. Additionally you can enable guest additions install. "
+                                            "For Microsoft Windows guests it is possible to provide a product key."));
     if (m_pUserNamePasswordGroupBox)
         m_pUserNamePasswordGroupBox->setTitle(UIWizardNewVM::tr("Username and Password"));
 }

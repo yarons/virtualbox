@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -347,9 +347,9 @@ void UINameAndSystemEditor::retranslateUi()
         m_pLabelType->setText(tr("&Version:"));
 
     if (m_pEditorName)
-        m_pEditorName->setToolTip(tr("Holds the name for new virtual machine."));
+        m_pEditorName->setToolTip(tr("Holds the name for virtual machine."));
     if (m_pSelectorPath)
-        m_pSelectorPath->setToolTip(tr("Selects the folder hosting new virtual machine."));
+        m_pSelectorPath->setToolTip(tr("Selects the folder hosting virtual machine."));
     if (m_pComboFamily)
         m_pComboFamily->setToolTip(tr("Selects the operating system family that "
                                       "you plan to install into this virtual machine."));
@@ -358,7 +358,7 @@ void UINameAndSystemEditor::retranslateUi()
                                     "you plan to install into this virtual machine "
                                     "(called a guest operating system)."));
     if (m_pSelectorImage)
-        m_pSelectorImage->setToolTip(tr("Selects an ISO image to be attached to the new "
+        m_pSelectorImage->setToolTip(tr("Selects an ISO image to be attached to the "
                                         "virtual machine or used in unattended install."));
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -466,10 +466,10 @@ void UIWizardNewCloudVMPageSource::retranslateUi()
     }
 
     /* Translate description label: */
-    m_pLabelDescription->setText(UIWizardNewCloudVM::tr("<p>Please choose one of cloud service profiles you have registered to "
+    m_pLabelDescription->setText(UIWizardNewCloudVM::tr("Please choose one of cloud service profiles you have registered to "
                                                         "create virtual machine for.  Existing images list will be "
                                                         "updated.  To continue, select one of images to create virtual "
-                                                        "machine on the basis of it.</p>"));
+                                                        "machine on the basis of it."));
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardNewCloudVM::tr("&Profile:"));

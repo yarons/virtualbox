@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -72,10 +72,12 @@ void UIHostnameDomainNameEditor::mark()
 {
     if (m_pHostnameLineEdit)
         m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
-                                  tr("Hostname should be at least 2 character long. Allowed characters are alphanumerics, \"-\" and \".\""));
+                                  tr("Hostname should be at least 2 character long. "
+                                     "Allowed characters are alphanumerics, \"-\" and \".\""));
     if (m_pDomainNameLineEdit)
         m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
-                                  tr("Domain name should be at least 2 character long. Allowed characters are alphanumerics, \"-\" and \".\""));
+                                    tr("Domain name should be at least 2 character long. "
+                                       "Allowed characters are alphanumerics, \"-\" and \".\""));
 }
 
 void UIHostnameDomainNameEditor::setHostname(const QString &strHostname)
@@ -183,14 +185,15 @@ void UIHostnameDomainNameEditor::prepare()
 void UIHostnameDomainNameEditor::sltHostnameChanged()
 {
     m_pHostnameLineEdit->mark(!m_pHostnameLineEdit->hasAcceptableInput(),
-                              tr("Hostname should be a string of length 2. Allowed characters are alphanumerics, '-', and '.'" ));
+                              tr("Hostname should be at least 2 character long. "
+                                 "Allowed characters are alphanumerics, \"-\" and \".\""));
     emit sigHostnameDomainNameChanged(hostnameDomainName(), isComplete());
 }
 
 void UIHostnameDomainNameEditor::sltDomainChanged()
 {
     m_pDomainNameLineEdit->mark(!m_pDomainNameLineEdit->hasAcceptableInput(),
-                              tr("Domain name should be a string of length 2. Allowed characters are alphanumerics, '-', and '.'" ));
-
+                                tr("Domain name should be at least 2 character long. "
+                                   "Allowed characters are alphanumerics, \"-\" and \".\""));
     emit sigHostnameDomainNameChanged(hostnameDomainName(), isComplete());
 }

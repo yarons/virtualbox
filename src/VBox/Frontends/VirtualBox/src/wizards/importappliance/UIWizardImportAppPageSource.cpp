@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -633,14 +633,14 @@ void UIWizardImportAppPageSource::retranslateUi()
     {
         if (wizard()->isSourceCloudOne())
             m_pLabelDescription->setText(UIWizardImportApp::
-                                         tr("<p>Please choose one of cloud service profiles you have registered to import virtual "
+                                         tr("Please choose one of cloud service profiles you have registered to import virtual "
                                             "machine from.  Corresponding machines list will be updated.  To continue, "
-                                            "select one of machines to import below.</p>"));
+                                            "select one of machines to import below."));
         else
             m_pLabelDescription->setText(UIWizardImportApp::
-                                         tr("<p>Please choose a file to import the virtual appliance from.  VirtualBox currently "
+                                         tr("Please choose a file to import the virtual appliance from.  VirtualBox currently "
                                             "supports importing appliances saved in the Open Virtualization Format (OVF).  "
-                                            "To continue, select the file to import below.</p>"));
+                                            "To continue, select the file to import below."));
     }
 
     if (m_pFileSelector)

@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINetworkManager.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -443,7 +443,7 @@ void UINetworkManagerWidget::retranslateUi()
                                    << UINetworkManager::tr("DHCP Server");
 #endif /* !VBOX_WS_MAC */
         m_pTreeWidgetHostNetwork->setHeaderLabels(fields);
-        m_pTreeWidgetHostNetwork->setWhatsThis(UINetworkManager::tr("Registered host networks"));
+        m_pTreeWidgetHostNetwork->setWhatsThis(UINetworkManager::tr("Registered host-only networks"));
     }
 
     /* Translate NAT network tree-widget: */

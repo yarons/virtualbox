@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -481,7 +481,8 @@ void UIWizardImportAppPageSettings::retranslateUi()
     if (m_pCheckboxImportHDsAsVDI)
     {
         m_pCheckboxImportHDsAsVDI->setText(UIWizardImportApp::tr("&Import hard drives as VDI"));
-        m_pCheckboxImportHDsAsVDI->setToolTip(UIWizardImportApp::tr("Import all the hard drives that belong to this appliance in VDI format."));
+        m_pCheckboxImportHDsAsVDI->setToolTip(UIWizardImportApp::tr("When checked, all the hard drives that belong to this "
+                                                                    "appliance will be imported in VDI format."));
     }
 
     /* Translate separate stuff: */

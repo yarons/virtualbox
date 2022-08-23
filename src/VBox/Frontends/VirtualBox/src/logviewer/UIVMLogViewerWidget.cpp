@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -1102,7 +1102,7 @@ void UIVMLogViewerWidget::createLogViewerPages(const QVector<QUuid> &machineList
                                                  "<b>Reload</b> button to reload the log folder "
                                                  "<nobr><b>%2</b></nobr>.</p>")
                                               .arg(strMachineName).arg(comMachine.GetLogFolder()));
-            createLogPage(tr("NoLogFile"), strMachineName, uMachineId, -1 /* iLogFileId */, strDummyTabText, true);
+            createLogPage(QString("NoLogFile"), strMachineName, uMachineId, -1 /* iLogFileId */, strDummyTabText, true);
         }
     }
     m_pTabWidget->blockSignals(false);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -214,9 +214,9 @@ void UIWizardNewVMDiskPage::retranslateUi()
     setTitle(UIWizardNewVM::tr("Virtual Hard disk"));
 
     if (m_pLabel)
-        m_pLabel->setText(UIWizardNewVM::tr("<p>If you wish you can add a virtual hard disk to the new machine. "
+        m_pLabel->setText(UIWizardNewVM::tr("If you wish you can add a virtual hard disk to the new machine. "
                                             "You can either create a new hard disk file or select an existing one. "
-                                            "Alternatively you can create a virtual machine without a virtual hard disk.</p>"));
+                                            "Alternatively you can create a virtual machine without a virtual hard disk."));
 
     if (m_pDiskEmpty)
         m_pDiskEmpty->setText(UIWizardNewVM::tr("&Do Not Add a Virtual Hard Disk"));

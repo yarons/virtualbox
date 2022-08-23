@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -79,8 +79,8 @@ void UIWizardNewVMHardwarePage::retranslateUi()
     setTitle(UIWizardNewVM::tr("Hardware"));
 
     if (m_pLabel)
-        m_pLabel->setText(UIWizardNewVM::tr("<p>You can modify virtual machine's hardware by changing amount of RAM and "
-                                            "virtual CPU count. Enabling EFI is also possible.</p>"));
+        m_pLabel->setText(UIWizardNewVM::tr("You can modify virtual machine's hardware by changing amount of RAM and "
+                                            "virtual CPU count. Enabling EFI is also possible."));
 }
 
 void UIWizardNewVMHardwarePage::initializePage()

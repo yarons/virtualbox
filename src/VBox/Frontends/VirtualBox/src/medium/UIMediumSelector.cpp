@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -184,7 +184,7 @@ void UIMediumSelector::retranslateUi()
     if (m_pChooseButton)
     {
         m_pChooseButton->setText(tr("C&hoose"));
-        m_pChooseButton->setToolTip(tr("Attached the selected medium to the drive"));
+        m_pChooseButton->setToolTip(tr("Attach the selected medium to the drive"));
     }
 
     if (m_pTreeWidget)
