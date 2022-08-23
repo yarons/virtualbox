@@ -1,4 +1,4 @@
-; $Id: nocrt-WinMainCRTStartup-win.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: nocrt-WinMainCRTStartup-win.asm 96441 2022-08-23 14:11:00Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Alias WinMainCRTStartup to CustomMainEntrypoint in nocrt-startup-exe-win.cpp.
 ;
@@ -37,8 +37,8 @@
 
 %include "iprt/asmdefs.mac"
 
-extern  CustomMainEntrypoint
+extern  NAME(CustomMainEntrypoint)
 BEGINPROC WinMainCRTStartup
-        jmp     CustomMainEntrypoint
+        jmp     NAME(CustomMainEntrypoint)
 ENDPROC   WinMainCRTStartup
 
