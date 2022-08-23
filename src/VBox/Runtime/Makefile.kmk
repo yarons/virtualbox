@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96444 2022-08-23 14:16:01Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -4747,6 +4747,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e 's/^_//',) \
 			\
 			-e '/^g_cchrt/d'\
+			-e '/^g_crt/d'\
 			-e '/^g_frt/d'\
 			-e '/^g_offrt/d'\
 			-e '/^g_pfnrt/d'\
