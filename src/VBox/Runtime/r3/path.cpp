@@ -1,4 +1,4 @@
-/* $Id: path.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: path.cpp 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -78,7 +78,7 @@ RTDECL(int) RTPathExecDir(char *pszPath, size_t cchPath)
     /*
      * Calc the length and check if there is space before copying.
      */
-    size_t cch = g_cchrtProcDir;
+    size_t cch = g_cchrtProcExeDir;
     if (cch < cchPath)
     {
         memcpy(pszPath, g_szrtProcExePath, cch);

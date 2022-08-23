@@ -1,4 +1,4 @@
-/* $Id: process.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: process.h 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal RTProc header.
  */
@@ -49,9 +49,8 @@ extern DECL_HIDDEN_DATA(RTPROCESS)      g_ProcessSelf;
 extern DECL_HIDDEN_DATA(RTPROCPRIORITY) g_enmProcessPriority;
 extern DECL_HIDDEN_DATA(char)           g_szrtProcExePath[RTPATH_MAX];
 extern DECL_HIDDEN_DATA(size_t)         g_cchrtProcExePath;
-extern DECL_HIDDEN_DATA(size_t)         g_cchrtProcDir;
+extern DECL_HIDDEN_DATA(size_t)         g_cchrtProcExeDir;
 extern DECL_HIDDEN_DATA(size_t)         g_offrtProcName;
-extern DECL_HIDDEN_DATA(bool volatile)  g_frtAtExitCalled;
 
 /**
  * Validates and sets the process priority.

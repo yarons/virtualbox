@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-common-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-startup-common-win.cpp 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Common Windows startup code.
  */
@@ -52,17 +52,7 @@
 #include <iprt/utf16.h>
 
 #include "internal/compiler-vcc.h"
-
-
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
-RT_C_DECLS_BEGIN
-DECL_HIDDEN_DATA(char)      g_szrtProcExePath[RTPATH_MAX] = "Unknown.exe";
-DECL_HIDDEN_DATA(size_t)    g_cchrtProcExePath = 11;
-DECL_HIDDEN_DATA(size_t)    g_cchrtProcExeDir = 0;
-DECL_HIDDEN_DATA(size_t)    g_offrtProcName = 0;
-RT_C_DECLS_END
+#include "internal/process.h"
 
 
 

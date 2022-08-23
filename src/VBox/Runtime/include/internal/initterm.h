@@ -1,4 +1,4 @@
-/* $Id: initterm.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: initterm.h 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -64,6 +64,22 @@ DECLHIDDEN(void) rtR0MemExecCleanup(void);
 # endif
 
 #endif /* IN_RING0 */
+
+#ifdef IN_RING3
+
+extern DECL_HIDDEN_DATA(int32_t volatile)   g_crtR3Users;
+extern DECL_HIDDEN_DATA(bool volatile)      g_frtR3Initializing;
+extern DECL_HIDDEN_DATA(bool volatile)      g_frtAtExitCalled;
+
+/**
+ * Internal version of RTR3InitIsInitialized.
+ */
+DECLINLINE(bool) rtInitIsInitialized(void)
+{
+    return g_crtR3Users >= 1 && !g_frtR3Initializing;
+}
+
+#endif
 
 RT_C_DECLS_END
 
