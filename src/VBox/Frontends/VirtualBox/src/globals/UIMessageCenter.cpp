@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 96430 2022-08-23 08:37:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1789,8 +1789,8 @@ void UIMessageCenter::showRuntimeError(const CConsole &console, bool fFatal, con
                              "<tr><td>%4</td><td>%5</td></tr>"
                              "</table>")
                              .arg(QApplication::palette().color(QPalette::Active, QPalette::Window).name(QColor::HexRgb))
-                             .arg(tr("<nobr>Error ID: </nobr>", "runtime error info"), strErrorId)
-                             .arg(tr("Severity: ", "runtime error info"), severity);
+                             .arg(tr("<nobr>Error ID:</nobr>", "runtime error info"), strErrorId)
+                             .arg(tr("Severity:", "runtime error info"), severity);
     if (!formatted.isEmpty())
         formatted = "<qt>" + formatted + "</qt>";
 

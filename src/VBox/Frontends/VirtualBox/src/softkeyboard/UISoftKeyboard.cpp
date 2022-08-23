@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 96430 2022-08-23 08:37:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2763,9 +2763,9 @@ void UISoftKeyboardWidget::deleteCurrentLayout()
             return;
 
         if (fileToDelete.remove(strFilePath))
-            sigStatusBarMessage(QString("%1 %2 %3").arg(UISoftKeyboard::tr("The file ")).arg(strFilePath).arg(UISoftKeyboard::tr(" has been deleted")));
+            sigStatusBarMessage(UISoftKeyboard::tr("The file %1 has been deleted").arg(strFilePath));
         else
-            sigStatusBarMessage(QString("%1 %2 %3").arg(UISoftKeyboard::tr("Deleting the file ")).arg(strFilePath).arg(UISoftKeyboard::tr(" has failed")));
+            sigStatusBarMessage(UISoftKeyboard::tr("Deleting the file %1 has failed").arg(strFilePath));
     }
 
     m_layouts.remove(m_uCurrentLayoutId);
