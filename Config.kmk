@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96424 2022-08-23 06:59:17Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 96428 2022-08-23 07:27:21Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -386,6 +386,9 @@ VBOX_WITH_OS2_ADDITIONS_BIN = 1
 #VBOX_WITH_ADDITIONS_FROM_BUILD_SERVER = 1
 # Include additions in the package
 VBOX_WITH_ADDITIONS_PACKING = 1
+# Don't include any CRTs.
+## @todo For now we need to include the (MS)CRT, needs tweaking the testcases first!
+VBOX_WITH_CRT_PACKING = 1
 # Only build the additions (for the additions build server).
 #VBOX_ONLY_ADDITIONS = 1
 ifdef VBOX_ADDITIONS_ONLY # typical mistake.
@@ -9023,7 +9026,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96424 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96428 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
