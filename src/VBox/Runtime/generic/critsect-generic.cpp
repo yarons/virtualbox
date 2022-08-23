@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: critsect-generic.cpp 96446 2022-08-23 22:13:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -421,7 +421,7 @@ RTDECL(int) RTCritSectLeave(PRTCRITSECT pCritSect)
         if (ASMAtomicDecS32(&pCritSect->cLockers) >= 0)
         {
             int rc = RTSemEventSignal(pCritSect->EventSem);
-            AssertReleaseMsg(RT_SUCCESS(rc), ("RTSemEventSignal -> %Rrc\n", rc));
+            AssertReleaseMsgRC(rc, ("RTSemEventSignal -> %Rrc\n", rc));
         }
     }
     return VINF_SUCCESS;
