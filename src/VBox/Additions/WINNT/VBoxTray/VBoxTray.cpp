@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxTray.cpp 96449 2022-08-23 23:55:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -65,12 +65,10 @@
 #include <VBox/err.h>
 
 
-static void VBoxGrapicsSetSupported(BOOL fSupported);
-
-
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+static void VBoxGrapicsSetSupported(BOOL fSupported);
 static int vboxTrayCreateTrayIcon(void);
 static LRESULT CALLBACK vboxToolWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
