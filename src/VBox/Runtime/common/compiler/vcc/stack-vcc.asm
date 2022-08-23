@@ -1,4 +1,4 @@
-; $Id: stack-vcc.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: stack-vcc.asm 96420 2022-08-23 02:14:54Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Stack related Visual C++ support routines.
 ;
@@ -118,10 +118,6 @@ extern NAME(_RTC_CheckEspFailed)
 %endif
 
 
-BEGINPROC __GSHandlerCheck
-        SEH64_END_PROLOGUE
-        int3
-ENDPROC   __GSHandlerCheck
 
 ;;
 ; Probe stack to trigger guard faults, and for x86 to allocate stack space.
