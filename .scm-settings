@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 96445 2022-08-23 17:45:19Z klaus.espenlaub@oracle.com $
 ## @file
 # Top level source code massager settings.
 #
@@ -52,7 +52,6 @@
 #
 --filter-out-dirs  ".svn"
 --filter-out-dirs  "/*out*/."
---filter-out-dirs  "/webtools/."
 --filter-out-dirs  "/*kBuild*/."
 --filter-out-dirs  "/SlickEdit/."
 
