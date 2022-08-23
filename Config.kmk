@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96428 2022-08-23 07:27:21Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 96429 2022-08-23 07:31:33Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4788,7 +4788,7 @@ SDK_VBOX_LIBPNG_LIBS           ?= $(PATH_STAGE_LIB)/VBox-libpng$(VBOX_SUFF_LIB)
 
 # lzf
 SDK_VBOX_LZF                   := lzf compressor/decompressor for dll linking.
-SDK_VBOX_LZF_INCS              ?= $(PATH_ROOT)/src/libs/liblzf-3.4
+SDK_VBOX_LZF_INCS              ?= $(PATH_ROOT)/src/libs/liblzf-3.6
 SDK_VBOX_LZF_LIBS              ?= $(PATH_STAGE_LIB)/VBox-liblzf$(VBOX_SUFF_LIB)
 
 SDK_VBOX_LZF-x86               := lzf/x86 compressor/decompressor for dll linking.
@@ -9026,7 +9026,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96428 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96429 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
