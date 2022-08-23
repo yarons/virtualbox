@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDrvInst.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestDrvInst.cpp 96421 2022-08-23 02:34:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * instdrvmain - Install guest drivers on NT4
  */
@@ -75,7 +75,7 @@ static RTEXITCODE ErrorMsgErr(const char *pszMsg, DWORD dwErr, const char *pszEr
     char    szVal[128];
     ssize_t cchVal = RTStrFormatU32(szVal, sizeof(szVal), dwErr, 10, 0, 0, fSigned ? RTSTR_F_VALSIGNED : 0);
     WriteFile(hStdOut, szVal, (DWORD)cchVal, &cbIgn, NULL);
-    WriteFile(hStdOut, RT_STR_TUPLE("/\r\n"), &cbIgn, NULL);
+    WriteFile(hStdOut, RT_STR_TUPLE("/"), &cbIgn, NULL);
     cchVal = RTStrFormatU32(szVal, sizeof(szVal), dwErr, 16, 0, 0, RTSTR_F_SPECIAL);
     WriteFile(hStdOut, szVal, (DWORD)cchVal, &cbIgn, NULL);
     WriteFile(hStdOut, RT_STR_TUPLE(")\r\n"), &cbIgn, NULL);
