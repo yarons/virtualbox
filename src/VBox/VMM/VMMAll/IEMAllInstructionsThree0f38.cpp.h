@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f38.cpp.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f38.cpp.h 96438 2022-08-23 13:16:15Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -997,7 +997,14 @@ FNIEMOP_DEF(iemOp_pmulld_Vx_Wx)
 
 
 /** Opcode 0x66 0x0f 0x38 0x41. */
-FNIEMOP_STUB(iemOp_phminposuw_Vdq_Wdq);
+FNIEMOP_DEF(iemOp_phminposuw_Vdq_Wdq)
+{
+    IEMOP_MNEMONIC2(RM, PHMINPOSUW, phminposuw, Vdq, Wdq, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OP_SIZES);
+    return FNIEMOP_CALL_1(iemOpCommonSse41Opt_FullFull_To_Full,
+                          IEM_SELECT_HOST_OR_FALLBACK(fSse41, iemAImpl_phminposuw_u128, iemAImpl_phminposuw_u128_fallback));
+}
+
+
 /*  Opcode 0x66 0x0f 0x38 0x42 - invalid. */
 /*  Opcode 0x66 0x0f 0x38 0x43 - invalid. */
 /*  Opcode 0x66 0x0f 0x38 0x44 - invalid. */
