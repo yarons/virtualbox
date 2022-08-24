@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win-dx.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-win-dx.cpp 96450 2022-08-24 08:37:38Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6338,6 +6338,13 @@ static void dxSetupPipeline(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
                             }
 
                             cResources = idxSR + 1;
+
+                            /* Update componentType of the pixel shader output signature to correspond to the bound resources. */
+                            if (idxSR < pDXShader->shaderInfo.cOutputSignature)
+                            {
+                                SVGA3dDXSignatureEntry *pSignatureEntry = &pDXShader->shaderInfo.aOutputSignature[idxSR];
+                                pSignatureEntry->componentType = DXShaderComponentTypeFromFormat(pSRViewEntry->format);
+                            }
                         }
                     }
 

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 96450 2022-08-24 08:37:38Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -44,7 +44,7 @@
 #pragma pack()
 #include "vmsvga_headers_end.h"
 
-/* SVGA3dDXSignatureRegisterComponentType */
+/* SVGA3dDXSignatureRegisterComponentType (D3D10_SB_REGISTER_COMPONENT_TYPE) */
 #define SVGADX_SIGNATURE_REGISTER_COMPONENT_UINT32  1
 #define SVGADX_SIGNATURE_REGISTER_COMPONENT_SINT32  2
 #define SVGADX_SIGNATURE_REGISTER_COMPONENT_FLOAT32 3
