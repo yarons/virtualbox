@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96464 2022-08-24 22:34:31Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the libxml2 library.
 #
@@ -111,6 +111,8 @@ endif
 LIBRARIES += VBox-libxml2-static
 VBox-libxml2-static_TEMPLATE = VBoxR3StaticNonPedantic
 VBox-libxml2-static_EXTENDS = VBox-libxml2
-
+ifdef VBOX_WITH_NOCRT_STATIC
+ VBox-libxml2-static_DEFS = $(VBox-libxml2_DEFS) IPRT_NO_CRT_FOR_3RD_PARTY
+endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
