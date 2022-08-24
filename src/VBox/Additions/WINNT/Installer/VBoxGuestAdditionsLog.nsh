@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsLog.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsLog.nsh 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionLog.nsh - Logging functions.
 ;
@@ -72,7 +72,7 @@
     ; Parameters:
     ; - String: Description / Body
     ; - String: Title / Name of application
-    ; - Integer: Type of message: 0 (Info), 1 (Warning), 2 (Error)
+    ; - Integer: Type of message: 1 (Info), 2 (Warning), 3 (Error)
     ; - Integer: Time (in msec) to show the notification
     VBoxGuestInstallHelper::VBoxTrayShowBallonMsg "${text}" "VirtualBox Guest Additions Setup" ${type} 5000
     Pop $0 ; Get return value (ignored for now)
