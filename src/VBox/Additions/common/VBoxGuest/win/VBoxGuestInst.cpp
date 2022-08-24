@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 96459 2022-08-24 22:02:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestInst.cpp 96460 2022-08-24 22:04:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver (for testing).
  */
@@ -41,7 +41,7 @@
 #include <iprt/win/windows.h>
 
 #include <VBox/VBoxGuest.h> /* for VBOXGUEST_SERVICE_NAME */
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/message.h>
 #include <iprt/stream.h>
 #include <iprt/utf16.h>
