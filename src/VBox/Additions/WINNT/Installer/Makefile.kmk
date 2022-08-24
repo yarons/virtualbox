@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96449 2022-08-23 23:55:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96453 2022-08-24 10:15:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -385,11 +385,7 @@ VBoxAddInstallNt3x_TEMPLATE := VBoxGuestR3Exe
 else
 VBoxAddInstallNt3x_TEMPLATE := VBoxGuestR3NoCrtExe
 endif
-VBoxAddInstallNt3x_LDFLAGS  := /VERBOSE
-VBoxAddInstallNt3x_SOURCES  := \
-	VBoxAddInstallNt3x.cpp \
-
-
+VBoxAddInstallNt3x_SOURCES  := VBoxAddInstallNt3x.cpp
 VBoxAddInstallNt3x.cpp_DEPS = $(VBOX_SVN_REV_HEADER)
 
 

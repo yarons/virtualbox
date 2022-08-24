@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96448 2022-08-23 22:35:23Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96453 2022-08-24 10:15:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3185,6 +3185,8 @@ RuntimeR3NoCrt_SOURCES  := \
 	common/misc/getoptargv.cpp \
 	common/misc/message.cpp \
 	common/err/errmsg.cpp \
+       r3/init-data.cpp \
+	r3/process-data.cpp \
 	generic/uuid-generic.cpp \
 	generic/rtStrFormatKernelAddress-generic.cpp
 

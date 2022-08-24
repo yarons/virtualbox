@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96453 2022-08-24 10:15:07Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -265,6 +265,9 @@ ifeq ($(KBUILD_TARGET),win)
  #
  PROGRAMS.win.x86 += VBoxGuestInstNT
  VBoxGuestInstNT_TEMPLATE = VBoxGuestR3Exe
+ ifndef VBOX_WITH_NOCRT_STATIC
+  VBoxGuestInstNT_LDFLAGS := -Include:_vcc100_kernel32_fakes_asm # Temporary kludge to deal with some link order issue.
+ endif
  VBoxGuestInstNT_SOURCES  = win/VBoxGuestInst.cpp
  VBoxGuestInstNT_USES     = vboximportchecker
  VBoxGuestInstNT_VBOX_IMPORT_CHECKER.win.x86 = nt31
