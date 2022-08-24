@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96433 2022-08-23 08:45:28Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 96466 2022-08-24 22:40:06Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4894,7 +4894,7 @@ SDK_VBOX_SOFTFLOATGUESTR3SHARED_INCS       = \
 	$(PATH_ROOT)/src/libs/softfloat-3e/source/include
 SDK_VBOX_SOFTFLOATGUESTR3SHARED_LIBS.x86  = \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBox-SoftFloatGuestR3Shared-x86$(VBOX_SUFF_LIB)
-SDK_VBOX_SOFTFLOATGUESTR3SHARED_LIBS.$(KBUILD_TARGET) = \
+SDK_VBOX_SOFTFLOATGUESTR3SHARED_LIBS.$(KBUILD_TARGET_ARCH) = \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBox-SoftFloatGuestR3Shared$(VBOX_SUFF_LIB)
 
 ifdef VBOX_WITH_LIBSSH
@@ -8807,7 +8807,7 @@ VBOX_LIB_VBGL_R3_XORG            = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR3LibXOrg
 VBOX_LIB_VBGL_R3_SHARED          = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR3LibShared$(VBOX_SUFF_LIB)
 VBOX_LIB_VBGL_R0BASE             = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR0LibBase$(VBOX_SUFF_LIB)
 VBOX_LIB_VBGL_R0                 = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR0Lib$(VBOX_SUFF_LIB)
-ifeq ($(KBUILD_TARGET),x86)
+ifeq ($(KBUILD_TARGET_ARCH),x86)
  VBOX_LIB_IPRT_GUEST_R3_X86      = $(VBOX_LIB_IPRT_GUEST_R3)
  VBOX_LIB_IPRT_GUEST_R3_SHARED_X86 = $(VBOX_LIB_IPRT_GUEST_R3_SHARED)
  VBOX_LIB_VBGL_R3_X86            = $(VBOX_LIB_VBGL_R3)
@@ -9026,7 +9026,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96433 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96466 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
