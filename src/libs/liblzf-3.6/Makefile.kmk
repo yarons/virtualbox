@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96462 2022-08-24 22:17:09Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96463 2022-08-24 22:18:52Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for liblzf.
 #
@@ -46,6 +46,9 @@ VBox-liblzf_SOURCES = \
 
 VBox-liblzf-static_TEMPLATE   = VBoxR3StaticNonPedantic
 VBox-liblzf-static_EXTENDS    = VBox-liblzf
+ifdef VBOX_WITH_NOCRT_STATIC
+ VBox-liblzf-static_DEFS      = $(VBox-liblzf_DEFS) IPRT_NO_CRT_FOR_3RD_PARTY
+endif
 
 ifdef VBOX_WITH_32_ON_64_MAIN_API # 32-bit edition.
  LIBRARIES += VBox-liblzf-x86
