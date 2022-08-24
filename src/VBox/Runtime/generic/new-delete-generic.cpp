@@ -1,4 +1,4 @@
-/* $Id: new-delete-generic.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: new-delete-generic.cpp 96471 2022-08-24 23:47:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -78,8 +78,7 @@ void RT_NEW_DELETE_CDECL operator delete(void *pv) RT_NEW_DELETE_NOTHROW
 #ifdef __cpp_sized_deallocation
 void RT_NEW_DELETE_CDECL operator delete(void *pv, RT_NEW_DELETE_SIZE_T cb) RT_NEW_DELETE_NOTHROW
 {
-    NOREF(cb);
-    AssertMsgFailed(("cb ignored!\n"));
+    RT_NOREF_PV(cb);
     RTMemFree(pv);
 }
 #endif
@@ -118,7 +117,7 @@ void *RT_NEW_DELETE_CDECL operator new[](RT_NEW_DELETE_SIZE_T cb, const std::not
 
 void *RT_NEW_DELETE_CDECL operator new[](RT_NEW_DELETE_SIZE_T cb, void *pvPlacement) RT_NEW_DELETE_NOTHROW
 {
-    RT_NOREF(cb);
+    RT_NOREF_PV(cb);
     return pvPlacement;
 }
 
@@ -132,8 +131,7 @@ void RT_NEW_DELETE_CDECL operator delete[](void * pv) RT_NEW_DELETE_NOTHROW
 #ifdef __cpp_sized_deallocation
 void RT_NEW_DELETE_CDECL operator delete[](void * pv, RT_NEW_DELETE_SIZE_T cb) RT_NEW_DELETE_NOTHROW
 {
-    NOREF(cb);
-    AssertMsgFailed(("cb ignored!\n"));
+    RT_NOREF_PV(cb);
     RTMemFree(pv);
 }
 #endif
