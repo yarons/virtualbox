@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96470 2022-08-24 23:14:35Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 96496 2022-08-25 16:53:00Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1444,10 +1444,6 @@ ifdef VBOX_OSE
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_WITH_32_ON_64_MAIN_API=
  endif
- # Disable the incomplete 3D code for now.
- VBOX_WITH_VMSVGA3D_DX=
- VBOX_WITH_DXVK=
- VBOX_WITH_3D_ACCELERATION=
  if1of ($(KBUILD_TARGET), win)
   # tar/gzip uncommon on Windows
   VBOX_WITH_EXTPACK_VBOXDTRACE=
@@ -9027,7 +9023,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96470 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96496 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
