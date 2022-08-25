@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 96472 2022-08-24 23:48:12Z knut.osmundsen@oracle.com $ */
+/* $Id: vkat.cpp 96473 2022-08-25 00:14:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -1279,7 +1279,7 @@ const VKATCMD g_CmdVerify =
  * g_fTerminate).
  */
 #ifdef RT_OS_WINDOWS
-static BOOL CALLBACK audioTestConsoleCtrlHandler(DWORD dwCtrlType)
+static BOOL CALLBACK audioTestConsoleCtrlHandler(DWORD dwCtrlType) RT_NOEXCEPT
 {
     if (dwCtrlType != CTRL_C_EVENT && dwCtrlType != CTRL_BREAK_EVENT)
         return false;
