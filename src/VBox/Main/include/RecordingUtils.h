@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.h 96478 2022-08-25 06:56:29Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingUtils.h 96479 2022-08-25 06:57:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording utility header.
  */
@@ -202,7 +202,7 @@ private:
     uint8_t *mBuf;
 };
 
-int RecordingUtilsRGBToYUV(uint32_t uPixelFormat,
+int RecordingUtilsRGBToYUV(RECORDINGPIXELFMT enmPixelFormat,
                            uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
                            uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
 
