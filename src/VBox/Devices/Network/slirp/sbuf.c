@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: sbuf.c 96492 2022-08-25 14:34:59Z brent.paulson@oracle.com $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -90,7 +90,7 @@ sbreserve(PNATState pData, struct sbuf *sb, int size)
         {
             sb->sb_wptr =
             sb->sb_rptr =
-            sb->sb_data = (char *)RTMemRealloc(sb->sb_data, size);
+            sb->sb_data = (char *)RTMemReallocZ(sb->sb_data, sb->sb_datalen, size);
             sb->sb_cc = 0;
             if (sb->sb_wptr)
                 sb->sb_datalen = size;
@@ -100,7 +100,7 @@ sbreserve(PNATState pData, struct sbuf *sb, int size)
     }
     else
     {
-        sb->sb_wptr = sb->sb_rptr = sb->sb_data = (char *)RTMemAlloc(size);
+        sb->sb_wptr = sb->sb_rptr = sb->sb_data = (char *)RTMemAllocZ(size);
         sb->sb_cc = 0;
         if (sb->sb_wptr)
             sb->sb_datalen = size;
@@ -156,7 +156,7 @@ sbappend(PNATState pData, struct socket *so, struct mbuf *m)
 
         if (m->m_next)
         {
-            buf = RTMemAlloc(mlen);
+            buf = RTMemAllocZ(mlen);
             if (buf == NULL)
             {
                 ret = 0;
