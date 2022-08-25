@@ -1,4 +1,4 @@
-/* $Id: message.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: message.cpp 96504 2022-08-25 22:41:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Error reporting to standard error.
  */
@@ -208,6 +208,25 @@ RTDECL(RTEXITCODE) RTMsgInitFailure(int rcRTR3Init)
     return RTEXITCODE_INIT;
 }
 RT_EXPORT_SYMBOL(RTMsgInitFailure);
+
+
+RTDECL(RTEXITCODE)  RTMsgSyntax(const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    RTMsgSyntaxV(pszFormat, va);
+    va_end(va);
+    return RTEXITCODE_SYNTAX;
+}
+RT_EXPORT_SYMBOL(RTMsgSyntax);
+
+
+RTDECL(RTEXITCODE)  RTMsgSyntaxV(const char *pszFormat, va_list va)
+{
+    rtMsgWorker(g_pStdOut, "syntax error: ", pszFormat, va);
+    return RTEXITCODE_SYNTAX;
+}
+RT_EXPORT_SYMBOL(RTMsgSyntaxV);
 
 
 RTDECL(int)  RTMsgWarning(const char *pszFormat, ...)

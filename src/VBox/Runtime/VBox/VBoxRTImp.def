@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxRTImp.def 96504 2022-08-25 22:41:51Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1446,6 +1446,8 @@ EXPORTS
     RTMsgInfo
     RTMsgInfoV
     RTMsgInitFailure
+    RTMsgSyntax
+    RTMsgSyntaxV
     RTMsgWarning
     RTMsgWarningV
     RTNetIPv4AddDataChecksum
