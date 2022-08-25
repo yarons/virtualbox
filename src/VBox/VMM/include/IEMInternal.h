@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96454 2022-08-24 12:53:47Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96491 2022-08-25 14:22:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3630,7 +3630,8 @@ VBOXSTRICTRC    iemMemStackPushU64Ex(PVMCPUCC pVCpu, uint64_t u64Value, PRTUINT6
 VBOXSTRICTRC    iemMemStackPushU32SReg(PVMCPUCC pVCpu, uint32_t u32Value) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemStackPopBeginSpecial(PVMCPUCC pVCpu, size_t cbMem, uint32_t cbAlign,
                                            void const **ppvMem, uint64_t *puNewRsp) RT_NOEXCEPT;
-VBOXSTRICTRC    iemMemStackPopContinueSpecial(PVMCPUCC pVCpu, size_t cbMem, void const **ppvMem, uint64_t *puNewRsp) RT_NOEXCEPT;
+VBOXSTRICTRC    iemMemStackPopContinueSpecial(PVMCPUCC pVCpu, size_t off, size_t cbMem,
+                                              void const **ppvMem, uint64_t *puNewRsp) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemStackPopDoneSpecial(PVMCPUCC pVCpu, void const *pvMem) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemStackPopU16(PVMCPUCC pVCpu, uint16_t *pu16Value) RT_NOEXCEPT;
 VBOXSTRICTRC    iemMemStackPopU32(PVMCPUCC pVCpu, uint32_t *pu32Value) RT_NOEXCEPT;
