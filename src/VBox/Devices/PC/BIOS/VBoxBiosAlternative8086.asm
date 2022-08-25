@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $ 
+; $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -6,7 +6,7 @@
 ;
 ; Source file: post.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  BIOS POST routines. Used only during initialization.
 ;  
 ;  
@@ -34,7 +34,7 @@
 ;
 ; Source file: bios.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -90,7 +90,7 @@
 ;
 ; Source file: print.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -146,7 +146,7 @@
 ;
 ; Source file: ata.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ATA disk support.
 ;  
 ;  
@@ -202,7 +202,7 @@
 ;
 ; Source file: floppy.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -258,7 +258,7 @@
 ;
 ; Source file: floppyt.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Floppy drive tables.
 ;  
 ;  
@@ -286,7 +286,7 @@
 ;
 ; Source file: eltorito.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -342,7 +342,7 @@
 ;
 ; Source file: boot.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -398,7 +398,7 @@
 ;
 ; Source file: keyboard.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -454,7 +454,7 @@
 ;
 ; Source file: disk.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -510,7 +510,7 @@
 ;
 ; Source file: serial.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -566,7 +566,7 @@
 ;
 ; Source file: system.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -622,7 +622,7 @@
 ;
 ; Source file: invop.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Real mode invalid opcode handler.
 ;  
 ;  
@@ -702,7 +702,7 @@
 ;
 ; Source file: ps2mouse.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -758,7 +758,7 @@
 ;
 ; Source file: parallel.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -814,7 +814,7 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
@@ -842,7 +842,7 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
@@ -870,7 +870,7 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -898,7 +898,7 @@
 ;
 ; Source file: virtio.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  VirtIO-SCSI host adapter driver to boot from disks.
 ;  
 ;  
@@ -926,7 +926,7 @@
 ;
 ; Source file: buslogic.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  BusLogic SCSI host adapter driver to boot from disks.
 ;  
 ;  
@@ -954,7 +954,7 @@
 ;
 ; Source file: lsilogic.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  LsiLogic SCSI host adapter driver to boot from disks.
 ;  
 ;  
@@ -982,7 +982,7 @@
 ;
 ; Source file: apm.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  APM BIOS support. Implements APM version 1.2.
 ;  
 ;  
@@ -1010,7 +1010,7 @@
 ;
 ; Source file: pcibios.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  PCI BIOS support.
 ;  
 ;  
@@ -1038,7 +1038,7 @@
 ;
 ; Source file: pciutil.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Utility routines for calling the PCI BIOS.
 ;  
 ;  
@@ -1066,7 +1066,7 @@
 ;
 ; Source file: vds.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Utility routines for calling the Virtual DMA Services.
 ;  
 ;  
@@ -1094,7 +1094,7 @@
 ;
 ; Source file: __U4M.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1123,7 +1123,7 @@
 ;
 ; Source file: __U4D.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1152,7 +1152,7 @@
 ;
 ; Source file: __U8RS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1181,7 +1181,7 @@
 ;
 ; Source file: __U8LS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1210,7 +1210,7 @@
 ;
 ; Source file: fmemset.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1239,7 +1239,7 @@
 ;
 ; Source file: fmemcpy.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  Compiler support routines.
 ;  
 ;  
@@ -1268,7 +1268,7 @@
 ;
 ; Source file: pcibio32.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  BIOS32 service directory and 32-bit PCI BIOS entry point
 ;  
 ;  
@@ -1326,7 +1326,7 @@
 ;
 ; Source file: orgs.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  ???
 ;  
 ;  
@@ -1382,7 +1382,7 @@
 ;
 ; Source file: DoUInt32Div.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -1410,7 +1410,7 @@
 ;
 ; Source file: ASMBitLastSetU16.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  BiosCommonCode - ASMBitLastSetU16() - borrowed from IPRT.
 ;  
 ;  
@@ -1439,7 +1439,7 @@
 ;
 ; Source file: pci32.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 96413 2022-08-22 20:06:11Z klaus.espenlaub@oracle.com $
+;  $Id: VBoxBiosAlternative8086.asm 96499 2022-08-25 17:11:52Z adam.paul@oracle.com $
 ;  32-bit PCI BIOS wrapper.
 ;  
 ;  
@@ -1620,7 +1620,7 @@ section CONST progbits vstart=0xe0 align=1 ; size=0xcda class=DATA group=DGROUP
 section CONST2 progbits vstart=0xdba align=1 ; size=0x400 class=DATA group=DGROUP
   ; disGetNextSymbol 0xf0dba LB 0x400 -> off=0x0 cb=0000000000000018 uValue=00000000000f0dba 'bios_cvs_version_string'
 bios_cvs_version_string:                     ; 0xf0dba LB 0x18
-    db  'VirtualBox 7.0.0_ALPHA2', 000h
+    db  'VirtualBox 7.0.0_BETA1', 000h, 000h
   ; disGetNextSymbol 0xf0dd2 LB 0x3e8 -> off=0x0 cb=0000000000000008 uValue=00000000000f0dd2 '_bios_prefix_string'
 _bios_prefix_string:                         ; 0xf0dd2 LB 0x8
     db  'BIOS: ', 000h, 000h
@@ -19831,4 +19831,4 @@ biosorg_check_before_or_at_0FFEEh:           ; 0xfff80 LB 0x70
 cpu_reset:                                   ; 0xffff0 LB 0x10
     jmp far 0f000h:0e05bh                     ; ea 5b e0 00 f0              ; 0xffff0 orgs.asm:2114
   ; disGetNextSymbol 0xffff5 LB 0xb -> off=0xb cb=0000000000000000 uValue=0000000000100000 '_dummy_addr_0x100000'
-    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 0abh
+    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 0f6h
