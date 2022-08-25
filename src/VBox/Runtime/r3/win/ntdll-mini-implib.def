@@ -1,4 +1,4 @@
-; $Id: ntdll-mini-implib.def 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: ntdll-mini-implib.def 96505 2022-08-25 22:44:04Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Minimal NTDLL import library defintion file.
 ;
@@ -43,6 +43,7 @@ EXPORTS
 
     NtAlertThread                         ;;= _NtAlertThread@4
     NtAllocateVirtualMemory               ;;= _NtAllocateVirtualMemory@24
+    NtCancelIoFile                        ;;= _NtCancelIoFile@8
     NtClearEvent                          ;;= _NtClearEvent@4
     NtClose                               ;;= _NtClose@4
     NtCreateEvent                         ;;= _NtCreateEvent@20
