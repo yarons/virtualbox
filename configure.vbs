@@ -1,4 +1,4 @@
-' $Id: configure.vbs 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+' $Id: configure.vbs 96493 2022-08-25 14:55:07Z klaus.espenlaub@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1937,7 +1937,6 @@ function CheckForPythonSub(strPathPython)
    CheckForPythonSub = ""
    if strPathPython <> "" then
       if   LogFileExists(strPathPython, "python.exe") _
-       and LogDirExists(strPathPython & "/DLLs") _
       then
          CheckForPythonSub = UnixSlashes(PathAbs(strPathPython & "/python.exe"))
       end if
