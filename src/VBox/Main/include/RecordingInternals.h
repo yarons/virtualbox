@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 96480 2022-08-25 07:02:55Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.h 96481 2022-08-25 07:06:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals header.
  */
@@ -425,9 +425,12 @@ typedef enum RECORDINGBLOCKTYPE
 } RECORDINGBLOCKTYPE;
 
 #ifdef VBOX_WITH_AUDIO_RECORDING
+int RecordingVideoFrameInit(PRECORDINGVIDEOFRAME pFrame, int w, int h, uint8_t uBPP, RECORDINGPIXELFMT enmPixelFmt);
+void RecordingVideoFrameDestroy(PRECORDINGVIDEOFRAME pFrame);
 void RecordingAudioFrameFree(PRECORDINGAUDIOFRAME pFrame);
 #endif
 void RecordingVideoFrameFree(PRECORDINGVIDEOFRAME pFrame);
+void RecordingFrameFree(PRECORDINGFRAME pFrame);
 
 /**
  * Generic structure for keeping a single video recording (data) block.
