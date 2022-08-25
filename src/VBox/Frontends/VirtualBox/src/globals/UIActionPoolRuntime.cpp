@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 96483 2022-08-25 10:50:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -615,7 +615,7 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE
     {
         setName(QApplication::translate("UIActionPool", "Show &Log..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Display the log viewer widget."));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the log viewer window"));
     }
 };
 

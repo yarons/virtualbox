@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationObjects.h 96483 2022-08-25 10:50:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -454,7 +454,7 @@ public:
         /** Notifies about inability to read extpack file.
           * @param  comExtPackFile  Brings extension pack manager trying to open extension pack.
           * @param  strFilename     Brings extension pack file name. */
-        static void cannotOpenExtPackFile(const CExtPackFile &comExtPackFile, const QString &strFilename);
+        static void cannotReadExtPack(const CExtPackFile &comExtPackFile, const QString &strFilename);
 
         /** Notifies about inability to find cloud network.
           * @param  comVBox         Brings common VBox object being search through.
