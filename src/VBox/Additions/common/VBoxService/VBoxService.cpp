@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 96502 2022-08-25 22:36:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 96503 2022-08-25 22:40:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -1204,7 +1204,7 @@ int main(int argc, char **argv)
     SetLastError(NO_ERROR);
     HANDLE hMutexAppRunning;
     if (RTSystemGetNtVersion() >= RTSYSTEM_MAKE_NT_VERSION(5,0,0)) /* Windows 2000 */
-        hMutexAppRunning = CreateMutexW(NULL, FALSE, L"Global\\" VBOXSERVICE_NAME);
+        hMutexAppRunning = CreateMutexW(NULL, FALSE, L"Global\\" RT_CONCAT(L,VBOXSERVICE_NAME));
     else
         hMutexAppRunning = CreateMutexW(NULL, FALSE, RT_CONCAT(L,VBOXSERVICE_NAME));
     if (hMutexAppRunning == NULL)
