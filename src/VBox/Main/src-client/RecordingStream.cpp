@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: RecordingStream.cpp 96482 2022-08-25 07:10:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -557,13 +557,13 @@ int RecordingStream::SendVideoFrame(uint32_t x, uint32_t y, uint32_t uPixelForma
             switch (uBPP)
             {
                 case 32:
-                    pFrame->uPixelFormat = RECORDINGPIXELFMT_RGB32;
+                    pFrame->enmPixelFmt = RECORDINGPIXELFMT_RGB32;
                     break;
                 case 24:
-                    pFrame->uPixelFormat = RECORDINGPIXELFMT_RGB24;
+                    pFrame->enmPixelFmt = RECORDINGPIXELFMT_RGB24;
                     break;
                 case 16:
-                    pFrame->uPixelFormat = RECORDINGPIXELFMT_RGB565;
+                    pFrame->enmPixelFmt = RECORDINGPIXELFMT_RGB565;
                     break;
                 default:
                     AssertMsgFailedBreakStmt(("Unknown color depth (%RU32)\n", uBPP), vrc = VERR_NOT_SUPPORTED);
