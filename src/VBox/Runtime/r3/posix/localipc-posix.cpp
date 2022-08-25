@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: localipc-posix.cpp 96475 2022-08-25 02:27:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -241,10 +241,9 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
                 /*
                  * Create the local (unix) socket and bind to it.
                  */
-                rc = rtSocketCreate(&pThis->hSocket, AF_LOCAL, SOCK_STREAM, 0 /*iProtocol*/);
+                rc = rtSocketCreate(&pThis->hSocket, AF_LOCAL, SOCK_STREAM, 0 /*iProtocol*/, false /*fInheritable*/);
                 if (RT_SUCCESS(rc))
                 {
-                    RTSocketSetInheritance(pThis->hSocket, false /*fInheritable*/);
                     signal(SIGPIPE, SIG_IGN); /* Required on solaris, at least. */
 
                     uint8_t cbAddr;
@@ -560,10 +559,9 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
                 /*
                  * Create the local (unix) socket and try connect to the server.
                  */
-                rc = rtSocketCreate(&pThis->hSocket, AF_LOCAL, SOCK_STREAM, 0 /*iProtocol*/);
+                rc = rtSocketCreate(&pThis->hSocket, AF_LOCAL, SOCK_STREAM, 0 /*iProtocol*/, false /*fInheritable*/);
                 if (RT_SUCCESS(rc))
                 {
-                    RTSocketSetInheritance(pThis->hSocket, false /*fInheritable*/);
                     signal(SIGPIPE, SIG_IGN); /* Required on solaris, at least. */
 
                     struct sockaddr_un  Addr;

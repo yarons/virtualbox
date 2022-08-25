@@ -1,4 +1,4 @@
-/* $Id: socket.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: socket.h 96475 2022-08-25 02:27:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -66,7 +66,7 @@ RT_C_DECLS_BEGIN
 #ifndef IPRT_INTERNAL_SOCKET_POLLING_ONLY
 DECLHIDDEN(int) rtSocketResolverError(void);
 DECLHIDDEN(int) rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative, bool fLeaveOpen);
-DECLHIDDEN(int) rtSocketCreate(PRTSOCKET phSocket, int iDomain, int iType, int iProtocol);
+DECLHIDDEN(int) rtSocketCreate(PRTSOCKET phSocket, int iDomain, int iType, int iProtocol, bool fInheritable);
 DECLHIDDEN(int) rtSocketCreateTcpPair(RTSOCKET *phServer, RTSOCKET *phClient);
 DECLHIDDEN(int) rtSocketBind(RTSOCKET hSocket, PCRTNETADDR pAddr);
 DECLHIDDEN(int) rtSocketBindRawAddr(RTSOCKET hSocket, void const *pvAddr, size_t cbAddr);
