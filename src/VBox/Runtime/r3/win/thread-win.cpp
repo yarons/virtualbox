@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread-win.cpp 96476 2022-08-25 02:46:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -194,7 +194,7 @@ static void rtThreadWinTellDebuggerThreadName(uint32_t idThread, const char *psz
  */
 DECLINLINE(void) rtThreadWinSetThreadName(PRTTHREADINT pThread, DWORD idThread)
 {
-    if (IsDebuggerPresent())
+    if (g_pfnIsDebuggerPresent && g_pfnIsDebuggerPresent())
         rtThreadWinTellDebuggerThreadName(idThread, &pThread->szName[0]);
 
     /* The SetThreadDescription API introduced in windows 10 1607 / server 2016

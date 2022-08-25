@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 96475 2022-08-25 02:27:54Z knut.osmundsen@oracle.com $ */
+/* $Id: internal-r3-win.h 96476 2022-08-25 02:46:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -115,14 +115,16 @@ extern DECL_HIDDEN_DATA(OSVERSIONINFOEXW)               g_WinOsInfoEx;
 
 extern DECL_HIDDEN_DATA(HMODULE)                        g_hModKernel32;
 typedef UINT (WINAPI *PFNGETWINSYSDIR)(LPWSTR,UINT);
-extern DECL_HIDDEN_DATA(PFNGETWINSYSDIR)                g_pfnGetSystemWindowsDirectoryW;
+extern DECL_HIDDEN_DATA(PFNGETWINSYSDIR)                                g_pfnGetSystemWindowsDirectoryW;
 extern DECL_HIDDEN_DATA(decltype(SystemTimeToTzSpecificLocalTime) *)    g_pfnSystemTimeToTzSpecificLocalTime;
 typedef HANDLE (WINAPI *PFNCREATEWAITABLETIMEREX)(LPSECURITY_ATTRIBUTES, LPCWSTR, DWORD, DWORD);
-extern DECL_HIDDEN_DATA(PFNCREATEWAITABLETIMEREX)       g_pfnCreateWaitableTimerExW;
+extern DECL_HIDDEN_DATA(PFNCREATEWAITABLETIMEREX)                       g_pfnCreateWaitableTimerExW;
 extern DECL_HIDDEN_DATA(decltype(GetHandleInformation) *)               g_pfnGetHandleInformation;
 extern DECL_HIDDEN_DATA(decltype(SetHandleInformation) *)               g_pfnSetHandleInformation;
+extern DECL_HIDDEN_DATA(decltype(IsDebuggerPresent) *)                  g_pfnIsDebuggerPresent;
+extern DECL_HIDDEN_DATA(decltype(GetSystemTimeAsFileTime) *)            g_pfnGetSystemTimeAsFileTime;
 typedef UINT (WINAPI *PFNGETWINSYSDIR)(LPWSTR,UINT);
-extern DECL_HIDDEN_DATA(PFNGETWINSYSDIR)                g_pfnGetSystemWindowsDirectoryW;
+extern DECL_HIDDEN_DATA(PFNGETWINSYSDIR)                                g_pfnGetSystemWindowsDirectoryW;
 
 
 extern DECL_HIDDEN_DATA(HMODULE)                        g_hModNtDll;
