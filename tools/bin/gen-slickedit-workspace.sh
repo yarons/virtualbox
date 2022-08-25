@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: gen-slickedit-workspace.sh 96474 2022-08-25 02:23:55Z knut.osmundsen@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -444,6 +444,9 @@ my_generate_usercpp_h()
 #define RT_COMPILER_GROKS_64BIT_BITFIELDS
 #define RT_COMPILER_WITH_80BIT_LONG_DOUBLE
 #define RT_DECL_NTAPI(type)             type
+#define RT_CONCAT(a,b)                  a##b
+#define RT_CONCAT3(a,b,c)               a##b##c
+#define RT_CONCAT4(a,b,c,d)             a##b##c##d
 
 #define ATL_NO_VTABLE
 #define BEGIN_COM_MAP(a)
