@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVMStructRC.cpp 96511 2022-08-26 03:13:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -93,16 +93,14 @@ AssertCompileSize(RTHCPHYS, 8);
 #include <VBox/param.h>
 #include <iprt/x86.h>
 #include <iprt/assert.h>
-
-/* we don't use iprt here because we're pretending to be in GC! */
-#include <stdio.h>
+#include <iprt/stream.h>
 
 
 int main()
 {
-#define GEN_CHECK_SIZE(s)       printf("    CHECK_SIZE(%s, %u);\n",    #s, (unsigned)sizeof(s))
-#define GEN_CHECK_OFF(s, m)     printf("    CHECK_OFF(%s, %u, %s);\n", #s, (unsigned)RT_OFFSETOF(s, m), #m)
-#define GEN_CHECK_OFF_DOT(s, m) printf("    CHECK_OFF(%s, %u, %s);\n", #s, (unsigned)RT_OFFSETOF(s, m), #m)
+#define GEN_CHECK_SIZE(s)       RTPrintf("    CHECK_SIZE(%s, %u);\n",    #s, (unsigned)sizeof(s))
+#define GEN_CHECK_OFF(s, m)     RTPrintf("    CHECK_OFF(%s, %u, %s);\n", #s, (unsigned)RT_OFFSETOF(s, m), #m)
+#define GEN_CHECK_OFF_DOT(s, m) RTPrintf("    CHECK_OFF(%s, %u, %s);\n", #s, (unsigned)RT_OFFSETOF(s, m), #m)
 #include "tstVMStruct.h"
     return (0);
 }

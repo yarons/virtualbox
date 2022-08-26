@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 96511 2022-08-26 03:13:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -88,7 +88,7 @@
 
 #include "internal/alignmentchecks.h"
 #include "internal/magics.h"
-#ifdef IPRT_NO_CRT
+#if defined(IPRT_NO_CRT) || defined(IN_RT_STATIC)
 # include "internal/initterm.h"
 #endif
 
@@ -365,11 +365,13 @@ static int rtStrmAllocLock(PRTSTREAM pStream)
 
     /* The native stream lock are normally not recursive. */
     uint32_t fFlags = RTCRITSECT_FLAGS_NO_NESTING;
-# ifdef IPRT_NO_CRT
+# if defined(IPRT_NO_CRT) || defined(IN_RT_STATIC)
     /* IPRT is often used deliberatly without initialization in no-CRT
        binaries (for instance VBoxAddInstallNt3x.exe), so in order to avoid
        asserting in the lock validator we add the bootstrap hack that disable
-       lock validation for the section. */
+       lock validation for the section.
+       Update: Applying this to all builds involving static linking, as it's
+               now going to be used for tests running at compile-time too.  */
     if (!rtInitIsInitialized())
         fFlags |= RTCRITSECT_FLAGS_BOOTSTRAP_HACK;
 # endif

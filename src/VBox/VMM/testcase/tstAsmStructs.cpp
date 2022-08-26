@@ -1,4 +1,4 @@
-/* $Id: tstAsmStructs.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstAsmStructs.cpp 96511 2022-08-26 03:13:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
@@ -41,7 +41,7 @@
 #include <VBox/vmm/hm_vmx.h>
 
 #include "tstHelp.h"
-#include <stdio.h>
+#include <iprt/stream.h>
 
 /* Hack for validating nested HMCPU structures. */
 typedef HMCPU::HMCPUVMX HMCPUVMX;
@@ -57,7 +57,7 @@ typedef HMR0PERVCPU::HMR0CPUSVM HMR0CPUSVM;
 int main()
 {
     int rc = 0;
-    printf("tstAsmStructs: TESTING\n");
+    RTPrintf("tstAsmStructs: TESTING\n");
 
 #ifdef IN_RING3
 # include "tstAsmStructsHC.h"
@@ -66,8 +66,9 @@ int main()
 #endif
 
     if (rc)
-        printf("tstAsmStructs: FAILURE - %d errors \n", rc);
+        RTPrintf("tstAsmStructs: FAILURE - %d errors \n", rc);
     else
-        printf("tstAsmStructs: SUCCESS\n");
+        RTPrintf("tstAsmStructs: SUCCESS\n");
     return rc;
 }
+
