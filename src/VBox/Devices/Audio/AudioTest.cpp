@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AudioTest.cpp 96518 2022-08-26 11:36:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -2636,6 +2636,7 @@ static int audioTestToneVerifyBeacon(PAUDIOTESTVERIFYJOB pVerJob,
     AssertRCReturn(rc, rc);
 
     AUDIOTESTTONEBEACON Beacon;
+    RT_ZERO(Beacon);
     AudioTestBeaconInit(&Beacon, pVerJob->idxTest,
                           fIn
                         ? (fPre ? AUDIOTESTTONEBEACONTYPE_PLAY_PRE : AUDIOTESTTONEBEACONTYPE_PLAY_POST)
