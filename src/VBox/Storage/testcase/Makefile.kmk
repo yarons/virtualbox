@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96523 2022-08-26 18:20:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96524 2022-08-26 18:20:51Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -148,7 +148,7 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
 	../VDIfVfs.cpp
  vbox-img_SOURCES.win = \
 	vbox-img.rc
- ifeq ($(vbox-img_TEMPLATE),VBOXR3)
+ ifeq ($(vbox-img_TEMPLATE),VBOXR3EXE)
   vbox-img_LIBS = \
  	$(LIB_RUNTIME)
  else
