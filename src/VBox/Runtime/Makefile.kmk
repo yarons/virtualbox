@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96525 2022-08-26 22:08:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96528 2022-08-26 22:26:22Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -90,6 +90,11 @@ else ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
  LIBRARIES.win += RuntimeR0Stub
  ifdef VBOX_WITH_RAW_MODE
   LIBRARIES.win += RuntimeRCStub
+ endif
+ ifneq ($(VBOX_LIB_RUNTIME_STATIC),$(VBOX_LIB_RUNTIME_STATIC_NO_ASAN))
+  LIBRARIES += RuntimeR3NoAsan
+ else
+  LIBRARIES += RuntimeR3
  endif
  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
 
