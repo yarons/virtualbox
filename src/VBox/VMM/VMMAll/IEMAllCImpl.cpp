@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 96536 2022-08-27 14:32:08Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 96539 2022-08-27 19:15:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4429,7 +4429,7 @@ IEM_CIMPL_DEF_1(iemCImpl_sysexit, IEMMODE, enmEffOpSize)
         return iemRaiseGeneralProtectionFault0(pVCpu);
     }
     bool fIsLongMode = CPUMIsGuestInLongModeEx(IEM_GET_CTX(pVCpu));
-    if (IEM_IS_GUEST_CPU_AMD(pVCpu) && !fIsLongMode)
+    if (IEM_IS_GUEST_CPU_AMD(pVCpu) && fIsLongMode)
     {
         Log(("sysexit: Only available in protected mode on AMD -> #UD\n"));
         return iemRaiseUndefinedOpcode(pVCpu);
