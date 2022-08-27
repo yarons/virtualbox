@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96533 2022-08-27 10:47:35Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96535 2022-08-27 10:50:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15244,7 +15244,7 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_palignr_u64_fallback,(uint64_t *pu64Dst, uint64
     {
         uint8_t cShift = bEvil * 8;
         *pu64Dst =   ((u64Src1 & (RT_BIT_64(cShift) - 1)) << ((8 - bEvil) * 8))
-                   | (u64Src2 >> cShift); 
+                   | (u64Src2 >> cShift);
     }
 }
 
