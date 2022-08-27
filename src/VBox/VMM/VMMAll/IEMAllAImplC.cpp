@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96535 2022-08-27 10:50:12Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96537 2022-08-27 14:33:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15309,4 +15309,103 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpalignr_u256_fallback,(PRTUINT256U puDst, PCRT
 
     iemAImpl_vpalignr_u128_fallback(&puDst->au128[0], &uSrc1.au128[0], &uSrc2.au128[0], bEvil);
     iemAImpl_vpalignr_u128_fallback(&puDst->au128[1], &uSrc1.au128[1], &uSrc2.au128[1], bEvil);
+}
+
+
+/**
+ * [V]PBLENDW
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_pblendw_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au16); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au16[i] = puSrc->au16[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpblendw_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au16); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au16[i] = puSrc2->au16[i];
+        else
+            puDst->au16[i] = puSrc1->au16[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpblendw_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < 8; i++)
+        if (bEvil & RT_BIT(i))
+        {
+            puDst->au16[    i] = puSrc2->au16[    i];
+            puDst->au16[8 + i] = puSrc2->au16[8 + i];
+        }
+        else
+        {
+            puDst->au16[    i] = puSrc1->au16[    i];
+            puDst->au16[8 + i] = puSrc1->au16[8 + i];
+        }
+}
+
+
+/**
+ * [V]BLENDPS
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_blendps_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au32); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au32[i] = puSrc->au32[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vblendps_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au32); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au32[i] = puSrc2->au32[i];
+        else
+            puDst->au32[i] = puSrc1->au32[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vblendps_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au32); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au32[i] = puSrc2->au32[i];
+        else
+            puDst->au32[i] = puSrc1->au32[i];
+}
+
+
+/**
+ * [V]BLENDPD
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_blendpd_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au64); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au64[i] = puSrc->au64[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vblendpd_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au64); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au64[i] = puSrc2->au64[i];
+        else
+            puDst->au64[i] = puSrc1->au64[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vblendpd_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au64); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au64[i] = puSrc2->au64[i];
+        else
+            puDst->au64[i] = puSrc1->au64[i];
 }

@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96533 2022-08-27 10:47:35Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 96537 2022-08-27 14:33:11Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5103,6 +5103,9 @@ dw 0x107ff - (.immEnd - .imm0)          ; will cause warning if entries are too 
 ENDPROC iemAImpl_ %+ %1 %+ _u128
 %endmacro
 
+IEMIMPL_MEDIA_SSE_INSN_IMM8_6 blendps
+IEMIMPL_MEDIA_SSE_INSN_IMM8_6 blendpd
+IEMIMPL_MEDIA_SSE_INSN_IMM8_6 pblendw
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 palignr
 
 
@@ -5174,4 +5177,7 @@ dw 0x107ff - (.immEnd - .imm0)          ; will cause warning if entries are too 
 ENDPROC iemAImpl_ %+ %1 %+ _u256
 %endmacro
 
+IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vblendps
+IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vblendpd
+IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vpblendw
 IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vpalignr
