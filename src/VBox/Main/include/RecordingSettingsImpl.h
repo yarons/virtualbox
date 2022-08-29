@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: RecordingSettingsImpl.h 96545 2022-08-29 17:41:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -67,6 +67,7 @@ public:
     void    i_applyDefaults(void);
 
     int i_getDefaultFilename(Utf8Str &strFile, uint32_t idScreen, bool fWithFileExtension);
+    int i_getFilename(Utf8Str &strFile, uint32_t idScreen, const Utf8Str &strTemplate);
     bool i_canChangeSettings(void);
     void i_onSettingsChanged(void);
 
