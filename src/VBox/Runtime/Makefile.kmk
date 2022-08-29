@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96528 2022-08-26 22:26:22Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96542 2022-08-29 08:00:41Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -664,6 +664,7 @@ RuntimeBaseR3_SOURCES      := \
 	common/string/RTUtf16NCmpAscii.cpp \
 	common/string/RTUtf16NCmpUtf8.cpp \
 	common/string/RTUtf16NICmpAscii.cpp \
+	common/string/RTUtf16FindAscii.cpp \
 	common/string/RTUtf16NLen.cpp \
 	common/string/RTUtf16NLenEx.cpp \
 	common/string/RTUtf16PrintHexBytes.cpp \
