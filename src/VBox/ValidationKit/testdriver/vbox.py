@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96531 2022-08-26 22:53:38Z knut.osmundsen@oracle.com $
+# $Id: vbox.py 96543 2022-08-29 09:23:54Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96531 $"
+__version__ = "$Revision: 96543 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2564,11 +2564,16 @@ class TestDriver(base.TestDriver):                                              
                                 oScreen.filename = sRecFile;
                                 oRecFile = { "id" : oScreen.id, "file" : sRecFile };
                                 self.aRecordingFiles.append(oRecFile);
-                                aFeatures = self.oVBoxMgr.getArray(oScreen, 'features');
-                                aFeatures = [ vboxcon.RecordingFeature_Video ];
-                                if self.fRecordingAudio:
-                                    aFeatures.append(vboxcon.RecordingFeature_Audio);
-                                oScreen.setFeatures(aFeatures);
+                                if self.fpApiVer >= 7.0:
+                                    aFeatures = [ vboxcon.RecordingFeature_Video ];
+                                    if self.fRecordingAudio:
+                                        aFeatures.append(vboxcon.RecordingFeature_Audio);
+                                    oScreen.setFeatures(aFeatures);
+                                else: # <= VBox 6.1 the feature were kept as a ULONG.
+                                    uFeatures = vboxcon.RecordingFeature_Video;
+                                    if self.fRecordingAudio:
+                                        uFeatures = uFeatures | vboxcon.RecordingFeature_Audio;
+                                    oScreen.setFeatures(uFeatures);
                                 reporter.log2('Recording screen %d to "%s"' % (oRecFile['id'], oRecFile['file']));
                                 oScreen.maxTime     = self.cSecsRecordingMax;
                                 oScreen.maxFileSize = self.cMbRecordingMax;
