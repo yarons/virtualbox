@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96544 2022-08-29 09:40:45Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96546 2022-08-29 17:44:50Z klaus.espenlaub@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96544 $"
+__version__ = "$Revision: 96546 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2458,7 +2458,7 @@ class TestDriver(base.TestDriver):                                              
             reporter.errorXcpt('failed to create vm "%s"' % (sName));
         return None;
 
-    # pylint: disable=too-many-arguments,too-many-locals,too-many-statements
+    # pylint: disable=too-many-arguments,too-many-locals,too-many-statements,too-many-branches
     def createTestVM(self,
                      sName,
                      iGroup,
