@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96543 2022-08-29 09:23:54Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96544 2022-08-29 09:40:45Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96543 $"
+__version__ = "$Revision: 96544 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2560,8 +2560,16 @@ class TestDriver(base.TestDriver):                                              
                         for oScreen in aoScreens:
                             try:
                                 oScreen.enabled  = True;
-                                sRecFile = os.path.join(self.sScratchPath, "recording-screen-%d.webm" % oScreen.id);
+                                sRecFile = os.path.join(self.sScratchPath, "recording-%s-screen-%d.webm" % (sName, oScreen.id));
                                 oScreen.filename = sRecFile;
+                                sRecFile = oScreen.filename; # Get back the file from Main, in case it was modified somehow.
+
+                                ## @todo BUGBUG The recording stream modifies the file name internally by appending the stream ID,
+                                #               so we need this hack here in order to upload the file later.
+                                #               Needs to be handled by Main instead!
+                                sRecFile = os.path.join(self.sScratchPath, "recording-%s-screen-%d-%d.webm" \
+                                                        % (sName, oScreen.id, oScreen.id));
+
                                 oRecFile = { "id" : oScreen.id, "file" : sRecFile };
                                 self.aRecordingFiles.append(oRecFile);
                                 if self.fpApiVer >= 7.0:
