@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testresults.py 96557 2022-08-30 18:21:40Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 96557 $"
 
 
 # Standard python imports.
@@ -427,28 +427,29 @@ class TestResultFileData(ModelDataBase):
 
     ## @name Kind of files.
     ## @{
-    ksKind_LogReleaseVm         = 'log/release/vm';
-    ksKind_LogDebugVm           = 'log/debug/vm';
-    ksKind_LogReleaseSvc        = 'log/release/svc';
-    ksKind_LogDebugSvc          = 'log/debug/svc';
-    ksKind_LogReleaseClient     = 'log/release/client';
-    ksKind_LogDebugClient       = 'log/debug/client';
-    ksKind_LogInstaller         = 'log/installer';
-    ksKind_LogUninstaller       = 'log/uninstaller';
-    ksKind_LogGuestKernel       = 'log/guest/kernel';
-    ksKind_ProcessReportVm      = 'process/report/vm';
-    ksKind_CrashReportVm        = 'crash/report/vm';
-    ksKind_CrashDumpVm          = 'crash/dump/vm';
-    ksKind_CrashReportSvc       = 'crash/report/svc';
-    ksKind_CrashDumpSvc         = 'crash/dump/svc';
-    ksKind_CrashReportClient    = 'crash/report/client';
-    ksKind_CrashDumpClient      = 'crash/dump/client';
-    ksKind_InfoCollection       = 'info/collection';
-    ksKind_InfoVgaText          = 'info/vgatext';
-    ksKind_MiscOther            = 'misc/other';
-    ksKind_ScreenshotFailure    = 'screenshot/failure';
-    ksKind_ScreenshotSuccesss   = 'screenshot/success';
-    #kskind_ScreenCaptureFailure = 'screencapture/failure';
+    ksKind_LogReleaseVm             = 'log/release/vm';
+    ksKind_LogDebugVm               = 'log/debug/vm';
+    ksKind_LogReleaseSvc            = 'log/release/svc';
+    ksKind_LogDebugSvc              = 'log/debug/svc';
+    ksKind_LogReleaseClient         = 'log/release/client';
+    ksKind_LogDebugClient           = 'log/debug/client';
+    ksKind_LogInstaller             = 'log/installer';
+    ksKind_LogUninstaller           = 'log/uninstaller';
+    ksKind_LogGuestKernel           = 'log/guest/kernel';
+    ksKind_ProcessReportVm          = 'process/report/vm';
+    ksKind_CrashReportVm            = 'crash/report/vm';
+    ksKind_CrashDumpVm              = 'crash/dump/vm';
+    ksKind_CrashReportSvc           = 'crash/report/svc';
+    ksKind_CrashDumpSvc             = 'crash/dump/svc';
+    ksKind_CrashReportClient        = 'crash/report/client';
+    ksKind_CrashDumpClient          = 'crash/dump/client';
+    ksKind_InfoCollection           = 'info/collection';
+    ksKind_InfoVgaText              = 'info/vgatext';
+    ksKind_MiscOther                = 'misc/other';
+    ksKind_ScreenshotFailure        = 'screenshot/failure';
+    ksKind_ScreenshotSuccesss       = 'screenshot/success';
+    ksKind_ScreenRecordingFailure   = 'screenrecording/failure';
+    ksKind_ScreenRecordingSuccess   = 'screenrecording/success';
     ## @}
 
     kasKinds = [
@@ -473,7 +474,8 @@ class TestResultFileData(ModelDataBase):
         ksKind_MiscOther,
         ksKind_ScreenshotFailure,
         ksKind_ScreenshotSuccesss,
-        #kskind_ScreenCaptureFailure,
+        ksKind_ScreenRecordingFailure,
+        ksKind_ScreenRecordingSuccess,
     ];
 
     kasAllowNullAttributes      = [ 'idTestSet', ];
