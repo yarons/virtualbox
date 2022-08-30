@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: errmsgwin.cpp 96549 2022-08-30 00:55:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Status code messages, Windows.
  */
@@ -216,6 +216,9 @@ RTDECL(size_t)  RTErrWinFormatMsgAll(long rc, PFNRTSTROUTPUT pfnOutput, void *pv
     ssize_t cchValue = RTStrFormatU32(pszTmp, cbTmp, rc, 16, 0, 0, RTSTR_F_SPECIAL);
     Assert(cchValue > 0);
     cchRet += pfnOutput(pvArgOutput, pszTmp, cchValue);
+
+    if (idx != ~(size_t)0)
+        cchRet += pfnOutput(pvArgOutput, RT_STR_TUPLE(")"));
 
     return cchRet;
 }
