@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96552 2022-08-30 07:39:24Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96553 2022-08-30 07:41:07Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96552 $"
+__version__ = "$Revision: 96553 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3439,7 +3439,7 @@ class TestDriver(base.TestDriver):                                              
         if reporter.testErrorCount() > 0 \
         or self.fRecordingForceUpload: # By default we only upload WebM file on failures, to save some space.
             for oRecFile in self.aRecordingFiles:
-                reporter.addLogFile(oRecFile['file'], 'video/webm', 'Recording of screen #%d' % oRecFile['id']);
+                reporter.addLogFile(oRecFile['file'], 'video/webm', 'Recording of screen #%d' % (oRecFile['id'],));
 
         # Add the guest OS log if it has been requested and taken successfully.
         if sOsKernelLog is not None:
