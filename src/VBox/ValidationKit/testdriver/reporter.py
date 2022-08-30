@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: reporter.py 96555 2022-08-30 08:08:17Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 96555 $"
 
 
 # Standard Python imports.
@@ -962,6 +962,15 @@ class RemoteReporter(ReporterBase):
             g_oLock.release();
             try:
                 self._doUploadFile(oSrcFile, sAltName, sDescription, sKind, 'image/png');
+            finally:
+                g_oLock.acquire();
+        elif sKind.startswith('video/'):
+            self.log(0, '*** Uploading "%s" - KIND: "%s" - DESC: "%s" ***'
+                        % (sSrcFilename, sKind, sDescription),  sCaller, sTsPrf);
+            self.xmlFlush();
+            g_oLock.release();
+            try:
+                self._doUploadFile(oSrcFile, sAltName, sDescription, sKind, 'video/webm');
             finally:
                 g_oLock.acquire();
         elif sKind.startswith('misc/'):

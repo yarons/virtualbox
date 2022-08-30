@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testboxcontroller.py 96555 2022-08-30 08:08:17Z andreas.loeffler@oracle.com $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 96555 $"
 
 
 # Standard python imports.
@@ -707,7 +707,7 @@ class TestBoxController(object): # pylint: disable=too-few-public-methods
         if sMime not in [ 'text/plain', #'text/html', 'text/xml',
                           'application/octet-stream',
                           'image/png', #'image/gif', 'image/jpeg',
-                          #'video/webm', 'video/mpeg', 'video/mpeg4-generic',
+                          'video/webm', #'video/mpeg', 'video/mpeg4-generic',
                           ]:
             raise TestBoxControllerException('Invalid MIME type "%s"' % (sMime,));
 
@@ -952,4 +952,3 @@ class TestBoxController(object): # pylint: disable=too-few-public-methods
         (self._sAction, self._idTestBox, self._sTestBoxUuid, self._sTestBoxAddr, self._idTestSet) = \
             self._getStandardParams(dParams);
         return self._dActions[self._sAction]();
-
