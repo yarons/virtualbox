@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96554 2022-08-30 07:53:55Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96556 2022-08-30 09:54:40Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96554 $"
+__version__ = "$Revision: 96556 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2569,7 +2569,10 @@ class TestDriver(base.TestDriver):                                              
                                     aFeatures = [ vboxcon.RecordingFeature_Video ];
                                     if self.fRecordingAudio:
                                         aFeatures.append(vboxcon.RecordingFeature_Audio);
-                                    oScreen.setFeatures(aFeatures);
+                                    try:
+                                        oScreen.setFeatures(aFeatures);
+                                    except: ## @todo Figure out why this is needed on Windows.
+                                        oScreen.features = aFeatures;
                                 else: # <= VBox 6.1 the feature were kept as a ULONG.
                                     uFeatures = vboxcon.RecordingFeature_Video;
                                     if self.fRecordingAudio:
