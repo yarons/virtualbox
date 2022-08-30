@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 96555 2022-08-30 08:08:17Z andreas.loeffler@oracle.com $
+# $Id: reporter.py 96558 2022-08-30 18:26:47Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96555 $"
+__version__ = "$Revision: 96558 $"
 
 
 # Standard Python imports.
@@ -964,7 +964,7 @@ class RemoteReporter(ReporterBase):
                 self._doUploadFile(oSrcFile, sAltName, sDescription, sKind, 'image/png');
             finally:
                 g_oLock.acquire();
-        elif sKind.startswith('video/'):
+        elif sKind.startswith('screenrecording/'):
             self.log(0, '*** Uploading "%s" - KIND: "%s" - DESC: "%s" ***'
                         % (sSrcFilename, sKind, sDescription),  sCaller, sTsPrf);
             self.xmlFlush();
