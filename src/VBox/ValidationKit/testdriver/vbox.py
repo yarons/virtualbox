@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96553 2022-08-30 07:41:07Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96554 2022-08-30 07:53:55Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96553 $"
+__version__ = "$Revision: 96554 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2574,7 +2574,7 @@ class TestDriver(base.TestDriver):                                              
                                     uFeatures = vboxcon.RecordingFeature_Video;
                                     if self.fRecordingAudio:
                                         uFeatures = uFeatures | vboxcon.RecordingFeature_Audio;
-                                    oScreen.setFeatures(uFeatures);
+                                    oScreen.features = uFeatures;
                                 reporter.log2('Recording screen %d to "%s"' % (oRecFile['id'], oRecFile['file']));
                                 oScreen.maxTime     = self.cSecsRecordingMax;
                                 oScreen.maxFileSize = self.cMbRecordingMax;
