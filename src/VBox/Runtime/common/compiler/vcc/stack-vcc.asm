@@ -1,4 +1,4 @@
-; $Id: stack-vcc.asm 96420 2022-08-23 02:14:54Z knut.osmundsen@oracle.com $
+; $Id: stack-vcc.asm 96560 2022-08-31 03:05:23Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Stack related Visual C++ support routines.
 ;
@@ -481,12 +481,6 @@ ENDPROC_RAW     FASTCALL_NAME(__security_check_cookie, 4)
 
 
 ; Not stack related stubs.
-BEGINPROC __C_specific_handler
-        SEH64_END_PROLOGUE
-        int3
-ENDPROC   __C_specific_handler
-
-
 BEGINPROC __report_rangecheckfailure
         SEH64_END_PROLOGUE
         int3
