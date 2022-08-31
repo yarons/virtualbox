@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-netbsd.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: sleepqueue-r0drv-netbsd.h 96563 2022-08-31 15:34:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - NetBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -190,7 +190,11 @@ DECLINLINE(void) rtR0SemBsdWaitDoIt(PRTR0SEMBSDSLEEP pWait)
     pWait->sq = NULL;
     pWait->sq_lock = NULL;
 
-    int error = sleepq_block(pWait->iTimeout, pWait->fInterruptible);
+    int error = sleepq_block(pWait->iTimeout, pWait->fInterruptible
+#if __NetBSD_Prereq__(9,99,98)  /* a bit later, actually... */
+                             , &vbox_syncobj
+#endif
+        );
     if (error == EWOULDBLOCK) {
         if (!pWait->fIndefinite) {
             pWait->fTimedOut = true;
