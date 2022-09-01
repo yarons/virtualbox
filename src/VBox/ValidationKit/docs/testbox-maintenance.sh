@@ -1,7 +1,7 @@
 #!/bin/bash
-# $Id: testbox-maintenance.sh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testbox-maintenance.sh 96564 2022-09-01 09:06:13Z andreas.loeffler@oracle.com $
 ## @file
-# VirtualBox Validation Kit - testbox mainenance service
+# VirtualBox Validation Kit - testbox maintenance service
 #
 
 #
@@ -407,4 +407,3 @@ if test -n "${MY_REBOOT_WHEN_DONE}"; then
     reboot
 fi
 exit 0
-
