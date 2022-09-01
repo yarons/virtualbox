@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 96415 2022-08-22 20:28:16Z knut.osmundsen@oracle.com $ */
+/* $Id: RTErrConvertFromWin32.cpp 96569 2022-09-01 20:27:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -218,6 +218,9 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_ELEVATION_REQUIRED:      return VERR_PROC_ELEVATION_REQUIRED;
 
         case ERROR_ENVVAR_NOT_FOUND:        return VERR_ENV_VAR_NOT_FOUND;
+
+
+        case ERROR_SERVICE_ALREADY_RUNNING: return VERR_ALREADY_LOADED; /* Not the best match, but seen it with VBoxSup.sys. */
 
 
         /*
