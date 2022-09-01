@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInstall.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxNetFltInstall.cpp 96572 2022-09-01 20:36:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * NetFltInstall - VBoxNetFlt installer command line tool
  */
@@ -34,10 +34,21 @@
  * SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
  */
 
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/VBoxNetCfg-win.h>
 #include <devguid.h>
 #include <stdio.h>
 
+#include <iprt/initterm.h>
+#include <iprt/message.h>
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define NETFLT_ID L"sun_VBoxNetFlt"
 #define VBOX_NETCFG_APP_NAME L"NetFltInstall"
 #define VBOX_NETFLT_PT_INF L".\\VBoxNetFlt.inf"
@@ -180,6 +191,11 @@ static int VBoxNetFltInstall()
 
 int __cdecl main(int argc, char **argv)
 {
-    RT_NOREF2(argc, argv);
+    RTR3InitExeNoArguments(0);
+    if (argc != 1)
+        return RTMsgErrorExit(RTEXITCODE_SYNTAX, "This utility takes no arguments\n");
+    NOREF(argv);
+
     return VBoxNetFltInstall();
 }
+

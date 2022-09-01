@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxNetFltNobj.h 96572 2022-09-01 20:36:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltNobj.h - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -52,11 +52,11 @@
  * VirtualBox Bridging driver notify object.
  * Needed to make our driver bind to "real" host adapters only
  */
-class ATL_NO_VTABLE VBoxNetFltNobj :
-    public ATL::CComObjectRootEx<ATL::CComMultiThreadModel>,
-    public ATL::CComCoClass<VBoxNetFltNobj, &CLSID_VBoxNetFltNobj>,
-    public INetCfgComponentControl,
-    public INetCfgComponentNotifyBinding
+class ATL_NO_VTABLE VBoxNetFltNobj
+    : public ATL::CComObjectRootEx<ATL::CComMultiThreadModel>
+    , public ATL::CComCoClass<VBoxNetFltNobj, &CLSID_VBoxNetFltNobj>
+    , public INetCfgComponentControl
+    , public INetCfgComponentNotifyBinding
 {
 public:
     VBoxNetFltNobj();
