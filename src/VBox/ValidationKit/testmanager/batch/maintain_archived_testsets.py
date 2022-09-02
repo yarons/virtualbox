@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: maintain_archived_testsets.py 96575 2022-09-02 08:53:37Z andreas.loeffler@oracle.com $
+# $Id: maintain_archived_testsets.py 96576 2022-09-02 09:59:17Z andreas.loeffler@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96575 $"
+__version__ = "$Revision: 96576 $"
 
 # Standard python imports
 from datetime import datetime, timedelta
@@ -106,6 +106,8 @@ class ArchiveDelFilesBatchJob(object): # pylint: disable=too-few-public-methods
         Returns success indicator.
         """
 
+        fRc = True;
+
         # Rename the destination file first (if any).
         sDstFileTmp = None;
         if os.path.exists(sDstFile):
@@ -113,22 +115,23 @@ class ArchiveDelFilesBatchJob(object): # pylint: disable=too-few-public-methods
             if os.path.exists(sDstFileTmp):
                 if not fForce:
                     print('Replace file: Warning: Temporary destination file "%s" already exists, skipping' % (sDstFileTmp,));
-                    return False;
+                    fRc = False;
                 else:
                     try:
                         os.remove(sDstFileTmp);
                     except Exception as e:
                         print('Replace file: Error deleting old temporary destination file "%s": %s' % (sDstFileTmp, e));
-                        return False;
+                        fRc = False;
             try:
                 if not fDryRun:
                     shutil.move(sDstFile, sDstFileTmp);
             except Exception as e:
                 print('Replace file: Error moving old destination file "%s" to temporary file "%s": %s' \
                       % (sDstFile, sDstFileTmp, e));
-                return False;
+                fRc = False;
 
-        fRc = True;
+        if not fRc:
+            return False;
 
         try:
             if not fDryRun:
