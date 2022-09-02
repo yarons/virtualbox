@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96541 2022-08-28 17:03:27Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 96581 2022-09-02 13:18:54Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1991,6 +1991,9 @@ ifdef VBOX_PATH_APP_DOCS
  else
  CDEFS += RTPATH_APP_DOCS=\"$(VBOX_PATH_APP_DOCS)\"
  endif
+endif
+if1of ($(KBUILD_TARGET), os2) # The gcc here is too old to grok #pragma once, instead it complains.
+ CDEFS += RT_WITHOUT_PRAGMA_ONCE
 endif
 CXXDEFS  += $(CDEFS)
 PCHDEFS  += $(CDEFS)
@@ -9041,7 +9044,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96541 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96581 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
