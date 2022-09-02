@@ -1,4 +1,4 @@
-/* $Id: stacksup-vcc.cpp 96573 2022-09-02 02:04:12Z knut.osmundsen@oracle.com $ */
+/* $Id: stacksup-vcc.cpp 96580 2022-09-02 12:22:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - Stack Checking C/C++ Support.
  */
@@ -50,6 +50,19 @@
 #ifdef IN_RING3
 # include <iprt/win/windows.h>
 # include "../../../r3/win/internal-r3-win.h" /* ugly, but need some windows API function pointers */
+#endif
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
+/** Gets the program counter member of Windows' CONTEXT structure. */
+#if   defined(RT_ARCH_AMD64)
+# define MY_GET_PC_FROM_CONTEXT(a_pCtx)  ((a_pCtx)->Rip)
+#elif defined(RT_ARCH_X86)
+# define MY_GET_PC_FROM_CONTEXT(a_pCtx)  ((a_pCtx)->Eip)
+#else
+# error "Port Me!"
 #endif
 
 
@@ -274,6 +287,17 @@ extern "C" void __fastcall _RTC_CheckStackVars2(uint8_t *pbFrame, RTC_VAR_DESC_T
 }
 
 
+DECLASM(void) rtVccRangeCheckFailed(PCONTEXT pCpuCtx)
+{
+# ifdef IPRT_NOCRT_WITHOUT_FATAL_WRITE
+    RTAssertMsg2("\n\n!!Range check failed at %p!!\n\n", MY_GET_PC_FROM_CONTEXT(pCpuCtx));
+# else
+    rtNoCrtFatalWriteBegin(RT_STR_TUPLE("\r\n\r\n!!Range check failed at "));
+    rtNoCrtFatalWritePtr((void *)MY_GET_PC_FROM_CONTEXT(pCpuCtx));
+    rtNoCrtFatalWriteEnd(RT_STR_TUPLE("!!\r\n"));
+# endif
+    rtVccFatalSecurityErrorWithCtx(FAST_FAIL_RANGE_CHECK_FAILURE, pCpuCtx);
+}
 
 
 /** Whether or not this should be a fatal issue remains to be seen. See
