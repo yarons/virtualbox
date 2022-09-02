@@ -1,4 +1,4 @@
-/* $Id: loadgenerator.cpp 96583 2022-09-02 20:35:17Z knut.osmundsen@oracle.com $ */
+/* $Id: loadgenerator.cpp 96584 2022-09-02 20:39:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * Load Generator.
  */
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
                 char *psz;
                 rc = RTStrToUInt64Ex(ValueUnion.psz, &psz, 0, &cNanoSeconds);
                 if (RT_FAILURE(rc))
-                    return RTMsgSyntax("Failed reading the alleged number '%s' (option '%s', rc=%Rrc).",
+                    return RTMsgSyntax("Failed reading the alleged timeout number '%s' (rc=%Rrc).",
                                        ValueUnion.psz, rc);
                 while (*psz == ' ' || *psz == '\t')
                     psz++;
@@ -217,7 +217,7 @@ int main(int argc, char **argv)
                     uint64_t u64 = cNanoSeconds * u64Factor;
                     if (u64 < cNanoSeconds || (u64 < u64Factor && u64))
                         return RTMsgSyntax("Time representation overflowed! (%RU64 * %RU64)",
-                                           psz, cNanoSeconds, u64Factor);
+                                           cNanoSeconds, u64Factor);
                     cNanoSeconds = u64;
                 }
                 break;
@@ -291,7 +291,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 96583 $\n");
+                RTPrintf("$Revision: 96584 $\n");
                 return 0;
 
             case VINF_GETOPT_NOT_OPTION:
