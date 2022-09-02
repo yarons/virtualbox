@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 96505 2022-08-25 22:44:04Z knut.osmundsen@oracle.com $ */
+/* $Id: internal-r3-win.h 96573 2022-09-02 02:04:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -128,6 +128,9 @@ extern DECL_HIDDEN_DATA(decltype(SetThreadAffinityMask) *)              g_pfnSet
 extern DECL_HIDDEN_DATA(decltype(CreateIoCompletionPort) *)             g_pfnCreateIoCompletionPort;
 extern DECL_HIDDEN_DATA(decltype(GetQueuedCompletionStatus) *)          g_pfnGetQueuedCompletionStatus;
 extern DECL_HIDDEN_DATA(decltype(PostQueuedCompletionStatus) *)         g_pfnPostQueuedCompletionStatus;
+extern DECL_HIDDEN_DATA(decltype(SetUnhandledExceptionFilter) *)        g_pfnSetUnhandledExceptionFilter;
+extern DECL_HIDDEN_DATA(decltype(UnhandledExceptionFilter) *)           g_pfnUnhandledExceptionFilter;
+extern DECL_HIDDEN_DATA(decltype(IsProcessorFeaturePresent) *)          g_pfnIsProcessorFeaturePresent;
 
 
 extern DECL_HIDDEN_DATA(HMODULE)                        g_hModNtDll;
