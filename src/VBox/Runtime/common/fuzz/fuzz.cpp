@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: fuzz.cpp 96578 2022-09-02 11:48:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -1702,7 +1702,7 @@ static DECLCALLBACK(int) rtFuzzCtxStateExportMutations(PAVLU64NODECORE pCore, vo
     if (pMutation->pMutationParent)
         MutationState.u64IdParent = RT_H2LE_U64(pMutation->pMutationParent->Core.Key);
     else
-        MutationState.u64IdParent = RT_H2LE_U64(0);
+        MutationState.u64IdParent = 0;
     MutationState.u64OffMutation  = RT_H2LE_U64(pMutation->offMutation);
     MutationState.cbInput         = RT_H2LE_U64((uint64_t)pMutation->cbInput);
     MutationState.cbMutation      = RT_H2LE_U64((uint64_t)pMutation->cbMutation);
