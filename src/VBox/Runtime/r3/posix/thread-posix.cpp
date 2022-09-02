@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 96519 2022-08-26 12:20:35Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-posix.cpp 96582 2022-09-02 15:22:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -663,9 +663,21 @@ DECLHIDDEN(int) rtThreadNativeCreate(PRTTHREADINT pThread, PRTNATIVETHREAD pNati
 
 RTDECL(RTTHREAD) RTThreadSelf(void)
 {
-    PRTTHREADINT pThread = (PRTTHREADINT)pthread_getspecific(g_SelfKey);
     /** @todo import alien threads? */
-    return pThread;
+#if defined(RT_OS_DARWIN)
+    /* On darwin, there seems to be input checking with pthread_getspecific.
+       So, we must prevent using g_SelfKey before rtThreadNativeInit has run,
+       otherwise we might crash or starting working with total garbage pointer
+       values here (see _os_tsd_get_direct in znu/libsyscall/os/tsd.h).
+
+       Now, since the init value is a "negative" one, we just have to check
+       that it's positive or zero before calling the API. */
+    if (RT_LIKELY((intptr_t)g_SelfKey >= 0))
+        return (PRTTHREADINT)pthread_getspecific(g_SelfKey);
+    return NIL_RTTHREAD;
+#else
+    return (PRTTHREADINT)pthread_getspecific(g_SelfKey);
+#endif
 }
 
 
