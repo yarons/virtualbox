@@ -1,4 +1,4 @@
-/* $Id: initializers-c-cpp-vcc.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: initializers-c-cpp-vcc.cpp 96589 2022-09-03 02:54:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - C & C++ Initializers and Terminators.
  */
@@ -80,7 +80,11 @@ __declspec(allocate(".CRT$XCZ"))    PFNVCINITTERM       g_apfnRTVccInitializers_
 
 
 /* Tell the linker to merge the .CRT* sections into .rdata */
-#pragma comment(linker, "/merge:.CRT=.rdata ")
+#ifdef IPRT_VCC_USING_RODATA_AS_CONST_SEG
+# pragma comment(linker, "/merge:.CRT=.rodata ")
+#else
+# pragma comment(linker, "/merge:.CRT=.rdata ")
+#endif
 /** @} */
 
 
