@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-startup-exe-win.cpp 96588 2022-09-03 02:40:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -91,6 +91,9 @@ DECLASM(void) CustomMainEntrypoint(PPEB pPeb)
      * Initialize stuff.
      */
 #ifdef IPRT_NO_CRT
+# ifdef RT_ARCH_X86
+    rtVccWinInitBssOnNt3(pPeb->ImageBaseAddress);
+# endif
     rtVccInitSecurityCookie();
 #else
     InitStdHandles(pPeb->ProcessParameters);

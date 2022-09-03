@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-dll-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: nocrt-startup-dll-win.cpp 96588 2022-09-03 02:40:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Windows EXE startup code.
  *
@@ -146,6 +146,9 @@ extern "C" BOOL WINAPI _DllMainCRTStartup(HINSTANCE hInstance, DWORD dwReason, L
     switch (dwReason)
     {
         case DLL_PROCESS_ATTACH:
+#ifdef RT_ARCH_X86
+            rtVccWinInitBssOnNt3((PVOID)hInstance);
+#endif
             rtVccInitSecurityCookie(); /* This function must be minimal because of this! */
             return rtVccDllMainProcessAttach(hInstance, pvReserved);
 
