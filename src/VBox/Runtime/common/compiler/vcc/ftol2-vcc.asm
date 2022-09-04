@@ -1,4 +1,4 @@
-; $Id: ftol2-vcc.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: ftol2-vcc.asm 96596 2022-09-04 20:31:38Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Floating Point to Integer related Visual C++ support routines.
 ;
@@ -73,7 +73,7 @@ BEGINPROC_RAW   __ftol2
         and     esp, 0fffffff8h             ; proper alignment.
         fisttp  qword [esp]
         mov     eax, [esp]
-        mov     edx, [esp + 8]
+        mov     edx, [esp + 4]
         leave
         ret
 ENDPROC_RAW     __ftol2
