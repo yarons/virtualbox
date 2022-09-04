@@ -1,4 +1,4 @@
-/* $Id: tlsdir-vcc.c 96589 2022-09-03 02:54:22Z knut.osmundsen@oracle.com $ */
+/* $Id: tlsdir-vcc.c 96593 2022-09-04 17:34:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - PE/Windows TLS Directory.
  *
@@ -64,11 +64,7 @@ __declspec(allocate(".CRT$XLA"))    PIMAGE_TLS_CALLBACK     g_apfnRTVccTlsCallba
 __declspec(allocate(".CRT$XLZ"))    PIMAGE_TLS_CALLBACK     g_apfnRTVccTlsCallbacks_End[]     = { NULL, };
 
 /* Tell the linker to merge the .CRT* sections into .rdata */
-#ifdef IPRT_VCC_USING_RODATA_AS_CONST_SEG
-# pragma comment(linker, "/merge:.CRT=.rodata ")
-#else
-# pragma comment(linker, "/merge:.CRT=.rdata ")
-#endif
+#pragma comment(linker, "/merge:.CRT=.rdata ")
 /** @} */
 
 
