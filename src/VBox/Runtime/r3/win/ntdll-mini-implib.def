@@ -1,4 +1,4 @@
-; $Id: ntdll-mini-implib.def 96505 2022-08-25 22:44:04Z knut.osmundsen@oracle.com $
+; $Id: ntdll-mini-implib.def 96597 2022-09-04 22:12:04Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Minimal NTDLL import library defintion file.
 ;
@@ -147,6 +147,7 @@ EXPORTS
     RtlGetLastNtStatus                    ;;= _RtlGetLastNtStatus@0
     RtlGetLastWin32Error                  ;;= _RtlGetLastWin32Error@0
     RtlGetVersion                         ;;= _RtlGetVersion@4
+    RtlGetNtProductType                   ;;= _RtlGetNtProductType@4
     RtlInitializeSid                      ;;= _RtlInitializeSid@12
     RtlNtStatusToDosError                 ;;= _RtlNtStatusToDosError@4
     RtlReAllocateHeap                     ;;= _RtlReAllocateHeap@16
