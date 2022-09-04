@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f3a.cpp.h 96537 2022-08-27 14:33:11Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f3a.cpp.h 96592 2022-09-04 17:24:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -676,7 +676,7 @@ IEM_STATIC const PFNIEMOP g_apfnThreeByte0f3a[] =
     /* 0xdc */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
     /* 0xdd */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
     /* 0xde */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
-    /* 0xdf */  iemOp_aeskeygen_Vdq_Wdq_Ib, iemOp_InvalidNeedRMImm8,   iemOp_InvalidNeedRMImm8,    iemOp_InvalidNeedRMImm8,
+    /* 0xdf */  iemOp_InvalidNeedRMImm8, iemOp_aeskeygen_Vdq_Wdq_Ib,   iemOp_InvalidNeedRMImm8,    iemOp_InvalidNeedRMImm8,
 
     /* 0xe0 */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
     /* 0xe1 */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
