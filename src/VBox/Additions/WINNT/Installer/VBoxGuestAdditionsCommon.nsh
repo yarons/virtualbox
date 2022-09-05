@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 96605 2022-09-05 19:08:21Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -176,7 +176,6 @@ Function ExtractFiles
 
 !if $%KBUILD_TARGET_ARCH% == "x86"
   SetOutPath "$0\Tools\NT4"
-  FILE "$%PATH_OUT%\bin\additions\VBoxGuestDrvInst.exe"
   FILE "$%PATH_OUT%\bin\additions\RegCleanup.exe"
 !endif
 

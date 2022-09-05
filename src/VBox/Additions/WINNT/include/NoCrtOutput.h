@@ -1,4 +1,4 @@
-/* $Id: NoCrtOutput.h 96449 2022-08-23 23:55:38Z knut.osmundsen@oracle.com $ */
+/* $Id: NoCrtOutput.h 96605 2022-09-05 19:08:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * NoCrtOutput - ErrorMsgXxx and PrintXxx functions for small EXEs.
  */
@@ -145,6 +145,16 @@ DECLINLINE(int) ErrorMsgSWSWS(const char *pszMsg1, const wchar_t *pwszMsg2, cons
     ErrorMsgStr(pszMsg3);
     ErrorMsgWStr(pwszMsg4);
     return ErrorMsgEnd(pszMsg5);
+}
+
+
+DECLINLINE(int) ErrorMsgSUSUS(const char *pszMsg1, uint64_t uValue1, const char *pszMsg2, uint64_t uValue2, const char *pszMsg3)
+{
+    ErrorMsgBegin(pszMsg1);
+    ErrorMsgU64(uValue1);
+    ErrorMsgStr(pszMsg2);
+    ErrorMsgU64(uValue2);
+    return ErrorMsgEnd(pszMsg3);
 }
 
 

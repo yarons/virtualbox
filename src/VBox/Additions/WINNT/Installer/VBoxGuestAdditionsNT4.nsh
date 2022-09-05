@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 96605 2022-09-05 19:08:21Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -122,8 +122,6 @@ Function NT4_CopyFiles
   ${LogVerbose} "Copying files for NT4 ..."
 
   SetOutPath "$INSTDIR"
-  FILE "$%PATH_OUT%\bin\additions\VBoxGuestDrvInst.exe"
-  AccessControl::SetOnFile "$INSTDIR\VBoxGuestDrvInst.exe" "(BU)" "GenericRead"
   FILE "$%PATH_OUT%\bin\additions\RegCleanup.exe"
   AccessControl::SetOnFile "$INSTDIR\RegCleanup.exe" "(BU)" "GenericRead"
 !ifdef VBOX_WITH_ADDITIONS_SHIPPING_AUDIO_TEST
@@ -174,12 +172,11 @@ Function NT4_InstallFiles
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "VBoxTray" '"$SYSDIR\VBoxTray.exe"'
 
   ; Video driver
-  ${CmdExecute} "$\"$INSTDIR\VBoxGuestDrvInst.exe$\" /i" "false"
-
-  ${LogVerbose} "Installing VirtualBox service ..."
+  ${CmdExecute} "$\"$INSTDIR\VBoxDrvInst.exe$\" driver nt4-install-video" "false"
 
   ; Create the VBoxService service
   ; No need to stop/remove the service here! Do this only on uninstallation!
+  ${LogVerbose} "Installing VirtualBox service ..."
   ${CmdExecute} "$\"$INSTDIR\VBoxDrvInst.exe$\" service create $\"VBoxService$\" $\"VirtualBox Guest Additions Service$\" 16 2 $\"%SystemRoot%\system32\VBoxService.exe$\" $\"Base$\"" "false"
 
    ; Create the Shared Folders service ...
