@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxIPC.cpp 96600 2022-09-05 02:06:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -244,8 +244,7 @@ DECLCALLBACK(int) VBoxIPCInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
                 *ppInstance = pCtx;
 
                 /* GetLastInputInfo only is available starting at Windows 2000 -- might fail. */
-                g_pfnGetLastInputInfo = (PFNGETLASTINPUTINFO)
-                    RTLdrGetSystemSymbol("User32.dll", "GetLastInputInfo");
+                g_pfnGetLastInputInfo = (PFNGETLASTINPUTINFO)RTLdrGetSystemSymbol("User32.dll", "GetLastInputInfo");
 
                 LogRelFunc(("Local IPC server now running at \"%s\"\n", szPipeName));
                 return VINF_SUCCESS;
