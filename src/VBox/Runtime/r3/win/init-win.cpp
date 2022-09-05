@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 96597 2022-09-04 22:12:04Z knut.osmundsen@oracle.com $ */
+/* $Id: init-win.cpp 96606 2022-09-05 19:34:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -358,7 +358,7 @@ static void rtR3InitWindowsVersion(void)
              */
             RT_ZERO(g_WinOsInfoEx);
             g_WinOsInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOW);
-            if (!pfnGetVersionExW && pfnGetVersionExW((POSVERSIONINFOW)&g_WinOsInfoEx))
+            if (pfnGetVersionExW && pfnGetVersionExW((POSVERSIONINFOW)&g_WinOsInfoEx))
                 Assert(g_WinOsInfoEx.dwPlatformId != VER_PLATFORM_WIN32_NT || g_WinOsInfoEx.dwMajorVersion < 5);
             else
             {
