@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vkatCmdSelfTest.cpp 96607 2022-09-05 22:30:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -414,7 +414,7 @@ DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
                 IoOpts.fWithMixer = true;
                 break;
 
-            AUDIO_TEST_COMMON_OPTION_CASES(ValueUnion);
+            AUDIO_TEST_COMMON_OPTION_CASES(ValueUnion, &g_CmdSelfTest);
 
             default:
                 return RTGetOptPrintError(rc, &ValueUnion);
