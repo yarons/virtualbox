@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-08-22 19:43:14 +0200 (Mon, 22 Aug 2022) $</pubdate>
+    <pubdate>$Date: 2022-09-05 20:19:48 +0200 (Mon, 05 Sep 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -427,8 +427,10 @@ time on documenting it. -->
         </group></arg>
       <arg>--audio=<group choice="plain">
           <arg choice="plain">none</arg>
+          <arg choice="plain">default</arg>
           <arg choice="plain">null</arg>
           <arg choice="plain">dsound</arg>
+          <arg choice="plain">was</arg>
           <arg choice="plain">oss</arg>
           <arg choice="plain">alsa</arg>
           <arg choice="plain">pulse</arg>
@@ -1911,8 +1913,9 @@ it unless this changes. -->
           <listitem><para>
               Specifies whether the VM has audio support, and if so,
               which type. Valid audio type values are:
-              <literal>none</literal>, <literal>null</literal>,
-              <literal>dsound</literal>, <literal>oss</literal>,
+              <literal>none</literal>, <literal>default</literal>,
+              <literal>null</literal>, <literal>dsound</literal>,
+              <literal>was</literal>, <literal>oss</literal>,
               <literal>alsa</literal>, <literal>pulse</literal>, and
               <literal>coreaudio</literal>.
             </para><para>
