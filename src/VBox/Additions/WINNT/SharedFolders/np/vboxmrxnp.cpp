@@ -1,4 +1,4 @@
-/* $Id: vboxmrxnp.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vboxmrxnp.cpp 96621 2022-09-06 21:14:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Network provider dll
  */
@@ -46,6 +46,10 @@
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/Log.h>
 
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #define MRX_VBOX_SERVER_NAME_U     L"VBOXSVR"
 #define MRX_VBOX_SERVER_NAME_ALT_U L"VBOXSRV"
 
