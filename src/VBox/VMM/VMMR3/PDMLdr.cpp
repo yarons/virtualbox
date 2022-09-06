@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: PDMLdr.cpp 96609 2022-09-06 14:13:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1226,7 +1226,7 @@ static char *pdmR3File(const char *pszFile, const char *pszDefaultExt, const cha
                 pszNext = pszEnd + 1;
             if (pszEnd != psz)
             {
-                rc = RTPathJoinEx(szPath, sizeof(szPath), psz, pszEnd - psz, pszFile, cchFile);
+                rc = RTPathJoinEx(szPath, sizeof(szPath), psz, pszEnd - psz, pszFile, cchFile, RTPATH_STR_F_STYLE_HOST);
                 if (RT_SUCCESS(rc))
                 {
                     if (RTFileExists(szPath))

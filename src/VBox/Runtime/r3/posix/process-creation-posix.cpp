@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: process-creation-posix.cpp 96609 2022-09-06 14:13:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -1643,7 +1643,8 @@ static DECLCALLBACK(int) rtPathFindExec(char const *pchPath, size_t cchPath, voi
 {
     const char      *pszExec = (const char *)pvUser1;
     PRTPATHINTSEARCH pResult = (PRTPATHINTSEARCH)pvUser2;
-    int rc = RTPathJoinEx(pResult->szFound, sizeof(pResult->szFound), pchPath, cchPath, pszExec, RTSTR_MAX);
+    int rc = RTPathJoinEx(pResult->szFound, sizeof(pResult->szFound), pchPath, cchPath, pszExec, RTSTR_MAX,
+                          RTPATH_STR_F_STYLE_HOST);
     if (RT_SUCCESS(rc))
     {
         const char *pszNativeExec = NULL;

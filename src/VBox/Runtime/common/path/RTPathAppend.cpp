@@ -1,4 +1,4 @@
-/* $Id: RTPathAppend.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: RTPathAppend.cpp 96609 2022-09-06 14:13:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathAppend
  */
@@ -46,6 +46,6 @@
 
 RTDECL(int) RTPathAppend(char *pszPath, size_t cbPathDst, const char *pszAppend)
 {
-    return RTPathAppendEx(pszPath, cbPathDst, pszAppend, RTSTR_MAX);
+    return RTPathAppendEx(pszPath, cbPathDst, pszAppend, RTSTR_MAX, RTPATH_STR_F_STYLE_HOST);
 }
 

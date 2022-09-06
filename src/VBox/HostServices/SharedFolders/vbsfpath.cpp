@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vbsfpath.cpp 96609 2022-09-06 14:13:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -112,7 +112,7 @@ static int vbsfCorrectCasing(SHFLCLIENTDATA *pClient, char *pszFullPath, char *p
     /** @todo Use RTDirOpen here and drop the whole uncessary path copying? */
     int rc = RTPathJoinEx(pDirEntry->szName, cbDirEntry - RT_OFFSETOF(RTDIRENTRYEX, szName),
                           pszFullPath, cchParentDir,
-                          RT_STR_TUPLE("*"));
+                          RT_STR_TUPLE("*"), RTPATH_STR_F_STYLE_HOST);
     AssertRC(rc);
     if (RT_SUCCESS(rc))
     {

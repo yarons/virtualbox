@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 96475 2022-08-25 02:27:54Z knut.osmundsen@oracle.com $ */
+/* $Id: process-win.cpp 96609 2022-09-06 14:13:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -2121,7 +2121,7 @@ static DECLCALLBACK(int) rtPathFindExec(char const *pchPath, size_t cchPath, voi
 {
     const char *pszExec     = (const char *)pvUser1;
     char       *pszRealExec = (char *)pvUser2;
-    int rc = RTPathJoinEx(pszRealExec, RTPATH_MAX, pchPath, cchPath, pszExec, RTSTR_MAX);
+    int rc = RTPathJoinEx(pszRealExec, RTPATH_MAX, pchPath, cchPath, pszExec, RTSTR_MAX, RTPATH_STR_F_STYLE_HOST);
     if (RT_FAILURE(rc))
         return rc;
     if (RTFileExists(pszRealExec))
