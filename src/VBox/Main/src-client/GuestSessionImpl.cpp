@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 96617 2022-09-06 20:31:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3598,9 +3598,7 @@ HRESULT GuestSession::copyToGuest(const std::vector<com::Utf8Str> &aSources, con
 
         HRESULT hrc;
         if (source.enmType == FsObjType_Directory)
-        {
             hrc = GuestSession::i_directoryCopyFlagFromStr(strFlags, &source.Type.Dir.fCopyFlags);
-        }
         else if (source.enmType == FsObjType_File)
             hrc = GuestSession::i_fileCopyFlagFromStr(strFlags, &source.Type.File.fCopyFlags);
         else
