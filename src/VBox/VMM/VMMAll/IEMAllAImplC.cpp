@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96537 2022-08-27 14:33:11Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96624 2022-09-07 10:20:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15408,4 +15408,14 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vblendpd_u256_fallback,(PRTUINT256U puDst, PCRT
             puDst->au64[i] = puSrc2->au64[i];
         else
             puDst->au64[i] = puSrc1->au64[i];
+}
+
+
+/**
+ * [V]PCMPISTRI
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_pcmpistri_u128_fallback,(uint32_t *pu32Ecx, uint32_t *pEFlags, PCIEMPCMPISTRISRC pSrc, uint8_t bEvil))
+{
+    RT_NOREF(pu32Ecx, pEFlags, pSrc, bEvil);
+    AssertReleaseFailed();
 }
