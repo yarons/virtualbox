@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96579 2022-09-02 11:52:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96622 2022-09-07 01:24:26Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -730,6 +730,7 @@ RuntimeBaseR3_SOURCES      := \
 	common/time/timeprog.cpp \
 	common/time/timesup.cpp \
 	common/time/timezoneinfo.cpp \
+	common/time/RTTimeFormatDurationEx.cpp \
 	common/vfs/vfsbase.cpp \
 	common/vfs/vfschain.cpp \
 	common/vfs/vfsfss2dir.cpp \
