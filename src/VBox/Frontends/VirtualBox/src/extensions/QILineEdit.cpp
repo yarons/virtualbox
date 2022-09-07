@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QILineEdit.cpp 96643 2022-09-07 19:23:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -261,6 +261,6 @@ void UIMarkableLineEdit::prepare()
     AssertReturnVoid(m_pIconLabel);
     pMainLayout->addWidget(m_pLineEdit);
     pMainLayout->addWidget(m_pIconLabel);
-
+    setFocusProxy(m_pLineEdit);
     connect(m_pLineEdit, &QILineEdit::textChanged, this, &UIMarkableLineEdit::textChanged);
 }
