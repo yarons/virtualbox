@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 96641 2022-09-07 19:18:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 96642 2022-09-07 19:20:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -299,8 +299,6 @@ bool UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(UINameAndSys
     }
     pNameAndSystemEditor->setType(uiCommon().vmGuestOSType("Other"));
     /* Return false to allow OS type guessing from name. See caller code: */
-    /** @todo the caller doesn't actually re-guess from the name, which leaves it
-     *        with this annoying 'other' selection. */
     return false;
 }
 
