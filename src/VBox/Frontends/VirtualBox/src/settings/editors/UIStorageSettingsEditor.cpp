@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 96630 2022-09-07 13:47:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -2888,6 +2888,11 @@ UIStorageSettingsEditor::UIStorageSettingsEditor(QWidget *pParent /* = 0 */)
 UIStorageSettingsEditor::~UIStorageSettingsEditor()
 {
     cleanup();
+}
+
+void UIStorageSettingsEditor::setActionPool(UIActionPool *pActionPool)
+{
+    m_pActionPool = pActionPool;
 }
 
 void UIStorageSettingsEditor::setMachineId(const QUuid &uMachineId)

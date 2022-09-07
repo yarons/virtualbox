@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 96630 2022-09-07 13:47:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -493,7 +493,10 @@ void UIMachineSettingsStorage::prepareWidgets()
         /* Create storage settings editor: */
         m_pEditorStorageSettings = new UIStorageSettingsEditor(this);
         if (m_pEditorStorageSettings)
+        {
+            m_pEditorStorageSettings->setActionPool(m_pActionPool);
             pLayout->addWidget(m_pEditorStorageSettings);
+        }
     }
 }
 
