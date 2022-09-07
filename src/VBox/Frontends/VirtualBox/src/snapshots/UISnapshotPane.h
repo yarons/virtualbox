@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISnapshotPane.h 96635 2022-09-07 16:16:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -50,6 +50,7 @@ class UIActionPool;
 class UISnapshotDetailsWidget;
 class UISnapshotItem;
 class UISnapshotTree;
+class UIVirtualMachineItem;
 
 
 /** Snapshot age format. */
@@ -80,8 +81,8 @@ public:
     /** Destructs snapshot pane. */
     virtual ~UISnapshotPane() RT_OVERRIDE;
 
-    /** Defines the @a comMachine object to be parsed. */
-    void setMachine(const CMachine &comMachine);
+    /** Defines the machine @a items to be parsed. */
+    void setMachineItems(const QList<UIVirtualMachineItem*> &items);
 
     /** Returns cached snapshot-item icon depending on @a fOnline flag. */
     const QIcon *snapshotItemIcon(bool fOnline) const;

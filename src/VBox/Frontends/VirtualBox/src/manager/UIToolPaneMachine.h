@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 96635 2022-09-07 16:16:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -104,9 +104,6 @@ public:
     /** Defines the machine @a items. */
     void setItems(const QList<UIVirtualMachineItem*> &items);
 
-    /** Defines the @a comMachine object. */
-    void setMachine(const CMachine &comMachine);
-
     /** Returns whether current-state item of Snapshot pane is selected. */
     bool isCurrentStateItemSelected() const;
 
@@ -151,8 +148,6 @@ private:
 
     /** Holds the cache of passed items. */
     QList<UIVirtualMachineItem*>  m_items;
-    /** Holds the cache of passed machine. */
-    CMachine                      m_comMachine;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIToolPaneMachine_h */
