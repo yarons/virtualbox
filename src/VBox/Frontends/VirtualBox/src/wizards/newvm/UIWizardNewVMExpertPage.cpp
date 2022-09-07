@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 96642 2022-09-07 19:20:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 96644 2022-09-07 20:35:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -166,7 +166,8 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
 
     pWizard->setISOFilePath(strISOPath);
 
-    bool const fOsTypeFixed = UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
+    bool const fOsTypeFixed = UIWizardNewVMNameOSTypeCommon::guessOSTypeDetectedOSTypeString(m_pNameAndSystemEditor,
+                                                                                             pWizard->detectedOSTypeId());
     if (fOsTypeFixed)
         m_userModifiedParameters << "GuestOSTypeFromISO";
     else /* Remove GuestOSTypeFromISO from the set if it is there: */
@@ -185,7 +186,7 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     disableEnableUnattendedRelatedWidgets(isUnattendedEnabled());
 
     /* Redetect the OS type using the name if detection or the step above failed: */
-    if (!fOsTypeFixed)
+    if (!fOsTypeFixed && m_pNameAndSystemEditor)
         sltNameChanged(m_pNameAndSystemEditor->name());
 
     emit completeChanged();
