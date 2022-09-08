@@ -1,4 +1,4 @@
-/* $Id: extF80_sincos.c 96664 2022-09-08 22:31:41Z knut.osmundsen@oracle.com $ */
+/* $Id: extF80_sincos.c 96666 2022-09-08 22:34:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * SoftFloat - VBox Extension - extF80_sin, extF80_cos, extF80_sincos.
  */
@@ -43,8 +43,8 @@
 
 static void cordic_sincos( float128_t z, float128_t *pv1, float128_t *pv2 SOFTFLOAT_STATE_DECL_COMMA )
 {
-    float128_t v1 = { 0, 0 }; /* MSC thinks it can be used uninitialized */
-    float128_t v2 = { 0, 0 }; /* MSC thinks it can be used uninitialized */
+    float128_t v1 = { { 0, 0 } }; /* MSC thinks it can be used uninitialized */
+    float128_t v2 = { { 0, 0 } }; /* MSC thinks it can be used uninitialized */
     /** @todo TBD: CORDIC kernel should be easily implemented in assembly *   */
 
     float128_t x1 = ui32_to_f128(1, pState);
