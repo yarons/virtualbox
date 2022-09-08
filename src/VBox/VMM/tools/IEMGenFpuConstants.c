@@ -1,4 +1,4 @@
-/* $Id: IEMGenFpuConstants.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMGenFpuConstants.c 96655 2022-09-08 11:10:56Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * IEMGenFpuConstants - Generates FPU constants for IEMAllAImplC.cpp.
  *
@@ -132,11 +132,10 @@ int main(void)
     PrintF128(One, NULL, "a0");
 
     mpfr_init2(Val, 112 + 1);
-    unsigned long uFactorial = 1; AssertCompile(sizeof(uFactorial) >= 8);
+    mpfr_set_ui(Val, 1, MPFR_RNDD);
     for (unsigned a = 1; a < 22; a++)
     {
-        uFactorial *= (a + 1);
-        mpfr_div_ui(Val, One, uFactorial, MPFR_RNDD);
+        mpfr_div_ui(Val, Val, a + 1, MPFR_RNDD);
         PrintF128(Val, NULL, "a%u", a);
     }
 
