@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 96656 2022-09-08 12:00:23Z andreas.loeffler@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -903,6 +903,13 @@ Function .onInstFailed
   ${If} $g_bPostInstallStatus == "true"
     ${LogToVBoxTray} "2" "Error while installing ${PRODUCT_NAME}!"
   ${EndIf}
+
+  ; Dump UI log to see what happend.
+  ; Only works with non-silent installs.
+  IfSilent +4 +1
+    StrCpy $0 "$INSTDIR\install_ui.log"
+    Push $0
+    Call DumpLog
 
   ; Set overall exit code
   SetErrorLevel 1
