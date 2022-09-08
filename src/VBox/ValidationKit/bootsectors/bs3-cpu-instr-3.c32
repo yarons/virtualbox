@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 96538 2022-08-27 14:33:52Z alexander.eichner@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 96649 2022-09-08 01:47:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -11308,7 +11308,7 @@ BS3_DECL(void) Main_pe32()
 {
     static const BS3TESTMODEBYONEENTRY g_aTests[] =
     {
-#ifndef DEBUG_bird
+#if 1 /*ndef DEBUG_bird*/
 # define ALL_TESTS
 #endif
 #if defined(ALL_TESTS)
