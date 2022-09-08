@@ -1,4 +1,4 @@
-/* $Id: extF80_sincos.h 96664 2022-09-08 22:31:41Z knut.osmundsen@oracle.com $ */
+/* $Id: extF80_sincos.h 96665 2022-09-08 22:34:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * SoftFloat - VBox Extension - constants for sine & cosine calculation.
  */
@@ -24,6 +24,12 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+#ifndef VBOX_INCLUDED_SRC_source_extF80_sincos_h
+#define VBOX_INCLUDED_SRC_source_extF80_sincos_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** The pi/2 constant as 128-bit floating point value.
  * base-10: 1.57079632679489661923132169163975139
@@ -720,3 +726,5 @@ const RTFLOAT128U g_ar128FsincosCORDICConsts2[] =
      * base-2 : 1.0011011011101001110110110101000010000110101111001011010011001111111010111111001000010010010101111011000000001010e-1 */
     RTFLOAT128U_INIT_C(0, 0x36e9db5086bc, 0xb4cfebf21257b00a, 0x3ffe),
 };
+
+#endif /* !VBOX_INCLUDED_SRC_source_extF80_sincos_h */
