@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UnattendedInstaller.h 96657 2022-09-08 12:47:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -621,6 +621,20 @@ protected:
                                       it includes the kernel command line with our preseed file and command line argument.
      */
     virtual HRESULT editIsoLinuxCfg(GeneralTextScript *pEditor, const char *pszMenuConfigFileName);
+
+private:
+
+    /**
+     * Tries to set label name of a label line.
+     *
+     * @returns                 true if label line is found and label name can be set.
+     * @param   pEditor         Editor with the menu configuration file loaded and parsed.
+     * @param   vecLineNumbers  Indices of the label lines (within pEditor data).
+     * @param   pszKeyWord      The keyword searched within the original label name.
+     * @param   pszNewLabelName The new name of the label.
+     */
+    bool modifyLabelLine(GeneralTextScript *pEditor, const std::vector<size_t> &vecLineNumbers,
+                         const char *pszKeyWord, const char *pszNewLabelName);
 };
 
 
