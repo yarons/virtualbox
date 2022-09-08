@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 96650 2022-09-08 06:36:38Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 96651 2022-09-08 06:47:09Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96650 $"
+__version__ = "$Revision: 96651 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -908,7 +908,8 @@ class TestDriver(base.TestDriver):                                              
         self.fRecordingAudio          = False; # Don't record audio by default.
         self.cSecsRecordingMax        = 0;     # No recording time limit in seconds.
         self.cMbRecordingMax          = 195;   # The test manager web server has a configured upload limit of 200 MiBs.
-                                               ## @todo Can we query the configured value here (via `from testmanager import config`)?
+                                               ## @todo Can we query the configured value here
+                                               # (via `from testmanager import config`)?
 
         # Drop LD_PRELOAD and enable memory leak detection in LSAN_OPTIONS from vboxinstall.py
         # before doing build detection. This is a little crude and inflexible...
