@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 96652 2022-09-08 08:49:40Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1446,6 +1446,7 @@ int cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCP
         pFeatures->fPopCnt              = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_POPCNT);
         pFeatures->fRdRand              = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_RDRAND);
         pFeatures->fVmx                 = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_VMX);
+        pFeatures->fPclMul              = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_PCLMUL);
         if (pFeatures->fVmx)
             cpumExplodeVmxFeatures(&pMsrs->hwvirt.vmx, pFeatures);
 
