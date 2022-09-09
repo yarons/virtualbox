@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.h 96670 2022-09-09 12:40:38Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -156,6 +156,7 @@ private:
     HRESULT getSupportedStorageControllerTypes(std::vector<StorageControllerType_T> &aSupportedStorageControllerTypes) RT_OVERRIDE;
     HRESULT getSupportedChipsetTypes(std::vector<ChipsetType_T> &aSupportedChipsetTypes) RT_OVERRIDE;
     HRESULT getSupportedIommuTypes(std::vector<IommuType_T> &aSupportedIommuTypes) RT_OVERRIDE;
+    HRESULT getSupportedTpmTypes(std::vector<TpmType_T> &aSupportedTpmTypes) RT_OVERRIDE;
     HRESULT getLanguageId(com::Utf8Str &aLanguageId) RT_OVERRIDE;
     HRESULT setLanguageId(const com::Utf8Str &aLanguageId) RT_OVERRIDE;
 

@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 96670 2022-09-09 12:40:38Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1953,6 +1953,19 @@ HRESULT SystemProperties::getSupportedIommuTypes(std::vector<IommuType_T> &aSupp
     };
     aSupportedIommuTypes.assign(aIommuTypes,
                                 aIommuTypes + RT_ELEMENTS(aIommuTypes));
+    return S_OK;
+}
+
+HRESULT SystemProperties::getSupportedTpmTypes(std::vector<TpmType_T> &aSupportedTpmTypes)
+{
+    static const TpmType_T aTpmTypes[] =
+    {
+        TpmType_None,
+        TpmType_v1_2,
+        TpmType_v2_0
+    };
+    aSupportedTpmTypes.assign(aTpmTypes,
+                              aTpmTypes + RT_ELEMENTS(aTpmTypes));
     return S_OK;
 }
 
