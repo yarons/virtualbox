@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96655 2022-09-08 11:10:56Z dmitrii.grigorev@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96668 2022-09-09 09:42:25Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -5245,7 +5245,7 @@ DECLINLINE(uint16_t) iemFpuSoftF128ToFloat80(PRTFLOAT80U pr80Dst, float128_t r12
     else if (RTFLOAT128U_IS_INF(&Tmp))
     {
         pr80Dst->s.fSign     = Tmp.s64.fSign;
-        pr80Dst->s.uExponent = 0;
+        pr80Dst->s.uExponent = 0x7fff;
         pr80Dst->s.uMantissa = 0;
     }
     return fFsw;
