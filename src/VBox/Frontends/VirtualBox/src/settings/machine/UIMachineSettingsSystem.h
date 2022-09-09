@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 96669 2022-09-09 12:31:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -47,6 +47,7 @@ class UIMotherboardFeaturesEditor;
 class UIParavirtProviderEditor;
 class UIPointingHIDEditor;
 class UIProcessorFeaturesEditor;
+class UITpmEditor;
 class UIVirtualCPUEditor;
 
 /** Machine settings: System page. */
@@ -166,6 +167,8 @@ private:
         UIBootOrderEditor           *m_pEditorBootOrder;
         /** Holds the chipset editor instance. */
         UIChipsetEditor             *m_pEditorChipset;
+        /** Holds the TPM editor instance. */
+        UITpmEditor                 *m_pEditorTpm;
         /** Holds the pointing HID editor instance. */
         UIPointingHIDEditor         *m_pEditorPointingHID;
         /** Holds the motherboard features editor instance. */
