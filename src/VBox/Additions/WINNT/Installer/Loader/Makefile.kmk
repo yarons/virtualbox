@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96449 2022-08-23 23:55:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96684 2022-09-09 23:30:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -49,6 +49,7 @@ VBoxWindowsAdditions_LIBS     = \
 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(KBUILD_TARGET_ARCH))_LIB)/libcmt.lib \
 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(KBUILD_TARGET_ARCH))_LIB)/libcpmt.lib
 endif
+VBoxWindowsAdditions_VBOX_IMPORT_CHECKER.win.x86 := nt4
 
 # Version stuff.
 VBoxWindowsAdditions.cpp_DEFS += VBOX_SVN_REV=$(VBOX_SVN_REV)

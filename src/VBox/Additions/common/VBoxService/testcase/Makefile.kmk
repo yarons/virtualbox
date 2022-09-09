@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96684 2022-09-09 23:30:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxServicec test cases.
 #
@@ -29,16 +29,14 @@ SUB_DEPTH = ../../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 #
-# Target lists.
-#
-PROGRAMS.win += tstUserInfo
-
-#
 # tstUserInfo
 #
+PROGRAMS.win += tstUserInfo
 tstUserInfo_TEMPLATE    = VBoxGuestR3Exe
 tstUserInfo_SOURCES     = \
 	tstUserInfo.cpp
+tstUserInfo_VBOX_IMPORT_CHECKER.win.x86 = xp
+
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
