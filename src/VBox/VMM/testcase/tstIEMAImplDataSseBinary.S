@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImplDataSseBinary.S 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstIEMAImplDataSseBinary.S 96682 2022-09-09 14:52:43Z alexander.eichner@oracle.com $ */
 /** @file
  * tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
  */
@@ -69,6 +69,7 @@ IEM_TEST_DATA haddps_u128,       "tstIEMAImplDataSseBinary-haddps_u128.bin"
 IEM_TEST_DATA hsubps_u128,       "tstIEMAImplDataSseBinary-hsubps_u128.bin"
 IEM_TEST_DATA sqrtps_u128,       "tstIEMAImplDataSseBinary-sqrtps_u128.bin"
 IEM_TEST_DATA addsubps_u128,     "tstIEMAImplDataSseBinary-addsubps_u128.bin"
+IEM_TEST_DATA cvtps2pd_u128,     "tstIEMAImplDataSseBinary-cvtps2pd_u128.bin"
 
 IEM_TEST_DATA addss_u128_r32,    "tstIEMAImplDataSseBinary-addss_u128_r32.bin"
 IEM_TEST_DATA mulss_u128_r32,    "tstIEMAImplDataSseBinary-mulss_u128_r32.bin"
