@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96691 2022-09-11 22:17:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -40,11 +40,9 @@ VBoxControl_TEMPLATE = VBoxGuestR3Exe
 else
 VBoxControl_TEMPLATE = NewVBoxGuestR3Exe
 endif
-ifeq ($(KBUILD_TARGET),win)
- ifdef VBOX_SIGN_ADDITIONS # (See the main Windows Additions makefile.)
-  VBoxControl_INSTTYPE = none
-  VBoxControl_DEBUG_INSTTYPE = both
- endif
+if "$(KBUILD_TARGET)" == "win" && defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS) # (See the main Windows Additions makefile.)
+ VBoxControl_INSTTYPE = none
+ VBoxControl_DEBUG_INSTTYPE = both
 endif
 VBoxControl_DEFS     += \
 	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,) \

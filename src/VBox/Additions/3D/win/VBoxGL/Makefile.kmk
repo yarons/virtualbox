@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96691 2022-09-11 22:17:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxGL OpenGL state tracker.
 #
@@ -65,7 +65,7 @@ VBoxGL_LIBS     = \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBoxMesaUtilLib$(VBOX_SUFF_LIB) \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBoxMesaLib$(VBOX_SUFF_LIB)
 
-ifdef VBOX_SIGN_ADDITIONS
+if defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS)
  VBoxGL_INSTTYPE       = none
  VBoxGL_DEBUG_INSTTYPE = both
 endif

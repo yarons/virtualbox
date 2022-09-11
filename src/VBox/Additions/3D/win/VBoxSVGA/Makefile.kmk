@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96691 2022-09-11 22:17:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSVGA hardware driver.
 #
@@ -62,7 +62,7 @@ VBoxSVGA_LIBS     = \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBoxMesaSVGAWinsysLib$(VBOX_SUFF_LIB) \
 	$(VBOX_PATH_ADDITIONS_LIB)/VBoxMesaSVGALib$(VBOX_SUFF_LIB)
 
-ifdef VBOX_SIGN_ADDITIONS
+if defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS)
  VBoxSVGA_INSTTYPE       = none
  VBoxSVGA_DEBUG_INSTTYPE = both
 endif
