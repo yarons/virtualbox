@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 96686 2022-09-10 23:36:01Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 96687 2022-09-11 00:34:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -467,7 +467,7 @@ Function ${un}AbortShutdown
 
   ${If} ${FileExists} "$g_strSystemDir\shutdown.exe"
     ; Try to abort the shutdown
-    ${CmdExecute} "$\"$g_strSystemDir\shutdown.exe$\" -a" "true"
+    ${CmdExecute} "$\"$g_strSystemDir\shutdown.exe$\" -a" 'non-zero-exitcode=log'
   ${Else}
     ${LogVerbose} "Shutting down not supported: Binary $\"$g_strSystemDir\shutdown.exe$\" not found"
   ${EndIf}

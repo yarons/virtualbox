@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 96686 2022-09-10 23:36:01Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 96687 2022-09-11 00:34:46Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -861,8 +861,20 @@ Section -Post
 
   ${LogVerbose} "Installation completed."
 
+  ;
+  ; Dump UI log to on success too. Only works with non-silent installs.
+  ; (This has to be done here rather than in .onInstSuccess, because by
+  ; then the log is no longer visible in the UI.)
+  ;
+  ${IfNot} ${Silent}
+    StrCpy $0 "$INSTDIR\install_ui.log"
+    Push $0
+    Call DumpLog
+  ${EndIf}
+
 SectionEnd
 
+;;
 ; !!! NOTE: This function *has* to be right under the last section; otherwise it does
 ;           *not* get called! Don't ask me why ... !!!
 Function .onSelChange
@@ -895,8 +907,10 @@ Function .onSelChange
 
 FunctionEnd
 
+;;
 ; This function is called when a critical error occurred, caused by
 ; the Abort command
+;
 Function .onInstFailed
 
   ${LogVerbose} "$(VBOX_ERROR_INST_FAILED)"
@@ -906,19 +920,21 @@ Function .onInstFailed
     ${LogToVBoxTray} "2" "Error while installing ${PRODUCT_NAME}!"
   ${EndIf}
 
-  ; Dump UI log to see what happend.
-  ; Only works with non-silent installs.
-  IfSilent +4 +1
+  ; Dump UI log to see what happend. Only works with non-silent installs.
+  ${IfNot} ${Silent}
     StrCpy $0 "$INSTDIR\install_ui.log"
     Push $0
     Call DumpLog
+  ${EndIf}
 
   ; Set overall exit code
   SetErrorLevel 1
 
 FunctionEnd
 
+;;
 ; This function is called when installation was successful!
+;
 Function .onInstSuccess
 
   ${LogVerbose} "${PRODUCT_NAME} successfully installed"
