@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsNT4.nsh 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsNT4.nsh 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsNT4.nsh - Guest Additions installation for NT4.
 ;
@@ -197,13 +197,6 @@ Function NT4_InstallFiles
   ; Add the shared folders network provider
   ;${CmdExecute} "$\"$INSTDIR\VBoxDrvInst.exe$\" netprovider add VBoxSF" 'non-zero-exitcode=abort'
 
-  Goto done
-
-error:
-  Abort "ERROR: Could not install files for Windows NT4! Installation aborted."
-
-done:
-
 FunctionEnd
 
 Function NT4_Main
@@ -285,5 +278,7 @@ Function ${un}NT4_Uninstall
 
 FunctionEnd
 !macroend
-!insertmacro NT4_Uninstall ""
+!ifndef UNINSTALLER_ONLY
+  !insertmacro NT4_Uninstall ""
+!endif
 !insertmacro NT4_Uninstall "un."

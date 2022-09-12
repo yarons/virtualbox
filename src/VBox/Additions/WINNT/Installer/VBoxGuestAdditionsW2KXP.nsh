@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -770,5 +770,7 @@ Function ${un}W2K_Uninstall
 
 FunctionEnd
 !macroend
-!insertmacro W2K_Uninstall ""
+!ifndef UNINSTALLER_ONLY
+  !insertmacro W2K_Uninstall ""
+!endif
 !insertmacro W2K_Uninstall "un."

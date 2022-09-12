@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstall.nsh 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsUninstall.nsh 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
@@ -133,7 +133,9 @@ exit:
 
 FunctionEnd
 !macroend
-!insertmacro Uninstall ""
+!ifndef UNINSTALLER_ONLY
+  !insertmacro Uninstall ""
+!endif
 !insertmacro Uninstall "un."
 
 !macro UninstallInstDir un
