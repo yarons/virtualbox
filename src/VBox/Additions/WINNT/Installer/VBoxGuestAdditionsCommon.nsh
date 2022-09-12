@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 96695 2022-09-12 09:54:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -334,7 +334,7 @@ Function ${un}GetAdditionsVersion
 FunctionEnd
 !macroend
 !insertmacro GetAdditionsVersion ""
-!insertmacro GetAdditionsVersion "un."
+; !insertmacro GetAdditionsVersion "un." - not used.
 !endif ; UNINSTALLER_ONLY
 
 !macro StopVBoxService un
