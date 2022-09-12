@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 96702 2022-09-12 14:47:35Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 96708 2022-09-12 16:57:27Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -2890,6 +2890,35 @@ EMIT_INSTR_PLUS_ICEBP   vpinsrw, XMM8, XMM9, R9D,   0FFh
 EMIT_INSTR_PLUS_ICEBP   vpinsrw, XMM8, XMM9, FSxBX, 0FFh
 EMIT_INSTR_PLUS_ICEBP   vpinsrw, XMM8, XMM9, R9D,   000h
 EMIT_INSTR_PLUS_ICEBP   vpinsrw, XMM8, XMM9, FSxBX, 000h
+ %endif
+
+;
+; [V]PEXTRW
+;
+EMIT_INSTR_PLUS_ICEBP   pextrw,  EDX, MM1, 0FFh
+EMIT_INSTR_PLUS_ICEBP   pextrw,  EDX, MM1, 000h
+
+EMIT_INSTR_PLUS_ICEBP   pextrw,  EDX, XMM1, 0FFh
+EMIT_INSTR_PLUS_ICEBP   pextrw,  EDX, XMM1, 000h
+
+EMIT_INSTR_PLUS_ICEBP   vpextrw, EDX, XMM1, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vpextrw, EDX, XMM1, 000h
+
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   pextrw,  R9D, MM1, 0FFh
+EMIT_INSTR_PLUS_ICEBP   pextrw,  R9D, MM1, 000h
+
+; @todo Emits the SSE4.1 0f3a variant EMIT_INSTR_PLUS_ICEBP   pextrw,  RDX, XMM1, 0FFh
+; @todo Emits the SSE4.1 0f3a variant EMIT_INSTR_PLUS_ICEBP   pextrw,  RDX, XMM1, 000h
+
+EMIT_INSTR_PLUS_ICEBP   pextrw,  R9D, XMM8, 0FFh
+EMIT_INSTR_PLUS_ICEBP   pextrw,  R9D, XMM8, 000h
+
+EMIT_INSTR_PLUS_ICEBP   vpextrw, R9D, XMM8, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vpextrw, R9D, XMM8, 000h
+
+EMIT_INSTR_PLUS_ICEBP   vpextrw, RDX, XMM1, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vpextrw, RDX, XMM1, 000h
  %endif
 
 
