@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 96687 2022-09-11 00:34:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -94,7 +94,9 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 !include "Library.nsh"
 !include "Sections.nsh"
 !include "strstr.nsh"         ; Function "strstr"
-!include "servicepack.nsh"    ; Function "GetServicePack"
+!if $%KBUILD_TARGET_ARCH% == "x86" ; Only needed for NT4 SP6 recommendation.
+  !include "servicepack.nsh"  ; Function "GetServicePack"
+!endif
 !include "winver.nsh"         ; Function for determining Windows version
 !define REPLACEDLL_NOREGISTER ; Replace in use DLL function
 !include "ReplaceDLL.nsh"
@@ -265,7 +267,9 @@ Var g_bInstallTimestampCA               ; Cmd line: Force installing the timesta
 !include "VBoxGuestAdditionsW2KXP.nsh"
 !include "VBoxGuestAdditionsVista.nsh"
 !include "VBoxGuestAdditionsUninstall.nsh"    ; Product uninstallation
-!include "VBoxGuestAdditionsUninstallOld.nsh" ; Uninstallation of deprecated versions which must be removed first
+!ifndef UNINSTALLER_ONLY
+  !include "VBoxGuestAdditionsUninstallOld.nsh" ; Uninstallation of deprecated versions which must be removed first
+!endif
 
 Function HandleCommandLine
 
@@ -487,17 +491,15 @@ exit:
 
 FunctionEnd
 
+!ifndef UNINSTALLER_ONLY
+
 Function CheckForOldGuestAdditions
 
   Push $0
   Push $1
   Push $2
 
-begin:
-
   ${LogVerbose} "Checking for old Guest Additions ..."
-
-sun_check:
 
   ; Check for old "Sun VirtualBox Guest Additions"
   ; - before rebranding to Oracle
@@ -602,6 +604,8 @@ Function CheckForInstalledComponents
   Pop $0
 
 FunctionEnd
+
+!endif ; UNINSTALLER_ONLY
 
 ;
 ; Main Files
@@ -1202,8 +1206,7 @@ exit:
 
 SectionEnd
 
-; !EXTERNAL_UNINSTALLER
-!endif
+!endif ; !EXTERNAL_UNINSTALLER
 
 ;Direct the output to our bin dir
 !cd "$%PATH_OUT%\bin\additions"

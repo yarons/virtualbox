@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsVista.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsVista.nsh 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsVista.nsh - Guest Additions installation for Windows Vista/7.
 ;
@@ -98,7 +98,7 @@ Function ${un}Vista_UninstallInstDir
 
 FunctionEnd
 !macroend
-!insertmacro Vista_UninstallInstDir ""
+;!insertmacro Vista_UninstallInstDir "" - only .un version used
 !insertmacro Vista_UninstallInstDir "un."
 
 !macro Vista_Uninstall un

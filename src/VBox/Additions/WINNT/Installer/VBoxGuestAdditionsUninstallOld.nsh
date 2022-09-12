@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstallOld.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxGuestAdditionsUninstallOld.nsh 96693 2022-09-12 08:40:05Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstallOld.nsh - Guest Additions uninstallation handling for legacy packages.
 ;
@@ -25,6 +25,7 @@
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
 
+!ifdef UNUSED_CODE
 !macro Uninstall_RunExtUnInstaller un
 Function ${un}Uninstall_RunExtUnInstaller
 
@@ -90,6 +91,7 @@ FunctionEnd
 !macroend
 !insertmacro Uninstall_RunExtUnInstaller ""
 !insertmacro Uninstall_RunExtUnInstaller "un."
+!endif ; UNUSED_CODE
 
 !macro Uninstall_WipeInstallationDirectory un
 Function ${un}Uninstall_WipeInstallationDirectory
