@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 96697 2022-09-12 10:43:04Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -131,11 +131,11 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 
   ; Welcome page
   !insertmacro MUI_PAGE_WELCOME
-!ifdef VBOX_WITH_LICENSE_DISPLAY
-  ; License page
-  !insertmacro MUI_PAGE_LICENSE "$(VBOX_LICENSE)"
-  !define MUI_LICENSEPAGE_RADIOBUTTONS
-!endif
+  !ifdef VBOX_WITH_LICENSE_DISPLAY
+     ; License page
+     !insertmacro MUI_PAGE_LICENSE "$(VBOX_LICENSE)"
+     !define MUI_LICENSEPAGE_RADIOBUTTONS
+  !endif
   ; Directory page
   !insertmacro MUI_PAGE_DIRECTORY
   ; Components Page
@@ -189,7 +189,7 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
     Page components
     Page directory
     Page instfiles
-!endif
+!endif ; !USE_MUI
 
 ; Must come after MUI includes to have certain defines set for DumpLog
 !include "dumplog.nsh"                  ; Dump log to file function
@@ -1128,8 +1128,10 @@ FunctionEnd
 
 ;
 ; The uninstaller is built separately when doing code signing
-; For some reason NSIS still finds the Uninstall section even
-; when EXTERNAL_UNINSTALLER is defined. This causes a silly warning
+;
+; When building the non-uninstaller part, we get a 6020 warning because NSIS
+; detects uninstaller related _code_ (un.xxxx) being present.  It would take
+; some effort to eliminate that one.
 ;
 !ifndef EXTERNAL_UNINSTALLER
 
