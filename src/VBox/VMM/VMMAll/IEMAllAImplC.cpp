@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96701 2022-09-12 14:45:37Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96707 2022-09-12 16:57:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -15910,4 +15910,27 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpinsrw_u128_fallback,(PRTUINT128U puDst, PCRTU
 {
     *puDst = *puSrc;
     puDst->au16[bEvil & 0x7] = u16Src;
+}
+
+
+/**
+ * [V]PEXTRW
+ */
+#ifdef IEM_WITHOUT_ASSEMBLY
+IEM_DECL_IMPL_DEF(void, iemAImpl_pextrw_u64,(uint16_t *pu16Dst, uint64_t u64Src, uint8_t bEvil))
+{
+    *pu16Dst = (uint16_t)(u64Src >> ((bEvil & 0x3) * 16));
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_pextrw_u128,(uint16_t *pu16Dst, PCRTUINT128U puSrc, uint8_t bEvil))
+{
+    *pu16Dst = puSrc->au16[bEvil & 0x7];
+}
+
+#endif
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpextrw_u128_fallback,(uint16_t *pu16Dst, PCRTUINT128U puSrc, uint8_t bEvil))
+{
+    *pu16Dst = puSrc->au16[bEvil & 0x7];
 }

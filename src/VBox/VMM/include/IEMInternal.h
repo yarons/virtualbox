@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96701 2022-09-12 14:45:37Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96707 2022-09-12 16:57:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2220,6 +2220,11 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_pinsrw_u64,(uint64_t *pu64Dst, uint16_t u16Src,
 IEM_DECL_IMPL_DEF(void, iemAImpl_pinsrw_u128,(PRTUINT128U puDst, uint16_t u16Src, uint8_t bEvil));
 IEM_DECL_IMPL_DEF(void, iemAImpl_vpinsrw_u128,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint16_t u16Src, uint8_t bEvil));
 IEM_DECL_IMPL_DEF(void, iemAImpl_vpinsrw_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint16_t u16Src, uint8_t bEvil));
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_pextrw_u64,(uint16_t *pu16Dst, uint64_t u64Src, uint8_t bEvil));
+IEM_DECL_IMPL_DEF(void, iemAImpl_pextrw_u128,(uint16_t *pu16Dst, PCRTUINT128U puSrc, uint8_t bEvil));
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpextrw_u128,(uint16_t *pu16Dst, PCRTUINT128U puSrc, uint8_t bEvil));
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpextrw_u128_fallback,(uint16_t *pu16Dst, PCRTUINT128U puSrc, uint8_t bEvil));
 
 
 typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLMEDIAOPTF2U128IMM8,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint8_t bEvil));
