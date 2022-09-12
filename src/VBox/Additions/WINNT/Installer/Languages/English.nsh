@@ -1,4 +1,4 @@
-; $Id: English.nsh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: English.nsh 96692 2022-09-12 00:39:59Z knut.osmundsen@oracle.com $
 ;; @file
 ; NLS for English language.
 ;
@@ -32,6 +32,10 @@ LangString VBOX_NOADMIN ${LANG_ENGLISH}                             "You need ad
 LangString VBOX_NOTICE_ARCH_X86 ${LANG_ENGLISH}                     "This application only runs on 32-bit Windows systems. Please install the 64-bit version of $(^Name)!"
 LangString VBOX_NOTICE_ARCH_AMD64 ${LANG_ENGLISH}                   "This application only runs on 64-bit Windows systems. Please install the 32-bit version of $(^Name)!"
 LangString VBOX_NT4_NO_SP6 ${LANG_ENGLISH}                          "You do not seem to have Service Pack 6 for Windows NT4 installed.$\r$\nWe recommend that you install it first. Do you wish to continue anyway?"
+
+LangString VBOX_CA_CHECK_VERISIGN_G5 ${LANG_ENGLISH}                "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'VeriSign Trust Network; OU=(c) 2006 VeriSign, Inc. - For authorized use only'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
+LangString VBOX_CA_CHECK_DIGICERT_ASSURED_ID ${LANG_ENGLISH}        "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'DigiCert Assured ID Root CA'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
+LangString VBOX_CA_CHECK_DIGICERT_HIGH_ASSURANCE_EV ${LANG_ENGLISH} "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'DigiCert High Assurance EV Root CA'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
 
 LangString VBOX_PLATFORM_UNSUPPORTED ${LANG_ENGLISH}                "The VirtualBox Guest Additions cannot be installed on this version of Windows"
 

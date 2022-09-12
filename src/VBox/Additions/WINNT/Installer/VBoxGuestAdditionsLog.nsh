@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsLog.nsh 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsLog.nsh 96692 2022-09-12 00:39:59Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionLog.nsh - Logging functions.
 ;
@@ -66,7 +66,7 @@
 ;
 !macro _logToVBoxTray type text
 
-    ${LogVerbose} "${text}"
+    ${LogVerbose} "To VBoxTray: ${text}"
 !if $%VBOX_WITH_GUEST_INSTALL_HELPER% == "1"
     Push $0
     ; Parameters:
