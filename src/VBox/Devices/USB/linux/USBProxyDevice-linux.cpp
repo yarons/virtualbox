@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: USBProxyDevice-linux.cpp 96719 2022-09-13 12:35:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -100,12 +100,16 @@ typedef struct USBPROXYURBLNX
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wpedantic"
 #endif
-    struct usbdevfs_urb             KUrb;
+    union
+    {
+        struct usbdevfs_urb         KUrb;
+        /** Make sure we've got sufficient space for isochronous packets. */
+        uint8_t                     abKUrbPadding[  RT_UOFFSETOF(struct usbdevfs_urb, iso_frame_desc)
+                                                  + sizeof(struct usbdevfs_iso_packet_desc) * 8];
+    };
 #if RT_GNUC_PREREQ(6, 0)
 # pragma GCC diagnostic pop
 #endif
-    /** Space filler for the isochronous packets. */
-    struct usbdevfs_iso_packet_desc aIsocPktsDonUseTheseUseTheOnesInKUrb[8];
     /** Node to link the URB in of the existing lists. */
     RTLISTNODE                      NodeList;
     /** If we've split the VUSBURB up into multiple linux URBs, this is points to the head. */
@@ -1573,6 +1577,9 @@ static DECLCALLBACK(PVUSBURB) usbProxyLinuxUrbReap(PUSBPROXYDEV pProxyDev, RTMSI
             pUrb->cbData = pUrbLnx->KUrb.actual_length;
             if (pUrb->enmType == VUSBXFERTYPE_ISOC)
             {
+                AssertCompile(   sizeof(pUrbLnx->abKUrbPadding)
+                              >=   RT_UOFFSETOF(struct usbdevfs_urb, iso_frame_desc)
+                                 + sizeof(struct usbdevfs_iso_packet_desc) * RT_ELEMENTS(pUrb->aIsocPkts));
                 unsigned i, off;
                 for (i = 0, off = 0; i < pUrb->cIsocPkts; i++)
                 {
