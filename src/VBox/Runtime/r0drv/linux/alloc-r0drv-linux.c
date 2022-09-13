@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 96716 2022-09-13 10:12:48Z vadim.galitsyn@oracle.com $ */
+/* $Id: alloc-r0drv-linux.c 96717 2022-09-13 10:16:54Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -279,7 +279,12 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 # endif /* !RTMEMALLOC_EXEC_HEAP */
 
 #elif defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
+# if RTLNX_VER_MIN(5,8,0)
+        AssertMsgFailed(("This point should not be reached, please file a bug\n"));
+        pHdr = NULL;
+# else
         pHdr = (PRTMEMHDR)__vmalloc(cb + sizeof(*pHdr), GFP_KERNEL | __GFP_HIGHMEM | __GFP_NOWARN, MY_PAGE_KERNEL_EXEC);
+# endif
 #else
         pHdr = (PRTMEMHDR)vmalloc(cb + sizeof(*pHdr));
 #endif
