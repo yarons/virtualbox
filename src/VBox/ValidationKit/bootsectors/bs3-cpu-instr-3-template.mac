@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 96708 2022-09-12 16:57:27Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 96714 2022-09-13 09:10:10Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -2919,6 +2919,42 @@ EMIT_INSTR_PLUS_ICEBP   vpextrw, R9D, XMM8, 000h
 
 EMIT_INSTR_PLUS_ICEBP   vpextrw, RDX, XMM1, 0FFh
 EMIT_INSTR_PLUS_ICEBP   vpextrw, RDX, XMM1, 000h
+ %endif
+
+;
+; [V]MOVMSKPS
+;
+EMIT_INSTR_PLUS_ICEBP   movmskps,  EDX, XMM1
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, EDX, XMM1
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, EDX, YMM1
+
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   movmskps, R9D, XMM8
+EMIT_INSTR_PLUS_ICEBP   movmskps, RDX, XMM1
+
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, R9D, XMM8
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, RDX, XMM1
+
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, R9D, YMM8
+EMIT_INSTR_PLUS_ICEBP   vmovmskps, RDX, YMM1
+ %endif
+
+;
+; [V]MOVMSKPD
+;
+EMIT_INSTR_PLUS_ICEBP   movmskpd,  EDX, XMM1
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, EDX, XMM1
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, EDX, YMM1
+
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   movmskpd, R9D, XMM8
+EMIT_INSTR_PLUS_ICEBP   movmskpd, RDX, XMM1
+
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, R9D, XMM8
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, RDX, XMM1
+
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, R9D, YMM8
+EMIT_INSTR_PLUS_ICEBP   vmovmskpd, RDX, YMM1
  %endif
 
 
