@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96724 2022-09-14 07:19:54Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96727 2022-09-14 07:53:44Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -841,14 +841,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96724 $";
+    static char s_szRev[] = "$Revision: 96727 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96724 2022-09-14 07:19:54Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96727 2022-09-14 07:53:44Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -5250,6 +5250,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_BINARY_I32_R64_T, SSE_BINARY_I32_R64_TEST_T, PFNIEMAIMP
 static const SSE_BINARY_I32_R64_T g_aSseBinaryI32R64[] =
 {
     ENTRY_BIN(cvttsd2si_i32_r64),
+    ENTRY_BIN(cvtsd2si_i32_r64),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -5418,6 +5419,7 @@ TYPEDEF_SUBTEST_TYPE(SSE_BINARY_I64_R64_T, SSE_BINARY_I64_R64_TEST_T, PFNIEMAIMP
 static const SSE_BINARY_I64_R64_T g_aSseBinaryI64R64[] =
 {
     ENTRY_BIN(cvttsd2si_i64_r64),
+    ENTRY_BIN(cvtsd2si_i64_r64),
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
