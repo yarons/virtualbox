@@ -1,4 +1,4 @@
-; $Id: tstIEMAImplDataSseBinary.asm 96732 2022-09-14 09:21:31Z alexander.eichner@oracle.com $
+; $Id: tstIEMAImplDataSseBinary.asm 96742 2022-09-14 18:33:48Z alexander.eichner@oracle.com $
 ;; @file
 ; tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
 ;
@@ -110,3 +110,9 @@ IEM_TEST_DATA cvtss2si_i32_r32,     "tstIEMAImplDataSseBinary-cvtss2si_i32_r32.b
 
 IEM_TEST_DATA cvttss2si_i64_r32,    "tstIEMAImplDataSseBinary-cvttss2si_i64_r32.bin"
 IEM_TEST_DATA cvtss2si_i64_r32,     "tstIEMAImplDataSseBinary-cvtss2si_i64_r32.bin"
+
+IEM_TEST_DATA cvtsi2ss_r32_i32,     "tstIEMAImplDataSseBinary-cvtsi2ss_r32_i32.bin"
+IEM_TEST_DATA cvtsi2ss_r32_i64,     "tstIEMAImplDataSseBinary-cvtsi2ss_r32_i64.bin"
+
+IEM_TEST_DATA cvtsi2sd_r64_i32,     "tstIEMAImplDataSseBinary-cvtsi2sd_r64_i32.bin"
+IEM_TEST_DATA cvtsi2sd_r64_i64,     "tstIEMAImplDataSseBinary-cvtsi2sd_r64_i64.bin"
