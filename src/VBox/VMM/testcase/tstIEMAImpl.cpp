@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96732 2022-09-14 09:21:31Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96734 2022-09-14 09:47:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -841,14 +841,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96732 $";
+    static char s_szRev[] = "$Revision: 96734 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96732 2022-09-14 09:21:31Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96734 2022-09-14 09:47:19Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -5892,7 +5892,7 @@ static void SseBinaryI64R32Test(void)
         if (!cTests) RTTestSkipped(g_hTest, "no tests");
         for (uint32_t iVar = 0; iVar < cVars; iVar++)
         {
-            for (uint32_t iTest = 0; iTest < cTests / sizeof(SSE_BINARY_I64_R64_TEST_T); iTest++)
+            for (uint32_t iTest = 0; iTest < cTests / sizeof(SSE_BINARY_I64_R32_TEST_T); iTest++)
             {
                 uint32_t fMxcsr = 0;
                 int64_t i64Dst = 0;
