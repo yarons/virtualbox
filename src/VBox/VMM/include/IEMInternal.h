@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96723 2022-09-14 07:17:55Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96726 2022-09-14 07:53:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2299,7 +2299,10 @@ typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSSEF2I64U64,(PCX86FXSTATE pFpuState, 
 typedef FNIEMAIMPLSSEF2I64U64 *PFNIEMAIMPLSSEF2I64U64;
 
 FNIEMAIMPLSSEF2I32U64 iemAImpl_cvttsd2si_i32_r64;
+FNIEMAIMPLSSEF2I32U64 iemAImpl_cvtsd2si_i32_r64;
+
 FNIEMAIMPLSSEF2I64U64 iemAImpl_cvttsd2si_i64_r64;
+FNIEMAIMPLSSEF2I64U64 iemAImpl_cvtsd2si_i64_r64;
 
 /** @} */
 
