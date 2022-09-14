@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMInline.h 96723 2022-09-14 07:17:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1437,6 +1437,20 @@ DECLINLINE(uint32_t *) iemGRegRefU32(PVMCPUCC pVCpu, uint8_t iReg)
 
 
 /**
+ * Gets a reference (pointer) to the specified signed 32-bit general purpose register.
+ *
+ * @returns Register reference.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   iReg                The register.
+ */
+DECLINLINE(int32_t *) iemGRegRefI32(PVMCPUCC pVCpu, uint8_t iReg)
+{
+    Assert(iReg < 16);
+    return (int32_t *)&pVCpu->cpum.GstCtx.aGRegs[iReg].u32;
+}
+
+
+/**
  * Gets a reference (pointer) to the specified 64-bit general purpose register.
  *
  * @returns Register reference.
@@ -1447,6 +1461,20 @@ DECLINLINE(uint64_t *) iemGRegRefU64(PVMCPUCC pVCpu, uint8_t iReg)
 {
     Assert(iReg < 64);
     return &pVCpu->cpum.GstCtx.aGRegs[iReg].u64;
+}
+
+
+/**
+ * Gets a reference (pointer) to the specified signed 64-bit general purpose register.
+ *
+ * @returns Register reference.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   iReg                The register.
+ */
+DECLINLINE(int64_t *) iemGRegRefI64(PVMCPUCC pVCpu, uint8_t iReg)
+{
+    Assert(iReg < 16);
+    return (int64_t *)&pVCpu->cpum.GstCtx.aGRegs[iReg].u64;
 }
 
 

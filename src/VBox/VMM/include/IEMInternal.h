@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96713 2022-09-13 09:09:57Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96723 2022-09-14 07:17:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2292,6 +2292,15 @@ typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLF2EFL128,(PCRTUINT128U puSrc1, PCRTUI
 typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLF2EFL256,(PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint32_t *pEFlags));
 FNIEMAIMPLF2EFL128 iemAImpl_ptest_u128;
 FNIEMAIMPLF2EFL256 iemAImpl_vptest_u256, iemAImpl_vptest_u256_fallback;
+
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSSEF2I32U64,(PCX86FXSTATE pFpuState, uint32_t *pfMxcsr, int32_t *pi32Dst, const uint64_t *pu64Src)); /* pu64Src is a double precision floating point. */
+typedef FNIEMAIMPLSSEF2I32U64 *PFNIEMAIMPLSSEF2I32U64;
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSSEF2I64U64,(PCX86FXSTATE pFpuState, uint32_t *pfMxcsr, int64_t *pi64Dst, const uint64_t *pu64Src)); /* pu64Src is a double precision floating point. */
+typedef FNIEMAIMPLSSEF2I64U64 *PFNIEMAIMPLSSEF2I64U64;
+
+FNIEMAIMPLSSEF2I32U64 iemAImpl_cvttsd2si_i32_r64;
+FNIEMAIMPLSSEF2I64U64 iemAImpl_cvttsd2si_i64_r64;
+
 /** @} */
 
 
@@ -3625,6 +3634,7 @@ void            iemFpuStackPushOverflowWithMemOp(PVMCPUCC pVCpu, uint8_t iEffSeg
 /** @name SSE+AVX SIMD access and helpers.
  * @{ */
 void            iemSseStoreResult(PVMCPUCC pVCpu, PCIEMSSERESULT pResult, uint8_t iXmmReg) RT_NOEXCEPT;
+void            iemSseUpdateMxcsr(PVMCPUCC pVCpu, uint32_t fMxcsr) RT_NOEXCEPT;
 /** @} */
 
 /** @name   Memory access.
