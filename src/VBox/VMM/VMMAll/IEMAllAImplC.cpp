@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96723 2022-09-14 07:17:55Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96725 2022-09-14 07:50:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -16009,11 +16009,11 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cvttsd2si_i32_r64,(PCX86FXSTATE pFpuState, uint
     RTFLOAT64U r64Src;
 
     r64Src.u = *pu64Src;
-    uint32_t fDe = iemSsePrepareValueR64(&r64Src, pFpuState->MXCSR, &r64Src);
+    iemSsePrepareValueR64(&r64Src, pFpuState->MXCSR, &r64Src); /* The de-normal flag is not set. */
 
     softfloat_state_t SoftState = IEM_SOFTFLOAT_STATE_INITIALIZER_FROM_MXCSR(pFpuState->MXCSR);
-    *pi32Dst = f64_to_i32(iemFpSoftF64FromIprt(&r64Src), SoftState.roundingMode, true /*exact*/, &SoftState);
-    *pfMxcsr = pFpuState->MXCSR | (SoftState.exceptionFlags & X86_MXCSR_XCPT_FLAGS) | fDe;
+    *pi32Dst = f64_to_i32_r_minMag(iemFpSoftF64FromIprt(&r64Src), true /*exact*/, &SoftState);
+    *pfMxcsr = pFpuState->MXCSR | (SoftState.exceptionFlags & X86_MXCSR_XCPT_FLAGS);
 }
 
 
@@ -16022,10 +16022,10 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cvttsd2si_i64_r64,(PCX86FXSTATE pFpuState, uint
     RTFLOAT64U r64Src;
 
     r64Src.u = *pu64Src;
-    uint32_t fDe = iemSsePrepareValueR64(&r64Src, pFpuState->MXCSR, &r64Src);
+    iemSsePrepareValueR64(&r64Src, pFpuState->MXCSR, &r64Src); /* The de-normal flag is not set. */
 
     softfloat_state_t SoftState = IEM_SOFTFLOAT_STATE_INITIALIZER_FROM_MXCSR(pFpuState->MXCSR);
-    *pi64Dst = f64_to_i64(iemFpSoftF64FromIprt(&r64Src), SoftState.roundingMode, true /*exact*/, &SoftState);
-    *pfMxcsr = pFpuState->MXCSR | (SoftState.exceptionFlags & X86_MXCSR_XCPT_FLAGS) | fDe;
+    *pi64Dst = f64_to_i64_r_minMag(iemFpSoftF64FromIprt(&r64Src), true /*exact*/, &SoftState);
+    *pfMxcsr = pFpuState->MXCSR | (SoftState.exceptionFlags & X86_MXCSR_XCPT_FLAGS);
 }
 #endif
