@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 96748 2022-09-15 17:32:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 96751 2022-09-15 18:14:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -313,7 +313,6 @@
     } while (0)
 #define IEM_MC_STORE_FPUREG_R80_SRC_REF(a_iSt, a_pr80Src) \
     do { pVCpu->cpum.GstCtx.XState.x87.aRegs[a_iSt].r80 = *(a_pr80Src); } while (0)
-#define IEM_MC_STORE_EFLAGS(a_EFlags)                   pVCpu->cpum.GstCtx.eflags.u = (a_EFlags)
 
 
 #define IEM_MC_REF_GREG_U8(a_pu8Dst, a_iGReg)           (a_pu8Dst)  = iemGRegRefU8( pVCpu, (a_iGReg))

@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96748 2022-09-15 17:32:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96751 2022-09-15 18:14:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4462,7 +4462,7 @@ FNIEMOP_DEF(iemOp_ucomiss_Vss_Wss)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4494,7 +4494,7 @@ FNIEMOP_DEF(iemOp_ucomiss_Vss_Wss)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4531,7 +4531,7 @@ FNIEMOP_DEF(iemOp_ucomisd_Vsd_Wsd)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4563,7 +4563,7 @@ FNIEMOP_DEF(iemOp_ucomisd_Vsd_Wsd)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4604,7 +4604,7 @@ FNIEMOP_DEF(iemOp_comiss_Vss_Wss)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4636,7 +4636,7 @@ FNIEMOP_DEF(iemOp_comiss_Vss_Wss)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4673,7 +4673,7 @@ FNIEMOP_DEF(iemOp_comisd_Vsd_Wsd)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
@@ -4705,7 +4705,7 @@ FNIEMOP_DEF(iemOp_comisd_Vsd_Wsd)
         IEM_MC_IF_MXCSR_XCPT_PENDING()
             IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT();
         IEM_MC_ELSE()
-            IEM_MC_STORE_EFLAGS(fEFlags);
+            IEM_MC_COMMIT_EFLAGS(fEFlags);
         IEM_MC_ENDIF();
 
         IEM_MC_ADVANCE_RIP();
