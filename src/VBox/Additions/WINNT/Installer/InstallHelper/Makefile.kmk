@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96770 2022-09-16 14:55:30Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer Helper DLL.
 #
@@ -49,5 +49,6 @@ VBoxGuestInstallHelper_BLD_TRG_ARCH    := x86
 VBoxGuestInstallHelper_SOURCES         := \
 	VBoxGuestInstallHelper.cpp \
 	VBoxGuestInstallHelper.rc
+VBoxGuestInstallHelper_VBOX_IMPORT_CHECKER.win.x86 := nt4
 
 include $(FILE_KBUILD_SUB_FOOTER)
