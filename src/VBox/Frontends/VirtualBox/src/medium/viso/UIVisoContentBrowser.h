@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 96767 2022-09-16 12:10:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 96769 2022-09-16 12:34:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -92,7 +92,7 @@ protected:
     /** @} */
 
     virtual void treeSelectionChanged(const QModelIndex &selectedTreeIndex) final override;
-    
+
 private slots:
 
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
