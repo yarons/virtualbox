@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 96695 2022-09-12 09:54:31Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 96775 2022-09-16 23:39:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -25,6 +25,24 @@
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
 
+
+!macro Common_CleanupObsoleteFiles un
+;;
+; Removes common files we're no longer shipping.
+;
+; During installation this step should be taken before copy files over in case
+; the list gets out of sync and we start shipping files on it.  That way it
+; doesn't much matter as the file will be restore afterwards.
+;
+Function ${un}Common_CleanupObsoleteFiles
+  Delete /REBOOTOK "$INSTDIR\iexplore.ico"      ; Removed in r153662.
+FunctionEnd
+!macroend
+!insertmacro Common_CleanupObsoleteFiles ""
+!ifdef UNINSTALLER_ONLY
+  !insertmacro Common_CleanupObsoleteFiles "un."
+!endif
+
 Function Common_CopyFiles
 
   SetOutPath "$INSTDIR"
@@ -46,8 +64,6 @@ Function Common_CopyFiles
     FILE "/oname=VBoxVideo.cat" "$%PATH_OUT%\bin\additions\VBoxVideo-PreW10.cat"
   ${EndIf}
 !endif
-
-  FILE "iexplore.ico"
 
 FunctionEnd
 

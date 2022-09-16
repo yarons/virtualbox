@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsUninstall.nsh 96694 2022-09-12 09:40:40Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsUninstall.nsh 96775 2022-09-16 23:39:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
@@ -46,7 +46,6 @@ Function ${un}UninstallCommon
 !endif
 
   Delete /REBOOTOK "$INSTDIR\VBoxGINA.dll"
-  Delete /REBOOTOK "$INSTDIR\iexplore.ico"
 
   ; Delete registry keys
   DeleteRegKey /ifempty HKLM "${PRODUCT_INSTALL_KEY}"
@@ -138,6 +137,10 @@ FunctionEnd
 !endif
 !insertmacro Uninstall "un."
 
+;;
+; The last step of the uninstallation where we remove all files from the
+; install directory and such.
+;
 !macro UninstallInstDir un
 Function ${un}UninstallInstDir
 
@@ -164,7 +167,8 @@ Function ${un}UninstallInstDir
     Goto vista ; Assume newer OS than we know of ...
   ${EndIf}
 
-  Goto notsupported
+  MessageBox MB_ICONSTOP $(VBOX_PLATFORM_UNSUPPORTED) /SD IDOK
+  Goto exit
 
 !if $%KBUILD_TARGET_ARCH% == "x86"       ; 32-bit
 nt4:
@@ -184,13 +188,11 @@ vista:
   Call ${un}Vista_UninstallInstDir
   goto common
 
-notsupported:
-
-  MessageBox MB_ICONSTOP $(VBOX_PLATFORM_UNSUPPORTED) /SD IDOK
-  Goto exit
-
 common:
 
+  Call ${un}Common_CleanupObsoleteFiles
+
+  ; This will attempt remove the install dir, so must be last.
   Call ${un}UninstallCommon
 
 exit:
