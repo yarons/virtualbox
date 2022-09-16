@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 96775 2022-09-16 23:39:31Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 96776 2022-09-16 23:58:49Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -805,8 +805,10 @@ SectionEnd
 ; Start menu entries. Enabled by default and can be disabled by the user.
 Section /o $(VBOX_COMPONENT_STARTMENU) SEC04
 
+  Delete /REBOOTOK "$SMPROGRAMS\${PRODUCT_NAME}\Website.lnk" ; Changed to Website.url in r153663, so remove the old one
+
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  WriteIniStr    "$SMPROGRAMS\${PRODUCT_NAME}\Website.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
 
 SectionEnd
