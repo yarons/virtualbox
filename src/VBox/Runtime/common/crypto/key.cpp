@@ -1,4 +1,4 @@
-/* $Id: key.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: key.cpp 96763 2022-09-16 09:10:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys.
  */
@@ -75,6 +75,7 @@ DECLHIDDEN(int) rtCrKeyCreateWorker(PRTCRKEYINT *ppThis, RTCRKEYTYPE enmType, ui
         pThis->enmType      = enmType;
         pThis->fFlags       = fFlags;
 #if defined(IPRT_WITH_OPENSSL)
+        pThis->fFlags      |= RTCRKEYINT_F_INCLUDE_ENCODED;
         pThis->cbEncoded    = cbEncoded;
         if (!(fFlags & RTCRKEYINT_F_SENSITIVE))
             pThis->pbEncoded = (uint8_t *)(pThis + 1);
