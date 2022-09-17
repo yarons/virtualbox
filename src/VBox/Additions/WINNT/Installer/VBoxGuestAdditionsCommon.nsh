@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 96775 2022-09-16 23:39:31Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditionsCommon.nsh 96780 2022-09-17 01:59:41Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -40,6 +40,8 @@ FunctionEnd
 !macroend
 !insertmacro Common_CleanupObsoleteFiles ""
 !ifdef UNINSTALLER_ONLY
+  !insertmacro Common_CleanupObsoleteFiles "un."
+!else ifndef VBOX_SIGN_ADDITIONS
   !insertmacro Common_CleanupObsoleteFiles "un."
 !endif
 
