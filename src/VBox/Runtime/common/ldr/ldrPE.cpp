@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ldrPE.cpp 96777 2022-09-17 01:32:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2399,7 +2399,7 @@ static int rtldrPE_HashImageCommon(PRTLDRMODPE pModPe, void *pvScratch, uint32_t
      * most likely to give 64-bit values in the certificate a natural alignment
      * when memory mapped.)
      */
-    if (   pModPe->SecurityDir.Size != SpecialPlaces.cbToHash
+    if (   pModPe->SecurityDir.VirtualAddress != SpecialPlaces.cbToHash
         && SpecialPlaces.cbToHash != RT_ALIGN_32(SpecialPlaces.cbToHash, WIN_CERTIFICATE_ALIGNMENT))
     {
         static const uint8_t s_abZeros[WIN_CERTIFICATE_ALIGNMENT] = { 0,0,0,0, 0,0,0,0 };

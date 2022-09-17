@@ -1,4 +1,4 @@
-/* $Id: pecoff.h 96448 2022-08-23 22:35:23Z knut.osmundsen@oracle.com $ */
+/* $Id: pecoff.h 96777 2022-09-17 01:32:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
@@ -1964,7 +1964,8 @@ typedef WIN_CERTIFICATE const *PCWIN_CERTIFICATE;
 /** @} */
 
 /** The alignment of the certificate table.
- * @remarks Found thru signtool experiments.  */
+ * @remarks Found thru signtool experiments.
+ * @note There is a copy of this in RTSignTool.cpp. */
 #define WIN_CERTIFICATE_ALIGNMENT           UINT32_C(8)
 
 
