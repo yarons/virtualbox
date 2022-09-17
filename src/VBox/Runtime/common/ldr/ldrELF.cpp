@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 96757 2022-09-16 00:41:19Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELF.cpp 96779 2022-09-17 01:49:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -276,7 +276,7 @@ static int rtLdrELFLnxKModQueryPropPkcs7SignedData(PRTLDRREADER pReader, void *p
 
 
 /**
- * @interface_method_impl{,pfnHashImage,
+ * @interface_method_impl{RTLDROPS,pfnHashImage,
  * Handles the linux kernel module signatures.}
  */
 static DECLCALLBACK(int) rtldrELFLnxKModHashImage(PRTLDRMODINTERNAL pMod, RTDIGESTTYPE enmDigest, uint8_t *pabHash, size_t cbHash)
