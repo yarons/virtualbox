@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 96781 2022-09-18 22:06:52Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 96783 2022-09-18 22:12:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -5860,7 +5860,7 @@ static RTEXITCODE HandleShowCat(int cArgs, char **papszArgs)
 static RTEXITCODE HelpHashExe(PRTSTREAM pStrm, RTSIGNTOOLHELP enmLevel)
 {
     RT_NOREF_PV(enmLevel);
-    RTStrmWrappedPrintf(pStrm, RTSTRMWRAPPED_F_HANGING_INDENT, "show-exe [--verbose|-v] [--quiet|-q] <exe1> [exe2 [..]]\n");
+    RTStrmWrappedPrintf(pStrm, RTSTRMWRAPPED_F_HANGING_INDENT, "hash-exe [--verbose|-v] [--quiet|-q] <exe1> [exe2 [..]]\n");
     return RTEXITCODE_SUCCESS;
 }
 
