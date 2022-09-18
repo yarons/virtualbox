@@ -1,4 +1,4 @@
-; $Id: French.nsh 96692 2022-09-12 00:39:59Z knut.osmundsen@oracle.com $
+; $Id: French.nsh 96782 2022-09-18 22:10:15Z knut.osmundsen@oracle.com $
 ;; @file
 ; NLS for French language.
 ;
@@ -32,11 +32,6 @@ LangString VBOX_NOADMIN ${LANG_FRENCH}                              "Vous avez b
 LangString VBOX_NOTICE_ARCH_X86 ${LANG_FRENCH}                      "Cette application peut seulement être executée sur des systèmes Windows 32-bit. Veuillez installer la version 64-bit de $(^Name)!"
 LangString VBOX_NOTICE_ARCH_AMD64 ${LANG_FRENCH}                    "Cette application peut seulement être executée sur des systèmes Windows 64-bit. Veuillez installer la version 32-bit de $(^Name)!"
 LangString VBOX_NT4_NO_SP6 ${LANG_FRENCH}                           "Le programme d'installation a détécté que vous utilisez Windows NT4 sans Service Pack 6.$\r$\nNous vous conseillons d'installer ce Service Pack avant de continuer. Désirez vous cependant continuer?"
-
-;; @todo translate:
-LangString VBOX_CA_CHECK_VERISIGN_G5 ${LANG_FRENCH}                 "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'VeriSign Trust Network; OU=(c) 2006 VeriSign, Inc. - For authorized use only'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
-LangString VBOX_CA_CHECK_DIGICERT_ASSURED_ID ${LANG_FRENCH}         "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'DigiCert Assured ID Root CA'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
-LangString VBOX_CA_CHECK_DIGICERT_HIGH_ASSURANCE_EV ${LANG_FRENCH}  "A root certificate needed for driver signature verification during installation is missing:$\r$\n$\t'DigiCert High Assurance EV Root CA'$\r$\nThis can be downloaded from https://www.digicert.com/kb/digicert-root-certificates.htm and installed using $\"$INSTDIR$\".$\r$\nThe installation is likely to fail without the certificate.  Do you wish to continue anyway?"
 
 LangString VBOX_PLATFORM_UNSUPPORTED ${LANG_FRENCH}                 "Les Additions invité ne sont pas encore supportés sur cette plateforme!"
 
