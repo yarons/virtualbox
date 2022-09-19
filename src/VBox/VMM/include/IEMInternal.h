@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96789 2022-09-19 13:04:06Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96796 2022-09-19 19:09:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2717,6 +2717,13 @@ FNIEMAIMPLFPSSEF2U128 iemAImpl_addsubps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_addsubpd_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtpd2ps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtps2pd_u128;
+
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtdq2ps_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtps2dq_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvttps2dq_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvttpd2dq_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtdq2pd_u128;
+FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtpd2dq_u128;
 
 FNIEMAIMPLFPSSEF2U128R32 iemAImpl_addss_u128_r32;
 FNIEMAIMPLFPSSEF2U128R64 iemAImpl_addsd_u128_r64;
