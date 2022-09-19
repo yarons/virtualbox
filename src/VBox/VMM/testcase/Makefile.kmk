@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96749 2022-09-15 17:34:09Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 96790 2022-09-19 13:04:41Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -299,7 +299,11 @@ TSTIEMAIMPL_TEST_DATA_DEPS = \
 	tstIEMAImplDataSseCompare-ucomisd_u128.bin \
 	tstIEMAImplDataSseCompare-vucomisd_u128.bin \
 	tstIEMAImplDataSseCompare-comisd_u128.bin \
-	tstIEMAImplDataSseCompare-vcomisd_u128.bin
+	tstIEMAImplDataSseCompare-vcomisd_u128.bin \
+	tstIEMAImplDataSseCompare-cmpps_u128.bin \
+	tstIEMAImplDataSseCompare-cmpss_u128.bin \
+	tstIEMAImplDataSseCompare-cmppd_u128.bin \
+	tstIEMAImplDataSseCompare-cmpsd_u128.bin
 
 tstIEMAImpl_TEMPLATE  = VBOXR3TSTEXE
 tstIEMAImpl_DEFS      = $(VMM_COMMON_DEFS) IEM_WITHOUT_ASSEMBLY IN_TSTVMSTRUCT
