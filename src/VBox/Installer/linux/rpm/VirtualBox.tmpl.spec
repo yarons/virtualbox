@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: VirtualBox.tmpl.spec 96795 2022-09-19 16:42:57Z vadim.galitsyn@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -202,7 +202,7 @@ mv virtualbox.desktop $RPM_BUILD_ROOT/usr/share/applications/virtualbox.desktop
 mv VBox.png $RPM_BUILD_ROOT/usr/share/pixmaps/VBox.png
 %{!?is_ose: mv LICENSE $RPM_BUILD_ROOT%{VBOXDOCDIR}}
 mv UserManual*.pdf $RPM_BUILD_ROOT%{VBOXDOCDIR}
-%{?with_qhelp: mv VirtualBox*.qch VirtualBox*.qhc $RPM_BUILD_ROOT%{VBOXDOCDIR}}
+%{?with_qhelp: mv UserManual*.qch UserManual*.qhc $RPM_BUILD_ROOT%{VBOXDOCDIR}}
 install -m 755 -d $RPM_BUILD_ROOT/usr/lib/debug/usr/lib/virtualbox
 %if %{?rpm_suse:1}%{!?rpm_suse:0}
 rm *.debug
