@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 96790 2022-09-19 13:04:41Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.h 96797 2022-09-19 19:10:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -484,6 +484,15 @@ typedef struct SSE_COMPARE_F2_XMM_IMM8_TEST_T
     X86XMMREG               OutVal;
 } SSE_COMPARE_F2_XMM_IMM8_TEST_T;
 
+typedef struct SSE_CONVERT_XMM_TEST_T
+{
+    uint32_t                fMxcsrIn;
+    uint32_t                fMxcsrOut;
+    uint32_t                au32Padding[2];
+    X86XMMREG               InVal;
+    X86XMMREG               OutVal;
+} SSE_CONVERT_XMM_TEST_T;
+
 /** @} */
 
 
@@ -934,6 +943,14 @@ TSTIEM_DECLARE_TEST_ARRAY_BIN(SseCompare,   SSE_COMPARE_F2_XMM_IMM8_TEST_T, cmpp
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseCompare,   SSE_COMPARE_F2_XMM_IMM8_TEST_T, cmppd_u128           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseCompare,   SSE_COMPARE_F2_XMM_IMM8_TEST_T, cmpss_u128           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseCompare,   SSE_COMPARE_F2_XMM_IMM8_TEST_T, cmpsd_u128           );
+
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvtdq2ps_u128        );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvtps2dq_u128        );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvttps2dq_u128       );
+
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvttpd2dq_u128       );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvtdq2pd_u128        );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseConvert,   SSE_CONVERT_XMM_TEST_T,         cvtpd2dq_u128        );
 
 RT_C_DECLS_END
 
