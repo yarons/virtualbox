@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 96768 2022-09-16 12:28:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 96793 2022-09-19 13:20:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -85,6 +85,10 @@ QVariant UIVisoHostBrowserModel::data(const QModelIndex &index, int enmRole /* =
         {
             if (filePath(index).contains(".."))
                 return QIcon(":/arrow_up_10px_x2.png");
+#ifdef VBOX_WS_WIN
+            else if (info.absoluteFilePath().length() <= 3)
+                return QIcon(":/hd_32px.png");
+#endif
             else if(info.isSymLink())
                 return QIcon(":/file_manager_folder_symlink_16px.png");
             else
