@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96748 2022-09-15 17:32:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96789 2022-09-19 13:04:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2345,6 +2345,24 @@ FNIEMAIMPLF2EFLMXCSR128 iemAImpl_vcomiss_u128, iemAImpl_vcomiss_u128_fallback;
 
 FNIEMAIMPLF2EFLMXCSR128 iemAImpl_comisd_u128;
 FNIEMAIMPLF2EFLMXCSR128 iemAImpl_vcomisd_u128, iemAImpl_vcomisd_u128_fallback;
+
+
+typedef struct IEMMEDIAF2XMMSRC
+{
+    X86XMMREG               uSrc1;
+    X86XMMREG               uSrc2;
+} IEMMEDIAF2XMMSRC;
+typedef IEMMEDIAF2XMMSRC *PIEMMEDIAF2XMMSRC;
+typedef const IEMMEDIAF2XMMSRC *PCIEMMEDIAF2XMMSRC;
+
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLMXCSRF2XMMIMM8,(uint32_t *pfMxcsr, PX86XMMREG puDst, PCIEMMEDIAF2XMMSRC puSrc, uint8_t bEvil));
+typedef FNIEMAIMPLMXCSRF2XMMIMM8 *PFNIEMAIMPLMXCSRF2XMMIMM8;
+
+FNIEMAIMPLMXCSRF2XMMIMM8 iemAImpl_cmpps_u128;
+FNIEMAIMPLMXCSRF2XMMIMM8 iemAImpl_cmppd_u128;
+FNIEMAIMPLMXCSRF2XMMIMM8 iemAImpl_cmpss_u128;
+FNIEMAIMPLMXCSRF2XMMIMM8 iemAImpl_cmpsd_u128;
+
 /** @} */
 
 
