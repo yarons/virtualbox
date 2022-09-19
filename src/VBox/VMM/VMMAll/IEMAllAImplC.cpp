@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 96789 2022-09-19 13:04:06Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 96791 2022-09-19 13:09:50Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -16389,18 +16389,19 @@ static const CMPTRUTHTBLENTRY g_aCmpTbl[] =
 
 static bool iemAImpl_cmp_worker_r32(uint32_t *pfMxcsr, PCRTFLOAT32U pr32Src1, PCRTFLOAT32U pr32Src2, uint8_t bEvil)
 {
+    bool fRes;
     AssertRelease(bEvil < RT_ELEMENTS(g_aCmpTbl));
 
     if (RTFLOAT32U_IS_SIGNALLING_NAN(pr32Src1) || RTFLOAT32U_IS_SIGNALLING_NAN(pr32Src2))
     {
         *pfMxcsr |= X86_MXCSR_IE;
-        return g_aCmpTbl[bEvil].fUnordered;
+        fRes = g_aCmpTbl[bEvil].fUnordered;
     }
     else if (RTFLOAT32U_IS_QUIET_NAN(pr32Src1) || RTFLOAT32U_IS_QUIET_NAN(pr32Src2))
     {
         if (g_aCmpTbl[bEvil].fSignalsOnQNan)
             *pfMxcsr |= X86_MXCSR_IE;
-        return g_aCmpTbl[bEvil].fUnordered;
+        fRes = g_aCmpTbl[bEvil].fUnordered;
     }
     else
     {
@@ -16414,15 +16415,14 @@ static bool iemAImpl_cmp_worker_r32(uint32_t *pfMxcsr, PCRTFLOAT32U pr32Src1, PC
         float32_t f32Src1 = iemFpSoftF32FromIprt(&r32Src1);
         float32_t f32Src2 = iemFpSoftF32FromIprt(&r32Src2);
         if (f32_eq(f32Src1, f32Src2, &SoftState))
-            return g_aCmpTbl[bEvil].fEqual;
+            fRes = g_aCmpTbl[bEvil].fEqual;
         else if (f32_lt(f32Src1, f32Src2, &SoftState))
-            return g_aCmpTbl[bEvil].fLowerThan;
+            fRes = g_aCmpTbl[bEvil].fLowerThan;
         else
-            return g_aCmpTbl[bEvil].fGreaterThan;
+            fRes = g_aCmpTbl[bEvil].fGreaterThan;
     }
 
-    AssertReleaseFailed();
-    return false;
+    return fRes;
 }
 
 
