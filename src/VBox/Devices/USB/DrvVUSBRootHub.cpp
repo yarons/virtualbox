@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 96800 2022-09-20 09:20:31Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1231,7 +1231,7 @@ static DECLCALLBACK(int) vusbR3RhDevReset(PVUSBIROOTHUBCONNECTOR pInterface, uin
 {
     PVUSBROOTHUB pThis = VUSBIROOTHUBCONNECTOR_2_VUSBROOTHUB(pInterface);
     PVUSBDEV     pDev  = vusbR3RhGetVUsbDevByPortRetain(pThis, uPort, "vusbR3RhDevReset");
-    AssertPtr(pDev);
+    AssertPtrReturn(pDev, VERR_VUSB_DEVICE_NOT_ATTACHED);
 
     int rc = VUSBIDevReset(&pDev->IDevice, fResetOnLinux, pfnDone, pvUser, pVM);
     vusbDevRelease(pDev, "vusbR3RhDevReset");
