@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96796 2022-09-19 19:09:53Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96807 2022-09-20 20:26:41Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -6286,7 +6286,7 @@ FNIEMOP_DEF_2(iemOpCommonMmx_Shift_Imm, uint8_t, bRm, FNIEMAIMPLMEDIAPSHIFTU64, 
         IEM_MC_ARG_CONST(uint8_t,       bShiftArg, /*=*/ bImm, 1);
         IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
         IEM_MC_PREPARE_FPU_USAGE();
-        IEM_MC_REF_MREG_U64(pDst,       IEM_GET_MODRM_REG_8(bRm));
+        IEM_MC_REF_MREG_U64(pDst,       IEM_GET_MODRM_RM_8(bRm));
         IEM_MC_CALL_VOID_AIMPL_2(pfnU64, pDst, bShiftArg);
         IEM_MC_MODIFIED_MREG_BY_REF(pDst);
         IEM_MC_FPU_TO_MMX_MODE();
@@ -6331,7 +6331,7 @@ FNIEMOP_DEF_2(iemOpCommonSse2_Shift_Imm, uint8_t, bRm, FNIEMAIMPLMEDIAPSHIFTU128
         IEM_MC_ARG_CONST(uint8_t,       bShiftArg, /*=*/ bImm, 1);
         IEM_MC_MAYBE_RAISE_SSE2_RELATED_XCPT();
         IEM_MC_PREPARE_SSE_USAGE();
-        IEM_MC_REF_XREG_U128(pDst, IEM_GET_MODRM_REG(pVCpu, bRm));
+        IEM_MC_REF_XREG_U128(pDst, IEM_GET_MODRM_RM(pVCpu, bRm));
         IEM_MC_CALL_VOID_AIMPL_2(pfnU128, pDst, bShiftArg);
         IEM_MC_ADVANCE_RIP();
         IEM_MC_END();
