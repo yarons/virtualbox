@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 96802 2022-09-20 10:00:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -60,6 +60,7 @@
 #include "CStorageController.h"
 #include "CStringFormValue.h"
 #include "CSystemProperties.h"
+#include "CTrustedPlatformModule.h"
 #include "CUSBController.h"
 #include "CUSBDeviceFilter.h"
 #include "CUSBDeviceFilters.h"
@@ -300,6 +301,16 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
         if (enmChipsetType == KChipsetType_ICH9)
             table << UITextTableLine(QApplication::translate("UIDetails", "Chipset Type", "details (system)"),
                                      gpConverter->toString(enmChipsetType));
+    }
+
+    /* TPM type: */
+    if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_TpmType)
+    {
+        CTrustedPlatformModule comModule = comMachine.GetTrustedPlatformModule();
+        const KTpmType enmTpmType = comModule.GetType();
+        if (enmTpmType != KTpmType_None)
+            table << UITextTableLine(QApplication::translate("UIDetails", "TPM Type", "details (system)"),
+                                     gpConverter->toString(enmTpmType));
     }
 
     /* EFI: */

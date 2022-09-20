@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 96802 2022-09-20 10:00:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1066,6 +1066,7 @@ template<> QString toString(const UIExtraDataMetaDefs::DetailsElementOptionTypeS
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_CPUExecutionCap: strResult = QApplication::translate("UICommon", "CPU Execution Cap"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_BootOrder:       strResult = QApplication::translate("UICommon", "Boot Order"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_ChipsetType:     strResult = QApplication::translate("UICommon", "Chipset Type"); break;
+        case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_TpmType:         strResult = QApplication::translate("UICommon", "TPM Type"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Firmware:        strResult = QApplication::translate("UICommon", "Firmware"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Acceleration:    strResult = QApplication::translate("UICommon", "Acceleration"); break;
         default:
@@ -1088,6 +1089,7 @@ template<> QString toInternalString(const UIExtraDataMetaDefs::DetailsElementOpt
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_CPUExecutionCap: strResult = "CPUExecutionCap"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_BootOrder:       strResult = "BootOrder"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_ChipsetType:     strResult = "ChipsetType"; break;
+        case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_TpmType:         strResult = "TPMType"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Firmware:        strResult = "Firmware"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Acceleration:    strResult = "Acceleration"; break;
         default:
@@ -1113,6 +1115,8 @@ fromInternalString<UIExtraDataMetaDefs::DetailsElementOptionTypeSystem>(const QS
         return UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_BootOrder;
     if (strDetailsElementOptionTypeSystem.compare("ChipsetType", Qt::CaseInsensitive) == 0)
         return UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_ChipsetType;
+    if (strDetailsElementOptionTypeSystem.compare("TPMType", Qt::CaseInsensitive) == 0)
+        return UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_TpmType;
     if (strDetailsElementOptionTypeSystem.compare("Firmware", Qt::CaseInsensitive) == 0)
         return UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Firmware;
     if (strDetailsElementOptionTypeSystem.compare("Acceleration", Qt::CaseInsensitive) == 0)
