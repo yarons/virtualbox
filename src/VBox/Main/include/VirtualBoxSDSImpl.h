@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxSDSImpl.h 96803 2022-09-20 12:51:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -120,9 +120,9 @@ private:
      * Returns whether a VBoxSDS feature is enabled or not.
      *
      * @returns \c true if enabled, \c false if not.
-     * @param   a_rStrFeature   Feature to check enabled status for.
+     * @param   a_pwszFeature   Feature to check enabled status for.
      */
-    static bool i_isFeatureEnabled(com::Utf8Str const &a_rStrFeature);
+    static bool i_isFeatureEnabled(wchar_t const *a_pwszFeature);
 
     /**
      * Looks up the given user.
