@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 96635 2022-09-07 16:16:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 96805 2022-09-20 18:03:04Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -646,7 +646,7 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         /* Branding stuff for Qt6 beta: */
                         if (uiCommon().isBeta())
                             m_pToolBar->enableBranding(UIIconPool::iconSet(":/explosion_hazard_32px.png"),
-                                                       "Tech Preview", // do we need to make it NLS?
+                                                       "Dev Preview", // do we need to make it NLS?
                                                        QColor(246, 179, 0),
                                                        74 /* width of BETA label */);
 # endif /* VBOX_IS_QT6_OR_LATER */
