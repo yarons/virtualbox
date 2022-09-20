@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 96799 2022-09-20 08:46:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 96804 2022-09-20 15:38:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -67,6 +67,7 @@ struct UIDataSettingsMachineSystem
         , m_iMemorySize(-1)
         , m_bootItems(UIBootItemDataList())
         , m_chipsetType(KChipsetType_Null)
+        , m_tpmType(KTpmType_None)
         , m_pointingHIDType(KPointingHIDType_None)
         , m_fEnabledIoApic(false)
         , m_fEnabledEFI(false)

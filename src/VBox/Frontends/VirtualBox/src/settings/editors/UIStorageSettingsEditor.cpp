@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 96630 2022-09-07 13:47:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 96804 2022-09-20 15:38:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -2826,6 +2826,7 @@ const QString UIStorageSettingsEditor::s_strAttachmentMimeType = QString("applic
 UIStorageSettingsEditor::UIStorageSettingsEditor(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fLoadingInProgress(0)
+    , m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
     , m_pActionPool(0)
     , m_pModelStorage(0)
     , m_pMediumIdHolder(new UIMediumIDHolder(this))
