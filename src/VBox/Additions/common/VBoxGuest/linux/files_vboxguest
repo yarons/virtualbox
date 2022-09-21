@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 96814 2022-09-21 14:37:14Z knut.osmundsen@oracle.com $
+# $Id: files_vboxguest 96819 2022-09-21 21:46:00Z knut.osmundsen@oracle.com $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -96,6 +96,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/include/VBox/VBoxGuestMangling.h=>include/VBox/VBoxGuestMangling.h \
     ${PATH_ROOT}/include/VBox/version.h=>include/VBox/version.h \
     ${PATH_ROOT}/include/VBox/HostServices/GuestPropertySvc.h=>include/VBox/HostServices/GuestPropertySvc.h \
+    ${PATH_ROOT}/include/VBox/vmm/cpuidcall.h=>include/VBox/vmm/cpuidcall.h \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/VBoxGuest.cpp=>VBoxGuest-common.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/VBoxGuest-linux.c=>VBoxGuest-linux.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/VBoxGuestInternal.h=>VBoxGuestInternal.h \
