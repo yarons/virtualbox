@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: combined-agnostic.c 96817 2022-09-21 21:40:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -170,6 +170,8 @@
 #include "VBox/log-vbox.c"
 #undef LOG_GROUP
 #include "VBox/logbackdoor.c"
+#undef LOG_GROUP
+#include "VBox/RTLogWriteVmm-amd64-x86.c"
 
 #ifdef RT_ARCH_AMD64
 # undef LOG_GROUP
