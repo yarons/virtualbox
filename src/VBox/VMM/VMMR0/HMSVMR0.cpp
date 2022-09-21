@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HMSVMR0.cpp 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6938,6 +6938,7 @@ HMSVM_EXIT_DECL hmR0SvmExitCpuid(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
 
         if (rcStrict == VINF_IEM_RAISED_XCPT)
         {
+            CPUM_ASSERT_NOT_EXTRN(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
             ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_RAISED_XCPT_MASK);
             rcStrict = VINF_SUCCESS;
         }

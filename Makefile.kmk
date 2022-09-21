@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2107,6 +2107,7 @@ incs:
 	$(SED) -f include/VBox/various.sed --output include/VBox/bios.mac          include/VBox/bios.h
 	$(SED) -f include/VBox/various.sed --output include/VBox/param.mac         include/VBox/param.h
 	$(SED) -f include/VBox/various.sed --output include/VBox/VMMDevTesting.mac include/VBox/VMMDevTesting.h
+	$(SED) -f include/VBox/various.sed --output include/VBox/vmm/cpuidcall.mac include/VBox/vmm/cpuidcall.h
 
 
 #

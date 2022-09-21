@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPDrv.cpp 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -376,6 +376,7 @@ static SUPFUNC g_aFunctions[] =
     SUPEXP_STK_BACKF(   3,  RTHandleTableDestroy),
     SUPEXP_STK_BACK(    3,  RTHandleTableFreeWithCtx),
     SUPEXP_STK_BACK(    3,  RTHandleTableLookupWithCtx),
+    SUPEXP_STK_BACK(    4,  RTLogBulkNestedWrite),
     SUPEXP_STK_BACK(    5,  RTLogBulkUpdate),
     SUPEXP_STK_BACK(    2,  RTLogCheckGroupFlags),
     SUPEXP_STK_BACKF(   17, RTLogCreateExV),

@@ -1,4 +1,4 @@
-# $Id: Makefile 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -130,6 +130,7 @@ VBOXMOD_OBJS += \
 	generic/RTLogWriteStdErr-stub-generic.o \
 	generic/RTLogWriteStdOut-stub-generic.o \
 	generic/RTLogWriteUser-generic.o \
+	generic/RTLogWriteVmm-stub-generic.o \
 	generic/RTMpGetArraySize-generic.o \
 	generic/RTMpGetCoreCount-generic.o \
 	generic/RTSemEventWait-2-ex-generic.o \

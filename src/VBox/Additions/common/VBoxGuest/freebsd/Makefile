@@ -1,4 +1,4 @@
-# $Id: Makefile 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -149,6 +149,7 @@ SRCS += \
 	RTLogWriteDebugger-generic.c \
 	RTLogWriteStdOut-stub-generic.c \
 	RTLogWriteStdErr-stub-generic.c \
+	RTLogWriteVmm-stub-generic.c \
 	RTRandAdvCreateSystemFaster-generic.c \
 	RTRandAdvCreateSystemTruer-generic.c \
 	RTSemEventWait-2-ex-generic.c \

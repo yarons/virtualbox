@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: files_vboxguest 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -186,6 +186,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteStdErr-stub-generic.cpp=>generic/RTLogWriteStdErr-stub-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteStdOut-stub-generic.cpp=>generic/RTLogWriteStdOut-stub-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteDebugger-generic.cpp=>generic/RTLogWriteDebugger-generic.c \
+    ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteVmm-stub-generic.cpp=>generic/RTLogWriteVmm-stub-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTRandAdvCreateSystemFaster-generic.cpp=>generic/RTRandAdvCreateSystemFaster-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTRandAdvCreateSystemTruer-generic.cpp=>generic/RTRandAdvCreateSystemTruer-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/uuid-generic.cpp=>generic/uuid-generic.c \

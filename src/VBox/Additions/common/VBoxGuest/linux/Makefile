@@ -1,4 +1,4 @@
-# $Id: Makefile 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -129,6 +129,7 @@ VBOXMOD_OBJS += \
 	generic/RTAssertShouldPanic-generic.o \
 	generic/RTLogWriteStdErr-stub-generic.o \
 	generic/RTLogWriteStdOut-stub-generic.o \
+	generic/RTLogWriteVmm-stub-generic.o \
 	generic/RTMpGetCoreCount-generic.o \
 	generic/RTSemEventWait-2-ex-generic.o \
 	generic/RTSemEventWaitNoResume-2-ex-generic.o \
