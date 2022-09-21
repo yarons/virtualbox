@@ -1,4 +1,4 @@
-# $Id: Makefile 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile 96814 2022-09-21 14:37:14Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -151,7 +151,6 @@ SRCS += \
 	RTLogWriteStdOut-stub-generic.c \
 	RTLogWriteStdErr-stub-generic.c \
 	RTLogWriteUser-generic.c \
-	RTLogWriteVmm-stub-generic.c \
 	RTMpGetArraySize-generic.c \
 	RTMpOnPair-generic.c \
 	RTRandAdvCreateSystemFaster-generic.c \
@@ -201,7 +200,8 @@ SRCS += \
 
 .PATH:	${.CURDIR}/VBox
 SRCS += \
-	log-vbox.c
+	log-vbox.c \
+	RTLogWriteVmm-amd64-x86.c
 
 .include <bsd.kmod.mk>
 
