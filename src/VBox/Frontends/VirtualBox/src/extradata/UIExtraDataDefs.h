@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 96816 2022-09-21 17:15:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -718,7 +718,8 @@ public:
         DetailsElementOptionTypeSystem_ChipsetType     = RT_BIT(4),
         DetailsElementOptionTypeSystem_TpmType         = RT_BIT(5),
         DetailsElementOptionTypeSystem_Firmware        = RT_BIT(6),
-        DetailsElementOptionTypeSystem_Acceleration    = RT_BIT(7),
+        DetailsElementOptionTypeSystem_SecureBoot      = RT_BIT(7),
+        DetailsElementOptionTypeSystem_Acceleration    = RT_BIT(8),
         DetailsElementOptionTypeSystem_Default         = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeSystem);
