@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 96815 2022-09-21 15:15:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -65,6 +65,7 @@ VBoxAboutDlg::VBoxAboutDlg(QWidget *pParent, const QString &strVersion)
     , m_strVersion(strVersion)
     , m_pMainLayout(0)
     , m_pLabel(0)
+    , m_fFixedSizeSet(false)
 {
     /* Prepare: */
     prepare();
@@ -73,8 +74,11 @@ VBoxAboutDlg::VBoxAboutDlg(QWidget *pParent, const QString &strVersion)
 bool VBoxAboutDlg::event(QEvent *pEvent)
 {
     /* Set fixed-size for dialog: */
-    if (pEvent->type() == QEvent::Polish)
+    if (!m_fFixedSizeSet && pEvent->type() == QEvent::Show)
+    {
+        m_fFixedSizeSet = true;
         setFixedSize(m_size);
+    }
 
     /* Call to base-class: */
     return QIDialog::event(pEvent);

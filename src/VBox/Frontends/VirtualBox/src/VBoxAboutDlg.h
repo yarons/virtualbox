@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxAboutDlg.h 96815 2022-09-21 15:15:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class declaration.
  */
@@ -95,6 +95,8 @@ private:
     QVBoxLayout *m_pMainLayout;
     /** Holds About-VirtualBox text-label instance. */
     QLabel      *m_pLabel;
+    /** Holds size set flag to make sure dialog size if set only once. */
+    bool m_fFixedSizeSet;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_VBoxAboutDlg_h */
