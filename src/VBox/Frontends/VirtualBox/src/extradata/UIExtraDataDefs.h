@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 96802 2022-09-20 10:00:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -72,6 +72,8 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_NotificationCenter_Alignment;
         /** Holds notification-center order. */
         SHARED_LIBRARY_STUFF extern const char *GUI_NotificationCenter_Order;
+        /** Holds whether BETA build label should be hidden. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_PreventBetaLabel;
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
         /** Holds version for which user wants to prevent BETA build warning. */
         SHARED_LIBRARY_STUFF extern const char *GUI_PreventBetaWarning;

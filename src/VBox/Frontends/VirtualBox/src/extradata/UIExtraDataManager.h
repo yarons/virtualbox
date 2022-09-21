@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIExtraDataManager.h 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -213,6 +213,8 @@ public:
         /** Defines notification-progresses @a enmOrder. */
         void setNotificationCenterOrder(Qt::SortOrder enmOrder);
 
+        /** Returns whether BETA build label should be hidden. */
+        bool preventBetaBuildLavel();
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
         /** Returns version for which user wants to prevent BETA build warning. */
         QString preventBetaBuildWarningForVersion();

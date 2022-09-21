@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICommon.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -909,6 +909,12 @@ QString UICommon::vboxVersionStringNormalized() const
 bool UICommon::isBeta() const
 {
     return vboxVersionString().contains(QRegularExpression("BETA|ALPHA", QRegularExpression::CaseInsensitiveOption));
+}
+
+bool UICommon::showBetaLabel() const
+{
+    return    isBeta()
+           && !gEDataManager->preventBetaBuildLavel();
 }
 
 bool UICommon::brandingIsActive(bool fForce /* = false */)

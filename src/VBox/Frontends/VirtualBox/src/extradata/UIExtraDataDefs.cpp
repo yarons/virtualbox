@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -40,6 +40,7 @@ const char *UIExtraDataDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption"
 const char *UIExtraDataDefs::GUI_NotificationCenter_KeepSuccessfullProgresses = "GUI/NotificationCenter/KeepSuccessfullProgresses";
 const char *UIExtraDataDefs::GUI_NotificationCenter_Alignment = "GUI/NotificationCenter/Alignment";
 const char *UIExtraDataDefs::GUI_NotificationCenter_Order = "GUI/NotificationCenter/Order";
+const char *UIExtraDataDefs::GUI_PreventBetaLabel = "GUI/PreventBetaLabel";
 #if !defined(VBOX_BLEEDING_EDGE) && !defined(DEBUG)
 const char *UIExtraDataDefs::GUI_PreventBetaWarning = "GUI/PreventBetaWarning";
 #endif

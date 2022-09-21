@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMenuBar.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -42,7 +42,7 @@ UIMenuBar::UIMenuBar(QWidget *pParent /* = 0 */)
     , m_fShowBetaLabel(false)
 {
     /* Check for beta versions: */
-    if (uiCommon().isBeta())
+    if (uiCommon().showBetaLabel())
         m_fShowBetaLabel = true;
 }
 
