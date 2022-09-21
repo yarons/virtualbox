@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread.cpp 96809 2022-09-21 11:07:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -334,8 +334,11 @@ RTDECL(int) RTThreadAdopt(RTTHREADTYPE enmType, unsigned fFlags, const char *psz
         /* try adopt it */
         rc = rtThreadAdopt(enmType, fFlags, 0, pszName);
         Thread = RTThreadSelf();
-        Log(("RTThreadAdopt: %RTthrd %RTnthrd '%s' enmType=%d fFlags=%#x rc=%Rrc\n",
-             Thread, RTThreadNativeSelf(), pszName, enmType, fFlags, rc));
+
+        /* Don't too early during init, as rtLogLock may end up here and cause endless recursion. */
+        if (rc != VERR_FAILED_TO_SET_SELF_TLS)
+            Log(("RTThreadAdopt: %RTthrd %RTnthrd '%s' enmType=%d fFlags=%#x rc=%Rrc\n",
+                 Thread, RTThreadNativeSelf(), pszName, enmType, fFlags, rc));
     }
     else
         Log(("RTThreadAdopt: %RTthrd %RTnthrd '%s' enmType=%d fFlags=%#x - already adopted!\n",
