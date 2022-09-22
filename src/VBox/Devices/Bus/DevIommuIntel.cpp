@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevIommuIntel.cpp 96824 2022-09-22 05:50:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -1423,7 +1423,7 @@ static void dmarFaultEventRaiseInterrupt(PPDMDEVINS pDevIns)
     PCDMARCC pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PCDMARCC);
     DMAR_ASSERT_LOCK_IS_OWNER(pDevIns, pThisCC);
 
-#ifdef RT_STRICT
+#ifdef VBOX_STRICT
     {
         PCDMAR pThis = PDMDEVINS_2_DATA(pDevIns, PCDMAR);
         uint32_t const uFstsReg = dmarRegReadRaw32(pThis, VTD_MMIO_OFF_FSTS_REG);
