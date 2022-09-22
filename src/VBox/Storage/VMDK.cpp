@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 96832 2022-09-22 19:02:09Z jack.doherty@oracle.com $ */
+/* $Id: VMDK.cpp 96833 2022-09-22 19:07:02Z jack.doherty@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -7564,6 +7564,8 @@ static DECLCALLBACK(int) vmdkResize(void *pBackendData, uint64_t cbSize,
                                    PVDINTERFACE pVDIfsDisk, PVDINTERFACE pVDIfsImage,
                                    PVDINTERFACE pVDIfsOperation)
 {
+    RT_NOREF5(uPercentStart, uPercentSpan, pVDIfsDisk, pVDIfsImage, pVDIfsOperation);
+    
     // Establish variables and objects needed
     int rc = VINF_SUCCESS;
     PVMDKIMAGE pImage = (PVMDKIMAGE)pBackendData;
