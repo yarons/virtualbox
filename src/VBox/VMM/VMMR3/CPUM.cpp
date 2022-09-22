@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 96826 2022-09-22 06:08:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 96827 2022-09-22 06:24:34Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1123,12 +1123,29 @@ DECLINLINE(void) cpumR3ResetVmxHwVirtState(PVMCPU pVCpu)
 
     RT_ZERO(pCtx->hwvirt.vmx.Vmcs);
     RT_ZERO(pCtx->hwvirt.vmx.ShadowVmcs);
+    RT_ZERO(pCtx->hwvirt.vmx.abVmreadBitmap);
+    RT_ZERO(pCtx->hwvirt.vmx.abVmwriteBitmap);
+    RT_ZERO(pCtx->hwvirt.vmx.aEntryMsrLoadArea);
+    RT_ZERO(pCtx->hwvirt.vmx.aExitMsrStoreArea);
+    RT_ZERO(pCtx->hwvirt.vmx.aExitMsrLoadArea);
+    RT_ZERO(pCtx->hwvirt.vmx.abMsrBitmap);
+    RT_ZERO(pCtx->hwvirt.vmx.abIoBitmap);
+    RT_ZERO(pCtx->hwvirt.vmx.abVirtApicPage);
+
     pCtx->hwvirt.vmx.GCPhysVmxon       = NIL_RTGCPHYS;
     pCtx->hwvirt.vmx.GCPhysShadowVmcs  = NIL_RTGCPHYS;
     pCtx->hwvirt.vmx.GCPhysVmcs        = NIL_RTGCPHYS;
     pCtx->hwvirt.vmx.fInVmxRootMode    = false;
     pCtx->hwvirt.vmx.fInVmxNonRootMode = false;
     /* Don't reset diagnostics here. */
+
+    pCtx->hwvirt.vmx.fInterceptEvents    = false;
+    pCtx->hwvirt.vmx.fNmiUnblockingIret  = false;
+    pCtx->hwvirt.vmx.uFirstPauseLoopTick = 0;
+    pCtx->hwvirt.vmx.uPrevPauseTick      = 0;
+    pCtx->hwvirt.vmx.uEntryTick          = 0;
+    pCtx->hwvirt.vmx.offVirtApicWrite    = 0;
+    pCtx->hwvirt.vmx.fVirtNmiBlocking    = false;
 
     /* Stop any VMX-preemption timer. */
     CPUMStopGuestVmxPremptTimer(pVCpu);
