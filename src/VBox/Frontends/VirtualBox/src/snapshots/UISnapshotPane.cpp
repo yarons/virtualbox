@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 96660 2022-09-08 13:26:20Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1754,7 +1754,7 @@ void UISnapshotPane::cloneSnapshot()
     AssertReturnVoid(!comMachine.isNull());
 
     /* Show Clone VM wizard: */
-    QPointer<UINativeWizard> pWizard = new UIWizardCloneVM(this, comMachine, QString(), comSnapshot, "clone");
+    QPointer<UINativeWizard> pWizard = new UIWizardCloneVM(this, comMachine, QString(), comSnapshot);
     pWizard->exec();
     if (pWizard)
         delete pWizard;

@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINativeWizard.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -91,11 +91,11 @@ void UIFrame::paintEvent(QPaintEvent *pEvent)
 UINativeWizard::UINativeWizard(QWidget *pParent,
                                WizardType enmType,
                                WizardMode enmMode /* = WizardMode_Auto */,
-                               const QString &strHelpHashtag /* = QString() */)
+                               const QString &strHelpTag /* = QString() */)
     : QIWithRetranslateUI<QDialog>(pParent)
     , m_enmType(enmType)
     , m_enmMode(enmMode == WizardMode_Auto ? gEDataManager->modeForWizardType(m_enmType) : enmMode)
-    , m_strHelpHashtag(strHelpHashtag)
+    , m_strHelpHashtag(strHelpTag)
     , m_iLastIndex(-1)
     , m_pLabelPixmap(0)
     , m_pLayoutRight(0)

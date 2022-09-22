@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkManager.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -1720,7 +1720,7 @@ void UINetworkManagerWidget::sltApplyDetailsChangesCloudNetwork()
 void UINetworkManagerWidget::prepare()
 {
     /* Prepare self: */
-    uiCommon().setHelpKeyword(this, "networkingdetails");
+    uiCommon().setHelpKeyword(this, "network-manager");
 
     /* Prepare stuff: */
     prepareActions();

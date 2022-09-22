@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -712,7 +712,7 @@ void UIVMLogViewerWidget::prepare()
 
     /* Setup escape shortcut: */
     manageEscapeShortCut();
-    uiCommon().setHelpKeyword(this, "collect-debug-info");
+    uiCommon().setHelpKeyword(this, "log-viewer");
 }
 
 void UIVMLogViewerWidget::prepareActions()

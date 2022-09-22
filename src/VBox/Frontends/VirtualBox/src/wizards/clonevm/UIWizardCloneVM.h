@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardCloneVM.h 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -47,7 +47,7 @@ class UIWizardCloneVM : public UINativeWizard
 public:
 
     UIWizardCloneVM(QWidget *pParent, const CMachine &machine,
-                    const QString &strGroup, CSnapshot snapshot = CSnapshot(), const QString &strHelpHashtag = QString());
+                    const QString &strGroup, CSnapshot snapshot = CSnapshot());
     void setCloneModePageVisible(bool fIsFullClone);
     bool isCloneModePageVisible() const;
     /** Clone VM stuff. */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -57,10 +57,12 @@
 using namespace UIExtraDataDefs;
 
 
-UIWizardNewVM::UIWizardNewVM(QWidget *pParent, UIActionPool *pActionPool,
-                             const QString &strMachineGroup, const QString &strHelpHashtag,
-                             CUnattended &comUnattended, const QString &strISOFilePath /* = QString() */)
-    : UINativeWizard(pParent, WizardType_NewVM, WizardMode_Auto, strHelpHashtag)
+UIWizardNewVM::UIWizardNewVM(QWidget *pParent,
+                             UIActionPool *pActionPool,
+                             const QString &strMachineGroup,
+                             CUnattended &comUnattended,
+                             const QString &strISOFilePath /* = QString() */)
+    : UINativeWizard(pParent, WizardType_NewVM, WizardMode_Auto, "create-vm-wizard" /* help keyword */)
     , m_strMachineGroup(strMachineGroup)
     , m_iIDECount(0)
     , m_iSATACount(0)

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMediumManager.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -761,7 +761,7 @@ void UIMediumManagerWidget::prepare()
         if (!uiCommon().isMediumEnumerationInProgress())
             sltHandleMediumEnumerationFinish();
     }
-    uiCommon().setHelpKeyword(this,"vdis");
+    uiCommon().setHelpKeyword(this,"virtual-media-manager");
 }
 
 void UIMediumManagerWidget::prepareConnections()

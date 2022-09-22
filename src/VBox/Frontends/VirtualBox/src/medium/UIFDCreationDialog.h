@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFDCreationDialog.h 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -41,7 +41,7 @@
 /* Forward declarations: */
 class QCheckBox;
 class QComboBox;
-class QDialogButtonBox;
+class QIDialogButtonBox;
 class QLabel;
 class UIFilePathSelector;
 class CMedium;
@@ -124,7 +124,7 @@ private:
     /** Holds the format check-box instance. */
     QCheckBox          *m_pFormatCheckBox;
     /** holds the button-box instance. */
-    QDialogButtonBox   *m_pButtonBox;
+    QIDialogButtonBox  *m_pButtonBox;
 
     /** Holds the created medium ID. */
     QUuid  m_uMediumID;
