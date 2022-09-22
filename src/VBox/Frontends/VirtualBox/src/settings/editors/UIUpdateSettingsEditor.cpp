@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 96829 2022-09-22 16:51:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -63,16 +63,16 @@ void UIUpdateSettingsEditor::setValue(const VBoxUpdateData &guiValue)
         {
             m_pCheckBox->setChecked(m_guiValue.isCheckEnabled());
 
+            foreach (const KUpdateChannel &enmUpdateChannel, m_mapRadioButtons.keys())
+                if (m_mapRadioButtons.value(enmUpdateChannel))
+                    m_mapRadioButtons.value(enmUpdateChannel)->setVisible(
+                           m_guiValue.updateChannel() == enmUpdateChannel
+                        || m_guiValue.supportedUpdateChannels().contains(enmUpdateChannel));
+
             if (m_pCheckBox->isChecked())
             {
                 if (m_pComboUpdatePeriod)
                     m_pComboUpdatePeriod->setCurrentIndex(m_guiValue.updatePeriod());
-
-                foreach (const KUpdateChannel &enmUpdateChannel, m_mapRadioButtons.keys())
-                    if (m_mapRadioButtons.value(enmUpdateChannel))
-                        m_mapRadioButtons.value(enmUpdateChannel)->setVisible(
-                               m_guiValue.updateChannel() == enmUpdateChannel
-                            || m_guiValue.supportedUpdateChannels().contains(enmUpdateChannel));
                 if (m_mapRadioButtons.value(m_guiValue.updateChannel()))
                     m_mapRadioButtons.value(m_guiValue.updateChannel())->setChecked(true);
             }
