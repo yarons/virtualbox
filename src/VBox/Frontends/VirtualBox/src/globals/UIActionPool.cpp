@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIActionPool.cpp 96843 2022-09-23 11:17:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -3401,7 +3401,7 @@ bool UIActionPool::addMenu(QList<QMenu*> &menuList, UIAction *pAction, bool fRea
      * depending on clearance state. */
     pAction->setVisible(   fIsActionAllowed
 #ifdef VBOX_WS_MAC
-                        && !fIsMenuConsumable
+                        || fIsMenuConsumable
 #endif
                         );
 
