@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 96847 2022-09-23 15:01:29Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -6679,9 +6679,15 @@ int Console::i_configNetwork(const char *pszDevice,
                 hrc = startCloudGateway(virtualBox, network, mGateway);
                 if (FAILED(hrc))
                 {
+                    if (hrc == VBOX_E_OBJECT_NOT_FOUND)
+                        return pVMM->pfnVMR3SetError(pUVM, hrc, RT_SRC_POS,
+                                                    N_("Failed to start cloud gateway instance.\nCould not find suitable "
+                                                        "standard cloud images. Make sure you ran 'VBoxManage cloud network setup' "
+                                                        "with correct '--gateway-os-name' and '--gateway-os-version' parameters. "
+                                                        "Check VBoxSVC.log for actual values used to look up cloud images."));
                     return pVMM->pfnVMR3SetError(pUVM, hrc, RT_SRC_POS,
                                                  N_("Failed to start cloud gateway instance.\nMake sure you set up "
-                                                    "cloud networking properly with 'VBoxManage network setup'. "
+                                                    "cloud networking properly with 'VBoxManage cloud network setup'. "
                                                     "Check VBoxSVC.log for details."));
                 }
                 InsertConfigBytes(pDevCfg, "MAC", &mGateway.mCloudMacAddress, sizeof(mGateway.mCloudMacAddress));
