@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 96797 2022-09-19 19:10:20Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 96846 2022-09-23 13:41:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -853,14 +853,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 96797 $";
+    static char s_szRev[] = "$Revision: 96846 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 96797 2022-09-19 19:10:20Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 96846 2022-09-23 13:41:12Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -7942,8 +7942,8 @@ static RTEXITCODE SseConvertXmmR64I32Generate(const char *pszDataFileFmt, uint32
             TestData.InVal.ar64[0] = iTest < cTests ? RandR64Src(iTest) : s_aSpecials[iTest - cTests].aVal1[0];
             TestData.InVal.ar64[1] = iTest < cTests ? RandR64Src(iTest) : s_aSpecials[iTest - cTests].aVal1[1];
 
-            if (   RTFLOAT64U_IS_NORMAL(&TestData.InVal.ar32[0])
-                && RTFLOAT64U_IS_NORMAL(&TestData.InVal.ar32[1]))
+            if (   RTFLOAT64U_IS_NORMAL(&TestData.InVal.ar64[0])
+                && RTFLOAT64U_IS_NORMAL(&TestData.InVal.ar64[1]))
                 cNormalInputPairs++;
             else if (cNormalInputPairs < cMinNormalPairs && iTest + cMinNormalPairs >= cTests && iTest < cTests)
             {
