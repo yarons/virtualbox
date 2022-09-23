@@ -1,4 +1,4 @@
-/* $Id: nt.h 96844 2022-09-23 13:28:25Z knut.osmundsen@oracle.com $ */
+/* $Id: nt.h 96845 2022-09-23 13:33:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2906,7 +2906,7 @@ typedef struct _OBJECT_TYPE_INFORMATION
     /* The name string follows after the structure. */
 } OBJECT_TYPE_INFORMATION;
 AssertCompileSize(OBJECT_TYPE_INFORMATION, sizeof(UNICODE_STRING) + 0x58);
-typedef _OBJECT_TYPE_INFORMATION *POBJECT_TYPE_INFORMATION;
+typedef OBJECT_TYPE_INFORMATION *POBJECT_TYPE_INFORMATION;
 
 /** Returned via ObjectTypesInformation. */
 typedef struct _OBJECT_TYPES_INFORMATION
