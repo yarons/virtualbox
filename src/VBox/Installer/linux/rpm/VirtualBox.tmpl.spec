@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 96795 2022-09-19 16:42:57Z vadim.galitsyn@oracle.com $
+# $Id: VirtualBox.tmpl.spec 96841 2022-09-23 09:39:14Z vadim.galitsyn@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -43,7 +43,7 @@ License:   GPLv2
 Group:     Applications/System
 Vendor:    Oracle Corporation
 BuildRoot: %BUILDROOT%
-Requires:  %INITSCRIPTS% %LIBASOUND% %NETTOOLS%
+Requires:  %INITSCRIPTS% %LIBASOUND% %NETTOOLS% %LIBVULKAN%
 
 %if %{?rpm_suse:1}%{!?rpm_suse:0}
 %debug_package
