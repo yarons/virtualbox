@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstOVF.cpp 96849 2022-09-24 01:55:24Z brian.le.lee@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -231,9 +231,21 @@ void importOVF(const char *pcszPrefix,
                 case VirtualSystemDescriptionType_SoundCard:
                     pcszType = "sound";
                 break;
+				
+				case VirtualSystemDescriptionType_SettingsFile:
+                    pcszType = "settings";
+                break;
+				
+				case VirtualSystemDescriptionType_BaseFolder:
+                    pcszType = "basefolder";
+                break;
+				
+				case VirtualSystemDescriptionType_PrimaryGroup:
+                    pcszType = "primarygroup";
+                break;
 
                 default:
-                    throw MyError(E_UNEXPECTED, "Invalid VirtualSystemDescriptionType\n");
+                    throw MyError(E_UNEXPECTED, "Invalid VirtualSystemDescriptionType (enum)\n");
                 break;
             }
 
@@ -287,6 +299,12 @@ void copyDummyDiskImage(const char *pcszPrefix,
     RTPathExecDir(szDst, sizeof(szDst));
     RTPathAppend(szDst, sizeof(szDst), pcszDest);
     RTPrintf("%s: copying ovf-dummy.vmdk to \"%s\"...\n", pcszPrefix, pcszDest);
+
+	if (FILE *file = fopen(pcszDest, "r"))
+	{
+		fclose(file);
+		RTFileDelete(pcszDest);
+	}
 
     int vrc = RTFileCopy(szSrc, szDst);
     if (RT_FAILURE(vrc)) throw MyError(0, Utf8StrFmt("Cannot copy ovf-dummy.vmdk to %s: %Rra\n", pcszDest, vrc).c_str());

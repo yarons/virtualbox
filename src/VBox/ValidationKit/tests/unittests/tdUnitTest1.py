@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdUnitTest1.py 96849 2022-09-24 01:55:24Z brian.le.lee@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 96849 $"
 
 
 # Standard Python imports.
@@ -197,7 +197,6 @@ class tdUnitTest1(vbox.TestDriver):
         # failed or hang
         'testcase/tstCryptoPkcs7Verify': '',            # hang
         'tstOVF': '',                                   # hang (only ancient version, now in new place)
-        'testcase/tstOVF': '',                          # Creates mess when fails, needs to be run in a separate test.
         'testcase/tstRTLockValidator': '',              # Lock validation is not enabled for critical sections
         'testcase/tstGuestControlSvc': '',              # failed: line 288: testHost(&svcTable):
                                                         # expected VINF_SUCCESS, got VERR_NOT_FOUND
