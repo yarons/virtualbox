@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UnattendedImpl.h 96861 2022-09-26 10:52:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -265,6 +265,7 @@ private:
     } DETECTBUFFER;
     HRESULT i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *puBuf);
     HRESULT i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *puBuf);
+    HRESULT i_innerDetectIsoOSLinuxFedora(RTVFS hVfsIso, DETECTBUFFER *puBuf, char *pszVolId);
     HRESULT i_innerDetectIsoOSOs2(RTVFS hVfsIso, DETECTBUFFER *puBuf);
     HRESULT i_innerDetectIsoOSFreeBsd(RTVFS hVfsIso, DETECTBUFFER *puBuf);
 
