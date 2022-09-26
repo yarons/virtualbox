@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 96868 2022-09-26 14:51:49Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-helper-gnome3.cpp 96869 2022-09-26 14:54:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gnome3 Desktop Environment helper.
  *
@@ -678,7 +678,7 @@ static int vbcl_hlp_gnome3_convert_and_apply_display_settings(
     dbus_message_iter_init_append(message, &message_iter);
 
     /* Should be TRUE in order to satisfy VBCL_HLP_GNOME3_NEXT() requirements. */
-    AssertReturn(ret, false);
+    AssertReturn(ret, VERR_INVALID_PARAMETER);
 
     /* Get list of physical monitors parameters. */
     VBCL_HLP_GNOME3_NEXT(ret, vbcl_hlp_gnome3_get_physical_monitors_state(
@@ -854,7 +854,7 @@ static int vbcl_hlp_gnome3_process_current_display_layout(
      */
 
     /* Should be TRUE in order to satisfy VBCL_HLP_GNOME3_NEXT() requirements. */
-    AssertReturn(ret, false);
+    AssertReturn(ret, VERR_INVALID_PARAMETER);
 
     /* Important: in order to avoid libdbus asserts during parsing, its signature should be verified at first.  */
     VBCL_HLP_GNOME3_NEXT(ret, vbcl_hlp_gnome3_check_message_signature(reply, expected_signature));
