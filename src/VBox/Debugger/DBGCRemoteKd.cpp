@@ -1,4 +1,4 @@
-/* $Id: DBGCRemoteKd.cpp 96866 2022-09-26 14:46:19Z alexander.eichner@oracle.com $ */
+/* $Id: DBGCRemoteKd.cpp 96872 2022-09-26 15:05:05Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Windows Kd Remote Stub.
  */
@@ -1254,7 +1254,7 @@ typedef struct KDREGDESC
     /** Register width. */
     DBGFREGVALTYPE              enmValType;
     /** The offset into the context structure where the value ends up. */
-    uint32_t                    offReg;
+    uintptr_t                   offReg;
 } KDREGDESC;
 /** Pointer to a register mapping structure. */
 typedef KDREGDESC *PKDREGDESC;
