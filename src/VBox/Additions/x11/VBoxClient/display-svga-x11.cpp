@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-svga-x11.cpp 96876 2022-09-26 16:11:19Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -775,27 +775,6 @@ static bool callVMWCTRL(struct RANDROUTPUT *paOutputs)
 }
 
 /**
- * Tries to determine if the session parenting this process is of Xwayland.
- * NB: XDG_SESSION_TYPE is a systemd(1) environment variable and is unlikely
- * set in non-systemd environments or remote logins.
- * Therefore we check the Wayland specific display environment variable first.
- */
-static bool isXwayland(void)
-{
-    const char *const pDisplayType = RTEnvGet(VBCL_ENV_WAYLAND_DISPLAY);
-    const char *pSessionType;
-
-    if (pDisplayType != NULL)
-        return true;
-
-    pSessionType = RTEnvGet(VBCL_ENV_XDG_SESSION_TYPE);
-    if ((pSessionType != NULL) && (RTStrIStartsWith(pSessionType, "wayland")))
-        return true;
-
-    return false;
-}
-
-/**
  * @interface_method_impl{VBCLSERVICE,pfnInit}
  */
 static DECLCALLBACK(int) vbclSVGAInit(void)
@@ -818,7 +797,7 @@ static DECLCALLBACK(int) vbclSVGAInit(void)
         return VERR_NOT_AVAILABLE;
     }
 
-    if (isXwayland())
+    if (VBClHasWayland())
     {
         rc = VbglR3DrmClientStart();
         if (RT_SUCCESS(rc))
