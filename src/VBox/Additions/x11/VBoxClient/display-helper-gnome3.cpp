@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 96869 2022-09-26 14:54:59Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-helper-gnome3.cpp 96871 2022-09-26 14:59:34Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gnome3 Desktop Environment helper.
  *
@@ -582,7 +582,6 @@ static void vbcl_hlp_gnome3_free_physical_monitors_state(
  * @param   parent_iter         Array to add dictionary element into.
  * @param   key                 Dictionary key.
  * @param   value               Boolean value for given key.
- 
  */
 static dbus_bool_t vbcl_hlp_gnome3_add_dict_bool_entry(
     DBusMessageIter *parent_iter, const char *key, const dbus_bool_t value)
