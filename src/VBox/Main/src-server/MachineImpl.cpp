@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 96854 2022-09-26 08:48:48Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -16008,18 +16008,11 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
 
     if (!usbDeviceFilters.isNull() && recommendedUSB3 && usbProxyAvailable)
     {
-#ifdef VBOX_WITH_EXTPACK
-        /* USB 3.0 is only available if the proper ExtPack is installed. */
-        ExtPackManager *aManager = mParent->i_getExtPackManager();
-        if (aManager->i_isExtPackUsable(ORACLE_PUEL_EXTPACK_NAME))
-        {
-            rc = addUSBController("XHCI", USBControllerType_XHCI, usbController);
-            if (FAILED(rc)) return rc;
+        rc = addUSBController("XHCI", USBControllerType_XHCI, usbController);
+        if (FAILED(rc)) return rc;
 
-            /* xHci includes OHCI */
-            ohciEnabled = true;
-        }
-#endif
+        /* xHci includes OHCI */
+        ohciEnabled = true;
     }
     if (   !ohciEnabled
         && !usbDeviceFilters.isNull() && recommendedUSB && usbProxyAvailable)
@@ -16028,19 +16021,8 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
         if (FAILED(rc)) return rc;
         ohciEnabled = true;
 
-#ifdef VBOX_WITH_EXTPACK
-        /* USB 2.0 is only available if the proper ExtPack is installed.
-         * Note. Configuring EHCI here and providing messages about
-         * the missing extpack isn't exactly clean, but it is a
-         * necessary evil to patch over legacy compatability issues
-          * introduced by the new distribution model. */
-        ExtPackManager *manager = mParent->i_getExtPackManager();
-        if (manager->i_isExtPackUsable(ORACLE_PUEL_EXTPACK_NAME))
-        {
-            rc = addUSBController("EHCI", USBControllerType_EHCI, usbController);
-            if (FAILED(rc)) return rc;
-        }
-#endif
+        rc = addUSBController("EHCI", USBControllerType_EHCI, usbController);
+        if (FAILED(rc)) return rc;
     }
 
     /* Set recommended human interface device types: */

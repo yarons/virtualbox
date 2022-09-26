@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 96854 2022-09-26 08:48:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -303,28 +303,6 @@ bool UIMachineSettingsUSB::validate(QList<UIValidationMessage> &messages)
 
     /* Pass by default: */
     bool fPass = true;
-
-    /* USB 2.0/3.0 Extension Pack presence test: */
-    if (   m_pEditorUsbSettings
-        && m_pEditorUsbSettings->isFeatureEnabled()
-        && (   m_pEditorUsbSettings->usbControllerType() == KUSBControllerType_EHCI
-            || m_pEditorUsbSettings->usbControllerType() == KUSBControllerType_XHCI))
-    {
-        CExtPackManager extPackManager = uiCommon().virtualBox().GetExtensionPackManager();
-        if (!extPackManager.isNull() && !extPackManager.IsExtPackUsable(GUI_ExtPackName))
-        {
-            /* Prepare message: */
-            UIValidationMessage message;
-            message.second << tr("USB 2.0/3.0 is currently enabled for this virtual machine. "
-                                "However, this requires the <i>%1</i> to be installed. "
-                                "Please install the Extension Pack from the VirtualBox download site "
-                                "or disable USB 2.0/3.0 to be able to start the machine.")
-                                .arg(GUI_ExtPackName);
-            /* Serialize message: */
-            if (!message.second.isEmpty())
-                messages << message;
-        }
-    }
 
     /* Return result: */
     return fPass;

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96786 2022-09-19 10:37:26Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 96854 2022-09-26 08:48:48Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1438,8 +1438,6 @@ endif
 #
 ifdef VBOX_OSE
  VBOX_WITH_VRDP=
- VBOX_WITH_EHCI_IMPL=
- VBOX_WITH_XHCI_IMPL=
  VBOX_WITH_USB_VIDEO_IMPL=
  VBOX_WITH_NVME_IMPL=
  VBOX_WITH_EXTPACK_PUEL=
@@ -9122,7 +9120,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96786 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96854 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
