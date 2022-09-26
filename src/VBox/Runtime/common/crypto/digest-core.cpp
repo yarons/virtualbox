@@ -1,4 +1,4 @@
-/* $Id: digest-core.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: digest-core.cpp 96858 2022-09-26 09:25:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API
  */
@@ -319,7 +319,7 @@ RTDECL(int) RTCrDigestFinal(RTCRDIGEST hDigest, void *pvHash, size_t cbHash)
 
         if (cbNeeded == cbHash)
             memcpy(pvHash, &pThis->abState[pThis->offHash], cbNeeded);
-        else if (cbNeeded > cbHash)
+        else if (cbNeeded < cbHash)
         {
             memcpy(pvHash, &pThis->abState[pThis->offHash], cbNeeded);
             memset((uint8_t *)pvHash + cbNeeded, 0, cbHash - cbNeeded);
