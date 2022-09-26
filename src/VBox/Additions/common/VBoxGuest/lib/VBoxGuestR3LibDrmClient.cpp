@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDrmClient.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR3LibDrmClient.cpp 96884 2022-09-26 19:03:57Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, DRM client handling.
  */
@@ -81,7 +81,7 @@ static bool vbglR3DrmClientCheckProp(const char *pszPropName, uint32_t fPropFlag
                 uint32_t fFlags = 0;
 
                 rc = GuestPropValidateFlags(pcszFlags, &fFlags);
-                fExist = RT_SUCCESS(rc) && (fFlags & fPropFlags);
+                fExist = RT_SUCCESS(rc) && (fFlags == fPropFlags);
             }
             else
                 fExist = true;
