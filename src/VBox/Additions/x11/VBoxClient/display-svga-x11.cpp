@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: display-svga-x11.cpp 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -69,6 +69,7 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
+#include <iprt/env.h>
 
 #include <X11/Xlibint.h>
 #include <X11/extensions/Xrandr.h>
@@ -781,13 +782,13 @@ static bool callVMWCTRL(struct RANDROUTPUT *paOutputs)
  */
 static bool isXwayland(void)
 {
-    const char *const pDisplayType = getenv("WAYLAND_DISPLAY");
+    const char *const pDisplayType = RTEnvGet(VBCL_ENV_WAYLAND_DISPLAY);
     const char *pSessionType;
 
     if (pDisplayType != NULL)
         return true;
 
-    pSessionType = getenv("XDG_SESSION_TYPE"); /** @todo r=andy Use RTEnv API. */
+    pSessionType = RTEnvGet(VBCL_ENV_XDG_SESSION_TYPE);
     if ((pSessionType != NULL) && (RTStrIStartsWith(pSessionType, "wayland")))
         return true;
 

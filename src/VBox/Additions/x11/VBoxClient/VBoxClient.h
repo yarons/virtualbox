@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxClient.h 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -37,7 +37,11 @@
 #include <iprt/string.h>
 
 /** Environment variable which is exported when in Wayland Desktop Environment. */
-#define VBCL_ENV_WAYLAND_DISPLAY    "WAYLAND_DISPLAY"
+#define VBCL_ENV_WAYLAND_DISPLAY        "WAYLAND_DISPLAY"
+/** Environment variable which contains information about currently running Desktop Environment. */
+#define VBCL_ENV_XDG_CURRENT_DESKTOP    "XDG_CURRENT_DESKTOP"
+/** Environment variable which contains information about currently running session (X11, Wayland, etc). */
+#define VBCL_ENV_XDG_SESSION_TYPE       "XDG_SESSION_TYPE"
 
 void VBClLogInfo(const char *pszFormat, ...);
 void VBClLogError(const char *pszFormat, ...);

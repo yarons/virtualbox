@@ -1,4 +1,4 @@
-/* $Id: display-helper.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: display-helper.h 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for Desktop Environment helpers.
  */
@@ -32,9 +32,6 @@
 #endif
 
 #include "display-ipc.h"
-
-/** Environment variable which contains information about currently running Desktop Environment. */
-#define VBCL_HLP_ENV_XDG_CURRENT_DESKTOP    "XDG_CURRENT_DESKTOP"
 
 /**
  * Display offsets change notification callback.
