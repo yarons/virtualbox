@@ -1,0 +1,14 @@
+; $Id: VBoxDX.def 96886 2022-09-26 19:14:33Z klaus.espenlaub@oracle.com $
+;; @file
+; VBoxDX export
+;
+
+;
+; Copyright (C) 2020-2022 Oracle and/or its affiliates.
+;
+; Oracle Corporation confidential
+;
+
+EXPORTS
+    OpenAdapter10_2
+    OpenAdapter10
