@@ -1,4 +1,4 @@
-/* $Id: DBGCIoProvInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCIoProvInternal.h 96865 2022-09-26 14:45:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Internal I/O provider header file.
  */
@@ -108,6 +108,7 @@ typedef const DBGCIOPROVREG *PCDBGCIOPROVREG;
 *   Global Variables                                                           *
 *******************************************************************************/
 extern const DBGCIOPROVREG    g_DbgcIoProvTcp;
+extern const DBGCIOPROVREG    g_DbgcIoProvUdp;
 extern const DBGCIOPROVREG    g_DbgcIoProvIpc;
 
 

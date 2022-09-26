@@ -1,4 +1,4 @@
-/* $Id: DBGCIoProvIpc.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCIoProvIpc.cpp 96865 2022-09-26 14:45:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, IPC I/O provider.
  */
@@ -199,6 +199,8 @@ static DECLCALLBACK(int) dbgcIoProvIpcWaitForConnect(DBGCIOPROV hDbgcIoProv, RTM
             pIpcCon->Io.pfnInput    = dbgcIoProvIpcIoInput;
             pIpcCon->Io.pfnRead     = dbgcIoProvIpcIoRead;
             pIpcCon->Io.pfnWrite    = dbgcIoProvIpcIoWrite;
+            pIpcCon->Io.pfnPktBegin = NULL;
+            pIpcCon->Io.pfnPktEnd   = NULL;
             pIpcCon->Io.pfnSetReady = dbgcIoProvIpcIoSetReady;
             pIpcCon->hSession       = hSession;
             pIpcCon->fAlive         = true;

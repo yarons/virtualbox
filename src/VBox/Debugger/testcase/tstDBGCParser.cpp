@@ -1,4 +1,4 @@
-/* $Id: tstDBGCParser.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstDBGCParser.cpp 96865 2022-09-26 14:45:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
@@ -59,6 +59,8 @@ static DBGCIO g_tstBack =
     tstDBGCBackInput,
     tstDBGCBackRead,
     tstDBGCBackWrite,
+    NULL, /**pfnPktBegin*/
+    NULL, /**pfnPktEnd*/
     tstDBGCBackSetReady
 };
 /** For keeping track of output prefixing. */

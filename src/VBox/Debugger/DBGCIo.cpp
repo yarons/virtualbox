@@ -1,4 +1,4 @@
-/* $Id: DBGCIo.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCIo.cpp 96865 2022-09-26 14:45:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, I/O provider handling.
  */
@@ -132,6 +132,7 @@ typedef struct DBGCIOINT
 static PCDBGCIOPROVREG g_aIoProv[] =
 {
     &g_DbgcIoProvTcp,
+    &g_DbgcIoProvUdp,
     &g_DbgcIoProvIpc
 };
 
