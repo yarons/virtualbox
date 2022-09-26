@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96572 2022-09-01 20:36:22Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -647,6 +647,7 @@ VBoxSVC_SOURCES = \
 	$(if $(VBOX_WITH_CLOUD_NET), \
 	src-server/CloudNetworkImpl.cpp \
 	,) \
+	src-server/GuestDebugControlImpl.cpp \
 	src-server/GuestOSTypeImpl.cpp \
 	src-server/HostDnsService.cpp \
 	src-server/HostImpl.cpp \

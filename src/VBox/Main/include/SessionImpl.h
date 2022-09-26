@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SessionImpl.h 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -122,6 +122,7 @@ private:
     HRESULT onRecordingChange(BOOL aEnable);
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
+    HRESULT onGuestDebugControlChange(const ComPtr<IGuestDebugControl> &aGuestDebugControl);
     HRESULT onUSBDeviceAttach(const ComPtr<IUSBDevice> &aDevice,
                               const ComPtr<IVirtualBoxErrorInfo> &aError,
                               ULONG aMaskedInterfaces,

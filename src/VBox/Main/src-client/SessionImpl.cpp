@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SessionImpl.cpp 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -869,6 +869,23 @@ HRESULT Session::onDnDModeChange(DnDMode_T aDndMode)
     return mConsole->i_onDnDModeChange(aDndMode);
 #else
     RT_NOREF(aDndMode);
+    return S_OK;
+#endif
+}
+
+HRESULT Session::onGuestDebugControlChange(const ComPtr<IGuestDebugControl> &aGuestDebugControl)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+#ifndef VBOX_COM_INPROC_API_CLIENT
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->i_onGuestDebugControlChange(aGuestDebugControl);
+#else
+    RT_NOREF(aSerialPort);
     return S_OK;
 #endif
 }

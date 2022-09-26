@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1239,6 +1239,10 @@ HRESULT SnapshotMachine::init(SessionMachine *aSessionMachine,
     rc = mBandwidthControl->initCopy(this, pMachine->mBandwidthControl);
     if (FAILED(rc)) return rc;
 
+    unconst(mGuestDebugControl).createObject();
+    rc = mGuestDebugControl->initCopy(this, pMachine->mGuestDebugControl);
+    if (FAILED(rc)) return rc;
+
     /* Confirm a successful initialization when it's the case */
     autoInitSpan.setSucceeded();
 
@@ -1352,6 +1356,9 @@ HRESULT SnapshotMachine::initFromSettings(Machine *aMachine,
 
     unconst(mBandwidthControl).createObject();
     mBandwidthControl->init(this);
+
+    unconst(mGuestDebugControl).createObject();
+    mGuestDebugControl->init(this);
 
     /* load hardware and storage settings */
     HRESULT hrc = i_loadHardware(NULL, &mSnapshotId, hardware, pDbg, pAutostart, recording);

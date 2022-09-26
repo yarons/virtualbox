@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6048,6 +6048,33 @@ HRESULT Console::i_onSharedFolderChange(BOOL aGlobal)
 
     return rc;
 }
+
+/**
+ * Called by IInternalSessionControl::OnGuestDebugControlChange().
+ */
+HRESULT Console::i_onGuestDebugControlChange(IGuestDebugControl *aGuestDebugControl)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturnRC(autoCaller.rc());
+
+    HRESULT hrc = S_OK;
+
+    /* don't trigger changes if the VM isn't running */
+    SafeVMPtrQuiet ptrVM(this);
+    if (ptrVM.isOk())
+    {
+        /// @todo
+    }
+
+    if (SUCCEEDED(hrc))
+        ::FireGuestDebugControlChangedEvent(mEventSource, aGuestDebugControl);
+
+    LogFlowThisFunc(("Leaving rc=%#x\n", S_OK));
+    return hrc;
+}
+
 
 /**
  * Called by IInternalSessionControl::OnUSBDeviceAttach() or locally by
