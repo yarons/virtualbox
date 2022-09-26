@@ -22,6 +22,7 @@
 /selfsign
 /vcc
 /w32api
+/win_flex_bison
 /wix
 /yasm
 /x86_64-unknown-linux-gnu
