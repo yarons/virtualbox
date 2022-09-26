@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 96779 2022-09-17 01:49:38Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELF.cpp 96857 2022-09-26 09:24:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -294,7 +294,7 @@ static DECLCALLBACK(int) rtldrELFLnxKModHashImage(PRTLDRMODINTERNAL pMod, RTDIGE
     if (RT_SUCCESS(rc))
     {
         if (rtLdrELFLnxKModIsFooterValid(&SigFooter, cbFile))
-            cbFile -= sizeof(SigFooter) - RT_N2H_U32(SigFooter.cbSignature);
+            cbFile -= sizeof(SigFooter) + RT_N2H_U32(SigFooter.cbSignature);
 
         /*
          * Now hash the file.
