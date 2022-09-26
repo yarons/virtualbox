@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
+/* $Id: SessionImpl.cpp 96890 2022-09-26 19:38:06Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -885,7 +885,7 @@ HRESULT Session::onGuestDebugControlChange(const ComPtr<IGuestDebugControl> &aGu
 
     return mConsole->i_onGuestDebugControlChange(aGuestDebugControl);
 #else
-    RT_NOREF(aSerialPort);
+    RT_NOREF(aGuestDebugControl);
     return S_OK;
 #endif
 }
