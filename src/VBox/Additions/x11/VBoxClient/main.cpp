@@ -1,4 +1,4 @@
-/* $Id: main.cpp 96876 2022-09-26 16:11:19Z vadim.galitsyn@oracle.com $ */
+/* $Id: main.cpp 96878 2022-09-26 16:48:39Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -598,7 +598,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    VBClLogInfo("VBoxClient %s r%s started. Verbose level = %d\n", RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbosity);
+    VBClLogInfo("VBoxClient %s r%s started. Verbose level = %d. Wayland environment detected: %s\n",
+                RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbosity, VBClHasWayland() ? "yes" : "no");
     VBClLogInfo("Service: %s\n", g_Service.pDesc->pszDesc);
 
     rc = RTCritSectInit(&g_critSect);
