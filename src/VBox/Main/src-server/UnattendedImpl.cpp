@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 96861 2022-09-26 10:52:54Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 96862 2022-09-26 10:59:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -1972,7 +1972,11 @@ HRESULT Unattended::i_innerDetectIsoOSLinuxFedora(RTVFS hVfsIso, DETECTBUFFER *p
     char *pszVersion = NULL;
     char *pszArch    = NULL;
     if (detectLinuxArchII(psz, &mEnmOsType, VBOXOSTYPE_FedoraCore, &pszArch, &pszVersion))
+    {
+        while (*pszVersion == '-')
+            pszVersion++;
         *pszArch = '\0';
+    }
     else
     {
         mEnmOsType = (VBOXOSTYPE)(VBOXOSTYPE_FedoraCore | VBOXOSTYPE_UnknownArch);
