@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: PGMPool.cpp 96879 2022-09-26 17:43:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -590,11 +590,29 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                 case PGMPOOLKIND_32BIT_PT_FOR_PHYS:
                 case PGMPOOLKIND_PAE_PT_FOR_PHYS:
                 case PGMPOOLKIND_EPT_PT_FOR_PHYS:
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
+                case PGMPOOLKIND_EPT_PT_FOR_EPT_PT:
+                case PGMPOOLKIND_EPT_PD_FOR_EPT_PD:
+                case PGMPOOLKIND_EPT_PDPT_FOR_EPT_PDPT:
+                case PGMPOOLKIND_EPT_PML4_FOR_EPT_PML4:
+#endif
                 {
                     if (pPage->cPresent)
                     {
                         void *pvShw = PGMPOOL_PAGE_2_PTR_V2(pPool->CTX_SUFF(pVM), pVCpu, pPage);
                         STAM_PROFILE_START(&pPool->StatZeroPage, z);
+
+#ifdef VBOX_STRICT
+                        if (PGMPOOL_PAGE_IS_NESTED(pPage))
+                        {
+                            PEPTPT pPT = (PEPTPT)pvShw;
+                            for (unsigned ptIndex = 0; ptIndex < RT_ELEMENTS(pPT->a); ptIndex++)
+                            {
+                                if (pPT->a[ptIndex].u & EPT_PRESENT_MASK)
+                                    Assert(!(pPT->a[ptIndex].u & EPT_E_LEAF));  /* We don't support large pages as of yet. */
+                            }
+                        }
+#endif
 #if 0
                         /* Useful check for leaking references; *very* expensive though. */
                         switch (pPage->enmKind)
