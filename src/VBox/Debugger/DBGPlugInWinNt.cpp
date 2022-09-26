@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 96867 2022-09-26 14:51:41Z alexander.eichner@oracle.com $ */
+/* $Id: DBGPlugInWinNt.cpp 96870 2022-09-26 14:55:36Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -574,7 +574,6 @@ static int dbgDiggerWinNtDbgPrintResolveWorker(PDBGDIGGERWINNT pThis, PUVM pUVM,
 }
 
 
-#ifdef VBOX_DEBUGGER_WITH_WIN_DBG_PRINT_HOOKING
 /**
  * Tries to resolve and hook into the worker for all the DbgPrint like wrappers to be able
  * to gather debug information from the system.
@@ -655,7 +654,7 @@ static void dbgDiggerWinNtDbgPrintHook(PDBGDIGGERWINNT pThis, PUVM pUVM)
     else
         LogRel(("DigWinNt/DbgPrint: Failed to resolve kernel address space handle\n"));
 }
-
+#endif
 
 /**
  * Tries to resolve the KPCR and KPCRB addresses for each vCPU.
