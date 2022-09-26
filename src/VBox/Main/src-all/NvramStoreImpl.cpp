@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: NvramStoreImpl.cpp 96853 2022-09-26 08:40:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -107,6 +107,7 @@ struct NvramStore::Data
         : pParent(NULL)
 #ifdef VBOX_COM_INPROC
           , cRefs(0)
+          , fSsmSaved(false)
 #endif
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
           , mpKeyStore(NULL)
