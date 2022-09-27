@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 96903 2022-09-27 15:42:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -470,7 +470,7 @@ void UICloudProfileManagerWidget::sltToggleCloudProfileDetailsVisibility(bool fV
 
 void UICloudProfileManagerWidget::sltShowCloudProfileTryPage()
 {
-    uiCommon().openURL("https://myservices.us.oraclecloud.com/mycloud/signup");
+    uiCommon().openURL("https://signup.cloud.oracle.com/");
 }
 
 void UICloudProfileManagerWidget::sltShowCloudProfileHelp()
