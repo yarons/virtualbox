@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 96897 2022-09-27 13:15:05Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPool.cpp 96901 2022-09-27 13:44:50Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -842,7 +842,7 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
 }
 
 
-/** 
+/**
  * @callback_method_impl{FNDBGFHANDLERINT, pgmpoolroots}
  */
 static DECLCALLBACK(void) pgmR3PoolInfoRoots(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs)
