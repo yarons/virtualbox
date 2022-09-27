@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: MouseImpl.h 96909 2022-09-27 23:24:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -126,11 +126,12 @@ private:
                                  bool *pfValid);
     HRESULT i_putEventMultiTouch(LONG aCount, const LONG64 *paContacts, BOOL isTouchScreen, ULONG aScanTime);
 
-    void i_getDeviceCaps(bool *pfAbs, bool *pfRel, bool *pfTS, bool *pfTP);
+    uint32_t i_getDeviceCaps(void);
     void i_sendMouseCapsNotifications(void);
     bool i_guestNeedsHostCursor(void);
     bool i_vmmdevCanAbs(void);
     bool i_deviceCanAbs(void);
+    bool i_supportsAbs(uint32_t fCaps) const;
     bool i_supportsAbs(void);
     bool i_supportsRel(void);
     bool i_supportsTS(void);
