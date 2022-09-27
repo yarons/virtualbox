@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 96891 2022-09-27 05:59:26Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2604,9 +2604,18 @@ RuntimeBldProg_SOURCES.win = \
 	win/errmsgwin.cpp \
 	win/RTErrConvertFromWin32.cpp
 
+RuntimeBldProg_SOURCES.amd64 = $(filter-out \
+	VBox/RTLogWriteVmm-amd64-x86.asm \
+       , $(RuntimeBaseR3_SOURCES.amd64))
+
+RuntimeBldProg_SOURCES.x86 = $(filter-out \
+	VBox/RTLogWriteVmm-amd64-x86.asm \
+       , $(RuntimeBaseR3_SOURCES.x896))
+
 RuntimeBldProg_SOURCES.win.amd64 := \
 	$(RuntimeWin64ASM_SOURCES) \
 	common/string/memrchr.asm
+
 RuntimeBldProg_SOURCES.win.x86   := \
 	$(RuntimeWin32ASM_SOURCES) \
 	common/string/memrchr.asm
