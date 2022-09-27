@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96661 2022-09-08 16:36:52Z dmitrii.grigorev@oracle.com $
+# $Id: Makefile.kmk 96893 2022-09-27 08:44:00Z dmitrii.grigorev@oracle.com $
 ## @file
 # Sub-Makefile for SoftFloat-3e.
 #
@@ -271,6 +271,7 @@ VBox-SoftFloat_SOURCES += \
 	source/extF80_rem.c \
 	source/extF80_partialRem.c \
 	source/extF80_sincos.c \
+	source/extF80_log2.c \
 	source/extF80_sqrt.c \
 	source/extF80_scale_extF80.c \
 	source/extF80_eq.c \
