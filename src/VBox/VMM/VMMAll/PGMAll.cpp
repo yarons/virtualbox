@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 96879 2022-09-26 17:43:43Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAll.cpp 96900 2022-09-27 13:30:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3448,7 +3448,7 @@ VMM_INT_DECL(int) PGMHCChangeMode(PVMCC pVM, PVMCPUCC pVCpu, PGMMODE enmGuestMod
     if (fShadowModeChanged)
     {
         pVCpu->pgm.s.enmShadowMode = enmShadowMode;
-        int rc = g_aPgmShadowModeData[idxNewShw].pfnEnter(pVCpu, enmGuestMode >= PGMMODE_AMD64);
+        int rc = g_aPgmShadowModeData[idxNewShw].pfnEnter(pVCpu);
         AssertLogRelMsgRCReturnStmt(rc, ("Entering enmShadowMode=%s failed: %Rrc\n", PGMGetModeName(enmShadowMode), rc),
                                     pVCpu->pgm.s.enmShadowMode = PGMMODE_INVALID, rc);
     }

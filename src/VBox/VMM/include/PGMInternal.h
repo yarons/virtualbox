@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 96879 2022-09-26 17:43:43Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMInternal.h 96900 2022-09-27 13:30:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2745,7 +2745,7 @@ typedef struct PGMMODEDATASHW
     DECLCALLBACKMEMBER(int, pfnGetPage,(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys));
     DECLCALLBACKMEMBER(int, pfnModifyPage,(PVMCPUCC pVCpu, RTGCPTR GCPtr, size_t cbPages, uint64_t fFlags,
                                                    uint64_t fMask, uint32_t fOpFlags));
-    DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu, bool fIs64BitsPagingMode));
+    DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu));
     DECLCALLBACKMEMBER(int, pfnExit,(PVMCPUCC pVCpu));
 #ifdef IN_RING3
     DECLCALLBACKMEMBER(int, pfnRelocate,(PVMCPUCC pVCpu, RTGCPTR offDelta)); /**< Only in ring-3. */
