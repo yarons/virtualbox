@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: MouseImpl.cpp 96906 2022-09-27 18:10:42Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -675,7 +675,24 @@ HRESULT Mouse::i_reportAbsEventToInputDevices(int32_t x, int32_t y, int32_t dz, 
             hrc = i_reportAbsEventToVMMDev(x, y);
             cJiggle = !fUsesVMMDevEvent;
         }
-        hrc = i_reportRelEventToMouseDev(cJiggle, 0, dz, dw, fButtons);
+
+        /* Since VMMDev does not deal with mouse buttons state, also
+         * send relative or absolute pointing event to emulated mouse
+         * device once it supports it.
+         *
+         * Relative pointing events are sent to: PS/2 Mouse, USB Mouse,
+         * combination of both (PS/2 and USB Mouse).
+         *
+         * Absolute ones to: USB Tablet, USB Multi-Touch Tablet,
+         * USB MT TouchScreen and TouchPad.
+         *
+         * IMPORTANT: Avoid sending relative event to devices which can
+         * do both relative and absolute pointing since it will result
+         * in misbehavior. */
+        if (!i_deviceCanAbs())
+            hrc = i_reportRelEventToMouseDev(cJiggle, 0, dz, dw, fButtons);
+        else
+            hrc = i_reportAbsEventToMouseDev(x, y, dz, dw, fButtons);
     }
     else
         hrc = i_reportAbsEventToMouseDev(x, y, dz, dw, fButtons);
