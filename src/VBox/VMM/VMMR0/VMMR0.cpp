@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 96925 2022-09-28 20:39:43Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 96929 2022-09-28 21:58:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3164,7 +3164,7 @@ static bool   vmmR0LoggerFlushInnerToRing3(PGVM pGVM, PGVMCPU pGVCpu, uint32_t i
  * Inner worker for vmmR0LoggerFlushCommon when only flushing to the parent
  * VMM's logs.
  */
-static bool vmmR0LoggerFlushInnerToParent(PGVM pGVM, PGVMCPU pGVCpu, PVMMR0PERVCPULOGGER pR0Log, PRTLOGBUFFERDESC pBufDesc)
+static bool vmmR0LoggerFlushInnerToParent(PVMMR0PERVCPULOGGER pR0Log, PRTLOGBUFFERDESC pBufDesc)
 {
     uint32_t const cbToFlush = pBufDesc->offBuf;
     if (pR0Log->fFlushToParentVmmDbg)
@@ -3217,7 +3217,7 @@ static bool vmmR0LoggerFlushCommon(PRTLOGGER pLogger, PRTLOGBUFFERDESC pBufDesc,
                                 && !pR0Log->fFlushToParentVmmRel)
                                 fFlushed = vmmR0LoggerFlushInnerToRing3(pGVM, pGVCpu, idxLogger, idxBuffer, pBufDesc->offBuf);
                             else
-                                fFlushed = vmmR0LoggerFlushInnerToParent(pGVM, pGVCpu, pR0Log, pBufDesc);
+                                fFlushed = vmmR0LoggerFlushInnerToParent(pR0Log, pBufDesc);
                             pR0Log->fFlushing = false;
                             return fFlushed;
                         }
