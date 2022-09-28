@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 96896 2022-09-27 11:15:30Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 96914 2022-09-28 10:41:01Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -9304,6 +9304,12 @@ IEM_CIMPL_DEF_3(iemCImpl_fnstenv, IEMMODE, enmEffOpSize, uint8_t, iEffSeg, RTGCP
     rcStrict = iemMemCommitAndUnmap(pVCpu, uPtr.pv, IEM_ACCESS_DATA_W | IEM_ACCESS_PARTIAL_WRITE);
     if (rcStrict != VINF_SUCCESS)
         return rcStrict;
+
+    /* Mask all math exceptions. Any possibly pending exceptions will be cleared. */
+    PX86FXSTATE pFpuCtx = &pVCpu->cpum.GstCtx.XState.x87;
+    pFpuCtx->FCW |=   X86_FCW_PM | X86_FCW_UM | X86_FCW_OM | X86_FCW_ZM | X86_FCW_DM | X86_FCW_IM;
+    pFpuCtx->FSW &= ~(X86_FSW_PE | X86_FSW_UE | X86_FSW_OE | X86_FSW_ZE | X86_FSW_DE | X86_FSW_IE | X86_FSW_ES);
+    iemHlpUsedFpu(pVCpu);
 
     /* Note: C0, C1, C2 and C3 are documented as undefined, we leave them untouched! */
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
