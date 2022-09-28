@@ -1,4 +1,4 @@
-/* $Id: bs3-apic-1-32.c32 96912 2022-09-28 09:03:23Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-apic-1-32.c32 96913 2022-09-28 09:12:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-apic-1, 32-bit C code.
  */
@@ -116,5 +116,4 @@ BS3_DECL(void) ProtModeApicTests(void)
     else
         Bs3TestFailedF("Enabling the APIC did not work (%#RX64)", uApicBase2);
 }
-
 
