@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VMMInternal.h 96925 2022-09-28 20:39:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -98,7 +98,10 @@ typedef struct VMMR0PERVCPULOGGER
     bool                    fEmtWaiting;
     /** Set while we're inside vmmR0LoggerFlushCommon to prevent recursion. */
     bool                    fFlushing;
-    bool                    afPadding[1];
+    /** Flush to parent VMM's debug log instead of ring-3. */
+    bool                    fFlushToParentVmmDbg : 1;
+    /** Flush to parent VMM's debug log instead of ring-3. */
+    bool                    fFlushToParentVmmRel : 1;
     /** Number of buffers currently queued for flushing. */
     uint32_t volatile       cFlushing;
     /** The event semaphore the EMT waits on while the buffer is being flushed. */
