@@ -1,4 +1,4 @@
-; $Id: VBoxExtPackPuel.inf 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxExtPackPuel.inf 96920 2022-09-28 18:24:30Z vadim.galitsyn@oracle.com $
 ;; @file
 ; VBoxExtPackPuel - VirtualBox PUEL ExtPack drivers.
 ;
@@ -37,7 +37,7 @@ Provider    = %ORACLE%
 1=%VBoxExtPackPuel.DskDesc%,"",,
 
 [SourceDisksFiles]
-VBoxEhciR0.r0=1
+;VBoxEhciR0.r0=1
 VBoxNvmeR0.r0=1
 ;VBoxPciRawR0.r0=1
 
@@ -57,7 +57,7 @@ VBoxExtPackPuelInstall.Files = 12
 CopyFiles = VBoxExtPackPuelInstall.Files
 
 [VBoxExtPackPuelInstall.Files]
-VBoxEhciR0.r0,,,2
+;VBoxEhciR0.r0,,,2
 VBoxNvmeR0.r0,,,2
 ;VBoxPciRawR0.r0,,,2
 
