@@ -1,4 +1,4 @@
-/* $Id: log.cpp 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 96924 2022-09-28 20:34:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2706,7 +2706,7 @@ RTDECL(uint32_t) RTLogGetDestinations(PRTLOGGER pLogger)
         if (!pLoggerInt)
             return UINT32_MAX;
     }
-    return pLoggerInt->fFlags;
+    return pLoggerInt->fDestFlags;
 }
 RT_EXPORT_SYMBOL(RTLogGetDestinations);
 
