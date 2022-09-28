@@ -1,4 +1,4 @@
-# $Id: Version.kmk 96918 2022-09-28 14:07:51Z vadim.galitsyn@oracle.com $
+# $Id: Version.kmk 96919 2022-09-28 16:27:30Z vadim.galitsyn@oracle.com $
 ## @file
 # The VirtualBox version.
 #
@@ -42,7 +42,7 @@ VBOX_BUILD_PUBLISHER =
 VBOX_VERSION_PRERELEASE = BETA3
 # Force a release-type build with exactly matching Additions etc, even if
 # our numbering does not say this is a release build, by setting this non-empty.
-VBOX_RELEASE_EXACT_MATCH = 1
+VBOX_RELEASE_EXACT_MATCH =
 
 # For later: darwin.arm64 will remain BETA for quite a while.
 #if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
@@ -55,4 +55,4 @@ VBOX_RELEASE_EXACT_MATCH = 1
 #endif
 
 # Fallback revision when there is no other source. See Config.kmk.
-VBOX_SVN_REV_VERSION_FALLBACK := $(patsubst %:,,  $Rev: 96918 $  )
+VBOX_SVN_REV_VERSION_FALLBACK := $(patsubst %:,,  $Rev: 96919 $  )
