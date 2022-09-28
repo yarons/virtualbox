@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 96823 2022-09-22 05:08:44Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 96927 2022-09-28 20:42:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7946,7 +7946,7 @@ static VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPUCC pVCpu, uint8_t cbInstr, VMXI
 # endif
 
                         /* Finally, done. */
-                        LogFlow(("%s: cs:rip=%#04x:%#RX64 cr0=%#RX64 (%#RX64) cr4=%#RX64 (%#RX64) efer=%#RX64 (%#RX64)\n",
+                        LogFlow(("%s: cs:rip=%04x:%08RX64 cr0=%#RX64 (%#RX64) cr4=%#RX64 (%#RX64) efer=%#RX64 (%#RX64)\n",
                                  pszInstr, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.cr0,
                                  pVmcs->u64Cr0ReadShadow.u, pVCpu->cpum.GstCtx.cr4, pVmcs->u64Cr4ReadShadow.u,
                                  pVCpu->cpum.GstCtx.msrEFER, pVmcs->u64GuestEferMsr.u));
