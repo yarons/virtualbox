@@ -1,4 +1,4 @@
-; $Id: VBoxLibSsh.def 96910 2022-09-28 08:01:10Z aleksey.ilyushin@oracle.com $
+; $Id: VBoxLibSsh.def 96911 2022-09-28 08:10:46Z aleksey.ilyushin@oracle.com $
 ;; @file
 ; VBoxLibSsh - Definition file for lazy import generation for VBoxC.
 ;
@@ -22,7 +22,7 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program; if not, see <https://www.gnu.org/licenses>.
 ;
-; SPDX-License-Identifier: TBD: GPL-3.0-only???!!
+; SPDX-License-Identifier: GPL-3.0-only
 ;
 
 LIBRARY VBoxLibSsh
