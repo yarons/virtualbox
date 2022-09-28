@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 96880 2022-09-26 17:44:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 96928 2022-09-28 20:43:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5719,7 +5719,7 @@ static int hmR0VmxMapHCApicAccessPage(PVMCPUCC pVCpu, RTGCPHYS GCPhysApicBase)
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     Assert(GCPhysApicBase);
 
-    LogFunc(("Mappping HC APIC-access page at %#RGp\n", GCPhysApicBase));
+    LogFunc(("Mapping HC APIC-access page at %#RGp\n", GCPhysApicBase));
 
     /* Unalias the existing mapping. */
     int rc = PGMHandlerPhysicalReset(pVM, GCPhysApicBase);
