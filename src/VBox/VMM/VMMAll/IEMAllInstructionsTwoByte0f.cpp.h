@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96930 2022-09-29 09:55:19Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96936 2022-09-29 20:58:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4979,6 +4979,7 @@ FNIEMOP_DEF(iemOp_ucomisd_Vsd_Wsd)
         IEM_MC_FETCH_MEM_XMM_U64(uSrc2, 0 /*a_QWord*/, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
 
         IEM_MC_PREPARE_SSE_USAGE();
+        IEM_MC_FETCH_EFLAGS(fEFlags);
         IEM_MC_REF_MXCSR(pfMxcsr);
         IEM_MC_REF_XREG_XMM_CONST(puSrc1,       IEM_GET_MODRM_REG(pVCpu, bRm));
         IEM_MC_CALL_VOID_AIMPL_4(iemAImpl_ucomisd_u128, pfMxcsr, pEFlags, puSrc1, puSrc2);
