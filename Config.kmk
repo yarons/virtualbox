@@ -1,4 +1,4 @@
-# $Id: Config.kmk 96935 2022-09-29 20:58:16Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 96938 2022-09-29 21:36:40Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4405,7 +4405,7 @@ ifdef VBOX_SIGNING_MODE
     $(call VBOX_CCS_SIGN_CMD,mac_dmg,$(1))$(NLTAB) \
 	$(REDIRECT) -E 'LC_ALL=C' -we "$(1).tmp" -- ditto -x -k -V "$(1).zip" "$(call VBOX_DIRX,$(1))"$(NLTAB) \
     dirname="$(call VBOX_DIRX,$(1))$(DOLLAR)($(SED) -n -e 's+^copying file \([0-9]\{1,\}\)/.\{1,\}$(DOLLAR)+\1+p' "$(1).tmp")" ; \
-    $(MV) -f -- "$(DOLLAR)dirname/$(basename $(1))" "$(call VBOX_DIRX,$(1))" ; \
+    $(MV) -f -- "$(DOLLAR)dirname/$(DOLLAR)(basename "$(1)")" "$(call VBOX_DIRX,$(1))" ; \
     $(RM) -Rf -- "$(DOLLAR)dirname/"$(NLTAB) \
 	$(RM) -f -- "$(1).zip" "$(1).tmp"
   else
@@ -9122,7 +9122,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96935 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 96938 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
