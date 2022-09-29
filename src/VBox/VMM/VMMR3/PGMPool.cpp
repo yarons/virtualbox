@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 96901 2022-09-27 13:44:50Z ksenia.s.stepanova@oracle.com $ */
+/* $Id: PGMPool.cpp 96939 2022-09-29 22:17:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -881,8 +881,9 @@ static DECLCALLBACK(void) pgmR3PoolInfoRoots(PVM pVM, PCDBGFINFOHLP pHlp, const 
                         case PGMPOOLKIND_ROOT_NESTED:           pszKind = "ROOT_NESTED"; break;
                         case PGMPOOLKIND_EPT_PML4_FOR_EPT_PML4: pszKind = "EPT_PML4_FOR_EPT_PML4"; break;
                     }
-                    pHlp->pfnPrintf(pHlp, "#%04x: GCPhys=%RGp %s %s\n",
-                                    iPage, GCPhys, pszKind, pPage->fMonitored ? " monitored" : "");
+                    pHlp->pfnPrintf(pHlp, "#%04x: HCPhys=%RHp GCPhys=%RGp %s %s %s\n",
+                                    iPage, pPage->Core.Key, GCPhys, pPage->fA20Enabled ? "A20 " : "!A20",
+                                    pszKind, pPage->fMonitored ? " monitored" : "");
                     break;
                 }
             }
@@ -890,7 +891,6 @@ static DECLCALLBACK(void) pgmR3PoolInfoRoots(PVM pVM, PCDBGFINFOHLP pHlp, const 
                 break;
         }
     }
-
 }
 
 
