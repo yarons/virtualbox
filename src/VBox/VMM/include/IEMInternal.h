@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 96921 2022-09-28 19:22:51Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 96930 2022-09-29 09:55:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2378,6 +2378,12 @@ typedef FNIEMAIMPLMXCSRU128U64 *PFNIEMAIMPLMXCSRU128U64;
 
 FNIEMAIMPLMXCSRU128U64 iemAImpl_cvtpi2ps_u128;
 FNIEMAIMPLMXCSRU128U64 iemAImpl_cvtpi2pd_u128;
+
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLMXCSRU64U64,(uint32_t *pfMxcsr, uint64_t *pu64Dst, uint64_t u64Src));
+typedef FNIEMAIMPLMXCSRU64U64 *PFNIEMAIMPLMXCSRU64U64;
+
+FNIEMAIMPLMXCSRU64U64 iemAImpl_cvtps2pi_u128;
+FNIEMAIMPLMXCSRU64U64 iemAImpl_cvttps2pi_u128;
 
 /** @} */
 
