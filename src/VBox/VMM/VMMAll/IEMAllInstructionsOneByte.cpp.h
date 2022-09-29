@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 96860 2022-09-26 10:44:31Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 96933 2022-09-29 18:26:09Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -3284,7 +3284,7 @@ FNIEMOP_DEF(iemOp_Grp1_Ev_Iz)
                 IEM_MC_REF_GREG_U32(pu32Dst, IEM_GET_MODRM_RM(pVCpu, bRm));
                 IEM_MC_REF_EFLAGS(pEFlags);
                 IEM_MC_CALL_VOID_AIMPL_3(pImpl->pfnNormalU32, pu32Dst, u32Src, pEFlags);
-                if (pImpl != &g_iemAImpl_cmp)   /* Not used with TEST. */
+                if (pImpl != &g_iemAImpl_cmp)   /* TEST won't get here, no need to check for it. */
                     IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst);
 
                 IEM_MC_ADVANCE_RIP();
@@ -3454,7 +3454,7 @@ FNIEMOP_DEF(iemOp_Grp1_Ev_Ib)
                 IEM_MC_REF_GREG_U32(pu32Dst, IEM_GET_MODRM_RM(pVCpu, bRm));
                 IEM_MC_REF_EFLAGS(pEFlags);
                 IEM_MC_CALL_VOID_AIMPL_3(pImpl->pfnNormalU32, pu32Dst, u32Src, pEFlags);
-                if (pImpl != &g_iemAImpl_cmp)   /* Not used with TEST. */
+                if (pImpl != &g_iemAImpl_cmp)   /* TEST won't get here, no need to check for it. */
                     IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst);
 
                 IEM_MC_ADVANCE_RIP();
