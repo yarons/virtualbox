@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 96915 2022-09-28 12:43:04Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 96932 2022-09-29 14:19:53Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4134,7 +4134,7 @@ IEM_CIMPL_DEF_0(iemCImpl_syscall)
            the MSRs to have validated the values as canonical like they should. */
         if (!IEM_IS_CANONICAL(uNewRip))
         {
-            Log(("syscall: Only available in long mode on intel -> #UD\n"));
+            Log(("syscall: New RIP not canonical -> #UD\n"));
             return iemRaiseUndefinedOpcode(pVCpu);
         }
 
