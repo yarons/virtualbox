@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGFMem.cpp 96940 2022-09-30 00:07:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -635,12 +635,12 @@ VMMDECL(int) DBGFR3PagingDumpEx(PUVM pUVM, VMCPUID idCpu, uint32_t fFlags, uint6
      */
     UVM_ASSERT_VALID_EXT_RETURN(pUVM, VERR_INVALID_VM_HANDLE);
     AssertReturn(idCpu < pUVM->cCpus, VERR_INVALID_CPU_ID);
-    AssertReturn(!(fFlags & ~DBGFPGDMP_FLAGS_VALID_MASK), VERR_INVALID_PARAMETER);
-    AssertReturn(fFlags & (DBGFPGDMP_FLAGS_SHADOW | DBGFPGDMP_FLAGS_GUEST), VERR_INVALID_PARAMETER);
-    AssertReturn((fFlags & DBGFPGDMP_FLAGS_CURRENT_MODE) || !(fFlags & DBGFPGDMP_FLAGS_MODE_MASK), VERR_INVALID_PARAMETER);
+    AssertReturn(!(fFlags & ~DBGFPGDMP_FLAGS_VALID_MASK), VERR_INVALID_FLAGS);
+    AssertReturn(fFlags & (DBGFPGDMP_FLAGS_SHADOW | DBGFPGDMP_FLAGS_GUEST), VERR_INVALID_FLAGS);
+    AssertReturn((fFlags & DBGFPGDMP_FLAGS_CURRENT_MODE) || (fFlags & DBGFPGDMP_FLAGS_MODE_MASK), VERR_INVALID_FLAGS);
     AssertReturn(   !(fFlags & DBGFPGDMP_FLAGS_EPT)
                  || !(fFlags & (DBGFPGDMP_FLAGS_LME | DBGFPGDMP_FLAGS_PAE | DBGFPGDMP_FLAGS_PSE | DBGFPGDMP_FLAGS_NXE))
-                 , VERR_INVALID_PARAMETER);
+                 , VERR_INVALID_FLAGS);
     AssertReturn(cMaxDepth, VERR_INVALID_PARAMETER);
 
     /*
