@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96943 2022-09-30 06:32:46Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 96946 2022-09-30 06:54:29Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -3864,7 +3864,7 @@ FNIEMOP_DEF(iemOp_cvtsi2ss_Vss_Ey)
 }
 
 
-/** Opcode 0xf2 0x0f 0x2a - vcvtsi2sd Vsd, Hsd, Ey */
+/** Opcode 0xf2 0x0f 0x2a - cvtsi2sd Vsd, Ey */
 FNIEMOP_DEF(iemOp_cvtsi2sd_Vsd_Ey)
 {
     IEMOP_MNEMONIC2(RM, CVTSI2SD, cvtsi2sd, Vsd, Ey, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, 0);
