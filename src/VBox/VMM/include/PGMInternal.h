@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 96942 2022-09-30 00:10:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 96958 2022-09-30 21:15:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -83,6 +83,12 @@
  * Large page support enabled only on 64 bits hosts; applies to nested paging only.
  */
 #define PGM_WITH_LARGE_PAGES
+
+/**
+ * Enables the nested APIC access page support tweaks in PGM.
+ * If disabled, the nested VM's APIC accesses will by MMIO based in VT-x mode.
+ */
+//#define PGM_WITH_NESTED_APIC_ACCESS_PAGE
 
 /**
  * Enables optimizations for MMIO handlers that exploits X86_TRAP_PF_RSVD and
