@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96953 2022-09-30 11:34:04Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -97,6 +97,8 @@ VBoxVMM_INCS     = \
 	include \
 	$(VBoxVMM_0_OUTDIR)/CommonGenIncs
 VBoxVMM_ASINCS   = .
+VBoxVMM_ASFLAGS.amd64  = -Werror
+VBoxVMM_ASFLAGS.x86    = -Werror
 
 VBoxVMM_SOURCES  = \
 	VBoxVMM.d \
@@ -479,6 +481,9 @@ if defined(VBOX_WITH_R0_MODULES) && !defined(VBOX_ONLY_EXTPACKS)
  ifeq ($(VBOX_LDR_FMT),elf)
   VMMR0_CXXFLAGS += -Wunused -Wunused-variable -Wno-unused-parameter
  endif
+
+ VMMR0_ASFLAGS.amd64 := -Werror
+ VMMR0_ASFLAGS.x86   := -Werror
 
  VMMR0_SDKS      = VBOX_SOFTFLOATR0
 
