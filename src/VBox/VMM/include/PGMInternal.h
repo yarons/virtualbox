@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 96900 2022-09-27 13:30:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 96942 2022-09-30 00:10:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2046,7 +2046,7 @@ typedef PGMPOOLPAGE **PPPGMPOOLPAGE;
 
 
 /** The hash table size. */
-# define PGMPOOL_HASH_SIZE      0x40
+# define PGMPOOL_HASH_SIZE      0x8000
 /** The hash function. */
 # define PGMPOOL_HASH(GCPhys)   ( ((GCPhys) >> GUEST_PAGE_SHIFT) & (PGMPOOL_HASH_SIZE - 1) )
 
