@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: pkcs7-verify.cpp 96959 2022-09-30 21:51:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -126,7 +126,7 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
                     X509_STORE_free(pTrustedCerts);
             }
             else
-                rcOssl = RTErrInfoSet(pErrInfo, rcOssl, "RTCrStoreConvertToOpenSslCertStack failed");
+                rcOssl = RTErrInfoSet(pErrInfo, rcOssl, "RTCrStoreConvertToOpenSslCertStore failed");
 #include "internal/openssl-pre.h" /* Need to disable C5039 warning here. */
             if (pAddCerts)
                 sk_X509_pop_free(pAddCerts, X509_free);
