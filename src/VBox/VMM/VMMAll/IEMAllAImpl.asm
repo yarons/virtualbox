@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 96944 2022-09-30 06:50:01Z michal.necasek@oracle.com $
+; $Id: IEMAllAImpl.asm 96945 2022-09-30 06:51:12Z michal.necasek@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -3733,6 +3733,11 @@ IEMIMPL_MEDIA_OPT_F2 unpcklpd, 0
 IEMIMPL_MEDIA_OPT_F2 unpckhps, 0
 IEMIMPL_MEDIA_OPT_F2 unpckhpd, 0
 IEMIMPL_MEDIA_OPT_F2 phminposuw, 0
+IEMIMPL_MEDIA_OPT_F2 aesimc,   0
+IEMIMPL_MEDIA_OPT_F2 aesenc,   0
+IEMIMPL_MEDIA_OPT_F2 aesdec,   0
+IEMIMPL_MEDIA_OPT_F2 aesenclast, 0
+IEMIMPL_MEDIA_OPT_F2 aesdeclast, 0
 
 ;;
 ; Media instruction working on one full sized and one half sized register (lower half).
@@ -5126,6 +5131,7 @@ IEMIMPL_MEDIA_SSE_INSN_IMM8_6 blendpd
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 pblendw
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 palignr
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 pclmulqdq
+IEMIMPL_MEDIA_SSE_INSN_IMM8_6 aeskeygenassist
 
 
 ;;
