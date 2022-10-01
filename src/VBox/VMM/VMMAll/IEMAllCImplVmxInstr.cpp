@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 96927 2022-09-28 20:42:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 96960 2022-10-01 08:00:19Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -9969,6 +9969,33 @@ DECLCALLBACK(VBOXSTRICTRC) iemVmxApicAccessPagePfHandler(PVMCC pVM, PVMCPUCC pVC
                                                                | HMVMX_READ_IDT_VECTORING_INFO
                                                                | HMVMX_READ_IDT_VECTORING_ERROR_CODE);
             AssertRC(rc);
+
+            /*
+             * WARNING: HACK AHEAD!
+             * The below is a the old behavior which composes an incomplete APIC-access VM-exit.
+             * This will result in the inner hypervisor emulating the access since it lacks info
+             * for a linear read/write accesses. Unfortunately, this is required till the
+             * virtual VMX APIC-access page mapping using PGM_WITH_NESTED_APIC_ACCESS_PAGE is
+             * fixed properly.
+             */
+            if (HmExitAux.Vmx.uReason == VMX_EXIT_EPT_MISCONFIG)
+            {
+                VMXVEXITINFO ExitInfo;
+                RT_ZERO(ExitInfo);
+                ExitInfo.uReason = VMX_EXIT_APIC_ACCESS;
+                ExitInfo.u64Qual = RT_BF_MAKE(VMX_BF_EXIT_QUAL_APIC_ACCESS_OFFSET, offAccess)
+                                 | RT_BF_MAKE(VMX_BF_EXIT_QUAL_APIC_ACCESS_TYPE,   VMXAPICACCESS_PHYSICAL_INSTR);
+                ExitInfo.cbInstr = 0;
+
+                VMXVEXITEVENTINFO ExitEventInfo;
+                RT_ZERO(ExitEventInfo);
+                ExitEventInfo.uIdtVectoringInfo    = HmExitAux.Vmx.uIdtVectoringInfo;
+                ExitEventInfo.uIdtVectoringErrCode = HmExitAux.Vmx.uIdtVectoringErrCode;
+
+                LogFlowFunc(("Raising APIC-access VM-exit as phys access from #PF handler at offset %#x\n", offAccess));
+                VBOXSTRICTRC rcStrict = iemVmxVmexitApicAccessWithInfo(pVCpu, &ExitInfo, &ExitEventInfo);
+                return iemExecStatusCodeFiddling(pVCpu, rcStrict);
+            }
 
             /*
              * Verify the VM-exit reason must be an EPT violation.
