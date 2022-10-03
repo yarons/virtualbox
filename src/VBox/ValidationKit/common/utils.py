@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 96968 2022-10-03 13:55:00Z ksenia.s.stepanova@oracle.com $
+# $Id: utils.py 96969 2022-10-03 13:57:05Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96968 $"
+__version__ = "$Revision: 96969 $"
 
 
 # Standard Python imports.
@@ -287,7 +287,7 @@ def getHostOsVersion():
                                        "13": "Ventura",
                                        "14": "Unknown 15",
                                        "15": "Unknown 16"}
-            print(sVersion)
+
             if aOsVersion[0] == '10':
                 return codenames[aOsVersion[1]]
             else:
