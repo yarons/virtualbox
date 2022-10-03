@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 96969 2022-10-03 13:57:05Z ksenia.s.stepanova@oracle.com $
+# $Id: utils.py 96970 2022-10-03 13:59:23Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96969 $"
+__version__ = "$Revision: 96970 $"
 
 
 # Standard Python imports.
@@ -265,7 +265,7 @@ def getHostOsVersion():
             except:
                 pass;
 
-    elif sOs == 'darwin':`
+    elif sOs == 'darwin':
         def getMacVersionName(sVersion):
             aOsVersion = sVersion.split('.')    # example: ('10','15','7')
             codenames = {"4": "Tiger",
