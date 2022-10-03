@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMessageCenter.h 96967 2022-10-03 13:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -316,6 +316,7 @@ public:
         bool warnAboutNameShouldBeUnique(QWidget *pParent = 0) const;
         bool warnAboutRulesConflict(QWidget *pParent = 0) const;
         bool confirmCancelingPortForwardingDialog(QWidget *pParent = 0) const;
+        bool confirmRestoringDefaultKeys(QWidget *pParent = 0) const;
     /** @} */
 
     /** @name VirtualBox Manager warnings.
