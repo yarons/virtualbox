@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96984 2022-10-04 16:51:33Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 96985 2022-10-04 16:58:52Z klaus.espenlaub@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -483,7 +483,7 @@ if defined(VBOX_WITH_R0_MODULES) && !defined(VBOX_ONLY_EXTPACKS)
  endif
 
  # yasm versions not knowing about -Wno-segreg-in-64bit (including vanilla 1.3.0) would cause build failure.
- if "$(VBOX_ASTOOL)" != "YASM" || defined(VBOX_YASM_Wno-segreg-in-64bit)
+ if "$(VBOX_ASTOOL)" != "YASM" || defined("VBOX_YASM_Wno-segreg-in-64bit")
   VMMR0_ASFLAGS.amd64 := -Werror
  endif
  VMMR0_ASFLAGS.x86   := -Werror
