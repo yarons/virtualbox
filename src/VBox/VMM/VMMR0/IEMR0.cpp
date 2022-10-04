@@ -1,4 +1,4 @@
-/* $Id: IEMR0.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IEMR0.cpp 96979 2022-10-04 12:46:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Ring-0.
  */
@@ -52,7 +52,7 @@ VMMR0_INT_DECL(int) IEMR0InitVM(PGVM pGVM)
      */
     if (pGVM->cpum.ro.GuestFeatures.fVmx)
     {
-        int rc = PGMR0HandlerPhysicalTypeSetUpContext(pGVM, PGMPHYSHANDLERKIND_ALL, 0 /*fFlags*/,
+        int rc = PGMR0HandlerPhysicalTypeSetUpContext(pGVM, PGMPHYSHANDLERKIND_ALL, PGMPHYSHANDLER_F_NOT_IN_HM,
                                                       iemVmxApicAccessPageHandler, iemVmxApicAccessPagePfHandler,
                                                       "VMX APIC-access page", pGVM->iem.s.hVmxApicAccessPage);
         AssertLogRelRCReturn(rc, rc);

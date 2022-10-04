@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 96511 2022-08-26 03:13:16Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 96979 2022-10-04 12:46:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -435,13 +435,13 @@ int main()
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_HANDLERS(&Page) == false);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_ALL_HANDLERS(&Page) == false);
 
-    PGM_PAGE_SET_HNDL_PHYS_STATE(&Page, PGM_PAGE_HNDL_PHYS_STATE_ALL);
+    PGM_PAGE_SET_HNDL_PHYS_STATE(&Page, PGM_PAGE_HNDL_PHYS_STATE_ALL, false);
     CHECK_EXPR(PGM_PAGE_GET_HNDL_PHYS_STATE(&Page) == PGM_PAGE_HNDL_PHYS_STATE_ALL);
     CHECK_EXPR(PGM_PAGE_HAS_ANY_HANDLERS(&Page) == true);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_HANDLERS(&Page) == true);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_ALL_HANDLERS(&Page) == true);
 
-    PGM_PAGE_SET_HNDL_PHYS_STATE(&Page, PGM_PAGE_HNDL_PHYS_STATE_WRITE);
+    PGM_PAGE_SET_HNDL_PHYS_STATE(&Page, PGM_PAGE_HNDL_PHYS_STATE_WRITE, false);
     CHECK_EXPR(PGM_PAGE_GET_HNDL_PHYS_STATE(&Page) == PGM_PAGE_HNDL_PHYS_STATE_WRITE);
     CHECK_EXPR(PGM_PAGE_HAS_ANY_HANDLERS(&Page) == true);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_HANDLERS(&Page) == true);

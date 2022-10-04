@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 96966 2022-10-03 12:09:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllPool.cpp 96979 2022-10-04 12:46:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3370,6 +3370,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
 
             if (!fFlushPTEs)
             {
+                /* Note! Disregarding the PGMPHYSHANDLER_F_NOT_IN_HM bit here. Should be harmless. */
                 switch (PGM_PAGE_GET_HNDL_PHYS_STATE(pPhysPage))
                 {
                     case PGM_PAGE_HNDL_PHYS_STATE_NONE:         /* No handler installed. */
@@ -3446,6 +3447,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
 
             if (!fFlushPTEs)
             {
+                /* Note! Disregarding the PGMPHYSHANDLER_F_NOT_IN_HM bit here. Should be harmless. */
                 switch (PGM_PAGE_GET_HNDL_PHYS_STATE(pPhysPage))
                 {
                     case PGM_PAGE_HNDL_PHYS_STATE_NONE:         /* No handler installed. */

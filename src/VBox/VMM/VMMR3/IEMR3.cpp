@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 96979 2022-10-04 12:46:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -245,7 +245,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
      */
     if (pVM->cpum.ro.GuestFeatures.fVmx)
     {
-        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_ALL, 0 /*fFlags*/,
+        rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_ALL, PGMPHYSHANDLER_F_NOT_IN_HM,
                                               iemVmxApicAccessPageHandler,
                                               "VMX APIC-access page", &pVM->iem.s.hVmxApicAccessPage);
         AssertLogRelRCReturn(rc, rc);
