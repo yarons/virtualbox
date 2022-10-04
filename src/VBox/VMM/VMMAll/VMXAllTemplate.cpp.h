@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 96962 2022-10-02 21:54:28Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 96974 2022-10-04 05:32:09Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5563,7 +5563,10 @@ DECLINLINE(VBOXSTRICTRC) vmxHCHandleExitNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVm
     do { \
         AssertPtr((a_pVCpu)); \
         AssertPtr((a_pVmxTransient)); \
-        Assert((a_pVmxTransient)->fVMEntryFailed == false); \
+        Assert(   (a_pVmxTransient)->fVMEntryFailed == false \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_INVALID_GUEST_STATE \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_MSR_LOAD \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_MACHINE_CHECK); \
         Assert((a_pVmxTransient)->pVmcsInfo); \
         Assert(ASMIntAreEnabled()); \
         HMVMX_ASSERT_PREEMPT_SAFE(a_pVCpu); \
@@ -5581,7 +5584,10 @@ DECLINLINE(VBOXSTRICTRC) vmxHCHandleExitNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVm
     do { \
         AssertPtr((a_pVCpu)); \
         AssertPtr((a_pVmxTransient)); \
-        Assert((a_pVmxTransient)->fVMEntryFailed == false); \
+        Assert(   (a_pVmxTransient)->fVMEntryFailed == false \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_INVALID_GUEST_STATE \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_MSR_LOAD \
+               || (a_pVmxTransient)->uExitReason == VMX_EXIT_ERR_MACHINE_CHECK); \
         Assert((a_pVmxTransient)->pVmcsInfo); \
         Log4Func(("vcpu[%RU32]\n", (a_pVCpu)->idCpu)); \
         HMVMX_STOP_EXIT_DISPATCH_PROF(); \
