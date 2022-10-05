@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 97009 2022-10-05 17:41:01Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 97010 2022-10-05 18:09:04Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 97009 $)
+# Linux Additions kernel module init script ($Revision: 97010 $)
 #
 
 #
@@ -362,7 +362,10 @@ sign_modules()
         # Check if signing keys are in place.
         if test ! -f "$DEB_PUB_KEY" || ! test -f "$DEB_PRIV_KEY"; then
             # update-secureboot-policy tool present in the system, but keys were not generated.
-            [ -n "$HAVE_UPDATE_SECUREBOOT_POLICY_TOOL" ] && fail "Unable to find signing keys, aborting"
+            [ -n "$HAVE_UPDATE_SECUREBOOT_POLICY_TOOL" ] && info "
+
+update-secureboot-policy tool does not generate signing keys
+in your distribution, see below on how to generate them manually."
             # update-secureboot-policy not present in the system, recommend generate keys manually.
             fail "
 
