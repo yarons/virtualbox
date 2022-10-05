@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97003 2022-10-05 13:15:13Z klaus.espenlaub@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -153,6 +153,8 @@ $(VBOX_PATH_DIST)/VirtualBox-$(VBOX_VERSION_STRING)-r$(VBOX_SVN_REV).dmg: \
 	$(INSTALL) $(VBOX_PATH_DI_SRC)/DiskImage/VirtualBox_Uninstall.tool  $(VBOX_PATH_PACK_TMP)/DiskImage/
 ifdef VBOX_SIGNING_MODE
 	$(call VBOX_SIGN_FILE_FN,$(VBOX_PATH_PACK_TMP)/DiskImage/VirtualBox_Uninstall.tool,org.virtualbox.dmg.uninstaller)
+	@# Code signing (the non-local one) seems to be losing the execute permission.
+	chmod 0755 $(VBOX_PATH_PACK_TMP)/DiskImage/VirtualBox_Uninstall.tool
 endif
 ifeq (1,1)
 	@# Pedantic mode...
