@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: EMR3Dbg.cpp 96999 2022-10-05 09:06:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -105,6 +105,8 @@ VMM_INT_DECL(const char *) EMR3GetExitTypeName(EMEXITTYPE enmExitType)
         case EMEXITTYPE_RDTSC:              return "RDTSC";
         case EMEXITTYPE_MOV_CRX:            return "MOV CRx";
         case EMEXITTYPE_MOV_DRX:            return "MOV DRx";
+        case EMEXITTYPE_VMREAD:             return "VMREAD";
+        case EMEXITTYPE_VMWRITE:            return "VMWRITE";
 
         /* Raw-mode only: */
         case EMEXITTYPE_INVLPG:             return "INVLPG";
