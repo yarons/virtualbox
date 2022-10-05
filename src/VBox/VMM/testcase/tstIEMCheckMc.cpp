@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 96796 2022-09-19 19:09:53Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 96992 2022-10-05 07:48:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -656,14 +656,14 @@ IEMOPUNARYSIZES g_iemAImpl_not;
 #define IEM_MC_FETCH_FCW(a_u16Fcw)                      do { (a_u16Fcw) = 0; CHK_TYPE(uint16_t, a_u16Fcw); (void)fFpuRead; (void)fMcBegin; } while (0)
 #define IEM_MC_STORE_GREG_U8(a_iGReg, a_u8Value)        do { CHK_TYPE(uint8_t, a_u8Value); (void)fMcBegin; } while (0)
 #define IEM_MC_STORE_GREG_U16(a_iGReg, a_u16Value)      do { CHK_TYPE(uint16_t, a_u16Value); (void)fMcBegin; } while (0)
-#define IEM_MC_STORE_GREG_U32(a_iGReg, a_u32Value)      do { (void)fMcBegin;  } while (0)
-#define IEM_MC_STORE_GREG_I32(a_iGReg, a_i32Value)      do { (void)fMcBegin;  } while (0)
-#define IEM_MC_STORE_GREG_U64(a_iGReg, a_u64Value)      do { (void)fMcBegin;  } while (0)
-#define IEM_MC_STORE_GREG_I64(a_iGReg, a_i64Value)      do { (void)fMcBegin;  } while (0)
-#define IEM_MC_STORE_GREG_U8_CONST(a_iGReg, a_u8C)      do { AssertCompile((uint8_t )(a_u8C)  == (a_u8C) ); (void)fMcBegin; } while (0)
-#define IEM_MC_STORE_GREG_U16_CONST(a_iGReg, a_u16C)    do { AssertCompile((uint16_t)(a_u16C) == (a_u16C)); (void)fMcBegin; } while (0)
-#define IEM_MC_STORE_GREG_U32_CONST(a_iGReg, a_u32C)    do { AssertCompile((uint32_t)(a_u32C) == (a_u32C)); (void)fMcBegin; } while (0)
-#define IEM_MC_STORE_GREG_U64_CONST(a_iGReg, a_u64C)    do { AssertCompile((uint64_t)(a_u64C) == (a_u64C)); (void)fMcBegin; } while (0)
+#define IEM_MC_STORE_GREG_U32(a_iGReg, a_u32Value)      do { (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_I32(a_iGReg, a_i32Value)      do { (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_U64(a_iGReg, a_u64Value)      do { (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_I64(a_iGReg, a_i64Value)      do { (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_U8_CONST(a_iGReg, a_u8C)      do { AssertCompile((uint8_t )(a_u8C)  == (a_u8C) ); (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_U16_CONST(a_iGReg, a_u16C)    do { AssertCompile((uint16_t)(a_u16C) == (a_u16C)); (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_U32_CONST(a_iGReg, a_u32C)    do { AssertCompile((uint32_t)(a_u32C) == (a_u32C)); (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
+#define IEM_MC_STORE_GREG_U64_CONST(a_iGReg, a_u64C)    do { AssertCompile((uint64_t)(a_u64C) == (a_u64C)); (void)fMcBegin; const uint8_t iCheckDst = (a_iGReg); RT_NOREF(iCheckDst); } while (0)
 #define IEM_MC_STORE_FPUREG_R80_SRC_REF(a_iSt, a_pr80Src) do { CHK_PTYPE(PCRTFLOAT80U, a_pr80Src); Assert((a_iSt) < 8); (void)fMcBegin; } while (0)
 #define IEM_MC_CLEAR_HIGH_GREG_U64(a_iGReg)             do { (void)fMcBegin;  } while (0)
 #define IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(a_pu32Dst)    do { CHK_PTYPE(uint32_t *, a_pu32Dst); (void)fMcBegin; } while (0)
