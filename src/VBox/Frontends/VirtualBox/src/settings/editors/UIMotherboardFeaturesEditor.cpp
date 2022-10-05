@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 96967 2022-10-03 13:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 97008 2022-10-05 15:45:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
@@ -282,7 +282,7 @@ void UIMotherboardFeaturesEditor::prepare()
         m_pPushButtonResetSecureBoot = new QPushButton(this);
         if (m_pPushButtonResetSecureBoot)
         {
-            m_pPushButtonResetSecureBoot->setIcon(UIIconPool::iconSet(":/refresh_16px"));
+            m_pPushButtonResetSecureBoot->setIcon(UIIconPool::iconSet(":/refresh_16px.png"));
             connect(m_pPushButtonResetSecureBoot, &QPushButton::clicked,
                     this, &UIMotherboardFeaturesEditor::sltResetSecureBoot);
             m_pLayout->addWidget(m_pPushButtonResetSecureBoot, 4, 1);
