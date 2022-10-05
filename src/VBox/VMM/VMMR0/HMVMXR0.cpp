@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 96990 2022-10-05 06:17:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 96991 2022-10-05 06:36:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1151,10 +1151,10 @@ static void hmR0VmxSetMsrPermission(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool
         bool const fClear = true;
 #endif
         if (fClear)
-            ASMBitClear(pbMsrBitmap + offMsrRead, iBit);
+            ASMBitClear(pbMsrBitmap, (offMsrRead << 3) + iBit);
     }
     else
-        ASMBitSet(pbMsrBitmap + offMsrRead, iBit);
+        ASMBitSet(pbMsrBitmap, (offMsrRead << 3) + iBit);
 
     /*
      * Set the MSR write permission.
@@ -1171,10 +1171,10 @@ static void hmR0VmxSetMsrPermission(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool
         bool const fClear = true;
 #endif
         if (fClear)
-            ASMBitClear(pbMsrBitmap + offMsrWrite, iBit);
+            ASMBitClear(pbMsrBitmap, (offMsrWrite << 3) + iBit);
     }
     else
-        ASMBitSet(pbMsrBitmap + offMsrWrite, iBit);
+        ASMBitSet(pbMsrBitmap, (offMsrWrite << 3) + iBit);
 }
 
 
