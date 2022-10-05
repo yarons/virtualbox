@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 97016 2022-10-05 20:01:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
@@ -305,7 +305,7 @@ void UISharedFolderDetailsEditor::prepareWidgets()
         if (m_pCheckBoxAutoMount)
             pLayout->addWidget(m_pCheckBoxAutoMount, 4, 1);
         /* Prepare permanent check-box: */
-        m_pCheckBoxPermanent = new QCheckBox;
+        m_pCheckBoxPermanent = new QCheckBox(this);
         if (m_pCheckBoxPermanent)
         {
             m_pCheckBoxPermanent->setHidden(!m_fUsePermanent);
