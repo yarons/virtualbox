@@ -1,4 +1,4 @@
-/* $Id: HMVMXCommon.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HMVMXCommon.h 97004 2022-10-05 13:17:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM/VMX - Internal header file for sharing common bits between the
  *          VMX template code (which is also used with NEM on darwin) and HM.
@@ -231,6 +231,8 @@ typedef HMEVENT *PHMEVENT;
 typedef const HMEVENT *PCHMEVENT;
 AssertCompileSizeAlignment(HMEVENT, 8);
 
+/** Initializer for a HMEVENT structure with    */
+#define HMEVENT_INIT_ONLY_INT_INFO(a_uIntInfo) { 0, 0, 0, 0, (a_uIntInfo), 0 }
 
 /**
  * VMX VMCS information, shared.

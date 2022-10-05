@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 96993 2022-10-05 07:56:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 97004 2022-10-05 13:17:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2243,8 +2243,8 @@ static int hmR0VmxSetupLbrMsrRange(PVMCC pVM)
     return VINF_SUCCESS;
 }
 
-
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+
 /**
  * Sets up the shadow VMCS fields arrays.
  *
@@ -2365,8 +2365,8 @@ static void hmR0VmxSetupVmreadVmwriteBitmaps(PVMCC pVM)
         }
     }
 }
-#endif /* VBOX_WITH_NESTED_HWVIRT_VMX */
 
+#endif /* VBOX_WITH_NESTED_HWVIRT_VMX */
 
 /**
  * Sets up the virtual-APIC page address for the VMCS.
