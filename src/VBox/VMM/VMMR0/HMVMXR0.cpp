@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 96991 2022-10-05 06:36:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 96993 2022-10-05 07:56:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1077,7 +1077,7 @@ static void hmR0VmxStructsInit(PVMCC pVM)
 DECLINLINE(bool) hmR0VmxIsMsrBitSet(uint8_t const *pbMsrBitmap, uint16_t offMsr, int32_t iBit)
 {
     Assert(offMsr + (iBit >> 3) <= X86_PAGE_4K_SIZE);
-    return ASMBitTest(pbMsrBitmap + offMsr, iBit);
+    return ASMBitTest(pbMsrBitmap, (offMsr << 3) + iBit);
 }
 #endif
 
