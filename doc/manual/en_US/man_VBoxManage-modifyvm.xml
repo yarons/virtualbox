@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-09-26 21:29:50 +0200 (Mon, 26 Sep 2022) $</pubdate>
+    <pubdate>$Date: 2022-10-06 17:22:35 +0200 (Thu, 06 Oct 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -757,7 +757,7 @@ it unless this changes. -->
           <listitem><para>
               Specifies the amount of host system RAM to allocate to the
               VM. The size is in MB. See
-              <xref linkend="gui-createvm" />.
+              <xref linkend="create-vm-wizard" />.
             </para></listitem>
         </varlistentry>
         <varlistentry>

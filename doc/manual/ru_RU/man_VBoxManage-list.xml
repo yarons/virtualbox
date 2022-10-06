@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-list" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-08-22 19:43:14 +0200 (Mon, 22 Aug 2022) $</pubdate>
+    <pubdate>$Date: 2022-10-06 17:22:35 +0200 (Thu, 06 Oct 2022) $</pubdate>
     <title>VBoxManage list</title>
   </refentryinfo>
 
@@ -201,7 +201,7 @@
       </para>
       <para>
         Эта команда выполняет ту же функцию, что и Менеджер виртуальных
-        носителей. Смотрите <xref linkend="vdis"/>.
+        носителей. Смотрите <xref linkend="virtual-media-manager"/>.
       </para>
     </refsect2>
     <refsect2 id="vboxmanage-list-extpacks">
@@ -232,7 +232,7 @@
       </para>
       <para>
         Эта команда выполняет ту же функцию, что и Менеджер виртуальных
-        носителей. Смотрите <xref linkend="vdis"/>.
+        носителей. Смотрите <xref linkend="virtual-media-manager"/>.
       </para>
     </refsect2>
     <refsect2 id="vboxmanage-list-groups">
@@ -274,7 +274,7 @@
       </para>
       <para>
         Эта команда выполняет ту же функцию, что и Менеджер виртуальных
-        носителей. Смотрите <xref linkend="vdis"/>.
+        носителей. Смотрите <xref linkend="virtual-media-manager"/>.
       </para>
     </refsect2>
     <refsect2 id="vboxmanage-list-hostcpuids">

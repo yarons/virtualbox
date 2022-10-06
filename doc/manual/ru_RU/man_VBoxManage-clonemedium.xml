@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-clonemedium" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-08-22 19:43:14 +0200 (Mon, 22 Aug 2022) $</pubdate>
+    <pubdate>$Date: 2022-10-06 17:22:35 +0200 (Thu, 06 Oct 2022) $</pubdate>
     <title>VBoxManage clonemedium</title>
   </refentryinfo>
 
@@ -85,7 +85,7 @@
     <para>
       Можно использовать Менеджер Виртуальных Носителей для передачи
       клонированного носителя на другой хост или импортировать его в &product-name;.
-      Смотрите <xref linkend="vdis" /> и <xref linkend="cloningvdis" />.
+      Смотрите <xref linkend="virtual-media-manager" /> и <xref linkend="cloningvdis" />.
     </para>
     <variablelist>
       <varlistentry>

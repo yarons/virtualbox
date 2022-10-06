@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-09-05 20:19:48 +0200 (Mon, 05 Sep 2022) $</pubdate>
+    <pubdate>$Date: 2022-10-06 17:22:35 +0200 (Thu, 06 Oct 2022) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -726,7 +726,7 @@ it unless this changes. -->
           <term><option>--memory=<replaceable>размер</replaceable></option></term>
           <listitem><para>
               Задает количество оперативной памяти хоста, выделенной ВМ.
-              Размер в МБ. Смотрите <xref linkend="gui-createvm" />.
+              Размер в МБ. Смотрите <xref linkend="create-vm-wizard" />.
             </para></listitem>
         </varlistentry>
         <varlistentry>

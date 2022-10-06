@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-clonemedium" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-08-22 19:43:14 +0200 (Mon, 22 Aug 2022) $</pubdate>
+    <pubdate>$Date: 2022-10-06 17:22:35 +0200 (Thu, 06 Oct 2022) $</pubdate>
     <title>VBoxManage clonemedium</title>
   </refentryinfo>
 
@@ -85,7 +85,7 @@
     <para>
       You can use the Virtual Media Manager to transfer the cloned image
       to another host system or reimport it into &product-name;. See
-      <xref linkend="vdis" /> and <xref linkend="cloningvdis" />.
+      <xref linkend="virtual-media-manager" /> and <xref linkend="cloningvdis" />.
     </para>
     <variablelist>
       <varlistentry>
