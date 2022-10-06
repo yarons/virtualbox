@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 97029 2022-10-06 10:12:40Z michal.necasek@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3245,9 +3245,14 @@ static int lsilogicR3ProcessConfigurationRequest(PPDMDEVINS pDevIns, PLSILOGICSC
         }
         case MPT_CONFIGURATION_PAGE_TYPE_EXTENDED:
         {
-            rc = lsilogicR3ConfigurationPageGetExtended(pThisCC,
-                                                        pConfigurationReq,
-                                                        &pExtPageHeader, &pbPageData, &cbPage);
+            if (pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SAS)
+            {
+                rc = lsilogicR3ConfigurationPageGetExtended(pThisCC,
+                                                            pConfigurationReq,
+                                                            &pExtPageHeader, &pbPageData, &cbPage);
+            }
+            else
+                rc = VERR_NOT_FOUND;
             break;
         }
         default:
