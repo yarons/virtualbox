@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 97025 2022-10-06 09:31:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 97026 2022-10-06 09:33:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2187,6 +2187,7 @@ void UISoftKeyboardLayout::drawKeyImageInRect(const UISoftKeyboardKey &key, QPai
     painter.drawImage(QRect(0.5 * (keyGeometry.width() - size), 0.5 * (keyGeometry.height() - size),
                             size, size), key.image());
 }
+
 
 /*********************************************************************************************************************************
 *   UISoftKeyboardColorTheme implementation.                                                                                     *
