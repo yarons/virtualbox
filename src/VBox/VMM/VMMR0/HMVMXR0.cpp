@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 97004 2022-10-05 13:17:28Z knut.osmundsen@oracle.com $ */
+/* $Id: HMVMXR0.cpp 97022 2022-10-06 06:23:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6697,7 +6697,7 @@ static void hmR0VmxPostRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient, int
             Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3));
 
 #ifdef HMVMX_ALWAYS_SAVE_RO_GUEST_STATE
-            hmR0VmxReadAllRoFieldsVmcs(pVmxTransient);
+            vmxHCReadAllRoFieldsVmcs(pVCpu, pVmxTransient);
 #endif
 
             /*
