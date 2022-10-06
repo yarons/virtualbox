@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 97034 2022-10-06 15:44:10Z klaus.espenlaub@oracle.com $
 ## @file
 # Source code massager settings for the manual.
 #
@@ -26,7 +26,7 @@
 #
 
 
-/oracle-accessibility-en.xml:   --external-copyright --no-strip-trailing-blanks
-/oracle-support-en.xml:         --external-copyright --no-strip-trailing-blanks
-/oracle-diversity.xml:          --external-copyright --no-strip-trailing-blanks
+/oracle-accessibility-ohc-en.xml:   --external-copyright --no-strip-trailing-blanks
+/oracle-support-en.xml:             --external-copyright --no-strip-trailing-blanks
+/oracle-diversity.xml:              --external-copyright --no-strip-trailing-blanks
 
