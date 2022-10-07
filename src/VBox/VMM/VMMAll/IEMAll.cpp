@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 96821 2022-09-22 00:35:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97050 2022-10-07 15:54:26Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5170,8 +5170,8 @@ void iemSseStoreResult(PVMCPUCC pVCpu, PCIEMSSERESULT pResult, uint8_t iXmmReg) 
     pFpuCtx->MXCSR |= pResult->MXCSR & X86_MXCSR_XCPT_FLAGS;
 
     /* The result is only updated if there is no unmasked exception pending. */
-    if ((  ~((pFpuCtx->MXCSR & X86_MXCSR_XCPT_MASK) >> X86_MXCSR_XCPT_MASK_SHIFT) \
-         & (pFpuCtx->MXCSR & X86_MXCSR_XCPT_FLAGS)) != 0)
+    if ((  ~((pFpuCtx->MXCSR & X86_MXCSR_XCPT_MASK) >> X86_MXCSR_XCPT_MASK_SHIFT)
+         & (pFpuCtx->MXCSR & X86_MXCSR_XCPT_FLAGS)) == 0)
         pVCpu->cpum.GstCtx.XState.x87.aXMM[iXmmReg] = pResult->uResult;
 }
 
