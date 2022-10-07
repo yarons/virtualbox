@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 96981 2022-10-04 13:06:45Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 97043 2022-10-07 09:05:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3499,8 +3499,6 @@ typedef struct PGMCPU
     R0PTRTYPE(PX86PDPAE)            apGstPaePDsR0[4];
     /** The physical addresses of the guest page directories (PAE) pointed to by apGstPagePDsHC/GC. */
     RTGCPHYS                        aGCPhysGstPaePDs[4];
-    /** The physical addresses of the monitored guest page directories (PAE). */
-    RTGCPHYS                        aGCPhysGstPaePDsMonitored[4];
     /** Mask containing the MBZ PTE bits. */
     uint64_t                        fGstPaeMbzPteMask;
     /** Mask containing the MBZ PDE bits. */

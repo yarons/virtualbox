@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstVMStruct.h 97043 2022-10-07 09:05:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -656,7 +656,6 @@
     GEN_CHECK_OFF(PGMCPU, apGstPaePDsR0);
     GEN_CHECK_OFF(PGMCPU, apGstPaePDsRC);
     GEN_CHECK_OFF(PGMCPU, aGCPhysGstPaePDs);
-    GEN_CHECK_OFF(PGMCPU, aGCPhysGstPaePDsMonitored);
     GEN_CHECK_OFF(PGMCPU, pShwPageCR3R3);
     GEN_CHECK_OFF(PGMCPU, pShwPageCR3R0);
     GEN_CHECK_OFF(PGMCPU, pShwPageCR3RC);

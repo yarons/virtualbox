@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 96736 2022-09-14 11:57:13Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGM.cpp 97043 2022-10-07 09:05:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -850,7 +850,6 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
             pPGM->apGstPaePDsR3[i]             = NULL;
             pPGM->apGstPaePDsR0[i]             = NIL_RTR0PTR;
             pPGM->aGCPhysGstPaePDs[i]          = NIL_RTGCPHYS;
-            pPGM->aGCPhysGstPaePDsMonitored[i] = NIL_RTGCPHYS;
         }
 
         pPGM->fA20Enabled      = true;
