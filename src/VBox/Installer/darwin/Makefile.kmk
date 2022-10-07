@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97003 2022-10-05 13:15:13Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97046 2022-10-07 12:57:59Z alexander.eichner@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -601,6 +601,14 @@ ifdef VBOX_WITH_PYTHON
  VBOX_DI_VBAPP_PYTHON_FILES = \
  	$(VBOXINST_SDK_BINDINGS_XPCOM_PYTHON_FILES) \
  	$(VBOXINST_SDK_INSTALLER_PYTHON_FILES)
+endif
+ifdef VBOX_WITH_INTNET_SERVICE_IN_R3
+ VBOX_DI_VBAPP_PROGS += \
+ 	XPCServices/org.virtualbox.intnet.xpc/Contents/MacOS/VBoxIntNetSwitch
+ VBOX_DI_VBAPP_MISC_FILES += \
+ 	XPCServices/org.virtualbox.intnet.xpc/Contents/Info.plist
+ VBOX_DI_VBAPP_SYMLINKS += \
+ 	Resources/VirtualBoxVM.app/Contents/XPCServices=>../../../XPCServices
 endif
 
 VBOX_VIRTUALBOX_APP_ENTITLEMENTS := $(PATH_ROOT)/src/VBox/HostDrivers/Support/darwin/SUPR3HardenedEntitlements.plist
