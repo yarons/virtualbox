@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 97022 2022-10-06 06:23:13Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 97054 2022-10-07 23:09:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4165,7 +4165,7 @@ static void hmR0VmxReportWorldSwitchError(PVMCPUCC pVCpu, int rcVMRun, PVMXTRANS
             int rc = VMXReadVmcs32(VMX_VMCS32_RO_EXIT_REASON, &pVCpu->hm.s.vmx.LastError.u32ExitReason);
             rc    |= VMXReadVmcs32(VMX_VMCS32_RO_VM_INSTR_ERROR, &pVCpu->hm.s.vmx.LastError.u32InstrError);
             AssertRC(rc);
-            vmxHCReadExitQualVmcs(pVCpu, pVmxTransient);
+            vmxHCReadToTransientSlow<HMVMX_READ_EXIT_QUALIFICATION>(pVCpu, pVmxTransient);
 
             pVCpu->hm.s.vmx.LastError.idEnteredCpu = pVCpu->hmr0.s.idEnteredCpu;
             /* LastError.idCurrentCpu was already updated in hmR0VmxPreRunGuestCommitted().
