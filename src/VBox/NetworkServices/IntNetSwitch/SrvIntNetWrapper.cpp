@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: SrvIntNetWrapper.cpp 97058 2022-10-08 07:01:53Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -40,12 +40,8 @@
 
 #include <VBox/types.h>
 #include <VBox/intnet.h>
-#include <VBox/err.h>
 #include <iprt/asm.h>
-#include <iprt/mem.h>
 #include <iprt/mp.h>
-
-#include <sys/mman.h>
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *

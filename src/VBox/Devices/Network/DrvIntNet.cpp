@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 97048 2022-10-07 14:06:03Z alexander.eichner@oracle.com $ */
+/* $Id: DrvIntNet.cpp 97058 2022-10-08 07:01:53Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1937,7 +1937,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
         xpc_connection_set_event_handler(hXpcCon, ^(xpc_object_t hObj) {
             if (xpc_get_type(hObj) == XPC_TYPE_ERROR)
             {
-                /** @todo Error handling - reconnecting. */                
+                /** @todo Error handling - reconnecting. */
             }
             else
             {
