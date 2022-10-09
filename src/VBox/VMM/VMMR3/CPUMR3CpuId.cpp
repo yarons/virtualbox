@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 97065 2022-10-09 23:01:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2740,7 +2740,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
              * Whether to expose the EPT feature to the guest. The default is false. When
              * disabled will automatically prevent exposing features that rely on
              */
-            rc = CFGMR3QueryBoolDef(pCpumCfg, "NestedVmxEpt", &pVM->cpum.s.fNestedVmxEpt, false);
+            rc = CFGMR3QueryBoolDef(pCpumCfg, "NestedVmxEpt", &pVM->cpum.s.fNestedVmxEpt, true);
             AssertLogRelRCReturn(rc, rc);
 
             /** @cfgm{/CPUM/NestedVmxUnrestrictedGuest, bool, true}
@@ -2748,7 +2748,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
              * false. When disabled will automatically prevent exposing features that rely on
              * it.
              */
-            rc = CFGMR3QueryBoolDef(pCpumCfg, "NestedVmxUnrestrictedGuest", &pVM->cpum.s.fNestedVmxUnrestrictedGuest, false);
+            rc = CFGMR3QueryBoolDef(pCpumCfg, "NestedVmxUnrestrictedGuest", &pVM->cpum.s.fNestedVmxUnrestrictedGuest, true);
             AssertLogRelRCReturn(rc, rc);
 
             if (    pVM->cpum.s.fNestedVmxUnrestrictedGuest
