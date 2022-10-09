@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97060 2022-10-09 22:20:19Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97061 2022-10-09 22:21:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3274,7 +3274,7 @@ DECLINLINE(void) vmxHCImportGuestSegReg(PVMCPUCC pVCpu)
  *
  * @remarks Called with interrupts and/or preemption disabled.
  */
-static void vmxHCImportGuestLdtr(PVMCPUCC pVCpu)
+DECLINLINE(void) vmxHCImportGuestLdtr(PVMCPUCC pVCpu)
 {
     uint16_t u16Sel;
     uint64_t u64Base;
