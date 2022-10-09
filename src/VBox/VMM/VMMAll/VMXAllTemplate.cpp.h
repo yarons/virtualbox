@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97061 2022-10-09 22:21:23Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97062 2022-10-09 22:30:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3450,10 +3450,10 @@ static int vmxHCImportGuestState(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint64_
      *
      * Update: This is very likely a compiler optimization bug, see @bugref{9180}.
      */
-# ifdef RT_OS_WINDOWS
+#ifdef RT_OS_WINDOWS
     if (pVM == 0 || pVM == (void *)(uintptr_t)-1)
         return VERR_HM_IPE_1;
-# endif
+#endif
 
     STAM_PROFILE_ADV_START(&VCPU_2_VMXSTATS(pVCpu).StatImportGuestState, x);
 
