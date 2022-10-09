@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97062 2022-10-09 22:30:29Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97063 2022-10-09 22:32:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -8910,7 +8910,7 @@ HMVMX_EXIT_DECL vmxHCExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
     vmxHCReadToTransient<  HMVMX_READ_EXIT_QUALIFICATION
                          | HMVMX_READ_GUEST_PHYSICAL_ADDR>(pVCpu, pVmxTransient);
     vmxHCImportGuestRip(pVCpu);
-    vmxHCImportGuestSegReg<X86_SREG_CS>(pVCpu;
+    vmxHCImportGuestSegReg<X86_SREG_CS>(pVCpu);
 
     /*
      * Ask PGM for information about the given GCPhys.  We need to check if we're
