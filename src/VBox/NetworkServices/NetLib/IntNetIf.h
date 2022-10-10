@@ -1,4 +1,4 @@
-/* $Id: IntNetIf.h 97071 2022-10-10 16:30:56Z alexander.eichner@oracle.com $ */
+/* $Id: IntNetIf.h 97075 2022-10-10 16:37:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IntNetIf - Convenience class implementing an IntNet connection.
  */
@@ -52,7 +52,7 @@ typedef INTNETIFCTX *PINTNETIFCTX;
 
 
 DECLHIDDEN(int) IntNetR3IfCtxCreate(PINTNETIFCTX phIfCtx, const char *pszNetwork, INTNETTRUNKTYPE enmTrunkType,
-                                    const char *pszTrunk, size_t cbSend, size_t cbRecv, uint32_t fFlags);
+                                    const char *pszTrunk, uint32_t cbSend, uint32_t cbRecv, uint32_t fFlags);
 DECLHIDDEN(int) IntNetR3IfCtxDestroy(INTNETIFCTX hIfCtx);
 DECLHIDDEN(int) IntNetR3IfCtxQueryBufferPtr(INTNETIFCTX hIfCtx, PINTNETBUF *ppIfBuf);
 DECLHIDDEN(int) IntNetR3IfCtxSetActive(INTNETIFCTX hIfCtx, bool fActive);
