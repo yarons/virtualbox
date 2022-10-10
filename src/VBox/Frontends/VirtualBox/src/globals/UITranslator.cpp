@@ -1,4 +1,4 @@
-/* $Id: UITranslator.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITranslator.cpp 97068 2022-10-10 13:21:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class implementation.
  */
@@ -298,6 +298,42 @@ QString UITranslator::minutesToString(uint32_t cVal)
 QString UITranslator::secondsToString(uint32_t cVal)
 {
     return QApplication::translate("UITranslator", "%n second(s)", "", cVal);
+}
+
+/* static */
+QString UITranslator::yearsToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n year(s) ago", "", cVal);
+}
+
+/* static */
+QString UITranslator::monthsToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n month(s) ago", "", cVal);
+}
+
+/* static */
+QString UITranslator::daysToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n day(s) ago", "", cVal);
+}
+
+/* static */
+QString UITranslator::hoursToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n hour(s) ago", "", cVal);
+}
+
+/* static */
+QString UITranslator::minutesToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n minute(s) ago", "", cVal);
+}
+
+/* static */
+QString UITranslator::secondsToStringAgo(uint32_t cVal)
+{
+    return QApplication::translate("UITranslator", "%n second(s) ago", "", cVal);
 }
 
 /* static */

@@ -1,4 +1,4 @@
-/* $Id: UITranslator.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITranslator.h 97068 2022-10-10 13:21:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
@@ -76,6 +76,19 @@ public:
     static QString minutesToString(uint32_t cVal);
     /** Returns tr("%n second(s)"). */
     static QString secondsToString(uint32_t cVal);
+
+    /** Returns tr("%n year(s) ago"). */
+    static QString yearsToStringAgo(uint32_t cVal);
+    /** Returns tr("%n month(s) ago"). */
+    static QString monthsToStringAgo(uint32_t cVal);
+    /** Returns tr("%n day(s) ago"). */
+    static QString daysToStringAgo(uint32_t cVal);
+    /** Returns tr("%n hour(s) ago"). */
+    static QString hoursToStringAgo(uint32_t cVal);
+    /** Returns tr("%n minute(s) ago"). */
+    static QString minutesToStringAgo(uint32_t cVal);
+    /** Returns tr("%n second(s) ago"). */
+    static QString secondsToStringAgo(uint32_t cVal);
 
     /** Returns the decimal separator for the current locale. */
     static QString decimalSep();
