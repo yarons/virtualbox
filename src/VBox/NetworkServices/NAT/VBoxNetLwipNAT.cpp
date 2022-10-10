@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 97078 2022-10-10 19:32:33Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetLwipNAT.cpp 97079 2022-10-10 20:06:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1953,7 +1953,7 @@ VBoxNetLwipNAT::netifLinkoutput(netif *pNetif, pbuf *pPBuf) RT_NOTHROW_DEF
 
     size_t cbFrame = (size_t)pPBuf->tot_len - ETH_PAD_SIZE;
     INTNETFRAME Frame;
-    rc = IntNetR3IfQueryOutputFrame(self->m_hIf, cbFrame, &Frame);
+    rc = IntNetR3IfQueryOutputFrame(self->m_hIf, (uint32_t)cbFrame, &Frame);
     if (RT_FAILURE(rc))
         return ERR_MEM;
 

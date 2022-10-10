@@ -1,4 +1,4 @@
-/* $Id: main.cpp 97071 2022-10-10 16:30:56Z alexander.eichner@oracle.com $ */
+/* $Id: main.cpp 97079 2022-10-10 20:06:04Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -357,7 +357,9 @@ static uint32_t intnetR3SessionDestroy(PSUPDRVSESSION pSession)
 {
     PSUPDRVDEVEXT pDevExt = pSession->pDevExt;
     uint32_t cRefs = ASMAtomicDecU32(&pDevExt->cRefs);
+    xpc_connection_set_context(pSession->hXpcCon, NULL);
     xpc_connection_cancel(pSession->hXpcCon);
+    pSession->hXpcCon = NULL;
     xpc_transaction_end();
 
     /* Tear down the receive wait thread. */
