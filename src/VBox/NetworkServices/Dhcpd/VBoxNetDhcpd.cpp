@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 97071 2022-10-10 16:30:56Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetDhcpd.cpp 97074 2022-10-10 16:36:11Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -131,11 +131,6 @@ private:
     /*
      * Boilerplate code.
      */
-    int r3Init();
-    void r3Fini();
-
-    int vmmInit();
-
     int ifInit(const RTCString &strNetwork,
                const RTCString &strTrunk = RTCString(),
                INTNETTRUNKTYPE enmTrunkType = kIntNetTrunkType_WhateverNone);
