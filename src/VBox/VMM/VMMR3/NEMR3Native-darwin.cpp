@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 97069 2022-10-10 15:03:10Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 97073 2022-10-10 16:32:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2836,8 +2836,8 @@ static int nemR3DarwinStatisticsRegister(PVM pVM, VMCPUID idCpu, PNEMCPU pNemCpu
 
     NEM_REG_COUNTER(&pVmxStats->StatExitAll,      "/NEM/CPU%u/Exit/All", "Total exits (including nested-guest exits).");
 
-    NEM_REG_COUNTER(&pVmxState->StatImportGuestStateFallback, "/NEM/CPU%u/ImportGuestStateFallback", "Times vmxHCImportGuestState took the fallback code path.");
-    NEM_REG_COUNTER(&pVmxState->StatReadToTransientFallback,  "/NEM/CPU%u/ReadToTransientFallback",  "Times vmxHCReadToTransient took the fallback code path.");
+    NEM_REG_COUNTER(&pVmxStats->StatImportGuestStateFallback, "/NEM/CPU%u/ImportGuestStateFallback", "Times vmxHCImportGuestState took the fallback code path.");
+    NEM_REG_COUNTER(&pVmxStats->StatReadToTransientFallback,  "/NEM/CPU%u/ReadToTransientFallback",  "Times vmxHCReadToTransient took the fallback code path.");
 
 #ifdef VBOX_WITH_STATISTICS
     NEM_REG_PROFILE(&pNemCpu->StatProfGstStateImport, "/NEM/CPU%u/ImportGuestState", "Profiling of importing guest state from hardware after VM-exit.");
