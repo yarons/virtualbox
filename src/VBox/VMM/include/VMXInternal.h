@@ -1,4 +1,4 @@
-/* $Id: VMXInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VMXInternal.h 97069 2022-10-10 15:03:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMX - Internal header file for the VMX code template.
  */
@@ -183,6 +183,9 @@ typedef struct VMXSTATISTICS
     STAMPROFILEADV          StatPoke;
     STAMPROFILEADV          StatSpinPoke;
     STAMPROFILEADV          StatSpinPokeFailed;
+
+    STAMCOUNTER             StatImportGuestStateFallback;
+    STAMCOUNTER             StatReadToTransientFallback;
 
     STAMCOUNTER             StatInjectInterrupt;
     STAMCOUNTER             StatInjectXcpt;
