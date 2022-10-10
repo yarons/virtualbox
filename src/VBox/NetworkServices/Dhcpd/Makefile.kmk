@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97071 2022-10-10 16:30:56Z alexander.eichner@oracle.com $
 ## @file
 # Sub-makefile for the DHCP server.
 #
@@ -64,7 +64,10 @@ VBoxNetDHCP_DEFS      = KBUILD_TYPE="$(KBUILD_TYPE)"
 else
 VBoxNetDHCP_DEFS      = KBUILD_TYPE=\"$(KBUILD_TYPE)\"
 endif
-#VBoxNetDHCP_DEFS     = IPv6
+VBoxNetDHCP_DEFS       += \
+ 	$(if $(VBOX_WITH_INTNET_SERVICE_IN_R3),VBOX_WITH_INTNET_SERVICE_IN_R3,)
+
+#VBoxNetDHCP_DEFS     += IPv6
 #VBoxNetDHCP_DEFS.linux = WITH_VALGRIND
 ifneq ($(KBUILD_TARGET),win)
 VBoxNetDHCP_DEFS     += VBOX_WITH_XPCOM
@@ -74,6 +77,8 @@ VBoxNetDHCP_INCS     += $(VBOX_XPCOM_INCS)
 VBoxNetDHCP_CXXFLAGS += -std=$(if $(VBOX_GCC_VERSION_CXX),$(if $(VBOX_GCC_VERSION_CXX) < 40700,c++0x,c++11),c++0x)
  endif
 endif
+VBoxNetDHCP_INCS += \
+	../NetLib
 VBoxNetDHCP_SOURCES = \
 	ClientId.cpp \
 	Config.cpp \
@@ -84,6 +89,7 @@ VBoxNetDHCP_SOURCES = \
 	IPv4Pool.cpp \
 	Timestamp.cpp \
 	VBoxNetDhcpd.cpp \
+	../NetLib/IntNetIfCtx.cpp \
 	../../Main/glue/VBoxLogRelCreate.cpp \
 	../../Main/glue/GetVBoxUserHomeDirectory.cpp \
 	$(addprefix ../../Devices/Network/lwip-new/,$(LWIP_SOURCES))
