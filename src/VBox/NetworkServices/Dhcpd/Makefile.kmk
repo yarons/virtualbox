@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97071 2022-10-10 16:30:56Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 97078 2022-10-10 19:32:33Z alexander.eichner@oracle.com $
 ## @file
 # Sub-makefile for the DHCP server.
 #
@@ -89,7 +89,7 @@ VBoxNetDHCP_SOURCES = \
 	IPv4Pool.cpp \
 	Timestamp.cpp \
 	VBoxNetDhcpd.cpp \
-	../NetLib/IntNetIfCtx.cpp \
+	../NetLib/IntNetIf.cpp \
 	../../Main/glue/VBoxLogRelCreate.cpp \
 	../../Main/glue/GetVBoxUserHomeDirectory.cpp \
 	$(addprefix ../../Devices/Network/lwip-new/,$(LWIP_SOURCES))

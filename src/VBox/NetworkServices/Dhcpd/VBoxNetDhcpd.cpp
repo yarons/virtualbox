@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 97077 2022-10-10 18:37:12Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetDhcpd.cpp 97078 2022-10-10 19:32:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -175,7 +175,7 @@ VBoxNetDhcpd::~VBoxNetDhcpd()
 {
     if (m_hIf != NULL)
     {
-        int rc = IntNetR3IfCtxDestroy(m_hIf);
+        int rc = IntNetR3IfDestroy(m_hIf);
         AssertRC(rc);
         m_hIf = NULL;
     }
@@ -226,14 +226,14 @@ int VBoxNetDhcpd::ifInit(const RTCString &strNetwork,
     if (enmTrunkType == kIntNetTrunkType_Invalid)
         enmTrunkType = kIntNetTrunkType_WhateverNone;
 
-    int rc = IntNetR3IfCtxCreate(&m_hIf, strNetwork.c_str(), enmTrunkType,
-                                 strTrunk.c_str(), _128K /*cbSend*/, _256K /*cbRecv*/,
-                                 0 /*fFlags*/);
+    int rc = IntNetR3IfCreateEx(&m_hIf, strNetwork.c_str(), enmTrunkType,
+                                strTrunk.c_str(), _128K /*cbSend*/, _256K /*cbRecv*/,
+                                0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
-        rc = IntNetR3IfCtxQueryBufferPtr(m_hIf, &m_pIfBuf);
+        rc = IntNetR3IfQueryBufferPtr(m_hIf, &m_pIfBuf);
         if (RT_SUCCESS(rc))
-            rc = IntNetR3IfCtxSetActive(m_hIf, true /*fActive*/);
+            rc = IntNetR3IfSetActive(m_hIf, true /*fActive*/);
     }
 
     return rc;
