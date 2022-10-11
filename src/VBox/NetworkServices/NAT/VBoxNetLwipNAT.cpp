@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 97079 2022-10-10 20:06:04Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetLwipNAT.cpp 97087 2022-10-11 10:18:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -483,8 +483,8 @@ int VBoxNetLwipNAT::init()
 
     /* connect to the intnet */
     rc = IntNetR3IfCreate(&m_hIf, m_strNetworkName.c_str());
-    if (RT_FAILURE(rc))
-        return rc;
+    if (RT_SUCCESS(rc))
+        rc = IntNetR3IfSetActive(m_hIf, true /*fActive*/);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
