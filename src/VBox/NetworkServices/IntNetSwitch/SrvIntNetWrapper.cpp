@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetWrapper.cpp 97059 2022-10-08 07:05:11Z alexander.eichner@oracle.com $ */
+/* $Id: SrvIntNetWrapper.cpp 97084 2022-10-11 06:51:17Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -32,14 +32,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define IN_INTNET_TESTCASE
-#define IN_INTNET_R3
-
 #include "IntNetSwitchInternal.h"
 
-
-#include <VBox/types.h>
-#include <VBox/intnet.h>
 #include <iprt/asm.h>
 #include <iprt/mp.h>
 

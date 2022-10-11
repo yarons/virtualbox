@@ -1,4 +1,4 @@
-/* $Id: IntNetSwitchInternal.h 97058 2022-10-08 07:01:53Z alexander.eichner@oracle.com $ */
+/* $Id: IntNetSwitchInternal.h 97084 2022-10-11 06:51:17Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox internal network switch process - Internal header.
  */
@@ -35,6 +35,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define IN_INTNET_TESTCASE
+#define IN_INTNET_R3
+
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 
@@ -45,6 +48,7 @@
 typedef struct SUPDRVSESSION *MYPSUPDRVSESSION;
 #define PSUPDRVSESSION  MYPSUPDRVSESSION
 
+#include <VBox/intnet.h>
 #include <VBox/sup.h>
 
 
