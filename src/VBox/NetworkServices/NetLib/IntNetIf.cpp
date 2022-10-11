@@ -1,4 +1,4 @@
-/* $Id: IntNetIf.cpp 97078 2022-10-10 19:32:33Z alexander.eichner@oracle.com $ */
+/* $Id: IntNetIf.cpp 97089 2022-10-11 11:46:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IntNetIfCtx - Abstract API implementing an IntNet connection using the R0 support driver or some R3 IPC variant.
  */
@@ -270,7 +270,7 @@ DECLHIDDEN(int) IntNetR3IfCreateEx(PINTNETIFCTX phIfCtx, const char *pszNetwork,
                     }
                 });
 
-                xpc_connection_activate(hXpcCon);
+                xpc_connection_resume(hXpcCon);
                 pThis->hXpcCon      = hXpcCon;
 # endif
                 pThis->fIntNetR3Svc = true;

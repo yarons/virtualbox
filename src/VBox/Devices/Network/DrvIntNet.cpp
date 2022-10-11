@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 97072 2022-10-10 16:31:26Z alexander.eichner@oracle.com $ */
+/* $Id: DrvIntNet.cpp 97089 2022-10-11 11:46:46Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1946,7 +1946,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
             }
         });
 
-        xpc_connection_activate(hXpcCon);
+        xpc_connection_resume(hXpcCon);
         pThis->hXpcCon      = hXpcCon;
         pThis->fIntNetR3Svc = true;
 #else

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 97084 2022-10-11 06:51:17Z alexander.eichner@oracle.com $ */
+/* $Id: main.cpp 97089 2022-10-11 11:46:46Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -653,7 +653,7 @@ DECLCALLBACK(void) xpcConnHandler(xpc_connection_t hXpcCon)
             if (RT_SUCCESS(rc))
             {
                 xpc_connection_set_context(hXpcCon, pSession);
-                xpc_connection_activate(hXpcCon);
+                xpc_connection_resume(hXpcCon);
                 xpc_transaction_begin();
                 ASMAtomicIncU32(&g_DevExt.cRefs);
                 return;
