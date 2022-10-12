@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 97097 2022-10-11 21:09:13Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 97098 2022-10-12 03:59:23Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1324,14 +1324,6 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
 
     Assert(!fIsNstGstHwExecAllowed || pHostVmxMsrs);
     Assert(pGuestFeatures->fVmx);
-
-    /*
-     * We don't support the following MSRs yet:
-     *   - True Pin-based VM-execution controls.
-     *   - True Processor-based VM-execution controls.
-     *   - True VM-entry VM-execution controls.
-     *   - True VM-exit VM-execution controls.
-     */
 
     /* Basic information. */
     uint8_t const fTrueVmxMsrs = 1;
