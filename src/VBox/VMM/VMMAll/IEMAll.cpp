@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97117 2022-10-12 15:08:10Z michal.necasek@oracle.com $ */
+/* $Id: IEMAll.cpp 97118 2022-10-12 15:09:57Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4170,15 +4170,7 @@ DECL_NO_RETURN(void) iemRaisePageFaultJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrWhere, ui
 /** \#MF(0) - 10.  */
 VBOXSTRICTRC iemRaiseMathFault(PVMCPUCC pVCpu)
 {
-    if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_NE)
-        return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_MF, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
-    else
-    {
-        /* Convert a #MF into a FERR -> IRQ 13. See @bugref{6117}. */
-        PDMIsaSetIrq(pVCpu->CTX_SUFF(pVM), 13 /* u8Irq */, 1 /* u8Level */, 0 /* uTagSrc */);
-        iemRegUpdateRipAndClearRF(pVCpu);
-        return VINF_SUCCESS;
-    }
+    return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_MF, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
 }
 
 
