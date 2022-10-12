@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 97113 2022-10-12 13:55:52Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -3327,6 +3327,10 @@ HRESULT ExtPackManager::i_doUninstall(Utf8Str const *a_pstrName, bool a_fForcedR
 
                 }
             }
+        }
+        else if (SUCCEEDED(hrc) && !pExtPack)
+        {
+            hrc = setError(E_FAIL, tr("Extension pack '%s' is not installed.\n"), a_pstrName->c_str());
         }
 
         /*
