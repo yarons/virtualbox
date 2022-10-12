@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: partial-db-dump.py 97120 2022-10-12 16:35:25Z andreas.loeffler@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97120 $"
 
 # Standard python imports
 import sys;
@@ -279,6 +279,7 @@ COPY (SELECT * FROM TestBoxStrTab WHERE idStr IN (
             'TestGroups',
             'TestGroupMembers',
             'SchedGroups',
+            'TestBoxStrTab',
             'TestBoxes',
             'SchedGroupMembers',
             'TestBoxesInSchedGroups',
