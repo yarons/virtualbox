@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97090 2022-10-11 12:20:36Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 97124 2022-10-12 22:52:23Z klaus.espenlaub@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -430,6 +430,7 @@ VBOX_DI_VBAPP_DYLIBS = \
 	MacOS/VBoxDD2.dylib \
 	MacOS/VBoxDDU.dylib \
 	MacOS/VBoxRT.dylib \
+	$(if $(VBOX_WITH_LIBSSH),MacOS/VBoxLibSsh.dylib,) \
 	$(if $(VBOX_WITH_SHARED_FOLDERS),MacOS/VBoxSharedFolders.dylib,) \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD),MacOS/VBoxSharedClipboard.dylib,) \
 	$(if $(VBOX_WITH_DRAG_AND_DROP),MacOS/VBoxDragAndDropSvc.dylib,) \
