@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testset.py 97110 2022-10-12 13:07:42Z andreas.loeffler@oracle.com $
 
 """
 Test Manager - TestSet.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97110 $"
 
 
 # Standard python imports.
@@ -720,7 +720,7 @@ class TestSetLogic(ModelLogicBase):
             aoRet.append(TestSetData().initFromDbRow(aoRow));
         return aoRet;
 
-    def isTestBoxExecutingToRapidly(self, idTestBox): ## s/To/Too/
+    def isTestBoxExecutingTooRapidly(self, idTestBox): ## s/To/Too/
         """
         Checks whether the specified test box is executing tests too rapidly.
 
@@ -842,4 +842,3 @@ class TestSetDataTestCase(ModelDataBaseTestCase):
 if __name__ == '__main__':
     unittest.main();
     # not reached.
-

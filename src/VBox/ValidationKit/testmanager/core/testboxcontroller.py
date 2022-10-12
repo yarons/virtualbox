@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 96555 2022-08-30 08:08:17Z andreas.loeffler@oracle.com $
+# $Id: testboxcontroller.py 97110 2022-10-12 13:07:42Z andreas.loeffler@oracle.com $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96555 $"
+__version__ = "$Revision: 97110 $"
 
 
 # Standard python imports.
@@ -577,7 +577,7 @@ class TestBoxController(object): # pylint: disable=too-few-public-methods
         #
         if    fIdle \
           and oTestBoxData.fEnabled \
-          and not TestSetLogic(oDb).isTestBoxExecutingToRapidly(oTestBoxData.idTestBox) \
+          and not TestSetLogic(oDb).isTestBoxExecutingTooRapidly(oTestBoxData.idTestBox) \
           and oStatusData.enmState == TestBoxStatusData.ksTestBoxState_Idle: # (paranoia)
             dResponse = SchedulerBase.scheduleNewTask(oDb, oTestBoxData, oStatusData.iWorkItem, self._oSrvGlue.getBaseUrl());
             if dResponse is not None:
