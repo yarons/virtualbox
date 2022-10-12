@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 97099 2022-10-12 03:59:43Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 97101 2022-10-12 06:01:01Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1758,7 +1758,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     if (    pVM->cpum.s.fNestedVmxUnrestrictedGuest
         && !pVM->cpum.s.fNestedVmxEpt)
     {
-        LogRel(("CPUM: WARNING! Can't expose \"Unrestricted Guest\" to the guest when EPT is not exposed!\n"));
+        LogRel(("CPUM: Warning! Can't expose \"Unrestricted Guest\" to the guest when EPT is not exposed!\n"));
         pVM->cpum.s.fNestedVmxUnrestrictedGuest = false;
     }
 
