@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 97102 2022-10-12 07:32:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -194,14 +194,6 @@ private:
         bool  m_fChooseEdition;
         /** Holds whether we should propose to choose a type. */
         bool  m_fChooseType;
-    /** @} */
-
-    /** @name Options
-     * @{ */
-        /** Holds whether host supports hardware virtualization. */
-        bool  m_fSupportsHWVirtEx;
-        /** Holds whether host supports long mode. */
-        bool  m_fSupportsLongMode;
     /** @} */
 
     /** @name Values
