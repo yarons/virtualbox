@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 97069 2022-10-10 15:03:10Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 97100 2022-10-12 05:40:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1108,6 +1108,20 @@ static void hmR3DisableRawMode(PVM pVM)
 static int hmR3InitFinalizeR0(PVM pVM)
 {
     int rc;
+
+    /*
+     * Since HM is in charge of large pages, if large pages isn't supported on Intel CPUs,
+     * we must disable it here. Doing it here rather than in hmR3InitFinalizeR0Intel covers
+     * the case of informing PGM even when NEM is the execution engine.
+     */
+    if (   pVM->hm.s.fLargePages
+        && pVM->hm.s.vmx.fSupported
+        && !(pVM->hm.s.ForR3.vmx.Msrs.u64EptVpidCaps & MSR_IA32_VMX_EPT_VPID_CAP_PDE_2M))
+    {
+        pVM->hm.s.fLargePages = false;
+        PGMSetLargePageUsage(pVM, false);
+        LogRel(("HM: Disabled large page support as the CPU doesn't allow EPT PDEs to map 2MB pages\n"));
+    }
 
     if (!HMIsEnabled(pVM))
         return VINF_SUCCESS;
