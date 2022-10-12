@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f3a.cpp.h 96652 2022-09-08 08:49:40Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f3a.cpp.h 97123 2022-10-12 19:35:53Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -463,6 +463,7 @@ FNIEMOP_DEF(iemOp_pcmpistri_Vdq_Wdq_Ib)
                                                              iemAImpl_pcmpistri_u128,
                                                              iemAImpl_pcmpistri_u128_fallback),
                                  pu32Ecx, pEFlags, pSrc, bImmArg);
+        /** @todo testcase: High dword of RCX cleared? */
         IEM_MC_ADVANCE_RIP();
         IEM_MC_END();
     }
@@ -493,6 +494,7 @@ FNIEMOP_DEF(iemOp_pcmpistri_Vdq_Wdq_Ib)
                                                              iemAImpl_pcmpistri_u128,
                                                              iemAImpl_pcmpistri_u128_fallback),
                                  pu32Ecx, pEFlags, pSrc, bImmArg);
+        /** @todo testcase: High dword of RCX cleared? */
         IEM_MC_ADVANCE_RIP();
         IEM_MC_END();
     }
