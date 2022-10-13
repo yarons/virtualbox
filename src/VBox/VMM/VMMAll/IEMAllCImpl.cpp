@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 96948 2022-09-30 06:58:20Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97126 2022-10-13 09:02:59Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -9129,7 +9129,7 @@ IEM_CIMPL_DEF_2(iemCImpl_ldmxcsr, uint8_t, iEffSeg, RTGCPTR, GCPtrEff)
                     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
                     return VINF_SUCCESS;
                 }
-                Log(("lddmxcsr: New MXCSR=%#RX32 & ~MASK=%#RX32 = %#RX32 -> #GP(0)\n",
+                Log(("ldmxcsr: New MXCSR=%#RX32 & ~MASK=%#RX32 = %#RX32 -> #GP(0)\n",
                      fNewMxCsr, fMxCsrMask, fNewMxCsr & ~fMxCsrMask));
                 return iemRaiseGeneralProtectionFault0(pVCpu);
             }
