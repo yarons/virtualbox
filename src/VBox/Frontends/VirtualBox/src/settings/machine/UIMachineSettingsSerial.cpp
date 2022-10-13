@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 97128 2022-10-13 13:05:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -280,6 +280,9 @@ void UIMachineSettingsSerial::putPortDataToCache(UISettingsCacheMachineSerialPor
 {
     /* Prepare new data: */
     UIDataSettingsMachineSerialPort newPortData;
+
+    /* Save port number: */
+    newPortData.m_iSlot = m_iSlot;
 
     /* Save port data: */
     if (m_pCheckBoxPort)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 97128 2022-10-13 13:05:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -80,7 +80,6 @@ struct UIDataSettingsMachineGeneral
                && (m_strName == other.m_strName)
                && (m_strGuestOsTypeId == other.m_strGuestOsTypeId)
                && (m_strSnapshotsFolder == other.m_strSnapshotsFolder)
-               && (m_strSnapshotsHomeDir == other.m_strSnapshotsHomeDir)
                && (m_clipboardMode == other.m_clipboardMode)
                && (m_dndMode == other.m_dndMode)
                && (m_strDescription == other.m_strDescription)
