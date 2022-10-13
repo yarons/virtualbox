@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 97135 2022-10-13 14:29:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -525,6 +525,18 @@ void UISettingsDialog::revalidate()
 
     /* Lock/unlock settings-page OK button according global validity status: */
     m_pButtonBox->button(QDialogButtonBox::Ok)->setEnabled(m_fValid);
+}
+
+bool UISettingsDialog::isSettingsChanged()
+{
+    bool fIsSettingsChanged = false;
+    foreach (UISettingsPage *pPage, m_pSelector->settingPages())
+    {
+        pPage->putToCache();
+        if (!fIsSettingsChanged && pPage->changed())
+            fIsSettingsChanged = true;
+    }
+    return fIsSettingsChanged;
 }
 
 void UISettingsDialog::sltHandleValidityChange(UIPageValidator *pValidator)

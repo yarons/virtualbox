@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISettingsDialog.h 97135 2022-10-13 14:29:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -152,6 +152,9 @@ protected:
     void revalidate(UIPageValidator *pValidator);
     /** Validates data correctness. */
     void revalidate();
+
+    /** Returns whether settings were changed. */
+    bool isSettingsChanged();
 
     /** Holds the page selector instance. */
     UISettingsSelector *m_pSelector;

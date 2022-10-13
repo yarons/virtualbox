@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 97135 2022-10-13 14:29:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -872,18 +872,6 @@ bool UISettingsDialogMachine::isPageAvailable(int iPageId) const
             break;
     }
     return true;
-}
-
-bool UISettingsDialogMachine::isSettingsChanged()
-{
-    bool fIsSettingsChanged = false;
-    foreach (UISettingsPage *pPage, m_pSelector->settingPages())
-    {
-        pPage->putToCache();
-        if (!fIsSettingsChanged && pPage->changed())
-            fIsSettingsChanged = true;
-    }
-    return fIsSettingsChanged;
 }
 
 void UISettingsDialogMachine::updateConfigurationAccessLevel()
