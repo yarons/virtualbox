@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97142 2022-10-13 17:12:46Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -345,6 +345,7 @@ SOLARIS_STRIP_BINS = \
 	VBoxRT.so \
 	VBoxDDU.so \
 	VBoxVMM.so \
+	$(if $(VBOX_WITH_LIBSSH),VBoxLibSsh.so,) \
 	VBoxXPCOM.so \
 	VBoxXPCOMC.so \
 	$(if $(VBOX_WITH_SHARED_FOLDERS),VBoxSharedFolders.so,) \
