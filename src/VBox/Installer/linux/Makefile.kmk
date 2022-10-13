@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97134 2022-10-13 14:24:51Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97136 2022-10-13 14:52:05Z vadim.galitsyn@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -160,7 +160,7 @@ VBOX_LNX_STRIP_BIN = \
 	VBoxDDU.so \
 	VBoxVMM.so \
 	VBoxRT.so \
-	$(if $(VBOX_WITH_LIBSSH),VBoxLibSsh.so,) \ \
+	$(if $(VBOX_WITH_LIBSSH),VBoxLibSsh.so,) \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL $(if $(VBOX_WITH_HARDENING),VBoxSDL.so),) \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD), VBoxSharedClipboard.so,) \
 	$(if $(VBOX_WITH_SHARED_FOLDERS), VBoxSharedFolders.so,) \
