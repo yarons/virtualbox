@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: quota.py 97129 2022-10-13 13:12:12Z andreas.loeffler@oracle.com $
+# $Id: quota.py 97131 2022-10-13 14:14:15Z andreas.loeffler@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97129 $"
+__version__ = "$Revision: 97131 $"
 
 # Standard python imports
 import sys
@@ -57,7 +57,7 @@ sys.path.append(g_ksTestManagerDir)
 # Test Manager imports
 from testmanager                import config;
 from testmanager.core.db        import TMDatabaseConnection;
-from testmanager.core.testset   import TestSetData, TestSetLogic;
+from testmanager.core.testset   import TestSetLogic;
 
 
 class ArchiveDelFilesBatchJob(object): # pylint: disable=too-few-public-methods
