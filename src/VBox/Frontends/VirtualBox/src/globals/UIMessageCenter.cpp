@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 96967 2022-10-03 13:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 97141 2022-10-13 16:38:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -779,7 +779,17 @@ void UIMessageCenter::warnAboutStateChange(QWidget *pParent /* = 0*/) const
     setWarningShown("warnAboutStateChange", false);
 }
 
-bool UIMessageCenter::confirmSettingsReloading(QWidget *pParent /* = 0*/) const
+bool UIMessageCenter::confirmSettingsDiscarding(QWidget *pParent /* = 0 */) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>The machine settings were changed.</p>"
+                             "<p>Would you like to discard the changed settings or to keep editing them?</p>"),
+                          0 /* auto-confirm id */,
+                          tr("Discard changes"), tr("Keep editing"));
+
+}
+
+bool UIMessageCenter::confirmSettingsReloading(QWidget *pParent /* = 0 */) const
 {
     return questionBinary(pParent, MessageType_Question,
                           tr("<p>The machine settings were changed while you were editing them. "

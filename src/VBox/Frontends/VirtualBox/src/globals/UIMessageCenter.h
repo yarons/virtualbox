@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 96967 2022-10-03 13:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.h 97141 2022-10-13 16:38:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -306,6 +306,7 @@ public:
         void cannotSaveSettings(const QString strDetails, QWidget *pParent = 0) const;
         void warnAboutUnaccessibleUSB(const COMBaseWithEI &object, QWidget *pParent = 0) const;
         void warnAboutStateChange(QWidget *pParent = 0) const;
+        bool confirmSettingsDiscarding(QWidget *pParent = 0) const;
         bool confirmSettingsReloading(QWidget *pParent = 0) const;
         int confirmRemovingOfLastDVDDevice(QWidget *pParent = 0) const;
         bool confirmStorageBusChangeWithOpticalRemoval(QWidget *pParent = 0) const;

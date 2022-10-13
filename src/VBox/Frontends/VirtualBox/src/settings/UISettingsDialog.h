@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 97135 2022-10-13 14:29:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 97141 2022-10-13 16:38:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -102,6 +102,8 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE;
     /** Handles first show @a pEvent. */
     virtual void polishEvent(QShowEvent *pEvent) RT_OVERRIDE;
+    /** Handles close @a pEvent. */
+    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
 
     /** Returns the serialize process instance. */
     UISettingsSerializer *serializeProcess() const { return m_pSerializeProcess; }
