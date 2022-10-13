@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIMainDialog.cpp 97132 2022-10-13 14:17:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -281,7 +281,8 @@ void QIMainDialog::keyPressEvent(QKeyEvent *pEvent)
         {
             if (pEvent->modifiers() == Qt::NoModifier && m_fRejectByEscape)
             {
-                reject();
+                setResult(QDialog::Rejected);
+                close();
                 return;
             }
             break;
@@ -292,7 +293,8 @@ void QIMainDialog::keyPressEvent(QKeyEvent *pEvent)
         {
             if (pEvent->modifiers() == Qt::ControlModifier)
             {
-                reject();
+                setResult(QDialog::Rejected);
+                close();
                 return;
             }
             break;
