@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 97144 2022-10-13 21:36:00Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1683,15 +1683,15 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                             }
                             if (details == VMINFO_MACHINEREADABLE)
                                 /** @todo r=bird: This probably isn't good enough wrt escaping. */
-                                strNatForwardings.printf("%sForwarding(%d)=\"%s,%s,%s,%s,%s,%s\"\n",
-                                                         strNatForwardings.c_str(), i, strName.c_str(), strProto.c_str(),
-                                                         strHostIP.c_str(), strHostPort.c_str(),
-                                                         strGuestIP.c_str(), strGuestPort.c_str());
+                                strNatForwardings.appendPrintf("Forwarding(%d)=\"%s,%s,%s,%s,%s,%s\"\n",
+                                                               i, strName.c_str(), strProto.c_str(),
+                                                               strHostIP.c_str(), strHostPort.c_str(),
+                                                               strGuestIP.c_str(), strGuestPort.c_str());
                             else
-                                strNatForwardings.printf(Info::tr("%sNIC %d Rule(%d):   name = %s, protocol = %s, host ip = %s, host port = %s, guest ip = %s, guest port = %s\n"),
-                                                         strNatForwardings.c_str(), currentNIC + 1, i, strName.c_str(),
-                                                         strProto.c_str(), strHostIP.c_str(), strHostPort.c_str(),
-                                                         strGuestIP.c_str(), strGuestPort.c_str());
+                                strNatForwardings.appendPrintf(Info::tr("NIC %d Rule(%d):   name = %s, protocol = %s, host ip = %s, host port = %s, guest ip = %s, guest port = %s\n"),
+                                                               currentNIC + 1, i, strName.c_str(),
+                                                               strProto.c_str(), strHostIP.c_str(), strHostPort.c_str(),
+                                                               strGuestIP.c_str(), strGuestPort.c_str());
                         }
                         ULONG mtu = 0;
                         ULONG sockSnd = 0;
