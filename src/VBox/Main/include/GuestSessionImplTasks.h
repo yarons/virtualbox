@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 97140 2022-10-13 15:45:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -130,7 +130,7 @@ public:
     int AddDirFromGuest(const Utf8Str &strPath, const Utf8Str &strSubDir = "");
 
     int AddEntryFromHost(const Utf8Str &strFile, PCRTFSOBJINFO pcObjInfo);
-    int AddDirFromHost(const Utf8Str &strPath, const Utf8Str &strSubDir = "");
+    int AddDirFromHost(const Utf8Str &strPath, const Utf8Str &strSubDir, char *pszPathReal, size_t cbPathReal);
 
 public:
 
