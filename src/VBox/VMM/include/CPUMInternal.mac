@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: CPUMInternal.mac 97150 2022-10-14 07:12:10Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -266,7 +266,6 @@ struc CPUMCPU
     .Guest.hwvirt.vmx.aExitMsrLoadArea      resb        0x2000
     .Guest.hwvirt.vmx.abMsrBitmap           resb        0x1000
     .Guest.hwvirt.vmx.abIoBitmap            resb        0x1000+0x1000
-    .Guest.hwvirt.vmx.abVirtApicPage        resb        0x1000
     alignb 8
     .Guest.hwvirt.vmx.GCPhysVmxon           resq        1
     .Guest.hwvirt.vmx.GCPhysVmcs            resq        1
