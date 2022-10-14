@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 97042 2022-10-07 08:48:58Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 97157 2022-10-14 12:13:50Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -9999,6 +9999,11 @@ DECLCALLBACK(VBOXSTRICTRC) iemVmxApicAccessPagePfHandler(PVMCC pVM, PVMCPUCC pVC
         return VINF_EM_RAW_EMULATE_INSTR;
     }
 
+    /** @todo This isn't ideal but works for now as nested-hypervisors generally play
+     *        nice because the spec states that this page should be modified only when
+     *        no CPU refers to it VMX non-root mode. Nonetheless, we could use an atomic
+     *        reference counter to ensure the aforementioned condition before
+     *        de-registering the page.  */
     LogFunc(("Accessed outside VMX non-root mode, deregistering page handler for %#RGp\n", GCPhysPage));
     int const rc = PGMHandlerPhysicalDeregister(pVM, GCPhysPage);
     if (RT_FAILURE(rc))
