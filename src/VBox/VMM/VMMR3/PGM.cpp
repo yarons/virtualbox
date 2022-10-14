@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 97043 2022-10-07 09:05:50Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGM.cpp 97145 2022-10-14 06:05:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1725,10 +1725,11 @@ VMMR3DECL(int) PGMR3InitFinalize(PVM pVM)
                && !pVM->cpum.ro.GuestFeatures.fVmxEptXcptVe
                && !(fEptVpidCap & MSR_IA32_VMX_EPT_VPID_CAP_ACCESS_DIRTY));
         /* We need to shadow reserved bits as guest EPT tables can set them to trigger EPT misconfigs.  */
-        pVCpu->pgm.s.fGstEptShadowedPteMask   = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT;
-        pVCpu->pgm.s.fGstEptShadowedPdeMask   = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT | EPT_E_LEAF;
-        pVCpu->pgm.s.fGstEptShadowedPdpteMask = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT | EPT_E_LEAF;
-        pVCpu->pgm.s.fGstEptShadowedPml4eMask = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_PML4E_MBZ_MASK;
+        pVCpu->pgm.s.fGstEptShadowedPteMask    = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT;
+        pVCpu->pgm.s.fGstEptShadowedPdeMask    = GCPhysRsvdAddrMask | EPT_PRESENT_MASK;
+        pVCpu->pgm.s.fGstEptShadowedBigPdeMask = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT | EPT_E_LEAF;
+        pVCpu->pgm.s.fGstEptShadowedPdpteMask  = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_E_MEMTYPE_MASK | EPT_E_IGNORE_PAT | EPT_E_LEAF;
+        pVCpu->pgm.s.fGstEptShadowedPml4eMask  = GCPhysRsvdAddrMask | EPT_PRESENT_MASK | EPT_PML4E_MBZ_MASK;
         /* If mode-based execute control for EPT is enabled, we would need to include bit 10 in the present mask. */
         pVCpu->pgm.s.fGstEptPresentMask       = EPT_PRESENT_MASK;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 97145 2022-10-14 06:05:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1156,6 +1156,7 @@ int pgmPhysRecheckLargePage(PVMCC pVM, RTGCPHYS GCPhys, PPGMPAGE pLargePage)
 
     Assert(!VM_IS_NEM_ENABLED(pVM)); /** @todo NEM: Large page support. */
 
+    AssertCompile(X86_PDE2M_PAE_PG_MASK == EPT_PDE2M_PG_MASK);  /* Paranoia: Caller uses this for guest EPT tables as well. */
     GCPhys &= X86_PDE2M_PAE_PG_MASK;
 
     /* Check the base page. */
