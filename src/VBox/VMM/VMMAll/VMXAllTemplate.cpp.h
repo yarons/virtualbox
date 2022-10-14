@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97094 2022-10-11 20:46:24Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97159 2022-10-14 13:46:08Z alexander.eichner@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -9437,7 +9437,10 @@ HMVMX_EXIT_DECL vmxHCExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
      * Ask PGM for information about the given GCPhys.  We need to check if we're
      * out of sync first.
      */
-    NEMHCDARWINHMACPCCSTATE State = { RT_BOOL(pVmxTransient->uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_WRITE), false, false };
+    NEMHCDARWINHMACPCCSTATE State = { RT_BOOL(pVmxTransient->uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_WRITE),
+                                      RT_BOOL(pVmxTransient->uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_INSTR_FETCH),
+                                      false,
+                                      false };
     PGMPHYSNEMPAGEINFO      Info;
     int rc = PGMPhysNemPageInfoChecker(pVM, pVCpu, pVmxTransient->uGuestPhysicalAddr, State.fWriteAccess, &Info,
                                        nemR3DarwinHandleMemoryAccessPageCheckerCallback, &State);
