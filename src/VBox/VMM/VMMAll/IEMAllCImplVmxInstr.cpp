@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 97180 2022-10-17 21:14:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1470,7 +1470,7 @@ static void iemVmxVmexitSaveGuestNonRegState(PVMCPUCC pVCpu, uint32_t uExitReaso
     }
 
     /* Blocking-by-STI. */
-    if (!(pVCpu->cpum.GstCtx.fInhibit & CPUMCTX_INHIBIT_SHADOW))
+    if (!CPUMIsInInterruptShadowWithUpdate(&pVCpu->cpum.GstCtx))
     { /* probable */}
     else
     {
