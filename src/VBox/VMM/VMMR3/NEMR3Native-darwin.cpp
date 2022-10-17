@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 97159 2022-10-14 13:46:08Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 97169 2022-10-17 16:02:48Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -605,6 +605,12 @@ DECLINLINE(int) nemR3DarwinMap(PVM pVM, RTGCPHYS GCPhys, const void *pvRam, size
          * writes to the same page frequently and executes code there.
          */
         Assert(!g_fAppleHvNoWX); /* We should come here only once. */
+
+        /*
+         * Try unmapping the region first (the code on Catalina doesn't remove it form the map if vm_map_protect() fails and
+         * causes the following hv_vm_map call to fail...).
+         */
+        hv_vm_unmap(GCPhys, cb);
 
          /* Start with an RW mapping (most of the time the guest needs to write something there before it can execute code). */
         fHvMemProt &= ~HV_MEMORY_EXEC;
