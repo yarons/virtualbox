@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: seamless-x11.cpp 97170 2022-10-17 16:43:30Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -562,7 +562,8 @@ bool SeamlessX11::interruptEventWait(void)
     }
 
     /* Message contents set to zero. */
-    XClientMessageEvent clientMessage = { ClientMessage, 0, 0, 0, 0, 0, 8 };
+    XClientMessageEvent clientMessage =
+        { ClientMessage, 0, 0, 0, 0, XInternAtom(pDisplay, "VBOX_CLIENT_SEAMLESS_HEARTBEAT", false), 8 };
 
     if (XSendEvent(pDisplay, DefaultRootWindow(mDisplay), false,
                    PropertyChangeMask, (XEvent *)&clientMessage))
