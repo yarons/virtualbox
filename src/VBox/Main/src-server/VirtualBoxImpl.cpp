@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 97168 2022-10-17 15:16:15Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -6172,10 +6172,16 @@ HRESULT VirtualBox::i_retainCryptoIf(PCVBOXCRYPTOIF *ppCryptoIf)
         Utf8Str strExtPack;
         hrc = m->pSystemProperties->getDefaultCryptoExtPack(strExtPack);
         if (FAILED(hrc))
+        {
+            RTCritSectLeave(&m->CritSectModCrypto);
             return hrc;
+        }
         if (strExtPack.isEmpty())
+        {
+            RTCritSectLeave(&m->CritSectModCrypto);
             return setError(VBOX_E_OBJECT_NOT_FOUND,
                             tr("Ńo extension pack providing a cryptographic support module could be found"));
+        }
 
         Utf8Str strCryptoLibrary;
         int vrc = m->ptrExtPackManager->i_getCryptoLibraryPathForExtPack(&strExtPack, &strCryptoLibrary);
