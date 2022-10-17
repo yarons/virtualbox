@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 96828 2022-09-22 13:25:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 97163 2022-10-17 12:55:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -479,7 +479,7 @@ void UIVMLogViewerWidget::sltSave()
         if (QFile::exists(strNewFileName))
             QFile::remove(strNewFileName);
         /* Copy log into the file: */
-        QFile::copy(comMachine.QueryLogFilename(m_pTabWidget->currentIndex()), strNewFileName);
+        QFile::copy(fileName, strNewFileName);
     }
 }
 
