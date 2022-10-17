@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: TRPM.cpp 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -367,7 +367,7 @@ static DECLCALLBACK(int) trpmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion,
 VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent, bool *pfInjected)
 {
     PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
-    Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS));
+    Assert(!CPUMIsInInterruptShadow(pCtx));
     Assert(pfInjected);
     *pfInjected = false;
 

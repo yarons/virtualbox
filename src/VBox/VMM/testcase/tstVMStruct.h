@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 97043 2022-10-07 09:05:50Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: tstVMStruct.h 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -160,7 +160,7 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.Msrs);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.enmHwvirt);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fGif);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.fLocalForcedActions);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.fSavedInhibit);
     /** @todo NSTVMX: add rest of hwvirt fields when code is more
      *        finalized. */
     GEN_CHECK_OFF(CPUMCTX, XState);

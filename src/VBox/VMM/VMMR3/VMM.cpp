@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 96925 2022-09-28 20:39:43Z knut.osmundsen@oracle.com $ */
+/* $Id: VMM.cpp 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2552,17 +2552,12 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3);
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3_NON_GLOBAL);
         PRINT_FLAG(VMCPU_FF_,TLB_FLUSH);
-        PRINT_FLAG(VMCPU_FF_,INHIBIT_INTERRUPTS);
-        PRINT_FLAG(VMCPU_FF_,BLOCK_NMIS);
         PRINT_FLAG(VMCPU_FF_,TO_R3);
         PRINT_FLAG(VMCPU_FF_,IOM);
         if (f)
             pHlp->pfnPrintf(pHlp, "%s\n    Unknown bits: %#RX64\n", c ? "," : "", f);
         else
             pHlp->pfnPrintf(pHlp, "\n");
-
-        if (fLocalForcedActions & VMCPU_FF_INHIBIT_INTERRUPTS)
-            pHlp->pfnPrintf(pHlp, "    intr inhibit RIP: %RGp\n", EMGetInhibitInterruptsPC(pVCpu));
 
         /* the groups */
         c = 0;
