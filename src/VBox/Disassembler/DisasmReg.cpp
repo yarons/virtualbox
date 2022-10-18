@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DisasmReg.cpp 97203 2022-10-18 12:28:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -447,17 +447,6 @@ DISDECL(int) DISFetchRegSeg(PCCPUMCTXCORE pCtx, DISSELREG sel, RTSEL *pVal)
 
     AssertCompile(sizeof(uint16_t) == sizeof(RTSEL));
     *pVal = DIS_READ_REGSEG(pCtx, sel);
-    return VINF_SUCCESS;
-}
-
-/**
- * Returns the value of the specified segment register including a pointer to the hidden register in the supplied cpu context
- *
- */
-DISDECL(int) DISFetchRegSegEx(PCPUMCTXCORE pCtx, DISSELREG sel, PCPUMSELREG *ppSelReg)
-{
-    AssertReturnStmt((unsigned)sel < RT_ELEMENTS(g_aRegSegIndex), *ppSelReg = NULL, VERR_INVALID_PARAMETER);
-    *ppSelReg = (CPUMSELREG *)((uintptr_t)pCtx + g_aRegHidSegIndex[sel]);
     return VINF_SUCCESS;
 }
 

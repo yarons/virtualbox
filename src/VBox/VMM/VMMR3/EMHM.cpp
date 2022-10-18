@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 96894 2022-09-27 09:00:15Z knut.osmundsen@oracle.com $ */
+/* $Id: EMHM.cpp 97203 2022-10-18 12:28:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -300,9 +300,9 @@ static int emR3HmForcedActions(PVM pVM, PVMCPU pVCpu)
         /** @todo This is rather expensive. Should investigate if it really helps at all. */
         /** @todo this should be skipped! */
         CPUM_IMPORT_EXTRN_RET(pVCpu, CPUMCTX_EXTRN_CS | CPUMCTX_EXTRN_SS);
-        rc = PGMPrefetchPage(pVCpu, SELMToFlat(pVM, DISSELREG_CS, CPUMCTX2CORE(&pVCpu->cpum.GstCtx), pVCpu->cpum.GstCtx.rip));
+        rc = PGMPrefetchPage(pVCpu, SELMToFlat(pVCpu, X86_SREG_CS, &pVCpu->cpum.GstCtx, pVCpu->cpum.GstCtx.rip));
         if (rc == VINF_SUCCESS)
-            rc = PGMPrefetchPage(pVCpu, SELMToFlat(pVM, DISSELREG_SS, CPUMCTX2CORE(&pVCpu->cpum.GstCtx), pVCpu->cpum.GstCtx.rsp));
+            rc = PGMPrefetchPage(pVCpu, SELMToFlat(pVCpu, X86_SREG_SS, &pVCpu->cpum.GstCtx, pVCpu->cpum.GstCtx.rsp));
         if (rc != VINF_SUCCESS)
         {
             if (rc != VINF_PGM_SYNC_CR3)
