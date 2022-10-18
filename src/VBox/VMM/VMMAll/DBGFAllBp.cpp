@@ -1,4 +1,4 @@
-/* $Id: DBGFAllBp.cpp 97196 2022-10-18 10:42:52Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAllBp.cpp 97200 2022-10-18 11:38:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context breakpoint management part.
  */
@@ -193,7 +193,7 @@ DECLINLINE(int) dbgfBpHit(PVMCC pVM, PVMCPUCC pVCpu, PCPUMCTX pCtx, DBGFBP hBp, 
             {
                 /* Replace the int3 with the original instruction byte. */
                 abInstr[0] = pBp->Pub.u.Int3.bOrg;
-                rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, CPUMCTX2CORE(&pVCpu->cpum.GstCtx), GCPtrInstr, &abInstr[0], sizeof(abInstr));
+                rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, GCPtrInstr, &abInstr[0], sizeof(abInstr));
                 if (   rcStrict == VINF_SUCCESS
                     && DBGF_BP_PUB_IS_EXEC_AFTER(&pBp->Pub))
                 {

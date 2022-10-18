@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 97199 2022-10-18 11:37:50Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 97200 2022-10-18 11:38:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -900,7 +900,7 @@ static int pgmRZPoolAccessPfHandlerFlush(PVMCC pVM, PVMCPUCC pVCpu, PPGMPOOL pPo
      * Must do this in raw mode (!); XP boot will fail otherwise.
      */
     int rc = VINF_SUCCESS;
-    VBOXSTRICTRC rc2 = EMInterpretInstructionDisasState(pVCpu, pDis, CPUMCTX2CORE(pCtx), pvFault, EMCODETYPE_ALL);
+    VBOXSTRICTRC rc2 = EMInterpretInstructionDisasState(pVCpu, pDis, pCtx->rip);
     if (rc2 == VINF_SUCCESS)
     { /* do nothing */ }
     else if (rc2 == VINF_EM_RESCHEDULE)
@@ -1035,7 +1035,7 @@ DECLINLINE(int) pgmRZPoolAccessPfHandlerSimple(PVMCC pVM, PVMCPUCC pVCpu, PPGMPO
     /*
      * Interpret the instruction.
      */
-    VBOXSTRICTRC rc = EMInterpretInstructionDisasState(pVCpu, pDis, CPUMCTX2CORE(pCtx), pvFault, EMCODETYPE_ALL);
+    VBOXSTRICTRC rc = EMInterpretInstructionDisasState(pVCpu, pDis, pCtx->rip);
     if (RT_SUCCESS(rc))
         AssertMsg(rc == VINF_SUCCESS, ("%Rrc\n", VBOXSTRICTRC_VAL(rc))); /* ASSUMES no complicated stuff here. */
     else if (rc == VERR_EM_INTERPRETER)

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Bp.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGFR3Bp.cpp 97200 2022-10-18 11:38:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -1986,8 +1986,7 @@ static VBOXSTRICTRC dbgfR3BpHit(PVM pVM, PVMCPU pVCpu, DBGFBP hBp, PDBGFBPINT pB
                 {
                     /* Replace the int3 with the original instruction byte. */
                     abInstr[0] = pBp->Pub.u.Int3.bOrg;
-                    rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, CPUMCTX2CORE(&pVCpu->cpum.GstCtx), GCPtrInstr,
-                                                            &abInstr[0], sizeof(abInstr));
+                    rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, GCPtrInstr, &abInstr[0], sizeof(abInstr));
                     if (   rcStrict == VINF_SUCCESS
                         && DBGF_BP_PUB_IS_EXEC_AFTER(&pBp->Pub))
                     {
