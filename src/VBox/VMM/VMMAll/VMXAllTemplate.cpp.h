@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97183 2022-10-17 22:27:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97188 2022-10-18 07:42:50Z alexander.eichner@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -9422,7 +9422,6 @@ HMVMX_EXIT_DECL vmxHCExitEptViolation(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
      * out of sync first.
      */
     NEMHCDARWINHMACPCCSTATE State = { RT_BOOL(pVmxTransient->uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_WRITE),
-                                      RT_BOOL(pVmxTransient->uExitQual & VMX_EXIT_QUAL_EPT_ACCESS_INSTR_FETCH),
                                       false,
                                       false };
     PGMPHYSNEMPAGEINFO      Info;
