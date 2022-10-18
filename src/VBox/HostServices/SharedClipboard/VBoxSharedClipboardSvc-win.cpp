@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 97215 2022-10-18 17:34:00Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -101,7 +101,7 @@ static int vboxClipboardSvcWinDataGet(uint32_t u32Format, const void *pvSrc, uin
             {
                 /* Do not copy data. The dst buffer is not enough. */
                 RTMemFree(pszBuf);
-                return VERR_BUFFER_OVERFLOW;
+                return VINF_BUFFER_OVERFLOW;
             }
             memcpy(pvDst, pszBuf, cbBuf);
             RTMemFree(pszBuf);
@@ -114,7 +114,7 @@ static int vboxClipboardSvcWinDataGet(uint32_t u32Format, const void *pvSrc, uin
         *pcbActualDst = cbSrc; /* Tell the caller how much space we need. */
 
         if (cbSrc > cbDst)
-            return VERR_BUFFER_OVERFLOW;
+            return VINF_BUFFER_OVERFLOW;
 
         memcpy(pvDst, pvSrc, cbSrc);
     }
