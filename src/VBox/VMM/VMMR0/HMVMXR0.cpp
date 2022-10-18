@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 97149 2022-10-14 07:11:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 97224 2022-10-18 22:56:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3813,7 +3813,7 @@ static int hmR0VmxExportSharedDebugState(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTrans
         }
         else
         {
-            pVCpu->cpum.GstCtx.eflags.u32 |= X86_EFL_TF;
+            pVCpu->cpum.GstCtx.eflags.u |= X86_EFL_TF;
             pVCpu->hm.s.fCtxChanged |= HM_CHANGED_GUEST_RFLAGS;
             pVCpu->hmr0.s.fClearTrapFlag = true;
             fSteppingDB = true;
