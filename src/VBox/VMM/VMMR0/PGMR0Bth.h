@@ -1,4 +1,4 @@
-/* $Id: PGMR0Bth.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: PGMR0Bth.h 97202 2022-10-18 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -30,8 +30,8 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 RT_C_DECLS_BEGIN
-PGM_BTH_DECL(int, Trap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, bool *pfLockTaken);
-PGM_BTH_DECL(int, NestedTrap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysNested,
+PGM_BTH_DECL(int, Trap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX pCtx, RTGCPTR pvFault, bool *pfLockTaken);
+PGM_BTH_DECL(int, NestedTrap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX pCtx, RTGCPHYS GCPhysNested,
                                        bool fIsLinearAddrValid, RTGCPTR GCPtrNested, PPGMPTWALK pWalk, bool *pfLockTaken);
 RT_C_DECLS_END
 
