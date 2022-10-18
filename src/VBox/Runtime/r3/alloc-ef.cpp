@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: alloc-ef.cpp 97210 2022-10-18 14:41:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -491,7 +491,6 @@ static void rtMemReplaceMallocAndFriends(void)
 # ifdef RT_ARCH_AMD64
 #  ifdef RT_OS_DARWIN
             /* Kludge for: cmp [malloc_def_zone_state], 1; jg 2; call _malloc_initialize; 2: */
-            DISQPVPARAMVAL Parm;
             if (   Dis.ModRM.Bits.Mod == 0
                 && Dis.ModRM.Bits.Rm == 5 /* wrt RIP */
                 && (Dis.Param2.fUse & (DISUSE_IMMEDIATE16_SX8 | DISUSE_IMMEDIATE32_SX8 | DISUSE_IMMEDIATE64_SX8))
