@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMInternal.h 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -54,25 +54,6 @@ typedef uint64_t STAMCOUNTER;
  * @internal
  * @{
  */
-
-/** Flags and types for CPUM fault handlers
- * @{ */
-/** Type: Load DS */
-#define CPUM_HANDLER_DS                 1
-/** Type: Load ES */
-#define CPUM_HANDLER_ES                 2
-/** Type: Load FS */
-#define CPUM_HANDLER_FS                 3
-/** Type: Load GS */
-#define CPUM_HANDLER_GS                 4
-/** Type: IRET */
-#define CPUM_HANDLER_IRET               5
-/** Type mask. */
-#define CPUM_HANDLER_TYPEMASK           0xff
-/** If set EBP points to the CPUMCTXCORE that's being used. */
-#define CPUM_HANDLER_CTXCORE_IN_EBP     RT_BIT(31)
-/** @} */
-
 
 /** Use flags (CPUM::fUseFlags).
  * (Don't forget to sync this with CPUMInternal.mac !)

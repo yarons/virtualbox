@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97208 2022-10-18 13:56:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10418,33 +10418,6 @@ VMM_INT_DECL(int) IEMBreakpointClear(PVM pVM, RTGCPTR GCPtrBp)
     RT_NOREF_PV(pVM); RT_NOREF_PV(GCPtrBp);
     return VERR_NOT_IMPLEMENTED;
 }
-
-
-#if 0 /* The IRET-to-v8086 mode in PATM is very optimistic, so I don't dare do this yet. */
-/**
- * Executes a IRET instruction with default operand size.
- *
- * This is for PATM.
- *
- * @returns VBox status code.
- * @param   pVCpu               The cross context virtual CPU structure of the calling EMT.
- * @param   pCtxCore            The register frame.
- */
-VMM_INT_DECL(int) IEMExecInstr_iret(PVMCPUCC pVCpu, PCPUMCTXCORE pCtxCore)
-{
-    PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
-
-    iemCtxCoreToCtx(pCtx, pCtxCore);
-    iemInitDecoder(pVCpu);
-    VBOXSTRICTRC rcStrict = iemCImpl_iret(pVCpu, 1, pVCpu->iem.s.enmDefOpSize);
-    if (rcStrict == VINF_SUCCESS)
-        iemCtxToCtxCore(pCtxCore, pCtx);
-    else
-        LogFlow(("IEMExecInstr_iret: cs:rip=%04x:%08RX64 ss:rsp=%04x:%08RX64 EFL=%06x - rcStrict=%Rrc\n",
-                 pVCpu->cpum.GstCtx.cs, pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.ss, pVCpu->cpum.GstCtx.rsp, pVCpu->cpum.GstCtx.eflags.u, VBOXSTRICTRC_VAL(rcStrict)));
-    return rcStrict;
-}
-#endif
 
 
 /**

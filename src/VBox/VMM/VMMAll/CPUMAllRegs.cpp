@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -183,18 +183,6 @@ VMMDECL(RTGCUINTREG) CPUMGetHyperDR6(PVMCPU pVCpu)
 VMMDECL(RTGCUINTREG) CPUMGetHyperDR7(PVMCPU pVCpu)
 {
     return pVCpu->cpum.s.Hyper.dr[7];
-}
-
-
-/**
- * Gets the pointer to the internal CPUMCTXCORE structure.
- * This is only for reading in order to save a few calls.
- *
- * @param   pVCpu       The cross context virtual CPU structure.
- */
-VMMDECL(PCCPUMCTXCORE) CPUMGetGuestCtxCore(PVMCPU pVCpu)
-{
-    return CPUMCTX2CORE(&pVCpu->cpum.s.Guest);
 }
 
 

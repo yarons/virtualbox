@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStruct.h 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -225,7 +225,6 @@
 #endif
 
     GEN_CHECK_SIZE(CPUMCTXMSRS);
-    GEN_CHECK_SIZE(CPUMCTXCORE);
 
 #ifndef VBOX_FOR_DTRACE_LIB
     GEN_CHECK_SIZE(STAMRATIOU32);

@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstDBGCStubs.cpp 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -761,11 +761,6 @@ VMMDECL(uint64_t) CPUMGetGuestCR4(PCVMCPU pVCpu)
 VMMDECL(RTSEL) CPUMGetGuestCS(PCVMCPU pVCpu)
 {
     return 0;
-}
-
-VMMDECL(PCCPUMCTXCORE) CPUMGetGuestCtxCore(PVMCPU pVCpu)
-{
-    return NULL;
 }
 
 VMMDECL(uint32_t) CPUMGetGuestEIP(PCVMCPU pVCpu)

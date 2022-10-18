@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $
+; $Id: CPUMInternal.mac 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -74,14 +74,6 @@ endstruc
 %define CPUM_USED_DEBUG_REGS_GUEST      RT_BIT(9)
 %define CPUM_USE_FFXSR_LEAKY            RT_BIT(19)
 %define CPUM_USE_SUPPORTS_LONGMODE      RT_BIT(20)
-
-%define CPUM_HANDLER_DS                 1
-%define CPUM_HANDLER_ES                 2
-%define CPUM_HANDLER_FS                 3
-%define CPUM_HANDLER_GS                 4
-%define CPUM_HANDLER_IRET               5
-%define CPUM_HANDLER_TYPEMASK           0ffh
-%define CPUM_HANDLER_CTXCORE_IN_EBP     RT_BIT(31)
 
 
 struc CPUM

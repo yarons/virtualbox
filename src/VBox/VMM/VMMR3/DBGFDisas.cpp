@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 97193 2022-10-18 10:18:45Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFDisas.cpp 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -454,7 +454,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
         SelInfo.u.Raw.Gen.u16LimitLow   = 0xffff;
         SelInfo.u.Raw.Gen.u4LimitHigh   = 0xf;
 
-        pSRegCS = &CPUMGetGuestCtxCore(pVCpu)->cs;
+        pSRegCS = &CPUMQueryGuestCtxPtr(pVCpu)->cs;
         if (CPUMSELREG_ARE_HIDDEN_PARTS_VALID(pVCpu, pSRegCS))
         {
             /* Assume the current CS defines the execution mode. */
