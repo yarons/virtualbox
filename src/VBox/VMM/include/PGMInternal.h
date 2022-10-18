@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 97145 2022-10-14 06:05:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMInternal.h 97197 2022-10-18 11:09:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2796,8 +2796,8 @@ typedef struct PGMMODEDATABTH
     DECLCALLBACKMEMBER(int, pfnUnmapCR3,(PVMCPUCC pVCpu));
     DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3));
 #ifndef IN_RING3
-    DECLCALLBACKMEMBER(int, pfnTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, bool *pfLockTaken));
-    DECLCALLBACKMEMBER(int, pfnNestedTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysNested,
+    DECLCALLBACKMEMBER(int, pfnTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX pCtx, RTGCPTR pvFault, bool *pfLockTaken));
+    DECLCALLBACKMEMBER(int, pfnNestedTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX pCtx, RTGCPHYS GCPhysNested,
                                                     bool fIsLinearAddrValid, RTGCPTR GCPtrNested, PPGMPTWALK pWalk,
                                                     bool *pfLockTaken));
 #endif

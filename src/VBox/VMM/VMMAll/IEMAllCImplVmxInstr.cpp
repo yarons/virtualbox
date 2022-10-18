@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 97180 2022-10-17 21:14:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 97197 2022-10-18 11:09:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -9881,11 +9881,11 @@ DECLCALLBACK(VBOXSTRICTRC) iemVmxApicAccessPageHandler(PVMCC pVM, PVMCPUCC pVCpu
  * @callback_method_impl{FNPGMRZPHYSPFHANDLER,
  *      \#PF access handler callback for guest VMX APIC-access page.}
  */
-DECLCALLBACK(VBOXSTRICTRC) iemVmxApicAccessPagePfHandler(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
+DECLCALLBACK(VBOXSTRICTRC) iemVmxApicAccessPagePfHandler(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX pCtx,
                                                          RTGCPTR pvFault, RTGCPHYS GCPhysFault, uint64_t uUser)
 
 {
-    RT_NOREF3(pVM, pRegFrame, uUser);
+    RT_NOREF3(pVM, pCtx, uUser);
 
     /*
      * Handle the VMX APIC-access page only when the guest is in VMX non-root mode.

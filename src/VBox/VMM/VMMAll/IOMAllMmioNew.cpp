@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IOMAllMmioNew.cpp 97197 2022-10-18 11:09:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -737,13 +737,13 @@ DECLINLINE(VBOXSTRICTRC) iomMmioCommonPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, ui
  *
  * @remarks The @a uUser argument is the MMIO handle.
  */
-DECLCALLBACK(VBOXSTRICTRC) iomMmioPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
+DECLCALLBACK(VBOXSTRICTRC) iomMmioPfHandlerNew(PVMCC pVM, PVMCPUCC pVCpu, RTGCUINT uErrorCode, PCPUMCTX pCtx,
                                                RTGCPTR pvFault, RTGCPHYS GCPhysFault, uint64_t uUser)
 {
     STAM_PROFILE_START(&pVM->iom.s.StatMmioPfHandler, Prf);
     LogFlow(("iomMmioPfHandlerNew: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
-             GCPhysFault, (uint32_t)uErrorCode, pvFault, (RTGCPTR)pCtxCore->rip));
-    RT_NOREF(pvFault, pCtxCore);
+             GCPhysFault, (uint32_t)uErrorCode, pvFault, (RTGCPTR)pCtx->rip));
+    RT_NOREF(pvFault, pCtx);
 
     /* Translate the MMIO handle to a registration entry for the current context. */
     AssertReturn(uUser < RT_MIN(pVM->iom.s.cMmioRegs, pVM->iom.s.cMmioAlloc), VERR_IOM_INVALID_MMIO_HANDLE);
