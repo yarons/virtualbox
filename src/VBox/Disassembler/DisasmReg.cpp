@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 97203 2022-10-18 12:28:22Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmReg.cpp 97205 2022-10-18 12:32:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -182,16 +182,6 @@ static const unsigned g_aReg8Index[] =
  * by register's index from disasm.
  */
 static const unsigned g_aRegSegIndex[] =
-{
-    RT_OFFSETOF(CPUMCTXCORE, es),         /* DISSELREG_ES */
-    RT_OFFSETOF(CPUMCTXCORE, cs),         /* DISSELREG_CS */
-    RT_OFFSETOF(CPUMCTXCORE, ss),         /* DISSELREG_SS */
-    RT_OFFSETOF(CPUMCTXCORE, ds),         /* DISSELREG_DS */
-    RT_OFFSETOF(CPUMCTXCORE, fs),         /* DISSELREG_FS */
-    RT_OFFSETOF(CPUMCTXCORE, gs)          /* DISSELREG_GS */
-};
-
-static const unsigned g_aRegHidSegIndex[] =
 {
     RT_OFFSETOF(CPUMCTXCORE, es),         /* DISSELREG_ES */
     RT_OFFSETOF(CPUMCTXCORE, cs),         /* DISSELREG_CS */
