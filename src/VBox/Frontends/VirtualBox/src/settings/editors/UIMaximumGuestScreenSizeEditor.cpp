@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.cpp 97217 2022-10-18 18:58:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class implementation.
  */
@@ -52,8 +52,11 @@ UIMaximumGuestScreenSizeValue::UIMaximumGuestScreenSizeValue(MaximumGuestScreenS
 bool UIMaximumGuestScreenSizeValue::equal(const UIMaximumGuestScreenSizeValue &other) const
 {
     return true
-           && (m_enmPolicy == other.m_enmPolicy)
-           && (m_size == other.m_size)
+           && (   (   m_enmPolicy != MaximumGuestScreenSizePolicy_Fixed
+                   && m_enmPolicy == other.m_enmPolicy)
+               || (   m_enmPolicy == MaximumGuestScreenSizePolicy_Fixed
+                   && m_enmPolicy == other.m_enmPolicy
+                   && m_size == other.m_size))
            ;
 }
 

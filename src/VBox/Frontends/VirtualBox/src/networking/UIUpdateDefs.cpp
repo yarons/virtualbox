@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 97217 2022-10-18 18:58:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -348,11 +348,9 @@ QVector<KUpdateChannel> VBoxUpdateData::supportedUpdateChannels() const
 bool VBoxUpdateData::isEqual(const VBoxUpdateData &another) const
 {
     return    true
-           && (m_strData == another.data())
+           && (m_fCheckEnabled == another.isCheckEnabled())
            && (m_enmUpdatePeriod == another.updatePeriod())
-           && (m_date == another.date())
            && (m_enmUpdateChannel == another.updateChannel())
-           && (m_version == another.version())
               ;
 }
 
