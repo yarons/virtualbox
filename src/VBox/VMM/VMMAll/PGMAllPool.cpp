@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 97147 2022-10-14 06:30:12Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllPool.cpp 97193 2022-10-18 10:18:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1152,7 +1152,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmRZPoolAccessPfHandler(PVMCC pVM, PVMCPUCC pVCpu, R
      * Disassemble the faulting instruction.
      */
     PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
-    int rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
+    int rc = EMInterpretDisasCurrent(pVCpu, pDis, NULL);
     if (RT_UNLIKELY(rc != VINF_SUCCESS))
     {
         AssertMsg(rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT, ("Unexpected rc %d\n", rc));

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 97145 2022-10-14 06:05:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 97193 2022-10-18 10:18:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -223,7 +223,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmPhysRomWritePfHandler(PVMCC pVM, PVMCPUCC pVCpu, R
              */
             uint32_t     cbOp;
             PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
-            rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, &cbOp);
+            rc = EMInterpretDisasCurrent(pVCpu, pDis, &cbOp);
             if (     RT_SUCCESS(rc)
                 &&   pDis->uCpuMode == DISCPUMODE_32BIT  /** @todo why does this matter? */
                 &&  !(pDis->fPrefix & (DISPREFIX_REPNE | DISPREFIX_REP | DISPREFIX_SEG)))

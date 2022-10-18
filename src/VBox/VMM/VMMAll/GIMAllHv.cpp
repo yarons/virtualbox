@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GIMAllHv.cpp 97193 2022-10-18 10:18:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -1478,7 +1478,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISCPUSTA
          */
         unsigned    cbInstr;
         DISCPUSTATE Dis;
-        int rc = EMInterpretDisasCurrent(pVCpu->CTX_SUFF(pVM), pVCpu, &Dis, &cbInstr);
+        int rc = EMInterpretDisasCurrent(pVCpu, &Dis, &cbInstr);
         if (RT_SUCCESS(rc))
         {
             if (pcbInstr)
