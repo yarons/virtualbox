@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 97192 2022-10-18 10:17:41Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 97219 2022-10-18 22:49:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3150,7 +3150,7 @@ static void cpumR3InfoOne(PVM pVM, PCPUMCTX pCtx, PCDBGFINFOHLP pHlp, CPUMDUMPTY
     /*
      * Format the EFLAGS.
      */
-    uint32_t efl = pCtx->eflags.u32;
+    uint32_t efl = pCtx->eflags.u;
     char szEFlags[80];
     cpumR3InfoFormatFlags(&szEFlags[0], efl | ((uint32_t)pCtx->fInhibit << 24));
 
