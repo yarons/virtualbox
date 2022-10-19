@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 97230 2022-10-19 06:34:29Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2036,7 +2036,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                                                    d.ulSuggestedSizeMB);
 
                             ovf::VirtualDisk vd;
-                            vd.strIdController = vsys.mapControllers[0].strIdController;
+                            vd.strIdController = vsys.mapControllers["0"].strIdController;
                             vd.ulAddressOnParent = 0;
                             vd.strDiskId = d.strDiskId;
                             vsys.mapVirtualDisks[vd.strDiskId] = vd;
