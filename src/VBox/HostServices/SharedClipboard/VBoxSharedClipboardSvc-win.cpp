@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 97235 2022-10-19 10:32:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 97239 2022-10-19 15:44:58Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -91,8 +91,7 @@ struct SHCLCONTEXT
  *          enough to store host clipboard data. This is a signal to the guest
  *          to re-issue host clipboard read request with bigger buffer size
  *          (specified in @a pcbActualDst output parameter).
- * @param   pCtx                Shared Clipboard context to use.
- * @param   uFmt                VBox clipboard format (VBOX_SHCL_FMT_XXX) of copied data.
+ * @param   u32Format           VBox clipboard format (VBOX_SHCL_FMT_XXX) of copied data.
  * @param   pvSrc               Pointer to host clipboard data.
  * @param   cbSrc               Size (in bytes) of actual clipboard data to copy.
  * @param   pvDst               Pointer to guest buffer to store clipboard data.
