@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -381,8 +381,12 @@ typedef struct CPUM
     bool                    fNestedVmxUnrestrictedGuest;
     uint8_t                 abPadding1[1];
 
+    /** Random value we store in the reserved RFLAGS bits we don't use ourselves so
+     *  we can detect corruption. */
+    uint64_t                fReservedRFlagsCookie;
+
     /** Align to 64-byte boundary. */
-    uint8_t                 abPadding2[20+4];
+    uint8_t                 abPadding2[16];
 
     /** Host CPU feature information.
      * Externaly visible via the VM structure, aligned on 64-byte boundrary. */

@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 97153 2022-10-14 09:29:44Z michal.necasek@oracle.com $ */
+/* $Id: IEMMc.h 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -333,8 +333,9 @@
 #define IEM_MC_REF_GREG_U64(a_pu64Dst, a_iGReg)         (a_pu64Dst) = iemGRegRefU64(pVCpu, (a_iGReg))
 #define IEM_MC_REF_GREG_I64(a_pi64Dst, a_iGReg)         (a_pi64Dst) = (int64_t *)iemGRegRefU64(pVCpu, (a_iGReg))
 #define IEM_MC_REF_GREG_I64_CONST(a_pi64Dst, a_iGReg)   (a_pi64Dst) = (int64_t const *)iemGRegRefU64(pVCpu, (a_iGReg))
-/** @note Not for IOPL or IF testing or modification. */
-#define IEM_MC_REF_EFLAGS(a_pEFlags)                    (a_pEFlags) = &pVCpu->cpum.GstCtx.eflags.u
+/** @note Not for IOPL or IF testing or modification.
+ * @note Must preserve any undefined bits, see CPUMX86EFLAGS! */
+#define IEM_MC_REF_EFLAGS(a_pEFlags)                    (a_pEFlags) = &pVCpu->cpum.GstCtx.eflags.uBoth
 #define IEM_MC_REF_MXCSR(a_pfMxcsr)                     (a_pfMxcsr) = &pVCpu->cpum.GstCtx.XState.x87.MXCSR
 
 #define IEM_MC_ADD_GREG_U8(a_iGReg, a_u8Value)          *iemGRegRefU8( pVCpu, (a_iGReg)) += (a_u8Value)

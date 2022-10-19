@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 97220 2022-10-18 22:50:03Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -183,6 +183,26 @@ VMMDECL(RTGCUINTREG) CPUMGetHyperDR6(PVMCPU pVCpu)
 VMMDECL(RTGCUINTREG) CPUMGetHyperDR7(PVMCPU pVCpu)
 {
     return pVCpu->cpum.s.Hyper.dr[7];
+}
+
+
+/**
+ * Checks that the special cookie stored in unused reserved RFLAGS bits
+ *
+ * @retval  true if cookie is ok.
+ * @retval  false if cookie is not ok.
+ * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(bool) CPUMAssertGuestRFlagsCookie(PVM pVM, PVMCPU pVCpu)
+{
+    AssertLogRelMsgReturn(      (pVCpu->cpum.s.Guest.rflags.uBoth & ~(uint64_t)(X86_EFL_LIVE_MASK | X86_EFL_RA1_MASK))
+                             == pVM->cpum.s.fReservedRFlagsCookie
+                          && (pVCpu->cpum.s.Guest.rflags.uBoth & X86_EFL_RA1_MASK) == X86_EFL_RA1_MASK,
+                          ("rflags=%#RX64 vs fReservedRFlagsCookie=%#RX64\n",
+                           pVCpu->cpum.s.Guest.rflags.uBoth, pVM->cpum.s.fReservedRFlagsCookie),
+                          false);
+    return true;
 }
 
 

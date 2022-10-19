@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97223 2022-10-18 22:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -1804,8 +1804,8 @@ static void vmxHCExportGuestRflags(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTransient)
            to assert this, the CPUMX86EFLAGS/CPUMX86RFLAGS union masks these off for us.
            Use 32-bit VMWRITE. */
         uint32_t fEFlags = pVCpu->cpum.GstCtx.eflags.u;
-        Assert(fEFlags & X86_EFL_RA1_MASK);
-        Assert(!(fEFlags & ~(X86_EFL_1 | X86_EFL_LIVE_MASK)));
+        Assert((fEFlags & X86_EFL_RA1_MASK) == X86_EFL_RA1_MASK);
+        AssertMsg(!(fEFlags & ~(X86_EFL_LIVE_MASK | X86_EFL_RA1_MASK)), ("%#x\n", fEFlags));
 
 #ifndef IN_NEM_DARWIN
         /*

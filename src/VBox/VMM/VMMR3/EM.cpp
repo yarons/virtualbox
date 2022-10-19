@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2208,6 +2208,10 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
             }
             else if (fFFDone)
                 fFFDone = false;
+
+#ifdef VBOX_STRICT
+            CPUMAssertGuestRFlagsCookie(pVM, pVCpu);
+#endif
 
             /*
              * Now what to do?
