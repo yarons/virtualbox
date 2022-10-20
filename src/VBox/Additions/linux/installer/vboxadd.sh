@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 97013 2022-10-05 19:27:55Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 97259 2022-10-20 21:09:17Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 97013 $)
+# Linux Additions kernel module init script ($Revision: 97259 $)
 #
 
 #
@@ -393,7 +393,7 @@ modules signing. Please consider to generate and enroll them manually:
 
     sudo mkdir -p /var/lib/shim-signed/mok
     sudo openssl req -nodes -new -x509 -newkey rsa:2048 -outform DER -keyout $DEB_PRIV_KEY -out $DEB_PUB_KEY
-    sudo sudo mokutil --import $DEB_PUB_KEY
+    sudo mokutil --import $DEB_PUB_KEY
     sudo reboot
 
 Restart \"rcvboxadd setup\" after system is rebooted.
