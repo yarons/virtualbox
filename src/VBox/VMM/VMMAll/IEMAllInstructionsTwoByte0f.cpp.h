@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97257 2022-10-20 15:30:05Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97258 2022-10-20 15:31:34Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2042,7 +2042,7 @@ FNIEMOP_DEF(iemOp_ud2)
 FNIEMOP_DEF(iemOp_nop_Ev_GrpP)
 {
     /* AMD prefetch group, Intel implements this as NOP Ev (and so do we). */
-    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->f3DNowPrefetch)
+    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fLongMode && !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->f3DNowPrefetch)
     {
         IEMOP_MNEMONIC(GrpPNotSupported, "GrpP");
         return IEMOP_RAISE_INVALID_OPCODE();
