@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.h 97245 2022-10-20 08:44:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class declaration.
  */
@@ -52,6 +52,9 @@ public:
     virtual ~UIGlobalSettingsInterface() RT_OVERRIDE;
 
 protected:
+
+    /** Returns whether the page content was changed. */
+    virtual bool changed() const RT_OVERRIDE;
 
     /** Loads settings from external object(s) packed inside @a data to cache.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */

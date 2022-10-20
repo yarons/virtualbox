@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.cpp 97245 2022-10-20 08:44:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -82,6 +82,11 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
 UIGlobalSettingsInput::~UIGlobalSettingsInput()
 {
     cleanup();
+}
+
+bool UIGlobalSettingsInput::changed() const
+{
+    return m_pCache ? m_pCache->wasChanged() : false;
 }
 
 void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 97245 2022-10-20 08:44:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -74,6 +74,11 @@ UIGlobalSettingsLanguage::UIGlobalSettingsLanguage()
 UIGlobalSettingsLanguage::~UIGlobalSettingsLanguage()
 {
     cleanup();
+}
+
+bool UIGlobalSettingsLanguage::changed() const
+{
+    return m_pCache ? m_pCache->wasChanged() : false;
 }
 
 void UIGlobalSettingsLanguage::loadToCacheFrom(QVariant &data)
