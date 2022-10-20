@@ -1,4 +1,4 @@
-/* $Id: HGCMMock.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HGCMMock.h 97256 2022-10-20 15:14:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * HGCMMock.h: Mocking framework for testing HGCM-based host services +
  *             Vbgl code on the host side.
@@ -547,7 +547,7 @@ PTSTHGCMMOCKSVC TstHgcmMockSvcInst(void)
 /**
  * Waits for a HGCM mock client to connect, extended version.
  *
- * @return VBox status code.
+ * @return Pointer to connected client, or NULL if ran into timeout.
  * @param  pSvc                 HGCM mock service instance.
  * @param  msTimeout            Timeout (in ms) to wait for connection.
  */
@@ -565,7 +565,7 @@ PTSTHGCMMOCKCLIENT TstHgcmMockSvcWaitForConnectEx(PTSTHGCMMOCKSVC pSvc, RTMSINTE
 /**
  * Waits for a HGCM mock client to connect.
  *
- * @return VBox status code.
+ * @return Pointer to connected client, or NULL if waiting for connection was aborted.
  * @param  pSvc                 HGCM mock service instance.
  */
 PTSTHGCMMOCKCLIENT TstHgcmMockSvcWaitForConnect(PTSTHGCMMOCKSVC pSvc)
