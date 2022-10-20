@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 97236 2022-10-19 10:44:15Z dmitrii.grigorev@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 97257 2022-10-20 15:30:05Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -17215,3 +17215,52 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cvttps2pi_u128,(uint32_t *pfMxcsr, uint64_t *pu
     *pfMxcsr = fMxcsrOut;
 }
 #endif
+
+/**
+ * RDRAND
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdrand_u16_fallback,(uint16_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdrand_u32_fallback,(uint32_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdrand_u64_fallback,(uint64_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
+/**
+ * RDSEED
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdseed_u16_fallback,(uint16_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdseed_u32_fallback,(uint32_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_rdseed_u64_fallback,(uint64_t *puDst, uint32_t *pEFlags))
+{
+    *puDst = 0;
+    *pEFlags &= ~X86_EFL_STATUS_BITS;
+    *pEFlags |= X86_EFL_CF;
+}
+
