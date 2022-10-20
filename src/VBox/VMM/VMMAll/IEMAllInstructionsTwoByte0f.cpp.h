@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97119 2022-10-12 16:04:56Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97252 2022-10-20 12:09:07Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -9821,7 +9821,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_xrstor,   uint8_t, bRm)
 }
 
 /** Opcode 0x0f 0xae mem/6. */
-FNIEMOP_UD_STUB_1(iemOp_Grp15_xsaveopt, uint8_t, bRm);
+FNIEMOP_STUB_1(iemOp_Grp15_xsaveopt, uint8_t, bRm);
 
 /**
  * @opmaps      grp15
