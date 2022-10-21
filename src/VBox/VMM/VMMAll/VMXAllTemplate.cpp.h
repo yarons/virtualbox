@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97248 2022-10-20 09:46:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97262 2022-10-21 08:10:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -327,6 +327,7 @@ static const uint32_t g_aVmcsFields[] =
     VMX_VMCS16_VPID,
     VMX_VMCS16_POSTED_INT_NOTIFY_VECTOR,
     VMX_VMCS16_EPTP_INDEX,
+    VMX_VMCS16_HLAT_PREFIX_SIZE,
 
     /* 16-bit guest-state fields. */
     VMX_VMCS16_GUEST_ES_SEL,
@@ -406,6 +407,12 @@ static const uint32_t g_aVmcsFields[] =
     VMX_VMCS64_CTRL_PROC_EXEC3_HIGH,
     VMX_VMCS64_CTRL_ENCLV_EXITING_BITMAP_FULL,
     VMX_VMCS64_CTRL_ENCLV_EXITING_BITMAP_HIGH,
+    VMX_VMCS64_CTRL_PCONFIG_EXITING_BITMAP_FULL,
+    VMX_VMCS64_CTRL_PCONFIG_EXITING_BITMAP_HIGH,
+    VMX_VMCS64_CTRL_HLAT_PTR_FULL,
+    VMX_VMCS64_CTRL_HLAT_PTR_HIGH,
+    VMX_VMCS64_CTRL_EXIT2_FULL,
+    VMX_VMCS64_CTRL_EXIT2_HIGH,
 
     /* 64-bit read-only data fields. */
     VMX_VMCS64_RO_GUEST_PHYS_ADDR_FULL,

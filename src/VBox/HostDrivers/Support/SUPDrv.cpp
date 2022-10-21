@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 96811 2022-09-21 13:23:31Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 97262 2022-10-21 08:10:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4854,6 +4854,9 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
 
             if (Msrs.u.vmx.ProcCtls.n.allowed1 & VMX_PROC_CTLS_USE_TERTIARY_CTLS)
                 Msrs.u.vmx.u64ProcCtls3 = ASMRdMsr(MSR_IA32_VMX_PROCBASED_CTLS3);
+
+            if (Msrs.u.vmx.ExitCtls.n.allowed1 & VMX_EXIT_CTLS_USE_SECONDARY_CTLS)
+                Msrs.u.vmx.u64ExitCtls2 = ASMRdMsr(MSR_IA32_VMX_EXIT_CTLS2);
         }
         else if (fCaps & SUPVTCAPS_AMD_V)
         {

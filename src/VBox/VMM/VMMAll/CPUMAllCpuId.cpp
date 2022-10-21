@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 97070 2022-10-10 15:25:06Z michal.necasek@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 97262 2022-10-21 08:10:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1352,6 +1352,7 @@ static void cpumExplodeVmxFeatures(PCVMXMSRS pVmxMsrs, PCPUMFEATURES pFeatures)
         pFeatures->fVmxExitSaveEferMsr       = RT_BOOL(fExitCtls & VMX_EXIT_CTLS_SAVE_EFER_MSR);
         pFeatures->fVmxExitLoadEferMsr       = RT_BOOL(fExitCtls & VMX_EXIT_CTLS_LOAD_EFER_MSR);
         pFeatures->fVmxSavePreemptTimer      = RT_BOOL(fExitCtls & VMX_EXIT_CTLS_SAVE_PREEMPT_TIMER);
+        pFeatures->fVmxExitCtls2             = RT_BOOL(fExitCtls & VMX_EXIT_CTLS_USE_SECONDARY_CTLS);
     }
 
     /* VM-entry controls. */

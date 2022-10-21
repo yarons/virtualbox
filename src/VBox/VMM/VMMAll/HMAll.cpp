@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HMAll.cpp 97262 2022-10-21 08:10:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - All contexts.
  */
@@ -848,6 +848,7 @@ VMM_INT_DECL(void) HMGetVmxMsrsFromHwvirtMsrs(PCSUPHWVIRTMSRS pHwvirtMsrs, PVMXM
     pVmxMsrs->u64VmFunc        = pHwvirtMsrs->u.vmx.u64VmFunc;
     pVmxMsrs->u64EptVpidCaps   = pHwvirtMsrs->u.vmx.u64EptVpidCaps;
     pVmxMsrs->u64ProcCtls3     = pHwvirtMsrs->u.vmx.u64ProcCtls3;
+    pVmxMsrs->u64ExitCtls2     = pHwvirtMsrs->u.vmx.u64ExitCtls2;
 }
 
 
