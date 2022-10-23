@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tst-a1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tst-a1.py 97266 2022-10-23 00:06:26Z knut.osmundsen@oracle.com $
 
 """
 Analyzer Experiment  1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97266 $"
 
 
 import os.path
@@ -50,9 +50,9 @@ g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.append(g_ksValidationKitDir);
 
 # Validation Kit imports.
-from testanalysis import reader    ## @todo fix testanalysis/__init__.py.
-from testanalysis import reporting
-from testanalysis import diff
+from analysis import reader    ## @todo fix testanalysis/__init__.py.
+from analysis import reporting
+from analysis import diff
 
 
 def usage():
