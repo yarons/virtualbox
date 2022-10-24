@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: analyze.py 97267 2022-10-24 00:09:44Z knut.osmundsen@oracle.com $
+# $Id: analyze.py 97279 2022-10-24 14:36:36Z knut.osmundsen@oracle.com $
 
 """
 Analyzer CLI.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97267 $"
+__version__ = "$Revision: 97279 $"
 
 # Standard python imports.
 import re;
@@ -145,6 +145,13 @@ def usage():
     print('  --filter-out-empty-leaf-tests');
     print(oWrapper.fill('Removes any leaf tests that are without any values or sub-tests.  This is useful when '
                         'only considering values, especially when doing additional value filtering.'));
+
+    print('');
+    print('Analysis options:');
+    print('  --pct-same-value <float>');
+    print(oWrapper.fill('The threshold at which the percent difference between two values are considered the same '
+                        'during analysis.'));
+    print(oWrapper.initial_indent + 'Default: --pct-same-value 0.10');
 
     print('');
     print('Output options:');
@@ -306,6 +313,7 @@ def main(asArgs):
     sDistillationMethod     = 'best';
     fBrief                  = True;
     cPctPrecision           = 2;
+    rdPctSameValue          = 0.1;
     asTestFilters           = [];
     asTestOutFilters        = [];
     asValueFilters          = [];
@@ -360,6 +368,9 @@ def main(asArgs):
             cPctPrecision = int(g_sOptArg);
         elif matchWithValue('--base') or matchWithValue('--baseline'):
             iBaseline = int(g_sOptArg);
+
+        elif matchWithValue('--pct-same-value'):
+            rdPctSameValue = float(g_sOptArg);
 
         # '--' starts a new collection.  If current one is empty, drop it.
         elif sArg == '--':
@@ -425,7 +436,7 @@ def main(asArgs):
     #
     # Produce the report.
     #
-    oTable = reporting.RunTable(iBaseline, fBrief, cPctPrecision);
+    oTable = reporting.RunTable(iBaseline, fBrief, cPctPrecision, rdPctSameValue);
     oTable.populateFromRuns([oCollection.oDistilled for oCollection in aoCollections],
                             [oCollection.sName      for oCollection in aoCollections]);
     print('\n'.join(oTable.formatAsText()));
