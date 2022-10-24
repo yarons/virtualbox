@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: clipboard-win.cpp 97282 2022-10-24 16:24:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -933,6 +933,71 @@ int SharedClipboardWinClearAndAnnounceFormats(PSHCLWINCTX pWinCtx, SHCLFORMATS f
 
         SharedClipboardWinClose();
     }
+    return rc;
+}
+
+/**
+ * Writes (places) clipboard data into the Windows clipboard.
+ *
+ * @returns VBox status code.
+ * @param   cfFormat            Windows clipboard format to write data for.
+ * @param   pvData              Pointer to actual clipboard data to write.
+ * @param   cbData              Size (in bytes) of actual clipboard data to write.
+ *
+ * @note    ASSUMES that the clipboard has already been opened.
+ */
+int SharedClipboardWinDataWrite(UINT cfFormat, void *pvData, uint32_t cbData)
+{
+    AssertPtrReturn(pvData, VERR_INVALID_POINTER);
+    AssertReturn   (cbData, VERR_INVALID_PARAMETER);
+
+    int rc = VINF_SUCCESS;
+
+    HANDLE hMem = GlobalAlloc(GMEM_DDESHARE | GMEM_MOVEABLE, cbData);
+
+    LogFlowFunc(("hMem=%p\n", hMem));
+
+    if (hMem)
+    {
+        void *pMem = GlobalLock(hMem);
+
+        LogFlowFunc(("pMem=%p, GlobalSize=%zu\n", pMem, GlobalSize(hMem)));
+
+        if (pMem)
+        {
+            LogFlowFunc(("Setting data\n"));
+
+            memcpy(pMem, pvData, cbData);
+
+            /* The memory must be unlocked before inserting to the Clipboard. */
+            GlobalUnlock(hMem);
+
+            /* 'hMem' contains the host clipboard data.
+             * size is 'cb' and format is 'format'.
+             */
+            HANDLE hClip = SetClipboardData(cfFormat, hMem);
+
+            LogFlowFunc(("hClip=%p\n", hClip));
+
+            if (hClip)
+            {
+                /* The hMem ownership has gone to the system. Nothing to do. */
+            }
+            else
+                rc = RTErrConvertFromWin32(GetLastError());
+        }
+        else
+            rc = VERR_ACCESS_DENIED;
+
+        GlobalFree(hMem);
+    }
+    else
+        rc = RTErrConvertFromWin32(GetLastError());
+
+    if (RT_FAILURE(rc))
+        LogFunc(("Setting clipboard data failed with %Rrc\n", rc));
+
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 
