@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testboxscript.py 97269 2022-10-24 07:54:52Z knut.osmundsen@oracle.com $
 
 """
 TestBox Script Wrapper.
@@ -42,7 +42,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97269 $"
 
 import platform;
 import subprocess;
@@ -112,9 +112,8 @@ class TestBoxScriptWrapper(object): # pylint: disable=too-few-public-methods
             if asArgs[i] == '--':
                 break;
         if sPidFile:
-            oPidFile = open(sPidFile, 'w');
-            oPidFile.write(str(os.getpid()));
-            oPidFile.close();
+            with open(sPidFile, 'w') as oPidFile:
+                oPidFile.write(str(os.getpid()));
 
         # Execute the testbox script almost forever in a relaxed loop.
         rcExit = TBS_EXITCODE_FAILURE;
@@ -122,7 +121,8 @@ class TestBoxScriptWrapper(object): # pylint: disable=too-few-public-methods
             fCreationFlags = 0;
             if platform.system() == 'Windows':
                 fCreationFlags = getattr(subprocess, 'CREATE_NEW_PROCESS_GROUP', 0x00000200); # for Ctrl-C isolation (python 2.7)
-            self.oTask = subprocess.Popen(asArgs, shell = False, creationflags = fCreationFlags);
+            self.oTask = subprocess.Popen(asArgs, shell = False,           # pylint: disable=consider-using-with
+                                          creationflags = fCreationFlags);
             rcExit = self.oTask.wait();
             self.oTask = None;
             if rcExit == TBS_EXITCODE_SYNTAX:
