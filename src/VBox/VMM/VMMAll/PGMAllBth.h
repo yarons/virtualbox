@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 97247 2022-10-20 09:33:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllBth.h 97285 2022-10-24 21:59:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1177,12 +1177,12 @@ PGM_BTH_DECL(int, NestedTrap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX p
     Assert(pWalk->fEffective & (PGM_PTATTRS_EPT_R_MASK | PGM_PTATTRS_EPT_W_MASK | PGM_PTATTRS_EPT_X_SUPER_MASK));
     Assert(pWalk->fIsSlat);
 
-#ifdef DEBUG_ramshankar
+#  ifdef DEBUG_ramshankar
     /* Paranoia. */
     Assert(RT_BOOL(pWalk->fEffective & PGM_PTATTRS_R_MASK)  ==  RT_BOOL(pWalk->fEffective & PGM_PTATTRS_EPT_R_MASK));
     Assert(RT_BOOL(pWalk->fEffective & PGM_PTATTRS_W_MASK)  ==  RT_BOOL(pWalk->fEffective & PGM_PTATTRS_EPT_W_MASK));
     Assert(RT_BOOL(pWalk->fEffective & PGM_PTATTRS_NX_MASK) == !RT_BOOL(pWalk->fEffective & PGM_PTATTRS_EPT_X_SUPER_MASK));
-#endif
+#  endif
 
     /*
      * Check page-access permissions.
@@ -1338,7 +1338,7 @@ PGM_BTH_DECL(int, NestedTrap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX p
                 (uint32_t)uErr, pCtx->cs.Sel, pCtx->rip));
     return VERR_PGM_MAPPING_IPE;
 
-# else
+# else /* !VBOX_WITH_NESTED_HWVIRT_VMX_EPT || PGM_GST_TYPE != PGM_TYPE_PROT || PGM_SHW_TYPE != PGM_TYPE_EPT */
     RT_NOREF7(pVCpu, uErr, pCtx, GCPhysNestedFault, fIsLinearAddrValid, GCPtrNestedFault, pWalk);
     AssertReleaseMsgFailed(("Shw=%d Gst=%d is not implemented!\n", PGM_SHW_TYPE, PGM_GST_TYPE));
     return VERR_PGM_NOT_USED_IN_MODE;
