@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 97278 2022-10-24 13:46:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -930,7 +930,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Discard));
                         else if (   isSingleCloudProviderGroupSelected()
                                  || isSingleCloudProfileGroupSelected())
-                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Close_S_Terminate));
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_Stop_S_Terminate));
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_StartOrShow));
                     }
                     else
@@ -942,7 +942,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                         if (isLocalMachineItemSelected())
                             m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
                         else if (isCloudMachineItemSelected())
-                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Close_S_Terminate));
+                            m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_Stop_S_Terminate));
                         m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
                     }
                     break;

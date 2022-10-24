@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 97277 2022-10-24 12:37:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.h 97278 2022-10-24 13:46:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -83,11 +83,11 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Group_M_Console_S_CreateConnection,
     UIActionIndexMN_M_Group_M_Console_S_DeleteConnection,
     UIActionIndexMN_M_Group_M_Console_S_ConfigureApplications,
-    UIActionIndexMN_M_Group_M_Close,
-    UIActionIndexMN_M_Group_M_Close_S_SaveState,
-    UIActionIndexMN_M_Group_M_Close_S_Terminate,
-    UIActionIndexMN_M_Group_M_Close_S_Shutdown,
-    UIActionIndexMN_M_Group_M_Close_S_PowerOff,
+    UIActionIndexMN_M_Group_M_Stop,
+    UIActionIndexMN_M_Group_M_Stop_S_SaveState,
+    UIActionIndexMN_M_Group_M_Stop_S_Terminate,
+    UIActionIndexMN_M_Group_M_Stop_S_Shutdown,
+    UIActionIndexMN_M_Group_M_Stop_S_PowerOff,
     UIActionIndexMN_M_Group_M_Tools,
     UIActionIndexMN_M_Group_M_Tools_T_Details,
     UIActionIndexMN_M_Group_M_Tools_T_Snapshots,
@@ -129,11 +129,11 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Machine_M_Console_S_CopyCommandVNCWindows,
     UIActionIndexMN_M_Machine_M_Console_S_ConfigureApplications,
     UIActionIndexMN_M_Machine_M_Console_S_ShowLog,
-    UIActionIndexMN_M_Machine_M_Close,
-    UIActionIndexMN_M_Machine_M_Close_S_SaveState,
-    UIActionIndexMN_M_Machine_M_Close_S_Terminate,
-    UIActionIndexMN_M_Machine_M_Close_S_Shutdown,
-    UIActionIndexMN_M_Machine_M_Close_S_PowerOff,
+    UIActionIndexMN_M_Machine_M_Stop,
+    UIActionIndexMN_M_Machine_M_Stop_S_SaveState,
+    UIActionIndexMN_M_Machine_M_Stop_S_Terminate,
+    UIActionIndexMN_M_Machine_M_Stop_S_Shutdown,
+    UIActionIndexMN_M_Machine_M_Stop_S_PowerOff,
     UIActionIndexMN_M_Machine_M_Tools,
     UIActionIndexMN_M_Machine_M_Tools_T_Details,
     UIActionIndexMN_M_Machine_M_Tools_T_Snapshots,
