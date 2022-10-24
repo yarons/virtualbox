@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporting.py 97279 2022-10-24 14:36:36Z knut.osmundsen@oracle.com $
+# $Id: reporting.py 97280 2022-10-24 14:48:24Z knut.osmundsen@oracle.com $
 
 """
 Test Result Report Writer.
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
 
-__version__ = "$Revision: 97279 $"
+__version__ = "$Revision: 97280 $"
 
 # Standard python imports.
 import os;
@@ -281,8 +281,8 @@ class RunRow(object):
         """ Formats percentage value as text. """
         if rdPct >= 100:
             return '%s%s%%' % (chSign, utils.formatNumber(int(rdPct + 0.5)),);
-        if rdPct * 100 + 0.5 >= 1:
-            return '%s%.*f%%' % (chSign, cPctPrecision, rdPct + 0.005,);
+        if round(rdPct, cPctPrecision) != 0:
+            return '%s%.*f%%' % (chSign, cPctPrecision, rdPct,); # %.*f rounds.
         return '~' + chSign + '0.' + '0' * cPctPrecision + '%';
 
     @staticmethod
