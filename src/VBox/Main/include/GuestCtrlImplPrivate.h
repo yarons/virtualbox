@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 97276 2022-10-24 10:23:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1383,6 +1383,28 @@ protected:
      *  for guest files this is the internal file ID. */
     uint32_t                 mObjectID;
     /** @} */
+};
+
+/**
+ * Class for handling guest / host path functions.
+ */
+class GuestPath
+{
+private:
+
+    /**
+     * Default constructor.
+     *
+     * Not directly instantiable (yet).
+     */
+    GuestPath(void) { }
+
+public:
+
+    /** @name Static helper functions.
+     * @{ */
+    static int Translate(Utf8Str &strPath, PathStyle_T enmSrcPathStyle, PathStyle_T enmDstPathStyle);
+    /** @}  */
 };
 #endif /* !MAIN_INCLUDED_GuestCtrlImplPrivate_h */
 
