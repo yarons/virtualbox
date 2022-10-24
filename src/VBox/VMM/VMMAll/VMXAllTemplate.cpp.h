@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 97262 2022-10-21 08:10:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 97281 2022-10-24 14:58:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -4809,7 +4809,7 @@ static VBOXSTRICTRC vmxHCInjectEventVmcs(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo,
 
             /* Construct the stack frame for the interrupt/exception handler. */
             VBOXSTRICTRC rcStrict;
-            rcStrict = hmR0VmxRealModeGuestStackPush(pVCpu, pCtx->eflags.u);
+            rcStrict = hmR0VmxRealModeGuestStackPush(pVCpu, (uint16_t)pCtx->eflags.u);
             if (rcStrict == VINF_SUCCESS)
             {
                 rcStrict = hmR0VmxRealModeGuestStackPush(pVCpu, pCtx->cs.Sel);
