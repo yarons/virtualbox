@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 97222 2022-10-18 22:52:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 97286 2022-10-24 22:15:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -323,7 +323,7 @@ VBOXSTRICTRC iemSvmVmexit(PVMCPUCC pVCpu, uint64_t uExitCode, uint64_t uExitInfo
         /*
          * Restore the subset of the inhibit flags that were preserved.
          */
-        pVCpu->cpum.GstCtx.fInhibit |= pVCpu->cpum.GstCtx.hwvirt.fSavedInhibit;
+        pVCpu->cpum.GstCtx.eflags.uBoth |= pVCpu->cpum.GstCtx.hwvirt.fSavedInhibit;
 
         if (rcStrict == VINF_SUCCESS)
         {
@@ -728,8 +728,8 @@ static VBOXSTRICTRC iemSvmVmrun(PVMCPUCC pVCpu, uint8_t cbInstr, RTGCPHYS GCPhys
          * VMRUN has implicit GIF (Global Interrupt Flag) handling, we don't need to
          * preserve VMCPU_FF_INHIBIT_INTERRUPTS.
          */
-        pVCpu->cpum.GstCtx.hwvirt.fSavedInhibit = pVCpu->cpum.GstCtx.fInhibit & CPUMCTX_INHIBIT_NMI;
-        pVCpu->cpum.GstCtx.fInhibit            &=                              ~CPUMCTX_INHIBIT_NMI;
+        pVCpu->cpum.GstCtx.hwvirt.fSavedInhibit = pVCpu->cpum.GstCtx.eflags.uBoth & CPUMCTX_INHIBIT_NMI;
+        pVCpu->cpum.GstCtx.eflags.uBoth        &=                                  ~CPUMCTX_INHIBIT_NMI;
 
         /*
          * Pause filter.
