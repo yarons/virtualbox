@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIActionPoolManager.h 97277 2022-10-24 12:37:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -78,12 +78,12 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Group_M_StartOrShow_S_StartDetachable,
     UIActionIndexMN_M_Group_T_Pause,
     UIActionIndexMN_M_Group_S_Reset,
+    UIActionIndexMN_M_Group_S_Detach,
     UIActionIndexMN_M_Group_M_Console,
     UIActionIndexMN_M_Group_M_Console_S_CreateConnection,
     UIActionIndexMN_M_Group_M_Console_S_DeleteConnection,
     UIActionIndexMN_M_Group_M_Console_S_ConfigureApplications,
     UIActionIndexMN_M_Group_M_Close,
-    UIActionIndexMN_M_Group_M_Close_S_Detach,
     UIActionIndexMN_M_Group_M_Close_S_SaveState,
     UIActionIndexMN_M_Group_M_Close_S_Terminate,
     UIActionIndexMN_M_Group_M_Close_S_Shutdown,
@@ -119,6 +119,7 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Machine_M_StartOrShow_S_StartDetachable,
     UIActionIndexMN_M_Machine_T_Pause,
     UIActionIndexMN_M_Machine_S_Reset,
+    UIActionIndexMN_M_Machine_S_Detach,
     UIActionIndexMN_M_Machine_M_Console,
     UIActionIndexMN_M_Machine_M_Console_S_CreateConnection,
     UIActionIndexMN_M_Machine_M_Console_S_DeleteConnection,
@@ -129,7 +130,6 @@ enum UIActionIndexMN
     UIActionIndexMN_M_Machine_M_Console_S_ConfigureApplications,
     UIActionIndexMN_M_Machine_M_Console_S_ShowLog,
     UIActionIndexMN_M_Machine_M_Close,
-    UIActionIndexMN_M_Machine_M_Close_S_Detach,
     UIActionIndexMN_M_Machine_M_Close_S_SaveState,
     UIActionIndexMN_M_Machine_M_Close_S_Terminate,
     UIActionIndexMN_M_Machine_M_Close_S_Shutdown,

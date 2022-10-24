@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 97076 2022-10-10 16:55:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 97277 2022-10-24 12:37:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -460,6 +460,8 @@ private:
         static bool isAtLeastOneItemStarted(const QList<UIVirtualMachineItem*> &items);
         /** Returns whether at least one of passed @a items is running. */
         static bool isAtLeastOneItemRunning(const QList<UIVirtualMachineItem*> &items);
+        /** Returns whether at least one of passed @a items is detachable. */
+        static bool isAtLeastOneItemDetachable(const QList<UIVirtualMachineItem*> &items);
 
 #ifdef VBOX_WS_X11
         /** Tries to guess default X11 terminal emulator.
