@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 97292 2022-10-25 08:29:49Z alexander.eichner@oracle.com $ $Revision: 97292 $ $Date: 2022-10-25 10:29:49 +0200 (Tue, 25 Oct 2022) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 97293 2022-10-25 08:50:06Z alexander.eichner@oracle.com $ $Revision: 97293 $ $Date: 2022-10-25 10:50:06 +0200 (Tue, 25 Oct 2022) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1990,6 +1990,10 @@ static int virtioNetR3CopyRxPktToGuest(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVI
     RT_NOREF(pThisCC);
 #ifdef VIRTIO_VBUF_ON_STACK
     VIRTQBUF_T VirtqBuf;
+
+    VirtqBuf.u32Magic  = VIRTQBUF_MAGIC;
+    VirtqBuf.cRefs     = 1;
+
     PVIRTQBUF pVirtqBuf = &VirtqBuf;
     int rc = virtioCoreR3VirtqAvailBufGet(pDevIns, &pThis->Virtio, pRxVirtq->uIdx, pVirtqBuf, true);
 #else /* !VIRTIO_VBUF_ON_STACK */
@@ -2726,6 +2730,10 @@ static int virtioNetR3TransmitPkts(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIO
     int rc;
 #ifdef VIRTIO_VBUF_ON_STACK
     VIRTQBUF_T VirtqBuf;
+
+    VirtqBuf.u32Magic  = VIRTQBUF_MAGIC;
+    VirtqBuf.cRefs     = 1;
+
     PVIRTQBUF pVirtqBuf = &VirtqBuf;
     while ((rc = virtioCoreR3VirtqAvailBufPeek(pVirtio->pDevInsR3, pVirtio, pTxVirtq->uIdx, pVirtqBuf)) == VINF_SUCCESS)
 #else /* !VIRTIO_VBUF_ON_STACK */
