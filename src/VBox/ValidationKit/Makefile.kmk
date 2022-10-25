@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97296 2022-10-25 13:30:48Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -318,8 +318,13 @@ endif
 #
 ifdef VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING
  define def_vbox_validationkit_unittests
+  # IPRT unit tests.
   VBOX_VALIDATIONKIT_FILESPEC_UNITTESTS += \
   	$(foreach whitelisted, $(VALKIT_UNITTESTS_WHITELIST_IPRT) $(VALKIT_UNITTESTS_WHITELIST_IPRT.$(os)), \
+		$$(wildcard $(VBOX_PATH_VALIDATIONKIT_UNITTESTS.$(os).$(arch))/$(whitelisted)$(TMP_SUFF_EXE)))
+  # Unit tests which utilize parts of the Guest Additions.
+  VBOX_VALIDATIONKIT_FILESPEC_UNITTESTS += \
+  	$(foreach whitelisted, $(VALKIT_UNITTESTS_WHITELIST_GUEST_ADDITIONS) $(VALKIT_UNITTESTS_WHITELIST_GUEST_ADDITIONS.$(os)), \
 		$$(wildcard $(VBOX_PATH_VALIDATIONKIT_UNITTESTS.$(os).$(arch))/$(whitelisted)$(TMP_SUFF_EXE)))
  endef
 
