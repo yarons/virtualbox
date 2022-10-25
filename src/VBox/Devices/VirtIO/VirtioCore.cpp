@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 97030 2022-10-06 14:16:55Z michal.necasek@oracle.com $ */
+/* $Id: VirtioCore.cpp 97292 2022-10-25 08:29:49Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -2463,7 +2463,7 @@ int virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVir
         /* Non-transitional devices SHOULD have a PCI Revision ID of 1 or higher. */
         PDMPciDevSetRevisionId(pPciDev,     DEVICE_PCI_REVISION_ID_VIRTIO_V1);
 
-    PDMPciDevSetSubSystemId(pPciDev,        DEVICE_PCI_NETWORK_SUBSYSTEM);
+    PDMPciDevSetSubSystemId(pPciDev,        pPciParams->uSubsystemId);
     PDMPciDevSetSubSystemVendorId(pPciDev,  DEVICE_PCI_VENDOR_ID_VIRTIO);
     PDMPciDevSetClassBase(pPciDev,          pPciParams->uClassBase);
     PDMPciDevSetClassSub(pPciDev,           pPciParams->uClassSub);

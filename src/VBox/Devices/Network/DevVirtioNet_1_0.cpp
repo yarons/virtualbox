@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 97092 2022-10-11 15:29:59Z klaus.espenlaub@oracle.com $ $Revision: 97092 $ $Date: 2022-10-11 17:29:59 +0200 (Tue, 11 Oct 2022) $ $Author: klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet_1_0.cpp 97292 2022-10-25 08:29:49Z alexander.eichner@oracle.com $ $Revision: 97292 $ $Date: 2022-10-25 10:29:49 +0200 (Tue, 25 Oct 2022) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3542,7 +3542,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
     VirtioPciParams.uClassBase                     = PCI_CLASS_BASE_NETWORK_CONTROLLER;
     VirtioPciParams.uClassSub                      = PCI_CLASS_SUB_NET_ETHERNET_CONTROLLER;
     VirtioPciParams.uClassProg                     = PCI_CLASS_PROG_UNSPECIFIED;
-    VirtioPciParams.uSubsystemId                   = PCI_DEVICE_ID_VIRTIONET_HOST;  /* VirtIO 1.0 allows PCI Device ID here */
+    VirtioPciParams.uSubsystemId                   = DEVICE_PCI_NETWORK_SUBSYSTEM;  /* VirtIO 1.0 allows PCI Device ID here */
     VirtioPciParams.uInterruptLine                 = 0x00;
     VirtioPciParams.uInterruptPin                  = 0x01;
 
