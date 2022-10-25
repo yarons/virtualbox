@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97288 2022-10-25 07:13:52Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 97291 2022-10-25 08:06:17Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97288 $"
+__version__ = "$Revision: 97291 $"
 
 
 # Standard Python imports.
@@ -1213,14 +1213,14 @@ class tdUnitTest1(vbox.TestDriver):
                     reporter.log('%s: SKIPPED (blacklisted)' % (sName,));
                     continue;
 
-                elif self._isExcluded(sName, self.kdTestCasesBuggy):
+                if self._isExcluded(sName, self.kdTestCasesBuggy):
                     reporter.testStart(sName);
                     reporter.log('%s: Skipping, buggy in general.' % (sName,));
                     reporter.testDone(fSkipped = True);
                     self.cSkipped += 1;
                     continue;
 
-                elif self._isExcluded(sName, dTestCasesBuggyForHostOs):
+                if self._isExcluded(sName, dTestCasesBuggyForHostOs):
                     reporter.testStart(sName);
                     reporter.log('%s: Skipping, buggy on %s.' % (sName, utils.getHostOs(),));
                     reporter.testDone(fSkipped = True);
