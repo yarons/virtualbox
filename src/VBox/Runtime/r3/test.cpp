@@ -1,4 +1,4 @@
-/* $Id: test.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: test.cpp 97298 2022-10-25 14:19:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1378,7 +1378,8 @@ RTR3DECL(int) RTTestSub(RTTEST hTest, const char *pszSubTest)
     pTest->cSubTestAtErrors = ASMAtomicUoReadU32(&pTest->cErrors);
     pTest->pszSubTest = RTStrDup(pszSubTest);
     pTest->cchSubTest = strlen(pszSubTest);
-    Assert(pTest->cchSubTest < 64 /* See g_kcchMaxTestResultName in testmanager/config.py. */);
+    AssertMsg(pTest->cchSubTest < 64 /* See g_kcchMaxTestResultName in testmanager/config.py. */,
+              ("cchSubTest=%u: '%s'\n", pTest->cchSubTest, pTest->pszSubTest));
     pTest->fSubTestSkipped  = false;
     pTest->fSubTestReported = false;
 
