@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97152 2022-10-14 08:14:05Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97306 2022-10-26 14:43:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -82,7 +82,7 @@ GuestSessionTask::GuestSessionTask(GuestSession *pSession)
 {
     mSession = pSession;
 
-    switch (mSession->i_getPathStyle())
+    switch (mSession->i_getGuestPathStyle())
     {
         case PathStyle_DOS:
             mfPathStyle = RTPATH_STR_F_STYLE_DOS;
