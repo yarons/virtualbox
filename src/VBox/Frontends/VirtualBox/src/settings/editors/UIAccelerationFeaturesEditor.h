@@ -1,4 +1,4 @@
-/* $Id: UIAccelerationFeaturesEditor.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIAccelerationFeaturesEditor.h 97310 2022-10-26 16:07:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAccelerationFeaturesEditor class declaration.
  */
@@ -46,8 +46,6 @@ class SHARED_LIBRARY_STUFF UIAccelerationFeaturesEditor : public QIWithRetransla
 
 signals:
 
-    /** Notifies listeners about virtualization change. */
-    void sigChangedVirtualization();
     /** Notifies listeners about nested paging change. */
     void sigChangedNestedPaging();
 
@@ -55,13 +53,6 @@ public:
 
     /** Constructs editor passing @a pParent to the base-class. */
     UIAccelerationFeaturesEditor(QWidget *pParent = 0);
-
-    /** Defines whether 'enable virtualization' feature in @a fOn. */
-    void setEnableVirtualization(bool fOn);
-    /** Returns 'enable virtualization' feature value. */
-    bool isEnabledVirtualization() const;
-    /** Defines whether 'enable virtualization' option @a fAvailable. */
-    void setEnableVirtualizationAvailable(bool fAvailable);
 
     /** Defines whether 'enable nested paging' feature in @a fOn. */
     void setEnableNestedPaging(bool fOn);
@@ -87,8 +78,6 @@ private:
 
     /** @name Values
      * @{ */
-        /** Holds the 'enable virtualization' feature value. */
-        bool  m_fEnableVirtualization;
         /** Holds the 'enable nested paging' feature value. */
         bool  m_fEnableNestedPaging;
     /** @} */
@@ -99,8 +88,6 @@ private:
         QGridLayout *m_pLayout;
         /** Holds the label instance. */
         QLabel      *m_pLabel;
-        /** Holds the 'enable virtualization' check-box instance. */
-        QCheckBox   *m_pCheckBoxEnableVirtualization;
         /** Holds the 'enable nested paging' check-box instance. */
         QCheckBox   *m_pCheckBoxEnableNestedPaging;
     /** @} */

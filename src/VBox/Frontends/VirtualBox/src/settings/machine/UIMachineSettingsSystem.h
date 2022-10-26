@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 96669 2022-09-09 12:31:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 97310 2022-10-26 16:07:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -64,8 +64,6 @@ public:
 
     /** Returns whether the HW Virt Ex is supported. */
     bool isHWVirtExSupported() const;
-    /** Returns whether the HW Virt Ex is enabled. */
-    bool isHWVirtExEnabled() const;
 
     /** Returns whether the Nested Paging is supported. */
     bool isNestedPagingSupported() const;
@@ -116,11 +114,6 @@ protected:
 
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
-
-private slots:
-
-    /** Handles HW Virt Ex check-box toggling. */
-    void sltHandleHwVirtExToggle();
 
 private:
 
