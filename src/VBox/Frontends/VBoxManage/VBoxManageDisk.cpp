@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 97260 2022-10-20 23:02:43Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageDisk.cpp 97313 2022-10-26 18:27:37Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -470,9 +470,9 @@ RTEXITCODE handleCreateMedium(HandlerArg *a)
     if (fBase)
     {
         if (!filename || !*filename)
-            return errorSyntax(Disk::tr("Parameters --filename is required"));
+            return errorSyntax(Disk::tr("Parameter --filename is required"));
         if ((enmMediumVariant & MediumVariant_VmdkRawDisk) == 0 && size == 0)
-            return errorSyntax(Disk::tr("Parameters --size is required"));
+            return errorSyntax(Disk::tr("Parameter --size is required"));
         if (!format || !*format)
         {
             if (cmd == CMD_DISK)
