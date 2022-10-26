@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 97303 2022-10-26 14:24:59Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 97304 2022-10-26 14:28:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1404,7 +1404,7 @@ public:
 
     /** @name Static helper functions.
      * @{ */
-    static int Translate(Utf8Str &strPath, PathStyle_T enmSrcPathStyle, PathStyle_T enmDstPathStyle);
+    static int Translate(Utf8Str &strPath, PathStyle_T enmSrcPathStyle, PathStyle_T enmDstPathStyle, bool fForce = false);
     /** @}  */
 };
 #endif /* !MAIN_INCLUDED_GuestCtrlImplPrivate_h */
