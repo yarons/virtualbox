@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 97308 2022-10-26 15:44:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1691,9 +1691,13 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
     {
         RTFSOBJINFO ObjInfo;
         vrc = RTPathQueryInfo(szAbsDst, &ObjInfo, RTFSOBJATTRADD_NOTHING);
-        if (RT_FAILURE(vrc))
-            return RTMsgErrorExitFailure(GuestCtrl::tr("RTPathQueryInfo failed on '%s': %Rrc"), szAbsDst, vrc);
-        fDstIsDir = RTFS_IS_DIRECTORY(ObjInfo.Attr.fMode);
+        if (RT_SUCCESS(vrc))
+        {
+            fDstIsDir = RTFS_IS_DIRECTORY(ObjInfo.Attr.fMode);
+        }
+        else if (   RT_FAILURE(vrc)
+                 && vrc != VERR_FILE_NOT_FOUND) /* Destination file on the host might not exist yet, which is fine. */
+                return RTMsgErrorExitFailure(GuestCtrl::tr("RTPathQueryInfo failed on '%s': %Rrc"), szAbsDst, vrc);
     }
     else
     {
