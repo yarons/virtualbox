@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -206,6 +206,7 @@ const char *UIExtraDataDefs::GUI_GuruMeditationHandler = "GUI/GuruMeditationHand
 const char *UIExtraDataDefs::GUI_HidLedsSync = "GUI/HidLedsSync";
 const char *UIExtraDataDefs::GUI_ScaleFactor = "GUI/ScaleFactor";
 const char *UIExtraDataDefs::GUI_Scaling_Optimization = "GUI/Scaling/Optimization";
+const char *UIExtraDataDefs::GUI_FontScaleFactor = "GUI/FontScaleFactor";
 
 /* Virtual Machine: Session Information Dialog: */
 const char *UIExtraDataDefs::GUI_SessionInformationDialogGeometry = "GUI/SessionInformationDialogGeometry";

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2607,6 +2607,27 @@ QString UIExtraDataManager::hostKeyCombination()
     }
     /* Return host-key combination: */
     return strHostCombo;
+}
+
+void UIExtraDataManager::setFontScaleFactor(int iFontScaleFactor)
+{
+    int iMax = 200;
+    int iMin = 40;
+    if (iFontScaleFactor < iMin || iFontScaleFactor > iMax)
+        return;
+    setExtraDataString(GUI_FontScaleFactor, QString::number(iFontScaleFactor));
+}
+
+int UIExtraDataManager::fontScaleFactor()
+{
+    QString strFontScaleFactor = extraDataString(GUI_FontScaleFactor);
+    bool fConversion = false;
+    int iScaleFactor = strFontScaleFactor.toInt(&fConversion);
+    int iMax = 200;
+    int iMin = 40;
+    if (!fConversion || iScaleFactor < iMin || iScaleFactor > iMax)
+        return 100;
+    return iScaleFactor;
 }
 
 void UIExtraDataManager::setHostKeyCombination(const QString &strHostCombo)

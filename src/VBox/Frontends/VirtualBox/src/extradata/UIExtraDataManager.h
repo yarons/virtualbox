@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -283,6 +283,9 @@ public:
         bool disableHostScreenSaver();
         /* Sets whether host screen saver is disabled when a vm is running. */
         void setDisableHostScreenSaver(bool fActivate);
+        /* Set global font scale factor as percentage. 100% is for no scaling. */
+        void setFontScaleFactor(int iFontScaleFactor);
+        int  fontScaleFactor();
     /** @} */
 
     /** @name Settings: Keyboard

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 96816 2022-09-21 17:15:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -383,6 +383,8 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_ScaleFactor;
         /** Holds the scaling optimization type. */
         SHARED_LIBRARY_STUFF extern const char *GUI_Scaling_Optimization;
+        /** Holds the font scale factor. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_FontScaleFactor;
     /** @} */
 
     /** @name Virtual Machine: Information dialog

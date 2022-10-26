@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -525,6 +525,9 @@ public:
           * @param  pWidget      The object to get the help keyword property from. */
         static QString helpKeyword(const QObject *pWidget);
     /** @} */
+
+    /* Scales the qApp's font. iFontScaleFactor is percentage thus 100% is for no scaling. */
+    void scaleApplicationFont(int iFontScaleFactor);
 
 public slots:
 
