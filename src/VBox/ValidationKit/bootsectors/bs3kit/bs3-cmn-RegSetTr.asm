@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegSetTr.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: bs3-cmn-RegSetTr.asm 97315 2022-10-26 22:49:53Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3RegSetTr
 ;
@@ -79,8 +79,10 @@ BS3_PROC_BEGIN_CMN Bs3RegSetTr, BS3_PBC_HYBRID_SAFE
         push    ds
         mov     ax, BS3_SEL_SYSTEM16
         mov     ds, ax
+        mov     di, dx
         add     xDI, Bs3Gdt wrt BS3SYSTEM16
 %else
+        movzx   edi, dx
         add     xDI, Bs3Gdt wrt FLAT
 %endif
         add     xDI, X86DESCGENERIC_BIT_OFF_TYPE / 8
