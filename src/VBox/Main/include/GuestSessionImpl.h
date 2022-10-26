@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestSessionImpl.h 97305 2022-10-26 14:40:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -325,7 +325,8 @@ public:
     bool                    i_isTerminated(void) const;
     int                     i_onRemove(void);
     int                     i_onSessionStatusChange(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
-    PathStyle_T             i_getPathStyle(void);
+    PathStyle_T             i_getGuestPathStyle(void);
+    static PathStyle_T      i_getHostPathStyle(void);
     int                     i_startSession(int *pGuestRc);
     int                     i_startSessionAsync(void);
     Guest                  *i_getParent(void) { return mParent; }
