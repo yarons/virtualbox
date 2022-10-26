@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 97276 2022-10-24 10:23:55Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 97303 2022-10-26 14:24:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1395,6 +1395,26 @@ FsObjType_T GuestBase::fileModeToFsObjType(RTFMODE fMode)
     else if (RTFS_IS_SYMLINK(fMode))   return FsObjType_Symlink;
 
     return FsObjType_Unknown;
+}
+
+/**
+ * Converts a FsObjType_T to a human-readable string.
+ *
+ * @returns Human-readable string of FsObjType_T.
+ * @param   enmType             FsObjType_T to convert.
+ */
+/* static */
+const char *GuestBase::fsObjTypeToStr(FsObjType_T enmType)
+{
+    switch (enmType)
+    {
+        case FsObjType_Directory: return "directory";
+        case FsObjType_Symlink:   return "symbolic link";
+        case FsObjType_File:      return "file";
+        default:                  break;
+    }
+
+    return "unknown";
 }
 
 GuestObject::GuestObject(void)

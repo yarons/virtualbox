@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 97276 2022-10-24 10:23:55Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 97303 2022-10-26 14:24:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1290,6 +1290,7 @@ public:
 public:
 
     static FsObjType_T fileModeToFsObjType(RTFMODE fMode);
+    static const char *fsObjTypeToStr(FsObjType_T enmType);
     static Utf8Str getErrorAsString(const Utf8Str &strAction, const GuestErrorInfo& guestErrorInfo);
     static Utf8Str getErrorAsString(const GuestErrorInfo &guestErrorInfo);
 
