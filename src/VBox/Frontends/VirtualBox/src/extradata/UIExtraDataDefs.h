@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -487,6 +487,12 @@ namespace UIExtraDataDefs
 
         /** Holds the obsolete keys map. */
         SHARED_LIBRARY_STUFF extern QMultiMap<QString, QString> g_mapOfObsoleteKeys;
+    /** @} */
+
+    /** @name Font scaling factor min-max.
+      * @{ */
+        extern const int iFontScaleMin;
+        extern const int iFontScaleMax;
     /** @} */
 }
 

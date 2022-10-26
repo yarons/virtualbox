@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -266,6 +266,9 @@ const char *UIExtraDataDefs::GUI_VMActivityOverview_HiddenColumns = "GUI/VMActiv
 const char *UIExtraDataDefs::GUI_VMActivityOverview_ShowAllMachines = "GUI/VMActivityOverviewShowAllMachines";
 
 const char *UIExtraDataDefs::GUI_MediumSelector_DialogGeometry = "GUI/MediumSelector/DialogGeometry";
+
+const int UIExtraDataDefs::iFontScaleMin = 50;
+const int UIExtraDataDefs::iFontScaleMax = 150;
 
 /* Obsolete keys: */
 QMultiMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()

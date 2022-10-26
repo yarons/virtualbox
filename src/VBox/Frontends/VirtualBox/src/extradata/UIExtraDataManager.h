@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.h 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -119,6 +119,9 @@ signals:
 
     /** Notifies about the scaling optimization type change. */
     void sigScalingOptimizationTypeChange(const QUuid &uMachineID);
+
+    /** Notifies about font scale factor. */
+    void sigFontScaleFactorChanged(int iFontScaleFactor);
 
 #ifdef VBOX_WS_MAC
     /** Notifies about the HiDPI optimization type change. */
