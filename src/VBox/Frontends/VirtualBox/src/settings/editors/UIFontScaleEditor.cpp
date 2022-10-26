@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.cpp 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFontScaleEditor.cpp 97312 2022-10-26 17:08:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class implementation.
  */
@@ -183,7 +183,7 @@ void UIFontScaleEditor::prepareScaleFactorMinMax()
     m_pScaleSlider->setMaximum(iMaximum);
     m_pScaleSlider->setPageStep(20);
     m_pScaleSlider->setSingleStep(10);
-    m_pScaleSlider->setTickInterval(20);
+    m_pScaleSlider->setTickInterval(10);
     m_pScaleSpinBox->setSingleStep(10);
     m_pScaleSpinBox->setMinimum(iMinimum);
     m_pScaleSpinBox->setMaximum(iMaximum);
