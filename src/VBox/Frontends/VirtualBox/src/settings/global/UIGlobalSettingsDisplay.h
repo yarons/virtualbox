@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 97245 2022-10-20 08:44:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.h 97302 2022-10-26 10:26:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -36,6 +36,7 @@
 
 /* Forward declarations: */
 class UIDisplayFeaturesEditor;
+class UIFontScaleEditor;
 class UIMaximumGuestScreenSizeEditor;
 class UIScaleFactorEditor;
 struct UIDataSettingsGlobalDisplay;
@@ -98,6 +99,8 @@ private:
         UIScaleFactorEditor            *m_pEditorScaleFactor;
         /** Holds the global display features editor instance. */
         UIDisplayFeaturesEditor        *m_pEditorGlobalDisplayFeatures;
+        /** Holds the font scale editor instance. */
+        UIFontScaleEditor              *m_pFontScaleEditor;
     /** @} */
 };
 
