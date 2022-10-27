@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: bs3-cpu-weird-1.c 97321 2022-10-27 12:46:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-1, 16-bit C code.
  */
@@ -46,6 +46,7 @@
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 FNBS3TESTDOMODE bs3CpuWeird1_DbgInhibitRingXfer_f16;
+FNBS3TESTDOMODE bs3CpuWeird1_PcWrapping_f16;
 
 
 /*********************************************************************************************************************************
@@ -54,6 +55,7 @@ FNBS3TESTDOMODE bs3CpuWeird1_DbgInhibitRingXfer_f16;
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 {
     { "dbg+inhibit+ringxfer", bs3CpuWeird1_DbgInhibitRingXfer_f16, 0 },
+    { "pc wrapping", bs3CpuWeird1_PcWrapping_f16, 0 },
 };
 
 
@@ -69,6 +71,6 @@ BS3_DECL(void) Main_rm()
     Bs3TestDoModesByOne_rm(g_aModeByOneTests, RT_ELEMENTS(g_aModeByOneTests), 0);
 
     Bs3TestTerm();
-for (;;) { ASMHalt(); }
+    Bs3Shutdown();
 }
 
