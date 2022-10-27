@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 97286 2022-10-24 22:15:44Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 97316 2022-10-27 11:23:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1277,6 +1277,7 @@ DECLCALLBACK(void) cpumR3InfoVmxFeatures(PVM pVM, PCDBGFINFOHLP pHlp, const char
         VMXFEATDUMP("ExitSaveEferMsr - Save IA32_EFER MSR on VM-exit        ", fVmxExitSaveEferMsr);
         VMXFEATDUMP("ExitLoadEferMsr - Load IA32_EFER MSR on VM-exit        ", fVmxExitLoadEferMsr);
         VMXFEATDUMP("SavePreemptTimer - Save VMX-preemption timer           ", fVmxSavePreemptTimer);
+        VMXFEATDUMP("ExitCtls2 - Secondary VM-exit controls                 ", fVmxExitCtls2);
 
         /* Miscellaneous data. */
         VMXFEATDUMP("ExitSaveEferLma - Save IA32_EFER.LMA on VM-exit        ", fVmxExitSaveEferLma);
