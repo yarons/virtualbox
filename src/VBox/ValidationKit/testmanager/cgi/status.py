@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: status.py 97328 2022-10-27 17:55:11Z ksenia.s.stepanova@oracle.com $
 
 """
 CGI - Administrator Web-UI.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97328 $"
 
 
 # Standard python imports.
@@ -73,6 +73,11 @@ def testbox_data_processing(oDb):
         oTimeDeltaSinceStarted = line[2]
         test_box_os = line[3]
         test_sched_group = line[4]
+
+        # idle testboxes might have an assigned testsets, skipping them
+        if test_result not in g_kdTestStatuses:
+            continue
+
         testboxes_dict = dict_update(testboxes_dict, testbox_name, test_result)
 
         if "testbox_os" not in testboxes_dict[testbox_name]:
@@ -289,29 +294,15 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         if oDb is None:
             return False;
 
-        #        oDb.execute('''
-        #SELECT  TestBoxesWithStrings.sName,
-        #        TestSets.enmStatus,
-        #        CURRENT_TIMESTAMP - TestSets.tsCreated,
-        #        TestBoxesWithStrings.sOS,
-        #        SchedGroupNames.sSchedGroupNames
-        #FROM    (SELECT TestBoxesInSchedGroups.idTestBox AS idTestBox,
-        #                STRING_AGG(SchedGroups.sName, ',') AS sSchedGroupNames
-        #         FROM   TestBoxesInSchedGroups
-        #         INNER JOIN SchedGroups
-        #                 ON SchedGroups.idSchedGroup = TestBoxesInSchedGroups.idSchedGroup
-        #         WHERE  TestBoxesInSchedGroups.tsExpire = 'infinity'::TIMESTAMP
-        #            AND SchedGroups.tsExpire            = 'infinity'::TIMESTAMP
-        #         GROUP BY TestBoxesInSchedGroups.idTestBox)
-        #        AS SchedGroupNames,
-        #        TestBoxesWithStrings
-        #LEFT OUTER JOIN TestSets
-        #             ON TestSets.idTestBox = TestBoxesWithStrings.idTestBox
-        #            AND (   TestSets.tsCreated > (CURRENT_TIMESTAMP - '%s hours'::interval)
-        #                 OR TestSets.tsDone IS NULL)
-        #WHERE   TestBoxesWithStrings.tsExpire = 'infinity'::TIMESTAMP
-        #  AND   SchedGroupNames.idTestBox = TestBoxesWithStrings.idTestBox
-        #''', (cHoursBack,));
+        #
+        # some comments regarding select below:
+        # first part is about fetching all finished tests for last cHoursBack hours
+        # second part is fetching all tests which isn't done
+        # both old (running more than cHoursBack) and fresh (less than cHoursBack) ones
+        # 'cause we want to know if there's a hanging tests together with currently running
+        #
+        # there's also testsets without status at all, likely because disabled testboxes still have an assigned testsets
+        #
         oDb.execute('''
 (   SELECT  TestBoxesWithStrings.sName,
             TestSets.enmStatus,
@@ -354,7 +345,6 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
             TestBoxesWithStrings
     LEFT OUTER JOIN TestSets
                  ON TestSets.idTestBox  = TestBoxesWithStrings.idTestBox
-                AND TestSets.tsCreated < (CURRENT_TIMESTAMP - '%s hours'::interval)
                 AND TestSets.tsDone IS NULL
     WHERE   TestBoxesWithStrings.tsExpire = 'infinity'::TIMESTAMP
       AND   SchedGroupNames.idTestBox = TestBoxesWithStrings.idTestBox
