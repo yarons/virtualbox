@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.h 97318 2022-10-27 11:49:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFontScaleEditor.h 97322 2022-10-27 13:02:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class declaration.
  */
@@ -102,6 +102,8 @@ private:
         QLabel           *m_pMinScaleLabel;
         QLabel           *m_pMaxScaleLabel;
     /** @} */
+    /** Hold the factor by which we divided spinbox's @a range to set slider's range to make slider mouse move stop on ticks. */
+    const int m_iSliderRangeDivisor;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_settings_editors_UIFontScaleEditor_h */
