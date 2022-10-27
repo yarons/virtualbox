@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.h 97307 2022-10-26 15:28:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFontScaleEditor.h 97318 2022-10-27 11:49:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class declaration.
  */
@@ -41,6 +41,7 @@ class QLabel;
 class QSpinBox;
 class QWidget;
 class QIAdvancedSlider;
+class UIFontScaleFactorSpinBox;
 
 /** QWidget reimplementation providing GUI with monitor scale factor editing functionality.
   * It includes a combo box to select a monitor, a slider, and a spinbox to display/modify values.
@@ -97,7 +98,7 @@ private:
         QGridLayout      *m_pLayout;
         QLabel           *m_pLabel;
         QIAdvancedSlider *m_pScaleSlider;
-        QSpinBox         *m_pScaleSpinBox;
+        UIFontScaleFactorSpinBox         *m_pScaleSpinBox;
         QLabel           *m_pMinScaleLabel;
         QLabel           *m_pMaxScaleLabel;
     /** @} */
