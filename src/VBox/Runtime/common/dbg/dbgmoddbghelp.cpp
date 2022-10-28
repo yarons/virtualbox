@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: dbgmoddbghelp.cpp 97336 2022-10-28 14:25:34Z vitali.pelenjow@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -246,6 +246,7 @@ static BOOL CALLBACK rtDbgModDbgHelpCopyLineNumberCallback(PSRCCODEINFOW pLineIn
     /** @todo we could combine RTUtf16Len and memcmp... */
     size_t cbLen  = (RTUtf16Len(pLineInfo->FileName) + 1) * sizeof(RTUTF16);
     if (   !pArgs->pwszPrev
+        || pArgs->cbPrevUtf16Alloc < cbLen
         || memcmp(pArgs->pwszPrev, pLineInfo->FileName, cbLen) )
     {
         if (pArgs->cbPrevUtf16Alloc >= cbLen)
