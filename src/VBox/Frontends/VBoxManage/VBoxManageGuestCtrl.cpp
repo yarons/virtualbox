@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 97345 2022-10-31 11:25:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 97349 2022-10-31 14:38:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3572,8 +3572,8 @@ RTEXITCODE handleGuestControl(HandlerArg *pArg)
     {
         { "run",                gctlHandleRun,              HELP_SCOPE_GUESTCONTROL_RUN,       0 },
         { "start",              gctlHandleStart,            HELP_SCOPE_GUESTCONTROL_START,     0 },
-        { "copyfrom",           gctlHandleCopyFrom,         HELP_SCOPE_GUESTCONTROL_COPYFROM_HOSTDEST,  0 },
-        { "copyto",             gctlHandleCopyTo,           HELP_SCOPE_GUESTCONTROL_COPYTO_HOSTDEST,    0 },
+        { "copyfrom",           gctlHandleCopyFrom,         HELP_SCOPE_GUESTCONTROL_COPYFROM,  0 },
+        { "copyto",             gctlHandleCopyTo,           HELP_SCOPE_GUESTCONTROL_COPYTO,    0 },
 
         { "mkdir",              gctrlHandleMkDir,           HELP_SCOPE_GUESTCONTROL_MKDIR,     0 },
         { "md",                 gctrlHandleMkDir,           HELP_SCOPE_GUESTCONTROL_MKDIR,     0 },
