@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 97339 2022-10-31 08:20:07Z alexander.eichner@oracle.com $ */
+/* $Id: SrvIntNetR0.cpp 97341 2022-10-31 08:40:09Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -2839,7 +2839,7 @@ static int intnetR0RingWriteFrame(PINTNETRINGBUF pRingBuf, PCINTNETSG pSG, PCRTM
 }
 
 
-/** 
+/**
  * Notifies consumers of incoming data from @a pIf that data is available.
  */
 DECL_FORCE_INLINE(void) intnetR0IfNotifyRecv(PINTNETIF pIf)
@@ -6779,7 +6779,7 @@ INTNETR0DECL(int) IntNetR0OpenReq(PSUPDRVSESSION pSession, PINTNETOPENREQ pReq)
 #if defined(VBOX_WITH_INTNET_SERVICE_IN_R3) && defined(IN_RING3)
 INTNETR3DECL(int) IntNetR3Open(PSUPDRVSESSION pSession, const char *pszNetwork,
                                INTNETTRUNKTYPE enmTrunkType, const char *pszTrunk, uint32_t fFlags,
-                               uint32_t cbSend, uint32_t cbRecv, PFNINTNETIFRECVAVAIL pfnRecvAvail, void *pvUser, 
+                               uint32_t cbSend, uint32_t cbRecv, PFNINTNETIFRECVAVAIL pfnRecvAvail, void *pvUser,
                                PINTNETIFHANDLE phIf)
 {
     return IntNetR0Open(pSession, pszNetwork, enmTrunkType, pszTrunk, fFlags, cbSend, cbRecv, pfnRecvAvail, pvUser, phIf);
