@@ -1,4 +1,4 @@
-/* $Id: VBoxIntNetSwitch.cpp 97338 2022-10-31 08:15:38Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxIntNetSwitch.cpp 97340 2022-10-31 08:30:01Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -637,7 +637,7 @@ DECLCALLBACK(void) xpcConnHandler(xpc_connection_t hXpcCon)
         pSession->hXpcCon = hXpcCon;
 
         xpc_connection_set_context(hXpcCon, pSession);
-        xpc_connection_activate(hXpcCon);
+        xpc_connection_resume(hXpcCon);
         xpc_transaction_begin();
         ASMAtomicIncU32(&g_DevExt.cRefs);
     }
