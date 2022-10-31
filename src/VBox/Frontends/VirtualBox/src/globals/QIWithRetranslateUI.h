@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIWithRetranslateUI.h 97351 2022-10-31 16:58:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -41,6 +41,7 @@
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
+#include "UITranslator.h"
 
 
 /** Template for automatic language translations of underlying QWidget. */
@@ -60,15 +61,13 @@ protected:
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
     {
-        /* Handle LanguageChange events for qApp or this object: */
-        if (pObject == qApp || pObject == this)
-        {
-            switch (pEvent->type())
-            {
-                case QEvent::LanguageChange: retranslateUi(); break;
-                default: break;
-            }
-        }
+        /* If translation is NOT currently in progress handle
+         * LanguageChange events for qApp or this object: */
+        if (   !UITranslator::isTranslationInProgress()
+            && pEvent->type() == QEvent::LanguageChange
+            && (pObject == qApp || pObject == this))
+            retranslateUi();
+
         /* Call to base-class: */
         return Base::eventFilter(pObject, pEvent);
     }
@@ -105,15 +104,13 @@ protected:
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
     {
-        /* Handle LanguageChange events for qApp or this object: */
-        if (pObject == qApp || pObject == this)
-        {
-            switch (pEvent->type())
-            {
-                case QEvent::LanguageChange: retranslateUi(); break;
-                default: break;
-            }
-        }
+        /* If translation is NOT currently in progress handle
+         * LanguageChange events for qApp or this object: */
+        if (   !UITranslator::isTranslationInProgress()
+            && pEvent->type() == QEvent::LanguageChange
+            && (pObject == qApp || pObject == this))
+            retranslateUi();
+
         /* Call to base-class: */
         return Base::eventFilter(pObject, pEvent);
     }
@@ -141,15 +138,13 @@ protected:
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
     {
-        /* Handle LanguageChange events for qApp or this object: */
-        if (pObject == qApp || pObject == this)
-        {
-            switch (pEvent->type())
-            {
-                case QEvent::LanguageChange: retranslateUi(); break;
-                default: break;
-            }
-        }
+        /* If translation is NOT currently in progress handle
+         * LanguageChange events for qApp or this object: */
+        if (   !UITranslator::isTranslationInProgress()
+            && pEvent->type() == QEvent::LanguageChange
+            && (pObject == qApp || pObject == this))
+            retranslateUi();
+
         /* Call to base-class: */
         return Base::eventFilter(pObject, pEvent);
     }
@@ -186,16 +181,13 @@ protected:
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
     {
-        /* Handle LanguageChange events for qApp or this object: */
-        if (pObject == qApp || pObject == this)
-        {
-            /* Handle LanguageChange events: */
-            switch (pEvent->type())
-            {
-                case QEvent::LanguageChange: retranslateUi(); break;
-                default: break;
-            }
-        }
+        /* If translation is NOT currently in progress handle
+         * LanguageChange events for qApp or this object: */
+        if (   !UITranslator::isTranslationInProgress()
+            && pEvent->type() == QEvent::LanguageChange
+            && (pObject == qApp || pObject == this))
+            retranslateUi();
+
         /* Call to base-class: */
         return Base::eventFilter(pObject, pEvent);
     }

@@ -1,4 +1,4 @@
-/* $Id: UITranslator.h 97068 2022-10-10 13:21:54Z sergey.dubov@oracle.com $ */
+/* $Id: UITranslator.h 97351 2022-10-31 16:58:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
@@ -126,6 +126,9 @@ public:
     /** Inserts a passed @a strKey into action @a strText. */
     static QString insertKeyToActionText(const QString &strText, const QString &strKey);
 
+    /** Returns whether we are performing translation currently. */
+    static bool isTranslationInProgress();
+
 private:
 
     /** Constructs translator passing @a pParent to the base-class. */
@@ -150,6 +153,9 @@ private:
 
     /** Holds the singleton instance. */
     static UITranslator *s_pTranslator;
+
+    /** Holds whether we are performing translation currently. */
+    static bool  s_fTranslationInProgress;
 
     /** Holds the currently loaded language ID. */
     static QString  s_strLoadedLanguageId;
