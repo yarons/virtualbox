@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 97334 2022-10-28 14:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 97358 2022-10-31 23:14:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1613,7 +1613,7 @@ DECLINLINE(void) iemRegUpdateRipKeepRF(PVMCPUCC pVCpu)
  * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
  * @param   cbInstr             The number of bytes to add.
  */
-DECLINLINE(void) iemRegAddToRipAndClearRF(PVMCPUCC pVCpu, uint8_t cbInstr)
+DECLINLINE(VBOXSTRICTRC) iemRegAddToRipAndClearRF(PVMCPUCC pVCpu, uint8_t cbInstr)
 {
     /*
      * Advance RIP.
@@ -1640,6 +1640,8 @@ DECLINLINE(void) iemRegAddToRipAndClearRF(PVMCPUCC pVCpu, uint8_t cbInstr)
      */
     AssertCompile(CPUMCTX_INHIBIT_SHADOW < UINT32_MAX);
     pVCpu->cpum.GstCtx.eflags.uBoth &= ~(X86_EFL_RF | CPUMCTX_INHIBIT_SHADOW);
+
+    return VINF_SUCCESS;
 }
 
 
@@ -1648,7 +1650,7 @@ DECLINLINE(void) iemRegAddToRipAndClearRF(PVMCPUCC pVCpu, uint8_t cbInstr)
  *
  * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
  */
-DECLINLINE(void) iemRegUpdateRipAndClearRF(PVMCPUCC pVCpu)
+DECLINLINE(VBOXSTRICTRC) iemRegUpdateRipAndClearRF(PVMCPUCC pVCpu)
 {
     return iemRegAddToRipAndClearRF(pVCpu, IEM_GET_INSTR_LEN(pVCpu));
 }
