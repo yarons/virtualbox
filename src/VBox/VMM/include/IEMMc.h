@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 97231 2022-10-19 09:12:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 97350 2022-10-31 14:53:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -41,8 +41,6 @@
  */
 #define IEM_MC_BEGIN(a_cArgs, a_cLocals)                {
 #define IEM_MC_END()                                    }
-#define IEM_MC_PAUSE()                                  do {} while (0)
-#define IEM_MC_CONTINUE()                               do {} while (0)
 
 /** Internal macro. */
 #define IEM_MC_RETURN_ON_FAILURE(a_Expr) \
