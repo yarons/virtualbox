@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerOperationsPanel.cpp 97347 2022-10-31 11:38:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -297,7 +297,10 @@ void UIFileOperationProgressWidget::sltHandleProgressComplete(const QUuid &uProg
         m_eStatus = OperationStatus_Succeded;
     }
     if (m_pProgressBar)
+    {
         m_pProgressBar->setEnabled(false);
+        m_pProgressBar->setValue(100);
+    }
     cleanupEventHandler();
     retranslateUi();
 }
