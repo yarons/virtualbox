@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 97360 2022-11-01 01:33:46Z brian.le.lee@oracle.com $ */
+/* $Id: MediumImpl.cpp 97367 2022-11-01 10:38:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5527,8 +5527,7 @@ HRESULT Medium::i_deleteStorage(ComObjPtr<Progress> *aProgress,
         LogFlowThisFunc(("aWait=%RTbool locationFull=%s\n", aWait, i_getLocationFull().c_str() ));
 
         if (    !(m->formatObj->i_getCapabilities() & (  MediumFormatCapabilities_CreateDynamic
-                                                       | MediumFormatCapabilities_CreateFixed
-                                                       | MediumFormatCapabilities_File)))
+                                                       | MediumFormatCapabilities_CreateFixed)))
             throw setError(VBOX_E_NOT_SUPPORTED,
                            tr("Medium format '%s' does not support storage deletion"),
                            m->strFormat.c_str());

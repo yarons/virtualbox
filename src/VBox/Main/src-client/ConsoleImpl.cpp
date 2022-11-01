@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 97359 2022-11-01 01:28:02Z brian.le.lee@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 97367 2022-11-01 10:38:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -67,7 +67,7 @@
 #include "MachineDebuggerImpl.h"
 #include "USBDeviceImpl.h"
 #include "RemoteUSBDeviceImpl.h"
-#include "ConsoleSharedFolderImpl.h"
+#include "SharedFolderImpl.h"
 #ifdef VBOX_WITH_AUDIO_VRDE
 # include "DrvAudioVRDE.h"
 #endif
