@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 97329 2022-10-28 04:59:55Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 97369 2022-11-01 12:54:38Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1686,10 +1686,11 @@ static bool cpumR3AreVmxCpuFeaturesCompatible(PVM pVM, PCCPUMFEATURES pBase, PCC
                                              | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxExitSaveEferMsr    ,  1) \
                                              | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxExitLoadEferMsr    ,  2) \
                                              | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxSavePreemptTimer   ,  3) \
-                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxExitSaveEferLma    ,  4) \
-                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxPt                 ,  5) \
-                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxVmwriteAll         ,  6) \
-                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxEntryInjectSoftInt ,  7))
+                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxSecondaryExitCtls  ,  4) \
+                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxExitSaveEferLma    ,  5) \
+                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxPt                 ,  6) \
+                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxVmwriteAll         ,  7) \
+                                             | CPUM_VMX_FEAT_SHIFT(a_pFeat, fVmxEntryInjectSoftInt ,  8))
 
     /* Check first set of feature bits. */
     {
