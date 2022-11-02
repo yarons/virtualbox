@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogic.h 97376 2022-11-02 10:41:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -143,7 +143,7 @@ public:
     virtual void sendMachineWindowsSizeHints();
 
     /* Wrapper to open Machine settings / Network page: */
-    void openNetworkSettingsDialog() { sltOpenNetworkSettingsDialog(); }
+    void openNetworkSettingsDialog() { sltOpenSettingsDialogNetwork(); }
 
 #ifdef VBOX_WS_MAC
     void updateDockIcon();
@@ -302,14 +302,14 @@ private slots:
     void sltToggleVRDE(bool fEnabled);
 
     /* "Device" menu functionality: */
-    void sltOpenVMSettingsDialogDefault();
-    void sltOpenVMSettingsDialog(const QString &strCategory = QString(), const QString &strControl = QString());
-    void sltOpenStorageSettingsDialog();
+    void sltOpenSettingsDialog(const QString &strCategory = QString(), const QString &strControl = QString());
+    void sltOpenSettingsDialogDefault() { sltOpenSettingsDialog(); }
+    void sltOpenSettingsDialogStorage();
     void sltToggleAudioOutput(bool fEnabled);
     void sltToggleAudioInput(bool fEnabled);
-    void sltOpenNetworkSettingsDialog();
-    void sltOpenUSBDevicesSettingsDialog();
-    void sltOpenSharedFoldersSettingsDialog();
+    void sltOpenSettingsDialogNetwork();
+    void sltOpenSettingsDialogUSBDevices();
+    void sltOpenSettingsDialogSharedFolders();
     void sltMountStorageMedium();
     void sltAttachUSBDevice();
     void sltAttachWebCamDevice();
