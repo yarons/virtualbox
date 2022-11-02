@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 97193 2022-10-18 10:18:45Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMAll.cpp 97377 2022-11-02 10:44:39Z alexander.eichner@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -459,10 +459,14 @@ VMM_INT_DECL(int) GIMQueryHypercallOpcodeBytes(PVM pVM, void *pvBuf, size_t cbBu
 {
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
 
-    CPUMCPUVENDOR  enmHostCpu = CPUMGetHostCpuVendor(pVM);
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+    CPUMCPUVENDOR  enmCpuVendor = CPUMGetHostCpuVendor(pVM);
+#else
+    CPUMCPUVENDOR  enmCpuVendor = CPUMGetGuestCpuVendor(pVM); /* Use what is presented to the guest. */
+#endif
     uint8_t const *pbSrc;
     size_t         cbSrc;
-    switch (enmHostCpu)
+    switch (enmCpuVendor)
     {
         case CPUMCPUVENDOR_AMD:
         case CPUMCPUVENDOR_HYGON:
@@ -488,7 +492,7 @@ VMM_INT_DECL(int) GIMQueryHypercallOpcodeBytes(PVM pVM, void *pvBuf, size_t cbBu
         }
 
         default:
-            AssertMsgFailedReturn(("%d\n", enmHostCpu), VERR_UNSUPPORTED_CPU);
+            AssertMsgFailedReturn(("%d\n", enmCpuVendor), VERR_UNSUPPORTED_CPU);
     }
     if (RT_LIKELY(cbBuf >= cbSrc))
     {
