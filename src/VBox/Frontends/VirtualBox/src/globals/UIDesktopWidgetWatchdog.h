@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 97386 2022-11-03 14:52:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -149,6 +149,8 @@ public:
     static void centerWidget(QWidget *pWidget,
                              QWidget *pRelative,
                              bool fCanResize = true);
+    /** Restores and exposes the @a pWidget on desktop. */
+    static void restoreWidget(QWidget *pWidget);
 
     /** Assigns top-level @a pWidget geometry passed as QRect coordinates.
       * @note  Take into account that this request may fail on X11. */

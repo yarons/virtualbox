@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97386 2022-11-03 14:52:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -816,6 +816,15 @@ void UIDesktopWidgetWatchdog::centerWidget(QWidget *pWidget,
     if (   fCanResize
         && (geo.width() != newGeo.width() || geo.height() != newGeo.height()))
         pWidget->resize(newGeo.width() - iExtraW, newGeo.height() - iExtraH);
+}
+
+/* static */
+void UIDesktopWidgetWatchdog::restoreWidget(QWidget *pWidget)
+{
+    pWidget->show();
+    pWidget->setWindowState(pWidget->windowState() & ~Qt::WindowMinimized);
+    pWidget->activateWindow();
+    pWidget->raise();
 }
 
 /* static */
