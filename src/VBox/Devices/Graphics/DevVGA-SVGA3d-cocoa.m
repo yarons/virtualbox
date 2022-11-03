@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 97380 2022-11-03 10:57:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -377,7 +377,8 @@
     if (m_fUpdateCtx)
     {
         Log(("OvlView(%p) vboxUpdateCtxIfNecessary: m_fUpdateCtx\n", (void *)self));
-        [[self openGLContext] update];
+        /* This must be done on the main thread or it will crash with an error. */
+        [[self openGLContext] performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:YES];
         m_fUpdateCtx = false;
     }
 }
