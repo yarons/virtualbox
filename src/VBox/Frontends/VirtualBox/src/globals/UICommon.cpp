@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 97387 2022-11-03 16:35:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -813,9 +813,6 @@ void UICommon::cleanup()
     delete m_pThreadPoolCloud;
     m_pThreadPoolCloud = 0;
 
-    /* Cleanup general icon-pool: */
-    UIIconPoolGeneral::destroy();
-
     /* Ensure CGuestOSType objects are no longer used: */
     m_guestOSFamilyIDs.clear();
     m_guestOSTypes.clear();
@@ -842,6 +839,9 @@ void UICommon::cleanup()
 
     /* Notify listener it can close UI now: */
     emit sigAskToCloseUI();
+
+    /* Cleanup general icon-pool: */
+    UIIconPoolGeneral::destroy();
 
     /* Destroy popup-center: */
     UIPopupCenter::destroy();
