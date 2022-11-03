@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 97378 2022-11-03 10:19:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 97381 2022-11-03 13:16:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1552,7 +1552,8 @@ void UIMachineLogic::sltHandleMenuPrepare(int iIndex, QMenu *pMenu)
         (this->*(m_menuUpdateHandlers.value(iIndex)))(pMenu);
 }
 
-void UIMachineLogic::sltOpenPreferencesDialog(const QString &strCategory /* = QString() */, const QString &strControl /* = QString() */)
+void UIMachineLogic::sltOpenPreferencesDialog(const QString &strCategory /* = QString() */,
+                                              const QString &strControl /* = QString() */)
 {
     /* Do not process if window(s) missed! */
     if (!isMachineWindowsCreated())

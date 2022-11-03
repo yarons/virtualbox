@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 97378 2022-11-03 10:19:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 97381 2022-11-03 13:16:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -32,8 +32,8 @@
 #endif
 
 /* GUI includes: */
+#include "QIWithRetranslateUI.h"
 #include "UIExtraDataDefs.h"
-#include <QIWithRetranslateUI.h>
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -260,10 +260,9 @@ private slots:
     /** Handle menu prepare. */
     void sltHandleMenuPrepare(int iIndex, QMenu *pMenu);
 
-    /** Show Global Preferences on page defined by @a strCategory and tab defined by @a strControl. */
+    /* "Application" menu functionality: */
     void sltOpenPreferencesDialog(const QString &strCategory = QString(), const QString &strControl = QString());
     void sltOpenPreferencesDialogDefault() { sltOpenPreferencesDialog(); }
-    /* "Application" menu functionality: */
     void sltClose();
 
     /* "Machine" menu functionality: */
@@ -276,7 +275,6 @@ private slots:
     void sltShowFileManagerDialog();
     void sltCloseFileManagerDialog();
     void sltShowLogDialog();
-    /** Handles close signal from the log viewer dialog. */
     void sltCloseLogDialog();
     void sltPause(bool fOn);
     void sltReset();
