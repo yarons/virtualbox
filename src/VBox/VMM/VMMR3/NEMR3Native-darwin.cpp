@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 97374 2022-11-02 09:46:33Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 97379 2022-11-03 10:55:25Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2977,6 +2977,16 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
             LogRel(("NEM: LBR recording is disabled because the Hypervisor API misses hv_vcpu_enable_managed_msr/hv_vcpu_set_msr_access functionality\n"));
             pVM->nem.s.fLbr = false;
         }
+
+        /*
+         * While hv_vcpu_run_until() is available starting with Catalina (10.15) it sometimes returns
+         * an error there for no obvious reasons and there is no indication as to why this happens
+         * and Apple doesn't document anything. Starting with BigSur (11.0) it appears to work correctly
+         * so pretend that hv_vcpu_run_until() doesn't exist on Catalina which can be determined by checking
+         * whether another method is available which was introduced with BigSur.
+         */
+        if (!hv_vmx_get_msr_info) /* Not available means this runs on < 11.0 */
+            hv_vcpu_run_until = NULL;
 
         if (hv_vcpu_run_until)
         {
