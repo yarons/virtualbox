@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 97135 2022-10-13 14:29:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.h 97383 2022-11-03 13:51:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -65,10 +65,10 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
-    /** Loads the data from the corresponding source. */
-    virtual void loadOwnData() RT_OVERRIDE;
-    /** Saves the data to the corresponding source. */
-    virtual void saveOwnData() RT_OVERRIDE;
+    /** Loads the dialog data. */
+    virtual void load() RT_OVERRIDE;
+    /** Saves the dialog data. */
+    virtual void save() RT_OVERRIDE;
 
     /** Returns the dialog title extension. */
     virtual QString titleExtension() const RT_OVERRIDE;
@@ -113,10 +113,10 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
-    /** Loads the data from the corresponding source. */
-    virtual void loadOwnData() RT_OVERRIDE;
-    /** Saves the data to the corresponding source. */
-    virtual void saveOwnData() RT_OVERRIDE;
+    /** Loads the dialog data. */
+    virtual void load() RT_OVERRIDE;
+    /** Saves the dialog data. */
+    virtual void save() RT_OVERRIDE;
 
     /** Returns the dialog title extension. */
     virtual QString titleExtension() const RT_OVERRIDE;

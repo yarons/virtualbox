@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 97141 2022-10-13 16:38:35Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 97383 2022-11-03 13:51:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -99,7 +99,7 @@ UISettingsDialog::~UISettingsDialog()
 void UISettingsDialog::execute()
 {
     /* Load data: */
-    loadOwnData();
+    load();
 
     /* Execute dialog: */
     exec();
@@ -108,7 +108,7 @@ void UISettingsDialog::execute()
 void UISettingsDialog::accept()
 {
     /* Save data: */
-    saveOwnData();
+    save();
 
     /* If serialization was clean: */
     if (m_fSerializationClean)
@@ -347,7 +347,7 @@ void UISettingsDialog::closeEvent(QCloseEvent *pEvent)
     /* Check whether there are unsaved settings
      * which will be lost in such case: */
     if (   !isSettingsChanged()
-        || msgCenter().confirmSettingsDiscarding())
+        || msgCenter().confirmSettingsDiscarding(this))
     {
         /* Call to base-class: */
         QIWithRetranslateUI<QIMainDialog>::closeEvent(pEvent);
