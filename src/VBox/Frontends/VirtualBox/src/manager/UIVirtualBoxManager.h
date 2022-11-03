@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 97388 2022-11-03 16:45:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 97390 2022-11-03 16:56:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -40,6 +40,7 @@
 #include "QIWithRetranslateUI.h"
 #include "UICommon.h"
 #include "UIExtraDataDefs.h"
+#include "UISettingsDialog.h"
 
 /* Forward declarations: */
 class QMenu;
@@ -197,6 +198,8 @@ private slots:
 
         /** Handles call to open Preferences dialog. */
         void sltOpenPreferencesDialog();
+        /** Handles call to close Preferences dialog. */
+        void sltClosePreferencesDialog();
 
         /** Handles call to exit application. */
         void sltPerformExit();
@@ -223,6 +226,8 @@ private slots:
                                    const QUuid &uID = QUuid());
         /** Handles call to open Settings dialog the default way. */
         void sltOpenSettingsDialogDefault() { sltOpenSettingsDialog(); }
+        /** Handles call to close Settings dialog. */
+        void sltCloseSettingsDialog();
 
         /** Handles call to open Clone Machine wizard. */
         void sltOpenCloneMachineWizard();
@@ -489,6 +494,9 @@ private:
 
     /** Holds the map of various global managers. */
     QMap<UIToolType, QIManagerDialog*>  m_managers;
+
+    /** Holds the map of various settings dialogs. */
+    QMap<UISettingsDialog::DialogType, UISettingsDialog*>  m_settings;
 
     /** Holds the instance of UIVMLogViewerDialog. */
     QIManagerDialog   *m_pLogViewerDialog;
