@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 97382 2022-11-03 13:30:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 97388 2022-11-03 16:45:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -129,6 +129,9 @@ private slots:
 
         /** Handles request to update actions. */
         void sltHandleUpdateActionAppearanceRequest() { updateActionsAppearance(); }
+
+        /** Handles request to commit data. */
+        void sltHandleCommitData();
 
         /** Handles signal about medium-enumeration finished. */
         void sltHandleMediumEnumerationFinish();

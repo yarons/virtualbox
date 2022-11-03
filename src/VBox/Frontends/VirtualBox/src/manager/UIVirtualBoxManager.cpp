@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 97382 2022-11-03 13:30:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 97388 2022-11-03 16:45:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -629,6 +629,16 @@ void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
     move(geo.topLeft());
 }
 #endif /* VBOX_WS_X11 */
+
+void UIVirtualBoxManager::sltHandleCommitData()
+{
+    /* Close the sub-dialogs first: */
+    sltCloseManagerWindow(UIToolType_Extensions);
+    sltCloseManagerWindow(UIToolType_Media);
+    sltCloseManagerWindow(UIToolType_Network);
+    sltCloseManagerWindow(UIToolType_Cloud);
+    sltCloseManagerWindow(UIToolType_CloudConsole);
+}
 
 void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
 {
@@ -2161,6 +2171,8 @@ void UIVirtualBoxManager::prepareConnections()
 #endif
 
     /* UICommon connections: */
+    connect(&uiCommon(), &UICommon::sigAskToCommitData,
+            this, &UIVirtualBoxManager::sltHandleCommitData);
     connect(&uiCommon(), &UICommon::sigMediumEnumerationFinished,
             this, &UIVirtualBoxManager::sltHandleMediumEnumerationFinish);
 
@@ -2408,12 +2420,8 @@ void UIVirtualBoxManager::cleanupMenuBar()
 
 void UIVirtualBoxManager::cleanup()
 {
-    /* Close the sub-dialogs first: */
-    sltCloseManagerWindow(UIToolType_Extensions);
-    sltCloseManagerWindow(UIToolType_Media);
-    sltCloseManagerWindow(UIToolType_Network);
-    sltCloseManagerWindow(UIToolType_Cloud);
-    sltCloseManagerWindow(UIToolType_CloudConsole);
+    /* Ask sub-dialogs to commit data: */
+    sltHandleCommitData();
 
     /* Cleanup: */
     cleanupConnections();
