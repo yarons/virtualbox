@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 97390 2022-11-03 16:56:57Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 97391 2022-11-03 17:01:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -91,9 +91,9 @@ public:
 protected slots:
 
     /** Hides the modal dialog and sets the result code to Accepted. */
-    virtual void accept() RT_OVERRIDE;
+    virtual void accept();
     /** Hides the modal dialog and sets the result code to Rejected. */
-    virtual void reject() RT_OVERRIDE;
+    virtual void reject();
 
     /** Handles category change to @a cId. */
     virtual void sltCategoryChanged(int cId);
