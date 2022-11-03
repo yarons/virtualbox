@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 97381 2022-11-03 13:16:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 97389 2022-11-03 16:51:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -220,7 +220,7 @@ protected:
 #endif /* VBOX_WS_MAC */
 
     /* Prepare helpers: */
-    virtual void prepareRequiredFeatures();
+    virtual void prepareRequiredFeatures() {}
     virtual void prepareSessionConnections();
     virtual void prepareActionGroups();
     virtual void prepareActionConnections();

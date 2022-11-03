@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 97381 2022-11-03 13:16:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 97389 2022-11-03 16:51:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -912,10 +912,6 @@ void UIMachineLogic::updateDockOverlay()
         m_pDockIconPreview->updateDockOverlay();
 }
 #endif /* VBOX_WS_MAC */
-
-void UIMachineLogic::prepareRequiredFeatures()
-{
-}
 
 void UIMachineLogic::prepareSessionConnections()
 {
