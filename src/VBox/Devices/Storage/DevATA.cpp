@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 96645 2022-09-07 21:25:36Z knut.osmundsen@oracle.com $ */
+/* $Id: DevATA.cpp 97403 2022-11-04 15:00:33Z brent.paulson@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3861,7 +3861,7 @@ static void atapiR3ParseCmdVirtualATAPI(PPDMDEVINS pDevIns, PATACONTROLLER pCtl,
                 atapiR3CmdErrorSimple(pCtl, s, SCSI_SENSE_UNIT_ATTENTION, SCSI_ASC_MEDIUM_MAY_HAVE_CHANGED); /* media changed */
                 break;
             }
-            if (!pDevR3->pDrvMount && !pDevR3->pDrvMount->pfnIsMounted(pDevR3->pDrvMount))
+            if (!pDevR3->pDrvMount || !pDevR3->pDrvMount->pfnIsMounted(pDevR3->pDrvMount))
             {
                 atapiR3CmdErrorSimple(pCtl, s, SCSI_SENSE_NOT_READY, SCSI_ASC_MEDIUM_NOT_PRESENT);
                 break;
