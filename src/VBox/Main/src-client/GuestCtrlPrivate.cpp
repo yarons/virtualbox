@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 97395 2022-11-04 11:17:21Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 97396 2022-11-04 11:20:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1875,7 +1875,7 @@ int GuestPath::Translate(Utf8Str &strPath, PathStyle_T enmSrcPathStyle, PathStyl
 
     strTranslated.jolt();
 
-    LogRel2(("Guest Control: Translating '%s' (%s) -> '%s' (%s)\n",
+    LogRel2(("Guest Control: Translating '%s' (%s) -> '%s' (%s): %Rrc\n",
              strPath.c_str(), GuestBase::pathStyleToStr(enmSrcPathStyle),
              strTranslated.c_str(), GuestBase::pathStyleToStr(enmDstPathStyle), vrc));
 
