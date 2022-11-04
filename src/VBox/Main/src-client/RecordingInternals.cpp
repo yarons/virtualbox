@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 96481 2022-08-25 07:06:43Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingInternals.cpp 97404 2022-11-04 16:22:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -138,10 +138,11 @@ void RecordingFrameFree(PRECORDINGFRAME pFrame)
 
     switch (pFrame->enmType)
     {
+#ifdef VBOX_WITH_AUDIO_RECORDING
         case RECORDINGFRAME_TYPE_AUDIO:
             recordingAudioFrameDestroy(&pFrame->Audio);
             break;
-
+#endif
         case RECORDINGFRAME_TYPE_VIDEO:
             RecordingVideoFrameDestroy(&pFrame->Video);
             break;
