@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97395 $"
+__version__ = "$Revision: 97401 $"
 
 # Standard Python imports.
 import errno
@@ -70,10 +70,10 @@ if sys.version_info[0] >= 3:
     long = int      # pylint: disable=redefined-builtin,invalid-name
     xrange = range; # pylint: disable=redefined-builtin,invalid-name
 
-def limitString(sString, cLimit = 32):
+def limitString(sString, cLimit = 128):
     """
     Returns a string with ellipsis ("...") when exceeding the specified limit.
-    Useful for toning down logging. By default strings will be shortened at 32 characters.
+    Useful for toning down logging. By default strings will be shortened at 128 characters.
     """
     if not isinstance(sString, str):
         sString = str(sString);
