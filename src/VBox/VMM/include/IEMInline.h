@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 97406 2022-11-05 12:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 97408 2022-11-05 22:54:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1603,7 +1603,7 @@ DECL_FORCE_INLINE(void) iemRegAddToRip(PVMCPUCC pVCpu, uint8_t cbInstr)
  *        instruction).
  *
  * According to @sdmv3{077,200,Table 6-2,Priority Among Concurrent Events},
- * a #DB due to TF (single stepping) or a DRx non-instruction breakpoint
+ * a \#DB due to TF (single stepping) or a DRx non-instruction breakpoint
  * takes priority over both NMIs and hardware interrupts.  So, neither is
  * considered here.  (The RESET, \#MC, SMI, INIT, STOPCLK and FLUSH events are
  * either unsupported will be triggered on-top of any \#DB raised here.)
