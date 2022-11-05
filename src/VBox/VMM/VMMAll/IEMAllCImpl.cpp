@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97406 2022-11-05 12:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97407 2022-11-05 12:45:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4766,7 +4766,7 @@ IEM_CIMPL_DEF_2(iemCImpl_pop_Sreg, uint8_t, iSegReg, IEMMODE, enmEffOpSize)
         IEM_NOT_REACHED_DEFAULT_CASE_RET();
     }
 
-    /* 
+    /*
      * If the load succeeded, commit the stack change and finish the instruction.
      */
     if (rcStrict == VINF_SUCCESS)
