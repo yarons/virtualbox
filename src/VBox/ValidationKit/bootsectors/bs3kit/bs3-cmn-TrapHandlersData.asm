@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TrapHandlersData.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: bs3-cmn-TrapHandlersData.asm 97423 2022-11-06 14:41:17Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Per bit-count trap data.
 ;
@@ -42,9 +42,11 @@
 
 
 BS3_BEGIN_DATA16
+        BS3_SET_BITS ARCH_BITS  ; Override the 16-bit mode that BS3_BEGIN_DATA16 implies so we get a correct xCB value.
+
 ;; Pointer C trap handlers.
 ;; Note! The 16-bit ones are all near so we can share them between real, v86 and prot mode.
 ;; Note! Must be in 16-bit data because of BS3TrapSetHandlerEx.
 BS3_GLOBAL_NAME_EX BS3_CMN_NM(g_apfnBs3TrapHandlers), , 256 * xCB
-        resb 256 * xCB
+        resb (256 * xCB)
 
