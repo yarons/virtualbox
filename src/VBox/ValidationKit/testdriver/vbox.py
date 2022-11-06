@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 97416 2022-11-06 09:54:14Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 97419 2022-11-06 10:50:36Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97416 $"
+__version__ = "$Revision: 97419 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1131,7 +1131,7 @@ class TestDriver(base.TestDriver):                                              
 
         reporter.log2('VBoxSVC environment:');
         for sKey, sVal in sorted(os.environ.items()):
-            reporter.log2('%s=%s\n' % (sKey, sVal));
+            reporter.log2('%s=%s' % (sKey, sVal));
 
         # Always leave a pid file behind so we can kill it during cleanup-before.
         self.sVBoxSvcPidFile = '%s/VBoxSVC.pid' % (self.sScratchPath,);
@@ -1377,7 +1377,7 @@ class TestDriver(base.TestDriver):                                              
 
         reporter.log2('Self environment:');
         for sKey, sVal in sorted(os.environ.items()):
-            reporter.log2('%s=%s\n' % (sKey, sVal));
+            reporter.log2('%s=%s' % (sKey, sVal));
 
         # Hack the sys.path + environment so the vboxapi can be found.
         sys.path.insert(0, self.oBuild.sInstallPath);
