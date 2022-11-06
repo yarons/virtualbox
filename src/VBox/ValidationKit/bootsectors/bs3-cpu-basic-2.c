@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 97424 2022-11-06 14:42:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -64,7 +64,7 @@ BS3_DECL_CALLBACK(void)     bs3CpuBasic2_Do32BitTests_pe32();
 static const BS3TESTMODEENTRY g_aModeTest[] =
 {
     BS3TESTMODEENTRY_MODE("tss / gate / esp", bs3CpuBasic2_TssGateEsp),
-    //BS3TESTMODEENTRY_MODE("raise xcpt #1", bs3CpuBasic2_RaiseXcpt1), // !long mode is broken!
+    BS3TESTMODEENTRY_MODE("raise xcpt #1", bs3CpuBasic2_RaiseXcpt1),
 };
 
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
