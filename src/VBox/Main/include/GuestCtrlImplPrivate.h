@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 97395 2022-11-04 11:17:21Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 97417 2022-11-06 10:31:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1386,6 +1386,14 @@ protected:
     uint32_t                 mObjectID;
     /** @} */
 };
+
+/** Returns the path separator based on \a a_enmPathStyle as a C-string. */
+#define PATH_STYLE_SEP_STR(a_enmPathStyle) a_enmPathStyle == PathStyle_DOS ? "\\" : "/"
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
+# define PATH_STYLE_NATIVE               PathStyle_DOS
+#else
+# define PATH_STYLE_NATIVE               PathStyle_UNIX
+#endif
 
 /**
  * Class for handling guest / host path functions.

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 97415 2022-11-06 09:38:15Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 97417 2022-11-06 10:31:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1749,7 +1749,8 @@ int GuestPath::BuildDestinationPath(const Utf8Str &strSrcPath, PathStyle_T enmSr
     }
     else if (pszSrcName && !pszDstName) /* #2 */
     {
-        strDstPath += RTPATH_SLASH_STR;
+        if (!strDstPath.endsWith(PATH_STYLE_SEP_STR(enmDstPathStyle)))
+            strDstPath += PATH_STYLE_SEP_STR(enmDstPathStyle);
         strDstPath += pszSrcName;
     }
 
