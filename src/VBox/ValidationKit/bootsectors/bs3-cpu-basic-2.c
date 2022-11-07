@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 97431 2022-11-07 13:53:24Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 97433 2022-11-07 15:16:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -54,7 +54,7 @@ FNBS3TESTDOMODE             bs3CpuBasic2_sgdt_f16;
 FNBS3TESTDOMODE             bs3CpuBasic2_lidt_f16;
 FNBS3TESTDOMODE             bs3CpuBasic2_lgdt_f16;
 FNBS3TESTDOMODE             bs3CpuBasic2_iret_f16;
-FNBS3TESTDOMODE             bs3CpuBasic2_jmp_f16;
+FNBS3TESTDOMODE             bs3CpuBasic2_jmp_rel_f16;
 
 BS3_DECL_CALLBACK(void)     bs3CpuBasic2_Do32BitTests_pe32();
 
@@ -75,7 +75,7 @@ static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 #endif
 #if 1
     //{ "iret", bs3CpuBasic2_iret_f16, 0 },
-    { "jmp",  bs3CpuBasic2_jmp_f16, 0 },
+    { "jmp jb / jv",  bs3CpuBasic2_jmp_rel_f16, 0 },
 #endif
 #if 0
     { "sidt", bs3CpuBasic2_sidt_f16, 0 },
