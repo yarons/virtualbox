@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 97434 2022-11-07 15:20:44Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 97435 2022-11-07 15:44:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -410,7 +410,7 @@ void UISettingsDialog::choosePageAndTab(bool fKeepPreviousByDefault /* = false *
     }
     /* First item as default (if previous is not guarded): */
     else if (!fKeepPreviousByDefault)
-        m_pSelector->selectById(0);
+        m_pSelector->selectById(1);
 }
 
 void UISettingsDialog::loadData(QVariant &data)
