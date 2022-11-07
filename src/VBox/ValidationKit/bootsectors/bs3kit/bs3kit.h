@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 97320 2022-10-27 12:45:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 97430 2022-11-07 13:51:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1941,6 +1941,14 @@ BS3_CMN_PROTO_FARSTUB(4, uint32_t, Bs3SelRealModeDataToFlat,(uint32_t uFar1616))
  * @param   pvLnkPtr    The pointer the linker produced.
  */
 BS3_CMN_PROTO_FARSTUB(4, void BS3_FAR *, Bs3SelLnkPtrToCurPtr,(void BS3_FAR *pvLnkPtr));
+
+/**
+ * Converts a link-time pointer to a flat address.
+ *
+ * @returns 32-bit flag address.
+ * @param   pvLnkPtr    The pointer the linker produced.
+ */
+BS3_CMN_PROTO_FARSTUB(4, uint32_t, Bs3SelLnkPtrToFlat,(void BS3_FAR *pvLnkPtr));
 
 /**
  * Gets a flat address from a working poitner.
@@ -4118,7 +4126,7 @@ BS3_DECL(void) Bs3InitAll_rm(void);
 BS3_DECL_FAR(void) Bs3InitMemory_rm_far(void);
 
 /**
- * Initialized the X0TEXT16 and X1TEXT16 GDT entries.
+ * Initializes the X0TEXT16 and X1TEXT16 GDT entries.
  */
 BS3_DECL_FAR(void) Bs3InitGdt_rm_far(void);
 

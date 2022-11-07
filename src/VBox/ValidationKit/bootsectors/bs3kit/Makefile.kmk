@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97320 2022-10-27 12:45:25Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 97430 2022-11-07 13:51:44Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -191,6 +191,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-SelFlatDataToProtFar16.asm \
        bs3-cmn-SelFlatDataToRealMode.asm \
        bs3-cmn-SelLnkPtrToCurPtr.c \
+       bs3-cmn-SelLnkPtrToFlat.c \
        bs3-cmn-SelSetup16BitData.c \
        bs3-cmn-SelSetup16BitCode.c \
        bs3-cmn-SelSetup32BitCode.c \
