@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97428 2022-11-07 11:18:45Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97429 2022-11-07 11:43:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1045,13 +1045,14 @@ void FsList::Destroy(void)
  */
 void FsList::DumpToLog(void)
 {
-    LogFlowFunc(("strSrcRootAbs=%s, strDstRootAbs=%s\n", mSrcRootAbs.c_str(), mDstRootAbs.c_str()));
+    LogRel(("strSrcRootAbs=%s, strDstRootAbs=%s\n", mSrcRootAbs.c_str(), mDstRootAbs.c_str()));
 
     FsEntries::iterator itEntry = mVecEntries.begin();
     while (itEntry != mVecEntries.end())
     {
         FsEntry *pEntry = *itEntry;
-        LogFlowFunc(("\tstrPath=%s (fMode %#x)\n", pEntry->strPath.c_str(), pEntry->fMode));
+        LogRel(("\t%s: strPath=%s (fMode %#x)\n",
+                RTFS_IS_DIRECTORY(pEntry->fMode) ? "Dir" : "File", pEntry->strPath.c_str(), pEntry->fMode));
         ++itEntry;
     }
 
