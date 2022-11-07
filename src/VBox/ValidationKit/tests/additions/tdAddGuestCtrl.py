@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97439 $"
+__version__ = "$Revision: 97440 $"
 
 # Standard Python imports.
 import errno
@@ -1733,7 +1733,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         self.oTestFiles = vboxtestfileset.TestFileSet(oTestVm,
                                                       self.oTstDrv.getGuestTempDir(oTestVm), 'addgst-1',
                                                       # Make sure that we use a lowest common denominator across all supported
-                                                      # platforms, to make testing the randomly generated file paths work reliably.
+                                                      # platforms, to make testing the randomly generated file paths work
+                                                      # reliably.
                                                       cchMaxPath = cchMaxPath, asCompatibleWith = [ ('cross') ]);
         return self.oTestFiles.upload(oTxsSession, self.oTstDrv);
 
