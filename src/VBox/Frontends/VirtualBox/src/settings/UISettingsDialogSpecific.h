@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 97434 2022-11-07 15:20:44Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.h 97436 2022-11-07 15:46:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -111,6 +111,14 @@ public:
 
     /** Returns dialog type. */
     virtual DialogType dialogType() const { return DialogType_Machine; }
+
+    /** Update machine stuff.
+      * @param  uMachineId   Brings the machine ID.
+      * @param  strCategory  Brings the name of category to be opened.
+      * @param  strControl   Brings the name of control to be focused. */
+    void setNewMachineId(const QUuid &uMachineId,
+                         const QString &strCategory = QString(),
+                         const QString &strControl = QString());
 
 protected:
 

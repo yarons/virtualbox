@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 97390 2022-11-03 16:56:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 97436 2022-11-07 15:46:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -499,7 +499,7 @@ private:
     QMap<UISettingsDialog::DialogType, UISettingsDialog*>  m_settings;
 
     /** Holds the instance of UIVMLogViewerDialog. */
-    QIManagerDialog   *m_pLogViewerDialog;
+    QIManagerDialog *m_pLogViewerDialog;
 
     /** Holds the central-widget instance. */
     UIVirtualBoxManagerWidget *m_pWidget;

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 97427 2022-11-07 10:45:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 97436 2022-11-07 15:46:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -753,6 +753,23 @@ void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
 
     updateActionsVisibility();
     updateActionsAppearance();
+
+    /* Special handling for opened settings dialog: */
+    if (   m_pWidget->isMachineItemSelected()
+        && m_settings.contains(UISettingsDialog::DialogType_Machine))
+    {
+        /* Cast dialog to required type: */
+        UISettingsDialogMachine *pDialog =
+            qobject_cast<UISettingsDialogMachine*>(m_settings.value(UISettingsDialog::DialogType_Machine));
+        AssertPtrReturnVoid(pDialog);
+
+        /* Get current item: */
+        UIVirtualMachineItem *pItem = currentItem();
+        AssertPtrReturnVoid(pItem);
+
+        /* Update machine stuff: */
+        pDialog->setNewMachineId(pItem->id());
+    }
 }
 
 void UIVirtualBoxManager::sltHandleGroupSavingProgressChange()
