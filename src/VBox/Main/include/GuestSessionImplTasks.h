@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 97395 2022-11-04 11:17:21Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 97428 2022-11-07 11:18:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -123,9 +123,7 @@ public:
     int Init(const Utf8Str &strSrcRootAbs, const Utf8Str &strDstRootAbs, const GuestSessionFsSourceSpec &SourceSpec);
     void Destroy(void);
 
-#ifdef DEBUG
     void DumpToLog(void);
-#endif
 
     int AddEntryFromGuest(const Utf8Str &strFile, const GuestFsObjData &fsObjData);
     int AddDirFromGuest(const Utf8Str &strPath, const Utf8Str &strSubDir = "");
