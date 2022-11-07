@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 97383 2022-11-03 13:51:44Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 97427 2022-11-07 10:45:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -85,7 +85,6 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent,
     , m_strCategory(strCategory)
     , m_strControl(strControl)
 {
-    /* Prepare: */
     prepare();
 }
 
@@ -336,15 +335,17 @@ bool UISettingsDialogGlobal::isPageAvailable(int) const
 *   Class UISettingsDialogMachine implementation.                                                                                *
 *********************************************************************************************************************************/
 
-UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QUuid &uMachineId,
-                                                 const QString &strCategory, const QString &strControl, UIActionPool *pActionPool)
+UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent,
+                                                 const QUuid &uMachineId,
+                                                 UIActionPool *pActionPool,
+                                                 const QString &strCategory /* = QString() */,
+                                                 const QString &strControl /* = QString() */)
     : UISettingsDialog(pParent)
     , m_uMachineId(uMachineId)
+    , m_pActionPool(pActionPool)
     , m_strCategory(strCategory)
     , m_strControl(strControl)
-    , m_pActionPool(pActionPool)
 {
-    /* Prepare: */
     prepare();
 }
 

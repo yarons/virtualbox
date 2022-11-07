@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 97390 2022-11-03 16:56:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 97427 2022-11-07 10:45:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1093,9 +1093,9 @@ void UIVirtualBoxManager::sltOpenSettingsDialog(QString strCategory /* = QString
             {
                 m_settings[UISettingsDialog::DialogType_Machine] = new UISettingsDialogMachine(this,
                                                                                                uID.isNull() ? pItem->id() : uID,
+                                                                                               actionPool(),
                                                                                                strCategory,
-                                                                                               strControl,
-                                                                                               actionPool());
+                                                                                               strControl);
                 connect(m_settings[UISettingsDialog::DialogType_Machine], &UISettingsDialogGlobal::sigClose,
                         this, &UIVirtualBoxManager::sltCloseSettingsDialog);
                 m_settings.value(UISettingsDialog::DialogType_Machine)->load();

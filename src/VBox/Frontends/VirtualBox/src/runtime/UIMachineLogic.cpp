@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 97390 2022-11-03 16:56:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 97427 2022-11-07 10:45:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1620,9 +1620,9 @@ void UIMachineLogic::sltOpenSettingsDialog(const QString &strCategory /* = QStri
     {
         m_settings[UISettingsDialog::DialogType_Machine] = new UISettingsDialogMachine(activeMachineWindow(),
                                                                                        machine().GetId(),
+                                                                                       actionPool(),
                                                                                        strCategory,
-                                                                                       strControl,
-                                                                                       actionPool());
+                                                                                       strControl);
         connect(m_settings[UISettingsDialog::DialogType_Machine], &UISettingsDialogGlobal::sigClose,
                 this, &UIMachineLogic::sltCloseSettingsDialog);
         m_settings.value(UISettingsDialog::DialogType_Machine)->load();
