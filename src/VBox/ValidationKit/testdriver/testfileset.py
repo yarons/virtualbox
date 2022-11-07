@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testfileset.py 97437 2022-11-07 18:50:23Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97437 $"
 
 
 # Standard Python imports.
@@ -319,11 +319,15 @@ class TestFileSet(object):
         self.sMinStyle          = 'win' if fDosStyle else 'linux';
         if asCompatibleWith is not None:
             for sOs in asCompatibleWith:
-                assert sOs in ('win', 'os2', 'darwin', 'linux', 'solaris',), sOs;
+                assert sOs in ('win', 'os2', 'darwin', 'linux', 'solaris', 'cross'), sOs;
             if 'os2' in asCompatibleWith:
                 self.sMinStyle      = 'os2';
             elif 'win' in asCompatibleWith:
                 self.sMinStyle      = 'win';
+            # 'cross' marks a lowest common denominator for all supported platforms.
+            # Used for Guest Control testing.
+            elif 'cross' in asCompatibleWith:
+                self.sMinStyle      = 'cross';
         self.sBasePath          = sBasePath;
         self.sSubDir            = sSubDir;
         self.oRngFileSizes      = oRngFileSizes;
@@ -346,10 +350,18 @@ class TestFileSet(object):
         if self.sMinStyle in ('win', 'os2'):
             for ch in self.ksReservedWinOS2:
                 self.sFileCharset     = self.sFileCharset.replace(ch, '');
-        else:
+        elif self.sMinStyle in ('darwin', 'linux', 'solaris'):
             self.sReservedTrailing    = self.ksReservedTrailingUnix;
             for ch in self.ksReservedUnix:
                 self.sFileCharset     = self.sFileCharset.replace(ch, '');
+        else: # 'cross'
+            # Filter out all reserved charsets from all platforms.
+            for ch in self.ksReservedWinOS2:
+                self.sFileCharset     = self.sFileCharset.replace(ch, '');
+            for ch in self.ksReservedUnix:
+                self.sFileCharset     = self.sFileCharset.replace(ch, '');
+            self.sReservedTrailing    = self.ksReservedTrailingWinOS2 \
+                                      + self.ksReservedTrailingUnix;
         # More spaces and dot:
         self.sFileCharset            += '   ...';
         ## @}
