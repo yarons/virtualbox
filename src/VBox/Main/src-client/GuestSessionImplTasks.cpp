@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97429 2022-11-07 11:43:15Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97438 2022-11-07 18:58:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -810,7 +810,7 @@ int GuestSessionTask::fileCopyToGuest(const Utf8Str &strSrc, const Utf8Str &strD
     if (RT_FAILURE(vrc))
     {
         if (vrc == VERR_GSTCTL_GUEST_ERROR)
-            setProgressErrorMsg(VBOX_E_IPRT_ERROR, tr("Guest file \"%s\" could not be created or replaced"),
+            setProgressErrorMsg(VBOX_E_IPRT_ERROR, tr("Guest file could not be created or replaced"),
                                 GuestErrorInfo(GuestErrorInfo::Type_File, vrcGuest, strDst.c_str()));
         else
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
@@ -1688,7 +1688,7 @@ int GuestSessionTaskCopyFrom::Run(void)
 
             /* Clean up the final host destination root path (for cleaning up mixed path separators). */
             vrc = GuestPath::Translate(strDstRootAbs,
-                                       PATH_STYLE_NATIVE /* Source */, PATH_STYLE_NATIVE /* Dest */, true /* fForce */);
+                                       PATH_STYLE_NATIVE /* Source */, PATH_STYLE_NATIVE /* Dest */);
             if (RT_FAILURE(vrc))
             {
                 setProgressErrorMsg(VBOX_E_IPRT_ERROR,
