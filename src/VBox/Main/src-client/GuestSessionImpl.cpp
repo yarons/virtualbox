@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 97456 2022-11-08 14:56:27Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 97459 2022-11-08 16:16:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1227,7 +1227,7 @@ int GuestSession::i_fsCreateTemp(const Utf8Str &strTemplate, const Utf8Str &strP
             {
                 vrcGuest = vrc;
                 if (prcGuest)
-                    *prcGuest = vrc;
+                    *prcGuest = vrcGuest;
                 vrc = VERR_GSTCTL_GUEST_ERROR;
             }
         }
@@ -1853,7 +1853,7 @@ int GuestSession::i_fsQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks, Gu
             {
                 vrcGuest = vrc;
                 if (prcGuest)
-                    *prcGuest = vrc;
+                    *prcGuest = vrcGuest;
                 vrc = VERR_GSTCTL_GUEST_ERROR;
             }
         }
