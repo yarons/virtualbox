@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97452 2022-11-08 13:51:06Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97455 2022-11-08 14:40:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4392,7 +4392,9 @@ VBOXSTRICTRC iemRegRipRelativeJumpS16AndFinishClearingRF(PVMCPUCC pVCpu, uint8_t
  *
  * @returns Strict VBox status code.
  * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   cbInstr             Instruction size.
  * @param   offNextInstr        The offset of the next instruction.
+ * @param   enmEffOpSize        Effective operand size.
  */
 VBOXSTRICTRC iemRegRipRelativeJumpS32AndFinishClearingRF(PVMCPUCC pVCpu, uint8_t cbInstr, int32_t offNextInstr,
                                                          IEMMODE enmEffOpSize) RT_NOEXCEPT
