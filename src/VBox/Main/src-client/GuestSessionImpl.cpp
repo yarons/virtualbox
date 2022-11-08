@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 97412 2022-11-06 09:30:21Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 97446 2022-11-08 08:16:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -768,7 +768,7 @@ HRESULT GuestSession::i_copyFromGuest(const GuestSessionFsSourceSet &SourceSet,
     GuestSessionFsSourceSet::const_iterator itSrc = SourceSet.begin();
     while (itSrc != SourceSet.end())
     {
-        LogRel(("Guest Control: Copying '%s' from guest to '%s' on the host (type: %s, filter: %s)\n",
+        LogRel2(("Guest Control: Copying '%s' from guest to '%s' on the host (type: %s, filter: %s)\n",
                  itSrc->strSource.c_str(), strDestination.c_str(), GuestBase::fsObjTypeToStr(itSrc->enmType), itSrc->strFilter.c_str()));
         ++itSrc;
     }
@@ -835,7 +835,7 @@ HRESULT GuestSession::i_copyToGuest(const GuestSessionFsSourceSet &SourceSet,
     GuestSessionFsSourceSet::const_iterator itSrc = SourceSet.begin();
     while (itSrc != SourceSet.end())
     {
-        LogRel(("Guest Control: Copying '%s' from host to '%s' on the guest (type: %s, filter: %s)\n",
+        LogRel2(("Guest Control: Copying '%s' from host to '%s' on the guest (type: %s, filter: %s)\n",
                  itSrc->strSource.c_str(), strDestination.c_str(), GuestBase::fsObjTypeToStr(itSrc->enmType), itSrc->strFilter.c_str()));
         ++itSrc;
     }
