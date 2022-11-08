@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97467 2022-11-08 23:45:29Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97468 2022-11-08 23:47:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -66,6 +66,13 @@ RT_C_DECLS_BEGIN
 # define IEM_WITH_SETJMP
 #endif
 
+/** @def IEM_WITH_THROW_CATCH
+ * Enables using C++ throw/catch as an alternative to setjmp/longjmp in user
+ * mode code when IEM_WITH_SETJMP is in effect. */
+#if (defined(IEM_WITH_SETJMP) && defined(IN_RING3) && 0) || defined(DOXYGEN_RUNNING)
+# define IEM_WITH_THROW_CATCH
+#endif
+
 /** @def IEM_DO_LONGJMP
  *
  * Wrapper around longjmp / throw.
@@ -74,7 +81,11 @@ RT_C_DECLS_BEGIN
  * @param   a_rc        The status code jump back with / throw.
  */
 #if defined(IEM_WITH_SETJMP) || defined(DOXYGEN_RUNNING)
-# define IEM_DO_LONGJMP(a_pVCpu, a_rc)  longjmp(*(a_pVCpu)->iem.s.CTX_SUFF(pJmpBuf), (a_rc))
+# ifdef IEM_WITH_THROW_CATCH
+#  define IEM_DO_LONGJMP(a_pVCpu, a_rc)  throw int(a_rc)
+# else
+#  define IEM_DO_LONGJMP(a_pVCpu, a_rc)  longjmp(*(a_pVCpu)->iem.s.CTX_SUFF(pJmpBuf), (a_rc))
+# endif
 #endif
 
 /** For use with IEM function that may do a longjmp (when enabled).
@@ -107,7 +118,7 @@ RT_C_DECLS_BEGIN
  *
  * @see https://developercommunity.visualstudio.com/t/fragile-behavior-of-longjmp-called-from-noexcept-f/1532859
  */
-#if defined(_MSC_VER) && defined(IEM_WITH_SETJMP)
+#if defined(IEM_WITH_SETJMP) && (defined(_MSC_VER) || defined(IEM_WITH_THROW_CATCH))
 # define IEM_NOEXCEPT_MAY_LONGJMP   RT_NOEXCEPT_EX(false)
 #else
 # define IEM_NOEXCEPT_MAY_LONGJMP   RT_NOEXCEPT
