@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManager.cpp 97450 2022-11-08 13:47:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -316,16 +316,26 @@ void UIFileManager::prepareConnections()
     {
         connect(m_pOptionsPanel, &UIFileManagerOptionsPanel::sigHidePanel,
                 this, &UIFileManager::sltHandleHidePanel);
+        connect(m_pOptionsPanel, &UIFileManagerOptionsPanel::sigShowPanel,
+                this, &UIFileManager::sltHandleShowPanel);
         connect(m_pOptionsPanel, &UIFileManagerOptionsPanel::sigOptionsChanged,
                 this, &UIFileManager::sltHandleOptionsUpdated);
     }
     if (m_pLogPanel)
+    {
         connect(m_pLogPanel, &UIFileManagerLogPanel::sigHidePanel,
                 this, &UIFileManager::sltHandleHidePanel);
+        connect(m_pLogPanel, &UIFileManagerLogPanel::sigShowPanel,
+                this, &UIFileManager::sltHandleShowPanel);
+    }
 
     if (m_pOperationsPanel)
+    {
         connect(m_pOperationsPanel, &UIFileManagerOperationsPanel::sigHidePanel,
                 this, &UIFileManager::sltHandleHidePanel);
+        connect(m_pOperationsPanel, &UIFileManagerOperationsPanel::sigShowPanel,
+                this, &UIFileManager::sltHandleShowPanel);
+    }
     if (m_pHostFileTable)
     {
         connect(m_pHostFileTable, &UIFileManagerHostTable::sigLogOutput,
@@ -447,6 +457,11 @@ void UIFileManager::sltHandleOptionsUpdated()
 void UIFileManager::sltHandleHidePanel(UIDialogPanel *pPanel)
 {
     hidePanel(pPanel);
+}
+
+void UIFileManager::sltHandleShowPanel(UIDialogPanel *pPanel)
+{
+    showPanel(pPanel);
 }
 
 void UIFileManager::sltCommitDataSignalReceived()

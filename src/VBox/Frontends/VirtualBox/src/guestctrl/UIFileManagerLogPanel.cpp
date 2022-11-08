@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerLogPanel.cpp 97450 2022-11-08 13:47:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -112,6 +112,9 @@ void UIFileManagerLogPanel::appendLog(const QString &strLog, const QString &strM
     }
     QString strColoredLog = QString("%1 %2: %3 %4 %5").arg(strStartTag).arg(QTime::currentTime().toString("hh:mm:ss:z")).arg(strMachineName).arg(strLog).arg(strEndTag);
     m_pLogTextEdit->append(strColoredLog);
+    m_pLogTextEdit->moveCursor(QTextCursor::End);
+    m_pLogTextEdit->ensureCursorVisible();
+    emit sigShowPanel(this);
 }
 
 QString UIFileManagerLogPanel::panelName() const

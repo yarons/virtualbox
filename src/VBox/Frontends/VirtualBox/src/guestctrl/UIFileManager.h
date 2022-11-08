@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManager.h 97450 2022-11-08 13:47:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -124,6 +124,7 @@ private slots:
     /** Performs whatever necessary when some signal about option change has been receieved. */
     void sltHandleOptionsUpdated();
     void sltHandleHidePanel(UIDialogPanel *pPanel);
+    void sltHandleShowPanel(UIDialogPanel *pPanel);
     void sltCommitDataSignalReceived();
     void sltFileTableSelectionChanged(bool fHasSelection);
     void sltCurrentTabChanged(int iIndex);
