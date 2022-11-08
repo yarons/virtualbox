@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 97433 2022-11-07 15:16:23Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 97451 2022-11-08 13:50:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -75,7 +75,7 @@ static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 #endif
 #if 1
     //{ "iret", bs3CpuBasic2_iret_f16, 0 },
-    { "jmp jb / jv",  bs3CpuBasic2_jmp_rel_f16, 0 },
+    { "jmp jb / jv / ind",  bs3CpuBasic2_jmp_rel_f16, 0 },
 #endif
 #if 0
     { "sidt", bs3CpuBasic2_sidt_f16, 0 },
