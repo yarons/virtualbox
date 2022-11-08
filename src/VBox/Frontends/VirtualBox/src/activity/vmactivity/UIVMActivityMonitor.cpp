@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 96430 2022-08-23 08:37:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 97443 2022-11-08 07:42:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -193,7 +193,7 @@ UIChart::UIChart(QWidget *pParent, UIMetric *pMetric)
     , m_fUseAreaChart(true)
     , m_fIsAvailable(true)
     , m_fIsAreaChartAllowed(false)
-    , m_fDrawCurenValueIndicators(true)
+    , m_fDrawCurenValueIndicators(false)
     , m_iRightMarginCharWidth(10)
 {
     m_axisFont = font();
