@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97464 2022-11-08 21:18:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97466 2022-11-08 22:32:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -64,6 +64,17 @@ RT_C_DECLS_BEGIN
  */
 #if defined(DOXYGEN_RUNNING) || defined(RT_OS_WINDOWS) || 1
 # define IEM_WITH_SETJMP
+#endif
+
+/** @def IEM_DO_LONGJMP
+ *
+ * Wrapper around longjmp / throw.
+ *
+ * @param   a_pVCpu     The CPU handle.
+ * @param   a_rc        The status code jump back with / throw.
+ */
+#if defined(IEM_WITH_SETJMP) || defined(DOXYGEN_RUNNING)
+# define IEM_DO_LONGJMP(a_pVCpu, a_rc)  longjmp(*(a_pVCpu)->iem.s.CTX_SUFF(pJmpBuf), (a_rc))
 #endif
 
 /** For use with IEM function that may do a longjmp (when enabled).
@@ -865,7 +876,7 @@ typedef IEMCPU const *PCIEMCPU;
         else \
         { \
             int rcCtxImport = CPUMImportGuestStateOnDemand(a_pVCpu, a_fExtrnImport); \
-            AssertRCStmt(rcCtxImport, longjmp(*pVCpu->iem.s.CTX_SUFF(pJmpBuf), rcCtxImport)); \
+            AssertRCStmt(rcCtxImport, IEM_DO_LONGJMP(pVCpu, rcCtxImport)); \
         } \
     } while (0)
 
