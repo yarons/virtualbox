@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.cpp 97347 2022-10-31 11:38:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerOperationsPanel.cpp 97453 2022-11-08 14:12:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -354,6 +354,7 @@ void UIFileManagerOperationsPanel::addNewProgress(const CProgress &comProgress, 
             this, &UIFileManagerOperationsPanel::sltHandleWidgetFocusIn);
     connect(pOperationsWidget, &UIFileOperationProgressWidget::sigFocusOut,
             this, &UIFileManagerOperationsPanel::sltHandleWidgetFocusOut);
+    sigShowPanel(this);
 }
 
 QString UIFileManagerOperationsPanel::panelName() const
