@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 96438 2022-08-23 13:16:15Z alexander.eichner@oracle.com $ */
+/* $Id: IEMOpHlp.h 97441 2022-11-08 00:07:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -364,6 +364,15 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
     { \
         if (pVCpu->iem.s.enmCpuMode == IEMMODE_64BIT) \
             iemRecalEffOpSize64Default(pVCpu); \
+    } while (0)
+
+/** The instruction defaults to 64-bit operand size if 64-bit mode and intel
+ *  CPUs ignore the operand size prefix complete (e.g. relative jumps). */
+#define IEMOP_HLP_DEFAULT_64BIT_OP_SIZE_AND_INTEL_IGNORES_OP_SIZE_PREFIX() \
+    do \
+    { \
+        if (pVCpu->iem.s.enmCpuMode == IEMMODE_64BIT) \
+            iemRecalEffOpSize64DefaultAndIntelIgnoresOpSizePrefix(pVCpu); \
     } while (0)
 
 /** The instruction has 64-bit operand size if 64-bit mode. */
