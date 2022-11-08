@@ -1,4 +1,4 @@
-/* $Id: key-create-rsa-openssl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: key-create-rsa-openssl.cpp 97465 2022-11-08 21:46:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - RSA Key Creation using OpenSSL.
  */
@@ -83,7 +83,7 @@ RTDECL(int) RTCrKeyCreateNewRsa(PRTCRKEY phKey, uint32_t cBits, uint32_t uPubExp
                      */
                     unsigned char *pbRsaPrivateKey = NULL;
                     int cbRsaPrivateKey = i2d_RSAPrivateKey(pRsa, &pbRsaPrivateKey);
-                    if (cbRsaPrivateKey)
+                    if (cbRsaPrivateKey > 0)
                     {
                         rc = rtCrKeyCreateRsaPrivate(phKey, pbRsaPrivateKey, cbRsaPrivateKey, NULL, NULL);
                         OPENSSL_free(pbRsaPrivateKey);

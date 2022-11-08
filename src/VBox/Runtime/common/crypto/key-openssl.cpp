@@ -1,4 +1,4 @@
-/* $Id: key-openssl.cpp 96763 2022-09-16 09:10:51Z knut.osmundsen@oracle.com $ */
+/* $Id: key-openssl.cpp 97465 2022-11-08 21:46:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, OpenSSL glue.
  */
@@ -110,7 +110,7 @@ DECLHIDDEN(int) rtCrKeyToOpenSslKey(RTCRKEY hKey, bool fNeedPublic, void /*EVP_P
         *ppEvpKey = pRet = d2i_PublicKey(idKeyType, &pEvpNewKey, &puchPublicKey, hKey->cbEncoded);
     else
         *ppEvpKey = pRet = d2i_PrivateKey(idKeyType, &pEvpNewKey, &puchPublicKey, hKey->cbEncoded);
-    if (pRet)
+    if (pRet != NULL && pRet == pEvpNewKey)
         return VINF_SUCCESS;
 
     /* Bail out: */
@@ -203,7 +203,7 @@ DECLHIDDEN(int) rtCrKeyToOpenSslKeyEx(RTCRKEY hKey, bool fNeedPublic, const char
                 *ppEvpKey = pRet = d2i_PublicKey(idKeyType, &pEvpNewKey, &puchPublicKey, hKey->cbEncoded);
             else
                 *ppEvpKey = pRet = d2i_PrivateKey(idKeyType, &pEvpNewKey, &puchPublicKey, hKey->cbEncoded);
-            if (pRet)
+            if (pRet != NULL && pRet == pEvpNewKey)
                 return VINF_SUCCESS;
 
             /* Bail out: */

@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 96959 2022-09-30 21:51:02Z klaus.espenlaub@oracle.com $ */
+/* $Id: pkcs7-verify.cpp 97465 2022-11-08 21:46:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -78,12 +78,12 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
                                           (const uint8_t **)&pbRawContent, &cbRawContent, &pvFree, pErrInfo);
     AssertRCReturn(rcOssl, rcOssl);
 
-    PKCS7 *pOsslPkcs7   = NULL;
+    PKCS7 *pOsslPkcs7    = NULL;
     PKCS7 *pOsslPkcs7Ret = d2i_PKCS7(&pOsslPkcs7, &pbRawContent, cbRawContent);
 
     RTMemTmpFree(pvFree);
 
-    if (pOsslPkcs7Ret != NULL)
+    if (pOsslPkcs7 != NULL && pOsslPkcs7Ret == pOsslPkcs7)
     {
         STACK_OF(X509) *pAddCerts = NULL;
         if (hAdditionalCerts != NIL_RTCRSTORE)
