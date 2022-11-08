@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97458 2022-11-08 16:04:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97461 2022-11-08 17:38:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1192,17 +1192,17 @@ DECLCALLBACK(FNPGMRZPHYSPFHANDLER)  iemVmxApicAccessPagePfHandler;
 # define IEM_DECL_IMPL_TYPE(a_RetType, a_Name, a_ArgList) \
     a_RetType (__fastcall a_Name) a_ArgList
 # define IEM_DECL_IMPL_DEF(a_RetType, a_Name, a_ArgList) \
-    a_RetType __fastcall a_Name a_ArgList IEM_NOEXCEPT_MAY_LONGJMP
+    a_RetType __fastcall a_Name a_ArgList RT_NOEXCEPT
 # define IEM_DECL_IMPL_PROTO(a_RetType, a_Name, a_ArgList) \
-    a_RetType __fastcall a_Name a_ArgList IEM_NOEXCEPT_MAY_LONGJMP
+    a_RetType __fastcall a_Name a_ArgList RT_NOEXCEPT
 
 #elif __cplusplus >= 201700 /* P0012R1 support */
 # define IEM_DECL_IMPL_TYPE(a_RetType, a_Name, a_ArgList) \
-    a_RetType (VBOXCALL a_Name) a_ArgList IEM_NOEXCEPT_MAY_LONGJMP
+    a_RetType (VBOXCALL a_Name) a_ArgList RT_NOEXCEPT
 # define IEM_DECL_IMPL_DEF(a_RetType, a_Name, a_ArgList) \
-    a_RetType VBOXCALL a_Name a_ArgList IEM_NOEXCEPT_MAY_LONGJMP
+    a_RetType VBOXCALL a_Name a_ArgList RT_NOEXCEPT
 # define IEM_DECL_IMPL_PROTO(a_RetType, a_Name, a_ArgList) \
-    a_RetType VBOXCALL a_Name a_ArgList IEM_NOEXCEPT_MAY_LONGJMP
+    a_RetType VBOXCALL a_Name a_ArgList RT_NOEXCEPT
 
 #else
 # define IEM_DECL_IMPL_TYPE(a_RetType, a_Name, a_ArgList) \
