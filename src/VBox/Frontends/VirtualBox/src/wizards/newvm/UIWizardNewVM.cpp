@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 97444 2022-11-08 07:43:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 97445 2022-11-08 07:47:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -258,7 +258,7 @@ void UIWizardNewVM::deleteVirtualDisk()
     /* Do nothing if an existing disk has been selected: */
     if (m_enmDiskSource == SelectedDiskSource_Existing)
         return;
-        
+
     /* Make sure virtual-disk valid: */
     if (m_virtualDisk.isNull())
         return;
