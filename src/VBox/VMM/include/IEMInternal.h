@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97466 2022-11-08 22:32:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97467 2022-11-08 23:45:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3843,7 +3843,7 @@ VBOXSTRICTRC    iemMemMarkSelDescAccessed(PVMCPUCC pVCpu, uint16_t uSel) RT_NOEX
 VBOXSTRICTRC    iemMemPageTranslateAndCheckAccess(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t fAccess, PRTGCPHYS pGCPhysMem) RT_NOEXCEPT;
 
 #ifdef IEM_WITH_CODE_TLB
-void            iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu, size_t cbDst, void *pvDst) RT_NOEXCEPT;
+void            iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu, size_t cbDst, void *pvDst) IEM_NOEXCEPT_MAY_LONGJMP;
 #else
 VBOXSTRICTRC    iemOpcodeFetchMoreBytes(PVMCPUCC pVCpu, size_t cbMin) RT_NOEXCEPT;
 #endif
