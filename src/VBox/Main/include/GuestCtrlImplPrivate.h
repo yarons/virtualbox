@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 97417 2022-11-06 10:31:19Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 97456 2022-11-08 14:56:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -823,6 +823,7 @@ struct GuestFsObjData
     /** @name Helper functions to extract the data from a certin VBoxService tool's guest stream block.
      * @{ */
     int FromLs(const GuestProcessStreamBlock &strmBlk, bool fLong);
+    int FromRm(const GuestProcessStreamBlock &strmBlk);
     int FromStat(const GuestProcessStreamBlock &strmBlk);
     int FromMkTemp(const GuestProcessStreamBlock &strmBlk);
     /** @}  */
