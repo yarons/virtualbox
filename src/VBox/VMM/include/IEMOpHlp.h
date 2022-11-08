@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 97441 2022-11-08 00:07:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp.h 97458 2022-11-08 16:04:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -593,7 +593,7 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
 VBOXSTRICTRC    iemOpHlpCalcRmEffAddr(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm, PRTGCPTR pGCPtrEff) RT_NOEXCEPT;
 VBOXSTRICTRC    iemOpHlpCalcRmEffAddrEx(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm, PRTGCPTR pGCPtrEff, int8_t offRsp) RT_NOEXCEPT;
 #ifdef IEM_WITH_SETJMP
-RTGCPTR         iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm) RT_NOEXCEPT;
+RTGCPTR         iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm) IEM_NOEXCEPT_MAY_LONGJMP;
 #endif
 
 /** @}  */
