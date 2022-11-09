@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97475 2022-11-09 08:48:44Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97476 2022-11-09 08:55:54Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1828,7 +1828,7 @@ int GuestSessionTaskCopyFrom::Run(void)
 
                     default:
                     {
-                        /** @ŧodo Resolve symlinks? */
+                        /** @todo Resolve symlinks? */
                         setProgressErrorMsg(VBOX_E_IPRT_ERROR,
                                             Utf8StrFmt(tr("Unknown object type (%#x) on host for \"%s\""),
                                                        ObjInfo.Attr.fMode & RTFS_TYPE_MASK, strDstRootAbs.c_str()));
@@ -2165,7 +2165,7 @@ int GuestSessionTaskCopyTo::Run(void)
                     }
 
                     case FsObjType_Symlink:
-                        /** @ŧodo Resolve symlinks? */
+                        /** @todo Resolve symlinks? */
                         break;
 
                     default:
