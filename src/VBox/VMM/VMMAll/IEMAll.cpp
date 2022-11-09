@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97468 2022-11-08 23:47:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97471 2022-11-09 00:29:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -965,7 +965,8 @@ void iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu, size_t cbDst, void *pvDst) IEM_NOEXC
     }
 #else
     RT_NOREF(pvDst, cbDst);
-    IEM_DO_LONGJMP(pVCpu, VERR_INTERNAL_ERROR);
+    if (pvDst || cbDst)
+        IEM_DO_LONGJMP(pVCpu, VERR_INTERNAL_ERROR);
 #endif
 }
 
