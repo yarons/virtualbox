@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97487 2022-11-09 20:39:53Z knut.osmundsen@oracle.com $
+# $Id: tdUnitTest1.py 97488 2022-11-09 21:00:05Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97487 $"
+__version__ = "$Revision: 97488 $"
 
 
 # Standard Python imports.
@@ -625,6 +625,17 @@ class tdUnitTest1(vbox.TestDriver):
         else: # Run locally (host).
             self._figureVersion();
             self._makeEnvironmentChanges();
+
+            # If this is an ASAN build and we're on linux, make sure we've got
+            # libasan.so.N in the  LD_LIBRARY_PATH or stuff w/o a RPATH entry
+            # pointing to /opt/VirtualBox will fail (like tstAsmStructs).
+            if self.getBuildType() == 'asan'  and  utils.getHostOs() in ('linux',):
+                sLdLibraryPath = '';
+                if 'LD_LIBRARY_PATH' in os.environ:
+                    sLdLibraryPath = os.environ['LD_LIBRARY_PATH'] + ':';
+                sLdLibraryPath += self.oBuild.sInstallPath;
+                os.environ['LD_LIBRARY_PATH'] = sLdLibraryPath;
+
             fRc = self._testRunUnitTests(None);
 
         return fRc;
