@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 97491 2022-11-09 21:35:15Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -2319,7 +2319,7 @@ int  vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, void *pvIfData, PINTNETSG pSG, u
                 vboxNetFltDumpPacket(pSG, true, "host", (fDst & INTNETTRUNKDIR_WIRE) ? 0 : 1);
                 Log6(("vboxNetFltPortOsXmit: pBuf->cb dump:\n%.*Rhxd\n", sizeof(pBuf->cb), pBuf->cb));
                 Log6(("vboxNetFltPortOsXmit: netif_rx_ni(%p)\n", pBuf));
-#if RTLNX_VER_MIN(5,18,0)
+#if RTLNX_VER_MIN(5,18,0) || RTLNX_RHEL_MIN(9,2)
                 local_bh_disable();
                 err = netif_rx(pBuf);
                 local_bh_enable();
