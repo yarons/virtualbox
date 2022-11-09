@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 97395 2022-11-04 11:17:21Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 97474 2022-11-09 08:20:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -700,7 +700,11 @@ void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathL
             aFlags << strDirectoryFlags;
         }
         else
+        {
+            /* Ditto goes for source files, as the destination always is a directory path. */
+            strDestinationPath = UIPathOperations::addTrailingDelimiters(strDestinationPath);
             aFlags << strFileFlags;
+        }
     }
 
     CProgress progress = m_comGuestSession.CopyToGuest(sourcePaths, aFilters, aFlags, strDestinationPath);
@@ -773,7 +777,11 @@ void UIFileManagerGuestTable::copyGuestToHost(const QString& hostDestinationPath
             aFlags << strDirectoryFlags;
         }
         else
+        {
+            /* Ditto goes for source files, as the destination always is a directory path. */
+            strDestinationPath = UIPathOperations::addTrailingDelimiters(strDestinationPath);
             aFlags << strFileFlags;
+        }
     }
 
     CProgress progress = m_comGuestSession.CopyFromGuest(sourcePaths, aFilters, aFlags, strDestinationPath);
