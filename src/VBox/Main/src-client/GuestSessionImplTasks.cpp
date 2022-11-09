@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97474 2022-11-09 08:20:10Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97475 2022-11-09 08:48:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1838,7 +1838,8 @@ int GuestSessionTaskCopyFrom::Run(void)
                 }
             }
 
-            if (!pList->mSourceSpec.fDryRun)
+            if (   RT_SUCCESS(vrc)
+                && !pList->mSourceSpec.fDryRun)
                 vrc = fileCopyFromGuest(strSrcRootAbs, strDstRootAbs, pList->mSourceSpec.fFileCopyFlags);
         }
         else
@@ -2321,7 +2322,8 @@ int GuestSessionTaskCopyTo::Run(void)
                 break;
             }
 
-            if (!pList->mSourceSpec.fDryRun)
+            if (   RT_SUCCESS(vrc)
+                && !pList->mSourceSpec.fDryRun)
                 vrc = fileCopyToGuest(strSrcRootAbs, strDstRootAbs, pList->mSourceSpec.fFileCopyFlags);
         }
         else
