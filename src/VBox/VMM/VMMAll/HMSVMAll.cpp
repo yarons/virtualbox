@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 97209 2022-10-18 14:37:10Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMAll.cpp 97492 2022-11-10 10:56:17Z alexander.eichner@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -118,7 +118,7 @@ VMM_INT_DECL(int) hmEmulateSvmMovTpr(PVMCC pVM, PVMCPUCC pVCpu)
             {
                 if (pPatch->enmType == HMTPRINSTR_WRITE_REG)
                 {
-                    uint8_t idxReg = pPatch->uDstOperand;
+                    uint8_t idxReg = pPatch->uSrcOperand;
                     AssertStmt(idxReg < RT_ELEMENTS(pCtx->aGRegs), idxReg = RT_ELEMENTS(pCtx->aGRegs) - 1);
                     u8Tpr = pCtx->aGRegs[idxReg].u8;
                 }
