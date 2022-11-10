@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 97500 2022-11-10 15:34:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
