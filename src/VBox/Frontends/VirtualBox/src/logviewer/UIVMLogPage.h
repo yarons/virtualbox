@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogPage.h 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -127,6 +127,9 @@ public:
     int logFileId() const;
 
     void scrollToEnd();
+
+    void saveScrollBarPosition();
+    void restoreScrollBarPosition();
 
 private slots:
 

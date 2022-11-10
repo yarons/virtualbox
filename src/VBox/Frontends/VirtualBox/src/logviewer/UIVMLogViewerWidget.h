@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 97495 2022-11-10 14:27:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -262,6 +262,7 @@ private:
     /** All extra data saves are done dynamically (as an option changes etc.). The this flag is true
       * we should not try to save anything to extra data anymore. */
     bool m_fCommitDataSignalReceived;
+    QPointer<UIVMLogPage> m_pPreviousLogPage;
 
     friend class UIVMLogViewerFilterPanel;
     friend class UIVMLogViewerPanel;
