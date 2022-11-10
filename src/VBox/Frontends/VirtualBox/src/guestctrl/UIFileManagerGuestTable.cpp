@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 97474 2022-11-09 08:20:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 97498 2022-11-10 15:06:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -670,6 +670,10 @@ void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathL
     QVector<QString> aFilters;
     QVector<QString> aFlags;
     QString strDestinationPath = strDestination;
+
+    /* Remove empty source paths. Typically happens when up directory is selected: */
+    sourcePaths.removeAll(QString());
+
     if (strDestinationPath.isEmpty())
         strDestinationPath = currentDirectoryPath();
 
@@ -678,7 +682,7 @@ void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathL
         emit sigLogOutput("No destination for copy operation", m_strTableName, FileManagerLogType_Error);
         return;
     }
-    if (hostSourcePathList.empty())
+    if (sourcePaths.empty())
     {
         emit sigLogOutput("No source for copy operation", m_strTableName, FileManagerLogType_Error);
         return;
@@ -740,6 +744,9 @@ void UIFileManagerGuestTable::copyGuestToHost(const QString& hostDestinationPath
     QVector<QString> sourcePaths = selectedItemPathList().toVector();
     QVector<QString> aFilters;
     QVector<QString> aFlags;
+
+    /* Remove empty source paths. Typically happens when up directory is selected: */
+    sourcePaths.removeAll(QString());
 
     if (hostDestinationPath.isEmpty())
     {
