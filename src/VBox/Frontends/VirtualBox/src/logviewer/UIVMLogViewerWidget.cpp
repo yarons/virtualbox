@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 97163 2022-10-17 12:55:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 97495 2022-11-10 14:27:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -1080,6 +1080,7 @@ void UIVMLogViewerWidget::createLogViewerPages(const QVector<QUuid> &machineList
         QUuid uMachineId = comMachine.GetId();
         QString strMachineName = comMachine.GetName();
 
+        /* Add a label tab with machine name on it. Used only in manager UI: */
         if (uiCommon().uiType() == UICommon::UIType_SelectorUI)
             m_pTabWidget->addTab(new UILabelTab(this, uMachineId, strMachineName), strMachineName);
 

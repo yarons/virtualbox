@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 97495 2022-11-10 14:27:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -203,7 +203,7 @@ private:
     void removeAllLogPages();
     void markLabelTabs();
 
-    /** Resets document (of the curent tab) and scrollbar highligthing */
+    /** Resets document (of the current tab) and scrollbar highligthing */
     void resetHighlighthing();
     void hidePanel(UIDialogPanel* panel);
     void showPanel(UIDialogPanel* panel);
