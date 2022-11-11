@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 97427 2022-11-07 10:45:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -400,21 +400,6 @@ UIMachineView* UIMachineLogic::dockPreviewView() const
     return 0;
 }
 #endif /* VBOX_WS_MAC */
-
-void UIMachineLogic::notifyAbout3DOverlayVisibilityChange(bool fVisible)
-{
-    /* If active machine-window is defined now: */
-    if (activeMachineWindow())
-    {
-        /* Reinstall corresponding popup-stack according 3D overlay visibility status: */
-        popupCenter().hidePopupStack(activeMachineWindow());
-        popupCenter().setPopupStackType(activeMachineWindow(), fVisible ? UIPopupStackType_Separate : UIPopupStackType_Embedded);
-        popupCenter().showPopupStack(activeMachineWindow());
-    }
-
-    /* Notify other listeners: */
-    emit sigNotifyAbout3DOverlayVisibilityChange(fVisible);
-}
 
 void UIMachineLogic::sltHandleVBoxSVCAvailabilityChange()
 {

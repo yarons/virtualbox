@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineView.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -653,11 +653,6 @@ void UIMachineView::sltHandleSetVisibleRegion(QRegion region)
 {
     /* Used only in seamless-mode. */
     Q_UNUSED(region);
-}
-
-void UIMachineView::sltHandle3DOverlayVisibilityChange(bool fVisible)
-{
-    machineLogic()->notifyAbout3DOverlayVisibilityChange(fVisible);
 }
 
 void UIMachineView::sltDesktopResized()

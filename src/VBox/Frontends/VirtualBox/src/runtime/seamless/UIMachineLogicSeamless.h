@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.h 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -60,9 +60,6 @@ protected:
     /* Helpers: Multi-screen stuff: */
     int hostScreenForGuestScreen(int iScreenId) const;
     bool hasHostScreenForGuestScreen(int iScreenId) const;
-
-    /* API: 3D overlay visibility stuff: */
-    void notifyAbout3DOverlayVisibilityChange(bool fVisible);
 
 private slots:
 

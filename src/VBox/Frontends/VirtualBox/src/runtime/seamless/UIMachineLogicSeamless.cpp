@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -112,18 +112,6 @@ int UIMachineLogicSeamless::hostScreenForGuestScreen(int iScreenId) const
 bool UIMachineLogicSeamless::hasHostScreenForGuestScreen(int iScreenId) const
 {
     return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
-}
-
-void UIMachineLogicSeamless::notifyAbout3DOverlayVisibilityChange(bool)
-{
-    /* If active machine-window is defined now: */
-    if (activeMachineWindow())
-    {
-        /* Reinstall corresponding popup-stack and make sure it has proper type: */
-        popupCenter().hidePopupStack(activeMachineWindow());
-        popupCenter().setPopupStackType(activeMachineWindow(), UIPopupStackType_Separate);
-        popupCenter().showPopupStack(activeMachineWindow());
-    }
 }
 
 void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()

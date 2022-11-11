@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -140,10 +140,6 @@ void UIMachineLogicNormal::sltOpenMenuBarSettings()
         /* Configure menu-bar editor: */
         connect(pMenuBarEditor, &UIMenuBarEditorWindow::destroyed,
                 this, &UIMachineLogicNormal::sltMenuBarSettingsClosed);
-#ifdef VBOX_WS_MAC
-        connect(this, &UIMachineLogicNormal::sigNotifyAbout3DOverlayVisibilityChange,
-                pMenuBarEditor, &UIMenuBarEditorWindow::sltActivateWindow);
-#endif /* VBOX_WS_MAC */
         /* Show window: */
         pMenuBarEditor->show();
     }
@@ -195,10 +191,6 @@ void UIMachineLogicNormal::sltOpenStatusBarSettings()
         /* Configure status-bar editor: */
         connect(pStatusBarEditor, &UIStatusBarEditorWindow::destroyed,
                 this, &UIMachineLogicNormal::sltStatusBarSettingsClosed);
-#ifdef VBOX_WS_MAC
-        connect(this, &UIMachineLogicNormal::sigNotifyAbout3DOverlayVisibilityChange,
-                pStatusBarEditor, &UIStatusBarEditorWindow::sltActivateWindow);
-#endif /* VBOX_WS_MAC */
         /* Show window: */
         pStatusBarEditor->show();
     }

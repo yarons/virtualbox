@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineView.h 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -144,9 +144,6 @@ protected slots:
 
     /* Handler: Frame-buffer SetVisibleRegion stuff: */
     virtual void sltHandleSetVisibleRegion(QRegion region);
-
-    /* Handler: Frame-buffer 3D overlay visibility stuff: */
-    virtual void sltHandle3DOverlayVisibilityChange(bool fVisible);
 
     /* Watch dog for desktop resizes: */
     void sltDesktopResized();
