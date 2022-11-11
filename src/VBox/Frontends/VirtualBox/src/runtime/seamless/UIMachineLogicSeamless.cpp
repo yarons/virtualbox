@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 97514 2022-11-11 12:46:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -33,7 +33,6 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIMessageCenter.h"
-#include "UIPopupCenter.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicSeamless.h"
