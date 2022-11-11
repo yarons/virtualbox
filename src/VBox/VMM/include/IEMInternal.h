@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97501 2022-11-10 20:40:07Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97519 2022-11-11 23:58:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3983,7 +3983,12 @@ IEM_CIMPL_PROTO_1(iemCImpl_call_rel_64, int64_t, offDisp);
 IEM_CIMPL_PROTO_3(iemCImpl_FarJmp, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEffOpSize);
 IEM_CIMPL_PROTO_3(iemCImpl_callf, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEffOpSize);
 IEM_CIMPL_PROTO_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop);
-IEM_CIMPL_PROTO_2(iemCImpl_retn, IEMMODE, enmEffOpSize, uint16_t, cbPop);
+IEM_CIMPL_PROTO_0(iemCImpl_retn_16);
+IEM_CIMPL_PROTO_0(iemCImpl_retn_32);
+IEM_CIMPL_PROTO_0(iemCImpl_retn_64);
+IEM_CIMPL_PROTO_1(iemCImpl_retn_iw_16, uint16_t, cbPop);
+IEM_CIMPL_PROTO_1(iemCImpl_retn_iw_32, uint16_t, cbPop);
+IEM_CIMPL_PROTO_1(iemCImpl_retn_iw_64, uint16_t, cbPop);
 IEM_CIMPL_PROTO_3(iemCImpl_enter, IEMMODE, enmEffOpSize, uint16_t, cbFrame, uint8_t, cParameters);
 IEM_CIMPL_PROTO_1(iemCImpl_leave, IEMMODE, enmEffOpSize);
 IEM_CIMPL_PROTO_2(iemCImpl_int, uint8_t, u8Int, IEMINT, enmInt);
