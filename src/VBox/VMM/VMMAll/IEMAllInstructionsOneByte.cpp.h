@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 97508 2022-11-11 11:47:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 97511 2022-11-11 12:24:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11515,12 +11515,11 @@ FNIEMOP_DEF_2(iemOpHlp_Grp5_far_Ep, uint8_t, bRm, FNIEMCIMPLFARBRANCH *, pfnCImp
     else
         return IEMOP_RAISE_INVALID_OPCODE(); /* callf eax is not legal */
 
-    /* 64-bit mode: Intel has a fixed default opcode size of 64-bit. AMD64 OTOH defaults to 32-bit and ignores REX.W. */
-    if (pVCpu->iem.s.enmCpuMode != IEMMODE_64BIT)
+    /* 64-bit mode: Default is 32-bit, but only intel respects a REX.W prefix. */
+    /** @todo what does VIA do? */
+    if (pVCpu->iem.s.enmCpuMode != IEMMODE_64BIT || IEM_IS_GUEST_CPU_INTEL(pVCpu) || pVCpu->iem.s.enmEffOpSize != IEMMODE_64BIT)
     { /* likely */ }
-    else if (IEM_IS_GUEST_CPU_INTEL(pVCpu))
-        pVCpu->iem.s.enmEffOpSize = pVCpu->iem.s.enmDefOpSize = IEMMODE_64BIT; /** @todo what does VIA do? */
-    else if (pVCpu->iem.s.enmEffOpSize == IEMMODE_64BIT)
+    else
         pVCpu->iem.s.enmEffOpSize = IEMMODE_32BIT;
 
     /* Far pointer loaded from memory. */
