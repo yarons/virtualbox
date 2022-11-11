@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 97504 2022-11-11 07:56:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -264,6 +264,14 @@ void UIVMLogViewerTextEdit::restoreScrollBarPosition()
         pBar->setValue(m_iVerticalScrollBarValue);
 }
 
+void UIVMLogViewerTextEdit::setCursorPosition(int iPosition)
+{
+    QTextCursor cursor = textCursor();
+    cursor.setPosition(iPosition);
+    setTextCursor(cursor);
+    centerCursor();
+}
+
 int UIVMLogViewerTextEdit::lineNumberAreaWidth()
 {
     if (!m_bShowLineNumbers)
@@ -478,8 +486,9 @@ int  UIVMLogViewerTextEdit::lineNumberForPos(const QPoint &position)
 
 QPair<int, QString> UIVMLogViewerTextEdit::bookmarkForPos(const QPoint &position)
 {
-    QTextBlock block = cursorForPosition(position).block();
-    return QPair<int, QString>(lineNumberForPos(position), block.text());
+    QTextCursor cursor = cursorForPosition(position);
+    QTextBlock block = cursor.block();
+    return QPair<int, QString>(cursor.position(), block.text());
 }
 
 void UIVMLogViewerTextEdit::setMouseCursorLine(int lineNumber)

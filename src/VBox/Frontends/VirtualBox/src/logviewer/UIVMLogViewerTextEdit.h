@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.h 97504 2022-11-11 07:56:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -80,6 +80,8 @@ public:
     void setCurrentFont(QFont font);
     void saveScrollBarPosition();
     void restoreScrollBarPosition();
+
+    void setCursorPosition(int iPosition);
 
 protected:
 

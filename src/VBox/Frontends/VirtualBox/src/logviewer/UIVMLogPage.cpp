@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 97500 2022-11-10 15:34:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 97504 2022-11-11 07:56:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -262,8 +262,8 @@ void UIVMLogPage::scrollToBookmark(int bookmarkIndex)
     if (bookmarkIndex >= m_bookmarkVector.size())
         return;
 
-    int lineNumber = m_bookmarkVector.at(bookmarkIndex).first;
-    m_pTextEdit->scrollToLine(lineNumber);
+    int iCursorPosition = m_bookmarkVector.at(bookmarkIndex).first;
+    m_pTextEdit->setCursorPosition(iCursorPosition);
 }
 
 const QVector<LogBookmark>& UIVMLogPage::bookmarkVector() const
