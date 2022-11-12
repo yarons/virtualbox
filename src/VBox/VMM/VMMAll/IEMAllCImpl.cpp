@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97519 2022-11-11 23:58:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97520 2022-11-12 00:25:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2758,8 +2758,6 @@ IEM_CIMPL_DEF_1(iemCImpl_retn_iw_64, uint16_t, cbPop)
 
 /**
  * Implements retn with 16-bit effective operand size.
- *
- * @param   cbPop The amount of arguments to pop from the stack (bytes).
  */
 IEM_CIMPL_DEF_0(iemCImpl_retn_16)
 {
@@ -2769,8 +2767,6 @@ IEM_CIMPL_DEF_0(iemCImpl_retn_16)
 
 /**
  * Implements retn with 32-bit effective operand size.
- *
- * @param   cbPop The amount of arguments to pop from the stack (bytes).
  */
 IEM_CIMPL_DEF_0(iemCImpl_retn_32)
 {
@@ -2780,8 +2776,6 @@ IEM_CIMPL_DEF_0(iemCImpl_retn_32)
 
 /**
  * Implements retn with 64-bit effective operand size.
- *
- * @param   cbPop The amount of arguments to pop from the stack (bytes).
  */
 IEM_CIMPL_DEF_0(iemCImpl_retn_64)
 {
