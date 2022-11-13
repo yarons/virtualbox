@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97497 2022-11-10 14:55:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97522 2022-11-13 02:45:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10902,7 +10902,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMovCRxRead(PVMCPUCC pVCpu, uint8_t cbIn
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMovDRxWrite(PVMCPUCC pVCpu, uint8_t cbInstr, uint8_t iDrReg, uint8_t iGReg)
 {
     IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 2);
-    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK);
+    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_DR7);
     Assert(iDrReg < 8);
     Assert(iGReg < 16);
 
@@ -10927,7 +10927,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMovDRxWrite(PVMCPUCC pVCpu, uint8_t cbI
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMovDRxRead(PVMCPUCC pVCpu, uint8_t cbInstr, uint8_t iGReg, uint8_t iDrReg)
 {
     IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 2);
-    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK);
+    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_DR7);
     Assert(iDrReg < 8);
     Assert(iGReg < 16);
 
