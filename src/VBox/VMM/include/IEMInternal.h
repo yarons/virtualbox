@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 97519 2022-11-11 23:58:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 97534 2022-11-14 16:55:57Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2207,10 +2207,6 @@ FNIEMAIMPLAVXBLENDU256 iemAImpl_vblendvpd_u256_fallback;
 
 /** @name Media (SSE/MMX/AVX) operation: Sort this later
  * @{ */
-IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PRTUINT128U puDst, PCRTUINT128U puSrc));
-IEM_DECL_IMPL_DEF(void, iemAImpl_movshdup,(PRTUINT128U puDst, PCRTUINT128U puSrc));
-IEM_DECL_IMPL_DEF(void, iemAImpl_movddup,(PRTUINT128U puDst, uint64_t uSrc));
-
 IEM_DECL_IMPL_DEF(void, iemAImpl_vmovsldup_256_rr,(PX86XSAVEAREA pXState, uint8_t iYRegDst, uint8_t iYRegSrc));
 IEM_DECL_IMPL_DEF(void, iemAImpl_vmovsldup_256_rm,(PX86XSAVEAREA pXState, uint8_t iYRegDst, PCRTUINT256U pSrc));
 IEM_DECL_IMPL_DEF(void, iemAImpl_vmovshdup_256_rr,(PX86XSAVEAREA pXState, uint8_t iYRegDst, uint8_t iYRegSrc));
