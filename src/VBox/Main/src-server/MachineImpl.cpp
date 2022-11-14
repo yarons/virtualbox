@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 97367 2022-11-01 10:38:05Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 97523 2022-11-14 08:58:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1370,6 +1370,7 @@ HRESULT Machine::setGroups(const std::vector<com::Utf8Str> &aGroups)
     mUserData.backup();
     mUserData->s.llGroups = llGroups;
 
+    mParent->i_onMachineGroupsChanged(mData->mUuid);
     return S_OK;
 }
 

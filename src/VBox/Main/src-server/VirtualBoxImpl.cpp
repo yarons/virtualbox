@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 97168 2022-10-17 15:16:15Z vadim.galitsyn@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 97523 2022-11-14 08:58:36Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3469,6 +3469,17 @@ void VirtualBox::i_onMachineDataChanged(const Guid &aId, BOOL aTemporary)
 {
     ComPtr<IEvent> ptrEvent;
     HRESULT hrc = ::CreateMachineDataChangedEvent(ptrEvent.asOutParam(), m->pEventSource, aId.toString(), aTemporary);
+    AssertComRCReturnVoid(hrc);
+    i_postEvent(new AsyncEvent(this, ptrEvent));
+}
+
+/**
+ *  @note Doesn't lock any object.
+ */
+void VirtualBox::i_onMachineGroupsChanged(const Guid &aId)
+{
+    ComPtr<IEvent> ptrEvent;
+    HRESULT hrc = ::CreateMachineGroupsChangedEvent(ptrEvent.asOutParam(), m->pEventSource, aId.toString(), FALSE /*aDummy*/);
     AssertComRCReturnVoid(hrc);
     i_postEvent(new AsyncEvent(this, ptrEvent));
 }
