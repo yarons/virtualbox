@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 97533 2022-11-14 14:45:46Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -532,7 +532,7 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                 for (unsigned i = 0; i < cWarnings; ++i)
                 {
                     Bstr bstrWarning(aWarnings[i]);
-                    RTMsgWarning("%ls.", bstrWarning.raw());
+                    RTMsgWarning("%ls", bstrWarning.raw());
                 }
             }
 
@@ -761,8 +761,12 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                                     return errorSyntax(Appliance::tr("Argument to --memory option must be a non-negative number."));
                             }
                             else
-                                RTPrintf(Appliance::tr("%2u: Guest memory: %ls MB\n    (change with \"--vsys %u --memory <MB>\")\n"),
-                                         a, bstrFinalValue.raw(), i);
+                            {
+                                strOverride = aVBoxValues[a];
+                                uint64_t ullMemMB = strOverride.toUInt64() / _1M;
+                                RTPrintf(Appliance::tr("%2u: Guest memory: %RU64 MB\n    (change with \"--vsys %u --memory <MB>\")\n"),
+                                         a, ullMemMB, i);
+                            }
                             break;
                         }
 
