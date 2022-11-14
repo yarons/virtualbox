@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 97456 2022-11-08 14:56:27Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 97532 2022-11-14 14:02:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1775,11 +1775,14 @@ int GuestPath::BuildDestinationPath(const Utf8Str &strSrcPath, PathStyle_T enmSr
         strDstPath += pszSrcName;
     }
 
-    LogRel2(("Guest Control: Building destination path for '%s' (%s) -> '%s' (%s)\n",
-             strSrcPath.c_str(), GuestBase::pathStyleToStr(enmSrcPathStyle),
-             strDstPath.c_str(), GuestBase::pathStyleToStr(enmDstPathStyle)));
+    /* Translate the built destination path to a path compatible with the destination. */
+    int vrc = GuestPath::Translate(strDstPath, enmSrcPathStyle, enmDstPathStyle);
 
-    return VINF_SUCCESS;
+    LogRel2(("Guest Control: Building destination path for '%s' (%s) -> '%s' (%s): %Rrc\n",
+             strSrcPath.c_str(), GuestBase::pathStyleToStr(enmSrcPathStyle),
+             strDstPath.c_str(), GuestBase::pathStyleToStr(enmDstPathStyle), vrc));
+
+    return vrc;
 }
 
 /**
