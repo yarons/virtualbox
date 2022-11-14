@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 97460 2022-11-08 16:52:06Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 97540 2022-11-14 20:26:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -419,6 +419,7 @@ protected:
     int addProcessArguments(ProcessArguments &aArgumentsDest, const ProcessArguments &aArgumentsSource);
     int copyFileToGuest(GuestSession *pSession, RTVFS hVfsIso, Utf8Str const &strFileSource, const Utf8Str &strFileDest, bool fOptional);
     int runFileOnGuest(GuestSession *pSession, GuestProcessStartupInfo &procInfo);
+    int waitForGuestSession(ComObjPtr<Guest> pGuest);
 
     /** Files to handle. */
     std::vector<ISOFile>        mFiles;
