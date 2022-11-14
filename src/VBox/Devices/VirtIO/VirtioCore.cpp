@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 97292 2022-10-25 08:29:49Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.cpp 97525 2022-11-14 09:53:34Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -847,9 +847,9 @@ int virtioCoreR3VirtqAvailBufGet(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16
 #ifndef VIRTIO_VBUF_ON_STACK
     PVIRTQBUF pVirtqBuf = (PVIRTQBUF)RTMemAllocZ(sizeof(VIRTQBUF_T));
     AssertReturn(pVirtqBuf, VERR_NO_MEMORY);
+#endif /* !VIRTIO_VBUF_ON_STACK */
     pVirtqBuf->u32Magic  = VIRTQBUF_MAGIC;
     pVirtqBuf->cRefs     = 1;
-#endif /* !VIRTIO_VBUF_ON_STACK */
     pVirtqBuf->uHeadIdx  = uHeadIdx;
     pVirtqBuf->uVirtq    = uVirtq;
 #ifndef VIRTIO_VBUF_ON_STACK
