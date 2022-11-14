@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 97499 2022-11-10 15:30:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 97526 2022-11-14 10:40:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -118,7 +118,7 @@ private slots:
     /** @name Bookmark related slots
      * @{ */
     /** Deletes the bookmark with @p index from the current logs bookmark list. */
-        void sltDeleteBookmark(int index);
+        void sltDeleteBookmarkByIndex(int index);
         /** Receives delete all signal from the bookmark panel and notifies UIVMLogPage. */
         void sltDeleteAllBookmarks();
         /** Manages bookmark panel update when bookmark vector is updated. */
