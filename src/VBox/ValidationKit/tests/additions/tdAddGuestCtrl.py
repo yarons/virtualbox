@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97440 $"
+__version__ = "$Revision: 97537 $"
 
 # Standard Python imports.
 import errno
@@ -1785,7 +1785,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             try:
                 oFile = open(sDst, 'rb');                       # pylint: disable=consider-using-with
             except:
-                return reporter.errorXcpt('open(%s) failed during verfication' % (sDst,));
+                # Don't report expected non-existing paths / files as an error.
+                return reporter.maybeErrXcpt(fExpected, 'open(%s) failed during verfication (file / path not found)' % (sDst,));
             fEqual = oTest.oSrc.equalFile(oFile);
             oFile.close();
             if not fEqual:
