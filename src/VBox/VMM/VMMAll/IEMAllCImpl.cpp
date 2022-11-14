@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97522 2022-11-13 02:45:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97524 2022-11-14 09:16:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2753,7 +2753,7 @@ IEM_CIMPL_DEF_1(iemCImpl_retn_iw_32, uint16_t, cbPop)
  */
 IEM_CIMPL_DEF_1(iemCImpl_retn_iw_64, uint16_t, cbPop)
 {
-    return iemCImpl_ReturnNearCommon(pVCpu, cbInstr, IEMMODE_32BIT, cbPop);
+    return iemCImpl_ReturnNearCommon(pVCpu, cbInstr, IEMMODE_64BIT, cbPop);
 }
 
 
