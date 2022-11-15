@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f3a.cpp.h 97543 2022-11-15 12:59:28Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f3a.cpp.h 97546 2022-11-15 13:56:11Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -345,7 +345,7 @@ FNIEMOP_DEF(iemOp_pextrd_q_RdMw_Vdq_Ib)
          * @oppfx       0x66
          * @opcpuid     sse
          */
-        IEMOP_MNEMONIC3(RMI, PEXTRQ, pextrq, Ev, Vq, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OZ_PFX);
+//        IEMOP_MNEMONIC3(RMI, PEXTRQ, pextrq, Ev, Vq, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OZ_PFX);
         if (IEM_IS_MODRM_REG_MODE(bRm))
         {
             /*
@@ -388,13 +388,13 @@ FNIEMOP_DEF(iemOp_pextrd_q_RdMw_Vdq_Ib)
     else
     {
         /**
-         * @opdone
-         * @opcode      0x16
-         * @opcodesub   rex.w=0
-         * @oppfx       0x66
-         * @opcpuid     sse
+//         * @opdone
+//         * @opcode      0x16
+//         * @opcodesub   rex.w=0
+//         * @oppfx       0x66
+//         * @opcpuid     sse
          */
-        IEMOP_MNEMONIC3(RMI, PEXTRD, pextrd, Ey, Vd, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OZ_PFX);
+//        IEMOP_MNEMONIC3(RMI, PEXTRD, pextrd, Ey, Vd, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_SSE, IEMOPHINT_IGNORES_OZ_PFX);
         if (IEM_IS_MODRM_REG_MODE(bRm))
         {
             /*
