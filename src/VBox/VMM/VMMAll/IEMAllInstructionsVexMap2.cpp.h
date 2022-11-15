@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap2.cpp.h 97361 2022-11-01 02:02:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsVexMap2.cpp.h 97543 2022-11-15 12:59:28Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -393,7 +393,7 @@ FNIEMOP_DEF(iemOp_vpabsd_Vx_Wx)
             IEM_MC_MAYBE_RAISE_AVX2_RELATED_XCPT(); \
             IEM_MC_PREPARE_AVX_USAGE(); \
             IEM_MC_REF_XREG_U128(puDst,  IEM_GET_MODRM_REG(pVCpu, bRm)); \
-            IEM_MC_FETCH_XREG_U64(uSrc,  IEM_GET_MODRM_RM(pVCpu, bRm)); \
+            IEM_MC_FETCH_XREG_U64(uSrc,  IEM_GET_MODRM_RM(pVCpu, bRm), 0 /* a_iQword*/); \
             IEM_MC_CALL_VOID_AIMPL_2(IEM_SELECT_HOST_OR_FALLBACK(fAvx2, iemAImpl_ ## a_Instr ## _u128, \
                                                                  iemAImpl_## a_Instr ## _u128_fallback), \
                                      puDst, uSrc); \
