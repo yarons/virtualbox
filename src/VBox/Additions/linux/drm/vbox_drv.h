@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vbox_drv.h 97556 2022-11-15 17:29:28Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -157,7 +157,7 @@
 # include <drm/drm_device.h>
 # include <drm/drm_ioctl.h>
 # include <drm/drm_fourcc.h>
-# if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
+# if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_RANGE(8,7, 8,99) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
 #  include <drm/drm_irq.h>
 # endif
 # include <drm/drm_vblank.h>
