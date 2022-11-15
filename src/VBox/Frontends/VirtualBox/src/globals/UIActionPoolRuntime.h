@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIActionPoolRuntime.h 97542 2022-11-15 10:51:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -122,7 +122,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Devices_M_DragAndDrop,
     UIActionIndexRT_M_Devices_M_SharedFolders,
     UIActionIndexRT_M_Devices_M_SharedFolders_S_Settings,
-    UIActionIndexRT_M_Devices_S_InstallGuestTools,
+    UIActionIndexRT_M_Devices_S_InsertGuestAdditionsDisk,
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* 'Debugger' menu actions: */

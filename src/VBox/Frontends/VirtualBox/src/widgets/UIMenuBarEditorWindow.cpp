@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMenuBarEditorWindow.cpp 97542 2022-11-15 10:51:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -1354,7 +1354,7 @@ void UIMenuBarEditorWidget::prepareMenuDevices()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_M_SharedClipboard));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_M_DragAndDrop));
         pMenu->addSeparator();
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_S_InstallGuestTools));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_S_InsertGuestAdditionsDisk));
     }
 }
 
