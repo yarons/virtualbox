@@ -1,4 +1,4 @@
-/* $Id: UISession.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UISession.h 97552 2022-11-15 16:03:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -484,6 +484,8 @@ private:
     /** Updates action restrictions. */
     void updateActionRestrictions();
 
+    /* Check if GA can be upgraded. */
+    bool GuestAdditionsUpgradable();
     /* Private variables: */
     UIMachine *m_pMachine;
 
