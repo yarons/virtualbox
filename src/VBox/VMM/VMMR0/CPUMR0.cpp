@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: CPUMR0.cpp 97562 2022-11-16 02:34:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -677,7 +677,7 @@ VMMR0_INT_DECL(bool) CPUMR0DebugStateMaybeSaveGuestAndRestoreHost(PVMCPUCC pVCpu
         pVCpu->cpum.s.Guest.dr[2] = ASMGetDR2();
         pVCpu->cpum.s.Guest.dr[3] = ASMGetDR3();
         if (fDr6)
-            pVCpu->cpum.s.Guest.dr[6] = ASMGetDR6();
+            pVCpu->cpum.s.Guest.dr[6] = ASMGetDR6() | X86_DR6_RA1_MASK; /* ASSUMES no guest supprot for TSX-NI / RTM. */
     }
     ASMAtomicAndU32(&pVCpu->cpum.s.fUseFlags, ~(CPUM_USED_DEBUG_REGS_GUEST | CPUM_USED_DEBUG_REGS_HYPER));
 
