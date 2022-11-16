@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 96929 2022-09-28 21:58:50Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR0.cpp 97561 2022-11-16 02:21:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -3283,11 +3283,7 @@ DECLEXPORT(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlagsAndGroup)
                 && pLogger->u64UserValue3 == (uintptr_t)pGVCpu)
             {
                 if (!pGVCpu->vmmr0.s.u.s.Logger.fFlushing)
-                {
-                    if (!(pGVCpu->vmmr0.s.fLogFlushingDisabled))
-                        return RTLogCheckGroupFlags(pLogger, fFlagsAndGroup);
-                    return NULL;
-                }
+                    return RTLogCheckGroupFlags(pLogger, fFlagsAndGroup);
 
                 /*
                  * When we're flushing we _must_ return NULL here to suppress any
@@ -3321,11 +3317,10 @@ DECLEXPORT(PRTLOGGER) RTLogRelGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
                 && pLogger->u64UserValue3 == (uintptr_t)pGVCpu)
             {
                 if (!pGVCpu->vmmr0.s.u.s.RelLogger.fFlushing)
-                {
-                    if (!(pGVCpu->vmmr0.s.fLogFlushingDisabled))
-                        return RTLogCheckGroupFlags(pLogger, fFlagsAndGroup);
-                    return NULL;
-                }
+                    return RTLogCheckGroupFlags(pLogger, fFlagsAndGroup);
+
+                /* ASSUMES no LogRels hidden within the VMMR0EmtPrepareToBlock code
+                   path, so we don't return NULL here like for the debug logger... */
             }
         }
     }
