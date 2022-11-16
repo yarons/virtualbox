@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97565 $"
+__version__ = "$Revision: 97567 $"
 
 # Standard Python imports.
 import errno
@@ -132,6 +132,7 @@ class tdTestGuestCtrlBase(object):
     """
     def __init__(self, oCreds = None):
         self.oGuest    = None;      ##< IGuest.
+        self.oTestVm   = None;
         self.oCreds    = oCreds     ##< type: tdCtxCreds
         self.timeoutMS = 30 * 1000; ##< 30s timeout
         self.oGuestSession = None;  ##< IGuestSession reference or None.
@@ -4915,9 +4916,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             ]);
             atTests.extend([
                 # Copy the entire test tree:
-                [ tdTestCopyToDir(sSrc = sScratchTreeDirHst, sDst = sScratchDstDir4Gst + oTestVm.pathSep()), tdTestResultSuccess() ],
+                [ tdTestCopyToDir(sSrc = sScratchTreeDirHst, sDst = sScratchDstDir4Gst + oTestVm.pathSep()),
+                  tdTestResultSuccess() ],
                 # Again, should fail this time.
-                [ tdTestCopyToDir(sSrc = sScratchTreeDirHst, sDst = sScratchDstDir4Gst + oTestVm.pathSep()), tdTestResultFailure() ],
+                [ tdTestCopyToDir(sSrc = sScratchTreeDirHst, sDst = sScratchDstDir4Gst + oTestVm.pathSep()),
+                  tdTestResultFailure() ],
                 # Works again, as DirectoryCopyFlag_CopyIntoExisting is specified.
                 [ tdTestCopyToDir(sSrc = sScratchTreeDirHst, sDst = sScratchDstDir4Gst + oTestVm.pathSep(),
                                   afFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting, ]), tdTestResultSuccess() ],
