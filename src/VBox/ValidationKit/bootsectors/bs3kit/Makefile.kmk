@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97430 2022-11-07 13:51:44Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 97576 2022-11-16 22:43:33Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -115,6 +115,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegCtxConvertToRingX.c \
        bs3-cmn-RegCtxConvertV86ToRm.c \
        bs3-cmn-RegCtxPrint.c \
+       bs3-cmn-RegCtxGetRspSsAsCurPtr.c \
        bs3-cmn-RegCtxSave.asm \
        bs3-cmn-RegCtxSaveEx.asm \
        bs3-cmn-RegCtxSaveForMode.c \

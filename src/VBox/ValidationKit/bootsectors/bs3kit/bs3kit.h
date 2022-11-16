@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 97430 2022-11-07 13:51:44Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 97576 2022-11-16 22:43:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2827,6 +2827,14 @@ BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromCurPtr,(PBS3REGCTX pRegCtx, FPFNBS
  * @param   cbValue     The size of the value: 1, 2, 4 or 8.
  */
 BS3_CMN_PROTO_STUB(bool, Bs3RegCtxSetGpr,(PBS3REGCTX pRegCtx, uint8_t iGpr, uint64_t uValue, uint8_t cb));
+
+/**
+ * Gets the stack pointer as a current context pointer.
+ *
+ * @return  Pointer to the top of the stack. NULL on failure.
+ * @param   pRegCtx     The register context.
+ */
+BS3_CMN_PROTO_STUB(void BS3_FAR *, Bs3RegCtxGetRspSsAsCurPtr,(PBS3REGCTX pRegCtx));
 
 
 /**
