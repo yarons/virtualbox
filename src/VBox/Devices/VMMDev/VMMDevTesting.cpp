@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VMMDevTesting.cpp 97577 2022-11-16 22:45:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -1072,7 +1072,7 @@ int vmmdevR3TestingInitialize(PPDMDEVINS pDevIns)
      * Open the XML output file(/pipe/whatever) if specfied.
      */
     rc = RTTestCreateEx("VMMDevTesting", RTTEST_C_USE_ENV | RTTEST_C_NO_TLS | RTTEST_C_XML_DELAY_TOP_TEST,
-                        RTTESTLVL_INVALID, -1 /*iNativeTestPipe*/, pThisCC->pszTestingXmlOutput, &pThisCC->hTestingTest);
+                        RTTESTLVL_DEBUG, -1 /*iNativeTestPipe*/, pThisCC->pszTestingXmlOutput, &pThisCC->hTestingTest);
     if (RT_FAILURE(rc))
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS, "Error creating testing instance");
 
