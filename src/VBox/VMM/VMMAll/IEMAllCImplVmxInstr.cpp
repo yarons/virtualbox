@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 97515 2022-11-11 14:30:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 97583 2022-11-16 23:57:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3226,7 +3226,7 @@ VBOXSTRICTRC iemVmxVmexitInstrMovDrX(PVMCPUCC pVCpu, VMXINSTRID uInstrId, uint8_
                                                                      ? VMX_EXIT_QUAL_DRX_DIRECTION_WRITE
                                                                      : VMX_EXIT_QUAL_DRX_DIRECTION_READ),
                                                         cbInstr);
-            return iemVmxVmexitInstrWithInfo(pVCpu, &ExitInfo);
+        return iemVmxVmexitInstrWithInfo(pVCpu, &ExitInfo);
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
