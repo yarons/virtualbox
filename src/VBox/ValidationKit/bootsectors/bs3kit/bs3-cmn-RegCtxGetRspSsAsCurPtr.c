@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxGetRspSsAsCurPtr.c 97576 2022-11-16 22:43:33Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-RegCtxGetRspSsAsCurPtr.c 97578 2022-11-16 22:48:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3RegCtxGetRspSsAsCurPtr
  */
@@ -68,7 +68,4 @@ BS3_CMN_DEF(void BS3_FAR *, Bs3RegCtxGetRspSsAsCurPtr,(PBS3REGCTX pRegCtx))
     return (void *)(uintptr_t)uFlat;
 #endif
 }
-
-
-
 
