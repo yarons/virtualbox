@@ -1,4 +1,4 @@
-/* $Id: regops.c 97486 2022-11-09 20:27:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 97571 2022-11-16 15:06:15Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -3860,7 +3860,7 @@ struct address_space_operations vbsf_reg_aops = {
 #endif
     .writepage      = vbsf_writepage,
     /** @todo Need .writepages if we want msync performance...  */
-#if RTLNX_VER_MIN(5,18,0) || RTLNX_RHEL_MIN(9,2)
+#if RTLNX_VER_MIN(5,18,0) || RTLNX_RHEL_RANGE(9,2, 9,99)
     .dirty_folio = filemap_dirty_folio,
 #elif RTLNX_VER_MIN(2,5,12)
     .set_page_dirty = __set_page_dirty_buffers,
