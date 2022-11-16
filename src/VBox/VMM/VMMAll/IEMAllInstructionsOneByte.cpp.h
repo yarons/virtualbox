@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 97519 2022-11-11 23:58:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 97584 2022-11-16 23:59:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6203,8 +6203,8 @@ FNIEMOP_DEF(iemOp_retn_Iw)
 {
     IEMOP_MNEMONIC(retn_Iw, "retn Iw");
     uint16_t u16Imm; IEM_OPCODE_GET_NEXT_U16(&u16Imm);
+    IEMOP_HLP_DEFAULT_64BIT_OP_SIZE_AND_INTEL_IGNORES_OP_SIZE_PREFIX();
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
-    IEMOP_HLP_DEFAULT_64BIT_OP_SIZE();
     switch (pVCpu->iem.s.enmEffOpSize)
     {
         case IEMMODE_16BIT:
@@ -6224,7 +6224,7 @@ FNIEMOP_DEF(iemOp_retn_Iw)
 FNIEMOP_DEF(iemOp_retn)
 {
     IEMOP_MNEMONIC(retn, "retn");
-    IEMOP_HLP_DEFAULT_64BIT_OP_SIZE();
+    IEMOP_HLP_DEFAULT_64BIT_OP_SIZE_AND_INTEL_IGNORES_OP_SIZE_PREFIX();
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     switch (pVCpu->iem.s.enmEffOpSize)
     {

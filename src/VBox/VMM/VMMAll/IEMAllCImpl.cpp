@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97564 2022-11-16 09:33:28Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97584 2022-11-16 23:59:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2715,12 +2715,12 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemCImpl_ReturnNearCommon(PVMCPUCC pVCpu, uint8_
     /* Commit it. */
     pVCpu->cpum.GstCtx.rip = NewRip.u;
     pVCpu->cpum.GstCtx.rsp = NewRsp.u;
-    pVCpu->cpum.GstCtx.eflags.Bits.u1RF = 0;
 
     /* Flush the prefetch buffer. */
     IEM_FLUSH_PREFETCH_HEAVY(pVCpu, cbInstr); /** @todo only need a light flush here, don't we?  We don't really need any flushing... */
     RT_NOREF(cbInstr);
-    return VINF_SUCCESS;
+
+    return iemRegFinishClearingRF(pVCpu);
 }
 
 
