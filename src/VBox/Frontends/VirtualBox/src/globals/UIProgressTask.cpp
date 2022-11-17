@@ -1,4 +1,4 @@
-/* $Id: UIProgressTask.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIProgressTask.cpp 97595 2022-11-17 16:07:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class implementation.
  */
@@ -107,7 +107,11 @@ void UIProgressTask::start()
 void UIProgressTask::cancel()
 {
     if (m_pProgressObject)
+    {
         m_pProgressObject->cancel();
+        /* Notify external listeners: */
+        emit sigProgressCanceled();
+    }
 }
 
 void UIProgressTask::sltHandleProgressChange(ulong /*uOperations*/, QString /*strOperation*/,

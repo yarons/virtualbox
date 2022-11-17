@@ -1,4 +1,4 @@
-/* $Id: UIProgressTask.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIProgressTask.h 97595 2022-11-17 16:07:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class declaration.
  */
@@ -58,6 +58,8 @@ signals:
     /** Notifies listeners about progress has changed.
       * @param  uPercent  Brings the progress percentage. */
     void sigProgressChange(ulong uPercent);
+    /** Notifies listeners about progress was canceled. */
+    void sigProgressCanceled();
     /** Notifies listeners about progress has finished. */
     void sigProgressFinished();
 

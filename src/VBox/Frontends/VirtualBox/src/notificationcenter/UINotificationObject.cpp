@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UINotificationObject.cpp 97595 2022-11-17 16:07:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -181,6 +181,8 @@ void UINotificationProgress::handle()
                 this, &UINotificationProgress::sigProgressStarted);
         connect(m_pTask, &UIProgressTask::sigProgressChange,
                 this, &UINotificationProgress::sltHandleProgressChange);
+        connect(m_pTask, &UIProgressTask::sigProgressCanceled,
+                this, &UINotificationProgress::sigProgressFinished);
         connect(m_pTask, &UIProgressTask::sigProgressFinished,
                 this, &UINotificationProgress::sltHandleProgressFinished);
 
