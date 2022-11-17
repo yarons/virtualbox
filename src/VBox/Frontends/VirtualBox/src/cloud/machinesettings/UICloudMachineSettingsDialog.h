@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.h 97597 2022-11-17 16:33:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialog.h 97599 2022-11-17 17:23:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class declaration.
  */
@@ -86,6 +86,8 @@ private slots:
 
     /** Sets Ok button to be @a fEnabled. */
     void setOkButtonEnabled(bool fEnabled);
+    /** Inits the dialog. */
+    void init() { load(); }
     /** Accepts the dialog. */
     void accept() { save(); }
 
