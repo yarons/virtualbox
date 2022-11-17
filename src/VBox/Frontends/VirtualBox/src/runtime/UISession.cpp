@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 97552 2022-11-15 16:03:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.cpp 97588 2022-11-17 10:10:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -435,7 +435,7 @@ bool UISession::setPause(bool fOn)
 
 void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
 {
-    if (!GuestAdditionsUpgradable())
+    if (!guestAdditionsUpgradable())
         return sltMountDVDAdHoc(strSource);
 
     /* Update guest additions automatically: */
@@ -868,7 +868,7 @@ void UISession::sltAdditionsChange()
         actionPool()->toRuntime()->setGuestSupportsGraphics(m_fIsGuestSupportsGraphics);
 
         if (actionPool()->action(UIActionIndexRT_M_Devices_S_UpgradeGuestAdditions))
-            actionPool()->action(UIActionIndexRT_M_Devices_S_UpgradeGuestAdditions)->setEnabled(GuestAdditionsUpgradable());
+            actionPool()->action(UIActionIndexRT_M_Devices_S_UpgradeGuestAdditions)->setEnabled(guestAdditionsUpgradable());
 
         /* Notify listeners about GA state really changed: */
         LogRel(("GUI: UISession::sltAdditionsChange: GA state really changed, notifying listeners\n"));
@@ -2186,7 +2186,7 @@ void UISession::updateActionRestrictions()
     actionPool()->toRuntime()->setRestrictionForMenuDevices(UIActionRestrictionLevel_Session, restrictionForDevices);
 }
 
-bool UISession::GuestAdditionsUpgradable()
+bool UISession::guestAdditionsUpgradable()
 {
     if (!machine().isOk())
         return false;
@@ -2197,7 +2197,7 @@ bool UISession::GuestAdditionsUpgradable()
         return false;
 
     const QString strGuestFamily = osType.GetFamilyId();
-    bool fIsWindowOrLinux = strGuestFamily.contains("window", Qt::CaseInsensitive) || strGuestFamily.contains("linux", Qt::CaseInsensitive);
+    bool fIsWindowOrLinux = strGuestFamily.contains("windows", Qt::CaseInsensitive) || strGuestFamily.contains("linux", Qt::CaseInsensitive);
 
     if (!fIsWindowOrLinux)
         return false;
