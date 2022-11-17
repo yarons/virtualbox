@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 97590 2022-11-17 10:51:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -47,6 +47,7 @@
 #include "UIIconPool.h"
 #include "UILineTextEdit.h"
 #include "UIMessageCenter.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -352,10 +353,10 @@ UIVirtualHardwareItem::UIVirtualHardwareItem(UIApplianceModel *pParent,
     , m_pParent(pParent)
     , m_enmVSDType(enmVSDType)
     , m_strRef(strRef)
-    , m_strOrigValue(strOrigValue)
-    , m_strConfigValue(strConfigValue)
+    , m_strOrigValue(enmVSDType == KVirtualSystemDescriptionType_Memory ? UITranslator::byteStringToMegaByteString(strOrigValue) : strOrigValue)
+    , m_strConfigValue(enmVSDType == KVirtualSystemDescriptionType_Memory ? UITranslator::byteStringToMegaByteString(strConfigValue) : strConfigValue)
     , m_strConfigDefaultValue(strConfigValue)
-    , m_strExtraConfigValue(strExtraConfigValue)
+    , m_strExtraConfigValue(enmVSDType == KVirtualSystemDescriptionType_Memory ? UITranslator::byteStringToMegaByteString(strExtraConfigValue) : strExtraConfigValue)
     , m_checkState(Qt::Checked)
     , m_fModified(false)
 {
@@ -1301,8 +1302,9 @@ void UIVirtualHardwareItem::restoreDefaults()
 void UIVirtualHardwareItem::putBack(QVector<BOOL> &finalStates, QVector<QString> &finalValues, QVector<QString> &finalExtraValues)
 {
     finalStates[m_iNumber] = m_checkState == Qt::Checked;
-    finalValues[m_iNumber] = m_strConfigValue;
-    finalExtraValues[m_iNumber] = m_strExtraConfigValue;
+    finalValues[m_iNumber] = m_enmVSDType == KVirtualSystemDescriptionType_Memory ? UITranslator::megabyteStringToByteString(m_strConfigValue) : m_strConfigValue;
+    finalExtraValues[m_iNumber] = m_enmVSDType == KVirtualSystemDescriptionType_Memory ? UITranslator::megabyteStringToByteString(m_strExtraConfigValue) : m_strExtraConfigValue;
+
     UIApplianceModelItem::putBack(finalStates, finalValues, finalExtraValues);
 }
 

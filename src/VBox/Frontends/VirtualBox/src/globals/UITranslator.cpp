@@ -1,4 +1,4 @@
-/* $Id: UITranslator.cpp 97351 2022-10-31 16:58:43Z sergey.dubov@oracle.com $ */
+/* $Id: UITranslator.cpp 97590 2022-11-17 10:51:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class implementation.
  */
@@ -788,6 +788,28 @@ QString UITranslator::insertKeyToActionText(const QString &strText, const QStrin
 bool UITranslator::isTranslationInProgress()
 {
     return s_fTranslationInProgress;
+}
+
+/* static */
+QString UITranslator::byteStringToMegaByteString(const QString &strByteString)
+{
+    if (strByteString.isEmpty())
+        return QString();
+    bool fConversionSuccess = false;
+    qulonglong uByte = strByteString.toULongLong(&fConversionSuccess);
+    AssertReturn(fConversionSuccess, QString());
+    return QString::number(uByte / _1M);
+}
+
+/* static */
+QString UITranslator::megabyteStringToByteString(const QString &strMegaByteString)
+{
+    if (strMegaByteString.isEmpty())
+        return QString();
+    bool fConversionSuccess = false;
+    qulonglong uMegaByte = strMegaByteString.toULongLong(&fConversionSuccess);
+    AssertReturn(fConversionSuccess, QString());
+    return QString::number(uMegaByte * _1M);
 }
 
 UITranslator::UITranslator(QObject *pParent /* = 0 */)
