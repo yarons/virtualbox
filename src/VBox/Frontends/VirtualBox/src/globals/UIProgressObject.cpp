@@ -1,4 +1,4 @@
-/* $Id: UIProgressObject.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIProgressObject.cpp 97594 2022-11-17 16:03:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressObject class implementation.
  */
@@ -154,6 +154,12 @@ void UIProgressObject::prepare()
 void UIProgressObject::cleanup()
 {
     /* Destroy CProgress event handler: */
+    disconnect(m_pEventHandler, &UIProgressEventHandler::sigProgressPercentageChange,
+               this, &UIProgressObject::sltHandleProgressPercentageChange);
+    disconnect(m_pEventHandler, &UIProgressEventHandler::sigProgressTaskComplete,
+               this, &UIProgressObject::sltHandleProgressTaskComplete);
+    disconnect(m_pEventHandler, &UIProgressEventHandler::sigHandlingFinished,
+               this, &UIProgressObject::sigProgressEventHandlingFinished);
     delete m_pEventHandler;
     m_pEventHandler = 0;
 }
