@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 97367 2022-11-01 10:38:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 97602 2022-11-17 21:02:54Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -132,7 +132,7 @@ RTEXITCODE handleRegisterVM(HandlerArg *a)
         {
             RTEXITCODE rcExit = readPasswordFile(a->argv[3], &strPassword);
             if (rcExit == RTEXITCODE_FAILURE)
-                return RTMsgErrorExit(RTEXITCODE_FAILURE, Misc::tr("Failed to read password from file"));
+                return RTMsgErrorExitFailure(Misc::tr("Failed to read password from file"));
         }
     }
 
@@ -143,21 +143,21 @@ RTEXITCODE handleRegisterVM(HandlerArg *a)
     hrc = a->virtualBox->OpenMachine(Bstr(a->argv[0]).raw(),
                                      Bstr(strPassword).raw(),
                                      machine.asOutParam());
-    if (hrc == VBOX_E_FILE_ERROR)
+    if (FAILED(hrc) && !RTPathStartsWithRoot(a->argv[0]))
     {
         char szVMFileAbs[RTPATH_MAX] = "";
         int vrc = RTPathAbs(a->argv[0], szVMFileAbs, sizeof(szVMFileAbs));
         if (RT_FAILURE(vrc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, Misc::tr("Cannot convert filename \"%s\" to absolute path: %Rrc"),
-                                  a->argv[0], vrc);
+            return RTMsgErrorExitFailure(Misc::tr("Failed to convert \"%s\" to an absolute path: %Rrc"),
+                                         a->argv[0], vrc);
         CHECK_ERROR(a->virtualBox, OpenMachine(Bstr(szVMFileAbs).raw(),
                                                Bstr(strPassword).raw(),
                                                machine.asOutParam()));
     }
     else if (FAILED(hrc))
-        CHECK_ERROR(a->virtualBox, OpenMachine(Bstr(a->argv[0]).raw(),
-                                               Bstr(strPassword).raw(),
-                                               machine.asOutParam()));
+        com::GlueHandleComError(a->virtualBox,
+                                "OpenMachine(Bstr(a->argv[0]).raw(), Bstr(strPassword).raw(), machine.asOutParam()))",
+                                hrc, __FILE__, __LINE__);
     if (SUCCEEDED(hrc))
     {
         ASSERT(machine);
