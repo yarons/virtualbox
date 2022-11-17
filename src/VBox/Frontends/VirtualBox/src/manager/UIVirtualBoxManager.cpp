@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 97597 2022-11-17 16:33:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 97600 2022-11-17 17:41:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1153,11 +1153,15 @@ void UIVirtualBoxManager::sltOpenSettingsDialog(QString strCategory /* = QString
 void UIVirtualBoxManager::sltCloseSettingsDialog()
 {
     /* What type of dialog should we delete? */
-    enum DelType { None, Local, Cloud, All } enmType = All;
+    enum DelType { None, Local, Cloud, All } enmType = None;
     if (qobject_cast<UISettingsDialog*>(sender()))
         enmType = (DelType)(enmType | Local);
     else if (qobject_cast<UICloudMachineSettingsDialog*>(sender()))
         enmType = (DelType)(enmType | Cloud);
+
+    /* It's all if nothing: */
+    if (enmType == None)
+        enmType = All;
 
     /* Remove requested instances: */
     if (enmType & Local)
