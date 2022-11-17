@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 97555 2022-11-15 17:07:35Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 97592 2022-11-17 14:55:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1323,7 +1323,7 @@ int FsList::AddDirFromHost(const Utf8Str &strPath, const Utf8Str &strSubDir,
                                         {
                                             LogRel2(("Guest Control: Symbolic link '%s' -> '%s' (file)\n",
                                                      strEntryAbs.c_str(), pszPathReal));
-                                            if (mSourceSpec.fFileCopyFlags & DirectoryCopyFlag_FollowLinks)
+                                            if (mSourceSpec.fFileCopyFlags & FileCopyFlag_FollowLinks)
                                                 vrc = AddEntryFromHost(strEntry, &objInfo);
                                         }
                                         else
