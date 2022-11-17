@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 97587 2022-11-17 09:09:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -59,6 +59,7 @@
 #include "CMachineDataChangedEvent.h"
 #include "CMachineStateChangedEvent.h"
 #include "CMachineRegisteredEvent.h"
+#include "CMachineGroupsChangedEvent.h"
 #include "CMediumChangedEvent.h"
 #include "CMediumConfigChangedEvent.h"
 #include "CMediumRegisteredEvent.h"
@@ -309,6 +310,12 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         {
             CMachineRegisteredEvent comEventSpecific(pEvent);
             emit sigMachineRegistered(comEventSpecific.GetMachineId(), comEventSpecific.GetRegistered());
+            break;
+        }
+        case KVBoxEventType_OnMachineGroupsChanged:
+        {
+            CMachineGroupsChangedEvent comEventSpecific(pEvent);
+            emit sigMachineGroupsChange(comEventSpecific.GetMachineId());
             break;
         }
         case KVBoxEventType_OnSessionStateChanged:

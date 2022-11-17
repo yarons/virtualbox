@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 97587 2022-11-17 09:09:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -50,6 +50,8 @@ signals:
     void sigMachineDataChange(const QUuid &uId);
     /** Notifies about machine with @a uId was @a fRegistered. */
     void sigMachineRegistered(const QUuid &uId, const bool fRegistered);
+    /** Notifies about machine with @a uId has groups changed. */
+    void sigMachineGroupsChange(const QUuid &uId);
     /** Notifies about @a state change event for the session of the machine with @a uId. */
     void sigSessionStateChange(const QUuid &uId, const KSessionState state);
     /** Notifies about snapshot with @a uSnapshotId was taken for the machine with @a uId. */
@@ -178,6 +180,7 @@ void UIVirtualBoxEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnMachineStateChanged
         << KVBoxEventType_OnMachineDataChanged
         << KVBoxEventType_OnMachineRegistered
+        << KVBoxEventType_OnMachineGroupsChanged
         << KVBoxEventType_OnSessionStateChanged
         << KVBoxEventType_OnSnapshotTaken
         << KVBoxEventType_OnSnapshotDeleted
@@ -217,6 +220,9 @@ void UIVirtualBoxEventHandlerProxy::prepareConnections()
             Qt::DirectConnection);
     connect(m_pQtListener->getWrapped(), SIGNAL(sigMachineRegistered(QUuid, bool)),
             this, SIGNAL(sigMachineRegistered(QUuid, bool)),
+            Qt::DirectConnection);
+    connect(m_pQtListener->getWrapped(), SIGNAL(sigMachineGroupsChange(QUuid)),
+            this, SIGNAL(sigMachineGroupsChange(QUuid)),
             Qt::DirectConnection);
     connect(m_pQtListener->getWrapped(), SIGNAL(sigSessionStateChange(QUuid, KSessionState)),
             this, SIGNAL(sigSessionStateChange(QUuid, KSessionState)),
@@ -349,6 +355,9 @@ void UIVirtualBoxEventHandler::prepareConnections()
             Qt::QueuedConnection);
     connect(m_pProxy, SIGNAL(sigMachineRegistered(QUuid, bool)),
             this, SIGNAL(sigMachineRegistered(QUuid, bool)),
+            Qt::QueuedConnection);
+    connect(m_pProxy, SIGNAL(sigMachineGroupsChange(QUuid)),
+            this, SIGNAL(sigMachineGroupsChange(QUuid)),
             Qt::QueuedConnection);
     connect(m_pProxy, SIGNAL(sigSessionStateChange(QUuid, KSessionState)),
             this, SIGNAL(sigSessionStateChange(QUuid, KSessionState)),

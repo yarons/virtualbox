@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMainEventListener.h 97587 2022-11-17 09:09:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -103,6 +103,8 @@ signals:
         void sigMachineDataChange(const QUuid &uId);
         /** Notifies about machine with @a uId was @a fRegistered. */
         void sigMachineRegistered(const QUuid &uId, const bool fRegistered);
+        /** Notifies about machine with @a uId has groups changed. */
+        void sigMachineGroupsChange(const QUuid &uId);
         /** Notifies about @a state change event for the session of the machine with @a uId. */
         void sigSessionStateChange(const QUuid &uId, const KSessionState state);
         /** Notifies about snapshot with @a uSnapshotId was taken for the machine with @a uId. */
