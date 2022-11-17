@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 97436 2022-11-07 15:46:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 97596 2022-11-17 16:30:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -401,7 +401,7 @@ private:
         static void launchMachine(CCloudMachine &comMachine);
 
         /** Creates an unattended installer and uses it to install guest os to newly created vm. */
-    void startUnattendedInstall(CUnattended &comUnattendedInstaller, bool fStartHeadless, const QString &strMachineId);
+        void startUnattendedInstall(CUnattended &comUnattendedInstaller, bool fStartHeadless, const QString &strMachineId);
 
         /** Launches or shows virtual machines represented by passed @a items in corresponding @a enmLaunchMode (for launch). */
         void performStartOrShowVirtualMachines(const QList<UIVirtualMachineItem*> &items, UICommon::LaunchMode enmLaunchMode);
