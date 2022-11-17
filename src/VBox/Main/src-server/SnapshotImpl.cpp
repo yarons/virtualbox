@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 96888 2022-09-26 19:29:50Z alexander.eichner@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 97598 2022-11-17 16:43:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -2230,6 +2230,16 @@ HRESULT SessionMachine::restoreSnapshot(const ComPtr<ISnapshot> &aSnapshot,
     HRESULT rc = i_checkStateDependency(MutableOrSavedStateDep);
     if (FAILED(rc))
         return rc;
+
+    /* We need to explicitly check if the given snapshot is valid and bail out if not. */
+    if (aSnapshot.isNull())
+    {
+        if (aSnapshot == mData->mCurrentSnapshot)
+            return setError(VBOX_E_OBJECT_NOT_FOUND,
+                            tr("This VM does not have any current snapshot"));
+
+        return setError(E_INVALIDARG, tr("The given snapshot is invalid"));
+    }
 
     ISnapshot* iSnapshot = aSnapshot;
     ComObjPtr<Snapshot> pSnapshot(static_cast<Snapshot*>(iSnapshot));
