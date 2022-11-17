@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdAddBasic1.py 97593 2022-11-17 15:21:51Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97593 $"
 
 # Standard Python imports.
 import os;
@@ -201,17 +201,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                                                       sFileCdWait = self.sFileCdWait);
             reporter.testDone();
 
-            # Certain Linux guests don't behave accordingly so that detecting the CD isn't working properly.
-            # So reboot those guests in the hope that it works finally.
-            ### @todo Needs investigation; probably only udev or something is broken there (?).
-            if oTestVm.isLinux():
-                reporter.testStart('Rebooting and reconnecting to TXS');
-                fRc, oTxsSession = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, fCdWait = True,
-                                                                    cMsCdWait = 5 * 60 * 1000,
-                                                                    sFileCdWait = self.sFileCdWait);
-                reporter.testDone();
-
-            if oSession is not None:
+            if  oSession    is not None \
+            and oTxsSession is not None:
                 self.addTask(oTxsSession);
                 # Do the testing.
                 fSkip = 'install' not in self.asTests;
