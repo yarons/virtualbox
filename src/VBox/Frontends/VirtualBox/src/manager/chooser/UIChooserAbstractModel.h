@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 97605 2022-11-18 10:25:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -181,6 +181,8 @@ protected slots:
         virtual void sltLocalMachineDataChanged(const QUuid &uMachineId);
         /** Handles local machine registering/unregistering for machine with certain @a uMachineId. */
         virtual void sltLocalMachineRegistrationChanged(const QUuid &uMachineId, const bool fRegistered);
+        /** Handles local machine registering/unregistering for machine with certain @a uMachineId. */
+        virtual void sltLocalMachineGroupsChanged(const QUuid &uMachineId);
 
         /** Handles session @a enmState change for machine with certain @a uMachineId. */
         virtual void sltSessionStateChanged(const QUuid &uMachineId, const KSessionState enmState);

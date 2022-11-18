@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 97605 2022-11-18 10:25:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -728,6 +728,36 @@ void UIChooserAbstractModel::sltLocalMachineRegistrationChanged(const QUuid &uMa
     }
 }
 
+void UIChooserAbstractModel::sltLocalMachineGroupsChanged(const QUuid &uMachineId)
+{
+    /* Skip VM if restricted: */
+    if (!gEDataManager->showMachineInVirtualBoxManagerChooser(uMachineId))
+        return;
+
+    /* Search for cached group list: */
+    const QStringList oldGroupList = m_groups.value(toOldStyleUuid(uMachineId));
+    //printf("Old groups for VM with ID=%s: %s\n",
+    //       uMachineId.toString().toUtf8().constData(),
+    //       oldGroupList.join(", ").toUtf8().constData());
+
+    /* Search for existing registered machine: */
+    const CMachine comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
+    if (comMachine.isNull())
+        return;
+    /* Look for a new group list: */
+    const QStringList newGroupList = comMachine.GetGroups().toList();
+    //printf("New groups for VM with ID=%s: %s\n",
+    //       uMachineId.toString().toUtf8().constData(),
+    //       newGroupList.join(", ").toUtf8().constData());
+
+    /* Re-register VM if required: */
+    if (newGroupList.toSet() != oldGroupList.toSet())
+    {
+        sltLocalMachineRegistrationChanged(uMachineId, false);
+        sltLocalMachineRegistrationChanged(uMachineId, true);
+    }
+}
+
 void UIChooserAbstractModel::sltSessionStateChanged(const QUuid &uMachineId, const KSessionState)
 {
     /* Update machine-nodes with passed id: */
@@ -1015,6 +1045,8 @@ void UIChooserAbstractModel::prepareConnections()
             this, &UIChooserAbstractModel::sltLocalMachineDataChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineRegistered,
             this, &UIChooserAbstractModel::sltLocalMachineRegistrationChanged);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineGroupsChange,
+            this, &UIChooserAbstractModel::sltLocalMachineGroupsChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSessionStateChange,
             this, &UIChooserAbstractModel::sltSessionStateChanged);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSnapshotTake,
