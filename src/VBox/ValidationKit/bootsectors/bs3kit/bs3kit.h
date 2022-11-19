@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 97576 2022-11-16 22:43:33Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 97613 2022-11-19 23:48:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3289,6 +3289,17 @@ BS3_CMN_PROTO_STUB(void, Bs3Trap32Init,(void));
  *          structures.
  */
 BS3_CMN_PROTO_STUB(void, Bs3Trap64Init,(void));
+
+/**
+ * Initializes 64-bit trap handling, extended version.
+ *
+ * @remarks Does not install 64-bit trap handling, just initializes the
+ *          structures.
+ * @param   fMoreIstUsage   Use the interrupt stacks for more CPU exceptions.
+ *                          Default (false) is to only IST1 for the double fault
+ *                          handler and the rest uses IST0.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3Trap64InitEx,(bool fMoreIstUsage));
 
 /**
  * Modifies the real-mode / V86 IVT entry specified by @a iIvt.
