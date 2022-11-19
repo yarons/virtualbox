@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 97616 2022-11-19 23:58:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -154,7 +154,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
 
         case VINF_EM_RAW_GUEST_TRAP:
         case VINF_EM_RAW_EMULATE_INSTR:
-            Assert(!TRPMHasTrap(pVCpu)); /* We're directly executing instructions below without respecting any pending traps! */
+            AssertMsg(!TRPMHasTrap(pVCpu), ("trap=%#x\n", TRPMGetTrapNo(pVCpu))); /* We're directly executing instructions below without respecting any pending traps! */
             rc = emR3ExecuteInstruction(pVM, pVCpu, "EMUL: ");
             break;
 
