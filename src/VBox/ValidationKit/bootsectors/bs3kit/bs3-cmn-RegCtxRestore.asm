@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxRestore.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: bs3-cmn-RegCtxRestore.asm 97612 2022-11-19 23:46:36Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3RegCtxRestore.
 ;
@@ -575,6 +575,7 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxRestore, BS3_PBC_HYBRID
         ; IRETD to v8086 mode.  Frame includes ss:esp and the 4 data segment registers.
         ;
 .restore_v8086:
+        ; Create the return frame.
         or      eax, 0ffffffffh         ; poison unused parts of segment pushes
         mov     eax, [xBX + BS3REGCTX.gs]
         push    eax
@@ -592,6 +593,7 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxRestore, BS3_PBC_HYBRID
         push    eax
         push    dword [xBX + BS3REGCTX.rip]
 
+        ; Load registers.
         mov     eax, [xBX + BS3REGCTX.rax]
         mov     edx, [xBX + BS3REGCTX.rdx]
         mov     ecx, [xBX + BS3REGCTX.rcx]
