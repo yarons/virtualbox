@@ -1,4 +1,4 @@
-; $Id: bs3-c32-Trap32Generic.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: bs3-c32-Trap32Generic.asm 97611 2022-11-19 23:42:45Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Trap, 32-bit assembly handlers.
 ;
@@ -326,7 +326,7 @@ BS3_PROC_BEGIN bs3Trap32GenericCommon
 .iret_frame_v8086:
         mov     byte [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.bCpl], 3
         or      byte [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.bMode], BS3_MODE_CODE_V86 ; paranoia ^ 2
-        movzx   ecx, word [ebp + 16]
+        mov     ecx, [ebp + 16]
         mov     [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.rsp], ecx
         mov     cx, [ebp + 20]
         mov     [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.ss], cx
