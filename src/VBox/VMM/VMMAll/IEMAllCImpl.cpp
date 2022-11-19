@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97584 2022-11-16 23:59:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97615 2022-11-19 23:54:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2299,10 +2299,9 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
         pVCpu->cpum.GstCtx.cs.ValidSel   = uNewCs;
         pVCpu->cpum.GstCtx.cs.fFlags     = CPUMSELREG_FLAGS_VALID;
         pVCpu->cpum.GstCtx.cs.u64Base    = (uint32_t)uNewCs << 4;
-        pVCpu->cpum.GstCtx.eflags.Bits.u1RF = 0;
         if (cbPop)
             iemRegAddToRsp(pVCpu, cbPop);
-        return VINF_SUCCESS;
+        return iemRegFinishClearingRF(pVCpu);
     }
 
     /*
@@ -2562,9 +2561,6 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
 
         if (cbPop)
             iemRegAddToRsp(pVCpu, cbPop);
-        pVCpu->cpum.GstCtx.eflags.Bits.u1RF = 0;
-
-        /* Done! */
     }
     /*
      * Return to the same privilege level
@@ -2632,12 +2628,12 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
         pVCpu->iem.s.enmCpuMode = iemCalcCpuMode(pVCpu);
         if (cbPop)
             iemRegAddToRsp(pVCpu, cbPop);
-        pVCpu->cpum.GstCtx.eflags.Bits.u1RF = 0;
     }
 
     /* Flush the prefetch buffer. */
     IEM_FLUSH_PREFETCH_HEAVY(pVCpu, cbInstr); /** @todo use light flush for same privlege? */
-    return VINF_SUCCESS;
+
+    return iemRegFinishClearingRF(pVCpu);
 }
 
 
