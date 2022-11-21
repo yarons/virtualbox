@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2-asm.asm 97619 2022-11-21 02:18:08Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-basic-2-asm.asm 97627 2022-11-21 14:00:58Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -62,12 +62,18 @@ BS3_PROC_BEGIN _bs3CpuBasic2_ud2
 BS3_PROC_END   _bs3CpuBasic2_ud2
 
 
-BS3_PROC_BEGIN _bs3CpuBasic2_stac_ud2
-        stac
+BS3_PROC_BEGIN _bs3CpuBasic2_salc_ud2
+        salc                            ; #UD in 64-bit mode
 .again:
         ud2
         jmp     .again
-BS3_PROC_END   _bs3CpuBasic2_stac_ud2
+BS3_PROC_END   _bs3CpuBasic2_salc_ud2
+
+BS3_PROC_BEGIN _bs3CpuBasic2_swapgs
+.again:
+        db      00fh, 001h, 0f8h        ; swapgs - #UD when not in 64-bit mode.
+        jmp     .again
+BS3_PROC_END   _bs3CpuBasic2_swapgs
 
 
 BS3_PROC_BEGIN _bs3CpuBasic2_Int80
