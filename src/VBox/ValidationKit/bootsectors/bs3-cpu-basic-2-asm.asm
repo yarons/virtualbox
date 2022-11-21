@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2-asm.asm 97489 2022-11-09 21:15:54Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-basic-2-asm.asm 97619 2022-11-21 02:18:08Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -60,6 +60,14 @@ BS3_PROC_BEGIN _bs3CpuBasic2_ud2
         ud2
         jmp     .again
 BS3_PROC_END   _bs3CpuBasic2_ud2
+
+
+BS3_PROC_BEGIN _bs3CpuBasic2_stac_ud2
+        stac
+.again:
+        ud2
+        jmp     .again
+BS3_PROC_END   _bs3CpuBasic2_stac_ud2
 
 
 BS3_PROC_BEGIN _bs3CpuBasic2_Int80
