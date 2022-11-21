@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.cpp 97634 2022-11-21 15:56:36Z andreas.loeffler@oracle.com $ */
+/* $Id: ClientWatcher.cpp 97635 2022-11-21 16:58:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
@@ -218,7 +218,7 @@ uint32_t VirtualBox::ClientWatcher::reapProcesses(void)
                                     pid, pid, Status.iStatus, Status.iStatus));
 #else
                             LogRel(("Reaper: Pid %d (%x) was signalled: %s (%d / %#x)\n",
-                                    pid, pid, strsignal(Status.iStatus), Status.iStatus, Status.iStatus));
+                                    pid, pid, sigabbrev_np(Status.iStatus), Status.iStatus, Status.iStatus));
 #endif
                             break;
                     }
