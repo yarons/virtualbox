@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.cpp 97635 2022-11-21 16:58:28Z andreas.loeffler@oracle.com $ */
+/* $Id: ClientWatcher.cpp 97637 2022-11-21 17:10:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
@@ -214,11 +214,15 @@ uint32_t VirtualBox::ClientWatcher::reapProcesses(void)
                             break;
                         case RTPROCEXITREASON_SIGNAL:
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
-                            LogRel(("Reaper: Pid %d (%x) was signalled: (%d / %#x)\n",
-                                    pid, pid, Status.iStatus, Status.iStatus));
-#else
+                            LogRel(("Reaper: Pid %d (%x) was signalled: (%d / %#x)\n", pid, pid, Status.iStatus, Status.iStatus));
+#else /** @todo Move this to IPRT? */
+# if __GLIBC_PREREQ(2, 32)
+                            const char *pszSig = sigabbrev_np(Status.iStatus);
+# else /* glibc < 2.32 */
+                            const char *pszSig = sys_sigabbrev[Status.iStatus < RT_ELEMENTS(sys_sigabbrev) ? Status.iStatus : 0];
+# endif /* __GLIBC_PREREQ */
                             LogRel(("Reaper: Pid %d (%x) was signalled: %s (%d / %#x)\n",
-                                    pid, pid, sigabbrev_np(Status.iStatus), Status.iStatus, Status.iStatus));
+                                    pid, pid, pszSig, Status.iStatus, Status.iStatus));
 #endif
                             break;
                     }
