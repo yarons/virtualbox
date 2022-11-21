@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 97642 2022-11-21 23:03:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 97644 2022-11-21 23:10:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -6226,7 +6226,7 @@ VBOXSTRICTRC iemMemMap(PVMCPUCC pVCpu, void **ppvMem, size_t cbMem, uint8_t iSeg
 #else  /* !IEM_WITH_DATA_TLB */
 
     RTGCPHYS GCPhysFirst;
-    rcStrict = iemMemPageTranslateAndCheckAccess(pVCpu, GCPtrMem, cbMem, fAccess, &GCPhysFirst);
+    rcStrict = iemMemPageTranslateAndCheckAccess(pVCpu, GCPtrMem, (uint32_t)cbMem, fAccess, &GCPhysFirst);
     if (rcStrict != VINF_SUCCESS)
         return rcStrict;
 
