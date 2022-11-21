@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.cpp 97632 2022-11-21 15:32:27Z andreas.loeffler@oracle.com $ */
+/* $Id: ClientWatcher.cpp 97633 2022-11-21 15:51:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
@@ -213,11 +213,11 @@ uint32_t VirtualBox::ClientWatcher::reapProcesses(void)
                                     pid, pid, Status.iStatus, Status.iStatus));
                             break;
                         case RTPROCEXITREASON_SIGNAL:
-                            LogRel(("Reaper: Pid %d (%x) was signalled: %s (%d / %#x)\n",
+                            LogRel(("Reaper: Pid %d (%x) was signalled: %s (%d / %#x)\n"
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
-                                    pid, pid, "", Status.iStatus, Status.iStatus));
+                                    , pid, pid, "", Status.iStatus, Status.iStatus));
 #else
-                                    pid, pid, strsignal(Status.iStatus), Status.iStatus, Status.iStatus));
+                                    , pid, pid, strsignal(Status.iStatus), Status.iStatus, Status.iStatus));
 #endif
                             break;
                     }
