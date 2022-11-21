@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 97540 2022-11-14 20:26:53Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 97626 2022-11-21 13:34:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -242,6 +242,7 @@ protected:
 
     /** @name File handling primitives.
      * @{ */
+    int fileClose(const ComObjPtr<GuestFile> &file);
     int fileCopyFromGuestInner(const Utf8Str &strSrcFile, ComObjPtr<GuestFile> &srcFile,
                                const Utf8Str &strDstFile, PRTFILE phDstFile,
                                FileCopyFlag_T fFileCopyFlags, uint64_t offCopy, uint64_t cbSize);

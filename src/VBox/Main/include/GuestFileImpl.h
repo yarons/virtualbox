@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestFileImpl.h 97626 2022-11-21 13:34:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -92,7 +92,7 @@ public:
     static Utf8Str  i_guestErrorToString(int guestRc, const char *pcszWhat);
     /** @}  */
 
-private:
+public:
 
     /** @name Wrapped IGuestFile properties.
      * @{ */
@@ -133,6 +133,8 @@ private:
                     ULONG aTimeoutMS,
                     ULONG *aWritten);
     /** @}  */
+
+private:
 
     /** This can safely be used without holding any locks.
      * An AutoCaller suffices to prevent it being destroy while in use and
