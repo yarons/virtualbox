@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97543 2022-11-15 12:59:28Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 97629 2022-11-21 14:02:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -1748,7 +1748,7 @@ FNIEMOP_DEF_1(iemOp_Grp7_invlpg, uint8_t, bRm)
 }
 
 
-/** Opcode 0x0f 0x01 /7. */
+/** Opcode 0x0f 0x01 0xf8. */
 FNIEMOP_DEF(iemOp_Grp7_swapgs)
 {
     IEMOP_MNEMONIC(swapgs, "swapgs");
@@ -1758,7 +1758,7 @@ FNIEMOP_DEF(iemOp_Grp7_swapgs)
 }
 
 
-/** Opcode 0x0f 0x01 /7. */
+/** Opcode 0x0f 0x01 0xf9. */
 FNIEMOP_DEF(iemOp_Grp7_rdtscp)
 {
     IEMOP_MNEMONIC(rdtscp, "rdtscp");
