@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 96643 2022-09-07 19:23:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: QILineEdit.cpp 97657 2022-11-22 17:28:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -240,6 +240,7 @@ void UIMarkableLineEdit::setPlaceholderText(const QString &strText)
 
 void UIMarkableLineEdit::mark(bool fError, const QString &strErrorMessage /* = QString() */)
 {
+    m_pIconLabel->setVisible(true);
     AssertReturnVoid(m_pIconLabel);
     const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
 
@@ -259,6 +260,8 @@ void UIMarkableLineEdit::prepare()
     AssertReturnVoid(m_pLineEdit);
     m_pIconLabel = new QLabel;
     AssertReturnVoid(m_pIconLabel);
+    /* Show the icon label only if line edit is marked for error/no error.*/
+    m_pIconLabel->hide();
     pMainLayout->addWidget(m_pLineEdit);
     pMainLayout->addWidget(m_pIconLabel);
     setFocusProxy(m_pLineEdit);
