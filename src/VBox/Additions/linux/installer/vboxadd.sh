@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 97603 2022-11-17 21:03:45Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 97650 2022-11-22 10:56:25Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 97603 $)
+# Linux Additions kernel module init script ($Revision: 97650 $)
 #
 
 #
@@ -69,11 +69,6 @@ SERVICE="VirtualBox Guest Additions"
 ## systemd logs information about service status, otherwise do that ourselves.
 QUIET=
 test -z "${TARGET_VER}" && TARGET_VER=`uname -r`
-
-# Prepend PATH for building UEK7 on OL8 distribution.
-case $(uname -r) in
-    5.15.0-*.el8uek*) PATH="/opt/rh/gcc-toolset-11/root/usr/bin:$PATH"
-esac
 
 # Marker to ignore a particular kernel version which was already installed.
 #
@@ -471,6 +466,11 @@ setup_modules()
     test -d /lib/modules/"$KERN_VER"/build || return 0
     export KERN_VER
     info "Building the modules for kernel $KERN_VER."
+
+    # Prepend PATH for building UEK7 on OL8 distribution.
+    case "$KERN_VER" in
+        5.15.0-*.el8uek*) PATH="/opt/rh/gcc-toolset-11/root/usr/bin:$PATH";;
+    esac
 
     # Detect if kernel was built with clang.
     unset LLVM
