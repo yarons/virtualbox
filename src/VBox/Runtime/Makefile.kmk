@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96925 2022-09-28 20:39:43Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 97646 2022-11-22 01:02:48Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -779,6 +779,7 @@ RuntimeBaseR3_SOURCES      := \
 	generic/RTLogWriteUser-generic.cpp \
 	generic/RTPathGetCurrentDrive-generic.cpp \
 	generic/RTPathIsSame-generic.cpp \
+	generic/RTProcSignalName-generic.cpp \
 	generic/RTTimerLRCreate-generic.cpp \
 	generic/rtStrFormatKernelAddress-generic.cpp \
 	generic/mempool-generic.cpp \
