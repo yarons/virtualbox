@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97658 2022-11-22 17:50:37Z andreas.loeffler@oracle.com $
+# $Id: base.py 97659 2022-11-22 19:27:05Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97658 $"
+__version__ = "$Revision: 97659 $"
 
 
 # Standard Python imports.
@@ -722,9 +722,15 @@ class Process(TdTaskBase):
                     sCorePath = getDirEnv('TESTBOX_PATH_SCRATCH', fTryCreate = False);
                 except:
                     sCorePath = '/var/cores'; # Use some well-known core path as fallback.
-                subprocess.run([ 'coreadm', '-g', os.path.join(sCorePath, 'core.%f.%p') ]);
+                try:
+                    utils.processCall([ 'coreadm', '-g', os.path.join(sCorePath, 'core.%f.%p') ]);
+                except:
+                    reporter.logXcpt('sKindCrashDump=%s' % (sKindCrashDump,));
             else: # Disable.
-                subprocess.run([ 'coreadm', '-d', 'all' ]);
+                try:
+                    utils.processCall([ 'coreadm', '-d', 'all' ]);
+                except:
+                    reporter.logXcpt('sKindCrashDump=%s' % (sKindCrashDump,));
 
         return True;
 
