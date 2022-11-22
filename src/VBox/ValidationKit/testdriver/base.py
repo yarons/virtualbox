@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: base.py 97658 2022-11-22 17:50:37Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97658 $"
 
 
 # Standard Python imports.
@@ -714,6 +714,18 @@ class Process(TdTaskBase):
         """
         self.sKindCrashReport = sKindCrashReport;
         self.sKindCrashDump   = sKindCrashDump;
+
+        sOs = utils.getHostOs();
+        if sOs == 'solaris':
+            if sKindCrashDump is not None: # Enable.
+                try:
+                    sCorePath = getDirEnv('TESTBOX_PATH_SCRATCH', fTryCreate = False);
+                except:
+                    sCorePath = '/var/cores'; # Use some well-known core path as fallback.
+                subprocess.run([ 'coreadm', '-g', os.path.join(sCorePath, 'core.%f.%p') ]);
+            else: # Disable.
+                subprocess.run([ 'coreadm', '-d', 'all' ]);
+
         return True;
 
     def isRunning(self):

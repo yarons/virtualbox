@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 96987 2022-10-04 18:04:54Z klaus.espenlaub@oracle.com $
+# $Id: utils.py 97658 2022-11-22 17:50:37Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96987 $"
+__version__ = "$Revision: 97658 $"
 
 
 # Standard Python imports.
@@ -1430,7 +1430,43 @@ def processCollectCrashInfo(uPid, fnLog, fnCrashFile):
                     sFull = os.path.join(sDir, sEntry);
                     fnLog('Found crash dump for %u: %s' % (uPid, sFull,));
                     fnCrashFile(sFull, True);
-
+    elif sOs == 'solaris':
+        asDmpDirs = [];
+        try:
+            sScratchPath = getDirEnv('TESTBOX_PATH_SCRATCH', fTryCreate = False);
+            asDmpDirs.extend([ sScratchPath ]);
+        except:
+            pass;
+        # Some other useful locations as fallback.
+        asDmpDirs.extend([
+            u'/var/cores/',
+            u'/var/core/',
+            u'/var/tmp/',
+        ]);
+        #
+        # Solaris by default creates a core file in the directory of the crashing process with the name 'core'.
+        #
+        # As we need to distinguish the core files correlating to their PIDs and have a persistent storage location,
+        # the host needs to be tweaked via:
+        #
+        # ```coreadm -g /path/to/cores/core.%f.%p```
+        #
+        sMatchPrefix = 'core';
+        sMatchSuffix = '.%u' % (uPid,);
+        for sDir in asDmpDirs:
+            sDir = os.path.expandvars(sDir);
+            if not os.path.isdir(sDir):
+                continue;
+            try:
+                asDirEntries = os.listdir(sDir);
+            except:
+                continue;
+            for sEntry in asDirEntries:
+                if  sEntry.startswith(sMatchPrefix) \
+                and sEntry.endswith(sMatchSuffix):
+                    sFull = os.path.join(sDir, sEntry);
+                    fnLog('Found crash dump for %u: %s' % (uPid, sFull,));
+                    fnCrashFile(sFull, True);
     else:
         pass; ## TODO
     return None;
@@ -2535,4 +2571,3 @@ class BuildCategoryDataTestCase(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main();
     # not reached.
-
