@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMonitorCommon.cpp 97654 2022-11-22 12:38:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class implementation.
  */
@@ -106,13 +106,13 @@ QVector<UIDebuggerMetricData> UIMonitorCommon::getAndParseStatsFromDebugger(CMac
             {
                 QXmlStreamAttributes attributes = xmlReader.attributes();
                 quint64 iCounter = attributes.value("c").toULongLong();
-                xmlData.push_back(UIDebuggerMetricData(attributes.value("name"), iCounter));
+                xmlData.push_back(UIDebuggerMetricData(attributes.value("name").toString(), iCounter));
             }
             else if (xmlReader.name() == QLatin1String("U64"))
             {
                 QXmlStreamAttributes attributes = xmlReader.attributes();
                 quint64 iCounter = attributes.value("val").toULongLong();
-                xmlData.push_back(UIDebuggerMetricData(attributes.value("name"), iCounter));
+                xmlData.push_back(UIDebuggerMetricData(attributes.value("name").toString(), iCounter));
             }
             xmlReader.skipCurrentElement();
         }

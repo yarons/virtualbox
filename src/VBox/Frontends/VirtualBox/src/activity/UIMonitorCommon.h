@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMonitorCommon.h 97654 2022-11-22 12:38:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -36,12 +36,8 @@ struct UIDebuggerMetricData
 {
     UIDebuggerMetricData()
         : m_counter(0){}
-#ifdef VBOX_IS_QT6_OR_LATER
-    UIDebuggerMetricData(const QStringView &strName, quint64 counter)
-#else
-    UIDebuggerMetricData(const QStringRef &strName, quint64 counter)
-#endif
-        : m_strName(strName.toString())
+    UIDebuggerMetricData(const QString &strName, quint64 counter)
+        : m_strName(strName)
         , m_counter(counter){}
     QString m_strName;
     quint64 m_counter;
