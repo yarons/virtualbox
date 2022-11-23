@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97667 2022-11-23 13:21:37Z andreas.loeffler@oracle.com $
+# $Id: base.py 97669 2022-11-23 14:23:57Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97667 $"
+__version__ = "$Revision: 97669 $"
 
 
 # Standard Python imports.
@@ -728,8 +728,8 @@ class Process(TdTaskBase):
                                                  '-d', 'global', '-d', 'global-setid', '-d', 'process', '-d', 'proc-setid' ]);
 
         if sKindCrashDump is not None:
-            assert sCorePath is not None;
-            reporter.log('Crash dumps enabled -- Core path is "%s"' % (sCorePath,));
+            if sCorePath is not None:
+                reporter.log('Crash dumps enabled -- path is "%s"' % (sCorePath,));
         else:
             reporter.log('Crash dumps disabled');
 
