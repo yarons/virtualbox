@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 97670 2022-11-23 14:33:46Z andreas.loeffler@oracle.com $
+# $Id: utils.py 97671 2022-11-23 15:15:17Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97670 $"
+__version__ = "$Revision: 97671 $"
 
 
 # Standard Python imports.
@@ -1433,7 +1433,7 @@ def processCollectCrashInfo(uPid, fnLog, fnCrashFile):
     elif sOs == 'solaris':
         asDmpDirs = [];
         try:
-            sScratchPath = environ.get('TESTBOX_PATH_SCRATCH', None);
+            sScratchPath = os.environ.get('TESTBOX_PATH_SCRATCH', None);
             asDmpDirs.extend([ sScratchPath ]);
         except:
             pass;
