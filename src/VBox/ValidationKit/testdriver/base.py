@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97661 2022-11-23 07:50:16Z andreas.loeffler@oracle.com $
+# $Id: base.py 97664 2022-11-23 10:48:00Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97661 $"
+__version__ = "$Revision: 97664 $"
 
 
 # Standard Python imports.
@@ -720,9 +720,9 @@ class Process(TdTaskBase):
         if sOs == 'solaris':
             if sKindCrashDump is not None: # Enable.
                 sCorePath = getDirEnv('TESTBOX_PATH_SCRATCH', sAlternative = '/var/cores', fTryCreate = False);
-                utils.processOutputChecked([ 'coreadm', '-e', 'process', '-g', os.path.join(sCorePath, 'core.%f.%p') ]);
+                utils.sudoProcessOutputChecked([ 'coreadm', '-e', 'process', '-g', os.path.join(sCorePath, 'core.%f.%p') ]);
             else: # Disable.
-                utils.processOutputChecked([ 'coreadm', '-d', 'process' ]);
+                utils.sudoProcessOutputChecked([ 'coreadm', '-d', 'process' ]);
 
         if sKindCrashDump is not None:
             assert sCorePath is not None;
