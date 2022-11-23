@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIGraphicsScrollArea.h 97663 2022-11-23 09:33:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class declaration.
  */
@@ -91,10 +91,6 @@ private:
 
     /** Layout widgets. */
     void layoutWidgets();
-    /** Layout viewport. */
-    void layoutViewport();
-    /** Layout scroll-bar. */
-    void layoutScrollBar();
 
     /** Holds the orientation. */
     Qt::Orientation  m_enmOrientation;
