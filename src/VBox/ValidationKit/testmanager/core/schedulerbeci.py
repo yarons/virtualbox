@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbeci.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: schedulerbeci.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager - Best-Effort-Continuous-Integration (BECI) scheduler.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Validation Kit imports.
@@ -86,7 +86,7 @@ class SchdulerBeci(SchedulerBase): # pylint: disable=too-few-public-methods
         cMaxItems = len(oData.aoArgsVariations) * 64;
         cMaxItems = min(cMaxItems, 1048576);
 
-        aoItems   = list();
+        aoItems   = [];
         cNotAtEnd = len(oData.aoTestCases);
         while len(aoItems) < cMaxItems:
             self.msgDebug('outer loop: %s items' % (len(aoItems),));

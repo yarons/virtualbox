@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testcase.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard python imports.
@@ -264,7 +264,7 @@ class TestCaseDependencyData(ModelDataBase):
 
         The dictionary keys are ksParam_*.
         """
-        dErrors = dict()
+        dErrors = {}
 
         self.idTestCase         = self._validateInt(   dErrors, self.ksParam_idTestCase,        self.idTestCase);
         self.idTestCasePreReq   = self._validateInt(   dErrors, self.ksParam_idTestCasePreReq,  self.idTestCasePreReq);

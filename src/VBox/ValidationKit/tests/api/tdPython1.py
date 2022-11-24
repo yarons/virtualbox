@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdPython1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdPython1.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Python Bindings Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -175,7 +175,7 @@ class SubTstDrvPython1(base.SubTestDriverBase):
                 # Create a thread that will interrupt us in 2 seconds.
                 try:
                     oThread = threading.Thread(target=self.interruptWaitEventsThreadProc);
-                    oThread.setDaemon(False);
+                    oThread.setDaemon(False); # pylint: disable=deprecated-method
                 except:
                     reporter.errorXcpt();
                     break;

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: wuitestresult.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager WUI - Test Results.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 # Python imports.
 import datetime;
@@ -76,7 +76,7 @@ class WuiTestResultsForSomethingLink(WuiTmLink):
 
     def __init__(self, sGroupedBy, idGroupMember, sName = WuiContentBase.ksShortTestResultsLink,
                  dExtraParams = None, fBracketed = False):
-        dParams = dict(dExtraParams) if dExtraParams else dict();
+        dParams = dict(dExtraParams) if dExtraParams else {};
         dParams[WuiMain.ksParamAction] = sGroupedBy;
         dParams[WuiMain.ksParamGroupMemberId] = idGroupMember;
         WuiTmLink.__init__(self, sName, WuiMain.ksScriptName, dParams, fBracketed = fBracketed);

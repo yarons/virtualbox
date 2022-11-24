@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: db.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager - Database Interface.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard python imports.
@@ -268,7 +268,7 @@ class TMDatabaseConnection(object):
             oSrvGlue.registerDebugInfoCallback(self.debugInfoCallback);
 
         # Object caches (used by database logic classes).
-        self.ddCaches = dict();
+        self.ddCaches = {};
 
     def isAutoCommitting(self):
         """ Work around missing autocommit attribute in older versions."""
@@ -373,7 +373,7 @@ class TMDatabaseConnection(object):
         if aoArgs is not None:
             sBound = oCursor.mogrify(unicode(sOperation), aoArgs);
         elif sOperation.find('%') < 0:
-            sBound = oCursor.mogrify(unicode(sOperation), list());
+            sBound = oCursor.mogrify(unicode(sOperation), []);
         else:
             sBound = unicode(sOperation);
 
@@ -425,7 +425,7 @@ class TMDatabaseConnection(object):
         collect data for traceback.
         """
         if aoArgs is None:
-            aoArgs = list();
+            aoArgs = [];
 
         nsStart = utils.timestampNano();
         try:
@@ -587,7 +587,7 @@ class TMDatabaseConnection(object):
         """ Returns the cache dictionary for this data type. """
         dRet = self.ddCaches.get(sType, None);
         if dRet is None:
-            dRet = dict();
+            dRet = {};
             self.ddCaches[sType] = dRet;
         return dRet;
 

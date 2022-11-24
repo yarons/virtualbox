@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstOs2.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdGuestOsInstOs2.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - OS/2 install tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -205,7 +205,7 @@ class tdGuestOsInstOs2(vbox.TestDriver):
         oSession.setupVrdp(True)
 
         # Set extra data
-        if self.asExtraData != []:
+        if self.asExtraData:
             for sExtraData in self.asExtraData:
                 try:
                     sKey, sValue = sExtraData.split(':')

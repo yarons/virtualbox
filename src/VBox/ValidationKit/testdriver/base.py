@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97672 2022-11-24 08:28:01Z andreas.loeffler@oracle.com $
+# $Id: base.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97672 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -81,7 +81,7 @@ def exeSuff():
     """
     Returns the executable suffix.
     """
-    if os.name == 'nt' or os.name == 'os2':
+    if os.name in ('nt', 'os2'):
         return '.exe';
     return '';
 
@@ -483,7 +483,7 @@ class TdTaskBase(object):
         if not fOld:
             reporter.log2('signalTaskLocked(%s)' % (self,));
         self.fSignalled = True;
-        self.oCv.notifyAll()
+        self.oCv.notifyAll(); # pylint: disable=deprecated-method
         if self.oOwner is not None:
             self.oOwner.notifyAboutReadyTask(self);
         return fOld;
@@ -1430,7 +1430,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         elif asArgs[iArg] in self.asNormalActions:
             self.asActions.append(asArgs[iArg])
         elif asArgs[iArg] in self.asSpecialActions:
-            if self.asActions != []:
+            if self.asActions:
                 raise InvalidOption('selected special action "%s" already' % (self.asActions[0], ));
             self.asActions = [ asArgs[iArg] ];
             # extact <destination>
@@ -1704,7 +1704,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
                     if iNext == iArg:
                         raise InvalidOption('unknown option: %s' % (asArgs[iArg]))
                 iArg = iNext;
-        except QuietInvalidOption as oXcpt:
+        except QuietInvalidOption:
             return rtexitcode.RTEXITCODE_SYNTAX;
         except InvalidOption as oXcpt:
             reporter.error(oXcpt.str());
@@ -1717,7 +1717,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         if not self.completeOptions():
             return rtexitcode.RTEXITCODE_SYNTAX;
 
-        if self.asActions == []:
+        if not self.asActions:
             reporter.error('no action was specified');
             reporter.error('valid actions: %s' % (self.asNormalActions + self.asSpecialActions + ['all']));
             return rtexitcode.RTEXITCODE_SYNTAX;
@@ -1789,7 +1789,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
 
             self.pidFileRemove(os.getpid());
 
-        if asActions != [] and fRc is True:
+        if asActions and fRc is True:
             reporter.error('unhandled actions: %s' % (asActions,));
             fRc = False;
 

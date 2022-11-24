@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: wuireport.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager WUI - Reports.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Validation Kit imports.
@@ -87,7 +87,7 @@ class WuiReportBase(WuiContentBase):
 
         # Additional URL parameters for reports:
         from testmanager.webui.wuimain import WuiMain;
-        self._dExtraParams  = ReportFilter().strainParameters(dict() if oDisp is None else oDisp.getParameters(),
+        self._dExtraParams  = ReportFilter().strainParameters({} if oDisp is None else oDisp.getParameters(),
                                                               (WuiMain.ksParamReportPeriods,
                                                                WuiMain.ksParamReportPeriodInHours,
                                                                WuiMain.ksParamEffectiveDate,));

@@ -35,7 +35,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Id: tdAutostart1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $"
+__version__ = "$Id: tdAutostart1.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $"
 
 # Standard Python imports.
 import os;
@@ -1317,7 +1317,7 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
         };
         oSet.aoTestVms.extend([oTestVm for oTestVm in self.asTestVmClasses.values() if oTestVm is not None]);
         sOs = self.getBuildOs();
-        if sOs in self.asTestVmClasses.keys():
+        if sOs in self.asTestVmClasses:
             for oTestVM in oSet.aoTestVms:
                 if oTestVM is not None:
                     oTestVM.fSkip = oTestVM != self.asTestVmClasses[sOs];

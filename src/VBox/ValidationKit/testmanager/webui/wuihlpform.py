@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: wuihlpform.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 # Standard python imports.
 import copy;
@@ -68,7 +68,7 @@ class WuiHlpForm(object):
     def __init__(self, sId, sAction, dErrors = None, fReadOnly = False, sOnSubmit = None):
         self._fFinalized = False;
         self._fReadOnly  = fReadOnly;
-        self._dErrors    = dErrors if dErrors is not None else dict();
+        self._dErrors    = dErrors if dErrors is not None else {};
 
         if sOnSubmit == self.ksOnSubmit_AddReturnToFieldWithCurrentUrl:
             sOnSubmit = u'return addRedirectToInputFieldWithCurrentUrl(this)';

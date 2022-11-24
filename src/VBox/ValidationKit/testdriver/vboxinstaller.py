@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96431 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -265,7 +265,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         """
         sFull = self.__persistentVarCalcName(sVar);
         try:
-            with open(sFull, 'w') as oFile:
+            with open(sFull, 'w') as oFile: # pylint: disable=unspecified-encoding
                 if sValue:
                     oFile.write(sValue.encode('utf-8'));
         except:
@@ -317,7 +317,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         if not os.path.exists(sFull):
             return None;
         try:
-            with open(sFull, 'r') as oFile:
+            with open(sFull, 'r') as oFile: # pylint: disable=unspecified-encoding
                 sValue = oFile.read().decode('utf-8');
         except:
             reporter.errorXcpt('Error creating "%s"' % (sFull,));

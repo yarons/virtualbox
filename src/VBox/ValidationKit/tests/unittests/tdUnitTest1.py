@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97488 2022-11-09 21:00:05Z knut.osmundsen@oracle.com $
+# $Id: tdUnitTest1.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97488 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -1156,7 +1156,7 @@ class tdUnitTest1(vbox.TestDriver):
 
         # Open /dev/null for use as stdin further down.
         try:
-            oDevNull = open(os.path.devnull, 'w+');             # pylint: disable=consider-using-with
+            oDevNull = open(os.path.devnull, 'w+');             # pylint: disable=consider-using-with,unspecified-encoding
         except:
             oDevNull = None;
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard Python imports.
@@ -268,7 +268,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
            and oTestDrv.fpApiVer >= 7.0:
             eNic0AttachType = vboxcon.NetworkAttachmentType_HostOnlyNetwork;
 
-        return vboxtestvms.BaseTestVm._createVmDoIt(self, oTestDrv, eNic0AttachType, sDvdImage);
+        return vboxtestvms.BaseTestVm._createVmDoIt(self, oTestDrv, eNic0AttachType, sDvdImage); # pylint: disable=protected-access
 
 
     def _createVmPost(self, oTestDrv, oVM, eNic0AttachType, sDvdImage):
@@ -321,7 +321,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
             if self.isHostCpuAffectedByUbuntuNewAmdBug(oTestDrv):
                 return True;
 
-        return vboxtestvms.BaseTestVm._skipVmTest(self, oTestDrv, oVM);
+        return vboxtestvms.BaseTestVm._skipVmTest(self, oTestDrv, oVM); # pylint: disable=protected-access
+
 
     def getReconfiguredVm(self, oTestDrv, cCpus, sVirtMode, sParavirtMode = None):
         #

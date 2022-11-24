@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: wuicontentbase.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard python imports.
@@ -189,7 +189,7 @@ class WuiAdminLink(WuiTmLink): # pylint: disable=too-few-public-methods
                  sFragmentId = None, fBracketed = True):
         from testmanager.webui.wuiadmin import WuiAdmin;
         if not dParams:
-            dParams = dict();
+            dParams = {};
         else:
             dParams = dict(dParams);
         if sAction is not None:
@@ -204,7 +204,7 @@ class WuiMainLink(WuiTmLink): # pylint: disable=too-few-public-methods
 
     def __init__(self, sName, sAction, dParams = None, sConfirm = None, sTitle = None, sFragmentId = None, fBracketed = True):
         if not dParams:
-            dParams = dict();
+            dParams = {};
         else:
             dParams = dict(dParams);
         from testmanager.webui.wuimain import WuiMain;
@@ -756,7 +756,7 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=too-few-public
         """
         oForm = WuiHlpForm(self._sId,
                            '?' + webutils.encodeUrlParams({WuiDispatcherBase.ksParamAction: self._sSubmitAction}),
-                           dErrors if dErrors is not None else dict(),
+                           dErrors if dErrors is not None else {},
                            fReadOnly = self._sMode == self.ksMode_Show);
 
         self._oData.convertToParamNull();

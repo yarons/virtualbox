@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testboxtasks.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 TestBox Script - Async Tasks.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard python imports.
@@ -99,7 +99,7 @@ class TestBoxBaseTask(object):
         """
         self._lock();
         self._fRunning = False;
-        self._oCv.notifyAll();
+        self._oCv.notifyAll(); # pylint: disable=deprecated-method
         self._unlock();
 
     def isRunning(self):

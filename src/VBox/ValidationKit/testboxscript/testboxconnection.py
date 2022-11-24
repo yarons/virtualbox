@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxconnection.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testboxconnection.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 
 """
 TestBox Script - HTTP Connection Handling.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 
 # Standard python imports.
@@ -92,7 +92,7 @@ class TestBoxResponse(object):
                 self._dResponse[sField] = self._dResponse[sField][0]
         else:
             # Special case, dummy response object.
-            self._dResponse = dict();
+            self._dResponse = {};
         # Done.
 
     def getStringChecked(self, sField):
@@ -229,7 +229,7 @@ class TestBoxConnection(object):
         Raises exception on failure.
         """
         if dParams is None:
-            dParams = dict();
+            dParams = {};
         dParams[constants.tbreq.ALL_PARAM_TESTBOX_ID]   = self._sTestBoxId;
         dParams[constants.tbreq.ALL_PARAM_TESTBOX_UUID] = self._sTestBoxUuid;
         return self.postRequestRaw(sAction, dParams);

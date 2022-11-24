@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresultfailures.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: testresultfailures.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97673 $"
 
 # Standard python imports.
 import sys;
@@ -454,7 +454,7 @@ class TestResultFailureLogic(ModelLogicBase): # pylint: disable=too-few-public-m
 
         oData = self.getById(idTestResult)
         (tsCur, tsCurMinusOne) = self._oDb.getCurrentTimestamps();
-        if oData.tsEffective != tsCur and oData.tsEffective != tsCurMinusOne:
+        if oData.tsEffective not in (tsCur, tsCurMinusOne):
             self._historizeEntry(idTestResult, tsCurMinusOne);
             self._readdEntry(uidAuthor, oData, tsCurMinusOne);
             self._historizeEntry(idTestResult);
