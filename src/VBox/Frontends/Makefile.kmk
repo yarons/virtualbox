@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97678 2022-11-24 19:09:04Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -55,6 +55,9 @@ ifndef VBOX_ONLY_DOCS
  endif
  ifdef VBOX_WITH_QTGUI
   include $(PATH_SUB_CURRENT)/VirtualBox/Makefile.kmk
+ endif
+ ifdef VBOX_WITH_INTNET_PCAP
+  include $(PATH_SUB_CURRENT)/VBoxIntNetPcap/Makefile.kmk
  endif
  include $(PATH_SUB_CURRENT)/Common/Makefile.kmk
 endif # !VBOX_ONLY_DOCS
