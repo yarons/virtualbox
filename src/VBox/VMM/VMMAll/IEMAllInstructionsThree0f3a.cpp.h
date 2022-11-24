@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f3a.cpp.h 97607 2022-11-18 10:58:11Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f3a.cpp.h 97676 2022-11-24 15:09:47Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -919,7 +919,7 @@ FNIEMOP_DEF(iemOp_pcmpistri_Vdq_Wdq_Ib)
         IEM_MC_ARG_CONST(uint8_t,               bImmArg, /*=*/ bImm, 3);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         IEM_MC_MAYBE_RAISE_SSE42_RELATED_XCPT();
-        IEM_MC_FETCH_MEM_U128_ALIGN_SSE(Src.uSrc2, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
+        IEM_MC_FETCH_MEM_U128(Src.uSrc2, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
 
         IEM_MC_PREPARE_SSE_USAGE();
         IEM_MC_REF_GREG_U32(pu32Ecx, X86_GREG_xCX);
