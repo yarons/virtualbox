@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97669 2022-11-23 14:23:57Z andreas.loeffler@oracle.com $
+# $Id: base.py 97672 2022-11-24 08:28:01Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97669 $"
+__version__ = "$Revision: 97672 $"
 
 
 # Standard Python imports.
@@ -722,7 +722,7 @@ class Process(TdTaskBase):
                 sCorePath = getDirEnv('TESTBOX_PATH_SCRATCH', sAlternative = '/var/cores', fTryCreate = False);
                 utils.sudoProcessOutputChecked([ 'coreadm', '-e', 'global', '-e', 'global-setid', \
                                                  '-e', 'process', '-e', 'proc-setid', \
-                                                 '-g', os.path.join(sCorePath, 'core.%f.%p')]);
+                                                 '-g', os.path.join(sCorePath, '%f.%p.core')]);
             else: # Disable.
                 utils.sudoProcessOutputChecked([ 'coreadm', \
                                                  '-d', 'global', '-d', 'global-setid', '-d', 'process', '-d', 'proc-setid' ]);
