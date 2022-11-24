@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
+# $Id: config.py 97675 2022-11-24 11:56:16Z andreas.loeffler@oracle.com $
 
 """
 Test Manager Configuration.
@@ -36,14 +36,14 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97673 $"
+__version__ = "$Revision: 97675 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 97673 $')[11:-2];
+g_ksRevision            = ('$Revision: 97675 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -52,10 +52,10 @@ g_kfVBoxSpecific        = True;
 ## @name Used by the TMDatabaseConnection class.
 # @{
 g_ksDatabaseName        = 'testmanager';
-g_ksDatabaseAddress     = 'localhost';
-g_ksDatabasePort        = 5432;
+g_ksDatabaseAddress     = None;
+g_ksDatabasePort        = None;
 g_ksDatabaseUser        = 'postgres';
-g_ksDatabasePassword    = 'password';
+g_ksDatabasePassword    = '';
 ## @}
 
 
@@ -84,9 +84,9 @@ g_ksTmDownloadDir       = os.path.join(g_ksTmHtDocDir, 'download');
 ## The base URL relative path of the TM download directory (g_ksTmDownloadDir).
 g_ksTmDownloadBaseUrlRel = 'htdocs/downloads';
 ## The root of the file area (referred to as TM_FILE_DIR in database docs).
-g_ksFileAreaRootDir     = '/tmp/testmanager'
+g_ksFileAreaRootDir     = '/var/tmp/testmanager'
 ## The root of the file area with the zip files (best put on a big storage server).
-g_ksZipFileAreaRootDir  = '/tmp/testmanager2'
+g_ksZipFileAreaRootDir  = '/var/tmp/testmanager2'
 ## URL prefix for trac log viewer.
 g_ksTracLogUrlPrefix    = 'https://linserv.de.oracle.com/vbox/log/'
 ## URL prefix for trac log viewer.
@@ -258,3 +258,4 @@ g_kfProfileIndex        = False;
 ## When not None,
 g_ksTestBoxDispXpctLog  = '/tmp/testmanager-testboxdisp-xcpt.log'
 ## @}
+
