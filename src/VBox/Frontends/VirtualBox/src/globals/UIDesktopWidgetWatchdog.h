@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -100,24 +100,24 @@ public:
 
     /** Returns the geometry of the host-screen with @a iHostScreenIndex.
       * @note The default screen is used if @a iHostScreenIndex is -1. */
-    static QRect screenGeometry(int iHostScreenIndex = -1);
+    QRect screenGeometry(int iHostScreenIndex = -1) const;
     /** Returns the geometry of the host-screen which contains @a pWidget. */
-    static QRect screenGeometry(const QWidget *pWidget);
+    QRect screenGeometry(const QWidget *pWidget) const;
     /** Returns the geometry of the host-screen which contains @a point. */
-    static QRect screenGeometry(const QPoint &point);
+    QRect screenGeometry(const QPoint &point) const;
 
     /** Returns the available-geometry of the host-screen with @a iHostScreenIndex.
       * @note The default screen is used if @a iHostScreenIndex is -1. */
-    static QRect availableGeometry(int iHostScreenIndex = -1);
+    QRect availableGeometry(int iHostScreenIndex = -1) const;
     /** Returns the available-geometry of the host-screen which contains @a pWidget. */
-    static QRect availableGeometry(const QWidget *pWidget);
+    QRect availableGeometry(const QWidget *pWidget) const;
     /** Returns the available-geometry of the host-screen which contains @a point. */
-    static QRect availableGeometry(const QPoint &point);
+    QRect availableGeometry(const QPoint &point) const;
 
     /** Returns overall region unifying all the host-screen geometries. */
-    static QRegion overallScreenRegion();
+    QRegion overallScreenRegion() const;
     /** Returns overall region unifying all the host-screen available-geometries. */
-    static QRegion overallAvailableRegion();
+    QRegion overallAvailableRegion() const;
 
 #ifdef VBOX_WS_X11
     /** Qt5: X11: Returns whether no or fake screen detected. */
@@ -146,9 +146,9 @@ public:
                                bool fCanResize = true);
     /** Aligns the center of @a pWidget with the center
       * of @a pRelative, performing resize if allowed. */
-    static void centerWidget(QWidget *pWidget,
-                             QWidget *pRelative,
-                             bool fCanResize = true);
+    void centerWidget(QWidget *pWidget,
+                      QWidget *pRelative,
+                      bool fCanResize = true) const;
     /** Restores and exposes the @a pWidget on desktop. */
     static void restoreWidget(QWidget *pWidget);
 

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2497,7 +2497,7 @@ quint64 UICommon::requiredVideoMemory(const QString &strGuestOSTypeId, int cMoni
     QVector<int> screenSize(qMax(cMonitors, cHostScreens), 0);
     for (int i = 0; i < cHostScreens; ++i)
     {
-        QRect r = UIDesktopWidgetWatchdog::screenGeometry(i);
+        QRect r = gpDesktop->screenGeometry(i);
         screenSize[i] = r.width() * r.height();
     }
     /* Now sort the vector: */

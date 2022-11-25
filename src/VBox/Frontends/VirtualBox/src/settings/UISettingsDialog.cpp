@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 97435 2022-11-07 15:44:05Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -354,7 +354,7 @@ void UISettingsDialog::polishEvent(QShowEvent*)
 #endif /* VBOX_WS_MAC */
 
     /* Explicit centering according to our parent: */
-    UIDesktopWidgetWatchdog::centerWidget(this, parentWidget(), false);
+    gpDesktop->centerWidget(this, parentWidget(), false);
 }
 
 void UISettingsDialog::closeEvent(QCloseEvent *pEvent)

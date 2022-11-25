@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: QIManagerDialog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -104,7 +104,7 @@ void QIManagerDialog::prepare()
     if (iHostScreen >= 0 && iHostScreen < UIDesktopWidgetWatchdog::screenCount())
     {
         /* On the basis of current host-screen geometry if possible: */
-        const QRect screenGeometry = UIDesktopWidgetWatchdog::screenGeometry(iHostScreen);
+        const QRect screenGeometry = gpDesktop->screenGeometry(iHostScreen);
         if (screenGeometry.isValid())
             proposedSize = screenGeometry.size() * 7 / 15;
     }
@@ -130,7 +130,7 @@ void QIManagerDialog::prepare()
     finalize();
 
     /* Center according requested widget: */
-    UIDesktopWidgetWatchdog::centerWidget(this, m_pCenterWidget, false);
+    gpDesktop->centerWidget(this, m_pCenterWidget, false);
 
     /* Load the dialog's settings from extradata */
     loadSettings();

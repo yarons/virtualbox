@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -598,7 +598,7 @@ void UINativeWizard::resizeToGoldenRatio()
         /* Gather suitable dimensions: */
         const int iStepWidth = 100;
         const int iMinWidth = qMax(100, m_pWidgetStack->minimumSizeHint().width());
-        const int iMaxWidth = qMax(iMinWidth, UIDesktopWidgetWatchdog::availableGeometry(this).width() * 3 / 4);
+        const int iMaxWidth = qMax(iMinWidth, gpDesktop->availableGeometry(this).width() * 3 / 4);
         /* Show all the QIRichTextLabel(s) again, they were hidden above: */
         foreach (QIRichTextLabel *pLabel, findChildren<QIRichTextLabel*>())
             pLabel->show();

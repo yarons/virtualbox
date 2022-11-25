@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -4383,7 +4383,7 @@ void UISoftKeyboard::loadSettings()
     float fKeyboardAspectRatio = 1.0f;
     if (m_pKeyboardWidget)
         fKeyboardAspectRatio = m_pKeyboardWidget->layoutAspectRatio();
-    const QRect availableGeo = UIDesktopWidgetWatchdog::availableGeometry(this);
+    const QRect availableGeo = gpDesktop->availableGeometry(this);
     const int iDefaultWidth = availableGeo.width() / 2;
     const int iDefaultHeight = iDefaultWidth * fKeyboardAspectRatio;
     QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);

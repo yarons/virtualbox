@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class implementation.
  */
@@ -163,7 +163,7 @@ void UITakeSnapshotDialog::prepare()
     if (iHostScreen >= 0 && iHostScreen < UIDesktopWidgetWatchdog::screenCount())
     {
         /* On the basis of current host-screen geometry if possible: */
-        const QRect screenGeometry = UIDesktopWidgetWatchdog::screenGeometry(iHostScreen);
+        const QRect screenGeometry = gpDesktop->screenGeometry(iHostScreen);
         if (screenGeometry.isValid())
             minimumSize = screenGeometry.size() / 4;
     }

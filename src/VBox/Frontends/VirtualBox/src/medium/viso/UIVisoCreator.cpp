@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -751,7 +751,7 @@ void UIVisoCreatorDialog::sltsigVisoNameChanged(const QString &strName)
 
 void UIVisoCreatorDialog::loadSettings()
 {
-    const QRect availableGeo = UIDesktopWidgetWatchdog::availableGeometry(this);
+    const QRect availableGeo = gpDesktop->availableGeometry(this);
     int iDefaultWidth = availableGeo.width() / 2;
     int iDefaultHeight = availableGeo.height() * 3 / 4;
     QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);

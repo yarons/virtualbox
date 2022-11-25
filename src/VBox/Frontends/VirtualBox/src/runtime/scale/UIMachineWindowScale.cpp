@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowScale.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -127,8 +127,8 @@ void UIMachineWindowScale::loadSettings()
         else
         {
             /* Get available geometry, for screen with (x,y) coords if possible: */
-            QRect availableGeo = !geo.isNull() ? UIDesktopWidgetWatchdog::availableGeometry(QPoint(geo.x(), geo.y())) :
-                                                 UIDesktopWidgetWatchdog::availableGeometry(this);
+            QRect availableGeo = !geo.isNull() ? gpDesktop->availableGeometry(QPoint(geo.x(), geo.y())) :
+                                                 gpDesktop->availableGeometry(this);
 
             /* Resize to default size: */
             resize(640, 480);
@@ -206,7 +206,7 @@ void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition, bool fResizeT
 
     /* Adjust position if necessary: */
     if (fAdjustPosition)
-        frGeo = UIDesktopWidgetWatchdog::normalizeGeometry(frGeo, UIDesktopWidgetWatchdog::overallAvailableRegion());
+        frGeo = UIDesktopWidgetWatchdog::normalizeGeometry(frGeo, gpDesktop->overallAvailableRegion());
 
     /* Finally, set the frame geometry: */
     UIDesktopWidgetWatchdog::setTopLevelGeometry(this, frGeo.left() + dl, frGeo.top() + dt,

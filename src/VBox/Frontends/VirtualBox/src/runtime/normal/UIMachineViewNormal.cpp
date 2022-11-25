@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -228,7 +228,7 @@ QSize UIMachineViewNormal::sizeHint() const
 
 QRect UIMachineViewNormal::workingArea() const
 {
-    return UIDesktopWidgetWatchdog::availableGeometry(this);
+    return gpDesktop->availableGeometry(this);
 }
 
 QSize UIMachineViewNormal::calculateMaxGuestSize() const

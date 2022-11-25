@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsModel.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -995,7 +995,7 @@ bool UIDetailsModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pEv
             return false;
 
     /* Adjust the menu then show it: */
-    const QRect availableGeo = UIDesktopWidgetWatchdog::availableGeometry(pEvent->screenPos());
+    const QRect availableGeo = gpDesktop->availableGeometry(pEvent->screenPos());
     QRect geo(pEvent->screenPos(), m_pContextMenu->minimumSizeHint());
     if (geo.topRight().x() > availableGeo.topRight().x())
         geo.adjust(availableGeo.topRight().x() - geo.topRight().x(), 0,

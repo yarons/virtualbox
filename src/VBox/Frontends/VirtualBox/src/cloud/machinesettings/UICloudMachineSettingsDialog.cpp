@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.cpp 97599 2022-11-17 17:23:16Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class implementation.
  */
@@ -88,7 +88,7 @@ void UICloudMachineSettingsDialog::showEvent(QShowEvent *pEvent)
 void UICloudMachineSettingsDialog::polishEvent(QShowEvent*)
 {
     /* Explicit centering according to our parent: */
-    UIDesktopWidgetWatchdog::centerWidget(this, parentWidget(), false);
+    gpDesktop->centerWidget(this, parentWidget(), false);
     /* Call for load stuff asynchronously: */
     QMetaObject::invokeMethod(this, "init", Qt::QueuedConnection);
 }

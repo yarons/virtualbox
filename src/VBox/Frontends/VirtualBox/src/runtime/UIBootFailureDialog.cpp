@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -222,7 +222,7 @@ void UIBootFailureDialog::sltReset()
 void UIBootFailureDialog::showEvent(QShowEvent *pEvent)
 {
     if (m_pParent)
-        UIDesktopWidgetWatchdog::centerWidget(this, m_pParent, false);
+        gpDesktop->centerWidget(this, m_pParent, false);
     QIWithRetranslateUI<QIMainDialog>::showEvent(pEvent);
 
 }

@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -311,9 +311,9 @@ quint64 UIMultiScreenLayout::memoryRequirements(const QMap<int, int> &screenLayo
     {
         QRect screen;
         if (m_pMachineLogic->visualStateType() == UIVisualStateType_Seamless)
-            screen = UIDesktopWidgetWatchdog::availableGeometry(screenLayout.value(iGuestScreen, 0));
+            screen = gpDesktop->availableGeometry(screenLayout.value(iGuestScreen, 0));
         else
-            screen = UIDesktopWidgetWatchdog::screenGeometry(screenLayout.value(iGuestScreen, 0));
+            screen = gpDesktop->screenGeometry(screenLayout.value(iGuestScreen, 0));
         KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
         m_pMachineLogic->display().GetScreenResolution(iGuestScreen, width, height, guestBpp, xOrigin, yOrigin, monitorStatus);
         usedBits += screen.width() * /* display width */
