@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: btresolver.py 97683 2022-11-25 14:13:57Z andreas.loeffler@oracle.com $
+# $Id: btresolver.py 97684 2022-11-25 14:17:48Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97683 $"
+__version__ = "$Revision: 97684 $"
 
 
 # Standard Python imports.
@@ -614,7 +614,7 @@ class BacktraceResolver(object):
                     try:
                         sReportAn, _ = oRTLdrFltProc.communicate(sReport);
                     except:
-                        self.logXcpt('Retrieving annotation report failed (broken pipe / no matching interpreter?)');
+                        self.log('Retrieving annotation report failed (broken pipe / no matching interpreter?)');
                 else:
                     self.log('Error spawning RTLdrFlt process');
             else:
