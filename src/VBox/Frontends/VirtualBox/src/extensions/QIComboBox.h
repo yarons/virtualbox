@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIComboBox.h 97679 2022-11-25 10:04:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -52,18 +52,10 @@ signals:
     /** Notifies listeners about user chooses an item with @a iIndex in the combo-box. */
     void activated(int iIndex);
     /** Notifies listeners about user chooses an item with @a strText in the combo-box. */
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: textHighlighted was added in 5.14 actually */
     void textActivated(const QString &strText);
-#else
-    void activated(const QString &strText);
-#endif
 
     /** Notifies listeners about current item changed to item with @a iIndex. */
     void currentIndexChanged(int iIndex);
-#ifndef VBOX_IS_QT6_OR_LATER
-    /** Notifies listeners about current item changed to item with @a strText. */
-    void currentIndexChanged(const QString &strText);
-#endif
 
     /** Notifies listeners about current combo-box text is changed to @a strText. */
     void currentTextChanged(const QString &strText);
@@ -73,11 +65,7 @@ signals:
     /** Notifies listeners about user highlighted an item with @a iIndex in the popup list-view. */
     void highlighted(int iIndex);
     /** Notifies listeners about user highlighted an item with @a strText in the popup list-view. */
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: textHighlighted was added in 5.14 actually */
     void textHighlighted(const QString &strText);
-#else
-    void highlighted(const QString &strText);
-#endif
 
 public:
 

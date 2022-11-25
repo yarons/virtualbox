@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 97679 2022-11-25 10:04:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -367,7 +367,7 @@ UIWizardAddCloudVMPageSource::UIWizardAddCloudVMPageSource()
             this, &UIWizardAddCloudVMPageSource::sltHandleProviderComboChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
             this, &UIWizardAddCloudVMPageSource::sltHandleProviderComboChange);
-    connect(m_pProviderComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated),
+    connect(m_pProviderComboBox, &QIComboBox::activated,
             this, &UIWizardAddCloudVMPageSource::sltHandleProviderComboChange);
     connect(m_pProfileComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
             this, &UIWizardAddCloudVMPageSource::sltHandleProfileComboChange);

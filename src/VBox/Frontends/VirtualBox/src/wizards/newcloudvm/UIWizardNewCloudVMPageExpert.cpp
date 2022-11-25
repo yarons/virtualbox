@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 97679 2022-11-25 10:04:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -185,7 +185,7 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert()
             this, &UIWizardNewCloudVMPageExpert::sltHandleProviderComboChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
             this, &UIWizardNewCloudVMPageExpert::sltHandleProviderComboChange);
-    connect(m_pProviderComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated),
+    connect(m_pProviderComboBox, &QIComboBox::activated,
             this, &UIWizardNewCloudVMPageExpert::sltHandleProviderComboChange);
     connect(m_pProfileComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
             this, &UIWizardNewCloudVMPageExpert::sltHandleProfileComboChange);

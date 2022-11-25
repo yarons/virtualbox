@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 97679 2022-11-25 10:04:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -322,7 +322,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageExpert::sltHandleSourceComboChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
             this, &UIWizardImportAppPageExpert::sltHandleSourceComboChange);
-    connect(m_pSourceComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated),
+    connect(m_pSourceComboBox, &QIComboBox::activated,
             this, &UIWizardImportAppPageExpert::sltHandleSourceComboChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageExpert::sltHandleImportedFileSelectorChange);
