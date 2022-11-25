@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -223,8 +223,8 @@ void UIMachineView::applyMachineViewScaleFactor()
     double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), m_uScreenId);
 
     /* Take the device-pixel-ratio into account: */
-    frameBuffer()->setDevicePixelRatio(gpDesktop->devicePixelRatio(machineWindow()));
-    frameBuffer()->setDevicePixelRatioActual(gpDesktop->devicePixelRatioActual(machineWindow()));
+    frameBuffer()->setDevicePixelRatio(UIDesktopWidgetWatchdog::devicePixelRatio(machineWindow()));
+    frameBuffer()->setDevicePixelRatioActual(UIDesktopWidgetWatchdog::devicePixelRatioActual(machineWindow()));
     const double dDevicePixelRatioActual = frameBuffer()->devicePixelRatioActual();
     const bool fUseUnscaledHiDPIOutput = dScaleFactor != dDevicePixelRatioActual;
     dScaleFactor = fUseUnscaledHiDPIOutput ? dScaleFactor : 1.0;
@@ -899,8 +899,8 @@ void UIMachineView::prepareFrameBuffer()
         double dScaleFactor = gEDataManager->scaleFactor(uiCommon().managedVMUuid(), m_uScreenId);
 
         /* Take the device-pixel-ratio into account: */
-        const double dDevicePixelRatioFormal = gpDesktop->devicePixelRatio(machineWindow());
-        const double dDevicePixelRatioActual = gpDesktop->devicePixelRatioActual(machineWindow());
+        const double dDevicePixelRatioFormal = UIDesktopWidgetWatchdog::devicePixelRatio(machineWindow());
+        const double dDevicePixelRatioActual = UIDesktopWidgetWatchdog::devicePixelRatioActual(machineWindow());
         const bool fUseUnscaledHiDPIOutput = dScaleFactor != dDevicePixelRatioActual;
         dScaleFactor = fUseUnscaledHiDPIOutput ? dScaleFactor : 1.0;
 
@@ -1660,7 +1660,7 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
             case QEvent::Move:
             {
                 /* Get current host-screen number: */
-                const int iCurrentHostScreenNumber = gpDesktop->screenNumber(this);
+                const int iCurrentHostScreenNumber = UIDesktopWidgetWatchdog::screenNumber(this);
                 if (m_iHostScreenNumber != iCurrentHostScreenNumber)
                 {
                     /* Recache current host screen: */

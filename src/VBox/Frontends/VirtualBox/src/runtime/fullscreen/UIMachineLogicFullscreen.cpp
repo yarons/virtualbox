@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -774,9 +774,9 @@ void UIMachineLogicFullscreen::revalidateNativeFullScreen(UIMachineWindow *pMach
         {
             /* Variables to compare: */
             const int iWantedHostScreenIndex = hostScreenForGuestScreen((int)uScreenID);
-            const int iCurrentHostScreenIndex = gpDesktop->screenNumber(pMachineWindow);
+            const int iCurrentHostScreenIndex = UIDesktopWidgetWatchdog::screenNumber(pMachineWindow);
             const QSize frameBufferSize((int)uisession()->frameBuffer(uScreenID)->width(), (int)uisession()->frameBuffer(uScreenID)->height());
-            const QSize screenSize = gpDesktop->screenGeometry(iWantedHostScreenIndex).size();
+            const QSize screenSize = UIDesktopWidgetWatchdog::screenGeometry(iWantedHostScreenIndex).size();
 
             /* If that window
              * 1. shouldn't really be shown or

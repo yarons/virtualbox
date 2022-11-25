@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 97680 2022-11-25 10:57:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -5102,8 +5102,8 @@ QRect UIExtraDataManager::dialogGeometry(const QString &strKey,
     while (0);
 
     /* Get available-geometry [of screen with point (iX, iY) if possible]: */
-    const QRect availableGeometry = fOk ? gpDesktop->availableGeometry(QPoint(iX, iY)) :
-                                          gpDesktop->availableGeometry();
+    const QRect availableGeometry = fOk ? UIDesktopWidgetWatchdog::availableGeometry(QPoint(iX, iY)) :
+                                          UIDesktopWidgetWatchdog::availableGeometry();
 
     /* Use geometry (loaded or default): */
     QRect geometry = fOk

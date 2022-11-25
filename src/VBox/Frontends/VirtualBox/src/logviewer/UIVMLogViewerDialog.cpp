@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -188,7 +188,7 @@ void UIVMLogViewerDialog::finalize()
 void UIVMLogViewerDialog::loadDialogGeometry()
 {
 
-    const QRect availableGeo = gpDesktop->availableGeometry(this);
+    const QRect availableGeo = UIDesktopWidgetWatchdog::availableGeometry(this);
     int iDefaultWidth = availableGeo.width() / 2;
     int iDefaultHeight = availableGeo.height() * 3 / 4;
     /* Try obtain the default width of the current logviewer: */

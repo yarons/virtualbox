@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -300,13 +300,13 @@ void UIScaleFactorEditor::prepare()
 
 void UIScaleFactorEditor::prepareScaleFactorMinMaxValues()
 {
-    const int iHostScreenCount = gpDesktop->screenCount();
+    const int iHostScreenCount = UIDesktopWidgetWatchdog::screenCount();
     if (iHostScreenCount == 0)
         return;
-    double dMaxDevicePixelRatio = gpDesktop->devicePixelRatio(0);
+    double dMaxDevicePixelRatio = UIDesktopWidgetWatchdog::devicePixelRatio(0);
     for (int i = 1; i < iHostScreenCount; ++i)
-        if (dMaxDevicePixelRatio < gpDesktop->devicePixelRatio(i))
-            dMaxDevicePixelRatio = gpDesktop->devicePixelRatio(i);
+        if (dMaxDevicePixelRatio < UIDesktopWidgetWatchdog::devicePixelRatio(i))
+            dMaxDevicePixelRatio = UIDesktopWidgetWatchdog::devicePixelRatio(i);
 
     const int iMinimum = 100;
     const int iMaximum = ceil(iMinimum + 100 * dMaxDevicePixelRatio);

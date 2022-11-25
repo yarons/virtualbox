@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -189,7 +189,7 @@ QSize UIMachineViewScale::sizeHint() const
 
 QRect UIMachineViewScale::workingArea() const
 {
-    return gpDesktop->availableGeometry(this);
+    return UIDesktopWidgetWatchdog::availableGeometry(this);
 }
 
 QSize UIMachineViewScale::calculateMaxGuestSize() const

@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIWithRestorableGeometry.h 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -72,7 +72,7 @@ protected:
 
 #ifdef VBOX_WS_X11
         /* Prevent further handling if fake screen detected: */
-        if (gpDesktop->isFakeScreenDetected())
+        if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
             return;
 #endif
 
@@ -97,7 +97,7 @@ protected:
 
 #ifdef VBOX_WS_X11
         /* Prevent handling if fake screen detected: */
-        if (gpDesktop->isFakeScreenDetected())
+        if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
             return;
 #endif
 

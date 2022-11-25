@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 97551 2022-11-15 15:05:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -4094,7 +4094,7 @@ void UIActionPoolRuntime::updateMenuViewRescale(QMenu *pMenu)
 
         /* Get device-pixel-ratio: */
         bool fDevicePixelRatioMentioned = false;
-        const double dDevicePixelRatioActual = qMin(gpDesktop->devicePixelRatioActual(m_mapHostScreenForGuestScreen.value(iGuestScreenIndex)),
+        const double dDevicePixelRatioActual = qMin(UIDesktopWidgetWatchdog::devicePixelRatioActual(m_mapHostScreenForGuestScreen.value(iGuestScreenIndex)),
                                                     10.0 /* meh, who knows? */);
 
         /* Calculate minimum, maximum and step: */

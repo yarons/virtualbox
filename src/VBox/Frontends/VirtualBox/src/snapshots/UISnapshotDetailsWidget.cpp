@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 96658 2022-09-08 13:10:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -584,7 +584,7 @@ void UIScreenshotViewer::prepare()
 void UIScreenshotViewer::adjustWindowSize()
 {
     /* Acquire current host-screen size, fallback to 1024x768 if failed: */
-    QSize screenSize = gpDesktop->screenGeometry(parentWidget()).size();
+    QSize screenSize = UIDesktopWidgetWatchdog::screenGeometry(parentWidget()).size();
     if (!screenSize.isValid())
         screenSize = QSize(1024, 768);
     const int iInitWidth = screenSize.width() * .50 /* 50% of host-screen width */;

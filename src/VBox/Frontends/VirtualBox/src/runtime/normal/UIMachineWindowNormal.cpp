@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 97674 2022-11-24 11:50:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -421,7 +421,7 @@ void UIMachineWindowNormal::loadSettings()
 
             /* Move it to the screen-center: */
             m_geometry = geometry();
-            m_geometry.moveCenter(gpDesktop->availableGeometry(this).center());
+            m_geometry.moveCenter(UIDesktopWidgetWatchdog::availableGeometry(this).center());
             UIDesktopWidgetWatchdog::setTopLevelGeometry(this, m_geometry);
         }
 
@@ -488,7 +488,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
         {
 #ifdef VBOX_WS_X11
             /* Prevent handling if fake screen detected: */
-            if (gpDesktop->isFakeScreenDetected())
+            if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
                 break;
 #endif /* VBOX_WS_X11 */
 
@@ -515,7 +515,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
         {
 #ifdef VBOX_WS_X11
             /* Prevent handling if fake screen detected: */
-            if (gpDesktop->isFakeScreenDetected())
+            if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
                 break;
 #endif /* VBOX_WS_X11 */
 
@@ -682,7 +682,7 @@ void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition, bool fResize
 
     /* Adjust size/position if necessary: */
     QRect frGeoNew = fAdjustPosition
-                   ? UIDesktopWidgetWatchdog::normalizeGeometry(frGeo, gpDesktop->overallAvailableRegion())
+                   ? UIDesktopWidgetWatchdog::normalizeGeometry(frGeo, UIDesktopWidgetWatchdog::overallAvailableRegion())
                    : frGeo;
 
     /* If guest-screen auto-resize is not enabled
@@ -704,7 +704,7 @@ void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition, bool fResize
         frGeoNew.setBottom(frGeoNew.bottom() + addition.height());
 
         /* Adjust size/position again: */
-        frGeoNew = UIDesktopWidgetWatchdog::normalizeGeometry(frGeoNew, gpDesktop->overallAvailableRegion());
+        frGeoNew = UIDesktopWidgetWatchdog::normalizeGeometry(frGeoNew, UIDesktopWidgetWatchdog::overallAvailableRegion());
     }
 
     /* Finally, set the frame geometry: */

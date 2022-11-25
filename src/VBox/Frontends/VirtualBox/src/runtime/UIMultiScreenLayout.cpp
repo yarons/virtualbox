@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -108,7 +108,7 @@ void UIMultiScreenLayout::update()
                 /* Get top-left corner position: */
                 QPoint topLeftPosition(geo.topLeft());
                 /* Check which host-screen the position belongs to: */
-                iHostScreen = gpDesktop->screenNumber(topLeftPosition);
+                iHostScreen = UIDesktopWidgetWatchdog::screenNumber(topLeftPosition);
                 /* Revalidate: */
                 fValid =    iHostScreen >= 0 && iHostScreen < m_cHostScreens /* In the host screen bounds? */
                          && m_screenMap.key(iHostScreen, -1) == -1; /* Not taken already? */
@@ -268,7 +268,7 @@ void UIMultiScreenLayout::sltHandleScreenLayoutChange(int iRequestedGuestScreen,
 
 void UIMultiScreenLayout::calculateHostMonitorCount()
 {
-    m_cHostScreens = gpDesktop->screenCount();
+    m_cHostScreens = UIDesktopWidgetWatchdog::screenCount();
 }
 
 void UIMultiScreenLayout::calculateGuestScreenCount()
@@ -311,9 +311,9 @@ quint64 UIMultiScreenLayout::memoryRequirements(const QMap<int, int> &screenLayo
     {
         QRect screen;
         if (m_pMachineLogic->visualStateType() == UIVisualStateType_Seamless)
-            screen = gpDesktop->availableGeometry(screenLayout.value(iGuestScreen, 0));
+            screen = UIDesktopWidgetWatchdog::availableGeometry(screenLayout.value(iGuestScreen, 0));
         else
-            screen = gpDesktop->screenGeometry(screenLayout.value(iGuestScreen, 0));
+            screen = UIDesktopWidgetWatchdog::screenGeometry(screenLayout.value(iGuestScreen, 0));
         KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
         m_pMachineLogic->display().GetScreenResolution(iGuestScreen, width, height, guestBpp, xOrigin, yOrigin, monitorStatus);
         usedBits += screen.width() * /* display width */

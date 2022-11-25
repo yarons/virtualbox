@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -796,7 +796,7 @@ void UIMediumSelector::saveDialogGeometry()
 
 void UIMediumSelector::loadSettings()
 {
-    const QRect availableGeo = gpDesktop->availableGeometry(this);
+    const QRect availableGeo = UIDesktopWidgetWatchdog::availableGeometry(this);
     int iDefaultWidth = availableGeo.width() / 2;
     int iDefaultHeight = availableGeo.height() * 3 / 4;
     QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);

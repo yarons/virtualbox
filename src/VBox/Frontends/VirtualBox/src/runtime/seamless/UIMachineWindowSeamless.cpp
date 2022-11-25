@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -197,13 +197,13 @@ void UIMachineWindowSeamless::placeOnScreen()
     /* Get corresponding host-screen: */
     const int iHostScreen = pSeamlessLogic->hostScreenForGuestScreen(m_uScreenId);
     /* And corresponding working area: */
-    const QRect workingArea = gpDesktop->availableGeometry(iHostScreen);
+    const QRect workingArea = UIDesktopWidgetWatchdog::availableGeometry(iHostScreen);
     Q_UNUSED(workingArea);
 
 #ifdef VBOX_WS_X11
 
     /* Make sure we are located on corresponding host-screen: */
-    if (   gpDesktop->screenCount() > 1
+    if (   UIDesktopWidgetWatchdog::screenCount() > 1
         && (x() != workingArea.x() || y() != workingArea.y()))
     {
         // WORKAROUND:

@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIImageTools.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
@@ -214,7 +214,7 @@ void UIImageTools::blurImageVertical(const QImage &source, QImage &destination, 
 static QImage betaLabelImage(QSize size, QWidget *pHint)
 {
     /* Calculate device pixel ratio: */
-    const double dDpr = pHint ? gpDesktop->devicePixelRatio(pHint) : gpDesktop->devicePixelRatio(-1);
+    const double dDpr = pHint ? UIDesktopWidgetWatchdog::devicePixelRatio(pHint) : UIDesktopWidgetWatchdog::devicePixelRatio(-1);
     if (dDpr > 1.0)
         size *= dDpr;
 

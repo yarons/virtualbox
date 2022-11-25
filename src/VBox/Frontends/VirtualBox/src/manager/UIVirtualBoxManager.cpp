@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 97600 2022-11-17 17:41:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -290,7 +290,7 @@ void UIAcquirePublicKeyDialog::prepareWidgets()
 
             /* Configure help-viewer: */
             m_pHelpViewer->setHidden(true);
-            m_pHelpViewer->setMinimumTextWidth(gpDesktop->screenGeometry(window()).width() / 5);
+            m_pHelpViewer->setMinimumTextWidth(UIDesktopWidgetWatchdog::screenGeometry(window()).width() / 5);
             m_pHelpViewer->registerPixmap(icon.pixmap(window()->windowHandle(), QSize(iMetric, iMetric)), "manager://copy");
             connect(m_pHelpViewer, &QIRichTextLabel::sigLinkClicked, this, &UIAcquirePublicKeyDialog::sltHandleHelpViewerLinkClick);
             pLayout->addWidget(m_pHelpViewer, 2);
@@ -619,7 +619,7 @@ void UIVirtualBoxManager::dropEvent(QDropEvent *pEvent)
 void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
 {
     /* Prevent handling if fake screen detected: */
-    if (gpDesktop->isFakeScreenDetected())
+    if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
         return;
 
     /* Restore the geometry cached by the window: */

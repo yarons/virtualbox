@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 97588 2022-11-17 10:10:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -739,7 +739,7 @@ void UISession::sltCheckIfHostDisplayChanged()
     LogRelFlow(("GUI: UISession::sltCheckIfHostDisplayChanged()\n"));
 
     /* Check if display count changed: */
-    if (gpDesktop->screenCount() != m_hostScreens.size())
+    if (UIDesktopWidgetWatchdog::screenCount() != m_hostScreens.size())
     {
         /* Reset watchdog: */
         m_pWatchdogDisplayChange->setProperty("tryNumber", 0);
@@ -749,9 +749,9 @@ void UISession::sltCheckIfHostDisplayChanged()
     else
     {
         /* Check if at least one display geometry changed: */
-        for (int iScreenIndex = 0; iScreenIndex < gpDesktop->screenCount(); ++iScreenIndex)
+        for (int iScreenIndex = 0; iScreenIndex < UIDesktopWidgetWatchdog::screenCount(); ++iScreenIndex)
         {
-            if (gpDesktop->screenGeometry(iScreenIndex) != m_hostScreens.at(iScreenIndex))
+            if (UIDesktopWidgetWatchdog::screenGeometry(iScreenIndex) != m_hostScreens.at(iScreenIndex))
             {
                 /* Reset watchdog: */
                 m_pWatchdogDisplayChange->setProperty("tryNumber", 0);
@@ -2079,8 +2079,8 @@ void UISession::updateHostScreenData()
 {
     /* Rebuild host-screen data vector: */
     m_hostScreens.clear();
-    for (int iScreenIndex = 0; iScreenIndex < gpDesktop->screenCount(); ++iScreenIndex)
-        m_hostScreens << gpDesktop->screenGeometry(iScreenIndex);
+    for (int iScreenIndex = 0; iScreenIndex < UIDesktopWidgetWatchdog::screenCount(); ++iScreenIndex)
+        m_hostScreens << UIDesktopWidgetWatchdog::screenGeometry(iScreenIndex);
 
     /* Make sure action-pool knows host-screen count: */
     actionPool()->toRuntime()->setHostScreenCount(m_hostScreens.size());

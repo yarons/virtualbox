@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIArrowSplitter.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowSplitter class implementation.
  */
@@ -90,7 +90,7 @@ QSize QIDetailsBrowser::minimumSizeHint() const
     documentSize.setHeight(documentSize.height() + iDocumentMargin);
 
     /* Get 40% of the screen-area to limit the resulting hint: */
-    const QSize screenGeometryDot4 = gpDesktop->screenGeometry(this).size() * .4;
+    const QSize screenGeometryDot4 = UIDesktopWidgetWatchdog::screenGeometry(this).size() * .4;
 
     /* Calculate minimum size-hint which is document-size limited by screen-area: */
     QSize mSizeHint = documentSize.boundedTo(screenGeometryDot4);

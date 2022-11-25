@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -221,7 +221,7 @@ void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
 {
 #if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /* Prevent handling if fake screen detected: */
-    if (gpDesktop->isFakeScreenDetected())
+    if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
         return;
 
     /* Make sure all machine-window(s) have previous but normalized geometry: */

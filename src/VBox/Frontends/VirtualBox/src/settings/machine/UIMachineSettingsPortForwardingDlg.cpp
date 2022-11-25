@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -73,7 +73,7 @@ UIMachineSettingsPortForwardingDlg::UIMachineSettingsPortForwardingDlg(QWidget *
     retranslateUi();
 
     /* Limit the minimum size to 33% of screen size: */
-    setMinimumSize(gpDesktop->screenGeometry(this).size() / 3);
+    setMinimumSize(UIDesktopWidgetWatchdog::screenGeometry(this).size() / 3);
 }
 
 const UIPortForwardingDataList UIMachineSettingsPortForwardingDlg::rules() const

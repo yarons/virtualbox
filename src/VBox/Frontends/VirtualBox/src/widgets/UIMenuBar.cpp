@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 96808 2022-09-21 09:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIMenuBar.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -64,7 +64,7 @@ void UIMenuBar::paintEvent(QPaintEvent *pEvent)
         QSize s = size();
         QPainter painter(this);
         painter.setClipRect(pEvent->rect());
-        const double dDpr = gpDesktop->devicePixelRatio(this);
+        const double dDpr = UIDesktopWidgetWatchdog::devicePixelRatio(this);
         painter.drawPixmap(s.width() - betaLabel.width() / dDpr - 10, (height() - betaLabel.height() / dDpr) / 2, betaLabel);
     }
 }
