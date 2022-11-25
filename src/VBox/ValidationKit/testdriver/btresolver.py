@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: btresolver.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: btresolver.py 97683 2022-11-25 14:13:57Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97683 $"
 
 
 # Standard Python imports.
@@ -611,7 +611,10 @@ class BacktraceResolver(object):
                 oRTLdrFltProc = subprocess.Popen(asArgs, stdin=subprocess.PIPE,         # pylint: disable=consider-using-with
                                                  stdout=subprocess.PIPE, bufsize=0);
                 if oRTLdrFltProc is not None:
-                    sReportAn, _ = oRTLdrFltProc.communicate(sReport);
+                    try:
+                        sReportAn, _ = oRTLdrFltProc.communicate(sReport);
+                    except:
+                        self.logXcpt('Retrieving annotation report failed (broken pipe / no matching interpreter?)');
                 else:
                     self.log('Error spawning RTLdrFlt process');
             else:
