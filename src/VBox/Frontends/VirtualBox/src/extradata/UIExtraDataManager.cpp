@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 97311 2022-10-26 16:55:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 97680 2022-11-25 10:57:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1297,17 +1297,13 @@ void UIExtraDataManagerWindow::sltLoad()
                 continue;
 
             /* Get the name of the current element: */
-#ifdef VBOX_IS_QT6_OR_LATER
-            const QStringView strElementName = stream.name();
-#else
-            const QStringRef strElementName = stream.name();
-#endif
+            const QString strElementName = stream.name().toString();
 
             /* Search for the scope ID: */
             QUuid uLoadingID;
-            if (strElementName == QLatin1String("Global"))
+            if (strElementName == "Global")
                 uLoadingID = UIExtraDataManager::GlobalID;
-            else if (strElementName == QLatin1String("Machine"))
+            else if (strElementName == "Machine")
             {
                 const QXmlStreamAttributes attributes = stream.attributes();
                 if (attributes.hasAttribute("uuid"))
@@ -1321,7 +1317,7 @@ void UIExtraDataManagerWindow::sltLoad()
                 }
             }
             /* Look particular extra-data entries: */
-            else if (strElementName == QLatin1String("ExtraDataItem"))
+            else if (strElementName == "ExtraDataItem")
             {
                 const QXmlStreamAttributes attributes = stream.attributes();
                 if (attributes.hasAttribute("name") && attributes.hasAttribute("value"))
