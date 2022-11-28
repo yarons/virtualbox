@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 97445 2022-11-08 07:47:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 97691 2022-11-28 15:52:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -589,8 +589,7 @@ void UIWizardNewVM::setVirtualDisk(const QUuid &mediumId)
     if (m_virtualDisk.isOk() && m_virtualDisk.GetId() == mediumId)
         return;
     CMedium medium = uiCommon().medium(mediumId).medium();
-    if (!medium.isNull())
-        setVirtualDisk(medium);
+    setVirtualDisk(medium);
 }
 
 const QString &UIWizardNewVM::machineGroup() const
