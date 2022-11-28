@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 97370 2022-11-02 00:53:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 97694 2022-11-28 22:08:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -32,11 +32,12 @@
 #define LOG_GROUP   LOG_GROUP_IEM_SVM
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
-#include <VBox/vmm/cpum.h>
 #include <VBox/vmm/apic.h>
-#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/hm.h>
+#include <VBox/vmm/pgm.h>
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
 # include <VBox/vmm/hm_svm.h>
 #endif
@@ -54,11 +55,12 @@
 
 #include "IEMInline.h"
 
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM /* Almost the whole file. */
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
 /**
  * Check the common SVM instruction preconditions.
  */

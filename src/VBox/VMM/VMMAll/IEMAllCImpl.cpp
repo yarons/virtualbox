@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 97642 2022-11-21 23:03:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 97694 2022-11-28 22:08:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6625,6 +6625,17 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Dd_Rd, uint8_t, iDrReg, uint8_t, iGReg)
 
     int rc = CPUMSetGuestDRx(pVCpu, iDrReg, uNewDrX);
     AssertRCSuccessReturn(rc, RT_SUCCESS_NP(rc) ? VERR_IEM_IPE_1 : rc);
+
+    /*
+     * Re-init hardware breakpoint summary if it was DR7 that got changed.
+     */
+    if (iDrReg == 7)
+    {
+        pVCpu->iem.s.fPendingInstructionBreakpoints = false;
+        pVCpu->iem.s.fPendingDataBreakpoints        = false;
+        pVCpu->iem.s.fPendingIoBreakpoints          = false;
+        iemInitPendingBreakpointsSlow(pVCpu);
+    }
 
     return iemRegAddToRipAndFinishingClearingRF(pVCpu, cbInstr);
 }

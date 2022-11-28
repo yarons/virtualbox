@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 97583 2022-11-16 23:57:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 97694 2022-11-28 22:08:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -32,12 +32,13 @@
 #define LOG_GROUP   LOG_GROUP_IEM_VMX
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
-#include <VBox/vmm/cpum.h>
 #include <VBox/vmm/apic.h>
-#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/hm.h>
 #include <VBox/vmm/gim.h>
+#include <VBox/vmm/hm.h>
+#include <VBox/vmm/pgm.h>
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 # include <VBox/vmm/hmvmxinline.h>
 #endif
