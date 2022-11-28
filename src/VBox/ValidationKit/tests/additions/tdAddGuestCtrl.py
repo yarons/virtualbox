@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97673 $"
+__version__ = "$Revision: 97688 $"
 
 # Standard Python imports.
 import errno
@@ -1502,8 +1502,14 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         fRc = True;
         for fMustSucceed, fnHandler, sShortNm, sTestNm in atTests:
-            reporter.testStart(sTestNm);
 
+            # If for whatever reason the VM object became invalid, bail out.
+            if not oTestVm:
+                reporter.error('Test VM object invalid (VBoxSVC or client process crashed?), aborting tests');
+                fRc = False;
+                break;
+
+            reporter.testStart(sTestNm);
             if sShortNm is None or sShortNm in self.asTests:
                 # Returns (fRc, oTxsSession, oSession) - but only the first one is mandatory.
                 aoResult = fnHandler(oSession, oTxsSession, oTestVm);
