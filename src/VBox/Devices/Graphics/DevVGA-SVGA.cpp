@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 96950 2022-09-30 10:19:06Z brent.paulson@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 97697 2022-11-29 07:02:14Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6616,11 +6616,6 @@ int vmsvgaR3Init(PPDMDEVINS pDevIns)
     AssertMsgRCReturn(rc, ("Failed to create pSvgaR3State.\n"), rc);
 
     pSVGAState = pThisCC->svga.pSvgaR3State;
-
-    /* Register the write-protected GBO access handler type (no ring-0 callbacks here). */
-    rc = PDMDevHlpPGMHandlerPhysicalTypeRegister(pDevIns, PGMPHYSHANDLERKIND_WRITE, vmsvgaR3GboAccessHandler,
-                                                 "VMSVGA GBO", &pSVGAState->hGboAccessHandlerType);
-    AssertRCReturn(rc, rc);
 
     /* VRAM tracking is enabled by default during bootup. */
     pThis->svga.fVRAMTracking = true;
