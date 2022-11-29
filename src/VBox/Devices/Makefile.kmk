@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97046 2022-10-07 12:57:59Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 97698 2022-11-29 07:20:02Z vitali.pelenjow@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -354,7 +354,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
     VBoxDD_SDKS.darwin  += VBOX_DXVK
     VBoxDD_DEFS         += VMSVGA3D_DX_BACKEND
     VBoxDD_SOURCES      += \
-       Graphics/DevVGA-SVGA3d-win-dx.cpp
+       Graphics/DevVGA-SVGA3d-dx-dx11.cpp
    endif
   endif
   VBoxDD_SOURCES       += \
