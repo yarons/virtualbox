@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 97706 2022-11-29 14:55:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97707 2022-11-29 15:04:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -1106,7 +1106,7 @@ void UIDesktopWidgetWatchdog::updateHostScreenAvailableGeometry(int iHostScreenI
     /* Make sure index is valid: */
     if (iHostScreenIndex < 0 || iHostScreenIndex >= screenCount())
     {
-        iHostScreenIndex = UIDesktopWidgetWatchdog::primaryScreen();
+        iHostScreenIndex = UIDesktopWidgetWatchdog::primaryScreenNumber();
         AssertReturnVoid(iHostScreenIndex >= 0 && iHostScreenIndex < screenCount());
     }
 
