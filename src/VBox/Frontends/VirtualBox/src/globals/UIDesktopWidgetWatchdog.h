@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 97704 2022-11-29 12:23:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 97706 2022-11-29 14:55:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -86,8 +86,7 @@ public:
     static int screenCount();
 
     /** Returns primary screen index. */
-    static int primaryScreen();
-
+    static int primaryScreenNumber();
     /** Returns the index of the screen which contains contains @a pWidget. */
     static int screenNumber(const QWidget *pWidget);
     /** Returns the index of the screen which contains contains @a point. */
