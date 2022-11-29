@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 97628 2022-11-21 14:01:50Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 97696 2022-11-29 00:58:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2220,7 +2220,7 @@ typedef enum BS3MEMKIND
  * @returns Pointer to a chunk on success, NULL if we're out of chunks.
  * @param   enmKind     The kind of addressing constraints imposed on the
  *                      allocation.
- * @param   cb          How much to allocate.  Must be 4KB or less.
+ * @param   cb          How much to allocate.
  */
 BS3_CMN_PROTO_STUB(void BS3_FAR *, Bs3MemAlloc,(BS3MEMKIND enmKind, size_t cb));
 
@@ -2229,7 +2229,7 @@ BS3_CMN_PROTO_STUB(void BS3_FAR *, Bs3MemAlloc,(BS3MEMKIND enmKind, size_t cb));
  *
  * @param   enmKind     The kind of addressing constraints imposed on the
  *                      allocation.
- * @param   cb          How much to allocate.  Must be 4KB or less.
+ * @param   cb          How much to allocate.
  */
 BS3_CMN_PROTO_STUB(void BS3_FAR *, Bs3MemAllocZ,(BS3MEMKIND enmKind, size_t cb));
 
