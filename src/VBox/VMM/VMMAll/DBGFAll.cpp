@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 97693 2022-11-28 22:03:17Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAll.cpp 97699 2022-11-29 08:37:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -191,7 +191,7 @@ VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckInstruction(PVMCC pVM, PVMCPUCC pVCpu, RT
      * Check hyper breakpoints first as the VMM debugger has priority over
      * the guest.
      */
-    if (pVM->dbgf.s.cEnabledHwIoBreakpoints > 0)
+    if (pVM->dbgf.s.cEnabledHwBreakpoints > 0)
         for (unsigned iBp = 0; iBp < RT_ELEMENTS(pVM->dbgf.s.aHwBreakpoints); iBp++)
         {
             if (   pVM->dbgf.s.aHwBreakpoints[iBp].GCPtr != GCPtrPC
