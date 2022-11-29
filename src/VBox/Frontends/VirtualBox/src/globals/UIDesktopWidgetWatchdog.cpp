@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97700 2022-11-29 10:01:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -321,12 +321,7 @@ int UIDesktopWidgetWatchdog::overallDesktopHeight()
 /* static */
 int UIDesktopWidgetWatchdog::screenCount()
 {
-#ifdef VBOX_IS_QT6_OR_LATER
     return QGuiApplication::screens().size();
-#else
-    /* Redirect call to desktop-widget: */
-    return QApplication::desktop()->screenCount();
-#endif
 }
 
 #ifdef VBOX_IS_QT6_OR_LATER
