@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 97701 2022-11-29 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97702 2022-11-29 11:26:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -425,6 +425,7 @@ QRect UIDesktopWidgetWatchdog::screenGeometry(const QWidget *pWidget) const
 
 QRect UIDesktopWidgetWatchdog::screenGeometry(const QPoint &point) const
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     /* Gather suitable screen, use primary if failed: */
     QScreen *pScreen = QGuiApplication::screenAt(point);
     if (!pScreen)
@@ -432,6 +433,13 @@ QRect UIDesktopWidgetWatchdog::screenGeometry(const QPoint &point) const
 
     /* Redirect call to wrapper above: */
     return screenGeometry(pScreen);
+#else /* Qt < 5.10 */
+    /* Gather suitable screen index: */
+    const int iHostScreenIndex = QApplication::desktop()->screenNumber(point);
+
+    /* Redirect call to wrapper above: */
+    return screenGeometry(iHostScreenIndex);
+#endif /* Qt < 5.10 */
 }
 
 QRect UIDesktopWidgetWatchdog::availableGeometry(int iHostScreenIndex /* = -1 */) const
