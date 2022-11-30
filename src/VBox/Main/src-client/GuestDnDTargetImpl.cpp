@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 97719 2022-11-30 16:59:23Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 97720 2022-11-30 18:02:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -415,15 +415,15 @@ HRESULT GuestDnDTarget::move(ULONG aScreenId, ULONG aX, ULONG aY,
         Msg.appendPointer((void *)strFormats.c_str(), cbFormats);
         Msg.appendUInt32(cbFormats);
 
-        LogRel2(("DnD: Host moves to %RU32,%RU32 in VM window (screen %u, default action is '%s')\n",
-                 aX, aY, aScreenId, DnDActionToStr(dndActionDefault)));
-
         vrc = GuestDnDInst()->hostCall(Msg.getType(), Msg.getCount(), Msg.getParms());
         if (RT_SUCCESS(vrc))
         {
             GuestDnDState *pState = GuestDnDInst()->getState();
             if (pState && RT_SUCCESS(pState->waitForGuestResponse()))
                 resAction = GuestDnD::toMainAction(pState->getActionDefault());
+
+            LogRel2(("DnD: Host moved to %RU32,%RU32 in VM window (screen %u, default action is '%s') -> guest reported back action '%s'\n",
+                     aX, aY, aScreenId, DnDActionToStr(dndActionDefault), DnDActionToStr(resAction)));
         }
     }
 
