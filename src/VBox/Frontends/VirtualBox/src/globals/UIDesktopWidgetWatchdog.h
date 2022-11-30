@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 97706 2022-11-29 14:55:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 97715 2022-11-30 13:21:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -113,9 +113,9 @@ public:
     QRect availableGeometry(const QPoint &point) const;
 
     /** Returns overall region unifying all the host-screen geometries. */
-    QRegion overallScreenRegion() const;
+    static QRegion overallScreenRegion();
     /** Returns overall region unifying all the host-screen available-geometries. */
-    QRegion overallAvailableRegion() const;
+    static QRegion overallAvailableRegion();
     /** Returns overall desktop width. */
     static int overallDesktopWidth();
     /** Returns overall desktop height. */
