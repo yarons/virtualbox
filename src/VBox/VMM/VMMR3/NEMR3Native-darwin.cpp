@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 97379 2022-11-03 10:55:25Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 97723 2022-12-01 11:06:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -2779,8 +2779,7 @@ static int nemR3DarwinInitVmcs(PVMCPU pVCpu)
                         nemR3DarwinVmxSetupVmcsXcptBitmap(pVCpu, &pVCpu->nem.s.VmcsInfo);
                         return VINF_SUCCESS;
                     }
-                    else
-                        LogRelFunc(("Failed to read the exit controls. rc=%Rrc\n", rc));
+                    LogRelFunc(("Failed to read the exit controls. rc=%Rrc\n", rc));
                 }
                 else
                     LogRelFunc(("Failed to read the entry controls. rc=%Rrc\n", rc));
