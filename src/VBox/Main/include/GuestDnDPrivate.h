@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97725 2022-12-01 13:50:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -821,7 +821,7 @@ public:
 public:
 
     int notifyAboutGuestResponse(void) const;
-    int waitForGuestResponse(RTMSINTERVAL msTimeout = 500) const;
+    int waitForGuestResponse(RTMSINTERVAL msTimeout = 3000) const;
 
     void setActionsAllowed(VBOXDNDACTIONLIST a) { m_dndLstActionsAllowed = a; }
     VBOXDNDACTIONLIST getActionsAllowed(void) const { return m_dndLstActionsAllowed; }

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 97719 2022-11-30 16:59:23Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 97725 2022-12-01 13:50:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -710,9 +710,9 @@ HRESULT GuestDnDState::queryProgressTo(IProgress **ppProgress)
  * Waits for a guest response to happen.
  *
  * @returns VBox status code.
- * @param   msTimeout           Timeout (in ms) for waiting. Optional, waits 500 ms if not specified.
+ * @param   msTimeout           Timeout (in ms) for waiting. Optional, waits 3000 ms if not specified.
  */
-int GuestDnDState::waitForGuestResponse(RTMSINTERVAL msTimeout /*= 500 */) const
+int GuestDnDState::waitForGuestResponse(RTMSINTERVAL msTimeout /*= 3000 */) const
 {
     int rc = RTSemEventWait(m_EventSem, msTimeout);
 #ifdef DEBUG_andy
