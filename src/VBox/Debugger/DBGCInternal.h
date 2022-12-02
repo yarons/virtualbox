@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCInternal.h 97728 2022-12-02 01:06:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -544,6 +544,7 @@ DECLHIDDEN(int) dbgcFlowTraceModDelete(PDBGC pDbgc, uint32_t iFlowTraceMod);
 void    dbgcEvalInit(void);
 int     dbgcEvalSub(PDBGC pDbgc, char *pszExpr, size_t cchExpr, DBGCVARCAT enmCategory, PDBGCVAR pResult);
 int     dbgcEvalCommand(PDBGC pDbgc, char *pszCmd, size_t cchCmd, bool fNoExecute);
+int     dbgcEvalCommands(PDBGC pDbgc, char *pszCmds, size_t cchCmds, bool fNoExecute);
 int     dbgcEvalScript(PDBGC pDbgc, const char *pszFilename, bool fAnnounce);
 
 int     dbgcSymbolGet(PDBGC pDbgc, const char *pszSymbol, DBGCVARTYPE enmType, PDBGCVAR pResult);

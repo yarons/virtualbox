@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdWorkers.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCCmdWorkers.cpp 97728 2022-12-02 01:06:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -228,7 +228,7 @@ int dbgcBpExec(PDBGC pDbgc, RTUINT iBp)
 
     /* Execute the command. */
     pDbgc->pszScratch = pDbgc->pszScratch + pBp->cchCmd + 1;
-    int rc = dbgcEvalCommand(pDbgc, pszScratch, pBp->cchCmd, false /* fNoExecute */);
+    int rc = dbgcEvalCommands(pDbgc, pszScratch, pBp->cchCmd, false /* fNoExecute */);
 
     /* Restore the scratch state. */
     pDbgc->iArg         = iArg;

@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DBGCGdbRemoteStub.cpp 97728 2022-12-02 01:06:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -1349,7 +1349,7 @@ static DECLCALLBACK(int) dbgcGdbStubCtxPktProcessQueryRcmd(PGDBSTUBCTX pThis, co
         szCmd[cbDecoded] = '\0'; /* Ensure zero termination. */
 
         pThis->fOutput = false;
-        rc = dbgcEvalCommand(&pThis->Dbgc, &szCmd[0], cbDecoded, false /*fNoExecute*/);
+        rc = dbgcEvalCommand(&pThis->Dbgc, &szCmd[0], cbDecoded - 1, false /*fNoExecute*/);
         dbgcGdbStubCtxReplySendOk(pThis);
         if (   rc != VERR_DBGC_QUIT
             && rc != VWRN_DBGC_CMD_PENDING)
