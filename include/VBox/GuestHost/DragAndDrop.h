@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DragAndDrop.h 97730 2022-12-02 15:32:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -101,6 +101,8 @@ int DnDDroppedFilesReopen(PDNDDROPPEDFILES pDF);
 int DnDDroppedFilesReset(PDNDDROPPEDFILES pDF, bool fDelete);
 int DnDDroppedFilesRollback(PDNDDROPPEDFILES pDF);
 
+const char *DnDHostMsgToStr(uint32_t uMsg);
+const char *DnDGuestMsgToStr(uint32_t uMsg);
 const char *DnDActionToStr(VBOXDNDACTION uAction);
 
 bool DnDMIMEHasFileURLs(const char *pcszFormat, size_t cchFormatMax);
