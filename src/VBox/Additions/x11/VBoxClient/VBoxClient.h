@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxClient.h 97732 2022-12-02 16:19:55Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -42,6 +42,8 @@
 #define VBCL_ENV_XDG_CURRENT_DESKTOP    "XDG_CURRENT_DESKTOP"
 /** Environment variable which contains information about currently running session (X11, Wayland, etc). */
 #define VBCL_ENV_XDG_SESSION_TYPE       "XDG_SESSION_TYPE"
+
+int VBClShowNotify(const char *pszHeader, const char *pszBody);
 
 void VBClLogInfo(const char *pszFormat, ...);
 void VBClLogError(const char *pszFormat, ...);
@@ -139,6 +141,7 @@ extern VBCLSERVICE g_SvcDragAndDrop;
 extern VBCLSERVICE g_SvcHostVersion;
 extern VBCLSERVICE g_SvcSeamless;
 
+extern unsigned    g_cVerbosity;
 extern bool        g_fDaemonized;
 RT_C_DECLS_END
 
