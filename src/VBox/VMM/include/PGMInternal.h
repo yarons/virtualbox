@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 97197 2022-10-18 11:09:55Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 97736 2022-12-03 02:00:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3714,7 +3714,8 @@ int             pgmHandlerPhysicalExDeregister(PVMCC pVM, PPGMPHYSHANDLER pPhysH
 int             pgmHandlerPhysicalExDestroy(PVMCC pVM, PPGMPHYSHANDLER pHandler);
 void            pgmR3HandlerPhysicalUpdateAll(PVM pVM);
 bool            pgmHandlerPhysicalIsAll(PVMCC pVM, RTGCPHYS GCPhys);
-void            pgmHandlerPhysicalResetAliasedPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhysPage, PPGMRAMRANGE pRam, bool fDoAccounting);
+void            pgmHandlerPhysicalResetAliasedPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhysPage, PPGMRAMRANGE pRam,
+                                                   bool fDoAccounting, bool fFlushIemTlbs);
 DECLHIDDEN(int) pgmHandlerPhysicalResetMmio2WithBitmap(PVMCC pVM, RTGCPHYS GCPhys, void *pvBitmap, uint32_t offBitmap);
 DECLCALLBACK(void) pgmR3InfoHandlers(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 DECLCALLBACK(FNPGMPHYSHANDLER)      pgmR3HandlerPhysicalHandlerInvalid;
