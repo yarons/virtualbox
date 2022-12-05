@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 96598 2022-09-04 23:15:10Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 97743 2022-12-05 20:26:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -433,15 +433,12 @@ int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const 
     char *pszName;
     if (pszDomain)
     {
-/** @todo r=bird: RTStrAPrintf returns -1, not zero on failure!   */
-        if (!RTStrAPrintf(&pszName, "%s%s@%s/%s", g_pszPropCacheValUser, pszUser, pszDomain, pszKey))
+        if (RTStrAPrintf(&pszName, "%s%s@%s/%s", g_pszPropCacheValUser, pszUser, pszDomain, pszKey) < 0)
             rc = VERR_NO_MEMORY;
     }
     else
     {
-/** @todo r=bird: RTStrAPrintf returns -1, not zero on failure! You got it
- *        right 5 lines further down... */
-        if (!RTStrAPrintf(&pszName, "%s%s/%s", g_pszPropCacheValUser, pszUser, pszKey))
+        if (RTStrAPrintf(&pszName, "%s%s/%s", g_pszPropCacheValUser, pszUser, pszKey) < 0)
             rc = VERR_NO_MEMORY;
     }
 
