@@ -1,4 +1,4 @@
-/* $Id: dndmanager.cpp 97731 2022-12-02 15:37:16Z andreas.loeffler@oracle.com $ */
+/* $Id: dndmanager.cpp 97747 2022-12-06 09:18:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Drag and Drop manager: Handling of DnD messages on the host side.
  */
@@ -108,7 +108,12 @@ void DnDManager::DumpQueue(void)
 {
     LogFunc(("Current queue (%zu items, FIFO) is: %s", m_queueMsg.size(), m_queueMsg.isEmpty() ? "<Empty>" : ""));
     for (size_t i = 0; i < m_queueMsg.size(); ++i)
-        Log(("%s ", DnDHostMsgToStr(m_queueMsg[i]->GetType())));
+    {
+        if (i > 0)
+            Log((" - "));
+        uint32_t const uType = m_queueMsg[i]->GetType();
+        Log(("%s (%d / %#x)", DnDHostMsgToStr(uType), uType, uType));
+    }
     Log(("\n"));
 }
 #endif /* DEBUG */
