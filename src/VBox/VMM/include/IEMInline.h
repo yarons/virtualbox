@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 97714 2022-11-30 08:31:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 97756 2022-12-06 10:55:10Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -293,6 +293,8 @@ DECLINLINE(void) iemReInitExec(PVMCPUCC pVCpu) RT_NOEXCEPT
 }
 #endif
 
+
+#ifdef VBOX_INCLUDED_vmm_dbgf_h /* dbgf.ro.cEnabledHwBreakpoints */
 /**
  * Counterpart to #iemInitExec that undoes evil strict-build stuff.
  *
@@ -312,6 +314,7 @@ DECLINLINE(void) iemUninitExec(PVMCPUCC pVCpu) RT_NOEXCEPT
     NOREF(pVCpu);
 #endif
 }
+#endif /* VBOX_INCLUDED_vmm_dbgf_h */
 
 
 /**
