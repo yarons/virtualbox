@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 97745 2022-12-06 09:08:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 97746 2022-12-06 09:09:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -586,7 +586,7 @@ static int vbglR3DnDHGRecvURIData(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHDR
                 }
                 default:
                 {
-                    LogRel(("DnD: Warning: Message %s (%#x) from host not supported\n", DnDGuestMsgToStr(uNextMsg), uNextMsg));
+                    LogRel(("DnD: Warning: Message %s (%#x) from host not supported or in wrong order\n", DnDHostMsgToStr(uNextMsg), uNextMsg));
                     rc = VERR_NOT_SUPPORTED;
                     break;
                 }
