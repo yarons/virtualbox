@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 97740 2022-12-05 09:00:05Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 97748 2022-12-06 09:26:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -2565,7 +2565,7 @@ int DragInstance::ghDropped(const RTCString &strFormat, VBOXDNDACTION dndActionR
     /* Inform the host on error. */
     if (RT_FAILURE(rc))
     {
-        int rc2 = VbglR3DnDGHSendError(&m_dndCtx, rc);
+        int rc2 = VbglR3DnDSendError(&m_dndCtx, rc);
         LogFlowThisFunc(("Sending error %Rrc to host resulted in %Rrc\n", rc, rc2)); RT_NOREF(rc2);
         /* This is not fatal for us, just ignore. */
     }

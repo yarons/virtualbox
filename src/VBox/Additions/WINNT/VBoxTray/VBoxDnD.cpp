@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxDnD.cpp 97748 2022-12-06 09:26:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1418,7 +1418,7 @@ int VBoxDnDWnd::OnGhDrop(const RTCString &strFormat, uint32_t dndActionDefault)
          * send an error to the host in any case so that the host does
          * not wait for the data it expects from the guest.
          */
-        int rc2 = VbglR3DnDGHSendError(&m_cmdCtx, rc);
+        int rc2 = VbglR3DnDSendError(&m_cmdCtx, rc);
         AssertRC(rc2);
     }
 
