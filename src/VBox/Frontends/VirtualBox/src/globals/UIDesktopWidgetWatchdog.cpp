@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 97715 2022-11-30 13:21:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97752 2022-12-06 09:57:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -27,9 +27,6 @@
 
 /* Qt includes: */
 #include <QApplication>
-#ifndef VBOX_IS_QT6_OR_LATER
-# include <QDesktopWidget>
-#endif
 #include <QWidget>
 #include <QScreen>
 #ifdef VBOX_WS_WIN
