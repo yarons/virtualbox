@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 97728 2022-12-02 01:06:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCEval.cpp 97753 2022-12-06 09:57:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -1524,8 +1524,8 @@ int dbgcEvalCommand(PDBGC pDbgc, char *pszCmd, size_t cchCmd, bool fNoExecute)
  * @returns VBox status code. This is also stored in DBGC::rcCmd.
  *
  * @param   pDbgc       Debugger console instance data.
- * @param   pszCmd      Pointer to the command.
- * @param   cchCmd      Length of the command.
+ * @param   pszCmds     Pointer to the command.
+ * @param   cchCmds     Length of the command.
  * @param   fNoExecute  Indicates that no commands should actually be executed.
  */
 int dbgcEvalCommands(PDBGC pDbgc, char *pszCmds, size_t cchCmds, bool fNoExecute)
