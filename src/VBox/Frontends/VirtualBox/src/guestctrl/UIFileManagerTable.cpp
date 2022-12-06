@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 97755 2022-12-06 10:31:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -300,19 +300,9 @@ void UIFileManagerNavigationWidget::reset()
 {
     if (m_pHistoryComboBox)
     {
-#ifdef VBOX_IS_QT6_OR_LATER
-        disconnect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentTextChanged),
-                   this, &UIFileManagerNavigationWidget::sltHandlePathChange);
+        m_pHistoryComboBox->blockSignals(true);
         m_pHistoryComboBox->clear();
-        connect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentTextChanged),
-                this, &UIFileManagerNavigationWidget::sltHandlePathChange);
-#else
-        disconnect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-                   this, &UIFileManagerNavigationWidget::sltHandlePathChange);
-        m_pHistoryComboBox->clear();
-        connect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-                this, &UIFileManagerNavigationWidget::sltHandlePathChange);
-#endif
+        m_pHistoryComboBox->blockSignals(false);
     }
 
     if (m_pBreadCrumbs)
@@ -347,13 +337,8 @@ void UIFileManagerNavigationWidget::prepare()
                     this, &UIFileManagerNavigationWidget::sltHandlePathChange);
             connect(m_pHistoryComboBox, &UIFileManagerHistoryComboBox::sigHidePopup,
                     this, &UIFileManagerNavigationWidget::sltHandleHidePopup);
-#ifdef VBOX_IS_QT6_OR_LATER
-            connect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentTextChanged),
+            connect(m_pHistoryComboBox, &UIFileManagerHistoryComboBox::currentTextChanged,
                     this, &UIFileManagerNavigationWidget::sltHandlePathChange);
-#else
-            connect(m_pHistoryComboBox, static_cast<void(QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-                    this, &UIFileManagerNavigationWidget::sltHandlePathChange);
-#endif
 
             m_pContainer->addWidget(m_pBreadCrumbs);
             m_pContainer->addWidget(m_pHistoryComboBox);
