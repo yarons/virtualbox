@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 97748 2022-12-06 09:26:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDnD.cpp 97764 2022-12-08 15:47:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -613,7 +613,7 @@ LRESULT CALLBACK VBoxDnDWnd::WndProc(HWND a_hWnd, UINT a_uMsg, WPARAM a_wParam, 
                     break;
                 }
 
-                case VBGLR3DNDEVENTTYPE_HG_CANCEL:
+                case VBGLR3DNDEVENTTYPE_CANCEL:
                 {
                     rc = OnHgCancel();
                     break;

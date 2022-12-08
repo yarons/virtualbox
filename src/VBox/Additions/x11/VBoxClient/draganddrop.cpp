@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 97748 2022-12-06 09:26:48Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 97764 2022-12-08 15:47:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3424,9 +3424,9 @@ int DragAndDropService::worker(bool volatile *pfShutdown)
                             break;
                         }
 
-                        case VBGLR3DNDEVENTTYPE_HG_CANCEL:
+                        case VBGLR3DNDEVENTTYPE_CANCEL:
                         {
-                            m_pCurDnD->reset(); /** @todo Test this! */
+                            m_pCurDnD->reset();
                             break;
                         }
 
