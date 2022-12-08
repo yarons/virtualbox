@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-solaris.cpp 97766 2022-12-08 21:09:03Z brent.paulson@oracle.com $ */
+/* $Id: RTSystemFirmware-solaris.cpp 97767 2022-12-08 21:22:46Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - System firmware information for Solaris.
  */
@@ -45,15 +45,6 @@
 #include <libdevinfo.h>
 
 
-/**
- * Determine the type of firmware of a host, i.e. whether it booted using UEFI
- * or BIOS.
- *
- * @param  penmFirmwareType    Where to store the firmware type.
- *
- * @return VINF_SUCCESS, if successfully able to determine the firmware type,
- *         otherwise VERR_NOT_SUPPORTED.
- */
 RTDECL(int) RTSystemQueryFirmwareType(PRTSYSFWTYPE penmFirmwareType)
 {
     di_node_t di_node;
