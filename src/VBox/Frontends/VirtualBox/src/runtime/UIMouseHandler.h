@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMouseHandler.h 97771 2022-12-09 12:23:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class declaration.
  */
@@ -149,6 +149,7 @@ protected:
     /* Other mouse variables: */
     QPoint m_lastMousePos;
     QPoint m_capturedMousePos;
+    QRect m_capturedScreenGeo;
     int m_iLastMouseWheelDelta;
     int m_iMouseCaptureViewIndex;
 

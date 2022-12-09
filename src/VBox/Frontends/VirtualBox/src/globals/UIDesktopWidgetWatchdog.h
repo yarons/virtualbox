@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 97715 2022-11-30 13:21:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 97771 2022-12-09 12:23:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -116,10 +116,6 @@ public:
     static QRegion overallScreenRegion();
     /** Returns overall region unifying all the host-screen available-geometries. */
     static QRegion overallAvailableRegion();
-    /** Returns overall desktop width. */
-    static int overallDesktopWidth();
-    /** Returns overall desktop height. */
-    static int overallDesktopHeight();
 
 #ifdef VBOX_WS_X11
     /** Qt5: X11: Returns whether no or fake screen detected. */

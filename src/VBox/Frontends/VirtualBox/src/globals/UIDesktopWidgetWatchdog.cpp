@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 97754 2022-12-06 10:07:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 97771 2022-12-09 12:23:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -462,18 +462,6 @@ QRegion UIDesktopWidgetWatchdog::overallAvailableRegion()
     }
     /* Return region: */
     return region;
-}
-
-/* static */
-int UIDesktopWidgetWatchdog::overallDesktopWidth()
-{
-    return overallScreenRegion().boundingRect().width();
-}
-
-/* static */
-int UIDesktopWidgetWatchdog::overallDesktopHeight()
-{
-    return overallScreenRegion().boundingRect().height();
 }
 
 #ifdef VBOX_WS_X11
