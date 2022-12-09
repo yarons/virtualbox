@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 97764 2022-12-08 15:47:13Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 97768 2022-12-09 11:18:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1807,14 +1807,20 @@ int DragInstance::hgEnter(const RTCList<RTCString> &lstFormats, uint32_t dndList
 
         if (g_cVerbosity)
         {
-            RTCString strMsg("Enter: Host -> Guest\n\n");
-            strMsg += RTCStringFmt("Allowed actions: %#x\n", dndListActionsAllowed);
-            strMsg += "Formats:\n";
+            RTCString strMsg("Enter: Host -> Guest\n");
+            strMsg += RTCStringFmt("Allowed actions: ");
             for (size_t i = 0; i < lstActions.size(); i++)
             {
                 if (i > 0)
-                    strMsg += "\n";
-                strMsg += lstActions.at(i);
+                    strMsg += ", ";
+                strMsg += DnDActionToStr(toHGCMAction(lstActions.at(i)));
+            }
+            strMsg += " - Formats: ";
+            for (size_t i = 0; i < lstFormats.size(); i++)
+            {
+                if (i > 0)
+                    strMsg += ", ";
+                strMsg += lstFormats.at(i);
             }
 
             VBClShowNotify(VBOX_DND_SHOWNOTIFY_HEADER, strMsg.c_str());
