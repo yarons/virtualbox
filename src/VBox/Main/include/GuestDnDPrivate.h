@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 97725 2022-12-01 13:50:40Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97772 2022-12-09 17:39:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -962,7 +962,7 @@ public:
      * @{ */
     static bool                     isFormatInFormatList(const com::Utf8Str &strFormat, const GuestDnDMIMEList &lstFormats);
     static GuestDnDMIMEList         toFormatList(const com::Utf8Str &strFormats, const com::Utf8Str &strSep = DND_FORMATS_SEPARATOR_STR);
-    static com::Utf8Str             toFormatString(const GuestDnDMIMEList &lstFormats);
+    static com::Utf8Str             toFormatString(const GuestDnDMIMEList &lstFormats, const com::Utf8Str &strSep = DND_FORMATS_SEPARATOR_STR);
     static GuestDnDMIMEList         toFilteredFormatList(const GuestDnDMIMEList &lstFormatsSupported, const GuestDnDMIMEList &lstFormatsWanted);
     static GuestDnDMIMEList         toFilteredFormatList(const GuestDnDMIMEList &lstFormatsSupported, const com::Utf8Str &strFormatsWanted);
     static DnDAction_T              toMainAction(VBOXDNDACTION dndAction);
