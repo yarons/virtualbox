@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 97784 2022-12-12 17:54:12Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 97788 2022-12-12 18:36:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -616,7 +616,7 @@ Utf8Str GuestDnDSource::i_hostErrorToString(int hostRc)
  */
 void GuestDnDSource::i_reset(void)
 {
-    LogFlowThisFunc(("\n"));
+    LogRel2(("DnD: Source reset\n"));
 
     mData.mRecvCtx.reset();
 
