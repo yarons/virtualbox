@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 97784 2022-12-12 17:54:12Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDHandler.cpp 97787 2022-12-12 18:07:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -118,6 +118,7 @@ Qt::DropAction UIDnDHandler::dragEnter(ulong screenID, int x, int y,
         return toQtDnDAction(result);
     }
 
+    msgCenter().cannotDropDataToGuest(m_dndTarget, m_pParent);
     return Qt::IgnoreAction;
 }
 
@@ -141,6 +142,7 @@ Qt::DropAction UIDnDHandler::dragMove(ulong screenID, int x, int y,
     if (m_dndTarget.isOk())
         return toQtDnDAction(result);
 
+    msgCenter().cannotDropDataToGuest(m_dndTarget, m_pParent);
     return Qt::IgnoreAction;
 }
 
@@ -265,6 +267,10 @@ void UIDnDHandler::dragLeave(ulong screenID)
         return;
 
     m_dndTarget.Leave(screenID);
+    if (m_dndTarget.isOk())
+        return;
+
+    msgCenter().cannotDropDataToGuest(m_dndTarget, m_pParent);
     return;
 }
 
@@ -428,9 +434,7 @@ int UIDnDHandler::dragStartInternal(const QStringList &lstFormats,
 #endif /* DEBUG_DND_QT */
 
 #else /* !VBOX_WITH_DRAG_AND_DROP_GH */
-
     rc = VERR_NOT_SUPPORTED;
-
 #endif /* VBOX_WITH_DRAG_AND_DROP_GH */
 
     LogFlowFuncLeaveRC(rc);
@@ -472,7 +476,10 @@ int UIDnDHandler::dragCheckPending(ulong screenID)
     QVector<QString> vecFormats;
     m_dataSource.defaultAction = m_dndSource.DragIsPending(screenID, vecFormats, m_dataSource.vecActions);
     if (!m_dndSource.isOk())
+    {
+        msgCenter().cannotDropDataToHost(m_dndSource, m_pParent);
         return VERR_NO_DATA;
+    }
 
     LogRelMax3(10, ("DnD: Default action is: 0x%x\n", m_dataSource.defaultAction));
     LogRelMax3(10, ("DnD: Number of supported guest actions: %d\n", m_dataSource.vecActions.size()));
