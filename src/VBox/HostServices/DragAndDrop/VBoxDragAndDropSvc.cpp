@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 97788 2022-12-12 18:36:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDragAndDropSvc.cpp 97789 2022-12-12 18:43:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -1016,7 +1016,7 @@ do { \
                             if (rc == VERR_CANCELLED)
                             {
                                 /* Host indicated that the current operation was cancelled. Tell the guest. */
-                                LogFunc(("Host indicated that operation was cancelled\n", rc));
+                                LogFunc(("Host indicated that operation was cancelled\n"));
                             }
                             else
                             {
