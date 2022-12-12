@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.h 97780 2022-12-12 16:57:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -45,9 +45,12 @@ class ATL_NO_VTABLE GuestDnDTarget :
     public GuestDnDBase
 {
 public:
+    GuestDnDTarget(void);
+    virtual ~GuestDnDTarget(void);
+
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_COMMON_CLASS_METHODS(GuestDnDTarget)
+    DECLARE_TRANSLATE_METHODS(GuestDnDTarget);
 
     HRESULT init(const ComObjPtr<Guest>& pGuest);
     void    uninit(void);
@@ -88,7 +91,10 @@ protected:
 
 protected:
 
+    /** @name Implemented virtual functions.
+     * @{ */
     void i_reset(void);
+    /** @}  */
 
     int i_sendData(GuestDnDSendCtx *pCtx, RTMSINTERVAL msTimeout);
 

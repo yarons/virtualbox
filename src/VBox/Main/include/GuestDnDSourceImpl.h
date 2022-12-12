@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.h 97780 2022-12-12 16:57:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -47,9 +47,12 @@ class ATL_NO_VTABLE GuestDnDSource :
     public GuestDnDBase
 {
 public:
+    GuestDnDSource(void);
+    virtual ~GuestDnDSource(void);
+
     /** @name COM and internal init/term/mapping cruft.
      * @{ */
-    DECLARE_COMMON_CLASS_METHODS(GuestDnDSource)
+    DECLARE_TRANSLATE_METHODS(GuestDnDSource);
 
     HRESULT init(const ComObjPtr<Guest>& pGuest);
     void    uninit(void);
@@ -77,7 +80,10 @@ private:
 
 protected:
 
+    /** @name Implemented virtual functions.
+     * @{ */
     void i_reset(void);
+    /** @}  */
 
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
     /** @name Dispatch handlers for the HGCM callbacks.

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 97751 2022-12-06 09:49:16Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 97780 2022-12-12 16:57:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -128,7 +128,10 @@ protected:
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR(GuestDnDTarget)
+GuestDnDTarget::GuestDnDTarget(void)
+    : GuestDnDBase(this) { }
+
+GuestDnDTarget::~GuestDnDTarget(void) { }
 
 HRESULT GuestDnDTarget::FinalConstruct(void)
 {

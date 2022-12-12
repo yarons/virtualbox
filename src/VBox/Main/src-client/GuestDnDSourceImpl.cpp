@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 97751 2022-12-06 09:49:16Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 97780 2022-12-12 16:57:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -127,7 +127,10 @@ protected:
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR(GuestDnDSource)
+GuestDnDSource::GuestDnDSource(void)
+    : GuestDnDBase(this) { }
+
+GuestDnDSource::~GuestDnDSource(void) { }
 
 HRESULT GuestDnDSource::FinalConstruct(void)
 {
