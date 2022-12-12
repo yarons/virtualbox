@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 97783 2022-12-12 17:26:43Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97784 2022-12-12 17:54:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -820,6 +820,11 @@ public:
 
 public:
 
+    VBOXDNDSTATE get() { return m_enmState; } const
+    int set(VBOXDNDSTATE enmState) { LogRel3(("DnD: State %s -> %s\n", DnDStateToStr(m_enmState), DnDStateToStr(enmState))); m_enmState = enmState; return 0; }
+    void lock() { RTCritSectEnter(&m_CritSect); };
+    void unlock() { RTCritSectLeave(&m_CritSect); };
+
     /** @name Guest response handling.
      * @{ */
     int notifyAboutGuestResponse(int rcGuest = VINF_SUCCESS);
@@ -855,6 +860,9 @@ public:
 
     /** Pointer to context this class is tied to. */
     void                 *m_pvCtx;
+    RTCRITSECT            m_CritSect;
+    /** The current state we're in. */
+    VBOXDNDSTATE          m_enmState;
     /** The DnD protocol version to use, depending on the
      *  installed Guest Additions. See DragAndDropSvc.h for
      *  a protocol changelog. */
