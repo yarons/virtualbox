@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 97780 2022-12-12 16:57:51Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97781 2022-12-12 17:01:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -1011,6 +1011,8 @@ class GuestDnDBase
 protected:
 
     GuestDnDBase(VirtualBoxBase *pBase);
+
+    virtual ~GuestDnDBase(void);
 
 protected:
 
