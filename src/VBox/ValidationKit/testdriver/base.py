@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
+# $Id: base.py 97774 2022-12-12 11:13:41Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97673 $"
+__version__ = "$Revision: 97774 $"
 
 
 # Standard Python imports.
@@ -720,12 +720,15 @@ class Process(TdTaskBase):
         if sOs == 'solaris':
             if sKindCrashDump is not None: # Enable.
                 sCorePath = getDirEnv('TESTBOX_PATH_SCRATCH', sAlternative = '/var/cores', fTryCreate = False);
-                utils.sudoProcessOutputChecked([ 'coreadm', '-e', 'global', '-e', 'global-setid', \
-                                                 '-e', 'process', '-e', 'proc-setid', \
-                                                 '-g', os.path.join(sCorePath, '%f.%p.core')]);
+                (iExitCode, _, sErr) = utils.processOutputUnchecked([ 'coreadm', '-e', 'global', '-e', 'global-setid', \
+                                                                      '-e', 'process', '-e', 'proc-setid', \
+                                                                      '-g', os.path.join(sCorePath, '%f.%p.core')]);
             else: # Disable.
-                utils.sudoProcessOutputChecked([ 'coreadm', \
-                                                 '-d', 'global', '-d', 'global-setid', '-d', 'process', '-d', 'proc-setid' ]);
+                (iExitCode, _, sErr) = utils.processOutputUnchecked([ 'coreadm', \
+                                                                      '-d', 'global', '-d', 'global-setid', \
+                                                                      '-d', 'process', '-d', 'proc-setid' ]);
+            if iExitCode != 0: # Don't report an actual error, just log this.
+                reporter.log('%s coreadm failed: %s' % ('Enabling' if sKindCrashDump else 'Disabling', sErr));
 
         if sKindCrashDump is not None:
             if sCorePath is not None:
