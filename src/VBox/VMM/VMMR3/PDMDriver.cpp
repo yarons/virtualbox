@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: PDMDriver.cpp 97775 2022-12-12 11:20:12Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -2095,8 +2095,8 @@ static DECLCALLBACK(void *) pdmR3DrvHlp_QueryGenericUserObject(PPDMDRVINS pDrvIn
     else
         pvRet = NULL;
 
-    LogRel(("pdmR3DrvHlp_QueryGenericUserObject: caller='%s'/%d: returns %#p for %RTuuid\n",
-            pDrvIns->pReg->szName, pDrvIns->iInstance, pvRet, pUuid));
+    LogFlow(("pdmR3DrvHlp_QueryGenericUserObject: caller='%s'/%d: returns %#p for %RTuuid\n",
+             pDrvIns->pReg->szName, pDrvIns->iInstance, pvRet, pUuid));
     return pvRet;
 }
 
