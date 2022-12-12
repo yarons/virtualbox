@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 97784 2022-12-12 17:54:12Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97786 2022-12-12 17:59:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -820,7 +820,7 @@ public:
 
 public:
 
-    VBOXDNDSTATE get() { return m_enmState; } const
+    VBOXDNDSTATE get(void) const { return m_enmState; }
     int set(VBOXDNDSTATE enmState) { LogRel3(("DnD: State %s -> %s\n", DnDStateToStr(m_enmState), DnDStateToStr(enmState))); m_enmState = enmState; return 0; }
     void lock() { RTCritSectEnter(&m_CritSect); };
     void unlock() { RTCritSectLeave(&m_CritSect); };
