@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 97789 2022-12-12 18:43:46Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxDragAndDropSvc.cpp 97797 2022-12-13 17:09:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -261,7 +261,6 @@ int DragAndDropService::clientConnect(uint32_t idClient, void *pvClient) RT_NOEX
         return VERR_MAX_PROCS_REACHED;
     }
 
-
     /*
      * Add client to our client map.
      */
@@ -282,13 +281,6 @@ int DragAndDropService::clientConnect(uint32_t idClient, void *pvClient) RT_NOEX
         LogFunc(("Client %RU32 - VERR_NO_MEMORY!\n", idClient));
         return VERR_NO_MEMORY;
     }
-
-    /*
-     * Reset the message queue as soon as a new client connects
-     * to ensure that every client has the same state.
-     */
-    if (m_pManager)
-        m_pManager->Reset(true /* fForce */);
 
     LogFlowFunc(("Client %RU32 connected (VINF_SUCCESS)\n", idClient));
     return VINF_SUCCESS;
