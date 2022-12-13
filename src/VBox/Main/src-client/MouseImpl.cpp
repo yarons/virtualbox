@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 97790 2022-12-13 13:06:03Z vadim.galitsyn@oracle.com $ */
+/* $Id: MouseImpl.cpp 97791 2022-12-13 13:11:09Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -658,7 +658,7 @@ HRESULT Mouse::i_reportAbsEventToVMMDev(int32_t x, int32_t y, int32_t dz, int32_
 HRESULT Mouse::i_reportAbsEventToInputDevices(int32_t x, int32_t y, int32_t dz, int32_t dw, uint32_t fButtons,
                                               bool fUsesVMMDevEvent)
 {
-    HRESULT hrc;
+    HRESULT hrc = S_OK;
     /** If we are using the VMMDev to report absolute position but without
      * VMMDev IRQ support then we need to send a small "jiggle" to the emulated
      * relative mouse device to alert the guest to changes. */
