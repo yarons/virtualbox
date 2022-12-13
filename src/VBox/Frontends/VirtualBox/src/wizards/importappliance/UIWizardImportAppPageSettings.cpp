@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 96426 2022-08-23 07:14:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 97795 2022-12-13 14:52:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -550,9 +550,10 @@ bool UIWizardImportAppPageSettings::validatePage()
 
 void UIWizardImportAppPageSettings::sltAsyncInit()
 {
-    /* If we have file name passed,
+    /* If we have local source and file name passed,
      * check if specified file contains valid appliance: */
-    if (   !m_strFileName.isEmpty()
+    if (   !wizard()->isSourceCloudOne()
+        && !m_strFileName.isEmpty()
         && !wizard()->setFile(m_strFileName))
     {
         wizard()->reject();
