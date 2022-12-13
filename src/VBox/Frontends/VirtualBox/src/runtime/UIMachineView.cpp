@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 97792 2022-12-13 13:47:18Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineView.cpp 97793 2022-12-13 13:59:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -84,6 +84,9 @@
 
 /* External includes: */
 #include <math.h>
+#ifdef VBOX_WITH_DRAG_AND_DROP
+# include <new> /* For bad_alloc. */
+#endif
 #ifdef VBOX_WS_MAC
 # include <Carbon/Carbon.h>
 #endif
