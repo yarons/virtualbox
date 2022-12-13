@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 97792 2022-12-13 13:47:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -176,7 +176,7 @@ protected:
     virtual void prepareFrameBuffer();
     virtual void prepareCommon();
 #ifdef VBOX_WITH_DRAG_AND_DROP
-    virtual void prepareDnd();
+    virtual int  prepareDnd();
 #endif
     virtual void prepareFilters();
     virtual void prepareConnections();
