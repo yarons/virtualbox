@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 97764 2022-12-08 15:47:13Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 97799 2022-12-13 17:26:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1680,7 +1680,8 @@ static int vbglR3DnDGHSendFile(PVBGLR3GUESTDNDCMDCTX pCtx, PDNDTRANSFEROBJECT pO
     void *pvBuf = RTMemAlloc(cbBuf); /** @todo Make this buffer part of PVBGLR3GUESTDNDCMDCTX? */
     if (!pvBuf)
     {
-        DnDTransferObjectClose(pObj);
+        int rc2 = DnDTransferObjectClose(pObj);
+        AssertRC(rc2);
         return VERR_NO_MEMORY;
     }
 
@@ -1752,7 +1753,9 @@ static int vbglR3DnDGHSendFile(PVBGLR3GUESTDNDCMDCTX pCtx, PDNDTRANSFEROBJECT pO
     }
 
     RTMemFree(pvBuf);
-    DnDTransferObjectClose(pObj);
+    int rc2 = DnDTransferObjectClose(pObj);
+    if (RT_SUCCESS(rc))
+        rc = rc2;
 
     LogFlowFuncLeaveRC(rc);
     return rc;

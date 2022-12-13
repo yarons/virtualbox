@@ -1,4 +1,4 @@
-/* $Id: DnDTransferObject.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DnDTransferObject.cpp 97799 2022-12-13 17:26:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - Transfer object implemenation for handling creation/reading/writing to files and directories on host or guest side.
  */
@@ -46,7 +46,7 @@
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *
 *********************************************************************************************************************************/
-static void dndTransferObjectCloseInternal(PDNDTRANSFEROBJECT pObj);
+static int dndTransferObjectCloseInternal(PDNDTRANSFEROBJECT pObj);
 static int dndTransferObjectQueryInfoInternal(PDNDTRANSFEROBJECT pObj);
 
 
@@ -177,15 +177,17 @@ void DnDTransferObjectDestroy(PDNDTRANSFEROBJECT pObj)
 /**
  * Closes the object's internal handles (to files / ...).
  *
+ * @returns VBox status code.
  * @param   pObj                DnD transfer object to close internally.
  */
-static void dndTransferObjectCloseInternal(PDNDTRANSFEROBJECT pObj)
+static int dndTransferObjectCloseInternal(PDNDTRANSFEROBJECT pObj)
 {
-    AssertPtrReturnVoid(pObj);
+    AssertPtrReturn(pObj, VERR_INVALID_POINTER);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
-    LogRel2(("DnD: Closing '%s'\n", pObj->pszPath));
+    if (pObj->pszPath)
+        LogRel2(("DnD: Closing '%s'\n", pObj->pszPath));
 
     switch (pObj->enmType)
     {
@@ -225,20 +227,21 @@ static void dndTransferObjectCloseInternal(PDNDTRANSFEROBJECT pObj)
             break;
     }
 
-    /** @todo Return rc. */
+    return rc;
 }
 
 /**
  * Closes the object.
  * This also closes the internal handles associated with the object (to files / ...).
  *
+ * @returns VBox status code.
  * @param   pObj                DnD transfer object to close.
  */
-void DnDTransferObjectClose(PDNDTRANSFEROBJECT pObj)
+int DnDTransferObjectClose(PDNDTRANSFEROBJECT pObj)
 {
-    AssertPtrReturnVoid(pObj);
+    AssertPtrReturn(pObj, VERR_INVALID_POINTER);
 
-    dndTransferObjectCloseInternal(pObj);
+    return dndTransferObjectCloseInternal(pObj);
 }
 
 /**
@@ -615,7 +618,8 @@ void DnDTransferObjectReset(PDNDTRANSFEROBJECT pObj)
 
     LogFlowFuncEnter();
 
-    dndTransferObjectCloseInternal(pObj);
+    int vrc2 = dndTransferObjectCloseInternal(pObj);
+    AssertRCReturnVoid(vrc2);
 
     pObj->enmType    = DNDTRANSFEROBJTYPE_UNKNOWN;
     pObj->idxDst     = 0;

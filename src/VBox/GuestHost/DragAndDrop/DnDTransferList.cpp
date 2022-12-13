@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DnDTransferList.cpp 97799 2022-12-13 17:26:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -279,7 +279,7 @@ static int dndTransferListObjAdd(PDNDTRANSFERLIST pList, const char *pcszSrcAbs,
 
                     if (   fIsFile
                         && !(fFlags & DNDTRANSFERLIST_FLAGS_KEEP_OPEN)) /* Shall we keep the file open while being added to this list? */
-                        DnDTransferObjectClose(pObj);
+                        rc = DnDTransferObjectClose(pObj);
                 }
 
                 if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 97769 2022-12-09 11:43:56Z andreas.loeffler@oracle.com $ */
+/* $Id: DragAndDrop.h 97799 2022-12-13 17:26:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -210,7 +210,7 @@ typedef DNDTRANSFEROBJECT *PDNDTRANSFEROBJECT;
 int DnDTransferObjectInit(PDNDTRANSFEROBJECT pObj);
 int DnDTransferObjectInitEx(PDNDTRANSFEROBJECT pObj, DNDTRANSFEROBJTYPE enmType, const char *pcszPathSrcAbs, const char *pcszPathDst);
 void DnDTransferObjectDestroy(PDNDTRANSFEROBJECT pObj);
-void DnDTransferObjectClose(PDNDTRANSFEROBJECT pObj);
+int DnDTransferObjectClose(PDNDTRANSFEROBJECT pObj);
 void DnDTransferObjectReset(PDNDTRANSFEROBJECT pObj);
 const char *DnDTransferObjectGetSourcePath(PDNDTRANSFEROBJECT pObj);
 const char *DnDTransferObjectGetDestPath(PDNDTRANSFEROBJECT pObj);
