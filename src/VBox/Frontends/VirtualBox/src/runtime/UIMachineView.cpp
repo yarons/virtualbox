@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 97793 2022-12-13 13:59:51Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineView.cpp 97794 2022-12-13 14:21:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1001,16 +1001,14 @@ int UIMachineView::prepareDnd(void)
 
     int vrc;
 
-    try
+    /* Create the drag and drop handler instance: */
+    m_pDnDHandler = new UIDnDHandler(uisession(), this /* pParent */);
+    if (m_pDnDHandler)
     {
-        /* Create the drag and drop handler instance: */
-        m_pDnDHandler = new UIDnDHandler(uisession(), this /* pParent */);
         vrc = m_pDnDHandler->init();
     }
-    catch (std::bad_alloc &)
-    {
+    else
         vrc = VERR_NO_MEMORY;
-    }
 
     if (RT_FAILURE(vrc))
         LogRel(("DnD: Initialization failed with %Rrc\n", vrc));
