@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageUSB.cpp 97804 2022-12-14 21:09:40Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -159,6 +159,7 @@ struct USBFilterCmd
         Bstr mRevision;
         Bstr mManufacturer;
         Bstr mProduct;
+        Bstr mPort;
         Bstr mRemote;
         Bstr mSerialNumber;
         Nullable <ULONG> mMaskedInterfaces;
@@ -301,6 +302,13 @@ RTEXITCODE handleUSBFilter(HandlerArg *a)
                         return errorArgument(Usb::tr("Missing argument to '%s'"), a->argv[i]);
                     i++;
                     cmd.mFilter.mManufacturer = a->argv[i];
+                }
+                else if (!strcmp(a->argv[i], "--port"))
+                {
+                    if (a->argc <= i + 1)
+                        return errorArgument(Usb::tr("Missing argument to '%s'"), a->argv[i]);
+                    i++;
+                    cmd.mFilter.mPort = a->argv[i];
                 }
                 else if (   !strcmp(a->argv[i], "--product")
                          || !strcmp(a->argv[i], "-product"))
@@ -446,6 +454,8 @@ RTEXITCODE handleUSBFilter(HandlerArg *a)
                     CHECK_ERROR_BREAK(flt, COMSETTER(Revision)(f.mRevision.raw()));
                 if (!f.mManufacturer.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Manufacturer)(f.mManufacturer.raw()));
+                if (!f.mPort.isEmpty())
+                    CHECK_ERROR_BREAK(flt, COMSETTER(Port)(f.mPort.raw()));
                 if (!f.mSerialNumber.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(SerialNumber)(f.mSerialNumber.raw()));
                 if (!f.mMaskedInterfaces.isNull())
@@ -472,6 +482,8 @@ RTEXITCODE handleUSBFilter(HandlerArg *a)
                     CHECK_ERROR_BREAK(flt, COMSETTER(Revision)(f.mRevision.raw()));
                 if (!f.mManufacturer.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Manufacturer)(f.mManufacturer.raw()));
+                if (!f.mPort.isEmpty())
+                    CHECK_ERROR_BREAK(flt, COMSETTER(Port)(f.mPort.raw()));
                 if (!f.mRemote.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Remote)(f.mRemote.raw()));
                 if (!f.mSerialNumber.isEmpty())
@@ -504,6 +516,8 @@ RTEXITCODE handleUSBFilter(HandlerArg *a)
                     CHECK_ERROR_BREAK(flt, COMSETTER(Revision)(f.mRevision.raw()));
                 if (!f.mManufacturer.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Manufacturer)(f.mManufacturer.raw()));
+                if (!f.mPort.isEmpty())
+                    CHECK_ERROR_BREAK(flt, COMSETTER(Port)(f.mPort.raw()));
                 if (!f.mSerialNumber.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(SerialNumber)(f.mSerialNumber.raw()));
                 if (!f.mMaskedInterfaces.isNull())
@@ -531,6 +545,8 @@ RTEXITCODE handleUSBFilter(HandlerArg *a)
                     CHECK_ERROR_BREAK(flt, COMSETTER(Revision)(f.mRevision.raw()));
                 if (!f.mManufacturer.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Manufacturer)(f.mManufacturer.raw()));
+                if (!f.mPort.isEmpty())
+                    CHECK_ERROR_BREAK(flt, COMSETTER(Port)(f.mPort.raw()));
                 if (!f.mRemote.isEmpty())
                     CHECK_ERROR_BREAK(flt, COMSETTER(Remote)(f.mRemote.raw()));
                 if (!f.mSerialNumber.isEmpty())
