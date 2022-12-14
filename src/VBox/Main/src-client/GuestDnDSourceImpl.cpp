@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 97788 2022-12-12 18:36:50Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 97802 2022-12-14 14:58:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -392,7 +392,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
     /* Reset progress object. */
     GuestDnDState *pState = GuestDnDInst()->getState();
     AssertPtr(pState);
-    HRESULT hr = pState->resetProgress(m_pGuest);
+    HRESULT hr = pState->resetProgress(m_pGuest, tr("Dropping data to host"));
     if (FAILED(hr))
         return hr;
 
