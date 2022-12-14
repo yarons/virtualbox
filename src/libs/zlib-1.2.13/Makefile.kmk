@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97759 2022-12-07 13:20:05Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 97807 2022-12-14 23:52:24Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for zlib.
 #
@@ -35,6 +35,9 @@ if1of ($(KBUILD_TARGET),os2 win)
 endif
 VBox-zlib_TEMPLATE = VBoxR3RuntimeDllNonPedanticFast
 VBox-zlib_DEFS = verbose=-1 NO_VIZ=1
+ifn1of ($(KBUILD_TARGET), win)
+ VBox-zlib_DEFS = Z_HAVE_UNISTD_H
+endif
 VBox-zlib_SOURCES = \
 	adler32.c \
 	compress.c \
