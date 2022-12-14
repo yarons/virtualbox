@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 97788 2022-12-12 18:36:50Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 97801 2022-12-14 14:50:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -852,6 +852,7 @@ public:
     /** @name Progress handling.
      * @{ */
     bool isProgressCanceled(void) const;
+    bool isProgressRunning(void) const;
     int setProgress(unsigned uPercentage, uint32_t uState, int rcOp = VINF_SUCCESS, const Utf8Str &strMsg = "");
     HRESULT resetProgress(const ComObjPtr<Guest>& pParent);
     HRESULT queryProgressTo(IProgress **ppProgress);
