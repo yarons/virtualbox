@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 97802 2022-12-14 14:58:10Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 97817 2022-12-15 20:01:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -462,10 +462,10 @@ bool GuestDnDState::isProgressRunning(void) const
     if (m_pProgress.isNull())
         return false;
 
-    BOOL fRunning;
-    HRESULT hr = m_pProgress->COMGETTER(Completed)(&fRunning);
+    BOOL fCompleted;
+    HRESULT const hr = m_pProgress->COMGETTER(Completed)(&fCompleted);
     AssertComRCReturn(hr, false);
-    return RT_BOOL(fRunning);
+    return !RT_BOOL(fCompleted);
 }
 
 /**
