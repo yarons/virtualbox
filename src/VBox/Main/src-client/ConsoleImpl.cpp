@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 97367 2022-11-01 10:38:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 97815 2022-12-15 19:39:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -11106,7 +11106,8 @@ void Console::i_powerUpThreadTask(VMPowerUpTask *pTask)
                             vrc = pVMM->pfnVMR3LoadFromStream(pConsole->mpUVM,
                                                               pStreamOps, pvStreamOpsUser,
                                                               Console::i_stateProgressCallback,
-                                                              static_cast<IProgress *>(pTask->mProgress));
+                                                              static_cast<IProgress *>(pTask->mProgress),
+                                                              false /*fTeleporting*/);
                     }
 #else
                     vrc = pVMM->pfnVMR3LoadFromFile(pConsole->mpUVM,

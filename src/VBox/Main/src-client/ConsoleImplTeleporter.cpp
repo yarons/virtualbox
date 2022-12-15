@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ConsoleImplTeleporter.cpp 97815 2022-12-15 19:39:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -1368,7 +1368,8 @@ Console::i_teleporterTrgServeConnection(RTSOCKET hSocket, void *pvUser)
             void *pvUser2 = static_cast<void *>(static_cast<TeleporterState *>(pState));
             vrc = pState->mpVMM->pfnVMR3LoadFromStream(pState->mpUVM,
                                                        &g_teleporterTcpOps, pvUser2,
-                                                       teleporterProgressCallback, pvUser2);
+                                                       teleporterProgressCallback, pvUser2,
+                                                       true /*fTeleporting*/);
 
             RTSocketRelease(pState->mhSocket);
             vrc2 = pState->mpVMM->pfnVMR3AtErrorDeregister(pState->mpUVM, Console::i_genericVMSetErrorCallback, &pState->mErrorText);
