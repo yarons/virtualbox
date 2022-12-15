@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 97790 2022-12-13 13:06:03Z vadim.galitsyn@oracle.com $ */
+/* $Id: VMMDev.cpp 97816 2022-12-15 19:48:40Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3680,8 +3680,8 @@ static DECLCALLBACK(int) vmmdevIPort_SetAbsoluteMouse(PPDMIVMMDEVPORT pInterface
 
         pThis->xMouseAbs = xAbs;
         pThis->yMouseAbs = yAbs;
-        pThis->dzMouse = -dz; /* Inverted! */
-        pThis->dwMouse = -dw; /* Inverted! */
+        pThis->dzMouse = dz;
+        pThis->dwMouse = dw;
         pThis->fMouseButtons = fButtons;
 
         VMMDevNotifyGuest(pDevIns, pThis, pThisCC, VMMDEV_EVENT_MOUSE_POSITION_CHANGED);
