@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 97823 2022-12-16 12:57:06Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -103,6 +103,7 @@ ifndef VBOX_ONLY_VALIDATIONKIT
  	tstRTHeapSimple \
  	tstRTInlineAsm \
  	tstIprtList \
+ 	tstIprtMiniList \
  	tstIprtMiniString \
  	tstLdr \
  	tstLdrLoad \
@@ -455,6 +456,9 @@ tstRTInlineAsmPIC3_DEFS = PIC
 
 tstIprtList_TEMPLATE = VBOXR3TSTEXE
 tstIprtList_SOURCES = tstIprtList.cpp
+
+tstIprtMiniList_TEMPLATE = VBOXR3TSTEXE
+tstIprtMiniList_SOURCES = tstIprtMiniList.cpp
 
 tstIprtMiniString_TEMPLATE = VBOXR3TSTEXE
 tstIprtMiniString_SOURCES = tstIprtMiniString.cpp
