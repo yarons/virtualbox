@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 97826 2022-12-16 14:43:00Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 97827 2022-12-16 15:24:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -305,11 +305,11 @@ public:
         return strAtom;
     }
 
-    inline RTCString xAtomListToString(const VBoxDnDAtomList &formatList)
+    inline RTCString xAtomListToString(const VBoxDnDAtomList &formatList, const RTCString &strSep = DND_FORMATS_SEPARATOR_STR)
     {
         RTCString format;
         for (size_t i = 0; i < formatList.size(); ++i)
-            format += xAtomToString(formatList.at(i)) + "\r\n";
+            format += xAtomToString(formatList.at(i)) + strSep;
         return format;
     }
 
@@ -2252,7 +2252,7 @@ int DragInstance::ghIsDnDPending(void)
 
     int rc;
 
-    RTCString strFormats = "\r\n"; /** @todo If empty, IOCTL fails with VERR_ACCESS_DENIED. */
+    RTCString         strFormats       = DND_PATH_SEPARATOR_STR; /** @todo If empty, IOCTL fails with VERR_ACCESS_DENIED. */
     VBOXDNDACTION     dndActionDefault = VBOX_DND_ACTION_IGNORE;
     VBOXDNDACTIONLIST dndActionList    = VBOX_DND_ACTION_IGNORE;
 
@@ -3409,7 +3409,7 @@ int DragAndDropService::worker(bool volatile *pfShutdown)
                             if (pVbglR3Event->u.HG_Enter.cbFormats)
                             {
                                 RTCList<RTCString> lstFormats =
-                                    RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split("\r\n");
+                                    RTCString(pVbglR3Event->u.HG_Enter.pszFormats, pVbglR3Event->u.HG_Enter.cbFormats - 1).split(DND_PATH_SEPARATOR_STR);
                                 rc = m_pCurDnD->hgEnter(lstFormats, pVbglR3Event->u.HG_Enter.dndLstActionsAllowed);
                                 if (RT_FAILURE(rc))
                                     break;
