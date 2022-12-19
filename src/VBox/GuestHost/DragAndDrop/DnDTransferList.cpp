@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 97799 2022-12-13 17:26:12Z andreas.loeffler@oracle.com $ */
+/* $Id: DnDTransferList.cpp 97834 2022-12-19 17:05:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -1067,7 +1067,6 @@ int DnDTransferListGetRootsEx(PDNDTRANSFERLIST pList,
         {
             rc = RTStrCopy(szPath, sizeof(szPath), pcszPathRootTmp);
             AssertRCBreak(rc);
-            cchString += RTStrNLen(pcszPathRootTmp, RTPATH_MAX);
         }
 
         rc = RTPathAppend(szPath, sizeof(szPath), pRoot->pszPathRoot);
