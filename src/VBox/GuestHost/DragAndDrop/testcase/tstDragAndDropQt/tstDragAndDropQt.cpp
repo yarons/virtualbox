@@ -1,4 +1,4 @@
-/* $Id: tstDragAndDropQt.cpp 97845 2022-12-20 13:32:29Z andreas.loeffler@oracle.com $ */
+/* $Id: tstDragAndDropQt.cpp 97848 2022-12-20 15:12:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Drag and drop Qt code test cases.
  */
@@ -25,10 +25,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <QApplication>
-#include <QMainWindow>
-#include <QTextEdit>
-#include <QHBoxLayout>
 #include <QtWidgets>
 
 class DnDWin : public QWidget
