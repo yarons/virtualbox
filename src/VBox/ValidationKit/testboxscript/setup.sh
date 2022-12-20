@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: setup.sh 97840 2022-12-20 11:39:29Z alexander.eichner@oracle.com $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
@@ -150,6 +150,9 @@ get_host_arch() {
             ;;
         arm|armv4l|armv5tel|armv5tejl)
             RETVAL='arm'
+            ;;
+        arm64|aarch64)
+            RETVAL='arm64'
             ;;
         alpha)
             RETVAL='alpha'
@@ -621,7 +624,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 96407 $'
+            echo '$Revision: 97840 $'
             exit 0;
             ;;
 
@@ -666,7 +669,7 @@ if [ -z "${TESTBOXSCRIPT_PYTHON}" ]; then
     set +e
     MY_PYTHON_VER_TEST="\
 import sys;\
-x = sys.version_info[0] == 2 and (sys.version_info[1] >= 6 or (sys.version_info[1] == 5 and sys.version_info[2] >= 1));\
+x = sys.version_info[0] == 3 or (sys.version_info[0] == 2 and (sys.version_info[1] >= 6 or (sys.version_info[1] == 5 and sys.version_info[2] >= 1)));\
 sys.exit(not x);\
 ";
     for python in python2.7 python2.6 python2.5 python;
