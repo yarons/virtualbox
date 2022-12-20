@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UITabBar.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -123,7 +123,7 @@ protected:
     /** Handles mouse-move @a pEvent. */
     virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     /** Handles mouse-enter @a pEvent. */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
     virtual void enterEvent(QEnterEvent *pEvent) RT_OVERRIDE;
 #else
     virtual void enterEvent(QEvent *pEvent) RT_OVERRIDE;
@@ -588,7 +588,7 @@ void UITabBarItem::mouseMoveEvent(QMouseEvent *pEvent)
     pDrag->exec();
 }
 
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
 void UITabBarItem::enterEvent(QEnterEvent *pEvent)
 #else
 void UITabBarItem::enterEvent(QEvent *pEvent)

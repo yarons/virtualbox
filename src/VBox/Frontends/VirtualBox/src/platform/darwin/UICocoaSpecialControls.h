@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UICocoaSpecialControls.h 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls class declaration.
  */
@@ -34,7 +34,7 @@
 
 /* Qt includes: */
 #include <QWidget>
-#ifndef VBOX_IS_QT6_OR_LATER
+#ifndef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
 # include <QMacCocoaViewContainer>
 #endif
 
@@ -48,7 +48,7 @@ ADD_COCOA_NATIVE_REF(NSButton);
 /** QMacCocoaViewContainer extension,
   * used as cocoa button container. */
 class SHARED_LIBRARY_STUFF UICocoaButton
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
     : public QWidget
 #else
     : public QMacCocoaViewContainer

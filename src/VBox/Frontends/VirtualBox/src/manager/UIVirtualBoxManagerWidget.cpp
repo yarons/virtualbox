@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 97278 2022-10-24 13:46:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -52,7 +52,7 @@
 # include "UIMenuBar.h"
 #endif
 #ifdef VBOX_WS_MAC
-# ifdef VBOX_IS_QT6_OR_LATER
+# ifdef VBOX_IS_QT6_OR_LATER /* we are branding as Dev Preview since 6.0 */
 #  include "UIIconPool.h"
 # endif
 #endif
@@ -642,14 +642,14 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pToolBar->setUseTextLabels(true);
 #ifdef VBOX_WS_MAC
                         m_pToolBar->emulateMacToolbar();
-# ifdef VBOX_IS_QT6_OR_LATER
+# ifdef VBOX_IS_QT6_OR_LATER /* we are branding as Dev Preview since 6.0 */
                         /* Branding stuff for Qt6 beta: */
                         if (uiCommon().showBetaLabel())
                             m_pToolBar->enableBranding(UIIconPool::iconSet(":/explosion_hazard_32px.png"),
                                                        "Dev Preview", // do we need to make it NLS?
                                                        QColor(246, 179, 0),
                                                        74 /* width of BETA label */);
-# endif /* VBOX_IS_QT6_OR_LATER */
+# endif
 #endif /* VBOX_WS_MAC */
 
                         /* Add toolbar into layout: */

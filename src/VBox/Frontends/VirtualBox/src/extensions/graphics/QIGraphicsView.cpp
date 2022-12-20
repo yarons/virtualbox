@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: QIGraphicsView.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class implementation.
  */
@@ -56,7 +56,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
 #else
             if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)
@@ -77,7 +77,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
 #else
             if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)
@@ -104,7 +104,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
 #else
             if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)

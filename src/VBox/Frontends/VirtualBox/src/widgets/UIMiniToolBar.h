@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 97847 2022-12-20 14:59:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolBar.h 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -126,7 +126,7 @@ protected:
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
     /** Mouse enter @a pEvent handler. */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
     virtual void enterEvent(QEnterEvent *pEvent) RT_OVERRIDE;
 #else
     virtual void enterEvent(QEvent *pEvent) RT_OVERRIDE;

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -285,7 +285,7 @@ bool UISession::powerUp()
     }
     else
     {
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /** @todo why is this any problem on qt6? */
         msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png", 0, 0);
 #else
         msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png");

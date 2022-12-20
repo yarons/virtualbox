@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 97606 2022-11-18 10:52:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -751,7 +751,7 @@ void UIChooserAbstractModel::sltLocalMachineGroupsChanged(const QUuid &uMachineI
     //       newGroupList.join(", ").toUtf8().constData());
 
     /* Re-register VM if required: */
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* we have to use range constructors since 6.0 */
     QSet<QString> newGroupSet(newGroupList.begin(), newGroupList.end());
     QSet<QString> oldGroupSet(oldGroupList.begin(), oldGroupList.end());
     if (newGroupSet != oldGroupSet)

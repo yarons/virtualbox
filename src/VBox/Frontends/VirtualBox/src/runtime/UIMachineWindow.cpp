@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -336,7 +336,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
     /* Make sure machine is in one of the allowed states: */
     if (!uisession()->isRunning() && !uisession()->isPaused() && !uisession()->isStuck())
     {
-#if defined(VBOX_IS_QT6_OR_LATER) && defined(VBOX_WS_MAC)
+#if defined(VBOX_IS_QT6_OR_LATER) && defined(VBOX_WS_MAC) /** @todo qt6 ... */
         /* If we want to close the application, we need to accept the close event.
            If we don't the QEvent::Quit processing in QApplication::event fails and
            [QCocoaApplicationDelegate applicationShouldTerminate] complains printing

@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIDesktopServices_x11.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to X11..
  */
@@ -44,7 +44,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
     {
         const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/" + VBOX_GUI_VMRUNNER_IMAGE);
         QTextStream out(&link);
-#ifndef VBOX_IS_QT6_OR_LATER /* defaults to UTF-8 in qt6 */
+#ifndef VBOX_IS_QT6_OR_LATER /* QTextStream defaults to UTF-8 only since qt6 */
         out.setCodec("UTF-8");
 #endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)

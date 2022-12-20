@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 97679 2022-11-25 10:04:21Z sergey.dubov@oracle.com $ */
+/* $Id: QIComboBox.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -407,7 +407,7 @@ void QIComboBox::prepare()
             setFocusProxy(m_pComboBox);
             connect(m_pComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
                     this, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated));
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: textActivated was added in 5.14 actually */
+#ifdef VBOX_IS_QT6_OR_LATER /* textActivated was added in 5.14 actually */
             connect(m_pComboBox, &QComboBox::textActivated,
                     this, &QIComboBox::textActivated);
 #else
@@ -418,7 +418,7 @@ void QIComboBox::prepare()
                     this, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged));
             connect(m_pComboBox, &QComboBox::currentTextChanged, this, &QIComboBox::currentTextChanged);
             connect(m_pComboBox, &QComboBox::editTextChanged, this, &QIComboBox::editTextChanged);
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: textHighlighted was added in 5.14 actually */
+#ifdef VBOX_IS_QT6_OR_LATER /* textHighlighted was added in 5.14 actually */
             connect(m_pComboBox, &QComboBox::textHighlighted,
                     this, &QIComboBox::textHighlighted);
 #else

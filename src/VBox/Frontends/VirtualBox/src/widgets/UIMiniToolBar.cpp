@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 97847 2022-12-20 14:59:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -709,7 +709,7 @@ void UIMiniToolBar::resizeEvent(QResizeEvent*)
     adjustGeometry();
 }
 
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
 void UIMiniToolBar::enterEvent(QEnterEvent*)
 #else
 void UIMiniToolBar::enterEvent(QEvent*)

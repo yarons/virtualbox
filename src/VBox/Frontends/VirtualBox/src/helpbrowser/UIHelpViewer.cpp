@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -463,7 +463,7 @@ void UIHelpViewer::emitHistoryChangedSignal()
     emit backwardAvailable(true);
 }
 
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* it was setSource before 6.0 */
 void UIHelpViewer::doSetSource(const QUrl &url, QTextDocument::ResourceType type)
 #else
 void UIHelpViewer::setSource(const QUrl &url)
@@ -472,7 +472,7 @@ void UIHelpViewer::setSource(const QUrl &url)
     clearOverlay();
     if (url.scheme() != "qthelp")
         return;
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* it was setSource before 6.0 */
     QTextBrowser::doSetSource(url, type);
 #else
     QTextBrowser::setSource(url);

@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 97771 2022-12-09 12:23:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -785,7 +785,7 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                         m_iLastMouseWheelDelta = m_iLastMouseWheelDelta % 120;
                     }
                     if (mouseEvent(pWheelEvent->type(), uScreenId,
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
+#ifdef VBOX_IS_QT6_OR_LATER
                                    pWheelEvent->position().toPoint(), pWheelEvent->globalPosition().toPoint(),
 #else
                                    pWheelEvent->pos(), pWheelEvent->globalPos(),
@@ -1212,7 +1212,7 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
 
     LONG xShift = 0, yShift = 0;
 
-#ifdef VBOX_IS_QT6_OR_LATER
+#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
     bool fTouchScreen = (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen);
 #else
     bool fTouchScreen = (pTouchEvent->device()->type() == QTouchDevice::TouchScreen);
