@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 97851 2022-12-21 09:56:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -774,7 +774,6 @@ static RTEXITCODE autostartSvcWinCreate(int argc, char **argv)
             com::Bstr bstrCmdLine(sCmdLine);
             com::Bstr bstrUserFullName(sUserFullName);
             com::Bstr bstrPwd(strPwd);
-            com::Bstr bstrDependencies("Winmgmt\0RpcSs\0\0");
 
             SC_HANDLE hSvc = CreateServiceW(hSCM,                            /* hSCManager */
                                             bstrServiceName.raw(),           /* lpServiceName */
@@ -786,7 +785,7 @@ static RTEXITCODE autostartSvcWinCreate(int argc, char **argv)
                                             bstrCmdLine.raw(),               /* lpBinaryPathName */
                                             NULL,                            /* lpLoadOrderGroup */
                                             NULL,                            /* lpdwTagId */
-                                            bstrDependencies.raw(),          /* lpDependencies */
+                                            L"Winmgmt\0RpcSs\0\0",           /* lpDependencies */
                                             bstrUserFullName.raw(),          /* lpServiceStartName (NULL => LocalSystem) */
                                             bstrPwd.raw());                  /* lpPassword */
             if (hSvc)
