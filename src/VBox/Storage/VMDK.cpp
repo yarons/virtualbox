@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 97854 2022-12-22 19:30:51Z jack.doherty@oracle.com $ */
+/* $Id: VMDK.cpp 97855 2022-12-22 19:34:16Z jack.doherty@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -8377,7 +8377,8 @@ static uint64_t vmdkGetNewOverhead(PVMDKEXTENT pExtent, uint64_t cSectorsNew)
  *
  * @returns VBox status code.
  * @param   pImage              VMDK image instance.
- * @param   uLine                Line number of descriptor to change.
+ * @param   pExtent             VMDK extent instance.
+ * @param   uLine               Line number of descriptor to change.
  * @param   cSectorsOld         Existing number of sectors.
  * @param   cSectorsNew         New number of sectors.
  */
