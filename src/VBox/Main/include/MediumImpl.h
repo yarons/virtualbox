@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 97864 2022-12-23 21:25:48Z jack.doherty@oracle.com $ */
+/* $Id: MediumImpl.h 97865 2022-12-23 21:36:09Z jack.doherty@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -316,11 +316,6 @@ private:
                     const std::vector<MediumVariant_T> &aVariant,
                     const ComPtr<IMedium> &aParent,
                     ComPtr<IProgress> &aProgress);
-    HRESULT resizeAndCloneTo(const ComPtr<IMedium> &aTarget,
-                             const LONG64 aLogicalSize,
-                             const std::vector<MediumVariant_T> &aVariant,
-                             const ComPtr<IMedium> &aParent,
-                             ComPtr<IProgress> &aProgress);
     HRESULT cloneToBase(const ComPtr<IMedium> &aTarget,
                         const std::vector<MediumVariant_T> &aVariant,
                         ComPtr<IProgress> &aProgress);
