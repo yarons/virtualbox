@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 97858 2022-12-23 14:38:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 97859 2022-12-23 14:44:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -788,10 +788,11 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                                    uScreenId,
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
                                    pWheelEvent->position().toPoint(),
+                                   pWheelEvent->globalPosition().toPoint(),
 #else
                                    pWheelEvent->pos(),
+                                   pWheelEvent->globalPos(),
 #endif
-                                   pWheelEvent->globalPosition().toPoint(),
 #ifdef VBOX_WS_MAC
                                    // WORKAROUND:
                                    // Qt Cocoa is buggy. It always reports a left button pressed when the
