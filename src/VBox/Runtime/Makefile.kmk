@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97778 2022-12-12 13:50:01Z brent.paulson@oracle.com $
+# $Id: Makefile.kmk 97862 2022-12-23 16:55:57Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2134,7 +2134,8 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	common/compiler/vcc/guard-vcc.asm \
   	common/compiler/vcc/stack-vcc.asm \
   	common/compiler/vcc/ftol2-vcc.asm \
-  	common/compiler/vcc/except-x86-vcc.cpp
+  	common/compiler/vcc/except-x86-vcc.cpp \
+  	common/compiler/vcc/except-x86-vcc-asm.asm
   RuntimeR3_VBOX_NOCRT_ALIASES.win := \
   	strtok_s=nocrt_strtok_r _strtok_s=nocrt_strtok_r nocrt_strtok_s=nocrt_strtok_r \
        $(foreach fn, atan atan2 cos ceil exp fabs floor ldexp log lrint llrint remainder sin tan \
