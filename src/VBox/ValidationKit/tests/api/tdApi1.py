@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdApi1.py 97864 2022-12-23 21:25:48Z jack.doherty@oracle.com $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 97864 $"
 
 
 # Standard Python imports.
@@ -94,6 +94,6 @@ if __name__ == '__main__':
     from tdMoveMedium1   import SubTstDrvMoveMedium1; # pylint: disable=relative-import
     from tdTreeDepth1    import SubTstDrvTreeDepth1;  # pylint: disable=relative-import
     from tdMoveVm1       import SubTstDrvMoveVm1;     # pylint: disable=relative-import
+    from tdCloneMedium1  import SubTstDrvCloneMedium1;# pylint: disable=relative-import
     sys.exit(tdApi1([SubTstDrvPython1, SubTstDrvAppliance1, SubTstDrvMoveMedium1,
-                     SubTstDrvTreeDepth1, SubTstDrvMoveVm1]).main(sys.argv))
-
+                     SubTstDrvTreeDepth1, SubTstDrvMoveVm1, SubTstDrvCloneMedium1]).main(sys.argv))
