@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxUtils-x11.h 97867 2022-12-26 12:49:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -96,15 +96,6 @@ namespace NativeWindowSubsystem
     bool X11IsCompositingManagerRunning();
     /** X11: Determines and returns current Window Manager type. */
     X11WMType X11WindowManagerType();
-
-#if 0 // unused for now?
-    /** X11: Inits the screen saver save/restore mechanism. */
-    SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsInit();
-    /** X11: Saves screen saver settings. */
-    SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsSave();
-    /** X11: Restores previously saved screen saver settings. */
-    SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsRestore();
-#endif // unused for now?
 
     /** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
     bool X11CheckExtension(const char *extensionName);
