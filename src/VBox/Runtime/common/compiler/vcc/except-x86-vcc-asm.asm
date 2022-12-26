@@ -1,4 +1,4 @@
-; $Id: except-x86-vcc-asm.asm 97862 2022-12-23 16:55:57Z knut.osmundsen@oracle.com $
+; $Id: except-x86-vcc-asm.asm 97866 2022-12-26 02:14:08Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Visual C++ Compiler - x86 Exception Handler Support Code.
 ;
@@ -85,9 +85,19 @@ endstruc
 ;*********************************************************************************************************************************
 BEGINCODE
 extern IMPNAME(RtlUnwind@16)
+extern _rtVccEh4DoLocalUnwindHandler@16
 
 
+;*********************************************************************************************************************************
+;*  Global Variables                                                                                                             *
+;*********************************************************************************************************************************
 
+;; Delcare rtVccEh4DoLocalUnwindHandler() in except-x86.cpp as a save exception handler.
+; This adds the symbol table number of the exception handler to the special .sxdata section.
+safeseh _rtVccEh4DoLocalUnwindHandler@16
+
+
+BEGINCODE
 ;;
 ; Calls the filter sub-function for a __finally statement.
 ;

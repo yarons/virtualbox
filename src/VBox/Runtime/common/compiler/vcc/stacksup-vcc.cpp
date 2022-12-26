@@ -1,4 +1,4 @@
-/* $Id: stacksup-vcc.cpp 96580 2022-09-02 12:22:45Z knut.osmundsen@oracle.com $ */
+/* $Id: stacksup-vcc.cpp 97866 2022-12-26 02:14:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - Stack Checking C/C++ Support.
  */
@@ -326,5 +326,46 @@ extern "C" void __cdecl _RTC_UninitUse(const char *pszVar)
 # endif
         RT_BREAKPOINT();
 #endif
+}
+
+
+void rtVccCheckContextFailed(PCONTEXT pCpuCtx)
+{
+#ifdef IPRT_NOCRT_WITHOUT_FATAL_WRITE
+    RTAssertMsg2("\n\n!!Context (stack) check failed!!\n\n"
+                 "PC=%p SP=%p BP=%p\n",
+# ifdef RT_ARCH_AMD64
+                 pCpuCtx->Rip, pCpuCtx->Rsp, pCpuCtx->Rbp
+# elif defined(RT_ARCH_X86)
+                 pCpuCtx->Eip, pCpuCtx->Esp, pCpuCtx->Ebp
+# else
+#  error "unsupported arch"
+# endif
+                 );
+#else
+    rtNoCrtFatalWriteBegin(RT_STR_TUPLE("\r\n\r\n!!Context (stack) check failed!!\r\n\r\n"
+                                       "PC="));
+# ifdef RT_ARCH_AMD64
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Rip);
+# elif defined(RT_ARCH_X86)
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Eip);
+# else
+#  error "unsupported arch"
+# endif
+    rtNoCrtFatalWrite(RT_STR_TUPLE(" SP="));
+# ifdef RT_ARCH_AMD64
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Rsp);
+# elif defined(RT_ARCH_X86)
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Esp);
+# endif
+    rtNoCrtFatalWrite(RT_STR_TUPLE(" BP="));
+# ifdef RT_ARCH_AMD64
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Rbp);
+# elif defined(RT_ARCH_X86)
+    rtNoCrtFatalWritePtr((void *)pCpuCtx->Ebp);
+# endif
+    rtNoCrtFatalWriteEnd(RT_STR_TUPLE("\r\n"));
+#endif
+    rtVccFatalSecurityErrorWithCtx(FAST_FAIL_INVALID_SET_OF_CONTEXT, pCpuCtx);
 }
 
