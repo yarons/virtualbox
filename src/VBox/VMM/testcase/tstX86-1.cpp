@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: tstX86-1.cpp 97876 2022-12-27 22:08:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -205,10 +205,13 @@ int main()
     g_pbEfPage = (uint8_t *)RTTestGuardedAllocTail(hTest, HOST_PAGE_SIZE);
     RTTESTI_CHECK(g_pbEfPage != NULL);
 
-    g_pbEfExecPage = (uint8_t *)RTMemExecAlloc(HOST_PAGE_SIZE*2);
+    g_pbEfExecPage = (uint8_t *)RTMemPageAllocZ(HOST_PAGE_SIZE*2);
     RTTESTI_CHECK(g_pbEfExecPage != NULL);
     RTTESTI_CHECK(!((uintptr_t)g_pbEfExecPage & HOST_PAGE_OFFSET_MASK));
-    RTTESTI_CHECK_RC(RTMemProtect(g_pbEfExecPage + HOST_PAGE_SIZE, HOST_PAGE_SIZE, RTMEM_PROT_NONE), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTMemProtect(&g_pbEfExecPage[0], HOST_PAGE_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE | RTMEM_PROT_EXEC),
+                     VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTMemProtect(&g_pbEfExecPage[HOST_PAGE_SIZE], HOST_PAGE_SIZE, RTMEM_PROT_NONE),
+                     VINF_SUCCESS);
 
 #ifdef USE_SIGNAL
     static int const s_aiSigs[] = { SIGBUS, SIGSEGV, SIGFPE, SIGILL };
