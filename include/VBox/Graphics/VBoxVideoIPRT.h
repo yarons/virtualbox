@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 97879 2022-12-28 01:24:06Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoIPRT.h 97886 2022-12-28 12:42:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
@@ -40,10 +40,10 @@
 # pragma once
 #endif
 
-#if !defined(RT_OS_OS2) || defined(__GNUC__)
+#if !defined(RT_OS_OS2) || !defined(__IBMC__) /* IBM VACpp 3.08 doesn't properly eliminate unused inline functions */
 # include <iprt/asm.h>
+# include <iprt/string.h>
 #endif
-#include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/cdefs.h>
 #include <iprt/err.h>
