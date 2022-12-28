@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxTpG.cpp 97882 2022-12-28 01:27:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -173,8 +173,8 @@ static const char           g_szAssemblerFmtVal32[]     = "macho32";
 static const char           g_szAssemblerFmtVal64[]     = "macho64";
 static const char           g_szAssemblerOsDef[]        = "RT_OS_DARWIN";
 #elif defined(RT_OS_OS2)
-static const char          *pszAssembler                = "nasm.exe";
-static const char          *pszAssemblerFmtOpt          = "-f";
+static const char          *g_pszAssembler              = "nasm.exe";
+static const char          *g_pszAssemblerFmtOpt        = "-f";
 static const char           g_szAssemblerFmtVal32[]     = "obj";
 static const char           g_szAssemblerFmtVal64[]     = "elf64";
 static const char           g_szAssemblerOsDef[]        = "RT_OS_OS2";
@@ -454,7 +454,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ \n"
+                    "; $Id: VBoxTpG.cpp 97882 2022-12-28 01:27:08Z knut.osmundsen@oracle.com $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -978,7 +978,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 97882 2022-12-28 01:27:08Z knut.osmundsen@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1186,7 +1186,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 97882 2022-12-28 01:27:08Z knut.osmundsen@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2514,7 +2514,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 96407 $";
+                static const char s_szRev[] = "$Revision: 97882 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
