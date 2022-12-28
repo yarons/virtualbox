@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.cpp 97867 2022-12-26 12:49:40Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-x11.cpp 97888 2022-12-28 12:52:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -612,10 +612,10 @@ void NativeWindowSubsystem::X11SetXwaylandMayGrabKeyboardFlag(QWidget *pWidget)
                         "_XWAYLAND_MAY_GRAB_KEYBOARD", 1);
 }
 
-Display *NativeWindowSubsystem::X11GetDisplay(void)
+Display *NativeWindowSubsystem::X11GetDisplay()
 {
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
-    Display *pDisplay = nullptr;
+#ifdef VBOX_IS_QT6_OR_LATER /** QX11Info is replaced with QNativeInterface::QX11Application since qt6 */
+    Display *pDisplay = 0;
     if (qApp)
     {
         QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
@@ -629,31 +629,32 @@ Display *NativeWindowSubsystem::X11GetDisplay(void)
     return pDisplay;
 }
 
-xcb_connection_t *NativeWindowSubsystem::X11GetConnection(void)
+xcb_connection_t *NativeWindowSubsystem::X11GetConnection()
 {
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
+#ifdef VBOX_IS_QT6_OR_LATER /** QX11Info is replaced with QNativeInterface::QX11Application since qt6 */
+    xcb_connection_t *pConnection = 0;
     if (qApp)
     {
         QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
         if (pX11App)
-            return pX11App->connection();
+            pConnection = pX11App->connection();
     }
-    return NULL;
 #else
-    return QX11Info::connection();
+    xcb_connection_t *pConnection = QX11Info::connection();
 #endif
+    Assert(pConnection);
+    return pConnection;
 }
 
-uint32_t NativeWindowSubsystem::X11GetAppRootWindow(void)
+uint32_t NativeWindowSubsystem::X11GetAppRootWindow()
 {
-#ifdef VBOX_IS_QT6_OR_LATER /** @todo qt6: ... */
+#ifdef VBOX_IS_QT6_OR_LATER /** QX11Info is replaced with QNativeInterface::QX11Application since qt6 */
     Window idWindow = 0;
     Display *pDisplay = NativeWindowSubsystem::X11GetDisplay();
     if (pDisplay)
-        idWindow = DefaultRootWindow(pDisplay); /** @todo qt6: ?? */
+        idWindow = DefaultRootWindow(pDisplay);
     return idWindow;
 #else
     return QX11Info::appRootWindow();
 #endif
 }
-
