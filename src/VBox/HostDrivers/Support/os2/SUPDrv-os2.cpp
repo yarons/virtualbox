@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-os2.cpp 97883 2022-12-28 01:27:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -299,6 +299,7 @@ DECLASM(int) VBoxDrvIOCtl(uint16_t sfn, uint8_t iCat, uint8_t iFunction, void *p
     /*
      * Verify the category and dispatch the IOCtl.
      */
+    int rc;
     if (RT_LIKELY(iCat == SUP_CTL_CATEGORY))
     {
         Log(("VBoxDrvIOCtl: pSession=%p iFunction=%#x pvParm=%p pvData=%p *pcbParm=%d *pcbData=%d\n", pSession, iFunction, pvParm, pvData, *pcbParm, *pcbData));
@@ -311,7 +312,7 @@ DECLASM(int) VBoxDrvIOCtl(uint16_t sfn, uint8_t iCat, uint8_t iFunction, void *p
         PSUPREQHDR pHdr = (PSUPREQHDR)pvParm;
         AssertReturn(*pcbParm == sizeof(*pHdr), VERR_INVALID_PARAMETER);
         KernVMLock_t Lock;
-        int rc = KernVMLock(VMDHL_WRITE, pHdr, *pcbParm, &Lock, (KernPageList_t *)-1, NULL);
+        rc = KernVMLock(VMDHL_WRITE, pHdr, *pcbParm, &Lock, (KernPageList_t *)-1, NULL);
         AssertMsgReturn(!rc, ("KernVMLock(VMDHL_WRITE, %p, %#x, &p, NULL, NULL) -> %d\n", pHdr, *pcbParm, &Lock, rc), VERR_LOCK_FAILED);
 
         /*
@@ -357,7 +358,7 @@ DECLASM(int) VBoxDrvIOCtl(uint16_t sfn, uint8_t iCat, uint8_t iFunction, void *p
          * Unlock and return.
          */
         int rc2 = KernVMUnlock(&Lock);
-        AssertMsg(!rc2, ("rc2=%d\n", rc2)); NOREF(rc2);s
+        AssertMsg(!rc2, ("rc2=%d\n", rc2)); NOREF(rc2);
     }
     else
         rc = VERR_NOT_SUPPORTED;
@@ -419,7 +420,6 @@ bool VBOXCALL  supdrvOSAreCpusOfflinedOnSuspend(void)
 
 bool VBOXCALL  supdrvOSAreTscDeltasInSync(void)
 {
-    NOREF(pDevExt);
     return false;
 }
 
