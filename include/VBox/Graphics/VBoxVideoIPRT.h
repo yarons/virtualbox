@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxVideoIPRT.h 97879 2022-12-28 01:24:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
@@ -40,10 +40,10 @@
 # pragma once
 #endif
 
-#ifndef RT_OS_OS2
+#if !defined(RT_OS_OS2) || defined(__GNUC__)
 # include <iprt/asm.h>
-# include <iprt/string.h>
 #endif
+#include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/cdefs.h>
 #include <iprt/err.h>
@@ -52,7 +52,7 @@
 #include <iprt/stdint.h>
 #include <iprt/types.h>
 
-#if !defined VBOX_XPDM_MINIPORT && !defined RT_OS_OS2 && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
+#if !defined(VBOX_XPDM_MINIPORT) && !defined(RT_OS_OS2) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
 # include <iprt/asm-amd64-x86.h>
 #endif
 
