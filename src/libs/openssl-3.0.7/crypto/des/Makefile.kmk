@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97371 2022-11-02 07:17:46Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 97877 2022-12-28 01:12:18Z knut.osmundsen@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -42,7 +42,6 @@ crypto_des_SOURCES = \
 	ecb_enc.c \
 	fcrypt.c \
 	fcrypt_b.c \
-	ncbc_enc.c \
 	ofb64ede.c \
 	ofb64enc.c \
 	ofb_enc.c \
