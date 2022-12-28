@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 97884 2022-12-28 01:28:15Z knut.osmundsen@oracle.com $
+; $Id: tstDisasm-1A.asm 97885 2022-12-28 01:39:25Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -139,9 +139,9 @@ BEGINPROC   TestProc32
         pfmax       mm3, qword [es:esi+000101010h]
         pfmin       mm1, qword [es:esi+000101010h]
         pfmul       mm5, qword [es:esi+000101000h]
-%ifndef RT_OS_OS2 ; nasm objects to this        
+%ifndef RT_OS_OS2 ; nasm objects to this
         pmulhrwa    mm3, qword [es:eax+0ffffffffh]
-%endif        
+%endif
         pfnacc      mm4, qword [es:ebx+000101010h]
         pfpnacc     mm3, qword [es:edx+000102900h]
         pfrcp       mm0, qword [es:ecx+000101020h]
@@ -244,19 +244,19 @@ BEGINPROC   TestProc32
 %ifndef RT_OS_OS2
         blsr eax, ebx
         blsi eax, [ebx]
-%endif        
+%endif
         db 0c4h, 0e2h, 0f8h, 0f3h, 01bh ;  blsi rax, dword [ebx] - but VEX.W=1 is ignored, so same as previous
 %ifndef RT_OS_OS2
         blsmsk eax, [ebx+edi*2]
         shlx eax, ebx, ecx
-%endif        
+%endif
 
         pmovmskb eax, mm2
         pmovmskb eax, xmm3
         vpmovmskb eax, xmm3
-%ifndef RT_OS_OS2        
+%ifndef RT_OS_OS2
         vpmovmskb eax, ymm3
-%endif        
+%endif
 
 ENDPROC   TestProc32
 
