@@ -1,4 +1,4 @@
-/* $Id: allocex.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: allocex.cpp 97904 2022-12-29 18:14:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -91,9 +91,19 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
     }
     else if (fFlags & RTMEMALLOCEX_FLAGS_EXEC)
     {
-        pv = RTMemExecAlloc(cbAligned + sizeof(RTMEMHDRR3));
-        if ((fFlags & RTMEMALLOCEX_FLAGS_ZEROED) && pv)
-            RT_BZERO(pv, cbAligned + sizeof(RTMEMHDRR3));
+        pv = RTMemPageAlloc(cbAligned + sizeof(RTMEMHDRR3));
+        if (pv)
+        {
+            if (fFlags & RTMEMALLOCEX_FLAGS_ZEROED)
+                RT_BZERO(pv, cbAligned + sizeof(RTMEMHDRR3));
+
+            int rc = RTMemProtect(pv, cbAligned + sizeof(RTMEMHDRR3), RTMEM_PROT_EXEC | RTMEM_PROT_READ | RTMEM_PROT_WRITE);
+            if (RT_FAILURE(rc))
+            {
+                RTMemPageFree(pv, cbAligned + sizeof(RTMEMHDRR3));
+                return rc;
+            }
+        }
     }
     else if (fFlags & RTMEMALLOCEX_FLAGS_ZEROED)
         pv = RTMemAllocZ(cbAligned + sizeof(RTMEMHDRR3));
@@ -131,7 +141,10 @@ RTDECL(void) RTMemFreeEx(void *pv, size_t cb) RT_NO_THROW_DEF
     if (pHdr->fFlags & (RTMEMALLOCEX_FLAGS_16BIT_REACH | RTMEMALLOCEX_FLAGS_32BIT_REACH))
         rtMemFreeExYyBitReach(pHdr, pHdr->cb + sizeof(*pHdr), pHdr->fFlags);
     else if (pHdr->fFlags & RTMEMALLOCEX_FLAGS_EXEC)
-        RTMemExecFree(pHdr, pHdr->cb + sizeof(*pHdr));
+    {
+        RTMemProtect(pHdr, pHdr->cb + sizeof(*pHdr), RTMEM_PROT_READ | RTMEM_PROT_WRITE);
+        RTMemPageFree(pHdr, pHdr->cb + sizeof(*pHdr));
+    }
     else
         RTMemFree(pHdr);
 }
