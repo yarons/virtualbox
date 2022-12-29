@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: alloc-r0drv-solaris.c 97900 2022-12-29 17:42:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -137,9 +137,8 @@ DECLHIDDEN(void) rtR0MemFree(PRTMEMHDR pHdr)
  * @param   uAlignment     Alignment.
  * @param   fContig        Whether the memory must be physically contiguous or
  *                         not.
- *
  * @returns Virtual address of allocated memory block or NULL if allocation
- *        failed.
+ *          failed.
  */
 DECLHIDDEN(void *) rtR0SolMemAlloc(uint64_t uPhysHi, uint64_t *puPhys, size_t cb, uint64_t uAlignment, bool fContig)
 {
@@ -177,8 +176,8 @@ DECLHIDDEN(void *) rtR0SolMemAlloc(uint64_t uPhysHi, uint64_t *puPhys, size_t cb
 /**
  * Frees memory allocated using rtR0SolMemAlloc().
  *
- * @param   pv         The memory to free.
- * @param   cb         Size of the memory block
+ * @param   pv          The memory to free.
+ * @param   cb          Size of the memory block
  */
 DECLHIDDEN(void) rtR0SolMemFree(void *pv, size_t cb)
 {
