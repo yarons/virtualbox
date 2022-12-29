@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 97805 2022-12-14 21:19:33Z klaus.espenlaub@oracle.com $ */
+/* $Id: USBDeviceFilterImpl.cpp 97889 2022-12-29 14:42:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -61,11 +61,7 @@ static void i_usbFilterFieldToString(PCUSBFILTER aFilter, USBFILTERIDX aIdx, Utf
         int value = USBFilterGetNum(aFilter, aIdx);
         Assert(value >= 0 && value <= 0xffff);
 
-        /* USBFILTERIDX_PORT is decimal, all others are hex (or need BCD coding). */
-        if (aIdx == USBFILTERIDX_PORT)
-            rstrOut = Utf8StrFmt("%RU16", (uint16_t)value);
-        else
-            rstrOut = Utf8StrFmt("%04RX16", (uint16_t)value);
+        rstrOut = Utf8StrFmt("%04RX16", (uint16_t)value);
     }
     else if (USBFilterIsMethodString(matchingMethod))
         rstrOut = USBFilterGetString(aFilter, aIdx);
@@ -119,11 +115,7 @@ const char* USBDeviceFilter::i_describeUSBFilterIdx(USBFILTERIDX aIdx)
             /* Is it a lonely number? */
             char *pszNext;
             uint64_t u64;
-            /* USBFILTERIDX_PORT is decimal, all others are hex (or need BCD coding). */
-            if (aIdx == USBFILTERIDX_PORT)
-                vrc = RTStrToUInt64Ex(pcszValue, &pszNext, 10, &u64);
-            else
-                vrc = RTStrToUInt64Ex(pcszValue, &pszNext, 16, &u64);
+            vrc = RTStrToUInt64Ex(pcszValue, &pszNext, 16, &u64);
             if (RT_SUCCESS(vrc))
                 pszNext = RTStrStripL(pszNext);
             if (    vrc == VINF_SUCCESS
