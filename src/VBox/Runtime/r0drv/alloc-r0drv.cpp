@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 97907 2022-12-29 18:33:45Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-r0drv.cpp 97909 2022-12-29 18:53:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -333,6 +333,7 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
     RT_ASSERT_PREEMPT_CPUID_VAR();
     if (!(fFlags & RTMEMALLOCEX_FLAGS_ANY_CTX_ALLOC))
         RT_ASSERT_INTS_ON();
+    AssertReturn(!(fFlags & RTMEMALLOCEX_FLAGS_EXEC), VERR_INVALID_FLAGS);
 
     /*
      * Fake up some alignment support.
@@ -347,8 +348,6 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
     AssertMsgReturn(!(fFlags & ~RTMEMALLOCEX_FLAGS_VALID_MASK_R0), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
     if (fFlags & RTMEMALLOCEX_FLAGS_ZEROED)
         fHdrFlags |= RTMEMHDR_FLAG_ZEROED;
-    if (fFlags & RTMEMALLOCEX_FLAGS_EXEC)
-        fHdrFlags |= RTMEMHDR_FLAG_EXEC;
     if (fFlags & RTMEMALLOCEX_FLAGS_ANY_CTX_ALLOC)
         fHdrFlags |= RTMEMHDR_FLAG_ANY_CTX_ALLOC;
     if (fFlags & RTMEMALLOCEX_FLAGS_ANY_CTX_FREE)
@@ -379,8 +378,6 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
         memcpy((uint8_t *)pv + cb, &g_abFence[0], RTR0MEM_FENCE_EXTRA);
 #endif
     }
-    else if (rc == VERR_NO_MEMORY && (fFlags & RTMEMALLOCEX_FLAGS_EXEC))
-        rc = VERR_NO_EXEC_MEMORY;
 
     RT_ASSERT_PREEMPT_CPUID();
     return rc;
