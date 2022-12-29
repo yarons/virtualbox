@@ -1,4 +1,4 @@
-/* $Id: initterm.h 96442 2022-08-23 14:12:35Z knut.osmundsen@oracle.com $ */
+/* $Id: initterm.h 97910 2022-12-29 19:15:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -57,11 +57,6 @@ DECLHIDDEN(int)  rtR0InitNative(void);
  * Platform specific termination.
  */
 DECLHIDDEN(void) rtR0TermNative(void);
-
-# ifdef RT_OS_LINUX
-/* in alloc-r0drv0-linux.c */
-DECLHIDDEN(void) rtR0MemExecCleanup(void);
-# endif
 
 #endif /* IN_RING0 */
 

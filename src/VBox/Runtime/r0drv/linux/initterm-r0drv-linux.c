@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: initterm-r0drv-linux.c 97910 2022-12-29 19:15:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -132,8 +132,6 @@ DECLHIDDEN(void) rtR0TermNative(void)
     destroy_workqueue(g_prtR0LnxWorkQueue);
     g_prtR0LnxWorkQueue = NULL;
 #endif
-
-    rtR0MemExecCleanup();
 
     IPRT_LINUX_RESTORE_EFL_AC();
 }
