@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 97873 2022-12-27 22:06:36Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvInternal.h 97902 2022-12-29 18:05:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -306,9 +306,7 @@
 
 /** Use the RTR0MemObj API rather than the RTMemExecAlloc for the images.
  * This is a good idea in general, but a necessity for @bugref{9801}. */
-#ifndef RT_OS_SOLARIS /** @todo add support for allocating executabe memory via RTR0MemObj */
-# define SUPDRV_USE_MEMOBJ_FOR_LDR_IMAGE
-#endif
+#define SUPDRV_USE_MEMOBJ_FOR_LDR_IMAGE
 
 #ifndef SUPR0_EXPORT_SYMBOL
 # define SUPR0_EXPORT_SYMBOL(a_Name) extern int g_supDrvExportSymbolDummyVariable
