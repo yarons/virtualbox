@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 97910 2022-12-29 19:15:56Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-r0drv-freebsd.c 97911 2022-12-29 22:45:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -71,7 +71,7 @@
 #include <iprt/mem.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/param.h>
 
 #include "r0drv/alloc-r0drv.h"
