@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: load.sh 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: load.sh 97898 2022-12-29 15:16:03Z knut.osmundsen@oracle.com $
 ## @file
 # For development.
 #
@@ -51,6 +51,7 @@ if [ ! -f "$DRVFILE.conf" ]; then
 fi
 
 SUDO=sudo
+hash "${SUDO}" 2> /dev/null || SUDO=pfexec
 #set -x
 
 # Disable the zone access service.
