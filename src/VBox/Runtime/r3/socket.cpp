@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 96475 2022-08-25 02:27:54Z knut.osmundsen@oracle.com $ */
+/* $Id: socket.cpp 97894 2022-12-29 15:07:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -57,6 +57,9 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <sys/uio.h>
+# ifndef AF_LOCAL
+#   define AF_LOCAL AF_UNIX
+# endif
 #endif /* !RT_OS_WINDOWS */
 #include <limits.h>
 
