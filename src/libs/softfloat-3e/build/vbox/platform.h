@@ -1,4 +1,4 @@
-/* $Id: platform.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: platform.h 97893 2022-12-29 15:06:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Platform Header for all VirtualBox targets.
  */
@@ -85,7 +85,7 @@ DECLINLINE(uint_fast8_t) softfloat_iprt_countLeadingZeros64(uint64_t uVal)
 # ifndef softfloat_countLeadingZeros16
 #  define SOFTFLOAT_BUILTIN_CLZ         1
 # endif
-# if ARCH_BITS > 32
+# if ARCH_BITS > 32 && defined(__SIZEOF_INT128__)
 #  define SOFTFLOAT_INTRINSIC_INT128    1
 # endif
 # include "opts-GCC.h"
