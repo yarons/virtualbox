@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 97872 2022-12-27 18:26:41Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-r0drv-linux.c 97905 2022-12-29 18:22:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -121,45 +121,6 @@ DECLHIDDEN(void) rtR0MemExecCleanup(void)
     g_HeapExecSpinlock = NIL_RTSPINLOCK;
 #endif
 }
-
-
-/**
- * Donate read+write+execute memory to the exec heap.
- *
- * This API is specific to AMD64 and Linux/GNU. A kernel module that desires to
- * use RTMemExecAlloc on AMD64 Linux/GNU will have to donate some statically
- * allocated memory in the module if it wishes for GCC generated code to work.
- * GCC can only generate modules that work in the address range ~2GB to ~0
- * currently.
- *
- * The API only accept one single donation.
- *
- * @returns IPRT status code.
- * @retval  VERR_NOT_SUPPORTED if the code isn't enabled.
- * @param   pvMemory    Pointer to the memory block.
- * @param   cb          The size of the memory block.
- */
-RTR0DECL(int) RTR0MemExecDonate(void *pvMemory, size_t cb)
-{
-#ifdef RTMEMALLOC_EXEC_HEAP
-    int rc;
-    AssertReturn(g_HeapExec == NIL_RTHEAPSIMPLE, VERR_WRONG_ORDER);
-
-    rc = RTSpinlockCreate(&g_HeapExecSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "RTR0MemExecDonate");
-    if (RT_SUCCESS(rc))
-    {
-        rc = RTHeapSimpleInit(&g_HeapExec, pvMemory, cb);
-        if (RT_FAILURE(rc))
-            rtR0MemExecCleanup();
-    }
-    return rc;
-#else
-    RT_NOREF_PV(pvMemory); RT_NOREF_PV(cb);
-    return VERR_NOT_SUPPORTED;
-#endif
-}
-RT_EXPORT_SYMBOL(RTR0MemExecDonate);
-
 
 
 #ifdef RTMEMALLOC_EXEC_VM_AREA
