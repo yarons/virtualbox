@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97916 2022-12-30 15:30:59Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 97917 2022-12-30 15:53:49Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library testcases.
 #
@@ -36,7 +36,7 @@
 
 SUB_DEPTH = ../../../../../../..
 include $(KBUILD_PATH)/subheader.kmk
-ifdef VBOX_WITH_TESTCASES
+if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_BUILD)
 
 #
 # Testcase for the physical heap.
@@ -47,7 +47,7 @@ tstVbglR0PhysHeap-1_SOURCES  = \
 	tstVbglR0PhysHeap-1.cpp
 
 
-endif
+endif # defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_BUILD)
 include $(FILE_KBUILD_SUB_FOOTER)
 
 
