@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR0LibInternal.h 97913 2022-12-30 02:22:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -104,10 +104,10 @@ int VBOXCALL vbglR0IdcNativeClose(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCDISCONNECT 
 # define VBGLDATA_USE_FAST_MUTEX
 #endif
 
-struct _VBGLPHYSHEAPBLOCK;
-typedef struct _VBGLPHYSHEAPBLOCK VBGLPHYSHEAPBLOCK;
+struct VBGLPHYSHEAPBLOCK;
+typedef struct VBGLPHYSHEAPBLOCK VBGLPHYSHEAPBLOCK;
 struct _VBGLPHYSHEAPCHUNK;
-typedef struct _VBGLPHYSHEAPCHUNK VBGLPHYSHEAPCHUNK;
+typedef struct VBGLPHYSHEAPCHUNK VBGLPHYSHEAPCHUNK;
 
 enum VbglLibStatus
 {
@@ -128,16 +128,14 @@ typedef struct VBGLDATA
 
     VMMDevMemory *pVMMDevMemory;
 
-    /**
-     * Physical memory heap data.
+    /** Physical memory heap data.
      * @{
      */
-
     VBGLPHYSHEAPBLOCK *pFreeBlocksHead;
     VBGLPHYSHEAPBLOCK *pAllocBlocksHead;
     VBGLPHYSHEAPCHUNK *pChunkHead;
 
-    RTSEMFASTMUTEX mutexHeap;
+    RTSEMFASTMUTEX     mutexHeap;
     /** @} */
 
     /**
