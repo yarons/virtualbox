@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97917 2022-12-30 15:53:49Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 97920 2022-12-30 17:04:15Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library testcases.
 #
@@ -49,5 +49,4 @@ tstVbglR0PhysHeap-1_SOURCES  = \
 
 endif # defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_BUILD)
 include $(FILE_KBUILD_SUB_FOOTER)
-
 
