@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 97913 2022-12-30 02:22:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibInternal.h 97921 2022-12-30 21:15:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -118,7 +118,7 @@ enum VbglLibStatus
 
 /**
  * Global VBGL ring-0 data.
- * Lives in VbglR0Init.cpp.
+ * Lives in VBoxGuestR0LibInit.cpp.
  */
 typedef struct VBGLDATA
 {
@@ -131,11 +131,13 @@ typedef struct VBGLDATA
     /** Physical memory heap data.
      * @{
      */
+    RTSEMFASTMUTEX     mutexHeap;
     VBGLPHYSHEAPBLOCK *pFreeBlocksHead;
     VBGLPHYSHEAPBLOCK *pAllocBlocksHead;
+    /** Indexed by VBGLPHYSHEAPBLOCK::fAllocated, so zero is the free ones and
+     *  one the allocated ones. */
+    int32_t            acBlocks[2];
     VBGLPHYSHEAPCHUNK *pChunkHead;
-
-    RTSEMFASTMUTEX     mutexHeap;
     /** @} */
 
     /**
