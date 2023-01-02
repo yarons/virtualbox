@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxsf 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: files_vboxsf 97945 2023-01-02 16:54:08Z knut.osmundsen@oracle.com $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -43,6 +43,7 @@ FILES_VBOXSF_NOBIN=" \
     ${PATH_ROOT}/include/iprt/log.h=>include/iprt/log.h \
     ${PATH_ROOT}/include/iprt/mangling.h=>include/iprt/mangling.h \
     ${PATH_ROOT}/include/iprt/mem.h=>include/iprt/mem.h \
+    ${PATH_ROOT}/include/iprt/memobj.h=>include/iprt/memobj.h \
     ${PATH_ROOT}/include/iprt/param.h=>include/iprt/param.h \
     ${PATH_ROOT}/include/iprt/path.h=>include/iprt/path.h \
     ${PATH_ROOT}/include/iprt/semaphore.h=>include/iprt/semaphore.h \
