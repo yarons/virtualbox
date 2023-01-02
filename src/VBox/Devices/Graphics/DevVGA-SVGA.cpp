@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 97697 2022-11-29 07:02:14Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 97944 2023-01-02 16:51:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1644,13 +1644,12 @@ int vmsvgaR3ChangeMode(PVGASTATE pThis, PVGASTATECC pThisCC)
 
 int vmsvgaR3UpdateScreen(PVGASTATECC pThisCC, VMSVGASCREENOBJECT *pScreen, int x, int y, int w, int h)
 {
-    VBVACMDHDR cmd;
-
     ASSERT_GUEST_LOGREL_MSG_RETURN(w > 0 && h > 0,
                                    ("vmsvgaR3UpdateScreen: screen %d (%d,%d) %dx%d: Invalid height and/or width supplied.\n",
                                    pScreen->idScreen, x, y, w, h),
                                    VERR_INVALID_PARAMETER);
 
+    VBVACMDHDR cmd;
     cmd.x = (int16_t)(pScreen->xOrigin + x);
     cmd.y = (int16_t)(pScreen->yOrigin + y);
     cmd.w = (uint16_t)w;
