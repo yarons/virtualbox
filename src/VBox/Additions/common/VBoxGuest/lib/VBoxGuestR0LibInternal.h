@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 97937 2023-01-02 15:08:43Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibInternal.h 97940 2023-01-02 15:26:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -133,7 +133,7 @@ typedef struct VBGLDATA
     /** Physical memory heap data.
      * @{
      */
-    RTSEMFASTMUTEX          mutexHeap;
+    RTSEMFASTMUTEX          hMtxHeap;
     /** Head of the block list (both free and allocated blocks).
      * This runs parallel to the chunk list and is sorted by address within each
      * chunk.  This allows merging with blocks both after and before when
