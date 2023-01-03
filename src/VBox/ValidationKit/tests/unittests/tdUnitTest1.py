@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97673 2022-11-24 11:46:15Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 97949 2023-01-03 13:19:53Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Unit Tests.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2022 Oracle and/or its affiliates.
+Copyright (C) 2010-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97673 $"
+__version__ = "$Revision: 97949 $"
 
 
 # Standard Python imports.
@@ -434,7 +434,7 @@ class tdUnitTest1(vbox.TestDriver):
         #
         # We need a VBox install (/ build) to test.
         #
-        if False is True: ## @todo r=andy WTF?
+        if False is True: ## @todo r=andy ??
             if not self.importVBoxApi():
                 reporter.error('Unabled to import the VBox Python API.');
                 return False;
@@ -495,11 +495,13 @@ class tdUnitTest1(vbox.TestDriver):
             for sCandidat in asCandidates:
                 if os.path.exists(os.path.join(sCandidat, 'testcase', 'tstVMStructSize' + self.sExeSuff)):
                     self.sUnitTestsPathSrc = sCandidat;
-                    break;
+                    break
 
             if not self.sUnitTestsPathSrc:
                 reporter.error('Unable to find unit test source dir. Candidates: %s' % (asCandidates,));
-                return False;
+                return False
+            else:
+                reporter.log('Unit test source dir path: ', self.sUnitTestsPathSrc)
         else:
             reporter.log2('Unit test source dir already set to "%s"' % (self.sUnitTestsPathSrc));
 
