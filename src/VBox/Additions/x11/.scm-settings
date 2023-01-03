@@ -1,4 +1,4 @@
-# $Id: .scm-settings 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: .scm-settings 97960 2023-01-03 19:24:54Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the x11 guest addition components.
 #
@@ -38,6 +38,7 @@
 /vboxvideo/vboxvideo*.c|/vboxvideo/vboxvideo*.h: --license-based-on-mit --no-convert-tabs --dont-set-svn-keywords
 /vboxvideo/edid.c: --license-based-on-mit
 /vboxvideo/setmode.c: --license-based-on-mit
+/VBoxClient/display-svga-xf86cvt.cpp: --license-based-on-mit
 
 # Installer
 /Installer/98vboxadd-xclient: --treat-as .sh
