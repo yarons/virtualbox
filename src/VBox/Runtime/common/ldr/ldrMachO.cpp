@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: ldrMachO.cpp 97955 2023-01-03 15:46:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -3113,7 +3113,7 @@ static int kldrModMachODylibDoIndirectSymbols(PRTLDRMODMACHO pThis, void *pvBits
                 case S_NON_LAZY_SYMBOL_POINTERS:
                 case S_LAZY_SYMBOL_POINTERS:
                 {
-                    uint32_t       *pauDstPtrs = (uint32_t *)((uintptr_t)pvBits + pThis->paSections[iSect].RVA);
+                    uint32_t       *pauDstPtrs = (uint32_t *)((uintptr_t)pvBits + (uintptr_t)pThis->paSections[iSect].RVA);
                     uint32_t  const cDstPtrs   = pThis->paSections[iSect].cb / sizeof(pauDstPtrs[0]);
                     uint32_t  const idxSrcSkip = pSect->reserved1;
                     if ((uint64_t)idxSrcSkip + cDstPtrs > cIndirectSymbols)
@@ -3185,7 +3185,7 @@ static int kldrModMachODylibDoIndirectSymbols(PRTLDRMODMACHO pThis, void *pvBits
                 case S_NON_LAZY_SYMBOL_POINTERS:
                 case S_LAZY_SYMBOL_POINTERS:
                 {
-                    uint64_t       *pauDstPtrs = (uint64_t *)((uintptr_t)pvBits + pThis->paSections[iSect].RVA);
+                    uint64_t       *pauDstPtrs = (uint64_t *)((uintptr_t)pvBits + (uintptr_t)pThis->paSections[iSect].RVA);
                     uint32_t  const cDstPtrs   = pThis->paSections[iSect].cb / sizeof(pauDstPtrs[0]);
                     uint32_t  const idxSrcSkip = pSect->reserved1;
                     if ((uint64_t)idxSrcSkip + cDstPtrs > cIndirectSymbols)

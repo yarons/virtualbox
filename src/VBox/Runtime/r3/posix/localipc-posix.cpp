@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 97894 2022-12-29 15:07:50Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-posix.cpp 97955 2023-01-03 15:46:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -293,7 +293,7 @@ RTDECL(int) RTLocalIpcServerGrantGroupAccess(RTLOCALIPCSERVER hServer, RTGID gid
     AssertReturn(pThis->u32Magic == RTLOCALIPCSERVER_MAGIC, VERR_INVALID_HANDLE);
     AssertReturn(pThis->Name.sun_path[0] != '\0', VERR_INVALID_STATE);
 
-    if (chown(pThis->Name.sun_path, -1, gid) == 0)
+    if (chown(pThis->Name.sun_path, (uid_t)-1, gid) == 0)
     {
         if (chmod(pThis->Name.sun_path, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP) == 0)
         {
@@ -1135,9 +1135,7 @@ static int rtLocalIpcSessionQueryUcred(RTLOCALIPCSESSION hSession, PRTPROCESS pP
             rc = VINF_SUCCESS;
         }
         else
-        {
             rc = RTErrConvertFromErrno(errno);
-        }
 
         int rc2 = RTCritSectLeave(&pThis->CritSect);
         AssertStmt(RT_SUCCESS(rc2), rc = RT_SUCCESS(rc) ? rc2 : rc);

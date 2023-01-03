@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: serialport-posix.cpp 97955 2023-01-03 15:46:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -1104,7 +1104,7 @@ RTDECL(int) RTSerialPortEvtPoll(RTSERIALPORT hSerialPort, uint32_t fEvtMask, uin
         aPollFds[1].revents = 0;
 
         int rcPsx = 0;
-        int msTimeoutLeft = msTimeout == RT_INDEFINITE_WAIT ? -1 : msTimeout;
+        int msTimeoutLeft = msTimeout == RT_INDEFINITE_WAIT ? -1 : (int)msTimeout;
         while (msTimeoutLeft != 0)
         {
             uint64_t tsPollStart = RTTimeMilliTS();
