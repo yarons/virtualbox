@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97951 2023-01-03 14:10:04Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 97952 2023-01-03 15:20:34Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97951 $"
+__version__ = "$Revision: 97952 $"
 
 
 # Standard Python imports.
@@ -506,7 +506,8 @@ class tdUnitTest1(vbox.TestDriver):
                 return False
 
         else:
-            reporter.log2('Unit test source dir already set to "%s"' % (self.sUnitTestsPathSrc));
+            reporter.log2('Unit test source dir already set to "%s"' % (self.sUnitTestsPathSrc))
+            reporter.log('Unit test source dir path: ', self.sUnitTestsPathSrc)
 
         self.sUnitTestsPathSrc = self._sanitizePath(self.sUnitTestsPathSrc);
 
