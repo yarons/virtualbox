@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97950 2023-01-03 13:50:47Z ksenia.s.stepanova@oracle.com $
+# $Id: tdUnitTest1.py 97951 2023-01-03 14:10:04Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97950 $"
+__version__ = "$Revision: 97951 $"
 
 
 # Standard Python imports.
@@ -135,6 +135,8 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstClipboardMockHGCM': '',            # Ditto.
         'tstClipboardQt': '',                           # Is interactive and needs Qt, needed for Qt clipboard bugfixing.
         'testcase/tstClipboardQt': '',                  # In case it moves here.
+        'tstDragAndDropQt': '',                         # Is interactive and needs Qt, needed for Qt drag'n drop bugfixing.
+        'testcase/tstDragAndDropQt': '',                # In case it moves here.
         'testcase/tstFileLock': '',
         'testcase/tstDisasm-2': '',                     # without parameters it will disassembler 1GB starting from 0
         'testcase/tstFileAppendWin-1': '',
