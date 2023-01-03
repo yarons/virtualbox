@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 97949 2023-01-03 13:19:53Z ksenia.s.stepanova@oracle.com $
+# $Id: tdUnitTest1.py 97950 2023-01-03 13:50:47Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97949 $"
+__version__ = "$Revision: 97950 $"
 
 
 # Standard Python imports.
@@ -497,11 +497,12 @@ class tdUnitTest1(vbox.TestDriver):
                     self.sUnitTestsPathSrc = sCandidat;
                     break
 
-            if not self.sUnitTestsPathSrc:
+            if self.sUnitTestsPathSrc:
+                reporter.log('Unit test source dir path: ', self.sUnitTestsPathSrc)
+            else:
                 reporter.error('Unable to find unit test source dir. Candidates: %s' % (asCandidates,));
                 return False
-            else:
-                reporter.log('Unit test source dir path: ', self.sUnitTestsPathSrc)
+
         else:
             reporter.log2('Unit test source dir already set to "%s"' % (self.sUnitTestsPathSrc));
 
