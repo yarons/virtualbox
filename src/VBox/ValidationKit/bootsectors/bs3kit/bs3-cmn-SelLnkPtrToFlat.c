@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SelLnkPtrToFlat.c 97430 2022-11-07 13:51:44Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SelLnkPtrToFlat.c 97985 2023-01-04 22:37:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3SelLnkPtrToFlat
  */
@@ -41,7 +41,7 @@
 BS3_CMN_DEF(uint32_t, Bs3SelLnkPtrToFlat,(void BS3_FAR *pvLnkPtr))
 {
 #if ARCH_BITS == 16
-    return Bs3SelRealModeDataToFlat(pvLnkPtr);
+    return Bs3SelRealModeDataToFlat((uint32_t)pvLnkPtr);
 #else
     return (uint32_t)(uintptr_t)pvLnkPtr;
 #endif
