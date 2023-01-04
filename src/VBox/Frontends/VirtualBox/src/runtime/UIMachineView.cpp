@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 97977 2023-01-04 12:03:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 97978 2023-01-04 14:24:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1263,6 +1263,26 @@ void UIMachineView::setStoredGuestScreenSizeHint(const QSize &sizeHint)
     LogRel2(("GUI: UIMachineView::setStoredGuestScreenSizeHint: Storing guest-screen size-hint for screen %d as %dx%d\n",
              (int)screenId(), sizeHint.width(), sizeHint.height()));
     gEDataManager->setLastGuestScreenSizeHint(m_uScreenId, sizeHint, uiCommon().managedVMUuid());
+}
+
+QSize UIMachineView::requestedGuestScreenSizeHint() const
+{
+    /* Acquire last guest-screen size-hint set, if any: */
+    BOOL fEnabled, fChangeOrigin;
+    LONG iOriginX, iOriginY;
+    ULONG uWidth, uHeight, uBitsPerPixel;
+    display().GetVideoModeHint(screenId(), fEnabled, fChangeOrigin,
+                               iOriginX, iOriginY, uWidth, uHeight, uBitsPerPixel);
+
+    /* Acquire effective frame-buffer size otherwise: */
+    if (uWidth == 0 || uHeight == 0)
+    {
+        uWidth = frameBuffer()->width();
+        uHeight = frameBuffer()->height();
+    }
+
+    /* Return result: */
+    return QSize((int)uWidth, (int)uHeight);
 }
 
 bool UIMachineView::guestScreenVisibilityStatus() const

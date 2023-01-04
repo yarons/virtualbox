@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 97977 2023-01-04 12:03:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 97978 2023-01-04 14:24:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -238,6 +238,9 @@ protected:
     QSize storedGuestScreenSizeHint() const;
     /** Stores a guest-screen @a sizeHint to extra-data. */
     void setStoredGuestScreenSizeHint(const QSize &sizeHint);
+
+    /** Retrieves the sent guest-screen size-hint from display or frame-buffer. */
+    QSize requestedGuestScreenSizeHint() const;
 
     /** Retrieves the last guest-screen visibility status from extra-data. */
     bool guestScreenVisibilityStatus() const;
