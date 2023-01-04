@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 97681 2022-11-25 12:30:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 97972 2023-01-04 08:19:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -4043,6 +4043,25 @@ void UIActionPoolRuntime::updateMenuViewRemap(QMenu *pMenu)
 
     /* Get corresponding screen index: */
     const int iGuestScreenIndex = pMenu->property("Guest Screen Index").toInt();
+    const bool fScreenEnabled = m_mapGuestScreenIsVisible.value(iGuestScreenIndex);
+
+    /* For non-primary screens: */
+    if (iGuestScreenIndex > 0)
+    {
+        /* Create 'toggle' action: */
+        QAction *pToggleAction = pMenu->addAction(QApplication::translate("UIActionPool", "Enable", "Virtual Screen"),
+                                                  this, SLOT(sltHandleActionTriggerViewScreenToggle()));
+        if (pToggleAction)
+        {
+            /* Configure 'toggle' action: */
+            pToggleAction->setEnabled(m_fGuestSupportsGraphics);
+            pToggleAction->setProperty("Guest Screen Index", iGuestScreenIndex);
+            pToggleAction->setCheckable(true);
+            pToggleAction->setChecked(fScreenEnabled);
+            /* Add separator: */
+            pMenu->addSeparator();
+        }
+    }
 
     /* Create exclusive 'remap' action-group: */
     QActionGroup *pActionGroup = new QActionGroup(pMenu);
@@ -4060,9 +4079,10 @@ void UIActionPoolRuntime::updateMenuViewRemap(QMenu *pMenu)
             if (pAction)
             {
                 /* Configure exclusive 'remap' action: */
-                pAction->setCheckable(true);
+                pAction->setEnabled(m_fGuestSupportsGraphics && fScreenEnabled);
                 pAction->setProperty("Guest Screen Index", iGuestScreenIndex);
                 pAction->setProperty("Host Screen Index", iHostScreenIndex);
+                pAction->setCheckable(true);
                 if (   m_mapHostScreenForGuestScreen.contains(iGuestScreenIndex)
                     && m_mapHostScreenForGuestScreen.value(iGuestScreenIndex) == iHostScreenIndex)
                     pAction->setChecked(true);
