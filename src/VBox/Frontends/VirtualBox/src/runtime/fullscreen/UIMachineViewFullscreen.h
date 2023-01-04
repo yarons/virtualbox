@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.h 97975 2023-01-04 11:28:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class declaration.
  */
@@ -66,7 +66,7 @@ private:
     //void cleanupCommon() {}
 
     /** Returns whether the guest-screen auto-resize is enabled. */
-    virtual bool isGuestAutoresizeEnabled() const RT_OVERRIDE { return m_bIsGuestAutoresizeEnabled; }
+    virtual bool isGuestAutoresizeEnabled() const RT_OVERRIDE { return m_fGuestAutoresizeEnabled; }
     /** Defines whether the guest-screen auto-resize is @a fEnabled. */
     virtual void setGuestAutoresizeEnabled(bool bEnabled) RT_OVERRIDE;
 
@@ -78,7 +78,7 @@ private:
     QSize calculateMaxGuestSize() const;
 
     /* Private variables: */
-    bool m_bIsGuestAutoresizeEnabled : 1;
+    bool m_fGuestAutoresizeEnabled : 1;
 
     /* Friend classes: */
     friend class UIMachineView;
