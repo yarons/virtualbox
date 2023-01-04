@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 97512 2022-11-11 12:25:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 97976 2023-01-04 11:56:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1490,7 +1490,7 @@ STDMETHODIMP UIFrameBufferPrivate::VideoModeSupported(ULONG uWidth, ULONG uHeigh
 
     /* Determine if supported: */
     *pfSupported = TRUE;
-    QSize screenSize = m_pMachineView->maxGuestSize();
+    const QSize screenSize = m_pMachineView->maximumGuestSize();
     if (   (screenSize.width() != 0)
         && (uWidth > (ULONG)screenSize.width())
         && (uWidth > (ULONG)width()))

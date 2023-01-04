@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 97976 2023-01-04 11:56:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -87,8 +87,8 @@ bool UIMachineViewSeamless::eventFilter(QObject *pWatched, QEvent *pEvent)
                 if (pResizeEvent->size() != workingArea().size())
                     break;
 
-                /* Recalculate max guest size: */
-                setMaxGuestSize();
+                /* Recalculate maximum guest size: */
+                setMaximumGuestSize();
 
                 break;
             }

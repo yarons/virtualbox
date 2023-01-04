@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 97976 2023-01-04 11:56:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -171,7 +171,7 @@ void UIMachineViewScale::resendSizeHint()
             (int)screenId(), sizeHint.width(), sizeHint.height()));
 
     /* Expand current limitations: */
-    setMaxGuestSize(sizeHint);
+    setMaximumGuestSize(sizeHint);
 
     /* Send saved size-hint to the guest: */
     uisession()->setScreenVisibleHostDesires(screenId(), guestScreenVisibilityStatus());
