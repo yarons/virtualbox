@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 97976 2023-01-04 11:56:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 97977 2023-01-04 12:03:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -166,7 +166,7 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
 void UIMachineViewScale::resendSizeHint()
 {
     /* Get the last guest-screen size-hint, taking the scale factor into account. */
-    const QSize sizeHint = scaledBackward(guestScreenSizeHint());
+    const QSize sizeHint = scaledBackward(storedGuestScreenSizeHint());
     LogRel(("GUI: UIMachineViewScale::resendSizeHint: Restoring guest size-hint for screen %d to %dx%d\n",
             (int)screenId(), sizeHint.width(), sizeHint.height()));
 
