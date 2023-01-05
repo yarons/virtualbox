@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 96757 2022-09-16 00:41:19Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELFRelocatable.cpp.h 98002 2023-01-05 14:08:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -2757,7 +2757,12 @@ static int RTLDRELF_NAME(ValidateAndProcessDynamicInfo)(PRTLDRMODELF pModElf, ui
                 SET_INFO_FIELD_RET("DT_PLTREL", pModElf->DynInfo.uJmpRelocType, (unsigned)paDynamic[i].d_un.d_val, 0, "%u");
                 break;
             case DT_DEBUG:
-                LOG_VALIDATE_PTR_RET("DT_DEBUG");
+                /*
+                 * DT_DEBUG is filled in by the dynamic linker to point a debugger to the head of the link map,
+                 * it can point anywhere in userspace. For binaries not being executed it will be 0,
+                 * so there is nothing we can validate here (and it is not required as we don't use
+                 * this dynamic section). See https://ypl.coffee/dl-resolve-full-relro/ for more information.
+                 */
                 break;
             case DT_TEXTREL:
                 LOG_NON_VALUE_ENTRY("DT_TEXTREL");
