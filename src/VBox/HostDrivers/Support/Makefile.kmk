@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 97212 2022-10-18 14:51:50Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98005 2023-01-05 16:38:18Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -262,7 +262,7 @@ SUPR3HardenedStatic_SOURCES.amd64 += \
 	$(VBOX_PATH_RUNTIME_SRC)/common/asm/ASMMemFirstMismatchingU8.asm
 
 
-if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of this move up.
+if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) && !defined(VBOX_ONLY_VALIDATIONKIT) ## @todo some of this move up.
  SUPR3HardenedStatic_DEFS += \
  	IN_RT_R3 \
  	IN_RT_STATIC \
