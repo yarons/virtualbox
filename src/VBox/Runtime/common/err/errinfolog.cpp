@@ -1,4 +1,4 @@
-/* $Id: errinfolog.cpp 96448 2022-08-23 22:35:23Z knut.osmundsen@oracle.com $ */
+/* $Id: errinfolog.cpp 98001 2023-01-05 14:00:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Error Info, Setters with logging.
  */
@@ -91,12 +91,22 @@ RTDECL(int) RTErrInfoLogAndSetV(PRTERRINFO pErrInfo, int rc, uint32_t iLogGroup,
     {
         PRTLOGGER pLogger = RTLogRelGetDefaultInstanceExWeak(RT_MAKE_U32(RTLOGGRPFLAGS_LEVEL_1, iLogGroup));
         if (pLogger)
-            RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoSet(%Rrc): %N\n", rc, pszFormat, &va);
+        {
+            va_list va2;
+            va_copy(va2, va);
+            RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoSet(%Rrc): %N\n", rc, pszFormat, &va2);
+            va_end(va2);
+        }
     }
 
     PRTLOGGER pLogger = RTLogGetDefaultInstanceExWeak(RT_MAKE_U32(RTLOGGRPFLAGS_LEVEL_1, iLogGroup));
     if (pLogger)
-        RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoSet(%Rrc): %N\n", rc, pszFormat, &va);
+    {
+        va_list va2;
+        va_copy(va2, va);
+        RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoSet(%Rrc): %N\n", rc, pszFormat, &va2);
+        va_end(va2);
+    }
 
     /* The setting: */
     if (pErrInfo)
@@ -183,12 +193,22 @@ RTDECL(int) RTErrInfoLogAndAddV(PRTERRINFO pErrInfo, int rc, uint32_t iLogGroup,
     {
         PRTLOGGER pLogger = RTLogRelGetDefaultInstanceExWeak(RT_MAKE_U32(RTLOGGRPFLAGS_LEVEL_1, iLogGroup));
         if (pLogger)
-            RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoAdd(%Rrc): %N\n", rc, pszFormat, &va);
+        {
+            va_list va2;
+            va_copy(va2, va);
+            RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoAdd(%Rrc): %N\n", rc, pszFormat, &va2);
+            va_end(va2);
+        }
     }
 
     PRTLOGGER pLogger = RTLogGetDefaultInstanceExWeak(RT_MAKE_U32(RTLOGGRPFLAGS_LEVEL_1, iLogGroup));
     if (pLogger)
-        RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoAdd(%Rrc): %N\n", rc, pszFormat, &va);
+    {
+        va_list va2;
+        va_copy(va2, va);
+        RTLogLoggerExWeak(pLogger, RTLOGGRPFLAGS_LEVEL_1, iLogGroup, "RTErrInfoAdd(%Rrc): %N\n", rc, pszFormat, &va2);
+        va_end(va2);
+    }
 
     return rc;
 }
