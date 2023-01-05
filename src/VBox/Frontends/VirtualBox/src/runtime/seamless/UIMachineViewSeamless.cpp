@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 97978 2023-01-04 14:24:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 97995 2023-01-05 11:14:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -177,16 +177,7 @@ void UIMachineViewSeamless::adjustGuestScreenSize()
         }
     }
 
-    /* Step 3: Is guest-additions supports graphics? */
-    if (fAdjust)
-    {
-        if (!uisession()->isGuestSupportsGraphics())
-        {
-            LogRel2(("GUI: UIMachineViewSeamless::adjustGuestScreenSize: Guest-additions are not supporting graphics, adjustment is omitted.\n"));
-            fAdjust = false;
-        }
-    }
-    /* Step 4: Is guest-screen visible? */
+    /* Step 3: Is guest-screen visible? */
     if (fAdjust)
     {
         if (!uisession()->isScreenVisible(screenId()))

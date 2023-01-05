@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 97978 2023-01-04 14:24:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.cpp 97995 2023-01-05 11:14:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -164,16 +164,7 @@ void UIMachineViewFullscreen::adjustGuestScreenSize()
         }
     }
 
-    /* Step 3: Is guest-additions supports graphics? */
-    if (fAdjust)
-    {
-        if (!uisession()->isGuestSupportsGraphics())
-        {
-            LogRel2(("GUI: UIMachineViewFullscreen::adjustGuestScreenSize: Guest-additions are not supporting graphics, adjustment is omitted.\n"));
-            fAdjust = false;
-        }
-    }
-    /* Step 4: Is guest-screen visible? */
+    /* Step 3: Is guest-screen visible? */
     if (fAdjust)
     {
         if (!uisession()->isScreenVisible(screenId()))
@@ -182,10 +173,10 @@ void UIMachineViewFullscreen::adjustGuestScreenSize()
             fAdjust = false;
         }
     }
-    /* Step 5: Is guest-screen auto-resize enabled? */
+    /* Step 4: Is guest-screen auto-resize enabled? */
     if (fAdjust)
     {
-        if (!m_fGuestAutoresizeEnabled)
+        if (!isGuestAutoresizeEnabled())
         {
             LogRel2(("GUI: UIMachineViewFullscreen::adjustGuestScreenSize: Guest-screen auto-resize is disabled, adjustment is omitted.\n"));
             fAdjust = false;
