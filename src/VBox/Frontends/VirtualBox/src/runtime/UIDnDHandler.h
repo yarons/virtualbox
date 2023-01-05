@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 97792 2022-12-13 13:47:18Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDHandler.h 97994 2023-01-05 10:33:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -127,7 +127,7 @@ protected:
 protected:
 
 #ifdef RT_OS_WINDOWS
-    static int                 getProcessIntetrityLevel(DWORD *pdwIntegrityLevel);
+    static int                 getProcessIntegrityLevel(DWORD *pdwIntegrityLevel);
 #endif
 
 protected:

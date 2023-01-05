@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 97796 2022-12-13 16:48:27Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDnDHandler.cpp 97994 2023-01-05 10:33:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -584,7 +584,7 @@ int UIDnDHandler::init(void)
      * when it comes to drag'n drop and UIPI (User Interface Privilege Isolation) -- a lower integrity level process
      * cannot drag'n drop stuff to a higher integrity level one.
      */
-    vrc = getProcessIntetrityLevel(&m_dwIntegrityLevel);
+    vrc = getProcessIntegrityLevel(&m_dwIntegrityLevel);
     if (RT_SUCCESS(vrc))
     {
         switch (m_dwIntegrityLevel)
@@ -633,7 +633,7 @@ void UIDnDHandler::reset(void)
  * @param   pdwIntegrityLevel   Where to return the detected process integrity level on success.
  */
 /* static */
-int UIDnDHandler::getProcessIntetrityLevel(DWORD *pdwIntegrityLevel)
+int UIDnDHandler::getProcessIntegrityLevel(DWORD *pdwIntegrityLevel)
 {
     AssertPtrReturn(pdwIntegrityLevel, VERR_INVALID_POINTER);
 
