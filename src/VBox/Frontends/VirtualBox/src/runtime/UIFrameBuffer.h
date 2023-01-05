@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIFrameBuffer.h 98000 2023-01-05 13:45:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -89,13 +89,6 @@ public:
     /** Defines whether frame-buffer is <b>unused</b>.
       * @note Calls to this and any other EMT callback are synchronized (from GUI side). */
     void setMarkAsUnused(bool fUnused);
-
-    /** Returns whether frame-buffer is <b>auto-enabled</b>.
-      * @note Refer to m_fAutoEnabled for more information. */
-    bool isAutoEnabled() const;
-    /** Defines whether frame-buffer is <b>auto-enabled</b>.
-      * @note Refer to m_fAutoEnabled for more information. */
-    void setAutoEnabled(bool fAutoEnabled);
 
     /** Returns the frame-buffer's scaled-size. */
     QSize scaledSize() const;
