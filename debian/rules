@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: rules 97989 2023-01-05 01:36:28Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -126,7 +126,7 @@ bld_flags := LOCALCFG=$(debroot)/debian/LocalConfig.kmk \
     VBOX_WITHOUT_EXTPACK_VNC_PACKING=1 \
     VBOX_WITH_VMSVGA3D=1 \
     VBOX_DO_STRIP= \
-    VBOX_PATH_PACKAGE_DOCS="\"/usr/share/doc/$(verpkg)\"" \
+    VBOX_PATH_PACKAGE_DOCS="/usr/share/doc/$(verpkg)" \
     $(if $(svn_revision),VBOX_SVN_REV=$(svn_revision),) \
     $(if $(NODOCS),VBOX_WITH_DOCS=,) \
     $(if $(VERBOSE),--print-directory KBUILD_VERBOSE=2,--no-print-directory) \
