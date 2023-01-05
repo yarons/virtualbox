@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 97978 2023-01-04 14:24:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 97998 2023-01-05 13:39:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -368,10 +368,18 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
         bool fSendHint = true;
         /* Do not send a hint if nothing has changed to prevent the guest being notified about its own changes: */
         if (fSendHint && (int)frameBuffer()->width() == size.width() && (int)frameBuffer()->height() == size.height())
+        {
+            LogRel(("GUI: UIMachineView::sltPerformGuestResize: Omitting to send size-hint %dx%d to guest-screen %d "
+                    "because frame-buffer is already of the same size.\n", (int)screenId(), size.width(), size.height()));
             fSendHint = false;
+        }
         /* Do not send a hint if GA supports graphics and we have sent that hint already: */
         if (fSendHint && uisession()->isGuestSupportsGraphics() && m_lastSizeHint == size)
+        {
+            LogRel(("GUI: UIMachineView::sltPerformGuestResize: Omitting to send size-hint %dx%d to guest-screen %d "
+                    "because this hint was previously sent.\n", (int)screenId(), size.width(), size.height()));
             fSendHint = false;
+        }
         if (fSendHint)
         {
             LogRel(("GUI: UIMachineView::sltPerformGuestResize: Sending guest size-hint to screen %d as %dx%d\n",
