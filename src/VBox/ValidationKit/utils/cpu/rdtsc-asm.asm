@@ -1,4 +1,4 @@
-; $Id: rdtsc-asm.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: rdtsc-asm.asm 98006 2023-01-05 16:45:14Z knut.osmundsen@oracle.com $
 ;; @file
 ; RDTSC test, assembly code
 ;
@@ -77,10 +77,10 @@ BEGINPROC DoTscReads
 %ifdef RT_ARCH_AMD64
         mov     rax, 0feedfacecafebabeh
         mov     rdx, 0cafebabefeedfaceh
-        mov     r8,  0deadbeef0deadbeefh
-        mov     r9,  0deadbeef0deadbeefh
-        mov     r10, 0deadbeef0deadbeefh
-        mov     r11, 0deadbeef0deadbeefh
+        mov     r8,  0deadbeefdeadbeefh
+        mov     r9,  0deadbeefdeadbeefh
+        mov     r10, 0deadbeefdeadbeefh
+        mov     r11, 0deadbeefdeadbeefh
         push    rbx
         push    r12
         push    r13
