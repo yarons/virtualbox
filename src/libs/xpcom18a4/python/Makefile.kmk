@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 98022 2023-01-06 20:46:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -93,6 +93,7 @@ ifndef VBOX_ONLY_SDK
 #
 VBoxPythonBase_TEMPLATE = XPCOM
 VBoxPythonBase_CXXFLAGS = -Wno-write-strings
+VBoxPythonBase_CXXFLAGS.solaris = $(VBOX_GCC_Wno-unknown-pragmas) # /usr/include/python[23].[75]*/ceval.h:67: warning: ignoring #pragma no_inline(PyEval_EvalFrameEx)
 VBoxPythonBase_DLLSUFF.darwin = .so
 VBoxPythonBase_DEFS     = \
 	_IMPL_NS_COM \
