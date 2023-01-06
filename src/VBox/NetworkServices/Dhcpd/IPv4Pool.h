@@ -1,4 +1,4 @@
-/* $Id: IPv4Pool.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: IPv4Pool.h 98026 2023-01-06 21:45:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - a pool of IPv4 addresses
  */
@@ -144,11 +144,11 @@ public:
 private:
     int i_insert(const IPv4Range &range) RT_NOEXCEPT;
 #if 0
-    int i_insert(IPV4HADDR single) RT_NOEXCEPT                          { return i_insert(IPv4Range(single)); }
+    int i_insert(IPV4HADDR a_Single) RT_NOEXCEPT                          { return i_insert(IPv4Range(a_Single)); }
 #endif
-    int i_insert(IPV4HADDR first, IPV4HADDR last) RT_NOEXCEPT           { return i_insert(IPv4Range(first, last)); }
-    int i_insert(RTNETADDRIPV4 single) RT_NOEXCEPT                      { return i_insert(IPv4Range(single)); }
-    int i_insert(RTNETADDRIPV4 first, RTNETADDRIPV4 last) RT_NOEXCEPT   { return i_insert(IPv4Range(first, last)); }
+    int i_insert(IPV4HADDR a_First, IPV4HADDR a_Last) RT_NOEXCEPT         { return i_insert(IPv4Range(a_First, a_Last)); }
+    int i_insert(RTNETADDRIPV4 a_Single) RT_NOEXCEPT                      { return i_insert(IPv4Range(a_Single)); }
+    int i_insert(RTNETADDRIPV4 a_First, RTNETADDRIPV4 a_Last) RT_NOEXCEPT { return i_insert(IPv4Range(a_First, a_Last)); }
 };
 
 #endif /* !VBOX_INCLUDED_SRC_Dhcpd_IPv4Pool_h */
