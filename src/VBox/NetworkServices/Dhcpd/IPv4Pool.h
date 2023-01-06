@@ -1,4 +1,4 @@
-/* $Id: IPv4Pool.h 98026 2023-01-06 21:45:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IPv4Pool.h 98027 2023-01-06 21:46:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * DHCP server - a pool of IPv4 addresses
  */
@@ -134,11 +134,11 @@ public:
     bool          allocate(RTNETADDRIPV4);
 
     /**
-     * Checks if the pool range includes @a addr (allocation status not considered).
+     * Checks if the pool range includes @a a_Addr (allocation status not considered).
      */
-    bool contains(RTNETADDRIPV4 addr) const RT_NOEXCEPT
+    bool contains(RTNETADDRIPV4 a_Addr) const RT_NOEXCEPT
     {
-        return m_range.contains(addr);
+        return m_range.contains(a_Addr);
     }
 
 private:
