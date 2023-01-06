@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer-Convert.cpp.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AudioMixBuffer-Convert.cpp.h 98017 2023-01-06 19:13:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * Audio mixing buffer - Format conversion template.
  */
@@ -60,7 +60,7 @@ static DECLCALLBACK(void) RT_CONCAT(audioMixBufEncodeGeneric,a_Name)(void *pvDst
         uintptr_t idxDst = cDstChannels;
         while (idxDst-- > 0)
         {
-            int8_t idxSrc = pState->aidxChannelMap[idxDst];
+            intptr_t idxSrc = pState->aidxChannelMap[idxDst];
             if (idxSrc >= 0)
                 pDst[idxDst] = RT_CONCAT(audioMixBufSampleTo,a_Name)(pi32Src[idxSrc]);
             else if (idxSrc != -2)
@@ -146,7 +146,7 @@ static DECLCALLBACK(void) RT_CONCAT(audioMixBufDecodeGeneric,a_Name)(int32_t *pi
         uintptr_t idxDst = cDstChannels;
         while (idxDst-- > 0)
         {
-            int8_t idxSrc = pState->aidxChannelMap[idxDst];
+            intptr_t idxSrc = pState->aidxChannelMap[idxDst];
             if (idxSrc >= 0)
                 pi32Dst[idxDst] = RT_CONCAT(audioMixBufSampleFrom,a_Name)(pSrc[idxSrc]);
             else if (idxSrc != -2)
@@ -234,7 +234,7 @@ static DECLCALLBACK(void) RT_CONCAT3(audioMixBufDecodeGeneric,a_Name,Blend)(int3
         uintptr_t idxDst = cDstChannels;
         while (idxDst-- > 0)
         {
-            int8_t idxSrc = pState->aidxChannelMap[idxDst];
+            intptr_t idxSrc = pState->aidxChannelMap[idxDst];
             if (idxSrc >= 0)
                 audioMixBufBlendSample(&pi32Dst[idxDst], RT_CONCAT(audioMixBufSampleFrom,a_Name)(pSrc[idxSrc]));
         }
