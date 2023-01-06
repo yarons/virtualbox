@@ -1,4 +1,4 @@
-/* $Id: threads_iprt.c 97371 2022-11-02 07:17:46Z alexander.eichner@oracle.com $ */
+/* $Id: threads_iprt.c 98025 2023-01-06 21:43:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * Crypto thread locking functions which make use of the IPRT.
  */
@@ -102,7 +102,7 @@ void CRYPTO_THREAD_lock_free(CRYPTO_RWLOCK *lock)
 
 int CRYPTO_THREAD_init_local(CRYPTO_THREAD_LOCAL *key, void (*cleanup)(void *))
 {
-    int rc = RTTlsAllocEx(key, cleanup);
+    int rc = RTTlsAllocEx(key, (PFNRTTLSDTOR)cleanup); /* ASSUMES default calling convention is __cdecl, or close enough to it. */
     if (RT_FAILURE(rc))
         return 0;
 
