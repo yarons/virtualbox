@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AudioAdapterImpl.h 98028 2023-01-09 09:46:16Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -84,9 +84,10 @@ private:
     HRESULT getProperty(const com::Utf8Str &aKey, com::Utf8Str &aValue);
     HRESULT setProperty(const com::Utf8Str &aKey, const com::Utf8Str &aValue);
 
-    AudioSettings * const              mParent;
-    const ComObjPtr<AudioAdapter>      mPeer;
-    Backupable<settings::AudioAdapter> mData;
+private:
+
+    struct Data;
+    Data *m;
 };
 
 #endif /* !MAIN_INCLUDED_AudioAdapterImpl_h */

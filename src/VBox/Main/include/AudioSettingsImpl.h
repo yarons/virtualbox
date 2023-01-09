@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AudioSettingsImpl.h 98028 2023-01-09 09:46:16Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -63,7 +63,6 @@ public:
     HRESULT getAdapter(ComPtr<IAudioAdapter> &aAdapter);
 
     // public methods only for internal purposes
-    Machine* i_getParent(void);
     bool     i_canChangeSettings(void);
     void     i_onAdapterChanged(IAudioAdapter *pAdapter);
     void     i_onHostDeviceChanged(IHostAudioDevice *pDevice, bool fIsNew, AudioDeviceState_T enmState, IVirtualBoxErrorInfo *pErrInfo);
