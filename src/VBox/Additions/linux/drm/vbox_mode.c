@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vbox_mode.c 98034 2023-01-09 18:41:48Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -865,7 +865,7 @@ static int vbox_cursor_set2(struct drm_crtc *crtc, struct drm_file *file_priv,
 	dst = vbox->cursor_data;
 
 #if RTLNX_VER_MIN(5,14,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
-	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.resource->num_pages, &uobj_map);
+	ret = ttm_bo_kmap(&bo->bo, 0, VBOX_BO_RESOURCE_NUM_PAGES(bo->bo.resource), &uobj_map);
 #elif RTLNX_VER_MIN(5,12,0) || RTLNX_RHEL_MAJ_PREREQ(8,5)
 	ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.mem.num_pages, &uobj_map);
 #else

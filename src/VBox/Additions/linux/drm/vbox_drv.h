@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 97556 2022-11-15 17:29:28Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_drv.h 98034 2023-01-09 18:41:48Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -240,6 +240,15 @@ static inline void drm_gem_object_put(struct drm_gem_object *obj)
 # define VBOX_DRM_TO_PCI_DEV(_dev) to_pci_dev(_dev->dev)
 #else
 # define VBOX_DRM_TO_PCI_DEV(_dev) _dev->pdev
+#endif
+
+/** Field "num_pages" of struct ttm_resource was renamed to "size" in 6.2 and
+ * now represents number of bytes. This macro handles this change. Input
+ * argument is a pointer to struct ttm_resource. */
+#if RTLNX_VER_MIN(6,2,0)
+# define VBOX_BO_RESOURCE_NUM_PAGES(_resource) PFN_UP(_resource->size)
+#else
+# define VBOX_BO_RESOURCE_NUM_PAGES(_resource) _resource->num_pages
 #endif
 
 /** How frequently we refresh if the guest is not providing dirty rectangles. */
