@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: Svga.cpp 98043 2023-01-10 19:18:19Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -35,6 +35,7 @@
 #include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/memobj.h>
+#include <iprt/string.h>
 
 
 static NTSTATUS SvgaObjectTablesDestroy(VBOXWDDM_EXT_VMSVGA *pSvga)
@@ -1897,6 +1898,9 @@ static NTSTATUS gmrAlloc(GAWDDMREGION *pRegion)
     AssertRC(rc);
     if (RT_SUCCESS(rc))
     {
+        if (!RTR0MemObjWasZeroInitialized(pRegion->MemObj))
+            RT_BZERO(RTR0MemObjAddress(pRegion->MemObj), (size_t)pRegion->u32NumPages << PAGE_SHIFT);
+
         rc = RTR0MemObjMapUser(&pRegion->MapObjR3, pRegion->MemObj, (RTR3PTR)-1, 0,
                                RTMEM_PROT_WRITE | RTMEM_PROT_READ, NIL_RTR0PROCESS);
         AssertRC(rc);
