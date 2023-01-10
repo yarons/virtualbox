@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98037 2023-01-10 11:04:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98038 2023-01-10 11:25:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -568,6 +568,18 @@ bool UIMachineView::nativeEventPreprocessor(const QByteArray &eventType, void *p
     /* Filter nothing by default: */
     return false;
 }
+
+#ifdef VBOX_WS_MAC
+CGImageRef UIMachineView::vmContentImage()
+{
+    /* Use pause-image if exists: */
+    if (!pausePixmap().isNull())
+        return darwinToCGImageRef(&pausePixmap());
+
+    /* Create the image ref out of the frame-buffer: */
+    return frameBuffertoCGImageRef(frameBuffer());
+}
+#endif /* VBOX_WS_MAC */
 
 void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
 {
@@ -1783,16 +1795,6 @@ void UIMachineView::scrollContentsBy(int dx, int dy)
 void UIMachineView::updateDockIcon()
 {
     machineLogic()->updateDockIcon();
-}
-
-CGImageRef UIMachineView::vmContentImage()
-{
-    /* Use pause-image if exists: */
-    if (!pausePixmap().isNull())
-        return darwinToCGImageRef(&pausePixmap());
-
-    /* Create the image ref out of the frame-buffer: */
-    return frameBuffertoCGImageRef(frameBuffer());
 }
 
 CGImageRef UIMachineView::frameBuffertoCGImageRef(UIFrameBuffer *pFrameBuffer)
