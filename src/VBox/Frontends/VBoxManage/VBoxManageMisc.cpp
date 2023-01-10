@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 97602 2022-11-17 21:02:54Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 98035 2023-01-10 06:35:56Z brian.le.lee@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -170,6 +170,8 @@ static const RTGETOPTDEF g_aUnregisterVMOptions[] =
 {
     { "--delete",       'd', RTGETOPT_REQ_NOTHING },
     { "-delete",        'd', RTGETOPT_REQ_NOTHING },    // deprecated
+    { "--delete-all",   'a', RTGETOPT_REQ_NOTHING },
+    { "-delete-all",    'a', RTGETOPT_REQ_NOTHING },    // deprecated
 };
 
 RTEXITCODE handleUnregisterVM(HandlerArg *a)
@@ -177,6 +179,7 @@ RTEXITCODE handleUnregisterVM(HandlerArg *a)
     HRESULT hrc;
     const char *VMName = NULL;
     bool fDelete = false;
+    bool fDeleteAll = false;
 
     int c;
     RTGETOPTUNION ValueUnion;
@@ -190,6 +193,10 @@ RTEXITCODE handleUnregisterVM(HandlerArg *a)
         {
             case 'd':   // --delete
                 fDelete = true;
+                break;
+
+            case 'a':   // --delete-all
+                fDeleteAll = true;
                 break;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -223,10 +230,11 @@ RTEXITCODE handleUnregisterVM(HandlerArg *a)
                                                machine.asOutParam()),
                     RTEXITCODE_FAILURE);
     SafeIfaceArray<IMedium> aMedia;
-    CHECK_ERROR_RET(machine, Unregister(CleanupMode_DetachAllReturnHardDisksOnly,
+    CHECK_ERROR_RET(machine, Unregister(fDeleteAll ? CleanupMode_DetachAllReturnHardDisksAndVMRemovable
+                                                   :CleanupMode_DetachAllReturnHardDisksOnly,
                                         ComSafeArrayAsOutParam(aMedia)),
                     RTEXITCODE_FAILURE);
-    if (fDelete)
+    if (fDelete || fDeleteAll)
     {
         ComPtr<IProgress> pProgress;
         CHECK_ERROR_RET(machine, DeleteConfig(ComSafeArrayAsInParam(aMedia), pProgress.asOutParam()),

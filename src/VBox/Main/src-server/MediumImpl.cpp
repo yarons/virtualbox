@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 97935 2022-12-31 21:58:24Z jack.doherty@oracle.com $ */
+/* $Id: MediumImpl.cpp 98035 2023-01-10 06:35:56Z brian.le.lee@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1060,7 +1060,8 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
     if (FAILED(rc)) return rc;
 
     if (!(m->formatObj->i_getCapabilities() & (  MediumFormatCapabilities_CreateFixed
-                                               | MediumFormatCapabilities_CreateDynamic))
+                                               | MediumFormatCapabilities_CreateDynamic
+                                               | MediumFormatCapabilities_File))
        )
     {
         /* Storage for mediums of this format can neither be explicitly
