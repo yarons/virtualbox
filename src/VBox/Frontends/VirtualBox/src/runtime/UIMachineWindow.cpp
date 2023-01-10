@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 97849 2022-12-20 16:04:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98037 2023-01-10 11:04:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -264,6 +264,49 @@ void UIMachineWindow::setMask(const QRegion &region)
     QMainWindow::setMask(region);
 }
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
+
+void UIMachineWindow::updateAppearanceOf(int iElement)
+{
+    /* Update window title: */
+    if (iElement & UIVisualElement_WindowTitle)
+    {
+        /* Make sure machine state is one of valid: */
+        const KMachineState enmState = uisession()->machineState();
+        if (enmState == KMachineState_Null)
+            return;
+
+        /* Prepare full name: */
+        QString strMachineName = machineName();
+
+        /* Append snapshot name: */
+        if (machine().GetSnapshotCount() > 0)
+        {
+            const CSnapshot comSnapshot = machine().GetCurrentSnapshot();
+            strMachineName += " (" + comSnapshot.GetName() + ")";
+        }
+
+        /* Append state name: */
+        strMachineName += " [" + gpConverter->toString(enmState) + "]";
+
+#ifndef VBOX_WS_MAC
+        /* Append user product name (besides macOS): */
+        const QString strUserProductName = uisession()->machineWindowNamePostfix();
+        strMachineName += " - " + (strUserProductName.isEmpty() ? defaultWindowTitle() : strUserProductName);
+#endif /* !VBOX_WS_MAC */
+
+        /* Check if we can get graphics adapter: */
+        CGraphicsAdapter comAdapter = machine().GetGraphicsAdapter();
+        if (machine().isOk() && comAdapter.isNotNull())
+        {
+            /* Append screen number only if there are more than one present: */
+            if (comAdapter.GetMonitorCount() > 1)
+                strMachineName += QString(" : %1").arg(m_uScreenId + 1);
+        }
+
+        /* Assign title finally: */
+        setWindowTitle(strMachineName);
+    }
+}
 
 void UIMachineWindow::retranslateUi()
 {
@@ -585,49 +628,6 @@ void UIMachineWindow::cleanupSessionConnections()
 {
     /* We should stop watching for console events: */
     disconnect(uisession(), &UISession::sigMachineStateChange, this, &UIMachineWindow::sltMachineStateChanged);
-}
-
-void UIMachineWindow::updateAppearanceOf(int iElement)
-{
-    /* Update window title: */
-    if (iElement & UIVisualElement_WindowTitle)
-    {
-        /* Make sure machine state is one of valid: */
-        const KMachineState enmState = uisession()->machineState();
-        if (enmState == KMachineState_Null)
-            return;
-
-        /* Prepare full name: */
-        QString strMachineName = machineName();
-
-        /* Append snapshot name: */
-        if (machine().GetSnapshotCount() > 0)
-        {
-            const CSnapshot comSnapshot = machine().GetCurrentSnapshot();
-            strMachineName += " (" + comSnapshot.GetName() + ")";
-        }
-
-        /* Append state name: */
-        strMachineName += " [" + gpConverter->toString(enmState) + "]";
-
-#ifndef VBOX_WS_MAC
-        /* Append user product name (besides macOS): */
-        const QString strUserProductName = uisession()->machineWindowNamePostfix();
-        strMachineName += " - " + (strUserProductName.isEmpty() ? defaultWindowTitle() : strUserProductName);
-#endif /* !VBOX_WS_MAC */
-
-        /* Check if we can get graphics adapter: */
-        CGraphicsAdapter comAdapter = machine().GetGraphicsAdapter();
-        if (machine().isOk() && comAdapter.isNotNull())
-        {
-            /* Append screen number only if there are more than one present: */
-            if (comAdapter.GetMonitorCount() > 1)
-                strMachineName += QString(" : %1").arg(m_uScreenId + 1);
-        }
-
-        /* Assign title finally: */
-        setWindowTitle(strMachineName);
-    }
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI

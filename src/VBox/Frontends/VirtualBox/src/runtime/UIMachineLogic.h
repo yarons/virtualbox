@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 97514 2022-11-11 12:46:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98037 2023-01-10 11:04:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -154,6 +154,11 @@ public:
     bool isHidLedsSyncEnabled() const { return m_fIsHidLedsSyncEnabled; }
     /** An public interface to sltTypeHostKeyComboPressRelease. */
     void typeHostKeyComboPressRelease(bool fToggleSequence);
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    /** Adjusts relative position for debugger window. */
+    void dbgAdjustRelativePos();
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 protected slots:
 
@@ -420,7 +425,6 @@ private:
     /* Debugger functionality: */
     bool dbgCreated();
     void dbgDestroy();
-    void dbgAdjustRelativePos();
     /* The handle to the debugger GUI: */
     PDBGGUI m_pDbgGui;
     /* The virtual method table for the debugger GUI: */
@@ -458,8 +462,6 @@ private:
 #if defined(VBOX_WS_X11)
     QVector<X11ScreenSaverInhibitMethod*> m_methods;
 #endif
-    /* Friend classes: */
-    friend class UIMachineWindow;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIMachineLogic_h */
