@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 97682 2022-11-25 12:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -69,6 +69,16 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
     delete m_pScreenLayout;
 }
 
+int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
+{
+    return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
+}
+
+bool UIMachineLogicFullscreen::hasHostScreenForGuestScreen(int iScreenId) const
+{
+    return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
+}
+
 bool UIMachineLogicFullscreen::checkAvailability()
 {
     /* Check if there is enough physical memory to enter fullscreen: */
@@ -127,16 +137,6 @@ void UIMachineLogicFullscreen::adjustMachineWindowsGeometry()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
 #endif /* !VBOX_WS_MAC */
-}
-
-int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
-{
-    return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
-}
-
-bool UIMachineLogicFullscreen::hasHostScreenForGuestScreen(int iScreenId) const
-{
-    return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
 }
 
 #ifdef RT_OS_DARWIN

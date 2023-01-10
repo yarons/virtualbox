@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerFullscreen.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIKeyboardHandlerFullscreen.cpp 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerFullscreen class implementation.
  */
@@ -81,4 +81,3 @@ bool UIKeyboardHandlerFullscreen::eventFilter(QObject *pWatchedObject, QEvent *p
     /* Else just propagate to base-class: */
     return UIKeyboardHandler::eventFilter(pWatchedObject, pEvent);
 }
-

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineViewSeamless.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class declaration.
  */
@@ -31,14 +31,15 @@
 # pragma once
 #endif
 
-/* Local includes */
+/* GUI includes: */
 #include "UIMachineView.h"
 
+/** UIMachineView subclass used as seamless machine view implementation. */
 class UIMachineViewSeamless : public UIMachineView
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /* Seamless machine-view constructor: */
     UIMachineViewSeamless(UIMachineWindow *pMachineWindow, ulong uScreenId);
@@ -76,10 +77,6 @@ private:
     /* Helpers: Geometry stuff: */
     QRect workingArea() const;
     QSize calculateMaxGuestSize() const;
-
-    /* Friend classes: */
-    friend class UIMachineView;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_seamless_UIMachineViewSeamless_h */
-

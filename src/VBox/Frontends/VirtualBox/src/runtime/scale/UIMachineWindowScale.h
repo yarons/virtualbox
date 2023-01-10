@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowScale.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -34,13 +34,12 @@
 /* GUI includes: */
 #include "UIMachineWindow.h"
 
-/** UIMachineWindow reimplementation,
-  * providing GUI with machine-window for the scale mode. */
+/** UIMachineWindow subclass used as scaled machine window implementation. */
 class UIMachineWindowScale : public UIMachineWindow
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowScale(UIMachineLogic *pMachineLogic, ulong uScreenId);
@@ -86,9 +85,6 @@ private:
     QRect  m_geometry;
     /** Holds the geometry save timer ID. */
     int  m_iGeometrySaveTimerId;
-
-    /** Factory support. */
-    friend class UIMachineWindow;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_scale_UIMachineWindowScale_h */

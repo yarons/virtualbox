@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -39,13 +39,12 @@
 class UIMiniToolBar;
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
-/** UIMachineWindow reimplementation,
-  * providing GUI with machine-window for the seamless mode. */
+/** UIMachineWindow subclass used as seamless machine window implementation. */
 class UIMachineWindowSeamless : public UIMachineWindow
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, ulong uScreenId);
@@ -131,10 +130,6 @@ private:
       * Used to restore maximized state when the window restored again. */
     bool m_fIsMinimized;
 #endif
-
-    /** Factory support. */
-    friend class UIMachineWindow;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_seamless_UIMachineWindowSeamless_h */
-

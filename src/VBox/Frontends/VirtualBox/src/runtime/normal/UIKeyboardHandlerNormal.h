@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIKeyboardHandlerNormal.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerNormal class declaration.
  */
@@ -40,7 +40,7 @@ class UIKeyboardHandlerNormal : public UIKeyboardHandler
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /** Normal keyboard-handler constructor. */
     UIKeyboardHandlerNormal(UIMachineLogic *pMachineLogic);
@@ -53,9 +53,6 @@ private:
     /** General event-filter. */
     bool eventFilter(QObject *pWatched, QEvent *pEvent);
 #endif /* !VBOX_WS_MAC */
-
-    /* Friend class: */
-    friend class UIKeyboardHandler;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_normal_UIKeyboardHandlerNormal_h */

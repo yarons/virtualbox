@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 97977 2023-01-04 12:03:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -226,4 +226,3 @@ void UIMachineViewScale::updateSliders()
     if (verticalScrollBarPolicy() != Qt::ScrollBarAlwaysOff)
         setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
-

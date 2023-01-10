@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineViewScale.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class declaration.
  */
@@ -31,14 +31,15 @@
 # pragma once
 #endif
 
-/* Local includes */
+/* GUI includes: */
 #include "UIMachineView.h"
 
+/** UIMachineView subclass used as scaled machine view implementation. */
 class UIMachineViewScale : public UIMachineView
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /* Scale machine-view constructor: */
     UIMachineViewScale(UIMachineWindow *pMachineWindow, ulong uScreenId);
@@ -66,10 +67,6 @@ private:
     QRect workingArea() const;
     QSize calculateMaxGuestSize() const;
     void updateSliders();
-
-    /* Friend classes: */
-    friend class UIMachineView;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_scale_UIMachineViewScale_h */
-

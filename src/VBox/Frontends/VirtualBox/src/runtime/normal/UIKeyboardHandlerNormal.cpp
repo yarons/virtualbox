@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIKeyboardHandlerNormal.cpp 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerNormal class implementation.
  */
@@ -122,4 +122,3 @@ bool UIKeyboardHandlerNormal::eventFilter(QObject *pWatchedObject, QEvent *pEven
     return UIKeyboardHandler::eventFilter(pWatchedObject, pEvent);
 }
 #endif /* !VBOX_WS_MAC */
-

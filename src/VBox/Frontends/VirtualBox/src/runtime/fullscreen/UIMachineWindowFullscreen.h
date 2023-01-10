@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -39,8 +39,7 @@
 class UIMiniToolBar;
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
-/** UIMachineWindow reimplementation,
-  * providing GUI with machine-window for the full-screen mode. */
+/** UIMachineWindow subclass used as full-screen machine window implementation. */
 class UIMachineWindowFullscreen : public UIMachineWindow
 {
     Q_OBJECT;
@@ -59,10 +58,12 @@ signals:
     void sigNotifyAboutNativeFullscreenFailToEnter();
 #endif /* RT_OS_DARWIN */
 
-protected:
+public:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId);
+
+protected:
 
 #ifdef VBOX_WS_MAC
     /** Mac OS X: Handles native notifications @a strNativeNotificationName for 'fullscreen' window. */
@@ -158,10 +159,6 @@ private:
       * Used to restore full-screen state when the window restored again. */
     bool m_fIsMinimized;
 #endif
-
-    /** Factory support. */
-    friend class UIMachineWindow;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_fullscreen_UIMachineWindowFullscreen_h */
-

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.h 97975 2023-01-04 11:28:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class declaration.
  */
@@ -31,14 +31,15 @@
 # pragma once
 #endif
 
-/* Local includes */
+/* GUI includes: */
 #include "UIMachineView.h"
 
+/** UIMachineView subclass used as full-screen machine view implementation. */
 class UIMachineViewFullscreen : public UIMachineView
 {
     Q_OBJECT;
 
-protected:
+public:
 
     /* Fullscreen machine-view constructor: */
     UIMachineViewFullscreen(UIMachineWindow *pMachineWindow, ulong uScreenId);
@@ -79,10 +80,6 @@ private:
 
     /* Private variables: */
     bool m_fGuestAutoresizeEnabled : 1;
-
-    /* Friend classes: */
-    friend class UIMachineView;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_fullscreen_UIMachineViewFullscreen_h */
-

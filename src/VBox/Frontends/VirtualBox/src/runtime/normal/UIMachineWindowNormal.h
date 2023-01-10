@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 98039 2023-01-10 16:09:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -39,8 +39,7 @@ class CMediumAttachment;
 class UIIndicatorsPool;
 class UIAction;
 
-/** UIMachineWindow reimplementation,
-  * providing GUI with machine-window for the normal mode. */
+/** UIMachineWindow subclass used as normal machine window implementation. */
 class UIMachineWindowNormal : public UIMachineWindow
 {
     Q_OBJECT;
@@ -50,7 +49,7 @@ signals:
     /** Notifies about geometry change. */
     void sigGeometryChange(const QRect &rect);
 
-protected:
+public:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulong uScreenId);
@@ -155,9 +154,6 @@ private:
     QRect  m_geometry;
     /** Holds the geometry save timer ID. */
     int  m_iGeometrySaveTimerId;
-
-    /** Factory support. */
-    friend class UIMachineWindow;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_normal_UIMachineWindowNormal_h */
