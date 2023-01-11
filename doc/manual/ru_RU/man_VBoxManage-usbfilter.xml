@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-usbfilter" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2022-12-15 10:16:38 +0100 (Thu, 15 Dec 2022) $</pubdate>
+    <pubdate>$Date: 2023-01-11 13:15:45 +0100 (Wed, 11 Jan 2023) $</pubdate>
     <title>VBoxManage usbfilter</title>
   </refentryinfo>
 
@@ -63,7 +63,7 @@
       <arg>--revision=<replaceable>IIFF</replaceable></arg>
       <arg>--manufacturer=<replaceable>строка</replaceable></arg>
       <arg>--product=<replaceable>строка</replaceable></arg>
-      <arg>--port=<replaceable>номер</replaceable></arg>
+      <arg>--port=<replaceable>hex</replaceable></arg>
       <arg>--remote=yes | no</arg>
       <arg>--serialnumber=<replaceable>строка</replaceable></arg>
       <arg>--maskedinterfaces=<replaceable>XXXXXXXX</replaceable></arg>
@@ -85,7 +85,7 @@
       <arg>--revision=<replaceable>IIFF</replaceable> | ""</arg>
       <arg>--manufacturer=<replaceable>строка</replaceable> | ""</arg>
       <arg>--product=<replaceable>строка</replaceable> | ""</arg>
-      <arg>--port=<replaceable>номер</replaceable></arg>
+      <arg>--port=<replaceable>hex</replaceable></arg>
       <arg>--remote=yes | no</arg>
       <arg>--serialnumber=<replaceable>строка</replaceable> | ""</arg>
       <arg>--maskedinterfaces=<replaceable>XXXXXXXX</replaceable></arg>
@@ -182,7 +182,7 @@
             </para></listitem>
         </varlistentry>
         <varlistentry>
-          <term><option>--port=<replaceable>номер</replaceable></option></term>
+          <term><option>--port=<replaceable>hex</replaceable></option></term>
           <listitem><para>
               Задает фильтр по номеру USB порта (hub port number). Значение по
               умолчанию - пустая строка (<literal>""</literal>).
