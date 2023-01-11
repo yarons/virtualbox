@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 97697 2022-11-29 07:02:14Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 98049 2023-01-11 05:40:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -2657,7 +2657,7 @@ static int vmsvga3dCmdDXUpdateSubResource(PVGASTATECC pThisCC, SVGA3dCmdDXUpdate
     RT_NOREF(cbCmd);
 
     LogFlowFunc(("sid=%u, subResource=%u, box=%d,%d,%d %ux%ux%u\n",
-                 pCmd->sid, pCmd->subResource, pCmd->box.x, pCmd->box.y, pCmd->box.z, pCmd->box.w, pCmd->box.h, pCmd->box.z));
+                 pCmd->sid, pCmd->subResource, pCmd->box.x, pCmd->box.y, pCmd->box.z, pCmd->box.w, pCmd->box.h, pCmd->box.d));
 
     /* "Inform the device that the guest-contents have been updated." */
     SVGAOTableSurfaceEntry entrySurface;
