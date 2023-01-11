@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.cpp 98051 2023-01-11 05:45:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -30,7 +30,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_VMSVGA
-#include <VBox/AssertGuest.h>
 #include <VBox/vmm/pdmdev.h>
 #include <iprt/errcore.h>
 #include <VBox/log.h>

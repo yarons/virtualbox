@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 98051 2023-01-11 05:45:06Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -30,6 +30,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <VBox/AssertGuest.h>
 
 #include "DevVGA-SVGA.h"
 
@@ -195,8 +197,17 @@ DECLINLINE(uint32_t) vmsvga3dCalcSubresource(uint32_t iMipLevel, uint32_t iArray
 
 DECLINLINE(void) vmsvga3dCalcMipmapAndFace(uint32_t cMipLevels, uint32_t iSubresource, uint32_t *piMipmap, uint32_t *piFace)
 {
-    *piFace = iSubresource / cMipLevels;
-    *piMipmap = iSubresource % cMipLevels;
+    if (RT_LIKELY(cMipLevels))
+    {
+        *piFace = iSubresource / cMipLevels;
+        *piMipmap = iSubresource % cMipLevels;
+    }
+    else
+    {
+        ASSERT_GUEST_FAILED();
+        *piFace = 0;
+        *piMipmap = 0;
+    }
 }
 
 int vmsvga3dCalcSurfaceMipmapAndFace(PVGASTATECC pThisCC, uint32_t sid, uint32_t iSubresource, uint32_t *piMipmap, uint32_t *piFace);
