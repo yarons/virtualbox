@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 97722 2022-11-30 18:27:08Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 98050 2023-01-11 05:41:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -2360,6 +2360,9 @@ static int dxbcCreateIOSGNBlob(DXShaderInfo const *pInfo, DXBCHeader *pHdr, uint
     if (!dxbcByteWriterCanWrite(w, sizeof(DXBCBlobHeader) + cbBlob))
         return VERR_NO_MEMORY;
 
+    Log6(("Create signature type %c%c%c%c (0x%RX32)\n",
+          RT_BYTE1(u32BlobType), RT_BYTE2(u32BlobType), RT_BYTE3(u32BlobType), RT_BYTE4(u32BlobType), u32BlobType));
+
     DXBCBlobHeader *pHdrBlob = (DXBCBlobHeader *)dxbcByteWriterPtr(w);
     pHdrBlob->u32BlobType = u32BlobType;
     // pHdrBlob->cbBlob = 0;
@@ -2390,6 +2393,10 @@ static int dxbcCreateIOSGNBlob(DXShaderInfo const *pInfo, DXBCHeader *pHdr, uint
         dst->enmComponentType = srcEntry->componentType;
         dst->idxRegister      = srcEntry->registerIndex;
         dst->u.mask           = srcEntry->mask;
+
+        Log6(("  [%u]: %s[%u] sv %u type %u reg %u mask %X\n",
+              iSignatureEntry, srcSemantic->pcszSemanticName, dst->idxSemantic,
+              dst->enmSystemValue, dst->enmComponentType, dst->idxRegister, dst->u.mask));
 
         if (dst->offElementName == 0)
         {
