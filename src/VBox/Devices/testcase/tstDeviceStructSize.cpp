@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 96512 2022-08-26 03:16:40Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 98065 2023-01-12 15:57:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -408,6 +408,8 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VGASTATE, CritSect, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, StatRZMemoryRead, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, CritSectIRQ, 8);
+    CHECK_MEMBER_ALIGNMENT(VGASTATE, bmDirtyBitmap, 8);
+    CHECK_MEMBER_ALIGNMENT(VGASTATE, pciRegions, 8);
     CHECK_MEMBER_ALIGNMENT(VMMDEV, CritSect, 8);
 #ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
     CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
