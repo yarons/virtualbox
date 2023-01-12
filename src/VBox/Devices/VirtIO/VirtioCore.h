@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VirtioCore.h 98063 2023-01-12 15:01:04Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -546,6 +546,16 @@ int virtioCoreR3Init(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVir
  * @param   pVirtio     Pointer to the virtio state.
  */
 void  virtioCoreResetAll(PVIRTIOCORE pVirtio);
+
+/**
+ * Resets the device state upon a VM reset for instance.
+ *
+ * @returns nothing.
+ * @param   pVirtio     Pointer to the virtio state.
+ *
+ * @note Calls back into the upper device when the status changes.
+ */
+DECLHIDDEN(void) virtioCoreR3ResetDevice(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, PVIRTIOCORECC pVirtioCC);
 
 /**
  * 'Attaches' host device-specific implementation's queue state to host VirtIO core
