@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 98040 2023-01-10 17:05:52Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 98070 2023-01-13 09:53:51Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98040 $"
+__version__ = "$Revision: 98070 $"
 
 
 # Standard Python imports.
@@ -394,8 +394,10 @@ class tdUnitTest1(vbox.TestDriver):
         # copied over to a remote target (via TxS).
         self.sUnitTestsPathDst = None;
 
-        # Will be determined before executing the actual unit tests.
-        self.sExeSuff   = '';
+        # The executable suffix to use for the executing the actual testcases.
+        # Will be re-set when executing the testcases on a remote (VM) once we know
+        # what type of suffix to use then (based on guest OS).
+        self.sExeSuff = base.exeSuff();
 
         self.aiVBoxVer  = (4, 3, 0, 0);
 
@@ -495,7 +497,10 @@ class tdUnitTest1(vbox.TestDriver):
                     asCandidates[i] = os.path.join(asCandidates[i], 'VirtualBox.app', 'Contents', 'MacOS');
 
             for sCandidat in asCandidates:
-                if os.path.exists(os.path.join(sCandidat, 'testcase', 'tstVMStructSize' + self.sExeSuff)):
+                # The path of tstVMStructSize acts as a beacon to know where all other testcases are.
+                sFileBeacon = os.path.join(sCandidat, 'testcase', 'tstVMStructSize' + self.sExeSuff);
+                reporter.log2('Searching for "%s" ...' % sFileBeacon);
+                if os.path.exists(sFileBeacon):
                     self.sUnitTestsPathSrc = sCandidat;
                     break
 
@@ -673,7 +678,8 @@ class tdUnitTest1(vbox.TestDriver):
             else:
                 self.sExeSuff = '';
         else:
-            self.sExeSuff = base.exeSuff();
+            # For local tests this already is set in __init__
+            pass;
 
         self._testRunUnitTestsSet(oTestVm, r'^tst*', 'testcase');
         self._testRunUnitTestsSet(oTestVm, r'^tst*', '.');
