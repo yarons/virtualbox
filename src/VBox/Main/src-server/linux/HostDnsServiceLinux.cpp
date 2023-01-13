@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 98071 2023-01-13 10:38:26Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceLinux.cpp 98072 2023-01-13 10:42:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -470,6 +470,7 @@ int HostDnsServiceLinux::monitorThreadProc(void)
     }
     close(aiStopPair[1]);
     close(iNotifyFd);
+    LogRel5(("HostDnsServiceLinux::monitorThreadProc: returns %Rrc\n", vrcRet));
     return vrcRet;
 }
 
