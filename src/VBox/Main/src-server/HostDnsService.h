@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostDnsService.h 98071 2023-01-13 10:38:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host DNS listener.
  */
@@ -248,7 +248,7 @@ class HostDnsServiceLinux : public HostDnsServiceResolvConf
 {
 public:
 
-    HostDnsServiceLinux() : HostDnsServiceResolvConf(true) {}
+    HostDnsServiceLinux() : HostDnsServiceResolvConf(true), m_fdShutdown(-1) {}
     virtual ~HostDnsServiceLinux();
 
 public:
@@ -259,6 +259,10 @@ protected:
 
     int monitorThreadShutdown(RTMSINTERVAL uTimeoutMs);
     int monitorThreadProc(void);
+
+    /** Socket end to write shutdown notification to, so the monitor thread will
+     *  wake up and terminate. */
+    int m_fdShutdown;
 };
 
 #  endif
