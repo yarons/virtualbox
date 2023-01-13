@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: HostImpl.cpp 98069 2023-01-13 04:14:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -255,7 +255,7 @@ struct Host::Data
     int                     f3DAccelerationSupported;
 
     HostPowerService        *pHostPowerService;
-    /** Host's DNS informaton fetching */
+    /** Host's DNS information fetching */
     HostDnsMonitorProxy     hostDnsMonitorProxy;
 
     /** Startup syncing of persistent config in extra data */
@@ -1060,8 +1060,8 @@ HRESULT Host::getNameServers(std::vector<com::Utf8Str> &aNameServers)
  */
 HRESULT Host::getDomainName(com::Utf8Str &aDomainName)
 {
-    /* XXX: note here should be synchronization with thread polling state
-     * changes in name resoving system on host */
+    /** @todo XXX: note here should be synchronization with thread polling state
+     * changes in name resolving system on host */
     return m->hostDnsMonitorProxy.GetDomainName(&aDomainName);
 }
 
