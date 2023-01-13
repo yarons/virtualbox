@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 98075 2023-01-13 13:12:57Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudio.cpp 98077 2023-01-13 17:53:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -102,8 +102,9 @@
 /**
  * Experimental code for destroying all streams in a disabled direction rather
  * than just disabling them.
-
- * Disabled by default for non-Doxygen builds for now.
+ *
+ * Cannot be enabled yet because the code isn't complete and DrvAudio will
+ * behave differently (incorrectly), see @bugref{9558#c5} for details.
  */
 #if defined(DOXYGEN_RUNNING) || 0
 # define DRVAUDIO_WITH_STREAM_DESTRUCTION_IN_DISABLED_DIRECTION
