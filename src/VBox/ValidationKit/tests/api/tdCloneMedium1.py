@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCloneMedium1.py 98079 2023-01-14 10:47:51Z andreas.loeffler@oracle.com $
+# $Id: tdCloneMedium1.py 98080 2023-01-14 10:51:21Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Clone Medium Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98079 $"
+__version__ = "$Revision: 98080 $"
 
 
 # Standard Python imports.
@@ -76,7 +76,7 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
     # Test execution helpers.
     #
 
-    def createTestMedium(self, oVM, sPathSuffix, sFmt = 'VDI', cbSize = 1024*1024, data):
+    def createTestMedium(self, oVM, sPathSuffix, sFmt = 'VDI', cbSize = 1024*1024, data = None):
         assert oVM is not None
 
         oSession = self.oTstDrv.openSession(oVM)
