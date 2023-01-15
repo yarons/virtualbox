@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageList.cpp 98083 2023-01-15 02:10:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -97,6 +97,7 @@ static const char*getDeviceTypeText(DeviceType_T enmType)
         case DeviceType_USB:            return "USB";
         case DeviceType_SharedFolder:   return List::tr("SharedFolder");
         case DeviceType_Graphics3D:     return List::tr("Graphics3D");
+        case DeviceType_End: break; /* Shut up compiler warnings. */
 #ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
         case DeviceType_32BitHack: break; /* Shut up compiler warnings. */
 #endif
