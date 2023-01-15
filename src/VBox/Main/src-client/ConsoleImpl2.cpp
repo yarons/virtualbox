@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 97716 2022-11-30 16:17:34Z brent.paulson@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 98082 2023-01-15 01:59:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -670,6 +670,7 @@ uint32_t Console::i_allocateDriverLeds(uint32_t cLeds, DeviceType_T enmType, Dev
 {
     Assert(cLeds > 0);
     Assert(cLeds < 1024);  /* Adjust if any driver supports >=1024 units! */
+    Assert(enmType > DeviceType_Null && enmType < DeviceType_End);
 
     /* Grab a LED set entry before we start allocating anything so the destructor can do the cleanups. */
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); /* Caller should have this already. Need protect mcLedSets check and update. */
