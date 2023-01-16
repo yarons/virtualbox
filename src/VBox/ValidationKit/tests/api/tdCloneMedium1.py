@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCloneMedium1.py 98081 2023-01-14 10:56:44Z andreas.loeffler@oracle.com $
+# $Id: tdCloneMedium1.py 98090 2023-01-16 09:39:04Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Clone Medium Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98081 $"
+__version__ = "$Revision: 98090 $"
 
 
 # Standard Python imports.
@@ -226,7 +226,7 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
         if dataHd1 != dataHd2:
             reporter.testFailure("Data read is unexpected.")
 
-        if hd1.logicalSize != hd2.logicalSize and hd2.logicalSize != 1024*1024*2:
+        if hd2.logicalSize not in (hd1.logicalSize, 1024*1024*2):
             reporter.testFailure("Target medium did not resize.")
 
         self.deleteVM(oVM)
