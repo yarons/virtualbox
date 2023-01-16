@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 98095 2023-01-16 15:17:49Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 98097 2023-01-16 21:50:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -708,11 +708,12 @@ private:
     void InsertConfigString(PCFGMNODE pNode, const char *pcszName, const char *pcszValue);
     void InsertConfigString(PCFGMNODE pNode, const char *pcszName, const Utf8Str &rStrValue);
     void InsertConfigString(PCFGMNODE pNode, const char *pcszName, const Bstr &rBstrValue);
+    void InsertConfigStringF(PCFGMNODE pNode, const char *pcszName, const char *pszFormat, ...);
     void InsertConfigPassword(PCFGMNODE pNode, const char *pcszName, const Utf8Str &rStrValue);
     void InsertConfigBytes(PCFGMNODE pNode, const char *pcszName, const void *pvBytes, size_t cbBytes);
     void InsertConfigInteger(PCFGMNODE pNode, const char *pcszName, uint64_t u64Integer);
     void InsertConfigNode(PCFGMNODE pNode, const char *pcszName, PCFGMNODE *ppChild);
-    void InsertConfigNodeF(PCFGMNODE pNode, PCFGMNODE *ppChild, const char *pszNameFormat, ...);
+    void InsertConfigNodeF(PCFGMNODE pNode, PCFGMNODE *ppChild, const char *pszNameFormat, ...) RT_IPRT_FORMAT_ATTR(3, 4);
     void RemoveConfigValue(PCFGMNODE pNode, const char *pcszName);
     int  SetBiosDiskInfo(ComPtr<IMachine> pMachine, PCFGMNODE pCfg, PCFGMNODE pBiosCfg,
                          Bstr controllerName, const char * const s_apszBiosConfig[4]);
