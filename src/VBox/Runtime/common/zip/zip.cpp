@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: zip.cpp 98092 2023-01-16 10:38:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Compression.
  */
@@ -61,7 +61,9 @@
 # include <zlib.h>
 #endif
 #ifdef RTZIP_USE_LZF
-# include <lzf.h>
+ RT_C_DECLS_BEGIN
+#  include <lzf.h>
+ RT_C_DECLS_END
 # include <iprt/crc.h>
 #endif
 #ifdef RTZIP_USE_LZJB
