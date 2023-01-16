@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: vfsmod.h 98096 2023-01-16 16:16:36Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -76,6 +76,17 @@
 # define SFLOG3(aArgs)          RTLogBackdoorPrintf aArgs
 # define SFLOG_ENABLED          1
 # define SFLOGRELBOTH(aArgs)    do { RTLogBackdoorPrintf aArgs; printk aArgs; } while (0)
+#endif
+
+
+/* Simmilar workaround for CONFIG_FORTIFY_SOURCE kernel config option as we have for host drivers.
+ * In Linux 5.18-rc1, memcpy became a wrapper which does fortify checks
+ * before triggering __underlying_memcpy() call. We do not pass these checks in some places so
+ * bypass them for now.  */
+#if RTLNX_VER_MIN(5,18,0) && !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)
+# define VBOX_LINUX_MEMCPY __underlying_memcpy
+#else
+#define VBOX_LINUX_MEMCPY  memcpy
 #endif
 
 

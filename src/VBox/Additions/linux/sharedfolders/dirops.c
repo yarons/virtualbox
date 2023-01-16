@@ -1,4 +1,4 @@
-/* $Id: dirops.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: dirops.c 98096 2023-01-16 16:16:36Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -687,7 +687,7 @@ static struct dentry *vbsf_inode_lookup(struct inode *parent, struct dentry *den
             struct inode *pInode = NULL;
 
             RT_ZERO(*pReq);
-            memcpy(&pReq->StrPath, path, SHFLSTRING_HEADER_SIZE + path->u16Size);
+            VBOX_LINUX_MEMCPY(&pReq->StrPath, path, SHFLSTRING_HEADER_SIZE + path->u16Size);
             pReq->CreateParms.Handle = SHFL_HANDLE_NIL;
             pReq->CreateParms.CreateFlags = SHFL_CF_LOOKUP | SHFL_CF_ACT_FAIL_IF_NEW;
 
