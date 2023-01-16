@@ -1,4 +1,4 @@
-/* $Id: AutoLock.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AutoLock.cpp 98087 2023-01-16 00:55:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Automatic locks, implementation.
  */
@@ -173,7 +173,7 @@ RWLockHandle::RWLockHandle(VBoxLockingClass lockClass)
 
     m->lockClass = lockClass;
 #ifdef VBOX_WITH_MAIN_LOCK_VALIDATION
-    m->strDescription = com::Utf8StrFmt("r/w %RCv", this);
+    m->strDescription.printf("r/w %RCv", this);
 #endif
 
 #ifdef GLUE_USE_CRITSECTRW
