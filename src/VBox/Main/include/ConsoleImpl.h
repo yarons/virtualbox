@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 98086 2023-01-15 13:14:57Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 98088 2023-01-16 00:57:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -1067,6 +1067,8 @@ private:
 
     /** @name LEDs and their management
      * @{ */
+    /** Read/write lock separating LED allocations (write) from queries (read). */
+    RWLockHandle mLedLock;
     /** Number of LED sets in use in maLedSets. */
     uint32_t          mcLedSets;
     /** LED sets. */
