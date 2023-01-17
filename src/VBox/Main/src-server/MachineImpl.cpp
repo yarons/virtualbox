@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 98100 2023-01-17 10:56:32Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 98101 2023-01-17 10:59:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3889,10 +3889,6 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                         tr("Controller '%s' does not support hot-plugging"),
                         aName.c_str());
 
-    /* Attaching a USB device when a VM is powered off should default to being marked as hot-pluggable */
-    if (!fHotplug && !Global::IsOnlineOrTransient(mData->mMachineState) && ctrlType == StorageControllerType_USB)
-        fHotplug = true;
-
     // check that the port and device are not out of range
     rc = ctl->i_checkPortAndDeviceValid(aControllerPort, aDevice);
     if (FAILED(rc)) return rc;
@@ -4347,7 +4343,7 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                           false /* fTempEject */,
                           false /* fNonRotational */,
                           false /* fDiscard */,
-                          fHotplug /* fHotPluggable */,
+                          fHotplug || ctrlType == StorageControllerType_USB /* fHotPluggable */,
                           Utf8Str::Empty);
     if (FAILED(rc)) return rc;
 
