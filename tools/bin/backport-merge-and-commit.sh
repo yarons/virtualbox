@@ -1,5 +1,5 @@
-# !kmk_ash
-# $Id: backport-merge-and-commit.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+#!/usr/bin/env kmk_ash
+# $Id: backport-merge-and-commit.sh 98105 2023-01-17 15:17:40Z knut.osmundsen@oracle.com $
 ## @file
 # Script for merging and commit a backport from trunk.
 #

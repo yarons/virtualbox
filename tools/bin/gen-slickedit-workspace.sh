@@ -1,5 +1,5 @@
-# !kmk_ash
-# $Id: gen-slickedit-workspace.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+#!/usr/bin/env kmk_ash
+# $Id: gen-slickedit-workspace.sh 98105 2023-01-17 15:17:40Z knut.osmundsen@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
