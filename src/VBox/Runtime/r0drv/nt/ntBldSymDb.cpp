@@ -1,4 +1,4 @@
-﻿/* $Id: ntBldSymDb.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+﻿/* $Id: ntBldSymDb.cpp 98106 2023-01-17 22:43:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -207,7 +207,7 @@ static void generateHeader(PRTSTREAM pOut)
                  " */\n"
                  "\n"
                  "/*\n"
-                 " * Copyright (C) 2013-2022 Oracle and/or its affiliates.\n"
+                 " * Copyright (C) 2013-2023 Oracle and/or its affiliates.\n"
                  " *\n"
                  " * This file is part of VirtualBox base platform packages, as\n"
                  " * available from https://www.virtualbox.org.\n"
@@ -1175,7 +1175,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 98103 $");
+                RTPrintf("$Revision: 98106 $");
                 break;
 
             case 'h':

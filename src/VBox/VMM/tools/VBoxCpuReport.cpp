@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCpuReport.cpp 98106 2023-01-17 22:43:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -48,6 +48,7 @@
 #include <VBox/err.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/sup.h>
+#include <VBox/version.h>
 
 #include "VBoxCpuReport.h"
 
@@ -4773,7 +4774,7 @@ static int produceCpuReport(void)
                        " */\n"
                        "\n"
                        "/*\n"
-                       " * Copyright (C) 2013-2022 Oracle and/or its affiliates.\n"
+                       " * Copyright (C) 2013-" VBOX_C_YEAR " Oracle and/or its affiliates.\n"
                        " *\n"
                        " * This file is part of VirtualBox base platform packages, as\n"
                        " * available from https://www.virtualbox.org.\n"

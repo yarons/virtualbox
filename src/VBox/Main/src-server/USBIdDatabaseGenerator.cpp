@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseGenerator.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBIdDatabaseGenerator.cpp 98106 2023-01-17 22:43:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
@@ -257,7 +257,7 @@ static void WriteSourceFile(FILE *pOut, const char *argv0, PBLDPROGSTRTAB pStrTa
             " */\n"
             "\n"
             "/*\n"
-            " * Copyright (C) 2015-2022 Oracle and/or its affiliates.\n"
+            " * Copyright (C) 2015-2023 Oracle and/or its affiliates.\n"
             " *\n"
             " * This file is part of VirtualBox base platform packages, as\n"
             " * available from https://www.virtualbox.org.\n"
