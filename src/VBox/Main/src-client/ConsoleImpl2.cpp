@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 98097 2023-01-16 21:50:10Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 98100 2023-01-17 10:56:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5083,7 +5083,7 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
             {
                 if (fHotplug)
                 {
-                    USBStorageDevice UsbMsd = USBStorageDevice();
+                    USBStorageDevice UsbMsd;
                     RTUuidCreate(&UsbMsd.mUuid);
                     UsbMsd.iPort = uInstance;
                     vrc = pVMM->pfnPDMR3UsbCreateEmulatedDevice(pUVM, pcszDevice, pCtlInst, &UsbMsd.mUuid, NULL);
