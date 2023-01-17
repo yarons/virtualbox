@@ -1,10 +1,10 @@
-# $Id: VBoxXcode62.kmk 97991 2023-01-05 02:04:12Z knut.osmundsen@oracle.com $
+# $Id: VBoxXcode62.kmk 98108 2023-01-17 23:40:56Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Tool Config - Xcode 6.2 from tools, dmg or similar.
 #
 
 #
-# Copyright (C) 2016-2022 Oracle and/or its affiliates.
+# Copyright (C) 2016-2023 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

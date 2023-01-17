@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-showvminfo" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-01-18 00:40:56 +0100 (Wed, 18 Jan 2023) $</pubdate>
     <title>VBoxManage showvminfo</title>
   </refentryinfo>
 
@@ -136,7 +136,7 @@
     </para>
 <screen>$ VBoxManage showvminfo "Windows 10"
 VirtualBox Command Line Management Interface Version <replaceable>номер-версии</replaceable>
-Copyright (C) 2005-2022 Oracle and/or its affiliates
+Copyright (C) 2005-2023 Oracle and/or its affiliates
 
 Имя:            Windows 10
 Группы:          /
