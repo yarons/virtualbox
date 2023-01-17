@@ -1,10 +1,10 @@
-/* $Id: nocrt-RTLogWriteStdOut-win.cpp 96586 2022-09-03 02:35:25Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-RTLogWriteStdOut-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Log To StdOut, Windows no-CRT.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

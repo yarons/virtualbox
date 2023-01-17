@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: coreconsts.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: coreconsts.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 Test Manager - Test Manager Constants (without a more appropriate home).
@@ -7,7 +7,7 @@ Test Manager - Test Manager Constants (without a more appropriate home).
 
 __copyright__ = \
 """
-Copyright (C) 2012-2022 Oracle and/or its affiliates.
+Copyright (C) 2012-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 98103 $"
 
 ## OS agnostic.
 g_ksOsAgnostic      = 'os-agnostic';

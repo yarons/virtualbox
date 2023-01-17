@@ -1,10 +1,10 @@
-/* $Id: memobj-r0drv-solaris.h 97896 2022-12-29 15:14:39Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects - Segment driver, Solaris.
  */
 
 /*
- * Copyright (C) 2012-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

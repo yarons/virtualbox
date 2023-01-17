@@ -1,10 +1,10 @@
-/* $Id: vbox_fb.c 98034 2023-01-09 18:41:48Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_fb.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  * This file is based on ast_fb.c
  * Copyright 2012 Red Hat Inc.
  *

@@ -1,10 +1,10 @@
-/* $Id: UIToolPaneMachine.cpp 96635 2022-09-07 16:16:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
 
 /*
- * Copyright (C) 2017-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

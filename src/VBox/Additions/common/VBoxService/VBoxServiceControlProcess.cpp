@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControlProcess.cpp 96502 2022-08-25 22:36:36Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControlProcess.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
 
 /*
- * Copyright (C) 2012-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

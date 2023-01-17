@@ -1,10 +1,10 @@
-/* $Id: alloc-ef.cpp 97210 2022-10-18 14:41:48Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-ef.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

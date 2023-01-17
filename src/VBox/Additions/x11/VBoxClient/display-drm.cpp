@@ -1,4 +1,4 @@
-/* $Id: display-drm.cpp 96885 2022-09-26 19:09:42Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-drm.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - VMSVGA guest screen resize service.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2016-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

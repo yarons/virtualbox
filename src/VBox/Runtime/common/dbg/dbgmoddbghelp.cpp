@@ -1,10 +1,10 @@
-/* $Id: dbgmoddbghelp.cpp 97336 2022-10-28 14:25:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: dbgmoddbghelp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

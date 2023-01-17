@@ -1,10 +1,10 @@
-/* $Id: zip.cpp 98093 2023-01-16 10:43:17Z andreas.loeffler@oracle.com $ */
+/* $Id: zip.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Compression.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: UIExtraDataDefs.cpp 97327 2022-10-27 17:15:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

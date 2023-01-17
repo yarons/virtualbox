@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 97675 2022-11-24 11:56:16Z andreas.loeffler@oracle.com $
+# $Id: config.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Configuration.
@@ -7,7 +7,7 @@ Test Manager Configuration.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2022 Oracle and/or its affiliates.
+Copyright (C) 2012-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -36,14 +36,14 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97675 $"
+__version__ = "$Revision: 98103 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 97675 $')[11:-2];
+g_ksRevision            = ('$Revision: 98103 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 97547 2022-11-15 14:10:02Z michal.necasek@oracle.com $
+# $Id: IEMAllInstructionsPython.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -12,7 +12,7 @@ disassembler tables and tests.
 
 __copyright__ = \
 """
-Copyright (C) 2017-2022 Oracle and/or its affiliates.
+Copyright (C) 2017-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -41,7 +41,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97547 $"
+__version__ = "$Revision: 98103 $"
 
 # pylint: disable=anomalous-backslash-in-string
 

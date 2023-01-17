@@ -1,10 +1,10 @@
-/* $Id: VBoxIntnetPcap.cpp 97678 2022-11-24 19:09:04Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxIntnetPcap.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxIntnetPcap - packet capture for VirtualBox internal networks
  */
 
 /*
- * Copyright (C) 2021-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerGuestTable.cpp 97554 2022-11-15 16:39:20Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
 
 /*
- * Copyright (C) 2016-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2016-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

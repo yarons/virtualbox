@@ -1,11 +1,11 @@
-/* $Id: Intel_Atom_330_1_60GHz.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: Intel_Atom_330_1_60GHz.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Atom 330 1.60GHz".
  * Generated at 2015-11-04T12:58:59Z by VBoxCpuReport v5.0.51r103818 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

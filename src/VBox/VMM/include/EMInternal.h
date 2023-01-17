@@ -1,10 +1,10 @@
-/* $Id: EMInternal.h 97178 2022-10-17 21:06:03Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

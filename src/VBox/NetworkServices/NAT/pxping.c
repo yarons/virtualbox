@@ -1,10 +1,10 @@
-/* $Id: pxping.c 97309 2022-10-26 15:55:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: pxping.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT Network - ping proxy, raw sockets version.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

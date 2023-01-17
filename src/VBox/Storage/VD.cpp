@@ -1,10 +1,10 @@
-/* $Id: VD.cpp 97494 2022-11-10 13:14:55Z alexander.eichner@oracle.com $ */
+/* $Id: VD.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

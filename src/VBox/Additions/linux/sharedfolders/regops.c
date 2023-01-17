@@ -1,10 +1,10 @@
-/* $Id: regops.c 97571 2022-11-16 15:06:15Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

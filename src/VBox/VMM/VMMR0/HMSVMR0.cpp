@@ -1,10 +1,10 @@
-/* $Id: HMSVMR0.cpp 97225 2022-10-18 22:56:43Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-x11.h 97888 2022-12-28 12:52:28Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-x11.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
 
 /*
- * Copyright (C) 2020-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

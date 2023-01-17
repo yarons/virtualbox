@@ -1,10 +1,10 @@
-/* $Id: hostversion.cpp 97732 2022-12-02 16:19:55Z andreas.loeffler@oracle.com $ */
+/* $Id: hostversion.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 guest client - Host version check.
  */
 
 /*
- * Copyright (C) 2011-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

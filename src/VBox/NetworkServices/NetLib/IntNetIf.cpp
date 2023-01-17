@@ -1,10 +1,10 @@
-/* $Id: IntNetIf.cpp 97089 2022-10-11 11:46:46Z alexander.eichner@oracle.com $ */
+/* $Id: IntNetIf.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IntNetIfCtx - Abstract API implementing an IntNet connection using the R0 support driver or some R3 IPC variant.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

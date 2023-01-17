@@ -1,10 +1,10 @@
-/* $Id: extF80_sincos.h 97160 2022-10-14 19:08:05Z dmitrii.grigorev@oracle.com $ */
+/* $Id: extF80_sincos.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * SoftFloat - VBox Extension - constants for sine & cosine calculation.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: DevIommuIntel.cpp 98016 2023-01-06 19:09:21Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIommuIntel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
 
 /*
- * Copyright (C) 2021-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2021-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibIdc-win.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuestR0LibIdc-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, Windows specific.
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2023 Oracle and/or its affiliates.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

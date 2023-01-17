@@ -1,10 +1,10 @@
-/* $Id: IntNetIf.h 97078 2022-10-10 19:32:33Z alexander.eichner@oracle.com $ */
+/* $Id: IntNetIf.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IntNetIf - Convenience class implementing an IntNet connection.
  */
 
 /*
- * Copyright (C) 2009-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-SelSetupGate.c 97624 2022-11-21 11:13:29Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SelSetupGate.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3SelSetupGate
  */
 
 /*
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

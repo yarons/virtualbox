@@ -1,10 +1,10 @@
-/* $Id: fileaio-win.cpp 96505 2022-08-25 22:44:04Z knut.osmundsen@oracle.com $ */
+/* $Id: fileaio-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

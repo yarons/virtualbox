@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 97213 2022-10-18 15:00:16Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

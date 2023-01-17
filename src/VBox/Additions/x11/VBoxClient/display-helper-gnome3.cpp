@@ -1,4 +1,4 @@
-/* $Id: display-helper-gnome3.cpp 96875 2022-09-26 15:57:16Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-helper-gnome3.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Gnome3 Desktop Environment helper.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

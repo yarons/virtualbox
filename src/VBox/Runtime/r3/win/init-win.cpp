@@ -1,10 +1,10 @@
-/* $Id: init-win.cpp 96606 2022-09-05 19:34:59Z knut.osmundsen@oracle.com $ */
+/* $Id: init-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

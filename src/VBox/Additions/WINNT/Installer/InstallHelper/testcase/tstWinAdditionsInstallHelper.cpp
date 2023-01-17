@@ -1,10 +1,10 @@
-/* $Id: tstWinAdditionsInstallHelper.cpp 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $ */
+/* $Id: tstWinAdditionsInstallHelper.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstWinAdditionsInstallHelper - Testcases for the Windows Guest Additions Installer Helper DLL.
  */
 
 /*
- * Copyright (C) 2019-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2019-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

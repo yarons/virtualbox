@@ -1,10 +1,10 @@
-/* $Id: UIUSBFiltersEditor.cpp 97111 2022-10-12 13:18:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,12 +1,12 @@
 @echo off
-REM $Id: comregister.cmd 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+REM $Id: comregister.cmd 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 REM
 REM Script to register the VirtualBox COM classes
 REM (both inproc and out-of-process)
 REM
 
 REM
-REM Copyright (C) 2006-2022 Oracle and/or its affiliates.
+REM Copyright (C) 2006-2023 Oracle and/or its affiliates.
 REM
 REM This file is part of VirtualBox base platform packages, as
 REM available from https://www.virtualbox.org.

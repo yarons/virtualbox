@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFilterImpl.cpp 97890 2022-12-29 14:58:32Z knut.osmundsen@oracle.com $ */
+/* $Id: USBDeviceFilterImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

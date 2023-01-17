@@ -1,10 +1,10 @@
-/* $Id: VBoxVideoIPRT.h 97886 2022-12-28 12:42:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoIPRT.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
 
 /*
- * Copyright (C) 2017-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

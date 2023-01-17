@@ -1,10 +1,10 @@
-/* $Id: DrvIntNet.cpp 97813 2022-12-15 18:47:54Z alexander.eichner@oracle.com $ */
+/* $Id: DrvIntNet.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

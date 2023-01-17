@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 97935 2022-12-31 21:58:24Z jack.doherty@oracle.com $
+# $Id: tdApi1.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
 
 __copyright__ = \
 """
-Copyright (C) 2010-2022 Oracle and/or its affiliates.
+Copyright (C) 2010-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 97935 $"
+__version__ = "$Revision: 98103 $"
 
 
 # Standard Python imports.

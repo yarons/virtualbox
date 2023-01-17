@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 97234 2022-10-19 10:24:31Z dmitrii.grigorev@oracle.com $
+# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for SoftFloat-3e.
 #
 
 #
-# Copyright (C) 2022 Oracle and/or its affiliates.
+# Copyright (C) 2022-2023 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

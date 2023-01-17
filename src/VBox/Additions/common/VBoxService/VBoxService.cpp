@@ -1,10 +1,10 @@
-/* $Id: VBoxService.cpp 96503 2022-08-25 22:40:12Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
 
 /*
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

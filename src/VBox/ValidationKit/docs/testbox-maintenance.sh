@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: testbox-maintenance.sh 96564 2022-09-01 09:06:13Z andreas.loeffler@oracle.com $
+# $Id: testbox-maintenance.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - testbox maintenance service
 #
 
 #
-# Copyright (C) 2006-2022 Oracle and/or its affiliates.
+# Copyright (C) 2006-2023 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

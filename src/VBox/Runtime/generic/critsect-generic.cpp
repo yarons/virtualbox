@@ -1,10 +1,10 @@
-/* $Id: critsect-generic.cpp 96446 2022-08-23 22:13:16Z knut.osmundsen@oracle.com $ */
+/* $Id: critsect-generic.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

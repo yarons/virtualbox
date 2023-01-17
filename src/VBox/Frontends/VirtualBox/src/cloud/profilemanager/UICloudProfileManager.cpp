@@ -1,10 +1,10 @@
-/* $Id: UICloudProfileManager.cpp 96903 2022-09-27 15:42:07Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
 
 /*
- * Copyright (C) 2009-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: NEMR3.cpp 97188 2022-10-18 07:42:50Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
 
 /*
- * Copyright (C) 2018-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

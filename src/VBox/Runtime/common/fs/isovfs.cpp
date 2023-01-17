@@ -1,10 +1,10 @@
-/* $Id: isovfs.cpp 96861 2022-09-26 10:52:54Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
 
 /*
- * Copyright (C) 2017-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2017-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

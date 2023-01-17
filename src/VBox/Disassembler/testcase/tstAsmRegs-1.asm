@@ -1,4 +1,4 @@
-; $Id: tstAsmRegs-1.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: tstAsmRegs-1.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; Disassembly testcase - Accessing all the registers
 ;
@@ -8,7 +8,7 @@
 ;
 
 ;
-; Copyright (C) 2008-2022 Oracle and/or its affiliates.
+; Copyright (C) 2008-2023 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

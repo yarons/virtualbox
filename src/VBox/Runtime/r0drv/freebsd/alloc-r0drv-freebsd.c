@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 97912 2022-12-29 22:47:38Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-r0drv-freebsd.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -6,7 +6,7 @@
 /*
  * Contributed by knut st. osmundsen.
  *
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

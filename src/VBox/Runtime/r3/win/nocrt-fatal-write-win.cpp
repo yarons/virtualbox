@@ -1,10 +1,10 @@
-/* $Id: nocrt-fatal-write-win.cpp 96415 2022-08-22 20:28:16Z knut.osmundsen@oracle.com $ */
+/* $Id: nocrt-fatal-write-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - No-CRT - Fatal Message Writing Primitives, Windows.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

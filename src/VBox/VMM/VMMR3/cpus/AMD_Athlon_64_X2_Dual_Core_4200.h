@@ -1,4 +1,4 @@
-/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "AMD Athlon 64 X2 Dual Core 4200+".
  * Generated at 2014-02-28T15:19:16Z by VBoxCpuReport v4.3.53r92578 on linux.amd64                                                        .
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

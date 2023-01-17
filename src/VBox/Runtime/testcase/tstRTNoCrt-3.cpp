@@ -1,10 +1,10 @@
-/* $Id: tstRTNoCrt-3.cpp 97862 2022-12-23 16:55:57Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-3.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT SEH bits on Windows.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

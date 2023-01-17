@@ -1,11 +1,11 @@
-/* $Id: tstOVF.cpp 96850 2022-09-26 04:39:32Z knut.osmundsen@oracle.com $ */
+/* $Id: tstOVF.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
  */
 
 /*
- * Copyright (C) 2010-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

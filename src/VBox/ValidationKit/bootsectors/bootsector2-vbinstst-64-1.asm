@@ -1,11 +1,11 @@
-; $Id: bootsector2-vbinstst-64-1.asm 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+; $Id: bootsector2-vbinstst-64-1.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; Bootsector tests instructions in 64-bit mode.
 ;   VBoxManage setextradata bs-vbinstst-64-1 VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled  1
 ;
 
 ;
-; Copyright (C) 2007-2022 Oracle and/or its affiliates.
+; Copyright (C) 2007-2023 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

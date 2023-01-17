@@ -1,4 +1,4 @@
-/* $Id: IEMGenFpuConstants.c 96965 2022-10-03 12:00:11Z dmitrii.grigorev@oracle.com $ */
+/* $Id: IEMGenFpuConstants.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEMGenFpuConstants - Generates FPU constants for IEMAllAImplC.cpp.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

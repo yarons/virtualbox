@@ -1,10 +1,10 @@
-/* $Id: seamless-x11.cpp 97170 2022-10-17 16:43:30Z vadim.galitsyn@oracle.com $ */
+/* $Id: seamless-x11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

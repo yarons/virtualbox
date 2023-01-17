@@ -1,10 +1,10 @@
-/* $Id: NetIf-solaris.cpp 98021 2023-01-06 20:41:20Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-solaris.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

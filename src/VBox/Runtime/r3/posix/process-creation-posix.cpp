@@ -1,10 +1,10 @@
-/* $Id: process-creation-posix.cpp 96820 2022-09-21 22:26:43Z knut.osmundsen@oracle.com $ */
+/* $Id: process-creation-posix.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

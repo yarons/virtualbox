@@ -1,4 +1,4 @@
-/* $Id: tlsdir-vcc.c 96593 2022-09-04 17:34:04Z knut.osmundsen@oracle.com $ */
+/* $Id: tlsdir-vcc.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - PE/Windows TLS Directory.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

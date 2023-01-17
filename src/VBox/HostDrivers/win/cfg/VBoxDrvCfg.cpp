@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 96572 2022-09-01 20:36:22Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvCfg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2011-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

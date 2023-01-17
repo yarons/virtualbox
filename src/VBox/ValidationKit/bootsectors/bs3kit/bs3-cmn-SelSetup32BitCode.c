@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-SelSetup32BitCode.c 97320 2022-10-27 12:45:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-SelSetup32BitCode.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3SelSetup32BitCode
  */
 
 /*
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

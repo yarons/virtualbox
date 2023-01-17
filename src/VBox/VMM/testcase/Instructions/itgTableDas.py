@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: itgTableDas.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: itgTableDas.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 DAS (instruction) result table.
@@ -8,7 +8,7 @@ DAS (instruction) result table.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2022 Oracle and/or its affiliates.
+Copyright (C) 2012-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -28,7 +28,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 96407 $";
+__version__ = "$Revision: 98103 $";
 
 
 ## The 32-bit GCC (C99) program that produced the table below.

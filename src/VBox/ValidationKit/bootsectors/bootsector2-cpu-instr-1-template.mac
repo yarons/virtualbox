@@ -1,10 +1,10 @@
-; $Id: bootsector2-cpu-instr-1-template.mac 97116 2022-10-12 15:07:25Z michal.necasek@oracle.com $
+; $Id: bootsector2-cpu-instr-1-template.mac 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; Bootsector test for misc instruction - multi mode template.
 ;
 
 ;
-; Copyright (C) 2007-2022 Oracle and/or its affiliates.
+; Copyright (C) 2007-2023 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

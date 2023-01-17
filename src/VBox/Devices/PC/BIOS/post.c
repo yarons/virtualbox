@@ -1,10 +1,10 @@
-/* $Id: post.c 97726 2022-12-02 01:01:48Z knut.osmundsen@oracle.com $ */
+/* $Id: post.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * BIOS POST routines. Used only during initialization.
  */
 
 /*
- * Copyright (C) 2004-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2004-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

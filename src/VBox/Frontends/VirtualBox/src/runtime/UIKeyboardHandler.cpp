@@ -1,10 +1,10 @@
-/* $Id: UIKeyboardHandler.cpp 97853 2022-12-22 10:48:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
 
 /*
- * Copyright (C) 2010-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

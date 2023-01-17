@@ -1,10 +1,10 @@
-/* $Id: UIProgressTask.cpp 97595 2022-11-17 16:07:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIProgressTask.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class implementation.
  */
 
 /*
- * Copyright (C) 2020-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

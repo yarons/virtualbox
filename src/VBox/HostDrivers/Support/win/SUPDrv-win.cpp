@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-win.cpp 97023 2022-10-06 08:23:59Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

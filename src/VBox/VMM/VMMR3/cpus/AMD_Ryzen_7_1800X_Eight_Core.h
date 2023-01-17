@@ -1,11 +1,11 @@
-/* $Id: AMD_Ryzen_7_1800X_Eight_Core.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: AMD_Ryzen_7_1800X_Eight_Core.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "AMD Ryzen 7 1800X Eight-Core".
  * Generated at 2020-07-15T16:30:16Z by VBoxCpuReport v6.1.97r139174 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

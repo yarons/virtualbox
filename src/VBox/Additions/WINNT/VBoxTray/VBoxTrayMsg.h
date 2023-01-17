@@ -1,10 +1,10 @@
-/* $Id: VBoxTrayMsg.h 96451 2022-08-24 09:56:54Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTrayMsg.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTrayMsg - Globally registered messages (RPC) to/from VBoxTray.
  */
 
 /*
- * Copyright (C) 2010-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsSerial.cpp 97128 2022-10-13 13:05:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

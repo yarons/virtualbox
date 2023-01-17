@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSelfTest2.py 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+# $Id: tdSelfTest2.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 Test Manager / Suite Self Test #2 - Everything should succeed.
@@ -8,7 +8,7 @@ Test Manager / Suite Self Test #2 - Everything should succeed.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2022 Oracle and/or its affiliates.
+Copyright (C) 2010-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 96407 $"
+__version__ = "$Revision: 98103 $"
 
 
 # Standard Python imports.

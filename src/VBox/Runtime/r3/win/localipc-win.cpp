@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 96599 2022-09-05 02:05:21Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

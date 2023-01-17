@@ -1,10 +1,10 @@
-/* $Id: UISession.h 97588 2022-11-17 10:10:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
 
 /*
- * Copyright (C) 2010-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

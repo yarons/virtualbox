@@ -1,11 +1,11 @@
 @echo off
-REM $Id: autoexec-testbox.cmd 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+REM $Id: autoexec-testbox.cmd 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 REM REM @file
 REM VirtualBox Validation Kit - testbox script, automatic execution wrapper.
 REM
 
 REM
-REM Copyright (C) 2006-2022 Oracle and/or its affiliates.
+REM Copyright (C) 2006-2023 Oracle and/or its affiliates.
 REM
 REM This file is part of VirtualBox base platform packages, as
 REM available from https://www.virtualbox.org.
@@ -35,7 +35,7 @@ REM
 REM SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 REM
 
-@echo "$Id: autoexec-testbox.cmd 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $"
+@echo "$Id: autoexec-testbox.cmd 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $"
 @echo on
 setlocal EnableExtensions
 set exe=python.exe

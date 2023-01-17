@@ -1,10 +1,10 @@
-﻿/* $Id: RTNtDbgHelp.cpp 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+﻿/* $Id: RTNtDbgHelp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -371,7 +371,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 96407 $");
+                RTPrintf("$Revision: 98103 $");
                 break;
 
             case 'h':

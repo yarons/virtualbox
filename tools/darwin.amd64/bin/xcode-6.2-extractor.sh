@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: xcode-6.2-extractor.sh 96416 2022-08-22 20:36:29Z klaus.espenlaub@oracle.com $
+# $Id: xcode-6.2-extractor.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ## @file
 # Extracts the necessary bits from the Xcode 6.2 (Xcode_6.2.dmg,
 # md5sum fe4c6c99182668cf14bfa5703bedeed6) and the Command Line
@@ -11,7 +11,7 @@
 #
 
 #
-# Copyright (C) 2014-2022 Oracle and/or its affiliates.
+# Copyright (C) 2014-2023 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: tstVDIo.cpp 97854 2022-12-22 19:30:51Z jack.doherty@oracle.com $ */
+/* $Id: tstVDIo.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox HDD container test utility - I/O replay.
  */
 
 /*
- * Copyright (C) 2011-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2011-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

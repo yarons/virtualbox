@@ -1,10 +1,10 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 97008 2022-10-05 15:45:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

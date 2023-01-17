@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFlt-linux.c 97665 2022-11-23 12:35:21Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

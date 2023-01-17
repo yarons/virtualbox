@@ -1,10 +1,10 @@
-/* $Id: VMXAllTemplate.cpp.h 97777 2022-12-12 13:14:28Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
 
 /*
- * Copyright (C) 2012-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2012-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: GuestDnDTargetImpl.cpp 97802 2022-12-14 14:58:10Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
 
 /*
- * Copyright (C) 2014-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

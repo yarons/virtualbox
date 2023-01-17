@@ -1,10 +1,10 @@
-/* $Id: VBoxDX.cpp 96887 2022-09-26 19:18:48Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxDX.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
 
 /*
- * Copyright (C) 2022 Oracle and/or its affiliates.
+ * Copyright (C) 2022-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

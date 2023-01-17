@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporting.py 97280 2022-10-24 14:48:24Z knut.osmundsen@oracle.com $
+# $Id: reporting.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 
 """
 Test Result Report Writer.
@@ -10,7 +10,7 @@ or normal text report from it.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2022 Oracle and/or its affiliates.
+Copyright (C) 2010-2023 Oracle and/or its affiliates.
 
 This file is part of VirtualBox base platform packages, as
 available from https://www.virtualbox.org.
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
 
-__version__ = "$Revision: 97280 $"
+__version__ = "$Revision: 98103 $"
 
 # Standard python imports.
 import os;

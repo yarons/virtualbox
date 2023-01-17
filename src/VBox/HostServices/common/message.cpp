@@ -1,10 +1,10 @@
-/* $Id: message.cpp 97742 2022-12-05 20:16:42Z andreas.loeffler@oracle.com $ */
+/* $Id: message.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Base class for wrapping HCGM messages.
  */
 
 /*
- * Copyright (C) 2018-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2018-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

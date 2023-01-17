@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: thread2-r0drv-netbsd.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -6,7 +6,7 @@
 /*
  * Contributed by knut st. osmundsen.
  *
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

@@ -1,10 +1,10 @@
-/* $Id: nt.h 96845 2022-09-23 13:33:03Z knut.osmundsen@oracle.com $ */
+/* $Id: nt.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
 
 /*
- * Copyright (C) 2010-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

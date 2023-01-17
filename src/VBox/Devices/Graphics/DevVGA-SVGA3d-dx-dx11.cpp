@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 98052 2023-01-11 05:57:27Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
 
 /*
- * Copyright (C) 2020-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2020-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

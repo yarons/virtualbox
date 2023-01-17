@@ -1,10 +1,10 @@
-/* $Id: VBoxManageControlVM.cpp 96907 2022-09-27 21:30:04Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
 
 /*
- * Copyright (C) 2006-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

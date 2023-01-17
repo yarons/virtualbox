@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-basic-2-x0.c 97971 2023-01-03 23:50:14Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2-x0.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C test driver code (16-bit).
  */
 
 /*
- * Copyright (C) 2007-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2007-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

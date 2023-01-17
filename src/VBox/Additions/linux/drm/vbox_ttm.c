@@ -1,10 +1,10 @@
-/* $Id: vbox_ttm.c 97164 2022-10-17 13:30:45Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  * This file is based on ast_ttm.c
  * Copyright 2012 Red Hat Inc.
  *

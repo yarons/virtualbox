@@ -1,11 +1,11 @@
 @echo off
-rem $Id: Single-3-Repack.cmd 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $
+rem $Id: Single-3-Repack.cmd 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 or x86 drivers.
 rem
 
 rem
-rem Copyright (C) 2018-2022 Oracle and/or its affiliates.
+rem Copyright (C) 2018-2023 Oracle and/or its affiliates.
 rem
 rem This file is part of VirtualBox base platform packages, as
 rem available from https://www.virtualbox.org.

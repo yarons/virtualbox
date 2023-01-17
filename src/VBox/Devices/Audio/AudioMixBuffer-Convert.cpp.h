@@ -1,10 +1,10 @@
-/* $Id: AudioMixBuffer-Convert.cpp.h 98017 2023-01-06 19:13:36Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioMixBuffer-Convert.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * Audio mixing buffer - Format conversion template.
  */
 
 /*
- * Copyright (C) 2014-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2014-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

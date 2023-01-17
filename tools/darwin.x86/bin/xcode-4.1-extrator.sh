@@ -1,10 +1,10 @@
 #!/bin/bash
-# $Id: xcode-4.1-extrator.sh 96416 2022-08-22 20:36:29Z klaus.espenlaub@oracle.com $
+# $Id: xcode-4.1-extrator.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ## @file
 # Extracts the necessary bits from the Xcode 4.1 lion package (inside installercode_41_lion.dmg).
 
 #
-# Copyright (C) 2014-2022 Oracle and/or its affiliates.
+# Copyright (C) 2014-2023 Oracle and/or its affiliates.
 #
 # This file is part of VirtualBox base platform packages, as
 # available from https://www.virtualbox.org.

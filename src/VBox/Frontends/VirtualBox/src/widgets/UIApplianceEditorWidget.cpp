@@ -1,10 +1,10 @@
-/* $Id: UIApplianceEditorWidget.cpp 97590 2022-11-17 10:51:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2009-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

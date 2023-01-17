@@ -1,10 +1,10 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 97016 2022-10-05 20:01:10Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
 
 /*
- * Copyright (C) 2008-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2008-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.

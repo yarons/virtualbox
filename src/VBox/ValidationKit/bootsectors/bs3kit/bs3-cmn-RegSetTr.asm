@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-RegSetTr.asm 97315 2022-10-26 22:49:53Z knut.osmundsen@oracle.com $
+; $Id: bs3-cmn-RegSetTr.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3RegSetTr
 ;
 
 ;
-; Copyright (C) 2007-2022 Oracle and/or its affiliates.
+; Copyright (C) 2007-2023 Oracle and/or its affiliates.
 ;
 ; This file is part of VirtualBox base platform packages, as
 ; available from https://www.virtualbox.org.

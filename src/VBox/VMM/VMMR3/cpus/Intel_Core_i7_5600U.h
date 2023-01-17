@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_5600U.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: Intel_Core_i7_5600U.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPU database entry "Intel Core i7-5600U".
  * Generated at 2015-11-04T14:14:27Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2022 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2023 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
