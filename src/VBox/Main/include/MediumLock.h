@@ -1,4 +1,4 @@
-/* $Id: MediumLock.h 96407 2022-08-22 17:43:14Z klaus.espenlaub@oracle.com $ */
+/* $Id: MediumLock.h 98102 2023-01-17 11:11:43Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -340,6 +340,9 @@ public:
      * @return COM status code
      */
     HRESULT Unlock();
+
+    /** Introspection. */
+    bool IsLocked(void) const { return mIsLocked; }
 
 private:
     typedef std::map<ComObjPtr<MediumAttachment>, MediumLockList *> Base;

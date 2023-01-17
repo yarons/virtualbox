@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 98101 2023-01-17 10:59:59Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 98102 2023-01-17 11:11:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4012,6 +4012,7 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                             delete pMediumLockList;
                         else
                         {
+                            Assert(mData->mSession.mLockedMedia.IsLocked());
                             mData->mSession.mLockedMedia.Unlock();
                             alock.release();
                             rc = mData->mSession.mLockedMedia.Insert(pAttachTemp, pMediumLockList);
@@ -4113,6 +4114,7 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                                     delete pMediumLockList;
                                 else
                                 {
+                                    Assert(mData->mSession.mLockedMedia.IsLocked());
                                     mData->mSession.mLockedMedia.Unlock();
                                     alock.release();
                                     rc = mData->mSession.mLockedMedia.Insert(pAttachTemp, pMediumLockList);
@@ -4388,6 +4390,7 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                 delete pMediumLockList;
             else
             {
+                Assert(mData->mSession.mLockedMedia.IsLocked());
                 mData->mSession.mLockedMedia.Unlock();
                 alock.release();
                 rc = mData->mSession.mLockedMedia.Insert(attachment, pMediumLockList);
@@ -12068,6 +12071,7 @@ void Machine::i_commitMedia(bool aOnline /*= false*/)
                     /* unlock if there's a need to change the locking */
                     if (!fMediaNeedsLocking)
                     {
+                        Assert(mData->mSession.mLockedMedia.IsLocked());
                         rc = mData->mSession.mLockedMedia.Unlock();
                         AssertComRC(rc);
                         fMediaNeedsLocking = true;
