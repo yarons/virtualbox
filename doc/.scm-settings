@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98110 2023-01-18 10:12:09Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the docs.
 #
@@ -33,6 +33,7 @@
 /*.odg:  --treat-as binary
 /*.sxi:  --treat-as binary
 /*.vpp:  --treat-as binary
+/*.wiki: --treat-as plaintext
 
 # Abusing --external-copyright.
 /*.txvpck:                      --treat-as xml --external-copyright --no-convert-eol
