@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98114 2023-01-18 10:23:59Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -87,6 +87,7 @@
 # Solaris stuff.
 /solaris/vboxconfig.sh:                         --no-convert-tabs
 /solaris/*.xml:                                 --no-convert-eol
+/solaris/vbox-ips.mog:                          --treat-as shell --external-copyright
 
 --filter-out-files /solaris/ips/vbox.mog
 --filter-out-files /solaris/vbox.pkginfo
