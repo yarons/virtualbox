@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scm.cpp 98113 2023-01-18 10:22:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -829,7 +829,8 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY("nsis",       g_apRewritersFor_NsisFiles,        false, "*.nsh|*.nsi|*.nsis" ),
     SCM_CFG_ENTRY("java",       g_apRewritersFor_Java,             false, "*.java" ),
     SCM_CFG_ENTRY("scm",        g_apRewritersFor_ScmSettings,      false, "*.scm-settings" ),
-    SCM_CFG_ENTRY("image",      g_apRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns|*.tiff|*.tif|*.xcf|*.gif" ),
+    SCM_CFG_ENTRY("image",      g_apRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns|*.tiff|*.tif|"
+                                                                          "*.xcf|*.gif|*.jar|*.dll|*.exe|*.ttf|*.woff|*.woff2" ),
     SCM_CFG_ENTRY("xslt",       g_apRewritersFor_Xslt,             false, "*.xsl" ),
     SCM_CFG_ENTRY("xml",        g_apRewritersFor_Xml,              false, "*.xml|*.dist|*.qhcp" ),
     SCM_CFG_ENTRY("wix",        g_apRewritersFor_Wix,              false, "*.wxi|*.wxs|*.wxl" ),
@@ -3109,7 +3110,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 98103 $";
+                static const char s_szRev[] = "$Revision: 98113 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
