@@ -1,6 +1,6 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98111 2023-01-18 10:12:29Z knut.osmundsen@oracle.com $
 ## @file
-# Source code massager settings for the NT credential provider.
+# Source code massager settings for the NT additions.
 #
 
 #
@@ -25,5 +25,8 @@
 # SPDX-License-Identifier: GPL-3.0-only
 #
 
---filter-out-files /*.reg
+# .reg-files uses ';' as comment, so throw them in with linker definition
+# files but with force CRLF ending style.  We also skip the copyright and
+# license requirement for now.
+/*.reg: --treat-as def --del-action force-native-eol --add-action force-crlf --external-copyright
 
