@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98112 2023-01-18 10:15:13Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for PC devices/drivers.
 #
@@ -84,6 +84,8 @@
 /ipxe/*.S:                       --treat-as .c
 /ipxe/*.lds:                     --treat-as .h
 /ipxe/*.gdb:                     --treat-as .sh --dont-set-svn-executable
+/ipxe/*.ipxe:                    --treat-as shell
+/ipxe/*.travis.yml:              --treat-as plaintext --dont-set-svn-keywords
 /ipxe/*Makefile*:                --treat-as Makefile
 /ipxe/src/util/geniso:           --treat-as .sh
 /ipxe/src/util/genliso:          --treat-as .sh
@@ -92,6 +94,7 @@
 /ipxe/contrib/vm/cow:            --treat-as .sh
 /ipxe/contrib/vm/serial-console: --treat-as .pl
 /ipxe/*:                         --no-fix-header-guards
+
 
 --filter-out-files /ipxe/*.txt
 --filter-out-files /ipxe/COPYING
