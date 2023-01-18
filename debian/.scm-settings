@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98109 2023-01-18 10:00:00Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the debian packaging.
 #
@@ -26,3 +26,9 @@
 #
 
 /rules: --treat-as Makefile --no-convert-eol --dont-set-svn-executable
+/changelog:           --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
+/compat:              --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
+/control:             --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
+/dirs:                --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
+/lintian-override.in: --treat-as plaintext --external-copyright --del-action force-native-eol --add-action force-lf
+/templates:           --treat-as plaintext --external-copyright --no-strip-trailing-blanks
