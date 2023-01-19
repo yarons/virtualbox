@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for the DHCP server.
 #
@@ -53,7 +53,7 @@ DLLS     += VBoxNetDHCP
 VBoxNetDHCP_TEMPLATE := VBoxR3Dll
 else
 PROGRAMS += VBoxNetDHCP
-VBoxNetDHCP_TEMPLATE := VBOXR3EXE
+VBoxNetDHCP_TEMPLATE := VBoxR3Exe
 endif
 
 # (current dir is for for lwipopts.h)

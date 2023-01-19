@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98120 2023-01-18 12:50:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Audio Utilities.
 #
@@ -195,7 +195,7 @@ vkatadd_LIBS.solaris   = m
 ifdef VBOX_WITH_HOST_SHIPPING_AUDIO_TEST
  ifn1of ($(KBUILD_TARGET), os2 freebsd netbsd openbsd)
   ifndef VBOX_ONLY_ADDITIONS
-   vkathost_TEMPLATE  := VBOXR3EXE
+   vkathost_TEMPLATE  := VBoxR3Exe
    vkathost_EXTENDS   := vkat
    vkathost_INST      := $(INST_BIN)
    vkathost_NAME      := VBoxAudioTest

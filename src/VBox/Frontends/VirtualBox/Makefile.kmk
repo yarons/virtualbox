@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98127 2023-01-19 01:54:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2004,7 +2004,7 @@ endif
 		--output $@ $<
 
  PROGRAMS += vmstarter
- vmstarter_TEMPLATE = VBOXR3EXE
+ vmstarter_TEMPLATE = VBoxR3Exe
  vmstarter_OBJCXXFLAGS += -Wno-error=deprecated-declarations ## @todo fix deprecate API use!
  vmstarter_LDFLAGS += -framework AppKit
  vmstarter_SOURCES = src/platform/darwin/vmstarter.mm

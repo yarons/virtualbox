@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -51,7 +51,7 @@ VBoxVMMPreloadHardened_NAME     = VBoxVMMPreload
 #
 # The real thing
 #
-VBoxVMMPreload_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBoxR3Dll,VBOXR3EXE)
+VBoxVMMPreload_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBoxR3Dll,VBoxR3Exe)
 VBoxVMMPreload_SOURCES    = VBoxVMMPreload.cpp
 VBoxVMMPreload_LIBS = $(LIB_RUNTIME)
 ifdef VBOX_WITH_HARDENING

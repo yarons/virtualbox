@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for the Ring-3 based network switch process.
 #
@@ -32,7 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # The internal network switch module.
 #
 PROGRAMS += VBoxIntNetSwitch
-VBoxIntNetSwitch_TEMPLATE := VBOXR3EXE
+VBoxIntNetSwitch_TEMPLATE := VBoxR3Exe
 
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 VBoxIntNetSwitch_DEFS      = KBUILD_TYPE="$(KBUILD_TYPE)"
