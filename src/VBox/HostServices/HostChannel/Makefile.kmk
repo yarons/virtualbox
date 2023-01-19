@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Host Channel Service.
 #
@@ -32,7 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # The service DLL.
 #
 DLLS += VBoxHostChannel
-VBoxHostChannel_TEMPLATE  = VBOXR3
+VBoxHostChannel_TEMPLATE  = VBoxR3Dll
 VBoxHostChannel_DEFS      = VBOX_WITH_HGCM
 VBoxHostChannel_INCS.win  = \
 	$(VBOX_PATH_SDK)

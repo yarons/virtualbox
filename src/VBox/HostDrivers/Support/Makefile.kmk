@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -184,7 +184,7 @@ tst: $(VBOX_SUP_WIN_CERTS_FILE)
 #
 # The Ring-3 Support Library (this is linked into the IPRT dll, VBoxRT).
 #
-SUPR3_TEMPLATE      = VBOXR3
+SUPR3_TEMPLATE      = VBoxR3Dll
 SUPR3_DEFS          = \
 	IN_SUP_R3 IN_RT_R3 \
 	$(if $(VBOX_WITH_SUPSVC),VBOX_WITH_SUPSVC) \

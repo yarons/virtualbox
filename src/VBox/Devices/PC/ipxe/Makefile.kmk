@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for iPXE.
 #
@@ -39,7 +39,7 @@ VBOX_PATH_IPXE_SRC := $(PATH_SUB_CURRENT)
 #               Will be linked into VBoxDD2.
 #
 LIBRARIES += iPxeBiosBin
-iPxeBiosBin_TEMPLATE = VBOXR3
+iPxeBiosBin_TEMPLATE = VBoxR3Dll
 iPxeBiosBin_DEFS     = IN_VBOXDD2
 iPxeBiosBin_SOURCES  = $(iPxeBiosBin_0_OUTDIR)/iPxeBiosBin.c
 iPxeBiosBin_CLEAN    = \

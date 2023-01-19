@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -35,7 +35,7 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 # The Shared Clipboard service DLL.
 #
 DLLS += VBoxSharedClipboard
-VBoxSharedClipboard_TEMPLATE  = VBOXR3
+VBoxSharedClipboard_TEMPLATE  = VBoxR3Dll
 VBoxSharedClipboard_DEFS      = \
 	VBOX_WITH_HGCM \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS),VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS,)

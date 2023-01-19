@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -35,7 +35,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # The drag and drop service DLL.
 #
 DLLS += VBoxDragAndDropSvc
-VBoxDragAndDropSvc_TEMPLATE  = VBOXR3
+VBoxDragAndDropSvc_TEMPLATE  = VBoxR3Dll
 VBoxDragAndDropSvc_NAME.os2  = VBoxDnD
 VBoxDragAndDropSvc_DEFS      = \
 	VBOX_WITH_HGCM \

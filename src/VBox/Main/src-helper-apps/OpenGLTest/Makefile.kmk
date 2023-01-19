@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98127 2023-01-19 01:54:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the OpenGLTest helper app.
 #
@@ -36,7 +36,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # starts VBoxTestOGL.
 #
 LIBRARIES += VBoxOGLTest
-VBoxOGLTest_TEMPLATE         := VBOXR3
+VBoxOGLTest_TEMPLATE         := VBoxR3Dll
 ifneq ($(KBUILD_TARGET),darwin)
  VBoxOGLTest_SOURCES         := OpenGLTest.cpp
 else

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -49,7 +49,7 @@ endif
 #       to their source list.
 #
 LIBRARIES += USBLib
-USBLib_TEMPLATE       = VBOXR3
+USBLib_TEMPLATE       = VBoxR3Dll
 USBLib_SDKS.win       = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
 USBLib_DEFS           = IN_USBLIB
 USBLib_DEFS.os2       = STATIC_USBCALLS

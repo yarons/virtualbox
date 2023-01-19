@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -166,7 +166,7 @@ endif # VBOX_WITH_OPEN_WATCOM
 # The library containing the PC BIOS image.
 #
 LIBRARIES += PcBiosBin
-PcBiosBin_TEMPLATE  = VBOXR3
+PcBiosBin_TEMPLATE  = VBoxR3Dll
 PcBiosBin_DEFS      = IN_VBOXDD2
 
 define def_VBoxPcBiosBin
