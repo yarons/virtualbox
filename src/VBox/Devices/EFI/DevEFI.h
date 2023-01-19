@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEFI.h 98131 2023-01-19 09:20:54Z alexander.eichner@oracle.com $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -122,8 +122,26 @@ typedef enum
 #define EFI_PANIC_CMD_MSG_GET_CHAR(u32) ((u32) & 0x7f)
 /** @} */
 
-/** Undefined port. */
-#define EFI_PORT_UNDEFINED      (EFI_PORT_BASE+0x2)
+/** EFI event signalling.
+ * A 16-bit event identifier is written first.
+ * It might follow a number of writes to convey additional data,
+ * the size depends on the event identifier.
+ */
+#define EFI_PORT_EVENT          (EFI_PORT_BASE+0x2)
+
+/**
+ * Events.
+ */
+typedef enum EFI_EVENT_TYPE
+{
+    /** Invalid event id. */
+    EFI_EVENT_TYPE_INVALID = 0,
+    /** Booting any guest OS failed. */
+    EFI_EVENT_TYPE_BOOT_FAILED,
+    /** 32bit blow up hack. */
+    EFI_EVENT_TYPE_16_BIT_HACK = 0x7fff
+} EFI_EVENT_TYPE;
+
 
 /** Debug logging.
  * The chars written goes to the log.
