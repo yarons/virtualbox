@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDM.cpp 98122 2023-01-19 00:03:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -2120,18 +2120,20 @@ DECLINLINE(int) pdmR3ResumeDrv(PPDMDRVINS pDrvIns, const char *pszDevName, uint3
  */
 DECLINLINE(int) pdmR3ResumeUsb(PPDMUSBINS pUsbIns)
 {
-    Assert(pUsbIns->Internal.s.fVMSuspended);
-    if (pUsbIns->pReg->pfnVMResume)
+    if (pUsbIns->Internal.s.fVMSuspended)
     {
-        LogFlow(("PDMR3Resume: Notifying - device '%s'/%d\n", pUsbIns->pReg->szName, pUsbIns->iInstance));
-        int rc = VINF_SUCCESS; pUsbIns->pReg->pfnVMResume(pUsbIns);
-        if (RT_FAILURE(rc))
+        if (pUsbIns->pReg->pfnVMResume)
         {
-            LogRel(("PDMR3Resume: Device '%s'/%d -> %Rrc\n", pUsbIns->pReg->szName, pUsbIns->iInstance, rc));
-            return rc;
+            LogFlow(("PDMR3Resume: Notifying - device '%s'/%d\n", pUsbIns->pReg->szName, pUsbIns->iInstance));
+            int rc = VINF_SUCCESS; pUsbIns->pReg->pfnVMResume(pUsbIns);
+            if (RT_FAILURE(rc))
+            {
+                LogRel(("PDMR3Resume: Device '%s'/%d -> %Rrc\n", pUsbIns->pReg->szName, pUsbIns->iInstance, rc));
+                return rc;
+            }
         }
+        pUsbIns->Internal.s.fVMSuspended = false;
     }
-    pUsbIns->Internal.s.fVMSuspended = false;
     return VINF_SUCCESS;
 }
 
