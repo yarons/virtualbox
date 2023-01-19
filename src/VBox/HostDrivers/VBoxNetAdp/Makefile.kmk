@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98125 2023-01-19 01:39:29Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -44,7 +44,7 @@ if1of ($(KBUILD_TARGET), solaris darwin freebsd)
  #
  ifdef VBOX_WITH_VBOXDRV
   SYSMODS += VBoxNetAdp
-  VBoxNetAdp_TEMPLATE         = VBOXR0DRV
+  VBoxNetAdp_TEMPLATE         = VBoxR0Drv
   VBoxNetAdp_INST             = $(INST_VBOXNETADP)$(if $(eq $(KBUILD_TARGET),darwin),Contents/MacOS/)
   VBoxNetAdp_DEBUG_INST.darwin= $(patsubst %/,%,$(INST_VBOXNETADP))
   VBoxNetAdp_NAME.solaris     = vboxnet
@@ -108,7 +108,7 @@ ifeq ($(KBUILD_TARGET),win)
  # VBoxNetAdp6.sys - The VirtualBox Adapter miniport driver.
  #
  SYSMODS.win += VBoxNetAdp6
- VBoxNetAdp6_TEMPLATE = VBOXR0DRV
+ VBoxNetAdp6_TEMPLATE = VBoxR0Drv
  if defined(VBOX_SIGNING_MODE)
   VBoxNetAdp6_INSTTYPE.win = none
   VBoxNetAdp6_DEBUG_INSTTYPE.win = both

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98125 2023-01-19 01:39:29Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the PCI passthru driver (VBoxPci).
 #
@@ -43,7 +43,7 @@ if1of ($(KBUILD_TARGET), linux)
   # The driver.
   #
   SYSMODS += VBoxPci
-  VBoxPci_TEMPLATE       = VBOXR0DRV
+  VBoxPci_TEMPLATE       = VBoxR0Drv
   VBoxPci_INST           = $(INST_VBOXPCI)$(if $(eq $(KBUILD_TARGET),darwin),Contents/MacOS/)
   VBoxPci_NAME.linux     = vboxpci
   VBoxPci_DEFS           = IN_RT_R0 VBOX_SVN_REV=$(VBOX_SVN_REV) IN_SUP_STATIC
