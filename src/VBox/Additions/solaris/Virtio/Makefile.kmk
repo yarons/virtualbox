@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for Solaris Virtio drivers.
 #
@@ -46,7 +46,7 @@ include $(KBUILD_PATH)/subheader.kmk
 #
 SYSMODS.solaris        += virtionet
 virtionet_NAME.solaris  = virtnet
-virtionet_TEMPLATE      = VBOXGUESTR0
+virtionet_TEMPLATE      = VBoxGuestR0Drv
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
  virtionet_DEFS         = VBOX_WITH_HGCM VBOX_SVN_REV=$(VBOX_SVN_REV) VBOX_VERSION_STRING="$(VBOX_VERSION_STRING)"
 else

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders FSD.
 #
@@ -35,7 +35,7 @@ include $(KBUILD_PATH)/subheader.kmk
 #       or the linker barfs at loadcfg.obj not containing a large enough load config structure.
 #
 SYSMODS += VBoxSF
-VBoxSF_TEMPLATE    = VBOXGUESTR0
+VBoxSF_TEMPLATE    = VBoxGuestR0Drv
 VBoxSF_DEFS        = LOG_TO_BACKDOOR VBOX_WITH_HGCM IN_RING0
 #VBoxSF_DEFS       += LOG_ENABLED
 

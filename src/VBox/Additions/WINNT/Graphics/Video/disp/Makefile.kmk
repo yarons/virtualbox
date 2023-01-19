@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -40,7 +40,7 @@ endif
 # Note. This has to run on NT4! (*_NT4 => *_W2K3 when targeting 64-bit.)
 #
 SYSMODS += VBoxDisp
-VBoxDisp_TEMPLATE      = VBOXGUESTR0
+VBoxDisp_TEMPLATE      = VBoxGuestR0Drv
 VBoxDisp_SYSSUFF       = .dll
 VBoxDisp_SDKS          = ReorderCompilerIncs $(VBOX_WINDDK_GST_NT4)
 VBoxDisp_DEFS.x86      = _WIN32_WINNT=0x0501

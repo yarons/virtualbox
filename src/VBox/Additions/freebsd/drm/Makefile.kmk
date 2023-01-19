@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (FreeBSD kernel OpenGL module).
 #
@@ -53,7 +53,7 @@ vboxvideo-mod_SOURCES     = $(subst ",,$(FILES_VBOXVIDEO_DRM_NOBIN))
 #
 # Note! Syntax checking only.
 #
-vboxvideo_drm_TEMPLATE      = VBOXGUESTR0
+vboxvideo_drm_TEMPLATE      = VBoxGuestR0Drv
 vboxvideo_drm_NAME          = vboxvideo
 vboxvideo_drm_DEFS          = VBOX_WITH_HGCM VBOX_SVN_REV=$(VBOX_SVN_REV)
 vboxvideo_drm_DEPS         += $(VBOX_SVN_REV_KMK)

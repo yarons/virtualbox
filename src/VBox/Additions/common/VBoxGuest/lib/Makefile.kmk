@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -68,7 +68,7 @@ LIBRARIES.win.amd64 += VBoxGuestR3Lib-x86 VBoxGuestR3LibShared-x86
 #
 # VBoxGuestR0Lib
 #
-VBoxGuestR0Lib_TEMPLATE     = VBOXGUESTR0LIB
+VBoxGuestR0Lib_TEMPLATE     = VBoxGuestR0DrvLib
 VBoxGuestR0Lib_DEFS         = VBOX_WITH_HGCM \
 	$(if $(VBOX_WITH_DRAG_AND_DROP),VBOX_WITH_DRAG_AND_DROP,) \
 	$(if $(VBOX_WITH_DRAG_AND_DROP_GH),VBOX_WITH_DRAG_AND_DROP_GH,)
@@ -96,7 +96,7 @@ endif
 #
 # VBoxGuestR0LibBase
 #
-VBoxGuestR0LibBase_TEMPLATE = VBOXGUESTR0LIB
+VBoxGuestR0LibBase_TEMPLATE = VBoxGuestR0DrvLib
 VBoxGuestR0LibBase_DEFS     = VBOX_WITH_HGCM VBGL_VBOXGUEST \
 	$(if $(VBOX_WITH_DRAG_AND_DROP),VBOX_WITH_DRAG_AND_DROP,) \
 	$(if $(VBOX_WITH_DRAG_AND_DROP_GH),VBOX_WITH_DRAG_AND_DROP_GH,)
