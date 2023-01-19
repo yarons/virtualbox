@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98144 2023-01-19 14:52:34Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the MsiHack.dll and MsiHackExtension.dll experiment.
 #
@@ -29,7 +29,7 @@ SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 DLLS += MsiHack
-MsiHack_TEMPLATE     = VBOXR3STATIC
+MsiHack_TEMPLATE     = VBoxR3StaticDll
 MsiHack_BLD_TRG_ARCH = x86
 MsiHack_SOURCES      = MsiHack.cpp
 

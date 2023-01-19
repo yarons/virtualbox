@@ -1,4 +1,4 @@
-/* $Id: MsiHack.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MsiHack.cpp 98144 2023-01-19 14:52:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * MsiHack - Exterimental DLL that intercept small ReadFile calls from
  *           MSI, CABINET and WINTEROP, buffering them using memory mapped files.
@@ -32,11 +32,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define IPRT_NO_CRT_FOR_3RD_PARTY /* temp hack */
 #include <iprt/win/windows.h>
 #include <iprt/string.h>
 #include <iprt/asm.h>
 #include <stdio.h>
-#include <wchar.h>
+#include <stdlib.h>
+#ifndef IPRT_NO_CRT
+# include <wchar.h>
+#endif
 
 
 /*********************************************************************************************************************************
