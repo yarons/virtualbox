@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 98123 2023-01-19 00:04:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -656,7 +656,7 @@ public:
     typedef std::map<Utf8Str, ComObjPtr<SharedFolder> > SharedFolderMap;
     typedef std::map<Utf8Str, SharedFolderData> SharedFolderDataMap;
     typedef std::map<Utf8Str, ComPtr<IMediumAttachment> > MediumAttachmentMap;
-    typedef std::list <USBStorageDevice> USBStorageDeviceList;
+    typedef std::list<USBStorageDevice> USBStorageDeviceList;
 
     static void i_powerUpThreadTask(VMPowerUpTask *pTask);
     static void i_powerDownThreadTask(VMPowerDownTask *pTask);
