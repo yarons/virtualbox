@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98127 2023-01-19 01:54:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for tstDragAndDropQt.
 #
@@ -37,7 +37,7 @@ PROGRAMS.linux += tstDragAndDropQt # Just needed for Linux right now.
 #
 # tstDragAndDropQt
 #
-tstDragAndDropQt_TEMPLATE = VBOXQTGUIEXE
+tstDragAndDropQt_TEMPLATE = VBoxQtGuiExe
 tstDragAndDropQt_DEFS     = UNIT_TEST TESTCASE
 tstDragAndDropQt_NAME     = tstDragAndDropQt
 tstDragAndDropQt_CXXFLAGS = \

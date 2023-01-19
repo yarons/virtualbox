@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98127 2023-01-19 01:54:42Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -112,7 +112,7 @@ USES += qt5
 USES += qt6
  endif
 DLLS += VBoxDbg
-VBoxDbg_TEMPLATE = VBOXQTGUI
+VBoxDbg_TEMPLATE = VBoxQtGuiDll
 VBoxDbg_DEFS = IN_DBG_R3
 VBoxDbg_INCS = .
 VBoxDbg_QT_MODULES = Core Gui Widgets

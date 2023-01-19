@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98127 2023-01-19 01:54:42Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1441,7 +1441,7 @@ ifeq ($(KBUILD_TARGET).$(VBOX_VCC_CRT_TYPE),win.d)
  ifndef VBOX_ONLY_EXTPACKS
   LIBRARIES += VBoxCOM-GUI
   USES += qt5
-  VBoxCOM-GUI_TEMPLATE = VBOXQTGUI$(if-expr defined(VBOX_WITH_HARDENING),,EXE)
+  VBoxCOM-GUI_TEMPLATE = $(if-expr defined(VBOX_WITH_HARDENING),VBoxQtGuiDll,VBoxQtGuiExe)
   VBoxCOM-GUI_EXTENDS  = VBoxCOM
  endif
 endif
