@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98130 2023-01-19 08:31:52Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -38,7 +38,7 @@ if !defined(VBOX_ONLY_EXTPACKS)
  #
  LIBRARIES += StorageLib #StorageLibNoDB
 
- StorageLib_TEMPLATE = VBOXR3
+ StorageLib_TEMPLATE = VBoxR3Dll
  StorageLib_DEFS     = IN_VBOXDDU
  ifeq ($(USER),bird)
   StorageLib_DEFS.debug += RTMEM_WRAP_TO_EF_APIS
@@ -80,7 +80,7 @@ if defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD)
  endif
 endif # VBOX_WITH_EXTPACK_PUEL
 
-#StorageLibNoDB_TEMPLATE = VBOXR3
+#StorageLibNoDB_TEMPLATE = VBoxR3Dll
 #StorageLibNoDB_DEFS     = IN_VBOXDDU VBOX_HDD_NO_DYNAMIC_BACKENDS
 #StorageLibNoDB_SOURCES  = \
 #	$(StorageLib_SOURCES)
