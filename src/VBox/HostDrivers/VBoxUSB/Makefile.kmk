@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -71,7 +71,7 @@ ifdef VBOX_WITH_TESTCASES
  # USBFilter testcase.
  #
  PROGRAMS += tstUSBFilter
- tstUSBFilter_TEMPLATE = VBOXR3TSTEXE
+ tstUSBFilter_TEMPLATE = VBoxR3TstExe
  tstUSBFilter_DEFS = IN_USBLIB
  tstUSBFilter_SOURCES  = \
  	testcase/tstUSBFilter.cpp

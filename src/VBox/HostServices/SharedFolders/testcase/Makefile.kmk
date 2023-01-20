@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98167 2023-01-20 20:22:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -55,7 +55,7 @@ ifdef VBOX_WITH_TESTCASES
 # Case conversion testcase.
 #
 PROGRAMS += tstShflCase
-tstShflCase_TEMPLATE = VBOXR3TSTEXE
+tstShflCase_TEMPLATE = VBoxR3TstExe
 tstShflCase_DEFS     = VBOX_WITH_HGCM
 tstShflCase_SOURCES  = tstShflCase.cpp
 tstShflCase_LIBS     = $(LIB_RUNTIME)
@@ -65,7 +65,7 @@ tstShflCase_LIBS     = $(LIB_RUNTIME)
 #
 
 PROGRAMS += tstSharedFolderService
-tstSharedFolderService_TEMPLATE = VBOXR3TSTEXE
+tstSharedFolderService_TEMPLATE = VBoxR3TstExe
 tstSharedFolderService_DEFS     = VBOX_WITH_HGCM UNITTEST
 tstSharedFolderService_INCS     = ..
 tstSharedFolderService_SOURCES  = \

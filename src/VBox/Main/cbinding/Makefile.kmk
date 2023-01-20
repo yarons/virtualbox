@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -130,7 +130,7 @@ if !defined(VBOX_ONLY_SDK)
   # C testcase using the dynamic glue.
   #
   PROGRAMS += tstCAPIGlue
-  tstCAPIGlue_TEMPLATE = VBOXR3TSTEXE
+  tstCAPIGlue_TEMPLATE = VBoxR3TstExe
   tstCAPIGlue_INCS = \
   	$(VBOX_PATH_SDK)/bindings/c/include \
   	$(VBOX_PATH_SDK)/bindings/c/glue

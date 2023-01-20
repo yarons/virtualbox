@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris Mouse Integration kernel module.
 #
@@ -68,7 +68,7 @@ vboxmslnk_SOURCES     = vboxmslnk.c
 if 0 # Broken - unresolved externals: vbglDriver*, RTR0AssertPanicSystem.
 if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
  PROGRAMS += tstVBoxMouse-solaris
- tstVBoxMouse-solaris_TEMPLATE = VBOXR3TSTEXE
+ tstVBoxMouse-solaris_TEMPLATE = VBoxR3TstExe
  tstVBoxMouse-solaris_SOURCES  = \
  	vboxms.c \
  	testcase/tstVBoxMouse-solaris.c

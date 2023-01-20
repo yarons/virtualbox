@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the X86 and AMD64 Instruction Tests.
 #
@@ -61,7 +61,7 @@ $(foreach py, $(addprefix $(PATH_SUB_CURRENT)/, InstructionTestGen.py ) , $(eval
 # Ring-3 test program based on IPRT.
 #
 PROGRAMS += tstVBInsTstR3
-tstVBInsTstR3_TEMPLATE = VBOXR3TSTEXE
+tstVBInsTstR3_TEMPLATE = VBoxR3TstExe
 tstVBInsTstR3_INCS = .
 tstVBInsTstR3_SOURCES = \
 	tstVBInsTstR3.cpp \

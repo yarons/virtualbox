@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for input test cases.
 #
@@ -31,7 +31,7 @@ include $(KBUILD_PATH)/subheader.kmk
 if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
  PROGRAMS += tstUsbMouse
 endif
-tstUsbMouse_TEMPLATE = VBOXR3TSTEXE
+tstUsbMouse_TEMPLATE = VBoxR3TstExe
 tstUsbMouse_DEFS     = VBOX_WITH_VUSB
 tstUsbMouse_INCS     = \
         ../../build

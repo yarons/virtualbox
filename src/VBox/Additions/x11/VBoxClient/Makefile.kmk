@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -193,7 +193,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
 #       OTHERS += $(tstSeamlessX11-auto_0_OUTDIR)/tstSeamlessX11-auto.run
 
   PROGRAMS += tstSeamlessX11-auto
-  tstSeamlessX11-auto_TEMPLATE = VBOXR3TSTEXE
+  tstSeamlessX11-auto_TEMPLATE = VBoxR3TstExe
   tstSeamlessX11-auto_SOURCES = \
           testcase/tstSeamlessX11-auto.cpp \
           seamless-x11.cpp
@@ -213,7 +213,7 @@ $$(tstSeamlessX11-auto_0_OUTDIR)/tstSeamlessX11-auto.run: \
   # the host and writing information about guest events to standard output.
   #
   PROGRAMS += tstSeamlessX11
-  tstSeamlessX11_TEMPLATE = VBOXR3TSTEXE
+  tstSeamlessX11_TEMPLATE = VBoxR3TstExe
   tstSeamlessX11_SOURCES = \
           testcase/tstSeamlessX11.cpp \
           seamless.cpp \

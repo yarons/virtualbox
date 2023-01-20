@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98151 2023-01-20 09:16:34Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3090,7 +3090,7 @@ if1of (VBoxRT,$(DLLS))
  # VBoxRTImpCheck - Import library check.
  #
  PROGRAMS += VBoxRTStableCheck
- VBoxRTStableCheck_TEMPLATE = VBOXR3TSTEXE
+ VBoxRTStableCheck_TEMPLATE = VBoxR3TstExe
  VBoxRTStableCheck_SOURCES  = \
  	VBox/VBoxRTStableCheck.cpp \
  	$(VBoxRTStableCheck_0_OUTDIR)/VBoxRTStableCheckA.asm
