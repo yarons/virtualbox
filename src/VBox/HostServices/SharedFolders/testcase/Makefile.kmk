@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98167 2023-01-20 20:22:52Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -40,7 +40,7 @@ ifndef VBOX_ONLY_SDK
   endif
  endif
 endif
-tstShflSizes_TEMPLATE = VBOXR3AUTOTST
+tstShflSizes_TEMPLATE = VBoxR3AutoTest
 tstShflSizes_DEFS     = VBOX_WITH_HGCM
 tstShflSizes_SOURCES  = tstShflSizes.cpp
 tstShflSizes_CLEAN    = $(tstShflSizes_0_OUTDIR)/tstShflSizes.run
