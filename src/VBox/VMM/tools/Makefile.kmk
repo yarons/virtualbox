@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98128 2023-01-19 02:02:24Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -43,7 +43,7 @@ endif
 #
 # Hardened stub.
 #
-VBoxVMMPreloadHardened_TEMPLATE = VBOXR3HARDENEDEXE
+VBoxVMMPreloadHardened_TEMPLATE = VBoxR3HardenedExe
 VBoxVMMPreloadHardened_SOURCES  = VBoxVMMPreloadHardened.cpp
 VBoxVMMPreloadHardened_NAME     = VBoxVMMPreload
 

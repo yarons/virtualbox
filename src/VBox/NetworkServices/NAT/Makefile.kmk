@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -44,7 +44,7 @@ VBOX_PATH_NAT_SRC := $(PATH_SUB_CURRENT)
 #
  ifdef VBOX_WITH_HARDENING
 PROGRAMS += VBoxNetNATHardened
-VBoxNetNATHardened_TEMPLATE = VBOXR3HARDENEDEXE
+VBoxNetNATHardened_TEMPLATE = VBoxR3HardenedExe
 VBoxNetNATHardened_NAME     = VBoxNetNAT
   ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 VBoxNetNATHardened_DEFS     = SERVICE_NAME="VBoxNetNAT"

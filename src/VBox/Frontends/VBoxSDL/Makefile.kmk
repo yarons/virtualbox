@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -35,7 +35,7 @@ ifdef VBOX_WITH_HARDENING
  # Hardened VBoxSDL
  #
  PROGRAMS += VBoxSDLHardened
- VBoxSDLHardened_TEMPLATE = VBOXR3HARDENEDEXE
+ VBoxSDLHardened_TEMPLATE = VBoxR3HardenedExe
  VBoxSDLHardened_SOURCES = VBoxSDLHardened.cpp
  VBoxSDLHardened_NAME = VBoxSDL
  $(call VBOX_SET_VER_INFO_EXE,VBoxSDLHardened,VirtualBox Pure SDL Frontend,$(VBOX_WINDOWS_ICON_FILE)) # Version info / description.

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -35,7 +35,7 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 #
 ifdef VBOX_WITH_HARDENING
 PROGRAMS += VBoxHeadlessHardened
-VBoxHeadlessHardened_TEMPLATE = VBOXR3HARDENEDEXE
+VBoxHeadlessHardened_TEMPLATE = VBoxR3HardenedExe
 VBoxHeadlessHardened_DEFS    += $(if $(VBOX_WITH_DRIVERLESS_NEM_FALLBACK),VBOX_WITH_DRIVERLESS_NEM_FALLBACK,)
 VBoxHeadlessHardened_SOURCES = VBoxHeadlessHardened.cpp
 VBoxHeadlessHardened_NAME = VBoxHeadless
