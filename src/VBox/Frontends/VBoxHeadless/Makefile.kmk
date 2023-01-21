@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98188 2023-01-21 22:52:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -51,7 +51,7 @@ DLLS     += VBoxHeadless
 else
 PROGRAMS += VBoxHeadless
 endif
-VBoxHeadless_TEMPLATE := $(if $(VBOX_WITH_HARDENING),VBOXMAINCLIENTDLL,VBoxMainClientExe)
+VBoxHeadless_TEMPLATE := $(if $(VBOX_WITH_HARDENING),VBoxMainClientDll,VBoxMainClientExe)
 VBoxHeadless_DEFS     += $(if $(VBOX_WITH_RECORDING),VBOX_WITH_RECORDING,)
 VBoxHeadless_INCS      = \
 	$(VBOX_GRAPHICS_INCS) \

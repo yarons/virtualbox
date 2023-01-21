@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98188 2023-01-21 22:52:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -50,7 +50,7 @@ ifdef VBOX_WITH_HARDENING
 else
  PROGRAMS += VBoxSDL
 endif
-VBoxSDL_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBOXMAINCLIENTDLL,VBoxMainClientExe)
+VBoxSDL_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBoxMainClientDll,VBoxMainClientExe)
 VBoxSDL_SDKS       = LIBSDL
 VBoxSDL_SOURCES    = \
 	VBoxSDL.cpp \

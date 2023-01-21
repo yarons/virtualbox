@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98188 2023-01-21 22:52:35Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7409,16 +7409,16 @@ endif
 #
 # This differs from VBoxMainClientExe only in PIC handling and similar DLL stuff.
 #
-TEMPLATE_VBOXMAINCLIENTDLL              = VBox MAIN Client (shared library)
-TEMPLATE_VBOXMAINCLIENTDLL_EXTENDS      = VBoxMainClientExe
+TEMPLATE_VBoxMainClientDll              = VBox MAIN Client (shared library)
+TEMPLATE_VBoxMainClientDll_EXTENDS      = VBoxMainClientExe
 ifn1of ($(KBUILD_TARGET), darwin os2 win)
- TEMPLATE_VBOXMAINCLIENTDLL_DEFS        = PIC $(TEMPLATE_VBoxMainClientExe_DEFS)
- TEMPLATE_VBOXMAINCLIENTDLL_CFLAGS      = -fPIC $(TEMPLATE_VBoxMainClientExe_CFLAGS)
- TEMPLATE_VBOXMAINCLIENTDLL_CXXFLAGS    = -fPIC $(TEMPLATE_VBoxMainClientExe_CXXFLAGS)
- TEMPLATE_VBOXMAINCLIENTDLL_PCHFLAGS    = -fPIC $(TEMPLATE_VBoxMainClientExe_PCHFLAGS)
- TEMPLATE_VBOXMAINCLIENTDLL_LDFLAGS     = -fPIC $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
+ TEMPLATE_VBoxMainClientDll_DEFS        = PIC $(TEMPLATE_VBoxMainClientExe_DEFS)
+ TEMPLATE_VBoxMainClientDll_CFLAGS      = -fPIC $(TEMPLATE_VBoxMainClientExe_CFLAGS)
+ TEMPLATE_VBoxMainClientDll_CXXFLAGS    = -fPIC $(TEMPLATE_VBoxMainClientExe_CXXFLAGS)
+ TEMPLATE_VBoxMainClientDll_PCHFLAGS    = -fPIC $(TEMPLATE_VBoxMainClientExe_PCHFLAGS)
+ TEMPLATE_VBoxMainClientDll_LDFLAGS     = -fPIC $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
 endif
-TEMPLATE_VBOXMAINCLIENTDLL_LDFLAGS.darwin = $(filter-out -bind_at_load,$(TEMPLATE_VBoxMainClientExe_LDFLAGS.darwin))
+TEMPLATE_VBoxMainClientDll_LDFLAGS.darwin = $(filter-out -bind_at_load,$(TEMPLATE_VBoxMainClientExe_LDFLAGS.darwin))
 
 #
 # Template for building testcases which are API clients.
@@ -9038,7 +9038,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98187 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98188 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

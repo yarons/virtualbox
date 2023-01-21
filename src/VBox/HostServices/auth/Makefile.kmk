@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98188 2023-01-21 22:52:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox RDP authentication plugins.
 #
@@ -53,7 +53,7 @@ ifndef VBOX_ONLY_SDK
   DLLS += VBoxAuthSimple
  endif
 endif
-VBoxAuthSimple_TEMPLATE = VBOXMAINCLIENTDLL
+VBoxAuthSimple_TEMPLATE = VBoxMainClientDll
 VBoxAuthSimple_SOURCES = simple/VBoxAuthSimple.cpp
 VBoxAuthSimple_SOURCES.win = simple/VBoxAuthSimple.rc
 
