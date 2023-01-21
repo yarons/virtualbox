@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98175 2023-01-21 22:06:16Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -127,7 +127,7 @@ endif
 # tstSDL
 #
 PROGRAMS += tstSDL
-tstSDL_TEMPLATE = VBOXR3NPEXE
+tstSDL_TEMPLATE = VBoxR3TstExe
 tstSDL_SDKS = LIBSDL
 tstSDL_INST = $(INST_TESTCASE)
 tstSDL_SOURCES = \
