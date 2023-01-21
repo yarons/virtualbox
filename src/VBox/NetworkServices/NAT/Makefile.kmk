@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98155 2023-01-20 11:07:37Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98184 2023-01-21 22:40:51Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -65,7 +65,7 @@ DLLS     += VBoxNetNAT
  else
 PROGRAMS += VBoxNetNAT
  endif
-VBoxNetNAT_TEMPLATE := $(if-expr defined(VBOX_WITH_HARDENING),VBOXMAINDLL,VBOXMAINCLIENTEXE)
+VBoxNetNAT_TEMPLATE := $(if-expr defined(VBOX_WITH_HARDENING),VBoxMainDll,VBOXMAINCLIENTEXE)
 VBoxNetNAT_NAME     := VBoxNetNAT
 VBoxNetNAT_DEFS      = \
  	IPv6 \
