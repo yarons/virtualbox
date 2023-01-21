@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98183 2023-01-21 22:37:53Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -106,7 +106,7 @@ if !defined(VBOX_ONLY_SDK)
  # The C glue library.
  #
  LIBRARIES += VBoxCAPIGlue
- VBoxCAPIGlue_TEMPLATE = VBOXMAINEXE
+ VBoxCAPIGlue_TEMPLATE = VBoxMainExe
  VBoxCAPIGlue_DEFS = IN_VBOXCAPI
  VBoxCAPIGlue_SOURCES = \
  	VBoxCAPIGlue.c
