@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98188 2023-01-21 22:52:35Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98189 2023-01-21 22:54:30Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7423,16 +7423,16 @@ TEMPLATE_VBoxMainClientDll_LDFLAGS.darwin = $(filter-out -bind_at_load,$(TEMPLAT
 #
 # Template for building testcases which are API clients.
 #
-TEMPLATE_VBOXMAINCLIENTTSTEXE           = VBox Main Client Testcase (executable)
-TEMPLATE_VBOXMAINCLIENTTSTEXE_EXTENDS   = VBoxMainClientExe
-TEMPLATE_VBOXMAINCLIENTTSTEXE_INST      = $(INST_TESTCASE)
+TEMPLATE_VBoxMainClientTstExe           = VBox Main Client Testcase (executable)
+TEMPLATE_VBoxMainClientTstExe_EXTENDS   = VBoxMainClientExe
+TEMPLATE_VBoxMainClientTstExe_INST      = $(INST_TESTCASE)
 ifdef VBOX_WITH_RUNPATH
- TEMPLATE_VBOXMAINCLIENTTSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
+ TEMPLATE_VBoxMainClientTstExe_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
 else ifdef VBOX_WITH_RELATIVE_RUNPATH
- TEMPLATE_VBOXMAINCLIENTTSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/..' $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
+ TEMPLATE_VBoxMainClientTstExe_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/..' $(TEMPLATE_VBoxMainClientExe_LDFLAGS)
 endif
 if "$(KBUILD_TARGET)" == "win" && defined(VBOX_SIGNING_MODE)
- TEMPLATE_VBOXMAINCLIENTTSTEXE_POST_CMDS =
+ TEMPLATE_VBoxMainClientTstExe_POST_CMDS =
 endif
 
 
@@ -9038,7 +9038,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98188 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98189 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

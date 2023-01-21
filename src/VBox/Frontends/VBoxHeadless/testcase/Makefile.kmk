@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98189 2023-01-21 22:54:30Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VRDP (headless RDP server) frontend testcase.
 #
@@ -30,7 +30,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_TESTCASES
  PROGRAMS += tstHeadless
- tstHeadless_TEMPLATE = VBOXMAINCLIENTTSTEXE
+ tstHeadless_TEMPLATE = VBoxMainClientTstExe
  tstHeadless_SOURCES  = tstHeadless.cpp
 endif
 
