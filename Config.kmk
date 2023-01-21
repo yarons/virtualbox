@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98173 2023-01-21 13:02:29Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98177 2023-01-21 22:12:58Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6930,22 +6930,6 @@ endif
 
 
 #
-# Template for building bad C/C++ style R3 executables (no -pedantic).
-#
-TEMPLATE_VBOXR3NPEXE                     = VBox Ring 3 Non-pedantic
-TEMPLATE_VBOXR3NPEXE_EXTENDS             = VBoxR3Exe
-ifneq ($(KBUILD_TARGET),win) # (only gcc)
- TEMPLATE_VBOXR3NPEXE_TOOL               = $(VBOX_GCC_TOOL)
- TEMPLATE_VBOXR3NPEXE_CFLAGS             = $(filter-out $(VBOX_GCC_WERR) $(VBOX_GCC_WARN_MASOCHISTIC) $(VBOX_GCC_PEDANTIC_C)  ,$(TEMPLATE_VBoxR3Exe_CFLAGS)) \
- 	$(VBOX_GCC_NON_PEDANTIC_C)
- TEMPLATE_VBOXR3NPEXE_CXXFLAGS           = $(filter-out $(VBOX_GCC_WERR) $(VBOX_GCC_WARN_MASOCHISTIC) $(VBOX_GCC_PEDANTIC_CXX),$(TEMPLATE_VBoxR3Exe_CXXFLAGS)) \
- 	$(VBOX_GCC_NON_PEDANTIC_CXX)
- TEMPLATE_VBOXR3NPEXE_PCHFLAGS           = $(filter-out $(VBOX_GCC_WERR) $(VBOX_GCC_WARN_MASOCHISTIC) $(VBOX_GCC_PEDANTIC_CXX),$(TEMPLATE_VBoxR3Exe_PCHFLAGS)) \
- 	$(VBOX_GCC_NON_PEDANTIC_CXX)
-endif
-
-
-#
 # Template for building bad C/C++ style R3 shared libraries / Dlls (no -pedantic).
 # (Same transformation as for VBOXR3NPEXE.)
 #
@@ -9168,7 +9152,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98173 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98177 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
