@@ -1,4 +1,4 @@
-/* $Id: CppUnitEmulation.h 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $ */
+/* $Id: CppUnitEmulation.h 98174 2023-01-21 13:23:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * Simple cppunit emulation
  */
@@ -24,7 +24,6 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
-
 
 #ifndef VBOX_INCLUDED_SRC_Network_testcase_CppUnitEmulation_h
 #define VBOX_INCLUDED_SRC_Network_testcase_CppUnitEmulation_h
@@ -69,4 +68,4 @@ public: \
     } while (0)
 #endif
 
-#endif /* VBOX_INCLUDED_SRC_Network_testcase_CppUnitEmulation_h */
+#endif /* !VBOX_INCLUDED_SRC_Network_testcase_CppUnitEmulation_h */
