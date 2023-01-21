@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEEPROM.cpp 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEEPROM - Microwire-compatible 64x16-bit 93C46 EEPROM Emulation.
  */
@@ -42,11 +42,10 @@
  */
 void EEPROM93C46::init(const uint16_t *pu16Initial)
 {
-    if ( pu16Initial ) {
+    if ( pu16Initial )
         memcpy(this->m_au16Data, pu16Initial, sizeof(this->m_au16Data));
-    } else {
+    else
         memset(this->m_au16Data, 0, sizeof(this->m_au16Data));
-    }
     m_fWriteEnabled = false;
     m_u32InternalWires = 0;
     m_eState = STANDBY;

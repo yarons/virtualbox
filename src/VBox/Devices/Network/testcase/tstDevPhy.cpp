@@ -1,4 +1,4 @@
-/* $Id: tstDevPhy.cpp 98171 2023-01-20 20:48:14Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDevPhy.cpp 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * PHY MDIO unit tests.
  */
@@ -25,16 +25,29 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <cppunit/ui/text/TestRunner.h>
-#include <cppunit/extensions/HelperMacros.h>
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
+#ifdef USE_CPPUNIT
+# include <cppunit/ui/text/TestRunner.h>
+# include <cppunit/extensions/HelperMacros.h>
+#else
+# include "CppUnitEmulation.h"
+#endif
 
 #include "../DevE1000Phy.h"
+
 
 /**
  * Test fixture for PHY MDIO/MDC interface emulation.
  */
-class PhyTest : public CppUnit::TestFixture  {
-    CPPUNIT_TEST_SUITE( PhyTest );
+class PhyTest
+#ifdef USE_CPPUNIT
+    : public CppUnit::TestFixture
+#endif
+{
+    CPPUNIT_TEST_SUITE( tstDevPhy );
 
     CPPUNIT_TEST(testSize);
     CPPUNIT_TEST(testReadPID);
@@ -167,8 +180,13 @@ void PhyTest::writeTo(uint16_t addr, uint32_t value)
 // Create text test runner and run all tests.
 int main()
 {
+#ifdef USE_CPPUNIT
     CppUnit::TextUi::TestRunner runner;
     runner.addTest( PhyTest::suite() );
     return runner.run() ? 0 : 1;
+#else
+    PhyTest Test;
+    return Test.run();
+#endif
 }
 
