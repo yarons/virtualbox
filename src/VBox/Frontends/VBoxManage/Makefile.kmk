@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -70,7 +70,7 @@ VBOX_COMMON_VBOXMANAGE_DEFS = \
 
 ifndef VBOX_ONLY_DOCS
  PROGRAMS += VBoxManage
- VBoxManage_TEMPLATE   = VBOXMAINCLIENTEXE
+ VBoxManage_TEMPLATE   = VBoxMainClientExe
  VBoxManage_DEFS      += $(VBOX_COMMON_VBOXMANAGE_DEFS)
  VBoxManage_DEFS.win   = _WIN32_WINNT=0x0500
  VBoxManage_INCS = \

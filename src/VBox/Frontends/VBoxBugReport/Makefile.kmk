@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxBugReport
 #
@@ -31,7 +31,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxBugReport
-VBoxBugReport_TEMPLATE   = VBOXMAINCLIENTEXE
+VBoxBugReport_TEMPLATE   = VBoxMainClientExe
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
 # VBoxBugReport_DEFS      = VBOX_WATCHDOG_GLOBAL_PERFCOL VBOX_BUILD_TARGET="$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)"
 else

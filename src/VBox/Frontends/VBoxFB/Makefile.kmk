@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98176 2023-01-21 22:09:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxFB.
 #
@@ -33,7 +33,7 @@ PROGRAMS += VBoxFB
 #
 # VBoxFB
 #
-VBoxFB_TEMPLATE = VBOXMAINCLIENTEXE
+VBoxFB_TEMPLATE = VBoxMainClientExe
 VBoxFB_SOURCES  = \
 	VBoxFB.cpp \
 	Framebuffer.cpp \
