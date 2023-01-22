@@ -1,4 +1,4 @@
-/* $Id: display-svga-xf86cvt.cpp 97960 2023-01-03 19:24:54Z knut.osmundsen@oracle.com $ */
+/* $Id: display-svga-xf86cvt.cpp 98202 2023-01-22 02:05:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Additions - Our version of xf86CVTMode.
  */
@@ -197,7 +197,7 @@ DisplayModeR VBoxClient_xf86CVTMode(int HDisplay, int VDisplay, float VRefresh /
         (void) VBackPorch;
 
         /* 11. Find total number of lines in vertical field */
-        Mode.VTotal = VDisplayRnd + 2 * VMargin + VSyncAndBackPorch + Interlace + CVT_MIN_V_PORCH;
+        Mode.VTotal = (int)(VDisplayRnd + 2 * VMargin + VSyncAndBackPorch + Interlace + CVT_MIN_V_PORCH);
 
         /* 5) Definition of Horizontal blanking time limitation */
         /* Gradient (%/kHz) - default 600 */
