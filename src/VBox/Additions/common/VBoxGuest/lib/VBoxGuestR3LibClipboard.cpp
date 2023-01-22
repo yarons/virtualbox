@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 98218 2023-01-22 23:01:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -57,7 +57,7 @@
 #include "VBoxGuestR3LibInternal.h"
 
 
-/**
+/*
  * Function naming convention:
  *
  * FunctionNameRecv  = Receives a host message (request).

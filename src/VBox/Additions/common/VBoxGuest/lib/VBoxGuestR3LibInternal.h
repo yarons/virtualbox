@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibInternal.h 98218 2023-01-22 23:01:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -78,7 +78,8 @@ DECLINLINE(int) VbglHGCMParmUInt32Get(HGCMFunctionParameter *pParm, uint32_t *pu
         *pu32 = pParm->u.value32;
         return VINF_SUCCESS;
     }
-    return VERR_INVALID_PARAMETER;
+    *pu32 = UINT32_MAX; /* shut up gcc */
+    return VERR_WRONG_PARAMETER_TYPE;
 }
 
 
@@ -96,7 +97,8 @@ DECLINLINE(int) VbglHGCMParmUInt64Get(HGCMFunctionParameter *pParm, uint64_t *pu
         *pu64 = pParm->u.value64;
         return VINF_SUCCESS;
     }
-    return VERR_INVALID_PARAMETER;
+    *pu64 = UINT64_MAX; /* shut up gcc */
+    return VERR_WRONG_PARAMETER_TYPE;
 }
 
 
