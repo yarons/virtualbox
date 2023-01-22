@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98206 2023-01-22 13:20:05Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98210 2023-01-22 18:10:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -113,16 +113,12 @@ VBoxGuestR0LibBase_SOURCES  = \
 #
 # VBoxGuestR3Lib
 #
-if "$(KBUILD_TARGET)" == "win" || defined(VBOX_WITH_MASOCHISTIC_WARNINGS) ## @todo use VBoxGuestR3Lib everywhere
-VBoxGuestR3Lib_TEMPLATE    = VBoxGuestR3Lib
-else
-VBoxGuestR3Lib_TEMPLATE    = VBOXGUESTR3LIB
-endif
+VBoxGuestR3Lib_TEMPLATE   := VBoxGuestR3Lib
 VBoxGuestR3Lib_DEFS        = \
 	VBOX_WITH_HGCM \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS,) \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD),VBOX_WITH_SHARED_CLIPBOARD,) \
-    $(if $(VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS),VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS,) \
+	$(if $(VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS),VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS,) \
 	$(if $(VBOX_WITH_SHARED_FOLDERS),VBOX_WITH_SHARED_FOLDERS,) \
 	$(if $(VBOX_WITH_GUEST_CONTROL),VBOX_WITH_GUEST_CONTROL,)
 VBoxGuestR3Lib_SOURCES     = \
