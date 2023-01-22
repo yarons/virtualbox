@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98206 2023-01-22 13:20:05Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -188,14 +188,10 @@ VBoxGuestR3LibAdditions.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 #
 # VBoxGuestR3LibShared - a PIC variant of VBoxGuestR3Lib for linking into .so/.dll/.dylib.
 #
-if "$(KBUILD_TARGET)" == "win" || defined(VBOX_WITH_MASOCHISTIC_WARNINGS) ## @todo use VBoxGuestR3Lib everywhere
-VBoxGuestR3LibShared_TEMPLATE = VBoxGuestR3Dll
-else
-VBoxGuestR3LibShared_TEMPLATE = VBOXGUESTR3DLL
-endif
-VBoxGuestR3LibShared_DEFS    := $(VBoxGuestR3Lib_DEFS)
-VBoxGuestR3LibShared_SOURCES := $(VBoxGuestR3Lib_SOURCES)
-VBoxGuestR3LibShared_INST    := $(INST_ADDITIONS_LIB)
+VBoxGuestR3LibShared_TEMPLATE := VBoxGuestR3Dll
+VBoxGuestR3LibShared_DEFS     := $(VBoxGuestR3Lib_DEFS)
+VBoxGuestR3LibShared_SOURCES  := $(VBoxGuestR3Lib_SOURCES)
+VBoxGuestR3LibShared_INST     := $(INST_ADDITIONS_LIB)
 
 
 #
