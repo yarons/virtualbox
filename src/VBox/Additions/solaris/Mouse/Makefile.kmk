@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98199 2023-01-22 01:10:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris Mouse Integration kernel module.
 #
@@ -61,7 +61,7 @@ endif
 
 
 PROGRAMS += vboxmslnk
-vboxmslnk_TEMPLATE    = NewVBoxGuestR3Exe
+vboxmslnk_TEMPLATE    = VBoxGuestR3Exe
 vboxmslnk_SOURCES     = vboxmslnk.c
 
 
