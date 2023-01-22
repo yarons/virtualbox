@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-x11.cpp 98216 2023-01-22 22:52:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -47,9 +47,13 @@
 #include <VBox/log.h>
 
 /* Other includes: */
+#undef  BOOL            /* Undefine the VBox/com/defs.h variant */
+#define BOOL X11BOOL    /* Typedef'ed in Xmd.h via dpms.h, causing -Wpch-invalid to trigger. */
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
 #include <X11/extensions/dpms.h>
+#undef  BOOL            /* Restore the VBox/com/defs.h variant */
+#define BOOL PRBool
 
 
 bool NativeWindowSubsystem::X11IsCompositingManagerRunning()
