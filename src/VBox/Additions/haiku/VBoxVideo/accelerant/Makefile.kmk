@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98192 2023-01-22 00:32:12Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxVideo accelerant, Haiku Guest Additions.
 #
@@ -58,7 +58,7 @@ SUB_DEPTH = ../../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += vboxvideo.accelerant
-vboxvideo.accelerant_TEMPLATE = VBOXGUESTR3EXE
+vboxvideo.accelerant_TEMPLATE = VBoxGuestR3Exe
 vboxvideo.accelerant_DEFS     = VBOX_WITH_HGCM LOG_TO_BACKDOOR
 vboxvideo.accelerant_DEFS    += LOG_ENABLED
 vboxvideo.accelerant_INCS     = ../include
