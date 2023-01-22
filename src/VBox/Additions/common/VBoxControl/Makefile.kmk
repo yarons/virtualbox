@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98195 2023-01-22 00:46:54Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -35,11 +35,7 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 # VBoxControl
 #
 PROGRAMS += VBoxControl
-if "$(KBUILD_TARGET)" == "win" || defined(VBOX_WITH_MASOCHISTIC_WARNINGS) ## @todo use VBoxGuestR3Exe everywhere
 VBoxControl_TEMPLATE = VBoxGuestR3Exe
-else
-VBoxControl_TEMPLATE = NewVBoxGuestR3Exe
-endif
 if "$(KBUILD_TARGET)" == "win" && defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS) # (See the main Windows Additions makefile.)
  VBoxControl_INSTTYPE = none
  VBoxControl_DEBUG_INSTTYPE = both
