@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98196 2023-01-22 01:01:22Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -45,7 +45,7 @@ PROGRAMS += VBoxClient
 #
 PROGRAMS.linux += VBoxDRMClient
 
-VBoxClient_TEMPLATE = NewVBoxGuestR3Exe
+VBoxClient_TEMPLATE = VBoxGuestR3Exe
 VBoxClient_DEFS += VBOX_X11_CLIPBOARD VBOX_WITH_HGCM
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
  VBoxClient_DEFS += VBOX_BUILD_TARGET="$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)"
@@ -65,7 +65,7 @@ VBoxClient_SOURCES = \
 	main.cpp \
 	logging.cpp
 
-VBoxDRMClient_TEMPLATE = NewVBoxGuestR3Exe
+VBoxDRMClient_TEMPLATE = VBoxGuestR3Exe
 ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
  VBoxDRMClient_DEFS += VBOX_BUILD_TARGET="$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)"
 else
