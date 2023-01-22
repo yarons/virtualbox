@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98201 2023-01-22 01:11:01Z knut.osmundsen@oracle.com $
 ## @file
 # sub-makefile for Darwin Shared Folders.
 #
@@ -71,7 +71,7 @@ $$(VBoxSF.kext_0_OUTDIR)/Info.plist: \
 # mount.vboxsf - The Shared Folders mounting tool.
 #
 PROGRAMS += mount.vboxsf
-mount.vboxsf_TEMPLATE = NewVBoxGuestR3Exe
+mount.vboxsf_TEMPLATE = VBoxGuestR3Exe
 mount.vboxsf_SOURCES  = mount.vboxsf.cpp
 mount.vboxsf_INST     = $(INST_ADDITIONS)VBoxSF.kext/Contents/MacOS/
 
