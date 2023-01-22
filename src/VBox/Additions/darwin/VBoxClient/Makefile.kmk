@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98201 2023-01-22 01:11:01Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98203 2023-01-22 02:08:29Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition Darwin Client.
 #
@@ -38,16 +38,16 @@ VBoxClient_TEMPLATE = VBoxGuestR3Exe
 VBoxClient_DEFS    += VBOX_WITH_HGCM
 
 VBoxClient_SOURCES  = \
-    VBoxClient.cpp
+	VBoxClient.cpp
 
 ifdef VBOX_WITH_SHARED_CLIPBOARD
  VBoxClient_DEFS   += \
-	VBOX_WITH_SHARED_CLIPBOARD
+ 	VBOX_WITH_SHARED_CLIPBOARD
  VBoxClient_SOURCES += \
-	VBoxClientClipboard.cpp \
-	VBoxClientClipboardHostToGuest.cpp \
-	VBoxClientClipboardGuestToHost.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-common.cpp
+ 	VBoxClientClipboard.cpp \
+ 	VBoxClientClipboardHostToGuest.cpp \
+ 	VBoxClientClipboardGuestToHost.cpp \
+ 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-common.cpp
 endif
 
 VBoxClient_LDFLAGS  = -framework IOKit -framework ApplicationServices
