@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98195 2023-01-22 00:46:54Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98255 2023-01-23 17:45:52Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -46,7 +46,7 @@ VBoxControl_DEFS     += \
 	$(if $(VBOX_WITH_SHARED_FOLDERS),VBOX_WITH_SHARED_FOLDERS,)
 VBoxControl_DEFS.win += \
 	$(if $(VBOX_WITH_DPC_LATENCY_CHECKER),VBOX_WITH_DPC_LATENCY_CHECKER,)
-VBoxControl_SDKS = VBOX_ZLIB_STATIC
+VBoxControl_SDKS = VBoxZlibStatic
 VBoxControl_SOURCES = \
 	VBoxControl.cpp
 VBoxControl_SOURCES.win = \
