@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98249 2023-01-23 17:23:26Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98256 2023-01-23 17:48:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -1106,7 +1106,7 @@ tstRTDarwinMachKernel_SOURCES  = \
 	../r0drv/darwin/dbgkrnlinfo-r0drv-darwin.cpp
 
 ntGetTimerResolution_SOURCES = ntGetTimerResolution.cpp
-ntGetTimerResolution_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK) VBOX_NTDLL
+ntGetTimerResolution_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK) VBoxNtDll
 
 
 #

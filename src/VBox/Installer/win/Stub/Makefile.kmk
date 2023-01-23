@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98144 2023-01-19 14:52:34Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98256 2023-01-23 17:48:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the stub installer.
 #
@@ -50,7 +50,7 @@ VBoxStub_SOURCES = \
 	VBoxStub.rc
 
 VBoxStub_SDKS = \
-	VBOX_NTDLL
+	VBoxNtDll
 VBoxStub_LIBS += \
 	$(PATH_TOOL_$(VBOX_VCC_TOOL_STEM)X86_LIB)/delayimp.lib
 

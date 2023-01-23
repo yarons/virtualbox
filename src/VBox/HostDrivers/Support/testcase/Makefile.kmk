@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98256 2023-01-23 17:48:43Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the SUPLib testcases.
 #
@@ -96,7 +96,7 @@ tstLow_TEMPLATE       = VBoxR3TstExe
 tstLow_SOURCES        = tstLow.cpp
 
 tstNtQueryStuff_TEMPLATE = VBoxR3TstExe
-tstNtQueryStuff_SDKS     = VBOX_NTDLL
+tstNtQueryStuff_SDKS     = VBoxNtDll
 tstNtQueryStuff_SOURCES  = tstNtQueryStuff.cpp
 
 tstPin_TEMPLATE       = VBoxR3TstExe
