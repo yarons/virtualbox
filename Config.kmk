@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98243 2023-01-23 13:42:48Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4963,7 +4963,7 @@ endif
 
 SDK_VBoxOpenSsl              := This is what you should be using!  It links against VBoxRT.
 SDK_VBoxOpenSsl_EXTENDS      := VBoxOpenSslStatic
-if "$(SDK_VBoxOpenSsl_INCS)" == "$(SDK_VBoxOpenSsl_VBOX_DEFAULT_INCS)"
+if "$(SDK_VBoxOpenSsl_INCS)" == "$(SDK_VBoxOpenSslStatic_VBOX_DEFAULT_INCS)"
  SDK_VBoxOpenSsl_LIBS         = $(NO_SUCH_VARIABLE)
 endif
 
@@ -8973,7 +8973,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98241 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98243 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
