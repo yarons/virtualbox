@@ -1,4 +1,4 @@
-' $Id: configure.vbs 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+' $Id: configure.vbs 98238 2023-01-23 12:19:14Z knut.osmundsen@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1731,11 +1731,11 @@ sub CheckForCurl(strOptCurl, bln32Bit)
 
    strPathCurl = UnixSlashes(PathAbs(strPathCurl))
    if bln32Bit = True then
-      CfgPrintAssign "SDK_VBOX_LIBCURL-x86_INCS",     strPathCurl & "/include"
-      CfgPrintAssign "SDK_VBOX_LIBCURL-x86_LIBS.x86", strPathCurl & "/libcurl.lib"
+      CfgPrintAssign "SDK_VBoxLibCurl-x86_INCS",     strPathCurl & "/include"
+      CfgPrintAssign "SDK_VBoxLibCurl-x86_LIBS.x86", strPathCurl & "/libcurl.lib"
    else
-      CfgPrintAssign "SDK_VBOX_LIBCURL_INCS", strPathCurl & "/include"
-      CfgPrintAssign "SDK_VBOX_LIBCURL_LIBS", strPathCurl & "/libcurl.lib"
+      CfgPrintAssign "SDK_VBoxLibCurl_INCS", strPathCurl & "/include"
+      CfgPrintAssign "SDK_VBoxLibCurl_LIBS", strPathCurl & "/libcurl.lib"
    end if
 
    PrintResult strCurl, strPathCurl

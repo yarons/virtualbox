@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98169 2023-01-20 20:34:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98238 2023-01-23 12:19:14Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -374,7 +374,7 @@ tstRTDigest-2_SOURCES = tstRTDigest-2.cpp
 ifdef VBOX_WITH_LIBCURL
 tstRTHttp-1_TEMPLATE = VBoxR3TstExe
 tstRTHttp-1_SOURCES = tstRTHttp-1.cpp
-tstRTHttp-1_SDKS = VBOX_LIBCURL
+tstRTHttp-1_SDKS = VBoxLibCurl
 endif
 
 tstDir_TEMPLATE = VBoxR3TstExe
