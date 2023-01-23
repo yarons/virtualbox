@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98236 2023-01-23 12:11:21Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -350,8 +350,8 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
        Graphics/DevVGA-SVGA3d-dx-savedstate.cpp \
        Graphics/DevVGA-SVGA3d-dx-shader.cpp
    if "$(KBUILD_TARGET)" == "win" || defined(VBOX_WITH_DXVK)
-    VBoxDD_SDKS.linux   += VBOX_DXVK
-    VBoxDD_SDKS.darwin  += VBOX_DXVK
+    VBoxDD_SDKS.linux   += VBoxDxVk
+    VBoxDD_SDKS.darwin  += VBoxDxVk
     VBoxDD_DEFS         += VMSVGA3D_DX_BACKEND
     VBoxDD_SOURCES      += \
        Graphics/DevVGA-SVGA3d-dx-dx11.cpp

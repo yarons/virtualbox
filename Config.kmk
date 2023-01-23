@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98227 2023-01-23 09:32:00Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98236 2023-01-23 12:11:21Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4882,13 +4882,13 @@ VBOXLNX32GUEST_SUFF_LIB = .a
 # SDKs for external libraries.
 #
 ifdef VBOX_WITH_DXVK
- SDK_VBOX_DXVK                 := Direct3D 9/10/11 to Vulkan - for dll linking.
- SDK_VBOX_DXVK_DEFAULT_INCS    := \
+ SDK_VBoxDxVk                  := Direct3D 9/10/11 to Vulkan - for dll linking.
+ SDK_VBoxDxVk_DEFAULT_INCS     := \
  	$(PATH_ROOT)/src/libs/dxvk-native-1.9.2a/include/native/directx \
  	$(PATH_ROOT)/src/libs/dxvk-native-1.9.2a/include/native/windows
- SDK_VBOX_DXVK_INCS            ?= $(SDK_VBOX_DXVK_DEFAULT_INCS)
+ SDK_VBoxDxVk_INCS             ?= $(SDK_VBoxDxVk_DEFAULT_INCS)
  # Loaded dynamically
- SDK_VBOX_DXVK_LIBS            ?=
+ SDK_VBoxDxVk_LIBS             ?=
 endif
 
 ifdef VBOX_WITH_LIBFUSE
@@ -8980,7 +8980,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98227 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98236 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
