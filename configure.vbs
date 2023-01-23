@@ -1,4 +1,4 @@
-' $Id: configure.vbs 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
+' $Id: configure.vbs 98253 2023-01-23 17:38:37Z knut.osmundsen@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1580,9 +1580,9 @@ sub CheckForXml2(strOptXml2)
    end if
 
    strPathXml2 = UnixSlashes(PathAbs(strPathXml2))
-   CfgPrintAssign "SDK_VBOX_LIBXML2_DEFS", "_REENTRANT"
-   CfgPrintAssign "SDK_VBOX_LIBXML2_INCS", strPathXml2 & "/include"
-   CfgPrintAssign "SDK_VBOX_LIBXML2_LIBS", strPathXml2 & "/lib/libxml2.lib"
+   CfgPrintAssign "SDK_VBoXLibXml2_DEFS", "_REENTRANT"
+   CfgPrintAssign "SDK_VBoXLibXml2_INCS", strPathXml2 & "/include"
+   CfgPrintAssign "SDK_VBoXLibXml2_LIBS", strPathXml2 & "/lib/libxml2.lib"
 
    PrintResult "libxml2", strPathXml2
 end sub
