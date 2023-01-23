@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98250 2023-01-23 17:27:05Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98251 2023-01-23 17:31:05Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5027,10 +5027,10 @@ ifdef VBOX_WITH_LIBSSH
 endif
 
 ifdef VBOX_WITH_LIBTPMS
- SDK_VBOX_TPMS                 := libtpms for dll linking.
- SDK_VBOX_TPMS_DEFAULT_INCS    := $(PATH_ROOT)/src/libs/libtpms-0.9.0/include
- SDK_VBOX_TPMS_INCS            ?= $(SDK_VBOX_TPMS_DEFAULT_INCS)
- SDK_VBOX_TPMS_LIBS            ?= $(PATH_STAGE_LIB)/VBox-libtpms$(VBOX_SUFF_LIB)
+ SDK_VBoxLibTpms                 := libtpms for dll linking.
+ SDK_VBoxLibTpms_DEFAULT_INCS    := $(PATH_ROOT)/src/libs/libtpms-0.9.0/include
+ SDK_VBoxLibTpms_INCS            ?= $(SDK_VBoxLibTpms_DEFAULT_INCS)
+ SDK_VBoxLibTpms_LIBS            ?= $(PATH_STAGE_LIB)/VBox-libtpms$(VBOX_SUFF_LIB)
 endif
 
 ifdef VBOX_WITH_LIBVPX
@@ -8974,7 +8974,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98250 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98251 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

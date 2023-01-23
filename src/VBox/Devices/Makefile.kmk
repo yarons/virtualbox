@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98250 2023-01-23 17:27:05Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98251 2023-01-23 17:31:05Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -635,7 +635,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
   	Security/DrvTpmHost.cpp
 
   if defined(VBOX_WITH_LIBTPMS)
-   VBoxDD_SDKS          += VBOX_TPMS
+   VBoxDD_SDKS          += VBoxLibTpms
    VBoxDD_DEFS          += VBOX_WITH_LIBTPMS
    VBoxDD_SOURCES += \
    	Security/DrvTpmEmuTpms.cpp
