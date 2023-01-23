@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98239 2023-01-23 12:21:53Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98240 2023-01-23 12:25:10Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -64,7 +64,7 @@ endif
 
 
 # liblzf is used by the IPRT compression code (saved state compression).
-if "$(SDK_VBOX_LZF_INCS)" == "$(PATH_ROOT)/src/libs/liblzf-3.6"
+if "$(SDK_VBoxLzf_INCS)" == "$(PATH_ROOT)/src/libs/liblzf-3.6"
  include $(PATH_SUB_CURRENT)/liblzf-3.6/Makefile.kmk
 endif
 
