@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98248 2023-01-23 17:15:58Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98250 2023-01-23 17:27:05Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1163,7 +1163,7 @@ endif
 # Experimental cloud support
 if defined(VBOX_WITH_CLOUD_NET)
  if defined(VBOX_WITH_LIBSSH)
-  VBoxC_SDKS += VBOX_SSH VBoxOpenSsl
+  VBoxC_SDKS += VBoxLibSsh VBoxOpenSsl
   VBoxC_DEFS += VBOX_WITH_LIBSSH
  endif
  VBoxC_SOURCES += src-client/CloudGateway.cpp
