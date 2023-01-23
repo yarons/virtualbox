@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98229 2023-01-23 10:53:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for OpenSSL providers.
 #
@@ -56,7 +56,7 @@ VBOX_LIBRARIES_BEFORE_CRYPTO_PROVIDERS_SUBDIRS :=
 if "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)"
  LIBRARIES += VBox-libproviders
 endif
-VBox-libproviders_TEMPLATE = LIBCRYPTO
+VBox-libproviders_TEMPLATE = LibCrypto
 VBox-libproviders_DEFS = OPENSSL_NO_DEPRECATED
 VBox-libproviders_SOURCES  = \
 	baseprov.c \
