@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98229 2023-01-23 10:53:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for OpenSSL ssl.
 #
@@ -31,7 +31,7 @@ include $(KBUILD_PATH)/subheader.kmk
 #
 # The main target: libssl.
 #
-if "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)"
+if "$(SDK_VBoxOpenSslStatic_INCS)" == "$(SDK_VBoxOpenSslStatic_VBOX_DEFAULT_INCS)"
  LIBRARIES += VBox-libssl
 endif
 VBox-libssl_TEMPLATE = LibCrypto

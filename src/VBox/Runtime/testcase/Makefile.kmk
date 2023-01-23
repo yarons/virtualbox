@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98238 2023-01-23 12:19:14Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -289,7 +289,7 @@ tstRTBase64_SOURCES = tstRTBase64.cpp
 
 tstRTBigNum_TEMPLATE = VBoxR3TstExe
 tstRTBigNum_SOURCES = tstRTBigNum.cpp
-tstRTBigNum_SDKS = VBOX_OPENSSL2
+tstRTBigNum_SDKS = VBoxOpenSsl
 tstRTBigNum_CXXFLAGS.win = -bigobj
 
 tstRTBitOperations_TEMPLATE = VBoxR3TstExe

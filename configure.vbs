@@ -1,4 +1,4 @@
-' $Id: configure.vbs 98238 2023-01-23 12:19:14Z knut.osmundsen@oracle.com $
+' $Id: configure.vbs 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1655,13 +1655,13 @@ sub CheckForSsl(strOptSsl, bln32Bit)
 
    strPathSsl = UnixSlashes(PathAbs(strPathSsl))
    if bln32Bit = True then
-      CfgPrintAssign "SDK_VBOX_OPENSSL-x86_INCS",     strPathSsl & "/include"
-      CfgPrintAssign "SDK_VBOX_OPENSSL-x86_LIBS",     strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
-      CfgPrintAssign "SDK_VBOX_BLD_OPENSSL-x86_LIBS", strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
+      CfgPrintAssign "SDK_VBoxOpenSslStatic-x86_INCS",     strPathSsl & "/include"
+      CfgPrintAssign "SDK_VBoxOpenSslStatic-x86_LIBS",     strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
+      CfgPrintAssign "SDK_VBoxOpenSslBldProg-x86_LIBS", strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
    else
-      CfgPrintAssign "SDK_VBOX_OPENSSL_INCS",         strPathSsl & "/include"
-      CfgPrintAssign "SDK_VBOX_OPENSSL_LIBS",         strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
-      CfgPrintAssign "SDK_VBOX_BLD_OPENSSL_LIBS",     strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
+      CfgPrintAssign "SDK_VBoxOpenSslStatic_INCS",         strPathSsl & "/include"
+      CfgPrintAssign "SDK_VBoxOpenSslStatic_LIBS",         strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
+      CfgPrintAssign "SDK_VBoxOpenSslBldProg_LIBS",     strPathSsl & "/lib/libcrypto.lib" & " " & strPathSsl & "/lib/libssl.lib"
    end if
 
    PrintResult strOpenssl, strPathSsl
