@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98243 2023-01-23 13:42:48Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98244 2023-01-23 13:43:29Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4953,7 +4953,7 @@ ifdef VBOX_WITH_BLD_RTSIGNTOOL_SIGNING
  SDK_VBoxOpenSslBldProg_INCS          ?= $(SDK_VBoxOpenSslStatic_VBOX_DEFAULT_INCS)
  SDK_VBoxOpenSslBldProg_ORDERDEPS     ?= $(crypto-headers_1_TARGET)
  if  !defined(VBOX_ONLY_SDK) \
-  && ("$(SDK_VBoxOpenSsl_INCS)" == "$(SDK_VBoxOpenSsl_VBOX_DEFAULT_INCS)")
+  && ("$(SDK_VBoxOpenSsl_INCS)" == "$(SDK_VBoxOpenSslStatic_VBOX_DEFAULT_INCS)")
   SDK_VBoxOpenSslBldProg_DEPS         ?= $(SDK_VBoxOpenSslStatic_INCS)/openssl/openssl-mangling.h
  endif
  SDK_VBoxOpenSslBldProg_LIBS          ?= \
@@ -8973,7 +8973,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98243 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98244 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
