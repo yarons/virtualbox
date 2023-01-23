@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98221 2023-01-23 00:55:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98224 2023-01-23 01:22:25Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -144,7 +144,7 @@ VBoxPythonBase_x86_EXTENDS  = VBoxPythonBase
 VBoxPythonBase_x86_DEFS     = MODULE_NAME_SUFFIX=_x86 $(VBoxPythonBase_DEFS)
 VBoxPythonBase_x86_LIBS     = \
 	$(PATH_STAGE_LIB)/VBoxCOM-x86$(VBOX_SUFF_LIB) \
-	$(PATH_STAGE_BIN)/VBoxXPComDll-x86$(VBOX_SUFF_DLL)
+	$(PATH_STAGE_BIN)/VBoxXPCOM-x86$(VBOX_SUFF_DLL)
 
 # 32-bit pymalloc abi variant.
 VBoxPythonBase_x86_m_EXTENDS    = VBoxPythonBase_x86
