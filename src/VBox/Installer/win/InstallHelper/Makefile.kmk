@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98257 2023-01-23 17:51:48Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -34,7 +34,7 @@ VBoxInstallHelper_TEMPLATE = VBoxR3StaticDllNoAsan
 VBoxInstallHelper_SDKS     = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
 VBoxInstallHelper_DEFS     = _WIN32_WINNT=0x0501 _UNICODE UNICODE VBOX_SVN_REV=$(VBOX_SVN_REV)
 ifdef VBOX_WITH_NETFLT
- VBoxInstallHelper_SDKS   += VBOX_WIN_NEWDEV
+ VBoxInstallHelper_SDKS   += VBoxWinNewDevLib
  VBoxInstallHelper_DEFS   += VBOX_WITH_NETFLT=1
 endif
 VBoxInstallHelper_DEPS     = $(VBOX_SVN_REV_KMK)

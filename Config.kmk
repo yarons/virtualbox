@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98256 2023-01-23 17:48:43Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98257 2023-01-23 17:51:48Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5082,13 +5082,13 @@ SDK_VBoxNtDll_LIBS.amd64      ?= $(PATH_STAGE_LIB)/RuntimeR3NtDll-amd64.lib
 # SDK for including newdev.lib.
 # It conceptually moved from the WDK to the PSDK with W10, as it's now in the um subdir.
 #
-SDK_VBOX_WIN_NEWDEV            := Abstracts where to find newdev.lib.
+SDK_VBoxWinNewDevLib            := Abstracts where to find newdev.lib.
 ifn1of ($(VBOX_WINPSDK), WINPSDK71 WINPSDK80)
- SDK_VBOX_WIN_NEWDEV_LIBS.x86   = $(PATH_SDK_$(VBOX_WINPSDK)_LIB.x86)/newdev.lib
- SDK_VBOX_WIN_NEWDEV_LIBS.amd64 = $(PATH_SDK_$(VBOX_WINPSDK)_LIB.amd64)/newdev.lib
+ SDK_VBoxWinNewDevLib_LIBS.x86   = $(PATH_SDK_$(VBOX_WINPSDK)_LIB.x86)/newdev.lib
+ SDK_VBoxWinNewDevLib_LIBS.amd64 = $(PATH_SDK_$(VBOX_WINPSDK)_LIB.amd64)/newdev.lib
 else
- SDK_VBOX_WIN_NEWDEV_LIBS.x86   = $(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/newdev.lib
- SDK_VBOX_WIN_NEWDEV_LIBS.amd64 = $(PATH_SDK_$(VBOX_WINDDK)_LIB.amd64)/newdev.lib
+ SDK_VBoxWinNewDevLib_LIBS.x86   = $(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/newdev.lib
+ SDK_VBoxWinNewDevLib_LIBS.amd64 = $(PATH_SDK_$(VBOX_WINDDK)_LIB.amd64)/newdev.lib
 endif
 
 #
@@ -8974,7 +8974,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98256 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98257 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
