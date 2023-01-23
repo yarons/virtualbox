@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98215 2023-01-22 22:29:23Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98219 2023-01-23 00:21:18Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7465,16 +7465,13 @@ ifdef VBOX_WITH_EXTPACK
  ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
   if1of ($(KBUILD_TARGET), win os2)
    TEMPLATE_VBoxR3ExtPack_LIBS = \
-   	$(TEMPLATE_LIBS_VBOXR3) \
    	$(PATH_STAGE_LIB)/VBoxRTImp$(VBOX_SUFF_LIB)
   else
    TEMPLATE_VBoxR3ExtPack_LIBS = \
-   	$(TEMPLATE_LIBS_VBOXR3) \
    	$(PATH_STAGE_LIB)/VBoxRTImp$(VBOX_SUFF_DLL)
   endif
  else
   TEMPLATE_VBoxR3ExtPack_LIBS = \
-  	$(TEMPLATE_LIBS_VBOXR3) \
   	$(LIB_RUNTIME)
  endif
  ifeq ($(KBUILD_TARGET),darwin)
@@ -7493,16 +7490,13 @@ ifdef VBOX_WITH_EXTPACK
  ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
   if1of ($(KBUILD_TARGET), win os2)
    TEMPLATE_VBoxR3ExtPackApi_LIBS = \
-   	$(TEMPLATE_LIBS_VBOXR3) \
    	$(PATH_STAGE_LIB)/VBoxRTImp$(VBOX_SUFF_LIB)
   else
    TEMPLATE_VBoxR3ExtPackApi_LIBS = \
-   	$(TEMPLATE_LIBS_VBOXR3) \
    	$(PATH_STAGE_LIB)/VBoxRTImp$(VBOX_SUFF_DLL)
   endif
  else
   TEMPLATE_VBoxR3ExtPackApi_LIBS = \
-  	$(TEMPLATE_LIBS_VBOXR3) \
   	$(LIB_RUNTIME)
  endif
  ifeq ($(KBUILD_TARGET),darwin)
@@ -8984,7 +8978,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98215 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98219 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
