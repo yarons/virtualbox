@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98226 2023-01-23 09:31:12Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the dxvk-native library.
 #
@@ -73,7 +73,7 @@ endef
 #
 # DXK utilities static library
 #
-VBox-DxVkNativeUtil_TEMPLATE       = VBoxR3RuntimeDllNonPedantic
+VBox-DxVkNativeUtil_TEMPLATE       = VBoxR3DllNonPedantic
 VBox-DxVkNativeUtil_DEFS           = \
 	DXVK_NATIVE \
 	NOMINMAX \
@@ -158,7 +158,7 @@ VBox-DxVkNativeUtil_SOURCES        = \
 #
 # Core DXVK library.
 #
-VBox-DxVkNativeDxVk_TEMPLATE       = VBoxR3RuntimeDllNonPedantic
+VBox-DxVkNativeDxVk_TEMPLATE       = VBoxR3DllNonPedantic
 VBox-DxVkNativeDxVk_DEFS           = \
 	DXVK_NATIVE \
 	NOMINMAX \
@@ -284,7 +284,7 @@ $(evalcall2 def_VBoxDxVkCompilerShaders,VBox-DxVkNativeDxVk)
 #
 # DXVK D3D11 interface library
 #
-VBox-DxVkNativeD3D11_TEMPLATE        = VBoxR3RuntimeDllNonPedantic
+VBox-DxVkNativeD3D11_TEMPLATE        = VBoxR3DllNonPedantic
 VBox-DxVkNativeD3D11_DEFS            = \
 	DXVK_NATIVE \
 	NOMINMAX \
