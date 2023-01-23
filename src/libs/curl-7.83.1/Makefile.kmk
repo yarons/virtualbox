@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98227 2023-01-23 09:32:00Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the libcurl library.
 #
@@ -34,7 +34,6 @@ LIBRARIES += VBox-libcurl
 VBox-libcurl_TEMPLATE       = VBoxR3RuntimeDllNonPedantic
 VBox-libcurl_SDKS           = VBOX_ZLIB VBOX_OPENSSL
 VBox-libcurl_DEFS           = \
-	IN_RT_R3 \
 	CURL_STATICLIB \
         OPENSSL_NO_ENGINE \
 	BUILDING_LIBCURL \

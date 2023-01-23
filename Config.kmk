@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98219 2023-01-23 00:21:18Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98227 2023-01-23 09:32:00Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6985,6 +6985,7 @@ endif
 #
 TEMPLATE_VBoxR3RuntimeDll = For libraries that are linked into VBoxRT.
 TEMPLATE_VBoxR3RuntimeDll_EXTENDS = VBoxR3Dll
+TEMPLATE_VBoxR3RuntimeDll_DEFS    = $(TEMPLATE_VBoxR3Dll_DEFS) IN_RT_R3
 if defined(VBOX_WITH_MORE_NT4_COMPAT_BINARIES) && "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" == "win.x86"
  TEMPLATE_VBoxR3RuntimeDll_CFLAGS   = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBoxR3Dll_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
  TEMPLATE_VBoxR3RuntimeDll_CXXFLAGS = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBoxR3Dll_CXXFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
@@ -7001,6 +7002,7 @@ endif
 #
 TEMPLATE_VBoxR3RuntimeDllNonPedantic = For libraries that are linked into VBoxRT, but must be excluded from -pedantic warnings.
 TEMPLATE_VBoxR3RuntimeDllNonPedantic_EXTENDS = VBoxR3DllNonPedantic
+TEMPLATE_VBoxR3RuntimeDllNonPedantic_DEFS    = $(TEMPLATE_VBoxR3DllNonPedantic_DEFS) IN_RT_R3
 if defined(VBOX_WITH_MORE_NT4_COMPAT_BINARIES) && $(KBUILD_TARGET_ARCH) == "x86"
  TEMPLATE_VBoxR3RuntimeDllNonPedantic_CFLAGS   = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBoxR3DllNonPedantic_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
  TEMPLATE_VBoxR3RuntimeDllNonPedantic_CXXFLAGS = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBoxR3DllNonPedantic_CXXFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
@@ -8978,7 +8980,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98219 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98227 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
