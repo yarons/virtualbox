@@ -1,4 +1,4 @@
-/* $Id: pdmcardreaderinfs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pdmcardreaderinfs.h 98276 2023-01-24 11:34:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * cardreaderinfs - interface between USB Card Reader device and its driver.
  */
@@ -82,7 +82,7 @@ struct PDMICARDREADERDOWN
     DECLR3CALLBACKMEMBER(int, pfnBeginTransaction,(PPDMICARDREADERDOWN pInterface, void *pvUser));
     DECLR3CALLBACKMEMBER(int, pfnEndTransaction,(PPDMICARDREADERDOWN pInterface, void *pvUser, uint32_t u32Disposition));
     DECLR3CALLBACKMEMBER(int, pfnTransmit,(PPDMICARDREADERDOWN pInterface, void *pvUser,
-                                           const PDMICARDREADER_IO_REQUEST *pioSendRequest,
+                                           const PDMICARDREADER_IO_REQUEST *pIoSendRequest,
                                            const uint8_t *pu8SendBuffer, uint32_t cbSendBuffer, uint32_t cbRecvBuffer));
     /**
      * Up level provides pvInBuffer of cbInBuffer bytes to call SCardControl, also it specify bytes it expects to receive
