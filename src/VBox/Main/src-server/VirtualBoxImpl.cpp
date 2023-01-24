@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 98264 2023-01-24 09:12:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -607,7 +607,7 @@ HRESULT VirtualBox::init()
             // this is thrown by the XML backend if the RTOpen() call fails;
             // only if the main settings file does not exist, create it,
             // if there's something more serious, then do fail!
-            if (e.rc() == VERR_FILE_NOT_FOUND)
+            if (e.getStatus() == VERR_FILE_NOT_FOUND)
                 fCreate = true;
             else
                 throw;

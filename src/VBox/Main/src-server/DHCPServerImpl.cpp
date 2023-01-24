@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DHCPServerImpl.cpp 98264 2023-01-24 09:12:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1005,7 +1005,7 @@ HRESULT DHCPServer::findLeaseByMAC(const com::Utf8Str &aMac, LONG aType,
         }
         catch (const xml::EIPRTFailure &e)
         {
-            vrc = e.rc();
+            vrc = e.getStatus();
             LogThisFunc(("caught xml::EIPRTFailure: rc=%Rrc (attempt %u, msg=%s)\n", vrc, uReadAttempt, e.what()));
             if (   (   vrc == VERR_FILE_NOT_FOUND
                     || vrc == VERR_OPEN_FAILED
