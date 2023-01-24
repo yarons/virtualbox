@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PCIRawDevImpl.h 98274 2023-01-24 11:19:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Driver interface to raw PCI device
  */
@@ -55,7 +55,7 @@ class PCIRawDev
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(int)    drvDeviceConstructComplete(PPDMIPCIRAWCONNECTOR pInterface, const char *pcszName,
                                                            uint32_t uHostPCIAddress, uint32_t uGuestPCIAddress,
-                                                           int rc);
+                                                           int vrc);
 
     Console * const mParent;
     struct DRVMAINPCIRAWDEV *mpDrv;
