@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Framebuffer.h 98290 2023-01-24 17:31:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -129,7 +129,7 @@ public:
     int32_t getYOffset() { return mCenterYOffset; }
 #ifdef VBOX_WITH_SDL2
     SDL_Window *getWindow() { return mpWindow; }
-    bool hasWindow(uint32_t id) { return mScreen && SDL_GetWindowID(mpWindow) == id; }
+    bool hasWindow(uint32_t id) { return SDL_GetWindowID(mpWindow) == id; }
     int setWindowTitle(const char *pcszTitle);
 #endif
 #ifdef VBOX_SECURELABEL
@@ -143,8 +143,7 @@ public:
     bool getFullscreen() { return mfFullscreen; }
 
 private:
-    /** current SDL framebuffer pointer (also includes screen width/height) */
-    SDL_Surface *mScreen;
+
 #ifdef VBOX_WITH_SDL2
     /** the SDL window */
     SDL_Window *mpWindow;
