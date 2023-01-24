@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 98283 2023-01-24 12:21:02Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbCardReader.cpp 98286 2023-01-24 13:15:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -373,7 +373,7 @@ static DECLCALLBACK(int) drvCardReaderDownStatus(PPDMICARDREADERDOWN pInterface,
     return vrc;
 }
 
-/** @interface_method_impl{PDMICARDREADERDOWN,pfnStatusChange} */
+/** @interface_method_impl{PDMICARDREADERDOWN,pfnGetStatusChange} */
 static DECLCALLBACK(int) drvCardReaderDownGetStatusChange(PPDMICARDREADERDOWN pInterface,
                                                           void *pvUser,
                                                           uint32_t u32Timeout,

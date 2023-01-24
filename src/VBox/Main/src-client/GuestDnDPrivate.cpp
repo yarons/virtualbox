@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 98273 2023-01-24 11:17:31Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDPrivate.cpp 98286 2023-01-24 13:15:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -506,7 +506,7 @@ int GuestDnDState::setCallback(uint32_t uMsg, PFNGUESTDNDCALLBACK pfnCallback, v
  * @param   strMsg              Message to set. Optional.
  */
 int GuestDnDState::setProgress(unsigned uPercentage, uint32_t uStatus,
-                               int vrcOp /* = VINF_SUCCESS */, const Utf8Str &strMsg /* = "" */)
+                               int vrcOp /* = VINF_SUCCESS */, const Utf8Str &strMsg /* = Utf8Str::Empty */)
 {
     LogFlowFunc(("uPercentage=%u, uStatus=%RU32, , vrcOp=%Rrc, strMsg=%s\n",
                  uPercentage, uStatus, vrcOp, strMsg.c_str()));

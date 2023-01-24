@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 98273 2023-01-24 11:17:31Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDPrivate.h 98286 2023-01-24 13:15:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -853,7 +853,7 @@ public:
      * @{ */
     bool isProgressCanceled(void) const;
     bool isProgressRunning(void) const;
-    int setProgress(unsigned uPercentage, uint32_t uState, int vrcOp = VINF_SUCCESS,
+    int setProgress(unsigned uPercentage, uint32_t uStatus, int vrcOp = VINF_SUCCESS,
                     const Utf8Str &strMsg = Utf8Str::Empty /** @todo figure out what's the best way to pass empty Utf8Str by default - probably = Utf8Str() */);
     HRESULT resetProgress(const ComObjPtr<Guest>& pParent, const Utf8Str &strDesc);
     HRESULT queryProgressTo(IProgress **ppProgress);
