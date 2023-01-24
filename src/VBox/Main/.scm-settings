@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98277 2023-01-24 11:36:34Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98280 2023-01-24 11:58:44Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -54,6 +54,7 @@
 /cbinding/VBoxCAPIGlue.h.in: --guard-relative-to-dir ''
 
 /src-client/*cpp: --no-rc-use
+/src-global/*cpp: --no-rc-use
 
 # IDL and XML
 /idl/VirtualBox.xidl:                   --treat-as .xml
