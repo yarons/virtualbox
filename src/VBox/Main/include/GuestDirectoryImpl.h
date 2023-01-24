@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDirectoryImpl.h 98272 2023-01-24 10:57:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -67,15 +67,15 @@ public:
 public:
     /** @name Public internal methods.
      * @{ */
-    int            i_closeInternal(int *pGuestRc);
-    int            i_read(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pGuestRc);
+    int            i_closeInternal(int *pvrcGuest);
+    int            i_read(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pvrcGuest);
     int            i_readInternal(GuestFsObjData &objData, int *prcGuest);
     /** @}  */
 
 public:
     /** @name Public static internal methods.
      * @{ */
-    static Utf8Str i_guestErrorToString(int rcGuest, const char *pcszWhat);
+    static Utf8Str i_guestErrorToString(int vrcGuest, const char *pcszWhat);
     /** @}  */
 
 private:
