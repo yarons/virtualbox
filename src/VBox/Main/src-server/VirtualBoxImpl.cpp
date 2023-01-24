@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98285 2023-01-24 12:39:34Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 98289 2023-01-24 16:02:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -867,9 +867,9 @@ HRESULT VirtualBox::init()
             RTThreadUserWait(m->threadAsyncEvent, RT_INDEFINITE_WAIT);
             ComAssertThrow(m->pAsyncEventQ, E_FAIL);
         }
-        catch (HRESULT aRC)
+        catch (HRESULT hrcXcpt)
         {
-            hrc = aRC;
+            hrc = hrcXcpt;
         }
     }
 

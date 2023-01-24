@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 98289 2023-01-24 16:02:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -725,9 +725,9 @@ HRESULT Appliance::write(const com::Utf8Str &aFormat,
         {
             hrc = i_writeCloudImpl(m->locInfo, progress);
         }
-        catch (HRESULT aRC)
+        catch (HRESULT hrcXcpt)
         {
-            hrc = aRC;
+            hrc = hrcXcpt;
         }
 
         if (SUCCEEDED(hrc))
@@ -815,9 +815,9 @@ HRESULT Appliance::write(const com::Utf8Str &aFormat,
             }
 
         }
-        catch (HRESULT aRC)
+        catch (HRESULT hrcXcpt)
         {
-            hrc = aRC;
+            hrc = hrcXcpt;
         }
 
         if (SUCCEEDED(hrc))
@@ -2815,9 +2815,9 @@ HRESULT Appliance::i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, R
     {
         hrc = setError(VBOX_E_FILE_ERROR, x.what());
     }
-    catch (HRESULT aRC)
+    catch (HRESULT hrcXcpt)
     {
-        hrc = aRC;
+        hrc = hrcXcpt;
     }
 
     LogFlowFunc(("hrc=%Rhrc\n", hrc));
