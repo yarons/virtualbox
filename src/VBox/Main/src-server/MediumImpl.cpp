@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.cpp 98263 2023-01-24 01:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -347,7 +347,6 @@ public:
     }
 
     HRESULT hrc() const { return mRC; }
-    HRESULT rc() const { return mRC; }
     bool isOk() const { return SUCCEEDED(hrc()); }
     bool NotifyAboutChanges() const { return mNotifyAboutChanges; }
 

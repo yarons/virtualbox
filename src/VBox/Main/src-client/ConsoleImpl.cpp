@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 98263 2023-01-24 01:52:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -211,7 +211,6 @@ public:
     }
 
     HRESULT hrc() const { return mRC; }
-    HRESULT rc() const { return mRC; }
     bool isOk() const { return SUCCEEDED(hrc()); }
 
     /** Releases the VM caller before destruction. Not normally necessary. */
@@ -6254,7 +6253,7 @@ HRESULT Console::i_onUSBDeviceDetach(IN_BSTR aId,
 
         /* The VM may be no more operational when this message arrives
          * (e.g. it may be Saving or Stopping or just PoweredOff). Use
-         * AutoVMCaller to detect it -- AutoVMCaller::rc() will return a
+         * AutoVMCaller to detect it -- AutoVMCaller::hrc() will return a
          * failure in this case. */
 
         AutoVMCallerQuiet autoVMCaller(this);
