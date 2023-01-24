@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioSettingsImpl.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Audio settings for a VM.
  */
@@ -371,24 +371,24 @@ HRESULT AudioSettings::i_applyDefaults(ComObjPtr<GuestOSType> &aGuestOsType)
     AssertComRCReturnRC(autoCaller.hrc());
 
     AudioControllerType_T audioController;
-    HRESULT rc = aGuestOsType->COMGETTER(RecommendedAudioController)(&audioController);
-    if (FAILED(rc)) return rc;
+    HRESULT hrc = aGuestOsType->COMGETTER(RecommendedAudioController)(&audioController);
+    if (FAILED(hrc)) return hrc;
 
-    rc = m->pAdapter->COMSETTER(AudioController)(audioController);
-    if (FAILED(rc)) return rc;
+    hrc = m->pAdapter->COMSETTER(AudioController)(audioController);
+    if (FAILED(hrc)) return hrc;
 
     AudioCodecType_T audioCodec;
-    rc = aGuestOsType->COMGETTER(RecommendedAudioCodec)(&audioCodec);
-    if (FAILED(rc)) return rc;
+    hrc = aGuestOsType->COMGETTER(RecommendedAudioCodec)(&audioCodec);
+    if (FAILED(hrc)) return hrc;
 
-    rc = m->pAdapter->COMSETTER(AudioCodec)(audioCodec);
-    if (FAILED(rc)) return rc;
+    hrc = m->pAdapter->COMSETTER(AudioCodec)(audioCodec);
+    if (FAILED(hrc)) return hrc;
 
-    rc = m->pAdapter->COMSETTER(Enabled)(true);
-    if (FAILED(rc)) return rc;
+    hrc = m->pAdapter->COMSETTER(Enabled)(true);
+    if (FAILED(hrc)) return hrc;
 
-    rc = m->pAdapter->COMSETTER(EnabledOut)(true);
-    if (FAILED(rc)) return rc;
+    hrc = m->pAdapter->COMSETTER(EnabledOut)(true);
+    if (FAILED(hrc)) return hrc;
 
     /* Note: We do NOT enable audio input by default due to security reasons!
      *       This always has to be done by the user manually. */

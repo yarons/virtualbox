@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceDarwin.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -89,8 +89,8 @@ HRESULT HostDnsServiceDarwin::init(HostDnsMonitorProxy *pProxy)
     if (!m->m_DnsWatcher)
         return E_OUTOFMEMORY;
 
-    int rc = RTSemEventCreate(&m->m_evtStop);
-    AssertRCReturn(rc, E_FAIL);
+    int vrc = RTSemEventCreate(&m->m_evtStop);
+    AssertRCReturn(vrc, E_FAIL);
 
     CFRunLoopSourceContext sctx;
     RT_ZERO(sctx);
@@ -157,8 +157,8 @@ int HostDnsServiceDarwin::monitorThreadProc(void)
     onMonitorThreadInitDone();
 
     /* Trigger initial update. */
-    int rc = updateInfo();
-    AssertRC(rc); /* Not fatal in release builds. */  /** @todo r=bird: The function always returns VINF_SUCCESS. */
+    int vrc = updateInfo();
+    AssertRC(vrc); /* Not fatal in release builds. */  /** @todo r=bird: The function always returns VINF_SUCCESS. */
 
     while (!ASMAtomicReadBool(&m->m_fStop))
     {

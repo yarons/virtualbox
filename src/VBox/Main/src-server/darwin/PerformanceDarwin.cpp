@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PerformanceDarwin.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Darwin-specific Performance Classes implementation.
  */
@@ -87,8 +87,8 @@ CollectorHAL *createHAL()
 CollectorDarwin::CollectorDarwin()
 {
     uint64_t cb;
-    int rc = RTSystemQueryTotalRam(&cb);
-    if (RT_FAILURE(rc))
+    int vrc = RTSystemQueryTotalRam(&cb);
+    if (RT_FAILURE(vrc))
         totalRAM = 0;
     else
         totalRAM = (ULONG)(cb / 1024);
@@ -127,15 +127,15 @@ int CollectorDarwin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *availa
 {
     AssertReturn(totalRAM, VERR_INTERNAL_ERROR);
     uint64_t cb;
-    int rc = RTSystemQueryAvailableRam(&cb);
-    if (RT_SUCCESS(rc))
+    int vrc = RTSystemQueryAvailableRam(&cb);
+    if (RT_SUCCESS(vrc))
     {
         *total = totalRAM;
         cb /= 1024;
         *available = cb < ~(ULONG)0 ? (ULONG)cb : ~(ULONG)0;
         *used = *total - *available;
     }
-    return rc;
+    return vrc;
 }
 
 static int getProcessInfo(RTPROCESS process, struct proc_taskinfo *tinfo)
@@ -160,8 +160,8 @@ int CollectorDarwin::getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uin
 {
     struct proc_taskinfo tinfo;
 
-    int rc = getProcessInfo(process, &tinfo);
-    if (RT_SUCCESS(rc))
+    int vrc = getProcessInfo(process, &tinfo);
+    if (RT_SUCCESS(vrc))
     {
         /*
          * Adjust user and kernel values so 100% is when ALL cores are fully
@@ -171,20 +171,20 @@ int CollectorDarwin::getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uin
         *kernel = tinfo.pti_total_system / nCpus;
         *total = mach_absolute_time();
     }
-    return rc;
+    return vrc;
 }
 
 int CollectorDarwin::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
 {
     struct proc_taskinfo tinfo;
 
-    int rc = getProcessInfo(process, &tinfo);
-    if (RT_SUCCESS(rc))
+    int vrc = getProcessInfo(process, &tinfo);
+    if (RT_SUCCESS(vrc))
     {
         uint64_t cKbResident = tinfo.pti_resident_size / 1024;
         *used = cKbResident < ~(ULONG)0 ? (ULONG)cKbResident : ~(ULONG)0;
     }
-    return rc;
+    return vrc;
 }
 
 }

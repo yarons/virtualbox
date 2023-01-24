@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.h 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -603,15 +603,15 @@ public:
 
     HRESULT i_getDirectControl(ComPtr<IInternalSessionControl> *directControl)
     {
-        HRESULT rc;
         *directControl = mData->mSession.mDirectControl;
 
+        HRESULT hrc;
         if (!*directControl)
-            rc = E_ACCESSDENIED;
+            hrc = E_ACCESSDENIED;
         else
-            rc = S_OK;
+            hrc = S_OK;
 
-        return rc;
+        return hrc;
     }
 
     bool i_isSessionOpen(ComObjPtr<SessionMachine> &aMachine,

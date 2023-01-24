@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioAdapterImpl.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -331,7 +331,7 @@ HRESULT AudioAdapter::setAudioDriver(AudioDriverType_T aAudioDriver)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = S_OK;
+    HRESULT hrc = S_OK;
 
     if (m->bd->driverType != aAudioDriver)
     {
@@ -347,11 +347,11 @@ HRESULT AudioAdapter::setAudioDriver(AudioDriverType_T aAudioDriver)
         else
         {
             AssertMsgFailed(("Wrong audio driver type %d\n", aAudioDriver));
-            rc = E_FAIL;
+            hrc = E_FAIL;
         }
     }
 
-    return rc;
+    return hrc;
 }
 
 HRESULT AudioAdapter::getAudioController(AudioControllerType_T *aAudioController)

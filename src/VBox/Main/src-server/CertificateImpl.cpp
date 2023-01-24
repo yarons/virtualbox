@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CertificateImpl.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -110,7 +110,7 @@ void Certificate::FinalRelease()
  */
 HRESULT Certificate::initCertificate(PCRTCRX509CERTIFICATE a_pCert, bool a_fTrusted, bool a_fExpired)
 {
-    HRESULT rc = S_OK;
+    HRESULT hrc = S_OK;
     LogFlowThisFuncEnter();
 
     AutoInitSpan autoInitSpan(this);
@@ -127,10 +127,10 @@ HRESULT Certificate::initCertificate(PCRTCRX509CERTIFICATE a_pCert, bool a_fTrus
         autoInitSpan.setSucceeded();
     }
     else
-        rc = Global::vboxStatusCodeToCOM(vrc);
+        hrc = Global::vboxStatusCodeToCOM(vrc);
 
-    LogFlowThisFunc(("returns rc=%Rhrc\n", rc));
-    return rc;
+    LogFlowThisFunc(("returns hrc=%Rhrc\n", hrc));
+    return hrc;
 }
 
 void Certificate::uninit()

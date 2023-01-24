@@ -1,4 +1,4 @@
-/* $Id: MultiResult.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MultiResult.h 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - MultiResult class declarations.
  */
@@ -187,9 +187,9 @@ public:
     /**
      * @copydoc FWResult::FWResult()
      */
-    MultiResult (HRESULT aRC = E_FAIL) : FWResult (aRC) { incCounter(); }
+    MultiResult(HRESULT aRC = E_FAIL) : FWResult (aRC) { incCounter(); }
 
-    MultiResult (const MultiResult &aThat) : FWResult (aThat)
+    MultiResult(const MultiResult &aThat) : FWResult (aThat)
     {
         /* We need this copy constructor only for GCC that wants to have
          * it in case of expressions like |MultiResult rc = E_FAIL;|. But

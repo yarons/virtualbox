@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceResolvConf.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -105,8 +105,8 @@ HRESULT HostDnsServiceResolvConf::readResolvConf(void)
     struct rcp_state st;
 
     st.rcps_flags = RCPSF_NO_STR2IPCONV;
-    int rc = rcp_parse(&st, m->resolvConfFilename.c_str());
-    if (rc == -1)
+    int vrc = rcp_parse(&st, m->resolvConfFilename.c_str());
+    if (vrc == -1)
         return S_OK;
 
     HostDnsInformation info;

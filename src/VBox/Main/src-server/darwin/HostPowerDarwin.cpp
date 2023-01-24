@@ -1,4 +1,4 @@
-/* $Id: HostPowerDarwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostPowerDarwin.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox interface to host's power notification service, darwin specifics.
  */
@@ -46,11 +46,9 @@ HostPowerServiceDarwin::HostPowerServiceDarwin(VirtualBox *aVirtualBox)
   , mCritical(false)
 {
     /* Create the new worker thread. */
-    int rc = RTThreadCreate(&mThread, HostPowerServiceDarwin::powerChangeNotificationThread, this, 65536,
-                            RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, "MainPower");
-
-    if (RT_FAILURE(rc))
-        LogFlow(("RTThreadCreate failed with %Rrc\n", rc));
+    int vrc = RTThreadCreate(&mThread, HostPowerServiceDarwin::powerChangeNotificationThread, this, 65536,
+                             RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, "MainPower");
+    AssertLogRelRC(vrc);
 }
 
 HostPowerServiceDarwin::~HostPowerServiceDarwin()
