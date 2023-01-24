@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: OpenGLTestDarwin.cpp 98281 2023-01-24 12:15:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox host opengl support test
  */
@@ -101,8 +101,8 @@ bool RTCALL VBoxOglIsOfflineRenderingAppropriate(void)
        execute once construct to make sure there aren't any threading issues. */
     static RTONCE s_Once = RTONCE_INITIALIZER;
     static bool   s_fCached = false;
-    int rc = RTOnce(&s_Once, vboxOglIsOfflineRenderingAppropriateOnce, &s_fCached);
-    AssertRC(rc);
+    int vrc = RTOnce(&s_Once, vboxOglIsOfflineRenderingAppropriateOnce, &s_fCached);
+    AssertRC(vrc);
     return s_fCached;
 }
 
