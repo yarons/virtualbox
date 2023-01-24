@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1230,7 +1230,7 @@ HRESULT Appliance::i_gettingCloudData(TaskCloud *pTask)
     LogFlowFunc(("Appliance %p\n", this));
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     AutoWriteLock appLock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -2291,7 +2291,7 @@ HRESULT Appliance::i_readFS(TaskOVF *pTask)
     LogFlowFunc(("Appliance %p\n", this));
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     AutoWriteLock appLock(this COMMA_LOCKVAL_SRC_POS);
 

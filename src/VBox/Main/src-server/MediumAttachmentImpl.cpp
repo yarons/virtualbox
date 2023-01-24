@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumAttachmentImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -186,7 +186,7 @@ HRESULT MediumAttachment::initCopy(Machine *aParent, MediumAttachment *aThat)
     /* m->pPeer is left null */
 
     AutoCaller thatCaller(aThat);
-    AssertComRCReturnRC(thatCaller.rc());
+    AssertComRCReturnRC(thatCaller.hrc());
 
     AutoReadLock thatlock(aThat COMMA_LOCKVAL_SRC_POS);
     m->bd.attachCopy(aThat->m->bd);
@@ -409,7 +409,7 @@ void MediumAttachment::i_rollback()
 
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -427,7 +427,7 @@ void MediumAttachment::i_commit()
 
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -622,7 +622,7 @@ void MediumAttachment::i_updateParentMachine(Machine * const pMachine)
     LogFlowThisFunc(("ENTER - %s\n", i_getLogName()));
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
     Assert(!m->pMachine->i_isSnapshotMachine());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);

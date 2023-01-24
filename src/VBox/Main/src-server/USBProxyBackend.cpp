@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackend.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -651,7 +651,7 @@ void USBProxyBackend::updateDeviceList(PUSBDEVICE pDevices)
          * the collection and we're the only one who calls uninit() on it.
          */
         AutoCaller devCaller(pHostDevice.isNull() ? NULL : pHostDevice);
-        AssertComRC(devCaller.rc());
+        AssertComRC(devCaller.hrc());
 
         /*
          * Lock the device object since we will read/write its

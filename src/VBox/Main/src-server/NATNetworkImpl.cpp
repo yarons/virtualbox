@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -169,7 +169,7 @@ HRESULT NATNetwork::setErrorBusy()
 HRESULT NATNetwork::i_loadSettings(const settings::NATNetwork &data)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    AssertComRCReturnRC(autoCaller.hrc());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     m->s = data;
@@ -185,7 +185,7 @@ HRESULT NATNetwork::i_loadSettings(const settings::NATNetwork &data)
 HRESULT NATNetwork::i_saveSettings(settings::NATNetwork &data)
 {
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
     AssertReturn(!m->s.strNetworkName.isEmpty(), E_FAIL);

@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SessionImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -569,7 +569,7 @@ HRESULT Session::uninitialize()
     else
     {
         Log1WarningThisFunc(("UNEXPECTED uninitialization!\n"));
-        hrc = autoCaller.rc();
+        hrc = autoCaller.hrc();
     }
 
     LogFlowThisFunc(("hrc=%08X\n", hrc));

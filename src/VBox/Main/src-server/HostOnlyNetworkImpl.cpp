@@ -1,4 +1,4 @@
-/* $Id: HostOnlyNetworkImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostOnlyNetworkImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IHostOnlyNetwork  COM class implementations.
  */
@@ -103,7 +103,7 @@ void HostOnlyNetwork::uninit()
 HRESULT HostOnlyNetwork::i_loadSettings(const settings::HostOnlyNetwork &data)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    AssertComRCReturnRC(autoCaller.hrc());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     m->s = data;
@@ -114,7 +114,7 @@ HRESULT HostOnlyNetwork::i_loadSettings(const settings::HostOnlyNetwork &data)
 HRESULT HostOnlyNetwork::i_saveSettings(settings::HostOnlyNetwork &data)
 {
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
     AssertReturn(!m->s.strNetworkName.isEmpty(), E_FAIL);

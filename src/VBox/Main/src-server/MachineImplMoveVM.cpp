@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImplMoveVM.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -610,7 +610,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM *task)
     ComObjPtr<Machine> &machine = taskMoveVM->m_pMachine;
 
     AutoCaller autoCaller(machine);
-//  if (FAILED(autoCaller.rc())) return;//Should we return something here?
+//  if (FAILED(autoCaller.hrc())) return;//Should we return something here?
 
     Utf8Str strTargetFolder = taskMoveVM->m_targetPath;
     {

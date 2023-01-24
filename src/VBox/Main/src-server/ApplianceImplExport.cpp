@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2227,7 +2227,7 @@ HRESULT Appliance::i_writeFS(TaskOVF *pTask)
     LogFlowFunc(("ENTER appliance %p\n", this));
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     HRESULT rc = S_OK;
 

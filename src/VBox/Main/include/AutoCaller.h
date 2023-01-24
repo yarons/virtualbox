@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AutoCaller.h 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
@@ -68,7 +68,7 @@ class VirtualBoxBase;
  * STDMETHODIMP Component::Foo()
  * {
  *     AutoCaller autoCaller(this);
- *     HRESULT hrc = autoCaller.rc();
+ *     HRESULT hrc = autoCaller.hrc();
  *     if (SUCCEEDED(hrc))
  *     {
  *         ...
@@ -114,9 +114,19 @@ public:
     }
 
     /**
+     * Returns the stored result code returned by ObjectState::addCaller() after
+     * instance creation or after the last #add() call.
+     *
+     * A successful result code means the number of callers was successfully
+     * increased.
+     */
+    HRESULT hrc() const { return mRC; }
+
+    /**
      * Returns the stored result code returned by ObjectState::addCaller()
      * after instance creation or after the last #add() call. A successful
      * result code means the number of callers was successfully increased.
+     * @deprecated use hrc()
      */
     HRESULT rc() const { return mRC; }
 
@@ -229,7 +239,7 @@ private:
  * STDMETHODIMP Component::Bar()
  * {
  *     AutoLimitedCaller autoCaller(this);
- *     HRESULT hrc = autoCaller.rc();
+ *     HRESULT hrc = autoCaller.hrc();
  *     if (SUCCEEDED(hrc))
  *     {
  *         ...

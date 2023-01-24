@@ -1,4 +1,4 @@
-/* $Id: MediumLock.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumLock.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * Medium lock management helper classes
@@ -99,7 +99,7 @@ HRESULT MediumLock::Lock(bool aIgnoreLockedMedia)
         return S_OK;
 
     mMediumCaller.attach(mMedium);
-    if (FAILED(mMediumCaller.rc()))
+    if (FAILED(mMediumCaller.hrc()))
     {
         mMediumCaller.attach(NULL);
         return VBOX_E_INVALID_OBJECT_STATE;

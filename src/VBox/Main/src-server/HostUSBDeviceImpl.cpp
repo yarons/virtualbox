@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostUSBDeviceImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -364,7 +364,7 @@ com::Utf8Str HostUSBDevice::i_getName()
     Utf8Str name;
 
     AutoCaller autoCaller(this);
-    AssertComRCReturn(autoCaller.rc(), name);
+    AssertComRCReturn(autoCaller.hrc(), name);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -966,7 +966,7 @@ void HostUSBDevice::i_onPhysicalDetachedInternal()
 bool HostUSBDevice::i_isMatch(const USBDeviceFilter::BackupableUSBDeviceFilterData &aData)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturn(autoCaller.rc(), false);
+    AssertComRCReturn(autoCaller.hrc(), false);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -1147,7 +1147,7 @@ bool HostUSBDevice::i_updateState(PCUSBDEVICE aDev, bool *aRunFilters, SessionMa
      */
     AssertReturn(!isWriteLockOnCurrentThread(), false);
     AutoCaller autoCaller(this);
-    AssertComRCReturn(autoCaller.rc(), false);
+    AssertComRCReturn(autoCaller.hrc(), false);
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /*

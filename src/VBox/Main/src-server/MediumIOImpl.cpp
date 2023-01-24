@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumIOImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: MediumIO
  */
@@ -116,7 +116,7 @@ public:
     {
         AssertReturnVoidStmt(pMediumIO, mRC = E_FAIL);
         AssertReturnVoidStmt(pDataStream, mRC = E_FAIL);
-        mRC = mMediumCaller.rc();
+        mRC = mMediumCaller.hrc();
         if (FAILED(mRC))
             return;
 
@@ -124,7 +124,7 @@ public:
         VirtualBox *pVirtualBox = pMediumIO->m->ptrVirtualBox;
         mVirtualBox = pVirtualBox;
         mVirtualBoxCaller.attach(pVirtualBox);
-        mRC = mVirtualBoxCaller.rc();
+        mRC = mVirtualBoxCaller.hrc();
         if (FAILED(mRC))
             return;
     }
@@ -138,8 +138,8 @@ public:
             mProgress->i_notifyComplete(mRC);
     }
 
-    HRESULT rc() const { return mRC; }
-    bool isOk() const { return SUCCEEDED(rc()); }
+    HRESULT hrc() const { return mRC; }
+    bool isOk() const { return SUCCEEDED(hrc()); }
 
     const ComPtr<Progress>& GetProgressObject() const {return mProgress;}
 
@@ -153,7 +153,7 @@ public:
         try
         {
             mRC = executeTask(); /* (destructor picks up mRC, see above) */
-            LogFlowFunc(("rc=%Rhrc\n", mRC));
+            LogFlowFunc(("hrc=%Rhrc\n", mRC));
         }
         catch (...)
         {
@@ -837,7 +837,7 @@ HRESULT MediumIO::convertToStream(const com::Utf8Str &aFormat,
         /* setup task object to carry out the operation asynchronously */
         pTask = new MediumIO::StreamTask(this, pDataStream, pProgress,
                                          aFormat.c_str(), (MediumVariant_T)mediumVariantFlags);
-        rc = pTask->rc();
+        rc = pTask->hrc();
         AssertComRC(rc);
         if (FAILED(rc))
             throw rc;

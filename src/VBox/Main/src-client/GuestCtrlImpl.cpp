@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -411,7 +411,7 @@ HRESULT Guest::createSession(const com::Utf8Str &aUser, const com::Utf8Str &aPas
 #else /* VBOX_WITH_GUEST_CONTROL */
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.hrc())) return autoCaller.hrc();
 
     /* Do not allow anonymous sessions (with system rights) with public API. */
     if (RT_UNLIKELY(!aUser.length()))

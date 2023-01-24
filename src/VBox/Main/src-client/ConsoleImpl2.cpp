@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 98123 2023-01-19 00:04:47Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl2.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -805,7 +805,7 @@ Console::i_configConstructor(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, void *pvCon
     ComObjPtr<Console> pConsole = static_cast<Console *>(pvConsole);
 
     AutoCaller autoCaller(pConsole);
-    AssertComRCReturn(autoCaller.rc(), VERR_ACCESS_DENIED);
+    AssertComRCReturn(autoCaller.hrc(), VERR_ACCESS_DENIED);
 
     /* lock the console because we widely use internal fields and methods */
     AutoWriteLock alock(pConsole COMMA_LOCKVAL_SRC_POS);
@@ -5691,7 +5691,7 @@ int Console::i_configNetwork(const char *pszDevice,
 {
     RT_NOREF(fIgnoreConnectFailure);
     AutoCaller autoCaller(this);
-    AssertComRCReturn(autoCaller.rc(), VERR_ACCESS_DENIED);
+    AssertComRCReturn(autoCaller.hrc(), VERR_ACCESS_DENIED);
 
     // InsertConfig* throws
     try

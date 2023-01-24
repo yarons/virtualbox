@@ -1,4 +1,4 @@
-/* $Id: TrustedPlatformModuleImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TrustedPlatformModuleImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine Trusted Platform Module settings.
  */
@@ -209,7 +209,7 @@ HRESULT TrustedPlatformModule::setType(TpmType_T aType)
 {
     /* the machine needs to be mutable */
     AutoMutableStateDependency adep(m->pMachine);
-    if (FAILED(adep.rc())) return adep.rc();
+    if (FAILED(adep.hrc())) return adep.hrc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -235,7 +235,7 @@ HRESULT TrustedPlatformModule::setLocation(const com::Utf8Str &location)
 {
     /* the machine needs to be mutable */
     AutoMutableStateDependency adep(m->pMachine);
-    if (FAILED(adep.rc())) return adep.rc();
+    if (FAILED(adep.hrc())) return adep.hrc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -267,7 +267,7 @@ HRESULT TrustedPlatformModule::setLocation(const com::Utf8Str &location)
 HRESULT TrustedPlatformModule::i_loadSettings(const settings::TpmSettings &data)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    AssertComRCReturnRC(autoCaller.hrc());
 
     AutoReadLock mlock(m->pMachine COMMA_LOCKVAL_SRC_POS);
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -287,7 +287,7 @@ HRESULT TrustedPlatformModule::i_loadSettings(const settings::TpmSettings &data)
 HRESULT TrustedPlatformModule::i_saveSettings(settings::TpmSettings &data)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    AssertComRCReturnRC(autoCaller.hrc());
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -306,11 +306,11 @@ void TrustedPlatformModule::i_commit()
 {
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
 
     /* sanity too */
     AutoCaller peerCaller(m->pPeer);
-    AssertComRCReturnVoid(peerCaller.rc());
+    AssertComRCReturnVoid(peerCaller.hrc());
 
     /* lock both for writing since we modify both (mPeer is "master" so locked
      * first) */
@@ -334,11 +334,11 @@ void TrustedPlatformModule::i_copyFrom(TrustedPlatformModule *aThat)
 
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
 
     /* sanity too */
     AutoCaller thatCaller(aThat);
-    AssertComRCReturnVoid(thatCaller.rc());
+    AssertComRCReturnVoid(thatCaller.hrc());
 
     /* peer is not modified, lock it for reading (aThat is "master" so locked
      * first) */
@@ -353,7 +353,7 @@ void TrustedPlatformModule::i_applyDefaults(GuestOSType *aOsType)
 {
     /* sanity */
     AutoCaller autoCaller(this);
-    AssertComRCReturnVoid(autoCaller.rc());
+    AssertComRCReturnVoid(autoCaller.hrc());
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 

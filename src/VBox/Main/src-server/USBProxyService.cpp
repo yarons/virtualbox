@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyService.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -581,7 +581,7 @@ void USBProxyService::i_deviceAdded(ComObjPtr<HostUSBDevice> &aDevice,
 
         /* Assert that the object is still alive. */
         AutoCaller devCaller(pHostDevice);
-        AssertComRC(devCaller.rc());
+        AssertComRC(devCaller.hrc());
 
         AutoWriteLock curLock(pHostDevice COMMA_LOCKVAL_SRC_POS);
         if (   pHostDevice->i_getUsbProxyBackend() == aDevice->i_getUsbProxyBackend()
