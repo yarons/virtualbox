@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCMThread.h 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager worker threads header.
  */
@@ -97,7 +97,7 @@ class HGCMMsgCore : public HGCMReferencedObject
         uint32_t m_fu32Flags;
 
         /** Result code for a Send */
-        int32_t m_rcSend;
+        int32_t m_vrcSend;
 
     protected:
         void InitializeCore(uint32_t u32MsgId, HGCMThread *pThread);

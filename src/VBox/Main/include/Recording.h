@@ -1,4 +1,4 @@
-/* $Id: Recording.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Recording.h 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording code header.
  */
@@ -79,9 +79,9 @@ public:
     bool IsStarted(void);
     bool IsLimitReached(void);
     bool IsLimitReached(uint32_t uScreen, uint64_t msTimestamp);
-    bool NeedsUpdate( uint32_t uScreen, uint64_t msTimestamp);
+    bool NeedsUpdate(uint32_t uScreen, uint64_t msTimestamp);
 
-    DECLCALLBACK(int) OnLimitReached(uint32_t uScreen, int rc);
+    DECLCALLBACK(int) OnLimitReached(uint32_t uScreen, int vrc);
 
 protected:
 

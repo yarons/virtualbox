@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -291,7 +291,7 @@ DECLCALLBACK(int) Display::i_displaySSMSaveScreenshot(PSSMHANDLE pSSM, PCVMMR3VT
         LogFunc(("Failed to get VM pointer 0x%x\n", ptrVM.hrc()));
     }
 
-    /* Regardless of rc, save what is available:
+    /* Regardless of vrc, save what is available:
      * Data format:
      *    uint32_t cBlocks;
      *    [blocks]

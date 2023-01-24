@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBBackend.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBBackend.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Remote USB backend
  */
@@ -202,7 +202,7 @@ DECLCALLBACK(int) USBClientResponseCallback(void *pv, uint32_t u32ClientId, uint
         {
             vrc = pThis->reapURB(pvRet, cbRet);
 
-            LogFlow(("USBClientResponseCallback: reap URB, rc = %Rrc.\n", vrc));
+            LogFlow(("USBClientResponseCallback: reap URB, vrc = %Rrc.\n", vrc));
         } break;
 
         case VRDE_USB_REQ_QUEUE_URB:

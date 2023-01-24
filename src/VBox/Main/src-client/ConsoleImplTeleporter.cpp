@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplTeleporter.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -1175,7 +1175,7 @@ HRESULT Console::i_teleporterTrg(PUVM pUVM, PCVMMR3VTABLE pVMM, IMachine *pMachi
                     else
                     {
                         hrc = setErrorBoth(E_FAIL, vrc, tr("Unexpected RTTcpServerListen status code %Rrc"), vrc);
-                        LogRel(("Teleporter: Unexpected RTTcpServerListen rc: %Rrc\n", vrc));
+                        LogRel(("Teleporter: Unexpected RTTcpServerListen vrc: %Rrc\n", vrc));
                     }
                 }
                 else

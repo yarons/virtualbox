@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingCodec.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -443,7 +443,7 @@ static DECLCALLBACK(int) recordingCodecVorbisEncode(PRECORDINGCODEC pCodec,
         *pcEncoded  = 0;
 
     if (RT_FAILURE(vrc))
-        LogRel(("Recording: Encoding Vorbis audio data failed, rc=%Rrc\n", vrc));
+        LogRel(("Recording: Encoding Vorbis audio data failed, vrc=%Rrc\n", vrc));
 
     Log3Func(("cbSrc=%zu, cbDst=%zu, cEncoded=%zu, cbEncoded=%zu, vrc=%Rrc\n",
               pFrame->Audio.cbBuf, pCodec->cbScratch, cBlocksEncoded, cBytesEncoded, vrc));

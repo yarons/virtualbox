@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: EmulatedUSBImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Emulated USB manager implementation.
  */
@@ -570,7 +570,7 @@ EmulatedUSB::eusbCallbackEMT(EmulatedUSB *pThis, char *pszId, uint32_t iEvent, v
     RTMemFree(pszId);
     RTMemFree(pvData);
 
-    LogRelFlowFunc(("rc %Rrc\n", vrc));
+    LogRelFlowFunc(("vrc %Rrc\n", vrc));
     return vrc;
 }
 

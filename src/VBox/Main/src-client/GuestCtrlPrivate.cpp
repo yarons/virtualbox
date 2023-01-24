@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98272 2023-01-24 10:57:32Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -898,9 +898,9 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
     {
         vrc = VERR_NO_MEMORY;
     }
-    catch (int vrc)
+    catch (int vrcCatch)
     {
-        vrc = vrc;
+        vrc = vrcCatch;
     }
 
     LogFlowFuncLeaveRC(vrc);

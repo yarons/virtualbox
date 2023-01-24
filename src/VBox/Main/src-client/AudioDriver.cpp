@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioDriver.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -164,7 +164,7 @@ DECLCALLBACK(int) AudioDriver::attachDriverOnEmt(AudioDriver *pThis)
         LogRel2(("%s: Driver attached (LUN #%u)\n", pCfg->strName.c_str(), pCfg->uLUN));
     }
     else
-        LogRel(("%s: Failed to attach audio driver, rc=%Rrc\n", pCfg->strName.c_str(), vrc));
+        LogRel(("%s: Failed to attach audio driver, vrc=%Rrc\n", pCfg->strName.c_str(), vrc));
 
     LogFunc(("Returning %Rrc\n", vrc));
     return vrc;
