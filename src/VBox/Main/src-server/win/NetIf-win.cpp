@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 98293 2023-01-25 01:22:39Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-win.cpp 98295 2023-01-25 01:25:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1978,7 +1978,7 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
                 netIfLog(("Adding %ls as %s\n", (*it).pName,
                         enmType == HostNetworkInterfaceType_Bridged ? "bridged" :
                         enmType == HostNetworkInterfaceType_HostOnly ? "host-only" : "unknown"));
-                HRESULT hrc = iface->init((*it).pName, enmType, &info);
+                hrc = iface->init((*it).pName, enmType, &info);
                 if (FAILED(hrc))
                     LogRelFunc(("HostNetworkInterface::init() -> %Rrc\n", hrc));
                 else
