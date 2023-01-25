@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98246 2023-01-23 14:44:08Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 98302 2023-01-25 09:07:43Z serkan.bayraktar@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -64,11 +64,6 @@ VBoxSDL_SOURCES.darwin = \
 VBoxSDL_DEFS       =
 ifdef VBOX_WITH_SDL2
  VBoxSDL_DEFS     += VBOX_WITH_SDL2
-endif
-if !defined(VBOX_WITH_SDL2)
- ifdef VBOX_WITH_SECURELABEL
-  VBoxSDL_DEFS    += VBOX_SECURELABEL
- endif
 endif
 VBoxSDL_DEFS.freebsd = VBOXSDL_WITH_X11
 VBoxSDL_DEFS.linux = _GNU_SOURCE VBOXSDL_WITH_X11
