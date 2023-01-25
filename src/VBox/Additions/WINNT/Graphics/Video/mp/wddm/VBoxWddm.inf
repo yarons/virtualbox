@@ -1,4 +1,4 @@
-; $Id: VBoxWddm.inf 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxWddm.inf 98308 2023-01-25 23:14:24Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VirtualBox Video Wddm driver
 ;
@@ -41,14 +41,12 @@ VBoxVideo.Display  = 11 ; system32
 ;amd64 VBoxVideo.Display_wow64  = 10,SysWow64 ; SysWow64
 
 [Manufacturer]
-;x86   %ORACLE%=Model, NTx86.6.0
-;amd64 %ORACLE%=Model, NTamd64.6.0
+%ORACLE%=VBoxWDDM@COMMA-NT-ARCH@.6.0
 
-;amd64 [Model.NTamd64.6.0]
-;x86   [Model.NTx86.6.0]
-%VBoxVideo.SvcDesc% = VBoxVideo, PCI\VEN_80EE&DEV_BEEF
+[VBoxWDDM@DOT-NT-ARCH@.6.0]
+%VBoxVideo.SvcDesc% = VBoxVideo_Install, PCI\VEN_80EE&DEV_BEEF
 
-[VBoxVideo]
+[VBoxVideo_Install]
 FeatureScore = F8
 Include = msdv.inf
 ;x86   CopyFiles = VBoxVideo.Miniport, VBoxVideo.Display

@@ -1,4 +1,4 @@
-; $Id: VBoxMouse.inf 98245 2023-01-23 14:03:41Z alexander.rudnev@oracle.com $
+; $Id: VBoxMouse.inf 98308 2023-01-25 23:14:24Z klaus.espenlaub@oracle.com $
 ;; @file
 ; INF file for installing the VBox Guest Mouse (driver for Windows NT5+).
 ;
@@ -45,12 +45,10 @@ DefaultDestDir = 12     ; DIRID_DRIVERS
 
 ; Disabled install via [Manufacturer], not working. See [DefaultInstall].
 ;[Manufacturer]
-;;x86   %ORACLE%=VBoxMouse
-;;amd64 %ORACLE%=VBoxMouse, NTamd64
+;%ORACLE%=VBoxMouse@COMMA-NT-ARCH@
 ;
-;;x86   [VBoxMouse]
-;;amd64 [VBoxMouse.NTamd64]
-;%ORACLE%=VBoxMouse_Install
+;[VBoxMouse@DOT-NT-ARCH@]
+;%VBoxMouse.SvcDesc%=VBoxMouse_Install
 ;
 ;[VBoxMouse_Install]
 ;CopyFiles = @VBoxMouse.sys
