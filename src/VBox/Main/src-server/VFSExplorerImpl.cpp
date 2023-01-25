@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: VFSExplorerImpl.cpp 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
@@ -29,7 +29,6 @@
 #include <iprt/dir.h>
 #include <iprt/path.h>
 #include <iprt/file.h>
-#include <iprt/s3.h>
 #include <iprt/cpp/utils.h>
 
 #include <VBox/com/array.h>

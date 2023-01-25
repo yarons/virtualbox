@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 98289 2023-01-24 16:02:15Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -30,7 +30,6 @@
 #include <iprt/path.h>
 #include <iprt/dir.h>
 #include <iprt/param.h>
-#include <iprt/s3.h>
 #include <iprt/manifest.h>
 #include <iprt/stream.h>
 #include <iprt/zip.h>

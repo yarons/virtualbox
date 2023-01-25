@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98256 2023-01-23 17:48:43Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2816,7 +2816,6 @@ VBox/VBoxRTDeps.cpp_CXXFLAGS = -Wno-deprecated-declarations
 endif
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_SOURCES               += \
- 	common/misc/s3.cpp \
  	generic/http-curl.cpp \
  	common/rest/rest-primary-object-types.cpp \
  	common/rest/rest-binary.cpp \
