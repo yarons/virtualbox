@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 98305 2023-01-25 16:48:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxSDL.cpp 98306 2023-01-25 16:49:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -176,6 +176,7 @@ static Uint32  QuitTimer(Uint32 interval, void *param) RT_NOTHROW_PROTO;
 static int     WaitSDLEvent(SDL_Event *event);
 static void    SetFullscreen(bool enable);
 static VBoxSDLFB *getFbFromWinId(Uint32 id);
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
