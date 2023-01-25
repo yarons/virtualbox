@@ -1,4 +1,4 @@
-/* $Id: vboxweb.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxweb.h 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxweb.h - header file for "real" web server code.
  */
@@ -274,9 +274,9 @@ int findComPtrFromId(struct soap *soap,
     // findRefFromId requires thelock
     util::AutoWriteLock lock(g_pWebsessionsLockHandle COMMA_LOCKVAL_SRC_POS);
 
-    int rc;
     ManagedObjectRef *pRef;
-    if ((rc = ManagedObjectRef::findRefFromId(id, &pRef, fNullAllowed)))
+    int vrc = ManagedObjectRef::findRefFromId(id, &pRef, fNullAllowed);
+    if (vrc != VINF_SUCCESS)
         // error:
         RaiseSoapInvalidObjectFault(soap, id);
     else
@@ -285,7 +285,7 @@ int findComPtrFromId(struct soap *soap,
         {
             WEBDEBUG(("   %s(): returning NULL object as permitted\n", __FUNCTION__));
             pComPtr.setNull();
-            return 0;
+            return VINF_SUCCESS;
         }
 
         const com::Guid &guidCaller = COM_IIDOF(T);
@@ -300,7 +300,7 @@ int findComPtrFromId(struct soap *soap,
             // same interface: then no QueryInterface needed
             WEBDEBUG(("   %s(): returning original %s*=0x%lX (IUnknown*=0x%lX)\n", __FUNCTION__, pRef->getInterfaceName(), pobjInterface, pobjUnknown));
             pComPtr = (T*)pobjInterface;        // this calls AddRef() once
-            return 0;
+            return VINF_SUCCESS;
         }
 
         // QueryInterface tests whether p actually supports the templated T interface desired by caller
@@ -311,15 +311,15 @@ int findComPtrFromId(struct soap *soap,
             // assign to caller's ComPtr<T>; use asOutParam() to avoid adding another reference, QueryInterface() already added one
             WEBDEBUG(("   %s(): returning pointer 0x%lX for queried interface %RTuuid (IUnknown*=0x%lX)\n", __FUNCTION__, pT, guidCaller.raw(), pobjUnknown));
             *(pComPtr.asOutParam()) = pT;
-            return 0;
+            return VINF_SUCCESS;
         }
 
         WEBDEBUG(("    Interface not supported for object reference %s, which is of class %s\n", id.c_str(), pRef->getInterfaceName()));
-        rc = VERR_WEB_UNSUPPORTED_INTERFACE;
+        vrc = VERR_WEB_UNSUPPORTED_INTERFACE;
         RaiseSoapInvalidObjectFault(soap, id);      // @todo better message
     }
 
-    return rc;
+    return vrc;
 }
 
 /**

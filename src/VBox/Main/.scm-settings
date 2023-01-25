@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98296 2023-01-25 01:28:38Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -24,6 +24,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-only
 #
+
+/*: --no-rc-use
 
 # cbindings have different licences.
 /cbinding/*.h:                          --license-lgpl
@@ -52,13 +54,6 @@
 /cbinding/VBoxCAPI*.h:       --guard-relative-to-dir ''
 /cbinding/VBoxCAPI*.h:       --guard-relative-to-dir ''
 /cbinding/VBoxCAPIGlue.h.in: --guard-relative-to-dir ''
-
-/src-all/*cpp: --no-rc-use
-/src-client/*cpp: --no-rc-use
-/src-global/*cpp: --no-rc-use
-/src-helper-apps/*cpp: --no-rc-use
-/src-server/*cpp: --no-rc-use
-/include/*: --no-rc-use
 
 # IDL and XML
 /idl/VirtualBox.xidl:                   --treat-as .xml
@@ -97,6 +92,8 @@
 --filter-out-files /testcase/VBoxVBTest/TestForm.frm
 --filter-out-files /testcase/VBoxVBTest/TestForm.frx
 --filter-out-files /testcase/VBoxVBTest/VBoxVBTest.vbp
+# for now:
+/testcase/*: --unrestricted-rc-use
 
 /testcase/tstUnattendedScript-1.expected: --treat-as plaintext --external-copyright
 /testcase/tstUnattendedScript-1.template: --treat-as plaintext --external-copyright

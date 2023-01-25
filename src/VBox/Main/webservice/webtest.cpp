@@ -1,4 +1,4 @@
-/* $Id: webtest.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: webtest.cpp 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * webtest.cpp:
  *      demo webservice client in C++. This mimics some of the
@@ -93,9 +93,9 @@ int main(int argc, char* argv[])
     const char *pcszArgEndpoint = "http://localhost:18083/";
 
     /* SSL callbacks drag in IPRT sem/thread use, so make sure it is ready. */
-    int rc = RTR3InitExe(argc, &argv, 0);
-    if (RT_FAILURE(rc))
-        return RTMsgInitFailure(rc);
+    int vrc = RTR3InitExe(argc, &argv, 0);
+    if (RT_FAILURE(vrc))
+        return RTMsgInitFailure(vrc);
 
     int ap;
     for (ap = 1; ap < argc; ap++)
