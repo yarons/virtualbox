@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 98246 2023-01-23 14:44:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxSDL.cpp 98301 2023-01-25 08:24:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -235,13 +235,13 @@ static SDL_Cursor *gpDefaultCursor = NULL;
 #ifdef VBOXSDL_WITH_X11
 static Cursor      gpDefaultOrigX11Cursor;
 #endif
-static SDL_Cursor *gpCustomCursor = NULL;
+static SDL_Cursor *gpCustomCursor = 0;
 #ifndef VBOX_WITH_SDL2
 static WMcursor   *gpCustomOrigWMcursor = NULL;
 #endif
 static SDL_Cursor *gpOffCursor = NULL;
-static SDL_TimerID gSdlResizeTimer = NULL;
-static SDL_TimerID gSdlQuitTimer = NULL;
+static SDL_TimerID gSdlResizeTimer = 0;
+static SDL_TimerID gSdlQuitTimer = 0;
 
 #if defined(VBOXSDL_WITH_X11) && !defined(VBOX_WITH_SDL2)
 static SDL_SysWMinfo gSdlInfo;
@@ -5002,7 +5002,7 @@ static Uint32 QuitTimer(Uint32 interval, void *param) RT_NOTHROW_DEF
 
     BOOL fHandled = FALSE;
 
-    gSdlQuitTimer = NULL;
+    gSdlQuitTimer = 0;
     if (gpConsole)
     {
         int rc = gpConsole->GetPowerButtonHandled(&fHandled);
