@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBGetDevices.h 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -96,7 +96,7 @@ extern bool USBProxyLinuxCheckDeviceRoot(const char *pcszRoot, bool fIsDeviceNod
 #ifdef UNIT_TEST
 void TestUSBSetupInit(const char *pcszUsbfsRoot, bool fUsbfsAccessible,
                       const char *pcszDevicesRoot, bool fDevicesAccessible,
-                      int rcMethodInitResult);
+                      int vrcMethodInitResult);
 void TestUSBSetEnv(const char *pcszEnvUsb, const char *pcszEnvUsbRoot);
 #endif
 

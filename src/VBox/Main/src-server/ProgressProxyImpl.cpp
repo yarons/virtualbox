@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: ProgressProxyImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -54,8 +54,7 @@ HRESULT ProgressProxy::FinalConstruct()
     muOtherProgressWeight = 0;
     muOtherProgressStartOperation = 0;
 
-    HRESULT rc = Progress::FinalConstruct();
-    return rc;
+    return Progress::FinalConstruct();
 }
 
 /**

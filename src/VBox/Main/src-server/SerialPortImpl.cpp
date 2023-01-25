@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: SerialPortImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -403,7 +403,7 @@ HRESULT SerialPort::setIOBase(ULONG aIOBase)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = S_OK;
+    HRESULT hrc = S_OK;
 
     if (m->bd->ulIOBase != aIOBase)
     {
@@ -421,7 +421,7 @@ HRESULT SerialPort::setIOBase(ULONG aIOBase)
         m->pMachine->i_onSerialPortChange(this);
     }
 
-    return rc;
+    return hrc;
 }
 
 HRESULT SerialPort::getPath(com::Utf8Str &aPath)
@@ -444,8 +444,8 @@ HRESULT SerialPort::setPath(const com::Utf8Str &aPath)
 
     if (aPath != m->bd->strPath)
     {
-        HRESULT rc = i_checkSetPath(aPath);
-        if (FAILED(rc)) return rc;
+        HRESULT hrc = i_checkSetPath(aPath);
+        if (FAILED(hrc)) return hrc;
 
         m->bd.backup();
         m->bd->strPath = aPath;

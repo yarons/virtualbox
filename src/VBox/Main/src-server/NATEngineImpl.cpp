@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: NATEngineImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -379,9 +379,9 @@ HRESULT NATEngine::i_saveSettings(settings::NAT &data)
     AssertComRCReturnRC(autoCaller.hrc());
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-    HRESULT rc = S_OK;
+    HRESULT hrc = S_OK;
     data = *mData->m.data();
-    return rc;
+    return hrc;
 }
 
 HRESULT NATEngine::setNetwork(const com::Utf8Str &aNetwork)
@@ -415,8 +415,8 @@ HRESULT NATEngine::setHostIP(const com::Utf8Str &aHostIP)
         RTNETADDRIPV4 addr;
 
         /* parses as an IPv4 address */
-        int rc = RTNetStrToIPv4Addr(aHostIP.c_str(), &addr);
-        if (RT_FAILURE(rc))
+        int vrc = RTNetStrToIPv4Addr(aHostIP.c_str(), &addr);
+        if (RT_FAILURE(vrc))
             return setError(E_INVALIDARG, "Invalid IPv4 address \"%s\"", aHostIP.c_str());
 
         /* is a unicast address */

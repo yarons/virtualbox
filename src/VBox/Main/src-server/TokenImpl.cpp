@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TokenImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * Token COM class implementation - MachineToken and MediumLockToken
  */
@@ -186,13 +186,13 @@ void MediumLockToken::uninit()
     {
         if (m.fWrite)
         {
-            HRESULT rc = m.pMedium->i_unlockWrite(NULL);
-            AssertComRC(rc);
+            HRESULT hrc = m.pMedium->i_unlockWrite(NULL);
+            AssertComRC(hrc);
         }
         else
         {
-            HRESULT rc = m.pMedium->i_unlockRead(NULL);
-            AssertComRC(rc);
+            HRESULT hrc = m.pMedium->i_unlockRead(NULL);
+            AssertComRC(hrc);
         }
         m.pMedium.setNull();
     }

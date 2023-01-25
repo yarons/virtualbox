@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendUsbIp.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -350,18 +350,18 @@ int USBProxyBackendUsbIp::init(USBProxyService *pUsbProxyService, const com::Utf
                 if (RT_FAILURE(vrc))
                 {
                     RTPollSetRemove(m->hPollSet, USBIP_POLL_ID_PIPE);
-                    int rc2 = RTPollSetDestroy(m->hPollSet);
-                    AssertRC(rc2);
+                    int vrc2 = RTPollSetDestroy(m->hPollSet);
+                    AssertRC(vrc2);
                     m->hPollSet = NIL_RTPOLLSET;
                 }
             }
 
             if (RT_FAILURE(vrc))
             {
-                int rc2 = RTPipeClose(m->hWakeupPipeR);
-                AssertRC(rc2);
-                rc2 = RTPipeClose(m->hWakeupPipeW);
-                AssertRC(rc2);
+                int vrc2 = RTPipeClose(m->hWakeupPipeR);
+                AssertRC(vrc2);
+                vrc2 = RTPipeClose(m->hWakeupPipeW);
+                AssertRC(vrc2);
                 m->hWakeupPipeR = m->hWakeupPipeW = NIL_RTPIPE;
             }
         }

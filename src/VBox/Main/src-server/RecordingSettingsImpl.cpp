@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingSettingsImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -576,8 +576,8 @@ HRESULT RecordingSettings::i_saveSettings(settings::RecordingSettings &data)
     if (!pGraphicsAdapter.isNull())
         pGraphicsAdapter->COMGETTER(MonitorCount)(&cMonitors);
 
-    int rc2 = i_syncToMachineDisplays(cMonitors);
-    AssertRC(rc2);
+    int vrc2 = i_syncToMachineDisplays(cMonitors);
+    AssertRC(vrc2);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
