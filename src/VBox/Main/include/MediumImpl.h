@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.h 98291 2023-01-25 00:16:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -359,7 +359,7 @@ private:
     bool    i_resetMoveOperationData();
     Utf8Str i_getNewLocationForMoving() const;
 
-    static DECLCALLBACK(void) i_vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
+    static DECLCALLBACK(void) i_vdErrorCall(void *pvUser, int vrc, RT_SRC_POS_DECL,
                                             const char *pszFormat, va_list va);
     static DECLCALLBACK(bool) i_vdConfigAreKeysValid(void *pvUser,
                                                      const char *pszzValid);
