@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDnsServiceResolvConf.cpp 98293 2023-01-25 01:22:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -75,8 +75,8 @@ HostDnsServiceResolvConf::~HostDnsServiceResolvConf()
 
 HRESULT HostDnsServiceResolvConf::init(HostDnsMonitorProxy *pProxy, const char *aResolvConfFileName)
 {
-    HRESULT hr = HostDnsServiceBase::init(pProxy);
-    AssertComRCReturn(hr, hr);
+    HRESULT hrc = HostDnsServiceBase::init(pProxy);
+    AssertComRCReturn(hrc, hrc);
 
     m = new Data(aResolvConfFileName);
     AssertPtrReturn(m, E_OUTOFMEMORY);

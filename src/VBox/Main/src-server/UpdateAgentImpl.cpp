@@ -1,4 +1,4 @@
-/* $Id: UpdateAgentImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: UpdateAgentImpl.cpp 98293 2023-01-25 01:22:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IUpdateAgent COM class implementations.
  */
@@ -340,11 +340,11 @@ HRESULT UpdateAgent::init(VirtualBox *aVirtualBox)
     /* Weak reference to a VirtualBox object */
     unconst(m_VirtualBox) = aVirtualBox;
 
-    HRESULT hr = unconst(m_EventSource).createObject();
-    if (SUCCEEDED(hr))
-        hr = m_EventSource->init();
+    HRESULT hrc = unconst(m_EventSource).createObject();
+    if (SUCCEEDED(hrc))
+        hrc = m_EventSource->init();
 
-    return hr;
+    return hrc;
 }
 
 void UpdateAgent::uninit(void)
@@ -901,11 +901,11 @@ HRESULT HostUpdateAgent::init(VirtualBox *aVirtualBox)
     /* Set default repository. */
     m->strRepoUrl = "https://update.virtualbox.org";
 
-    HRESULT hr = UpdateAgent::init(aVirtualBox);
-    if (SUCCEEDED(hr))
+    HRESULT hrc = UpdateAgent::init(aVirtualBox);
+    if (SUCCEEDED(hrc))
         autoInitSpan.setSucceeded();
 
-    return hr;
+    return hrc;
 }
 
 void HostUpdateAgent::uninit(void)
