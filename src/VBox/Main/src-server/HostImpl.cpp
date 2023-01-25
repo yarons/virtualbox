@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 98293 2023-01-25 01:22:39Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 98294 2023-01-25 01:24:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1877,7 +1877,7 @@ HRESULT Host::findHostNetworkInterfacesOfType(HostNetworkInterfaceType_T aType,
     for (HostNetworkInterfaceList::iterator it = m->llNetIfs.begin(); it != m->llNetIfs.end(); ++it)
     {
         HostNetworkInterfaceType_T t;
-        HRESULT hrc = (*it)->COMGETTER(InterfaceType)(&t);
+        hrc = (*it)->COMGETTER(InterfaceType)(&t);
         if (FAILED(hrc))
             return hrc;
 
