@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 98302 2023-01-25 09:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: Framebuffer.cpp 98303 2023-01-25 09:11:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -44,7 +44,7 @@
 using namespace com;
 
 #define LOG_GROUP LOG_GROUP_GUI
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include "VBoxSDL.h"
