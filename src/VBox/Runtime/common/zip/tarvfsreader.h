@@ -1,4 +1,4 @@
-/* $Id: tarvfsreader.h 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
+/* $Id: tarvfsreader.h 98325 2023-01-26 16:16:07Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -40,7 +40,7 @@
 # pragma once
 #endif
 
-#include <iprt/formats/tar.h>
+#include "tar.h"
 
 
 /**

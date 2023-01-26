@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
+/* $Id: tarvfs.cpp 98325 2023-01-26 16:16:07Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -51,7 +51,6 @@
 #include <iprt/vfs.h>
 #include <iprt/vfslowlevel.h>
 
-#include <iprt/formats/tar.h>
 #include "tarvfsreader.h"
 
 
