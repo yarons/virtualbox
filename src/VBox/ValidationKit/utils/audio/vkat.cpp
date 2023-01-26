@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 98318 2023-01-26 15:21:12Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 98324 2023-01-26 16:10:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -265,7 +265,7 @@ PCPDMDRVREG AudioTestFindBackendOpt(const char *pszBackend)
         if (   strcmp(pszBackend, g_aBackends[i].pszName) == 0
             || strcmp(pszBackend, g_aBackends[i].pDrvReg->szName) == 0)
             return g_aBackends[i].pDrvReg;
-    RTMsgError("Unknown backend: '%s'\n\n");
+    RTMsgError("Unknown backend: '%s'\n\n", pszBackend);
     RTPrintf("Supported backend values are: ");
     for (uintptr_t i = 0; i < RT_ELEMENTS(g_aBackends); i++)
     {
