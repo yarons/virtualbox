@@ -1,4 +1,4 @@
-; $Id: VBoxWddm.inf 98315 2023-01-26 14:24:14Z klaus.espenlaub@oracle.com $
+; $Id: VBoxWddm.inf 98328 2023-01-26 18:50:30Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VirtualBox Video Wddm driver
 ;
@@ -90,7 +90,7 @@ HKR,, VgaCompatible, %REG_DWORD%, 0
 [VBoxWDDM_RegisterDlls]
 
 
-[VBoxWDDM.Services]
+[VBoxWDDM_Install.Services]
 AddService=VBoxWddm, 0x00000002, VBoxWDDM_Service_Inst, VBoxWDDM_EventLog_Inst
 
 [VBoxWDDM_Service_Inst]

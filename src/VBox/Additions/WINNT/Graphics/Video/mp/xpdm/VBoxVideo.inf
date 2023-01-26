@@ -1,4 +1,4 @@
-; $Id: VBoxVideo.inf 98308 2023-01-25 23:14:24Z klaus.espenlaub@oracle.com $
+; $Id: VBoxVideo.inf 98328 2023-01-26 18:50:30Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VirtualBox Video miniport driver
 ;
@@ -59,7 +59,7 @@ VBoxVideo.sys,,,0x100
 [VBoxVideo.Display]
 VBoxDisp.dll,,,0x00004000  ; COPYFLG_IN_USE_TRY_RENAME
 
-[VBoxVideo.Services]
+[VBoxVideo_Install.Services]
 AddService=VBoxVideo, 0x00000002, vboxvideo_Service_Inst, vboxvideo_EventLog_Inst
 
 [vboxvideo_Service_Inst]
