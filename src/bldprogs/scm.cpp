@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 98113 2023-01-18 10:22:36Z knut.osmundsen@oracle.com $ */
+/* $Id: scm.cpp 98319 2023-01-26 15:31:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -104,6 +104,8 @@ typedef enum SCMOPT
     SCMOPT_NO_PAGE_RESTRICTIONS,
     SCMOPT_NO_RC_USE,
     SCMOPT_UNRESTRICTED_RC_USE,
+    SCMOPT_STANDARIZE_KMK,
+    SCMOPT_NO_STANDARIZE_KMK,
     SCMOPT_UPDATE_COPYRIGHT_YEAR,
     SCMOPT_NO_UPDATE_COPYRIGHT_YEAR,
     SCMOPT_EXTERNAL_COPYRIGHT,
@@ -214,6 +216,7 @@ static SCMSETTINGSBASE const g_Defaults =
     /* .fOnlyGuestHostPage = */                     false,
     /* .fNoASMMemPageUse = */                       false,
     /* .fOnlyHrcVrcInsteadOfRc */                   false,
+    /* .fStandarizeKmk */                           false,
     /* .fUpdateCopyrightYear = */                   false,
     /* .fExternalCopyright = */                     false,
     /* .fLgplDisclaimer = */                        false,
@@ -273,6 +276,8 @@ static RTGETOPTDEF  g_aScmOpts[] =
     { "--unrestricted-ASMMemPage-use",      SCMOPT_UNRESTRICTED_ASM_MEM_PAGE_USE,   RTGETOPT_REQ_NOTHING },
     { "--no-rc-use",                        SCMOPT_NO_RC_USE,                       RTGETOPT_REQ_NOTHING },
     { "--unrestricted-rc-use",              SCMOPT_UNRESTRICTED_RC_USE,             RTGETOPT_REQ_NOTHING },
+    { "--standarize-kmk",                   SCMOPT_STANDARIZE_KMK,                  RTGETOPT_REQ_NOTHING },
+    { "--no-standarize-kmk",                SCMOPT_NO_STANDARIZE_KMK,               RTGETOPT_REQ_NOTHING },
     { "--update-copyright-year",            SCMOPT_UPDATE_COPYRIGHT_YEAR,           RTGETOPT_REQ_NOTHING },
     { "--no-update-copyright-year",         SCMOPT_NO_UPDATE_COPYRIGHT_YEAR,        RTGETOPT_REQ_NOTHING },
     { "--external-copyright",               SCMOPT_EXTERNAL_COPYRIGHT,              RTGETOPT_REQ_NOTHING },
@@ -1223,6 +1228,13 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
             return VINF_SUCCESS;
         case SCMOPT_UNRESTRICTED_RC_USE:
             pSettings->fOnlyHrcVrcInsteadOfRc = false;
+            return VINF_SUCCESS;
+
+        case SCMOPT_STANDARIZE_KMK:
+            pSettings->fStandarizeKmk = true;
+            return VINF_SUCCESS;
+        case SCMOPT_NO_STANDARIZE_KMK:
+            pSettings->fStandarizeKmk = false;
             return VINF_SUCCESS;
 
         case SCMOPT_UPDATE_COPYRIGHT_YEAR:
@@ -2221,6 +2233,25 @@ bool ScmError(PSCMRWSTATE pState, int rc, const char *pszFormat, ...)
  */
 bool ScmFixManually(PSCMRWSTATE pState, const char *pszFormat, ...)
 {
+    va_list va;
+    va_start(va, pszFormat);
+    ScmFixManuallyV(pState, pszFormat, va);
+    va_end(va);
+    return false;
+}
+
+
+/**
+ * Prints message indicating that something requires manual fixing.
+ *
+ * @returns false
+ * @param   pState              The rewrite state.  Optional.
+ * @param   rc                  The error code.
+ * @param   pszFormat           The message format string.
+ * @param   va                  Format arguments.
+ */
+bool ScmFixManuallyV(PSCMRWSTATE pState, const char *pszFormat, va_list va)
+{
     pState->fNeedsManualRepair = true;
 
     if (!pState->fFirst)
@@ -2228,10 +2259,10 @@ bool ScmFixManually(PSCMRWSTATE pState, const char *pszFormat, ...)
         RTPrintf("%s: info: --= Rewriting '%s' =--\n", g_szProgName, pState->pszFilename);
         pState->fFirst = true;
     }
-    va_list va;
-    va_start(va, pszFormat);
-    RTPrintf("%s: error/fixme: %s: %N", g_szProgName, pState->pszFilename, pszFormat, &va);
-    va_end(va);
+    va_list vaCopy;
+    va_copy(vaCopy, va);
+    RTPrintf("%s: error/fixme: %s: %N", g_szProgName, pState->pszFilename, pszFormat, &vaCopy);
+    va_end(vaCopy);
 
     return false;
 }
@@ -2960,6 +2991,9 @@ static int scmHelp(PCRTGETOPTDEF paOpts, size_t cOpts)
                          "      vrc for IPRT status codes and hrc for COM status codes.  Default: %RTbool\n",
                          g_Defaults.fOnlyHrcVrcInsteadOfRc);
                 break;
+            case SCMOPT_STANDARIZE_KMK:
+                RTPrintf("      Clean up kmk files (the makefile-kmk action).  Default: %RTbool\n", g_Defaults.fStandarizeKmk);
+                break;
             case SCMOPT_UPDATE_COPYRIGHT_YEAR:
                 RTPrintf("      Update the copyright year.  Default: %RTbool\n", g_Defaults.fUpdateCopyrightYear);
                 break;
@@ -3110,7 +3144,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 98113 $";
+                static const char s_szRev[] = "$Revision: 98319 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

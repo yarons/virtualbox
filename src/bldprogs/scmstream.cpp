@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.cpp 98319 2023-01-26 15:31:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -916,6 +916,20 @@ int ScmStreamRead(PSCMSTREAM pStream, void *pvBuf, size_t cbToRead)
     /* Copy the data and simply seek to the new stream position. */
     memcpy(pvBuf, &pStream->pch[pStream->off], cbToRead);
     return ScmStreamSeekAbsolute(pStream, pStream->off + cbToRead);
+}
+
+
+/**
+ * Checks if we're at the end of the stream.
+ *
+ * @returns true if end of stream, false if not.
+ * @param   pStream             The stream.  Must be in read mode.
+ */
+bool ScmStreamIsEndOfStream(PSCMSTREAM pStream)
+{
+    AssertReturn(!pStream->fWriteOrRead, false);
+    return pStream->off >= pStream->cb
+        || RT_FAILURE(pStream->rc);
 }
 
 

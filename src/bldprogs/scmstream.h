@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.h 98319 2023-01-26 15:31:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -128,6 +128,7 @@ unsigned    ScmStreamGetCh(PSCMSTREAM pStream);
 const char *ScmStreamGetCur(PSCMSTREAM pStream);
 unsigned    ScmStreamPeekCh(PSCMSTREAM pStream);
 int         ScmStreamRead(PSCMSTREAM pStream, void *pvBuf, size_t cbToRead);
+bool        ScmStreamIsEndOfStream(PSCMSTREAM pStream);
 bool        ScmStreamIsWhiteLine(PSCMSTREAM pStream, size_t iLine);
 SCMEOL      ScmStreamGetEol(PSCMSTREAM pStream);
 SCMEOL      ScmStreamGetEolByLine(PSCMSTREAM pStream, size_t iLine);
