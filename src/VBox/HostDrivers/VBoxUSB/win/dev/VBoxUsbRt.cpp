@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbRt.cpp 98327 2023-01-26 18:41:52Z michal.necasek@oracle.com $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1436,7 +1436,9 @@ static NTSTATUS vboxUsbRtUrbSend(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp, PUSBSUP_URB
 
     if (pMdlBuf)
     {
-        MmUnlockPages(pMdlBuf);
+        if (pMdlBuf->MdlFlags & MDL_PAGES_LOCKED)
+            MmUnlockPages(pMdlBuf);
+
         IoFreeMdl(pMdlBuf);
     }
 
