@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxRTImp.def 98323 2023-01-26 16:04:46Z alexander.eichner@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1902,14 +1902,6 @@ EXPORTS
     RTSystemQueryDmiString
     RTSystemQueryOSInfo
     RTSystemQueryTotalRam
-    RTTarClose
-    RTTarFileClose
-    RTTarFileGetSize
-    RTTarFileOpen
-    RTTarFileReadAt
-    RTTarFileSetSize
-    RTTarFileWriteAt
-    RTTarOpen
     RTTcpClientClose
     RTTcpClientCloseEx
     RTTcpClientConnect
