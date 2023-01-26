@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -47,8 +47,6 @@
 #include "UINotificationCenter.h"
 #include "UINotificationObjectItem.h"
 #include "UINotificationModel.h"
-#include "UIVirtualBoxEventHandler.h" /** @todo EXAMPLE -- REMOVE THIS */
-#include "CUpdateAgent.h"             /** @todo EXAMPLE -- REMOVE THIS */
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
@@ -414,12 +412,6 @@ void UINotificationCenter::sltHandleOrderChange()
         m_pButtonOpen->toggle();
 }
 
-/** @todo EXAMPLE -- REMOVE THIS */
-void UINotificationCenter::sltUpdateAgentAvailable(CUpdateAgent comAgent, QString strVer, KUpdateChannel, KUpdateSeverity, QString, QString, QString)
-{
-    RT_NOREF(comAgent, strVer);
-}
-
 void UINotificationCenter::sltHandleOpenButtonToggled(bool fToggled)
 {
     if (fToggled)
@@ -558,9 +550,6 @@ void UINotificationCenter::prepareModel()
                 this, &UINotificationCenter::sltHandleModelItemAdded);
         connect(m_pModel, &UINotificationModel::sigItemRemoved,
                 this, &UINotificationCenter::sltHandleModelItemRemoved);
-        /** @todo EXAMPLE -- REMOVE THIS */
-        connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigUpdateAgentAvailable,
-                this, &UINotificationCenter::sltUpdateAgentAvailable);
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.h 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -41,7 +41,6 @@
 #include "COMEnums.h"
 #include "CMedium.h"
 #include "CMediumAttachment.h"
-#include "CUpdateAgent.h"
 
 /* Forward declarations: */
 class UIVirtualBoxEventHandlerProxy;
@@ -98,14 +97,6 @@ signals:
       * @param  enmMediumType  Brings corresponding medium type.
       * @param  fRegistered    Brings whether medium is registered or unregistered. */
     void sigMediumRegistered(const QUuid &uMediumId, KDeviceType enmMediumType, bool fRegistered);
-    /** Notifies about an available update of an update agent. */
-    void sigUpdateAgentAvailable(CUpdateAgent, QString, KUpdateChannel, KUpdateSeverity, QString, QString, QString);
-    /** Notifies about an error of an update agent. */
-    void sigUpdateAgentError(CUpdateAgent, QString, long);
-    /** Notifies about a state change of an update agent. */
-    void sigUpdateAgentStateChanged(CUpdateAgent, KUpdateState);
-    /** Notifies about update agent @a comAgent settings change. */
-    void sigUpdateAgentSettingsChanged(CUpdateAgent comAgent, const QString &strAttributeHint);
 
 public:
 

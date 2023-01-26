@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMainEventListener.h 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -48,7 +48,6 @@
 #include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
 #include "CUSBDevice.h"
-#include "CUpdateAgent.h"
 #include "CVirtualBoxErrorInfo.h"
 
 /* Other VBox includes: */
@@ -202,18 +201,6 @@ signals:
         void sigClipboardModeChange(KClipboardMode enmClipboardMode);
         /** Notifies about the drag and drop mode change. */
         void sigDnDModeChange(KDnDMode enmDnDMode);
-    /** @} */
-
-    /** @name Update agent signals
-     * @{ */
-       /** Notifies about an available update of an update agent. */
-       void sigUpdateAgentAvailable(CUpdateAgent, QString, KUpdateChannel, KUpdateSeverity, QString, QString, QString);
-       /** Notifies about an error of an update agent. */
-       void sigUpdateAgentError(CUpdateAgent, QString, long);
-       /** Notifies about a state change of an update agent. */
-       void sigUpdateAgentStateChanged(CUpdateAgent, KUpdateState);
-       /** Notifies about update agent @a comAgent settings change. */
-       void sigUpdateAgentSettingsChanged(CUpdateAgent comAgent, const QString &strAttributeHint);
     /** @} */
 
     /** @name Progress related signals
