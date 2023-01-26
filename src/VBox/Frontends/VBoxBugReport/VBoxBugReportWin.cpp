@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReportWin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBugReportWin.cpp 98320 2023-01-26 15:50:47Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBugReportWin - VirtualBox command-line diagnostics tool, Windows-specific part.
  */
@@ -267,7 +267,7 @@ class BugReportUsbTreeWin : public BugReportStream
 public:
     BugReportUsbTreeWin();
     virtual ~BugReportUsbTreeWin();
-    virtual PRTSTREAM getStream(void) { enumerate(); return BugReportStream::getStream(); }
+    virtual RTVFSIOSTREAM getStream(void) { enumerate(); return BugReportStream::getStream(); }
 private:
     class AutoHandle {
     public:
@@ -581,7 +581,7 @@ class BugReportDriversWin : public BugReportStream
 public:
     BugReportDriversWin();
     virtual ~BugReportDriversWin();
-    virtual PRTSTREAM getStream(void) { enumerateDrivers(); return BugReportStream::getStream(); }
+    virtual RTVFSIOSTREAM getStream(void) { enumerateDrivers(); return BugReportStream::getStream(); }
 private:
     void enumerateDrivers(void);
 
