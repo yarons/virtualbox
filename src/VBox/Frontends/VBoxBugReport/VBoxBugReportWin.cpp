@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReportWin.cpp 98320 2023-01-26 15:50:47Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxBugReportWin.cpp 98321 2023-01-26 15:53:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBugReportWin - VirtualBox command-line diagnostics tool, Windows-specific part.
  */
@@ -51,7 +51,7 @@ class BugReportNetworkAdaptersWin : public BugReportStream
 public:
     BugReportNetworkAdaptersWin() : BugReportStream("NetworkAdapters") {};
     virtual ~BugReportNetworkAdaptersWin() {};
-    virtual PRTSTREAM getStream(void) { collect(); return BugReportStream::getStream(); };
+    virtual RTVFSIOSTREAM getStream(void) { collect(); return BugReportStream::getStream(); };
 private:
     struct CharacteristicsName
     {
