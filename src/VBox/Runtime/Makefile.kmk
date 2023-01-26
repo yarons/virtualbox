@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -746,7 +746,6 @@ RuntimeBaseR3_SOURCES      := \
 	common/vfs/vfsstdpipe.cpp \
 	common/vfs/vfsprintf.cpp \
 	common/zip/cpiovfs.cpp \
-	common/zip/tar.cpp \
 	common/zip/tarcmd.cpp \
 	common/zip/tarvfs.cpp \
 	common/zip/tarvfswriter.cpp \
@@ -2455,7 +2454,6 @@ RuntimeBldProg_SOURCES          = \
 	common/vfs/vfsstdfile.cpp \
 	common/vfs/vfsstdpipe.cpp \
 	common/zip/gzipvfs.cpp \
-	common/zip/tar.cpp \
 	common/zip/tarcmd.cpp \
 	common/zip/tarvfs.cpp \
 	common/zip/tarvfswriter.cpp \

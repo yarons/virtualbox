@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImpl.h 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -38,7 +38,6 @@
 
 /** @todo This file needs massive cleanup. Split IAppliance in a public and
  * private classes. */
-#include <iprt/tar.h>
 #include "ovfreader.h"
 #include <set>
 

@@ -1,4 +1,4 @@
-/* $Id: magics.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: magics.h 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -237,14 +237,6 @@
 #define RTTCPSERVER_MAGIC               UINT32_C(0x19470304)
 /** Magic value for RTTCPSERVER::u32Magic. (Harlan Ellison) */
 #define RTUDPSERVER_MAGIC               UINT32_C(0x19340527)
-/** The value of RTTAR::u32Magic. (Donald Ervin Knuth) */
-#define RTTAR_MAGIC                     UINT32_C(0x19380110)
-/** The value of RTTAR::u32Magic after RTTarClose(). */
-#define RTTAR_MAGIC_DEAD                ~RTTAR_MAGIC
-/** The value of RTTARFILE::u32Magic. (Abraham Stoker) */
-#define RTTARFILE_MAGIC                 UINT32_C(0x18471108)
-/** The value of RTTARFILE::u32Magic after RTTarFileClose(). */
-#define RTTARFILE_MAGIC_DEAD            UINT32_C(0x19120420)
 /** RTTESTINT::u32Magic value. (Daniel Kehlmann) */
 #define RTTESTINT_MAGIC                 UINT32_C(0x19750113)
 /** RTTHREADCTXHOOKINT::u32Magic value. (Dennis MacAlistair Ritchie) */

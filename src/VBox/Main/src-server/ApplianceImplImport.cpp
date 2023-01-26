@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -33,7 +33,6 @@
 #include <iprt/file.h>
 #include <iprt/sha.h>
 #include <iprt/manifest.h>
-#include <iprt/tar.h>
 #include <iprt/zip.h>
 #include <iprt/stream.h>
 #include <iprt/crypto/digest.h>
@@ -41,6 +40,8 @@
 #include <iprt/crypto/store.h>
 #include <iprt/crypto/x509.h>
 #include <iprt/rand.h>
+
+#include <iprt/formats/tar.h>
 
 #include <VBox/vd.h>
 #include <VBox/com/array.h>

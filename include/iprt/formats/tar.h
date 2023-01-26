@@ -1,4 +1,4 @@
-/* $Id: tar.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tar.h 98322 2023-01-26 15:59:04Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -66,6 +66,10 @@
 #define RTZIPTAR_TF_GNU_SPARSE      'S'
 #define RTZIPTAR_TF_GNU_VOLDHR      'V'
 /** @} */
+
+/** Maximum length of a tar filename, excluding the terminating '\0'. More
+ * does not fit into a tar record. */
+#define RTZIPTAR_NAME_MAX           99
 
 
 /**
