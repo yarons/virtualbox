@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-guestcontrol" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-01-27 10:37:56 +0100 (Fri, 27 Jan 2023) $</pubdate>
     <title>VBoxManage guestcontrol</title>
   </refentryinfo>
 
@@ -1295,7 +1295,7 @@ $ VBoxManage --nologo guestcontrol "My Win VM" run \
 <screen>
 $ VBoxManage --nologo guestcontrol "My Win VM" start \
 --exe "c:\\windows\\system32\\ipconfig.exe" \
---username user1 --passwordfile pw.txt --wait-stdout
+--username user1 --passwordfile pw.txt
 </screen>
   </refsect1>
 </refentry>
