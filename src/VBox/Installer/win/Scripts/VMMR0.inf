@@ -1,4 +1,4 @@
-; $Id: VMMR0.inf 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VMMR0.inf 98336 2023-01-27 16:55:51Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VMMR0.inf - VirtualBox VMM drivers.
 ;
@@ -42,18 +42,20 @@ VBoxDDR0.r0=1
 
 [DestinationDirs]
 DefaultDestDir = 12
-VBoxVMMInstall.Files = 12
+VBoxVMM_Install.Files = 12
 
 [Manufacturer]
 %ORACLE%=VBoxVMM@COMMA-NT-ARCH@
 
 [VBoxVMM@DOT-NT-ARCH@]
-%VBoxVMM.DrvDesc% = VBoxVMMInstall, root\VBoxVMM
+%VBoxVMM.DrvDesc% = VBoxVMM_Install, root\VBoxVMM
 
-[VBoxVMMInstall]
-CopyFiles = VBoxVMMInstall.Files
+[VBoxVMM_Install]
+CopyFiles = VBoxVMM_CopyFiles
 
-[VBoxVMMInstall.Files]
+[VBoxVMM_Install.Services]
+
+[VBoxVMM_CopyFiles]
 VMMR0.r0,,,2
 VBoxDDR0.r0,,,2
 

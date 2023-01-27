@@ -1,4 +1,4 @@
-; $Id: VBoxUSBMon.inf 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxUSBMon.inf 98336 2023-01-27 16:55:51Z klaus.espenlaub@oracle.com $
 ;; @file
 ; VBox USB Monitor driver - Installation file
 ;
@@ -54,16 +54,16 @@ AddService=VBoxUSBMon,0x00000002,VBoxUSBMon_Service,VBoxUSBMon_AddEventLog
 
 ;; Cannot get this to work (same works fine for VBoxDrv):
 ;; [Manufacturer]
-;; %ORACLE%=Oracle@COMMA-NT-ARCH@
+;; %ORACLE%=VBoxUSBMon@COMMA-NT-ARCH@
 ;;
 ;; ; Models section (referenced by [Manufacturer]).
-;; [Oracle@DOT-NT-ARCH@]
-;; %VBoxUSBMon.DRVDESC%=VBoxUSBMonInstall,root\VBoxUSBMon
+;; [VBoxUSBMon@DOT-NT-ARCH@]
+;; %VBoxUSBMon.DRVDESC%=VBoxUSBMon_Install,root\VBoxUSBMon
 ;;
-;; [VBoxUSBMonInstall@DOT-NT-ARCH@]
+;; [VBoxUSBMon_Install@DOT-NT-ARCH@]
 ;; CopyFiles=VBoxUSBMon_CopyFiles
 ;;
-;; [VBoxUSBMonInstall@DOT-NT-ARCH@.Services]
+;; [VBoxUSBMon_Install@DOT-NT-ARCH@.Services]
 ;; AddService=VBoxUSBMon,0x00000002,VBoxUSBMon_Service,VBoxUSBMon_AddEventLog
 
 [SourceDisksFiles]
