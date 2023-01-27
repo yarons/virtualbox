@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -72,6 +72,7 @@ template<> bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeSharedFo
 template<> bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeUserInterface>() { return true; }
 template<> bool canConvert<UIExtraDataMetaDefs::DetailsElementOptionTypeDescription>() { return true; }
 template<> bool canConvert<UIColorThemeType>() { return true; }
+template<> bool canConvert<UILaunchMode>() { return true; }
 template<> bool canConvert<UIToolType>() { return true; }
 template<> bool canConvert<UIVisualStateType>() { return true; }
 template<> bool canConvert<DetailsElementType>() { return true; }
@@ -1654,6 +1655,18 @@ template<> UIColorThemeType fromInternalString<UIColorThemeType>(const QString &
     if (strColorThemeType.compare("Dark", Qt::CaseInsensitive) == 0)
         return UIColorThemeType_Dark;
     return UIColorThemeType_Auto;
+}
+
+/* UILaunchMode <= QString: */
+template<> UILaunchMode fromInternalString<UILaunchMode>(const QString &strDefaultFrontendType)
+{
+    if (strDefaultFrontendType.compare("Default", Qt::CaseInsensitive) == 0)
+        return UILaunchMode_Default;
+    if (strDefaultFrontendType.compare("Headless", Qt::CaseInsensitive) == 0)
+        return UILaunchMode_Headless;
+    if (strDefaultFrontendType.compare("Separate", Qt::CaseInsensitive) == 0)
+        return UILaunchMode_Separate;
+    return UILaunchMode_Invalid;
 }
 
 /* QString <= UIToolType: */

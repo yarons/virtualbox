@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationObjects.h 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -982,7 +982,7 @@ public:
 
     /** Constructs machine power-up notification-progress.
       * @param  comMachine  Brings the machine being powered-up. */
-    UINotificationProgressMachinePowerUp(const CMachine &comMachine, UICommon::LaunchMode enmLaunchMode);
+    UINotificationProgressMachinePowerUp(const CMachine &comMachine, UILaunchMode enmLaunchMode);
 
 protected:
 
@@ -1001,13 +1001,13 @@ private slots:
 private:
 
     /** Holds the machine being powered-up. */
-    CMachine              m_comMachine;
+    CMachine      m_comMachine;
     /** Holds the launch mode. */
-    UICommon::LaunchMode  m_enmLaunchMode;
+    UILaunchMode  m_enmLaunchMode;
     /** Holds the session being opened. */
-    CSession              m_comSession;
+    CSession      m_comSession;
     /** Holds the machine name. */
-    QString               m_strName;
+    QString       m_strName;
 };
 
 /** UINotificationProgress extension for machine save-state functionality. */

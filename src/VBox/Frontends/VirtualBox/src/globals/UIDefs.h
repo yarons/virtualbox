@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDefs.h 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -123,6 +123,16 @@ enum SizeSuffix
     SizeSuffix_TeraByte,
     SizeSuffix_PetaByte,
     SizeSuffix_Max
+};
+
+
+/** VM launch modes. */
+enum UILaunchMode
+{
+    UILaunchMode_Invalid,
+    UILaunchMode_Default,
+    UILaunchMode_Headless,
+    UILaunchMode_Separate
 };
 
 

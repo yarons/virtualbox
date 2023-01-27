@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1963,7 +1963,7 @@ void UINotificationProgressMachineCopy::sltHandleProgressFinished()
 *   Class UINotificationProgressMachinePowerUp implementation.                                                                   *
 *********************************************************************************************************************************/
 
-UINotificationProgressMachinePowerUp::UINotificationProgressMachinePowerUp(const CMachine &comMachine, UICommon::LaunchMode enmLaunchMode)
+UINotificationProgressMachinePowerUp::UINotificationProgressMachinePowerUp(const CMachine &comMachine, UILaunchMode enmLaunchMode)
     : m_comMachine(comMachine)
     , m_enmLaunchMode(enmLaunchMode)
 {
@@ -2018,16 +2018,16 @@ CProgress UINotificationProgressMachinePowerUp::createProgress(COMResult &comRes
     QString strType;
     switch (m_enmLaunchMode)
     {
-        case UICommon::LaunchMode_Default:  strType = ""; break;
-        case UICommon::LaunchMode_Separate: strType = "separate"; break;
-        case UICommon::LaunchMode_Headless: strType = "headless"; break;
+        case UILaunchMode_Default:  strType = ""; break;
+        case UILaunchMode_Separate: strType = "separate"; break;
+        case UILaunchMode_Headless: strType = "headless"; break;
         default: AssertFailedReturn(CProgress());
     }
 
     /* Initialize progress-wrapper: */
     CProgress comProgress = m_comMachine.LaunchVMProcess(m_comSession, strType, astrEnv);
 //    /* If the VM is started separately and the VM process is already running, then it is OK. */
-//    if (m_enmLaunchMode == UICommon::LaunchMode_Separate)
+//    if (m_enmLaunchMode == UILaunchMode_Separate)
 //    {
 //        const KMachineState enmState = comMachine.GetState();
 //        if (   enmState >= KMachineState_FirstOnline
