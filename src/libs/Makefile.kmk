@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98255 2023-01-23 17:45:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98332 2023-01-27 11:05:05Z alexander.rudnev@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -42,8 +42,8 @@ if  defined(VBOX_WITH_LIBCURL) \
  && !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS) \
  && !defined(VBOX_ONLY_SDK) \
  && (!defined(VBOX_ONLY_VALIDATIONKIT) || defined(VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING)) \
- && "$(SDK_VBoxLibCurl_INCS)" == "$(PATH_ROOT)/src/libs/curl-7.83.1/include"
- include $(PATH_SUB_CURRENT)/curl-7.83.1/Makefile.kmk
+ && "$(SDK_VBoxLibCurl_INCS)" == "$(PATH_ROOT)/src/libs/curl-7.87.0/include"
+ include $(PATH_SUB_CURRENT)/curl-7.87.0/Makefile.kmk
 endif
 
 
