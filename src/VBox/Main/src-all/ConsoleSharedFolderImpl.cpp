@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.cpp 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.cpp 98342 2023-01-30 06:02:24Z brian.le.lee@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -93,6 +93,7 @@ void ConsoleSharedFolder::FinalRelease()
  *  @param aName        logical name of the shared folder
  *  @param aHostPath    full path to the shared folder on the host
  *  @param aWritable    writable if true, readonly otherwise
+ *  @param aAutoMount   if auto mounted by guest true, false otherwise
  *  @param aAutoMountPoint Where the guest should try auto mount it.
  *  @param fFailOnError Whether to fail with an error if the shared folder path is bad.
  *
