@@ -1,10 +1,10 @@
-/* $Id: SharedFolderImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SharedFolderImpl.h 98341 2023-01-30 03:09:52Z brian.le.lee@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2022 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -50,8 +50,8 @@ public:
     HRESULT init(Machine *aMachine, const com::Utf8Str &aName, const com::Utf8Str &aHostPath,
                  bool aWritable, bool aAutoMount, const com::Utf8Str &aAutoMountPoint, bool fFailOnError);
     HRESULT initCopy(Machine *aMachine, SharedFolder *aThat);
-    HRESULT init(Console *aConsole, const com::Utf8Str &aName, const com::Utf8Str &aHostPath,
-                 bool aWritable, bool aAutoMount, const com::Utf8Str &aAutoMountPoint, bool fFailOnError);
+//    HRESULT init(Console *aConsole, const com::Utf8Str &aName, const com::Utf8Str &aHostPath,
+//                 bool aWritable, bool aAutoMount, const com::Utf8Str &aAutoMountPoint, bool fFailOnError);
 //     HRESULT init(VirtualBox *aVirtualBox, const Utf8Str &aName, const Utf8Str &aHostPath,
 //                  bool aWritable, const com::Utf8Str &aAutoMountPoint, bool aAutoMount, bool fFailOnError);
     void uninit();
@@ -114,14 +114,10 @@ private:
     VirtualBoxBase * const mParent;
 
     /* weak parents (only one of them is not null) */
-#if !defined(VBOX_COM_INPROC)
     Machine        * const mMachine;
     VirtualBox     * const mVirtualBox;
-#else
-    Console        * const mConsole;
-#endif
 
-    struct Data;            // opaque data struct, defined in SharedFolderImpl.cpp
+    struct Data;            // opaque data struct, defined in MachineSharedFolderImpl.cpp
     Data *m;
 };
 

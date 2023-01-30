@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $
+# $Id: Makefile.kmk 98341 2023-01-30 03:09:52Z brian.le.lee@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -613,10 +613,10 @@ VBoxSVC_SOURCES = \
 	src-all/HashedPw.cpp \
 	src-all/Logging.cpp \
 	src-all/NvramStoreImpl.cpp \
-  src-all/MachineSharedFolderImpl.cpp \
 	src-all/PCIDeviceAttachmentImpl.cpp \
 	src-all/ProgressImpl.cpp \
 	src-all/SecretKeyStore.cpp \
+  src-all/SharedFolderImpl.cpp \
 	src-all/AutoCaller.cpp \
 	src-all/ThreadTask.cpp \
 	src-all/VirtualBoxBase.cpp \

@@ -1,4 +1,4 @@
-/* $Id: ConsoleSharedFolderImpl.h 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $ */
+/* $Id: ConsoleSharedFolderImpl.h 98341 2023-01-30 03:09:52Z brian.le.lee@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -120,5 +120,5 @@ private:
     Data *m;
 };
 
-#endif /* !MAIN_INCLUDED_SharedFolderImpl_h */
+#endif /* !MAIN_INCLUDED_ConsoleSharedFolderImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
