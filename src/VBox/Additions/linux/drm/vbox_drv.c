@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/*  $Id: vbox_drv.c 98348 2023-01-30 18:00:03Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -52,7 +52,7 @@
 
 /** Detect whether kernel mode setting is OFF. */
 #if defined(CONFIG_VGA_CONSOLE)
-# if RTLNX_VER_MIN(5,17,0)
+# if RTLNX_VER_MIN(5,17,0) || RTLNX_RHEL_MIN(8,7)
 #  define VBOX_VIDEO_NOMODESET() drm_firmware_drivers_only() && vbox_modeset == -1
 # elif RTLNX_VER_MIN(4,7,0)
 #  define VBOX_VIDEO_NOMODESET() vgacon_text_force() && vbox_modeset == -1
