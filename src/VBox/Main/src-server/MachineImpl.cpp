@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 98293 2023-01-25 01:22:39Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -48,7 +48,7 @@
 #include "USBControllerImpl.h"
 #include "USBDeviceFiltersImpl.h"
 #include "HostImpl.h"
-#include "SharedFolderImpl.h"
+#include "MachineSharedFolderImpl.h"
 #include "GuestOSTypeImpl.h"
 #include "VirtualBoxErrorInfoImpl.h"
 #include "StorageControllerImpl.h"

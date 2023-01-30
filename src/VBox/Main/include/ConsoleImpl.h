@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 98266 2023-01-24 09:46:42Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.h 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -51,7 +51,7 @@ class MachineDebugger;
 class TeleporterStateSrc;
 class OUSBDevice;
 class RemoteUSBDevice;
-class SharedFolder;
+class ConsoleSharedFolder;
 class VRDEServerInfo;
 class EmulatedUSB;
 class AudioVRDE;
@@ -653,7 +653,7 @@ public:
         LONG     iPort;
     };
 
-    typedef std::map<Utf8Str, ComObjPtr<SharedFolder> > SharedFolderMap;
+    typedef std::map<Utf8Str, ComObjPtr<ConsoleSharedFolder> > SharedFolderMap;
     typedef std::map<Utf8Str, SharedFolderData> SharedFolderDataMap;
     typedef std::map<Utf8Str, ComPtr<IMediumAttachment> > MediumAttachmentMap;
     typedef std::list<USBStorageDevice> USBStorageDeviceList;
@@ -691,7 +691,7 @@ private:
     }
 
     HRESULT i_findSharedFolder(const Utf8Str &strName,
-                               ComObjPtr<SharedFolder> &aSharedFolder,
+                               ComObjPtr<ConsoleSharedFolder> &aSharedFolder,
                                bool aSetError = false);
 
     HRESULT i_fetchSharedFolders(BOOL aGlobal);
