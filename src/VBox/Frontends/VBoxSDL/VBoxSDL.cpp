@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 98306 2023-01-25 16:49:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxSDL.cpp 98343 2023-01-30 11:11:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -31,6 +31,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GUI
+
+#include <iprt/stream.h>
 
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
@@ -2791,7 +2793,44 @@ int main(int argc, char **argv)
     int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_TRY_SUPLIB);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
-    return TrustedMain(argc, argv, NULL);
+
+#ifdef RT_OS_WINDOWS
+    /* As we run with the WINDOWS subsystem, we need to either attach to or create an own console
+     * to get any stdout / stderr output. */
+    bool fAllocConsole = ::IsDebuggerPresent();
+    if (!fAllocConsole)
+    {
+        if (!AttachConsole(ATTACH_PARENT_PROCESS))
+            fAllocConsole = true;
+    }
+
+    if (fAllocConsole)
+    {
+        if (!AllocConsole())
+            MessageBox(GetDesktopWindow(), L"Unable to attach to or allocate a console!", L"VBoxSDL", MB_OK | MB_ICONERROR);
+        /* Continue running. */
+    }
+
+    RTFILE hStdOut;
+    RTFileFromNative(&hStdOut,  (RTHCINTPTR)GetStdHandle(STD_OUTPUT_HANDLE));
+    /** @todo Closing of standard handles not support via IPRT (yet). */
+    RTStrmOpenFileHandle(hStdOut, "wt", 0, &g_pStdOut);
+
+    RTFILE hStdErr;
+    RTFileFromNative(&hStdErr,  (RTHCINTPTR)GetStdHandle(STD_ERROR_HANDLE));
+    RTStrmOpenFileHandle(hStdErr, "wt", 0, &g_pStdErr);
+
+    if (!fAllocConsole) /* When attaching to the parent console, make sure we start on a fresh line. */
+        RTPrintf("\n");
+#endif /* RT_OS_WINDOWS */
+
+    int rcExit = TrustedMain(argc, argv, NULL);
+
+#ifdef RT_OS_WINDOWS
+    FreeConsole(); /* Detach or destroy (from) console. */
+#endif
+
+    return rcExit;
 }
 #endif /* !VBOX_WITH_HARDENING */
 
