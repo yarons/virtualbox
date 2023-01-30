@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98289 2023-01-24 16:02:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 98351 2023-01-30 19:26:27Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2727,7 +2727,7 @@ int VirtualBox::i_decryptMediumSettings(Medium *pMedium)
  * Decrypt all encrypted settings.
  *
  * So far we only have encrypted iSCSI initiator secrets so we just go through
- * all hard disk mediums and determine the plain 'InitiatorSecret' from
+ * all hard disk media and determine the plain 'InitiatorSecret' from
  * 'InitiatorSecretEncrypted. The latter is stored as Base64 because medium
  * properties need to be null-terminated strings.
  */
