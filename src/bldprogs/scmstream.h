@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 98319 2023-01-26 15:31:55Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.h 98368 2023-01-31 15:46:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -121,6 +121,7 @@ int         ScmStreamSeekAbsolute(PSCMSTREAM pStream, size_t offAbsolute);
 int         ScmStreamSeekRelative(PSCMSTREAM pStream, ssize_t offRelative);
 int         ScmStreamSeekByLine(PSCMSTREAM pStream, size_t iLine);
 bool        ScmStreamIsAtStartOfLine(PSCMSTREAM pStream);
+bool        ScmStreamAreIdentical(PCSCMSTREAM pStream1, PCSCMSTREAM pStream2);
 
 const char *ScmStreamGetLineByNo(PSCMSTREAM pStream, size_t iLine, size_t *pcchLine, PSCMEOL penmEol);
 const char *ScmStreamGetLine(PSCMSTREAM pStream, size_t *pcchLine, PSCMEOL penmEol);

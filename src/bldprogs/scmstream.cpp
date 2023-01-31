@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 98319 2023-01-26 15:31:55Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.cpp 98368 2023-01-31 15:46:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -691,6 +691,23 @@ bool ScmStreamIsAtStartOfLine(PSCMSTREAM pStream)
     }
     return pStream->off == pStream->paLines[pStream->iLine].off;
 }
+
+/**
+ * Compares the two streams from the start to end, binary fashion.
+ *
+ * The stream position does not change nor does it matter whether they are
+ * writable or readable.
+ *
+ * @returns true if identical, false if not.
+ * @param   pStream1            The first stream.
+ * @param   pStream2            The second stream.
+ */
+bool ScmStreamAreIdentical(PCSCMSTREAM pStream1, PCSCMSTREAM pStream2)
+{
+    return pStream1->cb == pStream2->cb
+        && memcmp(pStream1->pch, pStream2->pch, pStream1->cb) == 0;
+}
+
 
 /**
  * Worker for ScmStreamGetLineByNo and ScmStreamGetLine.
