@@ -1,4 +1,4 @@
-/* $Id: VBoxHostChannelSvc.cpp 98358 2023-01-31 10:56:27Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxHostChannelSvc.cpp 98359 2023-01-31 11:19:47Z alexander.eichner@oracle.com $ */
 /* @file
  * Host Channel: Host service entry points.
  */
@@ -252,7 +252,7 @@ static DECLCALLBACK(void) svcCall(void *pvService,
                 rc = VERR_INVALID_PARAMETER;
             else
             {
-                uint32_t u32Flags;
+                uint32_t u32Flags = 0; /* Shut up msvc*/
                 const char *pszName;
                 uint32_t cbName;
 
@@ -507,11 +507,11 @@ static DECLCALLBACK(void) svcCall(void *pvService,
             {
                 const char *pszName;
                 uint32_t cbName;
-                uint32_t u32Code;
-                void *pvParm;
-                uint32_t cbParm;
-                void *pvData;
-                uint32_t cbData;
+                uint32_t u32Code = 0; /* Shut up msvc*/
+                void *pvParm = NULL;  /* Shut up msvc*/
+                uint32_t cbParm = 0;  /* Shut up msvc*/
+                void *pvData = NULL;  /* Shut up msvc*/
+                uint32_t cbData = 0;  /* Shut up msvc*/
 
                 rc = VBoxHGCMParmPtrGet(&paParms[0], (void **)&pszName, &cbName);
                 if (   RT_SUCCESS(rc)
