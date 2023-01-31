@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 98364 2023-01-31 14:57:25Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw.cpp 98365 2023-01-31 14:59:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2582,7 +2582,7 @@ static size_t scmKmkWordLength(const char *pchLine, size_t cchLine, size_t offSt
             /*
              * This is rather straight forward.
              */
-            if (enmCtx == kKmkWordCtx_DepFileOrAssignment && enmCtx == kKmkWordCtx_DepFile)
+            if (enmCtx == kKmkWordCtx_DepFileOrAssignment || enmCtx == kKmkWordCtx_DepFile)
             {
                 if (off == offStart)
                     return 1;
