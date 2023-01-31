@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98317 2023-01-26 14:31:13Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98361 2023-01-31 13:41:26Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -83,7 +83,7 @@ ifn1of ($(KBUILD_TARGET), solaris) # Probably wrong with SDL2
 VBoxSDL_LIBS = \
 	$(LIB_SDK_LIBSDL2_SDLMAIN)
 endif
-ifeq ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # X11
+if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # X11
 VBoxSDL_LIBS += \
 	$(PATH_STAGE_DLL)/VBoxKeyboard$(VBOX_SUFF_DLL) \
 	$(VBOX_XCURSOR_LIBS) \
