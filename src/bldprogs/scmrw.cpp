@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 98365 2023-01-31 14:59:29Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw.cpp 98366 2023-01-31 15:10:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -3341,7 +3341,9 @@ static bool scmKmkHandleAssignment2(KMKPARSER *pParser, size_t offVarStart, size
     size_t offLine = offAssignOp;
     switch (enmType)
     {
-        default: AssertReleaseFailed();
+        default:
+            AssertReleaseFailed();
+            RT_FALL_THRU();
         case kKmkAssignType_Recursive:
             *pszDst++ = '=';
             Assert(pchLine[offLine] == '=');
