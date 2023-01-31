@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 98305 2023-01-25 16:48:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: Framebuffer.cpp 98371 2023-01-31 18:12:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -335,7 +335,7 @@ STDMETHODIMP VBoxSDLFB::COMGETTER(WinId)(LONG64 *winId)
     if (!winId)
         return E_POINTER;
 #ifdef RT_OS_DARWIN
-    if (mWinId == NULL) /* (In case it failed the first time.) */
+    if (mWinId == 0) /* (In case it failed the first time.) */
         mWinId = (intptr_t)VBoxSDLGetDarwinWindowId();
 #endif
     *winId = mWinId;
