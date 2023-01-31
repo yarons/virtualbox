@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM.cpp 98355 2023-01-31 09:08:28Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1530,8 +1530,10 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
          * This is different from CR4 fixed-1 bits which are reported as per the
          * CPU features and/or micro-architecture/generation. Why? Ask Intel.
          */
-        uint64_t const uHostMsr = fIsNstGstHwExecAllowed ? pHostVmxMsrs->u64Cr0Fixed1 : VMX_V_CR0_FIXED1;
-        pGuestVmxMsrs->u64Cr0Fixed1 = uHostMsr | pGuestVmxMsrs->u64Cr0Fixed0;   /* Make sure the CR0 MB1 bits are not clear. */
+        pGuestVmxMsrs->u64Cr0Fixed1 = fIsNstGstHwExecAllowed ? pHostVmxMsrs->u64Cr0Fixed1 : VMX_V_CR0_FIXED1;
+
+        /* Make sure the CR0 MB1 bits are not clear. */
+        Assert((pGuestVmxMsrs->u64Cr0Fixed1 & pGuestVmxMsrs->u64Cr0Fixed0) == pGuestVmxMsrs->u64Cr0Fixed0);
     }
 
     /* CR4 Fixed-0. */
@@ -1539,8 +1541,14 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
 
     /* CR4 Fixed-1. */
     {
-        uint64_t const uHostMsr = fIsNstGstHwExecAllowed ? pHostVmxMsrs->u64Cr4Fixed1 : CPUMGetGuestCR4ValidMask(pVM);
-        pGuestVmxMsrs->u64Cr4Fixed1 = uHostMsr | pGuestVmxMsrs->u64Cr4Fixed0;   /* Make sure the CR4 MB1 bits are not clear. */
+        pGuestVmxMsrs->u64Cr4Fixed1 = CPUMGetGuestCR4ValidMask(pVM) & pHostVmxMsrs->u64Cr4Fixed1;
+
+        /* Make sure the CR4 MB1 bits are not clear. */
+        Assert((pGuestVmxMsrs->u64Cr4Fixed1 & pGuestVmxMsrs->u64Cr4Fixed0) == pGuestVmxMsrs->u64Cr4Fixed0);
+
+        /* Make sure bits that must always be set are set. */
+        Assert(pGuestVmxMsrs->u64Cr4Fixed1 & X86_CR4_PAE);
+        Assert(pGuestVmxMsrs->u64Cr4Fixed1 & X86_CR4_VMXE);
     }
 
     /* VMCS Enumeration. */
