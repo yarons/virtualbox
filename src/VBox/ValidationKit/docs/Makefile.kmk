@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98418 2023-02-01 21:29:03Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Makefile for generating .html from .txt.
 #
@@ -47,16 +47,16 @@ ifndef VBOX_RST2HTML
    VBOX_RST2HTML := rst2html.py
   endif
  endif
- if1of ($(KBUILD_HOST),win)
+ if1of ($(KBUILD_HOST), win)
   VBOX_RST2HTML := $(VBOX_BLD_PYTHON) $(VBOX_RST2HTML)
  endif
 endif
 
 GENERATED_FILES = \
-    AutomaticTestingRevamp.html \
-    VBoxValidationKitReadMe.html \
-    VBoxAudioValidationKitReadMe.html \
-    TestBoxImaging.html
+	AutomaticTestingRevamp.html \
+	VBoxValidationKitReadMe.html \
+	VBoxAudioValidationKitReadMe.html \
+	TestBoxImaging.html
 
 all: $(GENERATED_FILES)
 
