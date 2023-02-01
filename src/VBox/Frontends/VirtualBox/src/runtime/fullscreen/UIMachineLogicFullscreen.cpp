@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -52,8 +52,8 @@
 #include "CGraphicsAdapter.h"
 
 
-UIMachineLogicFullscreen::UIMachineLogicFullscreen(QObject *pParent, UISession *pSession)
-    : UIMachineLogic(pParent, pSession, UIVisualStateType_Fullscreen)
+UIMachineLogicFullscreen::UIMachineLogicFullscreen(UIMachine *pMachine, UISession *pSession)
+    : UIMachineLogic(pMachine, pSession)
     , m_pPopupMenu(0)
 #ifdef VBOX_WS_MAC
     , m_fScreensHaveSeparateSpaces(darwinScreensHaveSeparateSpaces())

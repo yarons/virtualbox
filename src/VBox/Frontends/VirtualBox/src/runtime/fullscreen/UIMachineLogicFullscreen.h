@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.h 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class declaration.
  */
@@ -58,11 +58,15 @@ signals:
 
 public:
 
-    /** Constructs full-screen logic passing @a pParent to the base-class.
-      * @param  pSession  Brings the session UI reference. */
-    UIMachineLogicFullscreen(QObject *pParent, UISession *pSession);
-    /** Destructs full-screen logic. */
+    /** Constructs a logic passing @a pMachine and @a pSession to the base-class.
+      * @param  pMachine  Brings the machine this logic belongs to.
+      * @param  pSession  Brings the session this logic is created for. */
+    UIMachineLogicFullscreen(UIMachine *pMachine, UISession *pSession);
+    /** Destructs the logic. */
     virtual ~UIMachineLogicFullscreen() RT_OVERRIDE;
+
+    /** Returns visual state type. */
+    virtual UIVisualStateType visualStateType() const { return UIVisualStateType_Fullscreen; }
 
     /** Returns an index of host-screen for guest-screen with @a iScreenId specified. */
     int hostScreenForGuestScreen(int iScreenId) const;
