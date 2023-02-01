@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -172,7 +172,7 @@ void UIMachineViewNormal::resendSizeHint()
      * the guest (aNotify == false), because there is technically no change (same
      * hardware as before shutdown), and notifying would interfere with the Windows
      * guest driver which saves the video mode to the registry on shutdown. */
-    uisession()->setScreenVisibleHostDesires(screenId(), guestScreenVisibilityStatus());
+    uimachine()->setScreenVisibleHostDesires(screenId(), guestScreenVisibilityStatus());
     display().SetVideoModeHint(screenId(),
                                guestScreenVisibilityStatus(),
                                false, 0, 0, effectiveSizeHint.width(), effectiveSizeHint.height(), 0, false);

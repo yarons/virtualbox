@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineWindowScale.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -38,11 +38,12 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
-#include "UISession.h"
+#include "UIMachine.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindowScale.h"
 #include "UIMachineView.h"
 #include "UINotificationCenter.h"
+#include "UISession.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils.h"
 # include "UIImageTools.h"
@@ -165,7 +166,7 @@ void UIMachineWindowScale::cleanupNotificationCenter()
 void UIMachineWindowScale::showInNecessaryMode()
 {
     /* Make sure this window should be shown at all: */
-    if (!uisession()->isScreenVisible(m_uScreenId))
+    if (!uimachine()->isScreenVisible(m_uScreenId))
         return hide();
 
     /* Make sure this window is not minimized: */

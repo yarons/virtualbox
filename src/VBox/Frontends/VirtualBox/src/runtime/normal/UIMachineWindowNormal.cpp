@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -617,7 +617,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
 void UIMachineWindowNormal::showInNecessaryMode()
 {
     /* Make sure this window should be shown at all: */
-    if (!uisession()->isScreenVisible(m_uScreenId))
+    if (!uimachine()->isScreenVisible(m_uScreenId))
         return hide();
 
     /* Make sure this window is not minimized: */
