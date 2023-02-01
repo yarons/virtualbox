@@ -1,4 +1,4 @@
-/* $Id: scmrw-kmk.cpp 98387 2023-02-01 13:18:32Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 98390 2023-02-01 13:29:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
@@ -1035,7 +1035,8 @@ static bool scmKmkHandleElse(KMKPARSER *pParser, size_t offToken)
 
     if (pParser->iDepth < 1)
         return scmKmkGiveUp(pParser, "Lone 'else'");
-    uint32_t const cchIndent = pParser->iActualDepth - !pParser->aDepth[pParser->iDepth].fIgnoreNesting;
+    uint32_t const cchIndent = pParser->iActualDepth
+                             - (pParser->iActualDepth > 0 && !pParser->aDepth[pParser->iDepth - 1].fIgnoreNesting);
 
     /*
      * Look past the else and check if there any ifxxx token following it.
@@ -1950,8 +1951,16 @@ static bool scmKmkHandleAssignmentOrRule(KMKPARSER *pParser, size_t offWord)
                 { RT_STR_TUPLE("info") },
                 { RT_STR_TUPLE("error") },
                 { RT_STR_TUPLE("warning") },
-                { RT_STR_TUPLE("eval") },
                 { RT_STR_TUPLE("set-umask") },
+                { RT_STR_TUPLE("foreach") },
+                { RT_STR_TUPLE("call") },
+                { RT_STR_TUPLE("eval") },
+                { RT_STR_TUPLE("evalctx") },
+                { RT_STR_TUPLE("evalval") },
+                { RT_STR_TUPLE("evalvalctx") },
+                { RT_STR_TUPLE("evalcall") },
+                { RT_STR_TUPLE("evalcall2") },
+                { RT_STR_TUPLE("eval-opt-var") },
             };
             size_t cchFunc = offEnd - offWord - 2;
             for (size_t i = 0; i < RT_ELEMENTS(s_aAllowedFunctions); i++)
