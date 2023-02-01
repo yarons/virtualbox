@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98401 2023-02-01 14:53:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -408,8 +408,8 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
     MachineCloseAction closeAction = MachineCloseAction_Invalid;
 
     /* If default close-action defined and not restricted: */
-    MachineCloseAction defaultCloseAction = uisession()->defaultCloseAction();
-    MachineCloseAction restrictedCloseActions = uisession()->restrictedCloseActions();
+    MachineCloseAction defaultCloseAction = uimachine()->defaultCloseAction();
+    MachineCloseAction restrictedCloseActions = uimachine()->restrictedCloseActions();
     if ((defaultCloseAction != MachineCloseAction_Invalid) &&
         !(restrictedCloseActions & defaultCloseAction))
     {
