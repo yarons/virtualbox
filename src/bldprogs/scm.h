@@ -1,4 +1,4 @@
-/* $Id: scm.h 98368 2023-01-31 15:46:52Z knut.osmundsen@oracle.com $ */
+/* $Id: scm.h 98374 2023-02-01 09:48:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -206,6 +206,7 @@ DECLINLINE(bool) ScmIsCIdentifierChar(char ch)
         || ch == '_';
 }
 
+size_t ScmCalcSpacesForSrcSpan(const char *pchLine, size_t offStart, size_t offEnd, PCSCMSETTINGSBASE pSettings);
 
 /** @} */
 
