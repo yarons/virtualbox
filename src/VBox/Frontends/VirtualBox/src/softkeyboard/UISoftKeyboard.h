@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISoftKeyboard.h 98384 2023-02-01 13:04:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -47,6 +47,7 @@ class QHBoxLayout;
 class QToolButton;
 class UIKeyboardLayoutEditor;
 class UILayoutSelector;
+class UIMachine;
 class UISession;
 class UISoftKeyboardKey;
 class UISoftKeyboardSettingsWidget;
@@ -70,8 +71,8 @@ signals:
 
 public:
 
-    UISoftKeyboard(QWidget *pParent, UISession *pSession, QWidget *pCenterWidget,
-                   QString strMachineName = QString());
+    UISoftKeyboard(QWidget *pParent, UIMachine *pMachine, UISession *pSession,
+                   QWidget *pCenterWidget, QString strMachineName = QString());
     ~UISoftKeyboard();
 
 protected:
@@ -130,6 +131,7 @@ private:
     void updateLayoutSelectorList();
     CKeyboard& keyboard() const;
 
+    UIMachine     *m_pMachine;
     UISession     *m_pSession;
     QWidget       *m_pCenterWidget;
     QHBoxLayout   *m_pMainLayout;

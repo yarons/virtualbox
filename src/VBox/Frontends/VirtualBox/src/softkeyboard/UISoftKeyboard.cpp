@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 98384 2023-02-01 13:04:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -53,6 +53,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
+#include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UISession.h"
@@ -3922,9 +3923,10 @@ void UISoftKeyboardSettingsWidget::sltColorSelectionButtonClicked()
 *   UISoftKeyboard implementation.                                                                                  *
 *********************************************************************************************************************************/
 
-UISoftKeyboard::UISoftKeyboard(QWidget *pParent,
-                               UISession *pSession, QWidget *pCenterWidget, QString strMachineName /* = QString()*/)
+UISoftKeyboard::UISoftKeyboard(QWidget *pParent, UIMachine *pMachine, UISession *pSession,
+                               QWidget *pCenterWidget, QString strMachineName /* = QString() */)
     : QMainWindowWithRestorableGeometryAndRetranslateUi(pParent)
+    , m_pMachine(pMachine)
     , m_pSession(pSession)
     , m_pCenterWidget(pCenterWidget)
     , m_pMainLayout(0)
@@ -4029,9 +4031,9 @@ bool UISoftKeyboard::event(QEvent *pEvent)
 
 void UISoftKeyboard::sltKeyboardLedsChange()
 {
-    bool fNumLockLed = m_pSession->isNumLock();
-    bool fCapsLockLed = m_pSession->isCapsLock();
-    bool fScrollLockLed = m_pSession->isScrollLock();
+    bool fNumLockLed = m_pMachine->isNumLock();
+    bool fCapsLockLed = m_pMachine->isCapsLock();
+    bool fScrollLockLed = m_pMachine->isScrollLock();
     if (m_pKeyboardWidget)
         m_pKeyboardWidget->updateLockKeyStates(fCapsLockLed, fNumLockLed, fScrollLockLed);
 }
@@ -4294,7 +4296,7 @@ void UISoftKeyboard::prepareObjects()
 
 void UISoftKeyboard::prepareConnections()
 {
-    connect(m_pSession, &UISession::sigKeyboardLedsChange, this, &UISoftKeyboard::sltKeyboardLedsChange);
+    connect(m_pMachine, &UIMachine::sigKeyboardLedsChange, this, &UISoftKeyboard::sltKeyboardLedsChange);
     connect(m_pKeyboardWidget, &UISoftKeyboardWidget::sigPutKeyboardSequence, this, &UISoftKeyboard::sltPutKeyboardSequence);
     connect(m_pKeyboardWidget, &UISoftKeyboardWidget::sigPutUsageCodesPress, this, &UISoftKeyboard::sltPutUsageCodesPress);
     connect(m_pKeyboardWidget, &UISoftKeyboardWidget::sigPutUsageCodesRelease, this, &UISoftKeyboard::sltPutUsageCodesRelease);

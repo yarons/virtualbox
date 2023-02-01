@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98379 2023-02-01 12:38:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98384 2023-02-01 13:04:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1259,9 +1259,9 @@ public:
         setStateIcon(6, UIIconPool::iconSet(":/hostkey_pressed_checked_16px.png"));
         setStateIcon(7, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
         /* Configure connection: */
-        connect(pSession, &UISession::sigKeyboardStateChange,
+        connect(pMachine, &UIMachine::sigKeyboardStateChange,
                 this, static_cast<void(UIIndicatorKeyboard::*)(int)>(&UIIndicatorKeyboard::setState));
-        setState(pSession->keyboardState());
+        setState(pMachine->keyboardState());
         /* Translate finally: */
         retranslateUi();
     }
