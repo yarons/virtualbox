@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98133 2023-01-19 11:40:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98415 2023-02-01 16:24:09Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -49,8 +49,8 @@ VBoxDragAndDropSvc_SOURCES = \
 	dndmanager.cpp
 
 VBoxDragAndDropSvc_SOURCES += \
-    ../common/client.cpp \
-    ../common/message.cpp
+	../common/client.cpp \
+	../common/message.cpp
 
 VBoxDragAndDropSvc_SOURCES.win = \
 	VBoxDragAndDropSvc.rc
