@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98400 2023-02-01 14:50:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1452,7 +1452,7 @@ bool UIKeyboardHandler::keyEventHandleNormal(int iKey, uint8_t uScan, int fFlags
     {
         /* If HID LEDs sync is disabled or not supported, check if the guest has the
          * same view on the modifier keys (NumLock, CapsLock, ScrollLock) as the host. */
-        if (!machineLogic()->isHidLedsSyncEnabled())
+        if (!uimachine()->isHidLedsSyncEnabled())
             if (fFlags & KeyPressed)
                 fixModifierState(pCodes, puCodesCount);
 

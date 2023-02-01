@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98399 2023-02-01 14:48:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98400 2023-02-01 14:50:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -178,7 +178,7 @@ bool UISession::initialize()
 /* Log whether HID LEDs sync is enabled: */
 #if defined(VBOX_WS_MAC) || defined(VBOX_WS_WIN)
     LogRel(("GUI: HID LEDs sync is %s\n",
-            uimachine()->machineLogic()->isHidLedsSyncEnabled()
+            uimachine()->isHidLedsSyncEnabled()
             ? "enabled" : "disabled"));
 #else /* !VBOX_WS_MAC && !VBOX_WS_WIN */
     LogRel(("GUI: HID LEDs sync is not supported on this platform\n"));
