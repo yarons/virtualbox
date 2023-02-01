@@ -1,4 +1,4 @@
-/* $Id: scmrw-kmk.cpp 98396 2023-02-01 14:40:25Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 98407 2023-02-01 16:13:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
@@ -1438,6 +1438,8 @@ static bool scmKmkHandleAssignment2(KMKPARSER *pParser, size_t offVarStart, size
             Assert(iSubLine + 1 == cLines);
             *pszDst = '\0';
             ScmStreamPutLine(pParser->pOut, pParser->szBuf, pszDst - pParser->szBuf, pParser->enmEol);
+            if (cPendingEols > 0)
+                ScmStreamPutEol(pParser->pOut, pParser->enmEol);
             return false; /* dummy */
         }
 
