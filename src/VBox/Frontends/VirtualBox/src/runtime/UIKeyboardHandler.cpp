@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98384 2023-02-01 13:04:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1019,7 +1019,7 @@ void UIKeyboardHandler::prepareCommon()
 #endif /* VBOX_WS_WIN */
 
     /* Machine state-change updater: */
-    connect(uisession(), &UISession::sigMachineStateChange, this, &UIKeyboardHandler::sltMachineStateChanged);
+    connect(uimachine(), &UIMachine::sigMachineStateChange, this, &UIKeyboardHandler::sltMachineStateChanged);
 
     /* Pressed keys: */
     ::memset(m_pressedKeys, 0, sizeof(m_pressedKeys));

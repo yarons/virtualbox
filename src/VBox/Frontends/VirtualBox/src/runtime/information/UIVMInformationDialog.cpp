@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -246,7 +246,7 @@ void UIVMInformationDialog::prepareTabWidget()
 
         /* Create Runtime Information tab: */
         UIInformationRuntime *pInformationRuntimeWidget =
-            new UIInformationRuntime(this, m_pMachineWindow->machine(), m_pMachineWindow->console(), m_pMachineWindow->uisession());
+            new UIInformationRuntime(this, m_pMachineWindow->machine(), m_pMachineWindow->console(), m_pMachineWindow->uimachine());
         if (pInformationRuntimeWidget)
         {
             m_tabs.insert(Tabs_RuntimeInformation, pInformationRuntimeWidget);
@@ -258,7 +258,7 @@ void UIVMInformationDialog::prepareTabWidget()
             new UIVMActivityMonitor(EmbedTo_Dialog, this, m_pMachineWindow->machine());
         if (pVMActivityMonitorWidget)
         {
-            connect(m_pMachineWindow->uisession(), &UISession::sigAdditionsStateChange,
+            connect(m_pMachineWindow->uimachine(), &UIMachine::sigAdditionsStateChange,
                     pVMActivityMonitorWidget, &UIVMActivityMonitor::sltGuestAdditionsStateChange);
             m_tabs.insert(Tabs_ActivityMonitor, pVMActivityMonitorWidget);
             m_pTabWidget->addTab(m_tabs.value(Tabs_ActivityMonitor), QString());

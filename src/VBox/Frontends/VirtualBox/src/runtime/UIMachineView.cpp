@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98379 2023-02-01 12:38:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1384,7 +1384,7 @@ void UIMachineView::prepareConnections()
 void UIMachineView::prepareConsoleConnections()
 {
     /* Machine state-change updater: */
-    connect(uisession(), &UISession::sigMachineStateChange, this, &UIMachineView::sltMachineStateChanged);
+    connect(uimachine(), &UIMachine::sigMachineStateChange, this, &UIMachineView::sltMachineStateChanged);
     /* Mouse pointer shape updater: */
     connect(uimachine(), &UIMachine::sigMousePointerShapeChange, this, &UIMachineView::sltMousePointerShapeChange);
 }

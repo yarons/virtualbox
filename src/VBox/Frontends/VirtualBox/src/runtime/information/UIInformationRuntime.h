@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIInformationRuntime.h 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -46,7 +46,7 @@
 /* Forward declarations: */
 class QAction;
 class QVBoxLayout;
-class UISession;
+class UIMachine;
 class UIRuntimeInfoWidget;
 
 /** UIInformationRuntime class displays a table including some
@@ -60,7 +60,7 @@ public:
     /** Constructs information-tab passing @a pParent to the QWidget base-class constructor.
       * @param machine is machine reference.
       * @param console is machine console reference. */
-    UIInformationRuntime(QWidget *pParent, const CMachine &machine, const CConsole &console, const UISession *pSession);
+    UIInformationRuntime(QWidget *pParent, const CMachine &machine, const CConsole &console, const UIMachine *pMachine);
 
 protected:
 

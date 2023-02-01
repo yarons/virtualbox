@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -43,6 +43,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIndicatorsPool.h"
 #include "UIKeyboardHandler.h"
+#include "UIMachine.h"
 #include "UIMouseHandler.h"
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"
@@ -253,23 +254,25 @@ void UIMachineWindowNormal::prepareSessionConnections()
     /* Call to base-class: */
     UIMachineWindow::prepareSessionConnections();
 
-    /* We should watch for console events: */
-    connect(machineLogic()->uisession(), &UISession::sigMediumChange,
+    /* Start watching for console events: */
+    connect(machineLogic()->uimachine(), &UIMachine::sigMediumChange,
         this, &UIMachineWindowNormal::sltMediumChange);
-    connect(machineLogic()->uisession(), &UISession::sigUSBControllerChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigUSBControllerChange,
             this, &UIMachineWindowNormal::sltUSBControllerChange);
-    connect(machineLogic()->uisession(), &UISession::sigUSBDeviceStateChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigUSBDeviceStateChange,
             this, &UIMachineWindowNormal::sltUSBDeviceStateChange);
-    connect(machineLogic()->uisession(), &UISession::sigAudioAdapterChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigAudioAdapterChange,
             this, &UIMachineWindowNormal::sltAudioAdapterChange);
-    connect(machineLogic()->uisession(), &UISession::sigNetworkAdapterChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigNetworkAdapterChange,
             this, &UIMachineWindowNormal::sltNetworkAdapterChange);
-    connect(machineLogic()->uisession(), &UISession::sigSharedFolderChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigSharedFolderChange,
             this, &UIMachineWindowNormal::sltSharedFolderChange);
-    connect(machineLogic()->uisession(), &UISession::sigRecordingChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigRecordingChange,
             this, &UIMachineWindowNormal::sltRecordingChange);
-    connect(machineLogic()->uisession(), &UISession::sigCPUExecutionCapChange,
+    connect(machineLogic()->uimachine(), &UIMachine::sigCPUExecutionCapChange,
             this, &UIMachineWindowNormal::sltCPUExecutionCapChange);
+
+    /* Watch for UISession signals: */
     connect(machineLogic()->uisession(), &UISession::sigInitialized,
             this, &UIMachineWindowNormal::sltHandleSessionInitialized);
 }
@@ -458,22 +461,22 @@ void UIMachineWindowNormal::cleanupStatusBar()
 
 void UIMachineWindowNormal::cleanupSessionConnections()
 {
-    /* We should stop watching for console events: */
-    disconnect(machineLogic()->uisession(), &UISession::sigMediumChange,
+    /* Stop watching for console events: */
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigMediumChange,
                this, &UIMachineWindowNormal::sltMediumChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigUSBControllerChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigUSBControllerChange,
                this, &UIMachineWindowNormal::sltUSBControllerChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigUSBDeviceStateChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigUSBDeviceStateChange,
                this, &UIMachineWindowNormal::sltUSBDeviceStateChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigNetworkAdapterChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigNetworkAdapterChange,
                this, &UIMachineWindowNormal::sltNetworkAdapterChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigAudioAdapterChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigAudioAdapterChange,
                this, &UIMachineWindowNormal::sltAudioAdapterChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigSharedFolderChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigSharedFolderChange,
                this, &UIMachineWindowNormal::sltSharedFolderChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigRecordingChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigRecordingChange,
                this, &UIMachineWindowNormal::sltRecordingChange);
-    disconnect(machineLogic()->uisession(), &UISession::sigCPUExecutionCapChange,
+    disconnect(machineLogic()->uimachine(), &UIMachine::sigCPUExecutionCapChange,
                this, &UIMachineWindowNormal::sltCPUExecutionCapChange);
 
     /* Call to base-class: */

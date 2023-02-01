@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -558,7 +558,7 @@ void UIMachineWindow::prepareSelf()
 void UIMachineWindow::prepareSessionConnections()
 {
     /* We should watch for console events: */
-    connect(uisession(), &UISession::sigMachineStateChange, this, &UIMachineWindow::sltMachineStateChanged);
+    connect(uimachine(), &UIMachine::sigMachineStateChange, this, &UIMachineWindow::sltMachineStateChanged);
 }
 
 void UIMachineWindow::prepareMainLayout()
@@ -640,7 +640,7 @@ void UIMachineWindow::cleanupMachineView()
 void UIMachineWindow::cleanupSessionConnections()
 {
     /* We should stop watching for console events: */
-    disconnect(uisession(), &UISession::sigMachineStateChange, this, &UIMachineWindow::sltMachineStateChanged);
+    disconnect(uimachine(), &UIMachine::sigMachineStateChange, this, &UIMachineWindow::sltMachineStateChanged);
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI

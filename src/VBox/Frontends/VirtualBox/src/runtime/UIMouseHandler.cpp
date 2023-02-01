@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 98379 2023-02-01 12:38:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -526,7 +526,7 @@ UIMouseHandler::UIMouseHandler(UIMachineLogic *pMachineLogic)
 #endif
 {
     /* Machine state-change updater: */
-    connect(uisession(), &UISession::sigMachineStateChange, this, &UIMouseHandler::sltMachineStateChanged);
+    connect(uimachine(), &UIMachine::sigMachineStateChange, this, &UIMouseHandler::sltMachineStateChanged);
 
     /* Mouse capability state-change updater: */
     connect(uimachine(), &UIMachine::sigMouseCapabilityChange, this, &UIMouseHandler::sltMouseCapabilityChanged);
