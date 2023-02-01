@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 98379 2023-02-01 12:38:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 98399 2023-02-01 14:48:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1909,7 +1909,7 @@ void UIFrameBufferPrivate::performResize(int iWidth, int iHeight)
     unlock();
 
     /* Make sure action-pool knows frame-buffer size: */
-    m_pMachineView->uisession()->actionPool()->toRuntime()->setGuestScreenSize(m_pMachineView->screenId(),
+    m_pMachineView->uimachine()->actionPool()->toRuntime()->setGuestScreenSize(m_pMachineView->screenId(),
                                                                                QSize(m_iWidth, m_iHeight));
 }
 
