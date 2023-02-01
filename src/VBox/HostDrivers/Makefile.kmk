@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98414 2023-02-01 16:23:38Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -40,11 +40,11 @@ include $(KBUILD_PATH)/subheader.kmk
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
 
-if  !defined(VBOX_ONLY_DOCS) \
- && !defined(VBOX_ONLY_EXTPACKS) \
- && !defined(VBOX_ONLY_VALIDATIONKIT) \
- && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
- if1of ($(KBUILD_TARGET),win)
+if   !defined(VBOX_ONLY_DOCS) \
+  && !defined(VBOX_ONLY_EXTPACKS) \
+  && !defined(VBOX_ONLY_VALIDATIONKIT) \
+  && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
+ if1of ($(KBUILD_TARGET), win)
   include $(PATH_SUB_CURRENT)/win/Makefile.kmk
  endif
  ifdef VBOX_WITH_USB
