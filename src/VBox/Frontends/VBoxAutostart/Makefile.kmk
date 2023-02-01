@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98187 2023-01-21 22:50:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98412 2023-02-01 16:21:48Z knut.osmundsen@oracle.com $
 ## @file
 # VBoxAutostart - VM autostart service.
 #
@@ -33,22 +33,22 @@ ifeq ($(KBUILD_TARGET),win)
  VBoxAutostartSvc_TEMPLATE   = VBoxMainClientExe
  VBoxAutostartSvc_INCS       = ../Common
  VBoxAutostartSvc_SOURCES    = \
-	VBoxAutostartCfg.cpp \
-	VBoxAutostartStart.cpp \
-	VBoxAutostartStop.cpp \
-	VBoxAutostartUtils.cpp \
-	VBoxAutostart-win.cpp \
-	../Common/PasswordInput.cpp
+ 	VBoxAutostartCfg.cpp \
+ 	VBoxAutostartStart.cpp \
+ 	VBoxAutostartStop.cpp \
+ 	VBoxAutostartUtils.cpp \
+ 	VBoxAutostart-win.cpp \
+ 	../Common/PasswordInput.cpp
  VBoxAutostartSvc_LIBS.win += Secur32.lib
 else
  PROGRAMS += VBoxAutostart
  VBoxAutostart_TEMPLATE   = VBoxMainClientExe
  VBoxAutostart_SOURCES    = \
-	VBoxAutostartCfg.cpp \
-	VBoxAutostartStart.cpp \
-	VBoxAutostartStop.cpp \
-	VBoxAutostartUtils.cpp \
-	VBoxAutostart-posix.cpp
+ 	VBoxAutostartCfg.cpp \
+ 	VBoxAutostartStart.cpp \
+ 	VBoxAutostartStop.cpp \
+ 	VBoxAutostartUtils.cpp \
+ 	VBoxAutostart-posix.cpp
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98412 2023-02-01 16:21:48Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the shell frontend.
 #
@@ -32,8 +32,8 @@ INSTALLS += VBoxShell
 VBoxShell_INST = $(INST_SDK)/bindings/
 VBoxShell_SOURCES = \
 	vboxshell.py=>glue/python/sample/vboxshell.py \
-        vboxinfo.vbs=>mscom/vbs/sample/vboxinfo.vbs   \
-        vboxinfo.vb=>mscom/vb/sample/vboxinfo.vb
+	vboxinfo.vbs=>mscom/vbs/sample/vboxinfo.vbs \
+	vboxinfo.vb=>mscom/vb/sample/vboxinfo.vb
 
 
 
