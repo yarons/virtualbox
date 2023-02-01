@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -29,22 +29,23 @@
 #include <QTimer>
 
 /* GUI includes: */
+#include "QIMenu.h"
+#include "UIActionPoolRuntime.h"
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
-#include "UIMessageCenter.h"
-#include "UISession.h"
-#include "UIActionPoolRuntime.h"
+#include "UIMachine.h"
 #include "UIMachineLogicFullscreen.h"
-#include "UIMachineWindowFullscreen.h"
-#include "UIMultiScreenLayout.h"
-#include "UIShortcutPool.h"
 #include "UIMachineView.h"
-#include "QIMenu.h"
+#include "UIMachineWindowFullscreen.h"
+#include "UIMessageCenter.h"
+#include "UIMultiScreenLayout.h"
+#include "UISession.h"
+#include "UIShortcutPool.h"
 #ifdef VBOX_WS_MAC
 # include "UICocoaApplication.h"
 # include "UIExtraDataManager.h"
-# include "VBoxUtils.h"
 # include "UIFrameBuffer.h"
+# include "VBoxUtils.h"
 # include <Carbon/Carbon.h>
 #endif /* VBOX_WS_MAC */
 
@@ -347,7 +348,7 @@ void UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType()
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
-    if (uisession()->isManualOverrideMode())
+    if (uimachine()->isManualOverrideMode())
         return;
 
     /* Check requested visual-state types: */

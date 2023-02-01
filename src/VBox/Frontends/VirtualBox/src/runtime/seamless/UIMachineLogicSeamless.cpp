@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -31,19 +31,20 @@
 #endif /* !VBOX_WS_MAC */
 
 /* GUI includes: */
-#include "UICommon.h"
-#include "UIMessageCenter.h"
-#include "UISession.h"
 #include "UIActionPoolRuntime.h"
+#include "UICommon.h"
+#include "UIMachine.h"
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineWindowSeamless.h"
+#include "UIMessageCenter.h"
 #include "UIMultiScreenLayout.h"
+#include "UISession.h"
 #include "UIShortcutPool.h"
 #ifndef VBOX_WS_MAC
 # include "QIMenu.h"
-#else  /* VBOX_WS_MAC */
+#else
 # include "VBoxUtils.h"
-#endif /* VBOX_WS_MAC */
+#endif
 
 /* COM includes: */
 #include "CGraphicsAdapter.h"
@@ -123,7 +124,7 @@ void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
-    if (uisession()->isManualOverrideMode())
+    if (uimachine()->isManualOverrideMode())
         return;
 
     /* If 'seamless' visual-state type is no more supported: */
