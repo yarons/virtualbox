@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 98382 2023-02-01 12:59:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -449,9 +449,9 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         case KVBoxEventType_OnKeyboardLedsChanged:
         {
             CKeyboardLedsChangedEvent comEventSpecific(pEvent);
-            emit sigKeyboardLedsChangeEvent(comEventSpecific.GetNumLock(),
-                                            comEventSpecific.GetCapsLock(),
-                                            comEventSpecific.GetScrollLock());
+            emit sigKeyboardLedsChange(comEventSpecific.GetNumLock(),
+                                       comEventSpecific.GetCapsLock(),
+                                       comEventSpecific.GetScrollLock());
             break;
         }
         case KVBoxEventType_OnStateChanged:
