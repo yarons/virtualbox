@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 98405 2023-02-01 15:13:23Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 98406 2023-02-01 15:19:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2052,7 +2052,7 @@ int AudioMixerSinkRemoveUpdateJob(PAUDMIXSINK pSink, PFNAUDMIXSINKUPDATE pfnUpda
  *
  * @returns VBox status code.
  * @param   pSink       The mixer sink which AIO thread needs waiting on.
- * @þaram   msTimeout   Timeout (in ms) to use for waiting on draining to be finished.
+ * @param   msTimeout   Timeout (in ms) to use for waiting on draining to be finished.
  *
  * @note    Caller holds the sink's lock.
  */
@@ -2085,7 +2085,7 @@ static int audioMixerSinkWaitForDrainedLocked(PAUDMIXSINK pSink, RTMSINTERVAL ms
  *
  * @returns VBox status code.
  * @param   pSink       The mixer sink which AIO thread needs waiting on.
- * @þaram   msTimeout   Timeout (in ms) to use for waiting on draining to be finished.
+ * @param   msTimeout   Timeout (in ms) to use for waiting on draining to be finished.
  */
 int AudioMixerSinkWaitForDrained(PAUDMIXSINK pSink, RTMSINTERVAL msTimeout)
 {
