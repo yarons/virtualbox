@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaStream.cpp 98405 2023-02-01 15:13:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -1058,8 +1058,9 @@ int hdaR3StreamEnable(PHDASTATE pThis, PHDASTREAM pStreamShared, PHDASTREAMR3 pS
             rc = AudioMixerSinkStart(pSink);
         }
         else
-            rc = AudioMixerSinkDrainAndStop(pSink,
-                                            pStreamR3->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStreamR3->State.pCircBuf) : 0);
+            rc = AudioMixerSinkDrainAndStopEx(pSink,
+                                              pStreamR3->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStreamR3->State.pCircBuf) : 0,
+                                              RT_MS_5SEC);
     }
     if (   RT_SUCCESS(rc)
         && fEnable
