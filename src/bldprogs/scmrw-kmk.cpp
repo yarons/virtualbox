@@ -1,4 +1,4 @@
-/* $Id: scmrw-kmk.cpp 98393 2023-02-01 14:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 98396 2023-02-01 14:40:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
@@ -2120,7 +2120,7 @@ SCMREWRITERRES rewrite_Makefile_kmk(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTRE
                     case kKmkToken_unexport:
                     case kKmkToken_undefine:
                         scmKmkHandleSimple(&Parser, offLine);
-                        break;
+                        continue;
 
                     case kKmkToken_Comment:
                         AssertFailed(); /* not possible */
