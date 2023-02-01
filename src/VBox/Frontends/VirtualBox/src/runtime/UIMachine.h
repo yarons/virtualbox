@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -116,15 +116,13 @@ private:
 
     /** Prepare routine. */
     bool prepare();
-    /** Prepare routine: Session stuff. */
-    bool prepareSession();
-    /** Prepares machine-window icon. */
+    /** Prepare routine: Machine-window icon. */
     void prepareMachineWindowIcon();
     /** Prepare routine: Machine-logic stuff. */
     void prepareMachineLogic();
 
-    /* Settings stuff: */
-    void loadSessionSettings();
+    /** Performs settings loading. */
+    void loadSettings();
 
     /** Cleanup routine: Machine-logic stuff. */
     void cleanupMachineLogic();
@@ -159,6 +157,7 @@ private:
      ** @{ */
         /** Holds the cached machine-window icon. */
         QIcon *m_pMachineWindowIcon;
+
 #ifndef VBOX_WS_MAC
         /** Holds redefined machine-window name postfix. */
         QString m_strMachineWindowNamePostfix;

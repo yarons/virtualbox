@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineView.h 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -60,10 +60,11 @@
 
 /* Forward declarations: */
 class UIActionPool;
-class UISession;
+class UIMachine;
 class UIMachineLogic;
 class UIMachineWindow;
 class UINativeEventFilter;
+class UISession;
 class CConsole;
 class CDisplay;
 class CGuest;
@@ -111,6 +112,8 @@ public:
     /** Returns screen ID for this view. */
     ulong screenId() const { return m_uScreenId; }
 
+    /** Returns the machine UI reference. */
+    UIMachine *uimachine() const;
     /** Returns the session UI reference. */
     UISession *uisession() const;
     /** Returns the machine-logic reference. */

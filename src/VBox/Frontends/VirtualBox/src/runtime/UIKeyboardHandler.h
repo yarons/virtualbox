@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIKeyboardHandler.h 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -50,10 +50,11 @@
 /* Forward declarations: */
 class QWidget;
 class UIActionPool;
-class UISession;
+class UIMachine;
 class UIMachineLogic;
-class UIMachineWindow;
 class UIMachineView;
+class UIMachineWindow;
+class UISession;
 class CKeyboard;
 #ifdef VBOX_WS_WIN
 class WinAltGrMonitor;
@@ -144,9 +145,10 @@ protected:
     virtual void cleanupCommon();
 
     /* Common getters: */
-    UIMachineLogic* machineLogic() const;
-    UIActionPool* actionPool() const;
-    UISession* uisession() const;
+    UIMachineLogic *machineLogic() const { return m_pMachineLogic; }
+    UIActionPool *actionPool() const;
+    UISession *uisession() const;
+    UIMachine *uimachine() const;
 
     /** Returns the console's keyboard reference. */
     CKeyboard& keyboard() const;

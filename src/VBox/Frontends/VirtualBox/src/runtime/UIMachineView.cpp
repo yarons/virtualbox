@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineView.cpp 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIActionPoolRuntime.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
+#include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UISession.h"
 #include "UIMachineLogic.h"
@@ -258,6 +259,11 @@ void UIMachineView::applyMachineViewScaleFactor()
 
     /* Update console's display viewport and 3D overlay: */
     updateViewport();
+}
+
+UIMachine *UIMachineView::uimachine() const
+{
+    return machineWindow()->uimachine();
 }
 
 UISession *UIMachineView::uisession() const

@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMouseHandler.h 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class declaration.
  */
@@ -44,10 +44,11 @@
 /* Forward declarations: */
 class QTouchEvent;
 class QWidget;
-class UISession;
+class UIMachine;
 class UIMachineLogic;
-class UIMachineWindow;
 class UIMachineView;
+class UIMachineWindow;
+class UISession;
 class CDisplay;
 class CMouse;
 
@@ -106,8 +107,9 @@ protected:
     virtual ~UIMouseHandler();
 
     /* Getters: */
-    UIMachineLogic* machineLogic() const;
-    UISession* uisession() const;
+    UIMachineLogic *machineLogic() const { return m_pMachineLogic; }
+    UISession *uisession() const;
+    UIMachine *uimachine() const;
 
     /** Returns the console's display reference. */
     CDisplay& display() const;
