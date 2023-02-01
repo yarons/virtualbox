@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98229 2023-01-23 10:53:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98391 2023-02-01 13:30:13Z knut.osmundsen@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -70,7 +70,7 @@ OSSL_PROVIDERS_DER_SRC_TEMPLATES := \
 #  instead of getting it expanded and executed at once...
 #
 recreate-providers-der-sources: $(VBOX_PATH_OPENSSL)/util/dofile.pl \
-	$(OSSL_PROVIDERS_DER_SRC_TEMPLATES)
+		$(OSSL_PROVIDERS_DER_SRC_TEMPLATES)
 	$(foreach src, $(OSSL_PROVIDERS_DER_SRC_TEMPLATES), \
 	    perl \
 	     -I$(VBOX_PATH_OPENSSL) \

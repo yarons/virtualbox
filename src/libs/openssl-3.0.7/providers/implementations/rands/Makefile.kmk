@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98229 2023-01-23 10:53:08Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98391 2023-02-01 13:30:13Z knut.osmundsen@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -41,11 +41,11 @@ providers_rands_SOURCES = \
 	test_rng.c \
 	seeding/rand_cpu_x86.c
 ifn1of ($(KBUILD_TARGET), win)
-providers_rands_SOURCES += \
-	seeding/rand_unix.c
+ providers_rands_SOURCES += \
+ 	seeding/rand_unix.c
 else
-providers_rands_SOURCES += \
-	seeding/rand_win.c
+ providers_rands_SOURCES += \
+ 	seeding/rand_win.c
 endif
 $(evalcall VBOX_OPENSSL_X86,providers_rands)
 
