@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachine.h 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -87,6 +87,16 @@ public:
     /** Returns requested visual-state to be entered when possible. */
     UIVisualStateType requestedVisualState() const;
 
+    /** @name Branding stuff.
+     ** @{ */
+        /** Returns the cached machine-window icon. */
+        QIcon *machineWindowIcon() const { return m_pMachineWindowIcon; }
+#ifndef VBOX_WS_MAC
+        /** Returns redefined machine-window name postfix. */
+        QString machineWindowNamePostfix() const { return m_strMachineWindowNamePostfix; }
+#endif
+    /** @} */
+
 public slots:
 
     /** Closes Runtime UI. */
@@ -108,11 +118,18 @@ private:
     bool prepare();
     /** Prepare routine: Session stuff. */
     bool prepareSession();
+    /** Prepares machine-window icon. */
+    void prepareMachineWindowIcon();
     /** Prepare routine: Machine-logic stuff. */
     void prepareMachineLogic();
 
+    /* Settings stuff: */
+    void loadSessionSettings();
+
     /** Cleanup routine: Machine-logic stuff. */
     void cleanupMachineLogic();
+    /** Cleanup machine-window icon. */
+    void cleanupMachineWindowIcon();
     /** Cleanup routine: Session stuff. */
     void cleanupSession();
     /** Cleanup routine. */
@@ -137,6 +154,16 @@ private:
     UIVisualStateType m_enmRequestedVisualState;
     /** Holds current machine-logic. */
     UIMachineLogic *m_pMachineLogic;
+
+    /** @name Branding stuff.
+     ** @{ */
+        /** Holds the cached machine-window icon. */
+        QIcon *m_pMachineWindowIcon;
+#ifndef VBOX_WS_MAC
+        /** Holds redefined machine-window name postfix. */
+        QString m_strMachineWindowNamePostfix;
+#endif
+    /** @} */
 };
 
 #define gpMachine UIMachine::instance()

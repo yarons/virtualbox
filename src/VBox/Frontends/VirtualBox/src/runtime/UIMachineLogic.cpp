@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -158,6 +158,9 @@ UIMachineLogic *UIMachineLogic::create(UIMachine *pMachine,
                                        UISession *pSession,
                                        UIVisualStateType enmVisualStateType)
 {
+    AssertPtrReturn(pMachine, 0);
+    AssertPtrReturn(pSession, 0);
+
     UIMachineLogic *pLogic = 0;
     switch (enmVisualStateType)
     {
@@ -1618,8 +1621,8 @@ void UIMachineLogic::sltTakeSnapshot()
     windowManager().registerNewParent(pDlg, pDlgParent);
 
     /* Assign corresponding icon: */
-    if (uisession() && uisession()->machineWindowIcon())
-        pDlg->setIcon(*uisession()->machineWindowIcon());
+    if (uimachine()->machineWindowIcon())
+        pDlg->setIcon(*uimachine()->machineWindowIcon());
 
     /* Search for the max available filter index: */
     const QString strNameTemplate = UITakeSnapshotDialog::tr("Snapshot %1");

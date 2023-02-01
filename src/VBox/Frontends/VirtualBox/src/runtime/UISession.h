@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISession.h 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -133,16 +133,6 @@ public:
     QPoint cursorHotspot() const { return m_cursorHotspot; }
     /** Returns currently cached mouse cursor position. */
     QPoint cursorPosition() const { return m_cursorPosition; }
-
-    /** @name Branding stuff.
-     ** @{ */
-    /** Returns the cached machine-window icon. */
-    QIcon *machineWindowIcon() const { return m_pMachineWindowIcon; }
-#ifndef VBOX_WS_MAC
-    /** Returns redefined machine-window name postfix. */
-    QString machineWindowNamePostfix() const { return m_strMachineWindowNamePostfix; }
-#endif
-    /** @} */
 
     /** @name Host-screen configuration variables.
      ** @{ */
@@ -443,7 +433,6 @@ private:
     void prepareFramebuffers();
     void prepareActions();
     void prepareConnections();
-    void prepareMachineWindowIcon();
     void prepareScreens();
     void prepareSignalHandling();
 
@@ -453,7 +442,6 @@ private:
     /* Cleanup helpers: */
     //void cleanupSignalHandling();
     //void cleanupScreens() {}
-    void cleanupMachineWindowIcon();
     void cleanupConnections();
     void cleanupActions();
     void cleanupFramebuffers();
@@ -543,16 +531,6 @@ private:
     QPoint   m_cursorHotspot;
     /** Holds cached mouse cursor position. */
     QPoint   m_cursorPosition;
-
-    /** @name Branding variables.
-     ** @{ */
-    /** Holds the cached machine-window icon. */
-    QIcon *m_pMachineWindowIcon;
-#ifndef VBOX_WS_MAC
-    /** Holds redefined machine-window name postfix. */
-    QString m_strMachineWindowNamePostfix;
-#endif
-    /** @} */
 
     /** @name Host-screen configuration variables.
      * @{ */
