@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 98371 2023-01-31 18:12:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxSDL.cpp 98372 2023-02-01 09:10:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -3544,6 +3544,16 @@ static void SetPointerShape(const PointerShapeChangeData *data)
     if (data->shape.size() > 0)
     {
         bool ok = false;
+
+#if defined(RT_OS_WINDOWS) || (defined(VBOXSDL_WITH_X11) && !defined(VBOX_WITHOUT_XCURSOR))
+        AssertReturnVoid(data->height); /* Prevent division by zero. */
+        uint32_t const  andMaskSize = (data->width + 7) / 8 * data->height;
+        uint32_t const  srcShapePtrScan = data->width * 4;
+
+        uint8_t  const *shape = data->shape.raw();
+        uint8_t  const *srcAndMaskPtr = shape;
+        uint8_t  const *srcShapePtr = shape + ((andMaskSize + 3) & ~3);
+#endif
 
 #if 0
         /* pointer debugging code */
