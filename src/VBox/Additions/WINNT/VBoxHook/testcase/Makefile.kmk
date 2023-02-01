@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service testcases.
 #
@@ -30,18 +30,18 @@ include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_TESTCASES
 
-#
-# Structure size testcase.
-#
-PROGRAMS += tstHook
+ #
+ # Structure size testcase.
+ #
+ PROGRAMS += tstHook
 
-tstHook_TEMPLATE = VBoxGuestR3Exe
-tstHook_DEFS     = VBOX_WITH_HGCM
-tstHook_SOURCES  = tstHook.cpp
-tstHook_INCS     = ../../include
-tstHook_LIBS     = $(PATH_STAGE_LIB)/VBoxHook.lib
-tstHook_VBOX_IMPORT_CHECKER.win.x86   = $(NO_SUCH_VARIABLE)
-tstHook_VBOX_IMPORT_CHECKER.win.amd64 = $(NO_SUCH_VARIABLE)
+ tstHook_TEMPLATE = VBoxGuestR3Exe
+ tstHook_DEFS    = VBOX_WITH_HGCM
+ tstHook_SOURCES = tstHook.cpp
+ tstHook_INCS    = ../../include
+ tstHook_LIBS    = $(PATH_STAGE_LIB)/VBoxHook.lib
+ tstHook_VBOX_IMPORT_CHECKER.win.x86  = $(NO_SUCH_VARIABLE)
+ tstHook_VBOX_IMPORT_CHECKER.win.amd64 = $(NO_SUCH_VARIABLE)
 
 endif # VBOX_WITH_TESTCASES
 

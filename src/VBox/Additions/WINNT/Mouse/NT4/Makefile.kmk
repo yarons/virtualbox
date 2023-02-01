@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox NT4 guest additions mouse driver.
 #
@@ -38,10 +38,10 @@ VBoxMouseNT_LDFLAGS     = -Entry:DriverEntry@8
 VBoxMouseNT_SOURCES     = \
 	VBoxPS2NT.cpp \
 	VBoxPS2NT.rc \
-       ../../../../Runtime/r0drv/nt/nt3fakes-r0drv-nt.cpp \
-       ../../../../Runtime/r0drv/nt/nt3fakesA-r0drv-nt.asm \
-       ../../../../Runtime/common/string/strcmp.asm \
-       ../../../../Runtime/common/string/strchr.asm
+	../../../../Runtime/r0drv/nt/nt3fakes-r0drv-nt.cpp \
+	../../../../Runtime/r0drv/nt/nt3fakesA-r0drv-nt.asm \
+	../../../../Runtime/common/string/strcmp.asm \
+	../../../../Runtime/common/string/strchr.asm
 VBoxMouseNT_LIBS        = \
 	$(VBOX_LIB_IPRT_GUEST_R0_NT4) \
 	$(VBOX_LIB_VBGL_R0) \
@@ -51,7 +51,7 @@ VBoxMouseNT_LIBS        = \
 	$(PATH_SDK_$(VBOX_WINDDK_GST_NT4)_LIB)/hal.lib
 ifneq ($(VBOX_VCC_CC_GUARD_CF),)
  VBoxMouseNT_LIBS.x86 += \
-  	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/BufferOverflowK.lib
+ 	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/BufferOverflowK.lib
 endif
 VBoxMouseNT_CLEAN       = \
 	$(VBoxMouseNT_0_OUTDIR)/VBoxMouseNT.pdb

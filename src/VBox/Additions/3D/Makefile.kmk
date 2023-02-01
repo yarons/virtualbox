@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Mesa3D code.
 #
@@ -32,7 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # Make sure our Config.kmk is included.
 #
 ifndef VBOX_MESA3D_CONFIG_KMK_INCLUDED
-include $(PATH_SUB_CURRENT)/Config.kmk
+ include $(PATH_SUB_CURRENT)/Config.kmk
 endif
 
 #
@@ -40,7 +40,7 @@ endif
 #
 include $(PATH_SUB_CURRENT)/mesa/Makefile.kmk
 if1of ($(KBUILD_TARGET), win)
-include $(PATH_SUB_CURRENT)/win/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/win/Makefile.kmk
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)

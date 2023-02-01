@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (Solaris kernel OpenGL module).
 #
@@ -50,7 +50,7 @@ vboxvideo_TEMPLATE      = VBoxGuestR0Drv
 vboxvideo_DEFS          = VBOX_WITH_HGCM VBOX_SVN_REV=$(VBOX_SVN_REV)
 vboxvideo_DEPS         += $(VBOX_SVN_REV_KMK)
 if ($(VBOX_SOLARIS_11_UPDATE_VERSION) > 3)
-vboxvideo_DEFS         += VBOX_WITH_SYSTEM_QUEUE_H
+ vboxvideo_DEFS        += VBOX_WITH_SYSTEM_QUEUE_H
 endif
 vboxvideo_INCS         := \
 	include/

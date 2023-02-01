@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98192 2023-01-22 00:32:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxTray, Haiku Guest Additions.
 #
@@ -72,7 +72,7 @@ VBoxTray_SOURCES  = \
 	VBoxGuestDeskbarView.cpp
 
 VBoxTray_SOURCES += \
-  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-helper.cpp
+	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-helper.cpp
 
 VBoxTray_LIBS     = \
 	be translation \

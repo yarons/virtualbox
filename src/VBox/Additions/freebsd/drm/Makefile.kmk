@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (FreeBSD kernel OpenGL module).
 #
@@ -35,7 +35,7 @@ ifdef VBOX_WITH_ADDITION_DRIVERS
  SYSMODS  += vboxvideo_drm
 endif
 ifneq ($(KBUILD_HOST),freebsd)
-$(error "The FreeBSD guest additions can only be built on FreeBSD!")
+ $(error "The FreeBSD guest additions can only be built on FreeBSD!")
 endif
 
 #

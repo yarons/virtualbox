@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98126 2023-01-19 01:47:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for shared folders, Haiku Guest Additions.
 #
@@ -74,7 +74,7 @@ vboxsf_TEMPLATE        = VBoxGuestR0Drv
 vboxsf_DEFS            = \
 	MODULE IN_RT_R0 VBOXGUEST VBOX_WITH_HGCM \
 	KBUILD_MODNAME=KBUILD_STR\(vboxsf\) \
-        KBUILD_BASENAME=KBUILD_STR\(vboxsf\)
+	KBUILD_BASENAME=KBUILD_STR\(vboxsf\)
 vboxsf_INCS            = \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxGuest \
 	$(PATH_ROOT)/src/VBox/Runtime/r0drv/haiku
