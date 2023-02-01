@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98401 2023-02-01 14:53:16Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98402 2023-02-01 14:58:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -264,6 +264,11 @@ public:
 
     /** Returns a vector of media attached to the machine. */
     CMediumVector machineMedia() const;
+
+    /** Prepares VM to be saved. */
+    bool prepareToBeSaved();
+    /** Returns whether VM can be shutdowned. */
+    bool prepareToBeShutdowned();
 
 public slots:
 
