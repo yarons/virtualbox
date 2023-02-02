@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICocoaDockIconPreview.h 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaDockIconPreview class declaration.
  */
@@ -39,7 +39,7 @@ class UICocoaDockIconPreviewPrivate;
 class UICocoaDockIconPreview: public UIAbstractDockIconPreview
 {
 public:
-    UICocoaDockIconPreview(UISession *pSession, const QPixmap& overlayImage);
+    UICocoaDockIconPreview(UIMachine *pMachine, const QPixmap& overlayImage);
     ~UICocoaDockIconPreview();
 
     virtual void updateDockOverlay();

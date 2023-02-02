@@ -1,4 +1,4 @@
-/* $Id: DockIconPreview.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DockIconPreview.h 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDockIconPreview class declaration.
  */
@@ -40,9 +40,9 @@ class UIDockIconPreview : public UICocoaDockIconPreview
 {
 public:
 
-    /** Constructor taking passed @a pSession and @a overlayImage. */
-    UIDockIconPreview(UISession *pSession, const QPixmap& overlayImage)
-        : UICocoaDockIconPreview(pSession, overlayImage) {}
+    /** Constructor taking passed @a pMachine and @a overlayImage. */
+    UIDockIconPreview(UIMachine *pMachine, const QPixmap& overlayImage)
+        : UICocoaDockIconPreview(pMachine, overlayImage) {}
 };
 
 #endif /* !FEQT_INCLUDED_SRC_platform_darwin_DockIconPreview_h */

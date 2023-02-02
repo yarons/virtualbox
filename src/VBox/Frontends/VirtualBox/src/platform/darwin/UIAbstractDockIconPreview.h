@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAbstractDockIconPreview.h 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Abstract class for the dock icon preview.
  */
@@ -38,14 +38,14 @@
 #include "VBoxUtils-darwin.h"
 
 class UIFrameBuffer;
-class UISession;
+class UIMachine;
 
 class QPixmap;
 
 class UIAbstractDockIconPreview
 {
 public:
-    UIAbstractDockIconPreview(UISession *pSession, const QPixmap& overlayImage);
+    UIAbstractDockIconPreview(UIMachine *pMachine, const QPixmap& overlayImage);
     virtual ~UIAbstractDockIconPreview() {}
 
     virtual void updateDockOverlay() = 0;
@@ -58,7 +58,7 @@ public:
 class UIAbstractDockIconPreviewHelper
 {
 public:
-    UIAbstractDockIconPreviewHelper(UISession *pSession, const QPixmap& overlayImage);
+    UIAbstractDockIconPreviewHelper(UIMachine *pMachine, const QPixmap& overlayImage);
     virtual ~UIAbstractDockIconPreviewHelper();
     void initPreviewImages();
     void drawOverlayIcons(CGContextRef context);
@@ -71,7 +71,7 @@ public:
     inline CGRect centerRectTo(CGRect rect, const CGRect& toRect) const { return ::darwinCenterRectTo(rect, toRect); }
 
     /* Private member vars */
-    UISession *m_pSession;
+    UIMachine *m_pMachine;
     const CGRect m_dockIconRect;
 
     CGImageRef m_overlayImage;

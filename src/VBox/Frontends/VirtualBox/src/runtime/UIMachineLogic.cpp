@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1241,7 +1241,7 @@ void UIMachineLogic::prepareDock()
     QPixmap pixmap = generalIconPool().userMachinePixmap(machine(), QSize(42, 42));
     if (pixmap.isNull())
         pixmap = generalIconPool().guestOSTypePixmap(guest().GetOSTypeId(), QSize(42, 42));
-    m_pDockIconPreview = new UIDockIconPreview(uisession(), pixmap);
+    m_pDockIconPreview = new UIDockIconPreview(uimachine(), pixmap);
 
     /* Should the dock-icon be updated at runtime? */
     bool fEnabled = gEDataManager->realtimeDockIconUpdateEnabled(uiCommon().managedVMUuid());

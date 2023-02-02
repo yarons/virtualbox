@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICocoaDockIconPreview.mm 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
@@ -78,8 +78,8 @@
 class UICocoaDockIconPreviewPrivate: public UIAbstractDockIconPreviewHelper
 {
 public:
-    inline UICocoaDockIconPreviewPrivate(UISession *pSession, const QPixmap& overlayImage)
-      :UIAbstractDockIconPreviewHelper(pSession, overlayImage)
+    inline UICocoaDockIconPreviewPrivate(UIMachine *pMachine, const QPixmap& overlayImage)
+        : UIAbstractDockIconPreviewHelper(pMachine, overlayImage)
     {
         mUIDockTile = [[UIDockTile alloc] initWithParent:this];
     }
@@ -97,12 +97,12 @@ public:
 /*
  * Cocoa wrapper for the abstract dock icon preview class
  */
-UICocoaDockIconPreview::UICocoaDockIconPreview(UISession *pSession, const QPixmap& overlayImage)
-  : UIAbstractDockIconPreview(pSession, overlayImage)
+UICocoaDockIconPreview::UICocoaDockIconPreview(UIMachine *pMachine, const QPixmap& overlayImage)
+    : UIAbstractDockIconPreview(pMachine, overlayImage)
 {
     CocoaAutoreleasePool pool;
 
-    d = new UICocoaDockIconPreviewPrivate(pSession, overlayImage);
+    d = new UICocoaDockIconPreviewPrivate(pMachine, overlayImage);
 }
 
 UICocoaDockIconPreview::~UICocoaDockIconPreview()
