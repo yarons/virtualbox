@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98426 2023-02-02 09:56:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -207,7 +207,7 @@ protected slots:
 
 protected:
 
-    /** Constructs a logic passing @a pMachine and @a pSession to the base class.
+    /** Constructs a logic passing @a pMachine and @a pSession to the base-class.
       * @param  pMachine  Brings the machine this logic belongs to.
       * @param  pSession  Brings the session this logic is created for. */
     UIMachineLogic(UIMachine *pMachine, UISession *pSession);
