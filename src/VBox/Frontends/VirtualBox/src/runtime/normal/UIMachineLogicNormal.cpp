@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -72,10 +72,10 @@ bool UIMachineLogicNormal::checkAvailability()
 void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
 {
     LogRel(("GUI: UIMachineLogicNormal::sltCheckForRequestedVisualStateType: Requested-state=%d, Machine-state=%d\n",
-            uimachine()->requestedVisualState(), uisession()->machineState()));
+            uimachine()->requestedVisualState(), uimachine()->machineState()));
 
     /* Do not try to change visual-state type if machine was not started yet: */
-    if (!uisession()->isRunning() && !uisession()->isPaused())
+    if (!uimachine()->isRunning() && !uimachine()->isPaused())
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */

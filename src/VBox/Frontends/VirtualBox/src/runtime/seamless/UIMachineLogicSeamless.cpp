@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -117,10 +117,10 @@ void UIMachineLogicSeamless::adjustMachineWindowsGeometry()
 void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()
 {
     LogRel(("GUI: UIMachineLogicSeamless::sltCheckForRequestedVisualStateType: Requested-state=%d, Machine-state=%d\n",
-            uimachine()->requestedVisualState(), uisession()->machineState()));
+            uimachine()->requestedVisualState(), uimachine()->machineState()));
 
     /* Do not try to change visual-state type if machine was not started yet: */
-    if (!uisession()->isRunning() && !uisession()->isPaused())
+    if (!uimachine()->isRunning() && !uimachine()->isPaused())
         return;
 
     /* Do not try to change visual-state type in 'manual override' mode: */
@@ -143,14 +143,14 @@ void UIMachineLogicSeamless::sltMachineStateChanged()
     UIMachineLogic::sltMachineStateChanged();
 
     /* If machine-state changed from 'paused' to 'running': */
-    if (uisession()->isRunning() && uisession()->wasPaused())
+    if (uimachine()->isRunning() && uimachine()->wasPaused())
     {
         LogRel(("GUI: UIMachineLogicSeamless::sltMachineStateChanged:"
                 "Machine-state changed from 'paused' to 'running': "
                 "Adjust machine-window geometry...\n"));
 
         /* Make sure further code will be called just once: */
-        uisession()->forgetPreviousMachineState();
+        uimachine()->forgetPreviousMachineState();
         /* Adjust machine-window geometry if necessary: */
         adjustMachineWindowsGeometry();
     }

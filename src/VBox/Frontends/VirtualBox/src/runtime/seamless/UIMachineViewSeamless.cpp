@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -141,7 +141,7 @@ void UIMachineViewSeamless::prepareSeamless()
 void UIMachineViewSeamless::cleanupSeamless()
 {
     /* Reset seamless feature flag if possible: */
-    if (uisession()->isRunning())
+    if (uimachine()->isRunning())
         display().SetSeamlessMode(false);
 }
 

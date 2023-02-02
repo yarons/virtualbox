@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98427 2023-02-02 09:59:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -282,6 +282,61 @@ void UIMachine::updateStateVRDEServerAction()
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->blockSignals(true);
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->setChecked(comServer.GetEnabled());
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->blockSignals(false);
+}
+
+KMachineState UIMachine::machineState() const
+{
+    return uisession()->machineState();
+}
+
+void UIMachine::forgetPreviousMachineState()
+{
+    uisession()->forgetPreviousMachineState();
+}
+
+bool UIMachine::isTurnedOff() const
+{
+    return uisession()->isTurnedOff();
+}
+
+bool UIMachine::isPaused() const
+{
+    return uisession()->isPaused();
+}
+
+bool UIMachine::wasPaused() const
+{
+    return uisession()->wasPaused();
+}
+
+bool UIMachine::isRunning() const
+{
+    return uisession()->isRunning();
+}
+
+bool UIMachine::isStuck() const
+{
+    return uisession()->isStuck();
+}
+
+bool UIMachine::isGuestScreenUnDrawable() const
+{
+    return uisession()->isGuestScreenUnDrawable();
+}
+
+bool UIMachine::pause()
+{
+    return uisession()->pause();
+}
+
+bool UIMachine::unpause()
+{
+    return uisession()->unpause();
+}
+
+bool UIMachine::setPause(bool fPause)
+{
+    return uisession()->setPause(fPause);
 }
 
 bool UIMachine::isScreenVisibleHostDesires(ulong uScreenId) const

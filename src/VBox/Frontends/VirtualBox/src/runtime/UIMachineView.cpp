@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98425 2023-02-02 09:55:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -602,7 +602,7 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
         return;
 
     /* In some situations especially in some VM states, guest-screen is not drawable: */
-    if (uisession()->isGuestScreenUnDrawable())
+    if (uimachine()->isGuestScreenUnDrawable())
         return;
 
     /* Get old frame-buffer size: */
@@ -1052,7 +1052,7 @@ void UIMachineView::sltHandleScalingOptimizationChange(const QUuid &uMachineID)
 void UIMachineView::sltMachineStateChanged()
 {
     /* Get machine state: */
-    KMachineState state = uisession()->machineState();
+    KMachineState state = uimachine()->machineState();
     switch (state)
     {
         case KMachineState_Paused:
@@ -1989,7 +1989,7 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
         frameBuffer()->handlePaintEvent(pPaintEvent);
 #ifdef VBOX_WS_MAC
     /* Update the dock icon if we are in the running state: */
-    if (uisession()->isRunning())
+    if (uimachine()->isRunning())
         updateDockIcon();
 #endif /* VBOX_WS_MAC */
 }

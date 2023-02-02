@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98427 2023-02-02 09:59:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -206,6 +206,35 @@ public:
         void updateStateRecordingAction();
         /** Updates VRDE server action state. */
         void updateStateVRDEServerAction();
+    /** @} */
+
+    /** @name Machine-state stuff.
+     ** @{ */
+        /** Returns machine state. */
+        KMachineState machineState() const;
+
+        /** Resets previous state to be the same as current one. */
+        void forgetPreviousMachineState();
+
+        /** Returns whether VM is in one of turned off states. */
+        bool isTurnedOff() const;
+        /** Returns whether VM is in one of paused states. */
+        bool isPaused() const;
+        /** Returns whether VM was in one of paused states. */
+        bool wasPaused() const;
+        /** Returns whether VM is in one of running states. */
+        bool isRunning() const;
+        /** Returns whether VM is in one of stuck states. */
+        bool isStuck() const;
+        /** Returns whether VM is one of states where guest-screen is undrawable. */
+        bool isGuestScreenUnDrawable() const;
+
+        /** Performes VM pausing. */
+        bool pause();
+        /** Performes VM resuming. */
+        bool unpause();
+        /** Performes VM pausing/resuming depending on @a fPause state. */
+        bool setPause(bool fPause);
     /** @} */
 
     /** @name Host-screen stuff.

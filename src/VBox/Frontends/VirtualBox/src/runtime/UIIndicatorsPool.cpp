@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98424 2023-02-02 09:48:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -521,7 +521,7 @@ private slots:
     /** Updates auto-update timer depending on machine state. */
     void sltHandleMachineStateChange()
     {
-        if (m_pSession->machineState() == KMachineState_Running)
+        if (m_pMachine->machineState() == KMachineState_Running)
         {
             /* Start auto-update timer otherwise: */
             m_pTimerAutoUpdate->start(5000);
@@ -1067,7 +1067,7 @@ private slots:
     /** Updates auto-update timer depending on machine state. */
     void sltHandleMachineStateChange()
     {
-        if (m_pSession->machineState() == KMachineState_Running)
+        if (m_pMachine->machineState() == KMachineState_Running)
         {
             /* Start auto-update timer otherwise: */
             m_pTimerAutoUpdate->start(1000);

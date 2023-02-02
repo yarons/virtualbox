@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98427 2023-02-02 09:59:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -870,6 +870,6 @@ static void signalHandlerSIGUSR1(int sig, siginfo_t * /* pInfo */, void * /*pSec
     /* Only SIGUSR1 is interesting: */
     if (sig == SIGUSR1)
         if (gpMachine)
-            gpMachine->uisession()->machineLogic()->keyboardHandler()->releaseAllPressedKeys();
+            gpMachine->machineLogic()->keyboardHandler()->releaseAllPressedKeys();
 }
 #endif /* VBOX_GUI_WITH_KEYS_RESET_HANDLER */
