@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98410 2023-02-01 16:20:10Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98439 2023-02-02 12:47:31Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1433,7 +1433,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  	$(if $(VBOX_WITH_NAT_SERVICE),VBOX_WITH_NAT_SERVICE,)
  ServicesR0_SOURCES   = \
  	Network/SrvIntNetR0.cpp
-#        $(if $(VBOX_WITH_PCI_PASSTHROUGH),Bus/SrvPciRawR0.cpp,)
+ #        $(if $(VBOX_WITH_PCI_PASSTHROUGH),Bus/SrvPciRawR0.cpp,)
  Network/SrvIntNetR0.cpp_CXXFLAGS := $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC_Wno-array_bounds))
 
 

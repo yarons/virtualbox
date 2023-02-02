@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98439 2023-02-02 12:47:31Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -32,7 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
 ifdef VBOX_ONLY_ADDITIONS
  include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
  if defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_HGSMI)
-  if1of ($(KBUILD_TARGET),win linux solaris freebsd netbsd haiku)
+  if1of ($(KBUILD_TARGET), win linux solaris freebsd netbsd haiku)
    include $(PATH_SUB_CURRENT)/GuestHost/Makefile.kmk
   endif
  endif
