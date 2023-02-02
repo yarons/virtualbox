@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98431 2023-02-02 12:10:49Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for src/VBox/Main/src-helper-apps/os2.
 #
@@ -55,8 +55,8 @@ os2_util_LDFLAGS        = \
 	OPTION PROTmode \
 	SEGMENT IOPL IOPL EXECUTEREAD
 if 0
-os2_util_LDFLAGS       += Debug Watcom All
-os2_util_CFLAGS        += -d2 -hw
+ os2_util_LDFLAGS      += Debug Watcom All
+ os2_util_CFLAGS       += -d2 -hw
 endif
 
 os2_util_INCS           = $(PATH_TOOL_OPENWATCOM)/h/os21x
