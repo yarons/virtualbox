@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudio.cpp 98454 2023-02-02 19:38:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intermediate audio driver - Connects the audio device emulation with the host backend.
  */
@@ -611,17 +611,13 @@ DECLINLINE(PDMHOSTAUDIOSTREAMSTATE) drvAudioStreamGetBackendState(PDRVAUDIO pThi
 {
     if (pThis->pHostDrvAudio)
     {
-        /* Don't call if the backend wasn't created for this stream (disabled). */
-        if (pStreamEx->fStatus & PDMAUDIOSTREAM_STS_BACKEND_CREATED)
-        {
-            AssertPtrReturn(pThis->pHostDrvAudio->pfnStreamGetState, PDMHOSTAUDIOSTREAMSTATE_NOT_WORKING);
-            PDMHOSTAUDIOSTREAMSTATE enmState = pThis->pHostDrvAudio->pfnStreamGetState(pThis->pHostDrvAudio, pStreamEx->pBackend);
-            Log9Func(("%s: %s\n", pStreamEx->Core.Cfg.szName, PDMHostAudioStreamStateGetName(enmState) ));
-            Assert(   enmState > PDMHOSTAUDIOSTREAMSTATE_INVALID
-                   && enmState < PDMHOSTAUDIOSTREAMSTATE_END
-                   && (enmState != PDMHOSTAUDIOSTREAMSTATE_DRAINING || pStreamEx->Core.Cfg.enmDir == PDMAUDIODIR_OUT));
-            return enmState;
-        }
+        AssertPtrReturn(pThis->pHostDrvAudio->pfnStreamGetState, PDMHOSTAUDIOSTREAMSTATE_NOT_WORKING);
+        PDMHOSTAUDIOSTREAMSTATE enmState = pThis->pHostDrvAudio->pfnStreamGetState(pThis->pHostDrvAudio, pStreamEx->pBackend);
+        Log9Func(("%s: %s\n", pStreamEx->Core.Cfg.szName, PDMHostAudioStreamStateGetName(enmState) ));
+        Assert(   enmState > PDMHOSTAUDIOSTREAMSTATE_INVALID
+               && enmState < PDMHOSTAUDIOSTREAMSTATE_END
+               && (enmState != PDMHOSTAUDIOSTREAMSTATE_DRAINING || pStreamEx->Core.Cfg.enmDir == PDMAUDIODIR_OUT));
+        return enmState;
     }
     Log9Func(("%s: not-working\n", pStreamEx->Core.Cfg.szName));
     return PDMHOSTAUDIOSTREAMSTATE_NOT_WORKING;
