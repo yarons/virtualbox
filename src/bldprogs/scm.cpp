@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 98368 2023-01-31 15:46:52Z knut.osmundsen@oracle.com $ */
+/* $Id: scm.cpp 98449 2023-02-02 13:45:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -216,7 +216,7 @@ static SCMSETTINGSBASE const g_Defaults =
     /* .fOnlyGuestHostPage = */                     false,
     /* .fNoASMMemPageUse = */                       false,
     /* .fOnlyHrcVrcInsteadOfRc */                   false,
-    /* .fStandarizeKmk */                           false,
+    /* .fStandarizeKmk */                           true,
     /* .fUpdateCopyrightYear = */                   false,
     /* .fExternalCopyright = */                     false,
     /* .fLgplDisclaimer = */                        false,
@@ -3146,7 +3146,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 98368 $";
+                static const char s_szRev[] = "$Revision: 98449 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
