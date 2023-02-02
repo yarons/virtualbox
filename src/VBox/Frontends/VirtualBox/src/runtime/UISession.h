@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98423 2023-02-02 09:47:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -76,9 +76,6 @@ class UISession : public QObject
     Q_OBJECT;
 
 signals:
-
-    /** Notifies listeners about session initialized. */
-    void sigInitialized();
 
     /** Notifies about additions state change. */
     void sigAdditionsStateChange();
@@ -192,7 +189,6 @@ public:
     bool wasPaused() const { return machineStatePrevious() == KMachineState_Paused ||
                                     machineStatePrevious() == KMachineState_TeleportingPausedVM; }
 
-    bool isInitialized() const { return m_fInitialized; }
     bool isGuestResizeIgnored() const { return m_fIsGuestResizeIgnored; }
     bool isAutoCaptureDisabled() const { return m_fIsAutoCaptureDisabled; }
 
@@ -337,7 +333,6 @@ private:
     QVector<UIFrameBuffer*> m_frameBufferVector;
 
     /* Common flags: */
-    bool m_fInitialized : 1;
     bool m_fIsGuestResizeIgnored : 1;
     bool m_fIsAutoCaptureDisabled : 1;
 

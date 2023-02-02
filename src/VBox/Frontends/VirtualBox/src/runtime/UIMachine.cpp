@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98423 2023-02-02 09:47:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -802,6 +802,7 @@ void UIMachine::sltHandleSnapshotRestored(bool)
 
 UIMachine::UIMachine()
     : QObject(0)
+    , m_fInitialized(false)
     , m_pSession(0)
     , m_allowedVisualStates(UIVisualStateType_Invalid)
     , m_initialVisualState(UIVisualStateType_Normal)
@@ -873,6 +874,10 @@ bool UIMachine::prepare()
     /* Update stuff which doesn't send events on init: */
     updateStateAudioActions();
     updateMouseState();
+
+    /* Warn listeners about we are initialized: */
+    m_fInitialized = true;
+    emit sigInitialized();
 
     /* True by default: */
     return true;

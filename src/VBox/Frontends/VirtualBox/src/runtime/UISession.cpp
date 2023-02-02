@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98423 2023-02-02 09:47:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -174,10 +174,6 @@ bool UISession::initialize()
 #ifdef VBOX_GUI_WITH_PIDFILE
     uiCommon().createPidfile();
 #endif /* VBOX_GUI_WITH_PIDFILE */
-
-    /* Warn listeners about we are initialized: */
-    m_fInitialized = true;
-    emit sigInitialized();
 
     /* True by default: */
     return true;
@@ -375,7 +371,6 @@ UISession::UISession(UIMachine *pMachine)
     , m_machineStatePrevious(KMachineState_Null)
     , m_machineState(KMachineState_Null)
     /* Common flags: */
-    , m_fInitialized(false)
     , m_fIsGuestResizeIgnored(false)
     , m_fIsAutoCaptureDisabled(false)
     /* Guest additions flags: */
