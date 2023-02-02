@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 98405 2023-02-01 15:13:23Z andreas.loeffler@oracle.com $ */
+/* $Id: DevSB16.cpp 98456 2023-02-02 20:23:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2011,8 +2011,7 @@ static int sb16StreamEnable(PSB16STATE pThis, PSB16STREAM pStream, bool fEnable,
     }
     else
     {
-        rc = AudioMixerSinkDrainAndStopEx(pSink, pStream->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStream->State.pCircBuf) : 0,
-                                          RT_MS_5SEC);
+        rc = AudioMixerSinkDrainAndStop(pSink, pStream->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStream->State.pCircBuf) : 0);
         AssertRCReturn(rc, rc);
     }
 

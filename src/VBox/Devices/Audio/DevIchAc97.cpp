@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 98405 2023-02-01 15:13:23Z andreas.loeffler@oracle.com $ */
+/* $Id: DevIchAc97.cpp 98456 2023-02-02 20:23:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2347,9 +2347,7 @@ static int ichac97R3StreamEnable(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STAT
      */
     else
     {
-        rc = AudioMixerSinkDrainAndStopEx(pSink,
-                                          pStreamCC->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStreamCC->State.pCircBuf) : 0,
-                                          RT_MS_5SEC);
+        rc = AudioMixerSinkDrainAndStop(pSink, pStreamCC->State.pCircBuf ? (uint32_t)RTCircBufUsed(pStreamCC->State.pCircBuf) : 0);
         ichac97R3StreamTearDown(pStream);
     }
 
