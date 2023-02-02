@@ -1,4 +1,4 @@
-/* $Id: scmrw-kmk.cpp 98434 2023-02-02 12:40:34Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw-kmk.cpp 98440 2023-02-02 12:49:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Makefile.kmk/kup.
  */
@@ -2217,6 +2217,17 @@ SCMREWRITERRES rewrite_Makefile_kmk(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTRE
                     ScmStreamWrite(pOut, g_szSpaces, Parser.iActualDepth);
                     ScmStreamWrite(pOut, &pchLine[offLine], cchLine - offLine);
                     ScmStreamPutEol(pOut, Parser.enmEol);
+
+                    /* If line continuation is used, it's typically to disable
+                       a property variable, so we just pass it thru as-is */
+                    while (scmKmkIsLineWithContinuation(pchLine, cchLine))
+                    {
+                        Parser.pchLine = pchLine = ScmStreamGetLine(pIn, &Parser.cchLine, &Parser.enmEol);
+                        if (!pchLine)
+                            break;
+                        cchLine = Parser.cchLine;
+                        ScmStreamPutLine(pOut, pchLine, cchLine, Parser.enmEol);
+                    }
                     continue;
                 }
             }
