@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1084,19 +1084,14 @@ UIActionPool *UIKeyboardHandler::actionPool() const
     return machineLogic()->actionPool();
 }
 
-UISession *UIKeyboardHandler::uisession() const
-{
-    return machineLogic()->uisession();
-}
-
 UIMachine *UIKeyboardHandler::uimachine() const
 {
     return machineLogic()->uimachine();
 }
 
-CKeyboard& UIKeyboardHandler::keyboard() const
+CKeyboard &UIKeyboardHandler::keyboard() const
 {
-    return uisession()->keyboard();
+    return machineLogic()->uisession()->keyboard();
 }
 
 /* Event handler for prepared listener(s): */

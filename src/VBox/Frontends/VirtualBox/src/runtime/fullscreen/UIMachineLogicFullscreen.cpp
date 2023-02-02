@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -53,8 +53,8 @@
 #include "CGraphicsAdapter.h"
 
 
-UIMachineLogicFullscreen::UIMachineLogicFullscreen(UIMachine *pMachine, UISession *pSession)
-    : UIMachineLogic(pMachine, pSession)
+UIMachineLogicFullscreen::UIMachineLogicFullscreen(UIMachine *pMachine)
+    : UIMachineLogic(pMachine)
     , m_pPopupMenu(0)
 #ifdef VBOX_WS_MAC
     , m_fScreensHaveSeparateSpaces(darwinScreensHaveSeparateSpaces())
@@ -776,7 +776,8 @@ void UIMachineLogicFullscreen::revalidateNativeFullScreen(UIMachineWindow *pMach
             /* Variables to compare: */
             const int iWantedHostScreenIndex = hostScreenForGuestScreen((int)uScreenID);
             const int iCurrentHostScreenIndex = UIDesktopWidgetWatchdog::screenNumber(pMachineWindow);
-            const QSize frameBufferSize((int)uisession()->frameBuffer(uScreenID)->width(), (int)uisession()->frameBuffer(uScreenID)->height());
+            const UIFrameBuffer *pFrameBuffer = uisession()->frameBuffer(uScreenID);
+            const QSize frameBufferSize(pFrameBuffer->width(), pFrameBuffer->height());
             const QSize screenSize = gpDesktop->screenGeometry(iWantedHostScreenIndex).size();
 
             /* If that window

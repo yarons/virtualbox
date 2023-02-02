@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -154,7 +154,6 @@ void UIMultiScreenLayout::update()
         int cDisabledGuestScreens = m_disabledGuestScreens.size();
         /* We have to try to enable disabled guest-screens if any: */
         int cGuestScreensToEnable = qMin(cExcessiveHostScreens, cDisabledGuestScreens);
-        UISession *pSession = m_pMachineLogic->uisession();
         for (int iGuestScreenIndex = 0; iGuestScreenIndex < cGuestScreensToEnable; ++iGuestScreenIndex)
         {
             /* Defaults: */
@@ -162,7 +161,7 @@ void UIMultiScreenLayout::update()
             ULONG uHeight = 600;
             /* Try to get previous guest-screen arguments: */
             int iGuestScreen = m_disabledGuestScreens[iGuestScreenIndex];
-            if (UIFrameBuffer *pFrameBuffer = pSession->frameBuffer(iGuestScreen))
+            if (UIFrameBuffer *pFrameBuffer = m_pMachineLogic->uisession()->frameBuffer(iGuestScreen))
             {
                 if (pFrameBuffer->width() > 0)
                     uWidth = pFrameBuffer->width();

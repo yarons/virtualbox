@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicScale.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -49,8 +49,8 @@
 #include "CGraphicsAdapter.h"
 
 
-UIMachineLogicScale::UIMachineLogicScale(UIMachine *pMachine, UISession *pSession)
-    : UIMachineLogic(pMachine, pSession)
+UIMachineLogicScale::UIMachineLogicScale(UIMachine *pMachine)
+    : UIMachineLogic(pMachine)
 #ifndef VBOX_WS_MAC
     , m_pPopupMenu(0)
 #endif /* !VBOX_WS_MAC */

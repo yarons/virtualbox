@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -526,7 +526,7 @@ void UIMachine::closeRuntimeUI()
 void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
 {
     /* Create new machine-logic: */
-    UIMachineLogic *pMachineLogic = UIMachineLogic::create(this, uisession(), visualState);
+    UIMachineLogic *pMachineLogic = UIMachineLogic::create(this, visualState);
 
     /* First we have to check if the selected machine-logic is available at all.
      * Only then we delete the old machine-logic and switch to the new one. */

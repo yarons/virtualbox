@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.h 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -42,9 +42,8 @@ class UIMachineLogicNormal : public UIMachineLogic
 public:
 
     /** Constructs a logic passing @a pMachine and @a pSession to the base-class.
-      * @param  pMachine  Brings the machine this logic belongs to.
-      * @param  pSession  Brings the session this logic is created for. */
-    UIMachineLogicNormal(UIMachine *pMachine, UISession *pSession);
+      * @param  pMachine  Brings the machine this logic belongs to. */
+    UIMachineLogicNormal(UIMachine *pMachine);
 
     /** Returns visual state type. */
     virtual UIVisualStateType visualStateType() const { return UIVisualStateType_Normal; }

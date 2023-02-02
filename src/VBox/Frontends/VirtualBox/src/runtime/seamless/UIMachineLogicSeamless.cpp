@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -38,7 +38,6 @@
 #include "UIMachineWindowSeamless.h"
 #include "UIMessageCenter.h"
 #include "UIMultiScreenLayout.h"
-#include "UISession.h"
 #include "UIShortcutPool.h"
 #ifndef VBOX_WS_MAC
 # include "QIMenu.h"
@@ -50,8 +49,8 @@
 #include "CGraphicsAdapter.h"
 
 
-UIMachineLogicSeamless::UIMachineLogicSeamless(UIMachine *pMachine, UISession *pSession)
-    : UIMachineLogic(pMachine, pSession)
+UIMachineLogicSeamless::UIMachineLogicSeamless(UIMachine *pMachine)
+    : UIMachineLogic(pMachine)
 #ifndef VBOX_WS_MAC
     , m_pPopupMenu(0)
 #endif /* !VBOX_WS_MAC */

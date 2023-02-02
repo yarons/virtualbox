@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.h 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -45,9 +45,8 @@ class UIMachineLogicSeamless : public UIMachineLogic
 public:
 
     /** Constructs a logic passing @a pMachine and @a pSession to the base-class.
-      * @param  pMachine  Brings the machine this logic belongs to.
-      * @param  pSession  Brings the session this logic is created for. */
-    UIMachineLogicSeamless(UIMachine *pMachine, UISession *pSession);
+      * @param  pMachine  Brings the machine this logic belongs to. */
+    UIMachineLogicSeamless(UIMachine *pMachine);
     /** Destructs the logic. */
     virtual ~UIMachineLogicSeamless() RT_OVERRIDE;
 

@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -547,24 +547,19 @@ UIMouseHandler::~UIMouseHandler()
 {
 }
 
-UISession *UIMouseHandler::uisession() const
-{
-    return machineLogic()->uisession();
-}
-
 UIMachine *UIMouseHandler::uimachine() const
 {
     return machineLogic()->uimachine();
 }
 
-CDisplay& UIMouseHandler::display() const
+CDisplay &UIMouseHandler::display() const
 {
-    return uisession()->display();
+    return machineLogic()->uisession()->display();
 }
 
-CMouse& UIMouseHandler::mouse() const
+CMouse &UIMouseHandler::mouse() const
 {
-    return uisession()->mouse();
+    return machineLogic()->uisession()->mouse();
 }
 
 /* Event handler for registered machine-view(s): */

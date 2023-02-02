@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -41,7 +41,6 @@
 #include "UIMachineWindow.h"
 #include "UIMenuBarEditorWindow.h"
 #include "UIMessageCenter.h"
-#include "UISession.h"
 #include "UIStatusBarEditorWindow.h"
 #ifndef VBOX_WS_MAC
 # include "QIMenu.h"
@@ -55,8 +54,8 @@
 #include "CGraphicsAdapter.h"
 
 
-UIMachineLogicNormal::UIMachineLogicNormal(UIMachine *pMachine, UISession *pSession)
-    : UIMachineLogic(pMachine, pSession)
+UIMachineLogicNormal::UIMachineLogicNormal(UIMachine *pMachine)
+    : UIMachineLogic(pMachine)
 #ifndef VBOX_WS_MAC
     , m_pPopupMenu(0)
 #endif /* !VBOX_WS_MAC */
