@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98241 2023-01-23 12:56:35Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98430 2023-02-02 12:06:31Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -650,10 +650,6 @@ if defined(VBOX_ONLY_SDK) && ("$(KBUILD_TARGET)" != "win" || defined(VBOX_FORCE_
  VBOXWEB_SAMPLES_JAXWS_DIR     = $(VBOX_PATH_SDK)/bindings/webservice/java/jax-ws/samples
  VBOXWEB_JAXWSSAMPLE           = $(VBOXWEB_SAMPLES_JAXWS_DIR)/clienttest.java
  VBOXWEB_METRICSAMPLE          = $(VBOXWEB_SAMPLES_JAXWS_DIR)/metrictest.java
-
- define find_java_files
-  $(shell find $(1) -name \*.java)
- endef
 
  VBOXWEB_OTHERS               +=  \
 	$(if $(VBOX_WITH_PYTHON),$(VBOXWEB_GLUE_PYTHON),) \
