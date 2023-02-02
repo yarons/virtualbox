@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98429 2023-02-02 12:03:46Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the stub builder.
 #
@@ -30,7 +30,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 # Not a build program as it is needed for repacking after we Get the MS driver blessing.
 PROGRAMS += VBoxStubBld
-VBoxStubBld_TEMPLATE= VBoxBldProg
+VBoxStubBld_TEMPLATE = VBoxBldProg
 VBoxStubBld_DEFS    = _WIN32_WINNT=0x0400 VBOX_SVN_REV=$(VBOX_SVN_REV) $(VBOX_SVN_REV_KMK)
 VBoxStubBld_SOURCES = VBoxStubBld.cpp
 

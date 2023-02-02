@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98257 2023-01-23 17:51:48Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98429 2023-02-02 12:03:46Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -51,8 +51,8 @@ VBoxInstallHelper_LIBS    = \
 	$(PATH_SDK_$(VBOX_WINPSDK)_LIB)/Msi.lib
 ifdef VBOX_WITH_NETFLT
  VBoxInstallHelper_LIBS   += \
-	$(PATH_STAGE_LIB)/WinNetConfigSharedStatic.lib \
-	$(PATH_STAGE_LIB)/VBoxDrvCfgSharedStatic.lib \
+ 	$(PATH_STAGE_LIB)/WinNetConfigSharedStatic.lib \
+ 	$(PATH_STAGE_LIB)/VBoxDrvCfgSharedStatic.lib \
  	$(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/comsupp.lib \
  	$(PATH_SDK_$(VBOX_WINPSDK)_LIB)/WbemUuid.Lib
 endif
