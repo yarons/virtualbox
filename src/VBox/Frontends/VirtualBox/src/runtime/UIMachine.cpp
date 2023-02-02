@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98420 2023-02-02 09:17:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1130,13 +1130,6 @@ void UIMachine::prepareClose()
     const QUuid uMachineID = uiCommon().managedVMUuid();
     m_defaultCloseAction = gEDataManager->defaultMachineCloseAction(uMachineID);
     m_restrictedCloseActions = gEDataManager->restrictedMachineCloseActions(uMachineID);
-
-    /* Log whether HID LEDs sync is enabled: */
-#if defined(VBOX_WS_MAC) || defined(VBOX_WS_WIN)
-    LogRel(("GUI: HID LEDs sync is %s\n", isHidLedsSyncEnabled() ? "enabled" : "disabled"));
-#else
-    LogRel(("GUI: HID LEDs sync is not supported on this platform\n"));
-#endif
 }
 
 void UIMachine::prepareMachineLogic()

@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98420 2023-02-02 09:17:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -292,7 +292,6 @@ private:
     /* Common helpers: */
     bool preprocessInitialization();
     bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType enmMediumType, const QString &strMediumName);
-    bool postprocessInitialization();
     /** Loads VM settings. */
     void loadVMSettings();
 
