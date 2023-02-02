@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98420 2023-02-02 09:17:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -224,6 +224,11 @@ void UIMachine::setRequestedVisualState(UIVisualStateType visualStateType)
 UIVisualStateType UIMachine::requestedVisualState() const
 {
     return m_enmRequestedVisualState;
+}
+
+QString UIMachine::machineName() const
+{
+    return uisession()->machineName();
 }
 
 void UIMachine::updateStateAdditionsActions()

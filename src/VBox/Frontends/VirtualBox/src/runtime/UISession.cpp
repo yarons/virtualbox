@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98420 2023-02-02 09:17:27Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -247,24 +247,9 @@ bool UISession::powerUp()
     return true;
 }
 
-UIMachineLogic* UISession::machineLogic() const
-{
-    return uimachine() ? uimachine()->machineLogic() : 0;
-}
-
-QWidget* UISession::mainMachineWindow() const
-{
-    return machineLogic() ? machineLogic()->mainMachineWindow() : 0;
-}
-
 WId UISession::mainMachineWindowId() const
 {
-    return mainMachineWindow()->winId();
-}
-
-UIMachineWindow *UISession::activeMachineWindow() const
-{
-    return machineLogic() ? machineLogic()->activeMachineWindow() : 0;
+    return mainMachineWindow() ? mainMachineWindow()->winId() : 0;
 }
 
 bool UISession::guestAdditionsUpgradable()
@@ -410,16 +395,31 @@ UISession::~UISession()
 {
 }
 
+UIMachineLogic *UISession::machineLogic() const
+{
+    return uimachine() ? uimachine()->machineLogic() : 0;
+}
+
+UIMachineWindow *UISession::activeMachineWindow() const
+{
+    return machineLogic() ? machineLogic()->activeMachineWindow() : 0;
+}
+
+QWidget *UISession::mainMachineWindow() const
+{
+    return machineLogic() ? machineLogic()->mainMachineWindow() : 0;
+}
+
 bool UISession::prepare()
 {
     /* Prepare COM stuff: */
     if (!prepareSession())
         return false;
+
+    /* Prepare GUI stuff: */
     prepareNotificationCenter();
     prepareConsoleEventHandlers();
     prepareFramebuffers();
-
-    /* Prepare GUI stuff: */
     prepareConnections();
     prepareSignalHandling();
 

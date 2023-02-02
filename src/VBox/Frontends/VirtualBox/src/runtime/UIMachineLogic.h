@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98400 2023-02-01 14:50:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -137,7 +137,7 @@ public:
     CMachineDebugger& debugger() const;
 
     /** Returns the machine name. */
-    const QString& machineName() const;
+    QString machineName() const;
     const QList<UIMachineWindow*>& machineWindows() const { return m_machineWindowsList; }
     UIKeyboardHandler* keyboardHandler() const { return m_pKeyboardHandler; }
     UIMouseHandler* mouseHandler() const { return m_pMouseHandler; }

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -320,9 +320,9 @@ CMachineDebugger& UIMachineLogic::debugger() const
     return uisession()->debugger();
 }
 
-const QString& UIMachineLogic::machineName() const
+QString UIMachineLogic::machineName() const
 {
-    return uisession()->machineName();
+    return uimachine()->machineName();
 }
 
 UIMachineWindow* UIMachineLogic::mainMachineWindow() const

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -236,9 +236,9 @@ CConsole& UIMachineWindow::console() const
     return uisession()->console();
 }
 
-const QString& UIMachineWindow::machineName() const
+QString UIMachineWindow::machineName() const
 {
-    return uisession()->machineName();
+    return uimachine()->machineName();
 }
 
 bool UIMachineWindow::shouldResizeToGuestDisplay() const

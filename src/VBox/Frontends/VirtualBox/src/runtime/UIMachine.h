@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -170,6 +170,12 @@ public:
     void setRequestedVisualState(UIVisualStateType visualStateType);
     /** Returns requested visual-state to be entered when possible. */
     UIVisualStateType requestedVisualState() const;
+
+    /** @name General stuff.
+     ** @{ */
+        /** Returns the machine name. */
+        QString machineName() const;
+    /** @} */
 
     /** @name Branding stuff.
      ** @{ */

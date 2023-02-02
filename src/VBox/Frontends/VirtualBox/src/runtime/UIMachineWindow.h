@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 98376 2023-02-01 12:20:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -101,7 +101,7 @@ public:
     CConsole& console() const;
 
     /** Returns the machine name. */
-    const QString& machineName() const;
+    QString machineName() const;
 
     /** Returns whether the machine-window should resize to fit to the guest display.
       * @note Relevant only to normal (windowed) case. */
