@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -402,6 +402,11 @@ QList<int> UIMachine::listOfVisibleWindows() const
         if (m_monitorVisibilityVector.at(i))
             visibleWindows.push_back(i);
     return visibleWindows;
+}
+
+QSize UIMachine::guestScreenSize(ulong uScreenId) const
+{
+    return uisession()->frameBufferSize(uScreenId);
 }
 
 QSize UIMachine::lastFullScreenSize(ulong uScreenId) const

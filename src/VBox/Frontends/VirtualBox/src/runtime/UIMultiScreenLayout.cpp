@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -34,8 +34,6 @@
 #include "UIMultiScreenLayout.h"
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogic.h"
-#include "UIFrameBuffer.h"
-#include "UISession.h"
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UIExtraDataManager.h"
@@ -160,13 +158,13 @@ void UIMultiScreenLayout::update()
             ULONG uWidth = 800;
             ULONG uHeight = 600;
             /* Try to get previous guest-screen arguments: */
-            int iGuestScreen = m_disabledGuestScreens[iGuestScreenIndex];
-            if (UIFrameBuffer *pFrameBuffer = m_pMachineLogic->uisession()->frameBuffer(iGuestScreen))
+            const int iGuestScreen = m_disabledGuestScreens.at(iGuestScreenIndex);
+            const QSize guestScreenSize = m_pMachineLogic->uimachine()->guestScreenSize(iGuestScreen);
             {
-                if (pFrameBuffer->width() > 0)
-                    uWidth = pFrameBuffer->width();
-                if (pFrameBuffer->height() > 0)
-                    uHeight = pFrameBuffer->height();
+                if (guestScreenSize.width() > 0)
+                    uWidth = guestScreenSize.width();
+                if (guestScreenSize.height() > 0)
+                    uHeight = guestScreenSize.height();
             }
             /* Re-enable guest-screen with proper resolution: */
             LogRel(("GUI: UIMultiScreenLayout::update: Enabling guest-screen %d with following resolution: %dx%d\n",

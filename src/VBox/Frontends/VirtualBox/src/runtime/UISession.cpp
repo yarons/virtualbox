@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -298,6 +298,12 @@ void UISession::setFrameBuffer(ulong uScreenId, UIFrameBuffer *pFrameBuffer)
     Assert(uScreenId < (ulong)m_frameBufferVector.size());
     if (uScreenId < (ulong)m_frameBufferVector.size())
         m_frameBufferVector[(int)uScreenId] = pFrameBuffer;
+}
+
+QSize UISession::frameBufferSize(ulong uScreenId) const
+{
+    UIFrameBuffer *pFramebuffer = frameBuffer(uScreenId);
+    return pFramebuffer ? QSize(pFramebuffer->width(), pFramebuffer->height()) : QSize();
 }
 
 bool UISession::prepareToBeSaved()

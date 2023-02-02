@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98427 2023-02-02 09:59:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -255,6 +255,8 @@ public:
         void setFrameBuffer(ulong uScreenId, UIFrameBuffer *pFrameBuffer);
         /** Returns existing frame-buffer vector. */
         const QVector<UIFrameBuffer*> &frameBuffers() const { return m_frameBufferVector; }
+        /** Returns frame-buffer size for screen with index @a uScreenId. */
+        QSize frameBufferSize(ulong uScreenId) const;
     /** @} */
 
     /** @name Close stuff.

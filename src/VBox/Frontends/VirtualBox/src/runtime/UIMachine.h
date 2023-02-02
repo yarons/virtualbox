@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -259,6 +259,9 @@ public:
         int countOfVisibleWindows();
         /** Returns the list of visible guest-windows. */
         QList<int> listOfVisibleWindows() const;
+
+        /** Returns size for guest-screen with index @a uScreenId. */
+        QSize guestScreenSize(ulong uScreenId) const;
 
         /** Returns last full-screen size for guest-screen with index @a uScreenId. */
         QSize lastFullScreenSize(ulong uScreenId) const;

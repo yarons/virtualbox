@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -39,12 +39,10 @@
 #include "UIMachineWindowFullscreen.h"
 #include "UIMessageCenter.h"
 #include "UIMultiScreenLayout.h"
-#include "UISession.h"
 #include "UIShortcutPool.h"
 #ifdef VBOX_WS_MAC
 # include "UICocoaApplication.h"
 # include "UIExtraDataManager.h"
-# include "UIFrameBuffer.h"
 # include "VBoxUtils.h"
 # include <Carbon/Carbon.h>
 #endif /* VBOX_WS_MAC */
@@ -776,9 +774,8 @@ void UIMachineLogicFullscreen::revalidateNativeFullScreen(UIMachineWindow *pMach
             /* Variables to compare: */
             const int iWantedHostScreenIndex = hostScreenForGuestScreen((int)uScreenID);
             const int iCurrentHostScreenIndex = UIDesktopWidgetWatchdog::screenNumber(pMachineWindow);
-            const UIFrameBuffer *pFrameBuffer = uisession()->frameBuffer(uScreenID);
-            const QSize frameBufferSize(pFrameBuffer->width(), pFrameBuffer->height());
-            const QSize screenSize = gpDesktop->screenGeometry(iWantedHostScreenIndex).size();
+            const QSize guestScreenSize = uimachine()->guestScreenSize(uScreenID);
+            const QSize hostScreenSize = gpDesktop->screenGeometry(iWantedHostScreenIndex).size();
 
             /* If that window
              * 1. shouldn't really be shown or
@@ -800,8 +797,8 @@ void UIMachineLogicFullscreen::revalidateNativeFullScreen(UIMachineWindow *pMach
             }
 
             /* If that window
-             * 1. have another frame-buffer size than actually should. */
-            else if (frameBufferSize != screenSize)
+             * 1. have another size than actually should. */
+            else if (guestScreenSize != hostScreenSize)
             {
                 LogRel(("GUI: UIMachineLogicFullscreen::revalidateNativeFullScreen: "
                         "Ask machine-window #%d to adjust guest geometry\n", (int)uScreenID));
