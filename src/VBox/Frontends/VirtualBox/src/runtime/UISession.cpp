@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98423 2023-02-02 09:47:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98424 2023-02-02 09:48:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -167,9 +167,6 @@ bool UISession::initialize()
         sltAdditionsChange();
     }
     machineLogic()->initializePostPowerUp();
-
-    /* Load VM settings: */
-    loadVMSettings();
 
 #ifdef VBOX_GUI_WITH_PIDFILE
     uiCommon().createPidfile();
@@ -377,12 +374,6 @@ UISession::UISession(UIMachine *pMachine)
     , m_ulGuestAdditionsRunLevel(0)
     , m_fIsGuestSupportsGraphics(false)
     , m_fIsGuestSupportsSeamless(false)
-    /* CPU hardware virtualization features for VM: */
-    , m_enmVMExecutionEngine(KVMExecutionEngine_NotSet)
-    , m_fIsHWVirtExNestedPagingEnabled(false)
-    , m_fIsHWVirtExUXEnabled(false)
-    /* VM's effective paravirtualization provider: */
-    , m_paraVirtProvider(KParavirtProvider_None)
 {
 }
 
@@ -846,18 +837,6 @@ bool UISession::prepareToBeShutdowned()
     if (!fValidMode)
         UINotificationMessage::cannotSendACPIToMachine();
     return fValidMode;
-}
-
-void UISession::loadVMSettings()
-{
-    /* Cache IMachine::ExecutionEngine value. */
-    m_enmVMExecutionEngine = m_debugger.GetExecutionEngine();
-    /* Load nested-paging CPU hardware virtualization extension: */
-    m_fIsHWVirtExNestedPagingEnabled = m_debugger.GetHWVirtExNestedPagingEnabled();
-    /* Load whether the VM is currently making use of the unrestricted execution feature of VT-x: */
-    m_fIsHWVirtExUXEnabled = m_debugger.GetHWVirtExUXEnabled();
-    /* Load VM's effective paravirtualization provider: */
-    m_paraVirtProvider = m_machine.GetEffectiveParavirtProvider();
 }
 
 UIFrameBuffer* UISession::frameBuffer(ulong uScreenId) const
