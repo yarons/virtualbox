@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 98399 2023-02-01 14:48:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1870,7 +1870,7 @@ void UIFrameBufferPrivate::performResize(int iWidth, int iHeight)
          * in the Guest Additions protocol, but in practice it should be fine. */
         if (   ulGuestBitsPerPixel != ulBitsPerPixel
             && ulGuestBitsPerPixel != 0
-            && m_pMachineView->uisession()->isGuestSupportsGraphics())
+            && m_pMachineView->uimachine()->isGuestSupportsGraphics())
             UINotificationMessage::remindAboutWrongColorDepth(ulGuestBitsPerPixel, ulBitsPerPixel);
         else
             UINotificationMessage::forgetAboutWrongColorDepth();

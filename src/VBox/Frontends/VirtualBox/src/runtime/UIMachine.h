@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -269,6 +269,16 @@ public:
         bool isGuestResizeIgnored() const { return m_fIsGuestResizeIgnored; }
         /** Defines whether guest screen resize should be @a fIgnored. */
         void setGuestResizeIgnored(bool fIgnored) { m_fIsGuestResizeIgnored = fIgnored; }
+    /** @} */
+
+    /** @name Guest additions stuff.
+     ** @{ */
+        /** Returns whether guest additions is active. */
+        bool isGuestAdditionsActive() const;
+        /** Returns whether guest additions supports graphics. */
+        bool isGuestSupportsGraphics() const;
+        /** Returns whether guest additions supports seamless. */
+        bool isGuestSupportsSeamless() const;
     /** @} */
 
     /** @name Keyboard stuff.

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -69,7 +69,7 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
                 /* Recalculate maximum guest size: */
                 setMaximumGuestSize();
                 /* And resize guest to current window size: */
-                if (m_fGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
+                if (m_fGuestAutoresizeEnabled && uimachine()->isGuestSupportsGraphics())
                     QTimer::singleShot(300, this, SLOT(sltPerformGuestResize()));
                 break;
             }
@@ -141,7 +141,7 @@ void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
     {
         m_fGuestAutoresizeEnabled = fEnabled;
 
-        if (m_fGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
+        if (m_fGuestAutoresizeEnabled && uimachine()->isGuestSupportsGraphics())
             sltPerformGuestResize();
     }
 }
@@ -204,7 +204,7 @@ QSize UIMachineViewNormal::sizeHint() const
     /* If guest-screen auto-resize is not enabled
      * or the guest-additions doesn't support graphics
      * we should take scroll-bars size-hints into account: */
-    if (!m_fGuestAutoresizeEnabled || !uisession()->isGuestSupportsGraphics())
+    if (!m_fGuestAutoresizeEnabled || !uimachine()->isGuestSupportsGraphics())
     {
         if (verticalScrollBar()->isVisible())
             size += QSize(verticalScrollBar()->sizeHint().width(), 0);
