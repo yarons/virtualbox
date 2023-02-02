@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98423 2023-02-02 09:47:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98425 2023-02-02 09:55:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -458,7 +458,7 @@ void UIMachineLogic::sltMachineStateChanged()
         case KMachineState_Stuck:
         {
             /* Prevent machine-view from resizing: */
-            uisession()->setGuestResizeIgnored(true);
+            uimachine()->setGuestResizeIgnored(true);
             /* Get log-folder: */
             QString strLogFolder = machine().GetLogFolder();
             /* Take the screenshot for debugging purposes: */

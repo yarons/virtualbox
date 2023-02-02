@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 98425 2023-02-02 09:55:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -1169,11 +1169,11 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                 {
                     /* Temporarily disable auto capture that will take place after this dialog is dismissed because
                      * the capture state is to be defined by the dialog result itself: */
-                    uisession()->setAutoCaptureDisabled(true);
+                    uimachine()->setAutoCaptureDisabled(true);
                     bool fIsAutoConfirmed = false;
                     bool ok = msgCenter().confirmInputCapture(fIsAutoConfirmed);
                     if (fIsAutoConfirmed)
-                        uisession()->setAutoCaptureDisabled(false);
+                        uimachine()->setAutoCaptureDisabled(false);
                     /* Otherwise, the disable flag will be reset in the next console view's focus in event (since
                      * may happen asynchronously on some platforms, after we return from this code): */
                     if (ok)

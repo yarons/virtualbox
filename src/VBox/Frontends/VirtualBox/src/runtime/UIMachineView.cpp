@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98425 2023-02-02 09:55:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -598,7 +598,7 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
 
     /* Some situations require frame-buffer resize-events to be ignored at all,
      * leaving machine-window, machine-view and frame-buffer sizes preserved: */
-    if (uisession()->isGuestResizeIgnored())
+    if (uimachine()->isGuestResizeIgnored())
         return;
 
     /* In some situations especially in some VM states, guest-screen is not drawable: */

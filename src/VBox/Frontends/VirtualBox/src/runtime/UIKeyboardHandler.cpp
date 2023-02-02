@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98400 2023-02-01 14:50:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98425 2023-02-02 09:55:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1950,12 +1950,12 @@ void UIKeyboardHandler::sendChangedKeyStates()
 
 bool UIKeyboardHandler::isAutoCaptureDisabled()
 {
-    return uisession()->isAutoCaptureDisabled();
+    return uimachine()->isAutoCaptureDisabled();
 }
 
 void UIKeyboardHandler::setAutoCaptureDisabled(bool fIsAutoCaptureDisabled)
 {
-    uisession()->setAutoCaptureDisabled(fIsAutoCaptureDisabled);
+    uimachine()->setAutoCaptureDisabled(fIsAutoCaptureDisabled);
 }
 
 bool UIKeyboardHandler::autoCaptureSetGlobally()
