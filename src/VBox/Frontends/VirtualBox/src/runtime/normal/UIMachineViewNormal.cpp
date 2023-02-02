@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -149,7 +149,7 @@ void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
 void UIMachineViewNormal::resendSizeHint()
 {
     /* Skip if another visual representation mode requested: */
-    if (uisession()->requestedVisualState() == UIVisualStateType_Seamless) // Seamless only for now.
+    if (uimachine()->requestedVisualState() == UIVisualStateType_Seamless) // Seamless only for now.
         return;
 
     /* Get the last guest-screen size-hint, taking the scale factor into account. */

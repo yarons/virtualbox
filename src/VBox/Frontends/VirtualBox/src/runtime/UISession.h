@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -174,15 +174,6 @@ public:
     QWidget* mainMachineWindow() const;
     WId mainMachineWindowId() const;
     UIMachineWindow *activeMachineWindow() const;
-
-    /** Returns whether visual @a state is allowed. */
-    bool isVisualStateAllowed(UIVisualStateType state) const;
-    /** Requests visual-state change. */
-    void changeVisualState(UIVisualStateType visualStateType);
-    /** Requests visual-state to be entered when possible. */
-    void setRequestedVisualState(UIVisualStateType visualStateType);
-    /** Returns requested visual-state to be entered when possible. */
-    UIVisualStateType requestedVisualState() const;
 
     bool isSaved() const { return machineState() == KMachineState_Saved ||
                                   machineState() == KMachineState_AbortedSaved; }

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -72,7 +72,7 @@ bool UIMachineLogicNormal::checkAvailability()
 void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
 {
     LogRel(("GUI: UIMachineLogicNormal::sltCheckForRequestedVisualStateType: Requested-state=%d, Machine-state=%d\n",
-            uisession()->requestedVisualState(), uisession()->machineState()));
+            uimachine()->requestedVisualState(), uisession()->machineState()));
 
     /* Do not try to change visual-state type if machine was not started yet: */
     if (!uisession()->isRunning() && !uisession()->isPaused())
@@ -83,7 +83,7 @@ void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
         return;
 
     /* Check requested visual-state types: */
-    switch (uisession()->requestedVisualState())
+    switch (uimachine()->requestedVisualState())
     {
         /* If 'seamless' visual-state type is requested: */
         case UIVisualStateType_Seamless:
@@ -93,8 +93,8 @@ void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
             {
                 LogRel(("GUI: UIMachineLogicNormal::sltCheckForRequestedVisualStateType: "
                         "Going 'seamless' as requested...\n"));
-                uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
-                uisession()->changeVisualState(UIVisualStateType_Seamless);
+                uimachine()->setRequestedVisualState(UIVisualStateType_Invalid);
+                uimachine()->asyncChangeVisualState(UIVisualStateType_Seamless);
             }
             else
                 LogRel(("GUI: UIMachineLogicNormal::sltCheckForRequestedVisualStateType: "

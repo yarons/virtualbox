@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -39,7 +39,6 @@
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineView.h"
 #include "UIMachineWindowSeamless.h"
-#include "UISession.h"
 #if   defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
 # include "UIMachineDefs.h"
 # include "UIMiniToolBar.h"

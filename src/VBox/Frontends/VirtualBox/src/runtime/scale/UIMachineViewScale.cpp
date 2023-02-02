@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 98386 2023-02-01 13:16:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -38,7 +38,6 @@
 #include "UIMachineLogic.h"
 #include "UIMachineViewScale.h"
 #include "UIMachineWindow.h"
-#include "UISession.h"
 
 /* COM includes: */
 #include "CConsole.h"

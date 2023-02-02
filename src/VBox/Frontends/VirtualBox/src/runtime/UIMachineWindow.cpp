@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -686,8 +686,8 @@ void UIMachineWindow::handleStandardWindowButtonCallback(StandardWindowButtonTyp
                 else
                 {
                     /* Enter 'full-screen' mode: */
-                    uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
-                    uisession()->changeVisualState(UIVisualStateType_Fullscreen);
+                    uimachine()->setRequestedVisualState(UIVisualStateType_Invalid);
+                    uimachine()->asyncChangeVisualState(UIVisualStateType_Fullscreen);
                 }
             }
             break;

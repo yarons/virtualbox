@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98404 2023-02-01 15:01:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98419 2023-02-02 09:13:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -264,26 +264,6 @@ WId UISession::mainMachineWindowId() const
 UIMachineWindow *UISession::activeMachineWindow() const
 {
     return machineLogic() ? machineLogic()->activeMachineWindow() : 0;
-}
-
-bool UISession::isVisualStateAllowed(UIVisualStateType state) const
-{
-    return uimachine()->isVisualStateAllowed(state);
-}
-
-void UISession::changeVisualState(UIVisualStateType visualStateType)
-{
-    uimachine()->asyncChangeVisualState(visualStateType);
-}
-
-void UISession::setRequestedVisualState(UIVisualStateType visualStateType)
-{
-    uimachine()->setRequestedVisualState(visualStateType);
-}
-
-UIVisualStateType UISession::requestedVisualState() const
-{
-    return uimachine()->requestedVisualState();
 }
 
 bool UISession::guestAdditionsUpgradable()
