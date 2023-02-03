@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 98457 2023-02-03 10:54:21Z alexander.eichner@oracle.com $ */
+/* $Id: tarvfswriter.cpp 98458 2023-02-03 10:56:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -644,7 +644,7 @@ static int rtZipTarFssWriter_ObjInfoToHdrCpio(PRTZIPTARFSSTREAMWRITER pThis, con
     /*
      * File path size including the terminator.
      */
-    rtZipTarFssWriter_CpioFmtU32(pThis->Cpio.Hdr.AsciiNew.achNameSize, cchPath);
+    rtZipTarFssWriter_CpioFmtU32(pThis->Cpio.Hdr.AsciiNew.achNameSize, (uint32_t)cchPath);
 
     pThis->cHdrs = 1;
     pThis->cbHdr = RT_ALIGN_32(sizeof(pThis->Cpio.Hdr) + cchPath, 4);
