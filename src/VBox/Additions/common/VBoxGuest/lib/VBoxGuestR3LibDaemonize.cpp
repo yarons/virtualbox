@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 98472 2023-02-03 18:56:59Z vadim.galitsyn@oracle.com $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 98475 2023-02-03 19:27:47Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -250,6 +250,7 @@ VBGLR3DECL(int) VbglR3DaemonizeEx(bool fNoChDir, bool fNoClose, bool fRespawn, u
         return RTErrConvertFromErrno(errno);
     if (pid != 0)
         exit(0);
+# endif /* RT_OS_LINUX */
 
     /* Check if another instance is already running. */
     if (szPidfile != NULL)
@@ -272,7 +273,6 @@ VBGLR3DECL(int) VbglR3DaemonizeEx(bool fNoChDir, bool fNoClose, bool fRespawn, u
         else
             return VERR_INVALID_PARAMETER;
     }
-# endif /* RT_OS_LINUX */
 
     if (fRespawn)
     {
