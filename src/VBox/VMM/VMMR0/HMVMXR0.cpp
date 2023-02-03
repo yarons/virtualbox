@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HMVMXR0.cpp 98465 2023-02-03 14:21:58Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -425,7 +425,7 @@ static bool hmR0VmxIsAutoLoadGuestMsr(PCVMXVMCSINFO pVmcsInfo, uint32_t idMsr)
  *
  * @remarks No-long-jump zone!!!
  * @remarks The guest MSRs should have been saved back into the guest-CPU
- *          context by hmR0VmxImportGuestState()!!!
+ *          context by vmxHCImportGuestState()!!!
  */
 static void hmR0VmxLazyRestoreHostMsrs(PVMCPUCC pVCpu)
 {
@@ -5055,7 +5055,7 @@ VMMR0DECL(void) VMXR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPUCC pVCpu
             {
                 /*
                  * Do -not- import the guest-state here as we might already be in the middle of importing
-                 * it, esp. bad if we're holding the PGM lock, see comment in hmR0VmxImportGuestState().
+                 * it, esp. bad if we're holding the PGM lock, see comment at the end of vmxHCImportGuestStateEx().
                  */
                 hmR0VmxLeave(pVCpu, false /* fImportState */);
                 pVCpu->hmr0.s.fLeaveDone = true;
