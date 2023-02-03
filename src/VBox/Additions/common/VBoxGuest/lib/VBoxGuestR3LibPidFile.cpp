@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibPidFile.cpp 98472 2023-02-03 18:56:59Z vadim.galitsyn@oracle.com $ */
+/** $Id: VBoxGuestR3LibPidFile.cpp 98473 2023-02-03 19:04:00Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * Create a PID file.
@@ -42,6 +42,7 @@
 #include <iprt/file.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
+#include <iprt/thread.h>
 #include <iprt/err.h>
 #include "VBoxGuestR3LibInternal.h"
 
