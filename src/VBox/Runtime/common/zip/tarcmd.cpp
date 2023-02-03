@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 98461 2023-02-03 11:16:23Z alexander.eichner@oracle.com $ */
+/* $Id: tarcmd.cpp 98462 2023-02-03 11:16:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -331,6 +331,8 @@ static RTEXITCODE rtZipTarCmdArchiveFile(PRTZIPTARCMDOPS pOpts, RTVFSFSSTREAM hV
 static RTEXITCODE rtZipTarCmdArchiveSymlink(PRTZIPTARCMDOPS pOpts, RTVFSFSSTREAM hVfsFss, const char *pszSrc,
                                             RTFSOBJINFO paObjInfo[3], const char *pszDst, PRTERRINFOSTATIC pErrInfo)
 {
+    RT_NOREF(paObjInfo);
+
     if (pOpts->fVerbose)
         RTPrintf("%s\n", pszDst);
 
