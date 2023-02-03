@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/** $Id: clipboard.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -428,7 +428,7 @@ VBCLSERVICE g_SvcClipboard =
 {
     "shcl",                      /* szName */
     "Shared Clipboard",          /* pszDescription */
-    ".vboxclient-clipboard.pid", /* pszPidFilePath */
+    ".vboxclient-clipboard",     /* pszPidFilePathTemplate */
     NULL,                        /* pszUsage */
     NULL,                        /* pszOptions */
     NULL,                        /* pfnOption */

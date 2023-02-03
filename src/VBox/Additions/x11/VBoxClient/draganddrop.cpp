@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: draganddrop.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3865,7 +3865,7 @@ VBCLSERVICE g_SvcDragAndDrop =
 {
     "dnd",                         /* szName */
     "Drag'n'Drop",                 /* pszDescription */
-    ".vboxclient-draganddrop.pid", /* pszPidFilePath */
+    ".vboxclient-draganddrop",     /* pszPidFilePathTemplate */
     NULL,                          /* pszUsage */
     NULL,                          /* pszOptions */
     NULL,                          /* pfnOption */

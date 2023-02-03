@@ -1,4 +1,4 @@
-/* $Id: display.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: display.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -293,7 +293,7 @@ VBCLSERVICE g_SvcDisplayLegacy =
 {
     "dp-legacy-x11",                    /* szName */
     "Legacy display assistant",         /* pszDescription */
-    ".vboxclient-display.pid",          /* pszPidFilePath (no pid file lock) */
+    ".vboxclient-display",              /* pszPidFilePathTemplate */
     NULL,                               /* pszUsage */
     NULL,                               /* pszOptions */
     NULL,                               /* pfnOption */

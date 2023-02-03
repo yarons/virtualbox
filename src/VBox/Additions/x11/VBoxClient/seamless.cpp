@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: seamless.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -348,7 +348,7 @@ VBCLSERVICE g_SvcSeamless =
 {
     "seamless",                 /* szName */
     "Seamless Mode Support",    /* pszDescription */
-    ".vboxclient-seamless.pid", /* pszPidFilePath */
+    ".vboxclient-seamless",     /* pszPidFilePathTemplate */
     NULL,                       /* pszUsage */
     NULL,                       /* pszOptions */
     NULL,                       /* pfnOption */

@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: hostversion.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - Host version check.
  */
@@ -118,7 +118,7 @@ VBCLSERVICE g_SvcHostVersion =
 {
     "hostversion",                   /* szName */
     "VirtualBox host version check", /* pszDescription */
-    ".vboxclient-hostversion.pid",   /* pszPidFilePath */
+    ".vboxclient-hostversion",       /* pszPidFilePathTemplate */
     NULL,                            /* pszUsage */
     NULL,                            /* pszOptions */
     NULL,                            /* pfnOption */

@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxClient.h 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -76,7 +76,7 @@ typedef struct
     /** Get the services default path to pidfile, relative to $HOME */
     /** @todo Should this also have a component relative to the X server number?
      */
-    const char *pszPidFilePath;
+    const char *pszPidFilePathTemplate;
     /** The usage options stuff for the --help screen. */
     const char *pszUsage;
     /** The option descriptions for the --help screen. */

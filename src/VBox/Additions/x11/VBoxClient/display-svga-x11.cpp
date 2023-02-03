@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: display-svga-x11.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1390,7 +1390,7 @@ VBCLSERVICE g_SvcDisplaySVGA =
 {
     "dp-svga-x11",                      /* szName */
     "SVGA X11 display",                 /* pszDescription */
-    ".vboxclient-display-svga-x11.pid", /* pszPidFilePath */
+    ".vboxclient-display-svga-x11",     /* pszPidFilePathTemplate */
     NULL,                               /* pszUsage */
     NULL,                               /* pszOptions */
     NULL,                               /* pfnOption */
