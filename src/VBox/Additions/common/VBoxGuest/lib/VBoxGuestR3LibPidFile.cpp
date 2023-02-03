@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibPidFile.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxGuestR3LibPidFile.cpp 98472 2023-02-03 18:56:59Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * Create a PID file.
@@ -42,7 +42,11 @@
 #include <iprt/file.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
+#include <iprt/err.h>
 #include "VBoxGuestR3LibInternal.h"
+
+/* A time to wait before starting the next attempt to check a pidfile. */
+#define VBGL_PIDFILE_WAIT_RELAX_TIME_MS (250)
 
 /**
  * Creates a PID File and returns the open file descriptor.
@@ -116,3 +120,31 @@ VBGLR3DECL(void) VbglR3ClosePidFile(const char *pszPath, RTFILE hFile)
     }
 }
 
+
+/**
+ * Wait for other process to release pidfile.
+ *
+ * This function is a wrapper to VbglR3PidFile().
+ *
+ * @returns IPRT status code.
+ * @param   szPidfile       Path to pidfile.
+ * @param   phPidfile       Handle to pidfile.
+ * @param   u64TimeoutMs    A timeout value in milliseconds to wait for
+ *                          other process to release pidfile.
+ */
+VBGLR3DECL(int) VbglR3PidfileWait(const char *szPidfile, RTFILE *phPidfile, uint64_t u64TimeoutMs)
+{
+    int rc = VERR_FILE_LOCK_VIOLATION;
+    uint64_t u64Start = RTTimeSystemMilliTS();
+
+    AssertPtrReturn(szPidfile, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(phPidfile, VERR_INVALID_PARAMETER);
+
+    while (   !RT_SUCCESS((rc = VbglR3PidFile(szPidfile, phPidfile)))
+           && (RTTimeSystemMilliTS() - u64Start < u64TimeoutMs))
+    {
+        RTThreadSleep(VBGL_PIDFILE_WAIT_RELAX_TIME_MS);
+    }
+
+    return rc;
+}
