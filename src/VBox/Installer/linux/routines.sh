@@ -1,4 +1,4 @@
-# $Id: routines.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: routines.sh 98468 2023-02-03 14:54:32Z vadim.galitsyn@oracle.com $
 # Oracle VM VirtualBox
 # VirtualBox installer shell routines
 #
@@ -186,12 +186,10 @@ WantedBy=multi-user.target
 EOF
 }
 
-# Checks if systemd is the init system of choice
+# Checks if systemctl is present and functional (i.e., systemd is the init process).
 use_systemd()
 {
-    # First condition is what halfway recent systemd uses itself, and the
-    # other two checks should cover everything back to v1.
-    test -e /run/systemd/system || test -e /sys/fs/cgroup/systemd || test -e /cgroup/systemd
+    systemctl status >/dev/null 2>&1
 }
 
 ## Installs a file containing a shell script as an init script.  Call
