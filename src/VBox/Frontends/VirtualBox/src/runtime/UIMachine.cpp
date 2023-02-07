@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98488 2023-02-07 11:33:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -485,6 +485,11 @@ void UIMachine::acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersP
 void UIMachine::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D)
 {
     uisession()->acquireDisplayStatusInfo(strInfo, fAcceleration3D);
+}
+
+void UIMachine::acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused)
+{
+    uisession()->acquireRecordingStatusInfo(strInfo, fRecordingEnabled, fMachinePaused);
 }
 
 void UIMachine::detachUi()

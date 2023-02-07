@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98488 2023-02-07 11:33:52Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -364,6 +364,13 @@ void UISession::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D
 {
     CMachine comMachine = machine();
     UIDetailsGenerator::acquireDisplayStatusInfo(comMachine, strInfo, fAcceleration3D);
+}
+
+void UISession::acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused)
+{
+    CMachine comMachine = machine();
+    fMachinePaused = isPaused();
+    UIDetailsGenerator::acquireRecordingStatusInfo(comMachine, strInfo, fRecordingEnabled);
 }
 
 bool UISession::prepareToBeSaved()

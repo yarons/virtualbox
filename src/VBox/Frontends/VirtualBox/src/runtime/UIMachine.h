@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98488 2023-02-07 11:33:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -394,6 +394,8 @@ public:
         void acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersPresent);
         /** Acquires status info for Display indicator. */
         void acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D);
+        /** Acquires status info for Recording indicator. */
+        void acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused);
     /** @} */
 
     /** @name Close stuff.
