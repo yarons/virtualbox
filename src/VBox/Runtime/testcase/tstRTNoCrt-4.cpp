@@ -1,4 +1,4 @@
-/* $Id: tstRTNoCrt-4.cpp 97947 2023-01-03 09:02:50Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTNoCrt-4.cpp 98483 2023-02-07 10:39:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcases for the No-CRT vector bits.
  */
@@ -56,7 +56,7 @@ int main()
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
 
-    /**
+    /*
      * No-CRT vector testcases.
      */
     std::vector<int> v;
