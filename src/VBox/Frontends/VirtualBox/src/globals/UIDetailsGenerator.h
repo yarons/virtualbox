@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 98486 2023-02-07 11:02:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -89,6 +89,12 @@ namespace UIDetailsGenerator
 
     SHARED_LIBRARY_STUFF void acquireFloppyDiskStatusInfo(CMachine &comMachine, QString &strInfo,
                                                           bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+
+    SHARED_LIBRARY_STUFF void acquireAudioStatusInfo(CMachine &comMachine, QString &strInfo,
+                                                     bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput);
+
+    SHARED_LIBRARY_STUFF void acquireDisplayStatusInfo(CMachine &comMachine, QString &strInfo,
+                                                       bool &fAcceleration3D);
 
     /** Holds the table row format 1. */
     extern const QString e_strTableRow1;

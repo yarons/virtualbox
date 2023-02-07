@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98486 2023-02-07 11:02:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -384,6 +384,10 @@ public:
         void acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
         /** Acquires status info for floppy disk indicator. */
         void acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+        /** Acquires status info for audio indicator. */
+        void acquireAudioStatusInfo(QString &strInfo, bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput);
+        /** Acquires status info for Display indicator. */
+        void acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D);
     /** @} */
 
     /** @name Close stuff.

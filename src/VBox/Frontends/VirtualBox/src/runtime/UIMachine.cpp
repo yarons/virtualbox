@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98486 2023-02-07 11:02:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -460,6 +460,16 @@ void UIMachine::acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachment
 void UIMachine::acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
 {
     uisession()->acquireFloppyDiskStatusInfo(strInfo, fAttachmentsPresent, fAttachmentsMounted);
+}
+
+void UIMachine::acquireAudioStatusInfo(QString &strInfo, bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput)
+{
+    uisession()->acquireAudioStatusInfo(strInfo, fAudioEnabled, fEnabledOutput, fEnabledInput);
+}
+
+void UIMachine::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D)
+{
+    uisession()->acquireDisplayStatusInfo(strInfo, fAcceleration3D);
 }
 
 void UIMachine::detachUi()
