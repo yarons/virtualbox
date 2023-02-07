@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98486 2023-02-07 11:02:29Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98487 2023-02-07 11:15:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -337,6 +337,12 @@ void UISession::acquireAudioStatusInfo(QString &strInfo, bool &fAudioEnabled, bo
 {
     CMachine comMachine = machine();
     UIDetailsGenerator::acquireAudioStatusInfo(comMachine, strInfo, fAudioEnabled, fEnabledOutput, fEnabledInput);
+}
+
+void UISession::acquireNetworkStatusInfo(QString &strInfo, bool &fAdaptersPresent, bool &fCablesDisconnected)
+{
+    CMachine comMachine = machine();
+    UIDetailsGenerator::acquireNetworkStatusInfo(comMachine, strInfo, fAdaptersPresent, fCablesDisconnected);
 }
 
 void UISession::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D)
