@@ -1,4 +1,4 @@
-/* $Id: tstRTNoCrt-3.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-3.cpp 98484 2023-02-07 10:43:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT SEH bits on Windows.
  */
@@ -594,7 +594,7 @@ static void tstSeh8(void)
 
 int main()
 {
-    RTEXITCODE rcExit = RTTestInitAndCreate("tstRTNoCrt-2", &g_hTest);
+    RTEXITCODE rcExit = RTTestInitAndCreate("tstRTNoCrt-3", &g_hTest);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
 
