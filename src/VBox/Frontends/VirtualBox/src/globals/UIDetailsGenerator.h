@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 98487 2023-02-07 11:15:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 98488 2023-02-07 11:33:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -37,7 +37,9 @@
 
 /* Forward declarations: */
 class CCloudMachine;
+class CConsole;
 class CFormValue;
+class CGuest;
 class CMachine;
 
 /** Details generation namespace. */
@@ -95,6 +97,12 @@ namespace UIDetailsGenerator
 
     SHARED_LIBRARY_STUFF void acquireNetworkStatusInfo(CMachine &comMachine, QString &strInfo,
                                                        bool &fAdaptersPresent, bool &fCablesDisconnected);
+
+    SHARED_LIBRARY_STUFF void acquireUsbStatusInfo(CMachine &comMachine, CConsole &comConsole,
+                                                   QString &strInfo, bool &fUsbEnableds);
+
+    SHARED_LIBRARY_STUFF void acquireSharedFoldersStatusInfo(CMachine &comMachine, CConsole &comConsole, CGuest &comGuest,
+                                                             QString &strInfo, bool &fFoldersPresent);
 
     SHARED_LIBRARY_STUFF void acquireDisplayStatusInfo(CMachine &comMachine, QString &strInfo,
                                                        bool &fAcceleration3D);

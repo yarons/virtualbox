@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98487 2023-02-07 11:15:01Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98488 2023-02-07 11:33:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -343,6 +343,21 @@ void UISession::acquireNetworkStatusInfo(QString &strInfo, bool &fAdaptersPresen
 {
     CMachine comMachine = machine();
     UIDetailsGenerator::acquireNetworkStatusInfo(comMachine, strInfo, fAdaptersPresent, fCablesDisconnected);
+}
+
+void UISession::acquireUsbStatusInfo(QString &strInfo, bool &fUsbEnableds)
+{
+    CMachine comMachine = machine();
+    CConsole comConsole = console();
+    UIDetailsGenerator::acquireUsbStatusInfo(comMachine, comConsole, strInfo, fUsbEnableds);
+}
+
+void UISession::acquireSharedFoldersStatusInfo(QString &strInfo, bool &fFoldersPresent)
+{
+    CMachine comMachine = machine();
+    CConsole comConsole = console();
+    CGuest comGuest = guest();
+    UIDetailsGenerator::acquireSharedFoldersStatusInfo(comMachine, comConsole, comGuest, strInfo, fFoldersPresent);
 }
 
 void UISession::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D)
