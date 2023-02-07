@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 98491 2023-02-07 12:18:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -310,7 +310,7 @@ void UIMachineWindowNormal::prepareStatusBar()
         connect(statusBar(), &QIStatusBar::customContextMenuRequested,
                 this, &UIMachineWindowNormal::sltHandleStatusBarContextMenuRequest);
         /* Create indicator-pool: */
-        m_pIndicatorsPool = new UIIndicatorsPool(machineLogic()->uimachine(), machineLogic()->uisession());
+        m_pIndicatorsPool = new UIIndicatorsPool(machineLogic()->uimachine());
         AssertPtrReturnVoid(m_pIndicatorsPool);
         {
             /* Configure indicator-pool: */
