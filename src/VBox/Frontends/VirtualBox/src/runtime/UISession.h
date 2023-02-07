@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -263,6 +263,13 @@ public:
      ** @{ */
         /** Acquires device activity composing a vector of current @a states for device with @a deviceTypes specified. */
         void acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states);
+
+        /** Acquires status info for hard disk indicator. */
+        void acquireHardDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent);
+        /** Acquires status info for optical disk indicator. */
+        void acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+        /** Acquires status info for floppy disk indicator. */
+        void acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
     /** @} */
 
     /** @name Close stuff.

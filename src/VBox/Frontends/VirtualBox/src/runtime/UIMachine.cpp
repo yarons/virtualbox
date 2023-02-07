@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -445,6 +445,21 @@ bool UIMachine::isGuestSupportsSeamless() const
 void UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)
 {
     uisession()->acquireDeviceActivity(deviceTypes, states);
+}
+
+void UIMachine::acquireHardDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent)
+{
+    uisession()->acquireHardDiskStatusInfo(strInfo, fAttachmentsPresent);
+}
+
+void UIMachine::acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+{
+    uisession()->acquireOpticalDiskStatusInfo(strInfo, fAttachmentsPresent, fAttachmentsMounted);
+}
+
+void UIMachine::acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+{
+    uisession()->acquireFloppyDiskStatusInfo(strInfo, fAttachmentsPresent, fAttachmentsMounted);
 }
 
 void UIMachine::detachUi()

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98485 2023-02-07 10:45:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIActionPoolRuntime.h"
 #include "UICommon.h"
 #include "UIConsoleEventHandler.h"
+#include "UIDetailsGenerator.h"
 #include "UIExtraDataManager.h"
 #include "UIFrameBuffer.h"
 #include "UIMachine.h"
@@ -312,6 +313,24 @@ void UISession::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, Q
     states = comConsole.GetDeviceActivity(deviceTypes);
     if (!comConsole.isOk())
         UINotificationMessage::cannotAcquireConsoleParameter(comConsole);
+}
+
+void UISession::acquireHardDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent)
+{
+    CMachine comMachine = machine();
+    UIDetailsGenerator::acquireHardDiskStatusInfo(comMachine, strInfo, fAttachmentsPresent);
+}
+
+void UISession::acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+{
+    CMachine comMachine = machine();
+    UIDetailsGenerator::acquireOpticalDiskStatusInfo(comMachine, strInfo, fAttachmentsPresent, fAttachmentsMounted);
+}
+
+void UISession::acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+{
+    CMachine comMachine = machine();
+    UIDetailsGenerator::acquireFloppyDiskStatusInfo(comMachine, strInfo, fAttachmentsPresent, fAttachmentsMounted);
 }
 
 bool UISession::prepareToBeSaved()
