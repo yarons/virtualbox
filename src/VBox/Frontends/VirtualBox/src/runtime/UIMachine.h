@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -396,6 +396,10 @@ public:
         void acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D);
         /** Acquires status info for Recording indicator. */
         void acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused);
+        /** Acquires CPU load @a iPercentage. */
+        void acquireCpuLoadPercentage(int &iPercentage);
+        /** Acquires status info for Features indicator. */
+        void acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &enmEngine);
     /** @} */
 
     /** @name Close stuff.

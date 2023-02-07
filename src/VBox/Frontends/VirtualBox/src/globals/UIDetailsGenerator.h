@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -34,6 +34,9 @@
 /* GUI includes: */
 #include "UIExtraDataDefs.h"
 #include "UITextTable.h"
+
+/* COM includes: */
+#include "COMEnums.h"
 
 /* Forward declarations: */
 class CCloudMachine;
@@ -109,6 +112,11 @@ namespace UIDetailsGenerator
 
     SHARED_LIBRARY_STUFF void acquireRecordingStatusInfo(CMachine &comMachine, QString &strInfo,
                                                          bool &fRecordingEnabled);
+
+    SHARED_LIBRARY_STUFF void acquireFeaturesStatusInfo(CMachine &comMachine, QString &strInfo,
+                                                        KVMExecutionEngine &enmEngine,
+                                                        bool fNestedPagingEnabled, bool fUxEnabled,
+                                                        KParavirtProvider enmProvider);
 
     /** Holds the table row format 1. */
     extern const QString e_strTableRow1;

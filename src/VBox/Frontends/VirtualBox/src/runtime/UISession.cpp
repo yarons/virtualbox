@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -371,6 +371,27 @@ void UISession::acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEna
     CMachine comMachine = machine();
     fMachinePaused = isPaused();
     UIDetailsGenerator::acquireRecordingStatusInfo(comMachine, strInfo, fRecordingEnabled);
+}
+
+void UISession::acquireCpuLoadPercentage(int &iPercentage)
+{
+    CMachineDebugger comDebugger = debugger();
+    ULONG uPctExecuting;
+    ULONG uPctHalted;
+    ULONG uPctOther;
+    comDebugger.GetCPULoad(0x7fffffff, uPctExecuting, uPctHalted, uPctOther);
+    iPercentage = uPctExecuting + uPctOther;
+}
+
+void UISession::acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &enmEngine,
+                                          bool fNestedPagingEnabled, bool fUxEnabled,
+                                          KParavirtProvider enmProvider)
+{
+    CMachine comMachine = machine();
+    UIDetailsGenerator::acquireFeaturesStatusInfo(comMachine, strInfo,
+                                                  enmEngine,
+                                                  fNestedPagingEnabled, fUxEnabled,
+                                                  enmProvider);
 }
 
 bool UISession::prepareToBeSaved()

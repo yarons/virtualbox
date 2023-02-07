@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98489 2023-02-07 11:45:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -490,6 +490,20 @@ void UIMachine::acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D
 void UIMachine::acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused)
 {
     uisession()->acquireRecordingStatusInfo(strInfo, fRecordingEnabled, fMachinePaused);
+}
+
+void UIMachine::acquireCpuLoadPercentage(int &iPercentage)
+{
+    uisession()->acquireCpuLoadPercentage(iPercentage);
+}
+
+void UIMachine::acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &enmEngine)
+{
+    enmEngine = vmExecutionEngine();
+    uisession()->acquireFeaturesStatusInfo(strInfo, enmEngine,
+                                           isHWVirtExNestedPagingEnabled(),
+                                           isHWVirtExUXEnabled(),
+                                           paravirtProvider());
 }
 
 void UIMachine::detachUi()
