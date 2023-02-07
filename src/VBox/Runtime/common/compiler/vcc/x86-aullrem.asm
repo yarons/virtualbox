@@ -1,4 +1,4 @@
-; $Id: x86-aullrem.asm 98493 2023-02-07 15:39:28Z knut.osmundsen@oracle.com $
+; $Id: x86-aullrem.asm 98494 2023-02-07 15:41:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Visual C++ Compiler - unsigned 64-bit division support, x86.
 ;
@@ -73,5 +73,4 @@ BEGINPROC_RAW   __aullrem
         leave
         ret     10h
 ENDPROC_RAW     __aullrem
-
 
