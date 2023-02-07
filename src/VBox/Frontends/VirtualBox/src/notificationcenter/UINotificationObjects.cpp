@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -664,6 +664,15 @@ void UINotificationMessage::cannotAcquireMachineParameter(const CMachine &comMac
         QApplication::translate("UIMessageCenter", "Machine failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire machine parameter.") +
         UIErrorString::formatErrorInfo(comMachine));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireConsoleParameter(const CConsole &comConsole)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Console failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire console parameter.") +
+        UIErrorString::formatErrorInfo(comConsole));
 }
 
 /* static */

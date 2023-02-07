@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -440,6 +440,11 @@ bool UIMachine::isGuestSupportsGraphics() const
 bool UIMachine::isGuestSupportsSeamless() const
 {
     return uisession()->isGuestSupportsSeamless();
+}
+
+void UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)
+{
+    uisession()->acquireDeviceActivity(deviceTypes, states);
 }
 
 void UIMachine::detachUi()

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 98375 2023-02-01 12:15:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.h 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
@@ -33,7 +33,6 @@
 
 /* Qt includes: */
 #include <QWidget>
-#include <QList>
 #include <QMap>
 
 /* GUI includes: */
@@ -43,12 +42,11 @@
 #include "COMEnums.h"
 
 /* Forward declarations: */
+class QTimer;
+class QHBoxLayout;
+class QIStatusBarIndicator;
 class UIMachine;
 class UISession;
-class CSession;
-class QIStatusBarIndicator;
-class QHBoxLayout;
-class QTimer;
 
 /** QWidget extension
   * providing Runtime UI with status-bar indicators. */

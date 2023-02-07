@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98452 2023-02-02 17:10:37Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -304,6 +304,14 @@ QSize UISession::frameBufferSize(ulong uScreenId) const
 {
     UIFrameBuffer *pFramebuffer = frameBuffer(uScreenId);
     return pFramebuffer ? QSize(pFramebuffer->width(), pFramebuffer->height()) : QSize();
+}
+
+void UISession::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)
+{
+    CConsole comConsole = console();
+    states = comConsole.GetDeviceActivity(deviceTypes);
+    if (!comConsole.isOk())
+        UINotificationMessage::cannotAcquireConsoleParameter(comConsole);
 }
 
 bool UISession::prepareToBeSaved()
