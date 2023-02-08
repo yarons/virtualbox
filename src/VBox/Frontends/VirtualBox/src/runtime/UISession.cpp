@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -263,6 +263,46 @@ bool UISession::setPause(bool fPause)
     }
 
     return fOk;
+}
+
+void UISession::putScancode(LONG iCode)
+{
+    CKeyboard comKeyboard = keyboard();
+    comKeyboard.PutScancode(iCode);
+    if (!comKeyboard.isOk())
+        UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
+}
+
+void UISession::putScancodes(const QVector<LONG> &codes)
+{
+    CKeyboard comKeyboard = keyboard();
+    comKeyboard.PutScancodes(codes);
+    if (!comKeyboard.isOk())
+        UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
+}
+
+void UISession::putCad()
+{
+    CKeyboard comKeyboard = keyboard();
+    comKeyboard.PutCAD();
+    if (!comKeyboard.isOk())
+        UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
+}
+
+void UISession::releaseKeys()
+{
+    CKeyboard comKeyboard = keyboard();
+    comKeyboard.ReleaseKeys();
+    if (!comKeyboard.isOk())
+        UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
+}
+
+void UISession::putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease)
+{
+    CKeyboard comKeyboard = keyboard();
+    comKeyboard.PutUsageCode(iUsageCode, iUsagePage, fKeyRelease);
+    if (!comKeyboard.isOk())
+        UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
 }
 
 bool UISession::guestAdditionsUpgradable()

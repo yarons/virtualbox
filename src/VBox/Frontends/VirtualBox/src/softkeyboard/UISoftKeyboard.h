@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 98384 2023-02-01 13:04:15Z sergey.dubov@oracle.com $ */
+/* $Id: UISoftKeyboard.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -42,13 +42,11 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
-class CKeyboard;
 class QHBoxLayout;
 class QToolButton;
 class UIKeyboardLayoutEditor;
 class UILayoutSelector;
 class UIMachine;
-class UISession;
 class UISoftKeyboardKey;
 class UISoftKeyboardSettingsWidget;
 class UISoftKeyboardStatusBarWidget;
@@ -71,7 +69,7 @@ signals:
 
 public:
 
-    UISoftKeyboard(QWidget *pParent, UIMachine *pMachine, UISession *pSession,
+    UISoftKeyboard(QWidget *pParent, UIMachine *pMachine,
                    QWidget *pCenterWidget, QString strMachineName = QString());
     ~UISoftKeyboard();
 
@@ -129,10 +127,8 @@ private:
     void configure();
     void updateStatusBarMessage(const QString &strLayoutName);
     void updateLayoutSelectorList();
-    CKeyboard& keyboard() const;
 
     UIMachine     *m_pMachine;
-    UISession     *m_pSession;
     QWidget       *m_pCenterWidget;
     QHBoxLayout   *m_pMainLayout;
     QString        m_strMachineName;

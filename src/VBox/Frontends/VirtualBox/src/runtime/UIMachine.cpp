@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -440,6 +440,31 @@ bool UIMachine::isGuestSupportsGraphics() const
 bool UIMachine::isGuestSupportsSeamless() const
 {
     return uisession()->isGuestSupportsSeamless();
+}
+
+void UIMachine::putScancode(LONG iCode)
+{
+    uisession()->putScancode(iCode);
+}
+
+void UIMachine::putScancodes(const QVector<LONG> &codes)
+{
+    uisession()->putScancodes(codes);
+}
+
+void UIMachine::putCad()
+{
+    uisession()->putCad();
+}
+
+void UIMachine::releaseKeys()
+{
+    uisession()->releaseKeys();
+}
+
+void UIMachine::putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease)
+{
+    uisession()->putUsageCode(iUsageCode, iUsagePage, fKeyRelease);
 }
 
 void UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)

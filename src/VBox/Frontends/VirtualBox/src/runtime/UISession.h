@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -229,6 +229,21 @@ public:
         bool unpause() { return setPause(false); }
         /** Performes VM pausing/resuming depending on @a fPause state. */
         bool setPause(bool fPause);
+    /** @} */
+
+    /** @name Keyboard stuff.
+     ** @{ */
+        /** Sends a scan @a iCode to VM's keyboard. */
+        void putScancode(LONG iCode);
+        /** Sends a list of scan @a codes to VM's keyboard. */
+        void putScancodes(const QVector<LONG> &codes);
+        /** Sends the CAD sequence to VM's keyboard. */
+        void putCad();
+        /** Releases all keys. */
+        void releaseKeys();
+        /** Sends a USB HID @a iUsageCode and @a iUsagePage to VM's keyboard.
+          * The @a fKeyRelease flag is set when the key is being released. */
+        void putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease);
     /** @} */
 
     /** @name Guest additions stuff.

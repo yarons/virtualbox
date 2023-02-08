@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98482 2023-02-07 10:26:50Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -60,6 +60,7 @@
 #include "CGraphicsAdapter.h"
 #include "CHostNetworkInterface.h"
 #include "CHostOnlyNetwork.h"
+#include "CKeyboard.h"
 #include "CMediumAttachment.h"
 #include "CNATNetwork.h"
 #include "CNetworkAdapter.h"
@@ -921,6 +922,15 @@ void UINotificationMessage::cannotChangeUpdateAgentParameter(const CUpdateAgent 
         QApplication::translate("UIMessageCenter", "Update failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to assign update agent parameter.") +
         UIErrorString::formatErrorInfo(comAgent));
+}
+
+/* static */
+void UINotificationMessage::cannotChangeKeyboardParameter(const CKeyboard &comKeyboard)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Keyboard failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to assign keyboard parameter.") +
+        UIErrorString::formatErrorInfo(comKeyboard));
 }
 
 /* static */
