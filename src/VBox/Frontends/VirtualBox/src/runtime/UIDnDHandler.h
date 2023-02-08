@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDHandler.h 98515 2023-02-08 21:36:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -134,7 +134,7 @@ protected:
 protected:
 
     /** Pointer to machine UI. */
-    UIMachine        *m_pMachine; 
+    UIMachine        *m_pMachine;
     /** Pointer to session UI. */
     UISession        *m_pSession;
     /** Pointer to parent widget. */
