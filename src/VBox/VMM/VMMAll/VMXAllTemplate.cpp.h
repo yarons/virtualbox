@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 98505 2023-02-08 14:53:57Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 98506 2023-02-08 14:56:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3821,6 +3821,8 @@ static int vmxHCImportGuestStateEx(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint6
                 rc = vmxHCImportGuestTscAuxAndOtherMsrs(pVCpu, pVmcsInfo, fEFlags);
                 AssertRCReturn(rc, rc);
             }
+#else
+            NOREF(pVM);
 #endif
 
             if (fWhat & CPUMCTX_EXTRN_CR_MASK)
