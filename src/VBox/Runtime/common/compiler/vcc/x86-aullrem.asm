@@ -1,4 +1,4 @@
-; $Id: x86-aullrem.asm 98494 2023-02-07 15:41:31Z knut.osmundsen@oracle.com $
+; $Id: x86-aullrem.asm 98508 2023-02-08 15:31:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Visual C++ Compiler - unsigned 64-bit division support, x86.
 ;
@@ -48,7 +48,7 @@ extern NAME(RTVccUInt64Div)
 
 
 ;;
-; Division of unsigned 64-bit values, returning the reminder.
+; Division of unsigned 64-bit values, returning the remainder.
 ;
 ; @returns  Remainder in edx:eax.
 ; @param    [ebp+08h]   Dividend (64-bit)
@@ -57,9 +57,9 @@ extern NAME(RTVccUInt64Div)
 BEGINPROC_RAW   __aullrem
         push    ebp
         mov     ebp, esp
-        sub     esp, 10h                    ; space for quotient and reminder.
+        sub     esp, 10h                    ; space for quotient and remainder.
 
-        ; Call RTVccUInt64Div(RTUINT64U const *paDividendDivisor, RTUINT64U *paQuotientReminder)
+        ; Call RTVccUInt64Div(RTUINT64U const *paDividendDivisor, RTUINT64U *paQuotientRemainder)
         mov     edx, esp
         push    edx
         lea     ecx, [ebp + 8]

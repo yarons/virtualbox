@@ -1,4 +1,4 @@
-/* $Id: RTVccUInt64Div.cpp 98493 2023-02-07 15:39:28Z knut.osmundsen@oracle.com $ */
+/* $Id: RTVccUInt64Div.cpp 98508 2023-02-08 15:31:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Visual C++ Compiler - unsigned 64-bit division support helper.
  */
@@ -41,8 +41,8 @@
 #include <iprt/uint64.h>
 
 
-DECLASM(void) RTVccUInt64Div(RTUINT64U const *paDividendDivisor, RTUINT64U *paQuotientReminder)
+DECLASM(void) RTVccUInt64Div(RTUINT64U const *paDividendDivisor, RTUINT64U *paQuotientRemainder)
 {
-    RTUInt64DivRem(&paQuotientReminder[0], &paQuotientReminder[1], &paDividendDivisor[0], &paDividendDivisor[1]);
+    RTUInt64DivRem(&paQuotientRemainder[0], &paQuotientRemainder[1], &paDividendDivisor[0], &paDividendDivisor[1]);
 }
 

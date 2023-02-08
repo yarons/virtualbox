@@ -1,4 +1,4 @@
-; $Id: x86-alldiv.asm 98495 2023-02-07 15:56:13Z knut.osmundsen@oracle.com $
+; $Id: x86-alldiv.asm 98508 2023-02-08 15:31:06Z knut.osmundsen@oracle.com $
 ;; @file
 ; IPRT - Visual C++ Compiler - signed 64-bit division support, x86.
 ;
@@ -48,7 +48,7 @@ extern __aulldiv
 
 
 ;;
-; Division of signed 64-bit values, returning both the quotient and reminder.
+; Division of signed 64-bit values, returning both the quotient and remainder.
 ;
 ; @returns  EDX:EAX Quotient.
 ; @param    [esp+04h] [ebp+08h]     Dividend (64-bit)
