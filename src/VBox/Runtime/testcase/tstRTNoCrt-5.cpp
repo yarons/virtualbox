@@ -1,4 +1,4 @@
-/* $Id: tstRTNoCrt-5.cpp 98510 2023-02-08 21:30:49Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTNoCrt-5.cpp 98512 2023-02-08 21:32:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT 64-bit integer support.
  */
@@ -385,7 +385,7 @@ static void tstUnsignedDivision()
 {
     RTTestSub(g_hTest, "64-bit unsigned division");
 
-    /* 
+    /*
      * static tests from array.
      */
     for (size_t i = 0; i < RT_ELEMENTS(g_aDivU); i++)
@@ -415,7 +415,7 @@ static void tstUnsignedDivision()
                          uQuotient, uRemainder, g_aDivU[i].uQuotient, g_aDivU[i].uRemainder);
     }
 
-    /* 
+    /*
      * Same but with random values via uint64.
      */
     for (size_t i = 0; i < RANDOM_LOOPS; i++)
