@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 98502 2023-02-08 13:43:53Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 98504 2023-02-08 14:52:28Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3388,6 +3388,7 @@ DECL_FORCE_INLINE(void) vmxHCImportGuestRFlags(PVMCPUCC pVCpu, PCVMXVMCSINFO pVm
 }
 
 
+#ifndef IN_NEM_DARWIN
 /**
  * Imports the guest TSX AUX and certain other MSRs from the VMCS into the guest-CPU
  * context.
@@ -3451,6 +3452,7 @@ DECL_FORCE_INLINE(int) vmxHCImportGuestTscAuxAndOtherMsrs(PVMCPUCC pVCpu, PCVMXV
     }
     return VINF_SUCCESS;
 }
+#endif /* !IN_NEM_DARWIN */
 
 
 /**
