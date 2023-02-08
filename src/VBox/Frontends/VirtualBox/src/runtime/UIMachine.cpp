@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -58,6 +58,7 @@
 #include "CGraphicsAdapter.h"
 #include "CHostVideoInputDevice.h"
 #include "CMachine.h"
+#include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
 #include "CProgress.h"
 #include "CRecordingSettings.h"
@@ -465,6 +466,21 @@ void UIMachine::releaseKeys()
 void UIMachine::putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease)
 {
     uisession()->putUsageCode(iUsageCode, iUsagePage, fKeyRelease);
+}
+
+void UIMachine::putMouseEvent(LONG iDx, LONG iDy, LONG iDz, LONG iDw, LONG iButtonState)
+{
+    uisession()->putMouseEvent(iDx, iDy, iDz, iDw, iButtonState);
+}
+
+void UIMachine::putMouseEventAbsolute(LONG iX, LONG iY, LONG iDz, LONG iDw, LONG iButtonState)
+{
+    uisession()->putMouseEventAbsolute(iX, iY, iDz, iDw, iButtonState);
+}
+
+void UIMachine::putEventMultiTouch(LONG iCount, const QVector<LONG64> &contacts, BOOL fIsTouchScreen, ULONG uScanTime)
+{
+    uisession()->putEventMultiTouch(iCount, contacts, fIsTouchScreen, uScanTime);
 }
 
 void UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)
@@ -1747,11 +1763,11 @@ void UIMachine::updateMousePointerShape()
 
 void UIMachine::updateMouseState()
 {
-    m_fIsMouseSupportsAbsolute = uisession()->mouse().GetAbsoluteSupported();
-    m_fIsMouseSupportsRelative = uisession()->mouse().GetRelativeSupported();
-    m_fIsMouseSupportsTouchScreen = uisession()->mouse().GetTouchScreenSupported();
-    m_fIsMouseSupportsTouchPad = uisession()->mouse().GetTouchPadSupported();
-    m_fIsMouseHostCursorNeeded = uisession()->mouse().GetNeedsHostCursor();
+    m_fIsMouseSupportsAbsolute = uisession()->getAbsoluteSupported();
+    m_fIsMouseSupportsRelative = uisession()->getRelativeSupported();
+    m_fIsMouseSupportsTouchScreen = uisession()->getTouchScreenSupported();
+    m_fIsMouseSupportsTouchPad = uisession()->getTouchPadSupported();
+    m_fIsMouseHostCursorNeeded = uisession()->getNeedsHostCursor();
 }
 
 #if defined(VBOX_WS_X11) || defined(VBOX_WS_MAC)

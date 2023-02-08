@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1327,7 +1327,7 @@ int UIMachineView::prepareDnd(void)
     int vrc;
 
     /* Create the drag and drop handler instance: */
-    m_pDnDHandler = new UIDnDHandler(uisession(), this /* pParent */);
+    m_pDnDHandler = new UIDnDHandler(uimachine(), uisession(), this /* pParent */);
     if (m_pDnDHandler)
     {
         vrc = m_pDnDHandler->init();

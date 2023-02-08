@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -42,13 +42,16 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CMediumAttachment.h"
 
 /* Forward declarations: */
 class QWidget;
 class UIActionPool;
 class UISession;
 class UIMachineLogic;
+class CMediumAttachment;
+class CNetworkAdapter;
+class CUSBDevice;
+class CVirtualBoxErrorInfo;
 #ifdef VBOX_WS_MAC
  class QMenuBar;
  class QTimer;
@@ -369,6 +372,13 @@ public:
 
         /** Returns mouse-state. */
         int mouseState() const { return m_iMouseState; }
+
+        /** Sends relative mouse move event to VM's mouse. */
+        void putMouseEvent(LONG iDx, LONG iDy, LONG iDz, LONG iDw, LONG iButtonState);
+        /** Sends absolute mouse move event to VM's mouse. */
+        void putMouseEventAbsolute(LONG iX, LONG iY, LONG iDz, LONG iDw, LONG iButtonState);
+        /** Sends multi-touch event to VM's mouse. */
+        void putEventMultiTouch(LONG iCount, const QVector<LONG64> &contacts, BOOL fIsTouchScreen, ULONG uScanTime);
     /** @} */
 
     /** @name Virtualization stuff.

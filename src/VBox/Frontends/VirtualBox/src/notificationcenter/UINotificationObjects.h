@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -72,6 +72,7 @@ class CCloudProvider;
 class CCloudProfile;
 class CEmulatedUSB;
 class CKeyboard;
+class CMouse;
 class CNetworkAdapter;
 class CVirtualBox;
 class CVirtualBoxErrorInfo;
@@ -384,6 +385,9 @@ public:
         /** Notifies about inability to change IKeyboard parameter.
           * @param  comKeyboard  Brings the object parameter being changed for. */
         static void cannotChangeKeyboardParameter(const CKeyboard &comKeyboard);
+        /** Notifies about inability to change IMouse parameter.
+          * @param  comMouse  Brings the object parameter being changed for. */
+        static void cannotChangeMouseParameter(const CMouse &comMouse);
         /** Notifies about inability to change IVirtualSystemDescription parameter.
           * @param  comVsd  Brings the object parameter being changed for. */
         static void cannotChangeVirtualSystemDescriptionParameter(const CVirtualSystemDescription &comVsd,

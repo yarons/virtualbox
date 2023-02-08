@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -303,6 +303,55 @@ void UISession::putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease)
     comKeyboard.PutUsageCode(iUsageCode, iUsagePage, fKeyRelease);
     if (!comKeyboard.isOk())
         UINotificationMessage::cannotChangeKeyboardParameter(comKeyboard);
+}
+
+BOOL UISession::getAbsoluteSupported()
+{
+    return mouse().GetAbsoluteSupported();
+}
+
+BOOL UISession::getRelativeSupported()
+{
+    return mouse().GetRelativeSupported();
+}
+
+BOOL UISession::getTouchScreenSupported()
+{
+    return mouse().GetTouchScreenSupported();
+}
+
+BOOL UISession::getTouchPadSupported()
+{
+    return mouse().GetTouchPadSupported();
+}
+
+BOOL UISession::getNeedsHostCursor()
+{
+    return mouse().GetNeedsHostCursor();
+}
+
+void UISession::putMouseEvent(LONG iDx, LONG iDy, LONG iDz, LONG iDw, LONG iButtonState)
+{
+    CMouse comMouse = mouse();
+    comMouse.PutMouseEvent(iDx, iDy, iDz, iDw, iButtonState);
+    if (!comMouse.isOk())
+        UINotificationMessage::cannotChangeMouseParameter(comMouse);
+}
+
+void UISession::putMouseEventAbsolute(LONG iX, LONG iY, LONG iDz, LONG iDw, LONG iButtonState)
+{
+    CMouse comMouse = mouse();
+    comMouse.PutMouseEventAbsolute(iX, iY, iDz, iDw, iButtonState);
+    if (!comMouse.isOk())
+        UINotificationMessage::cannotChangeMouseParameter(comMouse);
+}
+
+void UISession::putEventMultiTouch(LONG iCount, const QVector<LONG64> &contacts, BOOL fIsTouchScreen, ULONG uScanTime)
+{
+    CMouse comMouse = mouse();
+    comMouse.PutEventMultiTouch(iCount, contacts, fIsTouchScreen, uScanTime);
+    if (!comMouse.isOk())
+        UINotificationMessage::cannotChangeMouseParameter(comMouse);
 }
 
 bool UISession::guestAdditionsUpgradable()

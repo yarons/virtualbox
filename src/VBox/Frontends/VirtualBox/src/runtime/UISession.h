@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -244,6 +244,27 @@ public:
         /** Sends a USB HID @a iUsageCode and @a iUsagePage to VM's keyboard.
           * The @a fKeyRelease flag is set when the key is being released. */
         void putUsageCode(LONG iUsageCode, LONG iUsagePage, BOOL fKeyRelease);
+    /** @} */
+
+    /** @name Mouse stuff.
+     ** @{ */
+        /** Returns whether VM's mouse supports absolute coordinates. */
+        BOOL getAbsoluteSupported();
+        /** Returns whether VM's mouse supports relative coordinates. */
+        BOOL getRelativeSupported();
+        /** Returns whether VM's mouse supports touch screen device. */
+        BOOL getTouchScreenSupported();
+        /** Returns whether VM's mouse supports touch pad device. */
+        BOOL getTouchPadSupported();
+        /** Returns whether VM's mouse requires host cursor. */
+        BOOL getNeedsHostCursor();
+
+        /** Sends relative mouse move event to VM's mouse. */
+        void putMouseEvent(LONG iDx, LONG iDy, LONG iDz, LONG iDw, LONG iButtonState);
+        /** Sends absolute mouse move event to VM's mouse. */
+        void putMouseEventAbsolute(LONG iX, LONG iY, LONG iDz, LONG iDw, LONG iButtonState);
+        /** Sends multi-touch event to VM's mouse. */
+        void putEventMultiTouch(LONG iCount, const QVector<LONG64> &contacts, BOOL fIsTouchScreen, ULONG uScanTime);
     /** @} */
 
     /** @name Guest additions stuff.

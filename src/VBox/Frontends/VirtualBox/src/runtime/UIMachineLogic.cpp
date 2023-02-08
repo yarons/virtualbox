@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -306,11 +306,6 @@ CDisplay& UIMachineLogic::display() const
 CGuest& UIMachineLogic::guest() const
 {
     return uisession()->guest();
-}
-
-CMouse& UIMachineLogic::mouse() const
-{
-    return uisession()->mouse();
 }
 
 CMachineDebugger& UIMachineLogic::debugger() const

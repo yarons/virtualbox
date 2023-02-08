@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDnDHandler.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -45,6 +45,7 @@
 class QMimeData;
 
 class UIDnDMIMEData;
+class UIMachine;
 class UISession;
 
 /**
@@ -56,7 +57,7 @@ class UIDnDHandler: public QObject
 
 public:
 
-    UIDnDHandler(UISession *pSession, QWidget *pParent);
+    UIDnDHandler(UIMachine *pMachine, UISession *pSession, QWidget *pParent);
     virtual ~UIDnDHandler(void);
 
     /**
@@ -132,7 +133,9 @@ protected:
 
 protected:
 
-    /** Pointer to UI session. */
+    /** Pointer to machine UI. */
+    UIMachine        *m_pMachine; 
+    /** Pointer to session UI. */
     UISession        *m_pSession;
     /** Pointer to parent widget. */
     QWidget          *m_pParent;
