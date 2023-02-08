@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98511 2023-02-08 21:31:43Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -97,7 +97,6 @@ if defined(VBOX_WITH_ADDITION_DRIVERS) && "$(intersects $(KBUILD_TARGET), darwin
     	$(VBOX_LIB_VBGL_R0BASE) \
     	$(VBOX_LIB_IPRT_GUEST_R0) \
     	$(PATH_SDK_$(VBOX_WINDDK_GST_NT4)_LIB)/exsup.lib \
-    	$(PATH_SDK_$(VBOX_WINDDK_GST_NT4)_LIB)/int64.lib \
     	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/ntoskrnl.lib \
     	$(PATH_SDK_$(VBOX_WINDDK_GST)_LIB)/hal.lib
     ifneq ($(VBOX_VCC_CC_GUARD_CF),)
