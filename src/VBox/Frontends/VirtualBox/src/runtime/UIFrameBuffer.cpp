@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 98450 2023-02-02 14:46:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 98519 2023-02-09 13:42:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -265,7 +265,7 @@ public:
     virtual void setView(UIMachineView *pMachineView);
 
     /** Returns the copy of the IDisplay wrapper. */
-    CDisplay display() const { return m_display; }
+    CDisplay display() const { return m_comDisplay; }
     /** Attach frame-buffer to IDisplay. */
     void attach();
     /** Detach frame-buffer from IDisplay. */
@@ -486,7 +486,7 @@ protected:
     int m_iHeight;
 
     /** Holds the copy of the IDisplay wrapper. */
-    CDisplay m_display;
+    CDisplay m_comDisplay;
     /** Source bitmap from IDisplay. */
     CDisplaySourceBitmap m_sourceBitmap;
     /** Source bitmap from IDisplay (acquired but not yet applied). */
@@ -1120,7 +1120,7 @@ HRESULT UIFrameBufferPrivate::init(UIMachineView *pMachineView)
 #endif
 
     /* Assign display: */
-    m_display = m_pMachineView->uisession()->display();
+    m_comDisplay = m_pMachineView->uisession()->display();
 
     /* Initialize critical-section: */
     int rc = RTCritSectInit(&m_critSect);
