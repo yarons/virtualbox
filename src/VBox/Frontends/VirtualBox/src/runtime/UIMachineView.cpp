@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -884,15 +884,13 @@ void UIMachineView::sltHandleActionTriggerViewScreenToggle(int iScreen, bool fEn
         return;
 
     /* Acquire current resolution: */
-    ULONG uWidth, uHeight, uBitsPerPixel;
-    LONG uOriginX, uOriginY;
-    KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
-    display().GetScreenResolution(screenId(), uWidth, uHeight, uBitsPerPixel, uOriginX, uOriginY, monitorStatus);
-    if (!display().isOk())
-    {
-        UINotificationMessage::cannotAcquireDispayParameter(display());
+    ulong uWidth = 0, uHeight = 0, uDummy = 0;
+    long iDummy = 0;
+    KGuestMonitorStatus enmDummy = KGuestMonitorStatus_Disabled;
+    const bool fSuccess = uimachine()->acquireGuestScreenParameters(screenId(), uWidth, uHeight,
+                                                                    uDummy, iDummy, iDummy, enmDummy);
+    if (!fSuccess)
         return;
-    }
 
     /* Update desirable screen status: */
     uimachine()->setScreenVisibleHostDesires(screenId(), fEnabled);

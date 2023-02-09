@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -394,6 +394,28 @@ QSize UISession::frameBufferSize(ulong uScreenId) const
 {
     UIFrameBuffer *pFramebuffer = frameBuffer(uScreenId);
     return pFramebuffer ? QSize(pFramebuffer->width(), pFramebuffer->height()) : QSize();
+}
+
+bool UISession::acquireGuestScreenParameters(ulong uScreenId,
+                                             ulong &uWidth, ulong &uHeight, ulong &uBitsPerPixel,
+                                             long &xOrigin, long &yOrigin, KGuestMonitorStatus &enmMonitorStatus)
+{
+    CDisplay comDisplay = display();
+    ULONG uGuestWidth = 0, uGuestHeight = 0, uGuestBitsPerPixel = 0;
+    LONG iGuestXOrigin = 0, iGuestYOrigin = 0;
+    KGuestMonitorStatus enmGuestMonitorStatus = KGuestMonitorStatus_Disabled;
+    comDisplay.GetScreenResolution(uScreenId, uGuestWidth, uGuestHeight, uGuestBitsPerPixel,
+                                   iGuestXOrigin, iGuestYOrigin, enmGuestMonitorStatus);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
+    uWidth = uGuestWidth;
+    uHeight = uGuestHeight;
+    uBitsPerPixel = uGuestBitsPerPixel;
+    xOrigin = iGuestXOrigin;
+    yOrigin = iGuestYOrigin;
+    enmMonitorStatus = enmGuestMonitorStatus;
+    return fSuccess;
 }
 
 void UISession::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)

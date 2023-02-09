@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -742,7 +742,7 @@ void UINotificationMessage::cannotAcquireNATNetworkParameter(const CNATNetwork &
 }
 
 /* static */
-void UINotificationMessage::cannotAcquireDispayParameter(const CDisplay &comDisplay)
+void UINotificationMessage::cannotAcquireDisplayParameter(const CDisplay &comDisplay)
 {
     createMessage(
         QApplication::translate("UIMessageCenter", "Display failure ..."),

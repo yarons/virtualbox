@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -293,6 +293,11 @@ public:
         const QVector<UIFrameBuffer*> &frameBuffers() const { return m_frameBufferVector; }
         /** Returns frame-buffer size for screen with index @a uScreenId. */
         QSize frameBufferSize(ulong uScreenId) const;
+
+        /** Acquires parameters for guest-screen with passed uScreenId. */
+        bool acquireGuestScreenParameters(ulong uScreenId,
+                                          ulong &uWidth, ulong &uHeight, ulong &uBitsPerPixel,
+                                          long &xOrigin, long &yOrigin, KGuestMonitorStatus &enmMonitorStatus);
     /** @} */
 
     /** @name Status-bar stuff.

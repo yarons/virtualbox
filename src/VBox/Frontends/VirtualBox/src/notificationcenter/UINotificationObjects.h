@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -321,7 +321,7 @@ public:
         static void cannotAcquireNATNetworkParameter(const CNATNetwork &comNetwork);
         /** Notifies about inability to acquire INATNetwork parameter.
           * @param  comNetwork  Brings the object parameter get acquired from. */
-        static void cannotAcquireDispayParameter(const CDisplay &comDisplay);
+        static void cannotAcquireDisplayParameter(const CDisplay &comDisplay);
         /** Notifies about inability to acquire IUpdateAgent parameter.
           * @param  comAgent  Brings the object parameter get acquired from. */
         static void cannotAcquireUpdateAgentParameter(const CUpdateAgent &comAgent);
