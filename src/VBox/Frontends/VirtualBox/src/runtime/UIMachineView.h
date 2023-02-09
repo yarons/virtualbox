@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 98378 2023-02-01 12:34:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -281,8 +281,6 @@ protected:
     CConsole& console() const;
     /** Returns the console's display reference. */
     CDisplay& display() const;
-    /** Returns the console's guest reference. */
-    CGuest& guest() const;
 
     /* Protected getters: */
     UIActionPool* actionPool() const;

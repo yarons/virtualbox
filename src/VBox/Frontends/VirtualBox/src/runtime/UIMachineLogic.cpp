@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -306,11 +306,6 @@ CDisplay& UIMachineLogic::display() const
 CGuest& UIMachineLogic::guest() const
 {
     return uisession()->guest();
-}
-
-CMachineDebugger& UIMachineLogic::debugger() const
-{
-    return uisession()->debugger();
 }
 
 QString UIMachineLogic::machineName() const
@@ -2483,9 +2478,7 @@ void UIMachineLogic::sltShowDebugCommandLine()
 
 void UIMachineLogic::sltLoggingToggled(bool fState)
 {
-    NOREF(fState);
-    if (!debugger().isNull() && debugger().isOk())
-        debugger().SetLogEnabled(fState);
+    uimachine()->setLogEnabled(fState);
 }
 
 void UIMachineLogic::sltShowGuestControlConsoleDialog()
@@ -2999,18 +2992,10 @@ void UIMachineLogic::updateMenuDevicesDragAndDrop(QMenu *pMenu)
 #ifdef VBOX_WITH_DEBUGGER_GUI
 void UIMachineLogic::updateMenuDebug(QMenu*)
 {
-    /* The "Logging" item. */
-    bool fEnabled = false;
-    bool fChecked = false;
-    if (!debugger().isNull() && debugger().isOk())
-    {
-        fEnabled = true;
-        fChecked = debugger().GetLogEnabled() != FALSE;
-    }
-    if (fEnabled != actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->isEnabled())
-        actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->setEnabled(fEnabled);
-    if (fChecked != actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->isChecked())
-        actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->setChecked(fChecked);
+    const bool fEnabled = uimachine()->isLogEnabled();
+    actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->blockSignals(true);
+    actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->setChecked(fEnabled);
+    actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->blockSignals(false);
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 

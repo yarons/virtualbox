@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -59,7 +59,6 @@ class CConsole;
 class CDisplay;
 class CGuest;
 class CMouse;
-class CMachineDebugger;
 class CSnapshot;
 class CUSBDevice;
 class CVirtualBoxErrorInfo;
@@ -127,8 +126,6 @@ public:
     CDisplay& display() const;
     /** Returns the console's guest reference. */
     CGuest& guest() const;
-    /** Returns the console's debugger reference. */
-    CMachineDebugger& debugger() const;
 
     /** Returns the machine name. */
     QString machineName() const;

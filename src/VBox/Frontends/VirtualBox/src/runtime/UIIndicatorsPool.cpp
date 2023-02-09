@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98491 2023-02-07 12:18:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -741,7 +741,7 @@ private slots:
     /** Handles timer timeout with CPU load percentage update. */
     void sltHandleTimeout()
     {
-        m_pMachine->acquireCpuLoadPercentage(m_iCPULoadPercentage);
+        m_iCPULoadPercentage = m_pMachine->cpuLoadPercentage();
         update();
     }
 

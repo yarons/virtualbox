@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1454,11 +1454,6 @@ CConsole& UIMachineView::console() const
 CDisplay& UIMachineView::display() const
 {
     return uisession()->display();
-}
-
-CGuest& UIMachineView::guest() const
-{
-    return uisession()->guest();
 }
 
 UIActionPool* UIMachineView::actionPool() const

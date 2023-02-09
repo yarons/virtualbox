@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -72,6 +72,7 @@ class CCloudProvider;
 class CCloudProfile;
 class CEmulatedUSB;
 class CKeyboard;
+class CMachineDebugger;
 class CMouse;
 class CNetworkAdapter;
 class CVirtualBox;
@@ -294,6 +295,9 @@ public:
         /** Notifies about inability to acquire IMachine parameter.
           * @param  comMachine  Brings the object parameter get acquired from. */
         static void cannotAcquireMachineParameter(const CMachine &comMachine);
+        /** Notifies about inability to acquire IMachineDebugger parameter.
+          * @param  comMachineDebugger  Brings the object parameter get acquired from. */
+        static void cannotAcquireMachineDebuggerParameter(const CMachineDebugger &comMachineDebugger);
         /** Notifies about inability to acquire IConsole parameter.
           * @param  comConsole  Brings the object parameter get acquired from. */
         static void cannotAcquireConsoleParameter(const CConsole &comConsole);
@@ -352,6 +356,9 @@ public:
         /** Notifies about inability to change IMachine parameter.
           * @param  comMachine  Brings the object parameter being changed for. */
         static void cannotChangeMachineParameter(const CMachine &comMachine);
+        /** Notifies about inability to change IMachineDebugger parameter.
+          * @param  comMachineDebugger  Brings the object parameter being changed for. */
+        static void cannotChangeMachineDebuggerParameter(const CMachineDebugger &comMachineDebugger);
         /** Notifies about inability to change IGraphicsAdapter parameter.
           * @param  comAdapter  Brings the object parameter being changed for. */
         static void cannotChangeGraphicsAdapterParameter(const CGraphicsAdapter &comAdapter);

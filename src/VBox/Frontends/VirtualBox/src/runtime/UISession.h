@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -318,12 +318,28 @@ public:
         void acquireDisplayStatusInfo(QString &strInfo, bool &fAcceleration3D);
         /** Acquires status info for Recording indicator. */
         void acquireRecordingStatusInfo(QString &strInfo, bool &fRecordingEnabled, bool &fMachinePaused);
-        /** Acquires CPU load @a iPercentage. */
-        void acquireCpuLoadPercentage(int &iPercentage);
         /** Acquires status info for Features indicator. */
         void acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &enmEngine,
                                        bool fNestedPagingEnabled, bool fUxEnabled,
                                        KParavirtProvider enmProvider);
+    /** @} */
+
+    /** @name Debugger stuff.
+     ** @{ */
+        /** Defines whether log is @a fEnabled. */
+        void setLogEnabled(bool fEnabled);
+        /** Returns whether log is enabled. */
+        bool isLogEnabled();
+
+        /** Returns VM's execution engine type. */
+        KVMExecutionEngine executionEngineType();
+        /** Returns whether nested paging hardware virtualization extension is enabled. */
+        bool isHwVirtExNestedPagingEnabled();
+        /** Returns whether UX hardware virtualization extension is enabled. */
+        bool isHwVirtExUXEnabled();
+
+        /** Returns CPU load percentage. */
+        int cpuLoadPercentage();
     /** @} */
 
     /** @name Close stuff.

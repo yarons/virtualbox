@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -61,6 +61,7 @@
 #include "CHostNetworkInterface.h"
 #include "CHostOnlyNetwork.h"
 #include "CKeyboard.h"
+#include "CMachineDebugger.h"
 #include "CMediumAttachment.h"
 #include "CMouse.h"
 #include "CNATNetwork.h"
@@ -669,6 +670,15 @@ void UINotificationMessage::cannotAcquireMachineParameter(const CMachine &comMac
 }
 
 /* static */
+void UINotificationMessage::cannotAcquireMachineDebuggerParameter(const CMachineDebugger &comMachineDebugger)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Debugger failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire machine debugger parameter.") +
+        UIErrorString::formatErrorInfo(comMachineDebugger));
+}
+
+/* static */
 void UINotificationMessage::cannotAcquireConsoleParameter(const CConsole &comConsole)
 {
     createMessage(
@@ -833,6 +843,15 @@ void UINotificationMessage::cannotChangeMachineParameter(const CMachine &comMach
         QApplication::translate("UIMessageCenter", "Failed to change the parameter of the virtual machine <b>%1</b>.")
                                                    .arg(CMachine(comMachine).GetName()) +
         UIErrorString::formatErrorInfo(comMachine));
+}
+
+/* static */
+void UINotificationMessage::cannotChangeMachineDebuggerParameter(const CMachineDebugger &comMachineDebugger)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Debugger failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to change the parameter of machine debugger.") +
+        UIErrorString::formatErrorInfo(comMachineDebugger));
 }
 
 /* static */
