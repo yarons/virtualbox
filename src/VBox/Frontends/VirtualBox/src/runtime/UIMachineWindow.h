@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 98422 2023-02-02 09:45:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -93,8 +93,6 @@ public:
     /** Returns action-pool reference. */
     UIActionPool *actionPool() const;
 
-    /** Returns the session reference. */
-    CSession& session() const;
     /** Returns the session's machine reference. */
     CMachine& machine() const;
     /** Returns the session's console reference. */

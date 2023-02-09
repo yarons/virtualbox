@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -273,8 +273,6 @@ protected:
     virtual void cleanupNativeFilters();
     //virtual void saveMachineViewSettings() {}
 
-    /** Returns the session reference. */
-    CSession& session() const;
     /** Returns the session's machine reference. */
     CMachine& machine() const;
     /** Returns the session's console reference. */

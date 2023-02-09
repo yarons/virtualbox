@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 98503 2023-02-08 14:13:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDHandler.cpp 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -470,7 +470,6 @@ int UIDnDHandler::dragCheckPending(ulong screenID)
      * Note: This function *blocks* until the actual drag'n drop operation
      *       has been finished (successfully or not)!
      */
-    CGuest guest = m_pSession->guest();
 
     /* Clear our current data set. */
     m_dataSource.lstFormats.clear();

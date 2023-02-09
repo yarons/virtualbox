@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -219,11 +219,6 @@ UISession *UIMachineWindow::uisession() const
 UIActionPool *UIMachineWindow::actionPool() const
 {
     return machineLogic()->actionPool();
-}
-
-CSession& UIMachineWindow::session() const
-{
-    return uisession()->session();
 }
 
 CMachine& UIMachineWindow::machine() const
