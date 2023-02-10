@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98511 2023-02-08 21:31:43Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -897,6 +897,11 @@ VBOX_WITH_HOST_CHANNEL = 1
 # Enable the guest control service.
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_GUEST_CONTROL = 1
+ # Enables support for handling certain commands via the built-in (busybox-like) toolbox in VBoxService. See @bugref{9783}
+ # This is for supporting Guest Additions < 7.1.
+ VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT = 1
+ # Enables treating the toolbox as built-in commands. Requires 7.1 Guest Additions. See @bugref{9783}
+ VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS =
 endif
 # Enable ballooning
 VBOX_WITH_MEMBALLOON = 1
@@ -8936,7 +8941,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98511 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98526 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

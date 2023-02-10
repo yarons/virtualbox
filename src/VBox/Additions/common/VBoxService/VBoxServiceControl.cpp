@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceControl.cpp 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -257,8 +257,10 @@ static int vgsvcGstCtrlInvalidate(void)
         const uint64_t fGuestFeatures = VBOX_GUESTCTRL_GF_0_SET_SIZE
                                       | VBOX_GUESTCTRL_GF_0_PROCESS_ARGV0
                                       | VBOX_GUESTCTRL_GF_0_PROCESS_DYNAMIC_SIZES
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
+                                      | VBOX_GUESTCTRL_GF_0_TOOLBOX_AS_CMDS
+#endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
                                       | VBOX_GUESTCTRL_GF_0_SHUTDOWN;
-
         rc = VbglR3GuestCtrlReportFeatures(g_idControlSvcClient, fGuestFeatures, &g_fControlHostFeatures0);
         if (RT_SUCCESS(rc))
             VGSvcVerbose(3, "Host features: %#RX64\n", g_fControlHostFeatures0);
