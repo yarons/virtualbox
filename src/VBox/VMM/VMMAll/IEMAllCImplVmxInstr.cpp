@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 98360 2023-01-31 11:28:31Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 98521 2023-02-10 09:12:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6340,7 +6340,7 @@ static int iemVmxVmentryCheckEptPtr(PVMCPUCC pVCpu, uint64_t uEptPtr, VMXVDIAG *
  */
 static int iemVmxVmentryCheckCtls(PVMCPUCC pVCpu, const char *pszInstr) RT_NOEXCEPT
 {
-    PCVMXVVMCS const pVmcs = &pVCpu->cpum.GstCtx.hwvirt.vmx.Vmcs;
+    PVMXVVMCS const pVmcs = &pVCpu->cpum.GstCtx.hwvirt.vmx.Vmcs;
     const char * const pszFailure = "VMFail";
     bool const fVmxTrueMsrs       = RT_BOOL(pVCpu->cpum.GstCtx.hwvirt.vmx.Msrs.u64Basic & VMX_BF_BASIC_TRUE_CTLS_MASK);
 
@@ -6394,7 +6394,15 @@ static int iemVmxVmentryCheckCtls(PVMCPUCC pVCpu, const char *pszInstr) RT_NOEXC
                 IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_ProcCtls2Allowed1);
         }
         else
-            Assert(!pVmcs->u32ProcCtls2);
+        {
+            /*
+             * If the "activate secondary controls" is clear, then the secondary processor-based VM-execution controls
+             * is treated as 0. We must not fail/assert here. Microsoft Hyper-V relies on this behavior.
+             *
+             * See Intel spec. 26.2.1.1 "VM-Execution Control Fields".
+             */
+            pVmcs->u32ProcCtls2 = 0;
+        }
 
         /* CR3-target count. */
         if (pVmcs->u32Cr3TargetCount <= VMX_V_CR3_TARGET_COUNT)
