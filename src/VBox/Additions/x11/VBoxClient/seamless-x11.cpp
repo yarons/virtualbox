@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: seamless-x11.cpp 98534 2023-02-10 17:12:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -551,10 +551,9 @@ int SeamlessX11::updateRects(void)
  */
 bool SeamlessX11::interruptEventWait(void)
 {
-    bool rc = false;
-    Display *pDisplay = XOpenDisplay(NULL);
-
     LogRelFlowFuncEnter();
+
+    Display *pDisplay = XOpenDisplay(NULL);
     if (pDisplay == NULL)
     {
         VBClLogError("Failed to open X11 display\n");
@@ -563,11 +562,22 @@ bool SeamlessX11::interruptEventWait(void)
 
     /* Message contents set to zero. */
     XClientMessageEvent clientMessage =
-        { ClientMessage, 0, 0, 0, 0, XInternAtom(pDisplay, "VBOX_CLIENT_SEAMLESS_HEARTBEAT", false), 8 };
+    {
+        /* .type         = */ ClientMessage,
+        /* .serial       = */ 0,
+        /* .send_event   = */ 0,
+        /* .display      = */ 0,
+        /* .window       = */ 0,
+        /* .message_type = */ XInternAtom(pDisplay, "VBOX_CLIENT_SEAMLESS_HEARTBEAT", false),
+        /* .format       = */ 8,
+        /* .data ... */
+    };
 
+    bool rc = false;
     if (XSendEvent(pDisplay, DefaultRootWindow(mDisplay), false,
                    PropertyChangeMask, (XEvent *)&clientMessage))
         rc = true;
+
     XCloseDisplay(pDisplay);
     LogRelFlowFunc(("returning %RTbool\n", rc));
     return rc;
