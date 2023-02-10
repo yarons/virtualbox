@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: status.py 98536 2023-02-10 17:39:28Z knut.osmundsen@oracle.com $
 
 """
 CGI - Administrator Web-UI.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98536 $"
 
 
 # Standard python imports.
@@ -283,9 +283,21 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         #
         # Get the data.
         #
-        # Note! We're not joining on TestBoxesWithStrings.idTestBox =
-        #       TestSets.idGenTestBox here because of indexes.  This is
-        #       also more consistent with the rest of the query.
+        # - The first part of the select is about fetching all finished tests
+        #   for last cHoursBack hours
+        #
+        # - The second part is fetching all tests which isn't done. (Both old
+        #   (running more than cHoursBack) and fresh (less than cHoursBack) ones
+        #   because we want to know if there's a hanging tests together with
+        #   currently running).
+        #
+        # - There are also testsets without status at all, likely because disabled
+        #   testboxes still have an assigned testsets.
+        #
+        # Note! We're not joining on TestBoxesWithStrings.idTestBox = TestSets.idGenTestBox
+        #       here because of indexes.  This is also more consistent with the
+        #       rest of the query.
+        #
         # Note! The original SQL is slow because of the 'OR TestSets.tsDone'
         #       part, using AND and UNION is significatly faster because
         #       it matches the TestSetsGraphBoxIdx (index).
@@ -294,15 +306,6 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
         if oDb is None:
             return False;
 
-        #
-        # some comments regarding select below:
-        # first part is about fetching all finished tests for last cHoursBack hours
-        # second part is fetching all tests which isn't done
-        # both old (running more than cHoursBack) and fresh (less than cHoursBack) ones
-        # 'cause we want to know if there's a hanging tests together with currently running
-        #
-        # there's also testsets without status at all, likely because disabled testboxes still have an assigned testsets
-        #
         oDb.execute('''
 (   SELECT  TestBoxesWithStrings.sName,
             TestSets.enmStatus,
@@ -349,7 +352,7 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
     WHERE   TestBoxesWithStrings.tsExpire = 'infinity'::TIMESTAMP
       AND   SchedGroupNames.idTestBox = TestBoxesWithStrings.idTestBox
 )
-''', (cHoursBack, cHoursBack,));
+''', (cHoursBack, ));
 
 
         #
