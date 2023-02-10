@@ -1,4 +1,4 @@
-/* $Id: HGCMMock.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCMMock.h 98530 2023-02-10 15:39:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * HGCMMock.h: Mocking framework for testing HGCM-based host services +
  *             Vbgl code on the host side.
@@ -697,6 +697,13 @@ VBGLR3DECL(int) VbglR3HGCMDisconnect(HGCMCLIENTID idClient)
     PTSTHGCMMOCKSVC pSvc = TstHgcmMockSvcInst();
 
     return tstHgcmMockSvcDisconnect(pSvc, pSvc->fnTable.pvService, idClient);
+}
+
+VBGLR3DECL(int) VbglR3GetSessionId(uint64_t *pu64IdSession)
+{
+    if (pu64IdSession)
+        *pu64IdSession = 42;
+    return VINF_SUCCESS;
 }
 
 /**
