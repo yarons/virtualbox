@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testset.py 98538 2023-02-10 18:14:48Z knut.osmundsen@oracle.com $
 
 """
 Test Manager - TestSet.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98538 $"
 
 
 # Standard python imports.
@@ -723,22 +723,17 @@ class TestSetLogic(ModelLogicBase):
     def fetchByAge(self, tsNow = None, cHoursBack = 24):
         """
         Returns a list of TestSetData objects of a given time period (default is 24 hours).
-
-        Returns None if no testsets stored,
         Returns an empty list if no testsets found with given criteria.
         """
         if tsNow is None:
             tsNow = self._oDb.getCurrentTimestamp();
 
-        if self._oDb.getRowCount() == 0:
-            return None;
-
-        self._oDb.execute('(SELECT *\n'
-                    ' FROM   TestSets\n'
-                    ' WHERE  tsDone           <= %s\n'
-                    '    AND tsDone            > (%s - interval \'%s hours\')\n'
-                    ')\n'
-                    , ( tsNow, tsNow, cHoursBack, ));
+        self._oDb.execute('SELECT *\n'
+                          'FROM   TestSets\n'
+                          'WHERE  tsDone <= %s\n'
+                          '   AND tsDone >  (%s - interval \'%s hours\')\n'
+                          '\n'
+                        , ( tsNow, tsNow, cHoursBack, ));
 
         aoRet = [];
         for aoRow in self._oDb.fetchAll():
