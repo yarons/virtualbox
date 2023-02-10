@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98516 2023-02-09 11:24:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98525 2023-02-10 14:58:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -201,8 +201,11 @@ private:
         bool fAttachmentsPresent = false;
         m_pMachine->acquireHardDiskStatusInfo(strFullData, fAttachmentsPresent);
 
-        /* Hide indicator if there are no attachments: */
-        setVisible(fAttachmentsPresent);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
@@ -242,8 +245,11 @@ private:
         bool fAttachmentsMounted = false;
         m_pMachine->acquireOpticalDiskStatusInfo(strFullData, fAttachmentsPresent, fAttachmentsMounted);
 
-        /* Hide indicator if there are no attachments: */
-        setVisible(fAttachmentsPresent);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
@@ -283,8 +289,11 @@ private:
         bool fAttachmentsMounted = false;
         m_pMachine->acquireFloppyDiskStatusInfo(strFullData, fAttachmentsPresent, fAttachmentsMounted);
 
-        /* Hide indicator if there are no attachments: */
-        setVisible(fAttachmentsPresent);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
