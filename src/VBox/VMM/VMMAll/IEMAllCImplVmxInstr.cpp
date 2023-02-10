@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 98521 2023-02-10 09:12:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 98522 2023-02-10 09:13:31Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6340,7 +6340,7 @@ static int iemVmxVmentryCheckEptPtr(PVMCPUCC pVCpu, uint64_t uEptPtr, VMXVDIAG *
  */
 static int iemVmxVmentryCheckCtls(PVMCPUCC pVCpu, const char *pszInstr) RT_NOEXCEPT
 {
-    PVMXVVMCS const pVmcs = &pVCpu->cpum.GstCtx.hwvirt.vmx.Vmcs;
+    PVMXVVMCS pVmcs = &pVCpu->cpum.GstCtx.hwvirt.vmx.Vmcs;
     const char * const pszFailure = "VMFail";
     bool const fVmxTrueMsrs       = RT_BOOL(pVCpu->cpum.GstCtx.hwvirt.vmx.Msrs.u64Basic & VMX_BF_BASIC_TRUE_CTLS_MASK);
 
