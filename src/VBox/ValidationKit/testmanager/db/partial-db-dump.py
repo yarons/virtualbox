@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: partial-db-dump.py 98539 2023-02-10 18:19:00Z knut.osmundsen@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98539 $"
 
 # Standard python imports
 import sys;
@@ -264,8 +264,8 @@ COPY (SELECT * FROM TestBoxStrTab WHERE idStr IN (
 
         try:
             oZipFile = zipfile.ZipFile(self.oConfig.sFilename, 'r');
-        except:
-            print('error: Dump file "%s" cannot be opened! Use "-f <file>" to specify a file.' % (self.oConfig.sFilename,));
+        except oXcpt:
+            print('error: Failed to open dump file "%s": %s' % (self.oConfig.sFilename, oXcpt));
             return 1;
 
         asTablesInLoadOrder = [
