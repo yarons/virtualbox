@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevE1000.cpp 98523 2023-02-10 10:40:59Z alexander.eichner@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5972,7 +5972,8 @@ static int e1kRegWriteTDT(PPDMDEVINS pDevIns, PE1KSTATE pThis, uint32_t offset, 
 #endif
         {
             rc = e1kXmitPending(pDevIns, pThis, false /*fOnWorkerThread*/);
-            if (rc == VERR_TRY_AGAIN)
+            if (   rc == VERR_TRY_AGAIN
+                || rc == VERR_NET_DOWN)
                 rc = VINF_SUCCESS;
 #ifndef IN_RING3
             else if (rc == VERR_SEM_BUSY)
