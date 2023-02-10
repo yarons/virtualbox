@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 98524 2023-02-10 12:27:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -1074,12 +1074,13 @@ Q_DECLARE_METATYPE(IndicatorType);
 /** Runtime UI: Machine close actions. */
 enum MachineCloseAction
 {
-    MachineCloseAction_Invalid   = 0,
-    MachineCloseAction_Detach    = RT_BIT(0),
-    MachineCloseAction_SaveState = RT_BIT(1),
-    MachineCloseAction_Shutdown  = RT_BIT(2),
-    MachineCloseAction_PowerOff  = RT_BIT(3),
-    MachineCloseAction_All       = 0xFF
+    MachineCloseAction_Invalid                    = 0,
+    MachineCloseAction_Detach                     = RT_BIT(0),
+    MachineCloseAction_SaveState                  = RT_BIT(1),
+    MachineCloseAction_Shutdown                   = RT_BIT(2),
+    MachineCloseAction_PowerOff                   = RT_BIT(3),
+    MachineCloseAction_PowerOff_RestoringSnapshot = RT_BIT(4),
+    MachineCloseAction_All                        = 0xFF
 };
 Q_DECLARE_METATYPE(MachineCloseAction);
 

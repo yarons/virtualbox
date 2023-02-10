@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 98524 2023-02-10 12:27:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -2402,10 +2402,11 @@ template<> QString toInternalString(const MachineCloseAction &machineCloseAction
     QString strResult;
     switch (machineCloseAction)
     {
-        case MachineCloseAction_Detach:    strResult = "Detach"; break;
-        case MachineCloseAction_SaveState: strResult = "SaveState"; break;
-        case MachineCloseAction_Shutdown:  strResult = "Shutdown"; break;
-        case MachineCloseAction_PowerOff:  strResult = "PowerOff"; break;
+        case MachineCloseAction_Detach:                     strResult = "Detach"; break;
+        case MachineCloseAction_SaveState:                  strResult = "SaveState"; break;
+        case MachineCloseAction_Shutdown:                   strResult = "Shutdown"; break;
+        case MachineCloseAction_PowerOff:                   strResult = "PowerOff"; break;
+        case MachineCloseAction_PowerOff_RestoringSnapshot: strResult = "PowerOffRestoringSnapshot"; break;
         default:
         {
             AssertMsgFailed(("No text for indicator type=%d", machineCloseAction));
@@ -2426,6 +2427,8 @@ template<> MachineCloseAction fromInternalString<MachineCloseAction>(const QStri
         return MachineCloseAction_Shutdown;
     if (strMachineCloseAction.compare("PowerOff", Qt::CaseInsensitive) == 0)
         return MachineCloseAction_PowerOff;
+    if (strMachineCloseAction.compare("PowerOffRestoringSnapshot", Qt::CaseInsensitive) == 0)
+        return MachineCloseAction_PowerOff_RestoringSnapshot;
     return MachineCloseAction_Invalid;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98524 2023-02-10 12:27:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -528,10 +528,12 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
             break;
         }
         case MachineCloseAction_PowerOff:
+        case MachineCloseAction_PowerOff_RestoringSnapshot:
         {
             /* Power VM off: */
             LogRel(("GUI: Request for close-action to power VM off.\n"));
-            const bool fDiscardStateOnPowerOff = gEDataManager->discardStateOnPowerOff(uiCommon().managedVMUuid());
+            const bool fDiscardStateOnPowerOff  = gEDataManager->discardStateOnPowerOff(uiCommon().managedVMUuid())
+                                               || closeAction == MachineCloseAction_PowerOff_RestoringSnapshot;
             uimachine()->powerOff(machine().GetSnapshotCount() > 0 && fDiscardStateOnPowerOff);
             break;
         }
