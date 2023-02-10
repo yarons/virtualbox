@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-linux.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-linux.c 98541 2023-02-10 20:50:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -422,8 +422,8 @@ static void vgdrvLinuxTermISR(void)
     free_irq(g_pPciDev->irq, &g_DevExt);
 }
 
-
 #ifdef VBOXGUEST_WITH_INPUT_DRIVER
+
 /**
  * Check if extended mouse pointer state request protocol is currently used by driver.
  *
@@ -492,6 +492,7 @@ static void vgdrvLinuxFreeMouseStatusReq(void)
     VbglR0GRFree(&g_pMouseStatusReqEx->Core.header);
     g_pMouseStatusReqEx = NULL;
 }
+
 
 /**
  * Creates the kernel input device.
