@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestControlSvc.cpp 98527 2023-02-10 15:12:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -72,8 +72,6 @@
 #define LOG_GROUP LOG_GROUP_GUEST_CONTROL
 #include <VBox/HostServices/GuestControlSvc.h>
 #include <VBox/GuestHost/GuestControl.h> /** @todo r=bird: Why two headers??? */
-
-#include "VBoxGuestControlSvc-internal.h"
 
 #include <VBox/err.h>
 #include <VBox/log.h>
