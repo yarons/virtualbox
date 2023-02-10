@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98528 2023-02-10 15:23:41Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98529 2023-02-10 15:31:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1044,7 +1044,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     /* pSvcCb->mpaParms[0] always contains the context ID. */
                     vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.uType);
                     AssertRCReturn(vrc, vrc);
-                    vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.vrc);
+                    vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.rc);
                     AssertRCReturn(vrc, vrc);
                     vrc = HGCMSvcGetPv(&pSvcCb->mpaParms[idx++], &dataCb.pvPayload, &dataCb.cbPayload);
                     AssertRCReturn(vrc, vrc);
@@ -1052,7 +1052,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     try
                     {
                         GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload);
-                        vrc = signalWaitEventInternal(pCtxCb, dataCb.vrc, &evPayload);
+                        vrc = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
                     }
                     catch (int vrcEx) /* Thrown by GuestWaitEventPayload constructor. */
                     {
