@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98529 2023-02-10 15:31:03Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98532 2023-02-10 15:49:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -52,7 +52,6 @@
 #include <VBox/AssertGuest.h>
 
 
-#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
 /**
  * Returns a stringyfied error of a guest fs error.
  *
@@ -122,7 +121,7 @@ Utf8Str GuestFs::guestErrorToString(const GuestErrorInfo &guestErrorInfo)
     return strErr;
 }
 
-
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
 /**
  * Set the file system object data from a given GSTCTLFSOBJINFO struct.
  *
