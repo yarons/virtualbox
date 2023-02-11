@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 98150 2023-01-20 06:46:21Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 98543 2023-02-11 00:06:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -8525,6 +8525,8 @@ IEM_CIMPL_DEF_3(iemCImpl_fxsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, e
 {
     IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_X87 | CPUMCTX_EXTRN_SSE_AVX);
 
+    /** @todo check out bugref{1529} and AMD behaviour  */
+
     /*
      * Raise exceptions.
      */
@@ -8615,6 +8617,8 @@ IEM_CIMPL_DEF_3(iemCImpl_fxsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, e
 IEM_CIMPL_DEF_3(iemCImpl_fxrstor, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, enmEffOpSize)
 {
     IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_X87 | CPUMCTX_EXTRN_SSE_AVX);
+
+    /** @todo check out bugref{1529} and AMD behaviour  */
 
     /*
      * Raise exceptions.
