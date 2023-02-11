@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98532 2023-02-10 15:49:30Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98544 2023-02-11 00:28:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1957,8 +1957,8 @@ int GuestPath::BuildDestinationPath(const Utf8Str &strSrcPath, PathStyle_T enmSr
             RTPATHSPLIT     Split;
             uint8_t         ab[4096];
         } u;
-        vrc = RTPathParse(strDstPath.c_str(), &u.Parsed, sizeof(u),  enmDstPathStyle == PathStyle_DOS
-                                                                   ? RTPATH_STR_F_STYLE_DOS : RTPATH_STR_F_STYLE_UNIX);
+        vrc = RTPathParse(strDstPath.c_str(), &u.Parsed, sizeof(u),
+                          enmDstPathStyle == PathStyle_DOS ? RTPATH_STR_F_STYLE_DOS : RTPATH_STR_F_STYLE_UNIX);
         if (RT_SUCCESS(vrc))
         {
             if (u.Parsed.fProps & RTPATH_PROP_DOTDOT_REFS) /* #4 */
