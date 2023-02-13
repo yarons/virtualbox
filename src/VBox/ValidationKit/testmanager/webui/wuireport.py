@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 98551 2023-02-13 20:49:37Z knut.osmundsen@oracle.com $
+# $Id: wuireport.py 98552 2023-02-13 20:53:11Z knut.osmundsen@oracle.com $
 
 """
 Test Manager WUI - Reports.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98551 $"
+__version__ = "$Revision: 98552 $"
 
 
 # Validation Kit imports.
@@ -292,7 +292,7 @@ class WuiReportSuccessRate(WuiReportBase):
 
                 if cTotalSkipped > 0:
                     oTable.addRow(None, #self._oModel.getPeriodDesc(i),
-                                  [ cSuccesses, cSkipped, cFailures, ],
+                                  [ cSuccesses, cFailures, cSkipped, ],
                                   [ str(cSuccesses) if cSuccesses > 0 else None,
                                     str(cFailures) if cFailures > 0 else None,
                                     str(cSkipped) if cSkipped > 0 else None, ]);
