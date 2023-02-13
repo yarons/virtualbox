@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGraphicsTextPane.cpp 98545 2023-02-13 10:40:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -407,7 +407,7 @@ void UIGraphicsTextPane::updateHoverStuff()
 
     /* Update tool-tip: */
     const QString strType = m_strHoveredAnchor.section(',', 0, 0);
-    if (strType == "#attach")
+    if (strType == "#attach" || strType == "#mount")
         setToolTip(m_strHoveredAnchor.section(',', -1));
     else
         setToolTip(QString());
