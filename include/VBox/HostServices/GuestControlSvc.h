@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 98546 2023-02-13 10:45:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -627,7 +627,7 @@ enum eGuestMsg
      * Guest notifies the host about some file event.
      * @todo proper docs.
      */
-    GUEST_MSG_FILE_NOTIFY = 240,
+    GUEST_MSG_FILE_NOTIFY = 240
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     /**
      *  Guest notifies the host about some file system event.
@@ -638,7 +638,7 @@ enum eGuestMsg
      * @retval  VERR_WRONG_PARAMETER_TYPE
      * @since   7.1
      */
-    GUEST_MSG_FS_NOTIFY  = 241
+    , GUEST_MSG_FS_NOTIFY  = 241
 #endif
 };
 
@@ -768,7 +768,7 @@ enum GUEST_FS_NOTIFYTYPE
     GUEST_FS_NOTIFYTYPE_QUERY_INFO  = 2,
     /** Temporary directory creation notification from the guest.
      *  @since 7.1 */
-    GUEST_FS_NOTIFYTYPE_CREATE_TEMP = 1,
+    GUEST_FS_NOTIFYTYPE_CREATE_TEMP = 1
 };
 
 /**
