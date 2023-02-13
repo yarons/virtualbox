@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -306,6 +306,8 @@ public:
         bool acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fChangeOrigin,
                                   long &xOrigin, long &yOrigin, ulong &uWidth, ulong &uHeight,
                                   ulong &uBitsPerPixel);
+        /** Acquires screen-shot for guest-screen with passed uScreenId. */
+        bool acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, KBitmapFormat enmFormat, uchar *pBits);
     /** @} */
 
     /** @name Status-bar stuff.

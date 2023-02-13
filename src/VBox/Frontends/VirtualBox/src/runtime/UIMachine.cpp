@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -453,6 +453,11 @@ bool UIMachine::acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fCha
     return uisession()->acquireVideoModeHint(uScreenId, fEnabled, fChangeOrigin,
                                              xOrigin, yOrigin, uWidth, uHeight,
                                              uBitsPerPixel);
+}
+
+bool UIMachine::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, KBitmapFormat enmFormat, uchar *pBits)
+{
+    return uisession()->acquireScreenShot(uScreenId, uWidth, uHeight, enmFormat, pBits);
 }
 
 bool UIMachine::isGuestAdditionsActive() const

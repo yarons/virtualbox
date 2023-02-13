@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -451,6 +451,37 @@ bool UISession::acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fCha
     uWidth = uGuestWidth;
     uHeight = uGuestHeight;
     uBitsPerPixel = uGuestBitsPerPixel;
+    return fSuccess;
+}
+
+bool UISession::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, KBitmapFormat enmFormat, uchar *pBits)
+{
+    CDisplay comDisplay = display();
+    bool fSuccess = false;
+    /* For separate process: */
+    if (uiCommon().isSeparateProcess())
+    {
+        /* Take screen-data to array first: */
+        const QVector<BYTE> screenData = comDisplay.TakeScreenShotToArray(uScreenId, uWidth, uHeight, enmFormat);
+        fSuccess = comDisplay.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
+        else
+        {
+            /* And copy that data to screen-shot if it is Ok: */
+            if (!screenData.isEmpty())
+                memcpy(pBits, screenData.data(), uWidth * uHeight * 4);
+        }
+    }
+    /* For the same process: */
+    else
+    {
+        /* Take the screen-shot directly: */
+        comDisplay.TakeScreenShot(uScreenId, pBits, uWidth, uHeight, enmFormat);
+        fSuccess = comDisplay.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
+    }
     return fSuccess;
 }
 
