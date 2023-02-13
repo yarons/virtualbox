@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -924,6 +924,15 @@ void UINotificationMessage::cannotChangeNATNetworkParameter(const CNATNetwork &c
         QApplication::translate("UIMessageCenter", "NAT network failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to change NAT network parameter.") +
         UIErrorString::formatErrorInfo(comNetwork));
+}
+
+/* static */
+void UINotificationMessage::cannotChangeDisplayParameter(const CDisplay &comDisplay)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Display failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to change display parameter.") +
+        UIErrorString::formatErrorInfo(comDisplay));
 }
 
 /* static */

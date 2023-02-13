@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -298,6 +298,14 @@ public:
         bool acquireGuestScreenParameters(ulong uScreenId,
                                           ulong &uWidth, ulong &uHeight, ulong &uBitsPerPixel,
                                           long &xOrigin, long &yOrigin, KGuestMonitorStatus &enmMonitorStatus);
+        /** Defines video mode hint for guest-screen with passed uScreenId. */
+        bool setVideoModeHint(ulong uScreenId, bool fEnabled, bool fChangeOrigin,
+                              long xOrigin, long yOrigin, ulong uWidth, ulong uHeight,
+                              ulong uBitsPerPixel, bool fNotify);
+        /** Acquires video mode hint for guest-screen with passed uScreenId. */
+        bool acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fChangeOrigin,
+                                  long &xOrigin, long &yOrigin, ulong &uWidth, ulong &uHeight,
+                                  ulong &uBitsPerPixel);
     /** @} */
 
     /** @name Status-bar stuff.

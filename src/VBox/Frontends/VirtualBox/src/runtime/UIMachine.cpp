@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -435,6 +435,24 @@ bool UIMachine::acquireGuestScreenParameters(ulong uScreenId,
     return uisession()->acquireGuestScreenParameters(uScreenId,
                                                      uWidth, uHeight, uBitsPerPixel,
                                                      xOrigin, yOrigin, enmMonitorStatus);
+}
+
+bool UIMachine::setVideoModeHint(ulong uScreenId, bool fEnabled, bool fChangeOrigin,
+                                 long xOrigin, long yOrigin, ulong uWidth, ulong uHeight,
+                                 ulong uBitsPerPixel, bool fNotify)
+{
+    return uisession()->setVideoModeHint(uScreenId, fEnabled, fChangeOrigin,
+                                         xOrigin, yOrigin, uWidth, uHeight,
+                                         uBitsPerPixel, fNotify);
+}
+
+bool UIMachine::acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fChangeOrigin,
+                                     long &xOrigin, long &yOrigin, ulong &uWidth, ulong &uHeight,
+                                     ulong &uBitsPerPixel)
+{
+    return uisession()->acquireVideoModeHint(uScreenId, fEnabled, fChangeOrigin,
+                                             xOrigin, yOrigin, uWidth, uHeight,
+                                             uBitsPerPixel);
 }
 
 bool UIMachine::isGuestAdditionsActive() const

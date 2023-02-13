@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -415,6 +415,42 @@ bool UISession::acquireGuestScreenParameters(ulong uScreenId,
     xOrigin = iGuestXOrigin;
     yOrigin = iGuestYOrigin;
     enmMonitorStatus = enmGuestMonitorStatus;
+    return fSuccess;
+}
+
+bool UISession::setVideoModeHint(ulong uScreenId, bool fEnabled, bool fChangeOrigin, long xOrigin, long yOrigin,
+                                 ulong uWidth, ulong uHeight, ulong uBitsPerPixel, bool fNotify)
+{
+    CDisplay comDisplay = display();
+    comDisplay.SetVideoModeHint(uScreenId, fEnabled, fChangeOrigin, xOrigin, yOrigin,
+                                uWidth, uHeight, uBitsPerPixel, fNotify);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fChangeOrigin,
+                                     long &xOrigin, long &yOrigin, ulong &uWidth, ulong &uHeight,
+                                     ulong &uBitsPerPixel)
+{
+    CDisplay comDisplay = display();
+    BOOL fGuestEnabled = false, fGuestChangeOrigin = false;
+    LONG iGuestXOrigin = 0, iGuestYOrigin = 0;
+    ULONG uGuestWidth = 0, uGuestHeight = 0, uGuestBitsPerPixel = 0;
+    comDisplay.GetVideoModeHint(uScreenId, fGuestEnabled, fGuestChangeOrigin,
+                                iGuestXOrigin, iGuestYOrigin, uGuestWidth, uGuestHeight,
+                                uGuestBitsPerPixel);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
+    fEnabled = fGuestEnabled;
+    fChangeOrigin = fGuestChangeOrigin;
+    xOrigin = iGuestXOrigin;
+    yOrigin = iGuestYOrigin;
+    uWidth = uGuestWidth;
+    uHeight = uGuestHeight;
+    uBitsPerPixel = uGuestBitsPerPixel;
     return fSuccess;
 }
 

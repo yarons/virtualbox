@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -37,7 +37,6 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CDisplay.h"
 #include "CMachine.h"
 #include "CGraphicsAdapter.h"
 
@@ -141,7 +140,13 @@ void UIMultiScreenLayout::update()
             /* Then we have to disable excessive guest-screen: */
             LogRel(("GUI: UIMultiScreenLayout::update: Disabling excessive guest-screen %d\n", iGuestScreen));
             uimachine()->setScreenVisibleHostDesires(iGuestScreen, false);
-            machineLogic()->display().SetVideoModeHint(iGuestScreen, false, false, 0, 0, 0, 0, 0, true);
+            uimachine()->setVideoModeHint(iGuestScreen,
+                                          false /* enabled? */,
+                                          false /* change origin? */,
+                                          0 /* origin x */, 0 /* origin y */,
+                                          0 /* width */, 0 /* height*/,
+                                          0 /* bits per pixel */,
+                                          true /* notify? */);
         }
     }
 
@@ -173,7 +178,13 @@ void UIMultiScreenLayout::update()
             LogRel(("GUI: UIMultiScreenLayout::update: Enabling guest-screen %d with following resolution: %dx%d\n",
                     iGuestScreen, uWidth, uHeight));
             uimachine()->setScreenVisibleHostDesires(iGuestScreen, true);
-            machineLogic()->display().SetVideoModeHint(iGuestScreen, true, false, 0, 0, uWidth, uHeight, 32, true);
+            uimachine()->setVideoModeHint(iGuestScreen,
+                                          true/* enabled? */,
+                                          false /* change origin? */,
+                                          0 /* origin x */, 0 /* origin y */,
+                                          uWidth, uHeight,
+                                          32/* bits per pixel */,
+                                          true /* notify? */);
         }
     }
 
