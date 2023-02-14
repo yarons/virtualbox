@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98560 2023-02-14 12:25:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -64,7 +64,6 @@
 #include <VBox/com/VirtualBox.h>
 
 /* COM includes: */
-#include "CConsole.h"
 #include "CGraphicsAdapter.h"
 #include "CSession.h"
 #include "CFramebuffer.h"
@@ -1400,8 +1399,7 @@ void UIMachineView::cleanupFrameBuffer()
      * from view in order to respect the thread synchonisation logic (see UIFrameBuffer.h).
      * Note: VBOX_WITH_CROGL additionally requires us to call DetachFramebuffer
      * to ensure 3D gets notified of view being destroyed... */
-    if (console().isOk())
-        frameBuffer()->detach();
+    frameBuffer()->detach();
 
     /* Detach framebuffer from view: */
     frameBuffer()->setView(NULL);
@@ -1422,11 +1420,6 @@ void UIMachineView::cleanupNativeFilters()
 CMachine& UIMachineView::machine() const
 {
     return uisession()->machine();
-}
-
-CConsole& UIMachineView::console() const
-{
-    return uisession()->console();
 }
 
 UIActionPool* UIMachineView::actionPool() const
