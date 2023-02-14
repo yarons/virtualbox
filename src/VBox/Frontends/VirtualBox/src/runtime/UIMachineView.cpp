@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98555 2023-02-14 11:11:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1593,21 +1593,8 @@ void UIMachineView::takePausePixmapLive()
     /* Which will be a 'black image' by default. */
     screenShot.fill(0);
 
-    /* For separate process: */
-    if (uiCommon().isSeparateProcess())
-    {
-        /* Take screen-data to array: */
-        const QVector<BYTE> screenData = display().TakeScreenShotToArray(screenId(), screenShot.width(), screenShot.height(), KBitmapFormat_BGR0);
-        /* And copy that data to screen-shot if it is Ok: */
-        if (display().isOk() && !screenData.isEmpty())
-            memcpy(screenShot.bits(), screenData.data(), screenShot.width() * screenShot.height() * 4);
-    }
-    /* For the same process: */
-    else
-    {
-        /* Take the screen-shot directly: */
-        display().TakeScreenShot(screenId(), screenShot.bits(), screenShot.width(), screenShot.height(), KBitmapFormat_BGR0);
-    }
+    /* Acquire screen-shot image: */
+    uimachine()->acquireScreenShot(screenId(), screenShot.width(), screenShot.height(), KBitmapFormat_BGR0, screenShot.bits());
 
     /* Take the device-pixel-ratio into account: */
     const double dDevicePixelRatioActual = frameBuffer()->devicePixelRatioActual();
