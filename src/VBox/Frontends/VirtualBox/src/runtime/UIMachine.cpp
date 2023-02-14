@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -458,6 +458,21 @@ bool UIMachine::acquireVideoModeHint(ulong uScreenId, bool &fEnabled, bool &fCha
 bool UIMachine::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, KBitmapFormat enmFormat, uchar *pBits)
 {
     return uisession()->acquireScreenShot(uScreenId, uWidth, uHeight, enmFormat, pBits);
+}
+
+bool UIMachine::notifyScaleFactorChange(ulong uScreenId, ulong uScaleFactorWMultiplied, ulong uScaleFactorHMultiplied)
+{
+    return uisession()->notifyScaleFactorChange(uScreenId, uScaleFactorWMultiplied, uScaleFactorHMultiplied);
+}
+
+bool UIMachine::notifyHiDPIOutputPolicyChange(bool fUnscaledHiDPI)
+{
+    return uisession()->notifyHiDPIOutputPolicyChange(fUnscaledHiDPI);
+}
+
+bool UIMachine::setSeamlessMode(bool fEnabled)
+{
+    return uisession()->setSeamlessMode(fEnabled);
 }
 
 bool UIMachine::isGuestAdditionsActive() const

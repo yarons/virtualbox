@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 98432 2023-02-02 12:15:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -45,7 +45,6 @@
 
 /* COM includes: */
 #include "CConsole.h"
-#include "CDisplay.h"
 
 /* Other VBox includes: */
 #include "VBox/log.h"
@@ -135,14 +134,14 @@ void UIMachineViewSeamless::prepareConsoleConnections()
 void UIMachineViewSeamless::prepareSeamless()
 {
     /* Set seamless feature flag to the guest: */
-    display().SetSeamlessMode(true);
+    uimachine()->setSeamlessMode(true);
 }
 
 void UIMachineViewSeamless::cleanupSeamless()
 {
     /* Reset seamless feature flag if possible: */
     if (uimachine()->isRunning())
-        display().SetSeamlessMode(false);
+        uimachine()->setSeamlessMode(false);
 }
 
 void UIMachineViewSeamless::adjustGuestScreenSize()

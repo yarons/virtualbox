@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98451 2023-02-02 15:47:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -50,7 +50,6 @@
 
 /* COM includes: */
 #include "CConsole.h"
-#include "CDisplay.h"
 #include "CGraphicsAdapter.h"
 
 

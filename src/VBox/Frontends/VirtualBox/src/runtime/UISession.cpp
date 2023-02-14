@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -482,6 +482,36 @@ bool UISession::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, 
         if (!fSuccess)
             UINotificationMessage::cannotAcquireDisplayParameter(comDisplay);
     }
+    return fSuccess;
+}
+
+bool UISession::notifyScaleFactorChange(ulong uScreenId, ulong uScaleFactorWMultiplied, ulong uScaleFactorHMultiplied)
+{
+    CDisplay comDisplay = display();
+    comDisplay.NotifyScaleFactorChange(uScreenId, uScaleFactorWMultiplied, uScaleFactorHMultiplied);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::notifyHiDPIOutputPolicyChange(bool fUnscaledHiDPI)
+{
+    CDisplay comDisplay = display();
+    comDisplay.NotifyHiDPIOutputPolicyChange(fUnscaledHiDPI);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::setSeamlessMode(bool fEnabled)
+{
+    CDisplay comDisplay = display();
+    comDisplay.SetSeamlessMode(fEnabled);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
     return fSuccess;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -308,6 +308,12 @@ public:
                                   ulong &uBitsPerPixel);
         /** Acquires screen-shot for guest-screen with passed uScreenId. */
         bool acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, KBitmapFormat enmFormat, uchar *pBits);
+        /** Notifies guest-screen with passed uScreenId about scale-factor change. */
+        bool notifyScaleFactorChange(ulong uScreenId, ulong uScaleFactorWMultiplied, ulong uScaleFactorHMultiplied);
+        /** Notifies display about unscaled HiDPI policy change. */
+        bool notifyHiDPIOutputPolicyChange(bool fUnscaledHiDPI);
+        /** Defines whether seamless mode is enabled for display. */
+        bool setSeamlessMode(bool fEnabled);
     /** @} */
 
     /** @name Status-bar stuff.
