@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: virtual_test_sheriff.py 98553 2023-02-14 00:50:45Z knut.osmundsen@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98553 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 98103 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 98553 $ \n');
 
 
     def eprint(self, sText):
@@ -758,7 +758,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 98103 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 98553 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -939,6 +939,9 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         Checks out a VBox unittest problem.
         """
 
+        # Determine if this is a host or guest run before we start.
+        fRunsInGuest = '(guest)' in oCaseFile.oTestCase.sName or 'selected VMs' in oCaseFile.oTestCase.sName;
+
         #
         # Process simple test case failures first, using their name as reason.
         # We do the reason management just like for BSODs.
@@ -962,10 +965,18 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                 cRelevantOnes += 1
 
             elif oFailedResult.oParent is not None:
-                # Get the 2nd level node because that's where we'll find the unit test name.
-                while oFailedResult.oParent.oParent is not None:
-                    oFailedResult = oFailedResult.oParent;
-
+                # Host:  Get the 2nd level node because that's where we'll find the unit test name.
+                # Guest: Get the 6th level node.
+                aoParents = [];
+                oParent = oFailedResult.oParent;
+                while oParent is not None:
+                    aoParents.insert(0, oParent);
+                    oParent = oParent.oParent;
+                if not fRunsInGuest:
+                    oFailedResult = aoParents[min(2, len(aoParents) - 1)];
+                else:
+                    oFailedResult = aoParents[min(5, len(aoParents) - 1)];
+                    
                 # Only report a failure once.
                 if oFailedResult.idTestResult not in oCaseFile.dReasonForResultId:
                     sKey = oFailedResult.sName;
