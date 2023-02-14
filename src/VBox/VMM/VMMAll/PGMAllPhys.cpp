@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 98572 2023-02-14 21:49:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -418,7 +418,8 @@ static VBOXSTRICTRC pgmPhysMmio2WriteHandlerCommon(PVMCC pVM, PVMCPUCC pVCpu, ui
     if (RT_SUCCESS(rc) && GCPtr != ~(RTGCPTR)0)
     {
         rc = PGMShwMakePageWritable(pVCpu, GCPtr, PGM_MK_PG_IS_MMIO2 | PGM_MK_PG_IS_WRITE_FAULT);
-        AssertMsgReturn(rc == VINF_SUCCESS, ("PGMShwModifyPage -> GCPtr=%RGv rc=%d\n", GCPtr, rc), rc);
+        AssertMsgReturn(rc == VINF_SUCCESS || rc == VERR_PAGE_TABLE_NOT_PRESENT,
+                        ("PGMShwModifyPage -> GCPtr=%RGv rc=%d\n", GCPtr, rc), rc);
     }
 #else
     RT_NOREF(pVCpu, GCPtr);
