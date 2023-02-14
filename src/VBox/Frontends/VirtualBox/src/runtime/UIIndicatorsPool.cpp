@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98525 2023-02-10 14:58:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98569 2023-02-14 19:15:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -343,8 +343,11 @@ private:
         bool fEnabledInput = false;
         m_pMachine->acquireAudioStatusInfo(strFullData, fAudioEnabled, fEnabledOutput, fEnabledInput);
 
-        /* Hide indicator if no audio enabled: */
-        setVisible(fAudioEnabled);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fAudioEnabled);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
@@ -423,8 +426,11 @@ private:
         bool fCablesDisconnected = true;
         m_pMachine->acquireNetworkStatusInfo(strFullData, fAdaptersPresent, fCablesDisconnected);
 
-        /* Hide indicator if there are no enabled adapters: */
-        setVisible(fAdaptersPresent);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fAdaptersPresent);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
@@ -466,8 +472,11 @@ private:
         bool fUsbEnabled = false;
         m_pMachine->acquireUsbStatusInfo(strFullData, fUsbEnabled);
 
-        /* Hide indicator if no USB enabled: */
-        setVisible(fUsbEnabled);
+        /* Show/hide indicator if there are no attachments
+         * and parent is visible already: */
+        if (   parentWidget()
+            && parentWidget()->isVisible())
+            setVisible(fUsbEnabled);
 
         /* Update tool-tip: */
         setToolTip(s_strTable.arg(strFullData));
