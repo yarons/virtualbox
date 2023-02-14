@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 98562 2023-02-14 13:26:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1674,6 +1674,7 @@ static DECLCALLBACK(int) virtioScsiR3WorkerThread(PPDMDEVINS pDevIns, PPDMTHREAD
              if (rc == VERR_NOT_AVAILABLE)
              {
                  Log6Func(("Nothing found in %s\n", VIRTQNAME(uVirtqNbr)));
+                 virtioCoreR3VirtqBufRelease(&pThis->Virtio, pVirtqBuf);
                  continue;
              }
 
