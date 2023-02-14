@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -66,7 +66,6 @@ class UIMachineWindow;
 class UINativeEventFilter;
 class UISession;
 class CConsole;
-class CDisplay;
 class CGuest;
 class CMachine;
 class CSession;
@@ -277,8 +276,6 @@ protected:
     CMachine& machine() const;
     /** Returns the session's console reference. */
     CConsole& console() const;
-    /** Returns the console's display reference. */
-    CDisplay& display() const;
 
     /* Protected getters: */
     UIActionPool* actionPool() const;

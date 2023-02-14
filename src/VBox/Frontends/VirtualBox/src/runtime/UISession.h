@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -314,6 +314,12 @@ public:
         bool notifyHiDPIOutputPolicyChange(bool fUnscaledHiDPI);
         /** Defines whether seamless mode is enabled for display. */
         bool setSeamlessMode(bool fEnabled);
+        /** Notifies display about viewport changes. */
+        bool viewportChanged(ulong uScreenId, ulong xOrigin, ulong yOrigin, ulong uWidth, ulong uHeight);
+        /** Notifies display about all screens were invalidated. */
+        bool invalidateAndUpdate();
+        /** Notifies display about screen with passed uScreenId was invalidated. */
+        bool invalidateAndUpdateScreen(ulong uScreenId);
     /** @} */
 
     /** @name Status-bar stuff.

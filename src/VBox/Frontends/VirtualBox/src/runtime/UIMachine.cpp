@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -473,6 +473,21 @@ bool UIMachine::notifyHiDPIOutputPolicyChange(bool fUnscaledHiDPI)
 bool UIMachine::setSeamlessMode(bool fEnabled)
 {
     return uisession()->setSeamlessMode(fEnabled);
+}
+
+bool UIMachine::viewportChanged(ulong uScreenId, ulong xOrigin, ulong yOrigin, ulong uWidth, ulong uHeight)
+{
+    return uisession()->viewportChanged(uScreenId, xOrigin, yOrigin, uWidth, uHeight);
+}
+
+bool UIMachine::invalidateAndUpdate()
+{
+    return uisession()->invalidateAndUpdate();
+}
+
+bool UIMachine::invalidateAndUpdateScreen(ulong uScreenId)
+{
+    return uisession()->invalidateAndUpdateScreen(uScreenId);
 }
 
 bool UIMachine::isGuestAdditionsActive() const

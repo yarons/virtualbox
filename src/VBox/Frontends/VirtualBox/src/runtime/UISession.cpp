@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -509,6 +509,36 @@ bool UISession::setSeamlessMode(bool fEnabled)
 {
     CDisplay comDisplay = display();
     comDisplay.SetSeamlessMode(fEnabled);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::viewportChanged(ulong uScreenId, ulong xOrigin, ulong yOrigin, ulong uWidth, ulong uHeight)
+{
+    CDisplay comDisplay = display();
+    comDisplay.ViewportChanged(uScreenId, xOrigin, yOrigin, uWidth, uHeight);
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::invalidateAndUpdate()
+{
+    CDisplay comDisplay = display();
+    comDisplay.InvalidateAndUpdate();
+    const bool fSuccess = comDisplay.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::invalidateAndUpdateScreen(ulong uScreenId)
+{
+    CDisplay comDisplay = display();
+    comDisplay.InvalidateAndUpdateScreen(uScreenId);
     const bool fSuccess = comDisplay.isOk();
     if (!fSuccess)
         UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
