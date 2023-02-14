@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98548 2023-02-13 15:06:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98559 2023-02-14 12:24:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -56,7 +56,6 @@ class UIVMInformationDialog;
 class CSession;
 class CMachine;
 class CConsole;
-class CGuest;
 class CMouse;
 class CSnapshot;
 class CUSBDevice;
@@ -121,8 +120,6 @@ public:
     CMachine& machine() const;
     /** Returns the session's console reference. */
     CConsole& console() const;
-    /** Returns the console's guest reference. */
-    CGuest& guest() const;
 
     /** Returns the machine name. */
     QString machineName() const;
