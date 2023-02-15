@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98596 $"
 
 # Standard Python imports.
 import os
@@ -200,10 +200,13 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
         reporter.log("Active tests: %s" % (self.asTests,));
 
         #
-        # Skip the test if before 6.0
+        # Skip the test if before 6.0 or if the VM is NT4 or older.
         #
         if self.oTstDrv.fpApiVer < 6.0:
             reporter.log('Requires 6.0 or later (for now)');
+            return (None, oTxsSession);
+        if oTestVm.isWindows() and oTestVm.sKind in ('WindowsNT3x', 'WindowsNT4', 'Windows2000',):
+            reporter.log('No shared folders on %s' % (oTestVm.sKind,));
             return (None, oTxsSession);
 
         # Guess a free mount point inside the guest.

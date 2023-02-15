@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98270 $"
+__version__ = "$Revision: 98596 $"
 
 # Standard Python imports.
 import errno
@@ -1710,7 +1710,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             reporter.log('VBoxService logs will be stored in "%s"' % (self.oDebug.sGstVBoxServiceLogPath,));
 
             fRestartVBoxService = False;
-            if oTestVm.isWindows():
+            if oTestVm.isWindows() and oTestVm.sKind not in ('WindowsNT4', 'Windows2000',):
                 sPathRegExe         = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'reg.exe');
                 sImagePath          = '%s -vvvv --logfile %s' % (self.sPathVBoxServiceExeGst, sPathLogFile);
                 fRestartVBoxService = self.oTstDrv.txsRunTest(oTxsSession, 'Enabling VBoxService verbose logging (via registry)',
