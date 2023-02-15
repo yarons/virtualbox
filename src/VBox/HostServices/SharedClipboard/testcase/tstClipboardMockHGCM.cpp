@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstClipboardMockHGCM.cpp 98574 2023-02-15 00:24:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -698,7 +698,7 @@ int main(int argc, char *argv[])
 #endif
 
     PTSTHGCMMOCKSVC const pSvc = TstHgcmMockSvcInst();
-    TstHgcmMockSvcCreate(pSvc, sizeof(SHCLCLIENT));
+    TstHgcmMockSvcCreate(pSvc);
     TstHgcmMockSvcStart(pSvc);
 
     /*
