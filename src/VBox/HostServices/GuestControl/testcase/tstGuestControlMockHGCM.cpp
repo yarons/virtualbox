@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlMockHGCM.cpp 98575 2023-02-15 00:53:23Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestControlMockHGCM.cpp 98578 2023-02-15 02:00:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Control host service test case.
  */
@@ -32,8 +32,8 @@
 #include <VBox/HostServices/GuestControlSvc.h>
 #include <VBox/VBoxGuestLib.h>
 
-#include <VBox/GuestHost/HGCMMock.h>
-#include <VBox/GuestHost/HGCMMockUtils.h>
+#include <VBox/HostServices/TstHGCMMock.h>
+#include <VBox/HostServices/TstHGCMMockUtils.h>
 
 #include <iprt/assert.h>
 #include <iprt/initterm.h>

@@ -1,4 +1,4 @@
-/* $Id: TstHGCMMockUtils.cpp 98576 2023-02-15 01:48:41Z knut.osmundsen@oracle.com $ */
+/* $Id: TstHGCMMockUtils.cpp 98578 2023-02-15 02:00:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * TstHGCMMockUtils.cpp - Utility functions for the HGCM Mocking framework.
  */
@@ -29,7 +29,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <VBox/GuestHost/HGCMMockUtils.h>
+#include <VBox/HostServices/TstHGCMMockUtils.h>
 
 #include <iprt/err.h>
 #include <iprt/semaphore.h>

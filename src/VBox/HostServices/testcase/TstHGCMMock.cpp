@@ -1,4 +1,4 @@
-/* $Id: TstHGCMMock.cpp 98576 2023-02-15 01:48:41Z knut.osmundsen@oracle.com $ */
+/* $Id: TstHGCMMock.cpp 98578 2023-02-15 02:00:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * TstHGCMMock.cpp - Mocking framework for testing HGCM-based host services.
  *
@@ -36,7 +36,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <VBox/GuestHost/HGCMMock.h>
+#include <VBox/HostServices/TstHGCMMock.h>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
