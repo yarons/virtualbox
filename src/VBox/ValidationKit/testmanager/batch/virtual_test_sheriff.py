@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 98554 2023-02-14 00:52:05Z knut.osmundsen@oracle.com $
+# $Id: virtual_test_sheriff.py 98586 2023-02-15 13:10:28Z knut.osmundsen@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98554 $"
+__version__ = "$Revision: 98586 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 98554 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 98586 $ \n');
 
 
     def eprint(self, sText):
@@ -689,6 +689,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ktReason_Unknown_VM_Terminated                     = ( 'Unknown',           'VM terminated' );
     ktReason_Unknown_VM_Start_Error                    = ( 'Unknown',           'VM Start Error' );
     ktReason_Unknown_VM_Runtime_Error                  = ( 'Unknown',           'VM Runtime Error' );
+    ktReason_VMM_Assert                                = ( 'VMM',               'Assert' );
     ktReason_VMM_kvm_lock_spinning                     = ( 'VMM',               'kvm_lock_spinning' );
     ktReason_Ignore_Buggy_Test_Driver                  = ( 'Ignore',            'Buggy test driver' );
     ktReason_Ignore_Stale_Files                        = ( 'Ignore',            'Stale files' );
@@ -758,7 +759,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 98554 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 98586 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -987,8 +988,14 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                         oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult);
                     else:
                         self.dprint(u'Unit test failure "%s" not found in %s;' % (sKey, self.asUnitTestReasons));
-                        tReason = ( self.ksUnitTestCategory, self.ksUnitTestAddNew );
-                        oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult, sComment = sKey);
+                        sResultLog = TestSetData.extractLogSectionElapsed(sMainLog, oFailedResult.tsCreated,
+                                                                          oFailedResult.tsElapsed);
+                        if 'AudioMixer.cpp' in sResultLog:  # Pipe drain assertion.
+                            tReason = self.ktReason_VMM_Assert;
+                            oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult, sComment = 'AudioMixer.cpp');
+                        else:
+                            tReason = ( self.ksUnitTestCategory, self.ksUnitTestAddNew );
+                            oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult, sComment = sKey);
                     cRelevantOnes += 1
             else:
                 self.vprint(u'Internal error: expected oParent to NOT be None for %s' % (oFailedResult,));
