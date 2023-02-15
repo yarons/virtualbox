@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98576 2023-02-15 01:48:41Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98577 2023-02-15 01:51:27Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Guest Control Host Service testcases.
 #
@@ -45,7 +45,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
  tstGuestControlMockHGCM_DEFS     = VBOX_WITH_HGCM VBOX_WITH_GUEST_CONTROL
  tstGuestControlMockHGCM_SOURCES  = \
  	../VBoxGuestControlSvc.cpp \
- 	../../testcase/TstHgcmMock.cpp \
+ 	../../testcase/TstHGCMMock.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibGuestCtrl.cpp \
  	$(PATH_ROOT)/src/VBox/HostServices/common/message.cpp \
  	tstGuestControlMockHGCM.cpp
