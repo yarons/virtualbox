@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 98583 2023-02-15 12:44:55Z knut.osmundsen@oracle.com $
+# $Id: txsclient.py 98588 2023-02-15 13:23:18Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98583 $"
+__version__ = "$Revision: 98588 $"
 
 # Standard Python imports.
 import array;
@@ -893,8 +893,7 @@ class Session(TdTaskBase):
                     reporter.log('taskExecEx: Standard input is ignored... why?');
                     del oStdIn.uTxsClientCrc32;
                     oStdIn = '/dev/null';
-                elif  sOpcode in ('STDINMEM', 'STDINBAD', 'STDINCRC',)\
-                  and msPendingInputReply is not None:
+                elif sOpcode in ('STDINMEM', 'STDINBAD', 'STDINCRC',) and msPendingInputReply is not None:
                     # TXS STDIN error, abort.
                     # TODO: STDINMEM - consider undoing the previous stdin read and try resubmitt it.
                     msPendingInputReply = None;
