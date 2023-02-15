@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 98589 2023-02-15 13:43:42Z knut.osmundsen@oracle.com $
+# $Id: virtual_test_sheriff.py 98590 2023-02-15 14:06:04Z knut.osmundsen@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98589 $"
+__version__ = "$Revision: 98590 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 98589 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 98590 $ \n');
 
 
     def eprint(self, sText):
@@ -618,6 +618,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ## @{
 
     ktReason_Add_Installer_Win_Failed                  = ( 'Additions',         'Win GA install' );
+    ktReason_Add_ShFl                                  = ( 'Additions',         'ShFl' );
     ktReason_Add_ShFl_Automount                        = ( 'Additions',         'Automounting' );
     ktReason_Add_ShFl_FsPerf                           = ( 'Additions',         'FsPerf' );
     ktReason_Add_ShFl_FsPerf_Abend                     = ( 'Additions',         'FsPerf abend' );
@@ -760,7 +761,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 98589 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 98590 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1231,6 +1232,12 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         return fRet;
 
 
+    ## Fallback reasons based on GA test groups.
+    kdGATestFallbacks = {
+        'Guest Control':  ktReason_Add_GstCtl,
+        'Shared Folders': ktReason_Add_ShFl,
+    };
+
     def investigateGATest(self, oCaseFile, oFailedResult, sResultLog):
         """
         Investigates a failed VM run.
@@ -1259,8 +1266,6 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                 enmReason = self.ktReason_Add_GstCtl_CopyToGuest_Timeout;
         elif oFailedResult.sName.find('Session w/ Guest Reboot') >= 0:
             enmReason = self.ktReason_Add_GstCtl_Session_Reboot;
-        elif sParentName == 'Guest Control' or oFailedResult.sName == 'Guest Control':
-            enmReason = self.ktReason_Add_GstCtl;
         # shared folders:
         elif sParentName == 'Shared Folders' and oFailedResult.sName == 'Automounting':
             enmReason = self.ktReason_Add_ShFl_Automount;
@@ -1274,6 +1279,14 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if enmReason is not None:
             return oCaseFile.noteReasonForId(enmReason, oFailedResult.idTestResult);
+
+        # Generalistic fallbacks:
+        for sKey in self.kdGATestFallbacks:
+            oTmpFailedResult = oFailedResult;
+            while oTmpFailedResult:
+                if oTmpFailedResult.sName == sKey:
+                    return oCaseFile.noteReasonForId(self.kdGATestFallbacks[sKey], oFailedResult.idTestResult);
+                oTmpFailedResult = oTmpFailedResult.oParent;
 
         self.vprint(u'TODO: Cannot place GA failure idTestResult=%u - %s' % (oFailedResult.idTestResult, oFailedResult.sName,));
         self.dprint(u'%s + %s <<\n%s\n<<' % (oFailedResult.tsCreated, oFailedResult.tsElapsed, sResultLog,));
