@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 98590 2023-02-15 14:06:04Z knut.osmundsen@oracle.com $
+# $Id: virtual_test_sheriff.py 98591 2023-02-15 14:29:49Z knut.osmundsen@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98590 $"
+__version__ = "$Revision: 98591 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 98590 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 98591 $ \n');
 
 
     def eprint(self, sText):
@@ -653,6 +653,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ktReason_Host_InstallationWantReboot               = ( 'Host',              'Installation want reboot' );
     ktReason_Host_InvalidPackage                       = ( 'Host',              'ERROR_INSTALL_PACKAGE_INVALID' );
     ktReason_Host_InstallSourceAbsent                  = ( 'Host',              'ERROR_INSTALL_SOURCE_ABSENT' );
+    ktReason_Host_Install_Hang                         = ( 'Host',              'Install hang' );
     ktReason_Host_NotSignedWithBuildCert               = ( 'Host',              'Not signed with build cert' );
     ktReason_Host_DiskFull                             = ( 'Host',              'Host disk full' );
     ktReason_Host_DoubleFreeHeap                       = ( 'Host',              'Double free or corruption' );
@@ -660,9 +661,9 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
     ktReason_Host_win32com_gen_py                      = ( 'Host',              'win32com.gen_py' );
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Host_Modprobe_Failed                      = ( 'Host',              'Modprobe failed' );
-    ktReason_Host_Install_Hang                         = ( 'Host',              'Install hang' );
     ktReason_Host_NetworkMisconfiguration              = ( 'Host',              'Network misconfiguration' );
     ktReason_Host_TSTInfo_Accuracy_OOR                 = ( 'Host',              'TSTInfo accuracy out of range' );
+    ktReason_Host_UninstallationFailed                 = ( 'Host',              'Uninstallation failed' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
     ktReason_Networking_VERR_INTNET_FLT_IF_NOT_FOUND   = ( 'Networking',        'VERR_INTNET_FLT_IF_NOT_FOUND' );
     ktReason_OSInstall_GRUB_hang                       = ( 'O/S Install',       'GRUB hang' );
@@ -761,7 +762,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 98590 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 98591 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -925,6 +926,15 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                 if fStopOnHit:
                     return True;
                 fFoundSomething = True;
+
+        # If we didn't find something specific, just add a general install/uninstall
+        # failure reason so it's easier to get an idea why a test failed when
+        # looking at the failure listing in the test manager.
+        if not fFoundSomething:
+            if fInstall:
+                oCaseFile.noteReasonForId(self.ktReason_Host_InstallationFailed, oFailedResult.idTestResult);
+            else:
+                oCaseFile.noteReasonForId(self.ktReason_Host_UninstallationFailed, oFailedResult.idTestResult);
 
         return fFoundSomething if fFoundSomething else None;
 
