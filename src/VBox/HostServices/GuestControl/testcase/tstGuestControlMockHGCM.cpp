@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlMockHGCM.cpp 98574 2023-02-15 00:24:25Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestControlMockHGCM.cpp 98575 2023-02-15 00:53:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * Guest Control host service test case.
  */
@@ -288,11 +288,6 @@ int main()
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(g_hTest);
-
-#if 0 //ndef DEBUG_andy - bird: fix the 'ing code.
-    /* Don't let assertions in the host service panic (core dump) the test cases. */
-    RTAssertSetMayPanic(false);
-#endif
 
     PTSTHGCMMOCKSVC const pSvc = TstHgcmMockSvcInst();
     TstHgcmMockSvcCreate(pSvc);
