@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98557 2023-02-14 12:09:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98581 2023-02-15 10:52:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1016,21 +1016,27 @@ void UIMachine::sltCursorPositionChange(bool fContainsData, unsigned long uX, un
 
 void UIMachine::sltHandleMachineStateSaved(bool fSuccess)
 {
-    /* Disable 'manual-override' finally: */
-    setManualOverrideMode(false);
-
-    /* Close Runtime UI if state was saved: */
-    if (fSuccess)
+    /* Let user try again if saving failed: */
+    if (!fSuccess)
+    {
+        /* Disable 'manual-override' finally: */
+        setManualOverrideMode(false);
+    }
+    /* Close Runtime UI otherwise: */
+    else
         closeRuntimeUI();
 }
 
 void UIMachine::sltHandleMachinePoweredOff(bool fSuccess, bool fIncludingDiscard)
 {
-    /* Disable 'manual-override' finally: */
-    setManualOverrideMode(false);
-
-    /* Do we have other tasks? */
-    if (fSuccess)
+    /* Let user try again if power off failed: */
+    if (!fSuccess)
+    {
+        /* Disable 'manual-override' finally: */
+        setManualOverrideMode(false);
+    }
+    /* Check for other tasks otherwise: */
+    else
     {
         if (fIncludingDiscard)
         {
