@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 98575 2023-02-15 00:53:23Z knut.osmundsen@oracle.com $ */
+/* $Id: tstClipboardMockHGCM.cpp 98576 2023-02-15 01:48:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -25,6 +25,10 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "../VBoxSharedClipboardSvc-internal.h"
 
 #include <VBox/HostServices/VBoxClipboardSvc.h>
