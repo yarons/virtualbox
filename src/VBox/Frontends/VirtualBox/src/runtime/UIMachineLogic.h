@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98559 2023-02-14 12:24:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98582 2023-02-15 11:04:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -172,6 +172,7 @@ protected slots:
 
     /* Console callback handlers: */
     virtual void sltMachineStateChanged();
+    virtual void sltSessionStateChanged(const QUuid &uId, const KSessionState enmState);
     virtual void sltAdditionsStateChanged();
     virtual void sltMouseCapabilityChanged();
     virtual void sltKeyboardLedsChanged();
