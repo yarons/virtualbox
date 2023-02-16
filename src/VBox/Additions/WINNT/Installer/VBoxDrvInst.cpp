@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 98598 2023-02-16 00:54:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -244,7 +244,7 @@ static void __cdecl VBoxDIFxLogCallback(DIFXAPI_LOG enmEvent, DWORD dwError, PCW
         RTStrCopy(szBuf, sizeof(szBuf), pszEvent);
         RTStrCat(szBuf, sizeof(szBuf), ": ");
         size_t offVal = strlen(szBuf);
-        RTStrFormatU32(&szBuf[offVal], sizeof(szBuf) - offVal, dwError, 10, 0, 0, 0);
+        RTStrFormatU32(&szBuf[offVal], sizeof(szBuf) - offVal, dwError, 16, 0, 0, dwError ? RTSTR_F_SPECIAL : 0);
         RTStrCat(szBuf, sizeof(szBuf), " - ");
         DWORD dwIgn;
         WriteFile(hLogFile, szBuf, (DWORD)strlen(szBuf), &dwIgn, NULL);
