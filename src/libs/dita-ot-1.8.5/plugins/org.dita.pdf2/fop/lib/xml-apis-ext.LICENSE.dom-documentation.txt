@@ -1,4 +1,4 @@
-xml-commons/java/external/LICENSE.dom-documentation.txt $Id: xml-apis-ext.LICENSE.dom-documentation.txt 98584 2023-02-15 12:56:39Z serkan.bayraktar@oracle.com $
+xml-commons/java/external/LICENSE.dom-documentation.txt $Id: xml-apis-ext.LICENSE.dom-documentation.txt 98600 2023-02-16 09:15:45Z serkan.bayraktar@oracle.com $
 
 
 This license came from: http://www.w3.org/Consortium/Legal/copyright-documents-20021231
@@ -70,4 +70,4 @@ to site-policy@w3.org.
 
 Joseph Reagle <site-policy@w3.org> 
 
-Last revised by Reagle $Date: 2023-02-15 13:56:39 +0100 (Wed, 15 Feb 2023) $
+Last revised by Reagle $Date: 2023-02-16 10:15:45 +0100 (Thu, 16 Feb 2023) $

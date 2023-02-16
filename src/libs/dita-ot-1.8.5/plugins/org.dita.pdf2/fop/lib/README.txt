@@ -2,7 +2,7 @@
 Information on Apache FOP dependencies
 =========================================
 
-$Id: README.txt 98584 2023-02-15 12:56:39Z serkan.bayraktar@oracle.com $
+$Id: README.txt 98600 2023-02-16 09:15:45Z serkan.bayraktar@oracle.com $
 
 The Apache Licenses can also be found here:
 http://www.apache.org/licenses/
