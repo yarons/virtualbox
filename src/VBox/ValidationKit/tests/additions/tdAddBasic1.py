@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 98596 2023-02-15 22:58:00Z knut.osmundsen@oracle.com $
+# $Id: tdAddBasic1.py 98599 2023-02-16 00:54:57Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98596 $"
+__version__ = "$Revision: 98599 $"
 
 # Standard Python imports.
 import os;
@@ -433,11 +433,13 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         sGuestAddsDir = 'C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\';
         aasLogFiles.append((sGuestAddsDir + 'install.log',           'ga-install-%s.log' % (oTestVm.sVmName,),));
         aasLogFiles.append((sGuestAddsDir + 'install_drivers.log',   'ga-install_drivers-%s.log' % (oTestVm.sVmName,),));
-        aasLogFiles.append(('C:\\Windows\\setupapi.log',             'ga-setupapi-%s.log' % (oTestVm.sVmName,),));
+        aasLogFiles.append((oTestVm.pathJoin(self.getGuestWinDir(oTestVm), 'setupapi.log'),
+                            'ga-setupapi-%s.log' % (oTestVm.sVmName,),));
 
         # Note: setupapi.dev.log only is available since Windows 2000.
         if fHaveSetupApiDevLog:
-            aasLogFiles.append(('C:\\Windows\\setupapi.dev.log',     'ga-setupapi.dev-%s.log' % (oTestVm.sVmName,),));
+            aasLogFiles.append((oTestVm.pathJoin(self.getGuestWinDir(oTestVm), 'setupapi.dev.log'),
+                                'ga-setupapi.dev-%s.log' % (oTestVm.sVmName,),));
 
         #
         # Download log files.
