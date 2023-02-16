@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98582 2023-02-15 11:04:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98601 2023-02-16 13:05:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2062,7 +2062,7 @@ void UIMachineLogic::sltCloseSoftKeyboard(bool fAsync /* = false */)
 
 void UIMachineLogic::sltTypeCAD()
 {
-    uimachine()->putCad();
+    uimachine()->putCAD();
 }
 
 #ifdef VBOX_WS_X11

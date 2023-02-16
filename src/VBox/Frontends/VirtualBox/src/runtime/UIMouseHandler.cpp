@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 98601 2023-02-16 13:05:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -1261,7 +1261,7 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
     uimachine()->putEventMultiTouch(pTouchEvent->touchPoints().size(),
                                     contacts,
                                     fTouchScreen,
-                                    (ULONG)RTTimeMilliTS());
+                                    RTTimeMilliTS());
 
     /* Eat by default? */
     return true;
