@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 98544 2023-02-11 00:28:02Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 98610 2023-02-16 22:44:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -57,9 +57,9 @@ using namespace guestControl;
 #endif
 
 /** Vector holding a process' CPU affinity. */
-typedef std::vector <LONG> ProcessAffinity;
+typedef std::vector<LONG> ProcessAffinity;
 /** Vector holding process startup arguments. */
-typedef std::vector <Utf8Str> ProcessArguments;
+typedef std::vector<Utf8Str> ProcessArguments;
 
 class GuestToolboxStreamBlock;
 class GuestSession;
