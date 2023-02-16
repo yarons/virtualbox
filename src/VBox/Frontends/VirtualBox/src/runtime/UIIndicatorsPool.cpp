@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98569 2023-02-14 19:15:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -689,7 +689,7 @@ public:
     /** Constructs indicator passing @a pMachine to the base-class. */
     UIIndicatorFeatures(UIMachine *pMachine)
         : UISessionStateStatusBarIndicator(IndicatorType_Features, pMachine)
-        , m_iCPULoadPercentage(0)
+        , m_uEffectiveCPULoad(0)
     {
         /* Assign state-icons: */
         /** @todo  The vtx_amdv_disabled_16px.png icon isn't really approprate anymore (no raw-mode),
@@ -730,7 +730,7 @@ protected:
         painter.setPen(Qt::NoPen);
         painter.setBrush(gradient);
         /* Use 20% of the icon width to draw the indicator bar: */
-        painter.drawRect(QRect(QPoint(0.8 * width(), (100 - m_iCPULoadPercentage) / 100.f * height()),
+        painter.drawRect(QRect(QPoint(0.8 * width(), (100 - m_uEffectiveCPULoad) / 100.f * height()),
                                QPoint(width(),  height())));
         /* Draw an empty rect. around the CPU load bar: */
         int iBorderThickness = 1;
@@ -759,7 +759,7 @@ private slots:
     /** Handles timer timeout with CPU load percentage update. */
     void sltHandleTimeout()
     {
-        m_iCPULoadPercentage = m_pMachine->cpuLoadPercentage();
+        m_pMachine->acquireEffectiveCPULoad(m_uEffectiveCPULoad);
         update();
     }
 
@@ -781,8 +781,8 @@ private:
     /** Holds the auto-update timer instance. */
     QTimer *m_pTimerAutoUpdate;
 
-    /** Holds the current CPU load percentage. */
-    int  m_iCPULoadPercentage;
+    /** Holds the effective CPU load. */
+    ulong  m_uEffectiveCPULoad;
 };
 
 

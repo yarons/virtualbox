@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98601 2023-02-16 13:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -3004,7 +3004,8 @@ void UIMachineLogic::updateMenuDevicesDragAndDrop(QMenu *pMenu)
 #ifdef VBOX_WITH_DEBUGGER_GUI
 void UIMachineLogic::updateMenuDebug(QMenu*)
 {
-    const bool fEnabled = uimachine()->isLogEnabled();
+    bool fEnabled = false;
+    uimachine()->acquireWhetherLogEnabled(fEnabled);
     actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->blockSignals(true);
     actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->setChecked(fEnabled);
     actionPool()->action(UIActionIndexRT_M_Debug_T_Logging)->blockSignals(false);

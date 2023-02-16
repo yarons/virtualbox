@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98601 2023-02-16 13:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -604,19 +604,19 @@ void UIMachine::acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &
                                            paravirtProvider());
 }
 
-void UIMachine::setLogEnabled(bool fEnabled)
+bool UIMachine::setLogEnabled(bool fEnabled)
 {
-    uisession()->setLogEnabled(fEnabled);
+    return uisession()->setLogEnabled(fEnabled);
 }
 
-bool UIMachine::isLogEnabled()
+bool UIMachine::acquireWhetherLogEnabled(bool &fEnabled)
 {
-    return uisession()->isLogEnabled();
+    return uisession()->acquireWhetherLogEnabled(fEnabled);
 }
 
-int UIMachine::cpuLoadPercentage()
+bool UIMachine::acquireEffectiveCPULoad(ulong &uLoad)
 {
-    return uisession()->cpuLoadPercentage();
+    return uisession()->acquireEffectiveCPULoad(uLoad);
 }
 
 void UIMachine::detachUi()
@@ -1965,8 +1965,8 @@ bool UIMachine::isPointer1bpp(const uint8_t *pu8XorMask,
 
 void UIMachine::updateVirtualizationState()
 {
-    m_enmVMExecutionEngine = uisession()->executionEngineType();
-    m_fIsHWVirtExNestedPagingEnabled = uisession()->isHwVirtExNestedPagingEnabled();
-    m_fIsHWVirtExUXEnabled = uisession()->isHwVirtExUXEnabled();
+    uisession()->acquireExecutionEngineType(m_enmVMExecutionEngine);
+    uisession()->acquireWhetherHwVirtExNestedPagingEnabled(m_fIsHWVirtExNestedPagingEnabled);
+    uisession()->acquireWhetherHwVirtExUXEnabled(m_fIsHWVirtExUXEnabled);
     m_enmParavirtProvider = uisession()->machine().GetEffectiveParavirtProvider();
 }

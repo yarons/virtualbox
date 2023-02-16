@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98601 2023-02-16 13:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -354,19 +354,19 @@ public:
     /** @name Debugger stuff.
      ** @{ */
         /** Defines whether log is @a fEnabled. */
-        void setLogEnabled(bool fEnabled);
-        /** Returns whether log is enabled. */
-        bool isLogEnabled();
+        bool setLogEnabled(bool fEnabled);
+        /** Acquires whether log is @a fEnabled. */
+        bool acquireWhetherLogEnabled(bool &fEnabled);
 
-        /** Returns VM's execution engine type. */
-        KVMExecutionEngine executionEngineType();
-        /** Returns whether nested paging hardware virtualization extension is enabled. */
-        bool isHwVirtExNestedPagingEnabled();
-        /** Returns whether UX hardware virtualization extension is enabled. */
-        bool isHwVirtExUXEnabled();
+        /** Acquires VM's execution engine @a enmType. */
+        bool acquireExecutionEngineType(KVMExecutionEngine &enmType);
+        /** Acquires whether nested paging hardware virtualization extension is @a fEnabled. */
+        bool acquireWhetherHwVirtExNestedPagingEnabled(bool &fEnabled);
+        /** Acquires whether UX hardware virtualization extension is @a fEnabled. */
+        bool acquireWhetherHwVirtExUXEnabled(bool &fEnabled);
 
-        /** Returns CPU load percentage. */
-        int cpuLoadPercentage();
+        /** Acquires effective CPU @a uLoad. */
+        bool acquireEffectiveCPULoad(ulong &uLoad);
     /** @} */
 
     /** @name Close stuff.
