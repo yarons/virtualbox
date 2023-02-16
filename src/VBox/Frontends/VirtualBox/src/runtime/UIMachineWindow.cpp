@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98524 2023-02-10 12:27:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -463,9 +463,9 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
                     {
                         /* We are going to show close-dialog only
                          * if headless frontend stopped/killed already: */
-                        CMachine machine = uisession()->machine();
-                        KMachineState machineState = machine.GetState();
-                        fShowCloseDialog = !machine.isOk() || machineState == KMachineState_Null;
+                        CMachine comMachine = machine();
+                        KMachineState enmMachineState = comMachine.GetState();
+                        fShowCloseDialog = !comMachine.isOk() || enmMachineState == KMachineState_Null;
                     }
                 }
             }
@@ -645,7 +645,7 @@ void UIMachineWindow::updateDbgWindows()
 {
     /* The debugger windows are bind to the main VM window. */
     if (m_uScreenId == 0)
-        machineLogic()->dbgAdjustRelativePos();
+        uimachine()->dbgAdjustRelativePos();
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 

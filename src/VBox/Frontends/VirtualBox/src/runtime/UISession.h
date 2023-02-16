@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -64,6 +64,11 @@ class UIActionPool;
 class CUSBDevice;
 class CNetworkAdapter;
 class CMediumAttachment;
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+typedef struct DBGGUIVT const *PCDBGGUIVT;
+typedef struct DBGGUI *PDBGGUI;
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 /** QObject subclass implementing
   * COM related functionality for Runtime UI. */
@@ -367,6 +372,21 @@ public:
 
         /** Acquires effective CPU @a uLoad. */
         bool acquireEffectiveCPULoad(ulong &uLoad);
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+        /** Makes sure debugger GUI is created. */
+        bool dbgCreated(void *pActionDebug);
+        /** Makes sure debugger GUI is destroyed. */
+        void dbgDestroy();
+
+        /** Shows debugger UI statistics window. */
+        void dbgShowStatistics();
+        /** Shows debugger UI command line window. */
+        void dbgShowCommandLine();
+
+        /** Adjusts relative position for debugger window. */
+        void dbgAdjustRelativePos();
+#endif /* VBOX_WITH_DEBUGGER_GUI */
     /** @} */
 
     /** @name Close stuff.
@@ -522,6 +542,16 @@ private:
      ** @{ */
         /** Holds the frame-buffer vector. */
         QVector<UIFrameBuffer*>  m_frameBufferVector;
+    /** @} */
+
+    /** @name Debugger stuff.
+     ** @{ */
+#ifdef VBOX_WITH_DEBUGGER_GUI
+        /** Holds the handle to the debugger GUI. */
+        PDBGGUI     m_pDbgGui;
+        /** Holds the virtual method table for the debugger GUI. */
+        PCDBGGUIVT  m_pDbgGuiVT;
+#endif /* VBOX_WITH_DEBUGGER_GUI */
     /** @} */
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -618,6 +618,33 @@ bool UIMachine::acquireEffectiveCPULoad(ulong &uLoad)
 {
     return uisession()->acquireEffectiveCPULoad(uLoad);
 }
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+bool UIMachine::dbgCreated(void *pActionDebug)
+{
+    return uisession()->dbgCreated(pActionDebug);
+}
+
+void UIMachine::dbgDestroy()
+{
+    return uisession()->dbgDestroy();
+}
+
+void UIMachine::dbgShowStatistics()
+{
+    return uisession()->dbgShowStatistics();
+}
+
+void UIMachine::dbgShowCommandLine()
+{
+    return uisession()->dbgShowCommandLine();
+}
+
+void UIMachine::dbgAdjustRelativePos()
+{
+    return uisession()->dbgAdjustRelativePos();
+}
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 void UIMachine::detachUi()
 {
