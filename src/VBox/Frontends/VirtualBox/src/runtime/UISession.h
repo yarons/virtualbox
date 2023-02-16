@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98607 2023-02-16 16:02:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -391,6 +391,9 @@ public:
 
     /** @name Close stuff.
      ** @{ */
+        /** Acquires whether guest @a fEntered ACPI mode. */
+        bool acquireWhetherGuestEnteredACPIMode(bool &fEntered);
+
         /** Prepares VM to be saved. */
         bool prepareToBeSaved();
         /** Returns whether VM can be shutdowned. */

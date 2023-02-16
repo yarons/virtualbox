@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98607 2023-02-16 16:02:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -645,6 +645,11 @@ void UIMachine::dbgAdjustRelativePos()
     return uisession()->dbgAdjustRelativePos();
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
+
+bool UIMachine::acquireWhetherGuestEnteredACPIMode(bool &fEntered)
+{
+    return uisession()->acquireWhetherGuestEnteredACPIMode(fEntered);
+}
 
 void UIMachine::detachUi()
 {

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 98517 2023-02-09 11:59:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 98607 2023-02-16 16:02:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -95,8 +95,6 @@ public:
 
     /** Returns the session's machine reference. */
     CMachine& machine() const;
-    /** Returns the session's console reference. */
-    CConsole& console() const;
 
     /** Returns the machine name. */
     QString machineName() const;
