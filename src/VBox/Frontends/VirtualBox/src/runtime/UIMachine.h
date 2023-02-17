@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98607 2023-02-16 16:02:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98617 2023-02-17 11:44:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -610,20 +610,6 @@ private slots:
         void sltCursorPositionChange(bool fContainsData,
                                      unsigned long uX,
                                      unsigned long uY);
-    /** @} */
-
-    /** @name Close stuff.
-     ** @{ */
-        /** Handles signal about machine state saved.
-          * @param  fSuccess  Brings whether state was saved successfully. */
-        void sltHandleMachineStateSaved(bool fSuccess);
-        /** Handles signal about machine powered off.
-          * @param  fSuccess           Brings whether machine was powered off successfully.
-          * @param  fIncludingDiscard  Brings whether machine state should be discarded. */
-        void sltHandleMachinePoweredOff(bool fSuccess, bool fIncludingDiscard);
-        /** Handles signal about snapshot restored.
-          * @param  fSuccess  Brings whether machine was powered off successfully. */
-        void sltHandleSnapshotRestored(bool fSuccess);
     /** @} */
 
 private:
