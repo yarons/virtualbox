@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98605 2023-02-16 15:04:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -301,7 +301,7 @@ private slots:
     void sltOpenSettingsDialogUSBDevices();
     void sltOpenSettingsDialogSharedFolders();
     void sltAttachUSBDevice();
-    void sltAttachWebCamDevice();
+    void sltAttachWebcamDevice();
     void sltChangeSharedClipboardType(QAction *pAction);
     void sltToggleNetworkAdapterConnection();
     void sltChangeDragAndDropType(QAction *pAction);
@@ -352,7 +352,7 @@ private:
     /** Update 'Devices' : 'USB Devices' menu routine. */
     void updateMenuDevicesUSB(QMenu *pMenu);
     /** Update 'Devices' : 'Web Cams' menu routine. */
-    void updateMenuDevicesWebCams(QMenu *pMenu);
+    void updateMenuDevicesWebcams(QMenu *pMenu);
     /** Update 'Devices' : 'Shared Clipboard' menu routine. */
     void updateMenuDevicesSharedClipboard(QMenu *pMenu);
     /** Update 'Devices' : 'Drag and Drop' menu routine. */

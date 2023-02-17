@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98620 2023-02-17 15:12:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -558,6 +558,21 @@ bool UIMachine::attachUSBDevice(const QUuid &uId)
 bool UIMachine::detachUSBDevice(const QUuid &uId)
 {
     return uisession()->detachUSBDevice(uId);
+}
+
+bool UIMachine::webcamDevices(QList<WebcamDeviceInfo> &guiWebcamDevices)
+{
+    return uisession()->webcamDevices(guiWebcamDevices);
+}
+
+bool UIMachine::webcamAttach(const QString &strPath, const QString &strName)
+{
+    return uisession()->webcamAttach(strPath, strName);
+}
+
+bool UIMachine::webcamDetach(const QString &strPath, const QString &strName)
+{
+    return uisession()->webcamDetach(strPath, strName);
 }
 
 bool UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)

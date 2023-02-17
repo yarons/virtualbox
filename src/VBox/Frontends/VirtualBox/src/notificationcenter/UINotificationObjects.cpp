@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -757,6 +757,15 @@ void UINotificationMessage::cannotAcquireUpdateAgentParameter(const CUpdateAgent
         QApplication::translate("UIMessageCenter", "Update failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire update agent parameter.") +
         UIErrorString::formatErrorInfo(comAgent));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireEmulatedUSBParameter(const CEmulatedUSB &comDispatcher)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Emulated USB failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire emulated USB parameter.") +
+        UIErrorString::formatErrorInfo(comDispatcher));
 }
 
 /* static */

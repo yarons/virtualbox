@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98620 2023-02-17 15:12:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -281,6 +281,13 @@ public:
         bool attachUSBDevice(const QUuid &uId);
         /** Detaches USB device with passed @a uId. */
         bool detachUSBDevice(const QUuid &uId);
+
+        /** Returns a list of web cam devices. */
+        bool webcamDevices(QList<WebcamDeviceInfo> &guiWebcamDevices);
+        /** Attaches web cam device with passed @a strName and @a strPath. */
+        bool webcamAttach(const QString &strPath, const QString &strName);
+        /** Detaches web cam device with passed @a strName and @a strPath. */
+        bool webcamDetach(const QString &strPath, const QString &strName);
     /** @} */
 
     /** @name Guest additions stuff.

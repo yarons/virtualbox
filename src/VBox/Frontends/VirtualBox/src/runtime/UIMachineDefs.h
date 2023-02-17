@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 98620 2023-02-17 15:12:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -85,6 +85,15 @@ struct USBDeviceInfo
     QString  m_strToolTip;
     bool     m_fIsChecked;
     bool     m_fIsEnabled;
+};
+
+/** Robust struct to bring web cam device info to machine-logic. */
+struct WebcamDeviceInfo
+{
+    QString  m_strName;
+    QString  m_strPath;
+    QString  m_strToolTip;
+    bool     m_fIsChecked;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIMachineDefs_h */
