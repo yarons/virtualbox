@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98617 2023-02-17 11:44:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98620 2023-02-17 15:12:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -406,6 +406,16 @@ public:
         bool putMouseEventAbsolute(long iX, long iY, long iDz, long iDw, long iButtonState);
         /** Sends multi-touch event to VM's mouse. */
         bool putEventMultiTouch(long iCount, const QVector<LONG64> &contacts, bool fIsTouchScreen, ulong uScanTime);
+    /** @} */
+
+    /** @name USB stuff.
+     ** @{ */
+        /** Returns a list of USB devices. */
+        bool usbDevices(QList<USBDeviceInfo> &guiUSBDevices);
+        /** Attaches USB device with passed @a uId. */
+        bool attachUSBDevice(const QUuid &uId);
+        /** Detaches USB device with passed @a uId. */
+        bool detachUSBDevice(const QUuid &uId);
     /** @} */
 
     /** @name Virtualization stuff.

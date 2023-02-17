@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98617 2023-02-17 11:44:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98620 2023-02-17 15:12:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -543,6 +543,21 @@ bool UIMachine::putMouseEventAbsolute(long iX, long iY, long iDz, long iDw, long
 bool UIMachine::putEventMultiTouch(long iCount, const QVector<LONG64> &contacts, bool fIsTouchScreen, ulong uScanTime)
 {
     return uisession()->putEventMultiTouch(iCount, contacts, fIsTouchScreen, uScanTime);
+}
+
+bool UIMachine::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)
+{
+    return uisession()->usbDevices(guiUSBDevices);
+}
+
+bool UIMachine::attachUSBDevice(const QUuid &uId)
+{
+    return uisession()->attachUSBDevice(uId);
+}
+
+bool UIMachine::detachUSBDevice(const QUuid &uId)
+{
+    return uisession()->detachUSBDevice(uId);
 }
 
 bool UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)
