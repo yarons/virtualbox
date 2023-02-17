@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 98615 2023-02-17 10:01:51Z knut.osmundsen@oracle.com $
+# $Id: vboxtestvms.py 98616 2023-02-17 10:23:09Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98615 $"
+__version__ = "$Revision: 98616 $"
 
 # Standard Python imports.
 import copy;
@@ -1690,13 +1690,13 @@ class TestVmSet(object):
 
         elif asArgs[iArg] == '--skip-win-vms':
             asTestVMs = asArgs[iArg].split(':');
-            for oTestVm in self.oTestVmManager.aoTestVms:
+            for oTestVm in self.aoTestVms:
                 if oTestVm.isWindows():
                     oTestVm.fSkip = True;
 
         elif asArgs[iArg] == '--skip-non-win-vms':
             asTestVMs = asArgs[iArg].split(':');
-            for oTestVm in self.oTestVmManager.aoTestVms:
+            for oTestVm in self.aoTestVms:
                 if not oTestVm.isWindows():
                     oTestVm.fSkip = True;
 
