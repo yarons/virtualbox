@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98429 2023-02-02 12:03:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98628 2023-02-18 20:10:51Z alexander.eichner@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -486,6 +486,11 @@ ifdef VBOX_WITH_VMSVGA3D
  VBOX_DI_VBAPP_DYLIBS += \
  	MacOS/VBoxSVGA3D.dylib \
  	MacOS/VBoxSVGA3DObjC.dylib
+endif
+ifdef VBOX_WITH_DXVK
+ VBOX_DI_VBAPP_DYLIBS += \
+ 	MacOS/VBoxDxVk.dylib \
+ 	MacOS/libMoltenVK.dylib
 endif
 
 ifdef VBOX_WITH_PYTHON
