@@ -1,4 +1,4 @@
-; $Id: VBoxVideoEarlyNT.inf 98633 2023-02-19 00:57:03Z knut.osmundsen@oracle.com $
+; $Id: VBoxVideoEarlyNT.inf 98634 2023-02-19 12:30:41Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Video miniport driver, Windows 2000 and NT4 edition.
 ;
@@ -44,6 +44,9 @@ VBoxVideo.Display  = 11 ; system32
 [Manufacturer]
 %ORACLE%=Model
 
+; For Windows 2000 and NT4, this section must be called 'Model' it seems.
+; Calling it VBoxVideo like VBoxVideo.inf does, results in
+; ERROR_NON_WINDOWS_NT_DRIVER (0xe000022d). See r155932.
 [Model]
 %VBoxVideo.SvcDesc% = VBoxVideo, PCI\VEN_80EE&DEV_BEEF
 
