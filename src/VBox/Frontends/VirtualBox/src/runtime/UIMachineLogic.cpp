@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98642 2023-02-20 10:47:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -651,8 +651,34 @@ void UIMachineLogic::sltRuntimeError(bool fIsFatal, const QString &strErrorId, c
             return;
     }
 
+    /* Determine current console state: */
+    const bool fPaused = uimachine()->isPaused();
+
+    /* Make sure machine is paused in case of fatal error: */
+    if (fIsFatal)
+    {
+        Assert(fPaused);
+        if (!fPaused)
+            uimachine()->pause();
+    }
+
+    /* Should the default Warning type be overridden? */
+    MessageType enmMessageType = MessageType_Warning;
+    if (fIsFatal)
+        enmMessageType = MessageType_Critical;
+    else if (fPaused)
+        enmMessageType = MessageType_Error;
+
     /* Show runtime error: */
-    msgCenter().showRuntimeError(console(), fIsFatal, strErrorId, strMessage);
+    msgCenter().showRuntimeError(enmMessageType, strErrorId, strMessage);
+
+    /* Postprocessing: */
+    if (fIsFatal)
+    {
+        /* Power off after a fIsFatal error: */
+        LogRel(("GUI: Automatic request to power VM off after a fatal runtime error...\n"));
+        uimachine()->powerOff(false /* do NOT restore current snapshot */);
+    }
 }
 
 #ifdef VBOX_WS_MAC

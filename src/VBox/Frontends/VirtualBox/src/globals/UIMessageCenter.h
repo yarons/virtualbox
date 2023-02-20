@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMessageCenter.h 98642 2023-02-20 10:47:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -420,7 +420,7 @@ public:
 
         void warnAboutVBoxSVCUnavailable() const;
         bool warnAboutGuruMeditation(const QString &strLogFolder);
-        void showRuntimeError(const CConsole &console, bool fFatal, const QString &strErrorId, const QString &strErrorMsg) const;
+        void showRuntimeError(MessageType emnMessageType, const QString &strErrorId, const QString &strErrorMsg) const;
 
         bool confirmInputCapture(bool &fAutoConfirmed) const;
         bool confirmGoingFullscreen(const QString &strHotKey) const;
