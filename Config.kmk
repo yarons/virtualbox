@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98635 2023-02-19 12:46:41Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 98649 2023-02-20 12:55:59Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2349,6 +2349,7 @@ VBOX_PYLINT_FLAGS = $(if-expr $(VBOX_PYLINT_VERSION) >= 10500,--reports=n,--repo
 	$(if-expr $(VBOX_PYLINT_VERSION) >= 20400,--disable=import-outside-toplevel,) \
 	$(if-expr $(VBOX_PYLINT_VERSION) >= 20900,--disable=super-with-arguments --disable=raise-missing-from,) \
 	$(if-expr $(VBOX_PYLINT_VERSION) >= 21200,--disable=consider-using-f-string --disable=unnecessary-semicolon --disable=redundant-u-string-prefix) \
+	$(if-expr $(VBOX_PYLINT_VERSION) >= 21602,--disable=broad-exception-raised) \
 	--disable=unnecessary-semicolon,invalid-encoded-data,global-statement,bare-except,broad-except,multiple-statements,no-self-use,fixme \
 	--disable=I0011 \
 	--ignored-classes=testdriver.vboxcon
@@ -8941,7 +8942,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98635 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98649 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
