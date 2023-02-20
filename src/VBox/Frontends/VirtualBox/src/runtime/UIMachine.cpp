@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -323,6 +323,11 @@ bool UIMachine::isStuck() const
 bool UIMachine::isGuestScreenUnDrawable() const
 {
     return uisession()->isGuestScreenUnDrawable();
+}
+
+bool UIMachine::reset()
+{
+    return uisession()->reset();
 }
 
 bool UIMachine::pause()

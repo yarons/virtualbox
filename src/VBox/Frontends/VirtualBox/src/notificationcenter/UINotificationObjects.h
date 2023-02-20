@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -424,6 +424,9 @@ public:
         /** Notifies about inability to ACPI shutdown machine.
           * @param  comConsole  Brings console trying to shutdown machine. */
         static void cannotACPIShutdownMachine(const CConsole &comConsole);
+        /** Notifies about inability to reset machine.
+          * @param  comConsole  Brings console trying to reset machine. */
+        static void cannotResetMachine(const CConsole &comConsole);
     /** @} */
 
     /** @name COM VirtualBox Manager warnings.

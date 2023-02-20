@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -1052,6 +1052,16 @@ void UINotificationMessage::cannotACPIShutdownMachine(const CConsole &comConsole
     createMessage(
         QApplication::translate("UIMessageCenter", "Can't shutdown machine ..."),
         QApplication::translate("UIMessageCenter", "Failed to send the ACPI Power Button press event to the virtual machine "
+                                                   "<b>%1</b>.").arg(CConsole(comConsole).GetMachine().GetName()) +
+        UIErrorString::formatErrorInfo(comConsole));
+}
+
+/* static */
+void UINotificationMessage::cannotResetMachine(const CConsole &comConsole)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't reset machine ..."),
+        QApplication::translate("UIMessageCenter", "Failed to reset the virtual machine "
                                                    "<b>%1</b>.").arg(CConsole(comConsole).GetMachine().GetName()) +
         UIErrorString::formatErrorInfo(comConsole));
 }

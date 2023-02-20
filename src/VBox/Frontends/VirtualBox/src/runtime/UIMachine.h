@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -232,6 +232,8 @@ public:
         /** Returns whether VM is one of states where guest-screen is undrawable. */
         bool isGuestScreenUnDrawable() const;
 
+        /** Resets VM. */
+        bool reset();
         /** Performes VM pausing. */
         bool pause();
         /** Performes VM resuming. */

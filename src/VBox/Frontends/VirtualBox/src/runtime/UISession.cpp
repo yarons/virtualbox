@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -256,6 +256,16 @@ bool UISession::powerUp()
 WId UISession::mainMachineWindowId() const
 {
     return mainMachineWindow() ? mainMachineWindow()->winId() : 0;
+}
+
+bool UISession::reset()
+{
+    CConsole comConsole = console();
+    comConsole.Reset();
+    const bool fSuccess = comConsole.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotResetMachine(comConsole);
+    return fSuccess;
 }
 
 bool UISession::setPause(bool fPause)
