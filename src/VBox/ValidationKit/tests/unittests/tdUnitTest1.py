@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 98641 2023-02-20 09:58:20Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 98645 2023-02-20 12:18:19Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98641 $"
+__version__ = "$Revision: 98645 $"
 
 
 # Standard Python imports.
@@ -1097,7 +1097,7 @@ class tdUnitTest1(vbox.TestDriver):
 
         if not self.fDryRun:
             if self.isRemoteMode():
-                asRemoteEnvChg = ['%s=%s' % (sKey, dEnvChanges[sKey]) for sKey in dEnvChanges.items()];
+                asRemoteEnvChg = ['%s=%s' % (sKey, dEnvChanges[sKey]) for sKey in dEnvChanges];
 
                 fRc = self.txsRunTest(self.oTxsSession, sName, cMsTimeout = 30 * 60 * 1000, sExecName = asArgs[0],
                                       asArgs = asArgs, asAddEnv = asRemoteEnvChg, fCheckSessionStatus = True);
@@ -1112,7 +1112,7 @@ class tdUnitTest1(vbox.TestDriver):
                     else:
                         iRc = -1; ## @todo
             else:
-                for sKey in dEnvChanges.items():
+                for sKey in dEnvChanges:
                     os.environ[sKey] = dEnvChanges[sKey];
 
                 oChild = None;
