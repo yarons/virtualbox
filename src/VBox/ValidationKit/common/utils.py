@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: utils.py 98648 2023-02-20 12:55:13Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98648 $"
 
 
 # Standard Python imports.
@@ -73,6 +73,24 @@ if sys.version_info[0] >= 3:
     unicode = str;  # pylint: disable=redefined-builtin,invalid-name
     xrange = range; # pylint: disable=redefined-builtin,invalid-name
     long = int;     # pylint: disable=redefined-builtin,invalid-name
+
+
+#
+# Python 2/3 glue.
+#
+
+if sys.version_info[0] >= 3:
+    def iteritems(dDict):
+        """
+        Wrapper around dict.items() / dict.iteritems().
+        """
+        return iter(dDict.items());
+else:
+    def iteritems(dDict):
+        """
+        Wrapper around dict.items() / dict.iteritems().
+        """
+        return dDict.iteritems();
 
 
 #
@@ -2266,7 +2284,7 @@ def unpackTarFile(sArchive, sDstDir, fnLog, fnError = None, fnFilter = None):
     # 60%+ speedup for python 2.7 and 50%+ speedup for python 3.5, both on windows with PDBs.
     # 20%+ speedup for python 2.7 and 15%+ speedup for python 3.5, both on windows skipping PDBs.
     #
-    if True is True: # pylint: disable=comparison-with-itself
+    if True is True: # pylint: disable=comparison-with-itself,comparison-of-constants
         __installShUtilHacks(shutil);
         global g_fTarCopyFileObjOverriddend;
         if g_fTarCopyFileObjOverriddend is False:
