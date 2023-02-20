@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: loopback.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: loopback.py 98652 2023-02-20 13:13:05Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Serial loopback module.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98652 $"
 
 # Standard Python imports.
 #import os;
@@ -204,7 +204,7 @@ class SerialLoopback(object):
         self.sType     = sType;
         self.sLocation = sLocation;
         self.oLock     = threading.Lock();
-        self.oThread   = threading.Thread(target=self.threadWorker, args=(), name=('SerLoopback'));
+        self.oThread   = threading.Thread(target=self.threadWorker, args=(), name='SerLoopback');
 
         if sType == g_ksLoopbackTcpServ:
             self.oIoPumper = SerialLoopbackTcpServ(sLocation, 0.5);
