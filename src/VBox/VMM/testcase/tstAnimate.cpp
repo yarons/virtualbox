@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstAnimate.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -838,7 +838,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
      */
     PVM pVM;
     PUVM pUVM;
-    rc = VMR3Create(1, NULL, NULL, NULL, cfgmR3CreateDefault, &cbMem, &pVM, &pUVM);
+    rc = VMR3Create(1 /*cCpus*/, NULL, 0 /*fFlags*/, NULL, NULL, cfgmR3CreateDefault, &cbMem, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         /*

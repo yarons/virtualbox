@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMMFork.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMM Fork Test.
  */
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
     RTPrintf(TESTCASE ": Initializing...\n");
     PVM pVM;
     PUVM pUVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM);
+    int rc = VMR3Create(1 /*cCpus*/, NULL, 0 /*fFlags*/, NULL, NULL, NULL, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         /*

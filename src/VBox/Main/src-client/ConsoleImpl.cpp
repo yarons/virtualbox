@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 98340 2023-01-30 00:09:34Z brian.le.lee@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -11021,6 +11021,7 @@ void Console::i_powerUpThreadTask(VMPowerUpTask *pTask)
         PVM           pVM  = NULL;
         vrc = pVMM->pfnVMR3Create(cCpus,
                                   pConsole->mpVmm2UserMethods,
+                                  0 /*fFlags*/,
                                   Console::i_genericVMSetErrorCallback,
                                   &pTask->mErrorMsg,
                                   pTask->mpfnConfigConstructor,

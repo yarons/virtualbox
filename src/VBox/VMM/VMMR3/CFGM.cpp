@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CFGM.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -1084,6 +1084,16 @@ VMMR3DECL(int) CFGMR3ConstructDefaultTree(PVM pVM)
     UPDATERC();
     rc = CFGMR3InsertInteger(pRoot, "TimerMillies",         10);
     UPDATERC();
+
+    /*
+     * HM.
+     */
+    PCFGMNODE pHm;
+    rc = CFGMR3InsertNode(pRoot, "HM", &pHm);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pHm, "FallbackToIEM",          1); /* boolean */
+    UPDATERC();
+
 
     /*
      * PDM.
@@ -3292,6 +3302,10 @@ VMMR3DECL(void) CFGMR3Dump(PCFGMNODE pRoot)
     bool fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
     LogRel(("************************* CFGM dump *************************\n"));
     cfgmR3Dump(pRoot, 0, DBGFR3InfoLogRelHlp());
+#ifdef LOG_ENABLED
+    if (LogIsEnabled())
+        cfgmR3Dump(pRoot, 0, DBGFR3InfoLogHlp());
+#endif
     LogRel(("********************* End of CFGM dump **********************\n"));
     RTLogRelSetBuffering(fOldBuffered);
 }

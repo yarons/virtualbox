@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -591,7 +591,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
     PVM pVM;
     PUVM pUVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM);
+    int rc = VMR3Create(1 /*cCpus*/, NULL, 0 /*fFlags*/, NULL, NULL, NULL, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         /*

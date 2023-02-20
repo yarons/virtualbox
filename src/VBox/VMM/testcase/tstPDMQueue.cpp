@@ -1,4 +1,4 @@
-/* $Id: tstPDMQueue.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstPDMQueue.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Queue Testcase.
  */
@@ -423,7 +423,7 @@ static void DoTests(void)
 {
     PVM  pVM;
     PUVM pUVM;
-    RTTESTI_CHECK_RC_OK_RETV(VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM));
+    RTTESTI_CHECK_RC_OK_RETV(VMR3Create(1 /*cCpus*/, NULL, VMCREATE_F_DRIVERLESS, NULL, NULL, NULL, NULL, &pVM, &pUVM));
 
     /*
      * Do the tests.
