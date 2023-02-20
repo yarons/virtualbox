@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 98598 2023-02-16 00:54:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 98639 2023-02-20 09:30:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -77,7 +77,7 @@
 #ifndef ERROR_DRIVER_STORE_ADD_FAILED
 # define ERROR_DRIVER_STORE_ADD_FAILED          (APPLICATION_ERROR_MASK | ERROR_SEVERITY_ERROR | 0x0247L)
 #endif
-#define ERROR_DEPENDENT_APPLICATIONS_EXIST      (APPLICATION_ERROR_MASK | ERROR_SEVERITY_ERROR|0x300)
+#define ERROR_DEPENDENT_APPLICATIONS_EXIST      (APPLICATION_ERROR_MASK | ERROR_SEVERITY_ERROR | 0x300)
 #define ERROR_DRIVER_PACKAGE_NOT_IN_STORE       (APPLICATION_ERROR_MASK | ERROR_SEVERITY_ERROR | 0x302)
 
 /* Registry string list flags */
@@ -91,7 +91,7 @@
 /** NT4: The video service name. */
 #define VBOXGUEST_NT4_VIDEO_NAME                "VBoxVideo"
 /** NT4: The video inf file name */
-#define VBOXGUEST_NT4_VIDEO_INF_NAME            "VBoxVideo.inf"
+#define VBOXGUEST_NT4_VIDEO_INF_NAME            "VBoxVideoEarlyNT.inf"
 
 
 /*********************************************************************************************************************************
