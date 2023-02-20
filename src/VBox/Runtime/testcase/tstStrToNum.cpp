@@ -1,4 +1,4 @@
-/* $Id: tstStrToNum.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstStrToNum.cpp 98640 2023-02-20 09:37:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
@@ -499,9 +499,9 @@ int main()
         { "-Inf 0",                         4, VINF_SUCCESS,            RTFLOAT64U_INIT_INF(1) },
         { "Nan",                            0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(0) },
         { "+Nan",                           0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(0) },
-        { "+Nan(1)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(0) },
+        { "+Nan(1)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN_EX(0, 1) },
         { "-NaN",                           0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(1) },
-        { "-nAn(1)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(1) },
+        { "-nAn(1)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN_EX(1, 1) },
         { "-nAn(q)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_QNAN(1) },
         { "-nAn(s)",                        0, VINF_SUCCESS,            RTFLOAT64U_INIT_SNAN(1) },
         { "-nAn(_sig)",                     0, VINF_SUCCESS,            RTFLOAT64U_INIT_SNAN(1) },
