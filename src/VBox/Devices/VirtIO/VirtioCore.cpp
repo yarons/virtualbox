@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioCore.cpp 98661 2023-02-20 16:31:14Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -1048,6 +1048,9 @@ int virtioCoreR3VirtqUsedBufPut(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_
     /*
      * Place used buffer's descriptor in used ring but don't update used ring's slot index.
      * That will be done with a subsequent client call to virtioCoreVirtqUsedRingSync()
+     *
+     * @todo r=aeichner: The increment of the shadow index is not atomic but this code can be called
+     *                   concurrently!!
      */
     virtioWriteUsedElem(pDevIns, pVirtio, pVirtq, pVirtq->uUsedIdxShadow++, pVirtqBuf->uHeadIdx, (uint32_t)cbTotal);
 
