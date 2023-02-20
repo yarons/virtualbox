@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -388,6 +388,16 @@ bool UISession::putEventMultiTouch(long iCount, const QVector<LONG64> &contacts,
     const bool fSuccess = comMouse.isOk();
     if (!fSuccess)
         UINotificationMessage::cannotChangeMouseParameter(comMouse);
+    return fSuccess;
+}
+
+bool UISession::addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend)
+{
+    CConsole comConsole = console();
+    comConsole.AddEncryptionPassword(strId, strPassword, fClearOnSuspend);
+    const bool fSuccess = comConsole.isOk();
+    if (!fSuccess)
+        msgCenter().cannotAddDiskEncryptionPassword(comConsole);
     return fSuccess;
 }
 

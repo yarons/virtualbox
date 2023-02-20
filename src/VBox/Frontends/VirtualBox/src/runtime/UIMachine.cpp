@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -548,6 +548,11 @@ bool UIMachine::putMouseEventAbsolute(long iX, long iY, long iDz, long iDw, long
 bool UIMachine::putEventMultiTouch(long iCount, const QVector<LONG64> &contacts, bool fIsTouchScreen, ulong uScanTime)
 {
     return uisession()->putEventMultiTouch(iCount, contacts, fIsTouchScreen, uScanTime);
+}
+
+bool UIMachine::addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend)
+{
+    return uisession()->addEncryptionPassword(strId, strPassword, fClearOnSuspend);
 }
 
 bool UIMachine::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)

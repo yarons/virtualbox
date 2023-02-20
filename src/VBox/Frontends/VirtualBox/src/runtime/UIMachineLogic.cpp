@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -272,11 +272,6 @@ UIActionPool *UIMachineLogic::actionPool() const
 CMachine& UIMachineLogic::machine() const
 {
     return uisession()->machine();
-}
-
-CConsole& UIMachineLogic::console() const
-{
-    return uisession()->console();
 }
 
 QString UIMachineLogic::machineName() const
@@ -3015,11 +3010,9 @@ void UIMachineLogic::askUserForTheDiskEncryptionPasswords()
 
             /* Apply the disk encryption passwords: */
             foreach (const QString &strKey, encryptionPasswords.keys())
-            {
-                console().AddEncryptionPassword(strKey, encryptionPasswords.value(strKey), false);
-                if (!console().isOk())
-                    msgCenter().cannotAddDiskEncryptionPassword(console());
-            }
+                uimachine()->addEncryptionPassword(strKey,
+                                                   encryptionPasswords.value(strKey),
+                                                   false /* do NOT clear on suspend */);
         }
         else
         {

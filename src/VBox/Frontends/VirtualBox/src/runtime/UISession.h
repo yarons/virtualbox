@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -273,6 +273,12 @@ public:
         bool putMouseEventAbsolute(long iX, long iY, long iDz, long iDw, long iButtonState);
         /** Sends multi-touch event to VM's mouse. */
         bool putEventMultiTouch(long iCount, const QVector<LONG64> &contacts, bool fIsTouchScreen, ulong uScanTime);
+    /** @} */
+
+    /** @name Storage stuff.
+     ** @{ */
+        /** Adds encryption password. */
+        bool addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend);
     /** @} */
 
     /** @name USB stuff.
