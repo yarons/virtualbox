@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testresults.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard python imports.
@@ -2325,8 +2325,8 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
     def _stringifyStack(aoStack):
         """Returns a string rep of the stack."""
         sRet = '';
-        for i, _ in enumerate(aoStack):
-            sRet += 'aoStack[%d]=%s\n' % (i, aoStack[i]);
+        for i, oFrame in enumerate(aoStack):
+            sRet += 'aoStack[%d]=%s\n' % (i, oFrame);
         return sRet;
 
     def _getResultStack(self, idTestSet):
@@ -2343,8 +2343,8 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
         for aoRow in self._oDb.fetchAll():
             aoStack.append(TestResultData().initFromDbRow(aoRow));
 
-        for i, _ in enumerate(aoStack):
-            assert aoStack[i].iNestingDepth == len(aoStack) - i - 1, self._stringifyStack(aoStack);
+        for i, oFrame in enumerate(aoStack):
+            assert oFrame.iNestingDepth == len(aoStack) - i - 1, self._stringifyStack(aoStack);
 
         return aoStack;
 

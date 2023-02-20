@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testgroup.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testgroup.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 Test Manager - Test groups management.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard python imports.
@@ -366,8 +366,7 @@ class TestGroupDataEx(TestGroupData):
                 asErrors.append(str(dErrors));
 
         if not asErrors:
-            for i, _ in enumerate(aoNewMembers):
-                idTestCase = aoNewMembers[i];
+            for i, idTestCase in enumerate(aoNewMembers):
                 for j in range(i + 1, len(aoNewMembers)):
                     if aoNewMembers[j].idTestCase == idTestCase:
                         asErrors.append('Duplicate testcase #%d!' % (idTestCase, ));

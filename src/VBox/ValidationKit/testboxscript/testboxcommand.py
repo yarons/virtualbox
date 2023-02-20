@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommand.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: testboxcommand.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 TestBox Script - Command Processor.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98655 $"
 
 # Standard python imports.
 import os;
@@ -191,8 +191,8 @@ class TestBoxCommand(object):
             if asCmd2 is not None:
                 try:
                     utils.sudoProcessOutputChecked(asCmd2);
-                except Exception as oXcpt:
-                    testboxcommons.log('Error executing reboot command "%s" as well as "%s": %s' % (asCmd, asCmd2, oXcpt));
+                except Exception as oXcpt2:
+                    testboxcommons.log('Error executing reboot command "%s" as well as "%s": %s' % (asCmd, asCmd2, oXcpt2));
                     return False;
             testboxcommons.log('Error executing reboot command "%s": %s' % (asCmd, oXcpt));
             return False;
@@ -250,7 +250,7 @@ class TestBoxCommand(object):
         if fReboot:
             self.doReboot();
         sys.exit(TBS_EXITCODE_NEED_UPGRADE);
-        return False;                   # shuts up pylint (it will probably complain later when it learns DECL_NO_RETURN).
+        return False;  # shuts up older pylint. 2.16.2+:  pylint: disable=unreachable
 
     def _cmdUpgrade(self, oResponse, oConnection):
         """

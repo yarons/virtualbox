@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdGuestOsInstTest1.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard Python imports.
@@ -311,7 +311,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
         Extend standard options set
         """
 
-        if False is True:
+        if False is True: # placeholder.    pylint: disable=comparison-of-constants
             pass;
         elif asArgs[iArg] == '--ioapic':
             for oTestVm in self.oTestVmSet.aoTestVms:

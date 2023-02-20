@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98655 $"
 
 # Standard Python imports.
 import errno
@@ -3376,7 +3376,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         reporter.log('Creating reboot thread ...');
                         oThreadReboot = threading.Thread(target = self.threadForTestGuestCtrlSessionReboot,
                                                          args = (oGuestProcess,),
-                                                         name = ('threadForTestGuestCtrlSessionReboot'));
+                                                         name = 'threadForTestGuestCtrlSessionReboot');
                         oThreadReboot.setDaemon(True); # pylint: disable=deprecated-method
                         oThreadReboot.start();
 

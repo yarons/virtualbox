@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: winbase.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard Python imports.
@@ -141,7 +141,7 @@ def processExists(uPid):
             return False;
         reporter.logXcpt('uPid=%s oXcpt=%s' % (uPid, oXcpt));
     except Exception as oXcpt:
-        reporter.logXcpt('uPid=%s' % (uPid,));
+        reporter.logXcpt('uPid=%s oXcpt=%s' % (uPid, oXcpt));
         return False;
     else:
         hProcess.Close(); #win32api.CloseHandle(hProcess)

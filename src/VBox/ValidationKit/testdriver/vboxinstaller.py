@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard Python imports.
@@ -360,20 +360,22 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
             # Are any of the debugger processes hooked up to a VBox process?
             if sHostOs == 'windows':
-                # On demand debugging windows: windbg -p <decimal-pid> -e <decimal-event> -g
-                for oDebugger in aoDebuggers:
-                    for oProcess in aoTodo:
+                def isDebuggerDebuggingVBox(oDebugger, aoVBoxProcesses):
+                    for oProcess in aoVBoxProcesses:
                         # The whole command line is asArgs[0] here. Fix if that changes.
                         if oDebugger.asArgs and oDebugger.asArgs[0].find('-p %s ' % (oProcess.iPid,)) >= 0:
-                            aoTodo.append(oDebugger);
-                            break;
+                            return True;
+                    return False;
             else:
-                for oDebugger in aoDebuggers:
-                    for oProcess in aoTodo:
+                def isDebuggerDebuggingVBox(oDebugger, aoVBoxProcesses):
+                    for oProcess in aoVBoxProcesses:
                         # Simplistic approach: Just check for argument equaling our pid.
                         if oDebugger.asArgs and ('%s' % oProcess.iPid) in oDebugger.asArgs:
-                            aoTodo.append(oDebugger);
-                            break;
+                            return True;
+                    return False;
+            for oDebugger in aoDebuggers:
+                if isDebuggerDebuggingVBox(oDebugger, aoTodo):
+                    aoTodo.append(oDebugger);
 
             # Kill.
             for oProcess in aoTodo:
@@ -585,7 +587,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         if not fRc2 and fRc:
             fRc = fRc2;
 
-        reporter.testDone(fSkipped = (fRc is None));
+        reporter.testDone(fSkipped = fRc is None);
         return fRc;
 
     def _findFile(self, sRegExp, fMandatory = False):

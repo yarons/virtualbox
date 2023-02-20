@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: base.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard Python imports.
@@ -436,7 +436,8 @@ class TdTaskBase(object):
 
     def lockTask(self):
         """ Wrapper around oCv.acquire(). """
-        if True is True: # change to False for debugging deadlocks. # pylint: disable=comparison-with-itself
+        # Change this to False for debugging deadlocks.
+        if True is True: # pylint: disable=comparison-with-itself,comparison-of-constants
             self.oCv.acquire();
         else:
             msStartWait = timestampMilli();
@@ -653,7 +654,7 @@ class Process(TdTaskBase):
                 if winbase.processPollByHandle(self.hWin):
                     try:
                         if hasattr(self.hWin, '__int__'): # Needed for newer pywin32 versions.
-                            (uPid, uStatus) = os.waitpid(self.hWin.__int__(), 0);
+                            (uPid, uStatus) = os.waitpid(self.hWin.__int__(), 0); # pylint: disable=unnecessary-dunder-call
                         else:
                             (uPid, uStatus) = os.waitpid(self.hWin, 0);
                         if uPid in (self.hWin, self.uPid,):
@@ -1078,8 +1079,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
             self.aoTasks.remove(oTask);
         except:
             return None;
-        else:
-            oTask.setTaskOwner(None);
+        oTask.setTaskOwner(None);
         #reporter.log2('tasks left: %d - %s' % (len(self.aoTasks), self.aoTasks));
         return oTask;
 

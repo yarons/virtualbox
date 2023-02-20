@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vboxwrappers.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard Python imports.
@@ -525,7 +525,7 @@ class ProgressWrapper(TdTaskBase):
         Queries everything that is stable and easy to get at and checks that
         they don't throw errors.
         """
-        if True is True: # pylint: disable=comparison-with-itself
+        if True is True: # pylint: disable=comparison-with-itself,comparison-of-constants
             try:
                 iPct        = self.o.operationPercent;
                 sDesc       = self.o.description;
@@ -1836,15 +1836,14 @@ class SessionWrapper(TdTaskBase):
                 except:
                     reporter.errorXcpt('addStorageController("%s",%s) failed on "%s"' % (sController, eBus, self.sName) );
                     return False;
-                else:
-                    try:
-                        oCtl.controllerType = eType;
-                        reporter.log('added storage controller "%s" (bus %s, type %s) to %s'
-                                    % (sController, eBus, eType, self.sName));
-                    except:
-                        reporter.errorXcpt('controllerType = %s on ("%s" / %s) failed on "%s"'
-                                           % (eType, sController, eBus, self.sName) );
-                        return False;
+                try:
+                    oCtl.controllerType = eType;
+                    reporter.log('added storage controller "%s" (bus %s, type %s) to %s'
+                                % (sController, eBus, eType, self.sName));
+                except:
+                    reporter.errorXcpt('controllerType = %s on ("%s" / %s) failed on "%s"'
+                                       % (eType, sController, eBus, self.sName) );
+                    return False;
         finally:
             self.oTstDrv.processPendingEvents();
         return True;
@@ -2473,7 +2472,7 @@ class SessionWrapper(TdTaskBase):
         try:
             sValue = self.o.machine.getExtraData(sKey)
         except:
-            reporter.errorXcpt('IMachine::setExtraData("%s","%s") failed' % (sKey, sValue))
+            reporter.errorXcpt('IMachine::getExtraData("%s") failed' % (sKey,))
             return None
         return sValue
 
@@ -3288,9 +3287,8 @@ class TxsConnectTask(TdTaskBase):
                 reporter.errorXcpt('IMachine::getGuestPropertyValue("/VirtualBox/GuestInfo/Net/0/V4/IP") failed');
                 self._deregisterEventHandler();
                 raise;
-            else:
-                if sIpAddr is not None:
-                    self._setIp(sIpAddr);
+            if sIpAddr is not None:
+                self._setIp(sIpAddr);
 
             #
             # If the network adapter of the VM is host-only we can talk poll IDHCPServer

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: wuihlpform.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 # Standard python imports.
 import copy;
@@ -695,8 +695,7 @@ class WuiHlpForm(object):
 
         oDefMember = TestGroupMemberData();
         aoTestGroupMembers = list(aoTestGroupMembers); # Copy it so we can pop.
-        for iTestCase, _ in enumerate(aoAllTestCases):
-            oTestCase = aoAllTestCases[iTestCase];
+        for iTestCase, oTestCase in enumerate(aoAllTestCases):
 
             # Is it a member?
             oMember = None;
@@ -806,8 +805,7 @@ class WuiHlpForm(object):
 
         oDefMember = SchedGroupMemberData();
         aoSchedGroupMembers = list(aoSchedGroupMembers); # Copy it so we can pop.
-        for iTestGroup, _ in enumerate(aoAllRelevantTestGroups):
-            oTestGroup = aoAllRelevantTestGroups[iTestGroup];
+        for iTestGroup, oTestGroup in enumerate(aoAllRelevantTestGroups):
 
             # Is it a member?
             oMember = None;

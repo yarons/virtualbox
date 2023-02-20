@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: webservergluebase.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 
 # Standard python imports.
@@ -602,8 +602,8 @@ class WebServerGlueBase(object):
         if self._fHtmlDebugOutput:
             fnWrite('<h2>%s</h2>\n'
                     '<table border="1"><tr><th>index</th><th>value</th></tr>\n' % (sName,));
-            for i, _ in enumerate(aoStuff):
-                fnWrite('  <tr><td>' + str(i) + '</td><td>' + webutils.escapeElem(str(aoStuff[i])) + '</td></tr>\n');
+            for i, oStuff in enumerate(aoStuff):
+                fnWrite('  <tr><td>' + str(i) + '</td><td>' + webutils.escapeElem(str(oStuff)) + '</td></tr>\n');
             fnWrite('</table>\n');
         else:
             for ch in sName[:-1]:

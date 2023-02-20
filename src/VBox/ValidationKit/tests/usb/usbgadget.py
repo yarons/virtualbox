@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: usbgadget.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98655 $"
 
 # Standard Python imports.
 import array
@@ -561,7 +561,7 @@ class Session(TdTaskBase):
         self.fErr           = not fIgnoreErrors;
         self.fnTask         = fnTask;
         self.aTaskArgs      = aArgs;
-        self.oThread        = threading.Thread(target=self.taskThread, args=(), name=('UTS-%s' % (sStatus)));
+        self.oThread        = threading.Thread(target=self.taskThread, args=(), name='UTS-%s' % (sStatus,));
         self.oThread.setDaemon(True); # pylint: disable=deprecated-method
         self.msStart        = base.timestampMilli();
 
@@ -604,7 +604,7 @@ class Session(TdTaskBase):
 
         if sys.version_info < (3, 9, 0):
             # Removed since Python 3.9.
-            return oThread.isAlive(); # pylint: disable=no-member
+            return oThread.isAlive(); # pylint: disable=no-member,deprecated-method
         return oThread.is_alive();
 
     def taskThread(self):

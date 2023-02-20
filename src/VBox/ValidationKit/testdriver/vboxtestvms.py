@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 98616 2023-02-17 10:23:09Z knut.osmundsen@oracle.com $
+# $Id: vboxtestvms.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98616 $"
+__version__ = "$Revision: 98655 $"
 
 # Standard Python imports.
 import copy;
@@ -1889,7 +1889,7 @@ class TestVmSet(object):
 
                         cTests = cTests + (rc2 is not None);
                         if sParavirtMode is not None:
-                            reporter.testDone(fSkipped = (rc2 is None));
+                            reporter.testDone(fSkipped = rc2 is None);
 
                     reporter.testDone(fSkipped = cTests == cStartTests);
 
