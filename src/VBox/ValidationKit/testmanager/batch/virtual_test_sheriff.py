@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 98591 2023-02-15 14:29:49Z knut.osmundsen@oracle.com $
+# $Id: virtual_test_sheriff.py 98641 2023-02-20 09:58:20Z andreas.loeffler@oracle.com $
 # pylint: disable=line-too-long
 
 """
@@ -45,7 +45,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98591 $"
+__version__ = "$Revision: 98641 $"
 
 
 # Standard python imports
@@ -350,7 +350,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");   # pylint: disable=consider-using-with,unspecified-encoding
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 98591 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 98641 $ \n');
 
 
     def eprint(self, sText):
@@ -762,7 +762,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 98591 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 98641 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1291,7 +1291,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
             return oCaseFile.noteReasonForId(enmReason, oFailedResult.idTestResult);
 
         # Generalistic fallbacks:
-        for sKey in self.kdGATestFallbacks:
+        for sKey in self.kdGATestFallbacks.items():
             oTmpFailedResult = oFailedResult;
             while oTmpFailedResult:
                 if oTmpFailedResult.sName == sKey:
