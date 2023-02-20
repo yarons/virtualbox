@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib-win.cpp 98650 2023-02-20 13:00:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -285,6 +285,9 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags
                 pErrInfo->pszMsg[0] = '\0';
         }
 
+#else
+        RT_NOREF1(penmWhat);
+
         /*
          * Do fallback.
          */
@@ -296,9 +299,6 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags
             pThis->fDriverless = true;
             return VINF_SUCCESS;
         }
-
-#else
-        RT_NOREF1(penmWhat);
 #endif
         return rc;
     }
