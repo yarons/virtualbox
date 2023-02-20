@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 98269 2023-01-24 09:48:36Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98269 $"
+__version__ = "$Revision: 98651 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -52,7 +52,7 @@ import time
 import traceback
 
 # Figure out where the validation kit lives and make sure it's in the path.
-try:    __file__
+try:    __file__                            # pylint: disable=used-before-assignment
 except: __file__ = sys.argv[0];
 g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)));
 if g_ksValidationKitDir not in sys.path:

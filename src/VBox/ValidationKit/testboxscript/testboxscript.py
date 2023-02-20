@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testboxscript.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
 
 """
 TestBox Script Wrapper.
@@ -42,7 +42,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98651 $"
 
 import platform;
 import subprocess;
@@ -91,7 +91,7 @@ class TestBoxScriptWrapper(object): # pylint: disable=too-few-public-methods
 
         # Figure out where we live first.
         try:
-            __file__
+            __file__                        # pylint: disable=used-before-assignment
         except:
             __file__ = sys.argv[0];
         sTestBoxScriptDir = os.path.dirname(os.path.abspath(__file__));

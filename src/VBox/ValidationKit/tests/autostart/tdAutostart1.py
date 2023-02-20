@@ -35,7 +35,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Id: tdAutostart1.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $"
+__version__ = "$Id: tdAutostart1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $"
 
 # Standard Python imports.
 import os;
@@ -43,7 +43,7 @@ import sys;
 import re;
 
 # Only the main script needs to modify the path.
-try:    __file__
+try:    __file__                            # pylint: disable=used-before-assignment
 except: __file__ = sys.argv[0];
 g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))));
 sys.path.append(g_ksValidationKitDir);

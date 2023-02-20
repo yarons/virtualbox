@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testboxupgrade.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98651 $"
 
 # Standard python imports.
 import os
@@ -54,7 +54,7 @@ import testboxcommons
 from testboxscript import TBS_EXITCODE_SYNTAX;
 
 # Figure where we are.
-try:    __file__
+try:    __file__                            # pylint: disable=used-before-assignment
 except: __file__ = sys.argv[0];
 g_ksTestScriptDir = os.path.dirname(os.path.abspath(__file__));
 g_ksValidationKitDir  = os.path.dirname(g_ksTestScriptDir);
