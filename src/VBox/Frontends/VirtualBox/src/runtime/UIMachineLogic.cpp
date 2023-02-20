@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98642 2023-02-20 10:47:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98647 2023-02-20 12:35:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2466,7 +2466,7 @@ void UIMachineLogic::sltShowGuestControlConsoleDialog()
         return;
 
     QIManagerDialog *pProcessControlDialog;
-    UIGuestProcessControlDialogFactory dialogFactory(actionPool(), console().GetGuest(), machine().GetName());
+    UIGuestProcessControlDialogFactory dialogFactory(uimachine());
     dialogFactory.prepare(pProcessControlDialog, activeMachineWindow());
     if (pProcessControlDialog)
     {
