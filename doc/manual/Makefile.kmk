@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98673 2023-02-21 12:33:42Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 98678 2023-02-21 15:39:02Z serkan.bayraktar@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -872,7 +872,7 @@ man_vboximg-mount.xml \
 
  ##########################################################################################
  #
- #  Use DITA-OT to create pdf out of UserManual.ditamap. See usermanual.pdf under
+ #  Use DITA-OT to create pdf/hhp out of UserManual.ditamap. See usermanual.pdf under
  #  DITA-OT-xxxxx/doc folder for details.
  #
  ##########################################################################################
@@ -1030,7 +1030,7 @@ ifdef VBOX_WITH_DOCS_QHELP
   		| $$$$(dir $$$$@)
 	$$(call MSG_L1,htmlhelp-qthelp.py $$<,=> $$@)
 	$$(QUIET)$$(RM) -f $$@
-	$$(QUIET)$$(VBOX_BLD_PYTHON) $$(VBOX_PATH_MANUAL_SRC)/htmlhelp-qthelp.py -d $$(<D) -o $$@
+	$$(QUIET)$$(VBOX_BLD_PYTHON) $$(VBOX_PATH_MANUAL_SRC)/htmlhelp-qthelp.py -d $$(<D) -o $$@ -f htmlhelp.hhp -t toc.hhc
  endef
  $(foreach lang,$(VBOX_MANUAL_LANGUAGES),$(evalcall2 def_vbox_usermanual_hhp_qhelp_to_qhp))
 
