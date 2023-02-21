@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -298,6 +298,9 @@ public:
         /** Notifies about inability to acquire IMachineDebugger parameter.
           * @param  comMachineDebugger  Brings the object parameter get acquired from. */
         static void cannotAcquireMachineDebuggerParameter(const CMachineDebugger &comMachineDebugger);
+        /** Notifies about inability to acquire IGraphicsAdapter parameter.
+          * @param  comAdapter  Brings the object parameter get acquired from. */
+        static void cannotAcquireGraphicsAdapterParameter(const CGraphicsAdapter &comAdapter);
         /** Notifies about inability to acquire IConsole parameter.
           * @param  comConsole  Brings the object parameter get acquired from. */
         static void cannotAcquireConsoleParameter(const CConsole &comConsole);

@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -43,7 +43,7 @@
 
 UIMultiScreenLayout::UIMultiScreenLayout(UIMachineLogic *pMachineLogic)
     : m_pMachineLogic(pMachineLogic)
-    , m_cGuestScreens(m_pMachineLogic->machine().GetGraphicsAdapter().GetMonitorCount())
+    , m_cGuestScreens(0)
     , m_cHostMonitors(0)
 {
     prepare();
@@ -296,6 +296,7 @@ void UIMultiScreenLayout::calculateGuestScreenCount()
 {
     m_guestScreens.clear();
     m_disabledGuestScreens.clear();
+    uimachine()->acquireMonitorCount(m_cGuestScreens);
     for (uint iGuestScreen = 0; iGuestScreen < m_cGuestScreens; ++iGuestScreen)
         if (uimachine()->isScreenVisible(iGuestScreen))
             m_guestScreens << iGuestScreen;

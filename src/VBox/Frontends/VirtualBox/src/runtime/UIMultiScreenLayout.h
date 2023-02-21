@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.h 98518 2023-02-09 13:21:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.h 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class declaration.
  */
@@ -107,9 +107,9 @@ private:
     UIMachineLogic *m_pMachineLogic;
 
     /** Holds the number of guest-screens. */
-    const uint  m_cGuestScreens;
+    ulong  m_cGuestScreens;
     /** Holds the number of host-monitors. */
-    int         m_cHostMonitors;
+    int    m_cHostMonitors;
 
     /** Holds currently cached enabled guest-screens. */
     QList<int>  m_guestScreens;

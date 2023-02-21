@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -280,13 +280,15 @@ void UIMachineLogicNormal::prepareMachineWindows()
     ::darwinSetFrontMostProcess();
 #endif /* VBOX_WS_MAC */
 
-    /* Get monitors count: */
-    ulong uMonitorCount = machine().GetGraphicsAdapter().GetMonitorCount();
+    /* Acquire monitor count: */
+    ulong cMonitorCount = 0;
+    uimachine()->acquireMonitorCount(cMonitorCount);
+
     /* Create machine window(s): */
-    for (ulong uScreenId = 0; uScreenId < uMonitorCount; ++ uScreenId)
+    for (ulong uScreenId = 0; uScreenId < cMonitorCount; ++ uScreenId)
         addMachineWindow(UIMachineWindow::create(this, uScreenId));
     /* Order machine window(s): */
-    for (ulong uScreenId = uMonitorCount; uScreenId > 0; -- uScreenId)
+    for (ulong uScreenId = cMonitorCount; uScreenId > 0; -- uScreenId)
         machineWindows()[uScreenId - 1]->raise();
 
     /* Listen for frame-buffer resize: */

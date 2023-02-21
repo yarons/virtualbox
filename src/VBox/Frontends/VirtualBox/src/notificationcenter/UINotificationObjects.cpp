@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98653 2023-02-20 13:36:19Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -676,6 +676,15 @@ void UINotificationMessage::cannotAcquireMachineDebuggerParameter(const CMachine
         QApplication::translate("UIMessageCenter", "Debugger failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire machine debugger parameter.") +
         UIErrorString::formatErrorInfo(comMachineDebugger));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireGraphicsAdapterParameter(const CGraphicsAdapter &comAdapter)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Graphics adapter failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire graphics adapter parameter.") +
+        UIErrorString::formatErrorInfo(comAdapter));
 }
 
 /* static */

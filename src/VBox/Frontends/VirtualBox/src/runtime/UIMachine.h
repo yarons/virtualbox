@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -277,6 +277,9 @@ public:
         bool isGuestResizeIgnored() const { return m_fIsGuestResizeIgnored; }
         /** Defines whether guest screen resize should be @a fIgnored. */
         void setGuestResizeIgnored(bool fIgnored) { m_fIsGuestResizeIgnored = fIgnored; }
+
+        /** Acquires monitor count. */
+        bool acquireMonitorCount(ulong &uCount);
 
         /** Acquires parameters for guest-screen with passed uScreenId. */
         bool acquireGuestScreenParameters(ulong uScreenId,
