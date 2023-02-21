@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -409,8 +409,7 @@ typedef const GSTCTLFSOBJATTR *PCGSTCTLFSOBJATTR;
 #define GSTCTL_QUERYINFO_F_ON_LINK            RT_BIT_32(0)
 /** Last component: Follow if link. */
 #define GSTCTL_QUERYINFO_F_FOLLOW_LINK        RT_BIT_32(1)
-/** Don't allow symbolic links as part of the path.
- * @remarks this flag is currently not implemented and will be ignored. */
+/** Don't allow symbolic links as part of the path. */
 #define GSTCTL_QUERYINFO_F_NO_SYMLINKS        RT_BIT_32(2)
 /** GSTCTL_QUERYINFO_F_XXX flag valid mask. */
 #define GSTCTL_QUERYINFO_F_VALID_MASK         UINT32_C(0x00000007)

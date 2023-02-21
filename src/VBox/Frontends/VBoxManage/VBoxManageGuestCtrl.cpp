@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 98298 2023-01-25 02:23:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2327,8 +2327,10 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMkTemp(PGCTLCMDCTX pCtx, int argc, cha
     if (strTemplate.isEmpty())
         return errorSyntax(GuestCtrl::tr("No template specified!"));
 
+#ifndef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     if (!fDirectory)
         return errorSyntax(GuestCtrl::tr("Creating temporary files is currently not supported!"));
+#endif
 
     RTEXITCODE rcExit = gctlCtxPostOptionParsingInit(pCtx);
     if (rcExit != RTEXITCODE_SUCCESS)

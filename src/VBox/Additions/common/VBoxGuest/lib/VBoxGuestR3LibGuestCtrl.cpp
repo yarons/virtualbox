@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -2624,7 +2624,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlFsCbQueryInfoEx(PVBGLR3GUESTCTRLCMDCTX pCtx, uint
     AssertReturn(cbACL, VERR_INVALID_PARAMETER);
 
     HGCMReplyFsNotify Msg;
-    VBGL_HGCM_HDR_INIT(&Msg.reply_hdr.hdr, pCtx->uClientID, GUEST_MSG_FS_NOTIFY, 4);
+    VBGL_HGCM_HDR_INIT(&Msg.reply_hdr.hdr, pCtx->uClientID, GUEST_MSG_FS_NOTIFY, 7);
     VbglHGCMParmUInt32Set(&Msg.reply_hdr.context, pCtx->uContextID);
     VbglHGCMParmUInt32Set(&Msg.reply_hdr.type, GUEST_FS_NOTIFYTYPE_QUERY_INFO);
     VbglHGCMParmUInt32Set(&Msg.reply_hdr.rc, uRc);
@@ -2633,7 +2633,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlFsCbQueryInfoEx(PVBGLR3GUESTCTRLCMDCTX pCtx, uint
     VbglHGCMParmPtrSetString(&Msg.u.queryinfo.groups, pszGroups);
     VbglHGCMParmPtrSet      (&Msg.u.queryinfo.acl,    pvACL, cbACL);
 
-    return VbglR3HGCMCall(&Msg.reply_hdr.hdr, RT_UOFFSET_AFTER(HGCMReplyDirNotify, u.read));
+    return VbglR3HGCMCall(&Msg.reply_hdr.hdr, RT_UOFFSET_AFTER(HGCMReplyFsNotify, u.queryinfo));
 }
 
 

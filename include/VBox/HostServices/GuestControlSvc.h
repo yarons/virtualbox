@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 98546 2023-02-13 10:45:08Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1788,20 +1788,6 @@ typedef struct CALLBACKDATA_FILE_NOTIFY
         } SetSize;
     } u;
 } CALLBACKDATA_FILE_NOTIFY, *PCALLBACKDATA_FILE_NOTIFY;
-
-
-/*******************************************************************************
-* Payload structures for the generic reply message (HGCMMsgReply).             *
-*                                                                              *
-* The name suffix must match the host command name, e.g.                       *
-*     Host command HOST_MSG_FOO_BAR -> REPLY_PAYLOAD_FOO_BAR                   *
-*******************************************************************************/
-
-typedef struct REPLY_PAYLOAD_FS_QUERY_INFO
-{
-    GSTCTLFSOBJINFO objInfo;
-
-} REPLY_PAYLOAD_FS_QUERY_INFO;
 } /* namespace guestControl */
 
 #endif /* !VBOX_INCLUDED_HostServices_GuestControlSvc_h */

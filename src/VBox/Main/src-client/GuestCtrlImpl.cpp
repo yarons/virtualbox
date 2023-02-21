@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImpl.cpp 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -230,6 +230,12 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     vrc = pSession->i_dispatchToObject(pCtxCb, pSvcCb);
                     break;
 
+                /* File system stuff. */
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
+                case GUEST_MSG_FS_NOTIFY:
+                    vrc = pSession->i_dispatchToThis(pCtxCb, pSvcCb);
+                    break;
+#endif
                 /* Session stuff. */
                 case GUEST_MSG_SESSION_NOTIFY:
                     vrc = pSession->i_dispatchToThis(pCtxCb, pSvcCb);
