@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98675 2023-02-21 15:12:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1793,8 +1793,10 @@ void UIMachineLogic::sltPowerOff()
     }
 
     LogRel(("GUI: User requested to power VM off.\n"));
+    ulong uSnapshotCount = 0;
+    uimachine()->acquireSnapshotCount(uSnapshotCount);
     const bool fDiscardStateOnPowerOff = gEDataManager->discardStateOnPowerOff(uiCommon().managedVMUuid());
-    uimachine()->powerOff(machine().GetSnapshotCount() > 0 && fDiscardStateOnPowerOff);
+    uimachine()->powerOff(uSnapshotCount > 0 && fDiscardStateOnPowerOff);
 }
 
 void UIMachineLogic::sltMinimizeActiveMachineWindow()

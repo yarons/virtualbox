@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98675 2023-02-21 15:12:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -271,10 +271,13 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         QString strMachineName = machineName();
 
         /* Append snapshot name: */
-        if (machine().GetSnapshotCount() > 0)
+        ulong uSnapshotCount = 0;
+        uimachine()->acquireSnapshotCount(uSnapshotCount);
+        if (uSnapshotCount > 0)
         {
-            const CSnapshot comSnapshot = machine().GetCurrentSnapshot();
-            strMachineName += " (" + comSnapshot.GetName() + ")";
+            QString strCurrentSnapshotName;
+            uimachine()->acquireCurrentSnapshotName(strCurrentSnapshotName);
+            strMachineName += " (" + strCurrentSnapshotName + ")";
         }
 
         /* Append state name: */
@@ -422,7 +425,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         QWidget *pParentDlg = windowManager().realParentWindow(this);
         bool fInACPIMode = false;
         uimachine()->acquireWhetherGuestEnteredACPIMode(fInACPIMode);
-        QPointer<UIVMCloseDialog> pCloseDlg = new UIVMCloseDialog(pParentDlg, machine(),
+        QPointer<UIVMCloseDialog> pCloseDlg = new UIVMCloseDialog(pParentDlg, uimachine(),
                                                                   fInACPIMode,
                                                                   restrictedCloseActions);
         /* Configure close-dialog: */

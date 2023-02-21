@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98675 2023-02-21 15:12:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -294,6 +294,36 @@ bool UISession::setPause(bool fPause)
             UINotificationMessage::cannotPauseMachine(comConsole);
         else
             UINotificationMessage::cannotResumeMachine(comConsole);
+    }
+    return fSuccess;
+}
+
+bool UISession::acquireSnapshotCount(ulong &uCount)
+{
+    CMachine comMachine = machine();
+    const ULONG uSnapshotCount = comMachine.GetSnapshotCount();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+        uCount = uSnapshotCount;
+    return fSuccess;
+}
+
+bool UISession::acquireCurrentSnapshotName(QString &strName)
+{
+    CMachine comMachine = machine();
+    CSnapshot comSnapshot = comMachine.GetCurrentSnapshot();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    {
+        const QString strSnapshotName = comSnapshot.GetName();
+        fSuccess = comSnapshot.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireSnapshotParameter(comSnapshot);
+        else
+            strName = strSnapshotName;
     }
     return fSuccess;
 }

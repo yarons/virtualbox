@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98675 2023-02-21 15:12:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -348,6 +348,16 @@ bool UIMachine::unpause()
 bool UIMachine::setPause(bool fPause)
 {
     return uisession()->setPause(fPause);
+}
+
+bool UIMachine::acquireSnapshotCount(ulong &uCount)
+{
+    return uisession()->acquireSnapshotCount(uCount);
+}
+
+bool UIMachine::acquireCurrentSnapshotName(QString &strName)
+{
+    return uisession()->acquireCurrentSnapshotName(strName);
 }
 
 bool UIMachine::isScreenVisibleHostDesires(ulong uScreenId) const
