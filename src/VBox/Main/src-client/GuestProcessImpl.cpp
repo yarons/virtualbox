@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 98614 2023-02-17 01:09:38Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestProcessImpl.cpp 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1879,7 +1879,7 @@ int GuestProcess::i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t uTimeou
             *pvrcGuest = (int)lGuestRc;
     }
     /* waitForEvent may also return VERR_GSTCTL_GUEST_ERROR like we do above, so make pvrcGuest is set. */
-    else if (vrc == VERR_GSTCTL_GUEST_ERROR && pvrcGuest)
+    else if (pEvent->HasGuestError() && pvrcGuest)
         *pvrcGuest = pEvent->GuestResult();
     Assert(vrc != VERR_GSTCTL_GUEST_ERROR || !pvrcGuest || *pvrcGuest != (int)0xcccccccc);
 

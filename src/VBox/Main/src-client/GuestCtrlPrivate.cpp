@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98544 2023-02-11 00:28:02Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1799,7 +1799,7 @@ int GuestWaitEventBase::SignalInternal(int vrc, int vrcGuest, const GuestWaitEve
  *
  * @returns VBox status code.
  * @retval  VERR_GSTCTL_GUEST_ERROR may be returned, call GuestResult() to get
- *          the actual result.
+ *          the actual result from the guest side.
  *
  * @param   msTimeout           Timeout (in ms) to wait.
  *                              Specifiy 0 to wait indefinitely.

@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 98643 2023-02-20 11:01:13Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.cpp 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -755,7 +755,7 @@ int GuestDirectory::i_rewind(uint32_t uTimeoutMS, int *pvrcGuest)
                     vrc = VWRN_GSTCTL_OBJECTSTATE_CHANGED;
             }
             else if (pEvent->HasGuestError()) /* Return guest vrc if available. */
-                vrc = pEvent->GetGuestError();
+                vrc = pEvent->GuestResult();
         }
 
         unregisterWaitEvent(pEvent);
