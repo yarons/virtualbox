@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -213,11 +213,14 @@ public:
 
     /** @name Machine-state stuff.
      ** @{ */
-        /** Returns machine state. */
+        /** Returns cached machine state. */
         KMachineState machineState() const;
 
         /** Resets previous state to be the same as current one. */
         void forgetPreviousMachineState();
+
+        /** Acquire live machine state. */
+        bool acquireLiveMachineState(KMachineState &enmState);
 
         /** Returns whether VM is in one of turned off states. */
         bool isTurnedOff() const;

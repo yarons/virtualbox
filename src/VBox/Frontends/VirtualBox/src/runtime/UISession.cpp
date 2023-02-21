@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -256,6 +256,18 @@ bool UISession::powerUp()
 WId UISession::mainMachineWindowId() const
 {
     return mainMachineWindow() ? mainMachineWindow()->winId() : 0;
+}
+
+bool UISession::acquireLiveMachineState(KMachineState &enmState)
+{
+    CMachine comMachine = machine();
+    KMachineState enmMachineState = comMachine.GetState();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+        enmState = enmMachineState;
+    return fSuccess;
 }
 
 bool UISession::reset()

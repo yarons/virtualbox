@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -293,6 +293,11 @@ KMachineState UIMachine::machineState() const
 void UIMachine::forgetPreviousMachineState()
 {
     uisession()->forgetPreviousMachineState();
+}
+
+bool UIMachine::acquireLiveMachineState(KMachineState &enmState)
+{
+    return uisession()->acquireLiveMachineState(enmState);
 }
 
 bool UIMachine::isTurnedOff() const
