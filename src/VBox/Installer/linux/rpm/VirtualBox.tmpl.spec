@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 98676 2023-02-21 15:26:57Z knut.osmundsen@oracle.com $
+# $Id: VirtualBox.tmpl.spec 98679 2023-02-21 15:39:49Z knut.osmundsen@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -190,8 +190,8 @@ ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxdtrace
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxaudiotest
 test -f VBoxBugReport && ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxBugReport
 test -f VBoxBugReport && ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxbugreport
-ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxBalloonCtrl
-ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxballoonctrl
+test -f VBoxBalloonCtrl && ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxBalloonCtrl
+test -f VBoxBalloonCtrl && ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxballoonctrl
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxAutostart
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxautostart
 test -f vboxwebsrv && ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxwebsrv
