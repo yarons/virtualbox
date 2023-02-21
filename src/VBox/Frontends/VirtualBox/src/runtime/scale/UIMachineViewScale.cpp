@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 98556 2023-02-14 11:18:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewScale.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -69,7 +69,9 @@ void UIMachineViewScale::sltPerformGuestScale()
     if (scaledSize.isValid())
     {
         /* Propagate scale-factor to 3D service if necessary: */
-        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
+        bool fAccelerate3DEnabled = false;
+        uimachine()->acquireWhetherAccelerate3DEnabled(fAccelerate3DEnabled);
+        if (fAccelerate3DEnabled)
         {
             double xScaleFactor = (double)scaledSize.width()  / frameBuffer()->width();
             double yScaleFactor = (double)scaledSize.height() / frameBuffer()->height();
@@ -128,7 +130,9 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     if (scaledSize.isValid())
     {
         /* Propagate scale-factor to 3D service if necessary: */
-        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
+        bool fAccelerate3DEnabled = false;
+        uimachine()->acquireWhetherAccelerate3DEnabled(fAccelerate3DEnabled);
+        if (fAccelerate3DEnabled)
         {
             double xScaleFactor = (double)scaledSize.width()  / frameBuffer()->width();
             double yScaleFactor = (double)scaledSize.height() / frameBuffer()->height();
@@ -151,7 +155,9 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     /* Take unscaled HiDPI output mode into account: */
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
     /* Propagate unscaled-hidpi-output feature to 3D service if necessary: */
-    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled())
+    bool fAccelerate3DEnabled = false;
+    uimachine()->acquireWhetherAccelerate3DEnabled(fAccelerate3DEnabled);
+    if (fAccelerate3DEnabled)
         uimachine()->notifyHiDPIOutputPolicyChange(fUseUnscaledHiDPIOutput);
 
     /* Perform frame-buffer rescaling: */

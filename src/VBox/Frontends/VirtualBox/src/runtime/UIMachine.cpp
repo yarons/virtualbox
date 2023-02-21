@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -385,7 +385,9 @@ void UIMachine::setScreenVisible(ulong uScreenId, bool fIsMonitorVisible)
     m_monitorVisibilityVector[(int)uScreenId] = fIsMonitorVisible;
     /* Remember 'desired' visibility status: */
     // See note in UIMachineView::sltHandleNotifyChange() regarding the graphics controller check. */
-    if (uisession()->machine().GetGraphicsAdapter().GetGraphicsControllerType() != KGraphicsControllerType_VMSVGA)
+    KGraphicsControllerType enmType = KGraphicsControllerType_Null;
+    acquireGraphicsControllerType(enmType);
+    if (enmType != KGraphicsControllerType_VMSVGA)
         gEDataManager->setLastGuestScreenVisibilityStatus(uScreenId, fIsMonitorVisible, uiCommon().managedVMUuid());
 
     /* Make sure action-pool knows guest-screen visibility status: */
@@ -431,6 +433,21 @@ void UIMachine::setLastFullScreenSize(ulong uScreenId, QSize size)
 
     /* Remember last full-screen size: */
     m_monitorLastFullScreenSizeVector[(int)uScreenId] = size;
+}
+
+bool UIMachine::acquireGraphicsControllerType(KGraphicsControllerType &enmType)
+{
+    return uisession()->acquireGraphicsControllerType(enmType);
+}
+
+bool UIMachine::acquireVRAMSize(ulong &uSize)
+{
+    return uisession()->acquireVRAMSize(uSize);
+}
+
+bool UIMachine::acquireWhetherAccelerate3DEnabled(bool &fEnabled)
+{
+    return uisession()->acquireWhetherAccelerate3DEnabled(fEnabled);
 }
 
 bool UIMachine::acquireMonitorCount(ulong &uCount)

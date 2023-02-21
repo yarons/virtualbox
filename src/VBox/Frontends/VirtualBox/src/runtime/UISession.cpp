@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -622,6 +622,63 @@ QSize UISession::frameBufferSize(ulong uScreenId) const
 {
     UIFrameBuffer *pFramebuffer = frameBuffer(uScreenId);
     return pFramebuffer ? QSize(pFramebuffer->width(), pFramebuffer->height()) : QSize();
+}
+
+bool UISession::acquireGraphicsControllerType(KGraphicsControllerType &enmType)
+{
+    CMachine comMachine = machine();
+    CGraphicsAdapter comAdapter = comMachine.GetGraphicsAdapter();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        const KGraphicsControllerType enmControllerType = comAdapter.GetGraphicsControllerType();
+        fSuccess = comAdapter.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireGraphicsAdapterParameter(comAdapter);
+        else
+            enmType = enmControllerType;
+    }
+    return fSuccess;
+}
+
+bool UISession::acquireVRAMSize(ulong &uSize)
+{
+    CMachine comMachine = machine();
+    CGraphicsAdapter comAdapter = comMachine.GetGraphicsAdapter();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        const ULONG uVRAMSize = comAdapter.GetVRAMSize();
+        fSuccess = comAdapter.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireGraphicsAdapterParameter(comAdapter);
+        else
+            uSize = uVRAMSize;
+    }
+    return fSuccess;
+}
+
+bool UISession::acquireWhetherAccelerate3DEnabled(bool &fEnabled)
+{
+    CMachine comMachine = machine();
+    CGraphicsAdapter comAdapter = comMachine.GetGraphicsAdapter();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        const BOOL fAccelerate3DEnabeld = comAdapter.GetAccelerate3DEnabled();
+        fSuccess = comAdapter.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireGraphicsAdapterParameter(comAdapter);
+        else
+            fEnabled = fAccelerate3DEnabeld;
+    }
+    return fSuccess;
 }
 
 bool UISession::acquireMonitorCount(ulong &uCount)

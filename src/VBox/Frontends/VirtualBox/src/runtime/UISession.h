@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -325,6 +325,12 @@ public:
         /** Returns frame-buffer size for screen with index @a uScreenId. */
         QSize frameBufferSize(ulong uScreenId) const;
 
+        /** Acquires graphics controller type. */
+        bool acquireGraphicsControllerType(KGraphicsControllerType &enmType);
+        /** Acquires VRAM size. */
+        bool acquireVRAMSize(ulong &uSize);
+        /** Acquires whether accelerate 3D is enabled. */
+        bool acquireWhetherAccelerate3DEnabled(bool &fEnabled);
         /** Acquires monitor count. */
         bool acquireMonitorCount(ulong &uCount);
 
