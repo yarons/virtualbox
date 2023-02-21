@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 98667 2023-02-21 09:21:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -982,8 +982,10 @@ int GuestSession::i_directoryCreate(const Utf8Str &strPath, uint32_t uMode, uint
             vrc = pEvent->Wait(30 * 1000);
             if (RT_SUCCESS(vrc))
             {
-                /// @todo To be implemented
+                // Nothing to do here.
             }
+            else if (pEvent->HasGuestError() && pvrcGuest)
+                *pvrcGuest = pEvent->GuestResult();
         }
     }
     else
@@ -1721,8 +1723,10 @@ int GuestSession::i_fileRemove(const Utf8Str &strPath, int *pvrcGuest)
             vrc = pEvent->Wait(30 * 1000);
             if (RT_SUCCESS(vrc))
             {
-                /// @todo To be implemented
+                // Nothing to do here.
             }
+            else if (pEvent->HasGuestError() && pvrcGuest)
+                *pvrcGuest = pEvent->GuestResult();
         }
     }
     else
