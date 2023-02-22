@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98694 2023-02-22 23:08:43Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98695 2023-02-22 23:11:53Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -138,7 +138,7 @@ if !defined(VBOX_ONLY_SDK)
 
 
  ifdef VBOX_WITH_32_ON_64_MAIN_API
- # Same as above, but 32-bit version.
+  # Same as above, but 32-bit version.
   LIBRARIES += VBoxCAPIGlue-x86
   VBoxCAPIGlue-x86_EXTENDS      := VBoxCAPIGlue
   VBoxCAPIGlue-x86_BLD_TRG_ARCH := x86
