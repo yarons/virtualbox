@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPI.cpp 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCAPI.cpp 98694 2023-02-22 23:08:43Z knut.osmundsen@oracle.com $ */
 /** @file VBoxCAPI.cpp
  * Utility functions to use with the C API binding.
  */
@@ -775,7 +775,7 @@ VBoxGetCAPIFunctions(unsigned uVersion)
     /* This is the first piece of code which knows that IPRT exists, so
      * initialize it properly. The limited initialization in VBoxC is not
      * sufficient, and causes trouble with com::Initialize() misbehaving. */
-    RTR3InitDll(0);
+    RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
 
     /*
      * The current interface version.
