@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98681 2023-02-21 16:01:22Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98697 2023-02-22 23:16:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -374,6 +374,7 @@ ifdef VBOX_WITH_32_ON_64_MAIN_API
  SOLARIS_STRIP_BINS += \
  	VBoxRT-x86.so \
  	VBoxXPCOM-x86.so \
+ 	VBoxCAPI-x86.so \
  	components/VBoxClient-x86.so \
  	components/VBoxSVCM-x86.so \
  	components/VBoxXPCOMIPCC-x86.so
