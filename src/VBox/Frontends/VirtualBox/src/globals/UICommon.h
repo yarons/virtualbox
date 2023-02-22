@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 98682 2023-02-22 09:18:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -235,7 +235,7 @@ public:
         QList<QUrl> takeArgumentUrls();
 
         /** Returns the --startvm option value (managed VM id). */
-        QUuid managedVMUuid() const { return m_strManagedVMId; }
+        QUuid managedVMUuid() const { return m_uManagedVMId; }
         /** Returns the --separate option value (whether GUI process is separate from VM process). */
         bool isSeparateProcess() const { return m_fSeparateProcess; }
         /** Returns the --no-startvm-errormsgbox option value (whether startup VM errors are disabled). */
@@ -664,7 +664,7 @@ private:
         QList<QUrl>  m_listArgUrls;
 
         /** Holds the --startvm option value (managed VM id). */
-        QUuid  m_strManagedVMId;
+        QUuid  m_uManagedVMId;
         /** Holds the --separate option value (whether GUI process is separate from VM process). */
         bool   m_fSeparateProcess;
         /** Holds the --no-startvm-errormsgbox option value (whether startup VM errors are disabled). */

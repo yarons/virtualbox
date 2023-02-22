@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98675 2023-02-21 15:12:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98682 2023-02-22 09:18:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -389,7 +389,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
     if (!strScript.isEmpty())
     {
         /* Execute asynchronously and leave: */
-        QProcess::startDetached(strScript, QStringList() << machine().GetId().toString());
+        QProcess::startDetached(strScript, QStringList() << uiCommon().managedVMUuid().toString());
         return;
     }
 
