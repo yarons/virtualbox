@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 98690 2023-02-22 15:00:11Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 98692 2023-02-22 15:10:21Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2683,7 +2683,7 @@ int GuestSessionTaskUpdateAdditions::checkGuestAdditionsStatus(GuestSession *pSe
 {
     int vrc = VINF_SUCCESS;
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
-    int hrc;
+    HRESULT hrc;
 
     if (osType == eOSType_Linux)
     {
