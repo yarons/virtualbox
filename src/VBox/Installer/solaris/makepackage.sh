@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: makepackage.sh 98681 2023-02-21 16:01:22Z knut.osmundsen@oracle.com $
+# $Id: makepackage.sh 98685 2023-02-22 13:37:21Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
@@ -314,7 +314,7 @@ package_spec_append_info "$PKG_BASE_DIR"
 package_spec_append_content "$PKG_BASE_DIR"
 
 # Add hardlinks for executables to launch the 32-bit or 64-bit executable
-for f in VBoxManage VBoxSDL VBoxAutostart VBoxZoneAccess VBoxSVC VBoxTestOGL VirtualBox VirtualBoxVM vbox-img VBoxHeadless; do
+for f in VBoxManage VBoxSDL VBoxZoneAccess VBoxSVC VBoxTestOGL VirtualBox VirtualBoxVM vbox-img VBoxHeadless; do
     package_spec_append_hardlink VBoxISAExec $f "$PKG_BASE_DIR" "$VBOX_INSTALLED_DIR"
 done
 if [ -z "${OPT_WITHOUT_VBoxBugReport}" ]; then
