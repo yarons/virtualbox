@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98674 2023-02-21 14:18:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98683 2023-02-22 09:49:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -268,7 +268,7 @@ UIMachine *UIMachineView::uimachine() const
 
 UISession *UIMachineView::uisession() const
 {
-    return machineWindow()->uisession();
+    return uimachine()->uisession();
 }
 
 UIMachineLogic *UIMachineView::machineLogic() const
