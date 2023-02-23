@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98691 2023-02-22 15:05:54Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98699 2023-02-23 09:43:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -872,6 +872,25 @@ bool UISession::acquireSavedScreenshotInfo(ulong uScreenId, ulong &uWidth, ulong
         uWidth = uGuestWidth;
         uHeight = uGuestHeight;
         formats = guestFormats;
+    }
+    return fSuccess;
+}
+
+bool UISession::acquireSavedScreenshot(ulong uScreenId, KBitmapFormat enmFormat,
+                                       ulong &uWidth, ulong &uHeight, QVector<BYTE> &screenshot)
+{
+    CMachine comMachine = machine();
+    ULONG uGuestWidth = 0, uGuestHeight = 0;
+    const QVector<BYTE> guestScreenshot = comMachine.ReadSavedScreenshotToArray(uScreenId, enmFormat,
+                                                                                uGuestWidth, uGuestHeight);
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        uWidth = uGuestWidth;
+        uHeight = uGuestHeight;
+        screenshot = guestScreenshot;
     }
     return fSuccess;
 }

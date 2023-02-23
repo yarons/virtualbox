@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98691 2023-02-22 15:05:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98699 2023-02-23 09:43:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -514,6 +514,13 @@ bool UIMachine::acquireScreenShot(ulong uScreenId, ulong uWidth, ulong uHeight, 
 bool UIMachine::acquireSavedScreenshotInfo(ulong uScreenId, ulong &uWidth, ulong &uHeight, QVector<KBitmapFormat> &formats)
 {
     return uisession()->acquireSavedScreenshotInfo(uScreenId, uWidth, uHeight, formats);
+}
+
+bool UIMachine::acquireSavedScreenshot(ulong uScreenId, KBitmapFormat enmFormat,
+                                       ulong &uWidth, ulong &uHeight, QVector<BYTE> &screenshot)
+{
+    return uisession()->acquireSavedScreenshot(uScreenId, enmFormat,
+                                               uWidth, uHeight, screenshot);
 }
 
 bool UIMachine::notifyScaleFactorChange(ulong uScreenId, ulong uScaleFactorWMultiplied, ulong uScaleFactorHMultiplied)
