@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 98703 2023-02-23 15:10:16Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2377,6 +2377,14 @@ FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_aeskeygenassist_u128, iemAImpl_aeskeygenas
 
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vaeskeygenassist_u128, iemAImpl_vaeskeygenassist_u128_fallback;
 
+FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha1nexte_u128,       iemAImpl_sha1nexte_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha1msg1_u128,        iemAImpl_sha1msg1_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha1msg2_u128,        iemAImpl_sha1msg2_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha256msg1_u128,      iemAImpl_sha256msg1_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_sha256msg2_u128,      iemAImpl_sha256msg2_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_sha1rnds4_u128,   iemAImpl_sha1rnds4_u128_fallback;
+IEM_DECL_IMPL_DEF(void, iemAImpl_sha256rnds2_u128,(PRTUINT128U puDst, PCRTUINT128U puSrc, PCRTUINT128U puXmm0Constants));
+IEM_DECL_IMPL_DEF(void, iemAImpl_sha256rnds2_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, PCRTUINT128U puXmm0Constants));
 
 typedef struct IEMPCMPISTRISRC
 {

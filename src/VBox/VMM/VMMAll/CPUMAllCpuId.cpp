@@ -1,4 +1,4 @@
-/* $Id: CPUMAllCpuId.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllCpuId.cpp 98703 2023-02-23 15:10:16Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part, common bits.
  */
@@ -1467,6 +1467,7 @@ int cpumCpuIdExplodeFeaturesX86(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCP
             pFeatures->fRdSeed              = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_RDSEED);
             pFeatures->fHle                 = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_HLE);
             pFeatures->fRtm                 = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_RTM);
+            pFeatures->fSha                 = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_SHA);
 
             pFeatures->fIbpb                = RT_BOOL(pSxfLeaf0->uEdx & X86_CPUID_STEXT_FEATURE_EDX_IBRS_IBPB);
             pFeatures->fIbrs                = pFeatures->fIbpb;

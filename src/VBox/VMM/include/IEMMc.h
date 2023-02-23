@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 98703 2023-02-23 15:10:16Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -111,6 +111,15 @@
         if (   (pVCpu->cpum.GstCtx.cr0 & X86_CR0_EM) \
             || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSFXSR) \
             || !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fAesNi) \
+            return iemRaiseUndefinedOpcode(pVCpu); \
+        if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS) \
+            return iemRaiseDeviceNotAvailable(pVCpu); \
+    } while (0)
+#define IEM_MC_MAYBE_RAISE_SHA_RELATED_XCPT() \
+    do { \
+        if (   (pVCpu->cpum.GstCtx.cr0 & X86_CR0_EM) \
+            || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSFXSR) \
+            || !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSha) \
             return iemRaiseUndefinedOpcode(pVCpu); \
         if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS) \
             return iemRaiseDeviceNotAvailable(pVCpu); \

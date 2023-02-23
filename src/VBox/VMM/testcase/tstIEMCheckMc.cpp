@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 98703 2023-02-23 15:10:16Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -602,6 +602,7 @@ IEMOPUNARYSIZES g_iemAImpl_not;
 #define IEM_MC_MAYBE_RAISE_SSE41_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE42_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_AESNI_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
+#define IEM_MC_MAYBE_RAISE_SHA_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_AVX2_RELATED_XCPT()          do { (void)fMcBegin; } while (0)
 #define IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO()              do { (void)fMcBegin; } while (0)
