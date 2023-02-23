@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 98606 2023-02-16 15:51:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 98705 2023-02-23 16:24:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -49,19 +49,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVMInformationDialog.h"
 #include "VBoxUtils.h"
-
-
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMachine.h"
-#include "CConsole.h"
-#include "CSystemProperties.h"
-#include "CMachineDebugger.h"
-#include "CDisplay.h"
-#include "CStorageController.h"
-#include "CMediumAttachment.h"
-#include "CNetworkAdapter.h"
-#include "CVRDEServerInfo.h"
 
 /* Other VBox includes: */
 #include <iprt/time.h>
@@ -174,11 +161,8 @@ void UIVMInformationDialog::prepare()
     /* Load and clear: */
     AssertPtrReturnVoid(m_pMachine);
 
-    /// @todo to be encapsulated in UIMachine soon
-    CMachine comMachine = m_pMachine->uisession()->machine();
-    m_uMachineId = comMachine.GetId();
-    m_strMachineName = comMachine.GetName();
-
+    m_uMachineId = uiCommon().managedVMUuid();
+    m_strMachineName = m_pMachine->machineName();
 #ifdef VBOX_WS_MAC
     /* No window-icon on Mac OS X, because it acts as proxy icon which isn't necessary here. */
     setWindowIcon(QIcon());
