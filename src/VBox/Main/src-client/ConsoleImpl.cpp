@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 98706 2023-02-23 16:29:55Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3028,6 +3028,8 @@ HRESULT Console::detachUSBDevice(const com::Guid &aId, ComPtr<IUSBDevice> &aDevi
                 hrc = i_detachUSBDevice(pUSBDevice);
                 if (SUCCEEDED(hrc))
                 {
+                    //return the detached USB device
+                    pUSBDevice.queryInterfaceTo(aDevice.asOutParam());
                     /* Request the device release. Even if it fails, the device will
                      * remain as held by proxy, which is OK for us (the VM process). */
                     return mControl->DetachUSBDevice(Bstr(aId.toString()).raw(), true /* aDone */);
