@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98699 2023-02-23 09:43:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -432,6 +432,20 @@ bool UISession::putEventMultiTouch(long iCount, const QVector<LONG64> &contacts,
         UINotificationMessage::cannotChangeMouseParameter(comMouse);
     return fSuccess;
 }
+
+#ifdef VBOX_WITH_DRAG_AND_DROP
+bool UISession::acquireDnDMode(KDnDMode &enmMode)
+{
+    CMachine comMachine = machine();
+    const KDnDMode enmDnDMode = comMachine.GetDnDMode();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+        enmMode = enmDnDMode;
+    return fSuccess;
+}
+#endif /* VBOX_WITH_DRAG_AND_DROP */
 
 bool UISession::addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend)
 {

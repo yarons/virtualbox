@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98699 2023-02-23 09:43:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -437,6 +437,11 @@ public:
         bool putMouseEventAbsolute(long iX, long iY, long iDz, long iDw, long iButtonState);
         /** Sends multi-touch event to VM's mouse. */
         bool putEventMultiTouch(long iCount, const QVector<LONG64> &contacts, bool fIsTouchScreen, ulong uScanTime);
+
+#ifdef VBOX_WITH_DRAG_AND_DROP
+        /** Acquires D&D mode. */
+        bool acquireDnDMode(KDnDMode &enmMode);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
     /** @} */
 
     /** @name Storage stuff.
