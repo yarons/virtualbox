@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 98687 2023-02-22 14:52:35Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 98708 2023-02-23 21:26:32Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 98687 $)
+# Linux Additions kernel module init script ($Revision: 98708 $)
 #
 
 #
@@ -1033,9 +1033,6 @@ reload()
 
     # Check if script was started with root privileges.
     [ `id -u` -eq 0 ] || fail "root privileges are required"
-
-    # Check if modules were previously build.
-    [ "$(setup_complete)" = "1" ] || fail "kernel modules were set up yet, please consider running 'rcvboxadd setup' first."
 
     # Stop VBoxService if running.
     do_sysvinit_action vboxadd-service status >/dev/null 2>&1
