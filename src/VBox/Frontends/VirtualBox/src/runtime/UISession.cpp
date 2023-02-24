@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -295,6 +295,16 @@ bool UISession::setPause(bool fPause)
         else
             UINotificationMessage::cannotResumeMachine(comConsole);
     }
+    return fSuccess;
+}
+
+bool UISession::saveSettings()
+{
+    CMachine comMachine = machine();
+    comMachine.SaveSettings();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotSaveMachineSettings(comMachine);
     return fSuccess;
 }
 
@@ -1829,14 +1839,8 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType en
     }
 
     /* Save machine settings: */
-    machine().SaveSettings();
-
-    /* Show error message if necessary: */
-    if (!machine().isOk())
-    {
-        UINotificationMessage::cannotSaveMachineSettings(machine());
+    if (!saveSettings())
         return false;
-    }
 
     /* True by default: */
     return true;

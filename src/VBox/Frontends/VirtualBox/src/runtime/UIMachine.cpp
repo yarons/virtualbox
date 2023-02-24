@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -353,6 +353,11 @@ bool UIMachine::unpause()
 bool UIMachine::setPause(bool fPause)
 {
     return uisession()->setPause(fPause);
+}
+
+bool UIMachine::saveSettings()
+{
+    return uisession()->saveSettings();
 }
 
 bool UIMachine::acquireSnapshotCount(ulong &uCount)

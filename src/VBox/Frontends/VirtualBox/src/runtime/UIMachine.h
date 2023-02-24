@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -245,6 +245,12 @@ public:
         bool unpause();
         /** Performes VM pausing/resuming depending on @a fPause state. */
         bool setPause(bool fPause);
+    /** @} */
+
+    /** @name Machine-data stuff.
+     ** @{ */
+        /** Saves machine data. */
+        bool saveSettings();
     /** @} */
 
     /** @name Snapshot stuff.
