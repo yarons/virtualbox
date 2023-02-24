@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98727 2023-02-24 15:32:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -775,6 +775,15 @@ void UINotificationMessage::cannotAcquireEmulatedUSBParameter(const CEmulatedUSB
         QApplication::translate("UIMessageCenter", "Emulated USB failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire emulated USB parameter.") +
         UIErrorString::formatErrorInfo(comDispatcher));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireRecordingSettingsParameter(const CRecordingSettings &comSettings)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Recording settings failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire recording settings parameter.") +
+        UIErrorString::formatErrorInfo(comSettings));
 }
 
 /* static */

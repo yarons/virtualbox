@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98727 2023-02-24 15:32:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -400,6 +400,13 @@ public:
         bool acquireWhetherVRDEServerEnabled(bool &fEnabled);
         /** Defines whether VRDE server is enabled. */
         bool setVRDEServerEnabled(bool fEnabled);
+
+        /** Acquires whether recording settings is present. */
+        bool acquireWhetherRecordingSettingsPresent(bool &fPresent);
+        /** Acquires whether recording settings is enabled. */
+        bool acquireWhetherRecordingSettingsEnabled(bool &fEnabled);
+        /** Defines whether recording settings is enabled. */
+        bool setRecordingSettingsEnabled(bool fEnabled);
     /** @} */
 
     /** @name Status-bar stuff.
