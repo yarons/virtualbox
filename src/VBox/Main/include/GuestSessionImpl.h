@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.h 98713 2023-02-24 10:15:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -354,6 +354,15 @@ public:
     int                     i_waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionWaitResult_T &waitResult, int *pvrcGuest);
     int                     i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlags, uint32_t uTimeoutMS,
                                                   GuestSessionStatus_T *pSessionStatus, int *pvrcGuest);
+    /** @}  */
+
+    /** @name Public internal methods for supporting older Guest Additions via
+              VBoxService' built-in toolbox (< 7.1). */
+    int                     i_directoryCreateViaToolbox(const Utf8Str &strPath, uint32_t uMode, uint32_t uFlags, int *pvrcGuest);
+    int                     i_fileRemoveViaToolbox(const Utf8Str &strPath, int *pvrcGuest);
+    int                     i_fsCreateTempViaToolbox(const Utf8Str &strTemplate, const Utf8Str &strPath, bool fDirectory, Utf8Str &strName,
+                                                     uint32_t fMode, bool fSecure, int *pvrcGuest);
+    int                     i_fsQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest);
     /** @}  */
 
 public:
