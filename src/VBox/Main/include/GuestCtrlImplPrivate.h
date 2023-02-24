@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 98709 2023-02-24 08:49:40Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 98725 2023-02-24 14:48:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1019,7 +1019,7 @@ public:
 
     const char *GetString(const char *pszKey) const;
     size_t      GetCount(void) const;
-    int         GetVrc(void) const;
+    int         GetVrc(bool fSucceedIfNotFound = false) const;
     int         GetInt64Ex(const char *pszKey, int64_t *piVal) const;
     int64_t     GetInt64(const char *pszKey) const;
     int         GetUInt32Ex(const char *pszKey, uint32_t *puVal) const;
