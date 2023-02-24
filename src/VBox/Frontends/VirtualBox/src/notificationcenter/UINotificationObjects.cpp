@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98727 2023-02-24 15:32:23Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -46,6 +46,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CAudioSettings.h"
 #include "CBooleanFormValue.h"
 #include "CChoiceFormValue.h"
 #include "CCloudNetwork.h"
@@ -684,6 +685,24 @@ void UINotificationMessage::cannotAcquireGraphicsAdapterParameter(const CGraphic
     createMessage(
         QApplication::translate("UIMessageCenter", "Graphics adapter failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire graphics adapter parameter.") +
+        UIErrorString::formatErrorInfo(comAdapter));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireAudioSettingsParameter(const CAudioSettings &comSettings)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Audio settings failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire audio settings parameter.") +
+        UIErrorString::formatErrorInfo(comSettings));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireAudioAdapterParameter(const CAudioAdapter &comAdapter)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Audio adapter failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire audio adapter parameter.") +
         UIErrorString::formatErrorInfo(comAdapter));
 }
 

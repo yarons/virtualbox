@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98727 2023-02-24 15:32:23Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -334,6 +334,22 @@ public:
         bool isGuestSupportsSeamless() const { return isGuestSupportsGraphics() && m_fIsGuestSupportsSeamless; }
         /** Returns whether GA can be upgraded. */
         bool guestAdditionsUpgradable();
+    /** @} */
+
+    /** @name Audio stuff.
+     ** @{ */
+        /** Acquires whether audio adapter is present. */
+        bool acquireWhetherAudioAdapterPresent(bool &fPresent);
+        /** Acquires whether audio adapter is enabled. */
+        bool acquireWhetherAudioAdapterEnabled(bool &fEnabled);
+        /** Acquires whether audio adapter output is enabled. */
+        bool acquireWhetherAudioAdapterOutputEnabled(bool &fEnabled);
+        /** Acquires whether audio adapter input is enabled. */
+        bool acquireWhetherAudioAdapterInputEnabled(bool &fEnabled);
+        /** Defines whether audio adapter output is enabled. */
+        bool setAudioAdapterOutputEnabled(bool fEnabled);
+        /** Defines whether audio adapter input is enabled. */
+        bool setAudioAdapterInputEnabled(bool fEnabled);
     /** @} */
 
     /** @name Graphics stuff.
