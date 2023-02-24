@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 98709 2023-02-24 08:49:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1459,6 +1459,51 @@ public:
 /*******************************************************************************
 * Callback data structures.                                                    *
 *******************************************************************************/
+
+/**
+ * Callback data for guest directory operations.
+ */
+typedef struct CALLBACKDATA_DIR_NOTIFY
+{
+    /** Callback data header. */
+    CALLBACKDATA_HEADER hdr;
+    /** Notification type. */
+    uint32_t uType;
+    /** IPRT result of overall operation. */
+    uint32_t rc;
+    union
+    {
+        struct
+        {
+            /** Pointer to directory information. */
+            PGSTCTLFSOBJINFO pObjInfo;
+        } info;
+        struct
+        {
+            /** Guest directory handle. */
+            uint32_t uHandle;
+        } open;
+        /** Note: Close does not have any additional data (yet). */
+        struct
+        {
+            /** Pointer to directory entry information. */
+            PGSTCTLDIRENTRYEX pEntry;
+            /** Size (in bytes) of directory entry information. */
+            uint32_t          cbEntry;
+            /** Resolved user name.
+             *  This is the object owner for UNIX-y Oses. */
+            char             *pszUser;
+            /** Size (in bytes) of \a pszUser. */
+            uint32_t          cbUser;
+            /** Resolved user group(s). */
+            char             *pszGroups;
+            /** Size (in bytes) of \a pszGroups. */
+            uint32_t          cbGroups;
+        } read;
+    } u;
+} CALLBACKDATA_DIR_NOTIFY;
+/** Pointer to a CALLBACKDATA_DIR_NOTIFY struct. */
+typedef CALLBACKDATA_DIR_NOTIFY *PCALLBACKDATA_DIR_NOTIFY;
 
 /**
  * Callback data for guest file system operations.
