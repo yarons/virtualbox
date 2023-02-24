@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 98710 2023-02-24 08:53:06Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.cpp 98714 2023-02-24 10:16:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -784,7 +784,7 @@ int GuestDirectory::i_readInternal(GuestFsObjData &objData, int *pvrcGuest)
             {
                 PCALLBACKDATA_DIR_NOTIFY const pDirNotify = (PCALLBACKDATA_DIR_NOTIFY)pEvent->Payload().Raw();
                 AssertPtrReturn(pDirNotify, VERR_INVALID_POINTER);
-                vrcGuest = (int)pDirNotify->rc;
+                int vrcGuest = (int)pDirNotify->rc;
                 if (RT_SUCCESS(vrcGuest))
                 {
                     AssertReturn(pDirNotify->uType == GUEST_DIR_NOTIFYTYPE_READ, VERR_INVALID_PARAMETER);
