@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 98713 2023-02-24 10:15:30Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 98715 2023-02-24 10:19:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1328,7 +1328,6 @@ int GuestSession::i_fsCreateTemp(const Utf8Str &strTemplate, const Utf8Str &strP
                      strTemplate.c_str(), strPath.c_str(), fDirectory, fMode, fSecure));
 
     int vrc;
-    int vrcGuest = VERR_IPE_UNINITIALIZED_STATUS;
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     if (mParent->i_getGuestControlFeatures0() & VBOX_GUESTCTRL_GF_0_TOOLBOX_AS_CMDS)
     {
@@ -1801,7 +1800,6 @@ int GuestSession::i_fileRemove(const Utf8Str &strPath, int *pvrcGuest)
     LogFlowThisFunc(("strPath=%s\n", strPath.c_str()));
 
     int vrc;
-    int vrcGuest = VERR_IPE_UNINITIALIZED_STATUS;
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     if (mParent->i_getGuestControlFeatures0() & VBOX_GUESTCTRL_GF_0_TOOLBOX_AS_CMDS)
     {
@@ -2088,8 +2086,6 @@ int GuestSession::i_fsQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks, Gu
     LogFlowThisFunc(("strPath=%s\n", strPath.c_str()));
 
     int vrc;
-    int vrcGuest = VERR_IPE_UNINITIALIZED_STATUS;
-
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     if (mParent->i_getGuestControlFeatures0() & VBOX_GUESTCTRL_GF_0_TOOLBOX_AS_CMDS)
     {
