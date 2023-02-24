@@ -1,4 +1,4 @@
-/* $Id: VBoxVolInfo.cpp 98718 2023-02-24 11:09:59Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVolInfo.cpp 98720 2023-02-24 11:18:05Z alexander.eichner@oracle.com $ */
 /** @file
  * Apps - VBoxVolInfo, Volume information tool.
  */
@@ -36,7 +36,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include <VBox/errcore.h>
+#include <iprt/errcore.h>
 
 #include "libdevmapper.h"
 
