@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1990,27 +1990,22 @@ void UIMachineLogic::sltToggleVRDE(bool fEnabled)
     if (!isMachineWindowsCreated())
         return;
 
-    /* Access VRDE server: */
-    CVRDEServer server = machine().GetVRDEServer();
-    AssertMsgReturnVoid(machine().isOk() && !server.isNull(),
+    /* Make sure VRDE server present: */
+    bool fServerPresent = false;
+    uimachine()->acquireWhetherVRDEServerPresent(fServerPresent);
+    AssertMsgReturnVoid(fServerPresent,
                         ("VRDE server should NOT be null!\n"));
 
     /* Make sure something had changed: */
-    if (server.GetEnabled() == static_cast<BOOL>(fEnabled))
+    bool fServerEnabled = false;
+    uimachine()->acquireWhetherVRDEServerEnabled(fServerEnabled);
+    if (fServerEnabled == fEnabled)
         return;
 
-    /* Update VRDE server state: */
-    server.SetEnabled(fEnabled);
-    if (!server.isOk())
-    {
-        /* Make sure action is updated: */
-        uimachine()->updateStateVRDEServerAction();
-        /* Notify about the error: */
-        return UINotificationMessage::cannotToggleVRDEServer(server, machineName(), fEnabled);
-    }
-
-    /* Save machine-settings, make sure action is updated in case of failure: */
-    if (!uimachine()->saveSettings())
+    /* Update and save VRDE server state,
+     * make sure action is updated in case of failure: */
+    if (   !uimachine()->setVRDEServerEnabled(fEnabled)
+        || !uimachine()->saveSettings())
         return uimachine()->updateStateVRDEServerAction();
 }
 

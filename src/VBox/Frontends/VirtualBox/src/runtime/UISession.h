@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -393,6 +393,13 @@ public:
         bool invalidateAndUpdate();
         /** Notifies display about screen with passed uScreenId was invalidated. */
         bool invalidateAndUpdateScreen(ulong uScreenId);
+
+        /** Acquires whether VRDE server is present. */
+        bool acquireWhetherVRDEServerPresent(bool &fPresent);
+        /** Acquires whether VRDE server is enabled. */
+        bool acquireWhetherVRDEServerEnabled(bool &fEnabled);
+        /** Defines whether VRDE server is enabled. */
+        bool setVRDEServerEnabled(bool fEnabled);
     /** @} */
 
     /** @name Status-bar stuff.

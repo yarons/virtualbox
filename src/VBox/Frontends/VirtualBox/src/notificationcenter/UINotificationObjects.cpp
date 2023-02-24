@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -775,6 +775,15 @@ void UINotificationMessage::cannotAcquireEmulatedUSBParameter(const CEmulatedUSB
         QApplication::translate("UIMessageCenter", "Emulated USB failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire emulated USB parameter.") +
         UIErrorString::formatErrorInfo(comDispatcher));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireVRDEServerParameter(const CVRDEServer &comServer)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "VRDE server failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire VRDE server parameter.") +
+        UIErrorString::formatErrorInfo(comServer));
 }
 
 /* static */

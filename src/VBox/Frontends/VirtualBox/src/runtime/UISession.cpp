@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98724 2023-02-24 14:10:32Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -70,6 +70,7 @@
 #include "CUSBDevice.h"
 #include "CUSBDeviceFilter.h"
 #include "CUSBDeviceFilters.h"
+#include "CVRDEServer.h"
 #ifdef VBOX_WITH_NETFLT
 # include "CNetworkAdapter.h"
 #endif
@@ -976,6 +977,50 @@ bool UISession::invalidateAndUpdateScreen(ulong uScreenId)
     const bool fSuccess = comDisplay.isOk();
     if (!fSuccess)
         UINotificationMessage::cannotChangeDisplayParameter(comDisplay);
+    return fSuccess;
+}
+
+bool UISession::acquireWhetherVRDEServerPresent(bool &fPresent)
+{
+    CMachine comMachine = machine();
+    CVRDEServer comServer = comMachine.GetVRDEServer();
+    fPresent = comMachine.isOk() && comServer.isNotNull();
+    return true;
+}
+
+bool UISession::acquireWhetherVRDEServerEnabled(bool &fEnabled)
+{
+    CMachine comMachine = machine();
+    CVRDEServer comServer = comMachine.GetVRDEServer();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        const BOOL fServerEnabled = comServer.GetEnabled();
+        fSuccess = comServer.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireVRDEServerParameter(comServer);
+        else
+            fEnabled = fServerEnabled == TRUE;
+    }
+    return fSuccess;
+}
+
+bool UISession::setVRDEServerEnabled(bool fEnabled)
+{
+    CMachine comMachine = machine();
+    CVRDEServer comServer = comMachine.GetVRDEServer();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        comServer.SetEnabled(fEnabled);
+        fSuccess = comServer.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotToggleVRDEServer(comServer, machineName(), fEnabled);
+    }
     return fSuccess;
 }
 

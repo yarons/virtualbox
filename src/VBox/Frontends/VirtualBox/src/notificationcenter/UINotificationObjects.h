@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98726 2023-02-24 15:12:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -331,6 +331,9 @@ public:
         /** Notifies about inability to acquire IEmulatedUSB parameter.
           * @param  comDispatcher  Brings the object parameter get acquired from. */
         static void cannotAcquireEmulatedUSBParameter(const CEmulatedUSB &comDispatcher);
+        /** Notifies about inability to acquire IVRDEServer parameter.
+          * @param  comServer  Brings the object parameter get acquired from. */
+        static void cannotAcquireVRDEServerParameter(const CVRDEServer &comServer);
         /** Notifies about inability to acquire IVirtualSystemDescription parameter.
           * @param  comVsd  Brings the object parameter get acquired from. */
         static void cannotAcquireVirtualSystemDescriptionParameter(const CVirtualSystemDescription &comVsd,
