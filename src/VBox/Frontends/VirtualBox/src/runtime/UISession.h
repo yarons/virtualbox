@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -189,6 +189,8 @@ public:
      ** @{ */
         /** Returns the machine name. */
         QString machineName() const { return m_strMachineName; }
+        /** Returns the OS type id. */
+        QString osTypeId() const { return m_strOSTypeId; }
 
         /** Returns main machine-widget id. */
         WId mainMachineWindowId() const;
@@ -423,6 +425,9 @@ public:
         /** Acquires whether log is @a fEnabled. */
         bool acquireWhetherLogEnabled(bool &fEnabled);
 
+        /** Acquire log folder. */
+        bool acquireLogFolder(QString &strFolder);
+
         /** Acquires VM's execution engine @a enmType. */
         bool acquireExecutionEngineType(KVMExecutionEngine &enmType);
         /** Acquires whether nested paging hardware virtualization extension is @a fEnabled. */
@@ -574,6 +579,8 @@ private:
 
         /** Holds the machine name. */
         QString  m_strMachineName;
+        /** Holds the OS type id. */
+        QString  m_strOSTypeId;
     /** @} */
 
     /** @name COM stuff.

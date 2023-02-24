@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -230,6 +230,11 @@ UIVisualStateType UIMachine::requestedVisualState() const
 QString UIMachine::machineName() const
 {
     return uisession()->machineName();
+}
+
+QString UIMachine::osTypeId() const
+{
+    return uisession()->osTypeId();
 }
 
 void UIMachine::updateStateAdditionsActions()
@@ -717,6 +722,11 @@ bool UIMachine::setLogEnabled(bool fEnabled)
 bool UIMachine::acquireWhetherLogEnabled(bool &fEnabled)
 {
     return uisession()->acquireWhetherLogEnabled(fEnabled);
+}
+
+bool UIMachine::acquireLogFolder(QString &strFolder)
+{
+    return uisession()->acquireLogFolder(strFolder);
 }
 
 bool UIMachine::acquireEffectiveCPULoad(ulong &uLoad)
@@ -1208,7 +1218,7 @@ void UIMachine::prepareBranding()
     QIcon icon = generalIconPool().userMachineIcon(uisession()->machine());
     /* Use the OS type icon if user one was not set: */
     if (icon.isNull())
-        icon = generalIconPool().guestOSTypeIcon(uisession()->machine().GetOSTypeId());
+        icon = generalIconPool().guestOSTypeIcon(osTypeId());
     /* Use the default icon if nothing else works: */
     if (icon.isNull())
         icon = QIcon(":/VirtualBox_48px.png");

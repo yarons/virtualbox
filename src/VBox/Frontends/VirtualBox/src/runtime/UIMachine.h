@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98722 2023-02-24 13:24:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -184,6 +184,8 @@ public:
      ** @{ */
         /** Returns the machine name. */
         QString machineName() const;
+        /** Returns the OS type id. */
+        QString osTypeId() const;
     /** @} */
 
     /** @name Branding stuff.
@@ -514,6 +516,9 @@ public:
         bool setLogEnabled(bool fEnabled);
         /** Acquires whether log is @a fEnabled. */
         bool acquireWhetherLogEnabled(bool &fEnabled);
+
+        /** Acquire log folder. */
+        bool acquireLogFolder(QString &strFolder);
 
         /** Acquires effective CPU @a uLoad. */
         bool acquireEffectiveCPULoad(ulong &uLoad);
