@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98739 2023-02-25 20:57:33Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 98740 2023-02-25 21:05:45Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5043,7 +5043,7 @@ ifdef VBOX_WITH_LIBLZMA
 
  SDK_VBoxLibLzma-x86             := liblzma/x86 compressor/decompressor for dll linking.
  SDK_VBoxLibLzma-x86_EXTENDS     := VBoxLibLzma
- SDK_VBoxLibLzma_LIBS-x86        ?= $(PATH_STAGE_LIB)/VBox-liblzma-x86$(VBOX_SUFF_LIB)
+ SDK_VBoxLibLzma-x86_LIBS        ?= $(PATH_STAGE_LIB)/VBox-liblzma-x86$(VBOX_SUFF_LIB)
 
  SDK_VBoxLibLzmaStatic           := liblzma for static linking
  SDK_VBoxLibLzmaStatic_EXTENDS   := VBoxLibLzma
@@ -8981,7 +8981,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98739 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98740 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
