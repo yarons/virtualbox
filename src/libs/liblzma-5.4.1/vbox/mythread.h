@@ -1,4 +1,4 @@
-/* $Id: mythread.h 98730 2023-02-25 18:05:08Z alexander.eichner@oracle.com $ */
+/* $Id: mythread.h 98736 2023-02-25 18:55:59Z alexander.eichner@oracle.com $ */
 /** @file
  * mythread.h - Thread implementation based on IPRT
  */
@@ -185,7 +185,10 @@ static inline int
 mythread_cond_timedwait(mythread_cond *cond, mythread_mutex *mutex,
 		const mythread_condtime *condtime)
 {
-	RTCondVarCritSectWait(*cond, mutex, condtime->timeout);
+	int rc = RTCondVarCritSectWait(*cond, mutex, condtime->timeout);
+	if (rc == VERR_TIMEOUT)
+		return -1;
+	return 0;
 }
 
 static inline void
