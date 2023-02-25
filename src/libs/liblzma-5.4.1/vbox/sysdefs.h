@@ -1,4 +1,4 @@
-/* $Id: sysdefs.h 98730 2023-02-25 18:05:08Z alexander.eichner@oracle.com $ */
+/* $Id: sysdefs.h 98737 2023-02-25 20:51:38Z alexander.eichner@oracle.com $ */
 /** @file
  * sysdefs.h - System definitions using IPRT.
  */
@@ -59,16 +59,6 @@
 
 #define TUKLIB_GNUC_REQ(major, minor) RT_GNUC_PREREQ(major, minor)
 #define assert(expr) Assert(expr)
-
-
-#define malloc(size) RTMemAlloc(size)
-#define calloc(nmemb, size) RTMemAllocZ(nmemb * size)
-
-
-DECL_FORCE_INLINE(void) free(void *ptr)
-{
-	RTMemFree(ptr);
-}
 
 #if 0
 // The code currently assumes that size_t is either 32-bit or 64-bit.
