@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98741 2023-02-25 21:06:36Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 98742 2023-02-25 21:11:01Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -947,7 +947,7 @@ if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_BLD_RTSIGNTOOL_SIGNING = 1
 endif
 # Enables support for liblzma inside of IPRT.
-VBOX_WITH_LIBLZMA = 1
+#VBOX_WITH_LIBLZMA = 1
 ## @}
 
 
@@ -8981,7 +8981,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98741 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98742 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
