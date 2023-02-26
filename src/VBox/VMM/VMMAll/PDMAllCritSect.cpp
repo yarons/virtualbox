@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAllCritSect.cpp 98743 2023-02-26 14:08:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -230,7 +230,7 @@ static int pdmR3R0CritSectEnterContended(PVMCC pVM, PVMCPU pVCpu, PPDMCRITSECT p
          * Do the wait.
          *
          * In ring-3 this gets cluttered by lock validation and thread state
-         * maintainence.
+         * maintenance.
          *
          * In ring-0 we have to deal with the possibility that the thread has
          * been signalled and the interruptible wait function returning
