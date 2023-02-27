@@ -1,4 +1,4 @@
-/* $Id: lzmavfs.cpp 98732 2023-02-25 18:26:14Z alexander.eichner@oracle.com $ */
+/* $Id: lzmavfs.cpp 98750 2023-02-27 14:45:01Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - XZ/LZMA Compressor and Decompressor I/O Stream.
  */
@@ -50,6 +50,7 @@
 #include <iprt/string.h>
 #include <iprt/vfslowlevel.h>
 
+#define LZMA_API_STATIC
 #include <lzma.h>
 
 
