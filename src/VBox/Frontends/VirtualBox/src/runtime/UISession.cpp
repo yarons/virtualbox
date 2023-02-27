@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98745 2023-02-27 10:36:45Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98746 2023-02-27 10:46:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -299,6 +299,18 @@ bool UISession::setPause(bool fPause)
         else
             UINotificationMessage::cannotResumeMachine(comConsole);
     }
+    return fSuccess;
+}
+
+bool UISession::acquireSettingsFilePath(QString &strPath)
+{
+    CMachine comMachine = machine();
+    const QString strSettingsFilePath = comMachine.GetSettingsFilePath();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotSaveMachineSettings(comMachine);
+    else
+        strPath = strSettingsFilePath;
     return fSuccess;
 }
 
