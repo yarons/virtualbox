@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98754 2023-02-27 15:09:09Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98755 2023-02-27 15:10:45Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for xz/liblzma.
 #
@@ -32,6 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
 LIBRARIES += VBox-liblzma VBox-liblzma-static
 VBox-liblzma_TEMPLATE = VBoxR3RuntimeDllNonPedantic
 VBox-liblzma_CFLAGS.linux = -std=gnu99
+VBox-liblzma_CFLAGS.solaris = -std=gnu99
 VBox-liblzma_INCS += \
 	api \
 	common \
