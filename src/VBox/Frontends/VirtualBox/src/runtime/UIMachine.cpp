@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -376,6 +376,11 @@ bool UIMachine::acquireSnapshotCount(ulong &uCount)
 bool UIMachine::acquireCurrentSnapshotName(QString &strName)
 {
     return uisession()->acquireCurrentSnapshotName(strName);
+}
+
+bool UIMachine::acquireMaxSnapshotIndex(const QString &strNameTemplate, ulong &uIndex)
+{
+    return uisession()->acquireMaxSnapshotIndex(strNameTemplate, uIndex);
 }
 
 bool UIMachine::acquireWhetherAudioAdapterPresent(bool &fPresent)

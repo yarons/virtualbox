@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98654 2023-02-20 15:00:22Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -367,7 +367,6 @@ private:
     void askUserForTheDiskEncryptionPasswords();
 
     /* Helpers: */
-    static int searchMaxSnapshotIndex(const CMachine &machine, const CSnapshot &snapshot, const QString &strNameTemplate);
     void takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const;
 
     /** Reactivates the screen saver. This is possbily called during vm window close and enables host screen

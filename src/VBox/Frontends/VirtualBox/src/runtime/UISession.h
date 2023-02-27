@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -256,6 +256,9 @@ public:
         bool acquireSnapshotCount(ulong &uCount);
         /** Acquires current snapshot name. */
         bool acquireCurrentSnapshotName(QString &strName);
+
+        /** Recursively searches for a first snapshot matching name template conditions. */
+        bool acquireMaxSnapshotIndex(const QString &strNameTemplate, ulong &uIndex);
     /** @} */
 
     /** @name Keyboard stuff.
@@ -606,6 +609,13 @@ private:
 
         /** Recaches media attached to the machine. */
         void recacheMachineMedia();
+    /** @} */
+
+    /** @name Snapshot stuff.
+     ** @{ */
+        /** Recursively searches for a first snapshot matching name template conditions. */
+        static bool searchMaxSnapshotIndex(const CMachine &machine, const CSnapshot &snapshot,
+                                           const QString &strNameTemplate, ulong &uIndex);
     /** @} */
 
     /** @name General stuff.

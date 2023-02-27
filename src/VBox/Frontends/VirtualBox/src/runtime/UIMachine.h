@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -259,6 +259,9 @@ public:
         bool acquireSnapshotCount(ulong &uCount);
         /** Acquires current snapshot name. */
         bool acquireCurrentSnapshotName(QString &strName);
+
+        /** Recursively searches for a first snapshot matching name template conditions. */
+        bool acquireMaxSnapshotIndex(const QString &strNameTemplate, ulong &uIndex);
     /** @} */
 
     /** @name Audio stuff.
