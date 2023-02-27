@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdStorageBenchmark1.py 98763 2023-02-27 18:59:08Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98763 $"
 
 
 # Standard Python imports.
@@ -274,6 +274,7 @@ class IoPerfTest(object):
         self.sQueueDepth  = str(dCfg.get('QueueDepth',  32));
         self.sFilePath    = dCfg.get('FilePath',    '/mnt');
         self.fDirectIo    = True;
+        self.fReportIoStats = dCfg.get('ReportIoStats', True);
         self.asGstIoPerfPaths   = [
             '${CDROM}/vboxvalidationkit/${OS/ARCH}/IoPerf${EXESUFF}',
             '${CDROM}/${OS/ARCH}/IoPerf${EXESUFF}',
@@ -304,6 +305,8 @@ class IoPerfTest(object):
                    '--maximum-requests', self.sQueueDepth, '--dir', self.sFilePath + '/ioperfdir-1');
         if self.fDirectIo:
             tupArgs += ('--use-cache', 'off');
+        if not self.fReportIoStats:
+            tupArgs += ('--report-io-stats', 'off');
         fRc, sOutput, sError = self.oExecutor.execBinary(self._locateGstIoPerf(), tupArgs, cMsTimeout = cMsTimeout);
         if fRc:
             self.sResult = sOutput;
@@ -1045,8 +1048,9 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         Runs the given benchmark on the test host.
         """
 
-        dTestSet['FilePath'] = sMountpoint;
-        dTestSet['TargetOs'] = sTargetOs;
+        dTestSet['FilePath']      = sMountpoint;
+        dTestSet['TargetOs']      = sTargetOs;
+        dTestSet['ReportIoStats'] = self.fReportBenchmarkResults;
 
         oTst = None;
         if sBenchmark == 'iozone':
