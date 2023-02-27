@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98738 2023-02-25 20:52:11Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98748 2023-02-27 11:44:10Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3037,7 +3037,7 @@ endif
 VBoxRT-x86_SDKS  += VBoxOpenSslStatic-x86
 
 VBoxRT-x86_LIBS = \
-	$(SDK_VBoxLzf_LIBS-x86)
+	$(SDK_VBoxLzf-x86_LIBS)
 if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
  VBoxRT-x86_LIBS += \
  	$(PATH_STAGE_LIB)/SUPR3-x86$(VBOX_SUFF_LIB)
