@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98745 2023-02-27 10:36:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1620,11 +1620,8 @@ void UIMachineLogic::sltTakeSnapshot()
     if (!fDialogAccepted)
         return;
 
-    /* Take snapshot: */
-    UINotificationProgressSnapshotTake *pNotification = new UINotificationProgressSnapshotTake(machine(),
-                                                                                               strSnapshotName,
-                                                                                               strSnapshotDescription);
-    gpNotificationCenter->append(pNotification);
+    /* Take snapshot finally: */
+    uimachine()->takeSnapshot(strSnapshotName, strSnapshotDescription);
 }
 
 void UIMachineLogic::sltShowInformationDialog()

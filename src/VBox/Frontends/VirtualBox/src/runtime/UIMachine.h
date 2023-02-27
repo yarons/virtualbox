@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98745 2023-02-27 10:36:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -262,6 +262,9 @@ public:
 
         /** Recursively searches for a first snapshot matching name template conditions. */
         bool acquireMaxSnapshotIndex(const QString &strNameTemplate, ulong &uIndex);
+
+        /** Takes snapshot with name & description specified. */
+        void takeSnapshot(const QString &strName, const QString &strDescription);
     /** @} */
 
     /** @name Audio stuff.

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98745 2023-02-27 10:36:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -347,6 +347,15 @@ bool UISession::acquireMaxSnapshotIndex(const QString &strNameTemplate, ulong &u
     CMachine comMachine = machine();
     CSnapshot comSnapshot = comMachine.FindSnapshot(QString());
     return searchMaxSnapshotIndex(comMachine, comSnapshot, strNameTemplate, uIndex);
+}
+
+void UISession::takeSnapshot(const QString &strName, const QString &strDescription)
+{
+    CMachine comMachine = machine();
+    UINotificationProgressSnapshotTake *pNotification = new UINotificationProgressSnapshotTake(comMachine,
+                                                                                               strName,
+                                                                                               strDescription);
+    gpNotificationCenter->append(pNotification);
 }
 
 bool UISession::putScancode(LONG iCode)
