@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98751 2023-02-27 14:52:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98762 2023-02-27 17:24:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -828,6 +828,12 @@ void UIMachine::acquireFeaturesStatusInfo(QString &strInfo, KVMExecutionEngine &
                                            isHWVirtExNestedPagingEnabled(),
                                            isHWVirtExUXEnabled(),
                                            paravirtProvider());
+}
+
+void UIMachine::generateMachineInformationGeneral(const UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationGeneral(fOptions, returnTable);
 }
 
 bool UIMachine::setLogEnabled(bool fEnabled)
