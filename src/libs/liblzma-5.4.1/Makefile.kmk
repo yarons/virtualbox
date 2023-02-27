@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98757 2023-02-27 15:33:49Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98760 2023-02-27 16:16:17Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for xz/liblzma.
 #
@@ -31,8 +31,9 @@ include $(KBUILD_PATH)/subheader.kmk
 
 LIBRARIES += VBox-liblzma VBox-liblzma-static
 VBox-liblzma_TEMPLATE = VBoxR3RuntimeDllNonPedantic
-VBox-liblzma_CFLAGS.linux = -std=gnu99
+VBox-liblzma_CFLAGS.linux   = -std=gnu99
 VBox-liblzma_CFLAGS.solaris = -std=gnu99
+VBox-liblzma_CFLAGS.darwin  = -std=gnu99
 VBox-liblzma_INCS += \
 	api \
 	common \
@@ -169,6 +170,7 @@ VBox-liblzma-static_DEFS = $(VBox-liblzma_DEFS)
 VBox-liblzma-static_INCS = $(VBox-liblzma_INCS)
 VBox-liblzma-static_CFLAGS.linux   = $(VBox-liblzma_CFLAGS.linux)
 VBox-liblzma-static_CFLAGS.solaris = $(VBox-liblzma_CFLAGS.solaris)
+VBox-liblzma-static_CFLAGS.darwin  = $(VBox-liblzma_CFLAGS.darwin)
 ifdef VBOX_WITH_NOCRT_STATIC
  VBox-liblzma-static_DEFS += IPRT_NO_CRT_FOR_3RD_PARTY
 endif
