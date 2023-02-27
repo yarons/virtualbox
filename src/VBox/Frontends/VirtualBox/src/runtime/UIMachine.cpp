@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98751 2023-02-27 14:52:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -701,12 +701,25 @@ bool UIMachine::putEventMultiTouch(long iCount, const QVector<LONG64> &contacts,
     return uisession()->putEventMultiTouch(iCount, contacts, fIsTouchScreen, uScanTime);
 }
 
-#ifdef VBOX_WITH_DRAG_AND_DROP
+bool UIMachine::acquireClipboardMode(KClipboardMode &enmMode)
+{
+    return uisession()->acquireClipboardMode(enmMode);
+}
+
+bool UIMachine::setClipboardMode(KClipboardMode enmMode)
+{
+    return uisession()->setClipboardMode(enmMode);
+}
+
 bool UIMachine::acquireDnDMode(KDnDMode &enmMode)
 {
     return uisession()->acquireDnDMode(enmMode);
 }
-#endif /* VBOX_WITH_DRAG_AND_DROP */
+
+bool UIMachine::setDnDMode(KDnDMode enmMode)
+{
+    return uisession()->setDnDMode(enmMode);
+}
 
 bool UIMachine::addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend)
 {
