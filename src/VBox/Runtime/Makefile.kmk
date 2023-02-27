@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98748 2023-02-27 11:44:10Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98753 2023-02-27 15:04:15Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1840,7 +1840,6 @@ ifdef VBOX_WITH_NOCRT_STATIC
   	r3/alloc-ef.cpp \
   	r3/xml.cpp \
   	common/zip/xarvfs.cpp \
-  	common/zip/lzmavfs.cpp \
   	common/misc/json.cpp \
   	generic/RTLogWriteStdErr-generic.cpp \
   	generic/RTLogWriteStdOut-generic.cpp \
