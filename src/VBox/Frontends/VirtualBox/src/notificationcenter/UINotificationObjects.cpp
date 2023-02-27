@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -703,6 +703,15 @@ void UINotificationMessage::cannotAcquireAudioAdapterParameter(const CAudioAdapt
     createMessage(
         QApplication::translate("UIMessageCenter", "Audio adapter failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire audio adapter parameter.") +
+        UIErrorString::formatErrorInfo(comAdapter));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireNetworkAdapterParameter(const CNetworkAdapter &comAdapter)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Network adapter failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire network adapter parameter.") +
         UIErrorString::formatErrorInfo(comAdapter));
 }
 

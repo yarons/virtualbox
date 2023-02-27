@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98746 2023-02-27 10:46:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -512,6 +512,16 @@ public:
         bool webcamAttach(const QString &strPath, const QString &strName);
         /** Detaches web cam device with passed @a strName and @a strPath. */
         bool webcamDetach(const QString &strPath, const QString &strName);
+    /** @} */
+
+    /** @name Network stuff.
+     ** @{ */
+        /** Acquires whether network adapter is enabled. */
+        bool acquireWhetherNetworkAdapterEnabled(ulong uSlot, bool &fEnabled);
+        /** Acquires whether network adapter cable is connected. */
+        bool acquireWhetherNetworkCableConnected(ulong uSlot, bool &fConnected);
+        /** Set whether network adapter cable is connected. */
+        bool setNetworkCableConnected(ulong uSlot, bool fConnected);
     /** @} */
 
     /** @name Virtualization stuff.

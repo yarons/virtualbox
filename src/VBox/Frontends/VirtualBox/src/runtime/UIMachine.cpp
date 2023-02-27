@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98746 2023-02-27 10:46:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -741,6 +741,21 @@ bool UIMachine::webcamAttach(const QString &strPath, const QString &strName)
 bool UIMachine::webcamDetach(const QString &strPath, const QString &strName)
 {
     return uisession()->webcamDetach(strPath, strName);
+}
+
+bool UIMachine::acquireWhetherNetworkAdapterEnabled(ulong uSlot, bool &fEnabled)
+{
+    return uisession()->acquireWhetherNetworkAdapterEnabled(uSlot, fEnabled);
+}
+
+bool UIMachine::acquireWhetherNetworkCableConnected(ulong uSlot, bool &fConnected)
+{
+    return uisession()->acquireWhetherNetworkCableConnected(uSlot, fConnected);
+}
+
+bool UIMachine::setNetworkCableConnected(ulong uSlot, bool fConnected)
+{
+    return uisession()->setNetworkCableConnected(uSlot, fConnected);
 }
 
 bool UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states)

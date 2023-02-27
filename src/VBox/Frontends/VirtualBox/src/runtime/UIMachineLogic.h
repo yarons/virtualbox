@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98744 2023-02-27 10:29:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -300,7 +300,7 @@ private slots:
     void sltAttachUSBDevice();
     void sltAttachWebcamDevice();
     void sltChangeSharedClipboardType(QAction *pAction);
-    void sltToggleNetworkAdapterConnection();
+    void sltToggleNetworkAdapterConnection(bool fChecked);
     void sltChangeDragAndDropType(QAction *pAction);
     void sltInstallGuestAdditions();
 

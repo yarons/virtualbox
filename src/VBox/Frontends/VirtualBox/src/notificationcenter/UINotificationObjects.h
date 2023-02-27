@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98728 2023-02-24 16:27:05Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98749 2023-02-27 12:58:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -307,6 +307,9 @@ public:
         /** Notifies about inability to acquire IAudioAdapter parameter.
           * @param  comAdapter  Brings the object parameter get acquired from. */
         static void cannotAcquireAudioAdapterParameter(const CAudioAdapter &comAdapter);
+        /** Notifies about inability to acquire INetworkAdapter parameter.
+          * @param  comAdapter  Brings the object parameter get acquired from. */
+        static void cannotAcquireNetworkAdapterParameter(const CNetworkAdapter &comAdapter);
         /** Notifies about inability to acquire IConsole parameter.
           * @param  comConsole  Brings the object parameter get acquired from. */
         static void cannotAcquireConsoleParameter(const CConsole &comConsole);
