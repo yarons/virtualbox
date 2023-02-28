@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 98716 2023-02-24 10:47:14Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 98775 2023-02-28 10:31:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1030,9 +1030,8 @@ int GuestSession::i_directoryCreate(const Utf8Str &strPath, uint32_t uMode, uint
         int i = 0;
         HGCMSvcSetU32(&paParms[i++], pEvent->ContextID());
         HGCMSvcSetPv (&paParms[i++], (void*)strPath.c_str(), (ULONG)strPath.length() + 1);
-        HGCMSvcSetU32(&paParms[i++], fFlags);
         HGCMSvcSetU32(&paParms[i++], uMode);
-
+        HGCMSvcSetU32(&paParms[i++], fFlags);
         alock.release(); /* Drop lock before sending. */
 
         vrc = i_sendMessage(HOST_MSG_DIR_CREATE, i, paParms);
