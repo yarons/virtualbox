@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 98729 2023-02-24 19:04:45Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 98780 2023-02-28 12:03:39Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2684,7 +2684,6 @@ int GuestSessionTaskUpdateAdditions::runFileOnGuest(GuestSession *pSession, Gues
 int GuestSessionTaskUpdateAdditions::checkGuestAdditionsStatus(GuestSession *pSession, eOSType osType)
 {
     int vrc = VINF_SUCCESS;
-#ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
     HRESULT hrc;
 
     if (osType == eOSType_Linux)
@@ -2720,7 +2719,7 @@ int GuestSessionTaskUpdateAdditions::checkGuestAdditionsStatus(GuestSession *pSe
                                                     "files were installed, but kernel modules were not reloaded automatically. "
                                                     "Please consider rebooting the guest")));
     }
-#endif
+
     return vrc;
 }
 
