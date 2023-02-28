@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98751 2023-02-27 14:52:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98776 2023-02-28 10:32:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1239,9 +1239,8 @@ void UIMachineLogic::prepareDock()
     pDockMenu->setAsDockMenu();
 
     /* Now the dock icon preview: */
-    QPixmap pixmap = generalIconPool().userMachinePixmap(machine(), QSize(42, 42));
-    if (pixmap.isNull())
-        pixmap = generalIconPool().guestOSTypePixmap(uimachine()->osTypeId(), QSize(42, 42));
+    QPixmap pixmap;
+    uimachine()->acquireMachineIcon(QSize(42, 42), pixmap);
     m_pDockIconPreview = new UIDockIconPreview(uimachine(), pixmap);
 
     /* Should the dock-icon be updated at runtime? */
@@ -2698,7 +2697,8 @@ void UIMachineLogic::updateMenuDevicesStorage(QMenu *pMenu)
 void UIMachineLogic::updateMenuDevicesNetwork(QMenu *pMenu)
 {
     /* Determine how many adapters we should display: */
-    const KChipsetType enmChipsetType = machine().GetChipsetType();
+    KChipsetType enmChipsetType = KChipsetType_Null;
+    uimachine()->acquireChipsetType(enmChipsetType);
     const ulong uCount = qMin((ulong)4, (ulong)uiCommon().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(enmChipsetType));
 
     /* Enumerate existing network adapters: */

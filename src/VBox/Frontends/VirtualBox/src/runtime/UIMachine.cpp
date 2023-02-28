@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98764 2023-02-28 07:52:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.cpp 98776 2023-02-28 10:32:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -235,6 +235,16 @@ QString UIMachine::machineName() const
 QString UIMachine::osTypeId() const
 {
     return uisession()->osTypeId();
+}
+
+void UIMachine::acquireMachineIcon(const QSize &size, QPixmap &pixmap)
+{
+    return uisession()->acquireMachineIcon(size, pixmap);
+}
+
+bool UIMachine::acquireChipsetType(KChipsetType &enmType)
+{
+    return uisession()->acquireChipsetType(enmType);
 }
 
 void UIMachine::updateStateAdditionsActions()
