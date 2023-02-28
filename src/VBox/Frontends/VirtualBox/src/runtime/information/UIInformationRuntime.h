@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 98385 2023-02-01 13:11:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIInformationRuntime.h 98786 2023-02-28 15:53:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -37,7 +37,6 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CConsole.h"
-#include "CGuest.h"
 #include "CMachine.h"
 
 /* GUI includes: */
@@ -85,7 +84,6 @@ private:
 
     CMachine m_machine;
     CConsole m_console;
-    CGuest m_comGuest;
 
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
