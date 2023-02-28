@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 98682 2023-02-22 09:18:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2161,6 +2161,59 @@ QString UICommon::defaultFolderPathForType(UIMediumDeviceType enmMediumType)
         return virtualBox().GetSystemProperties().GetDefaultMachineFolder();
 
     return strLastFolder;
+}
+
+/* static */
+bool UICommon::acquireAmountOfImmutableImages(const CMachine &comMachine, ulong &cAmount)
+{
+    /* Acquire state: */
+    ulong cAmountOfImmutableImages = 0;
+    const KMachineState enmState = comMachine.GetState();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        /// @todo Who knows why 13 years ago this condition was added ..
+        if (enmState == KMachineState_Paused)
+        {
+            const CMediumAttachmentVector comAttachments = comMachine.GetMediumAttachments();
+            fSuccess = comMachine.isOk();
+            if (!fSuccess)
+                UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+            else
+            {
+                /* Calculate the amount of immutable attachments: */
+                foreach (const CMediumAttachment &comAttachment, comAttachments)
+                {
+                    /* Get the medium: */
+                    const CMedium comMedium = comAttachment.GetMedium();
+                    if (   comMedium.isNull() /* Null medium is valid case as well */
+                        || comMedium.GetParent().isNull() /* Null parent is valid case as well */)
+                        continue;
+                    /* Get the base medium: */
+                    const CMedium comBaseMedium = comMedium.GetBase();
+                    fSuccess = comMedium.isOk();
+                    if (!fSuccess)
+                        UINotificationMessage::cannotAcquireMediumParameter(comMedium);
+                    else
+                    {
+                        const KMediumType enmType = comBaseMedium.GetType();
+                        fSuccess = comBaseMedium.isOk();
+                        if (!fSuccess)
+                            UINotificationMessage::cannotAcquireMediumParameter(comBaseMedium);
+                        else if (enmType == KMediumType_Immutable)
+                            ++cAmountOfImmutableImages;
+                    }
+                    if (!fSuccess)
+                        break;
+                }
+            }
+        }
+    }
+    if (fSuccess)
+        cAmount = cAmountOfImmutableImages;
+    return fSuccess;
 }
 
 #ifdef RT_OS_LINUX

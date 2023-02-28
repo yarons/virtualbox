@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 98682 2023-02-22 09:18:00Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -440,6 +440,9 @@ public:
             it looks for recent folder extra data for other medium types. As the last resort returns default vm folder path.
           * @param  enmMediumType       Passes the medium type. */
         QString defaultFolderPathForType(UIMediumDeviceType enmMediumType);
+
+        /** Calculates @a cAmount of immutable images used by @a comMachine specified. */
+        static bool acquireAmountOfImmutableImages(const CMachine &comMachine, ulong &cAmount);
     /** @} */
 
     /** @name COM: USB stuff.

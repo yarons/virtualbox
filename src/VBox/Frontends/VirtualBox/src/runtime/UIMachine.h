@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98776 2023-02-28 10:32:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -507,6 +507,9 @@ public:
      ** @{ */
         /** Adds encryption password. */
         bool addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend);
+
+        /** Calculates @a cAmount of immutable images. */
+        bool acquireAmountOfImmutableImages(ulong &cAmount);
     /** @} */
 
     /** @name USB stuff.

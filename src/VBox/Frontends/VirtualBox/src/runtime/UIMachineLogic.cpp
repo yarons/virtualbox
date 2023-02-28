@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98776 2023-02-28 10:32:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1586,9 +1586,13 @@ void UIMachineLogic::sltTakeSnapshot()
     if (!isMachineWindowsCreated())
         return;
 
+    /* First of all, we should calculate amount of immutable images: */
+    ulong cAmountOfImmutableMediums = 0;
+    uimachine()->acquireAmountOfImmutableImages(cAmountOfImmutableMediums);
+
     /* Create take-snapshot dialog: */
     QWidget *pDlgParent = windowManager().realParentWindow(activeMachineWindow());
-    QPointer<UITakeSnapshotDialog> pDlg = new UITakeSnapshotDialog(pDlgParent, machine());
+    QPointer<UITakeSnapshotDialog> pDlg = new UITakeSnapshotDialog(pDlgParent, cAmountOfImmutableMediums);
     windowManager().registerNewParent(pDlg, pDlgParent);
 
     /* Assign corresponding icon: */

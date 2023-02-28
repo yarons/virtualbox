@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1620,9 +1620,13 @@ bool UISnapshotPane::takeSnapshot(bool fAutomatically /* = false */)
     /* In manual mode we should show take snapshot dialog: */
     if (!fAutomatically)
     {
+        /* First of all, we should calculate amount of immutable images: */
+        ulong cAmountOfImmutableMediums = 0;
+        UICommon::acquireAmountOfImmutableImages(comMachine, cAmountOfImmutableMediums);
+
         /* Create take-snapshot dialog: */
         QWidget *pDlgParent = windowManager().realParentWindow(this);
-        QPointer<UITakeSnapshotDialog> pDlg = new UITakeSnapshotDialog(pDlgParent, comMachine);
+        QPointer<UITakeSnapshotDialog> pDlg = new UITakeSnapshotDialog(pDlgParent, cAmountOfImmutableMediums);
         windowManager().registerNewParent(pDlg, pDlgParent);
 
         /* Assign corresponding icon: */

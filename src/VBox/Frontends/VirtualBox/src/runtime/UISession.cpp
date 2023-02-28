@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98776 2023-02-28 10:32:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -551,6 +551,12 @@ bool UISession::addEncryptionPassword(const QString &strId, const QString &strPa
     if (!fSuccess)
         msgCenter().cannotAddDiskEncryptionPassword(comConsole);
     return fSuccess;
+}
+
+bool UISession::acquireAmountOfImmutableImages(ulong &cAmount)
+{
+    CMachine comMachine = machine();
+    return UICommon::acquireAmountOfImmutableImages(comMachine, cAmount);
 }
 
 bool UISession::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)
