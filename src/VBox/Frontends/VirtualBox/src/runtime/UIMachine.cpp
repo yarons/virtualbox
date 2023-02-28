@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98762 2023-02-27 17:24:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.cpp 98764 2023-02-28 07:52:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -834,6 +834,54 @@ void UIMachine::generateMachineInformationGeneral(const UIExtraDataMetaDefs::Det
                                                   UITextTable &returnTable)
 {
     uisession()->generateMachineInformationGeneral(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationSystem(const UIExtraDataMetaDefs::DetailsElementOptionTypeSystem &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationSystem(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationDisplay(const UIExtraDataMetaDefs::DetailsElementOptionTypeDisplay &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationDisplay(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationStorage(const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationStorage(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationAudio(const UIExtraDataMetaDefs::DetailsElementOptionTypeAudio &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationAudio(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationNetwork(const UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationNetwork(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationSerial(const UIExtraDataMetaDefs::DetailsElementOptionTypeSerial &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationSerial(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationUSB(const UIExtraDataMetaDefs::DetailsElementOptionTypeUsb &fOptions,
+                                                  UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationUSB(fOptions, returnTable);
+}
+
+void UIMachine::generateMachineInformationSharedFolders(const UIExtraDataMetaDefs::DetailsElementOptionTypeSharedFolders &fOptions,
+                                                        UITextTable &returnTable)
+{
+    uisession()->generateMachineInformationSharedFolders(fOptions, returnTable);
 }
 
 bool UIMachine::setLogEnabled(bool fEnabled)

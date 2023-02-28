@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98761 2023-02-27 16:31:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.h 98764 2023-02-28 07:52:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -530,9 +530,33 @@ public:
 
     /** @name VM information stuff.
      ** @{ */
-        /** Return general info. for the machine(). */
+        /** Returns general info. of the machine(). */
         void generateMachineInformationGeneral(const UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral &fOptions,
                                                UITextTable &returnTable);
+        /** Returns system info. of the machine(). */
+        void generateMachineInformationSystem(const UIExtraDataMetaDefs::DetailsElementOptionTypeSystem &fOptions,
+                                               UITextTable &returnTable);
+        /** Returns display info. of the machine(). */
+        void generateMachineInformationDisplay(const UIExtraDataMetaDefs::DetailsElementOptionTypeDisplay &fOptions,
+                                               UITextTable &returnTable);
+        /** Returns storage info. of the machine(). */
+        void generateMachineInformationStorage(const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions,
+                                               UITextTable &returnTable);
+        /** Returns audio info. of the machine(). */
+        void generateMachineInformationAudio(const UIExtraDataMetaDefs::DetailsElementOptionTypeAudio &fOptions,
+                                               UITextTable &returnTable);
+        /** Returns network info. of the machine(). */
+        void generateMachineInformationNetwork(const UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork &fOptions,
+                                               UITextTable &returnTable);
+        /** Returns serial info. of the machine(). */
+        void generateMachineInformationSerial(const UIExtraDataMetaDefs::DetailsElementOptionTypeSerial &fOptions,
+                                              UITextTable &returnTable);
+        /** Returns USB info. of the machine(). */
+        void generateMachineInformationUSB(const UIExtraDataMetaDefs::DetailsElementOptionTypeUsb &fOptions,
+                                           UITextTable &returnTable);
+        /** Returns shared folders info. of the machine(). */
+        void generateMachineInformationSharedFolders(const UIExtraDataMetaDefs::DetailsElementOptionTypeSharedFolders &fOptions,
+                                                     UITextTable &returnTable);
     /** @} */
 
 public slots:
