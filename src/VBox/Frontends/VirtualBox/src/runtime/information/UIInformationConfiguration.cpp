@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 98765 2023-02-28 07:56:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.cpp 98768 2023-02-28 09:24:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -46,9 +46,8 @@
 #include "UIMachine.h"
 #include "UIVirtualBoxEventHandler.h"
 
-UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent, const CConsole &console)
+UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
-    , m_console(console)
     , m_pMainLayout(0)
     , m_pTableWidget(0)
     , m_pCopyWholeTableAction(0)
