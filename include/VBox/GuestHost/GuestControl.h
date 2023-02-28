@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 98773 2023-02-28 10:29:21Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 98788 2023-02-28 16:32:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -152,7 +152,7 @@ enum eProcessStatus
 /** Creates a secure temporary file / directory.
  *  Might not be supported on all (guest) OSes.
  *
- *  @sa IPRT's implementation of RTDirCreateTempSecure() / RTFileCreateTempSecumre(). */
+ *  @sa IPRT's implementation of RTDirCreateTempSecure() / RTFileCreateTempSecure(). */
 #define GSTCTL_CREATETEMP_F_SECURE          RT_BIT(1)
 /** Mask of valid flags. */
 #define GSTCTL_CREATETEMP_F_VALID_MASK      UINT32_C(0x00000003)
