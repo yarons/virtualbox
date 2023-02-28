@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98784 2023-02-28 15:14:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -729,6 +729,11 @@ bool UIMachine::acquireDnDMode(KDnDMode &enmMode)
 bool UIMachine::setDnDMode(KDnDMode enmMode)
 {
     return uisession()->setDnDMode(enmMode);
+}
+
+bool UIMachine::storageDevices(KDeviceType enmDeviceType, QList<StorageDeviceInfo> &guiStorageDevices)
+{
+    return uisession()->storageDevices(enmDeviceType, guiStorageDevices);
 }
 
 bool UIMachine::addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend)

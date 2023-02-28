@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98784 2023-02-28 15:14:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -322,6 +322,9 @@ public:
 
     /** @name Storage stuff.
      ** @{ */
+        /** Returns a list of storage devices. */
+        bool storageDevices(KDeviceType enmDeviceType, QList<StorageDeviceInfo> &guiStorageDevices);
+
         /** Adds encryption password. */
         bool addEncryptionPassword(const QString &strId, const QString &strPassword, bool fClearOnSuspend);
 

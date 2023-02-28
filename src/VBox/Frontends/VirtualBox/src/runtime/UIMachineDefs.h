@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 98621 2023-02-17 15:21:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 98784 2023-02-28 15:14:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -32,8 +32,12 @@
 #endif
 
 /* Qt includes: */
+#include <QIcon>
 #include <QString>
 #include <QUuid>
+
+/* GUI includes: */
+#include "UIDefs.h"
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>
@@ -75,6 +79,14 @@ enum UIKeyboardStateType
     UIKeyboardStateType_KeyboardCaptured        = RT_BIT(0),
     UIKeyboardStateType_HostKeyPressed          = RT_BIT(1),
     UIKeyboardStateType_HostKeyPressedInsertion = RT_BIT(2)
+};
+
+/** Robust struct to bring storage device info to machine-logic. */
+struct StorageDeviceInfo
+{
+    QString      m_strControllerName;
+    StorageSlot  m_guiStorageSlot;
+    QIcon        m_icon;
 };
 
 /** Robust struct to bring USB device info to machine-logic. */
