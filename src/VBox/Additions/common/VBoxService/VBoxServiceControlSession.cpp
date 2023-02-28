@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 98789 2023-02-28 16:34:10Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 98791 2023-02-28 16:41:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1019,7 +1019,7 @@ static int vgsvcGstCtrlSessionHandleDirOpen(const PVBOXSERVICECTRLSESSION pSessi
     GSTCTLDIRFILTER enmFilter;
     uint32_t        uHandle = 0;
     int rc = VbglR3GuestCtrlDirGetOpen(pHostCtx, szPath, sizeof(szPath), &fFlags, &enmFilter);
-    VGSvcVerbose(4, "[Dir %s]: fFlags=%#x, enmFilter=%#x, rc=%Rrc\n", szPath, enmFilter, rc);
+    VGSvcVerbose(4, "[Dir %s]: fFlags=%#x, enmFilter=%#x, rc=%Rrc\n", szPath, fFlags, enmFilter, rc);
     if (RT_SUCCESS(rc))
     {
         PVBOXSERVICECTRLDIR pDir = (PVBOXSERVICECTRLDIR)RTMemAllocZ(sizeof(VBOXSERVICECTRLDIR));
