@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxService-win.cpp 98794 2023-02-28 17:36:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -33,7 +33,6 @@
 #include <iprt/err.h>
 #include <iprt/ldr.h>
 #include <iprt/system.h> /* For querying OS version. */
-#include <VBox/VBoxGuestLib.h>
 
 #define WIN32_NO_STATUS
 #include <iprt/win/ws2tcpip.h>
