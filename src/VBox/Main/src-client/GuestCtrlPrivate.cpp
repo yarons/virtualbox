@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 98725 2023-02-24 14:48:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlPrivate.cpp 98789 2023-02-28 16:34:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -76,6 +76,10 @@ Utf8Str GuestFs::guestErrorToString(const GuestErrorInfo &guestErrorInfo)
             strErr.printf(tr("No such file or directory \"%s\""), guestErrorInfo.getWhat().c_str());
             break;
 
+        case VERR_INVALID_PARAMETER:
+            strErr.printf(tr("Invalid parameter specified"));
+            break;
+
         case VERR_INVALID_VM_HANDLE:
             strErr.printf(tr("VMM device is not available (is the VM running?)"));
             break;
@@ -110,6 +114,10 @@ Utf8Str GuestFs::guestErrorToString(const GuestErrorInfo &guestErrorInfo)
 
         case VERR_NOT_FOUND:
             strErr.printf(tr("The guest execution service is not ready (yet)"));
+            break;
+
+        case VERR_NOT_SUPPORTED:
+            strErr.printf(tr("Specified mode or flag is not supported on the guest"));
             break;
 
         default:
