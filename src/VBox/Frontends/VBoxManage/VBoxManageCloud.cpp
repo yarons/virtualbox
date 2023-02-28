@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 98778 2023-02-28 11:40:56Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 98785 2023-02-28 15:31:44Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1293,7 +1293,7 @@ static RTEXITCODE handleCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
                 return terminateCloudInstance(a, GetState.iNext, pCommonOpts);
 
             case kCloudInstance_Reset:
-//              setCurrentSubcommand(HELP_SCOPE_CLOUDINSTANCE_RESET);
+                setCurrentSubcommand(HELP_SCOPE_CLOUDINSTANCE_RESET);
                 return resetCloudInstance(a, GetState.iNext, pCommonOpts);
 
             case 'h':
