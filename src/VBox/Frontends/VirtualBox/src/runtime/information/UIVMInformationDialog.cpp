@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 98705 2023-02-23 16:24:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 98765 2023-02-28 07:56:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -212,7 +212,7 @@ void UIVMInformationDialog::prepareTabWidget()
 
         /* Create Configuration Details tab: */
         UIInformationConfiguration *pInformationConfigurationWidget =
-            new UIInformationConfiguration(this, m_pMachine->uisession()->machine(), m_pMachine->uisession()->console());
+            new UIInformationConfiguration(this, m_pMachine->uisession()->console());
         if (pInformationConfigurationWidget)
         {
             m_tabs.insert(Tabs_ConfigurationDetails, pInformationConfigurationWidget);
