@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 98768 2023-02-28 09:24:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 98769 2023-02-28 09:29:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -49,9 +49,6 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVMInformationDialog.h"
 #include "VBoxUtils.h"
-
-/* Other VBox includes: */
-#include <iprt/time.h>
 
 UIVMInformationDialog::UIVMInformationDialog(UIMachine *pMachine)
     : QMainWindowWithRestorableGeometryAndRetranslateUi(0)

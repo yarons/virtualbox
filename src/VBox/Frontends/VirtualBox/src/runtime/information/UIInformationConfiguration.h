@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 98768 2023-02-28 09:24:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.h 98769 2023-02-28 09:29:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -34,14 +34,9 @@
 /* Qt includes: */
 #include <QWidget>
 
-/* COM includes: */
-#include "COMEnums.h"
-#include "CGuest.h"
-
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UITextTable.h"
-
 
 /* Forward declarations: */
 class QTableWidget;
