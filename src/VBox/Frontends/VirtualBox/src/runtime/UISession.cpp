@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98810 2023-03-01 17:20:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -554,6 +554,46 @@ bool UISession::setDnDMode(KDnDMode enmMode)
     const bool fSuccess = comMachine.isOk();
     if (!fSuccess)
         UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    return fSuccess;
+}
+
+bool UISession::acquireAmountOfStorageDevices(ulong &cHardDisks, ulong &cOpticalDrives, ulong &cFloppyDrives)
+{
+    const CMachine comMachine = machine();
+    ulong cActualHardDisks = 0, cActualOpticalDrives = 0, cActualFloppyDrives = 0;
+    const CMediumAttachmentVector comAttachments = comMachine.GetMediumAttachments();
+    bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+    {
+        foreach (const CMediumAttachment &comAttachment, comAttachments)
+        {
+            /* Get device type: */
+            const KDeviceType enmDeviceType = comAttachment.GetType();
+            fSuccess = comAttachment.isOk();
+            if (!fSuccess)
+            {
+                UINotificationMessage::cannotAcquireMediumAttachmentParameter(comAttachment);
+                break;
+            }
+
+            /* And advance corresponding amount: */
+            switch (enmDeviceType)
+            {
+                case KDeviceType_HardDisk: ++cActualHardDisks; break;
+                case KDeviceType_DVD: ++cActualOpticalDrives; break;
+                case KDeviceType_Floppy: ++cActualFloppyDrives; break;
+                default: break;
+            }
+        }
+    }
+    if (fSuccess)
+    {
+        cHardDisks = cActualHardDisks;
+        cOpticalDrives = cActualOpticalDrives;
+        cFloppyDrives = cActualFloppyDrives;
+    }
     return fSuccess;
 }
 
