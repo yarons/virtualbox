@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98801 2023-03-01 08:39:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98805 2023-03-01 15:36:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -333,6 +333,10 @@ public:
 
         /** Calculates @a cAmount of immutable images. */
         bool acquireAmountOfImmutableImages(ulong &cAmount);
+
+        /** Attempts to mount medium with @p uMediumId to the machine
+          * if it can find an appropriate controller and port. */
+        bool mountBootMedium(const QUuid &uMediumId);
     /** @} */
 
     /** @name USB stuff.

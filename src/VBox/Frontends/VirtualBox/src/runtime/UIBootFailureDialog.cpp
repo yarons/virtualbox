@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 98805 2023-03-01 15:36:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -52,8 +52,8 @@
 #include "CMediumAttachment.h"
 #include "CStorageController.h"
 
-UIBootFailureDialog::UIBootFailureDialog(QWidget *pParent, const CMachine &comMachine)
-    :QIWithRetranslateUI<QIMainDialog>(pParent)
+UIBootFailureDialog::UIBootFailureDialog(QWidget *pParent)
+    : QIWithRetranslateUI<QIMainDialog>(pParent)
     , m_pParent(pParent)
     , m_pCentralWidget(0)
     , m_pMainLayout(0)
@@ -65,7 +65,6 @@ UIBootFailureDialog::UIBootFailureDialog(QWidget *pParent, const CMachine &comMa
     , m_pBootImageLabel(0)
     , m_pIconLabel(0)
     , m_pSuppressDialogCheckBox(0)
-    , m_comMachine(comMachine)
 {
     configure();
 }

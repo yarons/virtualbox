@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIBootFailureDialog.h 98805 2023-03-01 15:36:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootFailureDialog class declaration.
  */
@@ -46,10 +46,6 @@ class QIDialogButtonBox;
 class QIRichTextLabel;
 class UIFilePathSelector;
 
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMachine.h"
-
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
 class UIBootFailureDialog : public QIWithRetranslateUI<QIMainDialog>
 {
@@ -67,7 +63,7 @@ public:
         ReturnCode_Max
     };
 
-    UIBootFailureDialog(QWidget *pParent, const CMachine &comMachine);
+    UIBootFailureDialog(QWidget *pParent);
     ~UIBootFailureDialog();
     QString bootMediumPath() const;
 
@@ -114,7 +110,6 @@ private:
     QLabel               *m_pBootImageLabel;
     QLabel               *m_pIconLabel;
     QCheckBox            *m_pSuppressDialogCheckBox;
-    CMachine              m_comMachine;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIBootFailureDialog_h */
