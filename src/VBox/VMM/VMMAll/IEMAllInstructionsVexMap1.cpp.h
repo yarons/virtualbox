@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap1.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsVexMap1.cpp.h 98799 2023-03-01 00:29:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4298,7 +4298,6 @@ FNIEMOP_DEF_1(iemOp_VGrp15_vstmxcsr,  uint8_t, bRm)
     IEM_MC_ASSIGN(iEffSeg, pVCpu->iem.s.iEffSeg);
     IEM_MC_CALL_CIMPL_2(iemCImpl_vstmxcsr, iEffSeg, GCPtrEff);
     IEM_MC_END();
-    return VINF_SUCCESS;
 }
 
 /*  Opcode VEX.0F 0xae mem/4 - invalid. */
