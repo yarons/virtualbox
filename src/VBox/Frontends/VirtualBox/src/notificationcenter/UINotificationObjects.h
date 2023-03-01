@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98801 2023-03-01 08:39:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -71,6 +71,7 @@ class CCloudProviderManager;
 class CCloudProvider;
 class CCloudProfile;
 class CEmulatedUSB;
+class CGuestOSType;
 class CKeyboard;
 class CMachineDebugger;
 class CMediumAttachment;
@@ -325,6 +326,9 @@ public:
         /** Notifies about inability to acquire IGuest parameter.
           * @param  comGuest  Brings the object parameter get acquired from. */
         static void cannotAcquireGuestParameter(const CGuest &comGuest);
+        /** Notifies about inability to acquire IGuestOSType parameter.
+          * @param  comGuestOSType  Brings the object parameter get acquired from. */
+        static void cannotAcquireGuestOSTypeParameter(const CGuestOSType &comGuestOSType);
         /** Notifies about inability to acquire ISnapshot parameter.
           * @param  comSnapshot  Brings the object parameter get acquired from. */
         static void cannotAcquireSnapshotParameter(const CSnapshot &comSnapshot);

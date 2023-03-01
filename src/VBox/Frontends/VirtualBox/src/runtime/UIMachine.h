@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98801 2023-03-01 08:39:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -522,6 +522,10 @@ public:
 
         /** Calculates @a cAmount of immutable images. */
         bool acquireAmountOfImmutableImages(ulong &cAmount);
+
+        /** Attempts to mount medium with @p uMediumId to the machine
+          * if it can find an appropriate controller and port. */
+        bool mountBootMedium(const QUuid &uMediumId);
     /** @} */
 
     /** @name USB stuff.

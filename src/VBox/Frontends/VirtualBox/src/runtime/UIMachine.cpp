@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98801 2023-03-01 08:39:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -764,6 +764,11 @@ bool UIMachine::addEncryptionPassword(const QString &strId, const QString &strPa
 bool UIMachine::acquireAmountOfImmutableImages(ulong &cAmount)
 {
     return uisession()->acquireAmountOfImmutableImages(cAmount);
+}
+
+bool UIMachine::mountBootMedium(const QUuid &uMediumId)
+{
+    return uisession()->mountBootMedium(uMediumId);
 }
 
 bool UIMachine::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)
