@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1235,7 +1235,7 @@ void UIMachineLogic::prepareDock()
 
     /* Now the dock icon preview: */
     QPixmap pixmap;
-    uimachine()->acquireMachineIcon(QSize(42, 42), pixmap);
+    uimachine()->acquireMachinePixmap(QSize(42, 42), pixmap);
     m_pDockIconPreview = new UIDockIconPreview(uimachine(), pixmap);
 
     /* Should the dock-icon be updated at runtime? */

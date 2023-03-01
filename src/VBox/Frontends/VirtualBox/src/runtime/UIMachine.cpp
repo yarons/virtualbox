@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -237,9 +237,14 @@ QString UIMachine::osTypeId() const
     return uisession()->osTypeId();
 }
 
-void UIMachine::acquireMachineIcon(const QSize &size, QPixmap &pixmap)
+void UIMachine::acquireMachinePixmap(const QSize &size, QPixmap &pixmap)
 {
-    return uisession()->acquireMachineIcon(size, pixmap);
+    return uisession()->acquireMachinePixmap(size, pixmap);
+}
+
+void UIMachine::acquireUserMachineIcon(QIcon &icon)
+{
+    return uisession()->acquireUserMachineIcon(icon);
 }
 
 bool UIMachine::acquireChipsetType(KChipsetType &enmType)
@@ -1448,16 +1453,9 @@ bool UIMachine::prepare()
 
 void UIMachine::prepareBranding()
 {
-    /* Acquire user machine-window icon: */
-    QIcon icon = generalIconPool().userMachineIcon(uisession()->machine());
-    /* Use the OS type icon if user one was not set: */
-    if (icon.isNull())
-        icon = generalIconPool().guestOSTypeIcon(osTypeId());
-    /* Use the default icon if nothing else works: */
-    if (icon.isNull())
-        icon = QIcon(":/VirtualBox_48px.png");
-    /* Store the icon dynamically: */
-    m_pMachineWindowIcon = new QIcon(icon);
+    /* Create the icon dynamically: */
+    m_pMachineWindowIcon = new QIcon;
+    acquireUserMachineIcon(*m_pMachineWindowIcon);
 
 #ifndef VBOX_WS_MAC
     /* Load user's machine-window name postfix: */

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -268,13 +268,24 @@ WId UISession::mainMachineWindowId() const
     return mainMachineWindow() ? mainMachineWindow()->winId() : 0;
 }
 
-void UISession::acquireMachineIcon(const QSize &size, QPixmap &pixmap)
+void UISession::acquireMachinePixmap(const QSize &size, QPixmap &pixmap)
 {
     QPixmap machinePixmap = generalIconPool().userMachinePixmap(machine(), size);
     if (machinePixmap.isNull())
         machinePixmap = generalIconPool().guestOSTypePixmap(osTypeId(), size);
     if (!machinePixmap.isNull())
         pixmap = machinePixmap;
+}
+
+void UISession::acquireUserMachineIcon(QIcon &icon)
+{
+    QIcon machineIcon = generalIconPool().userMachineIcon(machine());
+    if (machineIcon.isNull())
+        machineIcon = generalIconPool().guestOSTypeIcon(osTypeId());
+    if (machineIcon.isNull())
+        machineIcon = QIcon(":/VirtualBox_48px.png");
+    if (!machineIcon.isNull())
+        icon = machineIcon;
 }
 
 bool UISession::acquireChipsetType(KChipsetType &enmType)

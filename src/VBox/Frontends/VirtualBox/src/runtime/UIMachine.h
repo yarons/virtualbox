@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -190,8 +190,10 @@ public:
         /** Returns the OS type id. */
         QString osTypeId() const;
 
-        /** Acquire machine icon. */
-        void acquireMachineIcon(const QSize &size, QPixmap &pixmap);
+        /** Acquire machine pixmap. */
+        void acquireMachinePixmap(const QSize &size, QPixmap &pixmap);
+        /** Acquire user machine icon. */
+        void acquireUserMachineIcon(QIcon &icon);
 
         /** Acquires chipset type. */
         bool acquireChipsetType(KChipsetType &enmType);
