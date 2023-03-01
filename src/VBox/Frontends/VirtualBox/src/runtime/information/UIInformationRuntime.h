@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 98802 2023-03-01 09:04:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.h 98803 2023-03-01 09:28:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -34,10 +34,6 @@
 /* Qt includes: */
 #include <QWidget>
 
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMachine.h"
-
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 
@@ -55,9 +51,8 @@ class UIInformationRuntime : public QIWithRetranslateUI<QWidget>
 
 public:
 
-    /** Constructs information-tab passing @a pParent to the QWidget base-class constructor.
-      * @param machine is machine reference. */
-    UIInformationRuntime(QWidget *pParent, const CMachine &machine, const UIMachine *pMachine);
+    /** Constructs information-tab passing @a pParent to the QWidget base-class constructor. */
+    UIInformationRuntime(QWidget *pParent, const UIMachine *pMachine);
 
 protected:
 
@@ -79,8 +74,6 @@ private slots:
 private:
 
     void prepareObjects();
-
-    CMachine m_machine;
 
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
