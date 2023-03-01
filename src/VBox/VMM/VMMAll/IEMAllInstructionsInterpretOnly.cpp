@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsInterpretOnly.cpp 98795 2023-03-01 00:05:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsInterpretOnly.cpp 98797 2023-03-01 00:23:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -102,12 +102,12 @@
 # include "IEMAllInstructionsThree0f3a.cpp.h"
 #endif
 
+#include "IEMAllInstructionsTwoByte0f.cpp.h"
+
 #ifdef _MSC_VER
 # pragma warning(push)
 # pragma warning(disable: 4702) /* Unreachable code like return after IEM_MC_ADVANCE_RIP_AND_FINISH. */
 #endif
-
-#include "IEMAllInstructionsTwoByte0f.cpp.h"
 
 #ifdef IEM_WITH_VEX
 # include "IEMAllInstructionsVexMap1.cpp.h"
