@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 98781 2023-02-28 13:19:16Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 98795 2023-03-01 00:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4335,7 +4335,7 @@ IEM_CIMPL_PROTO_0(iemCImpl_vmmcall); /* svm */
 IEM_CIMPL_PROTO_1(iemCImpl_Hypercall, uint16_t, uDisOpcode); /* both */
 
 
-extern const PFNIEMOP g_apfnOneByteMap[256];
+extern const PFNIEMOP g_apfnIemInterpretOnlyOneByteMap[256];
 
 /** @} */
 
