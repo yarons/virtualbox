@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 98706 2023-02-23 16:29:55Z valery.portnyagin@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 98807 2023-03-01 16:38:03Z brent.paulson@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8499,7 +8499,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
 #ifdef RT_OS_SOLARIS
         /* setup host core dumper for the VM */
         Bstr value;
-        HRESULT hrc = mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpEnabled").raw(), value.asOutParam());
+        hrc = mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpEnabled").raw(), value.asOutParam());
         if (SUCCEEDED(hrc) && value == "1")
         {
             Bstr coreDumpDir, coreDumpReplaceSys, coreDumpLive;

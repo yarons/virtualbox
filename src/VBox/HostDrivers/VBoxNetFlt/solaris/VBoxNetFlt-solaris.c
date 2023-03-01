@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFlt-solaris.c 98807 2023-03-01 16:38:03Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1837,6 +1837,8 @@ static int vboxNetFltSolarisSetMuxId(vnode_t *pVNode, struct lifreq *pInterface)
 static int vboxNetFltSolarisMuxIdToFd(vnode_t *pVNode, int MuxId, int *pFd)
 {
     int ret;
+
+    *pFd = -1; /* silence compiler warnings from -Wmaybe-uninitialized */
     int rc = strioctl(pVNode, _I_MUXID2FD, (intptr_t)MuxId, 0, K_TO_K, kcred, &ret);
     if (!rc)
     {
