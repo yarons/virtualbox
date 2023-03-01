@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -769,6 +769,20 @@ bool UIMachine::acquireAmountOfImmutableImages(ulong &cAmount)
 bool UIMachine::mountBootMedium(const QUuid &uMediumId)
 {
     return uisession()->mountBootMedium(uMediumId);
+}
+
+void UIMachine::prepareStorageMenu(QMenu *pMenu,
+                                   QObject *pListener, const char *pszSlotName,
+                                   const QString &strControllerName, const StorageSlot &storageSlot)
+{
+    return uisession()->prepareStorageMenu(pMenu,
+                                           pListener, pszSlotName,
+                                           strControllerName, storageSlot);
+}
+
+void UIMachine::updateMachineStorage(const UIMediumTarget &target, UIActionPool *pActionPool)
+{
+    return uisession()->updateMachineStorage(target, pActionPool);
 }
 
 bool UIMachine::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)

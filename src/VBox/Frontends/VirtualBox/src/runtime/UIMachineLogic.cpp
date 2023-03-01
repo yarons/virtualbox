@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98805 2023-03-01 15:36:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -267,11 +267,6 @@ UISession *UIMachineLogic::uisession() const
 UIActionPool *UIMachineLogic::actionPool() const
 {
     return uimachine()->actionPool();
-}
-
-CMachine& UIMachineLogic::machine() const
-{
-    return uisession()->machine();
 }
 
 QString UIMachineLogic::machineName() const
@@ -2166,7 +2161,7 @@ void UIMachineLogic::sltMountStorageMedium()
     const UIMediumTarget target = pAction->data().value<UIMediumTarget>();
 
     /* Update current machine mount-target: */
-    uiCommon().updateMachineStorage(machine(), target, actionPool());
+    uimachine()->updateMachineStorage(target, actionPool());
 }
 
 void UIMachineLogic::sltToggleAudioOutput(bool fEnabled)
@@ -2682,9 +2677,9 @@ void UIMachineLogic::updateMenuDevicesStorage(QMenu *pMenu)
             pStorageMenu = pMenu;
 
         /* Fill current storage menu: */
-        uiCommon().prepareStorageMenu(*pStorageMenu,
-                                      this, SLOT(sltMountStorageMedium()), machine(),
-                                      guiStorageDevice.m_strControllerName, guiStorageDevice.m_guiStorageSlot);
+        uimachine()->prepareStorageMenu(pStorageMenu,
+                                        this, SLOT(sltMountStorageMedium()),
+                                        guiStorageDevice.m_strControllerName, guiStorageDevice.m_guiStorageSlot);
     }
 }
 

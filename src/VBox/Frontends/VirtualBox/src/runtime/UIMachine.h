@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -39,6 +39,7 @@
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UIExtraDataDefs.h"
 #include "UIMachineDefs.h"
+#include "UIMediumDefs.h"
 #include "UIMousePointerShapeData.h"
 #include "UITextTable.h"
 
@@ -526,6 +527,13 @@ public:
         /** Attempts to mount medium with @p uMediumId to the machine
           * if it can find an appropriate controller and port. */
         bool mountBootMedium(const QUuid &uMediumId);
+
+        /** Prepares storage menu. */
+        void prepareStorageMenu(QMenu *pMenu,
+                                QObject *pListener, const char *pszSlotName,
+                                const QString &strControllerName, const StorageSlot &storageSlot);
+        /** Updates machine storage with data described by target. */
+        void updateMachineStorage(const UIMediumTarget &target, UIActionPool *pActionPool);
     /** @} */
 
     /** @name USB stuff.
