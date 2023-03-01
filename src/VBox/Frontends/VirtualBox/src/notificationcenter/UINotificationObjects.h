@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98806 2023-03-01 15:37:05Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -78,6 +78,7 @@ class CMediumAttachment;
 class CMouse;
 class CNetworkAdapter;
 class CStorageController;
+class CSystemProperties;
 class CVirtualBox;
 class CVirtualBoxErrorInfo;
 class CVRDEServer;
@@ -281,6 +282,9 @@ public:
           * @param  comVBox  Brings the object parameter get acquired from. */
         static void cannotAcquireApplianceParameter(const CAppliance &comAppliance,
                                                     UINotificationCenter *pParent = 0);
+        /** Notifies about inability to acquire ISystemProperties parameter.
+          * @param  comProperties  Brings the object parameter get acquired from. */
+        static void cannotAcquireSystemPropertiesParameter(const CSystemProperties &comProperties);
         /** Notifies about inability to acquire IExtPackManager parameter.
           * @param  comVBox  Brings the object parameter get acquired from. */
         static void cannotAcquireExtensionPackManagerParameter(const CExtPackManager &comEPManager);

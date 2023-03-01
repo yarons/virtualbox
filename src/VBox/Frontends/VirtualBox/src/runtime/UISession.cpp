@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98810 2023-03-01 17:20:14Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1106,6 +1106,47 @@ bool UISession::acquireWhetherNetworkAdapterEnabled(ulong uSlot, bool &fEnabled)
             UINotificationMessage::cannotAcquireNetworkAdapterParameter(comAdapter);
         else
             fEnabled = fAdapterEnabled == TRUE;
+    }
+    return fSuccess;
+}
+
+bool UISession::acquireWhetherAtLeastOneNetworkAdapterEnabled(bool &fEnabled)
+{
+    /* Acquire system properties: */
+    CVirtualBox comVBox = uiCommon().virtualBox();
+    AssertReturn(comVBox.isNotNull(), false);
+    CSystemProperties comProperties = comVBox.GetSystemProperties();
+    if (!comVBox.isOk())
+    {
+        UINotificationMessage::cannotAcquireVirtualBoxParameter(comVBox);
+        return false;
+    }
+
+    /* Acquire chipset type: */
+    KChipsetType enmChipsetType = KChipsetType_Null;
+    bool fSuccess = acquireChipsetType(enmChipsetType);
+    if (fSuccess)
+    {
+        /* Acquire maximum network adapters count: */
+        const ulong uSlots = comProperties.GetMaxNetworkAdapters(enmChipsetType);
+        fSuccess = comProperties.isOk();
+        if (!fSuccess)
+            UINotificationMessage::cannotAcquireSystemPropertiesParameter(comProperties);
+        else
+        {
+            /* Search for 1st enabled adapter: */
+            for (ulong uSlot = 0; uSlot < uSlots; ++uSlot)
+            {
+                bool fAdapterEnabled = false;
+                fSuccess = acquireWhetherNetworkAdapterEnabled(uSlot, fAdapterEnabled);
+                if (!fSuccess)
+                    break;
+                if (!fAdapterEnabled)
+                    continue;
+                fEnabled = true;
+                break;
+            }
+        }
     }
     return fSuccess;
 }

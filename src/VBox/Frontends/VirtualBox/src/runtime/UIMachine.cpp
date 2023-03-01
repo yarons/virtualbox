@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98810 2023-03-01 17:20:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -828,6 +828,11 @@ bool UIMachine::webcamDetach(const QString &strPath, const QString &strName)
 bool UIMachine::acquireWhetherNetworkAdapterEnabled(ulong uSlot, bool &fEnabled)
 {
     return uisession()->acquireWhetherNetworkAdapterEnabled(uSlot, fEnabled);
+}
+
+bool UIMachine::acquireWhetherAtLeastOneNetworkAdapterEnabled(bool &fEnabled)
+{
+    return uisession()->acquireWhetherAtLeastOneNetworkAdapterEnabled(fEnabled);
 }
 
 bool UIMachine::acquireWhetherNetworkCableConnected(ulong uSlot, bool &fConnected)
@@ -1869,19 +1874,9 @@ void UIMachine::updateActionRestrictions()
     /* Network stuff: */
     {
         /* Initialize Network menu: */
-        bool fAtLeastOneAdapterActive = false;
-        const KChipsetType enmChipsetType = uisession()->machine().GetChipsetType();
-        ULONG uSlots = uiCommon().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(enmChipsetType);
-        for (ULONG uSlot = 0; uSlot < uSlots; ++uSlot)
-        {
-            const CNetworkAdapter &comNetworkAdapter = uisession()->machine().GetNetworkAdapter(uSlot);
-            if (comNetworkAdapter.GetEnabled())
-            {
-                fAtLeastOneAdapterActive = true;
-                break;
-            }
-        }
-        if (!fAtLeastOneAdapterActive)
+        bool fAtLeastOneAdapterEnabled = false;
+        acquireWhetherAtLeastOneNetworkAdapterEnabled(fAtLeastOneAdapterEnabled);
+        if (!fAtLeastOneAdapterEnabled)
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)
                                     (restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_Network);
     }

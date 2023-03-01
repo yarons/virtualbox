@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98810 2023-03-01 17:20:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -562,6 +562,8 @@ public:
      ** @{ */
         /** Acquires whether network adapter is enabled. */
         bool acquireWhetherNetworkAdapterEnabled(ulong uSlot, bool &fEnabled);
+        /** Acquires whether at leasst one network adapter is enabled. */
+        bool acquireWhetherAtLeastOneNetworkAdapterEnabled(bool &fEnabled);
         /** Acquires whether network adapter cable is connected. */
         bool acquireWhetherNetworkCableConnected(ulong uSlot, bool &fConnected);
         /** Set whether network adapter cable is connected. */
