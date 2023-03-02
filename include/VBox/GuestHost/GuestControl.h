@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 98819 2023-03-02 14:25:33Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 98820 2023-03-02 14:39:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -343,11 +343,6 @@ typedef struct GSTCTLFSOBJATTRUNIX
      * when the OS doesn't subscribe to the major+minor device idenfication scheme. */
     RTDEV           Device;
 } GSTCTLFSOBJATTRUNIX;
-#if ARCH_BITS == 32
-AssertCompileSize(GSTCTLFSOBJATTRUNIX, 36);
-#else
-AssertCompileSize(GSTCTLFSOBJATTRUNIX, 40);
-#endif
 
 /**
  * Additional guest Unix attributes (GSTCTLFSOBJATTRADD_UNIX_OWNER).
