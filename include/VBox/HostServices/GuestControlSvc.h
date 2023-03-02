@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 98818 2023-03-02 13:52:48Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 98823 2023-03-02 17:03:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1555,9 +1555,6 @@ typedef struct HGCMReplyDirNotify
              *  Multiple groups are delimited by "\r\n", whereas
              *  the first group always is the primary group. */
             HGCMFunctionParameter groups;
-            /** @todo ACL; not implemented yet.
-             * Windows ACL, defined in SDDL. */
-            HGCMFunctionParameter acl;
         } read;
     } u;
 } HGCMReplyDirNotify;
@@ -1590,9 +1587,6 @@ typedef struct HGCMReplyFsNotify
              *  Multiple groups are delimited by "\r\n", whereas
              *  the first group always is the primary group. */
             HGCMFunctionParameter groups;
-            /** @todo ACL; not implemented yet.
-             * Windows ACL, defined in SDDL. */
-            HGCMFunctionParameter acl;
         } queryinfo;
         /**
          * Parameters used for \a type GUEST_FS_NOTIFYTYPE_CREATE_TEMP.
