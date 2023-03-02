@@ -1,4 +1,4 @@
-; $Id: tstIEMAImplDataSseBinary.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: tstIEMAImplDataSseBinary.asm 98822 2023-03-02 15:02:03Z alexander.eichner@oracle.com $
 ;; @file
 ; tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
 ;
@@ -148,3 +148,8 @@ IEM_TEST_DATA cvtpi2pd_u128,        "tstIEMAImplDataSseConvert-cvtpi2pd_u128.bin
 
 IEM_TEST_DATA cvtps2pi_u128,        "tstIEMAImplDataSseConvert-cvtps2pi_u128.bin"
 IEM_TEST_DATA cvttps2pi_u128,       "tstIEMAImplDataSseConvert-cvttps2pi_u128.bin"
+
+IEM_TEST_DATA pcmpistri_u128,       "tstIEMAImplDataSsePcmpxstrx-pcmpistri_u128.bin"
+IEM_TEST_DATA pcmpistrm_u128,       "tstIEMAImplDataSsePcmpxstrx-pcmpistrm_u128.bin"
+IEM_TEST_DATA pcmpestri_u128,       "tstIEMAImplDataSsePcmpxstrx-pcmpestri_u128.bin"
+IEM_TEST_DATA pcmpestrm_u128,       "tstIEMAImplDataSsePcmpxstrx-pcmpestrm_u128.bin"
