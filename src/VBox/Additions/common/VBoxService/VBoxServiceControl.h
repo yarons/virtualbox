@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 98709 2023-02-24 08:49:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControl.h 98817 2023-03-02 13:16:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -220,8 +220,10 @@ typedef struct VBOXSERVICECTRLSESSION
     uint32_t                        fFlags;
     /** How many processes do we allow keeping around at a time? */
     uint32_t                        uProcsMaxKept;
-    /** The uid/gid cache for this session. */
-    VGSVCIDCACHE                    IdCache;
+    /** The uid cache for this session. */
+    VGSVCIDCACHE                    UidCache;
+    /** The gid cache for this session. */
+    VGSVCIDCACHE                    GidCache;
 } VBOXSERVICECTRLSESSION;
 /** Pointer to guest session. */
 typedef VBOXSERVICECTRLSESSION *PVBOXSERVICECTRLSESSION;
