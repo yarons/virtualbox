@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 98817 2023-03-02 13:16:17Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControl.h 98818 2023-03-02 13:52:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -79,6 +79,10 @@ typedef struct VBOXSERVICECTRLDIR
     uint32_t                        uHandle;
     /** Context ID. */
     uint32_t                        uContextID;
+    /** Flags for reading directory entries. */
+    uint32_t                        fRead;
+    /** Additional attributes enumeration to use for reading directory entries. */
+    GSTCTLFSOBJATTRADD              enmReadAttrAdd;
 } VBOXSERVICECTRLDIR;
 /** Pointer to a guest directory. */
 typedef VBOXSERVICECTRLDIR *PVBOXSERVICECTRLDIR;

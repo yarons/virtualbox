@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 98714 2023-02-24 10:16:44Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.cpp 98818 2023-03-02 13:52:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -359,6 +359,8 @@ int GuestDirectory::i_open(int *pvrcGuest)
         HGCMSvcSetStr(&paParms[i++], mData.mOpenInfo.mPath.c_str());
         HGCMSvcSetU32(&paParms[i++], mData.mOpenInfo.menmFilter);
         HGCMSvcSetU32(&paParms[i++], mData.mOpenInfo.mFlags);
+        HGCMSvcSetU32(&paParms[i++], GSTCTLFSOBJATTRADD_UNIX /* Implicit */);
+        HGCMSvcSetU32(&paParms[i++], GSTCTL_PATH_F_ON_LINK   /* Ditto */ );
 
         alock.release(); /* Drop lock before sending. */
 
@@ -768,13 +770,11 @@ int GuestDirectory::i_readInternal(GuestFsObjData &objData, int *pvrcGuest)
             return vrc;
 
         /* Prepare HGCM call. */
-        VBOXHGCMSVCPARM paParms[8];
+        VBOXHGCMSVCPARM paParms[4];
         int i = 0;
         HGCMSvcSetU32(&paParms[i++], pEvent->ContextID());
         HGCMSvcSetU32(&paParms[i++], mObjectID /* Guest directory handle */);
         HGCMSvcSetU32(&paParms[i++], GSTCTL_DIRENTRY_MAX_SIZE);
-        HGCMSvcSetU32(&paParms[i++], GSTCTLFSOBJATTRADD_UNIX /* Implicit */);
-        HGCMSvcSetU32(&paParms[i++], GSTCTL_PATH_F_ON_LINK);
 
         vrc = sendMessage(HOST_MSG_DIR_READ, i, paParms);
         if (RT_SUCCESS(vrc))
