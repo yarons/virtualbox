@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 98823 2023-03-02 17:03:01Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 98824 2023-03-02 17:06:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1062,9 +1062,6 @@ typedef struct HGCMMsgDirRead
     HGCMFunctionParameter context;
     /** Handle of directory listing to read the next entry for. */
     HGCMFunctionParameter handle;
-    /** Maximum directory entry size (in bytes) to use.
-     *  @sa GSTCTL_DIRENTRY_MAX_SIZE */
-    HGCMFunctionParameter max_entry_size;
 } HGCMMsgDirRead;
 
 /**

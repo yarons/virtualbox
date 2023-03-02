@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 98818 2023-03-02 13:52:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControl.h 98824 2023-03-02 17:06:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -32,6 +32,9 @@
 #endif
 
 #include <iprt/critsect.h>
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
+# include <iprt/dir.h>
+#endif
 #include <iprt/list.h>
 #include <iprt/req.h>
 
@@ -224,10 +227,17 @@ typedef struct VBOXSERVICECTRLSESSION
     uint32_t                        fFlags;
     /** How many processes do we allow keeping around at a time? */
     uint32_t                        uProcsMaxKept;
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
     /** The uid cache for this session. */
     VGSVCIDCACHE                    UidCache;
     /** The gid cache for this session. */
     VGSVCIDCACHE                    GidCache;
+    /** Scratch buffer for holding the directory reading entry.
+     *  Currently NOT serialized, i.e. only can be used for one read at a time. */
+    PRTDIRENTRYEX                   pDirEntryEx;
+    /** Size (in bytes) of \a pDirEntryEx. */
+    size_t                          cbDirEntryEx;
+#endif
 } VBOXSERVICECTRLSESSION;
 /** Pointer to guest session. */
 typedef VBOXSERVICECTRLSESSION *PVBOXSERVICECTRLSESSION;
