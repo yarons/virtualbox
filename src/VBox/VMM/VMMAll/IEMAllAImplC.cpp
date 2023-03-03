@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 98821 2023-03-02 15:00:34Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 98827 2023-03-03 12:01:42Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -18003,4 +18003,50 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_sha256rnds2_u128_fallback,(PRTUINT128U puDst, P
     puDst->au32[2] = au32B[2];
     puDst->au32[1] = au32E[2];
     puDst->au32[0] = au32F[2];
+}
+
+
+/**
+ * ADCX
+ */
+#define ADX_EMIT(a_Flag, a_Type, a_Max) \
+    do \
+    { \
+        bool f = RT_BOOL(*pfEFlags & (a_Flag)); \
+        a_Type uTmp = *puDst + uSrc; \
+        if (uTmp < uSrc) \
+            *pfEFlags |= (a_Flag); \
+        else \
+            *pfEFlags &= ~(a_Flag); \
+        if (   uTmp == a_Max \
+            && f) \
+            *pfEFlags |= (a_Flag); \
+        if (f) \
+            uTmp++; \
+        *puDst = uTmp; \
+    } \
+    while (0)
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_adcx_u32_fallback,(uint32_t *puDst, uint32_t *pfEFlags, uint32_t uSrc))
+{
+    ADX_EMIT(X86_EFL_CF, uint32_t, UINT32_MAX);
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_adcx_u64_fallback,(uint64_t *puDst, uint32_t *pfEFlags, uint64_t uSrc))
+{
+    ADX_EMIT(X86_EFL_CF, uint64_t, UINT64_MAX);
+}
+
+
+/**
+ * ADOX
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_adox_u32_fallback,(uint32_t *puDst, uint32_t *pfEFlags, uint32_t uSrc))
+{
+    ADX_EMIT(X86_EFL_OF, uint32_t, UINT32_MAX);
+}
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_adox_u64_fallback,(uint64_t *puDst, uint32_t *pfEFlags, uint64_t uSrc))
+{
+    ADX_EMIT(X86_EFL_OF, uint64_t, UINT64_MAX);
 }
