@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdTreeDepth1.py 98826 2023-03-03 10:53:30Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 98826 $"
 
 
 # Standard Python imports.
@@ -141,6 +141,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
                 oVM = oVBox.openMachine(sSettingsFile, "")
             else:
                 oVM = oVBox.openMachine(sSettingsFile)
+            oVBox.registerMachine(oVM);
             ## @todo r=klaus: count known hard disk images, should be cImages
 
             reporter.log('unregistering VM')
@@ -176,8 +177,8 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             fRc = fRc and oSession.createAndAttachHd(sHddPath, cb=1024*1024, sController='SATA Controller', fImmutable=False)
             fRc = fRc and oSession.saveSettings()
 
-            # take up to 200 snapshots (255 is the snapshot tree depth limit)
-            cSnapshots = random.randrange(1, 200); ## @todo r=andy BUGBUG When specifying 254 here, it fails with object 251.
+            # take up to 200 snapshots (250 is the snapshot tree depth limit (settings.h:SETTINGS_SNAPSHOT_DEPTH_MAX))
+            cSnapshots = random.randrange(1, 200);
             reporter.log('Taking %d snapshots' % (cSnapshots))
             for i in range(1, cSnapshots + 1):
                 fRc = fRc and oSession.takeSnapshot('Snapshot ' + str(i))
@@ -221,6 +222,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
                 oVM = oVBox.openMachine(sSettingsFile, "")
             else:
                 oVM = oVBox.openMachine(sSettingsFile)
+            oVBox.registerMachine(oVM);
             reporter.log('API reports %i snapshots' % (oVM.snapshotCount))
             fRc = fRc and oVM.snapshotCount == cSnapshots
             if oVM.snapshotCount != cSnapshots:
