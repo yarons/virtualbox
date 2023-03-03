@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 98352 2023-01-30 19:44:51Z klaus.espenlaub@oracle.com $ */
+/* $Id: MachineImpl.cpp 98837 2023-03-03 22:23:31Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -16727,7 +16727,7 @@ HRESULT Machine::changeEncryption(const com::Utf8Str &aCurrentPassword,
                 while (pTmpMedium.isNotNull())
                 {
                     AutoCaller mediumAC(pTmpMedium);
-                    if (FAILED(mediumAC.hrc())) return mac.hrc();
+                    if (FAILED(mediumAC.hrc())) return mediumAC.hrc();
                     AutoReadLock mlock(pTmpMedium COMMA_LOCKVAL_SRC_POS);
 
                     /* Cannot encrypt media which are attached to more than one virtual machine. */
@@ -16750,7 +16750,7 @@ HRESULT Machine::changeEncryption(const com::Utf8Str &aCurrentPassword,
                 while (pTmpMedium.isNotNull() && pTmpMedium->i_getChildren().size() != 0)
                 {
                     AutoCaller mediumAC(pTmpMedium);
-                    if (FAILED(mediumAC.hrc())) return mac.hrc();
+                    if (FAILED(mediumAC.hrc())) return mediumAC.hrc();
                     AutoReadLock mlock(pTmpMedium COMMA_LOCKVAL_SRC_POS);
 
                     /* Cannot encrypt media which are attached to more than one virtual machine. */
