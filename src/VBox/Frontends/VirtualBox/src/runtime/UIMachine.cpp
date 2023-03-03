@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -793,6 +793,16 @@ void UIMachine::prepareStorageMenu(QMenu *pMenu,
 void UIMachine::updateMachineStorage(const UIMediumTarget &target, UIActionPool *pActionPool)
 {
     return uisession()->updateMachineStorage(target, pActionPool);
+}
+
+void UIMachine::acquireWhetherUSBControllerEnabled(bool &fEnabled)
+{
+    return uisession()->acquireWhetherUSBControllerEnabled(fEnabled);
+}
+
+void UIMachine::acquireWhetherVideoInputDevicesEnabled(bool &fEnabled)
+{
+    return uisession()->acquireWhetherVideoInputDevicesEnabled(fEnabled);
 }
 
 bool UIMachine::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)
@@ -1814,7 +1824,6 @@ void UIMachine::enterInitialVisualState()
 void UIMachine::updateActionRestrictions()
 {
     /* Get host and prepare restrictions: */
-    const CHost comHost = uiCommon().host();
     UIExtraDataMetaDefs::RuntimeMenuMachineActionType restrictionForMachine =
         UIExtraDataMetaDefs::RuntimeMenuMachineActionType_Invalid;
     UIExtraDataMetaDefs::RuntimeMenuViewActionType restrictionForView =
@@ -1884,9 +1893,8 @@ void UIMachine::updateActionRestrictions()
     /* USB stuff: */
     {
         /* Check whether there is at least one USB controller with an available proxy. */
-        const bool fUSBEnabled =    !uisession()->machine().GetUSBDeviceFilters().isNull()
-                                 && !uisession()->machine().GetUSBControllers().isEmpty()
-                                 && uisession()->machine().GetUSBProxyAvailable();
+        bool fUSBEnabled = false;
+        acquireWhetherUSBControllerEnabled(fUSBEnabled);
         if (!fUSBEnabled)
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)
                                     (restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_USBDevices);
@@ -1895,8 +1903,8 @@ void UIMachine::updateActionRestrictions()
     /* WebCams stuff: */
     {
         /* Check whether there is an accessible video input devices pool: */
-        comHost.GetVideoInputDevices();
-        const bool fWebCamsEnabled = comHost.isOk() && !uisession()->machine().GetUSBControllers().isEmpty();
+        bool fWebCamsEnabled = false;
+        acquireWhetherVideoInputDevicesEnabled(fWebCamsEnabled);
         if (!fWebCamsEnabled)
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)
                                     (restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_WebCams);

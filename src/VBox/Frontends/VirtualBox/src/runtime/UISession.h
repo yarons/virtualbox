@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -353,6 +353,11 @@ public:
 
     /** @name USB stuff.
      ** @{ */
+        /** Acquires whether USB controller is enabled. */
+        void acquireWhetherUSBControllerEnabled(bool &fEnabled);
+        /** Acquires whether video input devices are enabled. */
+        void acquireWhetherVideoInputDevicesEnabled(bool &fEnabled);
+
         /** Returns a list of USB devices. */
         bool usbDevices(QList<USBDeviceInfo> &guiUSBDevices);
         /** Attaches USB device with passed @a uId. */

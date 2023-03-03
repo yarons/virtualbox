@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -908,6 +908,45 @@ void UISession::updateMachineStorage(const UIMediumTarget &target, UIActionPool 
 {
     CMachine comMachine = machine();
     uiCommon().updateMachineStorage(comMachine, target, pActionPool);
+}
+
+void UISession::acquireWhetherUSBControllerEnabled(bool &fEnabled)
+{
+    fEnabled = false;
+
+    /* Check whether USB device filters are available: */
+    CMachine comMachine = machine();
+    CUSBDeviceFilters comUSBDeviceFilters = comMachine.GetUSBDeviceFilters();
+    if (!comMachine.isOk() || comUSBDeviceFilters.isNull())
+        return;
+    /* Check whether USB controllers are available: */
+    CUSBControllerVector comUSBControllers = comMachine.GetUSBControllers();
+    if (!comMachine.isOk() || comUSBControllers.isEmpty())
+        return;
+    /* Check whether USB proxy is available: */
+    const BOOL fUSBProxyAvailable = comMachine.GetUSBProxyAvailable();
+    if (!comMachine.isOk() || fUSBProxyAvailable == FALSE)
+        return;
+
+    fEnabled = true;
+}
+
+void UISession::acquireWhetherVideoInputDevicesEnabled(bool &fEnabled)
+{
+    fEnabled = false;
+
+    /* Check whether video input devices are available: */
+    CHost comHost = uiCommon().host();
+    CHostVideoInputDeviceVector comVideoInputDevices = comHost.GetVideoInputDevices();
+    if (!comHost.isOk() || comVideoInputDevices.isEmpty())
+        return;
+    /* Check whether USB controllers are available: */
+    CMachine comMachine = machine();
+    CUSBControllerVector comUSBControllers = comMachine.GetUSBControllers();
+    if (!comMachine.isOk() || comUSBControllers.isEmpty())
+        return;
+
+    fEnabled = true;
 }
 
 bool UISession::usbDevices(QList<USBDeviceInfo> &guiUSBDevices)
