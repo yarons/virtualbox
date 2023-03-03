@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98830 2023-03-03 12:28:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -532,6 +532,9 @@ public:
 
         /** Acquire log folder. */
         bool acquireLogFolder(QString &strFolder);
+
+        /** Acquires effective paravirt provider. */
+        bool acquireEffectiveParavirtProvider(KParavirtProvider &enmProvider);
 
         /** Acquires VM's execution engine @a enmType. */
         bool acquireExecutionEngineType(KVMExecutionEngine &enmType);

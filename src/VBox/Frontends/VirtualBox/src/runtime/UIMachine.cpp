@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98830 2023-03-03 12:28:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -2277,5 +2277,5 @@ void UIMachine::updateVirtualizationState()
     uisession()->acquireExecutionEngineType(m_enmVMExecutionEngine);
     uisession()->acquireWhetherHwVirtExNestedPagingEnabled(m_fIsHWVirtExNestedPagingEnabled);
     uisession()->acquireWhetherHwVirtExUXEnabled(m_fIsHWVirtExUXEnabled);
-    m_enmParavirtProvider = uisession()->machine().GetEffectiveParavirtProvider();
+    uisession()->acquireEffectiveParavirtProvider(m_enmParavirtProvider);
 }

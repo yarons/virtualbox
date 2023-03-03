@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98830 2023-03-03 12:28:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1998,6 +1998,18 @@ bool UISession::acquireLogFolder(QString &strFolder)
         UINotificationMessage::cannotAcquireMachineParameter(comMachine);
     else
         strFolder = strLogFolder;
+    return fSuccess;
+}
+
+bool UISession::acquireEffectiveParavirtProvider(KParavirtProvider &enmProvider)
+{
+    CMachine comMachine = machine();
+    const KParavirtProvider enmParavirtProvider = comMachine.GetEffectiveParavirtProvider();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    else
+        enmProvider = enmParavirtProvider;
     return fSuccess;
 }
 
