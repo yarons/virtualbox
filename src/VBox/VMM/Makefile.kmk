@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98795 2023-03-01 00:05:10Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98834 2023-03-03 20:24:49Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -814,6 +814,7 @@ PGMInline.o PGMInline.obj: PGMDbg.o
 
 # Alias the IEM templates to the object in which they are instantiated.
 IEMAllInstructions.cpp.o IEMAllInstructions.cpp.obj \
+IEMAllInstructionsCommon.cpp.o IEMAllInstructionsCommon.cpp.obj \
 IEMAllInstructionsOneByte.cpp.o IEMAllInstructionsOneByte.cpp.obj \
 IEMAllInstructionsTwoByte0f.cpp.o IEMAllInstructionsTwoByte0f.cpp.obj \
 IEMAllInstructionsThree0f38.cpp.o IEMAllInstructionsThree0f38.cpp.obj \
