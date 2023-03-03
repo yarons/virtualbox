@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 98832 2023-03-03 16:27:01Z vadim.galitsyn@oracle.com $
+# $Id: tdAddBasic1.py 98833 2023-03-03 17:44:56Z vadim.galitsyn@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98832 $"
+__version__ = "$Revision: 98833 $"
 
 # Standard Python imports.
 import os;
@@ -81,6 +81,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Path pointing to the Guest Additions on the (V)ISO file.
         self.sGstPathGaPrefix = '';
 
+        # Wether to reboot guest after Guest Additions installation.
+        self.fRebbotAfterInstall = True;
+
         self.addSubTestDriver(SubTstDrvAddGuestCtrl(self));
         self.addSubTestDriver(SubTstDrvAddSharedFolders1(self));
 
@@ -111,6 +114,11 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         elif asArgs[iArg] == '--quick':
             self.parseOption(['--virt-modes', 'hwvirt'], 0);
             self.parseOption(['--cpu-counts', '1'], 0);
+
+        elif asArgs[iArg] == '--no-reboot-after-install':
+            self.fRebbotAfterInstall = False;
+            reporter.log('Guest will not be rebooted after Guest Additions installation, ' +
+                         'kernel modules and user services should be reloaded automatically without reboot');
 
         else:
             return vbox.TestDriver.parseOption(self, asArgs, iArg);
@@ -508,13 +516,34 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         # Do the final reboot to get the just installed Guest Additions up and running.
         if fRc:
-            reporter.testStart('Rebooting guest w/ updated Guest Additions active');
-            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 15 * 60 * 1000);
-            if fRc:
-                pass
+            if self.fRebbotAfterInstall:
+                reporter.testStart('Rebooting guest w/ updated Guest Additions active');
+                (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 15 * 60 * 1000);
+                if not fRc:
+                    reporter.testFailure('Rebooting and reconnecting to TXS service failed');
             else:
-                reporter.testFailure('Rebooting and reconnecting to TXS service failed');
-            reporter.testDone();
+                reporter.log('Skipping guest reboot after Guest Additions installation as requested');
+                fRc = self.txsRunTest(oTxsSession, 'Check Guest Additions kernel modules status', 5 * 60 * 1000,
+                                      self.getGuestSystemShell(oTestVm),
+                                      (self.getGuestSystemShell(oTestVm),
+                                      '/sbin/rcvboxadd', 'status-kernel'));
+                iRc = self.getAdditionsInstallerResult(oTxsSession);
+                if fRc and iRc == 0:
+                    fRc = self.txsRunTest(oTxsSession, 'Check Guest Additions user services status', 5 * 60 * 1000,
+                                          self.getGuestSystemShell(oTestVm),
+                                          (self.getGuestSystemShell(oTestVm),
+                                          '/sbin/rcvboxadd', 'status-user'));
+                    iRc = self.getAdditionsInstallerResult(oTxsSession);
+                    if fRc and iRc == 0:
+                        pass;
+                    else:
+                        fRc = False;
+                        reporter.testFailure('User services were not reloaded');
+                else:
+                    fRc = False;
+                    reporter.testFailure('Kernel modules were not reloaded');
+            if fRc:
+                reporter.testDone();
 
         return (fRc, oTxsSession);
 
