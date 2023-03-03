@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 98824 2023-03-02 17:06:36Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 98831 2023-03-03 15:43:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1183,7 +1183,7 @@ static int vgsvcGstCtrlSessionHandleDirRead(const PVBOXSERVICECTRLSESSION pSessi
 
             PGSTCTLDIRENTRYEX pGstCtlDirEntryEx = (PGSTCTLDIRENTRYEX)pDirEntryEx;
 
-            int rc2 = VbglR3GuestCtrlDirCbReadEx(pHostCtx, rc, pGstCtlDirEntryEx, cbDirEntry, pszUser, pszGroup);
+            int rc2 = VbglR3GuestCtrlDirCbReadEx(pHostCtx, rc, pGstCtlDirEntryEx, (uint32_t)cbDirEntry, pszUser, pszGroup);
             if (RT_FAILURE(rc2))
                 VGSvcError("Failed to report directory read status (%Rrc), rc=%Rrc\n", rc, rc2);
 
