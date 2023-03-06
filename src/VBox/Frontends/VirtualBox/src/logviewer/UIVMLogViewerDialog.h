@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -32,25 +32,15 @@
 #endif
 
 /* Qt includes: */
-#include <QMap>
 #include <QString>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
-#include "UILibraryDefs.h"
-
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMachine.h"
 
 /* Forward declarations: */
-class QDialogButtonBox;
-class QVBoxLayout;
 class UIActionPool;
-class UIVMLogViewerDialog;
 class UIVirtualMachineItem;
-class CMachine;
 
 
 /** QIManagerDialogFactory extension used as a factory for Log Viewer dialog. */

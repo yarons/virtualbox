@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -28,7 +28,6 @@
 /* Qt includes: */
 #include <QButtonGroup>
 #include <QComboBox>
-#include <QFrame>
 #include <QHBoxLayout>
 #if defined(RT_OS_SOLARIS)
 # include <QFontDatabase>
@@ -39,7 +38,6 @@
 #include <QRegularExpression>
 #include <QTextCursor>
 #include <QRadioButton>
-#include <QScrollArea>
 
 /* GUI includes: */
 #include "QIToolButton.h"

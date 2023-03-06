@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogPage.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -34,19 +34,15 @@
 /* Qt includes: */
 #include <QWidget>
 #include <QUuid>
-#include <QPair>
 
 /* GUI includes: */
-#include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
 #include "UIVMLogBookmark.h"
 
 /* Forward declarations: */
-class QITabWidget;
 class QHBoxLayout;
 class QPlainTextEdit;
 class UIVMLogViewerTextEdit;
-
 
 class UIVMLogBookmarkManager
 {

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -40,16 +40,13 @@
 /* GUI includes: */
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
-#include "UILibraryDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
 #include "CMachine.h"
 
 /* Forward declarations: */
-class QITabWidget;
 class UITabWidget;
-class QPlainTextEdit;
 class QVBoxLayout;
 class UIActionPool;
 class UIDialogPanel;

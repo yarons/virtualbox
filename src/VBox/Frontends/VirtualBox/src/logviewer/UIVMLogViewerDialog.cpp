@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -29,12 +29,7 @@
 #if defined(RT_OS_SOLARIS)
 # include <QFontDatabase>
 #endif
-#include <QDialogButtonBox>
-#include <QKeyEvent>
-#include <QLabel>
-#include <QPlainTextEdit>
 #include <QPushButton>
-#include <QScrollBar>
 #include <QVBoxLayout>
 
 /* GUI includes: */

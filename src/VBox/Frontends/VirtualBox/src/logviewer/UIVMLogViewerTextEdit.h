@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -37,8 +37,6 @@
 
 /* Qt includes: */
 #include <QPlainTextEdit>
-#include <QPair>
-
 
 /* QPlainTextEdit extension with some addtional context menu items,
    a special scrollbar, line number area, bookmarking support,
