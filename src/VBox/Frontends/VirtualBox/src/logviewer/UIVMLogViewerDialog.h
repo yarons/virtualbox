@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 98845 2023-03-06 17:31:46Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QString>
+#include <QUuid>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
