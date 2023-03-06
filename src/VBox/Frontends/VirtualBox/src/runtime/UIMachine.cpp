@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98830 2023-03-03 12:28:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -197,6 +197,11 @@ void UIMachine::destroy()
     pInstance->cleanup();
     /* Destroy machine UI: */
     delete pInstance;
+}
+
+UIFrameBuffer *UIMachine::frameBuffer(ulong uScreenId)
+{
+    return uisession()->frameBuffer(uScreenId);
 }
 
 QWidget* UIMachine::activeWindow() const

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98840 2023-03-06 15:13:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -49,6 +49,7 @@
 /* Forward declarations: */
 class QWidget;
 class UIActionPool;
+class UIFrameBuffer;
 class UIMachineLogic;
 class UISession;
 class CMediumAttachment;
@@ -169,6 +170,8 @@ public:
     UISession *uisession() const { return m_pSession; }
     /** Returns machine-logic instance. */
     UIMachineLogic *machineLogic() const { return m_pMachineLogic; }
+    /** Returns frame-buffer reference for screen with @a uScreenId specified. */
+    UIFrameBuffer *frameBuffer(ulong uScreenId);
     /** Returns active machine-window reference (if possible). */
     QWidget* activeWindow() const;
 

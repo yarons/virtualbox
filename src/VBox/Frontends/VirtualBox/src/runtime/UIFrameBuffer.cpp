@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 98839 2023-03-06 12:20:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.cpp 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -2317,6 +2317,7 @@ void UIFrameBufferPrivate::drawImageRect(QPainter &painter, const QImage &image,
 
 
 UIFrameBuffer::UIFrameBuffer()
+    : m_fInitialized(false)
 {
     prepare();
 }
@@ -2328,7 +2329,9 @@ UIFrameBuffer::~UIFrameBuffer()
 
 HRESULT UIFrameBuffer::init(UIMachineView *pMachineView)
 {
-    return m_pFrameBuffer->init(pMachineView);
+    const HRESULT rc = m_pFrameBuffer->init(pMachineView);
+    m_fInitialized = true;
+    return rc;
 }
 
 void UIFrameBuffer::attach()
