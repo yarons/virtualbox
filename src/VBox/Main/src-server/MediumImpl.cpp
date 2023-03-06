@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 98846 2023-03-06 18:56:23Z brent.paulson@oracle.com $ */
+/* $Id: MediumImpl.cpp 98847 2023-03-06 22:28:59Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5672,6 +5672,11 @@ HRESULT Medium::i_close(AutoCaller &autoCaller)
         default:
             return i_setStateError();
     }
+
+    if (m->fClosing)
+        return setError(VBOX_E_OBJECT_IN_USE,
+                        tr("Medium '%s' cannot be closed because it is already in the process of being closed", ""),
+                        m->strLocationFull.c_str());
 
     if (m->backRefs.size() != 0)
         return setError(VBOX_E_OBJECT_IN_USE,

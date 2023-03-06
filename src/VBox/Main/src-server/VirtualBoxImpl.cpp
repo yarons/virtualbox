@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98846 2023-03-06 18:56:23Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 98847 2023-03-06 22:28:59Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5347,7 +5347,9 @@ HRESULT VirtualBox::i_unregisterMachineMedia(const Guid &uuidMachine)
         ComObjPtr<Medium> pMedium = *it;
         Log(("Closing medium %RTuuid\n", pMedium->i_getId().raw()));
         AutoCaller mac(pMedium);
-        pMedium->i_close(mac);
+        HRESULT hrc = pMedium->i_close(mac);
+        if (FAILED(hrc))
+            return hrc;
     }
 
     LogFlowFuncLeave();
