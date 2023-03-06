@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98836 2023-03-03 21:36:21Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 98846 2023-03-06 18:56:23Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5109,6 +5109,38 @@ HRESULT VirtualBox::i_registerMedium(const ComObjPtr<Medium> &pMedium,
         id = pMedium->i_getId();
         strLocationFull = pMedium->i_getLocationFull();
         pParent = pMedium->i_getParent();
+
+        /*
+         * If a separate thread has called Medium::close() for this medium at the same
+         * time as this i_registerMedium() call then there is a window of opportunity in
+         * Medium::i_close() where the media tree lock is dropped before calling
+         * Medium::uninit() (which reacquires the lock) that we can end up here attempting
+         * to register a medium which is in the process of being closed.  In addition, if
+         * this is a differencing medium and Medium::close() is in progress for one its
+         * parent media then we are similarly operating on a media registry in flux.  In
+         * either case registering a medium just before calling Medium::uninit() will
+         * lead to an inconsistent media registry so bail out here since Medium::close()
+         * got to this medium (or one of its parents) first.
+         */
+        if (devType == DeviceType_HardDisk)
+        {
+            ComObjPtr<Medium> pTmpMedium = pMedium;
+            while (pTmpMedium.isNotNull())
+            {
+                AutoCaller mediumAC(pTmpMedium);
+                if (FAILED(mediumAC.hrc())) return mediumAC.hrc();
+                AutoReadLock mlock(pTmpMedium COMMA_LOCKVAL_SRC_POS);
+
+                if (pTmpMedium->i_isClosing())
+                    return setError(E_INVALIDARG,
+                                    tr("Cannot register %s '%s' {%RTuuid} because it is in the process of being closed"),
+                                    pszDevType,
+                                    pTmpMedium->i_getLocationFull().c_str(),
+                                    pTmpMedium->i_getId().raw());
+
+                pTmpMedium = pTmpMedium->i_getParent();
+            }
+        }
     }
 
     HRESULT hrc;

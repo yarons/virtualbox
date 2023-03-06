@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 98291 2023-01-25 00:16:44Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.h 98846 2023-03-06 18:56:23Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -116,6 +116,7 @@ public:
     MediumState_T i_getState() const;
     MediumVariant_T i_getVariant() const;
     bool i_isHostDrive() const;
+    bool i_isClosing() const;
     const Utf8Str& i_getLocationFull() const;
     const Utf8Str& i_getFormat() const;
     const ComObjPtr<MediumFormat> & i_getMediumFormat() const;
