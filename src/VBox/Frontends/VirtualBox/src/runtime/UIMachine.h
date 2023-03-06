@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98829 2023-03-03 12:20:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98840 2023-03-06 15:13:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -168,7 +168,7 @@ public:
     /** Returns session UI instance. */
     UISession *uisession() const { return m_pSession; }
     /** Returns machine-logic instance. */
-    UIMachineLogic* machineLogic() const { return m_pMachineLogic; }
+    UIMachineLogic *machineLogic() const { return m_pMachineLogic; }
     /** Returns active machine-window reference (if possible). */
     QWidget* activeWindow() const;
 

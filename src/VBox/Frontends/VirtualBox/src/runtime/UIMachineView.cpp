@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 98838 2023-03-06 11:14:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 98840 2023-03-06 15:13:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1193,29 +1193,29 @@ void UIMachineView::prepareFrameBuffer()
     /* Check whether we already have corresponding frame-buffer: */
     UIFrameBuffer *pFrameBuffer = uisession()->frameBuffer(screenId());
 
-    /* If we do: */
-    if (pFrameBuffer)
-    {
-        /* Assign it's view: */
-        pFrameBuffer->setView(this);
-        /* Mark frame-buffer as used again: */
-        LogRelFlow(("GUI: UIMachineView::prepareFrameBuffer: Restart EMT callbacks accepting for screen: %d\n", screenId()));
-        pFrameBuffer->setMarkAsUnused(false);
-        /* And remember our choice: */
-        m_pFrameBuffer = pFrameBuffer;
-    }
     /* If we do not: */
-    else
+    if (!pFrameBuffer)
     {
+        LogRelFlow(("GUI: UIMachineView::prepareFrameBuffer: Start EMT callbacks accepting for screen: %d\n", screenId()));
         /* Create new frame-buffer: */
         m_pFrameBuffer = new UIFrameBuffer;
         /* Init it's view: */
         m_pFrameBuffer->init(this);
-        LogRelFlow(("GUI: UIMachineView::prepareFrameBuffer: Start EMT callbacks accepting for screen: %d\n", screenId()));
         /* Apply machine-view scale-factor: */
         applyMachineViewScaleFactor();
         /* Associate uisession with frame-buffer finally: */
         uisession()->setFrameBuffer(screenId(), frameBuffer());
+    }
+    /* If we do: */
+    else
+    {
+        LogRelFlow(("GUI: UIMachineView::prepareFrameBuffer: Restart EMT callbacks accepting for screen: %d\n", screenId()));
+        /* Assign it's view: */
+        pFrameBuffer->setView(this);
+        /* Mark frame-buffer as used again: */
+        pFrameBuffer->setMarkAsUnused(false);
+        /* And remember our choice: */
+        m_pFrameBuffer = pFrameBuffer;
     }
 
     /* Make sure frame-buffer was prepared: */
@@ -1368,7 +1368,7 @@ void UIMachineView::cleanupDnd()
 
 void UIMachineView::cleanupFrameBuffer()
 {
-    /* Make sure framebuffer assigned at all: */
+    /* Make sure framebuffer still present: */
     if (!frameBuffer())
         return;
 
@@ -1389,7 +1389,7 @@ void UIMachineView::cleanupFrameBuffer()
     frameBuffer()->detach();
 
     /* Detach framebuffer from view: */
-    frameBuffer()->setView(NULL);
+    frameBuffer()->setView(0);
 }
 
 void UIMachineView::cleanupNativeFilters()
