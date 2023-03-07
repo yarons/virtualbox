@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 98680 2023-02-21 15:51:34Z knut.osmundsen@oracle.com $
+# $Id: VirtualBox.tmpl.spec 98864 2023-03-07 15:21:48Z vadim.galitsyn@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -39,7 +39,7 @@ Version:   %BUILDVER%_%BUILDREL%
 Release:   1
 URL:       http://www.virtualbox.org/
 Source:    VirtualBox.tar
-License:   GPLv2
+License:   GPLv3
 Group:     Applications/System
 Vendor:    Oracle Corporation
 BuildRoot: %BUILDROOT%
