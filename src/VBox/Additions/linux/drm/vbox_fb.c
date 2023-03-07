@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 98868 2023-03-07 17:22:14Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_fb.c 98870 2023-03-07 17:28:03Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -508,7 +508,7 @@ void vbox_fbdev_set_base(struct vbox_private *vbox, unsigned long gpu_addr)
 	struct fb_info *fbdev = VBOX_FBDEV_INFO(vbox->fbdev->helper);
 
 #if RTLNX_VER_MIN(6,3,0)
-    fbdev->fix.smem_start = 
+    fbdev->fix.smem_start =
 pci_resource_start(VBOX_DRM_TO_PCI_DEV(vbox->fbdev->helper.dev), 0) + gpu_addr;
 #else
 	fbdev->fix.smem_start = fbdev->apertures->ranges[0].base + gpu_addr;
