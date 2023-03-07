@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 98833 2023-03-03 17:44:56Z vadim.galitsyn@oracle.com $
+# $Id: tdAddBasic1.py 98872 2023-03-07 19:24:28Z vadim.galitsyn@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98833 $"
+__version__ = "$Revision: 98872 $"
 
 # Standard Python imports.
 import os;
@@ -99,6 +99,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         reporter.log('      Default: %s  (all)' % (':'.join(self.asTestsDef)));
         reporter.log('  --quick');
         reporter.log('      Same as --virt-modes hwvirt --cpu-counts 1.');
+        reporter.log('  --no-reboot-after-install');
+        reporter.log('      Do not reboot guest after Guest Additions installation.');
         return rc;
 
     def parseOption(self, asArgs, iArg):                                  # pylint: disable=too-many-branches,too-many-statements
