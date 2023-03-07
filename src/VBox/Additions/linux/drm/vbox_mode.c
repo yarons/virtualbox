@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 98455 2023-02-02 19:50:15Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_mode.c 98868 2023-03-07 17:22:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -39,6 +39,10 @@
 #include "vbox_drv.h"
 #include <linux/export.h>
 #include <drm/drm_crtc_helper.h>
+#if RTLNX_VER_MIN(6,3,0)
+# include <drm/drm_modeset_helper_vtables.h>
+# include <drm/drm_modeset_helper.h>
+#endif
 #if RTLNX_VER_MIN(3,18,0) || RTLNX_RHEL_MAJ_PREREQ(7,2)
 # include <drm/drm_plane_helper.h>
 #endif

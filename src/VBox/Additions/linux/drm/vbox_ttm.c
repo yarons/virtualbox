@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 98455 2023-02-02 19:50:15Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 98868 2023-03-07 17:22:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -33,6 +33,11 @@
  *          Michael Thayer <michael.thayer@oracle.com>
  */
 #include "vbox_drv.h"
+
+#if RTLNX_VER_MIN(6,3,0)
+# include <drm/ttm/ttm_tt.h>
+#endif
+
 #if RTLNX_VER_MIN(5,11,0) || RTLNX_RHEL_MAJ_PREREQ(8,5)
 # include <drm/drm_gem.h>
 # include <drm/drm_gem_ttm_helper.h>

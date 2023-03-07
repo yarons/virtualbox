@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox_main.c 98868 2023-03-07 17:22:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -35,6 +35,10 @@
 #include "vbox_drv.h"
 #include <drm/drm_fb_helper.h>
 #include <drm/drm_crtc_helper.h>
+
+#if RTLNX_VER_MIN(6,3,0)
+# include <drm/drm_modeset_helper.h>
+#endif
 
 #include <VBoxVideoGuest.h>
 #include <VBoxVideoVBE.h>
