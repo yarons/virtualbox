@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98626 2023-02-18 02:13:49Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98851 2023-03-07 10:35:20Z alexander.rudnev@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -398,8 +398,7 @@ if defined(VBOX_GA_ATTESTATION_SIGNING) && defined(VBOX_SIGNING_MODE) && defined
  		$(PATH_OUT)/repackadd/sign-attestation.sh \
  		$(PATH_OUT)/repackadd/$(VBOX_DRIVERS_PACK_NAME)
 	$(RM_EXT) -f $(PATH_OUT)/repackadd/*.zip
-	cd $(PATH_OUT)/repackadd && $(SHELL) $(PATH_OUT)/repackadd/sign-attestation.sh $(PATH_OUT)/repackadd/$(VBOX_DRIVERS_PACK_NAME)
-	$(MV_EXT) $(PATH_OUT)/repackadd/$(VBOX_DRIVERS_PACK_NAME).*.zip $(PATH_OUT)/repackadd/$(VBOX_SIGNED_DRIVERS_ZIP_NAME)
+	cd $(PATH_OUT)/repackadd && $(SHELL) $(KBUILD_DEVTOOLS)/win/attestation/AttestationSigning.bat "Oracle VM VirtualBox GA drivers $(KBUILD_TARGET_ARCH) $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)r$(VBOX_SVN_REV)" "$(KBUILD_TARGET_ARCH)" "" "$(VBOX_DRIVERS_PACK_NAME)"
 
  #
  # This creates a .CAB file of the driver files that should be attestation signed.
