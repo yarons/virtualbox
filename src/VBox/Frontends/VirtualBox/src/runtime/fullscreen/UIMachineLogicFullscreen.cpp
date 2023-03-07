@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -546,12 +546,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Create machine-window(s): */
     for (uint cScreenId = 0; cScreenId < cMonitorCount; ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, cScreenId));
-
-    /* Listen for frame-buffer resize: */
-    foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        connect(pMachineWindow, &UIMachineWindow::sigFrameBufferResize,
-                this, &UIMachineLogicFullscreen::sigFrameBufferResize);
-    emit sigFrameBufferResize();
 
     /* Connect multi-screen layout change handler: */
     connect(m_pScreenLayout, &UIMultiScreenLayout::sigScreenLayoutChange,

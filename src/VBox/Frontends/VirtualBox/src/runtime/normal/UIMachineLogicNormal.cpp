@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98669 2023-02-21 11:15:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -290,12 +290,6 @@ void UIMachineLogicNormal::prepareMachineWindows()
     /* Order machine window(s): */
     for (ulong uScreenId = cMonitorCount; uScreenId > 0; -- uScreenId)
         machineWindows()[uScreenId - 1]->raise();
-
-    /* Listen for frame-buffer resize: */
-    foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        connect(pMachineWindow, &UIMachineWindow::sigFrameBufferResize,
-                this, &UIMachineLogicNormal::sigFrameBufferResize);
-    emit sigFrameBufferResize();
 
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);

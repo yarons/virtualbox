@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98809 2023-03-01 17:01:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -592,7 +592,7 @@ void UIMachineLogic::sltDisableHostScreenSaverStateChanged(bool fDisabled)
 void UIMachineLogic::sltKeyboardLedsChanged()
 {
     /* Here we have to update host LED lock states using values provided by UISession:
-     * [bool] uisession() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
+     * [bool] uimachine() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
 
     if (!uimachine()->isHidLedsSyncEnabled())
         return;
@@ -882,9 +882,6 @@ void UIMachineLogic::prepareSessionConnections()
     connect(uimachine(), &UIMachine::sigHostScreenCountChange, this, &UIMachineLogic::sltHostScreenCountChange);
     connect(uimachine(), &UIMachine::sigHostScreenGeometryChange, this, &UIMachineLogic::sltHostScreenGeometryChange);
     connect(uimachine(), &UIMachine::sigHostScreenAvailableAreaChange, this, &UIMachineLogic::sltHostScreenAvailableAreaChange);
-
-    /* We should notify about frame-buffer events: */
-    connect(this, &UIMachineLogic::sigFrameBufferResize, uisession(), &UISession::sigFrameBufferResize);
 }
 
 void UIMachineLogic::prepareActionGroups()
@@ -1433,9 +1430,6 @@ void UIMachineLogic::cleanupSessionConnections()
     disconnect(uimachine(), &UIMachine::sigHostScreenCountChange, this, &UIMachineLogic::sltHostScreenCountChange);
     disconnect(uimachine(), &UIMachine::sigHostScreenGeometryChange, this, &UIMachineLogic::sltHostScreenGeometryChange);
     disconnect(uimachine(), &UIMachine::sigHostScreenAvailableAreaChange, this, &UIMachineLogic::sltHostScreenAvailableAreaChange);
-
-    /* We should stop notify about frame-buffer events: */
-    disconnect(this, &UIMachineLogic::sigFrameBufferResize, uisession(), &UISession::sigFrameBufferResize);
 }
 
 bool UIMachineLogic::eventFilter(QObject *pWatched, QEvent *pEvent)

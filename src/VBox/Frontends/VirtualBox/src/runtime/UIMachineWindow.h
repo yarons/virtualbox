@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 98683 2023-02-22 09:49:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -59,11 +59,6 @@ class CSession;
 class UIMachineWindow : public QIWithRetranslateUI2<QMainWindow>
 {
     Q_OBJECT;
-
-signals:
-
-    /** Notifies about frame-buffer resize. */
-    void sigFrameBufferResize();
 
 public:
 

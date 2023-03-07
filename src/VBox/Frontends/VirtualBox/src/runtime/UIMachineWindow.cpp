@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98683 2023-02-22 09:49:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -576,9 +576,6 @@ void UIMachineWindow::prepareMachineView()
 
     /* Create machine-view: */
     m_pMachineView = UIMachineView::create(this, m_uScreenId, visualStateType);
-
-    /* Listen for frame-buffer resize: */
-    connect(m_pMachineView, &UIMachineView::sigFrameBufferResize, this, &UIMachineWindow::sigFrameBufferResize);
 
     /* Add machine-view into main-layout: */
     m_pMainLayout->addWidget(m_pMachineView, 1, 1, viewAlignment(visualStateType));

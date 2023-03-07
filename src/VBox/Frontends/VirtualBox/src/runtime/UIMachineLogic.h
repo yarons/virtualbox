@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98808 2023-03-01 16:57:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -63,11 +63,6 @@ class UIMachineLogic : public QIWithRetranslateUI3<QObject>
 
     /** Pointer to menu update-handler for this class: */
     typedef void (UIMachineLogic::*MenuUpdateHandler)(QMenu *pMenu);
-
-signals:
-
-    /** Notifies about frame-buffer resize. */
-    void sigFrameBufferResize();
 
 public:
 

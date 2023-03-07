@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -141,12 +141,6 @@ signals:
                                       bool fNeedsHostCursor);
         /** Notifies listeners about cursor position change. */
         void sigCursorPositionChange(bool fContainsData, unsigned long uX, unsigned long uY);
-    /** @} */
-
-    /** @name Graphics stuff.
-     ** @{ */
-        /** Notifies about frame-buffer resize. */
-        void sigFrameBufferResize();
     /** @} */
 
 public:
