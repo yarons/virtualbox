@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 98547 2023-02-13 13:46:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewNormal.cpp 98859 2023-03-07 13:31:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -41,7 +41,6 @@
 #include "UIMachineLogic.h"
 #include "UIMachineViewNormal.h"
 #include "UIMachineWindow.h"
-#include "UISession.h"
 
 /* Other VBox includes: */
 #include "VBox/log.h"

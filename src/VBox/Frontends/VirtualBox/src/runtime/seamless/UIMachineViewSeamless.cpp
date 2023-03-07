@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 98840 2023-03-06 15:13:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 98859 2023-03-07 13:31:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -41,7 +41,6 @@
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineViewSeamless.h"
 #include "UIMachineWindow.h"
-#include "UISession.h"
 
 /* COM includes: */
 #include "CConsole.h"

@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIStarter.cpp 98859 2023-03-07 13:31:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -38,7 +38,6 @@
 # include "UIVirtualBoxManager.h"
 #else
 # include "UIMachine.h"
-# include "UISession.h"
 #endif
 
 
