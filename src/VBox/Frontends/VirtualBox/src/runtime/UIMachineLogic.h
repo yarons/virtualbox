@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 98855 2023-03-07 11:20:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -40,7 +40,6 @@
 class QAction;
 class QActionGroup;
 class QIManagerDialog;
-class UISession;
 class UIActionPool;
 class UIKeyboardHandler;
 class UIMachine;
@@ -91,8 +90,6 @@ public:
 
     /** Returns machine UI reference.  */
     UIMachine *uimachine() const { return m_pMachine; }
-    /** Returns session UI reference.  */
-    UISession *uisession() const;
     /** Returns action-pool reference.  */
     UIActionPool *actionPool() const;
 

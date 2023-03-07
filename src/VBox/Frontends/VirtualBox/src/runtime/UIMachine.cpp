@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98855 2023-03-07 11:20:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1050,6 +1050,16 @@ void UIMachine::shutdown()
 void UIMachine::powerOff(bool fIncludingDiscard)
 {
     uisession()->powerOff(fIncludingDiscard);
+}
+
+void UIMachine::sltInstallGuestAdditionsFrom(const QString &strSource)
+{
+    uisession()->sltInstallGuestAdditionsFrom(strSource);
+}
+
+void UIMachine::sltMountDVDAdHoc(const QString &strSource)
+{
+    uisession()->sltMountDVDAdHoc(strSource);
 }
 
 void UIMachine::closeRuntimeUI()
