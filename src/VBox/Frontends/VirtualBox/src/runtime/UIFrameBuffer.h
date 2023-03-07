@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIFrameBuffer.h 98848 2023-03-07 07:55:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -75,7 +75,7 @@ public:
     void detach();
 
     /** Returns frame-buffer data address. */
-    uchar* address();
+    uchar *address();
     /** Returns frame-buffer width. */
     ulong width() const;
     /** Returns frame-buffer height. */
@@ -84,8 +84,6 @@ public:
     ulong bitsPerPixel() const;
     /** Returns frame-buffer bytes-per-line value. */
     ulong bytesPerLine() const;
-    /** Returns the visual-state this frame-buffer is used for. */
-    UIVisualStateType visualState() const;
 
     /** Defines whether frame-buffer is <b>unused</b>.
       * @note Calls to this and any other EMT callback are synchronized (from GUI side). */
@@ -147,7 +145,7 @@ private:
     void cleanup();
 
     /** Holds the frame-buffer private instance. */
-    ComObjPtr<UIFrameBufferPrivate> m_pFrameBuffer;
+    ComObjPtr<UIFrameBufferPrivate>  m_pFrameBuffer;
 
     /** Holds whether frame-buffer was initialized already. */
     bool  m_fInitialized;
