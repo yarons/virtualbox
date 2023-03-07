@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# $Id: htmlhelp-qthelp.py 98678 2023-02-21 15:39:02Z serkan.bayraktar@oracle.com $
+# $Id: htmlhelp-qthelp.py 98863 2023-03-07 14:52:44Z serkan.bayraktar@oracle.com $
 ## @file
 # A python script to create a .qhp file out of a given htmlhelp
 # folder. Lots of things about the said folder is assumed. Please
@@ -196,7 +196,7 @@ def create_toc(folder, toc_file):
     content = [x[2] for x in os.walk(folder)]
     if toc_file not in content[0]:
         logging.error('Could not find toc file "%s" under "%s"', toc_file, folder)
-        return
+        return toc_string_list
     full_path = os.path.join(folder, toc_file)
     file = codecs.open(full_path, encoding='iso-8859-1')
     content = file.read()
