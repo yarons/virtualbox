@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 98803 2023-03-01 09:28:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.h 98874 2023-03-08 09:34:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -51,8 +51,8 @@ class UIInformationRuntime : public QIWithRetranslateUI<QWidget>
 
 public:
 
-    /** Constructs information-tab passing @a pParent to the QWidget base-class constructor. */
-    UIInformationRuntime(QWidget *pParent, const UIMachine *pMachine);
+    /** Constructs information-tab passing @a pParent to the base-class. */
+    UIInformationRuntime(QWidget *pParent);
 
 protected:
 

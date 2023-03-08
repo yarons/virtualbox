@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98855 2023-03-07 11:20:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98874 2023-03-08 09:34:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1617,7 +1617,7 @@ void UIMachineLogic::sltShowInformationDialog()
         return;
 
     if (!m_pVMInformationDialog)
-        m_pVMInformationDialog = new UIVMInformationDialog(uimachine());
+        m_pVMInformationDialog = new UIVMInformationDialog;
 
     if (m_pVMInformationDialog)
     {

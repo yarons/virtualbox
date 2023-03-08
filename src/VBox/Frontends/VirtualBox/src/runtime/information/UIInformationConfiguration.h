@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 98769 2023-02-28 09:29:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.h 98874 2023-03-08 09:34:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -50,7 +50,7 @@ class UIInformationConfiguration : public QIWithRetranslateUI<QWidget>
 
 public:
 
-    /** Constructs information-tab passing @a pParent to the QWidget base-class constructor. */
+    /** Constructs information-tab passing @a pParent to the base-class. */
     UIInformationConfiguration(QWidget *pParent);
 
 protected:

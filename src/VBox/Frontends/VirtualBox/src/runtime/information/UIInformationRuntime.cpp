@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 98803 2023-03-01 09:28:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 98874 2023-03-08 09:34:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -514,17 +514,17 @@ void UIRuntimeInfoWidget::computeMinimumWidth()
 *   UIInformationRuntime implementation.                                                                                     *
 *********************************************************************************************************************************/
 
-UIInformationRuntime::UIInformationRuntime(QWidget *pParent, const UIMachine *pMachine)
+UIInformationRuntime::UIInformationRuntime(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pMainLayout(0)
     , m_pRuntimeInfoWidget(0)
     , m_pCopyWholeTableAction(0)
 {
-    connect(pMachine, &UIMachine::sigAdditionsStateChange, this, &UIInformationRuntime::sltGuestAdditionsStateChange);
-    connect(pMachine, &UIMachine::sigGuestMonitorChange, this, &UIInformationRuntime::sltGuestMonitorChange);
-    connect(pMachine, &UIMachine::sigVRDEChange, this, &UIInformationRuntime::sltVRDEChange);
-    connect(pMachine, &UIMachine::sigClipboardModeChange, this, &UIInformationRuntime::sltClipboardChange);
-    connect(pMachine, &UIMachine::sigDnDModeChange, this, &UIInformationRuntime::sltDnDModeChange);
+    connect(gpMachine, &UIMachine::sigAdditionsStateChange, this, &UIInformationRuntime::sltGuestAdditionsStateChange);
+    connect(gpMachine, &UIMachine::sigGuestMonitorChange, this, &UIInformationRuntime::sltGuestMonitorChange);
+    connect(gpMachine, &UIMachine::sigVRDEChange, this, &UIInformationRuntime::sltVRDEChange);
+    connect(gpMachine, &UIMachine::sigClipboardModeChange, this, &UIInformationRuntime::sltClipboardChange);
+    connect(gpMachine, &UIMachine::sigDnDModeChange, this, &UIInformationRuntime::sltDnDModeChange);
 
     prepareObjects();
     retranslateUi();
