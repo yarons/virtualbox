@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98877 2023-03-08 12:25:54Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98879 2023-03-08 12:39:55Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the libtpms library.
 #
@@ -28,7 +28,7 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-VBOX_PATH_LIBTPMS = $(PATH_ROOT)/src/libs/libtpms-0.9.0
+VBOX_PATH_LIBTPMS = $(PATH_ROOT)/src/libs/libtpms-0.9.6
 
 LIBRARIES += VBox-libtpms_tpm12 VBox-libtpms_tpm2 VBox-libtpms
 VBox-libtpms_tpm12_TEMPLATE       = VBoxR3DllNonPedantic
