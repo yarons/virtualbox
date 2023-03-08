@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 98875 2023-03-08 09:40:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -33,26 +33,21 @@
 /* GUI includes: */
 #include "QIDialog.h"
 #include "QIDialogButtonBox.h"
-#include "UIExtraDataManager.h"
+#include "QIToolBar.h"
+#include "UICommon.h"
 #include "UIGuestControlConsole.h"
-#include "UIGuestControlInterface.h"
 #include "UIGuestControlTreeItem.h"
 #include "UIGuestProcessControlWidget.h"
-#include "QIToolBar.h"
 #include "UIIconPool.h"
-#include "UIVMInformationDialog.h"
-#include "UICommon.h"
 
 /* COM includes: */
 #include "CGuest.h"
 #include "CEventSource.h"
 
-const bool UIGuestProcessControlWidget::m_fDeleteAfterUnregister = false;
 
 /** A QIDialog child to display properties of a guest session on process. */
 class UISessionProcessPropertiesDialog : public QIDialog
 {
-
     Q_OBJECT;
 
 public:
@@ -67,10 +62,6 @@ private:
     QString      m_strProperty;
 };
 
-
-/*********************************************************************************************************************************
-*   UIGuestControlTreeWidget definition.                                                                                         *
-*********************************************************************************************************************************/
 
 class UIGuestControlTreeWidget : public QITreeWidget
 {
@@ -297,6 +288,8 @@ void UIGuestControlTreeWidget::expandCollapseAll(bool bFlag)
 /*********************************************************************************************************************************
 *   UIGuestProcessControlWidget implementation.                                                                                  *
 *********************************************************************************************************************************/
+
+const bool UIGuestProcessControlWidget::s_fDeleteAfterUnregister = false;
 
 UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, const CGuest &comGuest,
                                                          QWidget *pParent, QString strMachineName /* = QString()*/,
@@ -544,7 +537,7 @@ void UIGuestProcessControlWidget::sltGuestSessionUnregistered(CGuestSession gues
             break;
         }
     }
-    if (m_fDeleteAfterUnregister)
+    if (s_fDeleteAfterUnregister)
         delete selectedItem;
 }
 

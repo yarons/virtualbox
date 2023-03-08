@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestControlTreeItem.cpp 98875 2023-03-08 09:40:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -233,7 +233,7 @@ QString UIGuestSessionTreeItem::propertyString() const
 
 void UIGuestSessionTreeItem::sltGuestProcessUnregistered(CGuestProcess guestProcess)
 {
-    if (!UIGuestProcessControlWidget::m_fDeleteAfterUnregister)
+    if (!UIGuestProcessControlWidget::s_fDeleteAfterUnregister)
         return;
     for (int i = 0; i < childCount(); ++i)
     {
@@ -341,7 +341,7 @@ void UIGuestProcessTreeItem::sltGuestProcessUpdated(const CGuestProcessStateChan
         processStatus !=  KProcessStatus_Started &&
         processStatus !=  KProcessStatus_Paused)
     {
-        if (UIGuestProcessControlWidget::m_fDeleteAfterUnregister)
+        if (UIGuestProcessControlWidget::s_fDeleteAfterUnregister)
             this->deleteLater();
     }
 }
