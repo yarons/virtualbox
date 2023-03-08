@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 98875 2023-03-08 09:40:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlDialog.cpp 98876 2023-03-08 10:04:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -31,6 +31,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIGuestControlConsole.h"
