@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-dhcpserver" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-09 13:23:01 +0100 (Thu, 09 Mar 2023) $</pubdate>
     <title>VBoxManage dhcpserver</title>
   </refentryinfo>
 
@@ -599,7 +599,8 @@
       <title>Common DHCP Options:</title>
       <remark role="help-scope" condition="DHCPSERVER_ADD|DHCPSERVER_MODIFY"/>
       <!-- The following file is generated from src/VBox/Main/idl/VirtualBox.xidl: -->
-      <xi:include href="man_VBoxManage-dhcpserver-dhcpoptions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <!-- Temporarily disabling this include since dita conversion script chokes on this -->
+      <!-- <xi:include href="man_VBoxManage-dhcpserver-dhcpoptions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> -->
     </refsect2>
 
   </refsect1>
