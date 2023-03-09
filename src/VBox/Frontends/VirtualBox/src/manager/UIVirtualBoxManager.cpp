@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 98890 2023-03-09 12:01:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -451,7 +451,8 @@ void UIVirtualBoxManager::create()
 void UIVirtualBoxManager::destroy()
 {
     /* Make sure VirtualBox Manager is created: */
-    AssertPtrReturnVoid(s_pInstance);
+    if (!s_pInstance)
+        return;
 
     /* Unregister in the modal window manager: */
     windowManager().setMainWindowShown(0);

@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIStarter.h 98890 2023-03-09 12:01:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -34,31 +34,18 @@
 /* Qt includes: */
 #include <QObject>
 
-/** QObject subclass allowing to control GUI part
+/** QObject subclass allowing to start/close GUI parts
   * of VirtualBox application in sync/async modes. */
 class UIStarter : public QObject
 {
     Q_OBJECT;
 
+public:
+
     /** Constructs UI starter. */
     UIStarter();
     /** Destructs UI starter. */
     virtual ~UIStarter();
-
-public:
-
-    /** Returns the singleton UI starter instance. */
-    static UIStarter *instance() { return s_pInstance; }
-
-    /** Create the singleton UI starter instance. */
-    static void create();
-    /** Create the singleton UI starter instance. */
-    static void destroy();
-
-    /** Init UICommon connections. */
-    void init();
-    /** Deinit UICommon connections. */
-    void deinit();
 
 private slots:
 
@@ -68,14 +55,6 @@ private slots:
     void sltRestartUI();
     /** Closes corresponding part of the UI. */
     void sltCloseUI();
-
-private:
-
-    /** Holds the singleton UI starter instance. */
-    static UIStarter *s_pInstance;
 };
-
-/** Singleton UI starter 'official' name. */
-#define gStarter UIStarter::instance()
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIStarter_h */
