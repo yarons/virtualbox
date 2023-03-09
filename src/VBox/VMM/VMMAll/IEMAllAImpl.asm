@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 98827 2023-03-03 12:01:42Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 98887 2023-03-09 11:18:21Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5157,6 +5157,7 @@ IEMIMPL_MEDIA_SSE_INSN_IMM8_6 pblendw
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 palignr
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 pclmulqdq
 IEMIMPL_MEDIA_SSE_INSN_IMM8_6 aeskeygenassist
+IEMIMPL_MEDIA_SSE_INSN_IMM8_6 mpsadbw
 
 
 ;;
