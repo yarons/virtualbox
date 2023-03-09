@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98855 2023-03-07 11:20:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98882 2023-03-09 09:14:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -926,7 +926,7 @@ void UIMachine::generateMachineInformationGeneral(const UIExtraDataMetaDefs::Det
 }
 
 void UIMachine::generateMachineInformationSystem(const UIExtraDataMetaDefs::DetailsElementOptionTypeSystem &fOptions,
-                                                  UITextTable &returnTable)
+                                                 UITextTable &returnTable)
 {
     uisession()->generateMachineInformationSystem(fOptions, returnTable);
 }
@@ -944,7 +944,7 @@ void UIMachine::generateMachineInformationStorage(const UIExtraDataMetaDefs::Det
 }
 
 void UIMachine::generateMachineInformationAudio(const UIExtraDataMetaDefs::DetailsElementOptionTypeAudio &fOptions,
-                                                  UITextTable &returnTable)
+                                                UITextTable &returnTable)
 {
     uisession()->generateMachineInformationAudio(fOptions, returnTable);
 }
@@ -956,13 +956,13 @@ void UIMachine::generateMachineInformationNetwork(const UIExtraDataMetaDefs::Det
 }
 
 void UIMachine::generateMachineInformationSerial(const UIExtraDataMetaDefs::DetailsElementOptionTypeSerial &fOptions,
-                                                  UITextTable &returnTable)
+                                                 UITextTable &returnTable)
 {
     uisession()->generateMachineInformationSerial(fOptions, returnTable);
 }
 
 void UIMachine::generateMachineInformationUSB(const UIExtraDataMetaDefs::DetailsElementOptionTypeUsb &fOptions,
-                                                  UITextTable &returnTable)
+                                              UITextTable &returnTable)
 {
     uisession()->generateMachineInformationUSB(fOptions, returnTable);
 }
