@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98878 2023-03-08 12:37:11Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 98886 2023-03-09 10:13:54Z serkan.bayraktar@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3218,6 +3218,7 @@ ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK
     	/usr/lib/jvm/java-7-openjdk-amd64 \
     	/usr/lib/jvm/default-java \
     	/usr/lib/jvm/java \
+    	/usr/lib/jvm/jre \
     	\
     	/usr/lib/jvm/sun-jdk-1.6 \
     	) /usr/lib/jvm/java-6-sun)
@@ -8981,7 +8982,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98878 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98886 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
