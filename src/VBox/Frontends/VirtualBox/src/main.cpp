@@ -1,4 +1,4 @@
-/* $Id: main.cpp 98882 2023-03-09 09:14:32Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 98885 2023-03-09 09:58:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -425,15 +425,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* VBOX_WITH_HARDENING */
 
 #ifdef VBOX_WS_MAC
-        /* Apply font fixes (before QApplication get created and instantiated font-hints): */
-        switch (UICommon::determineOsRelease())
-        {
-            case MacOSXRelease_Mavericks: QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande"); break;
-            case MacOSXRelease_Yosemite:  QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Helvetica Neue"); break;
-            case MacOSXRelease_ElCapitan: QFont::insertSubstitution(".SF NS Text", "Helvetica Neue"); break;
-            default: break;
-        }
-
         /* Instantiate own NSApplication before QApplication do it for us: */
         UICocoaApplication::instance();
 
@@ -450,7 +441,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
             RTPathAppend(szExecDir, sizeof(szExecDir), "plugins");      /* .../Contents/plugins */
             QCoreApplication::addLibraryPath(QString::fromUtf8(szExecDir));
         }
-# endif
+# endif /* VBOX_RUNTIME_UI */
 #endif /* VBOX_WS_MAC */
 
 #ifdef VBOX_WS_X11

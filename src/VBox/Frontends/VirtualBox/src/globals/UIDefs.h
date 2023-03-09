@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 98335 2023-01-27 14:28:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 98885 2023-03-09 09:58:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -95,22 +95,6 @@ namespace UIDefs
     SHARED_LIBRARY_STUFF extern QStringList OVFFileExts;
 }
 using namespace UIDefs /* if header included */;
-
-
-#ifdef VBOX_WS_MAC
-/** Known macOS releases. */
-enum MacOSXRelease
-{
-    MacOSXRelease_Old,
-    MacOSXRelease_SnowLeopard,
-    MacOSXRelease_Lion,
-    MacOSXRelease_MountainLion,
-    MacOSXRelease_Mavericks,
-    MacOSXRelease_Yosemite,
-    MacOSXRelease_ElCapitan,
-    MacOSXRelease_New,
-};
-#endif /* VBOX_WS_MAC */
 
 
 /** Size suffixes. */
