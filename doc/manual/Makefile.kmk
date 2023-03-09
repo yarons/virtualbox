@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98893 2023-03-09 12:25:18Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 98894 2023-03-09 14:37:19Z serkan.bayraktar@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -844,6 +844,21 @@ man_vboximg-mount.xml \
  html:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/html-chunks/index.html
  qhelp:: $(addprefix $(VBOX_PATH_MANUAL_OUTBASE)/en_US/qhelp/, $(VBOX_QHELP_OUTPUT_FILES))
  html-zip:: $(VBOX_PATH_MANUAL_OUTBASE)/en_US/UserManual.zip
+
+ ##########################################################################################
+ #
+ #  DITA stuff common to pdf, qhelp, and html outputs.
+ #  - copy DITA-OT library (binaries etc) since at each run several run-time config
+ #     files are updated.
+ #	- create dita/topic folder and copy all user manual dita files under that.
+ #  - copy all images under dita/topics/images and UserManual.ditamap under dita folder
+ #  - copy all man_VBox???.xml docbook files under dita/topic folder.
+ #  - flatten refsect1/refsect2 hierarchy in man_VBox???.xml docbook files by
+ #    using refsect2_to_refsect1.py.
+ #  - convert man_VBox???.xml files into dita files
+ #  - correct all reference targets by calling correct_references.py.
+ #
+ ##########################################################################################
 
  ##########################################################################################
  #
