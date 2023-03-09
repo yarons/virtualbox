@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98892 2023-03-09 12:23:52Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 98893 2023-03-09 12:25:18Z serkan.bayraktar@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -858,7 +858,7 @@ man_vboximg-mount.xml \
   		$$(VBOX_XML_ENTITIES) $$(VBOX_VERSION_STAMP) | $$$$(dir $$$$@)
 
 	$$(QUIET)$$(RM) -f "$$@"
-	$$(QUIET)$$(call VBOX_XSLTPROC_WITH_CAT) --maxdepth 6000 --output $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/dita/topics/$(2) $(VBOX_PATH_MANUAL_SRC)/refsect2_replace.xsl $$(VBOX_PATH_MANUAL_SRC)/$(1)/$(2)
+	$$(QUIET)$$(VBOX_BLD_PYTHON) $$(VBOX_PATH_MANUAL_SRC)/refsect2_to_refsect1.py -i $$(VBOX_PATH_MANUAL_SRC)/$(1)/$(2) -o $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/dita/topics/$(2)
 	$$(call MSG_TOOL,xsltproc $$(notdir $$(firstword $$(filter %.xsl,$$^))),,$$(firstword $$(filter %.xml,$$^)),$$@)
 	$$(QUIET)$$(call VBOX_XSLTPROC_WITH_CAT) --maxdepth 6000 --output $$@ $$(VBOX_DITA_CONVERTER_PATH)/db2dita/docbook2dita.xsl $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/dita/topics/$(2)
 	$$(QUIET)$$(call VBOX_XSLTPROC_WITH_CAT) --maxdepth 6000 --output $$@ $(VBOX_PATH_MANUAL_SRC)/mark_external_urls.xsl $$@
