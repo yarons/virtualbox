@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98882 2023-03-09 09:14:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98902 2023-03-10 14:20:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -171,6 +171,7 @@ bool UIMachine::create()
 
     /* Create machine UI: */
     new UIMachine;
+
     /* Make sure it's prepared: */
     if (!s_pInstance->prepare())
     {
@@ -179,6 +180,7 @@ bool UIMachine::create()
         /* False in that case: */
         return false;
     }
+
     /* True by default: */
     return true;
 }
@@ -1455,10 +1457,12 @@ UIMachine::~UIMachine()
 
 bool UIMachine::prepare()
 {
-    /* Try to create session UI: */
-    if (!UISession::create(m_pSession, this))
-        return false;
+    /* Create session UI: */
+    m_pSession = new UISession(this);
     AssertPtrReturn(uisession(), false);
+    /* And make sure it's prepared: */
+    if (!uisession()->prepare())
+        return false;
 
     /* Prepare stuff: */
     prepareBranding();
@@ -1812,8 +1816,8 @@ void UIMachine::cleanupBranding()
 void UIMachine::cleanupSession()
 {
     /* Destroy session UI if exists: */
-    if (uisession())
-        UISession::destroy(m_pSession);
+    delete m_pSession;
+    m_pSession = 0;
 }
 
 void UIMachine::cleanup()
