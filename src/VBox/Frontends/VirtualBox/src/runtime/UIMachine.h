@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98882 2023-03-09 09:14:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98903 2023-03-10 15:17:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -837,6 +837,8 @@ private:
 
     /** Prepare routine. */
     bool prepare();
+    /** Prepares notification-center. */
+    void prepareNotificationCenter();
     /** Prepare routine: Branding. */
     void prepareBranding();
     /** Prepare routine: Session connection stuff. */
@@ -862,6 +864,8 @@ private:
     void cleanupBranding();
     /** Cleanup routine: Session stuff. */
     void cleanupSession();
+    /** Cleanups notification-center. */
+    void cleanupNotificationCenter();
     /** Cleanup routine. */
     void cleanup();
 

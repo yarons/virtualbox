@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98902 2023-03-10 14:20:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98903 2023-03-10 15:17:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -647,10 +647,8 @@ private:
 
     /** @name Prepare/cleanup cascade.
      ** @{ */
-        /** Prepares COM session. */
-        bool prepareSession();
-        /** Prepares notification-center. */
-        void prepareNotificationCenter();
+        /** Prepares COM stuff. */
+        bool prepareCOMStuff();
         /** Prepares console event-handler. */
         void prepareConsoleEventHandlers();
         /** Prepares frame-buffers. */
@@ -664,8 +662,6 @@ private:
         void cleanupFramebuffers();
         /** Cleanups console event-handler. */
         void cleanupConsoleEventHandlers();
-        /** Cleanups notification-center. */
-        void cleanupNotificationCenter();
         /** Cleanups COM stuff. */
         void cleanupCOMStuff();
     /** @} */

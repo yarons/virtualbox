@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 98903 2023-03-10 15:17:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -139,6 +139,9 @@ private slots:
     /** Handles immediate progress being finished.
       * @note Breaks blocking handleNow() call. */
     void sltHandleProgressFinished();
+
+    /** Handles request to detach COM. */
+    void sltDetachCOM();
 
 private:
 
