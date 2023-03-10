@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 98898 2023-03-10 11:25:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -959,6 +959,7 @@ QWidget *UIWizardNewVMExpertPage::createNameOSTypeWidgets()
                                                        true /* fChooseName? */,
                                                        true /* fChoosePath? */,
                                                        true /* fChooseImage? */,
+                                                       true /* fChoseEdition? */,
                                                        true /* fChooseType? */);
     if (m_pNameAndSystemEditor)
         m_pNameAndSystemLayout->addWidget(m_pNameAndSystemEditor, 0, 0, 1, 2);
