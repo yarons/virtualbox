@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 98908 2023-03-10 16:34:32Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -576,7 +576,7 @@ int vmsvga3dDXSetSamplers(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDX
 
 
 #ifdef DUMP_BITMAPS
-static void vmsvga3dDXDrawDumpRenderTargets(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
+static void vmsvga3dDXDrawDumpRenderTargets(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, const char *pszPrefix = NULL)
 {
     for (uint32_t i = 0; i < SVGA3D_MAX_SIMULTANEOUS_RENDER_TARGETS; ++i)
     {
@@ -593,7 +593,7 @@ static void vmsvga3dDXDrawDumpRenderTargets(PVGASTATECC pThisCC, PVMSVGA3DDXCONT
             int rc = vmsvga3dSurfaceMap(pThisCC, &image, NULL, VMSVGA3D_SURFACE_MAP_READ, &map);
             if (RT_SUCCESS(rc))
             {
-                vmsvga3dMapWriteBmpFile(&map, "rt-");
+                vmsvga3dMapWriteBmpFile(&map, pszPrefix ? pszPrefix : "rt-");
                 vmsvga3dSurfaceUnmap(pThisCC, &image, &map, /* fWritten =  */ false);
             }
             else

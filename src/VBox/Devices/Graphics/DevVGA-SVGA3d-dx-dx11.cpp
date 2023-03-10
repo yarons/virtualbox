@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 98908 2023-03-10 16:34:32Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5060,7 +5060,7 @@ static DECLCALLBACK(void) vmsvga3dBackSurfaceInvalidateImage(PVGASTATECC pThisCC
     {
         Assert(uFace == 0 && uMipmap == 0); /* The caller ensures this. */
         /** @todo This causes flickering when a buffer is invalidated and re-created right before a draw call. */
-        //vmsvga3dBackSurfaceDestroy(pThisCC, pSurface);
+        //vmsvga3dBackSurfaceDestroy(pThisCC, false, pSurface);
     }
     else
     {
@@ -6414,6 +6414,7 @@ static void dxSetupPipeline(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext)
                             AssertFailed();
                         D3D_RELEASE(pBlob);
                     }
+                    LogFunc(("Shader: set cid=%u shid=%u type=%d, GuestSignatures %d\n", pDXContext->cid, shaderId, pDXShader->enmShaderType, pDXShader->shaderInfo.fGuestSignatures));
 #endif
 
                     HRESULT hr = dxShaderCreate(pThisCC, pDXContext, pDXShader);
