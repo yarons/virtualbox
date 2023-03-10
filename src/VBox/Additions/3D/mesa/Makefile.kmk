@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98906 2023-03-10 16:18:56Z vitali.pelenjow@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Mesa 3D components
 #
@@ -1473,6 +1473,11 @@ VBoxMesaSVGALib_SOURCES  = \
 	$(VBOX_MESA)/src/gallium/drivers/svga/svga_tgsi_decl_sm30.c \
 	$(VBOX_MESA)/src/gallium/drivers/svga/svga_tgsi_insn.c \
 	$(VBOX_MESA)/src/gallium/drivers/svga/svga_tgsi_vgpu10.c
+
+VBoxMesaSVGALib_SOURCES.debug  += \
+	$(VBOX_MESA)/src/gallium/drivers/svga/svgadump/svga_dump.c \
+	$(VBOX_MESA)/src/gallium/drivers/svga/svgadump/svga_shader_dump.c \
+	$(VBOX_MESA)/src/gallium/drivers/svga/svgadump/svga_shader_op.c
 
 # 32 bit lib for 64 bit build
 VBoxMesaSVGALib-x86_EXTENDS      = VBoxMesaSVGALib
