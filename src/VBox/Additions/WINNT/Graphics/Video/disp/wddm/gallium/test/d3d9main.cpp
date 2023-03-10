@@ -1,4 +1,4 @@
-/* $Id: d3d9main.cpp 98138 2023-01-19 13:43:33Z knut.osmundsen@oracle.com $ */
+/* $Id: d3d9main.cpp 98909 2023-03-10 16:49:13Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
@@ -200,8 +200,10 @@ HRESULT D3D9Test::initDirect3D9(int cDevices)
         mPP.BackBufferHeight           = 0;
         mPP.BackBufferFormat           = D3DFMT_UNKNOWN;
 #else
-        mPP.BackBufferWidth            = 640;
-        mPP.BackBufferHeight           = 480;
+        RECT clientRect;
+        GetClientRect(mHwnd, &clientRect);
+        mPP.BackBufferWidth            = clientRect.right;
+        mPP.BackBufferHeight           = clientRect.bottom;
         mPP.BackBufferFormat           = D3DFMT_X8R8G8B8;
 #endif
         mPP.BackBufferCount            = 1;
