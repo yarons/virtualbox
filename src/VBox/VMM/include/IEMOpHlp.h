@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp.h 98910 2023-03-11 01:59:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -585,6 +585,18 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
     do \
     { \
         if (RT_LIKELY(!(pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REPZ)))) \
+        { /* likely */ } \
+        else \
+            return IEMOP_RAISE_INVALID_OPCODE(); \
+    } while (0)
+
+/**
+ * Check for a CPUMFEATURES member to be true, raise \#UD if clear.
+ */
+#define IEMOP_HLP_RAISE_UD_IF_MISSING_GUEST_FEATURE(pVCpu, a_fFeature) \
+    do \
+    { \
+        if (IEM_GET_GUEST_CPU_FEATURES(pVCpu)->a_fFeature) \
         { /* likely */ } \
         else \
             return IEMOP_RAISE_INVALID_OPCODE(); \

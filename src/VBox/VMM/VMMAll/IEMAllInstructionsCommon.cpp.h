@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsCommon.cpp.h 98797 2023-03-01 00:23:26Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsCommon.cpp.h 98910 2023-03-11 01:59:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Bits.
  */
@@ -985,7 +985,7 @@ FNIEMOP_DEF_1(iemOpHlpBinaryOperator_rm_rv, PCIEMOPBINSIZES, pImpl)
                 IEM_MC_REF_EFLAGS(pEFlags);
                 IEM_MC_CALL_VOID_AIMPL_3(pImpl->pfnNormalU32, pu32Dst, u32Src, pEFlags);
 
-                if ((pImpl != &g_iemAImpl_test) && (pImpl != &g_iemAImpl_cmp))
+                if (pImpl != &g_iemAImpl_test && pImpl != &g_iemAImpl_cmp)
                     IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst);
                 IEM_MC_ADVANCE_RIP_AND_FINISH();
                 IEM_MC_END();
