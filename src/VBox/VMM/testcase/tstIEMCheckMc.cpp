@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 98798 2023-03-01 00:26:19Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 98915 2023-03-12 01:24:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -168,6 +168,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_HLP_DONE_VEX_DECODING_L0_AND_NO_VVVV()        do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES()                                    do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_SIZE_OP_REPZ_OR_REPNZ_PREFIXES()                                 do { } while (0)
+#define IEMOP_HLP_RAISE_UD_IF_MISSING_GUEST_FEATURE(pVCpu, a_fFeature)                              do { } while (0)
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 # define IEMOP_HLP_VMX_INSTR(a_szInstr, a_InsDiagPrefix)                                            do { } while (0)
 # define IEMOP_HLP_IN_VMX_OPERATION(a_szInstr, a_InsDiagPrefix)                                     do { } while (0)
