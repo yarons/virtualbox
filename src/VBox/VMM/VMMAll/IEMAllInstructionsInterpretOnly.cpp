@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsInterpretOnly.cpp 98800 2023-03-01 00:42:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsInterpretOnly.cpp 98916 2023-03-12 01:27:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -84,6 +84,7 @@
 /*
  * Include common bits.
  */
+#include "IEMAllInstructionsCommonBodyMacros.h"
 #include "IEMAllInstructionsCommon.cpp.h"
 
 
