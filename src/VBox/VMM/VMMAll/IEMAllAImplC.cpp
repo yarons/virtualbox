@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 98887 2023-03-09 11:18:21Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 98921 2023-03-12 16:54:45Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -18073,4 +18073,24 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_mpsadbw_u128_fallback,(PRTUINT128U puDst, PCRTU
                          + RT_ABS(ai16Src1[i + 1] - ai16Src2[1])
                          + RT_ABS(ai16Src1[i + 2] - ai16Src2[2])
                          + RT_ABS(ai16Src1[i + 3] - ai16Src2[3]);
+}
+
+
+/**
+ * DPPS
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_dpps_u128_fallback,(uint32_t *pfMxcsr, PX86XMMREG puDst, PCIEMMEDIAF2XMMSRC pSrc, uint8_t bImm))
+{
+    RT_NOREF(pfMxcsr, puDst, pSrc, bImm);
+    AssertReleaseFailed();
+}
+
+
+/**
+ * DPPD
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_dppd_u128_fallback,(uint32_t *pfMxcsr, PX86XMMREG puDst, PCIEMMEDIAF2XMMSRC pSrc, uint8_t bImm))
+{
+    RT_NOREF(pfMxcsr, puDst, pSrc, bImm);
+    AssertReleaseFailed();
 }

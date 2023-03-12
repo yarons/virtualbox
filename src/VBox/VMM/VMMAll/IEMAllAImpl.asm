@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 98887 2023-03-09 11:18:21Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 98921 2023-03-12 16:54:45Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -6269,6 +6269,8 @@ IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 roundps
 IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 roundpd
 IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 roundss
 IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 roundsd
+IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 dpps
+IEMIMPL_MEDIA_SSE_INSN_IMM8_MXCSR_6 dppd
 
 
 ;;
