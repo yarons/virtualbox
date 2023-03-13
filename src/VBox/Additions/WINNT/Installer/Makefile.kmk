@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98911 2023-03-11 12:18:53Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 98935 2023-03-13 14:51:18Z alexander.rudnev@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -383,7 +383,7 @@ ifdef VBOX_SIGNING_MODE
  $(PATH_TARGET)/uninst.exe: $(PATH_TARGET)/VBoxWindowsAdditions-$(KBUILD_TARGET_ARCH)-uninst.exe | $$(dir $$@)
 	$(call MSG_L1,Creating $@, from $<)
 	$(QUIET)$(RM) -f $@
-	- $<
+	-$(REDIRECT) -E __COMPAT_LAYER=RUNASINVOKER -- $<
 	$(TEST) -f $@
 	$(call VBOX_SIGN_FILE_FN,$@)
 
