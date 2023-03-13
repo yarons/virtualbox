@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98680 2023-02-21 15:51:34Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98932 2023-03-13 13:04:22Z serkan.bayraktar@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -290,11 +290,6 @@ ifdef VBOX_WITH_DOCS_PACKING
  VBOX_LNX_NO_STRIP += \
  	UserManual.pdf \
  	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),UserManual_$(f).pdf)
- ifdef VBOX_WITH_DOCS_CHM_PACKING
-  VBOX_LNX_NO_STRIP += \
-  	VirtualBox.chm \
-  	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),VirtualBox_$(f).chm)
- endif
  ifdef VBOX_WITH_DOCS_QHELP_PACKING
   VBOX_LNX_NO_STRIP += \
   	UserManual.qch UserManual.qhc \
