@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 98929 2023-03-13 11:40:51Z alexander.eichner@oracle.com $
+# $Id: utils.py 98931 2023-03-13 12:29:54Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98929 $"
+__version__ = "$Revision: 98931 $"
 
 
 # Standard Python imports.
@@ -187,7 +187,7 @@ def getHostArch():
                 sArch = sArch.strip();
                 if sArch != 'amd64':
                     sArch = 'x86';
-        elif sArch in ('arm64', 'ARM64', 'aarch64')
+        elif sArch in ('arm64', 'ARM64', 'aarch64'):
             sArch = 'arm64';
         else:
             raise Exception('Unsupported architecture/machine "%s"' % (sArch,));
