@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIIconPool.cpp 98937 2023-03-13 15:30:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -538,9 +538,12 @@ UIIconPoolGeneral::~UIIconPoolGeneral()
 
 QIcon UIIconPoolGeneral::userMachineIcon(const CMachine &comMachine) const
 {
+    /* Make sure machine is not NULL: */
+    AssertReturn(comMachine.isNotNull(), QIcon());
+
     /* Get machine ID: */
     const QUuid uMachineId = comMachine.GetId();
-    AssertReturn(comMachine.isOk(), QPixmap());
+    AssertReturn(comMachine.isOk(), QIcon());
 
     /* Prepare icon: */
     QIcon icon;
@@ -626,7 +629,7 @@ QPixmap UIIconPoolGeneral::userMachinePixmapDefault(const CMachine &comMachine, 
 QIcon UIIconPoolGeneral::guestOSTypeIcon(const QString &strOSTypeID) const
 {
     /* Prepare fallback icon: */
-    static QPixmap nullIcon;
+    static QPixmap nullIcon(":/os_other.png");
 
     /* If we do NOT have that 'guest OS type' icon cached already: */
     if (!m_guestOSTypeIcons.contains(strOSTypeID))
