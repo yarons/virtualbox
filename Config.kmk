@@ -1,4 +1,4 @@
-# $Id: Config.kmk 98945 2023-03-13 21:20:06Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 98946 2023-03-13 21:55:40Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -8474,7 +8474,7 @@ ifeq ($(KBUILD_TARGET),win)
  	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
  	$(TEMPLATE_VBoxGuestR3ExeBase_LIBS.$(KBUILD_TARGET_ARCH))
 else
- TEMPLATE_VBoxGuestR3DllNonPedantic_LIBS.$(KBUILD_TARGET_ARCH) = \
+ TEMPLATE_VBoxGuestR3DllNonPedantic_LIBS = \
  	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
  	$(VBOX_LIB_VBGL_R3_SHARED) \
  	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
@@ -8988,7 +8988,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98945 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 98946 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
