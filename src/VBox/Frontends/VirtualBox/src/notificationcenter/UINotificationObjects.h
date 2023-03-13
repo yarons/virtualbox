@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -357,6 +357,9 @@ public:
         /** Notifies about inability to acquire IUpdateAgent parameter.
           * @param  comAgent  Brings the object parameter get acquired from. */
         static void cannotAcquireUpdateAgentParameter(const CUpdateAgent &comAgent);
+        /** Notifies about inability to acquire IMouse parameter.
+          * @param  comMouse  Brings the object parameter get acquired from. */
+        static void cannotAcquireMouseParameter(const CMouse &comMouse);
         /** Notifies about inability to acquire IEmulatedUSB parameter.
           * @param  comDispatcher  Brings the object parameter get acquired from. */
         static void cannotAcquireEmulatedUSBParameter(const CEmulatedUSB &comDispatcher);

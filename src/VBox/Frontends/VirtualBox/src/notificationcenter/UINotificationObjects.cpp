@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98811 2023-03-01 17:52:24Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -840,6 +840,15 @@ void UINotificationMessage::cannotAcquireUpdateAgentParameter(const CUpdateAgent
         QApplication::translate("UIMessageCenter", "Update failure ..."),
         QApplication::translate("UIMessageCenter", "Failed to acquire update agent parameter.") +
         UIErrorString::formatErrorInfo(comAgent));
+}
+
+/* static */
+void UINotificationMessage::cannotAcquireMouseParameter(const CMouse &comMouse)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Mouse failure ..."),
+        QApplication::translate("UIMessageCenter", "Failed to acquire mouse parameter.") +
+        UIErrorString::formatErrorInfo(comMouse));
 }
 
 /* static */

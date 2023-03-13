@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98903 2023-03-10 15:17:47Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -464,29 +464,64 @@ bool UISession::putUsageCode(LONG iUsageCode, LONG iUsagePage, bool fKeyRelease)
     return fSuccess;
 }
 
-bool UISession::getAbsoluteSupported()
+bool UISession::acquireWhetherAbsoluteSupported(bool &fSupported)
 {
-    return mouse().GetAbsoluteSupported();
+    CMouse comMouse = mouse();
+    const BOOL fAbsoluteSupported = comMouse.GetAbsoluteSupported();
+    const bool fSuccess = comMouse.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMouseParameter(comMouse);
+    else
+        fSupported = fAbsoluteSupported == TRUE;
+    return fSuccess;
 }
 
-bool UISession::getRelativeSupported()
+bool UISession::acquireWhetherRelativeSupported(bool &fSupported)
 {
-    return mouse().GetRelativeSupported();
+    CMouse comMouse = mouse();
+    const BOOL fRelativeSupported = comMouse.GetRelativeSupported();
+    const bool fSuccess = comMouse.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMouseParameter(comMouse);
+    else
+        fSupported = fRelativeSupported == TRUE;
+    return fSuccess;
 }
 
-bool UISession::getTouchScreenSupported()
+bool UISession::acquireWhetherTouchScreenSupported(bool &fSupported)
 {
-    return mouse().GetTouchScreenSupported();
+    CMouse comMouse = mouse();
+    const BOOL fTouchScreenSupported = comMouse.GetTouchScreenSupported();
+    const bool fSuccess = comMouse.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMouseParameter(comMouse);
+    else
+        fSupported = fTouchScreenSupported == TRUE;
+    return fSuccess;
 }
 
-bool UISession::getTouchPadSupported()
+bool UISession::acquireWhetherTouchPadSupported(bool &fSupported)
 {
-    return mouse().GetTouchPadSupported();
+    CMouse comMouse = mouse();
+    const BOOL fTouchPadSupported = comMouse.GetTouchPadSupported();
+    const bool fSuccess = comMouse.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMouseParameter(comMouse);
+    else
+        fSupported = fTouchPadSupported == TRUE;
+    return fSuccess;
 }
 
-bool UISession::getNeedsHostCursor()
+bool UISession::acquireWhetherNeedsHostCursor(bool &fNeeds)
 {
-    return mouse().GetNeedsHostCursor();
+    CMouse comMouse = mouse();
+    const BOOL fNeedsHostCursor = comMouse.GetNeedsHostCursor();
+    const bool fSuccess = comMouse.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMouseParameter(comMouse);
+    else
+        fNeeds = fNeedsHostCursor == TRUE;
+    return fSuccess;
 }
 
 bool UISession::putMouseEvent(long iDx, long iDy, long iDz, long iDw, long iButtonState)
