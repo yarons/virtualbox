@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 98626 2023-02-18 02:13:49Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 98945 2023-03-13 21:20:06Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -75,11 +75,10 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 ; This registry key will hold the mouse driver path before install (NT4 only)
 !define ORG_MOUSE_PATH "MousePath"
 
-; If we have our guest install helper DLL, add the
-; plugin path so that NSIS can find it when compiling the installer
-; Note: NSIS plugins *always* have to be compiled in 32-bit!
+; If we have our guest install helper DLL, add the plugin path so that NSIS can
+; find it when compiling the installer
 !if $%VBOX_WITH_GUEST_INSTALL_HELPER% == "1"
-  !addplugindir "$%PATH_TARGET_X86%\VBoxGuestInstallHelper"
+  !addplugindir "$%PATH_TARGET%\VBoxGuestInstallHelper"
 !endif
 
 !include "LogicLib.nsh"
