@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -354,6 +354,13 @@ void UIMachineWindow::hideEvent(QHideEvent *pEvent)
 
 void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
 {
+    /* Fast handling in case if session is invalid: */
+    if (!uimachine()->isSessionValid())
+    {
+        uimachine()->closeRuntimeUI();
+        return;
+    }
+
     /* Always ignore close-event first: */
     pCloseEvent->ignore();
 

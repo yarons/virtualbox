@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98939 2023-03-13 15:51:19Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -108,6 +108,7 @@ UISession::UISession(UIMachine *pMachine)
     : QObject(pMachine)
     /* Base variables: */
     , m_pMachine(pMachine)
+    , m_fValid(false)
     , m_pConsoleEventhandler(0)
     /* Common variables: */
     , m_enmMachineStatePrevious(KMachineState_Null)
@@ -200,6 +201,9 @@ bool UISession::initialize()
 #ifdef VBOX_GUI_WITH_PIDFILE
     uiCommon().createPidfile();
 #endif /* VBOX_GUI_WITH_PIDFILE */
+
+    /* Mark as valid finally: */
+    m_fValid = true;
 
     /* True by default: */
     return true;

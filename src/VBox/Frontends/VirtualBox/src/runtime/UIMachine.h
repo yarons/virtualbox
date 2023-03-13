@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -173,6 +173,9 @@ public:
     UIFrameBuffer *frameBuffer(ulong uScreenId);
     /** Returns active machine-window reference (if possible). */
     QWidget *activeWindow() const;
+
+    /** Returns whether session UI is valid. */
+    bool isSessionValid() const;
 
     /** Returns whether requested visual @a state allowed. */
     bool isVisualStateAllowed(UIVisualStateType state) const { return m_allowedVisualStates & state; }

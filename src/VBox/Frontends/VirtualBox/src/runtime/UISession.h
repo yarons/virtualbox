@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -155,6 +155,10 @@ public:
         bool prepare();
         /** Performs session UI intialization. */
         bool initialize();
+
+        /** Returns whether session UI is valid. */
+        bool isValid() const { return m_fValid; }
+
         /** Powers VM up. */
         bool powerUp();
     /** @} */
@@ -701,6 +705,9 @@ private:
      ** @{ */
         /** Holds the machine UI reference. */
         UIMachine *m_pMachine;
+
+        /** Holds whether session UI is valid. */
+        bool  m_fValid;
 
         /** Holds the machine name. */
         QString  m_strMachineName;

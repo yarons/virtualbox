@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -211,6 +211,11 @@ QWidget* UIMachine::activeWindow() const
     return   machineLogic() && machineLogic()->activeMachineWindow()
            ? machineLogic()->activeMachineWindow()
            : 0;
+}
+
+bool UIMachine::isSessionValid() const
+{
+    return uisession() ? uisession()->isValid() : false;
 }
 
 void UIMachine::asyncChangeVisualState(UIVisualStateType visualState)
