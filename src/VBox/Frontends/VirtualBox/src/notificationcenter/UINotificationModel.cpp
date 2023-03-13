@@ -1,4 +1,4 @@
-/* $Id: UINotificationModel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationModel.cpp 98928 2023-03-13 10:37:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationModel class implementation.
  */
@@ -144,7 +144,7 @@ void UINotificationModel::cleanup()
 {
     /* Wipe out all the objects: */
     foreach (const QUuid &uId, m_ids)
-        delete m_objects.value(uId);
+        revokeObject(uId);
     m_objects.clear();
     m_ids.clear();
 }
