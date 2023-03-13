@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: coreconsts.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: coreconsts.py 98930 2023-03-13 12:20:39Z alexander.eichner@oracle.com $
 
 """
 Test Manager - Test Manager Constants (without a more appropriate home).
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 98930 $"
 
 ## OS agnostic.
 g_ksOsAgnostic      = 'os-agnostic';
@@ -54,7 +54,7 @@ g_ksCpuArchAgnostic = 'noarch';
 ## All known CPU architectures, except the agnostic one.
 # See KBUILD_ARCHES in kBuild/header.kmk for reference.
 g_kasCpuArches      = ['amd64', 'x86', 'sparc32', 'sparc64', 's390', 's390x', 'ppc32', 'ppc64', 'mips32', 'mips64', 'ia64',
-                       'hppa32', 'hppa64', 'arm', 'alpha'];
+                       'hppa32', 'hppa64', 'arm', 'arm64', 'alpha'];
 ## All known CPU architectures, except the agnostic one.
 # See KBUILD_ARCHES in kBuild/header.kmk for reference.
 g_kasCpuArchesAll   = g_kasCpuArches + [g_ksCpuArchAgnostic,];
