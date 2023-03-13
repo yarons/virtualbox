@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98944 2023-03-13 16:59:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -280,7 +280,9 @@ WId UISession::mainMachineWindowId() const
 
 void UISession::acquireMachinePixmap(const QSize &size, QPixmap &pixmap)
 {
-    QPixmap machinePixmap = generalIconPool().userMachinePixmap(machine(), size);
+    QPixmap machinePixmap;
+    if (machine().isNotNull())
+        machinePixmap = generalIconPool().userMachinePixmap(machine(), size);
     if (machinePixmap.isNull())
         machinePixmap = generalIconPool().guestOSTypePixmap(osTypeId(), size);
     if (!machinePixmap.isNull())
@@ -289,7 +291,9 @@ void UISession::acquireMachinePixmap(const QSize &size, QPixmap &pixmap)
 
 void UISession::acquireUserMachineIcon(QIcon &icon)
 {
-    QIcon machineIcon = generalIconPool().userMachineIcon(machine());
+    QIcon machineIcon;
+    if (machine().isNotNull())
+        machineIcon = generalIconPool().userMachineIcon(machine());
     if (machineIcon.isNull())
         machineIcon = generalIconPool().guestOSTypeIcon(osTypeId());
     if (machineIcon.isNull())
