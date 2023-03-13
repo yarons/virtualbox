@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98939 2023-03-13 15:51:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1520,6 +1520,12 @@ bool UISession::acquireWhetherAccelerate3DEnabled(bool &fEnabled)
 
 bool UISession::acquireMonitorCount(ulong &uCount)
 {
+    // WORKAROUND:
+    // We certainly don't want to get into
+    // 'no visible screens' case if something
+    // gone wrong...  Inventing sane default.
+    uCount = 1;
+
     CMachine comMachine = machine();
     CGraphicsAdapter comAdapter = comMachine.GetGraphicsAdapter();
     bool fSuccess = comMachine.isOk();
