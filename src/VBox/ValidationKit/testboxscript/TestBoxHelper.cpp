@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TestBoxHelper.cpp 98929 2023-03-13 11:40:51Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -55,6 +55,8 @@
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/x86.h>
 # include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM) || defined(RT_ARCH_ARM64)
+# include <iprt/asm-arm.h>
 #endif
 
 #ifdef RT_OS_DARWIN
@@ -670,6 +672,11 @@ static RTEXITCODE handlerCpuRevision(int argc, char **argv)
         int cch = RTPrintf("%#x\n", uVersion);
         return cch > 0 ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
     }
+#elif defined(RT_ARCH_ARM) || defined(RT_ARCH_ARM64)
+    /** @todo There is no way to access MIDR_EL1 from userspace except for parsing the various
+     * OS dependent ways (/proc/cpuinfo, sysctl, ...). Just fake it for now to get it running. */
+    int cch = RTPrintf("%#x\n", 1);
+    return cch > 0 ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 #endif
     return RTEXITCODE_FAILURE;
 }
