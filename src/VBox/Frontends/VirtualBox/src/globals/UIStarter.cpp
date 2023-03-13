@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 98890 2023-03-09 12:01:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIStarter.cpp 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -100,7 +100,7 @@ void UIStarter::sltStartUI()
     }
 
     /* Try to start virtual machine, quit if failed: */
-    if (!UIMachine::startMachine(uiCommon().managedVMUuid()))
+    if (!UIMachine::startMachine())
         return QApplication::quit();
 
 #endif /* VBOX_RUNTIME_UI */

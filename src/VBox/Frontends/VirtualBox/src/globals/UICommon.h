@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 98885 2023-03-09 09:58:41Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -335,7 +335,9 @@ public:
         static bool launchMachine(CMachine &comMachine, UILaunchMode enmLaunchMode = UILaunchMode_Default);
 
         /** Opens session of certain @a enmLockType for VM with certain @a uId. */
-        CSession openSession(const QUuid &uId, KLockType enmLockType = KLockType_Write);
+        CSession openSession(QUuid uId, KLockType enmLockType = KLockType_Write);
+        /** Opens session of certain @a enmLockType for currently chosen VM. */
+        CSession openSession(KLockType enmLockType = KLockType_Write);
         /** Opens session of KLockType_Shared type for VM with certain @a uId. */
         CSession openExistingSession(const QUuid &uId) { return openSession(uId, KLockType_Shared); }
         /** Tries to guess if new @a comSession needs to be opened for certain @a comMachine,
