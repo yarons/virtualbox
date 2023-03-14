@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98602 2023-02-16 13:40:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98966 2023-03-14 16:04:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -208,7 +208,8 @@ private:
             setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fAttachmentsPresent ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -252,7 +253,8 @@ private:
             setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fAttachmentsMounted ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -296,7 +298,8 @@ private:
             setVisible(fAttachmentsPresent);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fAttachmentsMounted ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -350,7 +353,8 @@ private:
             setVisible(fAudioEnabled);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         AudioState enmState = AudioState_AllOff;
         if (fEnabledOutput)
@@ -433,7 +437,8 @@ private:
             setVisible(fAdaptersPresent);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fAdaptersPresent && !fCablesDisconnected ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -479,7 +484,8 @@ private:
             setVisible(fUsbEnabled);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fUsbEnabled ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -516,7 +522,8 @@ private:
         m_pMachine->acquireSharedFoldersStatusInfo(strFullData, fFoldersPresent);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(fFoldersPresent ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -552,7 +559,8 @@ private:
         m_pMachine->acquireDisplayStatusInfo(strFullData, fAcceleration3D);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Set initial indicator state: */
         setState(fAcceleration3D ? KDeviceActivity_Idle : KDeviceActivity_Null);
     }
@@ -653,7 +661,8 @@ private:
         m_pMachine->acquireRecordingStatusInfo(strFullData, fRecordingEnabled, fMachinePaused);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Set initial indicator state: */
         if (!fRecordingEnabled)
             setState(UIIndicatorStateRecording_Disabled);
@@ -773,7 +782,8 @@ private:
         m_pMachine->acquireFeaturesStatusInfo(strFullData, enmEngine);
 
         /* Update tool-tip: */
-        setToolTip(s_strTable.arg(strFullData));
+        if (!strFullData.isEmpty())
+            setToolTip(s_strTable.arg(strFullData));
         /* Update indicator state: */
         setState(enmEngine);
     }
