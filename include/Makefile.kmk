@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98578 2023-02-15 02:00:05Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 98959 2023-03-14 12:47:10Z alexander.eichner@oracle.com $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -144,6 +144,8 @@ VBOX_HDRS_OMIT := \
 	VBox/VBoxKeyboard.h \
 	VBox/vmm/pdmpcidevint.h \
 	VBox/vmm/vmmr3vtable-def.h \
+ 	VBox/vmm/cpumctx-x86-amd64.h \
+ 	VBox/vmm/cpumctx-armv8.h \
 	iprt/runtime-loader.h \
 	iprt/mangling.h \
 	$(subst $(PATH_SUB_CURRENT)/,,$(wildcard $(PATH_SUB_CURRENT)/iprt/asm*watcom*.h)) \
