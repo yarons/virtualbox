@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 98953 2023-03-14 11:31:13Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 98968 2023-03-14 16:07:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -926,6 +926,7 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_S_ShowInformation));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_S_ShowFileManager));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_T_Pause));
+    m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_ViewPopup));
 #ifndef VBOX_WS_MAC
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_MinimizeWindow));
 #endif /* !VBOX_WS_MAC */
