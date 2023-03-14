@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 98952 2023-03-14 11:27:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -74,8 +74,8 @@ private slots:
     void sltRecordingChange();
     /** Handles CPU execution cap change event. */
     void sltCPUExecutionCapChange();
-    /** Handles UISession initialized event. */
-    void sltHandleSessionInitialized();
+    /** Handles Machine UI initialized event. */
+    void sltHandleMachineInitialized();
 
 #ifndef RT_OS_DARWIN
     /** Handles menu-bar configuration-change. */

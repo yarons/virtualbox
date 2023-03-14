@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 98944 2023-03-13 16:59:44Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 98952 2023-03-14 11:27:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -193,10 +193,7 @@ bool UISession::initialize()
 
     /* Fetch corresponding states: */
     if (uiCommon().isSeparateProcess())
-    {
         sltAdditionsChange();
-    }
-    machineLogic()->initializePostPowerUp();
 
 #ifdef VBOX_GUI_WITH_PIDFILE
     uiCommon().createPidfile();

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 98885 2023-03-09 09:58:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 98952 2023-03-14 11:27:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -136,7 +136,7 @@ void UIMachineWindowNormal::sltCPUExecutionCapChange()
     updateAppearanceOf(UIVisualElement_FeaturesStuff);
 }
 
-void UIMachineWindowNormal::sltHandleSessionInitialized()
+void UIMachineWindowNormal::sltHandleMachineInitialized()
 {
     /* Update virtualization stuff: */
     updateAppearanceOf(  UIVisualElement_FeaturesStuff
@@ -271,9 +271,9 @@ void UIMachineWindowNormal::prepareSessionConnections()
     connect(machineLogic()->uimachine(), &UIMachine::sigCPUExecutionCapChange,
             this, &UIMachineWindowNormal::sltCPUExecutionCapChange);
 
-    /* Watch for UIMachine signals: */
+    /* Watch for machine UI signals: */
     connect(machineLogic()->uimachine(), &UIMachine::sigInitialized,
-            this, &UIMachineWindowNormal::sltHandleSessionInitialized);
+            this, &UIMachineWindowNormal::sltHandleMachineInitialized);
 }
 
 #ifndef VBOX_WS_MAC
