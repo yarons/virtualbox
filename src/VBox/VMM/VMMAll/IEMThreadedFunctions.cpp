@@ -1,4 +1,4 @@
-/* $Id: IEMThreadedFunctions.cpp 98951 2023-03-14 10:34:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMThreadedFunctions.cpp 98961 2023-03-14 13:14:50Z alexander.rudnev@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -81,5 +81,3 @@
  * The threaded functions.
  */
 #include "IEMThreadedFunctions.cpp.h"
-
-
