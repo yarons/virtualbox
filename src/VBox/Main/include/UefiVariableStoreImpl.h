@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.h 98964 2023-03-14 14:40:37Z alexander.eichner@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.h 98965 2023-03-14 15:47:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM UEFI variable store class implementation
  */
@@ -93,9 +93,9 @@ private:
     HRESULT i_uefiVarStoreQueryVar(const char *pszVar, void *pvData, size_t cbData);
     HRESULT i_uefiSigDbAddSig(RTEFISIGDB hEfiSigDb, const void *pvData, size_t cbData, const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
     HRESULT i_uefiVarStoreAddSignatureToDbVec(PCEFI_GUID pGuid, const char *pszDb, const std::vector<BYTE> &aData,
-                                              const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
+                                              const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType, bool fRuntime = true);
     HRESULT i_uefiVarStoreAddSignatureToDb(PCEFI_GUID pGuid, const char *pszDb, const void *pvData, size_t cbData,
-                                           const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
+                                           const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType, bool fRuntime = true);
 
     struct Data;            // opaque data struct, defined in UefiVariableStoreImpl.cpp
     Data *m;
