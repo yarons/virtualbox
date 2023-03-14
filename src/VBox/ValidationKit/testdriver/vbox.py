@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
+# $Id: vbox.py 98962 2023-03-14 13:57:46Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98655 $"
+__version__ = "$Revision: 98962 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -487,11 +487,12 @@ class Build(object): # pylint: disable=too-few-public-methods
                 reporter.log3('Build: sVBoxManage=%s not found' % (sVBoxManage,));
 
             # Do some checks.
-            sVMMR0 = os.path.join(self.sInstallPath, 'VMMR0.r0');
-            if not os.path.isfile(sVMMR0) and utils.getHostOs() == 'solaris': # solaris is special.
-                sVMMR0 = os.path.join(self.sInstallPath, 'amd64' if utils.getHostArch() == 'amd64' else 'i386', 'VMMR0.r0');
-            if not os.path.isfile(sVMMR0):
-                raise base.GenError('%s is missing' % (sVMMR0,));
+            if utils.getHostOs() != 'darwin': # On macOS VMMR0.r0 might not be present anymore, especially on arm64.
+                sVMMR0 = os.path.join(self.sInstallPath, 'VMMR0.r0');
+                if not os.path.isfile(sVMMR0) and utils.getHostOs() == 'solaris': # solaris is special.
+                    sVMMR0 = os.path.join(self.sInstallPath, 'amd64' if utils.getHostArch() == 'amd64' else 'i386', 'VMMR0.r0');
+                if not os.path.isfile(sVMMR0):
+                    raise base.GenError('%s is missing' % (sVMMR0,));
 
         # Guest additions location is different on windows for some _stupid_ reason.
         if self.sOs == 'win' and self.sKind != 'development':
