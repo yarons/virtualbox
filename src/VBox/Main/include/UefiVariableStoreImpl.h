@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.h 98964 2023-03-14 14:40:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM UEFI variable store class implementation
  */
@@ -75,6 +75,7 @@ private:
     HRESULT addSignatureToDb(const std::vector<BYTE> &aData, const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
     HRESULT addSignatureToDbx(const std::vector<BYTE> &aData, const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
     HRESULT enrollDefaultMsSignatures(void);
+    HRESULT addSignatureToMok(const std::vector<BYTE> &aData, const com::Guid &aOwnerUuid, SignatureType_T enmSignatureType);
 
     int i_uefiVarStoreSetVarAttr(const char *pszVar, uint32_t fAttr);
     int i_uefiVarStoreQueryVarAttr(const char *pszVar, uint32_t *pfAttr);
