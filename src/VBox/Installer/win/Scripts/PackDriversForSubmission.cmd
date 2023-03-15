@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 98989 2023-03-15 15:05:21Z alexander.rudnev@oracle.com $
+rem $Id: PackDriversForSubmission.cmd 98990 2023-03-15 15:06:39Z alexander.rudnev@oracle.com $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -72,6 +72,7 @@ if ".%1" == ".-o"           goto opt_o
 if ".%1" == ".--output"     goto opt_o
 if ".%1" == ".-p"           goto opt_p
 if ".%1" == ".--pdb"        goto opt_p
+if ".%1" == ".-t"           goto opt_p
 if ".%1" == ".--no-extract" goto opt_t
 if ".%1" == ".-x"           goto opt_x
 if ".%1" == ".--no-extpack" goto opt_x
