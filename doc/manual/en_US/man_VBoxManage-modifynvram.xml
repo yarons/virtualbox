@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifynvram" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-15 16:00:19 +0100 (Wed, 15 Mar 2023) $</pubdate>
     <title>VBoxManage modifynvram</title>
   </refentryinfo>
 
@@ -66,6 +66,13 @@
       <arg choice="req"><replaceable>uuid|vmname</replaceable></arg>
       <arg choice="plain">enrollpk</arg>
       <arg>--platform-key=<replaceable>filename</replaceable></arg>
+      <arg>--owner-uuid=<replaceable>uuid</replaceable></arg>
+    </cmdsynopsis>
+    <cmdsynopsis id="synopsis-vboxmanage-modifynvram-enrollmok">
+      <command>VBoxManage modifynvram</command>
+      <arg choice="req"><replaceable>uuid|vmname</replaceable></arg>
+      <arg choice="plain">enrollmok</arg>
+      <arg>--mok=<replaceable>filename</replaceable></arg>
       <arg>--owner-uuid=<replaceable>uuid</replaceable></arg>
     </cmdsynopsis>
     <cmdsynopsis id="synopsis-vboxmanage-modifynvram-listvars">
