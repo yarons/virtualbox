@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 98962 2023-03-14 13:57:46Z alexander.eichner@oracle.com $
+# $Id: vbox.py 98992 2023-03-15 15:53:43Z vadim.galitsyn@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98962 $"
+__version__ = "$Revision: 98992 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2508,7 +2508,9 @@ class TestDriver(base.TestDriver):                                              
                      sChipsetType = 'piix3',
                      sIommuType = 'none',
                      sDvdControllerType = 'IDE Controller',
-                     sCom1RawFile = None):
+                     sCom1RawFile = None,
+                     fSecureBoot = False,
+                     sUefiMokPathPrefix = None):
         """
         Creates a test VM with a immutable HD from the test resources.
         """
@@ -2566,6 +2568,8 @@ class TestDriver(base.TestDriver):                                              
                 fRc = oSession.setFirmwareType(vboxcon.FirmwareType_BIOS);
             elif fRc and sFirmwareType == 'efi':
                 fRc = oSession.setFirmwareType(vboxcon.FirmwareType_EFI);
+                if fRc and self.fpApiVer >= 7.0 and fSecureBoot:
+                    fRc = oSession.enableSecureBoot(fSecureBoot, sUefiMokPathPrefix);
             if fRc and self.fEnableDebugger:
                 fRc = oSession.setExtraData('VBoxInternal/DBGC/Enabled', '1');
             if fRc and self.fRecordingEnabled:
