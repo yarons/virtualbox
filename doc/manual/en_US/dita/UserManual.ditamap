@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 98986 $"/>
-      <othermeta name="rev-date" content="$Date: 2023-03-15 14:42:41 +0100 (Wed, 15 Mar 2023) $"/>
+      <othermeta name="revision" content="$Rev: 98987 $"/>
+      <othermeta name="rev-date" content="$Date: 2023-03-15 15:40:24 +0100 (Wed, 15 Mar 2023) $"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
             <bookpartno>F43655-03</bookpartno>
@@ -551,9 +551,7 @@
       <topicref href="topics/vboxsvc-session-0.dita">
          <topicref href="topics/vboxsvc-session-0-known-issues.dita"/>
       </topicref>
-
-      <!-- <topicref href="topics/viso.dita"> -->
-
+      <topicref href="topics/user_isomakercmd-man.dita"/>
    </chapter>
    <chapter href="topics/TechnicalBackground.dita">
       <topicref href="topics/vboxconfigdata.dita">
