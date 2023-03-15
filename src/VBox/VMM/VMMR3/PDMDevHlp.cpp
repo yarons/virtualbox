@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 98982 2023-03-15 11:51:47Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1214,7 +1214,12 @@ static DECLCALLBACK(uint64_t) pdmR3DevHlp_CpuGetGuestScalableBusFrequency(PPDMDE
     LogFlow(("pdmR3DevHlp_CpuGetGuestScalableBusFrequency: caller='%s'/%d\n",
              pDevIns->pReg->szName, pDevIns->iInstance));
 
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    uint64_t u64Fsb = 0;
+    AssertReleaseFailed();
+#else
     uint64_t u64Fsb = CPUMGetGuestScalableBusFrequency(pDevIns->Internal.s.pVMR3);
+#endif
 
     Log(("pdmR3DevHlp_CpuGetGuestScalableBusFrequency: caller='%s'/%d: returns %#RX64\n", pDevIns->pReg->szName, pDevIns->iInstance, u64Fsb));
     return u64Fsb;
