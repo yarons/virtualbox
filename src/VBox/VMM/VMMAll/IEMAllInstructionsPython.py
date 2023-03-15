@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 98916 2023-03-12 01:27:21Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 98969 2023-03-15 00:24:47Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98916 $"
+__version__ = "$Revision: 98969 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1765,6 +1765,25 @@ class McStmt(object):
         """
         return ''.join([oStmt.renderCode(cchIndent) for oStmt in aoStmts]);
 
+    @staticmethod
+    def findStmtByNames(aoStmts, dNames):
+        """
+        Returns first statement with any of the given names in from the list.
+
+        Note! The names are passed as a dictionary for quick lookup, the value
+              does not matter.
+        """
+        for oStmt in aoStmts:
+            if oStmt.sName in dNames:
+                return oStmt;
+            if isinstance(oStmt, McStmtCond):
+                oHit = McStmt.findStmtByNames(oStmt.aoIfBranch, dNames);
+                if not oHit:
+                    oHit = McStmt.findStmtByNames(oStmt.aoElseBranch, dNames);
+                if oHit:
+                    return oHit;
+        return None;
+
     def isCppStmt(self):
         """ Checks if this is a C++ statement. """
         return self.sName.startswith('C++');
@@ -1788,7 +1807,7 @@ class McStmtCond(McStmt):
         return sRet;
 
 class McStmtVar(McStmt):
-    """ IEM_MC_LOCAL_VAR* """
+    """ IEM_MC_LOCAL_VAR, IEM_MC_LOCAL_CONST """
     def __init__(self, sName, asParams, sType, sVarName, sConstValue = None):
         McStmt.__init__(self, sName, asParams);
         self.sType       = sType;
@@ -1796,7 +1815,7 @@ class McStmtVar(McStmt):
         self.sConstValue = sConstValue;     ##< None if not const.
 
 class McStmtArg(McStmtVar):
-    """ IEM_MC_ARG* """
+    """ IEM_MC_ARG, IEM_MC_ARG_CONST, IEM_MC_ARG_LOCAL_REF """
     def __init__(self, sName, asParams, sType, sVarName, iArg, sConstValue = None, sRef = None, sRefType = 'none'):
         McStmtVar.__init__(self, sName, asParams, sType, sVarName, sConstValue);
         self.iArg       = iArg;
@@ -2373,9 +2392,7 @@ class McBlock(object):
                     # Problematic 'else' branch, typically involving #ifdefs.
                     self.raiseDecodeError(sRawCode, off, 'Mixed up else/#ifdef or something confusing us.');
 
-
         return aoStmts;
-
 
     def decode(self):
         """
