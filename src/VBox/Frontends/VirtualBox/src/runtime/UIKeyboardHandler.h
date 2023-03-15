@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.h 98983 2023-03-15 12:06:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -95,7 +95,7 @@ public:
     int state() const;
 
     /* Some getters required by side-code: */
-    bool isHostKeyPressed() const { return m_bIsHostComboPressed; }
+    bool isHostKeyPressed() const { return m_fHostComboPressed; }
 #ifdef VBOX_WS_MAC
     bool isHostKeyAlone() const { return m_bIsHostComboAlone; }
     bool isKeyboardGrabbed() const { return m_iKeyboardHookViewIndex != -1; }
@@ -200,8 +200,8 @@ protected:
 
     QMap<int, uint8_t> m_pressedHostComboKeys;
 
-    bool m_fIsKeyboardCaptured : 1;
-    bool m_bIsHostComboPressed : 1;
+    bool m_fKeyboardCaptured : 1;
+    bool m_fHostComboPressed : 1;
     bool m_bIsHostComboAlone : 1;
     bool m_bIsHostComboProcessed : 1;
     bool m_fPassCADtoGuest : 1;

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98967 2023-03-14 16:05:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 98983 2023-03-15 12:06:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -323,6 +323,11 @@ void UIMachine::updateStateVRDEServerAction()
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->blockSignals(true);
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->setChecked(fServerEnabled);
     actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->blockSignals(false);
+}
+
+KMachineState UIMachine::machineStatePrevious() const
+{
+    return uisession()->machineStatePrevious();
 }
 
 KMachineState UIMachine::machineState() const

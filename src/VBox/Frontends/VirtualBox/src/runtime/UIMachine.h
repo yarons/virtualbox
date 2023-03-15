@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 98983 2023-03-15 12:06:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -231,6 +231,8 @@ public:
 
     /** @name Machine-state stuff.
      ** @{ */
+        /** Returns previous machine state. */
+        KMachineState machineStatePrevious() const;
         /** Returns cached machine state. */
         KMachineState machineState() const;
 
