@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98878 2023-03-08 12:37:11Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98995 2023-03-15 19:05:45Z jack.doherty@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -68,6 +68,10 @@ if "$(SDK_VBoxLzf_INCS)" == "$(PATH_ROOT)/src/libs/liblzf-3.6"
  include $(PATH_SUB_CURRENT)/liblzf-3.6/Makefile.kmk
 endif
 
+# libslirp for NAT
+if defined(VBOX_WITH_LIBSLIRP)
+  include $(PATH_SUB_CURRENT)/libslirp-4.7.0/Makefile.kmk
+endif
 
 # libssh for cloud integration.
 if   defined(VBOX_WITH_LIBSSH) \
