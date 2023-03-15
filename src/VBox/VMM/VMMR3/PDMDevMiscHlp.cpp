@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevMiscHlp.cpp 98993 2023-03-15 18:41:59Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -170,7 +170,7 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_IommuMsiRemap(PPDMDEVINS pDevIns, uint16
     if (pdmIommuIsPresent(pDevIns))
         return pdmIommuMsiRemap(pDevIns, idDevice, pMsiIn, pMsiOut);
 #else
-    RT_NOREF(pDevIns, idDevice);
+    RT_NOREF(pDevIns, idDevice, pMsiIn, pMsiOut);
 #endif
     return VERR_IOMMU_NOT_PRESENT;
 }

@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 98980 2023-03-15 11:46:48Z alexander.eichner@oracle.com $ */
+/* $Id: IEMR3.cpp 98993 2023-03-15 18:41:59Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -34,7 +34,11 @@
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/mm.h>
-#include "IEMInternal.h"
+#if defined(VBOX_VMM_TARGET_ARMV8)
+# include "IEMInternal-armv8.h"
+#else
+# include "IEMInternal.h"
+#endif
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmapi.h>
 #include <VBox/err.h>

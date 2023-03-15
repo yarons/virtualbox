@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 98982 2023-03-15 11:51:47Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 98993 2023-03-15 18:41:59Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -4630,7 +4630,12 @@ static DECLCALLBACK(void) pdmR3DevHlp_GetCpuId(PPDMDEVINS pDevIns, uint32_t iLea
              pDevIns->pReg->szName, pDevIns->iInstance, iLeaf, pEax, pEbx, pEcx, pEdx));
     AssertPtr(pEax); AssertPtr(pEbx); AssertPtr(pEcx); AssertPtr(pEdx);
 
+#ifdef VBOX_VMM_TARGET_ARMV8
+    RT_NOREF(iLeaf, pEax, pEbx, pEcx, pEdx);
+    AssertReleaseFailed();
+#else
     CPUMGetGuestCpuId(VMMGetCpu(pDevIns->Internal.s.pVMR3), iLeaf, 0 /*iSubLeaf*/, -1 /*f64BitMode*/, pEax, pEbx, pEcx, pEdx);
+#endif
 
     LogFlow(("pdmR3DevHlp_GetCpuId: caller='%s'/%d: returns void - *pEax=%#x *pEbx=%#x *pEcx=%#x *pEdx=%#x\n",
              pDevIns->pReg->szName, pDevIns->iInstance, *pEax, *pEbx, *pEcx, *pEdx));
