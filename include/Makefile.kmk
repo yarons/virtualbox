@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98960 2023-03-14 13:08:54Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 98971 2023-03-15 08:59:20Z alexander.eichner@oracle.com $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -146,6 +146,8 @@ VBOX_HDRS_OMIT := \
 	VBox/vmm/vmmr3vtable-def.h \
 	VBox/vmm/cpumctx-x86-amd64.h \
 	VBox/vmm/cpumctx-armv8.h \
+	VBox/vmm/cpum-x86-amd64.h \
+	VBox/vmm/cpum-armv8.h \
 	iprt/runtime-loader.h \
 	iprt/mangling.h \
 	$(subst $(PATH_SUB_CURRENT)/,,$(wildcard $(PATH_SUB_CURRENT)/iprt/asm*watcom*.h)) \
@@ -161,14 +163,12 @@ ifneq ($(KBUILD_TARGET_ARCH),amd64)
  VBOX_HDRS_OMIT += \
  	VBox/vmm/cpumctx.h \
  	VBox/vmm/cpumctx-v1_6.h \
- 	VBox/vmm/cpumctx-x86-amd64.h \
  	VBox/vmm/dbgfcorefmt.h
 endif
 # ARM only headers.
 ifn1of ($(KBUILD_TARGET_ARCH), arm32 arm64)
  VBOX_HDRS_OMIT += \
- 	iprt/asm-arm.h \
- 	VBox/vmm/cpumctx-armv8.h
+ 	iprt/asm-arm.h
 endif
 
 
