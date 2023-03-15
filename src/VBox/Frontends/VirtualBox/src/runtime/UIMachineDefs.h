@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 98784 2023-02-28 15:14:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -76,9 +76,11 @@ enum UIMouseStateType
 /** Keyboard state types. */
 enum UIKeyboardStateType
 {
-    UIKeyboardStateType_KeyboardCaptured        = RT_BIT(0),
-    UIKeyboardStateType_HostKeyPressed          = RT_BIT(1),
-    UIKeyboardStateType_HostKeyPressedInsertion = RT_BIT(2)
+    UIKeyboardStateType_KeyboardUnavailable     = 0,
+    UIKeyboardStateType_KeyboardAvailable       = RT_BIT(0),
+    UIKeyboardStateType_KeyboardCaptured        = RT_BIT(1),
+    UIKeyboardStateType_HostKeyPressed          = RT_BIT(2),
+    UIKeyboardStateType_HostKeyPressedInsertion = RT_BIT(3)
 };
 
 /** Robust struct to bring storage device info to machine-logic. */

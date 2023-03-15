@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98983 2023-03-15 12:06:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -475,7 +475,9 @@ void UIKeyboardHandler::releaseAllPressedKeys(bool aReleaseHostKey /* = true */)
 /* Current keyboard state: */
 int UIKeyboardHandler::state() const
 {
-    return (m_fKeyboardCaptured ? UIKeyboardStateType_KeyboardCaptured : 0) |
+    return uimachine()->machineState() == KMachineState_Null ? UIKeyboardStateType_KeyboardUnavailable :
+           UIKeyboardStateType_KeyboardAvailable |
+           (m_fKeyboardCaptured ? UIKeyboardStateType_KeyboardCaptured : 0) |
            (m_fHostComboPressed ? UIKeyboardStateType_HostKeyPressed : 0) |
            (m_fHostKeyComboPressInserted ? UIKeyboardStateType_HostKeyPressedInsertion : 0);
 }

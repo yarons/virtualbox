@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98979 2023-03-15 10:39:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -918,18 +918,20 @@ public:
         : UISessionStateStatusBarIndicator(IndicatorType_Keyboard, pMachine)
     {
         /* Assign state-icons: */
-        setStateIcon(0, UIIconPool::iconSet(":/hostkey_16px.png"));
-        setStateIcon(1, UIIconPool::iconSet(":/hostkey_captured_16px.png"));
-        setStateIcon(2, UIIconPool::iconSet(":/hostkey_pressed_16px.png"));
-        setStateIcon(3, UIIconPool::iconSet(":/hostkey_captured_pressed_16px.png"));
-        setStateIcon(4, UIIconPool::iconSet(":/hostkey_checked_16px.png"));
-        setStateIcon(5, UIIconPool::iconSet(":/hostkey_captured_checked_16px.png"));
-        setStateIcon(6, UIIconPool::iconSet(":/hostkey_pressed_checked_16px.png"));
-        setStateIcon(7, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
+        setStateIcon(0, UIIconPool::iconSet(":/hostkey_disabled_16px.png"));
+        setStateIcon(1, UIIconPool::iconSet(":/hostkey_16px.png"));
+        setStateIcon(3, UIIconPool::iconSet(":/hostkey_captured_16px.png"));
+        setStateIcon(5, UIIconPool::iconSet(":/hostkey_pressed_16px.png"));
+        setStateIcon(7, UIIconPool::iconSet(":/hostkey_captured_pressed_16px.png"));
+        setStateIcon(9, UIIconPool::iconSet(":/hostkey_checked_16px.png"));
+        setStateIcon(11, UIIconPool::iconSet(":/hostkey_captured_checked_16px.png"));
+        setStateIcon(13, UIIconPool::iconSet(":/hostkey_pressed_checked_16px.png"));
+        setStateIcon(15, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
         /* Configure connection: */
+        connect(pMachine, &UIMachine::sigInitialized,
+                this, &UIIndicatorKeyboard::sltFetchState);
         connect(pMachine, &UIMachine::sigKeyboardStateChange,
                 this, static_cast<void(UIIndicatorKeyboard::*)(int)>(&UIIndicatorKeyboard::setState));
-        setState(pMachine->keyboardState());
         /* Translate finally: */
         retranslateUi();
     }
@@ -954,6 +956,11 @@ protected slots:
         /* Update tool-tip: */
         setToolTip(strToolTip.arg(strFullData));
     }
+
+private slots:
+
+    /** Fetches the keyboard-state from machine UI. */
+    void sltFetchState() { setState(m_pMachine->keyboardState()); }
 };
 
 /** QITextStatusBarIndicator extension for Runtime UI: Keyboard-extension indicator. */
