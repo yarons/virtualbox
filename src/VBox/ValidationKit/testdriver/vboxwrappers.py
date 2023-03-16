@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 98992 2023-03-15 15:53:43Z vadim.galitsyn@oracle.com $
+# $Id: vboxwrappers.py 98998 2023-03-16 09:34:21Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98992 $"
+__version__ = "$Revision: 98998 $"
 
 
 # Standard Python imports.
@@ -1248,8 +1248,10 @@ class SessionWrapper(TdTaskBase):
                     self.o.machine.nonVolatileStore.uefiVariableStore.enrollOraclePlatformKey();
                     if sUefiMokPathPrefix is not None:
                         sFullName = self.oTstDrv.getFullResourceName(sUefiMokPathPrefix) + '.der';
-                        with open(sFullName, "rb") as f:
-                            self.o.machine.nonVolatileStore.uefiVariableStore.addSignatureToMok(bytearray(f.read()), uuid.uuid4().hex, vboxcon.SignatureType_X509);
+                        with open(sFullName, "rb") as der_file:
+                            self.o.machine.nonVolatileStore.uefiVariableStore.addSignatureToMok(bytearray(der_file.read()), \
+                                                                                                uuid.uuid4().hex, \
+                                                                                                vboxcon.SignatureType_X509);
 
                 self.o.machine.nonVolatileStore.uefiVariableStore.secureBootEnabled = fEnable;
             except:

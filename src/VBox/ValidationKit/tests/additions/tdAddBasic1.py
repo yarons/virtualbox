@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 98992 2023-03-15 15:53:43Z vadim.galitsyn@oracle.com $
+# $Id: tdAddBasic1.py 98998 2023-03-16 09:34:21Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98992 $"
+__version__ = "$Revision: 98998 $"
 
 # Standard Python imports.
 import os;
@@ -523,7 +523,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             if self.fRebootAfterInstall:
                 iRc = self.getAdditionsInstallerResult(oTxsSession);
                 # Check for rc == 0 just for completeness.
-                if iRc in (0, 2): # Can happen if the GA installer has detected older VBox kernel modules running and needs a reboot.
+                if iRc in (0, 2): # Can happen if the GA installer has detected older VBox kernel modules running
+                                  # and needs a reboot.
                     reporter.log('Guest has old(er) VBox kernel modules still running; requires a reboot');
                     fRc = True;
 
