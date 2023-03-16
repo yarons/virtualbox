@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 99001 2023-03-16 11:32:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 99002 2023-03-16 11:36:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -51,7 +51,7 @@
 # include "UICommon.h"
 # include "VBoxUtils-x11.h"
 # ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
-#  include "UIConverter.h" 
+#  include "UIConverter.h"
 # endif
 #endif
 
