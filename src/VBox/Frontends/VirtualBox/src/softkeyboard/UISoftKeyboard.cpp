@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 98996 2023-03-16 09:08:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -690,7 +690,7 @@ public:
     QStringList colorsToStringList(const QString &strColorThemeName);
     void colorsFromStringList(const QString &strColorThemeName, const QStringList &colorStringList);
 
-    /** Unlike modifier and ordinary keys we update the state of the Lock keys thru event singals we receieve
+    /** Unlike modifier and ordinary keys we update the state of the Lock keys thru event signals we receieve
       * from the guest OS. Parameter f???State is true if the corresponding key is locked. */
     void updateLockKeyStates(bool fCapsLockState, bool fNumLockState, bool fScrollLockState);
     void reset();
