@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.h 98999 2023-03-16 10:40:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -41,6 +41,9 @@
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
+#if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
+# include "UIDefs.h"
+#endif
 
 /* Forward declarations: */
 class QScreen;
@@ -193,6 +196,9 @@ private:
     static UIDesktopWidgetWatchdog *s_pInstance;
 
 #if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
+    /** Returns whether Synthetic Test is restricted according to cached policy. */
+    bool isSynchTestRestricted() const;
+
     /** Updates host-screen configuration according to new @a cHostScreenCount.
       * @note If cHostScreenCount is equal to -1 we have to acquire it ourselves. */
     void updateHostScreenConfiguration(int cHostScreenCount = -1);
@@ -202,6 +208,9 @@ private:
 
     /** Cleanups existing workers. */
     void cleanupExistingWorkers();
+
+    /** Holds the cached Synthetic Test policy. */
+    DesktopWatchdogPolicy_SynthTest  m_enmSynthTestPolicy;
 
     /** Holds current host-screen available-geometries. */
     QVector<QRect>    m_availableGeometryData;
