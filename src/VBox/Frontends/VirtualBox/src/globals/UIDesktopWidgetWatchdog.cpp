@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 98999 2023-03-16 10:40:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 99001 2023-03-16 11:32:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -1002,7 +1002,7 @@ void UIDesktopWidgetWatchdog::prepare()
 
 #if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /* Load Synthetic Test policy: */
-    const QString strSynthTestPolicy = qEnvironmentVariable(VBox_DesktopWatchdogPolicy_SynthTest);
+    const QString strSynthTestPolicy = QString::fromLocal8Bit(qgetenv(VBox_DesktopWatchdogPolicy_SynthTest));
     m_enmSynthTestPolicy = gpConverter->fromInternalString<DesktopWatchdogPolicy_SynthTest>(strSynthTestPolicy);
 
     /* Update host-screen configuration: */
