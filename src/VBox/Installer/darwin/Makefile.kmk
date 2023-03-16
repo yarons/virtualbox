@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98997 2023-03-16 09:21:19Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99000 2023-03-16 10:57:30Z alexander.eichner@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -477,6 +477,10 @@ endif
 if defined(VBOX_WITH_PYTHON)
  VBOX_DI_VBAPP_DYLIBS += \
  	MacOS/VBoxPython2_7.so
+endif
+if defined(VBOX_WITH_PYTHON) && !defined(VBOX_WITHOUT_PYTHON_LIMITED_API)
+ VBOX_DI_VBAPP_DYLIBS += \
+ 	MacOS/VBoxPython3.so
 endif
 ifdef VBOX_WITH_VMSVGA3D
  VBOX_DI_VBAPP_DYLIBS += \
