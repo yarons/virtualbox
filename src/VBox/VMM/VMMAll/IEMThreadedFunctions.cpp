@@ -1,4 +1,4 @@
-/* $Id: IEMThreadedFunctions.cpp 98969 2023-03-15 00:24:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMThreadedFunctions.cpp 99024 2023-03-17 19:53:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -127,7 +127,6 @@
  * @param   bRm                 The ModRM byte.
  * @param   u16Disp             The displacement byte/word, if any.
  *                              RIP relative addressing.
- * @param   pGCPtrEff           Where to return the effective address.
  */
 static RTGCPTR iemOpHlpCalcRmEffAddrThreadedAddr16(PVMCPUCC pVCpu, uint8_t bRm, uint16_t u16Disp) RT_NOEXCEPT
 {
