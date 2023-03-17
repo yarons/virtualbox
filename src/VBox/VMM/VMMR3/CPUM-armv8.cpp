@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 98970 2023-03-15 08:56:57Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 99026 2023-03-17 19:58:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -33,7 +33,7 @@
  * for running ARM guests. It might become complex iff we decide to implement our
  * own hypervisor.
  *
- * @section sec_cpum_logging        Logging Level Assignments.
+ * @section sec_cpum_logging_armv8      Logging Level Assignments.
  *
  * Following log level assignments:
  *      - @todo
@@ -66,11 +66,6 @@
 #include <iprt/mem.h>
 #include <iprt/mp.h>
 #include <iprt/string.h>
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
 
 
 /*********************************************************************************************************************************
