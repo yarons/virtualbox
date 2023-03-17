@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99021 2023-03-17 17:04:47Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 99029 2023-03-17 20:53:10Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -420,7 +420,7 @@ ifndef VBOX_DOC_MANUAL_CONFIG_KMK_INCLUDED
 		--output "$$@" \
 		"$$(VBOX_PATH_MANUAL_SRC)/$(1)/dita-refentry-link-replacement-xsl-gen.xsl" \
 		"$$@.tmp.xml"
-	# Using en-US version as section and chapter names until user manual is translated as well
+        # Using en-US version as section and chapter names until user manual is translated as well
 	$$(foreach x, $$(VBOX_MANUAL_XML_REFENTRY_FILES)\
 		,$$(NLTAB)$$(QUIET)$$(call VBOX_XSLTPROC_WITH_CAT, -ato "$$@") --stringparam 'g_sMode' 'append' \
 			"$$<" "$$(VBOX_PATH_MANUAL_SRC)/en_US/$$(x)")

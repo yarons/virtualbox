@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98439 2023-02-02 12:47:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99029 2023-03-17 20:53:10Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2176,7 +2176,7 @@ include $(FILE_KBUILD_SUB_FOOTER)
 #
 #VirtualBox_QT_TRANSLATIONS = nls/VirtualBox_de.ts
 checknls::
-	# Check for missing :/ in image paths
+        # Check for missing :/ in image paths
 	grep -i "src=[^:%]" $(filter-out nls/qt_%.ts,$(VirtualBox_QT_TRANSLATIONS))
 
 updatenls:: makeallnls nls/VirtualBox_en.ts
