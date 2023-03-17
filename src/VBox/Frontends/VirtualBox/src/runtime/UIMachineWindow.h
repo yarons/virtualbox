@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 99012 2023-03-17 14:19:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -188,7 +188,7 @@ protected:
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
     /* Helpers: */
-    const QString& defaultWindowTitle() const { return m_strWindowTitlePrefix; }
+    QString defaultWindowTitle() const { return m_strWindowTitlePrefix; }
     static Qt::Alignment viewAlignment(UIVisualStateType visualStateType);
 
 #ifdef VBOX_WS_MAC
