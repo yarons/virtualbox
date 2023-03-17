@@ -1,4 +1,4 @@
-/* $Id: gzipcmd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: gzipcmd.cpp 99013 2023-03-17 14:46:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - GZIP Utility.
  */
@@ -192,7 +192,7 @@ static RTEXITCODE gzipPushFlushAndClose(PRTVFSIOSTREAM phVfsSrc, PCRTGZIPCMDOPTS
 static RTEXITCODE gzipCompressFile(PRTVFSIOSTREAM phVfsSrc, PCRTGZIPCMDOPTS pOpts, PRTVFSIOSTREAM phVfsDst)
 {
     /*
-     * Attach the ompressor to the output stream.
+     * Attach the compressor to the output stream.
      */
     RTVFSIOSTREAM hVfsGzip;
     int rc = RTZipGzipCompressIoStream(*phVfsDst, 0 /*fFlags*/, pOpts->uLevel, &hVfsGzip);
