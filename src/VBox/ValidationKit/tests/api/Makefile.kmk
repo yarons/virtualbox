@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98418 2023-02-01 21:29:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - API Tests.
 #
@@ -63,8 +63,8 @@ ifndef VBOX_OSE
 endif
 ValidationKitTestsApi_SOURCES := \
 	$(wildcard \
-	$(PATH_SUB_CURRENT)/*.ova \
-	)
+		$(PATH_SUB_CURRENT)/*.ova \
+		)
 
 VBOX_VALIDATIONKIT_PYTHON_SOURCES += $(ValidationKitTestsApi_EXEC_SOURCES)
 

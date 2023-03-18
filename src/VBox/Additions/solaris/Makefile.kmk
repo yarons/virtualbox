@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99029 2023-03-17 20:53:10Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -149,24 +149,24 @@ solaris-addcommon_SOURCES = \
 BLDDIRS          += \
 	$(SOLARIS_ADDINST_OUT_DIR) \
 	$(addprefix $(SOLARIS_ADDINST_OUT_DIR)/, \
-	opt \
-	opt/VirtualBoxAdditions \
-	opt/VirtualBoxAdditions/$(SOLARIS_ADDDIR_NAME_32) \
-	opt/VirtualBoxAdditions/$(SOLARIS_ADDDIR_NAME_64) \
-	usr \
-	usr/bin \
-	usr/sbin \
-	usr/lib \
-	usr/lib/amd64 \
-	usr/kernel \
-	usr/kernel/drv \
-	usr/kernel/drv/amd64 \
-	var \
-	var/svc \
-	var/svc/manifest \
-	var/svc/manifest/application \
-	var/svc/manifest/application/virtualbox \
-	)
+		opt \
+		opt/VirtualBoxAdditions \
+		opt/VirtualBoxAdditions/$(SOLARIS_ADDDIR_NAME_32) \
+		opt/VirtualBoxAdditions/$(SOLARIS_ADDDIR_NAME_64) \
+		usr \
+		usr/bin \
+		usr/sbin \
+		usr/lib \
+		usr/lib/amd64 \
+		usr/kernel \
+		usr/kernel/drv \
+		usr/kernel/drv/amd64 \
+		var \
+		var/svc \
+		var/svc/manifest \
+		var/svc/manifest/application \
+		var/svc/manifest/application/virtualbox \
+		)
 
 SOLARIS_ADD_STRIP_BINS = \
 	VBoxClient \

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -43,7 +43,7 @@ vboxvideo-src_EXEC_SOURCES = \
 	$(subst $(DQUOTE),,$(FILES_VBOXVIDEO_DRM_BIN))
 vboxvideo-src_INSTALLER = $(RM_EXT) -f -- "$2" && \
 	$(if $(filter %.c %.h,$2),$(SED) -f $(PATH_ROOT)/src/VBox/Additions/linux/drm/indent.sed \
-	--output "$2" "$1",$(CP_EXT) "$1" "$2") && \
+		--output "$2" "$1",$(CP_EXT) "$1" "$2") && \
 	$(CHMOD_EXT) "$(if $(mode),$(mode),0644)" "$2"
 
 

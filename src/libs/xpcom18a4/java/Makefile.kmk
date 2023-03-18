@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98394 2023-02-01 14:35:25Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -105,15 +105,15 @@ VBoxJXpcom-inst-jar_CLEAN = \
 	$(VBOX_JXPCOM_GEN)/jxpcomgen.list \
 	$(VBOX_JXPCOM_GEN)/jxpcomglue.list \
 	$(wildcard \
-	$(VBOX_JXPCOM_GEN)/java/*.java \
-	$(VBOX_JXPCOM_GEN)/java/glue/*.java \
-	$(VBOX_JXPCOM_JDEST)/*.class \
-	$(VBOX_JXPCOM_JDEST)/*/*.class \
-	$(VBOX_JXPCOM_JDEST)/*/*/*.class \
-	$(VBOX_JXPCOM_JDEST)/*/*/*/*.class \
-	$(VBOX_JXPCOM_JDEST)/*/*/*/*/*.class \
-	$(VBOX_JXPCOM_JDEST)/*/*/*/*/*/*.class \
-	)
+		$(VBOX_JXPCOM_GEN)/java/*.java \
+		$(VBOX_JXPCOM_GEN)/java/glue/*.java \
+		$(VBOX_JXPCOM_JDEST)/*.class \
+		$(VBOX_JXPCOM_JDEST)/*/*.class \
+		$(VBOX_JXPCOM_JDEST)/*/*/*.class \
+		$(VBOX_JXPCOM_JDEST)/*/*/*/*.class \
+		$(VBOX_JXPCOM_JDEST)/*/*/*/*/*.class \
+		$(VBOX_JXPCOM_JDEST)/*/*/*/*/*/*.class \
+		)
 VBoxJXpcom-inst-jar_BLDDIRS += $(VBOX_JXPCOM_GEN)/java $(VBOX_JXPCOM_GEN)/java/glue $(VBOX_JXPCOM_GEN)/java/interfaces
 
 #

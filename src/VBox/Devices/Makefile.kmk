@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98636 2023-02-19 17:29:54Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1197,9 +1197,9 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  	$(PATH_STAGE_LIB)/PcBiosBin$(VBOX_SUFF_LIB) \
  	$(PATH_STAGE_LIB)/VgaBiosBin$(VBOX_SUFF_LIB) \
  	$(if $(VBOX_WITH_PXE_ROM), \
- 	$(if $(VBOX_WITH_INTEL_PXE), \
- 	$(PATH_STAGE_LIB)/NetBiosBin$(VBOX_SUFF_LIB), \
- 	$(PATH_STAGE_LIB)/iPxeBiosBin$(VBOX_SUFF_LIB)),) \
+ 		$(if $(VBOX_WITH_INTEL_PXE), \
+ 			$(PATH_STAGE_LIB)/NetBiosBin$(VBOX_SUFF_LIB), \
+ 			$(PATH_STAGE_LIB)/iPxeBiosBin$(VBOX_SUFF_LIB)),) \
  	$(LIB_RUNTIME)
  VBoxDD2_LDFLAGS.darwin  = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDD2.dylib
  VBoxDD2_LDFLAGS.linux   = $(VBOX_GCC_NO_UNDEFINED)
