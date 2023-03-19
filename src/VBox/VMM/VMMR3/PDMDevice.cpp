@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMDevice.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -674,11 +674,15 @@ static int pdmR3DevLoadModules(PVM pVM)
     RegCB.pVM              = pVM;
     RegCB.pCfgNode         = NULL;
 
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    int rc;
+#else
     /*
      * Register the internal VMM APIC device.
      */
     int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPIC);
     AssertRCReturn(rc, rc);
+#endif
 
     /*
      * Load the builtin module.

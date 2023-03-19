@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * TM - Time Manager.
  */
@@ -637,7 +637,9 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
      * Finally, setup and report.
      */
     pVM->tm.s.enmOriginalTSCMode = pVM->tm.s.enmTSCMode;
+#if !defined(VBOX_VMM_TARGET_ARMV8)
     CPUMR3SetCR4Feature(pVM, X86_CR4_TSD, ~X86_CR4_TSD);
+#endif
     LogRel(("TM:     cTSCTicksPerSecond=%'RU64 (%#RX64) enmTSCMode=%d (%s)\n"
             "TM: cTSCTicksPerSecondHost=%'RU64 (%#RX64)\n"
             "TM: TSCTiedToExecution=%RTbool TSCNotTiedToHalt=%RTbool\n",

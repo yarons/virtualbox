@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -404,6 +404,9 @@ VMMR3DECL(int) MMR3InitPaging(PVM pVM)
     pVM->mm.s.cbRamBelow4GB = cbRam > offRamHole ? offRamHole         : cbRam;
     pVM->mm.s.cbRamAbove4GB = cbRam > offRamHole ? cbRam - offRamHole : 0;
 
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    rc = PGMR3PhysRegisterRam(pVM, 0, cbRam, "Conventional RAM");
+#else
     /* First the conventional memory: */
     rc = PGMR3PhysRegisterRam(pVM, 0, RT_MIN(cbRam, 640*_1K), "Conventional RAM");
     if (RT_SUCCESS(rc) && cbRam >= _1M)
@@ -420,13 +423,16 @@ VMMR3DECL(int) MMR3InitPaging(PVM pVM)
                 rc = PGMR3PhysRegisterRam(pVM, _4G, cbRam - offRamHole, "Above 4GB Base RAM");
         }
     }
+#endif
 
     /*
      * Enabled mmR3UpdateReservation here since we don't want the
      * PGMR3PhysRegisterRam calls above mess things up.
      */
     pVM->mm.s.fDoneMMR3InitPaging = true;
+#if !defined(VBOX_VMM_TARGET_ARMV8)
     AssertMsg(pVM->mm.s.cBasePages == cBasePages || RT_FAILURE(rc), ("%RX64 != %RX64\n", pVM->mm.s.cBasePages, cBasePages));
+#endif
 
     LogFlow(("MMR3InitPaging: returns %Rrc\n", rc));
     return rc;

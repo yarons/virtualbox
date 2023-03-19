@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAll.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Critical Sections
  */
@@ -69,6 +69,9 @@ VMMDECL(int) PDMGetInterrupt(PVMCPUCC pVCpu, uint8_t *pu8Interrupt)
     if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC))
     {
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_APIC);
+#if defined(VBOX_VMM_TARGET_ARMV8)
+        AssertReleaseFailed();
+#else
         uint32_t uTagSrc;
         rc = APICGetInterrupt(pVCpu, pu8Interrupt, &uTagSrc);
         if (RT_SUCCESS(rc))
@@ -79,6 +82,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPUCC pVCpu, uint8_t *pu8Interrupt)
         }
         /* else if it's masked by TPR/PPR/whatever, go ahead checking the PIC. Such masked
            interrupts shouldn't prevent ExtINT from being delivered. */
+#endif
     }
 
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);

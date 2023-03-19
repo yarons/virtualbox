@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllHandler.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -756,7 +756,11 @@ void pgmHandlerPhysicalResetAliasedPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPh
     bool fFlushTLBs = false;
     int rc = pgmPoolTrackUpdateGCPhys(pVM, GCPhysPage, pPage, true /*fFlushPTEs*/, &fFlushTLBs);
     AssertLogRelRCReturnVoid(rc);
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    AssertReleaseFailed();
+#else
     HMFlushTlbOnAllVCpus(pVM);
+#endif
 
     /*
      * Make it an MMIO/Zero page.

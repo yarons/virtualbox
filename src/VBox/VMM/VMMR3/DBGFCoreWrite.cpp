@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFCoreWrite.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -336,6 +336,10 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
         (a_dbgfsel).uSel   = (a_cpumselreg).Sel; \
     } while (0)
 
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    AssertReleaseFailed();
+    RT_NOREF(pVCpu, pDbgfCpu);
+#else
     PVM       pVM  = pVCpu->CTX_SUFF(pVM);
     PCCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
     pDbgfCpu->rax             = pCtx->rax;
@@ -393,6 +397,7 @@ static void dbgfR3GetCoreCpu(PVMCPU pVCpu, PDBGFCORECPU pDbgfCpu)
     pDbgfCpu->cbExt = pVM->cpum.ro.GuestFeatures.cbMaxExtendedState;
     if (RT_LIKELY(pDbgfCpu->cbExt))
         memcpy(&pDbgfCpu->ext, &pCtx->XState, pDbgfCpu->cbExt);
+#endif
 
 #undef DBGFCOPYSEL
 }

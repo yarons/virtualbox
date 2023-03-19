@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5961,6 +5961,7 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
 *   Other Stuff                                                                                                                  *
 *********************************************************************************************************************************/
 
+#if !defined(VBOX_VMM_TARGET_ARMV8)
 /**
  * Sets the Address Gate 20 state.
  *
@@ -5999,4 +6000,5 @@ VMMDECL(void) PGMR3PhysSetA20(PVMCPU pVCpu, bool fEnable)
         STAM_REL_COUNTER_INC(&pVCpu->pgm.s.cA20Changes);
     }
 }
+#endif
 
