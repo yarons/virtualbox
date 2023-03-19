@@ -1,5 +1,5 @@
 #!/usr/bin/env kmk_ash
-# $Id: dita-ot-copy-exec.sh 99044 2023-03-19 02:51:49Z knut.osmundsen@oracle.com $
+# $Id: dita-ot-copy-exec.sh 99045 2023-03-19 03:01:05Z knut.osmundsen@oracle.com $
 ## @file
 # Helper Script for copying the DITA-OT toolkit from $1 to $2,
 # run the following command line, nuke $2.
@@ -91,7 +91,9 @@ CopyTree()
     MY_FILES=""
     for MY_FILE in *;
     do
-        if test -d "${MY_SRCTREE}/${MY_FILE}"; then
+        if test "${MY_FILE}" = "*"; then
+            # For empty directories we get '*' back. Ignore it.
+        elif test -d "${MY_SRCTREE}/${MY_FILE}"; then
             case "${MY_SRCTREE}/${MY_FILE}" in
                 *\ *)
                     echo "Unexpected space in dir/subdir: ${MY_SRCTREE}/${MY_FILE}" 1>&2;
