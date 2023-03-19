@@ -1,5 +1,5 @@
-﻿#!/usr/bin/env kmk_ash
-# $Id: dita-ot-copy-exec.sh 99043 2023-03-19 02:47:46Z knut.osmundsen@oracle.com $
+#!/usr/bin/env kmk_ash
+# $Id: dita-ot-copy-exec.sh 99044 2023-03-19 02:51:49Z knut.osmundsen@oracle.com $
 ## @file
 # Helper Script for copying the DITA-OT toolkit from $1 to $2,
 # run the following command line, nuke $2.
