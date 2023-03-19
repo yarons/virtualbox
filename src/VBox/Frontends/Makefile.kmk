@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99050 2023-03-19 16:31:43Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -43,6 +43,9 @@ ifndef VBOX_ONLY_DOCS
   ifdef VBOX_WITH_FE_BUGREPORT
    include $(PATH_SUB_CURRENT)/VBoxBugReport/Makefile.kmk
   endif
+ endif
+ ifdef VBOX_WITH_VBOXBFE
+  include $(PATH_SUB_CURRENT)/VBoxBFE/Makefile.kmk
  endif
  ifdef VBOX_WITH_VBOXSDL
   include $(PATH_SUB_CURRENT)/VBoxSDL/Makefile.kmk
