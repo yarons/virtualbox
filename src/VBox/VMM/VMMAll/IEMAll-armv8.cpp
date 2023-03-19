@@ -1,4 +1,4 @@
-/* $Id: IEMAll-armv8.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll-armv8.cpp 99053 2023-03-19 16:48:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, ARMv8 specific things.
  */
@@ -37,9 +37,9 @@
 #include "IEMInternal-armv8.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmapi.h>
-#include <VBox/err.h>
 
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/string.h>
 
