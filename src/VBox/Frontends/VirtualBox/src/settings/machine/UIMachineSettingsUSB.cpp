@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 99063 2023-03-20 11:17:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -276,6 +276,7 @@ void UIMachineSettingsUSB::putToCache()
             newUsbFilterData.m_guiData.m_strManufacturer = filter.m_strManufacturer;
             newUsbFilterData.m_guiData.m_strProduct = filter.m_strProduct;
             newUsbFilterData.m_guiData.m_strSerialNumber = filter.m_strSerialNumber;
+            newUsbFilterData.m_guiData.m_strPort = filter.m_strPort;
             newUsbFilterData.m_guiData.m_enmRemoteMode = filter.m_enmRemoteMode;
             m_pCache->child(iFilterIndex).cacheCurrentData(newUsbFilterData);
         }
