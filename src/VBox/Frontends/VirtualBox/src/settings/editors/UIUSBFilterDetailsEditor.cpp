@@ -1,4 +1,4 @@
-/* $Id: UIUSBFilterDetailsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUSBFilterDetailsEditor.cpp 99066 2023-03-20 12:22:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFilterDetailsEditor class implementation.
  */
@@ -392,7 +392,7 @@ void UIUSBFilterDetailsEditor::prepareWidgets()
         {
             if (m_pLabelPort)
                 m_pLabelPort->setBuddy(m_pEditorPort);
-            m_pEditorPort->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*"), this));
+            m_pEditorPort->setValidator(new QRegularExpressionValidator(QRegularExpression("(0[xX])?[0-9a-fA-F]{0,4}"), this));
 
             pLayout->addWidget(m_pEditorPort, 7, 1);
         }
