@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 99071 2023-03-20 16:21:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -907,13 +907,12 @@ bool UIKeyboardHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
 /* Machine state-change handler: */
 void UIKeyboardHandler::sltMachineStateChanged()
 {
-    /* Get previous and cached machine states: */
-    const KMachineState enmPreviousState = uimachine()->machineStatePrevious();
+    /* Get cached machine states: */
     const KMachineState enmState = uimachine()->machineState();
 
     /* Notify all the listeners that machine state was [de]initialized: */
-    if (   enmPreviousState == KMachineState_Null
-        || enmState == KMachineState_Null)
+    if (   enmState == KMachineState_Null
+        || enmState == KMachineState_Starting)
         emit sigStateChange(state());
 
     /* Handle particular machine states: */

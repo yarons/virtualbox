@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 99071 2023-03-20 16:21:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -928,8 +928,6 @@ public:
         setStateIcon(13, UIIconPool::iconSet(":/hostkey_pressed_checked_16px.png"));
         setStateIcon(15, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
         /* Configure connection: */
-        connect(pMachine, &UIMachine::sigInitialized,
-                this, &UIIndicatorKeyboard::sltFetchState);
         connect(pMachine, &UIMachine::sigKeyboardStateChange,
                 this, static_cast<void(UIIndicatorKeyboard::*)(int)>(&UIIndicatorKeyboard::setState));
         /* Translate finally: */
@@ -956,11 +954,6 @@ protected slots:
         /* Update tool-tip: */
         setToolTip(strToolTip.arg(strFullData));
     }
-
-private slots:
-
-    /** Fetches the keyboard-state from machine UI. */
-    void sltFetchState() { setState(m_pMachine->keyboardState()); }
 };
 
 /** QITextStatusBarIndicator extension for Runtime UI: Keyboard-extension indicator. */
