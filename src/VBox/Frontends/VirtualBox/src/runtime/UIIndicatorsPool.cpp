@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 99071 2023-03-20 16:21:45Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 99072 2023-03-20 16:36:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -850,7 +850,6 @@ public:
         /* Configure connection: */
         connect(m_pMachine, &UIMachine::sigMouseStateChange,
                 this, static_cast<void(UIIndicatorMouse::*)(int)>(&UIIndicatorMouse::setState));
-        setState(m_pMachine->mouseState());
         /* Translate finally: */
         retranslateUi();
     }
