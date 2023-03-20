@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFReg.cpp 99070 2023-03-20 14:58:57Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -304,9 +304,16 @@ static int dbgfR3RegRegisterCommon(PUVM pUVM, PCDBGFREGDESC paRegisters, DBGFREG
         AssertMsgReturn(dbgfR3RegIsNameValid(paRegisters[iDesc].pszName, 0), ("%s (#%u)\n", paRegisters[iDesc].pszName, iDesc), VERR_INVALID_NAME);
 
         if (enmType == DBGFREGSETTYPE_CPU)
+#if defined(VBOX_VMM_TARGET_ARMV8)
+            /** @todo This needs a general solution to avoid architecture dependent stuff here. */
+            AssertMsgReturn(iDesc < (unsigned)DBGFREG_END,
+                            ("%d iDesc=%d\n", paRegisters[iDesc].enmReg, iDesc),
+                            VERR_INVALID_PARAMETER);
+#else
             AssertMsgReturn(iDesc < (unsigned)DBGFREG_END && (unsigned)paRegisters[iDesc].enmReg == iDesc,
                             ("%d iDesc=%d\n", paRegisters[iDesc].enmReg, iDesc),
                             VERR_INVALID_PARAMETER);
+#endif
         else
             AssertReturn(paRegisters[iDesc].enmReg == DBGFREG_END, VERR_INVALID_PARAMETER);
         AssertReturn(   paRegisters[iDesc].enmType > DBGFREGVALTYPE_INVALID

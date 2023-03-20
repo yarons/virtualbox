@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 99070 2023-03-20 14:58:57Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -181,20 +181,6 @@ static const SSMFIELD g_aCpumCtxFields[] =
     SSMFIELD_ENTRY_TERM()
 };
 #endif
-
-
-/**
- * Initializes the debug aids of CPUM.
- *
- * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
- */
-static int cpumR3DbgInit(PVM pVM)
-{
-    RT_NOREF(pVM);
-    /** @todo */
-    return VINF_SUCCESS;
-}
 
 
 /**
