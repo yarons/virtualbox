@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 98992 2023-03-15 15:53:43Z vadim.galitsyn@oracle.com $
+# $Id: vboxtestvms.py 99067 2023-03-20 12:55:38Z vadim.galitsyn@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98992 $"
+__version__ = "$Revision: 99067 $"
 
 # Standard Python imports.
 import copy;
@@ -1965,9 +1965,11 @@ class TestVmManager(object):
         TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '6.1/efi/ubuntu-15_10-efi-amd64-3.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
-        TestVm('tst-ubuntu-15_10-64-efi-sb', kfGrpStdSmoke,       sHd = '6.1/efi/ubuntu-15_10-efi-amd64-3.vdi',
-               sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
-               asParavirtModesSup = [g_ksParavirtProviderKVM,], fSecureBoot = True, sUefiMokPathPrefix = '7.0/mok/vbox-test-MOK'),
+        # Note: Temporary disabled. Probably too old distro for Secure Boot experiments, insmod fails to
+        #       insert guest modules with ENOPKG (Package not Installed).
+        #TestVm('tst-ubuntu-15_10-64-efi-sb', kfGrpStdSmoke,       sHd = '6.1/efi/ubuntu-15_10-efi-amd64-3.vdi',
+        #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
+        #       asParavirtModesSup = [g_ksParavirtProviderKVM,], fSecureBoot = True, sUefiMokPathPrefix = '7.0/mok/vbox-test-MOK'),
         # Note: Deprecated / buggy; use the one in the 6.1 folder.
         #TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
