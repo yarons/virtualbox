@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 99061 2023-03-20 09:33:46Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: DBGCEmulateCodeView.cpp 99069 2023-03-20 14:56:37Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3739,6 +3739,11 @@ static RTGCPHYS dbgcGetGuestPageMode(PDBGC pDbgc, bool *pfPAE, bool *pfLME, bool
  */
 static RTHCPHYS dbgcGetShadowPageMode(PDBGC pDbgc, bool *pfPAE, bool *pfLME, bool *pfPSE, bool *pfPGE, bool *pfNXE)
 {
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pDbgc, pfPAE, pfLME, pfPSE, pfPGE, pfNXE);
+    AssertReleaseFailed();
+    return ~(RTHCPHYS)0;
+#else
     PVMCPU pVCpu = VMMR3GetCpuByIdU(pDbgc->pUVM, pDbgc->idCpu);
 
     *pfPSE = true;
@@ -3766,6 +3771,7 @@ static RTHCPHYS dbgcGetShadowPageMode(PDBGC pDbgc, bool *pfPAE, bool *pfLME, boo
             break;
     }
     return PGMGetHyperCR3(pVCpu);
+#endif
 }
 
 
