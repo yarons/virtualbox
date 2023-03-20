@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build_id_to_file_mapping.py 99038 2023-03-18 05:03:58Z knut.osmundsen@oracle.com $
+# $Id: build_id_to_file_mapping.py 99059 2023-03-20 02:38:04Z knut.osmundsen@oracle.com $
 
 """
 Scans the given files (globbed) for topic id and stores records the filename
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 99038 $"
+__version__ = "$Revision: 99059 $"
 
 
 # Standard python imports.
@@ -114,7 +114,11 @@ def main(asArgs):
                 return syntax('Unknown option: %s' % (sArg,));
         else:
             # Input files.
-            asFiles = glob.glob(sArg);
+            if sArg[0] == '@':
+                with open(sArg[1:], 'r', encoding = 'utf-8') as oFile:
+                    asFiles = oFile.read().split();
+            else:
+                asFiles = glob.glob(sArg);
             if not asFiles:
                 return error('File not found: %s' % (sArg,));
             for sFile in asFiles:
