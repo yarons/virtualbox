@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 99012 2023-03-17 14:19:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 99098 2023-03-21 16:11:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -339,7 +339,7 @@ void UIMachineWindow::showEvent(QShowEvent *pEvent)
     windowManager().setMainWindowShown(this);
 
     /* Update appearance for indicator-pool: */
-    updateAppearanceOf(UIVisualElement_IndicatorPoolStuff);
+    updateAppearanceOf(UIVisualElement_IndicatorPool);
 }
 
 void UIMachineWindow::hideEvent(QHideEvent *pEvent)

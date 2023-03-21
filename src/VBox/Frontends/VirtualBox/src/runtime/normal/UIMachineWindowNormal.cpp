@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 99097 2023-03-21 16:04:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 99098 2023-03-21 16:11:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -79,7 +79,7 @@ void UIMachineWindowNormal::sltMachineStateChanged()
     UIMachineWindow::sltMachineStateChanged();
 
     /* Update indicator-pool and virtualization stuff: */
-    updateAppearanceOf(UIVisualElement_IndicatorPoolStuff);
+    updateAppearanceOf(UIVisualElement_IndicatorPool);
 }
 
 #ifndef RT_OS_DARWIN
@@ -610,7 +610,7 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
 
     /* Set status-bar indicator-pool auto update timer: */
     if (   m_pIndicatorsPool
-        && iElement & UIVisualElement_IndicatorPoolStuff)
+        && iElement & UIVisualElement_IndicatorPool)
         m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible() && uimachine()->isRunning());
 }
 
