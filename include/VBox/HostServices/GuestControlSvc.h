@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 99085 2023-03-21 12:15:00Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 99088 2023-03-21 15:02:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1589,9 +1589,7 @@ typedef struct HGCMReplyDirNotify
             /** Number of entries in \a buffer. */
             HGCMFunctionParameter num_entries;
             /** Buffer containing the GSTCTLDIRENTRYEX entries, immediately followed
-             *  by resolved user + groups as a string (empty strings if not resolved).
-             *
-             *  Only will be sent if \a num_entries > 0. */
+             *  by resolved user + groups as a string (empty strings if not resolved). */
             HGCMFunctionParameter buffer;
         } list;
     } u;
