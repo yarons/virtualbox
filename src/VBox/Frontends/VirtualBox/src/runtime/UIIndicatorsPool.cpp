@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 99093 2023-03-21 15:45:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 99094 2023-03-21 15:50:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -452,6 +452,10 @@ public:
         /* Configure connection: */
         connect(pMachine, &UIMachine::sigMachineStateChange,
                 this, &UIIndicatorUSB::updateAppearance);
+        connect(pMachine, &UIMachine::sigUSBControllerChange,
+                this, &UIIndicatorUSB::updateAppearance);
+        connect(pMachine, &UIMachine::sigUSBDeviceStateChange,
+                this, &UIIndicatorUSB::updateAppearance);
         /* Translate finally: */
         retranslateUi();
     }
@@ -498,6 +502,8 @@ public:
         setStateIcon(KDeviceActivity_Null,    UIIconPool::iconSet(":/sf_disabled_16px.png"));
         /* Configure connection: */
         connect(pMachine, &UIMachine::sigMachineStateChange,
+                this, &UIIndicatorSharedFolders::updateAppearance);
+        connect(pMachine, &UIMachine::sigSharedFolderChange,
                 this, &UIIndicatorSharedFolders::updateAppearance);
         /* Translate finally: */
         retranslateUi();

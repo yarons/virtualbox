@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 99093 2023-03-21 15:45:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 99094 2023-03-21 15:50:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -80,24 +80,6 @@ void UIMachineWindowNormal::sltMachineStateChanged()
 
     /* Update indicator-pool and virtualization stuff: */
     updateAppearanceOf(UIVisualElement_IndicatorPoolStuff | UIVisualElement_Recording | UIVisualElement_FeaturesStuff);
-}
-
-void UIMachineWindowNormal::sltUSBControllerChange()
-{
-    /* Update USB stuff: */
-    updateAppearanceOf(UIVisualElement_USBStuff);
-}
-
-void UIMachineWindowNormal::sltUSBDeviceStateChange()
-{
-    /* Update USB stuff: */
-    updateAppearanceOf(UIVisualElement_USBStuff);
-}
-
-void UIMachineWindowNormal::sltSharedFolderChange()
-{
-    /* Update shared-folders stuff: */
-    updateAppearanceOf(UIVisualElement_SharedFolderStuff);
 }
 
 void UIMachineWindowNormal::sltRecordingChange()
@@ -227,12 +209,6 @@ void UIMachineWindowNormal::prepareSessionConnections()
     UIMachineWindow::prepareSessionConnections();
 
     /* Start watching for console events: */
-    connect(machineLogic()->uimachine(), &UIMachine::sigUSBControllerChange,
-            this, &UIMachineWindowNormal::sltUSBControllerChange);
-    connect(machineLogic()->uimachine(), &UIMachine::sigUSBDeviceStateChange,
-            this, &UIMachineWindowNormal::sltUSBDeviceStateChange);
-    connect(machineLogic()->uimachine(), &UIMachine::sigSharedFolderChange,
-            this, &UIMachineWindowNormal::sltSharedFolderChange);
     connect(machineLogic()->uimachine(), &UIMachine::sigRecordingChange,
             this, &UIMachineWindowNormal::sltRecordingChange);
     connect(machineLogic()->uimachine(), &UIMachine::sigCPUExecutionCapChange,
@@ -425,12 +401,6 @@ void UIMachineWindowNormal::cleanupStatusBar()
 void UIMachineWindowNormal::cleanupSessionConnections()
 {
     /* Stop watching for console events: */
-    disconnect(machineLogic()->uimachine(), &UIMachine::sigUSBControllerChange,
-               this, &UIMachineWindowNormal::sltUSBControllerChange);
-    disconnect(machineLogic()->uimachine(), &UIMachine::sigUSBDeviceStateChange,
-               this, &UIMachineWindowNormal::sltUSBDeviceStateChange);
-    disconnect(machineLogic()->uimachine(), &UIMachine::sigSharedFolderChange,
-               this, &UIMachineWindowNormal::sltSharedFolderChange);
     disconnect(machineLogic()->uimachine(), &UIMachine::sigRecordingChange,
                this, &UIMachineWindowNormal::sltRecordingChange);
     disconnect(machineLogic()->uimachine(), &UIMachine::sigCPUExecutionCapChange,
@@ -695,10 +665,6 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
         /* If VM is running: */
         if (uimachine()->isRunning())
         {
-            if (iElement & UIVisualElement_USBStuff)
-                m_pIndicatorsPool->updateAppearance(IndicatorType_USB);
-            if (iElement & UIVisualElement_SharedFolderStuff)
-                m_pIndicatorsPool->updateAppearance(IndicatorType_SharedFolders);
             if (iElement & UIVisualElement_FeaturesStuff)
                 m_pIndicatorsPool->updateAppearance(IndicatorType_Features);
         }
