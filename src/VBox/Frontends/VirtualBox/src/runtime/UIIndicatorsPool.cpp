@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 99094 2023-03-21 15:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 99096 2023-03-21 15:54:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -615,6 +615,8 @@ public:
         setStateIcon(RecordingState_Paused,      UIIconPool::iconSet(":/movie_reel_16px.png"));
         /* Configure connection: */
         connect(pMachine, &UIMachine::sigMachineStateChange,
+                this, &UIIndicatorRecording::updateAppearance);
+        connect(pMachine, &UIMachine::sigRecordingChange,
                 this, &UIIndicatorRecording::updateAppearance);
         /* Create *enabled* state animation: */
         m_pAnimation = UIAnimationLoop::installAnimationLoop(this, "rotationAngle",

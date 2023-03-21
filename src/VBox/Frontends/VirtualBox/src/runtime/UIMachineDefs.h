@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 99094 2023-03-21 15:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 99096 2023-03-21 15:54:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -48,7 +48,6 @@ enum UIVisualElement
     UIVisualElement_WindowTitle           = RT_BIT(0),
     UIVisualElement_MouseIntegrationStuff = RT_BIT(1),
     UIVisualElement_IndicatorPoolStuff    = RT_BIT(2),
-    UIVisualElement_Recording             = RT_BIT(11),
     UIVisualElement_FeaturesStuff         = RT_BIT(12),
 #ifndef VBOX_WS_MAC
     UIVisualElement_MiniToolBar           = RT_BIT(13),
