@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 98984 2023-03-15 12:22:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 99091 2023-03-21 15:28:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -52,7 +52,6 @@ enum UIVisualElement
     UIVisualElement_CDStuff               = RT_BIT(4),
     UIVisualElement_FDStuff               = RT_BIT(5),
     UIVisualElement_AudioStuff            = RT_BIT(6),
-    UIVisualElement_NetworkStuff          = RT_BIT(7),
     UIVisualElement_USBStuff              = RT_BIT(8),
     UIVisualElement_SharedFolderStuff     = RT_BIT(9),
     UIVisualElement_Display               = RT_BIT(10),
