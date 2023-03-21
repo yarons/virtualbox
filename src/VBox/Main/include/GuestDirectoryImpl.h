@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 98709 2023-02-24 08:49:40Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.h 99085 2023-03-21 12:15:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -71,6 +71,9 @@ public:
     int            i_close(int *pvrcGuest);
     EventSource   *i_getEventSource(void) { return mEventSource; }
     int            i_onDirNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
+    int            i_listInternal(uint32_t cMaxEntries, uint32_t fFlags, std::vector<GuestFsObjData> &vecObjData, int *pvrcGuest);
+    int            i_listEx(uint32_t cMaxEntries, uint32_t fFlags, std::vector<ComObjPtr<GuestFsObjInfo>> &vecObjInfo, int *pvrcGuest);
+    int            i_list(uint32_t cMaxEntries, std::vector<ComObjPtr<GuestFsObjInfo>> &vecObjInfo, int *pvrcGuest);
     int            i_read(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pvrcGuest);
     int            i_readInternal(GuestFsObjData &objData, int *pvrcGuest);
     int            i_rewind(uint32_t uTimeoutMS, int *pvrcGuest);
@@ -88,6 +91,7 @@ public:
     /** @name Public static internal methods.
      * @{ */
     static Utf8Str i_guestErrorToString(int vrcGuest, const char *pcszWhat);
+    static void    i_dirNotifyDataDestroy(PCALLBACKDATA_DIR_NOTIFY pDirNotify);
     /** @}  */
 
 private:
@@ -104,6 +108,7 @@ private:
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
     HRESULT getId(ULONG *aId);
     HRESULT getStatus(DirectoryStatus_T *aStatus);
+    HRESULT list(ULONG aMaxEntries, std::vector<ComPtr<IFsObjInfo> > &aObjInfos);
     HRESULT read(ComPtr<IFsObjInfo> &aObjInfo);
     HRESULT rewind(void);
     /** @}  */
