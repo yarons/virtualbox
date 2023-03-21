@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 99092 2023-03-21 15:36:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 99093 2023-03-21 15:45:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -62,8 +62,6 @@ private slots:
     void sltUSBControllerChange();
     /** Handles USB device state change event. */
     void sltUSBDeviceStateChange();
-    /** Handles audio adapter change event. */
-    void sltAudioAdapterChange();
     /** Handles shared folder change event. */
     void sltSharedFolderChange();
     /** Handles recording change event. */

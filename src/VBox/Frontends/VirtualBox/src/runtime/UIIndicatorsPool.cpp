@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 99092 2023-03-21 15:36:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 99093 2023-03-21 15:45:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -345,6 +345,8 @@ public:
         setStateIcon(AudioState_AllOn, UIIconPool::iconSet(":/audio_16px.png"));
         /* Configure connection: */
         connect(pMachine, &UIMachine::sigMachineStateChange,
+                this, &UIIndicatorAudio::updateAppearance);
+        connect(pMachine, &UIMachine::sigAudioAdapterChange,
                 this, &UIIndicatorAudio::updateAppearance);
         /* Translate finally: */
         retranslateUi();
