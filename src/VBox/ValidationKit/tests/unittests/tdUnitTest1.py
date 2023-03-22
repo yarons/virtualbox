@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 99104 2023-03-22 08:16:25Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 99105 2023-03-22 08:16:35Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99104 $"
+__version__ = "$Revision: 99105 $"
 
 
 # Standard Python imports.
@@ -79,7 +79,7 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstAsmStructs': '',               # Fails on arm64 due to different sizes, also not required as there is no
                                                         # assembly code which needs to match with structs.
             'testcase/tstDarwinKeyboard': '',           # Fails for unknown reason.
-        }
+        },
         'linux': {
             'testcase/tstRTFileAio': '',                # See xTracker #8035.
         },
