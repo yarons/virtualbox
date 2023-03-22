@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 99103 2023-03-22 07:02:33Z alexander.rudnev@oracle.com $
+# $Id: base.py 99113 2023-03-22 12:56:37Z brent.paulson@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99103 $"
+__version__ = "$Revision: 99113 $"
 
 
 # Standard Python imports.
@@ -719,7 +719,7 @@ class Process(TdTaskBase):
         sOs       = utils.getHostOs();
         if sOs == 'solaris':
             # Both 'coreadm -e ...' and 'svccfg apply' only work if running with all privileges.
-            fIsRoot = os.geteuid() == 0;
+            fIsRoot = os.geteuid() == 0; # pylint: disable=no-member
             if fIsRoot is False:
                 return True;
 
