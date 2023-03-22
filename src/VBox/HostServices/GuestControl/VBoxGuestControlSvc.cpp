@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 98665 2023-02-21 07:49:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestControlSvc.cpp 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -951,6 +951,7 @@ private:
 
 /** Host feature mask for GUEST_MSG_REPORT_FEATURES/GUEST_MSG_QUERY_FEATURES. */
 static uint64_t const g_fGstCtrlHostFeatures0 = VBOX_GUESTCTRL_HF_0_NOTIFY_RDWR_OFFSET
+                                              | VBOX_GUESTCTRL_HF_0_PROCESS_CWD
                                               | VBOX_GUESTCTRL_HF_0_PROCESS_ARGV0;
 
 

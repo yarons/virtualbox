@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 99085 2023-03-21 12:15:00Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -944,6 +944,8 @@ public:
     Utf8Str                     mName;
     /** The executable. */
     Utf8Str                     mExecutable;
+    /** The working directory. Optional, can be empty if not used. */
+    Utf8Str                     mCwd;
     /** Arguments vector (starting with argument \#0). */
     ProcessArguments            mArguments;
     /** The process environment change record.  */

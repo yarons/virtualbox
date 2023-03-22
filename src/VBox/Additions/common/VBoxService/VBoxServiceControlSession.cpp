@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 99087 2023-03-21 13:03:16Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1691,10 +1691,11 @@ static int vgsvcGstCtrlSessionHandleProcExec(PVBOXSERVICECTRLSESSION pSession, P
     int rc = VbglR3GuestCtrlProcGetStart(pHostCtx, &pStartupInfo);
     if (RT_SUCCESS(rc))
     {
-        VGSvcVerbose(3, "Request to start process szCmd=%s, fFlags=0x%x, szArgs=%s, szEnv=%s, uTimeout=%RU32\n",
+        VGSvcVerbose(3, "Request to start process szCmd=%s, fFlags=0x%x, szArgs=%s, szEnv=%s, szCwd=%s, uTimeout=%RU32\n",
                      pStartupInfo->pszCmd, pStartupInfo->fFlags,
                      pStartupInfo->cArgs    ? pStartupInfo->pszArgs : "<None>",
                      pStartupInfo->cEnvVars ? pStartupInfo->pszEnv  : "<None>",
+                     pStartupInfo->cbCwd    ? pStartupInfo->pszCwd  : "<None>",
                      pStartupInfo->uTimeLimitMS);
 
         bool fStartAllowed = false; /* Flag indicating whether starting a process is allowed or not. */
