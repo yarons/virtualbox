@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 98648 2023-02-20 12:55:13Z knut.osmundsen@oracle.com $
+# $Id: tdUnitTest1.py 99104 2023-03-22 08:16:25Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98648 $"
+__version__ = "$Revision: 99104 $"
 
 
 # Standard Python imports.
@@ -70,7 +70,16 @@ class tdUnitTest1(vbox.TestDriver):
     kdTestCasesBuggyPerOs = {
         'darwin': {
             'testcase/tstX86-1': '',                    # 'FSTP M32R, ST0' fails; no idea why.
+            'testcase/tstLow': '>=7.0.0',               # Driverless package.
+            'testcase/tstPin': '>=7.0.0',               # Driverless package.
+            'testcase/tstIntNet-1': '>=7.0.0',          # Driverless package.
         },
+        'darwin.arm64': {
+            'testcase/tstRTDarwinMachKernel': '',       # Not supported on arm64 right now (and not required due to driverless).
+            'testcase/tstAsmStructs': '',               # Fails on arm64 due to different sizes, also not required as there is no
+                                                        # assembly code which needs to match with structs.
+            'testcase/tstDarwinKeyboard': '',           # Fails for unknown reason.
+        }
         'linux': {
             'testcase/tstRTFileAio': '',                # See xTracker #8035.
         },
