@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 99105 2023-03-22 08:16:35Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 99114 2023-03-22 13:09:16Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99105 $"
+__version__ = "$Revision: 99114 $"
 
 
 # Standard Python imports.
@@ -129,7 +129,6 @@ class tdUnitTest1(vbox.TestDriver):
 
     kdTestCasesBuggy = {
         'testcase/tstGuestPropSvc': '',     # GET_NOTIFICATION fails on testboxlin5.de.oracle.com and others.
-        'testcase/tstRTProcCreateEx': '',   # Seen failing on wei01-b6ka-9.de.oracle.com.
         'testcase/tstTimer': '',            # Sometimes fails on linux, not important atm.
         'testcase/tstGIP-2': '',            # 2015-09-10: Fails regularly. E.g. TestSetID 2744205 (testboxsh2),
                                             #             2743961 (wei01-b6kc-6). The responsible engineer should reenable
