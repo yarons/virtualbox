@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 99122 2023-03-22 18:39:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -4982,7 +4982,7 @@ HRESULT GuestSession::processCreateEx(const com::Utf8Str &aExecutable, const com
     uint32_t const uProtocol              = i_getProtocolVersion();
     uint64_t const fGuestControlFeatures0 = mParent->i_getGuestControlFeatures0();
 
-    /* If a current working directory (CWD) is set, make sure that the installed Guest Additions actually 
+    /* If a current working directory (CWD) is set, make sure that the installed Guest Additions actually
      * support this before doing anything else. */
     if (   !aCwd.isEmpty()
         && (   uProtocol < 2
