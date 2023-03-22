@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 98507 2023-02-08 14:57:24Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99117 2023-03-22 13:23:14Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -10805,7 +10805,16 @@ HMVMX_EXIT_DECL vmxHCExitEptViolationNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTr
         Log7Func(("PGM (uExitQual=%#RX64, %RGp, %RGv) -> %Rrc (fFailed=%d)\n",
                   uExitQual, GCPhysNestedFault, GCPtrNestedFault, VBOXSTRICTRC_VAL(rcStrict), Walk.fFailed));
         if (RT_SUCCESS(rcStrict))
+        {
+            if (rcStrict == VINF_IOM_R3_MMIO_COMMIT_WRITE)
+            {
+                Assert(!fClearEventOnForward);
+                Assert(VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_IOM));
+                rcStrict = VINF_EM_RESCHEDULE_REM;
+            }
+            ASMAtomicUoOrU64(&VCPU_2_VMXSTATE(pVCpu).fCtxChanged, HM_CHANGED_ALL_GUEST);
             return rcStrict;
+        }
 
         if (fClearEventOnForward)
             VCPU_2_VMXSTATE(pVCpu).Event.fPending = false;
