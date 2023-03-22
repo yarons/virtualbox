@@ -1,4 +1,4 @@
-/* $Id: time-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: time-darwin.cpp 99108 2023-03-22 09:31:15Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Time, Darwin.
  */
@@ -53,6 +53,7 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 static struct mach_timebase_info    g_Info = { 0, 0 };
 static double                       g_rdFactor = 0.0;
 static bool                         g_fFailedToGetTimeBaseInfo = false;
@@ -75,6 +76,7 @@ static void rtTimeDarwinLazyInit(void)
         Assert(g_Info.denom == 0 && g_Info.numer == 0 && g_rdFactor == 0.0);
     }
 }
+#endif
 
 
 /**
@@ -83,6 +85,7 @@ static void rtTimeDarwinLazyInit(void)
  */
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     /* Lazy init. */
     if (RT_UNLIKELY(g_Info.denom == 0 && !g_fFailedToGetTimeBaseInfo))
         rtTimeDarwinLazyInit();
@@ -100,6 +103,9 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
     gettimeofday(&tv, NULL);
     return (uint64_t)tv.tv_sec  * RT_NS_1SEC_64
          + (uint64_t)(tv.tv_usec * RT_NS_1US);
+#else
+    return clock_gettime_nsec_np(CLOCK_UPTIME_RAW);
+#endif
 }
 
 
