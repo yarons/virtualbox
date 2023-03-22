@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-controlvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-22 14:20:35 +0100 (Wed, 22 Mar 2023) $</pubdate>
     <title>VBoxManage controlvm</title>
   </refentryinfo>
 
@@ -247,10 +247,8 @@
         <arg choice="plain"><replaceable>vmname</replaceable></arg>
       </group>
       <arg choice="plain">natpf<replaceable>N</replaceable></arg>
-      <group choice="req">
-        <arg choice="plain">[<replaceable>rulename</replaceable>]<arg choice="plain">,tcp</arg></arg>
-        <arg choice="plain">udp,<arg><replaceable>host-IP</replaceable></arg>,<arg choice="plain"><replaceable>hostport</replaceable>,</arg><arg><replaceable>guest-IP</replaceable></arg>,<arg choice="plain"><replaceable>guestport</replaceable></arg></arg>
-      </group>
+
+      <arg choice="req" role="compact"><arg><replaceable>rulename</replaceable></arg>,<group choice="req"><arg choice="plain">tcp</arg><arg choice="plain">udp</arg></group>,<arg><replaceable>host-IP</replaceable></arg>,<arg choice="plain"><replaceable>hostport</replaceable></arg>,<arg><replaceable>guest-IP</replaceable></arg>,<arg choice="plain"><replaceable>guestport</replaceable></arg></arg>
     </cmdsynopsis>
 
     <cmdsynopsis id="synopsis-vboxmanage-controlvm-natpf-delete">
