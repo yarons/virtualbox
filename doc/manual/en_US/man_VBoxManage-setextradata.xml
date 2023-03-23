@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-setextradata" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
     <title>VBoxManage setextradata</title>
   </refentryinfo>
 
@@ -75,7 +75,7 @@
           </para></listitem>
       </varlistentry>
       <varlistentry>
-        <term><replaceable>uuid</replaceable>|<replaceable>vmname</replaceable></term>
+        <term><option><replaceable>uuid</replaceable> | <replaceable>vmname</replaceable></option></term>
         <listitem><para>
             Specifies the Universally Unique Identifier (UUID) or name
             of the VM.

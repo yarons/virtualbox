@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-guestcontrol" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-22 18:30:14 +0100 (Wed, 22 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
     <title>VBoxManage guestcontrol</title>
   </refentryinfo>
 
@@ -363,7 +363,7 @@
       </para>
       <variablelist>
         <varlistentry>
-          <term><replaceable>uuid</replaceable>|<replaceable>vmname</replaceable></term>
+          <term><option><replaceable>uuid</replaceable> | <replaceable>vmname</replaceable></option></term>
           <listitem><para>
               Specifies the Universally Unique Identifier (UUID) or name
               of the VM.
