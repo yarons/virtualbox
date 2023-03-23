@@ -1,4 +1,4 @@
-/* $Id: DevPL011.cpp 99125 2023-03-23 08:13:38Z alexander.eichner@oracle.com $ */
+/* $Id: DevPL011.cpp 99126 2023-03-23 08:19:24Z alexander.eichner@oracle.com $ */
 /** @file
  * DevSerialPL011 - ARM PL011 PrimeCell UART.
  *
@@ -230,7 +230,7 @@ typedef DEVPL011R3 *PDEVPL011R3;
  */
 typedef struct DEVPL011R0
 {
-    /** Dummy .*/ 
+    /** Dummy .*/
     uint8_t                         bDummy;
 } DEVPL011R0;
 /** Pointer to the serial device state for ring-0. */
@@ -242,7 +242,7 @@ typedef DEVPL011R0 *PDEVPL011R0;
  */
 typedef struct DEVPL011RC
 {
-    /** Dummy .*/ 
+    /** Dummy .*/
     uint8_t                         bDummy;
 } DEVPL011RC;
 /** Pointer to the serial device state for raw-mode. */
