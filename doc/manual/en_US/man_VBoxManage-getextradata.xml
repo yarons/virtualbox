@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-getextradata" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-01-18 00:40:56 +0100 (Wed, 18 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-23 13:02:19 +0100 (Thu, 23 Mar 2023) $</pubdate>
     <title>VBoxManage getextradata</title>
   </refentryinfo>
 
@@ -55,9 +55,9 @@
         <arg choice="plain"><replaceable>uuid</replaceable></arg>
         <arg choice="plain"><replaceable>vmname</replaceable></arg>
       </group>
-      <group choice="plain">
-        <arg choice="req"><replaceable>keyword</replaceable></arg>
-        <arg>enumerate</arg>
+      <group choice="req">
+        <arg choice="plain"><replaceable>keyword</replaceable></arg>
+        <arg choice="plain">enumerate</arg>
       </group>
     </cmdsynopsis>
   </refsynopsisdiv>
