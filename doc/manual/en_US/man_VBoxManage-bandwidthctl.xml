@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-bandwidthctl" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-23 23:30:48 +0100 (Thu, 23 Mar 2023) $</pubdate>
     <title>VBoxManage bandwidthctl</title>
   </refentryinfo>
 
@@ -56,7 +56,10 @@
       <arg choice="plain">add</arg>
       <arg choice="req"><replaceable>bandwidth-group-name</replaceable></arg>
       <arg choice="req">--limit=<replaceable>bandwidth-limit</replaceable>[k|m|g|K|M|G]</arg>
-      <arg choice="req">--type=disk|network</arg>
+      <arg choice="req">--type=<group choice="plain">
+          <arg choice="plain">disk</arg>
+          <arg choice="plain">network</arg>
+        </group></arg>
     </cmdsynopsis>
 
     <cmdsynopsis id="synopsis-vboxmanage-bandwidthctl-list">
