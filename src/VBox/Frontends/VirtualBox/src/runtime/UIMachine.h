@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 99141 2023-03-23 12:36:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 99142 2023-03-23 12:50:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -845,14 +845,10 @@ private:
     void prepareNotificationCenter();
     /** Prepare routine: Session stuff. */
     bool prepareSession();
-    /** Prepare routine: Branding. */
-    void prepareBranding();
     /** Prepare routine: Actions stuff. */
     void prepareActions();
     /** Prepare routine: Host-screen data stuff. */
     void prepareHostScreenData();
-    /** Prepare routine: Guest-screen data stuff. */
-    void prepareGuestScreenData();
     /** Prepare routine: Keyboard stuff. */
     void prepareKeyboard();
     /** Prepare routine: Close stuff. */
@@ -860,17 +856,22 @@ private:
     /** Prepare routine: Visual-state stuff. */
     void prepareVisualState();
 
+    /** Update routine: Branding. */
+    void updateBranding();
+    /** Update routine: Guest screen data stuff. */
+    void updateGuestScreenData();
+
     /** Moves VM to initial state. */
     void enterInitialVisualState();
 
     /** Cleanup routine: Machine-logic stuff. */
     void cleanupMachineLogic();
+    /** Cleanup routine: Branding. */
+    void cleanupBranding();
     /** Cleanup routine: Host-screen data stuff. */
     void cleanupHostScreenData();
     /** Cleanup routine: Actions stuff. */
     void cleanupActions();
-    /** Cleanup routine: Branding. */
-    void cleanupBranding();
     /** Cleanup routine: Session stuff. */
     void cleanupSession();
     /** Cleanups notification-center. */
