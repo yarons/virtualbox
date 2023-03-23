@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 98952 2023-03-14 11:27:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 99134 2023-03-23 10:30:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -71,7 +71,7 @@ public:
       * @param  enmVisualStateType  Brings the visual state type of logic to be created. */
     static UIMachineLogic *create(UIMachine *pMachine, UIVisualStateType enmVisualStateType);
     /** Factory function to destroy passed @a pLogic. */
-    static void destroy(UIMachineLogic *pLogic);
+    static void destroy(UIMachineLogic *&pLogic);
 
     /** Returns visual state type. */
     virtual UIVisualStateType visualStateType() const = 0;

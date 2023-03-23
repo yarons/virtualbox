@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 99092 2023-03-21 15:36:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 99134 2023-03-23 10:30:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -174,9 +174,13 @@ UIMachineLogic *UIMachineLogic::create(UIMachine *pMachine,
 }
 
 /* static */
-void UIMachineLogic::destroy(UIMachineLogic *pLogic)
+void UIMachineLogic::destroy(UIMachineLogic *&pLogic)
 {
+    if (!pLogic)
+        return;
+    pLogic->cleanup();
     delete pLogic;
+    pLogic = 0;
 }
 
 void UIMachineLogic::prepare()

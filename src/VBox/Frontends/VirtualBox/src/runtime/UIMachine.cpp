@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 98983 2023-03-15 12:06:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 99134 2023-03-23 10:30:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1112,13 +1112,8 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
      * Only then we delete the old machine-logic and switch to the new one. */
     if (pMachineLogic->checkAvailability())
     {
-        /* Delete previous machine-logic if exists: */
-        if (m_pMachineLogic)
-        {
-            m_pMachineLogic->cleanup();
-            UIMachineLogic::destroy(m_pMachineLogic);
-            m_pMachineLogic = 0;
-        }
+        /* Delete previous machine-logic if any: */
+        UIMachineLogic::destroy(m_pMachineLogic);
 
         /* Set the new machine-logic as current one: */
         m_pMachineLogic = pMachineLogic;
@@ -1133,7 +1128,6 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
     else
     {
         /* Delete temporary created machine-logic: */
-        pMachineLogic->cleanup();
         UIMachineLogic::destroy(pMachineLogic);
     }
 
@@ -1792,13 +1786,8 @@ void UIMachine::prepareMachineLogic()
 
 void UIMachine::cleanupMachineLogic()
 {
-    /* Destroy machine-logic if exists: */
-    if (m_pMachineLogic)
-    {
-        m_pMachineLogic->cleanup();
-        UIMachineLogic::destroy(m_pMachineLogic);
-        m_pMachineLogic = 0;
-    }
+    /* Delete machine-logic if any: */
+    UIMachineLogic::destroy(m_pMachineLogic);
 }
 
 void UIMachine::cleanupScreens()
