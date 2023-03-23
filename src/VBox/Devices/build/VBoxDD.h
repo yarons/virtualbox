@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDD.h 99125 2023-03-23 08:13:38Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -226,6 +226,10 @@ extern const PDMDEVREG g_DeviceIommuAmd;
 #endif
 #ifdef VBOX_WITH_IOMMU_INTEL
 extern const PDMDEVREG g_DeviceIommuIntel;
+#endif
+
+#ifdef VBOX_VMM_TARGET_ARMV8
+extern const PDMDEVREG g_DevicePl011;
 #endif
 
 /* VBoxAcpi.cpp */
