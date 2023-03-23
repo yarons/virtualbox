@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99128 $"
+__version__ = "$Revision: 99129 $"
 
 # Standard Python imports.
 import errno
@@ -3060,7 +3060,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         sShell          = self.oTstDrv.getGuestSystemShell(oTestVm);
         sShellOpt       = '/C' if oTestVm.isWindows() or oTestVm.isOS2() else '-c';
         sSystemDir      = self.oTstDrv.getGuestSystemDir(oTestVm);
-        sTempDir        = self oTstDrv.getGuestTempDir(oTestVm);
+        sTempDir        = self.oTstDrv.getGuestTempDir(oTestVm);
         sFileForReading = self.oTstDrv.getGuestSystemFileForReading(oTestVm);
         if oTestVm.isWindows() or oTestVm.isOS2():
             sImageOut = self.oTstDrv.getGuestSystemShell(oTestVm);
