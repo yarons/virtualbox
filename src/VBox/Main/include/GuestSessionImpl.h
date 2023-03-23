@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.h 99150 2023-03-23 18:00:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -211,15 +211,15 @@ private:
                         const com::Utf8Str &aAcl,
                         ULONG aMode);
     HRESULT processCreate(const com::Utf8Str &aCommand,
-                          const com::Utf8Str &aCwd,
                           const std::vector<com::Utf8Str> &aArguments,
+                          const com::Utf8Str &aCwd,
                           const std::vector<com::Utf8Str> &aEnvironment,
                           const std::vector<ProcessCreateFlag_T> &aFlags,
                           ULONG aTimeoutMS,
                           ComPtr<IGuestProcess> &aGuestProcess);
     HRESULT processCreateEx(const com::Utf8Str &aCommand,
-                            const com::Utf8Str &aCwd,
                             const std::vector<com::Utf8Str> &aArguments,
+                            const com::Utf8Str &aCwd,
                             const std::vector<com::Utf8Str> &aEnvironment,
                             const std::vector<ProcessCreateFlag_T> &aFlags,
                             ULONG aTimeoutMS,

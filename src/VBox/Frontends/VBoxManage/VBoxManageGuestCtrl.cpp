@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 99150 2023-03-23 18:00:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1363,8 +1363,8 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
             }
             ComPtr<IGuestProcess> pProcess;
             CHECK_ERROR_BREAK(pCtx->pGuestSession, ProcessCreate(Bstr(pszImage).raw(),
-                                                                 Bstr(pszCwd).raw(),
                                                                  ComSafeArrayAsInParam(aArgs),
+                                                                 Bstr(pszCwd).raw(),
                                                                  ComSafeArrayAsInParam(aEnv),
                                                                  ComSafeArrayAsInParam(aCreateFlags),
                                                                  gctlRunGetRemainingTime(msStart, cMsTimeout),
