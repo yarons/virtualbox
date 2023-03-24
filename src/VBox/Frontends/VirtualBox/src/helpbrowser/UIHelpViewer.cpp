@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 99115 2023-03-22 13:11:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 99171 2023-03-24 11:36:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -476,7 +476,10 @@ void UIHelpViewer::setSource(const QUrl &url)
 #endif
     QTextDocument *pDocument = document();
     if (!pDocument || pDocument->isEmpty())
-        setText(UIHelpBrowserWidget::tr("<div><p><h3>404. Not found.</h3>The page <b>%1</b> could not be found.</p></div>").arg(url.toString()));
+    {
+        setText(UIHelpBrowserWidget::tr("<div><p><h3>Not found.</h3>The page <b>%1</b> could not be found.</p></div>").arg(url.toString()));
+        setDocumentTitle(UIHelpBrowserWidget::tr("Not Found"));
+    }
     if (m_pFindInPageWidget && m_pFindInPageWidget->isVisible())
     {
         document()->undo();
