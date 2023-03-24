@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMInternal.h 99163 2023-03-24 06:19:19Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -105,7 +105,10 @@ typedef uint64_t STAMCOUNTER;
 /** @name CPUM Saved State Version.
  * @{ */
 /** The current saved state version. */
-#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_3
+#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4
+/** The saved state version with u32RestoreProcCtls2 for Nested Microsoft
+ *  Hyper-V. */
+#define CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4   23
 /** The saved state version with more virtual VMCS fields (HLAT prefix size,
  *  PCONFIG-exiting bitmap, HLAT ptr, VM-exit ctls2) and a CPUMCTX field (VM-exit
  *  ctls2 MSR). */
