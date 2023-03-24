@@ -1,4 +1,4 @@
-/* $Id: UIUSBFilterDetailsEditor.h 99177 2023-03-24 15:46:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFilterDetailsEditor.h 99178 2023-03-24 15:54:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFilterDetailsEditor class declaration.
  */
@@ -101,6 +101,11 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
+private slots:
+
+    /** Performs validation for connected sender. */
+    void sltRevalidate();
+
 private:
 
     /** Prepares all. */
@@ -110,8 +115,14 @@ private:
     /** Prepares connections. */
     void prepareConnections();
 
+    /** Performs validation for @a pEditor. */
+    void revalidate(QILineEdit *pEditor);
+
     /** Wipes out @a strString if it's empty. */
     static QString wiped(const QString &strString);
+
+    /** Holds whether editors currently valid. */
+    QMap<QILineEdit*, bool>  m_valid;
 
     /** @name Widgets
      * @{ */
