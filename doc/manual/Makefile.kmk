@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99160 2023-03-24 00:27:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99162 2023-03-24 01:51:18Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -186,7 +186,8 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
   		$(patsubst "/transtype:%,"--format=%, \
   			$(patsubst "/outdir:%,"--output=%, \
   				$(patsubst "/tempdir:%,"--temp=%, \
-  					$(patsubst "/debug","--debug",$3))))) \
+  					$(patsubst "/filter:%,"--filter=%, \
+  						$(patsubst "/debug","--debug",$3)))))) \
   	$5 --verbose --debug
  endif
 
