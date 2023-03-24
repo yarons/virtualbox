@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 98992 2023-03-15 15:53:43Z vadim.galitsyn@oracle.com $
+# $Id: vbox.py 99170 2023-03-24 09:57:55Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98992 $"
+__version__ = "$Revision: 99170 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3750,6 +3750,7 @@ class TestDriver(base.TestDriver):                                              
         fRemoveVm  = self.addTask(oSession);
         fRemoveTxs = self.addTask(oTxsSession);
 
+        reporter.log2('txsDoTask(%s): Running' % (str(fnAsync)));
         rc = fnAsync(*aArgs); # pylint: disable=star-args
         if rc is True:
             rc = False;
@@ -3758,25 +3759,25 @@ class TestDriver(base.TestDriver):                                              
                 if oTxsSession.isSuccess():
                     rc = oTxsSession.getResult();
                 elif fIgnoreErrors is True:
-                    reporter.log(  'txsDoTask: task failed (%s)' % (oTxsSession.getLastReply()[1],));
+                    reporter.log(  'txsDoTask(%s): task failed (%s)' % (str(fnAsync), oTxsSession.getLastReply()[1],));
                 else:
-                    reporter.error('txsDoTask: task failed (%s)' % (oTxsSession.getLastReply()[1],));
+                    reporter.error('txsDoTask(%s): task failed (%s)' % (str(fnAsync), oTxsSession.getLastReply()[1],));
             else:
                 oTxsSession.cancelTask();
                 if oTask is None:
                     if fIgnoreErrors is True:
-                        reporter.log(  'txsDoTask: The task timed out.');
+                        reporter.log(  'txsDoTask(%s): The task timed out.' % (str(fnAsync)));
                     else:
-                        reporter.errorTimeout('txsDoTask: The task timed out.');
+                        reporter.errorTimeout('txsDoTask(%s): The task timed out.' % (str(fnAsync)));
                 elif oTask is oSession:
-                    reporter.error('txsDoTask: The VM terminated unexpectedly');
+                    reporter.error('txsDoTask(%s): The VM terminated unexpectedly' % (str(fnAsync)));
                 else:
                     if fIgnoreErrors is True:
-                        reporter.log(  'txsDoTask: An unknown task %s was returned' % (oTask,));
+                        reporter.log(  'txsDoTask(%s): An unknown task %s was returned' % (str(fnAsync), oTask,));
                     else:
-                        reporter.error('txsDoTask: An unknown task %s was returned' % (oTask,));
+                        reporter.error('txsDoTask(%s): An unknown task %s was returned' % (str(fnAsync), oTask,));
         else:
-            reporter.error('txsDoTask: fnAsync returned %s' % (rc,));
+            reporter.error('txsDoTask(%s) returned %s' % (str(fnAsync), rc,));
 
         if fRemoveTxs:
             self.removeTask(oTxsSession);
