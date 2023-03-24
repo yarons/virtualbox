@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QILineEdit.h 99177 2023-03-24 15:46:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -83,7 +83,7 @@ private:
     void prepare();
 
     /** Calculates suitable @a strText size. */
-    QSize featTextWidth(const QString &strText) const;
+    QSize fitTextWidth(const QString &strText) const;
 
     /** Holds whether this is allowed to copy contents when disabled. */
     bool     m_fAllowToCopyContentsWhenDisabled;
