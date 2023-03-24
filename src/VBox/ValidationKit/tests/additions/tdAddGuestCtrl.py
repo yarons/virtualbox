@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99165 $"
+__version__ = "$Revision: 99166 $"
 
 # Standard Python imports.
 import errno
@@ -2316,7 +2316,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         # Start the process:
         #
         reporter.log2('Executing sCmd=%s, cCwd=%s, afFlags=%s, timeoutMS=%d, asArgs=%s, asEnv=%s'
-                      % (oTest.sCmd, oTest.sCwd, oTest.afFlags, oTest.timeoutMS, limitString(oTest.asArgs), limitString(oTest.aEnv),));
+                      % (oTest.sCmd, oTest.sCwd, oTest.afFlags, oTest.timeoutMS, limitString(oTest.asArgs),
+                         limitString(oTest.aEnv),));
         try:
             if self.oTstDrv.fpApiVer >= 7.1:
                 oProcess = oGuestSession.processCreate(oTest.sCmd,
