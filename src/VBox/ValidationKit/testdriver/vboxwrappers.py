@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 98998 2023-03-16 09:34:21Z andreas.loeffler@oracle.com $
+# $Id: vboxwrappers.py 99180 2023-03-24 15:59:55Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98998 $"
+__version__ = "$Revision: 99180 $"
 
 
 # Standard Python imports.
@@ -1246,7 +1246,8 @@ class SessionWrapper(TdTaskBase):
                 if fEnable:
                     self.o.machine.nonVolatileStore.uefiVariableStore.enrollDefaultMsSignatures();
                     self.o.machine.nonVolatileStore.uefiVariableStore.enrollOraclePlatformKey();
-                    if sUefiMokPathPrefix is not None:
+                    if   sUefiMokPathPrefix is not None \
+                    and  self.fpApiVer >= 7.1:
                         sFullName = self.oTstDrv.getFullResourceName(sUefiMokPathPrefix) + '.der';
                         with open(sFullName, "rb") as der_file:
                             self.o.machine.nonVolatileStore.uefiVariableStore.addSignatureToMok(bytearray(der_file.read()), \
@@ -3698,4 +3699,3 @@ class AdditionsStatusTask(TdTaskBase):
         """
         self._deregisterEventHandler();
         return True;
-
