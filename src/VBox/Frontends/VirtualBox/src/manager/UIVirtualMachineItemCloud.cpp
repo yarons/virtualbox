@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 99186 2023-03-27 15:09:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -99,7 +99,7 @@ CProgress UIProgressTaskRefreshCloudMachine::createProgress()
 void UIProgressTaskRefreshCloudMachine::handleProgressFinished(CProgress &comProgress)
 {
     /* Handle progress-wrapper errors: */
-    if (!comProgress.GetCanceled() && (!comProgress.isOk() || comProgress.GetResultCode() != 0))
+    if (comProgress.isNotNull() && !comProgress.GetCanceled() && (!comProgress.isOk() || comProgress.GetResultCode() != 0))
         UINotificationMessage::cannotRefreshCloudMachine(comProgress);
 }
 

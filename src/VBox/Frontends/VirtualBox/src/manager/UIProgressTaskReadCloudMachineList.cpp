@@ -1,4 +1,4 @@
-/* $Id: UIProgressTaskReadCloudMachineList.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIProgressTaskReadCloudMachineList.cpp 99186 2023-03-27 15:09:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressTaskReadCloudMachineList class implementation.
  */
@@ -81,7 +81,7 @@ CProgress UIProgressTaskReadCloudMachineList::createProgress()
 void UIProgressTaskReadCloudMachineList::handleProgressFinished(CProgress &comProgress)
 {
     /* Handle progress-wrapper errors: */
-    if (!comProgress.GetCanceled() && (!comProgress.isOk() || comProgress.GetResultCode() != 0))
+    if (comProgress.isNotNull() && !comProgress.GetCanceled() && (!comProgress.isOk() || comProgress.GetResultCode() != 0))
     {
         m_strErrorMessage = UIErrorString::formatErrorInfo(comProgress);
         return;
