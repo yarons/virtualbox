@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 98890 2023-03-09 12:01:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 99185 2023-03-27 14:27:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1082,12 +1082,6 @@ void UIVirtualBoxManager::sltOpenSettingsDialog(QString strCategory /* = QString
                                                 QString strControl /* = QString() */,
                                                 const QUuid &uID /* = QString() */)
 {
-    /* Lock the action preventing cascade calls: */
-    UIQObjectPropertySetter guardBlock(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings), "opened", true);
-    connect(&guardBlock, &UIQObjectPropertySetter::sigAboutToBeDestroyed,
-            this, &UIVirtualBoxManager::sltHandleUpdateActionAppearanceRequest);
-    updateActionsAppearance();
-
     /* Get current item: */
     UIVirtualMachineItem *pItem = currentItem();
     AssertMsgReturnVoid(pItem, ("Current item should be selected!\n"));
