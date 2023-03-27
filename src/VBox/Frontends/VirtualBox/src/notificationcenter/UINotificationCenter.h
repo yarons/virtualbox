@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 98928 2023-03-13 10:37:02Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -120,8 +120,10 @@ private slots:
 
     /** Issues request to make open button @a fToggled. */
     void sltHandleOpenButtonToggled(bool fToggled);
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
     /** Toggles notification-progresses keep approach. */
     void sltHandleKeepButtonToggled(bool fToggled);
+#endif
     /** Removes finished notifications. */
     void sltHandleRemoveFinishedButtonClicked();
 
@@ -189,8 +191,10 @@ private:
     QIToolButton *m_pButtonOpen;
     /** Holds the toggle-sorting button instance. */
     QIToolButton *m_pButtonToggleSorting;
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
     /** Holds the keep-finished button instance. */
     QIToolButton *m_pButtonKeepFinished;
+#endif
     /** Holds the remove-finished button instance. */
     QIToolButton *m_pButtonRemoveFinished;
     /** Holds the items layout instance. */

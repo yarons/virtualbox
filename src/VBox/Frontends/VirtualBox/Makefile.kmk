@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -277,6 +277,9 @@ ifdef VBOX_WITH_LIBCURL
 endif
 if "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_EXTRADATA_MANAGER_UI)
  UICommon_DEFS        += VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
+endif
+if "$(KBUILD_TYPE)" != "release" || defined(VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON)
+ UICommon_DEFS        += VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
 endif
 ifndef VBOX_WITHOUT_LESS_VIRTUALBOX_INCLUDING
  UICommon_DEFS        += VBOX_WITH_LESS_VIRTUALBOX_INCLUDING

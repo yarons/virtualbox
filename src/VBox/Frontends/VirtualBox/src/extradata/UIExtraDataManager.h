@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtraDataManager.h 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -201,10 +201,12 @@ public:
         /** Returns the list of messages for the Message/Popup center frameworks with inverted check-box state. */
         QStringList messagesWithInvertedOption();
 
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
         /** Returns whether successfull notification-progresses should NOT close automatically. */
         bool keepSuccessfullNotificationProgresses();
         /** Defines whether successfull notification-progresses should NOT close (@a fKeep) automatically. */
         void setKeepSuccessfullNotificationProgresses(bool fKeep);
+#endif /* VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON */
 
         /** Returns notification-center alignment. */
         Qt::Alignment notificationCenterAlignment();

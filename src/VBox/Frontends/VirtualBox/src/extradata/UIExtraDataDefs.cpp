@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -37,7 +37,9 @@ const char *UIExtraDataDefs::GUI_ColorTheme = "GUI/ColorTheme";
 /* Messaging: */
 const char *UIExtraDataDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
 const char *UIExtraDataDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption";
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
 const char *UIExtraDataDefs::GUI_NotificationCenter_KeepSuccessfullProgresses = "GUI/NotificationCenter/KeepSuccessfullProgresses";
+#endif
 const char *UIExtraDataDefs::GUI_NotificationCenter_Alignment = "GUI/NotificationCenter/Alignment";
 const char *UIExtraDataDefs::GUI_NotificationCenter_Order = "GUI/NotificationCenter/Order";
 const char *UIExtraDataDefs::GUI_PreventBetaLabel = "GUI/PreventBetaLabel";
