@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 99070 2023-03-20 14:58:57Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 99196 2023-03-28 13:06:05Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -201,6 +201,10 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     AssertCompileSizeAlignment(CPUMCTX, 64);
     AssertCompileMemberAlignment(VM, cpum, 64);
     AssertCompileMemberAlignment(VMCPU, cpum.s, 64);
+#ifdef VBOX_STRICT
+    int rc2 = cpumR3SysRegStrictInitChecks();
+    AssertRCReturn(rc2, rc2);
+#endif
 
     /*
      * Register saved state data item.
