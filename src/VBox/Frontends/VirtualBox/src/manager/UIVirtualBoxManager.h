@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 99200 2023-03-28 15:33:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 99201 2023-03-28 15:36:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -185,8 +185,8 @@ private slots:
         /** Handles call to close Manager window by default. */
         void sltCloseManagerWindowDefault() { sltCloseManagerWindow(); }
 
-        /** Handles call to open Import Appliance wizard the default way. */
-        void sltOpenImportApplianceWizardDefault() { openImportApplianceWizard(); }
+        /** Handles call to open Import Appliance wizard. */
+        void sltOpenImportApplianceWizard() { openImportApplianceWizard(); }
         /** Handles call to open Export Appliance wizard. */
         void sltOpenExportApplianceWizard();
 

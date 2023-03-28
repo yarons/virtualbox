@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 99200 2023-03-28 15:33:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 99201 2023-03-28 15:36:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2251,7 +2251,7 @@ void UIVirtualBoxManager::prepareConnections()
 
     /* 'File' menu connections: */
     connect(actionPool()->action(UIActionIndexMN_M_File_S_ImportAppliance), &UIAction::triggered,
-            this, &UIVirtualBoxManager::sltOpenImportApplianceWizardDefault);
+            this, &UIVirtualBoxManager::sltOpenImportApplianceWizard);
     connect(actionPool()->action(UIActionIndexMN_M_File_S_ExportAppliance), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltOpenExportApplianceWizard);
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
