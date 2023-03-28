@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-22 16:45:51 +0100 (Wed, 22 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-03-28 10:46:48 +0200 (Tue, 28 Mar 2023) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -151,7 +151,7 @@
           <arg choice="plain">hyperv</arg>
           <arg choice="plain">kvm</arg>
         </group></arg>
-      <arg>--paravirt-debug= <arg choice="plain"><replaceable>key</replaceable>=<replaceable>value</replaceable> [,<replaceable>key</replaceable>=<replaceable>value</replaceable>...]</arg></arg>
+      <arg>--paravirt-debug=<arg choice="plain"><replaceable>key</replaceable>=<replaceable>value</replaceable> [,<replaceable>key</replaceable>=<replaceable>value</replaceable>...]</arg></arg>
       <arg>--nested-paging=<group choice="plain">
           <arg choice="plain">on</arg>
           <arg choice="plain">off</arg>
@@ -201,9 +201,7 @@
         <arg choice="plain">host</arg>
         <arg choice="plain">swtpm</arg>
       </group></arg>
-      <arg>--tpm-location=<group choice="plain">
-          <arg choice="plain"><replaceable>location</replaceable></arg>
-        </group></arg>
+      <arg>--tpm-location=<replaceable>location</replaceable></arg>
       <arg>--bios-logo-fade-in=<group choice="plain">
           <arg choice="plain">on</arg>
           <arg choice="plain">off</arg>
