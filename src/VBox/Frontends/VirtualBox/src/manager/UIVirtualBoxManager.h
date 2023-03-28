@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 99201 2023-03-28 15:36:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 99202 2023-03-28 15:55:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -519,11 +519,17 @@ private:
     UIVirtualBoxManagerWidget *m_pWidget;
 
     /** Holds the geometry save timer ID. */
-    int      m_iGeometrySaveTimerId;
+    int  m_iGeometrySaveTimerId;
+
     /** Holds whether OCI importing should be started by default. */
     bool     m_fImportFromOCI;
     /** Holds the file-name used by import wizard. */
     QString  m_strFileName;
+
+    /** Holds whether OCI exporting should be started by default. */
+    bool         m_fExportToOCI;
+    /** Holds the list of VMs used by export wizard. */
+    QStringList  m_names;
 };
 
 #define gpManager UIVirtualBoxManager::instance()
