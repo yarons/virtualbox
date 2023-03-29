@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.cpp 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -38,7 +38,9 @@
 #include "UICursor.h"
 #include "UIIconPool.h"
 #include "UIUserNamePasswordEditor.h"
-#include "UIWizardNewVM.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 UIPasswordLineEdit::UIPasswordLineEdit(QWidget *pParent /*= 0 */)

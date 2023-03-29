@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -40,8 +40,6 @@
 #include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIHostnameDomainNameEditor.h"
-#include "UIWizardNewVM.h"
-
 
 
 UIHostnameDomainNameEditor::UIHostnameDomainNameEditor(QWidget *pParent /*  = 0 */)

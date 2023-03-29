@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsModel.cpp 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -49,7 +49,6 @@
 #include "UIModalWindowManager.h"
 #include "UIVirtualBoxManagerWidget.h"
 #include "UIVirtualBoxEventHandler.h"
-#include "UIWizardNewVM.h"
 
 /* COM includes: */
 #include "CExtPack.h"
