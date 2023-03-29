@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 98298 2023-01-25 02:23:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 99204 2023-03-29 06:34:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -2112,6 +2112,8 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             Bstr bstrPwId(a->argv[2]);
             CHECK_ERROR_BREAK(console, RemoveEncryptionPassword(bstrPwId.raw()));
         }
+        /** @todo r=bird: 'removeallencpasswords' is very much unreadable carp. Use
+         *        dashes as word separators to make it less fishy. */
         else if (!strcmp(a->argv[1], "removeallencpasswords"))
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_REMOVEALLENCPASSWORDS);

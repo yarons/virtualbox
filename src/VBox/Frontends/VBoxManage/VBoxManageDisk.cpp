@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 98298 2023-01-25 02:23:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageDisk.cpp 99204 2023-03-29 06:34:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -77,7 +77,7 @@ static DECLCALLBACK(void) handleVDError(void *pvUser, int vrc, RT_SRC_POS_DECL, 
 static int parseMediumVariant(const char *psz, MediumVariant_T *pMediumVariant)
 {
     int vrc = VINF_SUCCESS;
-    unsigned uMediumVariant = (unsigned)(*pMediumVariant);
+    unsigned uMediumVariant = (unsigned)*pMediumVariant;
     while (psz && *psz && RT_SUCCESS(vrc))
     {
         size_t len;
