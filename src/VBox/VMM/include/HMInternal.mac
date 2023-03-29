@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+;$Id: HMInternal.mac 99209 2023-03-29 14:16:59Z alexander.eichner@oracle.com $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -243,7 +243,7 @@ struc HMR0CPUSVM
     .u64HostTscAux                  resq    1
 
     alignb 8
-    .DisState                       resb    0d8h
+    .Dis                            resb    0d8h
 endstruc
 
 struc HMR0PERVCPU
