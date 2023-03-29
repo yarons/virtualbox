@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 98980 2023-03-15 11:46:48Z alexander.eichner@oracle.com $ */
+/* $Id: GIMHvInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1366,7 +1366,7 @@ VMM_INT_DECL(PGIMMMIO2REGION)   gimHvGetMmio2Regions(PVM pVM, uint32_t *pcRegion
 VMM_INT_DECL(bool)              gimHvIsParavirtTscEnabled(PVM pVM);
 VMM_INT_DECL(bool)              gimHvAreHypercallsEnabled(PCVM pVM);
 VMM_INT_DECL(bool)              gimHvShouldTrapXcptUD(PVMCPU pVCpu);
-VMM_INT_DECL(VBOXSTRICTRC)      gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis, uint8_t *pcbInstr);
+VMM_INT_DECL(VBOXSTRICTRC)      gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISSTATE pDis, uint8_t *pcbInstr);
 VMM_INT_DECL(VBOXSTRICTRC)      gimHvHypercall(PVMCPUCC pVCpu, PCPUMCTX pCtx);
 VMM_INT_DECL(VBOXSTRICTRC)      gimHvHypercallEx(PVMCPUCC pVCpu, PCPUMCTX pCtx, unsigned uDisOpcode, uint8_t cbInstr);
 #if !defined(VBOX_VMM_TARGET_ARMV8)

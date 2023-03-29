@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 98572 2023-02-14 21:49:56Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -221,8 +221,8 @@ DECLCALLBACK(VBOXSTRICTRC) pgmPhysRomWritePfHandler(PVMCC pVM, PVMCPUCC pVCpu, R
              * If it's a simple instruction which doesn't change the cpu state
              * we will simply skip it. Otherwise we'll have to defer it to REM.
              */
-            uint32_t     cbOp;
-            PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
+            uint32_t  cbOp;
+            PDISSTATE pDis = &pVCpu->pgm.s.Dis;
             rc = EMInterpretDisasCurrent(pVCpu, pDis, &cbOp);
             if (     RT_SUCCESS(rc)
                 &&   pDis->uCpuMode == DISCPUMODE_32BIT  /** @todo why does this matter? */

@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -210,7 +210,7 @@ typedef struct EMCPU
 
     /** For saving stack space, the disassembler state is allocated here instead of
      * on the stack. */
-    DISCPUSTATE             DisState;
+    DISSTATE                Dis;
 
     /** @name Execution profiling.
      * @{ */

@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2294,7 +2294,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hmR3ReplaceTprInstr(PVM pVM, PVMCPU pVCpu, voi
      * Disassembler the instruction and get cracking.
      */
     DBGFR3_DISAS_INSTR_CUR_LOG(pVCpu, "hmR3ReplaceTprInstr");
-    DISCPUSTATE     Dis;
+    DISSTATE        Dis;
     uint32_t        cbOp;
     int rc = EMInterpretDisasCurrent(pVCpu, &Dis, &cbOp);
     AssertRC(rc);
@@ -2470,7 +2470,7 @@ static DECLCALLBACK(VBOXSTRICTRC) hmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void 
     /*
      * Disassemble the instruction and get cracking.
      */
-    DISCPUSTATE     Dis;
+    DISSTATE        Dis;
     uint32_t        cbOp;
     int rc = EMInterpretDisasCurrent(pVCpu, &Dis, &cbOp);
     AssertRC(rc);

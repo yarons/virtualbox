@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -317,7 +317,7 @@ int main()
     /* pgm */
     CHECK_MEMBER_ALIGNMENT(PGMCPU, GCPhysCR3, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, aGCPhysGstPaePDs, sizeof(RTGCPHYS));
-    CHECK_MEMBER_ALIGNMENT(PGMCPU, DisState, 8);
+    CHECK_MEMBER_ALIGNMENT(PGMCPU, Dis, 8);
     CHECK_MEMBER_ALIGNMENT(PGMCPU, cPoolAccessHandler, 8);
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, idx, sizeof(uint16_t));
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, pvPageR3, sizeof(RTHCPTR));
@@ -362,7 +362,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.pfnVMRun, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, Event, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, Event.u64IntInfo, 8);
-    CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.DisState, 8);
+    CHECK_MEMBER_ALIGNMENT(HMR0PERVCPU, svm.Dis, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, StatEntry, 8);
 
     /* Make sure the set is large enough and has the correct size. */

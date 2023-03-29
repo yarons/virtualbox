@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HMInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1144,7 +1144,7 @@ typedef struct HMR0PERVCPU
 
         /** For saving stack space, the disassembler state is allocated here
          * instead of on the stack. */
-        DISCPUSTATE                 DisState;
+        DISSTATE                    Dis;
     } svm;
 } HMR0PERVCPU;
 /** Pointer to HM ring-0 VMCPU instance data. */

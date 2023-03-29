@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMAllHv.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -1460,7 +1460,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvHypercallEx(PVMCPUCC pVCpu, PCPUMCTX pCtx, unsig
  *
  * @thread  EMT(pVCpu).
  */
-VMM_INT_DECL(VBOXSTRICTRC) gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis, uint8_t *pcbInstr)
+VMM_INT_DECL(VBOXSTRICTRC) gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISSTATE pDis, uint8_t *pcbInstr)
 {
     VMCPU_ASSERT_EMT(pVCpu);
 
@@ -1476,8 +1476,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISCPUSTA
          * Disassemble the instruction at RIP to figure out if it's the Intel VMCALL instruction
          * or the AMD VMMCALL instruction and if so, handle it as a hypercall.
          */
-        unsigned    cbInstr;
-        DISCPUSTATE Dis;
+        unsigned cbInstr;
+        DISSTATE Dis;
         int rc = EMInterpretDisasCurrent(pVCpu, &Dis, &cbInstr);
         if (RT_SUCCESS(rc))
         {

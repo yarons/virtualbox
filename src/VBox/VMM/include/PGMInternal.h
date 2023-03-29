@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: PGMInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3593,7 +3593,7 @@ typedef struct PGMCPU
 
     /** For saving stack space, the disassembler state is allocated here instead of
      * on the stack. */
-    DISCPUSTATE                     DisState;
+    DISSTATE                        Dis;
 
     /** Counts the number of times the netware WP0+RO+US hack has been applied. */
     uint64_t                        cNetwareWp0Hacks;

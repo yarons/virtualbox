@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstLdr-2.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -50,13 +50,13 @@
 
 bool MyDisBlock(uint8_t const *pbCodeBlock, int32_t cbMax)
 {
-    DISCPUSTATE Cpu;
+    DISSTATE Dis;
     int32_t i = 0;
     while (i < cbMax)
     {
         char        szOutput[256];
         uint32_t    cbInstr;
-        if (RT_FAILURE(DISInstrToStr(pbCodeBlock + i, DISCPUMODE_32BIT, &Cpu, &cbInstr, szOutput, sizeof(szOutput))))
+        if (RT_FAILURE(DISInstrToStr(pbCodeBlock + i, DISCPUMODE_32BIT, &Dis, &cbInstr, szOutput, sizeof(szOutput))))
             return false;
 
         RTPrintf("%s", szOutput);
