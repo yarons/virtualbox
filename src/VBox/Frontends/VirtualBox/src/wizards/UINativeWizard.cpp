@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 99194 2023-03-28 11:43:51Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 99205 2023-03-29 11:18:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -413,7 +413,13 @@ void UINativeWizard::sltNext()
         m_pWidgetStack->setCurrentIndex(iIteratedIndex);
     /* For last one we just accept the wizard: */
     else
-        accept();
+    {
+        /* Different handling depending on current modality: */
+        if (windowHandle()->modality() == Qt::NonModal)
+            close();
+        else
+            accept();
+    }
 }
 
 void UINativeWizard::prepare()
