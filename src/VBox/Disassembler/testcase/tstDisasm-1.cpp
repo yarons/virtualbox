@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 99221 2023-03-30 12:48:09Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasm-1.cpp 99224 2023-03-30 12:52:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -108,7 +108,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
 static DECLCALLBACK(int) testReadBytes(PDISSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
     RT_NOREF1(cbMinRead);
-    memcpy(&pDis->abInstr[offInstr], (void *)((uintptr_t)pDis->uInstrAddr + offInstr), cbMaxRead);
+    memcpy(&pDis->u.abInstr[offInstr], (void *)((uintptr_t)pDis->uInstrAddr + offInstr), cbMaxRead);
     pDis->cbCachedInstr = offInstr + cbMaxRead;
     return VINF_SUCCESS;
 }
