@@ -1,4 +1,4 @@
-/* $Id: tstLdrObjR0.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: tstLdrObjR0.cpp 99229 2023-03-30 13:15:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -48,7 +48,6 @@
 # error "not IN_RING0!"
 #endif
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <iprt/string.h>
 
 
