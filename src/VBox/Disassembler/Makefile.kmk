@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99236 2023-03-30 15:30:26Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99238 2023-03-30 15:43:35Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -71,9 +71,9 @@ ifndef VBOX_ONLY_VALIDATIONKIT
   DisasmRC_TEMPLATE       = VBoxRc
   DisasmRC_DEFS           = IN_DIS IN_RT_RC DIS_CORE_ONLY
   DisasmRC_SOURCES        = \
- 	Disasm.cpp \
- 	DisasmCore-x86-amd64.cpp \
- 	DisasmTables-x86-amd64.cpp \
+  	Disasm.cpp \
+  	DisasmCore-x86-amd64.cpp \
+  	DisasmTables-x86-amd64.cpp \
   	DisasmTablesX64.cpp \
   	DisasmMisc.cpp
  endif # VBOX_WITH_RAW_MODE
