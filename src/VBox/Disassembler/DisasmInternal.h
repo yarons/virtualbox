@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 99236 2023-03-30 15:30:26Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmInternal.h 99239 2023-03-30 15:46:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -202,9 +202,11 @@ DECL_FORCE_INLINE(void) disPrefetchBytes(PDISSTATE pDis)
 }
 
 
+#if defined(VBOX_DIS_WITH_X86_AMD64)
 /* x86/amd64 */
 DECLHIDDEN(PCDISOPCODE) disInitializeStateX86(PDISSTATE pDis, DISCPUMODE enmCpuMode, uint32_t fFilter);
 DECLHIDDEN(int)         disInstrWorkerX86(PDISSTATE pDis, PCDISOPCODE paOneByteMap, uint32_t *pcbInstr);
+#endif
 
 size_t disFormatBytes(PCDISSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFlags);
 

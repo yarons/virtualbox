@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 99236 2023-03-30 15:30:26Z alexander.eichner@oracle.com $ */
+/* $Id: Disasm.cpp 99239 2023-03-30 15:46:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -311,7 +311,11 @@ disInitializeState(PDISSTATE pDis, RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, 
     pDis->pfnReadBytes      = pfnReadBytes ? pfnReadBytes : disReadBytesDefault;
     pDis->pvUser            = pvUser;
     pDis->uCpuMode          = (uint8_t)enmCpuMode;
+#if defined(VBOX_DIS_WITH_X86_AMD64)
     return disInitializeStateX86(pDis, enmCpuMode, fFilter);
+#else
+    return VERR_NOT_SUPPORTED;
+#endif
 }
 
 
@@ -336,7 +340,11 @@ DISDECL(int) DISInstrEx(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, uint32_t fF
 
     PCDISOPCODE paOneByteMap = disInitializeState(pDis, uInstrAddr, enmCpuMode, fFilter, pfnReadBytes, pvUser);
     disPrefetchBytes(pDis);
+#if defined(VBOX_DIS_WITH_X86_AMD64)
     return disInstrWorkerX86(pDis, paOneByteMap, pcbInstr);
+#else
+    return VERR_NOT_SUPPORTED;
+#endif
 }
 
 
@@ -381,7 +389,11 @@ DISDECL(int) DISInstrWithPrefetchedBytes(RTUINTPTR uInstrAddr, DISCPUMODE enmCpu
         }
     }
 
+#if defined(VBOX_DIS_WITH_X86_AMD64)
     return disInstrWorkerX86(pDis, paOneByteMap, pcbInstr);
+#else
+    return VERR_NOT_SUPPORTED;
+#endif
 }
 
 
