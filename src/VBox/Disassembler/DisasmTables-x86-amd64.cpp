@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmTables-x86-amd64.cpp 99236 2023-03-30 15:30:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -31,7 +31,7 @@
 *********************************************************************************************************************************/
 #include <VBox/dis.h>
 #include <VBox/disopcode-x86-amd64.h>
-#include "DisasmInternal.h"
+#include "DisasmInternal-x86-amd64.h"
 
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
