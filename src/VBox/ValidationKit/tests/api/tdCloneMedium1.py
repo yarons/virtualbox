@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCloneMedium1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdCloneMedium1.py 99235 2023-03-30 14:24:55Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Clone Medium Test #1
@@ -37,12 +37,13 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 99235 $"
 
 
 # Standard Python imports.
 import os
 import sys
+import platform
 
 # Only the main script needs to modify the path.
 try:    __file__                            # pylint: disable=used-before-assignment
@@ -51,6 +52,7 @@ g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.a
 sys.path.append(g_ksValidationKitDir)
 
 # Validation Kit imports.
+from common     import utils
 from testdriver import base
 from testdriver import reporter
 from testdriver import vboxcon
@@ -64,6 +66,15 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
 
     def __init__(self, oTstDrv):
         base.SubTestDriverBase.__init__(self, oTstDrv, 'clone-medium', 'Move Medium');
+        # Solaris delivers a 32-bit version of Python 2.7 which can't handle signed values
+        # above 0x7fffffff (MAXINT) such as 0xdeadbeef.  N.B. If this ever needs to be
+        # extended to other OSes the Python docs:
+        # https://docs.python.org/3/library/platform.html#platform.architecture
+        # mention that the platform.architecture() call can be wrong on macOS.
+        if utils.getHostOs() == 'solaris' and sys.version_info[0] < 3 and platform.architecture()[0] == '32bit':
+            self.iDataToWrite = 0x0badcafe;
+        else:
+            self.iDataToWrite = 0xdeadbeef;
 
     def testIt(self):
         """
@@ -173,7 +184,7 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
 
         oVM = self.oTstDrv.createTestVM('test-medium-clone-only', 1, None, 4)
 
-        hd1 = self.createTestMedium(oVM, "hd1-cloneonly", data=[0xdeadbeef])
+        hd1 = self.createTestMedium(oVM, "hd1-cloneonly", data=[self.iDataToWrite])
         hd2 = self.createTestMedium(oVM, "hd2-cloneonly")
 
         if not self.cloneMedium(hd1, hd2):
@@ -204,7 +215,7 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
 
         oVM = self.oTstDrv.createTestVM('test-medium-clone-only', 1, None, 4)
 
-        hd1 = self.createTestMedium(oVM, "hd1-resizeandclone", data=[0xdeadbeef])
+        hd1 = self.createTestMedium(oVM, "hd1-resizeandclone", data=[self.iDataToWrite])
         hd2 = self.createTestMedium(oVM, "hd2-resizeandclone")
 
         if not (hasattr(hd1, "resizeAndCloneTo") and callable(getattr(hd1, "resizeAndCloneTo"))):
