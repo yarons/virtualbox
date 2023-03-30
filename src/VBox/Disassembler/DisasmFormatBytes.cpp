@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatBytes.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatBytes.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Helper for formatting the opcode bytes.
  */
@@ -78,9 +78,9 @@ size_t disFormatBytes(PCDISSTATE pDis, char *pszDst, size_t cchDst, uint32_t fFl
     for (uint32_t i = 0; i < cb; i++)
     {
         if (i != 0 && (fFlags & DIS_FMT_FLAGS_BYTES_SPACED))
-            PUT_NUM(3, " %02x", pDis->abInstr[i]);
+            PUT_NUM(3, " %02x", pDis->u.abInstr[i]);
         else
-            PUT_NUM(2, "%02x", pDis->abInstr[i]);
+            PUT_NUM(2, "%02x", pDis->u.abInstr[i]);
     }
 
     if (fFlags & DIS_FMT_FLAGS_BYTES_BRACKETS)

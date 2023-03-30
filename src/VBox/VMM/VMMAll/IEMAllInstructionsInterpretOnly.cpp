@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsInterpretOnly.cpp 98916 2023-03-12 01:27:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsInterpretOnly.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -61,7 +61,6 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

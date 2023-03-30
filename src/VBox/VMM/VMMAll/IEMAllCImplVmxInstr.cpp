@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 99217 2023-03-30 10:00:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -48,7 +48,7 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/disopcode.h>
+#include <VBox/disopcode-x86-amd64.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 98543 2023-02-11 00:06:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -60,7 +60,6 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

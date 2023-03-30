@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -46,7 +46,7 @@
 #include "IEMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <VBox/log.h>
-#include <VBox/disopcode.h> /* for OP_VMMCALL */
+#include <VBox/disopcode-x86-amd64.h> /* for OP_VMMCALL */
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>

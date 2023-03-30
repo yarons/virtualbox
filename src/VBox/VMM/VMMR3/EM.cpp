@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: EM.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -69,7 +69,6 @@
 #include <VBox/vmm/uvm.h>
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <VBox/err.h>
 #include "VMMTracing.h"
 
@@ -2015,7 +2014,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         }
 #else
         bool fWakeupPending = false;
-        AssertReleaseFailed();
+        //ssertReleaseFailed();
         /** @todo */
 #endif
 

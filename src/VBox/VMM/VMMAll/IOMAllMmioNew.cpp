@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: IOMAllMmioNew.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -46,8 +46,6 @@
 #include <VBox/vmm/hm.h>
 #include "IOMInline.h"
 
-#include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/param.h>
 #include <VBox/err.h>

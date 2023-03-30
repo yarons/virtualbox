@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-win.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -3076,7 +3076,7 @@ static void supR3HardenedWinInstallHooks(void)
         int rc = DISInstr(pbLdrLoadDll + offJmpBack, DISCPUMODE_64BIT, &Dis, &cbInstr);
         if (   RT_FAILURE(rc)
             || (Dis.pCurInstr->fOpType & (DISOPTYPE_CONTROLFLOW))
-            || (Dis.ModRM.Bits.Mod == 0 && Dis.ModRM.Bits.Rm == 5 /* wrt RIP */) )
+            || (Dis.arch.x86.ModRM.Bits.Mod == 0 && Dis.arch.x86.ModRM.Bits.Rm == 5 /* wrt RIP */) )
             supR3HardenedWinHookFailed("LdrLoadDll", pbLdrLoadDll);
         offJmpBack += cbInstr;
     }
@@ -3163,7 +3163,7 @@ static void supR3HardenedWinInstallHooks(void)
         int rc = DISInstr(pbKiUserApcDispatcher + offJmpBack, DISCPUMODE_64BIT, &Dis, &cbInstr);
         if (   RT_FAILURE(rc)
             || (Dis.pCurInstr->fOpType & (DISOPTYPE_CONTROLFLOW))
-            || (Dis.ModRM.Bits.Mod == 0 && Dis.ModRM.Bits.Rm == 5 /* wrt RIP */) )
+            || (Dis.arch.x86.ModRM.Bits.Mod == 0 && Dis.arch.x86.ModRM.Bits.Rm == 5 /* wrt RIP */) )
             supR3HardenedWinHookFailed("KiUserApcDispatcher", pbKiUserApcDispatcher);
         offJmpBack += cbInstr;
     }

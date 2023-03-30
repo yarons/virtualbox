@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Disasm.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -31,7 +31,6 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DIS
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

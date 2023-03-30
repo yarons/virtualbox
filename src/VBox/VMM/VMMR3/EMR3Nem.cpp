@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 98980 2023-03-15 11:46:48Z alexander.eichner@oracle.com $ */
+/* $Id: EMR3Nem.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -51,7 +51,6 @@
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <VBox/err.h>
 #include <VBox/vmm/dbgf.h>
 #include "VMMTracing.h"

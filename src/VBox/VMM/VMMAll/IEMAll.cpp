@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 98795 2023-03-01 00:05:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -126,7 +126,6 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
 #include <iprt/asm-math.h>
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>

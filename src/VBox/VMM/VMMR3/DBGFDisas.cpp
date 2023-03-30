@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 99210 2023-03-29 14:18:33Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFDisas.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -270,7 +270,7 @@ static DECLCALLBACK(int) dbgfR3DisasInstrRead(PDISSTATE pDis, uint8_t offInstr, 
         /*
          * Read and advance,
          */
-        memcpy(&pDis->abInstr[offInstr], (char *)pState->pvPageR3 + (GCPtr & GUEST_PAGE_OFFSET_MASK), cb);
+        memcpy(&pDis->u.abInstr[offInstr], (char *)pState->pvPageR3 + (GCPtr & GUEST_PAGE_OFFSET_MASK), cb);
         offInstr  += (uint8_t)cb;
         if (cb >= cbMinRead)
         {
@@ -520,7 +520,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     if (RT_FAILURE(rc))
     {
         if (State.Dis.cbCachedInstr)
-            RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc; %.*Rhxs\n", rc, (size_t)State.Dis.cbCachedInstr, State.Dis.abInstr);
+            RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc; %.*Rhxs\n", rc, (size_t)State.Dis.cbCachedInstr, State.Dis.u.abInstr);
         else
             RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc\n", rc);
         return rc;
@@ -563,7 +563,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     else
     {
         uint32_t        cbInstr  = State.Dis.cbInstr;
-        uint8_t const  *pabInstr = State.Dis.abInstr;
+        uint8_t const  *pabInstr = State.Dis.u.abInstr;
         if (fFlags & DBGF_DISAS_FLAGS_NO_ADDRESS)
             cch = RTStrPrintf(pszOutput, cbOutput, "%.*Rhxs%*s %s",
                               cbInstr, pabInstr, cbInstr < 8 ? (8 - cbInstr) * 3 : 0, "",
