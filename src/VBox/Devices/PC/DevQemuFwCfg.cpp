@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 99193 2023-03-28 09:09:30Z alexander.eichner@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 99215 2023-03-30 06:31:36Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -871,7 +871,7 @@ static DECLCALLBACK(VBOXSTRICTRC) qemuFwCfgMmioWrite(PPDMDEVINS pDevIns, void *p
         case QEU_FW_CFG_MMIO_OFF_SELECTOR:
         {
             if (cb == sizeof(uint16_t))
-                qemuFwCfgItemSelect(pThis, *(uint16_t *)pv);
+                qemuFwCfgItemSelect(pThis, RT_BE2H_U16(*(uint16_t *)pv));
             else
                 rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "offMmio=%#x cb=%d\n", off, cb);
             break;
