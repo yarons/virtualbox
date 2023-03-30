@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -523,6 +523,9 @@ private:
 
     /** Holds the ISO file path used by new VM wizard. */
     QString  m_strISOFilePath;
+
+    /** Holds whether snapshot clone should be done by clone VM wizard. */
+    bool  m_fSnapshotCloneByDefault;
 
     /** Holds whether OCI importing should be started by default. */
     bool     m_fImportFromOCI;

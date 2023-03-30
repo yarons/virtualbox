@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotPane.h 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -31,11 +31,15 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QUuid>
+
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UICommon.h"
 
 /* COM includes: */
+#include "COMEnums.h"
 #include "CMachine.h"
 
 /* Forward declarations: */
@@ -51,6 +55,7 @@ class UISnapshotDetailsWidget;
 class UISnapshotItem;
 class UISnapshotTree;
 class UIVirtualMachineItem;
+class CSnapshot;
 
 
 /** Snapshot age format. */
@@ -89,6 +94,9 @@ public:
 
     /** Returns whether "current state" item selected. */
     bool isCurrentStateItemSelected() const;
+
+    /** Returns currently selected snapshot ID if any. */
+    QUuid currentSnapshotId();
 
 protected:
 
@@ -144,8 +152,6 @@ private slots:
         void sltToggleSnapshotDetailsVisibility(bool fVisible);
         /** Handles command to apply snapshot details changes. */
         void sltApplySnapshotDetailsChanges();
-        /** Proposes to clone the snapshot. */
-        void sltCloneSnapshot() { cloneSnapshot(); }
     /** @} */
 
     /** @name Tree-widget handlers.
@@ -201,8 +207,6 @@ private:
         bool deleteSnapshot(bool fAutomatically = false);
         /** Proposes to restore the snapshot. */
         bool restoreSnapshot(bool fAutomatically = false);
-        /** Proposes to clone the snapshot. */
-        void cloneSnapshot();
     /** @} */
 
     /** @name Tree-widget helpers.

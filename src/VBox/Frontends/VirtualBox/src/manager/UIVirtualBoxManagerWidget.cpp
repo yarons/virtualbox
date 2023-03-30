@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -273,6 +273,11 @@ void UIVirtualBoxManagerWidget::closeMachineTool(UIToolType enmType)
 bool UIVirtualBoxManagerWidget::isCurrentStateItemSelected() const
 {
     return m_pPaneToolsMachine->isCurrentStateItemSelected();
+}
+
+QUuid UIVirtualBoxManagerWidget::currentSnapshotId()
+{
+    return m_pPaneToolsMachine->currentSnapshotId();
 }
 
 void UIVirtualBoxManagerWidget::updateToolBarMenuButtons(bool fSeparateMenuSection)

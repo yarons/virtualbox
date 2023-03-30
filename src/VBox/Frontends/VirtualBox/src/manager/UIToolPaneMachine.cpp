@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -341,9 +341,12 @@ void UIToolPaneMachine::setItems(const QList<UIVirtualMachineItem*> &items)
 
 bool UIToolPaneMachine::isCurrentStateItemSelected() const
 {
-    if (!m_pPaneSnapshots)
-        return false;
-    return m_pPaneSnapshots->isCurrentStateItemSelected();
+    return m_pPaneSnapshots ? m_pPaneSnapshots->isCurrentStateItemSelected() : false;
+}
+
+QUuid UIToolPaneMachine::currentSnapshotId()
+{
+    return m_pPaneSnapshots ? m_pPaneSnapshots->currentSnapshotId() : QUuid();
 }
 
 QString UIToolPaneMachine::currentHelpKeyword() const
