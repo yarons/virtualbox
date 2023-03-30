@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDisasm-1.cpp 99221 2023-03-30 12:48:09Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -88,7 +88,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
         uint32_t        cbOnly = 1;
         DISSTATE        DisOnly;
         rc = DISInstrWithPrefetchedBytes((uintptr_t)&pabInstrs[off], enmDisCpuMode,  0 /*fFilter - none */,
-                                         Dis.abInstr, Dis.cbCachedInstr, NULL, NULL, &DisOnly, &cbOnly);
+                                         Dis.u.abInstr, Dis.cbCachedInstr, NULL, NULL, &DisOnly, &cbOnly);
 
         RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
         RTTESTI_CHECK(cbOnly == DisOnly.cbInstr);
