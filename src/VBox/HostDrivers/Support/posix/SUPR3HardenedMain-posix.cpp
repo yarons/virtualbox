@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 99221 2023-03-30 12:48:09Z alexander.eichner@oracle.com $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 99223 2023-03-30 12:52:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -442,7 +442,7 @@ static int supR3HardenedMainPosixHookOne(const char *pszSymbol, PFNRT pfnHook, u
 
                 *pbPatchMem++ = 0x48;
                 *pbPatchMem++ = 0x8b;
-                *pbPatchMem++ = (Dis.Param1.arch.x86.Base.idxGenReg << X86_MODRM_REG_SHIFT) | Dis.Param1.Base.arch.x86.idxGenReg;
+                *pbPatchMem++ = (Dis.Param1.arch.x86.Base.idxGenReg << X86_MODRM_REG_SHIFT) | Dis.Param1.arch.x86.Base.idxGenReg;
             }
             else
             {
