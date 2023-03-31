@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 99248 2023-03-31 09:02:48Z knut.osmundsen@oracle.com $ */
+/* $Id: getopt.cpp 99249 2023-03-31 09:03:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -366,12 +366,8 @@ static PCRTGETOPTDEF rtGetOptSearchLong(const char *pszOption, PCRTGETOPTDEF paO
     if (!(fFlags & RTGETOPTINIT_FLAGS_NO_STD_OPTS))
         for (uint32_t i = 0; i < RT_ELEMENTS(g_aStdOptions); i++)
         {
-            size_t cchMatch = 0;
-            if (rtGetOptLongStrEquals(pszOption, g_aStdOptions[i].pszLong, RTSTR_MAX, g_aStdOptions[i].fFlags, &cchMatch))
-            {
-                *pcchMatch = cchMatch;
+            if (rtGetOptLongStrEquals(pszOption, g_aStdOptions[i].pszLong, RTSTR_MAX, g_aStdOptions[i].fFlags, pcchMatch))
                 return &g_aStdOptions[i];
-            }
         }
 
     *pcchMatch = 0;
