@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 98666 2023-02-21 08:46:29Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestFileImpl.cpp 99252 2023-03-31 10:08:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -900,7 +900,7 @@ int GuestFile::i_openFile(uint32_t uTimeoutMS, int *prcGuest)
 int GuestFile::i_queryInfo(GuestFsObjData &objData, int *prcGuest)
 {
     AssertPtrReturn(mSession, VERR_OBJECT_DESTROYED);
-    return mSession->i_fsQueryInfo(mData.mOpenInfo.mFilename, FALSE /* fFollowSymlinks */, objData, prcGuest);
+    return mSession->i_fsObjQueryInfo(mData.mOpenInfo.mFilename, FALSE /* fFollowSymlinks */, objData, prcGuest);
 }
 
 /**
