@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 99244 2023-03-31 05:28:25Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllPool.cpp 99245 2023-03-31 06:14:22Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3581,7 +3581,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
 #endif /* PGM_WITH_LARGE_PAGES */
 
         default:
-            AssertFatalMsgFailed(("enmKind=%d (%s) iShw=%d\n", pPage->enmKind, pgmPoolPoolKindToStr(pPage->enmKind), iShw));
+            AssertFatalMsgFailed(("enmKind=%d iShw=%d\n", pPage->enmKind, iShw));
     }
 
     /* not reached. */
