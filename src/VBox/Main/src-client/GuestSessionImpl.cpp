@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 99253 2023-03-31 10:22:37Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 99258 2023-03-31 14:18:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2023,7 +2023,7 @@ int GuestSession::i_fileQuerySize(const Utf8Str &strPath, bool fFollowSymlinks, 
  *                              VERR_GSTCTL_GUEST_ERROR. Any other return code
  *                              indicates some host side error.
  */
-int GuestSession::i_fsQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest)
+int GuestSession::i_fsObjQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest)
 {
     /** @todo Merge this with IGuestFile::queryInfo(). */
     GuestProcessStartupInfo procInfo;
@@ -2142,7 +2142,7 @@ int GuestSession::i_fsObjQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks,
     else
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
     {
-        vrc = i_fsQueryInfoViaToolbox(strPath, fFollowSymlinks, objData, pvrcGuest);
+        vrc = i_fsObjQueryInfoViaToolbox(strPath, fFollowSymlinks, objData, pvrcGuest);
     }
 
     LogFlowThisFunc(("Returning vrc=%Rrc, vrcGuest=%Rrc\n", vrc, pvrcGuest ? *pvrcGuest : VERR_IPE_UNINITIALIZED_STATUS));

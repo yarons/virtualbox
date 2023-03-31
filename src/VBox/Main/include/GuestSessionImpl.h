@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 99252 2023-03-31 10:08:00Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.h 99258 2023-03-31 14:18:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -364,7 +364,7 @@ public:
     int                     i_fileRemoveViaToolbox(const Utf8Str &strPath, int *pvrcGuest);
     int                     i_fsCreateTempViaToolbox(const Utf8Str &strTemplate, const Utf8Str &strPath, bool fDirectory, Utf8Str &strName,
                                                      uint32_t fMode, bool fSecure, int *pvrcGuest);
-    int                     i_fsQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest);
+    int                     i_fsObjQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest);
     /** @}  */
 
 public:
