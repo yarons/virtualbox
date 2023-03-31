@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 99256 2023-03-31 12:40:07Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 99257 2023-03-31 13:40:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2049,7 +2049,7 @@ static int vgsvcGstCtrlSessionHandleFsObjQueryInfo(const PVBOXSERVICECTRLSESSION
         const char *pszUser  = VGSvcIdCacheGetUidName(&pSession->UidCache, pObjInfo->Attr.u.Unix.uid, szPath, NULL /* pszRelativeTo */);
         const char *pszGroup = VGSvcIdCacheGetGidName(&pSession->GidCache, pObjInfo->Attr.u.Unix.gid, szPath, NULL /* pszRelativeTo */);
 
-        int rc2 = VbglR3GuestCtrlFsCbQueryInfoEx(pHostCtx, rc, pObjInfo, pszUser, pszGroup);
+        int rc2 = VbglR3GuestCtrlFsObjCbQueryInfoEx(pHostCtx, rc, pObjInfo, pszUser, pszGroup);
         if (RT_FAILURE(rc2))
         {
             VGSvcError("Failed to reply to fsobjquerinfo request %Rrc, rc=%Rrc\n", rc, rc2);
