@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 98780 2023-02-28 12:03:39Z vadim.galitsyn@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 99251 2023-03-31 09:41:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1242,7 +1242,8 @@ int FsList::AddDirFromGuest(const Utf8Str &strPath, const Utf8Str &strSubDir /* 
             }
         }
 
-        if (vrc == VERR_NO_MORE_FILES) /* End of listing reached? */
+        if (   vrc      == VERR_GSTCTL_GUEST_ERROR
+            && vrcGuest == VERR_NO_MORE_FILES) /* End of listing reached? */
             vrc = VINF_SUCCESS;
     }
 
