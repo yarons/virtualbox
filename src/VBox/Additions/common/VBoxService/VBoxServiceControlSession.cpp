@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 99147 2023-03-23 17:08:44Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 99253 2023-03-31 10:22:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1974,7 +1974,7 @@ static int vgsvcGstCtrlSessionHandleProcWaitFor(const PVBOXSERVICECTRLSESSION pS
 
 
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
-static int vgsvcGstCtrlSessionHandleFsQueryInfo(const PVBOXSERVICECTRLSESSION pSession, PVBGLR3GUESTCTRLCMDCTX pHostCtx)
+static int vgsvcGstCtrlSessionHandleFsQueryObjInfo(const PVBOXSERVICECTRLSESSION pSession, PVBGLR3GUESTCTRLCMDCTX pHostCtx)
 {
     AssertPtrReturn(pSession, VERR_INVALID_POINTER);
     AssertPtrReturn(pHostCtx, VERR_INVALID_POINTER);
@@ -1987,7 +1987,7 @@ static int vgsvcGstCtrlSessionHandleFsQueryInfo(const PVBOXSERVICECTRLSESSION pS
     uint32_t           fFlags;
     RTFSOBJINFO        objInfoRuntime;
 
-    int rc = VbglR3GuestCtrlFsGetQueryInfo(pHostCtx, szPath, sizeof(szPath), &enmAttrAdd, &fFlags);
+    int rc = VbglR3GuestCtrlFsGetQueryObjInfo(pHostCtx, szPath, sizeof(szPath), &enmAttrAdd, &fFlags);
     if (RT_SUCCESS(rc))
     {
         uint32_t fFlagsRuntime = 0;
@@ -2231,9 +2231,9 @@ int VGSvcGstCtrlSessionHandler(PVBOXSERVICECTRLSESSION pSession, uint32_t uMsg, 
             break;
 
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
-        case HOST_MSG_FS_QUERY_INFO:
+        case HOST_MSG_FS_OBJ_QUERY_INFO:
             if (fImpersonated)
-                rc = vgsvcGstCtrlSessionHandleFsQueryInfo(pSession, pHostCtx);
+                rc = vgsvcGstCtrlSessionHandleFsQueryObjInfo(pSession, pHostCtx);
             break;
 
         case HOST_MSG_FS_CREATE_TEMP:

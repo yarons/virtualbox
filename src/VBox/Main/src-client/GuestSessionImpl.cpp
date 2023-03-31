@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 99252 2023-03-31 10:08:00Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 99253 2023-03-31 10:22:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2107,7 +2107,7 @@ int GuestSession::i_fsObjQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks,
 
         alock.release(); /* Drop lock before sending. */
 
-        vrc = i_sendMessage(HOST_MSG_FS_QUERY_INFO, i, paParms);
+        vrc = i_sendMessage(HOST_MSG_FS_OBJ_QUERY_INFO, i, paParms);
         if (RT_SUCCESS(vrc))
         {
             vrc = pEvent->Wait(30 * 1000);
