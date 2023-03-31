@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 99253 2023-03-31 10:22:37Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 99254 2023-03-31 10:23:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -317,7 +317,6 @@ DECLINLINE(const char *) GstCtrlHostMsgtoStr(enum eHostMsg enmMsg)
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
         RT_CASE_RET_STR(HOST_MSG_FS_OBJ_QUERY_INFO);
         RT_CASE_RET_STR(HOST_MSG_FS_CREATE_TEMP);
-        RT_CASE_RET_STR(HOST_MSG_FS_OBJ_MOVE);
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
         RT_CASE_RET_STR(HOST_MSG_32BIT_HACK);
     }
