@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 99246 2023-03-31 08:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: getopt.cpp 99247 2023-03-31 08:54:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -374,6 +374,7 @@ static PCRTGETOPTDEF rtGetOptSearchLong(const char *pszOption, PCRTGETOPTDEF paO
             }
         }
 
+    *pcchMatch = 0;
     return NULL;
 }
 
