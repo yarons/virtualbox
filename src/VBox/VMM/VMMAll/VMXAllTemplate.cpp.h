@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99117 2023-03-22 13:23:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99259 2023-04-03 12:15:37Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -3628,6 +3628,8 @@ DECLINLINE(void) vmxHCImportGuestIntrState(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsIn
 {
     uint32_t u32Val;
     int rc = VMX_VMCS_READ_32(pVCpu, VMX_VMCS32_GUEST_INT_STATE, &u32Val);    AssertRC(rc);
+    Assert((u32Val & (VMX_VMCS_GUEST_INT_STATE_BLOCK_STI | VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS))
+                  != (VMX_VMCS_GUEST_INT_STATE_BLOCK_STI | VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS));
     if (!u32Val)
     {
         CPUMClearInterruptShadow(&pVCpu->cpum.GstCtx);
