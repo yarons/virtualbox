@@ -1,4 +1,4 @@
-# $Id: pdf-theme-UserManual.yaml 99268 2023-04-03 21:09:28Z knut.osmundsen@oracle.com $
+# $Id: pdf-theme-UserManual.yaml 99270 2023-04-03 22:52:21Z knut.osmundsen@oracle.com $
 
 brand:
     color:
@@ -241,7 +241,6 @@ style:
         start-indent:       '1cm + from-parent(start-indent)'
         text-indent:        -1cm
         keep-together.within-page: always
-
-
     var:
         font-family:        $pdf2-font-monospaced
+
