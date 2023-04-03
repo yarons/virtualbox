@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 99120 2023-03-22 17:30:14Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 99262 2023-04-03 15:17:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1712,6 +1712,15 @@ typedef struct CALLBACKDATA_FS_NOTIFY
     uint32_t rc;
     union
     {
+        /** Holds information for GUEST_FS_NOTIFYTYPE_CREATE_TEMP. */
+        struct
+        {
+            /** Path of created temporary file / directory. */
+            char    *pszPath;
+            /** Size (in bytes) of \a pszPath. */
+            uint32_t cbPath;
+        } CreateTemp;
+        /** Holds information for GUEST_FS_NOTIFYTYPE_QUERY_OBJ_INFO. */
         struct
         {
             GSTCTLFSOBJINFO objInfo;
@@ -1723,14 +1732,13 @@ typedef struct CALLBACKDATA_FS_NOTIFY
             char           *pszGroups;
             /** Size (in bytes) of \a pszGroups. */
             uint32_t        cbGroups;
-        } QueryInfo;
+        } QueryObjInfo;
+        /** Holds information for GUEST_FS_NOTIFYTYPE_QUERY_INFO. */
         struct
         {
-            /** Path of created temporary file / directory. */
-            char    *pszPath;
-            /** Size (in bytes) of \a pszPath. */
-            uint32_t cbPath;
-        } CreateTemp;
+            /** The actual filesystem information. */
+            GSTCTLFSINFO    fsInfo;
+        } QueryInfo;
     } u;
 } CALLBACKDATA_FS_NOTIFY;
 /** Pointer to a CALLBACKDATA_FS_NOTIFY struct. */

@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 99258 2023-03-31 14:18:22Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.h 99262 2023-04-03 15:17:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -317,6 +317,7 @@ public:
     int                     i_fileQuerySize(const Utf8Str &strPath, bool fFollowSymlinks, int64_t *pllSize, int *pvrcGuest);
     int                     i_fsCreateTemp(const Utf8Str &strTemplate, const Utf8Str &strPath, bool fDirectory,
                                            Utf8Str &strName, uint32_t fMode, bool fSecure, int *pvrcGuest);
+    int                     i_fsQueryInfo(const Utf8Str &strPath, PGSTCTLFSINFO pFsInfo, int *pvrcGuest);
     int                     i_fsObjQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest);
     const GuestCredentials &i_getCredentials(void);
     EventSource            *i_getEventSource(void) { return mEventSource; }
