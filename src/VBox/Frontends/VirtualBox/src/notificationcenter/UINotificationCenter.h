@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 99263 2023-04-03 15:32:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -51,6 +51,7 @@ class QVBoxLayout;
 class QIToolButton;
 class UINotificationModel;
 class UINotificationObject;
+class UINotificationObjectItem;
 
 /** QWidget-based notification-center overlay. */
 class SHARED_LIBRARY_STUFF UINotificationCenter : public QIWithRetranslateUI<QWidget>
@@ -201,7 +202,7 @@ private:
     QVBoxLayout  *m_pLayoutItems;
 
     /** Holds the map of item instances. */
-    QMap<QUuid, QWidget*>  m_items;
+    QMap<QUuid, UINotificationObjectItem*>  m_items;
 
     /** Holds the sliding state-machine instance. */
     QStateMachine *m_pStateMachineSliding;

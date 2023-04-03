@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 99263 2023-04-03 15:32:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -494,9 +494,9 @@ void UINotificationCenter::sltHandleModelItemAdded(const QUuid &uId)
 
 void UINotificationCenter::sltHandleModelItemRemoved(const QUuid &uId)
 {
-    /* Remove corresponding model item representation: */
-    AssertReturnVoid(m_items.contains(uId));
-    delete m_items.take(uId);
+    /* Remove corresponding model item representation if present: */
+    if (m_items.contains(uId))
+        delete m_items.take(uId);
 
     /* Hide and slide away if there are no notifications to show: */
     setHidden(m_pModel->ids().isEmpty());
