@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 99263 2023-04-03 15:32:13Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 99265 2023-04-03 15:38:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -66,6 +66,9 @@ signals:
     /** Requests sliding state-machine to close overlay. */
     void sigClose();
 
+    /** Notifies listener about all operations aborted. */
+    void sigOperationsAborted();
+
 public:
 
     /** Creates notification-center for passed @a pParent. */
@@ -94,6 +97,10 @@ public:
     /** Immediately and synchronously handles passed notification @a pProgress.
       * @note It's a blocking call finished by sltHandleProgressFinished(). */
     bool handleNow(UINotificationProgress *pProgress);
+    /** Returns whether center has blocking operation. */
+    bool hasOperationsPending() const;
+    /** Aborts blocking operations being performed. */
+    void abortOperations();
 
 protected:
 

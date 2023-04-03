@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 99205 2023-03-29 11:18:03Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 99265 2023-04-03 15:38:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -288,6 +288,10 @@ void UINativeWizard::closeEvent(QCloseEvent *pEvent)
         /* Ignore event initially: */
         pEvent->ignore();
 
+        /* Let the notification-center abort blocking operations: */
+        if (m_pNotificationCenter->hasOperationsPending())
+            m_pNotificationCenter->abortOperations();
+        else
         /* Tell the listener to close us (once): */
         if (!m_fClosed)
         {
@@ -588,6 +592,9 @@ void UINativeWizard::prepare()
 
     /* Prepare local notification-center: */
     m_pNotificationCenter = new UINotificationCenter(this);
+    if (m_pNotificationCenter)
+        connect(m_pNotificationCenter, &UINotificationCenter::sigOperationsAborted,
+                this, &UINativeWizard::close, Qt::QueuedConnection);
 }
 
 void UINativeWizard::cleanup()

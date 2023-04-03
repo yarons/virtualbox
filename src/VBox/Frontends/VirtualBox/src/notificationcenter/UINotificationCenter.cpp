@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 99263 2023-04-03 15:32:13Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 99265 2023-04-03 15:38:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -287,6 +287,17 @@ bool UINotificationCenter::handleNow(UINotificationProgress *pProgress)
 
     /* Return actual result: */
     return m_fLastResult;
+}
+
+bool UINotificationCenter::hasOperationsPending() const
+{
+    return m_pEventLoop;
+}
+
+void UINotificationCenter::abortOperations()
+{
+    m_pEventLoop->exit();
+    emit sigOperationsAborted();
 }
 
 void UINotificationCenter::retranslateUi()
