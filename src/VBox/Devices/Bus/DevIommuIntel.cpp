@@ -1,4 +1,4 @@
-/* $Id: DevIommuIntel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIommuIntel.cpp 99280 2023-04-04 13:05:53Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - Intel implementation.
  */
@@ -3359,7 +3359,7 @@ static DECLCALLBACK(int) dmarR3InvQueueThread(PPDMDEVINS pDevIns, PPDMTHREAD pTh
          */
         {
             int const rc = PDMDevHlpSUPSemEventWaitNoResume(pDevIns, pThis->hEvtInvQueue, RT_INDEFINITE_WAIT);
-            AssertLogRelMsgReturn(RT_SUCCESS(rc) || rc == VERR_INTERRUPTED, ("%Rrc\n", rc), rc);
+            AssertLogRelMsgReturnStmt(RT_SUCCESS(rc) || rc == VERR_INTERRUPTED, ("%Rrc\n", rc), RTMemFree(pvRequests), rc);
             if (RT_UNLIKELY(pThread->enmState != PDMTHREADSTATE_RUNNING))
                 break;
         }
