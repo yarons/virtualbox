@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 99287 2023-04-04 23:54:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -514,7 +514,7 @@ FNIEMOP_DEF_1(iemOpCommonSse2Opt_FullFull_To_Full, PFNIEMAIMPLMEDIAOPTF2U128, pf
  * The 2nd operand is the first half of a register, which in the memory case
  * means a 32-bit memory access.
  */
-FNIEMOP_DEF_1(iemOpCommonMmx_LowLow_To_Full, FNIEMAIMPLMEDIAOPTF2U64, pfnU64)
+FNIEMOP_DEF_1(iemOpCommonMmx_LowLow_To_Full, PFNIEMAIMPLMEDIAOPTF2U64, pfnU64)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
@@ -6691,7 +6691,7 @@ FNIEMOP_DEF(iemOp_pshuflw_Vx_Wx_Ib)
  *      psllq       mm, imm8
  *
  */
-FNIEMOP_DEF_2(iemOpCommonMmx_Shift_Imm, uint8_t, bRm, FNIEMAIMPLMEDIAPSHIFTU64, pfnU64)
+FNIEMOP_DEF_2(iemOpCommonMmx_Shift_Imm, uint8_t, bRm, PFNIEMAIMPLMEDIAPSHIFTU64, pfnU64)
 {
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {
@@ -6738,7 +6738,7 @@ FNIEMOP_DEF_2(iemOpCommonMmx_Shift_Imm, uint8_t, bRm, FNIEMAIMPLMEDIAPSHIFTU64, 
  *      psllq       xmm, imm8
  *
  */
-FNIEMOP_DEF_2(iemOpCommonSse2_Shift_Imm, uint8_t, bRm, FNIEMAIMPLMEDIAPSHIFTU128, pfnU128)
+FNIEMOP_DEF_2(iemOpCommonSse2_Shift_Imm, uint8_t, bRm, PFNIEMAIMPLMEDIAPSHIFTU128, pfnU128)
 {
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {

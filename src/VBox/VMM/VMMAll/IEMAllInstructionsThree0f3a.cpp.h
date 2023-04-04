@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f3a.cpp.h 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstructionsThree0f3a.cpp.h 99287 2023-04-04 23:54:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -161,7 +161,7 @@ FNIEMOP_DEF_1(iemOpCommonSse41_FullFullImm8_To_Full, PFNIEMAIMPLMEDIAOPTF2U128IM
  *
  * @sa  iemOpCommonSse41_FullFullImm8_To_Full
  */
-FNIEMOP_DEF_1(iemOpCommonSse41Fp_FullFullImm8_To_Full, FNIEMAIMPLMXCSRF2XMMIMM8, pfnU128)
+FNIEMOP_DEF_1(iemOpCommonSse41Fp_FullFullImm8_To_Full, PFNIEMAIMPLMXCSRF2XMMIMM8, pfnU128)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
