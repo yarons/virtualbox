@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99282 $"
+__version__ = "$Revision: 99283 $"
 
 # Standard Python imports.
 import errno
@@ -5570,13 +5570,14 @@ class tdAddGuestCtrl(vbox.TestDriver):                                         #
         aEnv = [];
         afFlags = [];
 
-        for _ in xrange(100):
-            oProc = self.processCreateWrapper(oGuestSession, sCmd, asArgs if self.fpApiVer >= 5.0 else asArgs[1:],
-                                              "", # Working directory.
-                                              aEnv, afFlags, 30 * 1000);
-
-            aWaitFor = [ vboxcon.ProcessWaitForFlag_Terminate ];
-            _ = oProc.waitForArray(aWaitFor, 30 * 1000);
+        # Fix this once being used (again).
+        #for _ in xrange(100):
+        #    oProc = self.processCreateWrapper(oGuestSession, sCmd, asArgs if self.fpApiVer >= 5.0 else asArgs[1:],
+        #                                      "", # Working directory.
+        #                                      aEnv, afFlags, 30 * 1000);
+        #
+        #    aWaitFor = [ vboxcon.ProcessWaitForFlag_Terminate ];
+        #    _ = oProc.waitForArray(aWaitFor, 30 * 1000);
 
         oGuestSession.close();
         oGuestSession = None;
