@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 98908 2023-03-10 16:34:32Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 99274 2023-04-04 06:48:08Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2393,7 +2393,7 @@ static bool dxIsDepthStencilFormat(DXGI_FORMAT dxgiFormat)
         case DXGI_FORMAT_D32_FLOAT_S8X24_UINT:
         case DXGI_FORMAT_D32_FLOAT:
         case DXGI_FORMAT_D24_UNORM_S8_UINT:
-        case DXGI_FORMAT_R16_FLOAT:
+        case DXGI_FORMAT_D16_UNORM:
             return true;
         default:
             break;
