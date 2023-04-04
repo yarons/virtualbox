@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 99275 2023-04-04 06:56:38Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 99276 2023-04-04 07:12:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2536,7 +2536,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleFsInfo(PGCTLCMDCTX pCtx, int argc, cha
                      cwSizeAvail, cbTotalFree,                                  /* Available */
                      cwUsePercent - 1 /* For percent sign */, uPercentUsed,     /* Percent */
                      cwPathSpacing, "",
-                     "-");                                    /* Path */
+                     "-");                                                      /* Path */
         }
         RTPrintf("\n");
     }
