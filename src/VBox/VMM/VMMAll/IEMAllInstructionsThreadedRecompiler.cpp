@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 98873 2023-03-08 01:51:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99286 2023-04-04 19:24:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -61,7 +61,7 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
+#include <VBox/disopcode-x86-amd64.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

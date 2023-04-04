@@ -1,4 +1,4 @@
-/* $Id: IEMThreadedFunctions.cpp 99024 2023-03-17 19:53:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMThreadedFunctions.cpp 99286 2023-04-04 19:24:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -60,7 +60,7 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/dis.h>
-#include <VBox/disopcode.h>
+#include <VBox/disopcode-x86-amd64.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
