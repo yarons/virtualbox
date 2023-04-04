@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 99219 2023-03-30 12:09:55Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 99278 2023-04-04 10:50:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -3432,9 +3432,7 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
         case UIActionIndexMN_M_Group_S_New:
         case UIActionIndexMN_M_Group_S_Add:
         {
-            return !isGroupSavingInProgress() &&
-                   (isSingleLocalGroupSelected() ||
-                    isSingleCloudProfileGroupSelected());
+            return !isGroupSavingInProgress();
         }
         case UIActionIndexMN_M_Group_S_Sort:
         {
