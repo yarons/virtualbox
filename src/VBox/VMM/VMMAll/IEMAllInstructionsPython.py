@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 99288 2023-04-04 23:55:49Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 99296 2023-04-05 10:15:47Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99288 $"
+__version__ = "$Revision: 99296 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1999,8 +1999,8 @@ class McBlock(object):
         oSelf.checkStmtParamCount(sName, asParams, 3);
         # Note! We split this one up into IEM_MC_LOCAL_VAR and IEM_MC_ARG_LOCAL_REF.
         return (
-            McStmtVar('IEM_MC_LOCAL_VAR', ['uint32_t', asParams[1],], 'uint32_t', asParams[1]),
-            McStmtArg('IEM_MC_ARG_LOCAL_REF', ['uint32_t *', asParams[0], asParams[2], asParams[1]],
+            McStmtVar('IEM_MC_LOCAL', ['uint32_t', asParams[1],], 'uint32_t', asParams[1]),
+            McStmtArg('IEM_MC_ARG_LOCAL_REF', ['uint32_t *', asParams[0], asParams[1], asParams[2]],
                       'uint32_t *', asParams[0], int(asParams[2]), sRef = asParams[1], sRefType = 'local'),
         );
 

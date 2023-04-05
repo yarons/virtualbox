@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 98969 2023-03-15 00:24:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 99296 2023-04-05 10:15:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1545,6 +1545,26 @@ DECLINLINE(uint8_t *) iemGRegRefU8(PVMCPUCC pVCpu, uint8_t iReg) RT_NOEXCEPT
     return &pVCpu->cpum.GstCtx.aGRegs[iReg & 3].bHi;
 }
 #endif
+
+
+/**
+ * Gets a reference (pointer) to the specified 8-bit general purpose register,
+ * alternative version with extended register index.
+ *
+ * @returns Register reference.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   iRegEx              The register.  The 16 first are regular ones,
+ *                              whereas 16 thru 19 maps to AH, CH, DH and BH.
+ */
+DECLINLINE(uint8_t *) iemGRegRefU8Ex(PVMCPUCC pVCpu, uint8_t iRegEx) RT_NOEXCEPT
+{
+    if (iRegEx < 16)
+        return &pVCpu->cpum.GstCtx.aGRegs[iRegEx].u8;
+
+    /* high 8-bit register. */
+    Assert(iRegEx < 20);
+    return &pVCpu->cpum.GstCtx.aGRegs[iRegEx & 3].bHi;
+}
 
 
 /**
