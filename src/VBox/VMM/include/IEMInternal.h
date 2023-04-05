@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 98969 2023-03-15 00:24:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 99298 2023-04-05 22:27:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4061,6 +4061,8 @@ IEM_CIMPL_PROTO_1(iemCImpl_call_64, uint64_t, uNewPC);
 IEM_CIMPL_PROTO_1(iemCImpl_call_rel_64, int64_t, offDisp);
 IEM_CIMPL_PROTO_3(iemCImpl_FarJmp, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEffOpSize);
 IEM_CIMPL_PROTO_3(iemCImpl_callf, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEffOpSize);
+typedef IEM_CIMPL_DECL_TYPE_3(FNIEMCIMPLFARBRANCH, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEffOpSize);
+typedef FNIEMCIMPLFARBRANCH *PFNIEMCIMPLFARBRANCH;
 IEM_CIMPL_PROTO_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop);
 IEM_CIMPL_PROTO_0(iemCImpl_retn_16);
 IEM_CIMPL_PROTO_0(iemCImpl_retn_32);
