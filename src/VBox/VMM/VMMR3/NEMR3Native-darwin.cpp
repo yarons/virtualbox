@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 99292 2023-04-05 08:19:50Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -4443,7 +4443,15 @@ VMM_INT_DECL(void) NEMHCNotifyPhysPageChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPH
           GCPhys, HCPhysPrev, HCPhysNew, fPageProt, enmType, *pu2State));
     RT_NOREF(HCPhysPrev, HCPhysNew, pvNewR3, fPageProt, enmType);
 
-    nemR3DarwinUnmap(pVM, GCPhys, X86_PAGE_SIZE, pu2State);
+    int rc = nemR3DarwinUnmap(pVM, GCPhys, X86_PAGE_SIZE, pu2State);
+    if (RT_SUCCESS(rc))
+    {
+        rc = nemR3DarwinMap(pVM, GCPhys, pvNewR3, X86_PAGE_SIZE, fPageProt, pu2State);
+        AssertLogRelMsgRC(rc, ("NEMHCNotifyPhysPageChanged: nemR3DarwinMap(,%p,%RGp,%RGp,) -> %Rrc\n",
+                          pvNewR3, GCPhys, X86_PAGE_SIZE, rc));
+    }
+    else
+        AssertReleaseFailed();
 }
 
 
