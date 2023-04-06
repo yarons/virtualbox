@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 99273 2023-04-04 04:47:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 99318 2023-04-06 16:02:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7180,16 +7180,12 @@ static int iemVmxVmentryLoadGuestVmcsRefState(PVMCPUCC pVCpu, const char *pszIns
          *
          * See Intel spec. 24.11.4 "Software Access to Related Structures".
          */
-        if (!PGMHandlerPhysicalIsRegistered(pVCpu->CTX_SUFF(pVM), GCPhysApicAccess))
-        {
-            PVMCC pVM = pVCpu->CTX_SUFF(pVM);
-            int rc = PGMHandlerPhysicalRegister(pVM, GCPhysApicAccess, GCPhysApicAccess | X86_PAGE_4K_OFFSET_MASK,
-                                                pVM->iem.s.hVmxApicAccessPage, 0 /*uUser*/, NULL /*pszDesc*/);
-            if (RT_SUCCESS(rc))
-            { /* likely */ }
-            else
-                IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_AddrApicAccessHandlerReg);
-        }
+        PVMCC pVM = pVCpu->CTX_SUFF(pVM);
+        int rc = PGMHandlerPhysicalRegisterVmxApicAccessPage(pVM, GCPhysApicAccess, pVM->iem.s.hVmxApicAccessPage);
+        if (RT_SUCCESS(rc))
+        { /* likely */ }
+        else
+            IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_AddrApicAccessHandlerReg);
     }
 
     /*
