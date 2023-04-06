@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 99296 2023-04-05 10:15:47Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 99299 2023-04-06 00:06:25Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99296 $"
+__version__ = "$Revision: 99299 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -4574,8 +4574,6 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
             self.raiseError('IEM_MC_END w/o IEM_MC_BEGIN.');
 
         #
-        # Complete and discard the current block.
-        #
         # HACK ALERT! For blocks orginating from macro expansion the start and
         #             end line will be the same, but the line has multiple
         #             newlines inside it.  So, we have to do some extra tricks
@@ -4600,6 +4598,38 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
 
             asLines = [sLine + '\n' for sLine in sRawLine.split('\n')];
 
+        #
+        # Strip anything following the IEM_MC_END(); statement in the final line,
+        # so that we don't carry on any trailing 'break' after macro expansions
+        # like for iemOp_movsb_Xb_Yb.
+        #
+        while asLines[-1].strip() == '':
+            asLines.pop();
+        sFinal      = asLines[-1];
+        offFinalEnd = sFinal.find('IEM_MC_END');
+        if offFinalEnd < 0: self.raiseError('bogus IEM_MC_END: Not in final line: %s' % (sFinal,));
+        offFinalEnd += len('IEM_MC_END');
+
+        while sFinal[offFinalEnd].isspace():
+            offFinalEnd += 1;
+        if sFinal[offFinalEnd] != '(': self.raiseError('bogus IEM_MC_END: Expected "(" at %s: %s' % (offFinalEnd, sFinal,));
+        offFinalEnd += 1;
+
+        while sFinal[offFinalEnd].isspace():
+            offFinalEnd += 1;
+        if sFinal[offFinalEnd] != ')': self.raiseError('bogus IEM_MC_END: Expected ")" at %s: %s' % (offFinalEnd, sFinal,));
+        offFinalEnd += 1;
+
+        while sFinal[offFinalEnd].isspace():
+            offFinalEnd += 1;
+        if sFinal[offFinalEnd] != ';': self.raiseError('bogus IEM_MC_END: Expected ";" at %s: %s' % (offFinalEnd, sFinal,));
+        offFinalEnd += 1;
+
+        asLines[-1] = sFinal[: offFinalEnd];
+
+        #
+        # Complete and discard the current block.
+        #
         self.oCurMcBlock.complete(self.iLine, offEndStatementInLine, asLines);
         self.oCurMcBlock = None;
         return True;
