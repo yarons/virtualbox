@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99196 2023-03-28 13:06:05Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99302 2023-04-06 00:09:50Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -247,7 +247,7 @@ endif
 ifdef VBOX_WITH_IEM_RECOMPILER
  VBoxVMM_SOURCES += \
  	VMMAll/IEMAllInstructionsThreadedRecompiler.cpp \
- 	VMMAll/IEMThreadedFunctions.cpp
+ 	VMMAll/IEMAllThreadedFunctions.cpp
 endif
 
 ifdef VBOX_WITH_NATIVE_NEM
