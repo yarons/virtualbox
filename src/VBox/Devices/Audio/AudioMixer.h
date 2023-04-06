@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 98456 2023-02-02 20:23:19Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.h 99312 2023-04-06 07:20:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -327,6 +327,7 @@ uint64_t    AudioMixerSinkTransferFromCircBuf(PAUDMIXSINK pSink, PRTCIRCBUF pCir
                                               uint32_t idStream, PAUDIOHLPFILE pDbgFile);
 uint64_t    AudioMixerSinkTransferToCircBuf(PAUDMIXSINK pSink, PRTCIRCBUF pCircBuf, uint64_t offStream,
                                             uint32_t idStream, PAUDIOHLPFILE pDbgFile);
+bool        AudioMixerSinkLockIsOwned(PAUDMIXSINK pSink);
 int         AudioMixerSinkLock(PAUDMIXSINK pSink);
 int         AudioMixerSinkTryLock(PAUDMIXSINK pSink);
 int         AudioMixerSinkUnlock(PAUDMIXSINK pSink);

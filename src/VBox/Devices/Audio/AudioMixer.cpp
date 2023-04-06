@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 98456 2023-02-02 20:23:19Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 99312 2023-04-06 07:20:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2194,6 +2194,18 @@ int AudioMixerSinkSignalUpdateJob(PAUDMIXSINK pSink)
 
 
 /**
+ * Checks the caller is the owner of the mixer sink's critical section.
+ *
+ * @returns \c true if the caller is the lock owner, \c false if not.
+ * @param   pSink       The mixer sink to check.
+ */
+bool AudioMixerSinkLockIsOwned(PAUDMIXSINK pSink)
+{
+    return RTCritSectIsOwner(&pSink->CritSect);
+}
+
+
+/**
  * Locks the mixer sink for purposes of serializing with the AIO thread.
  *
  * @returns VBox status code.
@@ -2227,7 +2239,7 @@ int AudioMixerSinkTryLock(PAUDMIXSINK pSink)
  * @returns VBox status code.
  * @param   pSink       The mixer sink to unlock.
  */
-int     AudioMixerSinkUnlock(PAUDMIXSINK pSink)
+int AudioMixerSinkUnlock(PAUDMIXSINK pSink)
 {
     AssertPtrReturn(pSink, VERR_INVALID_POINTER);
     return RTCritSectLeave(&pSink->CritSect);
