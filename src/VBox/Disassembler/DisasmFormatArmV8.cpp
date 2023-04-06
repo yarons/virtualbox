@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 99320 2023-04-06 19:32:20Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 99321 2023-04-06 19:36:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -511,5 +511,3 @@ DISDECL(size_t) DISFormatArmV8(PCDISSTATE pDis, char *pszBuf, size_t cchBuf)
 {
     return DISFormatArmV8Ex(pDis, pszBuf, cchBuf, 0 /* fFlags */, NULL /* pfnGetSymbol */, NULL /* pvUser */);
 }
-
-
