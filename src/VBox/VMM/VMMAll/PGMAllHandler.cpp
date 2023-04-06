@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 99316 2023-04-06 15:19:22Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllHandler.cpp 99317 2023-04-06 15:24:13Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -154,6 +154,7 @@ DECL_FORCE_INLINE(PPGMPHYSHANDLER) pgmHandlerPhysicalExCreateWorker(PVMCC pVM, P
                             : pType->pszDesc;
 #else
                             : pVM->pgm.s.aPhysHandlerTypes[hType & PGMPHYSHANDLERTYPE_IDX_MASK].pszDesc;
+        NOREF(pType);
 #endif
     }
     return pNew;
