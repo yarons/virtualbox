@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 98703 2023-02-23 15:10:16Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 99304 2023-04-06 01:38:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -274,6 +274,10 @@
 
 #define IEM_MC_ASSIGN(a_VarOrArg, a_CVariableOrConst)   (a_VarOrArg) = (a_CVariableOrConst)
 #define IEM_MC_ASSIGN_TO_SMALLER                        IEM_MC_ASSIGN
+#define IEM_MC_ASSIGN_U8_SX_U64(a_u64VarOrArg, a_u8CVariableOrConst) \
+   (a_u64VarOrArg) = (int8_t)(a_u8CVariableOrConst)
+#define IEM_MC_ASSIGN_U32_SX_U64(a_u64VarOrArg, a_u32CVariableOrConst) \
+   (a_u64VarOrArg) = (int32_t)(a_u32CVariableOrConst)
 
 #define IEM_MC_FETCH_GREG_U8(a_u8Dst, a_iGReg)          (a_u8Dst)  = iemGRegFetchU8(pVCpu, (a_iGReg))
 #define IEM_MC_FETCH_GREG_U8_ZX_U16(a_u16Dst, a_iGReg)  (a_u16Dst) = iemGRegFetchU8(pVCpu, (a_iGReg))
