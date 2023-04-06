@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 99231 2023-03-30 13:28:07Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 99314 2023-04-06 07:41:57Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2639,7 +2639,8 @@ VMMDECL(VBOXSTRICTRC) PGMPhysRead(PVMCC pVM, RTGCPHYS GCPhys, void *pvBuf, size_
                         PGM_PHYS_RW_DO_UPDATE_STRICT_RC(rcStrict, rcStrict2);
                     else
                     {
-                        memset(pvBuf, 0xff, cb);
+                        /* Set the remaining buffer to a known value. */
+                        memset(pvBuf, 0xff, cbRead);
                         PGM_UNLOCK(pVM);
                         return rcStrict2;
                     }
