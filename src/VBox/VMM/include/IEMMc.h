@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 99333 2023-04-07 00:30:43Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 99335 2023-04-07 12:24:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -89,14 +89,6 @@
         { } else return iemRaiseMathFault(pVCpu); \
     } while (0)
 #define IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT() \
-    do { \
-        if (   (pVCpu->cpum.GstCtx.aXcr[0] & (XSAVE_C_YMM | XSAVE_C_SSE)) != (XSAVE_C_YMM | XSAVE_C_SSE) \
-            || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXSAVE)) \
-            return iemRaiseUndefinedOpcode(pVCpu); \
-        if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS) \
-            return iemRaiseDeviceNotAvailable(pVCpu); \
-    } while (0)
-#define IEM_MC_MAYBE_RAISE_AVX2_RELATED_XCPT() \
     do { \
         if (   (pVCpu->cpum.GstCtx.aXcr[0] & (XSAVE_C_YMM | XSAVE_C_SSE)) != (XSAVE_C_YMM | XSAVE_C_SSE) \
             || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXSAVE)) \

@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 99330 2023-04-07 00:23:11Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 99335 2023-04-07 12:24:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -585,7 +585,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_MAYBE_RAISE_AESNI_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SHA_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
-#define IEM_MC_MAYBE_RAISE_AVX2_RELATED_XCPT()          do { (void)fMcBegin; } while (0)
 #define IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO()              do { (void)fMcBegin; } while (0)
 #define IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED(a_EffAddr, a_cbAlign) \
     do { (void)fMcBegin; AssertCompile(RT_IS_POWER_OF_TWO(a_cbAlign)); CHK_TYPE(RTGCPTR,  a_EffAddr); } while (0)
