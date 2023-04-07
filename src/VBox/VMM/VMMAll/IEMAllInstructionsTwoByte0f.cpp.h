@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 99330 2023-04-07 00:23:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 99332 2023-04-07 00:29:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -9909,7 +9909,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_sfence,   uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp15_rdfsbase, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(rdfsbase, "rdfsbase Ry");
-    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fFsGsBase);
     if (pVCpu->iem.s.enmEffOpSize == IEMMODE_64BIT)
     {
         IEM_MC_BEGIN(1, 0);
@@ -9937,7 +9937,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_rdfsbase, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp15_rdgsbase, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(rdgsbase, "rdgsbase Ry");
-    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fFsGsBase);
     if (pVCpu->iem.s.enmEffOpSize == IEMMODE_64BIT)
     {
         IEM_MC_BEGIN(1, 0);
@@ -9965,7 +9965,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_rdgsbase, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp15_wrfsbase, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(wrfsbase, "wrfsbase Ry");
-    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fFsGsBase);
     if (pVCpu->iem.s.enmEffOpSize == IEMMODE_64BIT)
     {
         IEM_MC_BEGIN(1, 0);
@@ -9994,7 +9994,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_wrfsbase, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp15_wrgsbase, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(wrgsbase, "wrgsbase Ry");
-    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fFsGsBase);
     if (pVCpu->iem.s.enmEffOpSize == IEMMODE_64BIT)
     {
         IEM_MC_BEGIN(1, 0);
