@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 99336 2023-04-07 12:32:41Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 99337 2023-04-07 12:33:48Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99336 $"
+__version__ = "$Revision: 99337 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2660,7 +2660,6 @@ g_dMcStmtParsers = {
     'IEM_MC_MAYBE_RAISE_SHA_RELATED_XCPT':                       McBlock.parseMcGeneric,
     'IEM_MC_MAYBE_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':             McBlock.parseMcGeneric,
     'IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT':                       McBlock.parseMcGeneric,
-    'IEM_MC_MAYBE_RAISE_SSE3_RELATED_XCPT':                      McBlock.parseMcGeneric,
     'IEM_MC_MAYBE_RAISE_SSE41_RELATED_XCPT':                     McBlock.parseMcGeneric,
     'IEM_MC_MAYBE_RAISE_SSE42_RELATED_XCPT':                     McBlock.parseMcGeneric,
     'IEM_MC_MAYBE_RAISE_SSSE3_RELATED_XCPT':                     McBlock.parseMcGeneric,

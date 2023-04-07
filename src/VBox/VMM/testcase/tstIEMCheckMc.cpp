@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 99336 2023-04-07 12:32:41Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 99337 2023-04-07 12:33:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -577,7 +577,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_MAYBE_RAISE_FPU_XCPT()                   do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
-#define IEM_MC_MAYBE_RAISE_SSE3_RELATED_XCPT()          do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSSE3_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE41_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE42_RELATED_XCPT()         do { (void)fMcBegin; } while (0)
