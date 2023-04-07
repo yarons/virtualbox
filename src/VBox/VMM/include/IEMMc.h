@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 99332 2023-04-07 00:29:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 99333 2023-04-07 00:30:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -205,22 +205,19 @@
         { \
             if (pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXMMEEXCPT)\
                 return iemRaiseSimdFpException(pVCpu); \
-            else \
-                return iemRaiseUndefinedOpcode(pVCpu); \
+            return iemRaiseUndefinedOpcode(pVCpu); \
         } \
     } while (0)
 #define IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT() \
     do { \
         if (pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXMMEEXCPT)\
             return iemRaiseSimdFpException(pVCpu); \
-        else \
-            return iemRaiseUndefinedOpcode(pVCpu); \
+        return iemRaiseUndefinedOpcode(pVCpu); \
     } while (0)
 #define IEM_MC_MAYBE_RAISE_PCLMUL_RELATED_XCPT() \
     do { \
         if (   (pVCpu->cpum.GstCtx.cr0 & X86_CR0_EM) \
-            || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSFXSR) \
-            || !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fPclMul) \
+            || !(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSFXSR)) \
             return iemRaiseUndefinedOpcode(pVCpu); \
         if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS) \
             return iemRaiseDeviceNotAvailable(pVCpu); \
