@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 99325 2023-04-06 23:45:39Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 99330 2023-04-07 00:23:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -160,6 +160,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_HLP_CLEAR_REX_NOT_BEFORE_OPCODE(a_szPrf)      do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX()            do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(a_fFeature)                                       do { } while (0)
+#define IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX_2_OR(a_fFeature1, a_fFeature2)                    do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING()                       do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_EX(a_fFeature)          do { } while (0)
 #define IEMOP_HLP_DONE_VEX_DECODING_L0_EX(a_fFeature)       do { } while (0)
@@ -575,8 +576,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE()  do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_FPU_XCPT()                   do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
-#define IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT_EX(fSupported) do { (void)fMcBegin; } while (0)
-#define IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT_CHECK_SSE_OR_MMXEXT() do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT()           do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE2_RELATED_XCPT()          do { (void)fMcBegin; } while (0)
 #define IEM_MC_MAYBE_RAISE_SSE3_RELATED_XCPT()          do { (void)fMcBegin; } while (0)
