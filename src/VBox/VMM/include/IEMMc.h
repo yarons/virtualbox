@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 99354 2023-04-08 00:37:37Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 99355 2023-04-08 00:40:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -151,11 +151,12 @@ AssertCompile(!((X86_CR0_EM | X86_CR0_TS) & X86_FSW_ES));
     } while (0)
 #define IEM_MC_MAYBE_RAISE_FSGSBASE_XCPT() \
     do { \
-        if (RT_LIKELY(   pVCpu->iem.s.enmCpuMode == IEMMODE_64BIT \
-                      && (pVCpu->cpum.GstCtx.cr4 & X86_CR4_FSGSBASE))) \
+        if (RT_LIKELY(   ((pVCpu->cpum.GstCtx.cr4 & X86_CR4_FSGSBASE) | pVCpu->iem.s.enmCpuMode) \
+                      == (X86_CR4_FSGSBASE | IEMMODE_64BIT))) \
         { /* probable */ } \
         else return iemRaiseUndefinedOpcode(pVCpu); \
     } while (0)
+AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_MAYBE_RAISE_NON_CANONICAL_ADDR_GP0(a_u64Addr) \
     do { \
         if (RT_LIKELY(IEM_IS_CANONICAL(a_u64Addr))) { /* likely */ } \
