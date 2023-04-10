@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 99318 2023-04-06 16:02:43Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 99361 2023-04-10 05:54:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -160,6 +160,17 @@
     do \
     { \
         LogRel(("%s: VM-entry failed! enmDiag=%u (%s) -> %s\n", (a_pszInstr), (a_VmxDiag), \
+               HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
+        (a_pVCpu)->cpum.GstCtx.hwvirt.vmx.enmDiag = (a_VmxDiag); \
+        return VERR_VMX_VMENTRY_FAILED; \
+    } while (0)
+
+/** Marks a VM-entry failure with an return code, diagnostic reason, logs and
+ *  returns. */
+# define IEM_VMX_VMENTRY_FAILED_RET_2(a_pVCpu, a_pszInstr, a_pszFailure, a_VmxDiag, a_rc) \
+    do \
+    { \
+        LogRel(("%s: VM-entry failed! rc=%Rrc enmDiag=%u (%s) -> %s\n", (a_pszInstr), (a_rc), (a_VmxDiag), \
                HMGetVmxDiagDesc(a_VmxDiag), (a_pszFailure))); \
         (a_pVCpu)->cpum.GstCtx.hwvirt.vmx.enmDiag = (a_VmxDiag); \
         return VERR_VMX_VMENTRY_FAILED; \
@@ -7185,7 +7196,7 @@ static int iemVmxVmentryLoadGuestVmcsRefState(PVMCPUCC pVCpu, const char *pszIns
         if (RT_SUCCESS(rc))
         { /* likely */ }
         else
-            IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_AddrApicAccessHandlerReg);
+            IEM_VMX_VMENTRY_FAILED_RET_2(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_AddrApicAccessHandlerReg, rc);
     }
 
     /*
