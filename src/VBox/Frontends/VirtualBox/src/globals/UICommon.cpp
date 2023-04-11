@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 99372 2023-04-11 12:46:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -191,6 +191,7 @@ UICommon::UICommon(UIType enmType)
 #ifdef VBOX_WS_X11
     , m_enmWindowManagerType(X11WMType_Unknown)
     , m_fCompositingManagerRunning(false)
+    , m_enmDisplayServerType(DisplayServerType_Unknown)
 #endif
     , m_fSeparateProcess(false)
     , m_fShowStartVMErrors(true)
@@ -240,6 +241,11 @@ void UICommon::prepare()
     connect(qApp, &QGuiApplication::commitDataRequest,
             this, &UICommon::sltHandleCommitDataRequest);
 #endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
+
+#ifdef VBOX_WS_X11
+    /* Detect display server type: */
+    m_enmDisplayServerType = NativeWindowSubsystem::X11DetectDisplayServerType();
+#endif
 
     /* Create converter: */
     UIConverter::create();
@@ -3015,3 +3021,11 @@ void UICommon::comWrappersReinit()
     /* Mark wrappers valid: */
     m_fWrappersValid = true;
 }
+
+#ifdef VBOX_WS_X11
+bool UICommon::X11XServerAvailable() const
+{
+    return m_enmDisplayServerType == DisplayServerType_XWayland
+                                  || DisplayServerType_XOrg;
+}
+#endif

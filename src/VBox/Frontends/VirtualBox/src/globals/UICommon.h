@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 99372 2023-04-11 12:46:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -214,6 +214,8 @@ public:
         X11WMType typeOfWindowManager() const { return m_enmWindowManagerType; }
         /** X11: Returns whether the Window Manager we are running under is composition one. */
         bool isCompositingManagerRunning() const { return m_fCompositingManagerRunning; }
+        /** Returns true if the detected display server type is either xorg or xwayland. */
+        bool X11XServerAvailable() const;
 #endif
     /** @} */
 
@@ -648,6 +650,8 @@ private:
         X11WMType  m_enmWindowManagerType;
         /** X11: Holds whether the Window Manager we are running at is composition one. */
         bool       m_fCompositingManagerRunning;
+        /** Unixes: Holds the display server type. */
+        DisplayServerType m_enmDisplayServerType;
 #endif
     /** @} */
 
