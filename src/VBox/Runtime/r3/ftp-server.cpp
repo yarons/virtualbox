@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ftp-server.cpp 99373 2023-04-11 14:51:48Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  *
@@ -2267,7 +2267,7 @@ static int rtFtpServerCmdArgsParse(const char *pszCmdParms, uint8_t *pcArgs, cha
     /** @todo Anything else to do here? */
     /** @todo Check if quoting is correct. */
 
-    int cArgs = 0;
+    signed int cArgs = 0;
     int rc = RTGetOptArgvFromString(ppapszArgs, &cArgs, pszCmdParms, RTGETOPTARGV_CNV_QUOTE_MS_CRT, " " /* Separators */);
     if (RT_SUCCESS(rc))
     {
