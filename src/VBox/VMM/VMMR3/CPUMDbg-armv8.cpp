@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg-armv8.cpp 99070 2023-03-20 14:58:57Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMDbg-armv8.cpp 99376 2023-04-12 07:35:08Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -274,6 +274,9 @@ static DBGFREGDESC const g_aCpumRegGstDescs[] =
     CPU_REG_RW_AS("sp_el0",         SP_EL0,         U64, aSpReg[0],       cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
     CPU_REG_RW_AS("sp_el1",         SP_EL1,         U64, aSpReg[1],       cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
     CPU_REG_RW_AS("spsr_el1",       SPSR_EL1,       U64, Spsr,            cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
+    CPU_REG_RW_AS("sctlr_el1",      SCTLR_EL1,      U64, Sctlr,           cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
+    CPU_REG_RW_AS("ttbr0_el1",      TTBR0_EL1,      U64, Ttbr0,           cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
+    CPU_REG_RW_AS("ttbr1_el1",      TTBR1_EL1,      U64, Ttbr1,           cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
     CPU_REG_RW_AS("elr_el1",        ELR_EL1,        U64, Elr,             cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
     CPU_REG_RW_AS("fpcr",           FPCR,           U64, fpcr,            cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
     CPU_REG_RW_AS("fpsr",           FPSR,           U64, fpsr,            cpumR3RegGet_Generic,         cpumR3RegSet_Generic,         NULL,                       NULL                    ),
