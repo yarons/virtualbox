@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -38,9 +38,8 @@
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName,
                              const QString &strDefaultPath,
-                             qulonglong uDefaultSize,
-                             WizardMode mode)
-    : UINativeWizard(pParent, WizardType_NewVD, mode, "create-virtual-hard-disk-image" /* help keyword */)
+                             qulonglong uDefaultSize)
+    : UINativeWizard(pParent, WizardType_NewVD, WizardMode_Auto, "create-virtual-hard-disk-image" /* help keyword */)
     , m_strDefaultName(strDefaultName)
     , m_strDefaultPath(strDefaultPath)
     , m_uDefaultSize(uDefaultSize)

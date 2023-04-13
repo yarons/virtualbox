@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVD.h 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -47,8 +47,9 @@ class SHARED_LIBRARY_STUFF UIWizardNewVD : public UINativeWizard
 public:
 
     UIWizardNewVD(QWidget *pParent,
-                  const QString &strDefaultName, const QString &strDefaultPath,
-                  qulonglong uDefaultSize, WizardMode mode = WizardMode_Auto);
+                  const QString &strDefaultName,
+                  const QString &strDefaultPath,
+                  qulonglong uDefaultSize);
 
     bool createVirtualDisk();
 

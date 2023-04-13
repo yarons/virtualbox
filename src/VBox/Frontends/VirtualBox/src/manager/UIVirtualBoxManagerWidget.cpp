@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -671,6 +671,8 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         {
                             if (m_pPaneChooser->isGlobalItemSelected())
                                 m_pPaneToolsGlobal->setActive(true);
+                            connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigCreateMedium,
+                                    this, &UIVirtualBoxManagerWidget::sigCreateMedium);
                             connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigCopyMedium,
                                     this, &UIVirtualBoxManagerWidget::sigCopyMedium);
                             connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigSwitchToMachineActivityPane,

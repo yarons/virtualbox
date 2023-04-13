@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -60,6 +60,8 @@ class UIToolPaneGlobal : public QWidget
 
 signals:
 
+    /** Notifies listeners about creation procedure was requested. */
+    void sigCreateMedium();
     /** Notifies listeners about copy procedure was requested for medium with specified @a uMediumId. */
     void sigCopyMedium(const QUuid &uMediumId);
 
