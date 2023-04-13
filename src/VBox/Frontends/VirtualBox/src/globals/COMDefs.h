@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: COMDefs.h 99391 2023-04-13 16:41:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -818,6 +818,11 @@ public:
      * Returns @c true if the result code represents success with no warnings.
      */
     bool isReallyOk() const { return !isNull() && B::mRC == S_OK; }
+
+    /**
+     * Returns the last result code of this interface.
+     */
+    HRESULT rc() const { return B::mRC; }
 
     // utility operators
 
