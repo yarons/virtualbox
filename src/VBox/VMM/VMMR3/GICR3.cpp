@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 99385 2023-04-13 11:05:39Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3.cpp 99387 2023-04-13 11:13:46Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -51,6 +51,7 @@
 *********************************************************************************************************************************/
 # define GIC_SYSREGRANGE(a_uFirst, a_uLast, a_szName) \
     { (a_uFirst), (a_uLast), kCpumSysRegRdFn_GicV3Icc, kCpumSysRegWrFn_GicV3Icc, 0, 0, 0, 0, 0, 0, a_szName, { 0 }, { 0 }, { 0 }, { 0 } }
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
