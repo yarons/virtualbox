@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: VMM.cpp 99385 2023-04-13 11:05:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -129,7 +129,11 @@
 #include <VBox/vmm/em.h>
 #include <VBox/sup.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/vmm/apic.h>
+#if defined(VBOX_VMM_TARGET_ARMV8)
+# include <VBox/vmm/gic.h>
+#else
+# include <VBox/vmm/apic.h>
+#endif
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/tm.h>
 #include "VMMInternal.h"

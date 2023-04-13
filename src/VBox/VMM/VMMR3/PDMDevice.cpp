@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevice.cpp 99385 2023-04-13 11:05:39Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -33,7 +33,11 @@
 #define PDMPCIDEV_INCLUDE_PRIVATE  /* Hack to get pdmpcidevint.h included at the right point. */
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
-#include <VBox/vmm/apic.h>
+#if defined(VBOX_VMM_TARGET_ARMV8)
+# include <VBox/vmm/gic.h>
+#else
+# include <VBox/vmm/apic.h>
+#endif
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/hm.h>
@@ -675,7 +679,11 @@ static int pdmR3DevLoadModules(PVM pVM)
     RegCB.pCfgNode         = NULL;
 
 #if defined(VBOX_VMM_TARGET_ARMV8)
-    int rc;
+    /*
+     * Register the internal VMM GIC device.
+     */
+    int rc = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceGIC);
+    AssertRCReturn(rc, rc);
 #else
     /*
      * Register the internal VMM APIC device.
