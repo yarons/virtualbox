@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 98709 2023-02-24 08:49:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 99382 2023-04-13 07:26:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -589,7 +589,7 @@ static int vgsvcToolboxPrintFsInfo(const char *pszName, size_t cchName, uint32_t
     {
         if (fOutputFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE)
         {
-            RTPrintf("ftype=%c%cnode_id=%RU64%inode_dev=%RU32%ccname_len=%zu%cname=%s%c",
+            RTPrintf("ftype=%c%cnode_id=%RU64%cinode_dev=%RU32%ccname_len=%zu%cname=%s%c",
                      chFileType, 0, (uint64_t)pObjInfo->Attr.u.Unix.INodeId, 0,
                      (uint32_t)pObjInfo->Attr.u.Unix.INodeIdDevice, 0, cchName, 0, pszName, 0);
             RTPrintf("%c%c", 0, 0);
