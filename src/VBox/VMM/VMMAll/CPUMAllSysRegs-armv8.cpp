@@ -1,4 +1,4 @@
-/* $Id: CPUMAllSysRegs-armv8.cpp 99385 2023-04-13 11:05:39Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMAllSysRegs-armv8.cpp 99388 2023-04-13 11:26:34Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - ARMv8 CPU System Registers.
  */
@@ -143,7 +143,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumSysRegWr_ReadOnly(PVMCPUCC pVCpu, uint32_t
 
 
 
-/** @callback_method_impl{FNCPUMRDMSR} */
+/** @callback_method_impl{FNCPUMRDSYSREG} */
 static DECLCALLBACK(VBOXSTRICTRC) cpumSysRegRd_GicV3Icc(PVMCPUCC pVCpu, uint32_t idSysReg, PCCPUMSYSREGRANGE pRange, uint64_t *puValue)
 {
     RT_NOREF_PV(pRange);
@@ -151,7 +151,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumSysRegRd_GicV3Icc(PVMCPUCC pVCpu, uint32_t
 }
 
 
-/** @callback_method_impl{FNCPUMWRMSR} */
+/** @callback_method_impl{FNCPUMWRSYSREG} */
 static DECLCALLBACK(VBOXSTRICTRC) cpumSysRegWr_GicV3Icc(PVMCPUCC pVCpu, uint32_t idSysReg, PCCPUMSYSREGRANGE pRange, uint64_t uValue, uint64_t uRawValue)
 {
     RT_NOREF_PV(pRange); RT_NOREF_PV(uRawValue);
