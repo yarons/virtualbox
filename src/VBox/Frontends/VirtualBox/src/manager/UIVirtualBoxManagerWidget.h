@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -99,6 +99,12 @@ signals:
       * @{ */
         /** Notifies about Tool type change. */
         void sigToolTypeChange();
+    /** @} */
+
+    /** @name Tools / Media pane stuff.
+      * @{ */
+        /** Notifies listeners about copy procedure was requested for medium with specified @a uMediumId. */
+        void sigCopyMedium(const QUuid &uMediumId);
     /** @} */
 
     /** @name Tools / Details pane stuff.

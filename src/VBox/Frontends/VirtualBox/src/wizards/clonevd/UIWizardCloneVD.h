@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -39,6 +39,9 @@
 #include "CMedium.h"
 #include "CMediumFormat.h"
 
+/* Forward declarations: */
+class QUuid;
+
 /** Clone Virtual Disk wizard: */
 class UIWizardCloneVD : public UINativeWizard
 {
@@ -46,8 +49,8 @@ class UIWizardCloneVD : public UINativeWizard
 
 public:
 
-    /** Constructs wizard to clone @a comSourceVirtualDisk passing @a pParent to the base-class. */
-    UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtualDisk);
+    /** Constructs wizard to clone medium referenced by @a uMediumId, passing @a pParent to the base-class. */
+    UIWizardCloneVD(QWidget *pParent, const QUuid &uMediumId);
 
     /** Returns source virtual-disk. */
     const CMedium &sourceVirtualDisk() const;

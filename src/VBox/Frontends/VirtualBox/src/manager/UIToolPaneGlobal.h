@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolPaneGlobal.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -40,6 +40,7 @@
 /* Forward declarations: */
 class QHBoxLayout;
 class QStackedLayout;
+class QUuid;
 class QVBoxLayout;
 class UIActionPool;
 class UICloudProfileManagerWidget;
@@ -58,6 +59,9 @@ class UIToolPaneGlobal : public QWidget
     Q_OBJECT;
 
 signals:
+
+    /** Notifies listeners about copy procedure was requested for medium with specified @a uMediumId. */
+    void sigCopyMedium(const QUuid &uMediumId);
 
     /** Notifies listeners about request to switch to Activity pane of machine with @a uMachineId. */
     void sigSwitchToMachineActivityPane(const QUuid &uMachineId);

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumManager.cpp 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -481,17 +481,8 @@ void UIMediumManagerWidget::sltCopyMedium()
     AssertMsgReturnVoid(pMediumItem, ("Current item must not be null"));
     AssertReturnVoid(!pMediumItem->id().isNull());
 
-    /* Copy current medium-item: */
-    //pMediumItem->copy();
-
-    /* Show Clone VD wizard: */
-    UIMedium medium = pMediumItem->medium();
-    QPointer<UINativeWizard> pWizard = new UIWizardCloneVD(currentTreeWidget(), medium.medium());
-    pWizard->exec();
-
-    /* Delete if still exists: */
-    if (pWizard)
-        delete pWizard;
+    /* Ask listener to start medium copying: */
+    emit sigCopyMedium(pMediumItem->medium().id());
 }
 
 void UIMediumManagerWidget::sltMoveMedium()

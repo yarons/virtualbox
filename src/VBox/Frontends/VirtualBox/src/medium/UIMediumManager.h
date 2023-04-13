@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumManager.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -30,6 +30,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QUuid>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
@@ -108,6 +111,9 @@ class UIMediumManagerWidget : public QIWithRetranslateUI<QWidget>
     enum Action { Action_Add, Action_Edit, Action_Copy, Action_Remove, Action_Release };
 
 signals:
+
+    /** Notifies listeners about copy procedure was requested for medium with specified @a uMediumId. */
+    void sigCopyMedium(const QUuid &uMediumId);
 
     /** Notifies listeners about medium details-widget @a fVisible. */
     void sigMediumDetailsVisibilityChanged(bool fVisible);

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -165,6 +165,8 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
 
                     /* Configure pane: */
                     m_pPaneMedia->setProperty("ToolType", QVariant::fromValue(UIToolType_Media));
+                    connect(m_pPaneMedia, &UIMediumManagerWidget::sigCopyMedium,
+                            this, &UIToolPaneGlobal::sigCopyMedium);
 
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneMedia);

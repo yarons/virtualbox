@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -38,10 +38,9 @@
 /* COM includes: */
 #include "CMediumFormat.h"
 
-UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtualDisk)
+UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const QUuid &uMediumId)
     : UINativeWizard(pParent, WizardType_CloneVD)
-    , m_comSourceVirtualDisk(comSourceVirtualDisk)
-    , m_enmDeviceType(m_comSourceVirtualDisk.GetDeviceType())
+    , m_enmDeviceType(KDeviceType_Null)
     , m_iMediumVariantPageIndex(-1)
 {
 #ifndef VBOX_WS_MAC
@@ -51,6 +50,13 @@ UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtu
     /* Assign background image: */
     setPixmapName(":/wizard_new_harddisk_bg.png");
 #endif /* VBOX_WS_MAC */
+
+    /* Init medium to be cloned: */
+    UIMedium uiMedium = uiCommon().medium(uMediumId);
+    m_comSourceVirtualDisk = uiMedium.medium();
+
+    /* Init device type: */
+    m_enmDeviceType = m_comSourceVirtualDisk.GetDeviceType();
 }
 
 const CMedium &UIWizardCloneVD::sourceVirtualDisk() const
