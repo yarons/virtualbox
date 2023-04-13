@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal-armv8.h 99196 2023-03-28 13:06:05Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMInternal-armv8.h 99383 2023-04-13 11:02:06Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - Internal header file, ARMv8 variant.
  */
@@ -82,10 +82,11 @@ typedef struct CPUMINFO
     /** The number of system register ranges (CPUMSSREGRANGE) in the array pointed to below. */
     uint32_t                    cSysRegRanges;
 
-    /** MSR ranges.
-     * @todo This is insane, so might want to move this into a separate
-     *       allocation.  The insanity is mainly for more recent AMD CPUs. */
-    CPUMSYSREGRANGE             aSysRegRanges[1024];
+    /** Pointer to the sysrem register ranges. */
+    R3PTRTYPE(PCPUMSYSREGRANGE) paSysRegRangesR3;
+
+    /** System register ranges. */
+    CPUMSYSREGRANGE             aSysRegRanges[128];
 } CPUMINFO;
 /** Pointer to a CPU info structure. */
 typedef CPUMINFO *PCPUMINFO;

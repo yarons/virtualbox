@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 99196 2023-03-28 13:06:05Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 99383 2023-04-13 11:02:06Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -205,6 +205,8 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     int rc2 = cpumR3SysRegStrictInitChecks();
     AssertRCReturn(rc2, rc2);
 #endif
+
+    pVM->cpum.s.GuestInfo.paSysRegRangesR3 = &pVM->cpum.s.GuestInfo.aSysRegRanges[0];
 
     /*
      * Register saved state data item.
