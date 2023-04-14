@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99398 $"
+__version__ = "$Revision: 99399 $"
 
 # Standard Python imports.
 import errno
@@ -1429,6 +1429,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         self.oTestFiles             = None # type: vboxtestfileset.TestFileSet
         self.oDebug                 = tdDebugSettings();
         self.sPathVBoxServiceExeGst = '';
+        self.tpAdditionsVer         = ();
 
     def parseOption(self, asArgs, iArg):                                        # pylint: disable=too-many-branches,too-many-statements
         if asArgs[iArg] == '--add-guest-ctrl-tests':
