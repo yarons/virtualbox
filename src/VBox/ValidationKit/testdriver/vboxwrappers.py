@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 99180 2023-03-24 15:59:55Z andreas.loeffler@oracle.com $
+# $Id: vboxwrappers.py 99401 2023-04-14 14:03:32Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99180 $"
+__version__ = "$Revision: 99401 $"
 
 
 # Standard Python imports.
@@ -1246,13 +1246,16 @@ class SessionWrapper(TdTaskBase):
                 if fEnable:
                     self.o.machine.nonVolatileStore.uefiVariableStore.enrollDefaultMsSignatures();
                     self.o.machine.nonVolatileStore.uefiVariableStore.enrollOraclePlatformKey();
-                    if   sUefiMokPathPrefix is not None \
-                    and  self.fpApiVer >= 7.1:
-                        sFullName = self.oTstDrv.getFullResourceName(sUefiMokPathPrefix) + '.der';
-                        with open(sFullName, "rb") as der_file:
-                            self.o.machine.nonVolatileStore.uefiVariableStore.addSignatureToMok(bytearray(der_file.read()), \
-                                                                                                uuid.uuid4().hex, \
-                                                                                                vboxcon.SignatureType_X509);
+                    if sUefiMokPathPrefix:
+                        if self.oTstDrv.uRevision >= 156314: # Backported IUefiVariableStore::addSignatureToMok() to 7.0.
+                            sFullName = self.oTstDrv.getFullResourceName(sUefiMokPathPrefix) + '.der';
+                            with open(sFullName, "rb") as der_file:
+                                self.o.machine.nonVolatileStore.uefiVariableStore.addSignatureToMok(bytearray(der_file.read()), \
+                                                                                                    uuid.uuid4().hex, \
+                                                                                                    vboxcon.SignatureType_X509);
+                        else:
+                            reporter.log('Warning: Enrolling own keys / signatures only available for 7.0 >= r156314. ' \
+                                         'Guest Additions installation might fail!');
 
                 self.o.machine.nonVolatileStore.uefiVariableStore.secureBootEnabled = fEnable;
             except:
