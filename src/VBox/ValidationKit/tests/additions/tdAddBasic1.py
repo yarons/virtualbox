@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 98998 2023-03-16 09:34:21Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 99397 2023-04-14 09:40:36Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98998 $"
+__version__ = "$Revision: 99397 $"
 
 # Standard Python imports.
 import os;
@@ -462,7 +462,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Reboot the VM and reconnect the TXS session.
         #
         if fRc:
-            reporter.testStart('Rebooting guest w/ updated Guest Additions active');
+            reporter.testStart('Rebooting guest after Guest Additions installation');
             (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 15 * 60 * 1000);
             if fRc:
                 pass;
@@ -543,7 +543,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Do the final reboot to get the just installed Guest Additions up and running.
         if fRc:
             if self.fRebootAfterInstall:
-                reporter.testStart('Rebooting guest w/ updated Guest Additions active');
+                reporter.testStart('Rebooting guest after Guest Additions installation');
                 (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 15 * 60 * 1000);
                 if not fRc:
                     reporter.testFailure('Rebooting and reconnecting to TXS service failed');
