@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99285 $"
+__version__ = "$Revision: 99398 $"
 
 # Standard Python imports.
 import errno
@@ -1476,6 +1476,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         self.sPathVBoxServiceExeGst =   oTestVm.pathJoin(self.oTstDrv.getGuestSystemAdminDir(oTestVm), 'VBoxService') \
                                       + base.exeSuff();
+
+        # For some tests we need know the Guest Additions version, so fetch it now.
+        self.tpAdditionsVer         = self.oTstDrv.getGuestAdditionsVersion(oSession);
 
         reporter.log("Active tests: %s" % (self.asTests,));
 
@@ -3071,7 +3074,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if oTestVm.isWindows():
                 sVBoxControl = "C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\VBoxControl.exe";
         else:
-            sImageOut = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'ls');
+            # Really old guests (like OL 6) have their coreutils in /bin instead of /usr/bin.
+            if self.oTstDrv.txsIsFile(oSession, oTxsSession, "/bin/ls", fIgnoreErrors = True):
+                sImageOut = "/bin/ls";
+            else:
+                sImageOut = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'ls');
             if oTestVm.isLinux(): ## @todo check solaris and darwin.
                 sVBoxControl = "/usr/bin/VBoxControl"; # Symlink
 
@@ -3124,10 +3131,15 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                   tdTestResultExec(fRc = True) ],
                 [ tdTestExec(sCmd = sImageOut, asArgs = [ sImageOut, '/C', 'dir', '/S', 'stdouterr-non-existing' ]),
                   tdTestResultExec(fRc = True, iExitCode = 1) ],
-                # Current working directory set (VBox >= 7.1).
-                [ tdTestExec(sCmd = sImageOut, sCwd = sTempDir, asArgs = [ sImageOut, '/C', 'dir', '/S', sSystemDir ]),
-                  tdTestResultExec(fRc = True) ],
             ];
+
+            if self.oTstDrv.isVersionEqualOrBigger(self.tpAdditionsVer, "7.1.0"):
+                atExec.extend([
+                    # Current working directory set (VBox >= 7.1).
+                    [ tdTestExec(sCmd = sImageOut, sCwd = sTempDir, asArgs = [ sImageOut, '/C', 'dir', '/S', sSystemDir ]),
+                      tdTestResultExec(fRc = True) ]
+                ]);
+
             # atExec.extend([
                 # FIXME: Failing tests.
                 # Environment variables.
@@ -3176,10 +3188,15 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                   tdTestResultExec(fRc = True) ],
                 [ tdTestExec(sCmd = sImageOut, asArgs = [ sImageOut, 'stdouterr-non-existing' ]),
                   tdTestResultExec(fRc = True, iExitCode = 2) ],
-                # Current working directory set (VBox >= 7.1).
-                [ tdTestExec(sCmd = sImageOut, sCwd = sTempDir, asArgs = [ sImageOut, '-R', sSystemDir ]),
-                  tdTestResultExec(fRc = True) ],
             ];
+
+            if self.oTstDrv.isVersionEqualOrBigger(self.tpAdditionsVer, "7.1.0"):
+                atExec.extend([
+                    # Current working directory set (VBox >= 7.1).
+                    [ tdTestExec(sCmd = sImageOut, sCwd = sTempDir, asArgs = [ sImageOut, '-R', sSystemDir ]),
+                      tdTestResultExec(fRc = True) ]
+                ]);
+
             # atExec.extend([
                 # FIXME: Failing tests.
                 # Environment variables.
@@ -3230,7 +3247,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             or oTestVm.isOS2():
                 sCmd   = sShell;
             else:
-                sCmd   = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'echo');
+                # Really old guests (like OL 6) have their coreutils in /bin instead of /usr/bin.
+                if self.oTstDrv.txsIsFile(oSession, oTxsSession, "/bin/echo", fIgnoreErrors = True):
+                    sCmd = "/bin/echo";
+                else:
+                    sCmd = oTestVm.pathJoin(self.oTstDrv.getGuestSystemDir(oTestVm), 'echo');
 
             for _ in xrange(0, 16):
                 if oTestVm.isWindows() \
@@ -3898,7 +3919,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 break;
             fUseDirList = False;
             cEntriesPerRead = random.randrange(1, 32768);
-            if self.oTstDrv.fpApiVer >= 7.1 and self.oTstDrv.uRevision >= 156485:
+            if  self.oTstDrv.fpApiVer >= 7.1 and self.oTstDrv.uRevision >= 156485 \
+            and self.oTstDrv.isVersionEqualOrBigger(self.tpAdditionsVer, "7.1.0"):
                  # Listing directories only is available for >= VBox 7.1.
                 fUseDirList = random.choice( [True, False] );
             (fRc2, cDirs, cFiles, cOthers) = self.gctrlReadDirTree(oCurTest, oCurGuestSession, oCurRes.fRc,
@@ -3948,7 +3970,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     reporter.log('Checking "%s" ...' % (oDir.sPath,));
                     fUseDirList = False;
                     cEntriesPerRead = random.randrange(1, 32768);
-                    if self.oTstDrv.fpApiVer >= 7.1 and self.oTstDrv.uRevision >= 156485:
+                    if  self.oTstDrv.fpApiVer >= 7.1 and self.oTstDrv.uRevision >= 156485 \
+                    and self.oTstDrv.isVersionEqualOrBigger(self.tpAdditionsVer, "7.1.0"):
                         # Listing directories only is available for >= VBox 7.1.
                         fUseDirList = random.choice( [True, False] );
                     fRc = self.gctrlReadDirTree2(oCurGuestSession, oDir, fUseDirList, cEntriesPerRead) and fRc;
