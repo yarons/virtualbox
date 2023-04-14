@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 99262 2023-04-03 15:17:07Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 99395 2023-04-14 08:48:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -2720,7 +2720,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlFsObjCbQueryInfoEx(PVBGLR3GUESTCTRLCMDCTX pCtx, u
     VbglHGCMParmPtrSetString(&Msg.u.queryobjinfo.user,   pszUser);
     VbglHGCMParmPtrSetString(&Msg.u.queryobjinfo.groups, pszGroups);
 
-    return VbglR3HGCMCall(&Msg.reply_hdr.hdr, RT_UOFFSET_AFTER(HGCMReplyFsNotify, u.queryinfo));
+    return VbglR3HGCMCall(&Msg.reply_hdr.hdr, RT_UOFFSET_AFTER(HGCMReplyFsNotify, u.queryobjinfo));
 }
 
 
