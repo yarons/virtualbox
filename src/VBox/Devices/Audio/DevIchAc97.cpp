@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 99414 2023-04-17 08:34:12Z knut.osmundsen@oracle.com $ */
+/* $Id: DevIchAc97.cpp 99415 2023-04-17 08:36:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2032,7 +2032,7 @@ static int ichac97R3StreamSetUp(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATE
     /* Validate locks -- see @bugref{10350}. */
     Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->CritSect));
     Assert(RTCritSectIsOwned(&pStreamCC->State.CritSect));
-    Assert(AudioMixerSinkLockIsOwned(pMixSink));
+    Assert(AudioMixerSinkLockIsOwner(pMixSink));
 
     /*
      * Don't continue if the frequency is out of range (the rest of the
