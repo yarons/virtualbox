@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: NvramStoreImpl.h 99418 2023-04-17 12:51:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -39,6 +39,7 @@
 
 #ifdef VBOX_COM_INPROC
 class Console;
+struct DRVMAINNVRAMSTORE;
 #else
 class GuestOSType;
 
@@ -134,7 +135,11 @@ private:
 
 #ifdef VBOX_COM_INPROC
     static DECLCALLBACK(int)    i_SsmSaveExec(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM);
+    static int                  i_SsmSaveExecInner(struct DRVMAINNVRAMSTORE *pThis, PCPDMDRVHLPR3 pHlp, PSSMHANDLE pSSM,
+                                                   void **ppvData, size_t *pcbDataMax) RT_NOEXCEPT;
     static DECLCALLBACK(int)    i_SsmLoadExec(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
+    static int                  i_SsmLoadExecInner(struct DRVMAINNVRAMSTORE *pThis, PCPDMDRVHLPR3 pHlp, PSSMHANDLE pSSM,
+                                                   uint32_t cEntries, void **ppvData, size_t *pcbDataMax) RT_NOEXCEPT;
 
     static DECLCALLBACK(int)    i_nvramStoreQuerySize(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath,
                                                       uint64_t *pcb);
