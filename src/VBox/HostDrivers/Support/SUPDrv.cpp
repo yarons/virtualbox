@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 99421 2023-04-17 14:38:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -83,19 +83,6 @@
 # define VBOXDRV_SESSION_CLOSE(pvSession) do { } while (0)
 # define VBOXDRV_IOCTL_ENTRY(pvSession, uIOCtl, pvReqHdr) do { } while (0)
 # define VBOXDRV_IOCTL_RETURN(pvSession, uIOCtl, pvReqHdr, rcRet, rcReq) do { } while (0)
-#endif
-
-#if defined(RT_OS_LINUX)
-/* In Linux 5.18-rc1, memcpy became a wrapper which does fortify checks
- * before triggering __underlying_memcpy() call. We do not pass these checks here,
- * so bypass them for now.  */
-# if RTLNX_VER_MIN(5,18,0) && !defined(__NO_FORTIFY) && defined(__OPTIMIZE__) && defined(CONFIG_FORTIFY_SOURCE)
-#  define SUPDRV_MEMCPY __underlying_memcpy
-# else
-# define SUPDRV_MEMCPY  memcpy
-# endif
-#else
-# define SUPDRV_MEMCPY  memcpy
 #endif
 
 #ifdef __cplusplus
@@ -1777,7 +1764,7 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
 
             /* execute */
             pReq->u.Out.cFunctions = RT_ELEMENTS(g_aFunctions);
-            SUPDRV_MEMCPY(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
+            SUPDRV_UNFORTIFIED_MEMCPY(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
             pReq->Hdr.rc = VINF_SUCCESS;
             return 0;
         }
