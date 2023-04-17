@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 99294 2023-04-05 09:19:25Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 99413 2023-04-17 07:49:48Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99294 $"
+__version__ = "$Revision: 99413 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2964,7 +2964,7 @@ class TestDriver(base.TestDriver):                                              
         """
         sWinDir = '';
         if oTestVm.isWindows():
-            if oTestVm.sKind in ['WindowsNT4', 'WindowsNT3x',]:
+            if oTestVm.sKind in ['WindowsNT4', 'WindowsNT3x', 'Windows2000',]:
                 sWinDir = 'C:\\WinNT\\';
             else:
                 sWinDir = 'C:\\Windows\\';
