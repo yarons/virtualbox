@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 99420 2023-04-17 14:25:25Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmod.h 99425 2023-04-17 18:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -86,7 +86,7 @@
  * making a call to __underlying_memcpy().  There are a number of places where
  * we trigger the "field-spanning write" fortify check, typically when copying
  * to SHFLSTRING structure members as these are actually of variable length but
- * we don't (cannot with gcc) use RT_FLEXIBLE_ARRAY_NESTED. 
+ * we don't (cannot with gcc) use RT_FLEXIBLE_ARRAY_NESTED.
  * 
  * Use this when copying to structures or members with a variable length member.
  *
