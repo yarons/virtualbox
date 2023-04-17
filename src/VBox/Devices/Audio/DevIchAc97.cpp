@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 99311 2023-04-06 07:20:06Z andreas.loeffler@oracle.com $ */
+/* $Id: DevIchAc97.cpp 99414 2023-04-17 08:34:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2029,7 +2029,7 @@ static int ichac97R3StreamSetUp(PPDMDEVINS pDevIns, PAC97STATE pThis, PAC97STATE
             AssertMsgFailedReturn(("u8SD=%d\n", pStream->u8SD), VERR_INTERNAL_ERROR_3);
     }
 
-    /** Validate locks -- see @bugref{10350}. */
+    /* Validate locks -- see @bugref{10350}. */
     Assert(PDMDevHlpCritSectIsOwner(pDevIns, &pThis->CritSect));
     Assert(RTCritSectIsOwned(&pStreamCC->State.CritSect));
     Assert(AudioMixerSinkLockIsOwned(pMixSink));
