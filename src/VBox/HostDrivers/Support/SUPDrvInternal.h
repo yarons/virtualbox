@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 99421 2023-04-17 14:38:06Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvInternal.h 99426 2023-04-17 18:05:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -377,9 +377,9 @@
 #endif
 
 /** @def SUPDRV_UNFORTIFIED_MEMCPY
- * Use when copying to variable length structures, it prevents a fortified 
- * memcpy (linux 5.18+) from complaining about "field-spanning writes". 
- *  
+ * Use when copying to variable length structures, it prevents a fortified
+ * memcpy (linux 5.18+) from complaining about "field-spanning writes".
+ *
  * @see @ticketref{21410}, @bugref{10209}
  */
 #if !defined(SUPDRV_UNFORTIFIED_MEMCPY) || defined(DOXYGEN_RUNNING) /* (Already defined above if fortified.) */
