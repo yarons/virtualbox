@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: strformatrt.cpp 99422 2023-04-17 15:18:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -686,7 +686,8 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                                     cch = pfnOutput(pvArgOutput, RT_STR_TUPLE(" - "));
                                 else
                                     cch = pfnOutput(pvArgOutput, RT_STR_TUPLE(": "));
-                                cch += pfnOutput(pvArgOutput, u.pErrInfo->pszMsg, u.pErrInfo->cbMsg);
+                                cch += pfnOutput(pvArgOutput, u.pErrInfo->pszMsg,
+                                                 RTStrNLen(u.pErrInfo->pszMsg, u.pErrInfo->cbMsg));
                             }
                             return cch;
                         }
