@@ -1,4 +1,4 @@
-/* $Id: UICursor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICursor.cpp 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICursor namespace implementation.
  */
@@ -48,7 +48,7 @@ void UICursor::setCursor(QWidget *pWidget, const QCursor &cursor)
     if ((UICommon::qtRTMajorVersion() < 5) ||
         (UICommon::qtRTMajorVersion() == 5 && UICommon::qtRTMinorVersion() < 11))
     {
-        if (NativeWindowSubsystem::X11CheckExtension("RENDER"))
+        if (NativeWindowSubsystem::checkExtension(uiCommon().X11XServerAvailable(), "RENDER"))
             pWidget->setCursor(cursor);
     }
     else
@@ -74,7 +74,7 @@ void UICursor::setCursor(QGraphicsWidget *pWidget, const QCursor &cursor)
     if ((UICommon::qtRTMajorVersion() < 5) ||
         (UICommon::qtRTMajorVersion() == 5 && UICommon::qtRTMinorVersion() < 11))
     {
-        if (NativeWindowSubsystem::X11CheckExtension("RENDER"))
+        if (NativeWindowSubsystem::checkExtension(uiCommon().X11XServerAvailable(), "RENDER"))
             pWidget->setCursor(cursor);
     }
     else
@@ -100,7 +100,7 @@ void UICursor::unsetCursor(QWidget *pWidget)
     if ((UICommon::qtRTMajorVersion() < 5) ||
         (UICommon::qtRTMajorVersion() == 5 && UICommon::qtRTMinorVersion() < 11))
     {
-        if (NativeWindowSubsystem::X11CheckExtension("RENDER"))
+        if (NativeWindowSubsystem::checkExtension(uiCommon().X11XServerAvailable(), "RENDER"))
             pWidget->unsetCursor();
     }
     else
@@ -126,7 +126,7 @@ void UICursor::unsetCursor(QGraphicsWidget *pWidget)
     if ((UICommon::qtRTMajorVersion() < 5) ||
         (UICommon::qtRTMajorVersion() == 5 && UICommon::qtRTMinorVersion() < 11))
     {
-        if (NativeWindowSubsystem::X11CheckExtension("RENDER"))
+        if (NativeWindowSubsystem::checkExtension(uiCommon().X11XServerAvailable(), "RENDER"))
             pWidget->unsetCursor();
     }
     else

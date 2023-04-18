@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 99407 2023-04-14 18:15:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -860,8 +860,8 @@ bool UIDesktopWidgetWatchdog::activateWindow(WId wId, bool fSwitchDesktop /* = t
     fResult &= NativeWindowSubsystem::WinActivateWindow(wId, fSwitchDesktop);
 
 #elif defined(VBOX_WS_X11)
-    if (uiCommon().X11XServerAvailable())
-        fResult &= NativeWindowSubsystem::X11ActivateWindow(wId, fSwitchDesktop);
+
+    fResult &= NativeWindowSubsystem::activateWindow(uiCommon().X11XServerAvailable(), wId, fSwitchDesktop);
 
 #else
 
