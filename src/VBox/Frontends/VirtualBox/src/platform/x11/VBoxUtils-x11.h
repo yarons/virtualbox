@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.h 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-x11.h 99435 2023-04-18 07:18:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -119,17 +119,17 @@ namespace NativeWindowSubsystem
 
     /** Wrapper for X11CheckExtension and WaylandCheckExtension functions. */
     bool checkExtension(bool fIsXServerAvailable, const char *extensionName);
-    /** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
+    /** X11: Returns true if XLib extension with name @p extensionName is available, false otherwise. */
     bool X11CheckExtension(const char *pExtensionName);
     bool WaylandCheckExtension(const char *pExtensionName);
 
 
-    /** X11: Returns whether there are any DBus services whose name contains the substring 'screensaver'. */
-    bool X11CheckDBusScreenSaverServices();
-    /** X11: Returns the list of Inhibit methods found by introspecting DBus services. */
-    SHARED_LIBRARY_STUFF QVector<X11ScreenSaverInhibitMethod*> X11FindDBusScrenSaverInhibitMethods();
-    /** X11: Disables/enables Screen Saver through QDBus. */
-    SHARED_LIBRARY_STUFF void X11InhibitUninhibitScrenSaver(bool fInhibit, QVector<X11ScreenSaverInhibitMethod*> &inOutInhibitMethods);
+    /** DBus: Returns whether there are any DBus services whose name contains the substring 'screensaver'. */
+    bool checkDBusScreenSaverServices();
+    /** DBus: Returns the list of Inhibit methods found by introspecting DBus services. */
+    SHARED_LIBRARY_STUFF QVector<X11ScreenSaverInhibitMethod*> findDBusScrenSaverInhibitMethods();
+    /** DBus: Disables/enables Screen Saver through QDBus. */
+    SHARED_LIBRARY_STUFF void toggleHostScrenSaver(bool fInhibit, QVector<X11ScreenSaverInhibitMethod*> &inOutInhibitMethods);
 
     /** Wrapper function for X11ActivateWindow or WaylandActivateWindow. */
     bool activateWindow(bool fIsXServerAvailable, WId wId, bool fSwitchDesktop);
@@ -169,7 +169,7 @@ namespace NativeWindowSubsystem
     SHARED_LIBRARY_STUFF uint32_t X11GetAppRootWindow();
     /** Detects and returns display server type. */
     SHARED_LIBRARY_STUFF DisplayServerType detectDisplayServerType();
-    /** Returns true if @a enmDisplayServerType is either xorg or xwayland. */
+    /** Returns true if @a enmDisplayServerType is either XOrg or XWayland. */
     SHARED_LIBRARY_STUFF bool X11XServerAvailable(DisplayServerType enmDisplayServerType);
 }
 

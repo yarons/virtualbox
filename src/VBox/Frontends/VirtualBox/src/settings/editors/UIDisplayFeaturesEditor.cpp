@@ -1,4 +1,4 @@
-/* $Id: UIDisplayFeaturesEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDisplayFeaturesEditor.cpp 99435 2023-04-18 07:18:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayFeaturesEditor class implementation.
  */
@@ -141,7 +141,7 @@ void UIDisplayFeaturesEditor::prepare()
 #if defined(VBOX_WS_WIN)
         m_pCheckBoxDisableHostScreenSaver = new QCheckBox(this);
 #elif defined(VBOX_WS_X11)
-        if (NativeWindowSubsystem::X11CheckDBusScreenSaverServices())
+        if (NativeWindowSubsystem::checkDBusScreenSaverServices())
             m_pCheckBoxDisableHostScreenSaver = new QCheckBox(this);
 #endif /* VBOX_WS_X11 */
         if (m_pCheckBoxDisableHostScreenSaver)
