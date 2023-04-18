@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 99444 2023-04-18 15:02:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -563,20 +563,26 @@ UIPortForwardingDataList UIPortForwardingModel::rules() const
 void UIPortForwardingModel::setRules(const UIPortForwardingDataList &newRules)
 {
     /* Clear old data first of all: */
-    beginRemoveRows(QModelIndex(), 0, m_dataList.size() - 1);
-    foreach (const UIPortForwardingRow *pRow, m_dataList)
-        delete pRow;
-    m_dataList.clear();
-    endRemoveRows();
+    if (!m_dataList.isEmpty())
+    {
+        beginRemoveRows(QModelIndex(), 0, m_dataList.size() - 1);
+        foreach (const UIPortForwardingRow *pRow, m_dataList)
+            delete pRow;
+        m_dataList.clear();
+        endRemoveRows();
+    }
 
     /* Fetch incoming data: */
-    beginInsertRows(QModelIndex(), 0, newRules.size() - 1);
-    foreach (const UIDataPortForwardingRule &rule, newRules)
-        m_dataList << new UIPortForwardingRow(qobject_cast<QITableView*>(parent()),
-                                              rule.name, rule.protocol,
-                                              rule.hostIp, rule.hostPort,
-                                              rule.guestIp, rule.guestPort);
-    endInsertRows();
+    if (!newRules.isEmpty())
+    {
+        beginInsertRows(QModelIndex(), 0, newRules.size() - 1);
+        foreach (const UIDataPortForwardingRule &rule, newRules)
+            m_dataList << new UIPortForwardingRow(qobject_cast<QITableView*>(parent()),
+                                                  rule.name, rule.protocol,
+                                                  rule.hostIp, rule.hostPort,
+                                                  rule.guestIp, rule.guestPort);
+        endInsertRows();
+    }
 }
 
 void UIPortForwardingModel::addRule(const QModelIndex &index)
