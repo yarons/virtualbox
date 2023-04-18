@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 99447 2023-04-18 21:13:58Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2055,6 +2055,17 @@ ifdef VBOX_WITH_TESTCASES
  tstDarwinKeyboard_LIBS = \
  	$(LIB_RUNTIME)
  tstDarwinKeyboard_LIBS += $(PATH_STAGE_DLL)/UICommon$(VBOX_SUFF_DLL)
+endif
+
+
+if 0
+ #
+ # Testcase for the delete QPointer<> var issue.
+ #
+ PROGRAMS += tstQPointer
+ tstQPointer_TEMPLATE      := VBoxQtGuiExe
+ tstQPointer_QT_MODULES    := Core Widgets
+ tstQPointer_SOURCES       := src/tstQPointer.cpp
 endif
 
 
