@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 99134 2023-03-23 10:30:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.h 99436 2023-04-18 07:29:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -52,7 +52,7 @@ class UIVMInformationDialog;
 class CUSBDevice;
 class CVirtualBoxErrorInfo;
 #if defined(VBOX_WS_X11)
- struct X11ScreenSaverInhibitMethod;
+ struct DBusScreenSaverInhibitMethod;
 #endif
 
 /* Machine logic interface: */
@@ -405,7 +405,7 @@ private:
     /* Holds the cookies returnd by QDBus inhibition calls. Map keys are service name. These are required during uninhibition.*/
     QMap<QString, uint> m_screenSaverInhibitionCookies;
 #if defined(VBOX_WS_X11)
-    QVector<X11ScreenSaverInhibitMethod*> m_methods;
+    QVector<DBusScreenSaverInhibitMethod*> m_methods;
 #endif
 };
 
