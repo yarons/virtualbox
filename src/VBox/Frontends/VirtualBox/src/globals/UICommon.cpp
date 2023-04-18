@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 99438 2023-04-18 09:03:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -330,10 +330,10 @@ void UICommon::prepare()
 
 #ifdef VBOX_WS_X11
     /* Check whether we have compositing manager running: */
-    m_fCompositingManagerRunning = NativeWindowSubsystem::isCompositingManagerRunning(X11XServerAvailable());
+    m_fCompositingManagerRunning = NativeWindowSubsystem::isCompositingManagerRunning(X11ServerAvailable());
 
     /* Acquire current Window Manager type: */
-    m_enmWindowManagerType = NativeWindowSubsystem::windowManagerType(X11XServerAvailable());
+    m_enmWindowManagerType = NativeWindowSubsystem::windowManagerType(X11ServerAvailable());
 #endif /* VBOX_WS_X11 */
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
@@ -3023,7 +3023,7 @@ void UICommon::comWrappersReinit()
 }
 
 #ifdef VBOX_WS_X11
-bool UICommon::X11XServerAvailable() const
+bool UICommon::X11ServerAvailable() const
 {
     return m_enmDisplayServerType == DisplayServerType_XWayland
         || m_enmDisplayServerType == DisplayServerType_XOrg;

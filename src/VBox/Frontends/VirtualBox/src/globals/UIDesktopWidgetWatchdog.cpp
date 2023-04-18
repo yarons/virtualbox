@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 99438 2023-04-18 09:03:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -789,7 +789,7 @@ void UIDesktopWidgetWatchdog::setTopLevelGeometry(QWidget *pWidget, int x, int y
     AssertPtrReturnVoid(pWidget);
 #ifdef VBOX_WS_X11
 # define QWINDOWSIZE_MAX ((1<<24)-1)
-    if (pWidget->isWindow() && pWidget->isVisible() && uiCommon().X11XServerAvailable())
+    if (pWidget->isWindow() && pWidget->isVisible() && uiCommon().X11ServerAvailable())
     {
         // WORKAROUND:
         // X11 window managers are not required to accept geometry changes on
@@ -861,7 +861,7 @@ bool UIDesktopWidgetWatchdog::activateWindow(WId wId, bool fSwitchDesktop /* = t
 
 #elif defined(VBOX_WS_X11)
 
-    fResult &= NativeWindowSubsystem::activateWindow(uiCommon().X11XServerAvailable(), wId, fSwitchDesktop);
+    fResult &= NativeWindowSubsystem::activateWindow(uiCommon().X11ServerAvailable(), wId, fSwitchDesktop);
 
 #else
 
