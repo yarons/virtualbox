@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 98642 2023-02-20 10:47:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 99446 2023-04-18 15:05:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2368,7 +2368,16 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType enmType,
     }
 
     /* Delete message-box: */
+#if 1 /* With a debug Qt 5.15.2 (r175) build and paged heap on windows, the ~QPointer destructor will trigger heap corruption
+         (VERIFIER STOP 0000000000000010: pid 0x253C: corrupted start stamp).  Clearing the QPointer prior to deletion works
+         around the issue (calling clear() after delete just triggers the problem a few lines earlier). */
+    QIMessageBox *pSafe = pMessageBox;
+    pMessageBox.clear();
+    if (pSafe)
+        delete pSafe;
+#else
     delete pMessageBox;
+#endif
 
     /* Return result-code: */
     return iResultCode;
