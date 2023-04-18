@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 99439 2023-04-18 09:45:15Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 99440 2023-04-18 09:54:25Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99439 $"
+__version__ = "$Revision: 99440 $"
 
 # Standard Python imports.
 import copy;
@@ -1959,6 +1959,10 @@ class TestVmManager(object):
         TestVm('tst-ol-8_1-64-efi-sb',      kfGrpStdSmoke,        sHd = '6.1/efi/ol-8_1-efi-amd64-2.vdi',
                sKind = 'Oracle_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                asParavirtModesSup = [g_ksParavirtProviderKVM,], fSecureBoot = True, sUefiMokPathPrefix = '7.0/mok/vbox-test-MOK'),
+        # Note: Don't use this image for VBoxService / Guest Control-related tests anymore;
+        #       The distro has a buggy dbus implementation, which crashes often in some dbus watcher functions when being
+        #       invoked by pm_sm_authenticate(). Also, the distro's repositories can't be used either easily anymore due to old
+        #       certificates and/or authentication methods. However, newer versions, such as OL6u9 or u10 should work fine.
         TestVm('tst-ol-6u2-32',             kfGrpStdSmoke,        sHd = '6.1/ol-6u2-x86.vdi',
                sKind = 'Oracle',    acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
