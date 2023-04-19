@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 99449 2023-04-19 06:41:56Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 99450 2023-04-19 06:46:22Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99449 $"
+__version__ = "$Revision: 99450 $"
 
 # Standard Python imports.
 import copy;
@@ -1966,9 +1966,9 @@ class TestVmManager(object):
         #       The distro has a buggy dbus implementation, which crashes often in some dbus watcher functions when being
         #       invoked by pm_sm_authenticate(). Also, the distro's repositories can't be used either easily anymore due to old
         #       certificates and/or authentication methods. However, newer versions, such as OL6u9 or u10 should work fine.
-        TestVm('tst-ol-6u2-32',             kfGrpStdSmoke,        sHd = '6.1/ol-6u2-x86.vdi',
-               sKind = 'Oracle',    acCpusSup = range(1, 33), fIoApic = True,
-               asParavirtModesSup = [g_ksParavirtProviderKVM,]),
+        #TestVm('tst-ol-6u2-32',             kfGrpStdSmoke,        sHd = '6.1/ol-6u2-x86.vdi',
+        #       sKind = 'Oracle',    acCpusSup = range(1, 33), fIoApic = True,
+        #       asParavirtModesSup = [g_ksParavirtProviderKVM,]),
         TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '6.1/efi/ubuntu-15_10-efi-amd64-3.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
