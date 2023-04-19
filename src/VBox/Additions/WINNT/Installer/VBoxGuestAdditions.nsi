@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 99431 2023-04-17 20:07:20Z knut.osmundsen@oracle.com $
+; $Id: VBoxGuestAdditions.nsi 99470 2023-04-19 21:47:20Z knut.osmundsen@oracle.com $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -1040,11 +1040,11 @@ Function .onInit
   Pop $g_strWinVersion
 
   ; Init global variables that depends on the windows version.
-  ${If} $g_strWinVersion == "2000"
+  ${If} $g_strWinVersion == "XP"
+    StrCpy $g_strEarlyNTDrvInfix "EarlyNT"
+  ${ElseIf} $g_strWinVersion == "2000"
     StrCpy $g_strEarlyNTDrvInfix "EarlyNT"
   ${ElseIf} $g_strWinVersion == "NT4"
-    StrCpy $g_strEarlyNTDrvInfix "EarlyNT"
-  ${ElseIf} $g_strWinVersion == "XP" ; Unconfirmed theory that XP is also having trouble with the VBoxVideo.inf changes ...
     StrCpy $g_strEarlyNTDrvInfix "EarlyNT"
   ${Else}
     StrCpy $g_strEarlyNTDrvInfix ""
