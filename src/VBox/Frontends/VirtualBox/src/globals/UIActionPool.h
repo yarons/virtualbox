@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPool.h 99467 2023-04-19 19:47:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -236,7 +236,7 @@ public:
       * @param  enmType  Brings the action type. */
     UIAction(UIActionPool *pParent, UIActionType enmType, bool fMachineMenuAction = false);
     /** Destructs action. */
-    virtual ~UIAction() RT_OVERRIDE { delete menu(); }
+    virtual ~UIAction() RT_OVERRIDE { delete menu(); setShortcuts(QList<QKeySequence>() /*unregister*/); }
 
     /** Returns action-pool this action belongs to. */
     UIActionPool *actionPool() const { return m_pActionPool; }
