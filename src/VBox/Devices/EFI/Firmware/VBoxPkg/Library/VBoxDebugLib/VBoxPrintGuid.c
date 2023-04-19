@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintGuid.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxPrintGuid.c 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxPrintGuid.c - Implementation of the VBoxPrintGuid() debug logging routine.
  */

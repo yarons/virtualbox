@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintChar.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxPrintChar.c 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxPrintChar.c - Implementation of the VBoxPrintChar() debug logging routine.
  */

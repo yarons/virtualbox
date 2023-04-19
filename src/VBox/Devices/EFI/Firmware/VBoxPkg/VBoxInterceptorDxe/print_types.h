@@ -1,4 +1,4 @@
-/* $Id: print_types.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: print_types.h 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * print_types.h - helper macrodifinition to convert types to right printf flags.
  */

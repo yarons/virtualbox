@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaFonts.h 89989 2021-07-01 12:10:28Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVgaFonts.h 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Some of the VGA-ROM fonts from ftp://ftp.simtel.net/pub/simtelnet/msdos/screen/fntcol16.zip .
  * The package is (C) Joseph (Yossi) Gil.

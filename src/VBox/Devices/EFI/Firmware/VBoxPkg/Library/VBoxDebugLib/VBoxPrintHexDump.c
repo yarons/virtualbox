@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintHexDump.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxPrintHexDump.c 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxPrintHex.c - Implementation of the VBoxPrintHex() debug logging routine.
  */

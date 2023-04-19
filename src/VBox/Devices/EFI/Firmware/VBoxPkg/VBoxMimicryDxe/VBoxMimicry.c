@@ -1,4 +1,4 @@
-/* $Id: VBoxMimicry.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMimicry.c 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxMimicry.c - Mimic table entry.
  */

@@ -1,4 +1,4 @@
-/* $Id: Console.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Console.c 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Console.c - VirtualBox Console control emulation
  */
