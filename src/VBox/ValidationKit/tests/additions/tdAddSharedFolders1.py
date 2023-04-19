@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99462 $"
+__version__ = "$Revision: 99463 $"
 
 # Standard Python imports.
 import os
@@ -191,7 +191,7 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
         """
         return self.unmountShareEx(oSession, oTxsSession, sShareName, sGuestMountPoint, fMustSucceed = True);
 
-    def testIt(self, oTestVm, oSession, oTxsSession):
+    def testIt(self, oTestVm, oSession, oTxsSession): #pylint: disable=too-many-statements
         """
         Executes the test.
 
