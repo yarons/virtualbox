@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 99442 2023-04-18 12:26:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -52,7 +52,7 @@
 # include "VBoxUtils-win.h"
 #endif
 #ifdef VBOX_WS_X11
-# include "VBoxUtils-x11.h"
+# include "VBoxUtils-nix.h"
 #endif
 
 /* Other VBox includes: */

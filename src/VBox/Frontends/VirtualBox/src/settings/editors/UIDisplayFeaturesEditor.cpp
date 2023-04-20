@@ -1,4 +1,4 @@
-/* $Id: UIDisplayFeaturesEditor.cpp 99435 2023-04-18 07:18:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDisplayFeaturesEditor.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayFeaturesEditor class implementation.
  */
@@ -33,7 +33,7 @@
 /* GUI includes: */
 #include "UIDisplayFeaturesEditor.h"
 #ifdef VBOX_WS_X11
-# include "VBoxUtils-x11.h"
+# include "VBoxUtils-nix.h"
 #endif
 
 

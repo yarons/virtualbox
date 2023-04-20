@@ -1,4 +1,4 @@
-/* $Id: main.cpp 99434 2023-04-18 06:51:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: main.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -74,7 +74,7 @@
 # include <dlfcn.h>
 # include <unistd.h>
 # include <X11/Xlib.h>
-# include "VBoxUtils-x11.h"
+# include "VBoxUtils-nix.h"
 # if defined(RT_OS_LINUX) && defined(DEBUG)
 #  include <signal.h>
 #  include <execinfo.h>
