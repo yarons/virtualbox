@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 99483 2023-04-20 10:16:10Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTProcCreateEx.cpp 99486 2023-04-20 12:51:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -499,6 +499,8 @@ static void tstRTCreateProcEx6(const char *pszAsUser, const char *pszPassword)
         else
             RTTestIFailed("RTEnvGetByIndexEx(%s,%u,,,,) failed: %Rrc", pszEnv1, i, rc);
     }
+
+    RTEnvDestroy(hEnvCur);
 }
 
 
