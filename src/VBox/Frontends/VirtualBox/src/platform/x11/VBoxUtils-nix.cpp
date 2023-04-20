@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.cpp 99481 2023-04-20 08:37:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-nix.cpp 99484 2023-04-20 11:31:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -764,7 +764,8 @@ DisplayServerType NativeWindowSubsystem::detectDisplayServerType()
                 return DisplayServerType_XWayland;
         }
     }
-    return DisplayServerType_Unknown;
+    /* Default to Xorg since Solaris set XDG_SESSION_TYPE: */
+    return DisplayServerType_XOrg;
 }
 
 bool NativeWindowSubsystem::X11XServerAvailable(DisplayServerType enmDisplayServerType)
