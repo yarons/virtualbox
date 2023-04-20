@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99474 2023-04-20 06:23:47Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 99475 2023-04-20 06:43:21Z alexander.eichner@oracle.com $
 ## @file
 # kBuild configuration for the VBox EFI firmware.
 #
@@ -156,10 +156,10 @@ TEMPLATE_VBoxEfiBldProg_INCS.amd64 = $(TEMPLATE_VBoxBldProg_INCS.amd64) \
 	$(VBOX_PATH_EFI_FIRMWARE)/BaseTools/Source/C/Include/X64
 
 TEMPLATE_VBoxEfiBldProg_INCS.arm = $(TEMPLATE_VBoxBldProg_INCS.arm) \
-    $(VBOX_PATH_EFI_FIRMWARE)/BaseTools/Source/C/Include/ARM
+	$(VBOX_PATH_EFI_FIRMWARE)/BaseTools/Source/C/Include/ARM
 
 TEMPLATE_VBoxEfiBldProg_INCS.arm64 = $(TEMPLATE_VBoxBldProg_INCS.arm64) \
-    $(VBOX_PATH_EFI_FIRMWARE)/BaseTools/Source/C/Include/AARCH64
+	$(VBOX_PATH_EFI_FIRMWARE)/BaseTools/Source/C/Include/AARCH64
 
 TEMPLATE_VBoxEfiBldProg_LIBS = \
 	$(VBOX_PATH_STAGE_EFI_BLDPROGS)/EfiBldCommonLib$(VBOX_SUFF_LIB) \
