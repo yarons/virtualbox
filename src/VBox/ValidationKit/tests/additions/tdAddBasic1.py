@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 99400 2023-04-14 12:41:19Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 99490 2023-04-20 15:47:05Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99400 $"
+__version__ = "$Revision: 99490 $"
 
 # Standard Python imports.
 import os;
@@ -510,10 +510,20 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         # Make sure to add "--nox11" to the makeself wrapper in order to not getting any blocking
         # xterm window spawned.
+        asArgs = [ '--nox11' ];
+
+        # Ugly kludge to make tst-rhel5 (or any other borked test VM) work which (accidentally?) have old(er) Guest Additions
+        # version pre-installed.
+        #
+        # This forces our installer (inside the makeself wrapper, hence the "--") to install, regardless of whether there already
+        # are any (older) Guest Additions installed already.
+        if oTestVm.sVmName == "tst-rhel5":
+            asArgs.extend( [ "--", "--force" ] );
+
         fRc = self.txsRunTest(oTxsSession, 'VBoxLinuxAdditions.run', 30 * 60 * 1000,
                               self.getGuestSystemShell(oTestVm),
                               (self.getGuestSystemShell(oTestVm),
-                              '${CDROM}/%s/VBoxLinuxAdditions.run' % self.sGstPathGaPrefix, '--nox11'));
+                              '${CDROM}/%s/VBoxLinuxAdditions.run' % self.sGstPathGaPrefix, asArgs));
         if fRc and oTxsSession.isSuccess():
             reporter.log('Installation completed');
         else:

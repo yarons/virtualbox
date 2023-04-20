@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 99450 2023-04-19 06:46:22Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 99490 2023-04-20 15:47:05Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99450 $"
+__version__ = "$Revision: 99490 $"
 
 # Standard Python imports.
 import copy;
@@ -1982,6 +1982,7 @@ class TestVmManager(object):
         #TestVm('tst-ubuntu-15_10-64-efi',   kfGrpStdSmoke,        sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
         #       asParavirtModesSup = [g_ksParavirtProviderKVM,]),
+        # Note: Has ancient Guest Additions 3.0.14 installed already.
         TestVm('tst-rhel5',                 kfGrpSmoke,           sHd = '3.0/tcp/rhel5.vdi',
                sKind = 'RedHat', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
         TestVm('tst-arch',                  kfGrpStandard,        sHd = '4.2/usb/tst-arch.vdi',
