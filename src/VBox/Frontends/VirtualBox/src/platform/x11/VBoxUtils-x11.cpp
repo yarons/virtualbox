@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-x11.cpp 99436 2023-04-18 07:29:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-x11.cpp 99478 2023-04-20 08:22:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -739,6 +739,10 @@ uint32_t NativeWindowSubsystem::X11GetAppRootWindow()
 
 DisplayServerType NativeWindowSubsystem::detectDisplayServerType()
 {
+    /* Warning: All the following assumes:
+         - the system does not have several sessions with different display server configurations,
+         - XDG_SESSION_TYPE is set accordingly.
+    */
     const char *pSessionType = RTEnvGet("XDG_SESSION_TYPE");
     if (pSessionType != NULL)
     {
@@ -751,6 +755,14 @@ DisplayServerType NativeWindowSubsystem::detectDisplayServerType()
         }
         else if (RTStrIStr(pSessionType, "x11"))
             return DisplayServerType_XOrg;
+        /* On systemd systems XDG_SESSION_TYPE is set to tty for ssh sessions. Check xserver processes then:*/
+        else if (RTStrIStr(pSessionType, "tty"))
+        {
+            if (RTProcIsRunningByName("Xorg"))
+                return DisplayServerType_XOrg;
+            else if (RTProcIsRunningByName("Xwayland"))
+                return DisplayServerType_XWayland;
+        }
     }
     return DisplayServerType_Unknown;
 }
