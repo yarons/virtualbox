@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 99090 2023-03-21 15:24:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSDL.cpp 99494 2023-04-20 19:52:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -4089,7 +4089,7 @@ int PushSDLEventForSure(SDL_Event *event)
     return -1;
 }
 
-#ifdef VBOXSDL_WITH_X11
+#if defined(VBOXSDL_WITH_X11) || defined(RT_OS_DARWIN)
 /**
  * Special SDL_PushEvent function for NotifyUpdate events. These events may occur in bursts
  * so make sure they don't flood the SDL event queue.

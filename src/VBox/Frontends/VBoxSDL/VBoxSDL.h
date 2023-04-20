@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.h 98302 2023-01-25 09:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxSDL.h 99494 2023-04-20 19:52:23Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -89,7 +89,7 @@ int resizeUI(uint16_t width, uint16_t height);
 int setUITitle(char *title);
 #endif /* VBOX_WIN32_UI */
 
-#ifdef VBOXSDL_WITH_X11
+#if defined(VBOXSDL_WITH_X11) || defined(RT_OS_DARWIN)
 void PushNotifyUpdateEvent(SDL_Event *event);
 #endif
 int  PushSDLEventForSure(SDL_Event *event);

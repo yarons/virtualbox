@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 99090 2023-03-21 15:24:35Z andreas.loeffler@oracle.com $ */
+/* $Id: Framebuffer.cpp 99494 2023-04-20 19:52:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -334,10 +334,7 @@ STDMETHODIMP VBoxSDLFB::COMGETTER(WinId)(LONG64 *winId)
 {
     if (!winId)
         return E_POINTER;
-#ifdef RT_OS_DARWIN
-    if (mWinId == 0) /* (In case it failed the first time.) */
-        mWinId = (intptr_t)VBoxSDLGetDarwinWindowId();
-#endif
+
     *winId = mWinId;
     return S_OK;
 }
@@ -388,7 +385,7 @@ STDMETHODIMP VBoxSDLFB::NotifyUpdate(ULONG x, ULONG y,
     LogFlow(("VBoxSDLFB::NotifyUpdate: x = %d, y = %d, w = %d, h = %d\n",
              x, y, w, h));
 
-#ifdef VBOXSDL_WITH_X11
+#if defined(VBOXSDL_WITH_X11) || defined(RT_OS_DARWIN)
     /*
      * SDL does not allow us to make this call from any other thread than
      * the main SDL thread (which initialized the video mode). So we have
@@ -845,7 +842,7 @@ void VBoxSDLFB::resizeSDL(void)
  */
 void VBoxSDLFB::update(int x, int y, int w, int h, bool fGuestRelative)
 {
-#ifdef VBOXSDL_WITH_X11
+#if defined(VBOXSDL_WITH_X11) || defined(RT_OS_DARWIN)
     AssertMsg(gSdlNativeThread == RTThreadNativeSelf(), ("Wrong thread! SDL is not threadsafe!\n"));
 #endif
     RTCritSectEnter(&mUpdateLock);
