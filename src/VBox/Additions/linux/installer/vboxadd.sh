@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 99503 2023-04-21 13:36:45Z andreas.loeffler@oracle.com $
+# $Id: vboxadd.sh 99505 2023-04-21 13:46:30Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 99503 $)
+# Linux Additions kernel module init script ($Revision: 99505 $)
 #
 
 #
@@ -149,10 +149,10 @@ MODULE_SRC="$INSTALL_DIR/src/vboxguest-$INSTALL_VER"
 BUILDINTMP="$MODULE_SRC/build_in_tmp"
 
 # Attempt to detect VirtualBox Guest Additions version and revision information.
-VBOXCLIENT="${INSTALL_DIR}/bin/VBoxControl"
-VBOX_VERSION="`"$VBOXCLIENT" --version | cut -d r -f1`"
+VBOXCONTROL="${INSTALL_DIR}/bin/VBoxControl"
+VBOX_VERSION="`"$VBOXCONTROL" --version | cut -d r -f1`"
 [ -n "$VBOX_VERSION" ] || VBOX_VERSION='unknown'
-VBOX_REVISION="r`"$VBOXCLIENT" --version | cut -d r -f2`"
+VBOX_REVISION="r`"$VBOXCONTROL" --version | cut -d r -f2`"
 [ "$VBOX_REVISION" != "r" ] || VBOX_REVISION='unknown'
 
 # Returns if the vboxguest module is running or not.
