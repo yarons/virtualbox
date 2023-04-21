@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 99487 2023-04-20 12:59:13Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 99509 2023-04-21 16:04:42Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99487 $"
+__version__ = "$Revision: 99509 $"
 
 
 # Standard Python imports.
@@ -82,6 +82,7 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstIntNet-1': '',                 # Not supported on arm64 right now.
             'testcase/tstLow': '',                      # Ditto.
             'testcase/tstPin': '',                      # Ditto.
+            'testcase/tstRTTime': '',                   # Needs more work first.
         },
         'linux': {
             'testcase/tstRTFileAio': '',                # See xTracker #8035.
