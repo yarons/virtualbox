@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxadd-service.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vboxadd-service.sh 99507 2023-04-21 15:40:07Z vadim.galitsyn@oracle.com $
 ## @file
 # Linux Additions Guest Additions service daemon init script.
 #
@@ -139,9 +139,13 @@ status() {
     echo -n "Checking for VBoxService"
     if [ -f $PIDFILE ]; then
         echo " ...running"
+        RETVAL=0
     else
         echo " ...not running"
+        RETVAL=1
     fi
+
+    return $RETVAL
 }
 
 case "$1" in
@@ -165,5 +169,3 @@ cleanup)
     echo "Usage: $0 {start|stop|restart|status}"
     exit 1
 esac
-
-exit $RETVAL
