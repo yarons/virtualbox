@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 99502 2023-04-21 13:33:36Z andreas.loeffler@oracle.com $
+# $Id: vboxadd.sh 99503 2023-04-21 13:36:45Z andreas.loeffler@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 99502 $)
+# Linux Additions kernel module init script ($Revision: 99503 $)
 #
 
 #
@@ -149,7 +149,7 @@ MODULE_SRC="$INSTALL_DIR/src/vboxguest-$INSTALL_VER"
 BUILDINTMP="$MODULE_SRC/build_in_tmp"
 
 # Attempt to detect VirtualBox Guest Additions version and revision information.
-VBOXCLIENT="${INSTALL_DIR}/bin/VBoxClient"
+VBOXCLIENT="${INSTALL_DIR}/bin/VBoxControl"
 VBOX_VERSION="`"$VBOXCLIENT" --version | cut -d r -f1`"
 [ -n "$VBOX_VERSION" ] || VBOX_VERSION='unknown'
 VBOX_REVISION="r`"$VBOXCLIENT" --version | cut -d r -f2`"
