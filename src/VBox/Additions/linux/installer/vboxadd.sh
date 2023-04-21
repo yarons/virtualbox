@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 99510 2023-04-21 17:29:06Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 99511 2023-04-21 18:12:13Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 99510 $)
+# Linux Additions kernel module init script ($Revision: 99511 $)
 #
 
 #
@@ -158,7 +158,7 @@ MODULE_SRC="$INSTALL_DIR/src/vboxguest-$INSTALL_VER"
 BUILDINTMP="$MODULE_SRC/build_in_tmp"
 
 # Path to VBoxService control script.
-VBOX_SERVICE_SCRIPT="/usr/sbin/rcvboxadd-service"
+VBOX_SERVICE_SCRIPT="/sbin/rcvboxadd-service"
 
 # Attempt to detect VirtualBox Guest Additions version and revision information.
 VBOXCONTROL="${INSTALL_DIR}/bin/VBoxControl"
