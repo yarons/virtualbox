@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 99497 $"/>
-      <othermeta name="rev-date" content="$Date: 2023-04-21 03:55:02 +0200 (Fri, 21 Apr 2023) $"/>
+      <othermeta name="revision" content="$Rev: 99500 $"/>
+      <othermeta name="rev-date" content="$Date: 2023-04-21 11:30:10 +0200 (Fri, 21 Apr 2023) $"/>
       <othermeta name="ditaval" content="ohc.ditaval"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
@@ -374,10 +374,10 @@
    <chapter href="topics/vboxmanage.dita">
       <topicref href="topics/vboxmanage-intro.dita"/>
       <!-- Commands Overview -->
-      <!--  <topicref href="topics/vboxmanage-cmd-overview.dita"/> -->
+      <topicref href="topics/vboxmanage-cmd-overview.dita"/>
       <topicref href="topics/vboxmanage-general.dita"/>
       <!-- The remainder of the topics in this chapter are generated from docbook XML files.-->
-      <topicref  format="ditamap" href="topics/man_VBoxManage-common.ditamap"/>
+      <topicref format="ditamap" href="topics/man_VBoxManage-common.ditamap"/>
       <!-- Note! We sort these alphabetical unless someone can define a
                  maintainable ordering (previously it seemed to be total
                  random and included several duplicates). -->
