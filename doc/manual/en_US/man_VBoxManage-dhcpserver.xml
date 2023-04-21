@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-dhcpserver" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-28 10:46:48 +0200 (Tue, 28 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage dhcpserver</title>
   </refentryinfo>
 
@@ -254,7 +254,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-dhcpserver-description">
     <title>Description</title>
 
     <para>

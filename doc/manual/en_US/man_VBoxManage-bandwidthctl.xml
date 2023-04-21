@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-bandwidthctl" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 23:30:48 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage bandwidthctl</title>
   </refentryinfo>
 
@@ -94,7 +94,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-bandwidthctl-description">
     <title>Description</title>
     <para>
       The <command>VBoxManage bandwidthctl</command> command enables you
@@ -279,7 +279,7 @@
     </refsect2>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-bandwidthctl-examples">
     <title>Examples</title>
     <remark role="help-scope" condition="GLOBAL"/>
     <para>

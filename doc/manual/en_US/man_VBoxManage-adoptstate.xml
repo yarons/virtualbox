@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-adoptstate" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage adoptstate</title>
   </refentryinfo>
 
@@ -57,7 +57,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-adoptstate-description">
     <title>Description</title>
     <para>
       The <command>VBoxManage adoptstate</command> command enables you
@@ -91,7 +91,7 @@
     </variablelist>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-adoptstate-examples">
     <title>Examples</title>
     <remark role="help-scope" condition="GLOBAL" />
     <para>
@@ -103,7 +103,7 @@
 <screen>$ VBoxManage adoptstate vm2 /home/user/mystate.sav</screen>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-adoptstate-see-also">
     <title>See Also</title>
     <para>
       <xref linkend="vboxmanage-discardstate"/>

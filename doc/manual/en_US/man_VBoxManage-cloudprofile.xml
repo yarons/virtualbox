@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-cloudprofile" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-24 02:29:00 +0100 (Fri, 24 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage cloudprofile</title>
   </refentryinfo>
 
@@ -86,7 +86,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-cloudprofile-description">
     <title>Description</title>
 
     <refsect2 id="vboxmanage-cloudprofile-common-options">

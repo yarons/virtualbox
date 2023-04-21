@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-movevm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage movevm</title>
   </refentryinfo>
 
@@ -58,7 +58,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-movevm-description">
     <title>Description</title>
     <para>
       The <command>VBoxManage movevm</command> command moves a virtual
@@ -99,7 +99,7 @@
     </variablelist>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-movevm-examples">
     <title>Examples</title>
     <remark role="help-scope" condition="GLOBAL" />
     <para>

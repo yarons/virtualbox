@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-clonemedium" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 23:30:48 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage clonemedium</title>
   </refentryinfo>
 
@@ -80,7 +80,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-clonemedium-description">
     <title>Description</title>
     <para>
       The <command>VBoxManage clonemedium</command> command enables you
@@ -194,7 +194,7 @@
     </note>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-clonemedium-examples">
     <title>Examples</title>
     <remark role="help-scope" condition="GLOBAL" />
     <para>
@@ -211,7 +211,7 @@
 <screen>$ VBoxManage clonemedium disk01.vdi disk02.vmdk --format VMDK</screen>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-clonemedium-see-also">
     <title>See Also</title>
     <para>
       <xref linkend="vboxmanage-list" />
