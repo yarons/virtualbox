@@ -1,4 +1,4 @@
-# $Id: pdf-theme-UserManual.yaml 99271 2023-04-04 00:34:29Z knut.osmundsen@oracle.com $
+# $Id: pdf-theme-UserManual.yaml 99497 2023-04-21 01:55:02Z knut.osmundsen@oracle.com $
 
 brand:
     color:
@@ -134,9 +134,11 @@ style:
 
     h4:
         font-size:          12pt
+        font-weight:        bold
         font-style:         italic
-        space-before:       12pt
-        title-numbering:    false
+        space-before:       15pt
+        start-indent:       'from-parent(start-indent)'
+        title-numbering:    true
 
     link:
         color:              $brand-color-links

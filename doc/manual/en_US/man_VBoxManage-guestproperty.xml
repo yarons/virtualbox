@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-guestproperty" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-03-23 22:47:01 +0100 (Thu, 23 Mar 2023) $</pubdate>
+    <pubdate>$Date: 2023-04-21 03:55:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
     <title>VBoxManage guestproperty</title>
   </refentryinfo>
 
@@ -101,7 +101,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-guestproperty-description">
     <title>Description</title>
     <para>
       The <command>VBoxManage guestproperty</command> command enables
@@ -115,7 +115,7 @@
       automatically set and maintain values whose keywords begin with
       <literal>/VirtualBox/</literal>.
     </para>
-    <refsect2>
+    <refsect2 id="vboxmanage-guestproperty-common">
       <title>General Command Operand</title>
       <variablelist>
         <varlistentry>
@@ -341,7 +341,7 @@
     </refsect2>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-guestproperty-examples">
     <title>Examples</title>
     <remark role="help-scope" condition="GLOBAL" />
     <para>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build_id_to_file_mapping.py 99059 2023-03-20 02:38:04Z knut.osmundsen@oracle.com $
+# $Id: build_id_to_file_mapping.py 99497 2023-04-21 01:55:02Z knut.osmundsen@oracle.com $
 
 """
 Scans the given files (globbed) for topic id and stores records the filename
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 99059 $"
+__version__ = "$Revision: 99497 $"
 
 
 # Standard python imports.
@@ -61,7 +61,8 @@ def scanDocbookRefentryForIds(dIdToFile, sContent, sFile):
     for oMatch in g_oReRefentry.finditer(sContent):
         sId = oMatch.group(2)[1:-1];
         if sId:
-            dIdToFile[sId] = sFile;
+            #dIdToFile[sId] = sFile;
+            dIdToFile[sId] = '%s.dita' % (sId,);
 
 def isDocbook(sContent):
     """
