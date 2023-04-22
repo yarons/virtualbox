@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99514 2023-04-22 01:59:25Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99516 2023-04-22 10:29:41Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -769,9 +769,9 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
   $$(VBOX_PATH_MANUAL_OUTBASE)/$(1)/dita/topics/changelog-versions.ditamap: \
   		$$(VBOX_PATH_MANUAL_SRC)/docbook-changelog-to-manual-dita.sh \
   		$$(VBOX_PATH_MANUAL_SRC)/docbook-changelog-to-manual-dita.xsl \
- 		$$(VBOX_XML_CATALOG) \
- 		$$(VBOX_XML_CATALOG_DOCBOOK) \
- 		$$(VBOX_XML_CATALOG_MANUAL) \
+  		$$(VBOX_XML_CATALOG) \
+  		$$(VBOX_XML_CATALOG_DOCBOOK) \
+  		$$(VBOX_XML_CATALOG_MANUAL) \
   		| $$$$(dir $$$$@)
 	$$(call MSG_TOOL,xsltproc docbook-changelog-to-manual-dita.xsl,,,$$@)
 	$$(QUIET)$$(RM) -f -- "$$@" "$$@.files.xml"
