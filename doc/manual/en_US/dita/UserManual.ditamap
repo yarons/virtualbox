@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 99500 $"/>
-      <othermeta name="rev-date" content="$Date: 2023-04-21 11:30:10 +0200 (Fri, 21 Apr 2023) $"/>
+      <othermeta name="revision" content="$Rev: 99514 $"/>
+      <othermeta name="rev-date" content="$Date: 2023-04-22 03:59:25 +0200 (Sat, 22 Apr 2023) $"/>
       <othermeta name="ditaval" content="ohc.ditaval"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
@@ -676,7 +676,12 @@
       <topicref href="topics/KnownProblems.dita"/>
    </chapter>
 
-   <!-- Change Log-->
+   <!-- Change Log -->
+   <chapter href="topics/ChangeLog.dita">
+      <!-- This map file and all the topics it is referencing is generated from user_ChangeLogImpl.xml. -->
+      <topicref format="ditamap" href="topics/changelog-versions.ditamap"/>
+      <topicref href="topics/changelog-older.dita"/>
+   </chapter>
 
    <!-- Third Party Licenses-->
 
