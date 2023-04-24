@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 99518 2023-04-24 09:47:11Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 99520 2023-04-24 09:52:39Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99518 $"
+__version__ = "$Revision: 99520 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -4396,13 +4396,18 @@ class TestDriver(base.TestDriver):                                              
         submit the job.
         """
         assert sStdIn is not None;
-        # Wrap sStdIn in a file like class.
         class StdInWrapper(object): # pylint: disable=too-few-public-methods
+            """
+            Wraps sStdIn in a file like class.
+            """
             def __init__(self, sStdIn):
                 self.sContent = sStdIn;
                 self.off      = 0;
 
             def read(self, cbMax):
+                """
+                Returns next stdin input (up to cbMax), or an empty string if all input has been supplied already.
+                """
                 cbLeft = len(self.sContent) - self.off;
                 if cbLeft == 0:
                     return "";
