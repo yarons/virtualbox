@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 99521 2023-04-24 10:59:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -11,6 +11,7 @@
  *  - Log5 for info about GMR pages.
  *  - Log6 for DX shaders.
  *  - Log7 for SVGA command dump.
+ *  - Log8 for content of constant and vertex buffers.
  *  - LogRel for the usual important stuff.
  *  - LogRel2 for cursor.
  *  - LogRel3 for 3D performance data.

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 99521 2023-04-24 10:59:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -683,6 +683,9 @@ int vmsvga3dDXSaveExec(PPDMDEVINS pDevIns, PVGASTATECC pThisCC, PSSMHANDLE pSSM)
 
 int vmsvga3dVBDXClearRenderTargetViewRegion(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdVBDXClearRenderTargetViewRegion const *pCmd, uint32_t cRect, SVGASignedRect const *paRect);
 #endif /* VMSVGA3D_DX */
+
+
+float float16ToFloat(uint16_t f16);
 
 
 #endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_h */
