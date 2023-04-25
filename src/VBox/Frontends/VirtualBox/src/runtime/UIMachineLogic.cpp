@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 99526 2023-04-25 13:22:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -501,9 +501,12 @@ void UIMachineLogic::sltMachineStateChanged()
         case KMachineState_Restoring:
         case KMachineState_TeleportingIn:
         {
-            /* The keyboard handler may wish to do some release logging on startup.
-             * Tell it that the logger is now active. */
-            doXKeyboardLogging(NativeWindowSubsystem::X11GetDisplay());
+            if (uiCommon().X11ServerAvailable())
+            {
+                /* The keyboard handler may wish to do some release logging on startup.
+                 * Tell it that the logger is now active. */
+                doXKeyboardLogging(NativeWindowSubsystem::X11GetDisplay());
+            }
             break;
         }
 #endif
