@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -330,7 +330,12 @@ typedef struct VMSVGAState
     uint32_t                    u32CurrentGMRId;
     /** SVGA device capabilities. */
     uint32_t                    u32DeviceCaps;
-    uint32_t                    Padding0; /* Used to be I/O port base address. */
+    uint32_t                    u32DeviceCaps2; /* Used to be I/O port base address and Padding0. */
+    /** Guest driver information (SVGA_REG_GUEST_DRIVER_*). */
+    uint32_t                    u32GuestDriverId;
+    uint32_t                    u32GuestDriverVer1;
+    uint32_t                    u32GuestDriverVer2;
+    uint32_t                    u32GuestDriverVer3;
     /** Port io index register. */
     uint32_t                    u32IndexReg;
     /** FIFO request semaphore. */

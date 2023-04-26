@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -76,6 +76,7 @@ typedef struct DXShaderInfo
 
 int DXShaderParse(void const *pvCode, uint32_t cbCode, DXShaderInfo *pInfo);
 void DXShaderGenerateSemantics(DXShaderInfo *pInfo);
+void DXShaderSortSignatures(DXShaderInfo *pInfo);
 void DXShaderFree(DXShaderInfo *pInfo);
 int DXShaderUpdateResources(DXShaderInfo const *pInfo, VGPU10_RESOURCE_DIMENSION *paResourceDimension,
                             VGPU10_RESOURCE_RETURN_TYPE *paResourceReturnType, uint32_t cResources);

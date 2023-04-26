@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 99521 2023-04-24 10:59:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -512,12 +512,6 @@ typedef struct
     DECLCALLBACKMEMBER(int, pfnDXBindAllShader,             (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnDXHint,                      (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnDXBufferUpdate,              (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetVSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetPSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetGSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetHSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetDSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
-    DECLCALLBACKMEMBER(int, pfnDXSetCSConstantBufferOffset, (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnDXCondBindAllShader,         (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnScreenCopy,                  (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
     DECLCALLBACKMEMBER(int, pfnIntraSurfaceCopy,            (PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext));
@@ -636,12 +630,7 @@ int vmsvga3dDXReadbackAllQuery(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3d
 int vmsvga3dDXBindAllShader(PVGASTATECC pThisCC, uint32_t idDXContext);
 int vmsvga3dDXHint(PVGASTATECC pThisCC, uint32_t idDXContext);
 int vmsvga3dDXBufferUpdate(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetVSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetPSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetGSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetHSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetDSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
-int vmsvga3dDXSetCSConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext);
+int vmsvga3dDXSetConstantBufferOffset(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXSetConstantBufferOffset const *pCmd, SVGA3dShaderType type);
 int vmsvga3dDXCondBindAllShader(PVGASTATECC pThisCC, uint32_t idDXContext);
 int vmsvga3dScreenCopy(PVGASTATECC pThisCC, uint32_t idDXContext);
 int vmsvga3dDXGrowCOTable(PVGASTATECC pThisCC, SVGA3dCmdDXGrowCOTable const *pCmd);
