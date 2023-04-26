@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevFlash.cpp 99531 2023-04-26 06:27:15Z alexander.eichner@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -76,6 +76,11 @@ typedef struct DEVFLASHR3
 } DEVFLASHR3;
 /** Pointer to the ring-3 Flash device state. */
 typedef DEVFLASHR3 *PDEVFLASHR3;
+
+/** The serial device state for the current context. */
+typedef CTX_SUFF(DEVFLASH) DEVFLASHCC;
+/** Pointer to the serial device state for the current context. */
+typedef CTX_SUFF(PDEVFLASH) PDEVFLASHCC;
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
@@ -284,7 +289,7 @@ const PDMDEVREG g_DeviceFlash =
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
     /* .cbInstanceShared = */       sizeof(DEVFLASH),
-    /* .cbInstanceCC = */           0,
+    /* .cbInstanceCC = */           sizeof(DEVFLASHCC),
     /* .cbInstanceRC = */           0,
     /* .cMaxPciDevices = */         0,
     /* .cMaxMsixVectors = */        0,
