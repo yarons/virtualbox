@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99538 2023-04-26 20:59:07Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -4785,6 +4785,7 @@ if1of ($(LIBRARIES), RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e '/^_ZSt.*ElementNode.*/d' \
 			\
 			-e '/^_Z[[:digit:]]\+dbus/d' \
+			-e '/^g_pfn_dbus/d' \
 			-e '/^_Z13RTDBusLoadLibv/d' \
 			\
 			-e '/^g_[ac]VTG/d' \
@@ -4836,6 +4837,7 @@ if1of ($(LIBRARIES), RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e '/^g_achVTGStringTable/d' \
 			-e '/^g_acVTGProbeEnabled/d' \
 			\
+			-e '/^g_pfn_dbus/d' \
 			-e '/^RTDBusLoadLib/d' \
 			\
 			-e '/^RT/p' \
