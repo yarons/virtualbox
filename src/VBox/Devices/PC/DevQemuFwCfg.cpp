@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 99528 2023-04-26 06:07:05Z alexander.eichner@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 99530 2023-04-26 06:12:56Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -1490,7 +1490,6 @@ static int qemuFwCfgInitrdMaybeCreate(PDEVQEMUFWCFG pThis)
  * @returns VBox status code.
  * @param   pThis               The QEMU fw config device instance.
  * @param   pszFilename         The filename to use.
- * @param   pvData              The data buffer to read from/write to.
  * @param   pfnSetup            Setup callback - optional.
  * @param   pfnRead             Read callback - optional.
  * @param   pfnWrite            Write callback - optional.
