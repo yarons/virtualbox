@@ -1,4 +1,4 @@
-/* $Id: DevFlash.cpp 99531 2023-04-26 06:27:15Z alexander.eichner@oracle.com $ */
+/* $Id: DevFlash.cpp 99533 2023-04-26 06:41:23Z alexander.eichner@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -76,6 +76,17 @@ typedef struct DEVFLASHR3
 } DEVFLASHR3;
 /** Pointer to the ring-3 Flash device state. */
 typedef DEVFLASHR3 *PDEVFLASHR3;
+
+/**
+ * The flash device, ring-0 state.
+ */
+typedef struct DEVFLASHR0
+{
+    /** Dummy, no R0 only component so far. */
+    uint8_t            bDummy;
+} DEVFLASHR0;
+/** Pointer to the ring-3 Flash device state. */
+typedef DEVFLASHR0 *PDEVFLASHR0;
 
 /** The serial device state for the current context. */
 typedef CTX_SUFF(DEVFLASH) DEVFLASHCC;
