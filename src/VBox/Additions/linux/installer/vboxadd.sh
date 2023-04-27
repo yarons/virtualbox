@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 99537 2023-04-26 19:47:47Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 99550 2023-04-27 14:26:22Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 99537 $)
+# Linux Additions kernel module init script ($Revision: 99550 $)
 #
 
 #
@@ -456,7 +456,8 @@ kernel_requires_module_signature()
         [ "$(kernel_get_config_opt "$kern_ver" "CONFIG_MODULE_SIG_FORCE")" = "y" ] && requires="1"
 
         # Unsigned modules loading is restricted by "lockdown" feature in runtime.
-        if [   "$(kernel_get_config_opt "$kern_ver" "CONFIG_SECURITY_LOCKDOWN_LSM")" = "y" \
+        if [   "$(kernel_get_config_opt "$kern_ver" "CONFIG_LOCK_DOWN_KERNEL")" = "y" \
+            -o "$(kernel_get_config_opt "$kern_ver" "CONFIG_SECURITY_LOCKDOWN_LSM")" = "y" \
             -o "$(kernel_get_config_opt "$kern_ver" "CONFIG_SECURITY_LOCKDOWN_LSM_EARLY")" = "y" ]; then
 
             # Once lockdown level is set to something different from "none" (e.g., "integrity"
