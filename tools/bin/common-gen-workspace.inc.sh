@@ -1,5 +1,5 @@
 #!/usr/bin/env kmk_ash
-# $Id: common-gen-workspace.inc.sh 98105 2023-01-17 15:17:40Z knut.osmundsen@oracle.com $
+# $Id: common-gen-workspace.inc.sh 99541 2023-04-27 05:30:42Z ramshankar.venkataraman@oracle.com $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -190,7 +190,7 @@ my_wildcard()
     else
         MY_FOLDER="$1-All.lst"
     fi
-    EXCLUDES="*.log;*.kup;*~;*.bak;*.bak?;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svnpatch.rej;*.svn-base;.svn/*;*.gitignore;*.gitattributes;*.gitmodules;*.swagger-codegen-ignore;*.png;*.bmp;*.jpg;*.jar;*.checksrc;*.clang-format;*.dir-locals.el;*.drirc;*.editorconfig;*.htaccess"
+    EXCLUDES="*.log;*.kup;*~;*.bak;*.bak?;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svnpatch.rej;*.svn-base;.svn/*;*.gitignore;*.gitattributes;*.gitmodules;*.swagger-codegen-ignore;*.png;*.bmp;*.jpg;*.gif;*.jar;*.checksrc;*.clang-format;*.dir-locals.el;*.drirc;*.editorconfig;*.htaccess"
     echo '        <F N="'"${2}"'/*" Recurse="1" Excludes="'"${EXCLUDES}"'"/>' >> "${MY_FOLDER}"
 }
 
