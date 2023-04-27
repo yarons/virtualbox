@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 99542 2023-04-27 08:03:32Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.cpp 99544 2023-04-27 08:16:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -249,6 +249,10 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 #endif
 #ifdef VBOX_VMM_TARGET_ARMV8
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePl011);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePl031Rtc);
     if (RT_FAILURE(rc))
         return rc;
 
