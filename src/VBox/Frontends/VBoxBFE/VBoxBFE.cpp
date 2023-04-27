@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 99546 2023-04-27 12:33:12Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxBFE.cpp 99549 2023-04-27 12:48:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBFE - The basic VirtualBox frontend for running VMs without using Main/COM/XPCOM.
  * Mainly serves as a playground for the ARMv8 VMM bringup for now.
@@ -106,6 +106,7 @@ static char szError[512];
 
 extern DECL_HIDDEN_DATA(RTSEMEVENT) g_EventSemSDLEvents;
 extern DECL_HIDDEN_DATA(volatile int32_t) g_cNotifyUpdateEventsPending;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
