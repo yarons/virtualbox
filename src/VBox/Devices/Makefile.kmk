@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99432 2023-04-17 20:08:55Z jack.doherty@oracle.com $
+# $Id: Makefile.kmk 99542 2023-04-27 08:03:32Z alexander.eichner@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -920,6 +920,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  if defined(VBOX_WITH_VIRT_ARMV8)
   VBoxDD_DEFS       += VBOX_VMM_TARGET_ARMV8
   VBoxDD_SOURCES    += \
+  	Misc/DevFlashCFI.cpp \
   	Serial/DevPL011.cpp
  endif
 
