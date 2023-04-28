@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 99370 2023-04-11 00:32:33Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMInternal.h 99557 2023-04-28 12:41:21Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -121,10 +121,10 @@ typedef unsigned hv_vm_space_t;
 
 /** @name Darwin: Our two-bit physical page state for PGMPAGE
  * @{ */
-# define NEM_DARWIN_PAGE_STATE_NOT_SET     0
-# define NEM_DARWIN_PAGE_STATE_UNMAPPED    1
-# define NEM_DARWIN_PAGE_STATE_READABLE    2
-# define NEM_DARWIN_PAGE_STATE_WRITABLE    3
+# define NEM_DARWIN_PAGE_STATE_UNMAPPED    0
+# define NEM_DARWIN_PAGE_STATE_RX          1
+# define NEM_DARWIN_PAGE_STATE_RW          2
+# define NEM_DARWIN_PAGE_STATE_RWX         3
 /** @} */
 
 # if defined(VBOX_VMM_TARGET_ARMV8)
