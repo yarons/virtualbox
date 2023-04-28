@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbKbd.cpp 99558 2023-04-28 13:54:03Z michal.necasek@oracle.com $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -655,9 +655,9 @@ static const    uint16_t aHidDCKeys[] = {
 };
 
 #define USBHID_PAGE_DC_START    0xb0
-#define USBHID_PAGE_DC_END      (USBHID_PAGE_DC_START + RT_ELEMENTS(aHidDCKeys))
+#define USBHID_PAGE_DC_END      (USBHID_PAGE_DC_START + RT_ELEMENTS(aHidDCKeys) - 1)
 #define USBHID_PAGE_CC_START    0xc0
-#define USBHID_PAGE_CC_END      (USBHID_PAGE_CC_START + RT_ELEMENTS(aHidCCKeys))
+#define USBHID_PAGE_CC_END      (USBHID_PAGE_CC_START + RT_ELEMENTS(aHidCCKeys) - 1)
 
 AssertCompile(RT_ELEMENTS(aHidCCKeys) <= 0x20); /* Must fit between 0xC0-0xDF. */
 AssertCompile(RT_ELEMENTS(aHidDCKeys) <= 0x10); /* Must fit between 0xB0-0xBF. */
