@@ -1,4 +1,4 @@
-/* $Id: tstLdrObjR0.cpp 99229 2023-03-30 13:15:18Z alexander.eichner@oracle.com $ */
+/* $Id: tstLdrObjR0.cpp 99560 2023-04-28 14:46:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -80,7 +80,7 @@ extern "C" DECLEXPORT(int) Entrypoint(void)
 extern "C" DECLEXPORT(uint32_t) SomeExportFunction1(void *pvBuf)
 {
     NOREF(pvBuf);
-    return achBss[0] + achBss[16384];
+    return achBss[0] + achBss[RT_ELEMENTS(achBss) - 1];
 }
 
 
