@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmod.cpp 99570 2023-05-02 19:56:10Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1817,7 +1817,8 @@ RTDECL(int) RTDbgModSegmentAdd(RTDBGMOD hDbgMod, RTUINTPTR uRva, RTUINTPTR cb, c
     Assert(*pszName);
     size_t cchName = strlen(pszName);
     AssertReturn(cchName > 0, VERR_DBG_SEGMENT_NAME_OUT_OF_RANGE);
-    AssertReturn(cchName < RTDBG_SEGMENT_NAME_LENGTH, VERR_DBG_SEGMENT_NAME_OUT_OF_RANGE);
+    AssertMsgReturn(cchName < RTDBG_SEGMENT_NAME_LENGTH, ("pszName=%s cchName=%zu\n", pszName, cchName),
+        VERR_DBG_SEGMENT_NAME_OUT_OF_RANGE);
     AssertMsgReturn(!fFlags, ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
     AssertPtrNull(piSeg);
     AssertMsgReturn(!piSeg || *piSeg == NIL_RTDBGSEGIDX || *piSeg <= RTDBGSEGIDX_LAST, ("%#x\n", *piSeg), VERR_DBG_SPECIAL_SEGMENT);
