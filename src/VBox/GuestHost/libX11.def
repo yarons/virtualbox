@@ -1,4 +1,4 @@
-; $Id: libX11.def 99564 2023-05-02 13:57:51Z andreas.loeffler@oracle.com $
+; $Id: libX11.def 99566 2023-05-02 15:05:49Z andreas.loeffler@oracle.com $
 ;; @file
 ; Definitions for libX11.so lazy import library.
 ;
@@ -29,6 +29,7 @@ LIBRARY libX11.so.6
 EXPORTS
     _XData32
     _XGetRequest
+    _XFlush
     _XReply
     _XSend
     XBlackPixel
