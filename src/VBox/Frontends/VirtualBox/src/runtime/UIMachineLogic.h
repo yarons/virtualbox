@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 99436 2023-04-18 07:29:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.h 99561 2023-05-02 10:19:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -370,7 +370,7 @@ private:
 
     QActionGroup *m_pRunningActions;
     QActionGroup *m_pRunningOrPausedActions;
-    QActionGroup *m_pRunningOrPausedOrStackedActions;
+    QActionGroup *m_pRunningOrPausedOrStuckActions;
     QActionGroup *m_pSharedClipboardActions;
     QActionGroup *m_pDragAndDropActions;
 
