@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 99567 2023-05-02 15:23:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -511,6 +511,7 @@ UISnapshotTree::UISnapshotTree(QWidget *pParent)
     : QITreeWidget(pParent)
 {
     /* Configure snapshot tree: */
+    setAutoScroll(false);
     setColumnCount(Column_Max);
     setAllColumnsShowFocus(true);
     setAlternatingRowColors(true);
