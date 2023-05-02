@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstOVF.cpp 99569 2023-05-02 19:17:43Z brent.paulson@oracle.com $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -245,7 +245,7 @@ void importOVF(const char *pcszPrefix,
                 break;
 
                 default:
-                    throw MyError(E_UNEXPECTED, "Invalid VirtualSystemDescriptionType (enum)\n");
+                    throw MyError(E_UNEXPECTED, Utf8StrFmt("Invalid VirtualSystemDescriptionType (enum=%d)\n", t).c_str());
                 break;
             }
 
