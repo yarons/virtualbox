@@ -1,4 +1,4 @@
-/* $Id: Log.h 99580 2023-05-03 11:46:03Z andreas.loeffler@oracle.com $ */
+/* $Id: Log.h 99581 2023-05-03 11:51:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Logging stubs. Might be overriden by a component to fit its needs.
  */
@@ -39,6 +39,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <iprt/cpp/utils.h>
 
 int VBGHShowNotify(const char *pszHeader, const char *pszBody);
 
