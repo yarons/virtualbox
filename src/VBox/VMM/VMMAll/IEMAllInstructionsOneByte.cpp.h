@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 99304 2023-04-06 01:38:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 99583 2023-05-03 12:31:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11706,6 +11706,7 @@ FNIEMOP_DEF(iemOp_cmc)
                 IEM_MC_REF_GREG_U32(pu32Dst, IEM_GET_MODRM_RM(pVCpu, bRm)); \
                 IEM_MC_REF_EFLAGS(pEFlags); \
                 IEM_MC_CALL_VOID_AIMPL_2(a_fnNormalU32, pu32Dst, pEFlags); \
+                IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst); \
                 IEM_MC_ADVANCE_RIP_AND_FINISH(); \
                 IEM_MC_END(); \
                 break; \
