@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 99589 2023-05-03 15:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 99591 2023-05-03 17:05:35Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -9552,7 +9552,7 @@ static DECLCALLBACK(int) vmsvga3dBackIntraSurfaceCopy(PVGASTATECC pThisCC, PVMSV
             uint8_t const *pu8PlaneSrc = pu8Src;
             uint8_t *pu8PlaneDst = pu8Dst;
 
-            for (uint32_t y = 0; y < clipBox.h; ++y)
+            for (uint32_t y = 0; y < cyBlocks; ++y)
             {
                 memmove(pu8PlaneDst, pu8PlaneSrc, cbRow);
                 pu8PlaneDst += pMipLevel->cbSurfacePitch;
