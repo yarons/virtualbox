@@ -1,4 +1,4 @@
-/* $Id: SessionType.h 99580 2023-05-03 11:46:03Z andreas.loeffler@oracle.com $ */
+/* $Id: SessionType.h 99584 2023-05-03 13:28:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -59,7 +59,7 @@ typedef enum
     /** X11 (X.org). */
     VBGHSESSIONTYPE_X11,
     /** Wayland. */
-    VBGHSESSIONTYPE_WAYLAND,
+    VBGHSESSIONTYPE_WAYLAND
 } VBGHSESSIONTYPE;
 
 const char *VBGHSessionTypeToStr(VBGHSESSIONTYPE enmType);
