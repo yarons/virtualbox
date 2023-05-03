@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
+/* $Id: display-svga-x11.cpp 99585 2023-05-03 15:12:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -580,7 +580,7 @@ static DECLCALLBACK(int) vbclSVGAInit(void)
         return VERR_NOT_AVAILABLE;
     }
 
-    if (VBClHasWayland())
+    if (VBClGetSessionType() == VBGHSESSIONTYPE_WAYLAND)
     {
         rc = VbglR3DrmClientStart();
         if (RT_SUCCESS(rc))

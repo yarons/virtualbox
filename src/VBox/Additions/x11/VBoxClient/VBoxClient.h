@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 98474 2023-02-03 19:20:53Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxClient.h 99585 2023-05-03 15:12:56Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -36,12 +36,8 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/string.h>
 
-/** Environment variable which is exported when in Wayland Desktop Environment. */
-#define VBCL_ENV_WAYLAND_DISPLAY        "WAYLAND_DISPLAY"
-/** Environment variable which contains information about currently running Desktop Environment. */
-#define VBCL_ENV_XDG_CURRENT_DESKTOP    "XDG_CURRENT_DESKTOP"
-/** Environment variable which contains information about currently running session (X11, Wayland, etc). */
-#define VBCL_ENV_XDG_SESSION_TYPE       "XDG_SESSION_TYPE"
+#include <VBox/GuestHost/Log.h>
+#include <VBox/GuestHost/SessionType.h>
 
 int VBClShowNotify(const char *pszHeader, const char *pszBody);
 
@@ -54,15 +50,10 @@ int VBClLogCreate(const char *pszLogFile);
 void VBClLogSetLogPrefix(const char *pszPrefix);
 void VBClLogDestroy(void);
 
-/**
- * Detect if user is running on Wayland by checking corresponding environment variable.
- *
- * @returns True if Wayland has been detected, False otherwise.
- */
-extern bool VBClHasWayland(void);
-
 /** Call clean-up for the current service and exit. */
 extern void VBClShutdown(bool fExit = true);
+
+extern VBGHSESSIONTYPE VBClGetSessionType(void);
 
 /**
  * A service descriptor.
