@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99586 2023-05-03 15:25:51Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99590 2023-05-03 15:59:12Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -174,7 +174,8 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD
  VBoxClient_SOURCES  += \
  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-common.cpp \
  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-x11.cpp \
- 	clipboard.cpp
+ 	clipboard.cpp \
+ 	clipboard-x11.cpp
  ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
   VBoxClient_DEFS    += VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS VBOX_WITH_SHARED_CLIPBOARD_GUEST
   VBoxClient_SOURCES += \
