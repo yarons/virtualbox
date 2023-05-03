@@ -1,4 +1,4 @@
-/* $Id: VBoxMpLogger.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMpLogger.cpp 99588 2023-05-03 15:52:17Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Display logger implementation
  *
@@ -104,7 +104,7 @@ DECLCALLBACK(void) VBoxDispMpLoggerLogF(const char *pszFormat, ...)
     va_list va;
     va_start(va, pszFormat);
 #ifdef IPRT_NO_CRT
-    RTStrPrintf(szBuffer, sizeof(szBuffer), pszFormat, va);
+    RTStrPrintfV(szBuffer, sizeof(szBuffer), pszFormat, va);
 #else
     _vsnprintf(szBuffer, sizeof(szBuffer), pszFormat, va);
     szBuffer[sizeof(szBuffer) - 1] = '\0'; /* Don't trust the _vsnprintf function terminate the string! */
