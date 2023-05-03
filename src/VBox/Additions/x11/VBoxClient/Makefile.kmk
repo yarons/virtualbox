@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99585 2023-05-03 15:12:56Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99586 2023-05-03 15:25:51Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -184,16 +184,6 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD
    VBoxClient_DEFS    += VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
    VBoxClient_SOURCES += \
    	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-http.cpp
-  endif
-  ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
-   VBoxClient_DEFS    += VBOX_WITH_SHARED_CLIPBOARD_FUSE
-   # @todo Make this dynamic loading more generic.
-   VBoxClient_SOURCES += \
-   	$(PATH_ROOT)/src/VBox/ImageMounter/vboximg-mount/fuse.cpp \
-   	clipboard-fuse.cpp
-   # @todo Ditto.
-   VBoxClient_INCS    += \
-   	$(PATH_ROOT)/src/VBox/ImageMounter/vboximg-mount
   endif
  endif
 endif
