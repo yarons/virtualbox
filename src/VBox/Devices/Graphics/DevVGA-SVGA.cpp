@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 99589 2023-05-03 15:56:34Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6455,6 +6455,7 @@ static void vmsvgaR3GetCaps(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t *pu32
 
            if (*pu32DeviceCaps & SVGA_CAP_CAP2_REGISTER)
                *pu32DeviceCaps2 |= SVGA_CAP2_GROW_OTABLE  /* "Allow the GrowOTable/DXGrowCOTable commands" */
+                                |  SVGA_CAP2_INTRA_SURFACE_COPY /* "IntraSurfaceCopy command" */
                                 |  SVGA_CAP2_DX2          /* Shader Model 4.1.
                                                            * "Allow the DefineGBSurface_v3, WholeSurfaceCopy, WriteZeroSurface, and
                                                            * HintZeroSurface commands, and the SVGA_REG_GUEST_DRIVER_ID register."
