@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 99595 2023-05-04 08:58:54Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 99597 2023-05-04 09:12:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common drag'n drop wrapper service.
  */
@@ -80,7 +80,17 @@ static DECLCALLBACK(void) vbclDnDStop(void)
  */
 static DECLCALLBACK(int) vbclDnDTerm(void)
 {
-    return g_pSvc->term();
+    int rc = VINF_SUCCESS;
+
+    if (g_pSvc)
+    {
+        rc = g_pSvc->term();
+
+        delete g_pSvc;
+        g_pSvc = NULL;
+    }
+
+    return rc;
 }
 
 VBCLSERVICE g_SvcDragAndDrop =

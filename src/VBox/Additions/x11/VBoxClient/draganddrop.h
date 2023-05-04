@@ -1,4 +1,4 @@
-/** $Id: draganddrop.h 99596 2023-05-04 09:07:00Z andreas.loeffler@oracle.com $ */
+/** $Id: draganddrop.h 99597 2023-05-04 09:12:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - VBoxClient drag'n drop - Main header.
  */
@@ -79,6 +79,10 @@ protected:
 
     /* Note: Constructor must not throw, as we don't have exception handling on the guest side. */
     VBClDnDSvc(void) { }
+
+public:
+
+    virtual ~VBClDnDSvc(void) { }
 
 public:
 
