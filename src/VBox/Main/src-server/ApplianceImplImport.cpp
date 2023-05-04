@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 99605 2023-05-04 14:09:35Z valery.portnyagin@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 99606 2023-05-04 14:15:30Z valery.portnyagin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1799,7 +1799,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                     LogRel(("%s: Number of CPUs is %s\n", __FUNCTION__, vsdData.c_str()));
                 }
 
-                ULONG memory;
+                uint64_t memory;
                 pGuestOSType->COMGETTER(RecommendedRAM)(&memory);//returned in MB
                 memory *= _1M;//convert to bytes
                 {
