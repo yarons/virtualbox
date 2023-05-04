@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 99597 2023-05-04 09:12:46Z andreas.loeffler@oracle.com $ */
+/* $Id: draganddrop.cpp 99603 2023-05-04 13:17:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common drag'n drop wrapper service.
  */
@@ -64,6 +64,7 @@ static DECLCALLBACK(int) vbclDnDInit(void)
  */
 static DECLCALLBACK(int) vbclDnDWorker(bool volatile *pfShutdown)
 {
+    AssertPtrReturn(g_pSvc, VERR_NOT_IMPLEMENTED);
     return g_pSvc->worker(pfShutdown);
 }
 
@@ -72,7 +73,8 @@ static DECLCALLBACK(int) vbclDnDWorker(bool volatile *pfShutdown)
  */
 static DECLCALLBACK(void) vbclDnDStop(void)
 {
-    g_pSvc->stop();
+    if (g_pSvc)
+        g_pSvc->stop();
 }
 
 /**

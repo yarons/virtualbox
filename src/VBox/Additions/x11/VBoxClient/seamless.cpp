@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
+/* $Id: seamless.cpp 99603 2023-05-04 13:17:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common seamless mode wrapper service.
  */
@@ -106,6 +106,7 @@ static DECLCALLBACK(int) vbclSeamlessInit(void)
  */
 static DECLCALLBACK(int) vbclSeamlessWorker(bool volatile *pfShutdown)
 {
+    AssertPtrReturn(g_pSvc, VERR_NOT_IMPLEMENTED);
     return g_pSvc->worker(pfShutdown);
 }
 
@@ -114,7 +115,8 @@ static DECLCALLBACK(int) vbclSeamlessWorker(bool volatile *pfShutdown)
  */
 static DECLCALLBACK(void) vbclSeamlessStop(void)
 {
-    return g_pSvc->stop();
+    if (g_pSvc)
+        g_pSvc->stop();
 }
 
 /**
