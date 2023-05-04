@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99590 2023-05-03 15:59:12Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99595 2023-05-04 08:58:54Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -141,7 +141,8 @@ ifdef VBOX_WITH_DRAG_AND_DROP
  	VBOX_WITH_DRAG_AND_DROP \
  	$(if $(VBOX_WITH_DRAG_AND_DROP_GH),VBOX_WITH_DRAG_AND_DROP_GH,)
  VBoxClient_SOURCES  += \
- 	draganddrop.cpp
+ 	draganddrop.cpp \
+ 	draganddrop-x11.cpp
  VBoxClient_LIBS     += \
  	$(VBOX_LIB_VBGL_R3) \
  	$(PATH_STAGE_LIB)/additions/VBoxDnDGuestR3Lib$(VBOX_SUFF_LIB)
