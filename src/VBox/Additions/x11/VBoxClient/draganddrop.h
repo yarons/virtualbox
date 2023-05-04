@@ -1,4 +1,4 @@
-/** $Id: draganddrop.h 99598 2023-05-04 09:15:27Z andreas.loeffler@oracle.com $ */
+/** $Id: draganddrop.h 99599 2023-05-04 10:09:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - VBoxClient drag'n drop - Main header.
  */
@@ -114,11 +114,11 @@ public:
         RT_ZERO(m_dndCtx);
     }
 
-    virtual int  init(void) override;
-    virtual int  worker(bool volatile *pfShutdown) override;
-    virtual void reset(void) override;
-    virtual void stop(void) override;
-    virtual int  term(void) override;
+    virtual int  init(void);
+    virtual int  worker(bool volatile *pfShutdown);
+    virtual void reset(void);
+    virtual void stop(void);
+    virtual int  term(void);
 
 private:
 
