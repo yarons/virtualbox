@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstSeamlessX11.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -32,11 +32,18 @@
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
+
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/GuestHost/SessionType.h>
 
 #include "../seamless.h"
 
 static RTSEMEVENT eventSem;
+
+VBGHSESSIONTYPE VBClGetSessionType(void)
+{
+    return VBGHSESSIONTYPE_X11;
+}
 
 void VBClLogError(const char *pszFormat, ...)
 {
@@ -168,7 +175,7 @@ int main( int argc, char **argv)
     RTPrintf("\nType Ctrl-C to exit...\n");
     RTSemEventCreate(&eventSem);
     /** Our instance of the seamless class. */
-    SeamlessMain seamless;
+    VBClX11SeamlessSvc seamless;
     LogRel(("Starting seamless Guest Additions...\n"));
     rc = seamless.init();
     if (rc != VINF_SUCCESS)

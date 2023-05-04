@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstSeamlessX11-auto.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -675,7 +675,7 @@ static void smlsPrintDiffRects(RTRECT *pExp, RTRECT *pGot)
 /** Run through a test fixture */
 static unsigned smlsDoFixture(SMLSFIXTURE *pFixture, const char *pszDesc)
 {
-    SeamlessX11 subject;
+    VBClX11SeamlessMonitor subject;
     unsigned cErrs = 0;
 
     subject.init(sendRegionUpdate);
