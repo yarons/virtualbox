@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.h 99607 2023-05-04 14:18:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -164,6 +164,8 @@ private slots:
         void sltHandleItemChange(QTreeWidgetItem *pItem);
         /** Handles tree-widget @a pItem double-click. */
         void sltHandleItemDoubleClick(QTreeWidgetItem *pItem);
+        /** Handles tree-widget's scroll-bar visibility change. */
+        void sltHandleScrollBarVisibilityChange();
     /** @} */
 
 private:
