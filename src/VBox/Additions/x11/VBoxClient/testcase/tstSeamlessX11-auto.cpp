@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11-auto.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstSeamlessX11-auto.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
@@ -84,6 +84,16 @@ void VBClLogFatalError(const char *pszFormat, ...)
     RTStrFree(psz);
 
     exit(1);
+}
+
+void VBClLogVerbose(unsigned iLevel, const char *pszFormat, ...)
+{
+    RT_NOREF(iLevel);
+
+    va_list va;
+    va_start(va, pszFormat);
+    RTPrintf("%s", pszFormat);
+    va_end(va);
 }
 
 extern "C" Display *XOpenDisplay(const char *display_name);
@@ -365,11 +375,31 @@ int XFlush(Display *display)
 /** Global "received a notification" flag. */
 static bool g_fNotified = false;
 
-/** Dummy host call-back. */
-static void sendRegionUpdate(RTRECT *pRects, size_t cRects)
+/** Dummy host callback. */
+void VBClSeamlessSendRegionUpdate(RTRECT *pRects, size_t cRects)
 {
     RT_NOREF2(pRects, cRects);
     g_fNotified = true;
+}
+
+int VbglR3SeamlessSetCap(bool bState)
+{
+    RTPrintf("%s\n", bState ? "Seamless capability set"
+                            : "Seamless capability unset");
+    return VINF_SUCCESS;
+}
+
+int VbglR3CtlFilterMask(uint32_t u32OrMask, uint32_t u32NotMask)
+{
+    RTPrintf("IRQ filter mask changed.  Or mask: 0x%x.  Not mask: 0x%x\n",
+             u32OrMask, u32NotMask);
+    return VINF_SUCCESS;
+}
+
+int VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
+{
+    RT_NOREF(pMode);
+    return VINF_SUCCESS;
 }
 
 static bool gotNotification(void)
@@ -678,7 +708,7 @@ static unsigned smlsDoFixture(SMLSFIXTURE *pFixture, const char *pszDesc)
     VBClX11SeamlessMonitor subject;
     unsigned cErrs = 0;
 
-    subject.init(sendRegionUpdate);
+    subject.init(VBClSeamlessSendRegionUpdate);
     smlsSetWindowAttributes(pFixture->paAttribsBefore,
                             pFixture->pahWindowsBefore,
                             pFixture->cWindowsBefore,

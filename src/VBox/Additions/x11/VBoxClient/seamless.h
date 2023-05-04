@@ -1,4 +1,4 @@
-/* $Id: seamless.h 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: seamless.h 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.
@@ -42,7 +42,7 @@
 
 /** @name Generic seamless functions
  * @{ */
-void VBClSeamnlessSendRegionUpdate(RTRECT *pRects, size_t cRects);
+void VBClSeamlessSendRegionUpdate(RTRECT *pRects, size_t cRects);
 /** @} */
 
 /**

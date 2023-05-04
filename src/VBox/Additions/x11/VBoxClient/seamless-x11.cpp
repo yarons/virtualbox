@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: seamless-x11.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -616,7 +616,7 @@ int VBClX11SeamlessSvc::init(void)
     do
     {
         pcszStage = "Connecting to the X server";
-        rc = mX11Monitor.init(VBClSeamnlessSendRegionUpdate);
+        rc = mX11Monitor.init(VBClSeamlessSendRegionUpdate);
         if (RT_FAILURE(rc))
             break;
         pcszStage = "Setting guest IRQ filter mask";

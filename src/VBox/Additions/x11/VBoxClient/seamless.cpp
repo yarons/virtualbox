@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: seamless.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common seamless mode wrapper service.
  */
@@ -62,7 +62,7 @@ static VBClSeamlessSvc *g_pSvc = NULL;
  * @param   pRects              Pointer to array of regions to report.
  * @param   cRects              Number of regions in \a pRect.
  */
-void VBClSeamnlessSendRegionUpdate(RTRECT *pRects, size_t cRects)
+void VBClSeamlessSendRegionUpdate(RTRECT *pRects, size_t cRects)
 {
     if (   cRects
         && !pRects)  /* Assertion */
