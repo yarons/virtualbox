@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 99523 2023-04-24 14:44:16Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 99604 2023-05-04 13:53:06Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -756,6 +756,11 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                                     /* 'VBoxManage import --memory' size is in megabytes */
                                     RTPrintf(Appliance::tr("%2u: Guest memory specified with --memory: %RU32 MB\n"),
                                              a, ulMemMB);
+
+                                   /* IVirtualSystemDescription guest memory size is in bytes.
+                                      It's alway stored in bytes in VSD according to the old internal agreement within the team */
+                                    uint64_t ullMemBytes = (uint64_t)ulMemMB * _1M;
+                                    strOverride = Utf8StrFmt("%RU64", ullMemBytes);
                                     bstrFinalValue = strOverride;
                                 }
                                 else
@@ -764,7 +769,7 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                             else
                             {
                                 strOverride = aVBoxValues[a];
-                                uint64_t ullMemMB = strOverride.toUInt64();
+                                uint64_t ullMemMB = strOverride.toUInt64() / _1M;
                                 RTPrintf(Appliance::tr("%2u: Guest memory: %RU64 MB\n    (change with \"--vsys %u --memory <MB>\")\n"),
                                          a, ullMemMB, i);
                             }

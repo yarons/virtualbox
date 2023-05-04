@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 99523 2023-04-24 14:44:16Z valery.portnyagin@oracle.com $ */
+/* $Id: ovfreader.h 99604 2023-05-04 13:53:06Z valery.portnyagin@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -634,7 +634,7 @@ struct VirtualSystem
 
     HardwareItemVector  vecHardwareItems;       //< vector containing all virtual hardware items in parsing order.
 
-    uint64_t            ullMemorySize;          // always in Megabytes, copied from llHardwareItems; default = 0 (unspecified)
+    uint64_t            ullMemorySize;          // always in bytes, copied from llHardwareItems; default = 0 (unspecified)
     uint16_t            cCPUs;                  // no. of CPUs, copied from llHardwareItems; default = 1
 
     EthernetAdaptersList llEthernetAdapters;    // (one for each VirtualSystem/Item[@ResourceType=10]element)
