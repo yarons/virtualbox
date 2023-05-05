@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdpCtl.cpp 99633 2023-05-05 12:57:30Z alexander.eichner@oracle.com $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -947,7 +947,10 @@ bool GlobalNetworkPermissionsConfig::forbids(NetworkAddress& address)
                 fprintf(stderr, "Info: %s(%d) matching against '%s' => %s\n", VBOX_GLOBAL_NETWORK_CONFIG_PATH, line, pszToken,
                     address.matches(pszToken) ? "MATCH" : "no match");
             if (address.matches(pszToken))
+            {
+                fclose(fp);
                 return false;
+            }
         }
     }
     fclose(fp);
