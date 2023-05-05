@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99637 2023-05-05 13:16:43Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99638 2023-05-05 13:27:04Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1646,8 +1646,10 @@ UICommon_SOURCES.darwin += \
 #
 # Include common guest / host sources.
 #
-UICommon_SOURCES += \
+if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # U*nix
+ UICommon_SOURCES += \
 	$(VBOX_GH_SOURCES)
+endif
 
 #
 # VirtualBox Manager Application
