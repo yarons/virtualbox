@@ -1,4 +1,4 @@
-/* $Id: SessionType.h 99584 2023-05-03 13:28:56Z andreas.loeffler@oracle.com $ */
+/* $Id: SessionType.h 99614 2023-05-05 08:33:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -59,11 +59,15 @@ typedef enum
     /** X11 (X.org). */
     VBGHSESSIONTYPE_X11,
     /** Wayland. */
-    VBGHSESSIONTYPE_WAYLAND
+    VBGHSESSIONTYPE_WAYLAND,
+    /** XWayland; Wayland is running, but some (older) apps need X as a bridge as well. */
+    VBGHSESSIONTYPE_XWAYLAND
 } VBGHSESSIONTYPE;
 
 const char *VBGHSessionTypeToStr(VBGHSESSIONTYPE enmType);
 VBGHSESSIONTYPE VBGHSessionTypeDetect(void);
+bool VBGHSessionTypeIsXAvailable(VBGHSESSIONTYPE enmType);
+bool VBGHSessionTypeIsWaylandAvailable(VBGHSESSIONTYPE enmType);
 
 #endif /* !VBOX_INCLUDED_GuestHost_SessionType_h */
 
