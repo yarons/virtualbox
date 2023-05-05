@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99624 2023-05-05 09:29:44Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 99634 2023-05-05 13:02:17Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1390,7 +1390,7 @@ ifdef VBOX_WITH_PARFAIT
  #
  # This includes the tool overrides for running with parfait.
  # Ideally there would be a dedicated parfait tool but when targetting
- # different hosts with different compiler toolchains and compiler flags 
+ # different hosts with different compiler toolchains and compiler flags
  # we would have to duplicate a lot of the already existing tools for each
  # supported toolchain. Instead we just override the paths to the compilers
  # for the currently used tools (as this is kind of static and doesn't change that often).
@@ -9026,7 +9026,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99624 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99634 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
