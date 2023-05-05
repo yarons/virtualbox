@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99595 2023-05-04 08:58:54Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -51,7 +51,7 @@ PROGRAMS.linux += VBoxDRMClient
 # Common Guest / Host sources.
 VBOX_GH_SOURCES := \
 	$(PATH_ROOT)/src/VBox/GuestHost/Log.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SessionType.cpp
+	$(PATH_ROOT)/src/VBox/GuestHost/DisplayServerType.cpp
 
 VBoxClient_TEMPLATE = VBoxGuestR3Exe
 VBoxClient_DEFS += VBOX_X11_CLIPBOARD VBOX_WITH_HGCM

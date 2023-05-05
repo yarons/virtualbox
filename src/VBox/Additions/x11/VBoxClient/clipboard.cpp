@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 99590 2023-05-03 15:59:12Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard.cpp 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common Shared Clipboard wrapper service.
  */
@@ -82,7 +82,7 @@ static DECLCALLBACK(int) vbclShClWorker(bool volatile *pfShutdown)
 
     int rc = VINF_SUCCESS;
 
-    if (VBClGetSessionType() == VBGHSESSIONTYPE_X11)
+    if (VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_X11)
     {
         rc = VBClX11ClipboardInit();
         if (RT_SUCCESS(rc))
@@ -94,7 +94,7 @@ static DECLCALLBACK(int) vbclShClWorker(bool volatile *pfShutdown)
         }
     }
 #if 0
-    else (VBClGetSessionType() == VBGHSESSIONTYPE_WAYLAND)
+    else (VBClGetSessionType() == GHDISPLAYSERVERTYPE_WAYLAND)
     {
 
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 99585 2023-05-03 15:12:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClient.h 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -37,7 +37,7 @@
 #include <iprt/string.h>
 
 #include <VBox/GuestHost/Log.h>
-#include <VBox/GuestHost/SessionType.h>
+#include <VBox/GuestHost/DisplayServerType.h>
 
 int VBClShowNotify(const char *pszHeader, const char *pszBody);
 
@@ -53,7 +53,7 @@ void VBClLogDestroy(void);
 /** Call clean-up for the current service and exit. */
 extern void VBClShutdown(bool fExit = true);
 
-extern VBGHSESSIONTYPE VBClGetSessionType(void);
+extern VBGHDISPLAYSERVERTYPE VBClGetDisplayServerType(void);
 
 /**
  * A service descriptor.

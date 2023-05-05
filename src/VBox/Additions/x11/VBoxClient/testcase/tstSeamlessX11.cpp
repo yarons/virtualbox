@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 99600 2023-05-04 10:29:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstSeamlessX11.cpp 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -34,15 +34,15 @@
 #include <iprt/stream.h>
 
 #include <VBox/VBoxGuestLib.h>
-#include <VBox/GuestHost/SessionType.h>
+#include <VBox/GuestHost/DisplayServerType.h>
 
 #include "../seamless.h"
 
 static RTSEMEVENT eventSem;
 
-VBGHSESSIONTYPE VBClGetSessionType(void)
+VBGHDISPLAYSERVERTYPE VBClGetDisplayServerType(void)
 {
-    return VBGHSESSIONTYPE_X11;
+    return VBGHDISPLAYSERVERTYPE_X11;
 }
 
 void VBClLogError(const char *pszFormat, ...)
