@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.h 99621 2023-05-05 09:10:40Z andreas.loeffler@oracle.com $ */
+/* $Id: DisplayServerType.h 99622 2023-05-05 09:19:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Display server type detection + handling.
  */
@@ -68,7 +68,7 @@ typedef enum
 
 const char *VBGHDisplayServerTypeToStr(VBGHDISPLAYSERVERTYPE enmType);
 VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void);
-bool VBGHServerTypeIsXAvailable(VBGHDISPLAYSERVERTYPE enmType);
+bool VBGHDisplayServerTypeIsXAvailable(VBGHDISPLAYSERVERTYPE enmType);
 bool VBGHDisplayServerTypeIsWaylandAvailable(VBGHDISPLAYSERVERTYPE enmType);
 
 #endif /* !VBOX_INCLUDED_GuestHost_DisplayServerType_h */
