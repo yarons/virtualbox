@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 99628 2023-05-05 10:18:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1112,6 +1112,10 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
     m_pPaneTools->setRestrictedToolTypes(retrictedTypes);
     /* Update machine tools availability: */
     m_pPaneTools->setToolClassEnabled(UIToolClass_Machine, fCurrentItemIsOk);
+
+    /* Take restrictions into account, closing all restricted tools: */
+    foreach (const UIToolType &enmRestrictedType, retrictedTypes)
+        m_pPaneToolsMachine->closeTool(enmRestrictedType);
 
     /* Propagate current item anyway: */
     m_pPaneToolsMachine->setCurrentItem(pItem);
