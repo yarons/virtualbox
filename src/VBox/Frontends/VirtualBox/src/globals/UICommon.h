@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 99623 2023-05-05 09:23:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -647,11 +647,11 @@ private:
      * @{ */
 #ifdef VBOX_WS_X11
         /** X11: Holds the #X11WMType of the Window Manager we are running under. */
-        X11WMType  m_enmWindowManagerType;
+        X11WMType             m_enmWindowManagerType;
         /** X11: Holds whether the Window Manager we are running at is composition one. */
-        bool       m_fCompositingManagerRunning;
+        bool                  m_fCompositingManagerRunning;
         /** Unixes: Holds the display server type. */
-        DisplayServerType m_enmDisplayServerType;
+        VBGHDISPLAYSERVERTYPE m_enmDisplayServerType;
 #endif
     /** @} */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.h 99482 2023-04-20 08:43:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-nix.h 99623 2023-05-05 09:23:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -36,6 +36,8 @@
 #include <QVector>
 #include <QWindow>
 
+#include <VBox/GuestHost/DisplayServerType.h>
+
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
@@ -49,17 +51,6 @@ enum X11WMType
     X11WMType_Metacity,
     X11WMType_Mutter,
     X11WMType_Xfwm4,
-};
-
-/** Display server types for Unix like systems. */
-enum DisplayServerType
-{
-    DisplayServerType_Unknown = 0,
-    DisplayServerType_XOrg,
-    DisplayServerType_XWayland,
-    DisplayServerType_PureWayland,
-    DisplayServerType_None,
-    DisplayServerType_Max
 };
 
 /** X11: Screen-saver inhibit methods. */
@@ -167,10 +158,6 @@ namespace NativeWindowSubsystem
     SHARED_LIBRARY_STUFF struct xcb_connection_t *X11GetConnection();
     /** X11: Gets the X11 root (desktop) window. */
     SHARED_LIBRARY_STUFF uint32_t X11GetAppRootWindow();
-    /** Detects and returns display server type. */
-    SHARED_LIBRARY_STUFF DisplayServerType detectDisplayServerType();
-    /** Returns true if @a enmDisplayServerType is either XOrg or XWayland. */
-    SHARED_LIBRARY_STUFF bool X11XServerAvailable(DisplayServerType enmDisplayServerType);
 }
 
 #endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxUtils_nix_h */

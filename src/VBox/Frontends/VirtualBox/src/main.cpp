@@ -1,4 +1,4 @@
-/* $Id: main.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: main.cpp 99623 2023-05-05 09:23:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -395,8 +395,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         /* Make sure multi-threaded environment is safe: */
         if (!MakeSureMultiThreadingIsSafe())
             break;
-        DisplayServerType enmDisplayServerType = NativeWindowSubsystem::detectDisplayServerType();
-        if (NativeWindowSubsystem::X11XServerAvailable(enmDisplayServerType))
+        VBGHDISPLAYSERVERTYPE enmDisplayServerType = VBGHDisplayServerTypeDetect();
+        /* Default to X11 if anything else was found: */
+        if (enmDisplayServerType == VBGHDISPLAYSERVERTYPE_NONE)
+            enmDisplayServerType = VBGHDISPLAYSERVERTYPE_X11;
+        if (VBGHDisplayServerTypeIsXAvailable(enmDisplayServerType))
             /* Force using Qt platform plugin 'xcb', we have X11 specific code: */
             RTEnvSet("QT_QPA_PLATFORM", "xcb");
         else
