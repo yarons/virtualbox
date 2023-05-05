@@ -1,4 +1,4 @@
-/* $Id: Log.h 99582 2023-05-03 11:53:47Z andreas.loeffler@oracle.com $ */
+/* $Id: Log.h 99616 2023-05-05 08:48:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Logging stubs. Might be overriden by a component to fit its needs.
  */
@@ -52,6 +52,8 @@ void VBGHLogFatalError(const char *pszFormat, ...);
 void VBGHLogFatalErrorV(const char *pszFormat, va_list va);
 void VBGHLogVerbose(unsigned iLevel, const char *pszFormat, ...);
 void VBGHLogVerboseV(unsigned iLevel, const char *pszFormat, va_list va);
+void VBGHLogVerbositySet(unsigned iLevel);
+unsigned VBGHLogVerbosityGet(void);
 
 #endif /* !VBOX_INCLUDED_GuestHost_Log_h */
 

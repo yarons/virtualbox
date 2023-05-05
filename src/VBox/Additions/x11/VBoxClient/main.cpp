@@ -1,4 +1,4 @@
-/* $Id: main.cpp 99585 2023-05-03 15:12:56Z andreas.loeffler@oracle.com $ */
+/* $Id: main.cpp 99616 2023-05-05 08:48:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -736,6 +736,8 @@ int main(int argc, char *argv[])
 
     VBClLogInfo("VBoxClient %s r%s started. Verbose level = %d\n",
                 RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbosity);
+
+    VBGHLogVerbositySet(g_cVerbosity);
 
     /* Try to detect the current session type early on, if needed. */
     if (g_enmSessionType == VBGHSESSIONTYPE_AUTO)
