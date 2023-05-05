@@ -1,4 +1,4 @@
-/* $Id: SessionType.h 99614 2023-05-05 08:33:52Z andreas.loeffler@oracle.com $ */
+/* $Id: SessionType.h 99615 2023-05-05 08:39:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -39,6 +39,8 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <iprt/types.h>
 
 /** Environment variable which is exported when in Wayland Desktop Environment. */
 #define VBGH_ENV_WAYLAND_DISPLAY        "WAYLAND_DISPLAY"
