@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99617 2023-05-05 08:53:50Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 99619 2023-05-05 08:58:41Z knut.osmundsen@oracle.com $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -42,8 +42,8 @@ ifndef VBOX_DOC_MANUAL_CONFIG_KMK_INCLUDED
  VBOX_DITA_OT_PATH  ?= $(PATH_ROOT)/src/libs/dita-ot-1.8.5
  ifneq ($(VBOX_DITA_OT_PATH),)
   VBOX_DITA_OT_PATH := $(firstfile \
-  	$(rversortfiles $(qwildcard ,$(KBUILD_DEVTOOLS)/common/dita-ot/v[4-9].*)) \
-  	$(KBUILD_DEVTOOLS)/common/dita-ot/v4.0.2-r1)
+  		$(rversortfiles $(qwildcard ,$(KBUILD_DEVTOOLS)/common/dita-ot/v[4-9].*)) \
+  		$(KBUILD_DEVTOOLS)/common/dita-ot/v4.0.2-r1)
  endif
 
 
