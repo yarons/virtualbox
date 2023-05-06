@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99286 2023-04-04 19:24:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99647 2023-05-06 00:42:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -80,6 +80,23 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 #define g_apfnOneByteMap    g_apfnIemThreadedRecompilerOneByteMap
+
+
+#define IEM_MC2_EMIT_CALL_1(a_enmFunction, a_uArg0) do { \
+        IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
+        uint64_t         const uArg0Check       = (a_uArg0);     RT_NOREF(uArg0Check); \
+    } while (0)
+#define IEM_MC2_EMIT_CALL_2(a_enmFunction, a_uArg0, a_uArg1) do { \
+        IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
+        uint64_t         const uArg0Check       = (a_uArg0);     RT_NOREF(uArg0Check); \
+        uint64_t         const uArg1Check       = (a_uArg1);     RT_NOREF(uArg1Check); \
+    } while (0)
+#define IEM_MC2_EMIT_CALL_3(a_enmFunction, a_uArg0, a_uArg1, a_uArg2) do { \
+        IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
+        uint64_t         const uArg0Check       = (a_uArg0);     RT_NOREF(uArg0Check); \
+        uint64_t         const uArg1Check       = (a_uArg1);     RT_NOREF(uArg1Check); \
+        uint64_t         const uArg2Check       = (a_uArg2);     RT_NOREF(uArg2Check); \
+    } while (0)
 
 
 /*
