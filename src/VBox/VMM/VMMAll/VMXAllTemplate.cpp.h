@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99656 2023-05-08 08:50:13Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99657 2023-05-08 08:53:19Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5039,8 +5039,8 @@ static VBOXSTRICTRC vmxHCEvaluatePendingEventNested(PVMCPUCC pVCpu, PVMXVMCSINFO
      * See Intel spec. 25.4.1 "Event Blocking".
      * See Intel spec. 6.7 "Nonmaskable Interrupt (NMI)".
      */
-    if (   CPUMIsInInterruptShadowWithUpdate(&pVCpu->cpum.GstCtx)
-        || CPUMAreInterruptsInhibitedByNmi(&pVCpu->cpum.GstCtx))
+    if (   !CPUMIsInInterruptShadowWithUpdate(&pVCpu->cpum.GstCtx)
+        && !CPUMAreInterruptsInhibitedByNmi(&pVCpu->cpum.GstCtx))
     { /* likely */ }
     else
         return VINF_SUCCESS;
