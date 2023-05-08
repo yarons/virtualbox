@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 99330 2023-04-07 00:23:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp.h 99685 2023-05-08 21:59:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -651,10 +651,9 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
             return IEMOP_RAISE_INVALID_OPCODE(); \
     } while (0)
 
-VBOXSTRICTRC    iemOpHlpCalcRmEffAddr(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm, PRTGCPTR pGCPtrEff) RT_NOEXCEPT;
-VBOXSTRICTRC    iemOpHlpCalcRmEffAddrEx(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm, PRTGCPTR pGCPtrEff, int8_t offRsp) RT_NOEXCEPT;
+VBOXSTRICTRC    iemOpHlpCalcRmEffAddr(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset, PRTGCPTR pGCPtrEff) RT_NOEXCEPT;
 #ifdef IEM_WITH_SETJMP
-RTGCPTR         iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint8_t cbImm) IEM_NOEXCEPT_MAY_LONGJMP;
+RTGCPTR         iemOpHlpCalcRmEffAddrJmp(PVMCPUCC pVCpu, uint8_t bRm, uint32_t cbImmAndRspOffset) IEM_NOEXCEPT_MAY_LONGJMP;
 #endif
 
 /** @}  */
