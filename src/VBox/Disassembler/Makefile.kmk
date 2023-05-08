@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99683 2023-05-08 18:37:50Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99684 2023-05-08 18:37:58Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -57,7 +57,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  DisasmR3-armv8_SOURCES        = \
  	Disasm.cpp \
  	DisasmCore-armv8.cpp \
- 	DisasmTables-armv8-a64.cpp \
+ 	DisasmTables-armv8.cpp \
  	DisasmFormatBytes.cpp \
  	DisasmFormatArmV8.cpp
 endif
