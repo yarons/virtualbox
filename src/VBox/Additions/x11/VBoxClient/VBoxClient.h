@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClient.h 99658 2023-05-08 09:35:54Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -47,6 +47,7 @@ void VBClLogFatalError(const char *pszFormat, ...);
 void VBClLogVerbose(unsigned iLevel, const char *pszFormat, ...);
 
 int VBClLogCreate(const char *pszLogFile);
+int VBClLogCreateEx(const char *pszLogFile, bool fPrintHeader);
 void VBClLogSetLogPrefix(const char *pszPrefix);
 void VBClLogDestroy(void);
 
