@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 98938 2023-03-13 15:47:28Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 99664 2023-05-08 10:48:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -69,6 +69,7 @@
 #include "CNATNetwork.h"
 #include "CNetworkAdapter.h"
 #include "CRangedIntegerFormValue.h"
+#include "CRangedInteger64FormValue.h"
 #include "CRecordingSettings.h"
 #include "CStringFormValue.h"
 #include "CStorageController.h"
@@ -4234,6 +4235,14 @@ UINotificationProgressVsdFormValueSet::UINotificationProgressVsdFormValueSet(con
 {
 }
 
+UINotificationProgressVsdFormValueSet::UINotificationProgressVsdFormValueSet(const CRangedInteger64FormValue &comValue,
+                                                                             qlonglong iInteger64)
+    : m_enmType(KFormValueType_RangedInteger64)
+    , m_comValue(comValue)
+    , m_iInteger64(iInteger64)
+{
+}
+
 QString UINotificationProgressVsdFormValueSet::name() const
 {
     return UINotificationProgress::tr("Set VSD form value ...");
@@ -4248,6 +4257,7 @@ QString UINotificationProgressVsdFormValueSet::details() const
         case KFormValueType_String: return UINotificationProgress::tr("<b>Value:</b> %1").arg(m_strString);
         case KFormValueType_Choice: return UINotificationProgress::tr("<b>Value:</b> %1").arg(m_iChoice);
         case KFormValueType_RangedInteger: return UINotificationProgress::tr("<b>Value:</b> %1").arg(m_iInteger);
+        case KFormValueType_RangedInteger64: return UINotificationProgress::tr("<b>Value:</b> %1").arg(m_iInteger64);
         default: break;
     }
     /* Null-string by default: */
@@ -4294,6 +4304,15 @@ CProgress UINotificationProgressVsdFormValueSet::createProgress(COMResult &comRe
             /* Set value: */
             CRangedIntegerFormValue comValue(m_comValue);
             comProgress = comValue.SetInteger(m_iInteger);
+            /* Store COM result: */
+            comResult = comValue;
+            break;
+        }
+        case KFormValueType_RangedInteger64:
+        {
+            /* Set value: */
+            CRangedInteger64FormValue comValue(m_comValue);
+            comProgress = comValue.SetInteger(m_iInteger64);
             /* Store COM result: */
             comResult = comValue;
             break;
