@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99663 2023-05-08 10:19:01Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99665 2023-05-08 10:49:02Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -4996,9 +4996,9 @@ static VBOXSTRICTRC vmxHCEvaluatePendingEventNested(PVMCPUCC pVCpu, PVMXVMCSINFO
     Assert(!TRPMHasTrap(pVCpu));
 
     /*
-     * If we are injecting an event, we must not setup any interrupt/NMI-window
-     * exiting or we would get into an infinite VM-exit loop. An event that's
-     * already pending has already performed all necessary checks.
+     * If we are injecting an event, all necessary checks have been performed.
+     * Any interrupt-window or NMI-window exiting would have been setup by the
+     * nested-guest while we merged controls.
      */
     if (VCPU_2_VMXSTATE(pVCpu).Event.fPending)
         return VINF_SUCCESS;
