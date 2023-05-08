@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99654 2023-05-08 07:47:39Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99655 2023-05-08 07:48:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -4998,6 +4998,7 @@ static VBOXSTRICTRC vmxHCEvaluatePendingEvent(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcs
  */
 static VBOXSTRICTRC vmxHCEvaluatePendingEventNested(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint32_t *pfIntrState)
 {
+    NOREF(pVmcsInfo);
     PCCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
 
     Assert(pfIntrState);
