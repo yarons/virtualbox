@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 99509 2023-04-21 16:04:42Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 99675 2023-05-08 14:07:04Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99509 $"
+__version__ = "$Revision: 99675 $"
 
 
 # Standard Python imports.
@@ -73,6 +73,8 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstLow': '>=7.0.0',               # Driverless package.
             'testcase/tstPin': '>=7.0.0',               # Driverless package.
             'testcase/tstIntNet-1': '>=7.0.0',          # Driverless package.
+            'testcase/tstVBoxAPIXPCOM': '',             # Can't instantiate the VirtualBox object (binary would need moving to the
+                                                        # VirtualBox installation directory, merely a compile time test anyway)
         },
         'darwin.arm64': {
             'testcase/tstRTDarwinMachKernel': '',       # Not supported on arm64 right now (and not required due to driverless).
