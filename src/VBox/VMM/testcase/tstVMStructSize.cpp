@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 99671 2023-05-08 13:10:56Z alexander.eichner@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -188,17 +188,17 @@ int main()
     CHECK_SIZE(X86FXSTATE, 512);
     CHECK_SIZE(RTUUID, 16);
     CHECK_SIZE(X86PTE, 4);
-    CHECK_SIZE(X86PD, PAGE_SIZE);
+    CHECK_SIZE(X86PD, X86_PAGE_4K_SIZE);
     CHECK_SIZE(X86PDE, 4);
-    CHECK_SIZE(X86PT, PAGE_SIZE);
+    CHECK_SIZE(X86PT, X86_PAGE_4K_SIZE);
     CHECK_SIZE(X86PTEPAE, 8);
-    CHECK_SIZE(X86PTPAE, PAGE_SIZE);
+    CHECK_SIZE(X86PTPAE, X86_PAGE_4K_SIZE);
     CHECK_SIZE(X86PDEPAE, 8);
-    CHECK_SIZE(X86PDPAE, PAGE_SIZE);
+    CHECK_SIZE(X86PDPAE, X86_PAGE_4K_SIZE);
     CHECK_SIZE(X86PDPE, 8);
-    CHECK_SIZE(X86PDPT, PAGE_SIZE);
+    CHECK_SIZE(X86PDPT, X86_PAGE_4K_SIZE);
     CHECK_SIZE(X86PML4E, 8);
-    CHECK_SIZE(X86PML4, PAGE_SIZE);
+    CHECK_SIZE(X86PML4, X86_PAGE_4K_SIZE);
 
     PRINT_OFFSET(VM, cpum);
     CHECK_PADDING_VM(64, cpum);
