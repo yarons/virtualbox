@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 99661 2023-05-08 10:02:25Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 99662 2023-05-08 10:10:38Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99661 $"
+__version__ = "$Revision: 99662 $"
 
 # Standard Python imports.
 import os;
@@ -577,7 +577,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                     if fRc and oTxsSession.isSuccess():
                         # Try to detect the display server running on the guest OS.
                         # This might fail on pure server guest OSes (no X, no Wayland).
-                        if  self.oTstDrv.fpApiVer >= 7.1 and self.oTstDrv.uRevision >= 157189:
+                        if  self.fpApiVer >= 7.1 and self.uRevision >= 157189:
                             sVBoxClient = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm, 'usr'), 'VBoxClient');
                             fRc = self.txsRunTest(oTxsSession, 'Check display server detection', 5 * 60 * 1000,
                                                   sVBoxClient, (sVBoxClient, '--session-detect'));
