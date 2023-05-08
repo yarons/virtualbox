@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 99668 2023-05-08 13:03:08Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 99669 2023-05-08 13:07:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2255,6 +2255,7 @@ static uint32_t rtLdrPE_HashGetHashSize(RTDIGESTTYPE enmDigest)
 }
 
 
+#ifndef IPRT_WITHOUT_LDR_VERIFY
 /**
  * Checks if the hash type is supported.
  *
@@ -2275,6 +2276,7 @@ static bool rtLdrPE_HashIsSupported(RTDIGESTTYPE enmDigest)
             return false;
     }
 }
+#endif
 
 
 /**
