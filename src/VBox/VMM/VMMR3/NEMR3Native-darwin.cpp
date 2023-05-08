@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 99653 2023-05-08 07:17:30Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 99663 2023-05-08 10:19:01Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -3737,8 +3737,8 @@ static VBOXSTRICTRC nemR3DarwinPreRunGuest(PVM pVM, PVMCPU pVCpu, PVMXTRANSIENT 
     if (TRPMHasTrap(pVCpu))
         vmxHCTrpmTrapToPendingEvent(pVCpu);
 
-    uint32_t fIntrState;
-    rcStrict = vmxHCEvaluatePendingEvent(pVCpu, &pVCpu->nem.s.VmcsInfo, &fIntrState);
+    uint32_t const fIntrState = vmxHCGetGuestIntrStateWithUpdate(pVCpu);
+    rcStrict = vmxHCEvaluatePendingEvent(pVCpu, &pVCpu->nem.s.VmcsInfo);
 
     /*
      * Event injection may take locks (currently the PGM lock for real-on-v86 case) and thus
