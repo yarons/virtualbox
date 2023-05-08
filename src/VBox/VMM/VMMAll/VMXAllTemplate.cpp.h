@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99653 2023-05-08 07:17:30Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99654 2023-05-08 07:47:39Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -4859,7 +4859,6 @@ static VBOXSTRICTRC vmxHCInjectEventVmcs(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo,
  * @returns Strict VBox status code (i.e. informational status codes too).
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmcsInfo       The VMCS information structure.
- * @param   fIsNestedGuest  Flag whether the evaluation happens for a nested guest.
  * @param   pfIntrState     Where to store the VT-x guest-interruptibility state.
  */
 static VBOXSTRICTRC vmxHCEvaluatePendingEvent(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, uint32_t *pfIntrState)
