@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAllQueue.cpp 99674 2023-05-08 13:27:47Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -171,7 +171,12 @@ VMMDECL(int) PDMQueueAllocEx(PVMCC pVM, PDMQUEUEHANDLE hQueue, void *pvOwner, PP
     uint32_t cEmptyScans = 0;
     for (;;)
     {
-        int32_t iBit = ASMBitFirstSet(pQueue->bmAlloc, cItems);
+        /*
+         * ASMBitFirstSet() mandates a cBits to be a multiple of 32 while cItems can be less (but the bitmap)
+         * is aligned to 64 bytes and correctly initialized so only the number of items allocated are valid
+         * and can be marked as free.
+         */
+        int32_t iBit = ASMBitFirstSet(pQueue->bmAlloc, RT_ALIGN(cItems, 32));
         if (iBit >= 0)
         {
             if (ASMAtomicBitTestAndClear(pQueue->bmAlloc, iBit))
