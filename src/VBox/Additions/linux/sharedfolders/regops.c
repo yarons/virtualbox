@@ -1,4 +1,4 @@
-/* $Id: regops.c 99489 2023-04-20 15:17:30Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 99666 2023-05-08 11:39:03Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -74,6 +74,13 @@
 
 #if RTLNX_VER_MAX(2,5,12)
 # define PageUptodate(a_pPage) Page_Uptodate(a_pPage)
+#endif
+
+/** Starting from 6.4.0, iter_iov() macro should be used in order to access to iov field.  */
+#if RTLNX_VER_MIN(6,4,0)
+# define VBOX_ITER_IOV(_iter) iter_iov(_iter)
+#else
+# define VBOX_ITER_IOV(_iter) iter->iov
 #endif
 
 
@@ -2399,7 +2406,7 @@ static size_t vbsf_iter_max_span_of_pages(struct iov_iter *iter)
 # if RTLNX_VER_MIN(3,16,0)
     if (iter_is_iovec(iter) || (VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)) {
 # endif
-        const struct iovec *pCurIov    = iter->iov;
+        const struct iovec *pCurIov    = VBOX_ITER_IOV(iter);
         size_t              cLeft      = iter->nr_segs;
         size_t              cPagesSpan = 0;
 
