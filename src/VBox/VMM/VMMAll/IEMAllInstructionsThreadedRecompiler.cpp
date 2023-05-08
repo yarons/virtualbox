@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99647 2023-05-06 00:42:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99686 2023-05-08 22:44:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -81,6 +81,17 @@
 *********************************************************************************************************************************/
 #define g_apfnOneByteMap    g_apfnIemThreadedRecompilerOneByteMap
 
+
+#undef IEM_MC_CALC_RM_EFF_ADDR
+#ifndef IEM_WITH_SETJMP
+# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, bRm, cbImm) \
+    uint64_t uEffAddrInfo; \
+    IEM_MC_RETURN_ON_FAILURE(iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (bRm), (cbImm), &(a_GCPtrEff), &uEffAddrInfo))
+#else
+# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, bRm, cbImm) \
+    uint64_t uEffAddrInfo; \
+    ((a_GCPtrEff) = iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (bRm), (cbImm), &uEffAddrInfo))
+#endif
 
 #define IEM_MC2_EMIT_CALL_1(a_enmFunction, a_uArg0) do { \
         IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
