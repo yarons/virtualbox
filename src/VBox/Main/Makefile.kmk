@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99707 2023-05-09 20:16:44Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99709 2023-05-09 21:50:28Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -296,7 +296,7 @@ $(PATH_TARGET)/docs.Main: \
 	$(QUIET)$(RM) -f $(wildcard $(VBOX_MAIN_DOC_DIR)/html/*) $(PATH_TARGET)/docs.Main
 	$(QUIET)$(VBOX_XSLTPROC) --path ".:$(PATH_ROOT)/doc/manual" -o $(PATH_TARGET)/VirtualBox.idl $(VBOX_PATH_MAIN_SRC)/idl/doxygen.xsl $(VBOX_XIDL_FILE_SRC)
 	$(QUIET)$(REDIRECT) -E 'DOCDIR=$(VBOX_MAIN_DOC_DIR)' -E 'PATH_TARGET=$(PATH_TARGET)' \
-		-- doxygen $(VBOX_PATH_MAIN_SRC)/Doxyfile.Main
+		-- $(VBOX_DOXYGEN) $(VBOX_PATH_MAIN_SRC)/Doxyfile.Main
 	$(QUIET)$(TEST) -s "$(PATH_TARGET)/Main.err" -- $(ECHO_EXT) ">>>>>>>>>>>>>>>>>>>> Main.err: >>>>>>>>>>>>>>>>>>>>>>>>"
 	$(QUIET)$(TEST) -s "$(PATH_TARGET)/Main.err" -- $(CAT) "$(PATH_TARGET)/Main.err"
 	$(QUIET)$(TEST) -s "$(PATH_TARGET)/Main.err" -- $(ECHO_EXT) "<<<<<<<<<<<<<<<<<<<< Main.err <<<<<<<<<<<<<<<<<<<<<<<<<"

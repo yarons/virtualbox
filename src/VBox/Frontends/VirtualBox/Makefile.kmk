@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99696 2023-05-09 10:04:31Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99709 2023-05-09 21:50:28Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2177,7 +2177,7 @@ $(QTGUI_DOXYFILE_OUTPUT)/docs.qtgui: $(QTGUI_DOXYFILE_OUTPUT)/Doxyfile.qtgui $$(
 	$(call MSG_L1,doxygen qtgui)
 	$(QUIET)$(RM) -f $@
 	$(QUIET)$(RM) -Rf -- $(QTGUI_DOXYFILE_OUTPUT)/html/
-	doxygen $(QTGUI_DOXYFILE_OUTPUT)/Doxyfile.qtgui
+	$(VBOX_DOXYGEN) $(QTGUI_DOXYFILE_OUTPUT)/Doxyfile.qtgui
 	$(APPEND) $@
 
 # aliases

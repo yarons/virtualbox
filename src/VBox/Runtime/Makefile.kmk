@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99538 2023-04-26 20:59:07Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99709 2023-05-09 21:50:28Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -4680,7 +4680,7 @@ $(IPRT_DOXYFILE_OUTPUT)/docs.iprt: $(IPRT_DOXYFILE_OUTPUT)/Doxyfile.iprt $$(IPRT
 		| $(IPRT_DOXYFILE_OUTPUT)/
 	$(QUIET)$(RM) -f $@
 	$(QUIET)$(RM) -Rf $(IPRT_DOXYFILE_OUTPUT)/html/
-	doxygen $(DOXYGEN_OPTS) $(IPRT_DOXYFILE_OUTPUT)/Doxyfile.iprt
+	$(VBOX_DOXYGEN) $(DOXYGEN_OPTS) $(IPRT_DOXYFILE_OUTPUT)/Doxyfile.iprt
 	$(SED)  -e '/warning. Unexpected tag .dd. found/d' \
 		-e '/warning. Unsupported xml.html tag .globalScope. found/d' \
 		--output $(IPRT_DOXYFILE_OUTPUT)/errors2 \
