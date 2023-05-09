@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 98537 2023-02-10 18:01:38Z knut.osmundsen@oracle.com $
+# $Id: status.py 99702 2023-05-09 15:41:38Z ksenia.s.stepanova@oracle.com $
 
 """
 CGI - Administrator Web-UI.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98537 $"
+__version__ = "$Revision: 99702 $"
 
 
 # Standard python imports.
@@ -94,17 +94,12 @@ def testbox_data_processing(oDb):
     return dTestBoxes;
 
 
-def os_results_separating(dResult, sTestName, sTestBoxOs, enmStatus):
-    if sTestBoxOs == "linux":
-        dict_update(dResult, sTestName + " / linux", enmStatus)
-    elif sTestBoxOs == "win":
-        dict_update(dResult, sTestName + " / windows", enmStatus)
-    elif sTestBoxOs == "darwin":
-        dict_update(dResult, sTestName + " / darwin", enmStatus)
-    elif sTestBoxOs == "solaris":
-        dict_update(dResult, sTestName + " / solaris", enmStatus)
-    else:
-        dict_update(dResult, sTestName + " / other", enmStatus)
+def os_results_separating(dResult, sTestName, sTestBoxOs, sTestBoxCpuArch, enmStatus):
+    if sTestBoxOs == 'win':
+        sTestBoxOs = 'windows'
+    elif sTestBoxOs != 'linux' and sTestBoxOs != 'darwin' and sTestBoxOs != 'solaris':
+        sTestBoxOs = 'other'
+    dict_update(dResult, '%s / %s.%s' % (sTestName, sTestBoxOs, sTestBoxCpuArch), enmStatus)
 
 
 ## Template dictionary for new dTarget[] entries in dict_update.
@@ -393,7 +388,8 @@ class StatusDispatcher(object): # pylint: disable=too-few-public-methods
             oDb.execute('''
 SELECT  TestSets.enmStatus,
         TestCases.sName,
-        TestBoxesWithStrings.sOS
+        TestBoxesWithStrings.sOS,
+        TestBoxesWithStrings.sCpuArch
 FROM    TestSets
 INNER JOIN TestCases
         ON TestCases.idGenTestCase         = TestSets.idGenTestCase
@@ -406,7 +402,8 @@ WHERE   TestSets.tsCreated                >= (CURRENT_TIMESTAMP - '%s hours'::in
             oDb.execute('''
 SELECT  TestSets.enmStatus,
         TestCases.sName,
-        TestBoxesWithStrings.sOS
+        TestBoxesWithStrings.sOS,
+        TestBoxesWithStrings.sCpuArch
 FROM    TestSets
 INNER JOIN BuildCategories
         ON BuildCategories.idBuildCategory = TestSets.idBuildCategory
@@ -425,7 +422,7 @@ WHERE   TestSets.tsCreated                >= (CURRENT_TIMESTAMP - '%s hours'::in
             aoRow = oDb.fetchOne();
             if aoRow is None:
                 break;
-            os_results_separating(dResult, aoRow[1], aoRow[2], aoRow[0])  # save all test results
+            os_results_separating(dResult, aoRow[1], aoRow[2], aoRow[3], aoRow[0])  # save all test results
 
         # Format and output it.
         self._oSrvGlue.setContentType('text/plain');
