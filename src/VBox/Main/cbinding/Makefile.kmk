@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98695 2023-02-22 23:11:53Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99701 2023-05-09 13:02:23Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -81,7 +81,7 @@ $$(CAPIHeaders_0_OUTDIR)/VBoxCAPI.h: \
 	$(call MSG_TOOL,xsltproc,CAPIHeaders,$<,$@)
 	$(QUIET)$(VBOX_XSLTPROC) -o $@ $^
 
-if !defined(VBOX_ONLY_SDK)
+ifndef VBOX_ONLY_SDK
 
  #
  # The C API binding utility DLL
@@ -181,7 +181,7 @@ if !defined(VBOX_ONLY_SDK)
   endif
  endif
 
-endif # ! VBOX_ONLY_SDK
+endif # !VBOX_ONLY_SDK
 
 # generate rules.
 include $(FILE_KBUILD_SUB_FOOTER)

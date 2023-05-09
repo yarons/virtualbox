@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99699 2023-05-09 12:29:37Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99701 2023-05-09 13:02:23Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -30,7 +30,9 @@ include $(KBUILD_PATH)/subheader.kmk
 
 include $(PATH_SUB_CURRENT)/bldprogs/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBox/Makefile.kmk
-include $(PATH_SUB_CURRENT)/libs/Makefile.kmk
+if !defined(VBOX_ONLY_SDK_ON_WINDOWS) || "$(KBUILD_TARGET)" != "win"
+ include $(PATH_SUB_CURRENT)/libs/Makefile.kmk
+endif
 ifndef VBOX_ONLY_BUILD
  # Normal build.
  ifneq ($(wildcard $(PATH_SUB_CURRENT)/apps),)
