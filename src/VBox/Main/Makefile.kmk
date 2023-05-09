@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99706 2023-05-09 20:15:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99707 2023-05-09 20:16:44Z knut.osmundsen@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -63,9 +63,6 @@ endif
 VBOX_PATH_MAIN_SRC := $(PATH_SUB_CURRENT)
 
 if defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_SDK_ON_WINDOWS)
- # HACK ALERT! VBoxCOM is skipped, but its output dir is referenced a lot. So, define it.
- VBoxCOM_0_OUTDIR := $(call TARGET_PATH,VBoxCOM)
- BLDDIRS += $(VBoxCOM_0_OUTDIR) $(PATH_STAGE_BIN)/components
  ifndef TOOL_$(VBOX_VCC_TOOL)
   include $(KBUILD_PATH)/tools/$(VBOX_VCC_TOOL).kmk # For the idl /cpp statement.
  endif
