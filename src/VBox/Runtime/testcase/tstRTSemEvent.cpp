@@ -1,4 +1,4 @@
-/* $Id: tstRTSemEvent.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTSemEvent.cpp 99704 2023-05-09 17:01:36Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT Testcase - Multiple Release Event Semaphores.
  */
@@ -165,7 +165,7 @@ static DECLCALLBACK(int) test1Thread(RTTHREAD hThreadSelf, void *pvUser)
 
 static void test1(void)
 {
-    RTTestISub("Three threads");
+    RTTestISub("Two threads");
 
     /*
      * Create the threads and let them block on the event semaphore one
@@ -184,6 +184,34 @@ static void test1(void)
     RTTESTI_CHECK_RC_RETV(RTThreadUserWait(hThread2, RT_MS_30SEC), VINF_SUCCESS);
     RTThreadSleep(256);
 
+#if defined(RT_OS_SOLARIS)
+    /*
+     * The Single UNIX Specification v2 states: "If more than one thread is blocked on a
+     * condition variable, the scheduling policy determines the order in which threads
+     * are unblocked."  On Solaris, the default scheduling policy, SCHED_OTHER, does not
+     * specify the order in which multiple threads blocked on a condition variable are
+     * awakened.  Thus we can't guarantee which thread will wake up when the condition
+     * variable is signalled so instead of verifying the order of thread wakeup we
+     * simply verify that two signals wake both threads.
+     */
+    /* Signal twice to wake up both threads */
+    RTTESTI_CHECK_RC(RTSemEventSignal(hSem), VINF_SUCCESS);
+    RTThreadSleep(256);
+    RTTESTI_CHECK_RC(RTSemEventSignal(hSem), VINF_SUCCESS);
+
+    RTTESTI_CHECK_RC(RTThreadWait(hThread1, 5000, NULL), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTThreadWait(hThread2, 5000, NULL), VINF_SUCCESS);
+#else
+    /*
+     * The Linux sched(7) man page states: "SCHED_OTHER is the standard Linux
+     * time-sharing scheduler ... the thread chosen to run is based on a dynamic
+     * priority that ... is based on the nice value and is increased for each time
+     * quantum the thread is ready to run, but denied to run by the scheduler." This
+     * means that in practice the thread blocked longest on the condition variable will
+     * be awakened first and thus we can verify the ordering below.  FreeBSD and macOS
+     * don't seem to document their implementations for this scenario but empirically
+     * they behave similar to Linux.
+     */
     /* Signal once, hopefully waking up thread1: */
     RTTESTI_CHECK_RC(RTSemEventSignal(hSem), VINF_SUCCESS);
     RTTESTI_CHECK_RC(RTThreadWait(hThread1, 5000, NULL), VINF_SUCCESS);
@@ -191,6 +219,7 @@ static void test1(void)
     /* Signal once more, hopefully waking up thread2: */
     RTTESTI_CHECK_RC(RTSemEventSignal(hSem), VINF_SUCCESS);
     RTTESTI_CHECK_RC(RTThreadWait(hThread2, 5000, NULL), VINF_SUCCESS);
+#endif
 
     RTTESTI_CHECK_RC(RTSemEventDestroy(hSem), VINF_SUCCESS);
 }
