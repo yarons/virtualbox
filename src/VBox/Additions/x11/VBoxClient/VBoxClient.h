@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 99658 2023-05-08 09:35:54Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClient.h 99689 2023-05-09 08:28:38Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -36,7 +36,6 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/string.h>
 
-#include <VBox/GuestHost/Log.h>
 #include <VBox/GuestHost/DisplayServerType.h>
 
 int VBClShowNotify(const char *pszHeader, const char *pszBody);
@@ -48,6 +47,7 @@ void VBClLogVerbose(unsigned iLevel, const char *pszFormat, ...);
 
 int VBClLogCreate(const char *pszLogFile);
 int VBClLogCreateEx(const char *pszLogFile, bool fPrintHeader);
+int VBClLogModify(const char *pszDest, unsigned uVerbosity);
 void VBClLogSetLogPrefix(const char *pszPrefix);
 void VBClLogDestroy(void);
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99639 2023-05-05 13:31:37Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99689 2023-05-09 08:28:38Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1150,7 +1150,6 @@ endif
 
 # Common Guest / Host sources.
 VBOX_GH_SOURCES := \
-	$(PATH_ROOT)/src/VBox/GuestHost/Log.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/DisplayServerType.cpp
 
 #
