@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99692 2023-05-09 09:31:21Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99693 2023-05-09 09:36:13Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -441,10 +441,10 @@ endif
 #
 ifndef VBOX_WITH_PARFAIT
  VirtualBoxVM_LDFLAGS.darwin = \
- 	$(if $(VBOX_WITH_HARDENING)) \
- 		,-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VirtualBoxVM.dylib \
- 		,-rpath @executable_path/../../../../MacOS \
- 		-rpath @executable_path/../../../../Frameworks) \
+ $(if $(VBOX_WITH_HARDENING)) \
+ 	,-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VirtualBoxVM.dylib \
+ 	,-rpath @executable_path/../../../../MacOS \
+ 	-rpath @executable_path/../../../../Frameworks) \
  	-framework AppKit -framework Carbon -framework IOKit
 else
  VirtualBoxVM_LDFLAGS.darwin = -framework AppKit -framework Carbon -framework IOKit
