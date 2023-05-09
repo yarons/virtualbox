@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 99688 2023-05-09 05:28:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -1270,8 +1270,13 @@ static bool dxbcByteWriterRealloc(DXBCByteWriter *w, uint32_t cbNew)
     }
 
     uint32_t const cbCurrent = dxbcByteWriterSize(w);
-    memcpy(pvNew, w->pu8ByteCodeBegin, cbCurrent);
-    RTMemFree(w->pu8ByteCodeBegin);
+    if (cbCurrent)
+    {
+        memcpy(pvNew, w->pu8ByteCodeBegin, cbCurrent);
+        RTMemFree(w->pu8ByteCodeBegin);
+    }
+    else
+        Assert(w->pu8ByteCodeBegin == NULL);
 
     w->pu8ByteCodeBegin = (uint8_t *)pvNew;
     w->pu8ByteCodePtr   = w->pu8ByteCodeBegin + cbCurrent;

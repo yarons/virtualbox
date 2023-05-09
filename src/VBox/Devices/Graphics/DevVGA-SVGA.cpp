@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 99589 2023-05-03 15:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 99688 2023-05-09 05:28:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -3202,6 +3202,7 @@ static SVGACBStatus vmsvgaR3CmdBufDCStartStop(PVMSVGAR3STATE pSvgaR3State, SVGAD
     else
     {
         vmsvgaR3CmdBufCtxTerm(pSvgaR3State->apCmdBufCtxs[pCmd->context]);
+        RTMemFree(pSvgaR3State->apCmdBufCtxs[pCmd->context]);
         pSvgaR3State->apCmdBufCtxs[pCmd->context] = NULL;
     }
     RTCritSectLeave(&pSvgaR3State->CritSectCmdBuf);
@@ -4043,13 +4044,11 @@ static void vmsvgaR3FifoHandleExtCmd(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGAST
 
             vmsvgaR3ResetScreens(pThis, pThisCC);
 # ifdef VBOX_WITH_VMSVGA3D
+            /* The 3d subsystem must be reset from the fifo thread. */
             if (pThis->svga.f3DEnabled)
-            {
-                /* The 3d subsystem must be reset from the fifo thread. */
-                PVMSVGAR3STATE pSVGAState = pThisCC->svga.pSvgaR3State;
-                pSVGAState->pFuncs3D->pfnReset(pThisCC);
-            }
+                vmsvga3dReset(pThisCC);
 # endif
+            vmsvgaR3ResetSvgaState(pThis, pThisCC);
             break;
 
         case VMSVGA_FIFO_EXTCMD_POWEROFF:
@@ -4063,15 +4062,13 @@ static void vmsvgaR3FifoHandleExtCmd(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGAST
         case VMSVGA_FIFO_EXTCMD_TERMINATE:
             Log(("vmsvgaR3FifoLoop: terminate the fifo thread.\n"));
             Assert(pThisCC->svga.pvFIFOExtCmdParam == NULL);
+
 # ifdef VBOX_WITH_VMSVGA3D
+            /* The 3d subsystem must be shut down from the fifo thread. */
             if (pThis->svga.f3DEnabled)
-            {
-                /* The 3d subsystem must be shut down from the fifo thread. */
-                PVMSVGAR3STATE pSVGAState = pThisCC->svga.pSvgaR3State;
-                if (pSVGAState->pFuncs3D && pSVGAState->pFuncs3D->pfnTerminate)
-                    pSVGAState->pFuncs3D->pfnTerminate(pThisCC);
-            }
+                vmsvga3dTerminate(pThisCC);
 # endif
+            vmsvgaR3TerminateSvgaState(pThis, pThisCC);
             break;
 
         case VMSVGA_FIFO_EXTCMD_SAVESTATE:
@@ -6264,6 +6261,7 @@ static void vmsvgaR3StateTerm(PVGASTATE pThis, PVGASTATECC pThisCC)
         for (unsigned i = 0; i < RT_ELEMENTS(pSVGAState->apCmdBufCtxs); ++i)
         {
             vmsvgaR3CmdBufCtxTerm(pSVGAState->apCmdBufCtxs[i]);
+            RTMemFree(pSVGAState->apCmdBufCtxs[i]);
             pSVGAState->apCmdBufCtxs[i] = NULL;
         }
         vmsvgaR3CmdBufCtxTerm(&pSVGAState->CmdBufCtxDC);
@@ -6389,15 +6387,9 @@ static int vmsvgaR3Init3dInterfaces(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
 
     if (RT_SUCCESS(rc))
     {
-        /* 3D interface is required. */
-        if (pSVGAState->pFuncs3D)
-        {
-            rc = pSVGAState->pFuncs3D->pfnInit(pDevIns, pThis, pThisCC);
-            if (RT_SUCCESS(rc))
-                return VINF_SUCCESS;
-        }
-        else
-            rc = VERR_NOT_SUPPORTED;
+        rc = vmsvga3dInit(pDevIns, pThis, pThisCC);
+        if (RT_SUCCESS(rc))
+            return VINF_SUCCESS;
     }
 
     vmsvga3dR3Free3dInterfaces(pThisCC);

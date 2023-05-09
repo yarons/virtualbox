@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 99589 2023-05-03 15:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d.h 99688 2023-05-09 05:28:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -93,6 +93,11 @@ typedef struct VMSVGA3D_MAPPED_SURFACE
     uint32_t cbDepthPitch;   /* Bytes between planes. */
     void *pvData;
 } VMSVGA3D_MAPPED_SURFACE;
+
+void vmsvga3dReset(PVGASTATECC pThisCC);
+void vmsvga3dTerminate(PVGASTATECC pThisCC);
+
+int vmsvga3dInit(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATECC pThisCC);
 
 /* Write render targets to bitmaps. */
 //#define DUMP_BITMAPS
