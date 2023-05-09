@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99709 2023-05-09 21:50:28Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 99710 2023-05-09 21:56:06Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2434,7 +2434,7 @@ endif
 
 # Doxygen
 ifeq ($(VBOX_DOXYGEN),)
- VBOX_DOXYGEN   := $(firstfile $(rversortfiles $(qwildcard , $(KBUILD_DEVTOOLS_HST)/doxygen/v*))) doxygen$(HOSTSUFF_EXE)
+ VBOX_DOXYGEN   := $(firstfile $(rversortfiles $(qwildcard , $(KBUILD_DEVTOOLS_HST)/doxygen/v*/doxygen$(HOSTSUFF_EXE))) doxygen$(HOSTSUFF_EXE))
 endif
 
 # bin2c (convert binary files into C arrays)
@@ -9031,7 +9031,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99709 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99710 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
