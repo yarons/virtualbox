@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: status.py 99702 2023-05-09 15:41:38Z ksenia.s.stepanova@oracle.com $
+# $Id: status.py 99703 2023-05-09 15:59:02Z ksenia.s.stepanova@oracle.com $
 
 """
 CGI - Administrator Web-UI.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99702 $"
+__version__ = "$Revision: 99703 $"
 
 
 # Standard python imports.
@@ -97,7 +97,7 @@ def testbox_data_processing(oDb):
 def os_results_separating(dResult, sTestName, sTestBoxOs, sTestBoxCpuArch, enmStatus):
     if sTestBoxOs == 'win':
         sTestBoxOs = 'windows'
-    elif sTestBoxOs != 'linux' and sTestBoxOs != 'darwin' and sTestBoxOs != 'solaris':
+    elif sTestBoxOs not in ('linux', 'darwin', 'solaris'):
         sTestBoxOs = 'other'
     dict_update(dResult, '%s / %s.%s' % (sTestName, sTestBoxOs, sTestBoxCpuArch), enmStatus)
 
