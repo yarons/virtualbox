@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 99490 2023-04-20 15:47:05Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 99705 2023-05-09 18:17:31Z vadim.galitsyn@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99490 $"
+__version__ = "$Revision: 99705 $"
 
 # Standard Python imports.
 import copy;
@@ -1992,11 +1992,11 @@ class TestVmManager(object):
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True),
         TestVm('tst-ol76-64',   kfGrpStdSmoke,        sHd = '4.2/ol76/t-ol76-64.vdi',
                sKind = 'Oracle_64', acCpusSup = range(1, 33), fIoApic = True),
-        TestVm('tst-ubuntu-20_04-64-amdvi',     kfGrpStdSmoke,    sHd = '6.1/ubuntu-20_04-64.vdi',
+        TestVm('tst-ubuntu-20_04-64-amdvi',     kfGrpStdSmoke,    sHd = '6.1/ubuntu-20_04-64-updated_by_ksenia.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
                sIommuType = 'amd'),
-        TestVm('tst-ubuntu-20_04-64-vtd',     kfGrpStdSmoke,      sHd = '6.1/ubuntu-20_04-64.vdi',
+        TestVm('tst-ubuntu-20_04-64-vtd',     kfGrpStdSmoke,      sHd = '6.1/ubuntu-20_04-64-updated_by_ksenia.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,], sNic0AttachType = 'nat', sChipsetType = 'ich9',
                sIommuType = 'intel'),
