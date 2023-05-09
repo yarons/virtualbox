@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 99698 2023-05-09 12:25:48Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 99700 2023-05-09 12:38:12Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99698 $"
+__version__ = "$Revision: 99700 $"
 
 # Standard Python imports.
 import os;
@@ -289,7 +289,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
             # Wait for the GAs to come up.
             reporter.testStart('IGuest::additionsRunLevel');
-            fRc = self.testIGuest_additionsRunLevel(oSession, oTestVm, oGuest);
+            fRc = self.testIGuest_additionsRunLevel(oSession, oTxsSession, oTestVm, oGuest);
             reporter.testDone();
 
             # Check the additionsVersion attribute. It must not be empty.
@@ -587,7 +587,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
         return (fRc, oTxsSession);
 
-    def testIGuest_additionsRunLevel(self, oSession, oTestVm, oGuest):
+    def testIGuest_additionsRunLevel(self, oSession, oTxsSession, oTestVm, oGuest):
         """
         Do run level tests.
 
