@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99706 2023-05-09 20:15:42Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -688,6 +688,8 @@ nsprpub/lib/ds/plvrsion.c_DEPS = $(VBox-xpcom-nspr_0_OUTDIR)/_pl_bld.h
 VBox-xpcom-nspr_CLEAN += \
 	$(VBox-xpcom-nspr_0_OUTDIR)/_pr_bld.h \
 	$(VBox-xpcom-nspr_0_OUTDIR)/_pl_bld.h
+
+$(call KB_FN_DO_PASS0_ON_TARGET,VBox-xpcom-nspr)
 
 $$(VBox-xpcom-nspr_0_OUTDIR)/_pr_bld.h: | $$(VBox-xpcom-nspr_0_OUTDIR)/
 	$(call MSG_GENERATE,,$@)
