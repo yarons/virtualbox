@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 99652 2023-05-08 07:08:35Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: EM.cpp 99724 2023-05-10 13:40:10Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1831,7 +1831,6 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                  *
                  * Interrupt shadows block NMI-window VM-exits.
                  * Any event that is already in TRPM (e.g. injected during VM-entry) takes priority.
-                 * NMIs block delivery of other interrupts including NMIs.
                  *
                  * See Intel spec. 25.2 "Other Causes Of VM Exits".
                  * See Intel spec. 26.7.6 "NMI-Window Exiting".
