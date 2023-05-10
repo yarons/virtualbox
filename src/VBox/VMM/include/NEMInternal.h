@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 99557 2023-04-28 12:41:21Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 99735 2023-05-10 17:29:47Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -482,6 +482,8 @@ typedef struct NEMCPU
     hv_vcpu_exit_t              *pHvExit;
     /** Flag whether an event is pending. */
     bool                        fEventPending;
+    /** Flag whether the vTimer got activated and is masked. */
+    bool                        fVTimerActivated;
 # else
     /** The vCPU handle associated with the EMT executing this vCPU. */
     hv_vcpuid_t                 hVCpuId;
