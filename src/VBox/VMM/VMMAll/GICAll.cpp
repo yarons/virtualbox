@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 99734 2023-05-10 17:28:24Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 99737 2023-05-10 17:48:08Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
@@ -55,7 +55,8 @@
  * Sets the interrupt pending force-flag and pokes the EMT if required.
  *
  * @param   pVCpu           The cross context virtual CPU structure.
- * @param   enmType         The IRQ type.
+ * @param   fIrq            Flag whether to assert the IRQ line or leave it alone.
+ * @param   fFiq            Flag whether to assert the FIQ line or leave it alone.
  */
 static void gicSetInterruptFF(PVMCPUCC pVCpu, bool fIrq, bool fFiq)
 {
