@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 99545 2023-04-27 12:31:56Z alexander.eichner@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 99731 2023-05-10 17:02:16Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -765,7 +765,7 @@ static const QEMUFWCFGITEM g_aQemuFwCfgItems[] =
     { QEMU_FW_CFG_ITEM_KERNEL_SIZE,         "KrnlSz",       "KernelImage",       qemuFwCfgR3SetupCfgmFileSz, qemuFwCfgR3ReadSimple,          NULL,                      NULL                      },
     { QEMU_FW_CFG_ITEM_KERNEL_DATA,         "KrnlDat",      "KernelImage",       qemuFwCfgR3SetupCfgmFile,   qemuFwCfgR3ReadVfsFile,         NULL,                      qemuFwCfgR3CleanupVfsFile },
     { QEMU_FW_CFG_ITEM_INITRD_SIZE,         "InitrdSz",     "InitrdImage",       qemuFwCfgR3SetupCfgmFileSz, qemuFwCfgR3ReadSimple,          NULL,                      NULL                      },
-    { QEMU_FW_CFG_ITEM_KERNEL_DATA,         "InitrdDat",    "InitrdImage",       qemuFwCfgR3SetupCfgmFile,   qemuFwCfgR3ReadVfsFile,         NULL,                      qemuFwCfgR3CleanupVfsFile },
+    { QEMU_FW_CFG_ITEM_INITRD_DATA,         "InitrdDat",    "InitrdImage",       qemuFwCfgR3SetupCfgmFile,   qemuFwCfgR3ReadVfsFile,         NULL,                      qemuFwCfgR3CleanupVfsFile },
     { QEMU_FW_CFG_ITEM_KERNEL_SETUP_SIZE,   "SetupSz",      "SetupImage",        qemuFwCfgR3SetupCfgmFileSz, qemuFwCfgR3ReadSimple,          NULL,                      NULL                      },
     { QEMU_FW_CFG_ITEM_KERNEL_SETUP_DATA,   "SetupDat",     "SetupImage",        qemuFwCfgR3SetupCfgmFile,   qemuFwCfgR3ReadVfsFile,         NULL,                      qemuFwCfgR3CleanupVfsFile },
     { QEMU_FW_CFG_ITEM_CMD_LINE_SIZE,       "CmdLineSz",    "CmdLine",           qemuFwCfgR3SetupCfgmStrSz,  qemuFwCfgR3ReadSimple,          NULL,                      NULL                      },
