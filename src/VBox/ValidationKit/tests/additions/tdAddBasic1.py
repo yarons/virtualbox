@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 99700 2023-05-09 12:38:12Z andreas.loeffler@oracle.com $
+# $Id: tdAddBasic1.py 99717 2023-05-10 09:17:36Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99700 $"
+__version__ = "$Revision: 99717 $"
 
 # Standard Python imports.
 import os;
@@ -612,6 +612,10 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # This might fail on pure server guest OSes (no X, no Wayland).
         if  fRc \
         and oTestVm.isLinux():
+            ## @todo Fudge factor -- Wait for the desktop env to come up.
+            #        Remove once facility statuses are implemented within VBoxClient.
+            reporter.log('Waiting 30s for the desktop environment to come up before checking for the display server ...');
+            self.sleep(30);
             if self.fpApiVer >= 7.1 and self.uRevision >= 157189:
                 sVBoxClient = oTestVm.pathJoin(self.getGuestSystemDir(oTestVm, '/usr'), 'VBoxClient');
                 fRc = fRc and self.txsRunTest(oTxsSession, 'Check display server detection', 5 * 60 * 1000,
