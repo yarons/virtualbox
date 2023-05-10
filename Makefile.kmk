@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99721 2023-05-10 10:50:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99722 2023-05-10 12:31:40Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -1932,6 +1932,8 @@ else
 		'--exclude=src/VBox/GuestHost/**' \
 		'--exclude=src/VBox/HostServices/**' \
 		'--exclude=src/VBox/ImageMounter/**' \
+		'--include=src/VBox/Main/' \
+		'--include=src/VBox/Main/idl**' \
 		'--exclude=src/VBox/Main/**' \
 		'--exclude=src/VBox/NetworkServices/**' \
 		'--exclude=src/VBox/RDP/**' \
