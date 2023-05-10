@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsstddir.cpp 99730 2023-05-10 16:14:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -235,9 +235,13 @@ static DECLCALLBACK(int) rtVfsStdDir_SetMode(void *pvThis, RTFMODE fMode, RTFMOD
             return rc;
         fMode |= ~fMask & ObjInfo.Attr.fMode;
     }
-    //RTPathSetMode
-    //return RTFileSetMode(pThis->hDir, fMode);
+#if 0
+    RTPathSetMode
+    return RTFileSetMode(pThis->hDir, fMode);
+#else
+    RT_NOREF(fMode);
     return VERR_NOT_IMPLEMENTED;
+#endif
 }
 
 
