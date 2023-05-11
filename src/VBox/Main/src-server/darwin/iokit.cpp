@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: iokit.cpp 99741 2023-05-11 09:19:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -940,8 +940,8 @@ static void darwinDetermineUSBDeviceStateWorker(PUSBDEVICE pCur, io_object_t USB
     if (krc != KERN_SUCCESS)
         return;
 
-    bool fUserClientOnly = true;
-    bool fConfigured = false;
+    bool fUserClientOnly = true; RT_NOREF(fUserClientOnly); /* Shut up Clang 13 (-Wunused-but-set-variable). */
+    bool fConfigured = false;    RT_NOREF(fConfigured);
     bool fInUse = false;
     bool fSeizable = true;
     io_object_t Interface;
