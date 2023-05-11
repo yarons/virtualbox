@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98526 2023-02-10 15:10:50Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99742 2023-05-11 09:44:28Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -144,6 +144,7 @@ tstVBoxAPIXPCOM_LIBS = \
 	$(LIB_XPCOM) \
 	$(LIB_RUNTIME)
 tstVBoxAPIXPCOM_CXXFLAGS = -fshort-wchar
+tstVBoxAPIXPCOM_CXXFLAGS.darwin += -Wno-deprecated-copy    # To shut up Clang 13 (-Wdeprecated-copy).
 ifdef VBOX_WITH_RUNPATH
  tstVBoxAPIXPCOM_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBoxBldProg_LDFLAGS)
 else ifdef VBOX_WITH_RELATIVE_RUNPATH
