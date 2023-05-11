@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99385 2023-04-13 11:05:39Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99743 2023-05-11 09:59:52Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -378,6 +378,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	VMMR3/GIM.cpp \
  	VMMR3/IEMR3.cpp \
  	VMMR3/IOM.cpp \
+ 	VMMR3/IOMR3IoPort.cpp \
  	VMMR3/IOMR3Mmio.cpp \
  	VMMR3/GMM.cpp \
  	VMMR3/GVMMR3.cpp \
