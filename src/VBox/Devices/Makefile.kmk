@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99544 2023-04-27 08:16:31Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99750 2023-05-11 13:37:24Z alexander.eichner@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -920,6 +920,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
  if defined(VBOX_WITH_VIRT_ARMV8)
   VBoxDD_DEFS       += VBOX_VMM_TARGET_ARMV8
   VBoxDD_SOURCES    += \
+  	Bus/DevPciGenericEcam.cpp \
   	Misc/DevFlashCFI.cpp \
   	Misc/DevPL031.cpp \
   	Serial/DevPL011.cpp
