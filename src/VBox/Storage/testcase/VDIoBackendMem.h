@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/** $Id: VDIoBackendMem.h 99740 2023-05-11 01:11:15Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -43,7 +43,7 @@ typedef PVDIOBACKENDMEM *PPVDIOBACKENDMEM;
 
 /**
  * Completion handler.
- *  
+ *
  * @returns IPRT status code.
  * @param   pvUser    Opaque user data.
  * @param   rcReq     Completion code for the request.

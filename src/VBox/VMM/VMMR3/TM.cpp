@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: TM.cpp 99740 2023-05-11 01:11:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Time Manager.
  */
@@ -3571,8 +3571,8 @@ VMMR3DECL(int) TMR3GetCpuLoadPercents(PUVM pUVM, VMCPUID idCpu, uint64_t *pcMsIn
 #ifndef VBOX_WITHOUT_NS_ACCOUNTING
 
 /**
- * Helper for tmR3CpuLoadTimer. 
- *  
+ * Helper for tmR3CpuLoadTimer.
+ *
  * @param   pState          The state to update.
  * @param   cNsTotal        Total time.
  * @param   cNsExecuting    Time executing.

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 99740 2023-05-11 01:11:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6399,7 +6399,7 @@ static int vmsvgaR3Init3dInterfaces(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
 
 /**
  * Compute the host capabilities: device and FIFO.
- * 
+ *
  * Depends on 3D backend initialization.
  *
  * @param   pThis     The shared VGA/VMSVGA instance data.

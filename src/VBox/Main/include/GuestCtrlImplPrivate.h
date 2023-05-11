@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 99740 2023-05-11 01:11:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -594,7 +594,7 @@ public:
     }
 
     /**
-     * @copydoc GuestEnvironmentChanges::copy() 
+     * @copydoc GuestEnvironmentChanges::copy()
      * @throws  HRESULT
      */
     GuestEnvironmentChanges &operator=(const GuestEnvironmentBase &rThat)
