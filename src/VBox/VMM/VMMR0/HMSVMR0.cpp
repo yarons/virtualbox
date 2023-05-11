@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 99753 2023-05-11 15:02:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6040,7 +6040,7 @@ static VBOXSTRICTRC hmR0SvmHandleExitDtraceEvents(PVMCPUCC pVCpu, PSVMTRANSIENT 
     if (fDtrace1 || fDtrace2)
     {
         hmR0SvmImportGuestState(pVCpu, HMSVM_CPUMCTX_EXTRN_ALL);
-        PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
+        PCPUMCTX pCtx = &pVCpu->cpum.GstCtx; RT_NOREF(pCtx); /* Shut up Clang 13. */
         switch (enmEvent1)
         {
             /** @todo consider which extra parameters would be helpful for each probe.   */

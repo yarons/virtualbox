@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99687 2023-05-09 04:17:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 99753 2023-05-11 15:02:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -11780,7 +11780,7 @@ static VBOXSTRICTRC vmxHCHandleExitDtraceEvents(PVMCPUCC pVCpu, PVMXTRANSIENT pV
     {
         vmxHCReadToTransient<HMVMX_READ_EXIT_QUALIFICATION>(pVCpu, pVmxTransient);
         vmxHCImportGuestState<HMVMX_CPUMCTX_EXTRN_ALL>(pVCpu, pVmxTransient->pVmcsInfo, __FUNCTION__);
-        PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
+        PCPUMCTX pCtx = &pVCpu->cpum.GstCtx; RT_NOREF(pCtx); /* Shut up Clang 13. */
         switch (enmEvent1)
         {
             /** @todo consider which extra parameters would be helpful for each probe.   */
