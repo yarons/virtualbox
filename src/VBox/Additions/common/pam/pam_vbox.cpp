@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pam_vbox.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -311,7 +311,6 @@ static int pam_vbox_init(pam_handle_t *hPAM)
 /**
  * Shuts down pam_vbox.
  *
- * @return  IPRT status code.
  * @param   hPAM                    PAM handle.
  */
 static void pam_vbox_shutdown(pam_handle_t *hPAM)

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Type.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3Type.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Type Management.
  */
@@ -1226,7 +1226,6 @@ VMMR3DECL(int) DBGFR3TypeQueryValByType(PUVM pUVM, PCDBGFADDRESS pAddress, const
  * Frees all acquired resources of a value previously obtained with
  * DBGFR3TypeQueryValByType().
  *
- * @returns nothing.
  * @param   pVal                The value to free.
  */
 VMMR3DECL(void) DBGFR3TypeValFree(PDBGFTYPEVAL pVal)

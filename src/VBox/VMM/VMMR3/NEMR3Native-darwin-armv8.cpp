@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 99735 2023-05-10 17:29:47Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -805,7 +805,6 @@ DECLINLINE(size_t) nemR3DarwinGetByteCountFromSas(uint8_t uSas)
 /**
  * Sets the given general purpose register to the given value.
  *
- * @returns nothing.
  * @param   pVCpu           The cross context virtual CPU structure of the
  *                          calling EMT.
  * @param   uReg            The register index.

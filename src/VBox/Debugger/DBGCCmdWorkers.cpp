@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdWorkers.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCCmdWorkers.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -273,7 +273,6 @@ DECLHIDDEN(PDBGCTFLOW) dbgcFlowTraceModGet(PDBGC pDbgc, uint32_t iTraceFlowMod)
 /**
  * Inserts the given trace flow module into the list.
  *
- * @returns nothing.
  * @param   pDbgc         The DBGC instance.
  * @param   pTraceFlow    The trace flow module.
  */

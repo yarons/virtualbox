@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HBDMgmt-win.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -94,7 +94,6 @@ typedef HBDMGRINT *PHBDMGRINT;
 /**
  * Unclaims the given block device and frees its state removing it from the list.
  *
- * @returns nothing.
  * @param   pDev           The block device to unclaim.
  */
 static void hbdMgrDevUnclaim(PHBDMGRDEV pDev)

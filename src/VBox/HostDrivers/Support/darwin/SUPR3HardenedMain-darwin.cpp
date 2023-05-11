@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-darwin.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -194,7 +194,6 @@ static int supR3HardenedDarwinIssetugidInterpose(void)
 /**
  * Callback to get notified of new images being loaded to be able to apply our dlopn() interposer.
  *
- * @returns nothing.
  * @param   mh              Pointer to the mach header of the loaded image.
  * @param   vmaddr_slide    The slide value for ASLR.
  */
@@ -208,8 +207,6 @@ static DECLCALLBACK(void) supR3HardenedDarwinAddImage(const struct mach_header *
 
 /**
  * Hardening initialization for macOS hosts.
- *
- * @returns nothing.
  *
  * @note Doesn't return on error.
  */

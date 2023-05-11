@@ -1,4 +1,4 @@
-/* $Id: UsbTest.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTest.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTest - User frontend for the Linux usbtest USB test and benchmarking module.
  *           Integrates with our test framework for nice outputs.
@@ -477,7 +477,6 @@ static int usbTestIoctl(int iDevFd, int iInterface, PUSBTESTPARAMS pParams)
 /**
  * Test execution worker.
  *
- * @returns nothing.
  * @param   pszDevice    The device to use for testing.
  */
 static void usbTestExec(const char *pszDevice)

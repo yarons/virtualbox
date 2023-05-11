@@ -1,4 +1,4 @@
-/* $Id: fuzz-config.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz-config.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, config API.
  */
@@ -519,7 +519,6 @@ static int rtFuzzCfgAddFuzzCtxInputs(PRTFUZZCFGINT pThis, RTJSONVAL hJsonValCorp
 /**
  * Destroys the given fuzzing config.
  *
- * @returns nothing.
  * @param   pThis                   The fuzzing config instance to destroy.
  */
 static void rtFuzzCfgDestroy(PRTFUZZCFGINT pThis)

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFile.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -106,7 +106,6 @@ static const DBGCCMD g_aCmds[] =
 /**
  * Frees a task.
  *
- * @returns nothing.
  * @param   pEndpoint    Pointer to the endpoint the segment was for.
  * @param   pTask        The task to free.
  */
@@ -516,7 +515,6 @@ int pdmacFileAioMgrCreate(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClass, PPPDMACEPFILE
 /**
  * Destroys a async I/O manager.
  *
- * @returns nothing.
  * @param   pEpClassFile    Pointer to globals for the file endpoint class.
  * @param   pAioMgr         The async I/O manager to destroy.
  */

@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -2477,7 +2477,6 @@ int VBOXCALL supdrvTracerInit(PSUPDRVDEVEXT pDevExt)
 /**
  * Late module termination hook.
  *
- * @returns VBox status code.
  * @param   pDevExt             The device extension structure.
  */
 void VBOXCALL supdrvTracerTerm(PSUPDRVDEVEXT pDevExt)

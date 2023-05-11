@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 99211 2023-03-29 14:19:05Z alexander.eichner@oracle.com $ */
+/* $Id: HMSVMR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1733,7 +1733,6 @@ static int hmR0SvmExportGuestControlRegs(PVMCPUCC pVCpu, PSVMVMCB pVmcb)
 /**
  * Exports the guest (or nested-guest) segment registers into the VMCB.
  *
- * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pVmcb       Pointer to the VM control block.
  *
@@ -5606,7 +5605,6 @@ static void hmR0SvmPreRunGuestDebugStateApply(PSVMTRANSIENT pSvmTransient, PSVMR
  * Restores VMCB fields that were changed by hmR0SvmPreRunGuestDebugStateApply
  * for re-entry next time around.
  *
- * @returns Strict VBox status code (i.e. informational status codes too).
  * @param   pSvmTransient   The SVM-transient structure.
  * @param   pDbgState       The debug state.
  */

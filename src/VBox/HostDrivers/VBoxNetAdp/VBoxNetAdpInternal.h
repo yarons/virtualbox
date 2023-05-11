@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdpInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -176,7 +176,6 @@ DECLHIDDEN(int) vboxNetAdpOsInit(PVBOXNETADP pThis);
 /**
  * Counter part to vboxNetAdpOsCreate().
  *
- * @return  IPRT status code.
  * @param   pThis           The new instance.
  *
  * @remarks May own the semaphores for the global list, the network lock and the out-bound trunk port.

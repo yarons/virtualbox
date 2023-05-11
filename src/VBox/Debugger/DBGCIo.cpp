@@ -1,4 +1,4 @@
-/* $Id: DBGCIo.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCIo.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, I/O provider handling.
  */
@@ -159,7 +159,6 @@ static const DBGCSTUB g_aStubs[] =
 /**
  * Destroys all allocated data for the given dbeugger console I/O instance.
  *
- * @returns nothing.
  * @param   pDbgcIo             Pointer to the dbeugger console I/O instance data.
  */
 static void dbgcIoDestroy(PDBGCIOINT pDbgcIo)

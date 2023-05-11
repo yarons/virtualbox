@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 98847 2023-03-06 22:28:59Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4414,7 +4414,6 @@ const ComObjPtr<PerformanceCollector>& VirtualBox::i_performanceCollector() cons
 /**
  * Returns the default machine folder from the system properties
  * with proper locking.
- * @return
  */
 void VirtualBox::i_getDefaultMachineFolder(Utf8Str &str) const
 {
@@ -4425,7 +4424,6 @@ void VirtualBox::i_getDefaultMachineFolder(Utf8Str &str) const
 /**
  * Returns the default hard disk format from the system properties
  * with proper locking.
- * @return
  */
 void VirtualBox::i_getDefaultHardDiskFormat(Utf8Str &str) const
 {
@@ -5513,8 +5511,6 @@ void VirtualBox::i_unmarkRegistryModified(const Guid &uuid)
  *
  * This locks machines and the VirtualBox object as necessary, so better not
  * hold any locks before calling this.
- *
- * @return
  */
 void VirtualBox::i_saveModifiedRegistries()
 {

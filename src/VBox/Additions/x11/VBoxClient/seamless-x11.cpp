@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 99601 2023-05-04 10:43:08Z andreas.loeffler@oracle.com $ */
+/* $Id: seamless-x11.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -58,7 +58,7 @@
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 
-static unsigned char *XXGetProperty (Display *aDpy, Window aWnd, Atom aPropType,
+static unsigned char *XXGetProperty(Display *aDpy, Window aWnd, Atom aPropType,
                                     const char *aPropName, unsigned long *nItems)
 {
     LogRelFlowFuncEnter();
@@ -84,12 +84,6 @@ static unsigned char *XXGetProperty (Display *aDpy, Window aWnd, Atom aPropType,
     return propVal;
 }
 
-/**
- * Initialise the guest and ensure that it is capable of handling seamless mode
- *
- * @param  pHostCallback   host callback.
- * @returns true if it can handle seamless, false otherwise
- */
 int VBClX11SeamlessMonitor::init(PFNSENDREGIONUPDATE pHostCallback)
 {
     int rc = VINF_SUCCESS;

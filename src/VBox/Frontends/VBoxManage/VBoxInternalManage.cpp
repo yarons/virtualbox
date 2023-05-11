@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 98298 2023-01-25 02:23:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxInternalManage.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -404,7 +404,6 @@ static RTEXITCODE errorGetOptInternal(USAGECATEGORY enmCommand, int vrc, union R
  * Externally visible wrapper around printUsageInternal() to dump the
  * complete usage text.
  *
- * @returns nothing.
  * @param   pStrm           The stream to dump the usage text to.
  */
 DECLHIDDEN(void) printUsageInternalCmds(PRTSTREAM pStrm)

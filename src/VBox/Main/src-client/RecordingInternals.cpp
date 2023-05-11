@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingInternals.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Recording internals code.
  */
@@ -31,6 +31,7 @@
 #include <iprt/mem.h>
 
 #ifdef VBOX_WITH_AUDIO_RECORDING
+
 /**
  * Initializes a recording frame.
  *
@@ -92,7 +93,8 @@ void RecordingAudioFrameFree(PRECORDINGAUDIOFRAME pFrame)
     RTMemFree(pFrame);
     pFrame = NULL;
 }
-#endif
+
+#endif /* VBOX_WITH_AUDIO_RECORDING */
 
 /**
  * Destroys a recording video frame.
@@ -112,7 +114,6 @@ void RecordingVideoFrameDestroy(PRECORDINGVIDEOFRAME pFrame)
 /**
  * Frees a recording video frame.
  *
- * @returns VBox status code.
  * @param   pFrame              Pointer to video frame to free. The pointer will be invalid after return.
  */
 void RecordingVideoFrameFree(PRECORDINGVIDEOFRAME pFrame)
@@ -128,7 +129,6 @@ void RecordingVideoFrameFree(PRECORDINGVIDEOFRAME pFrame)
 /**
  * Frees a recording frame.
  *
- * @returns VBox status code.
  * @param   pFrame              Pointer to recording frame to free. The pointer will be invalid after return.
  */
 void RecordingFrameFree(PRECORDINGFRAME pFrame)

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFlt-darwin.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -591,7 +591,6 @@ DECLINLINE(unsigned) vboxNetFltDarwinMBufCalcSGSegs(PVBOXNETFLTINS pThis, mbuf_t
 /**
  * Initializes a SG list from an mbuf.
  *
- * @returns Number of segments.
  * @param   pThis               The instance.
  * @param   pMBuf               The mbuf.
  * @param   pSG                 The SG.

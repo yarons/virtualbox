@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: PGMPhys.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -5210,7 +5210,6 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
 /**
  * Frees a range of ram pages, replacing them with ZERO pages; helper for PGMR3PhysFreeRamPages
  *
- * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   fInflate    Inflate or deflate memory balloon
  * @param   cPages      Number of pages to free
@@ -5684,7 +5683,6 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU 
 /**
  * Unmap a chunk to free up virtual address space (request packet handler for pgmR3PhysChunkMap)
  *
- * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  */
 static DECLCALLBACK(void) pgmR3PhysUnmapChunk(PVM pVM)

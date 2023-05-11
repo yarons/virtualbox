@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1176,9 +1176,6 @@ static void suplibHardenedPathStripFilename(char *pszPath)
 }
 
 
-/**
- * @copydoc RTPathFilename
- */
 DECLHIDDEN(char *) supR3HardenedPathFilename(const char *pszPath)
 {
     const char *psz = pszPath;
@@ -1212,9 +1209,6 @@ DECLHIDDEN(char *) supR3HardenedPathFilename(const char *pszPath)
 }
 
 
-/**
- * @copydoc RTPathAppPrivateNoArch
- */
 DECLHIDDEN(int) supR3HardenedPathAppPrivateNoArch(char *pszPath, size_t cchPath)
 {
 #if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_PRIVATE)
@@ -1231,9 +1225,6 @@ DECLHIDDEN(int) supR3HardenedPathAppPrivateNoArch(char *pszPath, size_t cchPath)
 }
 
 
-/**
- * @copydoc RTPathAppPrivateArch
- */
 DECLHIDDEN(int) supR3HardenedPathAppPrivateArch(char *pszPath, size_t cchPath)
 {
 #if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_PRIVATE_ARCH)
@@ -1250,9 +1241,6 @@ DECLHIDDEN(int) supR3HardenedPathAppPrivateArch(char *pszPath, size_t cchPath)
 }
 
 
-/**
- * @copydoc RTPathSharedLibs
- */
 DECLHIDDEN(int) supR3HardenedPathAppSharedLibs(char *pszPath, size_t cchPath)
 {
 #if !defined(RT_OS_WINDOWS) && defined(RTPATH_SHARED_LIBS)
@@ -1269,9 +1257,6 @@ DECLHIDDEN(int) supR3HardenedPathAppSharedLibs(char *pszPath, size_t cchPath)
 }
 
 
-/**
- * @copydoc RTPathAppDocs
- */
 DECLHIDDEN(int) supR3HardenedPathAppDocs(char *pszPath, size_t cchPath)
 {
 #if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_DOCS)
@@ -1290,8 +1275,6 @@ DECLHIDDEN(int) supR3HardenedPathAppDocs(char *pszPath, size_t cchPath)
 
 /**
  * Returns the full path to the executable in g_szSupLibHardenedExePath.
- *
- * @returns IPRT status code.
  */
 static void supR3HardenedGetFullExePath(void)
 {
@@ -2244,7 +2227,6 @@ static unsigned supR3HardenedMainShouldPurgeArg(const char *pszArg)
 /**
  * Purges any command line arguments considered harmful.
  *
- * @returns nothing.
  * @param   cArgsOrig        The original number of arguments.
  * @param   papszArgsOrig    The original argument vector.
  * @param   pcArgsNew        Where to store the new number of arguments on success.

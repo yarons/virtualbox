@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMFInternal.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Mouse Filter Driver - Internal functions.
  *
@@ -134,8 +134,6 @@ static bool vboxNewProtLazyRegister(void)
 
 /**
  * This is called when the last device instance is destroyed.
- *
- * @returns NT status.
  */
 static void vboxNewProtTerm(void)
 {

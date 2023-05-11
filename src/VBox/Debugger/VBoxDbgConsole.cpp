@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgConsole.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -881,13 +881,6 @@ VBoxDbgConsole::backSetReady(PCDBGCIO pBack, bool fReady)
 }
 
 
-/**
- * The Debugger Console Thread
- *
- * @returns VBox status code (ignored).
- * @param   Thread      The thread handle.
- * @param   pvUser      Pointer to the VBoxDbgConsole object.s
- */
 /*static*/ DECLCALLBACK(int)
 VBoxDbgConsole::backThread(RTTHREAD Thread, void *pvUser)
 {

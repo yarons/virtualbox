@@ -1,4 +1,4 @@
-/* $Id: tstDeviceCfg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceCfg.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstDevice - Configuration loader.
  */
@@ -75,7 +75,6 @@ static int tstDevCfgErrorRc(PRTERRINFO pErrInfo, int rc, const char *pszFormat, 
 /**
  * Destroys the given configuration item array freeing all allocated resources.
  *
- * @returns nothing.
  * @param   paCfg               The configuration item array to destroy.
  * @param   cCfgItems           Number of items in the array.
  */

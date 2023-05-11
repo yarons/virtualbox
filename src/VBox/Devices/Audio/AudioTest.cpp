@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 99559 2023-04-28 14:30:50Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioTest.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -2418,7 +2418,6 @@ static uint32_t audioTestFilesFindDiffsBinary(PAUDIOTESTVERIFYJOB pVerJob,
 /**
  * Initializes a audio test audio beacon.
  *
- * @returns VBox status code.
  * @param   pBeacon             Audio test beacon to (re-)initialize.
  * @param   uTest               Test number to set beacon to.
  * @param   enmType             Beacon type to set.

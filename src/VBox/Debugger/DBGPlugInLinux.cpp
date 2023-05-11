@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: DBGPlugInLinux.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -1257,7 +1257,6 @@ static DECLCALLBACK(int) dbgDiggerLinuxCfgDbDestroyWorker(PRTSTRSPACECORE pStr, 
 /**
  * Destroy the config database.
  *
- * @returns nothing.
  * @param   pThis               The Linux digger data.
  */
 static void dbgDiggerLinuxCfgDbDestroy(PDBGDIGGERLINUX pThis)

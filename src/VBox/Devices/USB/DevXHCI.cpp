@@ -1,4 +1,4 @@
-/* $Id: DevXHCI.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevXHCI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevXHCI - eXtensible Host Controller Interface for USB.
  */
@@ -5519,7 +5519,6 @@ static void xhciR3PortPower(PXHCI pThis, PXHCICC pThisCC, unsigned iPort, bool f
 /**
  * Port reset done callback.
  *
- * @returns nothing.
  * @param   pDevIns             The device instance data.
  * @param   iPort               The XHCI port index of the port being resetted.
  */

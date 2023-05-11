@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dvmbsdlabel.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -209,7 +209,6 @@ static uint16_t rtDvmFmtBsdLblDiskLabelChkSum(PBsdLabel pBsdLabel)
 /**
  * Converts a partition entry to the host endianness.
  *
- * @returns nothing.
  * @param   pPartition    The partition to decode.
  */
 static void rtDvmFmtBsdLblDiskLabelDecodePartition(PBsdLabelPartition pPartition)

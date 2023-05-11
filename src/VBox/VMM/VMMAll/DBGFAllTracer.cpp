@@ -1,4 +1,4 @@
-/* $Id: DBGFAllTracer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAllTracer.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code tracing part.
  */
@@ -189,7 +189,6 @@ DECLHIDDEN(int) dbgfTracerR3EvtPostSingle(PVMCC pVM, PDBGFTRACERINSCC pThisCC, D
 /**
  * Copies the given MMIO value into the event descriptor based on the given size.
  *
- * @returns nothing.
  * @param   pEvtMmio                Pointer to the MMIO event descriptor to fill.
  * @param   pvVal                   The value to copy.
  * @param   cbVal                   Size of the value in bytes.
@@ -219,7 +218,6 @@ static void dbgfTracerEvtMmioCopyVal(PDBGFTRACEREVTMMIO pEvtMmio, const void *pv
 /**
  * Copies the given I/O port value into the event descriptor based on the given size.
  *
- * @returns nothing.
  * @param   pEvtIoPort              Pointer to the I/O port read/write event descriptor to fill.
  * @param   pvVal                   The value to copy.
  * @param   cbVal                   Size of the value in bytes.

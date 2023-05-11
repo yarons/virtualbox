@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 99382 2023-04-13 07:26:11Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceToolBox.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -243,7 +243,6 @@ static void vgsvcToolboxPrintStrmHeader(const char *pszToolName, uint32_t uVersi
 /**
  * Prints a standardized termination sequence indicating that the
  * parseable stream just ended.
- *
  */
 static void vgsvcToolboxPrintStrmTermination()
 {
@@ -267,7 +266,6 @@ static int vgsvcToolboxParseMode(const char *pcszMode, RTFMODE *pfMode)
 /**
  * Destroys a path buffer list.
  *
- * @return  IPRT status code.
  * @param   pList                   Pointer to list to destroy.
  */
 static void vgsvcToolboxPathBufDestroy(PRTLISTNODE pList)

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -3857,7 +3857,6 @@ int pgmLock(PVMCC pVM, bool fVoid)
 /**
  * Release the PGM lock.
  *
- * @returns VBox status code
  * @param   pVM         The cross context VM structure.
  */
 void pgmUnlock(PVMCC pVM)

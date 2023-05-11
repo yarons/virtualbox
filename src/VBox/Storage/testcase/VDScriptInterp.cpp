@@ -1,4 +1,4 @@
-/* $Id: VDScriptInterp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VDScriptInterp.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox HDD container test utility - scripting engine, interpreter.
  */
@@ -184,7 +184,6 @@ static int vdScriptInterpreterError(PVDSCRIPTINTERPCTX pThis, int rc, RT_SRC_POS
 /**
  * Pops the topmost value from the value stack.
  *
- * @returns nothing.
  * @param   pThis      The interpreter context.
  * @param   pVal       Where to store the value.
  */
@@ -429,7 +428,6 @@ static int vdScriptInterpreterScopeCreate(PVDSCRIPTINTERPCTX pThis)
 /**
  * Destroys the current scope.
  *
- * @returns nothing.
  * @param   pThis          The interpreter context.
  */
 static void vdScriptInterpreterScopeDestroyCurr(PVDSCRIPTINTERPCTX pThis)

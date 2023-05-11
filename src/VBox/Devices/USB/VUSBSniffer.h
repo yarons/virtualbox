@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBSniffer.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -90,7 +90,6 @@ DECLHIDDEN(int) VUSBSnifferCreate(PVUSBSNIFFER phSniffer, uint32_t fFlags,
 /**
  * Destroys the given VUSB sniffer instance.
  *
- * @returns nothing.
  * @param   hSniffer              The sniffer instance to destroy.
  */
 DECLHIDDEN(void) VUSBSnifferDestroy(VUSBSNIFFER hSniffer);

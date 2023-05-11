@@ -1,4 +1,4 @@
-/** $Id: VDIoBackend.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/** $Id: VDIoBackend.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O backend
@@ -49,7 +49,7 @@ typedef PVDIOSTORAGE *PPVDIOSTORAGE;
 /**
  * Completion handler.
  *
- * @returns nothing.
+ * @returns IPRT status code.
  * @param   pvUser    Opaque user data.
  * @param   rcReq     Completion code for the request.
  */
@@ -68,8 +68,6 @@ int VDIoBackendCreate(PPVDIOBACKEND ppIoBackend);
 
 /**
  * Destroys a memory I/O backend.
- *
- * @returns nothing.
  *
  * @param pIoBackend     The backend to destroy.
  */

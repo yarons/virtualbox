@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ATAPIPassthrough.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
@@ -164,7 +164,6 @@ static int atapiTrackListReallocate(PTRACKLIST pTrackList, unsigned cTracks, uin
 /**
  * Initilizes the given track from the given CUE sheet entry.
  *
- * @returns nothing.
  * @param   pTrack             The track to initialize.
  * @param   pbCueSheetEntry    CUE sheet entry to use.
  */
@@ -475,7 +474,6 @@ static const char *atapiTrackListSubChnDataFormToString(SUBCHNDATAFORM enmSubChn
 /**
  * Dump the complete track list to the release log.
  *
- * @returns nothing.
  * @param   pTrackList   The track list to dump.
  */
 static void atapiTrackListDump(PTRACKLIST pTrackList)
@@ -516,7 +514,6 @@ DECLHIDDEN(int) ATAPIPassthroughTrackListCreateEmpty(PTRACKLIST *ppTrackList)
 /**
  * Destroys the allocated task list handle.
  *
- * @returns nothing.
  * @param   pTrackList  The track list handle to destroy.
  */
 DECLHIDDEN(void) ATAPIPassthroughTrackListDestroy(PTRACKLIST pTrackList)
@@ -529,7 +526,6 @@ DECLHIDDEN(void) ATAPIPassthroughTrackListDestroy(PTRACKLIST pTrackList)
 /**
  * Clears all tracks from the given task list.
  *
- * @returns nothing.
  * @param   pTrackList  The track list to clear.
  */
 DECLHIDDEN(void) ATAPIPassthroughTrackListClear(PTRACKLIST pTrackList)

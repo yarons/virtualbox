@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceGadget.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -88,7 +88,6 @@ static const PCUTSGADGETCLASSIF g_apUtsGadgetClass[] =
 /**
  * Destroys a gadget instance.
  *
- * @returns nothing.
  * @param   pThis    The gadget instance.
  */
 static void utsGadgetDestroy(PUTSGADGETINT pThis)

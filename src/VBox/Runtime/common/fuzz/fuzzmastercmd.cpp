@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzzmastercmd.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -1579,7 +1579,6 @@ static int rtFuzzCmdMasterFuzzCfgLoadFromFile(PRTFUZZCMDMASTER pThis, const char
 /**
  * Destroys all running fuzzers for the given master state.
  *
- * @returns nothing.
  * @param   pThis               The fuzzing master command state.
  */
 static void rtFuzzCmdMasterDestroy(PRTFUZZCMDMASTER pThis)
@@ -1591,7 +1590,6 @@ static void rtFuzzCmdMasterDestroy(PRTFUZZCMDMASTER pThis)
 /**
  * Sends an ACK response to the client.
  *
- * @returns nothing.
  * @param   hSocket             The socket handle to send the ACK to.
  * @param   pszResponse         Additional response data.
  */
@@ -1622,7 +1620,6 @@ static void rtFuzzCmdMasterTcpSendAck(RTSOCKET hSocket, const char *pszResponse)
 /**
  * Sends an NACK response to the client.
  *
- * @returns nothing.
  * @param   hSocket             The socket handle to send the ACK to.
  * @param   pErrInfo            Optional error information to send along.
  */

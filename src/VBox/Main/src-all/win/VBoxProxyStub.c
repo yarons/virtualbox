@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxProxyStub.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -1319,7 +1319,6 @@ LSTATUS VbpsRegisterClassId(VBPSREGSTATE *pState, const CLSID *pClsId, const cha
 /**
  * Register modules and classes from the VirtualBox.xidl file.
  *
- * @returns COM status code.
  * @param   pState
  * @param   pwszVBoxDir         The VirtualBox application directory.
  * @param   fIs32On64           Set if this is the 32-bit on 64-bit component.

@@ -1,4 +1,4 @@
-/* $Id: krnlmod-linux.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: krnlmod-linux.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Kernel module, Linux.
  */
@@ -78,7 +78,6 @@ typedef const RTKRNLMODINFOINT *PCRTKRNLMODINFOINT;
 /**
  * Destroy the given kernel module information record.
  *
- * @returns nothing.
  * @param   pThis            The record to destroy.
  */
 static void rtKrnlModInfoDestroy(PRTKRNLMODINFOINT pThis)

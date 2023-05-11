@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VMDK.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -1165,7 +1165,6 @@ static int vmdkAllocGrainDirectory(PVMDKIMAGE pImage, PVMDKEXTENT pExtent)
 /**
  * Converts the grain directory from little to host endianess.
  *
- * @returns nothing.
  * @param   pGD             The grain directory.
  * @param   cGDEntries      Number of entries in the grain directory to convert.
  */
@@ -7370,7 +7369,6 @@ static int vmdkRenameStatePrepare(PVMDKIMAGE pImage, PVMDKRENAMESTATE pRenameSta
 /**
  * Destroys the given rename state, freeing all allocated memory.
  *
- * @returns nothing.
  * @param   pRenameState    The rename state to destroy.
  */
 static void vmdkRenameStateDestroy(PVMDKRENAMESTATE pRenameState)

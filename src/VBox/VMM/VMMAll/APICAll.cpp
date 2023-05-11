@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: APICAll.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3428,7 +3428,6 @@ VMM_INT_DECL(bool) APICGetHighestPendingInterrupt(PVMCPUCC pVCpu, uint8_t *pu8Pe
 /**
  * Posts an interrupt to a target APIC, Hyper-V interface.
  *
- * @returns true if the interrupt was accepted, false otherwise.
  * @param   pVCpu               The cross context virtual CPU structure.
  * @param   uVector             The vector of the interrupt to be posted.
  * @param   fAutoEoi            Whether this interrupt has automatic EOI

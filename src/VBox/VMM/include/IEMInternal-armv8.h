@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 99027 2023-03-17 20:06:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 variant.
  */
@@ -741,7 +741,6 @@ typedef struct IEM
 
 /** Hint to IEMAllInstructionPython.py that this macro should be skipped.  */
 #define IEMOPHINT_SKIP_PYTHON       RT_BIT_32(31)
-/** @} */
 
 /** @def IEM_DECL_IMPL_TYPE
  * For typedef'ing an instruction implementation function.

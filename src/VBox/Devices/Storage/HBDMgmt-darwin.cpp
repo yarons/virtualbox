@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HBDMgmt-darwin.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: Host block device management API - darwin specifics.
  */
@@ -123,7 +123,6 @@ typedef HBDMGRDACLBKARGS *PHBDMGRDACLBKARGS;
 /**
  * Unclaims the given block device and frees its state removing it from the list.
  *
- * @returns nothing.
  * @param   pDev           The block device to unclaim.
  */
 static void hbdMgrDevUnclaim(PHBDMGRDEV pDev)
@@ -294,7 +293,6 @@ static DADissenterRef hbdMgrDAMountApprovalCallback(DADiskRef hDiskRef, void *pv
  *
  * Dummy handler for the wakeup source to kick the worker thread.
  *
- * @returns nothing.
  * @param   pInfo            Opaque user data given during source creation, unused.
  */
 static void hbdMgrDAPerformWakeup(void *pInfo)

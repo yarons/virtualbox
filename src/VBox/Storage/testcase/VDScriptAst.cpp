@@ -1,4 +1,4 @@
-/* $Id: VDScriptAst.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VDScriptAst.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox HDD container test utility - scripting engine AST node related functions.
  */
@@ -37,7 +37,6 @@
 /**
  * Put all child nodes of the given expression AST node onto the given to free list.
  *
- * @returns nothing.
  * @param   pList    The free list to append everything to.
  * @param   pAstNode The expression node to free.
  */
@@ -146,7 +145,6 @@ static void vdScriptAstNodeExpressionPutOnFreeList(PRTLISTANCHOR pList, PVDSCRIP
 /**
  * Free a given statement AST node and put everything on the given to free list.
  *
- * @returns nothing.
  * @param   pList    The free list to append everything to.
  * @param   pAstNode The statement node to free.
  */

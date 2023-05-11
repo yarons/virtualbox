@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: GIM.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -417,7 +417,6 @@ VMMR3_INT_DECL(void) GIMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
  * For the GIM component this means unmapping and unregistering MMIO2 regions
  * and other provider-specific resets.
  *
- * @returns VBox status code.
  * @param   pVM     The cross context VM structure.
  */
 VMMR3_INT_DECL(void) GIMR3Reset(PVM pVM)

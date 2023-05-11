@@ -1,4 +1,4 @@
-/* $Id: winlogon.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: winlogon.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox External Authentication Library - Windows Logon Authentication.
  */
@@ -107,24 +107,24 @@ static WCHAR *utf8ToWideChar(const char *pszString)
 }
 
 /* Prototype it to make sure we've got the right prototype. */
-extern "C"
 #if defined(_MSC_VER)
-__declspec(dllexport)
+extern "C" __declspec(dllexport) FNAUTHENTRY3 AuthEntry;
+#else
+extern "C" FNAUTHENTRY3 AuthEntry;
 #endif
-FNAUTHENTRY3 AuthEntry;
 
 /**
  * @callback_method_impl{FNAUTHENTRY3}
  */
-extern "C"
-AuthResult AUTHCALL AuthEntry(const char *pszCaller,
-                              PAUTHUUID pUuid,
-                              AuthGuestJudgement guestJudgement,
-                              const char *pszUser,
-                              const char *pszPassword,
-                              const char *pszDomain,
-                              int fLogon,
-                              unsigned clientId)
+extern "C" DECLEXPORT(AuthResult) AUTHCALL
+AuthEntry(const char *pszCaller,
+          PAUTHUUID pUuid,
+          AuthGuestJudgement guestJudgement,
+          const char *pszUser,
+          const char *pszPassword,
+          const char *pszDomain,
+          int fLogon,
+          unsigned clientId)
 {
     RT_NOREF4(pszCaller, pUuid, guestJudgement, clientId);
     if (!fLogon)

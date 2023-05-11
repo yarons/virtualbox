@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceTimeSync.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -503,8 +503,6 @@ static void vgsvcTimeSyncCancelAdjust(void)
 
 /**
  * Set the wall clock to compensate for drift.
- *
- * @returns true on success, false on failure.
  *
  * @param   pDrift              The time adjustment.
  */

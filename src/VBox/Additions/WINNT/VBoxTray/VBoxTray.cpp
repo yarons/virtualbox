@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTray.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -433,9 +433,8 @@ static bool vboxTrayHandleGlobalMessages(PVBOXGLOBALMESSAGE pTable, UINT uMsg,
 }
 
 /**
- * Release logger callback.
+ * Header/footer callback for the release logger.
  *
- * @return  IPRT status code.
  * @param   pLoggerRelease
  * @param   enmPhase
  * @param   pfnLog

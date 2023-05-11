@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioTestService.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -858,7 +858,6 @@ static int atsClientDisconnect(PATSSERVER pThis, PATSCLIENTINST pInst)
 /**
  * Free's (destroys) a client instance.
  *
- * @returns nothing.
  * @param   pInst               The opaque ATS instance structure.
  */
 static void atsClientFree(PATSCLIENTINST pInst)

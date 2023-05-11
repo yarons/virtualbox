@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -629,7 +629,6 @@ static DECLCALLBACK(void *) drvAudioVideoRecQueryInterface(PPDMIBASE pInterface,
 /**
  * Shuts down (closes) a recording sink,
  *
- * @returns VBox status code.
  * @param   pSink               Recording sink to shut down.
  */
 static void avRecSinkShutdown(PAVRECSINK pSink)

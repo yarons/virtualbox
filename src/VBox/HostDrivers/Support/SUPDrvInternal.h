@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 99426 2023-04-17 18:05:40Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -1069,7 +1069,6 @@ int VBOXCALL    supdrvOSInitGipGroupTable(PSUPDRVDEVEXT pDevExt, PSUPGLOBALINFOP
  *
  * This is currently only implemented on windows [lazy bird].
  *
- * @returns CPU group number.
  * @param   pDevExt             The device globals.
  * @param   pGip                The GIP.
  * @param   pGipCpu             The GIP CPU structure being initialized.

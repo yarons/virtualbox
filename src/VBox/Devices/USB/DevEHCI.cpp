@@ -1,4 +1,4 @@
-/* $Id: DevEHCI.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevEHCI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEHCI - Enhanced Host Controller Interface for USB.
  */
@@ -1522,7 +1522,6 @@ DECLINLINE(void) ehciR3WriteQTD(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, PEHCI_QTD p
  * Updates the QHD in guest memory only updating portions of the QHD the controller
  * is allowed to write to.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   GCPhys      Physical guest address of the QHD.
  * @param   pQHD        The QHD to update the guest memory with.
@@ -4793,7 +4792,6 @@ static DECLCALLBACK(void) ehciR3Reset(PPDMDEVINS pDevIns)
 /**
  * Reset notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void) ehciR3Resume(PPDMDEVINS pDevIns)

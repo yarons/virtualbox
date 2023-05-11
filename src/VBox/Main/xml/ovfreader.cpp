@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 99604 2023-05-04 13:53:06Z valery.portnyagin@oracle.com $ */
+/* $Id: ovfreader.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * OVF reader declarations.
  *
@@ -146,7 +146,6 @@ void OVFReader::parse()
  * @param pReferencesElem "References" element from OVF, for looking up file specifications;
  *                        can be NULL if no such element is present.
  * @param pCurElem Element whose children are to be analyzed here.
- * @return
  */
 void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
                                  const xml::ElementNode *pCurElem)
@@ -317,8 +316,6 @@ void OVFReader::HandleDiskSection(const xml::ElementNode *pReferencesElem,
 /**
  * Private helper method that handles network sections in the OVF XML.
  * Gets called indirectly from IAppliance::read().
- *
- * @return
  */
 void OVFReader::HandleNetworkSection(const xml::ElementNode * /* pSectionElem */)
 {
@@ -344,7 +341,6 @@ void OVFReader::HandleNetworkSection(const xml::ElementNode * /* pSectionElem */
  * Gets called indirectly from IAppliance::read().
  *
  * @param pelmVirtualSystem
- * @return
  */
 void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSystem)
 {

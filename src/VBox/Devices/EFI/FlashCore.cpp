@@ -1,4 +1,4 @@
-/* $Id: FlashCore.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: FlashCore.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -423,7 +423,6 @@ DECLHIDDEN(int) flashR3Init(PFLASHCORE pThis, PPDMDEVINS pDevIns, uint16_t idFla
 /**
  * Destroys the given flash device instance.
  *
- * @returns nothing.
  * @param   pDevIns             The parent device instance.
  * @param   pThis               The flash device core instance.
  */
@@ -564,7 +563,6 @@ DECLHIDDEN(int) flashR3SaveToVfs(PFLASHCORE pThis, PPDMDEVINS pDevIns, PPDMIVFSC
 /**
  * Resets the dynamic part of the flash device state.
  *
- * @returns nothing.
  * @param   pThis               The flash device core instance.
  */
 DECLHIDDEN(void) flashR3Reset(PFLASHCORE pThis)

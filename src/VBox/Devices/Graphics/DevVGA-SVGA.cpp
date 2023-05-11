@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 99688 2023-05-09 05:28:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -6399,9 +6399,9 @@ static int vmsvgaR3Init3dInterfaces(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTA
 
 /**
  * Compute the host capabilities: device and FIFO.
+ * 
  * Depends on 3D backend initialization.
  *
- * @returns VBox status code.
  * @param   pThis     The shared VGA/VMSVGA instance data.
  * @param   pThisCC   The VGA/VMSVGA state for ring-3.
  * @param   pu32DeviceCaps Device capabilities (SVGA_CAP_*).
@@ -7089,7 +7089,6 @@ static void vmsvgaR3PowerOnDevice(PPDMDEVINS pDevIns, PVGASTATE pThis, PVGASTATE
 /**
  * Power On notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  *
  * @remarks Caller enters the device critical section.

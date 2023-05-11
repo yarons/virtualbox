@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBUrb.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -471,7 +471,6 @@ int vusbUrbQueueAsyncRh(PVUSBURB pUrb)
 
 /**
  * Send a control message *synchronously*.
- * @return
  */
 static void vusbMsgSubmitSynchronously(PVUSBURB pUrb, bool fSafeRequest)
 {
@@ -1304,7 +1303,6 @@ void vusbUrbDoReapAsync(PRTLISTANCHOR pUrbLst, RTMSINTERVAL cMillies)
 /**
  * Reap URBs on a per device level.
  *
- * @returns nothing.
  * @param   pDev        The device instance to reap URBs for.
  * @param   cMillies    Number of milliseconds to block in each reap operation.
  *                      Use 0 to not block at all.

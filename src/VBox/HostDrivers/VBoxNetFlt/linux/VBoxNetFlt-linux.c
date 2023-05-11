@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -836,7 +836,6 @@ DECLINLINE(unsigned) vboxNetFltLinuxGetChecksumStartOffset(struct sk_buff *pBuf)
 /**
  * Initializes a SG list from an sk_buff.
  *
- * @returns Number of segments.
  * @param   pThis               The instance.
  * @param   pBuf                The sk_buff.
  * @param   pSG                 The SG.

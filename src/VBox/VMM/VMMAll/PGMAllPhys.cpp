@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 99314 2023-04-06 07:41:57Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1209,8 +1209,6 @@ int pgmPhysRecheckLargePage(PVMCC pVM, RTGCPHYS GCPhys, PPGMPAGE pLargePage)
 
 /**
  * Deal with a write monitored page.
- *
- * @returns VBox strict status code.
  *
  * @param   pVM         The cross context VM structure.
  * @param   pPage       The physical page tracking structure.

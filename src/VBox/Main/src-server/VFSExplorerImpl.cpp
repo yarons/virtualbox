@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 98307 2023-01-25 18:14:19Z alexander.eichner@oracle.com $ */
+/* $Id: VFSExplorerImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
@@ -129,7 +129,6 @@ HRESULT VFSExplorer::init(VFSType_T aType, Utf8Str aFilePath, Utf8Str aHostname,
 
 /**
  * VFSExplorer COM uninitializer.
- * @return
  */
 void VFSExplorer::uninit()
 {
@@ -140,7 +139,7 @@ void VFSExplorer::uninit()
 /**
  * Public method implementation.
  * @param   aPath   Where to store the path.
- * @return
+ * @return  S_OK
  */
 HRESULT VFSExplorer::getPath(com::Utf8Str &aPath)
 {

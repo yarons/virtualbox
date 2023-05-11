@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPCNet.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -710,7 +710,6 @@ DECLINLINE(bool) pcnetIsLinkUp(PPCNETSTATE pThis)
 /**
  * Memory write helper to handle PCI/ISA differences.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   pThis       Pointer to the PCNet device instance
  * @param   GCPhys      Guest physical memory address
@@ -729,7 +728,6 @@ static void pcnetPhysWrite(PPDMDEVINS pDevIns, PPCNETSTATE pThis, RTGCPHYS GCPhy
 /**
  * Memory read helper to handle PCI/ISA differences.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   pThis       Pointer to the PCNet device instance.
  * @param   GCPhys      Guest physical memory address.

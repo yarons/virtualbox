@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 98807 2023-03-01 16:38:03Z brent.paulson@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -11872,7 +11872,6 @@ DECLCALLBACK(void *)  Console::i_drvStatus_QueryInterface(PPDMIBASE pInterface, 
 /**
  * Destruct a status driver instance.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Console::i_drvStatus_Destruct(PPDMDRVINS pDrvIns)

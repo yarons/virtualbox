@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1727,7 +1727,6 @@ VMMDECL(bool) CPUMIsHyperDebugStateActive(PVMCPU pVCpu)
 /**
  * Mark the guest's debug state as inactive.
  *
- * @returns boolean
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @todo    This API doesn't make sense any more.
  */

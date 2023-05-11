@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 98570 2023-02-14 21:33:06Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMQueue.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -861,7 +861,6 @@ static DECLCALLBACK(void) pdmR3QueueTimer(PVM pVM, TMTIMERHANDLE hTimer, void *p
 /**
  * Terminate the queues, freeing any resources still allocated.
  *
- * @returns nothing.
  * @param   pVM                 The cross-context VM structure.
  */
 DECLHIDDEN(void) pdmR3QueueTerm(PVM pVM)

@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartCfg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostartCfg.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, configuration parser.
  */
@@ -131,7 +131,6 @@ typedef struct CFGTOKENIZER
 /**
  * Free a config token.
  *
- * @returns nothing.
  * @param   pCfgTokenizer    The config tokenizer.
  * @param   pToken           The token to free.
  */
@@ -321,7 +320,6 @@ static int autostartConfigTokenizerCreateToken(PCFGTOKENIZER pCfgTokenizer,
 /**
  * Destroys the given config tokenizer.
  *
- * @returns nothing.
  * @param   pCfgTokenizer    The config tokenizer to destroy.
  */
 static void autostartConfigTokenizerDestroy(PCFGTOKENIZER pCfgTokenizer)

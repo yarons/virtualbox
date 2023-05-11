@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 98644 2023-02-20 12:05:56Z knut.osmundsen@oracle.com $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -531,7 +531,6 @@ static int tstPDMACStressTestFileOpen(PVM pVM, PPDMACTESTFILE pTestFile, unsigne
 /**
  * Closes a test file.
  *
- * @returns nothing.
  * @param pTestFile    Pointer to the test file.
  */
 static void tstPDMACStressTestFileClose(PPDMACTESTFILE pTestFile)

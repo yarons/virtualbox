@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -165,7 +165,6 @@ VMMR0_INT_DECL(int) PGMR0InitVM(PGVM pGVM)
 /**
  * Called at the end of the ring-0 initialization to seal access handler types.
  *
- * @returns VBox status code.
  * @param   pGVM    Pointer to the global VM structure.
  */
 VMMR0_INT_DECL(void) PGMR0DoneInitVM(PGVM pGVM)

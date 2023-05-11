@@ -1,4 +1,4 @@
-/* $Id: ioqueue-iouringfile-provider.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ioqueue-iouringfile-provider.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O queue, Linux io_uring interface I/O file provider.
  */
@@ -555,7 +555,6 @@ DECLINLINE(int) rtIoQueueLnxEventfd2(uint32_t uValInit, uint32_t fFlags, int *pi
 /**
  * Checks the completion event queue for pending events.
  *
- * @returns nothing.
  * @param   pThis               The provider instance.
  * @param   paCEvt              Pointer to the array of completion events.
  * @param   cCEvt               Maximum number of completion events the array can hold.

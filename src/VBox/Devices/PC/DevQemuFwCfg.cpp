@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 99738 2023-05-10 17:55:05Z alexander.eichner@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -307,7 +307,6 @@ typedef FNQEMUFWCFGITEMWRITE *PFNQEMUFWCFGITEMWRITE;
 /**
  * Cleans up any allocated resources when the item is de-selected.
  *
- * @returns nothing.
  * @param   pThis           The QEMU fw config device instance.
  * @param   pItem           Pointer to the selected item.
  */
@@ -777,7 +776,6 @@ static const QEMUFWCFGITEM g_aQemuFwCfgItems[] =
 /**
  * Resets the currently selected item.
  *
- * @returns nothing.
  * @param   pThis               The QEMU fw config device instance.
  */
 static void qemuFwCfgR3ItemReset(PDEVQEMUFWCFG pThis)
@@ -847,7 +845,6 @@ static int qemuFwCfgItemSelect(PDEVQEMUFWCFG pThis, uint16_t uCfgItem)
 /**
  * Processes a DMA transfer.
  *
- * @returns nothing.
  * @param   pThis               The QEMU fw config device instance.
  * @param   GCPhysDma           The guest physical address of the DMA descriptor.
  */

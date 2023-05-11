@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevTesting.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -998,7 +998,6 @@ static DECLCALLBACK(int) vmmdevR3TestingLockingThreadWakeup(PPDMDEVINS pDevIns, 
 /**
  * Initializes the testing part of the VMMDev if enabled.
  *
- * @returns VBox status code.
  * @param   pDevIns             The VMMDev device instance.
  */
 void vmmdevR3TestingTerminate(PPDMDEVINS pDevIns)

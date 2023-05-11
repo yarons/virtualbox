@@ -1,4 +1,4 @@
-/* $Id: DBGCScreenAscii.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCScreenAscii.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, ASCII screen with optional coloring support.
  */
@@ -228,7 +228,6 @@ DECLHIDDEN(int) dbgcScreenAsciiCreate(PDBGCSCREEN phScreen, uint32_t cchWidth, u
 /**
  * Destroys a given ASCII screen.
  *
- * @returns nothing.
  * @param   hScreen             The screen handle.
  */
 DECLHIDDEN(void) dbgcScreenAsciiDestroy(DBGCSCREEN hScreen)
@@ -354,7 +353,7 @@ DECLHIDDEN(int) dbgcScreenAsciiDrawCharacter(DBGCSCREEN hScreen, uint32_t uX, ui
 /**
  * Draws a vertical line at the given coordinates.
  *
- * @returns nothing.
+ * @returns VBox status code.
  * @param   hScreen             The screen handle.
  * @param   uX                  X position to draw.
  * @param   uStartY             Y position to start drawing.

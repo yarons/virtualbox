@@ -1,4 +1,4 @@
-/* $Id: SUPSvc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPSvc.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Service - Common Code.
  */
@@ -87,7 +87,6 @@ typedef struct SUPSVCSERVICE
     /**
      * Start the service.
      *
-     * @returns VBox status code, log entry is written on failure.
      * @param   pvInstance      The instance handle.
      */
     DECLCALLBACKMEMBER(void, pfnStart,(void *pvInstance));

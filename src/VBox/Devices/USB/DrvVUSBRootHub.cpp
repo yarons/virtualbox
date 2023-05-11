@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -645,7 +645,6 @@ static void vusbRhR3CalcTimerIntervals(PVUSBROOTHUB pThis, uint32_t u32FrameRate
  * Calculates the new frame rate based on the idle detection and number of idle
  * cycles.
  *
- * @returns nothing.
  * @param   pThis    The roothub instance data.
  * @param   fIdle    Flag whether the last frame didn't produce any activity.
  */

@@ -1,4 +1,4 @@
-/* $Id: scsi.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scsi.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -296,7 +296,6 @@ uint16_t scsi_cmd_packet(uint16_t device_id, uint8_t cmdlen, char __far *cmdbuf,
 /**
  * Enumerate attached devices.
  *
- * @returns nothing.
  * @param   hba_seg    Segement of the HBA controller block.
  * @param   idx_hba    The HBA driver index used for accessing the enumerated devices.
  */

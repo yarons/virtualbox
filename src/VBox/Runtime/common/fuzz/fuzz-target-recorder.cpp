@@ -1,4 +1,4 @@
-/* $Id: fuzz-target-recorder.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz-target-recorder.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, target state recorder.
  */
@@ -184,7 +184,6 @@ typedef struct RTFUZZTGTRECINT
 /**
  * Initializes the given stdout/stderr buffer.
  *
- * @returns nothing.
  * @param   pBuf                The buffer to initialize.
  */
 static void rtFuzzTgtStdOutErrBufInit(PRTFUZZTGTSTDOUTERRBUF pBuf)
@@ -198,7 +197,6 @@ static void rtFuzzTgtStdOutErrBufInit(PRTFUZZTGTSTDOUTERRBUF pBuf)
 /**
  * Frees all allocated resources in the given stdout/stderr buffer.
  *
- * @returns nothing.
  * @param   pBuf                The buffer to free.
  */
 static void rtFuzzTgtStdOutErrBufFree(PRTFUZZTGTSTDOUTERRBUF pBuf)
@@ -357,7 +355,6 @@ static int rtFuzzTgtRecScanStateForNewEdges(PRTFUZZTGTRECINT pThis, PRTFUZZTGTST
 /**
  * Destorys the given fuzzer target recorder freeing all allocated resources.
  *
- * @returns nothing.
  * @param   pThis               The fuzzer target recorder instance.
  */
 static void rtFuzzTgtRecDestroy(PRTFUZZTGTRECINT pThis)
@@ -369,7 +366,6 @@ static void rtFuzzTgtRecDestroy(PRTFUZZTGTRECINT pThis)
 /**
  * Destroys the given fuzzer target state freeing all allocated resources.
  *
- * @returns nothing.
  * @param   pThis               The fuzzed target state instance.
  */
 static void rtFuzzTgtStateDestroy(PRTFUZZTGTSTATEINT pThis)

@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -364,7 +364,6 @@ protected:
      * updateCallback() worker that advances the update state to the next data node
      * in anticipation of the next updateCallback call.
      *
-     * @returns The current node.
      * @param   pNode       The current node.
      */
     void updateCallbackAdvance(PDBGGUISTATSNODE pNode);

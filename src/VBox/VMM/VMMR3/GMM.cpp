@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GMM.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -174,7 +174,6 @@ GMMR3DECL(int) GMMR3FreePagesPrepare(PVM pVM, PGMMFREEPAGESREQ *ppReq, uint32_t 
 /**
  * Re-prepares a GMMR0FreePages request.
  *
- * @returns VINF_SUCCESS or VERR_NO_TMP_MEMORY.
  * @param       pVM         The cross context VM structure.
  * @param       pReq        A request buffer previously returned by
  *                          GMMR3FreePagesPrepare().

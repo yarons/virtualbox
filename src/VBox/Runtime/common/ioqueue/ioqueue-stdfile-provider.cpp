@@ -1,4 +1,4 @@
-/* $Id: ioqueue-stdfile-provider.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ioqueue-stdfile-provider.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O queue, Standard file provider.
  */
@@ -152,7 +152,6 @@ typedef RTIOQUEUEPROVINT *PRTIOQUEUEPROVINT;
 /**
  * Processes the given submission queue entry and reports back the result in the completion queue.
  *
- * @returns nothing.
  * @param   pSqEntry            The submission queue entry to process.
  * @param   pCqEntry            The comppletion queue entry to store the result in.
  */

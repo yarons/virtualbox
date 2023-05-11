@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostart.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -149,7 +149,6 @@ DECLHIDDEN(void) autostartSvcShowVersion(bool fBrief);
 /**
  * Log messages to the system and release log.
  *
- * @returns nothing.
  * @param   pszMsg            Message to log.
  * @param   enmLogType        Log type to use.
  */
@@ -185,7 +184,6 @@ DECLHIDDEN(int) autostartParseConfig(const char *pszFilename, PCFGAST *ppCfgAst)
 /**
  * Destroys the config AST and frees all resources.
  *
- * @returns nothing.
  * @param   pCfgAst        The config AST.
  */
 DECLHIDDEN(void) autostartConfigAstDestroy(PCFGAST pCfgAst);

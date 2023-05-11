@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 98965 2023-03-14 15:47:35Z alexander.eichner@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -713,7 +713,6 @@ uint32_t UefiVariableStore::i_uefiVarAttrToMask(const std::vector<UefiVariableAt
 /**
  * Converts the given aatribute mask to the attribute vector used externally.
  *
- * @returns nothing.
  * @param   fAttr               The attribute mask.
  * @param   aAttributes         The vector to store the attibutes in.
  */

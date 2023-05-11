@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyService.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -643,7 +643,6 @@ void USBProxyService::i_deviceRemoved(ComObjPtr<HostUSBDevice> &aDevice)
  *
  * This is responsible for calling HostUSBDevice::updateState().
  *
- * @returns true if there is a state change.
  * @param   aDevice         The device in question.
  * @param   aUSBDevice      The USB device structure for the last enumeration.
  * @param   fFakeUpdate     Flag whether to fake updating state.

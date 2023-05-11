@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvMouseQueue.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -277,7 +277,6 @@ static DECLCALLBACK(bool) drvMouseQueueConsumer(PPDMDRVINS pDrvIns, PPDMQUEUEITE
 /**
  * Power On notification.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The drive instance data.
  */
 static DECLCALLBACK(void) drvMouseQueuePowerOn(PPDMDRVINS pDrvIns)
@@ -290,7 +289,6 @@ static DECLCALLBACK(void) drvMouseQueuePowerOn(PPDMDRVINS pDrvIns)
 /**
  * Reset notification.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The drive instance data.
  */
 static DECLCALLBACK(void)  drvMouseQueueReset(PPDMDRVINS pDrvIns)
@@ -304,7 +302,6 @@ static DECLCALLBACK(void)  drvMouseQueueReset(PPDMDRVINS pDrvIns)
 /**
  * Suspend notification.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The drive instance data.
  */
 static DECLCALLBACK(void)  drvMouseQueueSuspend(PPDMDRVINS pDrvIns)
@@ -317,7 +314,6 @@ static DECLCALLBACK(void)  drvMouseQueueSuspend(PPDMDRVINS pDrvIns)
 /**
  * Resume notification.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The drive instance data.
  */
 static DECLCALLBACK(void)  drvMouseQueueResume(PPDMDRVINS pDrvIns)

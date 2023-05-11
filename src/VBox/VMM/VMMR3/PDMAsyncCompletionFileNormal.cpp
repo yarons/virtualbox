@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -260,7 +260,6 @@ static bool pdmacFileAioMgrNormalIsBalancePossible(PPDMACEPFILEMGR pAioMgr)
  * Creates a new I/O manager and spreads the I/O load of the endpoints
  * between the given I/O manager and the new one.
  *
- * @returns nothing.
  * @param   pAioMgr    The I/O manager with high I/O load.
  */
 static void pdmacFileAioMgrNormalBalanceLoad(PPDMACEPFILEMGR pAioMgr)
@@ -542,7 +541,6 @@ static RTFILEAIOREQ pdmacFileAioMgrNormalRequestAlloc(PPDMACEPFILEMGR pAioMgr)
 /**
  * Frees a async I/O request handle.
  *
- * @returns nothing.
  * @param   pAioMgr    The I/O manager.
  * @param   hReq       The I/O request handle to free.
  */

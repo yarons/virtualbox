@@ -1,4 +1,4 @@
-/* $Id: vboxweb.cpp 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxweb.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxweb.cpp:
  *      hand-coded parts of the webservice server. This is linked with the
@@ -1789,7 +1789,6 @@ static bool SplitManagedObjectRef(const WSDLT_ID &id,
  * @param sz Buffer with at least 34 bytes space to receive MOR string.
  * @param websessId
  * @param objId
- * @return
  */
 static void MakeManagedObjectRef(char *sz,
                                  uint64_t websessId,

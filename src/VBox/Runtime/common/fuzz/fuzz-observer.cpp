@@ -1,4 +1,4 @@
-/* $Id: fuzz-observer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz-observer.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, observer.
  */
@@ -438,7 +438,6 @@ static int rtFuzzObsExecCtxCreate(PPRTFUZZOBSEXECCTX ppExecCtx, PRTFUZZOBSINT pT
 /**
  * Destroys the given execution context.
  *
- * @returns nothing.
  * @param   pThis               The internal fuzzing observer state.
  * @param   pExecCtx            The execution context to destroy.
  */

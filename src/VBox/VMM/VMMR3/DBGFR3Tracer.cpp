@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Tracer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3Tracer.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, tracing parts.
  */
@@ -1045,7 +1045,6 @@ DECLHIDDEN(int) dbgfR3TracerInit(PVM pVM)
 /**
  * Terminates any configured tracer for the given VM instance.
  *
- * @returns nothing.
  * @param   pVM                     The cross context VM structure.
  */
 DECLHIDDEN(void) dbgfR3TracerTerm(PVM pVM)

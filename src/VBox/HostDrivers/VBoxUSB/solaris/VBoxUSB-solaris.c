@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUSB-solaris.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -1567,8 +1567,6 @@ LOCAL int vboxUsbSolarisInitPower(vboxusb_state_t *pState)
  *
  * @param   pState          The USB device instance.
  * @remarks Requires the device state mutex to be held.
- *
- * @returns VBox status code.
  */
 LOCAL void vboxUsbSolarisDestroyPower(vboxusb_state_t *pState)
 {

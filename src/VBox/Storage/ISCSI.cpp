@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ISCSI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -838,7 +838,6 @@ static PISCSICMD iscsiCmdRemoveAll(PISCSIIMAGE pImage)
 /**
  * Dumps an iSCSI packet if enabled.
  *
- * @returns nothing.
  * @param   pImage         The iSCSI image instance data.
  * @param   paISCSISegs    Pointer to the segments array.
  * @param   cnISCSISegs    Number of segments in the array.

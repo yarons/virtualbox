@@ -1,4 +1,4 @@
-/* $Id: dvm.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dvm.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -127,7 +127,6 @@ typedef struct RTDVMFMTOPS
     /**
      * Closes the volume format.
      *
-     * @returns nothing.
      * @param   hVolMgrFmt      The format specific volume manager handle.
      */
     DECLCALLBACKMEMBER(void, pfnClose,(RTDVMFMT hVolMgrFmt));
@@ -219,7 +218,6 @@ typedef struct RTDVMFMTOPS
     /**
      * Closes a volume handle.
      *
-     * @returns nothing.
      * @param   hVolFmt         The format specific volume handle.
      */
     DECLCALLBACKMEMBER(void, pfnVolumeClose,(RTDVMVOLUMEFMT hVolFmt));

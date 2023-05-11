@@ -1,4 +1,4 @@
-/* $Id: DevPL031.cpp 99544 2023-04-27 08:16:31Z alexander.eichner@oracle.com $ */
+/* $Id: DevPL031.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPL031 - ARM PL011 PrimeCell RTC.
  *
@@ -192,7 +192,6 @@ typedef CTX_SUFF(PDEVPL031) PDEVPL031CC;
 /**
  * Updates the IRQ state based on the current device state.
  *
- * @returns nothing.
  * @param   pDevIns             The device instance.
  * @param   pThis               The shared RTC instance data.
  */

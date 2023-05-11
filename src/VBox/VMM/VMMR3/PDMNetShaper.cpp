@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMNetShaper.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -399,7 +399,6 @@ static DECLCALLBACK(void) pdmR3NsUnchokeTimer(PVM pVM, TMTIMERHANDLE hTimer, voi
 /**
  * Terminate the network shaper, groups, lock and everything.
  *
- * @returns VBox error code.
  * @param   pVM  The cross context VM structure.
  */
 void pdmR3NetShaperTerm(PVM pVM)

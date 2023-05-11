@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-linux.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -259,7 +259,6 @@ static void usbProxyLinuxSetConnected(PUSBPROXYDEV pProxyDev, int iIf, bool fCon
 /**
  * Links the given URB into the in flight list.
  *
- * @returns nothing.
  * @param   pDevLnx         The proxy device instance - Linux specific data.
  * @param   pUrbLnx         The URB to link into the in flight list.
  */
@@ -275,7 +274,6 @@ static void usbProxyLinuxUrbLinkInFlight(PUSBPROXYDEVLNX pDevLnx, PUSBPROXYURBLN
 /**
  * Unlinks the given URB from the in flight list.
  *
- * @returns nothing.
  * @param   pDevLnx         The proxy device instance - Linux specific data.
  * @param   pUrbLnx         The URB to link into the in flight list.
  */

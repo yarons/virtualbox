@@ -1,4 +1,4 @@
-/* $Id: DBGFR0Bp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR0Bp.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, R0 breakpoint management part.
  */
@@ -56,7 +56,6 @@
 /**
  * Used by DBGFR0InitPerVM() to initialize the breakpoint manager.
  *
- * @returns nothing.
  * @param   pGVM        The global (ring-0) VM structure.
  */
 DECLHIDDEN(void) dbgfR0BpInit(PGVM pGVM)

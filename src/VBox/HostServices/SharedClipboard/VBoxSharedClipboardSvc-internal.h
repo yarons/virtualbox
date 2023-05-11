@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -365,7 +365,6 @@ void ShClBackendDestroy(PSHCLBACKEND pBackend);
 /**
  * Called when a new HGCM client connects.
  *
- * @returns VBox status code.
  * @param   pBackend            Shared Clipboard backend to set callbacks for.
  * @param   pCallbacks          Backend callbacks to use.
  *                              When NULL is specified, the backend's default callbacks are being used.

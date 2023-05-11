@@ -1,4 +1,4 @@
-/* $Id: DevOxPcie958.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOxPcie958.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
@@ -211,7 +211,6 @@ typedef CTX_SUFF(PDEVOX958) PDEVOX958CC;
 /**
  * Update IRQ status of the device.
  *
- * @returns nothing.
  * @param   pDevIns             The device instance.
  * @param   pThis               The shared OXPCIe958 device instance data.
  */
@@ -290,7 +289,6 @@ static VBOXSTRICTRC ox958UartRegWrite(PPDMDEVINS pDevIns, PDEVOX958 pThis, POX95
 /**
  * UART core IRQ request callback.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   pUart       The UART requesting an IRQ update.
  * @param   iLUN        The UART index.

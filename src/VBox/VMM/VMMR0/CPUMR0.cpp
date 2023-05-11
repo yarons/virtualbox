@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -772,7 +772,6 @@ VMMR0_INT_DECL(void) CPUMR0LoadGuestDebugState(PVMCPUCC pVCpu, bool fDr6)
 /**
  * Lazily sync in the hypervisor debug state
  *
- * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   fDr6        Whether to include DR6 or not.
  * @thread  EMT(pVCpu)

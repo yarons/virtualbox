@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPS2.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1009,7 +1009,6 @@ static DECLCALLBACK(void) kbdR3InfoState(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp,
 /**
  * Reset notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void)  kbdR3Reset(PPDMDEVINS pDevIns)

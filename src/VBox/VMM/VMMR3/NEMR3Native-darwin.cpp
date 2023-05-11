@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin.cpp 99687 2023-05-09 04:17:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: NEMR3Native-darwin.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework.
  *
@@ -3389,7 +3389,6 @@ void nemR3NativeResetCpu(PVMCPU pVCpu, bool fInitIpi)
 /**
  * Dumps the VMCS in response to a faild hv_vcpu_run{_until}() call.
  *
- * @returns nothing.
  * @param   pVCpu           The cross context virtual CPU structure.
  */
 static void nemR3DarwinVmcsDump(PVMCPU pVCpu)

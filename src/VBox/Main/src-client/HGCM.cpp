@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: HGCM.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -468,9 +468,8 @@ int HGCMService::loadServiceDLL(void)
     return vrc;
 }
 
-/** Helper function to free a local service DLL.
- *
- *  @return VBox code
+/**
+ * Helper function to free a local service DLL.
  */
 void HGCMService::unloadServiceDLL(void)
 {
@@ -2098,7 +2097,6 @@ int HGCMService::GuestCall(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmd, uint32_t 
  * @param   pHGCMPort      The port to be used for completion confirmation
  * @param   pCmd           The VBox HGCM context.
  * @param   idClient       The client handle to be disconnected and deleted.
- * @return  VBox status code.
  */
 void HGCMService::GuestCancelled(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmd, uint32_t idClient)
 {

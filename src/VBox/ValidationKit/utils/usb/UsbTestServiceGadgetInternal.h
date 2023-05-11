@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceGadgetInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Interal gadget interfaces.
  */
@@ -76,7 +76,6 @@ typedef struct UTSGADGETCLASSIF
     /**
      * Terminates the gadget class instance.
      *
-     * @returns nothing.
      * @param   pClass        The interface specific instance data.
      */
     DECLR3CALLBACKMEMBER(void, pfnTerm, (PUTSGADGETCLASSINT pClass));

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 99392 2023-04-13 16:48:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -512,7 +512,7 @@ public:
     }
 
     /**
-     * @copydoc copy()
+     * @copydoc GuestEnvironment::copy()
      */
     GuestEnvironment &operator=(const GuestEnvironmentBase &rThat)
     {
@@ -522,11 +522,11 @@ public:
         return *this;
     }
 
-    /** @copydoc copy() */
+    /** @copydoc GuestEnvironment::copy() */
     GuestEnvironment &operator=(const GuestEnvironment &rThat)
     {   return operator=((const GuestEnvironmentBase &)rThat); }
 
-    /** @copydoc copy() */
+    /** @copydoc GuestEnvironment::copy() */
     GuestEnvironment &operator=(const GuestEnvironmentChanges &rThat)
     {   return operator=((const GuestEnvironmentBase &)rThat); }
 
@@ -594,7 +594,8 @@ public:
     }
 
     /**
-     * @copydoc copy()
+     * @copydoc GuestEnvironmentChanges::copy() 
+     * @throws  HRESULT
      */
     GuestEnvironmentChanges &operator=(const GuestEnvironmentBase &rThat)
     {
@@ -604,11 +605,13 @@ public:
         return *this;
     }
 
-    /** @copydoc copy() */
+    /** @copydoc GuestEnvironmentChanges::copy()
+     * @throws  HRESULT */
     GuestEnvironmentChanges &operator=(const GuestEnvironmentChanges &rThat)
     {   return operator=((const GuestEnvironmentBase &)rThat); }
 
-    /** @copydoc copy() */
+    /** @copydoc GuestEnvironmentChanges::copy()
+     * @throws  HRESULT */
     GuestEnvironmentChanges &operator=(const GuestEnvironment &rThat)
     {   return operator=((const GuestEnvironmentBase &)rThat); }
 };

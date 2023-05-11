@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vboximg-mount.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -818,8 +818,6 @@ static int vboximgOp_readlink(const char *pszPath, char *buf, size_t size)
 
 /**
  * Displays the list of volumes on the opened image.
- *
- * @returns nothing.
  */
 static void vboxImgMntVolumesDisplay(void)
 {

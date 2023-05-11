@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostBase.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1148,7 +1148,6 @@ static int drvHostBaseStatsRegister(PDRVHOSTBASE pThis)
 /**
  * Deregisters statistics associated with the given media driver.
  *
- * @returns nothing.
  * @param   pThis      The media driver instance.
  */
 static void drvhostBaseStatsDeregister(PDRVHOSTBASE pThis)

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3685,7 +3685,6 @@ DECLCALLBACK(void) Display::i_drvPowerOff(PPDMDRVINS pDrvIns)
 /**
  * Destruct a display driver instance.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Display::i_drvDestruct(PPDMDRVINS pDrvIns)

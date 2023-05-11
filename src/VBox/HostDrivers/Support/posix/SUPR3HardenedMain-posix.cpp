@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 99234 2023-03-30 13:39:01Z alexander.eichner@oracle.com $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -641,8 +641,6 @@ static DECLCALLBACK(void) supR3HardenedPosixMonitorDlmopenResolve(void)
 
 /**
  * Hardening initialization for POSIX compatible hosts.
- *
- * @returns nothing.
  *
  * @note Doesn't return on error.
  */

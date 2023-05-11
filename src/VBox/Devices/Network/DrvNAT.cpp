@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNAT.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1112,7 +1112,6 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
  * Callback for the SystemConfiguration framework to notify us whenever the DNS
  * server changes.
  *
- * @returns nothing.
  * @param   hDynStor    The DynamicStore handle.
  * @param   hChangedKey Array of changed keys we watch for.
  * @param   pvUser      Opaque user data (NAT driver instance).

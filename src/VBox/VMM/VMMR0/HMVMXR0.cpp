@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 99687 2023-05-09 04:17:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -939,7 +939,6 @@ static int hmR0VmxAllocVmcsInfo(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool fIs
 /**
  * Free all VT-x structures for the VM.
  *
- * @returns IPRT status code.
  * @param   pVM     The cross context VM structure.
  */
 static void hmR0VmxStructsFree(PVMCC pVM)
@@ -1603,7 +1602,6 @@ static void hmR0VmxCheckAutoLoadStoreMsrs(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInf
 /**
  * Flushes the TLB using EPT.
  *
- * @returns VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure of the calling
  *                          EMT.  Can be NULL depending on @a enmTlbFlush.
  * @param   pVmcsInfo       The VMCS info. object. Can be NULL depending on @a
@@ -1640,7 +1638,6 @@ static void hmR0VmxFlushEpt(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInfo, VMXTLBFLUSH
 /**
  * Flushes the TLB using VPID.
  *
- * @returns VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure of the calling
  *                          EMT.  Can be NULL depending on @a enmTlbFlush.
  * @param   enmTlbFlush     Type of flush.
@@ -4392,7 +4389,6 @@ static void hmR0VmxReportWorldSwitchError(PVMCPUCC pVCpu, int rcVMRun, PVMXTRANS
  * If offsetting is not possible, cause VM-exits on RDTSC(P)s. Also sets up the
  * VMX-preemption timer.
  *
- * @returns VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pVmxTransient   The VMX-transient structure.
  * @param   idCurrentCpu    The current CPU number.

@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: HostHardwareLinux.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -167,7 +167,6 @@ static bool floppyGetName(const char *pcszNode, unsigned Number, floppy_drive_na
  * We deliberately return an ugly sequence of characters as the description
  * rather than an English language string to avoid translation issues.
  *
- * @returns true if we know the device to be valid, false otherwise
  * @param   pcszName     the floppy driver name for the device (optional)
  * @param   Number       the number of the floppy (0 to 3 on FDC 0, 4 to 7 on
  *                       FDC 1)

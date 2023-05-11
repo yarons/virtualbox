@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 99466 2023-04-19 19:42:38Z knut.osmundsen@oracle.com $ */
+/* $Id: MediumImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5190,7 +5190,6 @@ bool Medium::i_isReadOnly()
 
 /**
  * Internal method to update the medium's id. Must have caller + locking!
- * @return
  */
 void Medium::i_updateId(const Guid &id)
 {

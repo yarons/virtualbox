@@ -1,4 +1,4 @@
-/* $Id: UartCore.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UartCore.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -71,7 +71,6 @@ typedef struct UARTCORE *PUARTCORE;
 /**
  * UART core IRQ request callback to let the core instance raise/clear interrupt requests.
  *
- * @returns nothing.
  * @param   pDevIns             The owning device instance.
  * @param   pThis               The shared UART core instance data.
  * @param   iLUN                The LUN associated with the UART core.

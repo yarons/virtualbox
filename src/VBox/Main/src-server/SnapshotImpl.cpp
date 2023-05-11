@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 98352 2023-01-30 19:44:51Z klaus.espenlaub@oracle.com $ */
+/* $Id: SnapshotImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1726,7 +1726,6 @@ HRESULT SessionMachine::takeSnapshot(const com::Utf8Str &aName,
  * @note Locks this object for writing.
  *
  * @param task
- * @return
  */
 void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
 {

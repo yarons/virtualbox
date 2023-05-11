@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClientStubs.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR0IdcClientStubs.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Stubs for SUPR0 APIs.
  */
@@ -46,8 +46,6 @@
 /**
  * Resolves a symbol.
  *
- * @returns Pointer to the symbol on success, NULL on failure.
- *
  * @param   pHandle     The IDC handle.
  * @param   ppfn        Where to return the address of the symbol.
  * @param   pszName     The name of the symbol.
@@ -73,8 +71,6 @@ static void supR0IdcGetSymbol(PSUPDRVIDCHANDLE pHandle, PFNRT *ppfn, const char 
 
 /**
  * Resolves a symbol.
- *
- * @returns Pointer to the symbol on success, NULL on failure.
  *
  * @param   pSession    The IDC session.
  * @param   ppfn        Where to return the address of the symbol.

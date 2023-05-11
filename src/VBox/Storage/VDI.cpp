@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VDI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -350,7 +350,6 @@ static unsigned vdiTranslateVDI2ImageFlags(VDIIMAGETYPE enmType)
 /**
  * Internal: Init VDI header. Always use latest header version.
  *
- * @returns nothing.
  * @param   pHeader      Assumes it was initially initialized to all zeros.
  * @param   uImageFlags  Flags for this image.
  * @param   pszComment   Optional comment to set for the image.

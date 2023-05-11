@@ -1,4 +1,4 @@
-/* $Id: DBGCIoProvInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCIoProvInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Internal I/O provider header file.
  */
@@ -72,7 +72,6 @@ typedef struct DBGCIOPROVREG
     /**
      * Destroys the given I/O provider instance.
      *
-     * @returns nothing.
      * @param   hDbgcIoProv     The I/O provider instance handle to destroy.
      */
     DECLCALLBACKMEMBER(void, pfnDestroy, (DBGCIOPROV hDbgcIoProv));

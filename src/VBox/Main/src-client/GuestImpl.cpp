@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -1080,7 +1080,6 @@ bool Guest::i_facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacil
 /**
  * Issued by the guest when a guest user changed its state.
  *
- * @return  IPRT status code.
  * @param   aUser               Guest user name.
  * @param   aDomain             Domain of guest user account. Optional.
  * @param   enmState            New state to indicate.

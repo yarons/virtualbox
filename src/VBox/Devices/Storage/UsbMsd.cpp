@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbMsd.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1077,7 +1077,6 @@ static int usbMsdResetWorker(PUSBMSD pThis, PVUSBURB pUrb, bool fSetConfig)
 /**
  * Process a completed request.
  *
- * @returns nothing.
  * @param   pThis               The MSD instance.
  * @param   pReq                The request.
  * @param   rcReq               The completion status.

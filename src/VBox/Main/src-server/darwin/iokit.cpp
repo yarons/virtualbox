@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: iokit.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -927,7 +927,6 @@ static bool darwinUSBDeviceIsGrabbedDetermineState(PUSBDEVICE pCur, io_object_t 
  * Worker for determining the USB device state for devices which are not captured by the VBoxUSB driver
  * Works for both, IOUSBDevice (legacy on release >= El Capitan) and IOUSBHostDevice (available on >= El Capitan).
  *
- * @returns nothing.
  * @param   pCur      The USB device data.
  * @param   USBDevice I/O Kit USB device object (either IOUSBDevice or IOUSBHostDevice).
  */

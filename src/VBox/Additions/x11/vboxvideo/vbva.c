@@ -1,4 +1,4 @@
-/* $Id: vbva.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbva.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -240,7 +240,6 @@ vboxEnableVbva(ScrnInfoPtr pScrn)
  * information. This function is intended to be called when an X
  * virtual terminal is disabled, or the X server is terminated.
  *
- * @returns TRUE for success, FALSE for failure
  * @param   pScrn   Pointer to a structure describing the X screen in use
  */
 void

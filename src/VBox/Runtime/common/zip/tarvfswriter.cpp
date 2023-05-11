@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 98458 2023-02-03 10:56:48Z alexander.eichner@oracle.com $ */
+/* $Id: tarvfswriter.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -511,7 +511,6 @@ static int rtZipTarFssWriter_ObjInfoToHdrTar(PRTZIPTARFSSTREAMWRITER pThis, cons
 /**
  * Formats a given 32-bit value into a CPIO header field.
  *
- * @returns nothing.
  * @param   pach8Field      The field to format the value into.
  * @param   u32             The value to format.
  */

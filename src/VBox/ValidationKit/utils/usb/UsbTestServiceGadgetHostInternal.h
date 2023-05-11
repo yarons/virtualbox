@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceGadgetHostInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
@@ -76,7 +76,6 @@ typedef struct UTSGADGETHOSTIF
     /**
      * Terminates the gadget host interface.
      *
-     * @returns nothing.
      * @param   pIf           The interface specific instance data.
      */
     DECLR3CALLBACKMEMBER(void, pfnTerm, (PUTSGADGETHOSTTYPEINT pIf));

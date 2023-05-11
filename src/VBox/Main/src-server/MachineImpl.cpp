@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 98837 2023-03-03 22:23:31Z brent.paulson@oracle.com $ */
+/* $Id: MachineImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5414,7 +5414,6 @@ private:
  * @note Locks this object for writing.
  *
  * @param task
- * @return
  */
 void Machine::i_deleteConfigHandler(DeleteConfigTask &task)
 {
@@ -13535,7 +13534,6 @@ private:
  * @note Locks this object for writing.
  *
  * @param task
- * @return
  */
 void SessionMachine::i_saveStateHandler(SaveStateTask &task)
 {

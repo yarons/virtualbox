@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VCICache.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -506,7 +506,6 @@ static int vciBlkMapCreate(uint64_t cBlocks, PVCIBLKMAP *ppBlkMap, uint32_t *pcB
 /**
  * Frees a block map.
  *
- * @returns nothing.
  * @param   pBlkMap         The block bitmap to destroy.
  */
 static void vciBlkMapDestroy(PVCIBLKMAP pBlkMap)
@@ -925,7 +924,6 @@ static int vciBlkMapRealloc(PVCIBLKMAP pBlkMap, uint32_t cBlocksNew, uint64_t of
 /**
  * Frees a range of blocks.
  *
- * @returns nothing.
  * @param   pBlkMap          The block bitmap.
  * @param   offBlockAddr     Address of the first block to free.
  * @param   cBlocks          How many blocks to free.

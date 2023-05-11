@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IOBufMgmt.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -110,7 +110,6 @@ DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size
 /**
  * Frees a given I/O buffer.
  *
- * @returns nothing.
  * @param   pIoBufDesc         The I/O buffer descriptor to free.
  */
 DECLHIDDEN(void) IOBUFMgrFreeBuf(PIOBUFDESC pIoBufDesc);

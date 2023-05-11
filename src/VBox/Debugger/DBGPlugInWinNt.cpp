@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInWinNt.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -578,7 +578,6 @@ static int dbgDiggerWinNtDbgPrintResolveWorker(PDBGDIGGERWINNT pThis, PUVM pUVM,
  * Tries to resolve and hook into the worker for all the DbgPrint like wrappers to be able
  * to gather debug information from the system.
  *
- * @returns nothing.
  * @param   pThis           The instance data.
  * @param   pUVM            The user mode VM handle.
  */
@@ -659,7 +658,6 @@ static void dbgDiggerWinNtDbgPrintHook(PDBGDIGGERWINNT pThis, PUVM pUVM)
 /**
  * Tries to resolve the KPCR and KPCRB addresses for each vCPU.
  *
- * @returns nothing.
  * @param   pThis           The instance data.
  * @param   pUVM            The user mode VM handle.
  * @param   pVMM            The VMM function table.

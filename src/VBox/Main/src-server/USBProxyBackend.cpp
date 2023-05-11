@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackend.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -200,7 +200,6 @@ int USBProxyBackend::captureDevice(HostUSBDevice *aDevice)
  *
  * This is used by the proxy to release temporary filters.
  *
- * @returns VBox status code.
  * @param   aDevice     The device in question.
  * @param   aSuccess    Whether it succeeded or failed.
  */
@@ -232,7 +231,6 @@ int USBProxyBackend::releaseDevice(HostUSBDevice *aDevice)
  *
  * This is used by the proxy to release temporary filters.
  *
- * @returns VBox status code.
  * @param   aDevice     The device in question.
  * @param   aSuccess    Whether it succeeded or failed.
  */

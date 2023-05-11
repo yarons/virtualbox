@@ -1,4 +1,4 @@
-/* $Id: IoPerf.cpp 98763 2023-02-27 18:59:08Z alexander.eichner@oracle.com $ */
+/* $Id: IoPerf.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
@@ -523,7 +523,6 @@ static void *ioPerfJobTestGetWriteBufForOffset(PIOPERFJOB pJob, uint64_t off)
 /**
  * Initialize the given request for submission.
  *
- * @returns nothing.
  * @param   pJob                The job data for the current worker.
  * @param   pIoReq              The request to initialize.
  */
@@ -639,7 +638,6 @@ static int ioPerfJobTestInit(PIOPERFJOB pJob)
 /**
  * Frees allocated resources specific for the current test.
  *
- * @returns nothing.
  * @param   pJob                The job data for the current worker.
  */
 static void ioPerfJobTestFinish(PIOPERFJOB pJob)
@@ -808,7 +806,6 @@ static int ioPerfJobTestIoLoop(PIOPERFJOB pJob)
  * Calculates the statistic values for the given job after a
  * test finished.
  *
- * @returns nothing.
  * @param   pJob                The job data.
  */
 static void ioPerfJobStats(PIOPERFJOB pJob)
@@ -1355,7 +1352,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 98763 $";
+                char szRev[] = "$Revision: 99739 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

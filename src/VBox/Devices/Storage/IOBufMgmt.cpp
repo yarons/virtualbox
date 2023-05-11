@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IOBufMgmt.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -175,7 +175,6 @@ DECLINLINE(void *) iobufMgrBinObjRemove(PIOBUFMGRBIN pBin)
 /**
  * Resets the bins to factory default (memory resigin in the largest bin).
  *
- * @returns nothing.
  * @param   pThis       The I/O buffer manager instance.
  */
 static void iobufMgrResetBins(PIOBUFMGRINT pThis)

@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: MouseImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1262,7 +1262,6 @@ DECLCALLBACK(void *)  Mouse::i_drvQueryInterface(PPDMIBASE pInterface, const cha
 /**
  * Destruct a mouse driver instance.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Mouse::i_drvDestruct(PPDMDRVINS pDrvIns)

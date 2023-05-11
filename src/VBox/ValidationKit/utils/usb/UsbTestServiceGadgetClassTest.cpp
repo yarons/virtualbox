@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetClassTest.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceGadgetClassTest.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget class
  *               for the test device.
@@ -243,7 +243,6 @@ static int utsGadgetClassTestUnlinkFuncFromCfg(PUTSGADGETCLASSINT pClass, const 
 /**
  * Cleans up any leftover configurations from the gadget class.
  *
- * @returns nothing.
  * @param   pClass            The gadget class instance data.
  */
 static void utsGadgetClassTestCleanup(PUTSGADGETCLASSINT pClass)

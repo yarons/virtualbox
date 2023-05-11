@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 95087 2022-05-25 05:56:47Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: SUPDrv-freebsd.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -281,7 +281,6 @@ static int VBoxDrvFreeBSDOpenUsr(struct cdev *pDev, int fOpen, int iDevType, str
 /**
  * Close a file device previously opened by VBoxDrvFreeBSDOpen.
  *
- * @returns 0 on success.
  * @param   pvData      The session being closed.
  */
 static void vboxdrvFreeBSDDtr(void *pvData)

@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.cpp 99424 2023-04-17 15:20:42Z knut.osmundsen@oracle.com $ */
+/* $Id: NvramStoreImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -611,8 +611,8 @@ int NvramStore::i_loadStoreFromTar(RTVFSFSSTREAM hVfsFssTar)
     return vrc;
 }
 
-
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
+
 /**
  * Sets up the encryption or decryption machinery.
  *
@@ -674,7 +674,6 @@ int NvramStore::i_setupEncryptionOrDecryption(RTVFSIOSTREAM hVfsIosInOut, bool f
 /**
  * Releases all resources acquired in NvramStore::i_setupEncryptionOrDecryption().
  *
- * @returns nothing.
  * @param   hVfsIos             Handle to the I/O stream previously created.
  * @param   pCryptoIf           Pointer to the cryptographic interface being released.
  * @param   pKey                Pointer to the key buffer being released.
@@ -690,8 +689,8 @@ void NvramStore::i_releaseEncryptionOrDecryptionResources(RTVFSIOSTREAM hVfsIos,
     pKey->release();
     RTVfsIoStrmRelease(hVfsIos);
 }
-#endif
 
+#endif /* VBOX_WITH_FULL_VM_ENCRYPTION */
 
 /**
  * Loads the NVRAM store.

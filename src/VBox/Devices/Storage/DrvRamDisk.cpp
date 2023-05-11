@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 98561 2023-02-14 13:25:53Z alexander.eichner@oracle.com $ */
+/* $Id: DrvRamDisk.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -1045,7 +1045,6 @@ static int drvramdiskMediaExIoReqReadWriteProcess(PDRVRAMDISK pThis, PPDMMEDIAEX
 /**
  * Frees a I/O memory buffer allocated previously.
  *
- * @returns nothing.
  * @param   pThis     VBox disk container instance data.
  * @param   pIoReq    I/O request for which to free memory.
  */

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-darwin.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -309,7 +309,6 @@ static DECLCALLBACK(int32_t) usbProxyDarwinInitOnce(void *pvUser1)
  * Kicks the reaper thread if it sleeps currently to respond to state changes
  * or to pick up completed URBs.
  *
- * @returns nothing.
  * @param   pDevOsX    The darwin device instance data.
  */
 static void usbProxyDarwinReaperKick(PUSBPROXYDEVOSX pDevOsX)

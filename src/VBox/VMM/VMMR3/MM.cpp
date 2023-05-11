@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 99079 2023-03-21 11:05:38Z alexander.eichner@oracle.com $ */
+/* $Id: MM.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -535,7 +535,6 @@ VMMR3DECL(int) MMR3Term(PVM pVM)
  * Termination means cleaning up and freeing all resources,
  * the VM it self is at this point powered off or suspended.
  *
- * @returns VBox status code.
  * @param   pUVM        Pointer to the user mode VM structure.
  */
 VMMR3DECL(void) MMR3TermUVM(PUVM pUVM)

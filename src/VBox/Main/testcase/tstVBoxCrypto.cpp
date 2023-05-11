@@ -1,4 +1,4 @@
-/* $Id: tstVBoxCrypto.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxCrypto.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVBoxCrypto - Testcase for the cryptographic support module.
  */
@@ -239,7 +239,6 @@ static int tstCryptoVfsReadAndVerify(RTVFSFILE hVfsFile, size_t cbFile)
 /**
  * Testing some basics of the encrypted file VFS code.
  *
- * @returns nothing.
  * @param   pCryptoIf           Pointer to the callback table.
  */
 static void tstCryptoVfsBasics(PCVBOXCRYPTOIF pCryptoIf)
@@ -325,7 +324,6 @@ static void tstCryptoVfsBasics(PCVBOXCRYPTOIF pCryptoIf)
 /**
  * Testing some basics of the crypto keystore code.
  *
- * @returns nothing.
  * @param   pCryptoIf           Pointer to the callback table.
  */
 static void tstCryptoKeyStoreBasics(PCVBOXCRYPTOIF pCryptoIf)

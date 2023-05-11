@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtioCore.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -550,7 +550,6 @@ void  virtioCoreResetAll(PVIRTIOCORE pVirtio);
 /**
  * Resets the device state upon a VM reset for instance.
  *
- * @returns nothing.
  * @param   pVirtio     Pointer to the virtio state.
  *
  * @note Calls back into the upper device when the status changes.

@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 98271 2023-01-24 10:08:42Z alexander.eichner@oracle.com $ */
+/* $Id: DevATA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1274,7 +1274,6 @@ static void ataHCPIOTransferLimitATAPI(PATADEVSTATE s)
 /**
  * Enters the lock protecting the controller data against concurrent access.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   pCtl        The controller to lock.
  */
@@ -1289,7 +1288,6 @@ DECLINLINE(void) ataR3LockEnter(PPDMDEVINS pDevIns, PATACONTROLLER pCtl)
 /**
  * Leaves the lock protecting the controller against concurrent data access.
  *
- * @returns nothing.
  * @param   pDevIns     The device instance.
  * @param   pCtl        The controller to unlock.
  */
@@ -7135,7 +7133,6 @@ static DECLCALLBACK(int)  ataR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_
 /**
  * Resume notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void) ataR3Resume(PPDMDEVINS pDevIns)
@@ -7600,7 +7597,6 @@ static void ataR3SuspendOrPowerOff(PPDMDEVINS pDevIns)
 /**
  * Power Off notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void) ataR3PowerOff(PPDMDEVINS pDevIns)
@@ -7613,7 +7609,6 @@ static DECLCALLBACK(void) ataR3PowerOff(PPDMDEVINS pDevIns)
 /**
  * Suspend notification.
  *
- * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void) ataR3Suspend(PPDMDEVINS pDevIns)

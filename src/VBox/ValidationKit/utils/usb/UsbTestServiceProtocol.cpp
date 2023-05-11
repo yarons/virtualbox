@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceProtocol.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceProtocol.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, Protocol helpers.
  */
@@ -49,7 +49,6 @@
 /**
  * Converts a UTS packet header from host to network byte order.
  *
- * @returns nothing.
  * @param   pPktHdr          The packet header to convert.
  */
 DECLINLINE(void) utsProtocolPktHdrH2N(PUTSPKTHDR pPktHdr)
@@ -62,7 +61,6 @@ DECLINLINE(void) utsProtocolPktHdrH2N(PUTSPKTHDR pPktHdr)
 /**
  * Converts a UTS packet header from network to host byte order.
  *
- * @returns nothing.
  * @param   pPktHdr          The packet header to convert.
  */
 DECLINLINE(void) utsProtocolPktHdrN2H(PUTSPKTHDR pPktHdr)
@@ -75,7 +73,6 @@ DECLINLINE(void) utsProtocolPktHdrN2H(PUTSPKTHDR pPktHdr)
 /**
  * Converts a UTS status header from host to network byte order.
  *
- * @returns nothing.
  * @param   pPktHdr          The packet header to convert.
  */
 DECLINLINE(void) utsProtocolStsHdrH2N(PUTSPKTSTS pPktHdr)
@@ -89,7 +86,6 @@ DECLINLINE(void) utsProtocolStsHdrH2N(PUTSPKTSTS pPktHdr)
 /**
  * Converts a UTS status header from network to host byte order.
  *
- * @returns nothing.
  * @param   pPktHdr          The packet header to convert.
  */
 DECLINLINE(void) utsProtocolStsHdrN2H(PUTSPKTSTS pPktHdr)

@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBSnifferInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB Sniffer facility - Internal header.
  */
@@ -87,7 +87,6 @@ typedef struct VUSBSNIFFERFMT
     /**
      * Destroys the format instance.
      *
-     * @returns nothing.
      * @param   pThis    Pointer to the format specific state.
      */
     DECLR3CALLBACKMEMBER(void, pfnDestroy, (PVUSBSNIFFERFMTINT pThis));

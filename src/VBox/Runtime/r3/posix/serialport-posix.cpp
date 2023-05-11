@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: serialport-posix.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -644,7 +644,6 @@ static int rtSerialPortMonitorThreadCreate(PRTSERIALPORTINTERNAL pThis)
 /**
  * Shuts down the status line monitor thread.
  *
- * @returns nothing.
  * @param   pThis                   The internal serial port instance data.
  */
 static void rtSerialPortMonitorThreadShutdown(PRTSERIALPORTINTERNAL pThis)

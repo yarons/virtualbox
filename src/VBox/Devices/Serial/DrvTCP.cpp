@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvTCP.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -147,7 +147,6 @@ static int drvTcpPollerKick(PDRVTCP pThis, uint8_t bReason)
 /**
  * Closes the connection.
  *
- * @returns nothing.
  * @param   pThis                  The TCP driver instance.
  */
 static void drvTcpConnectionClose(PDRVTCP pThis)

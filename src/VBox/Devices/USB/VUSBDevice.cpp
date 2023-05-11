@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBDevice.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1164,7 +1164,6 @@ static DECLCALLBACK(int) vusbDevCancelAllUrbsWorker(PVUSBDEV pDev, bool fDetachi
  * on a device. This is typically done as part of a reset and
  * before detaching a device.
  *
- * @returns nothing.
  * @param   pDev        The VUSB device instance.
  * @param   fDetaching  If set, we will unconditionally unlink (and leak)
  *                      any URBs which isn't reaped.

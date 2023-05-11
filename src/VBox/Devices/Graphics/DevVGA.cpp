@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 99315 2023-04-06 15:08:05Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4067,8 +4067,6 @@ static int vbeR3ParseBitmap(PVGASTATECC pThisCC)
 
 /**
  * Show logo bitmap data.
- *
- * @returns VBox status code.
  *
  * @param   cBits       Logo depth.
  * @param   xLogo       Logo X position.
