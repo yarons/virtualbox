@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99757 2023-05-11 19:30:30Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99761 2023-05-11 22:51:50Z knut.osmundsen@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2078,8 +2078,8 @@ efi-packing:
 #
 sdk-fetch:
 	+ $(KMK) -C tools fetch VBOX_ONLY_SDK=1 VBOX_ONLY_SDK_ON_HOST=1
-	+ $(KMK) -C tools fetch VBOX_ONLY_SDK=1 VBOX_ONLY_SDK_IN_VM=1 KBUILD_TARGET=linux KBUILD_HOST=linux
-	+ $(KMK) -C tools fetch VBOX_ONLY_SDK=1 VBOX_ONLY_SDK_IN_VM=1 KBUILD_TARGET=win   KBUILD_HOST=win
+	+ $(KMK) -C tools fetch VBOX_ONLY_SDK=1 VBOX_ONLY_SDK_IN_VM=1 KBUILD_TARGET=linux
+	+ $(KMK) -C tools fetch VBOX_ONLY_SDK=1 VBOX_ONLY_SDK_IN_VM=1 KBUILD_TARGET=win
 
 sdk-build: \
 		sdk-build-rsync-into-vms \
