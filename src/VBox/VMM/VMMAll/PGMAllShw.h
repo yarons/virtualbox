@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 99132 2023-03-23 09:00:20Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllShw.h 99748 2023-05-11 11:22:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -728,6 +728,8 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPUCC pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint
                 }
 
                 SHW_PTE_ATOMIC_SET2(pPT->a[iPTE], NewPte);
+                Assert((SHW_PTE_GET_U(NewPte) & EPT_E_LEAF) == (SHW_PTE_GET_U(OrgPte) & EPT_E_LEAF));
+
 # if PGM_SHW_TYPE == PGM_TYPE_EPT
                 HMInvalidatePhysPage(pVM, (RTGCPHYS)GCPtr);
 # else
