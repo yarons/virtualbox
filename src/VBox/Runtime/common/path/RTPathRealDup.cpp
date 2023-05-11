@@ -1,4 +1,4 @@
-/* $Id: RTPathRealDup.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathRealDup.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathRealDup
  */
@@ -46,13 +46,6 @@
 
 
 
-/**
- * Same as RTPathReal only the result is RTStrDup()'ed.
- *
- * @returns Pointer to real path. Use RTStrFree() to free this string.
- * @returns NULL if RTPathReal() or RTStrDup() fails.
- * @param   pszPath
- */
 RTDECL(char *) RTPathRealDup(const char *pszPath)
 {
     char szPath[RTPATH_MAX];

@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: localipc-win.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  *
@@ -566,7 +566,6 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
 /**
  * Retains a reference to the server instance.
  *
- * @returns
  * @param   pThis               The server instance.
  */
 DECLINLINE(void) rtLocalIpcServerRetain(PRTLOCALIPCSERVERINT pThis)

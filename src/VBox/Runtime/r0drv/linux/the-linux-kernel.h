@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: the-linux-kernel.h 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -471,7 +471,7 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 /** @def IPRT_LINUX_HAS_HRTIMER
  * Whether the kernel support high resolution timers (Linux kernel versions
  * 2.6.28 and later (hrtimer_add_expires_ns() & schedule_hrtimeout). */
-#if RTLNX_VER_MIN(2,6,28)
+#if RTLNX_VER_MIN(2,6,28) || defined(DOXYGEN_RUNNING)
 # define IPRT_LINUX_HAS_HRTIMER
 #endif
 

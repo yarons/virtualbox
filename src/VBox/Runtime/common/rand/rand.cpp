@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: rand.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Random Numbers.
  */
@@ -93,7 +93,6 @@ static DECLCALLBACK(int) rtRandInitOnce(void *pvUser)
 /**
  * Termination counterpart to rtRandInitOnce.
  *
- * @returns IPRT status code.
  * @param   pvUser          Ignored.
  * @param   fLazyCleanUpOk  Set if we're terminating the process.
  */

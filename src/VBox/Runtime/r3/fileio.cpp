@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -209,13 +209,6 @@ int rtFileRecalcAndValidateFlags(uint64_t *pfOpen)
 }
 
 
-/**
- * Gets the current file position.
- *
- * @returns File offset.
- * @returns ~0UUL on failure.
- * @param   File        File handle.
- */
 RTR3DECL(uint64_t)  RTFileTell(RTFILE File)
 {
     /*

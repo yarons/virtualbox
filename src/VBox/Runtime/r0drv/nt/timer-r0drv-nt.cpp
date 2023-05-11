@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: timer-r0drv-nt.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -312,7 +312,6 @@ static void rtTimerNtRearmInternval(PRTTIMER pTimer, PKDPC pMasterDpc)
 /**
  * Common timer callback worker for the non-omni timers.
  *
- * @returns HRTIMER_NORESTART or HRTIMER_RESTART depending on whether it's a one-shot or interval timer.
  * @param   pTimer          The timer.
  */
 static void rtTimerNtSimpleCallbackWorker(PRTTIMER pTimer)

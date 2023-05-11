@@ -1,4 +1,4 @@
-/* $Id: RTPathParentLength.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathParentLength.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathParentLength
  */
@@ -84,18 +84,6 @@ RTDECL(size_t) RTPathParentLengthEx(const char *pszPath, uint32_t fFlags)
 }
 
 
-
-
-/**
- * Determins the length of the path specifying the parent directory, including
- * trailing path separator (if present).
- *
- * @returns Parent directory part of the path, 0 if no parent.
- * @param   pszPath         The path to examine.
- *
- * @note    Currently ignores UNC and may therefore return the server or
- *          double-slash prefix as parent.
- */
 RTDECL(size_t) RTPathParentLength(const char *pszPath)
 {
 #if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS

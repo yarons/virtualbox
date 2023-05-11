@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsDup.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathAbsDup.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathAbsDup
  */
@@ -42,13 +42,6 @@
 #include <iprt/path.h>
 
 
-/**
- * Same as RTPathAbs only the result is RTStrDup()'ed.
- *
- * @returns Pointer to real path. Use RTStrFree() to free this string.
- * @returns NULL if RTPathAbs() or RTStrDup() fails.
- * @param   pszPath         The path to resolve.
- */
 RTDECL(char *) RTPathAbsDup(const char *pszPath)
 {
     return RTPathAbsExDup(NULL, pszPath, RTPATH_STR_F_STYLE_HOST);

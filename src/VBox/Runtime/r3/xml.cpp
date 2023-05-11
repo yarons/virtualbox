@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 99730 2023-05-10 16:14:23Z andreas.loeffler@oracle.com $ */
+/* $Id: xml.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  *
@@ -750,13 +750,6 @@ ElementNode::~ElementNode()
 }
 
 
-/**
- * Gets the next tree element in a full tree enumeration.
- *
- * @returns Pointer to the next element in the tree, NULL if we're done.
- * @param   pElmRoot            The root of the tree we're enumerating.  NULL if
- *                              it's the entire tree.
- */
 ElementNode const *ElementNode::getNextTreeElement(ElementNode const *pElmRoot /*= NULL */) const
 {
     /*
