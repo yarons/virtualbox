@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 99749 2023-05-11 11:53:44Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -79,8 +79,6 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-/** NEM_DARWIN_PAGE_STATE_XXX names. */
-NEM_TMPL_STATIC const char * const g_apszPageStates[4] = { "not-set", "unmapped", "readable", "writable" };
 /** The general registers. */
 static const struct
 {
@@ -405,26 +403,6 @@ DECLINLINE(int) nemR3DarwinProtectPage(PVM pVM, RTGCPHYS GCPhys, size_t cb, uint
     return nemR3DarwinHvSts2Rc(hrc);
 }
 #endif
-
-DECLINLINE(int) nemR3NativeGCPhys2R3PtrReadOnly(PVM pVM, RTGCPHYS GCPhys, const void **ppv)
-{
-    PGMPAGEMAPLOCK Lock;
-    int rc = PGMPhysGCPhys2CCPtrReadOnly(pVM, GCPhys, ppv, &Lock);
-    if (RT_SUCCESS(rc))
-        PGMPhysReleasePageMappingLock(pVM, &Lock);
-    return rc;
-}
-
-
-DECLINLINE(int) nemR3NativeGCPhys2R3PtrWriteable(PVM pVM, RTGCPHYS GCPhys, void **ppv)
-{
-    PGMPAGEMAPLOCK Lock;
-    int rc = PGMPhysGCPhys2CCPtr(pVM, GCPhys, ppv, &Lock);
-    if (RT_SUCCESS(rc))
-        PGMPhysReleasePageMappingLock(pVM, &Lock);
-    return rc;
-}
-
 
 #ifdef LOG_ENABLED
 /**
