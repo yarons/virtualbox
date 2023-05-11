@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99715 2023-05-10 00:43:47Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 99744 2023-05-11 10:07:05Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3406,6 +3406,8 @@ ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-undefined-var-template ?= $(call VBOX_GCC_CHECK_CXX,-Wno-undefined-var-template,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-c11-extensions ?= $(call VBOX_GCC_CHECK_CXX,-Wno-c11-extensions,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-tautological-pointer-compare ?= $(call VBOX_GCC_CHECK_CC,-Wno-tautological-pointer-compare,)'
+ # Clang 13.
+	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-deprecated-copy ?= $(call VBOX_GCC_CHECK_CC,-Wno-deprecated-copy,)'
  ifeq ($(KBUILD_TARGET),solaris)
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_msave-args            ?= $(call VBOX_GCC_CHECK_CXX,-msave-args,)'
   # Detect the solaris assembler. It is used by the the 4.x gcc compilers,
@@ -3554,6 +3556,7 @@ endif
 VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs \
 	$(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-unused-parameter) $(VBOX_GCC_Wno-language-extension-token) \
 	$(VBOX_GCC_Wno-extended-offsetof) $(VBOX_GCC_Wno-gnu-folding-constant) $(VBOX_GCC_Wno-gnu-anonymous-struct) \
+	$(VBOX_GCC_Wno-deprecated-copy) \
 	$(VBOX_GCC_Wlogical-op) $(VBOX_GCC_Wno-string-plus-int) $(VBOX_GCC_Wno-nested-anon-types) $(VBOX_GCC_Wno-variadic-macros) \
 	$(VBOX_GCC_Wno-c++17-compat-mangling)
 VBOX_GCC_WARN_PEDANTIC = -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
@@ -9031,7 +9034,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99715 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99744 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
