@@ -1,4 +1,4 @@
-/* $Id: expreval.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: expreval.h 99760 2023-05-11 22:10:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Expression Evaluator.
  */
@@ -45,6 +45,7 @@
 RT_C_DECLS_BEGIN
 
 /** @defgroup grp_rt_expr_eval  RTExprEval - Expression Evaluator
+ * @ingroup grp_rt
  * @{ */
 
 /** Handle to an expression evaluator. */
