@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 99756 2023-05-11 19:26:52Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -307,7 +307,7 @@ VMMR3DECL(uint32_t)         CPUMR3DbGetEntries(void)
  */
 VMMR3DECL(PCCPUMDBENTRY)    CPUMR3DbGetEntryByIndex(uint32_t idxCpuDb)
 {
-    AssertReturn(idxCpuDb <= RT_ELEMENTS(g_apCpumDbEntries), NULL);
+    AssertReturn(idxCpuDb < RT_ELEMENTS(g_apCpumDbEntries), NULL);
     return g_apCpumDbEntries[idxCpuDb];
 }
 

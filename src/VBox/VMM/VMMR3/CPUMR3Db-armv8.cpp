@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db-armv8.cpp 99386 2023-04-13 11:07:34Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3Db-armv8.cpp 99756 2023-05-11 19:26:52Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU database part - ARMv8 specifics.
  */
@@ -100,7 +100,7 @@ VMMR3DECL(uint32_t)         CPUMR3DbGetEntries(void)
  */
 VMMR3DECL(PCCPUMDBENTRY)    CPUMR3DbGetEntryByIndex(uint32_t idxCpuDb)
 {
-    AssertReturn(idxCpuDb <= RT_ELEMENTS(g_apCpumDbEntries), NULL);
+    AssertReturn(idxCpuDb < RT_ELEMENTS(g_apCpumDbEntries), NULL);
     return g_apCpumDbEntries[idxCpuDb];
 }
 
