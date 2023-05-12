@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: cidet-core.cpp 99777 2023-05-12 12:32:16Z alexander.eichner@oracle.com $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -325,13 +325,13 @@ int CidetCoreSetTargetMode(PCIDETCORE pThis, uint8_t bMode)
     return VINF_SUCCESS;
 }
 
-
+#if 0 /* unused */
 static bool CidetCoreIsEncodingCompatibleWithInstruction(PCIDETCORE pThis)
 {
     RT_NOREF_PV(pThis);
     return true;
 }
-
+#endif
 
 /**
  * Selects the next address size mode.
