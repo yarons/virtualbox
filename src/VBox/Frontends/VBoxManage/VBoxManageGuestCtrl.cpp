@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 99784 2023-05-12 15:34:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1175,7 +1175,7 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
         { "--exe",                          'e',                                      RTGETOPT_REQ_STRING  },
         { "--timeout",                      't',                                      RTGETOPT_REQ_UINT32  },
         { "--unquoted-args",                'u',                                      RTGETOPT_REQ_NOTHING },
-        { "--ignore-operhaned-processes",   kGstCtrlRunOpt_IgnoreOrphanedProcesses,   RTGETOPT_REQ_NOTHING },
+        { "--ignore-orphaned-processes",    kGstCtrlRunOpt_IgnoreOrphanedProcesses,   RTGETOPT_REQ_NOTHING },
         { "--no-profile",                   kGstCtrlRunOpt_NoProfile,                 RTGETOPT_REQ_NOTHING }, /** @todo Deprecated. */
         { "--profile",                      kGstCtrlRunOpt_Profile,                   RTGETOPT_REQ_NOTHING },
         /* run only: 6 - options */

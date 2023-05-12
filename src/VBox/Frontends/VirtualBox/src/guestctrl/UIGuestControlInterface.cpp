@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 99150 2023-03-23 18:00:47Z andreas.loeffler@oracle.com $ */
+/* $Id: UIGuestControlInterface.cpp 99784 2023-05-12 15:34:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -182,7 +182,7 @@ UIGuestControlInterface::UIGuestControlInterface(QObject* parent, const CGuest &
                 "\t\t[--exe <path to executable>] [--timeout <msec>]\n"
                 "\t\t[--sessionid <id> |  [sessionname <name>]]\n"
                 "\t\t[-E|--putenv <NAME>[=<VALUE>]] [--unquoted-args]\n"
-                "\t\t[--ignore-operhaned-processes] [--profile]\n"
+                "\t\t[--ignore-orphaned-processes] [--profile]\n"
                 "\t\t-- <program/arg0> [argument1] ... [argumentN]]\n"
                 "createsession\t\t[common-options]  [--sessionname <name>]\n"
                 "mkdir\t\t[common-options]\n"
@@ -413,7 +413,7 @@ bool UIGuestControlInterface::handleStart(int argc, char** argv)
         { "--exe",                          'e',                                      RTGETOPT_REQ_STRING  },
         { "--timeout",                      't',                                      RTGETOPT_REQ_UINT32  },
         { "--unquoted-args",                'u',                                      RTGETOPT_REQ_NOTHING },
-        { "--ignore-operhaned-processes",   kGstCtrlRunOpt_IgnoreOrphanedProcesses,   RTGETOPT_REQ_NOTHING },
+        { "--ignore-orphaned-processes",    kGstCtrlRunOpt_IgnoreOrphanedProcesses,   RTGETOPT_REQ_NOTHING },
         { "--no-profile",                   kGstCtrlRunOpt_NoProfile,                 RTGETOPT_REQ_NOTHING }, /** @todo Deprecated. */
         { "--profile",                      kGstCtrlRunOpt_Profile,                   RTGETOPT_REQ_NOTHING }
     };
