@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 99779 2023-05-12 13:27:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -702,7 +702,7 @@ static void *rtMemPagePosixAlloc(size_t cb, const char *pszTag, uint32_t fFlags,
     /*
      * If the allocation is relatively large, we use mmap/munmap directly.
      */
-    void *pv;
+    void *pv = NULL; /* shut up gcc */
     if (cb >= RTMEMPAGEPOSIX_MMAP_THRESHOLD)
     {
 
