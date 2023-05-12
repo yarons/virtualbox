@@ -1,4 +1,4 @@
-/* $Id: RTCp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - cp like utility.
  */
@@ -223,7 +223,7 @@ static RTEXITCODE rtCmdCpDoIt(PCRTCMDCPOPTS pOpts)
  * @param   papszArgs           The argument vector.  (Note that this may be
  *                              reordered, so the memory must be writable.)
  */
-RTEXITCODE RTCmdCp(unsigned cArgs, char **papszArgs)
+static RTEXITCODE RTCmdCp(unsigned cArgs, char **papszArgs)
 {
 
     /*

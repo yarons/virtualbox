@@ -1,4 +1,4 @@
-/* $Id: tstRTFileOpenEx-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTFileOpenEx-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - File Opening, extended API.
  */
@@ -149,7 +149,7 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
 
 
 /** @note FsPerf have a copy of this code.   */
-void tstFileActionTaken(RTTEST hTest)
+static void tstFileActionTaken(RTTEST hTest)
 {
     RTTestSub(hTest, "Action taken");
 

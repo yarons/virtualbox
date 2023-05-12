@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletion.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -834,7 +834,7 @@ void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, boo
  * @param   pEpClassOps Pointer to the endpoint class structure.
  * @param   pCfgHandle  Pointer to the CFGM tree.
  */
-int pdmR3AsyncCompletionEpClassInit(PVM pVM, PCPDMASYNCCOMPLETIONEPCLASSOPS pEpClassOps, PCFGMNODE pCfgHandle)
+static int pdmR3AsyncCompletionEpClassInit(PVM pVM, PCPDMASYNCCOMPLETIONEPCLASSOPS pEpClassOps, PCFGMNODE pCfgHandle)
 {
     /* Validate input. */
     AssertPtrReturn(pEpClassOps, VERR_INVALID_POINTER);

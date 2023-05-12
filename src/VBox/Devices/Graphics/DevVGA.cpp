@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -575,7 +575,7 @@ static uint8_t vga_retrace(PPDMDEVINS pDevIns, PVGASTATE pThis)
     }
 }
 
-int vga_ioport_invalid(PVGASTATE pThis, uint32_t addr)
+static int vga_ioport_invalid(PVGASTATE pThis, uint32_t addr)
 {
     if (pThis->msr & MSR_COLOR_EMULATION) {
         /* Color */

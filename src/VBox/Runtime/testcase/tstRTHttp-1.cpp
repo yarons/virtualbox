@@ -1,4 +1,4 @@
-/* $Id: tstRTHttp-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTHttp-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Testcase for the RTHttp API.
  */
@@ -57,7 +57,7 @@
  * {"hello": "world"}
  */
 
-void testHeaderSigning()
+static void testHeaderSigning()
 {
     static const char s_szPublicKey1[] =
         "-----BEGIN PUBLIC KEY-----\n"

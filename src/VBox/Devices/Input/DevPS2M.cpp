@@ -1,4 +1,4 @@
-/* $Id: DevPS2M.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPS2M.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -422,7 +422,7 @@ static void ps2mReportAccumulatedEvents(PPS2M pThis, PPS2QHDR pQHdr, size_t cQEl
 
 
 /* Determine whether a reporting rate is one of the valid ones. */
-bool ps2mIsRateSupported(uint8_t rate)
+static bool ps2mIsRateSupported(uint8_t rate)
 {
     static uint8_t  aValidRates[] = { 10, 20, 40, 60, 80, 100, 200 };
     size_t          i;

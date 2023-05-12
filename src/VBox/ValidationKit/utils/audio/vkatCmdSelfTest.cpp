@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vkatCmdSelfTest.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -237,7 +237,7 @@ static DECLCALLBACK(int) audioTestSelftestGuestAtsThread(RTTHREAD hThread, void 
  * @returns RTEXITCODE
  * @param   pCtx                Self test context to use.
  */
-RTEXITCODE audioTestDoSelftest(PSELFTESTCTX pCtx)
+static RTEXITCODE audioTestDoSelftest(PSELFTESTCTX pCtx)
 {
     RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,  "Running self test ...\n");
 
@@ -366,7 +366,7 @@ static DECLCALLBACK(const char *) audioTestCmdSelftestHelp(PCRTGETOPTDEF pOpt)
  * @returns Program exit code.
  * @param   pGetState   RTGetOpt state.
  */
-DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
+static DECLCALLBACK(RTEXITCODE) audioTestCmdSelftestHandler(PRTGETOPTSTATE pGetState)
 {
     RT_ZERO(g_Ctx);
 

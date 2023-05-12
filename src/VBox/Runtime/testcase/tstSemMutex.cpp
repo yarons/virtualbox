@@ -1,4 +1,4 @@
-/* $Id: tstSemMutex.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstSemMutex.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple Mutex Semaphore Smoke Test.
  */
@@ -59,7 +59,7 @@ static uint32_t volatile    g_cbConcurrent;
 static uint32_t volatile    g_cErrors;
 
 
-int PrintError(const char *pszFormat, ...)
+static int PrintError(const char *pszFormat, ...)
 {
     ASMAtomicIncU32(&g_cErrors);
 

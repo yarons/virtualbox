@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMAsyncCompletionFile.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -392,10 +392,10 @@ DECLINLINE(void) pdmacFileEpTaskInit(PPDMASYNCCOMPLETIONTASK pTask, size_t cbTra
     ASMAtomicWriteS32(&pTaskFile->rc, VINF_SUCCESS);
 }
 
-int pdmacFileEpTaskInitiate(PPDMASYNCCOMPLETIONTASK pTask,
-                            PPDMASYNCCOMPLETIONENDPOINT pEndpoint, RTFOFF off,
-                            PCRTSGSEG paSegments, size_t cSegments,
-                            size_t cbTransfer, PDMACTASKFILETRANSFER enmTransfer)
+static int pdmacFileEpTaskInitiate(PPDMASYNCCOMPLETIONTASK pTask,
+                                   PPDMASYNCCOMPLETIONENDPOINT pEndpoint, RTFOFF off,
+                                   PCRTSGSEG paSegments, size_t cSegments,
+                                   size_t cbTransfer, PDMACTASKFILETRANSFER enmTransfer)
 {
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
     PPDMASYNCCOMPLETIONTASKFILE pTaskFile = (PPDMASYNCCOMPLETIONTASKFILE)pTask;

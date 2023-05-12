@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAppend-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTFileAppend-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - File Appending.
  */
@@ -45,7 +45,7 @@
 #include <iprt/test.h>
 
 
-void tstFileAppend1(RTTEST hTest)
+static void tstFileAppend1(RTTEST hTest)
 {
     /*
      * Open it write only and do some appending.

@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceTcp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UsbTestServiceTcp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, TCP/IP Transport Layer.
  */
@@ -468,7 +468,7 @@ static DECLCALLBACK(int) utsTcpOption(int ch, PCRTGETOPTUNION pVal)
 /**
  * @interface_method_impl{UTSTRANSPORT,pfnUsage}
  */
-DECLCALLBACK(void) utsTcpUsage(PRTSTREAM pStream)
+static DECLCALLBACK(void) utsTcpUsage(PRTSTREAM pStream)
 {
     RTStrmPrintf(pStream,
                  "  --tcp-bind-address <address>\n"

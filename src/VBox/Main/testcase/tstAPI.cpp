@@ -1,4 +1,4 @@
-/* $Id: tstAPI.cpp 98302 2023-01-25 09:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: tstAPI.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * tstAPI - test program for our COM/XPCOM interface
  */
@@ -64,7 +64,8 @@ static void listAffectedMetrics(ComPtr<IVirtualBox> aVirtualBox,
 // funcs
 ///////////////////////////////////////////////////////////////////////////////
 
-HRESULT readAndChangeMachineSettings(IMachine *machine, IMachine *readonlyMachine = 0)
+#if 0 /* unused */
+static HRESULT readAndChangeMachineSettings(IMachine *machine, IMachine *readonlyMachine = 0)
 {
     HRESULT hrc = S_OK;
 
@@ -198,6 +199,7 @@ HRESULT readAndChangeMachineSettings(IMachine *machine, IMachine *readonlyMachin
 
     return hrc;
 }
+#endif
 
 // main
 ///////////////////////////////////////////////////////////////////////////////

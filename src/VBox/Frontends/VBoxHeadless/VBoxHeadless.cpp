@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 99214 2023-03-29 20:28:22Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxHeadless.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -875,7 +875,7 @@ ConsoleCtrlHandler(DWORD dwCtrlType) RT_NOTHROW_DEF
  * Note that machine power up/down operations are not cancelable, so
  * we don't bother checking for signals.
  */
-HRESULT
+static HRESULT
 showProgress(const ComPtr<IProgress> &progress)
 {
     BOOL fCompleted = FALSE;

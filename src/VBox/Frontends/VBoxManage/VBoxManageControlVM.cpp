@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 99204 2023-03-29 06:34:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -52,8 +52,6 @@
 #include <list>
 
 DECLARE_TRANSLATION_CONTEXT(ControlVM);
-
-VMProcPriority_T nameToVMProcPriority(const char *pszName);
 
 /**
  * Parses a number.

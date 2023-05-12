@@ -1,4 +1,4 @@
-/* $Id: RTCat.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTCat.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - cat like utility.
  */
@@ -163,7 +163,7 @@ static RTEXITCODE rtCmdCatOpenInput(const char *pszFile, PRTVFSIOSTREAM phVfsIos
  * @param   papszArgs           The argument vector.  (Note that this may be
  *                              reordered, so the memory must be writable.)
  */
-RTEXITCODE RTCmdCat(unsigned cArgs, char **papszArgs)
+static RTEXITCODE RTCmdCat(unsigned cArgs, char **papszArgs)
 {
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -103,7 +103,7 @@ void printErrorInfo();
  *
  * @param virtualBox VirtualBox instance object.
  */
-void listVMs(IVirtualBox *virtualBox)
+static void listVMs(IVirtualBox *virtualBox)
 {
     nsresult rc;
 
@@ -187,7 +187,7 @@ void listVMs(IVirtualBox *virtualBox)
  *
  * @param virtualBox VirtualBox instance object.
  */
-void createVM(IVirtualBox *virtualBox)
+static void createVM(IVirtualBox *virtualBox)
 {
     nsresult rc;
     /*

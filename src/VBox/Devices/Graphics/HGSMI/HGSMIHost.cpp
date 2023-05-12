@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMIHost.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  *
@@ -1666,7 +1666,7 @@ static int hgsmiGuestCommandComplete(HGSMIINSTANCE *pIns, HGSMIOFFSET offMem)
     return rc;
 }
 
-int hgsmiCompleteGuestCommand(PHGSMIINSTANCE pIns, HGSMIOFFSET offBuffer, bool fDoIrq)
+static int hgsmiCompleteGuestCommand(PHGSMIINSTANCE pIns, HGSMIOFFSET offBuffer, bool fDoIrq)
 {
     int rc = hgsmiGuestCommandComplete(pIns, offBuffer);
     if (RT_SUCCESS (rc))

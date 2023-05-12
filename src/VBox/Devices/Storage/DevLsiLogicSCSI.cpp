@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevLsiLogicSCSI.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3437,7 +3437,7 @@ DECLINLINE(uint16_t) lsilogicGetHandle(PLSILOGICSCSI pThis)
  *
  * @todo Generate better SAS addresses. (Request a block from SUN probably)
  */
-void lsilogicSASAddressGenerate(PSASADDRESS pSASAddress, unsigned iId)
+DECLINLINE(void) lsilogicSASAddressGenerate(PSASADDRESS pSASAddress, unsigned iId)
 {
     pSASAddress->u8Address[0] = (0x5 << 5);
     pSASAddress->u8Address[1] = 0x01;

@@ -1,4 +1,4 @@
-/* $Id: LnxPerfHack.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: LnxPerfHack.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * LnxPerfHack - Dirty hack to make perf find our .r0 modules.
  */
@@ -120,7 +120,7 @@ typedef struct MYMODULE
 typedef MYMODULE *PMYMODULE;
 
 
-DECLCALLBACK(int) CompModuleRecordOffset(void const *pvElement1, void const *pvElement2, void *pvUser)
+static DECLCALLBACK(int) CompModuleRecordOffset(void const *pvElement1, void const *pvElement2, void *pvUser)
 {
     PMYMODULE pLeft  = (PMYMODULE)pvElement1;
     PMYMODULE pRight = (PMYMODULE)pvElement2;
@@ -131,7 +131,7 @@ DECLCALLBACK(int) CompModuleRecordOffset(void const *pvElement1, void const *pvE
 }
 
 
-DECLCALLBACK(int) CompModuleNameLengthDesc(void const *pvElement1, void const *pvElement2, void *pvUser)
+static DECLCALLBACK(int) CompModuleNameLengthDesc(void const *pvElement1, void const *pvElement2, void *pvUser)
 {
     PMYMODULE pLeft  = (PMYMODULE)pvElement1;
     PMYMODULE pRight = (PMYMODULE)pvElement2;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManage.h 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -174,6 +174,7 @@ void parseGroups(const char *pcszGroups, com::SafeArray<BSTR> *pGroups);
 int parseScreens(const char *pcszScreens, com::SafeArray<BOOL> *pScreens);
 #endif
 RTEXITCODE handleModifyVM(HandlerArg *a);
+VMProcPriority_T nameToVMProcPriority(const char *pszName);
 
 /* VBoxManageDebugVM.cpp */
 RTEXITCODE handleDebugVM(HandlerArg *a);

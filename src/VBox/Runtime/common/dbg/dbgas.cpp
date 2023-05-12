@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgas.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -422,8 +422,8 @@ RT_EXPORT_SYMBOL(RTDbgAsModuleCount);
  *
  * @remarks The caller must have locked the address space for writing.
  */
-int rtDbgAsModuleLinkCommon(PRTDBGASINT pDbgAs, RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg,
-                            RTUINTPTR Addr, RTUINTPTR cb, const char *pszName, uint32_t fFlags)
+static int rtDbgAsModuleLinkCommon(PRTDBGASINT pDbgAs, RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg,
+                                   RTUINTPTR Addr, RTUINTPTR cb, const char *pszName, uint32_t fFlags)
 {
     /*
      * Check that the requested space is undisputed.

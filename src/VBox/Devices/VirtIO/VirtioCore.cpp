@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 98661 2023-02-20 16:31:14Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -355,7 +355,7 @@ uint16_t virtioCoreVirtqAvailBufCount(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, u
 
 #ifdef IN_RING3
 
-void virtioCoreR3FeatureDump(VIRTIOCORE *pVirtio, PCDBGFINFOHLP pHlp, const VIRTIO_FEATURES_LIST *s_aFeatures, int cFeatures, int fBanner)
+static void virtioCoreR3FeatureDump(VIRTIOCORE *pVirtio, PCDBGFINFOHLP pHlp, const VIRTIO_FEATURES_LIST *s_aFeatures, int cFeatures, int fBanner)
 {
 #define MAXLINE 80
     /* Display as a single buf to prevent interceding log messages */

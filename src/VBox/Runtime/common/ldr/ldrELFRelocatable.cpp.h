@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrELFRelocatable.cpp.h 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -2031,7 +2031,7 @@ static int RTLDRELF_NAME(ValidateElfHeader)(const Elf_Ehdr *pEhdr, uint64_t cbRa
  * @param   pszName         Where to store the name.
  * @param   cbName          The size of the buffer pointed to by pszName.
  */
-const char *RTLDRELF_NAME(GetSHdrName)(PRTLDRMODELF pModElf, Elf_Word offName, char *pszName, size_t cbName)
+static const char *RTLDRELF_NAME(GetSHdrName)(PRTLDRMODELF pModElf, Elf_Word offName, char *pszName, size_t cbName)
 {
     RTFOFF off = pModElf->paShdrs[pModElf->Ehdr.e_shstrndx].sh_offset + offName;
     int rc = pModElf->Core.pReader->pfnRead(pModElf->Core.pReader, pszName, cbName - 1, off);

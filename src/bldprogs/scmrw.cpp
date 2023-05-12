@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 98374 2023-02-01 09:48:59Z knut.osmundsen@oracle.com $ */
+/* $Id: scmrw.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2941,8 +2941,8 @@ typedef struct
 } SCMMATCHWORD;
 
 
-int ScmMatchWords(const char *pchLine, size_t cchLine, SCMMATCHWORD const *paWords, size_t cWords,
-                  size_t *poffNext, PRTSTRTUPLE paIdentifiers, PRTERRINFO pErrInfo)
+static int ScmMatchWords(const char *pchLine, size_t cchLine, SCMMATCHWORD const *paWords, size_t cWords,
+                         size_t *poffNext, PRTSTRTUPLE paIdentifiers, PRTERRINFO pErrInfo)
 {
     int rc = VINF_SUCCESS;
 

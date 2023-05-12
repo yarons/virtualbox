@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxModBallooning.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -367,7 +367,8 @@ static bool balloonIsPossible(MachineState_T enmState)
     return false;
 }
 
-int balloonMachineSetup(const Bstr& strUuid)
+#if 0 /* unused */
+static int balloonMachineSetup(const Bstr& strUuid)
 {
     int vrc = VINF_SUCCESS;
 
@@ -413,6 +414,7 @@ int balloonMachineSetup(const Bstr& strUuid)
 
     return vrc;
 }
+#endif
 
 /**
  * Does the actual ballooning and assumes the machine is

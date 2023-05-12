@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 98827 2023-03-03 12:01:42Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3965,7 +3965,7 @@ static int cpumR3LoadGuestCpuIdArray(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion
  * @param   cLeaves             The number of leaves in @a paLeaves.
  * @param   pMsrs               The guest MSRs.
  */
-int cpumR3LoadCpuIdInner(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, PCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPUMMSRS pMsrs)
+static int cpumR3LoadCpuIdInner(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, PCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPUMMSRS pMsrs)
 {
     AssertMsgReturn(uVersion >= CPUM_SAVED_STATE_VERSION_VER3_2, ("%u\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
 #if !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86)
@@ -4702,7 +4702,7 @@ static const char *getCacheAss(unsigned u, char *pszBuf)
 /**
  * Get L2 cache associativity.
  */
-const char *getL2CacheAss(unsigned u)
+static const char *getL2CacheAss(unsigned u)
 {
     switch (u)
     {

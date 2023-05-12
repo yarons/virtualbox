@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: lockvalidator.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -955,7 +955,7 @@ DECLINLINE(void) rtLockValidatorSerializeDetectionEnter(void)
 /**
  * Call after rtLockValidatorSerializeDetectionEnter.
  */
-DECLHIDDEN(void) rtLockValidatorSerializeDetectionLeave(void)
+DECLINLINE(void) rtLockValidatorSerializeDetectionLeave(void)
 {
     RTSEMXROADS hXRoads = g_hLockValidatorXRoads;
     if (hXRoads != NIL_RTSEMXROADS)

@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: tstLdr-2.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -48,7 +48,7 @@
 #include <iprt/string.h>
 
 
-bool MyDisBlock(uint8_t const *pbCodeBlock, int32_t cbMax)
+static bool MyDisBlock(uint8_t const *pbCodeBlock, int32_t cbMax)
 {
     DISSTATE Dis;
     int32_t i = 0;

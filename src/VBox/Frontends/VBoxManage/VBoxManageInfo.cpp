@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -399,7 +399,7 @@ const char *machineStateToName(MachineState_T machineState, bool fShort)
     return Info::tr("unknown");
 }
 
-const char *facilityStateToName(AdditionsFacilityStatus_T faStatus, bool fShort)
+static const char *facilityStateToName(AdditionsFacilityStatus_T faStatus, bool fShort)
 {
     switch (faStatus)
     {
@@ -470,7 +470,7 @@ DECLINLINE(bool) doesMachineReadableStringNeedEscaping(const char *psz)
 /**
  * This simply outputs the string adding necessary escaping and nothing else.
  */
-void outputMachineReadableStringWorker(const char *psz)
+static void outputMachineReadableStringWorker(const char *psz)
 {
     for (;;)
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 99633 2023-05-05 12:57:30Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxNetAdpCtl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -128,7 +128,7 @@ CmdList& CmdList::operator<<(const char *pcszArgument)
 }
 
 /** Simple helper to distinguish IPv4 and IPv6 addresses. */
-inline bool isAddrV6(const char *pcszAddress)
+DECLINLINE(bool) isAddrV6(const char *pcszAddress)
 {
     return !!(strchr(pcszAddress, ':'));
 }

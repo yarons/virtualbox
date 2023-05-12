@@ -1,4 +1,4 @@
-/* $Id: tstRTTcp-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTTcp-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT testcase - TCP.
  */
@@ -80,7 +80,7 @@ static DECLCALLBACK(int) test3Server(RTSOCKET hSocket, void *pvUser)
 }
 
 
-void test3()
+static void test3()
 {
     RTTestSub(g_hTest, "Graceful disconnect");
 
@@ -150,7 +150,7 @@ static DECLCALLBACK(int) test2Server(RTSOCKET hSocket, void *pvUser)
 }
 
 
-void test2()
+static void test2()
 {
     RTTestSub(g_hTest, "Rude client");
 
@@ -204,7 +204,7 @@ static DECLCALLBACK(int) test1Server(RTSOCKET hSocket, void *pvUser)
 }
 
 
-void test1()
+static void test1()
 {
     RTTestSub(g_hTest, "Simple server-client setup");
 

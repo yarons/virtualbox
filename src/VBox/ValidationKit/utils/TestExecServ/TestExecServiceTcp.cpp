@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceTcp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TestExecServiceTcp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, TCP/IP Transport Layer.
  */
@@ -783,7 +783,7 @@ static DECLCALLBACK(int) txsTcpOption(int ch, PCRTGETOPTUNION pVal)
 /**
  * @interface_method_impl{TXSTRANSPORT,pfnUsage}
  */
-DECLCALLBACK(void) txsTcpUsage(PRTSTREAM pStream)
+static DECLCALLBACK(void) txsTcpUsage(PRTSTREAM pStream)
 {
     RTStrmPrintf(pStream,
                  "  --tcp-mode <both|client|server>\n"

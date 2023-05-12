@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 99773 2023-05-12 12:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -369,7 +369,7 @@ const char *gctlProcessStatusToText(ProcessStatus_T enmStatus)
 /**
  * Translates a guest process wait result to a human readable string.
  */
-const char *gctlProcessWaitResultToText(ProcessWaitResult_T enmWaitResult)
+static const char *gctlProcessWaitResultToText(ProcessWaitResult_T enmWaitResult)
 {
     switch (enmWaitResult)
     {
@@ -454,7 +454,7 @@ const char *gctlFileStatusToText(FileStatus_T enmStatus)
 /**
  * Translates a file system objec type to a string.
  */
-const char *gctlFsObjTypeToName(FsObjType_T enmType)
+static const char *gctlFsObjTypeToName(FsObjType_T enmType)
 {
     switch (enmType)
     {

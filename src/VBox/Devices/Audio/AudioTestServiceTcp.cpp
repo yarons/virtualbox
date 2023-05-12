@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioTestServiceTcp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -905,7 +905,7 @@ static DECLCALLBACK(int) atsTcpOption(PATSTRANSPORTINST pThis, int ch, PCRTGETOP
 /**
  * @interface_method_impl{ATSTRANSPORT,pfnUsage}
  */
-DECLCALLBACK(void) atsTcpUsage(PRTSTREAM pStream)
+static DECLCALLBACK(void) atsTcpUsage(PRTSTREAM pStream)
 {
     RTStrmPrintf(pStream,
                  "  --tcp-conn-mode <0=both|1=client|2=server>\n"

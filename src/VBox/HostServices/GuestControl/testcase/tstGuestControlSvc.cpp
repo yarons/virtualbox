@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlSvc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestControlSvc.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * Testcase for the guest control service.
  */
@@ -65,7 +65,7 @@ static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
  * @return IPRT status code.
  * @param  pTable the table to initialise
  */
-int initTable(VBOXHGCMSVCFNTABLE *pTable, VBOXHGCMSVCHELPERS *pHelpers)
+static int initTable(VBOXHGCMSVCFNTABLE *pTable, VBOXHGCMSVCHELPERS *pHelpers)
 {
     pTable->cbSize = sizeof (VBOXHGCMSVCFNTABLE);
     pTable->u32Version = VBOX_HGCM_SVC_VERSION;

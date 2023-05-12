@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 99766 2023-05-12 06:54:09Z alexander.eichner@oracle.com $ */
+/* $Id: DevPciIch9.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3816,7 +3816,7 @@ static DECLCALLBACK(int) ich9pcibridgeR3Construct(PPDMDEVINS pDevIns, int iInsta
 /**
  * @interface_method_impl{PDMDEVREGR0,pfnConstruct}
  */
-DECLCALLBACK(int) ich9pciRZConstruct(PPDMDEVINS pDevIns)
+static DECLCALLBACK(int) ich9pciRZConstruct(PPDMDEVINS pDevIns)
 {
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PDEVPCIROOT  pPciRoot = PDMINS_2_DATA(pDevIns, PDEVPCIROOT);
@@ -3856,7 +3856,7 @@ DECLCALLBACK(int) ich9pciRZConstruct(PPDMDEVINS pDevIns)
 /**
  * @interface_method_impl{PDMDEVREGR0,pfnConstruct}
  */
-DECLCALLBACK(int) ich9pcibridgeRZConstruct(PPDMDEVINS pDevIns)
+static DECLCALLBACK(int) ich9pcibridgeRZConstruct(PPDMDEVINS pDevIns)
 {
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PDEVPCIBUS   pBus   = PDMINS_2_DATA(pDevIns, PDEVPCIBUS);

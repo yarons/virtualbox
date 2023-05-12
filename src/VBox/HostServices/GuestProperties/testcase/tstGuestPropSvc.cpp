@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstGuestPropSvc.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -425,9 +425,9 @@ static void testEnumPropsHost(VBOXHGCMSVCFNTABLE *ptable)
  * @param   useSetProp  whether SET_PROP[_HOST] should be used rather than
  *                      SET_PROP_VALUE[_HOST]
  */
-int doSetProperty(VBOXHGCMSVCFNTABLE *pTable, const char *pcszName,
-                  const char *pcszValue, const char *pcszFlags, bool isHost,
-                  bool useSetProp)
+static int doSetProperty(VBOXHGCMSVCFNTABLE *pTable, const char *pcszName,
+                         const char *pcszValue, const char *pcszFlags, bool isHost,
+                         bool useSetProp)
 {
     RTThreadSleep(1); /* stupid, stupid timestamp fudge to avoid asserting in getOldNotification() */
 

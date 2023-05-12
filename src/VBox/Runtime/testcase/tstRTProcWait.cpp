@@ -1,4 +1,4 @@
-/* $Id: tstRTProcWait.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTProcWait.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - RTProcWait.
  */
@@ -57,7 +57,7 @@ typedef struct SpawnerArgs
 } SPAWNERARGS, *PSPAWNERARGS;
 
 
-DECLCALLBACK(int) SpawnerThread(RTTHREAD Thread, void *pvUser)
+static DECLCALLBACK(int) SpawnerThread(RTTHREAD Thread, void *pvUser)
 {
     RT_NOREF1(Thread);
     PSPAWNERARGS pArgs = (PSPAWNERARGS)pvUser;

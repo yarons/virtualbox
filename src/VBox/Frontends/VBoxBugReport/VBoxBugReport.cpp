@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 98477 2023-02-03 22:37:40Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBugReport.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -609,7 +609,7 @@ void BugReportTarGzip::complete(void)
 
 /* Implementation - Main */
 
-void createBugReport(BugReport* report, const char *pszHome, MachineInfoList& machines)
+static void createBugReport(BugReport* report, const char *pszHome, MachineInfoList& machines)
 {
     /* Collect all log files from VBoxSVC */
     VBRDir HomeDir(PathJoin(pszHome, "VBoxSVC.log*"));
@@ -648,7 +648,8 @@ void createBugReport(BugReport* report, const char *pszHome, MachineInfoList& ma
     createBugReportOsSpecific(report, pszHome);
 }
 
-void addMachine(MachineInfoList& list, ComPtr<IMachine> machine)
+
+static void addMachine(MachineInfoList& list, ComPtr<IMachine> machine)
 {
     BOOL fAccessible = FALSE;
     HRESULT hrc = machine->COMGETTER(Accessible)(&fAccessible);

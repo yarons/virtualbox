@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: USBGetDevices.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1471,11 +1471,6 @@ static void *testDLSym(void *handle, const char *symbol)
     return (void *)(uintptr_t)testInotifyInitBad;
 }
 
-void TestUSBSetInotifyAvailable(bool fHaveInotifyLibC, bool fHaveInotifyKernel)
-{
-    s_fHaveInotifyLibC = fHaveInotifyLibC;
-    s_fHaveInotifyKernel = fHaveInotifyKernel;
-}
 # define dlsym testDLSym
 # define close(a) do {} while (0)
 

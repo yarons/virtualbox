@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 98121 2023-01-18 20:22:00Z klaus.espenlaub@oracle.com $ $Revision: 98121 $ $Date: 2023-01-18 21:22:00 +0100 (Wed, 18 Jan 2023) $ $Author: klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ $Revision: 99775 $ $Date: 2023-05-12 14:21:58 +0200 (Fri, 12 May 2023) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1579,7 +1579,7 @@ DECLINLINE(void) virtioNetR3Calc16BitChecksum(uint8_t *pBuf, size_t cb, uint16_t
  * @param   pThis          Pointer to the device state structure.
  * @param   fOn             New LED state.
  */
-void virtioNetR3SetReadLed(PVIRTIONETR3 pThisR3, bool fOn)
+static void virtioNetR3SetReadLed(PVIRTIONETR3 pThisR3, bool fOn)
 {
     if (fOn)
         pThisR3->led.Asserted.s.fReading = pThisR3->led.Actual.s.fReading = 1;
@@ -1594,7 +1594,7 @@ void virtioNetR3SetReadLed(PVIRTIONETR3 pThisR3, bool fOn)
  * @param   pThis          Pointer to the device state structure.
  * @param   fOn            New LED state.
  */
-void virtioNetR3SetWriteLed(PVIRTIONETR3 pThisR3, bool fOn)
+static void virtioNetR3SetWriteLed(PVIRTIONETR3 pThisR3, bool fOn)
 {
     if (fOn)
         pThisR3->led.Asserted.s.fWriting = pThisR3->led.Actual.s.fWriting = 1;

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3ModInMem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3ModInMem.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGFR3ModInMemPe - In memory PE module 'loader'.
  */
@@ -144,7 +144,7 @@ typedef DBGFMODINMEMBUF *PDBGFMODINMEMBUF;
  * @param   pszBuf          Buffer to use if work is needed.
  * @param   cbBuf           Size of buffer.
  */
-const char *dbgfR3ModNormalizeName(const char *pszName, char *pszBuf, size_t cbBuf)
+static const char *dbgfR3ModNormalizeName(const char *pszName, char *pszBuf, size_t cbBuf)
 {
     /*
      * Skip to the filename in case someone gave us a full filename path.

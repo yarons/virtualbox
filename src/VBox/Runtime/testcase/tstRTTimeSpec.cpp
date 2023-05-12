@@ -1,4 +1,4 @@
-/* $Id: tstRTTimeSpec.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTTimeSpec.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTTimeSpec and PRTTIME tests.
  */
@@ -54,7 +54,7 @@
 /**
  * Format the time into a string using a static buffer.
  */
-char *ToString(PRTTIME pTime)
+static char *ToString(PRTTIME pTime)
 {
     static char szBuf[128];
     RTStrPrintf(szBuf, sizeof(szBuf), "%04d-%02d-%02dT%02u:%02u:%02u.%09u [YD%u WD%u UO%d F%#x]",

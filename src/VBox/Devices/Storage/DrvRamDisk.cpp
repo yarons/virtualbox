@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvRamDisk.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -724,7 +724,7 @@ static void drvramdiskMediaExIoReqWarningOutOfMemory(PPDMDRVINS pDrvIns)
  * @param   pThis     VBox disk container instance data.
  * @param   rc        Status code to check.
  */
-bool drvramdiskMediaExIoReqIsRedoSetWarning(PDRVRAMDISK pThis, int rc)
+static bool drvramdiskMediaExIoReqIsRedoSetWarning(PDRVRAMDISK pThis, int rc)
 {
     if (rc == VERR_NO_MEMORY)
     {

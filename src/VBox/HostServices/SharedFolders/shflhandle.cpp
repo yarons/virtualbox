@@ -1,4 +1,4 @@
-/* $Id: shflhandle.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: shflhandle.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Folders Service - Handles helper functions.
  */
@@ -155,8 +155,8 @@ static int vbsfFreeHandle(PSHFLCLIENTDATA pClient, SHFLHANDLE handle)
     return VERR_INVALID_HANDLE;
 }
 
-uintptr_t vbsfQueryHandle(PSHFLCLIENTDATA pClient, SHFLHANDLE handle,
-                          uint32_t uType)
+static uintptr_t vbsfQueryHandle(PSHFLCLIENTDATA pClient, SHFLHANDLE handle,
+                                 uint32_t uType)
 {
     if (   handle < SHFLHANDLE_MAX
         && (g_pHandles[handle].uFlags & SHFL_HF_VALID)

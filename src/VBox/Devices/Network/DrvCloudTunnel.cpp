@@ -1,4 +1,4 @@
-/* $Id: DrvCloudTunnel.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvCloudTunnel.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvCloudTunnel - Cloud tunnel network transport driver
  *
@@ -59,7 +59,7 @@ typedef int socklen_t;
 # define closesocket close
 # define INVALID_SOCKET -1
 # define SOCKET_ERROR   -1
- int WSAGetLastError() { return errno; }
+DECLINLINE(int) WSAGetLastError() { return errno; }
 #endif
 
 /* Prevent inclusion of Winsock2.h */
@@ -1264,7 +1264,7 @@ static int establishTunnel(PDRVCLOUDTUNNEL pThis)
 }
 
 
-DECL_NOTHROW(void) drvCloudTunnelSshLogCallback(int priority, const char *function, const char *buffer, void *userdata)
+static DECL_NOTHROW(void) drvCloudTunnelSshLogCallback(int priority, const char *function, const char *buffer, void *userdata)
 {
     PDRVCLOUDTUNNEL pThis = (PDRVCLOUDTUNNEL)userdata;
 #ifdef LOG_ENABLED

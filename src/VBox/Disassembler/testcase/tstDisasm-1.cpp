@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 99224 2023-03-30 12:52:53Z alexander.eichner@oracle.com $ */
+/* $Id: tstDisasm-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -137,7 +137,7 @@ static void testPerformance(const char *pszSub, uint8_t const *pabInstrs, uintpt
     RTTestIValueF(cNsElapsed / cInstrs, RTTESTUNIT_NS_PER_CALL, "%s-per-instruction", pszSub);
 }
 
-void testTwo(void)
+static void testTwo(void)
 {
     static const struct
     {

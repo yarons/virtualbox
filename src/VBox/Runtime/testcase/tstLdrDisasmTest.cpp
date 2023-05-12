@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 99221 2023-03-30 12:48:09Z alexander.eichner@oracle.com $ */
+/* $Id: tstLdrDisasmTest.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -105,7 +105,7 @@ static DECLCALLBACK(int) DisasmTest1ReadCode(PDISSTATE pDis, uint8_t offInstr, u
 /*
  * Use an inline function here just to test '__textcoal_nt' sections on darwin.
  */
-inline int MyDisasm(uintptr_t CodeIndex, PDISSTATE pDis, uint32_t *pcb)
+DECLINLINE(int) MyDisasm(uintptr_t CodeIndex, PDISSTATE pDis, uint32_t *pcb)
 {
     uint32_t cb;
     int rc = DISInstrWithReader(CodeIndex, DISCPUMODE_32BIT, DisasmTest1ReadCode, 0, pDis, &cb);
