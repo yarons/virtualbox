@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99744 2023-05-11 10:07:05Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 99770 2023-05-12 09:27:23Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -46,6 +46,7 @@ ifndef VBOX_ONLY_SDK
   	$(if $(VBOX_WITH_GUEST_CONTROL),tstGuestCtrlParseBuffer,) \
   	$(if $(VBOX_WITH_GUEST_CONTROL),tstGuestCtrlPaths,) \
   	tstMediumLock \
+  	tstSafeArray \
   	tstBstr \
   	tstGuid \
   	tstUnattendedScript \
@@ -284,6 +285,13 @@ tstUSBProxyLinux_LIBS     += \
 #
 tstMediumLock_TEMPLATE = VBoxMainClientTstExe
 tstMediumLock_SOURCES  = tstMediumLock.cpp
+
+
+#
+# tstSafeArray
+#
+tstSafeArray_TEMPLATE = VBoxMainClientTstExe
+tstSafeArray_SOURCES  = tstSafeArray.cpp
 
 
 #
