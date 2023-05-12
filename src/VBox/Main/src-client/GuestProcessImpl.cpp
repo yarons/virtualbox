@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 99392 2023-04-13 16:48:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestProcessImpl.cpp 99782 2023-05-12 14:53:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2145,6 +2145,7 @@ HRESULT GuestProcess::terminate()
     return hrc;
 }
 
+/* Deprecated; use GuestProcess::waitForArray() instead. */
 HRESULT GuestProcess::waitFor(ULONG aWaitFor, ULONG aTimeoutMS, ProcessWaitResult_T *aReason)
 {
     AutoCaller autoCaller(this);

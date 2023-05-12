@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 99416 2023-04-17 09:14:22Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 99782 2023-05-12 14:53:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -5251,6 +5251,7 @@ HRESULT GuestSession::symlinkRead(const com::Utf8Str &aSymlink, const std::vecto
     ReturnComNotImplemented();
 }
 
+/* Deprecated; use GuestSession::waitForArray() instead. */
 HRESULT GuestSession::waitFor(ULONG aWaitFor, ULONG aTimeoutMS, GuestSessionWaitResult_T *aReason)
 {
     /* Note: No call to i_isStartedExternal() needed here, as the session might not has been started (yet). */
