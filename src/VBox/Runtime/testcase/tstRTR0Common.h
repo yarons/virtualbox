@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Common.h 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTR0Common.h 99776 2023-05-12 12:26:10Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
@@ -210,7 +210,7 @@ static uint32_t volatile g_cErrors;
 /**
  * Report an error.
  */
-void RTR0TestR0Error(const char *pszFormat, ...)
+DECLINLINE(void) RTR0TestR0Error(const char *pszFormat, ...)
 {
     size_t off = RTStrNLen(g_szErr, sizeof(g_szErr) - 1);
     size_t cbLeft = sizeof(g_szErr) - off;
@@ -251,7 +251,7 @@ static void RTR0TestR0AppendDetails(const char *pszFormat, ...)
 /**
  * Informational message.
  */
-static void RTR0TestR0Info(const char *pszFormat, ...)
+DECLINLINE(void) RTR0TestR0Info(const char *pszFormat, ...)
 {
     size_t off = RTStrNLen(g_szErr, sizeof(g_szErr) - 1);
     size_t cbLeft = sizeof(g_szErr) - off;
@@ -278,7 +278,7 @@ static void RTR0TestR0Info(const char *pszFormat, ...)
 /**
  * Report an error.
  */
-static void RTR0TestR0Skip(const char *pszFormat, ...)
+DECLINLINE(void) RTR0TestR0Skip(const char *pszFormat, ...)
 {
     size_t off = RTStrNLen(g_szErr, sizeof(g_szErr) - 1);
     size_t cbLeft = sizeof(g_szErr) - off;
@@ -308,7 +308,7 @@ static void RTR0TestR0Skip(const char *pszFormat, ...)
  *
  * @returns true if there are errors, false if none.
  */
-static bool RTR0TestR0HaveErrors(void)
+DECLINLINE(bool) RTR0TestR0HaveErrors(void)
 {
     return ASMAtomicUoReadU32(&g_cErrors) > 0;
 }
