@@ -1,4 +1,4 @@
-/* $Id: tstSafeArray.cpp 99770 2023-05-12 09:27:23Z andreas.loeffler@oracle.com $ */
+/* $Id: tstSafeArray.cpp 99771 2023-05-12 09:46:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * API Glue Testcase - SafeArray.
  */
@@ -59,7 +59,7 @@ int main()
         RTTESTI_CHECK(aInt2.size() == 42);
         aInt2.setNull();
 
-        com::SafeArray<int> aInt3(0);
+        com::SafeArray<int> aInt3((size_t)0);
         RTTESTI_CHECK(aInt3.size() == 0);
         aInt3.setNull();
         RTTESTI_CHECK(aInt3.size() == 0);
