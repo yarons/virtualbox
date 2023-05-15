@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99793 2023-05-15 16:24:12Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 99794 2023-05-15 16:26:45Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2586,14 +2586,14 @@ ifndef VBOX_WITH_PARFAIT
 else
  if1of (quote, $(KMK_FEATURES))
   VBOX_MIDL_REDIRECT    = \
-   $(REDIRECT) --prepend "$(quote-sh-dq PATH=$(VBOX_PARFAIT_PATH_BIN);$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(qaddsuffix ,;,$(PATH_TOOL_$(VBOX_VCC_TOOL)_DLL_BIN)))" --
+  	$(REDIRECT) --prepend "$(quote-sh-dq PATH=$(VBOX_PARFAIT_PATH_BIN);$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(qaddsuffix ,;,$(PATH_TOOL_$(VBOX_VCC_TOOL)_DLL_BIN)))" --
   VBOX_MIDL_REDIRECT_X86 = \
-   $(REDIRECT) --prepend "$(quote-sh-dq PATH=$(VBOX_PARFAIT_PATH_BIN);$(PATH_TOOL_$(VBOX_VCC_TOOL_STEM)X86_BIN);$(qaddsuffix ,;,$(PATH_TOOL_$(VBOX_VCC_TOOL_STEM)X86_DLL_BIN)))" --
+  	$(REDIRECT) --prepend "$(quote-sh-dq PATH=$(VBOX_PARFAIT_PATH_BIN);$(PATH_TOOL_$(VBOX_VCC_TOOL_STEM)X86_BIN);$(qaddsuffix ,;,$(PATH_TOOL_$(VBOX_VCC_TOOL_STEM)X86_DLL_BIN)))" --
  else
   VBOX_MIDL_REDIRECT    = \
-   $(REDIRECT) --prepend 'PATH=$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(VBOX_PARFAIT_PATH_BIN);$(PATH)' --
+  	$(REDIRECT) --prepend 'PATH=$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(VBOX_PARFAIT_PATH_BIN);$(PATH)' --
   VBOX_MIDL_REDIRECT_X86 = \
-   $(REDIRECT) --prepend 'PATH=$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(VBOX_PARFAIT_PATH_BIN);$(PATH)' --
+  	$(REDIRECT) --prepend 'PATH=$(PATH_TOOL_$(VBOX_VCC_TOOL)_BIN);$(VBOX_PARFAIT_PATH_BIN);$(PATH)' --
  endif
 endif
 VBOX_MIDL_CPP_CMD      = $(lastword $(notdir ,$(subst $(EXEC_X86_WIN32),,$(TOOL_$(VBOX_VCC_TOOL)_CC))))
@@ -9054,7 +9054,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99793 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99794 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
