@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 99514 $"/>
-      <othermeta name="rev-date" content="$Date: 2023-04-22 03:59:25 +0200 (Sat, 22 Apr 2023) $"/>
+      <othermeta name="revision" content="$Rev: 99797 $"/>
+      <othermeta name="rev-date" content="$Date: 2023-05-15 19:27:56 +0200 (Mon, 15 May 2023) $"/>
       <othermeta name="ditaval" content="ohc.ditaval"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
@@ -67,6 +67,7 @@
     DitaUtils.py chunk -d template.ditamap or 'DitaUtils.py map-prep -d template.ditamap'
   -->
     <frontmatter>
+       <mapref href="conkeyrefs.ditamap" format="ditamap" toc="no" processing-role="resource-only"/>
        <booklists>
           <toc/>
           <figurelist/>
