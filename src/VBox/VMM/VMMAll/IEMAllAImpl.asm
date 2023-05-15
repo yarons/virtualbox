@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 98921 2023-03-12 16:54:45Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 99790 2023-05-15 13:10:32Z michal.necasek@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -751,13 +751,12 @@ BEGINPROC_FASTCALL iemAImpl_rorx_u64, 12
  %ifdef ASM_CALL64_GCC
         mov     cl, A2_8
         ror     A1, cl
-        mov     [A0], A1_32
+        mov     [A0], A1
  %else
         xchg    A2, A0
         ror     A1, cl
-        mov     [A2], A1_32
+        mov     [A2], A1
  %endif
-        mov     [A0], A1
         EPILOGUE_3_ARGS
 ENDPROC iemAImpl_rorx_u64
  %endif ; RT_ARCH_AMD64
