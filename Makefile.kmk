@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99795 2023-05-15 16:41:47Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 99796 2023-05-15 16:52:46Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2321,9 +2321,9 @@ quick: \
 run-parfait:
 ifdef VBOX_WITH_PARFAIT
  ifeq ($(KBUILD_TARGET),win)
-	 - $(TIME) -- $(KMK) all -k
+	- $(TIME) -- $(KMK) all -k
  else
-	 + $(TIME) -- $(KMK) all
+	+ $(TIME) -- $(KMK) all
  endif
 	$(TIME) -- $(VBOX_PARFAIT) \
 	 -p \
