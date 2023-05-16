@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 99808 2023-05-16 06:44:12Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6453,10 +6453,12 @@ HRESULT Console::i_getGuestProperty(const Utf8Str &aName, Utf8Str *aValue, LONG6
 #else  /* VBOX_WITH_GUEST_PROPS */
     if (!RT_VALID_PTR(aValue))
          return E_POINTER;
+#ifndef VBOX_WITH_PARFAIT /** @todo Fails due to RT_VALID_PTR() being only a != NULL check with parfait. */
     if (aTimestamp != NULL && !RT_VALID_PTR(aTimestamp))
         return E_POINTER;
     if (aFlags != NULL && !RT_VALID_PTR(aFlags))
         return E_POINTER;
+#endif
 
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.hrc());
