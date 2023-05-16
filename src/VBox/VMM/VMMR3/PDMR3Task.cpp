@@ -1,4 +1,4 @@
-/* $Id: PDMR3Task.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMR3Task.cpp 99806 2023-05-16 06:28:07Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Task - Asynchronous user mode tasks.
  */
@@ -607,13 +607,13 @@ VMMR3_INT_DECL(int) PDMR3TaskDestroySpecific(PVM pVM, PDMTASKTYPE enmType, void 
     AssertReturn(iTaskSet < RT_ELEMENTS(pVM->pdm.s.apTaskSets), VERR_INVALID_HANDLE);
     PPDMTASKSET const pTaskSet = pVM->pdm.s.apTaskSets[iTaskSet];
     AssertPtrReturn(pTaskSet, VERR_INVALID_HANDLE);
-    AssertPtrReturn(pTaskSet->u32Magic == PDMTASKSET_MAGIC, VERR_INVALID_MAGIC);
+    AssertReturn(pTaskSet->u32Magic == PDMTASKSET_MAGIC, VERR_INVALID_MAGIC);
     PPDMTASK const    pTask    = &pTaskSet->aTasks[iTask];
 
     VM_ASSERT_EMT0_RETURN(pVM, VERR_VM_THREAD_NOT_EMT); /* implicit serialization by requiring EMT(0) */
 
-    AssertPtrReturn(pTask->pvOwner == pvOwner, VERR_NOT_OWNER);
-    AssertPtrReturn(pTask->enmType == enmType, VERR_NOT_OWNER);
+    AssertReturn(pTask->pvOwner == pvOwner, VERR_NOT_OWNER);
+    AssertReturn(pTask->enmType == enmType, VERR_NOT_OWNER);
 
     /*
      * Do the job.
