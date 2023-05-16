@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 99815 2023-05-16 18:17:34Z serkan.bayraktar@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -265,6 +265,8 @@ VBOX_FULL_VERSION_MAKE = $(expr ($1 << 24) | ($2 << 16) | $3)
 VBOX_VERSION_PREREQ = $(expr $(call VBOX_FULL_VERSION_MAKE,$(VBOX_VERSION_MAJOR),$(VBOX_VERSION_MINOR),$(VBOX_VERSION_BUILD)) \
 		>= $(call VBOX_FULL_VERSION_MAKE,$1,$2,$3))
 
+# Enable host screen saver toggle by default
+VBOX_WITH_SCREENSAVER_CONTROL = 1
 
 # Force the additions.sh script to get an exact additions build when we're doing the release.
 if $(VBOX_VERSION_BUILD) % 2 == 0
@@ -9061,7 +9063,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99802 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99815 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
