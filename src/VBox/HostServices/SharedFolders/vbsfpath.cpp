@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsfpath.cpp 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -490,12 +490,12 @@ int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
 #ifdef RT_OS_DARWIN /* Misplaced hack! See todo! */
         uint32_t cwcSrc  = 0;
         PRTUTF16 pwszSrc = NULL;
-        rc = vbsfNormalizeStringDarwin(&pGuestString->String.ucs2[0],
+        rc = vbsfNormalizeStringDarwin(&pGuestString->String.utf16[0],
                                        pGuestString->u16Length / sizeof(RTUTF16),
                                        &pwszSrc, &cwcSrc);
 #else
         uint32_t  const cwcSrc  = pGuestString->u16Length / sizeof(RTUTF16);
-        PCRTUTF16 const pwszSrc = &pGuestString->String.ucs2[0];
+        PCRTUTF16 const pwszSrc = &pGuestString->String.utf16[0];
 #endif
 
         if (RT_SUCCESS(rc))

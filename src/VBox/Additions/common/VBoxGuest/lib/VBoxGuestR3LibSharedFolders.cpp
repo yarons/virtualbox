@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -237,7 +237,7 @@ VBGLR3DECL(int) VbglR3SharedFolderGetName(HGCMCLIENTID idClient, uint32_t u32Roo
         if (RT_SUCCESS(rc))
         {
             *ppszName = NULL;
-            rc = RTUtf16ToUtf8(&pString->String.ucs2[0], ppszName);
+            rc = RTUtf16ToUtf8(&pString->String.utf16[0], ppszName);
         }
         RTMemFree(pString);
     }

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: COMDefs.cpp 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -200,9 +200,10 @@ void COMBase::ToSafeArray (const QVector <QString> &aVec,
 void COMBase::FromSafeArray (const com::SafeArray <BSTR> &aArr,
                              QVector <QString> &aVec)
 {
+    AssertCompile(sizeof(aArr[0][0]) == sizeof(ushort));
     aVec.resize (static_cast <int> (aArr.size()));
     for (int i = 0; i < aVec.size(); ++ i)
-        aVec [i] = QString::fromUtf16 (aArr [i]);
+        aVec [i] = QString::fromUtf16 ((const ushort *)aArr [i]);
 }
 
 /* static */
@@ -247,9 +248,10 @@ void COMBase::ToSafeArray (const QVector <QUuid> &aVec,
 void COMBase::FromSafeArray (const com::SafeArray <BSTR> &aArr,
                              QVector <QUuid> &aVec)
 {
+    AssertCompile(sizeof(aArr[0][0]) == sizeof(ushort));
     aVec.resize (static_cast <int> (aArr.size()));
     for (int i = 0; i < aVec.size(); ++ i)
-        aVec [i] = QUuid(QString::fromUtf16 (aArr [i]));
+        aVec [i] = QUuid(QString::fromUtf16 ((const ushort *)aArr [i]));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

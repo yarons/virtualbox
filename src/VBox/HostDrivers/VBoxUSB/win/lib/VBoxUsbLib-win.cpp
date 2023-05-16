@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbLib-win.cpp 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -921,7 +921,7 @@ static int usbLibDevStrDrEntryGetAll(HANDLE hHub, LPCSTR lpcszHubName, ULONG iPo
         return rc;
 
     PUSB_STRING_DESCRIPTOR pLangStrDr = &(*ppList)->StrDr;
-    USHORT *pIdLang = pLangStrDr->bString;
+    USHORT *pIdLang = (USHORT *)pLangStrDr->bString;
     ULONG cIdLang = (pLangStrDr->bLength - RT_OFFSETOF(USB_STRING_DESCRIPTOR, bString)) / sizeof (*pIdLang);
 
     if (pDevDr->iManufacturer)
