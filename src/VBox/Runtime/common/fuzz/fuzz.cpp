@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz.cpp 99803 2023-05-16 06:16:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -1619,7 +1619,7 @@ RTDECL(int) RTFuzzCtxCreateFromStateMem(PRTFUZZCTX phFuzzCtx, const void *pvStat
 {
     AssertPtrReturn(phFuzzCtx, VERR_INVALID_POINTER);
     AssertPtrReturn(pvState, VERR_INVALID_POINTER);
-    AssertPtrReturn(cbState, VERR_INVALID_POINTER);
+    AssertReturn(cbState, VERR_INVALID_POINTER);
 
     return VERR_NOT_IMPLEMENTED;
 }
