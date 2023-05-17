@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 99825 2023-05-17 12:35:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 99826 2023-05-17 12:36:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -216,8 +216,6 @@ public:
         bool isCompositingManagerRunning() const { return m_fCompositingManagerRunning; }
         /** Returns true if the detected display server type is either xorg or xwayland. */
         bool X11ServerAvailable() const;
-        /** Returns display server type. */
-        VBGHDISPLAYSERVERTYPE displayServerType() const;
 #endif
     /** @} */
 
