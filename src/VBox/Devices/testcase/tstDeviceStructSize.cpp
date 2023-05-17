@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDeviceStructSize.cpp 99822 2023-05-17 07:51:49Z alexander.eichner@oracle.com $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -387,7 +387,7 @@ int main()
 #endif
     CHECK_MEMBER_ALIGNMENT(DEVPCIBUS, apDevices, 64);
     CHECK_MEMBER_ALIGNMENT(DEVPCIROOT, auPciApicIrqLevels, 16);
-    CHECK_MEMBER_ALIGNMENT(DEVPCIROOT, Piix3.auPciLegacyIrqLevels, 16);
+    CHECK_MEMBER_ALIGNMENT(DEVPCIROOT, u.Piix3.auPciLegacyIrqLevels, 16);
     CHECK_MEMBER_ALIGNMENT(PCNETSTATE, u64LastPoll, 8);
     CHECK_MEMBER_ALIGNMENT(PCNETSTATE, CritSect, 8);
     CHECK_MEMBER_ALIGNMENT(PCNETSTATE, StatReceiveBytes, 8);
