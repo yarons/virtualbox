@@ -1,4 +1,4 @@
-/* $Id: keyboard.c 62063 2016-07-06 15:12:35Z noreply@oracle.com $ */
+/* $Id: keyboard.c 99825 2023-05-17 12:35:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard handler library.
  */
@@ -385,6 +385,7 @@ X11DRV_InitKeyboardByLayout(Display *display)
             }
         }
         keyc2scan[keyc] = scan;
+        printf("%d %u = %u\n", keyc, keyc2scan[keyc], scan);
     } /* for */
     /* Did we find a match for all keys in the layout?  Count them first.
      * Note that we skip the 102nd key, so that owners of 101 key keyboards
