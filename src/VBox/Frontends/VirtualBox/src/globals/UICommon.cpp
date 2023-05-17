@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 99826 2023-05-17 12:36:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 99827 2023-05-17 12:38:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -3026,5 +3026,10 @@ void UICommon::comWrappersReinit()
 bool UICommon::X11ServerAvailable() const
 {
     return VBGHDisplayServerTypeIsXAvailable(m_enmDisplayServerType);
+}
+
+VBGHDISPLAYSERVERTYPE UICommon::displayServerType() const
+{
+    return m_enmDisplayServerType;
 }
 #endif
