@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 99785 2023-05-13 16:52:19Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 99831 2023-05-17 18:34:16Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5588,7 +5588,7 @@ static DECLCALLBACK(int) vmsvga3dBackDXDestroyContext(PVGASTATECC pThisCC, PVMSV
         if (pBackendDXContext->paUnorderedAccessView)
         {
             for (uint32_t i = 0; i < pBackendDXContext->cUnorderedAccessView; ++i)
-                D3D_RELEASE(pBackendDXContext->paRenderTargetView[i].u.pUnorderedAccessView);
+                D3D_RELEASE(pBackendDXContext->paUnorderedAccessView[i].u.pUnorderedAccessView);
         }
 
         RTMemFreeZ(pBackendDXContext->papBlendState, sizeof(pBackendDXContext->papBlendState[0]) * pBackendDXContext->cBlendState);
