@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevMiscHlp.cpp 99821 2023-05-17 07:35:02Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -34,7 +34,9 @@
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/hm.h>
-#include <VBox/vmm/apic.h>
+#ifndef VBOX_VMM_TARGET_ARMV8
+# include <VBox/vmm/apic.h>
+#endif
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
 
