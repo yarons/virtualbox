@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1155,7 +1155,7 @@ DECLINLINE(VID_PROCESSOR_STATUS) nemHCWinCpuGetRunningStatus(PVMCPUCC pVCpu)
      */
     VID_PROCESSOR_STATUS enmCpuStatus = VidProcessorStatusUndefined;
     NTSTATUS rcNt = g_pfnVidGetVirtualProcessorRunningStatus(pVCpu->pVMR3->nem.s.hPartitionDevice, pVCpu->idCpu, &enmCpuStatus);
-    AssertRC(rcNt);
+    AssertMsg(NT_SUCCESS(rcNt), ("rcNt=%#x\n", rcNt));
 
     RTErrVarsRestore(&Saved);
     return enmCpuStatus;

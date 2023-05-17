@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -426,7 +426,7 @@ static RTL_QUERY_REGISTRY_TABLE     g_aRegValues[] =
     {
         /* .QueryRoutine = */   NULL,
         /* .Flags = */          RTL_QUERY_REGISTRY_DIRECT | RTL_QUERY_REGISTRY_TYPECHECK,
-        /* .Name = */           L"ForceAsyncTsc",
+        /* .Name = */           (PWSTR)L"ForceAsyncTsc",
         /* .EntryContext = */   &g_Options.fOptForceAsyncTsc,
         /* .DefaultType = */    (REG_DWORD << RTL_QUERY_REGISTRY_TYPECHECK_SHIFT) | REG_DWORD,
         /* .DefaultData = */    &g_fOptDefaultZero,

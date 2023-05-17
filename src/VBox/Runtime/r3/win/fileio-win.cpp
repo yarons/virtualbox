@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -1020,7 +1020,7 @@ RTR3DECL(int) RTFileSetSize(RTFILE hFile, uint64_t cbSize)
     if (hDupFile != INVALID_HANDLE_VALUE)
         NtClose(hDupFile);
 
-    if (RT_SUCCESS(rcNt))
+    if (NT_SUCCESS(rcNt))
         return VINF_SUCCESS;
     return RTErrConvertFromNtStatus(rcNt);
 

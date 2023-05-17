@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUsbFlt.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1687,8 +1687,8 @@ NTSTATUS VBoxUsbFltInit()
      */
     RTL_QUERY_REGISTRY_TABLE aParams[] =
     {
-        {vboxUsbFltRegKeyQuery, 0, L"ForceReplugWhenDevPopulateFails", &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, REG_DWORD, &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, sizeof(ULONG) },
-        {                 NULL, 0,                               NULL,                                                   NULL,         0,                                                     0,             0 }
+        {vboxUsbFltRegKeyQuery, 0, (PWSTR)L"ForceReplugWhenDevPopulateFails", &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, REG_DWORD, &g_VBoxUsbFltGlobals.dwForceReplugWhenDevPopulateFails, sizeof(ULONG) },
+        {                 NULL, 0,                                      NULL,                                                   NULL,         0,                                                      0,             0 }
     };
     UNICODE_STRING UnicodePath = RTL_CONSTANT_STRING(L"\\VBoxUSB");
 

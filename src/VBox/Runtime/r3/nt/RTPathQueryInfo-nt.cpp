@@ -1,4 +1,4 @@
-/* $Id: RTPathQueryInfo-nt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathQueryInfo-nt.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTPathQueryInfo[Ex], Native NT.
  */
@@ -117,7 +117,7 @@ static void ntPathNtSplitName(UNICODE_STRING const *pNtName, UNICODE_STRING *pNt
         AssertFailed(); /* This is impossible and won't work (NT doesn't know '.' or '..').  */
         /** @todo query the whole path as it is possible relative. Use the buffer for
          *        temporary name storage. */
-        pNtParent->Buffer        = L".";
+        pNtParent->Buffer        = (PWCH)L".";
         pNtParent->Length        = 1 * sizeof(RTUTF16);
         pNtParent->MaximumLength = 2 * sizeof(RTUTF16);
     }

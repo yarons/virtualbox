@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispInternal.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -162,7 +162,7 @@ BOOL vrdpReportOrderGeneric(PVBOXDISPDEV pDev, const VRDPCLIPRECTS *pClipRects,
                              const void *pvOrder, unsigned cbOrder, unsigned code);
 
 BOOL VBoxDispIsScreenSurface(SURFOBJ *pso);
-void VBoxDispDumpPSO(SURFOBJ *pso, char *s);
+void VBoxDispDumpPSO(SURFOBJ *pso, const char *s);
 
 BOOL vrdpDrvRealizeBrush(BRUSHOBJ *pbo, SURFOBJ *psoTarget, SURFOBJ *psoPattern, SURFOBJ *psoMask,
                          XLATEOBJ *pxlo, ULONG iHatch);

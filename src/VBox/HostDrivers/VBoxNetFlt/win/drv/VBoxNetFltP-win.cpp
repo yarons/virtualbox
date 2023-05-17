@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltP-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltP-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltP-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Protocol edge
@@ -141,7 +141,7 @@ static VOID vboxNetFltWinPtBindAdapter(OUT PNDIS_STATUS pStatus,
     if (Status == NDIS_STATUS_SUCCESS)
     {
         PNDIS_CONFIGURATION_PARAMETER pParam;
-        NDIS_STRING UppedBindStr = NDIS_STRING_CONST("UpperBindings");
+        NDIS_STRING UppedBindStr = VBOX_NDIS_STRING_CONST("UpperBindings");
         NdisReadConfiguration(&Status, &pParam, hConfig, &UppedBindStr, NdisParameterString);
         Assert(Status == NDIS_STATUS_SUCCESS);
         if (Status == NDIS_STATUS_SUCCESS)

@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCommon.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  *
@@ -45,8 +45,9 @@ UINT VBoxGetMsiProp(MSIHANDLE hMsi, const WCHAR *pwszName, WCHAR *pwszValueBuf, 
 
     /** @todo r=bird: why do we need to query the size first and then the data.
      *        The API should be perfectly capable of doing that without our help. */
+    WCHAR wcDummy   = 0;
     DWORD cwcNeeded = 0;
-    UINT  uiRet = MsiGetPropertyW(hMsi, pwszName, L"", &cwcNeeded);
+    UINT  uiRet = MsiGetPropertyW(hMsi, pwszName, &wcDummy, &cwcNeeded);
     if (uiRet == ERROR_MORE_DATA)
     {
         ++cwcNeeded;     /* On output does not include terminating null, so add 1. */

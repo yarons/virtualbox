@@ -1,4 +1,4 @@
-/* $Id: path.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: path.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Path related routines.
  */
@@ -36,7 +36,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-static UNICODE_STRING g_UnicodeBackslash = { 2, 4, L"\\" };
+static UNICODE_STRING g_UnicodeBackslash = { 2, 4, (PWSTR)L"\\" };
 
 
 /**

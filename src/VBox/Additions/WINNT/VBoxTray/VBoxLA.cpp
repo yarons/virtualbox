@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLA.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -157,7 +157,7 @@ static const WCHAR *g_pwszRegKeyReconnectActions  = L"Software\\Oracle\\Sun Ray\
 static const char g_szCommandPrefix[] = "Command";
 
 
-static BOOL laGetRegistryDWORD(WCHAR *pwszRegKey, WCHAR *pwszName, DWORD *pdwValue)
+static BOOL laGetRegistryDWORD(const WCHAR *pwszRegKey, const WCHAR *pwszName, DWORD *pdwValue)
 {
     LONG lErr;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPMisc.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -92,10 +92,10 @@ NTSTATUS vboxWddmRegQueryVideoGuidString(PVBOXMP_DEVEXT pDevExt, ULONG cbBuf, PW
 
 NTSTATUS vboxWddmRegQueryDrvKeyName(PVBOXMP_DEVEXT pDevExt, ULONG cbBuf, PWCHAR pBuf, PULONG pcbResult);
 
-NTSTATUS vboxWddmRegOpenKeyEx(OUT PHANDLE phKey, IN HANDLE hRootKey, IN PWCHAR pName, IN ACCESS_MASK fAccess);
-NTSTATUS vboxWddmRegOpenKey(OUT PHANDLE phKey, IN PWCHAR pName, IN ACCESS_MASK fAccess);
-NTSTATUS vboxWddmRegQueryValueDword(IN HANDLE hKey, IN PWCHAR pName, OUT PDWORD pDword);
-NTSTATUS vboxWddmRegSetValueDword(IN HANDLE hKey, IN PWCHAR pName, IN DWORD val);
+NTSTATUS vboxWddmRegOpenKeyEx(OUT PHANDLE phKey, IN HANDLE hRootKey, IN PCWCHAR pName, IN ACCESS_MASK fAccess);
+NTSTATUS vboxWddmRegOpenKey(OUT PHANDLE phKey, IN PCWCHAR pName, IN ACCESS_MASK fAccess);
+NTSTATUS vboxWddmRegQueryValueDword(IN HANDLE hKey, IN PCWCHAR pName, OUT PDWORD pDword);
+NTSTATUS vboxWddmRegSetValueDword(IN HANDLE hKey, IN PCWCHAR pName, IN DWORD val);
 
 NTSTATUS vboxWddmRegDrvFlagsSet(PVBOXMP_DEVEXT pDevExt, DWORD fVal);
 DWORD vboxWddmRegDrvFlagsGet(PVBOXMP_DEVEXT pDevExt, DWORD fDefault);

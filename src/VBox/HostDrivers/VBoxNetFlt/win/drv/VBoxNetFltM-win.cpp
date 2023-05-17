@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltM-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFltM-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltM-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Miniport edge
@@ -184,7 +184,7 @@ static NDIS_STATUS vboxNetFltWinMpReadApplyConfig(PVBOXNETFLTINS pThis, NDIS_HAN
     NDIS_STATUS Status = NDIS_STATUS_SUCCESS;
     NDIS_HANDLE hConfiguration;
     PNDIS_CONFIGURATION_PARAMETER pParameterValue;
-    NDIS_STRING strMAC = NDIS_STRING_CONST("MAC");
+    NDIS_STRING strMAC = VBOX_NDIS_STRING_CONST("MAC");
     RTMAC mac;
 
     NdisOpenConfiguration(
@@ -340,7 +340,7 @@ static NDIS_STATUS vboxNetFltWinMpInitialize(OUT PNDIS_STATUS OpenErrorStatus,
             Status = ZwOpenKey(&hDrvKey, KEY_READ, &ObjAttr);
             if (Status == STATUS_SUCCESS)
             {
-                static UNICODE_STRING NetCfgInstanceIdValue = NDIS_STRING_CONST("NetCfgInstanceId");
+                static UNICODE_STRING NetCfgInstanceIdValue = VBOX_NDIS_STRING_CONST("NetCfgInstanceId");
 //                UCHAR valBuf[sizeof(KEY_VALUE_PARTIAL_INFORMATION) + RTUUID_STR_LENGTH*2 + 10];
 //                ULONG cLength = sizeof(valBuf);
 #define NAME_PREFIX L"\\DEVICE\\"

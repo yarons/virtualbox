@@ -1,4 +1,4 @@
-/* $Id: VBoxMPRegistry.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPRegistry.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox WDDM Miniport registry related functions
  */
@@ -51,29 +51,25 @@ VP_STATUS VBoxMPCmnRegInit(IN PVBOXMP_DEVEXT pExt, OUT VBOXMPCMNREGISTRY *pReg)
 VP_STATUS VBoxMPCmnRegFini(IN VBOXMPCMNREGISTRY Reg)
 {
     if (!Reg)
-    {
         return ERROR_INVALID_PARAMETER;
-    }
 
     NTSTATUS Status = ZwClose(Reg);
     return Status == STATUS_SUCCESS ? NO_ERROR : ERROR_INVALID_PARAMETER;
 }
 
-VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PWSTR pName, uint32_t *pVal)
+VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PCWSTR pName, uint32_t *pVal)
 {
     /* seems like the new code assumes the Reg functions zeroes up the value on failure */
     *pVal = 0;
 
     if (!Reg)
-    {
         return ERROR_INVALID_PARAMETER;
-    }
 
     NTSTATUS Status = vboxWddmRegQueryValueDword(Reg, pName, (PDWORD)pVal);
     return Status == STATUS_SUCCESS ? NO_ERROR : ERROR_INVALID_PARAMETER;
 }
 
-VP_STATUS VBoxMPCmnRegSetDword(IN VBOXMPCMNREGISTRY Reg, PWSTR pName, uint32_t Val)
+VP_STATUS VBoxMPCmnRegSetDword(IN VBOXMPCMNREGISTRY Reg, PCWSTR pName, uint32_t Val)
 {
     if (!Reg)
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDrawCmd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDispDrawCmd.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox XPDM Display driver drawing interface functions
  */
@@ -157,7 +157,7 @@ static void VBoxDispPrintStats(void)
        ));
 }
 
-void VBoxDispDumpPSO(SURFOBJ *pso, char *s)
+void VBoxDispDumpPSO(SURFOBJ *pso, const char *s)
 {
     RT_NOREF(pso, s);
     if (pso)

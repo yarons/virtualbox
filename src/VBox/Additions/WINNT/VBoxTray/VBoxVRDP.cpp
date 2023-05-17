@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVRDP.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -64,7 +64,7 @@ static ANIMATIONINFO animationInfoDisable =
     FALSE
 };
 
-typedef struct _VBOXVRDPEXPPARAM
+typedef struct VBOXVRDPEXPPARAM
 {
     const char *name;
     UINT  uActionSet;
@@ -76,7 +76,7 @@ typedef struct _VBOXVRDPEXPPARAM
     char  achSavedValue[2 * MAX_PATH]; /* Large enough to save the bitmap path. */
 } VBOXVRDPEXPPARAM, *PVBOXVRDPEXPPARAM;
 
-typedef struct _VBOXVRDPCONTEXT
+typedef struct VBOXVRDPCONTEXT
 {
     const VBOXSERVICEENV *pEnv;
 
@@ -95,7 +95,7 @@ static VBOXVRDPCONTEXT g_Ctx = { 0 };
 
 static VBOXVRDPEXPPARAM s_aSPIParams[] =
 {
-    { SPI_(MEDIUM, DESKWALLPAPER),           VBOX_SPI_STRING,   "" },
+    { SPI_(MEDIUM, DESKWALLPAPER),           VBOX_SPI_STRING,   (void *)"" },
     { SPI_(FULL,   DROPSHADOW),              VBOX_SPI_BOOL_PTR,       },
     { SPI_(HIGH,   FONTSMOOTHING),           VBOX_SPI_BOOL,           },
     { SPI_(FULL,   MENUFADE),                VBOX_SPI_BOOL_PTR,       },

@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 99483 2023-04-20 10:16:10Z andreas.loeffler@oracle.com $ */
+/* $Id: process-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1433,7 +1433,7 @@ static void rtProcWinStationPrep(HANDLE hTokenToUse, STARTUPINFOW *pStartupInfo,
                     if (   rtProcWinAddSidToWinStation(hWinStation0, pSid)
                         && rtProcWinAddSidToDesktop(hDesktop, pSid))
                     {
-                        pStartupInfo->lpDesktop = L"winsta0\\default";
+                        pStartupInfo->lpDesktop = (PWSTR)L"winsta0\\default";
                     }
                     RTMemFree(pSid);
                 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 98639 2023-02-20 09:30:43Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDrvInst.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -99,10 +99,10 @@
 *********************************************************************************************************************************/
 typedef struct
 {
-    PWSTR pApplicationId;
-    PWSTR pDisplayName;
-    PWSTR pProductName;
-    PWSTR pMfgName;
+    PCWSTR pApplicationId;
+    PCWSTR pDisplayName;
+    PCWSTR pProductName;
+    PCWSTR pMfgName;
 } INSTALLERINFO, *PINSTALLERINFO;
 typedef const PINSTALLERINFO PCINSTALLERINFO;
 

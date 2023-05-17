@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceAutoMount.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1392,7 +1392,7 @@ static int vbsvcAutomounterMountIt(PVBSVCAUTOMOUNTERENTRY pEntry)
     NetRsrc.dwType          = RESOURCETYPE_DISK;
     NetRsrc.lpLocalName     = wszDrive;
     NetRsrc.lpRemoteName    = wszPrefixedName;
-    NetRsrc.lpProvider      = L"VirtualBox Shared Folders"; /* Only try our provider. */
+    NetRsrc.lpProvider      = (PWSTR)L"VirtualBox Shared Folders"; /* Only try our provider. */
     NetRsrc.lpComment       = pwszName;
 
     DWORD dwErr = WNetAddConnection2W(&NetRsrc, NULL /*pwszPassword*/, NULL /*pwszUserName*/, 0 /*dwFlags*/);

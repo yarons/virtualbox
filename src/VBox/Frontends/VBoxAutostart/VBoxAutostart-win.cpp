@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostart-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -385,7 +385,7 @@ static int autostartUpdatePolicy(const com::Utf8Str &sUser)
                                 /* Add privilege */
                                 LSA_UNICODE_STRING lwsPrivilege;
                                 // Create an LSA_UNICODE_STRING for the privilege names.
-                                lwsPrivilege.Buffer = L"SeServiceLogonRight";
+                                lwsPrivilege.Buffer = (PWSTR)L"SeServiceLogonRight";
                                 size_t cwPrivilege = wcslen(lwsPrivilege.Buffer);
                                 lwsPrivilege.Length = (USHORT)cwPrivilege * sizeof(WCHAR);
                                 lwsPrivilege.MaximumLength = (USHORT)(cwPrivilege + 1) * sizeof(WCHAR);

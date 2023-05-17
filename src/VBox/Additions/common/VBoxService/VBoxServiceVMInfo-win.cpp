@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -79,8 +79,8 @@ typedef struct VBOXSERVICEVMINFOUSER
 /** Structure for the file information lookup. */
 typedef struct VBOXSERVICEVMINFOFILE
 {
-    char *pszFilePath;
-    char *pszFileName;
+    const char *pszFilePath;
+    const char *pszFileName;
 } VBOXSERVICEVMINFOFILE, *PVBOXSERVICEVMINFOFILE;
 
 /** Structure for process information lookup. */

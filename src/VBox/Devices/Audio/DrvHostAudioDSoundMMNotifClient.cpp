@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDSoundMMNotifClient.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * Host audio driver - DSound - Implementation of the IMMNotificationClient interface to detect audio endpoint changes.
  */
@@ -101,7 +101,7 @@ HRESULT DrvHostAudioDSoundMMNotifClient::Initialize(void)
  */
 STDMETHODIMP DrvHostAudioDSoundMMNotifClient::OnDeviceStateChanged(LPCWSTR pwstrDeviceId, DWORD dwNewState)
 {
-    char *pszState = "unknown";
+    const char *pszState = "unknown";
 
     switch (dwNewState)
     {
@@ -179,7 +179,7 @@ STDMETHODIMP DrvHostAudioDSoundMMNotifClient::OnDefaultDeviceChanged(EDataFlow e
     if (eRole == eMultimedia)
     {
         PDMAUDIODIR enmDir  = PDMAUDIODIR_INVALID;
-        char       *pszRole = "unknown";
+        const char *pszRole = "unknown";
         if (eFlow == eRender)
         {
             pszRole = "output";

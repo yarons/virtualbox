@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPCommon.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
@@ -60,8 +60,8 @@ typedef HANDLE VBOXMPCMNREGISTRY;
 
 VP_STATUS VBoxMPCmnRegInit(IN PVBOXMP_DEVEXT pExt, OUT VBOXMPCMNREGISTRY *pReg);
 VP_STATUS VBoxMPCmnRegFini(IN VBOXMPCMNREGISTRY Reg);
-VP_STATUS VBoxMPCmnRegSetDword(IN VBOXMPCMNREGISTRY Reg, PWSTR pName, uint32_t Val);
-VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PWSTR pName, uint32_t *pVal);
+VP_STATUS VBoxMPCmnRegSetDword(IN VBOXMPCMNREGISTRY Reg, PCWSTR pName, uint32_t Val);
+VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PCWSTR pName, uint32_t *pVal);
 
 /* Pointer related */
 bool VBoxMPCmnUpdatePointerShape(PVBOXMP_COMMON pCommon, PVIDEO_POINTER_ATTRIBUTES pAttrs, uint32_t cbLength);
