@@ -1,4 +1,4 @@
-/* $Id: UIErrorString.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIErrorString.cpp 99841 2023-05-18 11:05:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIErrorString class implementation.
  */
@@ -55,9 +55,7 @@ QString UIErrorString::formatRC(HRESULT rc)
             && RTErrWinQueryDefine(rc | 0x80000000, szDefine, sizeof(szDefine), true /*fFailIfUnknown*/) == VERR_NOT_FOUND))
         RTErrWinQueryDefine(rc, szDefine, sizeof(szDefine), false /*fFailIfUnknown*/);
 
-    QString str;
-    str.sprintf("%s", szDefine);
-    return str;
+    return QString::asprintf("%s", szDefine);
 #else
     const char *pszDefine = RTErrCOMGet(SUCCEEDED_WARNING(rc) ? rc | 0x80000000 : rc)->pszDefine;
     Assert(pszDefine);

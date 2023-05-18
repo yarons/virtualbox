@@ -1,4 +1,4 @@
-/* $Id: UIExtension.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtension.cpp 99841 2023-05-18 11:05:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace implementation.
  */
@@ -102,7 +102,7 @@ void UIExtension::install(QString const &strFilePath,
     QString strDisplayInfo;
 #ifdef VBOX_WS_WIN
     if (pParent)
-        strDisplayInfo.sprintf("hwnd=%#llx", (uint64_t)(uintptr_t)pParent->winId());
+        strDisplayInfo = QString::asprintf("hwnd=%#llx", (uint64_t)(uintptr_t)pParent->winId());
 #endif
 
     /* Install extension pack: */
