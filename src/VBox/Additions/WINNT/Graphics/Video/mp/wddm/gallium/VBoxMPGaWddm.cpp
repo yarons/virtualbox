@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 99813 2023-05-16 16:03:33Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 99833 2023-05-18 08:12:01Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1517,7 +1517,7 @@ BOOLEAN GaDxgkDdiInterruptRoutine(const PVOID MiniportDeviceContext,
 
     /* "Dismiss the interrupt on the adapter." */
     SVGAPortWrite(pSvga, SVGA_IRQSTATUS_PORT, u32IrqStatus);
-//    GALOG(("u32IrqStatus = 0x%08X\n", u32IrqStatus));
+    GALOG(("u32IrqStatus = 0x%08X\n", u32IrqStatus));
 
     /* Check what happened. */
     if (u32IrqStatus & SVGA_IRQFLAG_ANY_FENCE)
@@ -1531,7 +1531,7 @@ BOOLEAN GaDxgkDdiInterruptRoutine(const PVOID MiniportDeviceContext,
 
     pDevExt->u.primary.DxgkInterface.DxgkCbQueueDpc(pDevExt->u.primary.DxgkInterface.DeviceHandle);
 
-//    GALOG(("leave\n"));
+    GALOG(("leave\n"));
     /* "Return TRUE as quickly as possible". */
     return TRUE;
 }
@@ -2077,7 +2077,7 @@ NTSTATUS APIENTRY GaDxgkDdiPresentDisplayOnly(const HANDLE hAdapter,
 {
     PVBOXMP_DEVEXT pDevExt = (PVBOXMP_DEVEXT)hAdapter;
 
-    LOGREL(("VidPnSourceId %d, pSource %p, BytesPerPixel %d, Pitch %d, Flags 0x%x, NumMoves %d, NumDirtyRects %d, pfn %p\n",
+    LOG(("VidPnSourceId %d, pSource %p, BytesPerPixel %d, Pitch %d, Flags 0x%x, NumMoves %d, NumDirtyRects %d, pfn %p\n",
          pPresentDisplayOnly->VidPnSourceId,
          pPresentDisplayOnly->pSource,
          pPresentDisplayOnly->BytesPerPixel,

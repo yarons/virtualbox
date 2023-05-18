@@ -1,4 +1,4 @@
-/* $Id: SvgaFifo.cpp 99789 2023-05-15 12:32:28Z dmitrii.grigorev@oracle.com $ */
+/* $Id: SvgaFifo.cpp 99833 2023-05-18 08:12:01Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA FIFO.
  */
@@ -427,7 +427,7 @@ static NTSTATUS svgaCBAlloc(PVMSVGACBSTATE pCBState, VMSVGACBTYPE enmType, uint3
 
     PVMSVGACB pCB = (PVMSVGACB)GaMemAllocZero(sizeof(VMSVGACB));
     AssertReturn(pCB, STATUS_INSUFFICIENT_RESOURCES);
-    GALOG(("CB: type %u, %p\n", enmType, pCB));
+    GALOG(("CB: %p\n", pCB));
 
     NTSTATUS Status;
 

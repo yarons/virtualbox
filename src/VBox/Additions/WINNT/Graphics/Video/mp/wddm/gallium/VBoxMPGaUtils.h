@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaUtils.h 99789 2023-05-15 12:32:28Z dmitrii.grigorev@oracle.com $ */
+/* $Id: VBoxMPGaUtils.h 99833 2023-05-18 08:12:01Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver miscellaneous helpers and common includes.
  */
@@ -64,7 +64,7 @@ extern volatile uint32_t g_fu32GaLogControl;
 #define GALOG_(a_Group, a_Msg, a_Logger) do { \
     if (GALOG_ENABLED(a_Group)) \
     { \
-        a_Logger(("%s: CPU%u IRQL%u ", __FUNCTION__, KeGetCurrentProcessorNumber(), KeGetCurrentIrql())); a_Logger(a_Msg); \
+        a_Logger(("%s: ", __FUNCTION__)); a_Logger(a_Msg); \
     } \
 } while (0)
 
