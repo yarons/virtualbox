@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99834 2023-05-18 09:44:24Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 99846 2023-05-18 12:12:31Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for the OpenGLTest helper app.
 #
@@ -97,6 +97,10 @@ if   defined(VBOX_WITH_QTGUI) \
   endif
   VBoxTestOGL_LIBS.win       += $(PATH_SDK_$(VBOX_WINPSDK)_LIB)/Opengl32.lib
   VBoxTestOGL_SOURCES        += VBoxGLSupportInfo.cpp
+ endif
+
+ ifdef VBOX_WITH_QT6
+  VBoxTestOGL_CXXFLAGS.win += /permissive-
  endif
 
  # Don't let ld strip out explicitly linked libraries even when they are not needed.
