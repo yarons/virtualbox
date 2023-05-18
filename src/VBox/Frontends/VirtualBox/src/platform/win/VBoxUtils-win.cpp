@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-win.cpp 99837 2023-05-18 10:03:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -24,6 +24,10 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+/* Qt includes: */
+#include <QList>
+#include <QRect>
 
 /* GUI includes: */
 #include "VBoxUtils-win.h"
