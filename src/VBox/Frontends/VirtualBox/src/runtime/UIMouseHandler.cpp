@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 99479 2023-04-20 08:25:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMouseHandler.cpp 99839 2023-05-18 10:21:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -1297,8 +1297,11 @@ void UIMouseHandler::updateMouseCursorClipping()
         {
             /* Choose the largest rectangle: */
             QRect largestRect;
-            foreach (const QRect &rect, viewportRegion.rects())
+            for (QRegion::const_iterator it = viewportRegion.begin(); it != viewportRegion.end(); ++it)
+            {
+                const QRect rect = *it;
                 largestRect = largestRect.width() * largestRect.height() < rect.width() * rect.height() ? rect : largestRect;
+            }
             /* Assign the partial-viewport-region to the largest rect: */
             viewportRegion = largestRect;
         }
