@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99815 2023-05-16 18:17:34Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 99847 2023-05-18 13:00:51Z sergey.dubov@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3817,7 +3817,11 @@ endif
 # Microsoft Visual C++.  We've been avoiding the native type for ever,
 # but now that is causing issues with Qt 6.x.
 #
-VBOX_VCC_WCHAR_T_VARIANT = -Zc:wchar_t-
+ifndef VBOX_WITH_QT6
+ VBOX_VCC_WCHAR_T_VARIANT = -Zc:wchar_t-
+else
+ VBOX_VCC_WCHAR_T_VARIANT = -Zc:wchar_t
+endif
 
 
 #
@@ -9063,7 +9067,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99815 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99847 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
