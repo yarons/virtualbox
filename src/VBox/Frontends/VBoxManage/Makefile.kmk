@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99845 2023-05-18 11:13:00Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for VBoxManage (the CLI frontend).
 #
@@ -130,8 +130,12 @@ ifndef VBOX_ONLY_DOCS
   #VBoxManage_INTERMEDIATES += \
   #	$(addsuffix /VBoxManageBuiltInHelp.h,$(addprefix $(VBoxManage_0_OUTDIR)/,$(VBOX_APPROVED_VBOXMANAGE_DOCBOOK_LANGUAGES)))
 
-  # define qt5 tools for translation
-  USES += qt5
+  # define qt tools for translation
+  ifndef VBOX_WITH_QT6
+   USES += qt5
+  else
+   USES += qt6
+  endif
 
   PROGRAMS += VBoxManageNls
   VBoxManageNls_TEMPLATE = VBoxNLS
