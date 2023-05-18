@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 99840 2023-05-18 10:26:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
@@ -216,7 +216,7 @@ void UISharedFolderDetailsEditor::sltSelectPath()
     {
         /* Processing root folder: */
 #if defined (VBOX_WS_WIN) || defined (Q_OS_OS2)
-        m_pEditorName->setText(strFolderName.toUpper()[0] + "_DRIVE");
+        m_pEditorName->setText(strFolderName.toUpper().left(1) + "_DRIVE");
 #elif defined (VBOX_WS_X11)
         m_pEditorName->setText("ROOT");
 #endif
