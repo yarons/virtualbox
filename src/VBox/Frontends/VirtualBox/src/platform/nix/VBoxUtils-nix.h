@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.h 99830 2023-05-17 14:03:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: VBoxUtils-nix.h 99863 2023-05-19 17:34:53Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef FEQT_INCLUDED_SRC_platform_x11_VBoxUtils_nix_h
-#define FEQT_INCLUDED_SRC_platform_x11_VBoxUtils_nix_h
+#ifndef FEQT_INCLUDED_SRC_platform_nix_VBoxUtils_nix_h
+#define FEQT_INCLUDED_SRC_platform_nix_VBoxUtils_nix_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -160,4 +160,4 @@ namespace NativeWindowSubsystem
     SHARED_LIBRARY_STUFF uint32_t X11GetAppRootWindow();
 }
 
-#endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxUtils_nix_h */
+#endif /* !FEQT_INCLUDED_SRC_platform_nix_VBoxUtils_nix_h */
