@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 99859 2023-05-19 14:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 99860 2023-05-19 14:47:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -29,7 +29,7 @@
 #include <QClipboard>
 #include <QComboBox>
 #include <QtGlobal>
-#ifdef VBOX_WITH_DOCS_QHELP
+#ifdef VBOX_WITH_QHELP_VIEWER
 # include <QtHelp/QHelpEngine>
 # include <QtHelp/QHelpContentWidget>
 # include <QtHelp/QHelpIndexWidget>
@@ -69,7 +69,7 @@
 #include "COMEnums.h"
 #include "CSystemProperties.h"
 
-#ifdef VBOX_WITH_DOCS_QHELP
+#ifdef VBOX_WITH_QHELP_VIEWER
 
 enum HelpBrowserTabs
 {
@@ -2274,4 +2274,4 @@ void UIHelpBrowserWidget::addActionToMenu(QMenu *pMenu, QAction *pAction)
 
 #include "UIHelpBrowserWidget.moc"
 
-#endif /*#ifdef VBOX_WITH_DOCS_QHELP*/
+#endif /*#ifdef VBOX_WITH_QHELP_VIEWER*/
