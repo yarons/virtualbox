@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDXCmd.cpp 99857 2023-05-19 09:05:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver utilities.
  */
@@ -419,7 +419,6 @@ int vgpu10Draw(PVBOXDX_DEVICE pDevice,
     SET_CMD_FIELD(startVertexLocation);
 
     vboxDXCommandBufferCommit(pDevice);
-vboxDXDeviceFlushCommands(pDevice);
     return VINF_SUCCESS;
 }
 
@@ -439,7 +438,6 @@ int vgpu10DrawIndexed(PVBOXDX_DEVICE pDevice,
     SET_CMD_FIELD(baseVertexLocation);
 
     vboxDXCommandBufferCommit(pDevice);
-vboxDXDeviceFlushCommands(pDevice);
     return VINF_SUCCESS;
 }
 
