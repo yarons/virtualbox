@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 99827 2023-05-17 12:38:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 99859 2023-05-19 14:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2376,7 +2376,7 @@ int UICommon::supportedRecordingFeatures() const
 /* static */
 QString UICommon::helpFile()
 {
-#if defined (VBOX_WITH_QHELP_VIEWER)
+#if defined (VBOX_WITH_DOCS_QHELP)
     const QString strName = "UserManual";
     const QString strSuffix = "qhc";
 #else

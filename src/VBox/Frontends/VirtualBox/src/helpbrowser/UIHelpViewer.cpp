@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 99171 2023-03-24 11:36:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 99859 2023-05-19 14:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -28,7 +28,7 @@
 /* Qt includes: */
 #include <QClipboard>
 #include <QtGlobal>
-#ifdef VBOX_WITH_QHELP_VIEWER
+#ifdef VBOX_WITH_DOCS_QHELP
  #include <QtHelp/QHelpEngine>
  #include <QtHelp/QHelpContentWidget>
  #include <QtHelp/QHelpIndexWidget>
@@ -63,7 +63,7 @@
 #include "COMEnums.h"
 #include "CSystemProperties.h"
 
-#ifdef VBOX_WITH_QHELP_VIEWER
+#ifdef VBOX_WITH_DOCS_QHELP
 
 
 /*********************************************************************************************************************************
@@ -1069,4 +1069,4 @@ void UIHelpViewer::loadImage(const QUrl &imageFileUrl)
 
 #include "UIHelpViewer.moc"
 
-#endif /* #ifdef VBOX_WITH_QHELP_VIEWER */
+#endif /* #ifdef VBOX_WITH_DOCS_QHELP */
