@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.cpp 99870 2023-05-19 19:51:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -1130,8 +1130,8 @@ static NTSTATUS vbsfVerifyConnectionName(PUNICODE_STRING ConnectionName)
     ULONG cRemainingName;
 
     /* Check that the name starts with correct prefix. */
-    PCWCHAR pwc1 = &s_wszPrefix[0];
-    PCWCHAR pwc  = ConnectionName->Buffer;
+    WCHAR const *pwc1 = &s_wszPrefix[0];
+    WCHAR const *pwc  = ConnectionName->Buffer;
     ULONG   i;
     for (i = 0; i < cConnectionName; i++, pwc1++, pwc++)
     {
