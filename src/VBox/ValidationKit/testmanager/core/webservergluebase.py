@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
+# $Id: webservergluebase.py 99875 2023-05-20 00:57:37Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -36,11 +36,11 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98655 $"
+__version__ = "$Revision: 99875 $"
 
 
 # Standard python imports.
-import cgitb
+import cgitb;   # pylint: disable=deprecated-module ## @todo these will be retired in python 3.13!
 import codecs;
 import os
 import sys

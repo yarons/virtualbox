@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: wuiadmin.py 99875 2023-05-20 00:57:37Z knut.osmundsen@oracle.com $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -36,11 +36,11 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 99875 $"
 
 
 # Standard python imports.
-import cgitb;
+import cgitb;   # pylint: disable=deprecated-module ## @todo these will be retired in python 3.13!
 import sys;
 
 # Validation Kit imports.
