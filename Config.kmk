@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99883 2023-05-21 13:50:12Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 99884 2023-05-21 14:25:50Z serkan.bayraktar@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -794,10 +794,7 @@ endif
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
  VBOX_WITH_QT6 := 1
 endif
-# Enable the QHelp based help function in UI.
-if1of ($(KBUILD_TARGET), darwin linux solaris win)
- VBOX_WITH_QHELP_VIEWER = 1
-endif
+
 # VBox Ballooning Control frontend.
 VBOX_WITH_FE_BALLOONCTRL = 1
 # VBox Autostart Service.
@@ -9082,7 +9079,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99883 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99884 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
