@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 99860 2023-05-19 14:47:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 99880 2023-05-21 12:17:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2143,7 +2143,7 @@ void UIMessageCenter::sltResetSuppressedMessages()
 void UIMessageCenter::sltShowUserManual(const QString &strLocation)
 {
     Q_UNUSED(strLocation);
-#if defined (VBOX_WITH_QHELP_VIEWER)
+#if defined (VBOX_WITH_DOCS_QHELP)
     showHelpBrowser(strLocation);
 #else
  #if defined (VBOX_WS_WIN)
@@ -2172,14 +2172,14 @@ void UIMessageCenter::sltHelpBrowserClosed()
 
 void UIMessageCenter::sltHandleHelpRequest()
 {
-#if defined(VBOX_WITH_QHELP_VIEWER)
+#if defined(VBOX_WITH_DOCS_QHELP)
     sltHandleHelpRequestWithKeyword(uiCommon().helpKeyword(sender()));
 #endif /* #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))&& (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)) */
 }
 
 void UIMessageCenter::sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword)
 {
-#if defined(VBOX_WITH_QHELP_VIEWER)
+#if defined(VBOX_WITH_DOCS_QHELP)
     /* First open or show the help browser: */
     showHelpBrowser(uiCommon().helpFile());
     /* Show the help page for the @p strHelpKeyword: */
@@ -2377,7 +2377,7 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType enmType,
 void UIMessageCenter::showHelpBrowser(const QString &strHelpFilePath, QWidget *pParent /* = 0 */)
 {
     Q_UNUSED(pParent);
-#if defined(VBOX_WITH_QHELP_VIEWER)
+#if defined(VBOX_WITH_DOCS_QHELP)
     if (!QFileInfo(strHelpFilePath).exists())
     {
         UINotificationMessage::cannotFindHelpFile(strHelpFilePath);
