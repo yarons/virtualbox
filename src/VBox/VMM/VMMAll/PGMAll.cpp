@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 99891 2023-05-22 10:55:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1101,7 +1101,6 @@ VMMDECL(int) PGMPrefetchPage(PVMCPUCC pVCpu, RTGCPTR GCPtrPage)
  * @returns Strict VBox status code, special care required.
  * @retval  VINF_PGM_SYNC_CR3 - handled.
  * @retval  VINF_EM_RAW_EMULATE_INSTR - not handled (RC only).
- * @retval  VERR_REM_FLUSHED_PAGES_OVERFLOW - not handled.
  *
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPtrPage   Page to invalidate.
