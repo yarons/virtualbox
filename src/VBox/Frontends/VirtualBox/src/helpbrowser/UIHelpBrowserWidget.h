@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 99880 2023-05-21 12:17:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.h 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -57,7 +57,6 @@ class UIBookmarksListContainer;
 class UIHelpBrowserTabManager;
 class UIZoomMenuAction;
 
-#ifdef VBOX_WITH_DOCS_QHELP
 class SHARED_LIBRARY_STUFF UIHelpBrowserWidget  : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
@@ -219,5 +218,4 @@ private:
     QStringList          m_keywordList;
 };
 
-#endif /* #ifdef VBOX_WITH_DOCS_QHELP */
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpBrowserWidget_h */

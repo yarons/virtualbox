@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 99880 2023-05-21 12:17:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -71,19 +71,13 @@ UIHelpBrowserDialog::UIHelpBrowserDialog(QWidget *pParent, QWidget *pCenterWidge
 
 void UIHelpBrowserDialog::showHelpForKeyword(const QString &strKeyword)
 {
-#ifdef VBOX_WITH_DOCS_QHELP
     if (m_pWidget)
         m_pWidget->showHelpForKeyword(strKeyword);
-#else
-    Q_UNUSED(strKeyword);
-#endif
 }
 
 void UIHelpBrowserDialog::retranslateUi()
 {
-#ifdef VBOX_WITH_DOCS_QHELP
     setWindowTitle(UIHelpBrowserWidget::tr("Oracle VM VirtualBox User Manual"));
-#endif
 }
 
 bool UIHelpBrowserDialog::event(QEvent *pEvent)
@@ -118,7 +112,6 @@ bool UIHelpBrowserDialog::event(QEvent *pEvent)
 
 void UIHelpBrowserDialog::prepareCentralWidget()
 {
-#ifdef VBOX_WITH_DOCS_QHELP
     m_pWidget = new UIHelpBrowserWidget(EmbedTo_Dialog, m_strHelpFilePath);
     AssertPtrReturnVoid(m_pWidget);
     setCentralWidget((m_pWidget));
@@ -135,7 +128,6 @@ void UIHelpBrowserDialog::prepareCentralWidget()
     const QList<QMenu*> menuList = m_pWidget->menus();
     foreach (QMenu *pMenu, menuList)
         menuBar()->addMenu(pMenu);
-#endif
 }
 
 void UIHelpBrowserDialog::loadSettings()

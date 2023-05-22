@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 99880 2023-05-21 12:17:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.h 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class declaration.
  */
@@ -42,8 +42,6 @@ class QHelpEngine;
 class QGraphicsBlurEffect;
 class QLabel;
 class UIFindInPageWidget;
-
-#ifdef VBOX_WITH_DOCS_QHELP
 
 /** A QTextBrowser extension used as poor man's html viewer. Since we were not happy with the quality of QTextBrowser's image
   * rendering and didn't want to use WebKit module, this extension redraws the document images as overlays with improved QPainter
@@ -171,5 +169,4 @@ private:
     int m_iZoomPercentage;
 };
 
-#endif /* #ifdef VBOX_WITH_DOCS_QHELP */
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpViewer_h */
