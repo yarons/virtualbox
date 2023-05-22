@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: thread-os2.cpp 99901 2023-05-22 14:15:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -324,7 +324,8 @@ RTR3DECL(int) RTTlsSet(RTTLS iTls, void *pvValue)
 }
 
 
-RTR3DECL(int) RTThreadGetExecutionTimeMilli(uint64_t *pKernelTime, uint64_t *pUserTime)
+RTR3DECL(int) RTThreadGetExecutionTimeMilli(uint64_t *pcMsKernelTime, uint64_t *pcMsUserTime)
 {
+    RT_NOREF(pcMsKernelTime, pcMsUserTime);
     return VERR_NOT_IMPLEMENTED;
 }
