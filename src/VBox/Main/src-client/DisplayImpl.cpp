@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DisplayImpl.cpp 99912 2023-05-22 18:34:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2460,6 +2460,7 @@ HRESULT Display::invalidateAndUpdateScreen(ULONG aScreenId)
 HRESULT Display::completeVHWACommand(BYTE *aCommand)
 {
 #ifdef VBOX_WITH_VIDEOHWACCEL
+    AssertPtr(mpDrv->pVBVACallbacks);
     mpDrv->pVBVACallbacks->pfnVHWACommandCompleteAsync(mpDrv->pVBVACallbacks, (VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *)aCommand);
     return S_OK;
 #else
@@ -3785,11 +3786,6 @@ DECLCALLBACK(int) Display::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     }
 #if defined(VBOX_WITH_VIDEOHWACCEL)
     pThis->pVBVACallbacks = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIDISPLAYVBVACALLBACKS);
-    if (!pThis->pVBVACallbacks)
-    {
-        AssertMsgFailed(("Configuration error: No VBVA callback interface above!\n"));
-        return VERR_PDM_MISSING_INTERFACE_ABOVE;
-    }
 #endif
     /*
      * Get the Display object pointer and update the mpDrv member.
