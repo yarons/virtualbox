@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 99920 2023-05-22 20:52:26Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 99923 2023-05-22 21:06:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -165,7 +165,7 @@ typedef struct EMCPU
      * current slice. */
     uint64_t                cMsTimeSliceStartExec;
     /** Number of milliseconds into the current time slice last we checked.
-     * This is in terms of the RTThreadGetExecutionTimeMilli() total, like for 
+     * This is in terms of the RTThreadGetExecutionTimeMilli() total, like for
      * cMsTimeSliceStartExec. */
     uint64_t                cMsTimeSliceExec;
 
