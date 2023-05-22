@@ -1,4 +1,4 @@
-/* $Id: Display.h 99549 2023-04-27 12:48:53Z alexander.eichner@oracle.com $ */
+/* $Id: Display.h 99890 2023-05-22 10:40:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of Display class
@@ -66,7 +66,7 @@ public:
                               int32_t xOrigin, int32_t yOrigin, bool fVGAResize);
     void i_handleDisplayUpdate (int x, int y, int w, int h);
 
-    int i_invalidateAndUpdateScreen(uint32_t aScreenId);
+    void i_invalidateAndUpdateScreen(uint32_t aScreenId);
 
 
 private:

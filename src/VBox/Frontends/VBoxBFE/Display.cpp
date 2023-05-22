@@ -1,4 +1,4 @@
-/* $Id: Display.cpp 99546 2023-04-27 12:33:12Z alexander.eichner@oracle.com $ */
+/* $Id: Display.cpp 99890 2023-05-22 10:40:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -145,7 +145,7 @@ void Display::i_handleDisplayUpdate (int x, int y, int w, int h)
 }
 
 
-int Display::i_invalidateAndUpdateScreen(uint32_t aScreenId)
+void Display::i_invalidateAndUpdateScreen(uint32_t aScreenId)
 {
     mpDrv->IConnector.pbData     = m_pFramebuffer->getPixelData();
     mpDrv->IConnector.cbScanline = m_pFramebuffer->getBytesPerLine();
