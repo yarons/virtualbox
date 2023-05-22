@@ -1,4 +1,4 @@
-# $Id: Config.kmk 99884 2023-05-21 14:25:50Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 99914 2023-05-22 18:37:32Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -533,7 +533,7 @@ endif
 VBOX_WITH_DBGF_FLOW_TRACING = 1
 # Enables ARMv8 virtualization, see @bugref{10383}
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
- VBOX_WITH_VIRT_ARMV8 =
+ VBOX_WITH_VIRT_ARMV8 = 1
 endif
 ## @}
 
@@ -9079,7 +9079,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99884 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 99914 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
