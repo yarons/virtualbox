@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: EMHM.cpp 99897 2023-05-22 11:43:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -56,6 +56,8 @@
 #include "VMMTracing.h"
 
 #include <iprt/asm.h>
+
+#include "EMInline.h"
 
 
 /*********************************************************************************************************************************
