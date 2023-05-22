@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 99897 2023-05-22 11:43:38Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 99899 2023-05-22 12:43:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -431,8 +431,6 @@ static DBGFEVENTCTX dbgfR3FigureEventCtx(PVMCPU pVCpu)
             return DBGFEVENTCTX_HM;
 
         case EMSTATE_IEM:
-        case EMSTATE_RAW_OBSOLETE:
-        case EMSTATE_IEM_THEN_REM:
         case EMSTATE_DEBUG_GUEST_IEM:
         case EMSTATE_DEBUG_GUEST_RAW:
             return DBGFEVENTCTX_RAW;
