@@ -1,4 +1,4 @@
-/* $Id: EMInline.h 99920 2023-05-22 20:52:26Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInline.h 99924 2023-05-22 21:07:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Internal header file, inline functions.
  */
@@ -38,7 +38,7 @@
  */
 
 
-/** 
+/**
  * Check if the preset execution time cap restricts guest execution scheduling.
  *
  * @returns true if allowed, false otherwise
