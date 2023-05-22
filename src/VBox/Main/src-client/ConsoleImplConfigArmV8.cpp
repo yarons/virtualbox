@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 99913 2023-05-22 18:36:24Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 99915 2023-05-22 18:42:10Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -366,7 +366,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         InsertConfigInteger(pCfg,  "MmioEcamLength", 0x01000000);
         InsertConfigInteger(pCfg,  "MmioPioBase",    0x3eff0000);
         InsertConfigInteger(pCfg,  "MmioPioSize",    0x0000ffff);
-        InsertConfigInteger(pCfg,  "IntPinA",        3); 
+        InsertConfigInteger(pCfg,  "IntPinA",        3);
         InsertConfigInteger(pCfg,  "IntPinB",        4);
         InsertConfigInteger(pCfg,  "IntPinC",        5);
         InsertConfigInteger(pCfg,  "IntPinD",        6);
