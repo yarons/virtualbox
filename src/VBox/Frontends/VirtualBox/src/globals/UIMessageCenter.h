@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 98642 2023-02-20 10:47:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.h 99903 2023-05-22 14:32:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -526,7 +526,7 @@ private:
                        const QString &strAutoConfirmId, const QString &strHelpKeyword) const;
 
     /// @todo move it away ..
-    void showHelpBrowser(const QString &strHelpFilePath, QWidget *pParent = 0);
+    void showHelpBrowser(const QString &strHelpFilePath);
 
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 99880 2023-05-21 12:17:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 99903 2023-05-22 14:32:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2374,9 +2374,8 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType enmType,
     return iResultCode;
 }
 
-void UIMessageCenter::showHelpBrowser(const QString &strHelpFilePath, QWidget *pParent /* = 0 */)
+void UIMessageCenter::showHelpBrowser(const QString &strHelpFilePath)
 {
-    Q_UNUSED(pParent);
 #if defined(VBOX_WITH_DOCS_QHELP)
     if (!QFileInfo(strHelpFilePath).exists())
     {
