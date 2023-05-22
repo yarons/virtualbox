@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 99909 2023-05-22 17:02:32Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 99913 2023-05-22 18:36:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -484,7 +484,7 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
  *                      to leave it in order to avoid deadlocks (ext packs and
  *                      more).
  */
-int Console::i_configConstructorInnerX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, AutoWriteLock *pAlock)
+int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, AutoWriteLock *pAlock)
 {
     RT_NOREF(pVM /* when everything is disabled */);
     VMMDev         *pVMMDev   = m_pVMMDev; Assert(pVMMDev);
