@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ $Revision: 99775 $ $Date: 2023-05-12 14:21:58 +0200 (Fri, 12 May 2023) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 99889 2023-05-22 10:38:11Z alexander.eichner@oracle.com $ $Revision: 99889 $ $Date: 2023-05-22 12:38:11 +0200 (Mon, 22 May 2023) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3629,10 +3629,11 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
      */
     PPDMIBASE pUpBase;
     rc = PDMDevHlpDriverAttach(pDevIns, PDM_STATUS_LUN, &pThisCC->IBase, &pUpBase, "Status Port");
-    if (RT_FAILURE(rc) && rc != VERR_PDM_NO_ATTACHED_DRIVER)
+    if (RT_SUCCESS(rc))
+        pThisCC->pLedsConnector = PDMIBASE_QUERY_INTERFACE(pUpBase, PDMILEDCONNECTORS);
+    else if (rc != VERR_PDM_NO_ATTACHED_DRIVER)
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Failed to attach the status LUN"));
 
-    pThisCC->pLedsConnector = PDMIBASE_QUERY_INTERFACE(pUpBase, PDMILEDCONNECTORS);
     /*
      * Register saved state.
      */
