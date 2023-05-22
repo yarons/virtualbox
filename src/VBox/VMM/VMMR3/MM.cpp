@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 99907 2023-05-22 16:58:55Z alexander.eichner@oracle.com $ */
+/* $Id: MM.cpp 99911 2023-05-22 17:57:56Z alexander.eichner@oracle.com $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -384,6 +384,8 @@ static int mmR3InitRamArmV8(PVM pVM, PCFGMNODE pMMCfg)
             LogRel(("Failed to query \"PrepopulateFromFile\" for memory region %s -> %Rrc\n", szMemRegion, rc));
             break;
         }
+        else
+            rc = VINF_SUCCESS;
 
         pVM->mm.s.cbRamBase += u64MemSize;
         if (u64GCPhysStart >= _4G)
