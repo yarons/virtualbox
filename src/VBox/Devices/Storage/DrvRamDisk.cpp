@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: DrvRamDisk.cpp 99887 2023-05-22 10:33:51Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -589,7 +589,7 @@ static DECLCALLBACK(int) drvramdiskBiosGetPCHSGeometry(PPDMIMEDIA pInterface,
                                                        PPDMMEDIAGEOMETRY pPCHSGeometry)
 {
     RT_NOREF2(pInterface, pPCHSGeometry);
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_PDM_GEOMETRY_NOT_SET;
 }
 
 /** @copydoc PDMIMEDIA::pfnBiosSetPCHSGeometry */
@@ -605,7 +605,7 @@ static DECLCALLBACK(int) drvramdiskBiosGetLCHSGeometry(PPDMIMEDIA pInterface,
                                                        PPDMMEDIAGEOMETRY pLCHSGeometry)
 {
     RT_NOREF2(pInterface, pLCHSGeometry);
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_PDM_GEOMETRY_NOT_SET;
 }
 
 /** @copydoc PDMIMEDIA::pfnBiosSetLCHSGeometry */
