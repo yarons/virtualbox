@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 99890 2023-05-22 10:40:30Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxBFE.cpp 99894 2023-05-22 11:27:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxBFE - The basic VirtualBox frontend for running VMs without using Main/COM/XPCOM.
  * Mainly serves as a playground for the ARMv8 VMM bringup for now.
@@ -826,6 +826,12 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PUVM pUVM, PVM pVM, PCVMMR3VTA
     rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
     rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Irq",               2);                        UPDATE_RC();
     rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09010000);                        UPDATE_RC();
+
+    rc = pVMM->pfnCFGMR3InsertNode(pDevices, "arm-pl061-gpio",&pDev);                        UPDATE_RC();
+    rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
+    rc = pVMM->pfnCFGMR3InsertNode(pInst,    "Config",        &pCfg);                        UPDATE_RC();
+    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "Irq",               7);                        UPDATE_RC();
+    rc = pVMM->pfnCFGMR3InsertInteger(pCfg,  "MmioBase", 0x09030000);                        UPDATE_RC();
 
     rc = pVMM->pfnCFGMR3InsertNode(pDevices, "pci-generic-ecam",  &pDev);                    UPDATE_RC();
     rc = pVMM->pfnCFGMR3InsertNode(pDev,     "0",            &pInst);                        UPDATE_RC();
