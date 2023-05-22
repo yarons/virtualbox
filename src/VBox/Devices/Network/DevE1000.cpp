@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 98523 2023-02-10 10:40:59Z alexander.eichner@oracle.com $ */
+/* $Id: DevE1000.cpp 99886 2023-05-22 10:32:57Z alexander.eichner@oracle.com $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -8260,9 +8260,12 @@ static DECLCALLBACK(int) e1kR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     /* Status driver */
     PPDMIBASE pBase;
     rc = PDMDevHlpDriverAttach(pDevIns, PDM_STATUS_LUN, &pThisCC->IBase, &pBase, "Status Port");
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
+        pThisCC->pLedsConnector = PDMIBASE_QUERY_INTERFACE(pBase, PDMILEDCONNECTORS);
+    else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
+        rc = VINF_SUCCESS;
+    else
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Failed to attach the status LUN"));
-    pThisCC->pLedsConnector = PDMIBASE_QUERY_INTERFACE(pBase, PDMILEDCONNECTORS);
 
     /* Network driver */
     rc = PDMDevHlpDriverAttach(pDevIns, 0, &pThisCC->IBase, &pThisCC->pDrvBase, "Network Port");
