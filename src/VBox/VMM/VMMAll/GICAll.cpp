@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 99885 2023-05-22 10:31:37Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 99935 2023-05-23 13:03:37Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
@@ -283,7 +283,8 @@ DECLINLINE(VBOXSTRICTRC) gicDistRegisterRead(PPDMDEVINS pDevIns, PVMCPUCC pVCpu,
     {
         case GIC_DIST_REG_CTLR_OFF:
             *puValue =   (ASMAtomicReadBool(&pThis->fIrqGrp0Enabled) ? GIC_DIST_REG_CTRL_ENABLE_GRP0 : 0)
-                       | (ASMAtomicReadBool(&pThis->fIrqGrp1Enabled) ? GIC_DIST_REG_CTRL_ENABLE_GRP1_NS : 0);
+                       | (ASMAtomicReadBool(&pThis->fIrqGrp1Enabled) ? GIC_DIST_REG_CTRL_ENABLE_GRP1_NS : 0)
+                       | GIC_DIST_REG_CTRL_DS;
             break;
         case GIC_DIST_REG_TYPER_OFF:
             *puValue =   GIC_DIST_REG_TYPER_NUM_ITLINES_SET(1)  /** @todo 32 SPIs for now. */
