@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 98294 2023-01-25 01:24:09Z knut.osmundsen@oracle.com $ */
+/* $Id: HostImpl.cpp 99941 2023-05-23 17:06:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -181,9 +181,6 @@ typedef SOLARISFIXEDDISK *PSOLARISFIXEDDISK;
 #include <VBox/err.h>
 #include <VBox/settings.h>
 #include <VBox/sup.h>
-#ifdef VBOX_WITH_3D_ACCELERATION
-# include <VBox/VBoxOGL.h>
-#endif
 #include <iprt/x86.h>
 
 #include "VBox/com/MultiResult.h"
@@ -1475,7 +1472,7 @@ HRESULT Host::getAcceleration3DAvailable(BOOL *aSupported)
         alock.release();
 
 #ifdef VBOX_WITH_3D_ACCELERATION
-        bool fSupported = VBoxOglIs3DAccelerationSupported();
+        bool fSupported = true; // Test if Vulkan or DirectX is appropriately supported on the host
 #else
         bool fSupported = false; /* shouldn't get here, but just in case. */
 #endif
