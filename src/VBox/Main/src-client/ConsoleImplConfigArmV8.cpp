@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 99915 2023-05-22 18:42:10Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 99925 2023-05-23 06:46:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -72,6 +72,7 @@
 /* Darwin compile kludge */
 #undef PVM
 
+#ifdef VBOX_WITH_VIRT_ARMV8
 /**
  * Worker for configConstructor.
  *
@@ -641,3 +642,5 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 
     return vrc;
 }
+#endif /* !VBOX_WITH_VIRT_ARMV8 */
+
