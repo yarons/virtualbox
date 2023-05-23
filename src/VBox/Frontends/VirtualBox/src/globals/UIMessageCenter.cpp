@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2134,13 +2134,13 @@ void UIMessageCenter::sltHandleHelpRequest()
 void UIMessageCenter::sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword)
 {
     /* First open or show the help browser: */
-    sltShowUserManual(uiCommon().helpFile());
+    checkManualFileAndShow();
     /* Show the help page for the @p strHelpKeyword: */
-    if (m_pHelpBrowserDialog)
+    if (m_pHelpBrowserDialog && !strHelpKeyword.isEmpty())
         m_pHelpBrowserDialog->showHelpForKeyword(strHelpKeyword);
 }
 
-void UIMessageCenter::sltShowHelpHelpDialog()
+void UIMessageCenter::checkManualFileAndShow()
 {
 #ifndef VBOX_OSE
     /* For non-OSE version we just open it: */

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 99904 2023-05-22 14:44:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.h 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -464,7 +464,6 @@ public slots:
     void sltShowOracle();
     void sltShowOnlineDocumentation();
     void sltShowHelpAboutDialog();
-    void sltShowHelpHelpDialog();
     void sltResetSuppressedMessages();
     void sltShowUserManual(const QString &strHelpFilePath);
 
@@ -524,6 +523,9 @@ private:
                        int iButton1, int iButton2, int iButton3,
                        const QString &strButtonText1, const QString &strButtonText2, const QString &strButtonText3,
                        const QString &strAutoConfirmId, const QString &strHelpKeyword) const;
+
+    /// @todo move it away ..
+    void checkManualFileAndShow();
 
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;

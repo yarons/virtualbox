@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 99561 2023-05-02 10:19:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1086,7 +1086,7 @@ void UIMachineLogic::prepareActionConnections()
     /* 'Help' menu 'Contents' action. Done here since we react differently to this action
      * in manager and runtime UI: */
     connect(actionPool()->action(UIActionIndex_Simple_Contents), &UIAction::triggered,
-            &msgCenter(), &UIMessageCenter::sltShowHelpHelpDialog);
+            &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* 'Debug' actions connections: */
