@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 99942 2023-05-23 18:14:13Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -326,7 +326,6 @@ SOLARIS_STRIP_EXES = \
 	VBoxNetNAT \
 	$(if $(VBOX_WITH_EXTPACK),VBoxExtPackHelperApp,) \
 	VBoxSVC \
-	$(if $(VBOX_WITH_VMSVGA3D), VBoxTestOGL,) \
 	VBoxXPCOMIPCD \
 	$(if $(VBOX_WITH_DTRACE),VBoxDTrace,) \
 	$(if $(VBOX_WITH_HOST_SHIPPING_AUDIO_TEST),VBoxAudioTest,)
