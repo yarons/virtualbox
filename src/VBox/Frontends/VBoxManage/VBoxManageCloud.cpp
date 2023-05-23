@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 99513 2023-04-21 21:59:02Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 99931 2023-05-23 11:43:32Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -373,7 +373,7 @@ static RTEXITCODE listCloudImages(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT pCo
     if (strCompartmentId.isNotEmpty())
     {
         CHECK_ERROR2_RET(hrc, pCloudProfile,
-                         SetProperty(Bstr("compartment").raw(), Bstr(strCompartmentId).raw()),\
+                         SetProperty(Bstr("compartment").raw(), Bstr(strCompartmentId).raw()),
                          RTEXITCODE_FAILURE);
     }
     else
@@ -519,7 +519,7 @@ static RTEXITCODE listCloudVnicAttachments(HandlerArg *a, int iFirst, PCLOUDCOMM
     if (strCompartmentId.isNotEmpty())
     {
         CHECK_ERROR2_RET(hrc, pCloudProfile,
-                         SetProperty(Bstr("compartment").raw(), Bstr(strCompartmentId).raw()),\
+                         SetProperty(Bstr("compartment").raw(), Bstr(strCompartmentId).raw()),
                          RTEXITCODE_FAILURE);
     }
     else
