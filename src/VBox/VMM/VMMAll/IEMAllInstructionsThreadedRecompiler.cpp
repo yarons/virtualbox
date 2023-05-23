@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99930 2023-05-23 09:53:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 99932 2023-05-23 12:16:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -291,9 +291,9 @@ static VBOXSTRICTRC iemThreadedTbExec(PVMCCV pVM, PVMCPUCC pVCpu, PIEMTB pTb)
 VMMDECL(VBOXSTRICTRC) IEMExecRecompilerThreaded(PVMCC pVM, PVMCPUCC pVCpu)
 {
     /*
-     * Run-loop. 
-     *  
-     * If we're using setjmp/longjmp we combine all the catching here to avoid 
+     * Run-loop.
+     *
+     * If we're using setjmp/longjmp we combine all the catching here to avoid
      * having to call setjmp for each block we're executing.
      */
     for (;;)
