@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 98218 2023-01-22 23:01:17Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -717,20 +717,16 @@ VBGLR3DECL(int) VbglR3ClipboardRootListRead(PVBGLR3SHCLCMDCTX pCtx, PSHCLROOTLIS
     PSHCLROOTLIST pRootList = ShClTransferRootListAlloc();
     if (pRootList)
     {
-        SHCLROOTLISTHDR srcRootListHdr;
-        rc = vbglR3ClipboardRootListHdrRead(pCtx, &srcRootListHdr);
+        rc = vbglR3ClipboardRootListHdrRead(pCtx, &pRootList->Hdr);
         if (RT_SUCCESS(rc))
         {
-            pRootList->Hdr.cRoots = srcRootListHdr.cRoots;
-            pRootList->Hdr.fRoots = 0; /** @todo Implement this. */
-
-            if (srcRootListHdr.cRoots)
+            if (pRootList->Hdr.cRoots)
             {
                 pRootList->paEntries =
-                    (PSHCLROOTLISTENTRY)RTMemAllocZ(srcRootListHdr.cRoots * sizeof(SHCLROOTLISTENTRY));
+                    (PSHCLROOTLISTENTRY)RTMemAllocZ(pRootList->Hdr.cRoots * sizeof(SHCLROOTLISTENTRY));
                 if (pRootList->paEntries)
                 {
-                    for (uint32_t i = 0; i < srcRootListHdr.cRoots; i++)
+                    for (uint32_t i = 0; i < pRootList->Hdr.cRoots; i++)
                     {
                         SHCLROOTLISTENTRY *pEntry = &pRootList->paEntries[i];
                         AssertPtr(pEntry);
@@ -2115,7 +2111,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
 
                         LogFlowFunc(("pszPath=%s\n", openParmsList.pszPath));
 
-                        SHCLLISTHANDLE hList = SHCLLISTHANDLE_INVALID;
+                        SHCLLISTHANDLE hList = NIL_SHCLLISTHANDLE;
                         rc = ShClTransferListOpen(pTransfer, &openParmsList, &hList);
 
                         /* Reply in any case. */
@@ -2153,7 +2149,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
             {
                 /** @todo Handle filter + list features. */
 
-                SHCLLISTHANDLE hList  = SHCLLISTHANDLE_INVALID;
+                SHCLLISTHANDLE hList  = NIL_SHCLLISTHANDLE;
                 uint32_t       fFlags = 0;
                 rc = VbglR3ClipboardListHdrReadRecvReq(pCmdCtx, &hList, &fFlags);
                 if (RT_SUCCESS(rc))

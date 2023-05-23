@@ -1,4 +1,4 @@
-/* $Id: RTHttpServer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTHttpServer.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Utility for running a (simple) HTTP server.
  *
@@ -520,8 +520,11 @@ static DECLCALLBACK(int) onOpen(PRTHTTPCALLBACKDATA pData, PRTHTTPSERVERREQ pReq
     return rc;
 }
 
-static DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData, void *pvHandle, void *pvBuf, size_t cbBuf, size_t *pcbRead)
+static DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData,
+                                PRTHTTPSERVERREQ pReq, void *pvHandle, void *pvBuf, size_t cbBuf, size_t *pcbRead)
 {
+    RT_NOREF(pReq);
+
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
 
@@ -553,8 +556,10 @@ static DECLCALLBACK(int) onRead(PRTHTTPCALLBACKDATA pData, void *pvHandle, void 
     return rc;
 }
 
-static DECLCALLBACK(int) onClose(PRTHTTPCALLBACKDATA pData, void *pvHandle)
+static DECLCALLBACK(int) onClose(PRTHTTPCALLBACKDATA pData, PRTHTTPSERVERREQ pReq, void *pvHandle)
 {
+    RT_NOREF(pReq);
+
     PHTTPSERVERDATA pThis = (PHTTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(HTTPSERVERDATA));
 
@@ -808,7 +813,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 98103 $\n");
+                RTPrintf("$Revision: 99937 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:

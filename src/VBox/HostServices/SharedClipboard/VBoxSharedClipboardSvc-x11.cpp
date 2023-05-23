@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -504,7 +504,7 @@ int ShClBackendTransferCreate(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLT
 {
     RT_NOREF(pBackend);
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-    return ShClHttpTransferRegister(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
+    return ShClHttpTransferRegisterAndMaybeStart(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
 #else
     RT_NOREF(pClient, pTransfer);
 #endif
@@ -515,7 +515,7 @@ int ShClBackendTransferDestroy(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCL
 {
     RT_NOREF(pBackend);
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
-    return ShClHttpTransferUnregister(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
+    return ShClHttpTransferUnregisterAndMaybeStop(&pClient->State.pCtx->X11.HttpCtx, pTransfer);
 #else
     RT_NOREF(pClient, pTransfer);
 #endif
