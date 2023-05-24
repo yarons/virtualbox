@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99801 2023-05-15 22:58:23Z brent.paulson@oracle.com $
+# $Id: Makefile.kmk 99960 2023-05-24 21:55:50Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -141,6 +141,7 @@ ifdef VBOX_WITH_TESTCASES # The whole file
   	tstSemPingPong \
   	tstRTSemRW \
   	tstRTSemXRoads \
+  	tstRTSg \
   	tstRTSort \
   	tstRTStrAlloc \
   	tstRTStrCache \
@@ -828,6 +829,9 @@ ifdef VBOX_WITH_TESTCASES # The whole file
 
  tstRTSemXRoads_TEMPLATE = VBoxR3TstExe
  tstRTSemXRoads_SOURCES = tstRTSemXRoads.cpp
+
+ tstRTSg_TEMPLATE = VBoxR3TstExe
+ tstRTSg_SOURCES = tstRTSg.cpp
 
  tstRTSort_TEMPLATE = VBoxR3TstExe
  tstRTSort_SOURCES = tstRTSort.cpp
