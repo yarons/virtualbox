@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 99494 2023-04-20 19:52:23Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxSDL.cpp 99950 2023-05-24 10:26:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -3572,11 +3572,6 @@ static void SetPointerShape(const PointerShapeChangeData *data)
 #endif
 
 #if defined(RT_OS_WINDOWS)
-        uint32_t srcShapePtrScan = data->width * 4;
-        const uint8_t *srcAndMaskPtr = shape;
-        const uint8_t *srcShapePtr = shape + ((andMaskSize + 3) & ~3);
-        uint32_t andMaskSize = (data->width + 7) / 8 * data->height;
-        const uint8_t* shape = data->shape.raw();
         BITMAPV5HEADER bi;
         HBITMAP hBitmap;
         void *lpBits;
