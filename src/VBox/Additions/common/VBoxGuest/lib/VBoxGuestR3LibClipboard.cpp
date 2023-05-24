@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 99954 2023-05-24 11:03:01Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 99955 2023-05-24 11:11:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1770,14 +1770,14 @@ static DECLCALLBACK(int) vbglR3ClipboardTransferIfaceListHdrRead(PSHCLTXPROVIDER
 
 /** @copydoc SHCLTXPROVIDERIFACE::pfnListEntryRead */
 static DECLCALLBACK(int) vbglR3ClipboardTransferIfaceListEntryRead(PSHCLTXPROVIDERCTX pCtx,
-                                                                   SHCLLISTHANDLE hList, PSHCLLISTENTRY pEntry)
+                                                                   SHCLLISTHANDLE hList, PSHCLLISTENTRY pListEntry)
 {
     LogFlowFuncEnter();
 
     PVBGLR3SHCLCMDCTX pCmdCtx = (PVBGLR3SHCLCMDCTX)pCtx->pvUser;
     AssertPtr(pCmdCtx);
 
-    int rc = VbglR3ClipboardListEntryRead(pCmdCtx, hList, pEntry);
+    int rc = VbglR3ClipboardListEntryRead(pCmdCtx, hList, pListEntry);
 
     LogFlowFuncLeaveRC(rc);
     return rc;

@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 99951 2023-05-24 10:37:12Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 99955 2023-05-24 11:11:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1339,6 +1339,14 @@ int ShClTransferListRead(PSHCLTRANSFER pTransfer, SHCLLISTHANDLE hList,
     return rc;
 }
 
+/**
+ * Writes a single transfer list entry.
+ *
+ * @returns VBox status code.
+ * @param   pTransfer           Clipboard transfer to handle.
+ * @param   hList               List handle of list to write to.
+ * @param   pEntry              Entry information to write.
+ */
 int ShClTransferListWrite(PSHCLTRANSFER pTransfer, SHCLLISTHANDLE hList,
                           PSHCLLISTENTRY pEntry)
 {
