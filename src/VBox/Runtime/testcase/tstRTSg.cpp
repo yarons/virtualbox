@@ -1,4 +1,4 @@
-/* $Id: tstRTSg.cpp 99960 2023-05-24 21:55:50Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTSg.cpp 99961 2023-05-24 21:57:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - S/G Buffers.
  */
@@ -274,5 +274,4 @@ int main()
 
     return RTTestSummaryAndDestroy(g_hTest);
 }
-
 

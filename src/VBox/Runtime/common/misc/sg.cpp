@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 99960 2023-05-24 21:55:50Z knut.osmundsen@oracle.com $ */
+/* $Id: sg.cpp 99961 2023-05-24 21:57:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -50,7 +50,7 @@
  */
 static void *rtSgBufGet(PRTSGBUF pSgBuf, size_t *pcbData)
 {
-    /* 
+    /*
      * Check that the S/G buffer has memory left (!RTSgIsEnd(pSgBuf)).
      */
     unsigned const idxSeg = pSgBuf->idxSeg;
@@ -75,7 +75,7 @@ static void *rtSgBufGet(PRTSGBUF pSgBuf, size_t *pcbData)
                    pSgBuf->paSegs[pSgBuf->idxSeg].cbSeg));
 #endif
 
-        /* 
+        /*
          * Advance ...
          */
         if (cbSegLeft == cbData)
