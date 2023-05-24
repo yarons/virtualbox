@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.h 99948 2023-05-24 08:11:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -70,7 +70,6 @@ public:
 
     UISoftKeyboard(QWidget *pParent, UIMachine *pMachine,
                    QWidget *pCenterWidget, QString strMachineName = QString());
-    ~UISoftKeyboard();
 
 protected:
 
