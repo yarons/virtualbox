@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIDialogButtonBox.cpp 99947 2023-05-24 06:57:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogButtonBox class implementation.
  */
@@ -31,6 +31,7 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
+#include "UICommon.h"
 #include "UIHelpBrowserDialog.h"
 #include "UISpecialControls.h"
 
