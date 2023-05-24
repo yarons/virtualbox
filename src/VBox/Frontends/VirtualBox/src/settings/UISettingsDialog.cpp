@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -874,7 +874,7 @@ void UISettingsDialog::prepareWidgets()
                 connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UISettingsDialog::accept);
 #ifndef VBOX_WS_MAC
                 connect(m_pButtonBox->button(QDialogButtonBox::Help), &QAbstractButton::pressed,
-                        &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
+                        m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
 #endif
 
                 pLayoutMain->addWidget(m_pButtonBox, 2, 0, 1, 2);

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -235,8 +235,8 @@ public:
 
     /** @name Help browser stuff.
       * @{ */
-        /** Shpws the help browser. */
-        void showHelpBrowser();
+        /** Returns the current help key word. */
+        QString currentHelpKeyword() const;
     /** @} */
 
 public slots:

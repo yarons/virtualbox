@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIDialogButtonBox.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogButtonBox class implementation.
  */
@@ -31,6 +31,7 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
+#include "UIHelpBrowserDialog.h"
 #include "UISpecialControls.h"
 
 /* Other VBox includes: */
@@ -166,4 +167,10 @@ int QIDialogButtonBox::findEmptySpace(QBoxLayout *pLayout) const
             break;
     }
     return i;
+}
+
+void QIDialogButtonBox::sltHandleHelpRequest()
+{
+    AssertReturnVoid(sender());
+    UIHelpBrowserDialog::findManualFileAndShow(uiCommon().helpKeyword(sender()));
 }

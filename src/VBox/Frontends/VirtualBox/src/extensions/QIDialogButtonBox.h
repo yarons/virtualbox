@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIDialogButtonBox.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogButtonBox class declaration.
  */
@@ -79,6 +79,11 @@ public:
 
     /** Defines whether button-box should avoid picking default button. */
     void setDoNotPickDefaultButton(bool fDoNotPickDefaultButton);
+
+public slots:
+
+    /** Handles help request. */
+    void sltHandleHelpRequest();
 
 protected:
 

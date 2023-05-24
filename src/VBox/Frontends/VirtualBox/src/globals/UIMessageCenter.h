@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -43,7 +43,6 @@
 #include "CProgress.h"
 
 /* Forward declarations: */
-class UIHelpBrowserDialog;
 class UIMedium;
 struct StorageSlot;
 #ifdef VBOX_WITH_DRAG_AND_DROP
@@ -465,12 +464,6 @@ public slots:
     void sltShowOnlineDocumentation();
     void sltShowHelpAboutDialog();
     void sltResetSuppressedMessages();
-    void sltShowUserManual(const QString &strHelpFilePath);
-
-    /// @todo move it away ..
-    void sltHelpBrowserClosed();
-    void sltHandleHelpRequest();
-    void sltHandleHelpRequestWithKeyword(const QString &strHelpKeyword);
 
 private slots:
 
@@ -524,14 +517,8 @@ private:
                        const QString &strButtonText1, const QString &strButtonText2, const QString &strButtonText3,
                        const QString &strAutoConfirmId, const QString &strHelpKeyword) const;
 
-    /// @todo move it away ..
-    void checkManualFileAndShow();
-
     /** Holds the list of shown warnings. */
     mutable QStringList m_warnings;
-
-    /** Holds UIHelpBrowserDialog instance. */
-    UIHelpBrowserDialog *m_pHelpBrowserDialog;
 
     /** Holds the singleton message-center instance. */
     static UIMessageCenter *s_pInstance;

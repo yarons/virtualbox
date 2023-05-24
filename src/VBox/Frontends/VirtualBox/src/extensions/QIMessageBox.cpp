@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIMessageBox.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -44,6 +44,7 @@
 #include "QIRichTextLabel.h"
 #include "UICommon.h"
 #include "UIIconPool.h"
+#include "UIHelpBrowserDialog.h"
 #include "UIMessageCenter.h"
 
 /* Other VBox includes: */
@@ -289,7 +290,7 @@ void QIMessageBox::prepare()
                 if (m_pButtonHelp)
                 {
                     uiCommon().setHelpKeyword(m_pButtonHelp, m_strHelpKeyword);
-                    connect(m_pButtonHelp, &QPushButton::clicked, &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
+                    connect(m_pButtonHelp, &QPushButton::clicked, m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
                 }
             }
 

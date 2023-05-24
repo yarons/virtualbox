@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1688,7 +1688,7 @@ void UIExtraDataManagerWindow::prepareButtonBox()
         /* Configure button-box: */
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Help | QDialogButtonBox::Close);
         m_pButtonBox->button(QDialogButtonBox::Close)->setShortcut(Qt::Key_Escape);
-        connect(m_pButtonBox, &QIDialogButtonBox::helpRequested, &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
+        connect(m_pButtonBox, &QIDialogButtonBox::helpRequested, m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
         connect(m_pButtonBox, &QIDialogButtonBox::rejected,      this, &UIExtraDataManagerWindow::close);
         /* Add button-box into main layout: */
         m_pMainLayout->addWidget(m_pButtonBox);

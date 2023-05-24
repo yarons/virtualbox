@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIManagerDialog.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -104,9 +104,6 @@ signals:
 
     /** Notifies listeners about dialog should be closed. */
     void sigClose();
-    /** Notifies listeners about help requested.
-      * @param  strHelpKeyword  Brings the tag to find related section in the manual. */
-    void sigHelpRequested(const QString &strHelpKeyword);
 
 protected:
 

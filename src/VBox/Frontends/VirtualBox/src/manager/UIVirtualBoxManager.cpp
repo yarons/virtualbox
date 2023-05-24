@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 99438 2023-04-18 09:03:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -57,6 +57,7 @@
 #include "UIExtension.h"
 #include "UIExtensionPackManager.h"
 #include "UIExtraDataManager.h"
+#include "UIHelpBrowserDialog.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
 #include "UIMediumManager.h"
@@ -2139,7 +2140,10 @@ void UIVirtualBoxManager::sltPerformMachineSearchWidgetVisibilityToggling(bool f
 
 void UIVirtualBoxManager::sltPerformShowHelpBrowser()
 {
-    m_pWidget->showHelpBrowser();
+    QString strHelpKeyword;
+    if (m_pWidget)
+        strHelpKeyword = m_pWidget->currentHelpKeyword();
+    UIHelpBrowserDialog::findManualFileAndShow(strHelpKeyword);
 }
 
 void UIVirtualBoxManager::prepare()
@@ -2305,6 +2309,7 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltOpenSettingsDialog);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange,
             this, &UIVirtualBoxManager::sltCurrentSnapshotItemChange);
+
     connect(menuBar(), &QMenuBar::customContextMenuRequested,
             m_pWidget, &UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest);
 

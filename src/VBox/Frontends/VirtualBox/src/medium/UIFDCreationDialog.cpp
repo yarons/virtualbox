@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -270,7 +270,7 @@ void UIFDCreationDialog::prepare()
             connect(m_pButtonBox, &QDialogButtonBox::accepted, this, &UIFDCreationDialog::accept);
             connect(m_pButtonBox, &QDialogButtonBox::rejected, this, &UIFDCreationDialog::reject);
             connect(m_pButtonBox->button(QDialogButtonBox::Help), &QPushButton::pressed,
-                    &(msgCenter()), &UIMessageCenter::sltHandleHelpRequest);
+                    m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
             pLayoutMain->addWidget(m_pButtonBox, 3, 0, 1, 3);
         }
     }

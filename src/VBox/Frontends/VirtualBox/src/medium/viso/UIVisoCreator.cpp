@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -37,7 +37,6 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
-#include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "QIToolBar.h"
 #include "UIVisoHostBrowser.h"
@@ -687,7 +686,7 @@ void UIVisoCreatorDialog::prepareWidgets()
         pMainLayout->addWidget(m_pButtonBox);
 
         connect(m_pButtonBox->button(QIDialogButtonBox::Help), &QPushButton::pressed,
-                &(msgCenter()), &UIMessageCenter::sltHandleHelpRequest);
+                m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
         m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
 
         uiCommon().setHelpKeyword(m_pButtonBox->button(QIDialogButtonBox::Help), "create-optical-disk-image");

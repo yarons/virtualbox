@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 98500 2023-02-08 12:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISoftKeyboard.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -64,7 +64,6 @@ class UISoftKeyboard : public QMainWindowWithRestorableGeometryAndRetranslateUi
 
 signals:
 
-    void sigHelpRequested(const QString &strHelpKeyword);
     void sigClose();
 
 public:

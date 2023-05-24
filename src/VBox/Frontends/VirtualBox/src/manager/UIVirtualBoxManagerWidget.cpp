@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 99628 2023-05-05 10:18:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -287,15 +287,14 @@ void UIVirtualBoxManagerWidget::updateToolBarMenuButtons(bool fSeparateMenuSecti
         pButton->setPopupMode(fSeparateMenuSection ? QToolButton::MenuButtonPopup : QToolButton::DelayedPopup);
 }
 
-void UIVirtualBoxManagerWidget::showHelpBrowser()
+QString UIVirtualBoxManagerWidget::currentHelpKeyword() const
 {
     QString strHelpKeyword;
     if (isGlobalItemSelected())
         strHelpKeyword = m_pPaneToolsGlobal->currentHelpKeyword();
     else if (isMachineItemSelected())
         strHelpKeyword = m_pPaneToolsMachine->currentHelpKeyword();
-
-    msgCenter().sltHandleHelpRequestWithKeyword(strHelpKeyword);
+    return strHelpKeyword;
 }
 
 void UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest(const QPoint &position)

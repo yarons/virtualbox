@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationObjectItem.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class implementation.
  */
@@ -38,6 +38,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
+#include "UIHelpBrowserDialog.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UINotificationObject.h"
@@ -89,7 +90,7 @@ UINotificationObjectItem::UINotificationObjectItem(QWidget *pParent, UINotificat
                 m_pButtonHelp->setIconSize(QSize(10, 10));
                 m_pButtonHelp->setProperty("helpkeyword", m_pObject->helpKeyword());
                 connect(m_pButtonHelp, &QIToolButton::clicked,
-                        &msgCenter(), &UIMessageCenter::sltHandleHelpRequest);
+                        this, &UINotificationObjectItem::sltHandleHelpRequest);
 
                 m_pLayoutUpper->addWidget(m_pButtonHelp);
             }
@@ -441,4 +442,9 @@ UINotificationObjectItem *UINotificationItem::create(QWidget *pParent, UINotific
 #endif
     /* Handle defaults: */
     return new UINotificationObjectItem(pParent, pObject);
+}
+
+void UINotificationObjectItem::sltHandleHelpRequest()
+{
+    UIHelpBrowserDialog::findManualFileAndShow("helpkeyword");
 }
