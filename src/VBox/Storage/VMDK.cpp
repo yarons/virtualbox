@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VMDK.cpp 99963 2023-05-24 23:27:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -43,8 +43,9 @@
 #include <iprt/uuid.h>
 #include <iprt/path.h>
 #include <iprt/rand.h>
-#include <iprt/string.h>
+#include <iprt/sg.h>
 #include <iprt/sort.h>
+#include <iprt/string.h>
 #include <iprt/zip.h>
 #include <iprt/asm.h>
 #ifdef RT_OS_WINDOWS
@@ -479,7 +480,7 @@ typedef struct VMDKIMAGE
      * and allocating/freeing an array in the read/write functions every time
      * is too expensive.
      */
-    PPDMDATASEG     paSegments;
+    PRTSGSEG        paSegments;
     /** Entries available in the segments array. */
     unsigned        cSegments;
 
