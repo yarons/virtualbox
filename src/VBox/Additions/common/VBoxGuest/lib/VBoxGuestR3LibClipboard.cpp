@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 99951 2023-05-24 10:37:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1849,13 +1849,16 @@ static int vbglR3ClipboardTransferStart(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFER
             rc = ShClTransferCtxTransferRegisterById(pTransferCtx, pTransfer, uTransferID);
             if (RT_SUCCESS(rc))
             {
+                SHCLTXPROVIDERCREATIONCTX creationCtx;
+                RT_ZERO(creationCtx);
+
+                /* Assign local provider first and overwrite interface methods below if needed. */
+                VBClTransferQueryIfaceLocal(&creationCtx.Interface);
+
                 /* If this is a read transfer (reading data from host), set the interface to use
                  * our VbglR3 routines here. */
                 if (enmDir == SHCLTRANSFERDIR_FROM_REMOTE)
                 {
-                    SHCLTXPROVIDERCREATIONCTX creationCtx;
-                    RT_ZERO(creationCtx);
-
                     creationCtx.Interface.pfnRootsGet      = vbglR3ClipboardTransferIfaceGetRoots;
 
                     creationCtx.Interface.pfnListOpen      = vbglR3ClipboardTransferIfaceListOpen;
