@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 99930 2023-05-23 09:53:04Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 99982 2023-05-25 19:59:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1081,7 +1081,7 @@ static VBOXSTRICTRC emR3RecompilerExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             STAM_PROFILE_START(&pVCpu->em.s.StatREMExec, c);
 #ifdef VBOX_WITH_IEM_RECOMPILER
             if (pVM->em.s.fIemRecompiled)
-                rcStrict = IEMExecRecompilerThreaded(pVCpu);
+                rcStrict = IEMExecRecompilerThreaded(pVM, pVCpu);
             else
 #endif
                 rcStrict = IEMExecLots(pVCpu, 8192 /*cMaxInstructions*/, 4095 /*cPollRate*/, NULL /*pcInstructions*/);
