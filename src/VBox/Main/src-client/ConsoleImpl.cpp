@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 99913 2023-05-22 18:36:24Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 99970 2023-05-25 08:56:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10010,7 +10010,7 @@ int Console::i_changeClipboardFileTransferMode(bool aEnabled)
     RT_ZERO(parm);
 
     parm.type     = VBOX_HGCM_SVC_PARM_32BIT;
-    parm.u.uint32 = aEnabled ? VBOX_SHCL_TRANSFER_MODE_ENABLED : VBOX_SHCL_TRANSFER_MODE_DISABLED;
+    parm.u.uint32 = aEnabled ? VBOX_SHCL_TRANSFER_MODE_F_ENABLED : VBOX_SHCL_TRANSFER_MODE_F_NONE;
 
     int vrc = pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHCL_HOST_FN_SET_TRANSFER_MODE, 1 /* cParms */, &parm);
     if (RT_FAILURE(vrc))
