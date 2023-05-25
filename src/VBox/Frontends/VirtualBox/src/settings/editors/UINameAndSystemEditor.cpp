@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 99975 2023-05-25 11:22:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -657,7 +657,7 @@ void UINameAndSystemEditor::prepareFamilyCombo()
         {
             UIGuestOSType guiType;
             guiType.typeId = comType.GetId();
-            guiType.typeDescription = comType.GetDescription();
+            guiType.typeDescription = QString(comType.GetDescription()).remove(" (64-bit)", Qt::CaseInsensitive);
             guiType.is64bit = comType.GetIs64Bit();
             m_types[strFamilyId] << guiType;
         }
