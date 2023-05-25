@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 99972 2023-05-25 10:08:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.h 99973 2023-05-25 10:14:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -87,7 +87,7 @@ private:
 
     /** A passthru function for QHelpIndexWidget::showHelpForKeyword. */
     void showHelpForKeyword(const QString &strKeyword);
-    
+
     QString m_strHelpFilePath;
     UIHelpBrowserWidget *m_pWidget;
     QWidget *m_pCenterWidget;
