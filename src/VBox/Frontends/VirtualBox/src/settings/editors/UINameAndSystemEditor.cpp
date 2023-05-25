@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 99979 2023-05-25 11:52:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 99980 2023-05-25 12:34:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -402,6 +402,13 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
         const int iIndexOracle = m_pComboType->findData(strDefaultID, TypeID);
         if (iIndexOracle != -1)
             m_pComboType->setCurrentIndex(iIndexOracle);
+    }
+    else if (m_strFamilyId == "Other")
+    {
+        QString strDefaultID = "Other_64";
+        const int iIndexOther = m_pComboType->findData(strDefaultID, TypeID);
+        if (iIndexOther != -1)
+            m_pComboType->setCurrentIndex(iIndexOther);
     }
     /* Else try to pick the first 64-bit one if it exists.: */
     else
