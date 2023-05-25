@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: clipboard-common.cpp 99974 2023-05-25 11:10:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -149,6 +149,9 @@ int ShClEventSourceDestroy(PSHCLEVENTSOURCE pSource)
     if (!pSource)
         return VINF_SUCCESS;
 
+    if (!RTCritSectIsInitialized(&pSource->CritSect)) /* Already destroyed? Bail out. */
+        return VINF_SUCCESS;
+
     LogFlowFunc(("ID=%RU32\n", pSource->uID));
 
     int rc = RTCritSectEnter(&pSource->CritSect);
@@ -293,6 +296,7 @@ static void shClEventDestroy(PSHCLEVENT pEvent)
     }
 
     ShClPayloadFree(pEvent->pPayload);
+    pEvent->pPayload = NULL;
 
     pEvent->idEvent = NIL_SHCLEVENTID;
 }
