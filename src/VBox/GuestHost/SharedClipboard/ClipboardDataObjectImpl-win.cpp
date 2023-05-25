@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 99966 2023-05-25 08:35:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -634,7 +634,7 @@ STDMETHODIMP SharedClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTG
 
                 /* Don't block for too long here, as this also will screw other apps running on the OS. */
                 LogFunc(("Waiting for listing to arrive ...\n"));
-                rc = RTSemEventWait(m_EventListComplete, 30 * 1000 /* 30s timeout */);
+                rc = RTSemEventWait(m_EventListComplete, VBOX_SHCL_TIMEOUT_DEFAULT_MS);
                 if (RT_SUCCESS(rc))
                 {
                     LogFunc(("Listing complete\n"));
