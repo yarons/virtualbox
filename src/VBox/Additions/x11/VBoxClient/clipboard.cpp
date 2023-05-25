@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 99620 2023-05-05 09:08:00Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard.cpp 99977 2023-05-25 11:44:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common Shared Clipboard wrapper service.
  */
@@ -82,7 +82,9 @@ static DECLCALLBACK(int) vbclShClWorker(bool volatile *pfShutdown)
 
     int rc = VINF_SUCCESS;
 
-    if (VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_X11)
+    if (   VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_X11
+        /* If Wayland w/ X fallback support is installed (also called XWayland), prefer using the X clipboard for now. */
+        || VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_XWAYLAND)
     {
         rc = VBClX11ClipboardInit();
         if (RT_SUCCESS(rc))
@@ -93,12 +95,10 @@ static DECLCALLBACK(int) vbclShClWorker(bool volatile *pfShutdown)
             rc = VBClX11ClipboardMain();
         }
     }
-#if 0
-    else (VBClGetSessionType() == GHDISPLAYSERVERTYPE_WAYLAND)
+    else if (VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
     {
-
+        VBClLogError("Shared Clipboard for Wayland not supported yet!\n");
     }
-#endif
 
     if (RT_FAILURE(rc))
         VBClLogError("Service terminated abnormally with %Rrc\n", rc);
