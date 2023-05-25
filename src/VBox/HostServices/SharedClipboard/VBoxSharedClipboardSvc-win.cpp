@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 99966 2023-05-25 08:35:13Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 99967 2023-05-25 08:36:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -167,7 +167,7 @@ static int vboxClipboardSvcWinDataRead(PSHCLCONTEXT pCtx, UINT uFormat, void **p
     if (RT_SUCCESS(rc))
     {
         PSHCLEVENTPAYLOAD pPayload;
-        rc = ShClEventWait(pEvent, VBOX_SHCL_TIMEOUT_DEFAULT_MS, &pPayload);
+        rc = ShClEventWait(pEvent, SHCL_TIMEOUT_DEFAULT_MS, &pPayload);
         if (RT_SUCCESS(rc))
         {
             *ppvData = pPayload ? pPayload->pvData : NULL;
