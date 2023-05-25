@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 99735 2023-05-10 17:29:47Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 99976 2023-05-25 11:44:00Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -286,7 +286,13 @@ typedef struct NEM
     /** Set if hv_vm_create() was called successfully. */
     bool                        fCreatedVm   : 1;
 # if defined(VBOX_VMM_TARGET_ARMV8)
-    /** @todo */
+    /** @name vTimer related state.
+     * @{ */
+    /** The counter frequency in Hz as obtained from CNTFRQ_EL0. */
+    uint64_t                    u64CntFrqHz;
+    /** The CNTVCT_EL0 value after the VM was resumed. */
+    uint64_t                    u64VTimerValuePaused;
+    /** @} */
 # else
     /** Set if hv_vm_space_create() was called successfully. */
     bool                        fCreatedAsid : 1;
@@ -484,6 +490,10 @@ typedef struct NEMCPU
     bool                        fEventPending;
     /** Flag whether the vTimer got activated and is masked. */
     bool                        fVTimerActivated;
+    /** Flag whether to update the vTimer offset. */
+    bool                        fVTimerOffUpdate;
+    /** The vTimer offset programmed. */
+    uint64_t                    u64VTimerOff;
 # else
     /** The vCPU handle associated with the EMT executing this vCPU. */
     hv_vcpuid_t                 hVCpuId;
