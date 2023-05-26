@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 99983 2023-05-26 00:10:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 99984 2023-05-26 01:20:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3814,7 +3814,7 @@ iemRaiseXcptOrInt(PVMCPUCC    pVCpu,
             /*
              * Check and handle if the event being raised is intercepted.
              */
-            VBOXSTRICTRC rcStrict0 = iemHandleSvmEventIntercept(pVCpu, u8Vector, fFlags, uErr, uCr2);
+            VBOXSTRICTRC rcStrict0 = iemHandleSvmEventIntercept(pVCpu, cbInstr, u8Vector, fFlags, uErr, uCr2);
             if (rcStrict0 != VINF_SVM_INTERCEPT_NOT_ACTIVE)
                 return rcStrict0;
         }
@@ -11224,7 +11224,8 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedOut(PVMCPUCC pVCpu, uint8_t cbInstr, ui
     Assert(cbReg <= 4 && cbReg != 3);
 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
-    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_3(iemCImpl_out, u16Port, fImm, cbReg);
+    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_3(iemCImpl_out, u16Port, cbReg,
+                                             ((uint8_t)fImm << 7) | 0xf /** @todo never worked with intercepts */);
     Assert(!pVCpu->iem.s.cActiveMappings);
     return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
 }
@@ -11247,7 +11248,8 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedIn(PVMCPUCC pVCpu, uint8_t cbInstr, uin
     Assert(cbReg <= 4 && cbReg != 3);
 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
-    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_3(iemCImpl_in, u16Port, fImm, cbReg);
+    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_3(iemCImpl_in, u16Port, cbReg,
+                                             ((uint8_t)fImm << 7) | 0xf /** @todo never worked with intercepts */);
     Assert(!pVCpu->iem.s.cActiveMappings);
     return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
 }
