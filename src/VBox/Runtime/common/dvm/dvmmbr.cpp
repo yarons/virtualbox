@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dvmmbr.cpp 99989 2023-05-26 12:06:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -1002,7 +1002,7 @@ static DECLCALLBACK(int) rtDvmFmtMbrVolumeRead(RTDVMVOLUMEFMT hVolFmt, uint64_t 
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
     AssertReturn(off + cbRead <= pVol->pEntry->cbPart, VERR_INVALID_PARAMETER);
 
-    return rtDvmDiskRead(pVol->pVolMgr->pDisk, pVol->pEntry->offPart + off, pvBuf, cbRead);
+    return rtDvmDiskReadUnaligned(pVol->pVolMgr->pDisk, pVol->pEntry->offPart + off, pvBuf, cbRead);
 }
 
 static DECLCALLBACK(int) rtDvmFmtMbrVolumeWrite(RTDVMVOLUMEFMT hVolFmt, uint64_t off, const void *pvBuf, size_t cbWrite)
