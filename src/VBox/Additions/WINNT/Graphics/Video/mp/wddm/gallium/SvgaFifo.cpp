@@ -1,4 +1,4 @@
-/* $Id: SvgaFifo.cpp 99862 2023-05-19 17:31:17Z dmitrii.grigorev@oracle.com $ */
+/* $Id: SvgaFifo.cpp 99990 2023-05-26 13:39:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA FIFO.
  */
@@ -869,6 +869,29 @@ void SvgaCmdBufProcess(PVBOXWDDM_EXT_VMSVGA pSvga)
                 break;
         }
     }
+}
+
+
+bool SvgaCmdBufIsIdle(PVBOXWDDM_EXT_VMSVGA pSvga)
+{
+    PVMSVGACBSTATE pCBState = pSvga->pCBState;
+
+    bool fIdle = true;
+
+    KIRQL OldIrql;
+    KeAcquireSpinLock(&pCBState->SpinLock, &OldIrql);
+    for (unsigned i = 0; i < RT_ELEMENTS(pCBState->aCBContexts); ++i)
+    {
+        PVMSVGACBCONTEXT pCBCtx = &pCBState->aCBContexts[i];
+        if (pCBCtx->cSubmitted > 0)
+        {
+            fIdle = false;
+            break;
+        }
+    }
+    KeReleaseSpinLock(&pCBState->SpinLock, OldIrql);
+
+    return fIdle;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPTypes.h 99990 2023-05-26 13:39:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -225,9 +225,8 @@ typedef struct VBOXWDDM_ALLOCATION
             PMDL                pMDL;                       /* Guest backing for aperture segment 2. */
             struct
             {
-                RTR0MEMOBJ      hMemObjGB;                  /* Guest backing pages for host segment 3. */
-                struct VMSVGAMOB *pMob;                     /* Mob for the pages. */
-            } gb;
+                struct VMSVGAMOB *pMob;                     /* Mob for the pages (including RTR0MEMOBJ). */
+            } gb; /** @todo remove the struct */
         };
     } dx;
 #endif /* VBOX_WITH_VMSVGA3D_DX */
