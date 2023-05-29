@@ -1,4 +1,4 @@
-/* $Id: Svga.h 99990 2023-05-26 13:39:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.h 99997 2023-05-29 10:00:48Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -264,6 +264,14 @@ typedef struct VBOXWDDM_EXT_VMSVGA
 
     uint64_t volatile u64MobFence;
     RTLISTANCHOR listMobDeferredDestruction; /* Mob to be deleted after. */
+
+#ifdef DEBUG
+    /* Statistics. */
+    uint32_t volatile cAllocatedMobs;
+    uint32_t volatile cAllocatedMobPages;
+    uint32_t volatile cAllocatedGmrs;
+    uint32_t volatile cAllocatedGmrPages;
+#endif
 
     /** Bitmap of used GMR ids. Bit 0 - GMR id 0, etc. */
     uint32_t *pu32GMRBits; /* Number of GMRs is controlled by the host (u32GmrMaxIds), so allocate the bitmap. */
@@ -562,20 +570,6 @@ NTSTATUS SvgaDefineGMRFB(PVBOXWDDM_EXT_VMSVGA pSvga,
                          uint32_t u32Offset,
                          uint32_t u32BytesPerLine,
                          bool fForce);
-
-NTSTATUS SvgaGenGMRReport(PVBOXWDDM_EXT_VMSVGA pSvga,
-                          uint32_t u32GmrId,
-                          SVGARemapGMR2Flags fRemapGMR2Flags,
-                          uint32_t u32NumPages,
-                          RTHCPHYS *paPhysAddresses,
-                          void *pvDst,
-                          uint32_t cbDst,
-                          uint32_t *pcbOut);
-NTSTATUS SvgaGMRReport(PVBOXWDDM_EXT_VMSVGA pSvga,
-                       uint32_t u32GmrId,
-                       SVGARemapGMR2Flags fRemapGMR2Flags,
-                       uint32_t u32NumPages,
-                       RTHCPHYS *paPhysAddresses);
 
 NTSTATUS SvgaRegionCreate(VBOXWDDM_EXT_VMSVGA *pSvga,
                           void *pvOwner,

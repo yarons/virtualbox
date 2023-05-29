@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SvgaCmd.h 99997 2023-05-29 10:00:48Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -48,9 +48,6 @@ void SvgaCmdDefineGMRFB(void *pvCmd, uint32_t u32Offset, uint32_t u32BytesPerLin
 
 void Svga3dCmdDefineContext(void *pvCmd, uint32_t u32Cid);
 void Svga3dCmdDestroyContext(void *pvCmd, uint32_t u32Cid);
-
-void SvgaCmdDefineGMR2(void *pvCmd, uint32_t u32GmrId, uint32_t cPages);
-void SvgaCmdRemapGMR2(void *pvCmd, uint32_t u32GmrId, SVGARemapGMR2Flags flags, uint32 offsetPages, uint32_t numPages);
 
 void Svga3dCmdPresent(void *pvCmd, uint32_t u32Sid, uint32_t u32Width, uint32_t u32Height);
 
