@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 99740 2023-05-11 01:11:15Z knut.osmundsen@oracle.com $ */
+/* $Id: TM.cpp 100000 2023-05-30 06:09:42Z alexander.eichner@oracle.com $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1269,6 +1269,9 @@ VMM_INT_DECL(void) TMR3Reset(PVM pVM)
         pVCpu->tm.s.offTSCRawSrc   = offTscRawSrc;
         pVCpu->tm.s.u64TSC         = 0;
         pVCpu->tm.s.u64TSCLastSeen = 0;
+#if defined(VBOX_VMM_TARGET_ARMV8)
+        pVCpu->cNsVTimerActivate   = UINT64_MAX;
+#endif
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 99999 2023-05-30 05:50:03Z alexander.eichner@oracle.com $ */
+/* $Id: EM.cpp 100000 2023-05-30 06:09:42Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1895,8 +1895,21 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         }
 #else
         bool fWakeupPending = false;
-        //ssertReleaseFailed();
-        /** @todo */
+
+        if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_VTIMER_ACTIVATED))
+        {
+            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_VTIMER_ACTIVATED);
+
+            fWakeupPending = true;
+            if (pVM->em.s.fIemExecutesAll)
+                rc2 = VINF_EM_RESCHEDULE;
+            else
+            {
+                rc2 = HMR3IsActive(pVCpu)    ? VINF_EM_RESCHEDULE_HM
+                    : VM_IS_NEM_ENABLED(pVM) ? VINF_EM_RESCHEDULE
+                    :                          VINF_EM_RESCHEDULE_REM;
+            }
+        }
 #endif
 
         /*
