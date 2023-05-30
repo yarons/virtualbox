@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 98868 2023-03-07 17:22:14Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_ttm.c 100014 2023-05-30 15:25:24Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -321,7 +321,7 @@ static struct ttm_tt *vbox_ttm_tt_create(struct ttm_buffer_object *bo,
 #if RTLNX_VER_MAX(5,10,0) && !RTLNX_RHEL_RANGE(8,5, 8,99)
 	tt->func = &vbox_tt_backend_func;
 #endif
-#if RTLNX_VER_MIN(5,19,0) || RTLNX_RHEL_MAJ_PREREQ(9,2)
+#if RTLNX_VER_MIN(5,19,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,2)
 	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined, 0)) {
 #elif RTLNX_VER_MIN(5,11,0) || RTLNX_RHEL_RANGE(8,5, 8,99)
 	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined)) {
