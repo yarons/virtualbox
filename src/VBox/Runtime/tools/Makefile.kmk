@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98409 2023-02-01 16:17:58Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100006 2023-05-30 06:27:25Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -279,6 +279,11 @@ if !defined(VBOX_ONLY_BUILD)
   RTKrnlModInfo_TEMPLATE = VBoxR3Tool
   RTKrnlModInfo_SOURCES = RTKrnlModInfo.cpp
  endif
+
+ # RTDtc - Devicetree compiler tool.
+ PROGRAMS += RTDtc
+ RTDtc_TEMPLATE = VBoxR3Tool
+ RTDtc_SOURCES = RTDtc.cpp
 
 endif # !VBOX_ONLY_BUILD
 

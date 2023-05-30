@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99792 2023-05-15 15:59:41Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 100006 2023-05-30 06:27:25Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -567,6 +567,7 @@ RuntimeBaseR3_SOURCES      := \
 	common/misc/buildconfig.cpp \
 	common/misc/cidr.cpp \
 	common/misc/expreval.cpp \
+	common/misc/fdt.cpp \
 	common/misc/getopt.cpp \
 	common/misc/getoptargv.cpp \
 	common/misc/handle.cpp \
