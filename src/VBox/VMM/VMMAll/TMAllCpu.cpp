@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 100000 2023-05-30 06:09:42Z alexander.eichner@oracle.com $ */
+/* $Id: TMAllCpu.cpp 100005 2023-05-30 06:21:49Z alexander.eichner@oracle.com $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -679,7 +679,9 @@ VMM_INT_DECL(void) TMCpuSetVTimerNextActivation(PVMCPUCC pVCpu, uint64_t cNanoSe
 /**
  * Returns when the vTimer is supposed to expire next in number of nanoseconds.
  *
- * @returns Number of nanoseconds when the vTimer is supposed to 
+ * @returns Number of nanoseconds when the vTimer is supposed to activate.
+ * @retval  UINT64_MAX if the timer is not active.
+ * @param   pVCpu           The cross context virtual CPU structure.
  */
 VMM_INT_DECL(uint64_t) TMCpuGetVTimerActivationNano(PVMCPUCC pVCpu)
 {
