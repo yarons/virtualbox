@@ -1,4 +1,4 @@
-/* $Id: SvgaHw.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SvgaHw.h 100010 2023-05-30 09:55:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA hardware access helpers.
  */
@@ -70,6 +70,19 @@ DECLINLINE(uint32_t) SVGARegRead(PVBOXWDDM_EXT_VMSVGA pSvga, uint32_t u32Offset)
 
     ASMOutU32(SVGAPort(pSvga, SVGA_INDEX_PORT), u32Offset);
     const uint32_t u32Value = ASMInU32(SVGAPort(pSvga, SVGA_VALUE_PORT));
+
+    KeReleaseSpinLock(&pSvga->HwSpinLock, OldIrql);
+    return u32Value;
+}
+
+DECLINLINE(uint32_t) SVGADevCapRead(PVBOXWDDM_EXT_VMSVGA pSvga, uint32_t idx)
+{
+    KIRQL OldIrql;
+    KeAcquireSpinLock(&pSvga->HwSpinLock, &OldIrql);
+
+    ASMOutU32(SVGAPort(pSvga, SVGA_INDEX_PORT), SVGA_REG_DEV_CAP);
+    ASMOutU32(SVGAPort(pSvga, SVGA_VALUE_PORT), idx);
+    uint32_t const u32Value = ASMInU32(SVGAPort(pSvga, SVGA_VALUE_PORT));
 
     KeReleaseSpinLock(&pSvga->HwSpinLock, OldIrql);
     return u32Value;

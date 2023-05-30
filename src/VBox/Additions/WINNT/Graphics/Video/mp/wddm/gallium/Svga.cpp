@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 99997 2023-05-29 10:00:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 100010 2023-05-30 09:55:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -496,10 +496,7 @@ NTSTATUS SvgaQueryInfo(PVBOXWDDM_EXT_VMSVGA pSvga,
     if (RT_LIKELY(pSvga->u32Caps & SVGA_CAP_GBOBJECTS))
     {
         for (i = 0; i < RT_ELEMENTS(pSvgaInfo->au32Caps); ++i)
-        {
-            SVGARegWrite(pSvga, SVGA_REG_DEV_CAP, i);
-            pSvgaInfo->au32Caps[i] = SVGARegRead(pSvga, SVGA_REG_DEV_CAP);
-        }
+            pSvgaInfo->au32Caps[i] = SVGADevCapRead(pSvga, i);
     }
 
     /* Beginning of FIFO. */
