@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 99966 2023-05-25 08:35:13Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100018 2023-05-30 17:19:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -549,8 +549,13 @@ int ShClBackendTransferGetRoots(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHC
                 rc = ShClEventWait(pEvent, SHCL_TIMEOUT_DEFAULT_MS, &pPayload);
                 if (RT_SUCCESS(rc))
                 {
-                    rc = ShClTransferRootsSet(pTransfer,
-                                              (char *)pPayload->pvData, pPayload->cbData + 1 /* Include termination */);
+                    if (pPayload)
+                    {
+                        rc = ShClTransferRootsSet(pTransfer,
+                                                  (char *)pPayload->pvData, pPayload->cbData + 1 /* Include termination */);
+                    }
+                    else
+                        rc = VERR_NO_DATA; /* No payload. */
                 }
             }
         }
