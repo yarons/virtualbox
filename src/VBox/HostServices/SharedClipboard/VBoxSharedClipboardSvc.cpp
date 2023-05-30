@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 99974 2023-05-25 11:10:14Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 100017 2023-05-30 16:06:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1483,7 +1483,8 @@ int ShClSvcHostReportFormats(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
         /* Create a transfer locally and also tell the guest to create a transfer on the guest side. */
-        if (!fSkipTransfers)
+        if (   !fSkipTransfers
+            && fFormats & VBOX_SHCL_FMT_URI_LIST) /* Only start a transfer if we supply an URI list. */
         {
             rc = shClSvcTransferStart(pClient, SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL,
                                       NULL /* pTransfer */);
