@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 100000 2023-05-30 06:09:42Z alexander.eichner@oracle.com $ */
+/* $Id: VMEmt.cpp 100002 2023-05-30 06:16:14Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -591,7 +591,7 @@ static DECLCALLBACK(int) vmR3HaltMethod1Halt(PUVMCPU pUVCpu, const uint32_t fMas
             ||  VMCPU_FF_IS_ANY_SET(pVCpu, fMask)
 #if defined(VBOX_VMM_TARGET_ARMV8)
             ||  cNsElapsedTimers >= cNsVTimerActivate
-#endif            
+#endif
             )
         {
 #if defined(VBOX_VMM_TARGET_ARMV8)
