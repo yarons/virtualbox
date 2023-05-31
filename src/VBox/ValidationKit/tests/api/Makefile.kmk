@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100026 2023-05-31 15:24:17Z ksenia.s.stepanova@oracle.com $
 ## @file
 # VirtualBox Validation Kit - API Tests.
 #
@@ -54,6 +54,7 @@ ValidationKitTestsApi_EXEC_SOURCES := \
 ifndef VBOX_OSE
  ValidationKitTestsApi_EXEC_SOURCES += \
  	$(PATH_SUB_CURRENT)/tdCloud1.py \
+ 	$(PATH_SUB_CURRENT)/tdOciCloudInit1.py \
  	$(PATH_SUB_CURRENT)/tdOciConnection1.py \
  	$(PATH_SUB_CURRENT)/tdOciExport1.py \
  	$(PATH_SUB_CURRENT)/tdOciImage1.py \
