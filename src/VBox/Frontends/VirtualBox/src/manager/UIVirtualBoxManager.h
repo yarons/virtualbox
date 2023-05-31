@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -338,6 +338,9 @@ private slots:
 
         /** Handles call to show help viewer. */
         void sltPerformShowHelpBrowser();
+
+        /** Handles signals that are emitted when an ext. pack un/installed. */
+        void sltExtensionPackInstalledUninstalled(const QString &strName);
     /** @} */
 
 private:

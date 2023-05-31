@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 99929 2023-05-23 08:56:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2577,6 +2577,27 @@ QString UICommon::helpKeyword(const QObject *pObject)
     if (!pObject)
         return QString();
     return pObject->property("helpkeyword").toString();
+}
+
+bool UICommon::isExtentionPackInstalled() const
+{
+    const CExtPackManager comEPManager = virtualBox().GetExtensionPackManager();
+
+    if (!virtualBox().isOk())
+        return false;
+
+    const QVector<CExtPack> extensionPacks = comEPManager.GetInstalledExtPacks();
+    if (!comEPManager.isOk())
+        return false;
+    foreach (const CExtPack &comExtensionPack, extensionPacks)
+    {
+        if (!comExtensionPack.isOk())
+            continue;
+        bool fUsable = comExtensionPack.GetUsable();
+        if (comExtensionPack.isOk() && fUsable)
+            return true;
+    }
+    return false;
 }
 
 bool UICommon::openURL(const QString &strUrl) const

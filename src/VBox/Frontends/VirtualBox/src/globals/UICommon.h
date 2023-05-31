@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 99827 2023-05-17 12:38:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -97,6 +97,8 @@ signals:
      * @{ */
         /** Notifies listeners about extension pack @a strName was installed. */
         void sigExtensionPackInstalled(const QString &strName);
+        /** Notifies listeners about extension pack @a strName was uninstalled. */
+        void sigExtensionPackUninstalled(const QString &strName);
     /** @} */
 
     /** @name Cloud Virtual Machine stuff.
@@ -517,6 +519,12 @@ public:
         /** Returns the property for help keyword of a QObject. If no such property exists returns an empty QString.
           * @param  pWidget      The object to get the help keyword property from. */
         static QString helpKeyword(const QObject *pWidget);
+    /** @} */
+
+    /** @name COM: Extension Pack stuff.
+     * @{ */
+        /** Returns true if it can find at least one usable ext. pack. Else returns false. */
+        bool isExtentionPackInstalled() const;
     /** @} */
 
 public slots:

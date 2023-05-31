@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -284,6 +284,8 @@ void UIExtensionPackManagerWidget::sltUninstallExtensionPack()
                                                                          displayInfo);
                 connect(pNotification, &UINotificationProgressExtensionPackUninstall::sigExtensionPackUninstalled,
                         this, &UIExtensionPackManagerWidget::sltHandleExtensionPackUninstalled);
+                connect(pNotification, &UINotificationProgressExtensionPackUninstall::sigExtensionPackUninstalled,
+                        &uiCommon(), &UICommon::sigExtensionPackUninstalled);
                 gpNotificationCenter->append(pNotification);
             }
         }
