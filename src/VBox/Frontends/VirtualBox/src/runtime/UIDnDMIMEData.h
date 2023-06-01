@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDnDMIMEData.h 100035 2023-06-01 12:59:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
@@ -104,7 +104,11 @@ protected:
 
     virtual bool hasFormat(const QString &mimeType) const;
 
-    virtual QVariant retrieveData(const QString &strMIMEType, QVariant::Type vaType) const;
+#ifndef VBOX_IS_QT6_OR_LATER /* QVariant::Type is repalced with QMetaType in Qt6 */
+    virtual QVariant retrieveData(const QString &strMIMEType, QVariant::Type vaType) const RT_OVERRIDE;
+#else
+    virtual QVariant retrieveData(const QString &strMIMEType, QMetaType metaType) const RT_OVERRIDE;
+#endif
     /** @}  */
 
 public:
