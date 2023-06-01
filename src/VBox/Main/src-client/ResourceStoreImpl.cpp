@@ -1,4 +1,4 @@
-/* $Id: ResourceStoreImpl.cpp 100038 2023-06-01 18:18:08Z alexander.eichner@oracle.com $ */
+/* $Id: ResourceStoreImpl.cpp 100042 2023-06-01 18:26:07Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM resource store class implementation
  */
@@ -345,7 +345,6 @@ DECLCALLBACK(void *) ResourceStore::i_drvQueryInterface(PPDMIBASE pInterface, co
 /**
  * Destruct a resource store driver instance.
  *
- * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) ResourceStore::i_drvDestruct(PPDMDRVINS pDrvIns)
