@@ -1,4 +1,4 @@
-/* $Id: fdt.cpp 100036 2023-06-01 15:13:25Z alexander.eichner@oracle.com $ */
+/* $Id: fdt.cpp 100037 2023-06-01 18:06:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Flattened Devicetree parser and generator API.
  */
@@ -1577,6 +1577,55 @@ RTDECL(int) RTFdtNodePropertyAddCellsU32V(RTFDT hFdt, const char *pszProperty, u
         uint32_t u32 = va_arg(va, uint32_t);
         *pu32++ = RT_H2BE_U32(u32);
     }
+
+    pThis->cbStruct += cbProp;
+    return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTFdtNodePropertyAddStringList(RTFDT hFdt, const char *pszProperty, uint32_t cStrings, ...)
+{
+    va_list va;
+    va_start(va, cStrings);
+    int rc = RTFdtNodePropertyAddStringListV(hFdt, pszProperty, cStrings, va);
+    va_end(va);
+    return rc;
+}
+
+
+RTDECL(int) RTFdtNodePropertyAddStringListV(RTFDT hFdt, const char *pszProperty, uint32_t cStrings, va_list va)
+{
+    PRTFDTINT pThis = hFdt;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+
+    /* Insert the property name into the strings block. */
+    uint32_t offStr;
+    int rc = rtFdtStringsInsertString(pThis, pszProperty, &offStr);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    va_list vaCopy;
+    va_copy(vaCopy, va);
+
+    /* First pass, go over all strings and find out how much we have to add in total. */
+    uint32_t cbStrings = 0;
+    for (uint32_t i = 0; i < cStrings; i++)
+        cbStrings += strlen(va_arg(vaCopy, const char *)) + 1; /* Include terminator. */
+
+    uint32_t cbProp = RT_ALIGN_32(cbStrings + 3 * sizeof(uint32_t), sizeof(uint32_t)); /* Account for property token and the property data. */
+    rc = rtFdtStructEnsureSpace(pThis, cbProp);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    /* Add the data. */
+    uint32_t *pu32 = (uint32_t *)(pThis->pbStruct + pThis->cbStruct);
+    *pu32++ = DTB_FDT_TOKEN_PROPERTY_BE;
+    *pu32++ = RT_H2BE_U32(cbStrings);
+    *pu32++ = RT_H2BE_U32(offStr);
+
+    char *pb = (char *)pu32;
+    for (uint32_t i = 0; i < cStrings; i++)
+        pb = stpcpy(pb, va_arg(va, const char *)) + 1;
 
     pThis->cbStruct += cbProp;
     return VINF_SUCCESS;
