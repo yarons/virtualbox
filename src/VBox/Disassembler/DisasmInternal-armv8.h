@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal-armv8.h 99334 2023-04-07 10:10:07Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmInternal-armv8.h 100046 2023-06-01 18:57:29Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -58,6 +58,8 @@ typedef enum DISPARMPARSEIDX
     kDisParmParseHw,
     kDisParmParseCond,
     kDisParmParsePState,
+    kDisParmParseCRnCRm,
+    kDisParmParseSysReg,
     kDisParmParseMax
 } DISPARMPARSEIDX;
 /** @}  */
