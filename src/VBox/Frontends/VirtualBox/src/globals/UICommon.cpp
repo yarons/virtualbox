@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 100033 2023-06-01 11:18:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2808,6 +2808,7 @@ void UICommon::sltHandleCommitDataRequest(QSessionManager &manager)
             if (!isSeparateProcess())
             {
 # if defined(VBOX_WS_MAC) && defined(VBOX_IS_QT6_OR_LATER) /** @todo qt6: ... */
+                Q_UNUSED(manager);
                 /* This code prevents QWindowSystemInterface::handleApplicationTermination
                    for running, so among other things QApplication::closeAllWindows isn't
                    called and we're somehow stuck in a half closed down state.  That said,
