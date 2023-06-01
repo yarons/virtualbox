@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 99442 2023-04-18 12:26:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.cpp 100043 2023-06-01 18:51:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1957,7 +1957,21 @@ void UIMachineView::focusOutEvent(QFocusEvent *pEvent)
     /* Call to base-class: */
     QAbstractScrollArea::focusOutEvent(pEvent);
 }
+#ifdef VBOX_WS_X11
+void UIMachineView::keyPressEvent(QKeyEvent *pEvent)
+{
+    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
+        uimachine()->putScancode(pEvent->nativeScanCode() - 8);
+    QAbstractScrollArea::keyPressEvent(pEvent);
+}
 
+void UIMachineView::keyReleaseEvent(QKeyEvent *pEvent)
+{
+    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
+        uimachine()->putScancode((pEvent->nativeScanCode() - 8) | 0x80);
+    QAbstractScrollArea::keyReleaseEvent(pEvent);
+}
+#endif
 #ifdef VBOX_WITH_DRAG_AND_DROP
 
 bool UIMachineView::dragAndDropCanAccept() const

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 98841 2023-03-06 15:21:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 100043 2023-06-01 18:51:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -323,6 +323,10 @@ protected:
     void focusInEvent(QFocusEvent *pEvent);
     /** Handles focus-out @a pEvent. */
     void focusOutEvent(QFocusEvent *pEvent);
+#ifdef VBOX_WS_X11
+    virtual void keyPressEvent(QKeyEvent *pEvent) override;
+    virtual void keyReleaseEvent(QKeyEvent *pEvent) override;
+#endif
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
     /**
