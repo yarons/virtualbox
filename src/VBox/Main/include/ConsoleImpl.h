@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 99913 2023-05-22 18:36:24Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 100038 2023-06-01 18:18:08Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -76,6 +76,9 @@ class DisplayMouseInterface;
 class VMPowerUpTask;
 class VMPowerDownTask;
 class NvramStore;
+#ifdef VBOX_WITH_VIRT_ARMV8
+class ResourceStore;
+#endif
 
 #include <iprt/uuid.h>
 #include <iprt/log.h>
@@ -1013,6 +1016,9 @@ private:
 #endif
     const ComObjPtr<EmulatedUSB> mEmulatedUSB;
     const ComObjPtr<NvramStore> mptrNvramStore;
+#ifdef VBOX_WITH_VIRT_ARMV8
+    const ComObjPtr<ResourceStore> mptrResourceStore;
+#endif
 
     USBDeviceList mUSBDevices;
     RemoteUSBDeviceList mRemoteUSBDevices;

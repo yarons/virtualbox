@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99941 2023-05-23 17:06:41Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 100038 2023-06-01 18:18:08Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1167,6 +1167,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	src-client/MachineDebuggerImpl.cpp \
  	src-client/MouseImpl.cpp \
  	src-client/RemoteUSBDeviceImpl.cpp \
+ 	$(if $(VBOX_WITH_VIRT_ARMV8),src-client/ResourceStoreImpl.cpp,) \
  	src-client/SessionImpl.cpp \
  	src-client/USBDeviceImpl.cpp \
  	src-client/VBoxDriversRegister.cpp \
