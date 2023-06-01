@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 99821 2023-05-17 07:35:02Z alexander.eichner@oracle.com $ */
+/* $Id: PDMAll.cpp 100044 2023-06-01 18:54:32Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Critical Sections
  */
@@ -205,9 +205,9 @@ VMM_INT_DECL(int) PDMIoApicSetIrq(PVM pVM, PCIBDF uBusDevFn, uint8_t u8Irq, uint
     Log9(("PDMIoApicSetIrq: irq=%#x lvl=%u tag=%#x src=%#x\n", u8Irq, u8Level, uTagSrc, uBusDevFn));
 
 #ifdef VBOX_VMM_TARGET_ARMV8
-    int rc = VINF_SUCCESS;
     RT_NOREF(uBusDevFn, uTagSrc);
     GICSpiSet(pVM, u8Irq, u8Level == PDM_IRQ_LEVEL_HIGH ? true : false);
+    return VINF_SUCCESS;
 #else
     if (pVM->pdm.s.IoApic.CTX_SUFF(pDevIns))
     {
