@@ -1,4 +1,4 @@
-/* $Id: d3d11main.cpp 98138 2023-01-19 13:43:33Z knut.osmundsen@oracle.com $ */
+/* $Id: d3d11main.cpp 100054 2023-06-02 15:27:16Z vitali.pelenjow@oracle.com $ */
 /** @file
  * D3D testcase. Win32 application to run D3D11 tests.
  */
@@ -737,7 +737,7 @@ int D3D11Test::Run()
                     /*
                      * Use the shared texture from the render device.
                      */
-                    mRender.pImmediateContext->OMSetRenderTargets(1, &mRender.pRenderTargetView, mRender.pDepthStencilView);
+                    mRender.pImmediateContext->OMSetRenderTargets(1, &mRender.pRenderTargetView, NULL /*mRender.pDepthStencilView*/);
                     mpRender->DoRender(this);
                 }
                 else
