@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 100050 2023-06-02 14:19:37Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 100051 2023-06-02 14:22:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3821,6 +3821,14 @@ IEM_CIMPL_DEF_1(iemCImpl_iret_64bit, IEMMODE, enmEffOpSize)
             Log(("iret %04x:%016RX64/%04x:%016RX64 -> RIP is not canonical -> #GP(0)\n",
                  uNewCs, uNewRip, uNewSs, uNewRsp));
             return iemRaiseSelectorBoundsBySelector(pVCpu, uNewCs);
+        }
+/** @todo check the location of this... Testcase. */
+        if (RT_LIKELY(!DescCS.Legacy.Gen.u1DefBig))
+        { /* likely */ }
+        else
+        {
+            Log(("iret %04x:%016RX64/%04x:%016RX64 -> both L and D are set -> #GP(0)\n", uNewCs, uNewRip, uNewSs, uNewRsp));
+            return iemRaiseGeneralProtectionFault0(pVCpu);
         }
     }
     else
