@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 99998 2023-05-29 12:30:01Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDX.cpp 100053 2023-06-02 15:22:18Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -984,7 +984,8 @@ static NTSTATUS svgaPagingUnmapApertureSegment(PVBOXMP_DEVEXT pDevExt, DXGKARG_B
 
 NTSTATUS DxgkDdiDXBuildPagingBuffer(PVBOXMP_DEVEXT pDevExt, DXGKARG_BUILDPAGINGBUFFER *pBuildPagingBuffer)
 {
-    AssertReturn(pBuildPagingBuffer->DmaBufferPrivateDataSize >= sizeof(GARENDERDATA), STATUS_GRAPHICS_INSUFFICIENT_DMA_BUFFER);
+    if (pBuildPagingBuffer->DmaBufferPrivateDataSize < sizeof(GARENDERDATA))
+        return STATUS_GRAPHICS_INSUFFICIENT_DMA_BUFFER;
 
     NTSTATUS Status = STATUS_SUCCESS;
     uint32_t cbCommands = 0;
