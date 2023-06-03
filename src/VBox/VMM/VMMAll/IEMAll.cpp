@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 100052 2023-06-02 14:49:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 100060 2023-06-03 00:18:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4725,7 +4725,7 @@ DECLINLINE(void) iemFpuUpdateDP(PVMCPUCC pVCpu, PX86FXSTATE pFpuCtx, uint8_t iEf
         pFpuCtx->DS    = 0;
         pFpuCtx->FPUDP = (uint32_t)GCPtrEff + ((uint32_t)sel << 4);
     }
-    else if (!IEM_IS_LONG_MODE(pVCpu))
+    else if (!IEM_IS_LONG_MODE(pVCpu)) /** @todo this is weird. explain. */
     {
         pFpuCtx->DS    = sel;
         pFpuCtx->FPUDP = GCPtrEff;
