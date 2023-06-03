@@ -1,4 +1,4 @@
-/* $Id: main.cpp 99689 2023-05-09 08:28:38Z andreas.loeffler@oracle.com $ */
+/* $Id: main.cpp 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -692,7 +692,7 @@ int main(int argc, char *argv[])
                 if (!RTStrICmp(ValueUnion.psz, "x11"))
                     g_enmDisplayServerType = VBGHDISPLAYSERVERTYPE_X11;
                 else if (!RTStrICmp(ValueUnion.psz, "wayland"))
-                    g_enmDisplayServerType = VBGHDISPLAYSERVERTYPE_WAYLAND;
+                    g_enmDisplayServerType = VBGHDISPLAYSERVERTYPE_PURE_WAYLAND;
                 else if (!RTStrICmp(ValueUnion.psz, "none"))
                     g_enmDisplayServerType = VBGHDISPLAYSERVERTYPE_NONE;
                 else if (!RTStrICmp(ValueUnion.psz, "auto"))

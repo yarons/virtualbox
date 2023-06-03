@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 99977 2023-05-25 11:44:58Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard.cpp 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Guest Additions - Common Shared Clipboard wrapper service.
  */
@@ -95,7 +95,7 @@ static DECLCALLBACK(int) vbclShClWorker(bool volatile *pfShutdown)
             rc = VBClX11ClipboardMain();
         }
     }
-    else if (VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
+    else if (VBClGetDisplayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
     {
         VBClLogError("Shared Clipboard for Wayland not supported yet!\n");
     }

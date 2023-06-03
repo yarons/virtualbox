@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.h 99622 2023-05-05 09:19:48Z andreas.loeffler@oracle.com $ */
+/* $Id: DisplayServerType.h 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Guest / Host common code - Display server type detection + handling.
  */
@@ -61,7 +61,7 @@ typedef enum
     /** X11 (X.org). */
     VBGHDISPLAYSERVERTYPE_X11,
     /** Wayland. */
-    VBGHDISPLAYSERVERTYPE_WAYLAND,
+    VBGHDISPLAYSERVERTYPE_PURE_WAYLAND,
     /** XWayland; Wayland is running, but some (older) apps need X as a bridge as well. */
     VBGHDISPLAYSERVERTYPE_XWAYLAND
 } VBGHDISPLAYSERVERTYPE;

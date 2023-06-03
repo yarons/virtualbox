@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 100043 2023-06-01 18:51:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.cpp 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1960,14 +1960,14 @@ void UIMachineView::focusOutEvent(QFocusEvent *pEvent)
 #ifdef VBOX_WS_X11
 void UIMachineView::keyPressEvent(QKeyEvent *pEvent)
 {
-    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
+    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
         uimachine()->putScancode(pEvent->nativeScanCode() - 8);
     QAbstractScrollArea::keyPressEvent(pEvent);
 }
 
 void UIMachineView::keyReleaseEvent(QKeyEvent *pEvent)
 {
-    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_WAYLAND)
+    if (uiCommon().displayServerType() == VBGHDISPLAYSERVERTYPE_PURE_WAYLAND)
         uimachine()->putScancode((pEvent->nativeScanCode() - 8) | 0x80);
     QAbstractScrollArea::keyReleaseEvent(pEvent);
 }
