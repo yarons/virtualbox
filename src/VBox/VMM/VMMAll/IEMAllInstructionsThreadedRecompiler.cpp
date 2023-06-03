@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 100052 2023-06-02 14:49:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 100061 2023-06-03 01:09:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -342,7 +342,6 @@ VMMDECL(VBOXSTRICTRC) IEMExecRecompilerThreaded(PVMCC pVM, PVMCPUCC pVCpu)
      * Init the execution environment.
      */
     iemInitExec(pVCpu, 0 /*fExecOpts*/);
-    ...
 
     /*
      * Run-loop.

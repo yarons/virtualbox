@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100059 2023-06-03 00:17:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100061 2023-06-03 01:09:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3833,6 +3833,16 @@ AssertCompile(IEM_OP_PRF_REX_X == RT_BIT_32(27));
  */
 #define IEM_GET_EFFECTIVE_VVVV(a_pVCpu) \
     (IEM_IS_64BIT_CODE(a_pVCpu) ? (a_pVCpu)->iem.s.uVex3rdReg : (a_pVCpu)->iem.s.uVex3rdReg & 7)
+
+
+/**
+ * Checks if we're executing inside an AMD-V or VT-x guest.
+ */
+#if defined(VBOX_WITH_NESTED_HWVIRT_VMX) || defined(VBOX_WITH_NESTED_HWVIRT_SVM)
+# define IEM_IS_IN_GUEST(a_pVCpu)       RT_BOOL((a_pVCpu)->iem.s.fExec & IEM_F_X86_CTX_IN_GUEST)
+#else
+# define IEM_IS_IN_GUEST(a_pVCpu)       false
+#endif
 
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
