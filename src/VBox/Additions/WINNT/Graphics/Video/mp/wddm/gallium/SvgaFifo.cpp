@@ -1,4 +1,4 @@
-/* $Id: SvgaFifo.cpp 99990 2023-05-26 13:39:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: SvgaFifo.cpp 100067 2023-06-04 14:06:58Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA FIFO.
  */
@@ -461,10 +461,8 @@ static NTSTATUS svgaCBAlloc(PVMSVGACBSTATE pCBState, VMSVGACBTYPE enmType, uint3
     return STATUS_SUCCESS;
 }
 
-static void svgaCBSubmitHeaderLocked(PVBOXWDDM_EXT_VMSVGA pSvga, PHYSICAL_ADDRESS CBHeaderPhysAddr, SVGACBContext CBContext)
+DECLINLINE(void) svgaCBSubmitHeaderLocked(PVBOXWDDM_EXT_VMSVGA pSvga, PHYSICAL_ADDRESS CBHeaderPhysAddr, SVGACBContext CBContext)
 {
-    RT_NOREF(pSvga);
-
     SVGARegWrite(pSvga, SVGA_REG_COMMAND_HIGH, CBHeaderPhysAddr.HighPart);
     SVGARegWrite(pSvga, SVGA_REG_COMMAND_LOW, CBHeaderPhysAddr.LowPart | CBContext);
 }
@@ -476,8 +474,7 @@ static void svgaCBSubmitHeader(PVBOXWDDM_EXT_VMSVGA pSvga, PHYSICAL_ADDRESS CBHe
     KIRQL OldIrql;
     KeAcquireSpinLock(&pCBState->SpinLock, &OldIrql);
 
-    SVGARegWrite(pSvga, SVGA_REG_COMMAND_HIGH, CBHeaderPhysAddr.HighPart);
-    SVGARegWrite(pSvga, SVGA_REG_COMMAND_LOW, CBHeaderPhysAddr.LowPart | CBContext);
+    svgaCBSubmitHeaderLocked(pSvga, CBHeaderPhysAddr, CBContext);
 
     KeReleaseSpinLock(&pCBState->SpinLock, OldIrql);
 }
