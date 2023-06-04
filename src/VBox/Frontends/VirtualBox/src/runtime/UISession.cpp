@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 99843 2023-05-18 11:08:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -90,7 +90,7 @@
 #include <VBox/com/VirtualBox.h>
 
 /* External includes: */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
 #endif
@@ -218,7 +218,7 @@ bool UISession::powerUp()
 
     /* Some logging right after we powered up: */
     LogRel(("GUI: Qt version: %s\n", UICommon::qtRTVersionString().toUtf8().constData()));
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     LogRel(("GUI: X11 Window Manager code: %d\n", (int)uiCommon().typeOfWindowManager()));
 #endif
 #if defined(VBOX_WS_MAC) || defined(VBOX_WS_WIN)

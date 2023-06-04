@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicSeamless.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -283,7 +283,7 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     switch (uiCommon().typeOfWindowManager())
     {
         case X11WMType_GNOMEShell:
@@ -299,7 +299,7 @@ void UIMachineLogicSeamless::prepareMachineWindows()
         default:
             break;
     }
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 }
 
 #ifndef VBOX_WS_MAC

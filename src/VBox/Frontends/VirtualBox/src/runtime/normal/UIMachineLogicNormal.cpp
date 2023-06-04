@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 98849 2023-03-07 08:27:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -218,7 +218,7 @@ void UIMachineLogicNormal::sltToggleStatusBar()
 
 void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
 {
-#if defined(VBOX_WS_X11) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
+#if defined(VBOX_WS_NIX) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /* Prevent handling if fake screen detected: */
     if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
         return;
@@ -227,7 +227,7 @@ void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         if (!pMachineWindow->isMaximized())
             pMachineWindow->restoreCachedGeometry();
-#endif /* VBOX_WS_X11 && !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
+#endif /* VBOX_WS_NIX && !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 
     /* Call to base-class: */
     UIMachineLogic::sltHostScreenAvailableAreaChange();

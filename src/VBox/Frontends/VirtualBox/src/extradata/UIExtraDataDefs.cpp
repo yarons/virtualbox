@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -179,10 +179,10 @@ const char *UIExtraDataDefs::GUI_RestrictedVisualStates = "GUI/RestrictedVisualS
 const char *UIExtraDataDefs::GUI_Fullscreen = "GUI/Fullscreen";
 const char *UIExtraDataDefs::GUI_Seamless = "GUI/Seamless";
 const char *UIExtraDataDefs::GUI_Scale = "GUI/Scale";
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 const char *UIExtraDataDefs::GUI_Fullscreen_LegacyMode = "GUI/Fullscreen/LegacyMode";
 const char *UIExtraDataDefs::GUI_DistinguishMachineWindowGroups = "GUI/DistinguishMachineWindowGroups";
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 const char *UIExtraDataDefs::GUI_AutoresizeGuest = "GUI/AutoresizeGuest";
 const char *UIExtraDataDefs::GUI_LastVisibilityStatusForGuestScreen = "GUI/LastVisibilityStatusForGuestScreen";
 const char *UIExtraDataDefs::GUI_LastGuestSizeHint = "GUI/LastGuestSizeHint";

@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPoolRuntime.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -93,7 +93,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Input_M_Keyboard_S_Settings,
     UIActionIndexRT_M_Input_M_Keyboard_S_SoftKeyboard,
     UIActionIndexRT_M_Input_M_Keyboard_S_TypeCAD,
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     UIActionIndexRT_M_Input_M_Keyboard_S_TypeCABS,
 #endif
     UIActionIndexRT_M_Input_M_Keyboard_S_TypeCtrlBreak,

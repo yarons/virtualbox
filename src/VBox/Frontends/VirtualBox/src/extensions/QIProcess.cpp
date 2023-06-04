@@ -1,4 +1,4 @@
-/* $Id: QIProcess.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIProcess.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIProcess class implementation.
  */
@@ -29,7 +29,7 @@
 #include "QIProcess.h"
 
 /* External includes: */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include <sys/wait.h>
 #endif
 
@@ -61,10 +61,10 @@ QByteArray QIProcess::singleShot(const QString &strProcessName, int iTimeout /* 
     if (firstShotReady)
         result = process.readAllStandardOutput();
     process.setProcessState(QProcess::NotRunning);
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     int iStatus;
     if (process.processId() > 0)
         waitpid(process.processId(), &iStatus, 0);
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
     return result;
 }

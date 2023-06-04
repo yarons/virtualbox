@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 99098 2023-03-21 16:11:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -31,7 +31,7 @@
 #include <QContextMenuEvent>
 #include <QResizeEvent>
 #include <QScrollBar>
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include <QTimer>
 #endif
 
@@ -335,11 +335,11 @@ void UIMachineWindowNormal::loadSettings()
         }
 
         /* Normalize to the optimal size: */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
         QTimer::singleShot(0, this, SLOT(sltNormalizeGeometry()));
-#else /* !VBOX_WS_X11 */
+#else /* !VBOX_WS_NIX */
         normalizeGeometry(true /* adjust position */, shouldResizeToGuestDisplay());
-#endif /* !VBOX_WS_X11 */
+#endif /* !VBOX_WS_NIX */
     }
 #endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
@@ -370,11 +370,11 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
     {
         case QEvent::Resize:
         {
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
             /* Prevent handling if fake screen detected: */
             if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
                 break;
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 
             QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
             if (!isMaximizedChecked())
@@ -397,11 +397,11 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
         }
         case QEvent::Move:
         {
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
             /* Prevent handling if fake screen detected: */
             if (UIDesktopWidgetWatchdog::isFakeScreenDetected())
                 break;
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 
             if (!isMaximizedChecked())
             {

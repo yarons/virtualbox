@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 99012 2023-03-17 14:19:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -117,10 +117,10 @@ public:
 
 protected slots:
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     /** X11: Performs machine-window geometry normalization. */
     void sltNormalizeGeometry() { normalizeGeometry(true /* adjust position */, shouldResizeToGuestDisplay()); }
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 
     /** Performs machine-window activation. */
     void sltActivateWindow() { activateWindow(); }

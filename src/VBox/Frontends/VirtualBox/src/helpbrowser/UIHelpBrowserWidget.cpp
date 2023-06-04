@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -1982,7 +1982,7 @@ void UIHelpBrowserWidget::sltFindInPageWidgetVisibilityChanged(bool fVisible)
 
 void UIHelpBrowserWidget::sltShowPrintDialog()
 {
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     if (!m_pTabManager)
         return;
     QPrinter printer;

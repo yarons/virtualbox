@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 99438 2023-04-18 09:03:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -141,7 +141,7 @@ void UIMachineWindow::prepare()
     /* Update all the elements: */
     updateAppearanceOf(UIVisualElement_AllStuff);
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     /* Prepare default class/name values: */
     const QString strWindowClass = QString("VirtualBox Machine");
     QString strWindowName = strWindowClass;

@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMiniToolBar.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -211,7 +211,7 @@ private:
     /** Holds the animation framework object. */
     UIAnimation *m_pAnimation;
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     /** X11: Holds whether the parent is currently minimized.
       * Used to restore the full-screen/maximized state
       * when the parent restored again. */

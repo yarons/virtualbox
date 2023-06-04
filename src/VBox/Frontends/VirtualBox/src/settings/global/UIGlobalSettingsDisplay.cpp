@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -119,7 +119,7 @@ void UIGlobalSettingsDisplay::loadToCacheFrom(QVariant &data)
                                                                              gEDataManager->maxGuestResolutionForPolicyFixed());
     oldData.m_scaleFactors = gEDataManager->scaleFactors(UIExtraDataManager::GlobalID);
     oldData.m_fActivateHoveredMachineWindow = gEDataManager->activateHoveredMachineWindow();
-#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_NIX)
     oldData.m_fDisableHostScreenSaver = gEDataManager->disableHostScreenSaver();
 #endif
     oldData.m_iFontScalingFactor = gEDataManager->fontScaleFactor();
@@ -284,12 +284,12 @@ bool UIGlobalSettingsDisplay::saveData()
         if (   fSuccess
             && newData.m_fActivateHoveredMachineWindow != oldData.m_fActivateHoveredMachineWindow)
             /* fSuccess = */ gEDataManager->setActivateHoveredMachineWindow(newData.m_fActivateHoveredMachineWindow);
-#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_NIX)
         /* Save whether the host screen saver is to be disable when a vm is running: */
         if (   fSuccess
             && newData.m_fDisableHostScreenSaver != oldData.m_fDisableHostScreenSaver)
             /* fSuccess = */ gEDataManager->setDisableHostScreenSaver(newData.m_fDisableHostScreenSaver);
-#endif /* VBOX_WS_WIN || VBOX_WS_X11 */
+#endif /* VBOX_WS_WIN || VBOX_WS_NIX */
         /* Save font scale factor: */
         if (   fSuccess
             && newData.m_iFontScalingFactor != oldData.m_iFontScalingFactor)

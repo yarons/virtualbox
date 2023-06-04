@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 99664 2023-05-08 10:48:06Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -80,7 +80,7 @@
 #include "CVRDEServerInfo.h"
 
 /* Other VBox stuff: */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include <iprt/env.h>
 #endif
 
@@ -2201,7 +2201,7 @@ CProgress UINotificationProgressMachinePowerUp::createProgress(COMResult &comRes
     /* Allow started VM process to be foreground window: */
     AllowSetForegroundWindow(ASFW_ANY);
 #endif
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     /* Make sure VM process will start on the same
      * display as the VirtualBox Manager: */
     const char *pDisplay = RTEnvGet("DISPLAY");

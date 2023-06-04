@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -40,7 +40,7 @@
 #include "UIDefs.h"
 #include "UILibraryDefs.h"
 #include "UIMediumDefs.h"
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include "VBoxUtils-nix.h"
 #endif
 
@@ -211,7 +211,7 @@ public:
         static void loadColorTheme();
 #endif
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
         /** X11: Returns the type of the Window Manager we are running under. */
         X11WMType typeOfWindowManager() const { return m_enmWindowManagerType; }
         /** X11: Returns whether the Window Manager we are running under is composition one. */
@@ -655,7 +655,7 @@ private:
 
     /** @name Host OS stuff.
      * @{ */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
         /** X11: Holds the #X11WMType of the Window Manager we are running under. */
         X11WMType             m_enmWindowManagerType;
         /** X11: Holds whether the Window Manager we are running at is composition one. */

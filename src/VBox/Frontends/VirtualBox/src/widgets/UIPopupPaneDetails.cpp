@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupPaneDetails.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class implementation.
  */
@@ -262,7 +262,7 @@ QFont UIPopupPaneDetails::tuneFont(QFont font)
 {
 #if defined(VBOX_WS_MAC)
     font.setPointSize(font.pointSize() - 2);
-#elif defined(VBOX_WS_X11)
+#elif defined(VBOX_WS_NIX)
     font.setPointSize(font.pointSize() - 1);
 #endif
     return font;

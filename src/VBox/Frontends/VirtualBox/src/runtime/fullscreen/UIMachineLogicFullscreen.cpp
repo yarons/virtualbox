@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 98885 2023-03-09 09:58:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicFullscreen.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -527,7 +527,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);
 
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
     switch (uiCommon().typeOfWindowManager())
     {
         case X11WMType_GNOMEShell:
@@ -543,7 +543,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
         default:
             break;
     }
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 }
 
 void UIMachineLogicFullscreen::prepareMenu()

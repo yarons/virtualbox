@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 98859 2023-03-07 13:31:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -47,9 +47,9 @@
 #include "VBox/log.h"
 
 /* External includes: */
-#ifdef VBOX_WS_X11
+#ifdef VBOX_WS_NIX
 # include <limits.h>
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_NIX */
 
 
 UIMachineViewFullscreen::UIMachineViewFullscreen(UIMachineWindow *pMachineWindow, ulong uScreenId)

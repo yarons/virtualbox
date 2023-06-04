@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHostComboEditor.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class declaration.
  */
@@ -72,7 +72,7 @@ namespace UINativeHotKey
 #if defined(VBOX_WS_WIN)
     /** Distinguishes modifier VKey by @a wParam and @a lParam. */
     SHARED_LIBRARY_STUFF int distinguishModifierVKey(int wParam, int lParam);
-#elif defined(VBOX_WS_X11)
+#elif defined(VBOX_WS_NIX)
     /** Retranslates key names. */
     SHARED_LIBRARY_STUFF void retranslateKeyNames();
 #endif

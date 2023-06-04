@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -512,7 +512,7 @@ void UIMessageCenter::cannotAcquireVirtualBox(const CVirtualBoxClient &comClient
 {
     QString err = tr("<p>Failed to acquire the VirtualBox COM object.</p>"
                      "<p>The application will now terminate.</p>");
-#if defined(VBOX_WS_X11) || defined(VBOX_WS_MAC)
+#if defined(VBOX_WS_NIX) || defined(VBOX_WS_MAC)
     if (comClient.lastRC() == NS_ERROR_SOCKET_FAIL)
         err += tr("<p>The reason for this error are most likely wrong permissions of the IPC "
                   "daemon socket due to an installation problem. Please check the permissions of "
