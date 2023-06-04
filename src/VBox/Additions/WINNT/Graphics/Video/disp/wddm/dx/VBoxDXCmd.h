@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDXCmd.h 100065 2023-06-04 10:31:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -238,6 +238,9 @@ int vgpu10UpdateSubResource(PVBOXDX_DEVICE pDevice,
                             D3DKMT_HANDLE hAllocation,
                             uint32 subResource,
                             const SVGA3dBox *pBox);
+int vgpu10ReadbackSubResource(PVBOXDX_DEVICE pDevice,
+                            D3DKMT_HANDLE hAllocation,
+                            uint32 subResource);
 int vgpu10TransferFromBuffer(PVBOXDX_DEVICE pDevice,
                              D3DKMT_HANDLE hSrcAllocation,
                              uint32 srcOffset,
