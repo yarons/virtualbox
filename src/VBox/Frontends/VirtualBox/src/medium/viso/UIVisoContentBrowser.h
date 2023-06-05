@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100071 2023-06-05 14:54:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -69,6 +69,7 @@ public:
     virtual void showHideHiddenObjects(bool bShow)  override final;
     void setVisoName(const QString &strName);
     virtual bool tableViewHasSelection() const final override;
+    void parseVisoFileContent(const QString &strFileName);
 
 public slots:
 

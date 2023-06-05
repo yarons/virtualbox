@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreator.h 100071 2023-06-05 14:54:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -120,6 +120,7 @@ private slots:
     void sltHandleHostBrowserTableSelectionChanged(bool fIsSelectionEmpty);
     void sltHandleContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);
     void sltHandleShowContextMenu(const QWidget *pContextMenuRequester, const QPoint &point);
+    void sltHandleOpenAction();
 
 private:
 
@@ -173,6 +174,7 @@ private:
         QAction              *m_pCreateNewDirectoryAction;
         QAction              *m_pRenameAction;
         QAction              *m_pResetAction;
+        QAction              *m_pOpenAction;
     /** @} */
 
     QGridLayout          *m_pMainLayout;

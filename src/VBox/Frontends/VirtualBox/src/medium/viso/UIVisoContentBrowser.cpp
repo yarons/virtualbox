@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100071 2023-06-05 14:54:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -604,6 +604,11 @@ bool UIVisoContentBrowser::tableViewHasSelection() const
     if (!pSelectionModel)
         return false;
     return pSelectionModel->hasSelection();
+}
+
+void UIVisoContentBrowser::parseVisoFileContent(const QString &strFileName)
+{
+    Q_UNUSED(strFileName);
 }
 
 QModelIndex UIVisoContentBrowser::convertIndexToTableIndex(const QModelIndex &index)
