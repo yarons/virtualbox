@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIDialog.cpp 100073 2023-06-05 15:52:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class implementation.
  */
@@ -133,6 +133,7 @@ void QIDialog::polishEvent(QShowEvent *)
     setFixedSize(size());
 #endif /* VBOX_WS_MAC */
 
-    /* Explicit centering according to our parent: */
-    gpDesktop->centerWidget(this, parentWidget(), false);
+    /* Explicit centering according to parent if any: */
+    if (parentWidget())
+        gpDesktop->centerWidget(this, parentWidget(), false);
 }
