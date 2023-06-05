@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIStatusBarIndicator.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface implementation.
  */
@@ -35,6 +35,9 @@
 #ifdef VBOX_WS_MAC
 # include <QContextMenuEvent>
 #endif /* VBOX_WS_MAC */
+#ifdef VBOX_IS_QT6_OR_LATER
+# include <QWindow>
+#endif
 
 /* GUI includes: */
 #include "QIStatusBarIndicator.h"
@@ -124,7 +127,14 @@ void QIStateStatusBarIndicator::drawContents(QPainter *pPainter)
     if (m_icons.contains(m_iState))
     {
         if (window())
+#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
             pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(window()->windowHandle(), m_size));
+#else
+        {
+            const qreal fDevicePixelRatio = window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
+            pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(m_size, fDevicePixelRatio));
+        }
+#endif
         else
             pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(m_size));
     }

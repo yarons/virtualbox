@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 100070 2023-06-05 14:41:33Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -152,7 +152,13 @@ void VBoxAboutDlg::prepare()
     /* Load image: */
     const QIcon icon = UIIconPool::iconSet(strPath);
     m_size = QSize(640, 480);
+#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
     m_pixmap = icon.pixmap(windowHandle(), m_size);
+#else
+    QWidget *pParent = m_pPseudoParent ? m_pPseudoParent : parentWidget();
+    const qreal fDevicePixelRatio = pParent ? pParent->windowHandle()->devicePixelRatio() : 1;
+    m_pixmap = icon.pixmap(m_size, fDevicePixelRatio);
+#endif
 
     /* Prepare main-layout: */
     prepareMainLayout();

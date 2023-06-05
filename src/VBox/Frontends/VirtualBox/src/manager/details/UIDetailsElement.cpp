@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 98898 2023-03-10 11:25:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -34,6 +34,9 @@
 #include <QSignalTransition>
 #include <QStateMachine>
 #include <QStyleOptionGraphicsItem>
+#ifdef VBOX_IS_QT6_OR_LATER
+# include <QWindow>
+#endif
 
 /* GUI includes: */
 #include "QIDialogContainer.h"
@@ -819,7 +822,12 @@ void UIDetailsElement::updateIcon()
         const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
         m_pixmapSize = QSize(iIconMetric, iIconMetric);
         /* Acquire the icon of corresponding size (taking top-level widget DPI into account): */
+#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
         m_pixmap = icon.pixmap(gpManager->windowHandle(), m_pixmapSize);
+#else
+        const qreal fDevicePixelRatio = gpManager->windowHandle() ? gpManager->windowHandle()->devicePixelRatio() : 1;
+        m_pixmap = icon.pixmap(m_pixmapSize, fDevicePixelRatio);
+#endif
     }
 
     /* Update linked values: */
