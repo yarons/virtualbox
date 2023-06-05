@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 99802 2023-05-16 00:05:16Z knut.osmundsen@oracle.com $ */
+/* $Id: COMDefs.h 100068 2023-06-05 12:42:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -397,7 +397,11 @@ protected:
         ~BSTROut()
         {
             if (bstr) {
+#ifndef VBOX_IS_QT6_OR_LATER
                 str = QString::fromUtf16((const ushort *)bstr);
+#else
+                str = QString::fromUtf16((const char16_t *)bstr);
+#endif
                 SysFreeString(bstr);
             }
         }
@@ -441,7 +445,11 @@ protected:
         ~GuidAsBStrOut()
         {
             if (bstr) {
+#ifndef VBOX_IS_QT6_OR_LATER
                 uuid = QUuid(QString::fromUtf16((const ushort *)bstr));
+#else
+                uuid = QUuid(QString::fromUtf16((const char16_t *)bstr));
+#endif
                 SysFreeString(bstr);
             }
         }

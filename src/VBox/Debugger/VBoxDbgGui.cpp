@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 99853 2023-05-18 14:40:43Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxDbgGui.cpp 100068 2023-06-05 12:42:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -298,7 +298,7 @@ VBoxDbgGui::getMachineName() const
 #ifndef VBOX_IS_QT6_OR_LATER
         strName = QString::fromUtf16((const ushort *)bstr);
 #else
-        strName = QString::fromUtf16((char16_t *)bstr);
+        strName = QString::fromUtf16((const char16_t *)bstr);
 #endif
         SysFreeString(bstr);
     }
