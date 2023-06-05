@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap2.cpp.h 99958 2023-05-24 14:47:30Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstructionsVexMap2.cpp.h 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -605,7 +605,7 @@ FNIEMOP_DEF(iemOp_vmovntdqa_Vx_Mx)
      * @optest      ->
      */
     else
-        return IEMOP_RAISE_INVALID_OPCODE();
+        IEMOP_RAISE_INVALID_OPCODE_RET();
 }
 
 

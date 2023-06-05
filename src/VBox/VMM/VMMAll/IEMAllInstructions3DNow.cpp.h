@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions3DNow.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructions3DNow.cpp.h 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 3DNow!.
  */
@@ -135,7 +135,7 @@ FNIEMOP_DEF_1(iemOp_3DNowDispatcher, uint8_t, b)
         case 0xbb: return FNIEMOP_CALL(iemOp_3Dnow_pswapd_Pq_Qq);
         case 0xbf: return FNIEMOP_CALL(iemOp_3Dnow_pavgusb_PQ_Qq);
         default:
-            return IEMOP_RAISE_INVALID_OPCODE();
+            IEMOP_RAISE_INVALID_OPCODE_RET();
     }
 }
 
