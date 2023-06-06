@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 99647 2023-05-06 00:42:59Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 100088 2023-06-06 23:42:40Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99647 $"
+__version__ = "$Revision: 100088 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2062,8 +2062,8 @@ class McBlock(object):
     def parseMcCallCImpl(oSelf, sName, asParams):
         """ IEM_MC_CALL_CIMPL_0|1|2|3|4|5 """
         cArgs = int(sName[-1]);
-        oSelf.checkStmtParamCount(sName, asParams, 1 + cArgs);
-        return McStmtCall(sName, asParams, 0);
+        oSelf.checkStmtParamCount(sName, asParams, 2 + cArgs);
+        return McStmtCall(sName, asParams, 1);
 
     @staticmethod
     def stripComments(sCode):
@@ -2516,10 +2516,10 @@ g_dMcStmtParsers = {
     'IEM_MC_COPY_YREG_U128_ZX_VLMAX':                            McBlock.parseMcGeneric,
     'IEM_MC_COPY_YREG_U256_ZX_VLMAX':                            McBlock.parseMcGeneric,
     'IEM_MC_COPY_YREG_U64_ZX_VLMAX':                             McBlock.parseMcGeneric,
-    'IEM_MC_DEFER_TO_CIMPL_0':                                   McBlock.parseMcGeneric,
-    'IEM_MC_DEFER_TO_CIMPL_1':                                   McBlock.parseMcGeneric,
-    'IEM_MC_DEFER_TO_CIMPL_2':                                   McBlock.parseMcGeneric,
-    'IEM_MC_DEFER_TO_CIMPL_3':                                   McBlock.parseMcGeneric,
+    'IEM_MC_DEFER_TO_CIMPL_0_RET':                               McBlock.parseMcGeneric,
+    'IEM_MC_DEFER_TO_CIMPL_1_RET':                               McBlock.parseMcGeneric,
+    'IEM_MC_DEFER_TO_CIMPL_2_RET':                               McBlock.parseMcGeneric,
+    'IEM_MC_DEFER_TO_CIMPL_3_RET':                               McBlock.parseMcGeneric,
     'IEM_MC_END':                                                McBlock.parseMcGeneric,
     'IEM_MC_FETCH_EFLAGS':                                       McBlock.parseMcGeneric,
     'IEM_MC_FETCH_EFLAGS_U8':                                    McBlock.parseMcGeneric,
