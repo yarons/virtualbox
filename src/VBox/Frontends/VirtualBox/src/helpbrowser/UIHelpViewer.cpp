@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -297,11 +297,16 @@ bool UIFindInPageWidget::eventFilter(QObject *pObject, QEvent *pEvent)
         else if (pEvent->type() == QEvent::MouseMove)
         {
             QMouseEvent *pMouseEvent = static_cast<QMouseEvent*>(pEvent);
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
+            const QPoint gPos = pMouseEvent->globalPos();
+#else
+            const QPoint gPos = pMouseEvent->globalPosition().toPoint();
+#endif
             if (pMouseEvent->buttons() == Qt::LeftButton)
             {
                 if (m_previousMousePosition != QPoint(-1, -1))
-                    emit sigDragging(pMouseEvent->globalPos() - m_previousMousePosition);
-                m_previousMousePosition = pMouseEvent->globalPos();
+                    emit sigDragging(gPos - m_previousMousePosition);
+                m_previousMousePosition = gPos;
                 UICursor::setCursor(m_pDragMoveLabel, Qt::ClosedHandCursor);
             }
         }

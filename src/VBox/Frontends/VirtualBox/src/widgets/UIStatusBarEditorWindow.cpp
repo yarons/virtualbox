@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIStatusBarEditorWindow.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -304,7 +304,12 @@ void UIStatusBarEditorButton::mousePressEvent(QMouseEvent *pEvent)
         return;
 
     /* Remember mouse-press position: */
-    m_mousePressPosition = pEvent->globalPos();
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
+    const QPoint gPos = pEvent->globalPos();
+#else
+    const QPoint gPos = pEvent->globalPosition().toPoint();
+#endif
+    m_mousePressPosition = gPos;
 }
 
 void UIStatusBarEditorButton::mouseReleaseEvent(QMouseEvent *pEvent)
@@ -355,7 +360,12 @@ void UIStatusBarEditorButton::mouseMoveEvent(QMouseEvent *pEvent)
         return QWidget::mouseMoveEvent(pEvent);
 
     /* Make sure item is really dragged: */
-    if (QLineF(pEvent->globalPos(), m_mousePressPosition).length() <
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
+    const QPoint gPos = pEvent->globalPos();
+#else
+    const QPoint gPos = pEvent->globalPosition().toPoint();
+#endif
+    if (QLineF(gPos, m_mousePressPosition).length() <
         QApplication::startDragDistance())
         return QWidget::mouseMoveEvent(pEvent);
 
