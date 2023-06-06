@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 100077 2023-06-05 17:10:06Z ksenia.s.stepanova@oracle.com $
+# $Id: vboxtestvms.py 100087 2023-06-06 15:47:45Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100077 $"
+__version__ = "$Revision: 100087 $"
 
 # Standard Python imports.
 import copy;
@@ -2080,8 +2080,8 @@ class TestVmManager(object):
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
 
         # W11
-        TestVm('tst-win11-64',               kfGrpStdSmoke,       sHd = '7.0/win11/win11-64-edit-by-ksenia.vdi',
-               sKind = 'Windows11_64', acCpusSup = range(1, 33), fIoApic = True),
+        TestVm('tst-win11-64-efi',           kfGrpStdSmoke,       sHd = '7.0/win11/win11-64-edit-by-ksenia.vdi',
+               sKind = 'Windows11_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi'),
 
         # Nested hardware-virtualization
         TestVm('tst-nsthwvirt-ubuntu-64',   kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
