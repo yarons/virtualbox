@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100071 2023-06-05 14:54:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100081 2023-06-06 07:53:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -207,6 +207,8 @@ void UIVisoCreatorWidget::sltHandleContentBrowserTableSelectionChanged(bool fIsS
 {
     if (m_pRemoveAction)
         m_pRemoveAction->setEnabled(!fIsSelectionEmpty);
+    if (m_pRenameAction)
+        m_pRenameAction->setEnabled(!fIsSelectionEmpty);
 }
 
 void UIVisoCreatorWidget::sltHandleShowContextMenu(const QWidget *pContextMenuRequester, const QPoint &point)
@@ -397,6 +399,8 @@ void UIVisoCreatorWidget::prepareActions()
         m_pRemoveAction->setEnabled(m_pVISOContentBrowser->tableViewHasSelection());
     m_pCreateNewDirectoryAction = m_pActionPool->action(UIActionIndex_M_VISOCreator_CreateNewDirectory);
     m_pRenameAction = m_pActionPool->action(UIActionIndex_M_VISOCreator_Rename);
+    if (m_pRenameAction && m_pVISOContentBrowser)
+        m_pRenameAction->setEnabled(m_pVISOContentBrowser->tableViewHasSelection());
     m_pResetAction = m_pActionPool->action(UIActionIndex_M_VISOCreator_Reset);
 }
 
@@ -421,6 +425,8 @@ void UIVisoCreatorWidget::populateMenuMainToolbar()
             m_pMainMenu->addAction(m_pOpenAction);
         if (m_pRemoveAction)
             m_pMainMenu->addAction(m_pRemoveAction);
+        if (m_pRenameAction)
+            m_pMainMenu->addAction(m_pRenameAction);
         if (m_pCreateNewDirectoryAction)
             m_pMainMenu->addAction(m_pCreateNewDirectoryAction);
         if (m_pResetAction)
@@ -440,6 +446,8 @@ void UIVisoCreatorWidget::populateMenuMainToolbar()
         m_pVerticalToolBar->addWidget(topSpacerWidget);
         if (m_pAddAction)
             m_pVerticalToolBar->addAction(m_pAddAction);
+        if (m_pRenameAction)
+            m_pVerticalToolBar->addAction(m_pRenameAction);
         if (m_pRemoveAction)
             m_pVerticalToolBar->addAction(m_pRemoveAction);
         if (m_pCreateNewDirectoryAction)

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 100081 2023-06-06 07:53:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -823,7 +823,7 @@ void UIFileManagerTable::prepareObjects()
                 this, &UIFileManagerTable::sltSelectionChanged);
         connect(m_pView, &UIGuestControlFileView::customContextMenuRequested,
                 this, &UIFileManagerTable::sltCreateFileViewContextMenu);
-        m_pView->hideColumn(UICustomFileSystemModelColumn_Path);
+        m_pView->hideColumn(UICustomFileSystemModelColumn_ISOPath);
         m_pView->hideColumn(UICustomFileSystemModelColumn_LocalPath);
         m_sessionWidgets << m_pView;
     }
