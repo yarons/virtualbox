@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCloneMedium1.py 100078 2023-06-06 05:15:22Z samantha.scholz@oracle.com $
+# $Id: tdCloneMedium1.py 100080 2023-06-06 07:34:09Z samantha.scholz@oracle.com $
 
 """
 VirtualBox Validation Kit - Clone Medium Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100078 $"
+__version__ = "$Revision: 100080 $"
 
 
 # Standard Python imports.
@@ -253,7 +253,6 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
         reporter.testStart("testCloneToBase")
 
         try:
-            oVBox = self.oTstDrv.oVBoxMgr.getVirtualBox()
             oVM = self.oTstDrv.createTestVM('test-medium-clone-base', 1, None, 4)
             assert oVM is not None
 
@@ -264,12 +263,11 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
             sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'CloneTest1.vdi')
             hd1 = oSession.createBaseHd(sHddPath, cb=1024*1024)
             if hd1 is None:
-                    fRc = False
+                fRc = False
             for i in range(2, cImages + 1):
                 sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'CloneTest' + str(i) + '.vdi')
                 if i == 2:
                     oHd = oSession.createDiffHd(hd1, sHddPath)
-                    hd2 = oHd
                 else:
                     oHd = oSession.createDiffHd(oHd, sHddPath)
                 if oHd is None:
