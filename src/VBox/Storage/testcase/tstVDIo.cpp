@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVDIo.cpp 100079 2023-06-06 07:10:47Z samantha.scholz@oracle.com $ */
 /** @file
  * VBox HDD container test utility - I/O replay.
  */
@@ -1346,7 +1346,7 @@ static DECLCALLBACK(int) vdScriptHandlerCopy(PVDSCRIPTARG paScriptArgs, void *pv
         /** @todo Provide progress interface to test that cancelation
          * works as intended.
          */
-        rc = VDCopyEx(pDiskFrom->pVD, nImageFrom, pDiskTo->pVD, pcszBackend, pcszFilename,
+        rc = VDCopyEx(pDiskFrom->pVD, nImageFrom, pDiskTo->pVD, VD_LAST_IMAGE, pcszBackend, pcszFilename,
                       fMoveByRename, cbSize, nImageFromSame, nImageToSame,
                       VD_IMAGE_FLAGS_NONE, NULL, VD_OPEN_FLAGS_ASYNC_IO,
                       NULL, pGlob->pInterfacesImages, NULL);
