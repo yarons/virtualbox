@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 99391 2023-04-13 16:41:39Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100082 2023-06-06 10:14:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -558,10 +558,10 @@ void UIFileManagerGuestTable::readDirectory(const QString& strPath,
                     UICustomFileSystemItem *item = new UICustomFileSystemItem(fsInfo.GetName(), parent, fsObjectType);
                     if (!item)
                         continue;
-                    item->setData(static_cast<qulonglong>(fsInfo.GetObjectSize()), UICustomFileSystemModelColumn_Size);
-                    item->setData(changeTime, UICustomFileSystemModelColumn_ChangeTime);
-                    item->setData(fsInfo.GetUserName(), UICustomFileSystemModelColumn_Owner);
-                    item->setData(permissionString(fsInfo), UICustomFileSystemModelColumn_Permissions);
+                    item->setData(static_cast<qulonglong>(fsInfo.GetObjectSize()), UICustomFileSystemModelData_Size);
+                    item->setData(changeTime, UICustomFileSystemModelData_ChangeTime);
+                    item->setData(fsInfo.GetUserName(), UICustomFileSystemModelData_Owner);
+                    item->setData(permissionString(fsInfo), UICustomFileSystemModelData_Permissions);
                     item->setPath(UIPathOperations::removeTrailingDelimiters(UIPathOperations::mergePaths(strPath, fsInfo.GetName())));
                     item->setIsOpened(false);
                     item->setIsHidden(isFileObjectHidden(fsInfo));
