@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100071 2023-06-05 14:54:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100093 2023-06-07 12:25:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -92,17 +92,6 @@ public:
     /** Returns the toolbar. */
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-
-    /**
-      * Helper for createVisoMediumWithVisoCreator.
-      * @returns IPRT status code.
-      * @param   pStrmDst            Where to write the quoted string.
-      * @param   pszPrefix           Stuff to put in front of it.
-      * @param   rStr                The string to quote and write out.
-      * @param   pszPrefix           Stuff to put after it.
-      */
-    static int visoWriteQuotedString(PRTSTREAM pStrmDst, const char *pszPrefix,
-                                     QString const &rStr, const char *pszPostFix);
 
 protected:
 
