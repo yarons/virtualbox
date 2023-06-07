@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100095 2023-06-07 15:04:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100107 2023-06-07 18:32:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -564,6 +564,7 @@ QUuid UIVisoCreatorDialog::createViso(UIActionPool *pActionPool, QWidget *pParen
             stream << QString("%1 %2").arg("--iprt-iso-maker-file-marker-bourne-sh").arg(QUuid::createUuid().toString());
             stream << "\n";
             stream << VisoEntryList.join("\n");
+            stream << "\n";
             stream << pVisoCreator->customOptions().join("\n");
             file.close();
         }

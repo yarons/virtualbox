@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoConfigurationPanel.h 100107 2023-06-07 18:32:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -62,21 +62,18 @@ protected:
 
 private slots:
 
-    void sltHandleVisoNameChanged();
-    void sltHandleDeleteCurrentCustomOption();
+    void sltVisoNameChanged();
+    void sltCustomOptionsEdited();
 
 private:
 
     void prepareObjects();
     void prepareConnections();
-    void addCustomVisoOption();
-    void emitCustomVisoOptions();
 
     QILabel      *m_pVisoNameLabel;
     QILabel      *m_pCustomOptionsLabel;
     QILineEdit   *m_pVisoNameLineEdit;
-    QComboBox    *m_pCustomOptionsComboBox;
-    QIToolButton *m_pDeleteButton;
+    QILineEdit   *m_pCustomOptionsLineEdit;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoConfigurationPanel_h */
