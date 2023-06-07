@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: PGMInternal.h 100104 2023-06-07 17:57:05Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -75,9 +75,9 @@
 /**
  * Optimization for PAE page tables that are modified often
  */
-//#if 0 /* disabled again while debugging */
-#define PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
-//#endif
+#ifndef VBOX_VMM_TARGET_ARMV8
+# define PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+#endif
 
 /**
  * Large page support enabled only on 64 bits hosts; applies to nested paging only.
