@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 100088 2023-06-06 23:42:40Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 100089 2023-06-07 01:39:11Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100088 $"
+__version__ = "$Revision: 100089 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1822,10 +1822,10 @@ class McStmtCond(McStmt):
     """
     Base class for conditional statements (IEM_MC_IF_XXX).
     """
-    def __init__(self, sName, asParams):
+    def __init__(self, sName, asParams, aoIfBranch = None, aoElseBranch = None):
         McStmt.__init__(self, sName, asParams);
-        self.aoIfBranch     = [];
-        self.aoElseBranch   = [];
+        self.aoIfBranch     = [] if aoIfBranch   is None else list(aoIfBranch);
+        self.aoElseBranch   = [] if aoElseBranch is None else list(aoElseBranch);
 
     def renderCode(self, cchIndent = 0):
         sRet  = ' ' * cchIndent + self.sName + '(' + ', '.join(self.asParams) + ') {\n';
@@ -1867,11 +1867,13 @@ class McCppGeneric(McStmt):
     """
     Generic C++/C statement.
     """
-    def __init__(self, sCode, fDecode = True, sName = 'C++'):
+    def __init__(self, sCode, fDecode = True, sName = 'C++', cchIndent = 0):
         McStmt.__init__(self, sName, [sCode,]);
-        self.fDecode = fDecode;
+        self.fDecode   = fDecode;
+        self.cchIndent = cchIndent;
 
     def renderCode(self, cchIndent = 0):
+        cchIndent += self.cchIndent;
         sRet = ' ' * cchIndent + self.asParams[0] + '\n';
         if self.fDecode:
             sRet = sRet.replace('\n', ' // C++ decode\n');
@@ -1883,11 +1885,13 @@ class McCppCond(McStmtCond):
     """
     C++/C 'if' statement.
     """
-    def __init__(self, sCode, fDecode):
-        McStmtCond.__init__(self, 'C++/if', [sCode,]);
-        self.fDecode = fDecode;
+    def __init__(self, sCode, fDecode = True, aoIfBranch = None, aoElseBranch = None, cchIndent = 0):
+        McStmtCond.__init__(self, 'C++/if', [sCode,], aoIfBranch, aoElseBranch);
+        self.fDecode   = fDecode;
+        self.cchIndent = cchIndent;
 
     def renderCode(self, cchIndent = 0):
+        cchIndent += self.cchIndent;
         sAnnotation = '// C++ decode' if self.fDecode else '// C++ normal';
         sRet  = ' ' * cchIndent + 'if (' + self.asParams[0] + ') ' + sAnnotation + '\n';
         sRet += ' ' * cchIndent + '{\n';
