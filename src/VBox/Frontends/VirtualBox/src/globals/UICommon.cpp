@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 100094 2023-06-07 13:30:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1674,7 +1674,7 @@ QUuid UICommon::openMediumCreatorDialog(UIActionPool *pActionPool, QWidget *pPar
             uMediumId = UIWizardNewVD::createVDWithWizard(pParent, strDefaultFolder, strMachineName, strMachineGuestOSTypeId);
             break;
         case UIMediumDeviceType_DVD:
-            uMediumId = UIVisoCreatorWidget::createViso(pActionPool, pParent, strDefaultFolder, strMachineName);
+            uMediumId = UIVisoCreatorDialog::createViso(pActionPool, pParent, strDefaultFolder, strMachineName);
             break;
         case UIMediumDeviceType_Floppy:
             uMediumId = UIFDCreationDialog::createFloppyDisk(pParent, strDefaultFolder, strMachineName);
@@ -1907,7 +1907,7 @@ void UICommon::updateMachineStorage(const CMachine &comConstMachine, const UIMed
                                                              strMachineFolder, false /* fUseLastFolder */);
                 }
                 else if(target.type == UIMediumTarget::UIMediumTargetType_CreateAdHocVISO)
-                    uMediumID = UIVisoCreatorWidget::createViso(pActionPool, windowManager().mainWindowShown(),
+                    uMediumID = UIVisoCreatorDialog::createViso(pActionPool, windowManager().mainWindowShown(),
                                                                 strMachineFolder, comConstMachine.GetName());
 
                 else if(target.type == UIMediumTarget::UIMediumTargetType_CreateFloppyDisk)
