@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 99492 2023-04-20 19:21:44Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3.cpp 100100 2023-06-07 17:50:48Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -147,11 +147,15 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
      */
     PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "DistributorMmioBase|RedistributorMmioBase", "");
 
+#if 0
     /*
      * Disable automatic PDM locking for this device.
      */
     int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
+#else
+    int rc;
+#endif
 
     /*
      * Register the GIC with PDM.
