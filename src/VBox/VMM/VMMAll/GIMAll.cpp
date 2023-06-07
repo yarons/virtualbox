@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: GIMAll.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -154,6 +154,10 @@ VMM_INT_DECL(bool) GIMAreHypercallsEnabled(PVMCPUCC pVCpu)
  */
 VMM_INT_DECL(VBOXSTRICTRC) GIMHypercall(PVMCPUCC pVCpu, PCPUMCTX pCtx)
 {
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pCtx);
+#endif
+
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     VMCPU_ASSERT_EMT(pVCpu);
 
@@ -206,6 +210,10 @@ VMM_INT_DECL(VBOXSTRICTRC) GIMHypercall(PVMCPUCC pVCpu, PCPUMCTX pCtx)
  */
 VMM_INT_DECL(VBOXSTRICTRC) GIMHypercallEx(PVMCPUCC pVCpu, PCPUMCTX pCtx, unsigned uDisOpcode, uint8_t cbInstr)
 {
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pCtx, uDisOpcode, cbInstr);
+#endif
+
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     VMCPU_ASSERT_EMT(pVCpu);
 
@@ -242,6 +250,10 @@ VMM_INT_DECL(VBOXSTRICTRC) GIMHypercallEx(PVMCPUCC pVCpu, PCPUMCTX pCtx, unsigne
  */
 VMM_INT_DECL(VBOXSTRICTRC) GIMExecHypercallInstr(PVMCPUCC pVCpu, PCPUMCTX pCtx, uint8_t *pcbInstr)
 {
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pCtx);
+#endif
+
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     VMCPU_ASSERT_EMT(pVCpu);
 
@@ -364,6 +376,10 @@ VMM_INT_DECL(bool) GIMShouldTrapXcptUD(PVMCPUCC pVCpu)
  */
 VMM_INT_DECL(VBOXSTRICTRC) GIMXcptUD(PVMCPUCC pVCpu, PCPUMCTX pCtx, PDISSTATE pDis, uint8_t *pcbInstr)
 {
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    RT_NOREF(pCtx, pDis, pcbInstr);
+#endif
+
     PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     Assert(GIMIsEnabled(pVM));
     Assert(pDis || pcbInstr);

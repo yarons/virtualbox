@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTMpGetDescription-generic.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, RTMpGetDescription for darwin/arm.
  */
@@ -70,7 +70,10 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
 #if defined(RT_ARCH_ARM64)
     char szArmCpuPath[64];
     RTStrPrintf(szArmCpuPath, sizeof(szArmCpuPath), "IODeviceTree:/cpus/cpu%x", idCpu); /** @todo Hex? M1 Max only has 10 cores... */
-    io_registry_entry_t hIoRegEntry = IORegistryEntryFromPath(kIOMasterPortDefault, szArmCpuPath);
+
+    RT_GCC_NO_WARN_DEPRECATED_BEGIN
+    io_registry_entry_t hIoRegEntry = IORegistryEntryFromPath(kIOMasterPortDefault, szArmCpuPath); /* kIOMasterPortDefault: Deprecated since 12.0. */
+    RT_GCC_NO_WARN_DEPRECATED_END
     if (hIoRegEntry != MACH_PORT_NULL)
     {
         /* This property is typically "E" or "P".  Don't know why it's mapped

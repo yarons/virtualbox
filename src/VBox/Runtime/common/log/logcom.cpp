@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: logcom.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Logging to Serial Port.
  */
@@ -149,6 +149,7 @@ RTDECL(void) RTLogWriteCom(const char *pach, size_t cb)
         ASMOutU8(IPRT_UART_BASE, *pu8);
     }
 #else
+    RT_NOREF(pach, cb);
     /* PORTME? */
 #endif
 }

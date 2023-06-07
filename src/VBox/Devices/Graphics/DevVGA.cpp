@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2369,7 +2369,7 @@ static int vmsvgaR3DrawGraphic(PVGASTATE pThis, PVGASTATER3 pThisCC, bool fFullU
          * irrespective of alignment. Not guaranteed for high res modes, i.e.
          * anything wider than 2050 pixels @32bpp. Need to check all pages
          * between the first and last one. */
-        bool     fUpdate    = fFullUpdate | vgaR3IsDirty(pThis, offPage0) | vgaR3IsDirty(pThis, offPage1);
+        bool     fUpdate    = fFullUpdate || vgaR3IsDirty(pThis, offPage0) || vgaR3IsDirty(pThis, offPage1);
         if (offPage1 - offPage0 > GUEST_PAGE_SIZE)
             /* if wide line, can use another page */
             fUpdate |= vgaR3IsDirty(pThis, offPage0 + GUEST_PAGE_SIZE);
@@ -2568,7 +2568,7 @@ static int vgaR3DrawGraphic(PVGASTATE pThis, PVGASTATER3 pThisCC, bool full_upda
          * irrespective of alignment. Not guaranteed for high res modes, i.e.
          * anything wider than 2050 pixels @32bpp. Need to check all pages
          * between the first and last one. */
-        bool update = full_update | vgaR3IsDirty(pThis, page0) | vgaR3IsDirty(pThis, page1);
+        bool update = full_update || vgaR3IsDirty(pThis, page0) || vgaR3IsDirty(pThis, page1);
         if (page1 - page0 > GUEST_PAGE_SIZE) {
             /* if wide line, can use another page */
             update |= vgaR3IsDirty(pThis, page0 + GUEST_PAGE_SIZE);

@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: PerformanceImpl.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Performance API COM Classes implementation
  */
@@ -563,13 +563,17 @@ void PerformanceCollector::unregisterBaseMetricsFor(const ComPtr<IUnknown> &aObj
     pm::Filter filter(name, aObject);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+#ifdef LOG_ENABLED
     int n = 0;
+#endif
     BaseMetricList::iterator it;
     for (it = m.baseMetrics.begin(); it != m.baseMetrics.end(); ++it)
         if (filter.match((*it)->getObject(), (*it)->getName()))
         {
             (*it)->unregister();
+#ifdef LOG_ENABLED
             ++n;
+#endif
         }
     Log7Func(("{%p}: obj=%p, name=%s, marked %d metrics\n", this, (void *)aObject, name.c_str(), n));
     //LogFlowThisFuncLeave();

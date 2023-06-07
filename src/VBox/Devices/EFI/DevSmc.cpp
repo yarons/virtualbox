@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevSmc.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DevSmc - Apple System Management Controller.
  *
@@ -542,8 +542,10 @@ static int getSmcKeyOs(char *pabKey, uint32_t cbKey)
 
     AssertReturn(cbKey >= 65, VERR_INTERNAL_ERROR);
 
+    RT_GCC_NO_WARN_DEPRECATED_BEGIN /* kIOMasterPortDefault: Deprecated since 12.0. */
     io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,
                                                        IOServiceMatching("AppleSMC"));
+    RT_GCC_NO_WARN_DEPRECATED_END
     if (!service)
         return VERR_NOT_FOUND;
 

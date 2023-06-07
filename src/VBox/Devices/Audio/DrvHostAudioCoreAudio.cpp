@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioCoreAudio.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioCoreAudio.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * Host audio driver - Mac OS X CoreAudio.
  *
@@ -61,6 +61,9 @@
 #include <CoreServices/CoreServices.h>
 #include <AudioToolbox/AudioQueue.h>
 #include <AudioUnit/AudioUnit.h>
+
+
+RT_GCC_NO_WARN_DEPRECATED_BEGIN /* Much here is deprecated since 12.0 */
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1090 /* possibly 1080 */
 # define kAudioHardwarePropertyTranslateUIDToDevice (AudioObjectPropertySelector)'uidd'
@@ -2923,3 +2926,5 @@ const PDMDRVREG g_DrvHostCoreAudio =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
+
+RT_GCC_NO_WARN_DEPRECATED_END

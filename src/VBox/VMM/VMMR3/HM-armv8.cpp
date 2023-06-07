@@ -1,4 +1,4 @@
-/* $Id: HM-armv8.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: HM-armv8.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * HM - VM Hardware Support Manager, ARMv8 shim.
  */
@@ -538,5 +538,6 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
 VMMDECL(bool) HMIsEnabledNotMacro(PVM pVM)
 {
     Assert(pVM->bMainExecutionEngine != VM_EXEC_ENGINE_NOT_SET);
+    RT_NOREF(pVM);
     return false;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -318,17 +318,13 @@ void UIVMLogViewerFilterPanel::filter()
 
     /* Prepare filter-data: */
     QString strFilteredText;
-    int count = 0;
     for (int lineIdx = 0; lineIdx < stringLines.size(); ++lineIdx)
     {
         const QString& currentLineString = stringLines[lineIdx];
         if (currentLineString.isEmpty())
             continue;
         if (applyFilterTermsToString(currentLineString))
-        {
             strFilteredText.append(currentLineString).append("\n");
-            ++count;
-        }
     }
 
     document->setPlainText(strFilteredText);

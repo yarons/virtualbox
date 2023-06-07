@@ -1,4 +1,4 @@
-/* $Id: PGM-armv8.cpp 99055 2023-03-19 16:59:19Z alexander.eichner@oracle.com $ */
+/* $Id: PGM-armv8.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, ARMv8 variant. (Mixing stuff here, not good?)
  */
@@ -713,6 +713,7 @@ VMMDECL(int)  PGMGstModifyPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, size_t cb, uint64_
     Assert(cb);
 
     LogFlow(("PGMGstModifyPage %RGv %d bytes fFlags=%08llx fMask=%08llx\n", GCPtr, cb, fFlags, fMask));
+    RT_NOREF(pVCpu, GCPtr, cb, fFlags, fMask);
 
     AssertReleaseFailed();
     return VERR_NOT_IMPLEMENTED;

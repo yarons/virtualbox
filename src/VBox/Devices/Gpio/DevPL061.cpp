@@ -1,4 +1,4 @@
-/* $Id: DevPL061.cpp 99895 2023-05-22 11:40:40Z alexander.eichner@oracle.com $ */
+/* $Id: DevPL061.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPL061 - ARM PL061 PrimeCell GPIO.
  *
@@ -183,7 +183,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pl061MmioRead(PPDMDEVINS pDevIns, void *pvUser
     PDEVPL061 pThis = PDMDEVINS_2_DATA(pDevIns, PDEVPL061);
     RT_NOREF(pvUser);
     Assert(cb == 4);
-    Assert(!(off & (cb - 1)));
+    Assert(!(off & (cb - 1))); RT_NOREF(cb);
 
     LogFlowFunc(("%RGp cb=%u\n", off, cb));
 

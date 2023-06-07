@@ -1,4 +1,4 @@
-/* $Id: GICR3.cpp 100100 2023-06-07 17:50:48Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3).
  */
@@ -209,12 +209,12 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
         PDMDevHlpSTAMRegisterF(pDevIns, a_pvReg, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, \
                                STAMUNIT_TICKS_PER_CALL, a_pszDesc, a_pszNameFmt, idCpu)
 
+#ifdef VBOX_WITH_STATISTICS
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU  pVCpu     = pVM->apCpusR3[idCpu];
         PGICCPU pGicCpu  = VMCPU_TO_GICCPU(pVCpu);
 
-#ifdef VBOX_WITH_STATISTICS
 # if 0 /* No R0 for now. */
         GIC_REG_COUNTER(&pGicCpu->StatMmioReadRZ,    "%u/RZ/MmioRead",    "Number of APIC MMIO reads in RZ.");
         GIC_REG_COUNTER(&pGicCpu->StatMmioWriteRZ,   "%u/RZ/MmioWrite",   "Number of APIC MMIO writes in RZ.");
@@ -226,8 +226,8 @@ DECLCALLBACK(int) gicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pC
         GIC_REG_COUNTER(&pGicCpu->StatMmioWriteR3,   "%u/R3/MmioWrite",   "Number of APIC MMIO writes in R3.");
         GIC_REG_COUNTER(&pGicCpu->StatSysRegReadR3,  "%u/R3/SysRegRead",  "Number of GIC system register reads in R3.");
         GIC_REG_COUNTER(&pGicCpu->StatSysRegWriteR3, "%u/R3/SysRegWrite", "Number of GIC system register writes in R3.");
-#endif
     }
+#endif
 
 # undef GIC_PROF_COUNTER
 

@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCGdbRemoteStub.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -1672,7 +1672,7 @@ static int dbgcGdbStubCtxPktProcessH(PGDBSTUBCTX pThis, const uint8_t *pbPktRem,
 
     if (*pbPktRem == 'g')
     {
-        cbPktRem--;
+        /*Unused: cbPktRem--;*/ RT_NOREF(cbPktRem);
         pbPktRem++;
 
         /* We know there is an # character denoting the end so the following must return with VWRN_TRAILING_CHARS. */

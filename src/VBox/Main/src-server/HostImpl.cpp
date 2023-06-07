@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 99941 2023-05-23 17:06:41Z sergey.dubov@oracle.com $ */
+/* $Id: HostImpl.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1346,6 +1346,7 @@ HRESULT Host::getProcessorCPUIDLeaf(ULONG aCpuId, ULONG aLeaf, ULONG aSubLeaf,
     *aValECX = uECX;
     *aValEDX = uEDX;
 #else
+    RT_NOREF(aLeaf, aSubLeaf);
     *aValEAX = 0;
     *aValEBX = 0;
     *aValECX = 0;

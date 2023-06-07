@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 100105 2023-06-07 17:58:00Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -94,7 +94,7 @@
 int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, AutoWriteLock *pAlock)
 {
     RT_NOREF(pVM /* when everything is disabled */);
-    VMMDev         *pVMMDev   = m_pVMMDev; Assert(pVMMDev);
+    VMMDev         *pVMMDev   = m_pVMMDev; Assert(pVMMDev); RT_NOREF(pVMMDev); /** @todo Comes later. */
     ComPtr<IMachine> pMachine = i_machine();
 
     HRESULT         hrc;
@@ -170,7 +170,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         uint32_t idPHandleIntCtrl = RTFdtPHandleAllocate(hFdt);
         Assert(idPHandleIntCtrl != UINT32_MAX);
         uint32_t idPHandleIntCtrlMsi = RTFdtPHandleAllocate(hFdt);
-        Assert(idPHandleIntCtrlMsi != UINT32_MAX);
+        Assert(idPHandleIntCtrlMsi != UINT32_MAX); RT_NOREF(idPHandleIntCtrlMsi);
         uint32_t idPHandleAbpPClk = RTFdtPHandleAllocate(hFdt);
         Assert(idPHandleAbpPClk != UINT32_MAX);
         uint32_t idPHandleGpio = RTFdtPHandleAllocate(hFdt);

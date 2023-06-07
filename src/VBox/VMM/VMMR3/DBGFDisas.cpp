@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFDisas.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -382,7 +382,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     int     rc;
 
 #if defined(VBOX_VMM_TARGET_ARMV8)
-    RT_NOREF(pVM, Sel, GCPtr, rc, fFlags, pszOutput, cbOutput, pcbInstr, pDisState);
+    RT_NOREF(pVM, pVCpu, Sel, GCPtr, rc, fFlags, pszOutput, cbOutput, pcbInstr, pDisState);
     AssertReleaseFailed(); /** @todo */
     return VERR_NOT_IMPLEMENTED;
 #else

@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboardHostToGuest.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxClientClipboardHostToGuest.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxClient - Shared Clipboard Host -> Guest copying, Darwin.
  */
@@ -44,6 +44,8 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/GuestHost/clipboard-helper.h>
 #include "VBoxClientInternal.h"
+
+RT_GCC_NO_WARN_DEPRECATED_BEGIN /* Much here is deprecated since 12.0 */
 
 /**
  * Allocate memory for host buffer and receive it.
@@ -313,3 +315,5 @@ int vbclClipboardForwardToGuest(uint32_t u32ClientId, PasteboardRef pPasteboard,
 
     return rc;
 }
+
+RT_GCC_NO_WARN_DEPRECATED_END

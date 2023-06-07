@@ -1,4 +1,4 @@
-/* $Id: tstPrfRT.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstPrfRT.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT testcase - profile some of the important functions.
  */
@@ -124,6 +124,7 @@ static void PrintResult(uint64_t u64Ticks, uint64_t u64MaxTicks, uint64_t u64Min
 
 void PrintResult(uint64_t cNs, uint64_t cNsMax, uint64_t cNsMin, unsigned cTimes, const char *pszOperation)
 {
+    RT_NOREF(cNsMax, cNsMin);
     //RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,
     //             "%-32s %5lld / %5lld / %5lld ns per call (%u calls %lld ns)\n",
     //             pszOperation, cNsMin, cNs / (uint64_t)cTimes, cNsMax, cTimes, cNs);

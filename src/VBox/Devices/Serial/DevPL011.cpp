@@ -1,4 +1,4 @@
-/* $Id: DevPL011.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPL011.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * DevSerialPL011 - ARM PL011 PrimeCell UART.
  *
@@ -614,7 +614,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pl011MmioRead(PPDMDEVINS pDevIns, void *pvUser
     PDEVPL011 pThis = PDMDEVINS_2_DATA(pDevIns, PDEVPL011);
     NOREF(pvUser);
     Assert(cb == 4 || cb == 8);
-    Assert(!(off & (cb - 1)));
+    Assert(!(off & (cb - 1))); RT_NOREF(cb);
 
     LogFlowFunc(("%RGp cb=%u\n", off, cb));
 
@@ -673,7 +673,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pl011MmioWrite(PPDMDEVINS pDevIns, void *pvUse
     LogFlowFunc(("cb=%u reg=%RGp val=%llx\n", cb, off, cb == 4 ? *(uint32_t *)pv : cb == 8 ? *(uint64_t *)pv : 0xdeadbeef));
     RT_NOREF(pvUser);
     Assert(cb == 4 || cb == 8);
-    Assert(!(off & (cb - 1)));
+    Assert(!(off & (cb - 1))); RT_NOREF(cb);
 
     VBOXSTRICTRC rcStrict = VINF_SUCCESS;
     uint32_t u32Val = *(uint32_t *)pv;
@@ -713,7 +713,7 @@ static DECLCALLBACK(int) pl011R3DataAvailRdrNotify(PPDMISERIALPORT pInterface, s
     PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     /** @todo */
-    RT_NOREF(pThis);
+    RT_NOREF(pThis, cbAvail);
 
     PDMDevHlpCritSectLeave(pDevIns, pDevIns->pCritSectRoR3);
     return VINF_SUCCESS;
@@ -779,7 +779,7 @@ static DECLCALLBACK(int) pl011R3NotifyStsLinesChanged(PPDMISERIALPORT pInterface
     PDM_CRITSECT_RELEASE_ASSERT_RC_DEV(pDevIns, pDevIns->pCritSectRoR3, rcLock);
 
     /** @todo */
-    RT_NOREF(pThis);
+    RT_NOREF(pThis, fNewStatusLines);
 
     PDMDevHlpCritSectLeave(pDevIns, pDevIns->pCritSectRoR3);
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboardGuestToHost.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/** $Id: VBoxClientClipboardGuestToHost.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxClient - Shared Clipboard Guest -> Host copying, Darwin.
  */
@@ -44,6 +44,8 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/GuestHost/clipboard-helper.h>
 #include "VBoxClientInternal.h"
+
+RT_GCC_NO_WARN_DEPRECATED_BEGIN /* Much here is deprecated since 12.0 */
 
 /**
  * Walk through pasteboard items and report currently available item types.
@@ -388,3 +390,5 @@ int vbclClipboardForwardToHost(uint32_t u32ClientId, PasteboardRef pPasteboard, 
 
     return rc; /** @todo r=bird: If there are multiple formats available, which rc is returned here? Does it matter? */
 }
+
+RT_GCC_NO_WARN_DEPRECATED_END

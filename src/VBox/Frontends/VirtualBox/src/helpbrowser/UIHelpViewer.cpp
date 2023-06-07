@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -825,15 +825,11 @@ void UIHelpViewer::findAllMatches(const QString &searchString)
         return;
     QTextCursor cursor(pDocument);
     QTextDocument::FindFlags flags;
-    int iMatchCount = 0;
     while (!cursor.isNull() && !cursor.atEnd())
     {
         cursor = pDocument->find(searchString, cursor, flags);
         if (!cursor.isNull())
-        {
             m_matchedCursorPosition << cursor.position() - searchString.length();
-            ++iMatchCount;
-        }
     }
 }
 
