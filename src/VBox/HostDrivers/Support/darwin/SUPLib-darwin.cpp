@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib-darwin.cpp 100097 2023-06-07 17:45:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -62,6 +62,8 @@
 
 #include <sys/fcntl.h>
 #include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #include <errno.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -327,6 +329,23 @@ DECLHIDDEN(int) suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t /* cPa
     NOREF(pThis);
     free(pvPages);
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(bool) suplibOsIsNemSupportedWhenNoVtxOrAmdV(void)
+{
+# if ARCH_BITS == 64
+    int fHvSupported = 0;
+    size_t cb = sizeof(fHvSupported);
+    int rc = sysctlbyname("kern.hv.supported", &fHvSupported, &cb, NULL, 0);
+    if (   !rc
+        && cb == sizeof(uint32_t))
+        return fHvSupported == 1;
+
+    return false;
+# else
+    return false;
+#endif
 }
 
 #endif /* !IN_SUP_HARDENED_R3 */

@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib.cpp 100097 2023-06-07 17:45:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1776,7 +1776,7 @@ SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pfCaps)
 
 SUPR3DECL(bool) SUPR3IsNemSupportedWhenNoVtxOrAmdV(void)
 {
-#ifdef RT_OS_WINDOWS
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN)
     return suplibOsIsNemSupportedWhenNoVtxOrAmdV();
 #else
     return false;
