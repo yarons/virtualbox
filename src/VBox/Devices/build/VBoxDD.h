@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 99927 2023-05-23 08:05:36Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.h 100128 2023-06-08 16:45:25Z jack.doherty@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -136,7 +136,12 @@ extern const PDMDRVREG g_DrvVDE;
 #endif
 extern const PDMDRVREG g_DrvIntNet;
 extern const PDMDRVREG g_DrvDedicatedNic;
+#ifndef VBOX_WITH_LIBSLIRP
 extern const PDMDRVREG g_DrvNAT;
+#endif
+#ifdef VBOX_WITH_LIBSLIRP
+extern const PDMDRVREG g_DrvNATlibslirp;
+#endif
 #ifdef VBOX_WITH_NETSHAPER
 extern const PDMDRVREG g_DrvNetShaper;
 #endif /* VBOX_WITH_NETSHAPER */

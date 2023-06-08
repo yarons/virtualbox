@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 99927 2023-05-23 08:05:36Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.cpp 100128 2023-06-08 16:45:25Z jack.doherty@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -310,6 +310,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 #endif
 #ifndef VBOX_WITH_LIBSLIRP
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNAT);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_LIBSLIRP
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNATlibslirp);
     if (RT_FAILURE(rc))
         return rc;
 #endif
