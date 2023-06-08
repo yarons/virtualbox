@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCloneMedium1.py 100080 2023-06-06 07:34:09Z samantha.scholz@oracle.com $
+# $Id: tdCloneMedium1.py 100131 2023-06-08 18:24:48Z samantha.scholz@oracle.com $
 
 """
 VirtualBox Validation Kit - Clone Medium Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100080 $"
+__version__ = "$Revision: 100131 $"
 
 
 # Standard Python imports.
@@ -299,7 +299,9 @@ class SubTstDrvCloneMedium1(base.SubTestDriverBase):
         return reporter.testDone()[1] == 0
 
     def testAll(self):
-        return self.testCloneOnly() & self.testResizeAndClone() & self.testCloneToBase()
+        if self.oTstDrv.uRevision > 157768:
+            return self.testCloneOnly() & self.testResizeAndClone() & self.testCloneToBase()
+        return self.testCloneOnly() & self.testResizeAndClone()
 
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
