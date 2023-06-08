@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100123 2023-06-08 13:45:18Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 100130 2023-06-08 17:53:21Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1637,7 +1637,7 @@ endif
 #
 VirtualBox_QT_MODULES = Core Gui Widgets PrintSupport
 ifdef VBOX_WITH_QT6
- VirtualBox_QT_MODULES += StateMachine
+ VirtualBox_QT_MODULES += StateMachine EntryPoint
 endif
 ifndef VBOX_WITH_QT6
  VirtualBox_QT_MODULES.linux   += X11Extras
@@ -1655,7 +1655,7 @@ endif
 #
 VirtualBoxVM_QT_MODULES = Core Gui Widgets PrintSupport
 ifdef VBOX_WITH_QT6
- VirtualBoxVM_QT_MODULES += StateMachine
+ VirtualBoxVM_QT_MODULES += StateMachine EntryPoint
 endif
 ifndef VBOX_WITH_QT6
  VirtualBoxVM_QT_MODULES.linux   += X11Extras
