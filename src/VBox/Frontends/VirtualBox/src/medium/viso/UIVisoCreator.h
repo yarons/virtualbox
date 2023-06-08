@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100134 2023-06-08 19:33:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100135 2023-06-08 19:48:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -43,6 +43,7 @@
 
 /* Forward declarations: */
 class QGridLayout;
+class QVBoxLayout;
 class QLabel;
 class QMenu;
 class QStatusBar;
@@ -159,7 +160,7 @@ private:
         QAction              *m_pOpenAction;
     /** @} */
 
-    QGridLayout          *m_pMainLayout;
+    QVBoxLayout          *m_pMainLayout;
     UIVisoHostBrowser    *m_pHostBrowser;
     UIVisoContentBrowser *m_pVISOContentBrowser;
 
@@ -175,6 +176,7 @@ private:
     QPointer<UIActionPool> m_pActionPool;
     bool                   m_fShowToolBar;
     UIVisoSettingWidget   *m_pSettingsWidget;
+    QWidget               *m_pBrowserContainerWidget;
 };
 
 
