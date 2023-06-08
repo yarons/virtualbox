@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 98655 2023-02-20 15:05:40Z knut.osmundsen@oracle.com $
+# $Id: txsclient.py 100124 2023-06-08 14:35:52Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98655 $"
+__version__ = "$Revision: 100124 $"
 
 # Standard Python imports.
 import array;
@@ -734,6 +734,8 @@ class Session(TdTaskBase):
                     sVer = getSZ(abPayload, 0);
                     if sVer is not None:
                         rc = sVer;
+                elif sOpcode == "UNKNOWN":
+                    reporter.log(self.fErr, 'taskVer got a UNKNOWN, txs server is probably too old, just ignore')
                 else:
                     reporter.maybeErr(self.fErr, 'taskVer got a bad reply: %s' % (sOpcode,));
             else:
