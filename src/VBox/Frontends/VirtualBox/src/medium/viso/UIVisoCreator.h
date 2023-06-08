@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100123 2023-06-08 13:45:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100134 2023-06-08 19:33:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -53,6 +53,7 @@ class UIDialogPanel;
 class UIVisoHostBrowser;
 class UIVisoContentBrowser;
 class UIVisoConfigurationPanel;
+class UIVisoSettingWidget;
 
 /** A QIMainDialog extension. It hosts two UIVisoBrowserBase extensions, one for host and one
   * for VISO file system. It has the main menu, main toolbar, and a vertical toolbar and corresponding
@@ -173,6 +174,7 @@ private:
     QList<UIDialogPanel*>          m_visiblePanelsList;
     QPointer<UIActionPool> m_pActionPool;
     bool                   m_fShowToolBar;
+    UIVisoSettingWidget   *m_pSettingsWidget;
 };
 
 
