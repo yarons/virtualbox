@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100135 2023-06-08 19:48:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100146 2023-06-09 16:15:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -43,6 +43,7 @@
 
 /* Forward declarations: */
 class QGridLayout;
+class QGraphicsBlurEffect;
 class QVBoxLayout;
 class QLabel;
 class QMenu;
@@ -91,6 +92,7 @@ public:
 protected:
 
     virtual void retranslateUi() final override;
+    virtual void paintEvent(QPaintEvent *pEvent) final override;
 
 private slots:
 
@@ -175,8 +177,11 @@ private:
     QList<UIDialogPanel*>          m_visiblePanelsList;
     QPointer<UIActionPool> m_pActionPool;
     bool                   m_fShowToolBar;
+    bool                   m_fShowSettingsDialog;
     UIVisoSettingWidget   *m_pSettingsWidget;
     QWidget               *m_pBrowserContainerWidget;
+    QWidget               *m_pOverlayWidget;
+    QGraphicsBlurEffect   *m_pOverlayBlurEffect;
 };
 
 
