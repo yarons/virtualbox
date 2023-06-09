@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 99809 2023-05-16 06:46:21Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HM.cpp 100139 2023-06-09 14:31:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -975,6 +975,10 @@ static int hmR3InitFinalizeR3(PVM pVM)
         HM_REG_COUNTER(&pHmCpu->StatVmxCheckBadSel,         "/HM/CPU%u/VMXCheck/Selector", "Could not use VMX due to unsuitable selector.");
         HM_REG_COUNTER(&pHmCpu->StatVmxCheckBadRpl,         "/HM/CPU%u/VMXCheck/RPL", "Could not use VMX due to unsuitable RPL.");
         HM_REG_COUNTER(&pHmCpu->StatVmxCheckPmOk,           "/HM/CPU%u/VMXCheck/VMX_PM", "VMX execution in protected mode OK.");
+        HM_REG_COUNTER(&pHmCpu->StatVmxCheck1,              "/HM/CPU%u/VMXCheck/1", "Could not use VMX due to unsuitable state and no VMMDev heap");
+        HM_REG_COUNTER(&pHmCpu->StatVmxCheck2,              "/HM/CPU%u/VMXCheck/2", "CR0/CR4 fixed stuff.");
+        HM_REG_COUNTER(&pHmCpu->StatVmxCheckDisabled,       "/HM/CPU%u/VMXCheck/Disabled", "VMX is not enabled.");
+        HM_REG_COUNTER(&pHmCpu->StatVmxCheckOk,             "/HM/CPU%u/VMXCheck/Ok", "We could do VMX!");
 #endif
         if (fCpuSupportsVmx)
         {

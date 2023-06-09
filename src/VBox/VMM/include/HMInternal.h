@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 99208 2023-03-29 14:13:56Z alexander.eichner@oracle.com $ */
+/* $Id: HMInternal.h 100139 2023-06-09 14:31:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Internal header file.
  */
@@ -990,6 +990,10 @@ typedef struct HMCPU
     STAMCOUNTER             StatVmxCheckBadSel;
     STAMCOUNTER             StatVmxCheckBadRpl;
     STAMCOUNTER             StatVmxCheckPmOk;
+    STAMCOUNTER             StatVmxCheck1;
+    STAMCOUNTER             StatVmxCheck2;
+    STAMCOUNTER             StatVmxCheckDisabled;
+    STAMCOUNTER             StatVmxCheckOk;
 
     STAMCOUNTER             StatVmxPreemptionRecalcingDeadline;
     STAMCOUNTER             StatVmxPreemptionRecalcingDeadlineExpired;
