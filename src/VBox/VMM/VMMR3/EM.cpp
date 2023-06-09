@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 100144 2023-06-09 15:39:42Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 100145 2023-06-09 16:07:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1136,6 +1136,31 @@ static VBOXSTRICTRC emR3RecompilerExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
                 && rcStrict != VINF_EM_RESCHEDULE_REM)
             {
                 *pfFFDone = true;
+                break;
+            }
+        }
+
+        /*
+         * Check if we can switch back to the main execution engine now.
+         */
+#if !defined(VBOX_VMM_TARGET_ARMV8)
+        if (VM_IS_HM_ENABLED(pVM))
+        {
+            if (HMCanExecuteGuest(pVM, pVCpu, &pVCpu->cpum.GstCtx))
+            {
+                *pfFFDone = true;
+                rcStrict  = VINF_EM_RESCHEDULE_EXEC_ENGINE;
+                break;
+            }
+        }
+        else
+#endif
+        if (VM_IS_NEM_ENABLED(pVM))
+        {
+            if (NEMR3CanExecuteGuest(pVM, pVCpu))
+            {
+                *pfFFDone = true;
+                rcStrict  = VINF_EM_RESCHEDULE_EXEC_ENGINE;
                 break;
             }
         }
