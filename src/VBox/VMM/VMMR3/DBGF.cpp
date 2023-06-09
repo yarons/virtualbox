@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 99899 2023-05-22 12:43:21Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 100144 2023-06-09 15:39:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1011,7 +1011,6 @@ static int dbgfR3CpuWait(PVMCPU pVCpu)
                         case VINF_EM_RESUME:
                         case VINF_EM_RESCHEDULE:
                         case VINF_EM_RESCHEDULE_REM:
-                        case VINF_EM_RESCHEDULE_RAW:
                             if (rc < rcRet || rcRet == VINF_SUCCESS)
                                 rcRet = rc;
                             break;

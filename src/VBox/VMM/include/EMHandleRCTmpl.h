@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: EMHandleRCTmpl.h 100144 2023-06-09 15:39:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -62,8 +62,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
          */
         case VINF_SUCCESS:
             break;
-        case VINF_EM_RESCHEDULE_RAW:
-        case VINF_EM_RESCHEDULE_HM:
+        case VINF_EM_RESCHEDULE_EXEC_ENGINE:
         case VINF_EM_RAW_INTERRUPT:
         case VINF_EM_RAW_TO_R3:
         case VINF_EM_RAW_TIMER_PENDING:
