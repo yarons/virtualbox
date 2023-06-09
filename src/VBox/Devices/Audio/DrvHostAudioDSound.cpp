@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDSound.cpp 98698 2023-02-22 23:47:44Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioDSound.cpp 100141 2023-06-09 15:27:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - DirectSound (Windows).
  */
@@ -2634,7 +2634,7 @@ static LPCGUID dsoundConfigQueryGUID(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, const c
     {
         rc = RTUuidFromStr(pUuid, pszGuid);
         if (RT_SUCCESS(rc))
-            pGuid = (LPCGUID)&pUuid;
+            pGuid = (LPCGUID)pUuid;
         else
             DSLOGREL(("DSound: Error parsing device GUID for device '%s': %Rrc\n", pszName, rc));
 
@@ -2769,7 +2769,7 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     else
         LogRel2(("DSound: Notification client is disabled (ver %#RX64)\n", RTSystemGetNtVersion()));
 #endif
-
+RT_BREAKPOINT();
     /*
      * Initialize configuration values and critical section.
      */
