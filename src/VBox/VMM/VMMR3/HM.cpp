@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 100139 2023-06-09 14:31:28Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 100140 2023-06-09 14:54:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2760,6 +2760,7 @@ VMMR3_INT_DECL(void) HMR3NotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu)
 }
 
 
+#if 0 /* evil */
 /**
  * Checks if we are currently using hardware acceleration.
  *
@@ -2770,6 +2771,7 @@ VMMR3_INT_DECL(bool) HMR3IsActive(PCVMCPU pVCpu)
 {
     return pVCpu->hm.s.fActive;
 }
+#endif
 
 
 /**

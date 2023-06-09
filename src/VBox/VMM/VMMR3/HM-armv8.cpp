@@ -1,4 +1,4 @@
-/* $Id: HM-armv8.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: HM-armv8.cpp 100140 2023-06-09 14:54:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM - VM Hardware Support Manager, ARMv8 shim.
  */
@@ -365,6 +365,7 @@ VMMR3_INT_DECL(void) HMR3NotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu)
 }
 
 
+#if 0 /* evil */
 /**
  * Checks if we are currently using hardware acceleration.
  *
@@ -375,6 +376,7 @@ VMMR3_INT_DECL(bool) HMR3IsActive(PCVMCPU pVCpu)
 {
     return pVCpu->hm.s.fActive;
 }
+#endif
 
 
 /**

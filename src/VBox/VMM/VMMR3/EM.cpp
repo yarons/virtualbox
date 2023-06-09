@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 100012 2023-05-30 11:50:41Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 100140 2023-06-09 14:54:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1804,6 +1804,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                         {
                             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_NMI);
                             fWakeupPending = true;
+# if 0 /* HMR3IsActive is not reliable (esp. after restore), just return VINF_EM_RESCHEDULE. */
                             if (pVM->em.s.fIemExecutesAll)
                                 rc2 = VINF_EM_RESCHEDULE;
                             else
@@ -1812,6 +1813,9 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                                     : VM_IS_NEM_ENABLED(pVM) ? VINF_EM_RESCHEDULE
                                     :                          VINF_EM_RESCHEDULE_REM;
                             }
+# else
+                            rc2 = VINF_EM_RESCHEDULE;
+# endif
                         }
                         UPDATE_RC();
                     }
@@ -1902,12 +1906,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_VTIMER_ACTIVATED);
 
             fWakeupPending = true;
-            if (pVM->em.s.fIemExecutesAll)
-                rc2 = VINF_EM_RESCHEDULE;
-            else
-                rc2 = HMR3IsActive(pVCpu)    ? VINF_EM_RESCHEDULE_HM
-                    : VM_IS_NEM_ENABLED(pVM) ? VINF_EM_RESCHEDULE
-                    :                          VINF_EM_RESCHEDULE_REM;
+            rc2 = VINF_EM_RESCHEDULE;
         }
 #endif /* VBOX_VMM_TARGET_ARMV8 */
 

@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 99649 2023-05-08 06:32:00Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: TRPM.cpp 100140 2023-06-09 14:54:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -425,9 +425,13 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent, bool
         /* Can happen if the interrupt is masked by TPR or APIC is disabled. */
         AssertMsg(rc == VERR_APIC_INTR_MASKED_BY_TPR || rc == VERR_NO_DATA, ("PDMGetInterrupt failed. rc=%Rrc\n", rc));
     }
+# if 0 /* HMR3IsActive is not reliable (esp. after restore), just return VINF_EM_RESCHEDULE. */
     return HMR3IsActive(pVCpu)    ? VINF_EM_RESCHEDULE_HM
          : VM_IS_NEM_ENABLED(pVM) ? VINF_EM_RESCHEDULE
          :                          VINF_EM_RESCHEDULE_REM; /* (Heed the halted state if this is changed!) */
+# else
+    return VINF_EM_RESCHEDULE;
+# endif
 #endif
 }
 
