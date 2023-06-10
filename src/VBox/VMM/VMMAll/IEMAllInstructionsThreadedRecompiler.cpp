@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 100109 2023-06-07 20:21:40Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsThreadedRecompiler.cpp 100148 2023-06-10 19:44:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -195,6 +195,17 @@ typedef struct IEMTB
     ((a_GCPtrEff) = iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (bRm), (cbImm), &uEffAddrInfo))
 #endif
 
+#define IEM_MC2_EMIT_CALL_0(a_enmFunction) do { \
+        IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
+        \
+        PIEMTB              const pTb   = pVCpu->iem.s.pCurTbR3; \
+        PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
+        pCall->enmFunction = a_enmFunction; \
+        pCall->cbOpcode    = IEM_GET_INSTR_LEN(pVCpu); \
+        pCall->auParams[0] = 0; \
+        pCall->auParams[1] = 0; \
+        pCall->auParams[2] = 0; \
+    } while (0)
 #define IEM_MC2_EMIT_CALL_1(a_enmFunction, a_uArg0) do { \
         IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
         uint64_t         const uArg0Check       = (a_uArg0);     RT_NOREF(uArg0Check); \
