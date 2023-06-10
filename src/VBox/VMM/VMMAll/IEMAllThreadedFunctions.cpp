@@ -1,4 +1,4 @@
-/* $Id: IEMAllThreadedFunctions.cpp 100148 2023-06-10 19:44:02Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThreadedFunctions.cpp 100149 2023-06-10 20:49:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -593,6 +593,21 @@ static RTGCPTR iemOpHlpCalcRmEffAddrThreadedAddr64(PVMCPUCC pVCpu, uint8_t bRmEx
 }
 
 
+
+/**
+ * Built-in function that compares the fExec mask against uParam0.
+ */
+static IEM_DECL_IMPL_DEF(VBOXSTRICTRC, iemThreadedFunc_BltIn_CheckMode,
+                         (PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2))
+{
+    uint32_t const fExpectedExec = (uint32_t)uParam0;
+    if (pVCpu->iem.s.fExec == fExpectedExec)
+        return VINF_SUCCESS;
+    Log12(("Mode changed at %04x:%08RX64: %#x -> %#x (xor: %#x)\n", pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip,
+           fExpectedExec, pVCpu->iem.s.fExec, fExpectedExec ^ pVCpu->iem.s.fExec));
+    RT_NOREF(uParam1, uParam2);
+    return VINF_IEM_REEXEC_MODE_CHANGED;
+}
 
 /*
  * The threaded functions.
