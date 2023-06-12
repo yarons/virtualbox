@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 100154 2023-06-12 14:17:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -738,7 +738,7 @@ void UIMachineSettingsSerial::populateComboboxes()
         }
 
         /* Choose requested port mode: */
-        const int iIndex = m_pComboMode->findData(m_enmPortMode);
+        const int iIndex = m_pComboMode->findData(QVariant::fromValue(m_enmPortMode));
         m_pComboMode->setCurrentIndex(iIndex != -1 ? iIndex : 0);
     }
 }

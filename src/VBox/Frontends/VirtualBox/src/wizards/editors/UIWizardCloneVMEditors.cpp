@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.cpp 100154 2023-06-12 14:17:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -244,7 +244,7 @@ MACAddressClonePolicy UICloneVMAdditionalOptionsEditor::macAddressClonePolicy() 
 
 void UICloneVMAdditionalOptionsEditor::setMACAddressClonePolicy(MACAddressClonePolicy enmMACAddressClonePolicy)
 {
-    const int iIndex = m_pMACComboBox->findData(enmMACAddressClonePolicy);
+    const int iIndex = m_pMACComboBox->findData(QVariant::fromValue(enmMACAddressClonePolicy));
     AssertMsg(iIndex != -1, ("Data not found!"));
     m_pMACComboBox->setCurrentIndex(iIndex);
 }

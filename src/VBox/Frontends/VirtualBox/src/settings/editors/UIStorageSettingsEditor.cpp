@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 100154 2023-06-12 14:17:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -3464,7 +3464,7 @@ void UIStorageSettingsEditor::sltGetInformation()
                     }
                 }
                 const KStorageControllerType enmType = m_pModelStorage->data(index, StorageModel::R_CtrType).value<KStorageControllerType>();
-                const int iCtrPos = m_pComboType->findData(enmType, StorageModel::R_CtrType);
+                const int iCtrPos = m_pComboType->findData(QVariant::fromValue(enmType), StorageModel::R_CtrType);
                 m_pComboType->setCurrentIndex(iCtrPos == -1 ? 0 : iCtrPos);
 
                 const KStorageBus enmBus = m_pModelStorage->data(index, StorageModel::R_CtrBusType).value<KStorageBus>();
