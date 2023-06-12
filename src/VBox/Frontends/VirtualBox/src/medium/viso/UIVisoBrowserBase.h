@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -66,7 +66,7 @@ public:
 
 public slots:
 
-    void sltHandleTableViewItemDoubleClick(const QModelIndex &index);
+    void sltTableViewItemDoubleClick(const QModelIndex &index);
 
 protected:
 
@@ -92,8 +92,8 @@ protected slots:
 
 private slots:
 
-    void sltHandleTreeSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-    void sltHandleTreeItemClicked(const QModelIndex &modelIndex);
+    void sltTreeSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void sltTreeItemClicked(const QModelIndex &modelIndex);
     void sltExpandCollapseTreeView();
 
 private:

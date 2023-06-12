@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -215,17 +215,17 @@ void UIVisoHostBrowser::prepareConnections()
     if (m_pTableView)
     {
         connect(m_pTableView, &QTableView::doubleClicked,
-                this, &UIVisoBrowserBase::sltHandleTableViewItemDoubleClick);
+                this, &UIVisoBrowserBase::sltTableViewItemDoubleClick);
         connect(m_pTableView, &QTableView::customContextMenuRequested,
                 this, &UIVisoHostBrowser::sltFileTableViewContextMenu);
     }
 
     if (m_pTableView->selectionModel())
         connect(m_pTableView->selectionModel(), &QItemSelectionModel::selectionChanged,
-                this, &UIVisoHostBrowser::sltHandleTableSelectionChanged);
+                this, &UIVisoHostBrowser::sltTableSelectionChanged);
 }
 
-void UIVisoHostBrowser::sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+void UIVisoHostBrowser::sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
     emit sigTableSelectionChanged(selected.isEmpty());
@@ -295,7 +295,7 @@ bool UIVisoHostBrowser::tableViewHasSelection() const
     return pSelectionModel->hasSelection();
 }
 
-void UIVisoHostBrowser::sltHandleAddAction()
+void UIVisoHostBrowser::sltAddAction()
 {
     if (!m_pTableView || !m_pTableModel)
         return;

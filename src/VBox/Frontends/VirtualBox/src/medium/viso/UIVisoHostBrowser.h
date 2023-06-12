@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -60,7 +60,7 @@ public:
 
 public slots:
 
-    void sltHandleAddAction();
+    void sltAddAction();
 
 protected:
 
@@ -72,7 +72,7 @@ protected:
 
 private slots:
 
-    void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 private:
 

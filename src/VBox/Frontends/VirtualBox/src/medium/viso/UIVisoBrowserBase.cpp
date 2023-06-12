@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoBrowserBase.cpp 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -216,9 +216,9 @@ void UIVisoBrowserBase::prepareConnections()
     if (m_pTreeView)
     {
         connect(m_pTreeView->selectionModel(), &QItemSelectionModel::selectionChanged,
-                this, &UIVisoBrowserBase::sltHandleTreeSelectionChanged);
+                this, &UIVisoBrowserBase::sltTreeSelectionChanged);
         connect(m_pTreeView, &QTreeView::clicked,
-                this, &UIVisoBrowserBase::sltHandleTreeItemClicked);
+                this, &UIVisoBrowserBase::sltTreeItemClicked);
     }
     if (m_pLocationSelector)
         connect(m_pLocationSelector, &UILocationSelector::sigExpandCollapseTreeView,
@@ -284,12 +284,12 @@ void UIVisoBrowserBase::sltFileTableViewContextMenu(const QPoint &point)
     emit sigCreateFileTableViewContextMenu(pSender, point);
 }
 
-void UIVisoBrowserBase::sltHandleTableViewItemDoubleClick(const QModelIndex &index)
+void UIVisoBrowserBase::sltTableViewItemDoubleClick(const QModelIndex &index)
 {
     tableViewItemDoubleClick(index);
 }
 
-void UIVisoBrowserBase::sltHandleTreeSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+void UIVisoBrowserBase::sltTreeSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
     QModelIndexList indices = selected.indexes();
@@ -299,7 +299,7 @@ void UIVisoBrowserBase::sltHandleTreeSelectionChanged(const QItemSelection &sele
     treeSelectionChanged(selectedIndex);
 }
 
-void UIVisoBrowserBase::sltHandleTreeItemClicked(const QModelIndex &modelIndex)
+void UIVisoBrowserBase::sltTreeItemClicked(const QModelIndex &modelIndex)
 {
     if (!m_pTreeView)
         return;
