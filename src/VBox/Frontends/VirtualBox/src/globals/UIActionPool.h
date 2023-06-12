@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 100123 2023-06-08 13:45:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 100156 2023-06-12 15:25:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -150,7 +150,7 @@ enum UIActionIndex
 
     /* VISO Creator actions: */
     UIActionIndex_M_VISOCreator,
-    UIActionIndex_M_VISOCreator_ToggleOptionsPanel,
+    UIActionIndex_M_VISOCreator_ToggleSettingsDialog,
     UIActionIndex_M_VISOCreator_Add,
     UIActionIndex_M_VISOCreator_Remove,
     UIActionIndex_M_VISOCreator_CreateNewDirectory,
