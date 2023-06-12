@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100156 2023-06-12 15:25:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100158 2023-06-12 16:52:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -92,7 +92,7 @@ public:
 protected:
 
     virtual void retranslateUi() final override;
-    virtual void paintEvent(QPaintEvent *pEvent) final override;
+    virtual void resizeEvent(QResizeEvent *pEvent) final override;
 
 private slots:
 
