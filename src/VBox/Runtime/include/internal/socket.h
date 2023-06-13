@@ -1,4 +1,4 @@
-/* $Id: socket.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: socket.h 100171 2023-06-13 21:07:56Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -78,6 +78,7 @@ DECLHIDDEN(int) rtSocketSetOpt(RTSOCKET hSocket, int iLevel, int iOption, void c
 #endif /* IPRT_INTERNAL_SOCKET_POLLING_ONLY */
 
 DECLHIDDEN(int)         rtSocketPollGetHandle(RTSOCKET hSocket, uint32_t fEvents, PRTHCINTPTR phNative);
+DECLHIDDEN(int)         rtSocketSetKeepAlive(RTSOCKET hSocket, bool fEnable, uint32_t cSecsIdle, uint32_t cSecsInterval);
 DECLHIDDEN(uint32_t)    rtSocketPollStart(RTSOCKET hSocket, RTPOLLSET hPollSet, uint32_t fEvents, bool fFinalEntry, bool fNoWait);
 DECLHIDDEN(uint32_t)    rtSocketPollDone(RTSOCKET hSocket, uint32_t fEvents, bool fFinalEntry, bool fHarvestEvents);
 

@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: internal-r3-win.h 100171 2023-06-13 21:07:56Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -167,6 +167,9 @@ typedef UINT_PTR        (WINAPI *PFNWSASOCKETW)(int, int, int, struct _WSAPROTOC
 /** WSASend */
 typedef int             (WINAPI *PFNWSASEND)(UINT_PTR, struct _WSABUF *, DWORD, LPDWORD, DWORD dwFlags,
                                              struct _OVERLAPPED *, uintptr_t /*LPWSAOVERLAPPED_COMPLETION_ROUTINE*/);
+/** WSAIoctl */
+typedef int             (WINAPI *PFNWSAIOCTL)(UINT_PTR, DWORD, LPVOID, DWORD, LPVOID, DWORD, LPDWORD,
+                                             struct _OVERLAPPED *, uintptr_t /*LPWSAOVERLAPPED_COMPLETION_ROUTINE*/);
 
 /** socket */
 typedef UINT_PTR        (WINAPI *PFNWINSOCKSOCKET)(int, int, int);
@@ -218,6 +221,7 @@ extern DECL_HIDDEN_DATA(PFNWSAEVENTSELECT)               g_pfnWSAEventSelect;
 extern DECL_HIDDEN_DATA(PFNWSAENUMNETWORKEVENTS)         g_pfnWSAEnumNetworkEvents;
 extern DECL_HIDDEN_DATA(PFNWSASOCKETW)                   g_pfnWSASocketW;
 extern DECL_HIDDEN_DATA(PFNWSASEND)                      g_pfnWSASend;
+extern DECL_HIDDEN_DATA(PFNWSAIOCTL)                     g_pfnWSAIoctl;
 extern DECL_HIDDEN_DATA(PFNWINSOCKSOCKET)                g_pfnsocket;
 extern DECL_HIDDEN_DATA(PFNWINSOCKCLOSESOCKET)           g_pfnclosesocket;
 extern DECL_HIDDEN_DATA(PFNWINSOCKRECV)                  g_pfnrecv;
