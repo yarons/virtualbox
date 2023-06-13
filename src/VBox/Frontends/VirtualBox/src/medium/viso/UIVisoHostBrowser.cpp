@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100169 2023-06-13 15:14:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -28,6 +28,7 @@
 #include <QFileSystemModel>
 #include <QGridLayout>
 #include <QHeaderView>
+#include <QItemDelegate>
 #include <QMimeData>
 #include <QTextEdit>
 #include <QTreeView>
@@ -35,6 +36,26 @@
 
 /* GUI includes: */
 #include "UIVisoHostBrowser.h"
+
+
+/*********************************************************************************************************************************
+*   UIHostBrowserDelegate definition.                                                                                            *
+*********************************************************************************************************************************/
+/** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
+class UIHostBrowserDelegate : public QItemDelegate
+{
+
+    Q_OBJECT;
+
+public:
+
+    UIHostBrowserDelegate(QObject *pParent)
+        : QItemDelegate(pParent){}
+
+protected:
+
+    virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const {}
+};
 
 /*********************************************************************************************************************************
 *   UIVisoHostBrowserModel definition.                                                                                   *
@@ -183,6 +204,7 @@ void UIVisoHostBrowser::prepareObjects()
         m_pTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_pTableView->setAlternatingRowColors(true);
         m_pTableView->setTabKeyNavigation(false);
+        m_pTableView->setItemDelegate(new UIHostBrowserDelegate(this));
         QHeaderView *pVerticalHeader = m_pTableView->verticalHeader();
         if (pVerticalHeader)
         {

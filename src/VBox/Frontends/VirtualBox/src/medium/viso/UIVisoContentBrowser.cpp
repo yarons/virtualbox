@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100169 2023-06-13 15:14:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -28,6 +28,7 @@
 
 /* Qt includes: */
 #include <QDir>
+#include <QItemDelegate>
 #include <QFileInfo>
 #include <QGridLayout>
 #include <QHeaderView>
@@ -39,6 +40,27 @@
 #include "UICustomFileSystemModel.h"
 #include "UIPathOperations.h"
 #include "UIVisoContentBrowser.h"
+
+
+/*********************************************************************************************************************************
+*   UIContentBrowserDelegate definition.                                                                                         *
+*********************************************************************************************************************************/
+/** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
+class UIContentBrowserDelegate : public QItemDelegate
+{
+
+    Q_OBJECT;
+
+public:
+
+    UIContentBrowserDelegate(QObject *pParent)
+        : QItemDelegate(pParent){}
+
+protected:
+
+    virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const {}
+};
+
 
 /*********************************************************************************************************************************
 *   UIVisoContentTableView definition.                                                                                      *
@@ -93,7 +115,6 @@ UIVisoContentTableView::UIVisoContentTableView(QWidget *pParent /* = 0 */)
 void UIVisoContentTableView::dragMoveEvent(QDragMoveEvent *event)
 {
     event->acceptProposedAction();
-
 }
 
 void UIVisoContentTableView::dragEnterEvent(QDragEnterEvent *pEvent)
@@ -419,6 +440,7 @@ void UIVisoContentBrowser::prepareObjects()
         m_pTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_pTableView->setAlternatingRowColors(true);
         m_pTableView->setTabKeyNavigation(false);
+        m_pTableView->setItemDelegate(new UIContentBrowserDelegate(this));
         QHeaderView *pVerticalHeader = m_pTableView->verticalHeader();
         if (pVerticalHeader)
         {
@@ -715,7 +737,6 @@ void UIVisoContentBrowser::sltItemRenameAction()
     QList<UICustomFileSystemItem*> selectedItems = tableSelectedItems();
     if (selectedItems.empty())
         return;
-    /* This is not complete. we have to modify the entries in the m_entryMap as well: */
     renameFileObject(selectedItems.at(0));
 }
 
