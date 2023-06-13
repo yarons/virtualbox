@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs-armv8.cpp 100119 2023-06-08 12:42:48Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMAllRegs-armv8.cpp 100167 2023-06-13 11:58:00Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters, ARMv8 variant.
  */
@@ -317,10 +317,11 @@ VMMDECL(uint32_t) CPUMGetGuestEL(PVMCPU pVCpu)
  */
 VMMDECL(CPUMMODE) CPUMGetGuestMode(PVMCPU pVCpu)
 {
-    CPUM_INT_ASSERT_NOT_EXTRN(pVCpu, CPUMCTX_EXTRN_PC | CPUMCTX_EXTRN_PSTATE);
-    AssertReleaseFailed();
-    RT_NOREF(pVCpu);
-    return CPUMMODE_REAL;
+    CPUM_INT_ASSERT_NOT_EXTRN(pVCpu, CPUMCTX_EXTRN_PSTATE);
+    if (pVCpu->cpum.s.Guest.fPState & ARMV8_SPSR_EL2_AARCH64_M4)
+        return CPUMMODE_ARMV8_AARCH32;
+
+    return CPUMMODE_ARMV8_AARCH64;
 }
 
 
