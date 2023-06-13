@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 100171 2023-06-13 21:07:56Z brent.paulson@oracle.com $ */
+/* $Id: tcp.cpp 100172 2023-06-13 21:58:48Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -1009,7 +1009,7 @@ RTR3DECL(int)  RTTcpSetKeepAlive(RTSOCKET hSocket, bool fEnable, uint32_t cSecsI
     if (RT_FAILURE(rc))
         return rc;
 
-# if defined(TCP_KEEPIDLE) || defined(TCP_KEEPALIVE)
+# if (defined(TCP_KEEPIDLE) || defined(TCP_KEEPALIVE)) && defined(TCP_KEEPINTVL) && defined(TCP_KEEPCNT)
     rc = VINF_SUCCESS;
 
     /* time in seconds that the connection must be idle before sending keep-alive probes */
