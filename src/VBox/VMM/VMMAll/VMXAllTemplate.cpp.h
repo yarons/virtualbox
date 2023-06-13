@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 99753 2023-05-11 15:02:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 100164 2023-06-13 11:34:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -4970,7 +4970,10 @@ static VBOXSTRICTRC vmxHCEvaluatePendingEvent(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcs
                 && !VCPU_2_VMXSTATE(pVCpu).fSingleInstruction)
                 vmxHCSetIntWindowExitVmcs(pVCpu, pVmcsInfo);
             else
-                Assert(!(pVmcsInfo->u32ProcCtls & VMX_PROC_CTLS_INT_WINDOW_EXIT));
+            {
+                /* It's possible that interrupt-window exiting is still active, clear it as it's now unnecessary. */
+                vmxHCClearIntWindowExitVmcs(pVCpu, pVmcsInfo);
+            }
         }
     }
 
