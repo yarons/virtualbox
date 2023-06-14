@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 100174 2023-06-14 08:13:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -168,7 +168,7 @@ private:
     void prepareWidgets();
     void prepareMetrics();
     void prepareActions();
-    bool guestAdditionsAvailable(int iMinimumMajorVersion);
+    bool guestAdditionsAvailable(const char *pszMinimumVersion);
     void enableDisableGuestAdditionDependedWidgets(bool fEnable);
 
     /** @name The following functions update corresponding metric charts and labels with new values

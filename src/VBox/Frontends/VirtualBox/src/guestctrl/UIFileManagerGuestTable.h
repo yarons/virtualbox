@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 100174 2023-06-14 08:13:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -120,6 +120,7 @@ private:
         State_InvalidMachineReference,
         State_MachineNotRunning,
         State_NoGuestAdditions,
+        State_GuestAdditionsTooOld,
         State_SessionPossible,
         State_SessionRunning,
         State_MachinePaused,
@@ -150,7 +151,8 @@ private:
     void closeGuestSession();
     bool openMachineSession();
     bool closeMachineSession();
-    bool isGuestAdditionsAvailable();
+    /* Return 0 if GA is not detected, -1 if it is there but older than @p pszMinimumGuestAdditionVersion, and 1 otherwise. */
+    int isGuestAdditionsAvailable(const char* pszMinimumVersion);
     void setStateAndEnableWidgets();
 
     void initFileTable();
@@ -172,6 +174,7 @@ private:
     /** True if this table is the current table in parents tab widget. */
     bool m_fIsCurrent;
     State m_enmState;
+    const char *pszMinimumGuestAdditionVersion;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerGuestTable_h */
