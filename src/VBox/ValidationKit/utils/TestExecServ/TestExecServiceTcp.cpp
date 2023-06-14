@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceTcp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: TestExecServiceTcp.cpp 100176 2023-06-14 12:21:32Z brent.paulson@oracle.com $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, TCP/IP Transport Layer.
  */
@@ -220,6 +220,12 @@ static DECLCALLBACK(int) txsTcpClientConnectThread(RTTHREAD hSelf, void *pvUser)
         Log(("txsTcpRecvPkt: RTTcpClientConnect -> %Rrc\n", rc));
         if (RT_SUCCESS(rc))
         {
+            uint32_t cSecsIdle              = 75; /* idle time in seconds before first keep-alive probe */
+            uint32_t cSecsInterval          = 30; /* interval in seconds between keep-alive probes */
+            uint32_t cFailedPktsBeforeClose =  4; /* number of unacknowledged keep-alive probes before closing connection */
+            rc = RTTcpSetKeepAlive(hTcpClient, true /* fEnable */, cSecsIdle, cSecsInterval, cFailedPktsBeforeClose);
+            if (RT_FAILURE(rc))
+                RTMsgInfo("Failed to set SO_KEEPALIVE on client socket hTcpClient: rc=%Rrc\n", rc);
             hTcpClient = txsTcpSetClient(hTcpClient);
             RTTcpClientCloseEx(hTcpClient, true /* fGracefulShutdown*/);
             break;
