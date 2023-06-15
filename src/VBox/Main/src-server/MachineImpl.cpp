@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineImpl.cpp 100179 2023-06-15 12:30:32Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15296,7 +15296,7 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
                 || oldMachineState == MachineState_AbortedSaved
                )
                 && aMachineState   == MachineState_Restoring
-            )
+           )
         || (   (   oldMachineState == MachineState_PoweredOff
                 || oldMachineState == MachineState_Teleported
                 || oldMachineState == MachineState_Aborted
@@ -15326,7 +15326,7 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
                  || oldMachineState == MachineState_Restoring
                  || oldMachineState == MachineState_TeleportingPausedVM
                  || oldMachineState == MachineState_TeleportingIn
-                 )
+                )
              && (   aMachineState == MachineState_PoweredOff
                  || aMachineState == MachineState_Saved
                  || aMachineState == MachineState_Teleported
@@ -15357,13 +15357,15 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
             deleteSavedState = true;
         }
     }
-    else if (   oldMachineState == MachineState_Saved
+    else if (   (   oldMachineState == MachineState_Saved
+                 || oldMachineState == MachineState_AbortedSaved
+                )
              && (   aMachineState == MachineState_PoweredOff
                  || aMachineState == MachineState_Teleported
                 )
             )
     {
-        /* delete the saved state after SessionMachine::ForgetSavedState() is called */
+        /* delete the saved state after SessionMachine::discardSavedState() is called */
         deleteSavedState = true;
         mData->mCurrentStateModified = TRUE;
         stsFlags |= SaveSTS_CurStateModified;
