@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 100087 2023-06-06 15:47:45Z ksenia.s.stepanova@oracle.com $
+# $Id: vboxtestvms.py 100182 2023-06-15 18:05:21Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100087 $"
+__version__ = "$Revision: 100182 $"
 
 # Standard Python imports.
 import copy;
@@ -2066,7 +2066,7 @@ class TestVmManager(object):
         #       sKind = 'Windows7', acCpusSup = range(1, 33), fIoApic = True),
 
         # W8
-        TestVm('tst-win8-64',               kfGrpStdSmoke,        sHd = '4.2/win8-64/t-win8-64.vdi',
+        TestVm('tst-win8-64',               kfGrpStdSmoke,        sHd = '4.2/win8-64/t-win8-64-edited.vdi',
                sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True),
         #TestVm('tst-win8-64-ich9',          kfGrpStdSmoke,         sHd = '4.2/win8-64/t-win8-64.vdi',
         #       sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True, sChipsetType = 'ich9'),
