@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100169 2023-06-13 15:14:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100180 2023-06-15 14:57:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -113,10 +113,11 @@ private slots:
     void sltSettingsActionToggled(bool fChecked);
     void sltSettingsDialogClosed(bool fAccepted);
     void sltBrowserTreeViewVisibilityChanged(bool fVisible);
-    void sltHostBrowserTableSelectionChanged(bool fIsSelectionEmpty);
+    void sltHostBrowserTableSelectionChanged(QStringList pathList);
     void sltContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);
     void sltShowContextMenu(const QWidget *pContextMenuRequester, const QPoint &point);
     void sltOpenAction();
+    void sltISOImportAction();
 
 private:
 
@@ -129,7 +130,8 @@ private:
      * Leave out the vertical toolbar which is handled in prepareVerticalToolBar. */
     void populateMenuMainToolbar();
 
-     void toggleSettingsWidget(bool fShown);
+    void toggleSettingsWidget(bool fShown);
+    QStringList findISOFiles(const QStringList &pathList) const;
     /** @name Main toolbar (and main menu) actions
       * @{ */
         QAction         *m_pActionSettings;
@@ -143,6 +145,7 @@ private:
         QAction              *m_pRenameAction;
         QAction              *m_pResetAction;
         QAction              *m_pOpenAction;
+        QAction              *m_pImportISOAction;
     /** @} */
 
     QVBoxLayout          *m_pMainLayout;

@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 100156 2023-06-12 15:25:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 100180 2023-06-15 14:57:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -157,6 +157,7 @@ enum UIActionIndex
     UIActionIndex_M_VISOCreator_Rename,
     UIActionIndex_M_VISOCreator_Reset,
     UIActionIndex_M_VISOCreator_Open,
+    UIActionIndex_M_VISOCreator_ImportISO,
 
     /* Medium selector actions : */
     UIActionIndex_M_MediumSelector,

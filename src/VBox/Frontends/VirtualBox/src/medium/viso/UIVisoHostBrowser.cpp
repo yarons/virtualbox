@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 100169 2023-06-13 15:14:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100180 2023-06-15 14:57:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -250,7 +250,8 @@ void UIVisoHostBrowser::prepareConnections()
 void UIVisoHostBrowser::sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
-    emit sigTableSelectionChanged(selected.isEmpty());
+    Q_UNUSED(selected);
+    emit sigTableSelectionChanged(selectedPathList());
 }
 
 void UIVisoHostBrowser::tableViewItemDoubleClick(const QModelIndex &index)
@@ -266,10 +267,6 @@ void UIVisoHostBrowser::tableViewItemDoubleClick(const QModelIndex &index)
     m_pTreeView->blockSignals(true);
     setTreeCurrentIndex(index);
     m_pTreeView->blockSignals(false);
-
-    /* Check if we still have something selected after table root index change: */
-    if (m_pTableView && m_pTableView->selectionModel())
-        emit sigTableSelectionChanged(m_pTableView->selectionModel()->hasSelection());
 }
 
 void UIVisoHostBrowser::treeSelectionChanged(const QModelIndex &selectedTreeIndex)
@@ -321,9 +318,14 @@ void UIVisoHostBrowser::sltAddAction()
 {
     if (!m_pTableView || !m_pTableModel)
         return;
+    emit sigAddObjectsToViso(selectedPathList());
+}
+
+QStringList UIVisoHostBrowser::selectedPathList() const
+{
     QItemSelectionModel *pSelectionModel = m_pTableView->selectionModel();
     if (!pSelectionModel)
-        return;
+        return QStringList();
     QModelIndexList selectedIndices = pSelectionModel->selectedRows(0);
     QStringList pathList;
     for (int i = 0; i < selectedIndices.size(); ++i)
@@ -333,7 +335,7 @@ void UIVisoHostBrowser::sltAddAction()
             continue;
         pathList << strPath;
     }
-    emit sigAddObjectsToViso(pathList);
+    return pathList;
 }
 
 void UIVisoHostBrowser::setTableRootIndex(QModelIndex index /* = QModelIndex */)
@@ -351,6 +353,7 @@ void UIVisoHostBrowser::setTableRootIndex(QModelIndex index /* = QModelIndex */)
     if (!strCurrentTreePath.isEmpty())
         m_pTableView->setRootIndex(m_pTableModel->index(strCurrentTreePath));
     updateLocationSelectorText(strCurrentTreePath);
+    m_pTableView->clearSelection();
 }
 
 void UIVisoHostBrowser::setTreeCurrentIndex(QModelIndex index /* = QModelIndex() */)
