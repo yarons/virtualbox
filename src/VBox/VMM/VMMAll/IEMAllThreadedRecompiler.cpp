@@ -1,4 +1,4 @@
-/* $Id: IEMAllThreadedRecompiler.cpp 100183 2023-06-15 21:04:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThreadedRecompiler.cpp 100202 2023-06-16 19:14:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  */
@@ -548,6 +548,8 @@ DECL_FORCE_INLINE(void) iemThreadedCompileReInitOpcodeFetching(PVMCPUCC pVCpu)
  * @param   pVM         The cross context virtual machine structure.
  * @param   pVCpu       The cross context virtual CPU structure of the calling
  *                      thread.
+ * @param   GCPhysPc    The physical address corresponding to the current
+ *                      RIP+CS.BASE.
  * @param   fExtraFlags Extra translation block flags: IEMTB_F_TYPE_THREADED and
  *                      maybe IEMTB_F_RIP_CHECKS.
  */
