@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 100187 2023-06-16 07:01:41Z alexander.eichner@oracle.com $ */
+/* $Id: VMMDev.cpp 100188 2023-06-16 07:03:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3477,6 +3477,9 @@ static DECLCALLBACK(VBOXSTRICTRC) vmmdevMmioWrite(PPDMDEVINS pDevIns, void *pvUs
 {
     const uint32_t offReg = (uint32_t)off;
     RT_NOREF(pvUser);
+#ifndef IN_RING3
+    RT_NOREF(pDevIns);
+#endif
 
     /* Only 32-bit and 64-bit accesses. */
     ASSERT_GUEST_MSG_RETURN(cb == sizeof(uint32_t) || cb == sizeof(uint64_t),
