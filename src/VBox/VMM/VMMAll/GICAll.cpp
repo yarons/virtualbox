@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 100165 2023-06-13 11:56:42Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 100186 2023-06-16 06:56:52Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
@@ -1105,7 +1105,7 @@ VMM_INT_DECL(VBOXSTRICTRC) GICWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint6
             if (u64Value < GIC_INTID_RANGE_SPI_START)
                 ASMAtomicAndU32(&pThis->bmIntActive, ~RT_BIT_32((uint32_t)u64Value));
             else
-                ASMAtomicAndU32(&pGicDev->bmIntActive, ~RT_BIT_32((uint32_t)u64Value));
+                ASMAtomicAndU32(&pGicDev->bmIntActive, ~RT_BIT_32((uint32_t)(u64Value - GIC_INTID_RANGE_SPI_START)));
 
             /* Restore previous interrupt priority. */
             Assert(pThis->idxRunningPriority > 0);
