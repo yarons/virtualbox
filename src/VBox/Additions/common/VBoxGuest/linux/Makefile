@@ -1,4 +1,4 @@
-# $Id: Makefile 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -167,6 +167,8 @@ VBOXMOD_DEFS = \
 	VBGL_VBOXGUEST \
 	VBOX_WITH_HGCM
 ifeq ($(VBOX_KBUILD_TARGET_ARCH),amd64)
+VBOXMOD_DEFS += VBOX_WITH_64_BITS_GUESTS
+else ifeq ($(VBOX_KBUILD_TARGET_ARCH),arm64)
 VBOXMOD_DEFS += VBOX_WITH_64_BITS_GUESTS
 endif
 ifeq ($(KERN_VERSION),24)

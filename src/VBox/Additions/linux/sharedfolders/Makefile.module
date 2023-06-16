@@ -1,4 +1,4 @@
-# $Id: Makefile.module 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.module 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $
 ## @file
 # VBox Linux Shared Folders VFS Module Makefile.
 #
@@ -77,6 +77,9 @@ VBOXMOD_DEFS = \
 	IN_GUEST_R0 \
 	RT_NO_EXPORT_SYMBOL
 ifeq ($(VBOX_KBUILD_TARGET_ARCH),amd64)
+VBOXMOD_DEFS += VBOX_WITH_64_BITS_GUESTS
+endif
+ifeq ($(VBOX_KBUILD_TARGET_ARCH),arm64)
 VBOXMOD_DEFS += VBOX_WITH_64_BITS_GUESTS
 endif
 ifneq ($(filter %uek.x86_64,$(KERN_VER)),)

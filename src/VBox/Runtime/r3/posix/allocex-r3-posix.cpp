@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-posix.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: allocex-r3-posix.cpp 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, posix.
  */
@@ -101,12 +101,15 @@ DECLHIDDEN(int) rtMemAllocEx32BitReach(size_t cbAlloc, uint32_t fFlags, void **p
         *ppv = pv;
         return VINF_SUCCESS;
     }
+# else
+    RT_NOREF(fProt, cbAlloc, ppv);
 # endif
 
     /** @todo On linux, we need an accurate hint. Since I don't need this branch of
      *        the code right now, I won't bother starting to parse
      *        /proc/curproc/mmap right now... */
 #else
+    RT_NOREF(fProt, cbAlloc, ppv);
 #endif
     return VERR_NOT_SUPPORTED;
 }

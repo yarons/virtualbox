@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: logbackdoor.cpp 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Runtime - Guest Backdoor Logging.
  */
@@ -101,6 +101,9 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
         ASMOutStrU8(RTLOG_DEBUG_PORT, pau8, cb);
     else if (cb)
         ASMOutU8(RTLOG_DEBUG_PORT, *pau8);
+# elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+    /** @todo Later maybe */
+    RT_NOREF(pch, cb);
 # else
     /** @todo port me */
     RT_NOREF(pch, cb);

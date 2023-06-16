@@ -1,4 +1,4 @@
-# $Id: Config.kmk 100125 2023-06-08 15:31:55Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -396,6 +396,11 @@ endif
 # Build X11 additions. Can be disabled separately.
 if1of ($(KBUILD_TARGET), dragonfly freebsd linux netbsd openbsd solaris)
  VBOX_WITH_X11_ADDITIONS = 1
+ # On ARM we don't support the old VBoxVideo graphics emulation and rely fully on VMSVGA
+ # (partly due to the fact that it relies on port I/O which is not available there).
+ if1of ($(KBUILD_TARGET_ARCH), arm32 arm64)
+  VBOX_NO_LEGACY_XORG_X11 = 1
+ endif
 endif
 # Enable the building of shared folders in the windows additions.
 VBOX_WITH_WIN32_ADDITIONS_SHAREDFOLDERS = 1
@@ -1064,7 +1069,7 @@ endif
 ## @name Compiler and linker config
 ## @{
 # For treating compiler and linker warnings as errors where possible.
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.x86 darwin.amd64 darwin.arm64 linux.x86 linux.amd64 win.x86 win.amd64)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.x86 darwin.amd64 darwin.arm64 linux.x86 linux.amd64 linux.arm64 win.x86 win.amd64)
  VBOX_WITH_WARNINGS_AS_ERRORS = 1
 endif
 # Whether we can use Open Watcom to build stuff.
@@ -9079,7 +9084,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100125 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100191 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)

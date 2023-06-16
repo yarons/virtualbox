@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: the-linux-kernel.h 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -195,11 +195,11 @@
 #endif
 
 /* for kernel_fpu_begin / kernel_fpu_end() */
-#if RTLNX_VER_MIN(4,2,0)
+#if RTLNX_VER_MIN(4,2,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
 # include <asm/fpu/api.h>
 #endif
 
-#if RTLNX_VER_MIN(3,7,0)
+#if RTLNX_VER_MIN(3,7,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
 # include <asm/smap.h>
 #else
 static inline void clac(void) { }

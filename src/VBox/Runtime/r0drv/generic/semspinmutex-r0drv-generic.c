@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: semspinmutex-r0drv-generic.c 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -45,7 +45,11 @@
 
 #include <iprt/semaphore.h>
 #include <iprt/asm.h>
-#include <iprt/asm-amd64-x86.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#elif defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <iprt/asm-arm.h>
+#endif
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mem.h>
