@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 100185 2023-06-16 06:54:50Z alexander.eichner@oracle.com $ */
+/* $Id: VMMDev.cpp 100187 2023-06-16 07:01:41Z alexander.eichner@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3494,7 +3494,11 @@ static DECLCALLBACK(VBOXSTRICTRC) vmmdevMmioWrite(PPDMDEVINS pDevIns, void *pvUs
     switch (offReg)
     {
         case VMMDEV_MMIO_OFF_REQUEST:
+#ifndef IN_RING3
+            rcStrict = VINF_IOM_R3_MMIO_WRITE;
+#else
             rcStrict = vmmdevRequestHandler(pDevIns, u64Val);
+#endif
             break;
         case VMMDEV_MMIO_OFF_REQUEST_FAST:
 #ifndef IN_RING3
