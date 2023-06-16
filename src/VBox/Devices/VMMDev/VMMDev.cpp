@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 100188 2023-06-16 07:03:46Z alexander.eichner@oracle.com $ */
+/* $Id: VMMDev.cpp 100190 2023-06-16 07:33:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3485,7 +3485,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmmdevMmioWrite(PPDMDEVINS pDevIns, void *pvUs
     ASSERT_GUEST_MSG_RETURN(cb == sizeof(uint32_t) || cb == sizeof(uint64_t),
                             ("cb=%u\n", cb), VINF_IOM_MMIO_UNUSED_FF);
 
-    uint64_t u64Val;
+    uint64_t u64Val = 0; /* shut up MSC */
     if (cb == sizeof(uint64_t))
         u64Val = *(uint64_t *)pv;
     else if (cb == sizeof(uint32_t))
