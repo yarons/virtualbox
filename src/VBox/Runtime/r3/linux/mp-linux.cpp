@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: mp-linux.cpp 100194 2023-06-16 08:19:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -51,6 +51,19 @@
 #include <iprt/string.h>
 #include <iprt/linux/sysfs.h>
 
+
+#if defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+# include <sched.h>
+
+RTDECL(RTCPUID) RTMpCpuId(void)
+{
+    int rc = sched_getcpu();
+    if (rc >= 0)
+        return (RTCPUID)rc;
+
+    return NIL_RTCPUID;
+}
+#endif
 
 /**
  * Internal worker that determines the max possible CPU count.
