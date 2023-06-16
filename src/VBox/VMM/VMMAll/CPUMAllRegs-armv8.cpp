@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs-armv8.cpp 100167 2023-06-13 11:58:00Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMAllRegs-armv8.cpp 100184 2023-06-16 06:51:39Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters, ARMv8 variant.
  */
@@ -168,6 +168,19 @@ VMMDECL(CPUMCPUVENDOR) CPUMGetGuestCpuVendor(PVM pVM)
     RT_NOREF(pVM);
     //AssertReleaseFailed();
     return CPUMCPUVENDOR_UNKNOWN;
+}
+
+
+/**
+ * Gets the guest CPU architecture.
+ *
+ * @returns CPU architecture.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMDECL(CPUMARCH) CPUMGetGuestArch(PCVM pVM)
+{
+    RT_NOREF(pVM);
+    return kCpumArch_Arm; /* Static as we are in the ARM VMM module here. */
 }
 
 

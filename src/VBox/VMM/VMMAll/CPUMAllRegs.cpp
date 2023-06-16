@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMAllRegs.cpp 100184 2023-06-16 06:51:39Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1096,6 +1096,19 @@ VMMDECL(CPUMMICROARCH) CPUMGetHostMicroarch(PCVM pVM)
 VMMDECL(CPUMCPUVENDOR) CPUMGetGuestCpuVendor(PVM pVM)
 {
     return (CPUMCPUVENDOR)pVM->cpum.s.GuestFeatures.enmCpuVendor;
+}
+
+
+/**
+ * Gets the guest CPU architecture.
+ *
+ * @returns CPU architecture.
+ * @param   pVM     The cross context VM structure.
+ */
+VMMDECL(CPUMARCH) CPUMGetGuestArch(PCVM pVM)
+{
+    RT_NOREF(pVM);
+    return kCpumArch_X86; /* Static as we are in the x86 VMM module here. */
 }
 
 
