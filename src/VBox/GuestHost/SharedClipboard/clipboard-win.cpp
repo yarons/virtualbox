@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100206 2023-06-19 12:22:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -173,6 +173,10 @@ int SharedClipboardWinCtxInit(PSHCLWINCTX pWinCtx)
         pWinCtx->hWnd                 = NULL;
         pWinCtx->hWndClipboardOwnerUs = NULL;
         pWinCtx->hWndNextInChain      = NULL;
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+        pWinCtx->pDataObjInFlight = NULL;
+#endif
     }
 
     LogFlowFuncLeaveRC(rc);
