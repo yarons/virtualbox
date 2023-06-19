@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100205 2023-06-19 10:25:09Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100212 2023-06-19 15:34:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -664,7 +664,6 @@ typedef struct _SHCLTXPROVIDERIFACE
      *
      * @returns VBox status code.
      * @param   pCtx                Provider context to use.
-     * @param   pRootList           Where to store the root list on success.
      */
     DECLCALLBACKMEMBER(int, pfnRootListRead,(PSHCLTXPROVIDERCTX pCtx));
     /**
