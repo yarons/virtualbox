@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.cpp 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: DisplayServerType.cpp 100214 2023-06-19 17:17:42Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -155,7 +155,8 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
      * Descending precedence. */
     const char* aLibsX11[] =
     {
-        "libX11.so"
+        "libX11.so",
+        "libX11.so.6"
     };
 
     /* Also try to connect to the default X11 display to determine if Xserver is running: */
