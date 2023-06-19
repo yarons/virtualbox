@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.cpp 100216 2023-06-19 17:31:13Z vadim.galitsyn@oracle.com $ */
+/* $Id: DisplayServerType.cpp 100217 2023-06-19 17:34:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -124,7 +124,8 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
     };
 
 #define GET_SYMBOL(a_Mod, a_Name, a_Fn) \
-    rc = RTLdrGetSymbol(a_Mod, a_Name, (void **)&a_Fn); \
+    if (RT_SUCCESS(rc)) \
+        rc = RTLdrGetSymbol(a_Mod, a_Name, (void **)&a_Fn); \
     if (RT_FAILURE(rc)) \
         LogRel2(("Symbol '%s' unable to load, rc=%Rrc\n", a_Name, rc));
 
