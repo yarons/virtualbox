@@ -1,4 +1,4 @@
-$Id: vboxtxs-readme.txt 96398 2022-08-22 14:22:34Z klaus.espenlaub@oracle.com $
+$Id: vboxtxs-readme.txt 100215 2023-06-19 17:26:37Z ksenia.s.stepanova@oracle.com $
 
 
 VirtualBox Test eXecution Service
@@ -121,9 +121,13 @@ Windows Installation
    type above) and import it into the registry:
      nat)   start C:\Apps\vboxtxs-nat.reg
      other) start C:\Apps\vboxtxs.reg
-10. Make sure that the CD-ROM location is assigned to D: (via "Disk Management").
-11. reboot / done
-12. Do test.
+10. Add vboxtxs in task scheduler and create an exception for windows defender
+    by running the script (use connection type from step 9) as Administrator:
+      nat)   C:\Apps\vboxtxs-add-task-nat.cmd
+      other) C:\Apps\vboxtxs-add-task.cmd
+11. Make sure that the CD-ROM location is assigned to D: (via "Disk Management").
+12. reboot / done
+13. Do test.
 
 NT 3.1 and 3.x tricks:
 - Make sure the file system is NTFS.  Observed issues converting 2GB partitions,

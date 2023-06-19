@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98418 2023-02-01 21:29:03Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100215 2023-06-19 17:26:37Z ksenia.s.stepanova@oracle.com $
 ## @file
 # VirtualBox Validation Kit - The Basic Remote Execution Service.
 #
@@ -80,7 +80,9 @@ TestExecServiceFiles_SOURCES.win            := \
 	$(PATH_SUB_CURRENT)/win/vboxtxs-nat.reg=>win/vboxtxs-nat.reg
 TestExecServiceFiles_EXEC_SOURCES.win     := \
 	$(PATH_SUB_CURRENT)/win/vboxtxs.cmd=>win/vboxtxs.cmd \
-	$(PATH_SUB_CURRENT)/win/vboxtxs-nat.cmd=>win/vboxtxs-nat.cmd
+	$(PATH_SUB_CURRENT)/win/vboxtxs-add-task.cmd=>win/vboxtxs-add-task.cmd \
+	$(PATH_SUB_CURRENT)/win/vboxtxs-nat.cmd=>win/vboxtxs-nat.cmd \
+	$(PATH_SUB_CURRENT)/win/vboxtxs-add-task-nat.cmd=>win/vboxtxs-add-task-nat.cmd
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
