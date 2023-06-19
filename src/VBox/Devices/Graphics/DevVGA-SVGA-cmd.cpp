@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 100008 2023-05-30 07:05:05Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 100211 2023-06-19 14:43:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -719,7 +719,7 @@ static int vmsvgaR3GboCopy(PVMSVGAR3STATE pSvgaR3State, PVMSVGAGBO pGboDst, uint
 static int vmsvgaR3OTableSetOrGrow(PVMSVGAR3STATE pSvgaR3State, SVGAOTableType type, PPN64 baseAddress,
                                    uint32_t sizeInBytes, uint32 validSizeInBytes, SVGAMobFormat ptDepth, bool fGrow)
 {
-    ASSERT_GUEST_RETURN(type <= RT_ELEMENTS(pSvgaR3State->aGboOTables), VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(type < RT_ELEMENTS(pSvgaR3State->aGboOTables), VERR_INVALID_PARAMETER);
     ASSERT_GUEST_RETURN(sizeInBytes >= validSizeInBytes, VERR_INVALID_PARAMETER);
     RT_UNTRUSTED_VALIDATED_FENCE();
 
