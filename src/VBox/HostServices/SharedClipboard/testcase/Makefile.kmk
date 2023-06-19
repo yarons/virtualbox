@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100011 2023-05-30 10:48:07Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service testcases.
 #
@@ -77,6 +77,10 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
   	../VBoxSharedClipboardSvc-transfers.cpp \
   	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers.cpp \
   	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-provider-local.cpp
+  tstClipboardMockHGCM_SOURCES.win += \
+  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardDataObjectImpl-win.cpp \
+  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardEnumFormatEtcImpl-win.cpp \
+  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardStreamImpl-win.cpp
  endif
 
  if 0 # Enable this if you want automatic runs after compilation.

@@ -1,4 +1,4 @@
-/** $Id: clipboard.h 99590 2023-05-03 15:59:12Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard.h 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard - Main header.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /**
- * Struct keeping a Shared Clipboard context.
+ * Struct keeping am X11 Shared Clipboard context.
  */
 struct SHCLCONTEXT
 {
@@ -44,6 +44,8 @@ struct SHCLCONTEXT
 #endif
     union
     {
+        /** Event source for waiting for request responses. */
+        SHCLEVENTSOURCE  EventSrc;
         /** X11 clipboard context. */
         SHCLX11CTX       X11;
         /** @todo Way clipboard context goes here. */

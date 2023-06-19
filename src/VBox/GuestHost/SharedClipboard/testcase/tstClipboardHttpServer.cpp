@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -177,12 +177,12 @@ int main(int argc, char *argv[])
     ShClTransferHttpServerInit(&HttpSrv);
     RTTEST_CHECK(hTest, ShClTransferHttpServerIsRunning(&HttpSrv) == false);
     if (uPort)
-        rc = ShClTransferHttpServerCreateEx(&HttpSrv, uPort);
+        rc = ShClTransferHttpServerStartEx(&HttpSrv, uPort);
     else
-        rc = ShClTransferHttpServerCreate(&HttpSrv, 32 /* cMaxAttempts */, &uPort);
+        rc = ShClTransferHttpServerStart(&HttpSrv, 32 /* cMaxAttempts */, &uPort);
     RTTEST_CHECK_RC_OK(hTest, rc);
-    RTTEST_CHECK(hTest, ShClTransferHttpServerHasTransfer(&HttpSrv, 0) == false);
-    RTTEST_CHECK(hTest, ShClTransferHttpServerHasTransfer(&HttpSrv, 42) == false);
+    RTTEST_CHECK(hTest, ShClTransferHttpServerGetTransfer(&HttpSrv, 0) == false);
+    RTTEST_CHECK(hTest, ShClTransferHttpServerGetTransfer(&HttpSrv, 42) == false);
 
     char *pszSrvAddr = ShClTransferHttpServerGetAddressA(&HttpSrv);
     RTTEST_CHECK(hTest, pszSrvAddr != NULL);
@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
                 PSHCLTRANSFER pTx;
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferCreate(&pTx));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferInit(pTx, SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL));
-                RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsSetAsFile(pTx, ValueUnion.psz));
+                RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsInitFromFile(pTx, ValueUnion.psz));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferCtxTransferRegister(&TxCtx, pTx, NULL));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferHttpServerRegisterTransfer(&HttpSrv, pTx));
                 break;

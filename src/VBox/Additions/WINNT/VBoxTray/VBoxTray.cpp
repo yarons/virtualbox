@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTray.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -97,7 +97,7 @@ static uint64_t       g_uHistoryFileSize = 100 * _1M;    /**< Max 100MB per file
 #ifdef DEBUG_andy
 static VBOXSERVICEINFO g_aServices[] =
 {
-    {&g_SvcDescDnD,      NIL_RTTHREAD, NULL, false, false, false, false, true }
+    { &g_SvcDescClipboard,      NIL_RTTHREAD, NULL, false, false, false, false, true }
 };
 #else
 /**
@@ -532,7 +532,8 @@ static int vboxTrayLogCreate(const char *pszLogFile)
         /* Register this logger as the _debug_ logger. */
         RTLogSetDefaultInstance(g_pLoggerRelease);
 
-        const char *apszGroups[] = { "all", "guest_dnd" }; /* All groups we want to enable logging for VBoxTray. */
+        /* All groups we want to enable logging for VBoxTray. */
+        const char *apszGroups[] = { "guest_dnd", "shared_clipboard" };
         char        szGroupSettings[_1K];
 
         szGroupSettings[0] = '\0';

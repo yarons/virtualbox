@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -261,7 +261,7 @@ int ShClBackendReportFormats(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, SHCLFOR
     /*
      * Now, request the data from the guest.
      */
-    return ShClSvcGuestDataRequest(pClient, fFormats, NULL /* pidEvent */);
+    return ShClSvcReadDataFromGuestAsync(pClient, fFormats, NULL /* ppEvent */);
 }
 
 int ShClBackendReadData(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLFORMAT fFormat,

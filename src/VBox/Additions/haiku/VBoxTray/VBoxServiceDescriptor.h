@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceDescriptor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceDescriptor.h 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestServiceDescriptor, Haiku Guest Additions, header.
  */
@@ -70,9 +70,9 @@ class VBoxShClService : public BHandler
 };
 
 /* The shared clipboard service prototypes. */
-int VBoxShClInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThread);
+int vbtrShClInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThread);
 unsigned __stdcall VBoxShClThread(void *pInstance);
-void VBoxShClDestroy(const VBOXSERVICEENV *pEnv, void *pInstance);
+void vbtrShClDestroy(const VBOXSERVICEENV *pEnv, void *pInstance);
 
 #endif /* !GA_INCLUDED_SRC_haiku_VBoxTray_VBoxServiceDescriptor_h */
 

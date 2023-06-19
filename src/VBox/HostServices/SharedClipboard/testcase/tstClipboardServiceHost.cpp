@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 99968 2023-05-25 08:45:54Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardServiceHost.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -139,7 +139,7 @@ static void testSetTransferMode(void)
 /* Adds a host data read request message to the client's message queue. */
 static void testMsgAddReadData(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 {
-    int rc = ShClSvcGuestDataRequest(pClient, fFormats, NULL /* pidEvent */);
+    int rc = ShClSvcReadDataFromGuestAsync(pClient, fFormats, NULL /* ppEvent */);
     RTTESTI_CHECK_RC_OK(rc);
 }
 
