@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 100205 2023-06-19 10:25:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -186,7 +186,7 @@ typedef struct _SHCLIENTTRANSFERS
     /** Transfer context. */
     SHCLTRANSFERCTX             Ctx;
     /** Transfers callbacks to use. */
-    SHCLTRANSFERCALLBACKTABLE   Callbacks;
+    SHCLTRANSFERCALLBACKS       Callbacks;
 } SHCLIENTTRANSFERS, *PSHCLIENTTRANSFERS;
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 

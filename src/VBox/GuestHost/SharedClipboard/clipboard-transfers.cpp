@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100205 2023-06-19 10:25:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1439,7 +1439,7 @@ void ShClTransferCopyCallbacks(PSHCLTRANSFERCALLBACKS pCallbacksDst,
         pCallbacksDst->cbUser = pCallbacksSrc->cbUser;
     }
     else /* Unset */
-        RT_BZERO(pCallbacksDst, sizeof(SHCLTRANSFERCALLBACKTABLE));
+        RT_BZERO(pCallbacksDst, sizeof(SHCLTRANSFERCALLBACKS));
 }
 
 /**

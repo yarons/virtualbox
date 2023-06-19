@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100205 2023-06-19 10:25:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -822,7 +822,7 @@ typedef SHCLTRANSFERCALLBACKCTX *PSHCLTRANSFERCALLBACKCTX;
  *
  * All callbacks are optional (hence all returning void).
  */
-typedef struct _SHCLTRANSFERCALLBACKTABLE
+typedef struct _SHCLTRANSFERCALLBACKS
 {
     /**
      * Called after the transfer got initialized.
@@ -876,9 +876,9 @@ typedef struct _SHCLTRANSFERCALLBACKTABLE
     void  *pvUser;
     /** Size (in bytes) of data pointer at \a pvUser. */
     size_t cbUser;
-} SHCLTRANSFERCALLBACKTABLE;
+} SHCLTRANSFERCALLBACKS;
 /** Pointer to a Shared Clipboard transfer callback table. */
-typedef SHCLTRANSFERCALLBACKTABLE *PSHCLTRANSFERCALLBACKS;
+typedef SHCLTRANSFERCALLBACKS *PSHCLTRANSFERCALLBACKS;
 
 /**
  * Structure for thread-related members for a single Shared Clipboard transfer.
@@ -944,7 +944,7 @@ typedef struct SHCLTRANSFER
     /** The transfer's callback context. */
     SHCLTRANSFERCALLBACKCTX   CallbackCtx;
     /** The transfer's callback table. */
-    SHCLTRANSFERCALLBACKTABLE Callbacks;
+    SHCLTRANSFERCALLBACKS     Callbacks;
     /** Opaque pointer to implementation-specific parameters. */
     void                     *pvUser;
     /** Size (in bytes) of implementation-specific parameters. */
