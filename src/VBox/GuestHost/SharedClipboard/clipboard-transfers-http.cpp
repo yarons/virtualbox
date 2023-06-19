@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 100213 2023-06-19 16:13:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -99,12 +99,22 @@ static SHCLHTTPSERVERSTATUS shclTransferHttpServerSetStatusLocked(PSHCLHTTPSERVE
 *   Internal Shared Clipboard HTTP transfer functions                                                                            *
 *********************************************************************************************************************************/
 
+/**
+ * Locks an HTTP transfer.
+ *
+ * @param   pSrvTx              HTTP transfer to lock.
+ */
 DECLINLINE(void) shClHttpTransferLock(PSHCLHTTPSERVERTRANSFER pSrvTx)
 {
     int rc2 = RTCritSectEnter(&pSrvTx->CritSect);
     AssertRC(rc2);
 }
 
+/**
+ * Unlocks an HTTP transfer.
+ *
+ * @param   pSrvTx              HTTP transfer to unlock.
+ */
 DECLINLINE(void) shClHttpTransferUnlock(PSHCLHTTPSERVERTRANSFER pSrvTx)
 {
     int rc2 = RTCritSectLeave(&pSrvTx->CritSect);
