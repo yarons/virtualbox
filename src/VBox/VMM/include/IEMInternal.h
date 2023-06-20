@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100222 2023-06-20 02:40:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100231 2023-06-20 23:10:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3834,6 +3834,31 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPUCC pVCpu, uint8_t bRm);
  * For use during decoding.
  */
 #define IEM_GET_MODRM_RM_8(a_bRm)           ( ((a_bRm) & X86_MODRM_RM_MASK) )
+
+/**
+ * Gets the register (reg) part of a ModR/M encoding as an extended 8-bit
+ * register index, with REX.R added in.
+ *
+ * For use during decoding.
+ *
+ * @see iemGRegRefU8Ex, iemGRegFetchU8Ex, iemGRegStoreU8Ex
+ */
+#define IEM_GET_MODRM_REG_EX8(a_pVCpu, a_bRm) \
+    (   (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_REX) \
+     || !((a_bRm) & (4 << X86_MODRM_REG_SHIFT)) /* IEM_GET_MODRM_REG(pVCpu, a_bRm) < 4 */ \
+     ? IEM_GET_MODRM_REG(pVCpu, a_bRm) : (((a_bRm) >> X86_MODRM_REG_SHIFT) & 3) | 16)
+/**
+ * Gets the r/m part of a ModR/M encoding as an extended 8-bit register index,
+ * with REX.B added in.
+ *
+ * For use during decoding.
+ *
+ * @see iemGRegRefU8Ex, iemGRegFetchU8Ex, iemGRegStoreU8Ex
+ */
+#define IEM_GET_MODRM_RM_EX8(a_pVCpu, a_bRm) \
+    (   (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_REX) \
+     || !((a_bRm) & 4) /* IEM_GET_MODRM_RM(pVCpu, a_bRm) < 4 */ \
+     ? IEM_GET_MODRM_RM(pVCpu, a_bRm) : ((a_bRm) & 3) | 16)
 
 /**
  * Combines the prefix REX and ModR/M byte for passing to
