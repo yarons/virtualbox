@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 100227 2023-06-20 12:40:14Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 100228 2023-06-20 12:40:49Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -10979,7 +10979,7 @@ HMVMX_EXIT_DECL vmxHCExitEptViolationNested(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTr
         }
 
         AssertMsg(Walk.fFailed & PGM_WALKFAIL_EPT_MISCONFIG,
-                  ("uErr=%#RX64 uExitQual=%#RX64 GCPhysNestedFault=%RGp GCPtrNestedFault=%RGv\n", uErr, uExitQual,
+                  ("uErr=%#RX64 uExitQual=%#RX64 GCPhysNestedFault=%RGp GCPtrNestedFault=%RGv\n", (uint64_t)uErr, uExitQual,
                    GCPhysNestedFault, GCPtrNestedFault));
         return IEMExecVmxVmexitEptMisconfig(pVCpu, pVmxTransient->uGuestPhysicalAddr, &ExitEventInfo);
     }
