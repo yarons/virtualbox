@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 100145 2023-06-09 16:07:00Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 100222 2023-06-20 02:40:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -201,6 +201,13 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
         pVCpu->em.s.cHistoryProbeMinInstructions              = cHistoryProbeMinInstructions;
         pVCpu->em.s.cHistoryProbeMaxInstructionsWithoutExit   = cHistoryProbeMaxInstructionsWithoutExit;
     }
+
+#ifdef VBOX_WITH_IEM_RECOMPILER
+    /** @cfgm{/EM/IemRecompiled, bool, true}
+     * Whether IEM bulk execution is recompiled or interpreted. */
+    rc = CFGMR3QueryBoolDef(pCfgEM, "IemRecompiled", &pVM->em.s.fIemRecompiled, true);
+    AssertLogRelRCReturn(rc, rc);
+#endif
 
     /*
      * Saved state.
@@ -2184,21 +2191,21 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case VINF_EM_RESCHEDULE_EXEC_ENGINE:
                     Assert(!pVM->em.s.fIemExecutesAll || pVCpu->em.s.enmState != EMSTATE_IEM);
+                    if (!pVM->em.s.fIemExecutesAll)
+                    {
 #if !defined(VBOX_VMM_TARGET_ARMV8)
-                    if (VM_IS_HM_ENABLED(pVM))
-                    {
-                        if (HMCanExecuteGuest(pVM, pVCpu, &pVCpu->cpum.GstCtx))
+                        if (VM_IS_HM_ENABLED(pVM))
                         {
-                            Log2(("EMR3ExecuteVM: VINF_EM_RESCHEDULE_EXEC_ENGINE: %d -> %d (EMSTATE_HM)\n", enmOldState, EMSTATE_HM));
-                            pVCpu->em.s.enmState = EMSTATE_HM;
-                            break;
+                            if (HMCanExecuteGuest(pVM, pVCpu, &pVCpu->cpum.GstCtx))
+                            {
+                                Log2(("EMR3ExecuteVM: VINF_EM_RESCHEDULE_EXEC_ENGINE: %d -> %d (EMSTATE_HM)\n", enmOldState, EMSTATE_HM));
+                                pVCpu->em.s.enmState = EMSTATE_HM;
+                                break;
+                            }
                         }
-                    }
-                    else
+                        else
 #endif
-                    if (VM_IS_NEM_ENABLED(pVM))
-                    {
-                        if (NEMR3CanExecuteGuest(pVM, pVCpu))
+                        if (VM_IS_NEM_ENABLED(pVM) && NEMR3CanExecuteGuest(pVM, pVCpu))
                         {
                             Log2(("EMR3ExecuteVM: VINF_EM_RESCHEDULE_EXEC_ENGINE: %d -> %d (EMSTATE_NEM)\n", enmOldState, EMSTATE_NEM));
                             pVCpu->em.s.enmState = EMSTATE_NEM;
