@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100213 2023-06-19 16:13:40Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100225 2023-06-20 10:14:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -2561,9 +2561,9 @@ void ShClTransferCtxCleanup(PSHCLTRANSFERCTX pTransferCtx)
 
         if (enmStatus != SHCLTRANSFERSTATUS_STARTED)
         {
-            shclTransferCtxTransferRemoveAndUnregister(pTransferCtx, pTransfer);
-
             shClTransferUnlock(pTransfer);
+
+            shclTransferCtxTransferRemoveAndUnregister(pTransferCtx, pTransfer);
 
             ShClTransferDestroy(pTransfer);
 
