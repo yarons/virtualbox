@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 100242 2023-06-21 17:43:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -175,6 +175,8 @@ int main(int argc, char *argv[])
      */
     SHCLHTTPSERVER HttpSrv;
     ShClTransferHttpServerInit(&HttpSrv);
+    ShClTransferHttpServerStop(&HttpSrv); /* Try to stop a non-running server twice. */
+    ShClTransferHttpServerStop(&HttpSrv);
     RTTEST_CHECK(hTest, ShClTransferHttpServerIsRunning(&HttpSrv) == false);
     if (uPort)
         rc = ShClTransferHttpServerStartEx(&HttpSrv, uPort);
@@ -193,6 +195,10 @@ int main(int argc, char *argv[])
     SHCLTRANSFERCTX TxCtx;
     RTTEST_CHECK_RC_OK(hTest, ShClTransferCtxInit(&TxCtx));
 
+    /* Query the local transfer provider. */
+    SHCLTXPROVIDER Provider;
+    RTTESTI_CHECK(VBClTransferProviderLocalQueryInterface(&Provider) != NULL);
+
     /* Parse options again, but this time we only fetch all files we want to serve.
      * Only can be done after we initialized the HTTP server above. */
     RT_ZERO(GetState);
@@ -206,6 +212,7 @@ int main(int argc, char *argv[])
             {
                 PSHCLTRANSFER pTx;
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferCreate(&pTx));
+                RTTEST_CHECK_RC_OK(hTest, ShClTransferSetProvider(pTx, &Provider));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferInit(pTx, SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsInitFromFile(pTx, ValueUnion.psz));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferCtxTransferRegister(&TxCtx, pTx, NULL));
