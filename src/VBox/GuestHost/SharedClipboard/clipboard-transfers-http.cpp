@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 100238 2023-06-21 13:05:35Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 100239 2023-06-21 13:29:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -786,17 +786,10 @@ int ShClTransferHttpServerRegisterTransfer(PSHCLHTTPSERVER pSrv, PSHCLTRANSFER p
             PCSHCLLISTENTRY pEntry = ShClTransferRootsEntryGet(pTransfer, 0 /* First file */);
             if (pEntry)
             {
-#ifdef DEBUG_andy
                 /* Create the virtual HTTP path for the transfer.
                  * Every transfer has a dedicated HTTP path (but live in the same URL namespace). */
-                ssize_t cch = RTStrPrintf2(pSrvTx->szPathVirtual, sizeof(pSrvTx->szPathVirtual), "/%s/uuid/%RU32/%s",
-                                           SHCL_HTTPT_URL_NAMESPACE, pSrv->cTransfers, pEntry->pszName);
-#else
-                /* Create the virtual HTTP path for the transfer.
-                 * Every transfer has a dedicated HTTP path (but live in the same URL namespace). */
-                ssize_t cch = RTStrPrintf2(pSrvTx->szPathVirtual, sizeof(pSrvTx->szPathVirtual), "/%s/%s/%RU16/%s",
-                                           SHCL_HTTPT_URL_NAMESPACE, szUuid, pTransfer->State.uID, pEntry->pszName);
-#endif
+                ssize_t cch = RTStrPrintf2(pSrvTx->szPathVirtual, sizeof(pSrvTx->szPathVirtual), "/%s/%s/%s",
+                                           SHCL_HTTPT_URL_NAMESPACE, szUuid, pEntry->pszName);
                 AssertReturn(cch, VERR_BUFFER_OVERFLOW);
 
                 pSrvTx->pTransfer = pTransfer;
