@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100233 2023-06-21 10:25:48Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100234 2023-06-21 10:28:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -449,7 +449,7 @@ typedef struct _SHCLLISTENTRY
     /** Size (in bytes) of entry name.
      *  Includes terminator. */
     uint32_t   cbName;
-    /** Information flag(s). Of type VBOX_SHCL_INFO_FLAG_XXX. */
+    /** Information flag(s). Of type VBOX_SHCL_INFO_F_XXX. */
     uint32_t   fInfo;
     /** Size (in bytes) of the actual list entry. */
     uint32_t   cbInfo;
