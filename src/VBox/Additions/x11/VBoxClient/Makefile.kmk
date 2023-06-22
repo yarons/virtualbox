@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100246 2023-06-22 10:55:10Z vadim.galitsyn@oracle.com $
+# $Id: Makefile.kmk 100247 2023-06-22 10:59:44Z vadim.galitsyn@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -73,11 +73,11 @@ VBoxClient_SOURCES = \
 	logging.cpp
 
 ifdef VBOX_WITH_WAYLAND_ADDITIONS
-VBoxClient_DEFS += VBOX_WITH_WAYLAND_ADDITIONS
-VBoxClient_SOURCES += \
-	wayland-helper-dcp.cpp \
-	wayland-helper-gtk.cpp \
-	wayland.cpp
+ VBoxClient_DEFS += VBOX_WITH_WAYLAND_ADDITIONS
+ VBoxClient_SOURCES += \
+ 	wayland-helper-dcp.cpp \
+ 	wayland-helper-gtk.cpp \
+ 	wayland.cpp
 endif
 
 VBoxClient_SOURCES += $(VBOX_GH_SOURCES)
