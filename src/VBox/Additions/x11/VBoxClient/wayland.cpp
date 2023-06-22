@@ -1,4 +1,4 @@
-/* $Id: wayland.cpp 100246 2023-06-22 10:55:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland.cpp 100248 2023-06-22 12:51:53Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Wayland Desktop Environment assistant.
  */
@@ -45,7 +45,7 @@ static const VBCLWAYLANDHELPER *g_pWaylandHelperHelperDnd       = NULL;
  */
 static DECLCALLBACK(int) vbclWaylandInit(void)
 {
-    int rc;
+    int rc = VERR_NOT_SUPPORTED;
     int idxHelper = 0;
 
     /** Custom log prefix to be used for logger instance of this process. */
