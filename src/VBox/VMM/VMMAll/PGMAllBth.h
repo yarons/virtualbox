@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 100198 2023-06-16 12:04:51Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllBth.h 100243 2023-06-22 03:57:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1343,10 +1343,10 @@ PGM_BTH_DECL(int, NestedTrap0eHandler)(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTX p
     }
 
     /*
-     * If we get here it is because something failed above => guru meditation time.
+     * If we get here it is because something failed above => guru meditation time?
      */
-    LogRelFunc(("rc=%Rrc GCPhysNestedFault=%#RGp (%#RGp) uErr=%#RX32 cs:rip=%04x:%08RX64\n", rc, GCPhysNestedFault, GCPhysPage,
-                (uint32_t)uErr, pCtx->cs.Sel, pCtx->rip));
+    LogRelMaxFunc(32, ("rc=%Rrc GCPhysNestedFault=%#RGp (%#RGp) uErr=%#RX32 cs:rip=%04x:%08RX64\n",
+                       rc, GCPhysNestedFault, GCPhysPage, (uint32_t)uErr, pCtx->cs.Sel, pCtx->rip));
     return VERR_PGM_MAPPING_IPE;
 
 # else /* !VBOX_WITH_NESTED_HWVIRT_VMX_EPT || PGM_GST_TYPE != PGM_TYPE_PROT || PGM_SHW_TYPE != PGM_TYPE_EPT */
