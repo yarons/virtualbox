@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
+/* $Id: http-server.cpp 100249 2023-06-22 15:10:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -77,6 +77,8 @@
 #include <iprt/system.h>
 #include <iprt/tcp.h>
 
+#define LOG_GROUP RTLOGGROUP_HTTP
+#include <iprt/log.h>
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
