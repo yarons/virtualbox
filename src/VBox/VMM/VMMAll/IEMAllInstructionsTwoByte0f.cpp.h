@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 100266 2023-06-23 14:15:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -12543,7 +12543,7 @@ AssertCompile(RT_ELEMENTS(g_apfnGroup9MemReg) == 8*4);
 /** Opcode 0x0f 0xc7. */
 FNIEMOP_DEF(iemOp_Grp9)
 {
-    uint8_t bRm; IEM_OPCODE_GET_NEXT_RM(&bRm);
+    uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
         /* register, register */
         return FNIEMOP_CALL_1(g_apfnGroup9RegReg[ IEM_GET_MODRM_REG_8(bRm) * 4
