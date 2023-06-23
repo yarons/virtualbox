@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 100257 2023-06-23 09:14:27Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDef2LazyLoad.cpp 100273 2023-06-23 17:01:59Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -87,6 +87,8 @@ static RTLDRFMT     g_enmLdrFmt = RTLDRFMT_PE;
 #elif    defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(RT_OS_SOLARIS) \
       || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD)
 static RTLDRFMT     g_enmLdrFmt = RTLDRFMT_ELF;
+#elif    defined(RT_OS_OS2)
+static RTLDRFMT     g_enmLdrFmt = RTLDRFMT_LX;
 #else
 # error "Port me!"
 #endif
@@ -1764,7 +1766,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 100257 $\n");
+                printf("$Revision: 100273 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
