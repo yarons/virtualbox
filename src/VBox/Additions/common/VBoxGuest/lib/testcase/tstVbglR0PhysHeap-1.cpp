@@ -1,4 +1,4 @@
-/* $Id: tstVbglR0PhysHeap-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVbglR0PhysHeap-1.cpp 100270 2023-06-23 15:01:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Offset Based Heap.
  */
@@ -177,7 +177,7 @@ int main(int argc, char **argv)
      * Create a heap.
      */
     RTTestSub(hTest, "Basics");
-    RTTESTI_CHECK_RC(rc = VbglR0PhysHeapInit(), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(rc = VbglR0PhysHeapInit(true /*fAlloc32BitAddr*/), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
     RTTESTI_CHECK_RC_OK(VbglR0PhysHeapCheck(NULL));
@@ -287,7 +287,7 @@ int main(int argc, char **argv)
      * Use random allocation pattern
      */
     RTTestSub(hTest, "Random Test");
-    RTTESTI_CHECK_RC(rc = VbglR0PhysHeapInit(), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(rc = VbglR0PhysHeapInit(true /*fAlloc32BitAddr*/), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
 
