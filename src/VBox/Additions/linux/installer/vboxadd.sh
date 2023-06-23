@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 99550 2023-04-27 14:26:22Z vadim.galitsyn@oracle.com $
+# $Id: vboxadd.sh 100259 2023-06-23 11:18:11Z vadim.galitsyn@oracle.com $
 ## @file
-# Linux Additions kernel module init script ($Revision: 99550 $)
+# Linux Additions kernel module init script ($Revision: 100259 $)
 #
 
 #
@@ -1204,6 +1204,14 @@ reload()
         # Load drivers (skip vboxvideo since it is not loaded for very old guests).
         [ $? -eq 0 ] && try_load_preserve_rc "modprobe vboxguest" "unable to load vboxguest kernel module, see dmesg"
         [ $? -eq 0 ] && try_load_preserve_rc "modprobe vboxsf" "unable to load vboxsf kernel module, see dmesg"
+
+        # Load vboxvideo if present.
+        if [ -f "/lib/modules/"$(uname -r)"/misc/vboxvideo.ko" ]; then
+            try_load_preserve_rc "modprobe vboxvideo" "unable to load vboxvideo kernel module, see dmesg"
+        else
+            # Do not spoil $?.
+            true
+        fi
 
         # Start VBoxService and VBoxDRMClient.
         [ $? -eq 0 ] && try_load_preserve_rc "$VBOX_SERVICE_SCRIPT start" "unable to start VBoxService"
