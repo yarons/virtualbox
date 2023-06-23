@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100269 2023-06-23 15:00:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100271 2023-06-23 15:18:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -210,7 +210,7 @@ UIVisoContentBrowser::~UIVisoContentBrowser()
 void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath, const QStringList &pathList,
                                                   const QList<KFsObjType> &fileObjectTypeList)
 {
-    //rootItem();
+    Q_UNUSED(strISOFilePath);
     UICustomFileSystemItem *pParentItem = rootItem()->children()[0];
     if (!m_pTableView || !pParentItem)
         return;
