@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100082 2023-06-06 10:14:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100269 2023-06-23 15:00:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -47,7 +47,7 @@ enum UICustomFileSystemModelData
     UICustomFileSystemModelData_ChangeTime,
     UICustomFileSystemModelData_Owner,
     UICustomFileSystemModelData_Permissions,
-    UICustomFileSystemModelData_ISOPath,
+    UICustomFileSystemModelData_VISOPath,
     UICustomFileSystemModelData_LocalPath,
     UICustomFileSystemModelData_Max
 };
