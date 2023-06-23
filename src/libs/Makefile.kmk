@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99708 2023-05-09 20:26:33Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100252 2023-06-23 07:15:57Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -57,7 +57,7 @@ endif
 
 
 # libjpeg for VRDP video redirection and ExtPack's DrvHostWebcam.
-if   (defined(VBOX_WITH_VRDP) || defined(VBOX_WITH_EXTPACK_PUEL)) \
+if   (defined(VBOX_WITH_VRDP) || defined(VBOX_WITH_USB_VIDEO_IMPL)) \
   && !defined(VBOX_ONLY_ADDITIONS) \
   && !defined(VBOX_ONLY_SDK)
  include $(PATH_SUB_CURRENT)/libjpeg-turbo-2.1.3/Makefile.kmk
