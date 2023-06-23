@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-haiku.c 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, implementation.
  */
@@ -475,7 +475,8 @@ static status_t vgdrvHaikuAttach(const pci_info *pDevice)
             /*
              * Call the common device extension initializer.
              */
-            rc = VGDrvCommonInitDevExt(&g_DevExt, pState->uIOPortBase, pState->pMMIOBase, pState->VMMDevMemSize,
+            rc = VGDrvCommonInitDevExt(&g_DevExt, pState->uIOPortBase, NULL /*pvMmioReq*/,
+                                       pState->pMMIOBase, pState->VMMDevMemSize,
 #if ARCH_BITS == 64
                                        VBOXOSTYPE_Haiku_x64,
 #else

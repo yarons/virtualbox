@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR0LibInternal.h 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -124,11 +124,14 @@ enum VbglLibStatus
  */
 typedef struct VBGLDATA
 {
-    enum VbglLibStatus status;
-
-    RTIOPORT portVMMDev;
-
-    VMMDevMemory *pVMMDevMemory;
+    /** Init status of the library. */
+    enum VbglLibStatus      status;
+    /** I/O port to issue requests to. */
+    RTIOPORT                portVMMDev;
+    /** MMIO request region if available. */
+    volatile uintptr_t      *pMmioReq;
+    /** VMMDev adapter memory region if available. */
+    VMMDevMemory            *pVMMDevMemory;
 
     /** Physical memory heap data.
      * @{
@@ -148,6 +151,9 @@ typedef struct VBGLDATA
     int32_t                 cFreeBlocks;
     /** Head of the chunk list. */
     VBGLPHYSHEAPCHUNK      *pChunkHead;
+    /** Flag whether all allocations should be below 4GiB to fit into
+     * a 32-bit address. */
+    bool                   fAlloc32BitAddr;
     /** @} */
 
     /**

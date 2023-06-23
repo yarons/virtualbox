@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-freebsd.c 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -716,6 +716,7 @@ static int vgdrvFreeBSDAttach(device_t pDevice)
              * Call the common device extension initializer.
              */
             rc = VGDrvCommonInitDevExt(&g_DevExt, pState->uIOPortBase,
+                                       NULL /*pvMmioReq*/,
                                        pState->pMMIOBase, pState->VMMDevMemSize,
 #if ARCH_BITS == 64
                                        VBOXOSTYPE_FreeBSD_x64,

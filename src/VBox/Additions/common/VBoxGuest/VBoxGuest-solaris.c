@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-solaris.c 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -334,7 +334,9 @@ static int vgdrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
                             /*
                              * Call the common device extension initializer.
                              */
-                            rc = VGDrvCommonInitDevExt(&g_DevExt, g_uIOPortBase, g_pMMIOBase, g_cbMMIO,
+                            rc = VGDrvCommonInitDevExt(&g_DevExt, g_uIOPortBase,
+                                                       NULL /*pvMmioReq*/,
+                                                       g_pMMIOBase, g_cbMMIO,
 #if ARCH_BITS == 64
                                                        VBOXOSTYPE_Solaris_x64,
 #else

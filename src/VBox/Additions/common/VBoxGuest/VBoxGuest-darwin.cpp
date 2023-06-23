@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-darwin.cpp 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -921,7 +921,7 @@ bool org_virtualbox_VBoxGuest::start(IOService *pProvider)
                             /*
                              * Initialize the device extension.
                              */
-                            int rc = VGDrvCommonInitDevExt(&g_DevExt, IOPortBase, pvMMIOBase, cbMMIO,
+                            int rc = VGDrvCommonInitDevExt(&g_DevExt, IOPortBase, NULL /*pvMmioReq*/, pvMMIOBase, cbMMIO,
                                                            ARCH_BITS == 64 ? VBOXOSTYPE_MacOS_x64 : VBOXOSTYPE_MacOS, 0);
                             if (RT_SUCCESS(rc))
                             {

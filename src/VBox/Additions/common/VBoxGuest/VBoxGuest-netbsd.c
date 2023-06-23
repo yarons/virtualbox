@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuest-netbsd.c 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -333,6 +333,7 @@ static void VBoxGuestNetBSDAttach(device_t parent, device_t self, void *aux)
              * Call the common device extension initializer.
              */
             rc = VGDrvCommonInitDevExt(&g_DevExt, sc->sc_iobase,
+                                       NULL /*pvMmioReq*/,
                                        bus_space_vaddr(sc->sc_memt, sc->sc_memh),
                                        sc->sc_memsize,
 #if ARCH_BITS == 64

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 99365 2023-04-10 17:28:33Z michal.necasek@oracle.com $ */
+/* $Id: VBoxGuest-win.cpp 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1071,6 +1071,7 @@ static NTSTATUS vgdrvNtSetupDevice(PVBOXGUESTDEVEXTWIN pDevExt, PDEVICE_OBJECT p
 
             int vrc = VGDrvCommonInitDevExtResources(&pDevExt->Core,
                                                      pDevExt->Core.IOPortBase,
+                                                     NULL /*pvMmioReq*/,
                                                      pvMMIOBase, cbMMIO,
                                                      vgdrvNtVersionToOSType(g_enmVGDrvNtVer),
                                                      VMMDEV_EVENT_MOUSE_POSITION_CHANGED);
