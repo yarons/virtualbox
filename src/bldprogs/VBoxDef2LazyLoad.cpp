@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 100253 2023-06-23 08:45:52Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDef2LazyLoad.cpp 100257 2023-06-23 09:14:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -1206,7 +1206,7 @@ static RTEXITCODE generateOutputInnerArm64(FILE *pOutput)
             "/*\n"
             " * Imported names.\n"
             " */\n"
-            "BEGINCONST\n"
+            "BEGINCONSTSTRINGS\n"
             "g_szLibrary:\n"
             "    .asciz \"%s\"\n"
             "\n"
@@ -1222,7 +1222,7 @@ static RTEXITCODE generateOutputInnerArm64(FILE *pOutput)
             "\n"
             "g_szFailLoadFmt:    .asciz \"Lazy loader failed to load \\\"%%s\\\": %%Rrc\\n\"\n"
             "g_szFailResolveFmt: .asciz \"Lazy loader failed to resolve symbol \\\"%%s\\\" in \\\"%%s\\\": %%Rrc\\n\"\n"
-            "ENDCONST\n"
+            "ENDCONSTSTRINGS\n"
             "\n"
             "\n");
 
@@ -1764,7 +1764,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 100253 $\n");
+                printf("$Revision: 100257 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
