@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest-os2.cpp 100274 2023-06-23 18:44:41Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -192,7 +192,7 @@ DECLASM(int) vgdrvOS2Init(const char *pszArgs)
                                            vgdrvOS2DetectVersion(),
                                            0);
             else
-                rc = VGDrvCommonInitDevExt(&g_DevExt, g_IOPortBase, NULL, 0, vgdrvOS2DetectVersion(), 0);
+                rc = VGDrvCommonInitDevExt(&g_DevExt, g_IOPortBase, NULL /*pvMmioReq*/, NULL, 0, vgdrvOS2DetectVersion(), 0);
             if (RT_SUCCESS(rc))
             {
                 /*
