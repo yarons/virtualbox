@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-linux.c 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest-linux.c 100268 2023-06-23 14:59:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -748,7 +748,7 @@ static int __init vgdrvLinuxModInit(void)
         /*
          * Call the common device extension initializer.
          */
-#if RTLNX_VER_MIN(2,6,0) && defined(RT_ARCH_X86) || defined(RT_ARCH_ARM32)
+#if RTLNX_VER_MIN(2,6,0) && (defined(RT_ARCH_X86) || defined(RT_ARCH_ARM32))
         VBOXOSTYPE enmOSType = VBOXOSTYPE_Linux26;
 #elif RTLNX_VER_MIN(2,6,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_ARM64))
         VBOXOSTYPE enmOSType = VBOXOSTYPE_Linux26_x64;
