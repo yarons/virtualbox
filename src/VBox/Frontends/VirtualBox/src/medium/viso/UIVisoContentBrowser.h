@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100281 2023-06-25 13:47:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100282 2023-06-25 14:52:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -62,7 +62,9 @@ public:
     UIVisoContentBrowser(QWidget *pParent = 0);
     ~UIVisoContentBrowser();
     /* Imports pathList (relative to ISO file's root) to VISO content. */
-    void importISOContentToViso(const QString &strISOFilePath);
+    void importISOContentToViso(const QString &strISOFilePath,
+                                UICustomFileSystemItem *pParentItem = 0,
+                                const QString &strDirPath = QString());
     /** Adds file objests from the host file system. @p pathList consists of list of paths to there objects. */
     void addObjectsToViso(const QStringList &pathList);
     /** Returns the content of the VISO as a string list. Each element of the list becomes a line in the
