@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100271 2023-06-23 15:18:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100278 2023-06-25 11:16:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -210,7 +210,6 @@ UIVisoContentBrowser::~UIVisoContentBrowser()
 void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath, const QStringList &pathList,
                                                   const QList<KFsObjType> &fileObjectTypeList)
 {
-    Q_UNUSED(strISOFilePath);
     UICustomFileSystemItem *pParentItem = rootItem()->children()[0];
     if (!m_pTableView || !pParentItem)
         return;
@@ -229,6 +228,7 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
         UICustomFileSystemItem* pAddedItem = new UICustomFileSystemItem(fileInfo.fileName(), pParentItem,
                                                                         fileObjectTypeList[i]);
         pAddedItem->setData(pathList[i], UICustomFileSystemModelData_LocalPath);
+        pAddedItem->setData(strISOFilePath, UICustomFileSystemModelData_ISOFilePath);
         pAddedItem->setData(UIPathOperations::mergePaths(pParentItem->path(), fileInfo.fileName()),
                            UICustomFileSystemModelData_VISOPath);
         pAddedItem->setIsOpened(false);
