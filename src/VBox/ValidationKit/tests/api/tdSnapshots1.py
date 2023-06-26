@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSnapshots1.py 100264 2023-06-23 12:47:37Z brent.paulson@oracle.com $
+# $Id: tdSnapshots1.py 100292 2023-06-26 14:22:02Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Nested Snapshot Restoration Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100264 $"
+__version__ = "$Revision: 100292 $"
 
 
 # Standard Python imports.
@@ -229,8 +229,7 @@ class SubTstDrvNestedSnapshots1(base.SubTestDriverBase):
                     oProgress = oVM.delete([]);
             except:
                 return reporter.error('Failed to delete configuration of VM \'%s\'' % self.sVmName);
-            else:
-                self.oTstDrv.waitOnProgress(oProgress);
+            self.oTstDrv.waitOnProgress(oProgress);
         else:
             try:
                 self.oTstDrv.oVBox.unregisterMachine(oVM.id);
