@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 100063 2023-06-03 17:42:36Z serkan.bayraktar@oracle.com $ */
+/** $Id: clipboard.cpp 100287 2023-06-26 07:53:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Common Shared Clipboard wrapper service.
  */
@@ -128,6 +128,7 @@ static DECLCALLBACK(int) vbclShClTerm(void)
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     ShClTransferCtxDestroy(&g_Ctx.TransferCtx);
 #endif
+    VBClX11ClipboardDestroy();
 
     return VINF_SUCCESS;
 }
