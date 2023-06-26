@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerTable.h 100283 2023-06-26 06:28:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -50,12 +50,10 @@
 /* Forward declarations: */
 class QAction;
 class QFileInfo;
-class QComboBox;
 class QILabel;
 class QILineEdit;
 class QGridLayout;
 class QSortFilterProxyModel;
-class QStackedWidget;
 class QTextEdit;
 class QHBoxLayout;
 class QVBoxLayout;
@@ -63,7 +61,7 @@ class UIActionPool;
 class UICustomFileSystemItem;
 class UICustomFileSystemModel;
 class UICustomFileSystemProxyModel;
-class UIFileManagerNavigationWidget;
+class UIFileTableNavigationWidget;
 class UIGuestControlFileView;
 class QIToolBar;
 
@@ -309,7 +307,7 @@ private:
     UIGuestControlFileView        *m_pView;
     UICustomFileSystemProxyModel  *m_pProxyModel;
     /** Contains m_pBreadCrumbsWidget and m_pLocationComboBox. */
-    UIFileManagerNavigationWidget *m_pNavigationWidget;
+    UIFileTableNavigationWidget   *m_pNavigationWidget;
 
     QILineEdit      *m_pSearchLineEdit;
     QColor           m_searchLineUnmarkColor;
