@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 100291 2023-06-26 08:10:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1975,7 +1975,7 @@ static int vbglR3ClipboardTransferInit(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFERC
                 rc = ShClTransferCtxTransferRegisterById(pTransferCtx, pTransfer, uTransferID);
 
             if (RT_FAILURE(rc))
-                ShClTransferCtxTransferUnregister(pTransferCtx, uTransferID);
+                ShClTransferCtxTransferUnregisterById(pTransferCtx, uTransferID);
         }
     }
 
@@ -2027,7 +2027,7 @@ static int vbglR3ClipboardTransferUninit(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFE
     PSHCLTRANSFER pTransfer = ShClTransferCtxGetTransferById(pTransferCtx, uTransferID);
     if (pTransfer)
     {
-        rc = ShClTransferCtxTransferUnregister(pTransferCtx, uTransferID);
+        rc = ShClTransferCtxTransferUnregisterById(pTransferCtx, uTransferID);
         if (RT_SUCCESS(rc))
             rc = ShClTransferDestroy(pTransfer);
 
@@ -2117,7 +2117,7 @@ static int vbglR3ClipboardTransferStop(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFERC
     PSHCLTRANSFER pTransfer = ShClTransferCtxGetTransferById(pTransferCtx, uTransferID);
     if (pTransfer)
     {
-        rc = ShClTransferCtxTransferUnregister(pTransferCtx, uTransferID);
+        rc = ShClTransferCtxTransferUnregisterById(pTransferCtx, uTransferID);
         if (RT_SUCCESS(rc))
         {
             LogRel(("Shared Clipboard: Transfer %RU32 successfully stopped\n", uTransferID));
