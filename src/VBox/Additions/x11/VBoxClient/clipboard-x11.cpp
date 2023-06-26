@@ -1,4 +1,4 @@
-/** $Id: clipboard-x11.cpp 100284 2023-06-26 07:49:50Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard-x11.cpp 100285 2023-06-26 07:50:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard implementation.
  */
@@ -39,17 +39,19 @@
 #include <iprt/process.h>
 #include <iprt/semaphore.h>
 
-#define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
-#include <iprt/log.h>
-
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/GuestHost/SharedClipboard-x11.h>
 
 #include "VBoxClient.h"
-
 #include "clipboard.h"
+
+#ifdef LOG_GROUP
+# undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
+#include <iprt/log.h>
 
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
