@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100289 2023-06-26 08:03:50Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100290 2023-06-26 08:05:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -2493,14 +2493,14 @@ static void shclTransferCtxTransferRemoveAndUnregister(PSHCLTRANSFERCTX pTransfe
 }
 
 /**
- * Unregisters a transfer from an transfer context.
+ * Unregisters a transfer from an transfer context, given by its ID.
  *
  * @retval  VINF_SUCCESS on success.
  * @retval  VERR_NOT_FOUND if the transfer ID was not found.
  * @param   pTransferCtx        Transfer context to unregister transfer from.
  * @param   idTransfer          Transfer ID to unregister.
  */
-int ShClTransferCtxTransferUnregister(PSHCLTRANSFERCTX pTransferCtx, SHCLTRANSFERID idTransfer)
+int ShClTransferCtxTransferUnregisterById(PSHCLTRANSFERCTX pTransferCtx, SHCLTRANSFERID idTransfer)
 {
     AssertPtrReturn(pTransferCtx, VERR_INVALID_POINTER);
     AssertReturn(idTransfer, VERR_INVALID_PARAMETER);
