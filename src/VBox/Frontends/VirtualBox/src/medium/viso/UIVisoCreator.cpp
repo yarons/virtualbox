@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100281 2023-06-25 13:47:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100296 2023-06-27 08:30:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -526,8 +526,6 @@ void UIVisoCreatorWidget::prepareConnections()
     {
         connect(m_pHostBrowser, &UIVisoHostBrowser::sigAddObjectsToViso,
                 this, &UIVisoCreatorWidget::sltAddObjectsToViso);
-        connect(m_pHostBrowser, &UIVisoHostBrowser::sigTreeViewVisibilityChanged,
-                this, &UIVisoCreatorWidget::sltBrowserTreeViewVisibilityChanged);
         connect(m_pHostBrowser, &UIVisoHostBrowser::sigTableSelectionChanged,
                 this, &UIVisoCreatorWidget::sltHostBrowserTableSelectionChanged);
         connect(m_pHostBrowser, &UIVisoHostBrowser::sigCreateFileTableViewContextMenu,

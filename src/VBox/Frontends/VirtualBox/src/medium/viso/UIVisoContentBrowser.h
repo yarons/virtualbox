@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100295 2023-06-27 07:15:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100296 2023-06-27 08:30:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -45,7 +45,6 @@ class QFileInfo;
 class UICustomFileSystemItem;
 class UICustomFileSystemModel;
 class UICustomFileSystemProxyModel;
-class UIVisoContentTreeProxyModel;
 class UIVisoContentTableView;
 
 /** A UIVisoBrowserBase extension to view content of a VISO as a file tree. */
@@ -111,7 +110,6 @@ private:
     /** @name Index conversion functions. These are half-smart and tries to determine the source model before conversion.
       * @{ */
         QModelIndex         convertIndexToTableIndex(const QModelIndex &index);
-        // QModelIndex         convertIndexToTreeIndex(const QModelIndex &index);
     /** @} */
     /** Lists the content of the host file system directory by using Qt file system API. */
     void                    scanHostDirectory(UICustomFileSystemItem *directory);

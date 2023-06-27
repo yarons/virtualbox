@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100295 2023-06-27 07:15:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100296 2023-06-27 08:30:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -620,8 +620,8 @@ void UIVisoContentBrowser::setTableRootIndex(QModelIndex index /* = QModelIndex 
             static_cast<UICustomFileSystemItem*>(m_pTableProxyModel->mapToSource(tableIndex).internalPointer());
         if (pItem)
         {
-            QString strPath = pItem->data(UICustomFileSystemModelData_VISOPath).toString();
-            updateLocationSelectorText(strPath);
+            //QString strPath = pItem->data(UICustomFileSystemModelData_VISOPath).toString();
+            //updateLocationSelectorText(strPath);
         }
     }
 }
@@ -791,8 +791,8 @@ void UIVisoContentBrowser::updateStartItemName()
 
     rootItem()->child(0)->setData(strName, UICustomFileSystemModelData_Name);
     /* If the table root index is the start item then we have to update the location selector text here: */
-    if (m_pTableProxyModel->mapToSource(m_pTableView->rootIndex()).internalPointer() == rootItem()->child(0))
-        updateLocationSelectorText(strName);
+    // if (m_pTableProxyModel->mapToSource(m_pTableView->rootIndex()).internalPointer() == rootItem()->child(0))
+    //     updateLocationSelectorText(strName);
     m_pTableProxyModel->invalidate();
 }
 
