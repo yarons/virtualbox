@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 100303 2023-06-27 17:42:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -390,10 +390,10 @@ UIFileManagerTable::UIFileManagerTable(UIActionPool *pActionPool, QWidget *pPare
     , m_pActionPool(pActionPool)
     , m_pToolBar(0)
     , m_pMainLayout(0)
+    , m_pNavigationWidget(0)
     , m_pModel(0)
     , m_pView(0)
     , m_pProxyModel(0)
-    , m_pNavigationWidget(0)
     , m_pathSeparator('/')
     , m_pToolBarLayout(0)
 {
