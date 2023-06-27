@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 100224 2023-06-20 02:55:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 100305 2023-06-27 22:25:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -168,13 +168,15 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 
 
 #ifdef VBOX_WITH_IEM_RECOMPILER
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbExec,             STAMTYPE_U64_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
+                        "Executed translation block",               "/IEM/CPU%u/cTbExec", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbAllocs,           STAMTYPE_U64,       STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Translation block allocations",            "/IEM/CPU%u/cTbAllocs", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbFrees,            STAMTYPE_U64,       STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Translation block frees",                  "/IEM/CPU%u/cTbFrees", idCpu);
-        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbLookupHits,       STAMTYPE_U64,       STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbLookupHits,       STAMTYPE_U64_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Translation block lookup hits",            "/IEM/CPU%u/cTbLookupHits", idCpu);
-        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbLookupMisses, STAMTYPE_U64,       STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.cTbLookupMisses,     STAMTYPE_U64_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Translation block lookup misses",          "/IEM/CPU%u/cTbLookupMisses", idCpu);
 #endif
 

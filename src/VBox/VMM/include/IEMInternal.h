@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100277 2023-06-24 02:48:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100305 2023-06-27 22:25:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1011,12 +1011,12 @@ typedef struct IEMCPU
     uint64_t                cTbLookupMisses;
     /** Statistics: Number of TB lookup hits (debug only). */
     uint64_t                cTbLookupHits;
+    /** Number of TBs executed. */
+    uint64_t                cTbExec;
     /** Whether to end the current TB. */
     bool                    fEndTb;
     /** Spaced reserved for recompiler data / alignment. */
     bool                    afRecompilerStuff1[7];
-    /** Spaced reserved for recompiler data / alignment. */
-    uint64_t                auRecompilerStuff2[1];
     /** @} */
 
     /** Data TLB.
