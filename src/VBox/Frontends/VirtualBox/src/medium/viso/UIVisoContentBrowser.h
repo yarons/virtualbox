@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100293 2023-06-27 06:59:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100295 2023-06-27 07:15:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -131,7 +131,6 @@ private:
     UIVisoContentTableView       *m_pTableView;
     UICustomFileSystemModel      *m_pModel;
     UICustomFileSystemProxyModel *m_pTableProxyModel;
-    UIVisoContentTreeProxyModel  *m_pTreeProxyModel;
 
     QString                       m_strVisoName;
     /** keys of m_entryMap are iso locations and values are
