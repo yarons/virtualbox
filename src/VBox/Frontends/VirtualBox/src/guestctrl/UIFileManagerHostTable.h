@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManagerHostTable.h 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -72,6 +72,7 @@ protected:
     virtual void    determinePathSeparator() override final;
     virtual void    prepareToolbar() override final;
     virtual void    createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) override final;
+    virtual void    toggleForwardBackwardActions() override final;
     /** @name Copy/Cut host-to-host stuff. Currently not implemented.
      * @{ */
         /** Disable/enable paste action depending on the m_eFileOperationType. */

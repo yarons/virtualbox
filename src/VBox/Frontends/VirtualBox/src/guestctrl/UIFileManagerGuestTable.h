@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 100174 2023-06-14 08:13:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -98,6 +98,7 @@ protected:
         virtual void  setPasteActionEnabled(bool fEnabled) override final;
         virtual void  pasteCutCopiedObjects() override final;
     /** @} */
+    virtual void  toggleForwardBackwardActions() override final;
     virtual void  setState();
     virtual void  setSessionDependentWidgetsEnabled();
 

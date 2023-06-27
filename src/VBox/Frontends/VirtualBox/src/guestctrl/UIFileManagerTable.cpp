@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 100300 2023-06-27 14:44:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -917,9 +917,7 @@ void UIFileManagerTable::sltHandleNavigationWidgetPathChange(const QString& strP
 
 void UIFileManagerTable::sltHandleNavigationWidgetHistoryListChanged()
 {
-    /* Check if forward/backward actions should be disabled/enabled: */
-    int iHistoryListCount = m_pNavigationWidget->historyItemCount();
-    int iCurrentHistoryIndex = m_pNavigationWidget->currentHistoryIndex();
+    toggleForwardBackwardActions();
 }
 
 void UIFileManagerTable::deSelectUpDirectoryItem()

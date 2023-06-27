@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 100082 2023-06-06 10:14:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -244,6 +244,10 @@ void UIFileManagerHostTable::createFileViewContextMenu(const QWidget *pWidget, c
     menu.addSeparator();
     menu.addAction(m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_ShowProperties));
     menu.exec(pWidget->mapToGlobal(point));
+}
+
+void UIFileManagerHostTable::toggleForwardBackwardActions()
+{
 }
 
 void UIFileManagerHostTable::readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir /*= false*/)

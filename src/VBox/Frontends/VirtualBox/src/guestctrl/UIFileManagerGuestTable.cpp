@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100245 2023-06-22 10:46:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1473,6 +1473,10 @@ void UIFileManagerGuestTable::sltOpenGuestSession(QString strUserName, QString s
         return;
     }
     openGuestSession(strUserName, strPassword);
+}
+
+void UIFileManagerGuestTable::toggleForwardBackwardActions()
+{
 }
 
 void UIFileManagerGuestTable::setState()
