@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 100293 2023-06-27 06:59:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.cpp 100294 2023-06-27 07:07:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -292,10 +292,7 @@ void UIVisoBrowserBase::sltTableViewItemDoubleClick(const QModelIndex &index)
 void UIVisoBrowserBase::sltTreeSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
-    QModelIndexList indices = selected.indexes();
-    if (indices.empty())
-        return;
-    QModelIndex selectedIndex = indices[0];
+    Q_UNUSED(selected);
 }
 
 void UIVisoBrowserBase::sltTreeItemClicked(const QModelIndex &modelIndex)
