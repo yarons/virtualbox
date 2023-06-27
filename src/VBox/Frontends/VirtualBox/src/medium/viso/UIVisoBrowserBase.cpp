@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.cpp 100300 2023-06-27 14:44:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -38,6 +38,8 @@
 #include "UIIconPool.h"
 #include "UIVisoBrowserBase.h"
 
+/* Other VBox includes: */
+#include <iprt/assert.h>
 
 /*********************************************************************************************************************************
 *   UIVisoBrowserBase implementation.                                                                                   *

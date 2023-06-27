@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 99971 2023-05-25 09:13:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 100300 2023-06-27 14:44:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -44,6 +44,7 @@
 # include "VBoxUtils-darwin.h"
 #endif
 
+/* Other VBox includes: */
 #include <iprt/assert.h>
 
 QPointer<UIHelpBrowserDialog> UIHelpBrowserDialog::m_pInstance;

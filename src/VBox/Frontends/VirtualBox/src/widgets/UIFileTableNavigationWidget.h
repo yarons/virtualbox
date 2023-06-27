@@ -1,4 +1,4 @@
-/* $Id: UIFileTableNavigationWidget.h 100297 2023-06-27 10:56:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileTableNavigationWidget.h 100300 2023-06-27 14:44:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileTableNavigationWidget class declaration.
  */
@@ -51,6 +51,7 @@ class UIFileTableNavigationWidget : public QWidget
 signals:
 
     void sigPathChanged(const QString &strPath);
+    void sigHistoryListChanged();
 
 public:
 
@@ -58,6 +59,11 @@ public:
     void setPath(const QString &strLocation);
     void reset();
     void setPathSeparator(const QChar &separator);
+    int historyItemCount() const;
+    int currentHistoryIndex() const;
+
+protected:
+
     bool eventFilter(QObject *pObject, QEvent *pEvent) override;
 
 private slots:
