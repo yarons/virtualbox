@@ -1,4 +1,4 @@
-/* $Id: UIFileTableNavigationWidget.h 100283 2023-06-26 06:28:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileTableNavigationWidget.h 100297 2023-06-27 10:56:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileTableNavigationWidget class declaration.
  */
@@ -61,6 +61,7 @@ public:
     bool eventFilter(QObject *pObject, QEvent *pEvent) override;
 
 private slots:
+
     void sltHandleSwitch();
     /* Makes sure that we switch to breadcrumbs widget as soon as the combo box popup is hidden. */
     void sltHandleHidePopup();
