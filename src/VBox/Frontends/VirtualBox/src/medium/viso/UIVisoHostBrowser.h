@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 100180 2023-06-15 14:57:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100293 2023-06-27 06:59:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -69,8 +69,6 @@ protected:
     virtual void retranslateUi() final override;
     virtual void tableViewItemDoubleClick(const QModelIndex &index) final override;
     virtual void setTableRootIndex(QModelIndex index = QModelIndex()) final override;
-    virtual void setTreeCurrentIndex(QModelIndex index = QModelIndex()) final override;
-    virtual void treeSelectionChanged(const QModelIndex &selectedTreeIndex) final override;
 
 private slots:
 
@@ -80,9 +78,8 @@ private:
 
     void prepareObjects();
     void prepareConnections();
-
+    QModelIndex currentRootIndex() const;
     /** We have two file system models (one for each item view) since we set different filters on each of these models. */
-    UIVisoHostBrowserModel *m_pTreeModel;
     UIVisoHostBrowserModel *m_pTableModel;
     QTableView             *m_pTableView;
 };

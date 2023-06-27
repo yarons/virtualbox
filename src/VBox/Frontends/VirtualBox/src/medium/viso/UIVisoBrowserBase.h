@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100155 2023-06-12 14:40:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100293 2023-06-27 06:59:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -75,9 +75,7 @@ protected:
     void updateLocationSelectorText(const QString &strText);
 
     virtual void tableViewItemDoubleClick(const QModelIndex &index) = 0;
-    virtual void treeSelectionChanged(const QModelIndex &selectedTreeIndex) = 0;
     virtual void setTableRootIndex(QModelIndex index = QModelIndex()) = 0;
-    virtual void setTreeCurrentIndex(QModelIndex index = QModelIndex()) = 0;
 
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
     virtual bool eventFilter(QObject *pObj, QEvent *pEvent) RT_OVERRIDE;
