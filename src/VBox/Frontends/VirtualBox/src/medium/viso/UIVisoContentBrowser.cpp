@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100298 2023-06-27 13:35:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -380,6 +380,7 @@ void UIVisoContentBrowser::retranslateUi()
         pRootItem->setData(QApplication::translate("UIVisoCreatorWidget", "Local Path"), UICustomFileSystemModelData_LocalPath);
         pRootItem->setData(QApplication::translate("UIVisoCreatorWidget", "VISO Path"), UICustomFileSystemModelData_VISOPath);
     }
+    setFileTableLabelText(QApplication::translate("UIVisoCreatorWidget","VISO Content"));
 }
 
 void UIVisoContentBrowser::tableViewItemDoubleClick(const QModelIndex &index)

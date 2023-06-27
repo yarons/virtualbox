@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100296 2023-06-27 08:30:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -322,10 +322,6 @@ QMenu *UIVisoCreatorWidget::menu() const
 
 void UIVisoCreatorWidget::retranslateUi()
 {
-    if (m_pHostBrowser)
-        m_pHostBrowser->setTitle(tr("Host File System"));
-    if (m_pVISOContentBrowser)
-        m_pVISOContentBrowser->setTitle(tr("VISO Content"));
     if (m_pSettingsWidget)
         m_pSettingsWidget->setTitle(tr("Settings"));
 }

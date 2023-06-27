@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 100298 2023-06-27 13:35:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -166,6 +166,7 @@ UIVisoHostBrowser::~UIVisoHostBrowser()
 
 void UIVisoHostBrowser::retranslateUi()
 {
+    setFileTableLabelText(QApplication::translate("UIVisoCreatorWidget","Host System"));
 }
 
 void UIVisoHostBrowser::prepareObjects()
@@ -203,7 +204,7 @@ void UIVisoHostBrowser::prepareObjects()
         }
 
         m_pTableView->setModel(m_pModel);
-        //setTableRootIndex();
+
         /* Hide the "type" column: */
         m_pTableView->hideColumn(2);
 
