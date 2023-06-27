@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100278 2023-06-25 11:16:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100298 2023-06-27 13:35:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -65,8 +65,8 @@ public:
 
     void reset();
     virtual UICustomFileSystemItem *child(int row) const;
-    /** Searches for the child by path and returns it if found. */
-    UICustomFileSystemItem *child(const QString &path) const;
+    /** Searches for the child by name and returns it if found. */
+    UICustomFileSystemItem *child(const QString &name) const;
     int childCount() const;
     QList<UICustomFileSystemItem*> children() const;
     /** Removes the item from the list of children and !!DELETES!! the item. */
@@ -189,7 +189,7 @@ public:
                               int role = Qt::DisplayRole) const RT_OVERRIDE;
     QModelIndex    index(int row, int column,
                       const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;
-    QModelIndex    index(UICustomFileSystemItem* item);
+    QModelIndex    index(const UICustomFileSystemItem* item);
     QModelIndex    parent(const QModelIndex &index) const RT_OVERRIDE;
     int            rowCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;
     int            columnCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;

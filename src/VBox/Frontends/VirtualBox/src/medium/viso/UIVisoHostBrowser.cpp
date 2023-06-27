@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 100297 2023-06-27 10:56:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100298 2023-06-27 13:35:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -246,11 +246,7 @@ void UIVisoHostBrowser::tableViewItemDoubleClick(const QModelIndex &index)
     if (!fileInfo.isDir())
         return;
     if (QString::compare(fileInfo.fileName(), "..") == 0)
-    {
-        //printf("rrr %s\n", qPrintable(m_pModel->filePath(m_pModel->parent(m_pTableView->rootIndex()))));
-
         setTableRootIndex(m_pModel->parent(m_pTableView->rootIndex()));
-    }
     else
         setTableRootIndex(index);
 }
