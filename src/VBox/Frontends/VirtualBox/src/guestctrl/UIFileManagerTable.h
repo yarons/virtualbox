@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 100301 2023-06-27 15:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 100302 2023-06-27 17:27:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -267,6 +267,8 @@ protected:
     QStringList              m_copyCutBuffer;
     /** This name is appended to the log messages which are shown in the log panel. */
     QString          m_strTableName;
+    /** Contains m_pBreadCrumbsWidget and m_pLocationComboBox. */
+    UIFileTableNavigationWidget   *m_pNavigationWidget;
 
 private slots:
 
@@ -310,8 +312,6 @@ private:
     UICustomFileSystemModel       *m_pModel;
     UIGuestControlFileView        *m_pView;
     UICustomFileSystemProxyModel  *m_pProxyModel;
-    /** Contains m_pBreadCrumbsWidget and m_pLocationComboBox. */
-    UIFileTableNavigationWidget   *m_pNavigationWidget;
 
     QILineEdit      *m_pSearchLineEdit;
     QColor           m_searchLineUnmarkColor;
