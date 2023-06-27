@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100302 2023-06-27 17:27:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1147,6 +1147,8 @@ void UIFileManagerGuestTable::prepareActionConnections()
 
     manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoUp), &UIFileManagerTable::sltGoUp);
     manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoHome), &UIFileManagerTable::sltGoHome);
+    manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoBackward), &UIFileManagerTable::sltGoBackward);
+    manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoForward), &UIFileManagerTable::sltGoForward);
     manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_Refresh), &UIFileManagerTable::sltRefresh);
     manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_Delete), &UIFileManagerTable::sltDelete);
     manageConnection(m_fIsCurrent, m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_Rename), &UIFileManagerTable::sltRename);

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 100303 2023-06-27 17:42:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -642,10 +642,14 @@ void UIFileManagerTable::sltGoHome()
 
 void UIFileManagerTable::sltGoForward()
 {
+    if (m_pNavigationWidget)
+        m_pNavigationWidget->goForwardInHistory();
 }
 
 void UIFileManagerTable::sltGoBackward()
 {
+    if (m_pNavigationWidget)
+        m_pNavigationWidget->goBackwardInHistory();
 }
 
 void UIFileManagerTable::sltRefresh()
