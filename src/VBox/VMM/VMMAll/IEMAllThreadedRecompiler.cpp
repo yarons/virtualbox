@@ -1,4 +1,4 @@
-/* $Id: IEMAllThreadedRecompiler.cpp 100305 2023-06-27 22:25:44Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThreadedRecompiler.cpp 100326 2023-06-28 23:48:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -213,13 +213,13 @@ static VBOXSTRICTRC iemThreadedTbExec(PVMCPUCC pVCpu, PIEMTB pTb);
 
 #undef IEM_MC_CALC_RM_EFF_ADDR
 #ifndef IEM_WITH_SETJMP
-# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, bRm, cbImm) \
+# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, a_bRm, a_cbImmAndRspOffset) \
     uint64_t uEffAddrInfo; \
-    IEM_MC_RETURN_ON_FAILURE(iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (bRm), (cbImm), &(a_GCPtrEff), &uEffAddrInfo))
+    IEM_MC_RETURN_ON_FAILURE(iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (a_bRm), (a_cbImmAndRspOffset), &(a_GCPtrEff), &uEffAddrInfo))
 #else
-# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, bRm, cbImm) \
+# define IEM_MC_CALC_RM_EFF_ADDR(a_GCPtrEff, a_bRm, a_cbImmAndRspOffset) \
     uint64_t uEffAddrInfo; \
-    ((a_GCPtrEff) = iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (bRm), (cbImm), &uEffAddrInfo))
+    ((a_GCPtrEff) = iemOpHlpCalcRmEffAddrJmpEx(pVCpu, (a_bRm), (a_cbImmAndRspOffset), &uEffAddrInfo))
 #endif
 
 #define IEM_MC2_BEGIN_EMIT_CALLS() \
