@@ -1,4 +1,4 @@
-/* $Id: heapoffset.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: heapoffset.cpp 100308 2023-06-28 10:24:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - An Offset Based Heap.
  */
@@ -379,7 +379,7 @@ RTDECL(int) RTHeapOffsetInit(PRTHEAPOFFSET phHeap, void *pvMemory, size_t cbMemo
     /*
      * Validate input. The imposed minimum heap size is just a convenient value.
      */
-    AssertReturn(cbMemory >= PAGE_SIZE, VERR_INVALID_PARAMETER);
+    AssertReturn(cbMemory >= _4K, VERR_INVALID_PARAMETER);
     AssertReturn(cbMemory < UINT32_MAX, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pvMemory, VERR_INVALID_POINTER);
     AssertReturn((uintptr_t)pvMemory + (cbMemory - 1) > (uintptr_t)cbMemory, VERR_INVALID_PARAMETER);
