@@ -1,4 +1,4 @@
-/* $Id: UIFileTableNavigationWidget.h 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileTableNavigationWidget.h 100324 2023-06-28 12:35:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileTableNavigationWidget class declaration.
  */
@@ -59,8 +59,8 @@ public:
     void setPath(const QString &strLocation);
     void reset();
     void setPathSeparator(const QChar &separator);
-    int historyItemCount() const;
-    int currentHistoryIndex() const;
+    bool canGoForward() const;
+    bool canGoBackward() const;
     void goForwardInHistory();
     void goBackwardInHistory();
 

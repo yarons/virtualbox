@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100324 2023-06-28 12:35:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1487,12 +1487,12 @@ void UIFileManagerGuestTable::sltOpenGuestSession(QString strUserName, QString s
 
 void UIFileManagerGuestTable::toggleForwardBackwardActions()
 {
-    int iCount = m_pNavigationWidget->historyItemCount();
-    int iCurrent = m_pNavigationWidget->currentHistoryIndex();
+    if (!m_pNavigationWidget)
+        return;
     if (m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoForward))
-        m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoForward)->setEnabled(iCurrent < iCount - 1);
+        m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoForward)->setEnabled(m_pNavigationWidget->canGoForward());
     if (m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoBackward))
-        m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoBackward)->setEnabled(iCurrent > 0);
+        m_pActionPool->action(UIActionIndex_M_FileManager_S_Guest_GoBackward)->setEnabled(m_pNavigationWidget->canGoBackward());
 }
 
 void UIFileManagerGuestTable::setState()

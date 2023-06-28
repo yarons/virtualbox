@@ -1,4 +1,4 @@
-/* $Id: UIFileTableNavigationWidget.cpp 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileTableNavigationWidget.cpp 100324 2023-06-28 12:35:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileTableNavigationWidget class definitions.
  */
@@ -265,19 +265,20 @@ void UIFileTableNavigationWidget::setPathSeparator(const QChar &separator)
         m_pBreadCrumbs->setPathSeparator(m_pathSeparator);
 }
 
-int UIFileTableNavigationWidget::historyItemCount() const
+bool UIFileTableNavigationWidget::canGoForward() const
 {
     if (!m_pHistoryComboBox)
-        return 0;
-    return m_pHistoryComboBox->count();
+        return false;
+    return (m_pHistoryComboBox->currentIndex() < m_pHistoryComboBox->count() - 1);
 }
 
-int UIFileTableNavigationWidget::currentHistoryIndex() const
+bool UIFileTableNavigationWidget::canGoBackward() const
 {
     if (!m_pHistoryComboBox)
-        return 0;
-    return m_pHistoryComboBox->currentIndex();
+        return false;
+    return (m_pHistoryComboBox->currentIndex() > 0);
 }
+
 
 void UIFileTableNavigationWidget::goForwardInHistory()
 {
