@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100306 2023-06-28 09:15:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -42,9 +42,10 @@
 class QItemSelection;
 class QGridLayout;
 class QLabel;
+class QIToolBar;
 class UIFileTableNavigationWidget;
 
-/** An abstract QWidget extension hosting and table view. */
+/** An abstract QWidget extension hosting a toolbar, a navigation widget, and table view. */
 class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
@@ -80,6 +81,7 @@ protected:
     void setFileTableLabelText(const QString &strText);
 
     QGridLayout        *m_pMainLayout;
+    QIToolBar          *m_pToolBar;
 
 protected slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100299 2023-06-27 13:56:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100306 2023-06-28 09:15:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -505,7 +505,7 @@ void UIVisoContentBrowser::prepareObjects()
     m_pTableView = new UIVisoContentTableView;
     if (m_pTableView)
     {
-        m_pMainLayout->addWidget(m_pTableView, 1, 0, 6, 4);
+        m_pMainLayout->addWidget(m_pTableView, 2, 0, 6, 4);
         m_pTableView->setContextMenuPolicy(Qt::CustomContextMenu);
         m_pTableView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         m_pTableView->setShowGrid(false);
