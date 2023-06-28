@@ -1,4 +1,4 @@
-/* $Id: combined-agnostic.c 100191 2023-06-16 08:04:11Z alexander.eichner@oracle.com $ */
+/* $Id: combined-agnostic.c 100307 2023-06-28 10:17:34Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest - Combine a bunch of OS agnostic sources into one compile unit.
  */
@@ -166,6 +166,8 @@
 #include "generic/errvars-generic.c"
 #undef LOG_GROUP
 #include "generic/mppresent-generic.c"
+#undef LOG_GROUP
+#include "generic/system-page-size-generic.c"
 #undef LOG_GROUP
 #include "VBox/log-vbox.c"
 #undef LOG_GROUP

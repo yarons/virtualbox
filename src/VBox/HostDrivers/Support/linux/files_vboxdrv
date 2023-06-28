@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: files_vboxdrv 100307 2023-06-28 10:17:34Z alexander.eichner@oracle.com $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -72,6 +72,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/iprt/stdarg.h=>include/iprt/stdarg.h \
     ${PATH_ROOT}/include/iprt/stdint.h=>include/iprt/stdint.h \
     ${PATH_ROOT}/include/iprt/string.h=>include/iprt/string.h \
+    ${PATH_ROOT}/include/iprt/system.h=>include/iprt/system.h \
     ${PATH_ROOT}/include/iprt/thread.h=>include/iprt/thread.h \
     ${PATH_ROOT}/include/iprt/time.h=>include/iprt/time.h \
     ${PATH_ROOT}/include/iprt/timer.h=>include/iprt/timer.h \
@@ -197,6 +198,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTTimerCreate-generic.cpp=>generic/RTTimerCreate-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/errvars-generic.cpp=>generic/errvars-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/mppresent-generic.cpp=>generic/mppresent-generic.c \
+    ${PATH_ROOT}/src/VBox/Runtime/generic/system-page-size-generic.cpp=>generic/system-page-size-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/uuid-generic.cpp=>generic/uuid-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/alloc-r0drv.cpp=>r0drv/alloc-r0drv.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/alloc-r0drv.h=>r0drv/alloc-r0drv.h \

@@ -1,4 +1,4 @@
-/* $Id: init.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: init.cpp 100307 2023-06-28 10:17:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -87,6 +87,7 @@
 #include "internal/initterm.h"
 #include "internal/path.h"
 #include "internal/process.h"
+#include "internal/system.h"
 #include "internal/thread.h"
 #include "internal/time.h"
 
@@ -405,6 +406,14 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***ppapszArgs, const ch
     }
 # endif  /* VBOX */
 #endif /* !IN_GUEST && !RT_NO_GIP */
+
+#if defined(RT_ARCH_ARM64) && defined(RT_OS_LINUX)
+    /*
+     * Initialize the page size.
+     */
+    rc = rtSystemInitPageSize();
+    AssertMsgRCReturn(rc, ("Failed to initialize the page size, rc=%Rrc!\n", rc), rc);
+#endif
 
     /*
      * Thread Thread database and adopt the caller thread as 'main'.
