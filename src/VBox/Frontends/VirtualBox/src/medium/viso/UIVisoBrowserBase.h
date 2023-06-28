@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100306 2023-06-28 09:15:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QModelIndex>
+#include <QPointer>
 #include <QWidget>
 
 /* GUI includes: */
@@ -43,6 +44,7 @@ class QItemSelection;
 class QGridLayout;
 class QLabel;
 class QIToolBar;
+class UIActionPool;
 class UIFileTableNavigationWidget;
 
 /** An abstract QWidget extension hosting a toolbar, a navigation widget, and table view. */
@@ -52,11 +54,11 @@ class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigCreateFileTableViewContextMenu(QWidget *pMenuRequester, const QPoint &point);
+    ////void sigCreateFileTableViewContextMenu(QWidget *pMenuRequester, const QPoint &point);
 
 public:
 
-    UIVisoBrowserBase(QWidget *pParent = 0);
+    UIVisoBrowserBase(UIActionPool *pActionPool, QWidget *pParent = 0);
     ~UIVisoBrowserBase();
     virtual void showHideHiddenObjects(bool bShow) = 0;
     virtual bool tableViewHasSelection() const = 0;
@@ -82,10 +84,8 @@ protected:
 
     QGridLayout        *m_pMainLayout;
     QIToolBar          *m_pToolBar;
-
+    QPointer<UIActionPool> m_pActionPool;
 protected slots:
-
-    void sltFileTableViewContextMenu(const QPoint &point);
 
 private slots:
 

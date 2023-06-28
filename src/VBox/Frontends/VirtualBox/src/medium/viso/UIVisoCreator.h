@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100180 2023-06-15 14:57:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -115,7 +115,6 @@ private slots:
     void sltBrowserTreeViewVisibilityChanged(bool fVisible);
     void sltHostBrowserTableSelectionChanged(QStringList pathList);
     void sltContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);
-    void sltShowContextMenu(const QWidget *pContextMenuRequester, const QPoint &point);
     void sltOpenAction();
     void sltISOImportAction();
 
@@ -140,10 +139,6 @@ private:
     /** @name These actions are addded to vertical toolbar, context menus, and the main menu.
       * @{ */
         QAction              *m_pAddAction;
-        QAction              *m_pRemoveAction;
-        QAction              *m_pCreateNewDirectoryAction;
-        QAction              *m_pRenameAction;
-        QAction              *m_pResetAction;
         QAction              *m_pOpenAction;
         QAction              *m_pImportISOAction;
     /** @} */

@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 100297 2023-06-27 10:56:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -51,7 +51,7 @@ signals:
 
 public:
 
-    UIVisoHostBrowser(QWidget *pParent = 0);
+    UIVisoHostBrowser(UIActionPool *pActionPool, QWidget *pParent = 0);
     ~UIVisoHostBrowser();
     virtual void showHideHiddenObjects(bool bShow) final override;
     QString      currentPath() const;
@@ -74,6 +74,7 @@ protected:
 private slots:
 
     void sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void sltShowContextMenu(const QPoint &point);
 
 private:
 
