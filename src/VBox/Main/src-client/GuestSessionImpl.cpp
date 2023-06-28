@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 99782 2023-05-12 14:53:20Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 100325 2023-06-28 14:42:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3378,7 +3378,7 @@ int GuestSession::i_sendMessage(uint32_t uMessage, uint32_t uParms, PVBOXHGCMSVC
 
     /* Forward the information to the VMM device. */
     VMMDev *pVMMDev = pConsole->i_getVMMDev();
-    AssertPtr(pVMMDev);
+    AssertPtrReturn(pVMMDev, VERR_STATE_CHANGED);
 
     LogFlowThisFunc(("uMessage=%RU32 (%s), uParms=%RU32\n", uMessage, GstCtrlHostMsgtoStr((guestControl::eHostMsg)uMessage), uParms));
 
