@@ -1,4 +1,4 @@
-/* $Id: vboxfs_mount.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vboxfs_mount.c 100317 2023-06-28 10:34:21Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -46,13 +46,15 @@
 #include <sys/vfs.h>
 #include <sys/mount.h>
 
+#include <iprt/param.h> /* For PAGE_SIZE */
+
 #include "vboxfs.h"
 
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-static char g_achOptBuf[MAX_MNTOPT_STR] = { '\0', };
+static char g_achOptBuf[PAGE_SIZE] = { '\0', };
 static const int g_RetErr = 33;
 static const int g_RetMagic = 2;
 static const int g_RetOK = 0;

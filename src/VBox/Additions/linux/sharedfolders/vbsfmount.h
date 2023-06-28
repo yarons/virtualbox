@@ -1,4 +1,4 @@
-/* $Id: vbsfmount.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsfmount.h 100317 2023-06-28 10:34:21Z alexander.eichner@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, mount(2) parameter structure.
  */
@@ -34,8 +34,6 @@
 # pragma once
 #endif
 
-/* Linux constrains the size of data mount argument to PAGE_SIZE - 1. */
-#define MAX_MNTOPT_STR          PAGE_SIZE
 #define MAX_HOST_NAME           256
 #define MAX_NLS_NAME            32
 #define VBSF_DEFAULT_TTL_MS     200
