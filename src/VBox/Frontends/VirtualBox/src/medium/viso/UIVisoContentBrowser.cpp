@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100322 2023-06-28 11:54:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -43,6 +43,7 @@
 #include "UIVisoContentBrowser.h"
 
 /* iprt includes: */
+#include <iprt/assert.h>
 #include <iprt/path.h>
 #include <iprt/vfs.h>
 #include <iprt/file.h>
