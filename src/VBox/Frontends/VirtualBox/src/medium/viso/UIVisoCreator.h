@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100333 2023-06-29 17:15:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -89,6 +89,7 @@ public:
                         bool fShowToolBar, const QString& strMachineName = QString());
     /** Returns the content of the .viso file. Each element of the list corresponds to a line in the .viso file. */
     QStringList       entryList() const;
+    QString           importedISOPath() const;
     const QString    &visoName() const;
     /** Returns custom ISO options (if any). */
     const QStringList &customOptions() const;
@@ -173,6 +174,7 @@ public:
 
     QStringList  entryList() const;
     QString visoName() const;
+    QString importedISOPath() const;
     QStringList customOptions() const;
     QString currentPath() const;
     void    setCurrentPath(const QString &strPath);

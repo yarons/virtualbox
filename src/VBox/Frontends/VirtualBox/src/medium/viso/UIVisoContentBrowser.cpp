@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100330 2023-06-29 11:15:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100333 2023-06-29 17:15:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -281,6 +281,10 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
     }
     QList<ISOFileObject> objectList = openAndReadISODir(strISOFilePath, strDirPath);
 
+    /* Update import ISO path and effectively add it to VISO file content if ISO reading has succeeds: */
+    if (!objectList.isEmpty())
+        setImportedISOPath(strISOFilePath);
+
     for (int i = 0; i < objectList.size(); ++i)
     {
         if (objectList[i].strName == "." || objectList[i].strName == "..")
@@ -303,7 +307,7 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
         //     pAddedItem->setTargetPath(fileInfo.symLinkTarget());
         //     pAddedItem->setIsSymLinkToADirectory(QFileInfo(fileInfo.symLinkTarget()).isDir());
         // }
-        createVisoEntry(pAddedItem);
+        //createVisoEntry(pAddedItem);
     }
     if (m_pTableProxyModel)
         m_pTableProxyModel->invalidate();
@@ -592,6 +596,18 @@ void UIVisoContentBrowser::prepareMainMenu(QMenu *pMenu)
     pMenu->addAction(m_pRenameAction);
     pMenu->addAction(m_pCreateNewDirectoryAction);
     pMenu->addAction(m_pResetAction);
+}
+
+const QString &UIVisoContentBrowser::importedISOPath() const
+{
+    return m_strImportedISOPath;
+}
+
+void UIVisoContentBrowser::setImportedISOPath(const QString &strPath)
+{
+    if (m_strImportedISOPath == strPath)
+        return;
+    m_strImportedISOPath = strPath;
 }
 
 void UIVisoContentBrowser::prepareConnections()
