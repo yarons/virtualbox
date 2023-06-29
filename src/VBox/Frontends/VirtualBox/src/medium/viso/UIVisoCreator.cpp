@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -662,8 +662,6 @@ QUuid UIVisoCreatorDialog::createViso(UIActionPool *pActionPool, QWidget *pParen
             return QUuid();
         }
 
-        gEDataManager->setVISOCreatorRecentFolder(pVisoCreator->currentPath());
-
         QFile file(pVisoCreator->visoFileFullPath());
         if (file.open(QFile::WriteOnly | QFile::Truncate))
         {
@@ -683,6 +681,8 @@ QUuid UIVisoCreatorDialog::createViso(UIActionPool *pActionPool, QWidget *pParen
             file.close();
         }
     } // if (pVisoCreator->exec(false /* not application modal */))
+    gEDataManager->setVISOCreatorRecentFolder(pVisoCreator->currentPath());
+
     delete pVisoCreator;
     return QUuid();
 }

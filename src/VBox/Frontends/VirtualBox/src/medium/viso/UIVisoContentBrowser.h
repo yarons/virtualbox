@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100323 2023-06-28 12:23:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -141,10 +141,6 @@ private:
     QAction                      *m_pCreateNewDirectoryAction;
     QAction                      *m_pRenameAction;
     QAction                      *m_pResetAction;
-    QAction                      *m_pGoHome;
-    QAction                      *m_pGoUp;
-    QAction                      *m_pGoForward;
-    QAction                      *m_pGoBackward;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoContentBrowser_h */

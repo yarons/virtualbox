@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -81,11 +81,21 @@ protected:
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     void updateNavigationWidgetPath(const QString &strPath);
     void setFileTableLabelText(const QString &strText);
+    void enableForwardBackwardActions();
 
     QGridLayout        *m_pMainLayout;
     QIToolBar          *m_pToolBar;
     QPointer<UIActionPool> m_pActionPool;
+    QAction             *m_pGoHome;
+    QAction             *m_pGoUp;
+    QAction             *m_pGoForward;
+    QAction             *m_pGoBackward;
+
+
 protected slots:
+
+    void sltGoForward();
+    void sltGoBackward();
 
 private slots:
 

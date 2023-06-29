@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 100320 2023-06-28 10:47:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -75,11 +75,15 @@ private slots:
 
     void sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void sltShowContextMenu(const QPoint &point);
+    void sltGoHome();
+    void sltGoUp();
 
 private:
 
     void prepareObjects();
     void prepareConnections();
+    void prepareToolBar();
+    bool isRoot() const;
     QModelIndex currentRootIndex() const;
     /** We have two file system models (one for each item view) since we set different filters on each of these models. */
     UIVisoHostBrowserModel *m_pModel;
