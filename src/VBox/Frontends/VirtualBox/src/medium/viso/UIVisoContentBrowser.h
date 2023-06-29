@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100330 2023-06-29 11:15:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -84,6 +84,7 @@ public slots:
     void sltRemoveItems();
     void sltResetAction();
     void sltItemRenameAction();
+    void sltGoUp();
 
 protected:
 
@@ -106,6 +107,8 @@ private:
     void                    prepareToolBar();
     void                    initializeModel();
     UICustomFileSystemItem *rootItem();
+    /* Child of root. */
+    UICustomFileSystemItem *startItem();
 
     /** @name Index conversion functions. These are half-smart and tries to determine the source model before conversion.
       * @{ */
@@ -127,6 +130,8 @@ private:
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
     QList<UICustomFileSystemItem*> tableSelectedItems();
+    bool                           onStartItem();
+    void                           goUp();
     UIVisoContentTableView       *m_pTableView;
     UICustomFileSystemModel      *m_pModel;
     UICustomFileSystemProxyModel *m_pTableProxyModel;
