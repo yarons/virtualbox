@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 100317 2023-06-28 10:34:21Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxServiceAutoMount.cpp 100331 2023-06-29 12:11:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -394,7 +394,7 @@ static int vbsvcAutoMountSharedFolderOld(const char *pszShareName, const char *p
 
 # ifdef RT_OS_SOLARIS
         int const fFlags = MS_OPTIONSTR;
-        RTStrPrintf(pszOptBuf, sizeof(szOptBuf), "uid=0,gid=%d,dmode=0770,fmode=0770,dmask=0000,fmask=0000", grp_vboxsf->gr_gid);
+        RTStrPrintf(pszOpts, cbOpts, "uid=0,gid=%d,dmode=0770,fmode=0770,dmask=0000,fmask=0000", grp_vboxsf->gr_gid);
         int r = mount(pszShareName,
                       pszMountPoint,
                       fFlags,
