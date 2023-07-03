@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100333 2023-06-29 17:15:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100348 2023-07-03 14:03:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -55,6 +55,7 @@ class UIVisoContentBrowser : public UIVisoBrowserBase
 signals:
 
     void sigTableSelectionChanged(bool fIsSelectionEmpty);
+    void sigISOContentImportedOrRemoved(bool fImportedr);
 
 public:
 
@@ -64,6 +65,7 @@ public:
     void importISOContentToViso(const QString &strISOFilePath,
                                 UICustomFileSystemItem *pParentItem = 0,
                                 const QString &strDirPath = QString());
+    void removeISOContentFromViso();
     /** Adds file objests from the host file system. @p pathList consists of list of paths to there objects. */
     void addObjectsToViso(const QStringList &pathList);
     /** Returns the content of the VISO as a string list. Each element of the list becomes a line in the
@@ -76,7 +78,7 @@ public:
     void prepareMainMenu(QMenu *pMenu);
 
     const QString &importedISOPath() const;
-    void setImportedISOPath(const QString &strPath);
+    void setImportedISOPath(const QString &strPath = QString());
 
 public slots:
 
