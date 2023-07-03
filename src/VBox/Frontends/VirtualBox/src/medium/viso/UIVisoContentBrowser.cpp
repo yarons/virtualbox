@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100333 2023-06-29 17:15:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100345 2023-07-03 11:06:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -374,6 +374,8 @@ QStringList UIVisoContentBrowser::entryList()
     QStringList entryList;
     for (QMap<QString, QString>::const_iterator iterator = m_entryMap.begin(); iterator != m_entryMap.end(); ++iterator)
     {
+        if (iterator.value().isEmpty())
+            continue;
         QString strEntry = QString("%1=%2").arg(iterator.key()).arg(iterator.value());
         entryList << strEntry;
     }
