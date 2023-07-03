@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -759,7 +759,11 @@ void UIVMActivityOverviewTableView::selectionChanged(const QItemSelection &selec
 
 void UIVMActivityOverviewTableView::mousePressEvent(QMouseEvent *pEvent)
 {
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
     if (!indexAt(pEvent->pos()).isValid())
+#else
+    if (!indexAt(pEvent->position().toPoint()).isValid())
+#endif
         clearSelection();
     QTableView::mousePressEvent(pEvent);
 }

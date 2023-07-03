@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -719,11 +719,6 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                 case QEvent::MouseButtonDblClick:
                 {
                     QMouseEvent *pMouseEvent = static_cast<QMouseEvent*>(pEvent);
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
-                    const QPoint gPos = pMouseEvent->globalPos();
-#else
-                    const QPoint gPos = pMouseEvent->globalPosition().toPoint();
-#endif
 #ifdef VBOX_WS_NIX
                     /* When the keyboard is captured, we also capture mouse button
                      * events, and release the keyboard and re-capture it delayed
@@ -740,9 +735,15 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                     if (pEvent->type() != QEvent::MouseMove)
                         m_iLastMouseWheelDelta = 0;
 
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
                     if (mouseEvent(pMouseEvent->type(), uScreenId,
-                                   pMouseEvent->pos(), gPos,
+                                   pMouseEvent->pos(), pMouseEvent->globalPos(),
                                    pMouseEvent->buttons(), 0, Qt::Horizontal))
+#else
+                    if (mouseEvent(pMouseEvent->type(), uScreenId,
+                                   pMouseEvent->position().toPoint(), pMouseEvent->globalPosition().toPoint(),
+                                   pMouseEvent->buttons(), 0, Qt::Horizontal))
+#endif
                         return true;
                     break;
                 }
@@ -1252,7 +1253,11 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
         if (fTouchScreen)
         {
             /* Get absolute touch-point origin: */
+#ifndef VBOX_IS_QT6_OR_LATER /* QEventPoint::pos was replaced with QEventPoint::position in Qt6 */
             QPoint currentTouchPoint = touchPoint.pos().toPoint();
+#else
+            QPoint currentTouchPoint = touchPoint.position().toPoint();
+#endif
 
             /* Pass absolute touch-point data: */
             LogRelFlow(("UIMouseHandler::multiTouchEvent: TouchScreen, Origin: %dx%d, Id: %d, State: %d\n",

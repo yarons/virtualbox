@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -680,7 +680,11 @@ void UIHelpViewer::mouseReleaseEvent(QMouseEvent *pEvent)
     clearOverlay();
     if (fOverlayMode)
         return;
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
     QString strAnchor = anchorAt(pEvent->pos());
+#else
+    QString strAnchor = anchorAt(pEvent->position().toPoint());
+#endif
 
     if (!strAnchor.isEmpty())
     {

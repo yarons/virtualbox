@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 99948 2023-05-24 08:11:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2837,7 +2837,12 @@ void UISoftKeyboardWidget::setInitialSize(int iWidth, int iHeight)
 
 UISoftKeyboardKey *UISoftKeyboardWidget::keyUnderMouse(QMouseEvent *pEvent)
 {
-    QPoint eventPosition(pEvent->pos().x() / m_fScaleFactorX, pEvent->pos().y() / m_fScaleFactorY);
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
+    const QPoint lPos = pEvent->pos();
+#else
+    const QPoint lPos = pEvent->position().toPoint();
+#endif
+    QPoint eventPosition(lPos.x() / m_fScaleFactorX, lPos.y() / m_fScaleFactorY);
     if (m_fHideMultimediaKeys)
         eventPosition.setY(eventPosition.y() + m_multiMediaKeysLayout.totalHeight());
     return keyUnderMouse(eventPosition);

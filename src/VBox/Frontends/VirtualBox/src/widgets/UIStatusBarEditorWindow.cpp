@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIStatusBarEditorWindow.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -652,13 +652,17 @@ void UIStatusBarEditorWidget::dragMoveEvent(QDragMoveEvent *pEvent)
     m_fDropAfterTokenButton = true;
 
     /* Get event position: */
-    const QPoint pos = pEvent->pos();
+#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
+    const QPoint lPos = pEvent->pos();
+#else
+    const QPoint lPos = pEvent->position().toPoint();
+#endif
     /* Search for most suitable button: */
     foreach (const IndicatorType &enmType, m_order)
     {
         m_pButtonDropToken = m_buttons.value(enmType);
         const QRect geo = m_pButtonDropToken->geometry();
-        if (pos.x() < geo.center().x())
+        if (lPos.x() < geo.center().x())
         {
             m_fDropAfterTokenButton = false;
             break;
