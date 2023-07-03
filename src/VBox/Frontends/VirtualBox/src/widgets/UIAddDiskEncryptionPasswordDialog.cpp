@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 100347 2023-07-03 13:09:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -442,7 +442,7 @@ void UIEncryptionDataTable::prepare()
             /* Register UIPasswordEditor as the QString editor: */
             QStandardItemEditorCreator<UIPasswordEditor> *pQStringItemEditorCreator = new QStandardItemEditorCreator<UIPasswordEditor>();
             if (pQStringItemEditorCreator)
-            m_pItemEditorFactory->registerEditor(QVariant::String, pQStringItemEditorCreator);
+            m_pItemEditorFactory->registerEditor(QMetaType::QString, pQStringItemEditorCreator);
 
             /* Assign configured item editor factory to table delegate: */
             pStyledItemDelegate->setItemEditorFactory(m_pItemEditorFactory);

@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 98700 2023-02-23 10:13:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDHandler.h 100347 2023-07-03 13:09:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -89,7 +89,7 @@ public:
 
     /* Data access. */
     int                        retrieveData(Qt::DropAction dropAction, const QString &strMIMEType, QVector<uint8_t> &vecData);
-    int                        retrieveData(Qt::DropAction dropAction, const QString &strMIMEType, QVariant::Type vaType, QVariant &vaData);
+    int                        retrieveData(Qt::DropAction dropAction, const QString &strMIMEType, QMetaType::Type vaType, QVariant &vaData);
 
 public:
 
@@ -111,7 +111,7 @@ public slots:
      * @param vaType                Qt's variant type of the MIME data.
      * @param vaData                Reference to QVariant where to store the retrieved data.
      */
-    int                        sltGetData(Qt::DropAction dropAction, const QString &strMIMEType, QVariant::Type vaType, QVariant &vaData);
+    int                        sltGetData(Qt::DropAction dropAction, const QString &strMIMEType, QMetaType::Type vaType, QVariant &vaData);
 
 protected:
 
