@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 100352 2023-07-03 15:05:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4679,8 +4679,12 @@ QFont UIExtraDataManager::logViewerFont()
     int iFontSize = data[2].toInt(&fOk);
     if (!fOk)
         iFontSize = 9;
+#ifndef VBOX_IS_QT6_OR_LATER /* QFontDatabase is now more like a namespace .. */
     QFontDatabase dataBase;
     return dataBase.font(strFamily, strStyleName, iFontSize);
+#else
+    return QFontDatabase::font(strFamily, strStyleName, iFontSize);
+#endif
 }
 
 void UIExtraDataManager::setLogViewerVisiblePanels(const QStringList &panelNameList)
