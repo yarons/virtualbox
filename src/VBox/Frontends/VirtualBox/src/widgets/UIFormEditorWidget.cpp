@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 99664 2023-05-08 10:48:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.cpp 100346 2023-07-03 11:22:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -1749,22 +1749,22 @@ void UIFormEditorWidget::prepare()
                         /* Register TextEditor as the TextData editor: */
                         int iTextId = qRegisterMetaType<TextData>();
                         QStandardItemEditorCreator<TextEditor> *pTextEditorItemCreator = new QStandardItemEditorCreator<TextEditor>();
-                        m_pItemEditorFactory->registerEditor((QVariant::Type)iTextId, pTextEditorItemCreator);
+                        m_pItemEditorFactory->registerEditor(iTextId, pTextEditorItemCreator);
 
                         /* Register ChoiceEditor as the ChoiceData editor: */
                         int iChoiceId = qRegisterMetaType<ChoiceData>();
                         QStandardItemEditorCreator<ChoiceEditor> *pChoiceEditorItemCreator = new QStandardItemEditorCreator<ChoiceEditor>();
-                        m_pItemEditorFactory->registerEditor((QVariant::Type)iChoiceId, pChoiceEditorItemCreator);
+                        m_pItemEditorFactory->registerEditor(iChoiceId, pChoiceEditorItemCreator);
 
                         /* Register RangedIntegerEditor as the RangedIntegerData editor: */
                         int iRangedIntegerId = qRegisterMetaType<RangedIntegerData>();
                         QStandardItemEditorCreator<RangedIntegerEditor> *pRangedIntegerEditorItemCreator = new QStandardItemEditorCreator<RangedIntegerEditor>();
-                        m_pItemEditorFactory->registerEditor((QVariant::Type)iRangedIntegerId, pRangedIntegerEditorItemCreator);
+                        m_pItemEditorFactory->registerEditor(iRangedIntegerId, pRangedIntegerEditorItemCreator);
 
                         /* Register RangedInteger64Editor as the RangedInteger64Data editor: */
                         int iRangedInteger64Id = qRegisterMetaType<RangedInteger64Data>();
                         QStandardItemEditorCreator<RangedInteger64Editor> *pRangedInteger64EditorItemCreator = new QStandardItemEditorCreator<RangedInteger64Editor>();
-                        m_pItemEditorFactory->registerEditor((QVariant::Type)iRangedInteger64Id, pRangedInteger64EditorItemCreator);
+                        m_pItemEditorFactory->registerEditor(iRangedInteger64Id, pRangedInteger64EditorItemCreator);
 
                         /* Set newly created item editor factory for table delegate: */
                         pStyledItemDelegate->setItemEditorFactory(m_pItemEditorFactory);

@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 100346 2023-07-03 11:22:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -793,12 +793,12 @@ void UIShortcutConfigurationTable::prepare()
             /* Register UIHotKeyEditor as the UIHotKey editor: */
             int iHotKeyTypeId = qRegisterMetaType<UIHotKey>();
             QStandardItemEditorCreator<UIHotKeyEditor> *pHotKeyItemEditorCreator = new QStandardItemEditorCreator<UIHotKeyEditor>();
-            m_pItemEditorFactory->registerEditor((QVariant::Type)iHotKeyTypeId, pHotKeyItemEditorCreator);
+            m_pItemEditorFactory->registerEditor(iHotKeyTypeId, pHotKeyItemEditorCreator);
 
             /* Register UIHostComboEditor as the UIHostComboWrapper editor: */
             int iHostComboTypeId = qRegisterMetaType<UIHostComboWrapper>();
             QStandardItemEditorCreator<UIHostComboEditor> *pHostComboItemEditorCreator = new QStandardItemEditorCreator<UIHostComboEditor>();
-            m_pItemEditorFactory->registerEditor((QVariant::Type)iHostComboTypeId, pHostComboItemEditorCreator);
+            m_pItemEditorFactory->registerEditor(iHostComboTypeId, pHostComboItemEditorCreator);
 
             /* Assign configured item editor factory to item delegate: */
             pStyledItemDelegate->setItemEditorFactory(m_pItemEditorFactory);
