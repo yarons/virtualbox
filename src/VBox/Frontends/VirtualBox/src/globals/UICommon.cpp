@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 100094 2023-06-07 13:30:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 100349 2023-07-03 14:58:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2742,7 +2742,7 @@ bool UICommon::eventFilter(QObject *pObject, QEvent *pEvent)
 
     if (   pEvent->type() == QEvent::LanguageChange
         && pObject->isWidgetType()
-        && static_cast<QWidget*>(pObject)->isTopLevel())
+        && qobject_cast<QWidget*>(pObject)->isWindow())
     {
         /* Catch the language change event before any other widget gets it in
          * order to invalidate cached string resources (like the details view
