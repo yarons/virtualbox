@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 100267 2023-06-23 14:57:53Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuestR0LibInternal.h 100360 2023-07-04 07:09:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -151,9 +151,8 @@ typedef struct VBGLDATA
     int32_t                 cFreeBlocks;
     /** Head of the chunk list. */
     VBGLPHYSHEAPCHUNK      *pChunkHead;
-    /** Flag whether all allocations should be below 4GiB to fit into
-     * a 32-bit address. */
-    bool                   fAlloc32BitAddr;
+    /** Maximum physical address allowed for allocations, inclusive. */
+    RTHCPHYS                HCPhysMax;
     /** @} */
 
     /**
