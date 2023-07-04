@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 100355 2023-07-04 06:37:35Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv-os2.cpp 100356 2023-07-04 06:41:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -217,11 +217,9 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest,
-                                          bool fExecutable, const char *pszTag)
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
 {
     NOREF(fExecutable);
-    AssertMsgReturn(PhysHighest >= _16M - 1, ("PhysHigest=%RHp\n", PhysHighest), VERR_NOT_SUPPORTED);
 
     /* create the object. */
     PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_UOFFSETOF(RTR0MEMOBJOS2, Lock), RTR0MEMOBJTYPE_CONT,
@@ -230,8 +228,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
     {
         /* do the allocation. */
         ULONG ulPhys = ~0UL;
-        int rc = KernVMAlloc(cb, VMDHA_FIXED | VMDHA_CONTIG | (PhysHighest < _4G - 1 ? VMDHA_16M : 0),
-                             &pMemOs2->Core.pv, (PPVOID)&ulPhys, NULL);
+        int rc = KernVMAlloc(cb, VMDHA_FIXED | VMDHA_CONTIG, &pMemOs2->Core.pv, (PPVOID)&ulPhys, NULL);
         if (!rc)
         {
             Assert(ulPhys != ~0UL);
@@ -250,7 +247,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment,
                                           const char *pszTag)
 {
-    AssertMsgReturn(PhysHighest >= _16M - 1, ("PhysHigest=%RHp\n", PhysHighest), VERR_NOT_SUPPORTED);
+    AssertMsgReturn(PhysHighest >= 16 *_1M, ("PhysHigest=%RHp\n", PhysHighest), VERR_NOT_SUPPORTED);
 
     /** @todo alignment  */
     if (uAlignment != PAGE_SIZE)
@@ -263,7 +260,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
     {
         /* do the allocation. */
         ULONG ulPhys = ~0UL;
-        int rc = KernVMAlloc(cb, VMDHA_FIXED | VMDHA_CONTIG | (PhysHighest < _4G - 1 ? VMDHA_16M : 0),
+        int rc = KernVMAlloc(cb, VMDHA_FIXED | VMDHA_CONTIG | (PhysHighest < _4G ? VMDHA_16M : 0),
                              &pMemOs2->Core.pv, (PPVOID)&ulPhys, NULL);
         if (!rc)
         {
