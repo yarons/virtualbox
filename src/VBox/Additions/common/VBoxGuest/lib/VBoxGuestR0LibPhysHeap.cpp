@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibPhysHeap.cpp 100360 2023-07-04 07:09:24Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuestR0LibPhysHeap.cpp 100361 2023-07-04 07:21:45Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestLibR0 - Physical memory heap.
  */
@@ -244,10 +244,6 @@ struct VBGLPHYSHEAPCHUNK
 };
 #if ARCH_BITS == 64
 AssertCompileSize(VBGLPHYSHEAPCHUNK, 64);
-#elif ARCH_BITS == 32
-AssertCompileSize(VBGLPHYSHEAPCHUNK, 32);
-#else
-# error "Unknown architecture!"
 #endif
 
 
