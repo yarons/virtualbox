@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNodeMachine.cpp 100365 2023-07-04 10:46:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -241,7 +241,7 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iSea
         else
         {
 #ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is available since 6.0 */
-            QRegularExpression searchRegEx = QRegularExpression::fromWildcard(strSearchTerm, Qt::CaseInsensitive);
+            QRegularExpression searchRegEx = QRegularExpression::fromWildcard(strSearchTerm, Qt::CaseInsensitive, QRegularExpression::UnanchoredWildcardConversion);
 #else
             QRegExp searchRegEx(strSearchTerm, Qt::CaseInsensitive, QRegExp::WildcardUnix);
 #endif
