@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100368 2023-07-04 16:26:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -392,7 +392,6 @@ static DECLCALLBACK(void) shClSvcX11OnTransferInitCallback(PSHCLTRANSFERCALLBACK
 {
     RT_NOREF(pCbCtx);
 
-#if 1
     LogFlowFuncEnter();
 
     PSHCLCONTEXT pCtx = (PSHCLCONTEXT)pCbCtx->pvUser;

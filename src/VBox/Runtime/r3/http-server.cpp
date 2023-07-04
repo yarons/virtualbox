@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: http-server.cpp 100368 2023-07-04 16:26:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -723,7 +723,7 @@ static DECLCALLBACK(int) rtHttpServerHandleGET(PRTHTTPSERVERCLIENT pClient, PRTH
 
     RTHTTPSTATUS enmStsResponse = RTHTTPSTATUS_OK;
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     RTHTTPSERVER_HANDLE_CALLBACK_VA(pfnQueryInfo, pReq, &fsObj, &pszMIMEHint);
     if (RT_FAILURE(rc))
