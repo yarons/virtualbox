@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-provider-local.cpp 100265 2023-06-23 13:50:43Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-provider-local.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Transfers interface implementation for local file systems.
  */
@@ -903,7 +903,7 @@ static DECLCALLBACK(int) shclTransferIfaceLocalObjWrite(PSHCLTXPROVIDERCTX pCtx,
  * @returns Interface pointer assigned to the provider.
  * @param   pProvider           Provider to assign interface to.
  */
-PSHCLTXPROVIDERIFACE VBClTransferProviderLocalQueryInterface(PSHCLTXPROVIDER pProvider)
+PSHCLTXPROVIDERIFACE ShClTransferProviderLocalQueryInterface(PSHCLTXPROVIDER pProvider)
 {
     pProvider->Interface.pfnRootListRead   = shclTransferIfaceLocalRootListRead;
     pProvider->Interface.pfnListOpen       = shclTransferIfaceLocalListOpen;

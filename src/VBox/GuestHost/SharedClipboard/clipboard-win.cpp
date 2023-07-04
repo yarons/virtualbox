@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100206 2023-06-19 12:22:15Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1068,9 +1068,6 @@ int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx, PSHCLC
                 rc = pObj->Init(pCtx);
                 if (RT_SUCCESS(rc))
                 {
-                    if (RT_SUCCESS(rc))
-                        pObj->SetCallbacks(pCallbacks);
-
                     if (RT_SUCCESS(rc))
                         pWinCtx->pDataObjInFlight = pObj;
                 }
