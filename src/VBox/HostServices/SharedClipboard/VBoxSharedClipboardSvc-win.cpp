@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 100369 2023-07-04 16:33:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -165,7 +165,7 @@ static int vboxClipboardSvcWinReadDataFromGuestWorker(PSHCLCONTEXT pCtx, SHCLFOR
 {
     LogFlowFunc(("uFmt=%#x\n", uFmt));
 
-    int rc = ShClSvcReadDataFromGuest(pCtx->pClient, uFmt, &pEvent);
+    int rc = ShClSvcReadDataFromGuest(pCtx->pClient, uFmt, ppvData, pcbData);
     if (RT_FAILURE(rc))
         LogRel(("Shared Clipboard: Reading guest clipboard data for Windows host failed with %Rrc\n", rc));
 
