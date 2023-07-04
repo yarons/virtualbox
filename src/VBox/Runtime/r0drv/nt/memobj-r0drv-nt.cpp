@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-nt.cpp 100355 2023-07-04 06:37:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -564,7 +564,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
     /*
      * Fall back on contiguous memory...
      */
-    return rtR0MemObjNativeAllocCont(ppMem, cb, fExecutable, pszTag);
+    return rtR0MemObjNativeAllocCont(ppMem, cb, _4G - 1, fExecutable, pszTag);
 }
 
 
@@ -635,9 +635,10 @@ static int rtR0MemObjNativeAllocContEx(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bo
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest,
+                                          bool fExecutable, const char *pszTag)
 {
-    return rtR0MemObjNativeAllocContEx(ppMem, cb, fExecutable, _4G-1, PAGE_SIZE /* alignment */, pszTag);
+    return rtR0MemObjNativeAllocContEx(ppMem, cb, fExecutable, PhysHighest, PAGE_SIZE /* alignment */, pszTag);
 }
 
 

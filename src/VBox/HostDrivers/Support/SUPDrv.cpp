@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 99421 2023-04-17 14:38:06Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv.cpp 100355 2023-07-04 06:37:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -453,7 +453,7 @@ static SUPFUNC g_aFunctions[] =
     SUPEXP_STK_BACK(    3,  RTR0MemKernelCopyTo),
     SUPEXP_STK_OKAY(    1,  RTR0MemObjAddress),
     SUPEXP_STK_OKAY(    1,  RTR0MemObjAddressR3),
-    SUPEXP_STK_BACK(    4,  RTR0MemObjAllocContTag),
+    SUPEXP_STK_BACK(    5,  RTR0MemObjAllocContTag),
     SUPEXP_STK_BACK(    5,  RTR0MemObjAllocLargeTag),
     SUPEXP_STK_BACK(    4,  RTR0MemObjAllocLowTag),
     SUPEXP_STK_BACK(    4,  RTR0MemObjAllocPageTag),

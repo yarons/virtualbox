@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-haiku.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-haiku.c 100355 2023-07-04 06:37:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Haiku.
  */
@@ -276,9 +276,9 @@ int rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecut
 }
 
 
-int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
+int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, bool fExecutable, const char *pszTag)
 {
-    return rtR0MemObjNativeAllocArea(ppMem, cb, fExecutable, RTR0MEMOBJTYPE_CONT, 0 /* PhysHighest */, 0 /* uAlignment */, pszTag);
+    return rtR0MemObjNativeAllocArea(ppMem, cb, fExecutable, RTR0MEMOBJTYPE_CONT, PhysHighest, 0 /* uAlignment */, pszTag);
 }
 
 int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment, const char *pszTag)
