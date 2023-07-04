@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 100359 2023-07-04 07:07:15Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -730,7 +730,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
                                           bool fExecutable, const char *pszTag)
 {
     AssertReturn(!fExecutable, VERR_NOT_SUPPORTED);
-    return rtR0MemObjNativeAllocPhys(ppMem, cb, PhysHigest, PAGE_SIZE /* alignment */, pszTag);
+    return rtR0MemObjNativeAllocPhys(ppMem, cb, PhysHighest, PAGE_SIZE /* alignment */, pszTag);
 }
 
 
