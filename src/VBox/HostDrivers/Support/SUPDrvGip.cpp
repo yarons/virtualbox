@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvGip.cpp 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -2024,7 +2024,7 @@ int VBOXCALL supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
     cbGipCpuGroups = 0;
 #endif
     cbGip = RT_UOFFSETOF_DYN(SUPGLOBALINFOPAGE, aCPUs[cCpus]) + cbGipCpuGroups;
-    rc = RTR0MemObjAllocCont(&pDevExt->GipMemObj, cbGip, false /*fExecutable*/);
+    rc = RTR0MemObjAllocCont(&pDevExt->GipMemObj, cbGip, NIL_RTHCPHYS /*PhysHighest*/, false /*fExecutable*/);
     if (RT_FAILURE(rc))
     {
         OSDBGPRINT(("supdrvGipCreate: failed to allocate the GIP page. rc=%d\n", rc));

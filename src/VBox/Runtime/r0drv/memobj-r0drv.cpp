@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 100356 2023-07-04 06:41:38Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv.cpp 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -473,7 +473,7 @@ RTR0DECL(int) RTR0MemObjAllocLowTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecut
 RT_EXPORT_SYMBOL(RTR0MemObjAllocLowTag);
 
 
-RTR0DECL(int) RTR0MemObjAllocContTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecutable, const char *pszTag)
+RTR0DECL(int) RTR0MemObjAllocContTag(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS PhysHighest, bool fExecutable, const char *pszTag)
 {
     /* sanity checks. */
     const size_t cbAligned = RT_ALIGN_Z(cb, PAGE_SIZE);
@@ -481,10 +481,11 @@ RTR0DECL(int) RTR0MemObjAllocContTag(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecu
     *pMemObj = NIL_RTR0MEMOBJ;
     AssertReturn(cb > 0, VERR_INVALID_PARAMETER);
     AssertReturn(cb <= cbAligned, VERR_INVALID_PARAMETER);
+    AssertReturn(PhysHighest >= cb, VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
 
     /* do the allocation. */
-    return rtR0MemObjNativeAllocCont(pMemObj, cbAligned, fExecutable, pszTag);
+    return rtR0MemObjNativeAllocCont(pMemObj, cbAligned, PhysHighest, fExecutable, pszTag);
 }
 RT_EXPORT_SYMBOL(RTR0MemObjAllocContTag);
 

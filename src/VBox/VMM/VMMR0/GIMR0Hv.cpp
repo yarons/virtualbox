@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GIMR0Hv.cpp 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -59,7 +59,7 @@ static int gimR0HvPageAllocZ(PRTR0MEMOBJ pMemObj, PRTR0PTR ppVirt, PRTHCPHYS pHC
     AssertPtr(ppVirt);
     AssertPtr(pHCPhys);
 
-    int rc = RTR0MemObjAllocCont(pMemObj, HOST_PAGE_SIZE, false /* fExecutable */);
+    int rc = RTR0MemObjAllocCont(pMemObj, HOST_PAGE_SIZE, NIL_RTHCPHYS /*PhysHighest*/, false /* fExecutable */);
     if (RT_FAILURE(rc))
         return rc;
     *ppVirt  = RTR0MemObjAddress(*pMemObj);

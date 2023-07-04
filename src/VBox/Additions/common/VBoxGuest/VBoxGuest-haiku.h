@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.h 100356 2023-07-04 06:41:38Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest-haiku.h 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
@@ -149,7 +149,7 @@ struct vboxguest_module_info
     int (*_RTR0Init)(unsigned fReserved);
     void* (*_RTR0MemObjAddress)(RTR0MEMOBJ MemObj);
     RTR3PTR(*_RTR0MemObjAddressR3)(RTR0MEMOBJ MemObj);
-    int (*_RTR0MemObjAllocContTag)(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecutable, const char *pszTag);
+    int (*_RTR0MemObjAllocContTag)(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS PhysHighest, bool fExecutable, const char *pszTag);
     int (*_RTR0MemObjAllocLowTag)(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecutable, const char *pszTag);
     int (*_RTR0MemObjAllocPageTag)(PRTR0MEMOBJ pMemObj, size_t cb, bool fExecutable, const char *pszTag);
     int (*_RTR0MemObjAllocPhysExTag)(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment, const char *pszTag);

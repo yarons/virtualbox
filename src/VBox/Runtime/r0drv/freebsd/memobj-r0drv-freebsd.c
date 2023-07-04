@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 100356 2023-07-04 06:41:38Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv-freebsd.c 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -409,13 +409,14 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
 }
 
 
-DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable, const char *pszTag)
+DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHigest,
+                                          bool fExecutable, const char *pszTag)
 {
     PRTR0MEMOBJFREEBSD pMemFreeBSD = (PRTR0MEMOBJFREEBSD)rtR0MemObjNew(sizeof(*pMemFreeBSD), RTR0MEMOBJTYPE_CONT,
                                                                        NULL, cb, pszTag);
     if (pMemFreeBSD)
     {
-        int rc = rtR0MemObjFreeBSDAllocHelper(pMemFreeBSD, fExecutable, _4G - 1, true /*fContiguous*/, VERR_NO_CONT_MEMORY);
+        int rc = rtR0MemObjFreeBSDAllocHelper(pMemFreeBSD, fExecutable, PhysHigest, true /*fContiguous*/, VERR_NO_CONT_MEMORY);
         if (RT_SUCCESS(rc))
         {
             pMemFreeBSD->Core.u.Cont.Phys = vtophys(pMemFreeBSD->Core.pv);
