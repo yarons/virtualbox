@@ -1,4 +1,4 @@
-/* $Id: x509-core.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: x509-core.cpp 100364 2023-07-04 09:40:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
@@ -779,6 +779,9 @@ static struct
     {   "0.9.2342.19200300.100.1.3",  RT_STR_TUPLE("Mail"),                 "Rfc822Mailbox" },
     {   "0.9.2342.19200300.100.1.25", RT_STR_TUPLE("DC"),                   "DomainComponent" },
     {   "1.2.840.113549.1.9.1",       RT_STR_TUPLE("Email") /*nonstandard*/,"EmailAddress" },
+    {   "1.3.6.1.4.1.311.60.2.1.1",   RT_STR_TUPLE("JdxIncL") /*nonstd*/,   "JdxOfIncLocalityName" },
+    {   "1.3.6.1.4.1.311.60.2.1.2",   RT_STR_TUPLE("JdxIncST") /*nonstd*/,  "JdxOfIncStateOrProvinceName" },
+    {   "1.3.6.1.4.1.311.60.2.1.3",   RT_STR_TUPLE("JdxIncC") /*nonstd*/,   "JdxOfIncCountryName" },
     {   "2.5.4.3",                    RT_STR_TUPLE("CN"),                   "CommonName" },
     {   "2.5.4.4",                    RT_STR_TUPLE("SN"),                   "Surname" },
     {   "2.5.4.5",                    RT_STR_TUPLE("SRN") /*nonstandard*/,  "SerialNumber" },
