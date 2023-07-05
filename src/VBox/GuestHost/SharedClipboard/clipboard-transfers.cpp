@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100373 2023-07-05 08:31:13Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100382 2023-07-05 09:29:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1738,7 +1738,7 @@ int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *psz
     AssertPtrReturn(pszRoots,       VERR_INVALID_POINTER);
     AssertReturn(cbRoots,           VERR_INVALID_PARAMETER);
 
-    LogFlowFunc(("\n%.*Rhxd\n", cbRoots, pszRoots));
+    Log3(("ShClTransferRootsInitFromStringList:\n%.*Rhxd\n", cbRoots, pszRoots));
 
     if (!RTStrIsValidEncoding(pszRoots))
         return VERR_INVALID_UTF8_ENCODING;
