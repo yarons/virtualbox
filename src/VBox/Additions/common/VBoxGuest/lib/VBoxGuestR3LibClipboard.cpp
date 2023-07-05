@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 100381 2023-07-05 09:15:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -2375,8 +2375,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
 
                         default:
                             LogRel(("Shared Clipboard: Received unknown status %#x (%Rrc) for transfer %RU32\n",
-                                    pEvent->u.TransferStatus.Report.rc,
-                                    pEvent->u.TransferStatus.uID));
+                                    transferReport.uStatus, pEvent->u.TransferStatus.Report.rc, pEvent->u.TransferStatus.uID));
                             rc = VERR_NOT_SUPPORTED;
                             break;
                     }

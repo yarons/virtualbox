@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 100378 2023-07-05 09:04:11Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 100381 2023-07-05 09:15:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -278,7 +278,7 @@ static DECLCALLBACK(void) shClSvcWinTransferOnCreatedCallback(PSHCLTRANSFERCALLB
             AssertFailed();
     }
 
-    int rc = ShClTransferSetProvider(pTransfer, &pClient->Transfers.Provider);
+    int rc = ShClTransferSetProvider(pTransfer, &pClient->Transfers.Provider); RT_NOREF(rc);
 
     LogFlowFuncLeaveRC(rc);
 }
