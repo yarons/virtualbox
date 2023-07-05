@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100394 2023-07-05 16:21:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1049,7 +1049,8 @@ int SharedClipboardWinDataWrite(UINT cfFormat, void *pvData, uint32_t cbData)
  *                              Needed for the data object to communicate with the main window thread.
  * @param   pCallbacks          Callbacks table to use.
  */
-int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx, PSHCLCONTEXT pCtx, PSHCLCALLBACKS pCallbacks)
+int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx,
+                                                     PSHCLCONTEXT pCtx, SharedClipboardWinDataObject::PCALLBACKS pCallbacks)
 {
     AssertPtrReturn(pWinCtx, VERR_INVALID_POINTER);
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
@@ -1065,7 +1066,7 @@ int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx, PSHCLC
             SharedClipboardWinDataObject *pObj = new SharedClipboardWinDataObject();
             if (pObj)
             {
-                rc = pObj->Init(pCtx);
+                rc = pObj->Init(pCtx, pCallbacks);
                 if (RT_SUCCESS(rc))
                 {
                     if (RT_SUCCESS(rc))
