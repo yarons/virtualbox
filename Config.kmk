@@ -1,4 +1,4 @@
-# $Id: Config.kmk 100379 2023-07-05 09:06:51Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 100380 2023-07-05 09:07:45Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -893,12 +893,12 @@ VBOX_WITH_SHARED_FOLDERS = 1
 # Enable shared clipboard
 VBOX_WITH_SHARED_CLIPBOARD = 1
 # Enable shared clipboard (file) transfers
-#if1of ($(KBUILD_TARGET), linux)
+if1of ($(KBUILD_TARGET), linux)
  VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS = 1
  if1of ($(KBUILD_TARGET), linux)
   VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP = 1
  endif
-#endif
+endif
 # Enable the host/guest information service (aka guest properties).
 VBOX_WITH_GUEST_PROPS = 1
 # Enable this to prevent the guest from writing guest properties.
@@ -9107,7 +9107,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100379 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100380 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
