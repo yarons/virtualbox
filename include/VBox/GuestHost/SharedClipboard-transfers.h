@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100373 2023-07-05 08:31:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -827,6 +827,12 @@ typedef SHCLTRANSFERCALLBACKCTX *PSHCLTRANSFERCALLBACKCTX;
  */
 typedef struct _SHCLTRANSFERCALLBACKS
 {
+    /**
+     * Called after the transfer got created.
+     *
+     * @param   pCbCtx              Pointer to callback context to use.
+     */
+    DECLCALLBACKMEMBER(void,  pfnOnCreated,(PSHCLTRANSFERCALLBACKCTX pCbCtx));
     /**
      * Called after the transfer got initialized.
      *

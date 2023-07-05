@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100373 2023-07-05 08:31:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1107,6 +1107,9 @@ int ShClTransferCreateEx(SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource,
     rc = ShClEventSourceCreate(&pTransfer->Events, 0 /* uID */);
     if (RT_SUCCESS(rc))
     {
+        if (pTransfer->Callbacks.pfnOnCreated)
+            pTransfer->Callbacks.pfnOnCreated(&pTransfer->CallbackCtx);
+
         *ppTransfer = pTransfer;
     }
     else
@@ -1476,6 +1479,7 @@ void ShClTransferCopyCallbacks(PSHCLTRANSFERCALLBACKS pCallbacksDst,
         if (pCallbacksSrc->a_pfnCallback) \
             pCallbacksDst->a_pfnCallback = pCallbacksSrc->a_pfnCallback
 
+        SET_CALLBACK(pfnOnCreated);
         SET_CALLBACK(pfnOnInitialized);
         SET_CALLBACK(pfnOnDestroy);
         SET_CALLBACK(pfnOnStarted);
