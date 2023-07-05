@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100373 2023-07-05 08:31:13Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -1128,7 +1128,7 @@ void ShClTransferObjDataChunkFree(PSHCLOBJDATACHUNK pDataChunk);
  *  @{
  */
 int ShClTransferCreateEx(SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource, uint32_t cbMaxChunkSize, uint32_t cMaxListHandles, uint32_t cMaxObjHandles, PSHCLTRANSFER *ppTransfer);
-int ShClTransferCreate(SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource, PSHCLTRANSFER *ppTransfer);
+int ShClTransferCreate(SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource, PSHCLTRANSFERCALLBACKS pCallbacks, PSHCLTRANSFER *ppTransfer);
 int ShClTransferInit(PSHCLTRANSFER pTransfer);
 int ShClTransferDestroy(PSHCLTRANSFER pTransfer);
 void ShClTransferReset(PSHCLTRANSFER pTransfer);
@@ -1187,8 +1187,6 @@ bool ShClTransferListEntryIsValid(PSHCLLISTENTRY pListEntry);
 int ShClTransferListEntryCopy(PSHCLLISTENTRY pDst, PSHCLLISTENTRY pSrc);
 PSHCLLISTENTRY ShClTransferListEntryDup(PSHCLLISTENTRY pListEntry);
 
-void ShClTransferCopyCallbacks(PSHCLTRANSFERCALLBACKS pCallbacksDst, PSHCLTRANSFERCALLBACKS pCallbacksSrc);
-void ShClTransferSetCallbacks(PSHCLTRANSFER pTransfer, PSHCLTRANSFERCALLBACKS pCallbacks);
 int ShClTransferSetProvider(PSHCLTRANSFER pTransfer, PSHCLTXPROVIDER pProvider);
 
 int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *pszRoots, size_t cbRoots);

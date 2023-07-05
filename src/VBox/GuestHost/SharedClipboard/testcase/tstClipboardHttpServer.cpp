@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
             case VINF_GETOPT_NOT_OPTION:
             {
                 PSHCLTRANSFER pTx;
-                RTTEST_CHECK_RC_OK(hTest, ShClTransferCreate(SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL, &pTx));
+                RTTEST_CHECK_RC_OK(hTest, ShClTransferCreate(SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL, NULL /* Callbacks */, &pTx));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferSetProvider(pTx, &Provider));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferInit(pTx));
                 RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsInitFromFile(pTx, ValueUnion.psz));

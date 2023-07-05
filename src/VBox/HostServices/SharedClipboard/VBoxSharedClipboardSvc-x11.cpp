@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 100392 2023-07-05 15:32:45Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -416,6 +416,9 @@ static DECLCALLBACK(void) shClSvcX11TransferOnCreatedCallback(PSHCLTRANSFERCALLB
     ShClTransferProviderLocalQueryInterface(&pClient->Transfers.Provider);
 
     PSHCLTXPROVIDERIFACE pIface = &pClient->Transfers.Provider.Interface;
+
+    pClient->Transfers.Provider.enmSource = pClient->State.enmSource;
+    pClient->Transfers.Provider.pvUser    = pClient;
 
     switch (ShClTransferGetDir(pTransfer))
     {
