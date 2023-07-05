@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100370 2023-07-05 07:14:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1661,16 +1661,6 @@ int shClSvcTransferHandler(PSHCLCLIENT pClient,
 
             ASSERT_GUEST_RETURN(aParms[1].type == VBOX_HGCM_SVC_PARM_32BIT, VERR_WRONG_PARAMETER_TYPE); /* Features */
             ASSERT_GUEST_RETURN(aParms[2].type == VBOX_HGCM_SVC_PARM_64BIT, VERR_WRONG_PARAMETER_TYPE); /* # Entries  */
-
-            if (   ShClTransferGetSource(pTransfer) == SHCLSOURCE_LOCAL
-                && ShClTransferGetDir(pTransfer)    == SHCLTRANSFERDIR_TO_REMOTE)
-            {
-                rc = ShClBackendTransferHGRootListRead(pClient->pBackend, pClient, pTransfer);
-                if (RT_FAILURE(rc))
-                    break;
-            }
-            else
-                break;
 
             SHCLLISTHDR rootListHdr;
             RT_ZERO(rootListHdr);

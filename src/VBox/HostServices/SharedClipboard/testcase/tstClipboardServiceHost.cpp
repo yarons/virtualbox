@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardServiceHost.cpp 100370 2023-07-05 07:14:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -330,6 +330,5 @@ int ShClBackendSync(PSHCLBACKEND, PSHCLCLIENT) { return VINF_SUCCESS; }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
 int ShClBackendTransferHandleStatusReply(PSHCLBACKEND, PSHCLCLIENT, PSHCLTRANSFER, SHCLSOURCE, SHCLTRANSFERSTATUS, int) { return VINF_SUCCESS; }
-int ShClBackendTransferHGRootListRead(PSHCLBACKEND, PSHCLCLIENT, PSHCLTRANSFER) { return VINF_SUCCESS; }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 

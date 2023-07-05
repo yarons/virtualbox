@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 100369 2023-07-04 16:33:33Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 100370 2023-07-05 07:14:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -969,17 +969,14 @@ int ShClBackendWriteData(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLCLIENT
 }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
-int ShClBackendTransferHGRootListRead(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
+/**
+ * Handles transfer status replies from the guest.
+ */
+int ShClBackendTransferHandleStatusReply(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer, SHCLSOURCE enmSource, SHCLTRANSFERSTATUS enmStatus, int rcStatus)
 {
-    RT_NOREF(pBackend);
+    RT_NOREF(pBackend, pClient, pTransfer, enmSource, enmStatus, rcStatus);
 
-    LogFlowFuncEnter();
-
-    const PSHCLWINCTX pWinCtx = &pClient->State.pCtx->Win;
-
-    int rc = SharedClipboardWinTransferGetRootsFromClipboard(pWinCtx, pTransfer);
-
-    LogFlowFuncLeaveRC(rc);
-    return rc;
+    return VINF_SUCCESS;
 }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
+
