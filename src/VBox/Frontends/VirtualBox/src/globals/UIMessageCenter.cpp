@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 100389 2023-07-05 13:26:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1424,6 +1424,17 @@ bool UIMessageCenter::confirmInaccesibleMediaClear(const QStringList &mediaNameL
                        QString() /* cancel button text */,
                        QString() /* 3rd button text */,
                        QString() /* help keyword */);
+}
+
+bool UIMessageCenter::confirmVisoDiscard(QWidget *pParent /* = 0*/) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>To open a Viso file you will have to discard the current content.</p>"
+                             "<p>Are you sure you want to proceed?</p>"),
+                          0 /* auto-confirm id */,
+                          tr("&Discard") /* ok button text */,
+                          QString() /* cancel button text */,
+                          false /* ok button by default? */);
 }
 
 bool UIMessageCenter::confirmCloudNetworkRemoval(const QString &strName, QWidget *pParent /* = 0*/) const

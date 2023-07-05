@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100348 2023-07-03 14:03:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100389 2023-07-05 13:26:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -127,7 +127,6 @@ private:
      *  if @p bRemove is true then the value is the string ":remove:" which effectively removes the file object
      *  from the iso image. */
     void                    createVisoEntry(UICustomFileSystemItem *pItem, bool bRemove = false);
-    void                    reset();
     QString                 currentPath() const;
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
