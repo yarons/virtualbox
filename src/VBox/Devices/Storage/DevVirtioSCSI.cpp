@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 100371 2023-07-05 07:47:33Z alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioSCSI.cpp 100400 2023-07-06 08:58:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -2492,7 +2492,10 @@ static DECLCALLBACK(int) virtioScsiR3Construct(PPDMDEVINS pDevIns, int iInstance
     /*
      * Validate and read configuration.
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "NumTargets|Bootable", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "NumTargets"
+                                           "|Bootable"
+                                           "|MmioBase"
+                                           "|Irq", "");
 
     int rc = pHlp->pfnCFGMQueryU32Def(pCfg, "NumTargets", &pThis->cTargets, 1);
     if (RT_FAILURE(rc))
@@ -2540,6 +2543,7 @@ static DECLCALLBACK(int) virtioScsiR3Construct(PPDMDEVINS pDevIns, int iInstance
     VirtioPciParams.uSubsystemId            = PCI_DEVICE_ID_VIRTIOSCSI_HOST;  /* VirtIO 1.0 spec allows PCI Device ID here */
     VirtioPciParams.uInterruptLine          = 0x00;
     VirtioPciParams.uInterruptPin           = 0x01;
+    VirtioPciParams.uDeviceType             = VIRTIO_DEVICE_TYPE_SCSI_HOST;
 
     rc = virtioCoreR3Init(pDevIns, &pThis->Virtio, &pThisCC->Virtio, &VirtioPciParams, pThis->szInstance,
                           VIRTIOSCSI_HOST_SCSI_FEATURES_OFFERED, 0 /*fOfferLegacy*/,

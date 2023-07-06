@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 100398 2023-07-06 08:40:28Z alexander.eichner@oracle.com $ $Revision: 100398 $ $Date: 2023-07-06 10:40:28 +0200 (Thu, 06 Jul 2023) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 100400 2023-07-06 08:58:02Z alexander.eichner@oracle.com $ $Revision: 100400 $ $Date: 2023-07-06 10:58:02 +0200 (Thu, 06 Jul 2023) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -3455,7 +3455,14 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
     /*
      * Validate configuration.
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "MAC|CableConnected|LineSpeed|LinkUpDelay|StatNo|Legacy", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "MAC"
+                                           "|CableConnected"
+                                           "|LineSpeed"
+                                           "|LinkUpDelay"
+                                           "|StatNo"
+                                           "|Legacy"
+                                           "|MmioBase"
+                                           "|Irq", "");
 
     /* Get config params */
     int rc = pHlp->pfnCFGMQueryBytes(pCfg, "MAC", pThis->macConfigured.au8, sizeof(pThis->macConfigured));
@@ -3514,6 +3521,7 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
     VirtioPciParams.uSubsystemId                   = DEVICE_PCI_NETWORK_SUBSYSTEM;  /* VirtIO 1.0 allows PCI Device ID here */
     VirtioPciParams.uInterruptLine                 = 0x00;
     VirtioPciParams.uInterruptPin                  = 0x01;
+    VirtioPciParams.uDeviceType                    = VIRTIO_DEVICE_TYPE_NETWORK;
 
     /* Create semaphore used to synchronize/throttle the downstream LUN's Rx waiter thread. */
     rc = PDMDevHlpSUPSemEventCreate(pDevIns, &pThis->hEventRxDescAvail);
