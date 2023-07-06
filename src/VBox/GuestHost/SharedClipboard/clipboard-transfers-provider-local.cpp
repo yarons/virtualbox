@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-provider-local.cpp 100367 2023-07-04 16:23:18Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-provider-local.cpp 100396 2023-07-06 07:34:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Transfers interface implementation for local file systems.
  */
@@ -709,7 +709,7 @@ static DECLCALLBACK(int) shclTransferIfaceLocalObjOpen(PSHCLTXPROVIDERCTX pCtx,
         rc = ShClTransferObjHandleInfoInit(pInfo);
         if (RT_SUCCESS(rc))
         {
-            uint64_t fOpen;
+            uint64_t fOpen = 0; /* Shut up GCC. */
             rc = shClConvertFileCreateFlags(pCreateParms->fCreate, &fOpen);
             if (RT_SUCCESS(rc))
             {
