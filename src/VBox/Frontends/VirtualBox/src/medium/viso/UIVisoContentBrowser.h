@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100389 2023-07-05 13:26:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100395 2023-07-06 04:40:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -128,6 +128,8 @@ private:
      *  from the iso image. */
     void                    createVisoEntry(UICustomFileSystemItem *pItem, bool bRemove = false);
     QString                 currentPath() const;
+    UICustomFileSystemItem* searchItemByPath(const QString &strPath);
+
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
     QList<UICustomFileSystemItem*> tableSelectedItems();
