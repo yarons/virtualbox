@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100418 2023-07-06 17:26:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -89,7 +89,6 @@ public:
 
     /** Full absolute path of the item. With or without the trailing '/' */
     QString  path(bool fRemoveTrailingDelimiters = false) const;
-    void setPath(const QString &path);
 
     /** Returns true if this is directory and file object name is ".." */
     bool isUpDirectory() const;
@@ -117,8 +116,9 @@ public:
     bool isHidden() const;
 
 private:
-    void appendChild(UICustomFileSystemItem *child);
 
+    void appendChild(UICustomFileSystemItem *child);
+    void childRenamed();
     QList<UICustomFileSystemItem*>         m_childItems;
     /** Used to find children by file object name */
     QMap<QString, UICustomFileSystemItem*> m_childMap;

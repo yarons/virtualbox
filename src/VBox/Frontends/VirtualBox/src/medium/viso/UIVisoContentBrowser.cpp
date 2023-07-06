@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100418 2023-07-06 17:26:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -717,7 +717,7 @@ void UIVisoContentBrowser::initializeModel()
     const QString startPath = QString("/%1").arg(m_strVisoName);
 
     UICustomFileSystemItem *pStartItem = new UICustomFileSystemItem(startPath, rootItem(), KFsObjType_Directory);
-    pStartItem->setPath("/");
+
     pStartItem->setIsOpened(false);
 }
 
