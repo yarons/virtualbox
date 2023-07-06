@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 100405 2023-07-06 10:13:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -817,8 +817,10 @@ VBGLR3DECL(int) VbglR3ClipboardTransferRootListRead(PVBGLR3SHCLCMDCTX pCtx, PSHC
     AssertPtrReturn(pCtx,      VERR_INVALID_POINTER);
     AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
 
-    AssertMsgReturn(ShClTransferGetStatus(pTransfer) == SHCLTRANSFERSTATUS_INITIALIZED,
-                    ("Can't read root list -- wrong transfer status\n"), VERR_WRONG_ORDER);
+    SHCLTRANSFERSTATUS const enmSts = ShClTransferGetStatus(pTransfer);
+    AssertMsgReturn(   enmSts == SHCLTRANSFERSTATUS_INITIALIZED
+                    || enmSts == SHCLTRANSFERSTATUS_STARTED,
+                    ("Can't read root list -- wrong transfer status (%#x)\n", enmSts), VERR_WRONG_ORDER);
 
     SHCLLISTHDR Hdr;
     int rc = vbglR3ClipboardTransferRootListHdrRead(pCtx, &Hdr);

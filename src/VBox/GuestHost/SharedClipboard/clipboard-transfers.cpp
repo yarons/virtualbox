@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100405 2023-07-06 10:13:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1703,7 +1703,8 @@ int ShClTransferRootListRead(PSHCLTRANSFER pTransfer)
 
 #ifdef DEBUG
     shClTransferLock(pTransfer);
-    AssertMsgReturn(pTransfer->State.enmStatus == SHCLTRANSFERSTATUS_INITIALIZED,
+    AssertMsgReturn(   pTransfer->State.enmStatus == SHCLTRANSFERSTATUS_INITIALIZED
+                    || pTransfer->State.enmStatus == SHCLTRANSFERSTATUS_STARTED,
                     ("Cannot read root list in status %s\n", ShClTransferStatusToStr(pTransfer->State.enmStatus)),
                     VERR_WRONG_ORDER);
     shClTransferUnlock(pTransfer);
