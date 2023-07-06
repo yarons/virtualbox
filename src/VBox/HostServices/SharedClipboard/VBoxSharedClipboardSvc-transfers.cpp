@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100404 2023-07-06 10:10:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1671,6 +1671,8 @@ int shClSvcTransferHandler(PSHCLCLIENT pClient,
             HGCMSvcSetU64(&aParms[0], 0 /* Context ID */);
             HGCMSvcSetU32(&aParms[1], rootListHdr.fFeatures);
             HGCMSvcSetU64(&aParms[2], rootListHdr.cEntries);
+
+            rc = VINF_SUCCESS;
             break;
         }
 
