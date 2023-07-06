@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSnapshots1.py 100292 2023-06-26 14:22:02Z knut.osmundsen@oracle.com $
+# $Id: tdSnapshots1.py 100397 2023-07-06 08:04:18Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Nested Snapshot Restoration Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100292 $"
+__version__ = "$Revision: 100397 $"
 
 
 # Standard Python imports.
@@ -94,7 +94,7 @@ class SubTstDrvNestedSnapshots1(base.SubTestDriverBase):
           + Boot and then poweroff the VM
           + Verify snapshot 'beta' still exists (IMachine::findSnapshot())
         """
-        reporter.testStart('Restore a nested snapshot and verify saved state file exists afterwards');
+        reporter.testStart('testRestoreNestedSnapshot');
 
         # Restoring an online snapshot requires an updated TXS (r157880 or later) for the
         # TCP keep alive support added in r157875 thus it is essential that the
