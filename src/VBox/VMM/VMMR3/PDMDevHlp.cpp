@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 100184 2023-06-16 06:51:39Z alexander.eichner@oracle.com $ */
+/* $Id: PDMDevHlp.cpp 100399 2023-07-06 08:56:03Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2560,7 +2560,9 @@ static DECLCALLBACK(void) pdmR3DevHlp_ISASetIrq(PPDMDEVINS pDevIns, int iIrq, in
     /*
      * Validate input.
      */
+#ifndef VBOX_VMM_TARGET_ARMV8
     Assert(iIrq < 16);
+#endif
     Assert((uint32_t)iLevel <= PDM_IRQ_LEVEL_FLIP_FLOP);
 
     PVM pVM = pDevIns->Internal.s.pVMR3;
