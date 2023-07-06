@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 100304 2023-06-27 19:44:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 100406 2023-07-06 10:38:48Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -827,7 +827,7 @@ void UIFileManagerTable::sltCreateNewDirectory()
     foreach (UICustomFileSystemItem* childItem, content)
     {
 
-        if (childItem && newDirectoryName == childItem->name())
+        if (childItem && newDirectoryName == childItem->fileObjectName())
             newItem = childItem;
     }
 
@@ -1249,7 +1249,7 @@ void UIFileManagerTable::performSelectionSearch(const QString &strSearchText)
         pFoundItem = static_cast<UICustomFileSystemItem*>(m_pProxyModel->mapToSource(index).internalPointer());
         if (!pFoundItem)
             continue;
-        const QString &strName = pFoundItem->name();
+        const QString &strName = pFoundItem->fileObjectName();
         if (!strName.startsWith(m_pSearchLineEdit->text(), Qt::CaseInsensitive))
             pFoundItem = 0;
     }
