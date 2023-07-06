@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100418 2023-07-06 17:26:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100419 2023-07-06 17:40:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -118,10 +118,7 @@ public:
 private:
 
     void appendChild(UICustomFileSystemItem *child);
-    void childRenamed();
     QList<UICustomFileSystemItem*>         m_childItems;
-    /** Used to find children by file object name */
-    QMap<QString, UICustomFileSystemItem*> m_childMap;
     QMap<UICustomFileSystemModelData, QVariant>  m_itemData;
     UICustomFileSystemItem *m_parentItem;
     bool             m_bIsOpened;
