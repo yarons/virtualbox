@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 100371 2023-07-05 07:47:33Z alexander.eichner@oracle.com $ $Revision: 100371 $ $Date: 2023-07-05 09:47:33 +0200 (Wed, 05 Jul 2023) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 100398 2023-07-06 08:40:28Z alexander.eichner@oracle.com $ $Revision: 100398 $ $Date: 2023-07-06 10:40:28 +0200 (Thu, 06 Jul 2023) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1076,12 +1076,14 @@ static int virtioNetR3VirtqDestroy(PVIRTIOCORE pVirtio, PVIRTIONETVIRTQ pVirtq)
     if (pVirtq->fHasWorker)
     {
         Log10((" and its worker"));
-        rc = PDMDevHlpSUPSemEventClose(pVirtio->pDevInsR3, pWorker->hEvtProcess);
-        AssertRCReturn(rc, rc);
-        pWorker->hEvtProcess = 0;
         rc = PDMDevHlpThreadDestroy(pVirtio->pDevInsR3,  pWorkerR3->pThread, &rcThread);
         AssertRCReturn(rc, rc);
         pWorkerR3->pThread = 0;
+
+        rc = PDMDevHlpSUPSemEventClose(pVirtio->pDevInsR3, pWorker->hEvtProcess);
+        AssertRCReturn(rc, rc);
+        pWorker->hEvtProcess = 0;
+
         pVirtq->fHasWorker = false;
     }
     pWorker->fAssigned = false;
@@ -3240,9 +3242,16 @@ static DECLCALLBACK(void) pfnFeatureNegotiationComplete(PVIRTIOCORE pVirtio, uin
     virtioNetConfigurePktHdr(pThis, fLegacy);
     virtioNetR3SetVirtqNames(pThis, fLegacy);
 
+    /** @todo r=aeichner We can't just destroy the control queue here because the UEFI firmware and the guest OS might have different
+     * opinions on how to use the device and if the UEFI firmware causes the control queue to be destroyed Linux guests
+     * will have a hard time using it. */
+#if 0
     /* Senseless for modern guest to use control queue in this case. (See Note 1 in PDM-invoked device constructor) */
     if (!fLegacy && !(fDriverFeatures & VIRTIONET_F_CTRL_VQ))
         virtioNetR3VirtqDestroy(pVirtio, &pThis->aVirtqs[CTRLQIDX]);
+#else
+    RT_NOREF(fDriverFeatures);
+#endif
 }
 
 #endif /* IN_RING3 */
