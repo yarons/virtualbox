@@ -46,8 +46,8 @@
          to add a line entry under [auto-props]:
          *.ditamap = svn:mime-type=text/xml;svn:keywords=Author Date Id Rev URL;
       -->
-      <othermeta name="revision" content="$Rev: 99797 $"/>
-      <othermeta name="rev-date" content="$Date: 2023-05-15 19:27:56 +0200 (Mon, 15 May 2023) $"/>
+      <othermeta name="revision" content="$Rev: 100417 $"/>
+      <othermeta name="rev-date" content="$Date: 2023-07-06 16:53:30 +0200 (Thu, 06 Jul 2023) $"/>
       <othermeta name="ditaval" content="ohc.ditaval"/>
       <!-- The bookpartno matches the part and revision in PDB  -->
          <bookid>
@@ -283,6 +283,9 @@
          <topicref href="topics/sharedfolders.dita">
             <topicref href="topics/sf_mount_manual.dita"/>
             <topicref href="topics/sf_mount_auto.dita"/>
+         </topicref>
+         <topicref href="topics/guestadd-clipboard.dita">
+            <topicref href="topics/guestadd-clipboard-limitations.dita"/>
          </topicref>
          <topicref href="topics/guestadd-dnd.dita">
             <topicref href="topics/guestadd-dnd-formats.dita"/>
