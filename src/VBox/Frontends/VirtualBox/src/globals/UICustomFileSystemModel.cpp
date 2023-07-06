@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 100409 2023-07-06 12:49:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -215,7 +215,6 @@ QString UICustomFileSystemItem::path(bool fRemoveTrailingDelimiters /* = false *
     while(pParent && pParent->parentItem())
     {
         path.prepend(pParent->fileObjectName());
-
         pParent = pParent->parentItem();
     }
 

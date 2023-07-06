@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -923,7 +923,8 @@ void UIVisoContentBrowser::sltItemRenameAction()
     renameFileObject(selectedItems.at(0));
 }
 
-void UIVisoContentBrowser::sltItemRenameAttempt(UICustomFileSystemItem *pItem, QString strOldPath, QString strOldName, QString strNewName)
+void UIVisoContentBrowser::sltItemRenameAttempt(UICustomFileSystemItem *pItem, const QString &strOldPath,
+                                                const QString &strOldName, const QString &strNewName)
 {
     Q_UNUSED(strOldPath);
     if (!pItem || !pItem->parentItem())

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -84,7 +84,7 @@ protected:
     virtual void    deleteByItem(UICustomFileSystemItem *item) override final;
     virtual void    deleteByPath(const QStringList &pathList) override final;
     virtual void    goToHomeDirectory() override final;
-    virtual bool    renameItem(UICustomFileSystemItem *item, QString strOldPath) override final;
+    virtual bool    renameItem(UICustomFileSystemItem *item, const QString &strOldPath) override final;
     virtual bool    createDirectory(const QString &path, const QString &directoryName) override final;
     virtual QString fsObjectPropertyString() override final;
     virtual void    showProperties() override final;

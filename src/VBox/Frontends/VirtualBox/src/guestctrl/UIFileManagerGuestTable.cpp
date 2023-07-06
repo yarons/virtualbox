@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -663,7 +663,7 @@ void UIFileManagerGuestTable::goToHomeDirectory()
     goIntoDirectory(UIPathOperations::pathTrail(userHome));
 }
 
-bool UIFileManagerGuestTable::renameItem(UICustomFileSystemItem *item, QString strOldPath)
+bool UIFileManagerGuestTable::renameItem(UICustomFileSystemItem *item, const QString &strOldPath)
 {
     if (!item || item->isUpDirectory())
         return false;
