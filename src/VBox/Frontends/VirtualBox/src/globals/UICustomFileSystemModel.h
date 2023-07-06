@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100406 2023-07-06 10:38:48Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -78,6 +78,7 @@ public:
     void setData(const QVariant &data, UICustomFileSystemModelData enmColumn);
     int row() const;
     UICustomFileSystemItem *parentItem();
+    UICustomFileSystemItem *parentItem() const;
 
     bool isDirectory() const;
     bool isSymLink() const;
@@ -174,7 +175,7 @@ class SHARED_LIBRARY_STUFF UICustomFileSystemModel : public QAbstractItemModel
 
 signals:
 
-    void sigItemRenamed(UICustomFileSystemItem *pItem, QString strOldName, QString strNewName);
+    void sigItemRenamed(UICustomFileSystemItem *pItem, QString strOldPath, QString strOldName, QString strNewName);
 
 public:
 

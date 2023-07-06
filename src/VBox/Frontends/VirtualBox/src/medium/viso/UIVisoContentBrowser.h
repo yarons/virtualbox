@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100395 2023-07-06 04:40:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -85,7 +85,7 @@ public slots:
     void sltCreateNewDirectory();
     /** Handles the signal we get from the model during setData call. Restores the old name of the file object
      *  to @p strOldName if need be (if rename fails for some reason). */
-    void sltItemRenameAttempt(UICustomFileSystemItem *pItem, QString strOldName, QString strNewName);
+    void sltItemRenameAttempt(UICustomFileSystemItem *pItem, QString strOldPath, QString strOldName, QString strNewName);
     void sltRemoveItems();
     void sltResetAction();
     void sltItemRenameAction();

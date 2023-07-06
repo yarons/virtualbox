@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100324 2023-06-28 12:35:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -663,22 +663,21 @@ void UIFileManagerGuestTable::goToHomeDirectory()
     goIntoDirectory(UIPathOperations::pathTrail(userHome));
 }
 
-bool UIFileManagerGuestTable::renameItem(UICustomFileSystemItem *item, QString newBaseName)
+bool UIFileManagerGuestTable::renameItem(UICustomFileSystemItem *item, QString strOldPath)
 {
-
-    if (!item || item->isUpDirectory() || newBaseName.isEmpty())
+    if (!item || item->isUpDirectory())
         return false;
-    QString newPath = UIPathOperations::removeTrailingDelimiters(UIPathOperations::constructNewItemPath(item->path(), newBaseName));
+    //QString newPath = UIPathOperations::removeTrailingDelimiters(UIPathOperations::constructNewItemPath(item->path(), newBaseName));
     QVector<KFsObjRenameFlag> aFlags(1, KFsObjRenameFlag_Replace);
 
-    m_comGuestSession.FsObjRename(item->path(), newPath, aFlags);
+    m_comGuestSession.FsObjRename(strOldPath, item->path(), aFlags);
 
     if (!m_comGuestSession.isOk())
     {
         emit sigLogOutput(UIErrorString::formatErrorInfo(m_comGuestSession), m_strTableName, FileManagerLogType_Error);
         return false;
     }
-    item->setPath(newPath);
+
     return true;
 }
 

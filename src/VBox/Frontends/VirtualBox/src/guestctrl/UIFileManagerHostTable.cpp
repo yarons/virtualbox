@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 100324 2023-06-28 12:35:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 100408 2023-07-06 12:44:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -324,17 +324,14 @@ void UIFileManagerHostTable::goToHomeDirectory()
     goIntoDirectory(UIPathOperations::pathTrail(userHome));
 }
 
-bool UIFileManagerHostTable::renameItem(UICustomFileSystemItem *item, QString newBaseName)
+bool UIFileManagerHostTable::renameItem(UICustomFileSystemItem *item, QString strOldPath)
 {
-    if (!item || item->isUpDirectory() || newBaseName.isEmpty())
+    if (!item || item->isUpDirectory())
         return false;
-    QString newPath = UIPathOperations::constructNewItemPath(item->path(), newBaseName);
     QDir tempDir;
-    if (tempDir.rename(item->path(), newPath))
-    {
-        item->setPath(newPath);
+    if (tempDir.rename(strOldPath, item->path()))
         return true;
-    }
+
     return false;
 }
 
