@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100405 2023-07-06 10:13:38Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100426 2023-07-07 09:24:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1827,7 +1827,7 @@ int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *psz
             rc = ShClTransferListEntryAlloc(&pEntry);
             if (RT_SUCCESS(rc))
             {
-                PSHCLFSOBJINFO pFsObjInfo = (PSHCLFSOBJINFO )RTMemAllocZ(sizeof(SHCLFSOBJINFO));
+                PSHCLFSOBJINFO pFsObjInfo = (PSHCLFSOBJINFO)RTMemAllocZ(sizeof(SHCLFSOBJINFO));
                 if (pFsObjInfo)
                 {
                     if (pTransfer->State.enmDir == SHCLTRANSFERDIR_TO_REMOTE)
@@ -1835,7 +1835,7 @@ int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *psz
                     if (RT_SUCCESS(rc))
                     {
                         /* Calculate the relative path within the root path. */
-                        const char *pszPathRelToRoot = &pszPathRootAbs[strlen(pszPathRootAbs) + 1 /* Skip terminator or (back)slash. */];
+                        const char *pszPathRelToRoot = &pszPathCur[strlen(pszPathRootAbs) + 1 /* Skip terminator or (back)slash. */];
                         if (    pszPathRelToRoot
                             && *pszPathRelToRoot != '\0')
                         {
