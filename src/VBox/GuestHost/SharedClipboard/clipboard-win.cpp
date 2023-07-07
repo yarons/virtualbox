@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100413 2023-07-06 14:10:35Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100428 2023-07-07 10:06:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1144,7 +1144,7 @@ void SharedClipboardWinTransferDestroy(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTrans
     {
         Assert(pTransfer->cbUser == sizeof(SharedClipboardWinTransferCtx));
         SharedClipboardWinTransferCtx *pWinURITransferCtx = (SharedClipboardWinTransferCtx *)pTransfer->pvUser;
-        Assert(pWinURITransferCtx);
+        AssertPtr(pWinURITransferCtx);
 
         if (pWinURITransferCtx->pDataObj)
         {
@@ -1153,6 +1153,7 @@ void SharedClipboardWinTransferDestroy(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTrans
         }
 
         delete pWinURITransferCtx;
+        pWinURITransferCtx = NULL;
 
         pTransfer->pvUser = NULL;
         pTransfer->cbUser = 0;
