@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100428 2023-07-07 10:06:13Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100432 2023-07-07 10:27:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1126,10 +1126,32 @@ int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx,
 }
 
 /**
- * Destroys implementation-specific data for an Shared Clipboard transfer.
+ * Creates implementation-specific data for a Windows Shared Clipboard transfer.
  *
+ * @returns VBox status code.
  * @param   pWinCtx             Windows context to use.
  * @param   pTransfer           Shared Clipboard transfer to create implementation-specific data for.
+ */
+int SharedClipboardWinTransferCreate(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTransfer)
+{
+    RT_NOREF(pWinCtx);
+
+    AssertMsgReturn(   pTransfer->pvUser == NULL
+                    && pTransfer->cbUser == 0, ("Already initialized Windows-specific data\n"), VERR_WRONG_ORDER);
+
+    pTransfer->pvUser = new SharedClipboardWinTransferCtx();  /** @todo Can this throw? */
+    AssertPtrReturn(pTransfer->pvUser, VERR_INVALID_POINTER);
+    pTransfer->cbUser = sizeof(SharedClipboardWinTransferCtx);
+
+    return VINF_SUCCESS;
+}
+
+/**
+ * Destroys implementation-specific data for a Windows Shared Clipboard transfer.
+ *
+ * @returns VBox status code.
+ * @param   pWinCtx             Windows context to use.
+ * @param   pTransfer           Shared Clipboard transfer to destroy implementation-specific data for.
  */
 void SharedClipboardWinTransferDestroy(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTransfer)
 {
