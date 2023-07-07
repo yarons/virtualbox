@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100418 2023-07-06 17:26:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100438 2023-07-07 14:27:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -832,6 +832,56 @@ void UIVisoContentBrowser::parseVisoFileContent(const QString &strFileName)
         }
     }
     file.close();
+    createLoadedFileEntries(fileEntries);
+}
+
+void UIVisoContentBrowser::createLoadedFileEntries(const QMap<QString, QString> &fileEntries)
+{
+    for (QMap<QString, QString>::const_iterator iterator = fileEntries.begin();
+         iterator != fileEntries.end(); ++iterator)
+    {
+        QStringList pathList = UIPathOperations::pathTrail(iterator.key());
+        QString strPath;
+        const QString &strLocalPath = iterator.value();
+        if (!QFileInfo(strLocalPath).exists())
+            continue;
+
+        UICustomFileSystemItem *pParent = startItem();
+        /* Make sure all the parents from start item until immediate parent are created: */
+        for (int i = 0; i < pathList.size(); ++i)
+        {
+            strPath.append("/");
+            strPath.append(pathList[i]);
+
+            printf("%s\n", qPrintable(strPath));
+            UICustomFileSystemItem *pItem = searchItemByPath(strPath);
+            KFsObjType enmObjectType;
+            /* All objects except the last one are directories:*/
+            if (i == pathList.size() - 1)
+                enmObjectType = fileType(strLocalPath);
+            else
+                enmObjectType = KFsObjType_Directory;
+            if (!pItem)
+            {
+                pItem = new UICustomFileSystemItem(pathList[i],
+                                                   pParent,
+                                                   enmObjectType);
+                if (!pItem)
+                    continue;
+
+                pItem->setData(strPath, UICustomFileSystemModelData_VISOPath);
+                if (i == pathList.size() - 1)
+                    pItem->setData(strLocalPath, UICustomFileSystemModelData_LocalPath);
+            }
+            if (i == pathList.size() - 1)
+                createVisoEntry(pItem);
+            pParent = pItem;
+        }
+    }
+
+    if (m_pTableProxyModel)
+        m_pTableProxyModel->invalidate();
+
 }
 
 QModelIndex UIVisoContentBrowser::convertIndexToTableIndex(const QModelIndex &index)

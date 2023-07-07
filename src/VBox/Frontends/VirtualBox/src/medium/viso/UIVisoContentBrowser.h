@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100438 2023-07-07 14:27:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -136,6 +136,7 @@ private:
     QList<UICustomFileSystemItem*> tableSelectedItems();
     bool                           onStartItem();
     void                           goUp();
+    void                           createLoadedFileEntries(const QMap<QString, QString> &fileEntries);
     UIVisoContentTableView        *m_pTableView;
     UICustomFileSystemModel       *m_pModel;
     UICustomFileSystemProxyModel  *m_pTableProxyModel;
