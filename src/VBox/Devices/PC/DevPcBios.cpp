@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 100443 2023-07-08 14:14:42Z michal.necasek@oracle.com $ */
+/* $Id: DevPcBios.cpp 100444 2023-07-08 14:48:54Z michal.necasek@oracle.com $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -632,9 +632,9 @@ PDMMEDIAGEOMETRY aGeomPCAT[] = {
  */
 static bool pcbiosCmosTryPCATHardDisk(PPDMDEVINS pDevIns, int drive, PCPDMMEDIAGEOMETRY pLCHSGeometry)
 {
-    int     type;
-    int     typeLow;
-    bool    fCompatGeom = false;
+    unsigned    type;
+    unsigned    typeLow;
+    bool        fCompatGeom = false;
 
     Assert((drive == 0) || (drive == 1));
 
