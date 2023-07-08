@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-core.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-core.cpp 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, Core API.
  */
@@ -102,13 +102,6 @@ RTDECL(int) RTCrPkixSignatureCreate(PRTCRPKIXSIGNATURE phSignature, PCRTCRPKIXSI
      */
     AssertPtrReturn(phSignature, VERR_INVALID_POINTER);
     AssertPtrReturn(pDesc, VERR_INVALID_POINTER);
-    if (pParams)
-    {
-        AssertPtrReturn(pParams, VERR_INVALID_POINTER);
-        if (   pParams->enmType == RTASN1TYPE_NULL
-            || !RTASN1CORE_IS_PRESENT(&pParams->u.Core))
-            pParams = NULL;
-    }
     uint32_t cKeyRefs = RTCrKeyRetain(hKey);
     AssertReturn(cKeyRefs != UINT32_MAX, VERR_INVALID_HANDLE);
 
@@ -128,6 +121,9 @@ RTDECL(int) RTCrPkixSignatureCreate(PRTCRPKIXSIGNATURE phSignature, PCRTCRPKIXSI
         pThis->hKey         = hKey;
         if (pDesc->pfnInit)
             rc = pDesc->pfnInit(pDesc, pThis->abState, pvOpaque, fSigning, hKey, pParams);
+        else
+            rc = RTCrKeyVerifyParameterCompatibility(hKey, pParams, true /*fForSignature*/,
+                                                     NULL /*pAlgorithm*/, NULL /*pErrInfo*/);
         if (RT_SUCCESS(rc))
         {
             *phSignature = pThis;

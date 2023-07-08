@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-builtin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-builtin.cpp 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
@@ -63,6 +63,9 @@
 static PCRTCRPKIXSIGNATUREDESC const g_apPkixSignatureDescriptors[] =
 {
     &g_rtCrPkixSigningHashWithRsaDesc,
+#ifdef IPRT_WITH_OPENSSL
+    &g_rtCrPkixSigningHashWithEcdsaDesc,
+#endif
 };
 
 

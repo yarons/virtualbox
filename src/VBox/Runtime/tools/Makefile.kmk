@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100006 2023-05-30 06:27:25Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -98,6 +98,7 @@ if !defined(VBOX_ONLY_DOCS)
    bldRTSignTool_DEFS     += IPRT_WITH_OPENSSL
    bldRTSignTool_SOURCES  += \
    	../common/crypto/pkix-signature-builtin.cpp \
+   	../common/crypto/pkix-signature-ossl.cpp \
    	../common/crypto/store.cpp \
    	../common/crypto/digest-builtin.cpp \
    	../common/crypto/iprt-openssl.cpp \

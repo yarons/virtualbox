@@ -1,4 +1,4 @@
-/* $Id: key-internal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: key-internal.h 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, Internal Header.
  */
@@ -83,6 +83,14 @@ typedef struct RTCRKEYINT
             /** The exponent.  */
             RTBIGNUM                Exponent;
         } RsaPublic;
+
+        /** RTCRKEYTYPE_ECDSA_PUBLIC. */
+        struct
+        {
+            /** The named curve. */
+            RTASN1OBJID             NamedCurve;
+            /** @todo ECPoint. */
+        } EcdsaPublic;
     } u;
 
 #if defined(IPRT_WITH_OPENSSL)
@@ -118,5 +126,7 @@ DECLHIDDEN(int) rtCrKeyCreateRsaPublic(PRTCRKEY phKey, const void *pvKeyBits, ui
                                        PRTERRINFO pErrInfo, const char *pszErrorTag);
 DECLHIDDEN(int) rtCrKeyCreateRsaPrivate(PRTCRKEY phKey, const void *pvKeyBits, uint32_t cbKeyBits,
                                         PRTERRINFO pErrInfo, const char *pszErrorTag);
+DECLHIDDEN(int) rtCrKeyCreateEcdsaPublic(PRTCRKEY phKey, PCRTASN1DYNTYPE pParameters,
+                                         const void *pvKeyBits, uint32_t cbKeyBits, PRTERRINFO pErrInfo, const char *pszErrorTag);
 
 #endif /* !IPRT_INCLUDED_SRC_common_crypto_key_internal_h */

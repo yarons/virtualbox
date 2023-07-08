@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100421 2023-07-06 19:24:56Z brian.le.lee@oracle.com $
+# $Id: Makefile.kmk 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -462,6 +462,7 @@ RuntimeBaseR3_SOURCES      := \
 	common/crypto/pkix-signature-builtin.cpp \
 	common/crypto/pkix-signature-core.cpp \
 	common/crypto/pkix-signature-rsa.cpp \
+	common/crypto/pkix-signature-ossl.cpp \
 	common/crypto/pkix-util.cpp \
 	common/crypto/pkix-verify.cpp \
 	common/crypto/spc-asn1-decoder.cpp \
@@ -2308,6 +2309,7 @@ RuntimeBldProg_SOURCES          = \
 	common/crypto/pkix-signature-builtin.cpp \
 	common/crypto/pkix-signature-core.cpp \
 	common/crypto/pkix-signature-rsa.cpp \
+	common/crypto/pkix-signature-ossl.cpp \
 	common/crypto/pkix-util.cpp \
 	common/crypto/pkix-verify.cpp \
 	common/crypto/rsa-asn1-decoder.cpp \
