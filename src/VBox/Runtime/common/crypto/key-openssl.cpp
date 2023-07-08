@@ -1,4 +1,4 @@
-/* $Id: key-openssl.cpp 100445 2023-07-08 14:58:50Z knut.osmundsen@oracle.com $ */
+/* $Id: key-openssl.cpp 100447 2023-07-08 18:50:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, OpenSSL glue.
  */
@@ -94,8 +94,9 @@ static int rtCrKeyToOpenSslKeyLoadParams(RTCRKEY hKey, int idKeyType, EVP_PKEY *
         /** @todo d2i_KeyParams was introduced with 3.0.0, so ECDSA stuff won't work
          *        with older openssl versions atm.  Fortunately we only really needs
          *        it on Windows atm., so no problem. */
-        rc = RTERRINFO_LOG_SET_F(pErrInfo, VERR_NOT_SUPPORTED,
+        rc = RTERRINFO_LOG_SET_F(pErrInfo, VERR_CR_OPENSSL_VERSION_TOO_OLD,
                                  "OpenSSL version %#x is too old for IPRTs ECDSA code", OPENSSL_VERSION_NUMBER);
+        RT_NOREF(idKeyType, ppEvpNewKey);
 #endif
     }
     return rc;

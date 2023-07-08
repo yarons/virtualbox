@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-ossl.cpp 100446 2023-07-08 15:01:10Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-ossl.cpp 100447 2023-07-08 18:50:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, ECDSA Providers.
  */
@@ -150,7 +150,7 @@ static DECLCALLBACK(int) rtCrPkixSignatureOsslEvp_Verify(PCRTCRPKIXSIGNATUREDESC
     Assert(!pThis->fSigning);
     RT_NOREF_PV(pThis);
 
-#if 1
+#if OPENSSL_VERSION_NUMBER >= 0x30000000 && !defined(LIBRESSL_VERSION_NUMBER)
     PRTERRINFO const pErrInfo = NULL;
 
     /*
@@ -219,7 +219,7 @@ static DECLCALLBACK(int) rtCrPkixSignatureOsslEvp_Verify(PCRTCRPKIXSIGNATUREDESC
 
 #else
     RT_NOREF(pDesc, pvState, hKey, hDigest, pvSignature, cbSignature);
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_CR_OPENSSL_VERSION_TOO_OLD;
 #endif
 }
 
