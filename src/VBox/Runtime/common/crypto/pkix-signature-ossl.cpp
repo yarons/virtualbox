@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-ossl.cpp 100445 2023-07-08 14:58:50Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-ossl.cpp 100446 2023-07-08 15:01:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, ECDSA Providers.
  */
@@ -107,7 +107,7 @@ static DECLCALLBACK(int) rtCrPkixSignatureOsslEvp_Init(PCRTCRPKIXSIGNATUREDESC p
     if (RT_FAILURE(rc))
         return rc;
 
-    /* 
+    /*
      * Locate the EVP_MD for the algorithm.
      */
     rtCrOpenSslInit();
