@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100455 2023-07-10 13:00:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100457 2023-07-10 13:46:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -251,7 +251,7 @@ UIVisoContentBrowser::UIVisoContentBrowser(UIActionPool *pActionPool, QWidget *p
 
     if (rootItem() && rootItem()->childCount() > 0)
     {
-        UICustomFileSystemItem *pStartItem = static_cast<UICustomFileSystemItem*>(rootItem()->children()[0]);
+        UICustomFileSystemItem *pStartItem = startItem();
         if (pStartItem)
         {
             QModelIndex iindex = m_pModel->index(pStartItem);
@@ -259,6 +259,7 @@ UIVisoContentBrowser::UIVisoContentBrowser(UIActionPool *pActionPool, QWidget *p
                 tableViewItemDoubleClick(convertIndexToTableIndex(iindex));
         }
     }
+    updateNavigationWidgetPath(currentPath());
 }
 
 UIVisoContentBrowser::~UIVisoContentBrowser()
@@ -1089,7 +1090,7 @@ QString UIVisoContentBrowser::currentPath() const
     UICustomFileSystemItem *pItem = static_cast<UICustomFileSystemItem*>((index).internalPointer());
     if (!pItem)
         return QString();
-    return pItem->data(UICustomFileSystemModelData_VISOPath).toString();
+    return pItem->path();//data(UICustomFileSystemModelData_VISOPath).toString();
 }
 
 bool UIVisoContentBrowser::onStartItem()
