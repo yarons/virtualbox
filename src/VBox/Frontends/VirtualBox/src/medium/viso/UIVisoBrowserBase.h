@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100329 2023-06-29 10:04:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -90,7 +90,7 @@ protected:
     QAction             *m_pGoUp;
     QAction             *m_pGoForward;
     QAction             *m_pGoBackward;
-
+    QPointer<QMenu>      m_pSubMenu;
 
 protected slots:
 

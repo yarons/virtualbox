@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100460 2023-07-10 14:08:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -429,6 +429,9 @@ void UIVisoContentBrowser::retranslateUi()
         pRootItem->setData(QApplication::translate("UIVisoCreatorWidget", "Permissions"), UICustomFileSystemModelData_Permissions);
         pRootItem->setData(QApplication::translate("UIVisoCreatorWidget", "Local Path"), UICustomFileSystemModelData_LocalPath);
     }
+    if (m_pSubMenu)
+        m_pSubMenu->setTitle(QApplication::translate("UIVisoCreatorWidget", "VISO Browser"));
+
     setFileTableLabelText(QApplication::translate("UIVisoCreatorWidget","VISO Content"));
 }
 
@@ -632,11 +635,22 @@ void UIVisoContentBrowser::prepareToolBar()
 void UIVisoContentBrowser::prepareMainMenu(QMenu *pMenu)
 {
     AssertReturnVoid(pMenu);
+    QMenu *pSubMenu = new QMenu(QApplication::translate("UIVisoCreatorWidget", "VISO Browser"), pMenu);
+    pMenu->addMenu(pSubMenu);
+    AssertReturnVoid(pSubMenu);
+    m_pSubMenu = pSubMenu;
 
-    pMenu->addAction(m_pRemoveAction);
-    pMenu->addAction(m_pRenameAction);
-    pMenu->addAction(m_pCreateNewDirectoryAction);
-    pMenu->addAction(m_pResetAction);
+    m_pSubMenu->addAction(m_pGoBackward);
+    m_pSubMenu->addAction(m_pGoForward);
+    m_pSubMenu->addAction(m_pGoUp);
+    m_pSubMenu->addAction(m_pGoHome);
+
+    m_pSubMenu->addSeparator();
+
+    m_pSubMenu->addAction(m_pRemoveAction);
+    m_pSubMenu->addAction(m_pRenameAction);
+    m_pSubMenu->addAction(m_pCreateNewDirectoryAction);
+    m_pSubMenu->addAction(m_pResetAction);
 }
 
 const QString &UIVisoContentBrowser::importedISOPath() const

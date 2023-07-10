@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 100332 2023-06-29 12:18:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.cpp 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -173,6 +173,8 @@ UIVisoHostBrowser::~UIVisoHostBrowser()
 void UIVisoHostBrowser::retranslateUi()
 {
     setFileTableLabelText(QApplication::translate("UIVisoCreatorWidget","Host System"));
+    if (m_pSubMenu)
+        m_pSubMenu->setTitle(QApplication::translate("UIVisoCreatorWidget", "VISO Browser"));
 }
 
 void UIVisoHostBrowser::prepareObjects()
@@ -268,6 +270,20 @@ void UIVisoHostBrowser::prepareToolBar()
     if (m_pGoUp)
         m_pGoUp->setEnabled(!isRoot());
     enableForwardBackwardActions();
+}
+
+void UIVisoHostBrowser::prepareMainMenu(QMenu *pMenu)
+{
+    AssertReturnVoid(pMenu);
+    QMenu *pSubMenu = new QMenu(QApplication::translate("UIVisoCreatorWidget", "Host Browser"), pMenu);
+    pMenu->addMenu(pSubMenu);
+    AssertReturnVoid(pSubMenu);
+    m_pSubMenu = pSubMenu;
+
+    m_pSubMenu->addAction(m_pGoBackward);
+    m_pSubMenu->addAction(m_pGoForward);
+    m_pSubMenu->addAction(m_pGoUp);
+    m_pSubMenu->addAction(m_pGoHome);
 }
 
 void UIVisoHostBrowser::sltTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
