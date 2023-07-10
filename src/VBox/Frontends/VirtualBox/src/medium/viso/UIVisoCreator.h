@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100348 2023-07-03 14:03:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100479 2023-07-10 16:21:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -49,7 +49,6 @@ class QStackedLayout;
 class QVBoxLayout;
 class QILabel;
 class QMenu;
-class QStatusBar;
 class QIDialogButtonBox;
 class QIToolBar;
 class UIActionPool;
@@ -208,12 +207,9 @@ private:
     void loadSettings();
     void saveDialogGeometry();
     void updateWindowTitle();
-    void updateStatusLabel();
 
     UIVisoCreatorWidget *m_pVisoCreatorWidget;
     QIDialogButtonBox   *m_pButtonBox;
-    QStatusBar          *m_pStatusBar;
-    QILabel             *m_pStatusLabel;
     QPointer<UIActionPool> m_pActionPool;
     int                  m_iGeometrySaveTimerId;
     QString              m_strVisoSavePath;
