@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100470 2023-07-10 15:18:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100471 2023-07-10 15:20:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1777,11 +1777,6 @@ int shClSvcTransferHandler(PSHCLCLIENT pClient,
         {
             if (cParms != VBOX_SHCL_CPARMS_LIST_OPEN)
                 break;
-
-            ASSERT_GUEST_RETURN(aParms[1].type == VBOX_HGCM_SVC_PARM_32BIT, VERR_WRONG_PARAMETER_TYPE); /* List flags */
-            ASSERT_GUEST_RETURN(aParms[2].type == VBOX_HGCM_SVC_PARM_PTR,   VERR_WRONG_PARAMETER_TYPE); /* Filter string */
-            ASSERT_GUEST_RETURN(aParms[3].type == VBOX_HGCM_SVC_PARM_PTR,   VERR_WRONG_PARAMETER_TYPE); /* Path */
-            ASSERT_GUEST_RETURN(aParms[4].type == VBOX_HGCM_SVC_PARM_64BIT, VERR_WRONG_PARAMETER_TYPE); /* List handle (output) */
 
             SHCLLISTOPENPARMS listOpenParms;
             rc = shClSvcTransferGetListOpen(cParms, aParms, &listOpenParms);
