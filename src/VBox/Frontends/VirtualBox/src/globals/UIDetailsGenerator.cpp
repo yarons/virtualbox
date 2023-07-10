@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 100452 2023-07-10 11:35:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -376,6 +376,9 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
             if (comMachine.GetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging))
                 acceleration << QApplication::translate("UIDetails", "Nested Paging", "details (system)");
         }
+        /* Nested VT-x/AMD-V: */
+        if (comMachine.GetCPUProperty(KCPUPropertyType_HWVirt))
+            acceleration << QApplication::translate("UIDetails", "Nested VT-x/AMD-V", "details (system)");
         /* PAE/NX: */
         if (comMachine.GetCPUProperty(KCPUPropertyType_PAE))
             acceleration << QApplication::translate("UIDetails", "PAE/NX", "details (system)");
