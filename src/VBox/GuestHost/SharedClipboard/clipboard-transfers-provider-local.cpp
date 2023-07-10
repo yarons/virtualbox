@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-provider-local.cpp 100464 2023-07-10 14:39:53Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-provider-local.cpp 100465 2023-07-10 14:41:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Transfers interface implementation for local file systems.
  */
@@ -863,6 +863,7 @@ static DECLCALLBACK(int) shclTransferIfaceLocalObjRead(PSHCLTXPROVIDERCTX pCtx,
     return rc;
 }
 
+/** @copydoc SHCLTXPROVIDERIFACE::pfnObjWrite */
 static DECLCALLBACK(int) shclTransferIfaceLocalObjWrite(PSHCLTXPROVIDERCTX pCtx,
                                                         SHCLOBJHANDLE hObj, void *pvData, uint32_t cbData, uint32_t fFlags,
                                                         uint32_t *pcbWritten)
