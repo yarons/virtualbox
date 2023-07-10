@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100473 2023-07-10 15:54:56Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 100485 2023-07-10 18:17:23Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2086,7 +2086,7 @@ validationkit-packing:
 # Build the EFI firmware, all of it.
 #
 efi-fetch:
-	+ $(KMK) -C tools fetch VBOX_ONLY_EXTPACKS=1
+	+ $(KMK) -C tools fetch VBOX_ONLY_EXTPACKS=1 VBOX_ONLY_EFI=1
 
 efi-build: $(VBOX_VERSION_HEADER)
 	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX)
