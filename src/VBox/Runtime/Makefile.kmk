@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100493 2023-07-10 23:17:15Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3718,10 +3718,6 @@ RuntimeR0Drv_SOURCES.win = \
 	common/crypto/pkcs7-init.cpp \
 	common/crypto/pkcs7-sanity.cpp \
 	common/crypto/pkcs7-verify.cpp \
-	common/crypto/pkcs8-asn1-decoder.cpp \
-	common/crypto/pkcs8-core.cpp \
-	common/crypto/pkcs8-init.cpp \
-	common/crypto/pkcs8-sanity.cpp \
 	common/crypto/pkix-signature-builtin.cpp \
 	common/crypto/pkix-signature-core.cpp \
 	common/crypto/pkix-signature-rsa.cpp \
@@ -3875,10 +3871,6 @@ RuntimeR0Drv_SOURCES.darwin = \
 	common/crypto/pkcs7-init.cpp \
 	common/crypto/pkcs7-sanity.cpp \
 	common/crypto/pkcs7-verify.cpp \
-	common/crypto/pkcs8-asn1-decoder.cpp \
-	common/crypto/pkcs8-core.cpp \
-	common/crypto/pkcs8-init.cpp \
-	common/crypto/pkcs8-sanity.cpp \
 	common/crypto/pkix-signature-builtin.cpp \
 	common/crypto/pkix-signature-core.cpp \
 	common/crypto/pkix-signature-rsa.cpp \

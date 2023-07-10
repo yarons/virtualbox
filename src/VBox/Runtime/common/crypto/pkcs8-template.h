@@ -1,4 +1,4 @@
-/* $Id: pkcs8-template.h 100421 2023-07-06 19:24:56Z brian.le.lee@oracle.com $ */
+/* $Id: pkcs8-template.h 100493 2023-07-10 23:17:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#8, Code Generator Template.
  */
@@ -41,7 +41,7 @@
  */
 #define RTASN1TMPL_TYPE         RTCRPKCS8PRIVATEKEYINFO
 #define RTASN1TMPL_EXT_NAME     RTCrPkcs8PrivateKeyInfo
-#define RTASN1TMPL_INT_NAME     rTCrPkcs8PrivateKeyInfo
+#define RTASN1TMPL_INT_NAME     RTCrPkcs8PrivateKeyInfo
 RTASN1TMPL_BEGIN_SEQCORE();
 RTASN1TMPL_MEMBER(              Version,                RTASN1INTEGER,                  RTAsn1Integer);
 RTASN1TMPL_MEMBER(              PrivateKeyAlgorithm,    RTCRX509ALGORITHMIDENTIFIER,    RTCrX509AlgorithmIdentifier);

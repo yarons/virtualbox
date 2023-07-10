@@ -1,4 +1,4 @@
-/* $Id: pkcs8-internal.h 100421 2023-07-06 19:24:56Z brian.le.lee@oracle.com $ */
+/* $Id: pkcs8-internal.h 100493 2023-07-10 23:17:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#8, Internal Header.
  */
@@ -39,9 +39,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-/** The max number of bits we support in the modulus. */
-#define RTCRRSA_MAX_MODULUS_BITS        16384
 
 #define RTASN1TMPL_TEMPLATE_FILE "../common/crypto/pkcs8-template.h"
 #include <iprt/asn1-generator-internal-header.h>
