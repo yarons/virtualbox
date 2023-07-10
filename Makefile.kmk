@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100334 2023-06-30 07:26:41Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 100473 2023-07-10 15:54:56Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2092,7 +2092,7 @@ efi-build: $(VBOX_VERSION_HEADER)
 	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX)
 
 efi-packing:
-	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX) $(PATH_STAGE)/VBoxEfiFirmware.zip
+	+ $(KMK) -C src/VBox/Devices/EFI/Firmware$(VBOX_EFI_FIRMWARE_SUFFIX) $(PATH_STAGE)/VBoxEfiFirmware.zip $(if $(VBOX_WITH_VIRT_ARMV8),$(PATH_STAGE)/VBoxEfiFirmware-armv8.zip,)
 
 
 
