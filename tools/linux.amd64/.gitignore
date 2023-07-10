@@ -1,4 +1,6 @@
 /7zip
+/gcc-aarch64
+/gcc-arm-none-eabi
 /glslang
 /jwasm
 /jdk
