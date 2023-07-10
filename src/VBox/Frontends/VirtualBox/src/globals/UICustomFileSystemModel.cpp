@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 100419 2023-07-06 17:40:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 100460 2023-07-10 14:08:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -649,5 +649,4 @@ void UICustomFileSystemModel::initializeTree()
     m_pRootItem->setData(UICustomFileSystemModel::tr("Owner"), UICustomFileSystemModelData_Owner);
     m_pRootItem->setData(UICustomFileSystemModel::tr("Permissions"), UICustomFileSystemModelData_Permissions);
     m_pRootItem->setData(UICustomFileSystemModel::tr("Local Path"), UICustomFileSystemModelData_LocalPath);
-    m_pRootItem->setData(UICustomFileSystemModel::tr("Path"), UICustomFileSystemModelData_VISOPath);
 }
