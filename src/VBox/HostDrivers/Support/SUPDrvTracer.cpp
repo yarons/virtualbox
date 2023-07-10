@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 100476 2023-07-10 16:00:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -998,10 +998,10 @@ static int supdrvTracerRegisterVtgObj(PSUPDRVDEVEXT pDevExt, PVTGOBJHDR pVtgHdr,
             pProv->fRegistered          = true;
 
             if (!pUmod)
-                memcpy(pProv->szName, pszName, cchName + 1);
+                SUPDRV_UNFORTIFIED_MEMCPY(pProv->szName, pszName, cchName + 1);
             else
                 RTStrPrintf(pProv->szName, cchName + 1, "%s%u", pszName, (uint32_t)pSession->Process);
-            memcpy((void *)pProv->Core.pszModName, pszModName, cchModName + 1);
+            SUPDRV_UNFORTIFIED_MEMCPY((void *)pProv->Core.pszModName, pszModName, cchModName + 1);
 
             /*
              * Do the actual registration and list manipulations while holding
