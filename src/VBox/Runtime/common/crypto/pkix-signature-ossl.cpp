@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-ossl.cpp 100447 2023-07-08 18:50:27Z knut.osmundsen@oracle.com $ */
+/* $Id: pkix-signature-ossl.cpp 100491 2023-07-10 22:05:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, ECDSA Providers.
  */
@@ -150,7 +150,7 @@ static DECLCALLBACK(int) rtCrPkixSignatureOsslEvp_Verify(PCRTCRPKIXSIGNATUREDESC
     Assert(!pThis->fSigning);
     RT_NOREF_PV(pThis);
 
-#if OPENSSL_VERSION_NUMBER >= 0x30000000 && !defined(LIBRESSL_VERSION_NUMBER)
+#if OPENSSL_VERSION_NUMBER >= 0x10000000
     PRTERRINFO const pErrInfo = NULL;
 
     /*
@@ -185,7 +185,11 @@ static DECLCALLBACK(int) rtCrPkixSignatureOsslEvp_Verify(PCRTCRPKIXSIGNATUREDESC
                                (void **)&pEvpPublicKey, (const void **)&pEvpMdType, pErrInfo);
     if (RT_SUCCESS(rc))
     {
+# if OPENSSL_VERSION_NUMBER >= 0x30000000 && !defined(LIBRESSL_VERSION_NUMBER)
         EVP_PKEY_CTX * const pEvpPublickKeyCtx = EVP_PKEY_CTX_new_from_pkey(NULL, pEvpPublicKey, NULL);
+# else
+        EVP_PKEY_CTX * const pEvpPublickKeyCtx = EVP_PKEY_CTX_new(pEvpPublicKey, NULL);
+# endif
         if (pEvpPublickKeyCtx)
         {
             rc = EVP_PKEY_verify_init(pEvpPublickKeyCtx);
