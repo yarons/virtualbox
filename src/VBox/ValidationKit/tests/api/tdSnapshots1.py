@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSnapshots1.py 100401 2023-07-06 09:06:24Z ksenia.s.stepanova@oracle.com $
+# $Id: tdSnapshots1.py 100453 2023-07-10 12:39:34Z brent.paulson@oracle.com $
 
 """
 VirtualBox Validation Kit - Nested Snapshot Restoration Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100401 $"
+__version__ = "$Revision: 100453 $"
 
 
 # Standard Python imports.
@@ -94,14 +94,14 @@ class SubTstDrvNestedSnapshots1(base.SubTestDriverBase):
           + Boot and then poweroff the VM
           + Verify snapshot 'beta' still exists (IMachine::findSnapshot())
         """
-        reporter.testStart('testRestoreNestedSnapshot');
+        reporter.testStart('Verify saved state file exists after nested snapshot restore');
 
         # Restoring an online snapshot requires an updated TXS (r157880 or later) for the
         # TCP keep alive support added in r157875 thus it is essential that the
         # ValidationKit ISO be mounted in the VM so that TXS can auto-update if needed.
         reporter.log('Creating test VM: \'%s\'' % self.sVmName);
         oVM = self.oTstDrv.createTestVM(self.sVmName, 1, sHd = '7.1/ol-6u10-x86.vdi',
-                                        sKind = 'Oracle', fIoApic = True,
+                                        sKind = 'Oracle6', fIoApic = True,
                                         sDvdImage = self.oTstDrv.sVBoxValidationKitIso);
         if oVM is None:
             reporter.error('Error creating test VM: \'%s\'' % self.sVmName);
@@ -202,7 +202,7 @@ class SubTstDrvNestedSnapshots1(base.SubTestDriverBase):
           + Check that the snapshots are truly gone.
         """
 
-        reporter.testStart('Verifying IMachine::unregister()+IMachine::deleteConfig() deletes snapshots');
+        reporter.testStart('Verify IMachine::unregister()+deleteConfig() deletes snapshots');
         oVM = self.oTstDrv.getVmByName(self.sVmName);
         # IMachine::stateFilePath() isn't implemented in the testdriver so we manually
         # retrieve the paths to the snapshots.
