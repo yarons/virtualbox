@@ -1,4 +1,4 @@
-/* $Id: apm.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: apm.c 100456 2023-07-10 13:46:21Z michal.necasek@oracle.com $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -161,6 +161,7 @@ void BIOSCALL apm_function(sys_regs_t r)
         /// @todo validate current connection state
         /// @todo change connection state
         break;
+#if VBOX_BIOS_CPU >= 80286
     case APM_PM_CONN:
         /// @todo validate device ID
         /// @todo validate current connection state
@@ -171,6 +172,7 @@ void BIOSCALL apm_function(sys_regs_t r)
         SI = APM_BIOS_SEG_LEN;          /* 16-bit PM code segment length. */
         DI = APM_BIOS_SEG_LEN;          /* Data segment length. */
         break;
+#endif
 #if VBOX_BIOS_CPU >= 80386
     case APM_32_CONN:
         /// @todo validate device ID
