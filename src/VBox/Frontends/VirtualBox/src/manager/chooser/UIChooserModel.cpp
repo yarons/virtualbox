@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 100462 2023-07-10 14:25:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 100469 2023-07-10 14:58:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1735,6 +1735,9 @@ bool UIChooserModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pEv
                                 m_cloudMenus.value(UIChooserNodeType_Group)->exec(pEvent->screenPos());
                             break;
                         }
+                        /* Otherwise we have to find a first child machine-item: */
+                        else
+                            pItem = qobject_cast<UIChooserItem*>(pGroupItem)->firstMachineItem();
                     }
                     RT_FALL_THRU();
                     case UIChooserNodeType_Machine:
