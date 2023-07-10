@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 100455 2023-07-10 13:00:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -309,7 +309,7 @@ private:
     /** Marks/umarks the search line edit to signal that there are no matches for the current search.
       * uses m_searchLineUnmarkColor and m_searchLineMarkColor. */
     void            markUnmarkSearchLineEdit(bool fMark);
-
+    QStringList     currentDirectoryListing() const;
     UICustomFileSystemModel       *m_pModel;
     UIGuestControlFileView        *m_pView;
     UICustomFileSystemProxyModel  *m_pProxyModel;

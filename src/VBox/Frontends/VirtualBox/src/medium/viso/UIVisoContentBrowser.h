@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100438 2023-07-07 14:27:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100455 2023-07-10 13:00:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -134,9 +134,12 @@ private:
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
     QList<UICustomFileSystemItem*> tableSelectedItems();
+    /* Names of the file objects of the current directory. */
+    QStringList                    currentDirectoryListing() const;
     bool                           onStartItem();
     void                           goUp();
     void                           createLoadedFileEntries(const QMap<QString, QString> &fileEntries);
+    const UICustomFileSystemItem*  currentDirectoryItem() const;
     UIVisoContentTableView        *m_pTableView;
     UICustomFileSystemModel       *m_pModel;
     UICustomFileSystemProxyModel  *m_pTableProxyModel;
