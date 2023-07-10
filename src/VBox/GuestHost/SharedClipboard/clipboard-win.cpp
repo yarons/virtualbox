@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100432 2023-07-07 10:27:52Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100448 2023-07-10 09:09:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -147,11 +147,11 @@ int SharedClipboardWinClear(void)
     if (EmptyClipboard())
         return VINF_SUCCESS;
 
-    const DWORD dwLastErr = GetLastError();
-    AssertReturn(dwLastErr != ERROR_CLIPBOARD_NOT_OPEN, VERR_INVALID_STATE);
+    DWORD const dwLastErr = GetLastError();
+    int   const rc        = RTErrConvertFromWin32(dwLastErr);
+    if (dwLastErr != ERROR_CLIPBOARD_NOT_OPEN) /* Can happen if we didn't open the clipboard before. Just ignore this. */
+        LogRel2(("Shared Clipboard: Clearing Windows clipboard failed with %Rrc (0x%x)\n", rc, dwLastErr));
 
-    int rc = RTErrConvertFromWin32(dwLastErr);
-    LogFunc(("Failed with %Rrc (0x%x)\n", rc, dwLastErr));
     return rc;
 }
 
