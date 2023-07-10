@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100481 2023-07-10 16:56:48Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100482 2023-07-10 17:07:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -451,27 +451,15 @@ void ShClTransferListOpenParmsDestroy(PSHCLLISTOPENPARMS pParms)
  */
 int ShClTransferListEntryAlloc(PSHCLLISTENTRY *ppListEntry)
 {
-    PSHCLLISTENTRY pListEntry = (PSHCLLISTENTRY)RTMemAlloc(sizeof(SHCLLISTENTRY));
+    AssertPtrReturn(ppListEntry, VERR_INVALID_POINTER);
+
+    PSHCLLISTENTRY pListEntry = (PSHCLLISTENTRY)RTMemAllocZ(sizeof(SHCLLISTENTRY));
     if (!pListEntry)
         return VERR_NO_MEMORY;
 
-    int rc;
+    *ppListEntry = pListEntry;
 
-    size_t cbInfo = sizeof(SHCLFSOBJINFO);
-    void  *pvInfo = RTMemAlloc(cbInfo);
-    if (pvInfo)
-    {
-        rc = ShClTransferListEntryInitEx(pListEntry, VBOX_SHCL_INFO_F_NONE, NULL /* pszName */, pvInfo, (uint32_t)cbInfo);
-        if (RT_SUCCESS(rc))
-            *ppListEntry = pListEntry;
-
-        return rc;
-    }
-    else
-        rc = VERR_NO_MEMORY;
-
-    RTMemFree(pListEntry);
-    return rc;
+    return VINF_SUCCESS;
 }
 
 /**
