@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSnapshots1.py 100453 2023-07-10 12:39:34Z brent.paulson@oracle.com $
+# $Id: tdSnapshots1.py 100454 2023-07-10 12:59:59Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Nested Snapshot Restoration Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100453 $"
+__version__ = "$Revision: 100454 $"
 
 
 # Standard Python imports.
@@ -202,7 +202,7 @@ class SubTstDrvNestedSnapshots1(base.SubTestDriverBase):
           + Check that the snapshots are truly gone.
         """
 
-        reporter.testStart('Verify IMachine::unregister()+deleteConfig() deletes snapshots');
+        reporter.testStart('testDeleteSnapshots');
         oVM = self.oTstDrv.getVmByName(self.sVmName);
         # IMachine::stateFilePath() isn't implemented in the testdriver so we manually
         # retrieve the paths to the snapshots.
