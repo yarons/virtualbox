@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100482 2023-07-10 17:07:44Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100484 2023-07-10 17:59:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1571,8 +1571,6 @@ int ShClTransferSetProvider(PSHCLTRANSFER pTransfer, PSHCLTXPROVIDER pProvider)
     pTransfer->ProviderCtx.pTransfer = pTransfer;
     pTransfer->ProviderCtx.pvUser    = pProvider->pvUser;
     pTransfer->ProviderCtx.cbUser    = pProvider->cbUser;
-
-    LogRelFunc(("pfnOnInitialized=%p\n", pTransfer->Callbacks.pfnOnInitialized));
 
     LogFlowFuncLeaveRC(rc);
     return rc;
