@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100473 2023-07-10 15:54:56Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 100477 2023-07-10 16:01:07Z alexander.eichner@oracle.com $
 ## @file
 # Toplevel sub-makefile for the EFI firmwares.
 #
@@ -320,7 +320,7 @@ ifeq ($(KBUILD_HOST),win)
 endif
 
 ifdef VBOX_WITH_VIRT_ARMV8
- if1of ($(KBUILD_HOST),darwin linux)
+ if1of ($(KBUILD_HOST), darwin linux)
   ifndef TOOL_VBoxXGccArm64Elf
    include $(KBUILD_TOOL_PATHS)/VBoxXGccArm64Elf.kmk
   endif
