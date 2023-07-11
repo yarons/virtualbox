@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 100461 2023-07-10 14:23:36Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 100504 2023-07-11 10:59:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -757,6 +757,14 @@ STDMETHODIMP SharedClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTG
 
     LogFlowFunc(("lIndex=%RI32, enmStatus=%#x\n", pFormatEtc->lindex, m_enmStatus));
 
+    /* If the object is not ready (anymore), bail out early. */
+    if (   m_enmStatus != Initialized
+        && m_enmStatus != Running)
+    {
+        unlock();
+        return E_UNEXPECTED;
+    }
+
     /*
      * Initialize default values.
      */
@@ -876,9 +884,6 @@ STDMETHODIMP SharedClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTG
 
                 break;
             }
-
-            case Completed:
-                break;
 
             default:
                 AssertFailedStmt(rc = VERR_STATE_CHANGED);
