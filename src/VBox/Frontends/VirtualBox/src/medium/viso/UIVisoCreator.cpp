@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100502 2023-07-11 10:31:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100503 2023-07-11 10:36:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -437,7 +437,7 @@ void UIVisoCreatorWidget::sltSaveAsAction()
     {
         QFileInfo fileInfo(strSaveFileName);
         setVisoFilePath(fileInfo.absolutePath());
-        setVisoName(fileInfo.fileName());
+        setVisoName(fileInfo.completeBaseName());
     }
 }
 
