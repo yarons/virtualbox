@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 100524 2023-07-11 17:49:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2800,7 +2800,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleRuntimePerformUpgradeGuestAdditions(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/guesttools_16px.png", ":/guesttools_disabled_16px.png", true)
+        : UIActionSimple(pParent, ":/guesttools_update_16px.png", ":/guesttools_update_disabled_16px.png", true)
     {}
 
 protected:
