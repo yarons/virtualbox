@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100508 2023-07-11 11:22:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100515 2023-07-11 13:01:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -489,7 +489,10 @@ void UIVisoCreatorWidget::prepareWidgets()
 #endif
 
     if (m_pActionPool && m_pActionPool->action(UIActionIndex_M_VISOCreator))
+    {
         m_pMainMenu = m_pActionPool->action(UIActionIndex_M_VISOCreator)->menu();
+        m_pMainMenu->clear();
+    }
 
     if (m_fShowToolBar)
     {
