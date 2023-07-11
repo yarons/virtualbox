@@ -1,4 +1,4 @@
-/* $Id: pkcs8-template.h 100493 2023-07-10 23:17:15Z knut.osmundsen@oracle.com $ */
+/* $Id: pkcs8-template.h 100528 2023-07-11 22:52:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - PKCS \#8, Code Generator Template.
  */
@@ -52,14 +52,13 @@ RTASN1TMPL_END_SEQCORE();
 #undef RTASN1TMPL_EXT_NAME
 #undef RTASN1TMPL_INT_NAME
 
-#if 0
 
 /*
  * Encrypted private key info
  */
-#define RTASN1TMPL_TYPE         RTCRENCRYPTEDPRIVATEKEY
-#define RTASN1TMPL_EXT_NAME     RTCrEncryptedPrivateKey
-#define RTASN1TMPL_INT_NAME     rtCrEncryptedPrivateKey
+#define RTASN1TMPL_TYPE         RTCRPKCS8ENCRYPTEDPRIVATEKEYINFO
+#define RTASN1TMPL_EXT_NAME     RTCrPkcs8EncryptedPrivateKeyInfo
+#define RTASN1TMPL_INT_NAME     rtCrPkcs8EncryptedPrivateKeyInfo
 RTASN1TMPL_BEGIN_SEQCORE();
 RTASN1TMPL_MEMBER(              EncryptionAlgorithm,    RTCRX509ALGORITHMIDENTIFIER,    RTCrX509AlgorithmIdentifier);
 RTASN1TMPL_MEMBER(              EncryptedData,          RTASN1OCTETSTRING,              RTAsn1OctetString);
@@ -68,4 +67,3 @@ RTASN1TMPL_END_SEQCORE();
 #undef RTASN1TMPL_EXT_NAME
 #undef RTASN1TMPL_INT_NAME
 
-#endif
