@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-provider-local.cpp 100522 2023-07-11 16:52:03Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-provider-local.cpp 100527 2023-07-11 18:08:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Transfers interface implementation for local file systems.
  */
@@ -418,7 +418,7 @@ static DECLCALLBACK(int) shclTransferIfaceLocalListHdrRead(PSHCLTXPROVIDERCTX pC
  * @param   pszName             File name to use.
  * @param   pObjInfo            Object information to use.
  */
-static DECLCALLBACK(int) shclTransferIfaceLocalListEntryInit(PSHCLLISTENTRY pEntry, const char *pszName, PRTFSOBJINFO pObjInfo)
+static int shclTransferIfaceLocalListEntryInit(PSHCLLISTENTRY pEntry, const char *pszName, PRTFSOBJINFO pObjInfo)
 {
     PSHCLFSOBJINFO pFsObjInfo = (PSHCLFSOBJINFO)RTMemAllocZ(sizeof(SHCLFSOBJINFO));
     AssertPtrReturn(pFsObjInfo, VERR_NO_MEMORY);
