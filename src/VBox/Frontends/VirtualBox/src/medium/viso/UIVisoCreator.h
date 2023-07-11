@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100479 2023-07-10 16:21:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100496 2023-07-11 06:55:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -116,6 +116,7 @@ private slots:
     void sltHostBrowserTableSelectionChanged(QStringList pathList);
     void sltContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);
     void sltOpenAction();
+    void sltSaveAsAction();
     void sltISOImportAction();
     void sltISORemoveAction();
     void sltISOContentImportedOrRemoved(bool fImported);
@@ -142,6 +143,7 @@ private:
       * @{ */
         QAction              *m_pAddAction;
         QAction              *m_pOpenAction;
+        QAction              *m_pSaveAsAction;
         QAction              *m_pImportISOAction;
         QAction              *m_pRemoveISOAction;
     /** @} */
