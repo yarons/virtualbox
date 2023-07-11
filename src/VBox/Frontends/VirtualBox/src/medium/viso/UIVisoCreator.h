@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100497 2023-07-11 07:27:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 100500 2023-07-11 09:36:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -135,6 +135,9 @@ private:
 
     void toggleSettingsWidget(bool fShown);
     QStringList findISOFiles(const QStringList &pathList) const;
+    void setVisoName(const QString& strName);
+    void setVisoFilePath(const QString& strPath);
+
     /** @name Main toolbar (and main menu) actions
       * @{ */
         QAction         *m_pActionSettings;
@@ -165,7 +168,7 @@ private:
     QLabel                *m_pOverlayWidget;
     QGraphicsBlurEffect   *m_pOverlayBlurEffect;
     QStackedLayout        *m_pStackedLayout;
-    QString                m_strVisoSavePath;
+    QString                m_strVisoFilePath;
 };
 
 
@@ -202,11 +205,11 @@ private slots:
 
     void sltSetCancelButtonShortCut(QKeySequence keySequence);
     void sltVisoNameChanged(const QString &strName);
+    void sltVisoFilePathChanged(const QString &strPath);
     void sltSettingDialogToggle(bool fIsShown);
 
 private:
     void prepareWidgets(const QString& strVisoSavePath, const QString &strMachineName);
-    void prepareConnections();
     virtual void retranslateUi() final override;
     void loadSettings();
     void saveDialogGeometry();
