@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100502 2023-07-11 10:31:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -730,7 +730,7 @@ void UIVisoContentBrowser::initializeModel()
     if (!rootItem())
         return;
 
-    const QString startPath = QString("/%1").arg(m_strVisoName);
+    const QString startPath = QString("/");
 
     UICustomFileSystemItem *pStartItem = new UICustomFileSystemItem(startPath, rootItem(), KFsObjType_Directory);
 
@@ -782,14 +782,6 @@ UICustomFileSystemItem* UIVisoContentBrowser::searchItemByPath(const QString &st
 void UIVisoContentBrowser::showHideHiddenObjects(bool bShow)
 {
     Q_UNUSED(bShow);
-}
-
-void UIVisoContentBrowser::setVisoName(const QString &strName)
-{
-    if (m_strVisoName == strName)
-        return;
-    m_strVisoName = strName;
-    updateStartItemName();
 }
 
 bool UIVisoContentBrowser::tableViewHasSelection() const

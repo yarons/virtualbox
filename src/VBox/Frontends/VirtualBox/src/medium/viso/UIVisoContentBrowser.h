@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100455 2023-07-10 13:00:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100502 2023-07-11 10:31:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -72,7 +72,6 @@ public:
       * .viso file. */
     QStringList entryList();
     virtual void showHideHiddenObjects(bool bShow)  override final;
-    void setVisoName(const QString &strName);
     virtual bool tableViewHasSelection() const final override;
     void parseVisoFileContent(const QString &strFileName);
     void prepareMainMenu(QMenu *pMenu);
@@ -144,7 +143,6 @@ private:
     UICustomFileSystemModel       *m_pModel;
     UICustomFileSystemProxyModel  *m_pTableProxyModel;
 
-    QString                       m_strVisoName;
     QString                       m_strImportedISOPath;
     /** keys of m_entryMap are iso locations and values are
      *  local location of file objects. these keys and values are
