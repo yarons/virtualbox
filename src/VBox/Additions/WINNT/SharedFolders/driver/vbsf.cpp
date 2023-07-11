@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 99870 2023-05-19 19:51:37Z knut.osmundsen@oracle.com $ */
+/* $Id: vbsf.cpp 100519 2023-07-11 16:30:49Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -1508,7 +1508,7 @@ NTSTATUS VBoxMRxQueryEaInfo(IN OUT PRX_CONTEXT RxContext)
 {
     RT_NOREF(RxContext);
     Log(("VBOXSF: MRxQueryEaInfo: Ea buffer len remaining is %d\n", RxContext->Info.LengthRemaining));
-    return STATUS_SUCCESS;
+    return STATUS_NOT_SUPPORTED;
 }
 
 NTSTATUS VBoxMRxSetEaInfo(IN OUT PRX_CONTEXT RxContext)
