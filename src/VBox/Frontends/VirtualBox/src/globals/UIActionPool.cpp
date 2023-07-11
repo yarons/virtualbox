@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 100496 2023-07-11 06:55:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.cpp 100508 2023-07-11 11:22:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2640,7 +2640,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "SaveAs"));
+        setName(QApplication::translate("UIActionPool", "Change Path"));
         setShortcutScope(QApplication::translate("UIActionPool", "VISO Creator"));
         setStatusTip(QApplication::translate("UIActionPool", "Select a file to save the VISO content."));
         setToolTip(QApplication::translate("UIActionPool", "Select a file to save the VISO content.")
