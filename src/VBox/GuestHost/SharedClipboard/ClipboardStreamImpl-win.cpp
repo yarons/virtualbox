@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 100507 2023-07-11 11:09:11Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardStreamImpl-win.cpp 100509 2023-07-11 11:23:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -290,12 +290,28 @@ STDMETHODIMP SharedClipboardWinStreamImpl::Stat(STATSTG *pStatStg, DWORD dwFlags
 
             case STATFLAG_DEFAULT:
             {
-                /** @todo r=bird: This is using the wrong allocator.  According to MSDN the
-                 * caller will pass this to CoTaskMemFree, so we should use CoTaskMemAlloc to
-                 * allocate it. */
-                int rc2 = RTStrToUtf16(m_strPath.c_str(), &pStatStg->pwcsName);
-                if (RT_FAILURE(rc2))
-                    hr = E_FAIL;
+                size_t const cchLen = m_strPath.length() + 1 /* Include terminator */;
+                pStatStg->pwcsName = (LPOLESTR)CoTaskMemAlloc(cchLen * sizeof(RTUTF16));
+                if (pStatStg->pwcsName)
+                {
+                    PRTUTF16 pwszStr;
+                    int rc2 = RTStrToUtf16(m_strPath.c_str(), &pwszStr);
+                    if (RT_SUCCESS(rc2))
+                    {
+                        memcpy(pStatStg->pwcsName, pwszStr, cchLen * sizeof(RTUTF16));
+                        RTUtf16Free(pwszStr);
+                        pwszStr = NULL;
+                    }
+
+                    if (RT_FAILURE(rc2))
+                    {
+                        CoTaskMemFree(pStatStg->pwcsName);
+                        pStatStg->pwcsName = NULL;
+                        hr = E_UNEXPECTED;
+                    }
+                }
+                else
+                    hr = E_OUTOFMEMORY;
                 break;
             }
 
