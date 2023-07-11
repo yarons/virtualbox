@@ -1,4 +1,4 @@
-/* $Id: tstRTCrPkix-1.cpp 100528 2023-07-11 22:52:34Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCrPkix-1.cpp 100530 2023-07-11 23:09:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT testcase - Crypto - Public-Key Infrastructure \#1.
  */
@@ -57,7 +57,6 @@ static RTTEST g_hTest;
  */
 static const struct { unsigned cBits; const char *pszPrivateKey, *pszPublicKey, *pszPassword; } g_aKeyPairs[] =
 {
-#if 0
     {
         4096,
         "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -256,9 +255,9 @@ static const struct { unsigned cBits; const char *pszPrivateKey, *pszPublicKey, 
         "-----END PUBLIC KEY-----\n",
         "password"
     },
-#endif
+
     /*
-     * PKCS8 Test Keys
+     * PKCS8 Test Keys with and without passwords.
      */
     {
         1024,
