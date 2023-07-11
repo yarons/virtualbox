@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 100434 2023-07-07 11:55:21Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardStreamImpl-win.cpp 100507 2023-07-11 11:09:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -233,7 +233,13 @@ STDMETHODIMP SharedClipboardWinStreamImpl::Read(void *pvBuffer, ULONG nBytesToRe
         }
     }
 
-    LogFlowThisFunc(("Leave: rc=%Rrc, cbSize=%RU64, cbProcessed=%RU64 -> nBytesToRead=%RU32, cbToRead=%RU32, cbRead=%RU32\n",
+    if (RT_FAILURE(rc))
+    {
+        if (m_pParent)
+            m_pParent->SetStatus(SharedClipboardWinDataObject::Error, rc /* Propagate rc */);
+    }
+
+    LogFlowThisFunc(("LEAVE: rc=%Rrc, cbSize=%RU64, cbProcessed=%RU64 -> nBytesToRead=%RU32, cbToRead=%RU32, cbRead=%RU32\n",
                      rc, cbSize, m_cbProcessed, nBytesToRead, cbToRead, cbRead));
 
     if (nBytesRead)
