@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBInternal.h 100517 2023-07-11 14:54:11Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -77,6 +77,7 @@ typedef struct VUSBROOTHUB *PVUSBROOTHUB;
  * @{ */
 #define VUSB_DEFAULT_ADDRESS        0
 #define VUSB_INVALID_ADDRESS        UINT8_C(0xff)
+#define VUSB_ADDRESS_MASK           UINT8_C(0x7f)
 /** @} */
 
 /** @name Feature bits (1<<FEATURE for the u16Status bit)
