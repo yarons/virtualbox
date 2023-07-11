@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBBackend.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBBackend.cpp 100521 2023-07-11 16:47:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Remote USB backend
  */
@@ -1106,13 +1106,15 @@ int RemoteUSBBackend::saveDeviceList(const void *pvList, uint32_t cbList)
     {
         RTMemFree(mpvDeviceList);
         mpvDeviceList = NULL;
-
-        mcbDeviceList = cbList;
+        mcbDeviceList = 0;
 
         if (cbList > 0)
         {
             mpvDeviceList = RTMemAlloc(cbList);
+            AssertPtrReturn(mpvDeviceList, VERR_NO_MEMORY);
+
             memcpy(mpvDeviceList, pvList, cbList);
+            mcbDeviceList = cbList;
         }
 
         mfHasDeviceList = true;

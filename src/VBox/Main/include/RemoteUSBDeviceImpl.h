@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBDeviceImpl.h 100521 2023-07-11 16:47:42Z vitali.pelenjow@oracle.com $ */
 
 /** @file
  *
@@ -50,7 +50,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc, bool fDescExt);
+    HRESULT init(uint32_t u32ClientId, VRDEUSBDEVICEDESC const *pDevDesc, bool fDescExt);
     void uninit();
 
     // public methods only for internal purposes

@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 100521 2023-07-11 16:47:42Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation for remote (VRDP) USB devices.
  */
@@ -64,7 +64,7 @@ void RemoteUSBDevice::FinalRelease()
 /**
  * Initializes the remote USB device object.
  */
-HRESULT RemoteUSBDevice::init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc, bool fDescExt)
+HRESULT RemoteUSBDevice::init(uint32_t u32ClientId, VRDEUSBDEVICEDESC const *pDevDesc, bool fDescExt)
 {
     LogFlowThisFunc(("u32ClientId=%d,pDevDesc=%p\n", u32ClientId, pDevDesc));
 
