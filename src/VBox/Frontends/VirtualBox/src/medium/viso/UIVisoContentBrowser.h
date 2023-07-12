@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100520 2023-07-11 16:32:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100548 2023-07-12 12:31:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -87,6 +87,7 @@ public slots:
     void sltItemRenameAttempt(UICustomFileSystemItem *pItem, const QString &strOldPath,
                               const QString &strOldName, const QString &strNewName);
     void sltRemoveItems();
+    void sltRestoreItems();
     void sltResetAction();
     void sltItemRenameAction();
     void sltGoUp();
@@ -123,6 +124,7 @@ private:
     void                    updateStartItemName();
     void                    renameFileObject(UICustomFileSystemItem *pItem);
     void                    removeItems(const QList<UICustomFileSystemItem*> itemList);
+    void                    restoreItems(const QList<UICustomFileSystemItem*> itemList);
     /** Creates and entry for pItem consisting of a map item (key is viso path and value is host file system path)
      *  if @p bRemove is true then the value is the string ":remove:" which effectively removes the file object
      *  from the iso image. */
@@ -150,6 +152,7 @@ private:
     QMap<QString, QString>        m_entryMap;
 
     QAction                      *m_pRemoveAction;
+    QAction                      *m_pRestoreAction;
     QAction                      *m_pCreateNewDirectoryAction;
     QAction                      *m_pRenameAction;
     QAction                      *m_pResetAction;
