@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 100505 2023-07-11 11:03:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -2251,7 +2251,7 @@ static int vbglR3ClipboardTransferStop(PVBGLR3SHCLCMDCTX pCmdCtx, PSHCLTRANSFERC
     /* Send a reply in any case. */
     int rc2 = VbglR3ClipboardTransferStatusReply(pCmdCtx, pTransfer,
                                                    RT_SUCCESS(rc)
-                                                 ? SHCLTRANSFERSTATUS_STOPPED : SHCLTRANSFERSTATUS_ERROR, rc);
+                                                 ? SHCLTRANSFERSTATUS_COMPLETED : SHCLTRANSFERSTATUS_ERROR, rc);
     if (RT_SUCCESS(rc))
         rc = rc2;
 
@@ -2387,7 +2387,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
                             break;
                         }
 
-                        case SHCLTRANSFERSTATUS_STOPPED:
+                        case SHCLTRANSFERSTATUS_COMPLETED:
                             RT_FALL_THROUGH();
                         case SHCLTRANSFERSTATUS_CANCELED:
                             RT_FALL_THROUGH();

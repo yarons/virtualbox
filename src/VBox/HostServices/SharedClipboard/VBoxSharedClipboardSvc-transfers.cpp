@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100544 2023-07-12 11:58:22Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1499,7 +1499,7 @@ static int shClSvcTransferHandleReply(PSHCLCLIENT pClient, SHCLTRANSFERID idTran
                                 break;
                             }
 
-                            case SHCLTRANSFERSTATUS_STOPPED:
+                            case SHCLTRANSFERSTATUS_COMPLETED:
                             {
                                 LogRel(("Shared Clipboard: Guest has stopped transfer %RU32\n", pTransfer->State.uID));
 
@@ -2445,7 +2445,7 @@ int ShClSvcTransferStop(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer, bool fWait
 
     PSHCLEVENT pEvent;
     int rc = shClSvcTransferSendStatusAsync(pClient, pTransfer,
-                                            SHCLTRANSFERSTATUS_STOPPED, VINF_SUCCESS, &pEvent);
+                                            SHCLTRANSFERSTATUS_COMPLETED, VINF_SUCCESS, &pEvent);
     if (   RT_SUCCESS(rc)
         && fWaitForGuest)
     {

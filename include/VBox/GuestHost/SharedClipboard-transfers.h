@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100545 2023-07-12 12:01:33Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -99,8 +99,8 @@ typedef enum
     SHCLTRANSFERSTATUS_UNINITIALIZED = 2,
     /** The transfer is active and running. */
     SHCLTRANSFERSTATUS_STARTED = 3,
-    /** The transfer has been stopped. */
-    SHCLTRANSFERSTATUS_STOPPED = 4,
+    /** The transfer has been successfully completed. */
+    SHCLTRANSFERSTATUS_COMPLETED = 4,
     /** The transfer has been canceled. */
     SHCLTRANSFERSTATUS_CANCELED = 5,
     /** The transfer has been killed. */

@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 100546 2023-07-12 12:03:22Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -371,7 +371,7 @@ static DECLCALLBACK(void) vbtrShClTransferCompletedCallback(PSHCLTRANSFERCALLBAC
             break;
 
         case VINF_SUCCESS:
-            enmSts = SHCLTRANSFERSTATUS_STOPPED;
+            enmSts = SHCLTRANSFERSTATUS_COMPLETED;
             break;
 
         default:
