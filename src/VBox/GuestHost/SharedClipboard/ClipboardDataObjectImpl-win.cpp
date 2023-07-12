@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 100512 2023-07-11 12:23:45Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 100538 2023-07-12 08:53:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -464,21 +464,13 @@ int SharedClipboardWinDataObject::readDir(PSHCLTRANSFER pTransfer, const Utf8Str
  * @param   pvUser              Pointer to user-provided data. Of type SharedClipboardWinDataObject.
  */
 /* static */
-DECLCALLBACK(int) SharedClipboardWinDataObject::readThread(RTTHREAD ThreadSelf, void *pvUser)
+DECLCALLBACK(int) SharedClipboardWinDataObject::readThread(PSHCLTRANSFER pTransfer, void *pvUser)
 {
-    RT_NOREF(ThreadSelf);
+    RT_NOREF(pTransfer);
 
     LogFlowFuncEnter();
 
     SharedClipboardWinDataObject *pThis = (SharedClipboardWinDataObject *)pvUser;
-
-    PSHCLTRANSFER pTransfer = pThis->m_pTransfer;
-    AssertPtr(pTransfer);
-
-    pTransfer->Thread.fStarted = true;
-    pTransfer->Thread.fStop    = false;
-
-    RTThreadUserSignal(RTThreadSelf());
 
     LogRel2(("Shared Clipboard: Calculating transfer ...\n"));
 
