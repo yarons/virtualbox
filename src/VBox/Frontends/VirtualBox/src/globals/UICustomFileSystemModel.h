@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 100460 2023-07-10 14:08:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 100539 2023-07-12 10:13:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -49,6 +49,7 @@ enum UICustomFileSystemModelData
     UICustomFileSystemModelData_Permissions,
     UICustomFileSystemModelData_LocalPath,
     UICustomFileSystemModelData_ISOFilePath, /* in case of import-iso this contains full path of the container iso file. */
+    UICustomFileSystemModelData_RemovedFromVISO,
     UICustomFileSystemModelData_Max
 };
 
@@ -113,6 +114,9 @@ public:
 
     void setIsHidden(bool flag);
     bool isHidden() const;
+
+    void setRemovedFromViso(bool fRemoved);
+    bool isRemovedFromViso() const;
 
 private:
 

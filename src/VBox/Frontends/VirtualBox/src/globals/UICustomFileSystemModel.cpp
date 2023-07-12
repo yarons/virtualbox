@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 100460 2023-07-10 14:08:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 100539 2023-07-12 10:13:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -279,6 +279,16 @@ bool UICustomFileSystemItem::isHidden() const
     return m_fIsHidden;
 }
 
+void UICustomFileSystemItem::setRemovedFromViso(bool fRemoved)
+{
+    m_itemData[UICustomFileSystemModelData_RemovedFromVISO] = fRemoved;
+}
+
+bool UICustomFileSystemItem::isRemovedFromViso() const
+{
+    return m_itemData[UICustomFileSystemModelData_RemovedFromVISO].toBool();
+}
+
 
 /*********************************************************************************************************************************
 *   UICustomFileSystemProxyModel implementation.                                                                                 *
@@ -483,18 +493,20 @@ QVariant UICustomFileSystemModel::data(const QModelIndex &index, int role) const
                 return QIcon(":/arrow_up_10px_x2.png");
             else if(item->isDriveItem())
                 return QIcon(":/hd_32px.png");
+            else if (item->isRemovedFromViso())
+                return QIcon(":/file_manager_folder_remove_16px.png");
+            else if (!strContainingISOFile.isEmpty())
+                return QIcon(":/file_manager_folder_cd_16px.png");
             else
-            {
-                if (!strContainingISOFile.isEmpty())
-                    return QIcon(":/file_manager_cd_folder_16px.png");
-                else
-                    return QIcon(":/file_manager_folder_16px.png");
-            }
+                return QIcon(":/file_manager_folder_16px.png");
+
         }
         else if (item->isFile())
         {
-            if (!strContainingISOFile.isEmpty())
-                return QIcon(":/file_manager_cd_file_16px.png");
+            if (item->isRemovedFromViso())
+                return QIcon(":/file_manager_file_remove_16px.png");
+            else if (!strContainingISOFile.isEmpty())
+                return QIcon(":/file_manager_file_cd_16px.png");
             else
                 return QIcon(":/file_manager_file_16px.png");
         }
