@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100540 2023-07-12 10:37:48Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100545 2023-07-12 12:01:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -2157,6 +2157,73 @@ int ShClTransferStart(PSHCLTRANSFER pTransfer)
 
     LogFlowFuncLeaveRC(rc);
     return rc;
+}
+
+int ShClTransferComplete(PSHCLTRANSFER pTransfer)
+{
+    AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
+
+    shClTransferLock(pTransfer);
+
+    AssertMsgReturnStmt(pTransfer->State.enmStatus == SHCLTRANSFERSTATUS_STARTED,
+                        ("Wrong status (currently is %s)\n", ShClTransferStatusToStr(pTransfer->State.enmStatus)),
+                        shClTransferUnlock(pTransfer), VERR_WRONG_ORDER);
+
+    int rc = shClTransferSetStatus(pTransfer, SHCLTRANSFERSTATUS_STOPPED);
+
+    shClTransferUnlock(pTransfer);
+
+    if (pTransfer->Callbacks.pfnOnCompleted)
+        pTransfer->Callbacks.pfnOnCompleted(&pTransfer->CallbackCtx, rc);
+
+    LogFlowFuncLeaveRC(rc);
+    return rc;
+}
+
+static int shClTransferCancelOrError(PSHCLTRANSFER pTransfer, int rc)
+{
+    AssertPtrReturn(pTransfer, VERR_INVALID_POINTER);
+
+    LogFlowFunc(("%Rrc\n", rc));
+
+    shClTransferLock(pTransfer);
+
+    AssertMsgReturnStmt(pTransfer->State.enmStatus == SHCLTRANSFERSTATUS_STARTED,
+                        ("Wrong status (currently is %s)\n", ShClTransferStatusToStr(pTransfer->State.enmStatus)),
+                        shClTransferUnlock(pTransfer), VERR_WRONG_ORDER);
+
+    int rc2;
+    if (rc == VERR_CANCELLED)
+    {
+        rc2 = shClTransferSetStatus(pTransfer, SHCLTRANSFERSTATUS_CANCELED);
+
+        if (pTransfer->Callbacks.pfnOnCompleted)
+            pTransfer->Callbacks.pfnOnCompleted(&pTransfer->CallbackCtx, VERR_CANCELLED);
+    }
+    else
+    {
+        rc2 = shClTransferSetStatus(pTransfer, SHCLTRANSFERSTATUS_ERROR);
+
+        if (pTransfer->Callbacks.pfnOnError)
+            pTransfer->Callbacks.pfnOnError(&pTransfer->CallbackCtx, rc);
+    }
+
+    shClTransferUnlock(pTransfer);
+
+    LogFlowFuncLeaveRC(rc2);
+    return rc2;
+}
+
+int ShClTransferCancel(PSHCLTRANSFER pTransfer)
+{
+    return shClTransferCancelOrError(pTransfer, VERR_CANCELLED);
+}
+
+int ShClTransferError(PSHCLTRANSFER pTransfer, int rc)
+{
+    return shClTransferCancelOrError(pTransfer, rc);
 }
 
 /**
