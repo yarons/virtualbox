@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM.cpp 100532 2023-07-12 04:42:46Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1880,7 +1880,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCFGMNODE pCpumCfg, PCVMXMSRS pH
     EmuFeat.fVmxExitSaveDebugCtls     = 1;
     EmuFeat.fVmxHostAddrSpaceSize     = 1;
     EmuFeat.fVmxExitAckExtInt         = 1;
-    EmuFeat.fVmxExitSavePatMsr        = 0;
+    EmuFeat.fVmxExitSavePatMsr        = 1;
     EmuFeat.fVmxExitLoadPatMsr        = 1;
     EmuFeat.fVmxExitSaveEferMsr       = 1;
     EmuFeat.fVmxExitLoadEferMsr       = 1;
