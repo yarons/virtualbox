@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxProxyStub.c 100550 2023-07-12 14:36:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2149,7 +2149,8 @@ static void vbpsRemoveOldTypeLibs(VBPSREGSTATE *pState)
                             if (lrc == ERROR_SUCCESS)
                             {
                                 szValue[cbValue] = '\0';
-                                if (!strcmp(szValue, "VirtualBox Type Library"))
+                                if (   !strcmp(szValue, "VirtualBox Type Library")
+                                    || !strcmp(szValue, "InnoTek VirtualBox Machine Type Library")) /* 2005-05-25 build */
                                 {
                                     /*
                                      * Delete the type library version.
