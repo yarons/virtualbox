@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 100508 2023-07-11 11:22:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.cpp 100534 2023-07-12 08:11:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2675,7 +2675,7 @@ protected:
         setName(QApplication::translate("UIActionPool", "ISOImport"));
         setShortcutScope(QApplication::translate("UIActionPool", "VISO Creator"));
         setStatusTip(QApplication::translate("UIActionPool", "Import ISO into the VISO content."));
-        setToolTip(QApplication::translate("UIActionPool", "Import Selected ISO(s) into the VISO content.")
+        setToolTip(QApplication::translate("UIActionPool", "Import Selected ISO into the VISO content.")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
@@ -2707,8 +2707,8 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "ISORemove"));
         setShortcutScope(QApplication::translate("UIActionPool", "VISO Creator"));
-        setStatusTip(QApplication::translate("UIActionPool", "Remove ISO into the VISO content."));
-        setToolTip(QApplication::translate("UIActionPool", "Remove Selected ISO(s) into the VISO content.")
+        setStatusTip(QApplication::translate("UIActionPool", "Remove the imported ISO from the VISO content."));
+        setToolTip(QApplication::translate("UIActionPool", "Remove the imported ISO from the VISO content.")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };
