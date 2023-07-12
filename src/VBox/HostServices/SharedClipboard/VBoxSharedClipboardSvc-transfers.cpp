@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100553 2023-07-12 15:03:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -78,10 +78,11 @@ void shClSvcTransferDestroyAll(PSHCLCLIENT pClient)
     LogFlowFuncEnter();
 
     /* Unregister and destroy all transfers.
-     * Also make sure to let the backend know that all transfers are getting destroyed. */
-    uint32_t      uIdx = 0;
+     * Also make sure to let the backend know that all transfers are getting destroyed.
+     *
+     * Note: The index always will be 0, as the transfer gets unregistered. */
     PSHCLTRANSFER pTransfer;
-    while ((pTransfer = ShClTransferCtxGetTransferByIndex(&pClient->Transfers.Ctx, uIdx++)))
+    while ((pTransfer = ShClTransferCtxGetTransferByIndex(&pClient->Transfers.Ctx, 0 /* Index */)))
         ShClSvcTransferDestroy(pClient, pTransfer);
 }
 
