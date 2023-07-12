@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNodeGroup.cpp 100554 2023-07-12 18:12:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -172,9 +172,9 @@ void UIChooserNodeGroup::addNode(UIChooserNode *pNode, int iPosition)
 {
     switch (pNode->type())
     {
-        case UIChooserNodeType_Group:   m_nodesGroup.insert(iPosition == -1 ? m_nodesGroup.size() : iPosition, pNode); return;
-        case UIChooserNodeType_Global:  m_nodesGlobal.insert(iPosition == -1 ? m_nodesGlobal.size() : iPosition, pNode); return;
-        case UIChooserNodeType_Machine: m_nodesMachine.insert(iPosition == -1 ? m_nodesMachine.size() : iPosition, pNode); return;
+        case UIChooserNodeType_Group:   m_nodesGroup.insert(iPosition < 0 || iPosition > m_nodesGroup.size() ? m_nodesGroup.size() : iPosition, pNode); return;
+        case UIChooserNodeType_Global:  m_nodesGlobal.insert(iPosition < 0 || iPosition > m_nodesGlobal.size() ? m_nodesGlobal.size() : iPosition, pNode); return;
+        case UIChooserNodeType_Machine: m_nodesMachine.insert(iPosition < 0 || iPosition > m_nodesMachine.size() ? m_nodesMachine.size() : iPosition, pNode); return;
         default: break;
     }
     AssertFailedReturnVoid();
