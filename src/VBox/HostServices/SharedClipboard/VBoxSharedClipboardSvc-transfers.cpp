@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100537 2023-07-12 08:48:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100544 2023-07-12 11:58:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1488,7 +1488,7 @@ static int shClSvcTransferHandleReply(PSHCLCLIENT pClient, SHCLTRANSFERID idTran
                             case SHCLTRANSFERSTATUS_KILLED:
                             {
                                 LogRel(("Shared Clipboard: Guest has %s transfer %RU32\n",
-                                        pReply->uType == SHCLTRANSFERSTATUS_CANCELED ? "canceled" : "killed", pTransfer->State.uID));
+                                        pReply->u.TransferStatus.uStatus == SHCLTRANSFERSTATUS_CANCELED ? "canceled" : "killed", pTransfer->State.uID));
 
                                 rc = ShClSvcTransferStop(pClient, pTransfer, false /* fWaitForGuest */);
 
