@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100535 2023-07-12 08:25:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100537 2023-07-12 08:48:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2328,6 +2328,11 @@ void ShClSvcTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
     PSHCLTRANSFERCTX pTxCtx = &pClient->Transfers.Ctx;
 
     ShClTransferCtxUnregisterById(pTxCtx, pTransfer->State.uID);
+
+    /* Make sure to let the guest know. */
+    int rc = shClSvcTransferSendStatusAsync(pClient, pTransfer,
+                                            SHCLTRANSFERSTATUS_UNINITIALIZED, VINF_SUCCESS, NULL /* ppEvent */);
+    AssertRC(rc);
 
     ShClTransferDestroy(pTransfer);
 
