@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100499 2023-07-11 08:00:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100535 2023-07-12 08:25:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2051,9 +2051,9 @@ int shClSvcTransferHandler(PSHCLCLIENT pClient,
                                                  SHCLTRANSFERSTATUS_ERROR, rc, NULL /* ppEvent */);
         AssertRC(rc2);
 
-        ShClSvcTransferDestroy(pClient, pTransfer);
-
         shClSvcClientUnlock(pClient);
+
+        ShClSvcTransferDestroy(pClient, pTransfer);
     }
 
     LogFlowFunc(("[Client %RU32] Returning rc=%Rrc\n", pClient->State.uClientID, rc));
@@ -2323,6 +2323,8 @@ void ShClSvcTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 
     LogFlowFuncEnter();
 
+    shClSvcClientLock(pClient);
+
     PSHCLTRANSFERCTX pTxCtx = &pClient->Transfers.Ctx;
 
     ShClTransferCtxUnregisterById(pTxCtx, pTransfer->State.uID);
@@ -2331,6 +2333,8 @@ void ShClSvcTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
 
     RTMemFree(pTransfer);
     pTransfer = NULL;
+
+    shClSvcClientUnlock(pClient);
 
     LogFlowFuncLeave();
 }
