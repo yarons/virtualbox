@@ -1,4 +1,4 @@
-/* $Id: key-file.cpp 100528 2023-07-11 22:52:34Z knut.osmundsen@oracle.com $ */
+/* $Id: key-file.cpp 100531 2023-07-12 00:03:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, File I/O.
  */
@@ -222,7 +222,7 @@ static int rtCrKeyDecryptPkcs8Info(PRTCRPKCS8ENCRYPTEDPRIVATEKEYINFO pEncryptedK
         int            cbDecrypted   = 0;
         unsigned char *puchDecrypted = NULL;
         puchDecrypted = PKCS12_pbe_crypt(pOsslAlgoRet, pszPassword, (int)strlen(pszPassword),
-                                         pEncryptedKey->EncryptedData.Asn1Core.uData.puch,
+                                         (unsigned char *)pEncryptedKey->EncryptedData.Asn1Core.uData.puch, /* cast for v1.0.x */
                                          (int)pEncryptedKey->EncryptedData.Asn1Core.cb,
                                          &puchDecrypted, &cbDecrypted, 0 /*en_de*/);
         if (puchDecrypted)
