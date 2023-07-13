@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100551 2023-07-12 14:59:24Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100557 2023-07-13 09:09:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1166,6 +1166,9 @@ int ShClTransferCreate(SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource, PSHCLTRANSF
 int ShClTransferDestroy(PSHCLTRANSFER pTransfer)
 {
     if (!pTransfer)
+        return VINF_SUCCESS;
+
+    if (!RTCritSectIsInitialized(&pTransfer->CritSect))
         return VINF_SUCCESS;
 
     /* Must come before the refcount check below, as the callback might release a reference. */
