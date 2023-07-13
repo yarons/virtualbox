@@ -1,4 +1,4 @@
-/* $Id: IEMOpHlp.h 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMOpHlp.h 100567 2023-07-13 19:19:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Opcode Helpers.
  */
@@ -520,6 +520,26 @@ void iemOpStubMsg2(PVMCPUCC pVCpu) RT_NOEXCEPT;
         if (RT_LIKELY(   !(  pVCpu->iem.s.fPrefixes \
                            & (IEM_OP_PRF_LOCK | IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REPZ | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REX)) \
                       && pVCpu->iem.s.uVexLength == 0 \
+                      && pVCpu->iem.s.uVex3rdReg == 0 \
+                      && !IEM_IS_REAL_OR_V86_MODE(pVCpu) \
+                      && IEM_GET_GUEST_CPU_FEATURES(pVCpu)->a_fFeature )) \
+        { /* likely */ } \
+        else \
+            IEMOP_RAISE_INVALID_OPCODE_RET(); \
+    } while (0)
+
+/**
+ * Done decoding VEX, no V, L=1.
+ * Raises \#UD exception if rex, rep, opsize or lock prefixes are present, if
+ * we're in real or v8086 mode, if VEX.V!=0xf, if VEX.L!=1, or if the a_fFeature
+ * is not present in the guest CPU.
+ */
+#define IEMOP_HLP_DONE_VEX_DECODING_L1_AND_NO_VVVV_EX(a_fFeature) \
+    do \
+    { \
+        if (RT_LIKELY(   !(  pVCpu->iem.s.fPrefixes \
+                           & (IEM_OP_PRF_LOCK | IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REPZ | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REX)) \
+                      && pVCpu->iem.s.uVexLength == 1 \
                       && pVCpu->iem.s.uVex3rdReg == 0 \
                       && !IEM_IS_REAL_OR_V86_MODE(pVCpu) \
                       && IEM_GET_GUEST_CPU_FEATURES(pVCpu)->a_fFeature )) \
