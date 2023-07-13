@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100559 2023-07-13 09:11:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -38,6 +38,7 @@
 class QItemSelection;
 class QTableView;
 class UIVisoHostBrowserModel;
+class UIHostBrowserProxyModel;
 
 /** A UIVisoBrowserBase extension to view host file system. Uses QFileSystemModel. */
 class UIVisoHostBrowser : public UIVisoBrowserBase
@@ -87,8 +88,9 @@ private:
     bool isRoot() const;
     QModelIndex currentRootIndex() const;
     /** We have two file system models (one for each item view) since we set different filters on each of these models. */
-    UIVisoHostBrowserModel *m_pModel;
-    QTableView             *m_pTableView;
+    UIVisoHostBrowserModel  *m_pModel;
+    QTableView              *m_pTableView;
+    UIHostBrowserProxyModel *m_pProxyModel;
 };
 
 
