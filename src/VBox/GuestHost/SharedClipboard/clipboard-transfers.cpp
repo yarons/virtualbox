@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 100557 2023-07-13 09:09:08Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 100558 2023-07-13 09:10:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1814,10 +1814,7 @@ int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *psz
 
         rc = ShClTransferValidatePath(pszPathCur, false /* fMustExist */);
         if (RT_FAILURE(rc))
-        {
-            RT_BREAKPOINT();
             break;
-        }
 
         /* No root path determined yet? */
         if (!pszPathRootAbs)
