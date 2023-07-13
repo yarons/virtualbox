@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100548 2023-07-12 12:31:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100556 2023-07-13 08:21:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -508,6 +508,8 @@ void UIVisoContentBrowser::removeItems(const QList<UICustomFileSystemItem*> item
     foreach(UICustomFileSystemItem *pItem, itemList)
     {
         if (!pItem || pItem->isUpDirectory())
+            continue;
+        if (pItem->isRemovedFromViso())
             continue;
         QString strVisoPath = pItem->path();
         if (strVisoPath.isEmpty())
