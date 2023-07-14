@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 100569 2023-07-13 21:02:09Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 100570 2023-07-14 07:56:05Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -2596,6 +2596,38 @@ EMIT_INSTR_PLUS_ICEBP phminposuw,  XMM9, XMM8
 EMIT_INSTR_PLUS_ICEBP phminposuw,  XMM9, FSxBX
 EMIT_INSTR_PLUS_ICEBP vphminposuw, XMM9, XMM8
 EMIT_INSTR_PLUS_ICEBP vphminposuw, XMM9, FSxBX
+ %endif
+
+;
+; VBROADCASTSS
+;
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, XMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, XMM1, FSxBX
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, YMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, YMM1, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, XMM9, XMM8
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, XMM9, FSxBX
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, YMM9, XMM8
+EMIT_INSTR_PLUS_ICEBP vbroadcastss, YMM9, FSxBX
+ %endif
+
+;
+; VBROADCASTSD
+;
+EMIT_INSTR_PLUS_ICEBP vbroadcastsd, YMM1, XMM2
+EMIT_INSTR_PLUS_ICEBP vbroadcastsd, YMM1, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP vbroadcastsd, YMM9, XMM8
+EMIT_INSTR_PLUS_ICEBP vbroadcastsd, YMM9, FSxBX
+ %endif
+
+;
+; VBROADCASTF128
+;
+EMIT_INSTR_PLUS_ICEBP vbroadcastf128, YMM1, FSxBX
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP vbroadcastf128, YMM9, FSxBX
  %endif
 
 ;
