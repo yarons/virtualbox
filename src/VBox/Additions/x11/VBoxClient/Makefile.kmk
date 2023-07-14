@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100582 2023-07-14 14:08:33Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 100584 2023-07-14 14:17:55Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -232,13 +232,13 @@ ifdef VBOX_WITH_VBOXCLIENT_LAZY_LOAD
   VBOX_VBOXCLIENT_LIBXMU_VER = 6
   VBOX_VBOXCLIENT_LIBXRANDR_VER = 2
  endif
- ## Dynamic import no. 1: libX11.so.6
+ ## Dynamic import no. 1: libX11.so
  $(evalcall2 def_libToLazyLoad,$(PATH_ROOT)/src/VBox/GuestHost/libX11.def,libX11,$(VBOX_VBOXCLIENT_LIBX11_VER))
- ## Dynamic import no. 2: libXt.so.6
+ ## Dynamic import no. 2: libXt.so
  $(evalcall2 def_libToLazyLoad,$(PATH_ROOT)/src/VBox/GuestHost/libXt.def,libXt,$(VBOX_VBOXCLIENT_LIBXT_VER))
- ## Dynamic import no. 3: libXmu.so.6
+ ## Dynamic import no. 3: libXmu.so
  $(evalcall2 def_libToLazyLoad,$(PATH_ROOT)/src/VBox/GuestHost/libXmu.def,libXmu,$(VBOX_VBOXCLIENT_LIBXMU_VER))
- ## Dynamic import no. 4: libXrandr.so.2
+ ## Dynamic import no. 4: libXrandr.so
  $(evalcall2 def_libToLazyLoad,$(PATH_ROOT)/src/VBox/GuestHost/libXrandr.def,libXrandr,$(VBOX_VBOXCLIENT_LIBXRANDR_VER))
 endif
 
