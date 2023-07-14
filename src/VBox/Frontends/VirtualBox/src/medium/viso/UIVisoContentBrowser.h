@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100548 2023-07-12 12:31:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100583 2023-07-14 14:13:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -79,6 +79,8 @@ public:
     const QString &importedISOPath() const;
     void setImportedISOPath(const QString &strPath = QString());
 
+    bool hasContent() const;
+
 public slots:
 
     void sltCreateNewDirectory();
@@ -118,7 +120,7 @@ private:
 
     QModelIndex             convertIndexToTableIndex(const QModelIndex &index);
     /** Lists the content of the host file system directory by using Qt file system API. */
-    void                    scanHostDirectory(UICustomFileSystemItem *directory);
+    void                    scanHostDirectory(UICustomFileSystemItem *directory, bool fRecursive);
     KFsObjType              fileType(const QFileInfo &fsInfo);
     /** Renames the starts item's name as VISO name changes. */
     void                    updateStartItemName();
@@ -140,6 +142,8 @@ private:
     bool                           onStartItem();
     void                           goUp();
     void                           createLoadedFileEntries(const QMap<QString, QString> &fileEntries);
+    /* Processes a list of VISO paths that are loaded from a file and indicate file object to be removed from VISO content. */
+    void                           processRemovedEntries(const QStringList &removedEntries);
     const UICustomFileSystemItem*  currentDirectoryItem() const;
     UIVisoContentTableView        *m_pTableView;
     UICustomFileSystemModel       *m_pModel;

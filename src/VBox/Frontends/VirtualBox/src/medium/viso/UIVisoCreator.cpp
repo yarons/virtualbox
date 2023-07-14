@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100515 2023-07-11 13:01:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100583 2023-07-14 14:13:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -422,9 +422,9 @@ void UIVisoCreatorWidget::sltOpenAction()
 {
     QWidget *pActive =  QApplication::activeWindow();
     AssertReturnVoid(pActive);
-
-    if (!msgCenter().confirmVisoDiscard(pActive))
-        return;
+    if (m_pVISOContentBrowser->hasContent())
+        if (!msgCenter().confirmVisoDiscard(pActive))
+            return;
     QString strFileName =  QIFileDialog::getOpenFileName(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD),
                                                          "VISO files (*.viso)", pActive, UIVisoCreatorWidget::tr("Select a VISO file to load"));
     if (!strFileName.isEmpty() && m_pVISOContentBrowser)
