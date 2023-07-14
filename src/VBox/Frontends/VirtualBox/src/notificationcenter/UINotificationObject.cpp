@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.cpp 99184 2023-03-27 11:05:18Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObject.cpp 100590 2023-07-14 17:02:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class implementation.
  */
@@ -336,6 +336,14 @@ void UINotificationDownloader::sltHandleProgressFinished()
     m_pDownloader = 0;
     m_fDone = true;
     emit sigProgressFinished();
+
+    /* If there was no error and no reason to keep progress alive, - finish him! */
+    if (   error().isEmpty()
+#ifdef VBOX_NOTIFICATION_CENTER_WITH_KEEP_BUTTON
+        && !gEDataManager->keepSuccessfullNotificationProgresses()
+#endif
+        )
+        close();
 }
 
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
