@@ -1,4 +1,4 @@
-; $Id: libX11.def 99566 2023-05-02 15:05:49Z andreas.loeffler@oracle.com $
+; $Id: libX11.def 100576 2023-07-14 13:56:58Z andreas.loeffler@oracle.com $
 ;; @file
 ; Definitions for libX11.so lazy import library.
 ;
@@ -25,7 +25,7 @@
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
 
-LIBRARY libX11.so.6
+LIBRARY @VBOX_LAZYLOAD_DEF_LIB_STRING@
 EXPORTS
     _XData32
     _XGetRequest

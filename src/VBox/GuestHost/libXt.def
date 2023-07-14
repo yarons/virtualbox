@@ -1,4 +1,4 @@
-; $Id: libXt.def 99564 2023-05-02 13:57:51Z andreas.loeffler@oracle.com $
+; $Id: libXt.def 100576 2023-07-14 13:56:58Z andreas.loeffler@oracle.com $
 ;; @file
 ; Definitions for libXt.so lazy import library.
 ;
@@ -24,7 +24,7 @@
 ;
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
-LIBRARY libXt.so.6
+LIBRARY @VBOX_LAZYLOAD_DEF_LIB_STRING@
 EXPORTS
     applicationShellWidgetClass         DATA
     XtShellStrings                      DATA
@@ -51,4 +51,3 @@ EXPORTS
     XtToolkitThreadInitialize
     XtVaAppCreateShell
     XtWindow
-

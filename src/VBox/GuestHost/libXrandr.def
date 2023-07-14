@@ -1,4 +1,4 @@
-; $Id: libXrandr.def 99564 2023-05-02 13:57:51Z andreas.loeffler@oracle.com $
+; $Id: libXrandr.def 100576 2023-07-14 13:56:58Z andreas.loeffler@oracle.com $
 ;; @file
 ; Definitions for libXrandr.so lazy import library.
 ;
@@ -24,7 +24,7 @@
 ;
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
-LIBRARY libXrandr.so.2
+LIBRARY @VBOX_LAZYLOAD_DEF_LIB_STRING@
 EXPORTS
     XRRAddOutputMode
     XRRAllocModeInfo
@@ -47,4 +47,3 @@ EXPORTS
     XRRSetOutputPrimary
     XRRSetScreenSize
     XRRUpdateConfiguration
-

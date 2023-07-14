@@ -1,4 +1,4 @@
-; $Id: libXmu.def 99564 2023-05-02 13:57:51Z andreas.loeffler@oracle.com $
+; $Id: libXmu.def 100576 2023-07-14 13:56:58Z andreas.loeffler@oracle.com $
 ;; @file
 ; Definitions for libXmu.so lazy import library.
 ;
@@ -24,7 +24,6 @@
 ;
 ; SPDX-License-Identifier: GPL-3.0-only
 ;
-LIBRARY libXmu.so.6
+LIBRARY @VBOX_LAZYLOAD_DEF_LIB_STRING@
 EXPORTS
     XmuClientWindow
-
