@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 100574 2023-07-14 09:38:18Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 100580 2023-07-14 14:04:35Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -3150,6 +3150,35 @@ EMIT_INSTR_PLUS_ICEBP   mpsadbw,  XMM8, XMM9,  000h
 EMIT_INSTR_PLUS_ICEBP   mpsadbw,  XMM8, FSxBX, 000h
  %endif
 
+;
+; VINSERTI128
+;
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM1, YMM2, XMM3,  0FFh
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM1, YMM2, FSxBX, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM1, YMM2, XMM3,  000h
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM1, YMM2, FSxBX, 000h
+
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM8, YMM9, XMM10, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM8, YMM9, FSxBX, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM8, YMM9, XMM10, 000h
+EMIT_INSTR_PLUS_ICEBP   vinserti128, YMM8, YMM9, FSxBX, 000h
+ %endif
+
+;
+; VINSERTF128
+;
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM1, YMM2, XMM3,  0FFh
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM1, YMM2, FSxBX, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM1, YMM2, XMM3,  000h
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM1, YMM2, FSxBX, 000h
+
+ %if TMPL_BITS == 64
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM8, YMM9, XMM10, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM8, YMM9, FSxBX, 0FFh
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM8, YMM9, XMM10, 000h
+EMIT_INSTR_PLUS_ICEBP   vinsertf128, YMM8, YMM9, FSxBX, 000h
+ %endif
 
 %endif ; BS3_INSTANTIATING_CMN
 
