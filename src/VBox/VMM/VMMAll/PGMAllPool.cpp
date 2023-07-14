@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAllPool.cpp 100577 2023-07-14 14:00:25Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3544,12 +3544,12 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
                 return fRet;
             }
 # ifdef LOG_ENABLED
-            Log(("iFirstPresent=%d cPresent=%d\n", pPage->iFirstPresent, pPage->cPresent));
+            LogRel(("iFirstPresent=%d cPresent=%d\n", pPage->iFirstPresent, pPage->cPresent));
             for (unsigned i = 0, cFound = 0; i < RT_ELEMENTS(pPD->a); i++)
                 if ((pPD->a[i].u & (EPT_PDE2M_PG_MASK | X86_PDE4M_P | X86_PDE4M_PS)) == u64)
-                    Log(("i=%d cFound=%d\n", i, ++cFound));
+                    LogRel(("i=%d cFound=%d\n", i, ++cFound));
 # endif
-            AssertFatalMsgFailed(("iFirstPresent=%d cPresent=%d\n", pPage->iFirstPresent, pPage->cPresent));
+            AssertFatalMsgFailed(("iFirstPresent=%d cPresent=%d enmKind=%d\n", pPage->iFirstPresent, pPage->cPresent, pPage->enmKind));
             /*PGM_DYNMAP_UNUSED_HINT_VM(pVM, pPD);*/
             break;
         }
