@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100583 2023-07-14 14:13:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100586 2023-07-14 14:56:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -906,7 +906,13 @@ void UIVisoContentBrowser::processRemovedEntries(const QStringList &removedEntri
 {
     foreach (const QString &strPath, removedEntries)
     {
-        QStringList path = UIPathOperations::pathTrail(strPath);
+        QFileInfo fileInfo(strPath);
+        UICustomFileSystemItem *pItem = searchItemByPath(strPath);
+        if (pItem)
+        {
+            pItem->setRemovedFromViso(true);
+            createVisoEntry(strPath,  QString(), true);
+        }
     }
 }
 
@@ -954,7 +960,6 @@ void UIVisoContentBrowser::scanHostDirectory(UICustomFileSystemItem *directoryIt
             /* Do not recurse into sysmlinks since it may end up infinite recursion: */
             if (fRecursive && enmType == KFsObjType_Directory && !newItem->isUpDirectory())
                 scanHostDirectory(newItem, true);
-
         }
         directoryItem->setIsOpened(true);
     }
