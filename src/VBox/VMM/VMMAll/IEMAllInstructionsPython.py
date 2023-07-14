@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 100148 2023-06-10 19:44:02Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstructionsPython.py 100588 2023-07-14 16:38:21Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100148 $"
+__version__ = "$Revision: 100588 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2495,6 +2495,15 @@ g_dMcStmtParsers = {
     'IEM_MC_ASSIGN_U8_SX_U64':                                   McBlock.parseMcGeneric,
     'IEM_MC_ASSIGN_U32_SX_U64':                                  McBlock.parseMcGeneric,
     'IEM_MC_BEGIN':                                              McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_XREG_U16_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_XREG_U32_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_XREG_U64_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_XREG_U8_ZX_VLMAX':                         McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_YREG_U128_ZX_VLMAX':                       McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_YREG_U16_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_YREG_U32_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_YREG_U64_ZX_VLMAX':                        McBlock.parseMcGeneric,
+    'IEM_MC_BROADCAST_YREG_U8_ZX_VLMAX':                         McBlock.parseMcGeneric,
     'IEM_MC_BSWAP_LOCAL_U16':                                    McBlock.parseMcGeneric,
     'IEM_MC_BSWAP_LOCAL_U32':                                    McBlock.parseMcGeneric,
     'IEM_MC_BSWAP_LOCAL_U64':                                    McBlock.parseMcGeneric,
@@ -2806,6 +2815,7 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_XREG_XMM':                                     McBlock.parseMcGeneric,
     'IEM_MC_STORE_XREG_XMM_U32':                                 McBlock.parseMcGeneric,
     'IEM_MC_STORE_XREG_XMM_U64':                                 McBlock.parseMcGeneric,
+    'IEM_MC_STORE_YREG_U128':                                    McBlock.parseMcGeneric,
     'IEM_MC_STORE_YREG_U128_ZX_VLMAX':                           McBlock.parseMcGeneric,
     'IEM_MC_STORE_YREG_U256_ZX_VLMAX':                           McBlock.parseMcGeneric,
     'IEM_MC_STORE_YREG_U32_ZX_VLMAX':                            McBlock.parseMcGeneric,
