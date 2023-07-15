@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 100266 2023-06-23 14:15:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 100591 2023-07-15 01:20:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -2840,21 +2840,6 @@ DECLINLINE(void) iemFpuUpdateOpcodeAndIpWorkerEx(PVMCPUCC pVCpu, PX86FXSTATE pFp
     else
         *(uint64_t *)&pFpuCtx->FPUIP = pVCpu->cpum.GstCtx.rip;
 }
-
-
-#ifndef IEM_WITH_OPAQUE_DECODER_STATE
-/**
- * Updates the FOP, FPU.CS and FPUIP registers.
- *
- * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
- * @param   pFpuCtx             The FPU context.
- */
-DECLINLINE(void) iemFpuUpdateOpcodeAndIpWorker(PVMCPUCC pVCpu, PX86FXSTATE pFpuCtx) RT_NOEXCEPT
-{
-    Assert(pVCpu->iem.s.uFpuOpcode != UINT16_MAX);
-    iemFpuUpdateOpcodeAndIpWorkerEx(pVCpu, pFpuCtx, pVCpu->iem.s.uFpuOpcode);
-}
-#endif /* !IEM_WITH_OPAQUE_DECODER_STATE */
 
 
 /**
