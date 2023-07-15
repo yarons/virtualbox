@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 100539 2023-07-12 10:13:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 100593 2023-07-15 16:52:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -518,7 +518,10 @@ QVariant UICustomFileSystemModel::data(const QModelIndex &index, int role) const
                 return QIcon(":/file_manager_file_symlink_16px.png");
         }
     }
-
+    if (role == Qt::ToolTipRole)
+    {
+        return QString(item->path());
+    }
     return QVariant();
 }
 
