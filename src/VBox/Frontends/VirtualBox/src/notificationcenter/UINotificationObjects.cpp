@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -139,6 +139,16 @@ void UINotificationMessage::warnAboutInvalidEncryptionPassword(const QString &st
         QApplication::translate("UIMessageCenter", "Invalid Password ..."),
         QApplication::translate("UIMessageCenter", "Encryption password for <nobr>ID = '%1'</nobr> is invalid.")
                                                    .arg(strPasswordId));
+}
+
+/* static */
+void UINotificationMessage::showClipboardError(QString strId, QString strMsg, long rcError)
+{
+    RT_NOREF(strId, rcError);
+
+    UINotificationMessage::createMessage(
+        QApplication::translate("UIMessageCenter", "Shared Clipboard Error"),
+        QApplication::translate("UIMessageCenter", strMsg.toUtf8().constData()));
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER

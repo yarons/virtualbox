@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 98382 2023-02-01 12:59:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIConsoleEventHandler.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -102,6 +102,8 @@ signals:
     void sigAudioAdapterChange();
     /** Notifies clipboard mode change. */
     void sigClipboardModeChange(KClipboardMode enmMode);
+    /** Notifies about a clipboard error. */
+    void sigClipboardError(QString strId, QString strMsg, long rcError);
     /** Notifies drag and drop mode change. */
     void sigDnDModeChange(KDnDMode enmMode);
 

@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 98382 2023-02-01 12:59:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMainEventListener.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -199,6 +199,8 @@ signals:
         void sigAudioAdapterChange();
         /** Notifies about the clipboard mode change. */
         void sigClipboardModeChange(KClipboardMode enmClipboardMode);
+        /** Notifies about a clipboard error. */
+        void sigClipboardError(QString strId, QString strMsg, long rcError);
         /** Notifies about the drag and drop mode change. */
         void sigDnDModeChange(KDnDMode enmDnDMode);
     /** @} */

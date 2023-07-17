@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 99913 2023-05-22 18:36:24Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -46,6 +46,9 @@
 #include "ConsoleImpl.h"
 #include "DisplayImpl.h"
 #include "NvramStoreImpl.h"
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
+# include "GuestShClPrivate.h"
+#endif
 #ifdef VBOX_WITH_DRAG_AND_DROP
 # include "GuestImpl.h"
 # include "GuestDnDPrivate.h"
@@ -3115,9 +3118,13 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
                 vrc = i_changeClipboardFileTransferMode(RT_BOOL(fFileTransfersEnabled));
                 AssertLogRelMsg(RT_SUCCESS(vrc), ("Shared Clipboard: Failed to set initial file transfers mode (%u): vrc=%Rrc\n",
                                                  fFileTransfersEnabled, vrc));
-
-                /** @todo Register area callbacks? (See also deregistration todo in Console::i_powerDown.) */
 # endif
+                GuestShCl::createInstance(this /* pConsole */);
+                vrc = HGCMHostRegisterServiceExtension(&m_hHgcmSvcExtShCl, "VBoxSharedClipboard",
+                                                       &GuestShCl::hgcmDispatcher,
+                                                       GuestShClInst());
+                if (RT_FAILURE(vrc))
+                    Log(("Cannot register VBoxSharedClipboard extension, vrc=%Rrc\n", vrc));
             }
             else
                 LogRel(("Shared Clipboard: Not available, vrc=%Rrc\n", vrc));

@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 98382 2023-02-01 12:59:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIConsoleEventHandler.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -97,6 +97,8 @@ signals:
     void sigAudioAdapterChange();
     /** Notifies clipboard mode change. */
     void sigClipboardModeChange(KClipboardMode enmMode);
+    /** Notifies about a clipboard error. */
+    void sigClipboardError(QString strId, QString strMsg, long rcError);
     /** Notifies drag and drop mode change. */
     void sigDnDModeChange(KDnDMode enmMode);
 
@@ -227,6 +229,7 @@ void UIConsoleEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnShowWindow
         << KVBoxEventType_OnAudioAdapterChanged
         << KVBoxEventType_OnClipboardModeChanged
+        << KVBoxEventType_OnClipboardError
         << KVBoxEventType_OnDnDModeChanged
     ;
 
@@ -303,6 +306,9 @@ void UIConsoleEventHandlerProxy::prepareConnections()
             Qt::DirectConnection);
     connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigClipboardModeChange,
             this, &UIConsoleEventHandlerProxy::sigClipboardModeChange,
+            Qt::DirectConnection);
+    connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigClipboardError,
+            this, &UIConsoleEventHandlerProxy::sigClipboardError,
             Qt::DirectConnection);
     connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigDnDModeChange,
             this, &UIConsoleEventHandlerProxy::sigDnDModeChange,
@@ -410,6 +416,9 @@ void UIConsoleEventHandler::prepare()
             Qt::QueuedConnection);
     connect(m_pProxy, &UIConsoleEventHandlerProxy::sigClipboardModeChange,
             this, &UIConsoleEventHandler::sigClipboardModeChange,
+            Qt::QueuedConnection);
+    connect(m_pProxy, &UIConsoleEventHandlerProxy::sigClipboardError,
+            this, &UIConsoleEventHandler::sigClipboardError,
             Qt::QueuedConnection);
     connect(m_pProxy, &UIConsoleEventHandlerProxy::sigDnDModeChange,
             this, &UIConsoleEventHandler::sigDnDModeChange,

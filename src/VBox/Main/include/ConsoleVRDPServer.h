@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 98296 2023-01-25 01:28:38Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleVRDPServer.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -231,7 +231,6 @@ private:
     void unlockConsoleVRDPServer (void);
 
     int mcClipboardRefs;
-    HGCMSVCEXTHANDLE mhClipboard;
     PFNVRDPCLIPBOARDEXTCALLBACK mpfnClipboardCallback;
 
     static DECLCALLBACK(int) ClipboardCallback (void *pvCallback, uint32_t u32ClientId, uint32_t u32Function, uint32_t u32Format, const void *pvData, uint32_t cbData);

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2514,6 +2514,8 @@ void UISession::prepareConsoleEventHandlers()
             this, &UISession::sigAudioAdapterChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigClipboardModeChange,
             this, &UISession::sigClipboardModeChange);
+    connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigClipboardError,
+            this, &UISession::sigClipboardError);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigCPUExecutionCapChange,
             this, &UISession::sigCPUExecutionCapChange);
     connect(m_pConsoleEventhandler, &UIConsoleEventHandler::sigDnDModeChange,

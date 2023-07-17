@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1074,6 +1074,11 @@ void UIMachine::sltMountDVDAdHoc(const QString &strSource)
     uisession()->sltMountDVDAdHoc(strSource);
 }
 
+void UIMachine::sltClipboardError(QString strId, QString strMsg, long rcError)
+{
+    UINotificationMessage::showClipboardError(strId, strMsg, rcError);
+}
+
 void UIMachine::closeRuntimeUI()
 {
     /* First, we have to hide any opened modal/popup widgets.
@@ -1517,6 +1522,8 @@ bool UIMachine::prepareSession()
             this, &UIMachine::sltHandleAdditionsActualChange);
     connect(uisession(), &UISession::sigClipboardModeChange,
             this, &UIMachine::sigClipboardModeChange);
+    connect(uisession(), &UISession::sigClipboardError,
+            this, &UIMachine::sltClipboardError);
     connect(uisession(), &UISession::sigCPUExecutionCapChange,
             this, &UIMachine::sigCPUExecutionCapChange);
     connect(uisession(), &UISession::sigDnDModeChange,

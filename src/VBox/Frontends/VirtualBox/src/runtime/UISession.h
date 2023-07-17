@@ -1,4 +1,4 @@
-/* $Id: UISession.h 98940 2023-03-13 16:00:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -91,6 +91,8 @@ signals:
         void sigAudioAdapterChange();
         /** Notifies about clipboard mode change. */
         void sigClipboardModeChange(KClipboardMode enmMode);
+        /** Notifies about a clipboard error. */
+        void sigClipboardError(QString strId, QString strMsg, long rcError);
         /** Notifies about CPU execution cap change. */
         void sigCPUExecutionCapChange();
         /** Notifies about DnD mode change. */

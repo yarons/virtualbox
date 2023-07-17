@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 99664 2023-05-08 10:48:06Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -107,6 +107,8 @@ public:
         /** Notifies about invalid encryption password.
           * @param  strPasswordId  Brings password ID. */
         static void warnAboutInvalidEncryptionPassword(const QString &strPasswordId);
+        /** Notifies about a clipboard error. */
+        static void showClipboardError(QString strId, QString strMsg, long rcError);
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
         /** Notifies about update not found. */
