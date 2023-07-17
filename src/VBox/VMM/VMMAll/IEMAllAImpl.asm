@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 100340 2023-07-02 22:50:12Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 100595 2023-07-17 10:55:34Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4296,6 +4296,9 @@ IEMIMPL_MEDIA_OPT_F3 vunpcklps
 IEMIMPL_MEDIA_OPT_F3 vunpcklpd
 IEMIMPL_MEDIA_OPT_F3 vunpckhps
 IEMIMPL_MEDIA_OPT_F3 vunpckhpd
+IEMIMPL_MEDIA_OPT_F3 vpsubsb
+IEMIMPL_MEDIA_OPT_F3 vpsubsw
+
 
 ;;
 ; Media instruction working on one full sized source registers and one destination (AVX),
