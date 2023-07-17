@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 100548 2023-07-12 12:31:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.cpp 100611 2023-07-17 17:37:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2659,7 +2659,7 @@ public:
     /** Constructs action passing @a pParent to the base-class. */
     UIActionMenuVISOCreatorSaveAs(UIActionPool *pParent)
         : UIActionSimple(pParent,
-                         ":/cd_remove_16px.png", ":/cd_remove_32px.png")
+                         ":/cd_write_16px.png", ":/cd_write_32px.png")
     {
         setShortcutContext(Qt::WidgetWithChildrenShortcut);
     }
@@ -2675,10 +2675,10 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE
     {
-        setName(QApplication::translate("UIActionPool", "Change Path"));
+        setName(QApplication::translate("UIActionPool", "Save As"));
         setShortcutScope(QApplication::translate("UIActionPool", "VISO Creator"));
-        setStatusTip(QApplication::translate("UIActionPool", "Select a file to save the VISO content."));
-        setToolTip(QApplication::translate("UIActionPool", "Select a file to save the VISO content.")
+        setStatusTip(QApplication::translate("UIActionPool", "Save the VISO content."));
+        setToolTip(QApplication::translate("UIActionPool", "Save the VISO content.")
                    + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));
     }
 };

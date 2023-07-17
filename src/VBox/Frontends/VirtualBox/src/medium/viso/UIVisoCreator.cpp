@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100583 2023-07-14 14:13:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100611 2023-07-17 17:37:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -835,7 +835,7 @@ void UIVisoCreatorDialog::retranslateUi()
     updateWindowTitle();
     if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Ok))
     {
-        m_pButtonBox->button(QDialogButtonBox::Ok)->setText(UIVisoCreatorWidget::tr("C&reate"));
+        m_pButtonBox->button(QDialogButtonBox::Ok)->setText(UIVisoCreatorWidget::tr("&Save and Close"));
         m_pButtonBox->button(QDialogButtonBox::Ok)->setToolTip(UIVisoCreatorWidget::tr("Creates VISO file with the selected content"));
     }
     if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Help))
