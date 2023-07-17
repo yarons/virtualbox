@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 100602 2023-07-17 12:13:59Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 100607 2023-07-17 16:38:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -18442,6 +18442,78 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_mpsadbw_u128_fallback,(PRTUINT128U puDst, PCRTU
                          + RT_ABS(ai16Src1[i + 1] - ai16Src2[1])
                          + RT_ABS(ai16Src1[i + 2] - ai16Src2[2])
                          + RT_ABS(ai16Src1[i + 3] - ai16Src2[3]);
+}
+
+
+/**
+ * VPERM2I128
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_vperm2i128_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bImm))
+{
+    if (bImm & RT_BIT(3))
+    {
+        puDst->au64[0] = 0;
+        puDst->au64[1] = 0;
+    }
+    else
+    {
+        switch (bImm & 0x3)
+        {
+            case 0:
+                puDst->au64[0] = puSrc1->au64[0];
+                puDst->au64[1] = puSrc1->au64[1];
+                break;
+            case 1:
+                puDst->au64[0] = puSrc1->au64[2];
+                puDst->au64[1] = puSrc1->au64[3];
+                break;
+            case 2:
+                puDst->au64[0] = puSrc2->au64[0];
+                puDst->au64[1] = puSrc2->au64[1];
+                break;
+            case 3:
+                puDst->au64[0] = puSrc2->au64[2];
+                puDst->au64[1] = puSrc2->au64[3];
+                break;
+        }
+    }
+
+    if (bImm & RT_BIT(7))
+    {
+        puDst->au64[2] = 0;
+        puDst->au64[3] = 0;
+    }
+    else
+    {
+        switch ((bImm >> 4) & 0x3)
+        {
+            case 0:
+                puDst->au64[2] = puSrc1->au64[0];
+                puDst->au64[3] = puSrc1->au64[1];
+                break;
+            case 1:
+                puDst->au64[2] = puSrc1->au64[2];
+                puDst->au64[3] = puSrc1->au64[3];
+                break;
+            case 2:
+                puDst->au64[2] = puSrc2->au64[0];
+                puDst->au64[3] = puSrc2->au64[1];
+                break;
+            case 3:
+                puDst->au64[2] = puSrc2->au64[2];
+                puDst->au64[3] = puSrc2->au64[3];
+                break;
+        }
+    }
+}
+
+
+/**
+ * VPERM2F128
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_vperm2f128_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bImm))
+{
+    iemAImpl_vperm2i128_u256_fallback(puDst, puSrc1, puSrc2, bImm);
 }
 
 

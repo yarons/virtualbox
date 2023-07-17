@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100602 2023-07-17 12:13:59Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 100607 2023-07-17 16:38:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2671,6 +2671,8 @@ FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vpalignr_u256, iemAImpl_vpalignr_u256_fall
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vpblendw_u256, iemAImpl_vpblendw_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vblendps_u256, iemAImpl_vblendps_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vblendpd_u256, iemAImpl_vblendpd_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vperm2i128_u256, iemAImpl_vperm2i128_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vperm2f128_u256, iemAImpl_vperm2f128_u256_fallback;
 
 FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_aesimc_u128,     iemAImpl_aesimc_u128_fallback;
 FNIEMAIMPLMEDIAOPTF2U128 iemAImpl_aesenc_u128,     iemAImpl_aesenc_u128_fallback;
