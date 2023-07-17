@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 100609 2023-07-17 16:45:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -1191,10 +1191,8 @@ private:
 #endif
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD
-# ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     /* Service extension for the Shared Clipboard HGCM service. */
     HGCMSVCEXTHANDLE                    m_hHgcmSvcExtShCl;
-# endif
 #endif
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
