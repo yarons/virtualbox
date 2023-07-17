@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100583 2023-07-14 14:13:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100601 2023-07-17 12:13:50Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -145,6 +145,7 @@ private:
     /* Processes a list of VISO paths that are loaded from a file and indicate file object to be removed from VISO content. */
     void                           processRemovedEntries(const QStringList &removedEntries);
     const UICustomFileSystemItem*  currentDirectoryItem() const;
+    void                           markRemovedUnremovedItemParents(UICustomFileSystemItem *pItem, bool fRemoved);
     UIVisoContentTableView        *m_pTableView;
     UICustomFileSystemModel       *m_pModel;
     UICustomFileSystemProxyModel  *m_pTableProxyModel;
