@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 98368 2023-01-31 15:46:52Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.h 100618 2023-07-18 00:27:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -102,6 +102,7 @@ typedef SCMSTREAM const *PCSCMSTREAM;
 
 
 int         ScmStreamInitForReading(PSCMSTREAM pStream, const char *pszFilename);
+int         ScmStreamInitForReadingFromStdInput(PSCMSTREAM pStream);
 int         ScmStreamInitForWriting(PSCMSTREAM pStream, PCSCMSTREAM pRelatedStream);
 void        ScmStreamDelete(PSCMSTREAM pStream);
 int         ScmStreamGetStatus(PCSCMSTREAM pStream);
