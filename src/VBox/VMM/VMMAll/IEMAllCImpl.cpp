@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 100326 2023-06-28 23:48:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 100617 2023-07-18 00:27:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2308,7 +2308,7 @@ IEM_CIMPL_DEF_3(iemCImpl_callf, uint16_t, uSel, uint64_t, offSeg, IEMMODE, enmEf
     /** @todo check if the hidden bits are loaded correctly for 64-bit
      *        mode.  */
 
-    iemRecalcExecDbgFlags(pVCpu);
+    iemRecalcExecModeAndCplFlags(pVCpu);
 
     /* Flush the prefetch buffer. */
     IEM_FLUSH_PREFETCH_HEAVY(pVCpu, cbInstr);
