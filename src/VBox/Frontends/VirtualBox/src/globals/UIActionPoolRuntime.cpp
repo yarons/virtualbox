@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 100524 2023-07-11 17:49:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPoolRuntime.cpp 100634 2023-07-18 15:12:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3502,7 +3502,7 @@ void UIActionPoolRuntime::updateConfiguration()
 
     /* Recache extension-pack related action restrictions: */
     CExtPackManager extPackManager = uiCommon().virtualBox().GetExtensionPackManager();
-    if (!extPackManager.isNull() && !extPackManager.IsExtPackUsable(GUI_ExtPackName))
+    if (extPackManager.isNull() || !extPackManager.IsExtPackUsable(GUI_ExtPackName))
     {
         m_restrictedActionsMenuView[UIActionRestrictionLevel_Base] = (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
             (m_restrictedActionsMenuView[UIActionRestrictionLevel_Base] | UIExtraDataMetaDefs::RuntimeMenuViewActionType_VRDEServer);
