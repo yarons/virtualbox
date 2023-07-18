@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100630 2023-07-18 12:43:57Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100632 2023-07-18 13:37:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -288,7 +288,8 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
     }
     if (!m_pTableView || !pParentItem)
         return;
-
+    if (pParentItem->isOpened())
+        return;
     /* If this is not the root directory add an "up" file object explicity since RTVfsDirReadEx does not return one:*/
     if (!strDirPath.isEmpty())
     {
@@ -323,6 +324,7 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
     }
     if (m_pTableProxyModel)
         m_pTableProxyModel->invalidate();
+    pParentItem->setIsOpened(true);
     emit sigISOContentImportedOrRemoved(true /* imported*/);
 }
 
