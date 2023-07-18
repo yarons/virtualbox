@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 100588 2023-07-14 16:38:21Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstructionsPython.py 100633 2023-07-18 14:05:10Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100588 $"
+__version__ = "$Revision: 100633 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2449,6 +2449,44 @@ class McBlock(object):
         if not self.aoStmts:
             self.aoStmts = self.decodeCode(''.join(self.asLines));
         return self.aoStmts;
+
+
+    def checkForTooEarlyEffSegUse(self, aoStmts):
+        """
+        Checks if iEffSeg is used before the effective address has been decoded.
+        Returns None on success, error string on failure.
+
+        See r158454 for an example of this issue.
+        """
+
+        # Locate the IEM_MC_CALC_RM_EFF_ADDR statement, if found, scan backwards
+        # for IEMCPU::iEffSeg references. No need to check conditional branches,
+        # as we're ASSUMING these will not occur before address calculation.
+        for iStmt, oStmt in enumerate(aoStmts):
+            if oStmt.sName == 'IEM_MC_CALC_RM_EFF_ADDR':
+                while iStmt > 0:
+                    iStmt -= 1;
+                    oStmt  = aoStmts[iStmt];
+                    for sArg in oStmt.asParams:
+                        if sArg.find('pVCpu->iem.s.iEffSeg') >= 0:
+                            return "statement #%u: pVCpu->iem.s.iEffSeg is used prior to IEM_MC_CALC_RM_EFF_ADDR!" % (iStmt + 1,);
+                break;
+        return None;
+
+    def check(self):
+        """
+        Performs some sanity checks on the block.
+        Returns error string list, empty if all is fine.
+        """
+        aoStmts = self.decode();
+        asRet   = [];
+
+        sRet = self.checkForTooEarlyEffSegUse(aoStmts);
+        if sRet:
+            asRet.append(sRet);
+
+        return asRet;
+
 
 
 ## IEM_MC_XXX -> parser dictionary.
