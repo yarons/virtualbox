@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 100592 2023-07-15 09:25:00Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 100626 2023-07-18 10:12:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3080,9 +3080,10 @@ iemRaiseXcptOrIntInProtMode(PVMCPUCC    pVCpu,
         Log(("iemRaiseXcptOrIntInProtMode: failed to fetch IDT entry! vec=%#x rc=%Rrc\n", u8Vector, VBOXSTRICTRC_VAL(rcStrict)));
         return rcStrict;
     }
-    Log(("iemRaiseXcptOrIntInProtMode: vec=%#x P=%u DPL=%u DT=%u:%u A=%u %04x:%04x%04x\n",
+    Log(("iemRaiseXcptOrIntInProtMode: vec=%#x P=%u DPL=%u DT=%u:%u A=%u %04x:%04x%04x - from %04x:%08RX64 efl=%#x depth=%d\n",
          u8Vector, Idte.Gate.u1Present, Idte.Gate.u2Dpl, Idte.Gate.u1DescType, Idte.Gate.u4Type,
-         Idte.Gate.u5ParmCount, Idte.Gate.u16Sel, Idte.Gate.u16OffsetHigh, Idte.Gate.u16OffsetLow));
+         Idte.Gate.u5ParmCount, Idte.Gate.u16Sel, Idte.Gate.u16OffsetHigh, Idte.Gate.u16OffsetLow,
+         pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, pVCpu->cpum.GstCtx.eflags.u, pVCpu->iem.s.cXcptRecursions));
 
     /*
      * Check the descriptor type, DPL and such.
