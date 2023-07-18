@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 100629 2023-07-18 12:35:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 100630 2023-07-18 12:43:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -281,9 +281,6 @@ void UIVisoContentBrowser::importISOContentToViso(const QString &strISOFilePath,
                                                   UICustomFileSystemItem *pParentItem /* = 0 */,
                                                   const QString &strDirPath /* = QString() */)
 {
-    /* We can import only a ISO file into VISO:*/
-    if (!importedISOPath().isEmpty())
-        return;
     if (!pParentItem)
     {
         pParentItem = startItem();

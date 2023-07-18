@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100611 2023-07-17 17:37:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100630 2023-07-18 12:43:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -453,7 +453,9 @@ void UIVisoCreatorWidget::sltISOImportAction()
     QStringList selectedObjectPaths = m_pHostBrowser->selectedPathList();
     if (selectedObjectPaths.isEmpty())
         return;
-    m_pVISOContentBrowser->importISOContentToViso(selectedObjectPaths[0]);
+    /* We can import only a ISO file into VISO:*/
+    if (m_pVISOContentBrowser->importedISOPath().isEmpty())
+        m_pVISOContentBrowser->importISOContentToViso(selectedObjectPaths[0]);
 }
 
 void UIVisoCreatorWidget::sltISORemoveAction()
