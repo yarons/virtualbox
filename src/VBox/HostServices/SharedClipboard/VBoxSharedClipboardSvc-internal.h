@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 100374 2023-07-05 08:36:57Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 100619 2023-07-18 08:06:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -264,7 +264,11 @@ typedef std::list<uint32_t> ClipboardClientQueue;
  */
 typedef struct _SHCLEXTSTATE
 {
-    /** Pointer to the actual service extension handle. */
+    /** Pointer to the actual service extension handle.
+     *
+     * Must return VERR_NOT_SUPPORTED if the extension didn't handle the requested function.
+     * This will invoke the regular backend then.
+     */
     PFNHGCMSVCEXT  pfnExtension;
     /** Opaque pointer to extension-provided data. Don't touch. */
     void          *pvExtension;
