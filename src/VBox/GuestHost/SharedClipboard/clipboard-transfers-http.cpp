@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 100621 2023-07-18 09:22:25Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 100622 2023-07-18 09:27:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -886,10 +886,10 @@ int ShClTransferHttpServerRegisterTransfer(PSHCLHTTPSERVER pSrv, PSHCLTRANSFER p
 # ifdef DEBUG_andy /** Too lazy to specify a different transfer ID for debugging. */
                 ssize_t cch = RTStrAPrintf(&pszPath, "//transfer");
 # else
-                ssize_t cch = RTStrAPrintf2(&pszPath, "//transfer%RU16", pTransfer->State.uID);
+                ssize_t cch = RTStrAPrintf(&pszPath, "//transfer%RU16", pTransfer->State.uID);
 # endif
 #else /* Release mode */
-                ssize_t cch = RTStrAPrintf2(&pszPath, "//%s/%s/%s", SHCL_HTTPT_URL_NAMESPACE, szUuid, pEntry->pszName);
+                ssize_t cch = RTStrAPrintf(&pszPath, "//%s/%s/%s", SHCL_HTTPT_URL_NAMESPACE, szUuid, pEntry->pszName);
 #endif
                 AssertReturn(cch, VERR_NO_MEMORY);
 
