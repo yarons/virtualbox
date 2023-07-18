@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100628 $"
+__version__ = "$Revision: 100631 $"
 
 # Standard Python imports.
 import errno
@@ -5515,7 +5515,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         asArgs = [ sPnpUtil, '/enum-devices', '/connected', '/class', 'Display' ];
 
         try:
-            oCurProcess = self.processCreateWrapper(oGuestSession, sPnpUtil, 
+            oCurProcess = self.processCreateWrapper(oGuestSession, sPnpUtil,
                                                     asArgs if self.oTstDrv.fpApiVer >= 5.0 else asArgs[1:],
                                                     "", # Working directory.
                                                     [], [], 30 * 1000);
