@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 100591 2023-07-15 01:20:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 100623 2023-07-18 09:58:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -5219,10 +5219,11 @@ FNIEMOP_DEF_1(iemOp_pop_Ev, uint8_t, bRm)
         case IEMMODE_16BIT:
         {
             IEM_MC_BEGIN(2, 0);
-            IEM_MC_ARG_CONST(uint8_t,       iEffSeg, /*=*/ pVCpu->iem.s.iEffSeg, 0);
-            IEM_MC_ARG(      RTGCPTR,       GCPtrEffDst,                         1);
+            IEM_MC_ARG(uint8_t, iEffSeg,     0);
+            IEM_MC_ARG(RTGCPTR, GCPtrEffDst, 1);
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 2 << 8);
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+            IEM_MC_ASSIGN(iEffSeg, pVCpu->iem.s.iEffSeg);
             IEM_MC_CALL_CIMPL_2(0, iemCImpl_pop_mem16, iEffSeg, GCPtrEffDst);
             IEM_MC_END();
         }
@@ -5230,10 +5231,11 @@ FNIEMOP_DEF_1(iemOp_pop_Ev, uint8_t, bRm)
         case IEMMODE_32BIT:
         {
             IEM_MC_BEGIN(2, 0);
-            IEM_MC_ARG_CONST(uint8_t,       iEffSeg, /*=*/ pVCpu->iem.s.iEffSeg, 0);
-            IEM_MC_ARG(      RTGCPTR,       GCPtrEffDst,                         1);
+            IEM_MC_ARG(uint8_t, iEffSeg,     0);
+            IEM_MC_ARG(RTGCPTR, GCPtrEffDst, 1);
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 4 << 8);
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+            IEM_MC_ASSIGN(iEffSeg, pVCpu->iem.s.iEffSeg);
             IEM_MC_CALL_CIMPL_2(0, iemCImpl_pop_mem32, iEffSeg, GCPtrEffDst);
             IEM_MC_END();
         }
@@ -5241,10 +5243,11 @@ FNIEMOP_DEF_1(iemOp_pop_Ev, uint8_t, bRm)
         case IEMMODE_64BIT:
         {
             IEM_MC_BEGIN(2, 0);
-            IEM_MC_ARG_CONST(uint8_t,       iEffSeg, /*=*/ pVCpu->iem.s.iEffSeg, 0);
-            IEM_MC_ARG(      RTGCPTR,       GCPtrEffDst,                         1);
+            IEM_MC_ARG(uint8_t, iEffSeg,     0);
+            IEM_MC_ARG(RTGCPTR, GCPtrEffDst, 1);
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 8 << 8);
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+            IEM_MC_ASSIGN(iEffSeg, pVCpu->iem.s.iEffSeg);
             IEM_MC_CALL_CIMPL_2(0, iemCImpl_pop_mem64, iEffSeg, GCPtrEffDst);
             IEM_MC_END();
         }
