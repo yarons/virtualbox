@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 100559 2023-07-13 09:11:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoHostBrowser.h 100629 2023-07-18 12:35:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -57,7 +57,7 @@ public:
     virtual void showHideHiddenObjects(bool bShow) final override;
     QString      currentPath() const;
     void         setCurrentPath(const QString &strPath);
-    virtual bool tableViewHasSelection() const final override;
+    bool tableViewHasSelection() const;
     /* The list of path of the selected file objects. */
     QStringList selectedPathList() const;
     void prepareMainMenu(QMenu *pMenu);

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 100601 2023-07-17 12:13:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 100629 2023-07-18 12:35:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -72,7 +72,7 @@ public:
       * .viso file. */
     QStringList entryList();
     virtual void showHideHiddenObjects(bool bShow)  override final;
-    virtual bool tableViewHasSelection() const final override;
+
     void parseVisoFileContent(const QString &strFileName);
     void prepareMainMenu(QMenu *pMenu);
 
@@ -133,7 +133,7 @@ private:
     void                    createVisoEntry(const QString &strPath, const QString &strLocalPath, bool bRemove = false);
     QString                 currentPath() const;
     UICustomFileSystemItem* searchItemByPath(const QString &strPath);
-
+    void                    goToStart();
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
     QList<UICustomFileSystemItem*> tableSelectedItems();
@@ -146,6 +146,7 @@ private:
     void                           processRemovedEntries(const QStringList &removedEntries);
     const UICustomFileSystemItem*  currentDirectoryItem() const;
     void                           markRemovedUnremovedItemParents(UICustomFileSystemItem *pItem, bool fRemoved);
+    void                           enableDisableSelectionDependentActions();
     UIVisoContentTableView        *m_pTableView;
     UICustomFileSystemModel       *m_pModel;
     UICustomFileSystemProxyModel  *m_pTableProxyModel;

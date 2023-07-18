@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 100478 2023-07-10 16:17:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoBrowserBase.h 100629 2023-07-18 12:35:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -61,7 +61,6 @@ public:
     UIVisoBrowserBase(UIActionPool *pActionPool, QWidget *pParent = 0);
     ~UIVisoBrowserBase();
     virtual void showHideHiddenObjects(bool bShow) = 0;
-    virtual bool tableViewHasSelection() const = 0;
 
 public slots:
 
