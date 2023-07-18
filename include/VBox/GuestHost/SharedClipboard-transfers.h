@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100547 2023-07-12 12:05:33Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 100636 2023-07-18 15:59:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -1122,10 +1122,15 @@ int ShClTransferInit(PSHCLTRANSFER pTransfer);
 int ShClTransferDestroy(PSHCLTRANSFER pTransfer);
 void ShClTransferReset(PSHCLTRANSFER pTransfer);
 
+bool ShClTransferIsRunning(PSHCLTRANSFER pTransfer);
+bool ShClTransferIsComplete(PSHCLTRANSFER pTransfer);
+bool ShClTransferIsAborted(PSHCLTRANSFER pTransfer);
+
 int ShClTransferRun(PSHCLTRANSFER pTransfer, PFNSHCLTRANSFERTHREAD pfnThreadFunc, void *pvUser);
 int ShClTransferStart(PSHCLTRANSFER pTransfer);
 int ShClTransferComplete(PSHCLTRANSFER pTransfer);
 int ShClTransferCancel(PSHCLTRANSFER pTransfer);
+int ShClTransferKill(PSHCLTRANSFER pTransfer);
 int ShClTransferError(PSHCLTRANSFER pTransfer, int rc);
 
 uint32_t ShClTransferAcquire(PSHCLTRANSFER pTransfer);
