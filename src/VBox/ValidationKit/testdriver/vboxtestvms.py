@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 100480 2023-07-10 16:50:17Z ksenia.s.stepanova@oracle.com $
+# $Id: vboxtestvms.py 100639 2023-07-18 17:51:25Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100480 $"
+__version__ = "$Revision: 100639 $"
 
 # Standard Python imports.
 import copy;
@@ -2058,6 +2058,8 @@ class TestVmManager(object):
         # W7
         TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32-1.vdi',
                sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
+        TestVm('tst-win7-64',               kfGrpStdSmoke,        sHd = '7.0/win7-64/win7-64.vdi',
+               sKind = 'Windows7_64', acCpusSup = range(1, 33), fIoApic = True),
         # Note: Deprecated due to activation issues; use t-win7-32-1 instead.
         #TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32.vdi',
         #       sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
@@ -2072,15 +2074,15 @@ class TestVmManager(object):
         #       sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True, sChipsetType = 'ich9'),
 
         # W10
-        TestVm('tst-win10-efi',             kfGrpStdSmoke,        sHd = '4.2/efi/win10-efi-x86-edited.vdi',
+        TestVm('tst-win10-efi',             kfGrpStdSmoke,        sHd = '4.2/efi/win10-efi-x86-edited2.vdi',
                sKind = 'Windows10', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi'),
-        TestVm('tst-win10-64-efi',          kfGrpStdSmoke,        sHd = '4.2/efi/win10-efi-amd64-edited.vdi',
+        TestVm('tst-win10-64-efi',          kfGrpStdSmoke,        sHd = '4.2/efi/win10-efi-amd64-edited2.vdi',
                sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi'),
         #TestVm('tst-win10-64-efi-ich9',     kfGrpStdSmoke,         sHd = '4.2/efi/win10-efi-amd64.vdi',
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
 
         # W11
-        TestVm('tst-win11-64-efi',           kfGrpStdSmoke,       sHd = '7.0/win11/win11-64-edit-by-ksenia.vdi',
+        TestVm('tst-win11-64-efi',           kfGrpStdSmoke,       sHd = '7.0/win11/win11-64-edited.vdi',
                sKind = 'Windows11_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi'),
 
         # Nested hardware-virtualization
