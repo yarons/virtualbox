@@ -1,4 +1,4 @@
-/* $Id: main.cpp 100069 2023-06-05 12:48:07Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 100652 2023-07-19 14:27:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -396,9 +396,15 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         if (!MakeSureMultiThreadingIsSafe())
             break;
         VBGHDISPLAYSERVERTYPE enmDisplayServerType = VBGHDisplayServerTypeDetect();
-        /* Default to X11 if anything else was found: */
+        /* Abort before instantiating QApplication in case no active display server can be found to
+         * prevent QApplication from aborting:  */
         if (enmDisplayServerType == VBGHDISPLAYSERVERTYPE_NONE)
-            enmDisplayServerType = VBGHDISPLAYSERVERTYPE_X11;
+        {
+            iResultCode = 1;
+            Log(("We could not detect an active display server. Exiting."));
+            RTStrmPrintf(g_pStdErr, "No active display server, X11 or Wayland, detected. Exiting.\n");
+            break;
+        }
         if (VBGHDisplayServerTypeIsXAvailable(enmDisplayServerType))
             /* Force using Qt platform plugin 'xcb', we have X11 specific code: */
             RTEnvSet("QT_QPA_PLATFORM", "xcb");
