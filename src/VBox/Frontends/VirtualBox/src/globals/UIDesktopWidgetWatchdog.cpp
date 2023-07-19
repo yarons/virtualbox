@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 100650 2023-07-19 11:52:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -701,7 +701,7 @@ void UIDesktopWidgetWatchdog::centerWidget(QWidget *pWidget,
      * pWidget will be centered relative to the available desktop area. */
 
     AssertReturnVoid(pWidget);
-    AssertReturnVoid(pWidget->isTopLevel());
+    AssertReturnVoid(pWidget->isWindow());
 
     QRect deskGeo, parentGeo;
     if (pRelative)
