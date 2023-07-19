@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 100646 2023-07-19 08:49:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -95,7 +95,7 @@ static int vboxClipboardChanged(SHCLCONTEXT *pCtx)
     if (   RT_SUCCESS(rc)
         && fChanged
         && ShClSvcIsBackendActive())
-        rc = ShClSvcHostReportFormats(pCtx->pClient, fFormats);
+        rc = ShClSvcReportFormats(pCtx->pClient, fFormats);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
