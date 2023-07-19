@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 100655 2023-07-19 16:06:24Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100656 2023-07-19 16:13:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -366,7 +366,7 @@ static DECLCALLBACK(int) shClSvcX11ReportFormatsCallback(PSHCLCONTEXT pCtx, uint
     PSHCLCLIENT pClient = pCtx->pClient;
     AssertPtr(pClient);
 
-    rc = ShClSvcReportFormats(pCtx->pClient, fFormats);
+    rc = ShClSvcReportFormats(pClient, fFormats);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
