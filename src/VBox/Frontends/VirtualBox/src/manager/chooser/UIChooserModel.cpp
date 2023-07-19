@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 100469 2023-07-10 14:58:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 100654 2023-07-19 14:50:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1548,6 +1548,7 @@ void UIChooserModel::prepareContextMenu()
         pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Add));
         pMenuGroup->addSeparator();
         pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_M_StartOrShow));
+        pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Reset));
         pMenuGroup->addMenu(actionPool()->action(UIActionIndexMN_M_Group_M_Console)->menu());
         pMenuGroup->addMenu(actionPool()->action(UIActionIndexMN_M_Group_M_Stop)->menu());
         pMenuGroup->addSeparator();
@@ -1565,6 +1566,7 @@ void UIChooserModel::prepareContextMenu()
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Remove));
         pMenuMachine->addSeparator();
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
+        pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Reset));
         pMenuMachine->addMenu(actionPool()->action(UIActionIndexMN_M_Machine_M_Console)->menu());
         pMenuMachine->addMenu(actionPool()->action(UIActionIndexMN_M_Machine_M_Stop)->menu());
         pMenuMachine->addSeparator();

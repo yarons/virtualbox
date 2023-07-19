@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
+/* $Id: UINotificationObjects.h 100654 2023-07-19 14:50:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1816,6 +1816,34 @@ protected:
 private:
 
     /** Holds the machine being powered-up. */
+    CCloudMachine  m_comMachine;
+    /** Holds the machine name. */
+    QString        m_strName;
+};
+
+/** UINotificationProgress extension for cloud machine reset functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressCloudMachineReset : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs cloud machine reset notification-progress.
+      * @param  comMachine  Brings the machine being reset. */
+    UINotificationProgressCloudMachineReset(const CCloudMachine &comMachine);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the machine being reset. */
     CCloudMachine  m_comMachine;
     /** Holds the machine name. */
     QString        m_strName;
