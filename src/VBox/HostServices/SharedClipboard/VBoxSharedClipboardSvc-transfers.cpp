@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100644 2023-07-19 08:42:42Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100645 2023-07-19 08:45:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -983,7 +983,7 @@ static int shClSvcTransferGetReply(uint32_t cParms, VBOXHGCMSVCPARM aParms[],
                     if (cParms > idxParm)
                         rc = HGCMSvcGetU32(&aParms[idxParm], &pReply->u.TransferStatus.uStatus);
 
-                    LogFlowFunc(("uTransferStatus=%RU32 (%s)\n", 
+                    LogFlowFunc(("uTransferStatus=%RU32 (%s)\n",
                                  pReply->u.TransferStatus.uStatus, ShClTransferStatusToStr(pReply->u.TransferStatus.uStatus)));
                     break;
                 }
