@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 100025 2023-05-31 14:21:25Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_mode.c 100653 2023-07-19 14:35:39Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -39,7 +39,7 @@
 #include "vbox_drv.h"
 #include <linux/export.h>
 #include <drm/drm_crtc_helper.h>
-#if RTLNX_VER_MIN(6,3,0)
+#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_MAJ_PREREQ(9,3)
 # include <drm/drm_modeset_helper_vtables.h>
 # include <drm/drm_modeset_helper.h>
 #endif
@@ -316,6 +316,7 @@ static int vbox_crtc_page_flip(struct drm_crtc *crtc,
 	if (rc)
 		return rc;
 
+	mutex_lock(&vbox->hw_mutex);
 	vbox_do_modeset(crtc, &crtc->mode);
 	mutex_unlock(&vbox->hw_mutex);
 
