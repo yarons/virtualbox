@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 100646 2023-07-19 08:49:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 100655 2023-07-19 16:06:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -318,15 +318,6 @@ uint32_t ShClSvcGetMode(void);
 bool ShClSvcGetHeadless(void);
 bool ShClSvcLock(void);
 void ShClSvcUnlock(void);
-
-/**
- * Checks if the backend is active (@c true), or if VRDE is in control of
- * the host side.
- */
-DECLINLINE(bool) ShClSvcIsBackendActive(void)
-{
-    return g_ExtState.pfnExtension == NULL;
-}
 /** @} */
 
 /** @name Platform-dependent implementations for the Shared Clipboard host service ("backends"),

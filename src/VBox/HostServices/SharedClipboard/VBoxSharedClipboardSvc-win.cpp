@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 100646 2023-07-19 08:49:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 100655 2023-07-19 16:06:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -788,9 +788,7 @@ static int vboxClipboardSvcWinSyncInternal(PSHCLCONTEXT pCtx)
     {
         SHCLFORMATS fFormats = 0;
         rc = SharedClipboardWinGetFormats(&pCtx->Win, &fFormats);
-        if (   RT_SUCCESS(rc)
-            && fFormats != VBOX_SHCL_FMT_NONE /** @todo r=bird: BUGBUG: revisit this. */
-            && ShClSvcIsBackendActive())
+        if (RT_SUCCESS(rc))
             rc = ShClSvcReportFormats(pCtx->pClient, fFormats);
     }
     else /* If we don't have any client data (yet), bail out. */

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 100646 2023-07-19 08:49:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100655 2023-07-19 16:06:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -219,9 +219,7 @@ int ShClBackendSync(PSHCLBACKEND pBackend, PSHCLCLIENT pClient)
     /* Tell the guest we have no data in case X11 is not available.  If
      * there is data in the host clipboard it will automatically be sent to
      * the guest when the clipboard starts up. */
-    if (ShClSvcIsBackendActive())
-        return ShClSvcReportFormats(pClient, VBOX_SHCL_FMT_NONE);
-    return VINF_SUCCESS;
+    return ShClSvcReportFormats(pClient, VBOX_SHCL_FMT_NONE);
 }
 
 /**
@@ -368,20 +366,7 @@ static DECLCALLBACK(int) shClSvcX11ReportFormatsCallback(PSHCLCONTEXT pCtx, uint
     PSHCLCLIENT pClient = pCtx->pClient;
     AssertPtr(pClient);
 
-    rc = RTCritSectEnter(&pClient->CritSect);
-    if (RT_SUCCESS(rc))
-    {
-        if (ShClSvcIsBackendActive())
-        {
-            /** @todo r=bird: BUGBUG: Revisit this   */
-            if (fFormats != VBOX_SHCL_FMT_NONE) /* No formats to report? */
-            {
-                rc = ShClSvcReportFormats(pCtx->pClient, fFormats);
-            }
-        }
-
-        RTCritSectLeave(&pClient->CritSect);
-    }
+    rc = ShClSvcReportFormats(pCtx->pClient, fFormats);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
