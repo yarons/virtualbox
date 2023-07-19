@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100645 2023-07-19 08:45:50Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100648 2023-07-19 09:56:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -1432,7 +1432,7 @@ static int shClSvcTransferHandleReply(PSHCLCLIENT pClient, PSHCLTRANSFER pTransf
                 pPayload->pvData = pReply;
                 pPayload->cbData = cbReply;
 
-                SHCLTRANSFERID const idTransfer = ShClTransferGetID(pTransfer);
+                SHCLTRANSFERID const idTransfer = pTransfer ? ShClTransferGetID(pTransfer) : NIL_SHCLTRANSFERID;
 
                 switch (pReply->uType)
                 {
