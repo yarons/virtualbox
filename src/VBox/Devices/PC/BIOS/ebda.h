@@ -1,4 +1,4 @@
-/* $Id: ebda.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ebda.h 100658 2023-07-20 07:43:52Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - EBDA (Extended BIOS Data Area) Definition
  */
@@ -85,6 +85,7 @@
     #define VBOX_GET_SCSI_DEVICE(device_id) (device_id - BX_MAX_ATA_DEVICES)
 #else
     #define BX_MAX_SCSI_DEVICES 0
+    #define VBOX_IS_SCSI_DEVICE(device_id) (1 == 0)
 #endif
 
 #ifdef VBOX_WITH_AHCI
