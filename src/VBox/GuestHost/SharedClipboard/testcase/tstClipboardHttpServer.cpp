@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 100393 2023-07-05 16:18:02Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 100668 2023-07-20 14:50:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
                 case 4:
                     RT_FALL_THROUGH();
                 default:
-                    rc = RTLogGroupSettings(g_pRelLogger, "shared_clipboard.e.l.l2.l3.l4+http.e.l.l2.l3.l4");
+                    rc = RTLogGroupSettings(g_pRelLogger, "shared_clipboard.e.l.l2.l3.l4.f+http.e.l.l2.l3.l4.f");
                     break;
             }
             if (RT_FAILURE(rc))
