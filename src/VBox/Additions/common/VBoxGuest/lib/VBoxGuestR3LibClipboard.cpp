@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 100657 2023-07-20 06:52:56Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 100663 2023-07-20 10:20:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -921,17 +921,17 @@ VBGLR3DECL(int) VbglR3ClipboarTransferStatusRecv(PVBGLR3SHCLCMDCTX pCtx,
 }
 
 /**
- * Replies to a transfer report from the host, extended version.
+ * Sends a transfer status to the host, extended version.
  *
  * @returns VBox status code.
  * @param   pCtx                Shared Clipboard command context to use for the connection.
  * @param   uCID                Context ID to use.
  *                              The transfer ID is part of this.
- * @param   uStatus             Tranfer status to reply.
- * @param   rcTransfer          Result code (rc) to reply.
+ * @param   uStatus             Tranfer status to send.
+ * @param   rcTransfer          Result code (rc) to send.
  */
-static int vbglR3ClipboardTransferStatusReplyEx(PVBGLR3SHCLCMDCTX pCtx, uint64_t uCID,
-                                                SHCLTRANSFERSTATUS uStatus, int rcTransfer)
+static int vbglR3ClipboardTransferSendStatusEx(PVBGLR3SHCLCMDCTX pCtx, uint64_t uCID,
+                                               SHCLTRANSFERSTATUS uStatus, int rcTransfer)
 {
     AssertPtrReturn(pCtx,      VERR_INVALID_POINTER);
 
@@ -969,7 +969,7 @@ VBGLR3DECL(int) VbglR3ClipboardTransferSendStatus(PVBGLR3SHCLCMDCTX pCtx, PSHCLT
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
     RT_NOREF(pTransfer); /* Currently not used (yet). */
 
-    int rc = vbglR3ClipboardTransferStatusReplyEx(pCtx, pCtx->idContext, uStatus, rcTransfer);
+    int rc = vbglR3ClipboardTransferSendStatusEx(pCtx, pCtx->idContext, uStatus, rcTransfer);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
@@ -2171,8 +2171,8 @@ VBGLR3DECL(int) VbglR3ClipboardTransferRequest(PVBGLR3SHCLCMDCTX pCmdCtx)
 
     LogRel2(("Shared Clipboard: Requesting new host -> guest transfer from host\n"));
 
-    int rc = vbglR3ClipboardTransferStatusReplyEx(pCmdCtx, 0 /* Context ID not needed */,
-                                                  SHCLTRANSFERSTATUS_REQUESTED, VINF_SUCCESS);
+    int rc = vbglR3ClipboardTransferSendStatusEx(pCmdCtx, 0 /* Context ID not needed */,
+                                                 SHCLTRANSFERSTATUS_REQUESTED, VINF_SUCCESS);
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
@@ -2673,7 +2673,7 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
             && RT_FAILURE(rc))
         {
             /* Report transfer-specific error back to the host. */
-            int rc2 = vbglR3ClipboardTransferStatusReplyEx(pCmdCtx, pCmdCtx->idContext, SHCLTRANSFERSTATUS_ERROR, rc);
+            int rc2 = vbglR3ClipboardTransferSendStatusEx(pCmdCtx, pCmdCtx->idContext, SHCLTRANSFERSTATUS_ERROR, rc);
             AssertRC(rc2);
         }
     }
