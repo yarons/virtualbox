@@ -1,4 +1,4 @@
-/* $Id: http-server.cpp 100669 2023-07-20 14:58:53Z andreas.loeffler@oracle.com $ */
+/* $Id: http-server.cpp 100670 2023-07-20 16:38:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * Simple HTTP server (RFC 7231) implementation.
  *
@@ -802,18 +802,20 @@ static DECLCALLBACK(int) rtHttpServerHandleGET(PRTHTTPSERVERCLIENT pClient, PRTH
             if (RT_FAILURE(rc))
                 break;
             rc = rtHttpServerSendResponseBody(pClient, pvBuf, cbRead, &cbWritten);
+            if (RT_FAILURE(rc))
+                break;
             AssertBreak(cbToRead >= cbWritten);
             cbToRead -= cbWritten;
-            if (rc == VERR_NET_CONNECTION_RESET_BY_PEER) /* Clients often apruptly abort the connection when done. */
-            {
-                rc = VINF_SUCCESS;
-                break;
-            }
-            AssertRCBreak(rc);
+#if 0 /* Disabled, VERR_BROKEN_PIPE happens too often with GVFS 1.50. */
+            AssertMsgRCBreak(rc, ("rc=%Rrc, cbRead=%zu, cbToRead=%zu, cbWritten=%zu\n", rc, cbRead, cbToRead, cbWritten));
+#endif
         }
 
         break;
     } /* for (;;) */
+
+    if (rc == VERR_NET_CONNECTION_RESET_BY_PEER) /* Clients often apruptly abort the connection when done. */
+        rc = VINF_SUCCESS;
 
     RTMemFree(pvBuf);
 
