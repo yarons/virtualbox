@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100449 2023-07-10 09:16:00Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100661 2023-07-20 09:56:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1173,7 +1173,10 @@ void SharedClipboardWinTransferDestroy(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTrans
         /* If the transfer has a data object assigned, uninitialize it here.
          * Note: We don't free the object here, as other processes like the Windows Explorer still might refer to it. */
         if (pWinURITransferCtx->pDataObj)
+        {
             pWinURITransferCtx->pDataObj->Uninit();
+            pWinURITransferCtx->pDataObj = NULL;
+        }
 
         delete pWinURITransferCtx;
         pWinURITransferCtx = NULL;
