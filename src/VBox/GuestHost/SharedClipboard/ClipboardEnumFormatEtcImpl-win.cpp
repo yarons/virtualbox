@@ -1,4 +1,4 @@
-/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 100204 2023-06-19 09:11:37Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 100665 2023-07-20 13:20:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardEnumFormatEtcImpl-win.cpp - Shared Clipboard IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -39,11 +39,30 @@
 #include <VBox/log.h>
 
 
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
+
+
+
+/*********************************************************************************************************************************
+*   Static variables                                                                                                             *
+*********************************************************************************************************************************/
+#ifdef VBOX_SHARED_CLIPBOARD_DEBUG_OBJECT_COUNTS
+ extern int g_cDbgDataObj;
+ extern int g_cDbgStreamObj;
+ extern int g_cDbgEnumFmtObj;
+#endif
+
 
 SharedClipboardWinEnumFormatEtc::SharedClipboardWinEnumFormatEtc(void)
     : m_lRefCount(1),
       m_nIndex(0)
 {
+#ifdef VBOX_SHARED_CLIPBOARD_DEBUG_OBJECT_COUNTS
+    g_cDbgEnumFmtObj++;
+    LogFlowFunc(("g_cDataObj=%d, g_cStreamObj=%d, g_cEnumFmtObj=%d\n", g_cDbgDataObj, g_cDbgStreamObj, g_cDbgEnumFmtObj));
+#endif
 }
 
 SharedClipboardWinEnumFormatEtc::~SharedClipboardWinEnumFormatEtc(void)
@@ -51,6 +70,11 @@ SharedClipboardWinEnumFormatEtc::~SharedClipboardWinEnumFormatEtc(void)
     Destroy();
 
     LogFlowFunc(("m_lRefCount=%RI32\n", m_lRefCount));
+
+#ifdef VBOX_SHARED_CLIPBOARD_DEBUG_OBJECT_COUNTS
+    g_cDbgEnumFmtObj--;
+    LogFlowFunc(("g_cDataObj=%d, g_cStreamObj=%d, g_cEnumFmtObj=%d\n", g_cDbgDataObj, g_cDbgStreamObj, g_cDbgEnumFmtObj));
+#endif
 }
 
 /**

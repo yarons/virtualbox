@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100661 2023-07-20 09:56:26Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 100665 2023-07-20 13:20:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1064,21 +1064,25 @@ int SharedClipboardWinTransferCreateAndSetDataObject(PSHCLWINCTX pWinCtx,
     int rc = RTCritSectEnter(&pWinCtx->CritSect);
     if (RT_SUCCESS(rc))
     {
-        if (pWinCtx->pDataObjInFlight == NULL)
+        LogFlowFunc(("pWinCtx->pDataObjInFlight=%p\n", pWinCtx->pDataObjInFlight));
+
+        /* Create a new data object here, assign it as the the current data object in-flight and
+         * announce it to Windows below.
+         *
+         * The data object will be deleted automatically once its refcount reaches 0.
+         */
+        SharedClipboardWinDataObject *pObj = new SharedClipboardWinDataObject();
+        if (pObj)
         {
-            SharedClipboardWinDataObject *pObj = new SharedClipboardWinDataObject();
-            if (pObj)
+            rc = pObj->Init(pCtx, pCallbacks);
+            if (RT_SUCCESS(rc))
             {
-                rc = pObj->Init(pCtx, pCallbacks);
                 if (RT_SUCCESS(rc))
-                {
-                    if (RT_SUCCESS(rc))
-                        pWinCtx->pDataObjInFlight = pObj;
-                }
+                    pWinCtx->pDataObjInFlight = pObj;
             }
-            else
-                rc = VERR_NO_MEMORY;
         }
+        else
+            rc = VERR_NO_MEMORY;
 
         if (RT_SUCCESS(rc))
         {
