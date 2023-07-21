@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 100686 2023-07-21 19:20:48Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -513,7 +513,7 @@ UINT __stdcall IsMSCRTInstalled(MSIHANDLE hModule)
                         logStringF(hModule, "IsMSCRTInstalled: Found v%u.%u\n", dwMaj, dwMin);
 
                         /* Check for at least 2019. */
-                        if (dwMaj >= 14 && dwMin >= 20)
+                        if (dwMaj > 14 || (dwMaj = 14 && dwMin >= 20))
                             VBoxSetMsiProp(hModule, L"VBOX_MSCRT_INSTALLED", L"1");
                     }
                     else
