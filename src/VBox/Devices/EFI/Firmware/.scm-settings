@@ -1,4 +1,4 @@
-# $Id: .scm-settings 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $
+# $Id: .scm-settings 100682 2023-07-21 14:27:13Z alexander.eichner@oracle.com $
 ## @file
 # Source code massager settings for the EFI Firmware.
 #
@@ -176,6 +176,7 @@
 /VBoxPkg/VBoxFsDxe/test/*: --external-copyright --no-strip-trailing-blanks --no-fix-todos --strip-no-trailing-lines
 /VBoxPkg/VBoxVgaMiniPortDxe/VBoxVgaFont*.h: --external-copyright
 /VBoxPkg/E1kNetDxe/*.*: --external-copyright
+/VBoxPkg/VmwSvga3Dxe/*.*: --external-copyright
 /VBoxPkg/VBoxMisc/efi-app/Readme.txt: --treat-as .scm-settings
 
 #/src/VBox/Devices/EFI/Firmware2/VBoxPkg/VBoxVgaDxe/Edid.c: --no-convert-tabs
