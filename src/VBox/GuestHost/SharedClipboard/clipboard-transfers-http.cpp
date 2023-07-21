@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 100622 2023-07-18 09:27:50Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 100675 2023-07-21 10:17:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -80,8 +80,6 @@ typedef struct _SHCLHTTPSERVERTRANSFER
     RTLISTNODE          Node;
     /** Pointer to associated transfer. */
     PSHCLTRANSFER       pTransfer;
-    /** The (cached) root list of the transfer. NULL if not cached yet. */
-    PSHCLLIST           pRootList;
     /** Critical section for serializing access. */
     RTCRITSECT          CritSect;
     /** The handle we're going to use for this HTTP transfer. */
@@ -921,7 +919,6 @@ int ShClTransferHttpServerRegisterTransfer(PSHCLHTTPSERVER pSrv, PSHCLTRANSFER p
                 AssertRCReturn(rc, rc);
 
                 pSrvTx->pTransfer = pTransfer;
-                pSrvTx->pRootList = NULL;
                 pSrvTx->hObj      = NIL_SHCLOBJHANDLE;
 
                 RTListAppend(&pSrv->lstTransfers, &pSrvTx->Node);
