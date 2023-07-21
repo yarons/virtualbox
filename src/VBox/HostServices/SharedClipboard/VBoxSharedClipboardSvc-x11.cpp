@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 100656 2023-07-19 16:13:49Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 100676 2023-07-21 11:26:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -614,8 +614,27 @@ static DECLCALLBACK(int) shClSvcX11RequestDataFromSourceCallback(PSHCLCONTEXT pC
                     rc = ShClTransferHttpServerRegisterTransfer(pHttpSrv, pTransfer);
                     if (RT_SUCCESS(rc))
                     {
-                        char *pszURL = ShClTransferHttpServerGetUrlA(pHttpSrv, pTransfer->State.uID);
-                        if (pszURL)
+                        char *pszURL = NULL;
+
+                        uint64_t const cRoots = ShClTransferRootsCount(pTransfer);
+                        for (uint32_t i = 0; i < cRoots; i++)
+                        {
+                            char *pszEntry = ShClTransferHttpServerGetUrlA(pHttpSrv, ShClTransferGetID(pTransfer), i /* Entry index */);
+                            AssertPtrBreakStmt(pszEntry, rc = VERR_NO_MEMORY);
+
+                            if (i > 0)
+                            {
+                                rc = RTStrAAppend(&pszURL, "\n"); /* Separate entries with a newline. */
+                                AssertRCBreak(rc);
+                            }
+
+                            rc = RTStrAAppend(&pszURL, pszEntry);
+                            AssertRCBreak(rc);
+
+                            RTStrFree(pszEntry);
+                        }
+
+                        if (RT_SUCCESS(rc))
                         {
                             *ppv = pszURL;
                             *pcb = strlen(pszURL) + 1 /* Include terminator */;
@@ -623,11 +642,7 @@ static DECLCALLBACK(int) shClSvcX11RequestDataFromSourceCallback(PSHCLCONTEXT pC
                             LogFlowFunc(("URL is '%s'\n", pszURL));
 
                             /* ppv has ownership of pszURL. */
-
-                            rc = VINF_SUCCESS;
                         }
-                        else
-                            rc = VERR_NO_MEMORY;
                     }
 # else
                     rc = VERR_NOT_SUPPORTED;
