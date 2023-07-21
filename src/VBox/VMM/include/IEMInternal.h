@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100607 2023-07-17 16:38:48Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 100672 2023-07-21 00:28:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4223,6 +4223,8 @@ VBOXSTRICTRC            iemRaiseAlignmentCheckException(PVMCPUCC pVCpu) RT_NOEXC
 DECL_NO_RETURN(void)    iemRaiseAlignmentCheckExceptionJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP;
 #endif
 VBOXSTRICTRC            iemRaiseSimdFpException(PVMCPUCC pVCpu) RT_NOEXCEPT;
+
+void                    iemLogSyscallProtModeInt(PVMCPUCC pVCpu, uint8_t u8Vector, uint8_t cbInstr);
 
 IEM_CIMPL_DEF_0(iemCImplRaiseDivideError);
 IEM_CIMPL_DEF_0(iemCImplRaiseInvalidLockPrefix);
