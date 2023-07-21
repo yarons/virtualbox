@@ -1,4 +1,4 @@
-/* $Id: tstRTFileOpenEx-1.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTFileOpenEx-1.cpp 100678 2023-07-21 13:53:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT Testcase - File Opening, extended API.
  */
@@ -94,7 +94,7 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
                 RTTESTI_CHECK_RC(RTFileClose(hFile), VINF_SUCCESS);
             }
             else
-                RTTestIFailed("%u: RTFileDelete(%s) -> %Rrc\n", uLine, pszFilename, rc);
+                RTTestIFailed("%u: RTFileOpen(%s) -> %Rrc\n", uLine, pszFilename, rc);
 
         }
         else
