@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 100690 2023-07-25 08:20:54Z alexander.eichner@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -57,6 +57,9 @@
 #endif
 #ifndef PCI_DEVICE_ID_VMWARE_SVGA2
 # define PCI_DEVICE_ID_VMWARE_SVGA2      0x0405
+#endif
+#ifndef PCI_DEVICE_ID_VMWARE_SVGA3
+# define PCI_DEVICE_ID_VMWARE_SVGA3      0x0406
 #endif
 
 /* For "svga_overlay.h" */
@@ -336,6 +339,8 @@ typedef struct VMSVGAState
     uint32_t                    u32GuestDriverVer1;
     uint32_t                    u32GuestDriverVer2;
     uint32_t                    u32GuestDriverVer3;
+    /** The last fence received. */
+    uint32_t                    u32FenceLast;
     /** Port io index register. */
     uint32_t                    u32IndexReg;
     /** FIFO request semaphore. */
@@ -564,6 +569,8 @@ DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV
                                                   RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType);
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIORead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb);
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t u32, unsigned cb);
+DECLCALLBACK(VBOXSTRICTRC) vmsvga3MmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb);
+DECLCALLBACK(VBOXSTRICTRC) vmsvga3MmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb);
 
 DECLCALLBACK(void) vmsvgaR3PortSetViewport(PPDMIDISPLAYPORT pInterface, uint32_t uScreenId,
                                          uint32_t x, uint32_t y, uint32_t cx, uint32_t cy);
