@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100694 2023-07-25 10:34:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100695 2023-07-25 11:03:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1147,6 +1147,10 @@ typedef struct IEMCPU
     bool                    fEndTb;
     /** Spaced reserved for recompiler data / alignment. */
     bool                    afRecompilerStuff1[4];
+    /** Threaded TB statistics: Number of instructions per TB. */
+    STAMPROFILE             StatTbThreadedInstr;
+    /** Threaded TB statistics: Number of calls per TB. */
+    STAMPROFILE             StatTbThreadedCalls;
     /** @} */
 
     /** Data TLB.

@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: STAM.cpp 100695 2023-07-25 11:03:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -3041,6 +3041,7 @@ VMMR3DECL(const char *) STAMR3GetUnit(STAMUNIT enmUnit)
     {
         case STAMUNIT_NONE:                 return "";
         case STAMUNIT_CALLS:                return "calls";
+        case STAMUNIT_CALLS_PER_TB:         return "calls/tb";
         case STAMUNIT_COUNT:                return "count";
         case STAMUNIT_BYTES:                return "bytes";
         case STAMUNIT_BYTES_PER_CALL:       return "bytes/call";
@@ -3058,6 +3059,8 @@ VMMR3DECL(const char *) STAMR3GetUnit(STAMUNIT enmUnit)
         case STAMUNIT_NS_PER_OCCURENCE:     return "ns/time";
         case STAMUNIT_PCT:                  return "%";
         case STAMUNIT_HZ:                   return "Hz";
+        case STAMUNIT_INSTR:                return "instr";
+        case STAMUNIT_INSTR_PER_TB:         return "instr/tb";
 
         default:
             AssertMsgFailed(("Unknown unit %d\n", enmUnit));
@@ -3078,6 +3081,7 @@ VMMR3DECL(const char *) STAMR3GetUnit1(STAMUNIT enmUnit)
     {
         case STAMUNIT_NONE:                 return "";
         case STAMUNIT_CALLS:                return "calls";
+        case STAMUNIT_CALLS_PER_TB:         return "calls";
         case STAMUNIT_COUNT:                return "count";
         case STAMUNIT_BYTES:                return "bytes";
         case STAMUNIT_BYTES_PER_CALL:       return "bytes";
@@ -3095,6 +3099,8 @@ VMMR3DECL(const char *) STAMR3GetUnit1(STAMUNIT enmUnit)
         case STAMUNIT_NS_PER_OCCURENCE:     return "ns";
         case STAMUNIT_PCT:                  return "%";
         case STAMUNIT_HZ:                   return "Hz";
+        case STAMUNIT_INSTR:                return "instr";
+        case STAMUNIT_INSTR_PER_TB:         return "instr";
 
         default:
             AssertMsgFailed(("Unknown unit %d\n", enmUnit));
@@ -3120,6 +3126,8 @@ VMMR3DECL(const char *) STAMR3GetUnit2(STAMUNIT enmUnit)
         case STAMUNIT_NS_PER_OCCURENCE:     return "times";
         case STAMUNIT_NONE:                 return "times";
         case STAMUNIT_GOOD_BAD:             return "bad";
+        case STAMUNIT_CALLS_PER_TB:         return "tbs";
+        case STAMUNIT_INSTR_PER_TB:         return "tbs";
         default:
             AssertMsgFailed(("Wrong unit %d\n", enmUnit));
             return "times";
