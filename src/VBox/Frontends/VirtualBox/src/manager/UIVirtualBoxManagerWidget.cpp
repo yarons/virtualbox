@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 100698 2023-07-25 13:37:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -36,6 +36,7 @@
 /* GUI includes: */
 #include "QISplitter.h"
 #include "UIActionPoolManager.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIChooser.h"
 #include "UIMessageCenter.h"
@@ -531,13 +532,19 @@ void UIVirtualBoxManagerWidget::sltHandleToolMenuRequested(UIToolClass enmClass,
     /* Define current tools class: */
     m_pPaneTools->setToolsClass(enmClass);
 
+    /* Compose popup-menu geometry first of all: */
+    QRect ourGeo = QRect(position, m_pPaneTools->minimumSizeHint());
+    /* Adjust location only to properly fit into available geometry space: */
+    const QRect availableGeo = gpDesktop->availableGeometry(position);
+    ourGeo = gpDesktop->normalizeGeometry(ourGeo, availableGeo, false /* resize? */);
+
     /* Move, resize and show: */
-    m_pPaneTools->move(position);
+    m_pPaneTools->move(ourGeo.topLeft());
     m_pPaneTools->show();
     // WORKAROUND:
     // Don't want even to think why, but for Qt::Popup resize to
     // smaller size often being ignored until it is actually shown.
-    m_pPaneTools->resize(m_pPaneTools->minimumSizeHint());
+    m_pPaneTools->resize(ourGeo.size());
 }
 
 void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
