@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 100690 2023-07-25 08:20:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 100692 2023-07-25 08:27:18Z alexander.eichner@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5465,7 +5465,7 @@ static DECLCALLBACK(int) vmsvgaR3CmdBufLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThre
         fBadOrDisabledFifo = ASMAtomicReadBool(&pThis->svga.fBadGuest);
         cMsSleep = cMsMinSleep;
 
-        Log(("vmsvgaR3CmdBufLoop: enabled=%d configured=%d busy=%d\n", pThis->svga.fEnabled, pThis->svga.fConfigured));
+        Log(("vmsvgaR3CmdBufLoop: enabled=%d configured=%d\n", pThis->svga.fEnabled, pThis->svga.fConfigured));
 
         /*
          * Handle external commands (currently only reset).
