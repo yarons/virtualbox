@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 100699 2023-07-25 18:01:20Z dmitrii.grigorev@oracle.com $
+# $Id: tdAddBasic1.py 100700 2023-07-25 18:37:10Z dmitrii.grigorev@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100699 $"
+__version__ = "$Revision: 100700 $"
 
 # Standard Python imports.
 import os;
@@ -368,7 +368,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             fGuestRequiresReboot = self.txsRunTest(oTxsSession, 'Check if reboot is required', 30 * 1000,
                                                     sRegExe,
                                                     (sRegExe, 'query',
-                                                    '"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired"'));
+                                                    '"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired"'));   # pylint: disable=line-too-long
             reporter.log('Status of RebootRequired query is %s' % fGuestRequiresReboot);
 
         # Set system-wide env vars to enable release logging on some applications.
