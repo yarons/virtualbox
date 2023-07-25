@@ -1,4 +1,4 @@
-/* $Id: IEMAllThreadedRecompiler.cpp 100697 2023-07-25 12:37:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThreadedRecompiler.cpp 100701 2023-07-25 21:47:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -224,10 +224,12 @@ static VBOXSTRICTRC iemThreadedTbExec(PVMCPUCC pVCpu, PIEMTB pTb);
         pCall->auParams[2] = a_uArg2; \
     } while (0)
 
-#define IEM_MC2_END_EMIT_CALLS() \
+#define IEM_MC2_END_EMIT_CALLS(a_fCImplFlags) \
         Assert(pTb->cInstructions <= pTb->Thrd.cCalls); \
         if (pTb->cInstructions < 255) \
             pTb->cInstructions++; \
+        uint32_t const fCImplFlagsMc2 = (a_fCImplFlags); \
+        RT_NOREF(fCImplFlagsMc2); \
     } while (0)
 
 
