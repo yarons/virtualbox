@@ -1,4 +1,4 @@
-/* $Id: IEMAllThreadedRecompiler.cpp 100696 2023-07-25 12:01:00Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThreadedRecompiler.cpp 100697 2023-07-25 12:37:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1078,6 +1078,7 @@ AssertFailed(); /** @todo enable including branches in TBs and debug this code. 
             pTb->aRanges[idxRange].offPhysPage = pVCpu->iem.s.offCurInstrStart;
             pTb->aRanges[idxRange].offOpcodes  = offOpcode;
             pTb->aRanges[idxRange].cbOpcodes   = cbInstr;
+            pTb->aRanges[idxRange].u2Unused    = 0;
             pTb->cRanges++;
 
             /* Determin which function we need to load & check.
@@ -1179,6 +1180,7 @@ AssertFailed(); /** @todo enable including branches in TBs and debug this code. 
             pTb->aRanges[idxRange].offPhysPage = pVCpu->iem.s.offCurInstrStart;
             pTb->aRanges[idxRange].offOpcodes  = offOpcode;
             pTb->aRanges[idxRange].cbOpcodes   = cbInstr;
+            pTb->aRanges[idxRange].u2Unused    = 0;
             pTb->cRanges++;
 
             /* Determin which function we need to load & check. */
@@ -1199,6 +1201,7 @@ AssertFailed(); /** @todo enable including branches in TBs and debug this code. 
             pTb->aRanges[idxRange].offPhysPage    = 0;
             pTb->aRanges[idxRange].offOpcodes     = offOpcode + cbStartPage;
             pTb->aRanges[idxRange].cbOpcodes      = cbInstr   - cbStartPage;
+            pTb->aRanges[idxRange].u2Unused       = 0;
             pTb->cRanges++;
 
             /* Determin which function we need to load & check. */
