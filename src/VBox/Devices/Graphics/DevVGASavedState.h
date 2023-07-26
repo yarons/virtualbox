@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 99535 2023-04-26 16:52:49Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGASavedState.h 100710 2023-07-26 14:34:15Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -56,7 +56,8 @@
         } \
     } while (0)
 
-#define VGA_SAVEDSTATE_VERSION                   27
+#define VGA_SAVEDSTATE_VERSION                   28
+#define VGA_SAVEDSTATE_VERSION_VMSVGA_SVGA3      28 /* SVGA 3 interface. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_REG_CAP2   27 /* SVGA_REG_CAP2. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_DX_SFLAGS  26 /* SVGA3dSurfaceAllFlags. */
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_DX_CMDBUF  25 /* Command buffers capability is not tied to VGPU10 setting. */

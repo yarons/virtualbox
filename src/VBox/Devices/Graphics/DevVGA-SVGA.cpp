@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 100703 2023-07-26 12:06:49Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA-SVGA.cpp 100710 2023-07-26 14:34:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VMware SVGA device.
  *
@@ -402,6 +402,7 @@ static SSMFIELD const g_aVGAStateSVGAFields[] =
     SSMFIELD_ENTRY_VER(             VMSVGAState, u32GuestDriverVer1, VGA_SAVEDSTATE_VERSION_VMSVGA_REG_CAP2),
     SSMFIELD_ENTRY_VER(             VMSVGAState, u32GuestDriverVer2, VGA_SAVEDSTATE_VERSION_VMSVGA_REG_CAP2),
     SSMFIELD_ENTRY_VER(             VMSVGAState, u32GuestDriverVer3, VGA_SAVEDSTATE_VERSION_VMSVGA_REG_CAP2),
+    SSMFIELD_ENTRY_VER(             VMSVGAState, u32FenceLast, VGA_SAVEDSTATE_VERSION_VMSVGA_SVGA3),
     SSMFIELD_ENTRY(                 VMSVGAState, u32IndexReg),
     SSMFIELD_ENTRY_IGNORE(          VMSVGAState, hFIFORequestSem),
     SSMFIELD_ENTRY_IGNORE(          VMSVGAState, uLastCursorUpdateCount),
