@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-netbsd.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: sleepqueue-r0drv-netbsd.h 100715 2023-07-27 10:22:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - NetBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -47,6 +47,9 @@
 #include <iprt/time.h>
 
 static syncobj_t vbox_syncobj = {
+#if __NetBSD_Prereq__(10,99,6)
+        "VBox",
+#endif
         SOBJ_SLEEPQ_SORTED,
         sleepq_unsleep,
         sleepq_changepri,
