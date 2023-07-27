@@ -1,4 +1,4 @@
-/* $Id: eltorito.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: eltorito.c 100713 2023-07-27 09:30:15Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - ???
  */
@@ -802,7 +802,7 @@ int13_success_noah:
 // Start of int13 for cdrom
 // ---------------------------------------------------------------------------
 
-void BIOSCALL int13_cdrom(uint16_t EHBX, disk_regs_t r)
+void BIOSCALL int13_cdrom(disk_regs_t r)
 {
     uint16_t            ebda_seg = read_word(0x0040,0x000E);
     uint8_t             device, status, locks;
