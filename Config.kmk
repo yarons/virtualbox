@@ -1,4 +1,4 @@
-# $Id: Config.kmk 100720 2023-07-27 18:07:40Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 100721 2023-07-27 18:16:27Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1728,7 +1728,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   ifeq ($(KBUILD_TARGET_ARCH),arm64)
    VBOX_DARWIN_ENTITLEMENTS_LIST += \
    	com.apple.security.hypervisor
-   endif
+  endif
  endif
 
  # Where the dynamic generated entitlements can be found.
@@ -9114,7 +9114,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100720 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100721 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
