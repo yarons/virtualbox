@@ -1,4 +1,4 @@
-# $Id: Config.kmk 100414 2023-07-06 14:14:40Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 100719 2023-07-27 16:59:27Z sergey.dubov@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7760,8 +7760,10 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
     VBOX_QT_MOD += Qt6DBus Qt6Xml Qt6XcbQpa Qt6Help Qt6Network Qt6Sql
     VBOX_QT_PLUGINS = \
     	plugins/platforms/libqxcbVBox.so \
+    	plugins/platformthemes/libqgtk2VBox.so \
     	plugins/platformthemes/libqgtk3VBox.so \
     	plugins/sqldrivers/libqsqliteVBox.so \
+    	plugins/styles/libqgtk2styleVBox.so \
     	plugins/xcbglintegrations/libqxcb-glx-integrationVBox.so
    endif # qt6
   else ifeq ($(KBUILD_TARGET),win)
@@ -9107,7 +9109,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100414 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100719 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
