@@ -1,11 +1,11 @@
-/* $Id: IEMAllInstructionsCommonBodyMacros.h 100714 2023-07-27 10:12:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstCommonBodyMacros.h 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Body Macros.
  *
  * This is placed in its own file without anything else in it, so that it can
- * be digested by SimplerParser in IEMAllInstructionsPython.py prior processing
+ * be digested by SimplerParser in IEMAllInstPython.py prior processing
  * any of the other IEMAllInstruction*.cpp.h files.  For instance
- * IEMAllInstructionsCommon.cpp.h wouldn't do as it defines several invalid
+ * IEMAllInstCommon.cpp.h wouldn't do as it defines several invalid
  * instructions and such that could confuse the parser result.
  */
 

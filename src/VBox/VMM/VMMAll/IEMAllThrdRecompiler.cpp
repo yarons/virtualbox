@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 100732 2023-07-28 22:35:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -609,7 +609,7 @@ DECL_FORCE_INLINE(void) iemThreadedSetBranched(PVMCPUCC pVCpu, uint8_t fTbBranch
 
 
 /*
- * Include the "annotated" IEMAllInstructions*.cpp.h files.
+ * Include the "annotated" IEMAllInst*.cpp.h files.
  */
 #include "IEMThreadedInstructions.cpp.h"
 

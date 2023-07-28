@@ -1,8 +1,8 @@
-/* $Id: IEMAllInstructionsVexMap3.cpp.h 100714 2023-07-27 10:12:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstVexMap3.cpp.h 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
- * @remarks IEMAllInstructionsThree0f3a.cpp.h is a VEX mirror of this file.
+ * @remarks IEMAllInstThree0f3a.cpp.h is a VEX mirror of this file.
  *          Any update here is likely needed in that file too.
  */
 

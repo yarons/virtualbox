@@ -1,8 +1,8 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 100731 2023-07-28 22:22:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
- * @remarks IEMAllInstructionsVexMap1.cpp.h is a VEX mirror of this file.
+ * @remarks IEMAllInstVexMap1.cpp.h is a VEX mirror of this file.
  *          Any update here is likely needed in that file too.
  */
 
@@ -12238,7 +12238,7 @@ FNIEMOP_DEF_1(iemOp_Grp9_cmpxchg16b_Mdq, uint8_t, bRm)
 
         IEM_MC_FETCH_EFLAGS(EFlags);
 
-#ifdef RT_ARCH_AMD64 /* some code duplication here because IEMAllInstructionsPython.py cannot parse if/else/#if spaghetti. */
+#ifdef RT_ARCH_AMD64 /* some code duplication here because IEMAllInstPython.py cannot parse if/else/#if spaghetti. */
         if (IEM_GET_HOST_CPU_FEATURES(pVCpu)->fMovCmpXchg16b)
         {
             if (   !(pVCpu->iem.s.fExec & IEM_F_X86_DISREGARD_LOCK)
