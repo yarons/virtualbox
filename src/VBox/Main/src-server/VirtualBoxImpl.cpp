@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3789,6 +3789,13 @@ void VirtualBox::i_onUpdateAgentSettingsChanged(IUpdateAgent *aAgent, const Utf8
     ::FireUpdateAgentSettingsChangedEvent(m->pEventSource, aAgent, aAttributeHint);
 }
 #endif /* VBOX_WITH_UPDATE_AGENT */
+
+#ifdef VBOX_WITH_EXTPACK
+void VirtualBox::i_onExtPackInstalled(const Utf8Str &aExtPackInstallFile)
+{
+    ::FireExtPackInstalledEvent(m->pEventSource, aExtPackInstallFile);
+}
+#endif
 
 /**
  *  @note Locks the list of other objects for reading.

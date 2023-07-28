@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -3163,7 +3163,10 @@ HRESULT ExtPackManager::i_doInstall(ExtPackFile *a_pExtPackFile, bool a_fReplace
                     RTErrInfoInitStatic(&ErrInfo);
                     pExtPack->i_callInstalledHook(m->pVirtualBox, &autoLock, &ErrInfo.Core);
                     if (RT_SUCCESS(ErrInfo.Core.rc))
+                    {
                         LogRel(("ExtPackManager: Successfully installed extension pack '%s'.\n", pStrName->c_str()));
+                        m->pVirtualBox->i_onExtPackInstalled(*pStrName);
+                    }
                     else
                     {
                         LogRel(("ExtPackManager: Installed hook for '%s' failed: %Rrc - %s\n",

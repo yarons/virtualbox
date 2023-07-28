@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -225,6 +225,10 @@ public:
     void i_onUpdateAgentStateChanged(IUpdateAgent *aAgent, UpdateState_T aState);
     void i_onUpdateAgentSettingsChanged(IUpdateAgent *aAgent, const Utf8Str &aAttributeHint);
 #endif /* VBOX_WITH_UPDATE_AGENT */
+
+#ifdef VBOX_WITH_EXTPACK
+    void i_onExtPackInstalled(const Utf8Str &aExtPackInstallFile);
+#endif
 
 #ifdef VBOX_WITH_CLOUD_NET
     HRESULT i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
@@ -499,4 +503,3 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 
 #endif /* !MAIN_INCLUDED_VirtualBoxImpl_h */
-

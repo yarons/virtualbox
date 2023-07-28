@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -186,7 +186,8 @@ void UIVirtualBoxEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnStorageDeviceChanged
         << KVBoxEventType_OnMediumChanged
         << KVBoxEventType_OnMediumConfigChanged
-        << KVBoxEventType_OnMediumRegistered;
+        << KVBoxEventType_OnMediumRegistered
+        << KVBoxEventType_OnExtPackInstalled;
 
     /* Register event listener for event source aggregator: */
     m_comEventSource.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
@@ -379,4 +380,3 @@ void UIVirtualBoxEventHandler::prepareConnections()
 
 
 #include "UIVirtualBoxEventHandler.moc"
-
