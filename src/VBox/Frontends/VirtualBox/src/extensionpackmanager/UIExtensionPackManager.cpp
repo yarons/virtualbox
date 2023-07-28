@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 100027 2023-05-31 16:05:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
+#include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
 #include "CExtPack.h"
@@ -385,6 +386,8 @@ void UIExtensionPackManagerWidget::prepare()
     /* Prepare self: */
     uiCommon().setHelpKeyword(this, "ext-pack-manager");
     connect(&uiCommon(), &UICommon::sigExtensionPackInstalled,
+            this, &UIExtensionPackManagerWidget::sltHandleExtensionPackInstalled);
+    connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigExtensionPackInstalled,
             this, &UIExtensionPackManagerWidget::sltHandleExtensionPackInstalled);
 
     /* Prepare stuff: */

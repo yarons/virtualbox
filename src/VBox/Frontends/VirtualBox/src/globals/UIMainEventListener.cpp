@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -629,7 +629,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         case KVBoxEventType_OnExtPackInstalled:
         {
             CExtPackInstalledEvent comEventSpecific(pEvent);
-            //printf("Ext. pack installed from the file: %s\n", qPrintable(comEventSpecific.GetFilename()));
+            emit sigExtensionPackInstalled(comEventSpecific.GetName());
         };
         default: break;
     }

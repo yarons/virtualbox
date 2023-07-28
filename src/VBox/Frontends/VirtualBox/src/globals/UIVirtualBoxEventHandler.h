@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 98309 2023-01-26 10:09:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.h 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -97,6 +97,9 @@ signals:
       * @param  enmMediumType  Brings corresponding medium type.
       * @param  fRegistered    Brings whether medium is registered or unregistered. */
     void sigMediumRegistered(const QUuid &uMediumId, KDeviceType enmMediumType, bool fRegistered);
+    /** Notifies extension pack. install.
+     *  @param  strName      Passes extension pack name. */
+    void sigExtensionPackInstalled(const QString &strName);
 
 public:
 
