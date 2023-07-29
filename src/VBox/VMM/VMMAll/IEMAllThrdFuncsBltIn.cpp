@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100732 2023-07-28 22:35:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -76,6 +76,18 @@ static VBOXSTRICTRC iemThreadeFuncWorkerObsoleteTb(PVMCPUCC pVCpu)
     return VINF_IEM_REEXEC_MODE_CHANGED; /** @todo different status code... */
 }
 
+
+/**
+ * Built-in function that calls a C-implemention function taking zero arguments.
+ */
+IEM_DECL_IMPL_DEF(VBOXSTRICTRC, iemThreadedFunc_BltIn_DeferToCImpl0,
+                  (PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2))
+{
+    PFNIEMCIMPL0 const pfnCImpl = (PFNIEMCIMPL0)(uintptr_t)uParam0;
+    uint8_t const      cbInstr  = (uint8_t)uParam1;
+    RT_NOREF(uParam2);
+    return pfnCImpl(pVCpu, cbInstr);
+}
 
 
 /**

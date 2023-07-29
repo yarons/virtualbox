@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 100591 2023-07-15 01:20:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1453,6 +1453,29 @@ DECL_INLINE_THROW(uint64_t) iemOpcodeGetNextU64Jmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_
     } while (0)
 # else
 #  define IEM_OPCODE_GET_NEXT_U64(a_pu64)    ( *(a_pu64) = iemOpcodeGetNextU64Jmp(pVCpu) )
+# endif
+
+/**
+ * For fetching the opcode bytes for an ModR/M effective address, but throw
+ * away the result.
+ *
+ * This is used when decoding undefined opcodes and such where we want to avoid
+ * unnecessary MC blocks.
+ *
+ * @note The recompiler code overrides this one so iemOpHlpCalcRmEffAddrJmpEx is
+ *       used instead.  At least for now...
+ */
+# ifndef IEM_WITH_SETJMP
+#  define IEM_OPCODE_SKIP_RM_EFF_ADDR_BYTES(a_bRm) do { \
+        RTGCPTR      GCPtrEff; \
+        VBOXSTRICTRC rcStrict = iemOpHlpCalcRmEffAddr(pVCpu, bRm, 0, &GCPtrEff); \
+        if (rcStrict != VINF_SUCCESS) \
+            return rcStrict; \
+    } while (0)
+# else
+#  define IEM_OPCODE_SKIP_RM_EFF_ADDR_BYTES(a_bRm) do { \
+        (void)iemOpHlpCalcRmEffAddrJmp(pVCpu, bRm, 0); \
+    } while (0)
 # endif
 
 #endif /* !IEM_WITH_OPAQUE_DECODER_STATE */

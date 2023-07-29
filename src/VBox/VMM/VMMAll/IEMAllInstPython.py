@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100733 $"
+__version__ = "$Revision: 100734 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3032,7 +3032,7 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         self.oReHashDefine2 = re.compile('(?s)\A\s*([A-Za-z_][A-Za-z0-9_]*)\(([^)]*)\)\s*(.*)\Z'); ##< With arguments.
         self.oReHashDefine3 = re.compile('(?s)\A\s*([A-Za-z_][A-Za-z0-9_]*)[^(]\s*(.*)\Z');        ##< Simple, no arguments.
         self.oReHashUndef   = re.compile('^\s*#\s*undef\s+(.*)$');
-        self.oReMcBeginEnd  = re.compile(r'\bIEM_MC_(BEGIN|END|DEFER_TO_CIMPL_[0-5]_RET)\s*\(');
+        self.oReMcBeginEnd  = re.compile(r'\bIEM_MC_(BEGIN|END|DEFER_TO_CIMPL_[1-5]_RET)\s*\('); ##> Not DEFER_TO_CIMPL_0_RET!
         self.fDebug         = True;
         self.fDebugMc       = False;
         self.fDebugPreProc  = False;
@@ -4767,7 +4767,7 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
 
     def workerIemMcDeferToCImplXRet(self, sCode, offBeginStatementInCodeStr, offBeginStatementInLine, cParams):
         """
-        Process a IEM_MC_DEFER_TO_CIMPL_[0-5]_RET macro invocation.
+        Process a IEM_MC_DEFER_TO_CIMPL_[1-5]_RET macro invocation.
         """
         sStmt = 'IEM_MC_DEFER_TO_CIMPL_%d_RET' % (cParams,);
         if self.fDebugMc:
@@ -5032,7 +5032,8 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         #
         oMatch = self.oReHashDefine2.match(sRest);
         if oMatch:
-            asArgs = [sParam.strip() for sParam in oMatch.group(2).split(',')];
+            sAllArgs = oMatch.group(2).strip();
+            asArgs = [sParam.strip() for sParam in sAllArgs.split(',')] if sAllArgs else None;
             sBody  = oMatch.group(3);
         else:
             oMatch = self.oReHashDefine3.match(sRest);
@@ -5048,6 +5049,13 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         #
         # Is this of any interest to us?  We do NOT support MC blocks wihtin
         # nested macro expansion, just to avoid lots of extra work.
+        #
+        # Note! IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX and other macros someone making
+        #       use of IEMOP_RAISE_INVALID_LOCK_PREFIX_RET() will be ignored here and
+        #       dealt with by overriding IEMOP_RAISE_INVALID_LOCK_PREFIX_RET and its
+        #       siblings in the recompiler.  This is a lot simpler than nested macro
+        #       expansion and lots of heuristics for locating all the relevant macros.
+        #       Also, this way we don't produce lots of unnecessary threaded functions.
         #
         if sBody.find("IEM_MC_BEGIN") < 0:
             #self.debug('workerPreProcessDefine: irrelevant (%s: %s)' % (sName, sBody));
