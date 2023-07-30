@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 100729 2023-07-28 12:24:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: ExtPackManagerImpl.cpp 100737 2023-07-30 09:48:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -3286,7 +3286,10 @@ HRESULT ExtPackManager::i_doUninstall(Utf8Str const *a_pstrName, bool a_fForcedR
                                 if (SUCCEEDED(hrc))
                                 {
                                     if (!pExtPack)
+                                    {
                                         LogRel(("ExtPackManager: Successfully uninstalled extension pack '%s'.\n", a_pstrName->c_str()));
+                                        m->pVirtualBox->i_onExtPackInstalled(*a_pstrName);
+                                    }
                                     else
                                         hrc = setError(E_FAIL,
                                                        tr("Uninstall extension pack '%s' failed under mysterious circumstances"),

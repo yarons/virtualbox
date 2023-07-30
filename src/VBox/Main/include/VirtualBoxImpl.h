@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 100737 2023-07-30 09:48:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -228,6 +228,7 @@ public:
 
 #ifdef VBOX_WITH_EXTPACK
     void i_onExtPackInstalled(const Utf8Str &aExtPackName);
+    void i_onExtPackUninstalled(const Utf8Str &aExtPackName);
 #endif
 
 #ifdef VBOX_WITH_CLOUD_NET

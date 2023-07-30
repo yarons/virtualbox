@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.h 100737 2023-07-30 09:48:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -100,6 +100,9 @@ signals:
     /** Notifies extension pack. install.
      *  @param  strName      Passes extension pack name. */
     void sigExtensionPackInstalled(const QString &strName);
+    /** Notifies extension pack. uninstall.
+     *  @param  strName      Passes extension pack name. */
+    void sigExtensionPackUninstalled(const QString &strName);
 
 public:
 

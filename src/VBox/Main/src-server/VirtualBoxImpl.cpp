@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 100730 2023-07-28 15:08:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 100737 2023-07-30 09:48:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3794,6 +3794,11 @@ void VirtualBox::i_onUpdateAgentSettingsChanged(IUpdateAgent *aAgent, const Utf8
 void VirtualBox::i_onExtPackInstalled(const Utf8Str &aExtPackName)
 {
     ::FireExtPackInstalledEvent(m->pEventSource, aExtPackName);
+}
+
+void VirtualBox::i_onExtPackUninstalled(const Utf8Str &aExtPackName)
+{
+    ::FireExtPackUninstalledEvent(m->pEventSource, aExtPackName);
 }
 #endif
 
