@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100741 2023-07-30 20:25:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4959,6 +4959,12 @@ extern const PFNIEMOP g_apfnIemInterpretOnlyVecMap3[1024];
  * Recompiler related stuff.
  */
 extern const PFNIEMOP g_apfnIemThreadedRecompilerOneByteMap[256];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerTwoByteMap[1024];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerThreeByte0f3a[1024];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerThreeByte0f38[1024];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerVecMap1[1024];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerVecMap2[1024];
+extern const PFNIEMOP g_apfnIemThreadedRecompilerVecMap3[1024];
 
 void            iemThreadedTbObsolete(PVMCPUCC pVCpu, PIEMTB pTb);
 
