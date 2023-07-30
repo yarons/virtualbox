@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100736 2023-07-30 00:54:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4947,6 +4947,13 @@ IEM_CIMPL_PROTO_0(iemCImpl_vmcall);  /* vmx */
 IEM_CIMPL_PROTO_0(iemCImpl_vmmcall); /* svm */
 IEM_CIMPL_PROTO_1(iemCImpl_Hypercall, uint16_t, uDisOpcode); /* both */
 
+extern const PFNIEMOP g_apfnIemInterpretOnlyOneByteMap[256];
+
+/*
+ * Recompiler related stuff.
+ */
+extern const PFNIEMOP g_apfnIemThreadedRecompilerOneByteMap[256];
+
 void            iemThreadedTbObsolete(PVMCPUCC pVCpu, PIEMTB pTb);
 
 IEM_DECL_IMPL_PROTO(VBOXSTRICTRC, iemThreadedFunc_BltIn_DeferToCImpl0,
@@ -4989,9 +4996,8 @@ IEM_DECL_IMPL_PROTO(VBOXSTRICTRC, iemThreadedFunc_BltIn_CheckCsLimAndOpcodesOnNe
 IEM_DECL_IMPL_PROTO(VBOXSTRICTRC, iemThreadedFunc_BltIn_CheckOpcodesOnNewPageLoadingTlb,
                     (PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2));
 
+bool iemThreadedCompileBeginEmitCallsComplications(PVMCPUCC pVCpu, PIEMTB pTb);
 
-
-extern const PFNIEMOP g_apfnIemInterpretOnlyOneByteMap[256];
 
 /** @} */
 
