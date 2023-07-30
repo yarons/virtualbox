@@ -1,6 +1,6 @@
-/* $Id: IEMAllIntprTables3.cpp 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllIntprTables3.cpp 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Instruction Decoding and Emulation - Interpreter Tables - Three byte.
+ * IEM - Instruction Decoding and Emulation - Interpreter Tables - Three-Byte.
  */
 
 /*

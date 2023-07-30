@@ -1,6 +1,6 @@
-/* $Id: IEMAllThrdTables.cpp 100742 2023-07-30 20:29:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables2.cpp 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
+ * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables - Two-Byte & 3DNow!
  */
 
 /*
@@ -30,10 +30,7 @@
 /*
  * Include the "annotated" IEMAllInst*.cpp.h files.
  */
-#define IEM_WITH_ONE_BYTE_TABLE
 #define IEM_WITH_TWO_BYTE_TABLE
-#define IEM_WITH_THREE_BYTE_TABLES
 #define IEM_WITH_3DNOW_BYTE_TABLE
-#define IEM_WITH_VEX_TABLES
-#include "IEMThreadedInstructions.cpp.h"
+#include "IEMThreadedInstructions2.cpp.h"
 

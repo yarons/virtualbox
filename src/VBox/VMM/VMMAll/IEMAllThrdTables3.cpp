@@ -1,6 +1,6 @@
-/* $Id: IEMAllIntprTables2.cpp 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables3.cpp 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Instruction Decoding and Emulation - Interpreter Tables - Two-Byte & 3DNow!
+ * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables - Three-Byte.
  */
 
 /*
@@ -25,11 +25,11 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#define IEM_WITH_TWO_BYTE_TABLE
-#define IEM_WITH_3DNOW_TABLE
-#include "IEMAllIntprTables.h"
-#ifdef IEM_WITH_3DNOW
-# include "IEMAllInst3DNow.cpp.h"
-#endif
-#include "IEMAllInstTwoByte0f.cpp.h"
+#include "IEMAllThrdTables.h"
+
+/*
+ * Include the "annotated" IEMAllInst*.cpp.h files.
+ */
+#define IEM_WITH_THREE_BYTE_TABLES
+#include "IEMThreadedInstructions3.cpp.h"
 

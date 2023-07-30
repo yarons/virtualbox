@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100734 $"
+__version__ = "$Revision: 100743 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -5373,17 +5373,17 @@ def __applyOnlyTest():
                     oInstr.aoTests = [];
     return 0;
 
-## List of all main instruction files and their default maps.
-g_aasAllInstrFilesAndDefaultMap = (
-    ( 'IEMAllInstCommon.cpp.h',    'one',        ),
-    ( 'IEMAllInstOneByte.cpp.h',   'one',        ),
-    ( 'IEMAllInstTwoByte0f.cpp.h', 'two0f',      ),
-    ( 'IEMAllInstThree0f38.cpp.h', 'three0f38',  ),
-    ( 'IEMAllInstThree0f3a.cpp.h', 'three0f3a',  ),
-    ( 'IEMAllInstVexMap1.cpp.h',   'vexmap1',    ),
-    ( 'IEMAllInstVexMap2.cpp.h',   'vexmap2',    ),
-    ( 'IEMAllInstVexMap3.cpp.h',   'vexmap3',    ),
-    ( 'IEMAllInst3DNow.cpp.h',     '3dnow',      ),
+## List of all main instruction files, their default maps and file sets (-1 means included it all sets).
+g_aaoAllInstrFilesAndDefaultMapAndSet = (
+    ( 'IEMAllInstCommon.cpp.h',    'one',       -1, ),
+    ( 'IEMAllInstOneByte.cpp.h',   'one',        1, ),
+    ( 'IEMAllInst3DNow.cpp.h',     '3dnow',      2, ),
+    ( 'IEMAllInstTwoByte0f.cpp.h', 'two0f',      2, ),
+    ( 'IEMAllInstThree0f38.cpp.h', 'three0f38',  3, ),
+    ( 'IEMAllInstThree0f3a.cpp.h', 'three0f3a',  3, ),
+    ( 'IEMAllInstVexMap1.cpp.h',   'vexmap1',    4, ),
+    ( 'IEMAllInstVexMap2.cpp.h',   'vexmap2',    4, ),
+    ( 'IEMAllInstVexMap3.cpp.h',   'vexmap3',    4, ),
 );
 
 def __parseFilesWorker(asFilesAndDefaultMap):
@@ -5430,9 +5430,9 @@ def parseFiles(asFiles):
     for sFilename in asFiles:
         sName = os.path.split(sFilename)[1].lower();
         sMap  = None;
-        for asCur in g_aasAllInstrFilesAndDefaultMap:
-            if asCur[0].lower() == sName:
-                sMap = asCur[1];
+        for aoInfo in g_aaoAllInstrFilesAndDefaultMapAndSet:
+            if aoInfo[0].lower() == sName:
+                sMap = aoInfo[1];
                 break;
         if not sMap:
             raise Exception('Unable to classify file: %s' % (sFilename,));
@@ -5448,7 +5448,7 @@ def parseAll():
     Returns a list of the parsers on success.
     Raises exception on failure.
     """
-    return __parseFilesWorker(g_aasAllInstrFilesAndDefaultMap);
+    return __parseFilesWorker([aoInfo[0:2] for aoInfo in g_aaoAllInstrFilesAndDefaultMapAndSet]);
 
 
 #
