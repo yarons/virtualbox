@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -5428,7 +5428,7 @@ FNIEMOP_DEF(iemOp_vud0)
  *
  * @sa  g_apfnTwoByteMap
  */
-IEM_STATIC const PFNIEMOP g_apfnVexMap1[] =
+const PFNIEMOP g_apfnVexMap1[] =
 {
     /*          no prefix,                  066h prefix                 f3h prefix,                 f2h prefix */
     /* 0x00 */  IEMOP_X4(iemOp_InvalidNeedRM),

@@ -1,6 +1,6 @@
-/* $Id: IEMAllInstInterpretOnly.cpp 100739 2023-07-30 18:22:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllIntprTables2.cpp 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
- * IEM - Instruction Decoding and Emulation.
+ * IEM - Instruction Decoding and Emulation - Interpreter Tables - Two byte & 3DNow!
  */
 
 /*
@@ -25,30 +25,11 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#define IEM_WITH_TWO_BYTE_TABLE
+#define IEM_WITH_3DNOW_TABLE
 #include "IEMAllIntprTables.h"
-
-/*
- * Include the tables.
- */
 #ifdef IEM_WITH_3DNOW
 # include "IEMAllInst3DNow.cpp.h"
 #endif
-
-#ifdef IEM_WITH_THREE_0F_38
-# include "IEMAllInstThree0f38.cpp.h"
-#endif
-
-#ifdef IEM_WITH_THREE_0F_3A
-# include "IEMAllInstThree0f3a.cpp.h"
-#endif
-
 #include "IEMAllInstTwoByte0f.cpp.h"
-
-#ifdef IEM_WITH_VEX
-# include "IEMAllInstVexMap1.cpp.h"
-# include "IEMAllInstVexMap2.cpp.h"
-# include "IEMAllInstVexMap3.cpp.h"
-#endif
-
-#include "IEMAllInstOneByte.cpp.h"
 

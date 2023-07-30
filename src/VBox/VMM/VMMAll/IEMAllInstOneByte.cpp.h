@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 100735 2023-07-29 12:18:06Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -762,7 +762,7 @@ FNIEMOP_DEF(iemOp_push_CS)
  */
 FNIEMOP_DEF(iemOp_2byteEscape)
 {
-#ifdef VBOX_STRICT
+#if 0 /// @todo def VBOX_STRICT
     /* Sanity check the table the first time around. */
     static bool s_fTested = false;
     if (RT_LIKELY(s_fTested)) { /* likely */  }

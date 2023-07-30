@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 100734 2023-07-29 02:04:22Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -1023,7 +1023,10 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 
 /** @}  */
 
-#include "../VMMAll/IEMAllInstInterpretOnly.cpp"
+#include "../VMMAll/IEMAllIntprTables1.cpp"
+#include "../VMMAll/IEMAllIntprTables2.cpp"
+#include "../VMMAll/IEMAllIntprTables3.cpp"
+#include "../VMMAll/IEMAllIntprTables4.cpp"
 
 
 

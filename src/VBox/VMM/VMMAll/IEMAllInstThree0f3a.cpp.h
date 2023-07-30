@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstThree0f3a.cpp.h 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstThree0f3a.cpp.h 100740 2023-07-30 20:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -1665,7 +1665,7 @@ FNIEMOP_DEF(iemOp_aeskeygen_Vdq_Wdq_Ib)
  * Three byte opcode map, first two bytes are 0x0f 0x3a.
  * @sa      g_apfnVexMap2
  */
-IEM_STATIC const PFNIEMOP g_apfnThreeByte0f3a[] =
+const PFNIEMOP g_apfnThreeByte0f3a[] =
 {
     /*          no prefix,                  066h prefix                 f3h prefix,                 f2h prefix */
     /* 0x00 */  IEMOP_X4(iemOp_InvalidNeedRMImm8),
