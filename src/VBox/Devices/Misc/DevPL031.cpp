@@ -1,4 +1,4 @@
-/* $Id: DevPL031.cpp 100748 2023-07-31 12:22:51Z alexander.eichner@oracle.com $ */
+/* $Id: DevPL031.cpp 100751 2023-07-31 12:59:34Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPL031 - ARM PL011 PrimeCell RTC.
  *
@@ -431,7 +431,7 @@ static DECLCALLBACK(int) pl031R3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, ui
     rc = pHlp->pfnSSMGetGCPhys(pSSM, &GCPhysMmioBase);
     AssertRCReturn(rc, rc);
     if (GCPhysMmioBase != pThis->GCPhysMmioBase)
-        return pHlp->pfnSSMSetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - GCPhysMmioBase: saved=%RTiop config=%RTiop"), GCPhysMmioBase, pThis->GCPhysMmioBase);
+        return pHlp->pfnSSMSetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - GCPhysMmioBase: saved=%RGp config=%RGp"), GCPhysMmioBase, pThis->GCPhysMmioBase);
 
     bool fUtcOffset;
     rc = pHlp->pfnSSMGetBool(pSSM, &fUtcOffset);
