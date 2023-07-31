@@ -1,4 +1,4 @@
-/* $Id: PGM-armv8.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: PGM-armv8.cpp 100759 2023-07-31 14:33:14Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, ARMv8 variant. (Mixing stuff here, not good?)
  */
@@ -768,9 +768,9 @@ VMMDECL(int) PGMShwMakePageNotPresent(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint32_t fO
 
 VMM_INT_DECL(int) PGMHCChangeMode(PVMCC pVM, PVMCPUCC pVCpu, PGMMODE enmGuestMode, bool fForce)
 {
-    AssertReleaseFailed();
+    //AssertReleaseFailed(); /** @todo Called by the PGM saved state code. */
     RT_NOREF(pVM, pVCpu, enmGuestMode, fForce);
-    return VERR_NOT_SUPPORTED;
+    return VINF_SUCCESS;
 }
 
 
