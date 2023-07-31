@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 100747 2023-07-31 11:42:58Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 100753 2023-07-31 13:26:23Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100747 $"
+__version__ = "$Revision: 100753 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1894,7 +1894,7 @@ class McCppCall(McCppGeneric):
 
     def renderCode(self, cchIndent = 0):
         cchIndent += self.cchIndent;
-        sRet = ' ' * cchIndent + self.asParams[0] + '(' + ','.join(self.asParams[1:]) + ');';
+        sRet = ' ' * cchIndent + self.asParams[0] + '(' + ', '.join(self.asParams[1:]) + ');';
         if self.fDecode:
             sRet += ' // C++ decode\n';
         else:

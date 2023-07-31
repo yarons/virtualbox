@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100752 2023-07-31 13:24:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100753 2023-07-31 13:26:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4970,7 +4970,7 @@ void            iemThreadedTbObsolete(PVMCPUCC pVCpu, PIEMTB pTb);
 
 /** @todo FNIEMTHREADEDFUNC and friends may need more work... */
 #if defined(__GNUC__) && !defined(IEM_WITH_THROW_CATCH)
-typedef VBOXSTRICTRC __attribute__((__nothrow__)) FNIEMRECOMP(PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2);
+typedef VBOXSTRICTRC /*__attribute__((__nothrow__))*/ FNIEMTHREADEDFUNC(PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2);
 typedef FNIEMTHREADEDFUNC *PFNIEMTHREADEDFUNC;
 # define IEM_DECL_IEMTHREADEDFUNC_DEF(a_Name) \
     VBOXSTRICTRC __attribute__((__nothrow__)) a_Name(PVMCPU pVCpu, uint64_t uParam0, uint64_t uParam1, uint64_t uParam2)
