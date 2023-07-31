@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 99086 2023-03-21 12:43:25Z brent.paulson@oracle.com $
+# $Id: utils.py 100760 2023-07-31 17:42:15Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99086 $"
+__version__ = "$Revision: 100760 $"
 
 
 # Standard Python imports.
@@ -308,8 +308,9 @@ def getHostOsVersion():
             codenames_afterCatalina = {"11": "Big Sur",
                                        "12": "Monterey",
                                        "13": "Ventura",
-                                       "14": "Unknown 14",
-                                       "15": "Unknown 15"}
+                                       "14": "Sonoma",
+                                       "15": "Unknown 15",
+                                       "16": "Unknown 16"}
 
             if aOsVersion[0] == '10':
                 sResult = codenames[aOsVersion[1]]
