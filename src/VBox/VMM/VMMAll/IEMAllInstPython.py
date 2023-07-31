@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 100747 2023-07-31 11:42:58Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100743 $"
+__version__ = "$Revision: 100747 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1879,6 +1879,26 @@ class McCppGeneric(McStmt):
             sRet = sRet.replace('\n', ' // C++ decode\n');
         else:
             sRet = sRet.replace('\n', ' // C++ normal\n');
+        return sRet;
+
+class McCppCall(McCppGeneric):
+    """
+    A generic C++/C call statement.
+
+    The sName is still 'C++', so the function name is in the first parameter
+    and the the arguments in the subsequent ones.
+    """
+    def __init__(self, sFnName, asArgs, fDecode = True, cchIndent = 0):
+        McCppGeneric.__init__(self, sFnName, fDecode = fDecode, cchIndent = cchIndent);
+        self.asParams.extend(asArgs);
+
+    def renderCode(self, cchIndent = 0):
+        cchIndent += self.cchIndent;
+        sRet = ' ' * cchIndent + self.asParams[0] + '(' + ','.join(self.asParams[1:]) + ');';
+        if self.fDecode:
+            sRet += ' // C++ decode\n';
+        else:
+            sRet += ' // C++ normal\n';
         return sRet;
 
 class McCppCond(McStmtCond):
