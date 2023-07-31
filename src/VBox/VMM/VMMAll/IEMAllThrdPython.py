@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllThrdPython.py 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $
+# $Id: IEMAllThrdPython.py 100744 2023-07-31 08:57:57Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -31,7 +31,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 100743 $"
+__version__ = "$Revision: 100744 $"
 
 # Standard python imports.
 import copy;
@@ -1033,69 +1033,72 @@ class ThreadedFunction(object):
             assert  self.aoVariations[0].sVariation == ThreadedFunctionVariation.ksVariation_Default;
             return self.aoVariations[0].emitThreadedCallStmts(0);
 
-        # Currently only have variations for address mode.
-        dByVari = self.dVariations;
+        class Case:
+            def __init__(self, sCond, aoBody = None):
+                self.sCond  = sCond;
+                self.aoBody = aoBody  # type: list(iai.McCppGeneric)
+            def toCode(self):
+                aoStmts = [ iai.McCppGeneric('case %s:' % (self.sCond), cchIndent = 4), ];
+                aoStmts.extend(self.aoBody);
+                aoStmts.append(iai.McCppGeneric('break;', cchIndent = 8));
+                return aoStmts;
 
+        # Generate the case statements.
+        # pylintx: disable=x
+        dByVari = self.dVariations;
+        aoCases = [];
+        if ThreadedFunctionVariation.ksVariation_64_Addr32 in dByVari:
+            aoCases.append(Case('IEMMODE_64BIT', [
+                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_64BIT)', fDecode = True, cchIndent = 8,
+                              aoIfBranch   = dByVari[ThrdFnVar.ksVariation_64].emitThreadedCallStmts(0),
+                              aoElseBranch = dByVari[ThrdFnVar.ksVariation_64_Addr32].emitThreadedCallStmts(0)),
+            ]));
+        elif ThrdFnVar.ksVariation_64 in dByVari:
+            aoCases.append(Case('IEMMODE_64BIT', dByVari[ThrdFnVar.ksVariation_64].emitThreadedCallStmts(8)));
+
+        if ThrdFnVar.ksVariation_32_Addr16 in dByVari:
+            aoCases.extend([
+                Case('IEMMODE_32BIT | IEM_F_MODE_X86_FLAT_OR_PRE_386_MASK', [
+                    iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_32BIT)', fDecode = True, cchIndent = 8,
+                                  aoIfBranch   = dByVari[ThrdFnVar.ksVariation_32_Flat].emitThreadedCallStmts(0),
+                                  aoElseBranch = dByVari[ThrdFnVar.ksVariation_32_Addr16].emitThreadedCallStmts(0)),
+                ]),
+                Case('IEMMODE_32BIT', [
+                    iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_32BIT)', fDecode = True, cchIndent = 8,
+                                  aoIfBranch   = dByVari[ThrdFnVar.ksVariation_32].emitThreadedCallStmts(0),
+                                  aoElseBranch = dByVari[ThrdFnVar.ksVariation_32_Addr16].emitThreadedCallStmts(0)),
+                ]),
+            ]);
+        elif ThrdFnVar.ksVariation_32 in dByVari:
+            aoCases.append(Case('IEMMODE_32BIT', dByVari[ThrdFnVar.ksVariation_32].emitThreadedCallStmts(8)));
+
+        if ThrdFnVar.ksVariation_16_Addr32 in dByVari:
+            aoCases.append(Case('IEMMODE_16BIT', [
+                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_16BIT)', fDecode = True, cchIndent = 8,
+                              aoIfBranch   = dByVari[ThrdFnVar.ksVariation_16].emitThreadedCallStmts(0),
+                              aoElseBranch = dByVari[ThrdFnVar.ksVariation_16_Addr32].emitThreadedCallStmts(0)),
+            ]));
+        elif ThrdFnVar.ksVariation_16 in dByVari:
+            aoCases.append(Case('IEMMODE_16BIT', dByVari[ThrdFnVar.ksVariation_16].emitThreadedCallStmts(8)));
+
+        if ThrdFnVar.ksVariation_16_Pre386 in dByVari:
+            aoCases.append(Case('IEMMODE_16BIT | IEM_F_MODE_X86_FLAT_OR_PRE_386_MASK',
+                                dByVari[ThrdFnVar.ksVariation_16_Pre386].emitThreadedCallStmts(8)));
+
+        # Generate the switch statement.
         sExecMask = 'IEM_F_MODE_CPUMODE_MASK';
-        if (   ThreadedFunctionVariation.ksVariation_64_Addr32 in dByVari
-            or ThreadedFunctionVariation.ksVariation_32_Addr16 in dByVari
-            or ThreadedFunctionVariation.ksVariation_32_Flat   in dByVari
-            or ThreadedFunctionVariation.ksVariation_16_Addr32 in dByVari):
+        if (   ThrdFnVar.ksVariation_64_Addr32 in dByVari
+            or ThrdFnVar.ksVariation_32_Addr16 in dByVari
+            or ThrdFnVar.ksVariation_32_Flat   in dByVari
+            or ThrdFnVar.ksVariation_16_Addr32 in dByVari):
             sExecMask = '(IEM_F_MODE_CPUMODE_MASK | IEM_F_MODE_X86_FLAT_OR_PRE_386_MASK)';
+
         aoStmts = [
             iai.McCppGeneric('switch (pVCpu->iem.s.fExec & %s)' % (sExecMask,)),
             iai.McCppGeneric('{'),
         ];
-
-        if ThreadedFunctionVariation.ksVariation_64_Addr32 in dByVari:
-            aoStmts.extend([
-                iai.McCppGeneric('case IEMMODE_64BIT:', cchIndent = 4),
-                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_64BIT)', fDecode = True, cchIndent = 8,
-                              aoIfBranch   = dByVari[ThreadedFunctionVariation.ksVariation_64].emitThreadedCallStmts(0),
-                              aoElseBranch = dByVari[ThreadedFunctionVariation.ksVariation_64_Addr32].emitThreadedCallStmts(0)),
-                iai.McCppGeneric('break;', cchIndent = 8),
-            ]);
-        elif ThreadedFunctionVariation.ksVariation_64 in dByVari:
-            aoStmts.append(iai.McCppGeneric('case IEMMODE_64BIT:', cchIndent = 4));
-            aoStmts.extend(dByVari[ThreadedFunctionVariation.ksVariation_64].emitThreadedCallStmts(8));
-            aoStmts.append(iai.McCppGeneric('break;', cchIndent = 8));
-
-        if ThreadedFunctionVariation.ksVariation_32_Addr16 in dByVari:
-            aoStmts.extend([
-                iai.McCppGeneric('case IEMMODE_32BIT | IEM_F_MODE_X86_FLAT_OR_PRE_386_MASK:', cchIndent = 4),
-                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_32BIT)', fDecode = True, cchIndent = 8,
-                              aoIfBranch   = dByVari[ThreadedFunctionVariation.ksVariation_32_Flat].emitThreadedCallStmts(0),
-                              aoElseBranch = dByVari[ThreadedFunctionVariation.ksVariation_32_Addr16].emitThreadedCallStmts(0)),
-                iai.McCppGeneric('break;', cchIndent = 8),
-                iai.McCppGeneric('case IEMMODE_32BIT:', cchIndent = 4),
-                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_32BIT)', fDecode = True, cchIndent = 8,
-                              aoIfBranch   = dByVari[ThreadedFunctionVariation.ksVariation_32].emitThreadedCallStmts(0),
-                              aoElseBranch = dByVari[ThreadedFunctionVariation.ksVariation_32_Addr16].emitThreadedCallStmts(0)),
-                iai.McCppGeneric('break;', cchIndent = 8),
-            ]);
-        elif ThreadedFunctionVariation.ksVariation_32 in dByVari:
-            aoStmts.append(iai.McCppGeneric('case IEMMODE_32BIT:', cchIndent = 4));
-            aoStmts.extend(dByVari[ThreadedFunctionVariation.ksVariation_32].emitThreadedCallStmts(8));
-            aoStmts.append(iai.McCppGeneric('break;', cchIndent = 8));
-
-        if ThreadedFunctionVariation.ksVariation_16_Addr32 in dByVari:
-            aoStmts.extend([
-                iai.McCppGeneric('case IEMMODE_16BIT:', cchIndent = 4),
-                iai.McCppCond('RT_LIKELY(pVCpu->iem.s.enmEffAddrMode == IEMMODE_16BIT)', fDecode = True, cchIndent = 8,
-                              aoIfBranch   = dByVari[ThreadedFunctionVariation.ksVariation_16].emitThreadedCallStmts(0),
-                              aoElseBranch = dByVari[ThreadedFunctionVariation.ksVariation_16_Addr32].emitThreadedCallStmts(0)),
-                iai.McCppGeneric('break;', cchIndent = 8),
-            ]);
-        elif ThreadedFunctionVariation.ksVariation_16 in dByVari:
-            aoStmts.append(iai.McCppGeneric('case IEMMODE_16BIT:', cchIndent = 4));
-            aoStmts.extend(dByVari[ThreadedFunctionVariation.ksVariation_16].emitThreadedCallStmts(8));
-            aoStmts.append(iai.McCppGeneric('break;', cchIndent = 8));
-
-        if ThreadedFunctionVariation.ksVariation_16_Pre386 in dByVari:
-            aoStmts.append(iai.McCppGeneric('case IEMMODE_16BIT | IEM_F_MODE_X86_FLAT_OR_PRE_386_MASK:', cchIndent = 4));
-            aoStmts.extend(dByVari[ThreadedFunctionVariation.ksVariation_16_Pre386].emitThreadedCallStmts(8));
-            aoStmts.append(iai.McCppGeneric('break;', cchIndent = 8));
-
+        for oCase in aoCases:
+            aoStmts.extend(oCase.toCode());
         aoStmts.extend([
             iai.McCppGeneric('IEM_NOT_REACHED_DEFAULT_CASE_RET();', cchIndent = 4),
             iai.McCppGeneric('}'),
@@ -1175,6 +1178,9 @@ class ThreadedFunction(object):
         return iai.McStmt.renderCodeForList(self.morphInputCode(self.oMcBlock.aoStmts)[0],
                                             cchIndent = cchIndent).replace('\n', ' /* gen */\n', 1);
 
+# Short alias for ThreadedFunctionVariation.
+ThrdFnVar = ThreadedFunctionVariation;
+
 
 class IEMThreadedGenerator(object):
     """
@@ -1240,7 +1246,7 @@ class IEMThreadedGenerator(object):
         """
         return [
             '/*',
-            ' * Autogenerated by $Id: IEMAllThrdPython.py 100743 2023-07-30 23:17:41Z knut.osmundsen@oracle.com $ ',
+            ' * Autogenerated by $Id: IEMAllThrdPython.py 100744 2023-07-31 08:57:57Z knut.osmundsen@oracle.com $ ',
             ' * Do not edit!',
             ' */',
             '',
