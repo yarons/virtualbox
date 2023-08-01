@@ -1,4 +1,4 @@
-# $Id: Config.kmk 100770 2023-08-01 15:29:39Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 100773 2023-08-01 19:02:06Z sergey.dubov@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7740,9 +7740,6 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
   else
    VBOX_QT_MOD += QtMacExtras
   endif
-  ifdef VBOX_GUI_USE_QGL
-   VBOX_QT_MOD += QtOpenGL
-  endif
  else if1of ($(KBUILD_TARGET), linux freebsd netbsd openbsd solaris win)
   if1of ($(KBUILD_TARGET), linux freebsd netbsd openbsd solaris)
    ifndef VBOX_WITH_QT6
@@ -7756,7 +7753,7 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
     	plugins/styles/libqgtk2style.so \
     	plugins/xcbglintegrations/libqxcb-glx-integration.so
    else # qt6
-    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Core5Compat $(if $(VBOX_GUI_USE_QGL),Qt6OpenGL,)
+    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Core5Compat
     VBOX_QT_MOD += Qt6DBus Qt6Xml Qt6XcbQpa Qt6Help Qt6Network Qt6Sql
     VBOX_QT_PLUGINS = \
     	plugins/platforms/libqxcbVBox.so \
@@ -7771,7 +7768,7 @@ if defined(VBOX_WITH_QTGUI) || defined(VBOX_WITH_NLS)
     VBOX_QT_MOD += Qt5Core Qt5Gui Qt5Widgets Qt5PrintSupport $(if $(VBOX_GUI_USE_QGL),Qt5OpenGL,)
     VBOX_QT_MOD += Qt5WinExtras Qt5Help Qt5Network Qt5Sql
    else # qt6
-    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Core5Compat $(if $(VBOX_GUI_USE_QGL),Qt6OpenGL,) Qt6Help Qt6Network Qt6Sql
+    VBOX_QT_MOD += Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Core5Compat Qt6Help Qt6Network Qt6Sql
    endif # qt6
   endif # win
  endif # linux freebsd netbsd openbsd solaris win
@@ -9109,7 +9106,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100770 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 100773 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
