@@ -1,4 +1,4 @@
-/* $Id: DevPciGenericEcam.cpp 99823 2023-05-17 07:53:16Z alexander.eichner@oracle.com $ */
+/* $Id: DevPciGenericEcam.cpp 100766 2023-08-01 10:58:33Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPciGeneric - Generic host to PCIe bridge emulation.
  */
@@ -59,8 +59,11 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
+/** @todo As this shares a lot of code with the ICH9 PCI device we have to also keep the saved state version in sync. */
 /** Saved state version of the generic ECAM PCI bus device. */
-#define VBOX_PCIGENECAM_SAVED_STATE_VERSION             1
+#define VBOX_PCIGENECAM_SAVED_STATE_VERSION             VBOX_ICH9PCI_SAVED_STATE_VERSION_4KB_CFG_SPACE
+/** 4KB config space */
+#define VBOX_ICH9PCI_SAVED_STATE_VERSION_4KB_CFG_SPACE  4
 
 
 /*********************************************************************************************************************************
