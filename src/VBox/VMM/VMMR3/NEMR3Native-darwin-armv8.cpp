@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 100725 2023-07-28 09:48:52Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 100764 2023-08-01 10:33:34Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -1538,6 +1538,12 @@ static VBOXSTRICTRC nemR3DarwinRunGuestNormal(PVM pVM, PVMCPU pVCpu)
             return nemR3DarwinHvSts2Rc(hrc);
 
         pVCpu->nem.s.fVTimerOffUpdate = false;
+
+        hrc = hv_vcpu_set_sys_reg(pVCpu->nem.s.hVCpu, HV_SYS_REG_CNTV_CTL_EL0, pVCpu->cpum.GstCtx.CntvCtlEl0);
+        if (hrc == HV_SUCCESS)
+            hrc = hv_vcpu_set_sys_reg(pVCpu->nem.s.hVCpu, HV_SYS_REG_CNTV_CVAL_EL0, pVCpu->cpum.GstCtx.CntvCValEl0);
+        if (hrc != HV_SUCCESS)
+            return nemR3DarwinHvSts2Rc(hrc);
     }
 
     /*
