@@ -1,4 +1,4 @@
-/* $Id: DevPL061.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: DevPL061.cpp 100768 2023-08-01 10:59:45Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPL061 - ARM PL061 PrimeCell GPIO.
  *
@@ -316,7 +316,7 @@ static DECLCALLBACK(int) pl061R3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, ui
     pHlp->pfnSSMGetGCPhys(pSSM, &GCPhysMmioBase);
     if (uPass == SSM_PASS_FINAL)
     {
-        rc = VERR_NOT_IMPLEMENTED;
+        rc = VINF_SUCCESS;
         AssertRCReturn(rc, rc);
     }
 
@@ -351,7 +351,7 @@ static DECLCALLBACK(int) pl061R3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     PDEVPL061CC pThisCC = PDMDEVINS_2_DATA_CC(pDevIns, PDEVPL061CC);
 
     RT_NOREF(pThis, pThisCC, pSSM);
-    return VERR_NOT_IMPLEMENTED;
+    return VINF_SUCCESS;
 }
 
 
