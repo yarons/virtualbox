@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: USBDeviceFilterImpl.cpp 100772 2023-08-01 17:34:48Z brent.paulson@oracle.com $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -974,8 +974,6 @@ void HostUSBDeviceFilter::uninit()
     mInList = false;
 
     bd.free();
-
-    mParent->i_removeChild(this);
 
     unconst(mParent) = NULL;
 }

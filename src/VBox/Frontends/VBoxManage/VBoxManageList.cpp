@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageList.cpp 100772 2023-08-01 17:34:48Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -711,7 +711,9 @@ static HRESULT listUsbFilters(const ComPtr<IVirtualBox> &pVirtualBox)
             CHECK_ERROR_RET(flt, COMGETTER(Product)(bstr.asOutParam()), 1);
             RTPrintf(List::tr("Product:          %ls\n"), bstr.raw());
             CHECK_ERROR_RET(flt, COMGETTER(SerialNumber)(bstr.asOutParam()), 1);
-            RTPrintf(List::tr("Serial Number:    %ls\n\n"), bstr.raw());
+            RTPrintf(List::tr("Serial Number:    %ls\n"), bstr.raw());
+            CHECK_ERROR_RET(flt, COMGETTER(Port)(bstr.asOutParam()), 1);
+            RTPrintf(List::tr("Port:             %ls\n\n"), bstr.raw());
         }
     }
     return hrc;
