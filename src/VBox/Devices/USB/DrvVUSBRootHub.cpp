@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 100775 2023-08-01 20:04:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 100776 2023-08-01 20:05:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1482,7 +1482,7 @@ static DECLCALLBACK(void) vusbR3RhLoadReattachDevices(PPDMDRVINS pDrvIns, TMTIME
     PVUSBROOTHUBLOAD    pLoad = pThis->pLoad;
     AssertPtrReturnVoid(pLoad);
     LogFlow(("vusbR3RhLoadReattachDevices:\n"));
-    Assert(hTimer == pLoad->hTimer); RT_NOREF(hTime, pvUser);
+    Assert(hTimer == pLoad->hTimer); RT_NOREF(hTimer, pvUser);
 
     /*
      * Reattach devices.
