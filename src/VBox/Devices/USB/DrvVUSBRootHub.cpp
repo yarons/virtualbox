@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 100776 2023-08-01 20:05:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvVUSBRootHub.cpp 100779 2023-08-02 13:39:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1512,14 +1512,23 @@ static DECLCALLBACK(int) vusbR3RhLoadDone(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM)
     PVUSBROOTHUBLOAD const pLoad = pThis->pLoad;
     if (pLoad)
     {
-        int rc = PDMDrvHlpTMTimerCreate(pDrvIns, TMCLOCK_VIRTUAL, vusbR3RhLoadReattachDevices, NULL,
+        int rc = PDMDrvHlpSSMHandleGetStatus(pDrvIns, pSSM);
+        if (RT_SUCCESS(rc))
+        {
+            rc = PDMDrvHlpTMTimerCreate(pDrvIns, TMCLOCK_VIRTUAL, vusbR3RhLoadReattachDevices, NULL,
                                         TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
                                         "VUSB reattach on load", &pLoad->hTimer);
-        AssertLogRelRC(rc);
-        if (RT_SUCCESS(rc))
-            rc = PDMDrvHlpTimerSetMillies(pDrvIns, pLoad->hTimer, 250);
+            AssertLogRelRC(rc);
+            if (RT_SUCCESS(rc))
+            {
+                rc = PDMDrvHlpTimerSetMillies(pDrvIns, pLoad->hTimer, 250);
+                if (RT_SUCCESS(rc))
+                    return VINF_SUCCESS;
+            }
+        }
         else
-            vushR3RhFreeLoadData(pThis, pDrvIns); /** @todo or call vusbR3RhLoadReattachDevices directly then fail? */
+            rc = VINF_SUCCESS;
+        vushR3RhFreeLoadData(pThis, pDrvIns); /** @todo or call vusbR3RhLoadReattachDevices directly then fail? */
         return rc;
     }
 
