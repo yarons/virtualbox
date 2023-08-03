@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100787 2023-08-03 21:53:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100789 2023-08-03 23:29:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -670,7 +670,7 @@ AssertCompileSizeAlignment(IEMTLB, 64);
 /** Checks that EIP/IP is wihin CS.LIM before each instruction.  Used when
  * we're close the limit before starting a TB, as determined by
  * iemGetTbFlagsForCurrentPc(). */
-#define IEMTB_F_CS_LIM_CHECKS           UINT32_C(0x0c000000)
+#define IEMTB_F_CS_LIM_CHECKS           UINT32_C(0x10000000)
 
 /** Mask of the IEMTB_F_XXX flags that are part of the TB lookup key.
  * @note We skip the CPL as we don't currently generate ring-specific code,
