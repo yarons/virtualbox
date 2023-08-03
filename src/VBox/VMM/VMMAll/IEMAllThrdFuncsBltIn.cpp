@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100787 2023-08-03 21:53:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100788 2023-08-03 22:12:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -125,6 +125,9 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckIrq)
 
 /**
  * Built-in function that compares the fExec mask against uParam0.
+ *
+ * This is used both for IEM_CIMPL_F_MODE and IEM_CIMPL_F_VMEXIT after executing
+ * an instruction.
  */
 IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckMode)
 {
