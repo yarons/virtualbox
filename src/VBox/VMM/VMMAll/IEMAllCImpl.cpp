@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 100784 2023-08-03 10:10:51Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 100787 2023-08-03 21:53:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7842,6 +7842,7 @@ IEM_CIMPL_DEF_0(iemCImpl_sti)
         /** @todo only set it the shadow flag if it was clear before? */
         CPUMSetInInterruptShadowSti(&pVCpu->cpum.GstCtx);
     }
+    pVCpu->iem.s.fTbCurInstrIsSti = true;
     Log2(("STI: %#x -> %#x\n", fEflOld, fEfl));
     return rcStrict;
 }

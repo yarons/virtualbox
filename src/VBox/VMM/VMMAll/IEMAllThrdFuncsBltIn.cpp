@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100761 2023-08-01 02:24:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100787 2023-08-03 21:53:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -110,7 +110,8 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckIrq)
                                   | VMCPU_FF_UNHALT );
     if (RT_LIKELY(   (   !fCpu
                       || (   !(fCpu & ~(VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
-                          && !pVCpu->cpum.GstCtx.rflags.Bits.u1IF) )
+                          && (   !pVCpu->cpum.GstCtx.rflags.Bits.u1IF
+                              || CPUMIsInInterruptShadow(&pVCpu->cpum.GstCtx)) ) )
                   && !VM_FF_IS_ANY_SET(pVCpu->CTX_SUFF(pVM), VM_FF_ALL_MASK) ))
         return VINF_SUCCESS;
 
