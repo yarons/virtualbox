@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 100783 2023-08-03 09:03:30Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 100784 2023-08-03 10:10:51Z michal.necasek@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4535,7 +4535,7 @@ IEM_CIMPL_DEF_0(iemCImpl_sysenter)
     uint16_t uNewCs = pVCpu->cpum.GstCtx.SysEnter.cs;
     if ((uNewCs & X86_SEL_MASK_OFF_RPL) == 0)
     {
-        LogRel(("sysenter: SYSENTER_CS = %#x -> #GP(0)\n", uNewCs));
+        Log(("sysenter: SYSENTER_CS = %#x -> #GP(0)\n", uNewCs));
         return iemRaiseGeneralProtectionFault0(pVCpu);
     }
 
