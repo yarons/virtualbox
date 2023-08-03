@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-pit.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-pit.c 100782 2023-08-03 01:15:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - PIT Setup and Disable code.
  */
@@ -74,11 +74,12 @@ BS3_CMN_DEF(void, Bs3PitSetupAndEnablePeriodTimer,(uint16_t cHzDesired))
     Bs3TrapSetHandlerEx(0x70, bs3PitIrqHandler_c16, bs3PitIrqHandler_c32, bs3PitIrqHandler_c64);
 
     /*
-     * Reset the counters.
+     * Reset the counters and IRQ PC.
      */
     g_cBs3PitNs         = 0;
     g_cBs3PitMs         = 0;
     g_cBs3PitTicks      = 0;
+    g_Bs3PitIrqRip.u    = 0;
 
     /*
      * Calculate an interval.

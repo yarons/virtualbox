@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100782 2023-08-03 01:15:55Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -425,7 +425,8 @@ ifdef VBOX_WITH_BS3KIT
  bs3-timers-1_SOURCES = \
  	bs3kit/bs3-first-rm.asm \
  	bs3-timers-1.c \
- 	bs3-timers-1-x0.c
+ 	bs3-timers-1-x0.c \
+ 	bs3-timers-1-asm.asm
 
  #
  # Timing
