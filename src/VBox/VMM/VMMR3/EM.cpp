@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 100222 2023-06-20 02:40:48Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 100786 2023-08-03 21:51:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1648,6 +1648,8 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
          *
          * Note! This used to be a force action flag. Can probably ditch this code.
          */
+        /** @todo r=bird: the clearing case will *never* be taken here as
+         *        CPUMIsInInterruptShadow already makes sure the RIPs matches. */
         if (   CPUMIsInInterruptShadow(&pVCpu->cpum.GstCtx)
             && !VM_FF_IS_SET(pVM, VM_FF_PGM_NO_MEMORY))
         {
