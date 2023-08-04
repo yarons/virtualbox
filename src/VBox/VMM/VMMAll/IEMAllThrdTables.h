@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 100788 2023-08-03 22:12:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 100803 2023-08-04 22:04:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -206,12 +206,15 @@
         else \
             return VINF_IEM_RECOMPILE_END_TB; \
         \
+        uint8_t const idxInstrMc2 = pTb->cInstructions; \
         do { } while (0)
 #define IEM_MC2_EMIT_CALL_0(a_enmFunction) do { \
         IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
         \
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
+        pCall->idxInstr    = idxInstrMc2; \
+        pCall->uUnused0    = 0; \
         pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
         pCall->idxRange    = idxRangeMc2; \
@@ -225,6 +228,8 @@
         \
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
+        pCall->idxInstr    = idxInstrMc2; \
+        pCall->uUnused0    = 0; \
         pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
         pCall->idxRange    = idxRangeMc2; \
@@ -239,6 +244,8 @@
         \
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
+        pCall->idxInstr    = idxInstrMc2; \
+        pCall->uUnused0    = 0; \
         pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
         pCall->idxRange    = idxRangeMc2; \
@@ -254,6 +261,8 @@
         \
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
+        pCall->idxInstr    = idxInstrMc2; \
+        pCall->uUnused0    = 0; \
         pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
         pCall->idxRange    = idxRangeMc2; \

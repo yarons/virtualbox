@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100801 2023-08-04 21:16:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100803 2023-08-04 22:04:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -733,7 +733,9 @@ typedef struct IEMTHRDEDCALLENTRY
 {
     /** The function to call (IEMTHREADEDFUNCS). */
     uint16_t    enmFunction;
-    uint16_t    uUnused0;
+    /** Instruction number in the TB (for statistics). */
+    uint8_t     idxInstr;
+    uint8_t     uUnused0;
 
     /** Offset into IEMTB::pabOpcodes. */
     uint16_t    offOpcode;
@@ -1195,7 +1197,16 @@ typedef struct IEMCPU
     /** Copy of IEMCPU::uInstrBufPc after decoding a branch instruction.  */
     uint64_t                GCVirtTbBranchSrcBuf;
     /* Alignment. */
-    uint64_t                au64RecompilerStuff2[5];
+    /** Statistics: Times TB execution was broken off before reaching the end. */
+    STAMCOUNTER             StatTbExecBreaks;
+    /** Statistics: Times BltIn_CheckIrq breaks out of the TB. */
+    STAMCOUNTER             StatCheckIrqBreaks;
+    /** Statistics: Times BltIn_CheckMode breaks out of the TB. */
+    STAMCOUNTER             StatCheckModeBreaks;
+    /** Statistics: Times a post jump target check missed and had to find new TB. */
+    STAMCOUNTER             StatCheckBranchMisses;
+    /** Statistics: Times a jump or page crossing required a TB with CS.LIM checking. */
+    STAMCOUNTER             StatCheckNeedCsLimChecking;
     /** Threaded TB statistics: Number of instructions per TB. */
     STAMPROFILE             StatTbThreadedInstr;
     /** Threaded TB statistics: Number of calls per TB. */
