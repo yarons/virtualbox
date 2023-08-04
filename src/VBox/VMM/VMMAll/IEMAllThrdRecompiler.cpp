@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 100790 2023-08-04 08:53:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 100791 2023-08-04 09:00:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1474,7 +1474,7 @@ static VBOXSTRICTRC iemThreadedTbExec(PVMCPUCC pVCpu, PIEMTB pTb) IEM_NOEXCEPT_M
 
             /* Some status codes are just to get us out of this loop and
                continue in a different translation block. */
-            if (rcStrict == VINF_IEM_REEXEC_MODE_CHANGED)
+            if (rcStrict == VINF_IEM_REEXEC_BREAK)
                 return iemExecStatusCodeFiddling(pVCpu, VINF_SUCCESS);
             return iemExecStatusCodeFiddling(pVCpu, rcStrict);
         }
