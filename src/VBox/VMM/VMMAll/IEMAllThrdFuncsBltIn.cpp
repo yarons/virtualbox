@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100788 2023-08-03 22:12:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100790 2023-08-04 08:53:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -108,6 +108,7 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckIrq)
                                   | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL
                                   | VMCPU_FF_TLB_FLUSH
                                   | VMCPU_FF_UNHALT );
+    /** @todo this isn't even close to the NMI and interrupt conditions in EM! */
     if (RT_LIKELY(   (   !fCpu
                       || (   !(fCpu & ~(VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
                           && (   !pVCpu->cpum.GstCtx.rflags.Bits.u1IF
