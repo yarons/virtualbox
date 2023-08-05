@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 100052 2023-06-02 14:49:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 100804 2023-08-05 01:01:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -91,7 +91,7 @@
         { \
             LogFlow(("%s: Leaving early (outer)! ffcpu=%#RX64 ffvm=%#x\n", \
                      __FUNCTION__, (uint64_t)(a_pVCpu)->fLocalForcedActions, (a_pVM)->fGlobalForcedActions)); \
-            return VINF_SUCCESS; \
+            return VINF_IEM_YIELD_PENDING_FF; \
         } \
     } while (0)
 
@@ -110,7 +110,7 @@
         { \
             LogFlow(("%s: Leaving early (inner)! ffcpu=%#RX64 ffvm=%#x\n", \
                      __FUNCTION__, (uint64_t)(a_pVCpu)->fLocalForcedActions, (a_pVM)->fGlobalForcedActions)); \
-            return VINF_SUCCESS; \
+            return VINF_IEM_YIELD_PENDING_FF; \
         } \
     } while (0)
 
@@ -130,7 +130,7 @@
         { \
             LogFlow(("%s: Leaving early (inner)! ffcpu=%#RX64 (ffvm=%#x)\n", \
                      __FUNCTION__, (uint64_t)(a_pVCpu)->fLocalForcedActions, (a_pVM)->fGlobalForcedActions)); \
-            return VINF_SUCCESS; \
+            return VINF_IEM_YIELD_PENDING_FF; \
         } \
     } while (0)
 

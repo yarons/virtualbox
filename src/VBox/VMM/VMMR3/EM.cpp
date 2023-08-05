@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 100786 2023-08-03 21:51:40Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 100804 2023-08-05 01:01:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -205,7 +205,7 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
 #ifdef VBOX_WITH_IEM_RECOMPILER
     /** @cfgm{/EM/IemRecompiled, bool, true}
      * Whether IEM bulk execution is recompiled or interpreted. */
-    rc = CFGMR3QueryBoolDef(pCfgEM, "IemRecompiled", &pVM->em.s.fIemRecompiled, true);
+    rc = CFGMR3QueryBoolDef(pCfgEM, "IemRecompiled", &pVM->em.s.fIemRecompiled, false);
     AssertLogRelRCReturn(rc, rc);
 #endif
 
