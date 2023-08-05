@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 100808 2023-08-05 07:37:55Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 100809 2023-08-05 07:40:20Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1554,7 +1554,7 @@ static RTEXITCODE handleCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
                 return resetCloudInstance(a, GetState.iNext, pCommonOpts);
 
             case kCloudInstance_Clone:
-//              setCurrentSubcommand(HELP_SCOPE_CLOUD_INSTANCE_CLONE);
+                setCurrentSubcommand(HELP_SCOPE_CLOUD_INSTANCE_CLONE);
                 return cloneCloudInstance(a, GetState.iNext, pCommonOpts);
 
             case 'h':
