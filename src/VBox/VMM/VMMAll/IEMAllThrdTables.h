@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 100803 2023-08-04 22:04:07Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 100806 2023-08-05 01:24:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -311,7 +311,7 @@ DECLINLINE(VBOXSTRICTRC) iemThreadedRecompilerMcDeferToCImpl0(PVMCPUCC pVCpu, ui
     AssertCompile(IEM_CIMPL_F_BRANCH_CONDITIONAL == IEMBRANCHED_F_CONDITIONAL);
     AssertCompile(IEM_CIMPL_F_BRANCH_FAR         == IEMBRANCHED_F_FAR);
 
-    if (fFlags & (IEM_CIMPL_F_END_TB | IEM_CIMPL_F_MODE | IEM_CIMPL_F_BRANCH_FAR | IEM_CIMPL_F_REP))
+    if (fFlags & (IEM_CIMPL_F_END_TB | IEM_CIMPL_F_BRANCH_FAR))
         pVCpu->iem.s.fEndTb = true;
     else if (fFlags & IEM_CIMPL_F_BRANCH_ANY)
         pVCpu->iem.s.fTbBranched = fFlags & (IEM_CIMPL_F_BRANCH_ANY | IEM_CIMPL_F_BRANCH_FAR | IEM_CIMPL_F_BRANCH_CONDITIONAL);
