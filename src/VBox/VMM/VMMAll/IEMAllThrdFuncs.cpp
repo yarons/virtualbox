@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs.cpp 100732 2023-07-28 22:35:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs.cpp 100811 2023-08-06 01:54:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -178,6 +178,10 @@
 
 /** Variant of IEM_MC_CALC_RM_EFF_ADDR with additional parameters. */
 #define IEM_MC_CALC_RM_EFF_ADDR_THREADED_64(a_GCPtrEff, a_bRmEx, a_uSibAndRspOffset, a_u32Disp, a_cbImm) \
+    (a_GCPtrEff) = iemOpHlpCalcRmEffAddrThreadedAddr64(pVCpu, a_bRmEx, a_uSibAndRspOffset, a_u32Disp, a_cbImm)
+
+/** Variant of IEM_MC_CALC_RM_EFF_ADDR with additional parameters. */
+#define IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_FSGS(a_GCPtrEff, a_bRmEx, a_uSibAndRspOffset, a_u32Disp, a_cbImm) \
     (a_GCPtrEff) = iemOpHlpCalcRmEffAddrThreadedAddr64(pVCpu, a_bRmEx, a_uSibAndRspOffset, a_u32Disp, a_cbImm)
 
 /** Variant of IEM_MC_CALC_RM_EFF_ADDR with additional parameters.
