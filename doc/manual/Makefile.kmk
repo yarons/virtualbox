@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100062 2023-06-03 12:30:11Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 100817 2023-08-07 17:05:58Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox User Manual, SDK reference and other manuals.
 #
@@ -1024,7 +1024,7 @@ if defined(VBOX_WITH_DOCS) && (!defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_DO
 	$$(call MSG_L1,$$(notdir $$(VBOX_QHELPGENERATOR)) $$<,=> $$@)
 	$$(QUIET)$$(RM) -f -- "$$@"
    ifdef VBOX_WITH_QT6
-	$$(QUIET)$$(REDIRECT) -- $$(VBOX_QHELPGENERATOR) $$<
+	$$(QUIET)$$(REDIRECT) -E "QT_PLUGIN_PATH=$$(PATH_SDK_QT6)/plugins" -E "QT_QPA_PLATFORM_PLUGIN_PATH=$$(PATH_SDK_QT6)/plugins/platforms" -- $$(VBOX_QHELPGENERATOR) $$<
    else
 	$$(QUIET)$$(REDIRECT) -E QT_QPA_PLATFORM_PLUGIN_PATH=$$(PATH_SDK_QT5)/plugins -- $$(VBOX_QHELPGENERATOR) $$<
    endif
