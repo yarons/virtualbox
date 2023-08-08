@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: semeventwait-r0drv-solaris.h 100823 2023-08-08 13:56:56Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -281,6 +281,8 @@ DECLINLINE(void) rtR0SemSolWaitDoIt(PRTR0SEMSOLWAIT pWait, kcondvar_t *pCnd, kmu
         callout_id_t    idCo;
         timeout_id_t    idTom;
     } u;
+
+    u.idCo = 0; /* Silence a spurious gcc [-Wmaybe-uninitialized] warning. */
 
     /*
      * Arm the timeout callback.
