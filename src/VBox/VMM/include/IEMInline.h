@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 100830 2023-08-09 13:24:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 100847 2023-08-09 23:27:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -3410,6 +3410,33 @@ DECLINLINE(void) iemMemFakeStackSelDesc(PIEMSELDESC pDescSs, uint32_t uDpl) RT_N
     pDescSs->Long.Gen.u1Present  = 1;
     pDescSs->Long.Gen.u1Long     = 1;
 }
+
+
+/*
+ * Unmap helpers.
+ */
+
+#ifdef IEM_WITH_SETJMP
+
+DECL_INLINE_THROW(void) iemMemCommitAndUnmapRwJmp(PVMCPUCC pVCpu, void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    iemMemCommitAndUnmapRwSafeJmp(pVCpu, pvMem, bMapInfo);
+}
+
+
+DECL_INLINE_THROW(void) iemMemCommitAndUnmapWoJmp(PVMCPUCC pVCpu, void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    iemMemCommitAndUnmapWoSafeJmp(pVCpu, pvMem, bMapInfo);
+}
+
+
+DECL_INLINE_THROW(void) iemMemCommitAndUnmapRoJmp(PVMCPUCC pVCpu, const void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    iemMemCommitAndUnmapRoSafeJmp(pVCpu, pvMem, bMapInfo);
+}
+
+#endif /* IEM_WITH_SETJMP */
+
 
 /*
  * Instantiate R/W inline templates.
