@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 99113 2023-03-22 12:56:37Z brent.paulson@oracle.com $
+# $Id: base.py 100845 2023-08-09 21:00:37Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99113 $"
+__version__ = "$Revision: 100845 $"
 
 
 # Standard Python imports.
@@ -46,7 +46,6 @@ import os.path
 import signal
 import socket
 import stat
-import subprocess
 import sys
 import time
 if sys.version_info[0] < 3: import thread;            # pylint: disable=import-error
@@ -280,47 +279,7 @@ def processCheckPidAndName(uPid, sName):
     """
     Checks if a process PID and NAME matches.
     """
-    if sys.platform == 'win32':
-        fRc = winbase.processCheckPidAndName(uPid, sName);
-    else:
-        sOs = utils.getHostOs();
-        if sOs == 'linux':
-            asPsCmd = ['/bin/ps',     '-p', '%u' % (uPid,), '-o', 'fname='];
-        elif sOs == 'solaris':
-            asPsCmd = ['/usr/bin/ps', '-p', '%u' % (uPid,), '-o', 'fname='];
-        elif sOs == 'darwin':
-            asPsCmd = ['/bin/ps',     '-p', '%u' % (uPid,), '-o', 'ucomm='];
-        else:
-            asPsCmd = None;
-
-        if asPsCmd is not None:
-            try:
-                oPs = subprocess.Popen(asPsCmd, stdout=subprocess.PIPE); # pylint: disable=consider-using-with
-                sCurName = oPs.communicate()[0];
-                iExitCode = oPs.wait();
-            except:
-                reporter.logXcpt();
-                return False;
-
-            # ps fails with non-zero exit code if the pid wasn't found.
-            if iExitCode != 0:
-                return False;
-            if sCurName is None:
-                return False;
-            sCurName = sCurName.strip();
-            if sCurName == '':
-                return False;
-
-            if os.path.basename(sName) == sName:
-                sCurName = os.path.basename(sCurName);
-            elif os.path.basename(sCurName) == sCurName:
-                sName = os.path.basename(sName);
-
-            if sCurName != sName:
-                return False;
-
-            fRc = True;
-    return fRc;
+    return utils.processCheckPidAndName(uPid, sName);
 
 def wipeDirectory(sDir):
     """
