@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 100831 2023-08-09 14:17:40Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 100840 2023-08-09 17:52:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -873,14 +873,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 100831 $";
+    static char s_szRev[] = "$Revision: 100840 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 100831 2023-08-09 14:17:40Z knut.osmundsen@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 100840 2023-08-09 17:52:37Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1439,9 +1439,9 @@ static const BINU16_T g_aBinU16[] =
     ENTRY(xor_u16_locked),
     ENTRY(and_u16),
     ENTRY(and_u16_locked),
-    ENTRY_PFN_CAST(cmp_u16,  PFNIEMAIMPLBINU16),
-    ENTRY_PFN_CAST(test_u16, PFNIEMAIMPLBINU16),
-    ENTRY_EX(bt_u16, 1),
+    ENTRY_PFN_CAST(cmp_u16,   PFNIEMAIMPLBINU16),
+    ENTRY_PFN_CAST(test_u16,  PFNIEMAIMPLBINU16),
+    ENTRY_PFN_CAST_EX(bt_u16, PFNIEMAIMPLBINU16, 1),
     ENTRY_EX(btc_u16, 1),
     ENTRY_EX(btc_u16_locked, 1),
     ENTRY_EX(btr_u16, 1),
@@ -1478,9 +1478,9 @@ static const BINU32_T g_aBinU32[] =
     ENTRY(xor_u32_locked),
     ENTRY(and_u32),
     ENTRY(and_u32_locked),
-    ENTRY_PFN_CAST(cmp_u32,  PFNIEMAIMPLBINU32),
-    ENTRY_PFN_CAST(test_u32, PFNIEMAIMPLBINU32),
-    ENTRY_EX(bt_u32, 1),
+    ENTRY_PFN_CAST(cmp_u32,   PFNIEMAIMPLBINU32),
+    ENTRY_PFN_CAST(test_u32,  PFNIEMAIMPLBINU32),
+    ENTRY_PFN_CAST_EX(bt_u32, PFNIEMAIMPLBINU32, 1),
     ENTRY_EX(btc_u32, 1),
     ENTRY_EX(btc_u32_locked, 1),
     ENTRY_EX(btr_u32, 1),
@@ -1516,9 +1516,9 @@ static const BINU64_T g_aBinU64[] =
     ENTRY(xor_u64_locked),
     ENTRY(and_u64),
     ENTRY(and_u64_locked),
-    ENTRY_PFN_CAST(cmp_u64,  PFNIEMAIMPLBINU64),
-    ENTRY_PFN_CAST(test_u64, PFNIEMAIMPLBINU64),
-    ENTRY_EX(bt_u64, 1),
+    ENTRY_PFN_CAST(cmp_u64,   PFNIEMAIMPLBINU64),
+    ENTRY_PFN_CAST(test_u64,  PFNIEMAIMPLBINU64),
+    ENTRY_PFN_CAST_EX(bt_u64, PFNIEMAIMPLBINU64, 1),
     ENTRY_EX(btc_u64, 1),
     ENTRY_EX(btc_u64_locked, 1),
     ENTRY_EX(btr_u64, 1),
