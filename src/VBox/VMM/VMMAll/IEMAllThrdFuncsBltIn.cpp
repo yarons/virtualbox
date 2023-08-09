@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100806 2023-08-05 01:24:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100824 2023-08-09 00:21:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -162,8 +162,10 @@ DECL_FORCE_INLINE(RTGCPHYS) iemTbGetRangePhysPageAddr(PCIEMTB pTb, uint8_t idxRa
  * Macro that implements the 16/32-bit CS.LIM check, as this is done by a
  * number of functions.
  */
+/** @todo consider 32-bit EIP mid-instruction wrap-around... Difficult to
+ *        test, since it would require replacing the default firmware. */
 #define BODY_CHECK_CS_LIM(a_cbInstr) do { \
-        if (RT_LIKELY(pVCpu->cpum.GstCtx.eip - pVCpu->cpum.GstCtx.cs.u32Limit >= cbInstr)) \
+        if (RT_LIKELY((uint32_t)(pVCpu->cpum.GstCtx.eip + cbInstr) <= pVCpu->cpum.GstCtx.cs.u32Limit)) \
         { /* likely */ } \
         else \
         { \
