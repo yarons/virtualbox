@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 98289 2023-01-24 16:02:15Z knut.osmundsen@oracle.com $ */
+/* $Id: ApplianceImpl.cpp 100827 2023-08-09 11:51:53Z brent.paulson@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -211,6 +211,7 @@ static struct
     { ovf::CIMOSType_CIMOS_Ubuntu_64,                            VBOXOSTYPE_Ubuntu21_x64 },
     { ovf::CIMOSType_CIMOS_Ubuntu_64,                            VBOXOSTYPE_Ubuntu22_LTS_x64 },
     { ovf::CIMOSType_CIMOS_Ubuntu_64,                            VBOXOSTYPE_Ubuntu22_x64 },
+    { ovf::CIMOSType_CIMOS_Ubuntu_64,                            VBOXOSTYPE_Ubuntu23_x64 },
     { ovf::CIMOSType_CIMOS_Ubuntu,                               VBOXOSTYPE_Lubuntu },
     { ovf::CIMOSType_CIMOS_Ubuntu_64,                            VBOXOSTYPE_Lubuntu_x64 },
     { ovf::CIMOSType_CIMOS_Ubuntu,                               VBOXOSTYPE_Xubuntu },
@@ -234,6 +235,8 @@ static struct
     { ovf::CIMOSType_CIMOS_Debian_64,                            VBOXOSTYPE_Debian10_x64 },
     { ovf::CIMOSType_CIMOS_Debian,                               VBOXOSTYPE_Debian11 },
     { ovf::CIMOSType_CIMOS_Debian_64,                            VBOXOSTYPE_Debian11_x64 },
+    { ovf::CIMOSType_CIMOS_Debian,                               VBOXOSTYPE_Debian12 },
+    { ovf::CIMOSType_CIMOS_Debian_64,                            VBOXOSTYPE_Debian12_x64 },
     { ovf::CIMOSType_CIMOS_Linux_2_4_x,                          VBOXOSTYPE_Linux24 },
     { ovf::CIMOSType_CIMOS_Linux_2_4_x_64,                       VBOXOSTYPE_Linux24_x64 },
     { ovf::CIMOSType_CIMOS_Linux_2_6_x,                          VBOXOSTYPE_Linux26 },
