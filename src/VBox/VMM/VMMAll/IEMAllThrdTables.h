@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 100806 2023-08-05 01:24:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 100829 2023-08-09 13:02:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -207,7 +207,13 @@
             return VINF_IEM_RECOMPILE_END_TB; \
         \
         uint8_t const idxInstrMc2 = pTb->cInstructions; \
-        do { } while (0)
+        \
+        /* Emit hardware instruction breakpoint check if enabled. */ \
+        if (!(pTb->fFlags & IEM_F_PENDING_BRK_INSTR)) \
+        { /* likely */ } \
+        else \
+            IEM_MC2_EMIT_CALL_0(kIemThreadedFunc_BltIn_CheckHwInstrBps)
+
 #define IEM_MC2_EMIT_CALL_0(a_enmFunction) do { \
         IEMTHREADEDFUNCS const enmFunctionCheck = a_enmFunction; RT_NOREF(enmFunctionCheck); \
         \

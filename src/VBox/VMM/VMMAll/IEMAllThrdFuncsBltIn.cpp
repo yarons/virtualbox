@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100828 2023-08-09 12:03:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 100829 2023-08-09 13:02:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -143,6 +143,30 @@ IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckMode)
     RT_NOREF(uParam1, uParam2);
     STAM_REL_COUNTER_INC(&pVCpu->iem.s.StatCheckModeBreaks);
     return VINF_IEM_REEXEC_BREAK;
+}
+
+
+/**
+ * Built-in function that checks for hardware instruction breakpoints.
+ */
+IEM_DECL_IEMTHREADEDFUNC_DEF(iemThreadedFunc_BltIn_CheckHwInstrBps)
+{
+    VBOXSTRICTRC rcStrict = DBGFBpCheckInstruction(pVCpu->CTX_SUFF(pVM), pVCpu,
+                                                   pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
+    if (RT_LIKELY(rcStrict == VINF_SUCCESS))
+        return VINF_SUCCESS;
+
+    if (rcStrict == VINF_EM_RAW_GUEST_TRAP)
+    {
+        LogFlow(("Guest HW bp at %04x:%08RX64\n", pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip));
+        rcStrict = iemRaiseDebugException(pVCpu);
+        Assert(rcStrict != VINF_SUCCESS);
+    }
+    else
+        LogFlow(("VBoxDbg HW bp at %04x:%08RX64: %Rrc\n",
+                 pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, VBOXSTRICTRC_VAL(rcStrict) ));
+    RT_NOREF(uParam0, uParam1, uParam2);
+    return rcStrict;
 }
 
 
