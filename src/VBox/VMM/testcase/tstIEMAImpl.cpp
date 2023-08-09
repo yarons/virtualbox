@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 100826 2023-08-09 01:57:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -54,6 +54,12 @@
 #define ENTRY(a_Name)       ENTRY_EX(a_Name, 0)
 #define ENTRY_EX(a_Name, a_uExtra) \
     { RT_XSTR(a_Name), iemAImpl_ ## a_Name, NULL, \
+      g_aTests_ ## a_Name, &g_cTests_ ## a_Name, \
+      a_uExtra, IEMTARGETCPU_EFL_BEHAVIOR_NATIVE /* means same for all here */ }
+
+#define ENTRY_PFN_CAST(a_Name, a_pfnType)  ENTRY_PFN_CAST_EX(a_Name, a_pfnType, 0)
+#define ENTRY_PFN_CAST_EX(a_Name, a_pfnType, a_uExtra) \
+    { RT_XSTR(a_Name), (a_pfnType)iemAImpl_ ## a_Name, NULL, \
       g_aTests_ ## a_Name, &g_cTests_ ## a_Name, \
       a_uExtra, IEMTARGETCPU_EFL_BEHAVIOR_NATIVE /* means same for all here */ }
 
@@ -867,14 +873,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 99775 $";
+    static char s_szRev[] = "$Revision: 100826 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 100826 2023-08-09 01:57:40Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1408,8 +1414,8 @@ static const BINU8_T g_aBinU8[] =
     ENTRY(xor_u8_locked),
     ENTRY(and_u8),
     ENTRY(and_u8_locked),
-    ENTRY(cmp_u8),
-    ENTRY(test_u8),
+    ENTRY_PFN_CAST(cmp_u8, PFNIEMAIMPLBINU8),
+    ENTRY_PFN_CAST(test_u8, PFNIEMAIMPLBINU8),
 };
 TEST_BINARY_OPS(8, uint8_t, "%#04x", BINU8_TEST_T, g_aBinU8)
 
