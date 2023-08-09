@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 100829 2023-08-09 13:02:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 100831 2023-08-09 14:17:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1820,17 +1820,17 @@ typedef FNIEMAIMPLBINROU64 *PFNIEMAIMPLBINROU64;
 /** @name Compare operations (thrown in with the binary ops).
  * @{ */
 FNIEMAIMPLBINROU8  iemAImpl_cmp_u8;
-FNIEMAIMPLBINU16 iemAImpl_cmp_u16;
-FNIEMAIMPLBINU32 iemAImpl_cmp_u32;
-FNIEMAIMPLBINU64 iemAImpl_cmp_u64;
+FNIEMAIMPLBINROU16 iemAImpl_cmp_u16;
+FNIEMAIMPLBINROU32 iemAImpl_cmp_u32;
+FNIEMAIMPLBINROU64 iemAImpl_cmp_u64;
 /** @}  */
 
 /** @name Test operations (thrown in with the binary ops).
  * @{ */
 FNIEMAIMPLBINROU8  iemAImpl_test_u8;
-FNIEMAIMPLBINU16 iemAImpl_test_u16;
-FNIEMAIMPLBINU32 iemAImpl_test_u32;
-FNIEMAIMPLBINU64 iemAImpl_test_u64;
+FNIEMAIMPLBINROU16 iemAImpl_test_u16;
+FNIEMAIMPLBINROU32 iemAImpl_test_u32;
+FNIEMAIMPLBINROU64 iemAImpl_test_u64;
 /** @}  */
 
 /** @name Bit operations operations (thrown in with the binary ops).
