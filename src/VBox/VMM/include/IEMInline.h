@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 100847 2023-08-09 23:27:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 100848 2023-08-10 00:07:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -3420,18 +3420,30 @@ DECLINLINE(void) iemMemFakeStackSelDesc(PIEMSELDESC pDescSs, uint32_t uDpl) RT_N
 
 DECL_INLINE_THROW(void) iemMemCommitAndUnmapRwJmp(PVMCPUCC pVCpu, void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
 {
+# if defined(IEM_WITH_DATA_TLB) && defined(IN_RING3)
+    if (RT_LIKELY(bMapInfo == 0))
+        return;
+# endif
     iemMemCommitAndUnmapRwSafeJmp(pVCpu, pvMem, bMapInfo);
 }
 
 
 DECL_INLINE_THROW(void) iemMemCommitAndUnmapWoJmp(PVMCPUCC pVCpu, void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
 {
+# if defined(IEM_WITH_DATA_TLB) && defined(IN_RING3)
+    if (RT_LIKELY(bMapInfo == 0))
+        return;
+# endif
     iemMemCommitAndUnmapWoSafeJmp(pVCpu, pvMem, bMapInfo);
 }
 
 
 DECL_INLINE_THROW(void) iemMemCommitAndUnmapRoJmp(PVMCPUCC pVCpu, const void *pvMem, uint8_t bMapInfo) IEM_NOEXCEPT_MAY_LONGJMP
 {
+# if defined(IEM_WITH_DATA_TLB) && defined(IN_RING3)
+    if (RT_LIKELY(bMapInfo == 0))
+        return;
+# endif
     iemMemCommitAndUnmapRoSafeJmp(pVCpu, pvMem, bMapInfo);
 }
 
