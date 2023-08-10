@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 100709 2023-07-26 13:33:34Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 100851 2023-08-10 14:34:07Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -75,18 +75,7 @@
 ; @param        2       The argument size on x86.
 ;
 %macro BEGINPROC_FASTCALL 2
- %ifdef ASM_FORMAT_PE
-  export %1=NAME_FASTCALL(%1,%2,$@)
- %endif
- %ifdef __NASM__
-  %ifdef ASM_FORMAT_OMF
-   export NAME(%1) NAME_FASTCALL(%1,%2,$@)
-  %endif
- %endif
- %ifndef ASM_FORMAT_BIN
-  global NAME_FASTCALL(%1,%2,$@)
- %endif
-NAME_FASTCALL(%1,%2,@):
+GLOBALNAME_RAW NAME_FASTCALL(%1,%2,@), function, hidden
         IBT_ENDBRxx
 %endmacro
 
