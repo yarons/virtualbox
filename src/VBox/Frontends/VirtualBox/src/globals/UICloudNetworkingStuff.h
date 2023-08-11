@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudNetworkingStuff.h 100861 2023-08-11 15:38:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -183,6 +183,18 @@ namespace UICloudNetworkingStuff
     SHARED_LIBRARY_STUFF bool applyCloudMachineSettingsForm(const CCloudMachine &comCloudMachine,
                                                             const CForm &comForm,
                                                             UINotificationCenter *pParent);
+
+    /** Creates cloud machine clone.
+      * @param  strProviderShortName  Brings short provider name.
+      * @param  strProfileName        Brings profile name.
+      * @param  comCloudMachine       Brings cloud machine instance of which being cloned.
+      * @param  strCloneName          Brings clone name.
+      * @param  pParent               Brings notification-center reference. */
+    SHARED_LIBRARY_STUFF void createCloudMachineClone(const QString &strProviderShortName,
+                                                      const QString &strProfileName,
+                                                      const CCloudMachine &comCloudMachine,
+                                                      const QString &strCloneName,
+                                                      UINotificationCenter *pParent);
 }
 
 /* Using across any module who included us: */

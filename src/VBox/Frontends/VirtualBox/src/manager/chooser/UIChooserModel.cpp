@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 100654 2023-07-19 14:50:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 100861 2023-08-11 15:38:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1563,6 +1563,7 @@ void UIChooserModel::prepareContextMenu()
     if (QMenu *pMenuMachine = m_cloudMenus.value(UIChooserNodeType_Machine))
     {
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
+        pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone));
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Remove));
         pMenuMachine->addSeparator();
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));

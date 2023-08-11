@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudNetworkingStuff.cpp 100861 2023-08-11 15:38:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -601,4 +601,23 @@ bool UICloudNetworkingStuff::applyCloudMachineSettingsForm(const CCloudMachine &
     UINotificationProgressCloudMachineSettingsFormApply *pNotification =
         new UINotificationProgressCloudMachineSettingsFormApply(comForm, strMachineName);
     return pParent->handleNow(pNotification);
+}
+
+void UICloudNetworkingStuff::createCloudMachineClone(const QString &strProviderShortName,
+                                                     const QString &strProfileName,
+                                                     const CCloudMachine &comCloudMachine,
+                                                     const QString &strCloneName,
+                                                     UINotificationCenter *pParent)
+{
+    /* Create cloud client: */
+    CCloudClient comCloudClient = cloudClientByName(strProviderShortName,
+                                                    strProfileName,
+                                                    pParent);
+    if (comCloudClient.isNotNull())
+    {
+        /* Clone specified cloud machine asynchronously: */
+        UINotificationProgressCloudMachineClone *pNotification =
+            new UINotificationProgressCloudMachineClone(comCloudClient, comCloudMachine, strCloneName);
+        pParent->append(pNotification);
+    }
 }

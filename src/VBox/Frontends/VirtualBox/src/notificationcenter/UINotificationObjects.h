@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 100654 2023-07-19 14:50:18Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 100861 2023-08-11 15:38:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1817,6 +1817,44 @@ private:
 
     /** Holds the machine being powered-up. */
     CCloudMachine  m_comMachine;
+    /** Holds the machine name. */
+    QString        m_strName;
+};
+
+/** UINotificationProgress extension for cloud machine clone functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressCloudMachineClone : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs cloud machine clone notification-progress.
+      * @param  comClient     Brings the cloud client to clone cloud machine.
+      * @param  comMachine    Brings the cloud machine to be cloned.
+      * @param  strCloneName  Brings the clone name. */
+    UINotificationProgressCloudMachineClone(const CCloudClient &comClient,
+                                            const CCloudMachine &comMachine,
+                                            const QString &strCloneName);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private:
+
+    /** Holds the client cloning machine. */
+    CCloudClient   m_comClient;
+    /** Holds the machine being reset. */
+    CCloudMachine  m_comMachine;
+    /** Holds the clone name. */
+    QString        m_strCloneName;
+    // This is wrong, we need to store ocid, we have no one for now ..
+    QUuid          m_uId;
     /** Holds the machine name. */
     QString        m_strName;
 };
