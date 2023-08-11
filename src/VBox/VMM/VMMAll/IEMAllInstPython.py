@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 100854 2023-08-11 01:29:04Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 100856 2023-08-11 09:47:22Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100854 $"
+__version__ = "$Revision: 100856 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1937,15 +1937,17 @@ class McCppPreProc(McCppGeneric):
 
 ## IEM_MC_F_XXX values.
 g_kdMcFlags = {
-    'IEM_MC_F_ONLY_8086':           True,
-    'IEM_MC_F_NOT_286_OR_OLDER':    True,
-    'IEM_MC_F_MIN_386':             True,
-    'IEM_MC_F_MIN_486':             True,
-    'IEM_MC_F_MIN_PENTIUM':         True,
-    'IEM_MC_F_MIN_PENTIUM_II':      True,
-    'IEM_MC_F_MIN_CORE':            True,
-    'IEM_MC_F_64BIT':               True,
-    'IEM_MC_F_NOT_64BIT':           True,
+    'IEM_MC_F_ONLY_8086':           (),
+    'IEM_MC_F_MIN_186':             (),
+    'IEM_MC_F_MIN_286':             (),
+    'IEM_MC_F_NOT_286_OR_OLDER':    (),
+    'IEM_MC_F_MIN_386':             ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_MIN_486':             ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_MIN_PENTIUM':         ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_MIN_PENTIUM_II':      ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_MIN_CORE':            ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_64BIT':               ('IEM_MC_F_NOT_286_OR_OLDER',),
+    'IEM_MC_F_NOT_64BIT':           (),
 };
 class McBlock(object):
     """
@@ -2036,6 +2038,8 @@ class McBlock(object):
                 sFlag = sFlag.strip();
                 if sFlag in g_kdMcFlags:
                     oSelf.dMcFlags[sFlag] = True;
+                    for sFlag2 in g_kdMcFlags[sFlag]:
+                        oSelf.dMcFlags[sFlag2] = True;
                 else:
                     oSelf.raiseStmtError(sName, 'Unknown flag: %s' % (sFlag, ));
 
