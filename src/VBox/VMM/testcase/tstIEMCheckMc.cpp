@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 100840 2023-08-09 17:52:37Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 100854 2023-08-11 01:29:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -181,6 +181,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 
 
 #define IEMOP_HLP_DONE_DECODING()                           do { } while (0)
+#define IEMOP_HLP_DONE_DECODING_EX(a_fFeature)              do { } while (0)
 
 #define IEMOP_HLP_DECODED_NL_1(a_uDisOpNo, a_fIemOpFlags, a_uDisParam0, a_fDisOpType)               do { } while (0)
 #define IEMOP_HLP_DECODED_NL_2(a_uDisOpNo, a_fIemOpFlags, a_uDisParam0, a_uDisParam1, a_fDisOpType) do { } while (0)
@@ -556,11 +557,11 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
  * @{  */
 
 #define IEM_ARG_CHECK_CALLBACK(a_idx, a_User) int RT_CONCAT(iArgCheck_,a_idx); NOREF(RT_CONCAT(iArgCheck_,a_idx))
-#define IEM_MC_BEGIN(a_cArgs, a_cLocals) \
+#define IEM_MC_BEGIN(a_cArgs, a_cLocals, a_fFlags) \
     { \
-        const uint8_t cArgs   = (a_cArgs); NOREF(cArgs); \
-        const uint8_t cLocals = (a_cLocals); NOREF(cLocals); \
-        const uint8_t fMcBegin = (a_cArgs) + (a_cLocals); \
+        const uint8_t  cArgs    = (a_cArgs); NOREF(cArgs); \
+        const uint8_t  cLocals  = (a_cLocals); NOREF(cLocals); \
+        const uint32_t fMcBegin = (((a_cArgs) + (a_cLocals)) << 23) + (a_fFlags); \
         IEM_REPEAT(a_cArgs, IEM_ARG_CHECK, 0); \
 
 #define IEM_MC_END() \
