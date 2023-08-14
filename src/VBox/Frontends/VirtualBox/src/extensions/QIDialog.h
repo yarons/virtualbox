@@ -1,4 +1,4 @@
-/* $Id: QIDialog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIDialog.h 100871 2023-08-14 13:21:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class declaration.
  */
@@ -64,6 +64,9 @@ public slots:
 
     /** Shows the dialog as a modal one, blocking until the user closes it. */
     virtual int exec() RT_OVERRIDE { return execute(); }
+
+    /** Closes the dialog and sets its result code to iResult. */
+    virtual void done(int iResult) RT_OVERRIDE;
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 100073 2023-06-05 15:52:08Z sergey.dubov@oracle.com $ */
+/* $Id: QIDialog.cpp 100871 2023-08-14 13:21:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class implementation.
  */
@@ -109,6 +109,17 @@ int QIDialog::execute(bool fShow /* = true */, bool fApplicationModal /* = false
 
     /* Return the result-code: */
     return iResultCode;
+}
+
+void QIDialog::done(int iResult)
+{
+    /* Call to base-class: */
+    QDialog::done(iResult);
+
+    /* Make sure event-loop exited even if no dialog visibility changed, s.a. QIDialog::setVisible above.
+     * That is necessary to exit event-loop if dialog was executed with fShow == false. */
+    if (m_pEventLoop && m_pEventLoop->isRunning() && !QDialog::isVisible())
+        m_pEventLoop->exit();
 }
 
 void QIDialog::showEvent(QShowEvent *pEvent)
