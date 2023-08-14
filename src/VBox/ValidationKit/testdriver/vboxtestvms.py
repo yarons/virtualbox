@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 100798 2023-08-04 14:04:29Z dmitrii.grigorev@oracle.com $
+# $Id: vboxtestvms.py 100873 2023-08-14 16:39:46Z dmitrii.grigorev@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100798 $"
+__version__ = "$Revision: 100873 $"
 
 # Standard Python imports.
 import copy;
@@ -2082,7 +2082,7 @@ class TestVmManager(object):
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
 
         # W11
-        TestVm('tst-win11-64-efi',           kfGrpStdSmoke,       sHd = '7.0/win11/win11-64-edited.vdi',
+        TestVm('tst-win11-64-efi',           kfGrpStdSmoke,       sHd = '7.0/win11/t-win11-64-efi-2.vdi',
                sKind = 'Windows11_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                sHddControllerType = 'SATA Controller', sDvdControllerType = 'SATA Controller'),
 
