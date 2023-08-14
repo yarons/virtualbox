@@ -1,4 +1,4 @@
-/* $Id: VBoxIntNetSwitch.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxIntNetSwitch.cpp 100870 2023-08-14 12:51:17Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -433,6 +433,7 @@ static DECLCALLBACK(void) intnetR3RecvAvail(INTNETIFHANDLE hIf, void *pvUser)
         /* Send an empty message. */
         xpc_object_t hObjPoke = xpc_dictionary_create(NULL, NULL, 0);
         xpc_connection_send_message(pSession->hXpcCon, hObjPoke);
+        xpc_release(hObjPoke);
     }
     else
         ASMAtomicXchgBool(&pSession->fRecvAvail, true);
@@ -507,6 +508,7 @@ static void intnetR3RequestProcess(xpc_connection_t hCon, xpc_object_t hObj, PSU
 
                     xpc_dictionary_set_uint64(hObjReply, "rc", INTNET_R3_SVC_SET_RC(rc));
                     xpc_connection_send_message(hCon, hObjReply);
+                    xpc_release(hObjReply);
                     return;
                 }
                 else
@@ -569,6 +571,7 @@ static void intnetR3RequestProcess(xpc_connection_t hCon, xpc_object_t hObj, PSU
                         /* Send an empty message. */
                         xpc_object_t hObjPoke = xpc_dictionary_create(NULL, NULL, 0);
                         xpc_connection_send_message(pSession->hXpcCon, hObjPoke);
+                        xpc_release(hObjPoke);
                     }
                     return;
                 }
@@ -586,6 +589,7 @@ static void intnetR3RequestProcess(xpc_connection_t hCon, xpc_object_t hObj, PSU
                         /* Send an empty message. */
                         xpc_object_t hObjPoke = xpc_dictionary_create(NULL, NULL, 0);
                         xpc_connection_send_message(pSession->hXpcCon, hObjPoke);
+                        xpc_release(hObjPoke);
                     }
                     cbReply = sizeof(INTNETIFABORTWAITREQ);
                 }
