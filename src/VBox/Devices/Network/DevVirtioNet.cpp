@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 100400 2023-07-06 08:58:02Z alexander.eichner@oracle.com $ $Revision: 100400 $ $Date: 2023-07-06 10:58:02 +0200 (Thu, 06 Jul 2023) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 100872 2023-08-14 15:02:18Z alexander.eichner@oracle.com $ $Revision: 100872 $ $Date: 2023-08-14 17:02:18 +0200 (Mon, 14 Aug 2023) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -52,6 +52,7 @@
 #include <VBox/msi.h>
 #include <VBox/version.h>
 #include <VBox/log.h>
+#include <VBox/pci.h>
 
 
 #ifdef IN_RING3
@@ -209,8 +210,6 @@ static const VIRTIO_FEATURES_LIST s_aDevSpecificFeatures[] =
             (virtioCoreVirtqAvailBufCount(pDevIns, pVirtio, uVirtqNbr) == 0)
 
 #define PCI_DEVICE_ID_VIRTIONET_HOST               0x1000      /**< VirtIO transitional device ID for network card  */
-#define PCI_CLASS_BASE_NETWORK_CONTROLLER          0x0200      /**< PCI Network device class                        */
-#define PCI_CLASS_SUB_NET_ETHERNET_CONTROLLER      0x00        /**< PCI NET Controller subclass                     */
 #define PCI_CLASS_PROG_UNSPECIFIED                 0x00        /**< Programming interface. N/A.                     */
 #define VIRTIONET_PCI_CLASS                        0x01        /**< Base class Mass Storage?                        */
 
@@ -3515,8 +3514,8 @@ static DECLCALLBACK(int) virtioNetR3Construct(PPDMDEVINS pDevIns, int iInstance,
 
     VIRTIOPCIPARAMS VirtioPciParams;
     VirtioPciParams.uDeviceId                      = PCI_DEVICE_ID_VIRTIONET_HOST;
-    VirtioPciParams.uClassBase                     = PCI_CLASS_BASE_NETWORK_CONTROLLER;
-    VirtioPciParams.uClassSub                      = PCI_CLASS_SUB_NET_ETHERNET_CONTROLLER;
+    VirtioPciParams.uClassBase                     = VBOX_PCI_CLASS_NETWORK;
+    VirtioPciParams.uClassSub                      = VBOX_PCI_SUB_NETWORK_ETHERNET;
     VirtioPciParams.uClassProg                     = PCI_CLASS_PROG_UNSPECIFIED;
     VirtioPciParams.uSubsystemId                   = DEVICE_PCI_NETWORK_SUBSYSTEM;  /* VirtIO 1.0 allows PCI Device ID here */
     VirtioPciParams.uInterruptLine                 = 0x00;
