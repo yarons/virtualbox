@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManager.h 100879 2023-08-15 11:14:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -53,6 +53,7 @@ class QVBoxLayout;
 class UIActionPool;
 class UIDialogPanel;
 class UIFileManagerLogPanel;
+class UIFileManagerPanel;
 class UIFileManagerOperationsPanel;
 class UIFileManagerOptionsPanel;
 class UIFileManagerGuestTable;
@@ -183,10 +184,10 @@ private:
     const bool     m_fShowToolbar;
     QMap<UIDialogPanel*, QAction*> m_panelActionMap;
     QList<UIDialogPanel*>          m_visiblePanelsList;
-    UIFileManagerOptionsPanel          *m_pOptionsPanel;
-    UIFileManagerLogPanel              *m_pLogPanel;
-    UIFileManagerOperationsPanel       *m_pOperationsPanel;
-
+    UIFileManagerOptionsPanel     *m_pOptionsPanel;
+    UIFileManagerLogPanel         *m_pLogPanel;
+    UIFileManagerOperationsPanel  *m_pOperationsPanel;
+    UIFileManagerPanel            *m_pPanel;
     bool m_fCommitDataSignalReceived;
 
     QVector<QUuid> m_machineIds;

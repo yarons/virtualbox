@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFileManager.cpp 100879 2023-08-15 11:14:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -41,6 +41,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIFileManager.h"
+#include "UIFileManagerPanel.h"
 #include "UIFileManagerOptionsPanel.h"
 #include "UIFileManagerLogPanel.h"
 #include "UIFileManagerOperationsPanel.h"
@@ -137,6 +138,7 @@ UIFileManager::UIFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
     , m_pOptionsPanel(0)
     , m_pLogPanel(0)
     , m_pOperationsPanel(0)
+    , m_pPanel(0)
     , m_fCommitDataSignalReceived(false)
 {
     loadOptions();
@@ -257,6 +259,10 @@ void UIFileManager::prepareObjects()
         m_pVerticalSplitter->setStretchFactor(1, 1);
         m_pVerticalSplitter->setStretchFactor(2, 1);
     }
+
+    m_pPanel = new UIFileManagerPanel;
+    AssertReturnVoid(m_pPanel);
+    m_pVerticalSplitter->addWidget(m_pPanel);
 }
 
 void UIFileManager::prepareVerticalToolBar(QHBoxLayout *layout)
