@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.cpp 100879 2023-08-15 11:14:27Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.cpp 100880 2023-08-15 11:31:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -35,6 +35,8 @@
 /* GUI includes: */
 #include "UIFileManagerPanel.h"
 
+/* Other VBox includes: */
+#include <iprt/assert.h>
 
 UIFileManagerPanel::UIFileManagerPanel(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
