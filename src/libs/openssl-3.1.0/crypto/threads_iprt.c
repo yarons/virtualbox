@@ -1,4 +1,4 @@
-/* $Id: threads_iprt.c 99366 2023-04-10 17:34:54Z alexander.rudnev@oracle.com $ */
+/* $Id: threads_iprt.c 100882 2023-08-15 15:20:06Z alexander.rudnev@oracle.com $ */
 /** @file
  * Crypto thread locking functions which make use of the IPRT.
  */
@@ -140,6 +140,18 @@ CRYPTO_THREAD_ID CRYPTO_THREAD_get_current_id(void)
 int CRYPTO_THREAD_compare_id(CRYPTO_THREAD_ID a, CRYPTO_THREAD_ID b)
 {
     return (a == b);
+}
+
+int CRYPTO_THREAD_run_once(CRYPTO_ONCE *once, void (*init)(void))
+{
+/** @todo Implement function */
+/*    if (*once != 0)
+        return 1;
+
+    init();
+    *once = 1;
+*/
+    return 1;
 }
 
 int CRYPTO_atomic_add(int *val, int amount, int *ret, CRYPTO_RWLOCK *lock)

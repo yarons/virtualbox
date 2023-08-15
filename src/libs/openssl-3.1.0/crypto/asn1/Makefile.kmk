@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99366 2023-04-10 17:34:54Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 100882 2023-08-15 15:20:06Z alexander.rudnev@oracle.com $
 ## @file
 # OpenSSL Sub-Makefile.
 #
@@ -63,6 +63,7 @@ crypto_asn1_SOURCES = \
 	asn_pack.c \
 	bio_asn1.c \
 	bio_ndef.c \
+	d2i_param.c \
 	d2i_pr.c \
 	d2i_pu.c \
 	evp_asn1.c \

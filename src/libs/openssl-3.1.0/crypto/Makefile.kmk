@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99366 2023-04-10 17:34:54Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 100882 2023-08-15 15:20:06Z alexander.rudnev@oracle.com $
 ## @file
 # Sub-Makefile for OpenSSL crypto.
 #
@@ -99,6 +99,8 @@ VBox-libcrypto_SOURCES  = \
 	self_test_core.c \
 	sparse_array.c \
 	threads_iprt.c \
+	threads_none.c \
+	threads_win.c \
 	trace.c \
 	uid.c
 
