@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 100698 2023-07-25 13:37:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 100888 2023-08-16 18:09:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1002,7 +1002,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 }
                 case UIToolType_FileManager:
                 {
-                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Options));
+                    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences));
                     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations));
                     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_FileManager_T_Log));
                     m_pToolBar->addSeparator();
