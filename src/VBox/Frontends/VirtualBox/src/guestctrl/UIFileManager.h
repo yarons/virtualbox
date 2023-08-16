@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 100880 2023-08-15 11:31:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.h 100887 2023-08-16 18:00:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -127,6 +127,7 @@ private slots:
     void sltFileTableSelectionChanged(bool fHasSelection);
     void sltCurrentTabChanged(int iIndex);
     void sltGuestFileTableStateChanged(bool fIsRunning);
+    void sltHandleOptionsUpdated();
 
 private:
 
