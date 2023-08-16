@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tcp_input.c 100886 2023-08-16 17:22:30Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT - TCP input.
  */
@@ -512,7 +512,7 @@ findso:
      * Check whether the packet is targeting CTL_ALIAS and drop it if the connection wasn't
      * initiated by localhost (so == NULL), see @bugref{9896}.
      */
-    if (   (RT_N2H_U32(ti->ti_dst.s_addr) & ~pData->netmask) == CTL_ALIAS
+    if (   (CTL_CHECK(ti->ti_dst.s_addr, CTL_ALIAS))
         && !pData->fLocalhostReachable
         && !so)
     {
