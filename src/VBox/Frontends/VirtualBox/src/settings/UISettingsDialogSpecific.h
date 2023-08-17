@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.h 100900 2023-08-17 15:43:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -60,9 +60,6 @@ public:
                            const QString &strCategory = QString(),
                            const QString &strControl = QString());
 
-    /** Returns dialog type. */
-    virtual DialogType dialogType() const { return DialogType_Global; }
-
 protected:
 
     /** Handles translation event. */
@@ -108,9 +105,6 @@ public:
                             UIActionPool *pActionPool,
                             const QString &strCategory = QString(),
                             const QString &strControl = QString());
-
-    /** Returns dialog type. */
-    virtual DialogType dialogType() const { return DialogType_Machine; }
 
     /** Update machine stuff.
       * @param  uMachineId   Brings the machine ID.
