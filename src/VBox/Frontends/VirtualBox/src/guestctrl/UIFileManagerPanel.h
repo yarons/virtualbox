@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 100895 2023-08-17 11:36:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.h 100901 2023-08-17 18:40:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -69,6 +69,15 @@ public:
     void updatePreferences();
     void appendLog(const QString &strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void addNewProgress(const CProgress &comProgress, const QString &strSourceTableName);
+
+    enum Page
+    {
+        Page_Preferences = 0,
+        Page_Log,
+        Page_Operations,
+        Page_Max
+    };
+
 
 protected:
 
