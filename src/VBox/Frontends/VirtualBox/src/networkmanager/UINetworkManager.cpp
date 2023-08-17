@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkManager.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -2585,8 +2585,10 @@ void UINetworkManager::retranslateUi()
 
 void UINetworkManager::configure()
 {
-    /* Apply window icons: */
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/host_iface_manager_32px.png", ":/host_iface_manager_16px.png"));
+#endif
 }
 
 void UINetworkManager::configureCentralWidget()

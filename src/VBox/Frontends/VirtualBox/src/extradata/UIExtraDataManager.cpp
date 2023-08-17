@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 100352 2023-07-03 15:05:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1370,10 +1370,9 @@ void UIExtraDataManagerWindow::prepare()
 void UIExtraDataManagerWindow::prepareThis()
 {
 #ifndef VBOX_WS_MAC
-    /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/edata_manager_32px.png",
-                                          ":/edata_manager_16px.png"));
-#endif /* !VBOX_WS_MAC */
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/edata_manager_32px.png", ":/edata_manager_16px.png"));
+#endif
 
     /* Apply window title: */
     setWindowTitle("Extra-data Manager");

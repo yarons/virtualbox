@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileManager.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -348,7 +348,9 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
         QISafePointerInputDialog pDialog = new QIInputDialog(this);
         if (pDialog)
         {
-            pDialog->setWindowIcon(UIIconPool::iconSet(":/cloud_profile_add_16px.png"));
+#ifndef VBOX_WS_MAC
+            pDialog->setWindowIcon(UIIconPool::iconSetFull(":/cloud_profile_add_32px.png", ":/cloud_profile_add_16px.png"));
+#endif
             pDialog->setWindowTitle(UICloudProfileManager::tr("Add Profile"));
             if (pDialog->exec() == QDialog::Accepted)
             {
@@ -983,8 +985,10 @@ void UICloudProfileManager::retranslateUi()
 
 void UICloudProfileManager::configure()
 {
-    /* Apply window icons: */
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/cloud_profile_manager_32px.png", ":/cloud_profile_manager_16px.png"));
+#endif
 }
 
 void UICloudProfileManager::configureCentralWidget()

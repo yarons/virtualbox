@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 100738 2023-07-30 10:33:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -632,8 +632,10 @@ void UIExtensionPackManager::retranslateUi()
 
 void UIExtensionPackManager::configure()
 {
-    /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/extension_pack_manager_32px.png", ":/extension_pack_manager_16px.png"));
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/extension_pack_manager_24px.png", ":/extension_pack_manager_16px.png"));
+#endif
 }
 
 void UIExtensionPackManager::configureCentralWidget()

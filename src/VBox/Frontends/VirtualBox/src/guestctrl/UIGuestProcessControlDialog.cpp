@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 98876 2023-03-08 10:04:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -75,8 +75,10 @@ void UIGuestProcessControlDialog::retranslateUi()
 
 void UIGuestProcessControlDialog::configure()
 {
-    /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/vm_show_logs_32px.png", ":/vm_show_logs_16px.png"));
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/performance_monitor_32px.png" ,":/performance_monitor_16px.png"));
+#endif
 }
 
 void UIGuestProcessControlDialog::configureCentralWidget()

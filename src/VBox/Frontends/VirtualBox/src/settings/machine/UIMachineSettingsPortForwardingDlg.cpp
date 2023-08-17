@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -43,8 +43,10 @@ UIMachineSettingsPortForwardingDlg::UIMachineSettingsPortForwardingDlg(QWidget *
     , m_pTable(0)
     , m_pButtonBox(0)
 {
-    /* Set dialog icon: */
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/nw_32px.png", ":/nw_16px.png"));
+#endif
 
     /* Create layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);

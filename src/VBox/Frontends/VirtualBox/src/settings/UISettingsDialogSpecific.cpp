@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -32,6 +32,7 @@
 #include "QIWidgetValidator.h"
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
+#include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UISettingsDefs.h"
 #include "UISettingsDialogSpecific.h"
@@ -187,9 +188,9 @@ QString UISettingsDialogGlobal::title() const
 
 void UISettingsDialogGlobal::prepare()
 {
-    /* Window icon: */
 #ifndef VBOX_WS_MAC
-    setWindowIcon(QIcon(":/global_settings_16px.png"));
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/global_settings_32px.png", ":/global_settings_16px.png"));
 #endif
 
     /* Creating settings pages: */
@@ -641,9 +642,9 @@ void UISettingsDialogMachine::sltMachineDataChanged(const QUuid &uMachineId)
 
 void UISettingsDialogMachine::prepare()
 {
-    /* Window icon: */
 #ifndef VBOX_WS_MAC
-    setWindowIcon(QIcon(":/vm_settings_16px.png"));
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/vm_settings_32px.png", ":/vm_settings_16px.png"));
 #endif
 
     /* Make sure settings window will be updated on session/machine state/data changes: */

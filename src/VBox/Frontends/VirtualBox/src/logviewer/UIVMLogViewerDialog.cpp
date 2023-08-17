@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -148,8 +148,10 @@ bool UIVMLogViewerDialog::event(QEvent *pEvent)
 
 void UIVMLogViewerDialog::configure()
 {
-    /* Apply window icons: */
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/vm_show_logs_32px.png", ":/vm_show_logs_16px.png"));
+#endif
 }
 
 void UIVMLogViewerDialog::configureCentralWidget()

@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 100300 2023-06-27 14:44:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -62,8 +62,12 @@ UIHelpBrowserDialog::UIHelpBrowserDialog(QWidget *pParent, QWidget *pCenterWidge
     , m_iGeometrySaveTimerId(-1)
     , m_pZoomLabel(0)
 {
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
+    setWindowIcon(UIIconPool::iconSetFull(":/log_viewer_find_32px.png", ":/log_viewer_find_16px.png"));
+#endif
+
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowIcon(UIIconPool::iconSetFull(":/vm_show_logs_32px.png", ":/vm_show_logs_16px.png"));
     statusBar()->show();
     m_pZoomLabel = new QLabel;
     statusBar()->addPermanentWidget(m_pZoomLabel);

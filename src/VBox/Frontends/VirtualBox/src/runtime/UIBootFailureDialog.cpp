@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 98805 2023-03-01 15:36:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -118,7 +118,11 @@ void UIBootFailureDialog::retranslateUi()
 
 void UIBootFailureDialog::configure()
 {
+#ifndef VBOX_WS_MAC
+    /* Assign window icon: */
     setWindowIcon(UIIconPool::iconSetFull(":/media_manager_32px.png", ":/media_manager_16px.png"));
+#endif
+
     setTitle();
     prepareWidgets();
     prepareConnections();
