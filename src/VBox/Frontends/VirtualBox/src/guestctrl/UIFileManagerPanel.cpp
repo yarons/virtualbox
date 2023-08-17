@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.cpp 100893 2023-08-17 10:58:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.cpp 100894 2023-08-17 11:09:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -47,7 +47,6 @@
 #include "UIProgressEventHandler.h"
 
 /* Other VBox includes: */
-#include "CProgress.h"
 #include <iprt/assert.h>
 
 
