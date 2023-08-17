@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 100894 2023-08-17 11:09:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.h 100895 2023-08-17 11:36:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -73,7 +73,7 @@ public:
 protected:
 
     virtual void retranslateUi() final override;
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
+    virtual void contextMenuEvent(QContextMenuEvent *pEvent) final override;
 
 private slots:
 
