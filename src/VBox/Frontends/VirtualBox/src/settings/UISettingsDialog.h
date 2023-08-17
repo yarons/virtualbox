@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100900 2023-08-17 15:43:53Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100902 2023-08-17 18:40:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -97,10 +97,8 @@ protected slots:
     /** Handles category change to @a cId. */
     virtual void sltCategoryChanged(int cId);
 
-    /** Marks dialog loaded. */
-    virtual void sltMarkLoaded();
-    /** Marks dialog saved. */
-    virtual void sltMarkSaved();
+    /** Handle serializartion finished. */
+    virtual void sltHandleSerializationFinished();
 
     /** Handles process start. */
     void sltHandleProcessStarted();
