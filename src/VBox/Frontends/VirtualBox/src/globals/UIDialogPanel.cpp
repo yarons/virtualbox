@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDialogPanel.cpp 100907 2023-08-18 17:01:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -64,7 +64,7 @@ void UIDialogPanelBase::prepare()
     pLayout->addWidget(m_pTabWidget);
 }
 
-void UIDialogPanelBase::insertTab(int iIndex, QWidget *pPage, const QString &strLabel)
+void UIDialogPanelBase::insertTab(int iIndex, QWidget *pPage, const QString &strLabel /* = QString() */)
 {
     if (m_pTabWidget)
         m_pTabWidget->insertTab(iIndex, pPage, strLabel);

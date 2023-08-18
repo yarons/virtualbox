@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDialogPanel.h 100907 2023-08-18 17:01:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -59,7 +59,7 @@ public:
 protected:
 
     virtual void prepare();
-    void insertTab(int iIndex, QWidget *pPage, const QString &strLabel);
+    void insertTab(int iIndex, QWidget *pPage, const QString &strLabel = QString());
     void setTabText(int iIndex, const QString &strText);
 
 private:
