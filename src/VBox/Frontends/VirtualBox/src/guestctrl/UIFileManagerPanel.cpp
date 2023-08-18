@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.cpp 100901 2023-08-17 18:40:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.cpp 100905 2023-08-18 11:23:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -626,7 +626,13 @@ void UIFileManagerPanel::addNewProgress(const CProgress &comProgress, const QStr
             this, &UIFileManagerPanel::sltHandleWidgetFocusIn);
     connect(pOperationsWidget, &UIFileOperationProgressWidget::sigFocusOut,
             this, &UIFileManagerPanel::sltHandleWidgetFocusOut);
-    //sigShowPanel(this);
+}
+
+void UIFileManagerPanel::setCurrentIndex(int iIndex)
+{
+    if (!m_pTabWidget || iIndex >= m_pTabWidget->count() || iIndex < 0)
+        return;
+    m_pTabWidget->setCurrentIndex(iIndex);
 }
 
 void UIFileManagerPanel::contextMenuEvent(QContextMenuEvent *pEvent)
