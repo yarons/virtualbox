@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDialogPanel.h 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,6 +41,31 @@
 class QHBoxLayout;
 class QIToolButton;
 
+
+/** QWidget extension acting as the base class for all the dialog panels like file manager, logviewer etc. */
+class SHARED_LIBRARY_STUFF UIDialogPanelBase : public QWidget
+{
+    Q_OBJECT;
+
+signals:
+
+    void sigCurrentTabChanged(int iIndex);
+
+public:
+
+    UIDialogPanelBase(QWidget *pParent = 0);
+    void setCurrentIndex(int iIndex);
+
+protected:
+
+    virtual void prepare();
+    void insertTab(int iIndex, QWidget *pPage, const QString &strLabel);
+    void setTabText(int iIndex, const QString &strText);
+
+private:
+
+    QTabWidget *m_pTabWidget;
+};
 
 /** QWidget extension acting as the base class for all the dialog panels like file manager, logviewer etc. */
 class SHARED_LIBRARY_STUFF UIDialogPanel : public QIWithRetranslateUI<QWidget>

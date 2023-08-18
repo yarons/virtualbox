@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 100905 2023-08-18 11:23:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.h 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -36,6 +36,7 @@
 #include <QSet>
 
 /* GUI includes: */
+#include "UIDialogPanel.h"
 #include "UIGuestControlDefs.h"
 #include "QIWithRetranslateUI.h"
 
@@ -51,7 +52,7 @@ class QScrollArea;
 class QSpacerItem;
 class QVBoxLayout;
 
-class UIFileManagerPanel : public QIWithRetranslateUI<QWidget>
+class UIFileManagerPanel : public QIWithRetranslateUI<UIDialogPanelBase>
 {
     Q_OBJECT;
 
@@ -69,12 +70,12 @@ public:
     void updatePreferences();
     void appendLog(const QString &strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void addNewProgress(const CProgress &comProgress, const QString &strSourceTableName);
-    void setCurrentIndex(int iIndex);
+
     enum Page
     {
         Page_Preferences = 0,
-        Page_Log,
         Page_Operations,
+        Page_Log,
         Page_Max
     };
 
@@ -106,12 +107,10 @@ private slots:
 
 private:
 
-    void prepare();
+    void prepare() override;
     void preparePreferencesTab();
     void prepareLogTab();
     void prepareOperationsTab();
-
-    QTabWidget   *m_pTabWidget;
 
     /** @name Preferences tab
      * @{ */
