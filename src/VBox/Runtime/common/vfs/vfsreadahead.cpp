@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsreadahead.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -211,7 +211,7 @@ static DECLCALLBACK(int) rtVfsReadAhead_QueryInfo(void *pvThis, PRTFSOBJINFO pOb
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnRead}
  */
-static DECLCALLBACK(int) rtVfsReadAhead_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
+static DECLCALLBACK(int) rtVfsReadAhead_Read(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
 {
     PRTVFSREADAHEAD pThis = (PRTVFSREADAHEAD)pvThis;
 
@@ -347,6 +347,7 @@ static DECLCALLBACK(int) rtVfsReadAhead_Read(void *pvThis, RTFOFF off, PCRTSGBUF
     if (pcbRead)
         *pcbRead = cbTotalRead;
     Assert(cbTotalRead <= pSgBuf->paSegs[0].cbSeg);
+    RTSgBufAdvance(pSgBuf, cbTotalRead);
 
     return rc;
 }
@@ -355,7 +356,7 @@ static DECLCALLBACK(int) rtVfsReadAhead_Read(void *pvThis, RTFOFF off, PCRTSGBUF
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnWrite}
  */
-static DECLCALLBACK(int) rtVfsReadAhead_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
+static DECLCALLBACK(int) rtVfsReadAhead_Write(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
 {
     RT_NOREF_PV(pvThis); RT_NOREF_PV(off); RT_NOREF_PV(pSgBuf); RT_NOREF_PV(fBlocking); RT_NOREF_PV(pcbWritten);
     AssertFailed();

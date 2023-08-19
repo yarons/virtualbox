@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: tarvfswriter.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -752,7 +752,7 @@ static DECLCALLBACK(int) rtZipTarWriterPush_QueryInfo(void *pvThis, PRTFSOBJINFO
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnRead}
  */
-static DECLCALLBACK(int) rtZipTarWriterPush_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
+static DECLCALLBACK(int) rtZipTarWriterPush_Read(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
 {
     /* No read support, sorry. */
     RT_NOREF(pvThis, off, pSgBuf, fBlocking, pcbRead);
@@ -764,7 +764,7 @@ static DECLCALLBACK(int) rtZipTarWriterPush_Read(void *pvThis, RTFOFF off, PCRTS
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnWrite}
  */
-static DECLCALLBACK(int) rtZipTarWriterPush_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
+static DECLCALLBACK(int) rtZipTarWriterPush_Write(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
 {
     PRTZIPTARFSSTREAMWRITERPUSH pPush   = (PRTZIPTARFSSTREAMWRITERPUSH)pvThis;
     PRTZIPTARFSSTREAMWRITER     pParent = pPush->pParent;
@@ -809,6 +809,7 @@ static DECLCALLBACK(int) rtZipTarWriterPush_Write(void *pvThis, RTFOFF off, PCRT
             }
             if (pcbWritten)
                 *pcbWritten = cbWritten;
+            RTSgBufAdvance(pSgBuf, cbWritten);
         }
     }
 

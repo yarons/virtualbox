@@ -1,4 +1,4 @@
-/* $Id: pkzip.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pkzip.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
@@ -98,7 +98,7 @@ static DECLCALLBACK(int) memFssIos_QueryInfo(void *pvThis, PRTFSOBJINFO pObjInfo
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnRead}
  */
-static DECLCALLBACK(int) memFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
+static DECLCALLBACK(int) memFssIos_Read(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
 {
     PMEMIOSTREAM pThis = (PMEMIOSTREAM)pvThis;
     Assert(pSgBuf->cSegs == 1);
@@ -122,6 +122,7 @@ static DECLCALLBACK(int) memFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgB
     pThis->off = off + cbToRead;
     if (pcbRead)
         *pcbRead = cbToRead;
+    RTSgBufAdvance(pSgBuf, cbToRead);
 
     return VINF_SUCCESS;
 }
@@ -129,7 +130,7 @@ static DECLCALLBACK(int) memFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgB
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnWrite}
  */
-static DECLCALLBACK(int) memFssIos_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
+static DECLCALLBACK(int) memFssIos_Write(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
 {
     RT_NOREF_PV(pvThis); RT_NOREF_PV(off); RT_NOREF_PV(pSgBuf); RT_NOREF_PV(fBlocking); RT_NOREF_PV(pcbWritten);
     return VERR_NOT_IMPLEMENTED;

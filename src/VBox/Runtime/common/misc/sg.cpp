@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 99961 2023-05-24 21:57:27Z knut.osmundsen@oracle.com $ */
+/* $Id: sg.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -438,7 +438,9 @@ RTDECL(size_t) RTSgBufAdvance(PRTSGBUF pSgBuf, size_t cbAdvance)
 
     size_t cbLeft = cbAdvance;
 
-    while (cbLeft)
+    while (    cbLeft
+           || (   pSgBuf->cbSegLeft == 0
+               && pSgBuf->idxSeg > pSgBuf->cSegs))
     {
         size_t cbThisAdvance = cbLeft;
         if (!rtSgBufGet(pSgBuf, &cbThisAdvance))

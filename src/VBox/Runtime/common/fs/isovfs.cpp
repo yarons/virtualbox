@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: isovfs.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2118,7 +2118,7 @@ static DECLCALLBACK(int) rtFsIsoFile_QueryInfo(void *pvThis, PRTFSOBJINFO pObjIn
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnRead}
  */
-static DECLCALLBACK(int) rtFsIsoFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
+static DECLCALLBACK(int) rtFsIsoFile_Read(void *pvThis, RTFOFF off, PRTSGBUF pSgBuf, bool fBlocking, size_t *pcbRead)
 {
     PRTFSISOFILEOBJ  pThis   = (PRTFSISOFILEOBJ)pvThis;
     PRTFSISOFILESHRD pShared = pThis->pShared;
@@ -2139,6 +2139,8 @@ static DECLCALLBACK(int) rtFsIsoFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF pS
 
     /* Update the file position and return. */
     pThis->offFile = off + offDelta;
+    RTSgBufAdvance(pSgBuf, offDelta);
+
     return rc;
 #else
 
