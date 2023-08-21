@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 100922 2023-08-21 12:59:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 100926 2023-08-21 15:35:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -62,8 +62,8 @@ void UIVMLogViewerPanelNew::prepare()
             this, &UIVMLogViewerPanelNew::sigSearchUpdated);
 
     /* Filter tab: */
-    m_pSearchWidget = new UIVMLogViewerSearchPanel(0, m_pViewer);
-    insertTab(Page_Filter, m_pSearchWidget);
+    m_pFilterWidget = new UIVMLogViewerFilterPanel(0, m_pViewer);
+    insertTab(Page_Filter, m_pFilterWidget);
 
     connect(m_pFilterWidget, &UIVMLogViewerFilterPanel::sigFilterApplied,
             this, &UIVMLogViewerPanelNew::sigFilterApplied);
