@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100920 2023-08-21 12:40:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100921 2023-08-21 12:59:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -39,6 +39,7 @@ class QPlainTextEdit;
 class QTextDocument;
 class UIVMLogViewerWidget;
 class UIVMLogViewerSearchPanel;
+class UIVMLogViewerFilterPanel;
 
 class UIVMLogViewerPanelNew : public QIWithRetranslateUI<UIDialogPanelBase>
 {
@@ -48,6 +49,7 @@ signals:
 
     void sigHighlightingUpdated();
     void sigSearchUpdated();
+    void sigFilterApplied();
 
 public:
 
@@ -61,6 +63,12 @@ public:
         int matchCount() const;
     /** @} */
 
+    /** @name Filter page pass through functions
+      * @{ */
+        void applyFilter();
+    /** @} */
+
+
     enum Page
     {
         Page_Search = 0,
@@ -68,8 +76,8 @@ public:
         Page_Bookmark,
         Page_Preferences,
         Page_Max
-    }
-        ;
+    };
+
 protected:
 
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) override;
@@ -79,8 +87,10 @@ private:
     void retranslateUi() override;
     void prepare() override;
 
-    UIVMLogViewerSearchPanel *m_pSearchWidget;
     UIVMLogViewerWidget *m_pViewer;
+
+    UIVMLogViewerSearchPanel *m_pSearchWidget;
+    UIVMLogViewerFilterPanel *m_pFilterWidget;
 };
 
 /** UIDialonPanel extension acting as the base class for UIVMLogViewerXXXPanel widgets. */
