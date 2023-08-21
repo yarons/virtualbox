@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100918 2023-08-21 11:02:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -44,10 +44,24 @@ class UIVMLogViewerPanelNew : public QIWithRetranslateUI<UIDialogPanelBase>
 {
     Q_OBJECT;
 
+signals:
+
+    void sigHighlightingUpdated();
+    void sigSearchUpdated();
+
 public:
 
     UIVMLogViewerPanelNew(QWidget *pParent, UIVMLogViewerWidget *pViewer);
-    void refreshSearch();
+
+    /** @name Search page pass through functions
+      * @{ */
+        void refreshSearch();
+        QVector<float> matchLocationVector() const;
+        /** Returns the number of the matches to the current search. */
+        int matchCount() const;
+    /** @} */
+
+
 
     enum Page
     {
