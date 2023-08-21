@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GVMMR0.cpp 100927 2023-08-21 19:42:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1066,6 +1066,7 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCpus, PGVM *pp
                                 rc = rc2;
                             if (RT_SUCCESS_NP(rc))
                                 rc = rc3;
+                            AssertStmt(RT_FAILURE_NP(rc), rc = VERR_IPE_UNEXPECTED_STATUS);
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: VM.cpp 100927 2023-08-21 19:42:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -599,7 +599,7 @@ static DECLCALLBACK(int) vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCT
     if (RT_SUCCESS(rc))
     {
         PVM pVM = pUVM->pVM;
-        AssertRelease(RT_VALID_PTR(pVM));
+        AssertReleaseMsg(RT_VALID_PTR(pVM), ("pVM=%p pVMR0=%p\n", pVM, pVMR0));
         AssertRelease(pVM->pVMR0ForCall == pVMR0);
         AssertRelease(pVM->pSession == pUVM->vm.s.pSession);
         AssertRelease(pVM->cCpus == cCpus);
