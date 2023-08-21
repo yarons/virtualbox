@@ -1,4 +1,4 @@
-/* $Id: vfsiosmisc.cpp 100928 2023-08-21 23:04:25Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsiosmisc.cpp 100929 2023-08-21 23:09:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
@@ -234,20 +234,5 @@ RTDECL(void) RTVfsIoStrmReadAllFree(void *pvBuf, size_t cbBuf)
 
     /* Free it. */
     RTMemFree(pvBuf);
-}
-
-
-RTDECL(int) RTVfsFileReadAll(RTVFSFILE hVfsFile, void **ppvBuf, size_t *pcbBuf)
-{
-    RTVFSIOSTREAM hVfsIos = RTVfsFileToIoStream(hVfsFile);
-    int rc = RTVfsIoStrmReadAll(hVfsIos, ppvBuf, pcbBuf);
-    RTVfsIoStrmRelease(hVfsIos);
-    return rc;
-}
-
-
-RTDECL(void) RTVfsFileReadAllFree(void *pvBuf, size_t cbBuf)
-{
-    RTVfsIoStrmReadAllFree(pvBuf, cbBuf);
 }
 
