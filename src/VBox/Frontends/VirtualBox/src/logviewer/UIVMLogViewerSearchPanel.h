@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchPanel.h 100919 2023-08-21 12:29:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -67,6 +67,8 @@ public:
     const QVector<float> &matchLocationVector() const;
     /** Returns the number of the matches to the current search. */
     int matchCount() const;
+    /** Handles Qt @a pEvent, used for keyboard processing. */
+    bool handleSearchRelatedEvents(QObject *pObject, QEvent *pEvent);
 
 protected:
 
@@ -75,8 +77,6 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE;
     /** Handles Qt key-press @a pEevent. */
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
-    /** Handles Qt @a pEvent, used for keyboard processing. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     virtual void hideEvent(QHideEvent* pEvent) RT_OVERRIDE;
 

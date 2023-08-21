@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 100919 2023-08-21 12:29:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -304,11 +304,11 @@ void UIVMLogViewerSearchPanel::keyPressEvent(QKeyEvent *pEvent)
     UIVMLogViewerPanel::keyPressEvent(pEvent);
 }
 
-bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
+bool UIVMLogViewerSearchPanel::handleSearchRelatedEvents(QObject *pObject, QEvent *pEvent)
 {
     /* Handle only events sent to viewer(): */
     if (pObject != viewer())
-        return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
+        return false;
 
     /* Depending on event-type: */
     switch (pEvent->type())
@@ -366,7 +366,7 @@ bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
     }
 
     /* Call to base-class: */
-    return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
+    return false;
 }
 
 void UIVMLogViewerSearchPanel::showEvent(QShowEvent *pEvent)

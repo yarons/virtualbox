@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 100918 2023-08-21 11:02:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 100919 2023-08-21 12:29:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -86,6 +86,15 @@ void UIVMLogViewerPanelNew::retranslateUi()
     setTabText(0, "Find");
 }
 
+bool UIVMLogViewerPanelNew::eventFilter(QObject *pObject, QEvent *pEvent)
+{
+    if (currentIndex() == static_cast<Page>(Page_Search))
+    {
+        if (m_pSearchWidget->handleSearchRelatedEvents(pObject, pEvent))
+            return true;
+    }
+    return QIWithRetranslateUI<UIDialogPanelBase>::eventFilter(pObject, pEvent);
+}
 
 /*********************************************************************************************************************************
 *   UIVMLogViewerPanel implementation.                                                                                           *
