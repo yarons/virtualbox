@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 100921 2023-08-21 12:59:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 100922 2023-08-21 12:59:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -112,6 +112,7 @@ bool UIVMLogViewerPanelNew::eventFilter(QObject *pObject, QEvent *pEvent)
     }
     return QIWithRetranslateUI<UIDialogPanelBase>::eventFilter(pObject, pEvent);
 }
+
 
 /*********************************************************************************************************************************
 *   UIVMLogViewerPanel implementation.                                                                                           *
