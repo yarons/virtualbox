@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100916 2023-08-21 05:33:46Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -51,7 +51,7 @@ public:
 private:
 
     void retranslateUi() override;
-    void prepare();
+    void prepare() override;
     void prepareSearchTab();
 
     UIVMLogViewerSearchPanel *m_pSearchWidget;
