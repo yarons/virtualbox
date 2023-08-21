@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100902 2023-08-17 18:40:28Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100923 2023-08-21 13:23:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -40,6 +40,7 @@
 
 /* Forward declarations: */
 class QEvent;
+class QGridLayout;
 class QObject;
 class QLabel;
 class QProgressBar;
@@ -173,8 +174,6 @@ protected:
 
     /** Holds the page selector instance. */
     UISettingsSelector *m_pSelector;
-    /** Holds the page stack instance. */
-    QStackedWidget     *m_pStack;
 
 private slots:
 
@@ -188,10 +187,18 @@ private slots:
 
 private:
 
-    /** Prepares all. */
-    void prepare();
-    /** Prepares widgets. */
-    void prepareWidgets();
+    /** @name Prepare/cleanup cascade.
+     * @{ */
+        /** Prepares all. */
+        void prepare();
+        /** Prepares selector. */
+        void prepareSelector();
+        /** Prepare stack. */
+        void prepareStack();
+        /** Prepare button-box. */
+        void prepareButtonBox();
+    /** @} */
+
     /** Assigns validater for passed @a pPage. */
     void assignValidator(UISettingsPage *pPage);
 
@@ -238,9 +245,14 @@ private:
 
     /** @name Widgets
      * @{ */
-       QLabel            *m_pLabelTitle;
-       QIDialogButtonBox *m_pButtonBox;
-       QWidget           *m_pWidgetStackHandler;
+        /** Holds the main layout instance. */
+        QGridLayout       *m_pLayoutMain;
+        /** Holds the title-label instance. */
+        QLabel            *m_pLabelTitle;
+        /** Holds the page-stack instance. */
+        QStackedWidget    *m_pStack;
+        /** Holds the button-box instance. */
+        QIDialogButtonBox *m_pButtonBox;
     /** @} */
 };
 
