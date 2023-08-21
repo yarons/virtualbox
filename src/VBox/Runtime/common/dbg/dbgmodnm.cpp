@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmodnm.cpp 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -495,9 +495,9 @@ static int rtDbgModNmScanFile(PRTDBGMODNM pThis, PRTSTREAM pStrm, bool fAddSymbo
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, RTDBGCFG hDbgCfg)
 {
-    NOREF(enmArch);
+    NOREF(enmArch); RT_NOREF_PV(hDbgCfg);
 
     /*
      * Fend off images.

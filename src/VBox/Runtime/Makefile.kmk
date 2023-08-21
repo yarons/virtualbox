@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100914 2023-08-21 02:32:45Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2500,6 +2500,7 @@ RuntimeBldProg_SOURCES          = \
 	common/time/timesysalias.cpp \
 	common/vfs/vfsbase.cpp \
 	common/vfs/vfschain.cpp \
+	common/vfs/vfsiosmisc.cpp \
 	common/vfs/vfsmemory.cpp \
 	common/vfs/vfsmisc.cpp \
 	common/vfs/vfsmsg.cpp \

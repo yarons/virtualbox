@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: dbgmoddwarf.cpp 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -6109,8 +6109,10 @@ static int rtDbgModDwarfTryOpenDbgFile(PRTDBGMODINT pDbgMod, PRTDBGMODDWARF pThi
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModDwarf_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModDwarf_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, RTDBGCFG hDbgCfg)
 {
+    RT_NOREF_PV(hDbgCfg);
+
     /*
      * DWARF is only supported when part of an image.
      */

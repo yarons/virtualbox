@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmoddbghelp.cpp 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -408,9 +408,9 @@ static DECLCALLBACK(int) rtDbgModDbgHelpAddSegmentsCallback(RTLDRMOD hLdrMod, PC
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModDbgHelp_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModDbgHelp_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, RTDBGCFG hDbgCfg)
 {
-    NOREF(enmArch);
+    NOREF(enmArch); RT_NOREF_PV(hDbgCfg);
 
     /*
      * Currently only support external files with a executable already present.

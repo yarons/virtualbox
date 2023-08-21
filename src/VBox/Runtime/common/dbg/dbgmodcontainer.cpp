@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmodcontainer.cpp 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -878,9 +878,9 @@ static DECLCALLBACK(int) rtDbgModContainer_Close(PRTDBGMODINT pMod)
 
 
 /** @copydoc RTDBGMODVTDBG::pfnTryOpen */
-static DECLCALLBACK(int) rtDbgModContainer_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModContainer_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, RTDBGCFG hDbgCfg)
 {
-    NOREF(pMod); NOREF(enmArch);
+    NOREF(pMod); NOREF(enmArch); RT_NOREF_PV(hDbgCfg);
     return VERR_INTERNAL_ERROR_5;
 }
 

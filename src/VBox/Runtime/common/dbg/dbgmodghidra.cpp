@@ -1,4 +1,4 @@
-/* $Id: dbgmodghidra.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmodghidra.cpp 100931 2023-08-21 23:11:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Info Reader for Ghidra XML files created with createPdbXmlFiles.bat/pdb.exe.
  */
@@ -431,9 +431,9 @@ static int rtDbgModGhidraXmlParse(RTDBGMOD hCnt, xml::Document *a_pDoc)
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModGhidra_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModGhidra_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, RTDBGCFG hDbgCfg)
 {
-    RT_NOREF(enmArch);
+    RT_NOREF(enmArch); RT_NOREF_PV(hDbgCfg);
 
     /*
      * Fend off images.
