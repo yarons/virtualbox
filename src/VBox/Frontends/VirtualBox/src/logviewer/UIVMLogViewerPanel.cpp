@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -28,19 +28,51 @@
 /* Qt includes: */
 #include <QHBoxLayout>
 #include <QPlainTextEdit>
+#include <QPushButton>
 
 /* GUI includes: */
 #include "UIIconPool.h"
 #include "UIVMLogPage.h"
 #include "UIVMLogViewerPanel.h"
 #include "UIVMLogViewerWidget.h"
+#include "UIVMLogViewerSearchPanel.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
 
+UIVMLogViewerPanelNew::UIVMLogViewerPanelNew(QWidget *pParent, UIVMLogViewerWidget *pViewer)
+    : QIWithRetranslateUI<UIDialogPanelBase>(pParent)
+    , m_pSearchWidget(0)
+    , m_pViewer(pViewer)
+{
+    prepare();
+}
+
+void UIVMLogViewerPanelNew::prepare()
+{
+    prepareSearchTab();
+    retranslateUi();
+}
+
+void UIVMLogViewerPanelNew::prepareSearchTab()
+{
+    //insertTab(0, new QPushButton("asdasda"));
+    m_pSearchWidget = new UIVMLogViewerSearchPanel(0, m_pViewer);
+    insertTab(0, m_pSearchWidget);
+}
+
+void UIVMLogViewerPanelNew::retranslateUi()
+{
+    setTabText(0, "Find");
+}
+
+
+/*********************************************************************************************************************************
+*   UIVMLogViewerPanel implementation.                                                                                           *
+*********************************************************************************************************************************/
 
 UIVMLogViewerPanel::UIVMLogViewerPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer)
-    : UIDialogPanel(pParent)
+    : QIWithRetranslateUI<QWidget>(pParent)
     , m_pViewer(pViewer)
 {
 }

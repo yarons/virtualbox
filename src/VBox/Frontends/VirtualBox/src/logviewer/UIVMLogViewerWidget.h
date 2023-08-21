@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 98856 2023-03-07 11:57:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -54,10 +54,10 @@ class UIVirtualMachineItem;
 class UIVMLogPage;
 class UIVMLogTab;
 class UIVMLogViewerBookmarksPanel;
+class UIVMLogViewerPanelNew;
 class UIVMLogViewerFilterPanel;
 class UIVMLogViewerOptionsPanel;
 class UIVMLogViewerPanel;
-class UIVMLogViewerSearchPanel;
 class CMachine;
 
 /** QWidget extension providing GUI for VirtualBox LogViewer. It
@@ -230,7 +230,6 @@ private:
 
     /** @name Panel instances and a QMap for mapping panel instances to related actions.
       * @{ */
-        UIVMLogViewerSearchPanel    *m_pSearchPanel;
         UIVMLogViewerFilterPanel    *m_pFilterPanel;
         UIVMLogViewerBookmarksPanel *m_pBookmarksPanel;
         UIVMLogViewerOptionsPanel   *m_pOptionsPanel;
@@ -258,6 +257,7 @@ private:
       * we should not try to save anything to extra data anymore. */
     bool m_fCommitDataSignalReceived;
     QPointer<UIVMLogPage> m_pPreviousLogPage;
+    UIVMLogViewerPanelNew *m_pPanel;
 
     friend class UIVMLogViewerFilterPanel;
     friend class UIVMLogViewerPanel;

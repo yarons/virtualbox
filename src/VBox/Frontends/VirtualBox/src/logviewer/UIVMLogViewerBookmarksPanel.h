@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -59,7 +59,6 @@ public:
     void updateBookmarkList(const QVector<UIVMLogBookmark>& bookmarkList);
     /** Disable/enable all the widget except the close button */
     void disableEnableBookmarking(bool flag);
-    virtual QString panelName() const RT_OVERRIDE;
 
 signals:
 

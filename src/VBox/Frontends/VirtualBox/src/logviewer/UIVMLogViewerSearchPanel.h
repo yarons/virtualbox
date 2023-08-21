@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMLogViewerSearchPanel.h 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -65,7 +65,6 @@ public:
     /** Resets the search position and starts a new search. */
     void refresh();
     const QVector<float> &matchLocationVector() const;
-    virtual QString panelName() const RT_OVERRIDE;
     /** Returns the number of the matches to the current search. */
     int matchCount() const;
 
