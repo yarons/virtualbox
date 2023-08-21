@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 100923 2023-08-21 13:23:49Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 100924 2023-08-21 15:04:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -87,18 +87,7 @@ UISettingsDialog::UISettingsDialog(QWidget *pParent,
 
 UISettingsDialog::~UISettingsDialog()
 {
-    /* Delete serializer if exists: */
-    if (serializeProcess())
-    {
-        delete m_pSerializeProcess;
-        m_pSerializeProcess = 0;
-    }
-
-    /* Recall popup-pane if any: */
-    popupCenter().recall(m_pStack, "SettingsDialogWarning");
-
-    /* Delete selector early! */
-    delete m_pSelector;
+    cleanup();
 }
 
 void UISettingsDialog::accept()
@@ -650,7 +639,6 @@ void UISettingsDialog::prepareSelector()
         m_pLabelTitle->setPalette(pal);
         QFont fnt;
         fnt.setFamily(QStringLiteral("Sans Serif"));
-//        fnt.setPointSize(11);
         fnt.setPointSize(fnt.pointSize() + 2);
         fnt.setBold(true);
         fnt.setWeight(QFont::ExtraBold);
@@ -743,6 +731,22 @@ void UISettingsDialog::prepareButtonBox()
         /* Add button-box into main layout: */
         m_pLayoutMain->addWidget(m_pButtonBox, 2, 0, 1, 2);
     }
+}
+
+void UISettingsDialog::cleanup()
+{
+    /* Delete serializer if exists: */
+    if (serializeProcess())
+    {
+        delete m_pSerializeProcess;
+        m_pSerializeProcess = 0;
+    }
+
+    /* Recall popup-pane if any: */
+    popupCenter().recall(m_pStack, "SettingsDialogWarning");
+
+    /* Delete selector early! */
+    delete m_pSelector;
 }
 
 void UISettingsDialog::assignValidator(UISettingsPage *pPage)

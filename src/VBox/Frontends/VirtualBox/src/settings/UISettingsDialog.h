@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100923 2023-08-21 13:23:49Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100924 2023-08-21 15:04:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -197,6 +197,9 @@ private:
         void prepareStack();
         /** Prepare button-box. */
         void prepareButtonBox();
+
+        /** Cleanups all. */
+        void cleanup();
     /** @} */
 
     /** Assigns validater for passed @a pPage. */
