@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -67,7 +67,7 @@ UIVMLogViewerSearchPanel::UIVMLogViewerSearchPanel(QWidget *pParent, UIVMLogView
     retranslateUi();
 }
 
-void UIVMLogViewerSearchPanel::refresh()
+void UIVMLogViewerSearchPanel::refreshSearch()
 {
     /* We start the search from the end of the doc. assuming log's end is more interesting: */
     if (isVisible())
@@ -171,12 +171,12 @@ void UIVMLogViewerSearchPanel::sltHighlightAllCheckBox()
 
 void UIVMLogViewerSearchPanel::sltCaseSentitiveCheckBox()
 {
-    refresh();
+    refreshSearch();
 }
 
 void UIVMLogViewerSearchPanel::sltMatchWholeWordCheckBox()
 {
-    refresh();
+    refreshSearch();
 }
 
 void UIVMLogViewerSearchPanel::sltSelectNextPreviousMatch()

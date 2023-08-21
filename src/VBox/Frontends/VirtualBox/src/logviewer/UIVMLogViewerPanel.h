@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100916 2023-08-21 05:33:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -47,12 +47,22 @@ class UIVMLogViewerPanelNew : public QIWithRetranslateUI<UIDialogPanelBase>
 public:
 
     UIVMLogViewerPanelNew(QWidget *pParent, UIVMLogViewerWidget *pViewer);
+    void refreshSearch();
+
+    enum Page
+    {
+        Page_Search = 0,
+        Page_Filter,
+        Page_Bookmark,
+        Page_Preferences,
+        Page_Max
+    };
+
 
 private:
 
     void retranslateUi() override;
     void prepare() override;
-    void prepareSearchTab();
 
     UIVMLogViewerSearchPanel *m_pSearchWidget;
     UIVMLogViewerWidget *m_pViewer;

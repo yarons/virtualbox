@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 100907 2023-08-18 17:01:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDialogPanel.cpp 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -82,6 +82,13 @@ void UIDialogPanelBase::setCurrentIndex(int iIndex)
     if (!m_pTabWidget || iIndex >= m_pTabWidget->count() || iIndex < 0)
         return;
     m_pTabWidget->setCurrentIndex(iIndex);
+}
+
+int UIDialogPanelBase::currentIndex() const
+{
+    if (!m_pTabWidget)
+        return -1;
+    return m_pTabWidget->currentIndex();
 }
 
 UIDialogPanel::UIDialogPanel(QWidget *pParent /* = 0 */)

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -50,15 +50,15 @@ UIVMLogViewerPanelNew::UIVMLogViewerPanelNew(QWidget *pParent, UIVMLogViewerWidg
 
 void UIVMLogViewerPanelNew::prepare()
 {
-    prepareSearchTab();
+    m_pSearchWidget = new UIVMLogViewerSearchPanel(0, m_pViewer);
+    insertTab(0, m_pSearchWidget);
     retranslateUi();
 }
 
-void UIVMLogViewerPanelNew::prepareSearchTab()
+void UIVMLogViewerPanelNew::refreshSearch()
 {
-    //insertTab(0, new QPushButton("asdasda"));
-    m_pSearchWidget = new UIVMLogViewerSearchPanel(0, m_pViewer);
-    insertTab(0, m_pSearchWidget);
+    if (m_pSearchWidget)
+        m_pSearchWidget->refreshSearch();
 }
 
 void UIVMLogViewerPanelNew::retranslateUi()

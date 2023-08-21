@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 100907 2023-08-18 17:01:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDialogPanel.h 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -55,6 +55,7 @@ public:
 
     UIDialogPanelBase(QWidget *pParent = 0);
     void setCurrentIndex(int iIndex);
+    int currentIndex() const;
 
 protected:
 
