@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 100944 2023-08-22 16:49:17Z dmitrii.grigorev@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Windows NT Specific Utilities.
 #
@@ -58,6 +58,14 @@ ntTimeSources_SOURCES  = nttimesources.cpp
 PROGRAMS.win += ntFlushVirtualMemory
 ntFlushVirtualMemory_TEMPLATE = VBoxValidationKitR3
 ntFlushVirtualMemory_SOURCES  = ntFlushVirtualMemory.cpp
+
+#
+# Test Display device and 3D rendering.
+#
+PROGRAMS.win += ntDisplay
+ntDisplay_TEMPLATE = VBoxValidationKitR3
+ntDisplay_SOURCES  = ntDisplay.cpp
+ntDisplay_VBOX_IMPORT_CHECKER.win.x86 = nt4
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
