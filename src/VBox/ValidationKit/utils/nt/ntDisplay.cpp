@@ -1,4 +1,4 @@
-/* $Id: ntDisplay.cpp 100945 2023-08-22 17:15:54Z dmitrii.grigorev@oracle.com $ */
+/* $Id: ntDisplay.cpp 100947 2023-08-22 18:01:26Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * Test cases for Display device and DirectX 3D rendering - NT.
  */
@@ -49,6 +49,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/errcore.h>
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
