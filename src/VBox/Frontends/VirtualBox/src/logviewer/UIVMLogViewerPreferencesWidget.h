@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerOptionsPanel.h 100915 2023-08-21 05:17:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerOptionsPanel_h
-#define FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerOptionsPanel_h
+#ifndef FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerPreferencesWidget_h
+#define FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerPreferencesWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -42,7 +42,7 @@ class QIToolButton;
 class UIVMLogViewerWidget;
 
 /** UIVMLogViewerPanel extension providing GUI to manage logviewer options. */
-class UIVMLogViewerOptionsPanel : public UIVMLogViewerPanel
+class UIVMLogViewerPreferencesWidget : public UIVMLogViewerPanel
 {
     Q_OBJECT;
 
@@ -56,7 +56,7 @@ signals:
 
 public:
 
-    UIVMLogViewerOptionsPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer);
+    UIVMLogViewerPreferencesWidget(QWidget *pParent, UIVMLogViewerWidget *pViewer);
 
     void setShowLineNumbers(bool bShowLineNumbers);
     void setWrapLines(bool bWrapLines);
@@ -91,4 +91,4 @@ private:
 
 };
 
-#endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerOptionsPanel_h */
+#endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerPreferencesWidget_h */
