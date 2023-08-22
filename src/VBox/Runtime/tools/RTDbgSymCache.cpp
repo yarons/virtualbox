@@ -1,4 +1,4 @@
-/* $Id: RTDbgSymCache.cpp 100913 2023-08-19 11:03:51Z knut.osmundsen@oracle.com $ */
+/* $Id: RTDbgSymCache.cpp 100949 2023-08-22 22:57:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Symbol Cache Utility.
  */
@@ -1465,7 +1465,7 @@ static RTEXITCODE rtDbgSymCacheCmdAdd(const char *pszArg0, int cArgs, char **pap
                 else
                 {
                     RTEXITCODE rcExit = rtDbgSymCacheAddFileOrDir(ValueUnion.psz, pszCache, fRecursive, fOverwriteOnConflict);
-                    if (rcExit != RTEXITCODE_FAILURE)
+                    if (rcExit != RTEXITCODE_SUCCESS)
                         return rcExit;
                 }
                 break;
