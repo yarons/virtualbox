@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 100946 2023-08-22 17:19:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -35,6 +35,7 @@
 #include <QKeySequence>
 #include <QPair>
 #include <QPointer>
+#include <QSet>
 #include <QWidget>
 #include <QUuid>
 
@@ -249,7 +250,7 @@ private:
     bool m_fCommitDataSignalReceived;
     QPointer<UIVMLogPage> m_pPreviousLogPage;
     UIVMLogViewerPanelNew *m_pPanel;
-
+    QSet<QAction*> m_panelActions;
     friend class UIVMLogViewerFilterWidget;
     friend class UIVMLogViewerPanel;
     friend class UIVMLogViewerDialog;
