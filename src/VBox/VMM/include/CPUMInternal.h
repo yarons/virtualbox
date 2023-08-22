@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 99163 2023-03-24 06:19:19Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMInternal.h 100935 2023-08-22 09:30:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -365,7 +365,10 @@ typedef struct CPUM
     /** Indicates that a state restore is pending.
      * This is used to verify load order dependencies (PGM). */
     bool                    fPendingRestore;
-    uint8_t                 abPadding0[2];
+    /** Whether MTRR reads report valid memory types for memory regions. */
+    bool                    fMtrrRead;
+    /** Whether the guest's writes to MTRRs are implemented. */
+    bool                    fMtrrWrite;
 
     /** XSAVE/XRTOR components we can expose to the guest mask. */
     uint64_t                fXStateGuestMask;

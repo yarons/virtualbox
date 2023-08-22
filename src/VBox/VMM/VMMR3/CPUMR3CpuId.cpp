@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 100854 2023-08-11 01:29:04Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 100935 2023-08-22 09:30:06Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3226,6 +3226,58 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
                     pLeaf->uEbx |= X86_CPUID_AMD_EFEID_EBX_NO_SSBD_REQUIRED;
                     LogRel(("CPUM: Set SSBD not required flag for AMD to work around some buggy Linux kernels!\n"));
                 }
+            }
+        }
+
+        /*
+         * MTRR support.
+         * Currently we are exposing MTRRs with reasonable default values just to get Nested Hyper-V
+         * going, it isn't feature complete, see @bugref{10318} and bugref{10498}.
+         */
+        if (pVM->cpum.s.GuestFeatures.fMtrr)
+        {
+            /* Check if MTRR read+write support is enabled. */
+            bool fEnableMtrrWrite;
+            rc = CFGMR3QueryBoolDef(pCpumCfg, "MTRRWrite", &fEnableMtrrWrite, false);
+            AssertRCReturn(rc, rc);
+            if (fEnableMtrrWrite)
+            {
+                pVM->cpum.s.fMtrrRead  = true;
+                pVM->cpum.s.fMtrrWrite = true;
+                LogRel(("CPUM: Enabled MTRR read-write support\n"));
+            }
+            else
+            {
+                /* Check if MTRR read-only reporting is enabled. */
+                rc = CFGMR3QueryBoolDef(pCpumCfg, "MTRR", &pVM->cpum.s.fMtrrRead, false);
+                AssertRCReturn(rc, rc);
+                LogRel(("CPUM: Enabled MTRR read-only support\n"));
+            }
+
+            /* Setup MTRR capability based on what the host supports. */
+            Assert(!pVM->cpum.s.fMtrrWrite || pVM->cpum.s.fMtrrRead);
+            if (pVM->cpum.s.fMtrrRead)
+            {
+                Assert(pVM->cpum.s.HostFeatures.fMtrr);
+
+                /* Lookup the number of variable-range MTRRs supported on the host. */
+                PCCPUMMSRRANGE pMtrrCapRange = cpumLookupMsrRange(pVM, MSR_IA32_MTRR_CAP);
+                AssertLogRelReturn(pMtrrCapRange, VERR_CPUM_IPE_2);
+                uint8_t const cHostVarRangeRegs = pMtrrCapRange->uValue & MSR_IA32_MTRR_CAP_VCNT_MASK;
+
+                /* Construct guest MTRR support capabilities. */
+                uint8_t const  cGuestVarRangeRegs = RT_MIN(cHostVarRangeRegs, CPUMCTX_MAX_MTRRVAR_COUNT);
+                uint64_t const uGstMtrrCap        = cGuestVarRangeRegs
+                                                  | MSR_IA32_MTRR_CAP_FIX;
+                for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+                {
+                    PVMCPU pVCpu = pVM->apCpusR3[idCpu];
+                    pVCpu->cpum.s.GuestMsrs.msr.MtrrCap     = uGstMtrrCap;
+                    pVCpu->cpum.s.GuestMsrs.msr.MtrrDefType = MSR_IA32_MTRR_DEF_TYPE_FIXED_EN
+                                                            | MSR_IA32_MTRR_DEF_TYPE_MTRR_EN
+                                                            | X86_MTRR_MT_UC;
+                }
+                LogRel(("CPUM: Enabled fixed-range MTRRs and %u variable-range MTRRs\n", cGuestVarRangeRegs));
             }
         }
 
