@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 100921 2023-08-21 12:59:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 100933 2023-08-22 06:12:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -226,7 +226,6 @@ private:
 
     /** @name Panel instances and a QMap for mapping panel instances to related actions.
       * @{ */
-        UIVMLogViewerBookmarksPanel *m_pBookmarksPanel;
         UIVMLogViewerOptionsPanel   *m_pOptionsPanel;
         QList<UIDialogPanel*>          m_visiblePanelsList;
     /** @} */
