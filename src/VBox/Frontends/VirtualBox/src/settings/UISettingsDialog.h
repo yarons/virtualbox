@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100961 2023-08-23 18:05:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -52,7 +52,7 @@ class UISettingsPageValidator;
 class UISettingsPage;
 class UISettingsSelector;
 class UISettingsSerializer;
-class UIWarningPane;
+class UISettingsWarningPane;
 
 /* Using declarations: */
 using namespace UISettingsDefs;
@@ -217,11 +217,11 @@ private:
     bool  m_fClosed;
 
     /** Holds the status-bar widget instance. */
-    QStackedWidget *m_pStatusBar;
+    QStackedWidget         *m_pStatusBar;
     /** Holds the process-bar widget instance. */
-    QProgressBar   *m_pProcessBar;
+    QProgressBar           *m_pProcessBar;
     /** Holds the warning-pane instance. */
-    UIWarningPane  *m_pWarningPane;
+    UISettingsWarningPane  *m_pWarningPane;
 
     /** Holds whether settings dialog is valid (no errors, can be warnings). */
     bool  m_fValid;
