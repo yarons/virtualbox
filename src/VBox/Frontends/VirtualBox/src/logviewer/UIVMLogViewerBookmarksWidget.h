@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksWidget.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerBookmarksWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -42,7 +42,7 @@ class QIToolButton;
 
 /** UIVMLogViewerPanel extension providing GUI for bookmark management. Show a list of bookmarks currently set
  *  for displayed log page. It has controls to navigate and clear bookmarks. */
-class UIVMLogViewerBookmarksWidget : public UIVMLogViewerPanel
+class UIVMLogViewerBookmarksWidget : public UIVMLogViewerPane
 {
     Q_OBJECT;
 

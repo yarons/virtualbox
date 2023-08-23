@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchWidget.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -48,7 +48,7 @@ class UIVMLogViewerWidget;
 
 /** UIVMLogViewerPanel extension
   * providing GUI for search-panel in VM Log-Viewer. */
-class UIVMLogViewerSearchWidget : public UIVMLogViewerPanel
+class UIVMLogViewerSearchWidget : public UIVMLogViewerPane
 {
     Q_OBJECT;
 

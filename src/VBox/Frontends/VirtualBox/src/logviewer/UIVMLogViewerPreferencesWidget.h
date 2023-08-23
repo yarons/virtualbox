@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPreferencesWidget.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -42,7 +42,7 @@ class QIToolButton;
 class UIVMLogViewerWidget;
 
 /** UIVMLogViewerPanel extension providing GUI to manage logviewer options. */
-class UIVMLogViewerPreferencesWidget : public UIVMLogViewerPanel
+class UIVMLogViewerPreferencesWidget : public UIVMLogViewerPane
 {
     Q_OBJECT;
 

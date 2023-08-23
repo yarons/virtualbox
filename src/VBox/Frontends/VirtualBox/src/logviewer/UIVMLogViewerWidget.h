@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 100962 2023-08-23 18:54:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -253,7 +253,7 @@ private:
     UIVMLogViewerPaneContainer *m_pPanel;
     QSet<QAction*> m_panelActions;
     friend class UIVMLogViewerFilterWidget;
-    friend class UIVMLogViewerPanel;
+    friend class UIVMLogViewerPane;
     friend class UIVMLogViewerDialog;
 };
 
