@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 100952 2023-08-23 08:41:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -520,6 +520,18 @@ void UIVMLogViewerWidget::gotoBookmark(int bookmarkIndex)
     currentLogPage()->scrollToBookmark(bookmarkIndex);
 }
 
+void UIVMLogViewerWidget::sltPanelContainerHidden()
+{
+    foreach (QAction *pPanelAction, m_panelActions)
+    {
+        if (!pPanelAction)
+            continue;
+        pPanelAction->blockSignals(true);
+        pPanelAction->setChecked(false);
+        pPanelAction->blockSignals(false);
+    }
+}
+
 void UIVMLogViewerWidget::sltPanelActionToggled(bool fChecked)
 {
     if (!m_pPanel)
@@ -798,6 +810,8 @@ void UIVMLogViewerWidget::prepareWidgets()
             this, &UIVMLogViewerWidget::sltDeleteAllBookmarks);
     connect(m_pPanel, &UIVMLogViewerPanelNew::sigBookmarkSelected,
             this, &UIVMLogViewerWidget::gotoBookmark);
+    connect(m_pPanel, &UIVMLogViewerPanelNew::sigHidden,
+            this, &UIVMLogViewerWidget::sltPanelContainerHidden);
 
     m_pMainLayout->addWidget(m_pPanel);
 }

@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.cpp 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -329,6 +329,8 @@ void UIFileManager::prepareConnections()
                 this, &UIFileManager::sltReceieveLogOutput);
         connect(m_pPanel, &UIFileManagerPanel::sigCurrentTabChanged,
                 this, &UIFileManager::sltPanelCurrentTabChanged);
+        connect(m_pPanel, &UIFileManagerPanel::sigHidden,
+                this, &UIFileManager::sltPanelContainerHidden);
     }
 
     if (m_pHostFileTable)
@@ -574,6 +576,18 @@ void UIFileManager::sltPanelCurrentTabChanged(int iIndex)
         case UIFileManagerPanel::Page_Max:
         default:
             break;
+    }
+}
+
+void UIFileManager::sltPanelContainerHidden()
+{
+    foreach (QAction *pPanelAction, m_panelActions)
+    {
+        if (!pPanelAction)
+            continue;
+        pPanelAction->blockSignals(true);
+        pPanelAction->setChecked(false);
+        pPanelAction->blockSignals(false);
     }
 }
 

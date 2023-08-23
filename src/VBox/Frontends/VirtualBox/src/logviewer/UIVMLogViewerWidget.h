@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 100946 2023-08-22 17:19:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.h 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -144,6 +144,7 @@ private slots:
     void sltCloseMachineLogs();
     void sltTabCloseButtonClick();
     void sltCommitDataSignalReceived();
+    void sltPanelContainerHidden();
 
 private:
 

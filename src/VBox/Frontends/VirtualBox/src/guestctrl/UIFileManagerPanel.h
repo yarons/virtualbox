@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 100906 2023-08-18 16:49:42Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPanel.h 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -52,7 +52,7 @@ class QScrollArea;
 class QSpacerItem;
 class QVBoxLayout;
 
-class UIFileManagerPanel : public QIWithRetranslateUI<UIDialogPanelBase>
+class UIFileManagerPanel : public UIDialogPanelBase
 {
     Q_OBJECT;
 

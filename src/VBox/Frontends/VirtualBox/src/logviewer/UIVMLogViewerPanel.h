@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100936 2023-08-22 13:01:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -44,7 +44,7 @@ class UIVMLogViewerFilterWidget;
 class UIVMLogViewerBookmarksWidget;
 class UIVMLogViewerPreferencesWidget;
 
-class UIVMLogViewerPanelNew : public QIWithRetranslateUI<UIDialogPanelBase>
+class UIVMLogViewerPanelNew : public UIDialogPanelBase
 {
     Q_OBJECT;
 
