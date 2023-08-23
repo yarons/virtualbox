@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 100946 2023-08-22 17:19:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 100951 2023-08-23 08:01:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -800,7 +800,6 @@ void UIVMLogViewerWidget::prepareWidgets()
             this, &UIVMLogViewerWidget::gotoBookmark);
 
     m_pMainLayout->addWidget(m_pPanel);
-
 }
 
 void UIVMLogViewerWidget::prepareToolBar()

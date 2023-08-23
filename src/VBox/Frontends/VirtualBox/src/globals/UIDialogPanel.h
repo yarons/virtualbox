@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 100917 2023-08-21 05:59:51Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDialogPanel.h 100951 2023-08-23 08:01:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -65,7 +65,8 @@ protected:
 
 private:
 
-    QTabWidget *m_pTabWidget;
+    QTabWidget    *m_pTabWidget;
+    QIToolButton  *m_pCloseButton;
 };
 
 /** QWidget extension acting as the base class for all the dialog panels like file manager, logviewer etc. */
