@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIWidgetValidator.cpp 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class implementation.
  */
@@ -27,7 +27,9 @@
 
 /* GUI includes: */
 #include "QIWidgetValidator.h"
-#include "UISettingsPage.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 /*********************************************************************************************************************************
@@ -39,7 +41,6 @@ QObjectValidator::QObjectValidator(QValidator *pValidator, QObject *pParent /* =
     , m_pValidator(pValidator)
     , m_enmState(QValidator::Invalid)
 {
-    /* Prepare: */
     prepare();
 }
 
@@ -79,6 +80,12 @@ void QObjectValidator::prepare()
 /*********************************************************************************************************************************
 *   Class QObjectValidatorGroup implementation.                                                                                  *
 *********************************************************************************************************************************/
+
+QObjectValidatorGroup::QObjectValidatorGroup(QObject *pParent)
+    : QObject(pParent)
+    , m_fResult(false)
+{
+}
 
 void QObjectValidatorGroup::addObjectValidator(QObjectValidator *pObjectValidator)
 {
@@ -130,39 +137,6 @@ void QObjectValidatorGroup::sltValidate(QValidator::State enmState)
 bool QObjectValidatorGroup::toResult(QValidator::State enmState)
 {
     return enmState == QValidator::Acceptable;
-}
-
-
-/*********************************************************************************************************************************
-*   Class UIPageValidator implementation.                                                                                        *
-*********************************************************************************************************************************/
-
-QPixmap UIPageValidator::warningPixmap() const
-{
-    return m_pPage->warningPixmap();
-}
-
-QString UIPageValidator::internalName() const
-{
-    return m_pPage->internalName();
-}
-
-void UIPageValidator::setLastMessage(const QString &strLastMessage)
-{
-    /* Remember new message: */
-    m_strLastMessage = strLastMessage;
-
-    /* Should we show corresponding warning icon? */
-    if (m_strLastMessage.isEmpty())
-        emit sigHideWarningIcon();
-    else
-        emit sigShowWarningIcon();
-}
-
-void UIPageValidator::revalidate()
-{
-    /* Notify listener(s) about validity change: */
-    emit sigValidityChanged(this);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsPage.cpp 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -28,7 +28,7 @@
 /* GUI includes: */
 #include "UIConverter.h"
 #include "UISettingsPage.h"
-#include "QIWidgetValidator.h"
+#include "UISettingsPageValidator.h"
 
 
 /*********************************************************************************************************************************
@@ -54,7 +54,7 @@ void UISettingsPage::notifyOperationProgressError(const QString &strErrorInfo)
                               Q_ARG(QString, strErrorInfo));
 }
 
-void UISettingsPage::setValidator(UIPageValidator *pValidator)
+void UISettingsPage::setValidator(UISettingsPageValidator *pValidator)
 {
     /* Make sure validator is not yet assigned: */
     AssertMsg(!m_pValidator, ("Validator already assigned!\n"));

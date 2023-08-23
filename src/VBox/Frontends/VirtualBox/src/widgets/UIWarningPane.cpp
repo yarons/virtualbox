@@ -1,4 +1,4 @@
-/* $Id: UIWarningPane.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWarningPane.cpp 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWarningPane class implementation.
  */
@@ -32,7 +32,7 @@
 #include <QTimer>
 
 /* GUI includes: */
-#include "QIWidgetValidator.h"
+#include "UISettingsPageValidator.h"
 #include "UIWarningPane.h"
 
 /* Other VBox includes: */
@@ -56,7 +56,7 @@ void UIWarningPane::setWarningLabel(const QString &strWarningLabel)
     m_pTextLabel->setText(strWarningLabel);
 }
 
-void UIWarningPane::registerValidator(UIPageValidator *pValidator)
+void UIWarningPane::registerValidator(UISettingsPageValidator *pValidator)
 {
     /* Make sure validator exists: */
     AssertPtrReturnVoid(pValidator);
@@ -78,8 +78,8 @@ void UIWarningPane::registerValidator(UIPageValidator *pValidator)
         pIconLabel->setMouseTracking(true);
         pIconLabel->installEventFilter(this);
         pIconLabel->setPixmap(pValidator->warningPixmap());
-        connect(pValidator, &UIPageValidator::sigShowWarningIcon, pIconLabel, &QLabel::show);
-        connect(pValidator, &UIPageValidator::sigHideWarningIcon, pIconLabel, &QLabel::hide);
+        connect(pValidator, &UISettingsPageValidator::sigShowWarningIcon, pIconLabel, &QLabel::show);
+        connect(pValidator, &UISettingsPageValidator::sigHideWarningIcon, pIconLabel, &QLabel::hide);
 
         /* Add icon-label into list: */
         m_icons << pIconLabel;
