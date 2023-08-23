@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 100950 2023-08-23 07:55:35Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmodcodeview.cpp 100953 2023-08-23 11:12:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -2692,7 +2692,7 @@ DECLINLINE(uint32_t) rtDbgModCvAdjustSectionSizeByNext(PCIMAGE_SECTION_HEADER pa
         iNext++;
     if (iNext < cShs)
     {
-        uint32_t cbAvailable = paShs[iNext].VirtualAddress - (iCur != ~(size_t)0 ? paShs[iCur].VirtualAddress : 0);
+        uint32_t cbAvailable = paShs[iNext].VirtualAddress - paShs[iCur].VirtualAddress;
         Assert(cbMapped <= cbAvailable);
         return cbAvailable;
     }
