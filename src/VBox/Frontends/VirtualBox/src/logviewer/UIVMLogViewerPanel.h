@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 100956 2023-08-23 11:53:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "UIDialogPanel.h"
+#include "UIPaneContainer.h"
 #include "UIVMLogBookmark.h"
 
 /* Forward declarations: */
@@ -44,7 +44,7 @@ class UIVMLogViewerFilterWidget;
 class UIVMLogViewerBookmarksWidget;
 class UIVMLogViewerPreferencesWidget;
 
-class UIVMLogViewerPanelNew : public UIDialogPanelBase
+class UIVMLogViewerPanelNew : public UIPaneContainer
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 100956 2023-08-23 11:53:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -47,7 +47,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
-#include "UIDialogPanel.h"
+#include "UIPaneContainer.h"
 #include "UIModalWindowManager.h"
 #include "UIVisoHostBrowser.h"
 #include "UIVisoCreator.h"
@@ -64,7 +64,7 @@
 *   UIVisoSettingWidget definition.                                                                                          *
 *********************************************************************************************************************************/
 
-class SHARED_LIBRARY_STUFF UIVisoSettingWidget : public UIDialogPanelBase
+class SHARED_LIBRARY_STUFF UIVisoSettingWidget : public UIPaneContainer
 {
     Q_OBJECT;
 
@@ -101,7 +101,7 @@ private:
 *********************************************************************************************************************************/
 
 UIVisoSettingWidget::UIVisoSettingWidget(QWidget *pParent)
-    : UIDialogPanelBase(pParent)
+    : UIPaneContainer(pParent)
     , m_pVisoNameLabel(0)
     , m_pCustomOptionsLabel(0)
     , m_pVisoNameLineEdit(0)
