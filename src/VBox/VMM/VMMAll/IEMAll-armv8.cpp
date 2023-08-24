@@ -1,4 +1,4 @@
-/* $Id: IEMAll-armv8.cpp 99053 2023-03-19 16:48:46Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll-armv8.cpp 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, ARMv8 specific things.
  */
@@ -113,9 +113,9 @@ VMM_INT_DECL(void) IEMTlbInvalidateAll(PVMCPUCC pVCpu)
 }
 
 
-VMM_INT_DECL(void) IEMTlbInvalidateAllPhysicalAllCpus(PVMCC pVM, VMCPUID idCpuCaller)
+VMM_INT_DECL(void) IEMTlbInvalidateAllPhysicalAllCpus(PVMCC pVM, VMCPUID idCpuCaller, IEMTLBPHYSFLUSHREASON enmReason)
 {
-    RT_NOREF(pVM, idCpuCaller);
+    RT_NOREF(pVM, idCpuCaller, enmReason);
 }
 
 

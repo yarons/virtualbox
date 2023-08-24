@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0.cpp 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -640,7 +640,7 @@ int pgmR0PhysAllocateLargePage(PGVM pGVM, VMCPUID idCpu, RTGCPHYS GCPhys)
     /** @todo this is a little expensive (~3000 ticks) since we'll have to
      * invalidate everything.  Add a version to the TLB? */
     pgmPhysInvalidatePageMapTLB(pGVM);
-    IEMTlbInvalidateAllPhysicalAllCpus(pGVM, idCpu);
+    IEMTlbInvalidateAllPhysicalAllCpus(pGVM, idCpu, IEMTLBPHYSFLUSHREASON_ALLOCATED_LARGE);
 
     STAM_PROFILE_STOP(&pGVM->pgm.s.Stats.StatLargePageSetup, a);
 #if 0 /** @todo returning info statuses here might not be a great idea... */

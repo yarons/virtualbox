@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMR0SharedPage.cpp 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -134,7 +134,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVMCC pVM, PGVM pGVM, VMCPUID idCpu, PGMMS
 
                             /* Invalidate page map TLB entry for this page too. */
                             pgmPhysInvalidatePageMapTLBEntry(pVM, PageDesc.GCPhys);
-                            IEMTlbInvalidateAllPhysicalAllCpus(pVM, NIL_VMCPUID);
+                            IEMTlbInvalidateAllPhysicalAllCpus(pVM, NIL_VMCPUID, IEMTLBPHYSFLUSHREASON_SHARED);
                             pVM->pgm.s.cReusedSharedPages++;
                         }
                         /* else: nothing changed (== this page is now a shared

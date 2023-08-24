@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 variant.
  */
@@ -294,7 +294,8 @@ typedef IEMTLBENTRY *PIEMTLBENTRY;
 #define IEMTLBE_F_PT_NO_DIRTY       RT_BIT_64(6) /**< Page tables: Not dirty (needs to be made dirty on write). */
 #define IEMTLBE_F_NO_MAPPINGR3      RT_BIT_64(7) /**< TLB entry:   The IEMTLBENTRY::pMappingR3 member is invalid. */
 #define IEMTLBE_F_PG_UNASSIGNED     RT_BIT_64(8) /**< Phys page:   Unassigned memory (not RAM, ROM, MMIO2 or MMIO). */
-#define IEMTLBE_F_PHYS_REV          UINT64_C(0xfffffffffffffe00) /**< Physical revision mask. @sa IEMTLB_PHYS_REV_INCR */
+#define IEMTLBE_F_PG_CODE_PAGE      RT_BIT_64(9) /**< Phys page:   Code page. */
+#define IEMTLBE_F_PHYS_REV          UINT64_C(0xfffffffffffffc00) /**< Physical revision mask. @sa IEMTLB_PHYS_REV_INCR */
 /** @} */
 
 
@@ -359,7 +360,7 @@ AssertCompileSizeAlignment(IEMTLB, 64);
 #define IEMTLB_REVISION_MASK    (~(RT_BIT_64(36) - 1))
 /** IEMTLB::uTlbPhysRev increment.
  * @sa IEMTLBE_F_PHYS_REV */
-#define IEMTLB_PHYS_REV_INCR    RT_BIT_64(9)
+#define IEMTLB_PHYS_REV_INCR    RT_BIT_64(10)
 /**
  * Calculates the TLB tag for a virtual address.
  * @returns Tag value for indexing and comparing with IEMTLB::uTag.
