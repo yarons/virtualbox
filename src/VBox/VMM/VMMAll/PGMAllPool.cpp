@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 100577 2023-07-14 14:00:25Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMAllPool.cpp 100964 2023-08-24 14:45:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3749,8 +3749,12 @@ int pgmPoolTrackUpdateGCPhys(PVMCC pVM, RTGCPHYS GCPhysPage, PPGMPAGE pPhysPage,
          * is defined, zero pages won't normally be mapped. Some kind of solution
          * will be needed for this problem of course, but it will have to wait...
          */
+# ifndef VBOX_WITH_NEW_LAZY_PAGE_ALLOC /* end up guruing after pgmR0PhysAllocateLargePage otherwise. */
         if (    PGM_PAGE_IS_ZERO(pPhysPage)
             ||  PGM_PAGE_IS_BALLOONED(pPhysPage))
+# else
+        if (PGM_PAGE_IS_BALLOONED(pPhysPage))
+# endif
             rc = VINF_PGM_GCPHYS_ALIASED;
         else
         {
