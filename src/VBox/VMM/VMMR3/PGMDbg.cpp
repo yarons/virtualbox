@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMDbg.cpp 100965 2023-08-24 21:25:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -1634,9 +1634,9 @@ static int pgmR3DumpHierarchyShwPaePT(PPGMR3DUMPHIERARCHYSTATE pState, RTHCPHYS 
                                         Pte.n.u1CacheDisable? "CD" : "--",
                                         Pte.n.u1PAT         ? "AT" : "--",
                                         Pte.n.u1NoExecute   ? "NX" : "--",
-                                        Pte.u & PGM_PTFLAGS_TRACK_DIRTY   ? 'd' : '-',
-                                        Pte.u & RT_BIT(10)                ? '1' : '0',
-                                        Pte.u & PGM_PTFLAGS_CSAM_VALIDATED? 'v' : '-',
+                                        Pte.u & PGM_PTFLAGS_TRACK_DIRTY ? 'd' : '-',
+                                        Pte.u & RT_BIT(10)  ? '1' : '-',
+                                        Pte.u & RT_BIT(11)  ? '1' : '-',
                                         Pte.u & X86_PTE_PAE_PG_MASK);
                 if (pState->fDumpPageInfo)
                     pgmR3DumpHierarchyShwGuestPageInfo(pState, Pte.u & X86_PTE_PAE_PG_MASK, _4K);
@@ -1963,9 +1963,9 @@ static int pgmR3DumpHierarchyShw32BitPT(PPGMR3DUMPHIERARCHYSTATE pState, RTHCPHY
                                     Pte.n.u1WriteThru   ? "WT" : "--",
                                     Pte.n.u1CacheDisable? "CD" : "--",
                                     Pte.n.u1PAT         ? "AT" : "--",
-                                    Pte.u & PGM_PTFLAGS_TRACK_DIRTY     ? 'd' : '-',
-                                    Pte.u & RT_BIT(10)                  ? '1' : '0',
-                                    Pte.u & PGM_PTFLAGS_CSAM_VALIDATED  ? 'v' : '-',
+                                    Pte.u & PGM_PTFLAGS_TRACK_DIRTY ? 'd' : '-',
+                                    Pte.u & RT_BIT(10)  ? '1' : '-',
+                                    Pte.u & RT_BIT(11)  ? '1' : '-',
                                     Pte.u & X86_PDE_PG_MASK);
             if (pState->fDumpPageInfo)
                 pgmR3DumpHierarchyShwGuestPageInfo(pState, Pte.u & X86_PDE_PG_MASK, _4K);
