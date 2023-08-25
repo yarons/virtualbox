@@ -1,4 +1,4 @@
-/* $Id: UISettingsWarningPane.cpp 100961 2023-08-23 18:05:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsWarningPane.cpp 100967 2023-08-25 11:37:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsWarningPane class implementation.
  */
@@ -49,10 +49,14 @@ UISettingsWarningPane::UISettingsWarningPane(QWidget *pParent)
     prepare();
 }
 
-void UISettingsWarningPane::setWarningLabel(const QString &strWarningLabel)
+void UISettingsWarningPane::setWarningLabelText(const QString &strText)
 {
-    /* Assign passed text directly to warning-label: */
-    m_pTextLabel->setText(strWarningLabel);
+    m_pTextLabel->setText(strText);
+}
+
+void UISettingsWarningPane::setWarningLabelVisible(bool fVisible)
+{
+    m_pTextLabel->setVisible(fVisible);
 }
 
 void UISettingsWarningPane::registerValidator(UISettingsPageValidator *pValidator)
@@ -174,7 +178,7 @@ void UISettingsWarningPane::prepare()
         /* Create text-label: */
         m_pTextLabel = new QLabel;
         {
-            /* Add into layout: */
+            m_pTextLabel->setVisible(false);
             pMainLayout->addWidget(m_pTextLabel);
         }
 

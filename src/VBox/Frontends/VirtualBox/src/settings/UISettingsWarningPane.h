@@ -1,4 +1,4 @@
-/* $Id: UISettingsWarningPane.h 100961 2023-08-23 18:05:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsWarningPane.h 100967 2023-08-25 11:37:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsWarningPane class declaration.
  */
@@ -67,8 +67,10 @@ public:
     /** Constructs warning-pane passing @a pParent to the base-class. */
     UISettingsWarningPane(QWidget *pParent = 0);
 
-    /** Defines current @a strWarningLabel text. */
-    void setWarningLabel(const QString &strWarningLabel);
+    /** Defines current warning-label @a strText. */
+    void setWarningLabelText(const QString &strText);
+    /** Defines whether warning-label should be @a fVisible. */
+    void setWarningLabelVisible(bool fVisible);
 
     /** Registers corresponding @a pValidator. */
     void registerValidator(UISettingsPageValidator *pValidator);
