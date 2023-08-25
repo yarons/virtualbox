@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100961 2023-08-23 18:05:09Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100969 2023-08-25 12:15:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -158,8 +158,6 @@ protected:
     /** Inserts an item to the map m_pageHelpKeywords. */
     void addPageHelpKeyword(int iPageType, const QString &strHelpKeyword);
 
-    /** Validates data correctness using certain @a pValidator. */
-    void revalidate(UISettingsPageValidator *pValidator);
     /** Validates data correctness. */
     void revalidate();
 
