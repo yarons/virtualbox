@@ -1,4 +1,4 @@
-/* $Id: UISettingsPageValidator.h 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPageValidator.h 100968 2023-08-25 12:05:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: UISettingsPageValidator class declaration.
  */
@@ -82,10 +82,8 @@ public:
     /** Defines @a strLastMessage. */
     void setLastMessage(const QString &strLastMessage);
 
-public slots:
-
-    /** Performs revalidation. */
-    void revalidate();
+    /** Invalidates validator, notifying listener(s). */
+    void invalidate();
 
 private:
 

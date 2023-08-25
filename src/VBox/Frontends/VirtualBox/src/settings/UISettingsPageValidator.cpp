@@ -1,4 +1,4 @@
-/* $Id: UISettingsPageValidator.cpp 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPageValidator.cpp 100968 2023-08-25 12:05:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: UISettingsPageValidator class implementation.
  */
@@ -59,7 +59,7 @@ void UISettingsPageValidator::setLastMessage(const QString &strLastMessage)
         emit sigShowWarningIcon();
 }
 
-void UISettingsPageValidator::revalidate()
+void UISettingsPageValidator::invalidate()
 {
     /* Notify listener(s) about validity change: */
     emit sigValidityChanged(this);

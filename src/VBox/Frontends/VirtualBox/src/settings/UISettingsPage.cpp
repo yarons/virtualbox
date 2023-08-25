@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 100968 2023-08-25 12:05:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -73,9 +73,9 @@ void UISettingsPage::setConfigurationAccessLevel(ConfigurationAccessLevel enmCon
 
 void UISettingsPage::revalidate()
 {
-    /* Revalidate if possible: */
-    if (m_pValidator && !m_fIsValidatorBlocked)
-        m_pValidator->revalidate();
+    /* Invalidate validator if allowed: */
+    if (!m_fIsValidatorBlocked && m_pValidator)
+        m_pValidator->invalidate();
 }
 
 
