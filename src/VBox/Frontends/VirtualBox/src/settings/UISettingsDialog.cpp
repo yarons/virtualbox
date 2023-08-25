@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 100969 2023-08-25 12:15:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 100972 2023-08-25 13:38:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -36,12 +36,7 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
-#include "QIToolBar.h"
-#include "QIWidgetValidator.h"
 #include "UICommon.h"
-#include "UIConverter.h"
-#include "UIDesktopWidgetWatchdog.h"
-#include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIPopupCenter.h"
@@ -57,6 +52,10 @@
 
 #ifdef VBOX_WS_MAC
 # define VBOX_GUI_WITH_TOOLBAR_SETTINGS
+#endif
+
+#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
+# include "QIToolBar.h"
 #endif
 
 
@@ -453,8 +452,7 @@ void UISettingsDialog::revalidate()
     m_fSilent = true;
 
     /* Enumerating all the validators we have: */
-    QList<UISettingsPageValidator*> validators(findChildren<UISettingsPageValidator*>());
-    foreach (UISettingsPageValidator *pValidator, validators)
+    foreach (UISettingsPageValidator *pValidator, findChildren<UISettingsPageValidator*>())
     {
         /* Is current validator have something to say? */
         if (!pValidator->lastMessage().isEmpty())

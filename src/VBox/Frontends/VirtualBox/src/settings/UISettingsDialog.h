@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 100969 2023-08-25 12:15:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.h 100972 2023-08-25 13:38:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -39,17 +39,15 @@
 #include "UISettingsDefs.h"
 
 /* Forward declarations: */
-class QEvent;
 class QGridLayout;
-class QObject;
 class QLabel;
 class QProgressBar;
 class QShowEvent;
 class QStackedWidget;
 class QVariant;
 class QIDialogButtonBox;
-class UISettingsPageValidator;
 class UISettingsPage;
+class UISettingsPageValidator;
 class UISettingsSelector;
 class UISettingsSerializer;
 class UISettingsWarningPane;
