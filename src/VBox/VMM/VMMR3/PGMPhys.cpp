@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 100970 2023-08-25 13:05:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4968,6 +4968,8 @@ void pgmR3PhysRomTerm(PVM pVM)
  */
 VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROMPROT enmProt)
 {
+    LogFlow(("PGMR3PhysRomProtect: GCPhys=%RGp cb=%RGp enmProt=%d\n", GCPhys, cb, enmProt));
+
     /*
      * Check input
      */
@@ -5055,8 +5057,7 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
             }
 
             /*
-             * Reset the access handler if we made changes, no need
-             * to optimize this.
+             * Reset the access handler if we made changes, no need to optimize this.
              */
             if (fChanges)
             {
@@ -5067,6 +5068,10 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
                     AssertRC(rc);
                     return rc2;
                 }
+
+                /* Explicitly flush IEM. Not sure if this is really necessary, but better
+                   be on the safe side.  This shouldn't be a high volume flush source. */
+                IEMTlbInvalidateAllPhysicalAllCpus(pVM, NIL_VMCPUID, IEMTLBPHYSFLUSHREASON_ROM_PROTECT);
             }
 
             /* Advance - cb isn't updated. */
