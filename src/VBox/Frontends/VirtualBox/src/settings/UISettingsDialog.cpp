@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 100972 2023-08-25 13:38:26Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialog.cpp 100973 2023-08-25 13:43:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -37,6 +37,7 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "UICommon.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIPopupCenter.h"
