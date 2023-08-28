@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 100985 2023-08-28 13:54:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 100989 2023-08-28 15:28:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -286,9 +286,6 @@ void UIAdvancedSettingsDialogGlobal::prepare()
 
     /* Apply language settings: */
     retranslateUi();
-
-    /* Choose page/tab finally: */
-    choosePageAndTab();
 }
 
 bool UIAdvancedSettingsDialogGlobal::isPageAvailable(int) const
@@ -767,9 +764,6 @@ void UIAdvancedSettingsDialogMachine::prepare()
 
     /* Apply language settings: */
     retranslateUi();
-
-    /* Choose page/tab finally: */
-    choosePageAndTab();
 }
 
 bool UIAdvancedSettingsDialogMachine::isPageAvailable(int iPageId) const
