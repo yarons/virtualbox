@@ -1,4 +1,4 @@
-/* $Id: scsi.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: scsi.h 100984 2023-08-28 11:09:40Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - SCSI definitions.
  */
@@ -77,6 +77,9 @@ extern int buslogic_scsi_cmd_data_out(void __far *pvHba, uint8_t idTgt, uint8_t 
                                       uint8_t cbCDB, uint8_t __far *buffer, uint32_t length);
 extern int buslogic_scsi_cmd_data_in(void __far *pvHba, uint8_t idTgt, uint8_t __far *aCDB,
                                      uint8_t cbCDB, uint8_t __far *buffer, uint32_t length);
+
+extern uint16_t btaha_scsi_detect();
+extern int btaha_scsi_init(void __far *pvHba, uint8_t u8Bus, uint8_t u8DevFn);
 
 extern int virtio_scsi_init(void __far *pvHba, uint8_t u8Bus, uint8_t u8DevFn);
 extern int virtio_scsi_cmd_data_out(void __far *pvHba, uint8_t idTgt, uint8_t __far *aCDB,
