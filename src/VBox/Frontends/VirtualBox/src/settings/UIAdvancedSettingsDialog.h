@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 100979 2023-08-25 15:33:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 100988 2023-08-28 15:02:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -40,7 +40,6 @@
 
 /* Forward declarations: */
 class QGridLayout;
-class QLabel;
 class QProgressBar;
 class QShowEvent;
 class QStackedWidget;
@@ -242,8 +241,6 @@ private:
      * @{ */
         /** Holds the main layout instance. */
         QGridLayout       *m_pLayoutMain;
-        /** Holds the title-label instance. */
-        QLabel            *m_pLabelTitle;
         /** Holds the page-stack instance. */
         QStackedWidget    *m_pStack;
         /** Holds the button-box instance. */
