@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 100935 2023-08-22 09:30:06Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 100991 2023-08-29 09:05:32Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3268,7 +3268,8 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
                 /* Construct guest MTRR support capabilities. */
                 uint8_t const  cGuestVarRangeRegs = RT_MIN(cHostVarRangeRegs, CPUMCTX_MAX_MTRRVAR_COUNT);
                 uint64_t const uGstMtrrCap        = cGuestVarRangeRegs
-                                                  | MSR_IA32_MTRR_CAP_FIX;
+                                                  | MSR_IA32_MTRR_CAP_FIX
+                                                  | MSR_IA32_MTRR_CAP_WC;
                 for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
                 {
                     PVMCPU pVCpu = pVM->apCpusR3[idCpu];
