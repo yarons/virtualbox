@@ -1,4 +1,4 @@
-/* $Id: vds.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vds.c 100995 2023-08-31 15:23:50Z michal.necasek@oracle.com $ */
 /** @file
  * Utility routines for calling the Virtual DMA Services.
  */
@@ -56,7 +56,7 @@ int vds_lock_sg( vds_edds __far *edds );
     "xor    al, al"         \
     "error:"                \
     "cbw"                   \
-    parm [es di] value [ax];
+    parm [es di] value [ax] modify [dx];
 
 int vds_unlock_sg( vds_edds __far *edds );
 #pragma aux vds_unlock_sg = \
@@ -67,7 +67,7 @@ int vds_unlock_sg( vds_edds __far *edds );
     "xor    al, al"         \
     "error:"                \
     "cbw"                   \
-    parm [es di] value [ax];
+    parm [es di] value [ax] modify [dx];
 
 
 /*
