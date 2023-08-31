@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 100889 2023-08-16 22:31:44Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInline.h 100998 2023-08-31 19:53:44Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -3464,7 +3464,7 @@ DECL_INLINE_THROW(void) iemMemCommitAndUnmapRoJmp(PVMCPUCC pVCpu, const void *pv
 
 /** @def TMPL_MEM_CHECK_UNALIGNED_WITHIN_PAGE_OK
  * Used to check if an unaligned access is if within the page and won't
- * trigger an #AC.
+ * trigger an \#AC.
  *
  * This can be used to deal with misaligned accesses on platforms that are
  * senstive to such if desires.

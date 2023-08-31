@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 100998 2023-08-31 19:53:44Z klaus.espenlaub@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -135,7 +135,7 @@
 
 /** @def VBOX_WITH_NEW_LAZY_PAGE_ALLOC
  * Enables the experimental lazy page allocation code.
- * @todo Problems with zero page tracking, see @bugref{}.  */
+ * @todo Problems with zero page tracking, see \@bugref{10509}.  */
 #if defined(DOXYGEN_RUNNING)
 # define VBOX_WITH_NEW_LAZY_PAGE_ALLOC
 #endif
