@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 100953 2023-08-23 11:12:26Z knut.osmundsen@oracle.com $ */
+/* $Id: dbgmodcodeview.cpp 100997 2023-08-31 19:43:36Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -662,6 +662,7 @@ static int rtDbgModCvAddSymbol(PRTDBGMODCV pThis, uint32_t iSeg, uint64_t off, c
  * Validates the a length prefixed string (aka pascal string).
  *
  * @returns String length if valid, UINT16_MAX if invalid.
+ * @param   cchString   The string length.
  * @param   pchString   The string to validate.
  * @param   pvRec       The pointer to the record containing the string.
  * @param   cbRec       The record length.
