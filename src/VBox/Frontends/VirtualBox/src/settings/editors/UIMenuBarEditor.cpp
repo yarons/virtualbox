@@ -1,6 +1,6 @@
-/* $Id: UIMenuBarEditorWindow.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMenuBarEditor.cpp 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
+ * VBox Qt GUI - UIMenuBarEditor class implementation.
  */
 
 /*
@@ -39,15 +39,15 @@
 #endif
 
 /* GUI includes: */
+#include "QIToolBar.h"
 #include "QIToolButton.h"
-#include "UICommon.h"
 #include "UIActionPoolRuntime.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIMachineWindow.h"
-#include "UIMenuBarEditorWindow.h"
-#include "QIToolBar.h"
+#include "UIMenuBarEditor.h"
 
 /* Forward declarations: */
 class QAccessibleInterface;

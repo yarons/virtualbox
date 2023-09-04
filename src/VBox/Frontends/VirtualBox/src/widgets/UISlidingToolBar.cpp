@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISlidingToolBar.cpp 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -34,7 +34,6 @@
 #include "UISlidingToolBar.h"
 #include "UIAnimationFramework.h"
 #include "UIMachineWindow.h"
-#include "UIMenuBarEditorWindow.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif

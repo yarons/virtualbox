@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.cpp 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -32,8 +32,8 @@
 #include "UIActionPool.h"
 #include "UIExtraDataManager.h"
 #include "UIMachineSettingsInterface.h"
-#include "UIStatusBarEditorWindow.h"
-#include "UIMenuBarEditorWindow.h"
+#include "UIStatusBarEditor.h"
+#include "UIMenuBarEditor.h"
 #include "UIMiniToolbarSettingsEditor.h"
 #include "UIVisualStateEditor.h"
 
