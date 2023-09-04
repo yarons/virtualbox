@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 101005 2023-09-04 15:31:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 101008 2023-09-04 16:39:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -670,12 +670,12 @@ void UIVMLogViewerWidget::sltResetOptionsToDefault()
     sltWrapLines(false);
     sltChangeFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 
-    // if (m_pOptionsPanel)
-    // {
-    //     m_pOptionsPanel->setShowLineNumbers(true);
-    //     m_pOptionsPanel->setWrapLines(false);
-    //     m_pOptionsPanel->setFontSizeInPoints(m_font.pointSize());
-    // }
+    if (m_pPanel)
+    {
+        m_pPanel->setShowLineNumbers(true);
+        m_pPanel->setWrapLines(false);
+        m_pPanel->setFontSizeInPoints(m_font.pointSize());
+    }
     saveOptions();
 }
 
