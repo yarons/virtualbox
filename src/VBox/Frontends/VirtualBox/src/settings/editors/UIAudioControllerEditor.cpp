@@ -1,4 +1,4 @@
-/* $Id: UIAudioControllerEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAudioControllerEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioControllerEditor class implementation.
  */
@@ -41,7 +41,7 @@
 
 
 UIAudioControllerEditor::UIAudioControllerEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_enmValue(KAudioControllerType_Max)
     , m_pLabel(0)
     , m_pCombo(0)

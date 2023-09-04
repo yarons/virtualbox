@@ -1,4 +1,4 @@
-/* $Id: UIColorThemeEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIColorThemeEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIColorThemeEditor class implementation.
  */
@@ -37,7 +37,7 @@
 
 
 UIColorThemeEditor::UIColorThemeEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_enmValue(UIColorThemeType_Auto)
     , m_pLabel(0)
     , m_pCombo(0)

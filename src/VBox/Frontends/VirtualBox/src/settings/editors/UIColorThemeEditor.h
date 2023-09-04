@@ -1,4 +1,4 @@
-/* $Id: UIColorThemeEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIColorThemeEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIColorThemeEditor class declaration.
  */
@@ -31,20 +31,16 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QWidget>
-
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
-#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QComboBox;
 class QLabel;
 
-/** QWidget subclass used as a color theme editor. */
-class SHARED_LIBRARY_STUFF UIColorThemeEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a color theme editor. */
+class SHARED_LIBRARY_STUFF UIColorThemeEditor : public UIEditor
 {
     Q_OBJECT;
 

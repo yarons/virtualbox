@@ -1,4 +1,4 @@
-/* $Id: UIProcessorFeaturesEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIProcessorFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProcessorFeaturesEditor class implementation.
  */
@@ -35,7 +35,7 @@
 
 
 UIProcessorFeaturesEditor::UIProcessorFeaturesEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fEnablePae(false)
     , m_fEnableNestedVirtualization(false)
     , m_pLabel(0)

@@ -1,4 +1,4 @@
-/* $Id: UIProxyFeaturesEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIProxyFeaturesEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProxyFeaturesEditor class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -43,8 +43,8 @@ class QLabel;
 class QRadioButton;
 class QILineEdit;
 
-/** QWidget subclass used as global proxy features editor. */
-class SHARED_LIBRARY_STUFF UIProxyFeaturesEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as global proxy features editor. */
+class SHARED_LIBRARY_STUFF UIProxyFeaturesEditor : public UIEditor
 {
     Q_OBJECT;
 

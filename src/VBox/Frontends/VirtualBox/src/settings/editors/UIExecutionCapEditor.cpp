@@ -1,4 +1,4 @@
-/* $Id: UIExecutionCapEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExecutionCapEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExecutionCapEditor class implementation.
  */
@@ -38,7 +38,7 @@
 #include "UIExecutionCapEditor.h"
 
 UIExecutionCapEditor::UIExecutionCapEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_uMinExecCap(1)
     , m_uMedExecCap(40)
     , m_uMaxExecCap(100)

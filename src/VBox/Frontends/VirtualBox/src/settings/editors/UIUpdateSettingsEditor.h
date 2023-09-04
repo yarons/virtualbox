@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include <QMap>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIUpdateDefs.h"
 
 /* Forward declarations: */
@@ -45,8 +45,8 @@ class QCheckBox;
 class QComboBox;
 class QLabel;
 
-/** QWidget subclass used as a update settings editor. */
-class SHARED_LIBRARY_STUFF UIUpdateSettingsEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a update settings editor. */
+class SHARED_LIBRARY_STUFF UIUpdateSettingsEditor : public UIEditor
 {
     Q_OBJECT;
 

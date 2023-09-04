@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class declaration.
  */
@@ -32,14 +32,11 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UISettingsDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
-
-/* Other VBox includes: */
-#include <VBox/com/com.h>
 
 /* Forward declarations: */
 class QCheckBox;
@@ -51,8 +48,8 @@ class QIAdvancedSlider;
 class UIFilePathSelector;
 class UIFilmContainer;
 
-/** QWidget subclass used as a recording settings editor. */
-class SHARED_LIBRARY_STUFF UIRecordingSettingsEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a recording settings editor. */
+class SHARED_LIBRARY_STUFF UIRecordingSettingsEditor : public UIEditor
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMenuBarEditorWindow.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class declaration.
  */
@@ -36,9 +36,8 @@
 #include <QUuid>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
-#include "UILibraryDefs.h"
 #include "UISlidingToolBar.h"
 
 /* Forward declarations: */
@@ -71,9 +70,9 @@ public:
 };
 
 
-/** QWidget subclass
+/** UIEditor sub-class
   * used as menu-bar editor widget. */
-class SHARED_LIBRARY_STUFF UIMenuBarEditorWidget : public QIWithRetranslateUI2<QWidget>
+class SHARED_LIBRARY_STUFF UIMenuBarEditorWidget : public UIEditor
 {
     Q_OBJECT;
 

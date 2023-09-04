@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class declaration.
  */
@@ -31,12 +31,8 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QWidget>
-
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
-#include "UILibraryDefs.h"
+#include "UIEditor.h"
 #include "UIUSBFiltersEditor.h"
 
 /* COM includes: */
@@ -46,8 +42,8 @@
 class QCheckBox;
 class UIUSBControllerEditor;
 
-/** QWidget subclass used as a USB settings editor. */
-class SHARED_LIBRARY_STUFF UIUSBSettingsEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a USB settings editor. */
+class SHARED_LIBRARY_STUFF UIUSBSettingsEditor : public UIEditor
 {
     Q_OBJECT;
 

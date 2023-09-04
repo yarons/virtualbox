@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolbarSettingsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMiniToolbarSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolbarSettingsEditor class implementation.
  */
@@ -35,7 +35,7 @@
 
 
 UIMiniToolbarSettingsEditor::UIMiniToolbarSettingsEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fShowMiniToolbar(false)
     , m_fMiniToolbarAtTop(false)
     , m_pLabel(0)

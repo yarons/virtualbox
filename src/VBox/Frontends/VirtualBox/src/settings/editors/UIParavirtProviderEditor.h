@@ -1,4 +1,4 @@
-/* $Id: UIParavirtProviderEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIParavirtProviderEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIParavirtProviderEditor class declaration.
  */
@@ -31,12 +31,8 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QWidget>
-
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
-#include "UILibraryDefs.h"
+#include "UIEditor.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -46,8 +42,8 @@ class QComboBox;
 class QGridLayout;
 class QLabel;
 
-/** QWidget subclass used as an paravirtualization provider editor. */
-class SHARED_LIBRARY_STUFF UIParavirtProviderEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as an paravirtualization provider editor. */
+class SHARED_LIBRARY_STUFF UIParavirtProviderEditor : public UIEditor
 {
     Q_OBJECT;
 

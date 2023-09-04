@@ -1,4 +1,4 @@
-/* $Id: UIDiskEncryptionSettingsEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDiskEncryptionSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 
 /* COM includes: */
 #include "UIExtraDataDefs.h"
@@ -42,10 +42,9 @@ class QCheckBox;
 class QComboBox;
 class QLabel;
 class QLineEdit;
-class QWidget;
 
-/** QWidget subclass used as a disk encryption settings editor. */
-class SHARED_LIBRARY_STUFF UIDiskEncryptionSettingsEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a disk encryption settings editor. */
+class SHARED_LIBRARY_STUFF UIDiskEncryptionSettingsEditor : public UIEditor
 {
     Q_OBJECT;
 

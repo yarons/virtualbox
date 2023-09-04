@@ -1,4 +1,4 @@
-/* $Id: UIAudioFeaturesEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAudioFeaturesEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioFeaturesEditor class declaration.
  */
@@ -32,15 +32,15 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 
 /* Forward declarations: */
 class QCheckBox;
 class QGridLayout;
 class QLabel;
 
-/** QWidget subclass used as audio features editor. */
-class SHARED_LIBRARY_STUFF UIAudioFeaturesEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as audio features editor. */
+class SHARED_LIBRARY_STUFF UIAudioFeaturesEditor : public UIEditor
 {
     Q_OBJECT;
 

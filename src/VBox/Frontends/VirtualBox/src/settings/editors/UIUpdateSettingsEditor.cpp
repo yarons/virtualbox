@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -38,7 +38,7 @@
 
 
 UIUpdateSettingsEditor::UIUpdateSettingsEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_pCheckBox(0)
     , m_pWidgetUpdateSettings(0)
     , m_pLabelUpdatePeriod(0)

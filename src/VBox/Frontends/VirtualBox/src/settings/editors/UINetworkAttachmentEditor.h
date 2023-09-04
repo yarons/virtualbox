@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -31,13 +31,9 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QWidget>
-
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
-#include "UILibraryDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -47,8 +43,8 @@ class QComboBox;
 class QGridLayout;
 class QLabel;
 
-/** QWidget subclass used as a network attachment editor. */
-class SHARED_LIBRARY_STUFF UINetworkAttachmentEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a network attachment editor. */
+class SHARED_LIBRARY_STUFF UINetworkAttachmentEditor : public UIEditor
 {
     Q_OBJECT;
 

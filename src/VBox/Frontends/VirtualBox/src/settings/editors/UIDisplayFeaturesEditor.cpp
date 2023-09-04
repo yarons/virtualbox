@@ -1,4 +1,4 @@
-/* $Id: UIDisplayFeaturesEditor.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDisplayFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayFeaturesEditor class implementation.
  */
@@ -38,7 +38,7 @@
 
 
 UIDisplayFeaturesEditor::UIDisplayFeaturesEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fActivateOnMouseHover(false)
     , m_fDisableHostScreenSaver(false)
     , m_pLabel(0)

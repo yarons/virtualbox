@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIMachineSettingsPortForwardingDlg.h"
 
 /* COM includes: */
@@ -48,8 +48,8 @@ class QIArrowButtonSwitch;
 class QILineEdit;
 class QIToolButton;
 
-/** QWidget subclass used as a network features editor. */
-class SHARED_LIBRARY_STUFF UINetworkFeaturesEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a network features editor. */
+class SHARED_LIBRARY_STUFF UINetworkFeaturesEditor : public UIEditor
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisualStateEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class declaration.
  */
@@ -33,20 +33,18 @@
 
 /* Qt includes: */
 #include <QUuid>
-#include <QWidget>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
-#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QComboBox;
 class QGridLayout;
 class QLabel;
 
-/** QWidget subclass used as a visual state editor. */
-class SHARED_LIBRARY_STUFF UIVisualStateEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a visual state editor. */
+class SHARED_LIBRARY_STUFF UIVisualStateEditor : public UIEditor
 {
     Q_OBJECT;
 

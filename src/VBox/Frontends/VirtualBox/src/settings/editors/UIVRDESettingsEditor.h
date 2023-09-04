@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVRDESettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -44,8 +44,8 @@ class QLabel;
 class QLineEdit;
 class QWidget;
 
-/** QWidget subclass used as a VRDE settings editor. */
-class SHARED_LIBRARY_STUFF UIVRDESettingsEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a VRDE settings editor. */
+class SHARED_LIBRARY_STUFF UIVRDESettingsEditor : public UIEditor
 {
     Q_OBJECT;
 

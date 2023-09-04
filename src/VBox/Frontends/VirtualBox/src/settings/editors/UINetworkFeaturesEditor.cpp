@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -48,7 +48,7 @@
 
 
 UINetworkFeaturesEditor::UINetworkFeaturesEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fAdvancedButtonExpanded(false)
     , m_enmAdapterType(KNetworkAdapterType_Null)
     , m_enmPromiscuousMode(KNetworkAdapterPromiscModePolicy_Max)

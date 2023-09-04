@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIStatusBarEditorWindow.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -442,7 +442,7 @@ UIStatusBarEditorWindow::UIStatusBarEditorWindow(UIMachineWindow *pParent)
 UIStatusBarEditorWidget::UIStatusBarEditorWidget(QWidget *pParent,
                                                  bool fStartedFromVMSettings /* = true */,
                                                  const QUuid &uMachineID /* = QString() */)
-    : QIWithRetranslateUI2<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fPrepared(false)
     , m_fStartedFromVMSettings(fStartedFromVMSettings)
     , m_uMachineID(uMachineID)

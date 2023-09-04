@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFontScaleEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class implementation.
  */
@@ -60,7 +60,7 @@ UIFontScaleFactorSpinBox::UIFontScaleFactorSpinBox(QWidget *pParent /* = 0*/)
 }
 
 UIFontScaleEditor::UIFontScaleEditor(QWidget *pParent)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_pLayout(0)
     , m_pLabel(0)
     , m_pScaleSlider(0)

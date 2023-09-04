@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMenuBarEditorWindow.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -332,7 +332,7 @@ UIMenuBarEditorWidget::UIMenuBarEditorWidget(QWidget *pParent,
                                              bool fStartedFromVMSettings /* = true */,
                                              const QUuid &uMachineID /* = QUuid() */,
                                              UIActionPool *pActionPool /* = 0 */)
-    : QIWithRetranslateUI2<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fPrepared(false)
     , m_fStartedFromVMSettings(fStartedFromVMSettings)
     , m_uMachineID(uMachineID)

@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -276,7 +276,7 @@ void SFTreeViewItem::processColumn(int iColumn)
 *********************************************************************************************************************************/
 
 UISharedFoldersEditor::UISharedFoldersEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_pLabelSeparator(0)
     , m_pLayoutTree(0)
     , m_pTreeWidget(0)
@@ -393,7 +393,7 @@ void UISharedFoldersEditor::retranslateUi()
 void UISharedFoldersEditor::showEvent(QShowEvent *pEvent)
 {
     /* Call to base-class: */
-    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
+    UIEditor::showEvent(pEvent);
 
     /* Connect header-resize signal just before widget is shown
      * after all the items properly loaded and initialized: */

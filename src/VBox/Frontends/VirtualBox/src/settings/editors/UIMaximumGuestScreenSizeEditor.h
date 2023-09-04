@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class declaration.
  */
@@ -31,13 +31,9 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QWidget>
-
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
-#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QGridLayout;
@@ -68,8 +64,8 @@ struct SHARED_LIBRARY_STUFF UIMaximumGuestScreenSizeValue
 Q_DECLARE_METATYPE(UIMaximumGuestScreenSizeValue);
 
 
-/** QWidget subclass used as a maximum guest screen size editor. */
-class SHARED_LIBRARY_STUFF UIMaximumGuestScreenSizeEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a maximum guest screen size editor. */
+class SHARED_LIBRARY_STUFF UIMaximumGuestScreenSizeEditor : public UIEditor
 {
     Q_OBJECT;
 

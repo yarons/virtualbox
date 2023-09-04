@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -210,7 +210,7 @@ QString UILanguageItem::tratra(const QTranslator &translator, const char *pConte
 *********************************************************************************************************************************/
 
 UILanguageSettingsEditor::UILanguageSettingsEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fPolished(false)
     , m_pLabelSeparator(0)
     , m_pTreeWidget(0)
@@ -267,7 +267,7 @@ void UILanguageSettingsEditor::retranslateUi()
 void UILanguageSettingsEditor::showEvent(QShowEvent *pEvent)
 {
     /* Call to base-class: */
-    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
+    UIEditor::showEvent(pEvent);
 
     /* Polish if necessary: */
     if (!m_fPolished)

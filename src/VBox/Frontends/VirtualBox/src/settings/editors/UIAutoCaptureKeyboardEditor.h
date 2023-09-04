@@ -1,4 +1,4 @@
-/* $Id: UIAutoCaptureKeyboardEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAutoCaptureKeyboardEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class declaration.
  */
@@ -32,14 +32,14 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 
 /* Forward declarations: */
 class QCheckBox;
 class QLabel;
 
-/** QWidget subclass used as an auto capture keyboard editor. */
-class SHARED_LIBRARY_STUFF UIAutoCaptureKeyboardEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as an auto capture keyboard editor. */
+class SHARED_LIBRARY_STUFF UIAutoCaptureKeyboardEditor : public UIEditor
 {
     Q_OBJECT;
 

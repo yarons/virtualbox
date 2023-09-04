@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISharedFoldersEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UIEditor.h"
 #include "UIExtraDataDefs.h"
 
 /* Forward declartions: */
@@ -89,8 +89,8 @@ struct UIDataSharedFolder
     QString             m_strAutoMountPoint;
 };
 
-/** QWidget subclass used as a shared folders editor. */
-class SHARED_LIBRARY_STUFF UISharedFoldersEditor : public QIWithRetranslateUI<QWidget>
+/** UIEditor sub-class used as a shared folders editor. */
+class SHARED_LIBRARY_STUFF UISharedFoldersEditor : public UIEditor
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIUSBFiltersEditor.cpp 99062 2023-03-20 11:15:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
@@ -212,7 +212,7 @@ void UIUSBMenu::processAboutToShow()
 *********************************************************************************************************************************/
 
 UIUSBFiltersEditor::UIUSBFiltersEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_pLabelSeparator(0)
     , m_pLayoutTree(0)
     , m_pTreeWidget(0)

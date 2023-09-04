@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.cpp 100899 2023-08-17 15:21:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class implementation.
  */
@@ -66,7 +66,7 @@ bool UIMaximumGuestScreenSizeValue::equal(const UIMaximumGuestScreenSizeValue &o
 *********************************************************************************************************************************/
 
 UIMaximumGuestScreenSizeEditor::UIMaximumGuestScreenSizeEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_pLayout(0)
     , m_pLabelPolicy(0)
     , m_pComboPolicy(0)

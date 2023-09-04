@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class implementation.
  */
@@ -37,7 +37,7 @@
 
 
 UINetworkSettingsEditor::UINetworkSettingsEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fFeatureEnabled(false)
     , m_pCheckboxFeature(0)
     , m_pWidgetSettings(0)

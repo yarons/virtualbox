@@ -1,6 +1,6 @@
-/* $Id: UIDescriptionEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UIDescriptionEditor class declaration.
+ * VBox Qt GUI - UIEditor class declaration.
  */
 
 /*
@@ -25,48 +25,29 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef FEQT_INCLUDED_SRC_settings_editors_UIDescriptionEditor_h
-#define FEQT_INCLUDED_SRC_settings_editors_UIDescriptionEditor_h
+#ifndef FEQT_INCLUDED_SRC_settings_editors_UIEditor_h
+#define FEQT_INCLUDED_SRC_settings_editors_UIEditor_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 /* GUI includes: */
-#include "UIEditor.h"
+#include "QIWithRetranslateUI.h"
 
-/* Forward declarations: */
-class QTextEdit;
-
-/** UIEditor sub-class used as machine description editor. */
-class SHARED_LIBRARY_STUFF UIDescriptionEditor : public UIEditor
+/** QWidget sub-class used as editor interface. */
+class SHARED_LIBRARY_STUFF UIEditor : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 public:
 
     /** Constructs editor passing @a pParent to the base-class. */
-    UIDescriptionEditor(QWidget *pParent = 0);
-
-    /** Defines editor @a strValue. */
-    void setValue(const QString &strValue);
-    /** Returns editor value. */
-    QString value() const;
+    UIEditor(QWidget *pParent = 0);
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
-private:
-
-    /** Prepares all. */
-    void prepare();
-
-    /** Holds the value to be set. */
-    QString  m_strValue;
-
-    /** Holds the check-box instance. */
-    QTextEdit *m_pTextEdit;
+    /** Holds the list of sub-editors. */
+    QList<UIEditor*> m_editors;
 };
 
-#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIDescriptionEditor_h */
+#endif /* !FEQT_INCLUDED_SRC_settings_editors_UIEditor_h */

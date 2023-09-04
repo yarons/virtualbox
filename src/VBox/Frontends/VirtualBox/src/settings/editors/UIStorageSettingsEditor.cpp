@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -2824,7 +2824,7 @@ const QString UIStorageSettingsEditor::s_strControllerMimeType = QString("applic
 const QString UIStorageSettingsEditor::s_strAttachmentMimeType = QString("application/virtualbox;value=StorageAttachmentID");
 
 UIStorageSettingsEditor::UIStorageSettingsEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_fLoadingInProgress(0)
     , m_enmConfigurationAccessLevel(ConfigurationAccessLevel_Null)
     , m_pActionPool(0)
@@ -3212,7 +3212,7 @@ void UIStorageSettingsEditor::showEvent(QShowEvent *pEvent)
     m_pSplitter->setSizes(QList<int>() << 0.4 * width() << 0.6 * width());
 
     /* Call to base-class: */
-    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
+    UIEditor::showEvent(pEvent);
 }
 
 void UIStorageSettingsEditor::sltHandleMediumEnumerated(const QUuid &uMediumId)

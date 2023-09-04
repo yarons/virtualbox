@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class implementation.
  */
@@ -36,7 +36,7 @@
 
 
 UIDefaultMachineFolderEditor::UIDefaultMachineFolderEditor(QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : UIEditor(pParent)
     , m_strValue(QString())
     , m_pLayout(0)
     , m_pLabel(0)
