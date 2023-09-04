@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 101007 2023-09-04 16:07:04Z dmitrii.grigorev@oracle.com $
+# $Id: vbox.py 101012 2023-09-04 18:25:05Z dmitrii.grigorev@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101007 $"
+__version__ = "$Revision: 101012 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2579,7 +2579,7 @@ class TestDriver(base.TestDriver):                                              
                      sCom1RawFile = None,
                      fSecureBoot = False,
                      sUefiMokPathPrefix = None,
-                     eGraphicsControllerType = None):
+                     sGraphicsControllerType = None):
         """
         Creates a test VM with a immutable HD from the test resources.
         """
@@ -2693,8 +2693,13 @@ class TestDriver(base.TestDriver):                                              
                 fRc = oSession.setIommuType(vboxcon.IommuType_AMD);
             elif fRc and self.fpApiVer >= 6.2 and hasattr(vboxcon, 'IommuType_Intel') and sIommuType == 'intel':
                 fRc = oSession.setIommuType(vboxcon.IommuType_Intel);
-            if fRc and eGraphicsControllerType is not None:
-                fRc = oSession.setVideoControllerType(eGraphicsControllerType);
+            if fRc and sGraphicsControllerType is not None:
+                if sGraphicsControllerType == 'VBoxSVGA':
+                    fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VBoxSVGA);
+                elif sGraphicsControllerType == 'VMSVGA':
+                    fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VMSVGA);
+                elif sGraphicsControllerType == 'VBoxVGA':
+                    fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VBoxVGA);
 
             if fRc: fRc = oSession.saveSettings();
             if not fRc:   oSession.discardSettings(True);
