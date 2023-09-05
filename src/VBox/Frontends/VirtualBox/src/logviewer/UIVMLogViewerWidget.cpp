@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 101008 2023-09-04 16:39:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 101019 2023-09-05 11:36:13Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -709,6 +709,39 @@ void UIVMLogViewerWidget::sltCommitDataSignalReceived()
     m_fCommitDataSignalReceived = true;
 }
 
+void UIVMLogViewerWidget::sltPanelCurrentTabChanged(int iIndex)
+{
+    if (!m_pPanel || !m_pPanel->isVisible())
+        return;
+
+    for(QSet<QAction*>::iterator iter = m_panelActions.begin(); iter != m_panelActions.end(); ++iter)
+    {
+        QAction *pAction = *iter;
+
+        pAction->blockSignals(true);
+        pAction->setChecked(false);
+        pAction->blockSignals(false);
+    }
+
+    switch (static_cast<UIVMLogViewerPaneContainer::Page>(iIndex))
+    {
+        case UIVMLogViewerPaneContainer::Page_Search:
+            m_pActionPool->action(UIActionIndex_M_Log_T_Find)->setChecked(true);
+            break;
+        case UIVMLogViewerPaneContainer::Page_Filter:
+            m_pActionPool->action(UIActionIndex_M_Log_T_Filter)->setChecked(true);
+            break;
+        case UIVMLogViewerPaneContainer::Page_Bookmark:
+            m_pActionPool->action(UIActionIndex_M_Log_T_Bookmark)->setChecked(true);
+            break;
+        case UIVMLogViewerPaneContainer::Page_Preferences:
+            m_pActionPool->action(UIActionIndex_M_Log_T_Preferences)->setChecked(true);
+            break;
+        default:
+            break;
+    }
+}
+
 void UIVMLogViewerWidget::prepare()
 {
     /* Load options: */
@@ -823,6 +856,8 @@ void UIVMLogViewerWidget::prepareWidgets()
             this, &UIVMLogViewerWidget::sltChangeFont);
     connect(m_pPanel, &UIVMLogViewerPaneContainer::sigResetToDefaults,
             this, &UIVMLogViewerWidget::sltResetOptionsToDefault);
+    connect(m_pPanel, &UIVMLogViewerPaneContainer::sigCurrentTabChanged,
+            this, &UIVMLogViewerWidget::sltPanelCurrentTabChanged);
 
     m_pMainLayout->addWidget(m_pPanel);
 }
