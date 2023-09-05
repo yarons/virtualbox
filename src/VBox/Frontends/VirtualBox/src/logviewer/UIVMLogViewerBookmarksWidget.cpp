@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksWidget.cpp 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerBookmarksWidget.cpp 101018 2023-09-05 11:23:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -54,6 +54,7 @@ UIVMLogViewerBookmarksWidget::UIVMLogViewerBookmarksWidget(QWidget *pParent, UIV
 {
     prepareWidgets();
     prepareConnections();
+    retranslateUi();
 }
 
 void UIVMLogViewerBookmarksWidget::updateBookmarkList(const QVector<UIVMLogBookmark>& bookmarkList)
