@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.cpp 101020 2023-09-05 12:10:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -41,7 +41,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIFileManager.h"
-#include "UIFileManagerPanel.h"
+#include "UIFileManagerPaneContainer.h"
 #include "UIFileManagerGuestTable.h"
 #include "UIFileManagerHostTable.h"
 #include "UIGuestControlInterface.h"
@@ -250,16 +250,16 @@ void UIFileManager::prepareObjects()
         m_pVerticalSplitter->setStretchFactor(2, 1);
     }
 
-    m_pPanel = new UIFileManagerPanel(this, UIFileManagerOptions::instance());
+    m_pPanel = new UIFileManagerPaneContainer(this, UIFileManagerOptions::instance());
     AssertReturnVoid(m_pPanel);
 
     m_panelActions.insert(m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences));
     m_panelActions.insert(m_pActionPool->action(UIActionIndex_M_FileManager_T_Log));
     m_panelActions.insert(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations));
 
-    m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences)->setData(static_cast<int>(UIFileManagerPanel::Page_Preferences));
-    m_pActionPool->action(UIActionIndex_M_FileManager_T_Log)->setData(static_cast<int>(UIFileManagerPanel::Page_Log));
-    m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations)->setData(static_cast<int>(UIFileManagerPanel::Page_Operations));
+    m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences)->setData(static_cast<int>(UIFileManagerPaneContainer::Page_Preferences));
+    m_pActionPool->action(UIActionIndex_M_FileManager_T_Log)->setData(static_cast<int>(UIFileManagerPaneContainer::Page_Log));
+    m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations)->setData(static_cast<int>(UIFileManagerPaneContainer::Page_Operations));
 
     m_pVerticalSplitter->addWidget(m_pPanel);
     m_pPanel->hide();
@@ -321,15 +321,15 @@ void UIFileManager::prepareConnections()
 
     if (m_pPanel)
     {
-        connect(m_pPanel, &UIFileManagerPanel::sigOptionsChanged,
+        connect(m_pPanel, &UIFileManagerPaneContainer::sigOptionsChanged,
                 this, &UIFileManager::sltHandleOptionsUpdated);
-        connect(m_pPanel, &UIFileManagerPanel::sigFileOperationComplete,
+        connect(m_pPanel, &UIFileManagerPaneContainer::sigFileOperationComplete,
                 this, &UIFileManager::sltFileOperationComplete);
-        connect(m_pPanel, &UIFileManagerPanel::sigFileOperationFail,
+        connect(m_pPanel, &UIFileManagerPaneContainer::sigFileOperationFail,
                 this, &UIFileManager::sltReceieveLogOutput);
-        connect(m_pPanel, &UIFileManagerPanel::sigCurrentTabChanged,
+        connect(m_pPanel, &UIFileManagerPaneContainer::sigCurrentTabChanged,
                 this, &UIFileManager::sltPanelCurrentTabChanged);
-        connect(m_pPanel, &UIFileManagerPanel::sigHidden,
+        connect(m_pPanel, &UIFileManagerPaneContainer::sigHidden,
                 this, &UIFileManager::sltPanelContainerHidden);
     }
 
@@ -562,18 +562,18 @@ void UIFileManager::sltPanelCurrentTabChanged(int iIndex)
         pAction->blockSignals(false);
     }
 
-    switch (static_cast<UIFileManagerPanel::Page>(iIndex))
+    switch (static_cast<UIFileManagerPaneContainer::Page>(iIndex))
     {
-        case UIFileManagerPanel::Page_Preferences:
+        case UIFileManagerPaneContainer::Page_Preferences:
             m_pActionPool->action(UIActionIndex_M_FileManager_T_Preferences)->setChecked(true);
             break;
-        case UIFileManagerPanel::Page_Operations:
+        case UIFileManagerPaneContainer::Page_Operations:
             m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations)->setChecked(true);
             break;
-        case UIFileManagerPanel::Page_Log:
+        case UIFileManagerPaneContainer::Page_Log:
             m_pActionPool->action(UIActionIndex_M_FileManager_T_Log)->setChecked(true);
             break;
-        case UIFileManagerPanel::Page_Max:
+        case UIFileManagerPaneContainer::Page_Max:
         default:
             break;
     }

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 100956 2023-08-23 11:53:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPaneContainer.h 101020 2023-09-05 12:10:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPanel_h
-#define FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPanel_h
+#ifndef FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPaneContainer_h
+#define FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPaneContainer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -52,7 +52,7 @@ class QScrollArea;
 class QSpacerItem;
 class QVBoxLayout;
 
-class UIFileManagerPanel : public UIPaneContainer
+class UIFileManagerPaneContainer : public UIPaneContainer
 {
     Q_OBJECT;
 
@@ -66,7 +66,7 @@ signals:
 
 public:
 
-    UIFileManagerPanel(QWidget *pParent, UIFileManagerOptions *pFileManagerOptions);
+    UIFileManagerPaneContainer(QWidget *pParent, UIFileManagerOptions *pFileManagerOptions);
     void updatePreferences();
     void appendLog(const QString &strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void addNewProgress(const CProgress &comProgress, const QString &strSourceTableName);
@@ -136,4 +136,4 @@ private:
     /** @} */
 };
 
-#endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPanel_h */
+#endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerPaneContainer_h */
