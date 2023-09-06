@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 101028 2023-09-06 13:32:37Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 101031 2023-09-06 15:06:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -76,6 +76,25 @@ void UISettingsPage::setConfigurationAccessLevel(ConfigurationAccessLevel enmCon
 {
     m_enmConfigurationAccessLevel = enmConfigurationAccessLevel;
     polishPage();
+}
+
+void UISettingsPage::filterOut(const QString &strFilter)
+{
+    /* Propagate filter towards all the children: */
+    foreach (UIEditor *pEditor, m_editors)
+        pEditor->filterOut(strFilter);
+
+    /* Check if at least one of children visible: */
+    bool fVisible = false;
+    foreach (UIEditor *pEditor, m_editors)
+        if (pEditor->isVisibleTo(this))
+        {
+            fVisible = true;
+            break;
+        }
+
+    /* Update page visibility: */
+    setVisible(fVisible);
 }
 
 void UISettingsPage::revalidate()
@@ -165,7 +184,7 @@ void UISettingsPageMachine::uploadData(QVariant &data) const
 *********************************************************************************************************************************/
 
 UISettingsPageFrame::UISettingsPageFrame(UISettingsPage *pPage, QWidget *pParent /* = 0 */)
-    : QWidget(pParent)
+    : UIEditor(pParent)
     , m_pPage(pPage)
     , m_pLabelName(0)
     , m_pWidget(0)
@@ -182,6 +201,24 @@ void UISettingsPageFrame::setName(const QString &strName)
     m_strName = strName;
     if (m_pLabelName)
         m_pLabelName->setText(m_strName);
+}
+
+void UISettingsPageFrame::filterOut(const QString &strFilter)
+{
+    /* Propagate filter to the child: */
+    AssertReturnVoid(m_editors.size() == 1);
+    m_editors.first()->filterOut(strFilter);
+
+    /* Check if child visible: */
+    const bool fVisible = m_editors.first()->isVisibleTo(this);
+
+    /* Update frame visibility: */
+    setVisible(fVisible);
+}
+
+void UISettingsPageFrame::retranslateUi()
+{
+    // No NLS tags for now; We are receiving our name through the getter.
 }
 
 void UISettingsPageFrame::paintEvent(QPaintEvent *pPaintEvent)
@@ -292,7 +329,11 @@ void UISettingsPageFrame::prepare()
         {
             m_pLayout = new QVBoxLayout(m_pWidget);
             if (m_pLayout)
+            {
                 m_pLayout->addWidget(m_pPage);
+                /// @todo what about removal handling?
+                m_editors << m_pPage;
+            }
             pLayoutMain->addWidget(m_pWidget);
         }
     }
