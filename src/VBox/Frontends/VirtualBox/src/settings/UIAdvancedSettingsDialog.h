@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 100990 2023-08-28 15:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101028 2023-09-06 13:32:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -46,8 +46,8 @@ class QShowEvent;
 class QStackedWidget;
 class QVariant;
 class QIDialogButtonBox;
-class UISettingsGroupBox;
 class UISettingsPage;
+class UISettingsPageFrame;
 class UISettingsPageValidator;
 class UISettingsSelector;
 class UISettingsSerializer;
@@ -228,8 +228,8 @@ private:
     /** Holds the warning hint. */
     QString  m_strWarningHint;
 
-    /** Holds the map of settings pages. */
-    QMap<int, UISettingsGroupBox*>  m_pages;
+    /** Holds the map of settings page frames. */
+    QMap<int, UISettingsPageFrame*>  m_frames;
 
     /** Stores the help tag per page. */
     QMap<int, QString>  m_pageHelpKeywords;
