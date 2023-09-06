@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.cpp 101033 2023-09-06 15:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -230,12 +230,18 @@ void UIGlobalSettingsInput::prepareWidgets()
         /* Prepare 'shortcut configuration' editor: */
         m_pEditorShortcutConfiguration = new UIShortcutConfigurationEditor(this);
         if (m_pEditorShortcutConfiguration)
+        {
+            m_editors << m_pEditorShortcutConfiguration;
             pLayout->addWidget(m_pEditorShortcutConfiguration);
+        }
 
         /* Prepare 'auto capture keyboard' editor: */
         m_pEditorAutoCaptureKeyboard = new UIAutoCaptureKeyboardEditor(this);
         if (m_pEditorAutoCaptureKeyboard)
+        {
+            m_editors << m_pEditorAutoCaptureKeyboard;
             pLayout->addWidget(m_pEditorAutoCaptureKeyboard);
+        }
     }
 }
 

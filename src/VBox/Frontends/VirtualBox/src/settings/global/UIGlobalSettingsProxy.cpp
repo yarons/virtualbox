@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 101033 2023-09-06 15:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -233,7 +233,10 @@ void UIGlobalSettingsProxy::prepareWidgets()
         /* Prepare 'proxy features' editor: */
         m_pEditorProxyFeatures = new UIProxyFeaturesEditor(this);
         if (m_pEditorProxyFeatures)
+        {
+            m_editors << m_pEditorProxyFeatures;
             pLayout->addWidget(m_pEditorProxyFeatures);
+        }
 
         /* Add stretch to the end: */
         pLayout->addStretch();

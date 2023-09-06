@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.cpp 101033 2023-09-06 15:09:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -170,7 +170,10 @@ void UIGlobalSettingsInterface::prepareWidgets()
         /* Prepare 'color-theme' editor: */
         m_pEditorColorTheme = new UIColorThemeEditor(this);
         if (m_pEditorColorTheme)
+        {
+            m_editors << m_pEditorColorTheme;
             pLayout->addWidget(m_pEditorColorTheme);
+        }
 
         /* Add stretch to the end: */
         pLayout->addStretch();
