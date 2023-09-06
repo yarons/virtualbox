@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 101034 2023-09-06 15:11:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -237,7 +237,10 @@ void UIUpdateSettingsEditor::prepareWidgets()
                 /* Prepare update date field: */
                 m_pFieldUpdateDate = new QLabel(m_pWidgetUpdateSettings);
                 if (m_pFieldUpdateDate)
+                {
+                    m_pLabelUpdateDate->setBuddy(m_pFieldUpdateDate);
                     pLayoutUpdateSettings->addWidget(m_pFieldUpdateDate, 1, 1);
+                }
 
                 /* Prepare update date label: */
                 m_pLabelUpdateFilter = new QLabel(m_pWidgetUpdateSettings);
