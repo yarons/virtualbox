@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAllVirtual.cpp 101025 2023-09-06 08:29:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -34,6 +34,9 @@
 #include <VBox/vmm/dbgftrace.h>
 #ifdef IN_RING3
 # include <iprt/thread.h>
+#endif
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/x86.h>
 #endif
 #include "TMInternal.h"
 #include <VBox/vmm/vmcc.h>
