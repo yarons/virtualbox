@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPreferencesWidget.cpp 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.cpp 101026 2023-09-06 11:09:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -188,12 +188,20 @@ void UIVMLogViewerPreferencesWidget::retranslateUi()
 
 void UIVMLogViewerPreferencesWidget::sltOpenFontDialog()
 {
-    QFont currentFont;
-    UIVMLogViewerWidget* parentWidget = qobject_cast<UIVMLogViewerWidget*>(parent());
-    if (!parentWidget)
-        return;
+    QObject *pParent = parent();
+    UIVMLogViewerWidget *pLogViewer = 0;
+    while(pParent)
+    {
+        pLogViewer = qobject_cast<UIVMLogViewerWidget*>(pParent);
+        if (pLogViewer)
+            break;
+        pParent = pParent->parent();
+    }
 
-    currentFont = parentWidget->currentFont();
+    if (!pLogViewer)
+        return;
+    QFont currentFont;
+    currentFont = pLogViewer->currentFont();
     bool ok;
     QFont font =
         QFontDialog::getFont(&ok, currentFont, this, "Logviewer font");
