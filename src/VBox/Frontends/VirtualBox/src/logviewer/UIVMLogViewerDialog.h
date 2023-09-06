@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 98845 2023-03-06 17:31:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 101027 2023-09-06 11:21:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -123,7 +123,6 @@ private slots:
 
 private:
 
-    void manageEscapeShortCut();
     /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
     /** Holds the machine id. */

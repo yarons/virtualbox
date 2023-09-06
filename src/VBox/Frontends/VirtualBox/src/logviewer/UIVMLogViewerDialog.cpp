@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 101027 2023-09-06 11:21:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -178,7 +178,6 @@ void UIVMLogViewerDialog::finalize()
 {
     /* Apply language settings: */
     retranslateUi();
-    manageEscapeShortCut();
     loadDialogGeometry();
 }
 
@@ -223,12 +222,4 @@ void UIVMLogViewerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
     if (!closeEmitted() &&  button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
-}
-
-void UIVMLogViewerDialog::manageEscapeShortCut()
-{
-    UIVMLogViewerWidget *pWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
-    if (!pWidget)
-        return;
-    pWidget->manageEscapeShortCut();
 }
