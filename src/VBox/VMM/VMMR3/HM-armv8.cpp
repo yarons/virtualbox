@@ -1,4 +1,4 @@
-/* $Id: HM-armv8.cpp 100140 2023-06-09 14:54:38Z knut.osmundsen@oracle.com $ */
+/* $Id: HM-armv8.cpp 101024 2023-09-06 08:26:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * HM - VM Hardware Support Manager, ARMv8 shim.
  */
@@ -284,7 +284,7 @@ VMMR3_INT_DECL(void) HMR3Reset(PVM pVM)
 VMMR3_INT_DECL(int)  HMR3EnablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
     AssertReleaseFailed();
-    RT_NOREF(pVM, pPatchMem, cbPatchMem)
+    RT_NOREF(pVM, pPatchMem, cbPatchMem);
     return VERR_NOT_SUPPORTED;
 }
 
@@ -300,7 +300,7 @@ VMMR3_INT_DECL(int)  HMR3EnablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbP
 VMMR3_INT_DECL(int)  HMR3DisablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
     AssertReleaseFailed();
-    RT_NOREF(pVM, pPatchMem, cbPatchMem)
+    RT_NOREF(pVM, pPatchMem, cbPatchMem);
     return VERR_NOT_SUPPORTED;
 }
 
