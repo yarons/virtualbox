@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101028 2023-09-06 13:32:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101032 2023-09-06 15:07:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -46,6 +46,7 @@ class QShowEvent;
 class QStackedWidget;
 class QVariant;
 class QIDialogButtonBox;
+class QILineEdit;
 class UISettingsPage;
 class UISettingsPageFrame;
 class UISettingsPageValidator;
@@ -181,6 +182,9 @@ private slots:
     /** Handles hover leave for warning pane specified by @a pValidator. */
     void sltHandleWarningPaneUnhovered(UISettingsPageValidator *pValidator);
 
+    /** Handles text-change for filter editor. */
+    void sltHandleFilterTextChanged(const QString &strText);
+
 private:
 
     /** @name Prepare/cleanup cascade.
@@ -238,6 +242,9 @@ private:
      * @{ */
         /** Holds the main layout instance. */
         QGridLayout *m_pLayoutMain;
+
+        /** Holds the filter editor instance. */
+        QILineEdit *m_pEditorFilter;
 
         /** Holds the scroll-area instance. */
         QScrollArea *m_pScrollArea;
