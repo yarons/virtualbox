@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -35,7 +35,7 @@
 #include "UIUSBControllerEditor.h"
 
 /* COM includes: */
-#include "CSystemProperties.h"
+#include "CPlatformProperties.h"
 
 
 UIUSBControllerEditor::UIUSBControllerEditor(QWidget *pParent /* = 0 */)
@@ -144,7 +144,7 @@ void UIUSBControllerEditor::prepare()
 void UIUSBControllerEditor::updateButtonSet()
 {
     /* Load currently supported types: */
-    CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
     m_supportedValues = comProperties.GetSupportedUSBControllerTypes();
 
     /* Make sure requested value if sane is present as well: */

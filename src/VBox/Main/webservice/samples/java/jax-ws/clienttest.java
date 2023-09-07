@@ -1,4 +1,4 @@
-/* $Id: clienttest.java 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: clienttest.java 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /*!file
  * Sample client for the VirtualBox web service, written in Java (object-oriented bindings).
  *
@@ -99,8 +99,8 @@ public class clienttest
         String id = "bc8b6219-2775-42c4-f1b2-b48b3c177294";
         vbox.openSession(session, id);
         IMachine mach = session.getMachine();
-        IBIOSSettings bios = mach.getBIOSSettings();
-        bios.setIOAPICEnabled(true);
+        IFirmwareSettings firmware = mach.getFirmwareSettings();
+        firmware.setIOAPICEnabled(true);
         mach.saveSettings();
         session.close();
     }

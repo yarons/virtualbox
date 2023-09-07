@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 101035 $"
 
 
 # Standard Python imports.
@@ -298,7 +298,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
 
         # I/O APIC:
         if self.fOptPae is not None:
-            fRc = oSession.enablePae(self.fOptPae) and fRc;
+            fRc = oSession.enablePaeX86(self.fOptPae) and fRc;
 
         # Set extra data
         for sExtraData in self.asOptExtraData:

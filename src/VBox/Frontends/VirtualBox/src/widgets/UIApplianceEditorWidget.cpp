@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 100638 2023-07-18 17:02:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -50,6 +50,7 @@
 #include "UITranslator.h"
 
 /* COM includes: */
+#include "CPlatformProperties.h"
 #include "CSystemProperties.h"
 
 
@@ -839,7 +840,7 @@ QWidget *UIVirtualHardwareItem::createEditor(QWidget *pParent, const QStyleOptio
                 /* Create combo editor: */
                 QComboBox *pComboBox = new QComboBox(pParent);
                 /* Load currently supported network adapter types: */
-                CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+                CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
                 QVector<KNetworkAdapterType> supportedTypes = comProperties.GetSupportedNetworkAdapterTypes();
                 /* Take currently requested type into account if it's sane: */
                 const KNetworkAdapterType enmAdapterType = static_cast<KNetworkAdapterType>(m_strConfigValue.toInt());

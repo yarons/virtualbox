@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -197,6 +197,7 @@ static void createVM(IVirtualBox *virtualBox)
     nsCOMPtr<IMachine> machine;
     rc = virtualBox->CreateMachine(NULL,        /* settings file */
                                    NS_LITERAL_STRING("A brand new name").get(),
+                                   PlatformArchitecture_x86,
                                    0, nsnull,   /* groups (safearray)*/
                                    nsnull,      /* ostype */
                                    nsnull,      /* create flags */

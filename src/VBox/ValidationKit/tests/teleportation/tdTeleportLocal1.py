@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTeleportLocal1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdTeleportLocal1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Local teleportation testdriver.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 101035 $"
 
 
 # Standard Python imports.
@@ -417,8 +417,8 @@ class tdTeleportLocal1(vbox.TestDriver):
         fRc = True;
         oSession = self.openSession(oVmSrc);
         if oSession is not None:
-            fRc = fRc and oSession.enableVirtEx(fHwVirt);
-            fRc = fRc and oSession.enableNestedPaging(fNestedPaging);
+            fRc = fRc and oSession.enableVirtExX86(fHwVirt);
+            fRc = fRc and oSession.enableNestedPagingX86(fNestedPaging);
             fRc = fRc and oSession.setCpuCount(cCpus);
             fRc = fRc and oSession.setupTeleporter(False, uPort=6501, sPassword='password');
             fRc = fRc and oSession.saveSettings();
@@ -431,8 +431,8 @@ class tdTeleportLocal1(vbox.TestDriver):
         oVmDst = self.getVmByName(sVmBaseName + '-2');
         oSession = self.openSession(oVmDst);
         if oSession is not None:
-            fRc = fRc and oSession.enableVirtEx(fHwVirt);
-            fRc = fRc and oSession.enableNestedPaging(fNestedPaging);
+            fRc = fRc and oSession.enableVirtExX86(fHwVirt);
+            fRc = fRc and oSession.enableNestedPagingX86(fNestedPaging);
             fRc = fRc and oSession.setCpuCount(cCpus);
             fRc = fRc and oSession.setupTeleporter(True, uPort=6502, sPassword='password');
             fRc = fRc and oSession.saveSettings();

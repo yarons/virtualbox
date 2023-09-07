@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Id: tdStorageRawDrive1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $"
+__version__ = "$Id: tdStorageRawDrive1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $"
 
 # Standard Python imports.
 import os;
@@ -861,10 +861,10 @@ class tdStorageRawDriveOs(vboxtestvms.BaseTestVm):
         fRc = True;
         oSession = oTestDrv.openSession(oVM);
         if oSession is not None:
-            fRc = fRc and oSession.enableVirtEx(True);
+            fRc = fRc and oSession.enableVirtExX86(True);
             # nested paging doesn't need for the test
-            #fRc = fRc and oSession.enableNestedPaging(True);
-            #fRc = fRc and oSession.enableNestedHwVirt(True);
+            #fRc = fRc and oSession.enableNestedPagingX86(True);
+            #fRc = fRc and oSession.enableNestedHwVirtX86(True);
             # disable 3D until the error is fixed.
             fRc = fRc and oSession.setAccelerate3DEnabled(False);
             fRc = fRc and oSession.setVRamSize(256);

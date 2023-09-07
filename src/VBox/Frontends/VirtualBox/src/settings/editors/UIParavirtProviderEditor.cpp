@@ -1,4 +1,4 @@
-/* $Id: UIParavirtProviderEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIParavirtProviderEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIParavirtProviderEditor class implementation.
  */
@@ -37,7 +37,7 @@
 #include "UIParavirtProviderEditor.h"
 
 /* COM includes: */
-#include "CSystemProperties.h"
+#include "CPlatformProperties.h"
 
 
 UIParavirtProviderEditor::UIParavirtProviderEditor(QWidget *pParent /* = 0 */)
@@ -146,7 +146,7 @@ void UIParavirtProviderEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported paravirt provider types: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
         m_supportedValues = comProperties.GetSupportedParavirtProviders();
 
         /* Make sure requested value if sane is present as well: */

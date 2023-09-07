@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 100900 2023-08-17 15:43:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -95,6 +95,7 @@
 #include "CMachineDebugger.h"
 #include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
+#include "CPlatformProperties.h"
 #include "CRecordingSettings.h"
 #include "CSnapshot.h"
 #include "CStorageController.h"
@@ -2696,7 +2697,8 @@ void UIMachineLogic::updateMenuDevicesNetwork(QMenu *pMenu)
     /* Determine how many adapters we should display: */
     KChipsetType enmChipsetType = KChipsetType_Null;
     uimachine()->acquireChipsetType(enmChipsetType);
-    const ulong uCount = qMin((ulong)4, (ulong)uiCommon().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(enmChipsetType));
+    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
+    const ulong uCount = qMin((ulong)4, (ulong)comProperties.GetMaxNetworkAdapters(enmChipsetType));
 
     /* Enumerate existing network adapters: */
     QMap<ulong, bool> adapterData;

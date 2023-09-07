@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 100640 2023-07-19 06:59:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -97,7 +97,6 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
-#include "CBIOSSettings.h"
 #include "CCloudMachine.h"
 #include "CConsole.h"
 #include "CExtPack.h"

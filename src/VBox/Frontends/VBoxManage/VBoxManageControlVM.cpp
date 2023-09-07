@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageControlVM.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -804,7 +804,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_SETLINKSTATE);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][12], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -842,7 +842,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_NICTRACEFILE);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][12], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -886,7 +886,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_NICTRACE);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][8], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -927,7 +927,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 && !strncmp(a->argv[1], "natpf", 5))
         {
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][5], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -1021,7 +1021,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_NICPROPERTY);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][11], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -1083,7 +1083,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_NICPROMISC);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][10], NetworkAdapterCount, "NIC");
             if (!n)
             {
@@ -1133,7 +1133,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         {
             setCurrentSubcommand(HELP_SCOPE_CONTROLVM_NIC);
             /* Get the number of network adapters */
-            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, sessionMachine);
+            ULONG NetworkAdapterCount = getMaxNics(sessionMachine);
             unsigned n = parseNum(&a->argv[1][3], NetworkAdapterCount, "NIC");
             if (!n)
             {

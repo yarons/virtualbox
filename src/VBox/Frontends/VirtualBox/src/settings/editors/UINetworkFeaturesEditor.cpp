@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -44,7 +44,7 @@
 #include "UINetworkFeaturesEditor.h"
 
 /* COM includes: */
-#include "CSystemProperties.h"
+#include "CPlatformProperties.h"
 
 
 UINetworkFeaturesEditor::UINetworkFeaturesEditor(QWidget *pParent /* = 0 */)
@@ -464,7 +464,7 @@ void UINetworkFeaturesEditor::repopulateAdapterTypeCombo()
         m_pComboAdapterType->clear();
 
         /* Load currently supported types: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
         QVector<KNetworkAdapterType> supportedTypes = comProperties.GetSupportedNetworkAdapterTypes();
 
         /* Make sure requested value if sane is present as well: */

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 98763 2023-02-27 18:59:08Z alexander.eichner@oracle.com $
+# $Id: tdStorageBenchmark1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98763 $"
+__version__ = "$Revision: 101035 $"
 
 
 # Standard Python imports.
@@ -1273,8 +1273,8 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     except:
                         reporter.logXcpt();
 
-                fRc = fRc and oSession.enableVirtEx(fHwVirt);
-                fRc = fRc and oSession.enableNestedPaging(fNestedPaging);
+                fRc = fRc and oSession.enableVirtExX86(fHwVirt);
+                fRc = fRc and oSession.enableNestedPagingX86(fNestedPaging);
                 fRc = fRc and oSession.setCpuCount(cCpus);
                 fRc = fRc and oSession.saveSettings();
                 fRc = oSession.close() and fRc and True; # pychecker hack.

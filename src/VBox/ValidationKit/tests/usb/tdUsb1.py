@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdUsb1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 101035 $"
 
 
 # Standard Python imports.
@@ -496,8 +496,8 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         fRc = True;
         oSession = self.openSession(oVM);
         if oSession is not None:
-            fRc = fRc and oSession.enableVirtEx(True);
-            fRc = fRc and oSession.enableNestedPaging(True);
+            fRc = fRc and oSession.enableVirtExX86(True);
+            fRc = fRc and oSession.enableNestedPagingX86(True);
 
             # Make sure controllers are disabled initially.
             fRc = fRc and oSession.enableUsbOhci(False);

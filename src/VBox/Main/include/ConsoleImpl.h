@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 100609 2023-07-17 16:45:11Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -738,7 +738,7 @@ private:
                                    BusAssignmentManager *pBusMgr,
                                    const ComPtr<IMachine> &ptrMachine,
                                    const ComPtr<IGraphicsAdapter> &ptrGraphicsAdapter,
-                                   const ComPtr<IBIOSSettings> &ptrBiosSettings,
+                                   const ComPtr<IFirmwareSettings> &ptrFirmwareSettings,
                                    bool fHMEnabled);
     int i_checkMediumLocation(IMedium *pMedium, bool *pfUseHostIOCache);
     int i_unmountMediumFromGuest(PUVM pUVM, PCVMMR3VTABLE pVMM, StorageBus_T enmBus, DeviceType_T enmDevType,

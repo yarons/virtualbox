@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Id: tdStorageStress1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $"
+__version__ = "$Id: tdStorageStress1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $"
 
 
 # Standard Python imports.
@@ -378,8 +378,8 @@ class tdStorageStress(vbox.TestDriver):                                      # p
                                                          cb = 10*1024*1024*1024, iPort = 1, fImmutable = False);
                 fRc = fRc and oSession.createAndAttachHd(sDiskPath2, sDiskFormat, self.controllerTypeToName(eStorageController),
                                                          cb = 10*1024*1024*1024, iPort = 2, fImmutable = False);
-            fRc = fRc and oSession.enableVirtEx(fHwVirt);
-            fRc = fRc and oSession.enableNestedPaging(fNestedPaging);
+            fRc = fRc and oSession.enableVirtExX86(fHwVirt);
+            fRc = fRc and oSession.enableNestedPagingX86(fNestedPaging);
             fRc = fRc and oSession.setCpuCount(cCpus);
             fRc = fRc and oSession.saveSettings();
             fRc = oSession.close() and fRc and True; # pychecker hack.

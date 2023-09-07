@@ -1,4 +1,4 @@
-/* $Id: Global.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: Global.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -121,11 +121,6 @@ public:
      * @returns index on success, UINT32_MAX if not found.
      */
     static uint32_t getOSTypeIndexFromId(const char *pszId);
-
-    /**
-     * Get the network adapter limit for each chipset type.
-     */
-    static uint32_t getMaxNetworkAdapters(ChipsetType_T aChipsetType);
 
     /**
      * Returns @c true if the given machine state is an online state. This is a

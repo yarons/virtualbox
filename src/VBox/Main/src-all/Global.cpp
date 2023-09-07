@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 100827 2023-08-09 11:51:53Z brent.paulson@oracle.com $ */
+/* $Id: Global.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -648,19 +648,6 @@ const char *Global::OSTypeId(VBOXOSTYPE aOSType)
         if (!RTStrICmp(pszId, Global::sOSTypes[i].id))
             return (uint32_t)i;
     return UINT32_MAX;
-}
-
-/*static*/ uint32_t Global::getMaxNetworkAdapters(ChipsetType_T aChipsetType)
-{
-    switch (aChipsetType)
-    {
-        case ChipsetType_PIIX3:
-            return 8;
-        case ChipsetType_ICH9:
-            return 36;
-        default:
-            return 0;
-    }
 }
 
 /*static*/ const char *

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVM.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -189,7 +189,8 @@ bool UIWizardCloneVM::cloneVM()
     /* Get VBox object: */
     CVirtualBox comVBox = uiCommon().virtualBox();
     /* Create a new machine object: */
-    CMachine cloneMachine = comVBox.CreateMachine(m_strCloneFilePath, m_strCloneName, QVector<QString>(), QString(), QString(),
+    CMachine cloneMachine = comVBox.CreateMachine(m_strCloneFilePath, m_strCloneName, KPlatformArchitecture_x86,
+                                                  QVector<QString>(), QString(), QString(),
                                                   QString(), QString(), QString());
     if (!comVBox.isOk())
     {

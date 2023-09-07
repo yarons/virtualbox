@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstOs2.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdGuestOsInstOs2.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - OS/2 install tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 101035 $"
 
 
 # Standard Python imports.
@@ -190,16 +190,16 @@ class tdGuestOsInstOs2(vbox.TestDriver):
         fRc = fRc and oSession.setBootOrder(2, vboxcon.DeviceType_Floppy)
 
         # Enable HW virt
-        fRc = fRc and oSession.enableVirtEx(True)
+        fRc = fRc and oSession.enableVirtExX86(True)
 
         # Enable I/O APIC
         fRc = fRc and oSession.enableIoApic(self.fEnableIOAPIC)
 
         # Enable Nested Paging
-        fRc = fRc and oSession.enableNestedPaging(self.fEnableNestedPaging)
+        fRc = fRc and oSession.enableNestedPagingX86(self.fEnableNestedPaging)
 
         # Enable PAE
-        fRc = fRc and oSession.enablePae(self.fEnablePAE)
+        fRc = fRc and oSession.enablePaeX86(self.fEnablePAE)
 
         # Remote desktop
         oSession.setupVrdp(True)

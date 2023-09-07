@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUtils.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxManageUtils.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManageUtils.h - Declarations for VBoxManage utility functions.
  */
@@ -35,8 +35,7 @@
 #include <VBox/com/ptr.h>
 #include <VBox/com/VirtualBox.h>
 
-unsigned int getMaxNics(const ComPtr<IVirtualBox> &pVirtualBox,
-                        const ComPtr<IMachine> &pMachine);
+ULONG getMaxNics(const ComPtr<IMachine> &pMachine);
 
 void verifyHostNetworkInterfaceName(const ComPtr<IVirtualBox> &pVirtualBox,
                                     const char *pszTargetName,

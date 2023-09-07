@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SerialPortImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -85,8 +85,8 @@ private:
     HRESULT getSlot(ULONG *aSlot);
     HRESULT getIRQ(ULONG *aIRQ);
     HRESULT setIRQ(ULONG aIRQ);
-    HRESULT getIOBase(ULONG *aIOBase);
-    HRESULT setIOBase(ULONG aIOBase);
+    HRESULT getIOAddress(ULONG *aIOAddress);
+    HRESULT setIOAddress(ULONG aIOAddress);
     HRESULT getServer(BOOL *aServer);
     HRESULT setServer(BOOL aServer);
     HRESULT getPath(com::Utf8Str &aPath);

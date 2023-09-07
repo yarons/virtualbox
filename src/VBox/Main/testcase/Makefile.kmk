@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99770 2023-05-12 09:27:23Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -47,6 +47,7 @@ ifndef VBOX_ONLY_SDK
   	$(if $(VBOX_WITH_GUEST_CONTROL),tstGuestCtrlPaths,) \
   	tstMediumLock \
   	tstSafeArray \
+  	tstSettings \
   	tstBstr \
   	tstGuid \
   	tstUnattendedScript \
@@ -295,6 +296,19 @@ tstSafeArray_SOURCES  = tstSafeArray.cpp
 
 
 #
+# tstSettings
+#
+tstSettings_TEMPLATE = VBoxMainClientTstExe
+tstSettings_INCS     = \
+	../include \
+	$(VBOX_MAIN_APIWRAPPER_INCS) \
+	$(dir $(VBOX_XML_SCHEMADEFS_H))
+tstSettings_SOURCES  = \
+	tstSettings.cpp \
+	../src-all/HashedPw.cpp \
+	../xml/Settings.cpp
+
+#
 # tstBstr
 #
 tstBstr_TEMPLATE = VBoxMainClientTstExe
@@ -348,4 +362,3 @@ tstVBoxCrypto_SOURCES  = tstVBoxCrypto.cpp
 
 # generate rules.
 include $(FILE_KBUILD_SUB_FOOTER)
-
