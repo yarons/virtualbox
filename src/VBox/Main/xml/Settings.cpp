@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 101054 2023-09-07 13:59:53Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 101055 2023-09-07 14:29:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -7989,7 +7989,10 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             xml::ElementNode *pelmPort = pelmPorts->createChild("Port");
             pelmPort->setAttribute("slot", port.ulSlot);
             pelmPort->setAttribute("enabled", port.fEnabled);
-            pelmPort->setAttributeHex("IOAddress", port.ulIOAddress);
+            if (m->sv >= SettingsVersion_v1_20) /* IOBase was renamed to IOAddress in v1.20. */
+                pelmPort->setAttributeHex("IOAddress", port.ulIOAddress);
+            else
+                pelmPort->setAttributeHex("IOBase", port.ulIOAddress);
             pelmPort->setAttribute("IRQ", port.ulIRQ);
 
             const char *pcszHostMode;
