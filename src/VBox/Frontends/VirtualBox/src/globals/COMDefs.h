@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 100068 2023-06-05 12:42:04Z sergey.dubov@oracle.com $ */
+/* $Id: COMDefs.h 101042 2023-09-07 09:53:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -282,7 +282,8 @@ public:
     static void FromSafeArray(const com::SafeArray<T> &aArr, QVector<T> &aVec)
     {
         aVec.resize(static_cast<int>(aArr.size()));
-        memcpy(&aVec[0], aArr.raw(), aArr.size() * sizeof(T));
+        if (aArr.size())
+            memcpy(&aVec[0], aArr.raw(), aArr.size() * sizeof(T));
     }
 
     /* Arrays of strings */
