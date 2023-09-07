@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 101050 2023-09-07 12:17:44Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 101054 2023-09-07 13:59:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5406,7 +5406,6 @@ void MachineConfigFile::readPlatform(const xml::ElementNode &elmPlatformOrHardwa
         }
 #endif
         default:
-            AssertFailed();
             break;
     }
 }

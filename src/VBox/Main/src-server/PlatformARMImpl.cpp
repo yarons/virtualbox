@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.cpp 101052 2023-09-07 13:11:24Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformARMImpl.cpp 101054 2023-09-07 13:59:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -171,7 +171,8 @@ void PlatformARM::uninit()
 void PlatformARM::i_rollback()
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    m->bd.rollback();
+    if (m)
+        m->bd.rollback();
 }
 
 void PlatformARM::i_commit()

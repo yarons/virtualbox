@@ -1,4 +1,4 @@
-/* $Id: PlatformX86Impl.cpp 101052 2023-09-07 13:11:24Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformX86Impl.cpp 101054 2023-09-07 13:59:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 platform settings.
  */
@@ -180,7 +180,8 @@ void PlatformX86::uninit()
 void PlatformX86::i_rollback()
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    m->bd.rollback();
+    if (m)
+        m->bd.rollback();
 }
 
 void PlatformX86::i_commit()
