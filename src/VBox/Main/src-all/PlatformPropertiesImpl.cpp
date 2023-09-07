@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101049 2023-09-07 12:10:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -71,7 +71,7 @@ void PlatformProperties::FinalRelease()
  *
  * @returns HRESULT
  * @param   aParent             Pointer to IVirtualBox parent object (weak).
- * @param   mfIsHost            Set to \c true if this instance handles platform properties of the host,
+ * @param   fIsHost             Set to \c true if this instance handles platform properties of the host,
  *                              or set to \c false for guests (default).
  */
 HRESULT PlatformProperties::init(VirtualBox *aParent, bool fIsHost /* = false */)
