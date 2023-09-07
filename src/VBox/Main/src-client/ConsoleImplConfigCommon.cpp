@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 101043 2023-09-07 10:16:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -516,8 +516,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
     hrc = pPlatform->COMGETTER(Architecture)(&platformArch);
     AssertComRCReturn(hrc, VERR_COM_VM_ERROR);
 
-    int rc;
-
     switch (platformArch)
     {
         case PlatformArchitecture_x86:
@@ -528,11 +526,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
             return i_configConstructorArmV8(pUVM, pVM, pVMM, pAlock);
 #endif
         default:
-            rc = VERR_PLATFORM_ARCH_NOT_SUPPORTED;
             break;
     }
 
-    return rc;
+    return VERR_PLATFORM_ARCH_NOT_SUPPORTED;;
 }
 
 

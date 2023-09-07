@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformARMImpl.h 101043 2023-09-07 10:16:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef MAIN_INCLUDED_PlatformARM_h
-#define MAIN_INCLUDED_PlatformARM_h
+#ifndef MAIN_INCLUDED_PlatformARMImpl_h
+#define MAIN_INCLUDED_PlatformARMImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -68,5 +68,5 @@ public:
     HRESULT i_saveSettings(settings::PlatformARM &data);
     HRESULT i_applyDefaults(GuestOSType *aOsType);
 };
-#endif /* !MAIN_INCLUDED_PlatformARM_h */
+#endif /* !MAIN_INCLUDED_PlatformARMImpl_h */
 

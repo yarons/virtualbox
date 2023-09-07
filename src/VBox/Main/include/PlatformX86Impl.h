@@ -1,4 +1,4 @@
-/* $Id: PlatformX86Impl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformX86Impl.h 101043 2023-09-07 10:16:04Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 platform settings.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef MAIN_INCLUDED_PlatformX86_h
-#define MAIN_INCLUDED_PlatformX86_h
+#ifndef MAIN_INCLUDED_PlatformX86Impl_h
+#define MAIN_INCLUDED_PlatformX86Impl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -86,5 +86,5 @@ private:
     HRESULT setHWVirtExProperty(HWVirtExPropertyType_T aProperty, BOOL aValue);
 };
 
-#endif /* !MAIN_INCLUDED_PlatformX86_h */
+#endif /* !MAIN_INCLUDED_PlatformX86Impl_h */
 
