@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: HostX86Impl.cpp 101041 2023-09-07 09:52:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 host specific IHost methods / attributes.
  */

@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: HostX86Impl.h 101041 2023-09-07 09:52:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 host specific IHost methods / attributes.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef MAIN_INCLUDED_HostX86_h
-#define MAIN_INCLUDED_HostX86_h
+#ifndef MAIN_INCLUDED_HostX86Impl_h
+#define MAIN_INCLUDED_HostX86Impl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -88,5 +88,5 @@ private:
     Data *m;
 };
 
-#endif /* !MAIN_INCLUDED_HostX86_h */
+#endif /* !MAIN_INCLUDED_HostX86Impl_h */
 
