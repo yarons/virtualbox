@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101049 2023-09-07 12:10:12Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101057 2023-09-07 17:12:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -473,8 +473,8 @@ HRESULT PlatformProperties::getDeviceTypesForStorageBus(StorageBus_T aBus,
     return S_OK;
 }
 
-HRESULT PlatformProperties::getStorageBusForStorageControllerType(StorageControllerType_T aStorageControllerType,
-                                                                  StorageBus_T *aStorageBus)
+HRESULT PlatformProperties::getStorageBusForControllerType(StorageControllerType_T aStorageControllerType,
+                                                           StorageBus_T *aStorageBus)
 {
     /* no need to lock, this is const */
     switch (aStorageControllerType)
@@ -513,8 +513,8 @@ HRESULT PlatformProperties::getStorageBusForStorageControllerType(StorageControl
     return S_OK;
 }
 
-HRESULT PlatformProperties::getStorageControllerTypesForStorageBus(StorageBus_T aStorageBus,
-                                                                   std::vector<StorageControllerType_T> &aStorageControllerTypes)
+HRESULT PlatformProperties::getStorageControllerTypesForBus(StorageBus_T aStorageBus,
+                                                            std::vector<StorageControllerType_T> &aStorageControllerTypes)
 {
     aStorageControllerTypes.resize(0);
 
