@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class declaration.
  */
@@ -90,7 +90,7 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the color theme label instance. */
+        /** Holds the 'color theme' editor instance. */
         UIColorThemeEditor *m_pEditorColorTheme;
     /** @} */
 };

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsUpdate.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -91,7 +91,7 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the update settings editor instance. */
+        /** Holds the 'update settings' editor instance. */
         UIUpdateSettingsEditor *m_pEditorUpdateSettings;
     /** @} */
 };

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -93,13 +93,13 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the maximum guest screen size editor instance. */
+        /** Holds the 'maximum guest screen size' editor instance. */
         UIMaximumGuestScreenSizeEditor *m_pEditorMaximumGuestScreenSize;
-        /** Holds the scale-factor editor instance. */
+        /** Holds the 'scale-factor' editor instance. */
         UIScaleFactorEditor            *m_pEditorScaleFactor;
-        /** Holds the global display features editor instance. */
-        UIDisplayFeaturesEditor        *m_pEditorGlobalDisplayFeatures;
-        /** Holds the font scale editor instance. */
+        /** Holds the 'display features' editor instance. */
+        UIDisplayFeaturesEditor        *m_pEditorDisplayFeatures;
+        /** Holds the 'font scale' editor instance. */
         UIFontScaleEditor              *m_pFontScaleEditor;
     /** @} */
 };

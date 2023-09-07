@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class declaration.
  */
@@ -77,8 +77,6 @@ private:
 
     /** Prepares all. */
     void prepare();
-    /** Cleanups all. */
-    void cleanup();
 
     /** Reloads language list, choosing item with @a strLanguageId as current. */
     void reloadLanguageTree(const QString &strLanguageId);

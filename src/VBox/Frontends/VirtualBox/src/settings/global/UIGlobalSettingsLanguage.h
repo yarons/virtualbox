@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsLanguage.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -90,7 +90,7 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the language settings editor instance. */
+        /** Holds the 'language settings' editor instance. */
         UILanguageSettingsEditor *m_pEditorLanguageSettings;
     /** @} */
 };
