@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformARMImpl.cpp 101052 2023-09-07 13:11:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -158,11 +158,14 @@ void PlatformARM::uninit()
 
     unconst(mMachine) = NULL;
 
-    m->bd.free();
-    unconst(m->pPeer) = NULL;
+    if (m)
+    {
+        m->bd.free();
+        unconst(m->pPeer) = NULL;
 
-    delete m;
-    m = NULL;
+        delete m;
+        m = NULL;
+    }
 }
 
 void PlatformARM::i_rollback()

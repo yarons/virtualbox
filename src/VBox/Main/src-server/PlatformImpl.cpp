@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 101048 2023-09-07 12:03:47Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.cpp 101052 2023-09-07 13:11:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -90,6 +90,10 @@ HRESULT Platform::init(Machine *aParent)
     m = new Data();
 
     m->bd.allocate();
+
+    /* Allocates architecture-dependent stuff. */
+    HRESULT hrc = i_initArchitecture(m->bd->architectureType);
+    AssertComRCReturnRC(hrc);
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
@@ -661,7 +665,7 @@ void Platform::i_copyFrom(Platform *aThat)
  * @note    Creates the platform-specific sub object (e.g. x86 or ARM).
  *          Usually only called when creating a new machine or loading settings.
  */
-HRESULT Platform::i_initArchitecture(PlatformArchitecture_T aArchitecture, Platform *aThat, bool fCopy /* = false */)
+HRESULT Platform::i_initArchitecture(PlatformArchitecture_T aArchitecture, Platform *aThat /* = NULL */, bool fCopy /* = false */)
 {
     /* sanity */
     AutoCaller autoCaller(this);
