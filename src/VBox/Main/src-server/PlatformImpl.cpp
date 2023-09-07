@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.cpp 101046 2023-09-07 11:42:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -717,7 +717,7 @@ HRESULT Platform::i_initArchitecture(PlatformArchitecture_T aArchitecture, Platf
         }
 #endif
         default:
-            AssertFailedStmt(hrc = VERR_PLATFORM_ARCH_NOT_SUPPORTED);
+            AssertFailedStmt(hrc = VBOX_E_PLATFORM_ARCH_NOT_SUPPORTED);
             break;
     }
 
