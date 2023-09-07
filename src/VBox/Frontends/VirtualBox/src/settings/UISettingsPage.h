@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 101031 2023-09-06 15:06:02Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.h 101051 2023-09-07 13:05:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -183,9 +183,6 @@ public:
     /** Performs page polishing. */
     virtual void polishPage() {}
 
-    /** Filters out contents with description unrelated to passed @a strFilter. */
-    virtual void filterOut(const QString &strFilter) RT_OVERRIDE;
-
 public slots:
 
     /** Performs validation. */
@@ -296,9 +293,6 @@ public:
 
     /** Defines @a strName. */
     void setName(const QString &strName);
-
-    /** Filters out contents with description unrelated to passed @a strFilter. */
-    virtual void filterOut(const QString &strFilter) RT_OVERRIDE;
 
 protected:
 
