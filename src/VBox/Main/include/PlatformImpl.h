@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.h 101044 2023-09-07 10:29:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef MAIN_INCLUDED_Platform_h
-#define MAIN_INCLUDED_Platform_h
+#ifndef MAIN_INCLUDED_PlatformImpl_h
+#define MAIN_INCLUDED_PlatformImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -110,5 +110,5 @@ private:
 #endif
 };
 
-#endif /* !MAIN_INCLUDED_Platform_h */
+#endif /* !MAIN_INCLUDED_PlatformImpl_h */
 
