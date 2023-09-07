@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 101049 2023-09-07 12:10:12Z andreas.loeffler@oracle.com $ */
+/* $Id: Settings.cpp 101050 2023-09-07 12:17:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5199,8 +5199,8 @@ void MachineConfigFile::readPlatformCPUIDTreeX86(const xml::ElementNode &elmPlat
                                                  PlatformX86 &platX86)
 {
     const xml::ElementNode *pelmCPUChild;
-    if ((pelmCPUChild = elmChild.findChildElement("CpuIdTree")))
-        readCpuIdTreeX86(*elmPlatformOrHardware, platX86.llCpuIdLeafs);
+    if ((pelmCPUChild = elmPlatformOrHardware.findChildElement("CpuIdTree")))
+        readCpuIdTreeX86(*pelmCPUChild, platX86.llCpuIdLeafs);
 }
 
 /**
