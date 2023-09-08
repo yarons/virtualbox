@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
+# $Id: vboxwrappers.py 101067 2023-09-08 12:56:08Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101035 $"
+__version__ = "$Revision: 101067 $"
 
 
 # Standard Python imports.
@@ -964,13 +964,17 @@ class SessionWrapper(TdTaskBase):
         """
         Returns if the machine is of the ARM platform architecture or not.
         """
-        return self.isPlatformArch(vboxcon.PlatformArchitecture_ARM);
+        if self.fpApiVer >= 7.1:
+            return self.isPlatformArch(vboxcon.PlatformArchitecture_ARM);
+        return False; # For VBox < 7.1 this always is false (x86 only).
 
     def isPlatformX86(self):
         """
         Returns if the machine is of the x86 platform architecture or not.
         """
-        return self.isPlatformArch(vboxcon.PlatformArchitecture_x86);
+        if self.fpApiVer >= 7.1:
+            return self.isPlatformArch(vboxcon.PlatformArchitecture_x86);
+        return True; # For VBox < 7.1 this always is true (x86 only).
 
     def enableVirtExX86(self, fEnable):
         """
