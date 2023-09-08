@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -33,7 +33,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "QILabelSeparator.h"
 #include "QIToolBar.h"
 #include "QITreeWidget.h"
 #include "UIIconPool.h"
@@ -277,7 +276,6 @@ void SFTreeViewItem::processColumn(int iColumn)
 
 UISharedFoldersEditor::UISharedFoldersEditor(QWidget *pParent /* = 0 */)
     : UIEditor(pParent)
-    , m_pLabelSeparator(0)
     , m_pLayoutTree(0)
     , m_pTreeWidget(0)
     , m_pToolbar(0)
@@ -330,8 +328,6 @@ QList<UIDataSharedFolder> UISharedFoldersEditor::value() const
 
 void UISharedFoldersEditor::setFeatureAvailable(bool fAvailable)
 {
-    if (m_pLabelSeparator)
-        m_pLabelSeparator->setEnabled(fAvailable);
     if (m_pTreeWidget)
         m_pTreeWidget->setEnabled(fAvailable);
     if (m_pToolbar)
@@ -346,10 +342,6 @@ void UISharedFoldersEditor::setFoldersAvailable(UISharedFolderType enmType, bool
 
 void UISharedFoldersEditor::retranslateUi()
 {
-    /* Translate separator label: */
-    if (m_pLabelSeparator)
-        m_pLabelSeparator->setText(tr("Shared &Folders"));
-
     /* Translate tree-widget: */
     if (m_pTreeWidget)
     {
@@ -645,11 +637,6 @@ void UISharedFoldersEditor::prepareWidgets()
     {
         pLayout->setContentsMargins(0, 0, 0, 0);
 
-        /* Prepare separator: */
-        m_pLabelSeparator = new QILabelSeparator(this);
-        if (m_pLabelSeparator)
-            pLayout->addWidget(m_pLabelSeparator);
-
         /* Prepare view layout: */
         m_pLayoutTree = new QHBoxLayout;
         if (m_pLayoutTree)
@@ -673,8 +660,6 @@ void UISharedFoldersEditor::prepareTreeWidget()
     m_pTreeWidget = new QITreeWidget(this);
     if (m_pTreeWidget)
     {
-        if (m_pLabelSeparator)
-            m_pLabelSeparator->setBuddy(m_pTreeWidget);
         m_pTreeWidget->header()->setSectionsMovable(false);
         m_pTreeWidget->setMinimumSize(QSize(0, 200));
         m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);

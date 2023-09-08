@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.h 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* Forward declartions: */
 class QTreeWidgetItem;
-class QILabelSeparator;
 class QIRichTextLabel;
 class QITreeWidget;
 
@@ -89,8 +88,6 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the separator label instance. */
-        QILabelSeparator *m_pLabelSeparator;
         /** Holds the tree-widget instance. */
         QITreeWidget     *m_pTreeWidget;
         /** Holds the info label instance. */

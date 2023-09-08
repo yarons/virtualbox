@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.h 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class declaration.
  */
@@ -38,7 +38,6 @@
 /* Forward declartions: */
 class QHBoxLayout;
 class QTreeWidgetItem;
-class QILabelSeparator;
 class QIToolBar;
 class QITreeWidget;
 class SFTreeViewItem;
@@ -176,8 +175,6 @@ private:
 
     /** @name Widgets
      * @{ */
-        /** Holds the widget separator instance. */
-        QILabelSeparator *m_pLabelSeparator;
         /** Holds the tree layout instance. */
         QHBoxLayout      *m_pLayoutTree;
         /** Holds the tree-widget instance. */

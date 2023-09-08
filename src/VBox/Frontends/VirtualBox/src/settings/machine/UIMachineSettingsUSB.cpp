@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -38,7 +38,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "QILabelSeparator.h"
 #include "QITreeWidget.h"
 #include "QIWidgetValidator.h"
 #include "UIConverter.h"
