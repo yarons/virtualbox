@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 101064 2023-09-08 12:44:47Z andreas.loeffler@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 101074 2023-09-08 15:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -374,9 +374,8 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
     /* Acceleration: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeSystem_Acceleration)
     {
-        CPlatform comPlatform                    = comMachine.GetPlatform();
-        KPlatformArchitecture const platformArch = comPlatform.GetArchitecture();
-        switch (platformArch)
+        const CPlatform comPlatform = comMachine.GetPlatform();
+        switch (comPlatform.GetArchitecture())
         {
             case KPlatformArchitecture_x86:
             {
@@ -416,6 +415,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
                 break;
             }
 #endif
+
             default:
                 break;
         }

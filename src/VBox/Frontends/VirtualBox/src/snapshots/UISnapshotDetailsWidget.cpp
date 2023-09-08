@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 101064 2023-09-08 12:44:47Z andreas.loeffler@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 101074 2023-09-08 15:40:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1767,9 +1767,7 @@ QString UISnapshotDetailsWidget::accelerationReport(const CMachine &comMachine)
 
     /* Prepare report: */
     QStringList aReport;
-
-    KPlatformArchitecture const platformArch = comPlatform.GetArchitecture();
-    switch (platformArch)
+    switch (comPlatform.GetArchitecture())
     {
         case KPlatformArchitecture_x86:
         {
@@ -1790,6 +1788,7 @@ QString UISnapshotDetailsWidget::accelerationReport(const CMachine &comMachine)
             /* PAE/NX? */
             if (comPlatformX86.GetCPUProperty(KCPUPropertyTypeX86_PAE))
                 aReport << QApplication::translate("UIDetails", "PAE/NX", "details (system)");
+
             break;
         }
 
@@ -1800,10 +1799,10 @@ QString UISnapshotDetailsWidget::accelerationReport(const CMachine &comMachine)
             break;
         }
 #endif
+
         default:
             break;
     }
-
     /* Paravirtualization Interface? */
     switch (comMachine.GetEffectiveParavirtProvider())
     {
