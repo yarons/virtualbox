@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 100244 2023-06-22 03:59:01Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 101060 2023-09-08 07:59:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -5469,12 +5469,9 @@ static uint32_t vmxHCCheckGuestState(PVMCPUCC pVCpu, PCVMXVMCSINFO pVmcsInfo)
             for (unsigned i = 0; i < 8; i++)
             {
                 uint8_t u8Val = (u64Val & 0xff);
-                if (   u8Val != 0 /* UC */
-                    && u8Val != 1 /* WC */
-                    && u8Val != 4 /* WT */
-                    && u8Val != 5 /* WP */
-                    && u8Val != 6 /* WB */
-                    && u8Val != 7 /* UC- */)
+                if (   u8Val > MSR_IA32_PAT_MT_UCD
+                    || u8Val == MSR_IA32_PAT_MT_RSVD_2
+                    || u8Val == MSR_IA32_PAT_MT_RSVD_3)
                     HMVMX_ERROR_BREAK(VMX_IGS_PAT_MSR_INVALID);
                 u64Val >>= 8;
             }
