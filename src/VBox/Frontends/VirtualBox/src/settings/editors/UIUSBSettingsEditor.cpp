@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class implementation.
  */
@@ -160,12 +160,18 @@ void UIUSBSettingsEditor::prepareWidgets()
                 /* Prepare USB controller editor: */
                 m_pEditorController = new UIUSBControllerEditor(m_pWidgetSettings);
                 if (m_pEditorController)
+                {
+                    m_editors << m_pEditorController;
                     pLayoutSettings->addWidget(m_pEditorController);
+                }
 
                 /* Prepare USB filters editor: */
                 m_pEditorFilters = new UIUSBFiltersEditor(m_pWidgetSettings);
                 if (m_pEditorFilters)
+                {
+                    m_editors << m_pEditorFilters;
                     pLayoutSettings->addWidget(m_pEditorFilters);
+                }
             }
 
             pLayout->addWidget(m_pWidgetSettings, 1, 1);

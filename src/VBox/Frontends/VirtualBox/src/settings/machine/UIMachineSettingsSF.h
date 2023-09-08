@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsSF.h 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
@@ -87,7 +87,7 @@ private:
 
     /** Prepares all. */
     void prepare();
-    /** Prepares Widgets. */
+    /** Prepares widgets. */
     void prepareWidgets();
     /** Prepares connections. */
     void prepareConnections();

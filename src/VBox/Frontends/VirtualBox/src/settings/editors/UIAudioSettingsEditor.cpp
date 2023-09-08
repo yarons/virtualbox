@@ -1,4 +1,4 @@
-/* $Id: UIAudioSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioSettingsEditor.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioSettingsEditor class implementation.
  */
@@ -207,17 +207,26 @@ void UIAudioSettingsEditor::prepareWidgets()
                 /* Prepare host driver editor: */
                 m_pEditorAudioHostDriver = new UIAudioHostDriverEditor(m_pWidgetSettings);
                 if (m_pEditorAudioHostDriver)
+                {
+                    m_editors << m_pEditorAudioHostDriver;
                     pLayoutAudioSettings->addWidget(m_pEditorAudioHostDriver);
+                }
 
                 /* Prepare controller editor: */
                 m_pEditorAudioController = new UIAudioControllerEditor(m_pWidgetSettings);
                 if (m_pEditorAudioController)
+                {
+                    m_editors << m_pEditorAudioController;
                     pLayoutAudioSettings->addWidget(m_pEditorAudioController);
+                }
 
                 /* Prepare features editor: */
                 m_pEditorAudioFeatures = new UIAudioFeaturesEditor(m_pWidgetSettings);
                 if (m_pEditorAudioFeatures)
+                {
+                    m_editors << m_pEditorAudioFeatures;
                     pLayoutAudioSettings->addWidget(m_pEditorAudioFeatures);
+                }
             }
 
             pLayout->addWidget(m_pWidgetSettings, 1, 1);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 99063 2023-03-20 11:17:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -349,7 +349,10 @@ void UIMachineSettingsUSB::prepareWidgets()
         /* Prepare settings editor: */
         m_pEditorUsbSettings = new UIUSBSettingsEditor(this);
         if (m_pEditorUsbSettings)
+        {
+            m_editors << m_pEditorUsbSettings;
             pLayout->addWidget(m_pEditorUsbSettings);
+        }
     }
 }
 
