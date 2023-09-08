@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 101073 2023-09-08 15:15:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -159,6 +159,8 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 
     ULONG ulCpuExecutionCap = 100;
     hrc = pMachine->COMGETTER(CPUExecutionCap)(&ulCpuExecutionCap);                         H();
+
+    LogRel(("Guest architecture: ARM\n"));
 
     Bstr osTypeId;
     hrc = pMachine->COMGETTER(OSTypeId)(osTypeId.asOutParam());                             H();
