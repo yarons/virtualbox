@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 101064 2023-09-08 12:44:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -53,6 +53,9 @@
 #include "CMediumAttachment.h"
 #include "CPlatform.h"
 #include "CPlatformX86.h"
+#ifdef VBOX_WITH_VIRT_ARMV8
+# include "CPlatformARM.h"
+#endif
 #include "CProgress.h"
 
 
@@ -730,10 +733,31 @@ bool UIMachineSettingsGeneral::saveBasicData()
                 CVirtualBox vbox = uiCommon().virtualBox();
                 // Should we check global object getters?
                 const CGuestOSType &comNewType = vbox.GetGuestOSType(newGeneralData.m_strGuestOsTypeId);
-                CPlatform comPlatform = m_machine.GetPlatform();
-                CPlatformX86 comPlatformX86 = comPlatform.GetX86();
-                comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_LongMode, comNewType.GetIs64Bit());
-                fSuccess = comPlatformX86.isOk();
+
+                CPlatform comPlatform                    = m_machine.GetPlatform();
+                KPlatformArchitecture const platformArch = comPlatform.GetArchitecture();
+                switch (platformArch)
+                {
+                    case KPlatformArchitecture_x86:
+                    {
+                        CPlatformX86 comPlatformX86 = comPlatform.GetX86();
+                        comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_LongMode, comNewType.GetIs64Bit());
+                        fSuccess = comPlatformX86.isOk();
+                        break;
+                    }
+
+#ifdef VBOX_WITH_VIRT_ARMV8
+                    case KPlatformArchitecture_ARM:
+                    {
+                        CPlatformARM comPlatformARM = comPlatform.GetARM();
+                        /** @todo BUGBUG ARM stuff goes here. */
+                        fSuccess = comPlatformARM.isOk();
+                        break;
+                    }
+#endif
+                    default:
+                        break;
+                }
                 /// @todo convey error info ..
             }
         }
