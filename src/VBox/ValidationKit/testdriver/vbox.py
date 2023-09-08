@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 101061 2023-09-08 08:05:04Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 101076 2023-09-08 16:53:37Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101061 $"
+__version__ = "$Revision: 101076 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2608,7 +2608,6 @@ class TestDriver(base.TestDriver):                                              
     def createTestVM(self,
                      sName,
                      iGroup,
-                     sPlatformArchitecture = 'x86',
                      sHd = None,
                      cMbRam = None,
                      cCpus = 1,
@@ -2636,7 +2635,8 @@ class TestDriver(base.TestDriver):                                              
                      sCom1RawFile = None,
                      fSecureBoot = False,
                      sUefiMokPathPrefix = None,
-                     sGraphicsControllerType = None):
+                     sGraphicsControllerType = None,
+                     sPlatformArchitecture = 'x86'):
         """
         Creates a test VM with a immutable HD from the test resources.
         """
