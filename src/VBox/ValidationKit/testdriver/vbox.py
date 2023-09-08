@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 101061 2023-09-08 08:05:04Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101035 $"
+__version__ = "$Revision: 101061 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2548,20 +2548,18 @@ class TestDriver(base.TestDriver):                                              
         if not self.importVBoxApi():
             return None;
 
-        # Sanity.
-        if   self.fpApiVer < 7.1 \
-        and sPlatformArchitecture != 'x86':  # 7.1 introduced platform support.
-            reporter.errorXcpt('This host version of VirtualBox only supports x86 as platform architecture');
-            return None;
-
         # Default to x86 if not explicitly specified.
-        if not sPlatformArchitecture \
-        or     sPlatformArchitecture == 'x86':
-            enmPlatformArchitecture = vboxcon.PlatformArchitecture_x86;
-        elif sPlatformArchitecture == 'ARM':
-            enmPlatformArchitecture = vboxcon.PlatformArchitecture_ARM;
-        else:
-            reporter.error('Unkown platform architecture "%s"' % (sPlatformArchitecture,));
+        if self.fpApiVer >= 7.1:
+            if not sPlatformArchitecture \
+            or     sPlatformArchitecture == 'x86':
+                enmPlatformArchitecture = vboxcon.PlatformArchitecture_x86;
+            elif sPlatformArchitecture == 'ARM':
+                enmPlatformArchitecture = vboxcon.PlatformArchitecture_ARM;
+            else:
+                reporter.error('Unkown platform architecture "%s"' % (sPlatformArchitecture,));
+                return None;
+        elif sPlatformArchitecture != 'x86':  # < 7.1 only has x86 support.
+            reporter.errorXcpt('This host version of VirtualBox only supports x86 as platform architecture');
             return None;
 
         # create + register the VM
