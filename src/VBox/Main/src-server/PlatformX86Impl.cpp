@@ -1,4 +1,4 @@
-/* $Id: PlatformX86Impl.cpp 101054 2023-09-07 13:59:53Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformX86Impl.cpp 101063 2023-09-08 12:41:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 platform settings.
  */
@@ -87,12 +87,11 @@ HRESULT PlatformX86::init(Platform *aParent, Machine *aMachine)
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
-    m = new Data;
-
     /* share the parent + machine weakly */
     unconst(mParent)  = aParent;
     unconst(mMachine) = aMachine;
 
+    m = new Data;
     m->bd.allocate();
 
     /* Confirm a successful initialization */
