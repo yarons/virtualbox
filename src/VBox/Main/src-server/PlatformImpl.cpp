@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 101068 2023-09-08 14:37:11Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.cpp 101070 2023-09-08 14:42:56Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -764,9 +764,9 @@ HRESULT Platform::i_applyDefaults(GuestOSType *aOsType)
 
     HRESULT hrc = S_OK;
 
-    ChipsetType_T enmChipsetType;
-    IommuType_T   enmIommuType;
-    BOOL          fRTCUseUTC;
+    ChipsetType_T enmChipsetType = ChipsetType_Null;
+    IommuType_T   enmIommuType   = IommuType_None;
+    BOOL          fRTCUseUTC     = FALSE;
 
     if (aOsType)
     {
