@@ -1,4 +1,4 @@
-/* $Id: utils.c 101080 2023-09-11 14:06:52Z vadim.galitsyn@oracle.com $ */
+/* $Id: utils.c 101081 2023-09-11 15:39:55Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -293,7 +293,7 @@ DECLINLINE(int) sf_file_mode_to_linux(uint32_t fVBoxMode, int fFixedMode, int fC
  * Update inode timestamps.
  *
  * @param pInode    Linux inode object.
- # @param pObjInfo  VBox vboxsf object.
+ * @param pObjInfo  VBox vboxsf object.
  */
 static void vbsf_update_inode_timestamps(struct inode *pInode, PSHFLFSOBJINFO pObjInfo)
 {
