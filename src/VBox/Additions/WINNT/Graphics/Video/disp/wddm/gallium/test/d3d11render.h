@@ -1,4 +1,4 @@
-/* $Id: d3d11render.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: d3d11render.h 101082 2023-09-11 15:53:22Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Interface for D3D11 tests.
  */
@@ -85,6 +85,7 @@ public:
     virtual HRESULT InitRender(D3D11DeviceProvider *pDP) = 0;
     virtual HRESULT DoRender(D3D11DeviceProvider *pDP) = 0;
     virtual void TimeAdvance(float dt) { (void)dt; return; }
+    virtual bool IsDepthStencilBufferRequired(D3D11DeviceProvider *pDP) { (void)pDP; return true; }
 };
 
 D3D11Render *CreateRender(int iRenderId);
