@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UINotificationObjects.h 101078 2023-09-11 13:49:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -1857,8 +1857,8 @@ private:
     CCloudMachine  m_comMachine;
     /** Holds the clone name. */
     QString        m_strCloneName;
-    // This is wrong, we need to store ocid, we have no one for now ..
-    QUuid          m_uId;
+    /** Holds the machine internal id. */
+    QString        m_strId;
     /** Holds the machine name. */
     QString        m_strName;
 };
