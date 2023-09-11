@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 101085 2023-09-11 19:36:05Z jack.doherty@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1914,4 +1914,3 @@ const PDMDRVREG g_DrvNAT =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-
