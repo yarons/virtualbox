@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 101099 2023-09-12 23:43:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 101100 2023-09-12 23:47:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -1910,8 +1910,8 @@ VBoxDbgStatsModel::updateDone(bool a_fSuccess)
      */
     if (m_fUpdateInsertRemove)
     {
-#if 0 // hrmpf, layoutChanged() didn't work reliably at some point so doing this as well... 
-        beginResetModel();  
+#if 0 /* hrmpf, layoutChanged() didn't work reliably at some point so doing this as well... */
+        beginResetModel();
         endResetModel();
 #else
         emit layoutChanged();
