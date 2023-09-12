@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgBase.cpp 101093 2023-09-12 22:53:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -227,21 +227,26 @@ VBoxDbgBaseWindow::vShow()
 void
 VBoxDbgBaseWindow::vReposition(int a_x, int a_y, unsigned a_cx, unsigned a_cy, bool a_fResize)
 {
-    if (a_fResize)
+    /* Don't modify if maximized.
+       We miss the desired size + position here, but never mind for now. */
+    if (!(windowState() & Qt::WindowMaximized))
     {
-        m_cx = a_cx;
-        m_cy = a_cy;
+        if (a_fResize)
+        {
+            m_cx = a_cx;
+            m_cy = a_cy;
 
-        QSize BorderSize = frameSize() - size();
-        if (BorderSize == QSize(0,0))
-            BorderSize = vGuessBorderSizes();
+            QSize BorderSize = frameSize() - size();
+            if (BorderSize == QSize(0,0))
+                BorderSize = vGuessBorderSizes();
 
-        resize(a_cx - BorderSize.width(), a_cy - BorderSize.height());
+            resize(a_cx - BorderSize.width(), a_cy - BorderSize.height());
+        }
+
+        m_x = a_x;
+        m_y = a_y;
+        move(a_x, a_y);
     }
-
-    m_x = a_x;
-    m_y = a_y;
-    move(a_x, a_y);
 }
 
 
