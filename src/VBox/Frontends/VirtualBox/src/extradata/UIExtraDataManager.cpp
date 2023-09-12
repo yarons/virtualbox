@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 101089 2023-09-12 11:50:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4684,16 +4684,6 @@ QFont UIExtraDataManager::logViewerFont()
 #else
     return QFontDatabase::font(strFamily, strStyleName, iFontSize);
 #endif
-}
-
-void UIExtraDataManager::setLogViewerVisiblePanels(const QStringList &panelNameList)
-{
-    setExtraDataStringList(GUI_GuestControl_LogViewerVisiblePanels, panelNameList);
-}
-
-QStringList UIExtraDataManager::logViewerVisiblePanels()
-{
-    return extraDataStringList(GUI_GuestControl_LogViewerVisiblePanels);
 }
 
 void UIExtraDataManager::setHelpBrowserLastUrlList(const QStringList &urlList)
