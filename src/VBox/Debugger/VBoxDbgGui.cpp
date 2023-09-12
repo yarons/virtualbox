@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 100068 2023-06-05 12:42:04Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxDbgGui.cpp 101094 2023-09-12 22:54:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -267,8 +267,8 @@ void
 VBoxDbgGui::adjustRelativePos(int x, int y, unsigned cx, unsigned cy)
 {
     /* Disregard a width less than 640 since it will mess up the console,
-     * but only if previos width was already initialized.. */
-    if ((cx < 640) && (m_cx > 0))
+       but only if previous width was already initialized.. */
+    if (cx < 640 && m_cx > 0)
         cx = m_cx;
 
     const bool fResize = cx != m_cx || cy != m_cy;
