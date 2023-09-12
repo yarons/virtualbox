@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 101098 2023-09-12 23:31:00Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 101099 2023-09-12 23:43:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3185,13 +3185,13 @@ VBoxDbgStats::VBoxDbgStats(VBoxDbgGui *a_pDbgGui, const char *pszFilter /*= NULL
     pLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     m_pPatCB = new QComboBox();
-    m_pPatCB->setCompleter(0);
     pHLayout->addWidget(m_pPatCB);
     if (!m_PatStr.isEmpty())
         m_pPatCB->addItem(m_PatStr);
     m_pPatCB->setDuplicatesEnabled(false);
     m_pPatCB->setEditable(true);
-    connect(m_pPatCB, SIGNAL(activated(const QString &)), this, SLOT(apply(const QString &)));
+    m_pPatCB->setCompleter(0);
+    connect(m_pPatCB, SIGNAL(textActivated(const QString &)), this, SLOT(apply(const QString &)));
 
     QPushButton *pPB = new QPushButton("&All");
     pHLayout->addWidget(pPB);
