@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 101090 2023-09-12 12:14:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -716,6 +716,16 @@ void UIVMLogViewerWidget::sltPanelCurrentTabChanged(int iIndex)
     }
 }
 
+void UIVMLogViewerWidget::sltShowSearchPane()
+{
+    AssertReturnVoid(m_pPanel);
+
+    m_pPanel->setVisible(true);
+    int iIndex = (int)UIVMLogViewerPaneContainer::Page_Search;
+    m_pPanel->setCurrentIndex(iIndex);
+    sltPanelCurrentTabChanged(iIndex);
+}
+
 void UIVMLogViewerWidget::prepare()
 {
     /* Load options: */
@@ -831,6 +841,8 @@ void UIVMLogViewerWidget::prepareWidgets()
             this, &UIVMLogViewerWidget::sltResetOptionsToDefault);
     connect(m_pPanel, &UIVMLogViewerPaneContainer::sigCurrentTabChanged,
             this, &UIVMLogViewerWidget::sltPanelCurrentTabChanged);
+    connect(m_pPanel, &UIVMLogViewerPaneContainer::sigShowSearchPane,
+            this, &UIVMLogViewerWidget::sltShowSearchPane);
 
     m_pMainLayout->addWidget(m_pPanel);
 }

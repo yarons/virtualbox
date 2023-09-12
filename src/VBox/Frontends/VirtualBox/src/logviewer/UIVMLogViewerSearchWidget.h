@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchWidget.h 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -56,6 +56,7 @@ signals:
 
     void sigHighlightingUpdated();
     void sigSearchUpdated();
+    void sigShowPane();
 
 public:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 100962 2023-08-23 18:54:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -62,6 +62,8 @@ signals:
     void sigChangeFontSizeInPoints(int size);
     void sigChangeFont(QFont font);
     void sigResetToDefaults();
+
+    void sigShowSearchPane();
 
 public:
 
