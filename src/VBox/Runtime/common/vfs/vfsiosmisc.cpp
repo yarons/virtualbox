@@ -1,4 +1,4 @@
-/* $Id: vfsiosmisc.cpp 100930 2023-08-21 23:10:07Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsiosmisc.cpp 101109 2023-09-13 14:20:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
@@ -193,7 +193,7 @@ RTDECL(int) RTVfsIoStrmReadAll(RTVFSIOSTREAM hVfsIos, void **ppvBuf, size_t *pcb
                                  true /*fBlocking*/, &cbActual);
             if (RT_FAILURE(rc))
                 break;
-            Assert(cbActual > 0);
+            Assert(cbActual > 0 || (cbActual == 0 && rc == VINF_EOF));
             Assert(cbActual <= cbToRead);
             off += cbActual;
             if (rc == VINF_EOF)
