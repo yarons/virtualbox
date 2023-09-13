@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100752 2023-07-31 13:24:18Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101103 2023-09-13 11:42:14Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -364,6 +364,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  	VMMR3/CFGM.cpp \
  	VMMR3/CPUM-armv8.cpp \
  	VMMR3/CPUMDbg-armv8.cpp \
+ 	VMMR3/CPUMR3CpuId-armv8.cpp \
  	VMMR3/CPUMR3Db-armv8.cpp \
  	VMMR3/DBGF.cpp \
  	VMMR3/DBGFAddr.cpp \
