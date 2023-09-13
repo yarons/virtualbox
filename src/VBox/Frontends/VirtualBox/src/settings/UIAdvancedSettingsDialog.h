@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101032 2023-09-06 15:07:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101118 2023-09-13 18:12:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -44,6 +44,7 @@ class QProgressBar;
 class QScrollArea;
 class QShowEvent;
 class QStackedWidget;
+class QTimer;
 class QVariant;
 class QIDialogButtonBox;
 class QILineEdit;
@@ -106,6 +107,9 @@ protected slots:
     virtual void sltHandleSerializationFinished();
 
 protected:
+
+    /** Preprocesses Qt @a pEvent for passed @a pObject. */
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
@@ -237,6 +241,9 @@ private:
 
     /** Stores the help tag per page. */
     QMap<int, QString>  m_pageHelpKeywords;
+
+    /** Holds the 'sticky scrolling timer' instance. */
+    QTimer *m_pScrollingTimer;
 
     /** @name Widgets
      * @{ */
