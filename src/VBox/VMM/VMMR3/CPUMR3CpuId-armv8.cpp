@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 101103 2023-09-13 11:42:14Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 101105 2023-09-13 12:09:36Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
@@ -230,7 +230,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
         && (RT_BF_GET(a_IdReg, a_FeatNm) >= a_IdRegValCheck) \
         && (enmConfig) != CPUMISAEXTCFG_ENABLED_PORTABLE ) \
     { \
-        LogRel(("PortableCpuId: " #a_pLeafReg "[" #FeatNm "]: 1 -> 0\n")); \
+        LogRel(("PortableCpuId: " #a_pLeafReg "[" #a_FeatNm "]: 1 -> 0\n")); \
         (a_IdReg) = RT_BF_SET(a_IdReg, a_FeatNm, a_IdRegValNotSup); \
     }
     //Assert(pCpum->GuestFeatures.enmCpuVendor != CPUMCPUVENDOR_INVALID);
