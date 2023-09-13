@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIConverterBackendCOM.cpp 101110 2023-09-13 14:33:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendCOM implementation.
  */
@@ -718,8 +718,9 @@ template<> QString toString(const KChipsetType &type)
 {
     switch (type)
     {
-        case KChipsetType_PIIX3: return QApplication::translate("UICommon", "PIIX3", "ChipsetType");
-        case KChipsetType_ICH9:  return QApplication::translate("UICommon", "ICH9", "ChipsetType");
+        case KChipsetType_PIIX3:        return QApplication::translate("UICommon", "PIIX3", "ChipsetType");
+        case KChipsetType_ICH9:         return QApplication::translate("UICommon", "ICH9", "ChipsetType");
+        case KChipsetType_ARMv8Virtual: return QApplication::translate("UICommon", "ARMv8Virtual", "ChipsetType");
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
     return QString();
