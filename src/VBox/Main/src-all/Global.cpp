@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.cpp 101113 2023-09-13 15:28:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -732,7 +732,7 @@ Global::stringifyDeviceType(DeviceType_T aType)
         case DeviceType_HardDisk:     return GlobalCtx::tr("HardDisk");
         case DeviceType_Network:      return GlobalCtx::tr("Network");
         case DeviceType_USB:          return GlobalCtx::tr("USB");
-        case DeviceType_SharedFolder: return GlobalCtx::tr("ShardFolder");
+        case DeviceType_SharedFolder: return GlobalCtx::tr("SharedFolder");
         default:
             AssertMsgFailedReturn(("%d (%#x)\n", aType, aType), ::stringifyDeviceType(aType));
     }
