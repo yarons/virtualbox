@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 101117 2023-09-13 16:34:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1018,6 +1018,25 @@ HRESULT SystemProperties::setProxyURL(const com::Utf8Str &aProxyURL)
     }
     AutoWriteLock alock(mParent COMMA_LOCKVAL_SRC_POS); /* required for saving. */
     return mParent->i_saveSettings();
+}
+
+HRESULT SystemProperties::getSupportedPlatformArchitectures(std::vector<PlatformArchitecture_T> &aSupportedPlatformArchitectures)
+{
+    static const PlatformArchitecture_T aPlatformArchitectures[] =
+    {
+        /* Currently we only support same-same architectures (host == guest). */
+#if   defined(RT_ARCH_X86)   || defined(RT_ARCH_AMD64)
+        PlatformArchitecture_x86
+#elif defined(RT_ARCH_ARM32) || defined(RT_ARCH_ARM64)
+        PlatformArchitecture_ARM
+#else
+# error "Port me!"
+        PlatformArchitecture_None
+#endif
+    };
+    aSupportedPlatformArchitectures.assign(aPlatformArchitectures,
+                                           aPlatformArchitectures + RT_ELEMENTS(aPlatformArchitectures));
+    return S_OK;
 }
 
 HRESULT SystemProperties::getSupportedClipboardModes(std::vector<ClipboardMode_T> &aSupportedClipboardModes)
