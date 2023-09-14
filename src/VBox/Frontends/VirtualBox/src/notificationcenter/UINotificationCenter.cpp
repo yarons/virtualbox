@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 99265 2023-04-03 15:38:36Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 101122 2023-09-14 15:59:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -410,7 +410,7 @@ void UINotificationCenter::sltHandleOrderChange()
     m_enmOrder = gEDataManager->notificationCenterOrder();
 
     /* Cleanup items first: */
-    cleanup();
+    cleanupItems();
 
     /* Populate model contents again: */
     foreach (const QUuid &uId, m_pModel->ids())
@@ -752,11 +752,22 @@ void UINotificationCenter::prepareOpenTimer()
                 this, &UINotificationCenter::sltHandleOpenTimerTimeout);
 }
 
-void UINotificationCenter::cleanup()
+void UINotificationCenter::cleanupModel()
 {
-    /* Cleanup items: */
+    delete m_pModel;
+    m_pModel = 0;
+}
+
+void UINotificationCenter::cleanupItems()
+{
     qDeleteAll(m_items);
     m_items.clear();
+}
+
+void UINotificationCenter::cleanup()
+{
+    cleanupModel();
+    cleanupItems();
 }
 
 void UINotificationCenter::paintBackground(QPainter *pPainter)

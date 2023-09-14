@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 99265 2023-04-03 15:38:36Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.h 101122 2023-09-14 15:59:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -162,6 +162,10 @@ private:
     void prepareStateMachineSliding();
     /** Prepares open-timer. */
     void prepareOpenTimer();
+    /** Cleanups model. */
+    void cleanupModel();
+    /** Cleanups items. */
+    void cleanupItems();
     /** Cleanups everything. */
     void cleanup();
 
