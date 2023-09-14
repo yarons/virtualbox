@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIFontScaleEditor.cpp 101123 2023-09-14 16:09:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class implementation.
  */
@@ -205,9 +205,6 @@ void UIFontScaleEditor::prepareScaleFactorMinMax()
 
     m_pScaleSpinBox->setMinimum(iMinimum);
     m_pScaleSpinBox->setMaximum(iMaximum);
-
-    QLineEdit *pLineEdit = new QLineEdit;
-    pLineEdit->setReadOnly(true);
 
     m_pScaleSlider->blockSignals(false);
     m_pScaleSpinBox->blockSignals(false);
