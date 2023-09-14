@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 101103 2023-09-13 11:42:14Z alexander.eichner@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 101121 2023-09-14 11:43:16Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -383,6 +383,8 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
                                  &cpumR3InfoGuestInstr, DBGFINFO_FLAGS_ALL_EMTS);
     DBGFR3InfoRegisterInternal(  pVM, "cpuid",            "Displays the guest cpuid information.",
                                  &cpumR3CpuIdInfo);
+    DBGFR3InfoRegisterInternal(  pVM, "cpufeat",          "Displays the guest features.",
+                                 &cpumR3CpuFeatInfo);
 
     rc = cpumR3DbgInit(pVM);
     if (RT_FAILURE(rc))
@@ -962,6 +964,12 @@ VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
     LogRel(("\n"));
     DBGFR3_INFO_LOG_SAFE(pVM, "cpuid", "verbose"); /* macro */
     LogRel(("******************** End of CPUID dump **********************\n"));
+
+    LogRel(("******************** CPU feature dump ***********************\n"));
+    DBGFR3Info(pVM->pUVM, "cpufeat", "verbose", DBGFR3InfoLogRelHlp());
+    LogRel(("\n"));
+    DBGFR3_INFO_LOG_SAFE(pVM, "cpufeat", "verbose"); /* macro */
+    LogRel(("***************** End of CPU feature dump *******************\n"));
 
     /*
      * Restore the log buffering state to what it was previously.

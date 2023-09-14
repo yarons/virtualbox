@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal-armv8.h 101103 2023-09-13 11:42:14Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMInternal-armv8.h 101121 2023-09-14 11:43:16Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - Internal header file, ARMv8 variant.
  */
@@ -175,6 +175,8 @@ DECLHIDDEN(int)       cpumR3DbgInit(PVM pVM);
 DECLHIDDEN(int)       cpumR3SysRegStrictInitChecks(void);
 
 DECLCALLBACK(void)    cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
+DECLCALLBACK(void)    cpumR3CpuFeatInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
+
 # endif
 
 RT_C_DECLS_END
