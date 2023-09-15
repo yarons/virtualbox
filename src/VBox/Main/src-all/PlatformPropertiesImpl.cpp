@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101116 2023-09-13 16:12:44Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101129 2023-09-15 14:54:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -714,17 +714,53 @@ HRESULT PlatformProperties::getSupportedGraphicsControllerTypes(std::vector<Grap
 
 HRESULT PlatformProperties::getSupportedNetworkAdapterTypes(std::vector<NetworkAdapterType_T> &aSupportedNetworkAdapterTypes)
 {
-    static const NetworkAdapterType_T aNetworkAdapterTypes[] =
+    switch (mPlatformArchitecture)
     {
-        NetworkAdapterType_Am79C970A,
-        NetworkAdapterType_Am79C973,
-        NetworkAdapterType_I82540EM,
-        NetworkAdapterType_I82543GC,
-        NetworkAdapterType_I82545EM,
-        NetworkAdapterType_Virtio
-    };
-    aSupportedNetworkAdapterTypes.assign(aNetworkAdapterTypes,
-                                         aNetworkAdapterTypes + RT_ELEMENTS(aNetworkAdapterTypes));
+        case PlatformArchitecture_x86:
+        {
+            static const NetworkAdapterType_T aNetworkAdapterTypes[] =
+            {
+                NetworkAdapterType_Null,
+                NetworkAdapterType_Am79C970A,
+                NetworkAdapterType_Am79C973
+#ifdef VBOX_WITH_E1000
+              , NetworkAdapterType_I82540EM
+              , NetworkAdapterType_I82543GC
+              , NetworkAdapterType_I82545EM
+#endif
+#ifdef VBOX_WITH_VIRTIO
+              , NetworkAdapterType_Virtio
+#endif
+            };
+            aSupportedNetworkAdapterTypes.assign(aNetworkAdapterTypes,
+                                                 aNetworkAdapterTypes + RT_ELEMENTS(aNetworkAdapterTypes));
+            break;
+        }
+
+        case PlatformArchitecture_ARM:
+        {
+            static const NetworkAdapterType_T aNetworkAdapterTypes[] =
+            {
+                NetworkAdapterType_Null
+#ifdef VBOX_WITH_E1000
+              , NetworkAdapterType_I82540EM
+              , NetworkAdapterType_I82543GC
+              , NetworkAdapterType_I82545EM
+#endif
+#ifdef VBOX_WITH_VIRTIO
+              , NetworkAdapterType_Virtio
+#endif
+            };
+            aSupportedNetworkAdapterTypes.assign(aNetworkAdapterTypes,
+                                                 aNetworkAdapterTypes + RT_ELEMENTS(aNetworkAdapterTypes));
+            break;
+        }
+
+        default:
+            AssertFailedStmt(aSupportedNetworkAdapterTypes.clear());
+            break;
+    }
+
     return S_OK;
 }
 
