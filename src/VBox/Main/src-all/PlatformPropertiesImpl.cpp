@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101132 2023-09-15 16:11:19Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101133 2023-09-15 16:22:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -703,7 +703,7 @@ HRESULT PlatformProperties::getSupportedGraphicsControllerTypes(std::vector<Grap
               , GraphicsControllerType_VMSVGA
 #endif
             };
-            aSupportedGraphicsControllerTypes.assign(aGraphicsControllerTypes /* Don't include _Null */,
+            aSupportedGraphicsControllerTypes.assign(aGraphicsControllerTypes + 1 /* Don't include _Null */,
                                                      aGraphicsControllerTypes + RT_ELEMENTS(aGraphicsControllerTypes));
             break;
         }
