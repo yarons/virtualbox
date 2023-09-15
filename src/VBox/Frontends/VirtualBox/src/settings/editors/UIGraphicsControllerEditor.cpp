@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 101134 2023-09-15 16:27:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -155,7 +155,11 @@ void UIGraphicsControllerEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported graphics controller types: */
+#ifdef VBOX_WITH_VIRT_ARMV8 /** @todo BUGBUG Quick'n dirty fix to make it run on ARM. Needs proper fixing / re-structuring. */
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_ARM);
+#else
         CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
+#endif
         m_supportedValues = comProperties.GetSupportedGraphicsControllerTypes();
 
         /* Make sure requested value if sane is present as well: */
