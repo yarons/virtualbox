@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101118 2023-09-13 18:12:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101136 2023-09-15 16:45:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -47,7 +47,7 @@ class QStackedWidget;
 class QTimer;
 class QVariant;
 class QIDialogButtonBox;
-class QILineEdit;
+class UIFilterEditor;
 class UISettingsPage;
 class UISettingsPageFrame;
 class UISettingsPageValidator;
@@ -251,7 +251,7 @@ private:
         QGridLayout *m_pLayoutMain;
 
         /** Holds the filter editor instance. */
-        QILineEdit *m_pEditorFilter;
+        UIFilterEditor *m_pEditorFilter;
 
         /** Holds the scroll-area instance. */
         QScrollArea *m_pScrollArea;
