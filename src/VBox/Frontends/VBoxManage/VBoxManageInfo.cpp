@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 101125 2023-09-15 12:47:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1224,8 +1224,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
             else
                 pszChipsetType = Info::tr("invalid");
             break;
-        case ChipsetType_PIIX3: pszChipsetType = "piix3"; break;
-        case ChipsetType_ICH9:  pszChipsetType = "ich9"; break;
+        case ChipsetType_PIIX3:        pszChipsetType = "piix3";        break;
+        case ChipsetType_ICH9:         pszChipsetType = "ich9";         break;
+        case ChipsetType_ARMv8Virtual: pszChipsetType = "armv8virtual"; break;
         default:
             AssertFailed();
             if (details == VMINFO_MACHINEREADABLE)

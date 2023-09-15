@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 101125 2023-09-15 12:47:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -3264,9 +3264,15 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                         CHECK_ERROR(firmwareSettings, COMSETTER(IOAPICEnabled)(TRUE));
                     }
                 }
+                else if (   !RTStrICmp(ValueUnion.psz, "armv8")
+                         || !RTStrICmp(ValueUnion.psz, "armv8virtual"))
+                {
+                    CHECK_ERROR(platform, COMSETTER(ChipsetType)(ChipsetType_ARMv8Virtual));
+                }
                 else
                 {
-                    errorArgument(ModifyVM::tr("Invalid --chipset argument '%s' (valid: piix3,ich9)"), ValueUnion.psz);
+                    errorArgument(ModifyVM::tr("Invalid --chipset argument '%s' (valid: piix3,ich9,armv8virtual)"),
+                                  ValueUnion.psz);
                     hrc = E_FAIL;
                 }
                 break;
