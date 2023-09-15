@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 101126 2023-09-15 14:08:59Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageList.cpp 101128 2023-09-15 14:34:40Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -992,7 +992,7 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
         if (i > 0)
             RTPrintf("\n");
         ComPtr<IPlatformProperties> platformProperties;
-        CHECK_ERROR2I_RET(pVirtualBox, COMGETTER(PlatformProperties)(saPlatformArch[i], platformProperties.asOutParam()), hrcCheck);
+        pVirtualBox->GetPlatformProperties(saPlatformArch[i], platformProperties.asOutParam());
         RTPrintf(List::tr("%s platform properties:\n"), platformArchitectureToStr(saPlatformArch[i]));
         listPlatformProperties(platformProperties);
     }
