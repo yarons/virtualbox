@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 101039 2023-09-07 09:27:50Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 101124 2023-09-15 12:08:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15128,7 +15128,18 @@ com::Utf8Str Machine::i_controllerNameFromBusType(StorageBus_T aBusType)
             strControllerName = "USB";
             break;
         }
+        case StorageBus_PCIe:
+        {
+            strControllerName = "PCIe";
+            break;
+        }
+        case StorageBus_VirtioSCSI:
+        {
+            strControllerName = "VirtioSCSI";
+            break;
+        }
         default:
+            AssertFailed(); /* Catch missing case above. */
             break;
     }
     return strControllerName;
