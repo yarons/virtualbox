@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UISession.cpp 101155 2023-09-18 15:26:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2695,8 +2695,8 @@ bool UISession::preprocessInitialization()
         }
 
         /* Enumerate all the virtual network adapters: */
-        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
-        CPlatform comPlatform = machine().GetPlatform();
+        CPlatform comPlatform             = machine().GetPlatform();
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(comPlatform.GetArchitecture());
         const ulong cCount = comProperties.GetMaxNetworkAdapters(comPlatform.GetChipsetType());
         for (ulong uAdapterIndex = 0; uAdapterIndex < cCount; ++uAdapterIndex)
         {
