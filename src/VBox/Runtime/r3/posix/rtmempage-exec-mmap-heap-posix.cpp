@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 101151 2023-09-18 14:29:04Z knut.osmundsen@oracle.com $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 101152 2023-09-18 14:29:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -396,7 +396,7 @@ static PRTHEAPPAGEBLOCK rtHeapPageIntBlockAllocatorAlloc(PRTHEAPPAGE pHeap)
     ASMBitSetRange(pChunk->bmAlloc, pChunk->cBlocks, RTHEAPPAGEBLOCKALLOCCHUNK_MAX_BLOCKS);
     RTListPrepend(&pHeap->BlockAllocatorChunks, &pChunk->ListEntry);
 
-    /* 
+    /*
      * Allocate the first one.
      */
     ASMBitSet(pChunk->bmAlloc, 0);
