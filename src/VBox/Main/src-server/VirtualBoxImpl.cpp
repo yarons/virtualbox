@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 101069 2023-09-08 14:38:23Z andreas.loeffler@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 101153 2023-09-18 14:30:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2132,9 +2132,6 @@ HRESULT VirtualBox::createMachine(const com::Utf8Str &aSettingsFile,
      * with the host architecture.
      */
     aArchitecture = PlatformProperties::s_getHostPlatformArchitecture();
-# ifdef DEBUG_andy
-    aArchitecture = PlatformArchitecture_ARM; /** Testing stuff. */
-# endif
 #endif
 
     StringsList llGroups;
