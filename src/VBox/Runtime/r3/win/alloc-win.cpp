@@ -1,4 +1,4 @@
-/* $Id: alloc-win.cpp 101142 2023-09-18 11:12:16Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-win.cpp 101143 2023-09-18 11:15:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Windows.
  */
@@ -141,10 +141,10 @@ RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW_DEF
             AssertMsgFailed(("pv=%p lasterr=%d\n", pv, GetLastError()));
 #else
         /** @todo The exec version of this doesn't really work well... */
-        MEMORY_BASIC_INFORMATION MemInfo = { NULL }
+        MEMORY_BASIC_INFORMATION MemInfo = { NULL };
         SIZE_T cbRet = VirtualQuery(pv, &MemInfo, cb);
-        Assert(cbRet > 0)
-        if (cbRet >= 0 && MemInfo.Protect == PAGE_EXECUTE_READWRITE)
+        Assert(cbRet > 0);
+        if (cbRet > 0 && MemInfo.Protect == PAGE_EXECUTE_READWRITE)
         {
             DWORD      fIgn = 0;
             BOOL const fRc  = VirtualProtect(pv, cb, PAGE_READWRITE, &fIgn);
