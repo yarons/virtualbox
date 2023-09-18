@@ -1,4 +1,4 @@
-/* $Id: alloc-win.cpp 101143 2023-09-18 11:15:59Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-win.cpp 101144 2023-09-18 11:16:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Windows.
  */
@@ -87,7 +87,7 @@ RTDECL(void *) RTMemPageAllocExTag(size_t cb, uint32_t fFlags, const char *pszTa
 #endif
     AssertMsgReturn(pv, ("cb=%d lasterr=%d\n", cb, GetLastError()), NULL);
 
-#ifdef USE_VIRTUAL_ALLOC
+#ifndef USE_VIRTUAL_ALLOC
     if (fFlags & RTMEMPAGEALLOC_F_EXECUTABLE)
     {
         DWORD      fIgn = 0;
