@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101064 2023-09-08 12:44:47Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 101157 2023-09-18 15:30:19Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -142,7 +142,8 @@ VirtualBox_DEFS           += \
 	$(if $(VBOX_GUI_WITH_KEYS_RESET_HANDLER),VBOX_GUI_WITH_KEYS_RESET_HANDLER) \
 	$(if $(VBOX_GUI_WITH_CUSTOMIZATIONS1),VBOX_GUI_WITH_CUSTOMIZATIONS1) \
 	$(if $(VBOX_WITH_RAW_MODE),VBOX_WITH_RAW_MODE) \
-	$(if $(VBOX_WITH_SDS),VBOX_WITH_SDS,)
+	$(if $(VBOX_WITH_SDS),VBOX_WITH_SDS,) \
+	$(if $(VBOX_WITH_VIRT_ARMV8),VBOX_WITH_VIRT_ARMV8,)
 ifdef VBOX_WITH_DEBUGGER_GUI
  VirtualBox_DEFS          += VBOX_WITH_DEBUGGER_GUI
  if "$(KBUILD_TYPE)" != "release"
