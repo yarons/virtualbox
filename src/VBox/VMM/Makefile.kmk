@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101103 2023-09-13 11:42:14Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101163 2023-09-18 20:44:24Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -257,6 +257,10 @@ ifdef VBOX_WITH_IEM_RECOMPILER
  	VMMAll/IEMAllThrdTables4.cpp \
  	VMMAll/IEMAllThrdFuncs.cpp \
  	VMMAll/IEMAllThrdFuncsBltIn.cpp
+ ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER
+  VBoxVMM_SOURCES += \
+  	VMMAll/IEMAllN8veRecompiler.cpp
+ endif
  VMMAll/IEMAllThrdFuncs.cpp_CXXFLAGS.win = /bigobj
 endif
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncsBltIn.cpp 100829 2023-08-09 13:02:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncsBltIn.cpp 101163 2023-09-18 20:44:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Built-in Threaded Functions.
  *
@@ -72,7 +72,11 @@
 
 static VBOXSTRICTRC iemThreadeFuncWorkerObsoleteTb(PVMCPUCC pVCpu)
 {
-    iemThreadedTbObsolete(pVCpu, pVCpu->iem.s.pCurTbR3);
+    /* We set fSafeToFree to false where as we're being called in the context
+       of a TB callback function, which for native TBs means we cannot release
+       the executable memory till we've returned our way back to iemTbExec as
+       that return path codes via the native code generated for the TB. */
+    iemThreadedTbObsolete(pVCpu, pVCpu->iem.s.pCurTbR3, false /*fSafeToFree*/);
     return VINF_IEM_REEXEC_BREAK;
 }
 
