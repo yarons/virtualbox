@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 100310 2023-06-28 10:26:46Z alexander.eichner@oracle.com $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 101142 2023-09-18 11:12:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -172,7 +172,7 @@ RTDECL(void *) RTMemPageAllocZTag(size_t cb, const char *pszTag) RT_NO_THROW_DEF
 RTDECL(void *) RTMemPageAllocExTag(size_t cb, uint32_t fFlags, const char *pszTag) RT_NO_THROW_DEF
 {
     AssertReturn(!(fFlags & ~RTMEMPAGEALLOC_F_VALID_MASK), NULL);
-    return rtMemPagePosixAlloc(cb, pszTag, fFlags, 0);
+    return rtMemPagePosixAlloc(cb, pszTag, fFlags, !(fFlags & RTMEMPAGEALLOC_F_EXECUTABLE) ? 0 : PROT_EXEC);
 }
 
 
