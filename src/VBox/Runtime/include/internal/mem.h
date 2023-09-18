@@ -1,4 +1,4 @@
-/* $Id: mem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: mem.h 101162 2023-09-18 20:03:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Management.
  */
@@ -80,6 +80,39 @@ DECLHIDDEN(void)    rtR0MemEfInit(void);
 DECLHIDDEN(void)    rtR0MemEfTerm(void);
 # endif
 #endif
+
+#ifdef IN_RING3
+
+/**
+ * Native allocation worker for the heap-based RTMemPage implementation.
+ */
+DECLHIDDEN(int) rtMemPageNativeAlloc(size_t cb, uint32_t fFlags, void **ppvRet);
+
+/**
+ * Native allocation worker for the heap-based RTMemPage implementation.
+ */
+DECLHIDDEN(int) rtMemPageNativeFree(void *pv, size_t cb);
+
+/**
+ * Native page allocator worker that applies advisory flags to the memory.
+ *
+ * @returns Set of flags succesfully applied
+ * @param   pv      The memory block address.
+ * @param   cb      The size of the memory block.
+ * @param   fFlags  The flags to apply (may include other flags too, ignore).
+ */
+DECLHIDDEN(uint32_t) rtMemPageNativeApplyFlags(void *pv, size_t cb, uint32_t fFlags);
+
+/**
+ * Reverts flags previously applied by rtMemPageNativeApplyFlags().
+ *
+ * @param   pv      The memory block address.
+ * @param   cb      The size of the memory block.
+ * @param   fFlags  The flags to revert.
+ */
+DECLHIDDEN(void) rtMemPageNativeRevertFlags(void *pv, size_t cb, uint32_t fFlags);
+
+#endif /* IN_RING3 */
 
 RT_C_DECLS_END
 
