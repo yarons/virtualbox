@@ -1,4 +1,4 @@
-/* $Id: alloc-win.cpp 101144 2023-09-18 11:16:41Z knut.osmundsen@oracle.com $ */
+/* $Id: alloc-win.cpp 101145 2023-09-18 11:36:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Allocation, Windows.
  */
@@ -142,7 +142,7 @@ RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW_DEF
 #else
         /** @todo The exec version of this doesn't really work well... */
         MEMORY_BASIC_INFORMATION MemInfo = { NULL };
-        SIZE_T cbRet = VirtualQuery(pv, &MemInfo, cb);
+        SIZE_T cbRet = VirtualQuery(pv, &MemInfo, sizeof(MemInfo));
         Assert(cbRet > 0);
         if (cbRet > 0 && MemInfo.Protect == PAGE_EXECUTE_READWRITE)
         {
