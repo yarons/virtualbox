@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 101139 2023-09-18 10:58:57Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 101146 2023-09-18 12:23:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15267,7 +15267,7 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
         mNetworkAdapters[slot]->i_applyDefaults(osType);
 
 #ifdef VBOX_WITH_ARMV8_HARDCODED_DEFAULTS
-	/* Configuration is done in Machine::init(). */
+    /* Configuration is done in Machine::init(). */
 #else
     /* Apply serial port defaults */
     for (ULONG slot = 0; slot < RT_ELEMENTS(mSerialPorts); ++slot)

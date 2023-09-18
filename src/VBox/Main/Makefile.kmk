@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101139 2023-09-18 10:58:57Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 101146 2023-09-18 12:23:28Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -571,7 +571,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	$(if $(VBOX_WITH_FULL_VM_ENCRYPTION),VBOX_WITH_FULL_VM_ENCRYPTION,) \
  	$(if-expr defined(VBOX_WITH_SDS),VBOX_WITH_SDS,) \
  	$(if $(VBOX_WITH_VIRT_ARMV8),VBOX_WITH_VIRT_ARMV8,) \
-	$(if $(VBOX_WITH_ARMV8_HARDCODED_DEFAULTS),VBOX_WITH_ARMV8_HARDCODED_DEFAULTS,)
+ 	$(if $(VBOX_WITH_ARMV8_HARDCODED_DEFAULTS),VBOX_WITH_ARMV8_HARDCODED_DEFAULTS,)
  ifdef VBOX_WITH_USB
   VBoxSVC_DEFS += \
   	VBOX_WITH_USB \

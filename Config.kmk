@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101139 2023-09-18 10:58:57Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 101146 2023-09-18 12:23:28Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -541,7 +541,7 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.arm64)
  VBOX_WITH_VIRT_ARMV8 = 1
  # Enables setting hardcoded defaults for newly created VMs,
  # to get the VM off the ground. That setting might go away again as development progresses.
- VBOX_WITH_ARMV8_HARDCODED_DEFAULTS=1
+ VBOX_WITH_ARMV8_HARDCODED_DEFAULTS = 1
 endif
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64)
  ifdef VBOX_WITH_R0_MODULES
@@ -9106,7 +9106,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101139 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101146 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
