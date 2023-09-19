@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 101112 2023-09-13 15:08:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 101170 2023-09-19 13:57:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -3952,6 +3952,12 @@ HRESULT Unattended::getIsUnattendedInstallSupported(BOOL *aIsUnattendedInstallSu
 
     /* Unattended is disabled by default if we could not detect OS type. */
     if (mStrDetectedOSTypeId.isEmpty())
+        return S_OK;
+
+    /* For now we don't support unattended installation for ARM guests. */
+    const VBOXOSTYPE enmArchitectureMasked = (VBOXOSTYPE)(mEnmOsType & VBOXOSTYPE_ArchitectureMask);
+    if (   enmArchitectureMasked == VBOXOSTYPE_arm32
+        || enmArchitectureMasked == VBOXOSTYPE_arm64)
         return S_OK;
 
     const VBOXOSTYPE enmOsTypeMasked = (VBOXOSTYPE)(mEnmOsType & VBOXOSTYPE_OsTypeMask);
