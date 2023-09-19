@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: HostImpl.h 101176 2023-09-19 16:57:28Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IHost.
  */
@@ -98,6 +98,7 @@ public:
 #endif /* !VBOX_WITH_USB */
 
     static void i_generateMACAddress(Utf8Str &mac);
+    static PlatformArchitecture_T s_getPlatformArchitecture();
 
 #ifdef RT_OS_WINDOWS
     HRESULT i_updatePersistentConfigForHostOnlyAdapters(void);
