@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 101043 2023-09-07 10:16:04Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 101173 2023-09-19 15:28:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -529,7 +529,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
             break;
     }
 
-    return VERR_PLATFORM_ARCH_NOT_SUPPORTED;;
+    return VERR_PLATFORM_ARCH_NOT_SUPPORTED;
 }
 
 
