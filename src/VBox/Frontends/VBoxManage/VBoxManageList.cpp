@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 101167 2023-09-19 11:31:13Z brent.paulson@oracle.com $ */
+/* $Id: VBoxManageList.cpp 101180 2023-09-19 17:18:37Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -2191,7 +2191,7 @@ static HRESULT produceList(enum ListType_T enmCommand, bool fOptLong, bool fOptS
         case kListOsVariants:
         {
             com::SafeArray<BSTR> GuestOSFamilies;
-            CHECK_ERROR(pVirtualBox, GetGuestOSFamilies(ComSafeArrayAsOutParam(GuestOSFamilies)));
+            CHECK_ERROR(pVirtualBox, COMGETTER(GuestOSFamilies)(ComSafeArrayAsOutParam(GuestOSFamilies)));
             if (SUCCEEDED(hrc))
             {
                 for (size_t i = 0; i < GuestOSFamilies.size(); ++i)

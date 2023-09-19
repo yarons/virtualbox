@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 101166 2023-09-19 10:30:56Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 101180 2023-09-19 17:18:37Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -345,6 +345,7 @@ private:
     HRESULT getDVDImages(std::vector<ComPtr<IMedium> > &aDVDImages);
     HRESULT getFloppyImages(std::vector<ComPtr<IMedium> > &aFloppyImages);
     HRESULT getProgressOperations(std::vector<ComPtr<IProgress> > &aProgressOperations);
+    HRESULT getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies);
     HRESULT getGuestOSTypes(std::vector<ComPtr<IGuestOSType> > &aGuestOSTypes);
     HRESULT getSharedFolders(std::vector<ComPtr<ISharedFolder> > &aSharedFolders);
     HRESULT getPerformanceCollector(ComPtr<IPerformanceCollector> &aPerformanceCollector);
@@ -398,7 +399,6 @@ private:
                        ComPtr<IMedium> &aMedium);
     HRESULT getGuestOSType(const com::Utf8Str &aId,
                            ComPtr<IGuestOSType> &aType);
-    HRESULT getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies);
     HRESULT getGuestOSVariantsByFamilyId(const Utf8Str &strOSFamily,
                                          std::vector<com::Utf8Str> &aOSVariants);
     HRESULT getGuestOSDescsByVariant(const Utf8Str &strOSVariant,
