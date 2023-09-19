@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 101164 2023-09-19 10:01:39Z brent.paulson@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 101166 2023-09-19 10:30:56Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -275,14 +275,6 @@ public:
     HRESULT i_findGuestOSType(const Utf8Str &strOSType,
                               ComObjPtr<GuestOSType> &guestOSType);
 
-    HRESULT getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies);
-
-    HRESULT getGuestOSVariantsByFamilyId(const Utf8Str &strOSFamily,
-                                         std::vector<com::Utf8Str> &aOSVariants);
-
-    HRESULT getGuestOSDescsByVariant(const Utf8Str &strOSVariant,
-                                     std::vector<com::Utf8Str> &aGuestOSDescs);
-
     const Guid &i_getGlobalRegistryId() const;
 
     const ComObjPtr<Host> &i_host() const;
@@ -406,6 +398,11 @@ private:
                        ComPtr<IMedium> &aMedium);
     HRESULT getGuestOSType(const com::Utf8Str &aId,
                            ComPtr<IGuestOSType> &aType);
+    HRESULT getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies);
+    HRESULT getGuestOSVariantsByFamilyId(const Utf8Str &strOSFamily,
+                                         std::vector<com::Utf8Str> &aOSVariants);
+    HRESULT getGuestOSDescsByVariant(const Utf8Str &strOSVariant,
+                                     std::vector<com::Utf8Str> &aGuestOSDescs);
     HRESULT createSharedFolder(const com::Utf8Str &aName,
                                const com::Utf8Str &aHostPath,
                                BOOL aWritable,
