@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 101164 2023-09-19 10:01:39Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -274,6 +274,14 @@ public:
 
     HRESULT i_findGuestOSType(const Utf8Str &strOSType,
                               ComObjPtr<GuestOSType> &guestOSType);
+
+    HRESULT getGuestOSFamilies(std::vector<com::Utf8Str> &aOSFamilies);
+
+    HRESULT getGuestOSVariantsByFamilyId(const Utf8Str &strOSFamily,
+                                         std::vector<com::Utf8Str> &aOSVariants);
+
+    HRESULT getGuestOSDescsByVariant(const Utf8Str &strOSVariant,
+                                     std::vector<com::Utf8Str> &aGuestOSDescs);
 
     const Guid &i_getGlobalRegistryId() const;
 
