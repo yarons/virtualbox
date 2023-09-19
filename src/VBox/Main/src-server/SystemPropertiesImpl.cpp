@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 101117 2023-09-13 16:34:30Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 101175 2023-09-19 16:55:36Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1028,7 +1028,11 @@ HRESULT SystemProperties::getSupportedPlatformArchitectures(std::vector<Platform
 #if   defined(RT_ARCH_X86)   || defined(RT_ARCH_AMD64)
         PlatformArchitecture_x86
 #elif defined(RT_ARCH_ARM32) || defined(RT_ARCH_ARM64)
+# ifdef VBOX_WITH_VIRT_ARMV8
         PlatformArchitecture_ARM
+# else /* No platform supported. */
+        PlatformArchitecture_None:
+# endif
 #else
 # error "Port me!"
         PlatformArchitecture_None
