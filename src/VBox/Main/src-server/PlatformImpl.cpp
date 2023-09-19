@@ -1,4 +1,4 @@
-/* $Id: PlatformImpl.cpp 101070 2023-09-08 14:42:56Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformImpl.cpp 101174 2023-09-19 15:50:22Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform settings.
  */
@@ -853,6 +853,7 @@ HRESULT Platform::i_applyDefaults(GuestOSType *aOsType)
  * @returns Platform architecture as a string.
  * @param   enmArchitecture         Platform architecture to convert.
  */
+/* static */
 const char *Platform::s_platformArchitectureToStr(PlatformArchitecture_T enmArchitecture)
 {
     switch (enmArchitecture)
