@@ -1,4 +1,4 @@
-/* $Id: openssl-sha256.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: openssl-sha256.cpp 101197 2023-09-20 13:47:19Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - SHA-256 hash functions.
  */
@@ -92,7 +92,7 @@ RTDECL(void) RTSha256Update(PRTSHA256CONTEXT pCtx, const void *pvBuf, size_t cbB
 RT_EXPORT_SYMBOL(RTSha256Update);
 
 
-RTDECL(void) RTSha256Final(PRTSHA256CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha256Final(PRTSHA256CONTEXT pCtx, uint8_t pabDigest[RTSHA256_HASH_SIZE])
 {
     SHA256_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
@@ -142,7 +142,7 @@ RTDECL(void) RTSha224Update(PRTSHA224CONTEXT pCtx, const void *pvBuf, size_t cbB
 RT_EXPORT_SYMBOL(RTSha224Update);
 
 
-RTDECL(void) RTSha224Final(PRTSHA224CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha224Final(PRTSHA224CONTEXT pCtx, uint8_t pabDigest[RTSHA224_HASH_SIZE])
 {
     SHA224_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }

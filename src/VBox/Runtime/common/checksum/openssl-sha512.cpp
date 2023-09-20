@@ -1,4 +1,4 @@
-/* $Id: openssl-sha512.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: openssl-sha512.cpp 101197 2023-09-20 13:47:19Z brent.paulson@oracle.com $ */
 /** @file
  * IPRT - SHA-512 hash functions.
  */
@@ -92,7 +92,7 @@ RTDECL(void) RTSha512Update(PRTSHA512CONTEXT pCtx, const void *pvBuf, size_t cbB
 RT_EXPORT_SYMBOL(RTSha512Update);
 
 
-RTDECL(void) RTSha512Final(PRTSHA512CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha512Final(PRTSHA512CONTEXT pCtx, uint8_t pabDigest[RTSHA512_HASH_SIZE])
 {
     SHA512_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
@@ -143,7 +143,7 @@ RTDECL(void) RTSha384Update(PRTSHA384CONTEXT pCtx, const void *pvBuf, size_t cbB
 RT_EXPORT_SYMBOL(RTSha384Update);
 
 
-RTDECL(void) RTSha384Final(PRTSHA384CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha384Final(PRTSHA384CONTEXT pCtx, uint8_t pabDigest[RTSHA384_HASH_SIZE])
 {
     SHA384_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
