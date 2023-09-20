@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseStub.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: USBIdDatabaseStub.cpp 101202 2023-09-20 14:37:32Z brent.paulson@oracle.com $ */
 /** @file
  * USB device vendor and product ID database - stub.
  */
@@ -27,13 +27,13 @@
 
 #include "USBIdDatabase.h"
 
-const RTBLDPROGSTRTAB   USBIdDatabase::s_StrTab          =  { "", 0, 0 NULL };
+const RTBLDPROGSTRTAB   USBIdDatabase::s_StrTab          =  { "", 0, 0, NULL };
 
 const size_t            USBIdDatabase::s_cVendors        = 0;
-const USBIDDBVENDOR     USBIdDatabase::s_aVendors[]      = { 0 };
+const USBIDDBVENDOR     USBIdDatabase::s_aVendors[]      = { {0,0,0} };
 const RTBLDPROGSTRREF   USBIdDatabase::s_aVendorNames[]  = { {0,0} };
 
 const size_t            USBIdDatabase::s_cProducts       = 0;
-const USBIDDBPROD       USBIdDatabase::s_aProducts[]     = { 0 };
+const USBIDDBPROD       USBIdDatabase::s_aProducts[]     = { {0} };
 const RTBLDPROGSTRREF   USBIdDatabase::s_aProductNames[] = { {0,0} };
 
