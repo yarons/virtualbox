@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 101188 2023-09-20 09:19:31Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestOSTypeImpl.cpp 101195 2023-09-20 13:13:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -211,11 +211,11 @@ PlatformArchitecture_T GuestOSType::i_platformArchitecture() const
 {
     /* mOSType constant during life time, no need to lock */
     VBOXOSTYPE const osTypePlatformArchitectureMasked = VBOXOSTYPE(mOSType & VBOXOSTYPE_ArchitectureMask);
-    if (   osTypePlatformArchitectureMasked & VBOXOSTYPE_x86
-        || osTypePlatformArchitectureMasked & VBOXOSTYPE_x64)
+    if (   osTypePlatformArchitectureMasked == VBOXOSTYPE_x86
+        || osTypePlatformArchitectureMasked == VBOXOSTYPE_x64)
         return PlatformArchitecture_x86;
-    else if (   osTypePlatformArchitectureMasked & VBOXOSTYPE_ARM32
-             || osTypePlatformArchitectureMasked & VBOXOSTYPE_ARM64)
+    else if (   osTypePlatformArchitectureMasked == VBOXOSTYPE_ARM32
+             || osTypePlatformArchitectureMasked == VBOXOSTYPE_ARM64)
         return PlatformArchitecture_ARM;
 
     /* Will happen when called before being properly initialized(). */
