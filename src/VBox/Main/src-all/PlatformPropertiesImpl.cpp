@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101133 2023-09-15 16:22:59Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101200 2023-09-20 14:14:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -698,7 +698,8 @@ HRESULT PlatformProperties::getSupportedGraphicsControllerTypes(std::vector<Grap
         {
             static const GraphicsControllerType_T aGraphicsControllerTypes[] =
             {
-                GraphicsControllerType_Null
+                GraphicsControllerType_Null,
+                GraphicsControllerType_QemuRamFB
 #ifdef VBOX_WITH_VMSVGA
               , GraphicsControllerType_VMSVGA
 #endif

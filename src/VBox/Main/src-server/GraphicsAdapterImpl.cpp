@@ -1,4 +1,4 @@
-/* $Id: GraphicsAdapterImpl.cpp 98262 2023-01-24 01:42:14Z knut.osmundsen@oracle.com $ */
+/* $Id: GraphicsAdapterImpl.cpp 101200 2023-09-20 14:14:26Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IGraphicsAdapter in VBoxSVC.
  */
@@ -198,6 +198,7 @@ HRESULT GraphicsAdapter::setGraphicsControllerType(GraphicsControllerType_T aGra
         case GraphicsControllerType_VMSVGA:
         case GraphicsControllerType_VBoxSVGA:
 #endif
+        case GraphicsControllerType_QemuRamFB:
             break;
         default:
             return setError(E_INVALIDARG, tr("The graphics controller type (%d) is invalid"), aGraphicsControllerType);
