@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 101206 2023-09-20 15:01:19Z andreas.loeffler@oracle.com $ */
+/* $Id: UIIconPool.cpp 101207 2023-09-20 15:06:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -382,6 +382,7 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("Linux26_x64",     ":/os_linux26.png");
     m_guestOSTypeIconNames.insert("ArchLinux",       ":/os_archlinux_32.png");
     m_guestOSTypeIconNames.insert("ArchLinux_x64",   ":/os_archlinux.png");
+    m_guestOSTypeIconNames.insert("ArchLinux_arm64", ":/os_archlinux.png");
     m_guestOSTypeIconNames.insert("Debian",          ":/os_debian_32.png");
     m_guestOSTypeIconNames.insert("Debian_x64",      ":/os_debian.png");
     m_guestOSTypeIconNames.insert("Debian_arm64",    ":/os_debian.png");
