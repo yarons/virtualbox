@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 101183 2023-09-20 07:25:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -66,6 +66,7 @@ class CHostVideoInputDevice;
 class CMachine;
 class CUSBDevice;
 class UIActionPool;
+class UIGuestOSTypeManager;
 class UIMedium;
 class UIMediumEnumerator;
 class UIThreadPool;
@@ -750,6 +751,7 @@ private:
         QMap<QString, QString>       m_guestOSFamilyDescriptions;
         /** Holds the guest OS types for each family ID. */
         QList<QList<CGuestOSType> >  m_guestOSTypes;
+        UIGuestOSTypeManager *m_pGuestOSTypeManager;
     /** @} */
 
     /** @name Thread stuff.
