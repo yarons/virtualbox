@@ -1,4 +1,4 @@
-/* $Id: mempage-heap.cpp 101162 2023-09-18 20:03:52Z knut.osmundsen@oracle.com $ */
+/* $Id: mempage-heap.cpp 101192 2023-09-20 12:27:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -249,7 +249,8 @@ static PRTHEAPPAGEBLOCK rtHeapPageIntBlockAllocatorAlloc(PRTHEAPPAGE pHeap)
     {
         if (pChunk->cFree > 0)
         {
-            int idxBlock = ASMBitFirstClear(&pChunk->bmAlloc[0], RT_MIN(RTHEAPPAGEBLOCKALLOCCHUNK_MAX_BLOCKS, pChunk->cBlocks));
+            uint32_t const cBits = RT_ALIGN_32(pChunk->cBlocks, 64);
+            int idxBlock = ASMBitFirstClear(&pChunk->bmAlloc[0], RT_MIN(RTHEAPPAGEBLOCKALLOCCHUNK_MAX_BLOCKS, cBits));
             if (idxBlock >= 0)
             {
                 ASMBitSet(&pChunk->bmAlloc[0], idxBlock);
