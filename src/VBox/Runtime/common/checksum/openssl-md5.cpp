@@ -1,4 +1,4 @@
-/* $Id: openssl-md5.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: openssl-md5.cpp 101194 2023-09-20 13:07:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - MD5 message digest functions, implemented using OpenSSL.
  */
@@ -76,7 +76,7 @@ RTDECL(void) RTMd5Update(PRTMD5CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
 RT_EXPORT_SYMBOL(RTMd5Update);
 
 
-RTDECL(void) RTMd5Final(uint8_t pabDigest[32], PRTMD5CONTEXT pCtx)
+RTDECL(void) RTMd5Final(uint8_t pabDigest[RTMD5_HASH_SIZE], PRTMD5CONTEXT pCtx)
 {
     MD5_Final((unsigned char *)&pabDigest[0], &pCtx->OsslPrivate);
 }
