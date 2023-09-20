@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 101177 2023-09-19 16:59:11Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestOSTypeImpl.cpp 101188 2023-09-20 09:19:31Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -214,8 +214,8 @@ PlatformArchitecture_T GuestOSType::i_platformArchitecture() const
     if (   osTypePlatformArchitectureMasked & VBOXOSTYPE_x86
         || osTypePlatformArchitectureMasked & VBOXOSTYPE_x64)
         return PlatformArchitecture_x86;
-    else if (   osTypePlatformArchitectureMasked & VBOXOSTYPE_arm32
-             || osTypePlatformArchitectureMasked & VBOXOSTYPE_arm64)
+    else if (   osTypePlatformArchitectureMasked & VBOXOSTYPE_ARM32
+             || osTypePlatformArchitectureMasked & VBOXOSTYPE_ARM64)
         return PlatformArchitecture_ARM;
 
     /* Will happen when called before being properly initialized(). */
