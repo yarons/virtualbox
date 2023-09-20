@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101146 2023-09-18 12:23:28Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 101187 2023-09-20 09:10:17Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1701,9 +1701,15 @@ ifeq ($(KBUILD_TARGET),darwin)
  # The first two entitlements are required to get everything working
  # on Catalina which we want to keep supported for now.
  #
+ # allow-jit   - for the recompiler in order to be able to generate and execute native code.
+ # audio-input - recording audio from a guest.
+ # camera      - accessing the webcam from a guest.
+ # usb         - USB passthrough.
+ #
  VBOX_DARWIN_ENTITLEMENTS_LIST := \
  	com.apple.security.cs.allow-unsigned-executable-memory \
  	com.apple.security.cs.disable-executable-page-protection \
+ 	com.apple.security.cs.allow-jit \
  	com.apple.security.device.audio-input \
  	com.apple.security.device.camera \
  	com.apple.security.device.usb
@@ -9106,7 +9112,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101146 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101187 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
