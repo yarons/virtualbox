@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 101039 2023-09-07 09:27:50Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 101199 2023-09-20 14:14:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5290,10 +5290,11 @@ Utf8Str Console::i_getAudioAdapterDeviceName(IAudioAdapter *aAudioAdapter)
     {
         switch (audioController)
         {
-            case AudioControllerType_HDA:  strDevice = "hda";     break;
-            case AudioControllerType_AC97: strDevice = "ichac97"; break;
-            case AudioControllerType_SB16: strDevice = "sb16";    break;
-            default:                                              break; /* None. */
+            case AudioControllerType_HDA:         strDevice = "hda";          break;
+            case AudioControllerType_AC97:        strDevice = "ichac97";      break;
+            case AudioControllerType_SB16:        strDevice = "sb16";         break;
+            case AudioControllerType_VirtioSound: strDevice = "virtio-sound"; break;
+            default:                                                          break; /* None. */
         }
     }
 
