@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101214 2023-09-21 08:30:08Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 101229 2023-09-21 20:16:28Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -520,6 +520,10 @@ endif
 # Enable the TLBs in IEM (experimental).
 if1of ($(KBUILD_TARGET_ARCH), arm64)
  VBOX_WITH_IEM_TLB := 1
+endif
+# Enable the IEM recompiler of x86 code.
+if1of ($(KBUILD_TARGET_ARCH), arm64)
+ VBOX_WITH_IEM_RECOMPILER := 1
 endif
 # Enable native NEM on windows and macOS.
 if1of ($(KBUILD_TARGET), win darwin)
@@ -9109,7 +9113,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101214 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101229 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
