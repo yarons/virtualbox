@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: StorageControllerImpl.h 101220 2023-09-21 10:51:17Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -73,6 +73,9 @@ public:
     // (ensure there is a caller and a read lock before calling them!)
 
     void i_unshare();
+
+    // public static methods
+    static com::Utf8Str i_controllerNameFromBusType(StorageBus_T aBusType);
 
     /** @note this doesn't require a read lock since mParent is constant. */
     Machine* i_getMachine();

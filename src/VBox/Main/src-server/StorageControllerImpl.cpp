@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: StorageControllerImpl.cpp 101220 2023-09-21 10:51:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IStorageController.
  */
@@ -803,6 +803,65 @@ void StorageController::i_unshare()
     }
 
     unconst(m->pPeer) = NULL;
+}
+
+/**
+ * Returns a controller name from a given storage bus type.
+ *
+ * @return Controller name.
+ * @param  aBusType             Bus type to get controller name for.
+ */
+/* static */
+com::Utf8Str StorageController::i_controllerNameFromBusType(StorageBus_T aBusType)
+{
+    com::Utf8Str strControllerName = "Unknown";
+    switch (aBusType)
+    {
+        case StorageBus_IDE:
+        {
+            strControllerName = "IDE";
+            break;
+        }
+        case StorageBus_SATA:
+        {
+            strControllerName = "SATA";
+            break;
+        }
+        case StorageBus_SCSI:
+        {
+            strControllerName = "SCSI";
+            break;
+        }
+        case StorageBus_Floppy:
+        {
+            strControllerName = "Floppy";
+            break;
+        }
+        case StorageBus_SAS:
+        {
+            strControllerName = "SAS";
+            break;
+        }
+        case StorageBus_USB:
+        {
+            strControllerName = "USB";
+            break;
+        }
+        case StorageBus_PCIe:
+        {
+            strControllerName = "PCIe";
+            break;
+        }
+        case StorageBus_VirtioSCSI:
+        {
+            strControllerName = "VirtioSCSI";
+            break;
+        }
+        default:
+            AssertFailed(); /* Catch missing case above. */
+            break;
+    }
+    return strControllerName;
 }
 
 Machine* StorageController::i_getMachine()
