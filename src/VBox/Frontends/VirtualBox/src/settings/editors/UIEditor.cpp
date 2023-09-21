@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101051 2023-09-07 13:05:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101224 2023-09-21 15:09:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -27,6 +27,8 @@
 
 /* Qt includes: */
 #include <QAbstractButton>
+#include <QAbstractItemModel>
+#include <QAbstractItemView>
 #include <QLabel>
 #include <QRegularExpression>
 #include <QTabWidget>
@@ -98,6 +100,13 @@ QStringList UIEditor::description() const
         if (pTabWidget)
             for (int i = 0; i < pTabWidget->count(); ++i)
                 result << pTabWidget->tabText(i).remove(re);
+
+    /* Adding all the horizontal headers of abstract-item-view: */
+    foreach (QAbstractItemView *pView, findChildren<QAbstractItemView*>())
+        if (pView)
+            if (QAbstractItemModel *pModel = pView->model())
+                for (int i = 0; i < pModel->columnCount(); ++i)
+                    result << pModel->headerData(i, Qt::Horizontal).toString().remove(re);
 
     return result;
 }
