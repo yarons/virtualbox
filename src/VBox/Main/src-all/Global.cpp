@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 101215 2023-09-21 08:53:19Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.cpp 101218 2023-09-21 09:43:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -237,9 +237,8 @@ const Global::OSType Global::sOSTypes[] =
 /** Base string for Linux-based OS IDs. */
 #define VBOX_LINUX_OSID_STR_BASE(a_OSid)    #a_OSid
 /* Note: Keep this naming for legacy reasons. Always meant x86 (32-bit). */
-#define VBOX_LINUX_OSID_STR_X86(a_OSid)     VBOX_LINUX_OSID_STR_BASE(a_OSId)
-/* Note: Keep this naming for legacy reasons. Always meant x64 (i.e. x86 64-bit). */
-#define VBOX_LINUX_OSID_STR_X64(a_OSid)     VBOX_LINUX_OSID_STR_BASE(a_OSid ## _64)
+#define VBOX_LINUX_OSID_STR_X86(a_OSid)     VBOX_LINUX_OSID_STR_BASE(a_OSid)
+#define VBOX_LINUX_OSID_STR_X64(a_OSid)     VBOX_LINUX_OSID_STR_BASE(a_OSid ## _x64)
 /* New since VBox 7.1. */
 #define VBOX_LINUX_OSID_STR_ARM32(a_OSid)   VBOX_LINUX_OSID_STR_BASE(a_OSid ## _arm32)
 /* New since VBox 7.1. */
