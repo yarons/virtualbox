@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101209 2023-09-21 06:38:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 101226 2023-09-21 16:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -120,6 +120,8 @@ public:
     /** Sets image path. */
     void setISOImagePath(const QString &strPath);
 
+    /* strTypeId should be one of the type ids defined in Global.cpp and returned by IGuestOSType::getId(). */
+    void setGuestOSTypeByTypeId(const QString &strTypeId);
     /** Defines the VM OS @a strTypeId and @a strFamilyId if passed. */
     void setTypeId(QString strTypeId, QString strFamilyId = QString());
     /** Returns the VM OS type ID. */

@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.h 101209 2023-09-21 06:38:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.h 101226 2023-09-21 16:10:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class declaration.
  */
@@ -60,6 +60,8 @@ public:
     UIGuestOSTypeInfo getTypeListForFamilyId(const QString &strFamilyId) const;
     UIGuestOSTypeInfo getTypeListForVariant(const QString &strVariant) const;
 
+    UIGuestOSTypeII findGuestTypeById(const QString &strTypeId) const;
+
 private:
 
     void addGuestOSType(const CGuestOSType &comType);
@@ -73,10 +75,12 @@ private:
 /** A wrapper around CGuestOSType. */
 class SHARED_LIBRARY_STUFF UIGuestOSTypeII
 {
+
 public:
 
 
     UIGuestOSTypeII(const CGuestOSType &comGuestOSType);
+    UIGuestOSTypeII();
 
     const QString &getFamilyId() const;
     const QString &getFamilyDescription() const;
@@ -84,6 +88,7 @@ public:
     const QString &getVariant() const;
     const QString &getDescription() const;
 
+    bool isOk() const;
 
 private:
 
