@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs-armv8.cpp 100940 2023-08-22 14:29:29Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMAllRegs-armv8.cpp 101221 2023-09-21 12:21:13Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters, ARMv8 variant.
  */
@@ -211,8 +211,8 @@ VMMDECL(void) CPUMGetGuestAddrWidths(PCVM pVM, uint8_t *pcPhysAddrWidth, uint8_t
     AssertPtr(pVM);
     AssertReturnVoid(pcPhysAddrWidth);
     AssertReturnVoid(pcLinearAddrWidth);
-    AssertReleaseFailed();
-    RT_NOREF(pVM);
+    *pcPhysAddrWidth   = pVM->cpum.s.GuestFeatures.cMaxPhysAddrWidth;
+    *pcLinearAddrWidth = pVM->cpum.s.GuestFeatures.cMaxLinearAddrWidth;
 }
 
 
