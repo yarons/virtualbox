@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: DevSmc.cpp 101222 2023-09-21 14:41:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSmc - Apple System Management Controller.
  *
@@ -562,7 +562,7 @@ static int getSmcKeyOs(char *pabKey, uint32_t cbKey)
 
     for (int i = 0; i < 2; i++)
     {
-        inputStruct.key = (uint32_t)(i == 0 ? 'OSK0' : 'OSK1');
+        inputStruct.key = i == 0 ? RT_MAKE_U32_FROM_MSB_U8('O','S','K','0') : RT_MAKE_U32_FROM_MSB_U8('O','S','K','1');
         kr = IOConnectCallStructMethod((mach_port_t)port,
                                        (uint32_t)2,
                                        (const void *)&inputStruct,
