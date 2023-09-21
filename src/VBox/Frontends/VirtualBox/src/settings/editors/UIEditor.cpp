@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101224 2023-09-21 15:09:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -40,6 +40,11 @@
 UIEditor::UIEditor(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
 {
+}
+
+void UIEditor::addEditor(UIEditor *pEditor)
+{
+    m_editors << pEditor;
 }
 
 void UIEditor::filterOut(const QString &strFilter)

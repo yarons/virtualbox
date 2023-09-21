@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -228,7 +228,7 @@ void UIMachineSettingsAudio::prepareWidgets()
         m_pEditorAudioSettings = new UIAudioSettingsEditor(this);
         if (m_pEditorAudioSettings)
         {
-            m_editors << m_pEditorAudioSettings;
+            addEditor(m_pEditorAudioSettings);
             pLayout->addWidget(m_pEditorAudioSettings);
         }
 

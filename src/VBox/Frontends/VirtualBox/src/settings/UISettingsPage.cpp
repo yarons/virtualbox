@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 101051 2023-09-07 13:05:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -300,7 +300,7 @@ void UISettingsPageFrame::prepare()
             {
                 m_pLayout->addWidget(m_pPage);
                 /// @todo what about removal handling?
-                m_editors << m_pPage;
+                addEditor(m_pPage);
             }
             pLayoutMain->addWidget(m_pWidget);
         }

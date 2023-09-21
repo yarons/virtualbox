@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -494,7 +494,7 @@ void UIMachineSettingsStorage::prepareWidgets()
         m_pEditorStorageSettings = new UIStorageSettingsEditor(this);
         if (m_pEditorStorageSettings)
         {
-            m_editors << m_pEditorStorageSettings;
+            addEditor(m_pEditorStorageSettings);
             m_pEditorStorageSettings->setActionPool(m_pActionPool);
             pLayout->addWidget(m_pEditorStorageSettings);
         }

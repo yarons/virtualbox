@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 101033 2023-09-06 15:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -171,7 +171,7 @@ void UIGlobalSettingsUpdate::prepareWidgets()
         m_pEditorUpdateSettings = new UIUpdateSettingsEditor(this);
         if (m_pEditorUpdateSettings)
         {
-            m_editors << m_pEditorUpdateSettings;
+            addEditor(m_pEditorUpdateSettings);
             pLayout->addWidget(m_pEditorUpdateSettings);
         }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 101072 2023-09-08 15:03:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -381,7 +381,7 @@ void UIMachineSettingsInterface::prepareWidgets()
         m_pEditorMenuBar = new UIMenuBarEditorWidget(this);
         if (m_pEditorMenuBar)
         {
-            m_editors << m_pEditorMenuBar;
+            addEditor(m_pEditorMenuBar);
             m_pEditorMenuBar->setActionPool(m_pActionPool);
             m_pEditorMenuBar->setMachineID(m_uMachineId);
 
@@ -392,7 +392,7 @@ void UIMachineSettingsInterface::prepareWidgets()
         m_pEditorVisualState = new UIVisualStateEditor(this);
         if (m_pEditorVisualState)
         {
-            m_editors << m_pEditorVisualState;
+            addEditor(m_pEditorVisualState);
             pLayout->addWidget(m_pEditorVisualState);
         }
 
@@ -400,7 +400,7 @@ void UIMachineSettingsInterface::prepareWidgets()
         m_pEditorMiniToolabSettings = new UIMiniToolbarSettingsEditor(this);
         if (m_pEditorMiniToolabSettings)
         {
-            m_editors << m_pEditorMiniToolabSettings;
+            addEditor(m_pEditorMiniToolabSettings);
             pLayout->addWidget(m_pEditorMiniToolabSettings);
         }
 
@@ -410,7 +410,7 @@ void UIMachineSettingsInterface::prepareWidgets()
         m_pEditorStatusBar = new UIStatusBarEditorWidget(this);
         if (m_pEditorStatusBar)
         {
-            m_editors << m_pEditorStatusBar;
+            addEditor(m_pEditorStatusBar);
             m_pEditorStatusBar->setMachineID(m_uMachineId);
             pLayout->addWidget(m_pEditorStatusBar);
         }

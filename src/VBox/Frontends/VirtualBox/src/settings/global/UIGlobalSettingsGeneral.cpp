@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 101033 2023-09-06 15:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -186,7 +186,7 @@ void UIGlobalSettingsGeneral::prepareWidgets()
         m_pEditorDefaultMachineFolder = new UIDefaultMachineFolderEditor(this);
         if (m_pEditorDefaultMachineFolder)
         {
-            m_editors << m_pEditorDefaultMachineFolder;
+            addEditor(m_pEditorDefaultMachineFolder);
             pLayout->addWidget(m_pEditorDefaultMachineFolder);
         }
 
@@ -194,7 +194,7 @@ void UIGlobalSettingsGeneral::prepareWidgets()
         m_pEditorVRDEAuthLibrary = new UIVRDEAuthLibraryEditor(this);
         if (m_pEditorVRDEAuthLibrary)
         {
-            m_editors << m_pEditorVRDEAuthLibrary;
+            addEditor(m_pEditorVRDEAuthLibrary);
             pLayout->addWidget(m_pEditorVRDEAuthLibrary);
         }
 

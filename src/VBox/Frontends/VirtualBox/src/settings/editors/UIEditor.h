@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 101030 2023-09-06 15:00:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -43,6 +43,9 @@ public:
 
     /** Constructs editor passing @a pParent to the base-class. */
     UIEditor(QWidget *pParent = 0);
+
+    /** Adds @a pEditor into list of sub-editor. */
+    void addEditor(UIEditor *pEditor);
 
     /** Filters out contents with description unrelated to passed @a strFilter. */
     virtual void filterOut(const QString &strFilter);
