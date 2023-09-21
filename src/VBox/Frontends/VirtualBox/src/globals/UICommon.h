@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 101183 2023-09-20 07:25:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 101209 2023-09-21 06:38:06Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -527,6 +527,8 @@ public:
         /** Returns true if it can find at least one usable ext. pack. Else returns false. */
         bool isExtentionPackInstalled() const;
     /** @} */
+
+    const UIGuestOSTypeManager *guestOSTypeManager() const { return m_pGuestOSTypeManager; }
 
 public slots:
 
