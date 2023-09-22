@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 101163 2023-09-18 20:44:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 101245 2023-09-22 23:46:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2411,7 +2411,7 @@ DECL_FORCE_INLINE(uint32_t) iemGetTbFlagsForCurrentPc(PVMCPUCC pVCpu)
 }
 
 
-VMMDECL(VBOXSTRICTRC) IEMExecRecompiler(PVMCC pVM, PVMCPUCC pVCpu)
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecRecompiler(PVMCC pVM, PVMCPUCC pVCpu)
 {
     /*
      * See if there is an interrupt pending in TRPM, inject it if we can.
