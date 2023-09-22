@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101242 2023-09-22 15:41:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101244 2023-09-22 16:38:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -447,10 +447,18 @@ void UINameAndSystemEditor::sltFamilyChanged(int index)
     }
     else
     {
+        /* Populate variant combo: */
+        /* If family is Linux then select Oracle Linux as variant: */
+        int iOracleIndex = -1;
         foreach (const QString &strVariant, variantList)
         {
             m_pComboVariant->addItem(strVariant);
+            if (strVariant == "Oracle Linux")
+                iOracleIndex = m_pComboVariant->count() - 1;
         }
+        if (iOracleIndex != -1)
+            m_pComboVariant->setCurrentIndex(iOracleIndex);
+
         populateTypeCombo(pGuestOSTypeManager->getTypeListForVariant(m_pComboVariant->currentText()));
     }
     m_pComboVariant->blockSignals(false);
