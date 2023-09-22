@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVM.h 101237 2023-09-22 11:16:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -175,7 +175,6 @@ protected:
     /** Populates pages. */
     virtual void populatePages() /* final override */;
     virtual void cleanWizard() /* final override */;
-    void configureVM(const QString &strGuestTypeId, const CGuestOSType &comGuestType);
     bool attachDefaultDevices();
 
 private slots:
