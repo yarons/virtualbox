@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101226 2023-09-21 16:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101232 2023-09-22 05:39:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -250,15 +250,15 @@ void UINameAndSystemEditor::setTypeId(QString strTypeId, QString strFamilyId /* 
     // sltTypeChanged(m_pComboType->currentIndex());
 }
 
-void UINameAndSystemEditor::setGuestOSTypeByTypeId(const QString &strTypeId)
+bool UINameAndSystemEditor::setGuestOSTypeByTypeId(const QString &strTypeId)
 {
-    AssertReturnVoid(m_pComboFamily);
+    AssertReturn(m_pComboFamily, false);
 
     const UIGuestOSTypeManager * const pGuestOSTypeManager = uiCommon().guestOSTypeManager();
-    AssertReturnVoid(pGuestOSTypeManager);
+    AssertReturn(pGuestOSTypeManager, false);
     const UIGuestOSTypeII &type = pGuestOSTypeManager->findGuestTypeById(strTypeId);
     if (!type.isOk())
-        return;
+        return false;
 
     int iFamilyComboIndex = -1;
     /* We already have to have an item in the family combo box for this family id: */
@@ -270,7 +270,7 @@ void UINameAndSystemEditor::setGuestOSTypeByTypeId(const QString &strTypeId)
     }
     /* Bail out if family combo has no such item: */
     if (iFamilyComboIndex == -1)
-        return;
+        return false;
     /* Set the family combo's index. This will cause variant combo to be populated accordingly: */
     m_pComboFamily->setCurrentIndex(iFamilyComboIndex);
 
@@ -286,7 +286,7 @@ void UINameAndSystemEditor::setGuestOSTypeByTypeId(const QString &strTypeId)
         if (index != -1)
             m_pComboVariant->setCurrentIndex(index);
         else
-            return;
+            return false;
     }
 
     /* At this point type combo should include the type we want to select: */
@@ -298,6 +298,7 @@ void UINameAndSystemEditor::setGuestOSTypeByTypeId(const QString &strTypeId)
     }
     if (iTypeIndex != -1)
         m_pComboType->setCurrentIndex(iTypeIndex);
+    return true;
 }
 
 QString UINameAndSystemEditor::typeId() const
