@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.h 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -83,8 +83,6 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
-    /** Prepares connections. */
-    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 

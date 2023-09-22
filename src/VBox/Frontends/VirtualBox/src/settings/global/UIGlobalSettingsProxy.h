@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.h 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -83,8 +83,6 @@ private:
     void prepare();
     /** Prepares wıdgets. */
     void prepareWidgets();
-    /** Prepares connections. */
-    void prepareConnections();
     /** Cleanups all. */
     void cleanup();
 

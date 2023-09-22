@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -218,7 +218,6 @@ void UIGlobalSettingsProxy::prepare()
 
     /* Prepare everything: */
     prepareWidgets();
-    prepareConnections();
 
     /* Apply language settings: */
     retranslateUi();
@@ -234,6 +233,10 @@ void UIGlobalSettingsProxy::prepareWidgets()
         m_pEditorProxyFeatures = new UIProxyFeaturesEditor(this);
         if (m_pEditorProxyFeatures)
         {
+            connect(m_pEditorProxyFeatures, &UIProxyFeaturesEditor::sigProxyModeChanged,
+                    this, &UIGlobalSettingsProxy::revalidate);
+            connect(m_pEditorProxyFeatures, &UIProxyFeaturesEditor::sigProxyHostChanged,
+                    this, &UIGlobalSettingsProxy::revalidate);
             addEditor(m_pEditorProxyFeatures);
             pLayout->addWidget(m_pEditorProxyFeatures);
         }
@@ -241,14 +244,6 @@ void UIGlobalSettingsProxy::prepareWidgets()
         /* Add stretch to the end: */
         pLayout->addStretch();
     }
-}
-
-void UIGlobalSettingsProxy::prepareConnections()
-{
-    connect(m_pEditorProxyFeatures, &UIProxyFeaturesEditor::sigProxyModeChanged,
-            this, &UIGlobalSettingsProxy::revalidate);
-    connect(m_pEditorProxyFeatures, &UIProxyFeaturesEditor::sigProxyHostChanged,
-            this, &UIGlobalSettingsProxy::revalidate);
 }
 
 void UIGlobalSettingsProxy::cleanup()
