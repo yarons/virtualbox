@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 101203 2023-09-20 14:41:16Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 101261 2023-09-25 23:57:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -778,6 +778,14 @@ typedef struct IEMTHRDEDCALLENTRY *PIEMTHRDEDCALLENTRY;
 /** Pointer to a const threaded call entry. */
 typedef IEMTHRDEDCALLENTRY const *PCIEMTHRDEDCALLENTRY;
 
+/** Native IEM TB 'function' typedef.
+ * This will throw/longjmp on occation.  */
+typedef int FNIEMTBNATIVE(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP;
+/** Pointer to a native IEM TB entry point function.
+ * This will throw/longjmp on occation.  */
+typedef FNIEMTBNATIVE *PFNIEMTBNATIVE;
+
+
 /**
  * Translation block.
  *
@@ -835,7 +843,7 @@ typedef struct IEMTB
         } Thrd;
         struct
         {
-            /** The native instructions. */
+            /** The native instructions (PFNIEMTBNATIVE). */
             PIEMNATIVEINSTR     paInstructions;
             /** Number of instructions pointed to by paInstructions. */
             uint32_t            cInstructions;
