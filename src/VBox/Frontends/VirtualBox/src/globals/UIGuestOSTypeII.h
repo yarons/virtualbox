@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.h 101226 2023-09-21 16:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.h 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class declaration.
  */
@@ -87,6 +87,17 @@ public:
     const QString &getId() const;
     const QString &getVariant() const;
     const QString &getDescription() const;
+
+    /** @name Wrapper getters for CGuestOSType member.
+      * @{ */
+        KStorageBus getRecommendedHDStorageBus() const;
+        ULONG getRecommendedRAM() const;
+        KStorageBus getRecommendedDVDStorageBus() const;
+        ULONG getRecommendedCPUCount() const;
+        KFirmwareType getRecommendedFirmware() const;
+        bool getRecommendedFloppy() const;
+        LONG64 getRecommendedHDD() const;
+    /** @} */
 
     bool isOk() const;
 

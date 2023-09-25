@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.cpp 101226 2023-09-21 16:10:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.cpp 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class implementation.
  */
@@ -167,4 +167,53 @@ const QString &UIGuestOSTypeII::getDescription() const
     if (m_strDescription.isEmpty() && m_comGuestOSType.isOk())
         m_strDescription = m_comGuestOSType.GetDescription();
     return m_strDescription;
+}
+
+KStorageBus UIGuestOSTypeII::getRecommendedHDStorageBus() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedHDStorageBus();
+    return KStorageBus_Null;
+}
+
+ULONG UIGuestOSTypeII::getRecommendedRAM() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedRAM();
+    return 0;
+}
+
+KStorageBus UIGuestOSTypeII::getRecommendedDVDStorageBus() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedDVDStorageBus();
+    return KStorageBus_Null;
+}
+
+ULONG UIGuestOSTypeII::getRecommendedCPUCount() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedCPUCount();
+    return 0;
+}
+
+KFirmwareType UIGuestOSTypeII::getRecommendedFirmware() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedFirmware();
+    return  KFirmwareType_Max;
+}
+
+bool UIGuestOSTypeII::getRecommendedFloppy() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedFloppy();
+    return false;
+}
+
+LONG64 UIGuestOSTypeII::getRecommendedHDD() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedHDD();
+    return 0;
 }

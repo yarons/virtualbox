@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -353,7 +353,7 @@ void UIWizardNewVMSummaryModel::populateData(UIWizardNewVM *pWizard)
     pNameRoot->addChild(UIWizardNewVM::tr("Machine Name"), pWizard->machineBaseName());
     pNameRoot->addChild(UIWizardNewVM::tr("Machine Folder"), pWizard->machineFolder());
     pNameRoot->addChild(UIWizardNewVM::tr("ISO Image"), pWizard->ISOFilePath());
-    pNameRoot->addChild(UIWizardNewVM::tr("Guest OS Type"), pWizard->guestOSType().GetDescription());
+    pNameRoot->addChild(UIWizardNewVM::tr("Guest OS Type"), pWizard->guestOSType().getDescription());
 
     const QString &ISOPath = pWizard->ISOFilePath();
     if (!ISOPath.isNull() && !ISOPath.isEmpty())
