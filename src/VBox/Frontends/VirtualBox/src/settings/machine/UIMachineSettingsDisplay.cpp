@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 101264 2023-09-26 10:51:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -329,7 +329,7 @@ void UIMachineSettingsDisplay::setGuestOSType(UIGuestOSTypeII guestOSType)
 
     /* Remember new guest OS type: */
     m_guestOSType = guestOSType;
-    m_pEditorVideoMemorySize->setGuestOSType(m_guestOSType);
+    m_pEditorVideoMemorySize->setGuestOSTypeId(m_guestOSType.getId());
 
 #ifdef VBOX_WITH_3D_ACCELERATION
     /* Check if WDDM mode supported by the guest OS type: */
