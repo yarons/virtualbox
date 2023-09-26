@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 101261 2023-09-25 23:57:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 101262 2023-09-26 00:14:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -780,7 +780,11 @@ typedef IEMTHRDEDCALLENTRY const *PCIEMTHRDEDCALLENTRY;
 
 /** Native IEM TB 'function' typedef.
  * This will throw/longjmp on occation.  */
+#if RT_CPLUSPLUS_PREREQ(201700)
 typedef int FNIEMTBNATIVE(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP;
+#else
+typedef int FNIEMTBNATIVE(PVMCPUCC pVCpu);
+#endif
 /** Pointer to a native IEM TB entry point function.
  * This will throw/longjmp on occation.  */
 typedef FNIEMTBNATIVE *PFNIEMTBNATIVE;
