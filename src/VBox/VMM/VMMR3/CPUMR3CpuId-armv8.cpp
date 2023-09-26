@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId-armv8.cpp 101216 2023-09-21 08:56:02Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId-armv8.cpp 101267 2023-09-26 12:20:33Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part for ARMv8 hypervisor.
  */
@@ -1198,6 +1198,22 @@ static DBGFREGSUBFIELD const g_aIdAa64DfR1Fields[] =
 };
 
 
+/** ID_AA64AFR0_EL1 field descriptions.   */
+static DBGFREGSUBFIELD const g_aIdAa64AfR0Fields[] =
+{
+    DBGFREGSUBFIELD_RO("ImpDef\0"     "Implementation defined",                                     0, 32, 0),
+    DBGFREGSUBFIELD_TERMINATOR()
+};
+
+
+/** ID_AA64AFR1_EL1 field descriptions.   */
+static DBGFREGSUBFIELD const g_aIdAa64AfR1Fields[] =
+{
+    DBGFREGSUBFIELD_RO("ImpDef\0"     "Implementation defined",                                     0, 32, 0),
+    DBGFREGSUBFIELD_TERMINATOR()
+};
+
+
 static void cpumR3CpuIdInfoMnemonicListU64(PCDBGFINFOHLP pHlp, uint64_t uVal, PCDBGFREGSUBFIELD pDesc,
                                            const char *pszLeadIn, uint32_t cchWidth)
 {
@@ -1375,6 +1391,16 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
                                 pVM->cpum.s.HostIdRegs.u64RegIdAa64Dfr1El1,
                                 pVM->cpum.s.GuestIdRegs.u64RegIdAa64Dfr1El1,
                                 g_aIdAa64DfR1Fields, iVerbosity > 1);
+
+    cpumR3CpuIdInfoIdRegDetails(pHlp, "ID_AA64AFR0_EL1",
+                                pVM->cpum.s.HostIdRegs.u64RegIdAa64Afr0El1,
+                                pVM->cpum.s.GuestIdRegs.u64RegIdAa64Afr0El1,
+                                g_aIdAa64AfR0Fields, iVerbosity > 1);
+
+    cpumR3CpuIdInfoIdRegDetails(pHlp, "ID_AA64AFR1_EL1",
+                                pVM->cpum.s.HostIdRegs.u64RegIdAa64Afr1El1,
+                                pVM->cpum.s.GuestIdRegs.u64RegIdAa64Afr1El1,
+                                g_aIdAa64AfR1Fields, iVerbosity > 1);
 }
 
 
