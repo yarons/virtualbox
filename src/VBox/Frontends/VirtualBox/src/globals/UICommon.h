@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 101209 2023-09-21 06:38:06Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -501,6 +501,7 @@ public:
         /** Returns the required video memory in bytes for the current desktop
           * resolution at maximum possible screen depth in bpp. */
         static quint64 requiredVideoMemory(const QString &strGuestOSTypeId, int cMonitors = 1);
+        KGraphicsControllerType getRecommendedGraphicsController(const QString &strGuestOSTypeId) const;
     /** @} */
 
     /** @name Thread stuff.

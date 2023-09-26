@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -32,7 +32,6 @@
 #endif
 
 /* GUI includes: */
-#include "UIGuestOSTypeII.h"
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
@@ -62,7 +61,7 @@ public:
     virtual ~UIMachineSettingsDisplay() RT_OVERRIDE;
 
     /** Defines @a comGuestOSType. */
-    void setGuestOSType(UIGuestOSTypeII comGuestOSType);
+    void setGuestOSTypeId(const QString &strGuestOSTypeId);
 
 #ifdef VBOX_WITH_3D_ACCELERATION
     /** Returns whether 3D Acceleration is enabled. */
@@ -148,7 +147,7 @@ private:
     bool saveRecordingData();
 
     /** Holds the guest OS type. */
-    UIGuestOSTypeII  m_guestOSType;
+    QString m_strGuestOSTypeId;
 #ifdef VBOX_WITH_3D_ACCELERATION
     /** Holds whether the guest OS supports WDDM. */
     bool          m_fWddmModeSupported;

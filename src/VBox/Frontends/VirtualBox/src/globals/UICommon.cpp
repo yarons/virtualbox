@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 101210 2023-09-21 06:38:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2564,6 +2564,13 @@ quint64 UICommon::requiredVideoMemory(const QString &strGuestOSTypeId, int cMoni
     }
 
     return uNeedMBytes * _1M;
+}
+
+KGraphicsControllerType UICommon::getRecommendedGraphicsController(const QString &strGuestOSTypeId) const
+{
+    if (!m_pGuestOSTypeManager)
+        return KGraphicsControllerType_Null;
+    return m_pGuestOSTypeManager->getRecommendedGraphicsController(strGuestOSTypeId);
 }
 
 /* static */

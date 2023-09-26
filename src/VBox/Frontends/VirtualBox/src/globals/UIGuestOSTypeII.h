@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.h 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class declaration.
  */
@@ -61,6 +61,8 @@ public:
     UIGuestOSTypeInfo getTypeListForVariant(const QString &strVariant) const;
 
     UIGuestOSTypeII findGuestTypeById(const QString &strTypeId) const;
+
+    KGraphicsControllerType getRecommendedGraphicsController(const QString &strTypeId) const;
 
 private:
 

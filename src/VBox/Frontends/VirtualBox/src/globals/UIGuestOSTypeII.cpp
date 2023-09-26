@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.cpp 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class implementation.
  */
@@ -118,6 +118,18 @@ UIGuestOSTypeII UIGuestOSTypeManager::findGuestTypeById(const QString &strTypeId
             return type;
     }
     return UIGuestOSTypeII();
+}
+
+KGraphicsControllerType UIGuestOSTypeManager::getRecommendedGraphicsController(const QString &strTypeId) const
+{
+    if (strTypeId.isEmpty())
+        return KGraphicsControllerType_Null;
+    foreach (const UIGuestOSTypeII &type, m_guestOSTypes)
+    {
+        if (type.getId() == strTypeId)
+            return type.getRecommendedGraphicsController();
+    }
+    return KGraphicsControllerType_Null;
 }
 
 UIGuestOSTypeII::UIGuestOSTypeII()
