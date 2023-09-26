@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -325,12 +325,12 @@ QString UINameAndSystemEditor::familyId() const
 //     setTypeId(enmType.GetId(), enmType.GetFamilyId());
 // }
 
-UIGuestOSTypeII UINameAndSystemEditor::type() const
-{
-    const UIGuestOSTypeManager * const pGuestOSTypeManager = uiCommon().guestOSTypeManager();
-    AssertReturn(pGuestOSTypeManager, UIGuestOSTypeII());
-    return pGuestOSTypeManager->findGuestTypeById(m_strTypeId);
-}
+// UIGuestOSTypeII UINameAndSystemEditor::type() const
+// {
+//     const UIGuestOSTypeManager * const pGuestOSTypeManager = uiCommon().guestOSTypeManager();
+//     AssertReturn(pGuestOSTypeManager, UIGuestOSTypeII());
+//     return pGuestOSTypeManager->findGuestTypeById(m_strTypeId);
+// }
 
 void UINameAndSystemEditor::markNameEditor(bool fError)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -36,6 +36,7 @@
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "UIIconPool.h"
+#include "UIGuestOSTypeII.h"
 #include "UIMediaComboBox.h"
 #include "UIMediumSelector.h"
 #include "UIMediumSizeEditor.h"
@@ -46,7 +47,6 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CGuestOSType.h"
 #include "CSystemProperties.h"
 
 QUuid UIWizardNewVMDiskCommon::getWithFileOpenDialog(const QString &strOSTypeID,
@@ -205,9 +205,8 @@ void UIWizardNewVMDiskPage::sltGetWithFileOpenDialog()
 {
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard);
-    const UIGuestOSTypeII &OSType = pWizard->guestOSType();
 
-    QUuid uMediumId = UIWizardNewVMDiskCommon::getWithFileOpenDialog(OSType.getId(),
+    QUuid uMediumId = UIWizardNewVMDiskCommon::getWithFileOpenDialog(pWizard->guestOSTypeId(),
                                                                      pWizard->machineFolder(),
                                                                      this, m_pActionPool);
     if (!uMediumId.isNull())
@@ -265,10 +264,10 @@ void UIWizardNewVMDiskPage::initializePage()
     AssertReturnVoid(pWizard);
 
     LONG64 iRecommendedSize = 0;
-    const UIGuestOSTypeII &type = pWizard->guestOSType();
-    if (!type.isOk() && !m_userModifiedParameters.contains("SelectedDiskSource"))
+    const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
+    if (pManager && !m_userModifiedParameters.contains("SelectedDiskSource"))
     {
-        iRecommendedSize = type.getRecommendedHDD();
+        iRecommendedSize = pManager->getRecommendedHDD(pWizard->guestOSTypeId());
         if (iRecommendedSize != 0)
         {
             if (m_pDiskNew)

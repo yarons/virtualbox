@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.h 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.h 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class declaration.
  */
@@ -44,7 +44,7 @@ class UIGuestOSTypeII;
 
 
 
-class UIGuestOSTypeManager
+class SHARED_LIBRARY_STUFF UIGuestOSTypeManager
 {
 
 public:
@@ -63,6 +63,14 @@ public:
     UIGuestOSTypeII findGuestTypeById(const QString &strTypeId) const;
 
     KGraphicsControllerType getRecommendedGraphicsController(const QString &strTypeId) const;
+    ULONG getRecommendedRAM(const QString &strTypeId) const;
+    ULONG getRecommendedCPUCount(const QString &strTypeId) const;
+    KFirmwareType getRecommendedFirmware(const QString &strTypeId) const;
+    QString getDescription(const QString &strTypeId) const;
+    LONG64 getRecommendedHDD(const QString &strTypeId) const;
+    KStorageBus getRecommendedHDStorageBus(const QString &strTypeId) const;
+    KStorageBus getRecommendedDVDStorageBus(const QString &strTypeId) const;
+    bool getRecommendedFloppy(const QString &strTypeId) const;
 
 private:
 

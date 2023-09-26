@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -31,13 +31,12 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UIBaseMemoryEditor.h"
+#include "UIGuestOSTypeII.h"
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMEditors.h"
 #include "UIWizardNewVMHardwarePage.h"
 
-/* COM includes: */
-#include "CGuestOSType.h"
 
 UIWizardNewVMHardwarePage::UIWizardNewVMHardwarePage()
     : m_pLabel(0)
@@ -88,26 +87,28 @@ void UIWizardNewVMHardwarePage::initializePage()
     retranslateUi();
 
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
-    if (pWizard && m_pHardwareWidgetContainer)
+    const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
+
+    if (pManager && pWizard && m_pHardwareWidgetContainer)
     {
-        const UIGuestOSTypeII &type = pWizard->guestOSType();
+        const QString &strTypeId = pWizard->guestOSTypeId();
 
         m_pHardwareWidgetContainer->blockSignals(true);
         if (!m_userModifiedParameters.contains("MemorySize"))
         {
-            ULONG recommendedRam = type.getRecommendedRAM();
+            ULONG recommendedRam = pManager->getRecommendedRAM(strTypeId);
             m_pHardwareWidgetContainer->setMemorySize(recommendedRam);
             pWizard->setMemorySize(recommendedRam);
         }
         if (!m_userModifiedParameters.contains("CPUCount"))
         {
-            ULONG recommendedCPUs = type.getRecommendedCPUCount();
+            ULONG recommendedCPUs = pManager->getRecommendedCPUCount(strTypeId);
             m_pHardwareWidgetContainer->setCPUCount(recommendedCPUs);
             pWizard->setCPUCount(recommendedCPUs);
         }
         if (!m_userModifiedParameters.contains("EFIEnabled"))
         {
-            KFirmwareType fwType = type.getRecommendedFirmware();
+            KFirmwareType fwType = pManager->getRecommendedFirmware(strTypeId);
             m_pHardwareWidgetContainer->setEFIEnabled(fwType != KFirmwareType_BIOS);
             pWizard->setEFIEnabled(fwType != KFirmwareType_BIOS);
         }
