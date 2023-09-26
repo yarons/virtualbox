@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 101261 2023-09-25 23:57:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 101275 2023-09-26 23:44:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -84,6 +84,7 @@ extern "C" void *__deregister_frame_info(void *pvBegin);           /* (returns p
 #include "IEMInline.h"
 #include "IEMThreadedFunctions.h"
 #include "IEMN8veRecompiler.h"
+#include "IEMNativeFunctions.h"
 
 
 /*
@@ -1806,6 +1807,15 @@ static uint32_t iemNativeEmitProlog(PIEMRECOMPILERSTATE pReNative, uint32_t off)
 }
 
 
+/*
+ * Include g_apfnIemNativeRecompileFunctions and associated functions.
+ *
+ * This should probably live in it's own file later, but lets see what the
+ * compile times turn out to be first.
+ */
+#include "IEMNativeFunctions.cpp.h"
+
+
 /**
  * Recompiles the given threaded TB into a native one.
  *
@@ -1844,7 +1854,11 @@ PIEMTB iemNativeRecompile(PVMCPUCC pVCpu, PIEMTB pTb)
     uint32_t             cCallsLeft = pTb->Thrd.cCalls;
     while (cCallsLeft-- > 0)
     {
-        off = iemNativeEmitThreadedCall(pReNative, off, pCallEntry);
+        PFNIEMNATIVERECOMPFUNC const pfnRecom = g_apfnIemNativeRecompileFunctions[pCallEntry->enmFunction];
+        if (pfnRecom) /** @todo stats on this.   */
+            off = pfnRecom(pReNative, off, pCallEntry);
+        else
+            off = iemNativeEmitThreadedCall(pReNative, off, pCallEntry);
         AssertReturn(off != UINT32_MAX, pTb);
 
         pCallEntry++;
