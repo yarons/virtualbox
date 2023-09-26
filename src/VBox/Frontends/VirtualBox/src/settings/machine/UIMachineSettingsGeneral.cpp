@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 101231 2023-09-21 21:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -157,9 +157,9 @@ UIMachineSettingsGeneral::~UIMachineSettingsGeneral()
     cleanup();
 }
 
-CGuestOSType UIMachineSettingsGeneral::guestOSType() const
+UIGuestOSTypeII UIMachineSettingsGeneral::guestOSType() const
 {
-    AssertPtrReturn(m_pEditorNameAndSystem, CGuestOSType());
+    AssertPtrReturn(m_pEditorNameAndSystem, UIGuestOSTypeII());
     return m_pEditorNameAndSystem->type();
 }
 

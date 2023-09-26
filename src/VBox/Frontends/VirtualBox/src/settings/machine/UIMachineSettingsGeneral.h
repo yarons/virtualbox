@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 101231 2023-09-21 21:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* GUI includes: */
+#include "UIGuestOSTypeII.h"
 #include "UISettingsPage.h"
 
 /* Forward declarations: */
@@ -57,8 +58,8 @@ public:
     /** Destructs General settings page. */
     virtual ~UIMachineSettingsGeneral() RT_OVERRIDE;
 
-    /** Returns the VM OS type ID. */
-    CGuestOSType guestOSType() const;
+    /** Returns the VM OS type. */
+    UIGuestOSTypeII guestOSType() const;
 
 protected:
 

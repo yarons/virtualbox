@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.h 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class declaration.
  */
@@ -97,9 +97,12 @@ public:
         KFirmwareType getRecommendedFirmware() const;
         bool getRecommendedFloppy() const;
         LONG64 getRecommendedHDD() const;
+        KGraphicsControllerType getRecommendedGraphicsController() const;
     /** @} */
 
     bool isOk() const;
+    bool operator==(const UIGuestOSTypeII &other);
+    bool operator!=(const UIGuestOSTypeII &other);
 
 private:
 

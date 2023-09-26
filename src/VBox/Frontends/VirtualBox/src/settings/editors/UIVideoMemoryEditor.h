@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class declaration.
  */
@@ -33,10 +33,10 @@
 
 /* GUI includes: */
 #include "UIEditor.h"
+#include "UIGuestOSTypeII.h"
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CGuestOSType.h"
 
 /* Forward declarations: */
 class QGridLayout;
@@ -65,7 +65,7 @@ public:
     int value() const;
 
     /** Defines @a comGuestOSType. */
-    void setGuestOSType(const CGuestOSType &comGuestOSType);
+    void setGuestOSType(const UIGuestOSTypeII &comGuestOSType);
 
     /** Defines @a cGuestScreenCount. */
     void setGuestScreenCount(int cGuestScreenCount);
@@ -117,7 +117,7 @@ private:
     /** @name Options
      * @{ */
         /** Holds the guest OS type ID. */
-        CGuestOSType             m_comGuestOSType;
+        UIGuestOSTypeII          m_guestOSType;
         /** Holds the guest screen count. */
         int                      m_cGuestScreenCount;
         /** Holds the graphics controller type. */

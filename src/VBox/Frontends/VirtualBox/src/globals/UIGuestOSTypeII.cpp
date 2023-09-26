@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.cpp 101253 2023-09-25 14:00:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.cpp 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class implementation.
  */
@@ -216,4 +216,21 @@ LONG64 UIGuestOSTypeII::getRecommendedHDD() const
     if (m_comGuestOSType.isOk())
         return m_comGuestOSType.GetRecommendedHDD();
     return 0;
+}
+
+KGraphicsControllerType UIGuestOSTypeII::getRecommendedGraphicsController() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetRecommendedGraphicsController();
+    return KGraphicsControllerType_Null;
+}
+
+bool UIGuestOSTypeII::operator==(const UIGuestOSTypeII &other)
+{
+    return m_comGuestOSType == other.m_comGuestOSType;
+}
+
+bool UIGuestOSTypeII::operator!=(const UIGuestOSTypeII &other)
+{
+    return m_comGuestOSType != other.m_comGuestOSType;
 }

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101242 2023-09-22 15:41:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 101263 2023-09-26 10:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* GUI includes: */
 #include "UIEditor.h"
+#include "UIGuestOSTypeII.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -129,7 +130,7 @@ public:
     QString familyId() const;
 
     /** Returns the VM OS type. */
-    CGuestOSType type() const;
+    UIGuestOSTypeII type() const;
 
     /** Passes the @p fError to QILineEdit::mark(bool) effectively marking it for error. */
     void markNameEditor(bool fError);
