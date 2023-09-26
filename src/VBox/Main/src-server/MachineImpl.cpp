@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 101269 2023-09-26 12:58:06Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 101271 2023-09-26 13:13:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -500,7 +500,7 @@ HRESULT Machine::init(VirtualBox *aParent,
             mParallelPorts[slot]->i_applyDefaults();
 
         /* Enable the VMMDev testing feature for bootsector VMs: */
-        if (aOsType && aOsType->i_id() == "VBoxBS_64")
+        if (aOsType && aOsType->i_id() == "VBoxBS_x64")
             mData->pMachineConfigFile->mapExtraDataItems["VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled"] = "1";
 
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
@@ -15358,7 +15358,7 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
     }
 
     /* Enable the VMMDev testing feature for bootsector VMs: */
-    if (osTypeId == "VBoxBS_64")
+    if (osTypeId == "VBoxBS_x64")
     {
         hrc = setExtraData("VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled", "1");
         if (FAILED(hrc))
