@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100495 2023-07-11 06:43:42Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101298 2023-09-27 15:51:21Z michal.necasek@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -526,6 +526,10 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
   	USB/VUSBUrbPool.cpp \
   	USB/VUSBUrbTrace.cpp
  endif
+
+ ifdef VBOX_WITHOUT_KEYBOARD_HID_CC_DC_PASSTHROUGH
+  VBoxDD_DEFS += VBOX_DISABLE_HID_CC_DC_PASSTHROUGH
+ endif # VBOX_WITHOUT_KEYBOARD_HID_CC_DC_PASSTHROUGH
 
  # --- Networking bits. ---
 

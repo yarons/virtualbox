@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101281 2023-09-27 07:37:37Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 101298 2023-09-27 15:51:21Z michal.necasek@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -745,6 +745,8 @@ VBOX_WITH_TPM = 1
 if1of ($(KBUILD_TARGET), linux darwin win solaris)
  VBOX_WITH_LIBTPMS = 1
 endif
+# Disable keyboard HID Consumer/Desktop control keys passthrough
+# VBOX_WITHOUT_KEYBOARD_HID_CC_DC_PASSTHROUGH = 1
 ## @}
 
 # legacy
@@ -9158,7 +9160,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101281 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101298 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
