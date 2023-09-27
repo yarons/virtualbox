@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 101286 2023-09-27 09:23:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -114,8 +114,6 @@ public:
 
     /* strTypeId should be one of the type ids defined in Global.cpp and returned by IGuestOSType::getId(). */
     bool setGuestOSTypeByTypeId(const QString &strTypeId);
-    /** Defines the VM OS @a strTypeId and @a strFamilyId if passed. */
-    void setTypeId(QString strTypeId, QString strFamilyId = QString());
     /** Returns the VM OS type ID. */
     QString typeId() const;
     /** Returns the VM OS family ID. */

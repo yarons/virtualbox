@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 101286 2023-09-27 09:23:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -910,7 +910,7 @@ void UIDetailsElement::popupNameAndSystemEditor(bool fChooseName, bool fChoosePa
             else if (fChoosePath)
                 pEditor->setPath(strValue);
             else if (fChooseType)
-                pEditor->setTypeId(strValue);
+                pEditor->setGuestOSTypeByTypeId(strValue);
 
             /* Add to popup: */
             pPopup->setWidget(pEditor);

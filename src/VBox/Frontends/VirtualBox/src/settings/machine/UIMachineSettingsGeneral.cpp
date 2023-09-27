@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 101286 2023-09-27 09:23:24Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -251,7 +251,7 @@ void UIMachineSettingsGeneral::getFromCache()
     if (m_pEditorNameAndSystem)
     {
         m_pEditorNameAndSystem->setName(oldGeneralData.m_strName);
-        m_pEditorNameAndSystem->setTypeId(oldGeneralData.m_strGuestOsTypeId);
+        m_pEditorNameAndSystem->setGuestOSTypeByTypeId(oldGeneralData.m_strGuestOsTypeId);
     }
 
     /* Load old 'Advanced' data from cache: */
