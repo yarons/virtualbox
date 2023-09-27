@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 101294 2023-09-27 14:48:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 101295 2023-09-27 15:03:51Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -28,6 +28,10 @@
 /* GUI includes: */
 #include "UIGuestOSType.h"
 
+
+/*********************************************************************************************************************************
+*   UIGuestOSType definition.                                                                                     *
+*********************************************************************************************************************************/
 
 /** A wrapper around CGuestOSType. Some of the properties are cached here for performance. */
 class SHARED_LIBRARY_STUFF UIGuestOSType
@@ -73,6 +77,10 @@ private:
     CGuestOSType m_comGuestOSType;
 };
 
+/*********************************************************************************************************************************
+*   UIGuestOSTypeManager implementaion.                                                                                     *
+*********************************************************************************************************************************/
+
 UIGuestOSTypeManager::UIGuestOSTypeManager()
     :m_guestOSTypes(new QList<UIGuestOSType>())
 {
@@ -80,6 +88,7 @@ UIGuestOSTypeManager::UIGuestOSTypeManager()
 
 void UIGuestOSTypeManager::reCacheGuestOSTypes(const CGuestOSTypeVector &guestOSTypes)
 {
+    AssertReturnVoid(m_guestOSTypes);
     m_typeIdIndexMap.clear();
     m_guestOSTypes->clear();
     m_guestOSFamilies.clear();
@@ -101,6 +110,7 @@ void UIGuestOSTypeManager::reCacheGuestOSTypes(const CGuestOSTypeVector &guestOS
 
 void UIGuestOSTypeManager::addGuestOSType(const CGuestOSType &comType)
 {
+    AssertReturnVoid(m_guestOSTypes);
     m_guestOSTypes->append(UIGuestOSType(comType));
     m_typeIdIndexMap[m_guestOSTypes->last().getId()] = m_guestOSTypes->size() - 1;
     QPair<QString, QString> family = QPair<QString, QString>(m_guestOSTypes->last().getFamilyId(), m_guestOSTypes->last().getFamilyDescription());
@@ -228,6 +238,10 @@ bool UIGuestOSTypeManager::getRecommendedFloppy(const QString &strTypeId) const
     AssertReturn(m_guestOSTypes, false);
     return m_guestOSTypes->value(m_typeIdIndexMap.value(strTypeId, -1)).getRecommendedFloppy();
 }
+
+/*********************************************************************************************************************************
+*   UIGuestOSType implementaion.                                                                                     *
+*********************************************************************************************************************************/
 
 UIGuestOSType::UIGuestOSType()
 {
