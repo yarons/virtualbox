@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.h 101285 2023-09-27 09:17:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class declaration.
  */
@@ -71,7 +71,8 @@ private:
 
     /** Populates menu. */
     void populateMenu();
-
+    /** A help fundtion for populateMenu(). @p is the list of os type and @p pMenu is the menu to populate. */
+    void createOSTypeMenu(const QVector<QPair<QString, QString> > &typeList, QMenu *pMenu);
     /** Holds the current guest OS type ID. */
     QString  m_strOSTypeId;
 
