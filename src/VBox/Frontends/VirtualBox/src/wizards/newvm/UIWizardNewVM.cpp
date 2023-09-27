@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -31,7 +31,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
-#include "UIGuestOSTypeII.h"
+#include "UIGuestOSType.h"
 #include "UIMedium.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVM.h"

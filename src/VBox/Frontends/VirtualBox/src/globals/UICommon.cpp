@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -62,7 +62,7 @@
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIDesktopWidgetWatchdog.h"
-#include "UIGuestOSTypeII.h"
+#include "UIGuestOSType.h"
 #include "UIExtraDataDefs.h"
 #include "UIExtraDataManager.h"
 #include "UIFDCreationDialog.h"

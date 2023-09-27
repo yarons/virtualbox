@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -36,7 +36,7 @@
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "UIIconPool.h"
-#include "UIGuestOSTypeII.h"
+#include "UIGuestOSType.h"
 #include "UIMediaComboBox.h"
 #include "UIMediumSelector.h"
 #include "UIMediumSizeEditor.h"

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 101273 2023-09-26 17:40:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -32,7 +32,7 @@
 #include "QIRichTextLabel.h"
 #include "UIBaseMemoryEditor.h"
 #include "UICommon.h"
-#include "UIGuestOSTypeII.h"
+#include "UIGuestOSType.h"
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
 #include "UIWizardNewVMEditors.h"
