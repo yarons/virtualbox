@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ExtPackManagerImpl.h 101293 2023-09-27 14:20:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -197,10 +197,10 @@ protected:
                                                        /* VBoxEventType_T */ uint32_t aType,
                                                        VBOXEXTPACK_IF_CS(IVetoEvent) **ppEventOut);
     static DECLCALLBACK(const char *) i_hlpTranslate(PCVBOXEXTPACKHLP pHlp,
-                                                     const char  *pszComponent,
-                                                     const char  *pszSourceText,
-                                                     const char  *pszComment = NULL,
-                                                     const size_t aNum = ~(size_t)0);
+                                                     const char      *pszComponent,
+                                                     const char      *pszSourceText,
+                                                     const char      *pszComment = NULL,
+                                                     const size_t     uNum = ~(size_t)0);
     static DECLCALLBACK(int)      i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
     /** @}  */
 
