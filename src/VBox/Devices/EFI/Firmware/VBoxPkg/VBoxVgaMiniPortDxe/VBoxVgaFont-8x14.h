@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaFont-8x14.h 99454 2023-04-19 11:12:20Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVgaFont-8x14.h 101297 2023-09-27 15:18:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VGA-ROM.F14 from ftp://ftp.simtel.net/pub/simtelnet/msdos/screen/fntcol16.zip .
  * The package is (C) Joseph (Yossi) Gil.
