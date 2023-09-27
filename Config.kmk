@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101279 2023-09-27 07:22:13Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 101281 2023-09-27 07:37:37Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -9113,7 +9113,7 @@ ifeq ($(KBUILD_TARGET),darwin)
 	$(QUIET)$(APPEND) $@.tmp '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
 	$(QUIET)$(APPEND) $@.tmp '<plist version="1.0">'
 	$(QUIET)$(APPEND) $@.tmp '<dict>'
-	$(QUIET)$(APPEND) -n $@.tmp $(foreach entitlement,$(VBOX_DARWIN_ENTITLEMENTS_LIST), '	<key>$(entitlement)</key><true/>')
+	$(QUIET)$(APPEND) -n $@.tmp $(foreach entitlement,$(VBOX_DARWIN_ENTITLEMENTS_LIST_COMMON), '	<key>$(entitlement)</key><true/>')
 	$(QUIET)$(APPEND) $@.tmp '</dict>'
 	$(QUIET)$(APPEND) $@.tmp '</plist>'
 	$(QUIET)$(MV) -f $@.tmp $@
@@ -9158,7 +9158,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101279 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101281 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
