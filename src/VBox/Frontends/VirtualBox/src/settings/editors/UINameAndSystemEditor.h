@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 101277 2023-09-27 06:23:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -53,14 +53,6 @@ class SHARED_LIBRARY_STUFF UINameAndSystemEditor : public UIEditor
 {
     Q_OBJECT;
     Q_PROPERTY(QString name READ name WRITE setName);
-
-    /** Simple struct representing CGuestOSType cache. */
-    struct UIGuestOSType
-    {
-        QString typeId;
-        QString typeDescription;
-        bool is64bit;
-    };
 
 signals:
 
@@ -197,9 +189,6 @@ private:
 
     /** @name Values
      * @{ */
-        /** Holds the current type cache. */
-        QMap<QString, QList<UIGuestOSType> >  m_types;
-
         /** Holds the VM OS type ID. */
         QString  m_strTypeId;
         /** Holds the VM OS family ID. */

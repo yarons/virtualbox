@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeII.cpp 101272 2023-09-26 15:37:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeII.cpp 101277 2023-09-27 06:23:32Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeII class implementation.
  */
@@ -34,7 +34,7 @@ void UIGuestOSTypeManager::reCacheGuestOSTypes(const CGuestOSTypeVector &guestOS
     m_guestOSTypes.clear();
     m_guestOSFamilies.clear();
     //m_guestOSTypesPerFamily.clear();
-    QList<CGuestOSType> otherOSTypes;
+    QVector<CGuestOSType> otherOSTypes;
     foreach (const CGuestOSType &comType, guestOSTypes)
     {
         if (comType.GetFamilyId().contains("other", Qt::CaseInsensitive))
