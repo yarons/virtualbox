@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101200 2023-09-20 14:14:26Z alexander.eichner@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101282 2023-09-27 08:21:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -715,6 +715,12 @@ HRESULT PlatformProperties::getSupportedGraphicsControllerTypes(std::vector<Grap
     }
 
     return S_OK;
+}
+
+HRESULT PlatformProperties::getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType>> &aSupportedGuestOSTypes)
+{
+    std::vector<PlatformArchitecture_T> vecArchitectures(mPlatformArchitecture);
+    return mParent->i_getSupportedGuestOSTypes(vecArchitectures, aSupportedGuestOSTypes);
 }
 
 HRESULT PlatformProperties::getSupportedNetworkAdapterTypes(std::vector<NetworkAdapterType_T> &aSupportedNetworkAdapterTypes)
