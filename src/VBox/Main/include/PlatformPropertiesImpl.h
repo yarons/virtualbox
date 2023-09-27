@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 101282 2023-09-27 08:21:09Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 101299 2023-09-27 21:21:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -79,7 +79,7 @@ private:
     HRESULT getSupportedParavirtProviders(std::vector<ParavirtProvider_T> &aSupportedParavirtProviders) RT_OVERRIDE;
     HRESULT getSupportedFirmwareTypes(std::vector<FirmwareType_T> &aSupportedFirmwareTypes) RT_OVERRIDE;
     HRESULT getSupportedGraphicsControllerTypes(std::vector<GraphicsControllerType_T> &aSupportedGraphicsControllerTypes) RT_OVERRIDE;
-    HRESULT getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType>> &aSupportedGuestOSTypes);
+    HRESULT getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType> > &aSupportedGuestOSTypes);
     HRESULT getSupportedNetworkAdapterTypes(std::vector<NetworkAdapterType_T> &aSupportedNetworkAdapterTypes) RT_OVERRIDE;
     HRESULT getSupportedUartTypes(std::vector<UartType_T> &aSupportedUartTypes) RT_OVERRIDE;
     HRESULT getSupportedUSBControllerTypes(std::vector<USBControllerType_T> &aSupportedUSBControllerTypes) RT_OVERRIDE;

@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101287 2023-09-27 09:45:08Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101299 2023-09-27 21:21:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -717,7 +717,7 @@ HRESULT PlatformProperties::getSupportedGraphicsControllerTypes(std::vector<Grap
     return S_OK;
 }
 
-HRESULT PlatformProperties::getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType>> &aSupportedGuestOSTypes)
+HRESULT PlatformProperties::getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOSType> > &aSupportedGuestOSTypes)
 {
    /* We only have all supported guest OS types as part of VBoxSVC, not in VBoxC itself. */
 #ifdef IN_VBOXSVC

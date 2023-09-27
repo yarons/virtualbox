@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 101282 2023-09-27 08:21:09Z andreas.loeffler@oracle.com $ */
+/* $Id: VirtualBoxImpl.cpp 101299 2023-09-27 21:21:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1383,7 +1383,8 @@ HRESULT VirtualBox::getProgressOperations(std::vector<ComPtr<IProgress> > &aProg
  * @param   aGuestOSTypes           Where to return the supported guest OS types.
  *                                  Will be empty if none supported.
  */
-HRESULT VirtualBox::i_getSupportedGuestOSTypes(std::vector<PlatformArchitecture_T> aArchitectures, std::vector<ComPtr<IGuestOSType>> &aGuestOSTypes)
+HRESULT VirtualBox::i_getSupportedGuestOSTypes(std::vector<PlatformArchitecture_T> aArchitectures,
+                                               std::vector<ComPtr<IGuestOSType> > &aGuestOSTypes)
 {
     AutoReadLock al(m->allGuestOSTypes.getLockHandle() COMMA_LOCKVAL_SRC_POS);
 
