@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 101288 2023-09-27 09:51:39Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageList.cpp 101289 2023-09-27 10:35:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -898,7 +898,7 @@ static HRESULT listPlatformProperties(const ComPtr<IPlatformProperties> &platfor
     RTPrintf(List::tr("Supported guest OS types:\n\n"));
 
     com::SafeIfaceArray<IGuestOSType> coll;
-    platformProperties->GetSupportedGuestOSTypes(ComSafeArrayAsOutParam(coll));
+    platformProperties->COMGETTER(SupportedGuestOSTypes(ComSafeArrayAsOutParam(coll)));
         listGuestOSTypes(coll);
 
     return S_OK;
