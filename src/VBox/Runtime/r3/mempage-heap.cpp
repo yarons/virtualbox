@@ -1,6 +1,6 @@
-/* $Id: mempage-heap.cpp 101192 2023-09-20 12:27:00Z knut.osmundsen@oracle.com $ */
+/* $Id: mempage-heap.cpp 101301 2023-09-28 00:26:16Z knut.osmundsen@oracle.com $ */
 /** @file
- * IPRT - RTMemPage*, POSIX with heap.
+ * IPRT - RTMemPage*, optimized using heap.
  */
 
 /*
