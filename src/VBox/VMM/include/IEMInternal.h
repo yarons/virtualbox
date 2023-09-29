@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 101262 2023-09-26 00:14:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 101304 2023-09-29 01:02:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -5091,7 +5091,7 @@ IEM_CIMPL_PROTO_3(iemCImpl_fldenv, IEMMODE, enmEffOpSize, uint8_t, iEffSeg, RTGC
 IEM_CIMPL_PROTO_3(iemCImpl_frstor, IEMMODE, enmEffOpSize, uint8_t, iEffSeg, RTGCPTR, GCPtrEffSrc);
 IEM_CIMPL_PROTO_1(iemCImpl_fldcw, uint16_t, u16Fcw);
 IEM_CIMPL_PROTO_2(iemCImpl_fxch_underflow, uint8_t, iStReg, uint16_t, uFpuOpcode);
-IEM_CIMPL_PROTO_3(iemCImpl_fcomi_fucomi, uint8_t, iStReg, PFNIEMAIMPLFPUR80EFL, pfnAImpl, uint32_t, uPopAndFpuOpcode);
+IEM_CIMPL_PROTO_3(iemCImpl_fcomi_fucomi, uint8_t, iStReg, bool, fUCmp, uint32_t, uPopAndFpuOpcode);
 /** @} */
 
 /** @name IEMAllCImplStrInstr.cpp.h
