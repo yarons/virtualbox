@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 101218 2023-09-21 09:43:12Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.cpp 101314 2023-09-29 08:23:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -63,7 +63,7 @@ const Global::OSType Global::sOSTypes[] =
 
     { "Other",   "Other",             "",               "Other_arm64",        "Other/Unknown (ARM 64-bit)",
       VBOXOSTYPE_Unknown_arm64,       VBOXOSHINT_64BIT | VBOXOSHINT_EFI,
-      1,   64,   4,  2 * _1G64, GraphicsControllerType_VMSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_VirtioSCSI, StorageBus_VirtioSCSI,
+      1,   1024, 128,  2 * _1G64, GraphicsControllerType_VMSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_VirtioSCSI, StorageBus_VirtioSCSI,
       StorageControllerType_VirtioSCSI, StorageBus_VirtioSCSI, ChipsetType_ARMv8Virtual, IommuType_None, AudioControllerType_VirtioSound, AudioCodecType_Null },
 
     { "Windows", "Microsoft Windows", "",               "Windows31",          "Windows 3.1",
