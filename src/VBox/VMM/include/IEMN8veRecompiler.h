@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101305 2023-09-29 01:18:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101306 2023-09-29 01:19:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -673,7 +673,7 @@ DECLINLINE(uint32_t) iemNativeEmitStoreGprByBp(PIEMRECOMPILERSTATE pReNative, ui
         uint32_t *pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
         AssertReturn(pu32CodeBuf, UINT32_MAX);
         pu32CodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_St_Dword, iGprSrc, ARMV8_A64_REG_BP,
-                                                       IEMNATIVE_REG_FIXDE_TMP0, kArmv8A64InstrLdStExtend_Sxtw);
+                                                       IEMNATIVE_REG_FIXED_TMP0, kArmv8A64InstrLdStExtend_Sxtw);
     }
     return off;
 
