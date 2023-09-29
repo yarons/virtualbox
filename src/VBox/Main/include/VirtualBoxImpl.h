@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 101299 2023-09-27 21:21:05Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxImpl.h 101318 2023-09-29 15:13:07Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -437,7 +437,8 @@ private:
     HRESULT findCloudNetworkByName(const com::Utf8Str &aNetworkName,
                                    ComPtr<ICloudNetwork> &aNetwork);
     HRESULT removeCloudNetwork(const ComPtr<ICloudNetwork> &aNetwork);
-    HRESULT checkFirmwarePresent(FirmwareType_T aFirmwareType,
+    HRESULT checkFirmwarePresent(PlatformArchitecture_T aPlatformArchitecture,
+                                 FirmwareType_T aFirmwareType,
                                  const com::Utf8Str &aVersion,
                                  com::Utf8Str &aUrl,
                                  com::Utf8Str &aFile,
