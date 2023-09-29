@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UIApplianceEditorWidget.cpp 101315 2023-09-29 10:39:08Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -40,6 +40,7 @@
 /* GUI includes: */
 #include "QITreeView.h"
 #include "UICommon.h"
+#include "UIGuestOSType.h"
 #include "UIGuestOSTypeSelectionButton.h"
 #include "UIApplianceEditorWidget.h"
 #include "UIConverter.h"
@@ -536,7 +537,13 @@ QVariant UIVirtualHardwareItem::data(int iColumn, int iRole) const
                             strTmp.replace(i, strTmp.length(), "...");
                         value = strTmp; break;
                     }
-                    case KVirtualSystemDescriptionType_OS:               value = uiCommon().vmGuestOSTypeDescription(m_strConfigValue); break;
+                    case KVirtualSystemDescriptionType_OS:
+                    {
+                        const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
+                        if (pManager)
+                            value = pManager->getDescription(m_strConfigValue);
+                        break;
+                    }
                     case KVirtualSystemDescriptionType_Memory:           value = m_strConfigValue + " " + UICommon::tr("MB", "size suffix MBytes=1024 KBytes"); break;
                     case KVirtualSystemDescriptionType_SoundCard:        value = gpConverter->toString(static_cast<KAudioControllerType>(m_strConfigValue.toInt())); break;
                     case KVirtualSystemDescriptionType_NetworkAdapter:   value = gpConverter->toString(static_cast<KNetworkAdapterType>(m_strConfigValue.toInt())); break;
