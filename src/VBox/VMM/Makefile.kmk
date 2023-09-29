@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101275 2023-09-26 23:44:36Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101307 2023-09-29 01:31:56Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -606,6 +606,7 @@ ifdef VBOX_WITH_IEM_RECOMPILER
  +| $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMThreadedInstructions4.cpp.h: \
  		$(PATH_SUB_CURRENT)/VMMAll/IEMAllThrdPython.py \
  		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstPython.py \
+ 		$(PATH_SUB_CURRENT)/VMMAll/IEMAllN8vePython.py \
  		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstCommon.cpp.h \
  		$(if-expr !defined(IEM_WITHOUT_3DNOW)      ,$(PATH_SUB_CURRENT)/VMMAll/IEMAllInst3DNow.cpp.h,) \
  		$(if-expr !defined(IEM_WITHOUT_THREE_0F_38),$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstThree0f38.cpp.h,) \

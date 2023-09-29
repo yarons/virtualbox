@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 101304 2023-09-29 01:02:02Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 101307 2023-09-29 01:31:56Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 101304 $"
+__version__ = "$Revision: 101307 $"
 
 # Standard python imports:
 #import sys;
@@ -90,8 +90,7 @@ def analyzeVariantForNativeRecomp(oVariation,
     # The simplest case are the IEM_MC_DEFER_TO_CIMPL_*_RET_THREADED ones, just pass them thru:
     if (    len(aoStmts) == 1
         and aoStmts[0].sName.startswith('IEM_MC_DEFER_TO_CIMPL_')
-        and aoStmts[0].sName.endswith('_RET_THREADED')
-        and sHostArch in ('amd64',)):
+        and aoStmts[0].sName.endswith('_RET_THREADED')):
         return NativeRecompFunctionVariation(oVariation, sHostArch);
 
     return None;
