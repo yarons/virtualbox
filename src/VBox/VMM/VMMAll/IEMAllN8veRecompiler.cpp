@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 101304 2023-09-29 01:02:02Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 101305 2023-09-29 01:18:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -1920,6 +1920,20 @@ DECLINLINE(uint32_t) iemNativeEmitCImplCall3(PIEMRECOMPILERSTATE pReNative, uint
 
 #define IEM_MC_DEFER_TO_CIMPL_3_RET_THREADED(a_cbInstr, a_fFlags, a_pfnCImpl, a0, a1, a2) \
     return iemNativeEmitCImplCall3(pReNative, off, pCallEntry->idxInstr, (uintptr_t)a_pfnCImpl, a_cbInstr, a0, a1, a2)
+
+/*
+ * Builtin functions.
+ */
+
+/**
+ * Built-in function that calls a C-implemention function taking zero arguments.
+ */
+static IEM_DECL_IEMNATIVERECOMPFUNC_DEF(iemNativeRecompFunc_BltIn_DeferToCImpl0)
+{
+    PFNIEMCIMPL0 const pfnCImpl = (PFNIEMCIMPL0)(uintptr_t)pCallEntry->auParams[0];
+    uint8_t const      cbInstr  = (uint8_t)pCallEntry->auParams[1];
+    return iemNativeEmitCImplCall(pReNative, off, pCallEntry->idxInstr, (uintptr_t)pfnCImpl, cbInstr, 0, 0, 0, 0);
+}
 
 
 
