@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 101199 2023-09-20 14:14:08Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioAdapterImpl.cpp 101313 2023-09-29 08:22:05Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -471,7 +471,7 @@ HRESULT AudioAdapter::setAudioCodec(AudioCodecType_T aAudioCodec)
 
         case AudioControllerType_VirtioSound:
         {
-            hrc = E_NOTIMPL;
+            hrc = S_OK; /* Don't return an error here, even if this is not implemented yet. Will confuse callers. */
             break;
         }
 
