@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 101315 2023-09-29 10:39:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -351,9 +351,7 @@ void UIRuntimeInfoWidget::updateOSTypeRow()
         strOSType = m_strOSNotDetected;
     else
     {
-        const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
-        if (pManager)
-            strOSType = pManager->getDescription(strOSType);
+        strOSType = uiCommon().guestOSTypeManager().getDescription(strOSType);
     }
    updateInfoRow(InfoRow_GuestOSType, QString("%1").arg(m_strGuestOSTypeLabel), strOSType);
 }

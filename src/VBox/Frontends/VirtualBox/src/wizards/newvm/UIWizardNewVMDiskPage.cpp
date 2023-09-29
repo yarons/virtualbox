@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 101278 2023-09-27 06:48:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -264,10 +264,10 @@ void UIWizardNewVMDiskPage::initializePage()
     AssertReturnVoid(pWizard);
 
     LONG64 iRecommendedSize = 0;
-    const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
-    if (pManager && !m_userModifiedParameters.contains("SelectedDiskSource"))
+
+    if (!m_userModifiedParameters.contains("SelectedDiskSource"))
     {
-        iRecommendedSize = pManager->getRecommendedHDD(pWizard->guestOSTypeId());
+        iRecommendedSize = uiCommon().guestOSTypeManager().getRecommendedHDD(pWizard->guestOSTypeId());
         if (iRecommendedSize != 0)
         {
             if (m_pDiskNew)

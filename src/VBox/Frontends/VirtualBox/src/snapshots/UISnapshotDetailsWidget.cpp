@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 101315 2023-09-29 10:39:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1296,11 +1296,9 @@ QString UISnapshotDetailsWidget::detailsReport(DetailsElementType enmType,
 
             /* Operating System: */
             ++iRowCount;
-            const UIGuestOSTypeManager *pManager = uiCommon().guestOSTypeManager();
-            if (pManager)
-                strItem += QString(sSectionItemTpl2).arg(QApplication::translate("UIDetails", "Operating System", "details (general)"),
-                                                         empReport(pManager->getDescription(comMachine.GetOSTypeId()),
-                                                                   pManager->getDescription(comMachineOld.GetOSTypeId())));
+            strItem += QString(sSectionItemTpl2).arg(QApplication::translate("UIDetails", "Operating System", "details (general)"),
+                                                     empReport(uiCommon().guestOSTypeManager().getDescription(comMachine.GetOSTypeId()),
+                                                               uiCommon().guestOSTypeManager().getDescription(comMachineOld.GetOSTypeId())));
 
             /* Location of the settings file: */
             QString strSettingsFilePath = comMachine.GetSettingsFilePath();

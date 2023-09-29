@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 101315 2023-09-29 10:39:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -316,8 +316,7 @@ public:
 
     /** @name COM: Guest OS Type stuff.
      * @{ */
-        const UIGuestOSTypeManager *guestOSTypeManager() const { return m_pGuestOSTypeManager; }
-        UIGuestOSTypeManager &guestOSTypeManager2() const { return *m_pGuestOSTypeManager; }
+        const UIGuestOSTypeManager &guestOSTypeManager() const { return *m_pGuestOSTypeManager; }
     /** @} */
 
     /** @name COM: Virtual Machine stuff.
