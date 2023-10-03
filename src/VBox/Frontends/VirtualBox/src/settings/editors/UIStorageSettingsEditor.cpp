@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 101057 2023-09-07 17:12:48Z andreas.loeffler@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 101330 2023-10-03 14:19:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -3176,7 +3176,7 @@ void UIStorageSettingsEditor::retranslateUi()
     m_pLabelHDDetails->setText(tr("Details:"));
     m_pLabelLocation->setText(tr("Location:"));
     m_pLabelUsage->setText(tr("Attached to:"));
-    m_pLabelEncryption->setText(tr("Encrypted with key:"));
+    m_pLabelEncryption->setText(tr("Encryption key:"));
 
     /* Translate storage-view: */
     m_pTreeViewStorage->setWhatsThis(tr("Lists all storage controllers for this machine and "

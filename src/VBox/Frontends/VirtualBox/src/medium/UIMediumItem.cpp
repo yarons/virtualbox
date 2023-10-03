@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumItem.cpp 101330 2023-10-03 14:19:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -278,7 +278,7 @@ void UIMediumItem::refresh()
             m_details.m_aLabels << tr("Format:");
             m_details.m_aLabels << tr("Storage details:");
             m_details.m_aLabels << tr("Attached to:");
-            m_details.m_aLabels << tr("Encrypted with key:");
+            m_details.m_aLabels << tr("Encryption key:");
             m_details.m_aLabels << tr("UUID:");
 
             m_details.m_aFields << hardDiskFormat();
