@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101334 2023-10-03 15:21:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101335 2023-10-03 15:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -126,9 +126,9 @@ QStringList UIEditor::description() const
     foreach (QTextEdit *pTextEdit, findChildren<QTextEdit*>())
         if (pTextEdit)
         {
-            const QString strDescription = pTextEdit->property("description").toString();
+            const QString strDescription = pTextEdit->property("description").toString().remove(re);
             if (!strDescription.isEmpty())
-                result << strDescription.remove(re);
+                result << strDescription;
         }
 
     return result;
