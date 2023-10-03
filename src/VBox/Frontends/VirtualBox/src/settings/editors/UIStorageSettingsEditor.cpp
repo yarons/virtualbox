@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 101330 2023-10-03 14:19:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 101331 2023-10-03 14:21:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -3570,7 +3570,20 @@ void UIStorageSettingsEditor::sltGetInformation()
                 m_pCheckBoxHotPluggable->setChecked(fIsHotPluggable);
 
                 /* Update optional widgets visibility: */
-                updateAdditionalDetails(enmDeviceType);
+                m_pLabelHDFormat->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pFieldHDFormat->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pLabelCDFDType->setVisible(enmDeviceType != KDeviceType_HardDisk);
+                m_pFieldCDFDType->setVisible(enmDeviceType != KDeviceType_HardDisk);
+                m_pLabelHDVirtualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pFieldHDVirtualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pLabelHDActualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pFieldHDActualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pLabelCDFDSize->setVisible(enmDeviceType != KDeviceType_HardDisk);
+                m_pFieldCDFDSize->setVisible(enmDeviceType != KDeviceType_HardDisk);
+                m_pLabelHDDetails->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pFieldHDDetails->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pLabelEncryption->setVisible(enmDeviceType == KDeviceType_HardDisk);
+                m_pFieldEncryption->setVisible(enmDeviceType == KDeviceType_HardDisk);
 
                 /* Getting Other Information: */
                 m_pFieldHDFormat->setText(compressText(m_pModelStorage->data(index, StorageModel::R_AttFormat).toString()));
@@ -5005,30 +5018,6 @@ void UIStorageSettingsEditor::addAttachmentWrapper(KDeviceType enmDeviceType)
 
     /* Notify listeners: */
     emit sigValueChanged();
-}
-
-void UIStorageSettingsEditor::updateAdditionalDetails(KDeviceType enmDeviceType)
-{
-    m_pLabelHDFormat->setVisible(enmDeviceType == KDeviceType_HardDisk);
-    m_pFieldHDFormat->setVisible(enmDeviceType == KDeviceType_HardDisk);
-
-    m_pLabelCDFDType->setVisible(enmDeviceType != KDeviceType_HardDisk);
-    m_pFieldCDFDType->setVisible(enmDeviceType != KDeviceType_HardDisk);
-
-    m_pLabelHDVirtualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
-    m_pFieldHDVirtualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
-
-    m_pLabelHDActualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
-    m_pFieldHDActualSize->setVisible(enmDeviceType == KDeviceType_HardDisk);
-
-    m_pLabelCDFDSize->setVisible(enmDeviceType != KDeviceType_HardDisk);
-    m_pFieldCDFDSize->setVisible(enmDeviceType != KDeviceType_HardDisk);
-
-    m_pLabelHDDetails->setVisible(enmDeviceType == KDeviceType_HardDisk);
-    m_pFieldHDDetails->setVisible(enmDeviceType == KDeviceType_HardDisk);
-
-    m_pLabelEncryption->setVisible(enmDeviceType == KDeviceType_HardDisk);
-    m_pFieldEncryption->setVisible(enmDeviceType == KDeviceType_HardDisk);
 }
 
 QString UIStorageSettingsEditor::generateUniqueControllerName(const QString &strTemplate) const

@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 101331 2023-10-03 14:21:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -344,9 +344,6 @@ private:
     void addControllerWrapper(const QString &strName, KStorageBus enmBus, KStorageControllerType enmType);
     /** Adds attachment with @a enmDevice. */
     void addAttachmentWrapper(KDeviceType enmDevice);
-
-    /** Updates additions details according to passed @a enmType. */
-    void updateAdditionalDetails(KDeviceType enmType);
 
     /** Generates unique controller name based on passed @a strTemplate. */
     QString generateUniqueControllerName(const QString &strTemplate) const;
