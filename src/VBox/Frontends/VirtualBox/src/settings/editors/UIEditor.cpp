@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101231 2023-09-21 21:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101334 2023-10-03 15:21:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -32,6 +32,7 @@
 #include <QLabel>
 #include <QRegularExpression>
 #include <QTabWidget>
+#include <QTextEdit>
 
 /* GUI includes: */
 #include "UIEditor.h"
@@ -120,6 +121,15 @@ QStringList UIEditor::description() const
             if (QAbstractItemModel *pModel = pView->model())
                 for (int i = 0; i < pModel->columnCount(); ++i)
                     result << pModel->headerData(i, Qt::Horizontal).toString().remove(re);
+
+    /* Adding all the text-edits having description property: */
+    foreach (QTextEdit *pTextEdit, findChildren<QTextEdit*>())
+        if (pTextEdit)
+        {
+            const QString strDescription = pTextEdit->property("description").toString();
+            if (!strDescription.isEmpty())
+                result << strDescription.remove(re);
+        }
 
     return result;
 }

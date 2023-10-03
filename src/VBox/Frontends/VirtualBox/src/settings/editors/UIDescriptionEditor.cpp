@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 101334 2023-10-03 15:21:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
@@ -60,8 +60,11 @@ QString UIDescriptionEditor::value() const
 void UIDescriptionEditor::retranslateUi()
 {
     if (m_pTextEdit)
+    {
         m_pTextEdit->setToolTip(tr("Holds the description of the virtual machine. The description field is useful "
                                    "for commenting on configuration details of the installed guest OS."));
+        m_pTextEdit->setProperty("description", QApplication::translate("UICommon", "Description", "DetailsElementType"));
+    }
 }
 
 void UIDescriptionEditor::prepare()
