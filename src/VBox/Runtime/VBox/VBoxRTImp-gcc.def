@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp-gcc.def 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxRTImp-gcc.def 101347 2023-10-04 23:57:21Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable C++ Interface Definition file, 64-bit Visual C++.
 
@@ -566,9 +566,18 @@ EXPORTS
     _ZNK24RTCRestJsonPrimaryCursor7getPathERK17RTCRestJsonCursorPcm
     _ZNK3xml11ElementNode17getAttributeValueEPKcP9RTCStringS2_
     _ZNK3xml11ElementNode21getAttributeValuePathEPKcP9RTCStringS2_
-    _ZNK9RTCString10startsWithERKS_NS_15CaseSensitivityE
-    _ZNK9RTCString14startsWithWordEPKcNS_15CaseSensitivityE
-    _ZNK9RTCString14startsWithWordERKS_NS_15CaseSensitivityE
+    _ZNK9RTCString8endsWithEPKc
+    _ZNK9RTCString8endsWithEPKcm
+    _ZNK9RTCString8endsWithERKS_
+    _ZNK9RTCString9endsWithIEPKc
+    _ZNK9RTCString9endsWithIEPKcm
+    _ZNK9RTCString9endsWithIERKS_
+    _ZNK9RTCString10startsWithEPKc
+    _ZNK9RTCString10startsWithEPKcm
+    _ZNK9RTCString10startsWithERKS_
+    _ZNK9RTCString11startsWithIEPKc
+    _ZNK9RTCString11startsWithIEPKcm
+    _ZNK9RTCString11startsWithIERKS_
     _ZNK9RTCString4findEPKS_m
     _ZNK9RTCString4findEPKcm
     _ZNK9RTCString4findERKS_m
