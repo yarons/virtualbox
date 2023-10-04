@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 99207 2023-03-29 12:07:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 101342 2023-10-04 15:48:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -30,7 +30,6 @@
 #include <QGraphicsSceneContextMenuEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
-#include <QPropertyAnimation>
 #include <QScrollBar>
 #include <QTimer>
 
