@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101340 $"
+__version__ = "$Revision: 101341 $"
 
 # Standard Python imports.
 import errno
@@ -5483,7 +5483,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         return (fRc, oTxsSession);
 
-    def testGuestCtrl3D(self, oSession, oTxsSession, oTestVm):
+    def testGuestCtrl3D(self, oSession, oTxsSession, oTestVm):  # pylint: disable=unused-argument
         """
         Tests for VMSVGA device.
         """
