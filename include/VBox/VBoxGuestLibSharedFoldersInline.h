@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 101360 2023-10-05 15:27:58Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -1504,7 +1504,7 @@ DECLINLINE(int) VbglR0SfHostReqReadLinkContigSimple(SHFLROOT idRoot, const char 
         {
             pReq->StrPath.u16Length = (uint16_t)cchPath;
             pReq->StrPath.u16Size   = (uint16_t)cchPath + 1;
-            memcpy(pReq->StrPath.String.ach, pszPath, cchPath);
+            RT_BCOPY_UNFORTIFIED(pReq->StrPath.String.ach, pszPath, cchPath);
             pReq->StrPath.String.ach[cchPath] = '\0';
 
             {
