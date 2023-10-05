@@ -1,4 +1,4 @@
-/* $Id: regops.c 100799 2023-08-04 18:04:14Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 101359 2023-10-05 15:26:17Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -3093,7 +3093,7 @@ static int vbsf_reg_open(struct inode *inode, struct file *file)
         LogRelFunc(("Failed to allocate a VBOXSFCREATEREQ buffer!\n"));
         return -ENOMEM;
     }
-    VBSF_UNFORTIFIED_MEMCPY(&pReq->StrPath, sf_i->path, SHFLSTRING_HEADER_SIZE + sf_i->path->u16Size);
+    RT_BCOPY_UNFORTIFIED(&pReq->StrPath, sf_i->path, SHFLSTRING_HEADER_SIZE + sf_i->path->u16Size);
     RT_ZERO(pReq->CreateParms);
     pReq->CreateParms.Handle = SHFL_HANDLE_NIL;
 
