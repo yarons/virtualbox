@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101351 2023-10-05 07:05:28Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 101356 2023-10-05 12:44:33Z serkan.bayraktar@oracle.com $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -72,6 +72,7 @@ ifdef VBOX_WITH_UNATTENDED
  	ubuntu_preseed.cfg \
  	fedora_ks.cfg \
  	ol_ks.cfg \
+ 	ol8_ks.cfg \
  	ol9_ks.cfg \
  	rhel3_ks.cfg \
  	rhel4_ks.cfg \
