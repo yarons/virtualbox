@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
+/* $Id: SUPDrv.cpp 101358 2023-10-05 15:24:57Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1764,7 +1764,7 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
 
             /* execute */
             pReq->u.Out.cFunctions = RT_ELEMENTS(g_aFunctions);
-            SUPDRV_UNFORTIFIED_MEMCPY(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
+            RT_BCOPY_UNFORTIFIED(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
             pReq->Hdr.rc = VINF_SUCCESS;
             return 0;
         }
