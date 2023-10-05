@@ -1,4 +1,4 @@
-/* $Id: log.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 101362 2023-10-05 15:40:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2931,7 +2931,7 @@ RTDECL(int) RTLogBulkUpdate(PRTLOGGER pLogger, uint64_t fFlags, uint32_t uGroupC
         if (   uGroupCrc32 == rtLogCalcGroupNameCrc32(pLoggerInt)
             && pLoggerInt->cGroups == cGroups)
         {
-            memcpy(pLoggerInt->afGroups, pafGroups, sizeof(pLoggerInt->afGroups[0]) * cGroups);
+            RT_BCOPY_UNFORTIFIED(pLoggerInt->afGroups, pafGroups, sizeof(pLoggerInt->afGroups[0]) * cGroups);
             rc = VINF_SUCCESS;
         }
         else
