@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetFlt.c 101361 2023-10-05 15:34:29Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1040,7 +1040,7 @@ static int vboxNetFltNewInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszNam
     pNew->cRefs                         = 1;
     pNew->cBusy                         = 0;
     pNew->hEventIdle                    = NIL_RTSEMEVENT;
-    memcpy(pNew->szName, pszName, cchName + 1);
+    RT_BCOPY_UNFORTIFIED(pNew->szName, pszName, cchName + 1);
 
     rc = RTSpinlockCreate(&pNew->hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "VBoxNetFltNewInstance");
     if (RT_SUCCESS(rc))
