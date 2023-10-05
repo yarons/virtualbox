@@ -1,4 +1,4 @@
-# $Id: DefToAsmExterns.sed 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: DefToAsmExterns.sed 101349 2023-10-05 00:33:34Z knut.osmundsen@oracle.com $
 ## @file
 # SED script for generating assembly externs from a VBoxRT windows .def file.
 #
@@ -65,7 +65,7 @@ s/^EXPORTS$//
 # Function export
 #
 :code
-s/^\(.*\)$/EXTERN_IMP2 \1/
+s/^\(.*\)$/EXTERN_IMP2 \1\nBEGINCODE\njmp IMP2(\1)\nBEGINDATA/
 b end
 
 #
