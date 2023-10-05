@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101352 2023-10-05 09:08:20Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101353 2023-10-05 09:15:59Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3175,7 +3175,7 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 win.amd64 linux.amd64 dar
   #
   PROGRAMS += VBoxRTStableCheck
   VBoxRTStableCheck_TEMPLATE = VBoxR3TstExe
-  VBoxRTStableCheck_ASDEFS.linux.amd64 = PIC		# Hack
+  VBoxRTStableCheck_ASDEFS.linux.amd64 = PIC    # Hack
   VBoxRTStableCheck_SOURCES = \
   	VBox/VBoxRTStableCheck.cpp \
   	$(VBoxRTStableCheck_0_OUTDIR)/VBoxRTStableCheckA.asm
