@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 99406 2023-04-14 17:04:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 101383 2023-10-06 12:06:37Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -34,6 +34,9 @@
 #include "UIWizardNewVDVariantPage.h"
 #include "UIWizardNewVDSizeLocationPage.h"
 #include "UIWizardNewVDExpertPage.h"
+
+/* COM includes: */
+#include "CGuestOSType.h"
 
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName,
