@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 100851 2023-08-10 14:34:07Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 101376 2023-10-06 08:24:35Z bela.lubkin@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5419,6 +5419,7 @@ IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vpalignr,   1, 1
 IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vpclmulqdq, 1, 0
 IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vperm2i128, 0, 1
 IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vperm2f128, 0, 1
+IEMIMPL_MEDIA_AVX_INSN_IMM8_6 vmpsadbw,   1, 1
 
 
 ;;
