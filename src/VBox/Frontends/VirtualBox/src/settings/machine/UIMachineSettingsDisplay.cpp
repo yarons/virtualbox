@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 101382 2023-10-06 10:02:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -53,6 +53,7 @@
 #include "CRecordingScreenSettings.h"
 #include "CRecordingSettings.h"
 #include "CVRDEServer.h"
+#include <VBox/com/VirtualBox.h> /* For GUEST_OS_ID_STR_X86 and friends. */
 
 
 /** Machine settings: Display page data structure. */
@@ -1020,9 +1021,22 @@ void UIMachineSettingsDisplay::cleanup()
 
 bool UIMachineSettingsDisplay::shouldWeWarnAboutLowVRAM()
 {
-    QStringList excludingOSList = QStringList()
-        << "Other" << "DOS" << "Netware" << "L4" << "QNX" << "JRockitVE";
-    return !excludingOSList.contains(m_strGuestOSTypeId);
+    static const char *s_apszExcludes[] =
+    {
+        GUEST_OS_ID_STR_X86("Other"),
+        GUEST_OS_ID_STR_X64("Other"),
+        GUEST_OS_ID_STR_A64("Other"),
+        GUEST_OS_ID_STR_X64("VBoxBS"),
+        GUEST_OS_ID_STR_X86("DOS"),
+        GUEST_OS_ID_STR_X86("Netware"),
+        GUEST_OS_ID_STR_X86("L4"),
+        GUEST_OS_ID_STR_X86("QNX"),
+        GUEST_OS_ID_STR_X86("JRockitVE"),
+    };
+    for (size_t idx = 0; idx < RT_ELEMENTS(s_apszExcludes); idx++)
+        if (m_strGuestOSTypeId == s_apszExcludes[idx])
+            return false;
+    return true;
 }
 
 void UIMachineSettingsDisplay::updateGuestScreenCount()
