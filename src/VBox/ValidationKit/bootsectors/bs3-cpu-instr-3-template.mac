@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 101375 2023-10-06 08:24:29Z bela.lubkin@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 101386 2023-10-06 16:32:21Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -3136,7 +3136,7 @@ EMIT_INSTR_PLUS_ICEBP   vmovmskpd, RDX, YMM1
  %endif
 
 ;
-; MPSADBW
+; [V]MPSADBW
 ;
 EMIT_INSTR_PLUS_ICEBP   mpsadbw,  XMM1, XMM2,  0FFh
 EMIT_INSTR_PLUS_ICEBP   mpsadbw,  XMM1, FSxBX, 0FFh

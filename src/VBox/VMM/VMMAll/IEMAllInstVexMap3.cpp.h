@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap3.cpp.h 101376 2023-10-06 08:24:35Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstVexMap3.cpp.h 101386 2023-10-06 16:32:21Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -570,8 +570,8 @@ FNIEMOP_STUB(iemOp_vdpps_Vx_Hx_Wx_Ib);
 /** Opcode VEX.66.0F3A 0x41, */
 FNIEMOP_STUB(iemOp_vdppd_Vdq_Hdq_Wdq_Ib);
 
-/** Opcode VEX.66.0F3A 0x42.
- * AVX,AVX2 */
+
+/** Opcode VEX.66.0F3A 0x42. */
 FNIEMOP_DEF(iemOp_vmpsadbw_Vx_Hx_Wx_Ib)
 {
     IEMOP_MNEMONIC3(VEX_RVM, VMPSADBW, vmpsadbw, Vx, Hx, Wx, DISOPTYPE_HARMLESS, 0); /** @todo */
