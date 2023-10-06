@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ -->
+<!-- $Id: midl.xsl 101372 2023-10-06 02:00:10Z knut.osmundsen@oracle.com $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -109,7 +109,11 @@ import "unknwn.idl";
 -->
 <xsl:template match="cpp">
   <xsl:text>cpp_quote("</xsl:text>
-  <xsl:value-of select="@line"/>
+  <xsl:call-template name="string-replace">
+    <xsl:with-param name="haystack" select="@line"/>
+    <xsl:with-param name="needle">&quot;</xsl:with-param>
+    <xsl:with-param name="replacement">\&quot;</xsl:with-param>
+  </xsl:call-template>
   <xsl:text>")&#x0A;&#x0A;</xsl:text>
 </xsl:template>
 
