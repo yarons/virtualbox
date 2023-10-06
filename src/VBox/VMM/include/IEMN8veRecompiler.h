@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101369 2023-10-06 01:22:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101370 2023-10-06 01:23:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -256,9 +256,6 @@ typedef struct IEMRECOMPILERSTATE
     uint32_t                    cFixupsAlloc;
     /** Buffer used by the recompiler for recording fixups when generating code. */
     PIEMNATIVEFIXUP             paFixups;
-
-    /** The translation block being recompiled. */
-    PCIEMTB                     pTbOrg;
 } IEMRECOMPILERSTATE;
 /** Pointer to a native recompiler state. */
 typedef IEMRECOMPILERSTATE *PIEMRECOMPILERSTATE;
