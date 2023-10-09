@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 100960 2023-08-23 17:15:29Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.h 101389 2023-10-09 08:27:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -114,9 +114,6 @@ public:
 
 protected:
 
-    /** Clears selector of all the items. */
-    virtual void clear() = 0;
-
     /** Searches for item with passed @a iID. */
     UISelectorItem *findItem(int iID) const;
     /** Searches for item with passed @a strLink. */
@@ -181,8 +178,8 @@ private slots:
 
 private:
 
-    /** Clears selector of all the items. */
-    virtual void clear() RT_OVERRIDE;
+    /** Prepares all. */
+    void prepare();
 
     /** Returns page path for passed @a strMatch. */
     QString pagePath(const QString &strMatch) const;
@@ -256,8 +253,8 @@ private slots:
 
 private:
 
-    /** Clears selector of all the items. */
-    virtual void clear() RT_OVERRIDE;
+    /** Prepares all. */
+    void prepare();
 
     /** Searches for action item with passed @a iID. */
     UISelectorActionItem *findActionItem(int iID) const;
