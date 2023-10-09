@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 101380 2023-10-06 09:19:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMR0.cpp 101388 2023-10-09 06:34:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -968,7 +968,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
          * In that case, our HMR0 function table contains the dummy placeholder functions which pretend
          * success. However, we must not pretend success any longer (like we did during HMR0Init called
          * during VMMR0 module init) as the HM init error code (g_rcHmInit) should be propagated to
-         * ing-3 especially since we now have a VM instance.
+         * ring-3 especially since we now have a VM instance.
          */
         if (   !g_fHmVmxSupported
             && !g_fHmSvmSupported)
