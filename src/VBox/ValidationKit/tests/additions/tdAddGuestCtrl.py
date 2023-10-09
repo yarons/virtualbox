@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101393 $"
+__version__ = "$Revision: 101394 $"
 
 # Standard Python imports.
 import errno
@@ -5483,7 +5483,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         return (fRc, oTxsSession);
 
-    def checkScreenShot(self, iWidth, iHeight, aRGBData):
+    def checkScreenShot(self, iWidth, iHeight, aRGBData):      # pylint: disable=unused-argument
         """
         TBD: Implement basic validation of the captured screenshot content.
         """
