@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 101397 2023-10-10 05:53:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -285,11 +285,17 @@ void UISettingsPageFrame::prepare()
     if (pLayoutMain)
     {
         pLayoutMain->setContentsMargins(0, 0, 0, 0);
+        pLayoutMain->setSpacing(0);
 
         /* Create name label: */
         m_pLabelName = new QLabel(this);
         if (m_pLabelName)
+        {
+            QFont fnt = m_pLabelName->font();
+            fnt.setBold(true);
+            m_pLabelName->setFont(fnt);
             pLayoutMain->addWidget(m_pLabelName);
+        }
 
         /* Create contents widget: */
         m_pWidget = new QWidget(this);
