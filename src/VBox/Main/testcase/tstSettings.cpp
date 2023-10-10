@@ -1,4 +1,4 @@
-/* $Id: tstSettings.cpp 101402 2023-10-10 13:49:00Z alexander.eichner@oracle.com $ */
+/* $Id: tstSettings.cpp 101403 2023-10-10 13:50:21Z alexander.eichner@oracle.com $ */
 /** @file
  * Settings testcases - No Main API involved.
  */
@@ -116,7 +116,7 @@ void tstFileSingle(const Utf8Str &strFileSrc)
 int main(int argc, char *argv[])
 {
     RTTEST      hTest;
-    RTEXITCODE  rcExit = RTTestInitAndCreate("tstGuid", &hTest);
+    RTEXITCODE  rcExit = RTTestInitAndCreate("tstSettings", &hTest);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(hTest);
