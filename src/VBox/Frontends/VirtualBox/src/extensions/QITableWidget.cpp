@@ -1,4 +1,4 @@
-/* $Id: QITableWidget.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QITableWidget.cpp 101398 2023-10-10 06:07:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableWidget class implementation.
  */
@@ -336,6 +336,9 @@ QModelIndex QITableWidget::itemIndex(QTableWidgetItem *pItem)
 
 void QITableWidget::paintEvent(QPaintEvent *pEvent)
 {
+    /* Call to base-class: */
+    QTableWidget::paintEvent(pEvent);
+
     /* Create item painter: */
     QPainter painter;
     painter.begin(viewport());
@@ -347,9 +350,6 @@ void QITableWidget::paintEvent(QPaintEvent *pEvent)
 
     /* Close item painter: */
     painter.end();
-
-    /* Call to base-class: */
-    QTableWidget::paintEvent(pEvent);
 }
 
 void QITableWidget::resizeEvent(QResizeEvent *pEvent)
