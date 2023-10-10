@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QITreeWidget.h 101399 2023-10-10 06:13:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class declaration.
  */
@@ -112,8 +112,9 @@ signals:
 
 public:
 
-    /** Constructs tree-widget passing @a pParent to the base-class. */
-    QITreeWidget(QWidget *pParent = 0);
+    /** Constructs tree-widget passing @a pParent to the base-class.
+      * @param  fDelegatePaintingToSubclass  Brings whether painting should be fully delegated to sub-class. */
+    QITreeWidget(QWidget *pParent = 0, bool fDelegatePaintingToSubclass = false);
 
     /** Defines @a sizeHint for tree-widget items. */
     void setSizeHintForItems(const QSize &sizeHint);
@@ -141,6 +142,9 @@ private:
       * list of tree-items filtered by @a filter to @a filteredItemList. */
     void filterItemsInternal(const QITreeWidgetItemFilter &filter, QTreeWidgetItem *pParent,
                              QList<QTreeWidgetItem*> &filteredItemList);
+
+    /** Holds whether painting should be fully delegated to sub-class. */
+    bool  m_fDelegatePaintingToSubclass;
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 101398 2023-10-10 06:07:59Z sergey.dubov@oracle.com $ */
+/* $Id: QITreeWidget.cpp 101399 2023-10-10 06:13:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -416,8 +416,9 @@ QString QITreeWidgetItem::defaultText() const
 *   Class QITreeWidget implementation.                                                                                           *
 *********************************************************************************************************************************/
 
-QITreeWidget::QITreeWidget(QWidget *pParent)
+QITreeWidget::QITreeWidget(QWidget *pParent /* = 0 */, bool fDelegatePaintingToSubclass /* = false */)
     : QTreeWidget(pParent)
+    , m_fDelegatePaintingToSubclass(fDelegatePaintingToSubclass)
 {
     /* Install QITreeWidget accessibility interface factory: */
     QAccessible::installFactory(QIAccessibilityInterfaceForQITreeWidget::pFactory);
@@ -436,6 +437,13 @@ QITreeWidget::QITreeWidget(QWidget *pParent)
     {
         QAccessible::deleteAccessibleInterface(QAccessible::uniqueId(pInterface));
         QAccessible::queryAccessibleInterface(this); // <= new one, proper..
+    }
+
+    /* Do not paint frame and background unless requested: */
+    if (m_fDelegatePaintingToSubclass)
+    {
+        setFrameShape(QFrame::NoFrame);
+        viewport()->setAutoFillBackground(false);
     }
 }
 
@@ -470,8 +478,9 @@ QList<QTreeWidgetItem*> QITreeWidget::filterItems(const QITreeWidgetItemFilter &
 
 void QITreeWidget::paintEvent(QPaintEvent *pEvent)
 {
-    /* Call to base-class: */
-    QTreeWidget::paintEvent(pEvent);
+    /* Call to base-class if allowed: */
+    if (!m_fDelegatePaintingToSubclass)
+        QTreeWidget::paintEvent(pEvent);
 
     /* Create item painter: */
     QPainter painter;
