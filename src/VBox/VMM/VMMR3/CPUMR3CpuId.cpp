@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 101087 2023-09-12 10:18:37Z michal.necasek@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 101401 2023-10-10 13:14:25Z michal.necasek@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2209,18 +2209,18 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
 
     /* Cpuid 0x80000002...0x80000004 contains the processor name and is considered harmless. */
 
-    /* Cpuid 0x800000005 & 0x800000006 contain information about L1, L2 & L3 cache and TLB identifiers.
+    /* Cpuid 0x80000005 & 0x80000006 contain information about L1, L2 & L3 cache and TLB identifiers.
      * Safe to pass on to the guest.
      *
-     * AMD:   0x800000005 L1 cache information
-     *        0x800000006 L2/L3 cache information
-     * Intel: 0x800000005 reserved
-     *        0x800000006 L2 cache information
-     * VIA:   0x800000005 TLB and L1 cache information
-     *        0x800000006 L2 cache information
+     * AMD:   0x80000005 L1 cache information
+     *        0x80000006 L2/L3 cache information
+     * Intel: 0x80000005 reserved
+     *        0x80000006 L2 cache information
+     * VIA:   0x80000005 TLB and L1 cache information
+     *        0x80000006 L2 cache information
      */
 
-    /* Cpuid 0x800000007: Advanced Power Management Information.
+    /* Cpuid 0x80000007: Advanced Power Management Information.
      * AMD:   EAX: Processor feedback capabilities.
      *        EBX: RAS capabilites.
      *        ECX: Advanced power monitoring interface.
