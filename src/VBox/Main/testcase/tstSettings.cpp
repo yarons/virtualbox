@@ -1,4 +1,4 @@
-/* $Id: tstSettings.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: tstSettings.cpp 101402 2023-10-10 13:49:00Z alexander.eichner@oracle.com $ */
 /** @file
  * Settings testcases - No Main API involved.
  */
@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
     }
 
     if (!cFiles)
-        RTTestIFailed("At least one .vbox machine file must be specified to test!\n");
+        return RTTestSkipAndDestroy(hTest, "At least one .vbox machine file must be specified to test!\n");
 
     return RTTestSummaryAndDestroy(hTest);
 }
