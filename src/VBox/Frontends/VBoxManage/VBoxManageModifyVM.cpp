@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 101125 2023-09-15 12:47:48Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 101405 2023-10-10 15:57:31Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -3701,10 +3701,9 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             default:
             {
-                hrc = handleModifyVM_x86(&GetOptState, c, &ValueUnion, machine, platformX86);
+                hrc = handleModifyVM_x86(&GetOptState, c, &ValueUnion, sessionMachine, platformX86);
                 if (FAILED(hrc))
                     errorGetOpt(c, &ValueUnion);
-                hrc = E_FAIL;
                 break;
             }
         }
