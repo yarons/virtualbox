@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 100075 2023-06-05 16:38:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemMachine.cpp 101396 2023-10-10 05:46:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIChooserNodeGroup.h"
 #include "UIChooserNodeMachine.h"
 #include "UIIconPool.h"
+#include "UIImageTools.h"
 #include "UIVirtualBoxManager.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -1134,23 +1135,9 @@ void UIChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QRect &rec
                                 ? highlight.lighter(m_iHighlightLightnessStart)
                                 : highlight.lighter(m_iHoverLightnessStart);
 
-        /* Get foreground color: */
-        const QColor simpleText = pal.color(QPalette::Active, QPalette::Text);
-        const QColor highlightText = pal.color(QPalette::Active, QPalette::HighlightedText);
-        QColor lightText = simpleText.black() < highlightText.black() ? simpleText : highlightText;
-        QColor darkText = simpleText.black() > highlightText.black() ? simpleText : highlightText;
-        if (lightText.black() > 128)
-            lightText = QColor(Qt::white);
-        if (darkText.black() < 128)
-            darkText = QColor(Qt::black);
-
         /* Gather foreground color for background one: */
-        double dLuminance = (0.299 * background.red() + 0.587 * background.green() + 0.114 * background.blue()) / 255;
-        //printf("luminance = %f\n", dLuminance);
-        if (dLuminance > 0.5)
-            pPainter->setPen(darkText);
-        else
-            pPainter->setPen(lightText);
+        const QColor foreground = suitableForegroundColor(pal, background);
+        pPainter->setPen(foreground);
     }
 
     /* Calculate indents: */

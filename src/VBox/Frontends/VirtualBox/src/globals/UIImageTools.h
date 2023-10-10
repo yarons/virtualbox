@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIImageTools.h 101396 2023-10-10 05:46:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -38,6 +38,9 @@
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
+/* Forward declarations: */
+class QPalette;
+
 /** Image operation namespace. */
 namespace UIImageTools
 {
@@ -56,6 +59,9 @@ namespace UIImageTools
 
     /** Applies BET-label of passed @a size. */
     SHARED_LIBRARY_STUFF QPixmap betaLabel(const QSize &size = QSize(80, 16), QWidget *pHint = 0);
+
+    /** Gathers suitable foreground color for passed @a background color. */
+    SHARED_LIBRARY_STUFF QColor suitableForegroundColor(const QPalette &pal, const QColor &background);
 }
 using namespace UIImageTools /* if header included */;
 
