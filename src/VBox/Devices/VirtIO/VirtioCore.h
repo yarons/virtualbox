@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.h 100400 2023-07-06 08:58:02Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.h 101414 2023-10-11 08:07:50Z alexander.eichner@oracle.com $ */
 
 /** @file
  * VirtioCore.h - Virtio Declarations
@@ -998,7 +998,7 @@ DECLINLINE(RTGCPHYS) virtioCoreGCPhysChainGet(PVIRTIOSGBUF pGcSgBuf, size_t *pcb
     RTGCPHYS pGcBuf;
 
     /* Check that the S/G buffer has memory left. */
-    if (RT_LIKELY(pGcSgBuf->idxSeg < pGcSgBuf->cSegs && pGcSgBuf->cbSegLeft))
+    if (RT_LIKELY(pGcSgBuf->idxSeg < pGcSgBuf->cSegs || pGcSgBuf->cbSegLeft))
     { /* likely */ }
     else
     {
