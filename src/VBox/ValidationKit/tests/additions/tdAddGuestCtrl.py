@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101407 $"
+__version__ = "$Revision: 101416 $"
 
 # Standard Python imports.
 import errno
@@ -5499,9 +5499,9 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         cDesktopPixelsBlue = 0
         iThreshold = 20
         for i in range(0, cPixels, 4) :
-            iRed = aRGBData[i]
-            iGreen = aRGBData[i + 1]
-            iBlue = aRGBData[i + 2]
+            iRed = int(aRGBData[i])
+            iGreen = int(aRGBData[i + 1])
+            iBlue = int(aRGBData[i + 2])
             iBright = (3 * iRed + 6 * iGreen + iBlue) / 10
             if iThreshold < iBright < 255 - iThreshold :
                 cDesktopPixels += 1;
