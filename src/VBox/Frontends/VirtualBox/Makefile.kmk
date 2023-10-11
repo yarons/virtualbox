@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101327 2023-10-02 11:48:39Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 101417 2023-10-11 16:17:18Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1082,6 +1082,7 @@ UICommon_QT_MOCSRCS = \
 	src/medium/viso/UIVisoCreator.cpp \
 	src/notificationcenter/UINotificationCenter.cpp \
 	src/settings/UIAdvancedSettingsDialog.cpp \
+	src/settings/UISettingsSelector.cpp \
 	src/settings/editors/UIBaseMemoryEditor.cpp \
 	src/settings/editors/UIBootOrderEditor.cpp \
 	src/settings/editors/UIHotKeyEditor.cpp \
