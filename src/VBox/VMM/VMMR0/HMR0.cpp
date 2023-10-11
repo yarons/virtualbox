@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 101411 2023-10-11 06:57:06Z alexander.rudnev@oracle.com $ */
+/* $Id: HMR0.cpp 101412 2023-10-11 07:01:45Z alexander.rudnev@oracle.com $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -484,12 +484,12 @@ static int hmR0InitIntel(void)
         if (!g_fHmVmxUsingSUPR0EnableVTx)
         {
             /*
-             * We don't verify VMX root mode on all CPUs here because the verify 
+             * We don't verify VMX root mode on all CPUs here because the verify
              * function exits VMX root mode thus potentially allowing other
-             * programs to grab VT-x. Our global init's entering and staying in 
-             * VMX root mode (until our module termination) is done later when 
-             * the first VM powers up (after module initialization) using 
-             * VMMR0_DO_HM_ENABLE which calls HMR0EnableAllCpus(). 
+             * programs to grab VT-x. Our global init's entering and staying in
+             * VMX root mode (until our module termination) is done later when
+             * the first VM powers up (after module initialization) using
+             * VMMR0_DO_HM_ENABLE which calls HMR0EnableAllCpus().
              *
              * This is just a quick sanity check.
              */
