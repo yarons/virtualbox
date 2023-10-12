@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: DisasmFormatYasm.cpp 101426 2023-10-12 15:59:58Z michal.necasek@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -1752,6 +1752,12 @@ DISDECL(bool) DISFormatYasmIsOddEncoding(PDISSTATE pDis)
     if (    pDis->pCurInstr->uOpcode == OP_MOVZX
         &&  pDis->arch.x86.bOpCode == 0xB7
         &&  (pDis->uCpuMode == DISCPUMODE_16BIT) != !!(fPrefixes & DISPREFIX_OPSIZE))
+        return true;
+
+    /*
+     * YASM doesn't do ICEBP/INT1/INT01, unlike NASM.
+     */
+    if (pDis->arch.x86.bOpCode == 0xF1)
         return true;
 
     return false;
