@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 101265 2023-09-26 11:41:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 101423 2023-10-12 11:28:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -70,7 +70,7 @@
 #include "CUSBController.h"
 
 #ifdef VBOX_WS_MAC
-# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
+//# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
 #endif
 
 
