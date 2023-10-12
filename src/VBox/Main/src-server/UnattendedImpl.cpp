@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 101381 2023-10-06 10:00:59Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 101424 2023-10-12 12:39:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -1300,29 +1300,30 @@ HRESULT Unattended::i_innerDetectIsoOSWindows(RTVFS hVfsIso, DETECTBUFFER *pBuf)
  */
 static struct { const char *pszArch; uint32_t cchArch; VBOXOSTYPE fArch; } const g_aLinuxArches[] =
 {
-    { RT_STR_TUPLE("amd64"),  VBOXOSTYPE_x64 },
-    { RT_STR_TUPLE("x86_64"), VBOXOSTYPE_x64 },
-    { RT_STR_TUPLE("x86-64"), VBOXOSTYPE_x64 }, /* just in case */
-    { RT_STR_TUPLE("x64"),    VBOXOSTYPE_x64 }, /* ditto */
+    { RT_STR_TUPLE("amd64"),   VBOXOSTYPE_x64 },
+    { RT_STR_TUPLE("x86_64"),  VBOXOSTYPE_x64 },
+    { RT_STR_TUPLE("x86-64"),  VBOXOSTYPE_x64 }, /* just in case */
+    { RT_STR_TUPLE("x64"),     VBOXOSTYPE_x64 }, /* ditto */
 
-    { RT_STR_TUPLE("arm"),    VBOXOSTYPE_arm64 },
-    { RT_STR_TUPLE("arm64"),  VBOXOSTYPE_arm64 },
-    { RT_STR_TUPLE("arm-64"), VBOXOSTYPE_arm64 },
-    { RT_STR_TUPLE("arm_64"), VBOXOSTYPE_arm64 },
+    { RT_STR_TUPLE("arm"),     VBOXOSTYPE_arm64 },
+    { RT_STR_TUPLE("arm64"),   VBOXOSTYPE_arm64 },
+    { RT_STR_TUPLE("arm-64"),  VBOXOSTYPE_arm64 },
+    { RT_STR_TUPLE("arm_64"),  VBOXOSTYPE_arm64 },
+    { RT_STR_TUPLE("aarch64"), VBOXOSTYPE_arm64 }, /* mostly RHEL. */
 
-    { RT_STR_TUPLE("arm32"),  VBOXOSTYPE_arm32 },
-    { RT_STR_TUPLE("arm-32"), VBOXOSTYPE_arm32 },
-    { RT_STR_TUPLE("arm_32"), VBOXOSTYPE_arm32 },
-    { RT_STR_TUPLE("armel"),  VBOXOSTYPE_arm32 }, // mostly Debians
+    { RT_STR_TUPLE("arm32"),   VBOXOSTYPE_arm32 },
+    { RT_STR_TUPLE("arm-32"),  VBOXOSTYPE_arm32 },
+    { RT_STR_TUPLE("arm_32"),  VBOXOSTYPE_arm32 },
+    { RT_STR_TUPLE("armel"),   VBOXOSTYPE_arm32 }, /* mostly Debians. */
 
-    { RT_STR_TUPLE("x86"),    VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i386"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i486"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i586"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i686"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i786"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i886"),   VBOXOSTYPE_x86 },
-    { RT_STR_TUPLE("i986"),   VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("x86"),     VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i386"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i486"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i586"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i686"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i786"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i886"),    VBOXOSTYPE_x86 },
+    { RT_STR_TUPLE("i986"),    VBOXOSTYPE_x86 },
 };
 
 /**
