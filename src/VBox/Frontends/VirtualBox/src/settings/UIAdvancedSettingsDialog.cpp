@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 101417 2023-10-11 16:17:18Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 101419 2023-10-12 11:13:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -571,7 +571,8 @@ bool UIAdvancedSettingsDialog::eventFilter(QObject *pObject, QEvent *pEvent)
 void UIAdvancedSettingsDialog::retranslateUi()
 {
     /* Translate filter editor placeholder: */
-    m_pEditorFilter->setPlaceholderText(tr("Search settings"));
+    if (m_pEditorFilter)
+        m_pEditorFilter->setPlaceholderText(tr("Search settings"));
 
     /* Translate warning-pane stuff: */
     m_pWarningPane->setWarningLabelText(tr("Invalid settings detected"));
