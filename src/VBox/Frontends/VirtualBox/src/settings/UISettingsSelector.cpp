@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 101421 2023-10-12 11:16:05Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 101422 2023-10-12 11:17:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -604,7 +604,7 @@ QVariant UISelectorModel::data(const QModelIndex &specifiedIndex, int iRole) con
         }
         case R_Spacing:
         {
-            return QApplication::style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) * 2;
+            return qMax(QApplication::style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing), 5) * 2;
         }
         case R_IconSize:
         {
