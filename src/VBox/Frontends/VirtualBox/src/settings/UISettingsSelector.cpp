@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 101417 2023-10-11 16:17:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 101421 2023-10-12 11:16:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -41,10 +41,11 @@
 #include "QITabWidget.h"
 #include "QITreeView.h"
 #include "QITreeWidget.h"
-#include "UISettingsSelector.h"
+#include "UIDesktopWidgetWatchdog.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
 #include "UISettingsPage.h"
+#include "UISettingsSelector.h"
 #include "QIToolBar.h"
 
 
@@ -621,7 +622,8 @@ QVariant UISelectorModel::data(const QModelIndex &specifiedIndex, int iRole) con
             {
                 const QIcon icon = pItem->icon();
                 const int iIconSize = data(specifiedIndex, R_IconSize).toInt();
-                return icon.pixmap(m_pParentTree->windowHandle(), QSize(iIconSize, iIconSize));
+                const double fDpr = gpDesktop->devicePixelRatio(m_pParentTree);
+                return icon.pixmap(QSize(iIconSize, iIconSize), fDpr);
             }
             return QPixmap();
         }
