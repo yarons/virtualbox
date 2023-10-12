@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 100542 2023-07-12 11:23:07Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevFwCommon.cpp 101427 2023-10-12 17:37:08Z klaus.espenlaub@oracle.com $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -1005,7 +1005,7 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         DMI_START_STRUCT(pOEMSpecific);
         pOEMSpecific->header.u8Type    = 0x80; /* OEM specific */
         pOEMSpecific->header.u8Length  = sizeof(*pOEMSpecific);
-        pOEMSpecific->header.u16Handle = 0x0008; /* Just next free handle */
+        pOEMSpecific->header.u16Handle = 0x0004;
         pOEMSpecific->u32CpuFreqKHz    = RT_H2LE_U32((uint32_t)((uint64_t)PDMDevHlpTMCpuTicksPerSecond(pDevIns) / 1000));
         DMI_TERM_STRUCT;
 
