@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 101419 2023-10-12 11:13:13Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 101420 2023-10-12 11:14:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -66,7 +66,7 @@
 #endif
 
 #ifdef VBOX_WS_MAC
-# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
+//# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
 #endif
 
 #ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
