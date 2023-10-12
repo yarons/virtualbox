@@ -1,4 +1,4 @@
-/* $Id: FirmwareSettingsImpl.h 101038 2023-09-07 09:21:54Z andreas.loeffler@oracle.com $ */
+/* $Id: FirmwareSettingsImpl.h 101418 2023-10-12 01:07:17Z brian.le.lee@oracle.com $ */
 
 /** @file
  *
@@ -95,6 +95,8 @@ private:
     HRESULT setPXEDebugEnabled(BOOL enable);
     HRESULT getSMBIOSUuidLittleEndian(BOOL *enabled);
     HRESULT setSMBIOSUuidLittleEndian(BOOL enable);
+    HRESULT getAutoSerialNumGen(BOOL *enabled);
+    HRESULT setAutoSerialNumGen(BOOL enable);
 
     struct Data;
     Data *m;
