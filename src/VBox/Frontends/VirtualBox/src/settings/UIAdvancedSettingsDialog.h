@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101342 2023-10-04 15:48:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101440 2023-10-13 14:52:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -47,6 +47,7 @@ class QTimer;
 class QVariant;
 class QIDialogButtonBox;
 class UIFilterEditor;
+class UIModeCheckBox;
 class UISettingsPage;
 class UISettingsPageFrame;
 class UISettingsPageValidator;
@@ -249,6 +250,9 @@ private:
      * @{ */
         /** Holds the main layout instance. */
         QGridLayout *m_pLayoutMain;
+
+        /** Holds the mode checkbox instance. */
+        UIModeCheckBox *m_pCheckBoxMode;
 
         /** Holds the filter editor instance. */
         UIFilterEditor *m_pEditorFilter;
