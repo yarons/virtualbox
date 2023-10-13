@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dec 101297 2023-09-27 15:18:48Z alexander.eichner@oracle.com $
+# $Id: VBoxPkg.dec 101432 2023-10-13 09:44:05Z alexander.eichner@oracle.com $
 ## @file
 # VBoxPkg.dec - VirtualBox Package description.
 #
@@ -89,3 +89,5 @@
   ##  @libraryclass  Generic BDS library definition, include the data structure and function.
   GenericBdsLib|Include/Library/GenericBdsLib.h
 
+  ##  @libraryclass  VirtualBox ARM platform support library.
+  VBoxArmPlatformLib|Include/Library/VBoxArmPlatformLib.h
