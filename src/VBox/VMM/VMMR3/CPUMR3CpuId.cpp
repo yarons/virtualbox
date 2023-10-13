@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 101401 2023-10-10 13:14:25Z michal.necasek@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 101429 2023-10-13 05:50:52Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -5039,7 +5039,7 @@ static DBGFREGSUBFIELD const g_aExtLeafAEdxSubFields[] =
     DBGFREGSUBFIELD_RO("TlbiCtl\0"        "INVLPGB/TLBSYNC enable and intercept",       24, 1, 0),
     DBGFREGSUBFIELD_RO("VNMI\0"           "NMI Virtualization",                         25, 1, 0),
     DBGFREGSUBFIELD_RO("IbsVirt\0"        "IBS Virtualization",                         26, 1, 0),
-    DBGFREGSUBFIELD_RO("ExtLvtAvicAccessChg\0"  "Extended LVT access changes",          27, 1, 0),
+    DBGFREGSUBFIELD_RO("ExtLvtAvicAccessChg\0"  "Extended LVT AVIC access changes",     27, 1, 0),
     DBGFREGSUBFIELD_RO("NestedVirtVmcbAddrChk\0""Guest VMCB address check",             28, 1, 0),
     DBGFREGSUBFIELD_RO("BusLockThreshold\0"     "Bus Lock Threshold",                   29, 1, 0),
     DBGFREGSUBFIELD_TERMINATOR()
