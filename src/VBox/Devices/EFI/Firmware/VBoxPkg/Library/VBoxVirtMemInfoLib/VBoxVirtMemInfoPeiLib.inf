@@ -1,4 +1,4 @@
-# $Id: VBoxVirtMemInfoPeiLib.inf 101434 2023-10-13 09:55:24Z alexander.eichner@oracle.com $
+# $Id: VBoxVirtMemInfoPeiLib.inf 101439 2023-10-13 13:18:45Z alexander.eichner@oracle.com $
 ## @file
 # VBoxVirtMemInfoPeiLib.inf - Providing the address map for setting up the MMU based on the platform settings.
 #
@@ -68,7 +68,5 @@
 [FixedPcd]
   gArmTokenSpaceGuid.PcdFdBaseAddress
   gArmTokenSpaceGuid.PcdFvBaseAddress
-  gArmTokenSpaceGuid.PcdSystemMemoryBase
-  gArmTokenSpaceGuid.PcdSystemMemorySize
   gArmTokenSpaceGuid.PcdFdSize
   gArmTokenSpaceGuid.PcdFvSize

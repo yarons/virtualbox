@@ -1,4 +1,4 @@
-/* $Id: VBoxVirtMemInfoPeiLibConstructor.c 101434 2023-10-13 09:55:24Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxVirtMemInfoPeiLibConstructor.c 101439 2023-10-13 13:18:45Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxVirtMemInfoLib.c - Providing the address map for setting up the MMU based on the platform settings.
  */
@@ -55,11 +55,6 @@ VBoxVirtMemInfoPeiLibConstructor (
   NewSize = VBoxArmPlatformRamBaseSizeGet();
 
   /** @todo This will go away soon when we change the other places to deal with dynamic RAM ranges. */
-  //
-  // Make sure the start of DRAM matches our expectation
-  //
-  ASSERT (PcdGet64 (PcdSystemMemoryBase) == NewBase);
-
   Hob = BuildGuidDataHob (
           &gArmVirtSystemMemorySizeGuid,
           &NewSize,
