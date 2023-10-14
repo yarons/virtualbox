@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 101327 2023-10-02 11:48:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.cpp 101445 2023-10-14 10:41:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -377,6 +377,13 @@ void UIMachineSettingsSerial::prepareWidgets()
     QVBoxLayout *pLayout = new QVBoxLayout(this);
     if (pLayout)
     {
+#ifdef VBOX_WS_MAC
+            /* On Mac OS X we can do a bit of smoothness: */
+            int iLeft, iTop, iRight, iBottom;
+            pLayout->getContentsMargins(&iLeft, &iTop, &iRight, &iBottom);
+            pLayout->setContentsMargins(iLeft / 2, iTop / 2, iRight / 2, iBottom / 2);
+#endif
+
         /* Prepare settings editor: */
         m_pEditorSerialSettings = new UISerialSettingsEditor(this);
         if (m_pEditorSerialSettings)
