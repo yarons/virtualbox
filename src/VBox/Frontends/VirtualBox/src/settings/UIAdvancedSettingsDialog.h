@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101440 2023-10-13 14:52:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101447 2023-10-15 10:33:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -186,6 +186,11 @@ private slots:
     void sltHandleWarningPaneHovered(UISettingsPageValidator *pValidator);
     /** Handles hover leave for warning pane specified by @a pValidator. */
     void sltHandleWarningPaneUnhovered(UISettingsPageValidator *pValidator);
+
+    /** Handles experience mode checkbox change. */
+    void sltHandleExperienceModeCheckBoxChanged();
+    /** Handles experience mode change. */
+    void sltHandleExperienceModeChanged();
 
     /** Handles text-change for filter editor. */
     void sltHandleFilterTextChanged(const QString &strText);

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.h 101447 2023-10-15 10:33:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -79,6 +79,9 @@ signals:
     void sigNotificationCenterAlignmentChange();
     /** Notifies about notification-center order change. */
     void sigNotificationCenterOrderChange();
+
+    /** Notifies about settings expert mode change. */
+    void sigSettingsExpertModeChange();
 
     /** Notifies about GUI language change. */
     void sigLanguageChange(QString strLanguage);
@@ -259,6 +262,11 @@ public:
         QList<GlobalSettingsPageType> restrictedGlobalSettingsPages();
         /** Returns restricted machine settings pages. */
         QList<MachineSettingsPageType> restrictedMachineSettingsPages(const QUuid &uID);
+
+        /** Returns whether settings are in expert mode. */
+        bool isSettingsInExpertMode();
+        /** Defines whether settings are in @a fExpertMode. */
+        void setSettingsInExpertMode(bool fExpertMode);
     /** @} */
 
     /** @name Settings: Language

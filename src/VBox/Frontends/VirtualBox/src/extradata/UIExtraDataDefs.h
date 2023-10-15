@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 101089 2023-09-12 11:50:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 101447 2023-10-15 10:33:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -108,6 +108,8 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_RestrictedGlobalSettingsPages;
         /** Holds restricted Machine Settings pages. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RestrictedMachineSettingsPages;
+        /** Holds whether settings are in expert mode. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_Settings_ExpertMode;
     /** @} */
 
     /** @name Settings: Language
