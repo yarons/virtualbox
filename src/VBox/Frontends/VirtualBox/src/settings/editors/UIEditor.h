@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 101231 2023-09-21 21:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 101451 2023-10-16 12:49:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -46,14 +46,17 @@ public:
 
     /** Constructs editor to be injected into @a pTabWidget. */
     UIEditor(QTabWidget *pTabWidget);
-    /** Constructs editor passing @a pParent to the base-class. */
-    UIEditor(QWidget *pParent = 0);
+    /** Constructs editor passing @a pParent to the base-class.
+      * @param  fShowInBasicMode  Brings whether widget should be shown in basic mode. */
+    UIEditor(QWidget *pParent = 0, bool fShowInBasicMode = false);
 
     /** Adds @a pEditor into list of sub-editor. */
     void addEditor(UIEditor *pEditor);
 
-    /** Filters out contents with description unrelated to passed @a strFilter. */
-    virtual void filterOut(const QString &strFilter);
+    /** Filters out contents.
+      * @param  fExpertMode  Brings whether editor is in expert mode.
+      * @param  strFilter    Brings the filter description should match to. */
+    virtual void filterOut(bool fExpertMode, const QString &strFilter);
 
 protected:
 
@@ -62,6 +65,11 @@ protected:
 
     /** Returns editor description which could be used to filter it in. */
     virtual QStringList description() const;
+
+    /** Holds whether widget should be shown in basic mode. */
+    bool  m_fShowInBasicMode;
+    /** Holds whether editor is in expert mode. */
+    bool  m_fInExpertMode;
 
     /** Holds the parent tab-widget if any. */
     QTabWidget *m_pTabWidget;
