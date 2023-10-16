@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 101454 2023-10-16 16:10:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -43,7 +43,7 @@
 
 
 UIScaleFactorEditor::UIScaleFactorEditor(QWidget *pParent)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_pLayout(0)
     , m_pLabel(0)
     , m_pMonitorComboBox(0)

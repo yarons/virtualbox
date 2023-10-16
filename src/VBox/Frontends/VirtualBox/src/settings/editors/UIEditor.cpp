@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101451 2023-10-16 12:49:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101454 2023-10-16 16:10:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -48,7 +48,7 @@ UIEditor::UIEditor(QTabWidget *pTabWidget)
 UIEditor::UIEditor(QWidget *pParent /* = 0 */, bool fShowInBasicMode /* = false */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fShowInBasicMode(fShowInBasicMode)
-    , m_fInExpertMode(false)
+    , m_fInExpertMode(true)
     , m_pTabWidget(0)
 {
 }
