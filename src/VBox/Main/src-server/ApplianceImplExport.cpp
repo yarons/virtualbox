@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: ApplianceImplExport.cpp 101456 2023-10-16 22:34:24Z brent.paulson@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1886,6 +1886,8 @@ void Appliance::i_buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
                                 ulParent = idSCSIController;
                             else if (lControllerIndex == lSATAControllerIndex)
                                 ulParent = idSATAController;
+                            else if (lControllerIndex == lVirtioSCSIControllerIndex)
+                                ulParent = idVirtioSCSIController;
                         }
                         if (pos2 != Utf8Str::npos)
                             RTStrToInt32Ex(desc.strExtraConfigCurrent.c_str() + pos2 + 8, NULL, 0, &lAddressOnParent);
