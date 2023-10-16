@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateDefs.h 101452 2023-10-16 12:55:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -94,7 +94,7 @@ public:
     static QStringList list();
 
     /** Constructs update description on the basis of passed @a strData. */
-    VBoxUpdateData(const QString &strData = QString());
+    VBoxUpdateData(const QString &strData = QString("never"));
     /** Constructs update description on the basis of passed @a fCheckEnabled, @a enmUpdatePeriod and @a enmUpdateChannel. */
     VBoxUpdateData(bool fCheckEnabled, UpdatePeriodType enmUpdatePeriod, KUpdateChannel enmUpdateChannel);
 

@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 101452 2023-10-16 12:55:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -78,7 +78,7 @@ QStringList VBoxUpdateData::list()
     return result;
 }
 
-VBoxUpdateData::VBoxUpdateData(const QString &strData)
+VBoxUpdateData::VBoxUpdateData(const QString &strData /* = QString("never") */)
     : m_strData(strData)
     , m_fCheckEnabled(false)
     , m_fCheckRequired(false)
