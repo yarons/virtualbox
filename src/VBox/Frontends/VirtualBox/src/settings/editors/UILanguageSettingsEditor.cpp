@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.cpp 101455 2023-10-16 18:25:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -209,7 +209,7 @@ QString UILanguageItem::tratra(const QTranslator &translator, const char *pConte
 *********************************************************************************************************************************/
 
 UILanguageSettingsEditor::UILanguageSettingsEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_fPolished(false)
     , m_pTreeWidget(0)
     , m_pLabelInfo(0)
