@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101478 2023-10-17 12:19:40Z alexander.eichner@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101480 2023-10-17 14:39:59Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -416,8 +416,7 @@ HRESULT PlatformProperties::getMaxInstancesOfStorageBus(ChipsetType_T aChipset,
         case StorageBus_SAS:
         case StorageBus_PCIe:
         case StorageBus_VirtioSCSI:
-            cCtrs = aChipset == ChipsetType_ICH9 ? 8 : 1;
-            /** @todo r=andy How many we want to define explicitly for ARMv8Virtual? */
+            cCtrs = aChipset == ChipsetType_ICH9 || aChipset == ChipsetType_ARMv8Virtual ? 8 : 1;
             break;
         case StorageBus_USB:
         case StorageBus_IDE:
