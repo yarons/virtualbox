@@ -1,4 +1,4 @@
-/* $Id: Global.h 101215 2023-09-21 08:53:19Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.h 101460 2023-10-17 08:32:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -199,6 +199,14 @@ public:
      * @param   aType       The device type.
      */
     static const char *stringifyDeviceType(DeviceType_T aType);
+
+    /**
+     * Stringify a platform architecture to a string.
+     *
+     * @returns Platform architecture as a string.
+     * @param   aEnmArchitecture        Platform architecture to convert.
+     */
+    static const char *stringifyPlatformArchitecture(PlatformArchitecture_T aEnmArchitecture);
 
     /**
      * Stringify a storage controller type.

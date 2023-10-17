@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 101425 2023-10-12 15:01:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: Global.cpp 101460 2023-10-17 08:32:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -764,6 +764,20 @@ Global::stringifyDeviceType(DeviceType_T aType)
         default:
             AssertMsgFailedReturn(("%d (%#x)\n", aType, aType), ::stringifyDeviceType(aType));
     }
+}
+
+/* static */ const char *
+Global::stringifyPlatformArchitecture(PlatformArchitecture_T aEnmArchitecture)
+{
+    switch (aEnmArchitecture)
+    {
+        case PlatformArchitecture_x86: return "x86";
+        case PlatformArchitecture_ARM: return "ARM";
+        default:
+            break;
+    }
+
+    AssertFailedReturn("<None>");
 }
 
 #if 0 /* unused */
