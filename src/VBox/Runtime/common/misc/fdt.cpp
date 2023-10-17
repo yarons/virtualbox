@@ -1,4 +1,4 @@
-/* $Id: fdt.cpp 101453 2023-10-16 13:22:28Z alexander.eichner@oracle.com $ */
+/* $Id: fdt.cpp 101470 2023-10-17 10:33:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Flattened Devicetree parser and generator API.
  */
@@ -1588,6 +1588,35 @@ RTDECL(int) RTFdtNodePropertyAddCellsU32V(RTFDT hFdt, const char *pszProperty, u
         uint32_t u32 = va_arg(va, uint32_t);
         *pu32++ = RT_H2BE_U32(u32);
     }
+
+    pThis->cbStruct += cbProp;
+    return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTFdtNodePropertyAddCellsU32AsArray(RTFDT hFdt, const char *pszProperty, uint32_t cCells, uint32_t *pau32Cells)
+{
+    PRTFDTINT pThis = hFdt;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+
+    /* Insert the property name into the strings block. */
+    uint32_t offStr;
+    int rc = rtFdtStringsInsertString(pThis, pszProperty, &offStr);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    uint32_t cbProp = cCells * sizeof(uint32_t) + 3 * sizeof(uint32_t);
+
+    rc = rtFdtStructEnsureSpace(pThis, cbProp);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    uint32_t *pu32 = (uint32_t *)(pThis->pbStruct + pThis->cbStruct);
+    *pu32++ = DTB_FDT_TOKEN_PROPERTY_BE;
+    *pu32++ = RT_H2BE_U32(cCells * sizeof(uint32_t));
+    *pu32++ = RT_H2BE_U32(offStr);
+    for (uint32_t i = 0; i < cCells; i++)
+        *pu32++ = RT_H2BE_U32(pau32Cells[i]);
 
     pThis->cbStruct += cbProp;
     return VINF_SUCCESS;
