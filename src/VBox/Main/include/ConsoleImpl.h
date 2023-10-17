@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 101458 2023-10-17 08:09:12Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 101459 2023-10-17 08:26:12Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -837,6 +837,7 @@ private:
 
     int i_configAudioCtrl(ComPtr<IVirtualBox> pVBox, ComPtr<IMachine> pMachine, BusAssignmentManager *pBusMgr, PCFGMNODE pDevices,
                           bool fOsXGuest, bool *pfAudioEnabled);
+    int i_configVmmDev(ComPtr<IMachine> pMachine, BusAssignmentManager *pBusMgr, PCFGMNODE pDevices);
 
     static DECLCALLBACK(void) i_vmstateChangeCallback(PUVM pUVM, PCVMMR3VTABLE pVMM, VMSTATE enmState,
                                                       VMSTATE enmOldState, void *pvUser);
