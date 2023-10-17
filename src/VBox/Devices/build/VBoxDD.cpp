@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 101320 2023-09-29 15:43:07Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.cpp 101479 2023-10-17 14:38:54Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -269,6 +269,10 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
         return rc;
 
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciGenericEcam);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciGenericEcamBridge);
     if (RT_FAILURE(rc))
         return rc;
 
