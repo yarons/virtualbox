@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 101474 2023-10-17 11:55:39Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 101477 2023-10-17 12:09:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -757,7 +757,7 @@ private:
                                    const ComPtr<IMachine> &ptrMachine,
                                    const ComPtr<IGraphicsAdapter> &ptrGraphicsAdapter,
                                    const ComPtr<IFirmwareSettings> &ptrFirmwareSettings,
-                                   bool fHMEnabled);
+                                   bool fForceVmSvga3 = false, bool fExposeLegacyVga = true);
     int i_checkMediumLocation(IMedium *pMedium, bool *pfUseHostIOCache);
     int i_unmountMediumFromGuest(PUVM pUVM, PCVMMR3VTABLE pVMM, StorageBus_T enmBus, DeviceType_T enmDevType,
                                  const char *pcszDevice, unsigned uInstance, unsigned uLUN,

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 101475 2023-10-17 11:56:40Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 101477 2023-10-17 12:09:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -604,28 +604,15 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         vrc = RTFdtNodePropertyAddString(  hFdt, "compatible", "pci-host-ecam-generic");    VRC();
         vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
 
+        /*
+         * VMSVGA compliant graphics controller.
+         */
         if (   enmGraphicsController != GraphicsControllerType_QemuRamFB
             && enmGraphicsController != GraphicsControllerType_Null)
         {
-            InsertConfigNode(pDevices, "vga", &pDev);
-            InsertConfigNode(pDev,     "0", &pInst);
-            InsertConfigInteger(pInst, "Trusted",           1);
-            hrc = pBusMgr->assignPCIDevice("vga", pInst);                                   H();
-            InsertConfigNode(pInst,    "Config", &pCfg);
-            InsertConfigInteger(pCfg,  "VRamSize",          32 * _1M);
-            InsertConfigInteger(pCfg,  "MonitorCount",         1);
-            i_attachStatusDriver(pInst, DeviceType_Graphics3D);
-            InsertConfigInteger(pCfg, "VMSVGAEnabled", true);
-            InsertConfigInteger(pCfg, "VMSVGAPciBarLayout", true);
-            InsertConfigInteger(pCfg, "VMSVGAPciId", true);
-            InsertConfigInteger(pCfg, "VMSVGA3dEnabled", false);
-            InsertConfigInteger(pCfg, "VmSvga3", true);
-            InsertConfigInteger(pCfg, "VmSvgaExposeLegacyVga", false);
-
-            /* Attach the display. */
-            InsertConfigNode(pInst,    "LUN#0", &pLunL0);
-            InsertConfigString(pLunL0, "Driver",               "MainDisplay");
-            InsertConfigNode(pLunL0,   "Config", &pCfg);
+            vrc = i_configGraphicsController(pDevices, enmGraphicsController, pBusMgr, pMachine,
+                                             pGraphicsAdapter, firmwareSettings,
+                                             true /*fForceVmSvga3*/, false /*fExposeLegacyVga*/);   VRC();
         }
 
         /*
