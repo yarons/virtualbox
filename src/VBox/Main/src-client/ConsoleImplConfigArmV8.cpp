@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 101480 2023-10-17 14:39:59Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 101483 2023-10-17 15:14:22Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -524,11 +524,16 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
             }
         }
 
+        BOOL fRTCUseUTC;
+        hrc = platform->COMGETTER(RTCUseUTC)(&fRTCUseUTC);                                  H();
+
         InsertConfigNode(pDevices, "arm-pl031-rtc", &pDev);
         InsertConfigNode(pDev,     "0",            &pInst);
         InsertConfigNode(pInst,    "Config",        &pCfg);
         InsertConfigInteger(pCfg,  "Irq",               2);
         InsertConfigInteger(pCfg,  "MmioBase", 0x09010000);
+        InsertConfigInteger(pCfg,  "UtcOffset", fRTCUseUTC ? 1 : 0);
+
         vrc = RTFdtNodeAddF(hFdt, "pl032@%RX32", 0x09010000);                               VRC();
         vrc = RTFdtNodePropertyAddString(  hFdt, "clock-names", "apb_pclk");                VRC();
         vrc = RTFdtNodePropertyAddU32(     hFdt, "clocks", idPHandleAbpPClk);               VRC();
