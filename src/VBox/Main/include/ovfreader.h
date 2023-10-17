@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 99604 2023-05-04 13:53:06Z valery.portnyagin@oracle.com $ */
+/* $Id: ovfreader.h 101472 2023-10-17 11:45:00Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -567,8 +567,8 @@ struct HardDiskController
 {
     RTCString               strIdController;    // instance ID (Item/InstanceId); this gets referenced from VirtualDisk
 
-    enum ControllerSystemType { IDE, SATA, SCSI, VIRTIOSCSI };
-    ControllerSystemType    system;             // one of IDE, SATA, SCSI, VIRTIOSCSI
+    enum ControllerSystemType { IDE, SATA, SCSI, VIRTIOSCSI, NVMe };
+    ControllerSystemType    system;             // one of IDE, SATA, SCSI, VIRTIOSCSI, NVMe
 
     RTCString               strControllerType;
             // controller subtype (Item/ResourceSubType); e.g. "LsiLogic"; can be empty (esp. for IDE)

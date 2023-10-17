@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageAppliance.cpp 101472 2023-10-17 11:45:00Z brent.paulson@oracle.com $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -863,6 +863,22 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                             }
                             else
                                 RTPrintf(Appliance::tr("%2u: VirtioSCSI controller, type %ls\n"
+                                            "    (disable with \"--vsys %u --unit %u --ignore\")\n"),
+                                        a,
+                                        aVBoxValues[a],
+                                        i, a);
+                            break;
+
+                        case VirtualSystemDescriptionType_HardDiskControllerNVMe:
+                            if (fIgnoreThis)
+                            {
+                                RTPrintf(Appliance::tr("%2u: NVMe controller, type %ls -- disabled\n"),
+                                         a,
+                                         aVBoxValues[a]);
+                                aEnabled[a] = false;
+                            }
+                            else
+                                RTPrintf(Appliance::tr("%2u: NVMe controller, type %ls\n"
                                             "    (disable with \"--vsys %u --unit %u --ignore\")\n"),
                                         a,
                                         aVBoxValues[a],
