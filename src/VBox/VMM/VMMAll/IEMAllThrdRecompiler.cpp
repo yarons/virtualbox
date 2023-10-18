@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 101387 2023-10-07 23:34:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 101484 2023-10-18 01:32:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2268,7 +2268,11 @@ static VBOXSTRICTRC iemTbExec(PVMCPUCC pVCpu, PIEMTB pTb) IEM_NOEXCEPT_MAY_LONGJ
 # ifdef LOG_ENABLED
         iemThreadedLogCurInstr(pVCpu, "EXn", 0);
 # endif
+# ifdef RT_ARCH_AMD64
         VBOXSTRICTRC const rcStrict = ((PFNIEMTBNATIVE)pTb->Native.paInstructions)(pVCpu);
+# else
+        VBOXSTRICTRC const rcStrict = ((PFNIEMTBNATIVE)pTb->Native.paInstructions)(pVCpu, &pVCpu->cpum.GstCtx);
+# endif
         if (RT_LIKELY(   rcStrict == VINF_SUCCESS
                       && pVCpu->iem.s.rcPassUp == VINF_SUCCESS /** @todo this isn't great. */))
         { /* likely */ }
