@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 101494 2023-10-18 11:13:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -111,6 +111,7 @@ void UIUSBControllerEditor::prepare()
             m_pRadioButtonUSB1 = new QRadioButton(this);
             if (m_pRadioButtonUSB1)
             {
+                m_pRadioButtonUSB1->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
                 m_pRadioButtonUSB1->setVisible(false);
                 pLayout->addWidget(m_pRadioButtonUSB1);
             }
@@ -118,6 +119,7 @@ void UIUSBControllerEditor::prepare()
             m_pRadioButtonUSB2 = new QRadioButton(this);
             if (m_pRadioButtonUSB2)
             {
+                m_pRadioButtonUSB2->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
                 m_pRadioButtonUSB2->setVisible(false);
                 pLayout->addWidget(m_pRadioButtonUSB2);
             }
@@ -125,6 +127,7 @@ void UIUSBControllerEditor::prepare()
             m_pRadioButtonUSB3 = new QRadioButton(this);
             if (m_pRadioButtonUSB3)
             {
+                m_pRadioButtonUSB3->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
                 m_pRadioButtonUSB3->setVisible(false);
                 pLayout->addWidget(m_pRadioButtonUSB3);
             }
