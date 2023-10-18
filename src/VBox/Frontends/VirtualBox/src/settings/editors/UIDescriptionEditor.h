@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.h 101492 2023-10-18 11:10:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class declaration.
  */
@@ -56,6 +56,11 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+    /** Returns the minimum widget size hint. */
+    virtual QSize minimumSizeHint() const RT_OVERRIDE;
+    /** Returns the widget size hint. */
+    virtual QSize sizeHint() const RT_OVERRIDE;
 
 private:
 

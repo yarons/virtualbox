@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.cpp 101334 2023-10-03 15:21:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 101492 2023-10-18 11:10:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
@@ -67,6 +67,24 @@ void UIDescriptionEditor::retranslateUi()
     }
 }
 
+QSize UIDescriptionEditor::minimumSizeHint() const
+{
+    /* Calculate on the basis of font metrics: */
+    QFontMetrics fm(m_pTextEdit->font());
+    // approx. 100 symbols, not very precise:
+    const int iWidth = fm.averageCharWidth() * 100;
+    // exact. 5 symbols, quite precise:
+    const int iHeight = fm.lineSpacing() * 5
+                      + m_pTextEdit->document()->documentMargin() * 2
+                      + m_pTextEdit->frameWidth() * 2;
+    return QSize(iWidth, iHeight);
+}
+
+QSize UIDescriptionEditor::sizeHint() const
+{
+    return minimumSizeHint();
+}
+
 void UIDescriptionEditor::prepare()
 {
     /* Prepare main layout: */
@@ -80,6 +98,7 @@ void UIDescriptionEditor::prepare()
         if (m_pTextEdit)
         {
             setFocusProxy(m_pTextEdit);
+            m_pTextEdit->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
             m_pTextEdit->setAcceptRichText(false);
 #ifdef VBOX_WS_MAC
             m_pTextEdit->setMinimumHeight(150);
