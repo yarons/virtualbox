@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 101494 2023-10-18 11:13:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -39,7 +39,7 @@
 
 
 UIUSBControllerEditor::UIUSBControllerEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_enmValue(KUSBControllerType_Max)
     , m_pRadioButtonUSB1(0)
     , m_pRadioButtonUSB2(0)

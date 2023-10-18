@@ -1,4 +1,4 @@
-/* $Id: UIDragAndDropEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDragAndDropEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDragAndDropEditor class implementation.
  */
@@ -41,7 +41,7 @@
 
 
 UIDragAndDropEditor::UIDragAndDropEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_enmValue(KDnDMode_Max)
     , m_pLabel(0)
     , m_pCombo(0)

@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.cpp 101492 2023-10-18 11:10:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
@@ -34,7 +34,7 @@
 
 
 UIDescriptionEditor::UIDescriptionEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_pTextEdit(0)
 {
     prepare();

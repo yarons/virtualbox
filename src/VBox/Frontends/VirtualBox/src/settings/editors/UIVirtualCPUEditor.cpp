@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -42,7 +42,7 @@
 #include "CSystemProperties.h"
 
 UIVirtualCPUEditor::UIVirtualCPUEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_uMinVCPUCount(1)
     , m_uMaxVCPUCount(1)
     , m_pLabelVCPU(0)

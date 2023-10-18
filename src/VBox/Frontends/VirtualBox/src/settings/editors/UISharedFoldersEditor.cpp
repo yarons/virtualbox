@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -275,7 +275,7 @@ void SFTreeViewItem::processColumn(int iColumn)
 *********************************************************************************************************************************/
 
 UISharedFoldersEditor::UISharedFoldersEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_pLayoutTree(0)
     , m_pTreeWidget(0)
     , m_pToolbar(0)

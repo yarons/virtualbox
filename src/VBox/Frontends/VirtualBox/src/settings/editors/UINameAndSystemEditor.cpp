@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101373 2023-10-06 02:01:02Z knut.osmundsen@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -56,7 +56,7 @@ UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent,
                                              bool fChooseImage /* = false */,
                                              bool fChooseEdition /* = false */,
                                              bool fChooseType /* = true */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_fChooseName(fChooseName)
     , m_fChoosePath(fChoosePath)
     , m_fChooseImage(fChooseImage)

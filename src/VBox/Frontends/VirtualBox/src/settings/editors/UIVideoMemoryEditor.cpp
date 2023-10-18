@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.cpp 101264 2023-09-26 10:51:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class implementation.
  */
@@ -42,7 +42,7 @@
 
 
 UIVideoMemoryEditor::UIVideoMemoryEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_iValue(0)
     , m_cGuestScreenCount(1)
     , m_enmGraphicsControllerType(KGraphicsControllerType_Null)

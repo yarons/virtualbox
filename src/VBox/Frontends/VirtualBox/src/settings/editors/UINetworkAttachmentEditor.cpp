@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class implementation.
  */
@@ -53,7 +53,7 @@
 QString UINetworkAttachmentEditor::s_strEmptyItemId = QString("#empty#");
 
 UINetworkAttachmentEditor::UINetworkAttachmentEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent)
+    : UIEditor(pParent, true /* show in basic mode? */)
     , m_enmRestrictedNetworkAttachmentTypes(UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_Invalid)
     , m_enmType(KNetworkAttachmentType_Max)
     , m_pLayout(0)
