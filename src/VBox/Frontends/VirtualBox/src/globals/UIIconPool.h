@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIIconPool.h 101500 2023-10-18 14:01:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
@@ -163,6 +163,8 @@ private:
     UIIconPoolGeneral();
     /** Destructs general icon-pool. */
     virtual ~UIIconPoolGeneral() /* override final */;
+    /** Overlay text @p strArch on top of @p pixmap. */
+    void overlayArchitectureTextOnPixmap(const QString &strArch, QPixmap &pixmap) const;
 
     /** Holds the singleton instance. */
     static UIIconPoolGeneral *s_pInstance;
