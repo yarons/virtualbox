@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101484 2023-10-18 01:32:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101488 2023-10-18 08:38:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -123,7 +123,7 @@
 /** @def IEMNATIVE_REG_FIXED_MASK
  * Mask GPRs with fixes assignments, either by us or dictated by the CPU/OS
  * architecture. */
-#ifdef RT_ARCH_AMD64
+#if defined(RT_ARCH_AMD64) && !defined(DOXYGEN_RUNNING)
 # define IEMNATIVE_REG_FIXED_PVMCPU         X86_GREG_xBX
 # define IEMNATIVE_REG_FIXED_TMP0           X86_GREG_x11
 # define IEMNATIVE_REG_FIXED_MASK          (  RT_BIT_32(IEMNATIVE_REG_FIXED_PVMCPU) \
