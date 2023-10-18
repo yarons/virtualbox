@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 101457 2023-10-17 07:05:18Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 101493 2023-10-18 11:11:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -1132,6 +1132,7 @@ void UIAdvancedSettingsDialog::prepareSelector()
 
     /* Make sure there is a serious spacing between selector and pages: */
     m_pLayoutMain->setColumnMinimumWidth(1, 20);
+    m_pLayoutMain->setRowStretch(1, 1);
 
     /* Prepare mode checkbox: */
     m_pCheckBoxMode = new UIModeCheckBox(centralWidget());
