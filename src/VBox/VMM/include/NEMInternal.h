@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 101236 2023-09-22 09:16:54Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 101496 2023-10-18 11:27:55Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -219,6 +219,11 @@ typedef struct NEM
     /** Set when the debug facility has breakpoints/events enabled that requires
      *  us to use the debug execution loop. */
     bool                        fUseDebugLoop;
+
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    /** The PPI interrupt number of the vTimer. */
+    uint32_t                    u32GicPpiVTimer;
+#endif
 
 #if defined(RT_OS_LINUX)
     /** The '/dev/kvm' file descriptor.   */

@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 99370 2023-04-11 00:32:33Z knut.osmundsen@oracle.com $ */
+/* $Id: NEMR3.cpp 101496 2023-10-18 11:27:55Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -102,6 +102,9 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
                                   "|VmxPleWindow"
                                   "|VmxLbr"
 #endif
+#if defined(VBOX_VMM_TARGET_ARMV8)
+                                  "|VTimerInterrupt"
+#endif
                                   ,
                                   "" /* pszValidNodes */, "NEM" /* pszWho */, 0 /* uInstance */);
     if (RT_FAILURE(rc))
@@ -135,6 +138,13 @@ VMMR3_INT_DECL(int) NEMR3InitConfig(PVM pVM)
         PVMCPU pVCpu = pVM->apCpusR3[idCpu];
         pVCpu->nem.s.fTrapXcptGpForLovelyMesaDrv = f;
     }
+
+#if defined(VBOX_VMM_TARGET_ARMV8)
+    /** @cfgm{/NEM/VTimerInterrupt, uint32_t}
+     * Specifies the interrupt identifier for the VTimer. */
+    rc = CFGMR3QueryU32(pCfgNem, "VTimerInterrupt", &pVM->nem.s.u32GicPpiVTimer);
+    AssertLogRelRCReturn(rc, rc);
+#endif
 
     return VINF_SUCCESS;
 }
