@@ -1,4 +1,4 @@
-/* $Id: DevPlatform.cpp 101320 2023-09-29 15:43:07Z alexander.eichner@oracle.com $ */
+/* $Id: DevPlatform.cpp 101499 2023-10-18 12:58:16Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPlatform - Guest platform <-> VirtualBox Integration Framework.
  */
@@ -475,6 +475,7 @@ static DECLCALLBACK(int)  platformR3Construct(PPDMDEVINS pDevIns, int iInstance,
                                         N_("Configuration error: Querying \"GCPhysLoadAddress\" as integer failed"));
 
             /* Setting a filename overrides the resource store (think of CFGM extradata from the user). */
+            pRes->fResourceId = false;
             rc = pHlp->pfnCFGMQueryStringAlloc(pCfgRes, "Filename", (char **)&pRes->pszResourceIdOrFilename);
             if (rc == VERR_CFGM_VALUE_NOT_FOUND)
             {
