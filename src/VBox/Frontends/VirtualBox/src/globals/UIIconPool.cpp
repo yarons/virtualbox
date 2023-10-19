@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 101508 2023-10-19 11:16:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.cpp 101509 2023-10-19 12:46:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -766,8 +766,8 @@ void UIIconPoolGeneral::overlayArchitectureTextOnPixmap(const QString &strArch, 
 #endif
 #if 1
     QFont font = qApp->font();
-    /* Set font' size wrt. @p pixmap height: */
-    font.setPixelSize(0.31 * pixmap.rect().height());
+    /* Set font' size wrt. @p pixmap height/dpr: */
+    font.setPixelSize(0.31 * pixmap.height() / pixmap.devicePixelRatio());
     font.setBold(true);
     QPainter painter(&pixmap);
     painter.setFont(font);
