@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.h 101500 2023-10-18 14:01:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.h 101508 2023-10-19 11:16:25Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
@@ -165,7 +165,8 @@ private:
     virtual ~UIIconPoolGeneral() /* override final */;
     /** Overlay text @p strArch on top of @p pixmap. */
     void overlayArchitectureTextOnPixmap(const QString &strArch, QPixmap &pixmap) const;
-
+    /** Returns the architecture text we overlay on guest OS type id icon.*/
+    QString determineOSArchString(const QString &osTypeId) const;
     /** Holds the singleton instance. */
     static UIIconPoolGeneral *s_pInstance;
 
