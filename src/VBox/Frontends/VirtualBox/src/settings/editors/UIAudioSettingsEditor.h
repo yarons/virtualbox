@@ -1,4 +1,4 @@
-/* $Id: UIAudioSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioSettingsEditor.h 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioSettingsEditor class declaration.
  */
@@ -105,6 +105,11 @@ public:
 
 protected:
 
+    /** Filters out contents.
+      * @param  fExpertMode  Brings whether settings expert mode is requested.
+      * @param  strFilter    Brings the filter description should correspond to. */
+    virtual void filterOut(bool fExpertMode, const QString &strFilter) RT_OVERRIDE;
+
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
@@ -124,6 +129,8 @@ private:
 
     /** Updates feature availability. */
     void updateFeatureAvailability();
+    /** Updates minimum layout hint. */
+    void updateMinimumLayoutHint();
 
     /** @name Values
      * @{ */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 101231 2023-09-21 21:02:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -109,6 +109,11 @@ protected:
     /** Defines TAB order for passed @a pWidget. */
     virtual void setOrderAfter(QWidget *pWidget) RT_OVERRIDE;
 
+    /** Filters out contents.
+      * @param  fExpertMode  Brings whether settings expert mode is requested.
+      * @param  strFilter    Brings the filter description should correspond to. */
+    virtual void filterOut(bool fExpertMode, const QString &strFilter) RT_OVERRIDE;
+
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
@@ -140,6 +145,9 @@ private:
     bool saveProcessorData();
     /** Saves existing 'Acceleration' data from cache. */
     bool saveAccelerationData();
+
+    /** Updates minimum layout hint. */
+    void updateMinimumLayoutHint();
 
     /** Holds whether the USB is enabled. */
     bool m_fIsUSBEnabled;

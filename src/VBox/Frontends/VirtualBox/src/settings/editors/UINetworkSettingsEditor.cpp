@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.cpp 101497 2023-10-18 12:19:15Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class implementation.
  */
@@ -221,6 +221,14 @@ void UINetworkSettingsEditor::setForwardingOptionsAvailable(bool fAvailable)
         m_pEditorNetworkFeatures->setForwardingOptionsAvailable(fAvailable);
 }
 
+void UINetworkSettingsEditor::filterOut(bool fExpertMode, const QString &strFilter)
+{
+    /* Call to base-class: */
+    UIEditor::filterOut(fExpertMode, strFilter);
+
+    updateMinimumLayoutHint();
+}
+
 void UINetworkSettingsEditor::retranslateUi()
 {
     if (m_pCheckboxFeature)
@@ -229,16 +237,7 @@ void UINetworkSettingsEditor::retranslateUi()
         m_pCheckboxFeature->setToolTip(tr("When checked, plugs this virtual network adapter into the virtual machine."));
     }
 
-    /* These editors have own labels, but we want them to be properly layouted according to each other: */
-    int iMinimumLayoutHint = 0;
-    if (m_pEditorNetworkAttachment)
-        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorNetworkAttachment->minimumLabelHorizontalHint());
-    if (m_pEditorNetworkFeatures)
-        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorNetworkFeatures->minimumLabelHorizontalHint());
-    if (m_pEditorNetworkAttachment)
-        m_pEditorNetworkAttachment->setMinimumLayoutIndent(iMinimumLayoutHint);
-    if (m_pEditorNetworkFeatures)
-        m_pEditorNetworkFeatures->setMinimumLayoutIndent(iMinimumLayoutHint);
+    updateMinimumLayoutHint();
 }
 
 void UINetworkSettingsEditor::sltHandleFeatureToggled()
@@ -354,4 +353,18 @@ void UINetworkSettingsEditor::prepareConnections()
 void UINetworkSettingsEditor::updateFeatureAvailability()
 {
     m_pWidgetSettings->setEnabled(m_pCheckboxFeature->isChecked());
+}
+
+void UINetworkSettingsEditor::updateMinimumLayoutHint()
+{
+    /* These editors have own labels, but we want them to be properly layouted according to each other: */
+    int iMinimumLayoutHint = 0;
+    if (m_pEditorNetworkAttachment && !m_pEditorNetworkAttachment->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorNetworkAttachment->minimumLabelHorizontalHint());
+    if (m_pEditorNetworkFeatures && !m_pEditorNetworkFeatures->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorNetworkFeatures->minimumLabelHorizontalHint());
+    if (m_pEditorNetworkAttachment)
+        m_pEditorNetworkAttachment->setMinimumLayoutIndent(iMinimumLayoutHint);
+    if (m_pEditorNetworkFeatures)
+        m_pEditorNetworkFeatures->setMinimumLayoutIndent(iMinimumLayoutHint);
 }

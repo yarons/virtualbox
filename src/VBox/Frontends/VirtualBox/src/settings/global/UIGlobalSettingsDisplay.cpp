@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -189,18 +189,17 @@ void UIGlobalSettingsDisplay::saveFromCacheTo(QVariant &data)
     UISettingsPageGlobal::uploadData(data);
 }
 
+void UIGlobalSettingsDisplay::filterOut(bool fExpertMode, const QString &strFilter)
+{
+    /* Call to base-class: */
+    UIEditor::filterOut(fExpertMode, strFilter);
+
+    updateMinimumLayoutHint();
+}
+
 void UIGlobalSettingsDisplay::retranslateUi()
 {
-    /* These editors have own labels, but we want them to be properly layouted according to each other: */
-    int iMinimumLayoutHint = 0;
-    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorMaximumGuestScreenSize->minimumLabelHorizontalHint());
-    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorScaleFactor->minimumLabelHorizontalHint());
-    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pFontScaleEditor->minimumLabelHorizontalHint());
-    iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorDisplayFeatures->minimumLabelHorizontalHint());
-    m_pEditorMaximumGuestScreenSize->setMinimumLayoutIndent(iMinimumLayoutHint);
-    m_pEditorScaleFactor->setMinimumLayoutIndent(iMinimumLayoutHint);
-    m_pFontScaleEditor->setMinimumLayoutIndent(iMinimumLayoutHint);
-    m_pEditorDisplayFeatures->setMinimumLayoutIndent(iMinimumLayoutHint);
+    updateMinimumLayoutHint();
 }
 
 void UIGlobalSettingsDisplay::prepare()
@@ -309,4 +308,26 @@ bool UIGlobalSettingsDisplay::saveData()
     }
     /* Return result: */
     return fSuccess;
+}
+
+void UIGlobalSettingsDisplay::updateMinimumLayoutHint()
+{
+    /* These editors have own labels, but we want them to be properly layouted according to each other: */
+    int iMinimumLayoutHint = 0;
+    if (m_pEditorMaximumGuestScreenSize && !m_pEditorMaximumGuestScreenSize->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorMaximumGuestScreenSize->minimumLabelHorizontalHint());
+    if (m_pEditorScaleFactor && !m_pEditorScaleFactor->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorScaleFactor->minimumLabelHorizontalHint());
+    if (m_pFontScaleEditor && !m_pFontScaleEditor->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pFontScaleEditor->minimumLabelHorizontalHint());
+    if (m_pEditorDisplayFeatures && !m_pEditorDisplayFeatures->isHidden())
+        iMinimumLayoutHint = qMax(iMinimumLayoutHint, m_pEditorDisplayFeatures->minimumLabelHorizontalHint());
+    if (m_pEditorMaximumGuestScreenSize)
+        m_pEditorMaximumGuestScreenSize->setMinimumLayoutIndent(iMinimumLayoutHint);
+    if (m_pEditorScaleFactor)
+        m_pEditorScaleFactor->setMinimumLayoutIndent(iMinimumLayoutHint);
+    if (m_pFontScaleEditor)
+        m_pFontScaleEditor->setMinimumLayoutIndent(iMinimumLayoutHint);
+    if (m_pEditorDisplayFeatures)
+        m_pEditorDisplayFeatures->setMinimumLayoutIndent(iMinimumLayoutHint);
 }
