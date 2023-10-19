@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101510 2023-10-19 14:34:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -285,7 +285,7 @@ void UINameAndSystemEditor::retranslateUi()
     if (m_pLabelType)
         m_pLabelType->setText(tr("&Version:"));
     if (m_pLabelVariant)
-        m_pLabelVariant->setText(tr("Kind:"));
+        m_pLabelVariant->setText(tr("&Kind:"));
 
     if (m_pEditorName)
         m_pEditorName->setToolTip(tr("Holds the name for virtual machine."));
@@ -577,7 +577,7 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pComboVariant = new QComboBox(this);
             if (m_pComboVariant)
             {
-                m_pLabelFamily->setBuddy(m_pComboVariant);
+                m_pLabelVariant->setBuddy(m_pComboVariant);
                 m_pLayout->addWidget(m_pComboVariant, iRow, 1);
             }
             ++iRow;
