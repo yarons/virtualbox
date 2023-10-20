@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.h 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.h 101529 2023-10-20 16:31:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class declaration.
  */
@@ -62,8 +62,6 @@ signals:
 
     /** @name Features editor stuff
      * @{ */
-        /** Notifies about the advanced button state change to @a fExpanded. */
-        void sigAdvancedButtonStateChange(bool fExpanded);
         /** Notifies about MAC address changed. */
         void sigMACAddressChanged();
     /** @} */
@@ -104,11 +102,6 @@ public:
 
     /** @name Features editor stuff
      * @{ */
-        /** Defines whether advanced button @a fExpanded. */
-        void setAdvancedButtonExpanded(bool fExpanded);
-        /** Returns whether advanced button expanded. */
-        bool advancedButtonExpanded() const;
-
         /** Defines adapter @a enmType. */
         void setAdapterType(const KNetworkAdapterType &enmType);
         /** Returns adapter type. */
@@ -139,8 +132,6 @@ public:
         /** Returns list of port forwarding rules. */
         UIPortForwardingDataList portForwardingRules() const;
 
-        /** Defines whether advanced options @a fAvailable. */
-        void setAdvancedOptionsAvailable(bool fAvailable);
         /** Defines whether adapter options @a fAvailable. */
         void setAdapterOptionsAvailable(bool fAvailable);
         /** Defines whether promiscuous options @a fAvailable. */

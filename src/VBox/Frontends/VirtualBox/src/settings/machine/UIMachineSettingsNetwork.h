@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 101522 2023-10-20 14:42:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 101529 2023-10-20 16:31:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -111,8 +111,6 @@ private slots:
 
     /** Handles adapter alternative name change. */
     void sltHandleAlternativeNameChange();
-    /** Handles whether the advanced button is @a fExpanded. */
-    void sltHandleAdvancedButtonStateChange(bool fExpanded);
 
 private:
 
