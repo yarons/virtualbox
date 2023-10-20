@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 101520 2023-10-20 14:06:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -787,16 +787,10 @@ void UIMachineSettingsDisplay::polishPage()
     m_pTabRemoteDisplay->setEnabled(isMachineInValidMode());
     m_pEditorVRDESettings->setVRDEOptionsAvailable(isMachineOffline() || isMachineSaved());
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-    /* Polish 'Recording' visibility: */
-    m_pTabWidget->setTabVisible(m_pTabWidget->indexOf(m_pTabRecording), uiCommon().supportedRecordingFeatures());
-    /* Polish 'Recording' availability: */
-    m_pTabRecording->setEnabled(isMachineInValidMode());
-#else
     /* Polish 'Recording' availability: */
     m_pTabWidget->setTabEnabled(2, isMachineInValidMode() && uiCommon().supportedRecordingFeatures());
     m_pTabRecording->setEnabled(isMachineInValidMode() && uiCommon().supportedRecordingFeatures());
-#endif
+
     // Recording options should be enabled only if:
     // 1. Machine is in 'offline' or 'saved' state,
     // 2. Machine is in 'online' state and video recording is *disabled* currently.
