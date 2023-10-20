@@ -1,4 +1,4 @@
-/* $Id: vboxmslnk.c 101532 2023-10-20 20:38:33Z brent.paulson@oracle.com $ */
+/* $Id: vboxmslnk.c 101534 2023-10-20 21:27:39Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris: user space loader tool.
  */
@@ -44,11 +44,10 @@
 #include <string.h>
 #include <stropts.h>
 #include <unistd.h>
-#include <paths.h>
 #include <libgen.h>
 #include <getopt.h>
 
-#define VBOXMSLNK_MUXID_FILE    _PATH_SYSVOL "/vboxmslnk.muxid"
+#define VBOXMSLNK_MUXID_FILE    "/system/volatile/vboxmslnk.muxid"
 
 static const char *g_pszProgName;
 
