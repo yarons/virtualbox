@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 101496 2023-10-18 11:27:55Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 101515 2023-10-20 10:47:48Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -694,10 +694,12 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
     }
 #endif
 
+#if 0
     vrc = RTFdtNodeAdd(hFdt, "chosen");                                                 VRC();
     vrc = RTFdtNodePropertyAddString(  hFdt, "stdout-path", "pl011@9000000");           VRC();
     vrc = RTFdtNodePropertyAddString(  hFdt, "stdin-path", "pl011@9000000");            VRC();
     vrc = RTFdtNodeFinalize(hFdt);
+#endif
 
     /* Finalize the FDT and add it to the resource store. */
     vrc = RTFdtFinalize(hFdt);
