@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 101528 2023-10-20 15:16:25Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-linux.c 101530 2023-10-20 16:37:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1691,7 +1691,11 @@ SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
              this, but getting hold of the relevant patches isn't all that
              straight forward any longer it seems (which is weird for linux
              patches), so, we've just enabled slow-mode for all PAX_KERNEXEC
-             kernels regardless of kernel version. */
+             kernels regardless of kernel version.
+
+             Looking at grsecurity patch for 4.9.9, it looks like the writable
+             GDT stuff never worked with PaX/grsec.
+             */
 #ifdef CONFIG_PAX_KERNEXEC
     fFlags |= SUPKERNELFEATURES_GDT_READ_ONLY;
 #elif RTLNX_VER_MIN(4,12,0)
