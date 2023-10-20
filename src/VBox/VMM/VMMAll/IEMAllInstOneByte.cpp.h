@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 101484 2023-10-18 01:32:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 101516 2023-10-20 13:07:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -8034,7 +8034,7 @@ FNIEMOP_DEF(iemOp_Grp11_Eb_Ib)
 FNIEMOP_DEF(iemOp_Grp11_Ev_Iz)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
-    if ((bRm & X86_MODRM_REG_MASK) != (0 << X86_MODRM_REG_SHIFT)) /* only mov Eb,Ib in this group. */
+    if ((bRm & X86_MODRM_REG_MASK) != (0 << X86_MODRM_REG_SHIFT)) /* only mov Eb,Iz in this group. */
         IEMOP_RAISE_INVALID_OPCODE_RET();
     IEMOP_MNEMONIC(mov_Ev_Iz, "mov Ev,Iz");
 
