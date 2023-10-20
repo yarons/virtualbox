@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 101525 2023-10-20 14:55:01Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPDrv-linux.c 101526 2023-10-20 15:09:20Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1685,7 +1685,8 @@ SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
     uint32_t fFlags = 0;
 #ifdef CONFIG_PAX_KERNEXEC
     fFlags |= SUPKERNELFEATURES_GDT_READ_ONLY;
-#elif RTLNX_VER_MIN(4,12,0)
+#endif
+#if RTLNX_VER_MIN(4,12,0)
     fFlags |= SUPKERNELFEATURES_GDT_NEED_WRITABLE;
 #endif
 #if defined(VBOX_STRICT) || defined(VBOX_WITH_EFLAGS_AC_SET_IN_VBOXDRV)
