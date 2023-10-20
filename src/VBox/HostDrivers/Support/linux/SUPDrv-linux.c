@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 101530 2023-10-20 16:37:38Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPDrv-linux.c 101531 2023-10-20 16:40:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1772,7 +1772,7 @@ SUPR0_EXPORT_SYMBOL(SUPR0FpuEnd);
 
 int VBOXCALL    supdrvOSGetCurrentGdtRw(RTHCUINTPTR *pGdtRw)
 {
-#if RTLNX_VER_MIN(4,12,0)
+#if RTLNX_VER_MIN(4,12,0) && !defined(CONFIG_PAX_KERNEXEC)
     *pGdtRw = (RTHCUINTPTR)get_current_gdt_rw();
     return VINF_SUCCESS;
 #else
