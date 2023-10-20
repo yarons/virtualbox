@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 101522 2023-10-20 14:42:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -101,6 +101,11 @@ protected:
 
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
+
+    /** Filters out contents.
+      * @param  fExpertMode  Brings whether settings expert mode is requested.
+      * @param  strFilter    Brings the filter description should correspond to. */
+    virtual void filterOut(bool fExpertMode, const QString &strFilter) RT_OVERRIDE;
 
 private slots:
 
