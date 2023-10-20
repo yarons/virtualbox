@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101516 2023-10-20 13:07:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101518 2023-10-20 13:25:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1813,7 +1813,6 @@ DECLINLINE(uint32_t) iemNativeEmitJccToFixed(PIEMRECOMPILERSTATE pReNative, uint
     AssertReturn(pbCodeBuf, UINT32_MAX);
     if (offTarget < 128 && offTarget >= -128)
     {
-        pbCodeBuf[off++] = 0x0f;
         pbCodeBuf[off++] = enmCond | 0x70;
         pbCodeBuf[off++] = RT_BYTE1((uint32_t)offTarget);
     }

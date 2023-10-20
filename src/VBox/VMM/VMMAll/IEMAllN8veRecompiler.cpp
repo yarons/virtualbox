@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 101516 2023-10-20 13:07:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 101518 2023-10-20 13:25:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -112,6 +112,10 @@ extern "C" void *__deregister_frame_info(void *pvBegin);           /* (returns p
 #ifndef IEM_WITH_SETJMP
 # error The setjmp approach must be enabled for the recompiler.
 #endif
+
+
+/** Always count instructions for now. */
+#define IEMNATIVE_WITH_INSTRUCTION_COUNTING
 
 
 /*********************************************************************************************************************************
