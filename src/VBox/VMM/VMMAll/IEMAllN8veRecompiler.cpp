@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 101537 2023-10-21 02:16:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 101538 2023-10-21 22:30:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -3780,10 +3780,7 @@ DECLINLINE(uint32_t) iemNativeEmitEip32RelativeJumpAndFinishingNoFlags(PIEMRECOM
 
     /* Truncate the result to 16-bit IP if the operand size is 16-bit. */
     if (enmEffOpSize == IEMMODE_16BIT)
-    {
-        Assert(enmEffOpSize == IEMMODE_16BIT);
         off = iemNativeEmitClear16UpGpr(pReNative, off, idxPcReg);
-    }
 
     /* Perform limit checking, potentially raising #GP(0) and exit the TB. */
     off = iemNativeEmitCheckGpr32AgainstSegLimitMaybeRaiseGp0(pReNative, off, idxPcReg, X86_SREG_CS, idxInstr);

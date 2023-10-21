@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 101387 2023-10-07 23:34:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 101538 2023-10-21 22:30:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -207,7 +207,7 @@
             memcpy(&pTb->pabOpcodes[offOpcodeMc2], pVCpu->iem.s.abOpcode, pVCpu->iem.s.offOpcode); \
             pTb->cbOpcodes                       = offOpcodeMc2 + pVCpu->iem.s.offOpcode; \
             pTb->aRanges[idxRangeMc2].cbOpcodes += cbInstrMc2; \
-            Assert(pTb->cbOpcodes <= pTb->cbOpcodesAllocated); \
+            Assert(pTb->cbOpcodes <= pVCpu->iem.s.cbOpcodesAllocated); \
         } \
         else if (iemThreadedCompileBeginEmitCallsComplications(pVCpu, pTb)) \
         { /* likely */ } \
