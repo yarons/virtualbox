@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatArmV8.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatArmV8.cpp 101540 2023-10-22 02:53:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -84,7 +84,6 @@ static const char *disasmFormatArmV8Reg(PCDISSTATE pDis, PCDISOPPARAM pParam, si
             Assert(pParam->armv8.Reg.idxGenReg < RT_ELEMENTS(g_aszArmV8RegGen64));
             const char *psz = g_aszArmV8RegGen64[pParam->armv8.Reg.idxGenReg];
             *pcchReg = 2 + !!psz[2];
-            return psz;
             return psz;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 101540 2023-10-22 02:53:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -246,7 +246,7 @@ static void *supR3HardenedMainPosixGetStartBySymbol(const char *pszSymbol, PFNSU
     int rc = DISInstr(pbSym, DISCPUMODE_64BIT, &Dis, &cbInstr);
     if (   RT_FAILURE(rc)
         || Dis.pCurInstr->uOpcode != OP_JMP
-        || !(Dis.arch.x86.ModRM.Bits.Mod == 0 && Dis.arch.x86.ModRM.Bits.Rm == 5 /* wrt RIP */))
+        || !(Dis.x86.ModRM.Bits.Mod == 0 && Dis.arch.x86.ModRM.Bits.Rm == 5 /* wrt RIP */))
         return NULL;
 
     /* Extract start address. */
