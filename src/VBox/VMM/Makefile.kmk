@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101307 2023-09-29 01:31:56Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -485,7 +485,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
  VBoxVMMArm_LDFLAGS.darwin.arm64 = -framework Hypervisor
 
  VBoxVMMArm_LIBS = \
- 	$(PATH_STAGE_LIB)/DisasmR3-armv8$(VBOX_SUFF_LIB)
+ 	$(PATH_STAGE_LIB)/DisasmR3$(VBOX_SUFF_LIB)
  ifdef VBOX_WITH_DEBUGGER
   VBoxVMMArm_LIBS += \
   	$(PATH_STAGE_LIB)/Debugger-armv8$(VBOX_SUFF_LIB)

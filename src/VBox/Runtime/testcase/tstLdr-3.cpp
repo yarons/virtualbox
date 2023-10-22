@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 99227 2023-03-30 13:07:13Z alexander.eichner@oracle.com $ */
+/* $Id: tstLdr-3.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -164,7 +164,7 @@ static DECLCALLBACK(int) MyReadBytes(PDISSTATE pDis, uint8_t offInstr, uint8_t c
 {
     RT_NOREF1(cbMaxRead);
     uint8_t const *pbSrc = (uint8_t const *)((uintptr_t)pDis->uInstrAddr + (uintptr_t)pDis->pvUser + offInstr);
-    memcpy(&pDis->u.abInstr[offInstr], pbSrc, cbMinRead);
+    memcpy(&pDis->Instr.ab[offInstr], pbSrc, cbMinRead);
     pDis->cbCachedInstr = offInstr + cbMinRead;
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 101323 2023-09-30 16:22:15Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4473,7 +4473,7 @@ static DECLCALLBACK(int) cpumR3DisasInstrRead(PDISSTATE pDis, uint8_t offInstr, 
         /*
          * Read and advance or exit.
          */
-        memcpy(&pDis->u.abInstr[offInstr], (uint8_t *)pState->pvPageR3 + (GCPtr & GUEST_PAGE_OFFSET_MASK), cb);
+        memcpy(&pDis->Instr.ab[offInstr], (uint8_t *)pState->pvPageR3 + (GCPtr & GUEST_PAGE_OFFSET_MASK), cb);
         offInstr  += (uint8_t)cb;
         if (cb >= cbMinRead)
         {

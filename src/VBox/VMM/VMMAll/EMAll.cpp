@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 99220 2023-03-30 12:40:46Z alexander.eichner@oracle.com $ */
+/* $Id: EMAll.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -866,13 +866,13 @@ static DECLCALLBACK(int) emReadBytes(PDISSTATE pDis, uint8_t offInstr, uint8_t c
     else if (cbToRead < cbMinRead)
         cbToRead = cbMinRead;
 
-    int rc = PGMPhysSimpleReadGCPtr(pVCpu, &pDis->u.abInstr[offInstr], uSrcAddr, cbToRead);
+    int rc = PGMPhysSimpleReadGCPtr(pVCpu, &pDis->Instr.ab[offInstr], uSrcAddr, cbToRead);
     if (RT_FAILURE(rc))
     {
         if (cbToRead > cbMinRead)
         {
             cbToRead = cbMinRead;
-            rc = PGMPhysSimpleReadGCPtr(pVCpu, &pDis->u.abInstr[offInstr], uSrcAddr, cbToRead);
+            rc = PGMPhysSimpleReadGCPtr(pVCpu, &pDis->Instr.ab[offInstr], uSrcAddr, cbToRead);
         }
         if (RT_FAILURE(rc))
         {
@@ -1019,7 +1019,7 @@ VMM_INT_DECL(VBOXSTRICTRC) EMInterpretInstructionDisasState(PVMCPUCC pVCpu, PDIS
 {
     LogFlow(("EMInterpretInstructionDisasState %RGv\n", (RTGCPTR)rip));
 
-    VBOXSTRICTRC rc = IEMExecOneBypassWithPrefetchedByPC(pVCpu, rip, pDis->u.abInstr, pDis->cbCachedInstr);
+    VBOXSTRICTRC rc = IEMExecOneBypassWithPrefetchedByPC(pVCpu, rip, pDis->Instr.ab, pDis->cbCachedInstr);
     if (RT_UNLIKELY(   rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED
                     || rc == VERR_IEM_INSTR_NOT_IMPLEMENTED))
         rc = VERR_EM_INTERPRETER;

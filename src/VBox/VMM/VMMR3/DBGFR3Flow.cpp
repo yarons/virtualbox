@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Flow.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFR3Flow.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Control Flow Graph Interface (CFG).
  */
@@ -787,9 +787,9 @@ static bool dbgfR3FlowSearchMovWithConstantPtrSizeBackwards(PDBGFFLOWBBINT pFlow
         {
             if (   DisState.pCurInstr->uOpcode == OP_MOV
                 && (DisState.Param1.fUse & (DISUSE_REG_GEN16 | DISUSE_REG_GEN32 | DISUSE_REG_GEN64))
-                && DisState.Param1.arch.x86.Base.idxGenReg == idxRegTgt
+                && DisState.Param1.x86.Base.idxGenReg == idxRegTgt
                 /*&& DisState.Param1.cb == cbPtr*/
-                && DisState.Param2.arch.x86.cb == cbPtr
+                && DisState.Param2.x86.cb == cbPtr
                 && (DisState.Param2.fUse & (DISUSE_IMMEDIATE16 | DISUSE_IMMEDIATE32 | DISUSE_IMMEDIATE64)))
             {
                 /* Found possible candidate. */
@@ -996,7 +996,7 @@ static int dbgfR3FlowTryResolveIndirectBranch(PDBGFFLOWINT pThis, PDBGFFLOWBBINT
 
     if (pDisParam->fUse & DISUSE_BASE)
     {
-        uint8_t idxRegBase = pDisParam->arch.x86.Base.idxGenReg;
+        uint8_t idxRegBase = pDisParam->x86.Base.idxGenReg;
 
         /* Check that the used register size and the pointer size match. */
         if (   ((pDisParam->fUse & DISUSE_REG_GEN16) && cbPtr == sizeof(uint16_t))
@@ -1083,7 +1083,7 @@ static int dbgfR3FlowBbCheckBranchTblCandidate(PDBGFFLOWINT pThis, PDBGFFLOWBBIN
 
     if (pDisParam->fUse & DISUSE_BASE)
     {
-        uint8_t idxRegBase = pDisParam->arch.x86.Base.idxGenReg;
+        uint8_t idxRegBase = pDisParam->x86.Base.idxGenReg;
 
         /* Check that the used register size and the pointer size match. */
         if (   ((pDisParam->fUse & DISUSE_REG_GEN16) && cbPtr == sizeof(uint16_t))
