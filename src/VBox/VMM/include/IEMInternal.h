@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 101543 2023-10-22 03:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1086,7 +1086,7 @@ AssertCompileMemberAlignment(IEMTB, Thrd, sizeof(void *));
 AssertCompileMemberAlignment(IEMTB, pabOpcodes, sizeof(void *));
 AssertCompileMemberAlignment(IEMTB, pDbgInfo, sizeof(void *));
 AssertCompileMemberAlignment(IEMTB, aGCPhysPages, sizeof(RTGCPHYS));
-AssertCompileMemberOffset(IEMTB, aRanges[0], 64);
+AssertCompileMemberOffset(IEMTB, aRanges, 64);
 AssertCompileMemberSize(IEMTB, aRanges[0], 6);
 #if 1
 AssertCompileSize(IEMTB, 128);
