@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101545 2023-10-22 12:44:08Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -44,10 +44,10 @@ DisasmR3_SOURCES        = \
 if 1
  DisasmR3_DEFS         += VBOX_DIS_WITH_X86_AMD64
  DisasmR3_SOURCES      += \
-	DisasmCore-x86-amd64.cpp \
-	DisasmTables-x86-amd64.cpp \
-	DisasmTablesX64.cpp \
-	DisasmFormatYasm.cpp
+ 	DisasmCore-x86-amd64.cpp \
+ 	DisasmTables-x86-amd64.cpp \
+ 	DisasmTablesX64.cpp \
+ 	DisasmFormatYasm.cpp
 endif
 if 1
  DisasmR3_DEFS          += VBOX_DIS_WITH_ARMV8
