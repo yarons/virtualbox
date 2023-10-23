@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditor.cpp 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIStatusBarEditor.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditor class implementation.
  */
@@ -411,17 +411,8 @@ void UIStatusBarEditorButton::updatePixmap()
 {
     /* Recache pixmap for assigned type: */
     const QIcon icon = gpConverter->toIcon(m_enmType);
-    if (window())
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-        m_pixmap = icon.pixmap(window()->windowHandle(), m_pixmapSize);
-#else
-    {
-        const qreal fDevicePixelRatio = window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
-        m_pixmap = icon.pixmap(m_pixmapSize, fDevicePixelRatio);
-    }
-#endif
-    else
-        m_pixmap = icon.pixmap(m_pixmapSize);
+    const qreal fDevicePixelRatio = window() && window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
+    m_pixmap = icon.pixmap(m_pixmapSize, fDevicePixelRatio);
 }
 
 

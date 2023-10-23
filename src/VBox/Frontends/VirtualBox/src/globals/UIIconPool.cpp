@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 101514 2023-10-20 05:41:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -708,17 +708,9 @@ QPixmap UIIconPoolGeneral::guestOSTypePixmapDefault(const QString &strOSTypeID, 
             *pLogicalSize = iconSize;
 
         /* Get pixmap of requested size (take into account the DPI of the main shown window, if possible): */
-        if (windowManager().mainWindowShown() && windowManager().mainWindowShown()->windowHandle())
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-            pixmap = icon.pixmap(windowManager().mainWindowShown()->windowHandle(), iconSize);
-#else
-        {
-            const qreal fDevicePixelRatio = windowManager().mainWindowShown()->windowHandle()->devicePixelRatio();
-            pixmap = icon.pixmap(iconSize, fDevicePixelRatio);
-        }
-#endif
-        else
-            pixmap = icon.pixmap(iconSize);
+        const qreal fDevicePixelRatio = windowManager().mainWindowShown() && windowManager().mainWindowShown()->windowHandle()
+                                      ? windowManager().mainWindowShown()->windowHandle()->devicePixelRatio() : 1;
+        pixmap = icon.pixmap(iconSize, fDevicePixelRatio);
     }
 
     overlayArchitectureTextOnPixmap(determineOSArchString(strOSTypeID), pixmap);

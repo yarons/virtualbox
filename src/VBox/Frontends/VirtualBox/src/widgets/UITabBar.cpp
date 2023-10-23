@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UITabBar.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -596,12 +596,8 @@ void UITabBarItem::mouseMoveEvent(QMouseEvent *pEvent)
     pMimeData->setData(MimeType, uuid().toByteArray());
     pDrag->setMimeData(pMimeData);
     const int iMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-    pDrag->setPixmap(m_pAction->icon().pixmap(window()->windowHandle(), QSize(iMetric, iMetric)));
-#else
     const qreal fDevicePixelRatio = window() && window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
     pDrag->setPixmap(m_pAction->icon().pixmap(QSize(iMetric, iMetric), fDevicePixelRatio));
-#endif
     pDrag->exec();
 }
 
@@ -740,12 +736,8 @@ void UITabBarItem::updatePixmap()
 {
     /* Configure label icon: */
     const int iMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-    m_pLabelIcon->setPixmap(m_pAction->icon().pixmap(window()->windowHandle(), QSize(iMetric, iMetric)));
-#else
     const qreal fDevicePixelRatio = window() && window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
     m_pLabelIcon->setPixmap(m_pAction->icon().pixmap(QSize(iMetric, iMetric), fDevicePixelRatio));
-#endif
 }
 
 

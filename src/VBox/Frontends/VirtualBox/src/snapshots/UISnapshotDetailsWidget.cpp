@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -453,18 +453,11 @@ void UISnapshotDetailsElement::updatePixmap()
 {
     /* Re-register icon in the element's text-document: */
     const int iMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-    document()->addResource(
-        QTextDocument::ImageResource,
-        QUrl(QString("details://%1").arg(m_strName)),
-        QVariant(m_icon.pixmap(window()->windowHandle(), QSize(iMetric, iMetric))));
-#else
     const qreal fDevicePixelRatio = window() && window()->windowHandle() ? window()->windowHandle()->devicePixelRatio() : 1;
     document()->addResource(
         QTextDocument::ImageResource,
         QUrl(QString("details://%1").arg(m_strName)),
         QVariant(m_icon.pixmap(QSize(iMetric, iMetric), fDevicePixelRatio)));
-#endif
 }
 
 

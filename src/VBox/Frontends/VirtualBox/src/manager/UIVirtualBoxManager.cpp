@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 101383 2023-10-06 12:06:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -339,12 +339,8 @@ void UIAcquirePublicKeyDialog::prepareWidgets()
             /* Configure help-viewer: */
             m_pHelpViewer->setHidden(true);
             m_pHelpViewer->setMinimumTextWidth(gpDesktop->screenGeometry(window()).width() / 5);
-#ifndef VBOX_IS_QT6_OR_LATER /* QIcon::pixmap taking QWindow is deprecated in Qt6 */
-            m_pHelpViewer->registerPixmap(icon.pixmap(window()->windowHandle(), QSize(iMetric, iMetric)), "manager://copy");
-#else
             const qreal fDevicePixelRatio = windowHandle() ? windowHandle()->devicePixelRatio() : 1;
             m_pHelpViewer->registerPixmap(icon.pixmap(QSize(iMetric, iMetric), fDevicePixelRatio), "manager://copy");
-#endif
             connect(m_pHelpViewer, &QIRichTextLabel::sigLinkClicked, this, &UIAcquirePublicKeyDialog::sltHandleHelpViewerLinkClick);
             pLayout->addWidget(m_pHelpViewer, 2);
         }
