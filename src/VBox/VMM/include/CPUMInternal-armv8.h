@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal-armv8.h 101190 2023-09-20 11:51:34Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMInternal-armv8.h 101549 2023-10-23 09:53:09Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - Internal header file, ARMv8 variant.
  */
@@ -106,8 +106,11 @@ typedef struct CPUM
     bool                    fPendingRestore;
     uint8_t                 abPadding0[6];
 
+    /** The reset value of the program counter. */
+    uint64_t                u64ResetPc;
+
     /** Align to 64-byte boundary. */
-    uint8_t                 abPadding1[56];
+    uint8_t                 abPadding1[48];
 
     /** Host CPU feature information.
      * Externaly visible via the VM structure, aligned on 64-byte boundrary. */

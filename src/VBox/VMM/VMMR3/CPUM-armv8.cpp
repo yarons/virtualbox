@@ -1,4 +1,4 @@
-/* $Id: CPUM-armv8.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUM-armv8.cpp 101549 2023-10-23 09:53:09Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager (ARMv8 variant).
  */
@@ -362,13 +362,20 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
 
     pVM->cpum.s.GuestInfo.paSysRegRangesR3 = &pVM->cpum.s.GuestInfo.aSysRegRanges[0];
 
+    PCFGMNODE   pCpumCfg = CFGMR3GetChild(CFGMR3GetRoot(pVM), "CPUM");
+
+    /** @cfgm{/CPUM/ResetPcValue, string}
+     * Program counter value after a reset, sets the address of the first isntruction to execute. */
+    int rc = CFGMR3QueryU64Def(pCpumCfg, "ResetPcValue", &pVM->cpum.s.u64ResetPc, 0);
+    AssertLogRelRCReturn(rc, rc);
+
     /*
      * Register saved state data item.
      */
-    int rc = SSMR3RegisterInternal(pVM, "cpum", 1, CPUM_SAVED_STATE_VERSION, sizeof(CPUM),
-                                   NULL, cpumR3LiveExec, NULL,
-                                   NULL, cpumR3SaveExec, NULL,
-                                   cpumR3LoadPrep, cpumR3LoadExec, cpumR3LoadDone);
+    rc = SSMR3RegisterInternal(pVM, "cpum", 1, CPUM_SAVED_STATE_VERSION, sizeof(CPUM),
+                               NULL, cpumR3LiveExec, NULL,
+                               NULL, cpumR3SaveExec, NULL,
+                               cpumR3LoadPrep, cpumR3LoadExec, cpumR3LoadDone);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -466,6 +473,8 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
                     | ARMV8_SPSR_EL2_AARCH64_A
                     | ARMV8_SPSR_EL2_AARCH64_I
                     | ARMV8_SPSR_EL2_AARCH64_F;
+
+    pCtx->Pc.u64 = pVM->cpum.s.u64ResetPc;
     /** @todo */
 }
 
