@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 101564 2023-10-23 23:42:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1033,13 +1033,13 @@ void UIVirtualBoxManagerWidget::updateToolbar()
     // Actually Qt should do that itself but by some unknown reason it sometimes
     // forget to update toolbar after changing its actions on Cocoa platform.
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_New), &UIAction::changed,
-            m_pToolBar, &QIToolBar::update);
+            m_pToolBar, static_cast<void(QIToolBar::*)(void)>(&QIToolBar::update)); // update ambiguity
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings), &UIAction::changed,
-            m_pToolBar, &QIToolBar::update);
+            m_pToolBar, static_cast<void(QIToolBar::*)(void)>(&QIToolBar::update)); // update ambiguity
     connect(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard), &UIAction::changed,
-            m_pToolBar, &QIToolBar::update);
+            m_pToolBar, static_cast<void(QIToolBar::*)(void)>(&QIToolBar::update)); // update ambiguity
     connect(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow), &UIAction::changed,
-            m_pToolBar, &QIToolBar::update);
+            m_pToolBar, static_cast<void(QIToolBar::*)(void)>(&QIToolBar::update)); // update ambiguity
 
     // WORKAROUND:
     // There is a bug in Qt Cocoa which result in showing a "more arrow" when
