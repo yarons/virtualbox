@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -297,11 +297,7 @@ bool UIFindInPageWidget::eventFilter(QObject *pObject, QEvent *pEvent)
         else if (pEvent->type() == QEvent::MouseMove)
         {
             QMouseEvent *pMouseEvent = static_cast<QMouseEvent*>(pEvent);
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
-            const QPoint gPos = pMouseEvent->globalPos();
-#else
             const QPoint gPos = pMouseEvent->globalPosition().toPoint();
-#endif
             if (pMouseEvent->buttons() == Qt::LeftButton)
             {
                 if (m_previousMousePosition != QPoint(-1, -1))
@@ -680,11 +676,7 @@ void UIHelpViewer::mouseReleaseEvent(QMouseEvent *pEvent)
     clearOverlay();
     if (fOverlayMode)
         return;
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
-    QString strAnchor = anchorAt(pEvent->pos());
-#else
     QString strAnchor = anchorAt(pEvent->position().toPoint());
-#endif
 
     if (!strAnchor.isEmpty())
     {

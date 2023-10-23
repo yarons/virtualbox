@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 100351 2023-07-03 15:04:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -360,11 +360,7 @@ void UIChart::resizeEvent(QResizeEvent *pEvent)
 
 void UIChart::mouseMoveEvent(QMouseEvent *pEvent)
 {
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos, x, y were replaced with QSinglePointEvent::position in Qt6 */
-    int iX = width() - pEvent->x() - m_iMarginRight;
-#else
-    int iX = width() - pEvent->position().x() - m_iMarginRight;
-#endif
+    const int iX = width() - pEvent->position().x() - m_iMarginRight;
     m_iDataIndexUnderCursor = -1;
     if (iX > m_iMarginLeft && iX <= width() - m_iMarginRight)
         m_iDataIndexUnderCursor = (int)((iX) / m_fPixelPerDataPoint) + 1;

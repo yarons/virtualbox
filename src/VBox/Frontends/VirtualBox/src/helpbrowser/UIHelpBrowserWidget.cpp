@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -458,11 +458,7 @@ void UIBookmarksListWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
 void UIBookmarksListWidget::mousePressEvent(QMouseEvent *pEvent)
 {
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
-    if (!indexAt(pEvent->pos()).isValid())
-#else
     if (!indexAt(pEvent->position().toPoint()).isValid())
-#endif
     {
         clearSelection();
         setCurrentItem(0);

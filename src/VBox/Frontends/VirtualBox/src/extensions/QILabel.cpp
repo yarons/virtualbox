@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 100344 2023-07-03 10:09:28Z sergey.dubov@oracle.com $ */
+/* $Id: QILabel.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class implementation.
  */
@@ -168,11 +168,7 @@ void QILabel::resizeEvent(QResizeEvent *pEvent)
 void QILabel::mousePressEvent(QMouseEvent *pEvent)
 {
     /* Start dragging: */
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::pos was replaced with QSinglePointEvent::position in Qt6 */
-    if (pEvent->button() == Qt::LeftButton && geometry().contains(pEvent->pos()) && m_fFullSizeSelection)
-#else
     if (pEvent->button() == Qt::LeftButton && geometry().contains(pEvent->position().toPoint()) && m_fFullSizeSelection)
-#endif
         m_fStartDragging = true;
     /* Call to base-class: */
     else

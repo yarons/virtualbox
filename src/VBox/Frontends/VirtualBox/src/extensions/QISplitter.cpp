@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 100086 2023-06-06 15:15:12Z sergey.dubov@oracle.com $ */
+/* $Id: QISplitter.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -315,11 +315,7 @@ bool QISplitter::eventFilter(QObject *pWatched, QEvent *pEvent)
             {
                 const int margin = 3;
                 QMouseEvent *pMouseEvent = static_cast<QMouseEvent*>(pEvent);
-#ifndef VBOX_IS_QT6_OR_LATER /* QMouseEvent::globalPos was replaced with QSinglePointEvent::globalPosition in Qt6 */
-                const QPoint gPos = pMouseEvent->globalPos();
-#else
                 const QPoint gPos = pMouseEvent->globalPosition().toPoint();
-#endif
                 for (int i=1; i < count(); ++i)
                 {
                     QWidget *pHandle = handle(i);
