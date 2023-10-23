@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIGraphicsView.cpp 101562 2023-10-23 16:55:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class implementation.
  */
@@ -56,11 +56,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
-#else
-            if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)
-#endif
             {
                 /* Remember where the scrolling was started: */
                 m_iVerticalScrollBarPosition = verticalScrollBar()->value();
@@ -77,11 +73,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
-#else
-            if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)
-#endif
             {
                 /* Determine vertical shift (inverted): */
                 const QTouchEvent::TouchPoint point = pTouchEvent->touchPoints().first();
@@ -104,11 +96,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             QTouchEvent *pTouchEvent = static_cast<QTouchEvent*>(pEvent);
             AssertPtrReturn(pTouchEvent, QGraphicsView::event(pEvent));
             /* For touch-screen event we have something special: */
-#ifdef VBOX_IS_QT6_OR_LATER /* QTouchDevice was consumed by QInputDevice in 6.0 */
             if (pTouchEvent->device()->type() == QInputDevice::DeviceType::TouchScreen)
-#else
-            if (pTouchEvent->device()->type() == QTouchDevice::TouchScreen)
-#endif
             {
                 /* Reset the scrolling start position: */
                 m_iVerticalScrollBarPosition = 0;

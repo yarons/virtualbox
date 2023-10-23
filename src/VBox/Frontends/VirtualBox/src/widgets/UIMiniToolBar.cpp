@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 101562 2023-10-23 16:55:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -709,11 +709,7 @@ void UIMiniToolBar::resizeEvent(QResizeEvent*)
     adjustGeometry();
 }
 
-#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
 void UIMiniToolBar::enterEvent(QEnterEvent*)
-#else
-void UIMiniToolBar::enterEvent(QEvent*)
-#endif
 {
     /* Stop the hover-leave timer if necessary: */
     if (m_pHoverLeaveTimer && m_pHoverLeaveTimer->isActive())

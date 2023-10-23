@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
+/* $Id: UITabBar.cpp 101562 2023-10-23 16:55:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -124,11 +124,7 @@ protected:
     /** Handles mouse-move @a pEvent. */
     virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     /** Handles mouse-enter @a pEvent. */
-#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
     virtual void enterEvent(QEnterEvent *pEvent) RT_OVERRIDE;
-#else
-    virtual void enterEvent(QEvent *pEvent) RT_OVERRIDE;
-#endif
     /** Handles mouse-leave @a pEvent. */
     virtual void leaveEvent(QEvent *pEvent) RT_OVERRIDE;
 
@@ -591,11 +587,7 @@ void UITabBarItem::mouseMoveEvent(QMouseEvent *pEvent)
     pDrag->exec();
 }
 
-#ifdef VBOX_IS_QT6_OR_LATER /* QWidget::enterEvent uses QEnterEvent since qt6 */
 void UITabBarItem::enterEvent(QEnterEvent *pEvent)
-#else
-void UITabBarItem::enterEvent(QEvent *pEvent)
-#endif
 {
     /* Make sure button isn't hovered: */
     if (m_fHovered)
