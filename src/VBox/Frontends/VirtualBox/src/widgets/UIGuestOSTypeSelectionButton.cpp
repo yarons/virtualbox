@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 101519 2023-10-20 13:37:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -54,13 +54,8 @@ UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)
      * every single menu activation ourself: */
     m_pSignalMapper = new QSignalMapper(this);
     if (m_pSignalMapper)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-        connect(m_pSignalMapper, static_cast<void(QSignalMapper::*)(const QString &)>(&QSignalMapper::mappedString),
+        connect(m_pSignalMapper, &QSignalMapper::mappedString,
                 this, &UIGuestOSTypeSelectionButton::setOSTypeId);
-#else
-        connect(m_pSignalMapper, static_cast<void(QSignalMapper::*)(const QString &)>(&QSignalMapper::mapped),
-                this, &UIGuestOSTypeSelectionButton::setOSTypeId);
-#endif
 
     /* Create main menu: */
     m_pMainMenu = new QMenu(pParent);
@@ -102,7 +97,7 @@ void UIGuestOSTypeSelectionButton::createOSTypeMenu(const UIGuestOSTypeManager::
         const QPair<QString, QString> &typeInfo = typeList[j];
         QAction *pAction = pMenu->addAction(generalIconPool().guestOSTypePixmapDefault(typeInfo.first), typeInfo.second);
         connect(pAction, &QAction::triggered,
-                m_pSignalMapper, static_cast<void(QSignalMapper::*)(void)>(&QSignalMapper::map));
+                m_pSignalMapper, static_cast<void(QSignalMapper::*)(void)>(&QSignalMapper::map)); // swallow bool argument ..
         m_pSignalMapper->setMapping(pAction, typeInfo.first);
     }
 }

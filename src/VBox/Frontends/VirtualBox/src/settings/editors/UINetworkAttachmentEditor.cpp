@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class implementation.
  */
@@ -303,7 +303,7 @@ void UINetworkAttachmentEditor::prepare()
             {
                 if (m_pLabelType)
                     m_pLabelType->setBuddy(m_pComboType);
-                connect(m_pComboType, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+                connect(m_pComboType, &QComboBox::currentIndexChanged,
                         this, &UINetworkAttachmentEditor::sltHandleCurrentTypeChanged);
                 pComboLayout->addWidget(m_pComboType);
             }
@@ -327,7 +327,7 @@ void UINetworkAttachmentEditor::prepare()
             if (m_pLabelName)
                 m_pLabelName->setBuddy(m_pComboName);
             m_pComboName->setInsertPolicy(QComboBox::NoInsert);
-            connect(m_pComboName, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            connect(m_pComboName, &QComboBox::currentIndexChanged,
                     this, &UINetworkAttachmentEditor::sltHandleCurrentNameChanged);
             connect(m_pComboName, &QComboBox::editTextChanged,
                     this, &UINetworkAttachmentEditor::sltHandleCurrentNameChanged);

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPreferencesWidget.cpp 101026 2023-09-06 11:09:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -161,8 +161,7 @@ void UIVMLogViewerPreferencesWidget::prepareConnections()
     if (m_pWrapLinesCheckBox)
         connect(m_pWrapLinesCheckBox, &QCheckBox::toggled, this, &UIVMLogViewerPreferencesWidget::sigWrapLines);
     if (m_pFontSizeSpinBox)
-        connect(m_pFontSizeSpinBox, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-                this, &UIVMLogViewerPreferencesWidget::sigChangeFontSizeInPoints);
+        connect(m_pFontSizeSpinBox, &QSpinBox::valueChanged, this, &UIVMLogViewerPreferencesWidget::sigChangeFontSizeInPoints);
     if (m_pOpenFontDialogButton)
         connect(m_pOpenFontDialogButton, &QIToolButton::clicked, this, &UIVMLogViewerPreferencesWidget::sltOpenFontDialog);
     if (m_pResetToDefaultsButton)

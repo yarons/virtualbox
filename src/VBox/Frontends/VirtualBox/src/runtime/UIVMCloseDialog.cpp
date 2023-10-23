@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -415,10 +415,8 @@ void UIVMCloseDialog::prepareChoiceLayout()
         /* Create button-group: */
         QButtonGroup *pButtonGroup = new QButtonGroup(this);
         if (pButtonGroup)
-        {
-            connect(pButtonGroup, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+            connect(pButtonGroup, &QButtonGroup::buttonClicked,
                     this, &UIVMCloseDialog::sltUpdateWidgetAvailability);
-        }
 
         /* Create 'detach' icon label: */
         m_pLabelIconDetach = new QLabel;

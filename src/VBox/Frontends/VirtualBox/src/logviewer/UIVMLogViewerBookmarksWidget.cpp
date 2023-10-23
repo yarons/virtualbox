@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksWidget.cpp 101018 2023-09-05 11:23:45Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerBookmarksWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -183,8 +183,7 @@ void UIVMLogViewerBookmarksWidget::prepareWidgets()
 
 void UIVMLogViewerBookmarksWidget::prepareConnections()
 {
-    connect(m_pBookmarksComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &UIVMLogViewerBookmarksWidget::sltBookmarkSelected);
+    connect(m_pBookmarksComboBox, &QComboBox::currentIndexChanged, this, &UIVMLogViewerBookmarksWidget::sltBookmarkSelected);
 
     connect(m_pGotoSelectedBookmark, &QIToolButton::clicked, this, &UIVMLogViewerBookmarksWidget::sltGotoSelectedBookmark);
     connect(m_pNextButton, &QIToolButton::clicked, this, &UIVMLogViewerBookmarksWidget::sltGotoNextBookmark);

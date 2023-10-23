@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -145,10 +145,10 @@ QWidget *UIWizardNewVMDiskPage::createNewDiskWidgets()
 void UIWizardNewVMDiskPage::createConnections()
 {
     if (m_pDiskSourceButtonGroup)
-        connect(m_pDiskSourceButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+        connect(m_pDiskSourceButtonGroup, &QButtonGroup::buttonClicked,
                 this, &UIWizardNewVMDiskPage::sltSelectedDiskSourceChanged);
     if (m_pDiskSelector)
-        connect(m_pDiskSelector, static_cast<void(UIMediaComboBox::*)(int)>(&UIMediaComboBox::currentIndexChanged),
+        connect(m_pDiskSelector, &UIMediaComboBox::currentIndexChanged,
                 this, &UIWizardNewVMDiskPage::sltMediaComboBoxIndexChanged);
     if (m_pDiskSelectionButton)
         connect(m_pDiskSelectionButton, &QIToolButton::clicked,

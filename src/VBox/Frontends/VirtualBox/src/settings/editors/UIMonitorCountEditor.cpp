@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMonitorCountEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class implementation.
  */
@@ -200,7 +200,7 @@ void UIMonitorCountEditor::prepare()
         connect(m_pSlider, &QIAdvancedSlider::valueChanged,
                 this, &UIMonitorCountEditor::sltHandleSliderChange);
     if (m_pSpinBox)
-        connect(m_pSpinBox, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+        connect(m_pSpinBox, &QSpinBox::valueChanged,
                 this, &UIMonitorCountEditor::sltHandleSpinBoxChange);
 
     /* Apply language settings: */

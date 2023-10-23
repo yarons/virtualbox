@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterWidget.cpp 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerFilterWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -556,10 +556,11 @@ void UIVMLogViewerFilterWidget::prepareRadioButtonGroup(QVBoxLayout *pLayout)
 
 void UIVMLogViewerFilterWidget::prepareConnections()
 {
-    connect(m_pAddFilterTermButton, &QIToolButton::clicked, this,  &UIVMLogViewerFilterWidget::sltAddFilterTerm);
-    connect(m_pButtonGroup, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+    connect(m_pAddFilterTermButton, &QIToolButton::clicked,
+            this, &UIVMLogViewerFilterWidget::sltAddFilterTerm);
+    connect(m_pButtonGroup, &QButtonGroup::buttonClicked,
             this, &UIVMLogViewerFilterWidget::sltOperatorButtonChanged);
-    connect(m_pFilterComboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_pFilterComboBox, &QComboBox::currentIndexChanged,
             this, &UIVMLogViewerFilterWidget::sltAddFilterTerm);
     connect(m_pFilterTermsLineEdit, &UIVMFilterLineEdit::sigFilterTermRemoved,
             this, &UIVMLogViewerFilterWidget::sltRemoveFilterTerm);

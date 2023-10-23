@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.cpp 101134 2023-09-15 16:27:25Z andreas.loeffler@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class implementation.
  */
@@ -126,9 +126,8 @@ void UIGraphicsControllerEditor::prepare()
                 if (m_pLabel)
                     m_pLabel->setBuddy(m_pCombo);
                 m_pCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
-                connect(m_pCombo, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+                connect(m_pCombo, &QComboBox::currentIndexChanged,
                         this, &UIGraphicsControllerEditor::sltHandleCurrentIndexChanged);
-
                 pLayoutCombo->addWidget(m_pCombo);
             }
 

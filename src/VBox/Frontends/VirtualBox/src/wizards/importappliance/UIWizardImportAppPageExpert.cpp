@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -326,7 +326,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageExpert::sltHandleSourceComboChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageExpert::sltHandleImportedFileSelectorChange);
-    connect(m_pProfileComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pProfileComboBox, &QIComboBox::currentIndexChanged,
             this, &UIWizardImportAppPageExpert::sltHandleProfileComboChange);
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardImportAppPageExpert::sltHandleProfileButtonClick);
@@ -334,7 +334,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageExpert::sltHandleInstanceListChange);
     connect(m_pEditorImportFilePath, &UIFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageExpert::sltHandleImportPathEditorChange);
-    connect(m_pComboMACImportPolicy, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pComboMACImportPolicy, &QIComboBox::currentIndexChanged,
             this, &UIWizardImportAppPageExpert::sltHandleMACImportPolicyComboChange);
     connect(m_pCheckboxImportHDsAsVDI, &QCheckBox::stateChanged,
             this, &UIWizardImportAppPageExpert::sltHandleImportHDsAsVDICheckBoxChange);

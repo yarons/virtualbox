@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -703,7 +703,7 @@ void UIHelpBrowserTab::prepareWidgets(const QUrl &initialUrl)
             this, &UIHelpBrowserTab::sltHomeAction);
     connect(m_pContentViewer, &UIHelpViewer::sigAddBookmark,
             this, &UIHelpBrowserTab::sltAddBookmarkAction);
-    connect(m_pContentViewer, static_cast<void(UIHelpViewer::*)(const QUrl&)>(&UIHelpViewer::highlighted),
+    connect(m_pContentViewer, &UIHelpViewer::highlighted,
             this, &UIHelpBrowserTab::sigLinkHighlighted);
     connect(m_pContentViewer, &UIHelpViewer::copyAvailable,
             this, &UIHelpBrowserTab::sigCopyAvailableChanged);
@@ -764,9 +764,8 @@ void UIHelpBrowserTab::prepareToolBarAndAddressBar()
 
     m_pAddressBar = new QComboBox();
     m_pAddressBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    connect(m_pAddressBar, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_pAddressBar, &QComboBox::currentIndexChanged,
             this, &UIHelpBrowserTab::sltAddressBarIndexChanged);
-
 
     QHBoxLayout *pTopLayout = new QHBoxLayout;
     pTopLayout->addWidget(m_pToolBar);

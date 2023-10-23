@@ -1,4 +1,4 @@
-/* $Id: UIProxyFeaturesEditor.cpp 101455 2023-10-16 18:25:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIProxyFeaturesEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProxyFeaturesEditor class implementation.
  */
@@ -226,7 +226,7 @@ void UIProxyFeaturesEditor::prepare()
     }
 
     /* Prepare connections: */
-    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+    connect(m_pButtonGroup, &QButtonGroup::buttonClicked,
             this, &UIProxyFeaturesEditor::sltHandleProxyModeChanged);
     connect(m_pEditorHost, &QILineEdit::textEdited,
             this, &UIProxyFeaturesEditor::sigProxyHostChanged);

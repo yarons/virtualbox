@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 100795 2023-08-04 10:34:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSearchWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -127,11 +127,9 @@ void UIMediumSearchWidget::prepareWidgets()
         m_pSearchComboxBox->setEditable(false);
         m_pSearchComboxBox->insertItem(SearchByName, "Search By Name");
         m_pSearchComboxBox->insertItem(SearchByUUID, "Search By UUID");
-        pLayout->addWidget(m_pSearchComboxBox);
-
-        connect(m_pSearchComboxBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+        connect(m_pSearchComboxBox, &QComboBox::currentIndexChanged,
                 this, &UIMediumSearchWidget::sigPerformSearch);
-
+        pLayout->addWidget(m_pSearchComboxBox);
     }
 
     m_pSearchTermLineEdit = new UISearchLineEdit;

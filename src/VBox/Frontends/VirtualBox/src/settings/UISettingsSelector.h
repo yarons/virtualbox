@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 101417 2023-10-11 16:17:18Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.h 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -311,8 +311,6 @@ private slots:
 
     /** Handles selector section change to @a pAction. */
     void sltSettingsGroupChanged(QAction *pAction);
-    /** Handles selector section change to @a iIndex. */
-    void sltSettingsGroupChanged(int iIndex);
 
 private:
 

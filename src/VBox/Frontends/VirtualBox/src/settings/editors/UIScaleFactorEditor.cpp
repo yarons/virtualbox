@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 101454 2023-10-16 16:10:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -255,9 +255,8 @@ void UIScaleFactorEditor::prepare()
         if (m_pMonitorComboBox)
         {
             m_pMonitorComboBox->insertItem(0, "All Monitors");
-            connect(m_pMonitorComboBox ,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            connect(m_pMonitorComboBox, &QComboBox::currentIndexChanged,
                     this, &UIScaleFactorEditor::sltMonitorComboIndexChanged);
-
             m_pLayout->addWidget(m_pMonitorComboBox, 0, 1);
         }
 
@@ -269,9 +268,8 @@ void UIScaleFactorEditor::prepare()
             m_pScaleSlider->setSingleStep(1);
             m_pScaleSlider->setTickInterval(10);
             m_pScaleSlider->setSnappingEnabled(true);
-            connect(m_pScaleSlider, static_cast<void(QIAdvancedSlider::*)(int)>(&QIAdvancedSlider::valueChanged),
+            connect(m_pScaleSlider, &QIAdvancedSlider::valueChanged,
                     this, &UIScaleFactorEditor::sltScaleSliderValueChanged);
-
             m_pLayout->addWidget(m_pScaleSlider, 0, 2, 1, 2);
         }
 
@@ -280,7 +278,7 @@ void UIScaleFactorEditor::prepare()
         {
             setFocusProxy(m_pScaleSpinBox);
             m_pScaleSpinBox->setSuffix("%");
-            connect(m_pScaleSpinBox ,static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            connect(m_pScaleSpinBox, &QSpinBox::valueChanged,
                     this, &UIScaleFactorEditor::sltScaleSpinBoxValueChanged);
             m_pLayout->addWidget(m_pScaleSpinBox, 0, 4);
         }

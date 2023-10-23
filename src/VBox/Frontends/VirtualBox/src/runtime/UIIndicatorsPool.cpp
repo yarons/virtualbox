@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 101385 2023-10-06 14:31:07Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -876,7 +876,7 @@ public:
         setStateIcon(4, UIIconPool::iconSet(":/mouse_can_seamless_uncaptured_16px.png"));
         /* Configure connection: */
         connect(m_pMachine, &UIMachine::sigMouseStateChange,
-                this, static_cast<void(UIIndicatorMouse::*)(int)>(&UIIndicatorMouse::setState));
+                this, static_cast<void(UIIndicatorMouse::*)(int)>(&UIIndicatorMouse::setState)); // us to blame ..
         /* Translate finally: */
         retranslateUi();
     }
@@ -955,7 +955,7 @@ public:
         setStateIcon(15, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
         /* Configure connection: */
         connect(m_pMachine, &UIMachine::sigKeyboardStateChange,
-                this, static_cast<void(UIIndicatorKeyboard::*)(int)>(&UIIndicatorKeyboard::setState));
+                this, static_cast<void(UIIndicatorKeyboard::*)(int)>(&UIIndicatorKeyboard::setState)); // us to blame ..
         /* Translate finally: */
         retranslateUi();
     }

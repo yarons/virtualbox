@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101519 2023-10-20 13:37:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -678,7 +678,7 @@ void UINameAndSystemEditor::prepareConnections()
         connect(m_pSelectorImage, &UIFilePathSelector::pathChanged,
                 this, &UINameAndSystemEditor::sigImageChanged);
     if (m_pComboEdition)
-        connect(m_pComboEdition, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+        connect(m_pComboEdition, &QComboBox::currentIndexChanged,
                 this, &UINameAndSystemEditor::sltSelectedEditionsChanged);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 100346 2023-07-03 11:22:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -719,7 +719,7 @@ ChoiceEditor::ChoiceEditor(QWidget *pParent /* = 0 */)
     /* Make sure QIStyledDelegate aware of us: */
     setProperty("has_sigCommitData", true);
     /* Configure connections: */
-    connect(this, static_cast<void(ChoiceEditor::*)(int)>(&ChoiceEditor::currentIndexChanged),
+    connect(this, &ChoiceEditor::currentIndexChanged,
             this, &ChoiceEditor::sltCurrentIndexChanged);
 }
 

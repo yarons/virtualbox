@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIFilePathSelector.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -110,7 +110,7 @@ UIFilePathSelector::UIFilePathSelector(QWidget *pParent /* = 0 */)
     setMinimumWidth(200);
 
     /* Setup connections: */
-    connect(this, static_cast<void(UIFilePathSelector::*)(int)>(&UIFilePathSelector::activated), this, &UIFilePathSelector::onActivated);
+    connect(this, &UIFilePathSelector::activated, this, &UIFilePathSelector::onActivated);
     connect(m_pCopyAction, &QAction::triggered, this, &UIFilePathSelector::copyToClipboard);
     connect(&uiCommon(), &UICommon::sigRecentMediaListUpdated, this, &UIFilePathSelector::sltRecentMediaListUpdated);
 

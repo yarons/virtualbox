@@ -1,4 +1,4 @@
-/* $Id: UIDiskEncryptionSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDiskEncryptionSettingsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class implementation.
  */
@@ -249,7 +249,7 @@ void UIDiskEncryptionSettingsEditor::prepareConnections()
         connect(m_pCheckboxFeature, &QCheckBox::toggled,
                 this, &UIDiskEncryptionSettingsEditor::sltHandleFeatureToggled);
     if (m_pComboCipherType)
-        connect(m_pComboCipherType, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+        connect(m_pComboCipherType, &QComboBox::currentIndexChanged,
                 this, &UIDiskEncryptionSettingsEditor::sigCipherChanged);
     if (m_pEditorPassword1)
         connect(m_pEditorPassword1, &QLineEdit::textEdited,

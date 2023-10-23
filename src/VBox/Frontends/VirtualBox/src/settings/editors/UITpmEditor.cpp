@@ -1,4 +1,4 @@
-/* $Id: UITpmEditor.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: UITpmEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITpmEditor class implementation.
  */
@@ -119,7 +119,7 @@ void UITpmEditor::prepare()
                 m_pCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
                 if (m_pLabel)
                     m_pLabel->setBuddy(m_pCombo);
-                connect(m_pCombo, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+                connect(m_pCombo, &QComboBox::currentIndexChanged,
                         this, &UITpmEditor::sigValueChanged);
                 pComboLayout->addWidget(m_pCombo);
             }

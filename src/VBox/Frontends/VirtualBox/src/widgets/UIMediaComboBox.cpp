@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediaComboBox.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -229,7 +229,7 @@ void UIMediaComboBox::prepare()
             this, &UIMediaComboBox::sltHandleMediumEnumerated);
 
     /* Setup other connections: */
-    connect(this, static_cast<void(UIMediaComboBox::*)(int)>(&UIMediaComboBox::activated),
+    connect(this, &UIMediaComboBox::activated,
             this, &UIMediaComboBox::sltHandleComboActivated);
     connect(view(), &QAbstractItemView::entered,
             this, &UIMediaComboBox::sltHandleComboHovered);

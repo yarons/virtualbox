@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
@@ -326,7 +326,7 @@ void UISharedFolderDetailsEditor::prepareConnections()
 {
     if (m_pSelectorPath)
     {
-        connect(m_pSelectorPath, static_cast<void(UIFilePathSelector::*)(int)>(&UIFilePathSelector::currentIndexChanged),
+        connect(m_pSelectorPath, &UIFilePathSelector::currentIndexChanged,
                 this, &UISharedFolderDetailsEditor::sltSelectPath);
         connect(m_pSelectorPath, &UIFilePathSelector::pathChanged,
                 this, &UISharedFolderDetailsEditor::sltSelectPath);

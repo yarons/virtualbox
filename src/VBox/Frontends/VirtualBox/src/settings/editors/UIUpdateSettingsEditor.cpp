@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 101454 2023-10-16 16:10:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -284,7 +284,7 @@ void UIUpdateSettingsEditor::prepareConnections()
     if (m_pCheckBox)
         connect(m_pCheckBox, &QCheckBox::toggled, this, &UIUpdateSettingsEditor::sltHandleUpdateToggle);
     if (m_pComboUpdatePeriod)
-        connect(m_pComboUpdatePeriod, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+        connect(m_pComboUpdatePeriod, &QComboBox::activated,
                 this, &UIUpdateSettingsEditor::sltHandleUpdatePeriodChange);
 }
 

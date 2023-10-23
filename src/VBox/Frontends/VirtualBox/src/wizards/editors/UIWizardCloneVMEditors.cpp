@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 100154 2023-06-12 14:17:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -278,7 +278,7 @@ void UICloneVMAdditionalOptionsEditor::prepare()
     if (m_pMACComboBox)
     {
         m_pContainerLayout->addWidget(m_pMACComboBox, 2, 1, 1, 1);
-        connect(m_pMACComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+        connect(m_pMACComboBox, &QComboBox::currentIndexChanged,
                 this, &UICloneVMAdditionalOptionsEditor::sltMACAddressClonePolicyChanged);
         if (m_pMACComboBoxLabel)
             m_pMACComboBoxLabel->setBuddy(m_pMACComboBox);
@@ -481,7 +481,7 @@ void UICloneVMCloneTypeGroupBox::prepare()
         }
     }
 
-    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+    connect(m_pButtonGroup, &QButtonGroup::buttonClicked,
             this, &UICloneVMCloneTypeGroupBox::sltButtonClicked);
 
     retranslateUi();
@@ -550,8 +550,7 @@ void UICloneVMCloneModeGroupBox::prepare()
     pMainLayout->addWidget(m_pAllRadio);
     pMainLayout->addStretch();
 
-
-    connect(pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+    connect(pButtonGroup, &QButtonGroup::buttonClicked,
             this, &UICloneVMCloneModeGroupBox::sltButtonClicked);
 
     retranslateUi();

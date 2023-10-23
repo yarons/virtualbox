@@ -1,4 +1,4 @@
-/* $Id: UIMaximumGuestScreenSizeEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMaximumGuestScreenSizeEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMaximumGuestScreenSizeEditor class implementation.
  */
@@ -198,7 +198,7 @@ void UIMaximumGuestScreenSizeEditor::prepare()
         {
             if (m_pLabelPolicy)
                 m_pLabelPolicy->setBuddy(m_pComboPolicy);
-            connect(m_pComboPolicy, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+            connect(m_pComboPolicy, &QComboBox::activated,
                     this, &UIMaximumGuestScreenSizeEditor::sltHandleCurrentPolicyIndexChanged);
 
             m_pLayout->addWidget(m_pComboPolicy, 0, 1);

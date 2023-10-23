@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -435,7 +435,7 @@ UIWizardImportAppPageSettings::UIWizardImportAppPageSettings(const QString &strF
     /* Setup connections: */
     connect(m_pEditorImportFilePath, &UIFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageSettings::sltHandleImportPathEditorChange);
-    connect(m_pComboMACImportPolicy, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pComboMACImportPolicy, &QIComboBox::currentIndexChanged,
             this, &UIWizardImportAppPageSettings::sltHandleMACImportPolicyComboChange);
     connect(m_pCheckboxImportHDsAsVDI, &QCheckBox::stateChanged,
             this, &UIWizardImportAppPageSettings::sltHandleImportHDsAsVDICheckBoxChange);

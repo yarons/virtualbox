@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 99284 2023-04-04 14:56:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -618,11 +618,11 @@ UIWizardImportAppPageSource::UIWizardImportAppPageSource(bool fImportFromOCIByDe
             this, &UIWizardImportAppPageSource::sltHandleSourceComboChange);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigCloudProfileChanged,
             this, &UIWizardImportAppPageSource::sltHandleSourceComboChange);
-    connect(m_pSourceComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pSourceComboBox, &QIComboBox::currentIndexChanged,
             this, &UIWizardImportAppPageSource::sltHandleSourceComboChange);
     connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged,
             this, &UIWizardImportAppPageSource::completeChanged);
-    connect(m_pProfileComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pProfileComboBox, &QIComboBox::currentIndexChanged,
             this, &UIWizardImportAppPageSource::sltHandleProfileComboChange);
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardImportAppPageSource::sltHandleProfileButtonClick);

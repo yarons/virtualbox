@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -151,7 +151,7 @@ UIWizardAddCloudVMPageExpert::UIWizardAddCloudVMPageExpert()
             this, &UIWizardAddCloudVMPageExpert::sltHandleProviderComboChange);
     connect(m_pProviderComboBox, &QIComboBox::activated,
             this, &UIWizardAddCloudVMPageExpert::sltHandleProviderComboChange);
-    connect(m_pProfileComboBox, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::currentIndexChanged),
+    connect(m_pProfileComboBox, &QIComboBox::currentIndexChanged,
             this, &UIWizardAddCloudVMPageExpert::sltHandleProfileComboChange);
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardAddCloudVMPageExpert::sltHandleProfileButtonClick);

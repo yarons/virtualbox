@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -132,7 +132,7 @@ void UIUSBControllerEditor::prepare()
                 pLayout->addWidget(m_pRadioButtonUSB3);
             }
 
-            connect(pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+            connect(pButtonGroup, &QButtonGroup::buttonClicked,
                     this, &UIUSBControllerEditor::sigValueChanged);
         }
     }
