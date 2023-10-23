@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -34,9 +34,7 @@
 #include <QSignalTransition>
 #include <QStateMachine>
 #include <QStyleOptionGraphicsItem>
-#ifdef VBOX_IS_QT6_OR_LATER
-# include <QWindow>
-#endif
+#include <QWindow>
 
 /* GUI includes: */
 #include "QIDialogContainer.h"

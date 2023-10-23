@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: QIStatusBarIndicator.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface implementation.
  */
@@ -32,11 +32,9 @@
 #include <QIcon>
 #include <QPainter>
 #include <QStyle>
+#include <QWindow>
 #ifdef VBOX_WS_MAC
 # include <QContextMenuEvent>
-#endif /* VBOX_WS_MAC */
-#ifdef VBOX_IS_QT6_OR_LATER
-# include <QWindow>
 #endif
 
 /* GUI includes: */

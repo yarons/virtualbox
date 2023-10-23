@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -35,9 +35,7 @@
 #include <QRadioButton>
 #include <QStyle>
 #include <QVBoxLayout>
-#ifdef VBOX_IS_QT6_OR_LATER
-# include <QWindow>
-#endif
+#include <QWindow>
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"

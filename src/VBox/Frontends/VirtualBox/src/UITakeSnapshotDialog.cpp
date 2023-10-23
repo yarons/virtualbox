@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class implementation.
  */
@@ -31,9 +31,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QStyle>
-#ifdef VBOX_IS_QT6_OR_LATER
-# include <QWindow>
-#endif
+#include <QWindow>
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
