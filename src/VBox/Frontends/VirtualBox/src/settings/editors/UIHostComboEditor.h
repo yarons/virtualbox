@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostComboEditor.h 101567 2023-10-24 00:25:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class declaration.
  */
@@ -200,11 +200,7 @@ public slots:
 protected:
 
     /** Handles native events. */
-#ifdef VBOX_IS_QT6_OR_LATER /* long replaced with qintptr since 6.0 */
     virtual bool nativeEvent(const QByteArray &eventType, void *pMessage, qintptr *pResult) RT_OVERRIDE;
-#else
-    virtual bool nativeEvent(const QByteArray &eventType, void *pMessage, long *pResult) RT_OVERRIDE;
-#endif
 
     /** Handles key-press @a pEvent. */
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
