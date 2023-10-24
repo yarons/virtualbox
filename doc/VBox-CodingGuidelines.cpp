@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBox-CodingGuidelines.cpp 101582 2023-10-24 14:54:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -809,7 +809,8 @@
  *        sometimes written 'a' in parts of the source code that does not use
  *        the array prefix.
  *
- *   <li> The 'p' prefix means pointer.  For instance 'pVM' is pointer to VM.
+ *   <li> The 'p' prefix means pointer.  For instance 'pVM' is pointer to VM,
+ *        'pidx' means pointer to an index and 'pv' is a generic void pointer.
  *
  *   <li> The 'r' prefix means that something is passed by reference.
  *
