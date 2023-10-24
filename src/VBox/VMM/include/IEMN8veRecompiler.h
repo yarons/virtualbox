@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101576 2023-10-24 09:40:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101581 2023-10-24 14:50:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -263,9 +263,7 @@ typedef enum
 {
     kIemNativeLabelType_Invalid = 0,
     kIemNativeLabelType_Return,
-#ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
     kIemNativeLabelType_If,
-#endif
     kIemNativeLabelType_Else,
     kIemNativeLabelType_Endif,
     kIemNativeLabelType_NonZeroRetOrPassUp,
@@ -2482,7 +2480,7 @@ DECLINLINE(uint32_t) iemNativeEmitTestBitInGprAndJmpToLabelIfCc(PIEMRECOMPILERST
 DECLINLINE(uint32_t) iemNativeEmitTestBitInGprAndJmpToLabelIfSet(PIEMRECOMPILERSTATE pReNative, uint32_t off,
                                                                  uint8_t iGprSrc, uint8_t iBitNo, uint32_t idxLabel)
 {
-    return iemNativeEmitTestBitInGprAndJmpToLabelIfCc(pReNative, off, iGprSrc, iBitNo, idxLabel, false /*fJmpIfSet*/);
+    return iemNativeEmitTestBitInGprAndJmpToLabelIfCc(pReNative, off, iGprSrc, iBitNo, idxLabel, true /*fJmpIfSet*/);
 }
 
 
@@ -2495,7 +2493,7 @@ DECLINLINE(uint32_t) iemNativeEmitTestBitInGprAndJmpToLabelIfSet(PIEMRECOMPILERS
 DECLINLINE(uint32_t) iemNativeEmitTestBitInGprAndJmpToLabelIfNotSet(PIEMRECOMPILERSTATE pReNative, uint32_t off,
                                                                     uint8_t iGprSrc, uint8_t iBitNo, uint32_t idxLabel)
 {
-    return iemNativeEmitTestBitInGprAndJmpToLabelIfCc(pReNative, off, iGprSrc, iBitNo, idxLabel, true /*fJmpIfSet*/);
+    return iemNativeEmitTestBitInGprAndJmpToLabelIfCc(pReNative, off, iGprSrc, iBitNo, idxLabel, false /*fJmpIfSet*/);
 }
 
 
