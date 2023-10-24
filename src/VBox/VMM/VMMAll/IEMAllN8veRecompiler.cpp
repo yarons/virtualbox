@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 101581 2023-10-24 14:50:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 101583 2023-10-24 19:04:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -4551,6 +4551,30 @@ DECLINLINE(uint32_t) iemNativeEmitIfEflagsBitNotSetAndTwoBitsEqual(PIEMRECOMPILE
     /* Make a copy of the core state now as we start the if-block. */
     iemNativeCondStartIfBlock(pReNative, off, idxLabelIf);
 
+    return off;
+}
+
+
+#define IEM_MC_IF_CX_IS_NZ() \
+    off = iemNativeEmitIfCxIsNotZero(pReNative, off); \
+    AssertReturn(off != UINT32_MAX, UINT32_MAX); \
+    do {
+
+/** Emits code for IEM_MC_IF_EFL_BIT_NOT_SET_AND_BITS_EQ and
+ *  IEM_MC_IF_EFL_BIT_SET_OR_BITS_NE. */
+DECLINLINE(uint32_t) iemNativeEmitIfCxIsNotZero(PIEMRECOMPILERSTATE pReNative, uint32_t off)
+{
+    PIEMNATIVECOND pEntry = iemNativeCondPushIf(pReNative);
+    AssertReturn(pEntry, UINT32_MAX);
+
+    uint8_t const idxGstRcxReg = iemNativeRegAllocTmpForGuestReg(pReNative, &off,
+                                                                 (IEMNATIVEGSTREG)(kIemNativeGstReg_GprFirst + X86_GREG_xCX),
+                                                                 kIemNativeGstRegUse_ReadOnly);
+    AssertReturn(idxGstRcxReg != UINT8_MAX, UINT32_MAX);
+    off = iemNativeEmitTestAnyBitsInGprAndJmpToLabelIfNoneSet(pReNative, off, idxGstRcxReg, UINT16_MAX, pEntry->idxLabelElse);
+    iemNativeRegFreeTmp(pReNative, idxGstRcxReg);
+
+    iemNativeCondStartIfBlock(pReNative, off);
     return off;
 }
 
