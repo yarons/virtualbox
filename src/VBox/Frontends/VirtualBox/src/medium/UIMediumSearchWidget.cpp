@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSearchWidget.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -31,11 +31,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QPainter>
-#ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is available since 6.0 */
-# include <QRegularExpression>
-#else
-# include <QRegExp>
-#endif
+#include <QRegularExpression>
 
 /* GUI includes: */
 #include "QIToolButton.h"
@@ -80,12 +76,8 @@ public:
             strValue = pMediumItem->name();
         else
             return false;
-#ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is available since 6.0 */
         QRegularExpression searchRegEx = QRegularExpression::fromWildcard(m_strSearchTerm, Qt::CaseInsensitive,
                                                                           QRegularExpression::UnanchoredWildcardConversion);
-#else
-        QRegExp searchRegEx(m_strSearchTerm, Qt::CaseInsensitive, QRegExp::Wildcard);
-#endif
         if (strValue.contains(searchRegEx))
             return true;
         return false;

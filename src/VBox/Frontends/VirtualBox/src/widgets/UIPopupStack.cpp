@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupStack.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -264,9 +264,6 @@ void UIPopupStack::prepareContent()
             m_pScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
             //m_pScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
             QPalette pal = m_pScrollArea->palette();
-#ifndef VBOX_IS_QT6_OR_LATER /** @todo Qt::transparent glitches in qt6? */
-            pal.setColor(QPalette::Window, QColor(Qt::transparent));
-#endif
             m_pScrollArea->setPalette(pal);
             /* Create scroll-viewport: */
             m_pScrollViewport = new UIPopupStackViewport;

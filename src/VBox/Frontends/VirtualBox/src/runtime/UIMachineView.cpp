@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 101567 2023-10-24 00:25:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1127,11 +1127,7 @@ void UIMachineView::sltMousePointerShapeChange()
          * compose the cursor on the basis of shape and mask both: */
         updateMousePointerPixmapScaling(pixmapShape, uXHot, uYHot);
         /// @todo updateMousePointerPixmapScaling(pixmapMask, uXHot, uYHot);
-#ifdef VBOX_IS_QT6_OR_LATER /* since qt6 explicit constructor is replaced with QBitmap::fromPixmap static method */
         m_cursor = QCursor(QBitmap::fromPixmap(pixmapShape), QBitmap::fromPixmap(pixmapMask), uXHot, uYHot);
-#else
-        m_cursor = QCursor(pixmapShape, pixmapMask, uXHot, uYHot);
-#endif
     }
 
     /* Let the listeners know: */

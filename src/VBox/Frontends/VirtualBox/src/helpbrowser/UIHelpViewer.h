@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 99910 2023-05-22 17:15:24Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.h 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class declaration.
  */
@@ -80,9 +80,6 @@ public:
     UIHelpViewer(const QHelpEngine *pHelpEngine, QWidget *pParent = 0);
     virtual QVariant loadResource(int type, const QUrl &name) RT_OVERRIDE;
     void emitHistoryChangedSignal();
-#ifndef VBOX_IS_QT6_OR_LATER /* must override doSetSource since 6.0 */
-    virtual void setSource(const QUrl &url) RT_OVERRIDE;
-#endif
     void setFont(const QFont &);
     bool isFindInPageWidgetVisible() const;
     void setZoomPercentage(int iZoomPercentage);
@@ -109,9 +106,7 @@ protected:
     virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
-#ifdef VBOX_IS_QT6_OR_LATER /* it was setSource before 6.0 */
     virtual void doSetSource(const QUrl &url, QTextDocument::ResourceType type = QTextDocument::UnknownResource) RT_OVERRIDE;
-#endif
 
 private slots:
 

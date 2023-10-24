@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 100365 2023-07-04 10:46:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIChooserNodeMachine.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -26,12 +26,7 @@
  */
 
 /* Qt includes: */
-#include <qglobal.h>
-#ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is available since 6.0 */
-# include <QRegularExpression>
-#else
-# include <QRegExp>
-#endif
+#include <QRegularExpression>
 
 /* GUI includes: */
 #include "UIChooserAbstractModel.h"
@@ -240,11 +235,8 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iSea
         /* Otherwise check if name contains search term, including wildcards: */
         else
         {
-#ifdef VBOX_IS_QT6_OR_LATER /* fromWildcard is available since 6.0 */
-            QRegularExpression searchRegEx = QRegularExpression::fromWildcard(strSearchTerm, Qt::CaseInsensitive, QRegularExpression::UnanchoredWildcardConversion);
-#else
-            QRegExp searchRegEx(strSearchTerm, Qt::CaseInsensitive, QRegExp::WildcardUnix);
-#endif
+            QRegularExpression searchRegEx = QRegularExpression::fromWildcard(strSearchTerm, Qt::CaseInsensitive,
+                                                                              QRegularExpression::UnanchoredWildcardConversion);
             if (name().contains(searchRegEx))
                 matchedItems << this;
         }

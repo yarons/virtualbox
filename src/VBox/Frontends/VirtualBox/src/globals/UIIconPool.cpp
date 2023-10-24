@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIIconPool.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -275,12 +275,6 @@ void UIIconPool::addName(QIcon &icon, const QString &strName,
     QPixmap pixmap(strName);
     /* Add pixmap: */
     icon.addPixmap(pixmap, mode, state);
-
-#if defined(VBOX_WS_MAC) && !defined(VBOX_IS_QT6_OR_LATER)
-    /* Test if HiDPI icons are enabled on macOS @ Qt5 only: */
-    if (!qApp->testAttribute(Qt::AA_UseHighDpiPixmaps))
-        return;
-#endif /* VBOX_WS_MAC */
 
     /* Parse name to prefix and suffix: */
     QString strPrefix = strName.section('.', 0, -2);
