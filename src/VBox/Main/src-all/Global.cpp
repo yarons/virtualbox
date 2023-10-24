@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 101578 2023-10-24 11:30:50Z alexander.eichner@oracle.com $ */
+/* $Id: Global.cpp 101579 2023-10-24 11:31:29Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -283,7 +283,7 @@ const Global::OSType Global::sOSTypes[] =
                                     NetworkAdapterType_I82540EM, StorageControllerType_IntelAhci, StorageBus_SATA)
 
 #define VBOX_LINUX_SUBTYPE_A_WITH_OSTYPE_A64(a_szVariant, a_Id, a_Description, a_OStype, a_Memory, a_Vram, a_Diskspace) \
-    VBOX_LINUX_SUBTYPE_TEMPLATE_A64(a_szVariant, a_Id, a_Description, a_OStype, VBOX_LINUX_OSHINTS_A_X64, a_Memory, a_Vram, a_Diskspace, \
+    VBOX_LINUX_SUBTYPE_TEMPLATE_A64(a_szVariant, a_Id, a_Description, a_OStype, VBOX_LINUX_OSHINTS_A_ARM64, a_Memory, a_Vram, a_Diskspace, \
                                     NetworkAdapterType_I82540EM, StorageControllerType_VirtioSCSI, StorageBus_VirtioSCSI)
 
 /* Linux x86 32-bit sub-type template defaulting to 1 CPU with PS/2-mouse/PAE-NX/VMSVGA/Intel-Pro1000/PIIX4+IDE DVD/AHCI+SATA disk/AC97 */
