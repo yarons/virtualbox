@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101585 2023-10-25 10:09:38Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 101587 2023-10-25 12:25:11Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101585 $"
+__version__ = "$Revision: 101587 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2703,7 +2703,6 @@ g_dMcStmtParsers = {
     'IEM_MC_ADD_GREG_U32_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_ADD_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_ADD_GREG_U64_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ADD_GREG_U8':                                        (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_ADD_GREG_U8_TO_LOCAL':                               (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_ADD_LOCAL_S16_TO_EFF_ADDR':                          (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_ADD_LOCAL_S32_TO_EFF_ADDR':                          (McBlock.parseMcGeneric,           True,  False, ),
@@ -3075,9 +3074,8 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_YREG_U32_ZX_VLMAX':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_YREG_U64_ZX_VLMAX':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_SUB_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_SUB_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_SUB_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_SUB_GREG_U8':                                        (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_SUB_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_SUB_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_SUB_LOCAL_U16':                                      (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_UPDATE_FPU_OPCODE_IP':                               (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_UPDATE_FSW':                                         (McBlock.parseMcGeneric,           True,  False, ),
