@@ -1,4 +1,4 @@
-/* $Id: Global.h 101460 2023-10-17 08:32:09Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.h 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -96,7 +96,7 @@ public:
     {
         const char                    *familyId;          /* utf-8, e.g. Linux or MacOS  */
         const char                    *familyDescription; /* utf-8, e.g. Linux or Mac OS X */
-        const char                    *variant;     /* utf-8, the subtype of the family e.g. Debian or FreeBSD */
+        const char                    *subtype;     /* utf-8, the subtype of the family e.g. Debian or FreeBSD */
         const char                    *id;          /* utf-8, VM config file value e.g. Debian12_64 */
         const char                    *description; /* utf-8, e.g. "Debian 12 Bookworm (64-bit)" */
         const VBOXOSTYPE               osType;      /* enum, e.g. VBOXOSTYPE_Debian12_x64 */

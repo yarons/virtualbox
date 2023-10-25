@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 101519 2023-10-20 13:37:34Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -247,7 +247,7 @@ const QString &UIGuestOSType::getId() const
 const QString &UIGuestOSType::getSubtype() const
 {
     if (m_strSubtype.isEmpty() && m_comGuestOSType.isOk())
-        m_strSubtype = m_comGuestOSType.GetVariant();
+        m_strSubtype = m_comGuestOSType.GetSubtype();
     return m_strSubtype;
 }
 
