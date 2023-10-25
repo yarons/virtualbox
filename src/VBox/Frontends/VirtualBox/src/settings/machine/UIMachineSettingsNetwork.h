@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 101594 2023-10-25 19:21:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 101596 2023-10-25 19:32:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -45,16 +45,16 @@ typedef UISettingsCachePool<UIDataSettingsMachineNetworkAdapter, UISettingsCache
 typedef UISettingsCachePool<UIDataSettingsMachineNetwork, UISettingsCacheMachineNetworkAdapter> UISettingsCacheMachineNetwork;
 
 /** Machine settings: Network page. */
-class SHARED_LIBRARY_STUFF UIMachineSettingsNetworkPage : public UISettingsPageMachine
+class SHARED_LIBRARY_STUFF UIMachineSettingsNetwork : public UISettingsPageMachine
 {
     Q_OBJECT;
 
 public:
 
     /** Constructs Network settings page. */
-    UIMachineSettingsNetworkPage();
+    UIMachineSettingsNetwork();
     /** Destructs Network settings page. */
-    virtual ~UIMachineSettingsNetworkPage() RT_OVERRIDE;
+    virtual ~UIMachineSettingsNetwork() RT_OVERRIDE;
 
     /** Returns the bridged adapter list. */
     const QStringList &bridgedAdapterList() const { return m_bridgedAdapterList; }

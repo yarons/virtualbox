@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 101423 2023-10-12 11:28:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 101596 2023-10-25 19:32:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -704,7 +704,7 @@ void UIAdvancedSettingsDialogMachine::prepare()
                 /* Network page: */
                 case MachineSettingsPageType_Network:
                 {
-                    pSettingsPage = new UIMachineSettingsNetworkPage;
+                    pSettingsPage = new UIMachineSettingsNetwork;
                     addItem(":/nw_32px.png", ":/nw_24px.png", ":/nw_16px.png",
                             iPageIndex, "#network", pSettingsPage);
                     addPageHelpKeyword(iPageIndex, "settings-network");
