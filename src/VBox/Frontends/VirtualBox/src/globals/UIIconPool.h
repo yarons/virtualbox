@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.h 101508 2023-10-19 11:16:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.h 101590 2023-10-25 12:54:48Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
@@ -159,14 +159,24 @@ public:
 
 private:
 
+    /** Creates icon from passed pixmap names for
+      * @a strNormal, @a strDisabled and @a strActive icon states. Utilizes addNameAndOverlay to overlay pixmaps. */
+    static QIcon overlayedIconSet(const QString &strGuestOSTypeId,
+                                  const QString &strNormal,
+                                  const QString &strDisabled = QString(),
+                                  const QString &strActive = QString());
+    /* Just like UIIconPool::addName add resources to icon but additionally overlays corresponding text wrt. strGuestOSTypeId. */
+    static void addNameAndOverlay(QIcon &icon, const QString &strName, const QString &strGuestOSTypeId,
+                        QIcon::Mode mode = QIcon::Normal, QIcon::State state = QIcon::Off);
+
     /** Constructs general icon-pool. */
     UIIconPoolGeneral();
     /** Destructs general icon-pool. */
     virtual ~UIIconPoolGeneral() /* override final */;
     /** Overlay text @p strArch on top of @p pixmap. */
-    void overlayArchitectureTextOnPixmap(const QString &strArch, QPixmap &pixmap) const;
+    static void overlayArchitectureTextOnPixmap(const QString &strArch, QPixmap &pixmap);
     /** Returns the architecture text we overlay on guest OS type id icon.*/
-    QString determineOSArchString(const QString &osTypeId) const;
+    static QString determineOSArchString(const QString &osTypeId);
     /** Holds the singleton instance. */
     static UIIconPoolGeneral *s_pInstance;
 
