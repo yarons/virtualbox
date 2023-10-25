@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101587 2023-10-25 12:25:11Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 101589 2023-10-25 12:34:28Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101587 $"
+__version__ = "$Revision: 101589 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2879,11 +2879,11 @@ g_dMcStmtParsers = {
     'IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP_POP':                   (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FPU_TO_MMX_MODE':                                    (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_IF_CX_IS_NZ':                                        (McBlock.parseMcGenericCond,       True,  True,  ),
-    'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_NOT_SET':                    (McBlock.parseMcGenericCond,       True,  True, ),
-    'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_SET':                        (McBlock.parseMcGenericCond,       True,  True, ),
+    'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_NOT_SET':                    (McBlock.parseMcGenericCond,       True,  True,  ),
+    'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_SET':                        (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_ECX_IS_NZ':                                       (McBlock.parseMcGenericCond,       True,  True,  ),
-    'IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_NOT_SET':                   (McBlock.parseMcGenericCond,       True,  False, ),
-    'IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_SET':                       (McBlock.parseMcGenericCond,       True,  False, ),
+    'IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_NOT_SET':                   (McBlock.parseMcGenericCond,       True,  True,  ),
+    'IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_SET':                       (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_EFL_ANY_BITS_SET':                                (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_EFL_BIT_NOT_SET':                                 (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_EFL_BIT_NOT_SET_AND_BITS_EQ':                     (McBlock.parseMcGenericCond,       True,  True,  ),
@@ -2900,8 +2900,8 @@ g_dMcStmtParsers = {
     'IEM_MC_IF_LOCAL_IS_Z':                                      (McBlock.parseMcGenericCond,       True,  False, ),
     'IEM_MC_IF_MXCSR_XCPT_PENDING':                              (McBlock.parseMcGenericCond,       True,  False, ),
     'IEM_MC_IF_RCX_IS_NZ':                                       (McBlock.parseMcGenericCond,       True,  True,  ),
-    'IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_NOT_SET':                   (McBlock.parseMcGenericCond,       True,  False, ),
-    'IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_SET':                       (McBlock.parseMcGenericCond,       True,  False, ),
+    'IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_NOT_SET':                   (McBlock.parseMcGenericCond,       True,  True,  ),
+    'IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_SET':                       (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80':                   (McBlock.parseMcGenericCond,       True,  False, ),
     'IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80_FIRST':             (McBlock.parseMcGenericCond,       True,  False, ),
     'IEM_MC_IMPLICIT_AVX_AIMPL_ARGS':                            (McBlock.parseMcImplicitAvxAArgs,  False, False, ),
