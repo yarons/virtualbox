@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 100935 2023-08-22 09:30:06Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMInternal.h 101603 2023-10-26 11:15:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -104,7 +104,9 @@ typedef uint64_t STAMCOUNTER;
 
 /** @name CPUM Saved State Version.
  * @{ */
-/** The current saved state version. */
+/** The current saved state version.
+ *  @todo When bumping to next version, add CPUMCTX::enmHwVirt to the saved
+ *        state. */
 #define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_4
 /** The saved state version with u32RestoreProcCtls2 for Nested Microsoft
  *  Hyper-V. */
