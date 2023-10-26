@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101595 2023-10-25 19:22:26Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 101606 2023-10-26 14:09:03Z sergey.dubov@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1080,7 +1080,6 @@ UICommon_QT_MOCSRCS = \
 	src/settings/editors/UIStatusBarEditor.cpp \
 	src/settings/editors/UIStorageSettingsEditor.cpp \
 	src/settings/editors/UIUSBFiltersEditor.cpp \
-	src/settings/machine/UIMachineSettingsSerial.cpp \
 	src/widgets/UIAddDiskEncryptionPasswordDialog.cpp \
 	src/widgets/UIFileTableNavigationWidget.cpp \
 	src/widgets/UIFilmContainer.cpp \
