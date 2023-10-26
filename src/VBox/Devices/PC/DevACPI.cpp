@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 101597 2023-10-26 09:09:48Z alexander.eichner@oracle.com $ */
+/* $Id: DevACPI.cpp 101598 2023-10-26 09:45:37Z alexander.eichner@oracle.com $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1237,7 +1237,7 @@ static DECLCALLBACK(int) acpiR3Port_BatteryStatusChangeEvent(PPDMIACPIPORT pInte
 
 
 /**
- * @interface_method_impl{PDMIACPIPORT,pfnQueryGuestCanHandleButtonEvents}
+ * @interface_method_impl{PDMIEVENTBUTTONPORT,pfnQueryGuestCanHandleButtonEvents}
  */
 static DECLCALLBACK(int) acpiR3Port_QueryGuestCanHandleButtonEvents(PPDMIEVENTBUTTONPORT pInterface, bool *pfCanHandleButtonEvents)
 {
