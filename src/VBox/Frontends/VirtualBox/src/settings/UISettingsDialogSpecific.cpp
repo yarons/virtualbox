@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 101596 2023-10-25 19:32:41Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsDialogSpecific.cpp 101607 2023-10-26 14:14:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -724,7 +724,7 @@ void UISettingsDialogMachine::prepare()
                 /* Serial page: */
                 case MachineSettingsPageType_Serial:
                 {
-                    pSettingsPage = new UIMachineSettingsSerialPage;
+                    pSettingsPage = new UIMachineSettingsSerial;
                     addItem(":/serial_port_32px.png", ":/serial_port_24px.png", ":/serial_port_16px.png",
                             iPageIndex, "#serialPorts", pSettingsPage, MachineSettingsPageType_Ports);
                     addPageHelpKeyword(iPageIndex, "serialports");
