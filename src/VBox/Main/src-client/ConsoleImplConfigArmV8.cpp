@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 101619 2023-10-27 12:49:16Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 101622 2023-10-27 13:05:01Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -559,7 +559,7 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
         vrc = RTFdtNodePropertyAddCellsU32(hFdt, "gpios", 3, idPHandleGpio, 4, 0);          VRC();
         vrc = RTFdtNodePropertyAddU32(     hFdt, "linux,code", 0xcd);                       VRC();
         vrc = RTFdtNodePropertyAddString(  hFdt, "label",      "GPIO Key Suspend");         VRC();
-        vrc = RTFdtNodeFinalize(hFdt);  
+        vrc = RTFdtNodeFinalize(hFdt);
 
         vrc = RTFdtNodeFinalize(hFdt);                                                      VRC();
 
