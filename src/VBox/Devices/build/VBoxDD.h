@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 101616 2023-10-27 12:37:51Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.h 101618 2023-10-27 12:47:55Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -242,6 +242,8 @@ extern const PDMDEVREG g_DeviceFlashCFI;
 extern const PDMDEVREG g_DevicePciGenericEcam;
 extern const PDMDEVREG g_DevicePciGenericEcamBridge;
 extern const PDMDEVREG g_DevicePlatform;
+
+extern const PDMDRVREG g_DrvGpioButton;
 #endif
 
 /* VBoxAcpi.cpp */
