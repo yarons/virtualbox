@@ -1,4 +1,4 @@
-/* $Id: DrvCloudTunnel.cpp 101623 2023-10-27 13:37:10Z alexander.rudnev@oracle.com $ */
+/* $Id: DrvCloudTunnel.cpp 101625 2023-10-27 13:47:17Z alexander.rudnev@oracle.com $ */
 /** @file
  * DrvCloudTunnel - Cloud tunnel network transport driver
  *
@@ -754,7 +754,7 @@ static int drvCloudTunnelReceiveCallback(ssh_session session, ssh_channel channe
     return len;
 }
 
-static int channelWriteWontblockCallback(ssh_session, ssh_channel, unsigned int, void *)
+static int channelWriteWontblockCallback(ssh_session, ssh_channel, size_t, void *)
 {
     return 0;
 }
