@@ -1,4 +1,4 @@
-/* $Id: DevEFI-binaries.S 99927 2023-05-23 08:05:36Z alexander.eichner@oracle.com $ */
+/* $Id: DevEFI-binaries.S 101616 2023-10-27 12:37:51Z alexander.eichner@oracle.com $ */
 /** @file
  * DevEFI - firmware binaries.
  */
@@ -71,7 +71,7 @@ NAME(g_cbEfiFirmware64):
 .type g_cbEfiFirmware64 object
 #endif
 
-#ifdef VBOX_VMM_TARGET_ARMV8
+#ifdef VBOX_WITH_VIRT_ARMV8
 ;
 ; The ARMv8 bits
 ;

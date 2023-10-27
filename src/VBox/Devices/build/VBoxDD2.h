@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.h 99927 2023-05-23 08:05:36Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD2.h 101616 2023-10-27 12:37:51Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -59,7 +59,7 @@ extern DECLEXPORT(const unsigned char)  g_abEfiFirmware32[];
 extern DECLEXPORT(const unsigned)       g_cbEfiFirmware32;
 extern DECLEXPORT(const unsigned char)  g_abEfiFirmware64[];
 extern DECLEXPORT(const unsigned)       g_cbEfiFirmware64;
-#  ifdef VBOX_VMM_TARGET_ARMV8
+#  ifdef VBOX_WITH_VIRT_ARMV8
 extern DECLEXPORT(const unsigned char)  g_abEfiFirmwareAArch32[];
 extern DECLEXPORT(const unsigned)       g_cbEfiFirmwareAArch32;
 extern DECLEXPORT(const unsigned char)  g_abEfiFirmwareAArch64[];
@@ -88,7 +88,7 @@ extern DECLIMPORT(const unsigned char)  g_abEfiFirmware32[];
 extern DECLIMPORT(const unsigned)       g_cbEfiFirmware32;
 extern DECLIMPORT(const unsigned char)  g_abEfiFirmware64[];
 extern DECLIMPORT(const unsigned)       g_cbEfiFirmware64;
-#  ifdef VBOX_VMM_TARGET_ARMV8
+#  ifdef VBOX_WITH_VIRT_ARMV8
 extern DECLIMPORT(const unsigned char)  g_abEfiFirmwareAArch32[];
 extern DECLIMPORT(const unsigned)       g_cbEfiFirmwareAArch32;
 extern DECLIMPORT(const unsigned char)  g_abEfiFirmwareAArch64[];

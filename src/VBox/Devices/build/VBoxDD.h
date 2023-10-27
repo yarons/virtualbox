@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 101479 2023-10-17 14:38:54Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxDD.h 101616 2023-10-27 12:37:51Z alexander.eichner@oracle.com $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -233,7 +233,7 @@ extern const PDMDEVREG g_DeviceIommuAmd;
 extern const PDMDEVREG g_DeviceIommuIntel;
 #endif
 
-#ifdef VBOX_VMM_TARGET_ARMV8
+#ifdef VBOX_WITH_VIRT_ARMV8
 extern const PDMDEVREG g_DeviceEfiArmV8;
 extern const PDMDEVREG g_DevicePl011;
 extern const PDMDEVREG g_DevicePl031Rtc;
