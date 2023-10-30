@@ -1,4 +1,4 @@
-/* $Id: pdbvfs.cpp 100948 2023-08-22 22:56:32Z knut.osmundsen@oracle.com $ */
+/* $Id: pdbvfs.cpp 101653 2023-10-30 11:08:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - PDB Virtual Filesystem (read only).
  */
@@ -1168,7 +1168,7 @@ static int rtFsPdbVolLoadStream3(PRTFSPDBVOL pThis, PRTERRINFO pErrInfo)
     else
     {
         /* Convert old header to new to new. */
-        if (cbRead >= sizeof(Hdr.Old))
+        if (cbRead < sizeof(Hdr.Old))
             return RTERRINFO_LOG_SET_F(pErrInfo, rc, "Bogus DBI header size: cbRead=%#zx, expected %#zx",
                                        cbRead, sizeof(Hdr.Old));
         Log(("rtFsPdbVolLoadStream3: Old DBI header\n"));
