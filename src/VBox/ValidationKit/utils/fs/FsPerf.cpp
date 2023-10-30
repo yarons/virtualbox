@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 101648 2023-10-30 09:57:41Z alexander.eichner@oracle.com $ */
+/* $Id: FsPerf.cpp 101649 2023-10-30 10:04:14Z alexander.eichner@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -5514,7 +5514,7 @@ static void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
              */
             if (enmState == kMMap_ReadWrite)
             {
-                static size_t const s_acbFlush[] = { g_cbPage, g_cbPage * 2, g_cbPage * 3, g_cbPage * 8, g_cbPage * 16, _2M };
+                size_t const s_acbFlush[] = { g_cbPage, g_cbPage * 2, g_cbPage * 3, g_cbPage * 8, g_cbPage * 16, _2M };
                 for (unsigned iFlushSize = 0 ; iFlushSize < RT_ELEMENTS(s_acbFlush); iFlushSize++)
                 {
                     size_t const cbFlush = s_acbFlush[iFlushSize];
@@ -6716,7 +6716,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 101648 $";
+                char szRev[] = "$Revision: 101649 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
