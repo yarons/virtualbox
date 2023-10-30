@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101451 2023-10-16 12:49:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101662 2023-10-30 16:32:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -178,6 +178,11 @@ protected:
     UISettingsSelector *m_pSelector;
 
 private slots:
+
+    /** Handles request to close dialog as QWidget, not QWindow.
+      * No need for QWindow destruction functionality.
+      * Parent will handle destruction itself. */
+    void sltClose();
 
     /** Handles validity change for certain @a pValidator. */
     void sltHandleValidityChange(UISettingsPageValidator *pValidator);
