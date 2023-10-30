@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 101645 2023-10-30 09:28:02Z alexander.eichner@oracle.com $ */
+/* $Id: FsPerf.cpp 101648 2023-10-30 09:57:41Z alexander.eichner@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -480,11 +480,11 @@ static const RTGETOPTDEF g_aCmdOptions[] =
 /** The test handle. */
 static RTTEST       g_hTest;
 /** The page size of the system. */
-static uint32_t     g_cbPage;
+static uint32_t     g_cbPage = 0;
 /** Page offset mask. */
-static uintptr_t    g_fPageOffset;
+static uintptr_t    g_fPageOffset = 0;
 /** Page shift in bits. */
-static uint32_t     g_cPageShift;
+static uint32_t     g_cPageShift = 0;
 /** The number of nanoseconds a RTTimeNanoTS call takes.
  * This is used for adjusting loop count estimates.  */
 static uint64_t     g_nsPerNanoTSCall = 1;
@@ -6716,7 +6716,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 101645 $";
+                char szRev[] = "$Revision: 101648 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
