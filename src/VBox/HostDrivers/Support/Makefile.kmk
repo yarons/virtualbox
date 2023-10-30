@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99673 2023-05-08 13:25:06Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 101651 2023-10-30 10:33:47Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -48,7 +48,9 @@ VBOX_PATH_RUNTIME_SRC        ?= $(PATH_ROOT)/src/VBox/Runtime
 #
 # Targets
 #
-LIBRARIES += SUPR3 SUPR3Static
+ifn1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.arm64) # @todo Required by LoadGenerator in the validationkit but uses PAGE_SIZE++
+ LIBRARIES += SUPR3 SUPR3Static
+endif
 if   defined(VBOX_WITH_HARDENING) \
   && !defined(VBOX_ONLY_VALIDATIONKIT)
  LIBRARIES += SUPR3HardenedStatic
