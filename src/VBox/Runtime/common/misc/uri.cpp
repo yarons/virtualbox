@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: uri.cpp 101657 2023-10-30 13:17:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -72,13 +72,27 @@
  *  space   = ' '
  *  delims  = '<' , '>' , '#' , '%' , '"'
  *  unwise  = '{' , '}' , '|' , '\' , '^' , '[' , ']' , '`'
+ *
+ * @note ARM defines char as unsigned by default in the AAPCS(64) so the first check would trigger
+ *       a compiler warning/error. Apple decided to ignore that and declares char a signed like on
+ *       the other platforms.
  */
-#define URI_EXCLUDED(a) \
+#if    defined(RT_OS_LINUX) \
+    && (defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32))
+# define URI_EXCLUDED(a) \
+  (   ((a) <= 0x20) \
+   || ((a) >= 0x5B && (a) <= 0x5E) \
+   || ((a) >= 0x7B && (a) <= 0x7D) \
+   || (a) == '<' || (a) == '>' || (a) == '#' \
+   || (a) == '%' || (a) == '"' || (a) == '`' )
+#else
+# define URI_EXCLUDED(a) \
   (   ((a) >= 0x0  && (a) <= 0x20) \
    || ((a) >= 0x5B && (a) <= 0x5E) \
    || ((a) >= 0x7B && (a) <= 0x7D) \
    || (a) == '<' || (a) == '>' || (a) == '#' \
    || (a) == '%' || (a) == '"' || (a) == '`' )
+#endif
 
 static char *rtUriPercentEncodeN(const char *pszString, size_t cchMax)
 {
