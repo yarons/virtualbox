@@ -1,4 +1,4 @@
-/* $Id: cpu-alloc-all-mem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: cpu-alloc-all-mem.cpp 101644 2023-10-30 09:27:30Z alexander.eichner@oracle.com $ */
 /** @file
  * Allocate all memory we can get and then quit.
  */
@@ -45,6 +45,7 @@
 #include <iprt/mem.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
+#include <iprt/system.h>
 #include <iprt/time.h>
 
 
@@ -70,6 +71,8 @@ typedef TSTALLOC *PTSTALLOC;
 
 static bool checkList(PRTLISTNODE pHead)
 {
+    uint32_t cbPage = RTSystemGetPageSize();
+
     size_t iPageSeq  = 0;
     size_t iAllocSeq = 0;
     PTSTALLOC pCur;
@@ -84,7 +87,7 @@ static bool checkList(PRTLISTNODE pHead)
         {
             RTTESTI_CHECK_RET(*pu == iPageSeq, false);
             iPageSeq++;
-            pu += PAGE_SIZE / sizeof(size_t);
+            pu += cbPage / sizeof(size_t);
         }
         iAllocSeq++;
     }
@@ -95,6 +98,8 @@ static bool checkList(PRTLISTNODE pHead)
 static void doTest(RTTEST hTest)
 {
     RTTestSub(hTest, "Allocate all memory");
+
+    uint32_t cbPage = RTSystemGetPageSize();
 
     RTLISTANCHOR AllocHead;
     PTSTALLOC    pCur;
@@ -128,7 +133,7 @@ static void doTest(RTTEST hTest)
             while (pu != puEnd)
             {
                 *pu = iPageSeq++;
-                pu += PAGE_SIZE / sizeof(size_t);
+                pu += cbPage / sizeof(size_t);
             }
             uint64_t const uEndTS  = RTTimeNanoTS();
             uint64_t const cNsThis = uEndTS  - uStartTS;
