@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: x509-certpaths.cpp 101646 2023-10-30 09:33:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -764,7 +764,7 @@ static void rtCrX509CertPathsGetIssuers(PRTCRX509CERTPATHSINT pThis, PRTCRX509CE
      * Untrusted store.
      */
     if (pThis->hUntrustedStore != NIL_RTCRSTORE)
-        rtCrX509CertPathsGetIssuersFromStore(pThis, pNode, pIssuer, pThis->hTrustedStore,
+        rtCrX509CertPathsGetIssuersFromStore(pThis, pNode, pIssuer, pThis->hUntrustedStore,
                                              RTCRX509CERTPATHNODE_SRC_UNTRUSTED_STORE);
 
     /*
