@@ -1,4 +1,4 @@
-/* $Id: DisplayServerType.cpp 100217 2023-06-19 17:34:02Z vadim.galitsyn@oracle.com $ */
+/* $Id: DisplayServerType.cpp 101673 2023-10-31 09:57:18Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest / Host common code - Session type detection + handling.
  */
@@ -94,6 +94,13 @@ static int vbghDisplayServerTryLoadLib(const char **apszLibs, size_t cLibs, PRTL
     return VERR_NOT_FOUND;
 }
 
+
+#define GET_SYMBOL(a_Mod, a_Name, a_Fn) \
+    if (RT_SUCCESS(rc)) \
+        rc = RTLdrGetSymbol(a_Mod, a_Name, (void **)&a_Fn); \
+    if (RT_FAILURE(rc)) \
+        LogRel2(("Symbol '%s' unable to load, rc=%Rrc\n", a_Name, rc));
+
 /**
  * Tries to detect the desktop display server type the process is running in.
  *
@@ -122,12 +129,6 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
         "libwayland-client.so",
         "libwayland-client.so.0" /* Needed for Ubuntu */
     };
-
-#define GET_SYMBOL(a_Mod, a_Name, a_Fn) \
-    if (RT_SUCCESS(rc)) \
-        rc = RTLdrGetSymbol(a_Mod, a_Name, (void **)&a_Fn); \
-    if (RT_FAILURE(rc)) \
-        LogRel2(("Symbol '%s' unable to load, rc=%Rrc\n", a_Name, rc));
 
     int rc = vbghDisplayServerTryLoadLib(aLibsWayland, RT_ELEMENTS(aLibsWayland), &hWaylandClient);
     if (RT_SUCCESS(rc))
@@ -187,8 +188,6 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
         RTLdrClose(hX11);
     }
 
-#undef GET_SYMBOL
-
     /* If both wayland and X11 display can be connected then we should have XWayland: */
     VBGHDISPLAYSERVERTYPE retSessionType = VBGHDISPLAYSERVERTYPE_NONE;
     if (fHasWayland && fHasX)
@@ -202,6 +201,38 @@ VBGHDISPLAYSERVERTYPE VBGHDisplayServerTypeDetect(void)
 
     return retSessionType;
 }
+
+/**
+ * Detect GTK library.
+ *
+ * @returns \c true if GTK library is available in the system.
+ */
+bool VBGHDisplayServerTypeIsGtkAvailable(void)
+{
+    int rc;
+
+    /* Array of libGtk.so versions to search for.
+     * Descending precedence. */
+    const char* aLibsGtk[] =
+    {
+        "libgtk-3.so",
+        "libgtk-3.so.0"
+    };
+
+    RTLDRMOD hGtk = NIL_RTLDRMOD;
+    void * (*pfnGtkInit)(const char *) = NULL;
+
+    rc = vbghDisplayServerTryLoadLib(aLibsGtk, RT_ELEMENTS(aLibsGtk), &hGtk);
+    if (RT_SUCCESS(rc))
+    {
+        GET_SYMBOL(hGtk, "gtk_init", pfnGtkInit);
+        RTLdrClose(hGtk);
+    }
+
+    return RT_SUCCESS(rc) && RT_VALID_PTR(pfnGtkInit);
+}
+
+#undef GET_SYMBOL
 
 /**
  * Returns true if @a enmType is indicating running X.
