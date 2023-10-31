@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedScript.cpp 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -718,6 +718,8 @@ int UnattendedScriptTemplate::queryVariable(const char *pchName, size_t cchName,
         pszValue = rstrTmp.assign(mpUnattended->i_getHostname(), mpUnattended->i_getHostname().find(".") + 1).c_str();
     else if (IS_MATCH("PROXY"))
         pszValue = mpUnattended->i_getProxy().c_str();
+    else if (IS_MATCH("ADDITIONS_INSTALL_PACKAGE_NAME"))
+        pszValue = mpUnattended->i_getAdditionsInstallPackage().c_str();
     /*
      * Indicator variables.
      */

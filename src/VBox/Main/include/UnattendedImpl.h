@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedImpl.h 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -104,6 +104,7 @@ public:
      * located, from the perspective of the running unattended install. */
     Utf8Str const &i_getAuxiliaryInstallDir() const;
     Utf8Str const &i_getExtraInstallKernelParameters() const;
+    Utf8Str const &i_getAdditionsInstallPackage() const;
 
     bool           i_isRtcUsingUtc() const;
     bool           i_isGuestOs64Bit() const;
@@ -148,6 +149,7 @@ private:
     Utf8Str         mStrPostInstallCommand;
     Utf8Str         mStrExtraInstallKernelParameters;
     Utf8Str         mStrProxy;
+    Utf8Str         mStrAdditionsInstallPackage;
 
     bool            mfDoneDetectIsoOS;         /**< Set by detectIsoOS(), cleared by setIsoPath(). */
     Utf8Str         mStrDetectedOSTypeId;

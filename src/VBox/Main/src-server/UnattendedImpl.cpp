@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 101633 2023-10-27 15:11:34Z alexander.eichner@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -2637,6 +2637,9 @@ HRESULT Unattended::prepare()
         && (enmIsoOSType & VBOXOSTYPE_ArchitectureMask) != VBOXOSTYPE_arm64)
         return setError(E_FAIL, tr("The detected guest OS type requires EFI to boot and therefore is not supported yet"));
 
+    /* Set the guest additions install package name. */
+    mStrAdditionsInstallPackage = Global::sOSTypes[idxMachineOSType].guestAdditionsInstallPkgName;
+
     /*
      * Do some default property stuff and check other properties.
      */
@@ -4181,6 +4184,12 @@ Utf8Str const &Unattended::i_getExtraInstallKernelParameters() const
 {
     Assert(isReadLockedOnCurrentThread());
     return mStrExtraInstallKernelParameters;
+}
+
+Utf8Str const &Unattended::i_getAdditionsInstallPackage() const
+{
+    Assert(isReadLockedOnCurrentThread());
+    return mStrAdditionsInstallPackage;
 }
 
 bool Unattended::i_isRtcUsingUtc() const

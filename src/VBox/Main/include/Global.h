@@ -1,4 +1,4 @@
-/* $Id: Global.h 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
+/* $Id: Global.h 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -94,12 +94,13 @@ public:
     /** Represents OS Type <-> string mappings. */
     struct OSType
     {
-        const char                    *familyId;          /* utf-8, e.g. Linux or MacOS  */
-        const char                    *familyDescription; /* utf-8, e.g. Linux or Mac OS X */
-        const char                    *subtype;     /* utf-8, the subtype of the family e.g. Debian or FreeBSD */
-        const char                    *id;          /* utf-8, VM config file value e.g. Debian12_64 */
-        const char                    *description; /* utf-8, e.g. "Debian 12 Bookworm (64-bit)" */
-        const VBOXOSTYPE               osType;      /* enum, e.g. VBOXOSTYPE_Debian12_x64 */
+        const char                    *familyId;                        /* utf-8, e.g. Linux or MacOS  */
+        const char                    *familyDescription;               /* utf-8, e.g. Linux or Mac OS X */
+        const char                    *subtype;                         /* utf-8, the subtype of the family e.g. Debian or FreeBSD */
+        const char                    *id;                              /* utf-8, VM config file value e.g. Debian12_64 */
+        const char                    *description;                     /* utf-8, e.g. "Debian 12 Bookworm (64-bit)" */
+        const char                    *guestAdditionsInstallPkgName;    /* utf-8, e.g. "VBoxLinuxAdditions.run" */
+        const VBOXOSTYPE               osType;                          /* enum, e.g. VBOXOSTYPE_Debian12_x64 */
         const uint32_t                 osHint;
         const uint32_t                 recommendedCPUCount;
         const uint32_t                 recommendedRAM;

@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -86,6 +86,7 @@ Unattended::Unattended()
     mStrDetectedOSFlavor                = "server";
     //mDetectedOSLanguages                = "en_UK"
     mStrDetectedOSHints                 = "nudge nudge wink wink";
+    mStrAdditionsInstallPackage         = "Something-none-existing.run";
 }
 
 Unattended::~Unattended()
@@ -605,6 +606,11 @@ Utf8Str const &Unattended::i_getAuxiliaryInstallDir() const
 Utf8Str const &Unattended::i_getExtraInstallKernelParameters() const
 {
     return mStrExtraInstallKernelParameters;
+}
+
+Utf8Str const &Unattended::i_getAdditionsInstallPackage() const
+{
+    return mStrAdditionsInstallPackage;
 }
 
 bool Unattended::i_isRtcUsingUtc() const
