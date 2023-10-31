@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
+# $Id: vboxtestvms.py 101676 2023-10-31 10:40:39Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101035 $"
+__version__ = "$Revision: 101676 $"
 
 # Standard Python imports.
 import copy;
@@ -126,6 +126,7 @@ g_aaNameToDetails = \
     [ 'Windows11_64',   'Windows11_64',          g_k64,    2,  64, ['w11', 'w11-64', 'w11sp[0-9]-64', 'win11', 'win11-64',]], # max cpus/cores??
     [ 'Linux',          'Debian',                g_k32,    1, 256, ['deb[0-9]*', 'debian[0-9]*', ]],
     [ 'Linux_64',       'Debian_64',             g_k64,    1, 256, ['deb[0-9]*-64', 'debian[0-9]*-64', ]],
+    [ 'Linux_arm64',    'Debian_arm64',          g_k64,    1, 256, ['deb[0-9]*-arm64', 'debian[0-9]*-arm64', ]],
     [ 'Linux',          'RedHat',                g_k32,    1, 256, ['rhel',   'rhel[0-9]', 'rhel[0-9]u[0-9]']],
     [ 'Linux',          'Fedora',                g_k32,    1, 256, ['fedora', 'fedora[0-9]*', ]],
     [ 'Linux_64',       'Fedora_64',             g_k64,    1, 256, ['fedora-64', 'fedora[0-9]*-64', ]],
