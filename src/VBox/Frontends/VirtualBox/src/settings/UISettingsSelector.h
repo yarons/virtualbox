@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 101692 2023-10-31 16:08:48Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.h 101693 2023-10-31 16:46:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -85,6 +85,9 @@ public:
     virtual QWidget *addItem(const QString &strBigIcon, const QString &strMediumIcon, const QString &strSmallIcon,
                              int iID, const QString &strLink, UISettingsPage *pPage = 0, int iParentID = -1) = 0;
 
+    /** Defines whether section with @a iID is @a fVisible. */
+    virtual void setItemVisible(int iID, bool fVisible) { Q_UNUSED(iID); Q_UNUSED(fVisible); }
+
     /** Defines the @a strText for section with @a iID. */
     virtual void setItemText(int iID, const QString &strText);
     /** Returns the text for section with @a iID. */
@@ -156,6 +159,9 @@ public:
       * @param  iParentID      Brings the parent section ID or -1 if there is no parent. */
     virtual QWidget *addItem(const QString &strBigIcon, const QString &strMediumIcon, const QString &strSmallIcon,
                              int iID, const QString &strLink, UISettingsPage *pPage = 0, int iParentID = -1) RT_OVERRIDE;
+
+    /** Defines whether section with @a iID is @a fVisible. */
+    virtual void setItemVisible(int iID, bool fVisible) RT_OVERRIDE;
 
     /** Defines the @a strText for section with @a iID. */
     virtual void setItemText(int iID, const QString &strText) RT_OVERRIDE;

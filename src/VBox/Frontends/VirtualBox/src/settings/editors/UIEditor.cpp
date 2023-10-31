@@ -1,4 +1,4 @@
-/* $Id: UIEditor.cpp 101608 2023-10-26 17:03:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.cpp 101693 2023-10-31 16:46:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class implementation.
  */
@@ -104,7 +104,12 @@ void UIEditor::filterOut(bool fExpertMode, const QString &strFilter)
     }
     /* Otherwise update widget visibility usual way: */
     else
+    {
+        const bool fVisibilityChanged = isVisible() != fVisible;
         setVisible(fVisible);
+        if (fVisibilityChanged)
+            emit sigVisibilityChange(fVisible);
+    }
 
     /* Finally make sure layouts are freshly
      * activated after visibility changes: */
