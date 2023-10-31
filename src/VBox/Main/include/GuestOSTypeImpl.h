@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
+/* $Id: GuestOSTypeImpl.h 101685 2023-10-31 12:40:20Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -107,6 +107,7 @@ private:
     HRESULT getRecommendedTpmType(TpmType_T *aRecommendedTpmType);
     HRESULT getRecommendedSecureBoot(BOOL *aRecommendedSecureBoot);
     HRESULT getRecommendedWDDMGraphics(BOOL *aRecommendedWDDMGraphics);
+    HRESULT getGuestAdditionsInstallPackageName(com::Utf8Str &aGuestAdditionsInstallPkgName);
 
 
     const Utf8Str mFamilyID;
@@ -114,6 +115,7 @@ private:
     const Utf8Str mOSSubtype;
     const Utf8Str mID;
     const Utf8Str mDescription;
+    const Utf8Str mGuestAdditionsInstallPackageName;
     const VBOXOSTYPE mOSType;
     const uint32_t mOSHint;
     const uint32_t mRAMSize;
