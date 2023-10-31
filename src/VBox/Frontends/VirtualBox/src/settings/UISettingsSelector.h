@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 101691 2023-10-31 16:03:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.h 101692 2023-10-31 16:08:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -40,6 +40,7 @@
 /* Forward declarations: */
 class QAction;
 class QActionGroup;
+class QSortFilterProxyModel;
 class QTabWidget;
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -183,9 +184,11 @@ private:
     void cleanup();
 
     /** Holds the tree-view instance. */
-    UISelectorTreeView *m_pTreeView;
+    UISelectorTreeView    *m_pTreeView;
     /** Holds the model instance. */
-    UISelectorModel    *m_pModel;
+    UISelectorModel       *m_pModel;
+    /** Holds the proxy-model instance. */
+    QSortFilterProxyModel *m_pModelProxy;
 };
 
 
