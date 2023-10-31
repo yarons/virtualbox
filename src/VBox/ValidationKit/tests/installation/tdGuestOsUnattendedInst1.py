@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 101686 2023-10-31 12:41:24Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101035 $"
+__version__ = "$Revision: 101686 $"
 
 
 # Standard Python imports.
@@ -88,8 +88,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
     ## IRQ delay extra data config for win2k VMs.
     kasIdeIrqDelay     = [ 'VBoxInternal/Devices/piix3ide/0/Config/IRQDelay:1', ];
 
-    def __init__(self, oSet, sVmName, sKind, sInstallIso, fFlags = 0):
-        vboxtestvms.BaseTestVm.__init__(self, sVmName, oSet = oSet, sKind = sKind,
+    def __init__(self, oSet, sVmName, sKind, sInstallIso, fFlags = 0, sPlatformArchitecture = 'x86'):
+        vboxtestvms.BaseTestVm.__init__(self, sVmName, sPlatformArchitecture, oSet = oSet, sKind = sKind,
                                         fRandomPvPModeCrap = (fFlags & self.kfNoWin81Paravirt) == 0);
         self.sInstallIso            = sInstallIso;
         self.fInstVmFlags           = fFlags;
@@ -547,6 +547,19 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             #
             UnattendedVm(oSet, 'tst-acp2',              'OS2Warp45', '7.0/uaisos/acp2_us_cd2.iso'),                  # ~400MiB
             ## @todo mcp2 too?
+
+
+            #
+            #
+            # ARM VMs
+            #
+            #
+
+            #
+            # Debian
+            #
+            UnattendedVm(oSet, 'tst-debian-11.8-arm64', 'Debian_arm64', '7.1/uaisos/debian-11.8.0-arm64-DVD-1.iso',  # >=6GiB?
+                         UnattendedVm.kfAvoidNetwork, "ARM"),
         ]);
         # pylint: enable=line-too-long
         self.oTestVmSet = oSet;
