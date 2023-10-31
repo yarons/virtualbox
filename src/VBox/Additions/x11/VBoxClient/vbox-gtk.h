@@ -1,4 +1,4 @@
-/* $Id: vbox-gtk.h 101678 2023-10-31 11:38:53Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox-gtk.h 101688 2023-10-31 12:52:55Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions from Gtk 3.24.38 and Glib 2.17 libraries.
  */
@@ -25,8 +25,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_3_h
-#define GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_3_h
+#ifndef GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_h
+#define GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -324,5 +324,5 @@ extern void g_object_unref(gpointer object);
 
 } /* extern "C" */
 
-#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_3_h */
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_vbox_gtk_h */
 
