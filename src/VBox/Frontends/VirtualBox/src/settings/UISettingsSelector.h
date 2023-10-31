@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.h 101691 2023-10-31 16:03:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -184,7 +184,7 @@ private:
 
     /** Holds the tree-view instance. */
     UISelectorTreeView *m_pTreeView;
-    /** Holds the tree-view instance. */
+    /** Holds the model instance. */
     UISelectorModel    *m_pModel;
 };
 
