@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdBenchmark2.py 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $
+# $Id: tdBenchmark2.py 101679 2023-10-31 11:39:59Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101035 $"
+__version__ = "$Revision: 101679 $"
 
 
 # Standard Python imports.
@@ -137,7 +137,13 @@ class tdBenchmark2(vbox.TestDriver):
         # Large pages only work with nested paging.
         afLargePages = [False, ];
         try:
-            if oVM.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_NestedPaging):
+            fNestedPaging = False;
+            if self.fpApiVer >= 7.1:
+                fNestedPaging = oVM.platform.x86.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_NestedPaging);
+            else:
+                fNestedPaging = oVM.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_NestedPaging);
+
+            if fNestedPaging:
                 afLargePages = [True, False];
         except:
             return reporter.errorXcpt("Failed to get HWVirtExPropertyType_NestedPaging");
