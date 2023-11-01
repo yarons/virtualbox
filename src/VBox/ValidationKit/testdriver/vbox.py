@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 101076 2023-09-08 16:53:37Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 101699 2023-11-01 14:59:19Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101076 $"
+__version__ = "$Revision: 101699 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3862,7 +3862,14 @@ class TestDriver(base.TestDriver):                                              
         self.importVBoxApi();
         if self.fpApiVer >= 5.0:
             try:
-                fVBox = self.oVBox.systemProperties.rawModeSupported;
+                if self.fpApiVer >= 7.1:
+                    # @todo r=aeichner Not entirely correct as we can support multiple platforms on a single host
+                    #                  each having an individual raw-mode status. Not relevant right now because
+                    #                  there is no raw-mode at all currently.
+                    oPlatformProperties = self.oVBox.getPlatformProperties(self.oVBox.host.architecture);
+                    fVBox = oPlatformProperties.rawModeSupported;
+                else:
+                    fVBox = self.oVBox.systemProperties.rawModeSupported;
             except:
                 if not fQuiet:
                     reporter.logXcpt();
