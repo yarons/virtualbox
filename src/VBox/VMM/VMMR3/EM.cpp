@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 101088 2023-09-12 10:22:20Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 101703 2023-11-01 15:34:19Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1937,6 +1937,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
 
             fWakeupPending = true;
             rc2 = VINF_EM_RESCHEDULE;
+            UPDATE_RC();
         }
 #endif /* VBOX_VMM_TARGET_ARMV8 */
 
