@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 101538 2023-10-21 22:30:50Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 101704 2023-11-01 23:47:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2227,6 +2227,7 @@ static VBOXSTRICTRC iemThreadedCompile(PVMCC pVM, PVMCPUCC pVCpu, RTGCPHYS GCPhy
 *   Recompiled Execution Core                                                                                                    *
 *********************************************************************************************************************************/
 
+
 /**
  * Executes a translation block.
  *
@@ -2284,6 +2285,12 @@ static VBOXSTRICTRC iemTbExec(PVMCPUCC pVCpu, PIEMTB pTb) IEM_NOEXCEPT_MAY_LONGJ
                only to break out of TB execution early. */
             if (rcStrict == VINF_IEM_REEXEC_BREAK)
                 return iemExecStatusCodeFiddling(pVCpu, VINF_SUCCESS);
+
+            /* VINF_IEM_REEXEC_WITH_FLAGS needs to receive special treatment
+               and converted to VINF_SUCCESS or whatever is appropriate. */
+            if (rcStrict == VINF_IEM_REEXEC_FINISH_WITH_FLAGS)
+                return iemExecStatusCodeFiddling(pVCpu, iemFinishInstructionWithFlagsSet(pVCpu));
+
             return iemExecStatusCodeFiddling(pVCpu, rcStrict);
         }
     }
