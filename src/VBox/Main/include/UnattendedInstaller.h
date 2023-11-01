@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 101356 2023-10-05 12:44:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UnattendedInstaller.h 101695 2023-11-01 10:41:27Z alexander.eichner@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -552,6 +552,14 @@ protected:
      * @param   pEditor         Editor with the isolinux.cfg file loaded and parsed.
      */
     virtual HRESULT editIsoLinuxCommon(GeneralTextScript *pEditor);
+
+    /**
+     * Performs basic edits on grub configuration file (grub.cfg).
+     *
+     * @returns COM status code
+     * @param   pEditor                 Editor with the grub.cfg file loaded and parsed.
+     */
+    virtual HRESULT editGrubCfg(GeneralTextScript *pEditor);
 };
 
 
@@ -604,13 +612,6 @@ protected:
      * @param   pEditor                  Editor with the menu config. file loaded and parsed.
      */
     HRESULT editDebianMenuCfg(GeneralTextScript *pEditor);
-    /**
-     * Performs basic edits on grub configuration file (grub.cfg).
-     *
-     * @returns COM status code
-     * @param   pEditor                 Editor with the grub.cfg file loaded and parsed.
-     */
-    HRESULT editDebianGrubCfg(GeneralTextScript *pEditor);
 
     /**
      * Performs basic edits on a isolinux.cfg file.
