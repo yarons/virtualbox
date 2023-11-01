@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 101699 2023-11-01 14:59:19Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 101700 2023-11-01 15:03:18Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101699 $"
+__version__ = "$Revision: 101700 $"
 
 # Standard Python imports.
 import copy;
@@ -599,11 +599,11 @@ class BaseTestVm(object):
 
     def getGuestArch(self):
         """ Same as util.getHostArch. """
-        if self.sKind.find('_arm64'):
+        if self.sKind.find('_arm64') >= 0:
             return 'arm64';
-        elif self.sKind.find('_arm32'):
+        elif self.sKind.find('_arm32') >= 0:
             return 'arm32';
-        elif self.sKind.find('_64'):
+        elif self.sKind.find('_64') >= 0:
             return 'amd64';
         else:
             return 'x86';
