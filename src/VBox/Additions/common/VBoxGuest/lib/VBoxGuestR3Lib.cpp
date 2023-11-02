@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuestR3Lib.cpp 101720 2023-11-02 15:21:13Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -299,6 +299,9 @@ static int vbglR3Init(const char *pszDeviceName)
      */
     {
         VBGLIOCDRIVERVERSIONINFO VerInfo;
+
+        RT_ZERO(VerInfo);
+
         VBGLREQHDR_INIT(&VerInfo.Hdr, DRIVER_VERSION_INFO);
         VerInfo.u.In.uMinVersion    = VBGL_IOC_VERSION & UINT32_C(0xffff0000);
         VerInfo.u.In.uReqVersion    = VBGL_IOC_VERSION;

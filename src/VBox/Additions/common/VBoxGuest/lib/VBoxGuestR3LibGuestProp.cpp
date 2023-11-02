@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 101720 2023-11-02 15:21:13Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -961,6 +961,8 @@ VBGLR3DECL(int) VbglR3GuestPropWait(HGCMCLIENTID idClient,
      * Create the GET_NOTIFICATION message and call the host.
      */
     GuestPropMsgGetNotification Msg;
+    RT_ZERO(Msg);
+
     VBGL_HGCM_HDR_INIT_TIMED(&Msg.hdr, idClient, GUEST_PROP_FN_GET_NOTIFICATION, 4, cMillies);
 
     VbglHGCMParmPtrSetString(&Msg.patterns, pszPatterns);
