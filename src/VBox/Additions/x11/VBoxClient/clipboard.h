@@ -1,4 +1,4 @@
-/** $Id: clipboard.h 101681 2023-10-31 12:05:22Z vadim.galitsyn@oracle.com $ */
+/** $Id: clipboard.h 101721 2023-11-02 15:23:58Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard - Main header.
  */
@@ -98,11 +98,11 @@ extern RTDECL(int) VBClClipboardThreadStart(PRTTHREAD pThread, PFNRTTHREAD pfnTh
  *
  * @returns VBox status code.
  * @param   pCtx                Host Shared Clipboard service connection context.
- * @param   pfnReportHostFmts   A callback to notify guest about new content in host clipboard.
- * @param   pfnReadGuestFmt     A callback to notify guest when host requests guest clipboard content.
+ * @param   pfnHGClipReport     A callback to notify guest about new content in host clipboard.
+ * @param   pfnGHClipRead       A callback to notify guest when host requests guest clipboard content.
  */
-extern RTDECL(int) VBClClipboardReadHostEvent(PSHCLCONTEXT pCtx, const PFNHOSTCLIPREPORTFMTS pfnReportHostFmts,
-                                              const PFNHOSTCLIPREAD pfnReadGuestFmt);
+extern RTDECL(int) VBClClipboardReadHostEvent(PSHCLCONTEXT pCtx, const PFNHOSTCLIPREPORTFMTS pfnHGClipReport,
+                                              const PFNHOSTCLIPREAD pfnGHClipRead);
 
 /**
  * Read entire host clipboard buffer in given format.
