@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101710 2023-11-02 09:33:24Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 101711 2023-11-02 09:42:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -149,8 +149,8 @@ private slots:
 
     /** Handles VM OS family @a iIndex change. */
     void sltFamilyChanged(int iIndex);
-    /** Handles VM OS @a strSubtype change. */
-    void sltSubtypeChanged(const QString &strSubtype);
+    /** Handles VM OS @a strDistribution change. */
+    void sltDistributionChanged(const QString &strDistribution);
     /** Handles VM OS type @a iIndex change. */
     void sltTypeChanged(int iIndex);
 
@@ -193,8 +193,8 @@ private:
      * @{ */
         /** Holds the VM OS family ID. */
         QString  m_strFamilyId;
-        /** Holds the VM OS subtype. */
-        QString  m_strSubtype;
+        /** Holds the VM OS distribution. */
+        QString  m_strDistribution;
         /** Holds the VM OS type ID. */
         QString  m_strTypeId;
 
@@ -231,10 +231,10 @@ private:
         QLabel    *m_pLabelFamily;
         /** Holds the VM OS family combo instance. */
         QComboBox *m_pComboFamily;
-        /** Holds the VM OS subtype label instance. */
-        QLabel    *m_pLabelSubtype;
-        /** Holds the VM OS subtype combo instance. */
-        QComboBox *m_pComboSubtype;
+        /** Holds the VM OS distribution label instance. */
+        QLabel    *m_pLabelDistribution;
+        /** Holds the VM OS distribution combo instance. */
+        QComboBox *m_pComboDistribution;
         /** Holds the VM OS type label instance. */
         QLabel    *m_pLabelType;
         /** Holds the VM OS type combo instance. */
