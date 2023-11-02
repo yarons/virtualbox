@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101714 2023-11-02 12:07:28Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 101718 2023-11-02 13:08:31Z alexander.rudnev@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5135,7 +5135,7 @@ SDK_VBoxSoftFloatGuestR3Shared_LIBS.$(KBUILD_TARGET_ARCH) = \
 
 ifdef VBOX_WITH_LIBSSH
  SDK_VBoxLibSsh                := libssh for dynamic dll loading with assembly stubs.
- SDK_VBoxLibSsh_INCS           ?= $(PATH_ROOT)/src/libs/libssh-0.9.6/include
+ SDK_VBoxLibSsh_INCS           ?= $(PATH_ROOT)/src/libs/libssh-0.10.5/include
  # SDK_VBoxLibSsh_LIBS is not defined, as VBoxLibSsh dll is not linked, but loaded explicitly
  # by auto-generated stub code (lazy loading)
 endif
@@ -9162,7 +9162,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101714 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101718 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
