@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachine.h 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -515,6 +515,10 @@ public:
         bool acquireClipboardMode(KClipboardMode &enmMode);
         /** Defines clipboard mode. */
         bool setClipboardMode(KClipboardMode enmMode);
+        /** En/disables guest clipboard file transfers. */
+        bool toggleClipboardFileTransfer(bool fEnabled);
+        /** Returns true if clipboard file transfer is enabled. Returns false otherwise or in case of an error. */
+        bool isClipboardFileTransferEnabled();
 
         /** Acquires D&D mode. */
         bool acquireDnDMode(KDnDMode &enmMode);

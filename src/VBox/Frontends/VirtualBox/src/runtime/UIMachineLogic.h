@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.h 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -286,6 +286,7 @@ private slots:
     void sltAttachUSBDevice();
     void sltAttachWebcamDevice();
     void sltChangeSharedClipboardType(QAction *pAction);
+    void sltFileTransferToggled(bool fChecked);
     void sltToggleNetworkAdapterConnection(bool fChecked);
     void sltChangeDragAndDropType(QAction *pAction);
     void sltInstallGuestAdditions();
@@ -374,6 +375,7 @@ private:
     QActionGroup *m_pRunningOrPausedActions;
     QActionGroup *m_pRunningOrPausedOrStuckActions;
     QActionGroup *m_pSharedClipboardActions;
+    QAction      *m_pFileTransferToggleAction;
     QActionGroup *m_pDragAndDropActions;
 
     /** Holds the map of menu update-handlers. */

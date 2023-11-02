@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.cpp 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -603,6 +603,29 @@ bool UISession::setClipboardMode(KClipboardMode enmMode)
     if (!fSuccess)
         UINotificationMessage::cannotAcquireMachineParameter(comMachine);
     return fSuccess;
+}
+
+bool UISession::toggleClipboardFileTransfer(bool fEnabled)
+{
+    CMachine comMachine = machine();
+    comMachine.SetClipboardFileTransfersEnabled(fEnabled);
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+    return fSuccess;
+}
+
+bool UISession::isClipboardFileTransferEnabled()
+{
+    CMachine comMachine = machine();
+    bool fEnabled = comMachine.GetClipboardFileTransfersEnabled();
+    const bool fSuccess = comMachine.isOk();
+    if (!fSuccess)
+    {
+        UINotificationMessage::cannotAcquireMachineParameter(comMachine);
+        return false;
+    }
+    return fEnabled;
 }
 
 bool UISession::acquireDnDMode(KDnDMode &enmMode)

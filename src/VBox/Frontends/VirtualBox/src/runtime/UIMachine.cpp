@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
+/* $Id: UIMachine.cpp 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -756,6 +756,16 @@ bool UIMachine::acquireClipboardMode(KClipboardMode &enmMode)
 bool UIMachine::setClipboardMode(KClipboardMode enmMode)
 {
     return uisession()->setClipboardMode(enmMode);
+}
+
+bool UIMachine::toggleClipboardFileTransfer(bool fEnabled)
+{
+    return uisession()->toggleClipboardFileTransfer(fEnabled);
+}
+
+bool UIMachine::isClipboardFileTransferEnabled()
+{
+    return uisession()->isClipboardFileTransferEnabled();
 }
 
 bool UIMachine::acquireDnDMode(KDnDMode &enmMode)
