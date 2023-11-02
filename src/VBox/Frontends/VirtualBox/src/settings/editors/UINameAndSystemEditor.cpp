@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 101711 2023-11-02 09:42:03Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 101712 2023-11-02 09:46:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -282,10 +282,10 @@ void UINameAndSystemEditor::retranslateUi()
     if (m_pSelectorPath)
         m_pSelectorPath->setToolTip(tr("Selects the folder hosting virtual machine."));
     if (m_pComboFamily)
-        m_pComboFamily->setToolTip(tr("Selects the operating system family that "
+        m_pComboFamily->setToolTip(tr("Selects the operating system type that "
                                       "you plan to install into this virtual machine."));
     if (m_pComboType)
-        m_pComboType->setToolTip(tr("Selects the operating system type that "
+        m_pComboType->setToolTip(tr("Selects the operating system version that "
                                     "you plan to install into this virtual machine "
                                     "(called a guest operating system)."));
     if (m_pSelectorImage)
@@ -612,12 +612,19 @@ void UINameAndSystemEditor::populateFamilyCombo()
     /* Acquire family IDs: */
     const UIGuestOSTypeManager::UIGuestOSTypeFamilyInfo &families = uiCommon().guestOSTypeManager().getFamilies();
 
+    /* Block signals initially and clear the combo: */
+    m_pComboFamily->blockSignals(true);
+    m_pComboFamily->clear();
+
     /* Populate family combo: */
     for (int i = 0; i < families.size(); ++i)
     {
         m_pComboFamily->addItem(families[i].second);
         m_pComboFamily->setItemData(i, families[i].first);
     }
+
+    /* Unblock signals finally: */
+    m_pComboFamily->blockSignals(false);
 
     /* Select 1st OS family: */
     m_pComboFamily->setCurrentIndex(0);
