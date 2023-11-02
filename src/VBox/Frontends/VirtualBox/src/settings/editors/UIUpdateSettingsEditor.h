@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 101454 2023-10-16 16:10:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -62,13 +62,11 @@ public:
 
 protected:
 
-    /** Filters out contents.
-      * @param  fExpertMode  Brings whether settings expert mode is requested.
-      * @param  strFilter    Brings the filter description should correspond to. */
-    virtual void filterOut(bool fExpertMode, const QString &strFilter) RT_OVERRIDE;
-
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
 
 private slots:
 

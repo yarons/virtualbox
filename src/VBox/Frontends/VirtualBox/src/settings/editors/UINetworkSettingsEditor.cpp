@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.cpp 101529 2023-10-20 16:31:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class implementation.
  */
@@ -204,14 +204,6 @@ void UINetworkSettingsEditor::setForwardingOptionsAvailable(bool fAvailable)
         m_pEditorNetworkFeatures->setForwardingOptionsAvailable(fAvailable);
 }
 
-void UINetworkSettingsEditor::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-
-    updateMinimumLayoutHint();
-}
-
 void UINetworkSettingsEditor::retranslateUi()
 {
     if (m_pCheckboxFeature)
@@ -220,6 +212,11 @@ void UINetworkSettingsEditor::retranslateUi()
         m_pCheckboxFeature->setToolTip(tr("When checked, plugs this virtual network adapter into the virtual machine."));
     }
 
+    updateMinimumLayoutHint();
+}
+
+void UINetworkSettingsEditor::handleFilterChange()
+{
     updateMinimumLayoutHint();
 }
 

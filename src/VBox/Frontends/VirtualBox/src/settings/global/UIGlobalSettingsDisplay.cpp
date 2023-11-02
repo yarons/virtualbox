@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -189,15 +189,12 @@ void UIGlobalSettingsDisplay::saveFromCacheTo(QVariant &data)
     UISettingsPageGlobal::uploadData(data);
 }
 
-void UIGlobalSettingsDisplay::filterOut(bool fExpertMode, const QString &strFilter)
+void UIGlobalSettingsDisplay::retranslateUi()
 {
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-
     updateMinimumLayoutHint();
 }
 
-void UIGlobalSettingsDisplay::retranslateUi()
+void UIGlobalSettingsDisplay::handleFilterChange()
 {
     updateMinimumLayoutHint();
 }

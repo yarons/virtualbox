@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 101520 2023-10-20 14:06:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -750,14 +750,6 @@ void UIMachineSettingsDisplay::setOrderAfter(QWidget *pWidget)
     setTabOrder(m_pEditorVRDESettings, m_pEditorRecordingSettings);
 }
 
-void UIMachineSettingsDisplay::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-
-    updateMinimumLayoutHint();
-}
-
 void UIMachineSettingsDisplay::retranslateUi()
 {
     /* Translate tab-widget: */
@@ -765,6 +757,11 @@ void UIMachineSettingsDisplay::retranslateUi()
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabRemoteDisplay), tr("&Remote Display"));
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabRecording), tr("Re&cording"));
 
+    updateMinimumLayoutHint();
+}
+
+void UIMachineSettingsDisplay::handleFilterChange()
+{
     updateMinimumLayoutHint();
 }
 

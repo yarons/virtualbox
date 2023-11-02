@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 101693 2023-10-31 16:46:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -71,7 +71,12 @@ protected:
     /** Returns editor description which could be used to filter it in. */
     virtual QStringList description() const;
 
-    /** Holds whether widget should be shown in basic mode. */
+    /** Handles filter change.
+      * Reimplement this in subclass to handle various filter changes,
+      * like experience mode change or manual filter editor change. */
+    virtual void handleFilterChange() {}
+
+    /** Holds whether editor should be shown in basic mode. */
     bool  m_fShowInBasicMode;
     /** Holds whether editor is in expert mode. */
     bool  m_fInExpertMode;

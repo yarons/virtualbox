@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 101605 2023-10-26 14:08:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -347,6 +347,14 @@ void UIMachineSettingsNetwork::retranslateUi()
     }
 }
 
+void UIMachineSettingsNetwork::handleFilterChange()
+{
+    /* Show tabs from 2nd to 4th in expert mode only: */
+    if (m_pTabWidget)
+        for (int i = 1; i < m_pTabWidget->count(); ++i)
+            m_pTabWidget->setTabVisible(i, m_fInExpertMode);
+}
+
 void UIMachineSettingsNetwork::polishPage()
 {
     /* Sanity check: */
@@ -363,17 +371,6 @@ void UIMachineSettingsNetwork::polishPage()
                                      m_pCache->child(iSlot).base().m_fAdapterEnabled));
         polishTab(iSlot);
     }
-}
-
-void UIMachineSettingsNetwork::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base class: */
-    UISettingsPageMachine::filterOut(fExpertMode, strFilter);
-
-    /* Show tabs from 2nd to 4th in expert mode only: */
-    if (m_pTabWidget)
-        for (int i = 1; i < m_pTabWidget->count(); ++i)
-            m_pTabWidget->setTabVisible(i, m_fInExpertMode);
 }
 
 void UIMachineSettingsNetwork::sltHandleAlternativeNameChange()

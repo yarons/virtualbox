@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -66,13 +66,6 @@ VBoxUpdateData UIUpdateSettingsEditor::value() const
     return VBoxUpdateData(isCheckEnabled(), updatePeriod(), updateChannel());
 }
 
-void UIUpdateSettingsEditor::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-    fetchValue();
-}
-
 void UIUpdateSettingsEditor::retranslateUi()
 {
     /* Translate check-box: */
@@ -128,6 +121,11 @@ void UIUpdateSettingsEditor::retranslateUi()
                                                                            "pre-release versions and testing builds of "
                                                                            "VirtualBox."));
     }
+}
+
+void UIUpdateSettingsEditor::handleFilterChange()
+{
+    fetchValue();
 }
 
 void UIUpdateSettingsEditor::sltHandleUpdateToggle(bool fEnabled)

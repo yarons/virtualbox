@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 101693 2023-10-31 16:46:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -197,8 +197,9 @@ private slots:
     /** Handles experience mode change. */
     void sltHandleExperienceModeChanged();
 
-    /** Handles changes done to mode checkbox or filter editor. */
-    void sltHandleModeOrFilterChanged();
+    /** Applies filtering rules, which can be changed as
+      * a result of changes in experience mode and filter editor. */
+    void sltApplyFilteringRules();
     /** Handles frame visivility changes. */
     void sltHandleFrameVisibilityChange(bool fVisible);
 

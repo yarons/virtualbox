@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -609,20 +609,17 @@ void UIMachineSettingsSystem::setOrderAfter(QWidget *pWidget)
     setTabOrder(m_pEditorParavirtProvider, m_pEditorAccelerationFeatures);
 }
 
-void UIMachineSettingsSystem::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-
-    updateMinimumLayoutHint();
-}
-
 void UIMachineSettingsSystem::retranslateUi()
 {
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabMotherboard), tr("&Motherboard"));
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabProcessor), tr("&Processor"));
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabAcceleration), tr("Acce&leration"));
 
+    updateMinimumLayoutHint();
+}
+
+void UIMachineSettingsSystem::handleFilterChange()
+{
     updateMinimumLayoutHint();
 }
 

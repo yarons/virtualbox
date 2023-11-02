@@ -1,4 +1,4 @@
-/* $Id: UIAudioSettingsEditor.cpp 101511 2023-10-19 14:38:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioSettingsEditor.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioSettingsEditor class implementation.
  */
@@ -132,14 +132,6 @@ void UIAudioSettingsEditor::setFeatureOptionsAvailable(bool fAvailable)
         m_pEditorAudioFeatures->setEnabled(fAvailable);
 }
 
-void UIAudioSettingsEditor::filterOut(bool fExpertMode, const QString &strFilter)
-{
-    /* Call to base-class: */
-    UIEditor::filterOut(fExpertMode, strFilter);
-
-    updateMinimumLayoutHint();
-}
-
 void UIAudioSettingsEditor::retranslateUi()
 {
     if (m_pCheckboxFeature)
@@ -149,6 +141,11 @@ void UIAudioSettingsEditor::retranslateUi()
                                           "and will communicate with the host audio system using the specified driver."));
     }
 
+    updateMinimumLayoutHint();
+}
+
+void UIAudioSettingsEditor::handleFilterChange()
+{
     updateMinimumLayoutHint();
 }
 
