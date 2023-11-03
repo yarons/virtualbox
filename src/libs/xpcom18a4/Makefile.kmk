@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101735 2023-11-03 14:45:39Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101736 2023-11-03 14:47:25Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -168,7 +168,6 @@ NSPRPUB-HEADERS_SOURCES = \
 	nsprpub/lib/ds/plarenas.h \
 	nsprpub/lib/libc/include/plbase64.h \
 	nsprpub/lib/ds/plhash.h \
-	nsprpub/lib/libc/include/plresolv.h \
 	nsprpub/lib/libc/include/plstr.h \
 	nsprpub/pr/include/pratom.h \
 	nsprpub/pr/include/prbit.h \
