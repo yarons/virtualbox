@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 101722 2023-11-03 00:36:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 101732 2023-11-03 14:19:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -12467,7 +12467,7 @@ FNIEMOP_DEF_1(iemOp_Grp9_cmpxchg16b_Mdq, uint8_t, bRm)
             IEM_MC_ADVANCE_RIP_AND_FINISH(); \
             IEM_MC_END()
 
-#ifdef RT_ARCH_AMD64 /* some code duplication here because IEMAllInstPython.py cannot parse if/else/#if spaghetti. */
+#ifdef RT_ARCH_AMD64
         if (IEM_GET_HOST_CPU_FEATURES(pVCpu)->fCmpXchg16b)
         {
             if (   !(pVCpu->iem.s.fExec & IEM_F_X86_DISREGARD_LOCK)
