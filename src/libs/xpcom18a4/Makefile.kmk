@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101730 2023-11-03 14:09:53Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101734 2023-11-03 14:42:49Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -167,7 +167,6 @@ NSPRPUB-HEADERS_SOURCES = \
 	nsprpub/lib/ds/plarena.h \
 	nsprpub/lib/ds/plarenas.h \
 	nsprpub/lib/libc/include/plbase64.h \
-	nsprpub/lib/libc/include/plerror.h \
 	nsprpub/lib/libc/include/plgetopt.h \
 	nsprpub/lib/ds/plhash.h \
 	nsprpub/lib/libc/include/plresolv.h \
@@ -587,7 +586,6 @@ VBox-xpcom-nspr_SOURCES  = \
 	nsprpub/lib/libc/src/strcstr.c \
 	nsprpub/lib/libc/src/strtok.c \
 	nsprpub/lib/libc/src/base64.c \
-	nsprpub/lib/libc/src/plerror.c \
 	nsprpub/lib/libc/src/plgetopt.c
 
 ifeq ($(filter-out darwin freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # unixish
