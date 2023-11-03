@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 101724 2023-11-03 08:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 101752 2023-11-03 15:56:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -502,22 +502,6 @@ void UIMachineSettingsGeneral::polishPage()
     m_pEditorDiskEncryptionSettings->setEnabled(isMachineOffline());
 }
 
-void UIMachineSettingsGeneral::sltHandleOsTypeChanged()
-{
-    /* Compose new guest OS type: */
-    const CGuestOSType comNewType = uiCommon().virtualBox().GetGuestOSType(guestOSTypeId());
-    /* Notify listeners about new platform architecture: */
-    if (comNewType.isNotNull())
-    {
-        const KPlatformArchitecture enmArch = comNewType.GetPlatformArchitecture();
-        if (comNewType.isOk() && enmArch != KPlatformArchitecture_None)
-            emit sigPlatformArchitectureChanged(enmArch);
-    }
-
-    /* Revalidate the usual way as well: */
-    revalidate();
-}
-
 void UIMachineSettingsGeneral::sltHandleEncryptionCipherChanged()
 {
     m_fEncryptionCipherChanged = true;
@@ -717,7 +701,7 @@ void UIMachineSettingsGeneral::prepareConnections()
 {
     /* Configure 'Basic' connections: */
     connect(m_pEditorNameAndSystem, &UINameAndSystemEditor::sigOsTypeChanged,
-            this, &UIMachineSettingsGeneral::sltHandleOsTypeChanged);
+            this, &UIMachineSettingsGeneral::revalidate);
     connect(m_pEditorNameAndSystem, &UINameAndSystemEditor::sigNameChanged,
             this, &UIMachineSettingsGeneral::revalidate);
 

@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 101724 2023-11-03 08:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 101752 2023-11-03 15:56:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -142,9 +142,6 @@ private slots:
     void sltMachineStateChanged(const QUuid &uMachineId, const KMachineState enmMachineState);
     /** Handles machine data change for machine with certain @a uMachineId. */
     void sltMachineDataChanged(const QUuid &uMachineId);
-
-    /** Handles platform @a enmArch change. */
-    void sltHandlePlatformArchitectureChanged(KPlatformArchitecture enmArch);
 
 private:
 
