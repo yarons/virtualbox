@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 101745 2023-11-03 15:20:58Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 101756 2023-11-03 16:12:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -728,7 +728,7 @@ HRESULT PlatformProperties::getSupportedGuestOSTypes(std::vector<ComPtr<IGuestOS
 #endif
 }
 
-HRESULT PlatformProperties::getSupportedNetAdpPromiscModePolicies(std::vector<NetworkAdapterPromiscModePolicy_T> &aSupportedNetworkAdapterPromiscModePolicies)
+HRESULT PlatformProperties::getSupportedNetAdpPromiscModePols(std::vector<NetworkAdapterPromiscModePolicy_T> &aSupportedNetworkAdapterPromiscModePolicies)
 {
     static const NetworkAdapterPromiscModePolicy_T aNetworkAdapterPromiscModePolicies[] =
     {
