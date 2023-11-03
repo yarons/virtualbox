@@ -1,4 +1,4 @@
-; $Id: VBoxXPCOM.def 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: VBoxXPCOM.def 101749 2023-11-03 15:45:19Z alexander.eichner@oracle.com $
 ;; @file
 ; VirtualBox XPCOM - Import library definition file.
 
@@ -572,7 +572,6 @@ EXPORTS
     _MD_TLockFile
     _MD_UnlockFile
     _MD_gethostname
-    _MD_getsysinfo
     _MD_unix_map_accept_error
     _MD_unix_map_access_error
     _MD_unix_map_bind_error
