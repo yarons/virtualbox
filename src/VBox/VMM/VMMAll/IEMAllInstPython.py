@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101732 2023-11-03 14:19:42Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 101742 2023-11-03 15:16:50Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101732 $"
+__version__ = "$Revision: 101742 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3330,18 +3330,28 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
             return self.isArchIncludedInExpr(self.sExpr, sArch);
 
         @staticmethod
-        def isInBlockForArch(aoCppCondStack, sArch):
+        def isInBlockForArch(aoCppCondStack, sArch, iLine):
             """ Checks if sArch is included in the current conditional block. """
+            _ = iLine;
+            #print('debug: isInBlockForArch(%s,%s); line %s' % (len(aoCppCondStack), sArch, iLine), file = sys.stderr);
             for oCond in aoCppCondStack:
                 if oCond.isArchIncludedInPrimaryBlock(sArch):
                     if oCond.aoElif or oCond.fInElse:
+                        #print('debug: isInBlockForArch -> False #1', file = sys.stderr);
                         return False;
+                    #print('debug: isInBlockForArch(%s,%s): in IF-block' % (len(aoCppCondStack), sArch), file = sys.stderr);
                 else:
+                    fFine = False;
                     for oElifCond in oCond.aoElif:
                         if oElifCond.isArchIncludedInPrimaryBlock(sArch):
                             if oElifCond is not oCond.aoElif[-1] or oCond.fInElse:
+                                #print('debug: isInBlockForArch -> False #3', file = sys.stderr);
                                 return False;
-
+                            fFine = True;
+                    if not fFine and not oCond.fInElse:
+                        #print('debug: isInBlockForArch -> False #4', file = sys.stderr);
+                        return False;
+            #print('debug: isInBlockForArch -> True', file = sys.stderr);
             return True;
 
     def __init__(self, sSrcFile, asLines, sDefaultMap, sHostArch, oInheritMacrosFrom = None):
@@ -5028,7 +5038,7 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         try:
             if (   not self.aoCppCondStack
                 or not self.sHostArch
-                or self.PreprocessorConditional.isInBlockForArch(self.aoCppCondStack, self.sHostArch)):
+                or self.PreprocessorConditional.isInBlockForArch(self.aoCppCondStack, self.sHostArch, self.iLine)):
                 g_aoMcBlocks.append(self.oCurMcBlock);
                 self.cTotalMcBlocks += 1;
         except Exception as oXcpt:
