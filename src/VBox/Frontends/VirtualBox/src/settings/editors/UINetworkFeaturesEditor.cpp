@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 101529 2023-10-20 16:31:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -72,7 +72,7 @@ void UINetworkFeaturesEditor::setAdapterType(const KNetworkAdapterType &enmType)
     if (m_enmAdapterType != enmType)
     {
         m_enmAdapterType = enmType;
-        repopulateAdapterTypeCombo();
+        populateAdapterTypeCombo();
     }
 }
 
@@ -86,7 +86,7 @@ void UINetworkFeaturesEditor::setPromiscuousMode(const KNetworkAdapterPromiscMod
     if (m_enmPromiscuousMode != enmMode)
     {
         m_enmPromiscuousMode = enmMode;
-        repopulatePromiscuousModeCombo();
+        populatePromiscuousModeCombo();
     }
 }
 
@@ -267,6 +267,11 @@ void UINetworkFeaturesEditor::retranslateUi()
     }
 }
 
+void UINetworkFeaturesEditor::handleFilterChange()
+{
+    populateAdapterTypeCombo(); /// @todo adapter types only for now, promisc modes later?
+}
+
 void UINetworkFeaturesEditor::sltOpenPortForwardingDlg()
 {
     UIMachineSettingsPortForwardingDlg dlg(this, m_portForwardingRules);
@@ -380,7 +385,7 @@ void UINetworkFeaturesEditor::prepare()
     retranslateUi();
 }
 
-void UINetworkFeaturesEditor::repopulateAdapterTypeCombo()
+void UINetworkFeaturesEditor::populateAdapterTypeCombo()
 {
     if (m_pComboAdapterType)
     {
@@ -388,11 +393,10 @@ void UINetworkFeaturesEditor::repopulateAdapterTypeCombo()
         m_pComboAdapterType->clear();
 
         /* Load currently supported types: */
-#ifdef VBOX_WITH_VIRT_ARMV8 /** @todo BUGBUG Quick'n dirty fix to make it run on ARM. Needs proper fixing / re-structuring. */
-        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_ARM);
-#else
-        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
-#endif
+        const KPlatformArchitecture enmArch = m_flags.contains("arch")
+                                            ? m_flags.value("arch").value<KPlatformArchitecture>()
+                                            : KPlatformArchitecture_x86;
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
         QVector<KNetworkAdapterType> supportedTypes = comProperties.GetSupportedNetworkAdapterTypes();
 
         /* Make sure requested value if sane is present as well: */
@@ -414,7 +418,7 @@ void UINetworkFeaturesEditor::repopulateAdapterTypeCombo()
     }
 }
 
-void UINetworkFeaturesEditor::repopulatePromiscuousModeCombo()
+void UINetworkFeaturesEditor::populatePromiscuousModeCombo()
 {
     if (m_pComboPromiscuousMode)
     {

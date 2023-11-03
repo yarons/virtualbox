@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsControllerEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsControllerEditor.h 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsControllerEditor class declaration.
  */
@@ -74,6 +74,9 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
 
 private slots:
 

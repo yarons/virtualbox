@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.h 101529 2023-10-20 16:31:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.h 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class declaration.
  */
@@ -120,6 +120,9 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
+
 private slots:
 
     /** Handles request to open port forwarding dialog. */
@@ -130,10 +133,10 @@ private:
     /** Prepares all. */
     void prepare();
 
-    /** Repopulates adapter type combo. */
-    void repopulateAdapterTypeCombo();
-    /** Repopulates promiscuous mode combo. */
-    void repopulatePromiscuousModeCombo();
+    /** Populates adapter type combo. */
+    void populateAdapterTypeCombo();
+    /** Populates promiscuous mode combo. */
+    void populatePromiscuousModeCombo();
 
     /** @name Values
      * @{ */
