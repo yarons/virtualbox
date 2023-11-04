@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101786 2023-11-04 19:58:23Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101789 2023-11-04 20:13:01Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -653,7 +653,6 @@ VBox-xpcom-ds_SOURCES = \
 	xpcom/ds/nsUnicharBuffer.cpp \
 	xpcom/ds/nsVariant.cpp \
 	xpcom/ds/nsVoidArray.cpp \
-	xpcom/ds/nsTextFormatter.cpp \
 	xpcom/ds/nsTimelineService.cpp \
 	xpcom/ds/nsValueArray.cpp \
 	xpcom/ds/nsCOMArray.cpp \
