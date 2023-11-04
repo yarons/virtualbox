@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101772 2023-11-04 17:54:52Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101775 2023-11-04 18:07:57Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -197,7 +197,6 @@ NSPRPUB-HEADERS_SOURCES = \
 	nsprpub/pr/include/prsystem.h \
 	nsprpub/pr/include/prthread.h \
 	nsprpub/pr/include/prtime.h \
-	nsprpub/pr/include/prtpool.h \
 	nsprpub/pr/include/prtrace.h \
 	nsprpub/pr/include/prtypes.h \
 	nsprpub/pr/include/prwin16.h \
@@ -546,7 +545,6 @@ VBox-xpcom-nspr_SOURCES  = \
 	nsprpub/pr/src/misc/prnetdb.c \
 	nsprpub/pr/src/misc/prtime.c \
 	nsprpub/pr/src/misc/prthinfo.c \
-	nsprpub/pr/src/misc/prtpool.c \
 	nsprpub/pr/src/misc/prtrace.c \
 	nsprpub/pr/src/threads/prcmon.c \
 	nsprpub/pr/src/threads/prtpd.c \
