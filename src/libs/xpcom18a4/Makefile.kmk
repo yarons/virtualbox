@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101780 2023-11-04 18:57:12Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101781 2023-11-04 19:10:05Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -565,7 +565,6 @@ ifeq ($(filter-out darwin freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET))
  	nsprpub/pr/src/md/unix/unix_errors.c \
  	nsprpub/pr/src/md/unix/uxproces.c \
  	nsprpub/pr/src/md/unix/uxshm.c \
- 	nsprpub/pr/src/md/unix/uxwrap.c \
  	nsprpub/pr/src/pthreads/ptio.c \
  	nsprpub/pr/src/pthreads/ptsynch.c \
  	nsprpub/pr/src/pthreads/ptthread.c
