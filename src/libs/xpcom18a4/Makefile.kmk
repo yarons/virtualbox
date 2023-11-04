@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101765 2023-11-04 17:01:29Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101766 2023-11-04 17:03:13Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -231,8 +231,7 @@ NSPRPUB-OBS-HEADERS_INST = $(INST_SDK)bindings/xpcom/include/nsprpub/obsolete/
 NSPRPUB-OBS-HEADERS_IFFLAGS = -m 644
 NSPRPUB-OBS-HEADERS_SOURCES = \
 	nsprpub/pr/include/obsolete/probslet.h \
-	nsprpub/pr/include/obsolete/protypes.h \
-	nsprpub/pr/include/obsolete/prsem.h
+	nsprpub/pr/include/obsolete/protypes.h
 
 NSPRPUB-PRIV-HEADERS_INST = $(INST_SDK)bindings/xpcom/include/nsprpub/private/
 NSPRPUB-PRIV-HEADERS_IFFLAGS = -m 644
