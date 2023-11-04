@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101789 2023-11-04 20:13:01Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101790 2023-11-04 20:17:42Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -349,7 +349,6 @@ XPCOM-HEADERS_SOURCES = \
 	xpcom/ds/nsSupportsArray.h \
 	xpcom/ds/nsSupportsPrimitives.h \
 	xpcom/ds/nsTHashtable.h \
-	xpcom/ds/nsTextFormatter.h \
 	xpcom/ds/nsTime.h \
 	xpcom/base/nsTraceRefcntImpl.h \
 	xpcom/ds/nsUnitConversion.h \
