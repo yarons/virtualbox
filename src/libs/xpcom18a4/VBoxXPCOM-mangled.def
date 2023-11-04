@@ -1,4 +1,4 @@
-; $Id: VBoxXPCOM-mangled.def 101749 2023-11-03 15:45:19Z alexander.eichner@oracle.com $
+; $Id: VBoxXPCOM-mangled.def 101764 2023-11-04 16:53:22Z alexander.eichner@oracle.com $
 ;; @file
 ; VirtualBox XPCOM - Import library definition file.
 
@@ -143,25 +143,19 @@ EXPORTS
     VBoxNsplPL_RevokeEvents
     VBoxNsplPL_WaitForEvent
     VBoxNsplPL_strcasecmp
-    VBoxNsplPL_strchr
     VBoxNsplPL_strcmp
-    VBoxNsplPL_strcpy
     VBoxNsplPL_strdup
     VBoxNsplPL_strfree
     VBoxNsplPL_strlen
     VBoxNsplPL_strncasecmp
-    VBoxNsplPL_strnchr
     VBoxNsplPL_strncmp
     VBoxNsplPL_strncpy
     VBoxNsplPL_strncpyz
     VBoxNsplPL_strndup
     VBoxNsplPL_strnlen
-    VBoxNsplPL_strnrchr
-    VBoxNsplPL_strnrstr
     VBoxNsplPL_strnstr
     VBoxNsplPL_strrchr
     VBoxNsplPL_strrstr
-    VBoxNsplPL_strstr
     VBoxNsprGetExecutionEnvironment
     VBoxNsprPRP_DestroyNakedCondVar
     VBoxNsprPRP_NakedBroadcast

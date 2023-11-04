@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101762 2023-11-03 16:46:47Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101764 2023-11-04 16:53:22Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -563,14 +563,12 @@ VBox-xpcom-nspr_SOURCES  = \
 	nsprpub/lib/libc/src/strlen.c \
 	nsprpub/lib/libc/src/strcpy.c \
 	nsprpub/lib/libc/src/strdup.c \
-	nsprpub/lib/libc/src/strcat.c \
 	nsprpub/lib/libc/src/strcmp.c \
 	nsprpub/lib/libc/src/strccmp.c \
 	nsprpub/lib/libc/src/strchr.c \
 	nsprpub/lib/libc/src/strpbrk.c \
 	nsprpub/lib/libc/src/strstr.c \
-	nsprpub/lib/libc/src/strcstr.c \
-	nsprpub/lib/libc/src/strtok.c
+	nsprpub/lib/libc/src/strcstr.c
 
 ifeq ($(filter-out darwin freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # unixish
  VBox-xpcom-nspr_SOURCES += \
