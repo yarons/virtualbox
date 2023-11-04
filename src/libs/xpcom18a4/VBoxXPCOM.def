@@ -1,4 +1,4 @@
-; $Id: VBoxXPCOM.def 101764 2023-11-04 16:53:22Z alexander.eichner@oracle.com $
+; $Id: VBoxXPCOM.def 101778 2023-11-04 18:33:49Z alexander.eichner@oracle.com $
 ;; @file
 ; VirtualBox XPCOM - Import library definition file.
 
@@ -440,7 +440,6 @@ EXPORTS
     PR_Send
     PR_SendFile
     PR_SendTo
-    PR_SetConcurrency
     PR_SetEnv
     PR_SetError
     PR_SetErrorText
