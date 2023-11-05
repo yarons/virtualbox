@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101803 2023-11-05 09:09:38Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101804 2023-11-05 09:15:17Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -321,7 +321,6 @@ XPCOM-HEADERS_SOURCES = \
 	xpcom/io/nsLinebreakConverter.h \
 	xpcom/io/nsLocalFile.h \
 	xpcom/io/nsLocalFileUnix.h \
-	xpcom/io/nsLocalFileOS2.h \
 	xpcom/io/nsLocalFileOSX.h \
 	xpcom/components/nsModule.h \
 	xpcom/io/nsMultiplexInputStream.h \
