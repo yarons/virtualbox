@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101838 2023-11-05 16:43:52Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101839 2023-11-05 17:11:43Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -539,7 +539,6 @@ ifeq ($(filter-out darwin freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET))
  VBox-xpcom-nspr_SOURCES += \
  	nsprpub/pr/src/md/unix/unix.c \
  	nsprpub/pr/src/md/unix/unix_errors.c \
- 	nsprpub/pr/src/md/unix/uxproces.c \
  	nsprpub/pr/src/md/unix/uxshm.c \
  	nsprpub/pr/src/pthreads/ptio.c \
  	nsprpub/pr/src/pthreads/ptsynch.c \
