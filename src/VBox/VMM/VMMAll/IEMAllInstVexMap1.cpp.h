@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 101387 2023-10-07 23:34:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 101802 2023-11-05 03:17:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -1216,9 +1216,9 @@ FNIEMOP_DEF(iemOp_vmovddup_Vx_Wx)
          */
         if (pVCpu->iem.s.uVexLength == 0)
         {
-            IEM_MC_BEGIN(1, 0, IEM_MC_F_NOT_286_OR_OLDER, 0);
+            IEM_MC_BEGIN(0, 1, IEM_MC_F_NOT_286_OR_OLDER, 0);
             IEMOP_HLP_DONE_VEX_DECODING_NO_VVVV_EX(fAvx);
-            IEM_MC_ARG(uint64_t,                    uSrc, 0);
+            IEM_MC_LOCAL(uint64_t,                  uSrc);
 
             IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT();
             IEM_MC_PREPARE_AVX_USAGE();
@@ -1254,9 +1254,9 @@ FNIEMOP_DEF(iemOp_vmovddup_Vx_Wx)
          */
         if (pVCpu->iem.s.uVexLength == 0)
         {
-            IEM_MC_BEGIN(1, 1, IEM_MC_F_NOT_286_OR_OLDER, 0);
+            IEM_MC_BEGIN(0, 2, IEM_MC_F_NOT_286_OR_OLDER, 0);
             IEM_MC_LOCAL(RTGCPTR,                   GCPtrEffSrc);
-            IEM_MC_ARG(uint64_t,                    uSrc, 0);
+            IEM_MC_LOCAL(uint64_t,                  uSrc);
 
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
             IEMOP_HLP_DONE_VEX_DECODING_NO_VVVV_EX(fAvx);
