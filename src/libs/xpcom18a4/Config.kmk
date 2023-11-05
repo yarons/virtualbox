@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101803 2023-11-05 09:09:38Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 101808 2023-11-05 09:55:55Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -428,8 +428,6 @@ XPCOM_IDLFILES = \
 	xpcom/io/nsIStreamBufferAccess.idl \
 	xpcom/io/nsIByteArrayInputStream.idl \
 	xpcom/io/nsISeekableStream.idl \
-	xpcom/io/nsIFastLoadFileControl.idl \
-	xpcom/io/nsIFastLoadService.idl \
 	xpcom/io/nsIInputStreamTee.idl \
 	xpcom/io/nsIMultiplexInputStream.idl \
 	xpcom/io/nsIPipe.idl \
