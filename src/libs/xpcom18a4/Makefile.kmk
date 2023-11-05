@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101808 2023-11-05 09:55:55Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101809 2023-11-05 10:08:04Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1194,8 +1194,6 @@ VBOX_XPTFILES = $(addprefix $(PATH_TARGET)/VBox-xpcom-xpt-files/, \
 		nsIBinaryInputStream.xpt \
 		nsIBinaryOutputStream.xpt \
 		nsIByteArrayInputStream.xpt \
-		nsIFastLoadFileControl.xpt \
-		nsIFastLoadService.xpt \
 		nsIInputStreamTee.xpt \
 		nsILineInputStream.xpt \
 		nsIMultiplexInputStream.xpt \
