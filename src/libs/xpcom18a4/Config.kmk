@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101835 2023-11-05 14:42:57Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 101836 2023-11-05 14:56:30Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -405,7 +405,6 @@ XPCOM_IDLFILES = \
 	xpcom/ds/nsIAtom.idl \
 	xpcom/ds/nsIAtomService.idl \
 	xpcom/ds/nsIProperties.idl \
-	xpcom/ds/nsIPersistentProperties2.idl \
 	xpcom/ds/nsIStringEnumerator.idl \
 	xpcom/ds/nsISupportsPrimitives.idl \
 	xpcom/ds/nsISupportsIterators.idl \
