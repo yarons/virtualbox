@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.h 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.h 101880 2023-11-06 15:49:29Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for IPC between VBoxClient and vboxwl tool.
  */
@@ -421,5 +421,5 @@ namespace vbcl
  */
 RTDECL(int) vbcl_wayland_hlp_gtk_ipc_srv_name(char *szBuf, size_t cbBuf);
 
-#endif /* GA_INCLUDED_SRC_x11_VBoxClient_wayland_helper_ipc_h */
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_wayland_helper_ipc_h */
 

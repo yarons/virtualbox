@@ -1,4 +1,4 @@
-/* $Id: vboxwl.cpp 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: vboxwl.cpp 101880 2023-11-06 15:49:29Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Helper tool for grabbing input focus and perform
  * drag-n-drop and clipboard sharing in Wayland.
@@ -29,7 +29,7 @@
 #include <stdlib.h>
 
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/message.h>
 #include <iprt/getopt.h>
 #include <iprt/stream.h>
