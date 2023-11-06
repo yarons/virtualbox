@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstCommonBodyMacros.h 101387 2023-10-07 23:34:54Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstCommonBodyMacros.h 101850 2023-11-06 10:13:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Body Macros.
  *
@@ -77,7 +77,7 @@
                 IEM_MC_CALL_VOID_AIMPL_3(a_fnNormalU32, pu32Dst, u32Src, pEFlags); \
                 \
                 if (a_fModifiesDstReg) \
-                    IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst); \
+                    IEM_MC_CLEAR_HIGH_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm)); \
                 IEM_MC_ADVANCE_RIP_AND_FINISH(); \
                 IEM_MC_END(); \
                 break; \
@@ -141,7 +141,7 @@
                 IEM_MC_CALL_VOID_AIMPL_3(a_fnNormalU32, pu32Dst, u32Src, pEFlags); \
                 \
                 if (a_fModifiesDstReg) \
-                    IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst); \
+                    IEM_MC_CLEAR_HIGH_GREG_U64(IEM_GET_MODRM_REG(pVCpu, bRm)); \
                 IEM_MC_ADVANCE_RIP_AND_FINISH(); \
                 IEM_MC_END(); \
                 break; \

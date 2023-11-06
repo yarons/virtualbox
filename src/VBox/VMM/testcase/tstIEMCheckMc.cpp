@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 101802 2023-11-05 03:17:44Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 101850 2023-11-06 10:13:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -669,7 +669,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_STORE_GREG_U64_CONST(a_iGReg, a_u64C)    do { CHK_GREG_IDX(a_iGReg); uint64_t const uTmp = (a_u64C); RT_NOREF_PV(uTmp); (void)fMcBegin; } while (0)
 #define IEM_MC_STORE_FPUREG_R80_SRC_REF(a_iSt, a_pr80Src) do { CHK_PTYPE(PCRTFLOAT80U, a_pr80Src); Assert((a_iSt) < 8); (void)fMcBegin; } while (0)
 #define IEM_MC_CLEAR_HIGH_GREG_U64(a_iGReg)             do { CHK_GREG_IDX(a_iGReg); (void)fMcBegin;  } while (0)
-#define IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(a_pu32Dst)    do { CHK_PTYPE(uint32_t *, a_pu32Dst); (void)fMcBegin; } while (0)
 #define IEM_MC_STORE_SREG_BASE_U64(a_iSeg, a_u64Value)  do { (void)fMcBegin; CHK_SEG_IDX(a_iSeg); } while (0)
 #define IEM_MC_STORE_SREG_BASE_U32(a_iSeg, a_u32Value)  do { (void)fMcBegin; CHK_SEG_IDX(a_iSeg); } while (0)
 #define IEM_MC_REF_GREG_U8(a_pu8Dst, a_iGReg)           do { CHK_GREG_IDX(a_iGReg); (a_pu8Dst)  = (uint8_t  *)((uintptr_t)0); CHK_PTYPE(uint8_t  *, a_pu8Dst);  (void)fMcBegin; } while (0)
