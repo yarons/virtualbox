@@ -1,4 +1,4 @@
-/* $Id: UIParavirtProviderEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIParavirtProviderEditor.h 101865 2023-11-06 12:28:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIParavirtProviderEditor class declaration.
  */
@@ -69,6 +69,9 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIChipsetEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIChipsetEditor.cpp 101865 2023-11-06 12:28:34Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChipsetEditor class implementation.
  */
@@ -93,6 +93,11 @@ void UIChipsetEditor::retranslateUi()
     }
 }
 
+void UIChipsetEditor::handleFilterChange()
+{
+    populateCombo();
+}
+
 void UIChipsetEditor::prepare()
 {
     /* Create main layout: */
@@ -149,7 +154,10 @@ void UIChipsetEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported values: */
-        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
+        const KPlatformArchitecture enmArch = m_flags.contains("arch")
+                                            ? m_flags.value("arch").value<KPlatformArchitecture>()
+                                            : KPlatformArchitecture_x86;
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
         m_supportedValues = comProperties.GetSupportedChipsetTypes();
 
         /* Make sure requested value if sane is present as well: */
