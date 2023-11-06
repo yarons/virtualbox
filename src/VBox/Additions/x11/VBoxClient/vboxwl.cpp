@@ -1,4 +1,4 @@
-/* $Id: vboxwl.cpp 101881 2023-11-06 16:29:36Z vadim.galitsyn@oracle.com $ */
+/* $Id: vboxwl.cpp 101887 2023-11-06 18:00:46Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Helper tool for grabbing input focus and perform
  * drag-n-drop and clipboard sharing in Wayland.
@@ -773,7 +773,7 @@ static void vboxwl_parse_params(int argc, char *argv[])
     if (RT_SUCCESS(rc)) \
     { \
         rc = _fn; \
-        if (RT_FAILURE(rc) && _error != NULL) \
+        if (RT_FAILURE(rc)) \
             RTPrintf("%s, rc=%Rrc\n", _error, rc); \
     }
 
@@ -807,7 +807,7 @@ int main(int argc, char *argv[])
     /* Set custom log prefix. */
     VBClLogSetLogPrefix(pszLogPrefix);
 
-    VBOXWL_INIT(vboxwl_run_command(),                   NULL);
+    VBOXWL_INIT(vboxwl_run_command(),                   "cannot run command");
 
     return RT_SUCCESS(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
