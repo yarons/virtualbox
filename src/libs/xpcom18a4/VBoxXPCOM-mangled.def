@@ -1,4 +1,4 @@
-; $Id: VBoxXPCOM-mangled.def 101778 2023-11-04 18:33:49Z alexander.eichner@oracle.com $
+; $Id: VBoxXPCOM-mangled.def 101871 2023-11-06 14:18:58Z alexander.eichner@oracle.com $
 ;; @file
 ; VirtualBox XPCOM - Import library definition file.
 
@@ -488,6 +488,7 @@ EXPORTS
     VBoxNsxpNS_GetMemoryManager
     VBoxNsxpNS_GetServiceManager
     VBoxNsxpNS_GetTraceRefcnt
+    VBoxNsxpNS_IsXPCOMInitialized
     VBoxNsxpNS_InitXPCOM2
     VBoxNsxpNS_MeanAndStdDev
     VBoxNsxpNS_NewByteInputStream
