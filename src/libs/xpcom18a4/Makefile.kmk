@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101843 2023-11-05 19:13:11Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101851 2023-11-06 10:35:57Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -640,7 +640,6 @@ VBox-xpcom-io_SOURCES = \
 	xpcom/io/nsInputStreamTee.cpp \
 	xpcom/io/nsLocalFileCommon.cpp \
 	xpcom/io/nsScriptableInputStream.cpp \
-	xpcom/io/nsSegmentedBuffer.cpp \
 	xpcom/io/SpecialSystemDirectory.cpp \
 	xpcom/io/nsStringStream.cpp \
 	xpcom/io/nsNativeCharsetUtils.cpp
