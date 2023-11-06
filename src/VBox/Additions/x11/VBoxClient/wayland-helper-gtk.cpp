@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-gtk.cpp 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-gtk.cpp 101883 2023-11-06 17:37:54Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gtk helper for Wayland.
  *
@@ -65,7 +65,7 @@ typedef struct
 
 /**
  * A set of objects required to handle clipboard sharing over
- * and drag-n-drop using Gtk library.. */
+ * and drag-n-drop using Gtk library. */
 typedef struct
 {
     /** Wayland event loop thread. */
