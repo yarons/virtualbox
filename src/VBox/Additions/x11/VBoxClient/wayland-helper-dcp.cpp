@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 101883 2023-11-06 17:37:54Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 101886 2023-11-06 17:57:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -988,6 +988,7 @@ static const struct zwlr_data_control_device_v1_listener g_data_device_listener 
  * Wayland Data Control Source callbacks.
  *********************************************************************************************************************************/
 
+
 /**
  * Wayland data send callback.
  *
@@ -995,7 +996,7 @@ static const struct zwlr_data_control_device_v1_listener g_data_device_listener 
  * data from us.
  *
  * @param pvUser            VBox private data.
- * @param pDataSource,      Wayland Data Control Source object.
+ * @param pDataSource       Wayland Data Control Source object.
  * @param sMimeType         A mime-type of requested data.
  * @param fd                A file descriptor to write clipboard content into.
  */
