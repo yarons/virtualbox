@@ -1,4 +1,4 @@
-/* $Id: wayland-helper.h 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper.h 101881 2023-11-06 16:29:36Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for Wayland helpers.
  */
@@ -89,7 +89,7 @@ typedef enum
     /** Announce clipboard formats to the host. */
     VBCL_WL_CLIPBOARD_SESSION_TYPE_ANNOUNCE_TO_HOST,
     /** Copy clipboard data to the host. */
-    VBCL_WL_CLIPBOARD_SESSION_TYPE_COPY_TO_HOST,
+    VBCL_WL_CLIPBOARD_SESSION_TYPE_COPY_TO_HOST
 } vbcl_wl_session_type_t;
 
 /** Session private data. */

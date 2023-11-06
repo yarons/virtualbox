@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-ipc.h 101880 2023-11-06 15:49:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-ipc.h 101881 2023-11-06 16:29:36Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Definitions for IPC between VBoxClient and vboxwl tool.
  */
@@ -263,18 +263,18 @@ namespace vbcl
                      * Process IPC flow from start to finish.
                      *
                      * @returns IPRT status code.
-                     * @param   flow            Pointer to selected IPC flow.
+                     * @param   pFlow           Pointer to selected IPC flow.
                      * @param   hIpcSession     IPC connection handle.
                      */
-                    int flow(const flow_t *flow, RTLOCALIPCSESSION hIpcSession)
+                    int flow(const flow_t *pFlow, RTLOCALIPCSESSION hIpcSession)
                     {
                         int idx = 0;
                         int rc = VINF_SUCCESS;
 
                         while (   RT_SUCCESS(rc)
-                               && flow[idx].enmCmd != CMD_MAX)
+                               && pFlow[idx].enmCmd != CMD_MAX)
                         {
-                            rc = select_fn(flow[idx].enmCmd, flow[idx].fDirection, hIpcSession);
+                            rc = select_fn(pFlow[idx].enmCmd, pFlow[idx].fDirection, hIpcSession);
                             idx++;
                         }
 

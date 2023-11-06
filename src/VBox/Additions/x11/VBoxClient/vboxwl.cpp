@@ -1,4 +1,4 @@
-/* $Id: vboxwl.cpp 101880 2023-11-06 15:49:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: vboxwl.cpp 101881 2023-11-06 16:29:36Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Helper tool for grabbing input focus and perform
  * drag-n-drop and clipboard sharing in Wayland.
@@ -69,7 +69,7 @@ static char *g_pszProgName;
 
 /** A session ID which will be specified in communication messages
  * with VBoxClient instance. */
-static uint32_t g_uSessionId = 0;;
+static uint32_t g_uSessionId = 0;
 
 /** One-shot session type. */
 static vbcl_wl_session_type_t g_enmSessionType = VBCL_WL_SESSION_TYPE_INVALID;
