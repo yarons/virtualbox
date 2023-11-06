@@ -1,4 +1,4 @@
-# $Id: deffiles 101894 2023-11-06 19:05:00Z vadim.galitsyn@oracle.com $
+# $Id: deffiles 101896 2023-11-06 19:33:24Z vadim.galitsyn@oracle.com $
 ## @file
 # VirtualBox linux Guest Additions default files list
 #
@@ -36,6 +36,7 @@ DEFAULT_FILE_NAMES=" \
     /usr/bin/vboxadd-xclient \
     /usr/bin/VBoxAudioTest \
     /usr/bin/VBoxClient \
+    /usr/bin/vboxwl \
     /usr/bin/VBoxDRMClient \
     /usr/bin/VBoxControl \
     /usr/sbin/vbox-greeter \
