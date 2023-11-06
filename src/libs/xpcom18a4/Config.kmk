@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101836 2023-11-05 14:56:30Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 101852 2023-11-06 11:09:45Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -372,7 +372,6 @@ TEMPLATE_XPComDllYasm-x86_LIBS         = $(subst $(LIB_RUNTIME),$(VBOX_LIB_RUNTI
 XPCOM_IDLFILES = \
 	xpcom/base/nsIDebug.idl \
 	xpcom/base/nsIInterfaceRequestor.idl \
-	xpcom/base/nsIMemory.idl \
 	xpcom/base/nsIProgrammingLanguage.idl \
 	xpcom/base/nsISupports.idl \
 	xpcom/base/nsITraceRefcnt.idl \
