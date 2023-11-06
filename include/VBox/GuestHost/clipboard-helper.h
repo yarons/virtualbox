@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: clipboard-helper.h 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -43,6 +43,9 @@
 #include <iprt/string.h>
 
 #include <VBox/GuestHost/SharedClipboard.h>
+
+/** Guest property which is set by GUI in order to notify guest about VM window focus change.  */
+#define VBOX_GUI_FOCUS_CHANGE_GUEST_PROP_NAME   "/VirtualBox/GuestAdd/GuiOnFocus"
 
 /** Constants needed for string conversions done by the Linux/Mac clipboard code. */
 enum

@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 100246 2023-06-22 10:55:10Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxClient.h 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -37,6 +37,9 @@
 #include <iprt/string.h>
 
 #include <VBox/GuestHost/DisplayServerType.h>
+
+/** A shortcut to log callback entering. */
+#define VBCL_LOG_CALLBACK VBClLogVerbose(3, "%s\n", __func__)
 
 int VBClShowNotify(const char *pszHeader, const char *pszBody);
 
