@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -393,8 +393,8 @@ void UINetworkFeaturesEditor::populateAdapterTypeCombo()
         m_pComboAdapterType->clear();
 
         /* Load currently supported types: */
-        const KPlatformArchitecture enmArch = m_flags.contains("arch")
-                                            ? m_flags.value("arch").value<KPlatformArchitecture>()
+        const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
+                                            ? optionalFlags().value("arch").value<KPlatformArchitecture>()
                                             : KPlatformArchitecture_x86;
         CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
         QVector<KNetworkAdapterType> supportedTypes = comProperties.GetSupportedNetworkAdapterTypes();

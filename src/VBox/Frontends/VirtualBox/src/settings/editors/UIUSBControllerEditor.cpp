@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 101865 2023-11-06 12:28:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -152,8 +152,8 @@ void UIUSBControllerEditor::prepare()
 void UIUSBControllerEditor::updateButtonSet()
 {
     /* Load currently supported types: */
-    const KPlatformArchitecture enmArch = m_flags.contains("arch")
-                                        ? m_flags.value("arch").value<KPlatformArchitecture>()
+    const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
+                                        ? optionalFlags().value("arch").value<KPlatformArchitecture>()
                                         : KPlatformArchitecture_x86;
     CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
     m_supportedValues = comProperties.GetSupportedUSBControllerTypes();

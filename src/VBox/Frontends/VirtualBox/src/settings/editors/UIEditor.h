@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 101723 2023-11-03 08:38:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -54,6 +54,9 @@ public:
     /** Constructs editor passing @a pParent to the base-class.
       * @param  fShowInBasicMode  Brings whether widget should be shown in basic mode. */
     UIEditor(QWidget *pParent = 0, bool fShowInBasicMode = false);
+
+    /** Returns editor optional flags. */
+    QMap<QString, QVariant> optionalFlags() const { return m_flags; }
 
     /** Adds @a pEditor into list of sub-editor. */
     void addEditor(UIEditor *pEditor);
