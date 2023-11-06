@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 101331 2023-10-03 14:21:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 101868 2023-11-06 13:08:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -179,6 +179,9 @@ public:
     UIStorageSettingsEditor(QWidget *pParent = 0);
     /** Destructs editor. */
     virtual ~UIStorageSettingsEditor() RT_OVERRIDE;
+
+    /** Returns platform architecture. */
+    KPlatformArchitecture arch() const;
 
     /** Defines @a pActionPool. */
     void setActionPool(UIActionPool *pActionPool);
