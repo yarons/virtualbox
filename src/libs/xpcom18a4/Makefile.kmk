@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101945 2023-11-07 14:46:15Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 101948 2023-11-07 15:36:10Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -489,7 +489,6 @@ VBox-xpcom-nspr_SOURCES  = \
 	nsprpub/pr/src/misc/prerrortable.c \
 	nsprpub/pr/src/misc/prinit.c \
 	nsprpub/pr/src/misc/prinrval.c \
-	nsprpub/pr/src/misc/pripc.c \
 	nsprpub/pr/src/misc/prlog2.c \
 	nsprpub/pr/src/misc/prlong.c \
 	nsprpub/pr/src/misc/prtime.c \
