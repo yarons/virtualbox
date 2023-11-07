@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 101911 2023-11-07 01:29:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 101913 2023-11-07 01:45:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -768,6 +768,8 @@ DECL_HIDDEN_THROW(uint32_t) iemNativeRegFlushPendingWrites(PIEMRECOMPILERSTATE p
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitLoadGprWithGstShadowReg(PIEMRECOMPILERSTATE pReNative, uint32_t off,
                                                                  uint8_t idxHstReg, IEMNATIVEGSTREG enmGstReg);
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCheckCallRetAndPassUp(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxInstr);
+
+extern DECL_HIDDEN_DATA(const char * const) g_apszIemNativeHstRegNames[];
 
 
 /**
