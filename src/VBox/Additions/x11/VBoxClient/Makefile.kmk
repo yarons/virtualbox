@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101882 2023-11-06 17:22:12Z vadim.galitsyn@oracle.com $
+# $Id: Makefile.kmk 101941 2023-11-07 13:06:08Z vadim.galitsyn@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -124,10 +124,6 @@ ifdef VBOX_WITH_DISTRO_XRAND_XINERAMA
  ifndef VBOX_WITH_VBOXCLIENT_LAZY_LOAD
   VBoxClient_LIBS += Xrandr
  endif
-endif
-ifdef VBOX_WITH_WAYLAND_ADDITIONS
- VBoxClient_LIBS.linux += glib-2.0
- VBoxClient_LIBS.linux += gobject-2.0
 endif
 
 # XXX: -L comes from the template, but not rpath
