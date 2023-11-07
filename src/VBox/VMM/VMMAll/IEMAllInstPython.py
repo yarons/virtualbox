@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101850 2023-11-06 10:13:31Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 101911 2023-11-07 01:29:56Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101850 $"
+__version__ = "$Revision: 101911 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3096,6 +3096,7 @@ g_dMcStmtParsers = {
     'IEM_MC_UPDATE_FSW_THEN_POP_POP':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_UPDATE_FSW_WITH_MEM_OP':                             (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_UPDATE_FSW_WITH_MEM_OP_THEN_POP':                    (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_NO_NATIVE_RECOMPILE':                                (McBlock.parseMcGeneric,           False, False, ),
 };
 
 ## List of microcode blocks.

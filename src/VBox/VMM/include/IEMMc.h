@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 101850 2023-11-06 10:13:31Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 101911 2023-11-07 01:29:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -54,6 +54,9 @@
             return rcStrict2; \
     } while (0)
 
+
+/** Dummy MC that prevents native recompilation. */
+#define IEM_MC_NO_NATIVE_RECOMPILE()                    ((void)0)
 
 /** Advances RIP, finishes the instruction and returns.
  * This may include raising debug exceptions and such. */
