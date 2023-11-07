@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: x11restore.pl 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: x11restore.pl 101937 2023-11-07 12:15:59Z brent.paulson@oracle.com $
 ## @file
 # Restore xorg.conf while removing Guest Additions.
 #
@@ -41,6 +41,10 @@ my $vboxpresent = "vboxvideo";
 
 foreach $cfg (@cfg_files)
 {
+    if (($os_type =~ 'SunOS') && (defined $ENV{PKG_INSTALL_ROOT}))
+    {
+        $cfg = $ENV{PKG_INSTALL_ROOT}.$cfg;
+    }
     if (open(CFG, $cfg))
     {
         @array=<CFG>;
@@ -53,6 +57,7 @@ foreach $cfg (@cfg_files)
                 if (open(BAK, $cfg.".bak"))
                 {
                     close(BAK);
+                    print("Restoring $cfg.back to $cfg.\n");
                     rename $cfg.".bak", $cfg;
                 }
                 else
@@ -72,6 +77,3 @@ foreach $cfg (@cfg_files)
         $config_count++;
     }
 }
-
-$config_count != 0 or die "Could not find backed-up xorg.conf to restore it.";
-
