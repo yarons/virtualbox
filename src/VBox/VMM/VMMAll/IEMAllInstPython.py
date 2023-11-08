@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101954 2023-11-08 02:31:04Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 101958 2023-11-08 10:54:58Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101954 $"
+__version__ = "$Revision: 101958 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2895,6 +2895,8 @@ g_dMcStmtParsers = {
     'IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP':                       (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP_POP':                   (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FPU_TO_MMX_MODE':                                    (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_HINT_FLUSH_GUEST_SHADOW_GREG':                       (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_HINT_FLUSH_GUEST_SHADOW_SREG':                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ':                                        (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_NOT_SET':                    (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_SET':                        (McBlock.parseMcGenericCond,       True,  True,  ),

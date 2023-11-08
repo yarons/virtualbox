@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 101954 2023-11-08 02:31:04Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 101958 2023-11-08 10:54:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -1041,6 +1041,9 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_IF_MXCSR_XCPT_PENDING()                                  (void)fMcBegin; if (g_fRandom != fSseRead) {
 #define IEM_MC_ELSE()                                                   } else {
 #define IEM_MC_ENDIF()                                                  } do { (void)fMcBegin; } while (0)
+
+#define IEM_MC_HINT_FLUSH_GUEST_SHADOW_GREG(a_iGReg)                    ((void)fMcBegin)
+#define IEM_MC_HINT_FLUSH_GUEST_SHADOW_SREG(a_iSReg)                    ((void)fMcBegin)
 
 /** @}  */
 
