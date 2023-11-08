@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 101849 2023-11-06 09:48:15Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102010 2023-11-08 21:36:54Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 101849 $"
+__version__ = "$Revision: 102010 $"
 
 # Standard python imports:
 import copy;
@@ -196,13 +196,24 @@ class NativeRecompFunctionVariation(object):
         Returns the native recompiler function body for this threaded variant.
         """
         # Take the threaded function statement list and add detected
-        # IEM_CIMPL_F_XXX flags to the IEM_MC_BEGIN statement.
+        # IEM_CIMPL_F_XXX flags to the IEM_MC_BEGIN statement.  Also add
+        # IEM_MC_F_WITHOUT_FLAGS if this isn't a variation with eflags checking
+        # and clearing while there are such variations for this function (this
+        # sounds a bit backwards, but has to be done this way for the use we
+        # make of the flags in CIMPL calls).
         aoStmts = list(self.oVariation.aoStmtsForThreadedFunction) # type: list(McStmt)
         for iStmt, oStmt in enumerate(aoStmts):
-            if oStmt.sName == 'IEM_MC_BEGIN' and self.oVariation.oParent.dsCImplFlags:
-                oNewStmt = copy.deepcopy(oStmt);
-                oNewStmt.asParams[3] = ' | '.join(sorted(self.oVariation.oParent.dsCImplFlags.keys()));
-                aoStmts[iStmt] = oNewStmt;
+            if oStmt.sName == 'IEM_MC_BEGIN':
+                fWithoutFlags = (    self.oVariation.isWithFlagsCheckingAndClearingVariation()
+                                 and self.oVariation.oParent.hasWithFlagsCheckingAndClearingVariation());
+                if fWithoutFlags or self.oVariation.oParent.dsCImplFlags:
+                    oNewStmt = copy.deepcopy(oStmt);
+                    if fWithoutFlags:
+                        oNewStmt.asParams[2] = ' | '.join(sorted(  list(self.oVariation.oParent.oMcBlock.dsMcFlags.keys())
+                                                                 + ['IEM_MC_F_WITHOUT_FLAGS',] ));
+                    if self.oVariation.oParent.dsCImplFlags:
+                        oNewStmt.asParams[3] = ' | '.join(sorted(self.oVariation.oParent.dsCImplFlags.keys()));
+                    aoStmts[iStmt] = oNewStmt;
 
         return iai.McStmt.renderCodeForList(aoStmts, cchIndent);
 
