@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 101984 2023-11-08 15:56:18Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102011 2023-11-08 22:10:48Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101984 $"
+__version__ = "$Revision: 102011 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2231,9 +2231,9 @@ class McBlock(object):
     def parseMcCallCImpl(oSelf, sName, asParams):
         """ IEM_MC_CALL_CIMPL_0|1|2|3|4|5 """
         cArgs = int(sName[-1]);
-        oSelf.checkStmtParamCount(sName, asParams, 2 + cArgs);
+        oSelf.checkStmtParamCount(sName, asParams, 3 + cArgs);
         oSelf.parseCImplFlags(sName, asParams[0]);
-        return McStmtCall(sName, asParams, 1);
+        return McStmtCall(sName, asParams, 2);
 
     @staticmethod
     def parseMcDeferToCImpl(oSelf, sName, asParams):
@@ -2902,8 +2902,7 @@ g_dMcStmtParsers = {
     'IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP':                       (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP_POP':                   (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FPU_TO_MMX_MODE':                                    (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_HINT_FLUSH_GUEST_SHADOW_GREG':                       (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_HINT_FLUSH_GUEST_SHADOW_SREG':                       (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_HINT_FLUSH_GUEST_SHADOW':                            (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ':                                        (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_NOT_SET':                    (McBlock.parseMcGenericCond,       True,  True,  ),
     'IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_SET':                        (McBlock.parseMcGenericCond,       True,  True,  ),

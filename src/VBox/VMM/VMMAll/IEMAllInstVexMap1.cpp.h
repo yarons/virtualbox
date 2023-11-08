@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 101953 2023-11-08 02:18:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 102011 2023-11-08 22:10:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4292,7 +4292,7 @@ FNIEMOP_DEF_1(iemOp_VGrp15_vstmxcsr,  uint8_t, bRm)
     IEMOP_HLP_DONE_VEX_DECODING_L0_AND_NO_VVVV_EX(fAvx);
     IEM_MC_ACTUALIZE_SSE_STATE_FOR_READ();
     IEM_MC_ARG_CONST(uint8_t,   iEffSeg, /*=*/ pVCpu->iem.s.iEffSeg,    0);
-    IEM_MC_CALL_CIMPL_2(IEM_CIMPL_F_FPU, iemCImpl_vstmxcsr, iEffSeg, GCPtrEff);
+    IEM_MC_CALL_CIMPL_2(IEM_CIMPL_F_FPU, 0, iemCImpl_vstmxcsr, iEffSeg, GCPtrEff);
     IEM_MC_END();
 }
 
