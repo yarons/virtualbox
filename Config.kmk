@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101718 2023-11-02 13:08:31Z alexander.rudnev@oracle.com $
+# $Id: Config.kmk 102009 2023-11-08 21:18:42Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4462,7 +4462,7 @@ ifdef VBOX_SIGNING_MODE
   VBOX_SIGN_ADDITIONS   ?= 1
   ## Set if we should include the legacy timestamp CA.
   ifndef VBOX_WITH_VBOX_LEGACY_TS_CA
-   if "$(findstring 55287c0d517e273696d67c690dd5d9f0a1d6d725,$(VBOX_TSA_URL_ARGS))" != ""
+   if "$(findstring 805af82410a4827b71f59479a222670391bec2d5,$(VBOX_TSA_URL_ARGS))" != ""
     VBOX_WITH_VBOX_LEGACY_TS_CA = 1
    endif
   endif
@@ -9162,7 +9162,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 101718 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 102009 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
