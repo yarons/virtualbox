@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 101979 2023-11-08 13:46:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -269,7 +269,8 @@ void UINetworkFeaturesEditor::retranslateUi()
 
 void UINetworkFeaturesEditor::handleFilterChange()
 {
-    populateAdapterTypeCombo(); /// @todo adapter types only for now, promisc modes later?
+    populateAdapterTypeCombo();
+    populatePromiscuousModeCombo();
 }
 
 void UINetworkFeaturesEditor::sltOpenPortForwardingDlg()
@@ -425,11 +426,12 @@ void UINetworkFeaturesEditor::populatePromiscuousModeCombo()
         /* Clear combo first of all: */
         m_pComboPromiscuousMode->clear();
 
-        /* Populate currently supported types: */
-        QVector<KNetworkAdapterPromiscModePolicy> supportedTypes =
-            QVector<KNetworkAdapterPromiscModePolicy>() << KNetworkAdapterPromiscModePolicy_Deny
-                                                        << KNetworkAdapterPromiscModePolicy_AllowNetwork
-                                                        << KNetworkAdapterPromiscModePolicy_AllowAll;
+        /* Load currently supported types: */
+        const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
+                                            ? optionalFlags().value("arch").value<KPlatformArchitecture>()
+                                            : KPlatformArchitecture_x86;
+        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+        QVector<KNetworkAdapterPromiscModePolicy> supportedTypes = comProperties.GetSupportedNetAdpPromiscModePols();
 
         /* Make sure requested value if sane is present as well: */
         if (   m_enmPromiscuousMode != KNetworkAdapterPromiscModePolicy_Max
