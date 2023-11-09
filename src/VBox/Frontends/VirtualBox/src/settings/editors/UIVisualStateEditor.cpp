@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisualStateEditor.cpp 102036 2023-11-09 13:50:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class implementation.
  */
@@ -39,7 +39,7 @@
 
 
 UIVisualStateEditor::UIVisualStateEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent, true /* show in basic mode? */)
+    : UIEditor(pParent)
     , m_enmValue(UIVisualStateType_Invalid)
     , m_pLayout(0)
     , m_pLabel(0)

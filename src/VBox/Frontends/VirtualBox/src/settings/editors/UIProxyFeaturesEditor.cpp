@@ -1,4 +1,4 @@
-/* $Id: UIProxyFeaturesEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIProxyFeaturesEditor.cpp 102036 2023-11-09 13:50:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProxyFeaturesEditor class implementation.
  */
@@ -38,7 +38,7 @@
 
 
 UIProxyFeaturesEditor::UIProxyFeaturesEditor(QWidget *pParent /* = 0 */)
-    : UIEditor(pParent, true /* show in basic mode? */)
+    : UIEditor(pParent)
     , m_enmProxyMode(KProxyMode_Max)
     , m_pButtonGroup(0)
     , m_pRadioButtonProxyAuto(0)
