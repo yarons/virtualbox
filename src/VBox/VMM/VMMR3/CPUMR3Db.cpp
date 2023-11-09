@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 99756 2023-05-11 19:26:52Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3Db.cpp 102038 2023-11-09 14:45:36Z michal.necasek@oracle.com $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -225,9 +225,6 @@ static CPUMDBENTRY const * const g_apCpumDbEntries[] =
 #endif
 #ifdef VBOX_CPUDB_Intel_Core_Duo_T2600_2_16GHz_h
     &g_Entry_Intel_Core_Duo_T2600_2_16GHz,
-#endif
-#ifdef VBOX_CPUDB_Intel_Pentium_4_3_00GHz_h
-    &g_Entry_Intel_Pentium_4_3_00GHz,
 #endif
 #ifdef VBOX_CPUDB_Intel_Pentium_4_3_00GHz_h
     &g_Entry_Intel_Pentium_4_3_00GHz,
