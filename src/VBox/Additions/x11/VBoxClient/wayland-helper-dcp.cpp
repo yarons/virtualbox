@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-dcp.cpp 102026 2023-11-09 12:10:01Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-dcp.cpp 102045 2023-11-09 17:28:07Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Data Control Protocol (DCP) helper for Wayland.
  *
@@ -694,8 +694,8 @@ static SHCLFORMATS vbcl_wayland_hlp_dcp_match_formats(vbox_wl_dcp_mime_t *pList)
         vbox_wl_dcp_mime_t *pEntry;
         RTListForEach(&pList->Node, pEntry, vbox_wl_dcp_mime_t, Node)
         {
-            AssertPtrReturn(pEntry, VERR_INVALID_PARAMETER);
-            AssertPtrReturn(pEntry->pszMimeType, VERR_INVALID_PARAMETER);
+            AssertPtrReturn(pEntry, VBOX_SHCL_FMT_NONE);
+            AssertPtrReturn(pEntry->pszMimeType, VBOX_SHCL_FMT_NONE);
 
             fFmts |= VBoxMimeConvGetIdByMime(pEntry->pszMimeType);
         }
