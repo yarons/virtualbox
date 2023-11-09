@@ -1,4 +1,4 @@
-/* $Id: server.cpp 102048 2023-11-09 19:47:10Z alexander.eichner@oracle.com $ */
+/* $Id: server.cpp 102052 2023-11-09 19:54:08Z alexander.eichner@oracle.com $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -600,7 +600,7 @@ static nsresult vboxsvcSpawnDaemonByReExec(const char *pszPath, bool fAutoShutdo
         ssize_t cch = RTStrFormatU32(&szPipeInheritFd[0], sizeof(szPipeInheritFd),
                                      (uint32_t)RTPipeToNative(hPipeWr), 10 /*uiBase*/,
                                      0 /*cchWidth*/, 0 /*cchPrecision*/, 0 /*fFlags*/);
-        Assert(cch > 0);
+        Assert(cch > 0); RT_NOREF(cch);
 
         RTHANDLE hStdNil;
         hStdNil.enmType = RTHANDLETYPE_FILE;
