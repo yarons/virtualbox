@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101920 2023-11-07 09:50:18Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 102030 2023-11-09 12:38:18Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -432,7 +432,6 @@ XPCOM_IDLFILES = \
 	xpcom/threads/nsIEventQueue.idl \
 	xpcom/threads/nsIEventTarget.idl \
 	xpcom/threads/nsIRunnable.idl \
-	xpcom/threads/nsIThread.idl \
 	xpcom/reflect/xptinfo/public/nsIInterfaceInfo.idl \
 	xpcom/reflect/xptinfo/public/nsIInterfaceInfoManager.idl \
 	xpcom/reflect/xptinfo/public/nsIXPTLoader.idl \
