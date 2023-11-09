@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 100993 2023-08-30 14:10:08Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 102020 2023-11-09 11:27:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -284,10 +284,7 @@ static int hmR0VmxLoadVmcs(PVMXVMCSINFO pVmcsInfo)
     Assert(pVmcsInfo->HCPhysVmcs != 0 && pVmcsInfo->HCPhysVmcs != NIL_RTHCPHYS);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
-    int rc = VMXLoadVmcs(pVmcsInfo->HCPhysVmcs);
-    if (RT_SUCCESS(rc))
-        pVmcsInfo->fVmcsState |= VMX_V_VMCS_LAUNCH_STATE_CURRENT;
-    return rc;
+    return VMXLoadVmcs(pVmcsInfo->HCPhysVmcs);
 }
 
 
@@ -3012,7 +3009,7 @@ static int hmR0VmxSetupVmcs(PVMCPUCC pVCpu, PVMXVMCSINFO pVmcsInfo, bool fIsNstG
             }
         }
         else
-            LogRelFunc(("Failed to load the %s. rc=%Rrc\n", rc, pszVmcs));
+            LogRelFunc(("Failed to load the %s. rc=%Rrc\n", pszVmcs, rc));
     }
     else
         LogRelFunc(("Failed to clear the %s. rc=%Rrc\n", rc, pszVmcs));

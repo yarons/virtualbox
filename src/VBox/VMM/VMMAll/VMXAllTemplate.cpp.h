@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 101060 2023-09-08 07:59:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 102020 2023-11-09 11:27:42Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -933,10 +933,7 @@ static int vmxHCLoadShadowVmcs(PVMXVMCSINFO pVmcsInfo)
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     Assert(pVmcsInfo->HCPhysShadowVmcs != 0 && pVmcsInfo->HCPhysShadowVmcs != NIL_RTHCPHYS);
 
-    int rc = VMXLoadVmcs(pVmcsInfo->HCPhysShadowVmcs);
-    if (RT_SUCCESS(rc))
-        pVmcsInfo->fShadowVmcsState |= VMX_V_VMCS_LAUNCH_STATE_CURRENT;
-    return rc;
+    return VMXLoadVmcs(pVmcsInfo->HCPhysShadowVmcs);
 }
 
 
