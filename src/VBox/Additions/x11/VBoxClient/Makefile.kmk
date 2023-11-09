@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101941 2023-11-07 13:06:08Z vadim.galitsyn@oracle.com $
+# $Id: Makefile.kmk 102032 2023-11-09 12:59:11Z vadim.galitsyn@oracle.com $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -76,18 +76,6 @@ VBoxClient_SOURCES = \
 	main.cpp \
 	logging.cpp
 
-ifdef VBOX_WITH_WAYLAND_ADDITIONS
- VBoxClient_DEFS += VBOX_WITH_WAYLAND_ADDITIONS
- VBoxClient_INCS += ../wlInclude/
- VBoxClient_SOURCES += \
- 	wayland-helper-dcp.cpp \
- 	wayland-helper-gtk.cpp \
- 	wayland-helper.cpp \
- 	wayland.cpp \
- 	wayland-helper-ipc.cpp \
- 	../wlInclude/wayland-protocol.c \
- 	../wlInclude/wlr-data-control-unstable-v1.c
-endif
 
 VBoxClient_SOURCES += $(VBOX_GH_SOURCES)
 
@@ -206,6 +194,18 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD
    VBoxClient_SOURCES += \
    	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-http.cpp
   endif
+ endif
+ ifdef VBOX_WITH_WAYLAND_ADDITIONS
+  VBoxClient_DEFS += VBOX_WITH_WAYLAND_ADDITIONS
+  VBoxClient_INCS += ../wlInclude/
+  VBoxClient_SOURCES += \
+  	wayland-helper-dcp.cpp \
+  	wayland-helper-gtk.cpp \
+  	wayland-helper.cpp \
+  	wayland.cpp \
+  	wayland-helper-ipc.cpp \
+  	../wlInclude/wayland-protocol.c \
+  	../wlInclude/wlr-data-control-unstable-v1.c
  endif
 endif
 
