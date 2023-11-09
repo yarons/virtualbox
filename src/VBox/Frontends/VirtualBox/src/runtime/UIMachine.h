@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.h 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -416,6 +416,8 @@ public:
         bool acquireGuestAdditionsVersion(QString &strVersion);
         /** Acquires the guest addition's revision. */
         bool acquireGuestAdditionsRevision(ulong &uRevision);
+        /** Notifies guest about VM window focus changes. */
+        bool notifyGuiFocusChange(bool fInfocus);
     /** @} */
 
     /** @name Keyboard stuff.

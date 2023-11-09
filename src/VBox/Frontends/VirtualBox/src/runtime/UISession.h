@@ -1,4 +1,4 @@
-/* $Id: UISession.h 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.h 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -403,6 +403,8 @@ public:
         bool acquireGuestAdditionsVersion(QString &strVersion);
         /** Acquires the guest addition's revision. */
         bool acquireGuestAdditionsRevision(ulong &uRevision);
+        /** Notifies GAs about VM window focus changes. */
+        bool notifyGuiFocusChange(bool fInfocus);
     /** @} */
 
     /** @name Audio stuff.

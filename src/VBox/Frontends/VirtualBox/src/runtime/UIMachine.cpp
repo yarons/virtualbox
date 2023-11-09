@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.cpp 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -706,6 +706,11 @@ bool UIMachine::acquireGuestAdditionsVersion(QString &strVersion)
 bool UIMachine::acquireGuestAdditionsRevision(ulong &uRevision)
 {
     return uisession()->acquireGuestAdditionsRevision(uRevision);
+}
+
+bool UIMachine::notifyGuiFocusChange(bool fInfocus)
+{
+    return uisession()->notifyGuiFocusChange(fInfocus);
 }
 
 bool UIMachine::putScancode(LONG iCode)

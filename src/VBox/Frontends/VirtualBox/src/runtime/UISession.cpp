@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISession.cpp 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -88,6 +88,8 @@
 # include <VBox/dbggui.h>
 # include <iprt/ldr.h>
 #endif
+
+#include <VBox/GuestHost/clipboard-helper.h>
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>
@@ -1359,6 +1361,13 @@ bool UISession::acquireGuestAdditionsRevision(ulong &uRevision)
     else
         uRevision = uGARevision;
     return fSuccess;
+}
+
+bool UISession::notifyGuiFocusChange(bool fInfocus)
+{
+    CMachine comMachine = machine();
+    comMachine.SetGuestProperty(VBOX_GUI_FOCUS_CHANGE_GUEST_PROP_NAME, fInfocus ? "1" : "0", "RDONLYGUEST,TRANSIENT");
+    return comMachine.isOk();
 }
 
 bool UISession::acquireWhetherAudioAdapterPresent(bool &fPresent)
