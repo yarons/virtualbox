@@ -1,4 +1,4 @@
-/* $Id: wayland-helper-gtk.cpp 101940 2023-11-07 13:05:00Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland-helper-gtk.cpp 102025 2023-11-09 12:00:24Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Gtk helper for Wayland.
  *
@@ -562,7 +562,7 @@ static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_hg_clip_report_join_cb(
 /**
  * @interface_method_impl{VBCLWAYLANDHELPER,pfnHGClipReport}
  */
-static int vbcl_wayland_hlp_gtk_hg_clip_report(SHCLFORMATS fFormats)
+static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_hg_clip_report(SHCLFORMATS fFormats)
 {
     int rc = VERR_NO_DATA;
 
@@ -640,7 +640,7 @@ static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_gh_clip_read_join_cb(
 /**
  * @interface_method_impl{VBCLWAYLANDHELPER,pfnGHClipRead}
  */
-static int vbcl_wayland_hlp_gtk_gh_clip_read(SHCLFORMAT uFmt)
+static DECLCALLBACK(int) vbcl_wayland_hlp_gtk_gh_clip_read(SHCLFORMAT uFmt)
 {
     int rc = VINF_SUCCESS;
 
