@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.h 102041 2023-11-09 15:30:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class declaration.
  */
@@ -94,6 +94,9 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
 
+    /** Handles filter change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
+
 private slots:
 
     /** Handles 'enable EFI' feature being toggled. */
@@ -111,6 +114,9 @@ private:
 
     /** @name Values
      * @{ */
+        /** Holds whether the editor was in Expert mode already. */
+        bool  m_fWasInExpertMode;
+
         /** Holds the 'enable IO APIC' feature value. */
         bool  m_fEnableIoApic;
         /** Holds the 'enable UTC time' feature value. */
