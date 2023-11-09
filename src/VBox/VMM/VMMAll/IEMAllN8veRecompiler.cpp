@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102012 2023-11-09 02:09:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102022 2023-11-09 11:38:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -98,6 +98,7 @@ extern "C" void *__deregister_frame_info(void *pvBegin);           /* (returns p
 #include "IEMInline.h"
 #include "IEMThreadedFunctions.h"
 #include "IEMN8veRecompiler.h"
+#include "IEMN8veRecompilerEmit.h"
 #include "IEMNativeFunctions.h"
 
 
