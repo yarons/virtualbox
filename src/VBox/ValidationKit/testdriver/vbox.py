@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 101699 2023-11-01 14:59:19Z alexander.eichner@oracle.com $
+# $Id: vbox.py 102048 2023-11-09 19:47:10Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101699 $"
+__version__ = "$Revision: 102048 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1196,8 +1196,14 @@ class TestDriver(base.TestDriver):                                              
                 iPipeR, iPipeW = os.pipe();
                 if hasattr(os, 'set_inheritable'):
                     os.set_inheritable(iPipeW, True);             # pylint: disable=no-member
+
+                # For VBox < 7.1 this is required.
                 os.environ['NSPR_INHERIT_FDS'] = 'vboxsvc:startup-pipe:5:0x%x' % (iPipeW,);
                 reporter.log2("NSPR_INHERIT_FDS=%s" % (os.environ['NSPR_INHERIT_FDS']));
+
+                # New way since VBox 7.1
+                os.environ['VBOX_STARTUP_PIPE_FD'] = '%u' % (iPipeW,);
+                reporter.log2("VBOX_STARTUP_PIPE_FD=%s" % (os.environ['VBOX_STARTUP_PIPE_FD']));
 
                 self.oVBoxSvcProcess = base.Process.spawn(sVBoxSVC, sVBoxSVC, '--auto-shutdown'); # SIGUSR1 requirement.
                 try: # Try make sure we get the SIGINT and not VBoxSVC.
