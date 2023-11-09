@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 101974 2023-11-08 13:24:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 102042 2023-11-09 17:01:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -224,11 +224,29 @@ QSize UIBootListWidget::sizeHint() const
 
 QSize UIBootListWidget::minimumSizeHint() const
 {
+    /* Try to get actual item count: */
+    int iItemCount = topLevelItemCount();
+    /* [By default] calculate for 4 items: */
+    if (iItemCount < 1)
+        iItemCount = 4;
+
+    /* Try to get actual size-hints for column/row: */
+    int iColumnHint = sizeHintForColumn(0);
+    int iRowHint = sizeHintForRow(0);
+    /* [By default] calculate for 15 chars: */
+    if (iColumnHint < 1 || iRowHint < 1)
+    {
+        QFontMetrics fm(font());
+        iColumnHint = 15 * fm.averageCharWidth();
+        iRowHint = fm.height() + 2 * 3; /// @todo <= tree-widget item margin
+    }
+
+    /* Take into account table frame as well: */
     const int iH = 2 * frameWidth();
     const int iW = iH;
-    return QSize(sizeHintForColumn(0) + iW,
-                 sizeHintForRow(0) * topLevelItemCount() + iH);
 
+    /* Calculate tree-widget hint finally: */
+    return QSize(iColumnHint + iW, iRowHint * iItemCount + iH);
 }
 
 void UIBootListWidget::retranslateUi()
