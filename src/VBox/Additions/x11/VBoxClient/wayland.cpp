@@ -1,4 +1,4 @@
-/* $Id: wayland.cpp 101878 2023-11-06 15:36:24Z vadim.galitsyn@oracle.com $ */
+/* $Id: wayland.cpp 102039 2023-11-09 15:14:57Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Guest Additions - Wayland Desktop Environment assistant.
  */
@@ -29,6 +29,7 @@
 #include <iprt/thread.h>
 
 #include <VBox/HostServices/GuestPropertySvc.h>
+#include <VBox/HostServices/VBoxClipboardSvc.h>
 
 #include "VBoxClient.h"
 #include "clipboard.h"
