@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 102061 2023-11-10 12:39:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 102085 2023-11-13 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -53,9 +53,6 @@
 #include "CMediumAttachment.h"
 #include "CPlatform.h"
 #include "CPlatformX86.h"
-#ifdef VBOX_WITH_VIRT_ARMV8
-# include "CPlatformARM.h"
-#endif
 #include "CProgress.h"
 
 
@@ -776,29 +773,21 @@ bool UIMachineSettingsGeneral::saveBasicData()
             if (fSuccess)
             {
                 /* Update long mode CPU feature bit when OS type changed: */
-                const CPlatform comPlatform = m_machine.GetPlatform();
-                switch (comPlatform.GetArchitecture())
+                const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
+                                                    ? optionalFlags().value("arch").value<KPlatformArchitecture>()
+                                                    : KPlatformArchitecture_x86;
+                switch (enmArch)
                 {
                     case KPlatformArchitecture_x86:
                     {
+                        const CPlatform comPlatform = m_machine.GetPlatform();
                         CPlatformX86 comPlatformX86 = comPlatform.GetX86();
-                        const CGuestOSType &comNewType = uiCommon().virtualBox().GetGuestOSType(newGeneralData.m_strGuestOsTypeId);
+                        const CGuestOSType comNewType = uiCommon().virtualBox().GetGuestOSType(newGeneralData.m_strGuestOsTypeId);
                         comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_LongMode, comNewType.GetIs64Bit());
                         fSuccess = comPlatformX86.isOk();
                         /// @todo convey error info ..
                         break;
                     }
-
-#ifdef VBOX_WITH_VIRT_ARMV8
-                    case KPlatformArchitecture_ARM:
-                    {
-                        CPlatformARM comPlatformARM = comPlatform.GetARM();
-                        /** @todo BUGBUG ARM stuff goes here. */
-                        fSuccess = comPlatformARM.isOk();
-                        break;
-                    }
-#endif
-
                     default:
                         break;
                 }
