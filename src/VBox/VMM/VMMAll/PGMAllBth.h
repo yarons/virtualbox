@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 102074 2023-11-13 03:59:56Z alexander.rudnev@oracle.com $ */
+/* $Id: PGMAllBth.h 102075 2023-11-13 04:00:10Z alexander.rudnev@oracle.com $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3008,7 +3008,7 @@ static int PGM_BTH_NAME(NestedSyncPT)(PVMCPUCC pVCpu, RTGCPHYS GCPhysNestedPage,
         PGMPOOLACCESS enmAccess;
         {
             /*
-             * Mode-based execute control for EPT not supported. 
+             * Mode-based execute control for EPT not supported.
              *
              * However, Windows 10 with Hyper-V enabled sets the EPT_E_USER_EXECUTE bit but does
              * not enable "mode-based execute control for EPT" in the VT-x secondary VM-execution
