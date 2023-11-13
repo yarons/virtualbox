@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 102048 2023-11-09 19:47:10Z alexander.eichner@oracle.com $
+# $Id: vbox.py 102086 2023-11-13 15:42:57Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102048 $"
+__version__ = "$Revision: 102086 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1066,6 +1066,7 @@ class TestDriver(base.TestDriver):                                              
         This will try detect an development or installed build if no build has
         been associated with the driver yet.
         """
+        reporter.log2('importVBoxApi started\n')
         if self.fImportedVBoxApi:
             return True;
 
@@ -1112,6 +1113,7 @@ class TestDriver(base.TestDriver):                                              
                 self._stopVBoxSVC();
         else:
             assert(self.oVBoxSvcProcess is None);
+        reporter.log2('importVBoxApi finished\n')
         return self.fImportedVBoxApi;
 
     def _startVBoxSVC(self): # pylint: disable=too-many-statements
