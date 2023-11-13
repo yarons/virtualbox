@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 102084 2023-11-13 15:38:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -39,6 +39,7 @@
 /* GUI includes: */
 #include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
+#include "UIAdvancedSettingsDialog.h"
 #include "UICloudMachineSettingsDialog.h"
 #include "UICommon.h"
 #include "UIExtraDataDefs.h"
@@ -514,9 +515,10 @@ private:
     QMap<UIToolType, QIManagerDialog*>  m_managers;
 
     /** Holds the map of various settings dialogs. */
-    QMap<UISettingsDialog::DialogType, UISettingsDialog*>  m_settings;
+    QMap<UISettingsDialog::DialogType, UIAdvancedSettingsDialog*>  m_settings;
+
     /** Holds the cloud settings dialog instance. */
-    UISafePointerCloudMachineSettingsDialog                m_pCloudSettings;
+    UISafePointerCloudMachineSettingsDialog  m_pCloudSettings;
 
     /** Holds the map of various wizards. */
     QMap<WizardType, UINativeWizard*>  m_wizards;
