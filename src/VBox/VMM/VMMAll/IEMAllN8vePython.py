@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102072 2023-11-12 23:12:13Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102073 2023-11-13 01:17:10Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102072 $"
+__version__ = "$Revision: 102073 $"
 
 # Standard python imports:
 import copy;
@@ -60,7 +60,7 @@ g_dMcStmtThreaded = {
     'IEM_MC_ADVANCE_RIP_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  True,  ),
 
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_16':                       (None, False, True,  ),
-    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_32':                       (None, False, False, ),
+    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_32':                       (None, False, True,  ),
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_ADDR32':                (None, False, False, ),
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_FSGS':                  (None, False, False, ),
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64':                       (None, False, False, ),
