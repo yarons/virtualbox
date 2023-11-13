@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102079 2023-11-13 12:03:15Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102080 2023-11-13 12:11:25Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102079 $"
+__version__ = "$Revision: 102080 $"
 
 # Standard python imports:
 import copy;
@@ -67,9 +67,9 @@ g_dMcStmtThreaded = {
 
     'IEM_MC_CALL_CIMPL_1_THREADED':                              (None, True,  True,  ),
     'IEM_MC_CALL_CIMPL_2_THREADED':                              (None, True,  True,  ),
-    'IEM_MC_CALL_CIMPL_3_THREADED':                              (None, True,  False, ),
-    'IEM_MC_CALL_CIMPL_4_THREADED':                              (None, True,  False, ),
-    'IEM_MC_CALL_CIMPL_5_THREADED':                              (None, True,  False, ),
+    'IEM_MC_CALL_CIMPL_3_THREADED':                              (None, True,  True,  ),
+    'IEM_MC_CALL_CIMPL_4_THREADED':                              (None, True,  True,  ),
+    'IEM_MC_CALL_CIMPL_5_THREADED':                              (None, True,  True,  ),
 
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC16':                (None, True,  True,  ),
     'IEM_MC_REL_JMP_S8_AND_FINISH_THREADED_PC32':                (None, True,  True,  ),

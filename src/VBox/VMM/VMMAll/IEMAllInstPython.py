@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102078 2023-11-13 11:58:26Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102080 2023-11-13 12:11:25Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102078 $"
+__version__ = "$Revision: 102080 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2787,7 +2787,7 @@ g_dMcStmtParsers = {
     'IEM_MC_CALL_MMX_AIMPL_3':                                   (McBlock.parseMcCallMmxAImpl,      True,  False, ),
     'IEM_MC_CALL_SSE_AIMPL_2':                                   (McBlock.parseMcCallSseAImpl,      True,  False, ),
     'IEM_MC_CALL_SSE_AIMPL_3':                                   (McBlock.parseMcCallSseAImpl,      True,  False, ),
-    'IEM_MC_CALL_VOID_AIMPL_0':                                  (McBlock.parseMcCallVoidAImpl,     True,  False, ),
+    'IEM_MC_CALL_VOID_AIMPL_0':                                  (McBlock.parseMcCallVoidAImpl,     True,  True,  ),
     'IEM_MC_CALL_VOID_AIMPL_1':                                  (McBlock.parseMcCallVoidAImpl,     True,  True,  ),
     'IEM_MC_CALL_VOID_AIMPL_2':                                  (McBlock.parseMcCallVoidAImpl,     True,  True,  ),
     'IEM_MC_CALL_VOID_AIMPL_3':                                  (McBlock.parseMcCallVoidAImpl,     True,  True,  ),
