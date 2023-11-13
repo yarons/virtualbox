@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102077 2023-11-13 11:52:34Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102078 2023-11-13 11:58:26Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102077 $"
+__version__ = "$Revision: 102078 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3012,16 +3012,16 @@ g_dMcStmtParsers = {
     'IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':                   (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_REF_EFLAGS':                                         (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_REF_FPUREG':                                         (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_I32':                                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_I32_CONST':                                 (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_I64':                                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_I64_CONST':                                 (McBlock.parseMcGeneric,           False, False, ),
+    'IEM_MC_REF_GREG_I32':                                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_I32_CONST':                                 (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_I64':                                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_I64_CONST':                                 (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_REF_GREG_U16':                                       (McBlock.parseMcGeneric,           False, True,  ),
-    'IEM_MC_REF_GREG_U16_CONST':                                 (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_U32':                                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_U32_CONST':                                 (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_U64':                                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_REF_GREG_U64_CONST':                                 (McBlock.parseMcGeneric,           False, False, ),
+    'IEM_MC_REF_GREG_U16_CONST':                                 (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_U32':                                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_U32_CONST':                                 (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_U64':                                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_REF_GREG_U64_CONST':                                 (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_REF_GREG_U8':                                        (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_REF_GREG_U8_CONST':                                  (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_REF_LOCAL':                                          (McBlock.parseMcGeneric,           False, False, ),
