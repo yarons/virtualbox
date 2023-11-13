@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 101163 2023-09-18 20:44:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 102077 2023-11-13 11:52:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -377,7 +377,22 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Branch target misses",                         "/IEM/CPU%u/re/CheckTbJmpMisses", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatCheckNeedCsLimChecking, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Needing CS.LIM checking TB after branch or on page crossing", "/IEM/CPU%u/re/CheckTbNeedCsLimChecking", idCpu);
-#endif
+
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeCallsRecompiled, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_CALLS_PER_TB,
+                        "Number of threaded calls per TB that have been properly recompiled to native code",
+                        "/IEM/CPU%u/re/NativeCallsRecompiledPerTb", idCpu);
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeCallsThreaded, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_CALLS_PER_TB,
+                        "Number of threaded calls per TB that could not be recompiler to native code",
+                        "/IEM/CPU%u/re/NativeCallsThreadedPerTb", idCpu);
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeFullyRecompiledTbs, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "Number of threaded calls that could not be recompiler to native code",
+                        "/IEM/CPU%u/re/NativeFullyRecompiledTbs", idCpu);
+
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTbNativeCode, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES_PER_TB,
+                        "Size of native code per TB",                   "/IEM/CPU%u/re/NativeCodeSizePerTb", idCpu);
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeRecompilation, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
+                        "Profiling iemNativeRecompile()",               "/IEM/CPU%u/re/NativeRecompilation", idCpu);
+#endif /* VBOX_WITH_IEM_RECOMPILER */
 
         for (uint32_t i = 0; i < RT_ELEMENTS(pVCpu->iem.s.aStatXcpts); i++)
             STAMR3RegisterF(pVM, &pVCpu->iem.s.aStatXcpts[i], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,

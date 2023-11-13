@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102068 2023-11-11 02:31:16Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102077 2023-11-13 11:52:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -827,6 +827,20 @@ iemNativeInstrBufEnsure(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t cI
 #define IEMNATIVE_ASSERT_VAR_IDX(a_pReNative, a_idxVar) \
     AssertMsg(   (unsigned)(a_idxVar) < RT_ELEMENTS((a_pReNative)->Core.aVars) \
               && ((a_pReNative)->Core.bmVars & RT_BIT_32(a_idxVar)), ("%s=%d\n", #a_idxVar, a_idxVar))
+
+/**
+ * Checks that a variable index is valid and that the variable is assigned the
+ * correct argument number.
+ * This also adds a RT_NOREF of a_idxVar.
+ */
+#define IEMNATIVE_ASSERT_ARG_VAR_IDX(a_pReNative, a_idxVar, a_uArgNo) do { \
+        RT_NOREF(a_idxVar); \
+        AssertMsg(   (unsigned)(a_idxVar) < RT_ELEMENTS((a_pReNative)->Core.aVars) \
+                  && ((a_pReNative)->Core.bmVars & RT_BIT_32(a_idxVar))\
+                  && (a_pReNative)->Core.aVars[a_idxVar].uArgNo == (a_uArgNo) \
+                  , ("%s=%d; uArgNo=%d, expected %u\n", #a_idxVar, a_idxVar, \
+                     (a_pReNative)->Core.aVars[RT_MAX(a_idxVar, RT_ELEMENTS((a_pReNative)->Core.aVars)) - 1].uArgNo, a_uArgNo)); \
+    } while (0)
 
 /**
  * Calculates the stack address of a variable as a [r]BP displacement value.
