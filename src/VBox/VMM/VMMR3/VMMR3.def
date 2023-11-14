@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 100184 2023-06-16 06:51:39Z alexander.eichner@oracle.com $
+; $Id: VMMR3.def 102092 2023-11-14 23:53:15Z knut.osmundsen@oracle.com $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -144,6 +144,7 @@ EXPORTS
     DBGFR3RegCpuQueryLrd
     DBGFR3RegFormatValue
     DBGFR3RegNmQuery
+    DBGFR3RegNmQueryEx
     DBGFR3RegNmQueryAll
     DBGFR3RegNmQueryAllCount
     DBGFR3RegNmSetBatch

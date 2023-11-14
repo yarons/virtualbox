@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: MachineDebuggerImpl.cpp 102092 2023-11-14 23:53:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -1114,15 +1114,25 @@ HRESULT MachineDebugger::getRegisters(ULONG aCpuId, std::vector<com::Utf8Str> &a
                     {
                         aValues.resize(cRegs);
                         aNames.resize(cRegs);
-                        for (uint32_t iReg = 0; iReg < cRegs; iReg++)
+                        uint32_t iDst = 0;
+                        for (uint32_t iSrc = 0; iSrc < cRegs; iSrc++)
+                            if (paRegs[iSrc].pszName) /* skip padding entries */
+                            {
+                                char szHex[160];
+                                szHex[159] = szHex[0] = '\0';
+                                ssize_t cch = ptrVM.vtable()->pfnDBGFR3RegFormatValue(szHex, sizeof(szHex), &paRegs[iSrc].Val,
+                                                                                      paRegs[iSrc].enmType, true /*fSpecial*/);
+                                Assert(cch > 0); NOREF(cch);
+                                aNames[iDst]  = paRegs[iSrc].pszName;
+                                aValues[iDst] = szHex;
+                                iDst++;
+                            }
+
+                        /* If we skipped padding entries, resize the return arrays to the actual return size. */
+                        if (iDst < cRegs)
                         {
-                            char szHex[160];
-                            szHex[159] = szHex[0] = '\0';
-                            ssize_t cch = ptrVM.vtable()->pfnDBGFR3RegFormatValue(szHex, sizeof(szHex), &paRegs[iReg].Val,
-                                                                                  paRegs[iReg].enmType, true /*fSpecial*/);
-                            Assert(cch > 0); NOREF(cch);
-                            aNames[iReg]  = paRegs[iReg].pszName;
-                            aValues[iReg] = szHex;
+                            aValues.resize(iDst);
+                            aNames.resize(iDst);
                         }
                     }
                     catch (std::bad_alloc &)
