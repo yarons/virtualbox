@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 102024 2023-11-09 11:53:55Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 102089 2023-11-14 07:06:07Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -8443,7 +8443,6 @@ HMVMX_EXIT_DECL vmxHCExitRdmsr(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
     Log4Func(("ecx=%#RX32\n", idMsr));
 
 #if defined(VBOX_STRICT) && !defined(IN_NEM_DARWIN)
-    Assert(!pVmxTransient->fIsNestedGuest);
     if (pVmcsInfo->u32ProcCtls & VMX_PROC_CTLS_USE_MSR_BITMAPS)
     {
         if (   hmR0VmxIsAutoLoadGuestMsr(pVmcsInfo, idMsr)
