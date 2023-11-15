@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 102108 2023-11-15 14:55:59Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 102109 2023-11-15 15:10:26Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102108 $"
+__version__ = "$Revision: 102109 $"
 
 # Standard Python imports.
 import copy;
@@ -722,7 +722,7 @@ class BaseTestVm(object):
         if not oTestDrv.isHostCpuAmd():
             return False;
         try:
-            if self.fpApiVer >= 7.1:
+            if oTestDrv.fpApiVer >= 7.1:
                 (uMaxExt, _, _, _) = oTestDrv.oVBox.host.x86.getProcessorCPUIDLeaf(0, 0x80000000, 0);
                 (uFamilyModel, _, _, _) = oTestDrv.oVBox.host.x86.getProcessorCPUIDLeaf(0, 0x80000001, 0);
             else:
@@ -1434,7 +1434,7 @@ class TestVm(object):
         if not oTestDrv.isHostCpuAmd():
             return False;
         try:
-            if self.fpApiVer >= 7.1:
+            if oTestDrv.fpApiVer >= 7.1:
                 (uMaxExt, _, _, _) = oTestDrv.oVBox.host.x86.getProcessorCPUIDLeaf(0, 0x80000000, 0);
                 (uFamilyModel, _, _, _) = oTestDrv.oVBox.host.x86.getProcessorCPUIDLeaf(0, 0x80000001, 0);
             else:
