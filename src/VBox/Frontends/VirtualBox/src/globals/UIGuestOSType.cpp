@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 101593 2023-10-25 15:37:09Z brent.paulson@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 102102 2023-11-15 13:35:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIGuestOSType.h"
 
 /* COM includes: */
@@ -194,6 +195,16 @@ bool UIGuestOSTypeManager::isWindows(const QString &strTypeId) const
     return false;
 }
 
+bool UIGuestOSTypeManager::is64Bit(const QString &strTypeId) const
+{
+    return m_guestOSTypes.value(m_typeIdIndexMap.value(strTypeId, -1)).is64Bit();
+}
+
+KPlatformArchitecture UIGuestOSTypeManager::getPlatformArchitecture(const QString &strTypeId) const
+{
+    return m_guestOSTypes.value(m_typeIdIndexMap.value(strTypeId, -1)).getPlatformArchitecture();
+}
+
 /* static */
 bool UIGuestOSTypeManager::isDOSType(const QString &strOSTypeId)
 {
@@ -319,4 +330,18 @@ KStorageControllerType UIGuestOSType::getRecommendedDVDStorageController() const
     if (m_comGuestOSType.isOk())
         return m_comGuestOSType.GetRecommendedDVDStorageController();
     return KStorageControllerType_Null;
+}
+
+bool UIGuestOSType::is64Bit() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetIs64Bit();
+    return false;
+}
+
+KPlatformArchitecture UIGuestOSType::getPlatformArchitecture() const
+{
+    if (m_comGuestOSType.isOk())
+        return m_comGuestOSType.GetPlatformArchitecture();
+    return KPlatformArchitecture_Max;
 }

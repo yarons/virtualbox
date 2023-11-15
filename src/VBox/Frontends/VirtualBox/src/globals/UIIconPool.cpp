@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 101590 2023-10-25 12:54:48Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIconPool.cpp 102102 2023-11-15 13:35:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -34,8 +34,10 @@
 #include <QWindow>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIExtraDataManager.h"
+#include "UIGuestOSType.h"
 #include "UIModalWindowManager.h"
 
 /* COM includes: */
@@ -780,15 +782,26 @@ QPixmap UIIconPoolGeneral::guestOSTypePixmapDefault(const QString &strOSTypeID, 
 }
 
 /* static */
-QString UIIconPoolGeneral::determineOSArchString(const QString &osTypeId)
+QString UIIconPoolGeneral::determineOSArchString(const QString &strOSTypeId)
 {
-    if (osTypeId.contains("_x64") || osTypeId.contains("_64"))
-        return QString("x64");
-    else if (osTypeId.contains("arm32"))
-        return QString("A32");
-    else if (osTypeId.contains("arm64"))
-        return QString("A64");
-    return QString("32");
+    bool fIs64Bit = uiCommon().guestOSTypeManager().is64Bit(strOSTypeId);
+    KPlatformArchitecture enmPlatformArchitecture = uiCommon().guestOSTypeManager().getPlatformArchitecture(strOSTypeId);
+
+    if (enmPlatformArchitecture == KPlatformArchitecture_ARM)
+    {
+        if (fIs64Bit)
+            return QString("A64");
+        else
+            return QString("A32");
+    }
+    else if (enmPlatformArchitecture == KPlatformArchitecture_x86)
+    {
+        if (fIs64Bit)
+            return QString("x64");
+        else
+            return QString("32");
+    }
+    return QString();
 }
 
 /* static */
