@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 102117 2023-11-15 21:34:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -45,6 +45,7 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+BS3TESTMODE_PROTOTYPES_CMN(bs3CpuBasic2_Lea);
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_TssGateEsp);
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_RaiseXcpt1);
 
@@ -68,6 +69,7 @@ BS3_DECL_CALLBACK(void)     bs3CpuBasic2_Do32BitTests_pe32();
 *********************************************************************************************************************************/
 static const BS3TESTMODEENTRY g_aModeTest[] =
 {
+    BS3TESTMODEENTRY_CMN("lea", bs3CpuBasic2_Lea),
     BS3TESTMODEENTRY_MODE("tss / gate / esp", bs3CpuBasic2_TssGateEsp),
 #if 0 /** @todo The 'raise xcpt \#1' test doesn't work in IEM! */
     BS3TESTMODEENTRY_MODE("raise xcpt #1", bs3CpuBasic2_RaiseXcpt1),

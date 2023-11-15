@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2-template.c 102117 2023-11-15 21:34:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -1469,6 +1469,24 @@ BS3_DECL_NEAR(void) bs3CpuBasic2_TssGateEspCommon(bool const g_f16BitSys, PX86DE
 }
 
 # endif /* ARCH_BITS != 64 */
+
+
+extern BS3_DECL_FAR(void) BS3_CMN_FAR_NM(bs3CpuBasic2_lea_16)(void);
+
+BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuBasic2_Lea)(uint8_t bMode)
+{
+# if ARCH_BITS != 64
+    /* Repeat the test so the native recompiler get a chance to kick in...  */
+    unsigned i;
+    for (i = 0; i < 64; i++)
+        BS3_CMN_FAR_NM(bs3CpuBasic2_lea_16)();
+# endif
+
+    RT_NOREF(bMode);
+    return UINT8_MAX;
+}
+
+
 #endif /* BS3_INSTANTIATING_CMN */
 
 
