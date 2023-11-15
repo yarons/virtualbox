@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserModel.h 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -66,8 +66,8 @@ signals:
 
     /** @name Tool stuff.
       * @{ */
-        /** Notifies listeners about tool popup-menu request for certain @a enmClass and @a position. */
-        void sigToolMenuRequested(UIToolClass enmClass, const QPoint &position);
+        /** Notifies listeners about tool popup-menu request for certain @a position and optionally machine @a pItem. */
+        void sigToolMenuRequested(const QPoint &position, UIVirtualMachineItem *pItem);
     /** @} */
 
     /** @name Selection stuff.

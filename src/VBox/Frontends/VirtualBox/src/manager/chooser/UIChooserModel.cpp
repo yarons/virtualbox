@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -125,17 +125,8 @@ QGraphicsItem *UIChooserModel::itemAt(const QPointF &position, const QTransform 
 
 void UIChooserModel::handleToolButtonClick(UIChooserItem *pItem)
 {
-    switch (pItem->type())
-    {
-        case UIChooserNodeType_Global:
-            emit sigToolMenuRequested(UIToolClass_Global, pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint());
-            break;
-        case UIChooserNodeType_Machine:
-            emit sigToolMenuRequested(UIToolClass_Machine, pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint());
-            break;
-        default:
-            break;
-    }
+    emit sigToolMenuRequested(pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint(),
+                              pItem->type() == UIChooserNodeType_Machine ? pItem->toMachineItem()->cache() : 0);
 }
 
 void UIChooserModel::handlePinButtonClick(UIChooserItem *pItem)
