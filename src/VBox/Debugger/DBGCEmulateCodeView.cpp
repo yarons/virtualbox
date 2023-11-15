@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 102092 2023-11-14 23:53:15Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCEmulateCodeView.cpp 102093 2023-11-15 00:50:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2594,8 +2594,7 @@ static DECLCALLBACK(int) dbgcCmdRegCommon(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
                     rc = DBGCCmdHlpPrintf(pCmdHlp, "\n");
             }
             else if (fAllRegs)
-                rc = DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3RegNmQueryAll failed: %Rrc.\n",
-                                         pszActualPrefix, rc);
+                rc = DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3RegNmQueryAll failed: %Rrc.\n", rc);
             else if (rc == VERR_DBGF_REGISTER_NOT_FOUND)
                 rc = DBGCCmdHlpVBoxError(pCmdHlp, VERR_INVALID_PARAMETER, "Unknown register: '%s%s'.\n",
                                          pszActualPrefix, pszRegBase);
