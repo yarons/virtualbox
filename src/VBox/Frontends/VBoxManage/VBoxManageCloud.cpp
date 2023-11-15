@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 102099 2023-11-15 11:53:55Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 102100 2023-11-15 12:03:41Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1444,7 +1444,7 @@ static RTEXITCODE cloudInstanceMetricData(HandlerArg *a, int iFirst, PCLOUDCOMMO
     CHECK_PROGRESS_ERROR_RET(progress, (Cloud::tr("Reading the cloud machines list failed")), RTEXITCODE_FAILURE);
 
     com::SafeIfaceArray<ICloudMachine> aMachines;
-    CHECK_ERROR2_RET(hrc, oCloudClient, 
+    CHECK_ERROR2_RET(hrc, oCloudClient,
                      COMGETTER(CloudMachineList)(ComSafeArrayAsOutParam(aMachines)),
                      RTEXITCODE_FAILURE);
 
