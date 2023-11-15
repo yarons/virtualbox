@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102098 2023-11-15 11:39:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -97,8 +97,10 @@ signals:
 
     /** @name Tools pane stuff.
       * @{ */
-        /** Notifies about Tool type change. */
-        void sigToolTypeChange();
+        /** Notifies about Global Tool type change. */
+        void sigToolTypeChangeGlobal();
+        /** Notifies about Machine Tool type change. */
+        void sigToolTypeChangeMachine();
     /** @} */
 
     /** @name Tools / Media pane stuff.
@@ -195,10 +197,15 @@ public:
 
     /** @name Tools pane stuff.
       * @{ */
-        /** Defines tools @a enmType. */
-        void setToolsType(UIToolType enmType);
-        /** Returns tools type. */
-        UIToolType toolsType() const;
+        /** Defines Global tools @a enmType. */
+        void setToolsTypeGlobal(UIToolType enmType);
+        /** Returns Global tools type. */
+        UIToolType toolsTypeGlobal() const;
+
+        /** Defines Machine tools @a enmType. */
+        void setToolsTypeMachine(UIToolType enmType);
+        /** Returns Machine tools type. */
+        UIToolType toolsTypeMachine() const;
 
         /** Returns a type of curent Global tool. */
         UIToolType currentGlobalTool() const;
@@ -357,8 +364,10 @@ private:
     UIToolPaneMachine  *m_pPaneToolsMachine;
     /** Holds the sliding-animation widget instance. */
     UISlidingAnimation *m_pSlidingAnimation;
-    /** Holds the Tools-pane instance. */
-    UITools            *m_pPaneTools;
+    /** Holds the Global Tools-menu instance. */
+    UITools            *m_pMenuToolsGlobal;
+    /** Holds the Machine Tools-menu instance. */
+    UITools            *m_pMenuToolsMachine;
 
     /** Holds the last selection type. */
     SelectionType  m_enmSelectionType;
