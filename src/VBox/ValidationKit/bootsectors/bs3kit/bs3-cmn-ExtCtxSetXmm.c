@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-ExtCtxSetXmm.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-ExtCtxSetXmm.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3ExtCtxSetXmm
  */
@@ -51,7 +51,8 @@ BS3_CMN_DEF(bool, Bs3ExtCtxSetXmm,(PBS3EXTCTX pExtCtx, uint8_t iReg, PCRTUINT128
         case BS3EXTCTXMETHOD_XSAVE:
             if (iReg < RT_ELEMENTS(pExtCtx->Ctx.x87.aXMM))
             {
-                pExtCtx->Ctx.x87.aXMM[iReg].xmm = pValue->u;
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[0] = pValue->au64[0];
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[1] = pValue->au64[1];
                 return true;
             }
             break;

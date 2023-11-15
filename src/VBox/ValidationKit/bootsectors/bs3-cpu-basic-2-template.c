@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2-template.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -935,8 +935,8 @@ BS3_DECL_NEAR(void) bs3CpuBasic2_RaiseXcpt1Common(uint16_t const uSysR0Cs, uint1
     k = (0x83 << (cIdteShift + 3)) - 1;
     for (; i <= k; i++, g_usBs3TestStep++)
     {
-        Idtr = IdtrSaved;
-        Idtr.cbIdt  = i;
+        Idtr.pIdt  = IdtrSaved.pIdt;
+        Idtr.cbIdt = i;
         ASMSetIDTR(&Idtr);
         Bs3TrapSetJmpAndRestore(&Ctx81, &TrapCtx);
         if (i < j)

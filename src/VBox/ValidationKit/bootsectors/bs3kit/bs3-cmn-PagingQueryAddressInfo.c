@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingQueryAddressInfo.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-PagingQueryAddressInfo.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3PagingQueryAddressInfo
  */
@@ -46,6 +46,10 @@
 #undef Bs3PagingQueryAddressInfo
 BS3_CMN_DEF(int, Bs3PagingQueryAddressInfo,(uint64_t uFlat, PBS3PAGINGINFO4ADDR pPgInfo))
 {
+#ifdef _MSC_VER
+    BS3PAGINGINFO4ADDR volatile BS3_FAR *pPgInfoNoSseHack = (BS3PAGINGINFO4ADDR volatile BS3_FAR *)pPgInfo;
+# define pPgInfo pPgInfoNoSseHack
+#endif
     RTCCUINTXREG const  cr3        = ASMGetCR3();
     RTCCUINTXREG const  cr4        = g_uBs3CpuDetected & BS3CPU_F_CPUID ? ASMGetCR4() : 0;
     bool const          fLegacyPTs = !(cr4 & X86_CR4_PAE);

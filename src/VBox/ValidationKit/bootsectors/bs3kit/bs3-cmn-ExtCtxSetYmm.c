@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-ExtCtxSetYmm.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-ExtCtxSetYmm.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3ExtCtxSetYmm
  */
@@ -44,13 +44,18 @@
 #undef Bs3ExtCtxSetYmm
 BS3_CMN_DEF(bool, Bs3ExtCtxSetYmm,(PBS3EXTCTX pExtCtx, uint8_t iReg, PCRTUINT256U pValue, uint8_t cbValue))
 {
+#ifdef _MSC_VER /* No-SSE hack */
+    BS3EXTCTX volatile RT_FAR *pExtCtxNoSseHack = (BS3EXTCTX volatile RT_FAR *)pExtCtx;
+# define pExtCtx pExtCtxNoSseHack
+#endif
     BS3_ASSERT(cbValue == 16 || cbValue == 32);
     switch (pExtCtx->enmMethod)
     {
         case BS3EXTCTXMETHOD_FXSAVE:
             if (iReg < RT_ELEMENTS(pExtCtx->Ctx.x87.aXMM))
             {
-                pExtCtx->Ctx.x87.aXMM[iReg].uXmm = pValue->DQWords.dqw0;
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[0] = pValue->DQWords.dqw0.au64[0];
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[1] = pValue->DQWords.dqw0.au64[1];
                 return true;
             }
             break;
@@ -58,11 +63,15 @@ BS3_CMN_DEF(bool, Bs3ExtCtxSetYmm,(PBS3EXTCTX pExtCtx, uint8_t iReg, PCRTUINT256
         case BS3EXTCTXMETHOD_XSAVE:
             if (iReg < RT_ELEMENTS(pExtCtx->Ctx.x.x87.aXMM))
             {
-                pExtCtx->Ctx.x87.aXMM[iReg].uXmm = pValue->DQWords.dqw0;
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[0] = pValue->DQWords.dqw0.au64[0];
+                pExtCtx->Ctx.x87.aXMM[iReg].au64[1] = pValue->DQWords.dqw0.au64[1];
                 if (pExtCtx->fXcr0Nominal & XSAVE_C_YMM)
                 {
                     if (cbValue >= 32)
-                        pExtCtx->Ctx.x.u.YmmHi.aYmmHi[iReg].uXmm = pValue->DQWords.dqw1;
+                    {
+                        pExtCtx->Ctx.x.u.YmmHi.aYmmHi[iReg].au64[0] = pValue->DQWords.dqw1.au64[0];
+                        pExtCtx->Ctx.x.u.YmmHi.aYmmHi[iReg].au64[1] = pValue->DQWords.dqw1.au64[1];
+                    }
                     else
                     {
                         pExtCtx->Ctx.x.u.YmmHi.aYmmHi[iReg].au64[0] = 0;

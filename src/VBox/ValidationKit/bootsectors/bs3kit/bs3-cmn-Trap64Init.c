@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap64Init.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-Trap64Init.c 102096 2023-11-15 11:11:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3Trap64Init
  */
@@ -75,7 +75,11 @@ BS3_CMN_DEF(void, Bs3Trap64InitEx,(bool fMoreIstUsage))
         /* [X86_XCPT_VE] = */   0,
         /* [X86_XCPT_CP] = */   6,
     };
+#ifdef _MSC_VER /* No-SSE hack */
+    X86TSS64 BS3_FAR volatile *pTss;
+#else
     X86TSS64 BS3_FAR *pTss;
+#endif
     unsigned iIdt;
 
     /*
