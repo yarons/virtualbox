@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102098 2023-11-15 11:39:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102110 2023-11-15 15:54:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -340,6 +340,9 @@ private:
 
     /** @name Tools / Common stuff.
       * @{ */
+        /** Updates Machine tools menu. */
+        void updateToolsMenuMachine();
+
         /** Recaches current item information.
           * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
         void recacheCurrentItemInformation(bool fDontRaiseErrorPane = false);
