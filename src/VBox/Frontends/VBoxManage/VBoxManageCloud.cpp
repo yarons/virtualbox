@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 102095 2023-11-15 10:21:46Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 102097 2023-11-15 11:24:34Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1293,7 +1293,7 @@ static RTEXITCODE cloudInstanceMetricList(HandlerArg *a, int iFirst, PCLOUDCOMMO
                      RTEXITCODE_FAILURE);
 
     RTPrintf(Cloud::tr("Available metric names:\n"));
-    uint32_t cMetricNamesArraySize = metricNamesArray.size();
+    size_t cMetricNamesArraySize = metricNamesArray.size();
 
     if (cMetricNamesArraySize == 0)
     {
@@ -1303,7 +1303,7 @@ static RTEXITCODE cloudInstanceMetricList(HandlerArg *a, int iFirst, PCLOUDCOMMO
     else
     {
         Bstr value;
-        for (uint32_t k = 0; k < cMetricNamesArraySize; ++k)
+        for (size_t k = 0; k < cMetricNamesArraySize; ++k)
         {
             value = metricNamesArray[k];
             MetricType_T aMetricType;
