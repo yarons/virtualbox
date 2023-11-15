@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 101697 2023-11-01 11:56:34Z alexander.eichner@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 102116 2023-11-15 19:41:58Z brian.le.lee@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -255,10 +255,11 @@ bool UnattendedInstaller::isValidationKitIsoNeeded() const
 
 bool UnattendedInstaller::isAuxiliaryIsoNeeded() const
 {
-    /* In the VISO case we use the AUX ISO for GAs and TXS. */
+    /* In the VISO case we use the AUX ISO for GAs, TXS, and User Payloads. */
     return isAuxiliaryIsoIsVISO()
         && (   mpParent->i_getInstallGuestAdditions()
-            || mpParent->i_getInstallTestExecService());
+            || mpParent->i_getInstallTestExecService()
+            || mpParent->i_getInstallUserPayload());
 }
 
 
@@ -754,6 +755,16 @@ HRESULT UnattendedInstaller::addFilesToAuxVisoVectors(RTCList<RTCString> &rVecAr
             {
                 rVecArgs.append().append("--push-iso=").append(mpParent->i_getValidationKitIsoPath());
                 rVecArgs.append() = "/vboxvalidationkit=/";
+                rVecArgs.append() = "--pop";
+            }
+
+            /*
+             * If we've got a User Payload ISO, add its content to a /vboxuserpayload dir.
+             */
+            if (mpParent->i_getInstallUserPayload())
+            {
+                rVecArgs.append().append("--push-iso=").append(mpParent->i_getUserPayloadIsoPath());
+                rVecArgs.append() = "/vboxuserpayload=/";
                 rVecArgs.append() = "--pop";
             }
         }

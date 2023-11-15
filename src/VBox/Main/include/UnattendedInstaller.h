@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 101695 2023-11-01 10:41:27Z alexander.eichner@oracle.com $ */
+/* $Id: UnattendedInstaller.h 102116 2023-11-15 19:41:58Z brian.le.lee@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -341,7 +341,8 @@ protected:
      * Adds files to the .viso-file vectors.
      *
      * The base class implementation adds the script from mAlg, additions ISO
-     * content to '/vboxadditions', and validation kit ISO to '/vboxvalidationkit'.
+     * content to '/vboxadditions', validation kit ISO to '/vboxvalidationkit',
+     * and user payload ISO to '/vboxuserpayload'.
      *
      * @returns COM status code.
      * @param   rVecArgs        The ISO maker argument list that will be turned into

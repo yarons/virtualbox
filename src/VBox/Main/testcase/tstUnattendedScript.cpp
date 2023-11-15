@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 101683 2023-10-31 12:38:46Z alexander.eichner@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 102116 2023-11-15 19:41:58Z brian.le.lee@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -246,6 +246,30 @@ HRESULT Unattended::getInstallTestExecService(BOOL *aInstallTestExecService)
 HRESULT Unattended::setInstallTestExecService(BOOL aInstallTestExecService)
 {
     RT_NOREF(aInstallTestExecService);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getUserPayloadIsoPath(com::Utf8Str &userPayloadIsoPath)
+{
+    RT_NOREF(userPayloadIsoPath);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setUserPayloadIsoPath(const com::Utf8Str &userPayloadIsoPath)
+{
+    RT_NOREF(userPayloadIsoPath);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getInstallUserPayload(BOOL *installUserPayload)
+{
+    RT_NOREF(installUserPayload);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setInstallUserPayload(BOOL installUserPayload)
+{
+    RT_NOREF(installUserPayload);
     return E_NOTIMPL;
 }
 
