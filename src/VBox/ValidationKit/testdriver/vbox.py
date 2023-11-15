@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 102086 2023-11-13 15:42:57Z ksenia.s.stepanova@oracle.com $
+# $Id: vbox.py 102108 2023-11-15 14:55:59Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102086 $"
+__version__ = "$Revision: 102108 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3842,7 +3842,10 @@ class TestDriver(base.TestDriver):                                              
         if not self.isHostCpuIntel(fQuiet):
             return False;
 
-        (uFamilyModel, _, _, _) = self.oVBox.host.getProcessorCPUIDLeaf(0, 0x1, 0);
+        if self.fpApiVer >= 7.1:
+            (uFamilyModel, _, _, _) = self.oVBox.host.x86.getProcessorCPUIDLeaf(0, 0x1, 0);
+        else:
+            (uFamilyModel, _, _, _) = self.oVBox.host.getProcessorCPUIDLeaf(0, 0x1, 0);
         return ((uFamilyModel >> 8) & 0xf) == 0xf;
 
     def hasRawModeSupport(self, fQuiet = False):
