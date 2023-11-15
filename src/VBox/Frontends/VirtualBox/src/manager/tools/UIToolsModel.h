@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 102106 2023-11-15 14:06:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 102107 2023-11-15 14:09:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -114,10 +114,10 @@ public:
         /** Returns current tools type. */
         UIToolType toolsType() const;
 
-        /** Defines whether certain @a enmClass of tools is @a fEnabled.*/
-        void setToolClassEnabled(UIToolClass enmClass, bool fEnabled);
-        /** Returns whether certain class of tools is enabled.*/
-        bool toolClassEnabled(UIToolClass enmClass) const;
+        /** Defines whether tool items @a fEnabled.*/
+        void setItemsEnabled(bool fEnabled);
+        /** Returns whether tool items enabled.*/
+        bool isItemsEnabled() const;
 
         /** Defines restructed tool @a types. */
         void setRestrictedToolTypes(const QList<UIToolType> &types);
@@ -263,8 +263,8 @@ private:
         /** Holds the keyboard handler instance. */
         UIToolsHandlerKeyboard *m_pKeyboardHandler;
 
-        /** Holds whether tools of particular class are enabled. */
-        QMap<UIToolClass, bool>  m_enabledToolClasses;
+        /** Holds whether items enabled. */
+        bool  m_fItemsEnabled;
 
         /** Holds a list of restricted tool types. */
         QList<UIToolType>  m_restrictedToolTypes;
