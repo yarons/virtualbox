@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102120 2023-11-16 11:31:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102123 2023-11-16 15:34:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1153,7 +1153,10 @@ void UIVirtualBoxManagerWidget::updateToolsMenuMachine(UIVirtualMachineItem *pIt
     /* Update machine tools restrictions: */
     QList<UIToolType> retrictedTypes;
     if (pItem && pItem->itemType() != UIVirtualMachineItemType_Local)
-        retrictedTypes << UIToolType_Snapshots << UIToolType_Logs << UIToolType_VMActivity;
+        retrictedTypes << UIToolType_Snapshots
+                       << UIToolType_Logs
+                       << UIToolType_VMActivity
+                       << UIToolType_FileManager;
     if (retrictedTypes.contains(m_pMenuToolsMachine->toolsType()))
         m_pMenuToolsMachine->setToolsType(UIToolType_Details);
     m_pMenuToolsMachine->setRestrictedToolTypes(retrictedTypes);
