@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102119 2023-11-16 11:23:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -268,6 +268,12 @@ private slots:
       * @{ */
         /** Handles CVirtualBox event about state change for machine with @a uId. */
         void sltHandleStateChange(const QUuid &uId);
+    /** @} */
+
+    /** @name CVirtualBox extra-data event handling stuff.
+      * @{ */
+        /** Handles signal about settings expert mode change. */
+        void sltHandleSettingsExpertModeChange();
     /** @} */
 
     /** @name Splitter stuff.

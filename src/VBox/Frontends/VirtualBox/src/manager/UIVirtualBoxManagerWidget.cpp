@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102119 2023-11-16 11:23:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -373,6 +373,13 @@ void UIVirtualBoxManagerWidget::sltHandleStateChange(const QUuid &uId)
     /* Recache current item info if machine or group item selected: */
     if (isMachineItemSelected() || isGroupItemSelected())
         recacheCurrentItemInformation();
+}
+
+void UIVirtualBoxManagerWidget::sltHandleSettingsExpertModeChange()
+{
+    /* Update tools restrictions for currently selected item: */
+    if (currentItem())
+        updateToolsMenuMachine(currentItem());
 }
 
 void UIVirtualBoxManagerWidget::sltHandleSplitterMove()
@@ -780,6 +787,10 @@ void UIVirtualBoxManagerWidget::prepareConnections()
     /* Global VBox event handlers: */
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineStateChange,
             this, &UIVirtualBoxManagerWidget::sltHandleStateChange);
+
+    /* Global VBox extra-data event handlers: */
+    connect(gEDataManager, &UIExtraDataManager::sigSettingsExpertModeChange,
+            this, &UIVirtualBoxManagerWidget::sltHandleSettingsExpertModeChange);
 
     /* Splitter connections: */
     connect(m_pSplitter, &QISplitter::splitterMoved,
