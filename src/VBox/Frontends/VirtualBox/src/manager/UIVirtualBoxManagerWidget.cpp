@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102119 2023-11-16 11:23:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102120 2023-11-16 11:31:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -380,6 +380,8 @@ void UIVirtualBoxManagerWidget::sltHandleSettingsExpertModeChange()
     /* Update tools restrictions for currently selected item: */
     if (currentItem())
         updateToolsMenuMachine(currentItem());
+    else
+        updateToolsMenuGlobal();
 }
 
 void UIVirtualBoxManagerWidget::sltHandleSplitterMove()
@@ -548,6 +550,8 @@ void UIVirtualBoxManagerWidget::sltHandleToolMenuRequested(const QPoint &positio
     AssertPtrReturnVoid(pMenu);
     if (pItem)
         updateToolsMenuMachine(pItem);
+    else
+        updateToolsMenuGlobal();
 
     /* Compose popup-menu geometry first of all: */
     QRect ourGeo = QRect(position, pMenu->minimumSizeHint());
@@ -1121,6 +1125,24 @@ void UIVirtualBoxManagerWidget::cleanup()
     /* Cleanup everything: */
     cleanupConnections();
     cleanupWidgets();
+}
+
+void UIVirtualBoxManagerWidget::updateToolsMenuGlobal()
+{
+    /* Update global tools restrictions: */
+    QList<UIToolType> retrictedTypes;
+    const bool fExpertMode = gEDataManager->isSettingsInExpertMode();
+    if (!fExpertMode)
+        retrictedTypes << UIToolType_Media
+                       << UIToolType_Network
+                       << UIToolType_VMActivityOverview;
+    if (retrictedTypes.contains(m_pMenuToolsGlobal->toolsType()))
+        m_pMenuToolsGlobal->setToolsType(UIToolType_Welcome);
+    m_pMenuToolsGlobal->setRestrictedToolTypes(retrictedTypes);
+
+    /* Take restrictions into account, closing all restricted tools: */
+    foreach (const UIToolType &enmRestrictedType, retrictedTypes)
+        m_pPaneToolsGlobal->closeTool(enmRestrictedType);
 }
 
 void UIVirtualBoxManagerWidget::updateToolsMenuMachine(UIVirtualMachineItem *pItem)

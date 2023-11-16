@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102119 2023-11-16 11:23:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102120 2023-11-16 11:31:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -346,6 +346,8 @@ private:
 
     /** @name Tools / Common stuff.
       * @{ */
+        /** Updates Global tools menu. */
+        void updateToolsMenuGlobal();
         /** Updates Machine tools menu for @a pItem specified. */
         void updateToolsMenuMachine(UIVirtualMachineItem *pItem);
 
