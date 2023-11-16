@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 102117 2023-11-15 21:34:30Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2-template.c 102128 2023-11-16 22:41:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -1471,15 +1471,29 @@ BS3_DECL_NEAR(void) bs3CpuBasic2_TssGateEspCommon(bool const g_f16BitSys, PX86DE
 # endif /* ARCH_BITS != 64 */
 
 
+# if ARCH_BITS != 64
 extern BS3_DECL_FAR(void) BS3_CMN_FAR_NM(bs3CpuBasic2_lea_16)(void);
+extern BS3_DECL_FAR(void) BS3_CMN_FAR_NM(bs3CpuBasic2_lea_32)(void);
+#else
+extern BS3_DECL_FAR(void) BS3_CMN_FAR_NM(bs3CpuBasic2_lea_64)(void);
+#endif
 
 BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuBasic2_Lea)(uint8_t bMode)
 {
-# if ARCH_BITS != 64
     /* Repeat the test so the native recompiler get a chance to kick in...  */
     unsigned i;
+
+# if ARCH_BITS != 64
+    FPFNBS3FAR pfnWorker16 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic2_lea_16));
+    FPFNBS3FAR pfnWorker32 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic2_lea_32));
     for (i = 0; i < 64; i++)
-        BS3_CMN_FAR_NM(bs3CpuBasic2_lea_16)();
+        pfnWorker16();
+    for (i = 0; i < 64; i++)
+        pfnWorker32();
+# else
+    //for (i = 0; i < 64; i++)
+    //    BS3_CMN_FAR_NM(bs3CpuBasic2_lea_64)
+    RT_NOREF(i);
 # endif
 
     RT_NOREF(bMode);

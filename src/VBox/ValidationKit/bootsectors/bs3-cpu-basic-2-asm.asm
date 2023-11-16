@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2-asm.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-basic-2-asm.asm 102128 2023-11-16 22:41:56Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -48,6 +48,9 @@ BS3_BEGIN_DATA16
 BS3_GLOBAL_DATA g_bs3CpuBasic2_ud2_FlatAddr, 4
         dd  _bs3CpuBasic2_ud2 wrt FLAT
 
+;; Place to save esp/rsp when doing LEA variations involving esp/rsp.
+BS3_GLOBAL_DATA g_bs3CpuBasic2_lea_rsp, 8
+        dq  0
 
 
 ;

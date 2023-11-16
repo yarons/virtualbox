@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 102117 2023-11-15 21:34:30Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-2.c 102128 2023-11-16 22:41:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -67,14 +67,21 @@ BS3_DECL_CALLBACK(void)     bs3CpuBasic2_Do32BitTests_pe32();
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+#if 1
+/**
+ * @note We're making 16:16 reference to 32-bit and 64-bit code here,
+ *       so if the functions we're aiming for are past the first 64KB in the
+ *       segment we're going to get linker error E2083 "cannot reference
+ *       address xxxx:yyyyyyyy from frame xxxxx". */
 static const BS3TESTMODEENTRY g_aModeTest[] =
 {
     BS3TESTMODEENTRY_CMN("lea", bs3CpuBasic2_Lea),
-    BS3TESTMODEENTRY_MODE("tss / gate / esp", bs3CpuBasic2_TssGateEsp),
+//    BS3TESTMODEENTRY_MODE("tss / gate / esp", bs3CpuBasic2_TssGateEsp),
 #if 0 /** @todo The 'raise xcpt \#1' test doesn't work in IEM! */
     BS3TESTMODEENTRY_MODE("raise xcpt #1", bs3CpuBasic2_RaiseXcpt1),
 #endif
 };
+#endif
 
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 {
@@ -109,11 +116,16 @@ BS3_DECL(void) Main_rm()
     /*
      * Do tests driven from 16-bit code.
      */
-    NOREF(g_aModeTest); NOREF(g_aModeByOneTests); /* for when commenting out bits */
 #if 1
     Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
+#else
+    NOREF(g_aModeTest);
 #endif
+#if 0
     Bs3TestDoModesByOne_rm(g_aModeByOneTests, RT_ELEMENTS(g_aModeByOneTests), 0);
+#else
+    NOREF(g_aModeByOneTests);
+#endif
 
 #if 0 /** @todo The '\#PF' test doesn't work right in IEM! */
     /*
