@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 102118 2023-11-16 11:19:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -262,11 +262,12 @@ void UIToolPaneGlobal::closeTool(UIToolType enmType)
         /* Forget corresponding widget: */
         switch (enmType)
         {
-            case UIToolType_Welcome:    m_pPaneWelcome = 0; break;
-            case UIToolType_Extensions: m_pPaneExtensions = 0; break;
-            case UIToolType_Media:      m_pPaneMedia = 0; break;
-            case UIToolType_Network:    m_pPaneNetwork = 0; break;
-            case UIToolType_Cloud:      m_pPaneCloud = 0; break;
+            case UIToolType_Welcome:            m_pPaneWelcome = 0; break;
+            case UIToolType_Extensions:         m_pPaneExtensions = 0; break;
+            case UIToolType_Media:              m_pPaneMedia = 0; break;
+            case UIToolType_Network:            m_pPaneNetwork = 0; break;
+            case UIToolType_Cloud:              m_pPaneCloud = 0; break;
+            case UIToolType_VMActivityOverview: m_pPaneVMActivityOverview = 0; break;
             default: break;
         }
         /* Delete corresponding widget: */
