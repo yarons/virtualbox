@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: UISession.cpp 102139 2023-11-17 14:35:57Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -50,7 +50,6 @@
 #include "UIMousePointerShapeData.h"
 #include "UINotificationCenter.h"
 #include "UISession.h"
-#include "UISettingsDialogSpecific.h"
 #include "UITextTable.h"
 #ifdef VBOX_GUI_WITH_KEYS_RESET_HANDLER
 # include "UIKeyboardHandler.h"

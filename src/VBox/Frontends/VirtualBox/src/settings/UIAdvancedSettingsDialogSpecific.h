@@ -1,6 +1,6 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 101752 2023-11-03 15:56:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 102139 2023-11-17 14:35:57Z sergey.dubov@oracle.com $ */
 /** @file
- * VBox Qt GUI - UISettingsDialogSpecific class declaration.
+ * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
 
 /*
