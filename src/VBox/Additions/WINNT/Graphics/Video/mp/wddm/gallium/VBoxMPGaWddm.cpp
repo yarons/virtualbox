@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 99997 2023-05-29 10:00:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPGaWddm.cpp 102144 2023-11-17 19:25:12Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -240,10 +240,17 @@ NTSTATUS GaContextDestroy(PVBOXWDDM_EXT_GA pGaDevExt,
                 void *pvCmd = SvgaCmdBuf3dCmdReserve(pSvga, SVGA_3D_CMD_DX_SET_COTABLE, sizeof(SVGA3dCmdDXSetCOTable), SVGA3D_INVALID_ID);
                 if (pvCmd)
                 {
+                    SVGACOTableType enmType;
+                    if (i < SVGA_COTABLE_MAX)
+                        enmType = (SVGACOTableType)i;
+                    else if (i < SVGA_COTABLE_MAX + (VBSVGA_COTABLE_MAX - VBSVGA_COTABLE_MIN))
+                        enmType = (SVGACOTableType)(i - SVGA_COTABLE_MAX + VBSVGA_COTABLE_MIN);
+                    else
+                        AssertFailedBreak();
                     SVGA3dCmdDXSetCOTable *pCmd = (SVGA3dCmdDXSetCOTable *)pvCmd;
                     pCmd->cid              = pSvgaContext->u32Cid;
                     pCmd->mobid            = SVGA3D_INVALID_ID;
-                    pCmd->type             = (SVGACOTableType)i;
+                    pCmd->type             = enmType;
                     pCmd->validSizeInBytes = 0;
                     SvgaCmdBufCommit(pSvga, sizeof(*pCmd));
                 }
