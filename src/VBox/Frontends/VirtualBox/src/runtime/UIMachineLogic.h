@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 101719 2023-11-02 15:13:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.h 102138 2023-11-17 14:11:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -34,7 +34,7 @@
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UIExtraDataDefs.h"
-#include "UISettingsDialog.h"
+#include "UIAdvancedSettingsDialog.h"
 
 /* Forward declarations: */
 class QAction;
@@ -397,7 +397,7 @@ private:
     void *m_pHostLedsState;
 
     /** Holds the map of settings dialogs. */
-    QMap<UISettingsDialog::DialogType, UISettingsDialog*>  m_settings;
+    QMap<UIAdvancedSettingsDialog::DialogType, UIAdvancedSettingsDialog*>  m_settings;
 
     /** Holds the log viewer dialog instance. */
     QIManagerDialog       *m_pLogViewerDialog;
