@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 102139 2023-11-17 14:35:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
@@ -129,7 +129,7 @@ void UIAdvancedSettingsDialogGlobal::retranslateUi()
     setWindowTitle(title());
 }
 
-void UIAdvancedSettingsDialogGlobal::load()
+bool UIAdvancedSettingsDialogGlobal::load()
 {
     /* Get host & properties: */
     CHost comHost = uiCommon().host();
@@ -141,6 +141,9 @@ void UIAdvancedSettingsDialogGlobal::load()
 
     /* Call to base-class: */
     UIAdvancedSettingsDialog::loadData(varData);
+
+    /* True by default: */
+    return true;
 }
 
 void UIAdvancedSettingsDialogGlobal::save()
@@ -397,11 +400,11 @@ void UIAdvancedSettingsDialogMachine::retranslateUi()
     setWindowTitle(title());
 }
 
-void UIAdvancedSettingsDialogMachine::load()
+bool UIAdvancedSettingsDialogMachine::load()
 {
     /* Check that session is NOT created: */
     if (!m_session.isNull())
-        return;
+        return false;
 
     /* Prepare session: */
     m_session = configurationAccessLevel() == ConfigurationAccessLevel_Null ? CSession() :
@@ -409,7 +412,7 @@ void UIAdvancedSettingsDialogMachine::load()
                                                                               uiCommon().openExistingSession(m_uMachineId);
     /* Check that session was created: */
     if (m_session.isNull())
-        return;
+        return false;
 
     /* Get machine and console: */
     m_machine = m_session.GetMachine();
@@ -421,6 +424,9 @@ void UIAdvancedSettingsDialogMachine::load()
 
     /* Call to base-class: */
     UIAdvancedSettingsDialog::loadData(varData);
+
+    /* True by default: */
+    return true;
 }
 
 void UIAdvancedSettingsDialogMachine::save()

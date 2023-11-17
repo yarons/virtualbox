@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 102139 2023-11-17 14:35:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
@@ -63,7 +63,7 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE;
 
     /** Loads the dialog data. */
-    virtual void load() RT_OVERRIDE;
+    virtual bool load() RT_OVERRIDE;
     /** Saves the dialog data. */
     virtual void save() RT_OVERRIDE;
 
@@ -114,7 +114,7 @@ protected:
     virtual void retranslateUi() RT_OVERRIDE;
 
     /** Loads the dialog data. */
-    virtual void load() RT_OVERRIDE;
+    virtual bool load() RT_OVERRIDE;
     /** Saves the dialog data. */
     virtual void save() RT_OVERRIDE;
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 102138 2023-11-17 14:11:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1536,7 +1536,12 @@ void UIMachineLogic::sltOpenPreferencesDialog(const QString &strCategory /* = QS
                                                                                                strControl);
         connect(m_settings[UIAdvancedSettingsDialog::Type_Global], &UIAdvancedSettingsDialogGlobal::sigClose,
                 this, &UIMachineLogic::sltClosePreferencesDialog);
-        m_settings.value(UIAdvancedSettingsDialog::Type_Global)->load();
+        const bool fSuccess = m_settings.value(UIAdvancedSettingsDialog::Type_Global)->load();
+        if (!fSuccess)
+        {
+            delete m_settings.take(UIAdvancedSettingsDialog::Type_Global);
+            return;
+        }
     }
 
     /* Expose instance: */
@@ -1580,7 +1585,12 @@ void UIMachineLogic::sltOpenSettingsDialog(const QString &strCategory /* = QStri
                                                                                                  strControl);
         connect(m_settings[UIAdvancedSettingsDialog::Type_Machine], &UIAdvancedSettingsDialogGlobal::sigClose,
                 this, &UIMachineLogic::sltCloseSettingsDialog);
-        m_settings.value(UIAdvancedSettingsDialog::Type_Machine)->load();
+        const bool fSuccess = m_settings.value(UIAdvancedSettingsDialog::Type_Machine)->load();
+        if (!fSuccess)
+        {
+            delete m_settings.take(UIAdvancedSettingsDialog::Type_Machine);
+            return;
+        }
     }
 
     /* Expose instance: */

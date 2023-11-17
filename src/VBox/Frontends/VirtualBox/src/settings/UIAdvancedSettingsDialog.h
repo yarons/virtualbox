@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 102087 2023-11-13 16:17:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -86,7 +86,7 @@ public:
     virtual ~UIAdvancedSettingsDialog() RT_OVERRIDE;
 
     /** Loads the dialog data. */
-    virtual void load() = 0;
+    virtual bool load() = 0;
     /** Saves the dialog data. */
     virtual void save() = 0;
 

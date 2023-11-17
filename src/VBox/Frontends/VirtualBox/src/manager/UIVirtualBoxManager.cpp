@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102139 2023-11-17 14:35:57Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1110,7 +1110,12 @@ void UIVirtualBoxManager::sltOpenPreferencesDialog()
         m_settings[UIAdvancedSettingsDialog::Type_Global] = new UIAdvancedSettingsDialogGlobal(this);
         connect(m_settings[UIAdvancedSettingsDialog::Type_Global], &UIAdvancedSettingsDialogGlobal::sigClose,
                 this, &UIVirtualBoxManager::sltClosePreferencesDialog);
-        m_settings.value(UIAdvancedSettingsDialog::Type_Global)->load();
+        const bool fSuccess = m_settings.value(UIAdvancedSettingsDialog::Type_Global)->load();
+        if (!fSuccess)
+        {
+            delete m_settings.take(UIAdvancedSettingsDialog::Type_Global);
+            return;
+        }
     }
 
     /* Expose instance: */
@@ -1312,7 +1317,12 @@ void UIVirtualBoxManager::sltOpenSettingsDialog(QString strCategory /* = QString
                                                                                                          strControl);
                 connect(m_settings[UIAdvancedSettingsDialog::Type_Machine], &UIAdvancedSettingsDialogMachine::sigClose,
                         this, &UIVirtualBoxManager::sltCloseSettingsDialog);
-                m_settings.value(UIAdvancedSettingsDialog::Type_Machine)->load();
+                const bool fSuccess = m_settings.value(UIAdvancedSettingsDialog::Type_Machine)->load();
+                if (!fSuccess)
+                {
+                    delete m_settings.take(UIAdvancedSettingsDialog::Type_Machine);
+                    return;
+                }
             }
 
             /* Expose instance: */
