@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-3-template.c 102130 2023-11-16 23:51:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-3-template.c 102133 2023-11-17 10:05:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-3, C code template.
  */
@@ -58,12 +58,16 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuBasic3_Lea)(uint8_t bMode)
     unsigned i;
 
 # if ARCH_BITS != 64
-    FPFNBS3FAR pfnWorker16 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic3_lea_16));
-    FPFNBS3FAR pfnWorker32 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic3_lea_32));
-    for (i = 0; i < 64; i++)
-        pfnWorker16();
-    for (i = 0; i < 64; i++)
-        pfnWorker32();
+    {
+        FPFNBS3FAR pfnWorker16 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic3_lea_16));
+        for (i = 0; i < 64; i++)
+            pfnWorker16();
+    }
+    {
+        FPFNBS3FAR pfnWorker32 = Bs3SelLnkCodePtrToCurPtr(BS3_CMN_FAR_NM(bs3CpuBasic3_lea_32));
+        for (i = 0; i < 64; i++)
+            pfnWorker32();
+    }
 # else
     //for (i = 0; i < 64; i++)
     //    BS3_CMN_FAR_NM(bs3CpuBasic3_lea_64)
