@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-3-asm.asm 102130 2023-11-16 23:51:25Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-basic-3-asm.asm 102134 2023-11-17 10:16:01Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -53,6 +53,6 @@ BS3_GLOBAL_DATA g_bs3CpuBasic3_lea_rsp, 8
 ;
 ; Instantiate code templates.
 ;
-BS3_INSTANTIATE_COMMON_TEMPLATE          "bs3-cpu-basic-3-template.mac"
-;BS3_INSTANTIATE_TEMPLATE_WITH_WEIRD_ONES "bs3-cpu-basic-3-template.mac"
+BS3_INSTANTIATE_COMMON_TEMPLATE          "bs3-cpu-basic-3-cmn-template.mac"
+;BS3_INSTANTIATE_TEMPLATE_WITH_WEIRD_ONES "bs3-cpu-basic-3-mode-template.mac"
 

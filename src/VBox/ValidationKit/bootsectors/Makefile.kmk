@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102130 2023-11-16 23:51:25Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102134 2023-11-17 10:16:01Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -277,8 +277,8 @@ ifdef VBOX_WITH_BS3KIT
  MISCBINS += bs3-cpu-basic-3
  bs3-cpu-basic-3_TEMPLATE = VBoxBS3KitImg
  bs3-cpu-basic-3_INCS = .
- bs3-cpu-basic-3_DEFS = BS3_CMN_INSTANTIATE_FILE1=bs3-cpu-basic-3-template.c
- bs3-cpu-basic-3_DEFS += BS3_MODE_INSTANTIATE_FILE1=bs3-cpu-basic-3-template.c
+ bs3-cpu-basic-3_DEFS = BS3_CMN_INSTANTIATE_FILE1=bs3-cpu-basic-3-cmn-template.c
+ #bs3-cpu-basic-3_DEFS += BS3_MODE_INSTANTIATE_FILE1=bs3-cpu-basic-3-mode-template.c
  bs3-cpu-basic-3_SOURCES = \
  	bs3kit/bs3-first-rm.asm \
  	bs3-cpu-basic-3.c \
@@ -286,7 +286,7 @@ ifdef VBOX_WITH_BS3KIT
  	bs3kit/bs3-cmn-instantiate.c32 \
  	bs3kit/bs3-cmn-instantiate.c64 \
  	bs3-cpu-basic-3-asm.asm
- bs3-cpu-basic-3-template.o:: \
+ bs3-cpu-basic-3-cmn-template.o:: \
  		$$(bs3-cpu-basic-3_0_OUTDIR)/bs3kit/bs3-cmn-instantiate-x0.o16 \
  		$$(bs3-cpu-basic-3_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o32 \
  		$$(bs3-cpu-basic-3_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o64 \
