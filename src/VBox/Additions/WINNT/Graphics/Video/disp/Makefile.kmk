@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98416 2023-02-01 16:25:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102145 2023-11-17 21:47:01Z vitali.pelenjow@oracle.com $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -216,7 +216,9 @@ ifdef VBOX_WITH_WDDM
   	$(VBOX_GRAPHICS_INCS)
   VBoxDX_SOURCES = \
   	wddm/dx/VBoxDXDDI.cpp \
+  	wddm/dx/VBoxDXDDIVideo.cpp \
   	wddm/dx/VBoxDX.cpp \
+  	wddm/dx/VBoxDXVideo.cpp \
   	wddm/dx/VBoxDXCmd.cpp \
   	wddm/dx/VBoxDX.rc \
   	wddm/dx/VBoxDX.def

@@ -1,4 +1,4 @@
-/* $Id: VBoxDXDDI.cpp 100065 2023-06-04 10:31:42Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXDDI.cpp 102145 2023-11-17 21:47:01Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface.
  */
@@ -4022,13 +4022,24 @@ static HRESULT APIENTRY ddi10RetrieveSubObject(
     void *pOutputParamsBuffer
 )
 {
-    //DEBUG_BREAKPOINT_TEST();
+    RT_NOREF(OutputParamSize, pOutputParamsBuffer);
+
     PVBOXDX_DEVICE pDevice = (PVBOXDX_DEVICE)hDevice.pDrvPrivate;
     LogFlowFunc(("pDevice 0x%p, SubDeviceID %u, ParamSize %u, OutputParamSize %u", pDevice, SubDeviceID, ParamSize, OutputParamSize));
 
-    AssertReturn(SubDeviceID == D3D11_1DDI_VIDEO_FUNCTIONS, E_INVALIDARG);
+    if (SubDeviceID == D3D11_1DDI_VIDEO_FUNCTIONS)
+    {
+        AssertReturn(ParamSize >= sizeof(D3D11_1DDI_VIDEO_INPUT), E_INVALIDARG);
 
-    RT_NOREF(pDevice, ParamSize, pParams, OutputParamSize, pOutputParamsBuffer);
+#if 0
+        D3D11_1DDI_VIDEO_INPUT *pVideoInput = (D3D11_1DDI_VIDEO_INPUT *)pParams;
+        return ddi11_1RetrieveVideoFunctions(pDevice, pVideoInput);
+#else
+        RT_NOREF(pDevice, pParams);
+#endif
+    }
+
+    DEBUG_BREAKPOINT_TEST();
     return E_FAIL;
 }
 
