@@ -1,4 +1,4 @@
-/* $Id: http-server.h 99937 2023-05-23 15:38:52Z andreas.loeffler@oracle.com $ */
+/* $Id: http-server.h 102141 2023-11-17 15:27:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Header file for HTTP server implementation.
  */
@@ -64,7 +64,7 @@ typedef RTHTTPSERVER                            *PRTHTTPSERVER;
  */
 typedef struct RTHTTPSERVERREQ
 {
-    /** Request URL. */
+    /** Request URL. Unmodified (i.e. escaped by HTTP client). */
     char            *pszUrl;
     /** Request method. */
     RTHTTPMETHOD     enmMethod;
