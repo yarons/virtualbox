@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 100157 2023-06-12 15:45:53Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 102142 2023-11-17 18:59:15Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -9226,6 +9226,9 @@ static DECLCALLBACK(int) vmsvga3dBackDXSetCOTable(PVGASTATECC pThisCC, PVMSVGA3D
             }
             break;
         case SVGA_COTABLE_MAX: break; /* Compiler warning */
+#ifndef DEBUG_sunlover
+        default: break; /* Compiler warning. */
+#endif
     }
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 99589 2023-05-03 15:56:34Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 102142 2023-11-17 18:59:15Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -2282,6 +2282,9 @@ static int dxSetOrGrowCOTable(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext
                 pDXContext->cot.cUAView           = cEntries;
                 break;
             case SVGA_COTABLE_MAX: break; /* Compiler warning */
+#ifndef DEBUG_sunlover
+            default: break; /* Compiler warning. */
+#endif
         }
     }
     else

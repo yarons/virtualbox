@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 100712 2023-07-26 22:38:25Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 102142 2023-11-17 18:59:15Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -297,6 +297,9 @@ static const char *vmsvgaFifo3dCmdToString(SVGAFifo3dCmdId enmCmdId)
         SVGA_CASE_ID2STR(SVGA_3D_CMD_DX_BIND_SHADER_IFACE);
         SVGA_CASE_ID2STR(SVGA_3D_CMD_MAX);
         SVGA_CASE_ID2STR(SVGA_3D_CMD_FUTURE_MAX);
+#ifndef DEBUG_sunlover
+        default: break; /* Compiler warning. */
+#endif
     }
     return "UNKNOWN_3D";
 }
@@ -6225,7 +6228,11 @@ int vmsvgaR3Process3dCmd(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t idDXCont
     case SVGA_3D_CMD_LEGACY_BASE:
     case SVGA_3D_CMD_MAX:
     case SVGA_3D_CMD_FUTURE_MAX:
+#ifndef DEBUG_sunlover
+    default: /* Compiler warning. */
+#else
     /* No 'default' case */
+#endif
         STAM_REL_COUNTER_INC(&pSvgaR3State->StatFifoUnkCmds);
         ASSERT_GUEST_MSG_FAILED(("enmCmdId=%d\n", enmCmdId));
         LogRelMax(16, ("VMSVGA: unsupported 3D command %d\n", enmCmdId));
