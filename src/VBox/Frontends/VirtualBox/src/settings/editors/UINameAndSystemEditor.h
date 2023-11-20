@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 101713 2023-11-02 09:51:36Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 102162 2023-11-20 17:32:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -141,6 +141,11 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
+
+    /** Handles filter change.
+      * Reimplement this in subclass to handle various filter changes,
+      * like experience mode change or manual filter editor change. */
+    virtual void handleFilterChange() RT_OVERRIDE;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 102153 2023-11-20 15:05:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 102162 2023-11-20 17:32:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -113,13 +113,16 @@ public:
     void reCacheGuestOSTypes(const CGuestOSTypeVector &guestOSTypes);
 
     /** Returns a list of all families (id and description). */
-    UIGuestOSFamilyInfo getFamilies() const;
+    UIGuestOSFamilyInfo getFamilies(KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns the list of subtypes for @p strFamilyId. This may be an empty list. */
-    QStringList         getSubtypeListForFamilyId(const QString &strFamilyId) const;
+    QStringList         getSubtypeListForFamilyId(const QString &strFamilyId,
+                                                  KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns a list of OS types for the @p strFamilyId. */
-    UIGuestOSTypeInfo   getTypeListForFamilyId(const QString &strFamilyId) const;
+    UIGuestOSTypeInfo   getTypeListForFamilyId(const QString &strFamilyId,
+                                               KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns a list of OS types for the @p strSubtype. */
-    UIGuestOSTypeInfo   getTypeListForSubtype(const QString &strSubtype) const;
+    UIGuestOSTypeInfo   getTypeListForSubtype(const QString &strSubtype,
+                                              KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
 
     static bool isDOSType(const QString &strOSTypeId);
 
@@ -154,6 +157,11 @@ private:
     QMap<QString, int> m_typeIdIndexMap;
     /** First item of the pair is family id and the 2nd is family description. */
     UIGuestOSFamilyInfo m_guestOSFamilies;
+
+    /** Caches arch types on per-family basis. */
+    QMap<QString, KPlatformArchitecture>  m_guestOSFamilyArch;
+    /** Caches arch types on per-subtype basis. */
+    QMap<QString, KPlatformArchitecture>  m_guestOSSubtypeArch;
 };
 
 
