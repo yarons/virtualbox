@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrLX.cpp 102156 2023-11-20 16:16:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -2428,8 +2428,14 @@ static DECLCALLBACK(int) rtldrLX_GetBits(PRTLDRMODINTERNAL pMod, void *pvBits, R
     {
         /*
          * Perform relocations.
+         *
+         * We force this to take place by messing with the OldBaseAddress as we
+         * have to apply internal relocations even if the load address is the
+         * same as the link address.
          */
-        rc = rtldrLX_RelocateBits(pMod, pvBits, BaseAddress, pModLX->aSegments[0].LinkAddress, pfnGetImport, pvUser);
+        rc = rtldrLX_RelocateBits(pMod, pvBits, BaseAddress,
+                                  _4K ^ BaseAddress ^ pModLX->aSegments[0].LinkAddress,
+                                  pfnGetImport, pvUser);
     }
     return rc;
 }
