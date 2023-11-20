@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 102148 2023-11-20 06:45:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 102151 2023-11-20 14:06:57Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -219,7 +219,7 @@ protected:
         QString m_strDiskIOInfoLabelWrittenTotal;
         QString m_strDiskIOInfoLabelReadTotal;
     /** @} */
-
+        int iMaximum = 0;
 
 private slots:
 
