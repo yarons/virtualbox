@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102087 2023-11-13 16:17:15Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102160 2023-11-20 17:24:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -958,7 +958,8 @@ void UIAdvancedSettingsDialog::addItem(const QString &strBigIcon,
 
         /* Create validator: */
         UISettingsPageValidator *pValidator = new UISettingsPageValidator(this, pSettingsPage);
-        connect(pValidator, &UISettingsPageValidator::sigValidityChanged, this, &UIAdvancedSettingsDialog::sltHandleValidityChange);
+        connect(pValidator, &UISettingsPageValidator::sigValidityChanged,
+                this, &UIAdvancedSettingsDialog::sltHandleValidityChange);
         pSettingsPage->setValidator(pValidator);
         m_pWarningPane->registerValidator(pValidator);
 
