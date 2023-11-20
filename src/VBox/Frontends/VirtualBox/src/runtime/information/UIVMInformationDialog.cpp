@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 102147 2023-11-20 06:35:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -219,12 +219,12 @@ void UIVMInformationDialog::prepareTabWidget()
         }
 
         /* Create Performance Monitor tab: */
-        UIVMActivityMonitor *pVMActivityMonitorWidget =
-            new UIVMActivityMonitor(EmbedTo_Dialog, this, gpMachine->uisession()->machine());
+        UIVMActivityMonitorLocal *pVMActivityMonitorWidget =
+            new UIVMActivityMonitorLocal(EmbedTo_Dialog, this, gpMachine->uisession()->machine());
         if (pVMActivityMonitorWidget)
         {
             connect(gpMachine, &UIMachine::sigAdditionsStateChange,
-                    pVMActivityMonitorWidget, &UIVMActivityMonitor::sltGuestAdditionsStateChange);
+                    pVMActivityMonitorWidget, &UIVMActivityMonitorLocal::sltGuestAdditionsStateChange);
             m_tabs.insert(Tabs_ActivityMonitor, pVMActivityMonitorWidget);
             m_pTabWidget->addTab(m_tabs.value(Tabs_ActivityMonitor), QString());
         }
