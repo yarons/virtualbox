@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 102116 2023-11-15 19:41:58Z brian.le.lee@oracle.com $ */
+/* $Id: UnattendedImpl.h 102171 2023-11-20 23:05:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -56,7 +56,6 @@ struct WIMImage
     VBOXOSTYPE mOSType;
     WIMImage() : mImageIndex(0), mOSType(VBOXOSTYPE_Unknown) { }
     const Utf8Str &formatName(Utf8Str &r_strName) const;
-    VBOXOSTYPE mEnmOsType;
 };
 
 /**
