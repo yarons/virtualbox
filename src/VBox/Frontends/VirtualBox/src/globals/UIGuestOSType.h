@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 102152 2023-11-20 14:58:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 102153 2023-11-20 15:05:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -113,13 +113,13 @@ public:
     void reCacheGuestOSTypes(const CGuestOSTypeVector &guestOSTypes);
 
     /** Returns a list of all families (id and description). */
-    const UIGuestOSFamilyInfo &getFamilies() const;
+    UIGuestOSFamilyInfo getFamilies() const;
     /** Returns the list of subtypes for @p strFamilyId. This may be an empty list. */
-    QStringList                getSubtypeListForFamilyId(const QString &strFamilyId) const;
+    QStringList         getSubtypeListForFamilyId(const QString &strFamilyId) const;
     /** Returns a list of OS types for the @p strFamilyId. */
-    UIGuestOSTypeInfo          getTypeListForFamilyId(const QString &strFamilyId) const;
+    UIGuestOSTypeInfo   getTypeListForFamilyId(const QString &strFamilyId) const;
     /** Returns a list of OS types for the @p strSubtype. */
-    UIGuestOSTypeInfo          getTypeListForSubtype(const QString &strSubtype) const;
+    UIGuestOSTypeInfo   getTypeListForSubtype(const QString &strSubtype) const;
 
     static bool isDOSType(const QString &strOSTypeId);
 

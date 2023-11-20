@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 102152 2023-11-20 14:58:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 102153 2023-11-20 15:05:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -67,23 +67,24 @@ void UIGuestOSTypeManager::addGuestOSType(const CGuestOSType &comType)
         m_guestOSFamilies << family;
 }
 
-const UIGuestOSTypeManager::UIGuestOSFamilyInfo &UIGuestOSTypeManager::getFamilies() const
+UIGuestOSTypeManager::UIGuestOSFamilyInfo UIGuestOSTypeManager::getFamilies() const
 {
     return m_guestOSFamilies;
 }
 
 QStringList UIGuestOSTypeManager::getSubtypeListForFamilyId(const QString &strFamilyId) const
 {
-    QStringList subtypeList;
+    QStringList subtypes;
     foreach (const UIGuestOSType &type, m_guestOSTypes)
     {
         if (type.getFamilyId() != strFamilyId)
             continue;
-        const QString &strSubtype = type.getSubtype();
-        if (!strSubtype.isEmpty() && !subtypeList.contains(strSubtype))
-            subtypeList << strSubtype;
+        const QString strSubtype = type.getSubtype();
+        if (strSubtype.isEmpty() || subtypes.contains(strSubtype))
+            continue;
+        subtypes << strSubtype;
     }
-    return subtypeList;
+    return subtypes;
 }
 
 UIGuestOSTypeManager::UIGuestOSTypeInfo UIGuestOSTypeManager::getTypeListForFamilyId(const QString &strFamilyId) const
@@ -94,9 +95,9 @@ UIGuestOSTypeManager::UIGuestOSTypeInfo UIGuestOSTypeManager::getTypeListForFami
         if (type.getFamilyId() != strFamilyId)
             continue;
         QPair<QString, QString> info(type.getId(), type.getDescription());
-
-        if (!typeInfoList.contains(info))
-            typeInfoList << info;
+        if (typeInfoList.contains(info))
+            continue;
+        typeInfoList << info;
     }
     return typeInfoList;
 }
@@ -106,14 +107,14 @@ UIGuestOSTypeManager::UIGuestOSTypeInfo UIGuestOSTypeManager::getTypeListForSubt
     UIGuestOSTypeInfo typeInfoList;
     if (strSubtype.isEmpty())
         return typeInfoList;
-
     foreach (const UIGuestOSType &type, m_guestOSTypes)
     {
         if (type.getSubtype() != strSubtype)
             continue;
         QPair<QString, QString> info(type.getId(), type.getDescription());
-        if (!typeInfoList.contains(info))
-            typeInfoList << info;
+        if (typeInfoList.contains(info))
+            continue;
+        typeInfoList << info;
     }
     return typeInfoList;
 }
