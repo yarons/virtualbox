@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 102152 2023-11-20 14:58:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -107,7 +107,7 @@ void UIGuestOSTypeSelectionButton::populateMenu()
     /* Clear initially: */
     m_pMainMenu->clear();
 
-    UIGuestOSTypeManager::UIGuestOSTypeFamilyInfo familyList = uiCommon().guestOSTypeManager().getFamilies();
+    UIGuestOSTypeManager::UIGuestOSFamilyInfo familyList = uiCommon().guestOSTypeManager().getFamilies();
 
     for (int i = 0; i < familyList.size(); ++i)
     {
