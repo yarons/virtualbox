@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 102147 2023-11-20 06:35:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 102148 2023-11-20 06:45:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -299,7 +299,7 @@ private:
     QString m_strVMExitLabelTotal;
 };
 
-class  SHARED_LIBRARY_STUFF UIVMActivityMonitorCloud : public QIWithRetranslateUI<UIVMActivityMonitor>
+class  SHARED_LIBRARY_STUFF UIVMActivityMonitorCloud : public UIVMActivityMonitor
 {
 
     Q_OBJECT;
