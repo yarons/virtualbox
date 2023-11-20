@@ -1,4 +1,4 @@
-; $Id: bs3-mode-DiskQueryGeometry.asm 102149 2023-11-20 11:14:01Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-DiskQueryGeometry.asm 102150 2023-11-20 11:14:18Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3BiosInt15hE820
 ;
@@ -242,5 +242,5 @@ TMPL_BEGIN_TEXT
         jne     .return
         dec     al
         jmp     .return
-BS3_PROC_END_MODE   Bs3BiosInt15hE820
+BS3_PROC_END_MODE   Bs3DiskQueryGeometry
 
