@@ -1,4 +1,4 @@
-; $Id: bs3-mode-BiosInt15hE820.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-BiosInt15hE820.asm 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3BiosInt15hE820
 ;
@@ -171,7 +171,7 @@ TMPL_BEGIN_TEXT
         ;
         jc      .failed
         cmp     eax, INT15_E820_SIGNATURE
-        jc      .failed
+        jne     .failed
         cmp     ecx, 20
         jb      .failed
 

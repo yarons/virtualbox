@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-rm-InitAll.c 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -57,6 +57,14 @@ BS3_DECL(void) Bs3InitAll_rm(void)
     Bs3CpuDetect_rm_far();
     Bs3InitMemory_rm_far();
     Bs3InitGdt_rm_far();
+
+#ifdef BS3_INIT_ALL_WITH_HIGH_DLLS
+    /*
+     * Load the high DLLs (if any) now, before we bugger up the PIC and
+     * replace the IVT.
+     */
+    Bs3InitHighDlls_rm_far();
+#endif
 
     /*
      * Before we disable all interrupts, try convince the BIOS to stop the

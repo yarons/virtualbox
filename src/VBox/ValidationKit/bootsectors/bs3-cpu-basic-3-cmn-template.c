@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-3-cmn-template.c 102134 2023-11-17 10:16:01Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-3-cmn-template.c 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-3, C code template, common code (CMN).
  */
@@ -64,12 +64,10 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuBasic3_Lea)(uint8_t bMode)
         for (i = 0; i < 64; i++)
             pfnWorker32();
     }
-    return 0;
 #else
-    //for (i = 0; i < 64; i++)
-    //    BS3_CMN_FAR_NM(bs3CpuBasic3_lea_64)
-    RT_NOREF(i);
-    return BS3TESTDOMODE_SKIPPED;
+    for (i = 0; i < 64; i++)
+        BS3_CMN_FAR_NM(bs3CpuBasic3_lea_64)();
 #endif
+    return 0;
 }
 
