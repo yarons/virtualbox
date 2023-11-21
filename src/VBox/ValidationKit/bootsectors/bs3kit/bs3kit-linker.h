@@ -1,4 +1,4 @@
-/* $Id: bs3kit-linker.h 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit-linker.h 102181 2023-11-21 09:45:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Linker related structures and defines.
  */
@@ -116,8 +116,11 @@ typedef struct BS3HIGHDLLIMPORTENTRY
 
 typedef struct BS3HIGHDLLEXPORTENTRY
 {
-    uint32_t    offFlat;
-    uint16_t    offName;
+    uint32_t    offFlat;            /**< The flat address. This can be accessed as 32-bit and 64-bit - g_pfnSymbol. */
+    uint32_t    offFlatZeroHigh;    /**< Zero high dword in case of 64-bit use. */
+    uint32_t    offSeg;             /**< Segmented address: offset part - g_fpfn48Symbol. */
+    uint16_t    idxSel;             /**< Segmented address: selector part. */
+    uint16_t    offName;            /**< The string table offset. */
 } BS3HIGHDLLEXPORTENTRY;
 
 

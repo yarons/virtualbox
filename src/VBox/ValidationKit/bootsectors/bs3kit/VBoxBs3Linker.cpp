@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Linker.cpp 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3Linker.cpp 102181 2023-11-21 09:45:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 "linker".
  */
@@ -101,11 +101,18 @@ static DECLCALLBACK(int) GenerateHighDllAsmOutputExportTable(RTLDRMOD hLdrMod, c
         return RTMsgErrorRc(VERR_LDR_BAD_FIXUP, "All exports must be by name. uSymbol=%#x Value=%RX64", uSymbol, (uint64_t)Value);
 
     // BS3HIGHDLLEXPORTENTRY
+
     fprintf(pState->pOutput,
-            "g_pfn%s:\n"
+            "BS3_GLOBAL_DATA g_pfn%s, 8\n"
             "        dd      0\n"
-            "        dd      %#08x\n",
-            pszSymbol, (unsigned)pState->cbStrings);
+            "        dd      0\n"
+            "BS3_GLOBAL_DATA g_fpfn48%s, 6\n"
+            "        dd      0\n"
+            "        dw      0\n"
+            "        dw      %#08x\n",
+            pszSymbol + (*pszSymbol == '_'),
+            pszSymbol + (*pszSymbol == '_'),
+            (unsigned)pState->cbStrings);
     pState->cbStrings += strlen(pszSymbol) + 1;
     pState->cExports  += 1;
 
@@ -442,6 +449,7 @@ static RTEXITCODE DoTheLinking(FILE *pOutput, BS3LNKINPUT *paInputs, unsigned cI
                     paExports[iExport].offFlat = (uint32_t)Value;
                 else
                     return RTMsgErrorExitFailure("Failed to resolve '%s' in '%s': %Rrc", pszSymbol, paInputs[i].pszFile, rc);
+                /** @todo Do BS3HIGHDLLEXPORTENTRY::offSeg and idxSel. */
             }
 
             /* Update the DLL entry with the load address and file address: */
@@ -611,7 +619,7 @@ int main(int argc, char **argv)
             }
 
             case 'V':
-                printf("%s\n", "$Revision: 102157 $");
+                printf("%s\n", "$Revision: 102181 $");
                 return RTEXITCODE_SUCCESS;
 
             case 'h':

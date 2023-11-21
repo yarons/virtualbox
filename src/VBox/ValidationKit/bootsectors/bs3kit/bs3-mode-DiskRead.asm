@@ -1,4 +1,4 @@
-; $Id: bs3-mode-DiskRead.asm 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-DiskRead.asm 102181 2023-11-21 09:45:40Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3DiskRead
 ;
@@ -187,7 +187,12 @@ hlt
         jc      .failed_return_ah
         test    ah, ah
         jnz     .failed_return_ah
-
+%ifdef BS3_STRICT
+        cmp      al, a_cSectors
+        je      .next
+        int3
+.next:
+%endif
         ;
         ; Return success
         ;
