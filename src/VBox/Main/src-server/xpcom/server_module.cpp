@@ -1,4 +1,4 @@
-/* $Id: server_module.cpp 102053 2023-11-09 20:16:51Z alexander.eichner@oracle.com $ */
+/* $Id: server_module.cpp 102206 2023-11-21 13:38:38Z alexander.eichner@oracle.com $ */
 /** @file
  * XPCOM server process helper module implementation functions
  */
@@ -39,8 +39,6 @@
 #include <ipcIDConnectService.h>
 #include <ipcCID.h>
 #include <ipcdclient.h>
-
-#include "prio.h"
 
 // official XPCOM headers don't define it yet
 #define IPC_DCONNECTSERVICE_CONTRACTID \
