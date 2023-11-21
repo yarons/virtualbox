@@ -1,4 +1,4 @@
-; $Id: bs3-mode-MemCopyFlat.asm 102158 2023-11-20 17:10:24Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-MemCopyFlat.asm 102193 2023-11-21 11:52:20Z ksenia.s.stepanova@oracle.com $
 ;; @file
 ; BS3Kit - Bs3MemCopyFlat
 ;
@@ -111,5 +111,4 @@ BS3_PROC_BEGIN_MODE Bs3MemCopyFlat, BS3_PBC_HYBRID
         BITS    16
 %endif
 BS3_PROC_END_MODE   Bs3MemCopyFlat
-
 
