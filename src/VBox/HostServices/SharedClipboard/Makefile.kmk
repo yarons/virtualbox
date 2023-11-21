@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102165 2023-11-20 18:41:07Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 102188 2023-11-21 10:57:48Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -57,7 +57,7 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
  ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
   VBoxSharedClipboard_DEFS    += VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
   VBoxSharedClipboard_SOURCES += \
- 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-http.cpp
+  	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-transfers-http.cpp
  endif
  VBoxSharedClipboard_DEFS    += VBOX_WITH_SHARED_CLIPBOARD_HOST
  VBoxSharedClipboard_SOURCES += \
