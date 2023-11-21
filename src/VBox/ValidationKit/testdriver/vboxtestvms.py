@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 102189 2023-11-21 11:03:54Z klaus.espenlaub@oracle.com $
+# $Id: vboxtestvms.py 102190 2023-11-21 11:09:03Z klaus.espenlaub@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102189 $"
+__version__ = "$Revision: 102190 $"
 
 # Standard Python imports.
 import copy;
@@ -2114,7 +2114,8 @@ class TestVmManager(object):
         TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32-1.vdi',
                sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
         TestVm('tst-win7-64',               kfGrpStdSmoke,        sHd = '7.0/win7-64/win7-64.vdi',
-               sKind = 'Windows7_64', acCpusSup = range(1, 33), fIoApic = True),
+               sKind = 'Windows7_64', acCpusSup = range(1, 33), fIoApic = True,
+               sHddControllerType = 'SATA Controller'),
         # Note: Deprecated due to activation issues; use t-win7-32-1 instead.
         #TestVm('tst-win7',                  kfGrpStdSmoke,        sHd = '6.1/win7-32/t-win7-32.vdi',
         #       sKind = 'Windows7',    acCpusSup = range(1, 33), fIoApic = True),
