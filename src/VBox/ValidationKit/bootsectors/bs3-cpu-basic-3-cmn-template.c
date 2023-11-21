@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-3-cmn-template.c 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-basic-3-cmn-template.c 102182 2023-11-21 09:46:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-3, C code template, common code (CMN).
  */
@@ -65,8 +65,12 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuBasic3_Lea)(uint8_t bMode)
             pfnWorker32();
     }
 #else
-    for (i = 0; i < 64; i++)
-        BS3_CMN_FAR_NM(bs3CpuBasic3_lea_64)();
+    {
+        /* The worker for this is in the high DLL, so have to get the address. */
+        extern FPFNBS3FAR BS3_CMN_NM(g_pfnbs3CpuBasic3_lea_64);
+        for (i = 0; i < 64; i++)
+            BS3_CMN_NM(g_pfnbs3CpuBasic3_lea_64)();
+    }
 #endif
     return 0;
 }
