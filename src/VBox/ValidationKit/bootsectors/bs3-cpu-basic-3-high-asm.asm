@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-3-high-asm.asm 102182 2023-11-21 09:46:33Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-basic-3-high-asm.asm 102183 2023-11-21 09:46:56Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-3-high - Assembly code.
 ;
@@ -505,12 +505,4 @@ mov     dword [BS3_DATA16_WRT(BS3_DATA_NM(g_bs3CpuBasic3_lea_trace))], $ ;iMod |
         ret
 %endif
 BS3_PROC_END_CMN   bs3CpuBasic3_lea_64
-
-
-align 512
-%assign x 1
-%rep 16
-%assign x x+1
-        times 512 db x
-%endrep
 
