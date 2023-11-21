@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102209 2023-11-21 14:04:02Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102211 2023-11-21 14:19:17Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -168,7 +168,6 @@ NSPRPUB-HEADERS_SOURCES = \
 	nsprpub/pr/include/prbit.h \
 	nsprpub/pr/include/prclist.h \
 	nsprpub/pr/include/prcvar.h \
-	nsprpub/pr/include/prinit.h \
 	nsprpub/pr/include/prinrval.h \
 	nsprpub/pr/include/prlock.h \
 	nsprpub/pr/include/prlong.h \
