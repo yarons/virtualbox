@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 102116 2023-11-15 19:41:58Z brian.le.lee@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 102224 2023-11-22 08:53:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -726,7 +726,7 @@ static void doTest1()
     /* Compare the two. */
     if (strExpected != strActual)
     {
-        RTTestIFailed("Output does not match tstUnattendedScript-1.expect!");
+        RTTestIFailed("Output does not match tstUnattendedScript-1.expected!");
         RTTestIFailureDetails("------ BEGIN OUTPUT ------\n");
         RTStrmWrite(g_pStdErr, strActual.c_str(), strActual.length());
         RTTestIFailureDetails("------- END OUTPUT -------\n");
