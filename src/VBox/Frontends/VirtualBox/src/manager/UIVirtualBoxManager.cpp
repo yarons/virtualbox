@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102267 2023-11-22 18:26:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102268 2023-11-22 18:35:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -3168,7 +3168,8 @@ void UIVirtualBoxManager::updateMenuMachine(QMenu *pMenu)
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Add));
         pMenu->addSeparator();
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
-        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone));
+        if (gEDataManager->isSettingsInExpertMode())
+            pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone));
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Remove));
         pMenu->addSeparator();
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_StartOrShow));
@@ -3189,8 +3190,11 @@ void UIVirtualBoxManager::updateMenuMachine(QMenu *pMenu)
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Add));
         pMenu->addSeparator();
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
-        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone));
-        pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Move));
+        if (gEDataManager->isSettingsInExpertMode())
+        {
+            pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Clone));
+            pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Move));
+        }
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_ExportToOCI));
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Remove));
         pMenu->addAction(actionPool()->action(UIActionIndexMN_M_Machine_M_MoveToGroup));
