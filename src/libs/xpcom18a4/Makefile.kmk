@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102239 2023-11-22 10:16:52Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102240 2023-11-22 10:21:58Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -177,7 +177,6 @@ NSPRPUB-HEADERS_SOURCES = \
 NSPRPUB-MD-HEADERS_INST = $(INST_SDK)bindings/xpcom/include/nsprpub/md/
 NSPRPUB-MD-HEADERS_IFFLAGS = -m 644
 NSPRPUB-MD-HEADERS_SOURCES = \
-	nsprpub/pr/include/md/_pth.h \
 	nsprpub/pr/include/md/prosdep.h
 
 STRING-HEADERS_INST = $(INST_SDK)bindings/xpcom/include/string/
