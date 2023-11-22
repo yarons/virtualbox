@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 102262 2023-11-22 15:19:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -209,6 +209,9 @@ private slots:
     void sltApplyFilteringRules();
     /** Handles frame visivility changes. */
     void sltHandleFrameVisibilityChange(bool fVisible);
+
+    /** Handles signal about vertical scroll-area wheel-event. */
+    void sltHandleVerticalScrollAreaWheelEvent();
 
 private:
 
