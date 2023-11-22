@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -894,16 +894,6 @@ void UIVMLogViewerWidget::loadOptions()
 
 void UIVMLogViewerWidget::retranslateUi()
 {
-    /* Translate toolbar: */
-#ifdef VBOX_WS_MAC
-    // WORKAROUND:
-    // There is a bug in Qt Cocoa which result in showing a "more arrow" when
-    // the necessary size of the toolbar is increased. Also for some languages
-    // the with doesn't match if the text increase. So manually adjust the size
-    // after changing the text. */
-    if (m_pToolBar)
-        m_pToolBar->updateLayout();
-#endif
     if (m_pCornerButton)
         m_pCornerButton->setToolTip(tr("Select machines to show their log"));
 }

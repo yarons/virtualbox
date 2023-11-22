@@ -1,4 +1,4 @@
-/* $Id: QIToolBar.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIToolBar.h 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIToolBar class declaration.
  */
@@ -77,8 +77,6 @@ public:
 
     /** Mac OS X: Defines whether native tool-bar button should be shown. */
     void setShowToolBarButton(bool fShow);
-    /** Mac OS X: Updates native tool-bar layout. */
-    void updateLayout();
 
     /** Mac OS X: Defines branding stuff to be shown.
       * @param  icnBranding     Brings branding icon to be shown.
