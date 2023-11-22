@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIActionPoolManager.h 102265 2023-11-22 15:59:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -242,6 +242,11 @@ protected:
     virtual QString shortcutsExtraDataID() const RT_OVERRIDE;
     /** Updates shortcuts. */
     virtual void updateShortcuts() RT_OVERRIDE;
+
+private slots:
+
+    /** Handles signal about settings expert mode change. */
+    void sltHandleSettingsExpertModeChange();
 
 private:
 
