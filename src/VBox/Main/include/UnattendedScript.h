@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedScript.h 102228 2023-11-22 09:07:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -126,6 +126,8 @@ protected:
      * @retval  VERR_NOT_FOUND if variable does not exist.
      *
      * @param   pchName             The variable name.  Not zero terminated.
+     *                              Will return hashed values if the variable name ends with
+     *                              "_MD5", _SHA1", "_SHA256" or "_SHA512".
      * @param   cchName             The length of the name.
      * @param   rstrTmp             String object that can be used for keeping the
      *                              value returned via @a *ppszValue.
