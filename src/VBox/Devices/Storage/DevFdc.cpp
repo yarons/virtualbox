@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 100415 2023-07-06 14:17:28Z michal.necasek@oracle.com $ */
+/* $Id: DevFdc.cpp 102258 2023-11-22 14:05:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -366,7 +366,7 @@ static fd_format_t const fd_formats[] = {
     { FDRIVE_DRV_144,  9, 40, 0, FDRIVE_RATE_300K,  "180 kB 3\"1/2", },
     { FDRIVE_DRV_144,  8, 40, 1, FDRIVE_RATE_300K,  "320 kB 3\"1/2", },
     { FDRIVE_DRV_144,  8, 40, 0, FDRIVE_RATE_300K,  "160 kB 3\"1/2", },
-    /* For larger than real life floppy images (see DrvBlock.cpp). */
+    /* For larger than real life floppy images (see DrvVD.cpp). */
     /* 15.6 MB fake floppy disk (just need something big). */
     { FDRIVE_DRV_FAKE_15_6,  63, 255, 1, FDRIVE_RATE_1M,   "15.6 MB fake 15.6", },
     { FDRIVE_DRV_FAKE_15_6,  36,  80, 1, FDRIVE_RATE_1M,   "2.88 MB fake 15.6", },
