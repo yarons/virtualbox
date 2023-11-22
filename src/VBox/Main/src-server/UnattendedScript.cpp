@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 102224 2023-11-22 08:53:57Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedScript.cpp 102227 2023-11-22 08:58:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -648,7 +648,7 @@ int UnattendedScriptTemplate::queryVariable(const char *pchName, size_t cchName,
             pszValue = rstrTmp.assign(szDigest, strlen(szDigest)).c_str(); \
         } while (0)
 
-    const char *pszValue;
+    const char *pszValue = NULL;
 
     /*
      * Calculate the variable name length w/o any suffixes we want to handle down below.
