@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 102180 2023-11-21 09:42:06Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 102230 2023-11-22 09:16:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -83,7 +83,7 @@ static DECLCALLBACK(int) tstSrvWorker(RTTHREAD hThread, void *pvUser)
     int rc = RTThreadUserSignal(hThread);
     AssertRCReturn(rc, rc);
 
-    uint32_t const msStartTS = RTTimeMilliTS();
+    uint64_t const msStartTS = RTTimeMilliTS();
     while (RTTimeMilliTS() - msStartTS < g_msRuntime)
     {
         if (g_fShutdown)
