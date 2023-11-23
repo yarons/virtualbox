@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 102281 2023-11-23 19:48:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 102282 2023-11-23 19:52:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -108,7 +108,7 @@ public:
     UIGuestOSTypeManager(const UIGuestOSTypeManager &other) = delete;
 
     /** Re-create the guest OS type database. */
-    void reCacheGuestOSTypes(const CGuestOSTypeVector &guestOSTypes);
+    void reCacheGuestOSTypes();
 
     /** Returns a list of all families (id and description). */
     UIGuestOSFamilyInfo getFamilies(KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;

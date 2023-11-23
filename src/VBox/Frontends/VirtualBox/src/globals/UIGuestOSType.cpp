@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 102281 2023-11-23 19:48:16Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 102282 2023-11-23 19:52:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -31,10 +31,22 @@
 
 /* COM includes: */
 #include "CGuestOSType.h"
+#include "CPlatformProperties.h"
+#include "CSystemProperties.h"
 
 
-void UIGuestOSTypeManager::reCacheGuestOSTypes(const CGuestOSTypeVector &guestOSTypes)
+void UIGuestOSTypeManager::reCacheGuestOSTypes()
 {
+    /* Acquire a list of guest OS types supported by this host: */
+    CGuestOSTypeVector guestOSTypes;
+    CSystemProperties comSysProps = uiCommon().virtualBox().GetSystemProperties();
+    foreach (const KPlatformArchitecture &enmArch, comSysProps.GetSupportedPlatformArchitectures())
+    {
+        CPlatformProperties comPlatProps = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+        guestOSTypes += comPlatProps.GetSupportedGuestOSTypes();
+    }
+
+    /* Wipe out cache: */
     m_typeIdIndexMap.clear();
     m_guestOSTypes.clear();
     m_guestOSFamilies.clear();

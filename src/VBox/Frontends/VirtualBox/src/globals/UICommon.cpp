@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102274 2023-11-23 13:07:40Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 102282 2023-11-23 19:52:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1410,7 +1410,7 @@ const UIGuestOSTypeManager &UICommon::guestOSTypeManager()
     if (!m_pGuestOSTypeManager)
     {
         m_pGuestOSTypeManager = new UIGuestOSTypeManager;
-        m_pGuestOSTypeManager->reCacheGuestOSTypes(m_comVBox.GetGuestOSTypes());
+        m_pGuestOSTypeManager->reCacheGuestOSTypes();
     }
 
     /* Return an object instance: */
@@ -2971,7 +2971,7 @@ void UICommon::comWrappersReinit()
 
     /* Re-initialize guest OS type database: */
     if (m_pGuestOSTypeManager)
-        m_pGuestOSTypeManager->reCacheGuestOSTypes(m_comVBox.GetGuestOSTypes());
+        m_pGuestOSTypeManager->reCacheGuestOSTypes();
 
     /* Mark wrappers valid: */
     m_fWrappersValid = true;
