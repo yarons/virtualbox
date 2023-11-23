@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 102275 2023-11-23 14:32:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -62,6 +62,7 @@
 #include "CPlatformProperties.h"
 #include "CProgress.h"
 #include "CRangedIntegerFormValue.h"
+#include "CRangedInteger64FormValue.h"
 #include "CRecordingScreenSettings.h"
 #include "CRecordingSettings.h"
 #include "CSerialPort.h"
@@ -240,6 +241,14 @@ QString UIDetailsGenerator::generateFormValueInformation(const CFormValue &comFo
         case KFormValueType_RangedInteger:
         {
             CRangedIntegerFormValue comValue(comFormValue);
+            strResult = QString("%1 %2")
+                            .arg(comValue.GetInteger())
+                            .arg(QApplication::translate("UICommon", comValue.GetSuffix().toUtf8().constData()));
+            break;
+        }
+        case KFormValueType_RangedInteger64:
+        {
+            CRangedInteger64FormValue comValue(comFormValue);
             strResult = QString("%1 %2")
                             .arg(comValue.GetInteger())
                             .arg(QApplication::translate("UICommon", comValue.GetSuffix().toUtf8().constData()));
