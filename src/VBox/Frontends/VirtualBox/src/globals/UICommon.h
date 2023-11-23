@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 101383 2023-10-06 12:06:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 102274 2023-11-23 13:07:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -313,11 +313,6 @@ public:
         bool isVBoxSVCAvailable() const { return m_fVBoxSVCAvailable; }
     /** @} */
 
-    /** @name COM: Guest OS Type stuff.
-     * @{ */
-        const UIGuestOSTypeManager &guestOSTypeManager() const { return *m_pGuestOSTypeManager; }
-    /** @} */
-
     /** @name COM: Virtual Machine stuff.
      * @{ */
         /** Switches to certain @a comMachine. */
@@ -353,6 +348,11 @@ public:
         void notifyCloudMachineRegistered(const QString &strProviderShortName,
                                           const QString &strProfileName,
                                           const CCloudMachine &comMachine);
+    /** @} */
+
+    /** @name COM: Guest OS type stuff.
+     * @{ */
+        const UIGuestOSTypeManager &guestOSTypeManager();
     /** @} */
 
     /** @name COM: Virtual Media stuff.
@@ -729,8 +729,6 @@ private:
         bool  m_fWrappersValid;
         /** Holds whether VBoxSVC is currently available. */
         bool  m_fVBoxSVCAvailable;
-
-        UIGuestOSTypeManager *m_pGuestOSTypeManager;
     /** @} */
 
     /** @name Thread stuff.
@@ -739,6 +737,12 @@ private:
         UIThreadPool *m_pThreadPool;
         /** Holds the thread-pool instance for cloud needs. */
         UIThreadPool *m_pThreadPoolCloud;
+    /** @} */
+
+    /** @name Guest OS type related stuff.
+     * @{ */
+        /** Holds the guest OS type manager instance. */
+        UIGuestOSTypeManager *m_pGuestOSTypeManager;
     /** @} */
 
     /** @name Media related stuff.
