@@ -1,4 +1,4 @@
-; $Id: bs3-mode-DiskRead.asm 102181 2023-11-21 09:45:40Z knut.osmundsen@oracle.com $
+; $Id: bs3-mode-DiskRead.asm 102270 2023-11-23 00:40:38Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - Bs3DiskRead
 ;
@@ -134,12 +134,20 @@ BS3_PROC_BEGIN_MODE Bs3DiskRead, BS3_PBC_HYBRID
         ;
         mov     ah, 02h                     ; read
         mov     al, a_cSectors
+        mov     dh, a_uHead
+        mov     dl, a_bDrive
+        ; For 63.5MB support the entire CL is the sector number, so just treat floppies special.
+        cmp     dl, 4                       ; ASSUMES the first 4 drive are potentially BIG floppies.
+        jb      .floppy
         mov     cx, a_uCylinder
         xchg    ch, cl
         shl     cl, 6
         or      cl, a_uSector
-        mov     dl, a_bDrive
-        mov     dh, a_uHead
+        jmp     .setup_addr
+.floppy:
+        mov     ch, a_uCylinder
+        mov     cl, a_uSector
+.setup_addr:
         mov     bx, a_pvBuf
         mov     di, a_pvBufSel
 
