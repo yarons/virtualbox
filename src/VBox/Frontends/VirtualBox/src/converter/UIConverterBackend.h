@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 102264 2023-11-22 15:54:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIConverterBackend.h 102283 2023-11-23 20:11:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -349,8 +349,8 @@ template<> SHARED_LIBRARY_STUFF QString toString(const KGuestSessionStatus &stat
 template<> SHARED_LIBRARY_STUFF KGuestSessionStatus fromString<KGuestSessionStatus>(const QString &strStatus);
 template<> SHARED_LIBRARY_STUFF QString toString(const KProcessStatus &status);
 template<> SHARED_LIBRARY_STUFF KProcessStatus fromString<KProcessStatus>(const QString &strStatus);
-template<> SHARED_LIBRARY_STUFF QString toString(const KMetricType &metricType);
-template<> SHARED_LIBRARY_STUFF KMetricType fromString<KMetricType>(const QString &strMetricType);
+template<> SHARED_LIBRARY_STUFF QString toInternalString(const KMetricType &metricType);
+template<> SHARED_LIBRARY_STUFF KMetricType fromInternalString<KMetricType>(const QString &strMetricType);
 
 
 #endif /* !FEQT_INCLUDED_SRC_converter_UIConverterBackend_h */
