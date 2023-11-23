@@ -1,4 +1,4 @@
-; $Id: bs3-system-data.asm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+; $Id: bs3-system-data.asm 102277 2023-11-23 15:43:31Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - GDT
 ;
@@ -444,11 +444,25 @@ BS3_GLOBAL_DATA Bs3Gdte_DATA16, 8h
         dw  0ffffh, 09000h, 0f302h, 00000h
 
         ;
-        ; 2908..2f98h - Free GDTEs.
+        ; 2908..29b0h - High DLL CSes.
         ;
 BS3GdtAssertOffset 02908h
-BS3_GLOBAL_DATA Bs3GdteFreePart4, 698h
-        times 698h db 0
+BS3_GLOBAL_DATA Bs3GdteHighDllCSes, 0c0h
+        times 0c0h db 0
+
+        ;
+        ; 29b8..29f0h - High DLL DSes.
+        ;
+BS3GdtAssertOffset 029c8h
+BS3_GLOBAL_DATA Bs3GdteHighDllDSes, 40h
+        times 40h db 0
+
+        ;
+        ; 2908..2f98h - Free GDTEs.
+        ;
+BS3GdtAssertOffset 02a08h
+BS3_GLOBAL_DATA Bs3GdteFreePart4, 598h
+        times 598h db 0
 
         ;
         ; 2be0..2fe0h - 8 spare entries preceeding the test page which we're free
