@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Linker.cpp 102277 2023-11-23 15:43:31Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3Linker.cpp 102285 2023-11-24 02:37:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 "linker".
  */
@@ -128,9 +128,11 @@ static DECLCALLBACK(int) GenerateHighDllAsmOutputSegmentTable(RTLDRMOD hLdrMod, 
     pState->aSegments[iSegment].fFlags = 0;
     if (pSeg->fProt & RTMEM_PROT_EXEC)
         pState->aSegments[iSegment].fFlags |= BS3HIGHDLLSEGMENT_F_EXEC;
+    if (pSeg->fFlags & RTLDRSEG_FLAG_OS2_CONFORM)
+        pState->aSegments[iSegment].fFlags |= BS3HIGHDLLSEGMENT_F_CONFORMING;
     if (pSeg->fFlags & RTLDRSEG_FLAG_16BIT)
         pState->aSegments[iSegment].fFlags |= BS3HIGHDLLSEGMENT_F_16BIT;
-    else if (pSeg->RVA == NIL_RTLDRADDR)
+    else if (pSeg->RVA != NIL_RTLDRADDR)
     {
         /* Have to check the eyecatcher string to see if it's a 32-bit or 64-bit segment. */
         Assert(pSeg->RVA + 16 < pState->cbBits);
@@ -143,6 +145,9 @@ static DECLCALLBACK(int) GenerateHighDllAsmOutputSegmentTable(RTLDRMOD hLdrMod, 
             pState->aSegments[iSegment].fFlags |= BS3HIGHDLLSEGMENT_F_64BIT;
         pchSeg[32] = chSaved32;
     }
+    //if (pSeg->fFlags & RTLDRSEG_FLAG_OS2_ALIAS16) /* 32-bit or 64-bit segment, but allocate a 16-bit alias to it. no wlink sup.  */
+    //    pState->aSegments[iSegment].fFlags |= BS3HIGHDLLSEGMENT_F_16BIT;
+
 
     // BS3HIGHDLLSEGMENT
     fprintf(pState->pOutput,
@@ -854,7 +859,7 @@ int main(int argc, char **argv)
             }
 
             case 'V':
-                printf("%s\n", "$Revision: 102277 $");
+                printf("%s\n", "$Revision: 102285 $");
                 return RTEXITCODE_SUCCESS;
 
             case 'h':
