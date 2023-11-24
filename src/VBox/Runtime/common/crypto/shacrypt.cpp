@@ -1,4 +1,4 @@
-/* $Id: shacrypt.cpp 102292 2023-11-24 13:01:41Z andreas.loeffler@oracle.com $ */
+/* $Id: shacrypt.cpp 102294 2023-11-24 13:40:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Crypto - SHA-crypt.
  */
@@ -47,7 +47,7 @@
 
 
 
-RTR3DECL(int) RTShaCrypt256(const char *pszKey, const char *pszSalt, uint32_t cRounds, uint8_t pabHash[RTSHA256_HASH_SIZE])
+RTR3DECL(int) RTShaCrypt256(const char *pszKey, const char *pszSalt, uint32_t cRounds, uint8_t abHash[RTSHA256_HASH_SIZE])
 {
     AssertPtrReturn(pszKey,   VERR_INVALID_POINTER);
     AssertPtrReturn(pszSalt,  VERR_INVALID_POINTER);
@@ -158,7 +158,7 @@ RTR3DECL(int) RTShaCrypt256(const char *pszKey, const char *pszSalt, uint32_t cR
         RTSha256Final(&CtxC, abDigest);                                         /* h) */
     }
 
-    memcpy(pabHash, abDigest, RTSHA256_HASH_SIZE);
+    memcpy(abHash, abDigest, RTSHA256_HASH_SIZE);
 
     RTMemWipeThoroughly(abDigestTemp, RTSHA256_HASH_SIZE, 3);
     RTMemWipeThoroughly(pabSeqP, cbSeqP, 3);
@@ -221,7 +221,7 @@ RTR3DECL(int) RTShaCrypt256ToString(uint8_t abHash[RTSHA256_HASH_SIZE], const ch
 }
 
 
-RTR3DECL(int) RTShaCrypt512(const char *pszKey, const char *pszSalt, uint32_t cRounds, uint8_t pabHash[RTSHA512_HASH_SIZE])
+RTR3DECL(int) RTShaCrypt512(const char *pszKey, const char *pszSalt, uint32_t cRounds, uint8_t abHash[RTSHA512_HASH_SIZE])
 {
     AssertPtrReturn(pszKey,   VERR_INVALID_POINTER);
     AssertPtrReturn(pszSalt,  VERR_INVALID_POINTER);
@@ -332,7 +332,7 @@ RTR3DECL(int) RTShaCrypt512(const char *pszKey, const char *pszSalt, uint32_t cR
         RTSha512Final(&CtxC, abDigest);                                         /* h) */
     }
 
-    memcpy(pabHash, abDigest, RTSHA512_HASH_SIZE);
+    memcpy(abHash, abDigest, RTSHA512_HASH_SIZE);
 
     RTMemWipeThoroughly(abDigestTemp, RTSHA512_HASH_SIZE, 3);
     RTMemWipeThoroughly(pabSeqP, cbSeqP, 3);
