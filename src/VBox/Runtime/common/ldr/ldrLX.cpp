@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 102276 2023-11-23 15:41:16Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrLX.cpp 102284 2023-11-24 02:36:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -478,14 +478,14 @@ static int kldrModLXDoCreate(PRTLDRREADER pRdr, RTFOFF offNewHdr, uint32_t fFlag
 
         /* flags */
         pModLX->aSegments[i].fFlags = 0;
-        if (pModLX->paObjs[i].o32_flags & OBJBIGDEF)
-            pModLX->aSegments[i].fFlags = RTLDRSEG_FLAG_16BIT;
+        if (!(pModLX->paObjs[i].o32_flags & OBJBIGDEF))
+            pModLX->aSegments[i].fFlags |= RTLDRSEG_FLAG_16BIT;
         if (pModLX->paObjs[i].o32_flags & OBJALIAS16)
-            pModLX->aSegments[i].fFlags = RTLDRSEG_FLAG_OS2_ALIAS16;
+            pModLX->aSegments[i].fFlags |= RTLDRSEG_FLAG_OS2_ALIAS16;
         if (pModLX->paObjs[i].o32_flags & OBJCONFORM)
-            pModLX->aSegments[i].fFlags = RTLDRSEG_FLAG_OS2_CONFORM;
+            pModLX->aSegments[i].fFlags |= RTLDRSEG_FLAG_OS2_CONFORM;
         if (pModLX->paObjs[i].o32_flags & OBJIOPL)
-            pModLX->aSegments[i].fFlags = RTLDRSEG_FLAG_OS2_IOPL;
+            pModLX->aSegments[i].fFlags |= RTLDRSEG_FLAG_OS2_IOPL;
 
         /* size and addresses */
         pModLX->aSegments[i].Alignment   = OBJPAGELEN;
