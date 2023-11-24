@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102291 2023-11-24 12:48:43Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -208,6 +208,11 @@ if !defined(VBOX_ONLY_BUILD)
  PROGRAMS += RTMkDir
  RTMkDir_TEMPLATE = VBoxR3Tool
  RTMkDir_SOURCES = RTMkDir.cpp
+
+ # RTMkPasswd - our mkpasswd clone.
+ PROGRAMS += RTMkPasswd
+ RTMkPasswd_TEMPLATE = VBoxR3Tool
+ RTMkPasswd_SOURCES = RTMkPasswd.cpp
 
  # RTRmDir - our mkdir clone.
  PROGRAMS += RTRmDir
