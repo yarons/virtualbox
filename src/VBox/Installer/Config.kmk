@@ -1,4 +1,4 @@
-# $Id: Config.kmk 101356 2023-10-05 12:44:33Z serkan.bayraktar@oracle.com $
+# $Id: Config.kmk 102319 2023-11-27 13:40:22Z alexander.eichner@oracle.com $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -42,7 +42,6 @@ ifdef VBOX_WITH_PYTHON
  VBOXINST_SDK_BINDINGS_XPCOM_PYTHON_FILES = \
  	sdk/bindings/xpcom/python/xpcom/__init__.py \
  	sdk/bindings/xpcom/python/xpcom/primitives.py \
- 	sdk/bindings/xpcom/python/xpcom/file.py \
  	sdk/bindings/xpcom/python/xpcom/xpcom_consts.py \
  	sdk/bindings/xpcom/python/xpcom/nsError.py \
  	sdk/bindings/xpcom/python/xpcom/xpt.py \
