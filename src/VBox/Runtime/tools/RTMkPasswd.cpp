@@ -1,4 +1,4 @@
-/* $Id: RTMkPasswd.cpp 102297 2023-11-24 16:32:03Z andreas.loeffler@oracle.com $ */
+/* $Id: RTMkPasswd.cpp 102335 2023-11-27 17:01:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Makes passwords.
  */
@@ -163,9 +163,8 @@ int main(int argc, char **argv)
          return RTMsgErrorExit(RTEXITCODE_SYNTAX, "No password specified!\n");
     if (!pszSalt)
     {
-        static const char aRange[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?+\"%&/()[]{}=#";
-        for (unsigned i = 0; i < RT_SHACRYPT_MAX_SALT_LEN; i++) /* Always go with a strong salt by default. */
-            szSalt[i] = aRange[RTRandU32Ex(0, sizeof(aRange) - 2)];
+        int vrc2 = RTCrShaCryptGenerateSalt(szSalt, RT_SHACRYPT_MAX_SALT_LEN);
+        AssertRCReturn(vrc2, RTEXITCODE_FAILURE);
         pszSalt = szSalt;
     }
     else if (strlen(pszSalt) < RT_SHACRYPT_MIN_SALT_LEN)
