@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102082 2023-11-13 12:57:44Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102349 2023-11-27 20:41:01Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102082 $"
+__version__ = "$Revision: 102349 $"
 
 # Standard python imports:
 import copy;
@@ -232,8 +232,8 @@ class NativeRecompFunctionVariation(object):
                 if oLocal.oReferencedBy:
                     oParent.raiseProblem('%s is already referenced by %s, so cannot make %s reference it as well'
                                          % (oLocal.oStmt.sVarName, oLocal.oReferencedBy.oStmt.sVarName, self.oStmt.sVarName,));
-                oInfo.oReferences = oLocal;
-                oInfo.oReferences.oReferencedBy = self;
+                self.oReferences = oLocal;
+                self.oReferences.oReferencedBy = self;
                 return True;
 
         #
@@ -254,7 +254,7 @@ class NativeRecompFunctionVariation(object):
                 asVarsInScope.append(oStmt.sVarName);
 
             elif oStmt.sName == 'IEM_MC_REF_LOCAL':
-                dVars[oStmt.asParam[0]].makeReference(dVars[oStmt.asParam[1]], self);
+                dVars[oStmt.asParams[0]].makeReference(dVars[oStmt.asParams[1]], self);
 
         #
         # Now work the statements backwards and look for the last reference to
