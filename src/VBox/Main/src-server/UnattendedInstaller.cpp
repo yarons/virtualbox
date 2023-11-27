@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 102342 2023-11-27 17:56:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -1420,7 +1420,7 @@ HRESULT UnattendedUbuntuAutoInstallInstaller::addFilesToAuxVisoVectors(RTCList<R
         AssertRCReturn(vrc, mpParent->setErrorVrc(vrc));
         vrc = RTPathAppendCxx(strUnattendedTemplates, "UnattendedTemplates");
         AssertRCReturn(vrc, mpParent->setErrorVrc(vrc));
-        rVecArgs.append().assign("/meta-data=").append(strUnattendedTemplates).append("/ubuntu_autoinstall_meta-data");
+        rVecArgs.append().assign("/meta-data=").append(strUnattendedTemplates).append("/ubuntu_autoinstall_meta_data");
     }
     catch (std::bad_alloc &)
     {

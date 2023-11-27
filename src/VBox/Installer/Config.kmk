@@ -1,4 +1,4 @@
-# $Id: Config.kmk 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $
+# $Id: Config.kmk 102342 2023-11-27 17:56:10Z andreas.loeffler@oracle.com $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -69,8 +69,8 @@ ifdef VBOX_WITH_UNATTENDED
  VBOX_UNATTENDED_TEMPLATES := \
  	debian_preseed.cfg \
  	ubuntu_preseed.cfg \
- 	ubuntu_autoinstall_user-data \
- 	ubuntu_autoinstall_meta-data \
+ 	ubuntu_autoinstall_user_data \
+ 	ubuntu_autoinstall_meta_data \
  	fedora_ks.cfg \
  	ol_ks.cfg \
  	ol8_ks.cfg \

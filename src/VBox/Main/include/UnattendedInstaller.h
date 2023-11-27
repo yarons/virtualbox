@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedInstaller.h 102342 2023-11-27 17:56:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -670,7 +670,7 @@ public:
 
     UnattendedUbuntuAutoInstallInstaller(Unattended *pParent)
         : UnattendedDebianInstaller(pParent,
-                                    /* pszMainScriptTemplateName = */ "ubuntu_autoinstall_user-data",
+                                    /* pszMainScriptTemplateName = */ "ubuntu_autoinstall_user_data",
                                     /* pszPostScriptTemplateName = */ "debian_postinstall.sh",
                                     /* pszMainScriptFilename     = */ "user-data")
     {
