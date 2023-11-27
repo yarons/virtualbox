@@ -1,4 +1,4 @@
-/* $Id: RTMkPasswd.cpp 102335 2023-11-27 17:01:59Z andreas.loeffler@oracle.com $ */
+/* $Id: RTMkPasswd.cpp 102344 2023-11-27 18:05:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Makes passwords.
  */
@@ -36,7 +36,7 @@
 
 #include <iprt/buildconfig.h>
 #include <iprt/crypto/shacrypt.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/getopt.h>
 #include <iprt/mem.h>
