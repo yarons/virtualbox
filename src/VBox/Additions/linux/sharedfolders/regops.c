@@ -1,4 +1,4 @@
-/* $Id: regops.c 101359 2023-10-05 15:26:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 102304 2023-11-27 12:14:34Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -2120,7 +2120,7 @@ static ssize_t vbsf_reg_write(struct file *file, const char *buf, size_t size, l
 #endif /* < 5.10.0 */
 #if RTLNX_VER_MIN(2,6,19)
 /* See kernel 6.0.0 change eba2d3d798295dc43cae8fade102f9d083a2a741. */
-# if RTLNX_VER_MIN(6,0,0)
+# if RTLNX_VER_MIN(6,0,0) || RTLNX_RHEL_MAJ_PREREQ(9,4)
 #  define VBOX_IOV_GET_PAGES iov_iter_get_pages2
 # else
 #  define VBOX_IOV_GET_PAGES iov_iter_get_pages
