@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102120 2023-11-16 11:31:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102322 2023-11-27 13:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -263,6 +263,12 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name General stuff.
+      * @{ */
+        /** Handles request to commit data. */
+        void sltHandleCommitData();
+    /** @} */
 
     /** @name CVirtualBox event handling stuff.
       * @{ */

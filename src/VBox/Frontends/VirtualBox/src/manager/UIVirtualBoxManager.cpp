@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102268 2023-11-22 18:35:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102322 2023-11-27 13:54:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -766,7 +766,7 @@ void UIVirtualBoxManager::sltHandleCommitData()
     sltClosePreferencesDialog();
 
     // WORKAROUND:
-    // This will be fixed proper way during session management cleanaup for Qt6.
+    // This will be fixed proper way during session management cleanup for Qt6.
     // But for now we will just cleanup connections which is Ok anyway.
     cleanupConnections();
 }
