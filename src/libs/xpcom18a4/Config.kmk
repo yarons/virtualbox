@@ -1,4 +1,4 @@
-# $Id: Config.kmk 102302 2023-11-27 11:48:58Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 102303 2023-11-27 11:51:04Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -350,8 +350,6 @@ XPCOM_IDLFILES = \
 	xpcom/io/nsIOutputStream.idl \
 	xpcom/io/nsIStreamBufferAccess.idl \
 	xpcom/io/nsISeekableStream.idl \
-	xpcom/io/nsIAsyncInputStream.idl \
-	xpcom/io/nsIAsyncOutputStream.idl \
 	xpcom/io/nsIScriptableInputStream.idl \
 	xpcom/io/nsILineInputStream.idl \
 	xpcom/proxy/public/nsIProxyObjectManager.idl \
