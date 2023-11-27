@@ -1,4 +1,4 @@
-/* $Id: shacrypt.cpp 102335 2023-11-27 17:01:59Z andreas.loeffler@oracle.com $ */
+/* $Id: shacrypt.cpp 102336 2023-11-27 17:04:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Crypto - SHA-crypt.
  */
@@ -241,6 +241,9 @@ RTR3DECL(int) RTCrShaCrypt256ToString(uint8_t abHash[RTSHA256_HASH_SIZE], const 
 
 #undef BASE64_ENCODE
 
+    if (cch)
+        *psz = '\0';
+
     return VINF_SUCCESS;
 }
 
@@ -432,6 +435,9 @@ RTR3DECL(int) RTCrShaCrypt512ToString(uint8_t abHash[RTSHA512_HASH_SIZE], const 
     BASE64_ENCODE(0, 0, abHash[63], 2);
 
 #undef BASE64_ENCODE
+
+    if (cch)
+        *psz = '\0';
 
     return VINF_SUCCESS;
 }
