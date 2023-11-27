@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102312 2023-11-27 13:00:57Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102314 2023-11-27 13:04:51Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -256,7 +256,6 @@ XPCOM-HEADERS_SOURCES = \
 	xpcom/io/nsScriptableInputStream.h \
 	xpcom/ds/nsStaticAtom.h \
 	xpcom/components/nsStaticComponent.h \
-	xpcom/ds/nsStaticNameTable.h \
 	xpcom/ds/nsStringEnumerator.h \
 	xpcom/io/nsStringIO.h \
 	xpcom/ds/nsSupportsArray.h \
@@ -453,7 +452,6 @@ VBox-xpcom-ds_SOURCES = \
 	xpcom/ds/nsObserverService.cpp \
 	xpcom/ds/nsProperties.cpp \
 	xpcom/ds/nsQuickSort.cpp \
-	xpcom/ds/nsStaticNameTable.cpp \
 	xpcom/ds/nsStringEnumerator.cpp \
 	xpcom/ds/nsSupportsArray.cpp \
 	xpcom/ds/nsSupportsArrayEnumerator.cpp \
