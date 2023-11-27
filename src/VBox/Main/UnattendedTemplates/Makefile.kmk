@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101356 2023-10-05 12:44:33Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $
 ## @file
 # Top-level makefile for src/VBox/Main/UnattendedTemplates.
 #
@@ -38,6 +38,8 @@ ifdef VBOX_WITH_UNATTENDED
  VBoxUnattendedTemplates_SOURCES = \
  	debian_preseed.cfg \
  	ubuntu_preseed.cfg \
+ 	ubuntu_autoinstall_user-data \
+ 	ubuntu_autoinstall_meta-data \
  	rhel3_ks.cfg \
  	rhel4_ks.cfg \
  	rhel5_ks.cfg \
