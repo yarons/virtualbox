@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 102342 2023-11-27 17:56:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 102347 2023-11-27 18:55:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -92,9 +92,13 @@ UnattendedInstaller::createInstance(VBOXOSTYPE enmDetectedOSType, const Utf8Str 
              * - The preseed installer for older Ubuntu distros, or
              * - The autoinstall installer for newer Ubuntu desktop or Ubuntu server versions.
              */
-            if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "22.10") >= 0)
+            if (/* Ubuntu Desktop >= 22.10 switch to the autoinstall installer. */
+                   RTStrVersionCompare(strDetectedOSVersion.c_str(), "22.10") >= 0
+                /* Ubuntu Server >= 20.04 also uses autoinstall installer. Before that no unattended installation was possible. */
+                || (   RTStrVersionCompare(strDetectedOSVersion.c_str(), "20.04") >= 0
+                    && strDetectedOSFlavor.contains("Server", RTCString::CaseSensitivity::CaseSensitive))
+               )
                 pUinstaller = new UnattendedUbuntuAutoInstallInstaller(pParent);
-                /// @todo Check for Server >= 20.04 and others.
             else
                 pUinstaller = new UnattendedUbuntuPreseedInstaller(pParent);
         }

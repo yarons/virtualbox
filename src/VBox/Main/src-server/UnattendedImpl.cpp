@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 102347 2023-11-27 18:55:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -1882,6 +1882,7 @@ HRESULT Unattended::i_innerDetectIsoOSLinux(RTVFS hVfsIso, DETECTBUFFER *pBuf)
      *   Kali GNU/Linux 2021.3a "Kali-last-snapshot" - Official amd64 BD Binary-1 with firmware 20211015-16:55
      *   Official Debian GNU/Linux Live 10.10.0 cinnamon 2021-06-19T12:13
      *   Ubuntu 23.10.1 "Mantic Minotaur" - Release amd64 (20231016.1)
+     *   Ubuntu-Server 22.04.3 LTS "Jammy Jellyfish" - Release amd64 (20230810)
      */
     vrc = RTVfsFileOpen(hVfsIso, ".disk/info", RTFILE_O_READ | RTFILE_O_DENY_NONE | RTFILE_O_OPEN, &hVfsFile);
     if (RT_SUCCESS(vrc))
