@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 102313 2023-11-27 13:01:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 102332 2023-11-27 15:57:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -654,7 +654,7 @@ static PIEMTB iemTbCacheLookup(PVMCPUCC pVCpu, PIEMTBCACHE pTbCache,
                     pTb->msLastUsed = pVCpu->iem.s.msRecompilerPollNow;
                     pTb->cUsed++;
 #ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER
-                    if ((pTb->fFlags & IEMTB_F_TYPE_NATIVE) || pTb->cUsed > 2)
+                    if ((pTb->fFlags & IEMTB_F_TYPE_NATIVE) || pTb->cUsed != 16)
                         return pTb;
                     return iemNativeRecompile(pVCpu, pTb);
 #else
