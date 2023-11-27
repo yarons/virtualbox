@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102330 2023-11-27 15:47:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102350 2023-11-27 21:21:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5776,8 +5776,8 @@ DECL_FORCE_INLINE(void) iemNativeVarFreeStackSlots(PIEMRECOMPILERSTATE pReNative
  */
 DECLINLINE(void) iemNativeVarFreeOneWorker(PIEMRECOMPILERSTATE pReNative, uint8_t idxVar)
 {
-    Assert(   pReNative->Core.aVars[idxVar].enmKind > kIemNativeVarKind_Invalid
-           && pReNative->Core.aVars[idxVar].enmKind < kIemNativeVarKind_End);
+    Assert(   pReNative->Core.aVars[idxVar].enmKind >= kIemNativeVarKind_Invalid  /* Including invalid as we may have unused */
+           && pReNative->Core.aVars[idxVar].enmKind <  kIemNativeVarKind_End);    /* variables in conditional branches. */
 
     /* Free the host register first if any assigned. */
     uint8_t const idxHstReg = pReNative->Core.aVars[idxVar].idxReg;
