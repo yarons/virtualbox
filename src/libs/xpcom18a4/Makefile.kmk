@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102307 2023-11-27 12:31:17Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102312 2023-11-27 13:00:57Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -263,7 +263,6 @@ XPCOM-HEADERS_SOURCES = \
 	xpcom/ds/nsSupportsPrimitives.h \
 	xpcom/ds/nsTHashtable.h \
 	xpcom/base/nsTraceRefcntImpl.h \
-	xpcom/ds/nsValueArray.h \
 	xpcom/ds/nsVariant.h \
 	xpcom/ds/nsVoidArray.h \
 	xpcom/base/nsWeakPtr.h \
@@ -462,7 +461,6 @@ VBox-xpcom-ds_SOURCES = \
 	xpcom/ds/nsTHashtable.cpp \
 	xpcom/ds/nsVariant.cpp \
 	xpcom/ds/nsVoidArray.cpp \
-	xpcom/ds/nsValueArray.cpp \
 	xpcom/ds/nsCOMArray.cpp \
 	xpcom/ds/nsArray.cpp \
 	xpcom/ds/nsArrayEnumerator.cpp
