@@ -1,4 +1,4 @@
-# $Id: Config.kmk 102306 2023-11-27 12:29:35Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 102307 2023-11-27 12:31:17Z alexander.eichner@oracle.com $
 ## @file
 # XPCOM kBuild Configuration file.
 #
@@ -335,7 +335,6 @@ XPCOM_IDLFILES = \
 	xpcom/ds/nsISupportsIterators.idl \
 	xpcom/ds/nsIVariant.idl \
 	xpcom/ds/nsIArray.idl \
-	xpcom/ds/nsIPropertyBag.idl \
 	xpcom/ds/nsIHashable.idl \
 	xpcom/io/nsIDirectoryService.idl \
 	xpcom/io/nsIDirectoryEnumerator.idl \

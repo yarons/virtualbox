@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102306 2023-11-27 12:29:35Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102307 2023-11-27 12:31:17Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -947,7 +947,6 @@ VBOX_XPTFILES = $(addprefix $(PATH_TARGET)/VBox-xpcom-xpt-files/, \
 		nsIAtomService.xpt \
 		nsICollection.xpt \
 		nsIEnumerator.xpt \
-		nsIPropertyBag.xpt \
 		nsIVariant.xpt \
 		nsISerializable.xpt \
 		nsIStringEnumerator.xpt \
