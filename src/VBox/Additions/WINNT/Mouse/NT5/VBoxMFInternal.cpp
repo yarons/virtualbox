@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMFInternal.cpp 102299 2023-11-27 10:06:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBox Mouse Filter Driver - Internal functions.
  *
@@ -191,7 +191,9 @@ static void vboxNewProtDeviceRemoved(PVBOXMOUSE_DEVEXT pDevExt)
     KIRQL Irql;
     KeAcquireSpinLock(&g_ctx.SyncLock, &Irql);
 
-    RemoveEntryList(&pDevExt->ListEntry);
+    /* Do not try to remove the device from the list if it was never added. */
+    if (pDevExt->ListEntry.Flink && pDevExt->ListEntry.Blink)
+        RemoveEntryList(&pDevExt->ListEntry);
 
     /* Check if the PS/2 mouse is being removed. Usually never happens. */
     if (ASMAtomicCmpXchgPtr(&g_ctx.pCurrentDevExt, NULL, pDevExt))
