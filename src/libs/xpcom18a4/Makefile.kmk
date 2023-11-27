@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102324 2023-11-27 15:12:46Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102327 2023-11-27 15:20:28Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -218,7 +218,6 @@ XPCOM-HEADERS_SOURCES = \
 	xpcom/base/nsCom.h \
 	xpcom/components/nsComponentManagerObsolete.h \
 	xpcom/components/nsComponentManagerUtils.h \
-	xpcom/ds/nsCppSharedAllocator.h \
 	xpcom/ds/nsDataHashtable.h \
 	xpcom/base/nsDebugImpl.h \
 	xpcom/ds/nsDeque.h \
