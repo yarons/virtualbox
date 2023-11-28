@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 102355 2023-11-28 09:58:54Z andreas.loeffler@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 102356 2023-11-28 10:33:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -664,8 +664,8 @@ bool Unattended::i_getAvoidUpdatesOverNetwork() const
     return mfAvoidUpdatesOverNetwork;
 }
 
-/* Override RTCrShaCryptGenerateSalt() from IPRT to generate predictable salts to compare the script outputs. */
-DECL_HIDDEN_NOTHROW(int) RTCrShaCryptGenerateSalt(char szSalt[RT_SHACRYPT_MAX_SALT_LEN + 1], size_t cchSalt)
+/* Override RTCrShaCryptGenerateSaltWeak() from IPRT to generate predictable salts to compare the script outputs. */
+RTR3DECL(int) RTCrShaCryptGenerateSaltWeak(char szSalt[RT_SHACRYPT_MAX_SALT_LEN + 1], size_t cchSalt)
 {
     RT_NOREF(cchSalt);
     RTStrPrintf(szSalt, RT_SHACRYPT_MAX_SALT_LEN, "testcase123");

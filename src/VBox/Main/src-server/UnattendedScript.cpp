@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 102337 2023-11-27 17:31:10Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedScript.cpp 102356 2023-11-28 10:33:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -655,7 +655,7 @@ int UnattendedScriptTemplate::queryVariable(const char *pchName, size_t cchName,
         do { \
             uint8_t abHash[a_cbHashSize]; \
             char    szSalt[RT_SHACRYPT_MAX_SALT_LEN + 1]; \
-            int vrc = RTCrShaCryptGenerateSalt(szSalt, RT_SHACRYPT_MAX_SALT_LEN); \
+            int vrc = RTCrShaCryptGenerateSaltWeak(szSalt, RT_SHACRYPT_MAX_SALT_LEN); \
             if (RT_SUCCESS(vrc)) \
             { \
                 vrc = a_fnHashAndCrypt(a_szKey, szSalt, RT_SHACRYPT_DEFAULT_ROUNDS, abHash); \

@@ -1,4 +1,4 @@
-/* $Id: tstRTShaCrypt.cpp 102335 2023-11-27 17:01:59Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTShaCrypt.cpp 102356 2023-11-28 10:33:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT Testcase - SHA-crypt 256 / 512.
  */
@@ -190,7 +190,7 @@ int main()
             pszSalt = g_aTests[i].pszSalt;
         else
         {
-            rc = RTCrShaCryptGenerateSalt(szSalt, RT_SHACRYPT_MAX_SALT_LEN);
+            rc = RTCrShaCryptGenerateSaltWeak(szSalt, RT_SHACRYPT_MAX_SALT_LEN);
             RTTEST_CHECK_RC_OK(hTest, rc);
             pszSalt = szSalt;
         }
