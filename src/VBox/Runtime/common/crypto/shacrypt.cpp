@@ -1,4 +1,4 @@
-/* $Id: shacrypt.cpp 102336 2023-11-27 17:04:18Z andreas.loeffler@oracle.com $ */
+/* $Id: shacrypt.cpp 102361 2023-11-28 12:53:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Crypto - SHA-crypt.
  */
@@ -48,16 +48,16 @@
 
 
 
-RTR3DECL(int) RTCrShaCryptGenerateSalt(char szSalt[RT_SHACRYPT_MAX_SALT_LEN + 1], size_t cchSalt)
+RTR3DECL(int) RTCrShaCryptGenerateSalt(char *pszSalt, size_t cchSalt)
 {
     AssertMsgReturn(cchSalt >= RT_SHACRYPT_MIN_SALT_LEN && cchSalt <= RT_SHACRYPT_MAX_SALT_LEN, ("len=%zu\n", cchSalt),
                     VERR_INVALID_PARAMETER);
 
     static const char aRange[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890./";
     for (size_t i = 0; i < cchSalt; i++)
-        szSalt[i] = aRange[RTRandU32Ex(0, sizeof(aRange) - 2)];
+        pszSalt[i] = aRange[RTRandU32Ex(0, sizeof(aRange) - 2)];
 
-    szSalt[RT_SHACRYPT_MAX_SALT_LEN] = '\0';
+    pszSalt[cchSalt] = '\0';
     return VINF_SUCCESS;
 }
 
