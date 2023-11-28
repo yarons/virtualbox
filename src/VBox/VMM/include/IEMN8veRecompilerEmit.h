@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102368 2023-11-28 14:24:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102370 2023-11-28 22:17:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -777,7 +777,7 @@ iemNativeEmitLoadGprFromGprWithAddend(PIEMRECOMPILERSTATE pReNative, uint32_t of
     }
     else
     {
-        off = iemNativeEmitLoadGprImm64(pReNative, off, iGrpDst, (int64)iAddend);
+        off = iemNativeEmitLoadGprImm64(pReNative, off, iGprDst, (int64_t)iAddend);
         uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
         pu32CodeBuf[off++] = Armv8A64MkInstrAddSubReg(false /*fSub*/, iGprDst, iGprSrc, iGprDst);
     }
