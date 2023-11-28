@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102362 2023-11-28 13:22:03Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102364 2023-11-28 14:18:16Z ksenia.s.stepanova@oracle.com $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -344,7 +344,7 @@ if1of ($(KBUILD_HOST), linux solaris)
  xpidl_LIBS.$(KBUILD_HOST) += \
  	$(subst -l,,$(filter -l%,$(libIDL_config_libs)))
 else
- ifeq ($(KBUILD_HOST), darwin)
+ ifeq ($(KBUILD_HOST),darwin)
   # Need to put the SDK /usr/lib before the libIDL path to make it pick the system iconv
   xpidl_LDFLAGS = \
   	-L$(VBOX_PATH_MACOSX_SDK)/usr/lib \
