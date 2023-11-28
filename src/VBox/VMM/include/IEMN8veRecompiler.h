@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102313 2023-11-27 13:01:13Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102368 2023-11-28 14:24:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -253,7 +253,11 @@ AssertCompile(IEMNATIVE_FRAME_VAR_SLOTS == 32);
 #endif
 
 /** This is the maximum argument count we'll ever be needing. */
-#define IEMNATIVE_CALL_MAX_ARG_COUNT        7
+#if defined(RT_OS_WINDOWS) && defined(VBOXSTRICTRC_STRICT_ENABLED)
+# define IEMNATIVE_CALL_MAX_ARG_COUNT       8
+#else
+# define IEMNATIVE_CALL_MAX_ARG_COUNT       7
+#endif
 /** @} */
 
 
