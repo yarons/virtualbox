@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102290 2023-11-24 12:47:51Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 102358 2023-11-28 11:18:21Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -37,7 +37,10 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-ifdef VBOX_ONLY_ADDITIONS
+ifdef VBOX_ONLY_SDK
+ # Required for xpidl
+ LIBRARIES += RuntimeBldProg
+else ifdef VBOX_ONLY_ADDITIONS
  #
  # Only build the additions, sort out the legacy names first.
  #

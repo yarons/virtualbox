@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98439 2023-02-02 12:47:31Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102358 2023-11-28 11:18:21Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -63,6 +63,7 @@ else ifdef VBOX_ONLY_EXTPACKS
  endif
 
 else ifdef VBOX_ONLY_SDK
+ include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
  include $(PATH_SUB_CURRENT)/Main/Makefile.kmk
  ifdef VBOX_WITH_VRDP
   include $(PATH_SUB_CURRENT)/RDP/Makefile.kmk
