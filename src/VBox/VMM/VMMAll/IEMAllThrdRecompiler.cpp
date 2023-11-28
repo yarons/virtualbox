@@ -1,10 +1,10 @@
-/* $Id: IEMAllThrdRecompiler.cpp 102365 2023-11-28 14:19:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 102366 2023-11-28 14:22:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
  * Logging group IEM_RE_THREADED assignments:
  *      - Level 1  (Log)  : Errors, exceptions, interrupts and such major events. [same as IEM]
- *      - Flow  (LogFlow) :
+ *      - Flow  (LogFlow) : TB calls being emitted.
  *      - Level 2  (Log2) : Basic instruction execution state info. [same as IEM]
  *      - Level 3  (Log3) : More detailed execution state info. [same as IEM]
  *      - Level 4  (Log4) : Decoding mnemonics w/ EIP. [same as IEM]
