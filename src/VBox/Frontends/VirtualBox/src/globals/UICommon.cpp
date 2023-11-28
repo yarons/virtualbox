@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102282 2023-11-23 19:52:48Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2988,3 +2988,10 @@ VBGHDISPLAYSERVERTYPE UICommon::displayServerType() const
     return m_enmDisplayServerType;
 }
 #endif
+
+QString UICommon::hostOperatingSystem() const
+{
+    if (!m_comHost.isOk())
+        return QString();
+    return m_comHost.GetOperatingSystem();
+}

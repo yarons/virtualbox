@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 100410 2023-07-06 13:28:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -101,6 +101,7 @@ protected:
     virtual void  toggleForwardBackwardActions() override final;
     virtual void  setState();
     virtual void  setSessionDependentWidgetsEnabled();
+    virtual bool  isFileSystemWindows() const override final;
 
 private slots:
 

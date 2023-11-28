@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 100418 2023-07-06 17:26:08Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1587,6 +1587,13 @@ void UIFileManagerGuestTable::setSessionDependentWidgetsEnabled()
     setSessionWidgetsEnabled(m_enmState == State_SessionRunning);
 
     emit sigStateChanged(m_enmState == State_SessionRunning);
+}
+
+bool UIFileManagerGuestTable::isFileSystemWindows() const
+{
+    if (!m_comGuest.isOk())
+        return false;
+    return m_comGuest.GetOSTypeId().contains("windows", Qt::CaseInsensitive);
 }
 
 bool UIFileManagerGuestTable::openGuestSession(const QString &strUserName, const QString &strPassword)

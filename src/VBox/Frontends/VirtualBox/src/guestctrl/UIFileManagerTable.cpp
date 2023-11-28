@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 100604 2023-07-17 15:53:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -552,6 +552,8 @@ void UIFileManagerTable::initializeFileTree()
         return;
 
     const QString startPath("/");
+    /* On Unix-like systems startItem represents the root directory. On Windows it is like "my computer" under which
+     * drives are listed: */
     UICustomFileSystemItem* startItem = new UICustomFileSystemItem(startPath, rootItem(), KFsObjType_Directory);
 
     startItem->setIsOpened(false);

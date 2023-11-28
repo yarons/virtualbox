@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 102274 2023-11-23 13:07:40Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -221,6 +221,8 @@ public:
         /** Returns display server type. */
         VBGHDISPLAYSERVERTYPE displayServerType() const;
 #endif
+        /** Returns the name of the host OS by using IHost::getOperatingSystem. */
+        QString hostOperatingSystem() const;
     /** @} */
 
     /** @name Process arguments stuff.
