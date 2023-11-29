@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102370 2023-11-28 22:17:45Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102377 2023-11-29 11:12:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -717,9 +717,9 @@ iemNativeEmitLoadGprFromGpr8Hi(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
     pbCodeBuf[off++] = 8;
 
 #elif RT_ARCH_ARM64
-    /* bfi gprdst, gprsrc, #8, #8 */
+    /* ubfx gprdst, gprsrc, #8, #8 - gprdst = gprsrc[15:8] */
     uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
-    pu32CodeBuf[off++] = Armv8A64MkInstrBfi(iGprDst, iGprSrc, 8, 8, false /*f64Bit*/);
+    pu32CodeBuf[off++] = Armv8A64MkInstrUbfx(iGprDst, iGprSrc, 8, 8, false /*f64Bit*/);
 
 #else
 # error "port me"
