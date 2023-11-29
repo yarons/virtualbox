@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 102379 2023-11-29 12:33:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -315,6 +315,7 @@ UICustomFileSystemModel *UICustomFileSystemItem::parentModel()
 {
     return m_pParentModel;
 }
+
 
 /*********************************************************************************************************************************
 *   UICustomFileSystemProxyModel implementation.                                                                                 *
