@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102385 2023-11-29 21:09:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102388 2023-11-29 22:31:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -197,8 +197,7 @@ AssertCompile(IEMNATIVE_FRAME_VAR_SLOTS == 32);
 #  define IEMNATIVE_CALL_ARGS_GREG_MASK     (  RT_BIT_32(IEMNATIVE_CALL_ARG0_GREG) \
                                              | RT_BIT_32(IEMNATIVE_CALL_ARG1_GREG) \
                                              | RT_BIT_32(IEMNATIVE_CALL_ARG2_GREG) \
-                                             | RT_BIT_32(IEMNATIVE_CALL_ARG3_GREG) \
-                                             | RT_BIT_32(IEMNATIVE_CALL_ARG4_GREG) )
+                                             | RT_BIT_32(IEMNATIVE_CALL_ARG3_GREG) )
 #  define IEMNATIVE_CALL_VOLATILE_GREG_MASK (  RT_BIT_32(X86_GREG_xAX) \
                                              | RT_BIT_32(X86_GREG_xCX) \
                                              | RT_BIT_32(X86_GREG_xDX) \
