@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPathOperations.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPathOperations class implementation.
  */
@@ -160,4 +160,10 @@ const QChar UIPathOperations::dosDelimiter = QChar('\\');
     if (path[1] != ':')
         return false;
     return true;
+}
+
+/* static */ const QString UIPathOperations::replaceDosDelimeter(const QString &path)
+{
+    QString newPath(path);
+    return newPath.replace(dosDelimiter, delimiter);
 }

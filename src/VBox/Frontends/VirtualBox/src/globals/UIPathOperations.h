@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPathOperations.h 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -60,7 +60,7 @@ public:
     static const QChar dosDelimiter;
     /** Tries to determine if the path starts with DOS style drive letters. */
     static bool doesPathStartWithDriveLetter(const QString &path);
-
+    static const QString replaceDosDelimeter(const QString &path);
 };
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIPathOperations_h */

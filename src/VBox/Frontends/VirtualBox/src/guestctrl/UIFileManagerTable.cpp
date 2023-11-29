@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -460,6 +460,7 @@ void UIFileManagerTable::prepareObjects()
     m_pModel = new UICustomFileSystemModel(this);
     if (!m_pModel)
         return;
+
     connect(m_pModel, &UICustomFileSystemModel::sigItemRenamed,
             this, &UIFileManagerTable::sltHandleItemRenameAttempt);
 
@@ -551,7 +552,7 @@ void UIFileManagerTable::initializeFileTree()
     if (!rootItem())
         return;
 
-    const QString startPath("/");
+    QString startPath("/");
     /* On Unix-like systems startItem represents the root directory. On Windows it is like "my computer" under which
      * drives are listed: */
     UICustomFileSystemItem* startItem = new UICustomFileSystemItem(startPath, rootItem(), KFsObjType_Directory);
@@ -560,8 +561,8 @@ void UIFileManagerTable::initializeFileTree()
     populateStartDirectory(startItem);
 
     m_pModel->signalUpdate();
-    updateCurrentLocationEdit(startPath);
     m_pView->setRootIndex(m_pProxyModel->mapFromSource(m_pModel->rootIndex()));
+    updateCurrentLocationEdit(currentDirectoryPath());
 }
 
 void UIFileManagerTable::populateStartDirectory(UICustomFileSystemItem *startItem)
@@ -1342,6 +1343,12 @@ QStringList UIFileManagerTable::currentDirectoryListing() const
             list << pChild->fileObjectName();
     }
     return list;
+}
+
+void UIFileManagerTable::setModelFileSystem(bool fIsWindowsFileSystem)
+{
+    if (m_pModel)
+        m_pModel->setIsWindowsFileSystem(fIsWindowsFileSystem);
 }
 
 #include "UIFileManagerTable.moc"

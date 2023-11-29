@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -135,6 +135,7 @@ void UIHostDirectoryDiskUsageComputer::directoryStatisticsRecursive(const QStrin
 UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidget *pParent /* = 0 */)
     :UIFileManagerTable(pActionPool, pParent)
 {
+    setModelFileSystem(isWindowsFileSystem());
     initializeFileTree();
     prepareToolbar();
     prepareActionConnections();
@@ -260,7 +261,7 @@ void UIFileManagerHostTable::toggleForwardBackwardActions()
         m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_GoBackward)->setEnabled(m_pNavigationWidget->canGoBackward());
 }
 
-bool UIFileManagerHostTable::isFileSystemWindows() const
+bool UIFileManagerHostTable::isWindowsFileSystem() const
 {
     return uiCommon().hostOperatingSystem().contains("windows", Qt::CaseInsensitive);
 }

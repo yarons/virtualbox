@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 100955 2023-08-23 11:19:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -50,6 +50,7 @@ class QMenu;
 class QIDialogButtonBox;
 class QIToolBar;
 class UIActionPool;
+class UIFileManagerHostTable;
 class UIVisoHostBrowser;
 class UIVisoContentBrowser;
 class UIVisoSettingWidget;
@@ -151,9 +152,10 @@ private:
         QAction              *m_pRemoveISOAction;
     /** @} */
 
-    QVBoxLayout          *m_pMainLayout;
-    UIVisoHostBrowser    *m_pHostBrowser;
-    UIVisoContentBrowser *m_pVISOContentBrowser;
+    QVBoxLayout            *m_pMainLayout;
+    UIVisoHostBrowser      *m_pHostBrowser;
+    UIVisoContentBrowser   *m_pVISOContentBrowser;
+    UIFileManagerHostTable *m_pHostFileBrowser;
 
     QIToolBar             *m_pToolBar;
     QIToolBar             *m_pVerticalToolBar;
