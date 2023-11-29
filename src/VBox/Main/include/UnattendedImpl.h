@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 102171 2023-11-20 23:05:24Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedImpl.h 102381 2023-11-29 14:51:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Unattended class header
  */
@@ -217,6 +217,10 @@ private:
     HRESULT setInstallUserPayload(BOOL aInstallUserPayload);
     HRESULT getTimeZone(com::Utf8Str &aTimezone);
     HRESULT setTimeZone(const com::Utf8Str &aTimezone);
+    HRESULT getKeyboardLayout(com::Utf8Str &aKeyboardLayout);
+    HRESULT setKeyboardLayout(const com::Utf8Str &aKeyboardLayout);
+    HRESULT getKeyboardVariant(com::Utf8Str &aKeyboardVariant);
+    HRESULT setKeyboardVariant(const com::Utf8Str &aKeyboardVariant);
     HRESULT getLocale(com::Utf8Str &aLocale);
     HRESULT setLocale(const com::Utf8Str &aLocale);
     HRESULT getLanguage(com::Utf8Str &aLanguage);

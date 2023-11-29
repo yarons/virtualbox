@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 102360 2023-11-28 12:47:27Z andreas.loeffler@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 102381 2023-11-29 14:51:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -284,6 +284,30 @@ HRESULT Unattended::getTimeZone(com::Utf8Str &aTimeZone)
 HRESULT Unattended::setTimeZone(const com::Utf8Str &aTimezone)
 {
     RT_NOREF(aTimezone);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getKeyboardLayout(com::Utf8Str &aKeyboardLayout)
+{
+    RT_NOREF(aKeyboardLayout);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setKeyboardLayout(const com::Utf8Str &aKeyboardLayout)
+{
+    RT_NOREF(aKeyboardLayout);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getKeyboardVariant(com::Utf8Str &aKeyboardVariant)
+{
+    RT_NOREF(aKeyboardVariant);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setKeyboardVariant(const com::Utf8Str &aKeyboardVariant)
+{
+    RT_NOREF(aKeyboardVariant);
     return E_NOTIMPL;
 }
 

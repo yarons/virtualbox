@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 102347 2023-11-27 18:55:29Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedImpl.cpp 102381 2023-11-29 14:51:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Unattended class implementation
  */
@@ -3573,6 +3573,30 @@ HRESULT Unattended::setTimeZone(const com::Utf8Str &aTimezone)
     AssertReturn(mpInstaller == NULL, setErrorBoth(E_FAIL, VERR_WRONG_ORDER, tr("Cannot change after prepare() has been called")));
     mStrTimeZone = aTimezone;
     return S_OK;
+}
+
+HRESULT Unattended::getKeyboardLayout(com::Utf8Str &aKeyboardLayout)
+{
+    RT_NOREF(aKeyboardLayout);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setKeyboardLayout(const com::Utf8Str &aKeyboardLayout)
+{
+    RT_NOREF(aKeyboardLayout);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getKeyboardVariant(com::Utf8Str &aKeyboardVariant)
+{
+    RT_NOREF(aKeyboardVariant);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setKeyboardVariant(const com::Utf8Str &aKeyboardVariant)
+{
+    RT_NOREF(aKeyboardVariant);
+    return E_NOTIMPL;
 }
 
 HRESULT Unattended::getLocale(com::Utf8Str &aLocale)
