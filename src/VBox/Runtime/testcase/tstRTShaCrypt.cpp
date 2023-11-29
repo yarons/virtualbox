@@ -1,4 +1,4 @@
-/* $Id: tstRTShaCrypt.cpp 102375 2023-11-29 10:58:18Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTShaCrypt.cpp 102376 2023-11-29 11:02:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT Testcase - SHA-crypt 256 / 512.
  */
@@ -277,7 +277,7 @@ int main()
                 }
 
                 if (RTStrCmp(szResult, g_aTests[i].pszResultStr))
-                    RTTestIFailed("#%u (result as hash): Returns '%s', expected '%s'",
+                    RTTestIFailed("#%u (result as salt): Returns '%s', expected '%s'",
                                   i, szResult, g_aTests[i].pszResultStr);
             }
         }
