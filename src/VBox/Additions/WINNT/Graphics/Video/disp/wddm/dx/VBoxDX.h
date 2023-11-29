@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 102295 2023-11-24 13:45:12Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 102383 2023-11-29 17:49:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -63,6 +63,8 @@ typedef struct VBOXDXADAPTER
     VBOXVIDEO_HWTYPE enmHwType;     /* VBOXVIDEO_HWTYPE_* */
 
     bool f3D;
+
+    uint32_t fVBoxCaps;
 
     VBOXWDDM_QAI AdapterInfo;
 } VBOXDXADAPTER, *PVBOXDXADAPTER;
@@ -752,6 +754,8 @@ void vboxDXGetVideoProcessorCaps(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOPROCESSOREN
                                  D3D11_1DDI_VIDEO_PROCESSOR_CAPS *pCaps);
 void vboxDXGetVideoProcessorRateConversionCaps(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOPROCESSORENUM pVideoProcessorEnum,
                                                D3D11_1DDI_VIDEO_PROCESSOR_RATE_CONVERSION_CAPS *pCaps);
+void vboxDXGetVideoProcessorCustomRate(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOPROCESSORENUM pVideoProcessorEnum,
+                                       UINT CustomRateIndex, D3D11_1DDI_VIDEO_PROCESSOR_CUSTOM_RATE *pRate);
 void vboxDXGetVideoProcessorFilterRange(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOPROCESSORENUM pVideoProcessorEnum,
                                         D3D11_1DDI_VIDEO_PROCESSOR_FILTER Filter, D3D11_1DDI_VIDEO_PROCESSOR_FILTER_RANGE *pFilterRange);
 HRESULT vboxDXCreateVideoProcessor(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOPROCESSOR pVideoProcessor,
