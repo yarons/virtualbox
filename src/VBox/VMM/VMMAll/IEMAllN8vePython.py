@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102351 2023-11-27 21:34:29Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102397 2023-11-30 13:53:54Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102351 $"
+__version__ = "$Revision: 102397 $"
 
 # Standard python imports:
 import copy;
@@ -155,13 +155,16 @@ g_dMcStmtThreaded = {
     'IEM_MC_MEM_FLAT_MAP_U8_RW':                                 (None, True,  False, ),
     'IEM_MC_STORE_MEM_FLAT_U128_ALIGN_SSE':                      (None, True,  False, ),
     'IEM_MC_STORE_MEM_FLAT_U128':                                (None, True,  False, ),
-    'IEM_MC_STORE_MEM_FLAT_U16':                                 (None, True,  False, ),
+    'IEM_MC_STORE_MEM_FLAT_U16':                                 (None, True,  True,  ),
+    'IEM_MC_STORE_MEM_FLAT_U16_CONST':                           (None, True,  False, ),
     'IEM_MC_STORE_MEM_FLAT_U256_ALIGN_AVX':                      (None, True,  False, ),
     'IEM_MC_STORE_MEM_FLAT_U256':                                (None, True,  False, ),
-    'IEM_MC_STORE_MEM_FLAT_U32':                                 (None, True,  False, ),
-    'IEM_MC_STORE_MEM_FLAT_U64':                                 (None, True,  False, ),
+    'IEM_MC_STORE_MEM_FLAT_U32':                                 (None, True,  True,  ),
+    'IEM_MC_STORE_MEM_FLAT_U32_CONST':                           (None, True,  False, ),
+    'IEM_MC_STORE_MEM_FLAT_U64':                                 (None, True,  True,  ),
+    'IEM_MC_STORE_MEM_FLAT_U64_CONST':                           (None, True,  False, ),
+    'IEM_MC_STORE_MEM_FLAT_U8':                                  (None, True,  True,  ),
     'IEM_MC_STORE_MEM_FLAT_U8_CONST':                            (None, True,  False, ),
-    'IEM_MC_STORE_MEM_FLAT_U8':                                  (None, True,  False, ),
 
     # Flat Stack:
     'IEM_MC_FLAT64_PUSH_U16':                                    (None, True,  False, ),
