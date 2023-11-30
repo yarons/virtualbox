@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -91,8 +91,7 @@ public:
     bool isOpened() const;
     void setIsOpened(bool flag);
 
-    /** Full absolute path of the item. With or without the trailing '/' */
-    QString  path(bool fRemoveTrailingDelimiters = false) const;
+    QString  path() const;
 
     /** Returns true if this is directory and file object name is ".." */
     bool isUpDirectory() const;

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1119,10 +1119,7 @@ QStringList UIFileManagerTable::selectedItemPathList()
         UICustomFileSystemItem *item = static_cast<UICustomFileSystemItem*>(index.internalPointer());
         if (!item)
             continue;
-
-        /* Make sure to remove any trailing delimiters for directory paths here (e.g. "C:\foo\bar\" -> "C:\foo\bar"),
-         * as we want to copy entire directories, not only its contents (see Guest Control SDK docs). */
-        pathList.push_back(item->path(true /* fRemoveTrailingDelimiters */));
+        pathList.push_back(item->path());
     }
     return pathList;
 }

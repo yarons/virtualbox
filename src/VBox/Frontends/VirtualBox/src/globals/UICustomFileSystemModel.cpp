@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 102379 2023-11-29 12:33:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -207,10 +207,10 @@ void UICustomFileSystemItem::setIsOpened(bool flag)
     m_bIsOpened = flag;
 }
 
-QString UICustomFileSystemItem::path(bool fRemoveTrailingDelimiters /* = false */) const
+QString UICustomFileSystemItem::path() const
 {
     const QChar delimiter('/');
-    Q_UNUSED(fRemoveTrailingDelimiters);
+
     const UICustomFileSystemItem *pParent = this;
     QStringList path;
     while(pParent && pParent->parentItem())

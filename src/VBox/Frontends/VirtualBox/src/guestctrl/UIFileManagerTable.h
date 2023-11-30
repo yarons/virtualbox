@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -212,7 +212,6 @@ protected:
 
     virtual void     readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) = 0;
     virtual void     deleteByItem(UICustomFileSystemItem *item) = 0;
-    virtual void     deleteByPath(const QStringList &pathList) = 0;
     virtual void     goToHomeDirectory() = 0;
     virtual bool     renameItem(UICustomFileSystemItem *item, const QString &strOldPath) = 0;
     virtual bool     createDirectory(const QString &path, const QString &directoryName) = 0;
