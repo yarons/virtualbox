@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 102400 2023-11-30 15:15:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 102404 2023-11-30 16:15:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -342,10 +342,11 @@ void UIVisoCreatorWidget::retranslateUi()
 {
 }
 
-void UIVisoCreatorWidget::sltAddObjectsToViso(QStringList pathList)
+void UIVisoCreatorWidget::sltAddObjectsToViso()
 {
-    if (m_pVISOContentBrowser)
-        m_pVISOContentBrowser->addObjectsToViso(pathList);
+    AssertPtrReturnVoid(m_pHostFileBrowser);
+    AssertPtrReturnVoid(m_pVISOContentBrowser);
+    m_pVISOContentBrowser->addObjectsToViso(m_pHostFileBrowser->selectedItemPathList());
 }
 
 void UIVisoCreatorWidget::sltSettingsActionToggled(bool fChecked)
@@ -540,9 +541,9 @@ void UIVisoCreatorWidget::prepareConnections()
                 this, &UIVisoCreatorWidget::sltPanelContainerHidden);
     }
 
-    // if (m_pAddAction)
-    //     connect(m_pAddAction, &QAction::triggered,
-    //             m_pHostBrowser, &UIVisoHostBrowser::sltAddAction);
+    if (m_pAddAction)
+        connect(m_pAddAction, &QAction::triggered,
+                this, &UIVisoCreatorWidget::sltAddObjectsToViso);
     if (m_pOpenAction)
         connect(m_pOpenAction, &QAction::triggered,
                 this, &UIVisoCreatorWidget::sltOpenAction);

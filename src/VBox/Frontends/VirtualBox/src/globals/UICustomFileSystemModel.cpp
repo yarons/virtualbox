@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.cpp 102404 2023-11-30 16:15:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -224,7 +224,7 @@ QString UICustomFileSystemItem::path() const
         if (!strPath.isEmpty() && strPath.at(0) == delimiter)
             strPath.remove(0, 1);
     }
-    return UIPathOperations::addTrailingDelimiters(strPath);
+    return UIPathOperations::removeTrailingDelimiters(strPath);
 }
 
 bool UICustomFileSystemItem::isUpDirectory() const

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 102400 2023-11-30 15:15:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 102404 2023-11-30 16:15:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -108,7 +108,7 @@ protected:
 
 private slots:
 
-    void sltAddObjectsToViso(QStringList pathList);
+    void sltAddObjectsToViso();
     void sltSettingsActionToggled(bool fChecked);
     void sltHostBrowserTableSelectionChanged(bool fHasSelection);
     void sltContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);

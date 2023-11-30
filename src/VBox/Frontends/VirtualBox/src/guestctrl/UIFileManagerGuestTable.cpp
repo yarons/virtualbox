@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 102404 2023-11-30 16:15:09Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -685,15 +685,14 @@ void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathL
     if (!checkGuestSession())
         return;
     QVector<QString> sourcePaths = hostSourcePathList.toVector();
-    QVector<QString> aFilters;
-    QVector<QString> aFlags;
-    QString strDestinationPath = UIPathOperations::addTrailingDelimiters(strDestination);
-
     /* Remove empty source paths. Typically happens when up directory is selected: */
     sourcePaths.removeAll(QString());
 
+    QVector<QString> aFilters;
+    QVector<QString> aFlags;
+    QString strDestinationPath = UIPathOperations::addTrailingDelimiters(strDestination);
     if (strDestinationPath.isEmpty())
-        strDestinationPath = currentDirectoryPath();
+        strDestinationPath = UIPathOperations::addTrailingDelimiters(currentDirectoryPath());
 
     if (strDestinationPath.isEmpty())
     {
