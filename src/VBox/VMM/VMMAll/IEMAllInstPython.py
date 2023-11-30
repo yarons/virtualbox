@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102397 2023-11-30 13:53:54Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102409 2023-11-30 23:57:01Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102397 $"
+__version__ = "$Revision: 102409 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3144,15 +3144,15 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_MEM_U128':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_MEM_U128_ALIGN_SSE':                           (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_MEM_U16':                                      (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_STORE_MEM_U16_CONST':                                (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_STORE_MEM_U16_CONST':                                (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_STORE_MEM_U256':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_MEM_U256_ALIGN_AVX':                           (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_MEM_U32':                                      (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_STORE_MEM_U32_CONST':                                (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_STORE_MEM_U32_CONST':                                (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_STORE_MEM_U64':                                      (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_STORE_MEM_U64_CONST':                                (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_STORE_MEM_U64_CONST':                                (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_STORE_MEM_U8':                                       (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_STORE_MEM_U8_CONST':                                 (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_STORE_MEM_U8_CONST':                                 (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_STORE_MREG_U32_ZX_U64':                              (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_MREG_U64':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_STORE_SREG_BASE_U32':                                (McBlock.parseMcGeneric,           True,  False, ),
