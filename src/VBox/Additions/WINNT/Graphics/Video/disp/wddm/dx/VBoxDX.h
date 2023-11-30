@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 102383 2023-11-29 17:49:56Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -734,6 +734,7 @@ void vboxDXDispatchIndirect(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pResource, 
 void vboxDXDrawIndexedInstancedIndirect(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pResource, UINT AlignedByteOffsetForArgs);
 void vboxDXDrawInstancedIndirect(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pResource, UINT AlignedByteOffsetForArgs);
 void vboxDXCopyStructureCount(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pDstBuffer, UINT DstAlignedByteOffset, PVBOXDXUNORDEREDACCESSVIEW pSrcView);
+void vboxDXClearView(PVBOXDX_DEVICE pDevice, D3D11DDI_HANDLETYPE ViewType, uint32_t ViewId, FLOAT const Color[4], D3D10_DDI_RECT const *pRect, UINT NumRects);
 HRESULT vboxDXBlt(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pDstResource, UINT DstSubresource,
                   PVBOXDX_RESOURCE pSrcResource, UINT SrcSubresource,
                   UINT DstLeft, UINT DstTop, UINT DstRight, UINT DstBottom,

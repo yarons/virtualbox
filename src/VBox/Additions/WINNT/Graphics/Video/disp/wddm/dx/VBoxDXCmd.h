@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.h 102295 2023-11-24 13:45:12Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXCmd.h 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -470,5 +470,11 @@ int vgpu10GetVideoCapability(PVBOXDX_DEVICE pDevice,
                              uint32 offsetInBytes,
                              uint32 sizeInBytes,
                              uint64 fenceValue);
+int vgpu10ClearView(PVBOXDX_DEVICE pDevice,
+                    SVGAFifo3dCmdId cmdId,
+                    uint32_t viewId,
+                    const float color[4],
+                    const D3D10_DDI_RECT *paRects,
+                    uint32_t cRects);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_dx_VBoxDXCmd_h */

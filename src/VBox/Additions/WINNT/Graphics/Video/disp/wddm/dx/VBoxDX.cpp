@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 102253 2023-11-22 12:28:54Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -3458,6 +3458,33 @@ HRESULT vboxDXBlt(PVBOXDX_DEVICE pDevice, PVBOXDX_RESOURCE pDstResource, UINT Ds
     vgpu10PresentBlt(pDevice, vboxDXGetAllocation(pSrcResource), SrcSubresource, vboxDXGetAllocation(pDstResource), DstSubresource,
                      boxSrc, boxDest, mode);
     return S_OK;
+}
+
+
+void vboxDXClearView(PVBOXDX_DEVICE pDevice, D3D11DDI_HANDLETYPE ViewType, uint32_t ViewId, FLOAT const Color[4], D3D10_DDI_RECT const *pRect, UINT NumRects)
+{
+    SVGAFifo3dCmdId enmCmdId = VBSVGA_3D_CMD_DX_CLEAR_RTV;
+    switch (ViewType)
+    {
+        case D3D10DDI_HT_RENDERTARGETVIEW:
+            break;
+        case D3D11DDI_HT_UNORDEREDACCESSVIEW:
+            enmCmdId = VBSVGA_3D_CMD_DX_CLEAR_UAV;
+            break;
+        case D3D11_1DDI_HT_VIDEODECODEROUTPUTVIEW:
+            enmCmdId = VBSVGA_3D_CMD_DX_CLEAR_VDOV;
+            break;
+        case D3D11_1DDI_HT_VIDEOPROCESSORINPUTVIEW:
+            enmCmdId = VBSVGA_3D_CMD_DX_CLEAR_VPIV;
+            break;
+        case D3D11_1DDI_HT_VIDEOPROCESSOROUTPUTVIEW:
+            enmCmdId = VBSVGA_3D_CMD_DX_CLEAR_VPOV;
+            break;
+        default:
+            AssertFailedReturnVoid();
+    }
+
+    vgpu10ClearView(pDevice, enmCmdId, ViewId, Color, pRect, NumRects);
 }
 
 
