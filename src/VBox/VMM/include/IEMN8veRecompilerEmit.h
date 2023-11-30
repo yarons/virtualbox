@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102385 2023-11-29 21:09:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102394 2023-11-30 13:28:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -501,6 +501,33 @@ iemNativeEmitStoreGprToVCpuU8(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8
 
 #elif RT_ARCH_ARM64
     off = iemNativeEmitGprByVCpuLdSt(pReNative, off, iGpr, offVCpu, kArmv8A64InstrLdStType_St_Byte, sizeof(uint8_t));
+
+#else
+# error "port me"
+#endif
+    return off;
+}
+
+
+/**
+ * Emits a store of an immediate value to a 8-bit VCpu field.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitStoreImmToVCpuU8(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t bImm, uint32_t offVCpu)
+{
+#ifdef RT_ARCH_AMD64
+    /* mov mem8, imm8 */
+    uint8_t *pbCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 7);
+    pbCodeBuf[off++] = 0xc6;
+    off = iemNativeEmitGprByVCpuDisp(pbCodeBuf, off, 0, offVCpu);
+    pbCodeBuf[off++] = bImm;
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+
+#elif RT_ARCH_ARM64
+    /* Cannot use IEMNATIVE_REG_FIXED_TMP0 for the immediate as that's used by iemNativeEmitGprByVCpuLdSt. */
+    uint8_t const idxRegImm = iemNativeRegAllocTmpImm(pReNative, &off, bImm);
+    off = iemNativeEmitGprByVCpuLdSt(pReNative, off, idxRegImm, offVCpu, kArmv8A64InstrLdStType_St_Byte, sizeof(uint8_t));
+    iemNativeRegFreeTmpImm(pReNative, idxRegImm);
 
 #else
 # error "port me"

@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102388 2023-11-29 22:31:22Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102394 2023-11-30 13:28:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -42,6 +42,9 @@
 #if defined(DEBUG) || defined(DOXYGEN_RUNNING)
 # define IEMNATIVE_WITH_TB_DEBUG_INFO
 #endif
+
+/** Always count instructions for now. */
+#define IEMNATIVE_WITH_INSTRUCTION_COUNTING
 
 
 /** @name Stack Frame Layout
