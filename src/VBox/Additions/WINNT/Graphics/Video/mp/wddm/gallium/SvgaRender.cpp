@@ -1,4 +1,4 @@
-/* $Id: SvgaRender.cpp 102144 2023-11-17 19:25:12Z vitali.pelenjow@oracle.com $ */
+/* $Id: SvgaRender.cpp 102407 2023-11-30 21:58:35Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - VMSVGA command verification routines.
  */
@@ -2233,6 +2233,11 @@ static SVGA3DCOMMANDDESC const s_aCommandDesc[] =
     { procCmdOK },                                  // VBSVGA_3D_CMD_DX_VIDEO_PROCESSOR_SET_STREAM_FILTER
     { procCmdOK },                                  // VBSVGA_3D_CMD_DX_VIDEO_PROCESSOR_SET_STREAM_ROTATION
     { procCmdOK },                                  // VBSVGA_3D_CMD_DX_GET_VIDEO_CAPABILITY
+    { procCmdOK },                                  // VBSVGA_3D_CMD_DX_CLEAR_RTV
+    { procCmdOK },                                  // VBSVGA_3D_CMD_DX_CLEAR_UAV
+    { procCmdOK },                                  // VBSVGA_3D_CMD_DX_CLEAR_VDOV
+    { procCmdOK },                                  // VBSVGA_3D_CMD_DX_CLEAR_VPIV
+    { procCmdOK },                                  // VBSVGA_3D_CMD_DX_CLEAR_VPOV
 };
 AssertCompile(RT_ELEMENTS(s_aCommandDesc) == VBSVGA_NUM_COMMANDS);
 
