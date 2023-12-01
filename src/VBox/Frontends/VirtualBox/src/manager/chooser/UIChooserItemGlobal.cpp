@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 102423 2023-12-01 14:23:43Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -44,8 +44,7 @@
 UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent, UIChooserNodeGlobal *pNode)
     : UIChooserItem(pParent, pNode)
 #ifdef VBOX_WS_MAC
-    , m_iDefaultDarknessStart(0)
-    , m_iDefaultDarknessFinal(0)
+    , m_iDefaultColorDeviation(0)
 #endif
     , m_iHoverLightnessStart(0)
     , m_iHoverLightnessFinal(0)
@@ -342,8 +341,7 @@ void UIChooserItemGlobal::prepare()
 {
     /* Color tones: */
 #if defined(VBOX_WS_MAC)
-    m_iDefaultDarknessStart = 105;
-    m_iDefaultDarknessFinal = 115;
+    m_iDefaultColorDeviation = 105;
     m_iHoverLightnessStart = 125;
     m_iHoverLightnessFinal = 115;
     m_iHighlightLightnessStart = 115;
@@ -661,8 +659,8 @@ void UIChooserItemGlobal::paintBackground(QPainter *pPainter, const QRect &recta
         const QColor backgroundColor = pal.color(QPalette::Active, QPalette::Window);
         /* Draw gradient: */
         QLinearGradient bgGrad(rectangle.topLeft(), rectangle.bottomLeft());
-        bgGrad.setColorAt(0, backgroundColor.darker(m_iDefaultDarknessStart));
-        bgGrad.setColorAt(1, backgroundColor.darker(m_iDefaultDarknessFinal));
+        bgGrad.setColorAt(0, backgroundColor.lighter(m_iDefaultColorDeviation));
+        bgGrad.setColorAt(1, backgroundColor.darker(m_iDefaultColorDeviation));
         pPainter->fillRect(rectangle, bgGrad);
 #else
         /* Draw simple background: */
