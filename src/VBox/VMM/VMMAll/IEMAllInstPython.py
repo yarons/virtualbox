@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102409 2023-11-30 23:57:01Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102424 2023-12-01 22:43:39Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102409 $"
+__version__ = "$Revision: 102424 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3024,8 +3024,11 @@ g_dMcStmtParsers = {
     'IEM_MC_MEM_COMMIT_AND_UNMAP_RO':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_WO':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE':                 (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE_WO':              (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP':                                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_EX':                                         (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_MEM_MAP_I32_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_MEM_MAP_R32_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_U8_RW':                                      (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_U8_RO':                                      (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_U8_WO':                                      (McBlock.parseMcGeneric,           True,  False, ),
@@ -3038,6 +3041,8 @@ g_dMcStmtParsers = {
     'IEM_MC_MEM_MAP_U64_RW':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_U64_RO':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_U64_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_MEM_MAP_R80_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_MEM_ROLLBACK_AND_UNMAP_WO':                          (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MERGE_YREG_U32_U96_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MERGE_YREG_U64_U64_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MERGE_YREG_U64HI_U64HI_ZX_VLMAX':                    (McBlock.parseMcGeneric,           True,  False, ),
