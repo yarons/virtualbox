@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102420 2023-12-01 14:02:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102421 2023-12-01 14:06:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -579,6 +579,8 @@ void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
 {
     /* Determine sender: */
     UITools *pMenu = qobject_cast<UITools*>(sender());
+    if (!pMenu)
+        pMenu = m_pMenuToolsMachine;
 
     /* Acquire current class/type: */
     UIToolClass enmCurrentClass = UIToolClass_Invalid;
