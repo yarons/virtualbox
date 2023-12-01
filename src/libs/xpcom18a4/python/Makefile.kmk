@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102412 2023-12-01 08:54:26Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102413 2023-12-01 09:01:56Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -81,6 +81,7 @@ ifeq ($(KBUILD_TARGET),darwin) # Relatively predictable, don't script.
  if exists "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9"
   VBOX_PYTHON39_INC = /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Headers
   VBOX_PYTHON39_LIB = /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/libpython3.9.dylib
+ endif
  if exists "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8"
   VBOX_PYTHON38_INC = /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/Headers
   VBOX_PYTHON38_LIB = /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/libpython3.8.dylib
