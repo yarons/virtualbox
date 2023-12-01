@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 102425 2023-12-01 23:00:26Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 102426 2023-12-01 23:09:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -1800,6 +1800,24 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #else
 # define IEM_MC_MEM_FLAT_MAP_U16_RO(a_pu16Mem, a_bUnmapInfo, a_GCPtrMem) \
     (a_pu16Mem) = iemMemFlatMapDataU16RoJmp(pVCpu, &(a_bUnmapInfo), (a_GCPtrMem))
+#endif
+
+/** int16_t alias. */
+#ifndef IEM_WITH_SETJMP
+# define IEM_MC_MEM_MAP_I16_WO(a_pi16Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) \
+         IEM_MC_MEM_MAP_U16_WO(a_pi16Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem)
+#else
+# define IEM_MC_MEM_MAP_I16_WO(a_pi16Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) \
+    (a_pi16Mem) = (int16_t *)iemMemMapDataU16WoJmp(pVCpu, &(a_bUnmapInfo), (a_iSeg), (a_GCPtrMem))
+#endif
+
+/** Flat int16_t alias. */
+#ifndef IEM_WITH_SETJMP
+# define IEM_MC_MEM_FLAT_MAP_I16_WO(a_pi16Mem, a_bUnmapInfo, a_GCPtrMem) \
+         IEM_MC_MEM_FLAT_MAP_U16_WO(a_pi16Mem, a_bUnmapInfo, a_GCPtrMem)
+#else
+# define IEM_MC_MEM_FLAT_MAP_I16_WO(a_pi16Mem, a_bUnmapInfo, a_GCPtrMem) \
+    (a_pi16Mem) = (int16_t *)iemMemFlatMapDataU16WoJmp(pVCpu, &(a_bUnmapInfo), (a_GCPtrMem))
 #endif
 
 
