@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.h 102418 2023-12-01 11:47:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -80,7 +80,7 @@ public:
 protected:
 
     void            retranslateUi() override final;
-    virtual void    readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) override final;
+    virtual bool    readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) override final;
     virtual void    deleteByItem(UICustomFileSystemItem *item) override final;
     virtual void    goToHomeDirectory() override final;
     virtual bool    renameItem(UICustomFileSystemItem *item, const QString &strOldPath) override final;

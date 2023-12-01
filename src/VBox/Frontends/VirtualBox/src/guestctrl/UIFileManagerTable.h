@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 102418 2023-12-01 11:47:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -210,7 +210,7 @@ protected:
     void initializeFileTree();
     void checkDotDot(QMap<QString,UICustomFileSystemItem*> &map, UICustomFileSystemItem *parent, bool isStartDir);
 
-    virtual void     readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) = 0;
+    virtual bool     readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) = 0;
     virtual void     deleteByItem(UICustomFileSystemItem *item) = 0;
     virtual void     goToHomeDirectory() = 0;
     virtual bool     renameItem(UICustomFileSystemItem *item, const QString &strOldPath) = 0;
