@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102322 2023-11-27 13:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102422 2023-12-01 14:17:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -302,7 +302,7 @@ private slots:
         void sltHandleChooserPaneIndexChange();
 
         /** Handles signal about Chooser-pane selection invalidated. */
-        void sltHandleChooserPaneSelectionInvalidated() { recacheCurrentItemInformation(true /* fDontRaiseErrorPane */); }
+        void sltHandleChooserPaneSelectionInvalidated() { recacheCurrentMachineItemInformation(true /* fDontRaiseErrorPane */); }
 
         /** Handles sliding animation complete signal.
           * @param  enmDirection  Brings which direction was animation finished for. */
@@ -357,9 +357,9 @@ private:
         /** Updates Machine tools menu for @a pItem specified. */
         void updateToolsMenuMachine(UIVirtualMachineItem *pItem);
 
-        /** Recaches current item information.
+        /** Recaches current machine item information.
           * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
-        void recacheCurrentItemInformation(bool fDontRaiseErrorPane = false);
+        void recacheCurrentMachineItemInformation(bool fDontRaiseErrorPane = false);
     /** @} */
 
     /** Holds the action-pool instance. */
