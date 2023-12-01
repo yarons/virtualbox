@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 102427 2023-12-01 23:21:47Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 102428 2023-12-01 23:55:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -948,6 +948,9 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_MEM_MAP_U64_RW(a_pu64Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu64Mem); (a_pu64Mem) = NULL; CHK_PTYPE(uint64_t *,       a_pu64Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_MEM_MAP_U64_RO(a_pu64Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu64Mem); (a_pu64Mem) = NULL; CHK_PTYPE(uint64_t const *, a_pu64Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_MEM_MAP_U64_WO(a_pu64Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu64Mem); (a_pu64Mem) = NULL; CHK_PTYPE(uint64_t *,       a_pu64Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
+#define IEM_MC_MEM_MAP_U128_RW(a_pu128Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu128Mem); (a_pu128Mem) = NULL; CHK_PTYPE(RTUINT128U *,       a_pu128Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
+#define IEM_MC_MEM_MAP_U128_RO(a_pu128Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu128Mem); (a_pu128Mem) = NULL; CHK_PTYPE(RTUINT128U const *, a_pu128Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
+#define IEM_MC_MEM_MAP_U128_WO(a_pu128Mem, a_bUnmapInfo, a_iSeg, a_GCPtrMem) do { CHK_VAR(a_pu128Mem); (a_pu128Mem) = NULL; CHK_PTYPE(RTUINT128U *,       a_pu128Mem); CHK_VAR(a_bUnmapInfo); CHK_TYPE(uint8_t, a_bUnmapInfo); a_bUnmapInfo = 1; CHK_GCPTR(a_GCPtrMem); CHK_VAR(a_GCPtrMem); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 
 #define IEM_MC_MEM_COMMIT_AND_UNMAP_RW(a_pvMem, a_bMapInfo)                do { CHK_VAR(a_pvMem); CHK_VAR(a_bMapInfo); CHK_TYPE(uint8_t, a_bMapInfo); (void)fMcBegin; } while (0)
 #define IEM_MC_MEM_COMMIT_AND_UNMAP_RO(a_pvMem, a_bMapInfo)                do { CHK_VAR(a_pvMem); CHK_VAR(a_bMapInfo); CHK_TYPE(uint8_t, a_bMapInfo); (void)fMcBegin; } while (0)
