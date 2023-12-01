@@ -1,4 +1,4 @@
-/* $Id: IEMAllMemRWTmpl.cpp.h 102424 2023-12-01 22:43:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllMemRWTmpl.cpp.h 102427 2023-12-01 23:21:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - R/W Memory Functions Template.
  */
@@ -499,6 +499,5 @@ void RT_CONCAT3(iemMemStackPush,TMPL_MEM_FN_SUFF,SRegSafeJmp)(PVMCPUCC pVCpu, TM
 #undef TMPL_MEM_FN_SUFF
 #undef TMPL_MEM_FMT_TYPE
 #undef TMPL_MEM_FMT_DESC
-#undef TMPL_MEM_BY_REF
 #undef TMPL_WITH_PUSH_SREG
 
