@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: UIMachine.cpp 102419 2023-12-01 13:30:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1120,6 +1120,7 @@ void UIMachine::closeRuntimeUI()
 
     /* Asynchronously ask QApplication to quit: */
     LogRel(("GUI: Request for async QApp quit.\n"));
+    m_fQuitRequested = true;
     QMetaObject::invokeMethod(qApp, "quit", Qt::QueuedConnection);
 }
 
@@ -1470,6 +1471,7 @@ UIMachine::UIMachine()
     , m_fIsManualOverride(false)
     , m_defaultCloseAction(MachineCloseAction_Invalid)
     , m_restrictedCloseActions(MachineCloseAction_Invalid)
+    , m_fQuitRequested(false)
 {
     s_pInstance = this;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: UIMachine.h 102419 2023-12-01 13:30:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -679,6 +679,9 @@ public:
         /** Acquires whether guest @a fEntered ACPI mode. */
         bool acquireWhetherGuestEnteredACPIMode(bool &fEntered);
 
+        /** Returns whether qpp quit is requested. */
+        bool isQuitRequested() const { return m_fQuitRequested; }
+
         /** Detaches and closes Runtime UI. */
         void detachUi();
         /** Saves VM state, then closes Runtime UI. */
@@ -1106,6 +1109,9 @@ private:
         MachineCloseAction  m_defaultCloseAction;
         /** Merged restricted close actions. */
         MachineCloseAction  m_restrictedCloseActions;
+
+        /** Holds whether app quit is requested. */
+        bool  m_fQuitRequested;
     /** @} */
 };
 
