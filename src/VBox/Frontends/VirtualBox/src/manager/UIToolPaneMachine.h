@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 99218 2023-03-30 12:09:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 102420 2023-12-01 14:02:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -99,9 +99,6 @@ public:
     /** Defines error @a strDetails and switches to Error pane. */
     void setErrorDetails(const QString &strDetails);
 
-    /** Defines current machine @a pItem. */
-    void setCurrentItem(UIVirtualMachineItem *pItem);
-
     /** Defines the machine @a items. */
     void setItems(const QList<UIVirtualMachineItem*> &items);
 
@@ -128,9 +125,6 @@ private:
 
     /** Holds the action pool reference. */
     UIActionPool *m_pActionPool;
-
-    /** Holds current machine item reference. */
-    UIVirtualMachineItem *m_pItem;
 
     /** Holds the stacked-layout instance. */
     QStackedLayout      *m_pLayout;

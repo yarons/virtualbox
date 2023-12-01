@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102322 2023-11-27 13:54:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102420 2023-12-01 14:02:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1169,9 +1169,6 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
     /* Get current item: */
     UIVirtualMachineItem *pItem = currentItem();
     const bool fCurrentItemIsOk = pItem && pItem->accessible();
-
-    /* Propagate current item anyway: */
-    m_pPaneToolsMachine->setCurrentItem(pItem);
 
     /* If current item is Ok: */
     if (fCurrentItemIsOk)
