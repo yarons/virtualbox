@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102428 2023-12-01 23:55:37Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102429 2023-12-02 00:01:14Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102428 $"
+__version__ = "$Revision: 102429 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3019,14 +3019,10 @@ g_dMcStmtParsers = {
     'IEM_MC_MAYBE_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':             (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT':                       (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE':              (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_MEM_COMMIT_AND_UNMAP':                               (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_RW':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_RO':                            (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_WO':                            (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE':                 (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE_WO':              (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_MEM_MAP':                                            (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_MEM_MAP_EX':                                         (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_D80_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_I16_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_MEM_MAP_I32_WO':                                     (McBlock.parseMcGeneric,           True,  False, ),
