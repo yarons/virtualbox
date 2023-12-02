@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102432 2023-12-02 03:12:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102435 2023-12-02 11:38:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7710,6 +7710,7 @@ VBOXSTRICTRC iemMemStackPushBeginSpecial(PVMCPUCC pVCpu, size_t cbMem, uint32_t 
  *
  * @returns Strict VBox status code.
  * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
+ * @param   bUnmapInfo          Unmap info set by iemMemStackPushBeginSpecial.
  * @param   uNewRsp             The new RSP value returned by
  *                              iemMemStackPushBeginSpecial().
  */
