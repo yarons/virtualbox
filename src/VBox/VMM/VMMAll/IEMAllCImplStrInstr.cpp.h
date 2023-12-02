@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 100804 2023-08-05 01:01:32Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 102430 2023-12-02 02:39:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1211,8 +1211,9 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, fIoCh
     }
 #endif
 
+    uint8_t         bUnmapInfo;
     OP_TYPE        *puMem;
-    rcStrict = iemMemMap(pVCpu, (void **)&puMem, OP_SIZE / 8, X86_SREG_ES, pVCpu->cpum.GstCtx.ADDR_rDI,
+    rcStrict = iemMemMap(pVCpu, (void **)&puMem, &bUnmapInfo, OP_SIZE / 8, X86_SREG_ES, pVCpu->cpum.GstCtx.ADDR_rDI,
                          IEM_ACCESS_DATA_W, OP_SIZE / 8 - 1);
     if (rcStrict != VINF_SUCCESS)
         return rcStrict;
@@ -1226,9 +1227,9 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, fIoCh
          */
         *puMem = (OP_TYPE)u32Value;
 # ifdef IN_RING3
-        VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pVCpu, puMem, IEM_ACCESS_DATA_W);
+        VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pVCpu, bUnmapInfo);
 # else
-        VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmapPostponeTroubleToR3(pVCpu, puMem, IEM_ACCESS_DATA_W);
+        VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmapPostponeTroubleToR3(pVCpu, bUnmapInfo);
 # endif
         if (RT_LIKELY(rcStrict2 == VINF_SUCCESS))
         {
@@ -1416,8 +1417,9 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_rep_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, f
          *        during INS. */
         do
         {
+            uint8_t  bUnmapInfo;
             OP_TYPE *puMem;
-            rcStrict = iemMemMap(pVCpu, (void **)&puMem, OP_SIZE / 8, X86_SREG_ES, uAddrReg,
+            rcStrict = iemMemMap(pVCpu, (void **)&puMem, &bUnmapInfo, OP_SIZE / 8, X86_SREG_ES, uAddrReg,
                                  IEM_ACCESS_DATA_W, OP_SIZE / 8 - 1);
             if (rcStrict != VINF_SUCCESS)
                 return rcStrict;
@@ -1432,9 +1434,9 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_rep_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, f
 
             *puMem = (OP_TYPE)u32Value;
 # ifdef IN_RING3
-            VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pVCpu, puMem, IEM_ACCESS_DATA_W);
+            VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pVCpu, bUnmapInfo);
 # else
-            VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmapPostponeTroubleToR3(pVCpu, puMem, IEM_ACCESS_DATA_W);
+            VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmapPostponeTroubleToR3(pVCpu, bUnmapInfo);
 # endif
             if (rcStrict2 == VINF_SUCCESS)
             { /* likely */ }
