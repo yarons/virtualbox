@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102436 2023-12-02 22:09:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102444 2023-12-03 21:18:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -957,6 +957,7 @@ iemNativeEmitLoadGprByBpU16(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t
     uint8_t *pbCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 8);
     if (iGprDst >= 8)
         pbCodeBuf[off++] = X86_OP_REX_R;
+    pbCodeBuf[off++] = 0x0f;
     pbCodeBuf[off++] = 0xb7;
     return iemNativeEmitGprByBpDisp(pbCodeBuf, off, iGprDst, offDisp, pReNative);
 
@@ -981,6 +982,7 @@ iemNativeEmitLoadGprByBpU8(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t 
     uint8_t *pbCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 8);
     if (iGprDst >= 8)
         pbCodeBuf[off++] = X86_OP_REX_R;
+    pbCodeBuf[off++] = 0x0f;
     pbCodeBuf[off++] = 0xb6;
     return iemNativeEmitGprByBpDisp(pbCodeBuf, off, iGprDst, offDisp, pReNative);
 
