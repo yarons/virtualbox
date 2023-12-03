@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102442 2023-12-03 19:39:54Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102443 2023-12-03 19:57:27Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102442 $"
+__version__ = "$Revision: 102443 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2915,12 +2915,11 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_MEM_U256_ALIGN_AVX':                           (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FETCH_MEM_U256_NO_AC':                               (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FETCH_MEM_U32':                                      (McBlock.parseMcGeneric,           True,  True,  ),
-    'IEM_MC_FETCH_MEM_U32_DISP':                                 (McBlock.parseMcGeneric,           True,  False, ), #bounds only
+    'IEM_MC_FETCH_MEM_U32_DISP':                                 (McBlock.parseMcGeneric,           True,  True,  ), #bounds only
     'IEM_MC_FETCH_MEM_U32_SX_U64':                               (McBlock.parseMcGeneric,           True,  True,  ), # movsx
     'IEM_MC_FETCH_MEM_U32_ZX_U64':                               (McBlock.parseMcGeneric,           True,  True,  ), # movzx
     'IEM_MC_FETCH_MEM_U64':                                      (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_FETCH_MEM_U64_ALIGN_U128':                           (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_FETCH_MEM_U64_DISP':                                 (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_FETCH_MEM_U8':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_FETCH_MEM_U8_SX_U16':                                (McBlock.parseMcGeneric,           True,  True,  ), # movsx
     'IEM_MC_FETCH_MEM_U8_SX_U32':                                (McBlock.parseMcGeneric,           True,  True,  ), # movsx
