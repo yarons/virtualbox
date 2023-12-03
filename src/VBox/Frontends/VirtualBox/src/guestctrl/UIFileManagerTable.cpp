@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102418 2023-12-01 11:47:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102441 2023-12-03 13:32:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1354,6 +1354,14 @@ void UIFileManagerTable::setModelFileSystem(bool fIsWindowsFileSystem)
 {
     if (m_pModel)
         m_pModel->setIsWindowsFileSystem(fIsWindowsFileSystem);
+    /* On Windows it is generally desired to sort file objects case insensitively: */
+    if (m_pProxyModel)
+    {
+        if (fIsWindowsFileSystem)
+            m_pProxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+        else
+            m_pProxyModel->setSortCaseSensitivity(Qt::CaseSensitive);
+    }
 }
 
 #include "UIFileManagerTable.moc"
