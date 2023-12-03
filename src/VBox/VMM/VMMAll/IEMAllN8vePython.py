@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102438 2023-12-03 11:37:09Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102442 2023-12-03 19:39:54Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102438 $"
+__version__ = "$Revision: 102442 $"
 
 # Standard python imports:
 import copy;
@@ -114,26 +114,26 @@ g_dMcStmtThreaded = {
     'IEM_MC_FETCH_MEM_FLAT_U128_NO_AC':                          (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U128':                                (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U16_DISP':                            (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U16_SX_U32':                          (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U16_SX_U64':                          (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U16_SX_U32':                          (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U16_SX_U64':                          (None, True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_U16':                                 (None, True,  True,  ),
-    'IEM_MC_FETCH_MEM_FLAT_U16_ZX_U32':                          (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U16_ZX_U64':                          (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U16_ZX_U32':                          (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U16_ZX_U64':                          (None, True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_U256_ALIGN_AVX':                      (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U256_NO_AC':                          (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U256':                                (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U32_DISP':                            (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U32_SX_U64':                          (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U32':                                 (None, True,  True,  ),
-    'IEM_MC_FETCH_MEM_FLAT_U32_ZX_U64':                          (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U32_DISP':                            (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U32_SX_U64':                          (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U32_ZX_U64':                          (None, True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_U64':                                 (None, True,  True,  ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U16':                           (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U32':                           (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U64':                           (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U16':                           (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U32':                           (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_SX_U64':                           (None, True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_U8':                                  (None, True,  True,  ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U16':                           (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U32':                           (None, True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U64':                           (None, True,  False, ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U16':                           (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U32':                           (None, True,  True,  ),
+    'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U64':                           (None, True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_ALIGN_SSE':                       (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_U32':                             (None, True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_U64':                             (None, True,  False, ),
