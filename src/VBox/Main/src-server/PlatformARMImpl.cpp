@@ -1,4 +1,4 @@
-/* $Id: PlatformARMImpl.cpp 101063 2023-09-08 12:41:13Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformARMImpl.cpp 102455 2023-12-04 15:53:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - ARM platform settings.
  */
@@ -240,7 +240,7 @@ HRESULT PlatformARM::i_loadSettings(const settings::PlatformARM &data)
 {
     RT_NOREF(data);
 
-    /** @todo BUGBUG Implement this form ARM! */
+    /* Nothing here yet. */
     return S_OK;
 }
 
@@ -256,7 +256,7 @@ HRESULT PlatformARM::i_saveSettings(settings::PlatformARM &data)
 {
     RT_NOREF(data);
 
-    /** @todo BUGBUG Implement this for ARM! */
+    /* Nothing here yet. */
     return S_OK;
 }
 
@@ -264,6 +264,6 @@ HRESULT PlatformARM::i_applyDefaults(GuestOSType *aOsType)
 {
     RT_NOREF(aOsType);
 
-    /** @todo BUGBUG Implement this for ARM! */
+    /* Nothing here yet. */
     return S_OK;
 }

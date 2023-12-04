@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 101619 2023-10-27 12:49:16Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 102455 2023-12-04 15:53:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5271,7 +5271,7 @@ DECLCALLBACK(int) Console::i_changeNetworkAttachment(Console *pThis,
     hrc = pVirtualBox->GetPlatformProperties(platformArch, pPlatformProperties.asOutParam());
     AssertComRC(hrc);
 
-    ChipsetType_T chipsetType = ChipsetType_PIIX3; /** @todo BUGBUG ASSUMES x86! */
+    ChipsetType_T chipsetType = ChipsetType_PIIX3;
     pPlatform->COMGETTER(ChipsetType)(&chipsetType);
     AssertComRC(hrc);
 
@@ -10708,7 +10708,7 @@ HRESULT Console::i_powerDownHostInterfaces()
     hrc = pVirtualBox->GetPlatformProperties(platformArch, pPlatformProperties.asOutParam());
     AssertComRC(hrc);
 
-    ChipsetType_T chipsetType = ChipsetType_PIIX3; /** @todo BUGBUG ASSUMES x86! */
+    ChipsetType_T chipsetType = ChipsetType_PIIX3;
     pPlatform->COMGETTER(ChipsetType)(&chipsetType);
     AssertComRC(hrc);
 

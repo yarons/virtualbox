@@ -1,4 +1,4 @@
-/* $Id: FirmwareSettingsImpl.cpp 101418 2023-10-12 01:07:17Z brian.le.lee@oracle.com $ */
+/* $Id: FirmwareSettingsImpl.cpp 102455 2023-12-04 15:53:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Machine firmware settings.
  */
@@ -684,7 +684,7 @@ void FirmwareSettings::i_applyDefaults(GuestOSType *aOsType)
     }
     else
     {
-        m->bd->firmwareType   = FirmwareType_BIOS; /** @todo BUGBUG Handle ARM? */
+        m->bd->firmwareType   = FirmwareType_BIOS;
         m->bd->fIOAPICEnabled = true;
     }
 
