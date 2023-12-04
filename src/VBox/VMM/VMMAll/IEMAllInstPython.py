@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102451 2023-12-04 13:28:57Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102452 2023-12-04 14:11:23Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102451 $"
+__version__ = "$Revision: 102452 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2783,12 +2783,12 @@ class McBlock(object):
 #       sed -n -e "s/^# *define *\(IEM_MC_[A-Z_0-9]*\)[ (].*$/        '\1': McBlock.parseMcGeneric,/p" include/IEMMc.h \
 #       | sort | uniq | gawk "{printf """    %%-60s (%%s,        True)\n""", $1, $2}"
 g_dMcStmtParsers = {
-    'IEM_MC_ACTUALIZE_AVX_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ACTUALIZE_AVX_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ACTUALIZE_SSE_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ACTUALIZE_SSE_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, False, ),
+    'IEM_MC_ACTUALIZE_AVX_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_ACTUALIZE_AVX_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_ACTUALIZE_SSE_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, True,  ),
+    'IEM_MC_ACTUALIZE_SSE_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_ADD_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_ADD_GREG_U16_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_ADD_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  False, ),
