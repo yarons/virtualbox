@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 102393 2023-11-30 12:58:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICustomFileSystemModel.h 102446 2023-12-04 13:04:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -40,6 +40,7 @@
 /* COM includes: */
 #include "COMEnums.h"
 
+class QMimeData;
 class UICustomFileSystemModel;
 
 enum UICustomFileSystemModelData
@@ -222,6 +223,10 @@ public:
 
     void setIsWindowsFileSystem(bool fIsWindowsFileSystem);
     bool isWindowsFileSystem() const;
+
+    virtual QStringList mimeTypes() const RT_OVERRIDE;
+    /** Prepares the mime data  as a list of text consisting of dragged objects full file path. */
+    QMimeData *mimeData(const QModelIndexList &indexes) const RT_OVERRIDE;
 
     static const char* strUpDirectoryString;
 

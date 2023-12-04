@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 102418 2023-12-01 11:47:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 102446 2023-12-04 13:04:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -491,6 +491,7 @@ void UIVisoCreatorWidget::prepareWidgets()
     AssertPtrReturnVoid(m_pHostFileBrowser);
     pContainerLayout->addWidget(m_pHostFileBrowser, 0, 0, 1, 4);
     m_pHostFileBrowser->setModifierActionsVisible(false);
+    m_pHostFileBrowser->setDragDropMode(QAbstractItemView::DragOnly);
 
     prepareVerticalToolBar();
     AssertPtrReturnVoid(m_pVerticalToolBar);

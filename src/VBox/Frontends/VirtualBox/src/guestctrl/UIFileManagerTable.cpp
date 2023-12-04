@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102441 2023-12-03 13:32:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102446 2023-12-04 13:04:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1224,6 +1224,12 @@ bool UIFileManagerTable::hasSelection() const
     if (m_pView)
         return m_pView->hasSelection();
     return false;
+}
+
+void UIFileManagerTable::setDragDropMode(QAbstractItemView::DragDropMode behavior)
+{
+    if (m_pView)
+        m_pView->setDragDropMode(behavior);
 }
 
 void UIFileManagerTable::sltReceiveDirectoryStatistics(UIDirectoryStatistics statistics)

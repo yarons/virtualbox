@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 102418 2023-12-01 11:47:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 102446 2023-12-04 13:04:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -164,6 +164,7 @@ public:
     /** Peroforms whatever is necessary after a UIFileManagerOptions change. */
     void optionsUpdated();
     bool hasSelection() const;
+    void setDragDropMode(QAbstractItemView::DragDropMode behavior);
 
 public slots:
 
