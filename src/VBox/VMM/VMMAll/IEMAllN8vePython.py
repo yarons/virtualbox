@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102444 2023-12-03 21:18:06Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102447 2023-12-04 13:05:53Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102444 $"
+__version__ = "$Revision: 102447 $"
 
 # Standard python imports:
 import copy;
@@ -92,12 +92,12 @@ g_dMcStmtThreaded = {
     'IEM_MC_STORE_GREG_U8_THREADED':                             (None, True,  True,  ),
     'IEM_MC_STORE_GREG_U8_CONST_THREADED':                       (None, True,  True,  ),
     'IEM_MC_FETCH_GREG_U8_THREADED':                             (None, False, True,  ),
-    'IEM_MC_FETCH_GREG_U8_SX_U16_THREADED':                      (None, False, False, ),
-    'IEM_MC_FETCH_GREG_U8_SX_U32_THREADED':                      (None, False, False, ),
-    'IEM_MC_FETCH_GREG_U8_SX_U64_THREADED':                      (None, False, False, ),
-    'IEM_MC_FETCH_GREG_U8_ZX_U16_THREADED':                      (None, False, False, ),
-    'IEM_MC_FETCH_GREG_U8_ZX_U32_THREADED':                      (None, False, False, ),
-    'IEM_MC_FETCH_GREG_U8_ZX_U64_THREADED':                      (None, False, False, ),
+    'IEM_MC_FETCH_GREG_U8_SX_U16_THREADED':                      (None, False, True,  ),
+    'IEM_MC_FETCH_GREG_U8_SX_U32_THREADED':                      (None, False, True,  ),
+    'IEM_MC_FETCH_GREG_U8_SX_U64_THREADED':                      (None, False, True,  ),
+    'IEM_MC_FETCH_GREG_U8_ZX_U16_THREADED':                      (None, False, True,  ),
+    'IEM_MC_FETCH_GREG_U8_ZX_U32_THREADED':                      (None, False, True,  ),
+    'IEM_MC_FETCH_GREG_U8_ZX_U64_THREADED':                      (None, False, True,  ),
     'IEM_MC_REF_GREG_U8_THREADED':                               (None, True,  True,  ),
 
     # Flat Mem:
