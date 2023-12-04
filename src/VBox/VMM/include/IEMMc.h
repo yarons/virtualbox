@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 102440 2023-12-03 12:07:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 102448 2023-12-04 13:09:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -920,11 +920,6 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
     ((a_u32Dst) = iemMemFlatFetchDataU32Jmp(pVCpu, (a_GCPtrMem) + (a_offDisp)))
 # define IEM_MC_FETCH_MEM_FLAT_I32(a_i32Dst, a_GCPtrMem) \
     ((a_i32Dst) = (int32_t)iemMemFlatFetchDataU32Jmp(pVCpu, (a_GCPtrMem)))
-#endif
-
-#ifdef SOME_UNUSED_FUNCTION
-# define IEM_MC_FETCH_MEM_S32_SX_U64(a_u64Dst, a_iSeg, a_GCPtrMem) \
-    IEM_MC_RETURN_ON_FAILURE(iemMemFetchDataS32SxU64(pVCpu, &(a_u64Dst), (a_iSeg), (a_GCPtrMem)))
 #endif
 
 #ifndef IEM_WITH_SETJMP

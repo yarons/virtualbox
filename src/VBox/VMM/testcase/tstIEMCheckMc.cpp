@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 102433 2023-12-02 03:29:41Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 102448 2023-12-04 13:09:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -849,7 +849,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_FETCH_MEM_I16(a_i16Dst, a_iSeg, a_GCPtrMem)           do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_i16Dst); CHK_TYPE(int16_t, a_i16Dst);                           CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_FETCH_MEM_U32(a_u32Dst, a_iSeg, a_GCPtrMem)           do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_u32Dst); AssertCompile(sizeof(a_u32Dst) == (sizeof(uint32_t))); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_FETCH_MEM_I32(a_i32Dst, a_iSeg, a_GCPtrMem)           do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_i32Dst); CHK_TYPE(int32_t, a_i32Dst);                           CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
-#define IEM_MC_FETCH_MEM_S32_SX_U64(a_u64Dst, a_iSeg, a_GCPtrMem)    do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_u64Dst); AssertCompile(sizeof(a_u64Dst) == (sizeof(uint64_t))); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_FETCH_MEM_U64(a_u64Dst, a_iSeg, a_GCPtrMem)           do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_u64Dst); AssertCompile(sizeof(a_u64Dst) == (sizeof(uint64_t))); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_FETCH_MEM_U64_ALIGN_U128(a_u64Dst, a_iSeg, a_GCPtrMem) do{ CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_u64Dst); AssertCompile(sizeof(a_u64Dst) == (sizeof(uint64_t))); CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
 #define IEM_MC_FETCH_MEM_I64(a_i64Dst, a_iSeg, a_GCPtrMem)           do { CHK_GCPTR(a_GCPtrMem);            CHK_VAR(a_GCPtrMem);   CHK_VAR(a_i64Dst); CHK_TYPE(int64_t, a_i64Dst);                           CHK_SEG_IDX(a_iSeg); (void)fMcBegin; } while (0)
