@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 102437 2023-12-03 11:27:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 102473 2023-12-05 12:54:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -5836,6 +5836,9 @@ FNIEMOP_DEF(iemOp_lea_Gv_M)
             IEM_MC_LOCAL(RTGCPTR,  GCPtrEffSrc);
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+            /** @todo optimize: This value casting/masking can be skipped if addr-size ==
+             *        operand-size, which is usually the case.  It'll save an instruction
+             *        and a register. */
             IEM_MC_LOCAL(uint16_t, u16Cast);
             IEM_MC_ASSIGN_TO_SMALLER(u16Cast, GCPtrEffSrc);
             IEM_MC_STORE_GREG_U16(IEM_GET_MODRM_REG(pVCpu, bRm), u16Cast);
@@ -5848,6 +5851,9 @@ FNIEMOP_DEF(iemOp_lea_Gv_M)
             IEM_MC_LOCAL(RTGCPTR, GCPtrEffSrc);
             IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+            /** @todo optimize: This value casting/masking can be skipped if addr-size ==
+             *        operand-size, which is usually the case.  It'll save an instruction
+             *        and a register. */
             IEM_MC_LOCAL(uint32_t, u32Cast);
             IEM_MC_ASSIGN_TO_SMALLER(u32Cast, GCPtrEffSrc);
             IEM_MC_STORE_GREG_U32(IEM_GET_MODRM_REG(pVCpu, bRm), u32Cast);
