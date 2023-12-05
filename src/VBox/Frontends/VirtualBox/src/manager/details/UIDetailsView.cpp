@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsView.cpp 102475 2023-12-05 13:17:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -170,7 +170,7 @@ void UIDetailsView::resizeEvent(QResizeEvent *pEvent)
     /* Notify listeners: */
     emit sigResized();
 
-    /* Update scene-rect: */
+    /* Update everything: */
     updateSceneRect();
 }
 
@@ -179,26 +179,37 @@ void UIDetailsView::prepare()
     /* Install Details-view accessibility interface factory: */
     QAccessible::installFactory(UIAccessibilityInterfaceForUIDetailsView::pFactory);
 
-    /* Prepare palette: */
-    QPalette pal = QApplication::palette();
-    pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
-    pal.setColor(QPalette::Inactive, QPalette::Base, pal.color(QPalette::Inactive, QPalette::Window));
-    setPalette(pal);
+    /* Prepares everything: */
+    prepareThis();
 
-    /* Setup frame: */
-    setFrameShape(QFrame::NoFrame);
-    setFrameShadow(QFrame::Plain);
-    setAlignment(Qt::AlignLeft | Qt::AlignTop);
-
-    /* Setup scroll-bars policy: */
-    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    /* Update scene-rect: */
+    /* Update everything: */
     updateSceneRect();
 
     /* Translate finally: */
     retranslateUi();
+}
+
+void UIDetailsView::prepareThis()
+{
+    /* Prepare palette: */
+    preparePalette();
+
+    /* Prepare frame: */
+    setFrameShape(QFrame::NoFrame);
+    setFrameShadow(QFrame::Plain);
+    setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
+    /* Prepare scroll-bars policy: */
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
+void UIDetailsView::preparePalette()
+{
+    QPalette pal = QApplication::palette();
+    pal.setColor(QPalette::Active, QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
+    pal.setColor(QPalette::Inactive, QPalette::Base, pal.color(QPalette::Inactive, QPalette::Window));
+    setPalette(pal);
 }
 
 void UIDetailsView::updateSceneRect()
