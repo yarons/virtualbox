@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 102475 2023-12-05 13:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.h 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -69,6 +69,11 @@ protected:
 
     /** Handles resize @a pEvent. */
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+
+private slots:
+
+    /** Updates palette. */
+    void sltUpdatePalette() { preparePalette(); }
 
 private:
 

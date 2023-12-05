@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 102475 2023-12-05 13:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.cpp 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -30,6 +30,7 @@
 #include <QScrollBar>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIDetails.h"
 #include "UIDetailsItem.h"
 #include "UIDetailsModel.h"
@@ -202,6 +203,10 @@ void UIDetailsView::prepareThis()
     /* Prepare scroll-bars policy: */
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    /* Prepare connections: */
+    connect(&uiCommon(), &UICommon::sigThemeChange,
+            this, &UIDetailsView::sltUpdatePalette);
 }
 
 void UIDetailsView::preparePalette()

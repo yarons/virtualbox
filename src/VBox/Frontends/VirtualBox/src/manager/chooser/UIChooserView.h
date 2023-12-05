@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 102475 2023-12-05 13:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.h 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -103,6 +103,12 @@ protected:
     /** @} */
 
 private slots:
+
+    /** @name Theme stuff stuff.
+      * @{ */
+        /** Updates palette. */
+        void sltUpdatePalette() { preparePalette(); }
+    /** @} */
 
     /** @name Search stuff.
       * @{ */

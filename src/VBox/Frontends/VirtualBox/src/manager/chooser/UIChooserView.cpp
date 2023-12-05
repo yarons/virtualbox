@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 102475 2023-12-05 13:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserView.cpp 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -34,6 +34,7 @@
 #include "UIChooserModel.h"
 #include "UIChooserSearchWidget.h"
 #include "UIChooserView.h"
+#include "UICommon.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -293,6 +294,10 @@ void UIChooserView::prepareThis()
     /* Prepare scroll-bars policy: */
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    /* Prepare connections: */
+    connect(&uiCommon(), &UICommon::sigThemeChange,
+            this, &UIChooserView::sltUpdatePalette);
 }
 
 void UIChooserView::preparePalette()
