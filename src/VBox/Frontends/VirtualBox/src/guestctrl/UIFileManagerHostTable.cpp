@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 102456 2023-12-04 16:38:50Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 102481 2023-12-05 15:30:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -167,8 +167,7 @@ void UIFileManagerHostTable::setModifierActionsVisible(bool fShown)
     if (!directory.exists() || !directory.isReadable())
         return false;
     QFileInfoList entries = directory.entryInfoList(QDir::Hidden|QDir::AllEntries|QDir::NoDotAndDotDot);
-    if (entries.isEmpty())
-        return false;
+
     parent->setIsOpened(true);
     for (int i = 0; i < entries.size(); ++i)
     {
