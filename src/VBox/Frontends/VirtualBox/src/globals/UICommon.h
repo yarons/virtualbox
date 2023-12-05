@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 102476 2023-12-05 13:44:42Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 102482 2023-12-05 16:10:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -175,6 +175,11 @@ public:
         bool isValid() const { return m_fValid; }
         /** Returns whether UICommon instance cleanup is in progress. */
         bool isCleaningUp() const { return m_fCleaningUp; }
+
+#ifdef VBOX_WS_MAC
+        /** Returns whether macOS is in Dark mode. */
+        bool isInDarkMode() const { return m_fDarkMode; }
+#endif
     /** @} */
 
     /** @name Versioning stuff.
@@ -212,10 +217,8 @@ public:
 
     /** @name Host OS stuff.
      * @{ */
-#ifdef VBOX_WS_WIN
         /** Loads the color theme. */
-        static void loadColorTheme();
-#endif
+        void loadColorTheme();
 
 #ifdef VBOX_WS_NIX
         /** X11: Returns the type of the Window Manager we are running under. */
