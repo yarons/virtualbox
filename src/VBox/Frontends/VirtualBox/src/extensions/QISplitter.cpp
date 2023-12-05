@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
+/* $Id: QISplitter.cpp 102478 2023-12-05 13:59:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -237,8 +237,8 @@ void QIDarwinSplitterHandle::paintEvent(QPaintEvent *)
 *   Class QISplitter  implementation.                                                                                            *
 *********************************************************************************************************************************/
 
-QISplitter::QISplitter(QWidget *pParent /* = 0 */)
-    : QSplitter(pParent)
+QISplitter::QISplitter(Qt::Orientation enmOrientation /* = Qt::Horizontal */, QWidget *pParent /* = 0 */)
+    : QSplitter(enmOrientation, pParent)
     , m_enmType(Shade)
     , m_fPolished(false)
 #ifdef VBOX_WS_MAC
@@ -248,7 +248,7 @@ QISplitter::QISplitter(QWidget *pParent /* = 0 */)
     qApp->installEventFilter(this);
 }
 
-QISplitter::QISplitter(Qt::Orientation enmOrientation, Type enmType, QWidget *pParent /* = 0 */)
+QISplitter::QISplitter(Type enmType, Qt::Orientation enmOrientation /* = Qt::Horizontal */, QWidget *pParent /* = 0 */)
     : QSplitter(enmOrientation, pParent)
     , m_enmType(enmType)
     , m_fPolished(false)

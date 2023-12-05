@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102422 2023-12-01 14:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102478 2023-12-05 13:59:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -651,7 +651,7 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
         pLayoutMain->setContentsMargins(0, 0, 0, 0);
 
         /* Create splitter: */
-        m_pSplitter = new QISplitter(Qt::Horizontal, QISplitter::Flat);
+        m_pSplitter = new QISplitter(QISplitter::Flat);
         if (m_pSplitter)
         {
             /* Configure splitter: */
