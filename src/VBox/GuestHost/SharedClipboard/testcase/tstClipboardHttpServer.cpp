@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 102230 2023-11-22 09:16:27Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 102472 2023-12-05 12:47:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -172,7 +172,7 @@ int main(int argc, char *argv[])
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
     static const char * const s_apszLogGroups[] = VBOX_LOGGROUP_NAMES;
-    rc = RTLogCreate(&g_pRelLogger, fFlags, "all.e.l", "TST_CLIPBOARDR_HTTPSERVER_RELEASE_LOG",
+    rc = RTLogCreate(&g_pRelLogger, fFlags, "all.e.l", "TST_CLIPBOARD_HTTPSERVER_RELEASE_LOG",
                      RT_ELEMENTS(s_apszLogGroups), s_apszLogGroups, RTLOGDEST_STDOUT, NULL /*"vkat-release.log"*/);
     if (RT_SUCCESS(rc))
     {
