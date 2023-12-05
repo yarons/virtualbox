@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 102404 2023-11-30 16:15:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 102474 2023-12-05 13:16:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -187,10 +187,11 @@ public:
     /** Creates a VISO by using the VISO creator dialog.
       * @param  pParent           Passes the dialog parent.
       * @param  strDefaultFolder  Passes the folder to save the VISO file.
-      * @param  strMachineName    Passes the name of the machine. */
-    static void createViso(UIActionPool *pActionPool, QWidget *pParent,
-                           const QString &strDefaultFolder = QString(),
-                           const QString &strMachineName  = QString());
+      * @param  strMachineName    Passes the name of the machine.
+      * returns QUuid of the opened medium when successful. */
+    static QUuid createViso(UIActionPool *pActionPool, QWidget *pParent,
+                            const QString &strDefaultFolder = QString(),
+                            const QString &strMachineName  = QString());
 
 protected:
 

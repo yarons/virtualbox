@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 102474 2023-12-05 13:16:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1639,7 +1639,7 @@ QUuid UICommon::openMediumCreatorDialog(UIActionPool *pActionPool, QWidget *pPar
             uMediumId = UIWizardNewVD::createVDWithWizard(pParent, strDefaultFolder, strMachineName, strMachineGuestOSTypeId);
             break;
         case UIMediumDeviceType_DVD:
-            UIVisoCreatorDialog::createViso(pActionPool, pParent, strDefaultFolder, strMachineName);
+            uMediumId = UIVisoCreatorDialog::createViso(pActionPool, pParent, strDefaultFolder, strMachineName);
             break;
         case UIMediumDeviceType_Floppy:
             uMediumId = UIFDCreationDialog::createFloppyDisk(pParent, strDefaultFolder, strMachineName);
