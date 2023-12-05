@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 102467 2023-12-05 09:47:03Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 102468 2023-12-05 10:37:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -306,8 +306,10 @@ int ShClBackendReadData(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLCLIENTC
             {
                 if (pPayload)
                 {
-                    Assert(pPayload->cbData == sizeof(SHCLX11RESPONSE));
+                    AssertReturn(pPayload->cbData == sizeof(SHCLX11RESPONSE), VERR_INVALID_PARAMETER);
+                    AssertPtrReturn(pPayload->pvData, VERR_INVALID_POINTER);
                     PSHCLX11RESPONSE pResp = (PSHCLX11RESPONSE)pPayload->pvData;
+                    AssertReturn(pResp->enmType == SHCLX11EVENTTYPE_READ, VERR_INVALID_PARAMETER);
 
                     uint32_t const cbRead = pResp->Read.cbData;
 
@@ -731,9 +733,10 @@ static DECLCALLBACK(int) shClSvcX11TransferIfaceHGRootListRead(PSHCLTXPROVIDERCT
             {
                 if (pPayload)
                 {
-                    Assert(pPayload->cbData == sizeof(SHCLX11RESPONSE));
-                    AssertPtr(pPayload->pvData);
+                    AssertReturn(pPayload->cbData == sizeof(SHCLX11RESPONSE), VERR_INVALID_PARAMETER);
+                    AssertPtrReturn(pPayload->pvData, VERR_INVALID_POINTER);
                     PSHCLX11RESPONSE pResp = (PSHCLX11RESPONSE)pPayload->pvData;
+                    AssertReturn(pResp->enmType == SHCLX11EVENTTYPE_READ, VERR_INVALID_PARAMETER);
 
                     rc = ShClTransferRootsInitFromStringList(pCtx->pTransfer,
                                                              (char *)pResp->Read.pvData, pResp->Read.cbData + 1 /* Include zero terminator */);
