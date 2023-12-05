@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 102478 2023-12-05 13:59:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 102479 2023-12-05 14:56:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -4386,13 +4386,11 @@ void UIStorageSettingsEditor::prepareWidgets()
     {
         pLayout->setContentsMargins(0, 0, 0, 0);
 
-        /* Create splitter: */
+        /* Prepare splitter: */
         m_pSplitter = new QISplitter;
         if (m_pSplitter)
         {
             m_pSplitter->setChildrenCollapsible(false);
-            m_pSplitter->setOrientation(Qt::Horizontal);
-            m_pSplitter->setHandleWidth(4);
 
             /* Prepare panes: */
             prepareLeftPane();
