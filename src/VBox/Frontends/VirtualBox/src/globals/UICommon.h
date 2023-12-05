@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 102363 2023-11-28 13:24:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 102476 2023-12-05 13:44:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -91,6 +91,12 @@ signals:
         void sigAskToCommitData();
         /** Asks listeners to detach COM. */
         void sigAskToDetachCOM();
+    /** @} */
+
+    /** @name Theme stuff.
+     * @{ */
+        /** Notifies listeners about theme change. */
+        void sigThemeChange();
     /** @} */
 
     /** @name COM: Extension Pack stuff.
@@ -632,6 +638,11 @@ private:
 #ifdef VBOX_WS_WIN
         /** Holds whether overall GUI data is committed. */
         bool  m_fDataCommitted;
+#endif
+
+#ifdef VBOX_WS_MAC
+        /** Holds whether macOS is in Dark mode. */
+        bool  m_fDarkMode;
 #endif
     /** @} */
 

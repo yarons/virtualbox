@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICocoaApplication.h 102476 2023-12-05 13:44:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class declaration.
  */
@@ -75,6 +75,9 @@ public:
 
     /** Returns whether application is currently active. */
     bool isActive() const;
+
+    /** Returns whether app is in Dark mode. */
+    bool isDarkMode() const;
 
     /** Hides the application. */
     void hide();
