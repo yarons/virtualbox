@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102452 2023-12-04 14:11:23Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102471 2023-12-05 12:46:45Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102452 $"
+__version__ = "$Revision: 102471 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2816,7 +2816,7 @@ g_dMcStmtParsers = {
     'IEM_MC_ARG_CONST':                                          (McBlock.parseMcArgConst,          False, True,  ),
     'IEM_MC_ARG_LOCAL_EFLAGS':                                   (McBlock.parseMcArgLocalEFlags,    False, True,  ),
     'IEM_MC_ARG_LOCAL_REF':                                      (McBlock.parseMcArgLocalRef,       False, True,  ),
-    'IEM_MC_ASSIGN_TO_SMALLER':                                  (McBlock.parseMcGeneric,           False, False, ),
+    'IEM_MC_ASSIGN_TO_SMALLER':                                  (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_BEGIN':                                              (McBlock.parseMcBegin,             False, True,  ),
     'IEM_MC_BROADCAST_XREG_U16_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_BROADCAST_XREG_U32_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  False, ),

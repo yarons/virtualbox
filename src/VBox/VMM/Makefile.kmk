@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101906 2023-11-06 21:17:18Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102471 2023-12-05 12:46:45Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -264,6 +264,7 @@ ifdef VBOX_WITH_IEM_RECOMPILER
    VBoxVMM_DEFS        += VBOX_WITH_IEM_USING_CAPSTONE_DISASSEMBLER
    VBoxVMM_LIBS.darwin += /opt/local/lib/libcapstone.dylib
   endif
+  VMMAll/IEMAllN8veRecompiler.cpp_CXXFLAGS.win = /bigobj
  endif
  VMMAll/IEMAllThrdFuncs.cpp_CXXFLAGS.win = /bigobj
 endif
