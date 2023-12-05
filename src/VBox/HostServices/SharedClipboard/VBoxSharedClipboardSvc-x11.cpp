@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 102461 2023-12-05 08:32:38Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 102467 2023-12-05 09:47:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -748,7 +748,7 @@ static DECLCALLBACK(int) shClSvcX11TransferIfaceHGRootListRead(PSHCLTXPROVIDERCT
                     pPayload = NULL;
                 }
                 else /* No payload given; could happen on invalid / not-expected formats. */
-                    *pcbActual = 0;
+                    rc = VERR_NO_DATA;
             }
             else if (rc == VERR_SHCLPB_EVENT_FAILED)
                 rc = rcEvent;
