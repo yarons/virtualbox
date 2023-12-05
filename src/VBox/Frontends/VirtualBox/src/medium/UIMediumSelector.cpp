@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 102480 2023-12-05 15:26:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -609,7 +609,7 @@ void UIMediumSelector::selectMedium(const QUuid &uMediumID)
         m_pTreeWidget->setCurrentItem(pMediumItem);
         QModelIndex itemIndex = m_pTreeWidget->itemIndex(pMediumItem);
         if (itemIndex.isValid())
-            m_pTreeWidget->scrollTo(itemIndex, QAbstractItemView::EnsureVisible);
+            m_pTreeWidget->scrollTo(itemIndex, QAbstractItemView::PositionAtCenter);
     }
 }
 
