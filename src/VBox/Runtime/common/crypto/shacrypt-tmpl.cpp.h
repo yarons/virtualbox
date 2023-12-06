@@ -1,4 +1,4 @@
-/* $Id: shacrypt-tmpl.cpp.h 102500 2023-12-06 11:25:04Z knut.osmundsen@oracle.com $ */
+/* $Id: shacrypt-tmpl.cpp.h 102501 2023-12-06 11:26:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - SHA-crypt, code template the core code.
  *
@@ -375,5 +375,4 @@ RTR3DECL(int) RTCrShaCryptTmplToString(uint8_t const pabHash[TMPL_HASH_SIZE], co
 #undef RTCrShaCryptTmpl
 #undef RTCrShaCryptTmplEx
 #undef RTCrShaCryptTmplToString
-
 
