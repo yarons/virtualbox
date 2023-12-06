@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 102485 2023-12-05 17:37:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 102507 2023-12-06 15:39:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -165,6 +165,7 @@ public:
     void optionsUpdated();
     bool hasSelection() const;
     void setDragDropMode(QAbstractItemView::DragDropMode behavior);
+    virtual bool     isWindowsFileSystem() const = 0;
 
 public slots:
 
@@ -226,7 +227,7 @@ protected:
     virtual void     createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) = 0;
     virtual void     toggleForwardBackwardActions() = 0;
     virtual bool     event(QEvent *pEvent) RT_OVERRIDE;
-    virtual bool     isWindowsFileSystem() const = 0;
+
     /** @name Copy/Cut guest-to-guest (host-to-host) stuff.
      * @{ */
         /** Disable/enable paste action depending on the m_eFileOperationType. */

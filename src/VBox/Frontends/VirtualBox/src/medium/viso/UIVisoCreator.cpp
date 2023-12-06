@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 102474 2023-12-05 13:16:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 102507 2023-12-06 15:39:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -500,6 +500,8 @@ void UIVisoCreatorWidget::prepareWidgets()
     m_pVISOContentBrowser = new UIVisoContentBrowser(m_pActionPool);
     AssertPtrReturnVoid(m_pVISOContentBrowser);
     pContainerLayout->addWidget(m_pVISOContentBrowser, 0, 5, 1, 4);
+    /* Set content browsers sort case sensitivity wrt. host's file system: */
+    m_pVISOContentBrowser->setSortCaseSensitive(!m_pHostFileBrowser->isWindowsFileSystem());
 
     m_pSettingsWidget = new UIVisoSettingWidget(this);
 

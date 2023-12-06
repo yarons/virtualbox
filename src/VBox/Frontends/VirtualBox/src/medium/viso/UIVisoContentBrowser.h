@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 102498 2023-12-06 10:28:16Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 102507 2023-12-06 15:39:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -88,6 +88,8 @@ public:
 
     bool hasContent() const;
 
+    void setSortCaseSensitive(bool fCaseSensitive);
+
 public slots:
 
     void sltCreateNewDirectory();
@@ -163,7 +165,7 @@ private:
     void        enableForwardBackwardActions();
     UIVisoContentTableView *m_pTableView;
     UIFileSystemModel      *m_pModel;
-    UIFileSystemProxyModel *m_pTableProxyModel;
+    UIFileSystemProxyModel *m_pProxyModel;
     QPointer<QMenu>        m_pSubMenu;
     QString                m_strImportedISOPath;
     /** keys of m_entryMap are iso locations and values are
