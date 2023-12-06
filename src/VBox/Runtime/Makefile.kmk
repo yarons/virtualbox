@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102358 2023-11-28 11:18:21Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 102492 2023-12-06 09:45:34Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2614,7 +2614,6 @@ RuntimeBldProg_SOURCES.darwin = $(filter-out \
 RuntimeBldProg_SOURCES.win = \
 	common/dbg/dbgmoddbghelp.cpp \
 	common/string/mempcpy.asm \
-	common/string/RTUtf16CopyAscii.cpp \
 	common/string/RTUtf16End.cpp \
 	common/string/RTUtf16NLenEx.cpp \
 	common/string/RTUtf16ICmpAscii.cpp \
