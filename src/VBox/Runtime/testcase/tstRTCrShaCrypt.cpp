@@ -1,4 +1,4 @@
-/* $Id: tstRTCrShaCrypt.cpp 102488 2023-12-05 23:53:09Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCrShaCrypt.cpp 102489 2023-12-06 00:27:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - SHA-crypt 256 / 512.
  */
@@ -327,7 +327,7 @@ int main()
      * Init.
      */
     RTTEST hTest;
-    RTEXITCODE rcExit = RTTestInitAndCreate("tstRTShaCrypt", &hTest);
+    RTEXITCODE rcExit = RTTestInitAndCreate("tstRTCrShaCrypt", &hTest);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(hTest);
