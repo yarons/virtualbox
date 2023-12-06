@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102447 2023-12-04 13:05:53Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102510 2023-12-06 21:39:10Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102447 $"
+__version__ = "$Revision: 102510 $"
 
 # Standard python imports:
 import copy;
@@ -61,9 +61,9 @@ g_dMcStmtThreaded = {
 
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_16':                       (None, False, True,  ),
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_32':                       (None, False, True,  ),
-    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_ADDR32':                (None, False, False, ),
-    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_FSGS':                  (None, False, False, ),
-    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64':                       (None, False, False, ),
+    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_ADDR32':                (None, False, True,  ),
+    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64_FSGS':                  (None, False, True,  ),
+    'IEM_MC_CALC_RM_EFF_ADDR_THREADED_64':                       (None, False, True,  ),
 
     'IEM_MC_CALL_CIMPL_1_THREADED':                              (None, True,  True,  ),
     'IEM_MC_CALL_CIMPL_2_THREADED':                              (None, True,  True,  ),

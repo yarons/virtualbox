@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs.cpp 102011 2023-11-08 22:10:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs.cpp 102510 2023-12-06 21:39:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -536,7 +536,7 @@ static RTGCPTR iemOpHlpCalcRmEffAddrThreadedAddr32(PVMCPUCC pVCpu, uint8_t bRm, 
  *                              function.
  * @param   uSibAndRspOffset    Two parts:
  *                                - The first 8 bits make up the SIB byte.
- *                                - The next 8 bits are the fixed RSP/ESP offse
+ *                                - The next 8 bits are the fixed RSP/ESP offset
  *                                  in case of a pop [xSP].
  * @param   u32Disp             The displacement byte/word/dword, if any.
  * @param   cbInstr             The size of the fully decoded instruction. Used
