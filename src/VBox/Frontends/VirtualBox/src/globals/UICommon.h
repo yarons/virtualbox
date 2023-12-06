@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 102482 2023-12-05 16:10:24Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 102502 2023-12-06 13:25:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -175,11 +175,6 @@ public:
         bool isValid() const { return m_fValid; }
         /** Returns whether UICommon instance cleanup is in progress. */
         bool isCleaningUp() const { return m_fCleaningUp; }
-
-#ifdef VBOX_WS_MAC
-        /** Returns whether macOS is in Dark mode. */
-        bool isInDarkMode() const { return m_fDarkMode; }
-#endif
     /** @} */
 
     /** @name Versioning stuff.
@@ -217,8 +212,10 @@ public:
 
     /** @name Host OS stuff.
      * @{ */
-        /** Loads the color theme. */
-        void loadColorTheme();
+#ifdef VBOX_WS_MAC
+        /** macOS: Returns whether macOS is in Dark mode. */
+        bool isInDarkMode() const { return m_fDarkMode; }
+#endif
 
 #ifdef VBOX_WS_NIX
         /** X11: Returns the type of the Window Manager we are running under. */
@@ -232,6 +229,9 @@ public:
 #endif
         /** Returns the name of the host OS by using IHost::getOperatingSystem. */
         QString hostOperatingSystem() const;
+
+        /** Loads the color theme. */
+        void loadColorTheme();
     /** @} */
 
     /** @name Process arguments stuff.
@@ -642,11 +642,6 @@ private:
         /** Holds whether overall GUI data is committed. */
         bool  m_fDataCommitted;
 #endif
-
-#ifdef VBOX_WS_MAC
-        /** Holds whether macOS is in Dark mode. */
-        bool  m_fDarkMode;
-#endif
     /** @} */
 
     /** @name Versioning stuff.
@@ -657,6 +652,11 @@ private:
 
     /** @name Host OS stuff.
      * @{ */
+#ifdef VBOX_WS_MAC
+        /** macOS: Holds whether macOS is in Dark mode. */
+        bool  m_fDarkMode;
+#endif
+
 #ifdef VBOX_WS_NIX
         /** X11: Holds the #X11WMType of the Window Manager we are running under. */
         X11WMType             m_enmWindowManagerType;

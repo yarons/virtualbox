@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102482 2023-12-05 16:10:24Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 102502 2023-12-06 13:25:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -952,6 +952,25 @@ QString UICommon::brandingGetKey(QString strKey) const
 {
     QSettings settings(m_strBrandingConfigFilePath, QSettings::IniFormat);
     return settings.value(QString("%1").arg(strKey)).toString();
+}
+
+#ifdef VBOX_WS_NIX
+bool UICommon::X11ServerAvailable() const
+{
+    return VBGHDisplayServerTypeIsXAvailable(m_enmDisplayServerType);
+}
+
+VBGHDISPLAYSERVERTYPE UICommon::displayServerType() const
+{
+    return m_enmDisplayServerType;
+}
+#endif
+
+QString UICommon::hostOperatingSystem() const
+{
+    if (!m_comHost.isOk())
+        return QString();
+    return m_comHost.GetOperatingSystem();
 }
 
 void UICommon::loadColorTheme()
@@ -3012,23 +3031,4 @@ void UICommon::comWrappersReinit()
 
     /* Mark wrappers valid: */
     m_fWrappersValid = true;
-}
-
-#ifdef VBOX_WS_NIX
-bool UICommon::X11ServerAvailable() const
-{
-    return VBGHDisplayServerTypeIsXAvailable(m_enmDisplayServerType);
-}
-
-VBGHDISPLAYSERVERTYPE UICommon::displayServerType() const
-{
-    return m_enmDisplayServerType;
-}
-#endif
-
-QString UICommon::hostOperatingSystem() const
-{
-    if (!m_comHost.isOk())
-        return QString();
-    return m_comHost.GetOperatingSystem();
 }
