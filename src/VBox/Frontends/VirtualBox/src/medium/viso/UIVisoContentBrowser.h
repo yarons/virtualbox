@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 102494 2023-12-06 09:59:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 102496 2023-12-06 10:17:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -31,7 +31,11 @@
 # pragma once
 #endif
 
+/* GUI includes: */
+#include "QIWithRetranslateUI.h"
+
 /* Qt includes: */
+#include <QItemSelection>
 #include <QWidget>
 
 /* COM includes: */
@@ -39,7 +43,9 @@
 
 /* Forward declarations: */
 class QFileInfo;
+class QGridLayout;
 class QLabel;
+class QIToolBar;
 class UIFileSystemItem;
 class UIFileSystemModel;
 class UIFileSystemProxyModel;
