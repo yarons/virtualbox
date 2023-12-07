@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.h 101015 2023-09-05 07:05:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPaneContainer.h 102511 2023-12-07 05:17:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -39,8 +39,6 @@
 
 /* Forward declarations: */
 class QHBoxLayout;
-class QIToolButton;
-
 
 /** QWidget extension acting as the base class for all the dialog panels like file manager, logviewer etc. */
 class SHARED_LIBRARY_STUFF UIPaneContainer : public QIWithRetranslateUI<QWidget>
@@ -72,7 +70,6 @@ private slots:
 private:
 
     QTabWidget    *m_pTabWidget;
-    QIToolButton  *m_pCloseButton;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIPaneContainer_h */
