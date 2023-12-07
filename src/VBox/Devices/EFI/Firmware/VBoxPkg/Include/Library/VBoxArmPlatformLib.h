@@ -1,4 +1,4 @@
-/* $Id: VBoxArmPlatformLib.h 101432 2023-10-13 09:44:05Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxArmPlatformLib.h 102514 2023-12-07 09:02:42Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxArmPlatformLib.h - Helpers for the virtual ARM platform of VirtualBox.
  */
@@ -125,6 +125,22 @@ EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformMmioStartGetPhysAddr(VOID);
  * @returns Size of the MMIO region.
  */
 UINTN EFIAPI VBoxArmPlatformMmioSizeGet(VOID);
+
+
+/**
+ * Returns the physical address of the start of the MMIO32 region.
+ *
+ * @returns Physical address of the MMIO32 region start.
+ */
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformMmio32StartGetPhysAddr(VOID);
+
+
+/**
+ * Returns the size of the MMIO32 region.
+ *
+ * @returns Size of the MMIO32 region.
+ */
+UINTN EFIAPI VBoxArmPlatformMmio32SizeGet(VOID);
 
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxArmPlatformLib.c 101434 2023-10-13 09:55:24Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxArmPlatformLib.c 102514 2023-12-07 09:02:42Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxArmPlatformLib.c - Helpers for the VirtualBox virtual platform descriptor parsing.
  */
@@ -146,4 +146,25 @@ UINTN EFIAPI VBoxArmPlatformMmioSizeGet(VOID)
     ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
 
     return pDesc->cbMmio;
+}
+
+
+EFI_PHYSICAL_ADDRESS EFIAPI VBoxArmPlatformMmio32StartGetPhysAddr(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    if (!pDesc->cbMmio)
+        return 0;
+
+    return (EFI_PHYSICAL_ADDRESS)((UINTN)pDesc - pDesc->u64OffBackMmio32);
+}
+
+
+UINTN EFIAPI VBoxArmPlatformMmio32SizeGet(VOID)
+{
+    PCVBOXPLATFORMARMV8 pDesc = (PCVBOXPLATFORMARMV8)VBoxArmPlatformDescGet();
+    ASSERT(pDesc->u32Magic == VBOXPLATFORMARMV8_MAGIC);
+
+    return pDesc->cbMmio32;
 }
