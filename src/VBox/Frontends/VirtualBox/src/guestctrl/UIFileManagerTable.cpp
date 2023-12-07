@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102485 2023-12-05 17:37:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102531 2023-12-07 17:34:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -328,8 +328,8 @@ UIDirectoryStatistics::UIDirectoryStatistics()
 }
 
 /*********************************************************************************************************************************
-+*   UIFileDeleteConfirmationDialog implementation.                                                                                *
-+*********************************************************************************************************************************/
+*   UIFileDeleteConfirmationDialog implementation.                                                                               *
+*********************************************************************************************************************************/
 
 UIFileDeleteConfirmationDialog::UIFileDeleteConfirmationDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
     :QIDialog(pParent, enmFlags)
