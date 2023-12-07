@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstUsbMouse.cpp 102519 2023-12-07 11:53:39Z michal.necasek@oracle.com $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -96,6 +96,23 @@ static DECLCALLBACK(int) tstDriverAttach(PPDMUSBINS pUsbIns, RTUINT iLun, PPDMIB
     g_drvTstMouse.pDrvBase = pBaseInterface;
     g_drvTstMouse.pDrv = PDMIBASE_QUERY_INTERFACE(pBaseInterface, PDMIMOUSEPORT);
     *ppBaseInterface = &g_drvTstMouse.IBase;
+    return VINF_SUCCESS;
+}
+
+
+/** @interface_method_impl{PDMUSBHLP,pfnTimerCreate} */
+static DECLCALLBACK(int) tstTimerCreate(PPDMUSBINS pUsbIns, TMCLOCK enmClock, PFNTMTIMERUSB pfnCallback, void *pvUser,
+                                        uint32_t fFlags, const char *pszDesc, PTMTIMERHANDLE phTimer)
+{
+    RT_NOREF7(pUsbIns, enmClock, pfnCallback, pvUser, fFlags, pszDesc, phTimer);
+    return VINF_SUCCESS;
+}
+
+
+/** @interface_method_impl{PDMUSBHLP,pfnTimerCreate} */
+static DECLCALLBACK(int) tstTimerDestroy(PPDMUSBINS pUsbIns, TMTIMERHANDLE hTimer)
+{
+    RT_NOREF2(pUsbIns, hTimer);
     return VINF_SUCCESS;
 }
 
@@ -393,6 +410,8 @@ int main()
     g_tstUsbHlp.u32Version      = PDM_USBHLP_VERSION;
     g_tstUsbHlp.pfnVMSetErrorV  = tstVMSetErrorV;
     g_tstUsbHlp.pfnDriverAttach = tstDriverAttach;
+    g_tstUsbHlp.pfnTimerCreate  = tstTimerCreate;
+    g_tstUsbHlp.pfnTimerDestroy = tstTimerDestroy;
     g_tstUsbHlp.pfnCFGMValidateConfig = CFGMR3ValidateConfig;
     g_tstUsbHlp.pfnCFGMQueryStringDef = CFGMR3QueryStringDef;
     g_tstUsbHlp.pfnCFGMQueryU8Def     = CFGMR3QueryU8Def;
