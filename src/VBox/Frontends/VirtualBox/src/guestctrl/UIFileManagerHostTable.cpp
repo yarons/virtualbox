@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 102485 2023-12-05 17:37:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerHostTable.cpp 102515 2023-12-07 09:08:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -142,18 +142,6 @@ UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidge
     prepareActionConnections();
     determinePathSeparator();
     retranslateUi();
-}
-
-void UIFileManagerHostTable::setModifierActionsVisible(bool fShown)
-{
-    if (m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_Delete))
-        m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_Delete)->setVisible(fShown);
-    if (m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_Rename))
-        m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_Rename)->setVisible(fShown);
-    if (m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_CreateNewDirectory))
-        m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_CreateNewDirectory)->setVisible(fShown);
-    if (m_pModifierActionSeparator)
-        m_pModifierActionSeparator->setVisible(fShown);
 }
 
 /* static */ bool UIFileManagerHostTable::scanDirectory(const QString& strPath, UIFileSystemItem *parent,
