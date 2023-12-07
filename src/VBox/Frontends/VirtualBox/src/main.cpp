@@ -1,4 +1,4 @@
-/* $Id: main.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 102518 2023-12-07 11:42:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -293,6 +293,7 @@ static void ShowHelp()
         "  --execute-all-in-iem       For debugging the interpreted execution mode.\n"
         "  --driverless               Do not open the support driver (NEM or IEM mode).\n"
         "  --warp-pct <pct>           time warp factor, 100%% (= 1.0) = normal speed\n"
+        "  --no-keyboard-grabbing     Don't grab the keyboard on windows (for debugging).\n"
         "\n"
 # ifdef VBOX_WITH_DEBUGGER_GUI
         "The following environment (and extra data) variables are evaluated:\n"

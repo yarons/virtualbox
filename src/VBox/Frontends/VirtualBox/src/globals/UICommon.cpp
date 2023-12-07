@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102508 2023-12-06 15:51:14Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 102518 2023-12-07 11:42:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -207,6 +207,7 @@ UICommon::UICommon(UIType enmType)
     , m_fAgressiveCaching(true)
 #endif
     , m_fRestoreCurrentSnapshot(false)
+    , m_fNoKeyboardGrabbing(false)
     , m_fExecuteAllInIem(false)
     , m_uWarpPct(100)
 #ifdef VBOX_WITH_DEBUGGER_GUI
@@ -499,6 +500,11 @@ void UICommon::prepare()
         {
             enmOptType = OptType_VMRunner;
             m_fRestoreCurrentSnapshot = true;
+        }
+        else if (!::strcmp(arg, "--no-keyboard-grabbing"))
+        {
+            enmOptType = OptType_VMRunner;
+            m_fNoKeyboardGrabbing = true;
         }
         /* Ad hoc VM reconfig options: */
         else if (!::strcmp(arg, "--fda"))
