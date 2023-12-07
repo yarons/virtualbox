@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 100690 2023-07-25 08:20:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -78,6 +78,7 @@
 #include <svga3d_shaderdefs.h>
 #include <svga_escape.h>
 #include <svga_overlay.h>
+#include <vbsvga3d_dx.h>
 #pragma pack()
 #include "vmsvga_headers_end.h"
 
@@ -357,7 +358,9 @@ typedef struct VMSVGAState
     bool                        f3DOverlayEnabled;
     /** Indicates that the guest behaves incorrectly. */
     bool volatile               fBadGuest;
-    bool                        afPadding[4];
+    /** Whether the VirtualBox extensions for VMSVGA device (new commands and caps) are enabled. */
+    bool                        fVBoxExtensions;
+    bool                        afPadding[3];
     uint32_t                    uWidth;
     uint32_t                    uHeight;
     uint32_t                    uBpp;

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-internal.h 99688 2023-05-09 05:28:22Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-internal.h 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMWare SVGA device - internal header for DevVGA-SVGA* source files.
  */
@@ -159,6 +159,7 @@ typedef struct VMSVGAR3STATE
     VMSVGA3DBACKENDFUNCSMAP *pFuncsMap;
     VMSVGA3DBACKENDFUNCSGBO *pFuncsGBO;
     VMSVGA3DBACKENDFUNCSDX  *pFuncsDX;
+    VMSVGA3DBACKENDFUNCSDXVIDEO *pFuncsDXVideo;
 # endif
 
     /** Tracks how much time we waste reading SVGA_REG_BUSY with a busy FIFO. */
