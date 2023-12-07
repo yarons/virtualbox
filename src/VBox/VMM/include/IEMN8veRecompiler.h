@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102436 2023-12-02 22:09:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102527 2023-12-07 15:41:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -122,7 +122,7 @@ AssertCompile(IEMNATIVE_FRAME_VAR_SLOTS == 32);
 # define IEMNATIVE_FRAME_SAVE_REG_SIZE      (IEMNATIVE_FRAME_SAVE_REG_COUNT * 8)
 
 /** Frame pointer (BP) relative offset of the last push. */
-# define IEMNATIVE_FP_OFF_LAST_PUSH         (7 * -8)
+# define IEMNATIVE_FP_OFF_LAST_PUSH         (10 * -8)
 
 /** Frame pointer (BP) relative offset of the stack variable area (the lowest
  * address for it). */
