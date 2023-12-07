@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102486 2023-12-05 17:52:50Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102529 2023-12-07 16:31:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -588,13 +588,8 @@ void UIVerticalScrollArea::wheelEvent(QWheelEvent *pEvent)
 
 void UIVerticalScrollArea::prepare()
 {
-#ifdef VBOX_WS_MAC
     /* Make vertical scroll-bar always hidden: */
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-#else
-    /* Make vertical scroll-bar always visible: */
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-#endif
 
     /* Prepare vertical scrollbar animation: */
     m_pAnimation = new QPropertyAnimation(this, "verticalScrollBarPosition", this);
@@ -1307,13 +1302,7 @@ void UIAdvancedSettingsDialog::prepareScrollArea()
             if (pLayout)
             {
                 pLayout->setAlignment(Qt::AlignTop);
-                int iL = 0, iT = 0, iR = 0, iB = 0;
-#ifdef VBOX_WS_MAC
-                RT_NOREF(iL, iT, iR, iB);
-#else
-                pLayout->getContentsMargins(&iL, &iT, &iR, &iB);
-#endif
-                pLayout->setContentsMargins(0, 0, iR, 0);
+                pLayout->setContentsMargins(0, 0, 0, 0);
                 int iSpacing = pLayout->spacing();
                 pLayout->setSpacing(2 * iSpacing);
             }
