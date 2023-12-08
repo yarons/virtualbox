@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102527 2023-12-07 15:41:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102558 2023-12-08 22:59:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -476,7 +476,9 @@ typedef struct IEMNATIVEVAR
     /** Guest register being shadowed here, kIemNativeGstReg_End(/UINT8_MAX) if not.
      * @todo not sure what this really is for...   */
     IEMNATIVEGSTREG     enmGstReg;
-    uint8_t             bAlign;
+    /** Set if the registered is currently used exclusively, false if the
+     *  variable is idle and the register can be grabbed. */
+    bool                fRegAcquired;
 
     union
     {
