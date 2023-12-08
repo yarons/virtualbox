@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102550 2023-12-08 16:00:15Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102555 2023-12-08 17:08:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8890,7 +8890,7 @@ iemNativeEmitCalcRmEffAddrThreadedAddr64(PIEMRECOMPILERSTATE pReNative, uint32_t
         if (f64Bit)
             iemNativeVarSetKindToConst(pReNative, idxVarRet, (uint64_t)i64EffAddr);
         else
-            iemNativeVarSetKindToConst(pReNative, idxVarRet, (uint64_t)(int32_t)i64EffAddr);
+            iemNativeVarSetKindToConst(pReNative, idxVarRet, (uint32_t)i64EffAddr);
         return off;
     }
 
