@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 98972 2023-03-15 09:39:29Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFStack.cpp 102545 2023-12-08 15:13:07Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -82,7 +82,7 @@ typedef struct DBGFUNWINDCTX
         if (pInitialCtx)
         {
 #if defined(VBOX_VMM_TARGET_ARMV8)
-            AssertReleaseFailed();
+            AssertFailed();
 #else
             m_State.u.x86.auRegs[X86_GREG_xAX] = pInitialCtx->rax;
             m_State.u.x86.auRegs[X86_GREG_xCX] = pInitialCtx->rcx;
