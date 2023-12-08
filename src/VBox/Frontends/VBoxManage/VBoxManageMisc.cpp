@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 102538 2023-12-08 12:11:05Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 102539 2023-12-08 12:36:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2139,6 +2139,7 @@ static RTEXITCODE handleUnattendedInstall(HandlerArg *a)
         { "--iso",                              'i', RTGETOPT_REQ_STRING },
         { "--user",                             'u', RTGETOPT_REQ_STRING },
         { "--password",                         'p', RTGETOPT_REQ_STRING }, /* Keep for backwards compatibility! */
+        { "--password-file",                    'X', RTGETOPT_REQ_STRING }, /* Keep for backwards compatibility! */
         { "--user-password",                    'p', RTGETOPT_REQ_STRING },
         { "--admin-password",                   kUnattendedInstallOpt_AdminPassword, RTGETOPT_REQ_STRING },
         { "--full-user-name",                   'U', RTGETOPT_REQ_STRING },
