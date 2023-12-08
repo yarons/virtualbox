@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 102543 2023-12-08 14:13:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.h 102548 2023-12-08 15:48:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -112,7 +112,6 @@ private slots:
     void sltHandleHelpRequest();
     void sltSaveSettings();
     void sltReleaseKeys();
-    void sltApplicationAboutToQuit();
 
 private:
 
@@ -140,7 +139,6 @@ private:
     UISoftKeyboardSettingsWidget  *m_pSettingsWidget;
     UISoftKeyboardStatusBarWidget *m_pStatusBarWidget;
     int m_iGeometrySaveTimerId;
-    bool m_fApplicationAboutToQuit;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
