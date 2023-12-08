@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 102485 2023-12-05 17:37:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 102543 2023-12-08 14:13:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -1206,6 +1206,8 @@ void UIFileManagerGuestTable::sltMachineStateChange(const QUuid &uMachineId, con
     if (enmMachineState == KMachineState_Running)
         openMachineSession();
     else if (enmMachineState != KMachineState_Paused)
+        cleanAll();
+    else if (enmMachineState != KMachineState_Saving)
         cleanAll();
     setStateAndEnableWidgets();
 }
