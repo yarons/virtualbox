@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.cpp 102535 2023-12-08 11:26:06Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -614,13 +614,13 @@ void UIWizardNewVM::setUserName(const QString &strUserName)
 QString UIWizardNewVM::password() const
 {
     AssertReturn(!m_comUnattended.isNull(), QString());
-    return m_comUnattended.GetPassword();
+    return m_comUnattended.GetUserPassword();
 }
 
 void UIWizardNewVM::setPassword(const QString &strPassword)
 {
     AssertReturnVoid(!m_comUnattended.isNull());
-    m_comUnattended.SetPassword(strPassword);
+    m_comUnattended.SetUserPassword(strPassword);
     AssertReturnVoid(checkUnattendedInstallError(m_comUnattended));
 }
 
