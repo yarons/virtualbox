@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102471 2023-12-05 12:46:45Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102549 2023-12-08 15:57:39Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -232,6 +232,8 @@ VBoxVMM_SOURCES.amd64 += \
 	VMMR3/PGMR3DbgA.asm \
 	$(if-expr !defined(IEM_WITHOUT_ASSEMBLY),VMMAll/IEMAllAImpl.asm,) \
 	VMMAll/VMMAllA.asm
+VBoxVMM_SOURCES.arm64 += \
+	VMMAll/IEMAllAImpl-arm64.S
 ifdef VBOX_WITH_VUSB
  VBoxVMM_SOURCES += VMMR3/PDMUsb.cpp
 endif
