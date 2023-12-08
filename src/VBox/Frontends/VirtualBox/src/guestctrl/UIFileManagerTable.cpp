@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102531 2023-12-07 17:34:26Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 102537 2023-12-08 11:47:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -112,7 +112,7 @@ protected:
 
 
 /*********************************************************************************************************************************
-*   UStringInputDialog definition.                                                                                          *
+*   UStringInputDialog definition.                                                                                               *
 *********************************************************************************************************************************/
 
 /** A QIDialog child including a line edit whose text exposed when the dialog is accepted */
@@ -327,6 +327,7 @@ UIDirectoryStatistics::UIDirectoryStatistics()
 {
 }
 
+
 /*********************************************************************************************************************************
 *   UIFileDeleteConfirmationDialog implementation.                                                                               *
 *********************************************************************************************************************************/
@@ -378,7 +379,7 @@ bool UIFileDeleteConfirmationDialog::askDeleteConfirmationNextTime() const
 
 
 /*********************************************************************************************************************************
-*   UIFileManagerTable implementation.                                                                                      *
+*   UIFileManagerTable implementation.                                                                                           *
 *********************************************************************************************************************************/
 const unsigned UIFileManagerTable::m_iKiloByte = 1024; /**< Our kilo bytes are a power of two! (bird) */
 
