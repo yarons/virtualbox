@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 102535 2023-12-08 11:26:06Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageMisc.cpp 102536 2023-12-08 11:29:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2410,7 +2410,7 @@ static RTEXITCODE handleUnattendedInstall(HandlerArg *a)
 
     SHOW_STR_ATTR(IsoPath,                       "isoPath");
     SHOW_STR_ATTR(User,                          "user");
-    SHOW_STR_ATTR(UserPassword,                  "password") /* Keep for backwards compatibility! */
+    SHOW_STR_ATTR(UserPassword,                  "password"); /* Keep for backwards compatibility! */
     SHOW_STR_ATTR(FullUserName,                  "fullUserName");
     SHOW_STR_ATTR(ProductKey,                    "productKey");
     SHOW_STR_ATTR(AdditionsIsoPath,              "additionsIsoPath");
