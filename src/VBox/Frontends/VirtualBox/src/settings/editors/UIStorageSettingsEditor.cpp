@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 102479 2023-12-05 14:56:51Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 102541 2023-12-08 12:51:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -3256,7 +3256,7 @@ void UIStorageSettingsEditor::getValue(QList<UIDataStorageController> &controlle
 
 void UIStorageSettingsEditor::retranslateUi()
 {
-    m_pLabelSeparatorLeftPane->setText(tr("&Storage Devices"));
+    m_pLabelSeparatorLeftPane->setText(tr("&Devices"));
     m_pLabelSeparatorEmpty->setText(tr("Information"));
     m_pLabelInfo->setText(tr("The Storage Tree can contain several controllers of different types. This machine currently has no "
                              "controllers."));
