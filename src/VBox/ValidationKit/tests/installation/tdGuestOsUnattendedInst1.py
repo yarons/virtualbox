@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 102521 2023-12-07 13:08:46Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 102546 2023-12-08 15:15:35Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102521 $"
+__version__ = "$Revision: 102546 $"
 
 
 # Standard Python imports.
@@ -215,12 +215,16 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         Logs the attributes of the unattended installation object.
         """
         fRc = True;
-        asAttribs = ( 'isoPath', 'user', 'password', 'fullUserName', 'productKey', 'additionsIsoPath', 'installGuestAdditions',
+        asAttribs = [ 'isoPath', 'user', 'fullUserName', 'productKey', 'additionsIsoPath', 'installGuestAdditions',
                       'validationKitIsoPath', 'installTestExecService', 'timeZone', 'locale', 'language', 'country', 'proxy',
                       'packageSelectionAdjustments', 'hostname', 'auxiliaryBasePath', 'imageIndex', 'machine',
                       'scriptTemplatePath', 'postInstallScriptTemplatePath', 'postInstallCommand',
                       'extraInstallKernelParameters', 'detectedOSTypeId', 'detectedOSVersion', 'detectedOSLanguages',
-                      'detectedOSFlavor', 'detectedOSHints', );
+                      'detectedOSFlavor', 'detectedOSHints' ];
+        if oTestDrv.fpApiVer >= 7.1: # Since 7.1 we offer different passwords for user and admin/root accounts.
+            asAttribs.append( [ 'user-password', 'admin-password' ] );
+        else:
+            asAttribs.append( [ 'password' ] );
         for sAttrib in asAttribs:
             try:
                 oValue = getattr(oIUnattended, sAttrib);
