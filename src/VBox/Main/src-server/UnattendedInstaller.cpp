@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 102347 2023-11-27 18:55:29Z andreas.loeffler@oracle.com $ */
+/* $Id: UnattendedInstaller.cpp 102534 2023-12-08 11:06:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -249,8 +249,9 @@ HRESULT UnattendedInstaller::initInstaller()
         return mpParent->setError(E_INVALIDARG, tr("Cannot proceed with an empty installation ISO path"));
     if (mpParent->i_getUser().isEmpty())
         return mpParent->setError(E_INVALIDARG, tr("Empty user name is not allowed"));
-    if (mpParent->i_getPassword().isEmpty())
-        return mpParent->setError(E_INVALIDARG, tr("Empty password is not allowed"));
+    if (mpParent->i_getUserPassword().isEmpty())
+        return mpParent->setError(E_INVALIDARG, tr("Empty user password is not allowed"));
+    /* If admin password is empty, the user password will be used instead. */
 
     LogRelFunc(("UnattendedInstaller::savePassedData(): \n"));
     return S_OK;

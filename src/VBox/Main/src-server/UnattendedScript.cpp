@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 102488 2023-12-05 23:53:09Z knut.osmundsen@oracle.com $ */
+/* $Id: UnattendedScript.cpp 102534 2023-12-08 11:06:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -675,13 +675,13 @@ int UnattendedScriptTemplate::queryVariable(const char *pchName, size_t cchName,
     if (IS_MATCH("USER_LOGIN"))
         pszValue = mpUnattended->i_getUser().c_str();
     else if (IS_MATCH("USER_PASSWORD"))
-        pszValue = mpUnattended->i_getPassword().c_str();
+        pszValue = mpUnattended->i_getUserPassword().c_str();
     else if (IS_MATCH("USER_PASSWORD_SHACRYPT512"))
-        SHACRYPT_AND_ASSIGN(mpUnattended->i_getPassword().c_str(), RTCrShaCrypt512, RT_SHACRYPT_512_MAX_SIZE);
+        SHACRYPT_AND_ASSIGN(mpUnattended->i_getUserPassword().c_str(), RTCrShaCrypt512, RT_SHACRYPT_512_MAX_SIZE);
     else if (IS_MATCH("ROOT_PASSWORD"))
-        pszValue = mpUnattended->i_getPassword().c_str();
+        pszValue = mpUnattended->i_getAdminPassword().c_str();
     else if (IS_MATCH("ROOT_PASSWORD_SHACRYPT512"))
-        SHACRYPT_AND_ASSIGN(mpUnattended->i_getPassword().c_str(), RTCrShaCrypt512, RT_SHACRYPT_512_MAX_SIZE);
+        SHACRYPT_AND_ASSIGN(mpUnattended->i_getAdminPassword().c_str(), RTCrShaCrypt512, RT_SHACRYPT_512_MAX_SIZE);
     else if (IS_MATCH("USER_FULL_NAME"))
         pszValue = mpUnattended->i_getFullUserName().c_str();
     else if (IS_MATCH("PRODUCT_KEY"))

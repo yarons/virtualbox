@@ -1,4 +1,4 @@
-/* $Id: tstUnattendedScript.cpp 102381 2023-11-29 14:51:33Z andreas.loeffler@oracle.com $ */
+/* $Id: tstUnattendedScript.cpp 102534 2023-12-08 11:06:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstUnattendedScript - testcases for UnattendedScript.
  */
@@ -58,7 +58,8 @@ Unattended::Unattended()
     , mpInstaller(NULL), mpTimeZoneInfo(NULL), mfIsDefaultAuxiliaryBasePath(true), mfDoneDetectIsoOS(false)
 {
     mStrUser                            = "vboxuser";
-    mStrPassword                        = "changeme";
+    mStrUserPassword                    = "changeme";
+    mStrAdminPassword                   = "adminpw";
     mStrFullUserName                    = "VBox & VBox;";
     mStrProductKey                      = "911";
     mStrIsoPath                         = "/iso/path/file.iso";
@@ -167,13 +168,25 @@ HRESULT Unattended::setUser(const com::Utf8Str &user)
     return E_NOTIMPL;
 }
 
-HRESULT Unattended::getPassword(com::Utf8Str &password)
+HRESULT Unattended::getUserPassword(com::Utf8Str &password)
 {
     RT_NOREF(password);
     return E_NOTIMPL;
 }
 
-HRESULT Unattended::setPassword(const com::Utf8Str &password)
+HRESULT Unattended::setUserPassword(const com::Utf8Str &password)
+{
+    RT_NOREF(password);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::getAdminPassword(com::Utf8Str &password)
+{
+    RT_NOREF(password);
+    return E_NOTIMPL;
+}
+
+HRESULT Unattended::setAdminPassword(const com::Utf8Str &password)
 {
     RT_NOREF(password);
     return E_NOTIMPL;
@@ -543,9 +556,16 @@ Utf8Str const &Unattended::i_getUser() const
     return mStrUser;
 }
 
-Utf8Str const &Unattended::i_getPassword() const
+Utf8Str const &Unattended::i_getUserPassword() const
 {
-    return mStrPassword;
+    return mStrUserPassword;
+}
+
+Utf8Str const &Unattended::i_getAdminPassword() const
+{
+    /* If no Administrator / 'root' password is being set, the user password will be used instead.
+     * Also see API documentation. */
+    return mStrAdminPassword.isEmpty() ? mStrUserPassword : mStrAdminPassword;
 }
 
 Utf8Str const &Unattended::i_getFullUserName() const
