@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestImpl.cpp 102533 2023-12-08 10:15:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -187,11 +187,6 @@ void Guest::uninit()
     while (itSessions != mData.mGuestSessions.end())
     {
 # ifdef DEBUG
-/** @todo r=bird: hit a use-after-free situation here while debugging the
- * 0xcccccccc status code issue in copyto.  My bet is that this happens
- * because of an uninit race, where GuestSession::close(), or someone, does
- * not ensure that the parent object (Guest) is okay to use (in the AutoCaller
- * sense), only their own object. */
         ULONG cRefs = itSessions->second->AddRef();
         LogFlowThisFunc(("sessionID=%RU32, cRefs=%RU32\n", itSessions->first, cRefs > 1 ? cRefs - 1 : 0));
         itSessions->second->Release();

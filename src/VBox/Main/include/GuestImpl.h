@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestImpl.h 102533 2023-12-08 10:15:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -130,7 +130,7 @@ public:
     int         i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
     int         i_sessionCreate(const GuestSessionStartupInfo &ssInfo, const GuestCredentials &guestCreds,
                                 ComObjPtr<GuestSession> &pGuestSession);
-    int         i_sessionDestroy(uint32_t uSessionID);
+    int         i_sessionRemove(uint32_t uSessionID);
     inline bool i_sessionExists(uint32_t uSessionID);
     /** Returns the VBOX_GUESTCTRL_GF_0_XXX mask reported by the guest. */
     uint64_t    i_getGuestControlFeatures0() const { return mData.mfGuestFeatures0; }
