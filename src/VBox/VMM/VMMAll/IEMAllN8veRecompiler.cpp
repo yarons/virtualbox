@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102549 2023-12-08 15:57:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102550 2023-12-08 16:00:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8785,7 +8785,9 @@ iemNativeEmitCalcRmEffAddrThreadedAddr32(PIEMRECOMPILERSTATE pReNative, uint32_t
  * @param   u32Disp             The displacement byte/word/dword, if any.
  * @param   cbInstr             The size of the fully decoded instruction. Used
  *                              for RIP relative addressing.
- * @param   idxVarRet           .
+ * @param   idxVarRet           The result variable number.
+ * @param   f64Bit              Whether to use a 64-bit or 32-bit address size
+ *                              when calculating the address.
  *
  * @see iemOpHlpCalcRmEffAddrThreadedAddr64
  */
