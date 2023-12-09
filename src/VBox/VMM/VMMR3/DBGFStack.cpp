@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 102545 2023-12-08 15:13:07Z alexander.eichner@oracle.com $ */
+/* $Id: DBGFStack.cpp 102559 2023-12-09 16:56:44Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -887,7 +887,7 @@ static DECLCALLBACK(int) dbgfR3StackWalkCtxFull(PUVM pUVM, VMCPUID idCpu, PCCPUM
 
 #if defined(VBOX_VMM_TARGET_ARMV8)
         RT_NOREF(pAddrFrame, pAddrStack);
-        AssertReleaseFailed();
+        AssertFailed();
         rc = VERR_NOT_IMPLEMENTED;
 #else
         if (pAddrStack)
