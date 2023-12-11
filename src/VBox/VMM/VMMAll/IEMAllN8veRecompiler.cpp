@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102569 2023-12-11 13:37:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102572 2023-12-11 15:20:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10249,6 +10249,27 @@ iemNativeEmitMemCommitAndUnmap(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
     return off;
 }
 
+
+
+/*********************************************************************************************************************************
+*   Stack Accesses.                                                                                                              *
+*********************************************************************************************************************************/
+#define IEM_MC_PUSH_U16(a_u16Value)            iemMemStackPushU16Jmp(pVCpu, (a_u16Value))
+#define IEM_MC_PUSH_U32(a_u32Value)            iemMemStackPushU32Jmp(pVCpu, (a_u32Value))
+#define IEM_MC_PUSH_U32_SREG(a_uSegVal)        iemMemStackPushU32SRegJmp(pVCpu, (a_uSegVal))
+#define IEM_MC_PUSH_U64(a_u64Value)            iemMemStackPushU64Jmp(pVCpu, (a_u64Value))
+#define IEM_MC_FLAT32_PUSH_U16(a_u16Value)
+#define IEM_MC_FLAT32_PUSH_U32(a_u32Value)
+#define IEM_MC_FLAT64_PUSH_U16(a_u16Value)
+#define IEM_MC_FLAT64_PUSH_U64(a_u64Value)
+
+#define IEM_MC_POP_GREG_U16(a_pu16Value)            (*(a_pu16Value) = iemMemStackPopU16Jmp(pVCpu))
+#define IEM_MC_POP_U32(a_pu32Value)            (*(a_pu32Value) = iemMemStackPopU32Jmp(pVCpu))
+#define IEM_MC_POP_U64(a_pu64Value)            (*(a_pu64Value) = iemMemStackPopU64Jmp(pVCpu))
+#define IEM_MC_FLAT64_POP_U16(a_pu16Value)
+#define IEM_MC_FLAT64_POP_U64(a_pu32Value)
+#define IEM_MC_FLAT32_POP_U16(a_pu16Value)
+#define IEM_MC_FLAT32_POP_U32(a_pu64Value)
 
 
 /*********************************************************************************************************************************
