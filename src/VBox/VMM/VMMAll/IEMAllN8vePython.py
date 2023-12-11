@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102510 2023-12-06 21:39:10Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102569 2023-12-11 13:37:11Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102510 $"
+__version__ = "$Revision: 102569 $"
 
 # Standard python imports:
 import copy;
@@ -270,6 +270,7 @@ class NativeRecompFunctionVariation(object):
         # each of the variables in dVars.  We remove the variables from the
         # collections as we go along.
         #
+
         def freeVariable(aoStmts, iStmt, oVarInfo, dFreedVars, dVars, fIncludeReferences = True):
             sVarName = oVarInfo.oStmt.sVarName;
             if not oVarInfo.isArg():
@@ -367,6 +368,23 @@ class NativeRecompFunctionVariation(object):
                     for oVarInfo in dVars.values():
                         if oVarInfo.isArg():
                             self.raiseProblem('Unused argument variable: %s' % (oVarInfo.oStmt.sVarName,));
+
+                elif oStmt.sName in ('IEM_MC_MEM_COMMIT_AND_UNMAP_RW', 'IEM_MC_MEM_COMMIT_AND_UNMAP_RO',
+                                     'IEM_MC_MEM_COMMIT_AND_UNMAP_WO', 'IEM_MC_MEM_ROLLBACK_AND_UNMAP_WO',
+                                     'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE_WO'):
+                    #
+                    # The unmap info variable passed to IEM_MC_MEM_COMMIT_AND_UNMAP_RW
+                    # and friends is implictly freed and we must make sure it wasn't
+                    # used any later.  IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE_WO takes
+                    # an additional a_u16FSW argument, which receives the same treatement.
+                    #
+                    for sParam in oStmt.asParams:
+                        oVarInfo = dVars.get(sParam);
+                        if oVarInfo:
+                            dFreedVars[sParam] = oVarInfo;
+                            del dVars[sParam];
+                        else:
+                            self.raiseProblem('Variable %s was used after implictly frees by %s!' % (sParam, oStmt.sName,));
                 else:
                     #
                     # Scan all the parameters of generic statements.
