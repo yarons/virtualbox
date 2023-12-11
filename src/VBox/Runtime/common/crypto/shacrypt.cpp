@@ -1,4 +1,4 @@
-/* $Id: shacrypt.cpp 102500 2023-12-06 11:25:04Z knut.osmundsen@oracle.com $ */
+/* $Id: shacrypt.cpp 102564 2023-12-11 09:32:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Crypto - SHA-crypt.
  */
@@ -144,8 +144,8 @@ static size_t rtCrShaCryptDigestToChars(char *pszString, size_t off, uint8_t con
  * @returns Pointer to the salt string, or NULL if not found / invalid.
  * @param   pszSalt     The string containing the salt.
  * @param   pcchSalt    Where to return the extracted salt length (in
- *                      characters).
- * @param   pcRounds
+ *                      characters) on success.
+ * @param   pcRounds    Where to return the round count on success.
  */
 static const char *rtCrShaCryptExtractSaltAndRounds(const char *pszSalt, size_t *pcchSalt, uint32_t *pcRounds)
 {
