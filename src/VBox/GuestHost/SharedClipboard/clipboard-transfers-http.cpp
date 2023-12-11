@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 102141 2023-11-17 15:27:32Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 102566 2023-12-11 09:38:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -464,6 +464,7 @@ static DECLCALLBACK(int) shClTransferHttpQueryInfo(PRTHTTPCALLBACKDATA pData,
     if (RT_SUCCESS(rc))
     {
         char        *pszPath = RTUriParsedPath(pszUrl, &Parsed);
+        AssertPtrReturn(pszPath, VERR_NO_MEMORY); /* Should be okay, as we succeeded RTUriParse() above. */
         size_t const cchPath = strlen(pszPath);
 
         /* For now we only know the transfer -- now we need to figure out the entry we want to serve. */
@@ -531,6 +532,9 @@ static DECLCALLBACK(int) shClTransferHttpQueryInfo(PRTHTTPCALLBACKDATA pData,
 
                 ShClTransferObjOpenParmsDestroy(&openParms);
             }
+
+            RTStrFree(pszPath);
+            pszPath = NULL;
         }
         else
             rc = VERR_NOT_FOUND;
@@ -589,6 +593,9 @@ static int shClTransferHttpServerDestroyInternal(PSHCLHTTPSERVER pSrv)
         if (RT_SUCCESS(rc))
             rc = rc2;
     }
+
+    RTSemEventDestroy(pSrv->StatusEvent);
+    pSrv->StatusEvent = NIL_RTSEMEVENT;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
