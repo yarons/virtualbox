@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 102571 2023-12-11 15:07:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 102574 2023-12-11 16:42:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1709,7 +1709,8 @@ void UIMachineLogic::sltShowLogDialog()
     /* Create instance if not yet created: */
     if (!m_pLogViewerDialog)
     {
-        UIVMLogViewerDialogFactory(actionPool(), uiCommon().managedVMUuid(), uimachine()->machineName())
+        const QList<QUuid> machineIDs = QList<QUuid>() << uiCommon().managedVMUuid();
+        UIVMLogViewerDialogFactory(actionPool(), machineIDs, uimachine()->machineName())
             .prepare(m_pLogViewerDialog, activeMachineWindow());
         connect(m_pLogViewerDialog, &QIManagerDialog::sigClose,
                 this, &UIMachineLogic::sltCloseLogDialog);
