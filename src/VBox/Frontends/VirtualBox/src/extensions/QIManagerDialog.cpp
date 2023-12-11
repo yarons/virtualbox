@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIManagerDialog.cpp 102571 2023-12-11 15:07:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -56,9 +56,12 @@ void QIManagerDialogFactory::prepare(QIManagerDialog *&pDialog, QWidget *pCenter
 
 void QIManagerDialogFactory::cleanup(QIManagerDialog *&pDialog)
 {
-    pDialog->cleanup();
-    pDialog->deleteLater();
-    pDialog = 0;
+    if (pDialog)
+    {
+        pDialog->cleanup();
+        delete pDialog;
+        pDialog = 0;
+    }
 }
 
 
