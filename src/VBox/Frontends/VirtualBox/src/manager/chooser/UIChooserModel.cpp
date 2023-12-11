@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 102575 2023-12-11 16:48:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1486,7 +1486,6 @@ void UIChooserModel::prepareContextMenu()
         pMenuGroup->addMenu(actionPool()->action(UIActionIndexMN_M_Group_M_Stop)->menu());
         pMenuGroup->addSeparator();
         pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Discard));
-        pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_ShowLogDialog));
         pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_Refresh));
         pMenuGroup->addSeparator();
         pMenuGroup->addAction(actionPool()->action(UIActionIndexMN_M_Group_S_ShowInFileManager));
@@ -1514,7 +1513,6 @@ void UIChooserModel::prepareContextMenu()
         pMenuMachine->addMenu(actionPool()->action(UIActionIndexMN_M_Machine_M_Stop)->menu());
         pMenuMachine->addSeparator();
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));
-        pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_ShowLogDialog));
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Refresh));
         pMenuMachine->addSeparator();
         pMenuMachine->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_ShowInFileManager));
