@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102572 2023-12-11 15:20:48Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102577 2023-12-11 21:48:23Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102572 $"
+__version__ = "$Revision: 102577 $"
 
 # Standard python imports:
 import copy;
@@ -175,12 +175,12 @@ g_dMcStmtThreaded = {
     # Flat Stack:
     'IEM_MC_FLAT64_PUSH_U16':                                    (None, True,  False, ),
     'IEM_MC_FLAT64_PUSH_U64':                                    (None, True,  False, ),
-    'IEM_MC_FLAT64_POP_GREG_U16':                                (None, True,  False, ),
-    'IEM_MC_FLAT64_POP_GREG_U64':                                (None, True,  False, ),
+    'IEM_MC_FLAT64_POP_GREG_U16':                                (None, True,  True,  ),
+    'IEM_MC_FLAT64_POP_GREG_U64':                                (None, True,  True,  ),
     'IEM_MC_FLAT32_PUSH_U16':                                    (None, True,  False, ),
     'IEM_MC_FLAT32_PUSH_U32':                                    (None, True,  False, ),
-    'IEM_MC_FLAT32_POP_GREG_U16':                                (None, True,  False, ),
-    'IEM_MC_FLAT32_POP_GREG_U32':                                (None, True,  False, ),
+    'IEM_MC_FLAT32_POP_GREG_U16':                                (None, True,  True,  ),
+    'IEM_MC_FLAT32_POP_GREG_U32':                                (None, True,  True,  ),
 };
 
 class NativeRecompFunctionVariation(object):

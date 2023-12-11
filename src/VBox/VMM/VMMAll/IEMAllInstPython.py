@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102572 2023-12-11 15:20:48Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102577 2023-12-11 21:48:23Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102572 $"
+__version__ = "$Revision: 102577 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3060,9 +3060,9 @@ g_dMcStmtParsers = {
     'IEM_MC_OR_LOCAL_U16':                                       (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_OR_LOCAL_U32':                                       (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_OR_LOCAL_U8':                                        (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_POP_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_POP_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_POP_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_POP_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_POP_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_POP_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_PREPARE_AVX_USAGE':                                  (McBlock.parseMcGeneric,           False, True),
     'IEM_MC_PREPARE_FPU_USAGE':                                  (McBlock.parseMcGeneric,           False, True),
     'IEM_MC_PREPARE_SSE_USAGE':                                  (McBlock.parseMcGeneric,           False, True),
