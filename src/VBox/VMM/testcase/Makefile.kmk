@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102549 2023-12-08 15:57:39Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102570 2023-12-11 14:06:56Z andreas.loeffler@oracle.com $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -417,7 +417,7 @@ tstIEMCheckMc_LIBS      = $(LIB_RUNTIME)
 ifeq ($(KBUILD_TARGET),win)
  tstIEMCheckMc_CXXFLAGS = $(VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS) -wd4189 # local variable is initialized but not used.
 else
- tstIEMCheckMc_CXXFLAGS = $(VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS) -Wno-unused-value -Wno-unused-variable
+ tstIEMCheckMc_CXXFLAGS = $(VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS) -Wno-unused-value -Wno-unused-variable -Wno-return-type
 endif
 
 #
