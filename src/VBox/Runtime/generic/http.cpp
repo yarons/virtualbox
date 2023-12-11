@@ -1,4 +1,4 @@
-/* $Id: http.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: http.cpp 102562 2023-12-11 08:32:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - HTTP common API.
  */
@@ -209,17 +209,15 @@ RTR3DECL(int) RTHttpHeaderListInit(PRTHTTPHEADERLIST hHdrLst)
 }
 
 
-/**
- * Destroys the headers associated with this list (w/o telling cURL about it).
- *
- * @param   hHdrLst       The HTTP header list instance.
- */
 RTR3DECL(void) RTHttpHeaderListDestroy(RTHTTPHEADERLIST hHdrLst)
 {
     PRTHTTPHEADERLISTINTERNAL pThis = hHdrLst;
     RTHTTPHEADERLIST_VALID_RETURN_VOID(pThis);
 
     rtHttpHeaderListRemoveAll(pThis);
+
+    RTMemFree(hHdrLst);
+    hHdrLst = NIL_RTHTTPHEADERLIST;
 }
 
 
