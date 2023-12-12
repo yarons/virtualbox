@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102577 2023-12-11 21:48:23Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102579 2023-12-12 00:11:24Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102577 $"
+__version__ = "$Revision: 102579 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3069,10 +3069,10 @@ g_dMcStmtParsers = {
     'IEM_MC_PUSH_FPU_RESULT':                                    (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_PUSH_FPU_RESULT_MEM_OP':                             (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_PUSH_FPU_RESULT_TWO':                                (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_PUSH_U16':                                           (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_PUSH_U32':                                           (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_PUSH_U32_SREG':                                      (McBlock.parseMcGeneric,           True,  False, ),
-    'IEM_MC_PUSH_U64':                                           (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_PUSH_U16':                                           (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_PUSH_U32':                                           (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_PUSH_U32_SREG':                                      (McBlock.parseMcGeneric,           True,  True,  ),
+    'IEM_MC_PUSH_U64':                                           (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_RAISE_DIVIDE_ERROR':                                 (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO':                          (McBlock.parseMcGeneric,           True,  False, ),
     'IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED':                    (McBlock.parseMcGeneric,           True,  False, ),
