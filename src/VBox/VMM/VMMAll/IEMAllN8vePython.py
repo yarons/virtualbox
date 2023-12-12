@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102585 2023-12-12 12:26:29Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102587 2023-12-12 14:13:35Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102585 $"
+__version__ = "$Revision: 102587 $"
 
 # Standard python imports:
 import copy;
@@ -77,23 +77,23 @@ g_dMcStmtThreaded = {
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  True,  ),
     'IEM_MC_REL_JMP_S32_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  True,  ),
 
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32':               (None, True,  False, ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64':               (None, True,  False, ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32':               (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64':               (None, True,  True,  ),
 
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  False, ),
-    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  False, ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC16_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U16_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC16_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U32_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC32_WITH_FLAGS':    (None, True,  True,  ),
+    'IEM_MC_SET_RIP_U64_AND_FINISH_THREADED_PC64_WITH_FLAGS':    (None, True,  True,  ),
 
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_16':                       (None, False, True,  ),
     'IEM_MC_CALC_RM_EFF_ADDR_THREADED_32':                       (None, False, True,  ),

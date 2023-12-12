@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102558 2023-12-08 22:59:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102587 2023-12-12 14:13:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -823,6 +823,8 @@ DECLHIDDEN(void)            iemNativeRegFreeAndFlushMask(PIEMRECOMPILERSTATE pRe
 DECL_HIDDEN_THROW(uint32_t) iemNativeRegFlushPendingWrites(PIEMRECOMPILERSTATE pReNative, uint32_t off);
 
 DECL_HIDDEN_THROW(uint8_t)  iemNativeVarGetStackSlot(PIEMRECOMPILERSTATE pReNative, uint8_t idxVar);
+DECL_HIDDEN_THROW(uint8_t)  iemNativeVarRegisterAcquireForGuestReg(PIEMRECOMPILERSTATE pReNative, uint8_t idxVar,
+                                                                   IEMNATIVEGSTREG enmGstReg, uint32_t *poff);
 
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitLoadGprWithGstShadowReg(PIEMRECOMPILERSTATE pReNative, uint32_t off,
                                                                  uint8_t idxHstReg, IEMNATIVEGSTREG enmGstReg);
