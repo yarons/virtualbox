@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102579 2023-12-12 00:11:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102580 2023-12-12 00:15:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -3213,6 +3213,7 @@ iemNativeEmitLoadArgGregFromStackVar(PIEMRECOMPILERSTATE pReNative, uint32_t off
     if (idxRegVar < RT_ELEMENTS(pReNative->Core.aHstRegs))
     {
         Assert(!(RT_BIT_32(idxRegVar) & IEMNATIVE_CALL_VOLATILE_GREG_MASK) || fVarAllowInVolatileReg);
+        RT_NOREF(fVarAllowInVolatileReg);
         if (!offAddend)
         {
             if (idxRegArg != idxRegVar)
