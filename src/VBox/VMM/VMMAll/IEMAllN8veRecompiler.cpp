@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102584 2023-12-12 10:56:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102585 2023-12-12 12:26:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5459,6 +5459,19 @@ iemNativeEmitIp16RelativeJumpAndFinishingNoFlags(PIEMRECOMPILERSTATE pReNative, 
 
     return off;
 }
+
+
+
+/*********************************************************************************************************************************
+*   Emitters for changing PC/RIP/EIP/IP with a indirect jump (IEM_MC_SET_RIP_UXX_AND_FINISH).                                    *
+*********************************************************************************************************************************/
+
+/** Sets RIP (may trigger \#GP), finishes the instruction and returns. */
+#define IEM_MC_SET_RIP_U16_AND_FINISH(a_u16NewIP)       return iemRegRipJumpU16AndFinishClearningRF((pVCpu), (a_u16NewIP))
+/** Sets RIP (may trigger \#GP), finishes the instruction and returns. */
+#define IEM_MC_SET_RIP_U32_AND_FINISH(a_u32NewIP)       return iemRegRipJumpU32AndFinishClearningRF((pVCpu), (a_u32NewIP))
+/** Sets RIP (may trigger \#GP), finishes the instruction and returns. */
+#define IEM_MC_SET_RIP_U64_AND_FINISH(a_u64NewIP)       return iemRegRipJumpU64AndFinishClearningRF((pVCpu), (a_u64NewIP))
 
 
 
