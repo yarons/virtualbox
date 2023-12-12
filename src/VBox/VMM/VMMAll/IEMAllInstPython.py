@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 102583 2023-12-12 09:23:50Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 102584 2023-12-12 10:56:20Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102583 $"
+__version__ = "$Revision: 102584 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2789,11 +2789,11 @@ g_dMcStmtParsers = {
     'IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_ACTUALIZE_SSE_STATE_FOR_CHANGE':                     (McBlock.parseMcGeneric,           False, True,  ),
     'IEM_MC_ACTUALIZE_SSE_STATE_FOR_READ':                       (McBlock.parseMcGeneric,           False, True,  ),
-    'IEM_MC_ADD_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_ADD_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_ADD_GREG_U16_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ADD_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_ADD_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_ADD_GREG_U32_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
-    'IEM_MC_ADD_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  False, ),
+    'IEM_MC_ADD_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  True,  ),
     'IEM_MC_ADD_GREG_U64_TO_LOCAL':                              (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_ADD_GREG_U8_TO_LOCAL':                               (McBlock.parseMcGeneric,           False, False, ),
     'IEM_MC_ADD_LOCAL_S16_TO_EFF_ADDR':                          (McBlock.parseMcGeneric,           True,  False, ),
