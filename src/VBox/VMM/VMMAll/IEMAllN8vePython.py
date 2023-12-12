@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102579 2023-12-12 00:11:24Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102581 2023-12-12 08:45:11Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102579 $"
+__version__ = "$Revision: 102581 $"
 
 # Standard python imports:
 import copy;
@@ -384,7 +384,21 @@ class NativeRecompFunctionVariation(object):
                             dFreedVars[sParam] = oVarInfo;
                             del dVars[sParam];
                         else:
-                            self.raiseProblem('Variable %s was used after implictly frees by %s!' % (sParam, oStmt.sName,));
+                            self.raiseProblem('Variable %s was used after implictly freed by %s!' % (sParam, oStmt.sName,));
+
+                elif oStmt.sName in ('IEM_MC_PUSH_U16', 'IEM_MC_PUSH_U32', 'IEM_MC_PUSH_U32_SREG', 'IEM_MC_PUSH_U64',
+                                     'IEM_MC_FLAT32_PUSH_U16', 'IEM_MC_FLAT32_PUSH_U32', 'IEM_MC_FLAT32_PUSH_U32_SREG',
+                                     'IEM_MC_FLAT64_PUSH_U16', 'IEM_MC_FLAT64_PUSH_U64',):
+                    #
+                    # The variable being pushed is implicitly freed.
+                    #
+                    for sParam in oStmt.asParams:
+                        oVarInfo = dVars.get(sParam);
+                        if oVarInfo:
+                            dFreedVars[sParam] = oVarInfo;
+                            del dVars[sParam];
+                        else:
+                            self.raiseProblem('Variable %s was used after implictly freed by %s!' % (sParam, oStmt.sName,));
                 else:
                     #
                     # Scan all the parameters of generic statements.

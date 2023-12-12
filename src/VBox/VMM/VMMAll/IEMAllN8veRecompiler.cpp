@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102579 2023-12-12 00:11:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102581 2023-12-12 08:45:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10026,6 +10026,9 @@ iemNativeEmitStackPush(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxV
 
     /* Done setting up parameters, make the call. */
     off = iemNativeEmitCallImm(pReNative, off, pfnFunction);
+
+    /* The value variable is implictly flushed. */
+    iemNativeVarFreeLocal(pReNative, idxVarValue);
 
     iemNativeLabelDefine(pReNative, idxLabelTlbDone, off);
 
