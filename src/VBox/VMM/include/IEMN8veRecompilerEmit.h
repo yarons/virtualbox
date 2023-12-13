@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102580 2023-12-12 00:15:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102593 2023-12-13 22:41:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -2754,7 +2754,7 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitJbeToFixed(PIEMRECOMPILERSTATE pReNativ
 
 
 /**
- * Emits a JA/JNBE rel32 / B.EQ imm19 with a fixed displacement.
+ * Emits a JA/JNBE rel32 / B.HI imm19 with a fixed displacement.
  *
  * The @a offTarget is applied x86-style, so zero means the next instruction.
  * The unit is IEMNATIVEINSTR.
