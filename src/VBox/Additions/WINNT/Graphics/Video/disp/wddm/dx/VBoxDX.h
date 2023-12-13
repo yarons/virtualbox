@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.h 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.h 102591 2023-12-13 17:43:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -817,8 +817,7 @@ void vboxDXVideoProcessorSetStreamRotation(PVBOXDX_DEVICE pDevice, PVBOXDXVIDEOP
 
 DECLINLINE(void) vboxDXDeviceSetError(PVBOXDX_DEVICE pDevice, HRESULT hr)
 {
-    Assert(SUCCEEDED(hr) || hr == DXGI_DDI_ERR_WASSTILLDRAWING);
-    /* This callback is also used for setting S_OK, etc results, so always call it. */
+    Assert(hr == DXGI_DDI_ERR_WASSTILLDRAWING);
     pDevice->pUMCallbacks->pfnSetErrorCb(pDevice->hRTCoreLayer, hr);
 }
 

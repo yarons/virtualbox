@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 102591 2023-12-13 17:43:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -2038,7 +2038,7 @@ void vboxDXQueryEnd(PVBOXDX_DEVICE pDevice, PVBOXDXQUERY pQuery)
 
 void vboxDXQueryGetData(PVBOXDX_DEVICE pDevice, PVBOXDXQUERY pQuery, VOID* pData, UINT DataSize, UINT Flags)
 {
-    Assert(pQuery->enmQueryState == VBOXDXQUERYSTATE_ISSUED);
+    Assert(pQuery->enmQueryState == VBOXDXQUERYSTATE_ISSUED || pQuery->enmQueryState == VBOXDXQUERYSTATE_SIGNALED);
 
     if (!RT_BOOL(Flags & D3D10_DDI_GET_DATA_DO_NOT_FLUSH))
         vboxDXDeviceFlushCommands(pDevice);
@@ -2071,8 +2071,6 @@ void vboxDXQueryGetData(PVBOXDX_DEVICE pDevice, PVBOXDXQUERY pQuery, VOID* pData
 
             if (pData && DataSize >= sizeof(BOOL))
                 *(BOOL *)pData = TRUE;
-
-            vboxDXDeviceSetError(pDevice, S_OK);
         }
         return;
     }
