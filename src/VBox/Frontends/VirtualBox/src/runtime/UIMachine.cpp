@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 102419 2023-12-01 13:30:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -257,6 +257,11 @@ void UIMachine::acquireMachinePixmap(const QSize &size, QPixmap &pixmap)
 void UIMachine::acquireUserMachineIcon(QIcon &icon)
 {
     return uisession()->acquireUserMachineIcon(icon);
+}
+
+bool UIMachine::acquireArchitectureType(KPlatformArchitecture &enmType)
+{
+    return uisession()->acquireArchitectureType(enmType);
 }
 
 bool UIMachine::acquireChipsetType(KChipsetType &enmType)

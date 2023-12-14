@@ -1,4 +1,4 @@
-/* $Id: UISession.h 102018 2023-11-09 11:19:23Z vadim.galitsyn@oracle.com $ */
+/* $Id: UISession.h 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -200,6 +200,8 @@ public:
         /** Acquire user machine icon. */
         void acquireUserMachineIcon(QIcon &icon);
 
+        /** Acquires architecture type. */
+        bool acquireArchitectureType(KPlatformArchitecture &enmType);
         /** Acquires chipset type. */
         bool acquireChipsetType(KChipsetType &enmType);
     /** @} */

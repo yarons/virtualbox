@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 102574 2023-12-11 16:42:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2665,9 +2665,11 @@ void UIMachineLogic::updateMenuDevicesStorage(QMenu *pMenu)
 void UIMachineLogic::updateMenuDevicesNetwork(QMenu *pMenu)
 {
     /* Determine how many adapters we should display: */
+    KPlatformArchitecture enmArchType = KPlatformArchitecture_None;
+    uimachine()->acquireArchitectureType(enmArchType);
     KChipsetType enmChipsetType = KChipsetType_Null;
     uimachine()->acquireChipsetType(enmChipsetType);
-    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(KPlatformArchitecture_x86);
+    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArchType);
     const ulong uCount = qMin((ulong)4, (ulong)comProperties.GetMaxNetworkAdapters(enmChipsetType));
 
     /* Enumerate existing network adapters: */

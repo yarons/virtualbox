@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 102419 2023-12-01 13:30:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -202,6 +202,8 @@ public:
         /** Acquire user machine icon. */
         void acquireUserMachineIcon(QIcon &icon);
 
+        /** Acquires architecture type. */
+        bool acquireArchitectureType(KPlatformArchitecture &enmType);
         /** Acquires chipset type. */
         bool acquireChipsetType(KChipsetType &enmType);
     /** @} */
