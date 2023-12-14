@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102587 2023-12-12 14:13:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102603 2023-12-14 23:06:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -309,6 +309,7 @@ typedef enum
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
     kIemNativeLabelType_RaiseGp0,
+    kIemNativeLabelType_ObsoleteTb,
     /* Labels with data, potentially multiple instances per TB: */
     kIemNativeLabelType_FirstWithMultipleInstances,
     kIemNativeLabelType_If = kIemNativeLabelType_FirstWithMultipleInstances,
@@ -805,6 +806,8 @@ DECL_HIDDEN_THROW(void)     iemNativeAddFixup(PIEMRECOMPILERSTATE pReNative, uin
 DECL_HIDDEN_THROW(PIEMNATIVEINSTR) iemNativeInstrBufEnsureSlow(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t cInstrReq);
 
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmp(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, bool fPreferVolatile = true);
+DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpEx(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, uint32_t fRegMask,
+                                                   bool fPreferVolatile = true);
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpImm(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, uint64_t uImm,
                                                     bool fPreferVolatile = true);
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpForGuestReg(PIEMRECOMPILERSTATE pReNative, uint32_t *poff,
