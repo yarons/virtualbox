@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102620 2023-12-15 17:52:03Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102621 2023-12-15 19:11:08Z klaus.espenlaub@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3139,7 +3139,7 @@ static int cpumR3FixVarMtrrPhysAddrWidths(PVM pVM, uint8_t const cVarMtrrs)
 /**
  * Initialize MTRR capability based on what the guest CPU profile (typically host)
  * supports.
- *  
+ *
  * @returns VBox status code.
  * @param   pVM     The cross context VM structure.
  */
