@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImpl.h 102614 2023-12-15 16:10:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -325,6 +325,7 @@ public:
     ULONG                   i_getId(void) { return mData.mSession.mID; }
     bool                    i_isStarted(void) const;
     HRESULT                 i_isStartedExternal(void);
+    bool                    i_isReady(void);
     bool                    i_isTerminated(void) const;
     int                     i_onRemove(void);
 #ifdef VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS
@@ -380,8 +381,10 @@ public:
 
 private:
 
-    /** Pointer to the parent (Guest). */
-    Guest                          *mParent;
+    /* Console object. */
+    ComObjPtr<Console>              mConsole;
+    /* Guest object. */
+    ComObjPtr<Guest>                mParent;
     /**
      * The session's event source. This source is used for
      * serving the internal listener as well as all other
