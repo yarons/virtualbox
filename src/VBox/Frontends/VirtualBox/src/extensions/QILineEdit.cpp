@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.cpp 102613 2023-12-15 16:04:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -32,7 +32,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMenu>
-#include <QPalette>
 #include <QStyleOptionFrame>
 #include <QWindow>
 
