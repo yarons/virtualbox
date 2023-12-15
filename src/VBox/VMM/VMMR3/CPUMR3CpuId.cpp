@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102610 2023-12-15 12:32:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102620 2023-12-15 17:52:03Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3171,7 +3171,7 @@ static int cpumR3InitMtrrCap(PVM pVM)
     LogRel(("CPUM: Enabled fixed-range MTRRs and %u variable-range MTRRs\n", cGuestVarRangeRegs));
 
     /*
-     * Ensure that the maximum physical address width supported by the variable-range MTRRs 
+     * Ensure that the maximum physical address width supported by the variable-range MTRRs
      * are consistent with what is reported to the guest via CPUID.
      */
     return cpumR3FixVarMtrrPhysAddrWidths(pVM, cGuestVarRangeRegs);
