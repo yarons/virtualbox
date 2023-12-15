@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102605 2023-12-15 07:43:02Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102606 2023-12-15 07:53:56Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3107,7 +3107,7 @@ static int cpumR3FixVarMtrrPhysAddrWidths(PVM pVM, uint8_t const cVarMtrrs)
                                   VERR_NOT_FOUND);
 
             PCPUMMSRRANGE pMaskRange = cpumLookupMsrRange(pVM, MSR_IA32_MTRR_PHYSMASK0 + (iVarMtrr * 2));
-            AssertLogRelMsgReturn(pBaseRange, ("Failed to lookup the IA32_MTRR_PHYSMASK[%u] MSR range\n", iVarMtrr),
+            AssertLogRelMsgReturn(pMaskRange, ("Failed to lookup the IA32_MTRR_PHYSMASK[%u] MSR range\n", iVarMtrr),
                                   VERR_NOT_FOUND);
 
             AssertLogRelMsgReturn(pBaseRange->fWrGpMask == fPhysBaseWrGpMask,
