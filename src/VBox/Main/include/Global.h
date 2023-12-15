@@ -1,4 +1,4 @@
-/* $Id: Global.h 102608 2023-12-15 11:06:48Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.h 102609 2023-12-15 11:26:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -235,7 +235,7 @@ public:
     static const char *stringifyProcessWaitResult(ProcessWaitResult_T aWaitResult);
 
     /**
-     * Stringify a file status..
+     * Stringify a file status.
      *
      * Drop the Global:: prefix and include StringifyEnums.h for an untranslated
      * version of this method.
