@@ -1,4 +1,4 @@
-/* $Id: Global.h 102601 2023-12-14 18:58:07Z andreas.loeffler@oracle.com $ */
+/* $Id: Global.h 102608 2023-12-15 11:06:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -230,7 +230,7 @@ public:
      * version of this method.
      *
      * @returns Pointer to a read only string.
-     * @param   aStatus     The process wait result.
+     * @param   aWaitResult The process wait result.
      */
     static const char *stringifyProcessWaitResult(ProcessWaitResult_T aWaitResult);
 
@@ -252,7 +252,7 @@ public:
      * version of this method.
      *
      * @returns Pointer to a read only string.
-     * @param   aStatus     The filesystem object type.
+     * @param   aType       The filesystem object type.
      */
     static const char *stringifyFsObjType(FsObjType_T aType);
 
