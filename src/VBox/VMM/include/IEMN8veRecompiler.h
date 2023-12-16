@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102603 2023-12-14 23:06:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102624 2023-12-16 03:15:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -310,6 +310,7 @@ typedef enum
     kIemNativeLabelType_NonZeroRetOrPassUp,
     kIemNativeLabelType_RaiseGp0,
     kIemNativeLabelType_ObsoleteTb,
+    kIemNativeLabelType_NeedCsLimChecking,
     /* Labels with data, potentially multiple instances per TB: */
     kIemNativeLabelType_FirstWithMultipleInstances,
     kIemNativeLabelType_If = kIemNativeLabelType_FirstWithMultipleInstances,
