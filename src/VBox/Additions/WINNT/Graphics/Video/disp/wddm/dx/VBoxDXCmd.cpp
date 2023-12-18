@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.cpp 102408 2023-11-30 21:59:50Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXCmd.cpp 102631 2023-12-18 12:01:14Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver utilities.
  */
@@ -1275,6 +1275,129 @@ int vgpu10MobFence64(PVBOXDX_DEVICE pDevice,
 
     vboxDXStorePatchLocation(pDevice, &cmd->mobId, VBOXDXALLOCATIONTYPE_CO,
                              hAllocation, mobOffset, true);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10DefineQuery(PVBOXDX_DEVICE pDevice,
+                      SVGA3dQueryId queryId,
+                      SVGA3dQueryType type,
+                      SVGA3dDXQueryFlags flags)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_DEFINE_QUERY,
+                                             sizeof(SVGA3dCmdDXDefineQuery), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXDefineQuery *cmd = (SVGA3dCmdDXDefineQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
+    SET_CMD_FIELD(type);
+    SET_CMD_FIELD(flags);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10DestroyQuery(PVBOXDX_DEVICE pDevice,
+                       SVGA3dQueryId queryId)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_DESTROY_QUERY,
+                                             sizeof(SVGA3dCmdDXDestroyQuery), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXDestroyQuery *cmd = (SVGA3dCmdDXDestroyQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10BindQuery(PVBOXDX_DEVICE pDevice,
+                    SVGA3dQueryId queryId,
+                    D3DKMT_HANDLE hAllocation)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_BIND_QUERY,
+                                             sizeof(SVGA3dCmdDXBindQuery), 1);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXBindQuery *cmd = (SVGA3dCmdDXBindQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
+    cmd->mobid = SVGA3D_INVALID_ID;
+
+    vboxDXStorePatchLocation(pDevice, &cmd->mobid, VBOXDXALLOCATIONTYPE_CO,
+                             hAllocation, 0, true);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10SetQueryOffset(PVBOXDX_DEVICE pDevice,
+                         SVGA3dQueryId queryId,
+                         uint32 mobOffset)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_SET_QUERY_OFFSET,
+                                             sizeof(SVGA3dCmdDXSetQueryOffset), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXSetQueryOffset *cmd = (SVGA3dCmdDXSetQueryOffset *)pvCmd;
+    SET_CMD_FIELD(queryId);
+    SET_CMD_FIELD(mobOffset);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10BeginQuery(PVBOXDX_DEVICE pDevice,
+                     SVGA3dQueryId queryId)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_BEGIN_QUERY,
+                                             sizeof(SVGA3dCmdDXBeginQuery), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXBeginQuery *cmd = (SVGA3dCmdDXBeginQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10EndQuery(PVBOXDX_DEVICE pDevice,
+                   SVGA3dQueryId queryId)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_END_QUERY,
+                                             sizeof(SVGA3dCmdDXEndQuery), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXEndQuery *cmd = (SVGA3dCmdDXEndQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10ReadbackQuery(PVBOXDX_DEVICE pDevice,
+                        SVGA3dQueryId queryId)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_READBACK_QUERY,
+                                             sizeof(SVGA3dCmdDXReadbackQuery), 0);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXReadbackQuery *cmd = (SVGA3dCmdDXReadbackQuery *)pvCmd;
+    SET_CMD_FIELD(queryId);
 
     vboxDXCommandBufferCommit(pDevice);
     return VINF_SUCCESS;

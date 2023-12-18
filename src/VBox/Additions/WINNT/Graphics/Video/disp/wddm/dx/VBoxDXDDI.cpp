@@ -1,4 +1,4 @@
-/* $Id: VBoxDXDDI.cpp 102591 2023-12-13 17:43:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXDDI.cpp 102631 2023-12-18 12:01:14Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D11 user mode DDI interface.
  */
@@ -2564,10 +2564,7 @@ static void APIENTRY ddi10CreateQuery(
     LogFlowFunc(("pDevice 0x%p, pQuery 0x%p", pDevice, pQuery));
 
     pQuery->hRTQuery = hRTQuery;
-    pQuery->Query = pCreateQuery->Query;
-    pQuery->MiscFlags = pCreateQuery->MiscFlags;
-
-    vboxDXCreateQuery(pDevice, pQuery);
+    vboxDXCreateQuery(pDevice, pQuery, pCreateQuery->Query, pCreateQuery->MiscFlags);
 }
 
 static void APIENTRY ddi10DestroyQuery(
