@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 102100 2023-11-15 12:03:41Z valery.portnyagin@oracle.com $ */
+/* $Id: VBoxManageCloud.cpp 102637 2023-12-18 15:56:11Z valery.portnyagin@oracle.com $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1310,22 +1310,7 @@ static RTEXITCODE cloudInstanceMetricList(HandlerArg *a, int iFirst, PCLOUDCOMMO
             CHECK_ERROR2_RET(hrc, oCloudClient, GetMetricTypeByName(value.raw(), &aMetricType), RTEXITCODE_FAILURE);
 
             if (SUCCEEDED(hrc))
-            {
-                switch (aMetricType)
-                {
-                    case MetricType_CpuUtilization:
-                    case MetricType_MemoryUtilization:
-                    case MetricType_DiskBytesRead:
-                    case MetricType_DiskBytesWritten:
-                    case MetricType_NetworksBytesIn:
-                    case MetricType_NetworksBytesOut:
-                        RTPrintf(Cloud::tr(" - %ls\n"), value.raw());
-                        break;
-                    case MetricType_Invalid:
-                    default:
-                        break;
-                }
-            }
+                RTPrintf(Cloud::tr(" - %ls\n"), value.raw());
         }
     }
 
