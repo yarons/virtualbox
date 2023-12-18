@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102633 2023-12-18 14:22:41Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102636 2023-12-18 15:14:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -627,7 +627,7 @@ void UIVerticalScrollArea::requestVerticalScrollBarPosition(int iPosition)
     iShift = qMin(iShift, iScrollBarLength);
 
     /* Calculate walking ratio: */
-    const float dRatio = (double)iShift / iScrollBarLength;
+    const float dRatio = iScrollBarLength > 0 ? (double)iShift / iScrollBarLength : 0;
     m_pAnimation->setDuration(dRatio * 500 /* 500ms is the max */);
     m_pAnimation->setStartValue(iStartPosition);
     m_pAnimation->setEndValue(iFinalPosition);
