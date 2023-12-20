@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 102653 2023-12-20 14:35:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 102655 2023-12-20 16:17:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -318,7 +318,7 @@ public:
     UIVMActivityMonitorCloud(EmbedTo enmEmbedding, QWidget *pParent, const CCloudMachine &machine);
     virtual QUuid machineId() const RT_OVERRIDE;
     virtual QString machineName() const RT_OVERRIDE;
-    /** Accoring to OCI docs returned time stamp is in RFC3339 format. */
+    /** According to OCI docs returned time stamp is in RFC3339 format. */
     static QString formatCloudTimeStamp(const QString &strInput);
 
 private slots:
