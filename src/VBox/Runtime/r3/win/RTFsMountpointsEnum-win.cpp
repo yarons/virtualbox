@@ -1,4 +1,4 @@
-/* $Id: RTFsMountpointsEnum-win.cpp 102659 2023-12-20 17:19:03Z andreas.loeffler@oracle.com $ */
+/* $Id: RTFsMountpointsEnum-win.cpp 102660 2023-12-20 18:14:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - File System, RTFsMountpointsEnum, Windows.
  */
@@ -39,11 +39,13 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
+#include <iprt/nt/nt-and-windows.h>
 #include "internal-r3-win.h"
-#include <iprt/file.h>
 
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/errcore.h>
+#include <iprt/file.h>
 #include <iprt/once.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
@@ -91,6 +93,8 @@ static RTONCE g_rtFsWinResolveOnce = RTONCE_INITIALIZER;
  */
 static DECLCALLBACK(int) rtFsWinResolveOnce(void *pvUser)
 {
+    RT_NOREF(pvUser);
+
     /*
      * kernel32.dll volume APIs introduced after NT4.
      */
