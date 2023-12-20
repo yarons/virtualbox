@@ -1,4 +1,4 @@
-/* $Id: RTFsMountpointsEnum-posix.cpp 102651 2023-12-20 12:49:20Z andreas.loeffler@oracle.com $ */
+/* $Id: RTFsMountpointsEnum-posix.cpp 102652 2023-12-20 13:10:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - File System, RTFsMountpointsEnum, POSIX.
  */
@@ -93,7 +93,7 @@ RTR3DECL(int) RTFsMountpointsEnum(PFNRTFSMOUNTPOINTENUM pfnCallback, void *pvUse
         struct mnttab Entry;
         while (getmntent(pFile, &Entry) == 0)
         {
-            rc = pfnCallback(Entry.mnt_dir, pvUser);
+            rc = pfnCallback(Entry.mnt_mountp, pvUser);
             if (RT_FAILURE(rc))
                 break;
         }
