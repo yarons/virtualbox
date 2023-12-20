@@ -1,4 +1,4 @@
-/* $Id: RTFsMountpointsEnum-win.cpp 102658 2023-12-20 17:12:48Z andreas.loeffler@oracle.com $ */
+/* $Id: RTFsMountpointsEnum-win.cpp 102659 2023-12-20 17:19:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - File System, RTFsMountpointsEnum, Windows.
  */
@@ -39,6 +39,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
+#include "internal-r3-win.h"
 #include <iprt/file.h>
 
 #include <iprt/assert.h>
@@ -56,12 +57,12 @@
 *********************************************************************************************************************************/
 /* kernel32.dll: */
 typedef HANDLE (WINAPI *PFNFINDFIRSTVOLUMEW)(LPWSTR, DWORD);
-typedef HANDLE (WINAPI *PFNFINDNEXTVOLUMEW)(HANDLE, LPWSTR, DWORD);
-typedef HANDLE (WINAPI *PFNFINDVOLUMECLOSE)(HANDLE);
-typedef HANDLE (WINAPI *PFNGETVOLUMEPATHNAMESFORVOLUMENAMEW)(LPCWSTR, LPWCH, DWORD, PDWORD);
+typedef BOOL (WINAPI *PFNFINDNEXTVOLUMEW)(HANDLE, LPWSTR, DWORD);
+typedef BOOL (WINAPI *PFNFINDVOLUMECLOSE)(HANDLE);
+typedef BOOL (WINAPI *PFNGETVOLUMEPATHNAMESFORVOLUMENAMEW)(LPCWSTR, LPWCH, DWORD, PDWORD);
 typedef HANDLE (WINAPI *PFNFINDFIRSTVOLUMEMOUNTPOINTW)(LPCWSTR, LPWSTR, DWORD);
-typedef HANDLE (WINAPI *PFNFINDNEXTVOLUMEMOUNTPOINTW)(HANDLE, LPWSTR, DWORD);
-typedef HANDLE (WINAPI *PFNFINDVOLUMEMOUNTPOINTCLOSE)(HANDLE);
+typedef BOOL (WINAPI *PFNFINDNEXTVOLUMEMOUNTPOINTW)(HANDLE, LPWSTR, DWORD);
+typedef BOOL (WINAPI *PFNFINDVOLUMEMOUNTPOINTCLOSE)(HANDLE);
 
 
 /*********************************************************************************************************************************
