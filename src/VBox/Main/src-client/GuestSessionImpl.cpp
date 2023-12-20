@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 102614 2023-12-15 16:10:30Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -615,6 +615,44 @@ HRESULT GuestSession::getUserDocuments(com::Utf8Str &aUserDocuments)
 
             default:
                 hrc = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Getting the user's documents path failed: %Rrc"), vrc);
+                break;
+        }
+    }
+
+    return hrc;
+}
+
+HRESULT GuestSession::getMountPoints(std::vector<com::Utf8Str> &aMountPoints)
+{
+    HRESULT hrc = i_isStartedExternal();
+    if (FAILED(hrc))
+        return hrc;
+
+    int vrcGuest = VERR_IPE_UNINITIALIZED_STATUS;
+    int vrc = i_getMountPoints(aMountPoints, &vrcGuest);
+    if (RT_FAILURE(vrc))
+    {
+        switch (vrc)
+        {
+            case VERR_GSTCTL_GUEST_ERROR:
+            {
+                switch (vrcGuest)
+                {
+                    case VERR_NOT_SUPPORTED:
+                        hrc = setErrorBoth(VBOX_E_IPRT_ERROR, vrcGuest,
+                                          tr("Getting the mount points is not supported by installed Guest Additions"));
+                        break;
+
+                    default:
+                        hrc = setErrorBoth(VBOX_E_IPRT_ERROR, vrcGuest,
+                                          tr("Getting the mount points failed on the guest: %Rrc"), vrcGuest);
+                        break;
+                }
+                break;
+            }
+
+            default:
+                hrc = setErrorBoth(VBOX_E_IPRT_ERROR, vrc, tr("Getting the mount points failed: %Rrc"), vrc);
                 break;
         }
     }
@@ -3099,6 +3137,54 @@ int GuestSession::i_pathUserDocuments(Utf8Str &strPath, int *pvrcGuest)
         if (RT_SUCCESS(vrc))
         {
             strPath = pEvent->Payload().ToString();
+        }
+        else
+        {
+            if (pEvent->HasGuestError() && pvrcGuest)
+                *pvrcGuest = pEvent->GuestResult();
+        }
+    }
+
+    unregisterWaitEvent(pEvent);
+
+    LogFlowFuncLeaveRC(vrc);
+    return vrc;
+}
+
+/**
+ * Returns the currently accessible mount points of the guest.
+ *
+ * @returns VBox status code.
+ * @param   vecMountPoints      Where to return the mount points (guest-style paths).
+ * @param   pvrcGuest           Guest VBox status code, when returning
+ *                              VERR_GSTCTL_GUEST_ERROR. Any other return code indicates
+ *                              some host side error.
+ *
+ * @note    Takes the read lock.
+ */
+int GuestSession::i_getMountPoints(std::vector<com::Utf8Str> &vecMountPoints, int *pvrcGuest)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    GuestWaitEvent *pEvent = NULL;
+    int vrc = registerWaitEvent(mData.mSession.mID, mData.mObjectID, &pEvent);
+    if (RT_FAILURE(vrc))
+        return vrc;
+
+    /* Prepare HGCM call. */
+    VBOXHGCMSVCPARM paParms[2];
+    int i = 0;
+    HGCMSvcSetU32(&paParms[i++], pEvent->ContextID());
+
+    alock.release(); /* Drop lock before sending. */
+
+    vrc = i_sendMessage(HOST_MSG_MOUNT_POINTS, i, paParms);
+    if (RT_SUCCESS(vrc))
+    {
+        vrc = pEvent->Wait(30 * 1000);
+        if (RT_SUCCESS(vrc))
+        {
+            vrc = pEvent->Payload().ToStringVector(vecMountPoints);
         }
         else
         {

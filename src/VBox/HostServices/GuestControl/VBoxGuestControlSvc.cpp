@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 102602 2023-12-14 19:01:25Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestControlSvc.cpp 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1679,6 +1679,8 @@ int GstCtrlService::clientMsgSkip(ClientState *pClient, VBOXHGCMCALLHANDLE hCall
                     case HOST_MSG_DIR_CREATE:
                         RT_FALL_THROUGH();
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
+                    case HOST_MSG_MOUNT_POINTS:
+                        RT_FALL_THROUGH();
                     case HOST_MSG_EXEC_GET_OUTPUT: /** @todo BUGBUG This can't be right/work. */
                     case HOST_MSG_EXEC_TERMINATE:  /** @todo BUGBUG This can't be right/work. */
                     case HOST_MSG_EXEC_WAIT_FOR:   /** @todo BUGBUG This can't be right/work. */

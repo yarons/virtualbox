@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 99262 2023-04-03 15:17:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -272,6 +272,12 @@ enum eHostMsg
      */
     HOST_MSG_FS_QUERY_INFO = 336,
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
+    /**
+     * Retrieves the currently accessible mount points from the guest.
+     *
+     * @since   7.1
+     */
+    HOST_MSG_MOUNT_POINTS = 337,
     /** Blow the type up to 32-bits. */
     HOST_MSG_32BIT_HACK = 0x7fffffff
 };
@@ -323,6 +329,7 @@ DECLINLINE(const char *) GstCtrlHostMsgtoStr(enum eHostMsg enmMsg)
         RT_CASE_RET_STR(HOST_MSG_FS_CREATE_TEMP);
         RT_CASE_RET_STR(HOST_MSG_FS_QUERY_INFO);
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
+        RT_CASE_RET_STR(HOST_MSG_MOUNT_POINTS);
         RT_CASE_RET_STR(HOST_MSG_32BIT_HACK);
     }
     return "Unknown";
