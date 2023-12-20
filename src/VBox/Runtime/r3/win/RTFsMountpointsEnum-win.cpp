@@ -1,4 +1,4 @@
-/* $Id: RTFsMountpointsEnum-win.cpp 102647 2023-12-20 12:01:26Z andreas.loeffler@oracle.com $ */
+/* $Id: RTFsMountpointsEnum-win.cpp 102649 2023-12-20 12:18:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - File System, RTFsMountpointsEnum, Windows.
  */
@@ -42,7 +42,7 @@
 #include <iprt/file.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/utf16.h>
