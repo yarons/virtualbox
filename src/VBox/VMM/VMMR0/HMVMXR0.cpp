@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 102172 2023-11-21 07:09:04Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 102664 2023-12-21 07:49:12Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5009,7 +5009,7 @@ VMMR0DECL(int) VMXR0Enter(PVMCPUCC pVCpu)
         pVCpu->hmr0.s.vmx.fSwitchedToNstGstVmcs           = fInNestedGuestMode;
         pVCpu->hm.s.vmx.fSwitchedToNstGstVmcsCopyForRing3 = fInNestedGuestMode;
         pVCpu->hmr0.s.fLeaveDone = false;
-        Log4Func(("Loaded Vmcs. HostCpuId=%u\n", RTMpCpuId()));
+        Log4Func(("Loaded %s Vmcs. HostCpuId=%u\n", fInNestedGuestMode ? "nested-guest" : "guest", RTMpCpuId()));
     }
     return rc;
 }
