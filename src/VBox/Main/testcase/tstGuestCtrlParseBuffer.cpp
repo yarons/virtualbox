@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 102668 2023-12-21 09:21:20Z andreas.loeffler@oracle.com $ */
+/* $Id: tstGuestCtrlParseBuffer.cpp 102670 2023-12-21 09:25:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Tests for VBoxService toolbox output streams.
  */
@@ -214,7 +214,7 @@ static struct
     RT_STR_TUPLE(""), 0, VINF_SUCCESS,
     /** Invalid data. */
     RT_STR_TUPLE("two\0\0terminators"), 1, VERR_INVALID_PARAMETER,
-    RT_STR_TUPLE("no\0\ending\0terminator"), 2, VERR_BUFFER_OVERFLOW,
+    RT_STR_TUPLE("no\0ending\0terminator"), 2, VERR_BUFFER_OVERFLOW,
     RT_STR_TUPLE("foo"), 0, VERR_BUFFER_OVERFLOW,
     /** Valid data. */
     RT_STR_TUPLE("foo\0"), 1, VINF_SUCCESS,
