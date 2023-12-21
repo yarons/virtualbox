@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 102086 2023-11-13 15:42:57Z ksenia.s.stepanova@oracle.com $
+# $Id: tdUnitTest1.py 102666 2023-12-21 08:36:17Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102086 $"
+__version__ = "$Revision: 102666 $"
 
 
 # Standard Python imports.
@@ -288,6 +288,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstFile': '',
         'testcase/tstFileLock': '',
         'testcase/tstClipboardMockHGCM': '',            # Requires X on Linux OSes. Execute on remote targets only (guests).
+        'testcase/tstRTFsQueries': '',
         'testcase/tstRTLocalIpc': '',
         'testcase/tstRTPathQueryInfo': '',
         'testcase/tstRTPipe': '',
