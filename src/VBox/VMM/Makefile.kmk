@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102634 2023-12-18 14:24:23Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 102663 2023-12-21 01:55:07Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -263,6 +263,8 @@ ifdef VBOX_WITH_IEM_RECOMPILER
   VBoxVMM_SOURCES += \
   	VMMAll/IEMAllN8veRecompiler.cpp \
   	VMMAll/IEMAllN8veRecompBltIn.cpp
+  VBoxVMM_SOURCES.amd64 += \
+  	VMMAll/IEMAllN8veHlpA.asm
   if "$(KBUILD_TARGET_ARCH)" == "arm64" && defined(VBOX_WITH_IEM_USING_CAPSTONE_DISASSEMBLER) # temp hack
    VBoxVMM_DEFS        += VBOX_WITH_IEM_USING_CAPSTONE_DISASSEMBLER
    VBoxVMM_LIBS.darwin += /opt/local/lib/libcapstone.dylib

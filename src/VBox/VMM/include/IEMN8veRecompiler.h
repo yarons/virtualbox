@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102634 2023-12-18 14:24:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102663 2023-12-21 01:55:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -311,6 +311,7 @@ typedef enum
     kIemNativeLabelType_RaiseGp0,
     kIemNativeLabelType_ObsoleteTb,
     kIemNativeLabelType_NeedCsLimChecking,
+    kIemNativeLabelType_CheckBranchMiss,
     /* Labels with data, potentially multiple instances per TB: */
     kIemNativeLabelType_FirstWithMultipleInstances,
     kIemNativeLabelType_If = kIemNativeLabelType_FirstWithMultipleInstances,
@@ -837,6 +838,8 @@ DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCImplCall(PIEMRECOMPILERSTATE pReNative
                                                    uint64_t fGstShwFlush, uintptr_t pfnCImpl, uint8_t cbInstr, uint8_t cAddParams,
                                                    uint64_t uParam0, uint64_t uParam1, uint64_t uParam2);
 
+IEM_DECL_IEMNATIVERECOMPFUNC_PROTO(iemNativeRecompFunc_BltIn_Nop);
+IEM_DECL_IEMNATIVERECOMPFUNC_PROTO(iemNativeRecompFunc_BltIn_LogCpuState);
 IEM_DECL_IEMNATIVERECOMPFUNC_PROTO(iemNativeRecompFunc_BltIn_DeferToCImpl0);
 IEM_DECL_IEMNATIVERECOMPFUNC_PROTO(iemNativeRecompFunc_BltIn_CheckIrq);
 IEM_DECL_IEMNATIVERECOMPFUNC_PROTO(iemNativeRecompFunc_BltIn_CheckMode);

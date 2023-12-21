@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102585 2023-12-12 12:26:29Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102663 2023-12-21 01:55:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -815,7 +815,6 @@ void iemOpcodeFlushHeavy(PVMCPUCC pVCpu, uint8_t cbInstr)
 #ifndef IEM_WITH_CODE_TLB
     pVCpu->iem.s.cbOpcode = cbInstr; /* Note! SVM and VT-x may set this to zero on exit, rather than the instruction length. */
 #elif 1
-    pVCpu->iem.s.pbInstrBuf      = NULL;
     pVCpu->iem.s.cbInstrBufTotal = 0;
     RT_NOREF(cbInstr);
 #else
