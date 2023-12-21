@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 99784 2023-05-12 15:34:16Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 102679 2023-12-21 16:13:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -900,7 +900,15 @@ static void gctlCtxTerm(PGCTLCMDCTX pCtx)
             if (pCtx->cVerbose)
                 RTPrintf(GuestCtrl::tr("Closing guest session ...\n"));
 
-            CHECK_ERROR(pCtx->pGuestSession, Close());
+            if (pCtx->pGuestSession.isNotNull())
+                CHECK_ERROR(pCtx->pGuestSession, Close());
+
+            if (pCtx->cVerbose > 4)
+            {
+                SafeIfaceArray <IGuestSession> collSessions;
+                CHECK_ERROR(pCtx->pGuest, COMGETTER(Sessions)(ComSafeArrayAsOutParam(collSessions)));
+                RTPrintf(GuestCtrl::tr("Now %zu guest sessions registered\n"), collSessions.size());
+            }
         }
         else if (   pCtx->fDetachGuestSession
                  && pCtx->cVerbose)
