@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 102676 2023-12-21 12:27:31Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 102677 2023-12-21 13:20:07Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -203,6 +203,7 @@ typedef struct CPUMMTRRMAP
 typedef CPUMMTRRMAP *PCPUMMTRRMAP;
 /** Pointer to a const CPUM variable-range MTRR structure. */
 typedef CPUMMTRRMAP const *PCCPUMMTRRMAP;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
