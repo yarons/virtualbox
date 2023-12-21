@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102663 2023-12-21 01:55:07Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102686 2023-12-21 22:50:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -776,7 +776,7 @@ VMM_INT_DECL(void) IEMTlbInvalidateAllPhysicalAllCpus(PVMCC pVM, VMCPUID idCpuCa
         uint64_t       uTlbPhysRevNew  = uTlbPhysRevPrev + IEMTLB_PHYS_REV_INCR;
         if (RT_LIKELY(uTlbPhysRevNew > IEMTLB_PHYS_REV_INCR * 2))
         { /* likely */}
-        else if (pVCpuCaller == pVCpu)
+        else if (pVCpuCaller != pVCpu)
             uTlbPhysRevNew = IEMTLB_PHYS_REV_INCR;
         else
         {
