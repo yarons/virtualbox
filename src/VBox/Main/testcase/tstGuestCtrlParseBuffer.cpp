@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 102671 2023-12-21 09:35:41Z andreas.loeffler@oracle.com $ */
+/* $Id: tstGuestCtrlParseBuffer.cpp 102674 2023-12-21 09:46:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * Tests for VBoxService toolbox output streams.
  */
@@ -435,7 +435,7 @@ int main(int argc, char **argv)
     for (unsigned iTest = 0; iTest < RT_ELEMENTS(g_aTestPayloadToStringVector); iTest++)
     {
         GuestWaitEventPayload Payload(0 /* Type */,
-                                      g_aTestPayloadToStringVector[iTest].pbData, g_aTestPayloadToStringVector[iTest].cbData);
+                                      g_aTestPayloadToStringVector[iTest].pbData, (uint32_t)g_aTestPayloadToStringVector[iTest].cbData);
         std::vector<Utf8Str> vecStr;
         RTTEST_CHECK_RC(hTest, Payload.ToStringVector(vecStr), g_aTestPayloadToStringVector[iTest].iResult);
         RTTEST_CHECK(hTest, vecStr.size() == g_aTestPayloadToStringVector[iTest].cStrings);
