@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102692 2023-12-22 08:59:45Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102693 2023-12-22 09:00:48Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3166,7 +3166,7 @@ static int cpumR3FixVarMtrrPhysAddrWidths(PVM pVM, uint8_t const cVarMtrrs)
 
 /**
  * Inserts variable-range MTRR MSR ranges based on the given count.
- *  
+ *
  * Since we need to insert the MSRs beyond what the CPU profile has inserted, we
  * reinsert the whole range here since the variable-range MTRR MSR read+write
  * functions handle ranges as well as the \#GP checking.
@@ -3559,7 +3559,7 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
                  * MTRRs. When disabled, MTRRs are left blank, returns 0 on reads and ignores
                  * writes. Some guests like GNU/Linux recognize a virtual system when MTRRs are left
                  * blank but some guests may expect their RAM to be mapped via MTRRs similar to
-                 * real hardware. */ 
+                 * real hardware. */
                 rc = CFGMR3QueryBoolDef(pCpumCfg, "MtrrRead", &pVM->cpum.s.fMtrrRead, false);
                 AssertRCReturn(rc, rc);
                 LogRel(("CPUM: Enabled MTRR read-only support\n"));
