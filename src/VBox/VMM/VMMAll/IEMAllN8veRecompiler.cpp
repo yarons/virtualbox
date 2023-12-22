@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102687 2023-12-22 01:39:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102695 2023-12-22 22:15:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -11209,7 +11209,7 @@ DECLHIDDEN(void) iemNativeDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NOEX
 #if defined(RT_ARCH_AMD64)
     static const char * const a_apszMarkers[] =
     {
-        "unknown0", "CheckCsLim", "ConsiderLimChecking", "CheckOpcodes", "PcAfterBranch",
+        "unknown0", "CheckCsLim", "ConsiderLimChecking", "CheckOpcodes", "PcAfterBranch", "LoadTlbForNewPage"
     };
 #endif
 
