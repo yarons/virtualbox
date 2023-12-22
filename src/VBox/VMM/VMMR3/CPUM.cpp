@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 102677 2023-12-21 13:20:07Z ksenia.s.stepanova@oracle.com $ */
+/* $Id: CPUM.cpp 102689 2023-12-22 03:44:59Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3705,6 +3705,13 @@ static int cpumR3MapMtrrs(PVM pVM)
     {
         LogRel(("CPUM: Cannot map RAM via MTRRs since the RAM size is not configured for the VM\n"));
         return VINF_SUCCESS;
+    }
+    if (!(cbRam & ~X86_PAGE_4K_BASE_MASK))
+    { /* likely */ }
+    else
+    {
+        LogRel(("CPUM: WARNING! RAM size %u bytes is not 4K aligned, using %u bytes\n", cbRam, cbRam & X86_PAGE_4K_BASE_MASK));
+        cbRam &= X86_PAGE_4K_BASE_MASK;
     }
 
     /*
