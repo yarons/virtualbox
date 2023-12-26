@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 102699 2023-12-25 22:22:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 102701 2023-12-26 00:20:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -1147,7 +1147,7 @@ iemNativeEmitBltInCheckPcAfterBranch(PIEMRECOMPILERSTATE pReNative, uint32_t off
 
 # ifdef VBOX_STRICT /* Assert(!(pVCpu->iem.s.GCPhysInstrBuf & X86_PAGE_OFFSET_MASK)); */
     off = iemNativeEmitAndGpr32ByImm(pReNative, off, idxRegTmp2, X86_PAGE_OFFSET_MASK, true /*fSetFlags*/);
-    off = iemNativeEmitJzToFixed(pReNative, off, off + 1 /* correct for ARM64 */);
+    off = iemNativeEmitJzToFixed(pReNative, off, off + 2 /* correct for ARM64 */);
     off = iemNativeEmitBrk(pReNative, off, 0x2005);
 # endif
     iemNativeRegFreeTmp(pReNative, idxRegTmp2);
@@ -1468,7 +1468,7 @@ iemNativeEmitBltLoadTlbAfterBranch(PIEMRECOMPILERSTATE pReNative, uint32_t off, 
 
 # ifdef VBOX_STRICT /* Assert(!(pVCpu->iem.s.GCPhysInstrBuf & X86_PAGE_OFFSET_MASK)); */
     off = iemNativeEmitAndGpr32ByImm(pReNative, off, idxRegTmp2, X86_PAGE_OFFSET_MASK, true /*fSetFlags*/);
-    off = iemNativeEmitJzToFixed(pReNative, off, off + 1 /* correct for ARM64 */);
+    off = iemNativeEmitJzToFixed(pReNative, off, off + 2 /* correct for ARM64 */);
     off = iemNativeEmitBrk(pReNative, off, 0x2005);
 # endif
 #else

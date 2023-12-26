@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102699 2023-12-25 22:22:01Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102701 2023-12-26 00:20:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -11342,7 +11342,7 @@ DECLHIDDEN(void) iemNativeDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NOEX
 
                             /* Disassemble the instruction. */
                             //uint8_t const cbInstrMax = RT_MIN(pTb->aRanges[idxRange].cbOpcodes - offRange, 15);
-                            uint8_t const cbInstrMax = RT_MIN(cbOpcodes - offRange, 15);
+                            uint8_t const cbInstrMax = RT_MIN(cbOpcodes - offOpcodes, 15);
                             uint32_t      cbInstr    = 1;
                             int rc = DISInstrWithPrefetchedBytes(GCPhysPc, enmGstCpuMode, DISOPTYPE_ALL,
                                                                  &pTb->pabOpcodes[offOpcodes], cbInstrMax,
