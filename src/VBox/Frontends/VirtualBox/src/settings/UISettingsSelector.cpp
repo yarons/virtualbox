@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 102261 2023-11-22 15:12:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 102705 2023-12-26 15:32:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -490,8 +490,9 @@ void UISelectorDelegate::paint(QPainter *pPainter, const QStyleOptionViewItem &o
         /* Paint fancy shape: */
         pPainter->save();
         pPainter->setClipPath(painterPath);
-        pPainter->setPen(backColor);
-        pPainter->fillRect(itemRectangle, grad);
+        pPainter->setRenderHint(QPainter::Antialiasing);
+        pPainter->fillPath(painterPath, grad);
+        pPainter->strokePath(painterPath, backColor.darker(110));
         pPainter->restore();
     }
     else
