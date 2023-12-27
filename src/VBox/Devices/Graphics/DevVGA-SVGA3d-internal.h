@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-internal.h 102714 2023-12-27 15:34:25Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1367,6 +1367,8 @@ DECLINLINE(int) vmsvga3dDXContextFromCid(PVMSVGA3DSTATE pState, uint32_t cid, PV
     LogRelMax(64, ("VMSVGA: unknown DX cid=%u (%s cid=%u)\n", cid, pDXContext ? "expected" : "null", pDXContext ? pDXContext->cid : -1));
     return VERR_INVALID_PARAMETER;
 }
+
+void vmsvga3dDXInitContextMobData(SVGADXContextMobFormat *p);
 #endif
 
 DECLINLINE(int) vmsvga3dSurfaceFromSid(PVMSVGA3DSTATE pState, uint32_t sid, PVMSVGA3DSURFACE *ppSurface)
