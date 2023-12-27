@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 102705 2023-12-26 15:32:46Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 102707 2023-12-27 10:01:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -42,6 +42,7 @@
 #include "QITabWidget.h"
 #include "QITreeView.h"
 #include "QITreeWidget.h"
+#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
@@ -492,7 +493,7 @@ void UISelectorDelegate::paint(QPainter *pPainter, const QStyleOptionViewItem &o
         pPainter->setClipPath(painterPath);
         pPainter->setRenderHint(QPainter::Antialiasing);
         pPainter->fillPath(painterPath, grad);
-        pPainter->strokePath(painterPath, backColor.darker(110));
+        pPainter->strokePath(painterPath, uiCommon().isInDarkMode() ? backColor.lighter(120) : backColor.darker(110));
         pPainter->restore();
     }
     else
