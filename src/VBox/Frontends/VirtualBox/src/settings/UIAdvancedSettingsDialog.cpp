@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102707 2023-12-27 10:01:30Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102708 2023-12-27 10:08:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -174,6 +174,9 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+    /** Returns painter path for the passed @a pathRect. */
+    QPainterPath cookPainterPath(const QRect &pathRect);
 
     /** Adjusts editor geometry. */
     void adjustEditorGeometry();
@@ -468,22 +471,12 @@ void UIFilterEditor::paintEvent(QPaintEvent *pEvent)
 
     /* Prepare base/frame painter path: */
     const QRegion totalRegion = QRegion(m_pLineEdit->geometry()) + QRegion(m_pToolButton->geometry());
-    const QRect widgetRect = totalRegion.boundingRect();
-    const QSizeF arcSize(2 * m_iRadius, 2 * m_iRadius);
-    QPainterPath path;
-    path.moveTo(widgetRect.x() + m_iRadius, widgetRect.y());
-    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-m_iRadius, 0), 90, 90);
-    path.lineTo(path.currentPosition().x(), path.currentPosition().y() + widgetRect.height() - 2 * m_iRadius);
-    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(0, -m_iRadius), 180, 90);
-    path.lineTo(path.currentPosition().x() + widgetRect.width() - 2 * m_iRadius, path.currentPosition().y());
-    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-m_iRadius, -2 * m_iRadius), 270, 90);
-    path.lineTo(path.currentPosition().x(), path.currentPosition().y() - widgetRect.height() + 2 * m_iRadius);
-    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-2 * m_iRadius, -m_iRadius), 0, 90);
-    path.closeSubpath();
+    QRect widgetRect = totalRegion.boundingRect();
+    const QPainterPath widgetPath = cookPainterPath(widgetRect);
 
     /* Draw base/frame: */
-    painter.fillPath(path, colorBase);
-    painter.strokePath(path, colorFrame);
+    painter.fillPath(widgetPath, colorBase);
+    painter.strokePath(widgetPath, colorFrame);
 }
 
 void UIFilterEditor::sltHandleEditorTextChanged(const QString &strText)
@@ -550,6 +543,22 @@ void UIFilterEditor::cleanup()
     /* Cleanup 'unfocus/focus' animation: */
     delete m_pAnimation;
     m_pAnimation = 0;
+}
+
+QPainterPath UIFilterEditor::cookPainterPath(const QRect &pathRect)
+{
+    QPainterPath path;
+    const QSizeF arcSize(2 * m_iRadius, 2 * m_iRadius);
+    path.moveTo(pathRect.x() + m_iRadius, pathRect.y());
+    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-m_iRadius, 0), 90, 90);
+    path.lineTo(path.currentPosition().x(), path.currentPosition().y() + pathRect.height() - 2 * m_iRadius);
+    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(0, -m_iRadius), 180, 90);
+    path.lineTo(path.currentPosition().x() + pathRect.width() - 2 * m_iRadius, path.currentPosition().y());
+    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-m_iRadius, -2 * m_iRadius), 270, 90);
+    path.lineTo(path.currentPosition().x(), path.currentPosition().y() - pathRect.height() + 2 * m_iRadius);
+    path.arcTo(QRectF(path.currentPosition(), arcSize).translated(-2 * m_iRadius, -m_iRadius), 0, 90);
+    path.closeSubpath();
+    return path;
 }
 
 void UIFilterEditor::adjustEditorGeometry()
