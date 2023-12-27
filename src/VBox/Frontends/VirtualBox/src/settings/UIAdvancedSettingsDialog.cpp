@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102711 2023-12-27 11:07:54Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102712 2023-12-27 11:13:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -516,7 +516,7 @@ void UIFilterEditor::prepare()
 #ifdef VBOX_WS_MAC
         /* A bit of magic to be able to replace the frame.
          * Disable border, adjust margins and make background transparent.
-		 * Left and right margins also take focus ring into account. */
+         * Left and right margins also take focus ring into account. */
         m_pLineEdit->setStyleSheet("QLineEdit {\
                                     background-color: rgba(255, 255, 255, 0%);\
                                     border: 0px none black;\
