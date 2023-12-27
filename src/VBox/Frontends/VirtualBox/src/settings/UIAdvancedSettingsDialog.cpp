@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 102704 2023-12-26 15:18:43Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 102706 2023-12-27 09:22:23Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -317,10 +317,10 @@ void UIModeCheckBox::paintEvent(QPaintEvent *pEvent)
 
     /* Prepare right painter paths: */
     QPainterPath painterPath2;
-    painterPath2.moveTo(contentRect.width() / 2 + 1,                        contentRect.y());
-    painterPath2.lineTo(contentRect.width(),                                contentRect.y());
-    painterPath2.lineTo(contentRect.width() - contentRect.height(),         contentRect.height());
-    painterPath2.lineTo(contentRect.width() / 2 + 1 - contentRect.height(), contentRect.height());
+    painterPath2.moveTo(contentRect.width() / 2,                        contentRect.y());
+    painterPath2.lineTo(contentRect.width(),                            contentRect.y());
+    painterPath2.lineTo(contentRect.width()     - contentRect.height(), contentRect.height());
+    painterPath2.lineTo(contentRect.width() / 2 - contentRect.height(), contentRect.height());
     painterPath2.closeSubpath();
 
     /* Prepare left painting gradient: */
@@ -352,7 +352,8 @@ void UIModeCheckBox::paintEvent(QPaintEvent *pEvent)
     const QFontMetrics fm(fnt);
     const QColor foreground1 = suitableForegroundColor(pal, backColor1);
     const QString strName1 = text1();
-    const QPoint point1 = QPoint(contentRect.left() + 5 /** @todo justify! */, contentRect.height() / 2 + fm.ascent() / 2 - 1 /* base line */);
+    const QPoint point1 = QPoint(contentRect.left() + 5 /** @todo justify! */,
+                                 contentRect.height() / 2 + fm.ascent() / 2 - 1 /* base line */);
     const QColor foreground2 = suitableForegroundColor(pal, backColor2);
     const QString strName2 = text2();
     const QPoint point2 = QPoint(contentRect.width() / 2 + 1 + 5 /** @todo justify! */,
