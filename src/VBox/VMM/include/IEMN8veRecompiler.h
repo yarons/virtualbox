@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102717 2023-12-27 19:45:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102724 2023-12-28 21:15:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -318,6 +318,7 @@ typedef enum
     kIemNativeLabelType_Else,
     kIemNativeLabelType_Endif,
     kIemNativeLabelType_CheckIrq,
+    kIemNativeLabelType_TlbLookup,
     kIemNativeLabelType_TlbMiss,
     kIemNativeLabelType_TlbDone,
     kIemNativeLabelType_End
