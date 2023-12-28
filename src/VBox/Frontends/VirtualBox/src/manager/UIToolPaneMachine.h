@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 102420 2023-12-01 14:02:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -74,6 +74,9 @@ signals:
 
     /** Notifies listeners about request to switch to Activity Overview pane. */
     void sigSwitchToActivityOverviewPane();
+
+    /** Notifies listeners about request to detach Log Viewer pane. */
+    void sigDetachLogViewer();
 
 public:
 

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 102420 2023-12-01 14:02:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -194,6 +194,8 @@ void UIToolPaneMachine::openTool(UIToolType enmType)
 
                     /* Configure pane: */
                     m_pPaneLogViewer->setProperty("ToolType", QVariant::fromValue(UIToolType_Logs));
+                    connect(m_pPaneLogViewer, &UIVMLogViewerWidget::sigDetach,
+                            this, &UIToolPaneMachine::sigDetachLogViewer);
                     m_pPaneLogViewer->setSelectedVMListItems(m_items);
 
                     /* Add into layout: */

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -100,6 +100,8 @@ void UIVMLogViewerPaneContainer::prepare()
             this, &UIVMLogViewerPaneContainer::sigChangeFont);
     connect(m_pPreferencesWidget, &UIVMLogViewerPreferencesWidget::sigResetToDefaults,
             this, &UIVMLogViewerPaneContainer::sigResetToDefaults);
+    connect(m_pPreferencesWidget, &UIVMLogViewerPreferencesWidget::sigDetach,
+            this, &UIVMLogViewerPaneContainer::sigDetach);
 
     retranslateUi();
 }

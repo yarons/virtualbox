@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102722 2023-12-28 13:03:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -968,6 +968,11 @@ void UIVirtualBoxManager::sltCopyMedium(const QUuid &uMediumId)
 void UIVirtualBoxManager::sltCurrentSnapshotItemChange()
 {
     updateActionsAppearance();
+}
+
+void UIVirtualBoxManager::sltDetachLogViewer()
+{
+    sltOpenManagerWindow(UIToolType_Logs);
 }
 
 void UIVirtualBoxManager::sltHandleCloudMachineStateChange(const QUuid & /* uId */)
@@ -2488,6 +2493,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltOpenSettingsDialog);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange,
             this, &UIVirtualBoxManager::sltCurrentSnapshotItemChange);
+    connect(m_pWidget, &UIVirtualBoxManagerWidget::sigDetachLogViewer,
+            this, &UIVirtualBoxManager::sltDetachLogViewer);
 
     connect(menuBar(), &QMenuBar::customContextMenuRequested,
             m_pWidget, &UIVirtualBoxManagerWidget::sltHandleToolBarContextMenuRequest);

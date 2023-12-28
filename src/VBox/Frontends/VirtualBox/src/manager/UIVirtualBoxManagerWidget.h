@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102422 2023-12-01 14:17:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -121,6 +121,12 @@ signals:
       * @{ */
         /** Notifies listeners about current Snapshots pane item change. */
         void sigCurrentSnapshotItemChange();
+    /** @} */
+
+    /** @name Tools / Log Viewer pane stuff.
+      * @{ */
+        /** Notifies listeners about request to detach Log Viewer pane. */
+        void sigDetachLogViewer();
     /** @} */
 
 public:

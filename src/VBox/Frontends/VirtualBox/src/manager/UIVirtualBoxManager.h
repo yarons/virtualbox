@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 102575 2023-12-11 16:48:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -166,6 +166,9 @@ private slots:
 
         /** Handles current snapshot item change. */
         void sltCurrentSnapshotItemChange();
+
+        /** Handles request to detach Log Viewer pane. */
+        void sltDetachLogViewer();
 
         /** Handles state change for cloud machine with certain @a uId. */
         void sltHandleCloudMachineStateChange(const QUuid &uId);
