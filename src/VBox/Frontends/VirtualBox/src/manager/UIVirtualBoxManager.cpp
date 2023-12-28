@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102721 2023-12-28 12:57:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102722 2023-12-28 13:03:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2206,17 +2206,39 @@ void UIVirtualBoxManager::sltHandlePoweredOffMachine(bool fSuccess, bool fInclud
 
 void UIVirtualBoxManager::sltPerformShowGlobalTool(QAction *pAction)
 {
+    /* Sanity checks: */
     AssertPtrReturnVoid(pAction);
     AssertPtrReturnVoid(m_pWidget);
+
+    /* Acquire tool type: */
+    const UIToolType enmType = pAction->property("UIToolType").value<UIToolType>();
+    AssertReturnVoid(enmType != UIToolType_Invalid);
+
+    /* Make sure global item is selected: */
     m_pWidget->switchToGlobalItem();
-    m_pWidget->setToolsTypeGlobal(pAction->property("UIToolType").value<UIToolType>());
+
+    /* Make sure corresponding manager window is closed (if any): */
+    sltCloseManagerWindow(enmType);
+
+    /* Open the tool finally: */
+    m_pWidget->setToolsTypeGlobal(enmType);
 }
 
 void UIVirtualBoxManager::sltPerformShowMachineTool(QAction *pAction)
 {
+    /* Sanity checks: */
     AssertPtrReturnVoid(pAction);
     AssertPtrReturnVoid(m_pWidget);
-    m_pWidget->setToolsTypeMachine(pAction->property("UIToolType").value<UIToolType>());
+
+    /* Acquire tool type: */
+    const UIToolType enmType = pAction->property("UIToolType").value<UIToolType>();
+    AssertReturnVoid(enmType != UIToolType_Invalid);
+
+    /* Make sure corresponding manager window is closed (if any): */
+    sltCloseManagerWindow(enmType);
+
+    /* Open the tool finally: */
+    m_pWidget->setToolsTypeMachine(enmType);
 }
 
 void UIVirtualBoxManager::sltPerformRefreshMachine()
