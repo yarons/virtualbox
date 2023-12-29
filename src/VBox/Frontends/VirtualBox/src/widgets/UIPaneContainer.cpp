@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.cpp 102729 2023-12-29 15:50:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIPaneContainer.cpp 102730 2023-12-29 16:08:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -63,6 +63,7 @@ void UIPaneContainer::retranslateUi()
     {
         m_pButtonBox->button(QDialogButtonBox::Cancel)->setText(tr("Detach"));
         m_pButtonBox->button(QDialogButtonBox::Cancel)->setStatusTip(tr("Open the tool in separate window"));
+        m_pButtonBox->button(QDialogButtonBox::Cancel)->setToolTip(tr("Open in Separate Window"));
     }
 }
 
