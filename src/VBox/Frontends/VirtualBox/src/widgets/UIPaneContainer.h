@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.h 102511 2023-12-07 05:17:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPaneContainer.h 102726 2023-12-29 14:13:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -34,7 +34,9 @@
 /* Qt includes: */
 #include <QWidget>
 #include <QKeySequence>
+
 /* GUI includes: */
+#include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
@@ -52,7 +54,7 @@ signals:
 
 public:
 
-    UIPaneContainer(QWidget *pParent = 0);
+    UIPaneContainer(QWidget *pParent, EmbedTo enmEmbedTo = EmbedTo_Stack);
     void setCurrentIndex(int iIndex);
     int currentIndex() const;
 
@@ -69,7 +71,9 @@ private slots:
 
 private:
 
-    QTabWidget    *m_pTabWidget;
+    EmbedTo  m_enmEmbedTo;
+
+    QTabWidget *m_pTabWidget;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIPaneContainer_h */

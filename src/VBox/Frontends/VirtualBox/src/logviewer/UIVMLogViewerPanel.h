@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.h 102726 2023-12-29 14:13:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -68,7 +68,9 @@ signals:
 
 public:
 
-    UIVMLogViewerPaneContainer(QWidget *pParent, UIVMLogViewerWidget *pViewer);
+    UIVMLogViewerPaneContainer(QWidget *pParent,
+                               UIVMLogViewerWidget *pViewer,
+                               EmbedTo enmEmbedTo = EmbedTo_Stack);
 
     /** @name Search page pass through functions
       * @{ */

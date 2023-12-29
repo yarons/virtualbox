@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 102726 2023-12-29 14:13:40Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -762,7 +762,7 @@ void UIVMLogViewerWidget::prepareWidgets()
     m_pTabWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     connect(m_pTabWidget, &QITabWidget::currentChanged, this, &UIVMLogViewerWidget::sltCurrentTabChanged);
 
-    m_pPanel = new UIVMLogViewerPaneContainer(0, this);
+    m_pPanel = new UIVMLogViewerPaneContainer(0, this, m_enmEmbedding);
     AssertReturnVoid(m_pPanel);
     installEventFilter(m_pPanel);
     m_pPanel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
