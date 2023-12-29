@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.h 102727 2023-12-29 14:48:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIPaneContainer.h 102729 2023-12-29 15:50:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -40,6 +40,7 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
+class QAbstractButton;
 class QHBoxLayout;
 class QIDialogButtonBox;
 
@@ -70,6 +71,8 @@ protected:
 private slots:
 
     void sltHide();
+
+    void sltHandleButtonBoxClick(QAbstractButton *pButton);
 
 private:
 
