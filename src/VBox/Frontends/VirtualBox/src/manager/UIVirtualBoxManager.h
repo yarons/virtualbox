@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.h 102731 2023-12-29 16:30:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -192,8 +192,12 @@ private slots:
         void sltOpenManagerWindow(UIToolType enmType = UIToolType_Invalid);
         /** Handles call to open Manager window by default. */
         void sltOpenManagerWindowDefault() { sltOpenManagerWindow(); }
+        /** Handles call to embed Manager window of certain @a enmType. */
+        void sltEmbedManagerWindow(UIToolType enmType = UIToolType_Invalid);
         /** Handles call to close Manager window of certain @a enmType. */
         void sltCloseManagerWindow(UIToolType enmType = UIToolType_Invalid);
+        /** Handles call to embed Manager window by default. */
+        void sltEmbedManagerWindowDefault() { sltEmbedManagerWindow(); }
         /** Handles call to close Manager window by default. */
         void sltCloseManagerWindowDefault() { sltCloseManagerWindow(); }
 

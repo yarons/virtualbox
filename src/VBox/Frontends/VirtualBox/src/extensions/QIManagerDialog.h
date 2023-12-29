@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIManagerDialog.h 102731 2023-12-29 16:30:17Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -65,8 +65,9 @@ enum ButtonType
     ButtonType_Invalid = 0,
     ButtonType_Reset   = RT_BIT(0),
     ButtonType_Apply   = RT_BIT(1),
-    ButtonType_Close   = RT_BIT(2),
-    ButtonType_Help    = RT_BIT(3)
+    ButtonType_Embed   = RT_BIT(2),
+    ButtonType_Close   = RT_BIT(3),
+    ButtonType_Help    = RT_BIT(4),
 };
 
 
@@ -102,6 +103,8 @@ class SHARED_LIBRARY_STUFF QIManagerDialog : public QIWithRestorableGeometry<QMa
 
 signals:
 
+    /** Notifies listeners about dialog should be embedded. */
+    void sigEmbed();
     /** Notifies listeners about dialog should be closed. */
     void sigClose();
 
