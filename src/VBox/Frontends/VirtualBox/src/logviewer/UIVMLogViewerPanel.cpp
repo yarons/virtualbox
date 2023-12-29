@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 102725 2023-12-29 13:51:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -164,10 +164,10 @@ void UIVMLogViewerPaneContainer::setFontSizeInPoints(int fontSizeInPoints)
 
 void UIVMLogViewerPaneContainer::retranslateUi()
 {
-    setTabText(Page_Search, "Find");
-    setTabText(Page_Filter, "Filter");
-    setTabText(Page_Bookmark, "Bookmarks");
-    setTabText(Page_Preferences, "Preferences");
+    setTabText(Page_Search, UIVMLogViewerWidget::tr("Find"));
+    setTabText(Page_Filter, UIVMLogViewerWidget::tr("Filter"));
+    setTabText(Page_Bookmark, UIVMLogViewerWidget::tr("Bookmarks"));
+    setTabText(Page_Preferences, UIVMLogViewerWidget::tr("Preferences"));
 }
 
 bool UIVMLogViewerPaneContainer::eventFilter(QObject *pObject, QEvent *pEvent)
