@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102733 2023-12-29 19:40:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102734 2023-12-29 19:47:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -11705,7 +11705,7 @@ iemNativeEmitMemMapCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t i
 # endif
     }
 #else
-    RT_NOREF(fAccess, fAlignMask);
+    RT_NOREF(fAccess, fAlignMask, idxLabelTlbMiss);
 #endif
 
     iemNativeVarRegisterRelease(pReNative, idxVarUnmapInfo);

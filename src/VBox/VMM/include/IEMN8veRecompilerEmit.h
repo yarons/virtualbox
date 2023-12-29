@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102733 2023-12-29 19:40:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102734 2023-12-29 19:47:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -3377,7 +3377,7 @@ iemNativeEmitJccToLabelEx(PIEMRECOMPILERSTATE pReNative, PIEMNATIVEINSTR pCodeBu
     }
     else
     {
-        Assert(offLabel - off <= -0x3ffff);
+        Assert((int64_t)(offLabel - off) <= -0x3ffff);
         pCodeBuf[off++] = Armv8A64MkInstrBCond(enmCond, offLabel - off);
     }
 
