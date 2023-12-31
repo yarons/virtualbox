@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102733 2023-12-29 19:40:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102737 2023-12-31 16:05:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -562,8 +562,12 @@ typedef struct IEMNATIVEHSTREG
     IEMNATIVEWHAT   enmWhat;
     /** Variable index if holding a variable, otherwise UINT8_MAX. */
     uint8_t         idxVar;
+    /** Stack slot assigned by iemNativeVarSaveVolatileRegsPreHlpCall and freed
+     * by iemNativeVarRestoreVolatileRegsPostHlpCall.  This is not valid outside
+     * that scope. */
+    uint8_t         idxStackSlot;
     /** Alignment padding. */
-    uint8_t         abAlign[6];
+    uint8_t         abAlign[5];
 } IEMNATIVEHSTREG;
 
 
