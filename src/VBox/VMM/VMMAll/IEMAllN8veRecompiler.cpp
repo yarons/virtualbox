@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102738 2023-12-31 16:16:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102739 2023-12-31 20:03:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10154,6 +10154,7 @@ DECLASM(void) iemNativeHlpCheckTlbLookup(PVMCPU pVCpu, uintptr_t uResult, uint64
             uint8_t const * const pbAddr = &pTlbe->pbMappingR3[GCPtrFlat & GUEST_PAGE_OFFSET_MASK];
             if ((uintptr_t)pbAddr == uResult)
                 return;
+            RT_NOREF(cbMem);
             AssertFailed();
         }
         else
