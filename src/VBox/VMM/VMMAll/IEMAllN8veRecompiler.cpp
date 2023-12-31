@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102737 2023-12-31 16:05:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102738 2023-12-31 16:16:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10162,7 +10162,7 @@ DECLASM(void) iemNativeHlpCheckTlbLookup(PVMCPU pVCpu, uintptr_t uResult, uint64
     }
     else
         AssertFailed();
-    __debugbreak();
+    RT_BREAKPOINT();
 }
 DECLASM(void) iemNativeHlpAsmSafeWrapCheckTlbLookup(void);
 
