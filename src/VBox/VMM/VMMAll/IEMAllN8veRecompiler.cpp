@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102739 2023-12-31 20:03:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102742 2024-01-01 02:23:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -4275,8 +4275,10 @@ DECLHIDDEN(void) iemNativeRegFlushGuestShadowsByHostMask(PIEMRECOMPILERSTATE pRe
  * This is used after calling a helper function (think TLB miss) to restore the
  * register state of volatile registers.
  *
- * @param   pReNative       The native recompile state.
- * @param   fHstRegs        Set of host registers to flush guest shadows for.
+ * @param   pReNative               The native recompile state.
+ * @param   off                     The code buffer offset.
+ * @param   fHstRegsActiveShadows   Set of host registers which are allowed to
+ *                                  be active (allocated) w/o asserting. Hack.
  * @see     iemNativeVarSaveVolatileRegsPreHlpCall(),
  *          iemNativeVarRestoreVolatileRegsPostHlpCall()
  */
