@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102732 2023-12-29 16:35:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102744 2024-01-02 16:15:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -948,6 +948,16 @@ void UIVirtualBoxManager::sltHandleMachineToolTypeChange()
     /* Update actions stuff: */
     updateActionsVisibility();
     updateActionsAppearance();
+
+    /* Make sure separate dialog closed when corresponding tool opened: */
+    switch (m_pWidget->toolsTypeMachine())
+    {
+        case UIToolType_Logs:
+            sltCloseManagerWindow(m_pWidget->toolsTypeMachine());
+            break;
+        default:
+            break;
+    }
 }
 
 void UIVirtualBoxManager::sltCreateMedium()
