@@ -1,4 +1,4 @@
-# $Id: Config.kmk 102415 2023-12-01 09:42:46Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 102758 2024-01-03 20:23:57Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -9186,7 +9186,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 102415 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 102758 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
@@ -9305,6 +9305,12 @@ build-release-amd64:
 
 build-debug-amd64:
 	+$(MAKE) KBUILD_TYPE=debug KBUILD_TARGET_ARCH=amd64
+
+build-release-arm64:
+	+$(MAKE) KBUILD_TYPE=release KBUILD_TARGET_ARCH=arm64
+
+build-debug-arm64:
+	+$(MAKE) KBUILD_TYPE=debug KBUILD_TARGET_ARCH=arm64
 
 
 #
