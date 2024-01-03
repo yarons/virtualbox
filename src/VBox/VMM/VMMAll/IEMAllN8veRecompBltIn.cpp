@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 102755 2024-01-03 18:58:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 102756 2024-01-03 19:45:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -241,7 +241,7 @@ IEM_DECL_IEMNATIVERECOMPFUNC_DEF(iemNativeRecompFunc_BltIn_CheckIrq)
     iemNativeLabelDefine(pReNative, idxLabelVmCheck, off);
     iemNativeFixupFixedJump(pReNative, offFixupJumpToVmCheck1, off);
     off = iemNativeEmitLoadGprFromVCpuU64(pReNative, off, idxTmpReg, RT_UOFFSETOF(VMCPUCC, CTX_SUFF(pVM))); /* idxTmpReg = pVM */
-    off = iemNativeEmitLoadGpr32ByGpr(pReNative, off, idxTmpReg, idxTmpReg, RT_UOFFSETOF(VMCC, fGlobalForcedActions));
+    off = iemNativeEmitLoadGprByGprU32(pReNative, off, idxTmpReg, idxTmpReg, RT_UOFFSETOF(VMCC, fGlobalForcedActions));
     off = iemNativeEmitAndGpr32ByImm(pReNative, off, idxTmpReg, VM_FF_ALL_MASK, true /*fSetFlags*/);
     off = iemNativeEmitJnzToLabel(pReNative, off, idxLabelReturnBreak);
 
