@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.h 102753 2024-01-03 17:24:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceVMInfo.h - Internal VM info definitions.
  */
@@ -34,7 +34,11 @@
 
 extern int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
                             const char *pszKey, const char *pszValueFormat, ...);
+extern int VGSvcUserUpdateV(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
+                            const char *pszKey, const char *pszFormat, va_list va);
 
+extern int vgsvcVMInfoWinUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
+                                     const char *pszKey, const char *pszValueFormat, ...);
 
 extern uint32_t g_uVMInfoUserIdleThresholdMS;
 
