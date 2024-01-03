@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 102702 2023-12-26 00:30:00Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 102755 2024-01-03 18:58:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -163,7 +163,7 @@ IEM_DECL_IEMNATIVERECOMPFUNC_DEF(iemNativeRecompFunc_BltIn_DeferToCImpl0)
 {
     PFNIEMCIMPL0 const pfnCImpl     = (PFNIEMCIMPL0)(uintptr_t)pCallEntry->auParams[0];
     uint8_t const      cbInstr      = (uint8_t)pCallEntry->auParams[1];
-    uint64_t const     fGstShwFlush = (uint8_t)pCallEntry->auParams[2];
+    uint64_t const     fGstShwFlush = pCallEntry->auParams[2];
     return iemNativeEmitCImplCall(pReNative, off, pCallEntry->idxInstr, fGstShwFlush, (uintptr_t)pfnCImpl, cbInstr, 0, 0, 0, 0);
 }
 
