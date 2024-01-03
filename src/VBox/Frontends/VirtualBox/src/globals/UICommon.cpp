@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102525 2023-12-07 15:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 102750 2024-01-03 16:10:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -326,7 +326,9 @@ void UICommon::prepare()
     m_fDarkMode = UICocoaApplication::instance()->isDarkMode();
 #elif defined(VBOX_WS_WIN)
     m_fDarkMode = isWindowsInDarkMode();
-#endif
+#else /* Linux, BSD, Solaris */
+    m_fDarkMode = isPaletteInDarkMode();
+#endif /* Linux, BSD, Solaris */
     /* Load color theme: */
     loadColorTheme();
 
@@ -1010,7 +1012,11 @@ QString UICommon::hostOperatingSystem() const
     return m_comHost.GetOperatingSystem();
 }
 
-#ifdef VBOX_WS_WIN
+#if defined(VBOX_WS_MAC)
+// Provided by UICocoaApplication ..
+
+#elif defined(VBOX_WS_WIN)
+
 bool UICommon::isWindowsInDarkMode() const
 {
     /* Load saved color theme: */
@@ -1028,7 +1034,17 @@ bool UICommon::isWindowsInDarkMode() const
     /* Return result: */
     return enmColorTheme == UIColorThemeType_Dark;
 }
-#endif /* VBOX_WS_WIN */
+
+#else /* Linux, BSD, Solaris */
+
+bool UICommon::isPaletteInDarkMode() const
+{
+    const QPalette pal = qApp->palette();
+    const QColor background = pal.color(QPalette::Active, QPalette::Window);
+    const double dLuminance = (0.299 * background.red() + 0.587 * background.green() + 0.114 * background.blue()) / 255;
+    return dLuminance < 0.5;
+}
+#endif /* Linux, BSD, Solaris */
 
 void UICommon::loadColorTheme()
 {
