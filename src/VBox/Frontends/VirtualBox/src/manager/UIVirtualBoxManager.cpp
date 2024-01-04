@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102763 2024-01-04 14:56:23Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102764 2024-01-04 15:46:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1068,9 +1068,6 @@ void UIVirtualBoxManager::sltEmbedManagerWindow(UIToolType enmType /* = UIToolTy
 
     /* Make sure type is valid: */
     AssertReturnVoid(enmType != UIToolType_Invalid);
-
-    /* Make sure corresponding manager window is closed (if any): */
-    sltCloseManagerWindow(enmType);
 
     /* Open known tool finally: */
     switch (enmType)
