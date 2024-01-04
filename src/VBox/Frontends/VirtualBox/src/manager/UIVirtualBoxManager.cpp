@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 102744 2024-01-02 16:15:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 102760 2024-01-04 14:05:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1187,6 +1187,26 @@ void UIVirtualBoxManager::sltClosePreferencesDialog()
     delete m_settings.take(UIAdvancedSettingsDialog::Type_Global);
 }
 
+void UIVirtualBoxManager::sltPerformShowGlobalTool(QAction *pAction)
+{
+    /* Sanity checks: */
+    AssertPtrReturnVoid(pAction);
+    AssertPtrReturnVoid(m_pWidget);
+
+    /* Acquire tool type: */
+    const UIToolType enmType = pAction->property("UIToolType").value<UIToolType>();
+    AssertReturnVoid(enmType != UIToolType_Invalid);
+
+    /* Make sure global item is selected: */
+    m_pWidget->switchToGlobalItem();
+
+    /* Make sure corresponding manager window is closed (if any): */
+    sltCloseManagerWindow(enmType);
+
+    /* Open the tool finally: */
+    m_pWidget->setToolsTypeGlobal(enmType);
+}
+
 void UIVirtualBoxManager::sltPerformExit()
 {
     close();
@@ -2249,26 +2269,6 @@ void UIVirtualBoxManager::sltHandlePoweredOffMachine(bool fSuccess, bool fInclud
     }
 }
 
-void UIVirtualBoxManager::sltPerformShowGlobalTool(QAction *pAction)
-{
-    /* Sanity checks: */
-    AssertPtrReturnVoid(pAction);
-    AssertPtrReturnVoid(m_pWidget);
-
-    /* Acquire tool type: */
-    const UIToolType enmType = pAction->property("UIToolType").value<UIToolType>();
-    AssertReturnVoid(enmType != UIToolType_Invalid);
-
-    /* Make sure global item is selected: */
-    m_pWidget->switchToGlobalItem();
-
-    /* Make sure corresponding manager window is closed (if any): */
-    sltCloseManagerWindow(enmType);
-
-    /* Open the tool finally: */
-    m_pWidget->setToolsTypeGlobal(enmType);
-}
-
 void UIVirtualBoxManager::sltPerformShowMachineTool(QAction *pAction)
 {
     /* Sanity checks: */
@@ -2561,6 +2561,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltOpenPreferencesDialog);
     connect(actionPool()->action(UIActionIndexMN_M_File_S_Close), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltPerformExit);
+
+    /* 'File/Tools' menu connections: */
     connect(actionPool()->actionGroup(UIActionIndexMN_M_File_M_Tools), &QActionGroup::triggered,
             this, &UIVirtualBoxManager::sltPerformShowGlobalTool);
 
