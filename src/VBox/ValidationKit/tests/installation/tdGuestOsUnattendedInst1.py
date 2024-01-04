@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 102745 2024-01-02 16:33:52Z ksenia.s.stepanova@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 102759 2024-01-04 11:59:59Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102745 $"
+__version__ = "$Revision: 102759 $"
 
 
 # Standard Python imports.
@@ -224,7 +224,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         if oTestDrv.fpApiVer >= 7.1: # Since 7.1 we offer different passwords for user and admin/root accounts.
             asAttribs.extend( [ 'userPassword', 'adminPassword' ] );
         else:
-            asAttribs.append( [ 'password' ] );
+            asAttribs.append('password')
         for sAttrib in asAttribs:
             try:
                 oValue = getattr(oIUnattended, sAttrib);
