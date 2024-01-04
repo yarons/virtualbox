@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102737 2023-12-31 16:05:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102765 2024-01-04 19:01:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -823,7 +823,7 @@ DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpImm(PIEMRECOMPILERSTATE pReNativ
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpForGuestReg(PIEMRECOMPILERSTATE pReNative, uint32_t *poff,
                                                             IEMNATIVEGSTREG enmGstReg,
                                                             IEMNATIVEGSTREGUSE enmIntendedUse = kIemNativeGstRegUse_ReadOnly,
-                                                            bool fNoVoltileRegs = false);
+                                                            bool fNoVolatileRegs = false);
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpForGuestRegIfAlreadyPresent(PIEMRECOMPILERSTATE pReNative, uint32_t *poff,
                                                                             IEMNATIVEGSTREG enmGstReg);
 
