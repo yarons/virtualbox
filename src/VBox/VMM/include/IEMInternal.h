@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 102703 2023-12-26 12:39:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 102766 2024-01-04 20:53:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -5255,6 +5255,13 @@ void            iemMemFlat64StackPushU16SafeJmp(PVMCPUCC pVCpu, uint16_t uValue)
 void            iemMemFlat64StackPushU64SafeJmp(PVMCPUCC pVCpu, uint64_t uValue) IEM_NOEXCEPT_MAY_LONGJMP;
 void            iemMemFlat64StackPopGRegU16SafeJmp(PVMCPUCC pVCpu, uint8_t iGReg) IEM_NOEXCEPT_MAY_LONGJMP;
 void            iemMemFlat64StackPopGRegU64SafeJmp(PVMCPUCC pVCpu, uint8_t iGReg) IEM_NOEXCEPT_MAY_LONGJMP;
+
+void            iemMemStoreStackU16SafeJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint16_t uValue) IEM_NOEXCEPT_MAY_LONGJMP;
+void            iemMemStoreStackU32SafeJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t uValue) IEM_NOEXCEPT_MAY_LONGJMP;
+void            iemMemStoreStackU32SRegSafeJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint32_t uValue) IEM_NOEXCEPT_MAY_LONGJMP;
+void            iemMemStoreStackU64SafeJmp(PVMCPUCC pVCpu, RTGCPTR GCPtrMem, uint64_t uValue) IEM_NOEXCEPT_MAY_LONGJMP;
+
+
 #endif
 
 /** @} */
