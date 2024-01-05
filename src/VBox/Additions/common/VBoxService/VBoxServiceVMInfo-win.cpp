@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 102771 2024-01-05 08:38:17Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 102772 2024-01-05 08:54:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1117,7 +1117,7 @@ int vgsvcVMInfoWinUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUse
                         /* Also write the resolved user name into a dedicated key,
                          * so that it's easier to look it up for the host. */
                         if (RT_SUCCESS(rc))
-                            rc = VGSvcUserUpdateV(pCache, szUserRid, NULL /* pszDomain */, "User", pszUser);
+                            rc = VGSvcUserUpdateF(pCache, szUserRid, NULL /* pszDomain */, "User", pszUser);
                     }
                     else
                         rc = VERR_BUFFER_OVERFLOW;
