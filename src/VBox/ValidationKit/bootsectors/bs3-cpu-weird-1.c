@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1.c 102778 2024-01-06 01:43:05Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-weird-1.c 102779 2024-01-07 01:02:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-1, 16-bit C code.
  */
@@ -48,6 +48,7 @@
 FNBS3TESTDOMODE bs3CpuWeird1_DbgInhibitRingXfer_f16;
 FNBS3TESTDOMODE bs3CpuWeird1_PcWrapping_f16;
 FNBS3TESTDOMODE bs3CpuWeird1_PushPop_f16;
+FNBS3TESTDOMODE bs3CpuWeird1_PushPopSReg_f16;
 
 
 /*********************************************************************************************************************************
@@ -62,6 +63,7 @@ static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
     { "pc wrapping", bs3CpuWeird1_PcWrapping_f16, 0 },
 #endif
     { "push/pop", bs3CpuWeird1_PushPop_f16, 0 },
+    { "push/pop sreg", bs3CpuWeird1_PushPopSReg_f16, 0 },
 };
 
 
