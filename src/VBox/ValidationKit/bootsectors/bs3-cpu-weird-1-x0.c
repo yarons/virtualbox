@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1-x0.c 102779 2024-01-07 01:02:16Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-weird-1-x0.c 102780 2024-01-07 02:05:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-2, C test driver code (16-bit).
  */
@@ -1428,9 +1428,14 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_FAR_NM(bs3CpuWeird1_PushPopSReg)(uint8_t bTestMode
     BS3REGCTX               Ctx;
     uint16_t const          uInitialSel  = bTestMode != BS3_MODE_RM ? BS3_SEL_R3_DS16 : 0x8080;
     uint16_t const          uPopSel      = BS3_SEL_R3_SS16;
-    bool const              fFullWrite   = BS3_MODE_IS_64BIT_CODE(bTestMode);   /* 64-bit mode writes are full (10980XE). */
-    bool const              fFullRead    = false; /* But, 64-bit mode reads are word sized (10980XE). */
-    bool const              fInRmWrHiEfl = true; /* 10890XE writes EFLAGS[31:16] in the high word of a 'o32 PUSH FS'. */
+    bool const              fFullWrite   = BS3_MODE_IS_64BIT_CODE(bTestMode) /* 64-bit mode writes are full (10980XE). */
+                                        || (g_enmCpuVendor = Bs3GetCpuVendor()) == BS3CPUVENDOR_AMD
+                                        || g_enmCpuVendor == BS3CPUVENDOR_HYGON;
+    bool const              fFullRead    = false /* But, 64-bit mode reads are word sized (10980XE). */
+                                        || (g_enmCpuVendor = Bs3GetCpuVendor()) == BS3CPUVENDOR_AMD
+                                        || g_enmCpuVendor == BS3CPUVENDOR_HYGON;
+    bool const              fInRmWrHiEfl = true /* 10890XE writes EFLAGS[31:16] in the high word of a 'o32 PUSH FS'. */
+                                        && !fFullWrite;
     uint8_t const           cTestBits    = BS3_MODE_IS_16BIT_CODE(bTestMode) ? 16
                                          : BS3_MODE_IS_32BIT_CODE(bTestMode) ? 32 : 64;
     unsigned const          cbAltStack   = 2 * X86_PAGE_SIZE;
