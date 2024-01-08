@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 101427 2023-10-12 17:37:08Z klaus.espenlaub@oracle.com $ */
+/* $Id: DevFwCommon.cpp 102788 2024-01-08 16:31:52Z klaus.espenlaub@oracle.com $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -719,7 +719,9 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         pBIOSInf->u8CharacteristicsByte1 = RT_BIT(0)   /* ACPI is supported */
                                          /* any more?? */
                                          ;
-        pBIOSInf->u8CharacteristicsByte2 = fUefi ? RT_BIT(3) : 0
+        pBIOSInf->u8CharacteristicsByte2 = RT_BIT(2)   /* Enable targeted content distribution, needed by Windows to populate registry, see
+                                                          https://download.microsoft.com/download/5/D/6/5D6EAF2B-7DDF-476B-93DC-7CF0072878E6/SMBIOS.doc */
+                                         | fUefi ? RT_BIT(3) : 0
                                          /* any more?? */
                                          ;
         DMI_TERM_STRUCT;
