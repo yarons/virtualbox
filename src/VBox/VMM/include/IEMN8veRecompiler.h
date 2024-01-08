@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 102765 2024-01-04 19:01:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 102785 2024-01-08 11:59:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -682,6 +682,8 @@ typedef struct IEMRECOMPILERSTATE
 
     /** The translation block being recompiled. */
     PCIEMTB                     pTbOrg;
+    /** The VMCPU structure of the EMT. */
+    PVMCPUCC                    pVCpu;
 
     /** Condition sequence number (for generating unique labels). */
     uint16_t                    uCondSeqNo;
