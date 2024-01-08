@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 102743 2024-01-02 15:33:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 102787 2024-01-08 15:59:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -704,8 +704,8 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                                     this, &UIVirtualBoxManagerWidget::sigCurrentSnapshotItemChange);
                             connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigSwitchToActivityOverviewPane,
                                     this, &UIVirtualBoxManagerWidget::sltSwitchToActivityOverviewPane);
-                            connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigDetachLogViewer,
-                                    this, &UIVirtualBoxManagerWidget::sigDetachLogViewer);
+                            connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigDetachToolPane,
+                                    this, &UIVirtualBoxManagerWidget::sigDetachToolPane);
 
                             /* Add into stack: */
                             m_pStackedWidget->addWidget(m_pPaneToolsMachine);

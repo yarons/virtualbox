@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102743 2024-01-02 15:33:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102787 2024-01-08 15:59:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -123,10 +123,10 @@ signals:
         void sigCurrentSnapshotItemChange();
     /** @} */
 
-    /** @name Tools / Log Viewer pane stuff.
+    /** @name Tools / Generic pane stuff.
       * @{ */
-        /** Notifies listeners about request to detach Log Viewer pane. */
-        void sigDetachLogViewer();
+        /** Notifies listeners about request to detach pane with tool type @p enmToolType. */
+        void sigDetachToolPane(UIToolType enmToolType);
     /** @} */
 
 public:

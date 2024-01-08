@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 102723 2023-12-28 14:00:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 102787 2024-01-08 15:59:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -75,8 +75,8 @@ signals:
     /** Notifies listeners about request to switch to Activity Overview pane. */
     void sigSwitchToActivityOverviewPane();
 
-    /** Notifies listeners about request to detach Log Viewer pane. */
-    void sigDetachLogViewer();
+    /** Notifies listeners about request to detach pane with tool type @enmToolType. */
+    void sigDetachToolPane(UIToolType enmToolType);
 
 public:
 
@@ -113,6 +113,11 @@ public:
 
     /** Returns the help keyword of the current tool's widget. */
     QString currentHelpKeyword() const;
+
+private slots:
+
+    /** Handles the detach signals received from panes.*/
+    void sltDetachToolPane();
 
 private:
 
