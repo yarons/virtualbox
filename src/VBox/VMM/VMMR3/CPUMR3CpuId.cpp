@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102693 2023-12-22 09:00:48Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102781 2024-01-08 09:16:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3544,7 +3544,7 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
              * enables MTRR read support as well. */
             bool fEnableMtrrWrite;
             rc = CFGMR3QueryBoolDef(pCpumCfg, "MtrrWrite", &fEnableMtrrWrite,
-                                    false /** @todo true - 2023-12-12 bird: does not work yet, so disabled it */);
+                                    true /** @todo true - 2023-12-12 bird: does not work yet, so disabled it */);
             AssertRCReturn(rc, rc);
             if (fEnableMtrrWrite)
             {
