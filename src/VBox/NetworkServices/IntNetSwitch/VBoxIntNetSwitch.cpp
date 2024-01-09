@@ -1,4 +1,4 @@
-/* $Id: VBoxIntNetSwitch.cpp 100870 2023-08-14 12:51:17Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxIntNetSwitch.cpp 102797 2024-01-09 15:01:16Z brent.paulson@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -606,6 +606,7 @@ static void intnetR3RequestProcess(xpc_connection_t hCon, xpc_object_t hObj, PSU
     xpc_dictionary_set_uint64(hObjReply, "rc", INTNET_R3_SVC_SET_RC(rc));
     xpc_dictionary_set_data(hObjReply, "reply", &ReqReply, cbReply);
     xpc_connection_send_message(hCon, hObjReply);
+    xpc_release(hObjReply);
 }
 
 
