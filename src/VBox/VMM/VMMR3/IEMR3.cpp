@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 102800 2024-01-09 22:19:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 102801 2024-01-09 22:53:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -295,7 +295,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
         STAMR3RegisterF(pVM, &pVCpu->iem.s.CodeTlb.cTlbHits,            STAMTYPE_U64_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Code TLB hits",                            "/IEM/CPU%u/CodeTlb-Hits", idCpu);
         STAMR3RegisterF(pVM, &pVCpu->iem.s.DataTlb.cTlbHits,            STAMTYPE_U64_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
-                        "Data TLB hits",                            "/IEM/CPU%u/DataTlb-Hits", idCpu);
+                        "Data TLB hits",                            "/IEM/CPU%u/DataTlb-Hits-Other", idCpu);
 #  ifdef VBOX_WITH_IEM_RECOMPILER
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeTlbHitsForStack, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_NONE,
                         "Data TLB native stack access hits",        "/IEM/CPU%u/DataTlb-Hits-Native-Stack", idCpu);
