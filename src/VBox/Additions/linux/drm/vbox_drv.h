@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 101079 2023-09-11 14:04:13Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_drv.h 102794 2024-01-09 13:00:46Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -529,7 +529,7 @@ struct drm_gem_object *vbox_gem_prime_import_sg_table(
 #endif
 void *vbox_gem_prime_vmap(struct drm_gem_object *obj);
 void vbox_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
-#if RTLNX_VER_MAX(6,6,0)
+#if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_MAJ_PREREQ(9,4)
 int vbox_gem_prime_mmap(struct drm_gem_object *obj,
 			struct vm_area_struct *area);
 #endif
