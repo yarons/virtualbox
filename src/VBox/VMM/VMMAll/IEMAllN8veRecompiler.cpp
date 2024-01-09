@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102790 2024-01-09 01:41:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102791 2024-01-09 09:24:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -2856,8 +2856,11 @@ DECL_HIDDEN_THROW(PIEMNATIVEINSTR) iemNativeInstrBufEnsureSlow(PIEMRECOMPILERSTA
     void *pvNew = RTMemRealloc(pReNative->pInstrBuf, cbNew);
     AssertStmt(pvNew, IEMNATIVE_DO_LONGJMP(pReNative, VERR_IEM_INSTR_BUF_OUT_OF_MEMORY));
 
-    pReNative->cInstrBufAlloc   = cNew;
-    return pReNative->pInstrBuf = (PIEMNATIVEINSTR)pvNew;
+#ifdef VBOX_STRICT
+    pReNative->offInstrBufChecked = off + cInstrReq;
+#endif
+    pReNative->cInstrBufAlloc     = cNew;
+    return pReNative->pInstrBuf   = (PIEMNATIVEINSTR)pvNew;
 }
 
 #ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
