@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 102468 2023-12-05 10:37:41Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 102818 2024-01-10 13:56:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -619,34 +619,14 @@ static DECLCALLBACK(int) shClSvcX11RequestDataFromSourceCallback(PSHCLCONTEXT pC
                     rc = ShClTransferHttpServerRegisterTransfer(pHttpSrv, pTransfer);
                     if (RT_SUCCESS(rc))
                     {
-                        char *pszURL = NULL;
-
-                        uint64_t const cRoots = ShClTransferRootsCount(pTransfer);
-                        for (uint32_t i = 0; i < cRoots; i++)
-                        {
-                            char *pszEntry = ShClTransferHttpServerGetUrlA(pHttpSrv, ShClTransferGetID(pTransfer), i /* Entry index */);
-                            AssertPtrBreakStmt(pszEntry, rc = VERR_NO_MEMORY);
-
-                            if (i > 0)
-                            {
-                                rc = RTStrAAppend(&pszURL, "\n"); /* Separate entries with a newline. */
-                                AssertRCBreak(rc);
-                            }
-
-                            rc = RTStrAAppend(&pszURL, pszEntry);
-                            AssertRCBreak(rc);
-
-                            RTStrFree(pszEntry);
-                        }
-
+                        char  *pszData;
+                        size_t cbData;
+                        rc = ShClTransferHttpConvertToStringList(pHttpSrv, pTransfer, &pszData, &cbData);
                         if (RT_SUCCESS(rc))
                         {
-                            *ppv = pszURL;
-                            *pcb = strlen(pszURL) + 1 /* Include terminator */;
-
-                            LogFlowFunc(("URL is '%s'\n", pszURL));
-
-                            /* ppv has ownership of pszURL. */
+                            *ppv = pszData;
+                            *pcb = cbData;
+                            /* ppv has ownership of pszData now. */
                         }
                     }
 # else
