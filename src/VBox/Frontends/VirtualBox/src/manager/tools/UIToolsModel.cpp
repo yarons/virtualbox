@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 102812 2024-01-10 11:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 102813 2024-01-10 12:27:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -218,7 +218,7 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
         m_pCurrentItem->update();
 
     /* Notify about selection change: */
-    emit sigSelectionChanged();
+    emit sigSelectionChanged(toolsType());
 
     /* Move focus to current-item: */
     setFocusItem(currentItem());

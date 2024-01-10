@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 102812 2024-01-10 11:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 102813 2024-01-10 12:27:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -71,8 +71,9 @@ signals:
 
     /** @name Selection stuff.
       * @{ */
-        /** Notifies about selection changed. */
-        void sigSelectionChanged();
+        /** Notifies about selection changed.
+          * @param  enmType  Brings current tool type. */
+        void sigSelectionChanged(UIToolType enmType);
         /** Notifies about focus changed. */
         void sigFocusChanged();
 
