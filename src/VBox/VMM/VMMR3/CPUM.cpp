@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 102799 2024-01-09 16:04:32Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 102804 2024-01-10 03:40:36Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3805,7 +3805,7 @@ static int cpumR3MapMtrrs(PVM pVM)
     else
     {
         LogRel(("CPUM: WARNING! Cannot fully map RAM of %' Rhcb (%RU64 bytes) as it exceeds maximum physical-address (%#RX64)\n",
-                cbRam, cbRam, cbRamHole, cbRamHole, GCPhysEndMax - 1));
+                GCPhysEnd, GCPhysEnd, GCPhysEndMax - 1));
     }
 
     /*
