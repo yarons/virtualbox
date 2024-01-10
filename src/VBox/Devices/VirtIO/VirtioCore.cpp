@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 100402 2023-07-06 09:06:38Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.cpp 102827 2024-01-10 20:24:37Z klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -984,7 +984,7 @@ DECLHIDDEN(int) virtioCoreR3VirtqUsedBufPut(PPDMDEVINS pDevIns, PVIRTIOCORE pVir
         while (cbRemain)
         {
             cbCopy = RT_MIN(pSgVirtReturn->cbSegLeft,  pSgPhysReturn->cbSegLeft);
-            Assert(cbCopy > 0);
+            AssertReturn(cbCopy > 0, VERR_INVALID_PARAMETER);
             virtioCoreGCPhysWrite(pVirtio, pDevIns, (RTGCPHYS)pSgPhysReturn->GCPhysCur, pSgVirtReturn->pvSegCur, cbCopy);
             RTSgBufAdvance(pSgVirtReturn, cbCopy);
             virtioCoreGCPhysChainAdvance(pSgPhysReturn, cbCopy);

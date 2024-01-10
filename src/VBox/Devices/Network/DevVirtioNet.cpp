@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 101400 2023-10-10 08:39:16Z alexander.eichner@oracle.com $ $Revision: 101400 $ $Date: 2023-10-10 10:39:16 +0200 (Tue, 10 Oct 2023) $ $Author: alexander.eichner@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 102827 2024-01-10 20:24:37Z klaus.espenlaub@oracle.com $ $Revision: 102827 $ $Date: 2024-01-10 21:24:37 +0100 (Wed, 10 Jan 2024) $ $Author: klaus.espenlaub@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -2806,6 +2806,12 @@ static int virtioNetR3TransmitPkts(PPDMDEVINS pDevIns, PVIRTIONET pThis, PVIRTIO
                     uint64_t srcSgLen   = (uint64_t)paSeg->cbSeg;
                     uint64_t srcSgCur   = (uint64_t)pSgPhysSend->GCPhysCur;
                     cbCopied = RT_MIN((uint64_t)cbRemain, srcSgLen - (srcSgCur - srcSgStart));
+                    /*
+                     * Guest sent a bogus S/G chain, there doesn't seem to be a way to report an error but
+                     * as this shouldn't happen anyway we just stop proccessing this chain.
+                     */
+                    if (RT_UNLIKELY(!cbCopied))
+                        break;
                     virtioCoreGCPhysRead(pVirtio, pDevIns,
                                          (RTGCPHYS)pSgPhysSend->GCPhysCur,
                                          ((uint8_t *)pSgBufToPdmLeafDevice->aSegs[0].pvSeg) + uOffset, cbCopied);
