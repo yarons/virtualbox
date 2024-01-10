@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 102107 2023-11-15 14:09:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 102811 2024-01-10 11:08:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -63,6 +63,12 @@ class UIToolsModel : public QIWithRetranslateUI3<QObject>
 
 signals:
 
+    /** @name General stuff.
+      * @{ */
+        /** Notifies about closing request. */
+        void sigClose();
+    /** @} */
+
     /** @name Selection stuff.
       * @{ */
         /** Notifies about selection changed. */
@@ -124,8 +130,8 @@ public:
         /** Returns restricted tool types. */
         QList<UIToolType> restrictedToolTypes() const;
 
-        /** Closes parent. */
-        void closeParent();
+        /** Asks parent to close. */
+        void close();
     /** @} */
 
     /** @name Children stuff.

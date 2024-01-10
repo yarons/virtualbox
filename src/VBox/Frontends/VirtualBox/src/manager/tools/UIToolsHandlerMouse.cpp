@@ -1,4 +1,4 @@
-/* $Id: UIToolsHandlerMouse.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsHandlerMouse.cpp 102811 2024-01-10 11:08:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsHandlerMouse class implementation.
  */
@@ -75,7 +75,7 @@ bool UIToolsHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) con
                 if (pClickedItem && pClickedItem->isEnabled())
                 {
                     model()->setCurrentItem(pClickedItem);
-                    model()->closeParent();
+                    model()->close();
                 }
                 break;
             }

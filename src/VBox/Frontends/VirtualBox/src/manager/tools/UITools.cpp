@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 102107 2023-11-15 14:09:46Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 102811 2024-01-10 11:08:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -143,6 +143,8 @@ void UITools::prepareView()
 void UITools::prepareConnections()
 {
     /* Model connections: */
+    connect(m_pToolsModel, &UIToolsModel::sigClose,
+            this, &UITools::close);
     connect(m_pToolsModel, &UIToolsModel::sigItemMinimumWidthHintChanged,
             m_pToolsView, &UIToolsView::sltMinimumWidthHintChanged);
     connect(m_pToolsModel, &UIToolsModel::sigItemMinimumHeightHintChanged,

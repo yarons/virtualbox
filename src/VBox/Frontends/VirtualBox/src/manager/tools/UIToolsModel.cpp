@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 102112 2023-11-15 16:03:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 102811 2024-01-10 11:08:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -168,10 +168,9 @@ QList<UIToolType> UIToolsModel::restrictedToolTypes() const
     return m_restrictedToolTypes;
 }
 
-void UIToolsModel::closeParent()
+void UIToolsModel::close()
 {
-    if (m_pTools)
-        m_pTools->close();
+    emit sigClose();
 }
 
 void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
