@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 100676 2023-07-21 11:26:04Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 102816 2024-01-10 13:46:14Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -1244,6 +1244,7 @@ uint16_t ShClTransferHttpServerGetPort(PSHCLHTTPSERVER pSrv);
 uint32_t ShClTransferHttpServerGetTransferCount(PSHCLHTTPSERVER pSrv);
 char *ShClTransferHttpServerGetAddressA(PSHCLHTTPSERVER pSrv);
 char *ShClTransferHttpServerGetUrlA(PSHCLHTTPSERVER pSrv, SHCLTRANSFERID idTransfer, uint64_t idxEntry);
+int ShClTransferHttpConvertToStringList(PSHCLHTTPSERVER pSrv, PSHCLTRANSFER pTransfer, char **ppszData, size_t *pcbData);
 bool ShClTransferHttpServerIsInitialized(PSHCLHTTPSERVER pSrv);
 bool ShClTransferHttpServerIsRunning(PSHCLHTTPSERVER pSrv);
 int ShClTransferHttpServerWaitForStatusChange(PSHCLHTTPSERVER pSrv, SHCLHTTPSERVERSTATUS fStatus, RTMSINTERVAL msTimeout);
