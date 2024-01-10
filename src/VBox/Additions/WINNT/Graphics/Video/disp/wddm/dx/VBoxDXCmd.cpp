@@ -1,4 +1,4 @@
-/* $Id: VBoxDXCmd.cpp 102631 2023-12-18 12:01:14Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDXCmd.cpp 102809 2024-01-10 08:18:11Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver utilities.
  */
@@ -1247,6 +1247,35 @@ int vgpu10ResourceCopy(PVBOXDX_DEVICE pDevice,
     SVGA3dCmdDXPredCopy *cmd = (SVGA3dCmdDXPredCopy *)pvCmd;
     cmd->dstSid = SVGA3D_INVALID_ID;
     cmd->srcSid = SVGA3D_INVALID_ID;
+
+    vboxDXStorePatchLocation(pDevice, &cmd->dstSid, VBOXDXALLOCATIONTYPE_SURFACE,
+                             hDstAllocation, 0, true);
+    vboxDXStorePatchLocation(pDevice, &cmd->srcSid, VBOXDXALLOCATIONTYPE_SURFACE,
+                             hSrcAllocation, 0, false);
+
+    vboxDXCommandBufferCommit(pDevice);
+    return VINF_SUCCESS;
+}
+
+
+int vgpu10ResolveCopy(PVBOXDX_DEVICE pDevice,
+                      D3DKMT_HANDLE hDstAllocation,
+                      uint32 dstSubResource,
+                      D3DKMT_HANDLE hSrcAllocation,
+                      uint32 srcSubResource,
+                      SVGA3dSurfaceFormat copyFormat)
+{
+    void *pvCmd = vboxDXCommandBufferReserve(pDevice, SVGA_3D_CMD_DX_RESOLVE_COPY,
+                                             sizeof(SVGA3dCmdDXResolveCopy), 2);
+    if (!pvCmd)
+        return VERR_NO_MEMORY;
+
+    SVGA3dCmdDXResolveCopy *cmd = (SVGA3dCmdDXResolveCopy *)pvCmd;
+    cmd->dstSid = SVGA3D_INVALID_ID;
+    SET_CMD_FIELD(dstSubResource);
+    cmd->srcSid = SVGA3D_INVALID_ID;
+    SET_CMD_FIELD(srcSubResource);
+    SET_CMD_FIELD(copyFormat);
 
     vboxDXStorePatchLocation(pDevice, &cmd->dstSid, VBOXDXALLOCATIONTYPE_SURFACE,
                              hDstAllocation, 0, true);
