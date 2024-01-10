@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 102804 2024-01-10 03:40:36Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 102805 2024-01-10 03:52:33Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3368,6 +3368,11 @@ static int cpumR3MtrrMapAddRegion(PVM pVM, PCPUMMTRRMAP pMtrrMap, RTGCPHYS GCPhy
     Assert(fType < 7 && fType != 2 && fType != 3);
     if (pMtrrMap->idxMtrr < pMtrrMap->cMtrrs)
     {
+        /*
+         * We must ensure the physical-address does not exceed the maximum guest-physical address width.
+         * Otherwise, the MTRR physical mask computation gets totally busted rather than returning 0 to
+         * indicate such mapping is impossible.
+         */
         RTGCPHYS const GCPhysLastMax = RT_BIT_64(pVM->cpum.s.GuestFeatures.cMaxPhysAddrWidth) - 1U;
         if (GCPhysLast <= GCPhysLastMax)
         {
