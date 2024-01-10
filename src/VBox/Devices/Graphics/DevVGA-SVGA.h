@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA.h 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device
  */
@@ -360,7 +360,9 @@ typedef struct VMSVGAState
     bool volatile               fBadGuest;
     /** Whether the VirtualBox extensions for VMSVGA device (new commands and caps) are enabled. */
     bool                        fVBoxExtensions;
-    bool                        afPadding[3];
+    /** Whether MSAA support is enabled. */
+    bool                        fVMSVGA3dMSAA;
+    bool                        afPadding[2];
     uint32_t                    uWidth;
     uint32_t                    uHeight;
     uint32_t                    uBpp;

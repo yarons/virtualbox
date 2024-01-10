@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 102714 2023-12-27 15:34:25Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -2623,7 +2623,7 @@ int vmsvga3dIntraSurfaceCopy(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCm
 }
 
 
-int vmsvga3dDXResolveCopy(PVGASTATECC pThisCC, uint32_t idDXContext)
+int vmsvga3dDXResolveCopy(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXResolveCopy const *pCmd)
 {
     int rc;
     PVMSVGAR3STATE const pSvgaR3State = pThisCC->svga.pSvgaR3State;
@@ -2635,7 +2635,8 @@ int vmsvga3dDXResolveCopy(PVGASTATECC pThisCC, uint32_t idDXContext)
     rc = vmsvga3dDXContextFromCid(p3dState, idDXContext, &pDXContext);
     AssertRCReturn(rc, rc);
 
-    rc = pSvgaR3State->pFuncsDX->pfnDXResolveCopy(pThisCC, pDXContext);
+    rc = pSvgaR3State->pFuncsDX->pfnDXResolveCopy(pThisCC, pDXContext, pCmd->dstSid, pCmd->dstSubResource,
+                                                  pCmd->srcSid, pCmd->srcSubResource, pCmd->copyFormat);
     return rc;
 }
 

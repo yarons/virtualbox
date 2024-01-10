@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 100702 2023-07-26 06:24:17Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA.cpp 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6477,6 +6477,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 # ifdef VBOX_WITH_VMSVGA3D
                                             "|VMSVGA3dEnabled"
                                             "|VMSVGA3dOverlayEnabled"
+                                            "|VMSVGA3dMSAA"
 # endif
                                             "|SuppressNewYearSplash"
                                             "|3DEnabled";
@@ -6548,6 +6549,10 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA3dOverlayEnabled", &pThis->svga.f3DOverlayEnabled, false);
     AssertLogRelRCReturn(rc, rc);
     Log(("VMSVGA: VMSVGA3dOverlayEnabled = %d\n", pThis->svga.f3DOverlayEnabled));
+
+    rc = pHlp->pfnCFGMQueryBoolDef(pCfg, "VMSVGA3dMSAA", &pThis->svga.fVMSVGA3dMSAA, true);
+    AssertLogRelRCReturn(rc, rc);
+    Log(("VMSVGA: VMSVGA3dMSAA = %d\n", pThis->svga.fVMSVGA3dMSAA));
 # endif
 
 # ifdef VBOX_WITH_VMSVGA

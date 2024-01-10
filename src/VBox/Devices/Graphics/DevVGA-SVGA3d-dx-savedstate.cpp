@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-savedstate.cpp 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - DX backend saved state.
  */
@@ -70,10 +70,10 @@ static int vmsvga3dDXLoadSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
     AssertRCReturn(rc, rc);
 
     /** @todo fAllocMipLevels=false and alloc miplevels if there is data to be loaded. */
-    rc = vmsvga3dSurfaceDefine(pThisCC, sid, entrySurface.surface1Flags, entrySurface.format,
-                               entrySurface.multisampleCount, entrySurface.autogenFilter,
+    rc = vmsvga3dSurfaceDefine(pThisCC, sid, RT_MAKE_U64(entrySurface.surface1Flags, entrySurface.surface2Flags), entrySurface.format,
+                               entrySurface.multisampleCount, (SVGA3dMSPattern)entrySurface.multisamplePattern, (SVGA3dMSQualityLevel)entrySurface.qualityLevel, entrySurface.autogenFilter,
                                entrySurface.numMipLevels, &entrySurface.size,
-                               entrySurface.arraySize,
+                               entrySurface.arraySize, entrySurface.bufferByteStride,
                                /* fAllocMipLevels = */ true);
     AssertRCReturn(rc, rc);
 
@@ -308,6 +308,15 @@ static int vmsvga3dDXSaveSurface(PCPDMDEVHLPR3 pHlp, PVGASTATECC pThisCC, PSSMHA
         {
             uint32_t idx = iMipmap + iArray * pSurface->cLevels;
             PVMSVGA3DMIPMAPLEVEL pMipmapLevel = &pSurface->paMipmapLevels[idx];
+
+            /* Multisample surface content can't be accessed. */
+            if (pSurface->surfaceDesc.multisampleCount > 1)
+            {
+                /* No data follows */
+                rc = pHlp->pfnSSMPutBool(pSSM, false);
+                AssertRCReturn(rc, rc);
+                continue;
+            }
 
             if (!VMSVGA3DSURFACE_HAS_HW_SURFACE(pSurface))
             {
