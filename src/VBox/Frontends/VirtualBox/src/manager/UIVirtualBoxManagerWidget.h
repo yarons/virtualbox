@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102813 2024-01-10 12:27:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 102814 2024-01-10 13:10:55Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -360,16 +360,19 @@ private:
         void cleanup();
     /** @} */
 
-    /** @name Tools / Common stuff.
+    /** @name Common stuff.
+      * @{ */
+        /** Recaches current machine item information.
+          * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
+        void recacheCurrentMachineItemInformation(bool fDontRaiseErrorPane = false);
+    /** @} */
+
+    /** @name Tools stuff.
       * @{ */
         /** Updates Global tools menu. */
         void updateToolsMenuGlobal();
         /** Updates Machine tools menu for @a pItem specified. */
         void updateToolsMenuMachine(UIVirtualMachineItem *pItem);
-
-        /** Recaches current machine item information.
-          * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
-        void recacheCurrentMachineItemInformation(bool fDontRaiseErrorPane = false);
     /** @} */
 
     /** Holds the action-pool instance. */
