@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102800 2024-01-09 22:19:17Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102803 2024-01-10 00:39:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -923,7 +923,7 @@ iemNativeEmitIncStamCounterInVCpuEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint
         /* Use the unsigned variant of ldr Wt, [<Xn|SP>, #off]. */
         pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1,
                                                    IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
-        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, 1);
+        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
         pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1,
                                                    IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
     }
@@ -931,7 +931,7 @@ iemNativeEmitIncStamCounterInVCpuEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint
     {
         pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
                                                    (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
-        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, 1);
+        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
         pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
                                                    (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
     }
@@ -939,9 +939,9 @@ iemNativeEmitIncStamCounterInVCpuEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint
     {
         /* The offset is too large, so we must load it into a register and use
            ldr Wt, [<Xn|SP>, (<Wm>|<Xm>)]. */
-        off = iemNativeEmitLoadGprImmEx(pReNative, off, idxTmp2, offVCpu);
+        off = iemNativeEmitLoadGprImmEx(pCodeBuf, off, idxTmp2, offVCpu);
         pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU, idxTmp2);
-        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, 1);
+        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
         pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_St_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU, idxTmp2);
     }
 
