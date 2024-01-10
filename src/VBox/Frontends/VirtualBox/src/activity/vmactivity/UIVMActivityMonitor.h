@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 102774 2024-01-05 14:29:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 102810 2024-01-10 08:41:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -324,7 +324,8 @@ public:
 private slots:
 
     void sltMetricNameListingComplete(QVector<QString> metricNameList);
-    void sltMetricDataReceived(KMetricType enmMetricType, QVector<QString> data, QVector<QString> timeStamps);
+    void sltMetricDataReceived(KMetricType enmMetricType,
+                               const QVector<QString> &data, const QVector<QString> &timeStamps);
     void sltMachineStateUpdateTimeout();
 
 private:
