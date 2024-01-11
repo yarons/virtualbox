@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 102749 2024-01-03 15:17:55Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 102831 2024-01-11 08:56:53Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2449,7 +2449,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMount(PGCTLCMDCTX pCtx, int argc, char
     HRESULT hrc = S_OK;
 
     com::SafeArray<BSTR> mountPoints;
-    CHECK_ERROR(pCtx->pGuestSession, COMGETTER(MountPoints)(ComSafeArrayAsOutParam(mountPoints)));
+    CHECK_ERROR_RET(pCtx->pGuestSession, COMGETTER(MountPoints)(ComSafeArrayAsOutParam(mountPoints)), RTEXITCODE_FAILURE);
 
     for (size_t i = 0; i < mountPoints.size(); ++i)
         RTPrintf("%ls\n", mountPoints[i]);
@@ -2457,7 +2457,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMount(PGCTLCMDCTX pCtx, int argc, char
     if (pCtx->cVerbose)
         RTPrintf("Found %zu mount points\n", mountPoints.size());
 
-    return FAILED(hrc) ? RTEXITCODE_FAILURE : RTEXITCODE_SUCCESS;
+    return RTEXITCODE_SUCCESS;
 }
 
 static DECLCALLBACK(RTEXITCODE) gctlHandleFsInfo(PGCTLCMDCTX pCtx, int argc, char **argv)
