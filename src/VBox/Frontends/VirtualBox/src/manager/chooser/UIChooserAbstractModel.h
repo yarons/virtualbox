@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 102848 2024-01-11 16:10:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -142,6 +142,8 @@ public:
 
     /** @name Cloud update stuff.
       * @{ */
+        /** Returns whether real cloud nodes should be kept updated. */
+        bool isKeepCloudNodesUpdated() const { return m_fKeepCloudNodesUpdated; }
         /** Defines whether real cloud nodes should be kept updated. */
         void setKeepCloudNodesUpdated(bool fUpdate);
 
