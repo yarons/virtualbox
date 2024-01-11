@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 102831 2024-01-11 08:56:53Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 102833 2024-01-11 09:18:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3176,9 +3176,10 @@ int GuestSession::i_getMountPoints(std::vector<com::Utf8Str> &vecMountPoints, in
         return vrc;
 
     /* Prepare HGCM call. */
-    VBOXHGCMSVCPARM paParms[2];
+    VBOXHGCMSVCPARM paParms[4];
     int i = 0;
     HGCMSvcSetU32(&paParms[i++], pEvent->ContextID());
+    HGCMSvcSetU32(&paParms[i++], 0 /* fFlags, unused */);
 
     alock.release(); /* Drop lock before sending. */
 

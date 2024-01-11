@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 102833 2024-01-11 09:18:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -1273,22 +1273,27 @@ VBGLR3DECL(int) VbglR3GuestCtrlPathGetUserHome(PVBGLR3GUESTCTRLCMDCTX pCtx)
  * Retrieves a HOST_MSG_MOUNT_POINTS message.
  *
  * @param   pCtx                Guest control command context to use.
+ * @param   pfFlags             Where to return the get mount point flags on success.
  */
-VBGLR3DECL(int) VbglR3GuestCtrlGetMountPoints(PVBGLR3GUESTCTRLCMDCTX pCtx)
+VBGLR3DECL(int) VbglR3GuestCtrlGetMountPoints(PVBGLR3GUESTCTRLCMDCTX pCtx, uint32_t *pfFlags)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
-    AssertReturn(pCtx->uNumParms == 1, VERR_INVALID_PARAMETER);
+    AssertReturn(pCtx->uNumParms == 2, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pfFlags, VERR_INVALID_POINTER);
 
     int rc;
     do
     {
-        HGCMMsgPathUserHome Msg;
+        HGCMMsgMountPoints Msg;
         VBGL_HGCM_HDR_INIT(&Msg.hdr, pCtx->uClientID, vbglR3GuestCtrlGetMsgFunctionNo(pCtx->uClientID), pCtx->uNumParms);
         VbglHGCMParmUInt32Set(&Msg.context, HOST_MSG_MOUNT_POINTS);
 
         rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
         if (RT_SUCCESS(rc))
+        {
             Msg.context.GetUInt32(&pCtx->uContextID);
+            Msg.flags.GetUInt32(pfFlags);
+        }
     } while (rc == VERR_INTERRUPTED && g_fVbglR3GuestCtrlHavePeekGetCancel);
     return rc;
 }

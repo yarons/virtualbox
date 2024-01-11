@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 102833 2024-01-11 09:18:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1765,9 +1765,12 @@ static int vgsvcGstCtrlSessionHandleMountPoints(PVBOXSERVICECTRLSESSION pSession
     /*
      * Retrieve the request.
      */
-    int rc = VbglR3GuestCtrlGetMountPoints(pHostCtx);
+    uint32_t fFlags;
+    int rc = VbglR3GuestCtrlGetMountPoints(pHostCtx, &fFlags);
     if (RT_SUCCESS(rc))
     {
+        /* Note: fFlags is currently unused, so we simply ignore this here. */
+
         VGSVCMOUNTPOINTENUMCTX Ctx;
         Ctx.cb      = 0;
         Ctx.cbAlloc = _4K; /* Start with something sensible. */

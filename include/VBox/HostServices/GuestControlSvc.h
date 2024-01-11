@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 102831 2024-01-11 08:56:53Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 102833 2024-01-11 09:18:25Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1181,6 +1181,20 @@ typedef struct HGCMMsgPathUserHome
     /** UInt32: Context ID. */
     HGCMFunctionParameter context;
 } HGCMMsgPathUserHome;
+
+/**
+ * Retrieves mount points / drive letters from the guest.
+ *
+ * @since 7.1
+ */
+typedef struct HGCMMsgMountPoints
+{
+    VBGLIOCHGCMCALL hdr;
+    /** UInt32: Context ID. */
+    HGCMFunctionParameter context;
+    /** UInt32: Flags; currently unused. */
+    HGCMFunctionParameter flags;
+} HGCMMsgMountPoints;
 
 /**
  * Shuts down / reboots the guest.
