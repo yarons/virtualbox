@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 102828 2024-01-11 01:47:40Z knut.osmundsen@oracle.com $ */
+/* $Id: STAM.cpp 102842 2024-01-11 13:48:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1190,7 +1190,7 @@ static int stamR3RegisterPctOfSumEnumCallbackForSummands(PSTAMDESC pDesc, void *
  * @param   enmVisibility       Visibility type specifying whether unused statistics should be visible or not.
  * @param   enmUnit             The sample unit: STAMUNIT_PCT, STAMUNIT_PP1K,
  *                              STAMUNIT_PP10K, STAMUNIT_PPM or STAMUNIT_PPB.
- * @param   pszName             Name of the sample which value should be put
+ * @param   pszValue            Name of the sample which value should be put
  *                              against the sum of all.
  * @param   pszSummandPattern   A simple pattern for the elements that should be
  *                              summed up and used to divide @a pszName by when
@@ -1275,7 +1275,7 @@ VMMR3DECL(int) STAMR3RegisterPctOfSumV(PUVM pUVM, STAMVISIBILITY enmVisibility, 
  * @param   enmVisibility       Visibility type specifying whether unused statistics should be visible or not.
  * @param   enmUnit             The sample unit: STAMUNIT_PCT, STAMUNIT_PP1K,
  *                              STAMUNIT_PP10K, STAMUNIT_PPM or STAMUNIT_PPB.
- * @param   pszName             Name of the sample which value should be put
+ * @param   pszValue            Name of the sample which value should be put
  *                              against the sum of all.
  * @param   pszSummandPattern   A simple pattern for the elements that should be
  *                              summed up and used to divide @a pszName by when
