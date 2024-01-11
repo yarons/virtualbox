@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 102836 2024-01-11 12:12:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -83,11 +83,10 @@ public:
         /** Returns fake cloud item error message. */
         QString fakeCloudItemErrorMessage() const { return m_strFakeCloudItemErrorMessage; }
 
-        /** Updates cloud VM info async way, @a fDelayed if requested or instant otherwise.
-          * @param  fSubscribe  Brings whether this update should be performed periodically. */
-        void updateInfoAsync(bool fDelayed, bool fSubscribe = false);
-        /** Stop periodical updates previously requested. */
-        void stopAsyncUpdates();
+        /** Defines whether update is @a fRequired by local reason. */
+        void setUpdateRequiredByLocalReason(bool fRequired);
+        /** Updates cloud VM info async way, @a fDelayed if requested or instantly otherwise. */
+        void updateInfoAsync(bool fDelayed);
         /** Makes sure async info update is finished.
           * @note  This method creates own event-loop to avoid blocking calling thread event processing,
           *        so it's safe to call it from the GUI thread, ofc the method itself will be blocked. */
@@ -165,8 +164,8 @@ private:
         /** Holds fake cloud item error message. */
         QString                             m_strFakeCloudItemErrorMessage;
 
-        /** Holds whether we plan to refresh info. */
-        bool            m_fRefreshScheduled;
+        /** Holds whether update is required by local reason. */
+        bool            m_fUpdateRequiredByLocalReason;
         /** Holds the refresh progress-task instance. */
         UIProgressTask *m_pProgressTaskRefresh;
     /** @} */

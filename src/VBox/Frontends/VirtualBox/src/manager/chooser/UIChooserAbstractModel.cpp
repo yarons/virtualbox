@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 102836 2024-01-11 12:12:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -1646,7 +1646,8 @@ void UIChooserAbstractModel::createCloudMachineNode(UIChooserNode *pParentNode, 
     if (!comMachine.GetAccessible())
     {
         AssertReturnVoid(pNode && pNode->cacheType() == UIVirtualMachineItemType_CloudReal);
-        pNode->cache()->toCloud()->updateInfoAsync(false /* delayed? */);
+        UIVirtualMachineItemCloud *pCloudMachineItem = pNode->cache()->toCloud();
+        pCloudMachineItem->updateInfoAsync(false /* delayed? */);
     }
 }
 

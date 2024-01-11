@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemMachine.cpp 102836 2024-01-11 12:12:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -240,10 +240,10 @@ void UIChooserItemMachine::setSelected(bool fSelected)
     {
         UIVirtualMachineItemCloud *pCloudMachineItem = cache()->toCloud();
         AssertPtrReturnVoid(pCloudMachineItem);
-        if (fSelected && pCloudMachineItem->accessible())
-            pCloudMachineItem->updateInfoAsync(false /* delayed? */, true /* subscribe */);
-        else
-            pCloudMachineItem->stopAsyncUpdates();
+        const bool fUpdateRequired = fSelected && pCloudMachineItem->accessible();
+        pCloudMachineItem->setUpdateRequiredByLocalReason(fUpdateRequired);
+        if (fUpdateRequired)
+            pCloudMachineItem->updateInfoAsync(false /* delayed? */);
     }
 }
 
