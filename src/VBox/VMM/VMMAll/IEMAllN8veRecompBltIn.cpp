@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 102756 2024-01-03 19:45:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 102841 2024-01-11 13:48:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -70,6 +70,7 @@ DECLASM(void) iemNativeHlpAsmSafeWrapLogCpuState(void);
  */
 IEM_DECL_NATIVE_HLP_DEF(void, iemNativeHlpMemCodeNewPageTlbMiss,(PVMCPUCC pVCpu))
 {
+    STAM_COUNTER_INC(&pVCpu->iem.s.StatNativeCodeTlbMissesNewPage);
     pVCpu->iem.s.pbInstrBuf       = NULL;
     pVCpu->iem.s.offCurInstrStart = GUEST_PAGE_SIZE;
     pVCpu->iem.s.offInstrNextByte = GUEST_PAGE_SIZE;
@@ -88,6 +89,7 @@ IEM_DECL_NATIVE_HLP_DEF(void, iemNativeHlpMemCodeNewPageTlbMiss,(PVMCPUCC pVCpu)
  */
 IEM_DECL_NATIVE_HLP_DEF(RTGCPHYS, iemNativeHlpMemCodeNewPageTlbMissWithOff,(PVMCPUCC pVCpu, uint8_t offInstr))
 {
+    STAM_COUNTER_INC(&pVCpu->iem.s.StatNativeCodeTlbMissesNewPage);
     pVCpu->iem.s.pbInstrBuf       = NULL;
     pVCpu->iem.s.offCurInstrStart = GUEST_PAGE_SIZE - offInstr;
     pVCpu->iem.s.offInstrNextByte = GUEST_PAGE_SIZE;

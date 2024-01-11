@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 102817 2024-01-10 13:56:06Z michal.necasek@oracle.com $ */
+/* $Id: IEMInternal.h 102841 2024-01-11 13:48:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1742,7 +1742,9 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeTlbHitsForStack;
     /** Native recompiled execution: TLB hits for mapped accesses. */
     STAMCOUNTER             StatNativeTlbHitsForMapped;
-    uint64_t                au64Padding[7];
+    /** Native recompiled execution: Code TLB misses for new page. */
+    STAMCOUNTER             StatNativeCodeTlbMissesNewPage;
+    uint64_t                au64Padding[6];
     /** @} */
 
     /** Data TLB.
