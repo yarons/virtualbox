@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.h 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -122,6 +122,9 @@ public:
 
     /** @name Cloud update stuff.
       * @{ */
+        /** Defines whether real cloud nodes should be kept updated. */
+        void setKeepCloudNodesUpdated(bool fUpdate);
+
         /** Returns whether at least one cloud profile currently being updated. */
         bool isCloudProfileUpdateInProgress() const;
     /** @} */

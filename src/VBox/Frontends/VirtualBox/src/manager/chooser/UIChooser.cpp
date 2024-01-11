@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -54,6 +54,12 @@ bool UIChooser::isGroupSavingInProgress() const
 {
     AssertPtrReturn(model(), false);
     return model()->isGroupSavingInProgress();
+}
+
+void UIChooser::setKeepCloudNodesUpdated(bool fUpdate)
+{
+    AssertPtrReturnVoid(model());
+    return model()->setKeepCloudNodesUpdated(fUpdate);
 }
 
 bool UIChooser::isCloudProfileUpdateInProgress() const

@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -142,6 +142,9 @@ public:
 
     /** @name Cloud update stuff.
       * @{ */
+        /** Defines whether real cloud nodes should be kept updated. */
+        void setKeepCloudNodesUpdated(bool fUpdate);
+
         /** Inserts cloud entity @a key into a set of keys currently being updated. */
         void insertCloudEntityKey(const UICloudEntityKey &key);
         /** Removes cloud entity @a key from a set of keys currently being updated. */
@@ -399,6 +402,9 @@ private:
 
     /** @name Cloud update stuff.
       * @{ */
+        /** Holds whether real cloud nodes should be kept updated. */
+        bool  m_fKeepCloudNodesUpdated;
+
         /** Holds the set of cloud entity keys currently being updated. */
         QSet<UICloudEntityKey>  m_cloudEntityKeysBeingUpdated;
     /** @} */
