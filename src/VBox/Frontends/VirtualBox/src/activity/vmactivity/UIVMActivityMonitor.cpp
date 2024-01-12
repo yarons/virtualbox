@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 102858 2024-01-12 14:09:25Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 102860 2024-01-12 14:13:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -71,6 +71,7 @@ const int g_iMetricSetupCount = 1;
 const int g_iDecimalCount = 2;
 const int g_iBackgroundTint = 104;
 const quint64 uInvalidValueSentinel = ~0U;
+
 
 /*********************************************************************************************************************************
 *   UIProgressTaskReadCloudMachineMetricList definition.                                                                         *
