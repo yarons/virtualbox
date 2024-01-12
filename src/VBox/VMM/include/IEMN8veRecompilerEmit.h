@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102850 2024-01-12 00:47:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 102857 2024-01-12 13:48:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -724,7 +724,7 @@ iemNativeEmitStoreGprToVCpuU64Ex(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t
     RT_NOREF(iGprTmp);
 
 #elif defined(RT_ARCH_ARM64)
-    off = iemNativeEmitGprByVCpuLdStEx(pReNative, off, iGpr, offVCpu, kArmv8A64InstrLdStType_St_Dword, sizeof(uint64_t), iGprTmp);
+    off = iemNativeEmitGprByVCpuLdStEx(pCodeBuf, off, iGpr, offVCpu, kArmv8A64InstrLdStType_St_Dword, sizeof(uint64_t), iGprTmp);
 
 #else
 # error "port me"
