@@ -1,4 +1,4 @@
-# $Id: Config.kmk 102861 2024-01-12 15:31:16Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 102862 2024-01-12 17:37:01Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2324,6 +2324,7 @@ ifndef VBOX_BLD_PYTHON
  else ifndef VBOX_WITH_PYTHON2_PREFERENCE
   VBOX_BLD_PYTHON := $(firstword \
   		$(which python3$(HOSTSUFF_EXE)) \
+  		$(which python3.11$(HOSTSUFF_EXE)) \
   		$(which python3.10$(HOSTSUFF_EXE)) \
   		$(which python3.9$(HOSTSUFF_EXE)) \
   		$(which python3.8$(HOSTSUFF_EXE)) \
@@ -9187,7 +9188,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 102861 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 102862 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
