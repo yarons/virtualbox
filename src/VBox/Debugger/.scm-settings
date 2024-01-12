@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 102855 2024-01-12 10:51:18Z michal.necasek@oracle.com $
 ## @file
 # Source code massager settings for the Debugger.
 #
@@ -27,3 +27,10 @@
 
 /*.h: --guard-relative-to-dir . --guard-prefix DEBUGGER_INCLUDED_SRC_
 
+# Forbid PAGE_SIZE, PAGE_SIZE and PAGE_OFFSET_MASK w/o GUEST_ or HOST_ prefix.
+/*.cpp: --only-guest-host-page
+/*.h:   --only-guest-host-page
+
+# Forbid ASMMemIsZeroPage and ASMMemZeroPage.
+/*.cpp: --no-ASMMemPage-use
+/*.h:   --no-ASMMemPage-use
