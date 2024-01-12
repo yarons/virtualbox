@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102686 2023-12-21 22:50:16Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102850 2024-01-12 00:47:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -964,6 +964,20 @@ void iemOpcodeFetchBytesJmp(PVMCPUCC pVCpu, size_t cbDst, void *pvDst) IEM_NOEXC
                 Log(("iemOpcodeFetchMoreBytes: %RGv - NX\n", GCPtrFirst));
                 iemRaisePageFaultJmp(pVCpu, GCPtrFirst, 1, IEM_ACCESS_INSTRUCTION, VERR_ACCESS_DENIED);
             }
+        }
+
+        /*
+         * Set the accessed flags.
+         * ASSUMES this is set when the address is translated rather than on commit...
+         */
+        /** @todo testcase: check when the A bit are actually set by the CPU for code. */
+        if (pTlbe->fFlagsAndPhysRev & IEMTLBE_F_PT_NO_ACCESSED)
+        {
+            int rc2 = PGMGstModifyPage(pVCpu, GCPtrFirst, 1, X86_PTE_A, ~(uint64_t)X86_PTE_A);
+            AssertRC(rc2);
+            /** @todo Nested VMX: Accessed/dirty bit currently not supported, asserted below. */
+            Assert(!(CPUMGetGuestIa32VmxEptVpidCap(pVCpu) & VMX_BF_EPT_VPID_CAP_ACCESS_DIRTY_MASK));
+            pTlbe->fFlagsAndPhysRev &= ~IEMTLBE_F_PT_NO_ACCESSED;
         }
 
         /*
