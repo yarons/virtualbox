@@ -1,4 +1,4 @@
-# $Id: .scm-settings 100733 2023-07-28 22:51:16Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 102854 2024-01-12 10:18:52Z michal.necasek@oracle.com $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -55,7 +55,7 @@
 /VMMR3/PGMPool.cpp:     --no-page-restrictions
 /testcase/tstVMStructSize.cpp:     --no-page-restrictions
 
-# Forbit ASMMemIsZeroPage and ASMMemZeroPage.
+# Forbid ASMMemIsZeroPage and ASMMemZeroPage.
 /*.cpp: --no-ASMMemPage-use
 /*.h:   --no-ASMMemPage-use
 # Except in the pool where more care/work is needed.
