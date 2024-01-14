@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102850 2024-01-12 00:47:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102867 2024-01-14 22:26:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2114,6 +2114,13 @@ iemRaiseXcptOrIntInRealMode(PVMCPUCC      pVCpu,
         Log(("iemRaiseXcptOrIntInRealMode: failed to fetch IDT entry! vec=%#x rc=%Rrc\n", u8Vector, VBOXSTRICTRC_VAL(rcStrict)));
         return rcStrict;
     }
+
+#ifdef LOG_ENABLED
+    /* If software interrupt, try decode it if logging is enabled and such. */
+    if (   (fFlags & IEM_XCPT_FLAGS_T_SOFT_INT)
+        && LogIsItEnabled(RTLOGGRPFLAGS_ENABLED, LOG_GROUP_IEM_SYSCALL))
+        iemLogSyscallRealModeInt(pVCpu, u8Vector, cbInstr);
+#endif
 
     /*
      * Push the stack frame.
