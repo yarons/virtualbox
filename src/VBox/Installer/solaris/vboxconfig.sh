@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vboxconfig.sh 102880 2024-01-15 19:08:54Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1348,7 +1348,7 @@ postinstall()
                 # installing the VirtualBox API bindings. Needs to prevent
                 # double installs which waste quite a bit of time.
                 PYTHONS=""
-                for p in python2.4 python2.5 python2.6 python2.7 python2 python3.3 python3.4 python3.5 python3.6 python3.7 python3.8 python3.9 python3.10 python3 python; do
+                for p in python2.4 python2.5 python2.6 python2.7 python2 python3.3 python3.4 python3.5 python3.6 python3.7 python3.8 python3.9 python3.10 python3.11 python3 python; do
                     if [ "`$p -c 'import sys
 if sys.version_info >= (2, 4) and (sys.version_info < (3, 0) or sys.version_info >= (3, 3)):
     print(\"test\")' 2> /dev/null`" != "test" ]; then
@@ -1477,4 +1477,3 @@ case "$drvop" in
 esac
 
 exit "$?"
-
