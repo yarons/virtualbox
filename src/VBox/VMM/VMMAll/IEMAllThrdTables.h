@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 102366 2023-11-28 14:22:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 102879 2024-01-15 15:28:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -350,8 +350,8 @@ iemThreadedRecompilerMcDeferToCImpl0(PVMCPUCC pVCpu, uint32_t fFlags, uint64_t f
 DECL_FORCE_INLINE(void) iemThreadedSetBranched(PVMCPUCC pVCpu, uint8_t fTbBranched)
 {
     pVCpu->iem.s.fTbBranched          = fTbBranched;
-    pVCpu->iem.s.GCPhysTbBranchSrcBuf = pVCpu->iem.s.GCPhysInstrBuf;
-    pVCpu->iem.s.GCVirtTbBranchSrcBuf = pVCpu->iem.s.uInstrBufPc;
+    //pVCpu->iem.s.GCPhysTbBranchSrcBuf = pVCpu->iem.s.GCPhysInstrBuf;
+    //pVCpu->iem.s.GCVirtTbBranchSrcBuf = pVCpu->iem.s.uInstrBufPc;
 }
 
 
