@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 102794 2024-01-09 13:00:46Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -387,13 +387,13 @@ static struct drm_driver driver = {
 #elif RTLNX_VER_MAX(5,12,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
 	.dumb_destroy = drm_gem_dumb_destroy,
 #endif
-#if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_MAJ_PREREQ(9,4)
+#if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_RANGE(9,4, 9,99)
 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
 #endif
 	.gem_prime_import = drm_gem_prime_import,
 	.gem_prime_import_sg_table = vbox_gem_prime_import_sg_table,
-#if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_MAJ_PREREQ(9,4)
+#if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_RANGE(9,4, 9,99)
 	.gem_prime_mmap = vbox_gem_prime_mmap,
 #endif
 

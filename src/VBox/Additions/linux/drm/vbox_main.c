@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 101029 2023-09-06 13:53:03Z vadim.galitsyn@oracle.com $ */
+/* $Id: vbox_main.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -36,7 +36,7 @@
 #include <drm/drm_fb_helper.h>
 #include <drm/drm_crtc_helper.h>
 
-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,3)
+#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_RANGE(9,3, 9,99)
 # include <drm/drm_modeset_helper.h>
 #endif
 

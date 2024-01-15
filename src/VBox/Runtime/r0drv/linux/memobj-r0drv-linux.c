@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 102304 2023-11-27 12:14:34Z vadim.galitsyn@oracle.com $ */
+/* $Id: memobj-r0drv-linux.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1262,7 +1262,7 @@ RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv)
     }
 # endif
 
-# if RTLNX_VER_MIN(6,5,0) || RTLNX_RHEL_MAJ_PREREQ(9,4)
+# if RTLNX_VER_MIN(6,5,0) || RTLNX_RHEL_RANGE(9,4, 9,99)
     pEntry = __pte_map(&u.Middle, ulAddr);
 # elif RTLNX_VER_MIN(2,5,5) || defined(pte_offset_map) /* As usual, RHEL 3 had pte_offset_map earlier. */
     pEntry = pte_offset_map(&u.Middle, ulAddr);
