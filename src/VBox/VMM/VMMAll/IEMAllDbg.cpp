@@ -1,4 +1,4 @@
-/* $Id: IEMAllDbg.cpp 102868 2024-01-14 23:49:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllDbg.cpp 102869 2024-01-15 04:52:34Z alexander.rudnev@oracle.com $ */
 /** @file
  * IEM - Debug and Logging.
  */
@@ -60,10 +60,10 @@ DECLINLINE(char *) iemLogSyscallFormatChr(char pszBuf[4], char ch)
         pszBuf[1] = ch;
         pszBuf[2] = '\'';
     }
-    else if (ch == '\\n' || ch == '\\r')
+    else if (ch == '\n' || ch == '\r')
     {
         pszBuf[0] = '\'';
-        pszBuf[1] = ch == '\\n' ? 'n' : 'r';
+        pszBuf[1] = ch == '\n' ? 'n' : 'r';
         pszBuf[2] = ' ';
     }
     else
