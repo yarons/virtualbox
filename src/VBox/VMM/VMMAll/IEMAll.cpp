@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102867 2024-01-14 22:26:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4638,7 +4638,7 @@ VBOXSTRICTRC iemRegRipRelativeJumpS8AndFinishClearingRF(PVMCPUCC pVCpu, uint8_t 
     /*
      * Clear RF and finish the instruction (maybe raise #DB).
      */
-    return iemRegFinishClearingRF(pVCpu);
+    return iemRegFinishClearingRF(pVCpu, VINF_SUCCESS);
 }
 
 
@@ -4672,7 +4672,7 @@ VBOXSTRICTRC iemRegRipRelativeJumpS16AndFinishClearingRF(PVMCPUCC pVCpu, uint8_t
     /*
      * Clear RF and finish the instruction (maybe raise #DB).
      */
-    return iemRegFinishClearingRF(pVCpu);
+    return iemRegFinishClearingRF(pVCpu, VINF_SUCCESS);
 }
 
 
@@ -4720,7 +4720,7 @@ VBOXSTRICTRC iemRegRipRelativeJumpS32AndFinishClearingRF(PVMCPUCC pVCpu, uint8_t
     /*
      * Clear RF and finish the instruction (maybe raise #DB).
      */
-    return iemRegFinishClearingRF(pVCpu);
+    return iemRegFinishClearingRF(pVCpu, VINF_SUCCESS);
 }
 
 /** @}  */

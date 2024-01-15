@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 102817 2024-01-10 13:56:06Z michal.necasek@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -1062,12 +1062,15 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_IF_CX_IS_NZ()                                            (void)fMcBegin; if (g_fRandom) {
 #define IEM_MC_IF_ECX_IS_NZ()                                           (void)fMcBegin; if (g_fRandom) {
 #define IEM_MC_IF_RCX_IS_NZ()                                           (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_SET(a_fBit)                      (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_SET(a_fBit)                     (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_SET(a_fBit)                     (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_CX_IS_NZ_AND_EFL_BIT_NOT_SET(a_fBit)                  (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_ECX_IS_NZ_AND_EFL_BIT_NOT_SET(a_fBit)                 (void)fMcBegin; if (g_fRandom) {
-#define IEM_MC_IF_RCX_IS_NZ_AND_EFL_BIT_NOT_SET(a_fBit)                 (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_CX_IS_NOT_ONE()                                       (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_ECX_IS_NOT_ONE()                                      (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_RCX_IS_NOT_ONE()                                      (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_CX_IS_NOT_ONE_AND_EFL_BIT_SET(a_fBit)                 (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_ECX_IS_NOT_ONE_AND_EFL_BIT_SET(a_fBit)                (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_RCX_IS_NOT_ONE_AND_EFL_BIT_SET(a_fBit)                (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_CX_IS_NOT_ONE_AND_EFL_BIT_NOT_SET(a_fBit)             (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_ECX_IS_NOT_ONE_AND_EFL_BIT_NOT_SET(a_fBit)            (void)fMcBegin; if (g_fRandom) {
+#define IEM_MC_IF_RCX_IS_NOT_ONE_AND_EFL_BIT_NOT_SET(a_fBit)            (void)fMcBegin; if (g_fRandom) {
 #define IEM_MC_IF_LOCAL_IS_Z(a_Local)                                   (void)fMcBegin; if ((a_Local) == 0) {
 #define IEM_MC_IF_GREG_BIT_SET(a_iGReg, a_iBitNo)                       (void)fMcBegin; CHK_GREG_IDX(a_iGReg); if (g_fRandom) {
 #define IEM_MC_IF_FPUREG_NOT_EMPTY(a_iSt)                               (void)fMcBegin; CHK_ST_IDX(a_iSt); if (g_fRandom != fFpuRead) {
