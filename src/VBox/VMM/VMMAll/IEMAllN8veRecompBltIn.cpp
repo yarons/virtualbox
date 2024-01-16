@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 102856 2024-01-12 11:45:10Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 102883 2024-01-16 00:39:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -274,6 +274,9 @@ IEM_DECL_IEMNATIVERECOMPFUNC_DEF(iemNativeRecompFunc_BltIn_CheckMode)
     off = iemNativeEmitTestIfGpr32NotEqualImmAndJmpToNewLabel(pReNative, off, idxTmpReg, fExpectedExec & IEMTB_F_KEY_MASK,
                                                               kIemNativeLabelType_ReturnBreak);
     iemNativeRegFreeTmp(pReNative, idxTmpReg);
+
+    /* Maintain the recompiler fExec state. */
+    pReNative->fExec = fExpectedExec & IEMTB_F_IEM_F_MASK;
     return off;
 }
 

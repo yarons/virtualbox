@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 102883 2024-01-16 00:39:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -13174,8 +13174,10 @@ DECLHIDDEN(PIEMTB) iemNativeRecompile(PVMCPUCC pVCpu, PIEMTB pTb) RT_NOEXCEPT
             /*
              * Debug info and assembly markup.
              */
+#if defined(IEMNATIVE_WITH_TB_DEBUG_INFO) || !defined(IEMNATIVE_WITH_BLTIN_CHECKMODE)
             if (pCallEntry->enmFunction == kIemThreadedFunc_BltIn_CheckMode)
                 pReNative->fExec = pCallEntry->auParams[0] & IEMTB_F_IEM_F_MASK;
+#endif
 #ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
             iemNativeDbgInfoAddNativeOffset(pReNative, off);
             if (iGstInstr < (int32_t)pCallEntry->idxInstr)
