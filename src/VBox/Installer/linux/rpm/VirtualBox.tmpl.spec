@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 101363 2023-10-05 17:26:52Z sergey.dubov@oracle.com $
+# $Id: VirtualBox.tmpl.spec 102907 2024-01-16 19:50:33Z klaus.espenlaub@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -350,6 +350,11 @@ rm -rf /usr/lib/virtualbox/ExtensionPacks
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+
+%changelog
+* %DATE% Oracle Corporation <info@virtualbox.org>
+- rebuild RPM package, see https://www.virtualbox.org/wiki/Changelog
 
 
 %files

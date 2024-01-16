@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: rules 102907 2024-01-16 19:50:33Z klaus.espenlaub@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -253,6 +253,7 @@ binary: build
 	    -e 's|%BUILDROOT%|$(bldbase)/buildroot|g' \
 	    -e 's|%OSE%|$(if $(ose),is_ose,not_ose)|g' \
 	    -e 's|%SPEC%|$(rpmspec)|g' \
+	    -e 's|%DATE%|$(shell date "+%a %b %d %Y")|g' \
 	    -e 's|%QHELP%|$(if $(STAGEDQHELP),with_qhelp,without_qhelp)|g' \
 	    -e 's|%PYTHON%|$(if $(filter el5,$(rpmrel)),without_python,with_python)|g' \
 	    -e 's|%MACROSPYTHON%|$(if $(wildcard /usr/lib/rpm/macros.d/macros.python3),,$(if $(wildcard /usr/lib/rpm/macros.python),%include /usr/lib/rpm/macros.python,))|g' \
