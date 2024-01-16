@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 102817 2024-01-10 13:56:06Z michal.necasek@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 102891 2024-01-16 11:53:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -11385,7 +11385,7 @@ FNIEMOP_DEF(iemOp_bsr_Gv_Ev)
 /** Opcode 0xf3 0x0f 0xbd - LZCNT Gv, Ev */
 FNIEMOP_DEF(iemOp_lzcnt_Gv_Ev)
 {
-    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fBmi1)
+    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fAbm)
         return FNIEMOP_CALL(iemOp_bsr_Gv_Ev);
     IEMOP_MNEMONIC2(RM, LZCNT, lzcnt, Gv, Ev, DISOPTYPE_HARMLESS, 0);
 
