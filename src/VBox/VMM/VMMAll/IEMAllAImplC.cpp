@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 102878 2024-01-15 15:10:01Z dmitrii.grigorev@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 102887 2024-01-16 10:40:21Z dmitrii.grigorev@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -460,6 +460,7 @@ uint8_t const g_afParity[256] =
 extern const RTFLOAT32U  g_ar32Zero[];
 extern const RTFLOAT64U  g_ar64Zero[];
 extern const RTFLOAT80U  g_ar80Zero[];
+extern const RTFLOAT32U  g_ar32One[];
 extern const RTFLOAT80U  g_ar80One[];
 extern const RTFLOAT80U  g_r80Indefinite;
 extern const RTFLOAT32U  g_ar32Infinity[];
