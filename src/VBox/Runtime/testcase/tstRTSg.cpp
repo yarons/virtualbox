@@ -1,4 +1,4 @@
-/* $Id: tstRTSg.cpp 102884 2024-01-16 08:25:22Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTSg.cpp 102885 2024-01-16 08:27:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Scatter / Gather Buffers.
  */
@@ -213,7 +213,7 @@ static void testBasic(void)
             size_t cbLeft = cbSgBuf1;
             if (iRun > 1)
             {
-                size_t const cbInitial = (size_t)RTRandAdvU64Ex(hRnd, iRun, cbSgBuf1);
+                size_t const cbInitial = (size_t)RTRandAdvU64Ex(hRnd, RT_MIN(iRun, cbSgBuf1), cbSgBuf1);
                 size_t cbAdvanced = RTSgBufAdvance(pSgBuf1, cbInitial);
                 RTTESTI_CHECK_MSG(cbAdvanced == cbInitial, ("iBufVar=%u iRun=%u cbAdvanced=%zu, cbInitial=%zu\n", iBufVar, iRun, cbAdvanced, cbInitial));
                 /* should probably print part of pSgBuf1 values... */
@@ -252,7 +252,7 @@ static void testBasic(void)
                 size_t cbInitial = 0;
                 if (iRun > 1)
                 {
-                    cbInitial = (size_t)RTRandAdvU64Ex(hRnd, iRun, cbSgBuf1);
+                    cbInitial = (size_t)RTRandAdvU64Ex(hRnd, RT_MIN(iRun, cbSgBuf1), cbSgBuf1);
                     size_t cbAdvanced = RTSgBufAdvance(pSgBuf1, cbInitial);
                     RTTESTI_CHECK_MSG(cbAdvanced == cbInitial, ("cbAdvanced=%zu, cbInitial=%zu\n",
                                                                 cbAdvanced, cbInitial));
