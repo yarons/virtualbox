@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 102905 2024-01-16 15:39:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 102906 2024-01-16 16:40:55Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -994,6 +994,7 @@ UIMetric::UIMetric()
     : m_iMaximum(0)
     , m_fRequiresGuestAdditions(false)
     , m_fIsInitialized(false)
+    , m_fAutoUpdateMaximum(false)
     , m_iMaximumQueueSize(0)
 {
     m_iTotal[0] = 0;
