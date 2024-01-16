@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-template.c 98828 2023-03-03 12:03:11Z alexander.eichner@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-template.c 102898 2024-01-16 12:35:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, C code template.
  */
@@ -2899,9 +2899,12 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuInstr2_adcx_adox)(uint8_t bMode)
 
                 Bs3TrapSetJmpAndRestore(&Ctx, &TrapFrame);
 
-                Ctx.rflags.u16 &= ~fEFlagsMod;
-                if (paValues[iValue].fFlagOut)
-                    Ctx.rflags.u16 |= fEFlagsMod;
+                if (fOkay)
+                {
+                    Ctx.rflags.u16 &= ~fEFlagsMod;
+                    if (paValues[iValue].fFlagOut)
+                        Ctx.rflags.u16 |= fEFlagsMod;
+                }
 
                 if (   TrapFrame.bXcpt     != bExpectXcpt
                     || TrapFrame.Ctx.rip.u != uExpectRip
