@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102915 $"
+__version__ = "$Revision: 102918 $"
 
 # Standard Python imports.
 import errno
@@ -3148,7 +3148,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         if oTestVm.isWindows() or oTestVm.isOS2():
             sImageOut = self.oTstDrv.getGuestSystemShell(oTestVm);
             if oTestVm.isWindows():
-                sVBoxControl = oTestVm.pathJoin(self.oTstDrv.getGuestWinDir(oTestVm), 'VBoxControl.exe');
+                sVBoxControl = oTestVm.pathJoin(self.oTstDrv.getGuestSystemAdminDir(oTestVm), 'VBoxControl.exe');
         else:
             # Really old guests (like OL 6) have their coreutils in /bin instead of /usr/bin.
             if self.oTstDrv.txsIsFile(oSession, oTxsSession, "/bin/ls", fIgnoreErrors = True):
