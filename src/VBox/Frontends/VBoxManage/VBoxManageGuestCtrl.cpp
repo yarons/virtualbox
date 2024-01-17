@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 102831 2024-01-11 08:56:53Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 102934 2024-01-17 16:56:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1351,14 +1351,14 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
         else
         {
             aWaitFlags.push_back(ProcessWaitForFlag_Terminate);
-            fWaitForStdOut = gctlRunSetupHandle(fWaitForStdOut, RTHANDLESTD_OUTPUT, "stdout", enmStdOutTransform, &hVfsStdOut);
-            if (fWaitForStdOut)
+            if (   fWaitForStdOut
+                && gctlRunSetupHandle(fWaitForStdOut, RTHANDLESTD_OUTPUT, "stdout", enmStdOutTransform, &hVfsStdOut))
             {
                 aCreateFlags.push_back(ProcessCreateFlag_WaitForStdOut);
                 aWaitFlags.push_back(ProcessWaitForFlag_StdOut);
             }
-            fWaitForStdErr = gctlRunSetupHandle(fWaitForStdErr, RTHANDLESTD_ERROR, "stderr", enmStdErrTransform, &hVfsStdErr);
-            if (fWaitForStdErr)
+            if (   fWaitForStdErr
+                && gctlRunSetupHandle(fWaitForStdErr, RTHANDLESTD_ERROR, "stderr", enmStdErrTransform, &hVfsStdErr))
             {
                 aCreateFlags.push_back(ProcessCreateFlag_WaitForStdErr);
                 aWaitFlags.push_back(ProcessWaitForFlag_StdErr);
