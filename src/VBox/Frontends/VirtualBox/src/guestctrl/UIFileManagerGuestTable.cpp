@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 102798 2024-01-09 15:01:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 102928 2024-01-17 15:03:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -995,23 +995,25 @@ void UIFileManagerGuestTable::determineDriveLetters()
     if (pathStyle != KPathStyle_DOS)
         return;
 
-    /** @todo Currently API lacks a way to query windows drive letters.
-     *  so we enumarate them by using CGuestSession::DirectoryExists() */
     m_driveLetterList.clear();
-#if 0
-    for (int i = 'A'; i <= 'Z'; ++i)
-    {
-        QString path((char)i);
-        path += ":/";
-        bool exists = m_comGuestSession.DirectoryExists(path, false /* aFollowSymlinks */);
-        if (exists)
-            m_driveLetterList.push_back(path);
-    }
-#endif
 
     QVector<QString> mountPoints = m_comGuestSession.GetMountPoints();
-    foreach (const QString &strPoint, mountPoints)
-        m_driveLetterList.push_back(UIPathOperations::replaceDosDelimeter(strPoint));
+    if (m_comGuestSession.isOk())
+    {
+        foreach (const QString &strPoint, mountPoints)
+            m_driveLetterList.push_back(UIPathOperations::replaceDosDelimeter(strPoint));
+    }
+    else
+    {
+        for (int i = 'A'; i <= 'Z'; ++i)
+        {
+            QString path((char)i);
+            path += ":/";
+            bool exists = m_comGuestSession.DirectoryExists(path, false /* aFollowSymlinks */);
+            if (exists)
+                m_driveLetterList.push_back(path);
+        }
+    }
 }
 
 void UIFileManagerGuestTable::determinePathSeparator()
