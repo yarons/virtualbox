@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 102108 2023-11-15 14:55:59Z alexander.eichner@oracle.com $
+# $Id: vbox.py 102910 2024-01-17 08:35:27Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102108 $"
+__version__ = "$Revision: 102910 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1460,7 +1460,7 @@ class TestDriver(base.TestDriver):                                              
             # x.y release, so the third component only indicates whether it's a stable or
             # development build of the next release.
             self.fpApiVer = aiVerComponents[0] + 0.1 * aiVerComponents[1];
-            if aiVerComponents[2] >= 51:
+            if aiVerComponents[2] >= 71:
                 if self.fpApiVer not in [6.1, 5.2, 4.3, 3.2,]:
                     self.fpApiVer += 0.1;
                 else:
