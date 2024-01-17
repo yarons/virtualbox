@@ -1,4 +1,4 @@
-/** $Id: clipboard-x11.cpp 102818 2024-01-10 13:56:27Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard-x11.cpp 102919 2024-01-17 11:08:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard implementation.
  */
@@ -111,6 +111,9 @@ static DECLCALLBACK(void) vbclX11OnTransferInitializedCallback(PSHCLTRANSFERCALL
                     else if (rc == VERR_SHCLPB_EVENT_FAILED)
                         rc = rcEvent;
                 }
+
+                ShClEventRelease(pEvent);
+                pEvent = NULL;
             }
             break;
         }
