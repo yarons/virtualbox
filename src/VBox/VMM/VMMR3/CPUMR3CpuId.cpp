@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 102851 2024-01-12 08:13:24Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 102942 2024-01-18 04:46:15Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3543,8 +3543,7 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
              * Whether to enable MTRR read-write support. This overrides the MTRR read-only CFGM
              * setting. */
             bool fEnableMtrrReadWrite;
-            rc = CFGMR3QueryBoolDef(pCpumCfg, "MtrrReadWrite", &fEnableMtrrReadWrite,
-                                    true /** @todo true - 2023-12-12 bird: does not work yet, so disabled it */);
+            rc = CFGMR3QueryBoolDef(pCpumCfg, "MtrrReadWrite", &fEnableMtrrReadWrite, true);
             AssertRCReturn(rc, rc);
             if (fEnableMtrrReadWrite)
             {
