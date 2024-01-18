@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 102835 2024-01-11 12:07:34Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControlSvc.h 102956 2024-01-18 16:59:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1226,6 +1226,8 @@ typedef struct HGCMMsgMountPoints
 
 /**
  * Shuts down / reboots the guest.
+ *
+ * @since 7.0
  */
 typedef struct HGCMMsgShutdown
 {
