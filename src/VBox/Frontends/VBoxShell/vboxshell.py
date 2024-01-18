@@ -3,7 +3,7 @@
 # pylint: disable=line-too-long
 # pylint: disable=too-many-statements
 # pylint: disable=deprecated-module
-# $Id: vboxshell.py 102912 2024-01-17 10:18:24Z andreas.loeffler@oracle.com $
+# $Id: vboxshell.py 102948 2024-01-18 10:31:20Z andreas.loeffler@oracle.com $
 
 # The following checks for the right (i.e. most recent) Python binary available
 # and re-starts the script using that binary (like a shell wrapper).
@@ -63,7 +63,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102912 $"
+__version__ = "$Revision: 102948 $"
 
 
 import gc
@@ -3654,6 +3654,11 @@ def main(_argv):
             del sTmp
         del sPath, asLocations
 
+    # Deprecation warning for older Python stuff (< Python 3.x).
+    if sys.version_info.major < 3:
+        print("\nWarning: Running VirtualBox with Python %d.%d is marked as being deprecated.\n" \
+              "Please upgrade your Python installation to avoid breakage.\n" \
+              % (sys.version_info.major, sys.version_info.minor))
 
     #
     # Set up the shell interpreter context and start working.
