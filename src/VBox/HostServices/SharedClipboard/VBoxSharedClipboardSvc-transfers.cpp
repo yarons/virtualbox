@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 100667 2023-07-20 13:45:24Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 102954 2024-01-18 15:32:39Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2292,11 +2292,7 @@ static void shClSvcTransferCleanupAllUnused(PSHCLCLIENT pClient)
             AssertRC(rc2);
 
             ShClTransferCtxUnregisterById(pTxCtx, pTransfer->State.uID);
-
             ShClTransferDestroy(pTransfer);
-
-            RTMemFree(pTransfer);
-            pTransfer = NULL;
         }
     }
 }
@@ -2342,12 +2338,7 @@ int ShClSvcTransferCreate(PSHCLCLIENT pClient, SHCLTRANSFERDIR enmDir, SHCLSOURC
     shClSvcClientUnlock(pClient);
 
     if (RT_FAILURE(rc))
-    {
         ShClTransferDestroy(pTransfer);
-
-        RTMemFree(pTransfer);
-        pTransfer = NULL;
-    }
 
     if (RT_FAILURE(rc))
        LogRel(("Shared Clipboard: Creating transfer failed with %Rrc\n", rc));
@@ -2382,8 +2373,6 @@ void ShClSvcTransferDestroy(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
     AssertRC(rc);
 
     ShClTransferDestroy(pTransfer);
-
-    RTMemFree(pTransfer);
     pTransfer = NULL;
 
     shClSvcClientUnlock(pClient);
