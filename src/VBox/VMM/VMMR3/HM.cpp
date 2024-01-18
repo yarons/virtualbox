@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 102943 2024-01-18 06:46:04Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3138,7 +3138,7 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
             case VERR_VMX_INVALID_GUEST_STATE:
             {
                 LogRel(("HM: VERR_VMX_INVALID_GUEST_STATE:\n"));
-                LogRel(("HM: CPU[%u] HM error = %#RX32\n", idCpu, pVCpu->hm.s.u32HMError));
+                LogRel(("HM: CPU[%u] HM error = %#RX32 (%RU32)\n", idCpu, pVCpu->hm.s.u32HMError, pVCpu->hm.s.u32HMError));
                 LogRel(("HM: CPU[%u] Guest-intr. state = %#RX32\n", idCpu, pVCpu->hm.s.vmx.LastError.u32GuestIntrState));
 #ifdef TODO_9217_VMCSINFO
                 hmR3CheckErrorLogVmcsCtls(idCpu, pVmcsInfo);
