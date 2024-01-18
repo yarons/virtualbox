@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102950 $"
+__version__ = "$Revision: 102953 $"
 
 # Standard Python imports.
 import errno
@@ -1506,13 +1506,14 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             ( False, self.testGuestCtrlFileWrite,           'file_write',       'File write',),
             ( False, self.testGuestCtrlFileRemove,          'file_remove',      'Removing files',), # Destroys prepped files.
             ( False, self.testGuestCtrlUpdateAdditions,     'update_additions', 'Updating Guest Additions',),
-            # @todo r=aeichner Only enable it again when this really works, and the 3D tests should probably live in a separate file
+            # @todo r=aeichner Only enable it again when this really works,
+            #                      the 3D tests should probably live in a separate file
             # ( False, self.testGuestCtrl3D,                  '3d',               '3D acceleration',),
         ];
 
         if not self.fSkipKnownBugs:
             atTests.extend([
-                ## @todo Seems to (mainly?) fail on Linux guests, primarily running with systemd as service supervisor.
+                # @todo Seems to (mainly?) fail on Linux guests, primarily running with systemd as service supervisor.
                 #        Needs to be investigated and fixed.
                 ( False, self.testGuestCtrlSessionReboot,   'session_reboot',   'Session w/ Guest Reboot',), # May zap /tmp.
             ]);
@@ -5616,7 +5617,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             return False
 
         reporter.log2('Got screenshot (%s x %s) having %s bytes' % (iWidth, iHeight, len(aRGBData)));
-        # @todo r=aeichner Where is this result incorporated in the test result? It gets overwritten afterwards without being taken into account
+        # @todo r=aeichner Where is this result incorporated in the test result?
+        #                      It gets overwritten afterwards without being taken into account
         fRc = self.checkScreenShot(iWidth, iHeight, aRGBData);
 
         fRc = fRc and self.oTstDrv.txsRunTest(oTxsSession, 'Checking DX11 feature level', 30 * 1000,
