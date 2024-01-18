@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vboxapi.py 102957 2024-01-18 17:31:53Z andreas.loeffler@oracle.com $
 """
 VirtualBox Python API Glue.
 """
@@ -35,7 +35,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 102957 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -990,6 +990,13 @@ class VirtualBoxManager(object):
             pass
 
     def __init__(self, sStyle=None, dPlatformParams=None):
+
+        # Deprecation warning for older Python stuff (< Python 3.x).
+        if sys.version_info.major < 3:
+            print("\nWarning: Running VirtualBox with Python %d.%d is marked as being deprecated.\n" \
+                  "Please upgrade your Python installation to avoid breakage.\n" \
+                  % (sys.version_info.major, sys.version_info.minor))
+
         if sStyle is None:
             if sys.platform == 'win32':
                 sStyle = "MSCOM"
@@ -1291,4 +1298,3 @@ class VirtualBoxManager(object):
         if sRet is None:
             sRet = self.xcptToString(oXcpt)
         return sRet
-
