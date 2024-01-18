@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 101703 2023-11-01 15:34:19Z alexander.eichner@oracle.com $ */
+/* $Id: EM.cpp 102947 2024-01-18 10:21:28Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2553,6 +2553,8 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                             TMTimerPollVoid(pVM, pVCpu);
 #endif
                     }
+                    else
+                        rc = VINF_EM_RESCHEDULE; /* Need to check whether we can run in HM or NEM again. */
                     fFFDone = false;
                     break;
                 }
