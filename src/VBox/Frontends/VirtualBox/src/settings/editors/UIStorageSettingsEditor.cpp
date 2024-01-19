@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 102970 2024-01-19 13:50:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 102976 2024-01-19 16:39:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -4855,7 +4855,6 @@ void UIStorageSettingsEditor::prepareAttachmentWidget()
             if (pLayoutAttachmentSettings)
             {
                 pLayoutAttachmentSettings->setContentsMargins(0, 0, 0, 0);
-                pLayoutAttachmentSettings->setSpacing(0);
 
                 /* Prepare attachment passthrough check-box: */
                 m_pCheckBoxPassthrough = new QCheckBox(pWidgetAttachment);
