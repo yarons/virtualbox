@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102876 $"
+__version__ = "$Revision: 102977 $"
 
 # Standard python imports:
 import copy;
@@ -168,14 +168,19 @@ g_dMcStmtThreaded = {
     'IEM_MC_MEM_FLAT_MAP_R32_WO':                                        (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_R64_WO':                                        (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_R80_WO':                                        (None, True,  True,  True,  ),
+    'IEM_MC_MEM_FLAT_MAP_U8_ATOMIC':                                     (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U8_RO':                                         (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U8_RW':                                         (None, True,  True,  True,  ),
+    'IEM_MC_MEM_FLAT_MAP_U16_ATOMIC':                                    (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U16_RO':                                        (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U16_RW':                                        (None, True,  True,  True,  ),
+    'IEM_MC_MEM_FLAT_MAP_U32_ATOMIC':                                    (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U32_RO':                                        (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U32_RW':                                        (None, True,  True,  True,  ),
+    'IEM_MC_MEM_FLAT_MAP_U64_ATOMIC':                                    (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U64_RO':                                        (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U64_RW':                                        (None, True,  True,  True,  ),
+    'IEM_MC_MEM_FLAT_MAP_U128_ATOMIC':                                   (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U128_RW':                                       (None, True,  True,  True,  ),
     'IEM_MC_STORE_MEM_FLAT_U128_ALIGN_SSE':                              (None, True,  True,  False, ),
     'IEM_MC_STORE_MEM_FLAT_U128':                                        (None, True,  True,  False, ),
@@ -397,6 +402,7 @@ class NativeRecompFunctionVariation(object):
 
                 elif oStmt.sName in ('IEM_MC_MEM_COMMIT_AND_UNMAP_RW', 'IEM_MC_MEM_COMMIT_AND_UNMAP_RO',
                                      'IEM_MC_MEM_COMMIT_AND_UNMAP_WO', 'IEM_MC_MEM_ROLLBACK_AND_UNMAP_WO',
+                                     'IEM_MC_MEM_COMMIT_AND_UNMAP_ATOMIC',
                                      'IEM_MC_MEM_COMMIT_AND_UNMAP_FOR_FPU_STORE_WO'):
                     #
                     # The unmap info variable passed to IEM_MC_MEM_COMMIT_AND_UNMAP_RW

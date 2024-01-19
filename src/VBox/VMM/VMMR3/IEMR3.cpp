@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 102850 2024-01-12 00:47:47Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -290,6 +290,8 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Approx bytes written",                         "/IEM/CPU%u/cbWritten", idCpu);
         STAMR3RegisterF(pVM, &pVCpu->iem.s.cPendingCommit,              STAMTYPE_U32,       STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
                         "Times RC/R0 had to postpone instruction committing to ring-3", "/IEM/CPU%u/cPendingCommit", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.cMisalignedAtomics,          STAMTYPE_U32_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
+                        "Number of misaligned (for the host) atomic instructions", "/IEM/CPU%u/cMisalignedAtomics", idCpu);
 
         STAMR3RegisterF(pVM, &pVCpu->iem.s.CodeTlb.cTlbMisses,          STAMTYPE_U32_RESET, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Code TLB misses",                          "/IEM/CPU%u/CodeTlb-Misses", idCpu);
