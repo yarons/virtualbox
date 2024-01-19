@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 102796 2024-01-09 14:22:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.h 102975 2024-01-19 15:55:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -37,6 +37,7 @@
 /* GUI includes: */
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
+#include "UIVirtualMachineItemCloud.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -72,6 +73,8 @@ public:
 
     bool isCurrentTool() const;
     void setIsCurrentTool(bool fIsCurrentTool);
+
+    void setCloudMachineItems(const QList<UIVirtualMachineItemCloud> &itemList);
 
 #ifdef VBOX_WS_MAC
     QIToolBar *toolbar() const { return m_pToolBar; }
