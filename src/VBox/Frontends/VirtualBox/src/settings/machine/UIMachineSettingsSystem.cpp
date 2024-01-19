@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 102972 2024-01-19 14:24:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -1061,14 +1061,14 @@ bool UIMachineSettingsSystem::saveProcessorData()
                     /* Save whether PAE is enabled: */
                     if (fSuccess && isMachineOffline() && newSystemData.m_fEnabledPAE != oldSystemData.m_fEnabledPAE)
                     {
-                        comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_PAE, newSystemData.m_fEnabledNestedPaging);
+                        comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_PAE, newSystemData.m_fEnabledPAE);
                         fSuccess = comPlatformX86.isOk();
                         /// @todo convey error info ..
                     }
                     /* Save whether Nested HW Virt Ex is enabled: */
                     if (fSuccess && isMachineOffline() && newSystemData.m_fEnabledNestedHwVirtEx != oldSystemData.m_fEnabledNestedHwVirtEx)
                     {
-                        comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_HWVirt, newSystemData.m_fEnabledNestedPaging);
+                        comPlatformX86.SetCPUProperty(KCPUPropertyTypeX86_HWVirt, newSystemData.m_fEnabledNestedHwVirtEx);
                         fSuccess = comPlatformX86.isOk();
                         /// @todo convey error info ..
                     }
