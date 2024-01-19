@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 102042 2023-11-09 17:01:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 102971 2024-01-19 14:11:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -257,8 +257,18 @@ void UIBootListWidget::retranslateUi()
 
 void UIBootListWidget::dropEvent(QDropEvent *pEvent)
 {
-    /* Call to base-class: */
-    QITreeWidget::dropEvent(pEvent);
+    /* Accept certain positions only: */
+    switch (dropIndicatorPosition())
+    {
+        case QAbstractItemView::AboveItem:
+        case QAbstractItemView::BelowItem:
+            /* Call to base-class: */
+            QITreeWidget::dropEvent(pEvent);
+            break;
+        default:
+            break;
+    }
+
     /* Separately notify listeners: */
     emit sigRowChanged();
 }
