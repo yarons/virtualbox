@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 102966 2024-01-19 11:30:23Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 102967 2024-01-19 11:31:41Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102966 $"
+__version__ = "$Revision: 102967 $"
 
 
 # Standard Python imports.
@@ -94,7 +94,7 @@ class tdCpuIemInstr1(vbox.TestDriver):
         # There is no official IEM support in the virt modes yet, so hwvirt is interpreted IEM
         # and hwvirt-np is recompiled IEM for now (gets configured in the IemTestVm class).
         #
-        asVirtModesSup = [ 'hwvirt', 'hwvirt-np' ]; # @todo Add 'hwvirt-np' for the recompiled mode, currently crashes on Ventura in libunwind
+        asVirtModesSup = [ 'hwvirt', 'hwvirt-np' ];
 
         kaTestVMs = (
             # @todo r=aeichner Crashes in ASMAtomicXchgU16, unaligned pointer, see @bugref{10547}.
