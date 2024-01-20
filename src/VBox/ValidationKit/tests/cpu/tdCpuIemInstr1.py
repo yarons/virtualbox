@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 102969 2024-01-19 12:37:53Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 102981 2024-01-20 18:55:11Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102969 $"
+__version__ = "$Revision: 102981 $"
 
 
 # Standard Python imports.
@@ -97,8 +97,7 @@ class tdCpuIemInstr1(vbox.TestDriver):
         asVirtModesSup = [ 'hwvirt', 'hwvirt-np' ];
 
         kaTestVMs = (
-            # @todo r=aeichner Crashes in ASMAtomicXchgU16, unaligned pointer, see @bugref{10547}.
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-2', asVirtModesSup),
+            IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-2', asVirtModesSup),
 
             # @todo r=aeichner Image can not be found (probably it is too large for a floppy weighing in at 16MiB)
             #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-3', asVirtModesSup),
@@ -114,9 +113,7 @@ class tdCpuIemInstr1(vbox.TestDriver):
             # @todo r=aeichner Fails with IEM currently.
             #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-3' asVirtModesSup),
 
-            # @todo r=aeichner Hangs after test.
-            #IemTestVm(self.oTestVmSet, self, 'b3s-cpu-state64-1', asVirtModesSup),
-
+            IemTestVm(self.oTestVmSet, self, 'bs3-cpu-state64-1', asVirtModesSup),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-weird-1', asVirtModesSup),
             IemTestVm(self.oTestVmSet, self, 'bs3-fpustate-1', asVirtModesSup)
         );
