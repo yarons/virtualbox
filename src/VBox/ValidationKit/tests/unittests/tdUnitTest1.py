@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 102964 2024-01-19 08:09:33Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 102988 2024-01-22 11:32:22Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102964 $"
+__version__ = "$Revision: 102988 $"
 
 
 # Standard Python imports.
@@ -252,6 +252,12 @@ class tdUnitTest1(vbox.TestDriver):
         'tstAsmStructsRC': '',                          # Testcase run during build time (fails to find libstdc++.so.6 on some
                                                         # Solaris testboxes).
     };
+
+    ## The permanent exclude list for ASAN builds because they trigger false-positives.
+    # @note Stripped of extensions!
+    kdTestCasesBlackListAsan = {
+        'testcase/tstVMMR0CallHost-1': '',              # Triggers a stack overflow error on linux.amd64
+    }
 
     # Suffix exclude list.
     kasSuffixBlackList = [
@@ -1286,6 +1292,13 @@ class tdUnitTest1(vbox.TestDriver):
                     reporter.log('%s: Skipping, buggy in general.' % (sName,));
                     reporter.testDone(fSkipped = True);
                     self.cSkipped += 1;
+                    continue;
+
+                # Some testcases don't work with ASAN.
+                if self.getBuildType() == 'asan' \
+                and self._isExcluded(sName, self.kdTestCasesBlackListAsan):
+                    # (No testStart/Done or accounting here!)
+                    reporter.log('%s: SKIPPED (blacklisted ASAN)' % (sName,));
                     continue;
 
                 if self._isExcluded(sName, dTestCasesBuggyForHostOs):
