@@ -1,4 +1,4 @@
-/* $Id: regops.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 102990 2024-01-22 17:13:50Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -3505,7 +3505,7 @@ static struct vm_operations_struct const g_LoggingVmOpsTemplate = {
 };
 
 /** file_operations::mmap wrapper for logging purposes. */
-extern int vbsf_reg_mmap(struct file *file, struct vm_area_struct *vma)
+static int vbsf_reg_mmap(struct file *file, struct vm_area_struct *vma)
 {
     int rc;
     SFLOGFLOW(("vbsf_reg_mmap: file=%p vma=%p\n", file, vma));
@@ -3786,14 +3786,14 @@ static inline void vbsf_write_begin_warn(loff_t pos, unsigned len, unsigned flag
 }
 
 # if RTLNX_VER_MIN(5,19,0) || RTLNX_RHEL_RANGE(9,3, 9,99)
-int vbsf_write_begin(struct file *file, struct address_space *mapping, loff_t pos,
+static int vbsf_write_begin(struct file *file, struct address_space *mapping, loff_t pos,
                      unsigned len, struct page **pagep, void **fsdata)
 {
     vbsf_write_begin_warn(pos, len, 0);
     return simple_write_begin(file, mapping, pos, len, pagep, fsdata);
 }
 # else
-int vbsf_write_begin(struct file *file, struct address_space *mapping, loff_t pos,
+static int vbsf_write_begin(struct file *file, struct address_space *mapping, loff_t pos,
                      unsigned len, unsigned flags, struct page **pagep, void **fsdata)
 {
     vbsf_write_begin_warn(pos, len, flags);

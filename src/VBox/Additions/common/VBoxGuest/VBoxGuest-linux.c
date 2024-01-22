@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-linux.c 100268 2023-06-23 14:59:56Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxGuest-linux.c 102990 2024-01-22 17:13:50Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -1410,7 +1410,7 @@ static int vgdrvLinuxParamLogGrpSet(const char *pszValue, CONST_4_15 struct kern
             RTLogGroupSettings(pLogger, pszValue);
     }
     else if (pParam->name[0] != 'd')
-        strlcpy(&g_szLogGrp[0], pszValue, sizeof(g_szLogGrp));
+        RT_STRSCPY(&g_szLogGrp[0], pszValue, sizeof(g_szLogGrp));
 
     return 0;
 }
@@ -1436,7 +1436,7 @@ static int vgdrvLinuxParamLogFlagsSet(const char *pszValue, CONST_4_15 struct ke
             RTLogFlags(pLogger, pszValue);
     }
     else if (pParam->name[0] != 'd')
-        strlcpy(&g_szLogFlags[0], pszValue, sizeof(g_szLogFlags));
+        RT_STRSCPY(&g_szLogFlags[0], pszValue, sizeof(g_szLogFlags));
     return 0;
 }
 
@@ -1461,7 +1461,7 @@ static int vgdrvLinuxParamLogDstSet(const char *pszValue, CONST_4_15 struct kern
             RTLogDestinations(pLogger, pszValue);
     }
     else if (pParam->name[0] != 'd')
-        strlcpy(&g_szLogDst[0], pszValue, sizeof(g_szLogDst));
+        RT_STRSCPY(&g_szLogDst[0], pszValue, sizeof(g_szLogDst));
     return 0;
 }
 
