@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmemory.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -41,7 +41,7 @@
 #include "internal/iprt.h"
 #include <iprt/vfs.h>
 
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>

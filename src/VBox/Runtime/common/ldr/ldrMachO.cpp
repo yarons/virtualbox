@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrMachO.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -69,6 +69,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/base64.h>
 #include <iprt/ctype.h>

@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox-img.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -33,7 +33,7 @@
 #include <VBox/err.h>
 #include <VBox/version.h>
 #include <iprt/initterm.h>
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/buildconfig.h>
 #include <iprt/fsvfs.h>
 #include <iprt/fsisomaker.h>

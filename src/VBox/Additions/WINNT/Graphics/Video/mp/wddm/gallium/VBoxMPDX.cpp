@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDX.cpp 100053 2023-06-02 15:22:18Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPDX.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Graphics Driver - Direct3D (DX) driver function.
  */
@@ -30,6 +30,8 @@
 #include "VBoxMPGaWddm.h"
 #include "../VBoxMPVidPn.h"
 #include "VBoxMPGaExt.h"
+
+#include <iprt/asm-mem.h> /* must be included before SvgaHw.h */
 
 #include "Svga.h"
 #include "SvgaFifo.h"

@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 101479 2023-10-17 14:38:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevPciIch9.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -58,6 +58,7 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/mm.h>
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #ifdef IN_RING3

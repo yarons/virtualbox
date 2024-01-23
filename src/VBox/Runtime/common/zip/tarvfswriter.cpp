@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: tarvfswriter.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -41,7 +41,7 @@
 #include "internal/iprt.h"
 #include <iprt/zip.h>
 
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>

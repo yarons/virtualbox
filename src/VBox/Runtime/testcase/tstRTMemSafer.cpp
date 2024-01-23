@@ -1,4 +1,4 @@
-/* $Id: tstRTMemSafer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTMemSafer.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTMemSafer* functions.
  */
@@ -40,7 +40,7 @@
 *********************************************************************************************************************************/
 #include <iprt/memsafer.h>
 
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/param.h>
 #include <iprt/rand.h>
 #include <iprt/string.h>

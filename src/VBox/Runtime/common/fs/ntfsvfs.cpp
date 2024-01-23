@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: ntfsvfs.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -41,6 +41,7 @@
 #define LOG_GROUP RTLOGGROUP_FS
 #include <iprt/fsvfs.h>
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/avl.h>
 #include <iprt/assert.h>

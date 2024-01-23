@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 101649 2023-10-30 10:04:14Z alexander.eichner@oracle.com $ */
+/* $Id: FsPerf.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -45,6 +45,7 @@
 #endif
 #include <iprt/alloca.h>
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/dir.h>
@@ -6716,7 +6717,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 101649 $";
+                char szRev[] = "$Revision: 103005 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

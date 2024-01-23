@@ -1,4 +1,4 @@
-/* $Id: tstRTAvl.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTAvl.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - AVL trees.
  */
@@ -41,7 +41,6 @@
 #include <iprt/avl.h>
 #include <iprt/cpp/hardavlrange.h>
 
-#include <iprt/asm.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/rand.h>

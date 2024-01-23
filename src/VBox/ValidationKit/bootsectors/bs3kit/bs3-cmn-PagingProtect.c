@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingProtect.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-PagingProtect.c 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3PagingProtect
  */
@@ -40,6 +40,7 @@
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-paging.h"
+#include <iprt/asm.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/param.h>
 

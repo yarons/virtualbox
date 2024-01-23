@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 100309 2023-06-28 10:25:37Z alexander.eichner@oracle.com $ */
+/* $Id: memcache.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -312,12 +312,11 @@ static int rtMemCacheGrow(RTMEMCACHEINT *pThis)
          * on the cache.
          */
         size_t const cbPage = RTSystemGetPageSize();
-        PRTMEMCACHEPAGE pPage = (PRTMEMCACHEPAGE)RTMemPageAlloc(cbPage);
+        PRTMEMCACHEPAGE pPage = (PRTMEMCACHEPAGE)RTMemPageAllocZ(cbPage);
         if (pPage)
         {
             uint32_t const cObjects = RT_MIN(pThis->cPerPage, pThis->cMax - pThis->cTotal);
 
-            ASMMemZeroPage(pPage);
             pPage->pCache       = pThis;
             pPage->pNext        = NULL;
             pPage->cFree        = cObjects;

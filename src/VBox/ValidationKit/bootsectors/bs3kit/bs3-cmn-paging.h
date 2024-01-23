@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-paging.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-paging.h 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Internal Paging Structures, Variables and Functions.
  */
@@ -41,7 +41,6 @@
 #endif
 
 #include "bs3kit.h"
-#include <iprt/asm.h>
 
 RT_C_DECLS_BEGIN
 

@@ -1,4 +1,4 @@
-/* $Id: vfsmount.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmount.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Mounting.
  */
@@ -41,7 +41,8 @@
 #define LOG_GROUP RTLOGGROUP_VFS
 #include <iprt/vfs.h>
 
-#include <iprt/asm.h>
+#define RT_ASM_INCLUDE_PAGE_SIZE
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>

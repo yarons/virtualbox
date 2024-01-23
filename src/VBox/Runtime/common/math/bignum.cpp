@@ -1,4 +1,4 @@
-/* $Id: bignum.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bignum.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Big Integer Numbers.
  */
@@ -44,6 +44,7 @@
 #include "internal/iprt.h"
 #include <iprt/bignum.h>
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/asm-math.h>
 #include <iprt/err.h>

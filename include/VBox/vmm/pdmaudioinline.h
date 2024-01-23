@@ -1,4 +1,4 @@
-/* $Id: pdmaudioinline.h 99559 2023-04-28 14:30:50Z andreas.loeffler@oracle.com $ */
+/* $Id: pdmaudioinline.h 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Audio Helpers, Inlined Code. (DEV,++)
  *
@@ -51,6 +51,7 @@
 #include <VBox/log.h>
 #include <VBox/vmm/pdmaudioifs.h>
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>

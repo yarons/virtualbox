@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 102520 2023-12-07 12:06:26Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -35,6 +35,8 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 
+#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/assert.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

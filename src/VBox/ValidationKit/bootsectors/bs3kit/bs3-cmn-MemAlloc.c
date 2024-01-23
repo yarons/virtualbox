@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAlloc.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-MemAlloc.c 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3MemAlloc
  */
@@ -40,7 +40,6 @@
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-memory.h"
-#include <iprt/asm.h>
 
 
 #undef Bs3MemAlloc

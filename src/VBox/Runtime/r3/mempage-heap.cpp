@@ -1,4 +1,4 @@
-/* $Id: mempage-heap.cpp 101301 2023-09-28 00:26:16Z knut.osmundsen@oracle.com $ */
+/* $Id: mempage-heap.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTMemPage*, optimized using heap.
  */
@@ -41,6 +41,7 @@
 #include "internal/iprt.h"
 #include <iprt/mem.h>
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/avl.h>

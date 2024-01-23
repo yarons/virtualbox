@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 100079 2023-06-06 07:10:47Z samantha.scholz@oracle.com $ */
+/* $Id: tstVDIo.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox HDD container test utility - I/O replay.
  */
@@ -29,6 +29,7 @@
 #include <VBox/vd.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>

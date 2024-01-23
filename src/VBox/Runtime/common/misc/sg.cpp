@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 101753 2023-11-03 15:57:39Z ksenia.s.stepanova@oracle.com $ */
+/* $Id: sg.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Scatter / Gather buffer handling.
  */
@@ -41,7 +41,7 @@
 #include <iprt/sg.h>
 #include <iprt/string.h>
 #include <iprt/assert.h>
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 
 
 /**

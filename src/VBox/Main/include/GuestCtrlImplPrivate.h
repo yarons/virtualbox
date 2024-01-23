@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 102667 2023-12-21 09:20:02Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -34,6 +34,7 @@
 #include "ConsoleImpl.h"
 #include "Global.h"
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/env.h>
 #include <iprt/semaphore.h>

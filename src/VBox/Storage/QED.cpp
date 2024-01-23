@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: QED.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * QED - QED Disk image.
  *
@@ -41,6 +41,7 @@
 #include <VBox/err.h>
 
 #include <VBox/log.h>
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

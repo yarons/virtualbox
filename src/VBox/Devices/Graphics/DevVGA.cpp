@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -78,6 +78,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_VGA
+#include <iprt/asm-mem.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/AssertGuest.h>

@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: intnetinline.h 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -48,6 +48,8 @@
 #include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/asm-mem.h>
+#include <iprt/asm.h>
 #include <VBox/log.h>
 
 

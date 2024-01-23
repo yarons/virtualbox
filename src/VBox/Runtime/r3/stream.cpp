@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: stream.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -67,6 +67,7 @@
 #include <iprt/stream.h>
 #include "internal/iprt.h"
 
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
 #ifndef HAVE_FWRITE_UNLOCKED
 # include <iprt/critsect.h>

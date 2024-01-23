@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VCICache.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -35,9 +35,10 @@
 
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/alloc.h>
-#include <iprt/file.h>
+#include <iprt/asm-mem.h>
 #include <iprt/asm.h>
+#include <iprt/mem.h>
+#include <iprt/file.h>
 
 #include "VDBackends.h"
 

@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 100442 2023-07-08 11:10:51Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -44,6 +44,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/dbg.h>
 #include <iprt/err.h>
 #include <iprt/latin1.h>

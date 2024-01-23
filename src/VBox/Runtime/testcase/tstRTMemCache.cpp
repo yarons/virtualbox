@@ -1,4 +1,4 @@
-/* $Id: tstRTMemCache.cpp 99007 2023-03-16 14:13:51Z alexander.eichner@oracle.com $ */
+/* $Id: tstRTMemCache.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - RTMemCache.
  */
@@ -41,6 +41,7 @@
 #include <iprt/memcache.h>
 
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
