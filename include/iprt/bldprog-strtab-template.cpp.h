@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 103000 2024-01-23 15:58:08Z knut.osmundsen@oracle.com $ */
+/* $Id: bldprog-strtab-template.cpp.h 103004 2024-01-23 22:13:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -1205,13 +1205,13 @@ static void BldProgStrTab_WriteStringTable(PBLDPROGSTRTAB pThis, FILE *pOut,
     {
         if (BldProgBitIsSet(pThis->bmUsedChars, i)
 #  ifdef BLDPROG_STRTAB_PURE_ASCII
-            ? pThis->aCompDict[i].cchString != 1
+            ? pThis->aCompDict[i].cchString != 1U
 #  else
-            ? pThis->aCompDict[i].cchString != (i != 0xff ? 1 : 0)
+            ? pThis->aCompDict[i].cchString != (i != 0xffU ? 1U : 0U)
 #  endif
-            : pThis->aCompDict[i].cchString < 1)
+            : pThis->aCompDict[i].cchString < 1U)
             abort();
-        if (pThis->aCompDict[i].cchString > 1)
+        if (pThis->aCompDict[i].cchString > 1U)
             BldProgStrTab_CheckStrTabString(pThis, &pThis->aCompDict[i]);
     }
 # endif
