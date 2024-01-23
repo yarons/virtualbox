@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 102995 2024-01-23 07:54:57Z alexander.eichner@oracle.com $ */
+/* $Id: DevTpm.cpp 102998 2024-01-23 10:37:47Z alexander.eichner@oracle.com $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -802,7 +802,8 @@ static VBOXSTRICTRC tpmMmioFifoRead(PPDMDEVINS pDevIns, PDEVTPM pThis, PDEVTPMLO
             u64 =   TPM_FIFO_LOCALITY_REG_INTF_ID_IF_VERS_SET(TPM_FIFO_LOCALITY_REG_INTF_ID_IF_VERS_FIFO)
                   | TPM_FIFO_LOCALITY_REG_INTF_ID_CAP_DATA_XFER_SZ_SET(TPM_FIFO_LOCALITY_REG_INTF_ID_CAP_DATA_XFER_SZ_64B)
                   | TPM_FIFO_LOCALITY_REG_INTF_ID_IF_SEL_GET(TPM_FIFO_LOCALITY_REG_INTF_ID_IF_SEL_FIFO)
-                  | TPM_FIFO_LOCALITY_REG_INTF_ID_IF_SEL_LOCK;
+                  | TPM_FIFO_LOCALITY_REG_INTF_ID_IF_SEL_LOCK
+                  | TPM_FIFO_LOCALITY_REG_INTF_ID_CAP_FIFO;
             if (pThis->enmTpmVers == TPMVERSION_1_2)
                 u64 |= TPM_FIFO_LOCALITY_REG_INTF_ID_IF_TYPE_SET(TPM_FIFO_LOCALITY_REG_INTF_ID_IF_TYPE_TIS1_3);
             else
