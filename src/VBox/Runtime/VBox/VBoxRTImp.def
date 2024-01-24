@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 101349 2023-10-05 00:33:34Z knut.osmundsen@oracle.com $
+; $Id: VBoxRTImp.def 103014 2024-01-24 00:58:12Z knut.osmundsen@oracle.com $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -80,7 +80,6 @@ EXPORTS
     ASMBitNextClear             ; not-amd64 not-x86
     ASMBitFirstSet              ; not-amd64 not-x86
     ASMBitNextSet               ; not-amd64 not-x86
-    ASMMemZeroPage              ; not-amd64 not-x86
     ASMMemZero32                ; not-amd64 not-x86
     ASMMemFill32                ; not-amd64 not-x86
     ASMMemFirstMismatchingU8    ; not-amd64 not-x86

@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPool.cpp 103014 2024-01-24 00:58:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -681,7 +681,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                                 break;
                         }
 #endif
-                        ASMMemZeroPage(pvShw);
+                        RT_BZERO(pvShw, PAGE_SIZE);
                         STAM_PROFILE_STOP(&pPool->StatZeroPage, z);
                         pPage->cPresent = 0;
                         pPage->iFirstPresent = NIL_PGMPOOL_PRESENT_INDEX;
