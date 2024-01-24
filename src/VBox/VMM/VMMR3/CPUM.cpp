@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 103018 2024-01-24 11:20:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: CPUM.cpp 103046 2024-01-24 19:33:51Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2240,6 +2240,12 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     pVM->cpum.s.HostFeatures.fBmi1       = true;
     pVM->cpum.s.HostFeatures.fBmi2       = true;
     pVM->cpum.s.HostFeatures.fAdx        = true;
+    pVM->cpum.s.HostFeatures.fSse        = true;
+    pVM->cpum.s.HostFeatures.fSse2       = true;
+    pVM->cpum.s.HostFeatures.fSse3       = true;
+    pVM->cpum.s.HostFeatures.fSse41      = true;
+    pVM->cpum.s.HostFeatures.fSse42      = true;
+    pVM->cpum.s.HostFeatures.fLahfSahf   = true;
 #endif
 
     /*
