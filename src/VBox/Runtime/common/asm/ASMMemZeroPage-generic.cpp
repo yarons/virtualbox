@@ -1,4 +1,4 @@
-/* $Id: ASMMemZeroPage-generic.cpp 103008 2024-01-24 00:09:09Z knut.osmundsen@oracle.com $ */
+/* $Id: ASMMemZeroPage-generic.cpp 103009 2024-01-24 00:09:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -38,6 +38,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define RT_ASM_INCLUDE_PAGE_SIZE
 #include <iprt/asm-mem.h>
 #include "internal/iprt.h"
 
