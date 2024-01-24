@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 102983 2024-01-21 17:59:16Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 103026 2024-01-24 15:10:56Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102983 $"
+__version__ = "$Revision: 103026 $"
 
 
 # Standard Python imports.
@@ -574,6 +574,12 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             # Fedora
             #
             UnattendedVm(oSet, 'tst-fedora-39-64', 'Fedora_64', '7.0/uaisos/Fedora-Workstation-Live-x86_64-39-1.5.iso',
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
+
+            #
+            # OracleLinux
+            #
+            UnattendedVm(oSet, 'tst-ol-9_2-amd64', 'Oracle_64', '7.1/uaisos/OracleLinux-R9-U2-x86_64-dvd.iso',
                          UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs),
 
             #
