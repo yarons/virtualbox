@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 103030 2024-01-24 16:15:36Z andreas.loeffler@oracle.com $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -34,7 +34,7 @@
 /cbinding/makefile.tstCAPIGlue:         --license-mit --treat-as Makefile
 
 # The Python bindings is licensed under dual GPL and CDDL.
-/glue/vboxapi.py:                       --license-ose-dual
+/glue/python/vboxapi.py:                --license-ose-dual
 
 # Source dirs.
 --filter-out-files /src-all/VBoxAPI-end.d
@@ -97,4 +97,3 @@
 
 /testcase/tstUnattendedScript-1.expected: --treat-as plaintext --external-copyright
 /testcase/tstUnattendedScript-1.template: --treat-as plaintext --external-copyright
-

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 103029 2024-01-24 16:02:07Z andreas.loeffler@oracle.com $
+# $Id: vboxapi.py 103030 2024-01-24 16:15:36Z andreas.loeffler@oracle.com $
 # pylint: disable=import-error -- for cross-platform Win32 imports
 # pylint: disable=unused-import
 # pylint: disable=protected-access -- for XPCOM _xpcom member
@@ -27,9 +27,18 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see <https://www.gnu.org/licenses>.
 
-SPDX-License-Identifier: GPL-3.0-only
+The contents of this file may alternatively be used under the terms
+of the Common Development and Distribution License Version 1.0
+(CDDL), a copy of it is provided in the "COPYING.CDDL" file included
+in the VirtualBox distribution, in which case the provisions of the
+CDDL are applicable instead of those of the GPL.
+
+You may elect to license modified versions of this file under the
+terms and conditions of either the GPL or the CDDL or both.
+
+SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103029 $"
+__version__ = "$Revision: 103030 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
