@@ -1,4 +1,4 @@
-/* $Id: ASMMemFirstNonZero-generic.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ASMMemFirstNonZero-generic.cpp 103010 2024-01-24 00:14:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -38,7 +38,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include "internal/iprt.h"
 
 
