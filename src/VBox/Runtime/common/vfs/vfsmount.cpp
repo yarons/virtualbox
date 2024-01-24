@@ -1,4 +1,4 @@
-/* $Id: vfsmount.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmount.cpp 103012 2024-01-24 00:38:46Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Mounting.
  */
@@ -43,6 +43,7 @@
 
 #define RT_ASM_INCLUDE_PAGE_SIZE
 #include <iprt/asm-mem.h>
+#include <iprt/asm.h> /* ASMByteSwapU32/U16 on sparc */
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>
