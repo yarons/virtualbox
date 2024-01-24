@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooser.cpp 103022 2024-01-24 13:20:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -273,10 +273,10 @@ void UIChooser::prepareConnections()
     AssertPtrReturnVoid(view());
 
     /* Abstract Chooser-model connections: */
-    connect(model(), &UIChooserModel::sigCloudMachineStateChange,
-            this, &UIChooser::sigCloudMachineStateChange);
     connect(model(), &UIChooserModel::sigGroupSavingStateChanged,
             this, &UIChooser::sigGroupSavingStateChanged);
+    connect(model(), &UIChooserModel::sigCloudMachineStateChange,
+            this, &UIChooser::sigCloudMachineStateChange);
     connect(model(), &UIChooserModel::sigCloudUpdateStateChanged,
             this, &UIChooser::sigCloudUpdateStateChanged);
 
@@ -321,10 +321,10 @@ void UIChooser::cleanupConnections()
     AssertPtrReturnVoid(view());
 
     /* Abstract Chooser-model connections: */
-    disconnect(model(), &UIChooserModel::sigCloudMachineStateChange,
-               this, &UIChooser::sigCloudMachineStateChange);
     disconnect(model(), &UIChooserModel::sigGroupSavingStateChanged,
                this, &UIChooser::sigGroupSavingStateChanged);
+    disconnect(model(), &UIChooserModel::sigCloudMachineStateChange,
+               this, &UIChooser::sigCloudMachineStateChange);
     disconnect(model(), &UIChooserModel::sigCloudUpdateStateChanged,
                this, &UIChooser::sigCloudUpdateStateChanged);
 
