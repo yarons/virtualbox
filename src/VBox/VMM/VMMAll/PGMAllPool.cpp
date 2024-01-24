@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 103014 2024-01-24 00:58:12Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 103015 2024-01-24 00:59:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -31,7 +31,6 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM_POOL
 #define VBOX_WITHOUT_PAGING_BIT_FIELDS /* 64-bit bitfields are just asking for trouble. See @bugref{9841} and others. */
-#define RT_ASM_INCLUDE_PAGE_SIZE /* ASMMemZeroPage */
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
