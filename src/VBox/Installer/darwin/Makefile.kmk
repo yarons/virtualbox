@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103041 2024-01-24 18:39:07Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 103042 2024-01-24 18:44:01Z andreas.loeffler@oracle.com $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -722,8 +722,8 @@ $(VBOX_PATH_PACK_TMP)/Packages/VirtualBox.pkg: \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python/vboxapi \
-			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python/vboxapi\src \
-			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python/vboxapi\src\vboxapi \
+			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python/vboxapi/src \
+			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/installer/python/vboxapi/src/vboxapi \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/bindings/ \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/bindings/xpcom \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/sdk/bindings/xpcom/python \
