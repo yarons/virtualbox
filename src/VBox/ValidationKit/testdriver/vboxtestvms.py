@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103045 2024-01-24 19:32:52Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 103047 2024-01-24 19:50:24Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103045 $"
+__version__ = "$Revision: 103047 $"
 
 # Standard Python imports.
 import copy;
@@ -1175,7 +1175,7 @@ class TestVm(object):
         if self.fNstHwVirt and not oTestDrv.hasHostNestedHwVirt():
             reporter.log('Ignoring VM %s (Nested hardware-virtualization not support on this host).' % (self.sVmName,));
             return True;
-        elif self.sPlatformArchitecture == 'ARM' and utils.getHostArch() == 'amd64':
+        if self.sPlatformArchitecture == 'ARM' and utils.getHostArch() == 'amd64':
             return True;
         return False;
 
