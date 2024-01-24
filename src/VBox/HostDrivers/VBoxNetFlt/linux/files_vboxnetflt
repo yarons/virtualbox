@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxnetflt 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: files_vboxnetflt 103007 2024-01-24 00:07:14Z knut.osmundsen@oracle.com $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -41,6 +41,7 @@ VBOX_VBOXNETFLT_SOURCES=" \
     ${PATH_ROOT}/include/iprt/asm.h=>include/iprt/asm.h \
     ${PATH_ROOT}/include/iprt/asm-amd64-x86.h=>include/iprt/asm-amd64-x86.h \
     ${PATH_ROOT}/include/iprt/asm-math.h=>include/iprt/asm-math.h \
+    ${PATH_ROOT}/include/iprt/asm-mem.h=>include/iprt/asm-mem.h \
     ${PATH_ROOT}/include/iprt/assert.h=>include/iprt/assert.h \
     ${PATH_ROOT}/include/iprt/assertcompile.h=>include/iprt/assertcompile.h \
     ${PATH_ROOT}/include/iprt/avl.h=>include/iprt/avl.h \
