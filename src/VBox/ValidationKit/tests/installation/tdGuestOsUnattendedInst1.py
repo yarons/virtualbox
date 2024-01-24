@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 103026 2024-01-24 15:10:56Z alexander.eichner@oracle.com $
+# $Id: tdGuestOsUnattendedInst1.py 103044 2024-01-24 19:30:24Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103026 $"
+__version__ = "$Revision: 103044 $"
 
 
 # Standard Python imports.
@@ -605,7 +605,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             # OracleLinux
             #
             UnattendedVm(oSet, 'tst-ol-9_2-arm64', 'Oracle_arm64', '7.1/uaisos/OracleLinux-R9-U2-aarch64-dvd.iso',
-                         0, "ARM"),
+                         UnattendedVm.kfAvoidNetwork | UnattendedVm.kfNoGAs, "ARM"),
         ]);
         # pylint: enable=line-too-long
         self.oTestVmSet = oSet;
