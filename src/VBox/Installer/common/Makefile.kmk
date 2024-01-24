@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 103036 2024-01-24 17:02:43Z andreas.loeffler@oracle.com $
 ## @file
 # Common installer stuff.
 #
@@ -55,7 +55,7 @@ ifdef VBOX_WITH_PYTHON
   OTHERS      += $(PATH_TARGET)/pylintInstallerCommon.run
   OTHER_CLEAN += $(PATH_TARGET)/pylintInstallerCommon.run
   $(PATH_TARGET)/pylintInstallerCommon.run: \
-	${PATH_SUB_CURRENT}/vboxapisetup.py ${PATH_SUB_CURRENT}/vboxapisetup-stub.py
+  		${PATH_SUB_CURRENT}/vboxapisetup.py ${PATH_SUB_CURRENT}/vboxapisetup-stub.py
 	$(QUIET)$(APPEND) -t "$@"
  endif
 
