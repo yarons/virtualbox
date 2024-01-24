@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 103045 2024-01-24 19:32:52Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103028 $"
+__version__ = "$Revision: 103045 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2761,6 +2761,8 @@ class TestDriver(base.TestDriver):                                              
                     fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VMSVGA);
                 elif sGraphicsControllerType == 'VBoxVGA':
                     fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_VBoxVGA);
+                elif sGraphicsControllerType == 'QemuRamFb':
+                    fRc = oSession.setVideoControllerType(vboxcon.GraphicsControllerType_QemuRamFB);
 
             #
             # x86-specifics.
