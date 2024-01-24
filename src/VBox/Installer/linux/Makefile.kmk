@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101365 2023-10-05 17:43:37Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -531,7 +531,7 @@ BLDDIRS += $(foreach d, \
 			archive/plugins/styles,) \
 		$(if $(VBOX_WITH_PYTHON), \
 			archive/sdk/installer \
-			archive/sdk/installer/vboxapi \
+			archive/sdk/installer/python/vboxapi \
 			archive/sdk/bindings/xpcom/python/xpcom \
 			archive/sdk/bindings/xpcom/python/xpcom/client \
 			archive/sdk/bindings/xpcom/python/xpcom/server,) \

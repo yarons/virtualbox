@@ -1,4 +1,4 @@
-# $Id: vbox-err-consts.sed 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: vbox-err-consts.sed 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
 ## @file
 # IPRT - SED script for converting */err.h to a python dictionary.
 #

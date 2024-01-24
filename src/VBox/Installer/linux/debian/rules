@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 101364 2023-10-05 17:41:06Z sergey.dubov@oracle.com $
+# $Id: rules 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -308,7 +308,7 @@ binary: build $(if $(NOMODS),,$(bldbase)/modules-stamp)
 	    echo "Plugins = /usr/lib/$(package)/plugins" >> $(prefix)/usr/lib/$(package)/qt.conf; \
 	fi
 	export VBOX_INSTALL_PATH=/usr/lib/$(package) && \
-	    cd $(builddir)/bin/sdk/installer && \
+	    cd $(builddir)/bin/sdk/installer/python && \
 	    $(PYTHON) ./vboxapisetup.py install --root $(prefix)
 	rm -rf $(prefix)/usr/lib/$(package)/sdk/installer
 	ln -s ../VBoxVMM.so $(prefix)/usr/lib/$(package)/components/VBoxVMM.so

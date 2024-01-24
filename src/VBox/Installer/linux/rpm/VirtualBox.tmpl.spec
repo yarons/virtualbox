@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 102907 2024-01-16 19:50:33Z klaus.espenlaub@oracle.com $
+# $Id: VirtualBox.tmpl.spec 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -107,7 +107,7 @@ install -m 755 -d $RPM_BUILD_ROOT/usr/share/virtualbox
 install -m 755 -d $RPM_BUILD_ROOT/usr/share/mime/packages
 %if %{?with_python:1}%{!?with_python:0}
 (export VBOX_INSTALL_PATH=/usr/lib/virtualbox && \
-  cd ./sdk/installer && \
+  cd ./sdk/installer/python && \
   %{vbox_python} ./vboxapisetup.py install --prefix %{_prefix} --root $RPM_BUILD_ROOT)
 %endif
 rm -rf sdk/installer
