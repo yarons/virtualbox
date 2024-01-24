@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98114 2023-01-18 10:23:59Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 103033 2024-01-24 16:58:54Z andreas.loeffler@oracle.com $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -30,7 +30,8 @@
 /common/virtualbox.xml:                              --external-copyright
 
 # Dual licensed code.
-/common/vboxapisetup.py: --license-ose-dual
+/common/vboxapisetup.py:      --license-ose-dual
+/common/vboxapisetup-stub.py: --license-ose-dual
 
 # ignore desktop files.
 --filter-out-files *.desktop.in|*.desktop
