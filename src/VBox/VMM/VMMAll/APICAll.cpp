@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: APICAll.cpp 103025 2024-01-24 14:21:13Z knut.osmundsen@oracle.com $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2370,7 +2370,7 @@ void apicResetCpu(PVMCPUCC pVCpu, bool fResetApicBaseMsr)
     /*
      * Initialize the APIC ID register to xAPIC format.
      */
-    ASMMemZero32(&pXApicPage->id, sizeof(pXApicPage->id));
+    RT_BZERO(&pXApicPage->id, sizeof(pXApicPage->id));
     pXApicPage->id.u8ApicId = pVCpu->idCpu;
 }
 
@@ -2487,7 +2487,7 @@ VMM_INT_DECL(int) APICSetBaseMsr(PVMCPUCC pVCpu, uint64_t u64BaseMsr)
                  * See Intel spec. 10.12.5.1 "x2APIC States".
                  */
                 PX2APICPAGE pX2ApicPage = VMCPU_TO_X2APICPAGE(pVCpu);
-                ASMMemZero32(&pX2ApicPage->id, sizeof(pX2ApicPage->id));
+                RT_BZERO(&pX2ApicPage->id, sizeof(pX2ApicPage->id));
                 pX2ApicPage->id.u32ApicId = pVCpu->idCpu;
 
                 /*
