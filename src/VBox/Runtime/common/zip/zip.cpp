@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: zip.cpp 103013 2024-01-24 00:50:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Compression.
  */
@@ -1769,7 +1769,7 @@ RTDECL(int) RTZipBlockCompress(RTZIPTYPE enmType, RTZIPLEVEL enmLevel, uint32_t 
             };
             if (    cbSrc == _4K
                 &&  !((uintptr_t)pvSrc & 15)
-                &&  ASMMemIsZeroPage(pvSrc))
+                &&  ASMMemIsZero(pvSrc, _4K))
             {
                 if (RT_UNLIKELY(cbDst < sizeof(s_abZero4K)))
                     return VERR_BUFFER_OVERFLOW;
