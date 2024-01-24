@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 101359 2023-10-05 15:26:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: vfsmod.h 103011 2024-01-24 00:25:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -43,6 +43,7 @@
 #include "the-linux-kernel.h"
 #include <iprt/list.h>
 #include <iprt/asm.h>
+#include <iprt/asm-mem.h>
 #include <VBox/log.h>
 
 #if RTLNX_VER_MIN(2,6,0)
