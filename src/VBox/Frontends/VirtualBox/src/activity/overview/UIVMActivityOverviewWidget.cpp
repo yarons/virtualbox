@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 102975 2024-01-19 15:55:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103019 2024-01-24 12:43:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -53,6 +53,7 @@
 #include "UIMessageCenter.h"
 #include "UITranslator.h"
 #include "UIVirtualBoxEventHandler.h"
+#include "UIVirtualMachineItemCloud.h"
 #include "UIVMActivityMonitor.h"
 #include "UIVMActivityOverviewWidget.h"
 
@@ -1537,9 +1538,9 @@ void UIVMActivityOverviewWidget::setIsCurrentTool(bool fIsCurrentTool)
         m_pModel->setShouldUpdate(fIsCurrentTool);
 }
 
-void UIVMActivityOverviewWidget::setCloudMachineItems(const QList<UIVirtualMachineItemCloud> &itemList)
+void UIVMActivityOverviewWidget::setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems)
 {
-    Q_UNUSED(itemList);
+    Q_UNUSED(cloudItems);
 }
 
 void UIVMActivityOverviewWidget::retranslateUi()
