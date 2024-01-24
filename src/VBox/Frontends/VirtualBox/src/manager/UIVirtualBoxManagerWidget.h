@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 103023 2024-01-24 13:28:00Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -314,6 +314,9 @@ private slots:
           * @param  enmDirection  Brings which direction was animation finished for. */
         void sltHandleSlidingAnimationComplete(SlidingDirection enmDirection);
 
+        /** Handles state change for cloud profile with certain @a strProviderShortName and @a strProfileName. */
+        void sltHandleCloudProfileStateChange(const QString &strProviderShortName,
+                                              const QString &strProfileName);
         /** Handles state change for cloud machine with certain @a uId. */
         void sltHandleCloudMachineStateChange(const QUuid &uId);
     /** @} */
