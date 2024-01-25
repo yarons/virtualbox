@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 103054 2024-01-25 10:01:27Z andreas.loeffler@oracle.com $
+# $Id: vboxapi.py 103072 2024-01-25 17:45:27Z andreas.loeffler@oracle.com $
 # pylint: disable=import-error -- for cross-platform Win32 imports
 # pylint: disable=unused-import
 # pylint: disable=protected-access -- for XPCOM _xpcom member
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103054 $"
+__version__ = "$Revision: 103072 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -347,7 +347,7 @@ class PlatformBase(object):
         """
         Returns the COM status code from the VBox API given exception.
         """
-        raise AttributeError
+        return None
 
     def xcptIsDeadInterface(self, _oXcpt):
         """
@@ -366,7 +366,7 @@ class PlatformBase(object):
         Will not raise any exception as long as hrStatus and self are not bad.
         """
         try:
-            hrXcpt = self.xcptGetStatus(oXcpt)
+            hrXcpt = self.xcptGetStatus(oXcpt) # pylint: disable=assignment-from-none
         except AttributeError:
             return False
         if hrXcpt == hrStatus:
