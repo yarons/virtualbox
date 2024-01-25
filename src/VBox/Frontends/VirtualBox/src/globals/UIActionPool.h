@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 100943 2023-08-22 16:21:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 103058 2024-01-25 12:34:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -88,11 +88,11 @@ enum UIActionIndex
     /* 'Help' menu actions: */
     UIActionIndex_Menu_Help,
     UIActionIndex_Simple_Contents,
+    UIActionIndex_Simple_OnlineDocumentation,
     UIActionIndex_Simple_WebSite,
     UIActionIndex_Simple_BugTracker,
     UIActionIndex_Simple_Forums,
     UIActionIndex_Simple_Oracle,
-    UIActionIndex_Simple_OnlineDocumentation,
 #ifndef VBOX_WS_MAC
     UIActionIndex_Simple_About,
 #endif
