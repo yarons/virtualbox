@@ -1,4 +1,4 @@
-/* $Id: VMXInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VMXInternal.h 103053 2024-01-25 09:16:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * VMX - Internal header file for the VMX code template.
  */
@@ -249,6 +249,7 @@ typedef struct VMXSTATISTICS
     STAMCOUNTER             StatExitReasonNpf;
 
     STAMCOUNTER             StatNestedExitReasonNpf;
+    STAMCOUNTER             StatNestedExitACSplitLock;
 
     STAMCOUNTER             StatFlushPage;
     STAMCOUNTER             StatFlushPageManual;

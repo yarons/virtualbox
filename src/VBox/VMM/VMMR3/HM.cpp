@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 103025 2024-01-24 14:21:13Z knut.osmundsen@oracle.com $ */
+/* $Id: HM.cpp 103053 2024-01-25 09:16:55Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1036,6 +1036,7 @@ static int hmR3InitFinalizeR3(PVM pVM)
                     AssertRC(rc);
                 }
             }
+            HM_REG_COUNTER(&pHmCpu->StatNestedExitACSplitLock, "/HM/CPU%u/ExitNestedGuest/Trap/#AC-split-lock", "Nested-guest triggered #AC due to split-lock being enabled on the host.");
         }
         else
         {
