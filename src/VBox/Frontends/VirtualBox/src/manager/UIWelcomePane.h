@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWelcomePane.h 103061 2024-01-25 13:22:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
@@ -75,8 +75,8 @@ private:
     /** Holds the icon instance. */
     QIcon  m_icon;
 
-    /** Holds the text label instance. */
-    QLabel *m_pLabelText;
+    /** Holds the greetings label instance. */
+    QLabel *m_pLabelGreetings;
     /** Holds the icon label instance. */
     QLabel *m_pLabelIcon;
 };
