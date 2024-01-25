@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 103030 2024-01-24 16:15:36Z andreas.loeffler@oracle.com $
+# $Id: vboxapi.py 103054 2024-01-25 10:01:27Z andreas.loeffler@oracle.com $
 # pylint: disable=import-error -- for cross-platform Win32 imports
 # pylint: disable=unused-import
 # pylint: disable=protected-access -- for XPCOM _xpcom member
@@ -38,7 +38,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103030 $"
+__version__ = "$Revision: 103054 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -545,7 +545,7 @@ class PlatformMSCOM(PlatformBase):
         return 'MSCOM'
 
     def getArray(self, oInterface, sAttrib):
-        return getattr(oInterface, sAttrib)
+        return oInterface.__getattr__(sAttrib) # pylint: disable=unnecessary-dunder-call
 
     def setArray(self, oInterface, sAttrib, aoArray):
         #
@@ -565,7 +565,7 @@ class PlatformMSCOM(PlatformBase):
             aArgs, _aDefaultArgs = aPropMapPut[sComAttrib]
             aGetArgs             = aPropMapGet[sComAttrib]
         except KeyError: # fallback.
-            return setattr(oInterface, sAttrib, aoArray)
+            return oInterface.__setattr__(sAttrib, aoArray) # pylint: disable=unnecessary-dunder-call
 
         import pythoncom
         oOleObj.InvokeTypes(aArgs[0],                   # dispid
@@ -751,10 +751,10 @@ class PlatformXPCOM(PlatformBase):
         return 'XPCOM'
 
     def getArray(self, oInterface, sAttrib):
-        return getattr(oInterface, 'get' + comifyName(sAttrib));
+        return oInterface.__getattr__('get' + comifyName(sAttrib))() # pylint: disable=unnecessary-dunder-call
 
     def setArray(self, oInterface, sAttrib, aoArray):
-        return setattr(oInterface, 'set' + comifyName(sAttrib), aoArray)
+        return oInterface.__getattr__('set' + comifyName(sAttrib))(aoArray) # pylint: disable=unnecessary-dunder-call
 
     def initPerThread(self):
         import xpcom
@@ -879,10 +879,10 @@ class PlatformWEBSERVICE(PlatformBase):
         return True
 
     def getArray(self, oInterface, sAttrib):
-        return getattr(oInterface, sAttrib)
+        return oInterface.__getattr__(sAttrib) # pylint: disable=unnecessary-dunder-call
 
     def setArray(self, oInterface, sAttrib, aoArray):
-        return setattr(oInterface, sAttrib, aoArray)
+        return oInterface.__setattr__(sAttrib, aoArray) # pylint: disable=unnecessary-dunder-call
 
     def waitForEvents(self, _timeout):
         # Webservices cannot do that yet
