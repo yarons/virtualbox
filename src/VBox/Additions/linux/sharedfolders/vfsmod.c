@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 103024 2024-01-24 13:37:01Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsmod.c 103067 2024-01-25 15:31:01Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -473,8 +473,7 @@ static int vbsf_create_root_inode(struct super_block *sb, struct vbsf_super_info
 
         path->u16Length = 1;
         path->u16Size = 2;
-        path->String.utf8[0] = '/';
-        path->String.utf8[1] = 0;
+        RTStrCopy(path->String.utf8, path->u16Size, "/");
 
         /*
          * Stat the root directory (for inode info).

@@ -1,4 +1,4 @@
-/* $Id: dirops.c 101359 2023-10-05 15:26:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: dirops.c 103067 2024-01-25 15:31:01Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -492,7 +492,7 @@ static int vbsf_dir_read(struct file *dir, void *opaque, filldir_t filldir)
             cchSrcName = pEntry->name.u16Length;
             AssertLogRelBreak(offEntryInBuf + RT_UOFFSETOF(SHFLDIRINFO, name.String) + cbSrcName <= cbValid);
             AssertLogRelBreak(cchSrcName < cbSrcName);
-            AssertLogRelBreak(pEntry->name.String.ach[cchSrcName] == '\0');
+            AssertLogRelBreak(*(pEntry->name.String.ach + cchSrcName) == '\0');
 
             /*
              * Filter out '.' and '..' entires.
@@ -500,7 +500,7 @@ static int vbsf_dir_read(struct file *dir, void *opaque, filldir_t filldir)
             if (   cchSrcName > 2
                 || pEntry->name.String.ach[0] != '.'
                 || (   cchSrcName == 2
-                    && pEntry->name.String.ach[1] != '.')) {
+                    && *(pEntry->name.String.ach + 1) != '.')) {
                 int const   d_type = vbsf_get_d_type(pEntry->Info.Attr.fMode);
                 ino_t const d_ino  = (ino_t)offPos + 0xbeef; /* very fake */
                 bool        fContinue;
