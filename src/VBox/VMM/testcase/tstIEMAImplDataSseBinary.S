@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImplDataSseBinary.S 103064 2024-01-25 14:41:25Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImplDataSseBinary.S 103074 2024-01-25 20:44:01Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstIEMAImplDataSseBinary - Test data for SSE binary instructions.
  */
@@ -43,16 +43,16 @@
     .globl  NAME(g_abTests_\a_Instr)
 NAME(g_abTests_\a_Instr):
     .incbin "\a_szDataFile"
-NAME(g_aTests_end_\a_Instr):
+NAME(g_abTests_end_\a_Instr):
 #ifdef ASM_FORMAT_ELF
-    .size   NAME(g_abTests_\a_Instr), . - NAME(g_aTests_\a_Instr)
+    .size   NAME(g_abTests_\a_Instr), . - NAME(g_abTests_\a_Instr)
     .type   NAME(g_abTests_\a_Instr), object
 #endif
 
     .p2align 2
     .globl  NAME(g_cbTests_\a_Instr)
 NAME(g_cbTests_\a_Instr):
-    .int    NAME(g_abTests_end_\a_Instr) - NAME(g_aTests_\a_Instr)
+    .int    NAME(g_abTests_end_\a_Instr) - NAME(g_abTests_\a_Instr)
 #ifdef ASM_FORMAT_ELF
     .size   NAME(g_cbTests_\a_Instr), 4
     .type   NAME(g_cbTests_\a_Instr), object
