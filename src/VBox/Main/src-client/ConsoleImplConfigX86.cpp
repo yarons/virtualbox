@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 103091 2024-01-26 16:38:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -844,7 +844,7 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
         /*
          * Set VM execution engine.
          */
-        /** @todo: r=aeichner Maybe provide a better VMM API for this instead of the different CFGM knobs. */
+        /** @todo r=aeichner Maybe provide a better VMM API for this instead of the different CFGM knobs. */
         LogRel(("Using execution engine %u\n", enmExecEngine));
         switch (enmExecEngine)
         {
