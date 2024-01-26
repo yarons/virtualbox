@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.h 103068 2024-01-25 15:59:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWelcomePane.h 103094 2024-01-26 17:09:05Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
@@ -39,6 +39,7 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
+class QAbstractButton;
 class QLabel;
 class QIRichTextLabel;
 
@@ -65,6 +66,9 @@ private slots:
     /** Handles activated @a urlLink. */
     void sltHandleLinkActivated(const QUrl &urlLink);
 
+    /** Handles @a pButton click. */
+    void sltHandleButtonClicked(QAbstractButton *pButton);
+
 private:
 
     /** Prepares all. */
@@ -79,9 +83,13 @@ private:
     QIcon  m_icon;
 
     /** Holds the greetings label instance. */
-    QIRichTextLabel *m_pLabelGreetings;
+    QIRichTextLabel              *m_pLabelGreetings;
+    /** Holds the mode label instance. */
+    QIRichTextLabel              *m_pLabelMode;
+    /** Holds a list of experience mode button instances. */
+    QMap<bool, QAbstractButton*>  m_buttons;
     /** Holds the icon label instance. */
-    QLabel          *m_pLabelIcon;
+    QLabel                       *m_pLabelIcon;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIWelcomePane_h */
