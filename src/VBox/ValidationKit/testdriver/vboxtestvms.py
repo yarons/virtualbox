@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103089 2024-01-26 16:24:49Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 103095 2024-01-26 18:40:58Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103089 $"
+__version__ = "$Revision: 103095 $"
 
 # Standard Python imports.
 import copy;
@@ -1926,9 +1926,12 @@ class TestVmSet(object):
                 reporter.errorXcpt('failed to query supported execution engines for "%s"' % (oVm.sVmName, ));
                 asVirtModesWanted = [];
         else:
-            asVirtModesWanted.remove('native-api');
-            asVirtModesWanted.remove('interpreter');
-            asVirtModesWanted.remove('recompiler');
+            if 'native-api' in asVirtModesWanted:
+                asVirtModesWanted.remove('native-api');
+            if 'interpreter' in asVirtModesWanted:
+                asVirtModesWanted.remove('interpreter');
+            if 'recompiler' in asVirtModesWanted:
+                asVirtModesWanted.remove('recompiler');
 
             if 'hwvirt' in asVirtModesWanted and not oTestDrv.hasHostHwVirt():
                 reporter.log('Hardware assisted virtualization is not available on the host, skipping it.');
