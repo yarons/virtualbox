@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 103045 2024-01-24 19:32:52Z alexander.eichner@oracle.com $
+# $Id: vbox.py 103076 2024-01-26 08:09:34Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103045 $"
+__version__ = "$Revision: 103076 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1393,6 +1393,7 @@ class TestDriver(base.TestDriver):                                              
         sys.path.insert(0, self.oBuild.sInstallPath);
         if self.oBuild.sSdkPath is not None:
             sys.path.insert(0, os.path.join(self.oBuild.sSdkPath, 'installer'))
+            sys.path.insert(0, os.path.join(self.oBuild.sSdkPath, 'installer', 'python', 'vboxapi', 'src')) # For >= VBox 7.1
             sys.path.insert(1, os.path.join(self.oBuild.sSdkPath, 'install')); # stupid stupid windows installer (VBox < 7.1)!
             sys.path.insert(2, os.path.join(self.oBuild.sSdkPath, 'bindings', 'xpcom', 'python'))
         os.environ['VBOX_PROGRAM_PATH'] = self.oBuild.sInstallPath;
@@ -1401,7 +1402,7 @@ class TestDriver(base.TestDriver):                                              
         try:
             from vboxapi import VirtualBoxManager;  # pylint: disable=import-error
         except:
-            reporter.logXcpt('Error importing vboxapi');
+            reporter.logXcpt('Error importing vboxapi (Python %s)' % (sys.version,));
             return False;
 
         # Exception and error hacks.
