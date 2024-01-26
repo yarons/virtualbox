@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 103069 2024-01-25 16:04:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIWelcomePane.cpp 103083 2024-01-26 13:05:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -164,7 +164,10 @@ void UIWelcomePane::updateTextLabels()
         /* Make sure their minimum width is around 20% of the screen width: */
         const QSize screenGeometry = gpDesktop->screenGeometry(this).size();
         foreach (QIRichTextLabel *pLabel, labels)
+        {
             pLabel->setMinimumTextWidth(screenGeometry.width() * .2);
+            pLabel->resize(pLabel->minimumSizeHint());
+        }
     }
 }
 
