@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 103099 2024-01-26 23:34:32Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 103100 2024-01-26 23:36:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -989,14 +989,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 103099 $";
+    static char s_szRev[] = "$Revision: 103100 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 103099 2024-01-26 23:34:32Z knut.osmundsen@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 103100 2024-01-26 23:36:34Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -3025,7 +3025,6 @@ static void MulDivU ## a_cBits ## Test(void) \
                     || uDst2 != paTests[iTest].uDst2Out \
                     || (fEfl | fEflIgn) != (paTests[iTest].fEflOut | fEflIgn)\
                     || rc    != paTests[iTest].rc) \
-                { __debugbreak(); \
                     RTTestFailed(g_hTest, "#%04u%s: efl=%#010x dst1=" a_Fmt " dst2=" a_Fmt " src=" a_Fmt "\n" \
                                            "      -> efl=%#010x dst1=" a_Fmt  " dst2=" a_Fmt " rc=%d\n" \
                                            "    expected %#010x      " a_Fmt  "      " a_Fmt "    %d%s -%s%s%s\n", \
@@ -3036,7 +3035,6 @@ static void MulDivU ## a_cBits ## Test(void) \
                                  EFlagsDiff(fEfl | fEflIgn, paTests[iTest].fEflOut | fEflIgn), \
                                  uDst1 != paTests[iTest].uDst1Out ? " dst1" : "", uDst2 != paTests[iTest].uDst2Out ? " dst2" : "", \
                                  (fEfl | fEflIgn) != (paTests[iTest].fEflOut | fEflIgn) ? " eflags" : ""); \
-                } \
                 else \
                 { \
                      *g_pu ## a_cBits        = paTests[iTest].uDst1In; \
@@ -10205,7 +10203,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 103099 $";
+        static const char s_szRev[] = "$Revision: 103100 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;
