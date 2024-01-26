@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigArmV8.cpp 102517 2023-12-07 10:28:20Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigArmV8.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits for ARMv8.
  */
@@ -167,6 +167,16 @@ int Console::i_configConstructorArmV8(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
 
     ULONG ulCpuExecutionCap = 100;
     hrc = pMachine->COMGETTER(CPUExecutionCap)(&ulCpuExecutionCap);                         H();
+
+    VMExecutionEngine_T enmExecEngine = VMExecutionEngine_NotSet;
+    hrc = pMachine->COMGETTER(VMExecutionEngine)(&enmExecEngine);                           H();
+
+    if (   enmExecEngine != VMExecutionEngine_Default
+        && enmExecEngine != VMExecutionEngine_NativeApi)
+    {
+        return pVMM->pfnVMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                     N_("The ARM backend doesn't support any other execution engine than 'default' or 'native-api' right now."));
+    }
 
     LogRel(("Guest architecture: ARM\n"));
 

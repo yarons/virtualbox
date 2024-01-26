@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-09-15 14:47:48 +0200 (Fri, 15 Sep 2023) $</pubdate>
+    <pubdate>$Date: 2024-01-26 17:17:43 +0100 (Fri, 26 Jan 2024) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -273,6 +273,15 @@ time on documenting it. -->
           <arg choice="plain">low</arg>
           <arg choice="plain">normal</arg>
           <arg choice="plain">high</arg>
+        </group></arg>
+      <arg>--vm-execution-engine=<group choice="plain">
+          <arg choice="plain">default</arg>
+          <arg choice="plain">hm</arg>
+          <arg choice="plain">hwvirt</arg>
+          <arg choice="plain">nem</arg>
+          <arg choice="plain">native-api</arg>
+          <arg choice="plain">interpreter</arg>
+          <arg choice="plain">recompiler</arg>
         </group></arg>
     </cmdsynopsis>
 

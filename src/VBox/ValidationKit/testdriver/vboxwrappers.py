@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 101067 2023-09-08 12:56:08Z andreas.loeffler@oracle.com $
+# $Id: vboxwrappers.py 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 101067 $"
+__version__ = "$Revision: 103085 $"
 
 
 # Standard Python imports.
@@ -2784,6 +2784,18 @@ class SessionWrapper(TdTaskBase):
                     fRc = True;
         self.oTstDrv.processPendingEvents();
         return fRc;
+
+    def setExecutionEngine(self, iVmExecEngine):
+        """
+        Sets a VM execution engine.
+        Returns the True on success, False on failure (logged).
+        """
+        try:
+            self.o.machine.VMExecutionEngine = iVmExecEngine;
+        except:
+            reporter.errorXcpt('Unable to set VM execution engine "%s"' % (iVmExecEngine,))
+            return False;
+        return True;
 
     #
     # IConsole wrappers.

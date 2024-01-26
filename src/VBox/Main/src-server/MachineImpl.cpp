@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 102455 2023-12-04 15:53:11Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6713,6 +6713,31 @@ HRESULT Machine::setVMProcessPriority(VMProcPriority_T aVMProcessPriority)
     alock.release();
     if (SUCCEEDED(hrc))
         hrc = i_onVMProcessPriorityChange(aVMProcessPriority);
+    return hrc;
+}
+
+HRESULT Machine::getVMExecutionEngine(VMExecutionEngine_T *aVMExecutionEngine)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aVMExecutionEngine = mUserData->s.enmExecEngine;
+
+    return S_OK;
+}
+
+HRESULT Machine::setVMExecutionEngine(VMExecutionEngine_T aVMExecutionEngine)
+{
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    HRESULT hrc = i_checkStateDependency(MutableOrSavedStateDep);
+    if (SUCCEEDED(hrc))
+    {
+        hrc = mUserData.backupEx();
+        if (SUCCEEDED(hrc))
+        {
+            i_setModified(IsModified_MachineData);
+            mUserData->s.enmExecEngine = aVMExecutionEngine;
+        }
+    }
     return hrc;
 }
 

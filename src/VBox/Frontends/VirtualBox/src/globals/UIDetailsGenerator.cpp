@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 102595 2023-12-14 15:08:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -1509,8 +1509,11 @@ void UIDetailsGenerator::acquireFeaturesStatusInfo(CMachine &comMachine, QString
     QString strExecutionEngine;
     switch (enmEngine)
     {
-        case KVMExecutionEngine_Emulated:
-            strExecutionEngine = "IEM";         /* no translation */
+        case KVMExecutionEngine_Interpreter:
+            strExecutionEngine = "IEM (Interpreter)"; /* no translation */
+            break;
+        case KVMExecutionEngine_Recompiler:
+            strExecutionEngine = "IEM (Recompiler)"; /* no translation */
             break;
         case KVMExecutionEngine_HwVirt:
             strExecutionEngine = "VT-x/AMD-V";  /* no translation */

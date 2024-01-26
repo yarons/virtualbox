@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: MachineImpl.h 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -310,6 +310,7 @@ public:
         ULONG               mCpuExecutionCap;
         uint32_t            mCpuIdPortabilityLevel;
         Utf8Str             mCpuProfile;
+        VMExecutionEngine_T mExecEngine;
 
         BOOL                mCPUAttached[SchemaDefs::MaxCPUCount];
 
@@ -1026,6 +1027,8 @@ private:
     HRESULT getUSBProxyAvailable(BOOL *aUSBProxyAvailable);
     HRESULT getVMProcessPriority(VMProcPriority_T *aVMProcessPriority);
     HRESULT setVMProcessPriority(VMProcPriority_T aVMProcessPriority);
+    HRESULT getVMExecutionEngine(VMExecutionEngine_T *aVMExecutionEngine);
+    HRESULT setVMExecutionEngine(VMExecutionEngine_T aVMExecutionEngine);
     HRESULT getStateKeyId(com::Utf8Str &aKeyId);
     HRESULT getStateKeyStore(com::Utf8Str &aKeyStore);
     HRESULT getLogKeyId(com::Utf8Str &aKeyId);

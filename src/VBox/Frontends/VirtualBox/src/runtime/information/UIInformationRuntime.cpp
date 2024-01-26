@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -365,13 +365,16 @@ void UIRuntimeInfoWidget::updateVirtualizationInfo()
     switch (enmExecutionEngineType)
     {
         case KVMExecutionEngine_HwVirt:
-            strExecutionEngine = "VT-x/AMD-V";  /* no translation */
+            strExecutionEngine = "VT-x/AMD-V";        /* no translation */
             break;
-        case KVMExecutionEngine_Emulated:
-            strExecutionEngine = "IEM";         /* no translation */
+        case KVMExecutionEngine_Interpreter:
+            strExecutionEngine = "IEM (Interpreter)"; /* no translation */
+            break;
+        case KVMExecutionEngine_Recompiler:
+            strExecutionEngine = "IEM (Recompiler)";  /* no translation */
             break;
         case KVMExecutionEngine_NativeApi:
-            strExecutionEngine = "native API";  /* no translation */
+            strExecutionEngine = "native API";        /* no translation */
             break;
         default:
             AssertFailed();

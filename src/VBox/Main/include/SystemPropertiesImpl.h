@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 101117 2023-09-13 16:34:30Z andreas.loeffler@oracle.com $ */
+/* $Id: SystemPropertiesImpl.h 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
 
 /** @file
  *
@@ -150,6 +150,8 @@ private:
                                                          BOOL *aEnabled) RT_OVERRIDE;
     HRESULT getCPUProfiles(CPUArchitecture_T aArchitecture, const com::Utf8Str &aNamePattern,
                            std::vector<ComPtr<ICPUProfile> > &aProfiles) RT_OVERRIDE;
+    HRESULT getExecutionEnginesForVmCpuArchitecture(CPUArchitecture_T aCpuArchitecture,
+                                                    std::vector<VMExecutionEngine_T> &aExecutionEngines) RT_OVERRIDE;
 
     HRESULT i_getUserHomeDirectory(Utf8Str &strPath);
     HRESULT i_setDefaultMachineFolder(const Utf8Str &strPath);
