@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 103097 2024-01-26 19:23:08Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1381,7 +1381,9 @@ HRESULT SystemProperties::getExecutionEnginesForVmCpuArchitecture(CPUArchitectur
             {
                 VMExecutionEngine_Default,
 #ifdef RT_ARCH_AMD64
+# ifndef VBOX_WITH_DRIVERLESS_FORCED
                 VMExecutionEngine_HwVirt,
+# endif
 # ifdef VBOX_WITH_NATIVE_NEM
                 VMExecutionEngine_NativeApi,
 # endif
