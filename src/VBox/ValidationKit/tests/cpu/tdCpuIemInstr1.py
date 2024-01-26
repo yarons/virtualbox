@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 103092 2024-01-26 16:39:20Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 103096 2024-01-26 18:49:23Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103092 $"
+__version__ = "$Revision: 103096 $"
 
 
 # Standard Python imports.
@@ -53,7 +53,6 @@ sys.path.append(g_ksValidationKitDir);
 # Validation Kit imports.
 from testdriver import reporter;
 from testdriver import vbox;
-from testdriver import vboxcon;
 from testdriver import vboxtestvms;
 
 
