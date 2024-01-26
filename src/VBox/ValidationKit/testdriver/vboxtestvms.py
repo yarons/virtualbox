@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 103089 2024-01-26 16:24:49Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103085 $"
+__version__ = "$Revision: 103089 $"
 
 # Standard Python imports.
 import copy;
@@ -1880,6 +1880,8 @@ class TestVmSet(object):
         """
         Removes unsupported virtualization modes for the given VM.
         """
+
+        # pylint: disable=line-too-long
         if oTestDrv.fpApiVer >= 7.1:
             enmCpuArch = None;
             if oVm.sPlatformArchitecture == 'x86':
@@ -1940,6 +1942,7 @@ class TestVmSet(object):
                 reporter.log('Raw-mode virtualization is not available in this build (or perhaps for this host), skipping it.');
                 asVirtModesWanted.remove('raw');
 
+        # pylint: enable=line-too-long
         return asVirtModesWanted;
 
     def actionExecute(self, oTestDrv, fnCallback): # pylint: disable=too-many-locals
