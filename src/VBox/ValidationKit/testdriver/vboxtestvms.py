@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103095 2024-01-26 18:40:58Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 103104 2024-01-29 12:10:39Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103095 $"
+__version__ = "$Revision: 103104 $"
 
 # Standard Python imports.
 import copy;
@@ -1917,11 +1917,11 @@ class TestVmSet(object):
 
                 if 'interpreter' in asVirtModesWanted and not vboxcon.VMExecutionEngine_Interpreter in aenmExecEngines:
                     reporter.log('IEM interpreter is not available in this build (or perhaps for this host) and VM CPU architecture, skipping it.');
-                    asVirtModesWanted.remove('iem-interpreted');
+                    asVirtModesWanted.remove('interpreter');
 
                 if 'recompiler' in asVirtModesWanted and not vboxcon.VMExecutionEngine_Recompiler in aenmExecEngines:
                     reporter.log('IEM recompiler is not available in this build (or perhaps for this host) and VM CPU architecture, skipping it.');
-                    asVirtModesWanted.remove('iem-recompiled');
+                    asVirtModesWanted.remove('recompiler');
             except:
                 reporter.errorXcpt('failed to query supported execution engines for "%s"' % (oVm.sVmName, ));
                 asVirtModesWanted = [];
