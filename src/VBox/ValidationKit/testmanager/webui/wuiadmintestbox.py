@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: wuiadmintestbox.py 103106 2024-01-29 14:28:02Z knut.osmundsen@oracle.com $
 
 """
 Test Manager WUI - TestBox.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 103106 $"
 
 
 # Standard python imports.
@@ -277,9 +277,9 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                                        'Note', 'Script', 'Python', 'Group',
                                        'OS', 'CPU', 'Features', 'CPUs', 'RAM', 'Scratch',
                                        'Actions' ]);
-        self._asColumnAttribs.extend([ 'align="center"', 'align="center"', 'align="center"', 'align="center"'
-                                       'align="center"', 'align="center"', 'align="center"', 'align="center"',
-                                       '', '', '', 'align="left"', 'align="right"', 'align="right"', 'align="right"',
+        self._asColumnAttribs.extend([ 'align="center"', 'align="center"', 'align="center"', 'align="center"',
+                                       'align="center"', 'align="center"', 'align="center"', '',
+                                       '', '', '', 'align="left"', 'align="right"', 'align="right"',
                                        'align="center"' ]);
         self._aaiColumnSorting.extend([
             (TestBoxLogic.kiSortColumn_sName,),
