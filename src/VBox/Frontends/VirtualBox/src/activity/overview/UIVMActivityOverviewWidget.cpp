@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103102 2024-01-29 10:16:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103103 2024-01-29 10:17:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -815,7 +815,7 @@ void UIVMActivityOverviewTableView::resizeHeaders()
 
 
 /*********************************************************************************************************************************
-*   Class UIActivityOverviewItem implementation.                                                                               *
+*   Class UIActivityOverviewItem implementation.                                                                                 *
 *********************************************************************************************************************************/
 UIActivityOverviewItem::UIActivityOverviewItem(const QUuid &uid, const QString &strVMName)
     : m_VMuid(uid)
@@ -881,9 +881,10 @@ UIVMActivityOverviewHostStats::UIVMActivityOverviewHostStats()
 {
 }
 
+
 /*********************************************************************************************************************************
- *   Class UIActivityOverviewItemCloud implementation.                                                                           *
- *********************************************************************************************************************************/
+*   Class UIActivityOverviewItemCloud implementation.                                                                            *
+*********************************************************************************************************************************/
 
 UIActivityOverviewItemCloud::UIActivityOverviewItemCloud(const QUuid &uid, const QString &strVMName)
     : UIActivityOverviewItem(uid, strVMName)
@@ -898,8 +899,9 @@ UIActivityOverviewItemCloud::~UIActivityOverviewItemCloud()
 {
 }
 
+
 /*********************************************************************************************************************************
-*   Class UIActivityOverviewItemLocal implementation.                                                                               *
+*   Class UIActivityOverviewItemLocal implementation.                                                                            *
 *********************************************************************************************************************************/
 UIActivityOverviewItemLocal::UIActivityOverviewItemLocal(const QUuid &uid, const QString &strVMName)
     : UIActivityOverviewItem(uid, strVMName)
@@ -944,6 +946,7 @@ void UIActivityOverviewItemLocal::resetDebugger()
         }
     }
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIVMActivityOverviewProxyModel implementation.                                                                         *
