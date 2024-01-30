@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 99758 2023-05-11 21:37:59Z knut.osmundsen@oracle.com $ */
+/* $Id: ftp-server.cpp 103117 2024-01-30 09:01:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  *
@@ -1800,7 +1800,7 @@ static DECLCALLBACK(int) rtFtpServerDataConnListThread(RTTHREAD ThreadSelf, void
      * If no argument is given, the implementation must use the last directory set. */
     char *pszPath = RTStrDup(  pDataConn->cArgs == 1
                              ? pDataConn->papszArgs[0] : pDataConn->pClient->State.pszCWD); /** @todo Needs locking. */
-    AssertPtrReturn(pszPath, VERR_NO_MEMORY);
+    AssertPtrReturnStmt(pszPath, rtFtpServerDataConnDirCollFree(pColl), VERR_NO_MEMORY);
     /* The paths already have been validated in the actual command handlers. */
 
     void *pvHandle = NULL; /* Shut up MSVC. */
