@@ -1,4 +1,4 @@
-/* $Id: rtmon_bsd.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: rtmon_bsd.c 103112 2024-01-30 08:30:01Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT Network - IPv6 default route monitor for BSD routing sockets.
  */
@@ -110,17 +110,19 @@ rtmon_get_defaults(void)
     req.ifp.sdl_len = sizeof(req.ifp);
 #endif
 
+    int rc = 1;
     nsent = write(rtsock, &req, req.rtm.rtm_msglen);
     if (nsent < 0) {
         if (errno == ESRCH) {
             /* there's no default route */
-            return 0;
+            rc = 0;
         }
         else {
             DPRINTF0(("rtmon: failed to send RTM_GET\n"));
-            return -1;
+            rc = -1;
         }
     }
 
-    return 1;
+    close(rtsock);
+    return rc;
 }
