@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 103123 2024-01-30 14:49:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSDL.cpp 103124 2024-01-30 14:51:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -3403,9 +3403,9 @@ static void UpdateTitlebar(TitlebarMode mode, uint32_t u32User)
                               enmExecEngine == VMExecutionEngine_NotSet      ? "NotSet"
                             : enmExecEngine == VMExecutionEngine_Default     ? "Default"
                             : enmExecEngine == VMExecutionEngine_HwVirt      ? "HM"
-                            : enmExecEngine == VMExecutionEngine_NativeApi   ? "NEM" : "UNK"
+                            : enmExecEngine == VMExecutionEngine_NativeApi   ? "NEM"
                             : enmExecEngine == VMExecutionEngine_Interpreter ? "Interpreter"
-                            : enmExecEngine == VMExecutionEngine_Recompiler  ? "Recompiler");
+                            : enmExecEngine == VMExecutionEngine_Recompiler  ? "Recompiler" : "UNK");
                 char *psz = strchr(szTitle, '\0');
                 if (virtualTimeRate != 100)
                     RTStrPrintf(psz, &szTitle[sizeof(szTitle)] - psz, " WD=%d%%]", virtualTimeRate);
