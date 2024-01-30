@@ -1,4 +1,4 @@
-/* $Id: DevPlatform.cpp 101499 2023-10-18 12:58:16Z alexander.eichner@oracle.com $ */
+/* $Id: DevPlatform.cpp 103111 2024-01-30 08:15:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DevPlatform - Guest platform <-> VirtualBox Integration Framework.
  */
@@ -373,7 +373,7 @@ static DECLCALLBACK(int) platformR3Destruct(PPDMDEVINS pDevIns)
  */
 static int platformR3LoadRoms(PPDMDEVINS pDevIns, PDEVPLATFORM pThis)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     PDEVPLATFORMRESOURCE pIt;
     RTListForEach(&pThis->LstResourcesRom, pIt, DEVPLATFORMRESOURCE, NdLst)
