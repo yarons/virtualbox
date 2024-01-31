@@ -1,4 +1,4 @@
-/* $Id: tstRTFsQueries.cpp 102647 2023-12-20 12:01:26Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTFsQueries.cpp 103141 2024-01-31 15:03:29Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - RTFs Queries..
  */
@@ -51,7 +51,7 @@ struct TSTCTX
     int rc;
 } TestCtx = { 42, VINF_SUCCESS };
 
-DECLCALLBACK(int) mountpointsEnumCallback(const char *pszMountpoint, void *pvUser)
+static DECLCALLBACK(int) mountpointsEnumCallback(const char *pszMountpoint, void *pvUser)
 {
     TSTCTX *pCtx = (TSTCTX *)pvUser;
     RTTESTI_CHECK(pCtx->var == 42);
