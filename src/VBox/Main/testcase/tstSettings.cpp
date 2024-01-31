@@ -1,4 +1,4 @@
-/* $Id: tstSettings.cpp 101403 2023-10-10 13:50:21Z alexander.eichner@oracle.com $ */
+/* $Id: tstSettings.cpp 103147 2024-01-31 15:08:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Settings testcases - No Main API involved.
  */
@@ -56,7 +56,7 @@ static unsigned  g_uVerbosity = 0;
  *
  * @note    The source configuration file will not be modified (i.e. written to disk).
  */
-void tstFileSingle(const Utf8Str &strFileSrc)
+static void tstFileSingle(const Utf8Str &strFileSrc)
 {
     RTTestIPrintf(RTTESTLVL_ALWAYS, "Testing file: %s\n", strFileSrc.c_str());
 

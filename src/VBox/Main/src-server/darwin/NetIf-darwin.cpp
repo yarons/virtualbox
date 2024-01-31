@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: NetIf-darwin.cpp 103147 2024-01-31 15:08:03Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -165,7 +165,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
     (((a) & (sizeof(u_long) - 1)) ? (1 + ((a) | (sizeof(u_long) - 1))) : (a))
 #define ADVANCE(x, n) (x += (n)->sa_len ? ROUNDUP((n)->sa_len) : sizeof(u_long))
 
-void extractAddresses(int iAddrMask, caddr_t cp, caddr_t cplim, struct sockaddr **pAddresses)
+static void extractAddresses(int iAddrMask, caddr_t cp, caddr_t cplim, struct sockaddr **pAddresses)
 {
     struct sockaddr *sa;
 
@@ -183,7 +183,7 @@ void extractAddresses(int iAddrMask, caddr_t cp, caddr_t cplim, struct sockaddr 
     }
 }
 
-void extractAddressesToNetInfo(int iAddrMask, caddr_t cp, caddr_t cplim, PNETIFINFO pInfo)
+static void extractAddressesToNetInfo(int iAddrMask, caddr_t cp, caddr_t cplim, PNETIFINFO pInfo)
 {
     struct sockaddr *addresses[RTAX_MAX];
 
