@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMonitorCommon.cpp 103131 2024-01-31 08:55:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class implementation.
  */
@@ -39,6 +39,66 @@
 /* COM includes: */
 #include "CMachineDebugger.h"
 #include "CPerformanceCollector.h"
+
+
+
+/*********************************************************************************************************************************
+*   UIProgressTaskReadCloudMachineMetricList implementation.                                                                     *
+*********************************************************************************************************************************/
+
+UIProgressTaskReadCloudMachineMetricList::UIProgressTaskReadCloudMachineMetricList(QObject *pParent, CCloudMachine comCloudMachine)
+    :UIProgressTask(pParent)
+    , m_comCloudMachine(comCloudMachine)
+{
+}
+
+CProgress UIProgressTaskReadCloudMachineMetricList::createProgress()
+{
+    if (!m_comCloudMachine.isOk())
+        return CProgress();
+    return m_comCloudMachine.ListMetricNames(m_metricNamesArray);
+}
+
+void UIProgressTaskReadCloudMachineMetricList::handleProgressFinished(CProgress &comProgress)
+{
+    if (!comProgress.isOk())
+        return;
+    emit sigMetricListReceived(m_metricNamesArray.GetValues());
+}
+
+
+/*********************************************************************************************************************************
+*   UIProgressTaskReadCloudMachineMetricData implementation.                                                                     *
+*********************************************************************************************************************************/
+
+UIProgressTaskReadCloudMachineMetricData::UIProgressTaskReadCloudMachineMetricData(QObject *pParent,
+                                                                                   CCloudMachine comCloudMachine,
+                                                                                   KMetricType enmMetricType,
+                                                                                   ULONG uDataPointsCount)
+    :UIProgressTask(pParent)
+    , m_comCloudMachine(comCloudMachine)
+    , m_enmMetricType(enmMetricType)
+    , m_uDataPointsCount(uDataPointsCount)
+{
+}
+
+CProgress UIProgressTaskReadCloudMachineMetricData::createProgress()
+{
+    if (!m_comCloudMachine.isOk())
+        return CProgress();
+
+    CStringArray aUnit;
+    return m_comCloudMachine.EnumerateMetricData(m_enmMetricType, m_uDataPointsCount, m_metricData, m_timeStamps, aUnit);
+}
+
+
+void UIProgressTaskReadCloudMachineMetricData::handleProgressFinished(CProgress &comProgress)
+{
+    if (!comProgress.isOk())
+        return;
+    if (m_metricData.isOk() && m_timeStamps.isOk())
+        emit sigMetricDataReceived(m_enmMetricType, m_metricData.GetValues(), m_timeStamps.GetValues());
+}
 
 /* static */
 void UIMonitorCommon::getNetworkLoad(CMachineDebugger &debugger, quint64 &uOutNetworkReceived, quint64 &uOutNetworkTransmitted)

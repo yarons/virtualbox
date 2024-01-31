@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMonitorCommon.h 103131 2024-01-31 08:55:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -30,6 +30,64 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+#include <QPainterPath>
+#include "UIProgressTask.h"
+#include "COMEnums.h"
+#include "CStringArray.h"
+#include "CCloudMachine.h"
+
+class SHARED_LIBRARY_STUFF UIProgressTaskReadCloudMachineMetricList : public UIProgressTask
+{
+    Q_OBJECT;
+
+signals:
+
+    void sigMetricListReceived(QVector<QString> metricNamesList);
+
+public:
+
+    UIProgressTaskReadCloudMachineMetricList(QObject *pParent, CCloudMachine comCloudMachine);
+
+protected:
+
+    virtual CProgress createProgress() RT_OVERRIDE;
+    virtual void handleProgressFinished(CProgress &comProgress) RT_OVERRIDE;
+
+private:
+
+    CCloudMachine m_comCloudMachine;
+    CStringArray m_metricNamesArray;
+};
+
+
+class SHARED_LIBRARY_STUFF UIProgressTaskReadCloudMachineMetricData : public UIProgressTask
+{
+    Q_OBJECT;
+
+signals:
+
+    void sigMetricDataReceived(KMetricType enmMetricType, QVector<QString> data, QVector<QString> timeStamps);
+
+public:
+
+    UIProgressTaskReadCloudMachineMetricData(QObject *pParent, CCloudMachine comCloudMachine,
+                                             KMetricType enmMetricType, ULONG uDataPointsCount);
+
+protected:
+
+    virtual CProgress createProgress() RT_OVERRIDE;
+    virtual void handleProgressFinished(CProgress &comProgress) RT_OVERRIDE;
+
+private:
+
+    CCloudMachine m_comCloudMachine;
+    CStringArray m_metricData;
+    CStringArray m_timeStamps;
+    KMetricType m_enmMetricType;
+    ULONG m_uDataPointsCount;
+};
+
 
 /** UIDebuggerMetricData is used as data storage while parsing the xml stream received from IMachineDebugger. */
 struct UIDebuggerMetricData
