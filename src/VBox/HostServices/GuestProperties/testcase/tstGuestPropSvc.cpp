@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstGuestPropSvc.cpp 103144 2024-01-31 15:05:29Z alexander.eichner@oracle.com $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -83,7 +83,7 @@ static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
  * service
  * @param  pTable the table to initialise
  */
-void initTable(VBOXHGCMSVCFNTABLE *pTable, VBOXHGCMSVCHELPERS *pHelpers)
+static void initTable(VBOXHGCMSVCFNTABLE *pTable, VBOXHGCMSVCHELPERS *pHelpers)
 {
     RT_ZERO(*pHelpers);
     pHelpers->pfnCallComplete   = callComplete;
