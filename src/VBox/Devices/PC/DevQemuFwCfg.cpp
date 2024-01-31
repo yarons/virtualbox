@@ -1,4 +1,4 @@
-/* $Id: DevQemuFwCfg.cpp 102565 2023-12-11 09:36:43Z andreas.loeffler@oracle.com $ */
+/* $Id: DevQemuFwCfg.cpp 103151 2024-01-31 15:42:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DevQemuFwCfg - QEMU firmware configuration compatible device.
  */
@@ -1785,8 +1785,8 @@ static DECLCALLBACK(void) qemuFwCfgR3RamfbPortSetRenderVRAM(PPDMIDISPLAYPORT pIn
 /**
  * @interface_method_impl{PDMIDISPLAYPORT,pfnSendModeHint}
  */
-DECLCALLBACK(int) qemuFwCfgR3RamfbPortSendModeHint(PPDMIDISPLAYPORT pInterface,  uint32_t cx, uint32_t cy, uint32_t cBPP,
-                                                   uint32_t iDisplay, uint32_t dx, uint32_t dy, uint32_t fEnabled, uint32_t fNotifyGuest)
+static DECLCALLBACK(int) qemuFwCfgR3RamfbPortSendModeHint(PPDMIDISPLAYPORT pInterface,  uint32_t cx, uint32_t cy, uint32_t cBPP,
+                                                          uint32_t iDisplay, uint32_t dx, uint32_t dy, uint32_t fEnabled, uint32_t fNotifyGuest)
 {
     RT_NOREF(pInterface, cx, cy, cBPP, iDisplay, dx, dy, fEnabled, fNotifyGuest);
     return VINF_SUCCESS;
