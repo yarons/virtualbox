@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 103023 2024-01-24 13:28:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 103128 2024-01-31 08:19:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1198,7 +1198,12 @@ void UIVirtualBoxManagerWidget::handleCurrentToolTypeChange(UIToolType enmType)
          * start unconditionally updating all cloud VMs,
          * if Activity Overview tool currently chosen (even if VMs are not selected): */
         if (UIToolStuff::isTypeOfClass(enmType, UIToolClass_Global))
-            m_pPaneChooser->setKeepCloudNodesUpdated(enmType == UIToolType_VMActivityOverview);
+        {
+            bool fActivityOverviewActive = enmType == UIToolType_VMActivityOverview;
+            m_pPaneChooser->setKeepCloudNodesUpdated(fActivityOverviewActive);
+            if (fActivityOverviewActive)
+                m_pPaneToolsGlobal->setCloudMachineItems(m_pPaneChooser->cloudMachineItems());
+        }
     }
     /* If Machine tools currently chosen: */
     else
