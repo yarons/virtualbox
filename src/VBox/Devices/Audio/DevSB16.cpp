@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 103136 2024-01-31 10:12:27Z andreas.loeffler@oracle.com $ */
+/* $Id: DevSB16.cpp 103137 2024-01-31 10:13:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1939,7 +1939,7 @@ static void sb16RemoveDrv(PPDMDEVINS pDevIns, PSB16STATE pThis, PSB16DRIVER pDrv
  * @param   cbToRead    How much bytes to read in total.
  * @param   pcbRead     Where to return the DMA bytes read.
  *
- * @thread  µEMT
+ * @thread  EMT
  */
 static int sb16StreamDoDmaOutput(PSB16STATE pThis, PSB16STREAM pStream, int uDmaChan, uint32_t offDma, uint32_t cbDma,
                                  uint32_t cbToRead, uint32_t *pcbRead)
