@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 103127 2024-01-31 06:40:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -72,6 +72,7 @@ public:
       * @{ */
         /** Returns cached machine state. */
         KCloudMachineState machineState() const { return m_enmMachineState; }
+        QUuid machineId() const { return m_comCloudMachine.isOk() ? m_comCloudMachine.GetId() : QUuid(); }
 
         /** Defines fake cloud item @a enmState. */
         void setFakeCloudItemState(UIFakeCloudVirtualMachineItemState enmState);
