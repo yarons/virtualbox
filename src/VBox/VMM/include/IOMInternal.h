@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: IOMInternal.h 103152 2024-01-31 15:43:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -573,10 +573,8 @@ typedef struct IOMR0PERVM
 RT_C_DECLS_BEGIN
 
 #ifdef IN_RING3
-# if !defined(VBOX_VMM_TARGET_ARMV8)
 DECLCALLBACK(void)  iomR3IoPortInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 void                iomR3IoPortRegStats(PVM pVM, PIOMIOPORTENTRYR3 pRegEntry);
-# endif
 DECLCALLBACK(void)  iomR3MmioInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 void                iomR3MmioRegStats(PVM pVM, PIOMMMIOENTRYR3 pRegEntry);
 VBOXSTRICTRC        iomR3MmioCommitWorker(PVM pVM, PVMCPU pVCpu, PIOMMMIOENTRYR3 pRegEntry, RTGCPHYS offRegion); /* IOMAllMmioNew.cpp */

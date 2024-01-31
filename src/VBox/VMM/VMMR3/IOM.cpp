@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: IOM.cpp 103152 2024-01-31 15:43:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -175,9 +175,7 @@ VMMR3_INT_DECL(int) IOMR3Init(PVM pVM)
     /*
      * Info.
      */
-#if !defined(VBOX_VMM_TARGET_ARMV8)
     DBGFR3InfoRegisterInternal(pVM, "ioport", "Dumps all IOPort ranges. No arguments.", &iomR3IoPortInfo);
-#endif
     DBGFR3InfoRegisterInternal(pVM, "mmio", "Dumps all MMIO ranges. No arguments.", &iomR3MmioInfo);
 
     /*
@@ -235,7 +233,6 @@ VMMR3_INT_DECL(int) IOMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
          * Register I/O port and MMIO stats now that we're done registering MMIO
          * regions and won't grow the table again.
          */
-# if !defined(VBOX_VMM_TARGET_ARMV8)
         for (uint32_t i = 0; i < pVM->iom.s.cIoPortRegs; i++)
         {
             PIOMIOPORTENTRYR3 pRegEntry = &pVM->iom.s.paIoPortRegs[i];
@@ -243,7 +240,6 @@ VMMR3_INT_DECL(int) IOMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                 && pRegEntry->idxStats != UINT16_MAX)
                 iomR3IoPortRegStats(pVM, pRegEntry);
         }
-# endif
 
         for (uint32_t i = 0; i < pVM->iom.s.cMmioRegs; i++)
         {
