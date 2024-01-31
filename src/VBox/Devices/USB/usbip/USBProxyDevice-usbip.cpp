@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyDevice-usbip.cpp 103153 2024-01-31 15:43:58Z alexander.eichner@oracle.com $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -1277,7 +1277,7 @@ static int usbProxyUsbIpUrbsQueuePending(PUSBPROXYDEVUSBIP pProxyDevUsbIp)
  * @param   pProxyDevUsbIp    The USB/IP proxy device data.
  * @param   bReason           The wakeup reason.
  */
-static char usbProxyReaperKick(PUSBPROXYDEVUSBIP pProxyDevUsbIp, char bReason)
+static int usbProxyReaperKick(PUSBPROXYDEVUSBIP pProxyDevUsbIp, char bReason)
 {
     int rc = VINF_SUCCESS;
     size_t cbWritten = 0;
