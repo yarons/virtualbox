@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 103019 2024-01-24 12:43:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.h 103138 2024-01-31 10:36:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -73,7 +73,6 @@ public:
 
     bool isCurrentTool() const;
     void setIsCurrentTool(bool fIsCurrentTool);
-
     void setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems);
 
 #ifdef VBOX_WS_MAC
