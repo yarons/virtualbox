@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 103134 2024-01-31 09:21:06Z andreas.loeffler@oracle.com $ */
+/* $Id: DevSB16.cpp 103136 2024-01-31 10:12:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1931,6 +1931,7 @@ static void sb16RemoveDrv(PPDMDEVINS pDevIns, PSB16STATE pThis, PSB16DRIVER pDrv
  * Reads DMA output data into the internal DMA buffer.
  *
  * @returns VBox status code.
+ * @param   pThis       The SB16 state.
  * @param   pStream     The SB16 stream to read DMA output data from.
  * @param   uDmaChan    DMA channel to read from.
  * @param   offDma      DMA offset (in bytes) to start reading from.
