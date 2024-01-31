@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 102816 2024-01-10 13:46:14Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 103132 2024-01-31 09:01:15Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -355,6 +355,7 @@ static DECLCALLBACK(int) shClTransferHttpOpen(PRTHTTPCALLBACKDATA pData, PRTHTTP
 
         Assert(pSrvTx->hObj != NIL_SHCLOBJHANDLE);
         *ppvHandle = &pSrvTx->hObj;
+        rc = VINF_SUCCESS;
     }
     else
         rc = VERR_NOT_FOUND;
