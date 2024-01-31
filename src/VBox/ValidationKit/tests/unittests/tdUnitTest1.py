@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 102988 2024-01-22 11:32:22Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 103135 2024-01-31 10:08:10Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102988 $"
+__version__ = "$Revision: 103135 $"
 
 
 # Standard Python imports.
@@ -154,7 +154,7 @@ class tdUnitTest1(vbox.TestDriver):
     kdTestCasesBlackList = {
         'testcase/tstClipboardX11Smoke': '',            # (Old naming, deprecated) Needs X, not available on all test boxes.
         'testcase/tstClipboardGH-X11Smoke': '',         # (New name) Ditto.
-        'tstClipboardHttpServerX11': '',                # Ditto.
+        'testcase/tstClipboardHttpServerX11': '',       # Ditto.
         'testcase/tstClipboardMockHGCM': '',            # Ditto.
         'tstClipboardQt': '',                           # Is interactive and needs Qt, needed for Qt clipboard bugfixing.
         'testcase/tstClipboardQt': '',                  # In case it moves here.
