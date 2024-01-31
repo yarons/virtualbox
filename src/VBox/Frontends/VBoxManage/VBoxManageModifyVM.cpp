@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxManageModifyVM.cpp 103150 2024-01-31 15:41:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -704,8 +704,8 @@ static VMExecutionEngine_T nameToVMExecEngine(const char *pszName)
  * @param   sessionMachine      Session machine to use.
  * @param   platformX86         x86-specific platform object to use.
  */
-HRESULT handleModifyVM_x86(PRTGETOPTSTATE pGetOptState, int c, PRTGETOPTUNION pValueUnion,
-                           ComPtr<IMachine> &sessionMachine, ComPtr<IPlatformX86> &platformX86)
+static HRESULT handleModifyVM_x86(PRTGETOPTSTATE pGetOptState, int c, PRTGETOPTUNION pValueUnion,
+                                  ComPtr<IMachine> &sessionMachine, ComPtr<IPlatformX86> &platformX86)
 {
     RT_NOREF(sessionMachine);
 
