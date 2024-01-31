@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceStats.cpp 103149 2024-01-31 15:41:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -632,7 +632,7 @@ static void vgsvcVMStatsReport(void)
 /**
  * @interface_method_impl{VBOXSERVICE,pfnWorker}
  */
-DECLCALLBACK(int) vgsvcVMStatsWorker(bool volatile *pfShutdown)
+static DECLCALLBACK(int) vgsvcVMStatsWorker(bool volatile *pfShutdown)
 {
     int rc = VINF_SUCCESS;
 

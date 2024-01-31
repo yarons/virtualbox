@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.h 102754 2024-01-03 17:49:16Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.h 103149 2024-01-31 15:41:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxServiceVMInfo.h - Internal VM info definitions.
  */
@@ -32,12 +32,12 @@
 #endif
 
 
-extern int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
-                            const char *pszKey, const char *pszValueFormat, ...);
-extern int VGSvcUserUpdateV(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
-                            const char *pszKey, const char *pszFormat, va_list va);
+DECLHIDDEN(int) VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
+                                 const char *pszKey, const char *pszValueFormat, ...);
+DECLHIDDEN(int) VGSvcUserUpdateV(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
+                                 const char *pszKey, const char *pszFormat, va_list va);
 
-extern uint32_t g_uVMInfoUserIdleThresholdMS;
+extern DECL_HIDDEN_DATA(uint32_t) g_uVMInfoUserIdleThresholdMS;
 
 #endif /* !GA_INCLUDED_SRC_common_VBoxService_VBoxServiceVMInfo_h */
 

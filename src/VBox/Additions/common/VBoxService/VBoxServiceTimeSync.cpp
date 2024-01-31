@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxServiceTimeSync.cpp 103149 2024-01-31 15:41:31Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -537,7 +537,7 @@ static void vgsvcTimeSyncSet(PCRTTIMESPEC pDrift)
 /**
  * @interface_method_impl{VBOXSERVICE,pfnWorker}
  */
-DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
+static DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
 {
     RTTIME Time;
     int rc = VINF_SUCCESS;
