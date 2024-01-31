@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 103131 2024-01-31 08:55:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 103133 2024-01-31 09:09:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -69,6 +69,7 @@ const int g_iMetricSetupCount = 1;
 const int g_iDecimalCount = 2;
 const int g_iBackgroundTint = 104;
 const quint64 uInvalidValueSentinel = ~0U;
+
 
 /*********************************************************************************************************************************
 *   UIChart definition.                                                                                                          *
