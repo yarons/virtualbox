@@ -1,4 +1,4 @@
-/* $Id: VBoxIntNetSwitch.cpp 102797 2024-01-09 15:01:16Z brent.paulson@oracle.com $ */
+/* $Id: VBoxIntNetSwitch.cpp 103146 2024-01-31 15:07:41Z alexander.eichner@oracle.com $ */
 /** @file
  * Internal networking - Wrapper for the R0 network service.
  *
@@ -610,7 +610,7 @@ static void intnetR3RequestProcess(xpc_connection_t hCon, xpc_object_t hObj, PSU
 }
 
 
-DECLCALLBACK(void) xpcConnHandler(xpc_connection_t hXpcCon)
+static DECLCALLBACK(void) xpcConnHandler(xpc_connection_t hXpcCon)
 {
     xpc_connection_set_event_handler(hXpcCon, ^(xpc_object_t hObj) {
         PSUPDRVSESSION pSession = (PSUPDRVSESSION)xpc_connection_get_context(hXpcCon);
