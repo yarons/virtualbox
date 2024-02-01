@@ -1,4 +1,4 @@
-/* $Id: UIUSBFilterDetailsEditor.cpp 99179 2023-03-24 15:58:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFilterDetailsEditor.cpp 103167 2024-02-01 17:22:35Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFilterDetailsEditor class implementation.
  */
@@ -37,6 +37,9 @@
 #include "QILineEdit.h"
 #include "UIConverter.h"
 #include "UIUSBFilterDetailsEditor.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 UIUSBFilterDetailsEditor::UIUSBFilterDetailsEditor(QWidget *pParent /* = 0 */)
