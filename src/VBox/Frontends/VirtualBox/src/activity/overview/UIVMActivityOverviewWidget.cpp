@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103157 2024-02-01 10:24:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103163 2024-02-01 15:49:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -298,8 +298,6 @@ public:
     virtual void setMachineState(int iState) override;
 
 protected:
-
-    void updateMetricData();
 
 private:
 
@@ -994,21 +992,32 @@ void UIActivityOverviewItemCloud::sltTimeout()
 void UIActivityOverviewItemCloud::sltMetricDataReceived(KMetricType enmMetricType,
                                                         const QVector<QString> &data, const QVector<QString> &timeStamps)
 {
-    Q_UNUSED(enmMetricType);
-    Q_UNUSED(data);
     Q_UNUSED(timeStamps);
     AssertReturnVoid(!data.isEmpty());
 
+    if (data[0].toFloat() < 0)
+        return;
+
+    int iDecimalCount = 2;
+
     if (enmMetricType == KMetricType_CpuUtilization)
-    {
         m_columnData[VMActivityOverviewColumn_CPUGuestLoad] =
-            QString("%1%").arg(QString::number(data[0].toFloat(), 'f', 2));
-    }
+            QString::number(data[0].toFloat(), 'f', iDecimalCount);
     else if (enmMetricType == KMetricType_MemoryUtilization)
-    {
         m_columnData[VMActivityOverviewColumn_RAMUsedPercentage] =
-            QString("%1%").arg(QString::number(data[0].toFloat(), 'f', 2));
-    }
+            QString::number(data[0].toFloat(), 'f', iDecimalCount);
+    else if (enmMetricType == KMetricType_NetworksBytesOut)
+        m_columnData[VMActivityOverviewColumn_NetworkUpRate] =
+            UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
+    else if (enmMetricType == KMetricType_NetworksBytesIn)
+        m_columnData[VMActivityOverviewColumn_NetworkDownRate] =
+            UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
+    else if (enmMetricType == KMetricType_DiskBytesRead)
+        m_columnData[VMActivityOverviewColumn_DiskIOReadRate] =
+            UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
+    else if (enmMetricType == KMetricType_DiskBytesWritten)
+        m_columnData[VMActivityOverviewColumn_DiskIOWriteRate] =
+            UITranslator::formatSize((quint64)data[0].toFloat(), iDecimalCount);
 
     sender()->deleteLater();
 }
@@ -1139,16 +1148,9 @@ void UIActivityOverviewItemLocal::setMachineState(int iState)
         resetDebugger();
 }
 
-void UIActivityOverviewItemLocal::updateMetricData()
-{
-
-
-}
-
 void UIActivityOverviewItemLocal::updateColumnData()
 {
     AssertReturnVoid(m_comDebugger.isOk());
-    updateMetricData();
 
     int iDecimalCount = 2;
 
