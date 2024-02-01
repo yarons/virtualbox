@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.cpp 102160 2023-11-20 17:24:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.cpp 103169 2024-02-01 17:51:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class implementation.
  */
@@ -69,10 +69,6 @@
 #include "CGraphicsAdapter.h"
 #include "CPlatform.h"
 #include "CUSBController.h"
-
-#ifdef VBOX_WS_MAC
-//# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
-#endif
 
 
 /*********************************************************************************************************************************
@@ -177,11 +173,7 @@ void UIAdvancedSettingsDialogGlobal::save()
 
 QString UIAdvancedSettingsDialogGlobal::titleExtension() const
 {
-#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
-    return m_pSelector->itemText(m_pSelector->currentId());
-#else
     return tr("Preferences");
-#endif
 }
 
 QString UIAdvancedSettingsDialogGlobal::title() const
@@ -492,11 +484,7 @@ void UIAdvancedSettingsDialogMachine::save()
 
 QString UIAdvancedSettingsDialogMachine::titleExtension() const
 {
-#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
-    return m_pSelector->itemText(m_pSelector->currentId());
-#else
     return tr("Settings");
-#endif
 }
 
 QString UIAdvancedSettingsDialogMachine::title() const
