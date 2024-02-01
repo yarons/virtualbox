@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 102903 2024-01-16 15:37:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 103164 2024-02-01 16:14:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -352,7 +352,6 @@ private:
 
     bool findMetric(KMetricType enmMetricType, UIMetric &metric, int &iDataSeriesIndex) const;
     void prepareMetrics();
-    void determineTotalRAMAmount();
 
     CCloudMachine m_comMachine;
     QPointer<UIProgressTaskReadCloudMachineMetricList> m_ReadListProgressTask;

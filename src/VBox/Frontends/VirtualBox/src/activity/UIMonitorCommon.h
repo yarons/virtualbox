@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 103131 2024-01-31 08:55:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCommon.h 103164 2024-02-01 16:14:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -129,6 +129,8 @@ public:
 
         static void drawDoughnutChart(QPainter &painter, quint64 iMaximum, quint64 data,
                                       const QRectF &chartRect, const QRectF &innerRect, int iOverlayAlpha, const QColor &color);
+
+        static quint64 determineTotalRAMAmount(CCloudMachine &comCloudMachine);
 
 private:
 
