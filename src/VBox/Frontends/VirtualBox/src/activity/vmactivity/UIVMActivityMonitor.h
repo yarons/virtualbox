@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 103164 2024-02-01 16:14:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 103166 2024-02-01 16:37:54Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -361,7 +361,7 @@ private:
     QHash<KMetricType, Metric_Type> m_metricTypeDict;
 
     /** Total amount of RAM in kb. */
-    quint64 m_iTotalRAM;
+    quint64 m_uTotalRAM;
     QTimer *m_pMachineStateUpdateTimer;
     KCloudMachineState m_enmMachineState;
 
