@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 103158 2024-02-01 10:29:15Z alexander.eichner@oracle.com $ */
+/* $Id: TestBoxHelper.cpp 103159 2024-02-01 10:32:58Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -533,7 +533,7 @@ static bool isNativeApiSupported(void)
         close(fdKvm);
         fSupported = true;
     }
-#endif  
+#endif
 
     return fSupported;
 }
