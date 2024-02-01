@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 103156 2024-02-01 10:23:11Z alexander.eichner@oracle.com $ */
+/* $Id: TestBoxHelper.cpp 103158 2024-02-01 10:29:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -66,7 +66,7 @@
 # include <iprt/nt/nt-and-windows.h>
 # include <iprt/ldr.h>
 
-extern "C" HRESULT WINAPI 
+extern "C" HRESULT WINAPI
 WHvGetCapability(UINT32 CapabilityCode, VOID *CapabilityBuffer, UINT32 CapabilityBufferSizeInBytes, UINT32 *WrittenSizeInBytes);
 #elif defined(RT_OS_LINUX)
 # include <sys/stat.h>
@@ -527,7 +527,7 @@ static bool isNativeApiSupported(void)
 
 #elif defined(RT_OS_LINUX)
     /* Check by opening /dev/kvm. */
-    int fdKvm = open("/dev/kvm", O_RDWR | O_CLOEXEC);
+    int fdKvm = open("/dev/kvm", O_RDWR);
     if (fdKvm >= 0)
     {
         close(fdKvm);
