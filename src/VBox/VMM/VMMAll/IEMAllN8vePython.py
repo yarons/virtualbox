@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 103155 2024-02-01 00:18:11Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 102977 $"
+__version__ = "$Revision: 103155 $"
 
 # Standard python imports:
 import copy;
@@ -284,9 +284,6 @@ class NativeRecompFunctionVariation(object):
 
                 dVars[oStmt.sVarName] = oInfo;
                 asVarsInScope.append(oStmt.sVarName);
-
-            elif oStmt.sName == 'IEM_MC_REF_LOCAL':
-                dVars[oStmt.asParams[0]].makeReference(dVars[oStmt.asParams[1]], self);
 
         #
         # Now work the statements backwards and look for the last reference to

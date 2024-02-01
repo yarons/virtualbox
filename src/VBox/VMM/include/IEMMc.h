@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 103155 2024-02-01 00:18:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -198,8 +198,6 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_LOCAL(a_Type, a_Name)                    a_Type a_Name
 #define IEM_MC_LOCAL_ASSIGN(a_Type, a_Name, a_Value)    a_Type a_Name = (a_Value)
 #define IEM_MC_LOCAL_CONST(a_Type, a_Name, a_Value)     a_Type const a_Name = (a_Value)
-/** @deprecated Use IEM_MC_ARG_LOCAL_REF instead! */
-#define IEM_MC_REF_LOCAL(a_pRefArg, a_Local)            (a_pRefArg) = &(a_Local)
 #define IEM_MC_ARG(a_Type, a_Name, a_iArg)              a_Type a_Name
 #define IEM_MC_ARG_CONST(a_Type, a_Name, a_Value, a_iArg)       a_Type const a_Name = (a_Value)
 #define IEM_MC_ARG_LOCAL_REF(a_Type, a_Name, a_Local, a_iArg)   a_Type const a_Name = &(a_Local)
