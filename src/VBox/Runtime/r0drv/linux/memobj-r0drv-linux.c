@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 103066 2024-01-25 15:03:18Z vadim.galitsyn@oracle.com $ */
+/* $Id: memobj-r0drv-linux.c 103168 2024-02-01 17:24:16Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -244,9 +244,21 @@ static pgprot_t rtR0MemObjLinuxConvertProt(unsigned fProt, bool fKernel)
 #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
             if (fKernel)
             {
+# if RTLNX_VER_MIN(6,6,0)
+                /* In kernel 6.6 mk_pte() macro was fortified with additional
+                 * check which does not allow to use our custom mask anymore
+                 * (see kernel commit ae1f05a617dcbc0a732fbeba0893786cd009536c).
+                 * For this particular mapping case, an existing mask PAGE_KERNEL_ROX
+                 * can be used instead. PAGE_KERNEL_ROX was introduced in
+                 * kernel 5.8, however, lets apply it for kernels 6.6 and newer
+                 * to be on a safe side.
+                 */
+                return PAGE_KERNEL_ROX;
+# else
                 pgprot_t fPg = MY_PAGE_KERNEL_EXEC;
                 pgprot_val(fPg) &= ~_PAGE_RW;
                 return fPg;
+# endif
             }
             return PAGE_READONLY_EXEC;
 #else
