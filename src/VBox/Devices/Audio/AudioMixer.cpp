@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 103134 2024-01-31 09:21:06Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 103162 2024-02-01 13:23:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2012,7 +2012,7 @@ uint64_t AudioMixerSinkTransferFromCircBuf(PAUDMIXSINK pSink, PRTCIRCBUF pCircBu
     RT_NOREF(idStream);
 
     int rc = RTCritSectEnter(&pSink->CritSect);
-    AssertRCReturn(rc, rc);
+    AssertRCReturn(rc, offStream);
 
     /*
      * Figure how much that we can push down.
