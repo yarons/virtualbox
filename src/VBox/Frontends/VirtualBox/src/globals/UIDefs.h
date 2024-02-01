@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 102503 2023-12-06 13:35:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103161 2024-02-01 13:01:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -72,14 +72,6 @@ namespace UIDefs
 #ifdef VBOX_WS_MAC
         ShowWindowEventType,
 #endif
-    };
-
-    /** Size formatting types. */
-    enum FormatSize
-    {
-        FormatSize_Round,
-        FormatSize_RoundDown,
-        FormatSize_RoundUp
     };
 
     /** Default guest additions image name. */

@@ -1,4 +1,4 @@
-/* $Id: UITranslator.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UITranslator.h 103161 2024-02-01 13:01:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
@@ -44,6 +44,14 @@ class SHARED_LIBRARY_STUFF UITranslator : public QTranslator
     Q_OBJECT;
 
 public:
+
+    /** Size formatting types. */
+    enum FormatSize
+    {
+        FormatSize_Round,
+        FormatSize_RoundDown,
+        FormatSize_RoundUp
+    };
 
     /** Loads the language by language ID.
       * @param  strLangId  Brings the language ID in in form of xx_YY.
