@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db-armv8.cpp 99756 2023-05-11 19:26:52Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3Db-armv8.cpp 103175 2024-02-02 13:15:57Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU database part - ARMv8 specifics.
  */
@@ -232,7 +232,7 @@ static PCPUMSYSREGRANGE cpumR3SysRegRangesEnsureSpace(PVM pVM, PCPUMSYSREGRANGE 
  *                          if using the hyper heap.
  * @param   pNewRange       The new range.
  */
-int cpumR3SysRegRangesInsert(PVM pVM, PCPUMSYSREGRANGE *ppaSysRegRanges, uint32_t *pcSysRegRanges, PCCPUMSYSREGRANGE pNewRange)
+static int cpumR3SysRegRangesInsert(PVM pVM, PCPUMSYSREGRANGE *ppaSysRegRanges, uint32_t *pcSysRegRanges, PCCPUMSYSREGRANGE pNewRange)
 {
     Assert(pNewRange->uLast >= pNewRange->uFirst);
     Assert(pNewRange->enmRdFn > kCpumSysRegRdFn_Invalid && pNewRange->enmRdFn < kCpumSysRegRdFn_End);
