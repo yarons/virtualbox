@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 103080 2024-01-26 12:12:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 103178 2024-02-02 15:43:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -348,17 +348,22 @@ QModelIndex UIBootListWidget::moveItemTo(const QModelIndex &index, int iRow)
 
 UIBootItemDataList UIBootDataTools::loadBootItems(const CMachine &comMachine)
 {
+    /* Acquire supported boot devices: */
     CPlatform comPlatform = comMachine.GetPlatform();
     const KPlatformArchitecture comArch = comPlatform.GetArchitecture();
     const CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(comArch);
     QVector<KDeviceType> possibleBootItems = comProperties.GetSupportedBootDevices();
-    const int iPossibleBootListSize = qMin((ULONG)4, comProperties.GetMaxBootPosition());
+    /* Limit the list to maximum boot position: */
+    int iPossibleBootListSize = qMin((ULONG)possibleBootItems.size(), comProperties.GetMaxBootPosition());
+    /* Limit the list to maximum 4 slots for the GUI: */
+    iPossibleBootListSize = qMin(4, iPossibleBootListSize);
+    /* Resize the possible list finally: */
     possibleBootItems.resize(iPossibleBootListSize);
 
     /* Prepare boot items: */
     UIBootItemDataList bootItems;
 
-    /* Gather boot-items of current VM: */
+    /* Gather boot-items of current VM, they can be different from supported: */
     QList<KDeviceType> usedBootItems;
     for (int i = 1; i <= possibleBootItems.size(); ++i)
     {
@@ -372,11 +377,13 @@ UIBootItemDataList UIBootDataTools::loadBootItems(const CMachine &comMachine)
             bootItems << data;
         }
     }
+
     /* Gather other unique boot-items: */
     for (int i = 0; i < possibleBootItems.size(); ++i)
     {
         const KDeviceType enmType = possibleBootItems.at(i);
-        if (!usedBootItems.contains(enmType))
+        if (   !usedBootItems.contains(enmType)
+            && enmType != KDeviceType_Null)
         {
             UIBootItemData data;
             data.m_enmType = enmType;
