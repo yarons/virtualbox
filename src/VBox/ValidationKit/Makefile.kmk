@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101665 2023-10-30 20:58:22Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 103177 2024-02-02 14:47:21Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -215,6 +215,10 @@ define def_vbox_validationkit_common_files
   ifn1of ($(os), os2 freebsd netbsd openbsd) ## must match utils/audio/Makefile.kmk
    VBOX_VALIDATIONKIT_FILESPEC += \
    	$$(VBOX_PATH_VALIDATIONKIT.$(os).$(arch))/vkat$(TMP_SUFF_EXE)
+  endif
+  if1of ($(os), win) ## must match utils/guestcontrol/Makefile.kmk
+   VBOX_VALIDATIONKIT_FILESPEC += \
+   	$$(VBOX_PATH_VALIDATIONKIT.$(os).$(arch))/VBoxGuestControlHelper$(TMP_SUFF_EXE)
   endif
   ifn1of ($(arch), arm64)
    VBOX_VALIDATIONKIT_FILESPEC += \
