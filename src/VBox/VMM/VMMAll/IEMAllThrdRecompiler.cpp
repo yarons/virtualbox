@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 103181 2024-02-03 02:13:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1811,7 +1811,9 @@ bool iemThreadedCompileBeginEmitCallsComplications(PVMCPUCC pVCpu, PIEMTB pTb)
     pCall->offOpcode   = offOpcode;
     pCall->idxRange    = idxRange;
     pCall->cbOpcode    = cbInstr;
-    pCall->auParams[0] = cbInstr;
+    pCall->auParams[0] = (uint32_t)cbInstr
+                       | ((pVCpu->iem.s.fExec && UINT32_C(0xffffff)) << 8) /* liveness: Enough of fExec for IEM_F_MODE_X86_IS_FLAT. */
+                       /* The upper dword is sometimes used for cbStartPage. */;
     pCall->auParams[1] = idxRange;
     pCall->auParams[2] = offOpcode - pTb->aRanges[idxRange].offOpcodes;
 

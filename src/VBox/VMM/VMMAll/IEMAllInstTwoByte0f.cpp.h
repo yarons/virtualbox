@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 102978 2024-01-19 23:19:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 103181 2024-02-03 02:13:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2055,7 +2055,7 @@ FNIEMOP_DEF(iemOp_nop_Ev_GrpP)
     IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     /* Currently a NOP. */
-    NOREF(GCPtrEffSrc);
+    IEM_MC_NOREF(GCPtrEffSrc);
     IEM_MC_ADVANCE_RIP_AND_FINISH();
     IEM_MC_END();
 }
@@ -3254,7 +3254,7 @@ FNIEMOP_DEF(iemOp_prefetch_Grp16)
         IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         /* Currently a NOP. */
-        NOREF(GCPtrEffSrc);
+        IEM_MC_NOREF(GCPtrEffSrc);
         IEM_MC_ADVANCE_RIP_AND_FINISH();
         IEM_MC_END();
     }
@@ -3282,7 +3282,7 @@ FNIEMOP_DEF(iemOp_nop_Ev)
         IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         /* Currently a NOP. */
-        NOREF(GCPtrEffSrc);
+        IEM_MC_NOREF(GCPtrEffSrc);
         IEM_MC_ADVANCE_RIP_AND_FINISH();
         IEM_MC_END();
     }
