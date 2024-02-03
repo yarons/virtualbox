@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestTerm.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TestTerm.c 103183 2024-02-03 15:44:37Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TestTerm
  */
@@ -71,7 +71,7 @@ BS3_DECL(void) bs3TestSubCleanup(void)
             else
             {
                 g_cusBs3SubTestsFailed++;
-                Bs3Printf("FAILED (%u errors)\n", g_szBs3SubTest, cErrors);
+                Bs3Printf("FAILED (%u errors)\n", cErrors);
             }
         }
 
