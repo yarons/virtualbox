@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 103182 2024-02-03 15:44:12Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 103184 2024-02-03 20:16:32Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -3683,7 +3683,6 @@ FNIEMOP_STUB_1(iemOp_VGrp13_vpsrad_Hx_Ux_Ib, uint8_t, bRm);
 /** Opcode VEX.66.0F 0x72 11/6. */
 FNIEMOP_DEF_1(iemOp_VGrp13_vpslld_Hx_Ux_Ib, uint8_t, bRm)
 {
-(void)bRm;
     IEMOP_MNEMONIC3(VEX_VMI_REG, VPSLLD, vpslld, Hx, Ux, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_X86_AVX, 0);
     if (pVCpu->iem.s.uVexLength)
     {
