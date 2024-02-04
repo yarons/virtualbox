@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 103190 2024-02-04 23:26:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 103191 2024-02-04 23:41:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -13776,8 +13776,8 @@ FNIEMOP_DEF(iemOp_cmc)
 
 
 /**
- * @opmaps  grp3_f6
- * @opcode  /0
+ * @opmaps      grp3_f6
+ * @opcode      /0
  * @opflclass   logical
  * @todo also /1
  */
