@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-2-template.mac 98828 2023-03-03 12:03:11Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-2-template.mac 103208 2024-02-05 17:36:09Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-2 assembly template.
 ;
@@ -709,6 +709,69 @@ BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_adox_RAX_qword_FSxBX_icebp
         jmp     .again
 BS3_PROC_END_CMN            bs3CpuInstr2_adox_RAX_qword_FSxBX_icebp
  %endif
+
+
+;
+; CMPXCHG8B
+;
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_lock_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        lock cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_lock_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_o16_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        o16 cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_o16_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_lock_o16_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        db 0f0h, 066h
+        cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_lock_o16_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_repz_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        repz cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_repz_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_lock_repz_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        db 0f0h, 0f3h
+        cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_lock_repz_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_repnz_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        repnz cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_repnz_cmpxchg8b_FSxDI_icebp
+
+BS3_PROC_BEGIN_CMN bs3CpuInstr2_lock_repnz_cmpxchg8b_FSxDI_icebp, BS3_PBC_NEAR
+        db 0f0h, 0f2h
+        cmpxchg8b [fs:xDI]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN   bs3CpuInstr2_lock_repnz_cmpxchg8b_FSxDI_icebp
 
 
 ;
