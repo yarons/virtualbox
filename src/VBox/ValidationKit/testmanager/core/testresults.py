@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 103203 2024-02-05 14:28:05Z knut.osmundsen@oracle.com $
+# $Id: testresults.py 103204 2024-02-05 14:29:02Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103203 $"
+__version__ = "$Revision: 103204 $"
 
 
 # Standard python imports.
@@ -686,7 +686,7 @@ class TestResultListingData(ModelDataBase): # pylint: disable=too-many-instance-
         self.iRevisionTestSuite      = aoRow[32];
 
         self.aoFailureReasons         = [];
-        for i, _ in enumerate(aoRow[31]):
+        for i, _ in enumerate(aoRow[33]):
             if   aoRow[33][i] is not None \
               or aoRow[34][i] is not None \
               or aoRow[35][i] is not None \
