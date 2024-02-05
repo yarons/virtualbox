@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $ */
+/* $Id: EM.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1849,7 +1849,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                     else
 # endif
                     {
-                        rc2 = TRPMAssertTrap(pVCpu, X86_XCPT_NMI, TRPM_TRAP);
+                        rc2 = TRPMAssertTrap(pVCpu, X86_XCPT_NMI, TRPM_NMI);
                         if (rc2 == VINF_SUCCESS)
                         {
                             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_NMI);

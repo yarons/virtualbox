@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: TRPMAll.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -225,6 +225,9 @@ VMMDECL(int) TRPMAssertTrap(PVMCPUCC pVCpu, uint8_t u8TrapNo, TRPMEVENT enmType)
         AssertMsgFailed(("CPU%d: Active trap %#x\n", pVCpu->idCpu, pVCpu->trpm.s.uActiveVector));
         return VERR_TRPM_ACTIVE_TRAP;
     }
+
+    /* NMI TRPM type must specify the vector as 2 (NMI). */
+    Assert(enmType != TRPM_NMI || u8TrapNo == X86_XCPT_NMI);
 
     pVCpu->trpm.s.uActiveVector               = u8TrapNo;
     pVCpu->trpm.s.enmActiveType               = enmType;

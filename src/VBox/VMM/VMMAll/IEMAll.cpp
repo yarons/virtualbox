@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 102977 2024-01-19 23:11:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -9828,6 +9828,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMInjectTrap(PVMCPUCC pVCpu, uint8_t u8TrapNo, TRPME
             break;
 
         case TRPM_TRAP:
+        case TRPM_NMI: /** @todo Distinguish NMI from exception 2. */
             Log(("IEMInjectTrap: %#4x trap err=%#x cr2=%#RGv\n", u8TrapNo, uErrCode, uCr2));
             fFlags = IEM_XCPT_FLAGS_T_CPU_XCPT;
             if (u8TrapNo == X86_XCPT_PF)
