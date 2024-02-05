@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap1.cpp.h 103185 2024-02-04 15:42:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstVexMap1.cpp.h 103212 2024-02-05 22:29:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2281,7 +2281,7 @@ FNIEMOP_STUB(iemOp_vcvtsd2si_Gy_Wsd);
 /**
  * @opcode      0x2e
  * @oppfx       none
- * @opflmodify  cf,pf,af,zf,sf,ov
+ * @opflmodify  cf,pf,af,zf,sf,of
  * @opflclear   af,sf,of
  */
 FNIEMOP_DEF(iemOp_vucomiss_Vss_Wss)
@@ -2357,7 +2357,7 @@ FNIEMOP_DEF(iemOp_vucomiss_Vss_Wss)
 /**
  * @opcode      0x2e
  * @oppfx       0x66
- * @opflmodify  cf,pf,af,zf,sf,ov
+ * @opflmodify  cf,pf,af,zf,sf,of
  * @opflclear   af,sf,of
  */
 FNIEMOP_DEF(iemOp_vucomisd_Vsd_Wsd)
@@ -2436,7 +2436,7 @@ FNIEMOP_DEF(iemOp_vucomisd_Vsd_Wsd)
 /**
  * @opcode      0x2f
  * @oppfx       none
- * @opflmodify  cf,pf,af,zf,sf,ov
+ * @opflmodify  cf,pf,af,zf,sf,of
  * @opflclear   af,sf,of
  */
 FNIEMOP_DEF(iemOp_vcomiss_Vss_Wss)
@@ -2512,7 +2512,7 @@ FNIEMOP_DEF(iemOp_vcomiss_Vss_Wss)
 /**
  * @opcode      0x2f
  * @oppfx       0x66
- * @opflmodify  cf,pf,af,zf,sf,ov
+ * @opflmodify  cf,pf,af,zf,sf,of
  * @opflclear   af,sf,of
  */
 FNIEMOP_DEF(iemOp_vcomisd_Vsd_Wsd)

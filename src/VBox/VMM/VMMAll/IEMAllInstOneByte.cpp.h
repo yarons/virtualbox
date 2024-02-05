@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 103192 2024-02-05 05:42:19Z alexander.rudnev@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 103212 2024-02-05 22:29:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6467,6 +6467,7 @@ FNIEMOP_DEF(iemOp_popf_Fv)
 
 /**
  * @opcode      0x9e
+ * @opflmodify  cf,pf,af,zf,sf
  */
 FNIEMOP_DEF(iemOp_sahf)
 {
@@ -6492,6 +6493,7 @@ FNIEMOP_DEF(iemOp_sahf)
 
 /**
  * @opcode      0x9f
+ * @opfltest    cf,pf,af,zf,sf
  */
 FNIEMOP_DEF(iemOp_lahf)
 {
