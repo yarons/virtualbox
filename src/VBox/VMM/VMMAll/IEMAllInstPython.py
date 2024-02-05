@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103190 2024-02-04 23:26:35Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103206 2024-02-05 15:17:15Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103190 $"
+__version__ = "$Revision: 103206 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -4417,14 +4417,15 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         sClass = self.flattenAllSections(aasSections);
         kdAttribs = self.kdEFlagsClasses.get(sClass);
         if not kdAttribs:
-            return self.errorComment(iTagLine, '%s: Unknown EFLAGS class: %s' % ( sTag, sClass,));
+            return self.errorComment(iTagLine, '%s: Unknown EFLAGS class: %s (valid: %s)'
+                                     % (sTag, sClass, ', '.join(sorted(self.kdEFlagsClasses.keys())),));
 
         # Set the attributes.
         for sAttrib, asFlags in kdAttribs.items():
             asOld = getattr(oInstr, sAttrib);
             if asOld is not None:
                 return self.errorComment(iTagLine, '%s: attempting to overwrite "%s" with "%s" for %s'
-                                         % ( sTag, asOld, asFlags, sAttrib));
+                                         % (sTag, asOld, asFlags, sAttrib));
             setattr(oInstr, sAttrib, asFlags);
 
         _ = iEndLine;
