@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 98552 2023-02-13 20:53:11Z knut.osmundsen@oracle.com $
+# $Id: wuireport.py 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 
 """
 Test Manager WUI - Reports.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98552 $"
+__version__ = "$Revision: 103197 $"
 
 
 # Validation Kit imports.
@@ -758,6 +758,7 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
         if oTestBox.fCpuNestedPaging:   sHtml += u', np';
         elif oTestBox.fCpuHwVirt:       sHtml += u', hw';
         else:                           sHtml += u', raw';
+        if oTestBox.fNativeApi:         sHtml += u', nem';
         if oTestBox.fCpu64BitGuest:     sHtml += u', 64';
         sHtml += u'</td>';
         return sHtml;

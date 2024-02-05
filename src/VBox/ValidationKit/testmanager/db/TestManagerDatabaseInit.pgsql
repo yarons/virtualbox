@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+-- $Id: TestManagerDatabaseInit.pgsql 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -882,6 +882,8 @@ CREATE TABLE TestBoxes (
     fChipsetIoMmu       boolean     DEFAULT NULL,
     --- Set if the test box does raw-mode tests.
     fRawMode            boolean     DEFAULT NULL,
+    -- Set if the test box does native API (NEM) tests.
+    fNativeApi          boolean     DEFAULT NULL,
     --- The (approximate) memory size in megabytes (rounded down to nearest 4 MB).
     cMbMemory           bigint      DEFAULT NULL  CHECK (cMbMemory IS NULL OR cMbMemory > 0),
     --- The amount of scratch space in megabytes (rounded down to nearest 64 MB).

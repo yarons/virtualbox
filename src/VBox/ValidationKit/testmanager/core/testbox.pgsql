@@ -1,4 +1,4 @@
--- $Id: testbox.pgsql 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+-- $Id: testbox.pgsql 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 --- @file
 -- VBox Test Manager Database Stored Procedures - TestBoxes.
 --
@@ -527,6 +527,7 @@ CREATE OR REPLACE function TestBoxLogic_updateOnSignOn(a_idTestBox          INTE
                                                        a_fCpu64BitGuest     boolean,
                                                        a_fChipsetIoMmu      boolean,
                                                        a_fRawMode           boolean,
+                                                       a_fNativeApi         boolean,
                                                        a_cMbMemory          bigint,
                                                        a_cMbScratch         bigint,
                                                        a_sReport            TEXT,
@@ -572,6 +573,7 @@ CREATE OR REPLACE function TestBoxLogic_updateOnSignOn(a_idTestBox          INTE
         v_Row.fCpu64BitGuest        := a_fCpu64BitGuest;
         v_Row.fChipsetIoMmu         := a_fChipsetIoMmu;
         v_Row.fRawMode              := a_fRawMode;
+        v_Row.fNativeApi            := a_fNativeApi;
         v_Row.cMbMemory             := a_cMbMemory;
         v_Row.cMbScratch            := a_cMbScratch;
         v_Row.idStrReport           := v_idStrReport;

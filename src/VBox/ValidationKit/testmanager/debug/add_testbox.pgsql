@@ -1,4 +1,4 @@
--- $Id: add_testbox.pgsql 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+-- $Id: add_testbox.pgsql 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 --- @file
 -- Test data.
 --
@@ -53,6 +53,7 @@ INSERT INTO testboxes (uidAuthor,
                        fCpuHwVirt,
                        fCpuNestedPaging,
                        fCpu64BitGuest,
+                       fNativeApi,
                        fChipsetIoMmu,
                        cMbMemory,
                        cMbScratch)
@@ -70,6 +71,7 @@ INSERT INTO testboxes (uidAuthor,
                        TRUE,
                        TRUE,
                        TRUE,
+                       FALSE,
                        TRUE,
                        1024,
                        1024);

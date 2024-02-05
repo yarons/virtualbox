@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 102984 2024-01-22 08:23:18Z alexander.eichner@oracle.com $
+# $Id: wuihlpform.py 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 102984 $"
+__version__ = "$Revision: 103197 $"
 
 # Standard python imports.
 import copy;
@@ -550,6 +550,8 @@ class WuiHlpForm(object):
                          u' "fCpuHwVirt is True", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'    %s_extendListEx("1-np", "1", "%s", "--cpu-counts 1 --virt-modes hwvirt-np", ' \
                          u' "fCpuNestedPaging is True", "");\n' % (sName, sSecTimeoutDef);
+                sHtml += u'    %s_extendListEx("1-nem", "1", "%s", "--cpu-counts 1 --virt-modes native-api", ' \
+                         u' "fNativeApi is True", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'}\n';
                 sHtml += u'function vbox_%s_add_uni_amd64()\n' % (sName,);
                 sHtml += u'{\n';
@@ -557,6 +559,8 @@ class WuiHlpForm(object):
                          u' "fCpuHwVirt is True", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'    %s_extendListEx("1-np", "%s", "--cpu-counts 1 --virt-modes hwvirt-np", ' \
                          u' "fCpuNestedPaging is True", "");\n' % (sName, sSecTimeoutDef);
+                sHtml += u'    %s_extendListEx("1-nem", "%s", "--cpu-counts 1 --virt-modes native-api", ' \
+                         u' "fNativeApi is True", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'}\n';
                 sHtml += u'function vbox_%s_add_smp()\n' % (sName,);
                 sHtml += u'{\n';
@@ -564,10 +568,16 @@ class WuiHlpForm(object):
                          u' "fCpuHwVirt is True and cCpus >= 2", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'    %s_extendListEx("2-np", "1", "%s", "--cpu-counts 2 --virt-modes hwvirt-np",' \
                          u' "fCpuNestedPaging is True and cCpus >= 2", "");\n' % (sName, sSecTimeoutDef);
+                sHtml += u'    %s_extendListEx("2-nem", "1", "%s", "--cpu-counts 2 --virt-modes native-api",' \
+                         u' "fNativeApi is True and cCpus >= 2", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'    %s_extendListEx("3-hw", "1", "%s", "--cpu-counts 3 --virt-modes hwvirt",' \
                          u' "fCpuHwVirt is True and cCpus >= 3", "");\n' % (sName, sSecTimeoutDef);
+                sHtml += u'    %s_extendListEx("3-nem", "1", "%s", "--cpu-counts 3 --virt-modes native-api",' \
+                         u' "fNativeApi is True and cCpus >= 3", "");\n' % (sName, sSecTimeoutDef);
                 sHtml += u'    %s_extendListEx("4-np", "1", "%s", "--cpu-counts 4 --virt-modes hwvirt-np ",' \
                          u' "fCpuNestedPaging is True and cCpus >= 4", "");\n' % (sName, sSecTimeoutDef);
+                sHtml += u'    %s_extendListEx("4-nem", "1", "%s", "--cpu-counts 4 --virt-modes native-api",' \
+                         u' "fNativeApi is True and cCpus >= 4", "");\n' % (sName, sSecTimeoutDef);
                 #sHtml += u'    %s_extendListEx("6-hw", "1", "%s", "--cpu-counts 6 --virt-modes hwvirt",' \
                 #         u' "fCpuHwVirt is True and cCpus >= 6", "");\n' % (sName, sSecTimeoutDef);
                 #sHtml += u'    %s_extendListEx("8-np", "1", "%s", "--cpu-counts 8 --virt-modes hwvirt-np",' \

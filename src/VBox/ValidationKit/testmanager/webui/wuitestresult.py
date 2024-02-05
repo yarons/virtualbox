@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: wuitestresult.py 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 
 """
 Test Manager WUI - Test Results.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 103197 $"
 
 # Python imports.
 import datetime;
@@ -691,6 +691,7 @@ class WuiTestResult(WuiContentBase):
         asFeatures = [ oTestBox.sCpuVendor, ];
         if oTestBox.fCpuHwVirt is True:         asFeatures.append(u'HW\u2011Virt');
         if oTestBox.fCpuNestedPaging is True:   asFeatures.append(u'Nested\u2011Paging');
+        if oTestBox.fNativeApi is True:         asFeatures.append(u'Native\u2011API');
         if oTestBox.fCpu64BitGuest is True:     asFeatures.append(u'64\u2011bit\u2011Guest');
         if oTestBox.fChipsetIoMmu is True:      asFeatures.append(u'I/O\u2011MMU');
         aoTestBoxRows += [
@@ -903,6 +904,7 @@ class WuiGroupedResultList(WuiListContentBase):
             else:
                 asFeatures.append(u'HW\u2011Virt(VT\u2011x)');
         if oEntry.fCpuNestedPaging is True: asFeatures.append(u'Nested\u2011Paging');
+        if oEntry.fNativeApi       is True: asFeatures.append(u'Native\u2011API');
         if oEntry.fCpu64BitGuest   is True: asFeatures.append(u'64\u2011bit\u2011Guest');
         #if oEntry.fChipsetIoMmu    is True: asFeatures.append(u'I/O\u2011MMU');
         sTestBoxTitle += u'CPU features:\t' + u', '.join(asFeatures);

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: testcase.py 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98103 $"
+__version__ = "$Revision: 103197 $"
 
 
 # Standard python imports.
@@ -655,6 +655,7 @@ class TestCaseData(ModelDataBase):
                 'fCpu64BitGuest':       False,
                 'fChipsetIoMmu':        False,
                 'fRawMode':             False,
+                'fNativeApi':           False,
                 'cMbMemory':            985034,
                 'cMbScratch':           1234089,
                 'iTestBoxScriptRev':    1,
@@ -672,6 +673,7 @@ class TestCaseData(ModelDataBase):
                 'fCpu64BitGuest':       True,
                 'fChipsetIoMmu':        True,
                 'fRawMode':             True,
+                'fNativeApi':           True,
                 'cMbMemory':            9999999999,
                 'cMbScratch':           9999999999999,
                 'iTestBoxScriptRev':    9999999,
@@ -700,6 +702,7 @@ class TestCaseData(ModelDataBase):
             'fCpu64BitGuest':       oTestBoxData.fCpu64BitGuest,
             'fChipsetIoMmu':        oTestBoxData.fChipsetIoMmu,
             'fRawMode':             oTestBoxData.fRawMode,
+            'fNativeApi':           oTestBoxData.fNativeApi,
             'cMbMemory':            oTestBoxData.cMbMemory,
             'cMbScratch':           oTestBoxData.cMbScratch,
             'iTestBoxScriptRev':    oTestBoxData.iTestBoxScriptRev,
