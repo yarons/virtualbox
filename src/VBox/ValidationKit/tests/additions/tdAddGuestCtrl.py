@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103210 $"
+__version__ = "$Revision: 103211 $"
 
 # Standard Python imports.
 import errno
@@ -2539,7 +2539,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         return fRc;
 
-    def executeGstCtlHelper(self, oSession, oTxsSession, oGuestSession, asArgs, asEnv = None, sCwd = '', timeoutMS = 30 * 1000):
+    def executeGstCtlHelper(self, oTxsSession, oGuestSession, asArgs, asEnv = None, sCwd = '', timeoutMS = 30 * 1000):
         """
         Wrapper to invoke the Guest Control Helper on the guest.
 
