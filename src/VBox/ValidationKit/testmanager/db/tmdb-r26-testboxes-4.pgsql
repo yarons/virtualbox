@@ -1,4 +1,4 @@
--- $Id: tmdb-r26-testboxes-4.pgsql 103197 2024-02-05 10:00:40Z alexander.eichner@oracle.com $
+-- $Id: tmdb-r26-testboxes-4.pgsql 103199 2024-02-05 11:16:47Z knut.osmundsen@oracle.com $
 --- @file
 -- VBox Test Manager Database - Adds fNativeApi to TestBoxes.
 --
@@ -55,6 +55,8 @@ LOCK TABLE TestBoxes            IN ACCESS EXCLUSIVE MODE;
 -- Rename the original table, drop constrains and foreign key references so we
 -- get the right name automatic when creating the new one.
 --
+\d+ TestBoxes;
+
 ALTER TABLE TestBoxes RENAME TO OldTestBoxes;
 
 ALTER TABLE OldTestBoxes    DROP CONSTRAINT testboxes_ccpus_check;
@@ -294,7 +296,7 @@ DROP TABLE OldTestBoxes;
 
 COMMIT;
 
-\d TestBoxes;
+\d+ TestBoxes;
 
 
 --
