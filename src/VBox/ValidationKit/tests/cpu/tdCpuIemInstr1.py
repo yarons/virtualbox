@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 103096 2024-01-26 18:49:23Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 103221 2024-02-06 09:04:06Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103096 $"
+__version__ = "$Revision: 103221 $"
 
 
 # Standard Python imports.
@@ -81,18 +81,17 @@ class tdCpuIemInstr1(vbox.TestDriver):
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-2'),
 
             # @todo r=aeichner Image can not be found (probably it is too large for a floppy weighing in at 16MiB)
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-3', asVirtModesSup),
+            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-3'),
 
             # @todo r=aeichner Fails currently in IEM
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-decoding-1', asVirtModesSup),
+            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-decoding-1'),
 
-            # @todo r=aeichner Fails and hangs in 'lm64' / aaa
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-generated-1', asVirtModesSup),
+            IemTestVm(self.oTestVmSet, self, 'bs3-cpu-generated-1'),
 
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-2'),
 
             # @todo r=aeichner Fails with IEM currently.
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-3' asVirtModesSup),
+            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-3'),
 
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-state64-1'),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-weird-1'),
