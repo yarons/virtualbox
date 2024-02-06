@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103225 $"
+__version__ = "$Revision: 103229 $"
 
 # Standard Python imports.
 import errno
@@ -2725,7 +2725,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             # Test in which Windows session Guest Control processes are being started.
             # We don't want them to be started in session 0, as this would prevent desktop interaction and other stuff.
             fRc, eExitStatus, iExitCode, _, _, _ = \
-                self.executeGstCtlHelper(oSession, oTxsSession, oGuestSession, [ "show", "win-session-id" ]);
+                self.executeGstCtlHelper(oTxsSession, oGuestSession, [ "show", "win-session-id" ]);
             if  fRc \
             and eExitStatus == vboxcon.TerminatedNormally:
                 if iExitCode >= 1000: # We report 1000 + <session ID> as exit code.
