@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-generated-1-template.c 103216 2024-02-06 08:34:55Z alexander.eichner@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -5615,7 +5615,6 @@ static bool BS3_NEAR_CODE Bs3Cg1CheckResult(PBS3CG1STATE pThis, uint8_t bTestXcp
     if (pThis->fWorkExtCtx)
         Bs3TestPrintf("xcr0=%RX64\n", pThis->pResultExtCtx->fXcr0Saved);
     Bs3TestPrintf("\n");
-ASMHalt();
     return false;
 }
 
