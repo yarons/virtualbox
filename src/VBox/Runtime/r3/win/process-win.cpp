@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: process-win.cpp 103230 2024-02-06 16:03:24Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -730,7 +730,7 @@ static bool rtProcWinFindTokenByProcess(const char * const *papszNames, PSID pSi
             for (size_t i = 0; papszNames[i] && !fFound; i++)
             {
                 PROCESSENTRY32W ProcEntry;
-                ProcEntry.dwSize = sizeof(PROCESSENTRY32);
+                ProcEntry.dwSize = sizeof(PROCESSENTRY32W);
                 ProcEntry.szExeFile[0] = '\0';
                 if (g_pfnProcess32FirstW(hSnap, &ProcEntry))
                 {
