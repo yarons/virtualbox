@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 103212 2024-02-05 22:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 103218 2024-02-06 08:51:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2563,7 +2563,7 @@ FNIEMOP_DEF(iemOp_movlps_Vq_Mq__movhlps)
          * @optest      op1=0 op2=-42 -> op1=-42
          * @opfunction  iemOp_movlps_Vq_Mq__vmovhlps
          */
-        IEMOP_MNEMONIC2(RM_MEM, MOVLPS, movlps, Vq, Mq, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, IEMOPHINT_IGNORES_OP_SIZES);
+        IEMOP_MNEMONIC2(RM_MEM, MOVLPS, movlps, Vq_WO, Mq, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, IEMOPHINT_IGNORES_OP_SIZES);
 
         IEM_MC_BEGIN(0, 2, 0, 0);
         IEM_MC_LOCAL(uint64_t,                  uSrc);
