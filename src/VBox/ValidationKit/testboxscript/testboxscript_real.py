@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 103156 2024-02-01 10:23:11Z alexander.eichner@oracle.com $
+# $Id: testboxscript_real.py 103222 2024-02-06 09:24:42Z alexander.eichner@oracle.com $
 
 """
 TestBox Script - main().
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103156 $"
+__version__ = "$Revision: 103222 $"
 
 
 # Standard python imports.
@@ -231,6 +231,7 @@ class TestBoxScript(object):
         os.environ['TESTBOX_HAS_HW_VIRT']       = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_HAS_HW_VIRT);
         os.environ['TESTBOX_HAS_NESTED_PAGING'] = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_HAS_NESTED_PAGING);
         os.environ['TESTBOX_HAS_IOMMU']         = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_HAS_IOMMU);
+        os.environ['TESTBOX_HAS_NATIVE_API']    = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_HAS_NATIVE_API);
         os.environ['TESTBOX_SCRIPT_REV']        = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_SCRIPT_REV);
         os.environ['TESTBOX_CPU_COUNT']         = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_CPU_COUNT);
         os.environ['TESTBOX_MEM_SIZE']          = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_MEM_SIZE);
