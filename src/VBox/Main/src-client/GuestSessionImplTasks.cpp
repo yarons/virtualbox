@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 101381 2023-10-06 10:00:59Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 103244 2024-02-07 11:52:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2312,6 +2312,7 @@ int GuestSessionTaskCopyTo::Run(void)
                                             Utf8StrFmt(tr("Destination \"%s\" on guest already exists and is a file"),
                                                        strDstRootAbs.c_str()));
                         vrc = VERR_IS_A_FILE;
+                        break;
                     }
 
                     case FsObjType_Symlink:
