@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103104 2024-01-29 12:10:39Z alexander.eichner@oracle.com $
+# $Id: vboxtestvms.py 103237 2024-02-07 09:57:20Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103104 $"
+__version__ = "$Revision: 103237 $"
 
 # Standard Python imports.
 import copy;
@@ -1937,7 +1937,12 @@ class TestVmSet(object):
                 reporter.log('Hardware assisted virtualization is not available on the host, skipping it.');
                 asVirtModesWanted.remove('hwvirt');
 
-            if 'hwvirt-np' in asVirtModesWanted and not oTestDrv.hasHostNestedPaging():
+            # r=aeichner: For 7.0 there is no native API mode to set but NEM gets picked by default on macOS.
+            #             But because the darwin testboxes don't report the hwvirt or hwvirt-np capability anymore (see @bugref{10592})
+            #             this results in no virt mode being supported and all the VMs getting skipped (but the test marked as
+            #             succeeded anyway). In order to keep the default behavior we keep at least hwvirt-np on macOS which will
+            #             make use of NEM automatically and testing with 7.0 continues working.
+            if 'hwvirt-np' in asVirtModesWanted and not oTestDrv.hasHostNestedPaging() and utils.getHostOs() != 'darwin':
                 reporter.log('Nested paging not supported by the host, skipping it.');
                 asVirtModesWanted.remove('hwvirt-np');
 
