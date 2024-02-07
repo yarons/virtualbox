@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxLicenseViewer.cpp 103243 2024-02-07 11:51:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class implementation.
  */
@@ -133,9 +133,12 @@ bool VBoxLicenseViewer::eventFilter(QObject *pObject, QEvent *pEvent)
     switch (pEvent->type())
     {
         case QEvent::Hide:
+        {
             if (pObject == m_pLicenseBrowser->verticalScrollBar())
                 /* Doesn't work on wm's like ion3 where the window starts maximized: isActiveWindow() */
                 sltUnlockButtons();
+            break;
+        }
         default:
             break;
     }
