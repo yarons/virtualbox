@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 103254 2024-02-07 14:56:37Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 103255 2024-02-07 15:02:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -6343,10 +6343,10 @@ FNIEMOP_DEF(iemOp_movd_q_Pd_Ey)
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
             IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
             IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_FETCH_MEM_U64(u64Tmp, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
             IEM_MC_STORE_MREG_U64(IEM_GET_MODRM_REG_8(bRm), u64Tmp);
+            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_ADVANCE_RIP_AND_FINISH();
             IEM_MC_END();
@@ -6395,10 +6395,10 @@ FNIEMOP_DEF(iemOp_movd_q_Pd_Ey)
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
             IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
             IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_FETCH_MEM_U32(u32Tmp, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
             IEM_MC_STORE_MREG_U32_ZX_U64(IEM_GET_MODRM_REG_8(bRm), u32Tmp);
+            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_ADVANCE_RIP_AND_FINISH();
             IEM_MC_END();
@@ -6557,9 +6557,10 @@ FNIEMOP_DEF(iemOp_movq_Pq_Qq)
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
         IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
         IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-        IEM_MC_FPU_TO_MMX_MODE();
 
         IEM_MC_FETCH_MEM_U64(u64Tmp, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
+        IEM_MC_FPU_TO_MMX_MODE();
+
         IEM_MC_STORE_MREG_U64(IEM_GET_MODRM_REG_8(bRm), u64Tmp);
 
         IEM_MC_ADVANCE_RIP_AND_FINISH();
@@ -7464,10 +7465,10 @@ FNIEMOP_DEF(iemOp_movd_q_Ey_Pd)
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
             IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
             IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_FETCH_MREG_U64(u64Tmp, IEM_GET_MODRM_REG_8(bRm));
             IEM_MC_STORE_MEM_U64(pVCpu->iem.s.iEffSeg, GCPtrEffSrc, u64Tmp);
+            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_ADVANCE_RIP_AND_FINISH();
             IEM_MC_END();
@@ -7516,10 +7517,10 @@ FNIEMOP_DEF(iemOp_movd_q_Ey_Pd)
             IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
             IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
             IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_FETCH_MREG_U32(u32Tmp, IEM_GET_MODRM_REG_8(bRm));
             IEM_MC_STORE_MEM_U32(pVCpu->iem.s.iEffSeg, GCPtrEffSrc, u32Tmp);
+            IEM_MC_FPU_TO_MMX_MODE();
 
             IEM_MC_ADVANCE_RIP_AND_FINISH();
             IEM_MC_END();
@@ -7725,10 +7726,10 @@ FNIEMOP_DEF(iemOp_movq_Qq_Pq)
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fMmx);
         IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
         IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE();
-        IEM_MC_FPU_TO_MMX_MODE();
 
         IEM_MC_FETCH_MREG_U64(u64Tmp, IEM_GET_MODRM_REG_8(bRm));
         IEM_MC_STORE_MEM_U64(pVCpu->iem.s.iEffSeg, GCPtrEffSrc, u64Tmp);
+        IEM_MC_FPU_TO_MMX_MODE();
 
         IEM_MC_ADVANCE_RIP_AND_FINISH();
         IEM_MC_END();
@@ -12459,9 +12460,10 @@ FNIEMOP_DEF(iemOp_pinsrw_Pq_RyMw_Ib)
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX_2_OR(fSse, fAmdMmxExts);
         IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT();
         IEM_MC_PREPARE_FPU_USAGE();
-        IEM_MC_FPU_TO_MMX_MODE();
 
         IEM_MC_FETCH_MEM_U16(u16Src, pVCpu->iem.s.iEffSeg, GCPtrEffSrc);
+        IEM_MC_FPU_TO_MMX_MODE();
+
         IEM_MC_REF_MREG_U64(pu64Dst, IEM_GET_MODRM_REG_8(bRm));
         IEM_MC_CALL_VOID_AIMPL_3(iemAImpl_pinsrw_u64, pu64Dst, u16Src, bImmArg);
         IEM_MC_MODIFIED_MREG_BY_REF(pu64Dst);
