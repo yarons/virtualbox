@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs.cpp 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs.cpp 103233 2024-02-07 00:09:53Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -434,6 +434,25 @@
 #define IEM_MC_OR_GREG_U8_THREADED(a_iGRegEx, a_u8Value) \
     *iemGRegRefU8Ex(pVCpu, (a_iGRegEx)) |= (a_u8Value)
 #undef IEM_MC_OR_GREG_U8
+
+
+/** For asserting that only declared output flags changed. */
+#ifndef VBOX_STRICT
+# define IEM_MC_ASSERT_EFLAGS(a_fEflInput, a_fEflOutput) ((void)0)
+#else
+# undef IEM_MC_REF_EFLAGS_EX
+# define IEM_MC_REF_EFLAGS_EX(a_pEFlags, a_fEflInput, a_fEflOutput) \
+        uint32_t const fEflAssert = pVCpu->cpum.GstCtx.eflags.uBoth; \
+        IEM_MC_REF_EFLAGS(a_pEFlags)
+# define IEM_MC_ASSERT_EFLAGS(a_fEflInput, a_fEflOutput) \
+        AssertMsg((pVCpu->cpum.GstCtx.eflags.uBoth & ~(a_fEflOutput)) == (fEflAssert & ~(a_fEflOutput)), \
+                  ("now %#x (%#x), was %#x (%#x) - diff %#x; a_fEflOutput=%#x\n", \
+                  (pVCpu->cpum.GstCtx.eflags.uBoth & ~(a_fEflOutput)), pVCpu->cpum.GstCtx.eflags.uBoth, \
+                  (fEflAssert & ~(a_fEflOutput)), fEflAssert, \
+                   (pVCpu->cpum.GstCtx.eflags.uBoth ^ fEflAssert) & ~(a_fEflOutput), a_fEflOutput))
+#endif
+
+
 
 /**
  * Calculates the effective address of a ModR/M memory operand, 16-bit
