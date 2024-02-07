@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 99777 2023-05-12 12:32:16Z alexander.eichner@oracle.com $ */
+/* $Id: cidet-core.cpp 103249 2024-02-07 13:15:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -1204,7 +1204,8 @@ static bool cidetCoreSetupNextBaseEncoding_OperandSize(PCIDETCORE pThis)
                     pThis->fOpSizePrf = true; /* check that it's ignored. */
                     cidetCoreUpdateOperandSizes(pThis);
                     return true;
-                default: AssertReleaseFailed();
+                default:
+                    AssertReleaseFailedBreak();
                 case 3:
                     break;
             }
