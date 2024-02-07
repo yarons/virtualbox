@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-provider-local.cpp 100527 2023-07-11 18:08:15Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-provider-local.cpp 103251 2024-02-07 13:16:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Transfers interface implementation for local file systems.
  */
@@ -125,6 +125,7 @@ static int shclTransferLocalListHdrFromDir(PSHCLLISTHDR pHdr, const char *pcszPa
                         case RTFS_TYPE_SYMLINK:
                         {
                             /** @todo Not implemented yet. */
+                            break;
                         }
 
                         default:
