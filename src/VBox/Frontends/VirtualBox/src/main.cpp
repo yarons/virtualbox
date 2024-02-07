@@ -1,4 +1,4 @@
-/* $Id: main.cpp 102518 2023-12-07 11:42:19Z knut.osmundsen@oracle.com $ */
+/* $Id: main.cpp 103246 2024-02-07 13:12:46Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -243,6 +243,7 @@ static void QtMessageOutput(QtMsgType enmType, const QMessageLogContext &context
             /* Needed for instance for the message ``cannot connect to X server'': */
             RTStrmPrintf(g_pStdErr, "Qt FATAL: %s\n", strMessage.toUtf8().constData());
 # endif
+            break;
 # if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
         case QtInfoMsg:
             /** @todo ignore? */
