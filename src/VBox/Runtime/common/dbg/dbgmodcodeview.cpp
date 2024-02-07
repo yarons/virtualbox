@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 100997 2023-08-31 19:43:36Z klaus.espenlaub@oracle.com $ */
+/* $Id: dbgmodcodeview.cpp 103250 2024-02-07 13:16:16Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -3375,8 +3375,9 @@ static int rtDbgModCvProbeFile(PRTDBGMODINT pDbgMod, const char *pszFilename, RT
                 break;
 
             default:
+                RT_FALL_THROUGH();
             case RTLDRARCH_HOST:
-                AssertFailed();
+                AssertFailedBreak();
             case RTLDRARCH_WHATEVER:
                 break;
         }
