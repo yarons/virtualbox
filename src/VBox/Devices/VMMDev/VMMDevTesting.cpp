@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevTesting.cpp 103245 2024-02-07 11:53:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -647,6 +647,7 @@ vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
          */
         case VMMDEV_TESTING_IOPORT_LOCKED_HI - VMMDEV_TESTING_IOPORT_BASE:
         case VMMDEV_TESTING_IOPORT_LOCKED_LO - VMMDEV_TESTING_IOPORT_BASE:
+        {
             switch (cb)
             {
                 case 4:
@@ -707,6 +708,8 @@ vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
                     AssertFailed();
                     return VERR_INTERNAL_ERROR_2;
             }
+            break;
+        }
 
         default:
             break;
