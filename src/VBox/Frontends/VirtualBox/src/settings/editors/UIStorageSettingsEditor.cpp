@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 102976 2024-01-19 16:39:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 103242 2024-02-07 11:50:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -1975,6 +1975,7 @@ QVariant StorageModel::data(const QModelIndex &specifiedIndex, int iRole) const
                                     default:
                                         break;
                                 }
+                                break;
                             }
                             default:
                                 break;
