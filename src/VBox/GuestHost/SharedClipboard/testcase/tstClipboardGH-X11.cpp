@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 102931 2024-01-17 15:35:11Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardGH-X11.cpp 103239 2024-02-07 11:20:17Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -425,6 +425,10 @@ static DECLCALLBACK(int) tstShClOnSendDataToDestCallback(PSHCLCONTEXT pCtx, void
         g_tst_rcCompleted = VERR_BUFFER_OVERFLOW;
     g_tst_cbCompleted = cb;
 
+    if (pData->enmType == SHCLX11EVENTTYPE_READ)
+        RTMemFree(pData->Read.pvData);
+    RTMemFree(pData);
+
     return VINF_SUCCESS;
 }
 
@@ -467,7 +471,7 @@ static bool tstClipTextFormatConversion(PSHCLX11CTX pCtx)
 static void tstStringFromX11(RTTEST hTest, PSHCLX11CTX pCtx,
                              const char *pcszExp, int rcExp)
 {
-    bool retval = true;
+    bool fRc = true;
     tstClipSendTargetUpdate(pCtx);
     if (tstClipQueryFormats() != VBOX_SHCL_FMT_UNICODETEXT)
     {
@@ -481,7 +485,7 @@ static void tstStringFromX11(RTTEST hTest, PSHCLX11CTX pCtx,
         if (rc != rcExp)
             RTTestFailed(hTest, "Wrong return code, expected %Rrc, got %Rrc\n", rcExp, rc);
         else if (RT_FAILURE(rcExp))
-            retval = true;
+            fRc = true;
         else
         {
             RTUTF16 wcExp[TESTCASE_MAX_BUF_SIZE / 2];
@@ -499,7 +503,7 @@ static void tstStringFromX11(RTTEST hTest, PSHCLX11CTX pCtx,
                 else
                 {
                     if (memcmp(abBuf, wcExp, cbExp) == 0)
-                        retval = true;
+                        fRc = true;
                     else
                         RTTestFailed(hTest, "Returned string \"%.*ls\" does not match expected string \"%s\"\n",
                                      TESTCASE_MAX_BUF_SIZE, abBuf, pcszExp);
@@ -507,9 +511,8 @@ static void tstStringFromX11(RTTEST hTest, PSHCLX11CTX pCtx,
             }
         }
     }
-    if (!retval)
-        RTTestFailureDetails(hTest, "Expected: string \"%s\", rc %Rrc\n",
-                             pcszExp, rcExp);
+    if (!fRc)
+        RTTestFailureDetails(hTest, "Expected: string \"%s\", rc=%Rrc\n", pcszExp, rcExp);
 }
 
 static void tstLatin1FromX11(RTTEST hTest, PSHCLX11CTX pCtx,
