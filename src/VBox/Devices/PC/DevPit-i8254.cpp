@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 99768 2023-05-12 07:25:21Z alexander.eichner@oracle.com $ */
+/* $Id: DevPit-i8254.cpp 103241 2024-02-07 11:30:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1429,7 +1429,11 @@ static DECLCALLBACK(int)  pitR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         }
         if (pThisCC->enmSpeakerEmu == PIT_SPEAKER_EMU_NONE)
         {
-            Assert(fd == -1);
+            if (fd != -1)
+            {
+                close(fd);
+                fd = -1;
+            }
             LogRel(("PIT: speaker: no emulation possible\n"));
         }
 #else
