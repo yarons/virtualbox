@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 103015 2024-01-24 00:59:13Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPool.cpp 103261 2024-02-07 17:39:29Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3548,7 +3548,10 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
             LogRel(("iFirstPresent=%d cPresent=%d\n", pPage->iFirstPresent, pPage->cPresent));
             for (unsigned i = 0, cFound = 0; i < RT_ELEMENTS(pPD->a); i++)
                 if ((pPD->a[i].u & (EPT_PDE2M_PG_MASK | X86_PDE4M_P | X86_PDE4M_PS)) == u64)
-                    LogRel(("i=%d cFound=%d\n", i, ++cFound));
+                {
+                    cFound++;
+                    LogRel(("i=%d cFound=%d\n", i, cFound));
+                }
 # endif
             AssertFatalMsgFailed(("iFirstPresent=%d cPresent=%d enmKind=%d\n", pPage->iFirstPresent, pPage->cPresent, pPage->enmKind));
             /*PGM_DYNMAP_UNUSED_HINT_VM(pVM, pPD);*/
