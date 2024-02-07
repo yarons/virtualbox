@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIntNet-1.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -818,7 +818,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 98103 $\n");
+                RTPrintf("$Revision: 103260 $\n");
                 return 0;
 
             default:
@@ -846,7 +846,12 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         return 1;
     }
 
-    strcat(szPath, "/../VMMR0.r0");
+    rc = RTStrCat(szPath, sizeof(szPath), "/../VMMR0.r0");
+    if (RT_FAILURE(rc))
+    {
+        RTPrintf("tstIntNet-1: RTStrCat -> %Rrc\n", rc);
+        return 1;
+    }
 
     char szAbsPath[RTPATH_MAX];
     rc = RTPathAbs(szPath, szAbsPath, sizeof(szAbsPath));

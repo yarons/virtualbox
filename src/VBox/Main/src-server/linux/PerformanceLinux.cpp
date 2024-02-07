@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: PerformanceLinux.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Linux-specific Performance Classes implementation.
  */
@@ -530,8 +530,10 @@ void CollectorLinux::addVolumeDependencies(const char *pcszVolume, DiskList& lis
         LogRel(("VolInfo: Failed to get program path, vrc=%Rrc\n", vrc));
         return;
     }
-    strcat(szVolInfo, "/" VBOXVOLINFO_NAME " ");
-    strcat(szVolInfo, pcszVolume);
+    vrc = RTStrCat(szVolInfo, sizeof(szVolInfo), "/" VBOXVOLINFO_NAME " ");
+    AssertRCReturnVoid(vrc);
+    vrc = RTStrCat(szVolInfo, sizeof(szVolInfo), pcszVolume);
+    AssertRCReturnVoid(vrc);
 
     FILE *fp = popen(szVolInfo, "r");
     if (fp)
