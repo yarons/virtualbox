@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 98292 2023-01-25 01:14:53Z knut.osmundsen@oracle.com $ */
+/* $Id: NATNetworkImpl.cpp 103248 2024-02-07 13:14:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -991,6 +991,7 @@ HRESULT  NATNetwork::start()
                                                       Bstr(m->IPv4NetworkMask).raw(),
                                                       Bstr(m->IPv4DhcpServerLowerIp).raw(),
                                                       Bstr(m->IPv4DhcpServerUpperIp).raw());
+                break;
             }
             case S_OK:
                 break;
