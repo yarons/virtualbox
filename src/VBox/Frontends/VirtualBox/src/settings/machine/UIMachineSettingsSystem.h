@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 103287 2024-02-08 18:09:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -132,6 +132,8 @@ private:
     void prepareTabAcceleration();
     /** Prepares connections. */
     void prepareConnections();
+    /** Updates option set. */
+    void updateOptionSet();
     /** Cleanups all. */
     void cleanup();
 
