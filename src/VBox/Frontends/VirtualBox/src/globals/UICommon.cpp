@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 102877 2024-01-15 14:42:35Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103280 2024-02-08 14:36:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1094,8 +1094,12 @@ void UICommon::loadColorTheme()
             break;
     }
     /* Redefine colors common for various OS types: */
-    colors[ColorSlot_DarkAlternate] = QColor("#2F2A2F");
-    colors[ColorSlot_LightAlternate] = QColor("#F4F5F5");
+    // we do it only if we have redefined something above:
+    if (!colors.isEmpty())
+    {
+        colors[ColorSlot_DarkAlternate] = QColor("#2F2A2F");
+        colors[ColorSlot_LightAlternate] = QColor("#F4F5F5");
+    }
 
     /* Do we have redefined colors? */
     if (!colors.isEmpty())
