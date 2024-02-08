@@ -1,4 +1,4 @@
-/* $Id: test.cpp 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
+/* $Id: test.cpp 103263 2024-02-08 00:02:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1165,7 +1165,7 @@ static int rtTestSubTestReportWorker(PRTTESTINT pTest, struct RTTESTINT::RTTESTI
             {
                 rtTestXmlElem(pTest, "Skipped", NULL);
                 rtTestXmlElemEnd(pTest, "Test");
-                cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%*s%-60s: SKIPPED\n",
+                cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%*s%-*s: SKIPPED\n",
                                       cchIndent, "", cchNameWidth, pTracker->pszName);
             }
         }
@@ -1174,7 +1174,7 @@ static int rtTestSubTestReportWorker(PRTTESTINT pTest, struct RTTESTINT::RTTESTI
             pTracker->cFailedTests++;
             rtTestXmlElem(pTest, "Failed", "errors=\"%u\"", cErrors);
             rtTestXmlElemEnd(pTest, "Test");
-            cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%*s%-60s: FAILED (%u errors)\n",
+            cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%*s%-*s: FAILED (%u errors)\n",
                                   cchIndent, "", cchNameWidth, pTracker->pszName, cErrors);
         }
     }
