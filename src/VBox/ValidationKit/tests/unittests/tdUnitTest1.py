@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103274 2024-02-08 11:09:01Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 103278 2024-02-08 12:56:10Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103274 $"
+__version__ = "$Revision: 103278 $"
 
 
 # Standard Python imports.
@@ -778,7 +778,8 @@ class tdUnitTest1(vbox.TestDriver):
     def _figureVersion(self):
         """ Tries to figure which VBox version this is, setting self.aiVBoxVer. """
         try:
-            sVer = utils.processOutputChecked(['VBoxManage', '--version'])
+            oVBox = self.oVBoxMgr.getVirtualBox();
+            sVer = oVBox.version;
 
             sVer = sVer.strip();
             sVer = re.sub(r'_BETA.*r', '.', sVer);
