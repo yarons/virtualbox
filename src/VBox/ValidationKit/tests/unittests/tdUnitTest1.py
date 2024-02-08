@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103135 2024-01-31 10:08:10Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 103269 2024-02-08 07:37:02Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103135 $"
+__version__ = "$Revision: 103269 $"
 
 
 # Standard Python imports.
@@ -69,21 +69,23 @@ class tdUnitTest1(vbox.TestDriver):
     ## @note This shall be empty before we release 4.3!
     kdTestCasesBuggyPerOs = {
         'darwin': {
-            'testcase/tstX86-1': '',                    # 'FSTP M32R, ST0' fails; no idea why.
-            'testcase/tstLow': '>=7.0.0',               # Driverless package.
-            'testcase/tstPin': '>=7.0.0',               # Driverless package.
-            'testcase/tstIntNet-1': '>=7.0.0',          # Driverless package.
-            'testcase/tstVBoxAPIXPCOM': '',             # Can't instantiate the VirtualBox object (binary would need moving to the
-                                                        # VirtualBox installation directory, merely a compile time test anyway)
+            'testcase/tstX86-1': '',                                # 'FSTP M32R, ST0' fails; no idea why.
+            'testcase/tstLow':                        '>=7.0.0',    # Driverless package.
+            'testcase/tstPin':                        '>=7.0.0',    # Driverless package.
+            'testcase/tstIntNet-1':                   '>=7.0.0',    # Driverless package.
+            'testacse/tstRTR0DbgKrnlInfoDriver':      '>=7.0.0',    # Driverless package.
+            'testacse/tstRTR0MemUserKernelDriver':    '>=7.0.0',    # Driverless package.
+            'testacse/tstRTR0SemMutexDriver':         '>=7.0.0',    # Driverless package.
+            'testacse/tstRTR0ThreadPreemptionDriver': '>=7.0.0',    # Driverless package.
+            'testacse/tstRTR0TimerDriver':            '>=7.0.0',    # Driverless package.
+            'testcase/tstDarwinKeyboard': '',                       # Fails for unknown reason.
+            'testcase/tstVBoxAPIXPCOM': '',                         # Can't instantiate the VirtualBox object (binary would need moving to the
+                                                                    # VirtualBox installation directory, merely a compile time test anyway)
         },
         'darwin.arm64': {
             'testcase/tstRTDarwinMachKernel': '',       # Not supported on arm64 right now (and not required due to driverless).
             'testcase/tstAsmStructs': '',               # Fails on arm64 due to different sizes, also not required as there is no
                                                         # assembly code which needs to match with structs.
-            'testcase/tstDarwinKeyboard': '',           # Fails for unknown reason.
-            'testcase/tstIntNet-1': '',                 # Not supported on arm64 right now.
-            'testcase/tstLow': '',                      # Ditto.
-            'testcase/tstPin': '',                      # Ditto.
             'testcase/tstRTTime': '',                   # Needs more work first.
         },
         'linux': {
