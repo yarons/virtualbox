@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
+/* $Id: dbgmod.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -609,18 +609,14 @@ rtDbgModOpenDebugInfoExternalToImageCallback(RTLDRMOD hLdrMod, PCRTLDRDBGINFO pD
                                        : pDbgMod->pszName;
             if (pszName)
             {
-                size_t const cchName       = strlen(pszName);
-                size_t const cchExtFileBuf = cchName + strlen(pszExt) + 1;
-
-                char *pszExtFileBuf = (char *)alloca(cchExtFileBuf);
-                AssertPtrReturn(pszExtFileBuf, VERR_NO_MEMORY);
-
-                memcpy(pszExtFileBuf, pszName, cchName + 1);
-                RTPathStripSuffix(pszExtFileBuf);
-                int rc2 = RTStrCat(pszExtFileBuf, cchExtFileBuf, pszExt);
-                AssertRCReturn(rc2, rc2);
-
-                pszExtFile = pszExtFileBuf;
+                size_t cchName = strlen(pszName);
+                char *pszExtFileBuf = (char *)alloca(cchName + strlen(pszExt) + 1);
+                if (pszExtFileBuf)
+                {
+                    memcpy(pszExtFileBuf, pszName, cchName + 1);
+                    RTPathStripSuffix(pszExtFileBuf);
+                    pszExtFile = strcat(pszExtFileBuf, pszExt);
+                }
             }
         }
         if (!pszExtFile)

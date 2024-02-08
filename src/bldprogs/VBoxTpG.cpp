@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -454,7 +454,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ \n"
+                    "; $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -978,7 +978,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1186,7 +1186,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2373,9 +2373,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
     int rc = RTPathAbs(g_pszAssemblerIncVal, g_szAssemblerIncVal, sizeof(g_szAssemblerIncVal) - 1);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTPathAbs failed: %Rrc", rc);
-    rc = RTStrCat(g_szAssemblerIncVal, sizeof(g_szAssemblerIncVal), "/");
-    if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTStrCat failed: %Rrc", rc);
+    strcat(g_szAssemblerIncVal, "/");
     g_pszAssemblerIncVal = g_szAssemblerIncVal;
 
     /*
@@ -2516,7 +2514,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 103260 $";
+                static const char s_szRev[] = "$Revision: 103275 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

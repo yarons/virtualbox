@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
+/* $Id: DBGPlugInDarwin.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -715,9 +715,8 @@ static int dbgDiggerDarwinAddModule(PDBGDIGGERDARWIN pThis, PUVM pUVM, PCVMMR3VT
             if (aSegs[iSeg].cb > 0 && RT_SUCCESS(rc))
             {
                 char szTmp[RTDBG_SEGMENT_NAME_LENGTH + sizeof("_start")];
-                rc = RTStrCat(RTStrCopy2(szTmp, sizeof(szTmp), aSegs[iSeg].szName), sizeof(szTmp), "_start");
-                if (RT_SUCCESS(rc))
-                    rc = RTDbgModSymbolAdd(hMod, szTmp, iSeg, 0 /*uRva*/, 0 /*cb*/, 0 /*fFlags*/, NULL);
+                strcat(strcpy(szTmp, aSegs[iSeg].szName), "_start");
+                rc = RTDbgModSymbolAdd(hMod, szTmp, iSeg, 0 /*uRva*/, 0 /*cb*/, 0 /*fFlags*/, NULL);
             }
             uRvaNext += aSegs[iSeg].cb;
         }

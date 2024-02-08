@@ -1,4 +1,4 @@
-/* $Id: loadgenerator.cpp 103260 2024-02-07 16:56:08Z andreas.loeffler@oracle.com $ */
+/* $Id: loadgenerator.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
 /** @file
  * Load Generator.
  */
@@ -97,20 +97,15 @@ static int LoadGenIpiInit(void)
     int rc = RTPathAppPrivateArchTop(szPath, sizeof(szPath) - sizeof("/loadgenerator.r0"));
     if (RT_SUCCESS(rc))
     {
-        rc = RTStrCat(szPath, sizeof(szPath), "/loadgeneratorR0.r0");
+        strcat(szPath, "/loadgeneratorR0.r0");
+        void *pvImageBase;
+        rc = SUPR3LoadServiceModule(szPath, "loadgeneratorR0", "LoadGenR0ServiceReqHandler", &pvImageBase);
         if (RT_SUCCESS(rc))
         {
-            void *pvImageBase;
-            rc = SUPR3LoadServiceModule(szPath, "loadgeneratorR0", "LoadGenR0ServiceReqHandler", &pvImageBase);
-            if (RT_SUCCESS(rc))
-            {
-                /* done */
-            }
-            else
-                RTMsgError("SUPR3LoadServiceModule(%s): %Rrc", szPath, rc);
+            /* done */
         }
         else
-            RTMsgError("RTStrCat(%s): %Rrc", szPath, rc);
+            RTMsgError("SUPR3LoadServiceModule(%s): %Rrc", szPath, rc);
     }
     else
         RTMsgError("RTPathAppPrivateArch: %Rrc", rc);
@@ -296,7 +291,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 103260 $\n");
+                RTPrintf("$Revision: 103275 $\n");
                 return 0;
 
             case VINF_GETOPT_NOT_OPTION:
