@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 102157 2023-11-20 16:16:55Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -230,6 +230,9 @@ VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-TestSub.c \
 	bs3-cmn-TestSubDone.c \
 	bs3-cmn-TestSubErrorCount.c \
+	bs3-cmn-TestSubSub.c \
+	bs3-cmn-TestSubSubDone.c \
+	bs3-cmn-TestSubSubErrorCount.c \
 	bs3-cmn-TestTerm.c \
 	bs3-cmn-TestSendCmdWithStr.asm \
 	bs3-cmn-TestSendCmdWithU32.asm \

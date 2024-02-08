@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 102277 2023-11-23 15:43:31Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3628,7 +3628,7 @@ BS3_CMN_PROTO_STUB(void, Bs3TestTerm,(void));
 BS3_CMN_PROTO_STUB(void, Bs3TestSub,(const char BS3_FAR *pszSubTest));
 
 /**
- * Equivalent to RTTestIFailedF.
+ * Equivalent to RTTestISubF.
  */
 BS3_CMN_PROTO_STUB(void, Bs3TestSubF,(const char BS3_FAR *pszFormat, ...));
 
@@ -3641,6 +3641,26 @@ BS3_CMN_PROTO_STUB(void, Bs3TestSubV,(const char BS3_FAR *pszFormat, va_list BS3
  * Equivalent to RTTestISubDone.
  */
 BS3_CMN_PROTO_STUB(void, Bs3TestSubDone,(void));
+
+/**
+ * Equivalent to RTTestISubSub.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3TestSubSub,(const char BS3_FAR *pszSubTest));
+
+/**
+ * Equivalent to RTTestISubSubF.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3TestSubSubF,(const char BS3_FAR *pszFormat, ...));
+
+/**
+ * Equivalent to RTTestISubSubV.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3TestSubSubV,(const char BS3_FAR *pszFormat, va_list BS3_FAR va));
+
+/**
+ * Equivalent to RTTestISubSubDone.
+ */
+BS3_CMN_PROTO_STUB(void, Bs3TestSubSubDone,(void));
 
 /**
  * Equivalent to RTTestIValue.

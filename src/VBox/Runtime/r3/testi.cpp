@@ -1,4 +1,4 @@
-/* $Id: testi.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: testi.cpp 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Testcase Framework, the implicit test handle API variation.
  */
@@ -83,6 +83,34 @@ RTR3DECL(int) RTTestISubV(const char *pszSubTestFmt, va_list va)
 RTR3DECL(int) RTTestISubDone(void)
 {
     return RTTestSubDone(NIL_RTTEST);
+}
+
+
+RTR3DECL(int) RTTestISubSub(const char *pszSubSubTest)
+{
+    return RTTestSubSub(NIL_RTTEST, pszSubSubTest);
+}
+
+
+RTR3DECL(int) RTTestISubSubF(const char *pszSubSubTestFmt, ...)
+{
+    va_list va;
+    va_start(va, pszSubSubTestFmt);
+    int cch = RTTestSubSubV(NIL_RTTEST, pszSubSubTestFmt, va);
+    va_end(va);
+    return cch;
+}
+
+
+RTR3DECL(int) RTTestISubSubV(const char *pszSubSubTestFmt, va_list va)
+{
+    return RTTestSubSubV(NIL_RTTEST, pszSubSubTestFmt, va);
+}
+
+
+RTR3DECL(int) RTTestISubSubDone(void)
+{
+    return RTTestSubSubDone(NIL_RTTEST);
 }
 
 
