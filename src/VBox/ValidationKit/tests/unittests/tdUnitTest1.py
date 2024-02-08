@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103278 2024-02-08 12:56:10Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 103286 2024-02-08 15:38:03Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103278 $"
+__version__ = "$Revision: 103286 $"
 
 
 # Standard Python imports.
@@ -780,6 +780,7 @@ class tdUnitTest1(vbox.TestDriver):
         try:
             oVBox = self.oVBoxMgr.getVirtualBox();
             sVer = oVBox.version;
+            sVer += 'r' + str(self.uRevision);
 
             sVer = sVer.strip();
             sVer = re.sub(r'_BETA.*r', '.', sVer);
