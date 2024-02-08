@@ -1,4 +1,4 @@
-/* $Id: RTStrCat.cpp 103283 2024-02-08 15:22:17Z andreas.loeffler@oracle.com $ */
+/* $Id: RTStrCat.cpp 103284 2024-02-08 15:24:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - RTStrCat.
  */
@@ -71,7 +71,7 @@ RTDECL(int) RTStrCat(char *pszDst, size_t cbDst, const char *pszSrc)
 }
 RT_EXPORT_SYMBOL(RTStrCat);
 
-RTDECL(int) RTStrCat2(char *pszDst, size_t cbDst, const char *pszSrc)
+RTDECL(char *) RTStrCat2(char *pszDst, size_t cbDst, const char *pszSrc)
 {
     return RT_SUCCESS(rtStrCat(pszDst, cbDst, pszSrc)) ? pszDst : NULL;
 }
