@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
+/* $Id: xml.cpp 103285 2024-02-08 15:27:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - XML Manipulation API.
  *
@@ -2309,7 +2309,9 @@ void XmlFileWriter::write(const char *pcszFilename, bool fSafe)
         int rc = RTStrCopy(szTmpFilename, sizeof(szTmpFilename) - strlen(s_pszTmpSuff), pcszFilename);
         if (RT_FAILURE(rc))
             throw EIPRTFailure(rc, "RTStrCopy");
-        strcat(szTmpFilename, s_pszTmpSuff);
+        rc = RTStrCat(szTmpFilename, sizeof(szTmpFilename), s_pszTmpSuff);
+        if (RT_FAILURE(rc))
+            throw EIPRTFailure(rc, "RTStrCat");
 
         char szPrevFilename[RTPATH_MAX];
         rc = RTStrCopy(szPrevFilename, sizeof(szPrevFilename) - strlen(s_pszPrevSuff), pcszFilename);
