@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 103228 2024-02-06 14:24:41Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 103273 2024-02-08 09:35:20Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103228 $"
+__version__ = "$Revision: 103273 $"
 
 
 # Standard Python imports.
@@ -77,7 +77,7 @@ class tdCpuIemInstr1(vbox.TestDriver):
     def __init__(self):
         vbox.TestDriver.__init__(self);
 
-        kaTestVMs = (
+        self.oTestVmSet.aoTestVms.extend([
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-2'),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-basic-3'),
 
@@ -93,11 +93,9 @@ class tdCpuIemInstr1(vbox.TestDriver):
 
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-state64-1'),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-weird-1'),
-            IemTestVm(self.oTestVmSet, self, 'bs3-fpustate-1')
-        );
+            IemTestVm(self.oTestVmSet, self, 'bs3-fpustate-1'),
+        ]);
 
-        for oTestVm in kaTestVMs:
-            self.oTestVmSet.aoTestVms.append(oTestVm);
 
     #
     # Overridden methods.
