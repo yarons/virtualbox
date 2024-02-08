@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103271 2024-02-08 09:08:26Z andreas.loeffler@oracle.com $
+# $Id: tdUnitTest1.py 103274 2024-02-08 11:09:01Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103271 $"
+__version__ = "$Revision: 103274 $"
 
 
 # Standard Python imports.
@@ -73,11 +73,11 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstLow':                        '>=7.0.0',    # Driverless package.
             'testcase/tstPin':                        '>=7.0.0',    # Driverless package.
             'testcase/tstIntNet-1':                   '>=7.0.0',    # Driverless package.
-            'testacse/tstRTR0DbgKrnlInfoDriver':      '>=7.0.0',    # Driverless package.
-            'testacse/tstRTR0MemUserKernelDriver':    '>=7.0.0',    # Driverless package.
-            'testacse/tstRTR0SemMutexDriver':         '>=7.0.0',    # Driverless package.
-            'testacse/tstRTR0ThreadPreemptionDriver': '>=7.0.0',    # Driverless package.
-            'testacse/tstRTR0TimerDriver':            '>=7.0.0',    # Driverless package.
+            'testcase/tstRTR0DbgKrnlInfoDriver':      '>=7.0.0',    # Driverless package.
+            'testcase/tstRTR0MemUserKernelDriver':    '>=7.0.0',    # Driverless package.
+            'testcase/tstRTR0SemMutexDriver':         '>=7.0.0',    # Driverless package.
+            'testcase/tstRTR0ThreadPreemptionDriver': '>=7.0.0',    # Driverless package.
+            'testcase/tstRTR0TimerDriver':            '>=7.0.0',    # Driverless package.
             'testcase/tstDarwinKeyboard': '',                       # Fails for unknown reason.
             'testcase/tstVBoxAPIXPCOM': '',                         # Can't instantiate the VirtualBox object
                                                                     # (binary would need moving to the VirtualBox installation
