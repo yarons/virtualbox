@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 103184 2024-02-03 20:16:32Z bela.lubkin@oracle.com $
+; $Id: IEMAllAImpl.asm 103265 2024-02-08 05:22:21Z bela.lubkin@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4470,6 +4470,8 @@ ENDPROC iemAImpl_ %+ %1 %+ _u256
 IEMIMPL_SHIFT_OPT_F3 vpsllw
 IEMIMPL_SHIFT_OPT_F3 vpslld
 IEMIMPL_SHIFT_OPT_F3 vpsllq
+IEMIMPL_SHIFT_OPT_F3 vpsraw
+IEMIMPL_SHIFT_OPT_F3 vpsrad
 
 
 ;;
