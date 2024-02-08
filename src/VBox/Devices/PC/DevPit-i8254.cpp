@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 103281 2024-02-08 14:37:11Z andreas.loeffler@oracle.com $ */
+/* $Id: DevPit-i8254.cpp 103282 2024-02-08 15:04:45Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1390,7 +1390,7 @@ static DECLCALLBACK(int)  pitR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     {
         /** @todo r=klaus move this to a (system-specific) driver */
 #ifdef RT_OS_LINUX
-        /** @todo r=andy Use #defines / enums(?) for all those uPassthroughSpeaker below. */
+        /** @todo r=andy Use defines / enums(?) for all those uPassthroughSpeaker below. */
         int fd = -1;
         if (uPassthroughSpeaker == 1 || uPassthroughSpeaker == 100)
             fd = pitR3TryDeviceOpenSanitizeIoctl("/dev/input/by-path/platform-pcspkr-event-spkr", O_WRONLY);
