@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103115 2024-01-30 08:33:18Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 103277 2024-02-08 12:21:03Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2525,7 +2525,7 @@ ifdef VBOX_WITH_PARFAIT
 	 -j $(if-expr $(KMK_OPTS_JOBS) > 0,$(expr $(KMK_OPTS_JOBS) / 2),$(NUMBER_OF_PROCESSORS)) \
 	 -o $(PATH_OUT)/report.txt \
 	 -g $(PATH_OUT)/html \
-	 -c $(PATH_ROOT)/webtools/tinderbox/client/parfait-vbox.conf \
+	 -c $(PATH_ROOT)/tools/parfait-vbox.conf \
 	 --exclude-from=$(PATH_ROOT)/tools/parfait-vbox-exclude.conf \
 	 -e all -d misaligned-access \
 	 -z $(PATH_ROOT) \
@@ -2540,7 +2540,7 @@ ifdef VBOX_WITH_PARFAIT
 	 -j $(if-expr $(KMK_OPTS_JOBS) > 0,$(expr $(KMK_OPTS_JOBS) / 2),$(NUMBER_OF_PROCESSORS)) \
 	 -o $(PATH_OUT)/report_2.txt \
 	 -g $(PATH_OUT)/html_2 \
-	 -c $(PATH_ROOT)/webtools/tinderbox/client/parfait-vbox.conf \
+	 -c $(PATH_ROOT)/tools/parfait-vbox.conf \
 	 --exclude-from=$(PATH_ROOT)/tools/parfait-vbox-exclude.conf \
 	 -e all -d misaligned-access \
 	 -z $(PATH_ROOT) \
