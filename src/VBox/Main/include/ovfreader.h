@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 101472 2023-10-17 11:45:00Z brent.paulson@oracle.com $ */
+/* $Id: ovfreader.h 103288 2024-02-09 10:55:37Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -293,6 +293,7 @@ struct DiskImage
 
 enum ResourceType_T
 {
+    ResourceType_Invalid  = 0,
     ResourceType_Other  = 1,
     ResourceType_ComputerSystem = 2,
     ResourceType_Processor  = 3,
@@ -385,7 +386,8 @@ public:
     int m_iLineNumber;           ///< line number of \<Item\> element in XML source; cached for error messages
 
     VirtualHardwareItem()
-        : fResourceRequired(false)
+        : resourceType(ResourceType_Invalid)
+        , fResourceRequired(false)
         , fAutomaticAllocation(false)
         , fAutomaticDeallocation(false)
         , ullVirtualQuantity(0)

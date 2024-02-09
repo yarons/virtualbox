@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 101472 2023-10-17 11:45:00Z brent.paulson@oracle.com $ */
+/* $Id: ovfreader.cpp 103288 2024-02-09 10:55:37Z alexander.eichner@oracle.com $ */
 /** @file
  * OVF reader declarations.
  *
@@ -922,7 +922,7 @@ void VirtualHardwareItem::fillItem(const xml::ElementNode *item)
 void VirtualHardwareItem::_checkConsistencyAndCompliance() RT_THROW(OVFLogicError)
 {
     RTCString name = getItemName();
-    if (resourceType == 0)
+    if (resourceType == ResourceType_Invalid)
         throw OVFLogicError(N_("Empty element ResourceType under %s element, line %d. see DMTF Schema Documentation %s"),
                             name.c_str(), m_iLineNumber, DTMF_SPECS_URI);
 
