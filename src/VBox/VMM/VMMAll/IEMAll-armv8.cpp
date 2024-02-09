@@ -1,4 +1,4 @@
-/* $Id: IEMAll-armv8.cpp 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAll-armv8.cpp 103290 2024-02-09 12:57:17Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, ARMv8 specific things.
  */
@@ -52,7 +52,8 @@ VMMDECL(VBOXSTRICTRC) IEMExecForExits(PVMCPUCC pVCpu, uint32_t fWillExit, uint32
                                       uint32_t cMaxInstructionsWithoutExits, PIEMEXECFOREXITSTATS pStats)
 {
     AssertReleaseFailed();
-    RT_NOREF(pVCpu, fWillExit, cMinInstructions, cMaxInstructions, cMaxInstructionsWithoutExits, pStats);
+    RT_NOREF(pVCpu, fWillExit, cMinInstructions, cMaxInstructions, cMaxInstructionsWithoutExits);
+    RT_ZERO(*pStats);
     return VERR_NOT_IMPLEMENTED;
 }
 
