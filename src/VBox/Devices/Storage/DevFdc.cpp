@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 102258 2023-11-22 14:05:19Z knut.osmundsen@oracle.com $ */
+/* $Id: DevFdc.cpp 103291 2024-02-09 13:23:50Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -912,15 +912,22 @@ static inline fdrive_t *drv3(fdctrl_t *fdctrl)
 
 static fdrive_t *get_cur_drv(fdctrl_t *fdctrl)
 {
+#if MAX_FD == 2
+    if (fdctrl->dor & FD_DRV_SELMASK)
+        return drv1(fdctrl);
+
+    return drv0(fdctrl);
+#else
     switch (fdctrl->dor & FD_DRV_SELMASK) {
         case 0: return drv0(fdctrl);
         case 1: return drv1(fdctrl);
-#if MAX_FD == 4
+# if MAX_FD == 4
         case 2: return drv2(fdctrl);
         case 3: return drv3(fdctrl);
-#endif
+# endif
         default: return NULL;
     }
+#endif
 }
 
 /* Status A register : 0x00 (read-only) */
