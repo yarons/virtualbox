@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-darwin-armv8.cpp 101496 2023-10-18 11:27:55Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-darwin-armv8.cpp 103298 2024-02-11 19:36:49Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 macOS backend using Hypervisor.framework, ARMv8 variant.
  *
@@ -1286,6 +1286,7 @@ static VBOXSTRICTRC nemR3DarwinHandleExitExceptionTrappedHvcInsn(PVM pVM, PVMCPU
                                                false /*f64BitReg*/, false /*fSignExtend*/,
                                                (uint64_t)ARM_PSCI_STS_NOT_SUPPORTED);
                     }
+                    break;
                 }
                 default:
                     nemR3DarwinSetGReg(pVCpu, ARMV8_AARCH64_REG_X0, false /*f64BitReg*/, false /*fSignExtend*/, (uint64_t)ARM_PSCI_STS_NOT_SUPPORTED);
