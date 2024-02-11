@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103300 2024-02-11 20:33:57Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 103301 2024-02-11 20:41:41Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -580,7 +580,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  VBoxSVC_LIBS += \
  	$(PATH_STAGE_LIB)/VBoxAPIWrap$(VBOX_SUFF_LIB) \
  	$(PATH_STAGE_LIB)/SSMStandalone$(VBOX_SUFF_LIB) \
- 	$(if $(VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC),$(LIB_VBOXXPCOMIPCD),)\
+ 	$(if $(VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC),$(LIB_VBOXXPCOMIPCD),) \
  	$(LIB_DDU)
 
  VBoxSVC_SDKS = VBoxLibPng VBoxZlib
