@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103296 2024-02-11 19:31:50Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 103297 2024-02-11 19:32:17Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2532,7 +2532,7 @@ ifdef VBOX_WITH_PARFAIT
 	 $(PATH_OUT)/obj
  ifdef VBOX_PARFAIT_SERVER_2
 	- $(REDIRECT) -E "PARFAIT_DUMP_PATH=$(PATH_OUT)" -- $(TIME) -- $(VBOX_PARFAIT) \
-   -p -W -e all -d misaligned-access \
+	 -p -W -e all -d misaligned-access \
 	 $(if-expr defined(VBOX_PARFAIT_SERVER_2),-s $(VBOX_PARFAIT_SERVER_2),) \
 	 $(VBOX_PARFAIT_OPTS_2) \
 	 $(if-expr defined(VBOX_PARFAIT_SERVER_BASELINE_2),-b $(VBOX_PARFAIT_SERVER_BASELINE_2),) \
