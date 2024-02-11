@@ -1,4 +1,4 @@
-# $Id: Config.kmk 103057 2024-01-25 12:08:03Z alexander.rudnev@oracle.com $
+# $Id: Config.kmk 103300 2024-02-11 20:33:57Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1003,6 +1003,8 @@ ifdef VBOX_WITH_LIBSSH
 endif
 # Use Mac OS X VMNET API instead of network kernel extensions
 VBOX_WITH_VMNET = 1
+# Link VBoxXPCOMIPCD into VBoxSVC instead of running it as a separate process @bugref{10594}
+#VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC = 1
 ## @}
 
 
@@ -2255,6 +2257,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  VBOX_LIB_XPCOM_X86     = $(PATH_STAGE_BIN)/VBoxXPCOM-x86.dylib
  LIB_DDU         = $(PATH_STAGE_BIN)/VBoxDDU.dylib
  VBOX_LIB_SUPR0 :=
+ LIB_VBOXXPCOMIPCD = $(PATH_STAGE_BIN)/VBoxXPCOMIPCD.dylib
 endif
 if1of ($(KBUILD_TARGET), freebsd haiku linux netbsd openbsd solaris)
  LIB_RUNTIME     = $(PATH_STAGE_BIN)/VBoxRT.so
@@ -2269,6 +2272,7 @@ if1of ($(KBUILD_TARGET), freebsd haiku linux netbsd openbsd solaris)
  VBOX_LIB_XPCOM_X86   = $(PATH_STAGE_BIN)/VBoxXPCOM-x86.so
  LIB_DDU         = $(PATH_STAGE_BIN)/VBoxDDU.so
  VBOX_LIB_SUPR0 :=
+ LIB_VBOXXPCOMIPCD = $(PATH_STAGE_BIN)/VBoxXPCOMIPCD.so
 endif
 ifeq ($(KBUILD_TARGET),os2)
  LIB_RUNTIME     = $(PATH_STAGE_BIN)/VBoxRT.dll
@@ -9188,7 +9192,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103057 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103300 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
