@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 100970 2023-08-25 13:05:20Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 103299 2024-02-11 20:26:46Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2515,7 +2515,7 @@ VMMR3DECL(int) PGMR3PhysMMIODeregister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb)
                     Assert(   PGM_PAGE_IS_ZERO(pPage)
                            || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_MMIO2_ALIAS_MMIO
                            || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_SPECIAL_ALIAS_MMIO);
-                    pPage++;
+                    iPage++;
                 }
                 if (fAllMMIO)
                 {
