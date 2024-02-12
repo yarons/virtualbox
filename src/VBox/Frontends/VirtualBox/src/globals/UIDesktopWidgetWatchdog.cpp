@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 102786 2024-01-08 15:45:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 103321 2024-02-12 17:11:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -122,6 +122,10 @@ static BOOL CALLBACK MonitorEnumProcF(HMONITOR hMonitor, HDC hdcMonitor, LPRECT 
 
 
 #if defined(VBOX_WS_NIX) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
+
+/* static */
+const QString
+UIDesktopWidgetWatchdog::s_strVBoxDesktopWatchdogPolicySynthTest = "VBOX_DESKTOPWATCHDOGPOLICY_SYNTHTEST";
 
 /** QWidget extension used as
   * an invisible window on the basis of which we
@@ -1002,7 +1006,8 @@ void UIDesktopWidgetWatchdog::prepare()
 
 #if defined(VBOX_WS_NIX) && !defined(VBOX_GUI_WITH_CUSTOMIZATIONS1)
     /* Load Synthetic Test policy: */
-    const QString strSynthTestPolicy = QString::fromLocal8Bit(qgetenv(VBox_DesktopWatchdogPolicy_SynthTest));
+    const QString strSynthTestPolicy =
+        QString::fromLocal8Bit(qgetenv(s_strVBoxDesktopWatchdogPolicySynthTest.toLatin1().constData()));
     m_enmSynthTestPolicy = gpConverter->fromInternalString<DesktopWatchdogPolicy_SynthTest>(strSynthTestPolicy);
 
     /* Update host-screen configuration: */
