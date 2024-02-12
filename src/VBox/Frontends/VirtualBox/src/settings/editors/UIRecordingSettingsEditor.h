@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.h 103315 2024-02-12 15:23:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class declaration.
  */
@@ -34,9 +34,6 @@
 /* GUI includes: */
 #include "UIEditor.h"
 #include "UISettingsDefs.h"
-
-/* COM includes: */
-#include "COMEnums.h"
 
 /* Forward declarations: */
 class QCheckBox;
@@ -107,9 +104,9 @@ public:
     int audioQualityRate() const;
 
     /** Defines enabled @a screens. */
-    void setScreens(const QVector<BOOL> &screens);
+    void setScreens(const QVector<bool> &screens);
     /** Returns enabled screens. */
-    QVector<BOOL> screens() const;
+    QVector<bool> screens() const;
 
 protected:
 
@@ -197,7 +194,7 @@ private:
         int  m_iAudioQualityRate;
 
         /** Holds the screens. */
-        QVector<BOOL>  m_screens;
+        QVector<bool>  m_screens;
     /** @} */
 
     /** @name Widgets
