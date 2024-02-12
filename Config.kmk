@@ -1,4 +1,4 @@
-# $Id: Config.kmk 103300 2024-02-11 20:33:57Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 103302 2024-02-12 07:05:01Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1004,7 +1004,7 @@ endif
 # Use Mac OS X VMNET API instead of network kernel extensions
 VBOX_WITH_VMNET = 1
 # Link VBoxXPCOMIPCD into VBoxSVC instead of running it as a separate process @bugref{10594}
-#VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC = 1
+VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC = 1
 ## @}
 
 
@@ -9192,7 +9192,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103300 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103302 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
