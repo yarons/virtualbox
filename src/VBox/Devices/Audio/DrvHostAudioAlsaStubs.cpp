@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioAlsaStubs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioAlsaStubs.cpp 103310 2024-02-12 12:13:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Stubs for libasound.
  */
@@ -91,7 +91,7 @@ PROXY_STUB(snd_pcm_avail_delay, int,
            (pcm, availp, delayp))
 PROXY_STUB(snd_pcm_close, int, (snd_pcm_t *pcm), (pcm))
 PROXY_STUB(snd_pcm_delay, int, (snd_pcm_t *pcm, snd_pcm_sframes_t *delayp), (pcm, delayp))
-PROXY_STUB(snd_pcm_nonblock, int, (snd_pcm_t *pcm, int *onoff),
+PROXY_STUB(snd_pcm_nonblock, int, (snd_pcm_t *pcm, int onoff),
            (pcm, onoff))
 PROXY_STUB(snd_pcm_drain, int, (snd_pcm_t *pcm),
            (pcm))
