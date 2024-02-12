@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 101582 2023-10-24 14:54:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBox-CodingGuidelines.cpp 103312 2024-02-12 13:07:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -180,6 +180,14 @@
  *
  *   <li> Avoid throwing exceptions, always prefer returning statuses.
  *        Crappy exception handling is rewared by a glass of water in the face.
+ *
+ *   <li> Always cast bitfields members to the desired type before using them in
+ *        calculations as Visual C++ and g++/clang++ may use different types.
+ *
+ *        It seems like Visual C++ will use the basetype of the field, while the
+ *        other two will narrow the type down to the number of bits specified
+ *        and then subject it to standard type promotion which typically ends up
+ *        with signed int.
  *
  * </ul>
  *
