@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 102958 2024-01-18 18:43:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 103309 2024-02-12 12:10:48Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -393,6 +393,9 @@ private:
 
         /** Holds configuration access level. */
         ConfigurationAccessLevel  m_enmConfigurationAccessLevel;
+
+        /** Holds whether we are showing full contents. */
+        bool  m_fShowFullContents;
 
         /** Holds the last mouse-press position. */
         QPoint  m_mousePressPosition;
