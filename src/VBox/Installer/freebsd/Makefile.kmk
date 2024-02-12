@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99942 2023-05-23 18:14:13Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 103303 2024-02-12 07:16:23Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -107,7 +107,7 @@ VBOX_FBSD_STRIP_BIN = \
 		VBoxSVC \
 		VBoxXPCOM.so \
 		VBoxXPCOMC.so \
-		VBoxXPCOMIPCD \
+		$(if $(VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC),VBoxXPCOMICPD.so,VBoxXPCOMICPD) \
 		components/VBoxXPCOMIPCC.so \
 		components/VBoxSVCM.so \
 		components/VBoxC.so,) \

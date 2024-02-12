@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103043 2024-01-24 18:59:25Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 103303 2024-02-12 07:16:23Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -180,7 +180,7 @@ VBOX_LNX_STRIP_BIN = \
 		VBoxSVC \
 		VBoxXPCOM.so \
 		VBoxXPCOMC.so \
-		VBoxXPCOMIPCD \
+		$(if $(VBOX_WITH_XPCOMIPCD_IN_VBOX_SVC),VBoxXPCOMIPCD.so,VBoxXPCOMICPD) \
 		components/VBoxXPCOMIPCC.so \
 		components/VBoxSVCM.so \
 		components/VBoxC.so,) \
