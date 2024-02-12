@@ -1,4 +1,4 @@
-/* $Id: UITranslator.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UITranslator.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class implementation.
  */
@@ -29,11 +29,11 @@
 #include <QApplication>
 #include <QDir>
 #include <QKeySequence>
+#include <QRegExp>
+#include <QRegularExpression>
 #ifdef Q_OS_UNIX
 # include <QLibraryInfo>
 #endif
-#include <QRegularExpression>
-#include <QRegExp>
 
 /* GUI includes: */
 #include "UIConverter.h"

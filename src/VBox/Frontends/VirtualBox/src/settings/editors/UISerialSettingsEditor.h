@@ -1,4 +1,4 @@
-/* $Id: UISerialSettingsEditor.h 101327 2023-10-02 11:48:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISerialSettingsEditor.h 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISerialSettingsEditor class declaration.
  */
@@ -33,6 +33,9 @@
 
 /* GUI includes: */
 #include "UIEditor.h"
+
+/* COM includes: */
+#include "COMEnums.h"
 
 /* Forward declarations: */
 class QCheckBox;

@@ -1,4 +1,4 @@
-/* $Id: UISettingsPageValidator.cpp 100969 2023-08-25 12:15:39Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPageValidator.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: UISettingsPageValidator class implementation.
  */
@@ -28,6 +28,9 @@
 /* GUI includes: */
 #include "UISettingsPage.h"
 #include "UISettingsPageValidator.h"
+
+/* Other VBox includes: */
+#include <iprt/log.h>
 
 
 UISettingsPageValidator::UISettingsPageValidator(QObject *pParent, UISettingsPage *pPage)

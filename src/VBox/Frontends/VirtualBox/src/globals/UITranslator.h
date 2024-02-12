@@ -1,4 +1,4 @@
-/* $Id: UITranslator.h 103161 2024-02-01 13:01:02Z sergey.dubov@oracle.com $ */
+/* $Id: UITranslator.h 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslator class declaration.
  */
@@ -35,8 +35,19 @@
 #include <QTranslator>
 
 /* GUI includes: */
-#include "UIDefs.h"
 #include "UILibraryDefs.h"
+
+/** Size suffixes. */
+enum SizeSuffix
+{
+    SizeSuffix_Byte = 0,
+    SizeSuffix_KiloByte,
+    SizeSuffix_MegaByte,
+    SizeSuffix_GigaByte,
+    SizeSuffix_TeraByte,
+    SizeSuffix_PetaByte,
+    SizeSuffix_Max
+};
 
 /** QTranslator subclass for VBox needs. */
 class SHARED_LIBRARY_STUFF UITranslator : public QTranslator

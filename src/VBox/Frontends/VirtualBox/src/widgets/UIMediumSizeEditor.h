@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumSizeEditor.h 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UIDefs.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -108,7 +107,8 @@ private:
     const int         m_iSliderScale;
     /** Holds the current medium size. */
     qulonglong        m_uSize;
-    SizeSuffix        m_enmSizeSuffix;
+    /** Holds the size suffix. */
+    QString           m_strSizeSuffix;
 
     /** Holds the size slider. */
     QSlider    *m_pSlider;

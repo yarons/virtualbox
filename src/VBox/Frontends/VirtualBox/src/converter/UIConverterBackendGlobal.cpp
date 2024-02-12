@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 103167 2024-02-01 17:22:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverterBackendGlobal.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIExtraDataDefs.h"
 #include "UIIconPool.h"
 #include "UISettingsDefs.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CPlatformProperties.h"

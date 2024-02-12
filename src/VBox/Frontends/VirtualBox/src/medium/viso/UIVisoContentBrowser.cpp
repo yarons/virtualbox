@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 102507 2023-12-06 15:39:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -53,7 +53,7 @@
 #include <iprt/mem.h>
 #include <iprt/err.h>
 
-const ULONG uAllowedFileSize = _4K;
+const qint64 iAllowedFileSize = _4K;
 const char *cRemoveText = ":remove:";
 
 struct ISOFileObject
@@ -873,7 +873,7 @@ void UIVisoContentBrowser::parseVisoFileContent(const QString &strFileName)
     QFile file(strFileName);
     if (!file.exists() || !file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
-    if (file.size() > uAllowedFileSize)
+    if (file.size() > iAllowedFileSize)
         return;
     QTextStream stream(&file);
     QString strFileContent = stream.readAll();
