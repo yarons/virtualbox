@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImpl.cpp 103333 2024-02-13 12:18:59Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -9273,7 +9273,7 @@ IEM_CIMPL_DEF_3(iemCImpl_xrstor, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, e
     uint8_t       bUnmapInfoHdr;
     PX86XSAVEHDR  pHdrDst = &pVCpu->cpum.GstCtx.XState.Hdr;
     PCX86XSAVEHDR pHdrSrc;
-    rcStrict = iemMemMap(pVCpu, (void **)&pHdrSrc, &bUnmapInfoHdr, sizeof(&pHdrSrc), iEffSeg, GCPtrEff + 512,
+    rcStrict = iemMemMap(pVCpu, (void **)&pHdrSrc, &bUnmapInfoHdr, sizeof(*pHdrSrc), iEffSeg, GCPtrEff + 512,
                          IEM_ACCESS_DATA_R, 0 /* checked above */);
     if (rcStrict != VINF_SUCCESS)
         return rcStrict;
