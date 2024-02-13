@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 103328 2024-02-13 01:07:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -615,7 +615,11 @@ UINT __stdcall InstallPythonAPI(MSIHANDLE hModule)
         if (SetCurrentDirectoryW(wszVBoxPythonInstallerPath))
         {
             /* Set required environment variables. */
-            if (SetEnvironmentVariableW(L"VBOX_INSTALL_PATH", wszVBoxPythonInstallerPath)) /** @todo BUGBUG r=andy That can't be right! */
+            /** @todo r=andy: That can't be right!
+             *
+             *  r=bird: The variable probably isn't used because VBOX_MSI_INSTALL_PATH is
+             *          set by VBoxMergeApp.wxi. */
+            if (SetEnvironmentVariableW(L"VBOX_INSTALL_PATH", wszVBoxPythonInstallerPath))
             {
                 logStringF(hModule, "InstallPythonAPI: Invoking vboxapisetup.py in \"%ls\" ...", wszVBoxPythonInstallerPath);
 
