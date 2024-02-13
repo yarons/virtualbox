@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumDefs.cpp 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium related implementations.
  */
@@ -133,22 +133,4 @@ QString UIMediumDefs::getPreferredExtensionForMedium(KDeviceType enmDeviceType)
         }
     }
     return QString();
-}
-
-QVector<CMediumFormat> UIMediumDefs::getFormatsForDeviceType(KDeviceType enmDeviceType)
-{
-    CSystemProperties comSystemProperties = uiCommon().virtualBox().GetSystemProperties();
-    QVector<CMediumFormat> mediumFormats = comSystemProperties.GetMediumFormats();
-    QVector<CMediumFormat> formatList;
-    for (int i = 0; i < mediumFormats.size(); ++i)
-    {
-        /* File extensions */
-        QVector <QString> fileExtensions;
-        QVector <KDeviceType> deviceTypes;
-
-        mediumFormats[i].DescribeFileExtensions(fileExtensions, deviceTypes);
-        if (deviceTypes.contains(enmDeviceType))
-            formatList.push_back(mediumFormats[i]);
-    }
-    return formatList;
 }

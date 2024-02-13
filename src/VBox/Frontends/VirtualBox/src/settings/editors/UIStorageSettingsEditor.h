@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 103309 2024-02-12 12:10:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -30,6 +30,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QUuid>
 
 /* GUI includes: */
 #include "UIEditor.h"

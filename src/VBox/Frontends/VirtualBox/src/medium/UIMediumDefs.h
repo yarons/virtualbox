@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumDefs.h 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -39,7 +39,6 @@
 
 /* COM includes: */
 #include "COMEnums.h"
-#include "CVirtualBox.h"
 
 /* Other VBox includes: */
 #include <VBox/com/defs.h>
@@ -88,7 +87,6 @@ namespace UIMediumDefs
 
     /** Returns the first file extension of the list of file extension support for the @a enmDeviceType. */
    QString getPreferredExtensionForMedium(KDeviceType enmDeviceType);
-   QVector<CMediumFormat>  getFormatsForDeviceType(KDeviceType enmDeviceType);
 }
 /* Using this namespace globally: */
 using namespace UIMediumDefs;
