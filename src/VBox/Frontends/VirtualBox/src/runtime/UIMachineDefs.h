@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 99098 2023-03-21 16:11:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineDefs.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -37,10 +37,10 @@
 #include <QUuid>
 
 /* GUI includes: */
-#include "UIDefs.h"
+#include "UIMediumDefs.h" // for StorageSlot
 
 /* Other VBox includes: */
-#include <iprt/cdefs.h>
+#include <iprt/cdefs.h> // for RT_BIT stuff
 
 /** Machine window visual element types. */
 enum UIVisualElement

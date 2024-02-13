@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103321 2024-02-12 17:11:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -122,39 +122,6 @@ enum UILaunchMode
     UILaunchMode_Default,
     UILaunchMode_Headless,
     UILaunchMode_Separate
-};
-
-
-/** Storage-slot struct. */
-struct StorageSlot
-{
-    StorageSlot() : bus(KStorageBus_Null), port(0), device(0) {}
-    StorageSlot(const StorageSlot &other) : bus(other.bus), port(other.port), device(other.device) {}
-    StorageSlot(KStorageBus otherBus, LONG iPort, LONG iDevice) : bus(otherBus), port(iPort), device(iDevice) {}
-    StorageSlot& operator=(const StorageSlot &other) { bus = other.bus; port = other.port; device = other.device; return *this; }
-    bool operator==(const StorageSlot &other) const { return bus == other.bus && port == other.port && device == other.device; }
-    bool operator!=(const StorageSlot &other) const { return bus != other.bus || port != other.port || device != other.device; }
-    bool operator<(const StorageSlot &other) const { return (bus <  other.bus) ||
-                                                            (bus == other.bus && port <  other.port) ||
-                                                            (bus == other.bus && port == other.port && device < other.device); }
-    bool operator>(const StorageSlot &other) const { return (bus >  other.bus) ||
-                                                            (bus == other.bus && port >  other.port) ||
-                                                            (bus == other.bus && port == other.port && device > other.device); }
-    bool isNull() const { return bus == KStorageBus_Null; }
-    KStorageBus bus; LONG port; LONG device;
-};
-Q_DECLARE_METATYPE(StorageSlot);
-
-
-/** Storage-slot struct extension with exact controller name. */
-struct ExactStorageSlot : public StorageSlot
-{
-    ExactStorageSlot(const QString &strController,
-                     KStorageBus enmBus, LONG iPort, LONG iDevice)
-        : StorageSlot(enmBus, iPort, iDevice)
-        , controller(strController)
-    {}
-    QString controller;
 };
 
 
