@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 103335 2024-02-13 14:04:41Z andreas.loeffler@oracle.com $
+# $Id: remoteexecutor.py 103337 2024-02-13 15:55:27Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103335 $"
+__version__ = "$Revision: 103337 $"
 
 
 # Standard Python imports.
@@ -199,11 +199,20 @@ class RemoteExecutor(object):
         if sBinary is not None:
             fRc, sOutput, sError = self._execLocallyOrThroughTxs(sBinary, asArgs, sInput, cMsTimeout);
             # If verbose logging is enabled and the process failed for whatever reason, log its output to the reporter.
+            fLog = False;
             if  not fRc \
             and reporter.getVerbosity() >= 2: # Verbose logging starts at level 2.
+                fLog = True;
+            elif reporter.getVerbosity() >= 3:
+                fLog = True;
+
+            if fLog:
                 asOutput = sOutput.splitlines();
                 for sLine in asOutput:
-                    reporter.log('%s: %s' % (sExec, sLine.encode(encoding = 'UTF-8', errors = 'strict'),));
+                    reporter.log('%s [stdout]: %s' % (sExec, sLine.encode(encoding = 'UTF-8', errors = 'strict'),));
+                asError = sError.splitlines();
+                for sLine in asError:
+                    reporter.log('%s [stderr]: %s' % (sExec, sLine.encode(encoding = 'UTF-8', errors = 'strict'),));
         else:
             fRc = False;
         return (fRc, sOutput, sError);
