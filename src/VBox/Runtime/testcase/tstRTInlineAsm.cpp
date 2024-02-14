@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 103017 2024-01-24 01:05:51Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTInlineAsm.cpp 103354 2024-02-14 14:09:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -2452,8 +2452,8 @@ static void tstASMMemFirstMismatchingU8(RTTEST hTest)
     size_t const   cbBuf    = 128;
     uint8_t       *pbBuf1   = pbPage1;
     uint8_t       *pbBuf2   = &pbPage2[PAGE_SIZE - cbBuf]; /* Put it up against the tail guard */
-    memset(pbPage1, ~bFiller1, PAGE_SIZE);
-    memset(pbPage2, ~bFiller2, PAGE_SIZE);
+    memset(pbPage1, (uint8_t)~bFiller1, PAGE_SIZE);
+    memset(pbPage2, (uint8_t)~bFiller2, PAGE_SIZE);
     memset(pbBuf1, bFiller1, cbBuf);
     memset(pbBuf2, bFiller2, cbBuf);
     for (size_t offNonZero = 0; offNonZero < cbBuf; offNonZero++)
