@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 103174 2024-02-02 12:59:46Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 103352 2024-02-14 13:29:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -978,7 +978,7 @@ static DECLCALLBACK(RTEXITCODE) audioTestMain(PRTGETOPTSTATE pGetState)
 
     AUDIOTESTDRVSTACK DrvStack;
     if (fProbeBackends)
-        rc = audioTestDriverStackProbe(&DrvStack, pDrvReg,
+        rc = audioTestDriverStackProbe(&DrvStack,
                                        true /* fEnabledIn */, true /* fEnabledOut */, TstEnv.IoOpts.fWithDrvAudio); /** @todo Make in/out configurable, too. */
     else
         rc = audioTestDriverStackInitEx(&DrvStack, pDrvReg,

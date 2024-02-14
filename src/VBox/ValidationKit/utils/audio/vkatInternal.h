@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vkatInternal.h 103352 2024-02-14 13:29:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -411,7 +411,7 @@ int         AudioTestDriverStackPerformSelftest(void);
 void        audioTestDriverStackDelete(PAUDIOTESTDRVSTACK pDrvStack);
 int         audioTestDriverStackInitEx(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio);
 int         audioTestDriverStackInit(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fWithDrvAudio);
-int         audioTestDriverStackProbe(PAUDIOTESTDRVSTACK pDrvStack, PCPDMDRVREG pDrvReg, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio);
+int         audioTestDriverStackProbe(PAUDIOTESTDRVSTACK pDrvStack, bool fEnabledIn, bool fEnabledOut, bool fWithDrvAudio);
 int         audioTestDriverStackSetDevice(PAUDIOTESTDRVSTACK pDrvStack, PDMAUDIODIR enmDir, const char *pszDevId);
 /** @}  */
 

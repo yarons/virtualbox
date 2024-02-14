@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: vkatCmdSelfTest.cpp 103352 2024-02-14 13:29:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -135,12 +135,10 @@ static SELFTESTCTX g_Ctx;
  */
 int AudioTestDriverStackPerformSelftest(void)
 {
-    PCPDMDRVREG pDrvReg = AudioTestGetDefaultBackend();
-
     RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Testing driver stack started\n");
 
     AUDIOTESTDRVSTACK DrvStack;
-    int rc = audioTestDriverStackProbe(&DrvStack, pDrvReg,
+    int rc = audioTestDriverStackProbe(&DrvStack,
                                        true /* fEnabledIn */, true /* fEnabledOut */, false /* fWithDrvAudio */);
     RTTEST_CHECK_RC_OK_RET(g_hTest, rc, rc);
 
