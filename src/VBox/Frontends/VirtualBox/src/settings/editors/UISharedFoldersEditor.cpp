@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -28,7 +28,7 @@
 /* Qt includes: */
 #include <QHeaderView>
 #include <QMenu>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QTimer>
 #include <QVBoxLayout>
 
@@ -231,8 +231,9 @@ void SFTreeViewItem::processColumn(int iColumn)
                     break;
                 case FormatType_EllipsisFile:
                 {
-                    const QRegExp regExp("([\\\\/][^\\\\^/]+[\\\\/]?$)");
-                    const int iNewFinish = regExp.indexIn(strOneString);
+                    const QRegularExpression re("([\\\\/][^\\\\^/]+[\\\\/]?$)");
+                    const QRegularExpressionMatch mt = re.match(strOneString);
+                    const int iNewFinish = mt.capturedStart();
                     if (iNewFinish != -1)
                         iFinish = iNewFinish;
                     iPosition = (iFinish - iStart) / 2;

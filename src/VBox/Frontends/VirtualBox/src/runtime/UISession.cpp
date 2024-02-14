@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 102600 2023-12-14 16:22:28Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -27,7 +27,7 @@
 
 /* Qt includes: */
 #include <QApplication>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QWidget>
 
 /* GUI includes: */
@@ -2934,7 +2934,7 @@ bool UISession::searchMaxSnapshotIndex(const CMachine &comMachine,
 {
     bool fSuccess = true;
     ulong uMaxIndex = 0;
-    QRegExp regExp(QString("^") + strNameTemplate.arg("([0-9]+)") + QString("$"));
+    const QRegularExpression re(QString("^") + strNameTemplate.arg("([0-9]+)") + QString("$"));
     if (!comSnapshot.isNull())
     {
         /* Check current snapshot name: */
@@ -2944,9 +2944,12 @@ bool UISession::searchMaxSnapshotIndex(const CMachine &comMachine,
             UINotificationMessage::cannotAcquireSnapshotParameter(comSnapshot);
         else
         {
-            const int iPos = regExp.indexIn(strName);
-            if (iPos != -1)
-                uMaxIndex = regExp.cap(1).toULong() > uMaxIndex ? regExp.cap(1).toULong() : uMaxIndex;
+            const QRegularExpressionMatch mt = re.match(strName);
+            if (mt.hasMatch())
+            {
+                const ulong uFoundIndex = mt.captured(1).toULong();
+                uMaxIndex = uFoundIndex > uMaxIndex ? uFoundIndex : uMaxIndex;
+            }
             /* Traversing all the snapshot children: */
             QVector<CSnapshot> comSnapshotChildren = comSnapshot.GetChildren();
             fSuccess = comSnapshot.isOk();

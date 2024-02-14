@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIFilePathSelector.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -33,10 +33,10 @@
 #include <QFocusEvent>
 #include <QHBoxLayout>
 #include <QLineEdit>
+#include <QRegularExpression>
 #ifdef VBOX_WS_WIN
 # include <QListView>
 #endif
-#include <QRegExp>
 
 /* GUI includes: */
 #include "QIFileDialog.h"
@@ -519,8 +519,9 @@ QString UIFilePathSelector::shrinkText(int iWidth) const
             iFinish = strFullText.length();
 
             /* Selecting remove position: */
-            QRegExp regExp("([\\\\/][^\\\\^/]+[\\\\/]?$)");
-            int iNewFinish = regExp.indexIn(strFullText);
+            const QRegularExpression re("([\\\\/][^\\\\^/]+[\\\\/]?$)");
+            const QRegularExpressionMatch mt = re.match(strFullText);
+            const int iNewFinish = mt.capturedStart();
             if (iNewFinish != -1)
                 iFinish = iNewFinish;
             iPosition = (iFinish - iStart) / 2;

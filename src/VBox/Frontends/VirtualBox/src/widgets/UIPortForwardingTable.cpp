@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 100349 2023-07-03 14:58:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -33,7 +33,7 @@
 #include <QItemEditorFactory>
 #include <QLineEdit>
 #include <QMenu>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QSpinBox>
 #include <QStyledItemDelegate>
 
@@ -591,10 +591,16 @@ void UIPortForwardingModel::addRule(const QModelIndex &index)
     /* Search for existing "Rule [NUMBER]" record: */
     uint uMaxIndex = 0;
     QString strTemplate("Rule %1");
-    QRegExp regExp(strTemplate.arg("(\\d+)"));
+    const QRegularExpression re(strTemplate.arg("(\\d+)"));
     for (int i = 0; i < m_dataList.size(); ++i)
-        if (regExp.indexIn(m_dataList[i]->name()) > -1)
-            uMaxIndex = regExp.cap(1).toUInt() > uMaxIndex ? regExp.cap(1).toUInt() : uMaxIndex;
+    {
+        const QRegularExpressionMatch mt = re.match(m_dataList[i]->name());
+        if (mt.hasMatch())
+        {
+            const uint uFoundIndex = mt.captured(1).toUInt();
+            uMaxIndex = uFoundIndex > uMaxIndex ? uFoundIndex : uMaxIndex;
+        }
+    }
     /* If index is valid => copy data: */
     if (index.isValid())
         m_dataList << new UIPortForwardingRow(parentTable(),

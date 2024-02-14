@@ -1,4 +1,4 @@
-/* $Id: QILabel.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QILabel.h 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class declaration.
  */
@@ -38,7 +38,6 @@
 /* Qt includes: */
 #include <QLabel>
 #include <QRegularExpression>
-#include <QRegExp>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
@@ -141,7 +140,7 @@ private:
     /** Holds text-copy reg-exp. */
     static const QRegularExpression s_regExpCopy;
     /** Holds text-elide reg-exp. */
-    static QRegExp                  s_regExpElide;
+    static const QRegularExpression s_regExpElide;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_extensions_QILabel_h */
