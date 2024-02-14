@@ -1,4 +1,4 @@
-/** $Id: clipboard-x11.cpp 103323 2024-02-12 18:21:23Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard-x11.cpp 103363 2024-02-14 17:23:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard implementation.
  */
@@ -211,7 +211,7 @@ static DECLCALLBACK(int) vbclX11ReadDataWorker(PSHCLCONTEXT pCtx, SHCLFORMAT uFm
 
     LogFlowFuncEnter();
 
-    int rc = VERR_NO_DATA; /* Play safe. */
+    int rc;
 
     uint32_t cbRead = 0;
 
@@ -246,7 +246,7 @@ static DECLCALLBACK(int) vbclX11ReadDataWorker(PSHCLCONTEXT pCtx, SHCLFORMAT uFm
     }
 
     if (!cbRead)
-        rc = VERR_NO_DATA;
+        rc = VERR_SHCLPB_NO_DATA;
 
     if (RT_SUCCESS(rc))
     {

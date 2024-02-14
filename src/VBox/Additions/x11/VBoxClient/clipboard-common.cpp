@@ -1,4 +1,4 @@
-/** $Id: clipboard-common.cpp 101721 2023-11-02 15:23:58Z vadim.galitsyn@oracle.com $ */
+/** $Id: clipboard-common.cpp 103363 2024-02-14 17:23:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Shared Clipboard common code.
  */
@@ -108,6 +108,17 @@ RTDECL(int) VBClClipboardReadHostEvent(PSHCLCONTEXT pCtx, const PFNHOSTCLIPREPOR
     return rc;
 }
 
+/**
+ * Reads clipboard from the host.
+ *
+ * @returns VBox status code.
+ * @retval  VERR_SHCLPB_NO_DATA if no clipboard data is available.
+ * @param   pCtx                Shared Clipbaord context to use.
+ * @param   uFmt                The format to read clipboard data in.
+ * @param   ppv                 Where to return the allocated data read.
+ *                              Must be free'd by the caller.
+ * @param   pcb                 Where to return number of bytes read.
+ */
 RTDECL(int) VBClClipboardReadHostClipboard(PVBGLR3SHCLCMDCTX pCtx, SHCLFORMAT uFmt, void **ppv, uint32_t *pcb)
 {
     int rc;
@@ -152,7 +163,7 @@ RTDECL(int) VBClClipboardReadHostClipboard(PVBGLR3SHCLCMDCTX pCtx, SHCLFORMAT uF
         rc = VERR_NO_MEMORY;
 
     if (!cbRead)
-        rc = VERR_NO_DATA;
+        rc = VERR_SHCLPB_NO_DATA;
 
     if (RT_FAILURE(rc))
         RTMemFree(pvData);
