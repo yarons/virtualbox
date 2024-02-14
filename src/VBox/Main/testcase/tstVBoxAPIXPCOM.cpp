@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 101381 2023-10-06 10:00:59Z knut.osmundsen@oracle.com $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 103356 2024-02-14 14:19:45Z knut.osmundsen@oracle.com $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -613,8 +613,7 @@ int main(int argc, char **argv)
  */
 char *nsIDToString(nsID *guid)
 {
-    char *res = (char*)malloc(39);
-
+    char *res = (char *)malloc(39);
     if (res != NULL)
     {
         snprintf(res, 39, "{%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x}",
@@ -633,8 +632,7 @@ char *nsIDToString(nsID *guid)
  */
 void printErrorInfo()
 {
-    nsresult rc;
-
+    nsresult rc = NS_ERROR_UNEXPECTED;
     nsCOMPtr<nsIExceptionService> es;
     es = do_GetService(NS_EXCEPTIONSERVICE_CONTRACTID, &rc);
     if (NS_SUCCEEDED(rc))
