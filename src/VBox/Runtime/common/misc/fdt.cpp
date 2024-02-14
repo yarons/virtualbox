@@ -1,4 +1,4 @@
-/* $Id: fdt.cpp 103343 2024-02-14 01:55:23Z knut.osmundsen@oracle.com $ */
+/* $Id: fdt.cpp 103344 2024-02-14 01:56:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Flattened Devicetree parser and generator API.
  */
@@ -1712,7 +1712,7 @@ RTDECL(int) RTFdtNodePropertyAddStringListV(RTFDT hFdt, const char *pszProperty,
     {
         const char * const pszSrc = va_arg(va, const char *);
         size_t const cbStr = strlen(pszSrc) + 1;
-        Assert((size_t)(pchDst - (char *)pu32) >= cbStr);
+        Assert(cbStrings - (size_t)(pchDst - (char *)pu32) >= cbStr);
         memcpy(pchDst, pszSrc, cbStr);
         pchDst += cbStr;
     }
