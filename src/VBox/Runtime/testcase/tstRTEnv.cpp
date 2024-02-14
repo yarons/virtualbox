@@ -1,4 +1,4 @@
-/* $Id: tstRTEnv.cpp 103357 2024-02-14 14:24:04Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTEnv.cpp 103358 2024-02-14 14:27:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase - Environment.
  */
@@ -87,9 +87,9 @@ int main()
     /* ditto for a clone. */
     RTENV Env = NIL_RTENV;
     CHECK_RC(RTEnvClone(&Env, RTENV_DEFAULT), VINF_SUCCESS);
-    RTENV hEnvEq = NIL_RTENV;
+    RTENV hEnvEq = RTENV_DEFAULT;
     CHECK_RC(RTEnvCreateEx(&hEnvEq, RTENV_CREATE_F_ALLOW_EQUAL_FIRST_IN_VAR), VINF_SUCCESS);
-    RTENV hEnvNoEq = NIL_RTENV;
+    RTENV hEnvNoEq = RTENV_DEFAULT;
     CHECK_RC(RTEnvCreateEx(&hEnvNoEq, 0), VINF_SUCCESS);
 
     CHECK(RTEnvExistEx(Env, k_pszPathVar));
