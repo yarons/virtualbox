@@ -1,4 +1,4 @@
-/** $Id: clipboard-common.cpp 103363 2024-02-14 17:23:47Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard-common.cpp 103364 2024-02-14 18:10:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - Shared Clipboard common code.
  */
@@ -36,7 +36,8 @@
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include <iprt/log.h>
 #include <iprt/mem.h>
-#include <iprt/err.h>
+
+#include <VBox/err.h>
 
 #include "VBoxClient.h"
 #include "clipboard.h"
