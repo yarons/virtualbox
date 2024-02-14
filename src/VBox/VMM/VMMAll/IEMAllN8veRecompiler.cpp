@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103334 2024-02-13 13:45:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103375 2024-02-14 22:14:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -3229,7 +3229,7 @@ DECL_HIDDEN_THROW(PIEMNATIVEINSTR) iemNativeInstrBufEnsureSlow(PIEMRECOMPILERSTA
 {
     /* Double the buffer size till we meet the request. */
     uint32_t cNew = pReNative->cInstrBufAlloc;
-    AssertReturn(cNew > 0, NULL);
+    AssertStmt(cNew > 0, IEMNATIVE_DO_LONGJMP(pReNative, VERR_INTERNAL_ERROR_5)); /* impossible */
     do
         cNew *= 2;
     while (cNew < off + cInstrReq);
