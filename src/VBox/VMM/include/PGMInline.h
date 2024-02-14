@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 100964 2023-08-24 14:45:42Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInline.h 103374 2024-02-14 22:10:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -372,8 +372,8 @@ DECLINLINE(void) pgmPhysPageWriteMonitor(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCP
 #endif
 }
 
-
 #ifndef VBOX_VMM_TARGET_ARMV8
+
 /**
  * Checks if the no-execute (NX) feature is active (EFER.NXE=1).
  *
@@ -978,8 +978,8 @@ DECLINLINE(PX86PML4E) pgmShwGetLongModePML4EPtr(PVMCPUCC pVCpu, unsigned int iPm
         return &pShwPml4->a[iPml4];
     return NULL;
 }
-#endif /* !VBOX_VMM_TARGET_ARMV8 */
 
+#endif /* !VBOX_VMM_TARGET_ARMV8 */
 
 /**
  * Cached physical handler lookup.

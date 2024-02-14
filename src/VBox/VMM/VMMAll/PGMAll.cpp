@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 100964 2023-08-24 14:45:42Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 103374 2024-02-14 22:10:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1479,6 +1479,7 @@ static int pgmShwSyncLongModePDPtr(PVMCPUCC pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT
     {
         const unsigned     iPml4  = (GCPtr >> X86_PML4_SHIFT) & X86_PML4_MASK;
         PX86PML4E          pPml4e = pgmShwGetLongModePML4EPtr(pVCpu, iPml4);
+        AssertReturn(pPml4e, VERR_PGM_PML4_MAPPING);
         X86PGPAEUINT const uPml4e = pPml4e->u;
 
         /* Allocate page directory pointer table if not present. */

@@ -1,4 +1,4 @@
-/* $Id: GICAll.cpp 101062 2023-09-08 08:53:04Z alexander.eichner@oracle.com $ */
+/* $Id: GICAll.cpp 103374 2024-02-14 22:10:00Z knut.osmundsen@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - All Contexts.
  */
@@ -1125,12 +1125,16 @@ VMM_INT_DECL(VBOXSTRICTRC) GICWriteSysReg(PVMCPUCC pVCpu, uint32_t u32Reg, uint6
                 /** @todo Range selector support. */
                 VMCPUID idCpu = 0;
                 uint16_t uTgtList = ARMV8_ICC_SGI1R_EL1_AARCH64_TARGET_LIST_GET(u64Value);
+                /** @todo rewrite using ASMBitFirstSetU16. */
                 while (uTgtList)
                 {
                     if (uTgtList & 0x1)
                     {
                         PVMCPUCC pVCpuDst = VMMGetCpuById(pVCpu->CTX_SUFF(pVM), idCpu);
-                        GICSgiSet(pVCpuDst, uIntId, true /*fAsserted*/);
+                        if (pVCpuDst)
+                            GICSgiSet(pVCpuDst, uIntId, true /*fAsserted*/);
+                        else
+                            AssertFailed();
                     }
                     uTgtList >>= 1;
                     idCpu++;
