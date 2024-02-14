@@ -1,4 +1,4 @@
-/* $Id: precomp_gcc.h 98216 2023-01-22 22:52:06Z knut.osmundsen@oracle.com $*/
+/* $Id: precomp_gcc.h 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -55,7 +55,6 @@
 #include <QtCore/qsize.h> /* 627 */
 #include <QtCore/qglobal.h> /* 591 */
 #include <QtCore/qvariant.h> /* 588 */
-#include <QtCore/qregexp.h> /* 587 */
 #include <QtCore/qversiontagging.h> /* 585 */
 #include <QtCore/qtypeinfo.h> /* 585 */
 #include <QtCore/qtcore-config.h> /* 585 */

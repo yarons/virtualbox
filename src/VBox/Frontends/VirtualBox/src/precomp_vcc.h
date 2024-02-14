@@ -1,4 +1,4 @@
-/* $Id: precomp_vcc.h 100127 2023-06-08 16:02:26Z sergey.dubov@oracle.com $*/
+/* $Id: precomp_vcc.h 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -89,7 +89,6 @@
 #include <qbytearraylist.h>
 #include <qiterator.h>
 #include <qlist.h>
-#include <qregexp.h>
 #include <qstringlist.h>
 #include <qstringmatcher.h>
 #ifndef VBOX_IS_QT6_OR_LATER

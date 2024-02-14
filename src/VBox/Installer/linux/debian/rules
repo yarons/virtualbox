@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
+# $Id: rules 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $
 ## @file
 # VirtualBox rules.
 #
@@ -349,7 +349,7 @@ binary: build $(if $(NOMODS),,$(bldbase)/modules-stamp)
   ifeq ($(DEBUG),)
 	dh_strip --keep-debug \
 	    $(addprefix --exclude=lib,$(addsuffix VBox.so.6,\
-	      Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6Core5Compat Qt6DBus Qt6Xml Qt6XcbQpa Qt6Help Qt6Network Qt6Sql))
+	      Qt6Core Qt6Gui Qt6Widgets Qt6PrintSupport Qt6StateMachine Qt6DBus Qt6Xml Qt6XcbQpa Qt6Help Qt6Network Qt6Sql))
   endif
 	mkdir -p $(bldbase)/$(verpkg)-dbg/usr/lib/$(package)
 	mv $(prefix)/usr/lib/$(package)/*.debug $(bldbase)/$(verpkg)-dbg/usr/lib/$(package)
