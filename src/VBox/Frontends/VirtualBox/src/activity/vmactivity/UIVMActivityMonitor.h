@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 103166 2024-02-01 16:37:54Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 103347 2024-02-14 09:06:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -162,7 +162,6 @@ public:
 public slots:
 
         void sltExportMetricsToFile();
-        void sltChartDataIndexUnderCursorChanged(int iIndex);
 
 protected:
 
