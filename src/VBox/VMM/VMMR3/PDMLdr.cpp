@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: PDMLdr.cpp 103359 2024-02-14 14:39:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -713,10 +713,9 @@ static int pdmR3LoadR0U(PUVM pUVM, const char *pszFilename, const char *pszName,
     /*
      * Ask the support library to load it.
      */
-    void           *pvImageBase;
     RTERRINFOSTATIC ErrInfo;
-    RTErrInfoInitStatic(&ErrInfo);
-    int rc = SUPR3LoadModule(pszFilename, pszName, &pvImageBase, &ErrInfo.Core);
+    void           *pvImageBase = NULL;
+    int rc = SUPR3LoadModule(pszFilename, pszName, &pvImageBase, RTErrInfoInitStatic(&ErrInfo));
     if (RT_SUCCESS(rc))
     {
         pModule->hLdrMod = NIL_RTLDRMOD;

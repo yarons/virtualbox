@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGFAddr.cpp 103359 2024-02-14 14:39:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -239,8 +239,7 @@ VMMR3DECL(bool) DBGFR3AddrIsValid(PUVM pUVM, PCDBGFADDRESS pAddress)
 static DECLCALLBACK(int) dbgfR3AddrToPhysOnVCpu(PVMCPU pVCpu, PCDBGFADDRESS pAddress, PRTGCPHYS pGCPhys)
 {
     VMCPU_ASSERT_EMT(pVCpu);
-    /* This is just a wrapper because we cannot pass FlatPtr thru VMR3ReqCall directly. */
-    PGMPTWALK Walk;
+    PGMPTWALK Walk = { NIL_RTGCPTR, NIL_RTGCPHYS, NIL_RTGCPHYS, false };
     int const rc = PGMGstGetPage(pVCpu, pAddress->FlatPtr, &Walk);
     *pGCPhys = Walk.GCPhys;
     return rc;
