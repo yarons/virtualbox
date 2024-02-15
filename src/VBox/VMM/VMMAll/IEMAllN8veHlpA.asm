@@ -1,4 +1,4 @@
-; $Id: IEMAllN8veHlpA.asm 102737 2023-12-31 16:05:24Z knut.osmundsen@oracle.com $
+; $Id: IEMAllN8veHlpA.asm 103376 2024-02-15 01:09:23Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Native Recompiler Assembly Helpers.
 ;
@@ -36,6 +36,56 @@ BEGINCODE
 
 extern NAME(iemThreadedFunc_BltIn_LogCpuStateWorker)
 extern NAME(iemNativeHlpCheckTlbLookup)
+
+
+;;
+; This does the epilogue of a TB, given the RBP for the frame and eax value to return.
+;
+; @param    pFrame  (gcc:rdi, msc:rcx)  The frame pointer.
+; @param    rc      (gcc:esi, msc:edx)  The return value.
+;
+; @note This doesn't really work for MSC since xmm6 thru xmm15 are non-volatile
+;       and since we don't save them in the TB prolog we'll potentially return
+;       with different values if any functions on the calling stack uses them
+;       as they're unlikely to restore them till they return.
+;
+;       For the GCC calling convention all xmm registers are volatile and the
+;       only worry would be someone fiddling the control bits of MXCSR or FCW
+;       without restoring them.  This is highly unlikely, unless we're doing
+;       it ourselves, I think.
+;
+BEGINPROC   iemNativeTbLongJmp
+%ifdef ASM_CALL64_MSC
+        mov     rbp, rcx
+        mov     eax, edx
+%else
+        mov     rbp, rdi
+        mov     eax, esi
+%endif
+        SEH64_PUSH_xBP      ; non-sense, but whatever.
+SEH64_END_PROLOGUE
+
+        ;
+        ; This must exactly match what iemNativeEmitEpilog does.
+        ;
+%ifdef ASM_CALL64_MSC
+        lea     rsp, [rbp - 5 * 8]
+%else
+        lea     rsp, [rbp - 7 * 8]
+%endif
+        pop     r15
+        pop     r14
+        pop     r13
+        pop     r12
+%ifdef ASM_CALL64_MSC
+        pop     rdi
+        pop     rsi
+%endif
+        pop     rbx
+        leave
+        ret
+ENDPROC     iemNativeTbLongJmp
+
 
 
 ;;
