@@ -1,4 +1,4 @@
-/* $Id: filesplitter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: filesplitter.cpp 103385 2024-02-15 12:30:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * File splitter - Splits a text file according to ###### markers in it.
  */
@@ -345,7 +345,7 @@ static int splitFile(const char *pcszOutDir, const char *pcszContent, FILE *pFil
         free(pszFilename);
 
         pcszSearch = pcszEnd;
-    } while (rc == 0 && pcszSearch);
+    } while (rc == 0);
 
     printf("filesplitter: Out of %lu files: %lu rewritten, %lu unchanged. (%s)\n",
            cFilesWritten + cFilesUnchanged, cFilesWritten, cFilesUnchanged, pcszOutDir);
