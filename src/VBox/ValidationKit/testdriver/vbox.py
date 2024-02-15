@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 103380 2024-02-15 10:31:06Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 103381 2024-02-15 10:32:35Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103380 $"
+__version__ = "$Revision: 103381 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1116,7 +1116,7 @@ class TestDriver(base.TestDriver):                                              
         reporter.log2('importVBoxApi finished\n')
         return self.fImportedVBoxApi;
 
-    def _printEnv(self, dEnv = os.environ, fRaw = False):
+    def _printEnv(self, dEnv = os.environ, fRaw = False): # pylint: disable=dangerous-default-value
         """
         Prints the given environment block to log2.
 
