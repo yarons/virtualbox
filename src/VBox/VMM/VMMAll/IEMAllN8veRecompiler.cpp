@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103376 2024-02-15 01:09:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103377 2024-02-15 03:14:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5967,7 +5967,7 @@ static uint32_t iemNativeEmitProlog(PIEMRECOMPILERSTATE pReNative, uint32_t off)
      * We set up a stack frame exactly like on x86, only we have to push the
      * return address our selves here.  We save all non-volatile registers.
      */
-    uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 10);
+    uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 16);
 
 # ifdef RT_OS_DARWIN /** @todo This seems to be requirement by libunwind for JIT FDEs. Investigate further as been unable
                       * to figure out where the BRK following AUTHB*+XPACB* stuff comes from in libunwind.  It's
@@ -6003,13 +6003,13 @@ static uint32_t iemNativeEmitProlog(PIEMRECOMPILERSTATE pReNative, uint32_t off)
     pu32CodeBuf[off++] = Armv8A64MkInstrAddSubUImm12(true /*fSub*/, ARMV8_A64_REG_SP, ARMV8_A64_REG_SP, IEMNATIVE_FRAME_VAR_SIZE);
 
     /* mov r28, r0  */
-    off = iemNativeEmitLoadGprFromGpr(pReNative, off, IEMNATIVE_REG_FIXED_PVMCPU, IEMNATIVE_CALL_ARG0_GREG);
+    off = iemNativeEmitLoadGprFromGprEx(pu32CodeBuf, off, IEMNATIVE_REG_FIXED_PVMCPU, IEMNATIVE_CALL_ARG0_GREG);
     /* mov r27, r1  */
-    off = iemNativeEmitLoadGprFromGpr(pReNative, off, IEMNATIVE_REG_FIXED_PCPUMCTX, IEMNATIVE_CALL_ARG1_GREG);
+    off = iemNativeEmitLoadGprFromGprEx(pu32CodeBuf, off, IEMNATIVE_REG_FIXED_PCPUMCTX, IEMNATIVE_CALL_ARG1_GREG);
 
 # ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER_LONGJMP
     /* Save the frame pointer. */
-    off = iemNativeEmitStoreGprToVCpuU64Ex(pbCodeBuf, off, ARMV8_A64_REG_BP, RT_UOFFSETOF(VMCPUCC, iem.s.pvTbFramePointerR3),
+    off = iemNativeEmitStoreGprToVCpuU64Ex(pu32CodeBuf, off, ARMV8_A64_REG_BP, RT_UOFFSETOF(VMCPUCC, iem.s.pvTbFramePointerR3),
                                            ARMV8_A64_REG_X2);
 # endif
 
