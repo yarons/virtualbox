@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 103387 2024-02-15 14:06:33Z andreas.loeffler@oracle.com $
+# $Id: tdAudioTest.py 103391 2024-02-15 16:08:29Z andreas.loeffler@oracle.com $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103387 $"
+__version__ = "$Revision: 103391 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -370,8 +370,8 @@ class tdAudioTest(vbox.TestDriver):
 
         Returns (success status, exit code).
         """
-        reporter.log('Executing \"%s\" on host (as admin = %s, blocking = %s, expected rc = %d)'
-                     % (sWhat, fAsAdmin, fBlocking, iExpectedRc));
+        reporter.log('Executing \"%s\" on host (as admin = %s, blocking = %s, expected rc = %s)'
+                     % (sWhat, fAsAdmin, fBlocking, str(iExpectedRc) if iExpectedRc is not None else '<None>'));
         reporter.log2('Arguments: %s' % (asArgs,));
         if asEnv:
             reporter.log2('Environment: %s' % (asEnv,));
