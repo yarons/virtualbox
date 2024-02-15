@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 100618 2023-07-18 00:27:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCPP.cpp 103384 2024-02-15 12:10:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -1975,7 +1975,7 @@ static RTEXITCODE vbcppMacroExpandGatherParameters(PVBCPP pThis, PVBCPPMACROEXP 
             /* Comment? */
             unsigned ch2 = vbcppMacroExpandPeekCh(pExp, poff);
             /** @todo This ain't right wrt line splicing. */
-            if (ch2 == '/' || ch == '*')
+            if (ch2 == '/' || ch2 == '*')
             {
                 if (ch2 == '/')
                     rcExit = vbcppMacroExpandSkipCommentLine(pThis, pExp, poff);
@@ -3958,7 +3958,7 @@ static VBCPPEXPRRET vbcppExprParseNumber(PVBCPPEXPRPARSER pParser)
     char        ch    = *pParser->pszCur++;
     char        ch2   = *pParser->pszCur;
     if (   ch == '0'
-        && (ch == 'x' || ch == 'X'))
+        && (ch2 == 'x' || ch2 == 'X'))
     {
         ch2 = *++pParser->pszCur;
         if (!RT_C_IS_XDIGIT(ch2))
@@ -5745,7 +5745,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 100618 $";
+                static const char s_szRev[] = "$Revision: 103384 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;
