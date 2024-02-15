@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 103348 2024-02-14 10:03:01Z andreas.loeffler@oracle.com $
+# $Id: tdAudioTest.py 103379 2024-02-15 09:16:36Z andreas.loeffler@oracle.com $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103348 $"
+__version__ = "$Revision: 103379 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -328,24 +328,15 @@ class tdAudioTest(vbox.TestDriver):
 
             iRc  = 0;
 
-            if sys.version_info[0] >= 3:
-                while oProcess.stdout.readable(): # pylint: disable=no-member
-                    sStdOut = oProcess.stdout.readline();
-                    if sStdOut:
-                        sStdOut = sStdOut.strip();
-                        reporter.log('%s: %s' % (sWhat, sStdOut.rstrip('\n')));
-                    self.processEvents(0);
-                    iRc = oProcess.poll();
-                    if iRc is not None:
-                        break;
-            else: # Python 2.x cruft.
-                while True:
-                    sStdOut = oProcess.stdout.readline();
-                    if  sStdOut == '' \
-                    and oProcess.poll() is not None:
-                        break;
-                    self.processEvents(0);
+            while True if sys.version_info[0] < 3 else oProcess.stdout.readable(): # pylint: disable=no-member
+                sStdOut = oProcess.stdout.readline();
+                if sStdOut:
+                    sStdOut = sStdOut.strip();
                     reporter.log('%s [stdout]: %s' % (sWhat, sStdOut.rstrip('\n'),));
+                self.processEvents(0);
+                iRc = oProcess.poll();
+                if iRc is not None:
+                    break;
 
             if iRc == 0:
                 reporter.log('*** %s: exit code %d' % (sWhat, iRc));
