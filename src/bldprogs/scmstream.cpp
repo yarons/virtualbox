@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 100618 2023-07-18 00:27:58Z knut.osmundsen@oracle.com $ */
+/* $Id: scmstream.cpp 103383 2024-02-15 11:53:38Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -475,6 +475,9 @@ int ScmStreamWriteToStdOut(PSCMSTREAM pStream)
  */
 static const char *scmStreamGetLineInternal(PSCMSTREAM pStream, size_t *pcchLine, PSCMEOL penmEol)
 {
+    *pcchLine = 0;
+    *penmEol  = SCMEOL_NONE;
+
     AssertReturn(!pStream->fWriteOrRead, NULL);
     if (RT_FAILURE(pStream->rc))
         return NULL;
