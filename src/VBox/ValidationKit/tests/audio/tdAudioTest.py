@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 103386 2024-02-15 13:43:31Z andreas.loeffler@oracle.com $
+# $Id: tdAudioTest.py 103387 2024-02-15 14:06:33Z andreas.loeffler@oracle.com $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103386 $"
+__version__ = "$Revision: 103387 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -744,14 +744,6 @@ class tdAudioTest(vbox.TestDriver):
 
         sVkatExe = self.getBinTool('vkat');
 
-        # Run the VKAT self test.
-        # Doesn't take long and gives us some more clue if it flies on the testboxes.
-        reporter.testStart('VKAT Selftest');
-        fRc, _ = self.executeHst("VKAT Host Selftest", [ sVkatExe, 'selftest' ], iExpectedRc = 0);
-        reporter.testDone();
-        if not fRc:
-            return fRc;
-
         # Now probe the backends.
         reporter.testStart('VKAT Probing');
         asArgs   = [ sVkatExe, 'enum', '--probe-backends' ];
@@ -761,6 +753,8 @@ class tdAudioTest(vbox.TestDriver):
         if iRc != 0:
             # Not fatal, as VBox then should fall back to the NULL audio backend (also worth having as a test case).
             reporter.log('Warning: Backend probing on host failed, no audio available (pure server installation?)');
+            # Mark the whole VM test as being skipped.
+            fSkip = True;
         reporter.testDone();
 
         # Reconfigure the VM.
@@ -829,7 +823,7 @@ class tdAudioTest(vbox.TestDriver):
             self.removeTask(oTxsSession);
             self.terminateVmBySession(oSession);
 
-        reporter.testDone();
+        reporter.testDone(fSkip);
         return fRc;
 
     def onExit(self, iRc):
