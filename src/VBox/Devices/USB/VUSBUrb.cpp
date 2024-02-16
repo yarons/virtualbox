@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 100518 2023-07-11 14:56:03Z michal.necasek@oracle.com $ */
+/* $Id: VUSBUrb.cpp 103397 2024-02-16 10:10:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -721,7 +721,7 @@ static bool vusbMsgSetup(PVUSBPIPE pPipe, const void *pvBuf, uint32_t cbBuf)
                  cbReq, RT_UOFFSETOF_DYN(VUSBCTRLEXTRA, Urb.abData[cbReq])));
             return false;
         }
-        if (pExtra != pNew)
+        if (pExtra != pNew) /* (parfait is wrong about pNew leak here) */
         {
             LogFunc(("Reallocated %u -> %u\n", pExtra->cbMax, cbReq));
             pNew->pMsg = (PVUSBSETUP)pNew->Urb.abData;
