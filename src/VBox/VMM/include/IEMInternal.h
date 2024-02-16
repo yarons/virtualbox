@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103377 2024-02-15 03:14:37Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 103393 2024-02-16 00:04:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1817,8 +1817,6 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeLivenessEflSfSkippable;
     /** Native recompiler: Number of opportunities to skip EFLAGS.OF updating. */
     STAMCOUNTER             StatNativeLivenessEflOfSkippable;
-    /** Native recompiler: Number of opportunities to skip EFLAGS.OTHER updating. */
-    STAMCOUNTER             StatNativeLivenessEflOtherSkippable;
     /** Native recompiler: Number of required EFLAGS.CF updates. */
     STAMCOUNTER             StatNativeLivenessEflCfRequired;
     /** Native recompiler: Number of required EFLAGS.PF updates. */
@@ -1831,10 +1829,20 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeLivenessEflSfRequired;
     /** Native recompiler: Number of required EFLAGS.OF updates. */
     STAMCOUNTER             StatNativeLivenessEflOfRequired;
-    /** Native recompiler: Number of required EFLAGS.OTHER updates. */
-    STAMCOUNTER             StatNativeLivenessEflOtherRequired;
+    /** Native recompiler: Number of potentially delayable EFLAGS.CF updates. */
+    STAMCOUNTER             StatNativeLivenessEflCfDelayable;
+    /** Native recompiler: Number of potentially delayable EFLAGS.PF updates. */
+    STAMCOUNTER             StatNativeLivenessEflPfDelayable;
+    /** Native recompiler: Number of potentially delayable EFLAGS.AF updates. */
+    STAMCOUNTER             StatNativeLivenessEflAfDelayable;
+    /** Native recompiler: Number of potentially delayable EFLAGS.ZF updates. */
+    STAMCOUNTER             StatNativeLivenessEflZfDelayable;
+    /** Native recompiler: Number of potentially delayable EFLAGS.SF updates. */
+    STAMCOUNTER             StatNativeLivenessEflSfDelayable;
+    /** Native recompiler: Number of potentially delayable EFLAGS.OF updates. */
+    STAMCOUNTER             StatNativeLivenessEflOfDelayable;
 
-    uint64_t                au64Padding[7];
+    uint64_t                au64Padding[3];
     /** @} */
 
     /** Data TLB.
