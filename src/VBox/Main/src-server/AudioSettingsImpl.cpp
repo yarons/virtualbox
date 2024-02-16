@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.cpp 98288 2023-01-24 15:32:43Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioSettingsImpl.cpp 103395 2024-02-16 09:18:42Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Audio settings for a VM.
  */
@@ -246,6 +246,11 @@ bool AudioSettings::i_canChangeSettings(void)
     return true;
 }
 
+Machine *AudioSettings::i_getMachine(void)
+{
+    return m->pMachine; // m->pMachine is const, needs no locking
+}
+
 /**
  * Gets called when the machine object needs to know that audio adapter settings
  * have been changed.
@@ -255,7 +260,7 @@ bool AudioSettings::i_canChangeSettings(void)
 void AudioSettings::i_onAdapterChanged(IAudioAdapter *pAdapter)
 {
     AssertPtrReturnVoid(pAdapter);
-    m->pMachine->i_onAudioAdapterChange(pAdapter); // mParent is const, needs no locking
+    m->pMachine->i_onAudioAdapterChange(pAdapter); // m->pMachine is const, needs no locking
 }
 
 /**
@@ -271,7 +276,7 @@ void AudioSettings::i_onHostDeviceChanged(IHostAudioDevice *pDevice,
                                           bool fIsNew, AudioDeviceState_T enmState, IVirtualBoxErrorInfo *pErrInfo)
 {
     AssertPtrReturnVoid(pDevice);
-    m->pMachine->i_onHostAudioDeviceChange(pDevice, fIsNew, enmState, pErrInfo); // mParent is const, needs no locking
+    m->pMachine->i_onHostAudioDeviceChange(pDevice, fIsNew, enmState, pErrInfo); // m->pMachine is const, needs no locking
 }
 
 /**

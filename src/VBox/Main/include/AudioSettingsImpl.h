@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioSettingsImpl.h 103395 2024-02-16 09:18:42Z andreas.loeffler@oracle.com $ */
 
 /** @file
  *
@@ -64,6 +64,7 @@ public:
 
     // public methods only for internal purposes
     bool     i_canChangeSettings(void);
+    Machine *i_getMachine(void);
     void     i_onAdapterChanged(IAudioAdapter *pAdapter);
     void     i_onHostDeviceChanged(IHostAudioDevice *pDevice, bool fIsNew, AudioDeviceState_T enmState, IVirtualBoxErrorInfo *pErrInfo);
     void     i_onSettingsChanged(void);
