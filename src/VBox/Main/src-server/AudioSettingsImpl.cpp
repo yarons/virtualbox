@@ -1,4 +1,4 @@
-/* $Id: AudioSettingsImpl.cpp 103395 2024-02-16 09:18:42Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioSettingsImpl.cpp 103396 2024-02-16 09:26:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Audio settings for a VM.
  */
@@ -246,6 +246,11 @@ bool AudioSettings::i_canChangeSettings(void)
     return true;
 }
 
+/**
+ * Returns a (weak) pointer of the audio setting's machine object.
+ *
+ * @returns Wweak pointer of the audio setting's machine object.
+ */
 Machine *AudioSettings::i_getMachine(void)
 {
     return m->pMachine; // m->pMachine is const, needs no locking
