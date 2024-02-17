@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 103404 2024-02-17 01:53:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 103406 2024-02-17 02:09:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -549,7 +549,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 #  undef IEM_DO_INSTR_STAT
 # endif
 
-# if !defined(VBOX_VMM_TARGET_ARMV8) && defined(VBOX_WITH_STATISTICS)
+# if defined(VBOX_WITH_STATISTICS) && defined(VBOX_WITH_IEM_RECOMPILER) && !defined(VBOX_VMM_TARGET_ARMV8)
         /* Threaded function statistics: */
         for (unsigned i = 1; i < (unsigned)kIemThreadedFunc_End; i++)
             STAMR3RegisterF(pVM, &pVCpu->iem.s.acThreadedFuncStats[i], STAMTYPE_U32_RESET, STAMVISIBILITY_USED,
