@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103393 2024-02-16 00:04:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 103404 2024-02-17 01:53:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1862,6 +1862,11 @@ typedef struct IEMCPU
     IEMINSTRSTATS           StatsRZ;
     /** Instruction statistics for ring-3. */
     IEMINSTRSTATS           StatsR3;
+# ifdef VBOX_WITH_IEM_RECOMPILER
+    /** Statistics per threaded function call.
+     * Updated by both the threaded and native recompilers. */
+    uint32_t                acThreadedFuncStats[0x5000 /*20480*/];
+# endif
 #endif
 } IEMCPU;
 AssertCompileMemberOffset(IEMCPU, cActiveMappings, 0x4f);

@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 102876 2024-01-15 14:26:27Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103404 2024-02-17 01:53:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -1026,6 +1026,95 @@ iemNativeEmitIncStamCounterInVCpu(PIEMRECOMPILERSTATE pReNative, uint32_t off, u
     off = iemNativeEmitIncStamCounterInVCpuEx(iemNativeInstrBufEnsure(pReNative, off, 7), off, idxTmp1, idxTmp2, offVCpu);
 #elif defined(RT_ARCH_ARM64)
     off = iemNativeEmitIncStamCounterInVCpuEx(iemNativeInstrBufEnsure(pReNative, off, 4+3), off, idxTmp1, idxTmp2, offVCpu);
+#else
+# error "port me"
+#endif
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    return off;
+}
+
+
+/**
+ * Emits code for incrementing an unsigned 32-bit statistics counter in VMCPU.
+ *
+ * @note The two temp registers are not required for AMD64.  ARM64 always
+ *       requires the first, and the 2nd is needed if the offset cannot be
+ *       encoded as an immediate.
+ */
+DECL_FORCE_INLINE(uint32_t)
+iemNativeEmitIncU32CounterInVCpuEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t idxTmp1, uint8_t idxTmp2, uint32_t offVCpu)
+{
+    Assert(!(offVCpu & 3)); /* ASSUME correctly aligned member. */
+#ifdef RT_ARCH_AMD64
+    /* inc dword [pVCpu + offVCpu] */
+    pCodeBuf[off++] = 0xff;
+    off = iemNativeEmitGprByVCpuDisp(pCodeBuf, off, 0, offVCpu);
+    RT_NOREF(idxTmp1, idxTmp2);
+
+#elif defined(RT_ARCH_ARM64)
+    /* Determine how we're to access pVCpu first. */
+    uint32_t const cbData = sizeof(uint32_t);
+    if (offVCpu < (unsigned)(_4K * cbData))
+    {
+        /* Use the unsigned variant of ldr Wt, [<Xn|SP>, #off]. */
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1,
+                                                   IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
+        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1,
+                                                   IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
+    }
+    else if (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx) < (unsigned)(_4K * cbData))
+    {
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
+                                                   (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
+        pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
+                                                   (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
+    }
+    else
+    {
+        /* The offset is too large, so we must load it into a register and use
+           ldr Wt, [<Xn|SP>, (<Wm>|<Xm>)].  We'll try use the 'LSL, #2' feature
+           of the instruction if that'll reduce the constant to 16-bits. */
+        if (offVCpu / cbData < (unsigned)UINT16_MAX)
+        {
+            pCodeBuf[off++] = Armv8A64MkInstrMovZ(idxTmp2, offVCpu / cbData);
+            pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_Ld_Word, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU,
+                                                        idxTmp2, kArmv8A64InstrLdStExtend_Lsl, true /*fShifted(2)*/);
+            pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
+            pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_St_Word, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU,
+                                                        idxTmp2, kArmv8A64InstrLdStExtend_Lsl, true /*fShifted(2)*/);
+        }
+        else
+        {
+            off = iemNativeEmitLoadGprImmEx(pCodeBuf, off, idxTmp2, offVCpu);
+            pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_Ld_Word, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU, idxTmp2);
+            pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
+            pCodeBuf[off++] = Armv8A64MkInstrStLdRegIdx(kArmv8A64InstrLdStType_St_Word, idxTmp1, IEMNATIVE_REG_FIXED_PVMCPU, idxTmp2);
+        }
+    }
+
+#else
+# error "port me"
+#endif
+    return off;
+}
+
+
+/**
+ * Emits code for incrementing an unsigned 32-bit statistics counter in VMCPU.
+ *
+ * @note The two temp registers are not required for AMD64.  ARM64 always
+ *       requires the first, and the 2nd is needed if the offset cannot be
+ *       encoded as an immediate.
+ */
+DECL_FORCE_INLINE(uint32_t)
+iemNativeEmitIncU32CounterInVCpu(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxTmp1, uint8_t idxTmp2, uint32_t offVCpu)
+{
+#ifdef RT_ARCH_AMD64
+    off = iemNativeEmitIncU32CounterInVCpuEx(iemNativeInstrBufEnsure(pReNative, off, 6), off, idxTmp1, idxTmp2, offVCpu);
+#elif defined(RT_ARCH_ARM64)
+    off = iemNativeEmitIncU32CounterInVCpuEx(iemNativeInstrBufEnsure(pReNative, off, 4+3), off, idxTmp1, idxTmp2, offVCpu);
 #else
 # error "port me"
 #endif

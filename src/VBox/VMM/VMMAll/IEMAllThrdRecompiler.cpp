@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 103376 2024-02-15 01:09:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 103404 2024-02-17 01:53:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2532,6 +2532,10 @@ static VBOXSTRICTRC iemTbExec(PVMCPUCC pVCpu, PIEMTB pTb) IEM_NOEXCEPT_MAY_LONGJ
             Log9(("%04x:%08RX64: #%d/%d - %d %s\n", pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip,
                   pTb->Thrd.cCalls - cCallsLeft - 1, pCallEntry->idxInstr, pCallEntry->enmFunction,
                   g_apszIemThreadedFunctions[pCallEntry->enmFunction]));
+#endif
+#ifdef VBOX_WITH_STATISTICS
+            AssertCompile(RT_ELEMENTS(pVCpu->iem.s.acThreadedFuncStats) >= kIemThreadedFunc_End);
+            pVCpu->iem.s.acThreadedFuncStats[pCallEntry->enmFunction] += 1;
 #endif
             VBOXSTRICTRC const rcStrict = g_apfnIemThreadedFunctions[pCallEntry->enmFunction](pVCpu,
                                                                                               pCallEntry->auParams[0],
