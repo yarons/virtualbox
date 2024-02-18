@@ -1,4 +1,4 @@
-/* $Id: IOMR3IoPort.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMR3IoPort.cpp 103407 2024-02-18 17:23:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor, I/O port related APIs.
  */
@@ -386,7 +386,7 @@ VMMR3_INT_DECL(int)  IOMR3IoPortCreate(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT cPo
         for (size_t i = 0;; i++)
         {
             const char *pszIn  = paExtDescs[i].pszIn;
-            const char *pszOut = paExtDescs[i].pszIn;
+            const char *pszOut = paExtDescs[i].pszOut;
             if (!pszIn && !pszOut)
                 break;
             AssertReturn(i < _8K, VERR_OUT_OF_RANGE);
