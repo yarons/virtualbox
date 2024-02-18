@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: PDMBlkCache.cpp 103409 2024-02-18 17:47:24Z alexander.eichner@oracle.com $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1185,8 +1185,7 @@ int pdmR3BlkCacheInit(PVM pVM)
         RTCritSectDelete(&pBlkCacheGlobal->CritSect);
     }
 
-    if (pBlkCacheGlobal)
-        RTMemFree(pBlkCacheGlobal);
+    RTMemFree(pBlkCacheGlobal);
 
     LogFlowFunc((": returns rc=%Rrc\n", rc));
     return rc;
