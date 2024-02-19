@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 103367 2024-02-14 18:47:32Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -161,7 +161,7 @@ static DECLCALLBACK(void) vbtrShClTransferDestroyCallback(PSHCLTRANSFERCALLBACKC
 }
 
 /**
- * @copydoc SHCLTRANSFERCALLBACKS::pfnOnInitialized
+ * @copydoc SHCLTRANSFERCALLBACKS::pfnOnInitialize
  *
  * Called by ShClTransferInit via VbglR3.
  * For G->H: Called on transfer intialization to notify the "in-flight" IDataObject about a data transfer.
@@ -169,7 +169,7 @@ static DECLCALLBACK(void) vbtrShClTransferDestroyCallback(PSHCLTRANSFERCALLBACKC
  *
  * @thread  Clipboard main thread.
  */
-static DECLCALLBACK(void) vbtrShClTransferInitializedCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
+static DECLCALLBACK(int) vbtrShClTransferInitializeCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
 {
     LogFlowFuncEnter();
 
@@ -208,6 +208,7 @@ static DECLCALLBACK(void) vbtrShClTransferInitializedCallback(PSHCLTRANSFERCALLB
     }
 
     LogFlowFuncLeaveRC(rc);
+    return rc;
 }
 
 /**
@@ -978,7 +979,7 @@ DECLCALLBACK(int) vbtrShClWorker(void *pInstance, bool volatile *pfShutdown)
 
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnCreated     = vbtrShClTransferCreatedCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnDestroy     = vbtrShClTransferDestroyCallback;
-    pCtx->CmdCtx.Transfers.Callbacks.pfnOnInitialized = vbtrShClTransferInitializedCallback;
+    pCtx->CmdCtx.Transfers.Callbacks.pfnOnInitialize  = vbtrShClTransferInitializeCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnStarted     = vbtrShClTransferStartedCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnCompleted   = vbtrShClTransferCompletedCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnError       = vbtrShClTransferErrorCallback;

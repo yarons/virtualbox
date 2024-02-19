@@ -1,4 +1,4 @@
-/** $Id: clipboard-x11.cpp 103365 2024-02-14 18:13:38Z andreas.loeffler@oracle.com $ */
+/** $Id: clipboard-x11.cpp 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard implementation.
  */
@@ -56,11 +56,11 @@
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS_HTTP
 /**
- * @copydoc SHCLTRANSFERCALLBACKS::pfnOnInitialized
+ * @copydoc SHCLTRANSFERCALLBACKS::pfnOnInitialize
  *
  * @thread Clipboard main thread.
  */
-static DECLCALLBACK(void) vbclX11OnTransferInitializedCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
+static DECLCALLBACK(int) vbclX11OnTransferInitializeCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
 {
     LogFlowFuncEnter();
 
@@ -110,6 +110,7 @@ static DECLCALLBACK(void) vbclX11OnTransferInitializedCallback(PSHCLTRANSFERCALL
     }
 
     LogFlowFuncLeaveRC(rc);
+    return rc;
 }
 
 /**
@@ -383,7 +384,7 @@ int VBClX11ClipboardMain(void)
     pCtx->CmdCtx.Transfers.Callbacks.pvUser = pCtx; /* Assign context as user-provided callback data. */
     pCtx->CmdCtx.Transfers.Callbacks.cbUser = sizeof(SHCLCONTEXT);
 
-    pCtx->CmdCtx.Transfers.Callbacks.pfnOnInitialized  = vbclX11OnTransferInitializedCallback;
+    pCtx->CmdCtx.Transfers.Callbacks.pfnOnInitialize   = vbclX11OnTransferInitializeCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnRegistered   = vbclX11OnTransferRegisteredCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnUnregistered = vbclX11OnTransferUnregisteredCallback;
     pCtx->CmdCtx.Transfers.Callbacks.pfnOnCompleted    = vbclX11OnTransferCompletedCallback;
