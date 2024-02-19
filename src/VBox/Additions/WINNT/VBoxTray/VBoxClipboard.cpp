@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxClipboard.cpp 103450 2024-02-19 14:55:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -178,28 +178,20 @@ static DECLCALLBACK(int) vbtrShClTransferInitializeCallback(PSHCLTRANSFERCALLBAC
     PSHCLCONTEXT pCtx = (PSHCLCONTEXT)pCbCtx->pvUser;
     AssertPtr(pCtx);
 
-    switch(ShClTransferGetDir(pCbCtx->pTransfer))
+    PSHCLTRANSFER pTransfer = pCbCtx->pTransfer;
+    AssertPtr(pTransfer);
+
+    switch(ShClTransferGetDir(pTransfer))
     {
         case SHCLTRANSFERDIR_FROM_REMOTE: /* G->H */
         {
-            SharedClipboardWinDataObject *pObj = pCtx->Win.pDataObjInFlight;
-            if (pObj)
-            {
-                rc = pObj->SetTransfer(pCbCtx->pTransfer);
-                if (RT_SUCCESS(rc))
-                    rc = pObj->SetStatus(SharedClipboardWinDataObject::Running);
-
-                pCtx->Win.pDataObjInFlight = NULL; /* Hand off to Windows. */
-            }
-            else
-                AssertMsgFailed(("No data object in flight!\n"));
-
+            rc = SharedClipboardWinTransferHandOffToDataObject(&pCtx->Win, pTransfer);
             break;
         }
 
         case SHCLTRANSFERDIR_TO_REMOTE: /* H->G */
         {
-            rc = SharedClipboardWinTransferGetRootsFromClipboard(&pCtx->Win, pCbCtx->pTransfer);
+            rc = SharedClipboardWinTransferGetRootsFromClipboard(&pCtx->Win, pTransfer);
             break;
         }
 

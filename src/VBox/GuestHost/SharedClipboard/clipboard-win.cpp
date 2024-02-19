@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 100665 2023-07-20 13:20:29Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 103450 2024-02-19 14:55:20Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1188,6 +1188,43 @@ void SharedClipboardWinTransferDestroy(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTrans
         pTransfer->pvUser = NULL;
         pTransfer->cbUser = 0;
     }
+}
+
+/**
+ * Hands off a transfer to the current data object in-flight.
+ *
+ * @returns VBox status code.
+ * @param   pWinCtx             Windows context to use.
+ * @param   pTransfer           Transfer to hand off to the data object.
+ *
+ * @note    The data object will be put into running state on success and handed over to Windows.
+ *          Our data object pointer will be invalid afterwards.
+ */
+int SharedClipboardWinTransferHandOffToDataObject(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTransfer)
+{
+    int rc = RTCritSectEnter(&pCtx->Win.CritSect);
+    if (RT_SUCCESS(rc))
+    {
+        SharedClipboardWinDataObject *pObj = pCtx->Win.pDataObjInFlight;
+        if (pObj)
+        {
+            rc = pObj->SetTransfer(pTransfer);
+            if (RT_SUCCESS(rc))
+                rc = pObj->SetStatus(SharedClipboardWinDataObject::Running);
+
+            pCtx->Win.pDataObjInFlight = NULL; /* Hand off to Windows. */
+        }
+        else
+        {
+            AssertMsgFailed(("No data object in flight (yet)!\n"));
+            rc = VERR_WRONG_ORDER);
+        }
+
+        int rc2 = RTCritSectLeave(&pCtx->Win.CritSect);
+        AssertRC(rc2);
+    }
+
+    return rc;
 }
 
 /**
