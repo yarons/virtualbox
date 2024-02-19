@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 103445 2024-02-19 13:59:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -295,7 +295,7 @@ static DECLCALLBACK(void) shClSvcWinTransferOnCreatedCallback(PSHCLTRANSFERCALLB
  *
  * @thread  Service main thread.
  */
-static DECLCALLBACK(void) shClSvcWinTransferOnInitializeCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
+static DECLCALLBACK(int) shClSvcWinTransferOnInitializeCallback(PSHCLTRANSFERCALLBACKCTX pCbCtx)
 {
     LogFlowFuncEnter();
 
