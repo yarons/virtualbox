@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 103285 2024-02-08 15:27:12Z andreas.loeffler@oracle.com $ */
+/* $Id: DBGPlugInDarwin.cpp 103424 2024-02-19 10:25:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -714,10 +714,11 @@ static int dbgDiggerDarwinAddModule(PDBGDIGGERDARWIN pThis, PUVM pUVM, PCVMMR3VT
             rc = RTDbgModSegmentAdd(hMod, aSegs[iSeg].uRva, aSegs[iSeg].cb, aSegs[iSeg].szName, 0, NULL);
             if (aSegs[iSeg].cb > 0 && RT_SUCCESS(rc))
             {
-                char szTmp[RTDBG_SEGMENT_NAME_LENGTH + sizeof("_start")];
-                rc = RTStrCat(RTStrCopy2(szTmp, sizeof(szTmp), aSegs[iSeg].szName), sizeof(szTmp), "_start");
-                if (RT_SUCCESS(rc))
-                    rc = RTDbgModSymbolAdd(hMod, szTmp, iSeg, 0 /*uRva*/, 0 /*cb*/, 0 /*fFlags*/, NULL);
+                static const char s_szSuffix[] = "_start";
+                size_t const      cchName = RTStrNLen(aSegs[iSeg].szName, sizeof(aSegs[iSeg].szName));
+                char              szTmp[sizeof(aSegs[iSeg].szName) + sizeof(s_szSuffix)];
+                memcpy(mempcpy(szTmp, aSegs[iSeg].szName, cchName), s_szSuffix, sizeof(s_szSuffix));
+                rc = RTDbgModSymbolAdd(hMod, szTmp, iSeg, 0 /*uRva*/, 0 /*cb*/, 0 /*fFlags*/, NULL);
             }
             uRvaNext += aSegs[iSeg].cb;
         }
