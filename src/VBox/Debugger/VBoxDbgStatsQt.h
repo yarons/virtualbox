@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.h 103403 2024-02-17 01:51:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.h 103460 2024-02-19 21:17:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -160,6 +160,7 @@ protected slots:
     void actToLog();
     void actToRelLog();
     void actAdjColumns();
+    void actFilter();
     /** @} */
 
 
@@ -203,7 +204,9 @@ protected:
     /** To Release Log action. */
     QAction *m_pToRelLogAct;
     /** Adjust the columns. */
-    QAction *m_pAdjColumns;
+    QAction *m_pAdjColumnsAct;
+    /** Filter sub-tree action. */
+    QAction *m_pFilterAct;
 #if 0
     /** Save Tree (to file) action. */
     QAction *m_SaveFileAct;
