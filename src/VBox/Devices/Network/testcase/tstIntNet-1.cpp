@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 103285 2024-02-08 15:27:12Z andreas.loeffler@oracle.com $ */
+/* $Id: tstIntNet-1.cpp 103431 2024-02-19 12:06:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -818,7 +818,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 103285 $\n");
+                RTPrintf("$Revision: 103431 $\n");
                 return 0;
 
             default:
@@ -838,20 +838,15 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         return 1;
     }
 
-    char szPath[RTPATH_MAX];
-    rc = RTPathExecDir(szPath, sizeof(szPath) - sizeof("/../VMMR0.r0"));
+    static const char s_szVmmR0[] = "/../VMMR0.r0";
+    char              szPath[RTPATH_MAX];
+    rc = RTPathExecDir(szPath, sizeof(szPath) - sizeof(s_szVmmR0));
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstIntNet-1: RTPathExecDir -> %Rrc\n", rc);
         return 1;
     }
-
-    rc = RTStrCat(szPath, sizeof(szPath), "/../VMMR0.r0");
-    if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstIntNet-1: RTStrCat -> %Rrc\n", rc);
-        return 1;
-    }
+    memcpy(strchr(szPath, '\0'), s_szVmmR0, sizeof(s_szVmmR0));
 
     char szAbsPath[RTPATH_MAX];
     rc = RTPathAbs(szPath, szAbsPath, sizeof(szAbsPath));
