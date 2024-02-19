@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 103462 2024-02-19 23:26:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 103463 2024-02-19 23:27:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3878,7 +3878,7 @@ VBoxDbgStatsView::actFilter()
      */
     QModelIndex Idx = m_pCurMenu ? m_CurIndex : currentIndex();
     if (Idx.isValid())
-        Idx == myGetRootIndex();
+        Idx = myGetRootIndex();
     Idx = m_pProxyModel->mapToSource(Idx);
     PDBGGUISTATSNODE pNode = m_pVBoxModel->nodeFromIndex(Idx);
     if (pNode)
