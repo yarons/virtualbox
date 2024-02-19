@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 103420 2024-02-19 09:08:34Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -503,8 +503,8 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_StreamPlay(PPDMIHOSTAUDIO pInterface
 
     PRTCIRCBUF pCircBuf    = pStreamAV->pCircBuf;
     AssertPtr(pCircBuf);
-
-    uint32_t cbToWrite = RT_MIN(cbBuf, (uint32_t)RTCircBufFree(pCircBuf));
+    uint32_t const cbFree    = (uint32_t)RTCircBufFree(pCircBuf);
+    uint32_t       cbToWrite = RT_MIN(cbBuf, cbFree);
     AssertReturn(cbToWrite, VERR_BUFFER_OVERFLOW);
 
     /*
