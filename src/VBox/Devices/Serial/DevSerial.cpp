@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 101035 2023-09-07 08:59:15Z andreas.loeffler@oracle.com $ */
+/* $Id: DevSerial.cpp 103425 2024-02-19 11:12:14Z alexander.eichner@oracle.com $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -245,7 +245,7 @@ static DECLCALLBACK(int) serialR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, u
             AssertRCReturn(rc, rc);
 
             bIrq        = (uint8_t)iIrqTmp;
-            PortAddress = (uint32_t)uPortAddressTmp;
+            PortAddress = (RTIOPORT)uPortAddressTmp;
         }
         else
         {

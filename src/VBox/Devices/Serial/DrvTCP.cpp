@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvTCP.cpp 103425 2024-02-19 11:12:14Z alexander.eichner@oracle.com $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -276,7 +276,9 @@ static DECLCALLBACK(int) drvTcpPoll(PPDMISTREAM pInterface, uint32_t fEvts, uint
 
             /* Adjust remaining time to wait. */
             uint64_t tsPollSpanMs = RTTimeMilliTS() - tsStartMs;
-            cMillies -= RT_MIN(cMillies, tsPollSpanMs);
+            Assert(tsPollSpanMs == (RTMSINTERVAL)tsPollSpanMs);
+
+            cMillies -= RT_MIN(cMillies, (RTMSINTERVAL)tsPollSpanMs);
             if (RT_SUCCESS(rc))
             {
                 if (idHnd == DRVTCP_POLLSET_ID_WAKEUP)

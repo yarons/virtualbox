@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: UartCore.cpp 103425 2024-02-19 11:12:14Z alexander.eichner@oracle.com $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -639,8 +639,9 @@ static void uartR3RecvFifoFill(PPDMDEVINS pDevIns, PUARTCORE pThis, PUARTCORECC 
     LogFlowFunc(("pThis=%#p\n", pThis));
 
     PUARTFIFO pFifo = &pThis->FifoRecv;
-    size_t cbFill = RT_MIN(uartFifoFreeGet(pFifo),
-                           ASMAtomicReadU32(&pThis->cbAvailRdr));
+    size_t const cbFifoFree = uartFifoFreeGet(pFifo);
+    uint32_t const cbAvailRdr = ASMAtomicReadU32(&pThis->cbAvailRdr);
+    size_t const cbFill = RT_MIN(cbFifoFree, cbAvailRdr);
     size_t cbFilled = 0;
 
     while (cbFilled < cbFill)

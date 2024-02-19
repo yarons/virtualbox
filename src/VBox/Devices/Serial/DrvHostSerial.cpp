@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostSerial.cpp 103425 2024-02-19 11:12:14Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox serial devices: Host serial driver
  */
@@ -263,7 +263,8 @@ static DECLCALLBACK(int) drvHostSerialReadRdr(PPDMISERIALCONNECTOR pInterface, v
     do
     {
         void *pvSrc = NULL;
-        size_t cbThisRead = RT_MIN(drvHostSerialReadBufGetRead(pThis, &pvSrc), cbRead);
+        size_t cbReadMax  = drvHostSerialReadBufGetRead(pThis, &pvSrc);
+        size_t cbThisRead = RT_MIN(cbReadMax, cbRead);
         if (cbThisRead)
         {
             memcpy(pbDst, pvSrc, cbThisRead);
@@ -422,7 +423,7 @@ static DECLCALLBACK(int) drvHostSerialQueuesFlush(PPDMISERIALCONNECTOR pInterfac
     }
 
     LogFlowFunc(("-> %Rrc\n", rc));
-    return VINF_SUCCESS;
+    return rc;
 }
 
 

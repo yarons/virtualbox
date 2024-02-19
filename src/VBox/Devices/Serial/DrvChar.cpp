@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvChar.cpp 103425 2024-02-19 11:12:14Z alexander.eichner@oracle.com $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -331,6 +331,12 @@ static DECLCALLBACK(int) drvCharIoLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
                     ASMAtomicWriteZ(&pThis->cbRemaining, cbRead);
                     /* Notify the upper device/driver. */
                     rc = pThis->pDrvSerialPort->pfnDataAvailRdrNotify(pThis->pDrvSerialPort, cbRead);
+                    if (RT_FAILURE(rc))
+                    {
+                        LogRel(("Char#%d: Notifying upper driver about available data failed with %Rrc\n",
+                                pDrvIns->iInstance, rc));
+                        break;
+                    }
                 }
             }
         }
