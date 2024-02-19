@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: vboximg-mount.cpp 103436 2024-02-19 13:21:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -264,10 +264,10 @@ briefUsage()
       "\n"
       "The virtual disk is exposed as a device node within a FUSE-based filesystem\n"
       "that overlays the user-provided mount point. The FUSE filesystem consists of a\n"
-      "directory containing a number of files and possibly other directories:"
+      "directory containing a number of files and possibly other directories:\n"
       "    * vhdd:      Provides access to the raw disk image data as a flat image\n"
       "    * vol<id>:   Provides access to individual volumes on the accessed disk image\n"
-      "    * fs<id>:    Provides access to a supported filesystem without the need for a"
+      "    * fs<id>:    Provides access to a supported filesystem without the need for a\n"
       "                 host filesystem driver\n"
       "\n"
       "The directory will also contain a symbolic link which has the same basename(1)\n"
