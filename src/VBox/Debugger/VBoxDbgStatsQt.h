@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.h 103460 2024-02-19 21:17:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.h 103461 2024-02-19 23:24:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -243,11 +243,13 @@ public:
      *                          (See STAM for details.)
      * @param   pszExpand       Initial expansion pattern. NULL means nothing is
      *                          expanded.
+     * @param   pszAdvFilter    Advanced filter configuration string (min/max/regexp
+     *                          on sub-trees).
      * @param   uRefreshRate    The refresh rate. 0 means not to refresh and is the default.
      * @param   pParent         Parent widget.
      */
     VBoxDbgStats(VBoxDbgGui *a_pDbgGui, const char *pszFilter = NULL, const char *pszExpand = NULL,
-                 unsigned uRefreshRate = 0, QWidget *pParent = NULL);
+                 const char *pszAdvFilter = NULL, unsigned uRefreshRate = 0, QWidget *pParent = NULL);
 
     /** Destructor. */
     virtual ~VBoxDbgStats();

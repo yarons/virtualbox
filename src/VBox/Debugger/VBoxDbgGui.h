@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 101107 2023-09-13 14:01:58Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgGui.h 103461 2024-02-19 23:24:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -102,10 +102,12 @@ public:
      * Show the default statistics window, creating it if necessary.
      *
      * @returns VBox status code.
-     * @param   pszFilter   Filter pattern.
-     * @param   pszExpand   Expand pattern.
+     * @param   pszFilter       Filter pattern.
+     * @param   pszExpand       Expand pattern.
+     * @param   pszAdvFilter    Advanced filter configuration string (min/max/regexp
+     *                          on sub-trees).
      */
-    int showStatistics(const char *pszFilter, const char *pszExpand);
+    int showStatistics(const char *pszFilter, const char *pszExpand, const char *pszAdvFilter);
 
     /**
      * Show the console window (aka. command line), creating it if necessary.
