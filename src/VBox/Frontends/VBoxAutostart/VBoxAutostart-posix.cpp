@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-posix.cpp 101227 2023-09-21 19:14:56Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxAutostart-posix.cpp 103449 2024-02-19 14:21:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -225,7 +225,7 @@ DECLHIDDEN(HRESULT) showProgress(ComPtr<IProgress> progress)
     }
 
     /* complete the line. */
-    LONG iRc = E_FAIL;
+    LONG iRc = (LONG)E_FAIL;
     hrc = progress->COMGETTER(ResultCode)(&iRc);
     if (SUCCEEDED(hrc))
     {
@@ -238,7 +238,7 @@ DECLHIDDEN(HRESULT) showProgress(ComPtr<IProgress> progress)
             RTStrmPrintf(g_pStdErr, "\n");
             RTStrmPrintf(g_pStdErr, "Progress state: %Rhrc\n", iRc);
         }
-        hrc = iRc;
+        hrc = (HRESULT)iRc;
     }
     else
     {

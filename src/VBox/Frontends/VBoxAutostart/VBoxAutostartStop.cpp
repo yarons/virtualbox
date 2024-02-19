@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxAutostartStop.cpp 103449 2024-02-19 14:21:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -134,13 +134,15 @@ DECLHIDDEN(int) autostartStopMain(PCFGAST pCfgAst)
          */
         for (size_t i = 0; i < machines.size(); ++i)
         {
-            if (machines[i])
+            ComPtr<IMachine> pMachine = machines[i];
+
+            if (pMachine.isNotNull())
             {
                 Bstr strName;
-                CHECK_ERROR_BREAK(machines[i], COMGETTER(Name)(strName.asOutParam()));
+                CHECK_ERROR_BREAK(pMachine, COMGETTER(Name)(strName.asOutParam()));
 
                 BOOL fAccessible;
-                CHECK_ERROR_BREAK(machines[i], COMGETTER(Accessible)(&fAccessible));
+                CHECK_ERROR_BREAK(pMachine, COMGETTER(Accessible)(&fAccessible));
                 if (!fAccessible)
                 {
                     autostartSvcLogVerbose(1, "Machine '%ls' is not accessible, skipping\n", strName.raw());
@@ -150,10 +152,10 @@ DECLHIDDEN(int) autostartStopMain(PCFGAST pCfgAst)
                 AUTOSTOPVM autostopVM;
 
                 AutostopType_T enmAutostopType;
-                CHECK_ERROR_BREAK(machines[i], COMGETTER(AutostopType)(&enmAutostopType));
+                CHECK_ERROR_BREAK(pMachine, COMGETTER(AutostopType)(&enmAutostopType));
                 if (enmAutostopType != AutostopType_Disabled)
                 {
-                    CHECK_ERROR_BREAK(machines[i], COMGETTER(Id)(autostopVM.strId.asOutParam()));
+                    CHECK_ERROR_BREAK(pMachine, COMGETTER(Id)(autostopVM.strId.asOutParam()));
                     autostopVM.enmAutostopType = enmAutostopType;
 
                     listVM.push_back(autostopVM);
