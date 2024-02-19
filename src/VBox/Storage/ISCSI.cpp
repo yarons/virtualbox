@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: ISCSI.cpp 103435 2024-02-19 12:45:14Z alexander.eichner@oracle.com $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5400,24 +5400,34 @@ static DECLCALLBACK(int) iscsiComposeLocation(PVDINTERFACE pConfig, char **pszLo
     char *pszTarget  = NULL;
     char *pszLUN     = NULL;
     char *pszAddress = NULL;
-    int rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "TargetName", &pszTarget);
-    if (RT_SUCCESS(rc))
+
+    int rc;
+    PVDINTERFACECONFIG pIfCfg = VDIfConfigGet(pConfig);
+    if (pIfCfg)
     {
-        rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "LUN", &pszLUN);
+        rc = VDCFGQueryStringAlloc(pIfCfg, "TargetName", &pszTarget);
         if (RT_SUCCESS(rc))
         {
-            rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "TargetAddress", &pszAddress);
+            rc = VDCFGQueryStringAlloc(pIfCfg, "LUN", &pszLUN);
             if (RT_SUCCESS(rc))
             {
-                if (RTStrAPrintf(pszLocation, "iscsi://%s/%s/%s",
-                                 pszAddress, pszTarget, pszLUN) < 0)
-                    rc = VERR_NO_MEMORY;
+                rc = VDCFGQueryStringAlloc(pIfCfg, "TargetAddress", &pszAddress);
+                if (RT_SUCCESS(rc))
+                {
+                    if (RTStrAPrintf(pszLocation, "iscsi://%s/%s/%s",
+                                     pszAddress, pszTarget, pszLUN) < 0)
+                        rc = VERR_NO_MEMORY;
+
+                    RTMemFree(pszAddress);
+                }
+                RTMemFree(pszLUN);
             }
+            RTMemFree(pszTarget);
         }
     }
-    RTMemFree(pszTarget);
-    RTMemFree(pszLUN);
-    RTMemFree(pszAddress);
+    else
+        rc = VERR_INVALID_PARAMETER;
+
     return rc;
 }
 
@@ -5427,25 +5437,34 @@ static DECLCALLBACK(int) iscsiComposeName(PVDINTERFACE pConfig, char **pszName)
     char *pszTarget  = NULL;
     char *pszLUN     = NULL;
     char *pszAddress = NULL;
-    int rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "TargetName", &pszTarget);
-    if (RT_SUCCESS(rc))
+
+    int rc;
+    PVDINTERFACECONFIG pIfCfg = VDIfConfigGet(pConfig);
+    if (pIfCfg)
     {
-        rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "LUN", &pszLUN);
+        rc = VDCFGQueryStringAlloc(pIfCfg, "TargetName", &pszTarget);
         if (RT_SUCCESS(rc))
         {
-            rc = VDCFGQueryStringAlloc(VDIfConfigGet(pConfig), "TargetAddress", &pszAddress);
+            rc = VDCFGQueryStringAlloc(pIfCfg, "LUN", &pszLUN);
             if (RT_SUCCESS(rc))
             {
-                /** @todo think about a nicer looking location scheme for iSCSI */
-                if (RTStrAPrintf(pszName, "%s/%s/%s",
-                                 pszAddress, pszTarget, pszLUN) < 0)
-                    rc = VERR_NO_MEMORY;
+                rc = VDCFGQueryStringAlloc(pIfCfg, "TargetAddress", &pszAddress);
+                if (RT_SUCCESS(rc))
+                {
+                    /** @todo think about a nicer looking location scheme for iSCSI */
+                    if (RTStrAPrintf(pszName, "%s/%s/%s",
+                                     pszAddress, pszTarget, pszLUN) < 0)
+                        rc = VERR_NO_MEMORY;
+
+                    RTMemFree(pszAddress);
+                }
+                RTMemFree(pszLUN);
             }
+            RTMemFree(pszTarget);
         }
     }
-    RTMemFree(pszTarget);
-    RTMemFree(pszLUN);
-    RTMemFree(pszAddress);
+    else
+        rc = VERR_INVALID_PARAMETER;
 
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: VISO.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VISO.cpp 103435 2024-02-19 12:45:14Z alexander.eichner@oracle.com $ */
 /** @file
  * VISO - Virtual ISO disk image, Core Code.
  */
@@ -673,8 +673,9 @@ static DECLCALLBACK(int) visoClose(void *pBackendData, bool fDelete)
     {
         if (fDelete)
         {
-                PVDINTERFACECONFIG pImgCfg = VDIfConfigGet(&pThis->pIfIo->Core);
-
+            PVDINTERFACECONFIG pImgCfg = VDIfConfigGet(&pThis->pIfIo->Core);
+            if (pImgCfg)
+            {
                 bool fUnattendedInstall = false;
                 int vrc = VDCFGQueryBool(pImgCfg, "UnattendedInstall", &fUnattendedInstall);
 
@@ -685,6 +686,8 @@ static DECLCALLBACK(int) visoClose(void *pBackendData, bool fDelete)
                 */
                 if (RT_SUCCESS(vrc) && fUnattendedInstall)
                     deleteReferences(pThis);
+            }
+
             vdIfIoIntFileDelete(pThis->pIfIo, pThis->pszFilename);
         }
 
