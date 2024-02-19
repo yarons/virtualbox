@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 103374 2024-02-14 22:10:00Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 103417 2024-02-19 08:44:55Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1952,6 +1952,7 @@ DECLINLINE(int) pgmGstMapCr3(PVMCPUCC pVCpu, RTGCPHYS GCPhysCr3, PRTHCPTR pHCPtr
 }
 
 
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX_EPT
 /**
  * Unmaps the guest CR3.
  *
@@ -1965,6 +1966,7 @@ DECLINLINE(int) pgmGstUnmapCr3(PVMCPUCC pVCpu)
     AssertReturn(g_aPgmBothModeData[idxBth].pfnUnmapCR3, VERR_PGM_MODE_IPE);
     return g_aPgmBothModeData[idxBth].pfnUnmapCR3(pVCpu);
 }
+#endif
 
 
 /**

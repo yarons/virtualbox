@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 103417 2024-02-19 08:44:55Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -432,6 +432,7 @@ typedef enum D3D11_TEXTURECUBE_FACE {
 #endif
 
 
+#if 0 /* unused */
 DECLINLINE(D3D11_TEXTURECUBE_FACE) vmsvga3dCubemapFaceFromIndex(uint32_t iFace)
 {
     D3D11_TEXTURECUBE_FACE Face;
@@ -447,6 +448,7 @@ DECLINLINE(D3D11_TEXTURECUBE_FACE) vmsvga3dCubemapFaceFromIndex(uint32_t iFace)
     }
     return Face;
 }
+#endif
 
 /* This is to workaround issues with X8 formats, because they can't be used in some operations. */
 #define DX_REPLACE_X8_WITH_A8
