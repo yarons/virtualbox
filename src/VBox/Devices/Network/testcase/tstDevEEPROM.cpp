@@ -1,4 +1,4 @@
-/* $Id: tstDevEEPROM.cpp 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDevEEPROM.cpp 103410 2024-02-19 07:11:27Z alexander.eichner@oracle.com $ */
 /** @file
  * EEPROM 93C46 unit tests.
  */
@@ -128,6 +128,7 @@ public:
     void tearDown()
     {
         delete eeprom;
+        eeprom = NULL;
     }
 
     void testSize()

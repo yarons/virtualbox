@@ -1,4 +1,4 @@
-/* $Id: tstDevPhy.cpp 98172 2023-01-21 13:01:48Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDevPhy.cpp 103410 2024-02-19 07:11:27Z alexander.eichner@oracle.com $ */
 /** @file
  * PHY MDIO unit tests.
  */
@@ -96,6 +96,7 @@ public:
     void tearDown()
     {
         delete phy;
+        phy = NULL;
     }
 
     void testSize()
