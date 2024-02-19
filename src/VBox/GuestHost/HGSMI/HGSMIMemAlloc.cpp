@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HGSMIMemAlloc.cpp 103457 2024-02-19 15:51:24Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -584,7 +584,7 @@ void HGSMIMAUninit(HGSMIMADATA *pMA)
     RT_ZERO(*pMA);
 }
 
-HGSMIOFFSET HGSMIMAPointerToOffset(const HGSMIMADATA *pMA, const void RT_UNTRUSTED_VOLATILE_GUEST *pv)
+static HGSMIOFFSET HGSMIMAPointerToOffset(const HGSMIMADATA *pMA, const void RT_UNTRUSTED_VOLATILE_GUEST *pv)
 {
     uintptr_t off = (uintptr_t)pv - (uintptr_t)pMA->area.pu8Base;
     if (off < pMA->area.cbArea)

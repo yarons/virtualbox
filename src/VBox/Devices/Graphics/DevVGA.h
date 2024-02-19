@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 100690 2023-07-25 08:20:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA.h 103457 2024-02-19 15:51:24Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -725,11 +725,6 @@ int     VBVAInfoScreen(PVGASTATE pThis, const VBVAINFOSCREEN RT_UNTRUSTED_VOLATI
 int     VBVAGetInfoViewAndScreen(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t u32ViewIndex,
                                  VBVAINFOVIEW *pView, VBVAINFOSCREEN *pScreen);
 #endif
-
-/* @return host-guest flags that were set on reset
- * this allows the caller to make further cleaning when needed,
- * e.g. reset the IRQ */
-uint32_t HGSMIReset(PHGSMIINSTANCE pIns);
 
 # ifdef VBOX_WITH_VIDEOHWACCEL
 DECLCALLBACK(int) vbvaR3VHWACommandCompleteAsync(PPDMIDISPLAYVBVACALLBACKS pInterface,
