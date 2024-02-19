@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 102827 2024-01-10 20:24:37Z klaus.espenlaub@oracle.com $ $Revision: 102827 $ $Date: 2024-01-10 21:24:37 +0100 (Wed, 10 Jan 2024) $ $Author: klaus.espenlaub@oracle.com $ */
+/* $Id: DevVirtioNet.cpp 103416 2024-02-19 08:06:54Z alexander.eichner@oracle.com $ $Revision: 103416 $ $Date: 2024-02-19 09:06:54 +0100 (Mon, 19 Feb 2024) $ $Author: alexander.eichner@oracle.com $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -138,14 +138,14 @@ static const VIRTIO_FEATURES_LIST s_aDevSpecificFeatures[] =
 
 #ifdef VIRTIONET_WITH_GSO
 # define VIRTIONET_HOST_FEATURES_GSO    \
-      VIRTIONET_F_CSUM                  \
+    ( VIRTIONET_F_CSUM                  \
     | VIRTIONET_F_HOST_TSO4             \
     | VIRTIONET_F_HOST_TSO6             \
     | VIRTIONET_F_HOST_UFO              \
     | VIRTIONET_F_GUEST_TSO4            \
     | VIRTIONET_F_GUEST_TSO6            \
     | VIRTIONET_F_GUEST_UFO             \
-    | VIRTIONET_F_GUEST_CSUM                                   /* @bugref(4796) Guest must handle partial chksums   */
+    | VIRTIONET_F_GUEST_CSUM)                                  /* @bugref(4796) Guest must handle partial chksums   */
 #else
 # define VIRTIONET_HOST_FEATURES_GSO
 #endif

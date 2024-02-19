@@ -1,4 +1,4 @@
-/* $Id: alt-md5.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: alt-md5.cpp 103416 2024-02-19 08:06:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - MD5 message digest functions, alternative implementation.
  */
@@ -104,7 +104,7 @@ DECL_FORCE_INLINE(uint32_t) F4(uint32_t x, uint32_t y, uint32_t z)
 
 /* This is the central step in the MD5 algorithm. */
 #define MD5STEP(f, w, x, y, z, data, s) \
-    ( w += f(x, y, z) + data,  w = w<<s | w>>(32-s),  w += x )
+    ( w += f(x, y, z) + (data),  w = w<<s | w>>(32-s),  w += x )
 
 
 /**

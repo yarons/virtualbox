@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 102713 2023-12-27 12:27:48Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 103416 2024-02-19 08:06:54Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -912,7 +912,7 @@ static const char *dxbcVmwareOpcodeTypeToString(uint32_t value)
 
 /* This is the central step in the MD5 algorithm. */
 #define MD5STEP(f, w, x, y, z, data, s) \
-    ( w += f(x, y, z) + data,  w = w<<s | w>>(32-s),  w += x )
+    ( w += f(x, y, z) + (data),  w = w<<s | w>>(32-s),  w += x )
 
 
 /**
