@@ -1,4 +1,4 @@
-/* $Id: tstRTR0CommonDriver.h 103285 2024-02-08 15:27:12Z andreas.loeffler@oracle.com $ */
+/* $Id: tstRTR0CommonDriver.h 103440 2024-02-19 13:45:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Common header for the testcase drivers.
  */
@@ -127,16 +127,9 @@ static RTEXITCODE RTR3TestR0CommonDriverInit(const char *pszTestServiceName)
         return RTTestSummaryAndDestroy(g_hTest);
     }
 
-    char szSrvReqHandler[sizeof(g_szSrvName) + sizeof("SrvReqHandler")];
-    rc = RTStrCopy(szSrvReqHandler, sizeof(szSrvReqHandler), pszTestServiceName);
-    if (RT_SUCCESS(rc))
-        rc = RTStrCat(szSrvReqHandler, sizeof(szSrvReqHandler), "SrvReqHandler");
-    if (RT_FAILURE(rc))
-    {
-        RTTestFailed(g_hTest, "RTStrCat failed with rc=%Rrc\n", rc);
-        return RTTestSummaryAndDestroy(g_hTest);
-    }
-
+    static char const s_szSrvReqHandlerSuff[] = "SrvReqHandler";
+    char szSrvReqHandler[sizeof(g_szSrvName) + sizeof(s_szSrvReqHandlerSuff)];
+    memcpy(mempcpy(szSrvReqHandler, g_szSrvName, g_cchSrvName), s_szSrvReqHandlerSuff, sizeof(s_szSrvReqHandlerSuff));
     for (size_t off = 0; RT_C_IS_LOWER(szSrvReqHandler[off]); off++)
         szSrvReqHandler[off] = RT_C_TO_UPPER(szSrvReqHandler[off]);
 
