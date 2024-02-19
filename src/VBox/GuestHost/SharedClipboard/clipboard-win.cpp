@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 103451 2024-02-19 15:00:58Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 103452 2024-02-19 15:03:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1217,7 +1217,7 @@ int SharedClipboardWinTransferHandOffToDataObject(PSHCLWINCTX pWinCtx, PSHCLTRAN
         else
         {
             AssertMsgFailed(("No data object in flight (yet)!\n"));
-            rc = VERR_WRONG_ORDER);
+            rc = VERR_WRONG_ORDER;
         }
 
         int rc2 = RTCritSectLeave(&pWinCtx->CritSect);
