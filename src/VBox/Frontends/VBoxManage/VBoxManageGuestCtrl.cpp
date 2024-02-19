@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 102944 2024-01-18 08:52:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxManageGuestCtrl.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2282,7 +2282,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMv(PGCTLCMDCTX pCtx, int argc, char **
         else
             pszDstCur = RTStrDup(pszDst);
 
-        AssertPtrBreakStmt(pszDstCur, VERR_NO_MEMORY);
+        AssertPtrBreakStmt(pszDstCur, hrc = E_OUTOFMEMORY);
 
         if (pCtx->cVerbose)
             RTPrintf(GuestCtrl::tr("Renaming %s \"%s\" to \"%s\" ...\n"),

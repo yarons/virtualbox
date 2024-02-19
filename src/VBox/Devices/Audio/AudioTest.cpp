@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: AudioTest.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * Audio testing routines.
  *
@@ -2382,7 +2382,7 @@ static uint32_t audioTestFilesFindDiffsBinary(PAUDIOTESTVERIFYJOB pVerJob,
             fInDiff = false;
         }
 
-        AssertBreakStmt(cbToCompare >= cbReadA, VERR_INTERNAL_ERROR);
+        AssertBreakStmt(cbToCompare >= cbReadA, rc = VERR_INTERNAL_ERROR);
         cbToCompare -= cbReadA;
         offCur      += cbReadA;
     }

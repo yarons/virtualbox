@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDTargetImpl.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -1007,7 +1007,7 @@ int GuestDnDTarget::i_sendMetaDataBody(GuestDnDSendCtx *pCtx)
             break;
 
         pvChunk += cbChunk;
-        AssertBreakStmt(cbData >= cbChunk, VERR_BUFFER_UNDERFLOW);
+        AssertBreakStmt(cbData >= cbChunk, vrc = VERR_BUFFER_UNDERFLOW);
         cbData  -= cbChunk;
     }
 

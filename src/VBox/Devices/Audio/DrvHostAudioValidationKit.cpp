@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvHostAudioValidationKit.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -1405,7 +1405,7 @@ static DECLCALLBACK(int) drvHostValKitAudioHA_StreamCapture(PPDMIHOSTAUDIO pInte
                 bool const fStarted = AudioTestBeaconGetRemaining(pBeacon) == AudioTestBeaconGetSize(pBeacon);
 
                 uint32_t const cbBeaconRemaining = AudioTestBeaconGetRemaining(pBeacon);
-                AssertBreakStmt(cbBeaconRemaining, VERR_WRONG_ORDER);
+                AssertBreakStmt(cbBeaconRemaining, rc = VERR_WRONG_ORDER);
 
                 /* Limit to exactly one beacon (pre or post). */
                 uint32_t const cbToWrite = RT_MIN(cbBuf, cbBeaconRemaining);

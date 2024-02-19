@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 98273 2023-01-24 11:17:31Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestDnDSourceImpl.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -930,7 +930,7 @@ int GuestDnDSource::i_onReceiveFileHdr(GuestDnDRecvCtx *pCtx, const char *pszPat
         AssertRCBreak(vrc);
 
         const char *pcszSource = DnDTransferObjectGetSourcePath(pObj);
-        AssertPtrBreakStmt(pcszSource, VERR_INVALID_POINTER);
+        AssertPtrBreakStmt(pcszSource, vrc = VERR_INVALID_POINTER);
 
         /** @todo Add sparse file support based on fFlags? (Use Open(..., fFlags | SPARSE). */
         vrc = DnDTransferObjectOpen(pObj, RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE,
@@ -1005,7 +1005,7 @@ int GuestDnDSource::i_onReceiveFileData(GuestDnDRecvCtx *pCtx, const void *pvDat
         const PDNDTRANSFEROBJECT pObj = &pCtx->Transfer.ObjCur;
 
         const char *pcszSource = DnDTransferObjectGetSourcePath(pObj);
-        AssertPtrBreakStmt(pcszSource, VERR_INVALID_POINTER);
+        AssertPtrBreakStmt(pcszSource, vrc = VERR_INVALID_POINTER);
 
         AssertMsgReturn(DnDTransferObjectIsOpen(pObj),
                         ("Object '%s' not open (anymore)\n", pcszSource), VERR_WRONG_ORDER);

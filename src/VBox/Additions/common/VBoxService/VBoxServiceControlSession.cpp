@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 103413 2024-02-19 07:14:15Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1439,9 +1439,9 @@ static int vgsvcGstCtrlSessionHandleDirList(const PVBOXSERVICECTRLSESSION pSessi
 
                         if (cbBufSize - cbBufUsed < cbTotal) /* Grow buffer, if needed. */
                         {
-                            AssertBreakStmt(cbTotal <= cbGrowSize, VERR_BUFFER_OVERFLOW);
+                            AssertBreakStmt(cbTotal <= cbGrowSize, rc = VERR_BUFFER_OVERFLOW);
                             pvBuf      = RTMemRealloc(pvBuf, cbBufSize + cbGrowSize);
-                            AssertPtrBreakStmt(pvBuf, VERR_NO_MEMORY);
+                            AssertPtrBreakStmt(pvBuf, rc = VERR_NO_MEMORY);
                             cbBufSize += cbGrowSize;
                         }
 

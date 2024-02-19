@@ -1,4 +1,4 @@
-/* $Id: string.cpp 98297 2023-01-25 01:59:25Z knut.osmundsen@oracle.com $ */
+/* $Id: string.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -605,7 +605,7 @@ HRESULT Bstr::appendWorkerUtf8NoThrow(const char *pszSrc, size_t cchSrc) RT_NOEX
 {
     size_t cwcSrc;
     int vrc = RTStrCalcUtf16LenEx(pszSrc, cchSrc, &cwcSrc);
-    AssertRCStmt(vrc, E_INVALIDARG);
+    AssertRCReturn(vrc, E_INVALIDARG);
 
     size_t cwcOld = length();
     size_t cwcTotal = cwcOld + cwcSrc;
@@ -615,7 +615,7 @@ HRESULT Bstr::appendWorkerUtf8NoThrow(const char *pszSrc, size_t cchSrc) RT_NOEX
     {
         PRTUTF16 pwszDst = &m_bstr[cwcOld];
         vrc = RTStrToUtf16Ex(pszSrc, cchSrc, &pwszDst, cwcSrc + 1, NULL);
-        AssertRCStmt(vrc, E_INVALIDARG);
+        AssertRCReturn(vrc, E_INVALIDARG);
     }
     m_bstr[cwcTotal] = '\0';
     return S_OK;

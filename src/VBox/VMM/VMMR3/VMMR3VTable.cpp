@@ -1,4 +1,4 @@
-/* $Id: VMMR3VTable.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMR3VTable.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VM - The Virtual Machine Monitor, Ring-3 API VTable Definitions.
  */
@@ -70,7 +70,7 @@ static const VMMR3VTABLE g_VMMR3VTable =
 static DECLCALLBACK(int) vmmR3ReservedVTableEntry(void)
 {
     void * volatile pvCaller = ASMReturnAddress();
-    AssertLogRel(("Reserved VMM function table entry called from %p!\n", pvCaller ));
+    AssertLogRelMsgFailed(("Reserved VMM function table entry called from %p!\n", pvCaller ));
     return VERR_INTERNAL_ERROR;
 }
 

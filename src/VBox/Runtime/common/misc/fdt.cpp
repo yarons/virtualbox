@@ -1,4 +1,4 @@
-/* $Id: fdt.cpp 103344 2024-02-14 01:56:17Z knut.osmundsen@oracle.com $ */
+/* $Id: fdt.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Flattened Devicetree parser and generator API.
  */
@@ -571,7 +571,7 @@ static int rtFdtStructsQueryString(PRTFDTDTBDUMP pDump, char *pszString, size_t 
         if (!cchStringMax)
             return RTErrInfoSetF(pErrInfo, VERR_BUFFER_OVERFLOW, "Structs string too long to fit into target buffer");
 
-        *pszStrSrc++;
+        pszStrSrc++;
         if (!cbLeft)
             return RTErrInfoSetF(pErrInfo, VERR_FDT_DTB_STRUCTS_BLOCK_STRING_NOT_TERMINATED, "Structs block contains an unterminated string");
     }

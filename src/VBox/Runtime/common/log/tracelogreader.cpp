@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: tracelogreader.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -1180,7 +1180,7 @@ static size_t rtTraceLogRdrEvtItemGetSz(PRTTRACELOGRDRINT pThis, PCRTTRACELOGEVT
             if (pEvtItemDesc->cbRawData == 0)
             {
                 cbRet = pacbRawData[*pidxRawData];
-                *pidxRawData++;
+                pidxRawData++;
             }
             else
                 cbRet = pEvtItemDesc->cbRawData;

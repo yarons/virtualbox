@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 103165 2024-02-01 16:17:38Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -1773,7 +1773,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlProcGetStart(PVBGLR3GUESTCTRLCMDCTX pCtx, PVBGLR3
 #define GROW_STR(a_Str, a_cbMax) \
         pStartupInfo->psz##a_Str = (char *)RTMemRealloc(pStartupInfo->psz##a_Str, \
            RT_MIN(pStartupInfo->cb##a_Str * cGrowthFactor, a_cbMax)); \
-        AssertPtrBreakStmt(pStartupInfo->psz##a_Str, VERR_NO_MEMORY); \
+        AssertPtrBreakStmt(pStartupInfo->psz##a_Str, rc = VERR_NO_MEMORY); \
         pStartupInfo->cb##a_Str  = RT_MIN(pStartupInfo->cb##a_Str * cGrowthFactor, a_cbMax);
 
                 /* We can't tell which parameter doesn't fit, so we have to resize all. */

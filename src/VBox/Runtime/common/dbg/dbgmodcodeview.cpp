@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 103250 2024-02-07 13:16:16Z andreas.loeffler@oracle.com $ */
+/* $Id: dbgmodcodeview.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -744,7 +744,7 @@ static int rtDbgModCvSsProcessV4PlusSymTab(PRTDBGMODCV pThis, void const *pvSymT
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec > 2 + 2+2+2+1);
                     uint16_t off     = *uCursor.pu16++;
                     uint16_t iSeg    = *uCursor.pu16++;
-                    /*uint16_t iType   =*/ *uCursor.pu16++;
+                    /*uint16_t iType   = * */ uCursor.pu16++;
                     uint8_t  cchName = *uCursor.pu8++;
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cchName > 0);
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec >= 2 + 2+2+2+1 + cchName);
@@ -760,7 +760,7 @@ static int rtDbgModCvSsProcessV4PlusSymTab(PRTDBGMODCV pThis, void const *pvSymT
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec > 2 + 4+2+2+1);
                     uint32_t off     = *uCursor.pu32++;
                     uint16_t iSeg    = *uCursor.pu16++;
-                    /*uint16_t iType   =*/ *uCursor.pu16++;
+                    /*uint16_t iType   = * */ uCursor.pu16++;
                     uint8_t  cchName = *uCursor.pu8++;
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cchName > 0);
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec >= 2 + 4+2+2+1 + cchName);
@@ -773,16 +773,16 @@ static int rtDbgModCvSsProcessV4PlusSymTab(PRTDBGMODCV pThis, void const *pvSymT
                 case kCvSymType_GProc16:
                 {
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec > 2 + 4+4+4+2+2+2+2+2+2+1+1);
-                    /*uint32_t uParent       =*/ *uCursor.pu32++;
-                    /*uint32_t uEnd          =*/ *uCursor.pu32++;
-                    /*uint32_t uNext         =*/ *uCursor.pu32++;
+                    /*uint32_t uParent       = * */ uCursor.pu32++;
+                    /*uint32_t uEnd          = * */ uCursor.pu32++;
+                    /*uint32_t uNext         = * */ uCursor.pu32++;
                     uint16_t cbProc        = *uCursor.pu16++;
-                    /*uint16_t offDebugStart =*/ *uCursor.pu16++;
-                    /*uint16_t offDebugEnd   =*/ *uCursor.pu16++;
+                    /*uint16_t offDebugStart = * */ uCursor.pu16++;
+                    /*uint16_t offDebugEnd   = * */ uCursor.pu16++;
                     uint16_t off           = *uCursor.pu16++;
                     uint16_t iSeg          = *uCursor.pu16++;
-                    /*uint16_t iProcType     =*/ *uCursor.pu16++;
-                    /*uint8_t fbType         =*/ *uCursor.pu8++;
+                    /*uint16_t iProcType     = * */ uCursor.pu16++;
+                    /*uint8_t fbType         = * */ uCursor.pu8++;
                     uint8_t  cchName       = *uCursor.pu8++;
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cchName > 0);
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec >= 2 + 4+4+4+2+2+2+2+2+2+1+1 + cchName);
@@ -795,16 +795,16 @@ static int rtDbgModCvSsProcessV4PlusSymTab(PRTDBGMODCV pThis, void const *pvSymT
                 case kCvSymType_GProc32:
                 {
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec > 2 + 4+4+4+4+4+4+4+2+2+1+1);
-                    /*uint32_t uParent       =*/ *uCursor.pu32++;
-                    /*uint32_t uEnd          =*/ *uCursor.pu32++;
-                    /*uint32_t uNext         =*/ *uCursor.pu32++;
-                    /*uint32_t cbProc        =*/ *uCursor.pu32++;
-                    /*uint32_t offDebugStart =*/ *uCursor.pu32++;
-                    /*uint32_t offDebugEnd   =*/ *uCursor.pu32++;
+                    /*uint32_t uParent       = * */ uCursor.pu32++;
+                    /*uint32_t uEnd          = * */ uCursor.pu32++;
+                    /*uint32_t uNext         = * */ uCursor.pu32++;
+                    /*uint32_t cbProc        = * */ uCursor.pu32++;
+                    /*uint32_t offDebugStart = * */ uCursor.pu32++;
+                    /*uint32_t offDebugEnd   = * */ uCursor.pu32++;
                     uint32_t off           = *uCursor.pu32++;
                     uint16_t iSeg          = *uCursor.pu16++;
-                    /*uint16_t iProcType     =*/ *uCursor.pu16++;
-                    /*uint8_t fbType         =*/ *uCursor.pu8++;
+                    /*uint16_t iProcType     = * */ uCursor.pu16++;
+                    /*uint8_t fbType         = * */ uCursor.pu8++;
                     uint8_t  cchName       = *uCursor.pu8++;
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cchName > 0);
                     RTDBGMODCV_CHECK_NOMSG_RET_BF(cbRec >= 2 + 4+4+4+4+4+4+4+2+2+1+1 + cchName);

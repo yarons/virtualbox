@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: EM.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -879,7 +879,7 @@ static VBOXSTRICTRC emR3Debug(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC rc)
             case VINF_EM_DBG_STEP:
                 if (   pVCpu->em.s.enmState == EMSTATE_DEBUG_GUEST_RAW
                     || pVCpu->em.s.enmState == EMSTATE_DEBUG_HYPER)
-                    AssertLogRelMsgFailedStmt(("Bad EM state."), VERR_EM_INTERNAL_ERROR);
+                    AssertLogRelMsgFailedStmt(("Bad EM state."), rc = VERR_EM_INTERNAL_ERROR);
 #if !defined(VBOX_VMM_TARGET_ARMV8)
                 else if (pVCpu->em.s.enmState == EMSTATE_DEBUG_GUEST_HM)
                     rc = EMR3HmSingleInstruction(pVM, pVCpu, 0 /*fFlags*/);
