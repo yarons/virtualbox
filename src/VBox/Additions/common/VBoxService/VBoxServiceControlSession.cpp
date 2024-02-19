@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 103149 2024-01-31 15:41:31Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxServiceControlSession.cpp 103413 2024-02-19 07:14:15Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1633,7 +1633,7 @@ static int vgsvcGstCtrlSessionHandleShutdown(PVBOXSERVICECTRLSESSION pSession, P
         }
         else
         {
-            int fSystemShutdown = RTSYSTEM_SHUTDOWN_PLANNED;
+            uint32_t fSystemShutdown = RTSYSTEM_SHUTDOWN_PLANNED;
 
             /* Translate SHUTDOWN_FLAG_ into RTSYSTEM_SHUTDOWN_ flags. */
             if (fAction & GUEST_SHUTDOWN_FLAG_REBOOT)
