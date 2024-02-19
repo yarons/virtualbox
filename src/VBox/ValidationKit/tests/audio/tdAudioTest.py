@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 103391 2024-02-15 16:08:29Z andreas.loeffler@oracle.com $
+# $Id: tdAudioTest.py 103455 2024-02-19 15:46:14Z andreas.loeffler@oracle.com $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103391 $"
+__version__ = "$Revision: 103455 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -330,10 +330,14 @@ class tdAudioTest(vbox.TestDriver):
             self.pidFileAdd(iPid, sWhat);
 
             while True if sys.version_info[0] < 3 else oProcess.stdout.readable(): # pylint: disable=no-member
-                sStdOut = oProcess.stdout.readline();
-                if sStdOut:
-                    sStdOut = sStdOut.strip();
-                    reporter.log('%s [stdout]: %s' % (sWhat, sStdOut.rstrip('\n'),));
+                try:
+                    sStdOut = oProcess.stdout.readline();
+                    if  sStdOut \
+                    and isinstance(sStdOut, str):
+                        sStdOut = sStdOut.strip();
+                        reporter.log('%s [stdout]: %s' % (sWhat, sStdOut.rstrip('\n'),));
+                except:
+                    reporter.log('%s [stdout]: <Unable to read output>' % (sWhat,));
                 self.processEvents(0);
                 iRc = oProcess.poll();
                 if iRc is not None:
