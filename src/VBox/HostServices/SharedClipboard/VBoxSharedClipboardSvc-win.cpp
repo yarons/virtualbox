@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 103450 2024-02-19 14:55:20Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 103453 2024-02-19 15:22:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -311,7 +311,7 @@ static DECLCALLBACK(int) shClSvcWinTransferOnInitializeCallback(PSHCLTRANSFERCAL
     {
         case SHCLTRANSFERDIR_FROM_REMOTE: /* G->H */
         {
-            rc = SharedClipboardWinTransferSet(&pCtx->Win, pTransfer);
+            rc = SharedClipboardWinTransferHandOffToDataObject(&pCtx->Win, pTransfer);
             break;
         }
 
@@ -1104,4 +1104,3 @@ static DECLCALLBACK(int) shClSvcWinTransferIfaceHGRootListRead(PSHCLTXPROVIDERCT
     return rc;
 }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
-
