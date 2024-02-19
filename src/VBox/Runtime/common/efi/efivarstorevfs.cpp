@@ -1,4 +1,4 @@
-/* $Id: efivarstorevfs.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: efivarstorevfs.cpp 103412 2024-02-19 07:13:29Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Expose a EFI variable store as a Virtual Filesystem.
  */
@@ -1847,7 +1847,7 @@ static DECLCALLBACK(int) rtEfiVarStoreDir_ReadDir(void *pvThis, PRTDIRENTRYEX pD
             memcpy(&pDirEntry->szName[0], pszName, cbName);
             pDirEntry->szName[cbName] = '\0';
             pDirEntry->cbName         = (uint16_t)cbName;
-            rc = rtEfiVarStore_QueryInfo(cbObject, fIsDir, &Time, &pDirEntry->Info, enmAddAttr);
+            rc = rtEfiVarStore_QueryInfo(cbObject, fIsDir, pTimeSpec, &pDirEntry->Info, enmAddAttr);
             if (RT_SUCCESS(rc))
             {
                 pThis->fNoMoreFiles = fNoMoreFiles;
