@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 103461 2024-02-19 23:24:33Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgGui.cpp 103462 2024-02-19 23:26:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -181,14 +181,13 @@ VBoxDbgGui::setMenu(QMenu *pMenu)
 
 
 int
-VBoxDbgGui::showStatistics(const char *pszFilter, const char *pszExpand, const char *pszAdvFilter)
+VBoxDbgGui::showStatistics(const char *pszFilter, const char *pszExpand)
 {
     if (!m_pDbgStats)
     {
         m_pDbgStats = new VBoxDbgStats(this,
                                        pszFilter && *pszFilter ? pszFilter :  "*",
                                        pszExpand && *pszExpand ? pszExpand : NULL,
-                                       pszAdvFilter && *pszAdvFilter ? pszAdvFilter : NULL,
                                        2, m_pParent);
         connect(m_pDbgStats, SIGNAL(destroyed(QObject *)), this, SLOT(notifyChildDestroyed(QObject *)));
         repositionWindowInitial(m_pDbgStats, "DbgStats", VBoxDbgBaseWindow::kAttractionVmRight);
