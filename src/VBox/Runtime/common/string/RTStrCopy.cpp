@@ -1,4 +1,4 @@
-/* $Id: RTStrCopy.cpp 103252 2024-02-07 14:40:12Z andreas.loeffler@oracle.com $ */
+/* $Id: RTStrCopy.cpp 103444 2024-02-19 13:58:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTStrCopy.
  */
@@ -44,7 +44,7 @@
 #include <iprt/errcore.h>
 
 
-DECLINLINE(int) rtStrCopy(char *pszDst, size_t cbDst, const char *pszSrc)
+RTDECL(int) RTStrCopy(char *pszDst, size_t cbDst, const char *pszSrc)
 {
     size_t cchSrc = strlen(pszSrc);
     if (RT_LIKELY(cchSrc < cbDst))
@@ -60,16 +60,5 @@ DECLINLINE(int) rtStrCopy(char *pszDst, size_t cbDst, const char *pszSrc)
     }
     return VERR_BUFFER_OVERFLOW;
 }
-
-RTDECL(int) RTStrCopy(char *pszDst, size_t cbDst, const char *pszSrc)
-{
-    return rtStrCopy(pszDst, cbDst, pszSrc);
-}
 RT_EXPORT_SYMBOL(RTStrCopy);
-
-RTDECL(char *) RTStrCopy2(char *pszDst, size_t cbDst, const char *pszSrc)
-{
-    return RT_SUCCESS(rtStrCopy(pszDst, cbDst, pszSrc)) ? pszDst : NULL;
-}
-RT_EXPORT_SYMBOL(RTStrCopy2);
 

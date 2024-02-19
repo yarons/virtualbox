@@ -1,4 +1,4 @@
-/* $Id: RTStrCat.cpp 103284 2024-02-08 15:24:49Z andreas.loeffler@oracle.com $ */
+/* $Id: RTStrCat.cpp 103444 2024-02-19 13:58:17Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTStrCat.
  */
@@ -44,7 +44,7 @@
 #include <iprt/errcore.h>
 
 
-DECLINLINE(int) rtStrCat(char *pszDst, size_t cbDst, const char *pszSrc)
+RTDECL(int) RTStrCat(char *pszDst, size_t cbDst, const char *pszSrc)
 {
     char *pszDst2 = RTStrEnd(pszDst, cbDst);
     AssertReturn(pszDst2, VERR_INVALID_PARAMETER);
@@ -64,16 +64,5 @@ DECLINLINE(int) rtStrCat(char *pszDst, size_t cbDst, const char *pszSrc)
     }
     return VERR_BUFFER_OVERFLOW;
 }
-
-RTDECL(int) RTStrCat(char *pszDst, size_t cbDst, const char *pszSrc)
-{
-    return rtStrCat(pszDst, cbDst, pszSrc);
-}
 RT_EXPORT_SYMBOL(RTStrCat);
-
-RTDECL(char *) RTStrCat2(char *pszDst, size_t cbDst, const char *pszSrc)
-{
-    return RT_SUCCESS(rtStrCat(pszDst, cbDst, pszSrc)) ? pszDst : NULL;
-}
-RT_EXPORT_SYMBOL(RTStrCat2);
 
