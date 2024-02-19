@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 103285 2024-02-08 15:27:12Z andreas.loeffler@oracle.com $ */
+/* $Id: FsPerf.cpp 103418 2024-02-19 08:45:20Z alexander.eichner@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -5119,7 +5119,7 @@ static void fsPerfWrite(RTFILE hFile1, RTFILE hFileNoCache, RTFILE hFileWriteThr
         uint64_t offFile;
         uint32_t cbMax;
     } aRuns[] = { { 0, 127 }, { cbFile - cbBuf, UINT32_MAX }, { 0, UINT32_MAX -1 }};
-    for (uint32_t i = 0; i < RT_ELEMENTS(aRuns); i++, bFiller)
+    for (uint32_t i = 0; i < RT_ELEMENTS(aRuns); i++, bFiller++)
     {
         fsPerfFillWriteBuf(aRuns[i].offFile, pbBuf, cbBuf, bFiller);
         fsPerfCheckReadBuf(__LINE__, aRuns[i].offFile, pbBuf, cbBuf, bFiller);
@@ -6719,7 +6719,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 103285 $";
+                char szRev[] = "$Revision: 103418 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;

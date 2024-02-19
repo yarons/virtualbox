@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 103352 2024-02-14 13:29:07Z andreas.loeffler@oracle.com $ */
+/* $Id: vkat.cpp 103418 2024-02-19 08:45:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -524,7 +524,7 @@ static int audioTestOne(PAUDIOTESTENV pTstEnv, PAUDIOTESTDESC pTstDesc)
 
         if (RT_SUCCESS(rc2))
         {
-            AssertPtrBreakStmt(pTstDesc->pfnExec, VERR_INVALID_POINTER);
+            AssertPtrBreakStmt(pTstDesc->pfnExec, rc = VERR_INVALID_POINTER);
             rc2 = pTstDesc->pfnExec(pTstEnv, pvCtx, &TstParms);
             if (RT_FAILURE(rc2))
                 RTTestFailed(g_hTest, "Test #%RU32 execution failed with %Rrc\n", pTstEnv->idxTest, rc2);

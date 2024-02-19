@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: vkatCommon.cpp 103418 2024-02-19 08:45:20Z alexander.eichner@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -623,7 +623,7 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
                             bool const fStarted = AudioTestBeaconGetRemaining(&Beacon) == AudioTestBeaconGetSize(&Beacon);
 
                             uint32_t const cbBeaconRemaining = AudioTestBeaconGetRemaining(&Beacon);
-                            AssertBreakStmt(cbBeaconRemaining, VERR_WRONG_ORDER);
+                            AssertBreakStmt(cbBeaconRemaining, rc = VERR_WRONG_ORDER);
 
                             /* Limit to exactly one beacon (pre or post). */
                             uint32_t const cbToWrite = RT_MIN(sizeof(abBuf), RT_MIN(cbCanWrite, cbBeaconRemaining));
