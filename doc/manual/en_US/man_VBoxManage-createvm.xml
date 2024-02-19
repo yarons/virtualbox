@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-createvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-02-19 15:20:36 +0100 (Mon, 19 Feb 2024) $</pubdate>
+    <pubdate>$Date: 2024-02-19 16:27:46 +0100 (Mon, 19 Feb 2024) $</pubdate>
     <title>VBoxManage createvm</title>
   </refentryinfo>
 
@@ -121,7 +121,7 @@
           </para></listitem>
       </varlistentry>
       <varlistentry>
-        <term><option>--group=<replaceable>group-ID</replaceable>[,...]</option></term>
+        <term><option>--groups=<replaceable>group-ID</replaceable>[,...]</option></term>
         <listitem><para>
             Assigns the VM to the specified groups. If you specify more
             than one group, separate each group name with a comma.
