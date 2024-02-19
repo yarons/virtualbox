@@ -1,4 +1,4 @@
-/* $Id: tstRTR0CommonDriver.h 103440 2024-02-19 13:45:28Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTR0CommonDriver.h 103441 2024-02-19 13:47:22Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT R0 Testcase - Common header for the testcase drivers.
  */
@@ -115,10 +115,10 @@ static RTEXITCODE RTR3TestR0CommonDriverInit(const char *pszTestServiceName)
         return RTTestSummaryAndDestroy(g_hTest);
     }
 
-    char szPath[RTPATH_MAX + sizeof(".r0")];
-    rc = RTPathExecDir(szPath, RTPATH_MAX);
+    char szPath[RTPATH_MAX];
+    rc = RTPathExecDir(szPath, sizeof(szPath));
     if (RT_SUCCESS(rc))
-        rc = RTPathAppend(szPath, RTPATH_MAX, pszTestServiceName);
+        rc = RTPathAppend(szPath, sizeof(szPath), pszTestServiceName);
     if (RT_SUCCESS(rc))
         rc = RTStrCat(szPath, sizeof(szPath), ".r0");
     if (RT_FAILURE(rc))
