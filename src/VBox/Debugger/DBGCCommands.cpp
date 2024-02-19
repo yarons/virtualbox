@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGCCommands.cpp 103433 2024-02-19 12:11:34Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1312,7 +1312,7 @@ static DECLCALLBACK(int) dbgcCmdFormat(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM
     {
         "none", "bytes", "elements"
     };
-    int rc;
+    int rc = VINF_SUCCESS;
 
     for (unsigned iArg = 0; iArg < cArgs; iArg++)
     {
@@ -1425,7 +1425,7 @@ static DECLCALLBACK(int) dbgcCmdFormat(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM
     } /* arg loop */
 
     NOREF(pCmd); NOREF(pUVM);
-    return 0;
+    return rc;
 }
 
 
