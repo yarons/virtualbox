@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 102808 2024-01-10 08:16:30Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 103469 2024-02-20 08:15:41Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -7165,8 +7165,9 @@ int vmsvgaR3Process3dCmd(PVGASTATE pThis, PVGASTATECC pThisCC, uint32_t idDXCont
         break;
     }
 
+    if (RT_FAILURE(rcParse))
+        LogRelMax(16, ("VMSVGA: command %d: %Rrc\n", enmCmdId, rcParse));
     return VINF_SUCCESS;
-//    return rcParse;
 }
 # undef VMSVGAFIFO_CHECK_3D_CMD_MIN_SIZE_BREAK
 #endif /* VBOX_WITH_VMSVGA3D */
