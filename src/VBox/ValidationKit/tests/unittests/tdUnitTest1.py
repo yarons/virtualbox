@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 103470 2024-02-20 08:40:42Z alexander.eichner@oracle.com $
+# $Id: tdUnitTest1.py 103475 2024-02-20 10:11:53Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103470 $"
+__version__ = "$Revision: 103475 $"
 
 
 # Standard Python imports.
@@ -70,7 +70,7 @@ class tdUnitTest1(vbox.TestDriver):
     kdTestCasesBuggyPerOs = {
         'darwin': {
             'testcase/tstX86-1': '',                                # 'FSTP M32R, ST0' fails; no idea why.
-            'testcase/tstInt':                        '>=7.0.0',    # Driverless package.
+            'tstInt':                                 '>=7.0.0',    # Driverless package.
             'testcase/tstLow':                        '>=7.0.0',    # Driverless package.
             'testcase/tstPin':                        '>=7.0.0',    # Driverless package.
             'testcase/tstIntNet-1':                   '>=7.0.0',    # Driverless package.
