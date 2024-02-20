@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 103477 2024-02-20 12:29:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1376,8 +1376,8 @@ int ShClTransferListOpen(PSHCLTRANSFER pTransfer, PSHCLLISTOPENPARMS pOpenParms,
     if (pTransfer->cListHandles == pTransfer->cMaxListHandles)
         return VERR_SHCLPB_MAX_LISTS_REACHED;
 
-     int rc;
-     if (pTransfer->ProviderIface.pfnListOpen)
+    int rc;
+    if (pTransfer->ProviderIface.pfnListOpen)
         rc = pTransfer->ProviderIface.pfnListOpen(&pTransfer->ProviderCtx, pOpenParms, phList);
     else
         rc = VERR_NOT_SUPPORTED;
