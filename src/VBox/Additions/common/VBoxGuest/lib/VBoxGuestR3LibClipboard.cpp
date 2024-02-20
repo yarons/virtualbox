@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 103482 2024-02-20 17:11:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1210,7 +1210,9 @@ VBGLR3DECL(int) VbglR3ClipboardTransferListOpenSend(PVBGLR3SHCLCMDCTX pCtx, PSHC
 
     rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
     if (RT_SUCCESS(rc))
+    {
         rc = Msg.uHandle.GetUInt64(phList); AssertRC(rc);
+    }
 
     LogFlowFuncLeaveRC(rc);
     return rc;
