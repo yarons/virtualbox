@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 103473 2024-02-20 10:09:11Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 103474 2024-02-20 10:10:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3745,7 +3745,7 @@ VBoxDbgStatsView::VBoxDbgStatsView(VBoxDbgGui *a_pDbgGui, VBoxDbgStatsModel *a_p
     m_pViewMenu->addAction(m_pAdjColumnsAct);
 #ifdef VBOXDBG_WITH_SORTED_AND_FILTERED_STATS
     m_pViewMenu->addAction(m_pFilterAct);
-#endif    
+#endif
 
     /* the header menu */
     QHeaderView *pHdrView = header();
