@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 103478 2024-02-20 15:01:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -324,7 +324,7 @@ int UIVMLogPage::logFileId() const
 void UIVMLogPage::scrollToEnd()
 {
     if (m_pTextEdit)
-        m_pTextEdit->scrollToEnd();
+        m_pTextEdit->scrollToBottom();
 }
 
 void UIVMLogPage::saveScrollBarPosition()

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 98844 2023-03-06 17:21:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.h 103478 2024-02-20 15:01:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -31,6 +31,8 @@
 # pragma once
 #endif
 
+class UILogScrollLabel;
+
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UIVMLogBookmark.h"
@@ -62,7 +64,8 @@ public:
     void clearScrollBarMarkingsVector();
 
     void scrollToLine(int lineNumber);
-    void scrollToEnd();
+    void scrollToBottom();
+    void scrollToTop();
     void setBookmarkLineSet(const QSet<int>& lineSet);
     void setShownTextIsFiltered(bool warning);
 
@@ -89,6 +92,7 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     virtual void leaveEvent(QEvent * pEvent) RT_OVERRIDE;
     virtual void retranslateUi() RT_OVERRIDE;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 
@@ -126,6 +130,9 @@ private:
     friend class UILineNumberArea;
     bool         m_bHasContextMenu;
     int          m_iVerticalScrollBarValue;
+    UILogScrollLabel *m_pScrollToBottomLabel;
+    UILogScrollLabel *m_pScrollToTopLabel;
+    QCursor      m_originalCursor;
  };
 
 
