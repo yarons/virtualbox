@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 103465 2024-02-20 02:36:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -816,6 +816,7 @@ public:
      * Constructor.
      *
      * @param   a_pNode     The node to configure filtering for.
+     * @param   a_pParent   The parent object.
      */
     VBoxDbgStatsFilterDialog(QWidget *a_pParent, PCDBGGUISTATSNODE a_pNode);
 
