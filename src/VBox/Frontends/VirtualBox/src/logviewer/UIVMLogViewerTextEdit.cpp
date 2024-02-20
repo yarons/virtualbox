@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 103478 2024-02-20 15:01:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 103479 2024-02-20 15:12:14Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -82,7 +82,7 @@ class UILogScrollLabel : public QLabel
 public:
 
     UILogScrollLabel(QWidget *pParent);
-    void setOpacity(float fOpacity);
+    void setOpacity(qreal fOpacity);
 
 protected:
 
@@ -90,7 +90,7 @@ protected:
 
 private:
 
-    float m_fOpacity;
+    qreal m_fOpacity;
 };
 
 
@@ -130,7 +130,7 @@ UILogScrollLabel::UILogScrollLabel(QWidget *pParent)
 {
 }
 
-void UILogScrollLabel::setOpacity(float fOpacity)
+void UILogScrollLabel::setOpacity(qreal fOpacity)
 {
     if (m_fOpacity == fOpacity)
         return;
