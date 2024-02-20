@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsElements.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -390,9 +390,6 @@ private:
 
     /** Contains update task body. */
     void run();
-
-    /** Summarizes generic properties. */
-    static QString summarizeGenericProperties(const CNetworkAdapter &adapter);
 
     /** Holds the options. */
     UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork m_fOptions;

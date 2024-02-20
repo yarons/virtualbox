@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -714,21 +714,6 @@ UITextTable UIDetailsGenerator::generateMachineInformationAudio(CMachine &comMac
                                  QString());
 
     return table;
-}
-
-QString summarizeGenericProperties(const CNetworkAdapter &comAdapter)
-{
-    QVector<QString> names;
-    QVector<QString> props;
-    props = comAdapter.GetProperties(QString(), names);
-    QString strResult;
-    for (int i = 0; i < names.size(); ++i)
-    {
-        strResult += names[i] + "=" + props[i];
-        if (i < names.size() - 1)
-            strResult += ", ";
-    }
-    return strResult;
 }
 
 UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comMachine,
@@ -1557,4 +1542,19 @@ void UIDetailsGenerator::acquireFeaturesStatusInfo(CMachine &comMachine, QString
     const int cCpuCount = comMachine.GetCPUCount();
     if (cCpuCount > 1)
         strInfo += e_strTableRow2.arg(UICommon::tr("Processors", "details report"), QString::number(cCpuCount));
+}
+
+QString UIDetailsGenerator::summarizeGenericProperties(const CNetworkAdapter &comAdapter)
+{
+    QVector<QString> names;
+    QVector<QString> props;
+    props = comAdapter.GetProperties(QString(), names);
+    QString strResult;
+    for (int i = 0; i < names.size(); ++i)
+    {
+        strResult += names[i] + "=" + props[i];
+        if (i < names.size() - 1)
+            strResult += ", ";
+    }
+    return strResult;
 }

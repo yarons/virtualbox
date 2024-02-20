@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 102597 2023-12-14 15:17:27Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -50,6 +50,7 @@
 #include "UIConverter.h"
 #include "UICursor.h"
 #include "UIDesktopWidgetWatchdog.h"
+#include "UIDetailsGenerator.h"
 #include "UIIconPool.h"
 #include "UIGuestOSType.h"
 #include "UISnapshotDetailsWidget.h"
@@ -1991,7 +1992,7 @@ QStringList UISnapshotDetailsWidget::networkReport(CMachine comMachine)
                     break;
                 case KNetworkAttachmentType_Generic:
                 {
-                    QString strGenericDriverProperties(summarizeGenericProperties(comAdapter));
+                    QString strGenericDriverProperties(UIDetailsGenerator::summarizeGenericProperties(comAdapter));
                     strInfo = strInfo.arg(  strGenericDriverProperties.isNull()
                                           ? strInfo.arg(QApplication::translate("UIDetails", "Generic Driver, '%1'", "details (network)")
                                                                                 .arg(comAdapter.GetGenericDriver()))
@@ -2103,22 +2104,6 @@ QString UISnapshotDetailsWidget::empReport(const QString &strValue, const QStrin
 QString UISnapshotDetailsWidget::empReport(const QString &strValue, bool fIgnore)
 {
     return fIgnore ? strValue : QString("<u>%1</u>").arg(strValue);
-}
-
-/* static */
-QString UISnapshotDetailsWidget::summarizeGenericProperties(const CNetworkAdapter &comNetwork)
-{
-    QVector<QString> names;
-    QVector<QString> props;
-    props = comNetwork.GetProperties(QString(), names);
-    QString strResult;
-    for (int i = 0; i < names.size(); ++i)
-    {
-        strResult += names[i] + "=" + props[i];
-        if (i < names.size() - 1)
-            strResult += ", ";
-    }
-    return strResult;
 }
 
 #include "UISnapshotDetailsWidget.moc"

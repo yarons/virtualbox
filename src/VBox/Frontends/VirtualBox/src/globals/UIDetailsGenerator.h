@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 98490 2023-02-07 12:11:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -44,6 +44,7 @@ class CConsole;
 class CFormValue;
 class CGuest;
 class CMachine;
+class CNetworkAdapter;
 
 /** Details generation namespace. */
 namespace UIDetailsGenerator
@@ -117,6 +118,8 @@ namespace UIDetailsGenerator
                                                         KVMExecutionEngine &enmEngine,
                                                         bool fNestedPagingEnabled, bool fUxEnabled,
                                                         KParavirtProvider enmProvider);
+
+    SHARED_LIBRARY_STUFF QString summarizeGenericProperties(const CNetworkAdapter &comAdapter);
 
     /** Holds the table row format 1. */
     extern const QString e_strTableRow1;

@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -209,9 +209,6 @@ private:
     static QString empReport(const QString &strValue, const QString &strOldValue);
     /** Prepares emhasized report for a given @a strValue, depending on @a fDo flag. */
     static QString empReport(const QString &strValue, bool fIgnore);
-
-    /** Summarizes generic properties. */
-    static QString summarizeGenericProperties(const CNetworkAdapter &adapter);
 
     /** Holds the machine object to load data from. */
     CMachine   m_comMachine;
