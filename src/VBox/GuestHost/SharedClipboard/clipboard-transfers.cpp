@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 103477 2024-02-20 12:29:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -3367,6 +3367,27 @@ const char *ShClTransferStatusToStr(SHCLTRANSFERSTATUS enmStatus)
         RT_CASE_RET_STR(SHCLTRANSFERSTATUS_ERROR);
     }
     return "Unknown";
+}
+
+/**
+ * Transforms a path so that it can be sent over to the other party.
+ *
+ * @returns VBox status code.
+ * @param   pszPath             Path to transform. Will be modified in place.
+ * @param   cbPath              Size (in bytes) of \a pszPath.
+ *
+ * @note    Shared Clipboard file paths always are sent over as UNIX-style paths.
+ *          Sending over back slashes ('\') could happen on non-Windows OSes as part of a path or file name.
+ */
+int ShClTransferTransformPath(char *pszPath, size_t cbPath)
+{
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
+    RT_NOREF(cbPath);
+    RTPathChangeToUnixSlashes(pszPath, true /* fForce */);
+#else
+    RT_NOREF(pszPath, cbPath);
+#endif
+    return VINF_SUCCESS;
 }
 
 /**

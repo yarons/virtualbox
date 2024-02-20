@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 103442 2024-02-19 13:51:37Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -344,7 +344,9 @@ typedef const SHCLFSOBJINFO *PCSHCLFSOBJINFO;
  */
 typedef struct _SHCLOBJOPENCREATEPARMS
 {
-    /** Path to object to open / create. */
+    /** Path to object to open / create.
+     *  Always stored as UNIX-style paths ('/').
+     *  Backslashes ('\') can be part of a UNIX path though. */
     char                       *pszPath;
     /** Size (in bytes) of path to to object. */
     uint32_t                    cbPath;
@@ -420,7 +422,8 @@ typedef struct _SHCLLISTOPENPARMS
     char    *pszFilter;
     /** Size (in bytes) of the listing path. */
     uint32_t cbPath;
-    /** Listing path (absolute). If empty or NULL the listing's root path will be opened. */
+    /** Listing path (absolute). If empty or NULL the listing's root path will be opened.
+     *  We always use UNIX-style paths. */
     char    *pszPath;
 } SHCLLISTOPENPARMS;
 /** Pointer to Shared Clipboard list open parameters. */
@@ -1265,6 +1268,7 @@ int ShClTransferHttpServerWaitForStatusChange(PSHCLHTTPSERVER pSrv, SHCLHTTPSERV
 int ShClPathSanitizeFilename(char *pszPath, size_t cbPath);
 int ShClPathSanitize(char *pszPath, size_t cbPath);
 const char *ShClTransferStatusToStr(SHCLTRANSFERSTATUS enmStatus);
+int ShClTransferTransformPath(char *pszPath, size_t cbPath);
 int ShClTransferValidatePath(const char *pcszPath, bool fMustExist);
 int ShClTransferResolvePathAbs(PSHCLTRANSFER pTransfer, const char *pszPath, uint32_t fFlags, char **ppszResolved);
 int ShClTransferConvertFileCreateFlags(uint32_t fShClFlags, uint64_t *pfOpen);

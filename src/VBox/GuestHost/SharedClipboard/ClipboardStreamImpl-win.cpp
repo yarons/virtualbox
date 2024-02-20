@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 100665 2023-07-20 13:20:29Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardStreamImpl-win.cpp 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -37,6 +37,7 @@
 #include <iprt/thread.h>
 
 #include <VBox/GuestHost/SharedClipboard.h>
+#include <VBox/GuestHost/SharedClipboard-transfers.h>
 #include <VBox/GuestHost/SharedClipboard-win.h>
 
 #include <VBox/log.h>
@@ -210,7 +211,11 @@ STDMETHODIMP SharedClipboardWinStreamImpl::Read(void *pvBuffer, ULONG nBytesToRe
 
             rc = RTStrCopy(openParms.pszPath, openParms.cbPath, m_strPath.c_str());
             if (RT_SUCCESS(rc))
-                rc = ShClTransferObjOpen(m_pTransfer, &openParms, &m_hObj);
+            {
+                rc = ShClTransferTransformPath(openParms.pszPath, openParms.cbPath);
+                if (RT_SUCCESS(rc))
+                    rc = ShClTransferObjOpen(m_pTransfer, &openParms, &m_hObj);
+            }
 
             ShClTransferObjOpenParmsDestroy(&openParms);
         }
