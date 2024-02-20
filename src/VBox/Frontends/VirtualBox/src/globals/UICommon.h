@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 102750 2024-01-03 16:10:44Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -307,6 +307,8 @@ public:
         QString const getDebuggerStatisticsExpand() const { return m_strDbgStatisticsExpand; }
         /** Returns the --statistics-filter value. */
         QString const getDebuggerStatisticsFilter() const { return m_strDbgStatisticsFilter; }
+        /** Returns the --statistics-config value. */
+        QString const getDebuggerStatisticsConfig() const { return m_strDbgStatisticsConfig; }
 
         /** VBoxDbg module handle. */
         RTLDRMOD getDebuggerModule() const { return m_hVBoxDbg; }
@@ -731,8 +733,10 @@ private:
         mutable int  m_fDbgAutoShowStatistics;
         /** Pattern of statistics to expand when opening the viewer. */
         QString      m_strDbgStatisticsExpand;
-        /** The statistics viewer filter. */
+        /** The statistics viewer main filter pattern. */
         QString      m_strDbgStatisticsFilter;
+        /** The statistics viewer advanced filter configuration and possibly more. */
+        QString      m_strDbgStatisticsConfig;
 
         /** VBoxDbg module handle. */
         RTLDRMOD  m_hVBoxDbg;

@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103280 2024-02-08 14:36:45Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -593,6 +593,17 @@ void UICommon::prepare()
         {
             enmOptType = OptType_VMRunner;
             m_strDbgStatisticsFilter = arguments.at(i).section('=', 1);
+        }
+        else if (!::strcmp(arg, "--statistics-config") || !::strcmp(arg, "--stats-config"))
+        {
+            enmOptType = OptType_VMRunner;
+            if (++i < argc)
+                m_strDbgStatisticsConfig = arguments.at(i);
+        }
+        else if (!::strncmp(arg, RT_STR_TUPLE("--statistics-config=")) || !::strncmp(arg, RT_STR_TUPLE("--stats-config=")))
+        {
+            enmOptType = OptType_VMRunner;
+            m_strDbgStatisticsConfig = arguments.at(i).section('=', 1);
         }
         else if (!::strcmp(arg, "-no-debug") || !::strcmp(arg, "--no-debug"))
         {
