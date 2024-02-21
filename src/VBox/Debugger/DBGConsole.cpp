@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGConsole.cpp 103490 2024-02-21 12:33:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -376,6 +376,7 @@ static int dbgcProcessCommands(PDBGC pDbgc, bool fNoExecute)
             {
                 AssertMsgFailed(("The buffer contains no commands while cInputLines=%d!\n", pDbgc->cInputLines));
                 pDbgc->cInputLines = 0;
+                pDbgc->iRead = pDbgc->iWrite;
                 return 0;
             }
 
