@@ -1,4 +1,4 @@
-# $Id: Config.kmk 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $
+# $Id: Config.kmk 103485 2024-02-21 10:16:44Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -69,6 +69,20 @@ BLD_TYPE_asan_EXTENDS_BY = appending
 KBUILD_BLD_TYPES += dbgopt
 BLD_TYPE_dbgopt_EXTENDS = debug
 BLD_TYPE_dbgopt_EXTENDS_BY = overriding
+
+## 'parfait' builds
+# Same as release builds, except that the result is prepared for static code
+# analysis by parfait.
+KBUILD_BLD_TYPES += parfait
+BLD_TYPE_parfait_EXTENDS = release
+BLD_TYPE_parfait_EXTENDS_BY = appending
+
+## 'parfait-dbg' builds
+# Same as debug builds, except that the result is prepared for static code
+# analysis by parfait.
+KBUILD_BLD_TYPES += parfait-dbg
+BLD_TYPE_parfait-dbg_EXTENDS = release
+BLD_TYPE_parfait-dbg_EXTENDS_BY = appending
 
 # Temporary hack for kBuild ticket #83.
 ## @todo kBuild: remove after closing ticket #83.
@@ -1408,7 +1422,20 @@ else
 endif
 
 
-ifdef VBOX_WITH_PARFAIT
+#
+# Configure 'parfait' and 'parfait-dbg' builds.
+#
+# We ASSUME that anyone doing this kind of build has the parfait tools
+# package already fetched using:
+#     kmk VBOX_WITH_PARFAIT=1 -C tools fetch
+#
+if1of ($(KBUILD_TYPE),parfait parfait-dbg)
+ VBOX_WITH_PARFAIT := 1
+ VBOX_WITHOUT_PRECOMPILED_HEADERS := 1 # @todo Remove when working everywhere
+endif
+
+
+if defined(VBOX_WITH_PARFAIT)
  #
  # This includes the tool overrides for running with parfait.
  # Ideally there would be a dedicated parfait tool but when targetting
@@ -2023,6 +2050,8 @@ DEFS.dbgopt      = $(DEFS.debug)
 DEFS.profile     = VBOX_WITH_STATISTICS
 DEFS.strict      = RT_STRICT VBOX_STRICT
 DEFS.asan        = RT_STRICT VBOX_STRICT
+DEFS.parfait     = VBOX_WITH_PARFAIT
+DEFS.parfait-dbg = VBOX_WITH_PARFAIT
 DEFS.x86         = RT_ARCH_X86 __X86__
 DEFS.amd64       = RT_ARCH_AMD64 __AMD64__
 DEFS.arm64       = RT_ARCH_ARM64
@@ -9189,7 +9218,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103369 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103485 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
