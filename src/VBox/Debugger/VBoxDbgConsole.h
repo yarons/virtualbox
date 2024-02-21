@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgConsole.h 103491 2024-02-21 12:36:24Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -31,9 +31,14 @@
 # pragma once
 #endif
 
+//#define VBOXDBG_WITH_CONSOLE_OUTPUT_AS_QPLAINTEXT
+
 #include "VBoxDbgBase.h"
 
 #include <QTextEdit>
+#ifdef VBOXDBG_WITH_CONSOLE_OUTPUT_AS_QPLAINTEXT
+# include <QPlainTextEdit>
+#endif
 #include <QComboBox>
 #include <QTimer>
 #include <QEvent>
@@ -52,7 +57,12 @@
 #endif
 
 
-class VBoxDbgConsoleOutput : public QTextEdit
+class VBoxDbgConsoleOutput
+#ifdef VBOXDBG_WITH_CONSOLE_OUTPUT_AS_QPLAINTEXT
+    : public QPlainTextEdit
+#else
+    : public QTextEdit
+#endif
 {
     Q_OBJECT
 
@@ -88,14 +98,16 @@ public:
     /** The action to switch to green-on-black color scheme. */
     QAction *m_pGreenOnBlackAction;
 
-    /** The action to switch to Courier font. */
-    QAction *m_pCourierFontAction;
+    /** The action to switch to system default fixed font. */
+    QAction *m_pDefaultFontAction;
     /** The action to switch to Monospace font. */
     QAction *m_pMonospaceFontAction;
+    /** The action to switch to Courier font. */
+    QAction *m_pCourierFontAction;
 
 protected:
     typedef enum  { kGreenOnBlack, kBlackOnWhite } VBoxDbgConsoleColor;
-    typedef enum  { kFontType_Monospace, kFontType_Courier } VBoxDbgConsoleFontType;
+    typedef enum  { kFontType_SystemDefault, kFontType_Monospace, kFontType_Courier } VBoxDbgConsoleFontType;
 
     /**
      * Context menu event.
