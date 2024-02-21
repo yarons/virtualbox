@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: USBProxyBackendUsbIp.cpp 103500 2024-02-21 15:40:32Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -492,7 +492,7 @@ int USBProxyBackendUsbIp::wait(RTMSINTERVAL aMillies)
      * service about changes.
      */
     while (   !fDeviceListChangedOrWokenUp
-           && (aMillies == RT_INDEFINITE_WAIT || aMillies > 0)
+           && aMillies > 0
            && RT_SUCCESS(vrc))
     {
         RTMSINTERVAL msWait = aMillies;
