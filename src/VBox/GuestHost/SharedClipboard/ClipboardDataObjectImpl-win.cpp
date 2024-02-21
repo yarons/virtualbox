@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 100665 2023-07-20 13:20:29Z andreas.loeffler@oracle.com $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 103484 2024-02-21 09:06:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -842,7 +842,7 @@ STDMETHODIMP SharedClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTG
 
                 if (RT_FAILURE(rc))
                 {
-                    LogRel(("Shared Clipboard: Waiting for IDataObject status status failed, rc=%Rrc\n", rc));
+                    LogRel(("Shared Clipboard: Waiting for IDataObject status failed, rc=%Rrc\n", rc));
                     break;
                 }
 
