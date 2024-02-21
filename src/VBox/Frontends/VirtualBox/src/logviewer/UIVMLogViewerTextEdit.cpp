@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 103479 2024-02-20 15:12:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 103483 2024-02-21 07:19:45Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -681,7 +681,7 @@ void UIVMLogViewerTextEdit::setWrapLines(bool bWrapLines)
     }
     else
     {
-        setWordWrapMode(QTextOption::NoWrap);
+        setLineWrapMode(QPlainTextEdit::NoWrap);
         setWordWrapMode(QTextOption::NoWrap);
     }
     update();
