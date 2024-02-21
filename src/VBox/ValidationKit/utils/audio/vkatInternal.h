@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 103492 2024-02-21 13:45:10Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatInternal.h 103507 2024-02-21 19:29:19Z andreas.loeffler@oracle.com $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -56,6 +56,13 @@
 #include "Audio/AudioTestServiceClient.h"
 
 #include "VBoxDD.h"
+
+
+/*********************************************************************************************************************************
+*   Common defines                                                                                                               *
+*********************************************************************************************************************************/
+/** Default (failsafe) timeout (in ms). */
+#define AUDIOTEST_TIMEOUT_DEFAULT_MS   RT_MS_5MIN
 
 
 /*********************************************************************************************************************************
