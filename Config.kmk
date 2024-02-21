@@ -1,4 +1,4 @@
-# $Id: Config.kmk 103486 2024-02-21 10:22:29Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 103487 2024-02-21 10:36:18Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -81,7 +81,7 @@ BLD_TYPE_parfait_EXTENDS_BY = appending
 # Same as debug builds, except that the result is prepared for static code
 # analysis by parfait.
 KBUILD_BLD_TYPES += parfait-dbg
-BLD_TYPE_parfait-dbg_EXTENDS = release
+BLD_TYPE_parfait-dbg_EXTENDS = debug
 BLD_TYPE_parfait-dbg_EXTENDS_BY = appending
 
 # Temporary hack for kBuild ticket #83.
@@ -9218,7 +9218,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103486 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103487 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
