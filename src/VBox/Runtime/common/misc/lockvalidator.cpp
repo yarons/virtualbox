@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: lockvalidator.cpp 103506 2024-02-21 19:27:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -3384,7 +3384,7 @@ RTDECL(int) RTLockValidatorRecExclCheckBlocking(PRTLOCKVALRECEXCL pRec, RTTHREAD
      */
     else if (   pRecU->Excl.hClass != NIL_RTLOCKVALCLASS
              && (   pRecU->Excl.hClass->cMsMinDeadlock > cMillies
-                 || pRecU->Excl.hClass->cMsMinDeadlock > RT_INDEFINITE_WAIT))
+                 || pRecU->Excl.hClass->cMsMinDeadlock == RT_INDEFINITE_WAIT))
         rc = VINF_SUCCESS;
     else if (!rtLockValidatorIsSimpleNoDeadlockCase(pRecU))
         rc = rtLockValidatorDeadlockDetection(pRecU, pThreadSelf, pSrcPos);
