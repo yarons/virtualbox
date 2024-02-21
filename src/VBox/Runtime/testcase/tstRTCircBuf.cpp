@@ -1,4 +1,4 @@
-/* $Id: tstRTCircBuf.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstRTCircBuf.cpp 103493 2024-02-21 13:47:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Lock free circular buffers.
  */
@@ -60,7 +60,7 @@ static void tst1(void)
     /* Create */
     RTTestISub("Creation");
     PRTCIRCBUF pBuf;
-    RTTESTI_CHECK_RC(RTCircBufCreate(&pBuf, 10), VINF_SUCCESS);
+    RTTESTI_CHECK_RC_OK_RETV(RTCircBufCreate(&pBuf, 10));
     RTTESTI_CHECK(RTCircBufFree(pBuf) == 10);
     RTTESTI_CHECK(RTCircBufUsed(pBuf) == 0);
 
