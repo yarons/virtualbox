@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 103507 2024-02-21 19:29:19Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatCommon.cpp 103509 2024-02-21 20:07:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Common code.
  */
@@ -559,7 +559,7 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
             || pTstEnv->msTimeout == UINT32_MAX)
         {
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test #%RU32: Warning! Invalid timeout set (%RU32ms), setting default\n",
-                         pTstEnv->msTimeout);
+                         idxTest, pTstEnv->msTimeout);
             pTstEnv->msTimeout = AUDIOTEST_TIMEOUT_DEFAULT_MS;
         }
 
@@ -861,7 +861,7 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
             || pTstEnv->msTimeout == UINT32_MAX)
         {
             RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test #%RU32: Warning! Invalid timeout set (%RU32ms), setting default\n",
-                         pTstEnv->msTimeout);
+                         idxTest, pTstEnv->msTimeout);
             pTstEnv->msTimeout = AUDIOTEST_TIMEOUT_DEFAULT_MS;
         }
 
