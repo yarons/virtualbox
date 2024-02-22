@@ -1,4 +1,4 @@
-/* $Id: VDScript.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: VDScript.cpp 103522 2024-02-22 11:15:20Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox HDD container test utility - scripting engine.
  */
@@ -649,7 +649,6 @@ static void vdScriptTokenizerGetOperatorOrPunctuator(PVDTOKENIZER pTokenizer, PV
                 pToken->Class.Punctuator.chPunctuator = *g_aScriptPunctuators[i].pszOp;
 
                 vdScriptTokenizerSkipCh(pTokenizer);
-                fOpFound = true;
                 break;
             }
         }
@@ -1576,6 +1575,9 @@ static int vdScriptParseAdditiveExpression(PVDSCRIPTCTXINT pThis, PVDSCRIPTASTEX
             else
                 break;
 
+            if (RT_FAILURE(rc))
+                break;
+
             pExprNew->BinaryOp.pLeftExpr = pExpr;
             pExpr = pExprNew;
             rc = vdScriptParseMultiplicativeExpression(pThis, &pExprNew);
@@ -1636,6 +1638,9 @@ static int vdScriptParseShiftExpression(PVDSCRIPTCTXINT pThis, PVDSCRIPTASTEXPR 
                     rc = vdScriptParserError(pThis, VERR_NO_MEMORY, RT_SRC_POS, "Parser: Out of memory allocating expression AST node\n");
             }
             else
+                break;
+
+            if (RT_FAILURE(rc))
                 break;
 
             pExprNew->BinaryOp.pLeftExpr = pExpr;
@@ -1718,6 +1723,9 @@ static int vdScriptParseRelationalExpression(PVDSCRIPTCTXINT pThis, PVDSCRIPTAST
             else
                 break;
 
+            if (RT_FAILURE(rc))
+                break;
+
             pExprNew->BinaryOp.pLeftExpr = pExpr;
             pExpr = pExprNew;
             rc = vdScriptParseShiftExpression(pThis, &pExprNew);
@@ -1778,6 +1786,9 @@ static int vdScriptParseEqualityExpression(PVDSCRIPTCTXINT pThis, PVDSCRIPTASTEX
                     rc = vdScriptParserError(pThis, VERR_NO_MEMORY, RT_SRC_POS, "Parser: Out of memory allocating expression AST node\n");
             }
             else
+                break;
+
+            if (RT_FAILURE(rc))
                 break;
 
             pExprNew->BinaryOp.pLeftExpr = pExpr;
@@ -2194,6 +2205,9 @@ static int vdScriptParseAssignmentExpression(PVDSCRIPTCTXINT pThis, PVDSCRIPTAST
                     rc = vdScriptParserError(pThis, VERR_NO_MEMORY, RT_SRC_POS, "Parser: Out of memory allocating expression AST node\n");
             }
             else
+                break;
+
+            if (RT_SUCCESS(rc))
                 break;
 
             pExprNew->BinaryOp.pLeftExpr = pExpr;
