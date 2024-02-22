@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 103526 2024-02-22 11:19:16Z alexander.eichner@oracle.com $ */
+/* $Id: VHD.cpp 103528 2024-02-22 11:29:39Z alexander.eichner@oracle.com $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -837,7 +837,7 @@ static int vhdLoadDynamicDisk(PVHDIMAGE pImage, uint64_t uDynamicDiskHeaderOffse
 static int vhdOpenImage(PVHDIMAGE pImage, unsigned uOpenFlags)
 {
     uint64_t FileSize;
-    VHDFooter vhdFooter;
+    VHDFooter vhdFooter; RT_ZERO(vhdFooter); /* MSVC thinks this can be used uninitialized. */
 
     pImage->uOpenFlags = uOpenFlags;
 
