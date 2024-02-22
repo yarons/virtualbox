@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $
+# $Id: vboxwrappers.py 103529 2024-02-22 11:36:39Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103085 $"
+__version__ = "$Revision: 103529 $"
 
 
 # Standard Python imports.
@@ -2398,14 +2398,17 @@ class SessionWrapper(TdTaskBase):
         except: return reporter.errorXcpt('Failed to set the audio controller to %s.' % (eAudioControllerType,));
 
         if eAudioDriverType is None:
-            sHost = utils.getHostOs()
-            if   sHost == 'darwin':    eAudioDriverType = vboxcon.AudioDriverType_CoreAudio;
-            elif sHost == 'win':       eAudioDriverType = vboxcon.AudioDriverType_DirectSound;
-            elif sHost == 'linux':     eAudioDriverType = vboxcon.AudioDriverType_Pulse;
-            elif sHost == 'solaris':   eAudioDriverType = vboxcon.AudioDriverType_OSS;
+            if self.fpApiVer >= 7.1:
+                eAudioDriverType = vboxcon.AudioDriverType_Default;
             else:
-                reporter.error('PORTME: Do not know which audio driver to pick for: %s!' % (sHost,));
-                eAudioDriverType = vboxcon.AudioDriverType_Null;
+                sHost = utils.getHostOs()
+                if   sHost == 'darwin':    eAudioDriverType = vboxcon.AudioDriverType_CoreAudio;
+                elif sHost == 'win':       eAudioDriverType = vboxcon.AudioDriverType_DirectSound;
+                elif sHost == 'linux':     eAudioDriverType = vboxcon.AudioDriverType_Pulse;
+                elif sHost == 'solaris':   eAudioDriverType = vboxcon.AudioDriverType_OSS;
+                else:
+                    reporter.error('PORTME: Do not know which audio driver to pick for: %s!' % (sHost,));
+                    eAudioDriverType = vboxcon.AudioDriverType_Null;
 
         try:    oAdapter.audioDriver = eAudioDriverType;
         except: return reporter.errorXcpt('Failed to set the audio driver to %s.' % (eAudioDriverType,))
@@ -2419,7 +2422,7 @@ class SessionWrapper(TdTaskBase):
         try:    oAdapter.enabledOut = fEnableOut;
         except: return reporter.errorXcpt('Failed to set the "enabledOut" property to %s.' % (fEnable,));
 
-        reporter.log('set audio adapter type to %d, driver to %d, and enabled to %s (input is %s, output is %s)'
+        reporter.log('set audio controller type to %d, driver to %d, and enabled to %s (input is %s, output is %s)'
                      % (eAudioControllerType, eAudioDriverType, fEnable, fEnableIn, fEnableOut,));
         self.oTstDrv.processPendingEvents();
         return True;
