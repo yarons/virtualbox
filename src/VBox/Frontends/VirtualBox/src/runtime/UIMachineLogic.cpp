@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -679,18 +679,7 @@ void UIMachineLogic::sltRuntimeError(bool fIsFatal, const QString &strErrorId, c
 void UIMachineLogic::sltShowWindows()
 {
     for (int i=0; i < machineWindows().size(); ++i)
-    {
-        UIMachineWindow *pMachineWindow = machineWindows().at(i);
-        /* Dunno what Qt thinks a window that has minimized to the dock
-         * should be - it is not hidden, neither is it minimized. OTOH it is
-         * marked shown and visible, but not activated. This latter isn't of
-         * much help though, since at this point nothing is marked activated.
-         * I might have overlooked something, but I'm buggered what if I know
-         * what. So, I'll just always show & activate the stupid window to
-         * make it get out of the dock when the user wishes to show a VM. */
-        pMachineWindow->raise();
-        pMachineWindow->activateWindow();
-    }
+        UIDesktopWidgetWatchdog::restoreWidget(machineWindows().at(i));
 }
 #endif /* VBOX_WS_MAC */
 

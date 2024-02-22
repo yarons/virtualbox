@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.h 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -313,7 +313,6 @@ protected:
     bool isFullscreenOrSeamless() const;
 
     /* Cross-platforms event processors: */
-    bool event(QEvent *pEvent);
     bool eventFilter(QObject *pWatched, QEvent *pEvent);
     void resizeEvent(QResizeEvent *pEvent);
     void moveEvent(QMoveEvent *pEvent);

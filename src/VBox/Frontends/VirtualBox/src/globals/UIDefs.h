@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -46,9 +46,6 @@ namespace UIDefs
     enum UIEventType
     {
         ActivateActionEventType = QEvent::User + 101,
-#ifdef VBOX_WS_MAC
-        ShowWindowEventType,
-#endif
     };
 
     /** Default guest additions image name. */
