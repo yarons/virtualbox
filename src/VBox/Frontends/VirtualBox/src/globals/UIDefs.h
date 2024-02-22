@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -45,21 +45,8 @@
 /* GUI includes: */
 #include "UILibraryDefs.h"
 
-/* COM includes: */
-#include "COMEnums.h"
-
 /* Other VBox includes: */
 #include <VBox/log.h>
-#include <VBox/com/defs.h>
-
-/* Defines: */
-#ifdef RT_STRICT
-# define AssertWrapperOk(w)         AssertMsg(w.isOk(), (#w " is not okay (RC=0x%08X)", w.lastRC()))
-# define AssertWrapperOkMsg(w, m)   AssertMsg(w.isOk(), (#w ": " m " (RC=0x%08X)", w.lastRC()))
-#else
-# define AssertWrapperOk(w)         do {} while (0)
-# define AssertWrapperOkMsg(w, m)   do {} while (0)
-#endif
 
 
 /** Global namespace. */

@@ -1,4 +1,4 @@
-/* $Id: UIProgressEventHandler.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIProgressEventHandler.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProgressEventHandler class implementation.
  */
@@ -64,7 +64,7 @@ void UIProgressEventHandler::prepareListener()
 
     /* Get CProgress event source: */
     CEventSource comEventSourceProgress = m_comProgress.GetEventSource();
-    AssertWrapperOk(comEventSourceProgress);
+    Assert(m_comProgress.isOk());
 
     /* Enumerate all the required event-types: */
     QVector<KVBoxEventType> eventTypes;
@@ -74,7 +74,7 @@ void UIProgressEventHandler::prepareListener()
 
     /* Register event listener for CProgress event source: */
     comEventSourceProgress.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
-    AssertWrapperOk(comEventSourceProgress);
+    Assert(comEventSourceProgress.isOk());
 
     /* Register event sources in their listeners as well: */
     m_pQtListener->getWrapped()->registerSource(comEventSourceProgress,
@@ -112,7 +112,7 @@ void UIProgressEventHandler::cleanupListener()
 
     /* Get CProgress event source: */
     CEventSource comEventSourceProgress = m_comProgress.GetEventSource();
-    AssertWrapperOk(comEventSourceProgress);
+    Assert(m_comProgress.isOk());
 
     /* Unregister event listener for CProgress event source: */
     comEventSourceProgress.UnregisterListener(m_comEventListener);

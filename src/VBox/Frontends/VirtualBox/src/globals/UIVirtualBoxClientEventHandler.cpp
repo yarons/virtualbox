@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxClientEventHandler.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualBoxClientEventHandler.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxClientEventHandler class implementation.
  */
@@ -118,10 +118,9 @@ void UIVirtualBoxClientEventHandlerProxy::prepareListener()
 
     /* Get VirtualBoxClient: */
     const CVirtualBoxClient comVBoxClient = uiCommon().virtualBoxClient();
-    AssertWrapperOk(comVBoxClient);
     /* Get VirtualBoxClient event source: */
     m_comEventSource = comVBoxClient.GetEventSource();
-    AssertWrapperOk(m_comEventSource);
+    Assert(comVBoxClient.isOk());
 
     /* Enumerate all the required event-types: */
     QVector<KVBoxEventType> eventTypes;
@@ -130,7 +129,7 @@ void UIVirtualBoxClientEventHandlerProxy::prepareListener()
 
     /* Register event listener for event source aggregator: */
     m_comEventSource.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
-    AssertWrapperOk(m_comEventSource);
+    Assert(m_comEventSource.isOk());
 
     /* Register event sources in their listeners as well: */
     m_pQtListener->getWrapped()->registerSource(m_comEventSource, m_comEventListener);

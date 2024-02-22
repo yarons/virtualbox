@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: UICommon.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -1349,7 +1349,7 @@ bool UICommon::switchToMachine(CMachine &comMachine)
 #else
     const WId id = (WId)comMachine.ShowConsoleWindow();
 #endif
-    AssertWrapperOk(comMachine);
+    Assert(comMachine.isOk());
     if (!comMachine.isOk())
         return false;
 

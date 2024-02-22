@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -175,10 +175,9 @@ void UIExtraDataEventHandler::prepareListener()
 
     /* Get VirtualBox: */
     const CVirtualBox comVBox = uiCommon().virtualBox();
-    AssertWrapperOk(comVBox);
     /* Get VirtualBox event source: */
     CEventSource comEventSourceVBox = comVBox.GetEventSource();
-    AssertWrapperOk(comEventSourceVBox);
+    Assert(comVBox.isOk());
 
     /* Enumerate all the required event-types: */
     QVector<KVBoxEventType> eventTypes;
@@ -188,7 +187,7 @@ void UIExtraDataEventHandler::prepareListener()
 
     /* Register event listener for VirtualBox event source: */
     comEventSourceVBox.RegisterListener(m_comEventListener, eventTypes, FALSE /* active? */);
-    AssertWrapperOk(comEventSourceVBox);
+    Assert(comEventSourceVBox.isOk());
 
     /* Register event sources in their listeners as well: */
     m_pQtListener->getWrapped()->registerSource(comEventSourceVBox, m_comEventListener);
@@ -221,10 +220,9 @@ void UIExtraDataEventHandler::cleanupListener()
 
     /* Get VirtualBox: */
     const CVirtualBox comVBox = uiCommon().virtualBox();
-    AssertWrapperOk(comVBox);
     /* Get VirtualBox event source: */
     CEventSource comEventSourceVBox = comVBox.GetEventSource();
-    AssertWrapperOk(comEventSourceVBox);
+    Assert(comVBox.isOk());
 
     /* Unregister event listener for VirtualBox event source: */
     comEventSourceVBox.UnregisterListener(m_comEventListener);

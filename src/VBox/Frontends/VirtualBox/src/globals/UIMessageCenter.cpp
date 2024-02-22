@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2092,20 +2092,12 @@ void UIMessageCenter::sltShowOnlineDocumentation()
 void UIMessageCenter::sltShowHelpAboutDialog()
 {
     CVirtualBox vbox = uiCommon().virtualBox();
-    QString strFullVersion;
-    if (uiCommon().brandingIsActive())
-    {
-        strFullVersion = QString("%1 r%2 - %3").arg(vbox.GetVersion())
-                                               .arg(vbox.GetRevision())
-                                               .arg(uiCommon().brandingGetKey("Name"));
-    }
-    else
-    {
-        strFullVersion = QString("%1 r%2").arg(vbox.GetVersion())
-                                          .arg(vbox.GetRevision());
-    }
-    AssertWrapperOk(vbox);
-
+    const QString strFullVersion = uiCommon().brandingIsActive()
+                                 ? QString("%1 r%2 - %3").arg(vbox.GetVersion())
+                                                         .arg(vbox.GetRevision())
+                                                         .arg(uiCommon().brandingGetKey("Name"))
+                                 : QString("%1 r%2").arg(vbox.GetVersion())
+                                                    .arg(vbox.GetRevision());
     (new VBoxAboutDlg(windowManager().mainWindowShown(), strFullVersion))->show();
 }
 
