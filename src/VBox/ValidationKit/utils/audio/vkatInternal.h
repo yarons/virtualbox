@@ -1,4 +1,4 @@
-/* $Id: vkatInternal.h 103507 2024-02-21 19:29:19Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatInternal.h 103517 2024-02-22 07:54:50Z andreas.loeffler@oracle.com $ */
 /** @file
  * VKAT - Internal header file for common definitions + structs.
  */
@@ -261,7 +261,7 @@ typedef struct AUDIOTESTENV
 {
     /** Audio testing mode. */
     AUDIOTESTMODE           enmMode;
-    /** Failsafe timeout (in ms). Default is 5 minutes. */
+    /** Failsafe timeout (in ms). Defaults to AUDIOTEST_TIMEOUT_DEFAULT_MS. */
     RTMSINTERVAL            msTimeout;
     /** Whether self test mode is active or not. */
     bool                    fSelftest;
