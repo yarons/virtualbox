@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 103059 2024-01-25 12:35:37Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 103540 2024-02-22 18:33:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -47,6 +47,12 @@
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
 
+/** Additional Qt event types. */
+enum UIEventTypeActionPool
+{
+    UIEventTypeActionPool_ActivateAction = QEvent::User + 101,
+};
+
 /** QEvent extension
   * representing action-activation event. */
 class ActivateActionEvent : public QEvent
@@ -55,7 +61,7 @@ public:
 
     /** Constructs @a pAction event. */
     ActivateActionEvent(QAction *pAction)
-        : QEvent((QEvent::Type)ActivateActionEventType)
+        : QEvent((QEvent::Type)UIEventTypeActionPool_ActivateAction)
         , m_pAction(pAction)
     {}
 
@@ -3692,7 +3698,7 @@ bool UIActionPool::event(QEvent *pEvent)
     /* Depending on event-type: */
     switch ((UIEventType)pEvent->type())
     {
-        case ActivateActionEventType:
+        case UIEventTypeActionPool_ActivateAction:
         {
             /* Process specific event: */
             ActivateActionEvent *pActionEvent = static_cast<ActivateActionEvent*>(pEvent);

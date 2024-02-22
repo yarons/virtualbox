@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103540 2024-02-22 18:33:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -42,12 +42,6 @@
 /** Global namespace. */
 namespace UIDefs
 {
-    /** Additional Qt event types. */
-    enum UIEventType
-    {
-        ActivateActionEventType = QEvent::User + 101,
-    };
-
     /** Default guest additions image name. */
     SHARED_LIBRARY_STUFF extern const char* GUI_GuestAdditionsName;
     /** Default extension pack name. */
