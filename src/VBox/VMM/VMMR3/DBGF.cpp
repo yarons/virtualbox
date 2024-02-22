@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 100144 2023-06-09 15:39:42Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGF.cpp 103515 2024-02-22 03:51:37Z knut.osmundsen@oracle.com $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -717,6 +717,23 @@ VMMR3DECL(int) DBGFR3EventSrcV(PVM pVM, DBGFEVENTTYPE enmEvent, const char *pszF
     int rc = dbgfR3EventPrologue(pVM, pVCpu, enmEvent);
     if (RT_FAILURE(rc))
         return rc;
+
+    /*
+     * Stop other CPUs for some messages so we can inspect the state accross
+     * all CPUs as best as possible.
+     */
+    /** @todo This isn't entirely sane as we'd need a wait to back out of this
+     *        if the debugger goes fishing and such. */
+    switch (enmEvent)
+    {
+        default:
+            break;
+        case DBGFEVENT_DEV_STOP:
+            rc = dbgfR3EventHaltAllVCpus(pVM, pVCpu);
+            if (RT_SUCCESS(rc))
+                break;
+            return rc;
+    }
 
     /*
      * Format the message.
