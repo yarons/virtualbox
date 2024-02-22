@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 103540 2024-02-22 18:33:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 103541 2024-02-22 18:34:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -3696,7 +3696,7 @@ void UIActionPool::updateShortcuts()
 bool UIActionPool::event(QEvent *pEvent)
 {
     /* Depending on event-type: */
-    switch ((UIEventType)pEvent->type())
+    switch ((UIEventTypeActionPool)pEvent->type())
     {
         case UIEventTypeActionPool_ActivateAction:
         {
