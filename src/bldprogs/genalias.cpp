@@ -1,4 +1,4 @@
-/* $Id: genalias.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: genalias.cpp 103519 2024-02-22 08:43:44Z alexander.eichner@oracle.com $ */
 /** @file
  * genalias - generate a number of alias objects.
  *
@@ -442,10 +442,6 @@ int main(int argc, char **argv)
     memcpy(s_szFile, argv[4], cchFile);
     s_szFile[cchFile++] = '/';
     pszFilename = &s_szFile[cchFile];
-
-    /* anything to do? */
-    if (argc == 5)
-        return 0;
 
     rc = 0;
     if (!strcmp(argv[5], "-r"))
