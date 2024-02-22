@@ -1,4 +1,4 @@
-/* $Id: VDPlugin.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VDPlugin.cpp 103525 2024-02-22 11:18:23Z alexander.eichner@oracle.com $ */
 /** @file
  * VD - Virtual disk container implementation, plugin related bits.
  */
@@ -727,7 +727,7 @@ DECLHIDDEN(int) vdPluginLoadFromPath(const char *pszPath)
                     break;
                 }
 
-                rc = vdPluginLoadFromFilename(pszPluginPath);
+                vdPluginLoadFromFilename(pszPluginPath);
                 RTStrFree(pszPluginPath);
             }
 
@@ -847,7 +847,7 @@ DECLHIDDEN(int) vdPluginUnloadFromPath(const char *pszPath)
                     break;
                 }
 
-                rc = vdPluginUnloadFromFilename(pszPluginPath);
+                vdPluginUnloadFromFilename(pszPluginPath);
                 RTStrFree(pszPluginPath);
             }
 
