@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdAudioTest.py 103499 2024-02-21 14:44:17Z andreas.loeffler@oracle.com $
+# $Id: tdAudioTest.py 103518 2024-02-22 08:27:01Z andreas.loeffler@oracle.com $
 
 """
 AudioTest test driver which invokes the VKAT (Validation Kit Audio Test)
@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103499 $"
+__version__ = "$Revision: 103518 $"
 
 # Standard Python imports.
 from datetime import datetime
@@ -458,12 +458,13 @@ class tdAudioTest(vbox.TestDriver):
                 reporter.logXcpt('Starting thread for "%s" failed' % (sWhat,));
 
         # Adjust fRc if caller expected a specific exit code.
-        if  iExpectedRc \
-        and iRc is not iExpectedRc:
+        if  iExpectedRc is not None \
+        and (iRc != iExpectedRc):
             reporter.error('Executing \"%s\" on host failed (got exit code %d, expected %d'
                            % (sWhat, iRc, iExpectedRc,));
             fRc = False;
 
+        reporter.log2('Got fRc = %s + exit code %d' % (fRc, iRc,));
         return fRc, iRc;
 
     def getWinFirewallArgsDisable(self, sOsType):
@@ -680,7 +681,7 @@ class tdAudioTest(vbox.TestDriver):
         #
         # Let VKAT on the host run synchronously.
         #
-        fRc, _ = self.executeHst("VKAT Host", asArgs);
+        fRc, _ = self.executeHst("VKAT Host", asArgs, iExpectedRc = 0);
 
         reporter.testDone();
 
