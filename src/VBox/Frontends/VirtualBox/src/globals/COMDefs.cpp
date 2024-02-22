@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 101567 2023-10-24 00:25:14Z sergey.dubov@oracle.com $ */
+/* $Id: COMDefs.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -30,15 +30,13 @@
 
 /* GUI includes: */
 #include "COMDefs.h"
+#include "UILoggingDefs.h"
 
 /* COM includes: */
 #include "CVirtualBoxErrorInfo.h"
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>
-
-/* Other VBox includes: */
-#include <iprt/log.h>
 
 #ifdef VBOX_WITH_XPCOM
 

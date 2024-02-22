@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 103128 2024-01-31 08:19:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIChooser.h"
+#include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIVirtualBoxManager.h"

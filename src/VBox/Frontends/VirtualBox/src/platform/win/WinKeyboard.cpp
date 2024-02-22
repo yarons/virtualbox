@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: WinKeyboard.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Windows Keyboard specific tasks.
  */
@@ -25,15 +25,12 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-/* Defines: */
-#define LOG_GROUP LOG_GROUP_GUI
-
 /* GUI includes: */
+#include "UILoggingDefs.h"
 #include "WinKeyboard.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
-#include <VBox/log.h>
 
 /* External includes: */
 #include <stdio.h>

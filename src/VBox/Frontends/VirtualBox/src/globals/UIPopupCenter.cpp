@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupCenter.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -31,6 +31,7 @@
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
 #include "UIHostComboEditor.h"
+#include "UILoggingDefs.h"
 #include "UIPopupCenter.h"
 #include "UIPopupStack.h"
 

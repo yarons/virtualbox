@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 102480 2023-12-05 15:26:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -42,6 +42,7 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
+#include "UILoggingDefs.h"
 #include "UIMediumSearchWidget.h"
 #include "UIMediumSelector.h"
 #include "UIMessageCenter.h"

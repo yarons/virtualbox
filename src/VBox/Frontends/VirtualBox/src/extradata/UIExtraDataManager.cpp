@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -57,6 +57,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIHostComboEditor.h"
+#include "UILoggingDefs.h"
 #include "UIMainEventListener.h"
 #include "UIMessageCenter.h"
 #include "UISettingsDefs.h"

@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 103399 2024-02-16 11:26:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINetworkReply.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -33,6 +33,7 @@
 #include <QVariant>
 
 /* GUI includes: */
+#include "UILoggingDefs.h"
 #include "UINetworkReply.h"
 #include "UINetworkRequestManager.h"
 #include "UIExtraDataManager.h"
@@ -52,7 +53,6 @@
 #include <iprt/sha.h>
 #include <iprt/string.h>
 #include <iprt/zip.h>
-#include <VBox/log.h>
 
 
 /** QThread extension

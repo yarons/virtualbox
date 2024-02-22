@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIChooserNodeMachine.h"
 #include "UICloudNetworkingStuff.h"
 #include "UIExtraDataManager.h"
+#include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIProgressTaskReadCloudMachineList.h"

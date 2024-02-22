@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -42,6 +42,7 @@
 #include "UIMachine.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
+#include "UILoggingDefs.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
 #include "UIMessageCenter.h"

@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -31,22 +31,12 @@
 # pragma once
 #endif
 
-/* Define GUI log group: */
-// WORKAROUND:
-// This define should go *before* VBox/log.h include!
-#ifndef LOG_GROUP
-# define LOG_GROUP LOG_GROUP_GUI
-#endif
-
 /* Qt includes: */
 #include <QEvent>
 #include <QStringList>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
-
-/* Other VBox includes: */
-#include <VBox/log.h>
 
 
 /** Global namespace. */

@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 103246 2024-02-07 13:12:46Z andreas.loeffler@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIExtraDataManager.h"
 #include "UIFrameBuffer.h"
 #include "UIKeyboardHandler.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"

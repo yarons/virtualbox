@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 98670 2023-02-21 11:47:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIMultiScreenLayout.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -30,6 +30,7 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogic.h"
 #include "UIMessageCenter.h"

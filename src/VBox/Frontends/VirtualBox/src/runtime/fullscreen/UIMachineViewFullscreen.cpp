@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineViewFullscreen.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -31,25 +31,23 @@
 #include <QTimer>
 #ifdef VBOX_WS_MAC
 # include <QMenuBar>
-#endif /* VBOX_WS_MAC */
+#endif
 
 /* GUI includes: */
 #include "UIActionPoolRuntime.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIFrameBuffer.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogicFullscreen.h"
 #include "UIMachineViewFullscreen.h"
 #include "UIMachineWindow.h"
 
-/* Other VBox includes: */
-#include "VBox/log.h"
-
 /* External includes: */
 #ifdef VBOX_WS_NIX
 # include <limits.h>
-#endif /* VBOX_WS_NIX */
+#endif
 
 
 UIMachineViewFullscreen::UIMachineViewFullscreen(UIMachineWindow *pMachineWindow, ulong uScreenId)

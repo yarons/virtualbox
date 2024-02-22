@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 101562 2023-10-23 16:55:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -44,11 +44,12 @@
 #endif
 
 /* GUI includes: */
-#include "UIMiniToolBar.h"
-#include "UIAnimationFramework.h"
-#include "UIIconPool.h"
-#include "UIDesktopWidgetWatchdog.h"
 #include "UICommon.h"
+#include "UIAnimationFramework.h"
+#include "UIDesktopWidgetWatchdog.h"
+#include "UIIconPool.h"
+#include "UILoggingDefs.h"
+#include "UIMiniToolBar.h"
 #ifdef VBOX_WS_NIX
 # include "UIExtraDataManager.h"
 #endif

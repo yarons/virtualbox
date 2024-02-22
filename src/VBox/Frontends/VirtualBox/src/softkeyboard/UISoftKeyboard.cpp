@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 102548 2023-12-08 15:48:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -54,6 +54,7 @@
 #include "UIExtraDataManager.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIIconPool.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"

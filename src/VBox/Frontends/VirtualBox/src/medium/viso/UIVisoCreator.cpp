@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 102515 2023-12-07 09:08:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -47,8 +47,9 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
-#include "UIPaneContainer.h"
+#include "UILoggingDefs.h"
 #include "UIModalWindowManager.h"
+#include "UIPaneContainer.h"
 #include "UIVisoCreator.h"
 #include "UIVisoContentBrowser.h"
 #ifdef VBOX_WS_MAC

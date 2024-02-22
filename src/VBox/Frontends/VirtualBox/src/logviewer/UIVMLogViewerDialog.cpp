@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 102732 2023-12-29 16:35:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
+#include "UILoggingDefs.h"
 #include "UIVMLogViewerDialog.h"
 #include "UIVMLogViewerWidget.h"
 #include "UICommon.h"

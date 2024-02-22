@@ -1,4 +1,4 @@
-/* $Id: main.cpp 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: main.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -36,6 +36,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UILoggingDefs.h"
 #include "UIStarter.h"
 #include "UIModalWindowManager.h"
 #ifdef VBOX_WS_MAC

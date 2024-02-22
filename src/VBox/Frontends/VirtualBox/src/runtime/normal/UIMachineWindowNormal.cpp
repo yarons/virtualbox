@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineWindowNormal.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -43,6 +43,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIndicatorsPool.h"
 #include "UIKeyboardHandler.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMouseHandler.h"
 #include "UIMachineLogic.h"

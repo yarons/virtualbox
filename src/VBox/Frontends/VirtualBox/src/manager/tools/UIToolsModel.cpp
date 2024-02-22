@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 102813 2024-01-10 12:27:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIIconPool.h"
+#include "UILoggingDefs.h"
 #include "UITools.h"
 #include "UIToolsHandlerMouse.h"
 #include "UIToolsHandlerKeyboard.h"

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -55,6 +55,7 @@
 #include "UIHostComboEditor.h"
 #include "UIIconPool.h"
 #include "UIKeyboardHandler.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogic.h"
 #include "UIMachineLogicFullscreen.h"

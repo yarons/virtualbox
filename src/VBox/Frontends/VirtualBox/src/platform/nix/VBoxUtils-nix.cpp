@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-nix.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxUtils-nix.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling X11 specific tasks.
  */
@@ -38,6 +38,7 @@
 #include <QGuiApplication>
 
 /* GUI includes: */
+#include "UILoggingDefs.h"
 #include "VBoxUtils-nix.h"
 
 /* Other VBox includes: */
@@ -45,7 +46,6 @@
 #include <iprt/env.h>
 #include <iprt/process.h>
 #include <iprt/string.h>
-#include <VBox/log.h>
 
 /* Other includes: */
 #undef  BOOL            /* Undefine the VBox/com/defs.h variant */

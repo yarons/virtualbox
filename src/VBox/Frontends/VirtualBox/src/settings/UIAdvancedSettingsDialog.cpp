@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 103169 2024-02-01 17:51:58Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -57,6 +57,7 @@
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
+#include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIPopupCenter.h"

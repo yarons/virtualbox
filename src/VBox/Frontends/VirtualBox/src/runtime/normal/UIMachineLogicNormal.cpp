@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogicNormal.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -36,6 +36,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIFrameBuffer.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogicNormal.h"
 #include "UIMachineWindow.h"

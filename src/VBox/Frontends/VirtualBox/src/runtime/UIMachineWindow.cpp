@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 102419 2023-12-01 13:30:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindow.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIConverter.h"
 #include "UIModalWindowManager.h"
 #include "UIExtraDataManager.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UIMachineLogic.h"

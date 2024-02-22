@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 102147 2023-11-20 06:35:00Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -40,6 +40,7 @@
 #include "UIInformationConfiguration.h"
 #include "UIInformationRuntime.h"
 #include "UIGuestProcessControlWidget.h"
+#include "UILoggingDefs.h"
 #include "UIMachineLogic.h"
 #include "UIMachine.h"
 #include "UIMachineView.h"

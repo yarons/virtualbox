@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
+#include "UILoggingDefs.h"
 #include "UIMediumDetailsWidget.h"
 #include "UIMediumItem.h"
 #include "UIMediumManager.h"

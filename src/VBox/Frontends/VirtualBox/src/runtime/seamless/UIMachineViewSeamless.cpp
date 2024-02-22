@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineViewSeamless.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIFrameBuffer.h"
+#include "UILoggingDefs.h"
 #include "UIMachine.h"
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineViewSeamless.h"
@@ -45,14 +46,10 @@
 /* COM includes: */
 #include "CConsole.h"
 
-/* Other VBox includes: */
-#include "VBox/log.h"
-
 /* External includes: */
 #ifdef VBOX_WS_NIX
 # include <limits.h>
-#endif /* VBOX_WS_NIX */
-
+#endif
 
 
 UIMachineViewSeamless::UIMachineViewSeamless(UIMachineWindow *pMachineWindow, ulong uScreenId)

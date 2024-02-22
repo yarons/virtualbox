@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 99830 2023-05-17 14:03:55Z serkan.bayraktar@oracle.com $ */
+/* $Id: XKeyboard-new.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
@@ -25,18 +25,12 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-/* Define GUI log group.
- * This define should go *before* VBox/log.h include: */
-#define LOG_GROUP LOG_GROUP_GUI
-
 /* Qt includes: */
 #include <QString>
 #include <QStringList>
 
-/* Other VBox includes: */
-#include <VBox/log.h>
-
 /* GUI includes: */
+#include "UILoggingDefs.h"
 #include "XKeyboard.h"
 
 /* Other VBox includes: */
