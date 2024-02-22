@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifynvram" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2023-04-21 23:59:02 +0200 (Fri, 21 Apr 2023) $</pubdate>
+    <pubdate>$Date: 2024-02-22 15:05:31 +0100 (Thu, 22 Feb 2024) $</pubdate>
     <title>VBoxManage modifynvram</title>
   </refentryinfo>
 
@@ -89,6 +89,18 @@
       <arg choice="plain">enrollmok</arg>
       <arg>--mok=<replaceable>filename</replaceable></arg>
       <arg>--owner-uuid=<replaceable>uuid</replaceable></arg>
+    </cmdsynopsis>
+    <cmdsynopsis id="synopsis-vboxmanage-modifynvram-secureboot">
+      <command>VBoxManage modifynvram</command>
+      <group choice="req">
+        <arg choice="plain"><replaceable>uuid</replaceable></arg>
+        <arg choice="plain"><replaceable>vmname</replaceable></arg>
+      </group>
+      <arg choice="plain">secureboot</arg>
+      <group choice="req">
+        <arg choice="plain">--enable</arg>
+        <arg choice="plain">--disable</arg>
+      </group>
     </cmdsynopsis>
     <cmdsynopsis id="synopsis-vboxmanage-modifynvram-listvars">
       <command>VBoxManage modifynvram</command>
@@ -193,6 +205,27 @@
         <varlistentry>
           <term><option>--owner-uuid=<replaceable>uuid</replaceable></option></term>
           <listitem><para>The UUID identifying the owner of the platform key.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2 id="vboxmanage-modifynvram-secureboot">
+      <title>modifynvram secureboot</title>
+      <remark role="help-copy-synopsis"/>
+      <para>
+        Enables or disables UEFI secure boot.
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><option>--enable></option></term>
+          <listitem><para>Enables UEFI secure boot if the state of the key
+            enrolment permits.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><option>--disable></option></term>
+          <listitem><para>Disables UEFI secure boot.</para>
           </listitem>
         </varlistentry>
       </variablelist>

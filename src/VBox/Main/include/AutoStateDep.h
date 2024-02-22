@@ -1,4 +1,4 @@
-/* $Id: AutoStateDep.h 98263 2023-01-24 01:52:49Z knut.osmundsen@oracle.com $ */
+/* $Id: AutoStateDep.h 103532 2024-02-22 14:05:31Z klaus.espenlaub@oracle.com $ */
 
 #ifndef MAIN_INCLUDED_AutoStateDep_h
 #define MAIN_INCLUDED_AutoStateDep_h
@@ -72,13 +72,13 @@
               mMachineState(MachineState_Null),
               mRegistered(FALSE)
         {
-            Assert(aThat);
-            mRC = aThat->i_addStateDependency(taDepType, &mMachineState,
-                                            &mRegistered);
+            if (RT_VALID_PTR(aThat))
+                mRC = aThat->i_addStateDependency(taDepType, &mMachineState,
+                                                  &mRegistered);
         }
         ~AutoStateDependency()
         {
-            if (SUCCEEDED(mRC))
+            if (RT_VALID_PTR(mThat) && SUCCEEDED(mRC))
                 mThat->i_releaseStateDependency();
         }
 
@@ -87,7 +87,8 @@
         void release()
         {
             AssertReturnVoid(SUCCEEDED(mRC));
-            mThat->i_releaseStateDependency();
+            if (RT_VALID_PTR(mThat))
+                mThat->i_releaseStateDependency();
             mRC = E_FAIL;
         }
 
@@ -97,8 +98,11 @@
         void add()
         {
             AssertReturnVoid(!SUCCEEDED(mRC));
-            mRC = mThat->i_addStateDependency(taDepType, &mMachineState,
-                                            &mRegistered);
+            if (RT_VALID_PTR(mThat))
+                mRC = mThat->i_addStateDependency(taDepType, &mMachineState,
+                                                  &mRegistered);
+            else
+                mRC = S_OK;
         }
 
         /** Returns the result of Machine::addStateDependency(). */

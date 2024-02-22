@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.cpp 103532 2024-02-22 14:05:31Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -151,10 +151,6 @@ void UefiVariableStore::uninit()
 
 HRESULT UefiVariableStore::getSecureBootEnabled(BOOL *pfEnabled)
 {
-    /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(m->pMachine);
-    if (FAILED(adep.hrc())) return adep.hrc();
-
     HRESULT hrc = i_retainUefiVariableStore(true /*fReadonly*/);
     if (FAILED(hrc)) return hrc;
 
@@ -323,10 +319,6 @@ HRESULT UefiVariableStore::queryVariableByName(const com::Utf8Str &aName, com::G
                                                std::vector<UefiVariableAttributes_T> &aAttributes,
                                                std::vector<BYTE> &aData)
 {
-    /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(m->pMachine);
-    if (FAILED(adep.hrc())) return adep.hrc();
-
     HRESULT hrc = i_retainUefiVariableStore(true /*fReadonly*/);
     if (FAILED(hrc)) return hrc;
 
@@ -369,10 +361,6 @@ HRESULT UefiVariableStore::queryVariableByName(const com::Utf8Str &aName, com::G
 HRESULT UefiVariableStore::queryVariables(std::vector<com::Utf8Str> &aNames,
                                           std::vector<com::Guid> &aOwnerUuids)
 {
-    /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(m->pMachine);
-    if (FAILED(adep.hrc())) return adep.hrc();
-
     HRESULT hrc = i_retainUefiVariableStore(true /*fReadonly*/);
     if (FAILED(hrc)) return hrc;
 
@@ -521,6 +509,7 @@ HRESULT UefiVariableStore::addSignatureToDbx(const std::vector<BYTE> &aData, con
 
 HRESULT UefiVariableStore::enrollDefaultMsSignatures(void)
 {
+    /* the machine needs to be mutable */
     AutoMutableStateDependency adep(m->pMachine);
     if (FAILED(adep.hrc())) return adep.hrc();
 
