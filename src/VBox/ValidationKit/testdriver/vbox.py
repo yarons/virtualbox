@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 103381 2024-02-15 10:32:35Z andreas.loeffler@oracle.com $
+# $Id: vbox.py 103520 2024-02-22 10:07:39Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103381 $"
+__version__ = "$Revision: 103520 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -2385,6 +2385,9 @@ class TestDriver(base.TestDriver):                                              
         reporter.log("    AudioController:  %s"
                      % (self.oVBoxMgr.getEnumValueName('AudioControllerType', oAdapter.audioController),));               # pylint: disable=not-callable
         reporter.log("    AudioEnabled:     %s" % (oAdapter.enabled,));
+        if self.fpApiVer >= 7.0:
+            reporter.log("    AudioEnabled In:  %s" % (oAdapter.enabledIn,));
+            reporter.log("    AudioEnabled Out: %s" % (oAdapter.enabledOut,));
         reporter.log("    Host AudioDriver: %s"
                      % (self.oVBoxMgr.getEnumValueName('AudioDriverType', oAdapter.audioDriver),));                       # pylint: disable=not-callable
 
