@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -1597,7 +1597,7 @@ bool UIMachine::prepareSession()
 void UIMachine::prepareActions()
 {
     /* Create action-pool: */
-    m_pActionPool = UIActionPool::create(UIActionPoolType_Runtime);
+    m_pActionPool = UIActionPool::create(UIType_RuntimeUI);
     if (actionPool())
     {
         /* Make sure action-pool knows guest-screen count: */

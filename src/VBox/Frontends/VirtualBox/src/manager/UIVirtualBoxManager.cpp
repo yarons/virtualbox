@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2443,7 +2443,7 @@ void UIVirtualBoxManager::prepareMenuBar()
 #endif
 
     /* Create action-pool: */
-    m_pActionPool = UIActionPool::create(UIActionPoolType_Manager);
+    m_pActionPool = UIActionPool::create(UIType_ManagerUI);
 
     /* Prepare menu update-handlers: */
     m_menuUpdateHandlers[UIActionIndexMN_M_Group] = &UIVirtualBoxManager::updateMenuGroup;
