@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -2390,7 +2390,7 @@ CProgress UINotificationProgressMachineSaveState::createProgress(COMResult &comR
     /* For Manager UI: */
     switch (uiCommon().uiType())
     {
-        case UICommon::UIType_SelectorUI:
+        case UIType_ManagerUI:
         {
             /* Open a session thru which we will modify the machine: */
             m_comSession = uiCommon().openExistingSession(uId);
@@ -2497,7 +2497,7 @@ CProgress UINotificationProgressMachinePowerOff::createProgress(COMResult &comRe
     /* For Manager UI: */
     switch (uiCommon().uiType())
     {
-        case UICommon::UIType_SelectorUI:
+        case UIType_ManagerUI:
         {
             /* Acquire VM id: */
             const QUuid uId = comMachine.GetId();
@@ -2542,7 +2542,7 @@ CProgress UINotificationProgressMachinePowerOff::createProgress(COMResult &comRe
     /* For Runtime UI: */
     switch (uiCommon().uiType())
     {
-        case UICommon::UIType_RuntimeUI:
+        case UIType_RuntimeUI:
         {
             /* Check the console state, it might be already gone: */
             if (!comConsole.isNull())
@@ -3719,7 +3719,7 @@ CProgress UINotificationProgressSnapshotTake::createProgress(COMResult &comResul
     /* For Manager UI: */
     switch (uiCommon().uiType())
     {
-        case UICommon::UIType_SelectorUI:
+        case UIType_ManagerUI:
         {
             /* Acquire session state: */
             const KSessionState enmSessionState = m_comMachine.GetSessionState();
@@ -3748,7 +3748,7 @@ CProgress UINotificationProgressSnapshotTake::createProgress(COMResult &comResul
 
             break;
         }
-        case UICommon::UIType_RuntimeUI:
+        case UIType_RuntimeUI:
         {
             /* Get passed machine: */
             comMachine = m_comMachine;

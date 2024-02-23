@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2189,7 +2189,7 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType enmType,
     QStringList confirmedMessageList;
     if (!strAutoConfirmId.isEmpty())
     {
-        const QUuid uID = uiCommon().uiType() == UICommon::UIType_RuntimeUI
+        const QUuid uID = uiCommon().uiType() == UIType_RuntimeUI
                         ? uiCommon().managedVMUuid()
                         : UIExtraDataManager::GlobalID;
         confirmedMessageList = gEDataManager->suppressedMessages(uID);

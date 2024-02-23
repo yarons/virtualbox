@@ -1,4 +1,4 @@
-/* $Id: main.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -541,10 +541,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 
 #ifndef VBOX_RUNTIME_UI
         /* Create global app instance for Selector UI: */
-        UICommon::create(UICommon::UIType_SelectorUI);
+        UICommon::create(UIType_ManagerUI);
 #else
         /* Create global app instance for Runtime UI: */
-        UICommon::create(UICommon::UIType_RuntimeUI);
+        UICommon::create(UIType_RuntimeUI);
 #endif
 
         /* Simulate try-catch block: */

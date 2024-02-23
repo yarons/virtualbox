@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: UICommon.h 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -143,13 +143,6 @@ signals:
     /** @} */
 
 public:
-
-    /** UI types. */
-    enum UIType
-    {
-        UIType_SelectorUI,
-        UIType_RuntimeUI
-    };
 
     /** VM launch running options. */
     enum LaunchRunning

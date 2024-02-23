@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4891,7 +4891,7 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
     else
     {
         /* Current VM only: */
-        if (   uiCommon().uiType() == UICommon::UIType_RuntimeUI
+        if (   uiCommon().uiType() == UIType_RuntimeUI
             && uMachineID == uiCommon().managedVMUuid())
         {
             /* HID LEDs sync state changed (allowed if not restricted)? */

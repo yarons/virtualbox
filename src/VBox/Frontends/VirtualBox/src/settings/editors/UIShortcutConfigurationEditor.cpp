@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 102220 2023-11-21 17:19:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -977,7 +977,7 @@ void UIShortcutConfigurationEditor::prepareTabRuntime()
         m_pTabWidget->insertTab(TableIndex_Runtime, pTabMachine, QString());
 
         /* In the VM process we start by displaying the Runtime UI tab: */
-        if (uiCommon().uiType() == UICommon::UIType_RuntimeUI)
+        if (uiCommon().uiType() == UIType_RuntimeUI)
             m_pTabWidget->setCurrentWidget(pTabMachine);
     }
 }

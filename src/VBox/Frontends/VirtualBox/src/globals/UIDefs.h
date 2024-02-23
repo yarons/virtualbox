@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 103540 2024-02-22 18:33:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.h 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -32,7 +32,6 @@
 #endif
 
 /* Qt includes: */
-#include <QEvent>
 #include <QStringList>
 
 /* GUI includes: */
@@ -81,6 +80,14 @@ enum MacOSXRelease
     MacOSXRelease_New,
 };
 #endif /* VBOX_WS_MAC */
+
+
+/** UI types. */
+enum UIType
+{
+    UIType_ManagerUI,
+    UIType_RuntimeUI
+};
 
 
 /** VM launch modes. */
