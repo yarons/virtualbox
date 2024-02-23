@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotPane.cpp 103550 2024-02-23 15:45:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -45,6 +45,7 @@
 #include "QIToolBar.h"
 #include "QITreeWidget.h"
 #include "UIActionPoolManager.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"

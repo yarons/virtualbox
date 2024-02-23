@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 103020 2024-01-24 12:44:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 103550 2024-02-23 15:45:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -34,6 +34,7 @@
 
 /* GUI includes */
 #include "UIActionPoolManager.h"
+#include "UICommon.h"
 #include "UIDetails.h"
 #include "UIErrorPane.h"
 #include "UIFileManager.h"
