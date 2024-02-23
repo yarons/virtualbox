@@ -1,4 +1,4 @@
-/* $Id: ValidationKitCodingGuidelines.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: ValidationKitCodingGuidelines.cpp 103545 2024-02-23 11:48:53Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Coding Guidelines.
  */
@@ -47,7 +47,7 @@
  * type of a variable or attribute can be very helpful.
  *
  * Type prefixes:
- *      - 'b' for byte (octect).
+ *      - 'b' for byte (octet).
  *      - 'ch' for a single character.
  *      - 'f' for boolean and flags.
  *      - 'fn' for function or method references.
@@ -67,7 +67,7 @@
  *      - 't' for a tuple.
  *
  * Other qualifiers:
- *      - 'c' for a count. Implies integer or long integer type. Higest
+ *      - 'c' for a count. Implies integer or long integer type. Highest
  *        priority.
  *      - 'sec' for a second value. Implies long integer type.
  *      - 'ms' for a millisecond value. Implies long integer type.

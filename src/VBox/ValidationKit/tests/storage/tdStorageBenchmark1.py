@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 103336 2024-02-13 14:05:35Z andreas.loeffler@oracle.com $
+# $Id: tdStorageBenchmark1.py 103545 2024-02-23 11:48:53Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103336 $"
+__version__ = "$Revision: 103545 $"
 
 
 # Standard Python imports.
@@ -493,7 +493,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         # Testbox configs (Flag whether to test raw mode on the testbox, disk configuration)
         'testboxstor1.de.oracle.com': (True, storagecfg.DiskCfg('solaris', storagecfg.g_ksDiskCfgRegExp, r'c[3-9]t\dd0\Z')),
         # Windows testbox doesn't return testboxstor2.de.oracle.com from socket.getfqdn()
-        'testboxstor2':               (False, storagecfg.DiskCfg('win',     storagecfg.g_ksDiskCfgStatic, 'D:\\StorageTest')),
+        'testboxstor2':               (False, storagecfg.DiskCfg('win', storagecfg.g_ksDiskCfgStatic, 'D:/StorageTest')),
 
         # Local test configs for the testcase developer
         'adaris':                     (True, storagecfg.DiskCfg('linux',   storagecfg.g_ksDiskCfgStatic, \
