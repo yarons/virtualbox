@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: reqpool.cpp 103543 2024-02-23 08:23:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -395,6 +395,7 @@ static DECLCALLBACK(int) rtReqPoolThreadProc(RTTHREAD hThreadSelf, void *pvArg)
         if (pReq)
         {
             Assert(RTListIsEmpty(&pThread->IdleNode)); /* Must not be in the idle list. */
+            ASMAtomicDecU32(&pPool->cIdleThreads); /* Was already marked as idle above. */
             RTCritSectLeave(&pPool->CritSect);
 
             rtReqPoolThreadProcessRequest(pPool, pThread, pReq);
