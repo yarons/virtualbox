@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -37,6 +37,7 @@
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "UICloudNetworkingStuff.h"
+#include "UICommon.h"
 #include "UIEmptyFilePathSelector.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -34,6 +34,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "QITreeView.h"
+#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIGuestOSType.h"
 #include "UIMessageCenter.h"

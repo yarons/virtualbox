@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -54,6 +54,7 @@
 #include "UICloudConsoleManager.h"
 #include "UICloudNetworkingStuff.h"
 #include "UICloudProfileManager.h"
+#include "UICommon.h"
 #include "UIDesktopServices.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIErrorString.h"

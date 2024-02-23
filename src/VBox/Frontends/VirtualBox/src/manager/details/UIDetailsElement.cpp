@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -45,6 +45,7 @@
 #include "UIBootOrderEditor.h"
 #include "UICloudMachineSettingsDialogPage.h"
 #include "UICloudNetworkingStuff.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UICursor.h"
 #include "UIDetailsElement.h"

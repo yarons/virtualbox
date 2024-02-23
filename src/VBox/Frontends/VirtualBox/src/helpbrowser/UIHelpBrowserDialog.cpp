@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 100896 2023-08-17 12:18:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -34,6 +34,7 @@
 #include <QStatusBar>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"

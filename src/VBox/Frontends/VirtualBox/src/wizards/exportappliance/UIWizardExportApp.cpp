@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardExportApp.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -32,6 +32,7 @@
 
 /* GUI includes: */
 #include "UIAddDiskEncryptionPasswordDialog.h"
+#include "UICommon.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"

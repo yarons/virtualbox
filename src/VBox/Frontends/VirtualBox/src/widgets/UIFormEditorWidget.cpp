@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIFormEditorWidget.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -44,6 +44,7 @@
 #include "QIStyledItemDelegate.h"
 #include "QITableView.h"
 #include "QIWithRetranslateUI.h"
+#include "UICommon.h"
 #include "UIFormEditorWidget.h"
 #include "UIIconPool.h"
 #include "UINotificationCenter.h"

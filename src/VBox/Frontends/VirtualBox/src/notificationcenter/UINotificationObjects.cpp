@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 102600 2023-12-14 16:22:28Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -30,6 +30,7 @@
 #include <QFileInfo>
 
 /* GUI includes: */
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
