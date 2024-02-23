@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediaComboBox.h 103546 2024-02-23 15:21:15Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class declaration.
  */
@@ -36,8 +36,9 @@
 #include <QString>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UILibraryDefs.h"
+#include "UIMedium.h"
+#include "UIMediumDefs.h"
 
 /** QComboBox subclass representing a list of registered media. */
 class SHARED_LIBRARY_STUFF UIMediaComboBox : public QComboBox
