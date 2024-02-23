@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103256 2024-02-07 15:07:09Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103542 2024-02-23 00:26:32Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103256 $"
+__version__ = "$Revision: 103542 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -1504,6 +1504,9 @@ class Instruction(object): # pylint: disable=too-many-instance-attributes
         self.asCopyTests    = [];
         ## @}
 
+        ## All the MC blocks associated with this instruction.
+        self.aoMcBlocks     = []        # type: List[McBlock]
+
     def toString(self, fRepr = False):
         """ Turn object into a string. """
         aasFields = [];
@@ -1866,6 +1869,24 @@ class McStmt(object):
                 if oHit:
                     return oHit;
         return None;
+
+    @staticmethod
+    def countStmtsByName(aoStmts, dNames, dRet):
+        """
+        Searches the given list of statements for the names in the dictionary,
+        adding each found to dRet with an occurnece count.
+
+        return total number of hits;
+        """
+        cHits = 0;
+        for oStmt in aoStmts:
+            if oStmt.sName in dNames:
+                dRet[oStmt.sName] = dRet.get(oStmt.sName, 0) + 1;
+                cHits += 1;
+            if isinstance(oStmt, McStmtCond):
+                cHits += McStmt.countStmtsByName(oStmt.aoIfBranch,   dNames, dRet);
+                cHits += McStmt.countStmtsByName(oStmt.aoElseBranch, dNames, dRet);
+        return cHits;
 
     def isCppStmt(self):
         """ Checks if this is a C++ statement. """
@@ -5363,6 +5384,8 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         except Exception as oXcpt:
             self.raiseError(oXcpt.args[0]);
 
+        if self.oCurMcBlock.oInstruction:
+            self.oCurMcBlock.oInstruction.aoMcBlocks.append(self.oCurMcBlock);
         self.iMcBlockInFunc += 1;
         return True;
 
@@ -5527,6 +5550,8 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         oMcBlock.complete(self.iLine, 0 if cLines > 0 else offBeginStatementInCodeStr, offAfter + 1, asLines);
 
         g_aoMcBlocks.append(oMcBlock);
+        if oMcBlock.oInstruction:
+            oMcBlock.oInstruction.aoMcBlocks.append(oMcBlock);
         self.cTotalMcBlocks += 1;
         self.iMcBlockInFunc += 1;
 
@@ -6060,10 +6085,12 @@ class SimpleParser(object): # pylint: disable=too-many-instance-attributes
         return self.printErrors();
 
 # Some sanity checking.
-for sClass, dLists in SimpleParser.kdEFlagsClasses.items():
-    for sAttrib, asFlags in dLists.items():
-        for sFlag in asFlags:
-            assert sFlag in g_kdEFlagsMnemonics, 'sClass=%s sAttrib=%s sFlag=%s' % (sClass, sAttrib, sFlag,);
+def __sanityCheckEFlagsClasses():
+    for sClass, dLists in SimpleParser.kdEFlagsClasses.items():
+        for sAttrib, asFlags in dLists.items():
+            for sFlag in asFlags:
+                assert sFlag in g_kdEFlagsMnemonics, 'sClass=%s sAttrib=%s sFlag=%s' % (sClass, sAttrib, sFlag,);
+__sanityCheckEFlagsClasses();
 
 ## The parsed content of IEMAllInstCommonBodyMacros.h.
 g_oParsedCommonBodyMacros = None # type: SimpleParser
