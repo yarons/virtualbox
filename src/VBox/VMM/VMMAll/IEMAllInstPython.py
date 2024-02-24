@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103542 2024-02-23 00:26:32Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103555 2024-02-24 02:14:09Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103542 $"
+__version__ = "$Revision: 103555 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2899,10 +2899,10 @@ g_dMcStmtParsers = {
     'IEM_MC_AND_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_AND_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_AND_GREG_U8':                                        (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_AND_LOCAL_U16':                                      (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_AND_LOCAL_U32':                                      (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_AND_LOCAL_U64':                                      (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_AND_LOCAL_U8':                                       (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_AND_LOCAL_U16':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_AND_LOCAL_U32':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_AND_LOCAL_U64':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_AND_LOCAL_U8':                                       (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_ARG':                                                (McBlock.parseMcArg,               False, False, True,  ),
     'IEM_MC_ARG_CONST':                                          (McBlock.parseMcArgConst,          False, False, True,  ),
     'IEM_MC_ARG_LOCAL_EFLAGS':                                   (McBlock.parseMcArgLocalEFlags,    False, False, True,  ),
@@ -3158,9 +3158,9 @@ g_dMcStmtParsers = {
     'IEM_MC_OR_GREG_U32':                                        (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_OR_GREG_U64':                                        (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_OR_GREG_U8':                                         (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_OR_LOCAL_U16':                                       (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_OR_LOCAL_U32':                                       (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_OR_LOCAL_U8':                                        (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_OR_LOCAL_U16':                                       (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_OR_LOCAL_U32':                                       (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_OR_LOCAL_U8':                                        (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_POP_GREG_U16':                                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_POP_GREG_U32':                                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_POP_GREG_U64':                                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
