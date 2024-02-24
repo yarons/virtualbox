@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103556 2024-02-24 11:04:39Z bela.lubkin@oracle.com $ */
+/* $Id: IEMInternal.h 103558 2024-02-24 11:06:53Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3648,6 +3648,11 @@ FNIEMAIMPLMEDIAOPTF3U128     iemAImpl_vpermilps_u128,     iemAImpl_vpermilps_u12
 FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_vpermilps_imm_u128, iemAImpl_vpermilps_imm_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U256     iemAImpl_vpermilps_u256,     iemAImpl_vpermilps_u256_fallback;
 FNIEMAIMPLMEDIAOPTF2U256IMM8 iemAImpl_vpermilps_imm_u256, iemAImpl_vpermilps_imm_u256_fallback;
+
+FNIEMAIMPLMEDIAOPTF3U128     iemAImpl_vpermilpd_u128,     iemAImpl_vpermilpd_u128_fallback;
+FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_vpermilpd_imm_u128, iemAImpl_vpermilpd_imm_u128_fallback;
+FNIEMAIMPLMEDIAOPTF3U256     iemAImpl_vpermilpd_u256,     iemAImpl_vpermilpd_u256_fallback;
+FNIEMAIMPLMEDIAOPTF2U256IMM8 iemAImpl_vpermilpd_imm_u256, iemAImpl_vpermilpd_imm_u256_fallback;
 /** @} */
 
 /** @name Media Odds and Ends
