@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103579 2024-02-26 17:35:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -747,7 +747,7 @@ void UICommon::prepare()
     }
 
     /* Create shortcut pool: */
-    UIShortcutPool::create();
+    UIShortcutPool::create(uiType());
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /* Create network manager: */
