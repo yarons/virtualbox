@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioValidationKit.cpp 103415 2024-02-19 07:52:27Z alexander.eichner@oracle.com $ */
+/* $Id: DrvHostAudioValidationKit.cpp 103565 2024-02-26 12:52:30Z andreas.loeffler@oracle.com $ */
 /** @file
  * Host audio driver - ValidationKit - For dumping and injecting audio data from/to the device emulation.
  */
@@ -920,8 +920,9 @@ static DECLCALLBACK(uint32_t) drvHostValKitAudioHA_StreamGetReadable(PPDMIHOSTAU
                     break;
             }
 
-            LogRel2(("ValKit: Test #%RU32: Reporting %RU32 bytes readable (state is '%s')\n",
-                     pTst->idxTest, cbReadable, AudioTestStateToStr(pTst->enmState)));
+            LogRel2(("ValKit: Test #%RU32: Reporting %RU32 readable (%zu/%zu, state '%s')\n",
+                     pThis->pTestCurRec->idxTest, cbReadable, pTst->t.TestTone.u.Rec.cbWritten, pTst->t.TestTone.u.Rec.cbToWrite,
+                     AudioTestStateToStr(pTst->enmState)));
 
             if (cbReadable == 0)
                 LogRel2(("ValKit: Test #%RU32: Warning: Not readable anymore (state is '%s'), returning 0\n",
