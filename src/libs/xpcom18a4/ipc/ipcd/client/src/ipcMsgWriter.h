@@ -1,4 +1,4 @@
-/* $Id: ipcMsgWriter.h 103569 2024-02-26 13:11:52Z alexander.eichner@oracle.com $ */
+/* $Id: ipcMsgWriter.h 103571 2024-02-26 13:19:44Z alexander.eichner@oracle.com $ */
 /** @file
  * XPCOM - IPC message writer helper.
  */
