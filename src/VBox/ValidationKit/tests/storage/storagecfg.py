@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 103572 2024-02-26 14:29:28Z ksenia.s.stepanova@oracle.com $
+# $Id: storagecfg.py 103576 2024-02-26 17:02:26Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103572 $"
+__version__ = "$Revision: 103576 $"
 
 # Standard Python imports.
 import os;
@@ -122,8 +122,8 @@ class StorageConfigOsSolaris(StorageConfigOs):
         fRc, sOutput, _ = oExec.execBinary('zpool', ('list', '-H'));
         if fRc:
             lstPools = [];
-            asPools = sOutput.splitlines();
-            reporter.log('asPools: %s' % asPools);
+            asPools = re.sub("b'|'", "", sOutput).rstrip("\\n").split("\\n")  # as sOutput could look like "b'blabla'"
+            reporter.log('asPools: %s' % asPools)                             # plus delete excessive end-of-line
             for sPool in asPools:
                 oMatchResult = re.match("%s[0-9]?[0-9]?" % sPoolIdStart, sPool)  # either re.Match obj or None
                 reporter.log('sPoolIdStart: %s, sPool: %s, oMatchResult: %s' % (sPoolIdStart, sPool, oMatchResult))
@@ -140,8 +140,8 @@ class StorageConfigOsSolaris(StorageConfigOs):
         fRc, sOutput, _ = oExec.execBinary('zfs', ('list', '-H'));
         if fRc:
             lstVolumes = [];
-            asVolumes = sOutput.splitlines();
-            reporter.log('asVolumes: %s' % asVolumes);
+            asVolumes = re.sub("b'|'", "", sOutput).rstrip("\\n").split("\\n")  # as sOutput could look like "b'blabla'"
+            reporter.log('asVolumes: %s' % asVolumes)                           # plus delete excessive end-of-line
             for sVolume in asVolumes:
                 oMatchResult = re.match("%s/%s" % (sPool, sVolumeIdStart), sVolume)  # either re.Match obj or None
                 reporter.log('sPool: %s, sVolumeIdStart: %s, sVolume: %s, OMatchResult: %s' % (sPool, sVolumeIdStart,
