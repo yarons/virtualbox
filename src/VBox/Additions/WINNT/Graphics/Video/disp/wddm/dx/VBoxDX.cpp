@@ -1,4 +1,4 @@
-/* $Id: VBoxDX.cpp 102809 2024-01-10 08:18:11Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxDX.cpp 103574 2024-02-26 16:05:40Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox D3D user mode driver.
  */
@@ -2949,7 +2949,12 @@ void vboxDXCreateDepthStencilView(PVBOXDX_DEVICE pDevice, PVBOXDXDEPTHSTENCILVIE
 void vboxDXClearDepthStencilView(PVBOXDX_DEVICE pDevice, PVBOXDXDEPTHSTENCILVIEW pDepthStencilView,
                                  UINT Flags, FLOAT Depth, UINT8 Stencil)
 {
-    vgpu10ClearDepthStencilView(pDevice, (uint16)Flags, Stencil, pDepthStencilView->uDepthStencilViewId, Depth);
+    uint16_t svgaFlags = 0;
+    if (Flags & D3D10_DDI_CLEAR_DEPTH)
+        svgaFlags |= SVGA3D_CLEAR_DEPTH;
+    if (Flags & D3D10_DDI_CLEAR_STENCIL)
+        svgaFlags |= SVGA3D_CLEAR_STENCIL;
+    vgpu10ClearDepthStencilView(pDevice, svgaFlags, Stencil, pDepthStencilView->uDepthStencilViewId, Depth);
 }
 
 
