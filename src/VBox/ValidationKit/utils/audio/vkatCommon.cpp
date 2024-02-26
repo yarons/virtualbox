@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 103568 2024-02-26 13:08:48Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatCommon.cpp 103570 2024-02-26 13:12:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Common code.
  */
@@ -1097,7 +1097,7 @@ static int audioTestRecordTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, 
 
             if (g_uVerbosity >= 2)
                 RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "Test #%RU32: Processed %RU64ms (%zu bytes)\n",
-                             idxTest, PDMAudioPropsBytesToMilli(pMix->pProps, cbRead), cbRead);
+                             idxTest, PDMAudioPropsBytesToMilli(pMix->pProps, (uint32_t)cbRead), cbRead);
 
             RTCircBufReleaseReadBlock(pCircBuf, cbRead);
 
