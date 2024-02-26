@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3242,7 +3242,9 @@ protected:
     /** Returns standard shortcut. */
     virtual QKeySequence standardShortcut(UIType) const RT_OVERRIDE
     {
-        return actionPool()->isTemporary() ? QKeySequence() : QKeySequence(QKeySequence::HelpContents);
+        return   actionPool()->isTemporary()
+               ? QKeySequence()
+               : UIShortcutPool::standardSequence(QKeySequence::HelpContents);
     }
 
     /** Handles translation event. */

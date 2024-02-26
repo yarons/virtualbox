@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -50,6 +50,7 @@
 #include "UILoggingDefs.h"
 #include "UIModalWindowManager.h"
 #include "UIPaneContainer.h"
+#include "UIShortcutPool.h"
 #include "UIVisoCreator.h"
 #include "UIVisoContentBrowser.h"
 #ifdef VBOX_WS_MAC
@@ -830,7 +831,7 @@ void UIVisoCreatorDialog::prepareWidgets(const QString& strVisoFilePath, const Q
     connect(m_pButtonBox->button(QIDialogButtonBox::Help), &QPushButton::pressed,
             m_pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
 
-    m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
+    m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 
     connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &UIVisoCreatorDialog::close);
     connect(m_pButtonBox, &QIDialogButtonBox::accepted, this, &UIVisoCreatorDialog::accept);

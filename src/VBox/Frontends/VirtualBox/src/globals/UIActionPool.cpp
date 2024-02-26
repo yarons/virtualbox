@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 103577 2024-02-26 17:21:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -701,7 +701,7 @@ protected:
     {
         switch (enmActionPoolType)
         {
-            case UIType_ManagerUI: return QKeySequence(QKeySequence::HelpContents);
+            case UIType_ManagerUI: return UIShortcutPool::standardSequence(QKeySequence::HelpContents);
             case UIType_RuntimeUI: break;
         }
         return QKeySequence();

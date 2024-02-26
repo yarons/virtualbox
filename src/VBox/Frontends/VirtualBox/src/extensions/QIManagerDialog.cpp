@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 102731 2023-12-29 16:30:17Z sergey.dubov@oracle.com $ */
+/* $Id: QIManagerDialog.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIMessageCenter.h"
+#include "UIShortcutPool.h"
 #ifdef VBOX_WS_MAC
 # include "QIToolBar.h"
 # include "UIWindowMenuManager.h"
@@ -194,7 +195,7 @@ void QIManagerDialog::prepareButtonBox()
 
         /* Assign shortcuts: */
         button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-        button(ButtonType_Help)->setShortcut(QKeySequence::HelpContents);
+        button(ButtonType_Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 
         /* Hide some of buttons initially: */
         button(ButtonType_Reset)->hide();

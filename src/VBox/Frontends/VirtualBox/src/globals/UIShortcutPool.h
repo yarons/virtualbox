@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIShortcutPool.h 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class declaration.
  */
@@ -153,6 +153,9 @@ public:
 
     /** Applies shortcuts for specified @a pActionPool. */
     void applyShortcuts(UIActionPool *pActionPool);
+
+    /** Returns standard QKeySequence for passed QKeySequence::StandardKey. */
+    static QKeySequence standardSequence(QKeySequence::StandardKey enmKey);
 
 protected:
 

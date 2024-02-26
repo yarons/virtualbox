@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
+#include "UIShortcutPool.h"
 #include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
@@ -614,7 +615,7 @@ void UIExtensionPackManager::retranslateUi()
     button(ButtonType_Close)->setStatusTip(tr("Close dialog"));
     button(ButtonType_Help)->setStatusTip(tr("Show dialog help"));
     button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
-    button(ButtonType_Help)->setShortcut(QKeySequence::HelpContents);
+    button(ButtonType_Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
     button(ButtonType_Close)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Close)->shortcut().toString()));
     button(ButtonType_Help)->setToolTip(tr("Show Help (%1)").arg(button(ButtonType_Help)->shortcut().toString()));
 }

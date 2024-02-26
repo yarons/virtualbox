@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -1424,7 +1424,7 @@ void UIAdvancedSettingsDialog::prepareButtonBox()
 #ifndef VBOX_WS_MAC
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
                                          QDialogButtonBox::NoButton | QDialogButtonBox::Help);
-        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
+        m_pButtonBox->button(QDialogButtonBox::Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 #else
         // WORKAROUND:
         // No Help button on macOS for now, conflict with old Qt.

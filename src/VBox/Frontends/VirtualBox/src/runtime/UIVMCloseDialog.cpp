@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -46,6 +46,7 @@
 #include "UIIconPool.h"
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
+#include "UIShortcutPool.h"
 #include "UIVMCloseDialog.h"
 
 
@@ -527,7 +528,7 @@ void UIVMCloseDialog::prepareButtonBox()
         uiCommon().setHelpKeyword(pButtonBox->button(QIDialogButtonBox::Help), "intro-save-machine-state");
         connect(pButtonBox->button(QIDialogButtonBox::Help), &QPushButton::pressed,
                 pButtonBox, &QIDialogButtonBox::sltHandleHelpRequest);
-        pButtonBox->button(QIDialogButtonBox::Help)->setShortcut(QKeySequence::HelpContents);
+        pButtonBox->button(QIDialogButtonBox::Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 
         /* Add into layout: */
         m_pMainLayout->addWidget(pButtonBox);

@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UINativeWizard.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -45,6 +45,7 @@
 #include "UINativeWizard.h"
 #include "UINativeWizardPage.h"
 #include "UINotificationCenter.h"
+#include "UIShortcutPool.h"
 
 
 #ifdef VBOX_WS_MAC
@@ -577,7 +578,7 @@ void UINativeWizard::prepare()
                 {
                     connect(wizardButton(WizardButtonType_Help), &QPushButton::clicked,
                             this, &UINativeWizard::sltHandleHelpRequest);
-                    wizardButton(WizardButtonType_Help)->setShortcut(QKeySequence::HelpContents);
+                    wizardButton(WizardButtonType_Help)->setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
                     uiCommon().setHelpKeyword(this, m_strHelpKeyword);
                 }
                 connect(wizardButton(WizardButtonType_Expert), &QPushButton::clicked,

@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 101561 2023-10-23 16:25:05Z sergey.dubov@oracle.com $ */
+/* $Id: UISpecialControls.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISpecialControls implementation.
  */
@@ -36,6 +36,7 @@
 
 /* GUI includes: */
 #include "UIIconPool.h"
+#include "UIShortcutPool.h"
 #include "UISpecialControls.h"
 
 
@@ -68,7 +69,7 @@ void UIMiniCancelButton::resizeEvent(QResizeEvent *)
 UIHelpButton::UIHelpButton(QWidget *pParent /* = 0 */)
     : QPushButton(pParent)
 {
-    setShortcut(QKeySequence(QKeySequence::HelpContents));
+    setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
     m_pButton = new UICocoaButton(this, UICocoaButton::HelpButton);
     connect(m_pButton, SIGNAL(clicked()), this, SIGNAL(clicked()));
     setFixedSize(m_pButton->size());
@@ -139,7 +140,7 @@ void UIHelpButton::retranslateUi()
 {
     QPushButton::setText(tr("&Help"));
     if (QPushButton::shortcut().isEmpty())
-        QPushButton::setShortcut(QKeySequence::HelpContents);
+        QPushButton::setShortcut(UIShortcutPool::standardSequence(QKeySequence::HelpContents));
 }
 
 # ifdef VBOX_WS_MAC
