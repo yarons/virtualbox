@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: HostHardwareLinux.cpp 103564 2024-02-26 12:07:19Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Main - Code for handling hardware detection under Linux, VBoxSVC.
  */
@@ -417,6 +417,11 @@ static void dvdCreateDeviceStrings(const char *pcszVendor, const char *pcszModel
         else
             pszUdi[0] = '\0';
     }
+
+    if (pszVendor)
+        RTStrFree(pszVendor);
+    if (pszModel)
+        RTStrFree(pszModel);
 }
 
 
