@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.cpp 103577 2024-02-26 17:21:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -696,8 +696,8 @@ protected:
         return QString("Help");
     }
 
-    /** Returns default shortcut. */
-    virtual QKeySequence defaultShortcut(UIType enmActionPoolType) const RT_OVERRIDE
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIType enmActionPoolType) const RT_OVERRIDE
     {
         switch (enmActionPoolType)
         {
