@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 103337 2024-02-13 15:55:27Z andreas.loeffler@oracle.com $
+# $Id: remoteexecutor.py 103587 2024-02-27 13:06:51Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103337 $"
+__version__ = "$Revision: 103587 $"
 
 
 # Standard Python imports.
@@ -300,14 +300,16 @@ class RemoteExecutor(object):
 
     def rmTree(self, sDir, cMsTimeout = 30000):
         """
-        Recursively removes all files and sub directories including the given directory.
+        Recursively removes all files and subdirectories including the given directory.
         """
         fRc = True;
         if self.oTxsSession is not None:
+            reporter.log("rmTree (%s) using txs" % sDir);
             fRc = self.oTxsSession.syncRmTree(sDir, cMsTimeout);
         else:
             try:
-                shutil.rmtree(sDir, ignore_errors=True);
+                reporter.log("rmTree (%s) using shutil.rmtree function" % sDir);
+                shutil.rmtree(sDir);
             except:
                 fRc = False;
 
