@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103588 2024-02-27 15:39:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103589 2024-02-27 16:14:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -687,7 +687,7 @@ typedef enum IEMNATIVEGSTREG : uint8_t
     kIemNativeGstReg_GprLast       = kIemNativeGstReg_GprFirst + 15,
     kIemNativeGstReg_Pc,
     kIemNativeGstReg_Cr0,
-    kIemNativeGstReg_LivenessPadding18,
+    kIemNativeGstReg_FpuFcw,
     kIemNativeGstReg_LivenessPadding19,
     kIemNativeGstReg_SegBaseFirst,
     kIemNativeGstReg_SegBaseLast   = kIemNativeGstReg_SegBaseFirst + 5,
