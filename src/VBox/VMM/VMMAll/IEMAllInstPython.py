@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103585 2024-02-27 12:28:50Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103588 2024-02-27 15:39:36Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103585 $"
+__version__ = "$Revision: 103588 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3104,7 +3104,7 @@ g_dMcStmtParsers = {
     'IEM_MC_LOCAL_CONST':                                        (McBlock.parseMcLocalConst,        False, False, True,  ),
     'IEM_MC_NOREF':                                              (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT':                       (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE':                   (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE':                   (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_MAYBE_RAISE_FPU_XCPT':                               (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_MAYBE_RAISE_FSGSBASE_XCPT':                          (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT':                       (McBlock.parseMcGeneric,           True,  True,  False, ),

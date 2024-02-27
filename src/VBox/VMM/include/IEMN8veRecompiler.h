@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103393 2024-02-16 00:04:24Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103588 2024-02-27 15:39:36Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -318,6 +318,7 @@ typedef enum
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
     kIemNativeLabelType_RaiseGp0,
+    kIemNativeLabelType_RaiseNm,
     kIemNativeLabelType_ObsoleteTb,
     kIemNativeLabelType_NeedCsLimChecking,
     kIemNativeLabelType_CheckBranchMiss,
@@ -685,7 +686,7 @@ typedef enum IEMNATIVEGSTREG : uint8_t
     kIemNativeGstReg_GprFirst      = 0,
     kIemNativeGstReg_GprLast       = kIemNativeGstReg_GprFirst + 15,
     kIemNativeGstReg_Pc,
-    kIemNativeGstReg_LivenessPadding17,
+    kIemNativeGstReg_Cr0,
     kIemNativeGstReg_LivenessPadding18,
     kIemNativeGstReg_LivenessPadding19,
     kIemNativeGstReg_SegBaseFirst,

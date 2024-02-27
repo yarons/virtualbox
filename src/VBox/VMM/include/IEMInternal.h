@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103561 2024-02-26 08:55:35Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 103588 2024-02-27 15:39:36Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -5147,6 +5147,9 @@ VBOXSTRICTRC            iemRaiseDebugException(PVMCPUCC pVCpu) RT_NOEXCEPT;
 VBOXSTRICTRC            iemRaiseBoundRangeExceeded(PVMCPUCC pVCpu) RT_NOEXCEPT;
 VBOXSTRICTRC            iemRaiseUndefinedOpcode(PVMCPUCC pVCpu) RT_NOEXCEPT;
 VBOXSTRICTRC            iemRaiseDeviceNotAvailable(PVMCPUCC pVCpu) RT_NOEXCEPT;
+#ifdef IEM_WITH_SETJMP
+DECL_NO_RETURN(void)    iemRaiseDeviceNotAvailableJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP;
+#endif
 VBOXSTRICTRC            iemRaiseTaskSwitchFaultWithErr(PVMCPUCC pVCpu, uint16_t uErr) RT_NOEXCEPT;
 VBOXSTRICTRC            iemRaiseTaskSwitchFaultCurrentTSS(PVMCPUCC pVCpu) RT_NOEXCEPT;
 VBOXSTRICTRC            iemRaiseTaskSwitchFault0(PVMCPUCC pVCpu) RT_NOEXCEPT;
