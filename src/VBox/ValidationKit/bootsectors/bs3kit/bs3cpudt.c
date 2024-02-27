@@ -1,4 +1,4 @@
-/* $Id: bs3cpudt.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3cpudt.c 103582 2024-02-27 07:12:56Z alexander.eichner@oracle.com $ */
 /** @file
  * BS3Kit - Tests Bs3CpuDetect_rm.
  */
@@ -41,7 +41,6 @@
 
 #include "bs3kit.h"
 #include <stdio.h>
-#include <stdint.h>
 
 
 unsigned StoreMsw(void);
