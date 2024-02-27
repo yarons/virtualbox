@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 103588 2024-02-27 15:39:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll.cpp 103592 2024-02-27 17:19:48Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4215,6 +4215,15 @@ VBOXSTRICTRC iemRaiseUndefinedOpcode(PVMCPUCC pVCpu) RT_NOEXCEPT
 {
     return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_UD, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
 }
+
+
+#ifdef IEM_WITH_SETJMP
+/** \#UD - 06.  */
+DECL_NO_RETURN(void) iemRaiseUndefinedOpcodeJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    iemRaiseXcptOrIntJmp(pVCpu, 0, X86_XCPT_UD, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
+}
+#endif
 
 
 /** \#NM - 07.  */
