@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103555 2024-02-24 02:14:09Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103585 2024-02-27 12:28:50Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103555 $"
+__version__ = "$Revision: 103585 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2918,9 +2918,9 @@ g_dMcStmtParsers = {
     'IEM_MC_BROADCAST_YREG_U32_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_BROADCAST_YREG_U64_ZX_VLMAX':                        (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_BROADCAST_YREG_U8_ZX_VLMAX':                         (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_BSWAP_LOCAL_U16':                                    (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_BSWAP_LOCAL_U32':                                    (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_BSWAP_LOCAL_U64':                                    (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_BSWAP_LOCAL_U16':                                    (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_BSWAP_LOCAL_U32':                                    (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_BSWAP_LOCAL_U64':                                    (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_CALC_RM_EFF_ADDR':                                   (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_CALL_AIMPL_3':                                       (McBlock.parseMcCallAImpl,         True,  True,  True,  ),
     'IEM_MC_CALL_AIMPL_4':                                       (McBlock.parseMcCallAImpl,         True,  True,  True,  ),
