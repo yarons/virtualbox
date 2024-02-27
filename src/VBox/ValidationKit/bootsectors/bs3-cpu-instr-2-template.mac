@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-2-template.mac 103208 2024-02-05 17:36:09Z alexander.eichner@oracle.com $
+; $Id: bs3-cpu-instr-2-template.mac 103584 2024-02-27 10:35:22Z alexander.eichner@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-2 assembly template.
 ;
@@ -708,6 +708,54 @@ BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_adox_RAX_qword_FSxBX_icebp
         icebp
         jmp     .again
 BS3_PROC_END_CMN            bs3CpuInstr2_adox_RAX_qword_FSxBX_icebp
+ %endif
+
+
+;
+; MOVBE
+;
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_AX_word_FSxBX_icebp
+        movbe    ax, word [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_AX_word_FSxBX_icebp
+
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_word_FSxBX_AX_icebp
+        movbe    word [fs:xBX], ax
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_word_FSxBX_AX_icebp
+
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_EAX_dword_FSxBX_icebp
+        movbe    eax, dword [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_EAX_dword_FSxBX_icebp
+
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_dword_FSxBX_EAX_icebp
+        movbe    dword [fs:xBX], eax
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_dword_FSxBX_EAX_icebp
+
+ %if TMPL_BITS == 64
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_RAX_qword_FSxBX_icebp
+        movbe    rax, qword [fs:xBX]
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_RAX_qword_FSxBX_icebp
+
+BS3CPUINSTR2_PROC_BEGIN_CMN bs3CpuInstr2_movbe_qword_FSxBX_RAX_icebp
+        movbe    qword [fs:xBX], rax
+.again:
+        icebp
+        jmp     .again
+BS3_PROC_END_CMN            bs3CpuInstr2_movbe_qword_FSxBX_RAX_icebp
  %endif
 
 
