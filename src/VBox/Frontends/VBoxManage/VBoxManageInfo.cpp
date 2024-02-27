@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 103532 2024-02-22 14:05:31Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxManageInfo.cpp 103594 2024-02-27 20:59:44Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1412,7 +1412,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     Bstr bstrNVRAMFile;
     CHECK_ERROR2I_RET(nvramStore, COMGETTER(NonVolatileStorageFile)(bstrNVRAMFile.asOutParam()), hrcCheck);
     if (bstrNVRAMFile.isNotEmpty())
-        SHOW_BSTR_STRING("BIOS NVRAM File", Info::tr("BIOS NVRAM File:"), bstrNVRAMFile);
+        SHOW_BSTR_STRING("NvramFile", Info::tr("BIOS NVRAM File:"), bstrNVRAMFile);
     if (   firmwareType == FirmwareType_EFI || firmwareType == FirmwareType_EFI32
         || firmwareType == FirmwareType_EFI64 || firmwareType == FirmwareType_EFIDUAL)
     {
