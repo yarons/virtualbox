@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103590 2024-02-27 16:41:11Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103591 2024-02-27 16:42:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6630,6 +6630,7 @@ iemNativeEmitRipJumpNoFlags(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t
  * @returns New code buffer offset, UINT32_MAX on failure.
  * @param   pReNative       The native recompile state.
  * @param   off             The code buffer offset.
+ * @param   idxInstr        The current instruction.
  */
 DECL_INLINE_THROW(uint32_t)
 iemNativeEmitMaybeRaiseDeviceNotAvailable(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxInstr)
