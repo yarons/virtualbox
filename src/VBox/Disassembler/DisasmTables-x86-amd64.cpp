@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-x86-amd64.cpp 103511 2024-02-22 01:16:10Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables-x86-amd64.cpp 103599 2024-02-28 17:45:26Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -3491,7 +3491,7 @@ static const DISOPCODE g_aDisasVexMap1_66[] =
     OPVEX("vpshufd %Vx,%Wx,%Ib",            IDX_ParseModRM,     IDX_UseModRM,    IDX_ParseImmByte,      0,                  OP_VPSHUFD,         OP_PARM_Vx,   OP_PARM_Wx,   OP_PARM_Ib,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     OP("vgroup13",                          IDX_ParseGrp13,                0,                   0,                          OP_GRP13,           OP_PARM_NONE, OP_PARM_NONE, OP_PARM_NONE, DISOPTYPE_HARMLESS),
-    INVALID_OPCODE,
+    OPVEX("vpsrldq %Hx,%Ux,%Ib",            IDX_ParseVexDest,   IDX_ParseModRM,     IDX_ParseImmByte,   0,                  OP_VPSRLDQ,         OP_PARM_Hx,   OP_PARM_Ux,    OP_PARM_Ib,  OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpcmpeqb %Vx,%Hx,%Wx",           IDX_ParseModRM,     IDX_ParseVexDest,   IDX_UseModRM,       0,                  OP_VPCMPEQB,        OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpcmpeqw %Vx,%Hx,%Wx",           IDX_ParseModRM,     IDX_ParseVexDest,   IDX_UseModRM,       0,                  OP_VPCMPEQW,        OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
     OPVEX("vpcmpeqd %Vx,%Hx,%Wx",           IDX_ParseModRM,     IDX_ParseVexDest,   IDX_UseModRM,       0,                  OP_VPCMPEQD,        OP_PARM_Vx,   OP_PARM_Hx,   OP_PARM_Wx,   OP_PARM_NONE, DISOPTYPE_HARMLESS),
