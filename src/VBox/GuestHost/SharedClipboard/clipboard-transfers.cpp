@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 103615 2024-02-29 18:36:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -1233,9 +1233,9 @@ int ShClTransferInit(PSHCLTRANSFER pTransfer)
     pTransfer->Thread.fCancelled = false;
 
     int rc = VINF_SUCCESS;
+
     if (pTransfer->Callbacks.pfnOnInitialize)
         rc = pTransfer->Callbacks.pfnOnInitialize(&pTransfer->CallbackCtx);
-
     if (RT_SUCCESS(rc))
     {
         /* Sanity: Make sure that the transfer we're gonna report as INITIALIZED
@@ -1243,17 +1243,19 @@ int ShClTransferInit(PSHCLTRANSFER pTransfer)
         if (pTransfer->State.enmDir == SHCLTRANSFERDIR_TO_REMOTE)
             AssertMsgStmt(ShClTransferRootsCount(pTransfer), ("Transfer has no root entries set\n"), rc = VERR_WRONG_ORDER);
 
-        rc = shClTransferSetStatus(pTransfer, SHCLTRANSFERSTATUS_INITIALIZED);
-
-        if (   RT_SUCCESS(rc)
-            && pTransfer->Callbacks.pfnOnInitialized)
-            pTransfer->Callbacks.pfnOnInitialized(&pTransfer->CallbackCtx);
+        if (RT_SUCCESS(rc))
+            rc = shClTransferSetStatus(pTransfer, SHCLTRANSFERSTATUS_INITIALIZED);
     }
 
     shClTransferUnlock(pTransfer);
 
+    /* Note: Callback will be called after we unlocked the transfer, as the caller might access the transfer right away. */
+    if (   RT_SUCCESS(rc)
+        && pTransfer->Callbacks.pfnOnInitialized)
+        pTransfer->Callbacks.pfnOnInitialized(&pTransfer->CallbackCtx);
+
     if (RT_FAILURE(rc))
-        LogRel2(("Shared Clipboard: Initialziation of transfer failed with %Rrc\n", rc));
+        LogRel(("Shared Clipboard: Initialziation of transfer failed with %Rrc\n", rc));
 
     LogFlowFuncLeaveRC(rc);
     return rc;
