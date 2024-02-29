@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-template.c 103602 2024-02-29 02:10:17Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-template.c 103603 2024-02-29 02:10:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, C code template.
  */
@@ -481,7 +481,7 @@ RT_CONCAT(bs3CpuInstr2_CommonBinaryU,a_cBits)(uint8_t bMode, PCBS3CPUINSTR2CMNBI
             \
             /* \
              * Do input the eight EFLAGS variations three times, so we're sure to trigger \
-             * native recompilation of the test worker code. \                            \
+             * native recompilation of the test worker code. \
              */ \
             for (iRecompiler = 0; iRecompiler < 2; iRecompiler++) \
             { \
