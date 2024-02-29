@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 103480 2024-02-20 15:21:35Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 103619 2024-02-29 19:10:26Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -469,7 +469,7 @@ typedef SHCLLISTENTRY *PSHCLLISTENTRY;
 typedef SHCLLISTENTRY *PCSHCLLISTENTRY;
 
 /** Maximum length (in UTF-8 characters) of a list entry name. Includes terminator. */
-#define SHCLLISTENTRY_MAX_NAME     1024
+#define SHCLLISTENTRY_MAX_NAME     4096
 
 /**
  * Structure for a generic Shared Clipboard list.
