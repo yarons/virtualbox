@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 103349 2024-02-14 10:16:07Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 103609 2024-02-29 03:51:57Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6246,7 +6246,7 @@ static int iemVmxVmentryCheckHostState(PVMCPUCC pVCpu, const char *pszInstr) RT_
     {
         /* FS, GS, GDTR, IDTR, TR base address. */
         if (   X86_IS_CANONICAL(pVmcs->u64HostFsBase.u)
-            && X86_IS_CANONICAL(pVmcs->u64HostFsBase.u)
+            && X86_IS_CANONICAL(pVmcs->u64HostGsBase.u)
             && X86_IS_CANONICAL(pVmcs->u64HostGdtrBase.u)
             && X86_IS_CANONICAL(pVmcs->u64HostIdtrBase.u)
             && X86_IS_CANONICAL(pVmcs->u64HostTrBase.u))
