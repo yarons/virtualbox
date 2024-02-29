@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 103259 2024-02-07 15:22:36Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 103613 2024-02-29 13:01:56Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 103259 $"
+__version__ = "$Revision: 103613 $"
 
 # Standard python imports:
 import copy;
@@ -305,7 +305,7 @@ class NativeRecompFunctionVariation(object):
                 assert not oVarInfo.oReferences;
             else:
                 aoStmts.insert(iStmt + 1, iai.McStmt('IEM_MC_FREE_ARG', [sVarName,]));
-                if fIncludeReferences and oVarInfo.sReference:
+                if fIncludeReferences and oVarInfo.oReferences:
                     sRefVarName = oVarInfo.oReferences.oStmt.sVarName;
                     if sRefVarName in dVars:
                         dFreedVars[sRefVarName] = dVars[sRefVarName];
@@ -440,6 +440,8 @@ class NativeRecompFunctionVariation(object):
             for sVarName in asVarsInScope:
                 if sVarName in dVars:
                     freeVariable(aoStmts, len(aoStmts) - 1, dVars[sVarName], dFreedVars, dVars);
+                if sVarName in dFreedVars:
+                    del dFreedVars[sVarName];  ## @todo Try eliminate this one...
         return dFreedVars;
 
     def __morphStatements(self, aoStmts, fForLiveness):
