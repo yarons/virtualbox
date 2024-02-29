@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-gen.cpp 103602 2024-02-29 02:10:17Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-gen.cpp 103608 2024-02-29 02:20:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, Test Data Generator.
  */
@@ -315,7 +315,7 @@ int main(int argc, char **argv)
                         a_ValueType       uResult = 0; \
                         uint32_t          fEflOut = s_aInstr[iInstr].a_pfnMember(uSrc1, uSrc2, 0 /*fCarry*/, &uResult) \
                                                   & X86_EFL_STATUS_BITS; \
-                        if (iTry < _1M && (fEflOut & fMustBeClear) || (~fEflOut & fMustBeSet)) \
+                        if (iTry < _1M && ((fEflOut & fMustBeClear) || (~fEflOut & fMustBeSet))) \
                             continue; \
                         fSet   |= fEflOut; \
                         fClear |= ~fEflOut; \
