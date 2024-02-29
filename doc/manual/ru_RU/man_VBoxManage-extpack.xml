@@ -31,7 +31,7 @@
 <refentry id="vboxmanage-extpack" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2023-01-17 15:15:46 +0100 (Tue, 17 Jan 2023) $</pubdate>
+    <pubdate>$Date: 2024-02-29 21:47:25 +0100 (Thu, 29 Feb 2024) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
@@ -63,7 +63,7 @@
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-extpack-description">
     <title>Описание</title>
 
     <refsect2 id="vboxmanage-extpack-install">
@@ -133,7 +133,7 @@
 
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-extpack-examples">
     <title>Примеры</title>
     <remark role="help-scope" condition="EXTPACK_UNINSTALL,EXTPACK"/>
     <para>

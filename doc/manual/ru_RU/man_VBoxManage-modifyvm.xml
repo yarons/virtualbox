@@ -30,7 +30,7 @@
 ]>
 <refentry id="vboxmanage-modifyvm" lang="en">
   <refentryinfo>
-    <pubdate>$Date: 2024-02-19 16:27:46 +0100 (Mon, 19 Feb 2024) $</pubdate>
+    <pubdate>$Date: 2024-02-29 21:47:25 +0100 (Thu, 29 Feb 2024) $</pubdate>
     <title>VBoxManage modifyvm</title>
   </refentryinfo>
 
@@ -646,7 +646,7 @@ it unless this changes. -->
     </cmdsynopsis>
   </refsynopsisdiv>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-modifyvm-description">
     <title>Описание</title>
     <para>
       Команда <command>VBoxManage modifyvm</command> позволяет изменить
@@ -2712,7 +2712,7 @@ it unless this changes. -->
 
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-modifyvm-examples">
     <title>Примеры</title>
     <remark role="help-scope" condition="GLOBAL" />
     <para>
@@ -2727,7 +2727,7 @@ it unless this changes. -->
 <screen>$ VBoxManage modifyvm ol7 --vrde on</screen>
   </refsect1>
 
-  <refsect1>
+  <refsect1 id="vboxmanage-modifyvm-see-also">
     <title>Смотрите также</title>
     <para>
       <xref linkend="vboxmanage-showvminfo" />,
