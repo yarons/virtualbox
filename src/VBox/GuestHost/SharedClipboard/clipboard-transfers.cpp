@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 103615 2024-02-29 18:36:37Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 103616 2024-02-29 18:37:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -2063,7 +2063,7 @@ int ShClTransferRootsInitFromFile(PSHCLTRANSFER pTransfer, const char *pszFile)
 
     int rc = RTStrAAppend(&pszRoots, pszFile);
     AssertRCReturn(rc, rc);
-    rc = RTStrAAppend(&pszRoots, "\r\n");
+    rc = RTStrAAppend(&pszRoots, SHCL_TRANSFER_URI_LIST_SEP_STR);
     AssertRCReturn(rc, rc);
     rc =  ShClTransferRootsInitFromStringList(pTransfer, pszRoots, strlen(pszRoots) + 1 /* Include terminator */);
     RTStrFree(pszRoots);
