@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 103554 2024-02-23 23:26:09Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 103612 2024-02-29 12:59:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2825,12 +2825,11 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecRecompiler(PVMCC pVM, PVMCPUCC pVCpu)
             for (uint32_t iIterations = 0; ; iIterations++)
             {
                 /* Translate PC to physical address, we'll need this for both lookup and compilation. */
-                RTGCPHYS const GCPhysPc    = iemGetPcWithPhysAndCode(pVCpu);
-                uint32_t const fExtraFlags = iemGetTbFlagsForCurrentPc(pVCpu);
-
-                pTb = iemTbCacheLookup(pVCpu, pTbCache, GCPhysPc, fExtraFlags);
+                RTGCPHYS const GCPhysPc = iemGetPcWithPhysAndCode(pVCpu);
                 if (RT_LIKELY(pVCpu->iem.s.pbInstrBuf != NULL))
                 {
+                    uint32_t const fExtraFlags = iemGetTbFlagsForCurrentPc(pVCpu);
+                    pTb = iemTbCacheLookup(pVCpu, pTbCache, GCPhysPc, fExtraFlags);
                     if (pTb)
                         rcStrict = iemTbExec(pVCpu, pTb);
                     else
