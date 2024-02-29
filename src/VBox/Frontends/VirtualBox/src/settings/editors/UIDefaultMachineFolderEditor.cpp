@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.cpp 102036 2023-11-09 13:50:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.cpp 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class implementation.
  */
@@ -106,6 +106,8 @@ void UIDefaultMachineFolderEditor::prepare()
             if (m_pLabel)
                 m_pLabel->setBuddy(m_pSelector);
             m_pSelector->setInitialPath(uiCommon().homeFolder());
+            connect(m_pSelector, &UIFilePathSelector::pathChanged,
+                    this, &UIDefaultMachineFolderEditor::sigPathChanged);
 
             m_pLayout->addWidget(m_pSelector, 0, 1);
         }

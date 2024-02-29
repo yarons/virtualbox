@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.h 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class declaration.
  */
@@ -43,6 +43,11 @@ class UIFilePathSelector;
 class SHARED_LIBRARY_STUFF UIDefaultMachineFolderEditor : public UIEditor
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notify listeners about @a strPath changed. */
+    void sigPathChanged(const QString &strPath);
 
 public:
 

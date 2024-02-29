@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.h 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -70,6 +70,9 @@ protected:
     /** Saves settings from cache to external object(s) packed inside @a data.
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
     virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
+
+    /** Performs validation, updates @a messages list if something is wrong. */
+    virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;
