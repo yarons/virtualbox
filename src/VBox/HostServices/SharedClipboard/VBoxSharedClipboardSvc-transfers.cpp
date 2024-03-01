@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 103633 2024-03-01 11:22:15Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 103634 2024-03-01 11:26:10Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2136,8 +2136,8 @@ static int shClSvcTransferSendStatusExAsync(PSHCLCLIENT pClient, SHCLTRANSFERID 
         rc = VERR_SHCLPB_MAX_EVENTS_REACHED;
 
     if (RT_FAILURE(rc))
-        LogRel(64, ("Shared Clipboard: Reporting status %s (%Rrc) for transfer %RU16 to guest failed with %Rrc\n",
-                    ShClTransferStatusToStr(enmSts), rcTransfer, idTransfer, rc));
+        LogRelMax(64, ("Shared Clipboard: Reporting status %s (%Rrc) for transfer %RU16 to guest failed with %Rrc\n",
+                       ShClTransferStatusToStr(enmSts), rcTransfer, idTransfer, rc));
 
     LogFlowFuncLeaveRC(rc);
     return rc;
@@ -2411,8 +2411,8 @@ int ShClSvcTransferStop(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer, bool fWait
     }
 
     if (RT_FAILURE(rc))
-        LogRel(64, ("Shared Clipboard: Unable to stop transfer %RU16 on guest, rc=%Rrc\n",
-                    pTransfer->State.uID, rc));
+        LogRelMax(64, ("Shared Clipboard: Unable to stop transfer %RU16 on guest, rc=%Rrc\n",
+                       pTransfer->State.uID, rc));
 
     shClSvcClientUnlock(pClient);
 
