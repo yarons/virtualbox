@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 103318 2024-02-12 16:24:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 103636 2024-03-01 14:56:49Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -61,7 +61,7 @@
 /*********************************************************************************************************************************
 *   TB Helper Functions                                                                                                          *
 *********************************************************************************************************************************/
-#ifdef RT_ARCH_AMD64
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_ARM64)
 DECLASM(void) iemNativeHlpAsmSafeWrapLogCpuState(void);
 #endif
 
@@ -154,13 +154,12 @@ IEM_DECL_IEMNATIVERECOMPFUNC_DEF(iemNativeRecompFunc_BltIn_LogCpuState)
     pbCodeBuf[off++] = 0x58 + X86_GREG_xAX;
     /* pop rax */
     pbCodeBuf[off++] = 0x58 + X86_GREG_xAX;
-    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
-
 #else
-    /** @todo Implement this  */
-    AssertFailed();
-    RT_NOREF(pReNative, pCallEntry);
+    off = iemNativeEmitCallImm(pReNative, off, (uintptr_t)iemNativeHlpAsmSafeWrapLogCpuState);
+    RT_NOREF(pCallEntry);
 #endif
+
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
     return off;
 }
 
