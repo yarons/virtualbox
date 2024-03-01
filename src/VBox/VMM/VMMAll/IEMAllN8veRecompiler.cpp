@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103624 2024-03-01 00:45:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103627 2024-03-01 01:04:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -13405,7 +13405,9 @@ iemNativeEmitMemCommitAndUnmap(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
      * Assert sanity.
      */
     IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxVarUnmapInfo);
+#if defined(VBOX_STRICT) || defined(RT_ARCH_AMD64)
     PIEMNATIVEVAR const pVarUnmapInfo = &pReNative->Core.aVars[IEMNATIVE_VAR_IDX_UNPACK(idxVarUnmapInfo)];
+#endif
     Assert(pVarUnmapInfo->enmKind == kIemNativeVarKind_Stack);
     Assert(   pVarUnmapInfo->idxReg       < RT_ELEMENTS(pReNative->Core.aHstRegs)
            || pVarUnmapInfo->idxStackSlot < IEMNATIVE_FRAME_VAR_SLOTS); /* must be initialized */
