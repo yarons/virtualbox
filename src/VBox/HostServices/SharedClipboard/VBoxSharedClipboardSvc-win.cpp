@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 103615 2024-02-29 18:36:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 103630 2024-03-01 10:44:58Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -253,16 +253,16 @@ static DECLCALLBACK(void) shClSvcWinTransferOnCreatedCallback(PSHCLTRANSFERCALLB
     {
         case SHCLTRANSFERDIR_FROM_REMOTE: /* G->H */
         {
-            pIface->pfnRootListRead  = shClSvcTransferIfaceGHRootListRead;
+            pIface->pfnRootListRead  = ShClSvcTransferIfaceGHRootListRead;
 
-            pIface->pfnListOpen      = shClSvcTransferIfaceGHListOpen;
-            pIface->pfnListClose     = shClSvcTransferIfaceGHListClose;
-            pIface->pfnListHdrRead   = shClSvcTransferIfaceGHListHdrRead;
-            pIface->pfnListEntryRead = shClSvcTransferIfaceGHListEntryRead;
+            pIface->pfnListOpen      = ShClSvcTransferIfaceGHListOpen;
+            pIface->pfnListClose     = ShClSvcTransferIfaceGHListClose;
+            pIface->pfnListHdrRead   = ShClSvcTransferIfaceGHListHdrRead;
+            pIface->pfnListEntryRead = ShClSvcTransferIfaceGHListEntryRead;
 
-            pIface->pfnObjOpen       = shClSvcTransferIfaceGHObjOpen;
-            pIface->pfnObjClose      = shClSvcTransferIfaceGHObjClose;
-            pIface->pfnObjRead       = shClSvcTransferIfaceGHObjRead;
+            pIface->pfnObjOpen       = ShClSvcTransferIfaceGHObjOpen;
+            pIface->pfnObjClose      = ShClSvcTransferIfaceGHObjClose;
+            pIface->pfnObjRead       = ShClSvcTransferIfaceGHObjRead;
             break;
         }
 
