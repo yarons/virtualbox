@@ -1,4 +1,4 @@
-/* $Id: tstClipboardMockHGCM.cpp 99968 2023-05-25 08:45:54Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardMockHGCM.cpp 103631 2024-03-01 11:00:38Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -604,11 +604,11 @@ static DECLCALLBACK(int) tstTestReadFromHostSetup(PCLIPBOARDTESTCTX pTstCtx, voi
     ShClCallbacks.pfnOnClipboardRead = tstTestReadFromHost_OnClipboardReadCallback;
     ShClBackendSetCallbacks(pBackend, &ShClCallbacks);
 #elif defined (RT_OS_WINDOWS)
-    rc = SharedClipboardWinOpen(GetDesktopWindow());
+    rc = ShClWinOpen(GetDesktopWindow());
     if (RT_SUCCESS(rc))
     {
-        rc = SharedClipboardWinDataWrite(CF_UNICODETEXT, pTask->pvData, (uint32_t)pTask->cbData);
-        SharedClipboardWinClose();
+        rc = ShClWinDataWrite(CF_UNICODETEXT, pTask->pvData, (uint32_t)pTask->cbData);
+        ShClWinClose();
     }
 #endif /* defined (RT_OS_LINUX) || defined (RT_OS_SOLARIS) */
 
