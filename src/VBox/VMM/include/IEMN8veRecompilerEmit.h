@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103622 2024-03-01 00:42:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103646 2024-03-02 02:24:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -4363,6 +4363,24 @@ iemNativeEmitOrGprByGprEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t iGprDs
 #else
 # error "Port me"
 #endif
+    return off;
+}
+
+
+/**
+ * Emits code for OR'ing two 64-bit GPRs.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitOrGprByGpr(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iGprDst, uint8_t iGprSrc)
+{
+#if defined(RT_ARCH_AMD64)
+    off = iemNativeEmitOrGprByGprEx(iemNativeInstrBufEnsure(pReNative, off, 3), off, iGprDst, iGprSrc);
+#elif defined(RT_ARCH_ARM64)
+    off = iemNativeEmitOrGprByGprEx(iemNativeInstrBufEnsure(pReNative, off, 1), off, iGprDst, iGprSrc);
+#else
+# error "Port me"
+#endif
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
     return off;
 }
 
