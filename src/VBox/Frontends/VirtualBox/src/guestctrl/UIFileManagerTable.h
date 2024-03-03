@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 102507 2023-12-06 15:39:31Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 103651 2024-03-03 09:55:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -147,6 +147,7 @@ signals:
     void sigLogOutput(QString strLog, const QString &strMachineName, FileManagerLogType eLogType);
     void sigDeleteConfirmationOptionChanged();
     void sigSelectionChanged(bool fHasSelection);
+    void sigAltDoubleClick();
 
 public:
 
@@ -174,6 +175,7 @@ public slots:
     /* index is passed by the item view and represents the double clicked object's 'proxy' model index */
     void sltItemDoubleClicked(const QModelIndex &index);
     void sltItemClicked(const QModelIndex &index);
+    void sltAltDoubleClick();
     void sltGoUp();
     void sltGoHome();
     void sltGoForward();

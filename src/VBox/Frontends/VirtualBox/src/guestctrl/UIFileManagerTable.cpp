@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 102537 2023-12-08 11:47:59Z andreas.loeffler@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 103651 2024-03-03 09:55:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -73,6 +73,8 @@ class UIGuestControlFileView : public QTableView
 signals:
 
     void sigSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected);
+    /* Emitted upon mouse double click while Alt key is pressed.  */
+    void sigAltDoubleClick();
 
 public:
 
@@ -83,6 +85,8 @@ public:
 protected:
 
     virtual void selectionChanged(const QItemSelection & selected, const QItemSelection & deselected) /*override */;
+    virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
+    virtual void mousePressEvent(QMouseEvent *event) override;
 
 private:
 
@@ -228,6 +232,23 @@ void UIGuestControlFileView::selectionChanged(const QItemSelection & selected, c
     QTableView::selectionChanged(selected, deselected);
 }
 
+void UIGuestControlFileView::mousePressEvent(QMouseEvent *event)
+{
+    if (qApp->queryKeyboardModifiers() & Qt::AltModifier)
+        return;
+    QTableView::mousePressEvent(event);
+}
+
+void UIGuestControlFileView::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    if (qApp->queryKeyboardModifiers() & Qt::AltModifier)
+    {
+        printf("dou\n");
+        emit sigAltDoubleClick();
+        return;
+    }
+    QTableView::mouseDoubleClickEvent(event);
+}
 
 /*********************************************************************************************************************************
 *   UIFileStringInputDialog implementation.                                                                                      *
@@ -491,6 +512,8 @@ void UIFileManagerTable::prepareObjects()
 
         connect(m_pView, &UIGuestControlFileView::doubleClicked,
                 this, &UIFileManagerTable::sltItemDoubleClicked);
+        connect(m_pView, &UIGuestControlFileView::sigAltDoubleClick,
+                this, &UIFileManagerTable::sltAltDoubleClick);
         connect(m_pView, &UIGuestControlFileView::clicked,
                 this, &UIFileManagerTable::sltItemClicked);
         connect(m_pView, &UIGuestControlFileView::sigSelectionChanged,
@@ -612,6 +635,11 @@ void UIFileManagerTable::sltItemDoubleClicked(const QModelIndex &index)
         return;
     QModelIndex nIndex = m_pProxyModel ? m_pProxyModel->mapToSource(index) : index;
     goIntoDirectory(nIndex);
+}
+
+void UIFileManagerTable::sltAltDoubleClick()
+{
+    emit sigAltDoubleClick();
 }
 
 void UIFileManagerTable::sltItemClicked(const QModelIndex &index)
