@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 103652 2024-03-03 09:55:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 103653 2024-03-03 11:35:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -84,7 +84,7 @@ public:
 
 protected:
 
-    virtual void selectionChanged(const QItemSelection & selected, const QItemSelection & deselected) /*override */;
+    virtual void selectionChanged(const QItemSelection & selected, const QItemSelection & deselected) override;
     virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
     virtual void mousePressEvent(QMouseEvent *event) override;
 
