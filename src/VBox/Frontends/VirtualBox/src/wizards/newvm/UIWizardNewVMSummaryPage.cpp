@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 103650 2024-03-03 09:54:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -464,8 +464,7 @@ void UIWizardNewVMSummaryPage::initializePage()
     retranslateUi();
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard && m_pModel);
-    if (m_pModel)
-        m_pModel->populateData(pWizard);
+    m_pModel->populateData(pWizard);
     if (m_pTree)
     {
         m_pTree->expandToDepth(4);

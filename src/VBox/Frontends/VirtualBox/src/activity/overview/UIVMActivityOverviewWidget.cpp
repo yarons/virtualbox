@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103207 2024-02-05 15:48:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103650 2024-03-03 09:54:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -857,6 +857,7 @@ UIActivityOverviewItem::UIActivityOverviewItem(QObject *pParent, const QUuid &ui
 UIActivityOverviewItem::UIActivityOverviewItem()
     : QObject()
     , m_uTotalRAM(0)
+    , m_uFreeRAM(0)
     , m_uUsedRAM(0)
     , m_fRAMUsagePercentage(0)
     , m_VMuid(QUuid())
@@ -1087,6 +1088,7 @@ void UIActivityOverviewItemCloud::sltMetricNameListingComplete(QVector<QString> 
 *********************************************************************************************************************************/
 UIActivityOverviewItemLocal::UIActivityOverviewItemLocal(QObject *pParent, const QUuid &uid, const QString &strVMName)
     : UIActivityOverviewItem(pParent, uid, strVMName)
+    , m_enmMachineState(KMachineState_Null)
     , m_uVMExitTotal(0)
     , m_uDiskWriteTotal(0)
     , m_uDiskReadTotal(0)
@@ -1098,7 +1100,8 @@ UIActivityOverviewItemLocal::UIActivityOverviewItemLocal(QObject *pParent, const
 }
 
 UIActivityOverviewItemLocal::UIActivityOverviewItemLocal()
-    : m_uVMExitTotal(0)
+    : m_enmMachineState(KMachineState_Null)
+    , m_uVMExitTotal(0)
     , m_uDiskWriteTotal(0)
     , m_uDiskReadTotal(0)
     , m_uNetworkDownTotal(0)

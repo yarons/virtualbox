@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 103650 2024-03-03 09:54:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -678,8 +678,7 @@ void UIHelpViewer::mouseReleaseEvent(QMouseEvent *pEvent)
         QMimeType type = base.mimeTypeForFile(fInfo);
         if (type.isValid() && type.inherits("image/png"))
         {
-            if (!fOverlayMode)
-                loadImage(source().resolved(strAnchor));
+            loadImage(source().resolved(strAnchor));
             return;
         }
         if (source().resolved(strAnchor).scheme() != "qthelp" && pEvent->button() == Qt::LeftButton)
