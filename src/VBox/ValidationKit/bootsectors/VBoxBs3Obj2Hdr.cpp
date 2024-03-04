@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Obj2Hdr.cpp 103654 2024-03-04 08:12:02Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3Obj2Hdr.cpp 103655 2024-03-04 08:14:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 Assembly Object file to C-Header converter.
  */
@@ -329,7 +329,7 @@ int main(int argc, char **argv)
         else
         {
             /* Make sure we've got an output file. */
-            if (!pOutput || strcmp(pszOutput, "-") == 0)
+            if (!pszOutput || strcmp(pszOutput, "-") == 0)
                 pOutput = stdout;
             else
             {
