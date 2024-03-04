@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 102152 2023-11-20 14:58:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 103672 2024-03-04 16:10:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -111,12 +111,12 @@ void UIGuestOSTypeSelectionButton::populateMenu()
 
     for (int i = 0; i < familyList.size(); ++i)
     {
-        const QPair<QString, QString> &familyInfo = familyList[i];
-        QMenu *pSubMenu = m_pMainMenu->addMenu(familyInfo.second);
-        QStringList subtypeList = uiCommon().guestOSTypeManager().getSubtypeListForFamilyId(familyInfo.first);
+        const UIFamilyInfo &fi = familyList.at(i);
+        QMenu *pSubMenu = m_pMainMenu->addMenu(fi.m_strDescription);
+        QStringList subtypeList = uiCommon().guestOSTypeManager().getSubtypeListForFamilyId(fi.m_strId);
 
         if (subtypeList.isEmpty())
-            createOSTypeMenu(uiCommon().guestOSTypeManager().getTypeListForFamilyId(familyInfo.first), pSubMenu);
+            createOSTypeMenu(uiCommon().guestOSTypeManager().getTypeListForFamilyId(fi.m_strId), pSubMenu);
         else
         {
             foreach (const QString &strSubtype, subtypeList)

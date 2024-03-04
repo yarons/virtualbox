@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 102162 2023-11-20 17:32:01Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103672 2024-03-04 16:10:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -624,8 +624,9 @@ void UINameAndSystemEditor::populateFamilyCombo()
     /* Populate family combo: */
     for (int i = 0; i < families.size(); ++i)
     {
-        m_pComboFamily->addItem(families[i].second);
-        m_pComboFamily->setItemData(i, families[i].first);
+        const UIFamilyInfo fi = families.at(i);
+        m_pComboFamily->addItem(fi.m_strDescription);
+        m_pComboFamily->setItemData(i, fi.m_strId);
     }
 
     /* Unblock signals finally: */
