@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 103592 2024-02-27 17:19:48Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll.cpp 103665 2024-03-04 12:50:11Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4497,6 +4497,14 @@ VBOXSTRICTRC iemRaiseMathFault(PVMCPUCC pVCpu) RT_NOEXCEPT
     PDMIsaSetIrq(pVCpu->CTX_SUFF(pVM), 13 /* u8Irq */, 1 /* u8Level */, 0 /* uTagSrc */);
     return iemRegUpdateRipAndFinishClearingRF(pVCpu);
 }
+
+#ifdef IEM_WITH_SETJMP
+/** \#MF(0) - 10, longjmp.  */
+DECL_NO_RETURN(void) iemRaiseMathFaultJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(iemRaiseMathFault(pVCpu)));
+}
+#endif
 
 
 /** \#AC(0) - 11.  */
