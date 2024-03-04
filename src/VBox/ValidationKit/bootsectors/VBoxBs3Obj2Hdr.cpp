@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Obj2Hdr.cpp 103655 2024-03-04 08:14:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3Obj2Hdr.cpp 103656 2024-03-04 09:24:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 Assembly Object file to C-Header converter.
  */
@@ -113,7 +113,7 @@ static RTEXITCODE ProcessObjectFile(FILE *pOutput, uint8_t const *pbFile, size_t
 
                 while (offRec + 1 < cbRec)
                 {
-                    uint8_t const cch = pbRec[offRec++];
+                    uint8_t     cch = pbRec[offRec++];
                     OMF_CHECK_RET(cch, PUBDEF);
                     const char *pchName = (const char *)&pbRec[offRec];
                     offRec += cch;
@@ -142,7 +142,15 @@ static RTEXITCODE ProcessObjectFile(FILE *pOutput, uint8_t const *pbFile, size_t
 
                     /* Produce the headerfile output. */
                     if (*pchName == '_') /** @todo add more filtering */
-                        fprintf(pOutput,  "extern FNBS3FAR %-*.*s;\n", cch - 1, cch - 1, pchName + 1);
+                    {
+                        cch     -= 1;
+                        pchName += 1;
+
+                        static const char s_szEndProc[] = "_EndProc";
+                        if (   cch < sizeof(s_szEndProc)
+                            || memcmp(&pchName[cch - sizeof(s_szEndProc) + 1], RT_STR_TUPLE(s_szEndProc)) != 0)
+                            fprintf(pOutput,  "extern FNBS3FAR %-*.*s;\n", cch, cch, pchName);
+                    }
                 }
                 cPubDefs++;
                 break;
@@ -253,11 +261,11 @@ int main(int argc, char **argv)
                     fDashDash = true;
                     continue;
                 }
-                if (strcmp(pszArg, "--output") == 0)
+                if (strcmp(pszArg, "output") == 0)
                     pszArg = "o";
-                else if (strcmp(pszArg, "--help") == 0)
+                else if (strcmp(pszArg, "help") == 0)
                     pszArg = "h";
-                else if (strcmp(pszArg, "--version") == 0)
+                else if (strcmp(pszArg, "version") == 0)
                     pszArg = "V";
                 else
                 {
@@ -279,9 +287,9 @@ int main(int argc, char **argv)
                 {
                     case 'o':
                         if (*pszArg)
-                            pszOutput = pszArg;
+                            pszValue = pszArg;
                         else if (i + 1 < argc)
-                            pszOutput = argv[++i];
+                            pszValue = argv[++i];
                         else
                         {
                             fprintf(stderr, "syntax error: Expected value after option '%c'.\n", chOpt);
@@ -329,18 +337,20 @@ int main(int argc, char **argv)
         else
         {
             /* Make sure we've got an output file. */
-            if (!pszOutput || strcmp(pszOutput, "-") == 0)
-                pOutput = stdout;
-            else
+            if (!pOutput)
             {
-                pOutput = fopen(pszOutput, "r");
-                if (!pOutput)
+                if (!pszOutput || strcmp(pszOutput, "-") == 0)
+                    pOutput = stdout;
+                else
                 {
-                    fprintf(stderr, "error: Failed to open '%s' for writing!\n", pszOutput);
-                    return RTEXITCODE_FAILURE;
+                    pOutput = fopen(pszOutput, "w");
+                    if (!pOutput)
+                    {
+                        fprintf(stderr, "error: Failed to open '%s' for writing!\n", pszOutput);
+                        return RTEXITCODE_FAILURE;
+                    }
                 }
             }
-
 
             /* Read in the object file and process it. */
             size_t cbFile;
