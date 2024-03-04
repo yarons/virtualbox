@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103602 2024-02-29 02:10:17Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 103654 2024-03-04 08:12:02Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -83,6 +83,14 @@ endef
 BLDPROGS += VBoxBs2Linker
 VBoxBs2Linker_TEMPLATE = VBoxBldProg
 VBoxBs2Linker_SOURCES = VBoxBs2Linker.cpp
+
+
+#
+# Tool for converting an assembly object file into a header.
+#
+BLDPROGS += VBoxBs3Obj2Hdr
+VBoxBs3Obj2Hdr_TEMPLATE = VBoxBldProg
+VBoxBs3Obj2Hdr_SOURCES = VBoxBs3Obj2Hdr.cpp
 
 
 #
