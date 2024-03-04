@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103660 2024-03-04 11:25:11Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103663 2024-03-04 12:08:32Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103660 $"
+__version__ = "$Revision: 103663 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3228,11 +3228,11 @@ g_dMcStmtParsers = {
     'IEM_MC_REF_MXCSR':                                          (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_XREG_R32_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_XREG_R64_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_REF_XREG_U128':                                      (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_REF_XREG_U128_CONST':                                (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_REF_XREG_U128':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_REF_XREG_U128_CONST':                                (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_REF_XREG_U32_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_XREG_U64_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_REF_XREG_XMM_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_REF_XREG_XMM_CONST':                                 (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_REF_YREG_U128':                                      (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_YREG_U128_CONST':                                (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_YREG_U64_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
