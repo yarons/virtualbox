@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103665 2024-03-04 12:50:11Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103666 2024-03-04 13:11:28Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -14429,7 +14429,7 @@ DECLHIDDEN(void) iemNativeDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NOEX
                                     pszName = "RaiseUd";
                                     break;
                                 case kIemNativeLabelType_RaiseMf:
-                                    pszName = "RaiseUd";
+                                    pszName = "RaiseMf";
                                     break;
                                 case kIemNativeLabelType_ObsoleteTb:
                                     pszName = "ObsoleteTb";
