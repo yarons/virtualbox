@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103669 2024-03-04 14:05:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103670 2024-03-04 14:12:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -10879,11 +10879,9 @@ iemNativeEmitRefEFlags(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxV
 DECL_INLINE_THROW(uint32_t)
 iemNativeEmitRefXregXxx(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxVarRef, uint8_t iXReg, bool fConst)
 {
-    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxVarRef);
-    Assert(pReNative->Core.aVars[idxVarRef].cbVar == sizeof(void *));
     Assert(iXReg < 16);
-
     iemNativeVarSetKindToGstRegRef(pReNative, idxVarRef, kIemNativeGstRegRef_XReg, iXReg);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxVarRef, sizeof(void *));
 
     /* If we've delayed writing back the register value, flush it now. */
     off = iemNativeRegFlushPendingSpecificWrite(pReNative, off, kIemNativeGstRegRef_XReg, iXReg);
