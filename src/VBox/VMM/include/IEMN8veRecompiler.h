@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103667 2024-03-04 13:46:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103671 2024-03-04 15:48:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -330,6 +330,7 @@ typedef enum
     kIemNativeLabelType_RaiseNm,
     kIemNativeLabelType_RaiseUd,
     kIemNativeLabelType_RaiseMf,
+    kIemNativeLabelType_RaiseXf,
     kIemNativeLabelType_ObsoleteTb,
     kIemNativeLabelType_NeedCsLimChecking,
     kIemNativeLabelType_CheckBranchMiss,

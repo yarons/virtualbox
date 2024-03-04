@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 103665 2024-03-04 12:50:11Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll.cpp 103671 2024-03-04 15:48:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4527,6 +4527,15 @@ VBOXSTRICTRC iemRaiseSimdFpException(PVMCPUCC pVCpu) RT_NOEXCEPT
 {
     return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_XF, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
 }
+
+
+#ifdef IEM_WITH_SETJMP
+/** \#XF(0)/\#XM(0) - 19s, longjmp.  */
+DECL_NO_RETURN(void) iemRaiseSimdFpExceptionJmp(PVMCPUCC pVCpu) IEM_NOEXCEPT_MAY_LONGJMP
+{
+    IEM_DO_LONGJMP(pVCpu, VBOXSTRICTRC_VAL(iemRaiseSimdFpException(pVCpu)));
+}
+#endif
 
 
 /** Accessed via IEMOP_RAISE_DIVIDE_ERROR.   */
