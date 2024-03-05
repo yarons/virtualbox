@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCommon.cpp 103676 2024-03-05 07:57:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  *
@@ -78,7 +78,7 @@ int VBoxGetMsiPropUtf8(MSIHANDLE hMsi, const char *pcszName, char **ppszValue)
     if (RT_SUCCESS(rc))
     {
         WCHAR wszValue[1024]; /* 1024 should be enough for everybody (tm). */
-        if (VBoxGetMsiProp(hMsi, pwszName, wszValue, sizeof(wszValue)) == ERROR_SUCCESS)
+        if (VBoxGetMsiProp(hMsi, pwszName, wszValue, RT_ELEMENTS(wszValue)) == ERROR_SUCCESS)
             rc = RTUtf16ToUtf8(wszValue, ppszValue);
         else
             rc = VERR_NOT_FOUND;
