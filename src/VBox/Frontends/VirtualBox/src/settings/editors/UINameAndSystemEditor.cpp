@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103674 2024-03-04 18:28:21Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103680 2024-03-05 12:31:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -341,8 +341,8 @@ void UINameAndSystemEditor::sltDistributionChanged(const QString &strDistributio
     /* If distribution list is empty, all the types of the family are added to type combo: */
     const UIGuestOSTypeManager::UIGuestOSTypeInfo types
          = m_strDistribution.isEmpty()
-         ? uiCommon().guestOSTypeManager().getTypeListForFamilyId(m_strFamilyId, enmArch)
-         : uiCommon().guestOSTypeManager().getTypeListForSubtype(m_strDistribution, enmArch);
+         ? uiCommon().guestOSTypeManager().getTypesForFamilyId(m_strFamilyId, enmArch)
+         : uiCommon().guestOSTypeManager().getTypesForSubtype(m_strDistribution, enmArch);
 
     /* Save the most recently used item: */
     m_familyToDistribution[m_strFamilyId] = m_strDistribution;
@@ -650,7 +650,7 @@ void UINameAndSystemEditor::populateDistributionCombo()
                                         : KPlatformArchitecture_None;
 
     /* Acquire a list of suitable sub-types: */
-    const QStringList distributions = uiCommon().guestOSTypeManager().getSubtypeListForFamilyId(m_strFamilyId, enmArch);
+    const QStringList distributions = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, enmArch);
     m_pLabelDistribution->setEnabled(!distributions.isEmpty());
     m_pComboDistribution->setEnabled(!distributions.isEmpty());
 

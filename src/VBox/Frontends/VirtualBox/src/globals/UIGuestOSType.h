@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 103674 2024-03-04 18:28:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 103680 2024-03-05 12:31:30Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -149,17 +149,18 @@ public:
     /** Re-create the guest OS type database. */
     void reCacheGuestOSTypes();
 
-    /** Returns a list of all families (id and description). */
-    UIGuestOSFamilyInfo getFamilies(bool fListAll, KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
+    /** Returns a list of all families. */
+    UIGuestOSFamilyInfo getFamilies(bool fListAll,
+                                    KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns the list of subtypes for @p strFamilyId. This may be an empty list. */
-    QStringList         getSubtypeListForFamilyId(const QString &strFamilyId,
-                                                  KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
-    /** Returns a list of OS types for the @p strFamilyId. */
-    UIGuestOSTypeInfo   getTypeListForFamilyId(const QString &strFamilyId,
+    QStringList         getSubtypesForFamilyId(const QString &strFamilyId,
                                                KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
+    /** Returns a list of OS types for the @p strFamilyId. */
+    UIGuestOSTypeInfo   getTypesForFamilyId(const QString &strFamilyId,
+                                            KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns a list of OS types for the @p strSubtype. */
-    UIGuestOSTypeInfo   getTypeListForSubtype(const QString &strSubtype,
-                                              KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
+    UIGuestOSTypeInfo   getTypesForSubtype(const QString &strSubtype,
+                                           KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
 
     /** Returns whether specified @a strOSTypeId is of DOS type. */
     static bool isDOSType(const QString &strOSTypeId);
