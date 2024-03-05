@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103687 2024-03-05 17:57:51Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103688 2024-03-05 18:10:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -651,7 +651,8 @@ void UINameAndSystemEditor::populateDistributionCombo()
                                         : KPlatformArchitecture_None;
 
     /* Acquire a list of suitable sub-types: */
-    const QStringList distributions = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, enmArch);
+    const UIGuestOSTypeManager::UIGuestOSSubtypeInfo distributions
+        = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, enmArch);
     m_pLabelDistribution->setEnabled(!distributions.isEmpty());
     m_pComboDistribution->setEnabled(!distributions.isEmpty());
 
@@ -660,7 +661,8 @@ void UINameAndSystemEditor::populateDistributionCombo()
     m_pComboDistribution->clear();
 
     /* Populate distribution combo: */
-    m_pComboDistribution->addItems(distributions);
+    foreach (const UISubtypeInfo &distribution, distributions)
+        m_pComboDistribution->addItem(distribution.m_strName);
 
     /* Unblock signals finally: */
     m_pComboDistribution->blockSignals(false);
