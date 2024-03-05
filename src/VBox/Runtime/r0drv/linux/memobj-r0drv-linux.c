@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 103168 2024-02-01 17:24:16Z vadim.galitsyn@oracle.com $ */
+/* $Id: memobj-r0drv-linux.c 103684 2024-03-05 15:27:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -144,7 +144,8 @@ typedef struct RTR0MEMOBJLNX
     /** The pages in the apPages array. */
     size_t              cPages;
     /** Array of struct page pointers. (variable size) */
-    struct page        *apPages[1];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    struct page        *apPages[RT_FLEXIBLE_ARRAY];
 } RTR0MEMOBJLNX;
 /** Pointer to the linux memory object. */
 typedef RTR0MEMOBJLNX *PRTR0MEMOBJLNX;

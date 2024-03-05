@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxTpG.h 103684 2024-03-05 15:27:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -228,7 +228,8 @@ typedef struct VTGDESCARGLIST
     uint8_t         cArgs;
     uint8_t         fHaveLargeArgs;
     uint8_t         abReserved[2];
-    VTGDESCARG      aArgs[1];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    VTGDESCARG      aArgs[RT_FLEXIBLE_ARRAY];
 } VTGDESCARGLIST;
 /** Pointer to a VTG argument list descriptor. */
 typedef VTGDESCARGLIST     *PVTGDESCARGLIST;

@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 101358 2023-10-05 15:24:57Z vadim.galitsyn@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 103684 2024-03-05 15:27:02Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -96,7 +96,8 @@ typedef struct SUPDRVTPPROVIDER
      *  tracer. */
     bool                    fRegistered;
     /** The provider name (for logging purposes). */
-    char                    szName[1];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    char                    szName[RT_FLEXIBLE_ARRAY];
 } SUPDRVTPPROVIDER;
 /** Pointer to the data for a tracepoint provider. */
 typedef SUPDRVTPPROVIDER *PSUPDRVTPPROVIDER;
@@ -161,7 +162,8 @@ typedef struct SUPDRVTRACERUMOD
     /** The number of probe locations. */
     uint32_t                cProbeLocs;
     /** Ring-0 probe location info. */
-    SUPDRVPROBELOC          aProbeLocs[1];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    SUPDRVPROBELOC          aProbeLocs[RT_FLEXIBLE_ARRAY];
 } SUPDRVTRACERUMOD;
 /** Magic value for SUPDRVVTGCOPY. */
 #define SUPDRVTRACERUMOD_MAGIC UINT32_C(0x00080486)
