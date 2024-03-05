@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 103558 2024-02-24 11:06:53Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 103691 2024-03-05 19:31:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -100,7 +100,7 @@ RT_C_DECLS_END
  * @param   a_pfEFlags      Pointer to the 32-bit EFLAGS value to update.
  * @param   a_uResult       Unsigned result value.
  * @param   a_uSrc          The source value (for AF calc).
- * @param   a_uDst          The original destination value (for AF calc).
+ * @param   a_uDst          The original destination value (for AF+OF calc).
  * @param   a_cBitsWidth    The width of the result (8, 16, 32, 64).
  * @param   a_CfExpr        Bool expression for the carry flag (CF).
  * @param   a_uSrcOf        The a_uSrc value to use for overflow calculation.
