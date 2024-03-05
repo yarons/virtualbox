@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 103680 2024-03-05 12:31:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 103686 2024-03-05 16:07:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -199,8 +199,11 @@ private:
     /** A map to prevent linear search of UIGuestOSType instances wrt. typeId. Key is typeId and value
       * is index to m_guestOSTypes list. */
     QMap<QString, int> m_typeIdIndexMap;
-    /** First item of the pair is family id and the 2nd is family description. */
+
+    /** Hold the list of guest OS family info. */
     UIGuestOSFamilyInfo m_guestOSFamilies;
+    /** Hold the list of guest OS subtype info. */
+    QMap<QString, QStringList> m_guestOSSubtypes;
 
     /** Caches arch types on per-subtype basis. */
     QMap<QString, KPlatformArchitecture>  m_guestOSSubtypeArch;
