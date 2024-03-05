@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103680 2024-03-05 12:31:30Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103687 2024-03-05 17:57:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -615,7 +615,8 @@ void UINameAndSystemEditor::populateFamilyCombo()
                                         : KPlatformArchitecture_None;
 
     /* Acquire family IDs: */
-    const UIGuestOSTypeManager::UIGuestOSFamilyInfo families = uiCommon().guestOSTypeManager().getFamilies(false, enmArch);
+    const UIGuestOSTypeManager::UIGuestOSFamilyInfo families
+        = uiCommon().guestOSTypeManager().getFamilies(false, enmArch);
 
     /* Block signals initially and clear the combo: */
     m_pComboFamily->blockSignals(true);

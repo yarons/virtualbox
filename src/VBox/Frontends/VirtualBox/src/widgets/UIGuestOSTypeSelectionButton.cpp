@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 103680 2024-03-05 12:31:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 103687 2024-03-05 17:57:51Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -107,20 +107,21 @@ void UIGuestOSTypeSelectionButton::populateMenu()
     /* Clear initially: */
     m_pMainMenu->clear();
 
-    UIGuestOSTypeManager::UIGuestOSFamilyInfo familyList = uiCommon().guestOSTypeManager().getFamilies(true);
+    const UIGuestOSTypeManager::UIGuestOSFamilyInfo familyies = uiCommon().guestOSTypeManager().getFamilies(true);
 
-    for (int i = 0; i < familyList.size(); ++i)
+    for (int i = 0; i < familyies.size(); ++i)
     {
-        const UIFamilyInfo &fi = familyList.at(i);
+        const UIFamilyInfo &fi = familyies.at(i);
         QMenu *pSubMenu = m_pMainMenu->addMenu(fi.m_strDescription);
-        QStringList subtypeList = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(fi.m_strId);
+        const QStringList distributions = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(fi.m_strId);
 
-        if (subtypeList.isEmpty())
+        if (distributions.isEmpty())
             createOSTypeMenu(uiCommon().guestOSTypeManager().getTypesForFamilyId(fi.m_strId), pSubMenu);
         else
         {
-            foreach (const QString &strSubtype, subtypeList)
-                createOSTypeMenu(uiCommon().guestOSTypeManager().getTypesForSubtype(strSubtype), pSubMenu->addMenu(strSubtype));
+            foreach (const QString &strDistribution, distributions)
+                createOSTypeMenu(uiCommon().guestOSTypeManager().getTypesForSubtype(strDistribution),
+                                 pSubMenu->addMenu(strDistribution));
         }
     }
 }
