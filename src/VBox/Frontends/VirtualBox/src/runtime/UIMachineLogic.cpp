@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -106,7 +106,6 @@
 
 /* Other VBox includes: */
 #include <iprt/path.h>
-#include <iprt/thread.h>
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>

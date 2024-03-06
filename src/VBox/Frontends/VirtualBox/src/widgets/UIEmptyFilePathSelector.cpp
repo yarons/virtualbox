@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -25,16 +25,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-/* Local includes */
-#include "QIFileDialog.h"
-#include "QIToolButton.h"
-#include "QILabel.h"
-#include "QILineEdit.h"
-#include "UIIconPool.h"
-#include "UIEmptyFilePathSelector.h"
-
-/* Global includes */
-#include <iprt/assert.h>
+/* Qt includes: */
 #include <QAction>
 #include <QApplication>
 #include <QClipboard>
@@ -43,6 +34,14 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QTimer>
+
+/* GUI includes: */
+#include "QIFileDialog.h"
+#include "QIToolButton.h"
+#include "QILabel.h"
+#include "QILineEdit.h"
+#include "UIEmptyFilePathSelector.h"
+#include "UIIconPool.h"
 
 
 UIEmptyFilePathSelector::UIEmptyFilePathSelector (QWidget *aParent /* = NULL */)

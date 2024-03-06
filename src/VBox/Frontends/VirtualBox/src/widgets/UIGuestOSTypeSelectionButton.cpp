@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 103703 2024-03-06 14:33:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -36,8 +36,6 @@
 #include "UIGuestOSTypeSelectionButton.h"
 #include "UIIconPool.h"
 
-/* Other VBox includes: */
-#include "iprt/assert.h"
 
 UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)
     : QIWithRetranslateUI<QPushButton>(pParent)

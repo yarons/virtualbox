@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103650 2024-03-03 09:54:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -67,9 +67,6 @@
 #include "CMachine.h"
 #include "CMachineDebugger.h"
 #include "CPerformanceMetric.h"
-
-/* Other VBox includes: */
-#include <iprt/cidr.h>
 
 struct ResourceColumn
 {

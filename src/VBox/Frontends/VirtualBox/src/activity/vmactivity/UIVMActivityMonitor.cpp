@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 103347 2024-02-14 09:06:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -53,7 +53,6 @@
 #include "CPerformanceCollector.h"
 #include "CPerformanceMetric.h"
 #include <iprt/path.h>
-#include <iprt/string.h>
 
 /* External includes: */
 #include <math.h>

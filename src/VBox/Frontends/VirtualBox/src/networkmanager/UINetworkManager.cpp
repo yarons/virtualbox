@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkManager.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -64,9 +64,6 @@
 # include "CHostNetworkInterface.h"
 #endif
 #include "CNATNetwork.h"
-
-/* Other VBox includes: */
-#include <iprt/cidr.h>
 
 
 /** Tab-widget indexes. */

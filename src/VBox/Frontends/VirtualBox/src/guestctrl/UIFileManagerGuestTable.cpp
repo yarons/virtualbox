@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 102928 2024-01-17 15:03:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -59,7 +59,7 @@
 #include "CProgress.h"
 #include "CGuestSessionStateChangedEvent.h"
 
-#include <iprt/path.h>
+/* Other VBox includes: */
 #include <iprt/err.h>
 
 /*********************************************************************************************************************************

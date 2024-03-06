@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -29,8 +29,6 @@
 #include "VBoxCocoaHelper.h"
 
 #include <QMenu>
-
-#include <iprt/assert.h>
 
 #import <AppKit/NSEvent.h>
 #import <AppKit/NSColor.h>

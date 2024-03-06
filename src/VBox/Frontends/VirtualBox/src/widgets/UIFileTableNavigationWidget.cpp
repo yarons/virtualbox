@@ -1,4 +1,4 @@
-/* $Id: UIFileTableNavigationWidget.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileTableNavigationWidget.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileTableNavigationWidget class definitions.
  */
@@ -39,9 +39,6 @@
 /* GUI includes: */
 #include "UIFileTableNavigationWidget.h"
 #include "UIPathOperations.h"
-
-/* Other VBox includes: */
-#include <iprt/cdefs.h>
 
 
 /*********************************************************************************************************************************

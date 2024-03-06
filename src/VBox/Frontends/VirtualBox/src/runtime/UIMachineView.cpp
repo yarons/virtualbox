@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -78,8 +78,6 @@
 /* Other VBox includes: */
 #include <VBox/VBoxOGL.h>
 #include <VBoxVideo.h>
-#include <iprt/asm.h>
-#include <iprt/errcore.h>
 
 /* External includes: */
 #include <math.h>
