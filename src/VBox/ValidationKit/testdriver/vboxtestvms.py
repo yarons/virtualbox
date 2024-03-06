@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 103587 2024-02-27 13:06:51Z ksenia.s.stepanova@oracle.com $
+# $Id: vboxtestvms.py 103702 2024-03-06 13:37:56Z ramshankar.venkataraman@oracle.com $
 
 """
 VirtualBox Test VMs
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103587 $"
+__version__ = "$Revision: 103702 $"
 
 # Standard Python imports.
 import copy;
@@ -2246,6 +2246,9 @@ class TestVmManager(object):
         TestVm('tst-nsthwvirt-ubuntu-64',   kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
                sNic0AttachType = 'nat'),
+        TestVm('tst-nsthwvirt-win10-hv-64', kfGrpStdSmoke,       sHd = '7.1/smoketests/t-nsthwvirt-win10-hv-64.vdi',
+               sKind = 'Windows10_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True,
+               fNstHwVirt = True, sNic0AttachType = 'nat', asParavirtModesSup = [g_ksParavirtProviderNone,]),
 
         # Audio testing.
         TestVm('tst-audio-debian10-64',     kfGrpStdSmoke,       sHd = '6.1/audio/debian10-amd64-7.vdi',

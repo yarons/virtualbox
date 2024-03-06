@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 103529 2024-02-22 11:36:39Z andreas.loeffler@oracle.com $
+# $Id: vboxwrappers.py 103702 2024-03-06 13:37:56Z ramshankar.venkataraman@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103529 $"
+__version__ = "$Revision: 103702 $"
 
 
 # Standard Python imports.
@@ -1075,7 +1075,11 @@ class SessionWrapper(TdTaskBase):
         """
         if not self.isPlatformX86(): return True;
         # Supported.
-        if self.fpApiVer < 5.3  or  not hasattr(vboxcon, 'CPUPropertyType_HWVirt'):
+        if self.fpApiVer < 5.3:
+            return True;
+        if self.fpApiVer < 7.1 and not hasattr(vboxcon, 'CPUPropertyType_HWVirt'):
+            return True;
+        if self.fpApiVer >= 7.1 and not hasattr(vboxcon, 'CPUPropertyTypeX86_HWVirt'):
             return True;
 
         # Enable/disable it.
