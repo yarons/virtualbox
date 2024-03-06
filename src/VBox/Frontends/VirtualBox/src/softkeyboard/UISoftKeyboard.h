@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 103706 2024-03-06 15:32:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.h 103707 2024-03-06 15:46:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -33,6 +33,9 @@
 
 /* Qt includes: */
 #include <QMainWindow>
+
+/* COM includes: */
+#include "COMDefs.h"
 
 /* GUI includes: */
 #include "QIWithRestorableGeometry.h"
@@ -78,9 +81,9 @@ protected:
 private slots:
 
     void sltKeyboardLedsChange();
-    void sltPutKeyboardSequence(QVector<qint32> sequence);
-    void sltPutUsageCodesPress(QVector<QPair<qint32, qint32> > sequence);
-    void sltPutUsageCodesRelease(QVector<QPair<qint32, qint32> > sequence);
+    void sltPutKeyboardSequence(QVector<LONG> sequence);
+    void sltPutUsageCodesPress(QVector<QPair<LONG, LONG> > sequence);
+    void sltPutUsageCodesRelease(QVector<QPair<LONG, LONG> > sequence);
 
     /** Handles the signal we get from the layout selector widget.
       * Selection changed is forwarded to the keyboard widget. */
