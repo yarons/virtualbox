@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 102838 2024-01-11 12:27:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -31,7 +31,6 @@
 
 /* GUI includes: */
 #include "UICloudNetworkingStuff.h"
-#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIIconPool.h"

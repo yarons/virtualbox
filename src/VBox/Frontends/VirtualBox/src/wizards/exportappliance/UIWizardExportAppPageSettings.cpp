@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageSettings.cpp 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageSettings.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageSettings class implementation.
  */
@@ -32,7 +32,6 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UIApplianceExportEditorWidget.h"
-#include "UICommon.h"
 #include "UIFormEditorWidget.h"
 #include "UINotificationCenter.h"
 #include "UIWizardExportApp.h"

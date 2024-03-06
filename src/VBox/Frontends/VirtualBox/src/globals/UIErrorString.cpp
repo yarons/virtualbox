@@ -1,4 +1,4 @@
-/* $Id: UIErrorString.cpp 99841 2023-05-18 11:05:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIErrorString.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIErrorString class implementation.
  */
@@ -31,7 +31,6 @@
 #include <QPalette>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIErrorString.h"
 #include "UITranslator.h"
 

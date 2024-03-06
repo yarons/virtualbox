@@ -1,4 +1,4 @@
-/* $Id: UISnapshotFolderEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotFolderEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotFolderEditor class implementation.
  */
@@ -30,7 +30,6 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIFilePathSelector.h"
 #include "UISnapshotFolderEditor.h"
 

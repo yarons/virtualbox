@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudConsoleManager.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -39,7 +39,6 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "QITreeWidget.h"
-#include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"

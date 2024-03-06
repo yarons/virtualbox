@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 103027 2024-01-24 15:49:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -35,7 +35,6 @@
 
 /* GUI includes: */
 #include "QIMessageBox.h"
-#include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIChooser.h"
 #include "UIChooserHandlerMouse.h"

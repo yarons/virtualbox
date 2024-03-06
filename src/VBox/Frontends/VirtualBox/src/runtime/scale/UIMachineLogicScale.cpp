@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogicScale.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -32,7 +32,6 @@
 
 /* GUI includes: */
 #include "UIActionPoolRuntime.h"
-#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIMachine.h"
 #include "UIMachineLogicScale.h"

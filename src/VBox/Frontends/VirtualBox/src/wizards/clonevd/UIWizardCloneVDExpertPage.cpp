@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVDExpertPage.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class implementation.
  */
@@ -30,7 +30,6 @@
 #include <QGridLayout>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDExpertPage.h"

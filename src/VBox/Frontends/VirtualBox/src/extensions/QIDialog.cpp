@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 100871 2023-08-14 13:21:44Z sergey.dubov@oracle.com $ */
+/* $Id: QIDialog.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class implementation.
  */
@@ -30,8 +30,10 @@
 
 /* GUI includes: */
 #include "QIDialog.h"
-#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)

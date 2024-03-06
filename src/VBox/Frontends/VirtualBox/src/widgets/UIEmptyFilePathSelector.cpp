@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -32,7 +32,6 @@
 #include "QILineEdit.h"
 #include "UIIconPool.h"
 #include "UIEmptyFilePathSelector.h"
-#include "UICommon.h"
 
 /* Global includes */
 #include <iprt/assert.h>

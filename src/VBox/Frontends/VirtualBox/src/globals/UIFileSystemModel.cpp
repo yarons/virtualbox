@@ -1,4 +1,4 @@
-/* $Id: UIFileSystemModel.cpp 102487 2023-12-05 17:56:15Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileSystemModel.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileSystemModel class implementation.
  */
@@ -33,7 +33,6 @@
 #include <QMimeData>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIFileSystemModel.h"
 #include "UIErrorString.h"
 #include "UIPathOperations.h"

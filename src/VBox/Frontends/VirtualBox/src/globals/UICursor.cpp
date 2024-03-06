@@ -1,4 +1,4 @@
-/* $Id: UICursor.cpp 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICursor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICursor namespace implementation.
  */
@@ -30,8 +30,10 @@
 #include <QWidget>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UICursor.h"
+#ifdef VBOX_WS_NIX
+# include "UICommon.h"
+#endif
 
 
 /* static */

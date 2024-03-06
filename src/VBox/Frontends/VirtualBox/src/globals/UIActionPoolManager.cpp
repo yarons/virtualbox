@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPoolManager.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -29,7 +29,6 @@
 #include <QActionGroup>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIActionPoolManager.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"

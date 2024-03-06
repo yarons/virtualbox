@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.cpp 102036 2023-11-09 13:50:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisualStateEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class implementation.
  */
@@ -32,7 +32,6 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIExtraDataManager.h"
 #include "UIVisualStateEditor.h"

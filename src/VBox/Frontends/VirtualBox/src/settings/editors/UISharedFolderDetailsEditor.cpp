@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
@@ -35,7 +35,6 @@
 
 /* GUI includes */
 #include "QIDialogButtonBox.h"
-#include "UICommon.h"
 #include "UIFilePathSelector.h"
 #include "UISharedFolderDetailsEditor.h"
 

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -30,7 +30,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIDefaultMachineFolderEditor.h"
 #include "UIErrorString.h"
 #include "UIGlobalSettingsGeneral.h"

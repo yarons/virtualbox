@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDFormatPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVDFormatPage.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDFormatPage class implementation.
  */
@@ -32,7 +32,6 @@
 #include "UIWizardCloneVDFormatPage.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardDiskEditors.h"
-#include "UICommon.h"
 #include "QIRichTextLabel.h"
 
 /* COM includes: */

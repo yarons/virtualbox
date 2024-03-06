@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 102812 2024-01-10 11:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UITools.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -29,7 +29,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UITools.h"
 #include "UIToolsModel.h"
 #include "UIToolsView.h"

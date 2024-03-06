@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupStack.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -34,7 +34,6 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UICursor.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIPopupStack.h"

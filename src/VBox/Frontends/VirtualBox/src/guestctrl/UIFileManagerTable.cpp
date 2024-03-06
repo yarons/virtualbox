@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 103653 2024-03-03 11:35:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -41,7 +41,6 @@
 #include "QILineEdit.h"
 #include "QIToolBar.h"
 #include "UIActionPool.h"
-#include "UICommon.h"
 #include "UIFileSystemModel.h"
 #include "UIErrorString.h"
 #include "UIFileManager.h"

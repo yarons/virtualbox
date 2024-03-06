@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -44,7 +44,6 @@
 #include "UIMachineSettingsUSB.h"
 #include "UIErrorString.h"
 #include "QIToolBar.h"
-#include "UICommon.h"
 #include "UIUSBFiltersEditor.h"
 #include "UIUSBSettingsEditor.h"
 

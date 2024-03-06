@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIConsoleEventHandler.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -26,7 +26,6 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConsoleEventHandler.h"
 #include "UIExtraDataManager.h"
 #include "UIMainEventListener.h"

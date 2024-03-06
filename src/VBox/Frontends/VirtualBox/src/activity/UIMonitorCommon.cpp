@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.cpp 103164 2024-02-01 16:14:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCommon.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class implementation.
  */
@@ -33,7 +33,6 @@
 
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIMonitorCommon.h"
 
 /* COM includes: */

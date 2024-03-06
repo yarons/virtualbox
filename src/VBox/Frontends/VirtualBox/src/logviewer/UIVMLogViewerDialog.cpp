@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -42,7 +42,6 @@
 #include "UIShortcutPool.h"
 #include "UIVMLogViewerDialog.h"
 #include "UIVMLogViewerWidget.h"
-#include "UICommon.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
