@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMedium.cpp 103705 2024-03-06 15:26:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -41,6 +41,9 @@
 /* COM includes: */
 #include "CMachine.h"
 #include "CSnapshot.h"
+
+/* Other VBox includes: */
+#include "iprt/cpp/utils.h" // for unconst stuff
 
 QUuid   UIMedium::m_uNullID;
 QString UIMedium::m_sstrTable = QString("<table>%1</table>");
@@ -433,6 +436,18 @@ void UIMedium::refresh()
                 break;
         }
     }
+}
+
+KMediumState UIMedium::state(bool fNoDiffs /* = false */) const
+{
+    unconst(this)->checkNoDiffs(fNoDiffs);
+    return fNoDiffs ? m_noDiffs.state : m_state;
+}
+
+const COMResult &UIMedium::result(bool fNoDiffs /* = false */) const
+{
+    unconst(this)->checkNoDiffs(fNoDiffs);
+    return fNoDiffs ? m_noDiffs.result : m_result;
 }
 
 void UIMedium::updateParentID()
