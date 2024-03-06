@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 102144 2023-11-17 19:25:12Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 103714 2024-03-06 18:49:57Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -539,6 +539,7 @@ NTSTATUS SvgaScreenDefine(PVBOXWDDM_EXT_VMSVGA pSvga,
                             xOrigin, yOrigin, u32Width, u32Height,
                             /* fPrimary = */ false, u32Offset, fBlank);
         SvgaCommit(pSvga, cbSubmit);
+        SvgaFlush(pSvga);
     }
     else
     {
@@ -560,6 +561,7 @@ NTSTATUS SvgaScreenDestroy(PVBOXWDDM_EXT_VMSVGA pSvga,
     {
         SvgaCmdDestroyScreen(pvCmd, u32ScreenId);
         SvgaCommit(pSvga, cbSubmit);
+        SvgaFlush(pSvga);
     }
     else
     {
