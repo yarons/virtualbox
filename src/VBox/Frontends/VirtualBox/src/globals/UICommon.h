@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 103713 2024-03-06 17:51:49Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -50,9 +50,6 @@
 #include "CSession.h"
 #include "CVirtualBox.h"
 #include "CVirtualBoxClient.h"
-
-/* Other VBox includes: */
-#include "VBox/com/Guid.h"
 
 /* Forward declarations: */
 class QGraphicsWidget;
