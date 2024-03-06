@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 103708 2024-03-06 16:13:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -45,7 +45,6 @@
 
 /* COM includes: */
 #include "CSystemProperties.h"
-#include "CMedium.h"
 #include "CMediumFormat.h"
 
 

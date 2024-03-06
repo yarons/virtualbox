@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIFDCreationDialog.h 103708 2024-03-06 16:13:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -40,6 +40,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CMedium.h"
 #include "CMediumFormat.h"
 
 /* Forward declarations: */
@@ -48,7 +49,6 @@ class QComboBox;
 class QIDialogButtonBox;
 class QLabel;
 class UIFilePathSelector;
-class CMedium;
 
 /* A QDialog extension to get necessary setting from the user for floppy disk creation. */
 class SHARED_LIBRARY_STUFF UIFDCreationDialog : public QIWithRetranslateUI<QDialog>

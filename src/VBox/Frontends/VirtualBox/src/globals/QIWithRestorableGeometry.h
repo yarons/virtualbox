@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 103705 2024-03-06 15:26:38Z sergey.dubov@oracle.com $ */
+/* $Id: QIWithRestorableGeometry.h 103708 2024-03-06 16:13:32Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -42,7 +42,6 @@
 # include "VBoxUtils-darwin.h"
 #endif
 #ifdef VBOX_WS_NIX
-# include "UICommon.h"
 # include "UIDesktopWidgetWatchdog.h"
 #endif
 
