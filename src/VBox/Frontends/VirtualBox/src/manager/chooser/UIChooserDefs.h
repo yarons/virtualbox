@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserDefs.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -35,7 +35,7 @@
 #include <QGraphicsItem>
 
 /* Other VBox includes: */
-#include <iprt/cdefs.h>
+#include <iprt/cdefs.h> // for RT_BIT stuff
 
 
 /** UIChooserNode types. */

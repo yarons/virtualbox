@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103579 2024-02-26 17:35:20Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -131,6 +131,7 @@
 #include <iprt/ldr.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
+#include <iprt/stream.h>
 #include <iprt/system.h>
 #include <VBox/sup.h>
 #include <VBox/VBoxOGL.h>

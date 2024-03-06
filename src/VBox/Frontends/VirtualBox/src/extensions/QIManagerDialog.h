@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 102731 2023-12-29 16:30:17Z sergey.dubov@oracle.com $ */
+/* $Id: QIManagerDialog.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -38,9 +38,6 @@
 /* GUI includes: */
 #include "QIWithRestorableGeometry.h"
 #include "UILibraryDefs.h"
-
-/* Other VBox includes: */
-#include <iprt/cdefs.h>
 
 /* Forward declarations: */
 class QPushButton;

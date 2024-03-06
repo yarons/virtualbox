@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsItem.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -41,9 +41,6 @@
 /* GUI includes: */
 #include "QIGraphicsWidget.h"
 #include "UITools.h"
-
-/* Other VBox includes: */
-#include <iprt/cdefs.h>
 
 /* Forward declaration: */
 class QPropertyAnimation;

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 102775 2024-01-05 15:27:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -38,9 +38,6 @@
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
-
-/* Other VBox includes: */
-#include <iprt/cdefs.h>
 
 
 /** Typedef for QPair of QStrings. */

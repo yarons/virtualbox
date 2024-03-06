@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIWithRestorableGeometry.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -48,7 +48,7 @@
 
 /* Other VBox includes: */
 #ifdef VBOX_WS_MAC
-# include "iprt/cpp/utils.h"
+# include "iprt/cpp/utils.h" // for unconst stuff
 #endif
 
 /** Template with geometry saving/restoring capabilities. */

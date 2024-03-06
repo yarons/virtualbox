@@ -1,4 +1,4 @@
-/* $Id: UIMedium.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMedium.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class declaration.
  */
@@ -44,7 +44,7 @@
 #include "CMedium.h"
 
 /* Other VBox includes: */
-#include "iprt/cpp/utils.h"
+#include "iprt/cpp/utils.h" // for unconst stuff
 
 /** Storage medium cache used to
   * override some UIMedium attributes in the

@@ -1,4 +1,4 @@
-/* $Id: CocoaEventHelper.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CocoaEventHelper.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Cocoa specific event-handling tasks.
  */
@@ -35,7 +35,6 @@
 #include "UILibraryDefs.h"
 
 /* Other VBox includes: */
-#include <iprt/cdefs.h>
 #include <VBox/VBoxCocoa.h>
 
 /* Cocoa declarations: */

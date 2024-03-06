@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxUtils-darwin.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -41,7 +41,6 @@
 #include <VBox/VBoxCocoa.h>
 #include <ApplicationServices/ApplicationServices.h>
 #undef PVM // Stupid, stupid apple headers (sys/param.h)!!
-#include <iprt/cdefs.h>
 
 /* External includes: */
 #include <ApplicationServices/ApplicationServices.h>

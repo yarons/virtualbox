@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItem.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -42,9 +42,6 @@
 #include "QIGraphicsWidget.h"
 #include "QIWithRetranslateUI.h"
 #include "UIChooserDefs.h"
-
-/* Other VBox includes: */
-#include <iprt/cdefs.h>
 
 /* Forward declaration: */
 class QGraphicsSceneHoverEvent;

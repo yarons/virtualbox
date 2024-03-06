@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 102515 2023-12-07 09:08:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -39,8 +39,6 @@
 #include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
 #include "UIFileManagerHostTable.h"
-
-#include <iprt/stream.h>
 
 /* Forward declarations: */
 class QGridLayout;
