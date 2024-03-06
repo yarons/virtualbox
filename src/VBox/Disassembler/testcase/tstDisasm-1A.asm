@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 103709 2024-03-06 16:29:13Z knut.osmundsen@oracle.com $
+; $Id: tstDisasm-1A.asm 103717 2024-03-06 21:36:59Z knut.osmundsen@oracle.com $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -512,6 +512,12 @@ BEGINPROC TestProc64
         wrgsbase r15
         rdrand rax
         vmxon [rax]
+
+        cmpxchg8b [rdi]
+        lock cmpxchg8b [rdi]
+        cmpxchg16b [rdi]
+        lock cmpxchg16b [rdi]
+        vmptrst [rsi + 1]
 
         ret
 ENDPROC   TestProc64
