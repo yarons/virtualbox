@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 103558 2024-02-24 11:06:53Z bela.lubkin@oracle.com $
+; $Id: IEMAllAImpl.asm 103696 2024-03-06 07:13:30Z bela.lubkin@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4427,6 +4427,7 @@ IEMIMPL_MEDIA_OPT_F3 vpaddsb
 IEMIMPL_MEDIA_OPT_F3 vpaddsw
 IEMIMPL_MEDIA_OPT_F3 vpermilps
 IEMIMPL_MEDIA_OPT_F3 vpermilpd
+IEMIMPL_MEDIA_OPT_F3 vpmaddwd
 
 ;;
 ; Media instruction working on one full sized source register, one full sized destination
