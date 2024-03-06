@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetHostNetwork.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsWidgetHostNetwork.cpp 103712 2024-03-06 17:47:45Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetHostNetwork class implementation.
  */
@@ -43,6 +43,11 @@
 #include "UINetworkManager.h"
 #include "UINetworkManagerUtils.h"
 #include "UINotificationCenter.h"
+
+/* Other VBox includes: */
+#ifndef VBOX_WS_MAC
+# include "iprt/cidr.h"
+#endif
 
 
 UIDetailsWidgetHostNetwork::UIDetailsWidgetHostNetwork(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)
