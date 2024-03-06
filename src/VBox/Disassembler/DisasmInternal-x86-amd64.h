@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal-x86-amd64.h 103511 2024-02-22 01:16:10Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmInternal-x86-amd64.h 103698 2024-03-06 10:20:15Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -191,8 +191,10 @@ extern const DISOPCODE g_aMapX86_Group4[8];
 extern const DISOPCODE g_aMapX86_Group5[8];
 extern const DISOPCODE g_aMapX86_Group6[8];
 extern const DISOPCODE g_aMapX86_Group7_mem[8];
-extern const DISOPCODE g_aMapX86_Group7_mod11_rm000[8];
-extern const DISOPCODE g_aMapX86_Group7_mod11_rm001[8];
+extern const DISOPCODE g_aMapX86_Group7_mod11_reg000[8];
+extern const DISOPCODE g_aMapX86_Group7_mod11_reg001[8];
+extern const DISOPCODE g_aMapX86_Group7_mod11_reg010[8];
+extern const DISOPCODE g_aMapX86_Group7_mod11_reg111[8];
 extern const DISOPCODE g_aMapX86_Group8[8];
 extern const DISOPCODE g_aMapX86_Group9[8];
 extern const DISOPCODE g_aMapX86_Group10[8];
