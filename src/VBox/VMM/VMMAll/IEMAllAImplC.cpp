@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 103696 2024-03-06 07:13:30Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllAImplC.cpp 103700 2024-03-06 13:32:01Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -17446,6 +17446,29 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vpblendw_u256_fallback,(PRTUINT256U puDst, PCRT
             puDst->au16[    i] = puSrc1->au16[    i];
             puDst->au16[8 + i] = puSrc1->au16[8 + i];
         }
+}
+
+
+/**
+ * [V]PBLENDD
+ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpblendd_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc1, PCRTUINT128U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au32); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au32[i] = puSrc2->au32[i];
+        else
+            puDst->au32[i] = puSrc1->au32[i];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vpblendd_u256_fallback,(PRTUINT256U puDst, PCRTUINT256U puSrc1, PCRTUINT256U puSrc2, uint8_t bEvil))
+{
+    for (uint8_t i = 0; i < RT_ELEMENTS(puDst->au32); i++)
+        if (bEvil & RT_BIT(i))
+            puDst->au32[i] = puSrc2->au32[i];
+        else
+            puDst->au32[i] = puSrc1->au32[i];
 }
 
 

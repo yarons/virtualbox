@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103696 2024-03-06 07:13:30Z bela.lubkin@oracle.com $ */
+/* $Id: IEMInternal.h 103700 2024-03-06 13:32:01Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3583,11 +3583,13 @@ FNIEMAIMPLMEDIAOPTF2U128IMM8 iemAImpl_blendpd_u128, iemAImpl_blendpd_u128_fallba
 
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vpalignr_u128, iemAImpl_vpalignr_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vpblendw_u128, iemAImpl_vpblendw_u128_fallback;
+FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vpblendd_u128, iemAImpl_vpblendd_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vblendps_u128, iemAImpl_vblendps_u128_fallback;
 FNIEMAIMPLMEDIAOPTF3U128IMM8 iemAImpl_vblendpd_u128, iemAImpl_vblendpd_u128_fallback;
 
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vpalignr_u256, iemAImpl_vpalignr_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vpblendw_u256, iemAImpl_vpblendw_u256_fallback;
+FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vpblendd_u256, iemAImpl_vpblendd_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vblendps_u256, iemAImpl_vblendps_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vblendpd_u256, iemAImpl_vblendpd_u256_fallback;
 FNIEMAIMPLMEDIAOPTF3U256IMM8 iemAImpl_vperm2i128_u256, iemAImpl_vperm2i128_u256_fallback;
