@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103688 2024-03-05 18:10:09Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103703 2024-03-06 14:33:12Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -652,7 +652,7 @@ void UINameAndSystemEditor::populateDistributionCombo()
 
     /* Acquire a list of suitable sub-types: */
     const UIGuestOSTypeManager::UIGuestOSSubtypeInfo distributions
-        = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, enmArch);
+        = uiCommon().guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, false, enmArch);
     m_pLabelDistribution->setEnabled(!distributions.isEmpty());
     m_pComboDistribution->setEnabled(!distributions.isEmpty());
 
