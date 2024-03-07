@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 103726 2024-03-07 10:45:05Z vadim.galitsyn@oracle.com $ */
+/* $Id: SUPDrvTracer.cpp 103727 2024-03-07 11:10:23Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -63,6 +63,7 @@
 #  include <asm/linkage.h>
 # endif /* < 5.17.0 */
 #endif /* !RT_OS_LINUX */
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
