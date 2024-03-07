@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 103222 2024-02-06 09:24:42Z alexander.eichner@oracle.com $
+# $Id: testboxscript_real.py 103724 2024-03-07 10:22:33Z vadim.galitsyn@oracle.com $
 
 """
 TestBox Script - main().
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103222 $"
+__version__ = "$Revision: 103724 $"
 
 
 # Standard python imports.
@@ -724,7 +724,7 @@ class TestBoxScript(object):
             sFullName = os.path.join(self._oOptions.sScratchRoot, sName);
             try:
                 if os.path.isdir(sFullName):
-                    shutil.rmtree(sFullName, False, oRc.onErrorCallback);
+                    shutil.rmtree(sFullName, False, oRc.onErrorCallback); # pylint: disable=deprecated-argument
                 else:
                     os.remove(sFullName);
                 if os.path.exists(sFullName):
