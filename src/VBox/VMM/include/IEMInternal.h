@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103728 2024-03-07 12:11:33Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 103729 2024-03-07 12:24:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -92,8 +92,7 @@ RT_C_DECLS_BEGIN
 # define IEMNATIVE_WITH_DELAYED_PC_UPDATING
 #endif
 
-/** @def IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
- * Enables the SIMD register allocator @bugref{10614}.  */
+/** Enables the SIMD register allocator @bugref{10614}.  */
 //# define IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
 /** Enables access to even callee saved registers. */
 //# define IEMNATIVE_WITH_SIMD_REG_ACCESS_ALL_REGISTERS

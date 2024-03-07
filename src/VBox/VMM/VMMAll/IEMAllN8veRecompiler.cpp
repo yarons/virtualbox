@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103728 2024-03-07 12:11:33Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103729 2024-03-07 12:24:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5201,6 +5201,8 @@ iemNativeEmitPcWriteback(PIEMRECOMPILERSTATE pReNative, uint32_t off)
 
 
 #ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
+
+
 /*********************************************************************************************************************************
 *   SIMD register allocator (largely code duplication of the GPR allocator for now but might diverge)                            *
 *********************************************************************************************************************************/
@@ -15057,6 +15059,8 @@ iemNativeEmitFetchFpuFsw(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t id
 
 
 #ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
+
+
 /*********************************************************************************************************************************
 *   Emitters for SSE/AVX specific operations.                                                                                    *
 *********************************************************************************************************************************/
