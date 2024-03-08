@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 103649 2024-03-03 07:11:39Z alexander.eichner@oracle.com $ */
+/* $Id: IEMR3.cpp 103737 2024-03-08 13:21:55Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -1065,14 +1065,16 @@ static DECLCALLBACK(void) iemR3InfoTb(PVM pVM, PCDBGFINFOHLP pHlp, int cArgs, ch
     else
     {
         /*
-         *
+         * Disassemble according to type.
          */
         switch (pTb->fFlags & IEMTB_F_TYPE_MASK)
         {
+# ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER
             case IEMTB_F_TYPE_NATIVE:
                 pHlp->pfnPrintf(pHlp, "PC=%RGp fFlags=%#x on #%u: %p - native\n", GCPhysPc, fFlags, pVCpu->idCpu, pTb);
                 iemNativeDisassembleTb(pTb, pHlp);
                 break;
+# endif
 
             case IEMTB_F_TYPE_THREADED:
                 pHlp->pfnPrintf(pHlp, "PC=%RGp fFlags=%#x on #%u: %p - threaded\n", GCPhysPc, fFlags, pVCpu->idCpu, pTb);
