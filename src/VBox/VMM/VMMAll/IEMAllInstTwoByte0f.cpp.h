@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 103718 2024-03-07 02:43:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 103746 2024-03-09 12:30:34Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -7284,7 +7284,7 @@ FNIEMOP_DEF(iemOp_vmread_Ey_Gy)
     }
 }
 #else
-FNIEMOP_STUB(iemOp_vmread_Ey_Gy);
+FNIEMOP_UD_STUB(iemOp_vmread_Ey_Gy);
 #endif
 
 /*  Opcode 0x66 0x0f 0x78 - AMD Group 17 */
@@ -7364,7 +7364,7 @@ FNIEMOP_DEF(iemOp_vmwrite_Gy_Ey)
     }
 }
 #else
-FNIEMOP_STUB(iemOp_vmwrite_Gy_Ey);
+FNIEMOP_UD_STUB(iemOp_vmwrite_Gy_Ey);
 #endif
 /*  Opcode 0x66 0x0f 0x79 - invalid */
 /*  Opcode 0xf3 0x0f 0x79 - invalid */

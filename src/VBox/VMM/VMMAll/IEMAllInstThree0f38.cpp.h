@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstThree0f38.cpp.h 103212 2024-02-05 22:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstThree0f38.cpp.h 103746 2024-03-09 12:30:34Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -1355,7 +1355,7 @@ FNIEMOP_DEF(iemOp_invept_Gy_Mdq)
     IEMOP_RAISE_INVALID_OPCODE_RET();
 }
 #else
-FNIEMOP_STUB(iemOp_invept_Gy_Mdq);
+FNIEMOP_UD_STUB(iemOp_invept_Gy_Mdq);
 #endif
 
 /** Opcode 0x66 0x0f 0x38 0x81. */
@@ -1404,7 +1404,7 @@ FNIEMOP_DEF(iemOp_invvpid_Gy_Mdq)
     IEMOP_RAISE_INVALID_OPCODE_RET();
 }
 #else
-FNIEMOP_STUB(iemOp_invvpid_Gy_Mdq);
+FNIEMOP_UD_STUB(iemOp_invvpid_Gy_Mdq);
 #endif
 
 /** Opcode 0x66 0x0f 0x38 0x82. */
