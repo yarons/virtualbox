@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103741 2024-03-09 01:47:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -39,7 +39,7 @@
 
 /** @def IEMNATIVE_WITH_TB_DEBUG_INFO
  * Enables generating internal debug info for better TB disassembly dumping. */
-#if defined(DEBUG) || defined(DOXYGEN_RUNNING) || 1
+#if defined(DEBUG) || defined(DOXYGEN_RUNNING)
 # define IEMNATIVE_WITH_TB_DEBUG_INFO
 #endif
 
