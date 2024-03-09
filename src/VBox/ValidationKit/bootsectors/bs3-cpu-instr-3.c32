@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 103747 2024-03-09 12:33:31Z bela.lubkin@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 103748 2024-03-09 12:36:36Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -572,7 +572,6 @@ DECLINLINE(uint8_t) bs3CpuInstr3MemOpSize(uint8_t cbOperand, uint8_t enmRm)
 #define BS3_SKIPIT_AVG_SKIP 26
 #undef  BS3_SKIPIT_DO_SKIP
 #undef  BS3_SKIPIT_DO_ARGS
-#define BS3_SKIPIT_DO_SKIP
 
 #if defined(BS3_SKIPIT_DO_SKIP)
 uint32_t BS3_ASMrdtsc_lo();
