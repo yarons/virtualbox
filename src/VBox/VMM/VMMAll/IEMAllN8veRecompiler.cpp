@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103729 2024-03-07 12:24:31Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -11854,7 +11854,7 @@ iemNativeEmitFetchSReg(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxD
 #define IEM_MC_REF_GREG_U8_THREADED(a_pu8Dst, a_iGRegEx) \
     off = iemNativeEmitRefGregU8(pReNative, off, a_pu8Dst, a_iGRegEx, false /*fConst*/)
 
-#define IEM_MC_REF_GREG_U8_CONST_THREADED(a_pu8Dst, a_iGReg) \
+#define IEM_MC_REF_GREG_U8_CONST_THREADED(a_pu8Dst, a_iGRegEx) \
     off = iemNativeEmitRefGregU8(pReNative, off, a_pu8Dst, a_iGRegEx, true /*fConst*/)
 
 /** Handles IEM_MC_REF_GREG_U8[_CONST]. */

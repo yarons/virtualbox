@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 103667 2024-03-04 13:46:36Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -438,6 +438,7 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_STORE_GREG_U8_THREADED(a_iGRegEx, a_u8Value)         IEM_LIVENESS_GPR_MODIFY(a_iGRegEx & 15)
 #define IEM_MC_STORE_GREG_U8_CONST_THREADED(a_iGRegEx, a_u8Value)   IEM_LIVENESS_GPR_MODIFY(a_iGRegEx & 15)
 #define IEM_MC_REF_GREG_U8_THREADED(a_pu8Dst, a_iGRegEx)            IEM_LIVENESS_GPR_MODIFY(a_iGRegEx & 15)
+#define IEM_MC_REF_GREG_U8_CONST_THREADED(a_pu8Dst, a_iGRegEx)      IEM_LIVENESS_GPR_INPUT(a_iGRegEx & 15)
 #define IEM_MC_ADD_GREG_U8_TO_LOCAL_THREADED(a_u8Value, a_iGRegEx)  IEM_LIVENESS_GPR_INPUT(a_iGRegEx & 15)
 #define IEM_MC_AND_GREG_U8_THREADED(a_iGRegEx, a_u8Value)           IEM_LIVENESS_GPR_MODIFY(a_iGRegEx & 15)
 #define IEM_MC_OR_GREG_U8_THREADED(a_iGRegEx, a_u8Value)            IEM_LIVENESS_GPR_MODIFY(a_iGRegEx & 15)

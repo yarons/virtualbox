@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 103737 2024-03-08 13:21:55Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -917,7 +917,7 @@ static DECLCALLBACK(void) iemR3InfoDTlb(PVM pVM, PCDBGFINFOHLP pHlp, int cArgs, 
 
 #if defined(VBOX_WITH_IEM_RECOMPILER) && !defined(VBOX_VMM_TARGET_ARMV8)
 /**
- * @callback_method_impl{FNDBGFINFOARGVINT, dtlb}
+ * @callback_method_impl{FNDBGFINFOARGVINT, tb}
  */
 static DECLCALLBACK(void) iemR3InfoTb(PVM pVM, PCDBGFINFOHLP pHlp, int cArgs, char **papszArgs)
 {

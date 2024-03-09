@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdFuncs.cpp 103233 2024-02-07 00:09:53Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdFuncs.cpp 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Threaded Functions.
  */
@@ -417,6 +417,11 @@
 
 /** Variant of IEM_MC_REF_GREG_U8 with extended (20) register index. */
 #define IEM_MC_REF_GREG_U8_THREADED(a_pu8Dst, a_iGRegEx) \
+    (a_pu8Dst) = iemGRegRefU8Ex(pVCpu, (a_iGRegEx))
+#undef IEM_MC_REF_GREG_U8
+
+/** Variant of IEM_MC_REF_GREG_U8_CONST with extended (20) register index. */
+#define IEM_MC_REF_GREG_U8_CONST_THREADED(a_pu8Dst, a_iGRegEx) \
     (a_pu8Dst) = iemGRegRefU8Ex(pVCpu, (a_iGRegEx))
 #undef IEM_MC_REF_GREG_U8
 
