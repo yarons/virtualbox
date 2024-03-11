@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 103067 2024-01-25 15:31:01Z vadim.galitsyn@oracle.com $ */
+/* $Id: vfsmod.c 103788 2024-03-11 17:50:25Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -63,6 +63,7 @@
 #elif RTLNX_VER_MIN(2,6,0)
 # include <linux/parser.h>
 #endif
+#include <VBox/VBoxLnxModInline.h>
 
 
 /*********************************************************************************************************************************
@@ -1619,6 +1620,10 @@ static int __init init(void)
 {
     int rc;
     SFLOGFLOW(("vboxsf: init\n"));
+
+    /* Check if modue loading was disabled. */
+    if (!vbox_mod_should_load())
+        return -EINVAL;
 
     /*
      * Must be paranoid about the vbsf_mount_info_new size.

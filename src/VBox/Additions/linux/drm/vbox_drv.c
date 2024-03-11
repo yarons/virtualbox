@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
+/*  $Id: vbox_drv.c 103788 2024-03-11 17:50:25Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -62,6 +62,8 @@
 #else /* !CONFIG_VGA_CONSOLE */
 # define VBOX_VIDEO_NOMODESET() 0
 #endif /* !CONFIG_VGA_CONSOLE */
+
+#include <VBox/VBoxLnxModInline.h>
 
 static int vbox_modeset = -1;
 
@@ -413,6 +415,10 @@ static struct drm_driver driver = {
 
 static int __init vbox_init(void)
 {
+	/* Check if modue loading was disabled. */
+	if (!vbox_mod_should_load())
+		return -EINVAL;
+
 	printk("vboxvideo: loading version " VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV) "\n");
 	if (VBOX_VIDEO_NOMODESET())
 	{
