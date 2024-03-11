@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 102479 2023-12-05 14:56:51Z sergey.dubov@oracle.com $ */
+/* $Id: QISplitter.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -33,9 +33,6 @@
 
 /* GUI includes: */
 #include "QISplitter.h"
-#ifdef VBOX_WS_MAC
-# include "UICursor.h"
-#endif
 
 
 /** QSplitterHandle subclass representing flat line. */

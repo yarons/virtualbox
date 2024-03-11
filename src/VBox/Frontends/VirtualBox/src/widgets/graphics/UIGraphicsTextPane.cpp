@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 98545 2023-02-13 10:40:18Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsTextPane.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -35,7 +35,6 @@
 #include <QRegularExpression>
 
 /* GUI includes: */
-#include "UICursor.h"
 #include "UIGraphicsTextPane.h"
 #include "UIRichTextString.h"
 
@@ -398,9 +397,9 @@ void UIGraphicsTextPane::updateHoverStuff()
 {
     /* Update mouse-cursor: */
     if (m_strHoveredAnchor.isNull())
-        UICursor::unsetCursor(this);
+        unsetCursor();
     else
-        UICursor::setCursor(this, Qt::PointingHandCursor);
+        setCursor(Qt::PointingHandCursor);
 
     /* Update text-layout: */
     updateTextLayout();
