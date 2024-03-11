@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportApp.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -39,6 +39,7 @@
 #include "QIDialog.h"
 #include "QIFileDialog.h"
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
 #include "UIWizardImportApp.h"
 #include "UIWizardImportAppPageExpert.h"
@@ -180,7 +181,7 @@ bool UIWizardImportApp::setFile(const QString &strName)
         return false;
 
     /* Create an appliance object: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
     {

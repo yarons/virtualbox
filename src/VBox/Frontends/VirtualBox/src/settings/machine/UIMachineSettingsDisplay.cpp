@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 103315 2024-02-12 15:23:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -35,6 +35,7 @@
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIGraphicsControllerEditor.h"
 #ifdef VBOX_WITH_3D_ACCELERATION
 # include "UIDisplayScreenFeaturesEditor.h"
@@ -397,7 +398,7 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
     }
 
     /* Check whether remote display server is valid: */
-    CExtPackManager comExtPackManager = uiCommon().virtualBox().GetExtensionPackManager();
+    CExtPackManager comExtPackManager = gpGlobalSession->virtualBox().GetExtensionPackManager();
     const bool fExtPackPresent = comExtPackManager.isNotNull() && comExtPackManager.IsExtPackUsable(GUI_ExtPackName);
     CVRDEServer comVrdeServer = m_machine.GetVRDEServer();
     const bool fServerExists = m_machine.isOk() && comVrdeServer.isNotNull();
@@ -697,7 +698,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
         /* Extension Pack presence test: */
         if (m_pEditorVRDESettings->isFeatureEnabled())
         {
-            CExtPackManager extPackManager = uiCommon().virtualBox().GetExtensionPackManager();
+            CExtPackManager extPackManager = gpGlobalSession->virtualBox().GetExtensionPackManager();
             if (!extPackManager.isNull() && !extPackManager.IsExtPackUsable(GUI_ExtPackName))
             {
                 message.second << tr("Remote Display is currently enabled for this virtual machine. "

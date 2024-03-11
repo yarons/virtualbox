@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 102264 2023-11-22 15:54:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -31,7 +31,7 @@
 
 /* GUI includes: */
 #include "UIActionPoolManager.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIVMActivityMonitor.h"
 #include "UIVMActivityToolWidget.h"
 #include "UIMessageCenter.h"
@@ -227,7 +227,7 @@ void UIVMActivityToolWidget::sltCurrentTabChanged(int iIndex)
     UIVMActivityMonitor *pActivityMonitor = qobject_cast<UIVMActivityMonitor*>(currentWidget());
     if (pActivityMonitor)
     {
-        CMachine comMachine = uiCommon().virtualBox().FindMachine(pActivityMonitor->machineId().toString());
+        CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(pActivityMonitor->machineId().toString());
         if (!comMachine.isNull())
         {
             setExportActionEnabled(comMachine.GetState() == KMachineState_Running);

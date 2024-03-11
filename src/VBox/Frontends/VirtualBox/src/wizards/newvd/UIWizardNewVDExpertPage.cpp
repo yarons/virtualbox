@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class implementation.
  */
@@ -33,7 +33,7 @@
 #include "UIWizardDiskEditors.h"
 #include "UIWizardNewVDExpertPage.h"
 #include "UIWizardNewVD.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
 
 /* COM includes: */
@@ -49,7 +49,7 @@ UIWizardNewVDExpertPage::UIWizardNewVDExpertPage(const QString &strDefaultName, 
     , m_strDefaultPath(strDefaultPath)
     , m_uDefaultSize(uDefaultSize)
     , m_uMediumSizeMin(_4M)
-    , m_uMediumSizeMax(uiCommon().virtualBox().GetSystemProperties().GetInfoVDSize())
+    , m_uMediumSizeMax(gpGlobalSession->virtualBox().GetSystemProperties().GetInfoVDSize())
 {
     prepare();
 }

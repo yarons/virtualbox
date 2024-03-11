@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -30,7 +30,7 @@
 #include <QThread>
 
 /* GUI includes: */
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UILoggingDefs.h"
 #include "UIMainEventListener.h"
 #include "UIMousePointerShapeData.h"
@@ -275,7 +275,7 @@ void UIMainEventListener::unregisterSources()
 STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
 {
     /* Try to acquire COM cleanup protection token first: */
-    if (!uiCommon().comTokenTryLockForRead())
+    if (!gpGlobalSession->comTokenTryLockForRead())
         return S_OK;
 
     CEvent comEvent(pEvent);
@@ -644,7 +644,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
     }
 
     /* Unlock COM cleanup protection token: */
-    uiCommon().comTokenUnlock();
+    gpGlobalSession->comTokenUnlock();
 
     return S_OK;
 }

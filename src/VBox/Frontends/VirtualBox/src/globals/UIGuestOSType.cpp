@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 103703 2024-03-06 14:33:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIGuestOSType.h"
 
 /* COM includes: */
@@ -38,7 +39,7 @@
 void UIGuestOSTypeManager::reCacheGuestOSTypes()
 {
     /* Acquire CVirtualBox: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
 
     /* Acquire a total list of guest OS types, supported or not: */
     CGuestOSTypeVector guestOSTypes = comVBox.GetGuestOSTypes();

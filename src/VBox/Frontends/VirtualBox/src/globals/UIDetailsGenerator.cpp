@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -36,6 +36,7 @@
 #include "UIConverter.h"
 #include "UIDetailsGenerator.h"
 #include "UIErrorString.h"
+#include "UIGlobalSession.h"
 #include "UIGuestOSType.h"
 #include "UIMedium.h"
 #include "UITranslator.h"
@@ -123,7 +124,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CMachine &comM
                                  QString("<a href=#%1,%2>%3</a>")
                                      .arg(strAnchorType,
                                           strOsTypeId,
-                                          uiCommon().guestOSTypeManager().getDescription(strOsTypeId)));
+                                          gpGlobalSession->guestOSTypeManager().getDescription(strOsTypeId)));
     }
 
     /* Settings file location: */
@@ -391,7 +392,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSystem(CMachine &comMa
             {
                 CPlatformX86 comPlatformX86 = comPlatform.GetX86();
                 QStringList acceleration;
-                if (uiCommon().virtualBox().GetHost().GetProcessorFeature(KProcessorFeature_HWVirtEx))
+                if (gpGlobalSession->virtualBox().GetHost().GetProcessorFeature(KProcessorFeature_HWVirtEx))
                 {
                     /* Nested Paging: */
                     if (comPlatformX86.GetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging))
@@ -734,7 +735,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
     CPlatform comPlatform = comMachine.GetPlatform();
     const KPlatformArchitecture enmArch = comPlatform.GetArchitecture();
     const KChipsetType enmChipsetType = comPlatform.GetChipsetType();
-    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+    CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
     const ulong cMaxNetworkAdapters = comProperties.GetMaxNetworkAdapters(enmChipsetType);
     for (ulong uSlot = 0; uSlot < cMaxNetworkAdapters; ++uSlot)
     {
@@ -902,7 +903,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationSerial(CMachine &comMa
     /* Iterate over all the ports: */
     CPlatform comPlatform = comMachine.GetPlatform();
     const KPlatformArchitecture enmArch = comPlatform.GetArchitecture();
-    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+    CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
     const ulong cMaxSerialPorts = comProperties.GetSerialPortCount();
     for (ulong uSlot = 0; uSlot < cMaxSerialPorts; ++uSlot)
     {
@@ -1317,7 +1318,7 @@ void UIDetailsGenerator::acquireNetworkStatusInfo(CMachine &comMachine, QString 
     CPlatform comPlatform = comMachine.GetPlatform();
     const KPlatformArchitecture enmArch = comPlatform.GetArchitecture();
     const KChipsetType enmChipsetType = comPlatform.GetChipsetType();
-    CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+    CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
     const ulong cMaxNetworkAdapters = comProperties.GetMaxNetworkAdapters(enmChipsetType);
 
     /* Gather adapter properties: */

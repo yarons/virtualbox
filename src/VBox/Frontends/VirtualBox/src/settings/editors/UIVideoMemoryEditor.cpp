@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class implementation.
  */
@@ -35,6 +35,7 @@
 /* GUI includes: */
 #include "QIAdvancedSlider.h"
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIVideoMemoryEditor.h"
 
 /* COM includes: */
@@ -223,7 +224,7 @@ void UIVideoMemoryEditor::sltHandleSpinBoxChange()
 void UIVideoMemoryEditor::prepare()
 {
     /* Prepare common variables: */
-    const CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    const CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
     m_iMinVRAM = comProperties.GetMinGuestVRAM();
     m_iMaxVRAM = comProperties.GetMaxGuestVRAM();
     m_iMaxVRAMVisible = m_iMaxVRAM;

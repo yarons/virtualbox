@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class implementation.
  */
@@ -44,6 +44,7 @@
 #include "UICommon.h"
 #include "UIEmptyFilePathSelector.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UINotificationCenter.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -151,7 +152,7 @@ void UIWizardExportAppFormat::populateMACAddressPolicies(QIComboBox *pCombo)
     knownOptions[KExportOptions_StripAllNonNATMACs] = MACAddressExportPolicy_StripAllNonNATMACs;
     /* Load currently supported export options: */
     const QVector<KExportOptions> supportedOptions =
-        uiCommon().virtualBox().GetSystemProperties().GetSupportedExportOptions();
+        gpGlobalSession->virtualBox().GetSystemProperties().GetSupportedExportOptions();
     /* Check which of supported options/policies are known: */
     QList<MACAddressExportPolicy> supportedPolicies;
     foreach (const KExportOptions &enmOption, supportedOptions)
@@ -341,7 +342,7 @@ void UIWizardExportAppFormat::refreshLocalStuff(CAppliance &comLocalAppliance,
     comLocalAppliance = CAppliance();
 
     /* Create appliance: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CAppliance comAppliance = comVBox.CreateAppliance();
     if (!comVBox.isOk())
         return UINotificationMessage::cannotCreateAppliance(comVBox, pWizard->notificationCenter());
@@ -353,7 +354,7 @@ void UIWizardExportAppFormat::refreshLocalStuff(CAppliance &comLocalAppliance,
     foreach (const QUuid &uMachineId, machineIDs)
     {
         /* Get the machine with the uMachineId: */
-        CVirtualBox comVBox = uiCommon().virtualBox();
+        CVirtualBox comVBox = gpGlobalSession->virtualBox();
         CMachine comMachine = comVBox.FindMachine(uMachineId.toString());
         if (!comVBox.isOk())
             return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard->notificationCenter());
@@ -535,7 +536,7 @@ void UIWizardExportAppFormat::refreshCloudStuff(CAppliance &comCloudAppliance,
     const QUuid uMachineId = machineIDs.first();
 
     /* Get the machine with the uMachineId: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CMachine comMachine = comVBox.FindMachine(uMachineId.toString());
     if (!comVBox.isOk())
         return UINotificationMessage::cannotFindMachineById(comVBox, uMachineId, pWizard->notificationCenter());

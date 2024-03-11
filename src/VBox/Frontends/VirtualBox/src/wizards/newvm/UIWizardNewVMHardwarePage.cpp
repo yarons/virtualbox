@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 101316 2023-09-29 13:40:05Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -31,7 +31,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UIBaseMemoryEditor.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIGuestOSType.h"
 #include "UIVirtualCPUEditor.h"
 #include "UIWizardNewVM.h"
@@ -95,19 +95,19 @@ void UIWizardNewVMHardwarePage::initializePage()
         m_pHardwareWidgetContainer->blockSignals(true);
         if (!m_userModifiedParameters.contains("MemorySize"))
         {
-            ULONG recommendedRam = uiCommon().guestOSTypeManager().getRecommendedRAM(strTypeId);
+            ULONG recommendedRam = gpGlobalSession->guestOSTypeManager().getRecommendedRAM(strTypeId);
             m_pHardwareWidgetContainer->setMemorySize(recommendedRam);
             pWizard->setMemorySize(recommendedRam);
         }
         if (!m_userModifiedParameters.contains("CPUCount"))
         {
-            ULONG recommendedCPUs = uiCommon().guestOSTypeManager().getRecommendedCPUCount(strTypeId);
+            ULONG recommendedCPUs = gpGlobalSession->guestOSTypeManager().getRecommendedCPUCount(strTypeId);
             m_pHardwareWidgetContainer->setCPUCount(recommendedCPUs);
             pWizard->setCPUCount(recommendedCPUs);
         }
         if (!m_userModifiedParameters.contains("EFIEnabled"))
         {
-            KFirmwareType fwType = uiCommon().guestOSTypeManager().getRecommendedFirmware(strTypeId);
+            KFirmwareType fwType = gpGlobalSession->guestOSTypeManager().getRecommendedFirmware(strTypeId);
             m_pHardwareWidgetContainer->setEFIEnabled(fwType != KFirmwareType_BIOS);
             pWizard->setEFIEnabled(fwType != KFirmwareType_BIOS);
         }

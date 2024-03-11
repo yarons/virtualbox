@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -43,6 +43,7 @@
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIHostComboEditor.h"
 #include "UIIconPool.h"
@@ -1258,7 +1259,7 @@ bool UIMessageCenter::confirmMediumRelease(const UIMedium &medium, bool fInduced
 {
     /* Prepare the usage: */
     QStringList usage;
-    CVirtualBox vbox = uiCommon().virtualBox();
+    CVirtualBox vbox = gpGlobalSession->virtualBox();
     foreach (const QUuid &uMachineID, medium.curStateMachineIds())
     {
         CMachine machine = vbox.FindMachine(uMachineID.toString());
@@ -2091,7 +2092,7 @@ void UIMessageCenter::sltShowOnlineDocumentation()
 
 void UIMessageCenter::sltShowHelpAboutDialog()
 {
-    CVirtualBox vbox = uiCommon().virtualBox();
+    CVirtualBox vbox = gpGlobalSession->virtualBox();
     const QString strFullVersion = uiCommon().brandingIsActive()
                                  ? QString("%1 r%2 - %3").arg(vbox.GetVersion())
                                                          .arg(vbox.GetRevision())

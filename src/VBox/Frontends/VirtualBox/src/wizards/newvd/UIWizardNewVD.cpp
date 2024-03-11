@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 101383 2023-10-06 12:06:37Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVD.h"
@@ -134,7 +135,7 @@ bool UIWizardNewVD::createVirtualDisk()
     AssertReturn(m_uMediumSize > 0, false);
 
     /* Get VBox object: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
 
     /* Create new virtual disk image: */
     CMedium comVirtualDisk = comVBox.CreateMedium(m_comMediumFormat.GetName(),
@@ -186,7 +187,7 @@ QUuid UIWizardNewVD::createVDWithWizard(QWidget *pParent,
                                                               : "NewVirtualDisk");
 
     /* Default size: */
-    const CGuestOSType comGuestOSType = uiCommon().virtualBox().GetGuestOSType(  !strMachineGuestOSTypeId.isEmpty()
+    const CGuestOSType comGuestOSType = gpGlobalSession->virtualBox().GetGuestOSType(  !strMachineGuestOSTypeId.isEmpty()
                                                                                ? strMachineGuestOSTypeId
                                                                                : "Other");
     const qulonglong uDefaultSize = comGuestOSType.GetRecommendedHDD();

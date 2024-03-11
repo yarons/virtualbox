@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMEditors.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMEditors.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -36,8 +36,8 @@
 
 /* GUI includes: */
 #include "QILineEdit.h"
-#include "UICommon.h"
 #include "UIFilePathSelector.h"
+#include "UIGlobalSession.h"
 #include "UIWizardCloneVM.h"
 #include "UIWizardCloneVMEditors.h"
 
@@ -80,7 +80,7 @@ bool UICloneVMNamePathEditor::isComplete(const QString &strMachineGroup)
     bool fExists = false;
     if (!fInvalidName)
     {
-        CVirtualBox vbox = uiCommon().virtualBox();
+        CVirtualBox vbox = gpGlobalSession->virtualBox();
         QString strCloneFilePath =
             vbox.ComposeMachineFilename(m_pNameLineEdit->text(), strMachineGroup, QString(), m_pPathSelector->path());
         fExists = QDir(QDir::toNativeSeparators(QFileInfo(strCloneFilePath).absolutePath())).exists();
@@ -288,7 +288,7 @@ void UICloneVMAdditionalOptionsEditor::prepare()
     m_pMACComboBox->blockSignals(false);
 
     /* Load currently supported clone options: */
-    CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
     const QVector<KCloneOptions> supportedOptions = comProperties.GetSupportedCloneOptions();
     /* Check whether we support additional clone options at all: */
     int iVerticalPosition = 3;
@@ -402,7 +402,7 @@ void UICloneVMAdditionalOptionsEditor::populateMACAddressClonePolicies()
     knownOptions[KCloneOptions_KeepNATMACs] = MACAddressClonePolicy_KeepNATMACs;
 
     /* Load currently supported clone options: */
-    CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
     const QVector<KCloneOptions> supportedOptions = comProperties.GetSupportedCloneOptions();
 
     /* Check which of supported options/policies are known: */
@@ -464,7 +464,7 @@ void UICloneVMCloneTypeGroupBox::prepare()
         }
 
         /* Load currently supported clone options: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
         const QVector<KCloneOptions> supportedOptions = comProperties.GetSupportedCloneOptions();
         /* Check whether we support linked clone option at all: */
         const bool fSupportedLinkedClone = supportedOptions.contains(KCloneOptions_Link);

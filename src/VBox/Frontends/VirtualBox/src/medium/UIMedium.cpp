@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 103705 2024-03-06 15:26:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMedium.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -34,6 +34,7 @@
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
 #include "UITranslator.h"
@@ -327,7 +328,7 @@ void UIMedium::refresh()
         if (m_machineIds.size() > 0)
         {
             /* Get CVirtualBox object: */
-            CVirtualBox vbox = uiCommon().virtualBox();
+            CVirtualBox vbox = gpGlobalSession->virtualBox();
 
             /* By default we assuming that this medium is attached
              * to 'hidden' machines only, if at least one machine present: */

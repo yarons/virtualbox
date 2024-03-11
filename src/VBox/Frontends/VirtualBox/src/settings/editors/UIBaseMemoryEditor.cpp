@@ -1,4 +1,4 @@
-/* $Id: UIBaseMemoryEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIBaseMemoryEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBaseMemoryEditor class implementation.
  */
@@ -35,7 +35,7 @@
 /* GUI includes: */
 #include "QIAdvancedSlider.h"
 #include "UIBaseMemoryEditor.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -127,8 +127,8 @@ uint UIBaseMemorySlider::maxRAM() const
 
 void UIBaseMemorySlider::prepare()
 {
-    ulong uFullSize = uiCommon().host().GetMemorySize();
-    CSystemProperties sys = uiCommon().virtualBox().GetSystemProperties();
+    ulong uFullSize = gpGlobalSession->host().GetMemorySize();
+    CSystemProperties sys = gpGlobalSession->virtualBox().GetSystemProperties();
     m_uMinRAM = sys.GetMinGuestRAM();
     m_uMaxRAM = RT_MIN(RT_ALIGN(uFullSize, _1G / _1M), sys.GetMaxGuestRAM());
 

@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMonitorCountEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class implementation.
  */
@@ -32,8 +32,8 @@
 
 /* GUI includes: */
 #include "QIAdvancedSlider.h"
-#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
+#include "UIGlobalSession.h"
 #include "UIMonitorCountEditor.h"
 
 /* COM includes: */
@@ -129,7 +129,7 @@ void UIMonitorCountEditor::sltHandleSpinBoxChange()
 void UIMonitorCountEditor::prepare()
 {
     /* Prepare common variables: */
-    const CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    const CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
 
     /* Prepare main layout: */
     m_pLayout = new QGridLayout(this);

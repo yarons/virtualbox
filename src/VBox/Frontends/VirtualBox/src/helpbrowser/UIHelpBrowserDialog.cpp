@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIHelpBrowserDialog.h"
 #include "UIHelpBrowserWidget.h"
@@ -188,7 +189,7 @@ void UIHelpBrowserDialog::findManualFileAndShow(const QString &strKeyword /*= QS
     /* For OSE version we have to check if it present first: */
     QString strUserManualFileName1 = uiCommon().helpFile();
     QString strShortFileName = QFileInfo(strUserManualFileName1).fileName();
-    QString strUserManualFileName2 = QDir(uiCommon().homeFolder()).absoluteFilePath(strShortFileName);
+    QString strUserManualFileName2 = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(strShortFileName);
     /* Show if user manual already present: */
     if (QFile::exists(strUserManualFileName1))
         showUserManual(strUserManualFileName1, strKeyword);

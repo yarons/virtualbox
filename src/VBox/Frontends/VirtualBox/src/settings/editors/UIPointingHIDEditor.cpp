@@ -1,4 +1,4 @@
-/* $Id: UIPointingHIDEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIPointingHIDEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPointingHIDEditor class implementation.
  */
@@ -32,8 +32,8 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UIPointingHIDEditor.h"
 
 /* COM includes: */
@@ -148,7 +148,7 @@ void UIPointingHIDEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported values: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
         m_supportedValues = comProperties.GetSupportedPointingHIDTypes();
 
         /* Make sure requested value if sane is present as well: */

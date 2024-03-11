@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -53,6 +53,7 @@
 #include "UIActionPool.h"
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIVirtualMachineItem.h"
@@ -367,7 +368,7 @@ void UIVMLogViewerWidget::sltRefresh()
     if (!pCurrentPage || pCurrentPage->logFileId() == -1)
         return;
 
-    CMachine comMachine = uiCommon().virtualBox().FindMachine(pCurrentPage->machineId().toString());
+    CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(pCurrentPage->machineId().toString());
     if (comMachine.isNull())
         return;
 
@@ -984,11 +985,11 @@ void UIVMLogViewerWidget::createLogViewerPages(const QVector<QUuid> &machineList
         return;
     m_pTabWidget->blockSignals(true);
 
-    const CSystemProperties &sys = uiCommon().virtualBox().GetSystemProperties();
+    const CSystemProperties &sys = gpGlobalSession->virtualBox().GetSystemProperties();
     unsigned cMaxLogs = sys.GetLogHistoryCount() + 1 /*VBox.log*/ + 1 /*VBoxHardening.log*/; /** @todo Add api for getting total possible log count! */
     foreach (const QUuid &machineId, machineList)
     {
-        CMachine comMachine = uiCommon().virtualBox().FindMachine(machineId.toString());
+        CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(machineId.toString());
         if (comMachine.isNull())
             continue;
 

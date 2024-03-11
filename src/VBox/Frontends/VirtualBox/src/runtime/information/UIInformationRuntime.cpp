@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -36,8 +36,8 @@
 #include <QTimer>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIInformationRuntime.h"
 #include "UIGuestOSType.h"
@@ -351,7 +351,7 @@ void UIRuntimeInfoWidget::updateOSTypeRow()
         strOSType = m_strOSNotDetected;
     else
     {
-        strOSType = uiCommon().guestOSTypeManager().getDescription(strOSType);
+        strOSType = gpGlobalSession->guestOSTypeManager().getDescription(strOSType);
     }
    updateInfoRow(InfoRow_GuestOSType, QString("%1").arg(m_strGuestOSTypeLabel), strOSType);
 }

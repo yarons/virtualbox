@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -40,6 +40,7 @@
 #include "UIExtraDataManager.h"
 #include "UIChooser.h"
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UILoggingDefs.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
@@ -364,7 +365,7 @@ void UIVirtualBoxManagerWidget::sltHandleStateChange(const QUuid &uId)
     // WORKAROUND:
     // In certain intermediate states VM info can be NULL which
     // causing annoying assertions, such updates can be ignored?
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
     CMachine comMachine = comVBox.FindMachine(uId.toString());
     if (comVBox.isOk() && comMachine.isNotNull())
     {

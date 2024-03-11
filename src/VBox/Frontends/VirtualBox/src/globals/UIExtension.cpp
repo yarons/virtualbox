@@ -1,4 +1,4 @@
-/* $Id: UIExtension.cpp 99841 2023-05-18 11:05:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtension.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace implementation.
  */
@@ -28,6 +28,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIExtension.h"
+#include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
 #include "UIMessageCenter.h"
 #include "VBoxLicenseViewer.h"
@@ -42,7 +43,7 @@ void UIExtension::install(QString const &strFilePath,
                           QString *pstrExtPackName)
 {
     /* If the extension pack manager isn't available, skip any attempts to install: */
-    CExtPackManager comExtPackManager = uiCommon().virtualBox().GetExtensionPackManager();
+    CExtPackManager comExtPackManager = gpGlobalSession->virtualBox().GetExtensionPackManager();
     if (comExtPackManager.isNull())
         return;
     /* Open the extpack tarball via IExtPackManager: */

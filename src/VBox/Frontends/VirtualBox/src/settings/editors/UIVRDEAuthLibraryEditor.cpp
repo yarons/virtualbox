@@ -1,4 +1,4 @@
-/* $Id: UIVRDEAuthLibraryEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVRDEAuthLibraryEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDEAuthLibraryEditor class implementation.
  */
@@ -30,8 +30,8 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIFilePathSelector.h"
+#include "UIGlobalSession.h"
 #include "UIVRDEAuthLibraryEditor.h"
 
 
@@ -104,7 +104,7 @@ void UIVRDEAuthLibraryEditor::prepare()
         {
             if (m_pLabel)
                 m_pLabel->setBuddy(m_pSelector);
-            m_pSelector->setInitialPath(uiCommon().homeFolder());
+            m_pSelector->setInitialPath(gpGlobalSession->homeFolder());
             m_pSelector->setMode(UIFilePathSelector::Mode_File_Open);
 
             m_pLayout->addWidget(m_pSelector, 0, 1);

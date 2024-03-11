@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* GUI includes: */
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIMedium.h"
 #include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
@@ -76,7 +77,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
     AssertReturn(m_uMediumSize > 0, false);
 
     /* Get VBox object: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
 
     /* Create new virtual disk image: */
     CMedium comVirtualDisk = comVBox.CreateMedium(m_comMediumFormat.GetName(), m_strMediumPath, KAccessMode_ReadWrite, m_enmDeviceType);

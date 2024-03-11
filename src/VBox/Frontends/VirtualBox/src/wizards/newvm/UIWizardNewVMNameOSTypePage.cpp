@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 103121 2024-01-30 12:29:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -36,6 +36,7 @@
 #include "QIRichTextLabel.h"
 #include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UINameAndSystemEditor.h"
 #include "UINotificationCenter.h"
@@ -328,7 +329,7 @@ void UIWizardNewVMNameOSTypeCommon::composeMachineFilePath(UINameAndSystemEditor
     if (pNameAndSystemEditor->name().isEmpty() || pNameAndSystemEditor->path().isEmpty())
         return;
     /* Get VBox: */
-    CVirtualBox vbox = uiCommon().virtualBox();
+    CVirtualBox vbox = gpGlobalSession->virtualBox();
 
     /* Compose machine filename: */
     pWizard->setMachineFilePath(vbox.ComposeMachineFilename(pNameAndSystemEditor->name(),
@@ -553,7 +554,7 @@ void UIWizardNewVMNameOSTypePage::updateInfoLabel()
                                        "the guest OS will need to be installed manually.");
     else if (!pWizard->detectedOSTypeId().isEmpty())
     {
-        QString strType = uiCommon().guestOSTypeManager().getDescription(pWizard->detectedOSTypeId());
+        QString strType = gpGlobalSession->guestOSTypeManager().getDescription(pWizard->detectedOSTypeId());
         if (!pWizard->isUnattendedInstallSupported())
             strMessage = UIWizardNewVM::tr("Detected OS type: %1. %2")
                                            .arg(strType)

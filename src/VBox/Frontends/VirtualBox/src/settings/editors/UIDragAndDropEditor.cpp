@@ -1,4 +1,4 @@
-/* $Id: UIDragAndDropEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIDragAndDropEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDragAndDropEditor class implementation.
  */
@@ -32,9 +32,9 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIDragAndDropEditor.h"
+#include "UIGlobalSession.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -146,7 +146,7 @@ void UIDragAndDropEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported audio driver types: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
         m_supportedValues = comProperties.GetSupportedDnDModes();
 
         /* Make sure requested value if sane is present as well: */

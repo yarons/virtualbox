@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 98926 2023-03-13 10:05:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIStarter.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -31,6 +31,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIStarter.h"
@@ -83,7 +84,7 @@ void UIStarter::sltStartUI()
 # else /* !VBOX_BLEEDING_EDGE */
 #  ifndef DEBUG
     /* Show BETA warning if necessary: */
-    const QString vboxVersion(uiCommon().virtualBox().GetVersion());
+    const QString vboxVersion(gpGlobalSession->virtualBox().GetVersion());
     if (   vboxVersion.contains("BETA")
         && gEDataManager->preventBetaBuildWarningForVersion() != vboxVersion)
         UINotificationMessage::remindAboutBetaBuild();

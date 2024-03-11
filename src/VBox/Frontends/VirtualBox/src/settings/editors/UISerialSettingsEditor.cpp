@@ -1,4 +1,4 @@
-/* $Id: UISerialSettingsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISerialSettingsEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISerialSettingsEditor class implementation.
  */
@@ -35,8 +35,8 @@
 
 /* GUI includes: */
 #include "QIWidgetValidator.h"
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UISerialSettingsEditor.h"
 
 /* COM includes: */
@@ -460,7 +460,7 @@ void UISerialSettingsEditor::populateCombo()
         m_pComboMode->clear();
 
         /* Load currently supported port moded: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
         QVector<KPortMode> supportedModes = comProperties.GetSupportedPortModes();
         /* Take currently requested mode into account if it's sane: */
         if (!supportedModes.contains(m_enmPortMode) && m_enmPortMode != KPortMode_Max)

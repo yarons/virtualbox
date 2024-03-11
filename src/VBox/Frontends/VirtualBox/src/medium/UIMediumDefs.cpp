@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.cpp 103338 2024-02-13 16:37:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumDefs.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium related implementations.
  */
@@ -26,8 +26,8 @@
  */
 
 /* GUI includes: */
+#include "UIGlobalSession.h"
 #include "UIMediumDefs.h"
-#include "UICommon.h"
 
 /* COM includes: */
 #include "CMediumFormat.h"
@@ -115,7 +115,7 @@ QList<QPair<QString, QString> > UIMediumDefs::FloppyBackends(const CVirtualBox &
 
 QString UIMediumDefs::getPreferredExtensionForMedium(KDeviceType enmDeviceType)
 {
-    CSystemProperties comSystemProperties = uiCommon().virtualBox().GetSystemProperties();
+    CSystemProperties comSystemProperties = gpGlobalSession->virtualBox().GetSystemProperties();
     QVector<CMediumFormat> mediumFormats = comSystemProperties.GetMediumFormats();
     for (int i = 0; i < mediumFormats.size(); ++i)
     {

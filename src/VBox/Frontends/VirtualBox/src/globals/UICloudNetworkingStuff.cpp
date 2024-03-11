@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 100861 2023-08-11 15:38:01Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudNetworkingStuff.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -27,8 +27,8 @@
 
 /* GUI includes: */
 #include "UICloudNetworkingStuff.h"
-#include "UICommon.h"
 #include "UIErrorString.h"
+#include "UIGlobalSession.h"
 #include "UIMessageCenter.h"
 
 /* COM includes: */
@@ -44,7 +44,7 @@
 CCloudProviderManager UICloudNetworkingStuff::cloudProviderManager(UINotificationCenter *pParent /* = 0 */)
 {
     /* Acquire VBox: */
-    const CVirtualBox comVBox = uiCommon().virtualBox();
+    const CVirtualBox comVBox = gpGlobalSession->virtualBox();
     if (comVBox.isNotNull())
     {
         /* Acquire cloud provider manager: */
@@ -61,7 +61,7 @@ CCloudProviderManager UICloudNetworkingStuff::cloudProviderManager(UINotificatio
 CCloudProviderManager UICloudNetworkingStuff::cloudProviderManager(QString &strErrorMessage)
 {
     /* Acquire VBox: */
-    const CVirtualBox comVBox = uiCommon().virtualBox();
+    const CVirtualBox comVBox = gpGlobalSession->virtualBox();
     if (comVBox.isNotNull())
     {
         /* Acquire cloud provider manager: */
@@ -202,7 +202,7 @@ CCloudClient UICloudNetworkingStuff::cloudClientByName(const QString &strProvide
 CVirtualSystemDescription UICloudNetworkingStuff::createVirtualSystemDescription(UINotificationCenter *pParent /* = 0 */)
 {
     /* Acquire VBox: */
-    CVirtualBox comVBox = uiCommon().virtualBox();
+    CVirtualBox comVBox = gpGlobalSession->virtualBox();
     if (comVBox.isNotNull())
     {
         /* Create appliance: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -45,6 +45,7 @@
 #include "UIEmptyFilePathSelector.h"
 #include "UIFilePathSelector.h"
 #include "UIFormEditorWidget.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UINotificationCenter.h"
 #include "UIToolBox.h"
@@ -244,8 +245,8 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDe
                         if (m_pEditorImportFilePath)
                         {
                             m_pEditorImportFilePath->setResetEnabled(true);
-                            m_pEditorImportFilePath->setDefaultPath(uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
-                            m_pEditorImportFilePath->setPath(uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
+                            m_pEditorImportFilePath->setDefaultPath(gpGlobalSession->virtualBox().GetSystemProperties().GetDefaultMachineFolder());
+                            m_pEditorImportFilePath->setPath(gpGlobalSession->virtualBox().GetSystemProperties().GetDefaultMachineFolder());
                             m_pLabelImportFilePath->setBuddy(m_pEditorImportFilePath);
                             pLayoutAppliance->addWidget(m_pEditorImportFilePath, 1, 1, 1, 2);
                         }

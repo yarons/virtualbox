@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderGuestAdditions.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDownloaderGuestAdditions.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderGuestAdditions class implementation.
  */
@@ -35,6 +35,7 @@
 #include "QIFileDialog.h"
 #include "UICommon.h"
 #include "UIDownloaderGuestAdditions.h"
+#include "UIGlobalSession.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
@@ -55,7 +56,7 @@ UIDownloaderGuestAdditions::UIDownloaderGuestAdditions()
     const QString strSourcePath = QString("https://download.virtualbox.org/virtualbox/%1/").arg(strVersion);
     const QString strSource = strSourcePath + strSourceName;
     const QString strPathSHA256SumsFile = QString("https://www.virtualbox.org/download/hashes/%1/SHA256SUMS").arg(strVersion);
-    const QString strTarget = QDir(uiCommon().homeFolder()).absoluteFilePath(QString("%1.tmp").arg(strSourceName));
+    const QString strTarget = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(QString("%1.tmp").arg(strSourceName));
 
     /* Set source/target: */
     setSource(strSource);

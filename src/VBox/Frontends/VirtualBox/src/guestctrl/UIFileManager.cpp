@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 101020 2023-09-05 12:10:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIFileManager.h"
 #include "UIFileManagerPaneContainer.h"
@@ -850,7 +851,7 @@ void UIFileManager::addTabs(const QVector<QUuid> &machineIdsToAdd)
 
     foreach (const QUuid &id, machineIdsToAdd)
     {
-        CMachine comMachine = uiCommon().virtualBox().FindMachine(id.toString());
+        CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(id.toString());
         if (comMachine.isNull())
             continue;
         UIFileManagerGuestTable *pGuestFileTable = new UIFileManagerGuestTable(m_pActionPool, comMachine, m_pGuestTablesContainer);

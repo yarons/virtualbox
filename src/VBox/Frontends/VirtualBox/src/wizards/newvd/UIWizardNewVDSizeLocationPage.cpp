@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class implementation.
  */
@@ -32,7 +32,7 @@
 /* GUI includes: */
 #include "UIWizardNewVDSizeLocationPage.h"
 #include "UIWizardNewVD.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
 #include "UIWizardDiskEditors.h"
 
@@ -43,7 +43,7 @@ UIWizardNewVDSizeLocationPage::UIWizardNewVDSizeLocationPage(const QString &strD
                                                              const QString &strDefaultPath, qulonglong uDefaultSize)
     : m_pMediumSizePathGroup(0)
     , m_uMediumSizeMin(_4M)
-    , m_uMediumSizeMax(uiCommon().virtualBox().GetSystemProperties().GetInfoVDSize())
+    , m_uMediumSizeMax(gpGlobalSession->virtualBox().GetSystemProperties().GetInfoVDSize())
     , m_strDefaultName(strDefaultName.isEmpty() ? QString("NewVirtualDisk1") : strDefaultName)
     , m_strDefaultPath(strDefaultPath)
     , m_uDefaultSize(uDefaultSize)

@@ -1,4 +1,4 @@
-/* $Id: UITpmEditor.cpp 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
+/* $Id: UITpmEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITpmEditor class implementation.
  */
@@ -32,8 +32,8 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UITpmEditor.h"
 
 /* COM includes: */
@@ -155,7 +155,7 @@ void UITpmEditor::populateCombo()
         const KPlatformArchitecture enmArch = optionalFlags().contains("arch")
                                             ? optionalFlags().value("arch").value<KPlatformArchitecture>()
                                             : KPlatformArchitecture_x86;
-        CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(enmArch);
+        CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(enmArch);
         m_supportedValues = comProperties.GetSupportedTpmTypes();
 
         /* Make sure requested value if sane is present as well: */

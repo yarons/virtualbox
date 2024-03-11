@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDownloaderUserManual.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -34,6 +34,7 @@
 #include "QIFileDialog.h"
 #include "UICommon.h"
 #include "UIDownloaderUserManual.h"
+#include "UIGlobalSession.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UINetworkReply.h"
@@ -57,7 +58,7 @@ UIDownloaderUserManual::UIDownloaderUserManual()
     addSource(strSource2);
 
     /* Set target: */
-    QString strUserManualDestination = QDir(uiCommon().homeFolder()).absoluteFilePath(strUserManualShortFileName);
+    QString strUserManualDestination = QDir(gpGlobalSession->homeFolder()).absoluteFilePath(strUserManualShortFileName);
     setTarget(strUserManualDestination);
 }
 

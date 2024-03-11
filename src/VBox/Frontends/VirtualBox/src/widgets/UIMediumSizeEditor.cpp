@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSizeEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -33,8 +33,8 @@
 
 /* GUI includes: */
 #include "QILineEdit.h"
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UIMediumSizeEditor.h"
 #include "UITranslator.h"
 
@@ -47,7 +47,7 @@ const qulonglong UIMediumSizeEditor::m_uSectorSize = 512;
 UIMediumSizeEditor::UIMediumSizeEditor(QWidget *pParent, qulonglong uMinimumSize /* = _4M */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_uSizeMin(uMinimumSize)
-    , m_uSizeMax(uiCommon().virtualBox().GetSystemProperties().GetInfoVDSize())
+    , m_uSizeMax(gpGlobalSession->virtualBox().GetSystemProperties().GetInfoVDSize())
     , m_iSliderScale(calculateSliderScale(m_uSizeMax))
     , m_uSize(0)
     , m_pSlider(0)

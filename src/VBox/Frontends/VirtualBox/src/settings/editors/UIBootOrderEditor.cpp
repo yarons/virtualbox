@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 103178 2024-02-02 15:43:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -34,8 +34,8 @@
 
 /* GUI includes: */
 #include "UIBootOrderEditor.h"
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "QIToolBar.h"
 #include "QITreeWidget.h"
@@ -351,7 +351,7 @@ UIBootItemDataList UIBootDataTools::loadBootItems(const CMachine &comMachine)
     /* Acquire supported boot devices: */
     CPlatform comPlatform = comMachine.GetPlatform();
     const KPlatformArchitecture comArch = comPlatform.GetArchitecture();
-    const CPlatformProperties comProperties = uiCommon().virtualBox().GetPlatformProperties(comArch);
+    const CPlatformProperties comProperties = gpGlobalSession->virtualBox().GetPlatformProperties(comArch);
     QVector<KDeviceType> possibleBootItems = comProperties.GetSupportedBootDevices();
     /* Limit the list to maximum boot position: */
     int iPossibleBootListSize = qMin((ULONG)possibleBootItems.size(), comProperties.GetMaxBootPosition());

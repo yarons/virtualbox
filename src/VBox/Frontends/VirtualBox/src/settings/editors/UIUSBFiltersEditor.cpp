@@ -1,4 +1,4 @@
-/* $Id: UIUSBFiltersEditor.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
@@ -37,6 +37,7 @@
 #include "QIToolBar.h"
 #include "QITreeWidget.h"
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIUSBFilterDetailsEditor.h"
 #include "UIUSBFiltersEditor.h"
@@ -175,7 +176,7 @@ void UIUSBMenu::processAboutToShow()
     m_usbDeviceMap.clear();
 
     /* Get host for further activities: */
-    CHost comHost = uiCommon().host();
+    CHost comHost = gpGlobalSession->host();
 
     /* Check whether we have host USB devices at all: */
     bool fIsUSBEmpty = comHost.GetUSBDevices().size() == 0;

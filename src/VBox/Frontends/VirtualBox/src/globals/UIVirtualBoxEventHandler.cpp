@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -26,8 +26,8 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIMainEventListener.h"
 #include "UIVirtualBoxEventHandler.h"
 
@@ -166,7 +166,7 @@ void UIVirtualBoxEventHandlerProxy::prepareListener()
     m_comEventListener = CEventListener(m_pQtListener);
 
     /* Get VirtualBox: */
-    const CVirtualBox comVBox = uiCommon().virtualBox();
+    const CVirtualBox comVBox = gpGlobalSession->virtualBox();
     /* Get VirtualBox event source: */
     m_comEventSource = comVBox.GetEventSource();
     Assert(comVBox.isOk());

@@ -1,4 +1,4 @@
-/* $Id: UISharedClipboardEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedClipboardEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedClipboardEditor class implementation.
  */
@@ -32,8 +32,8 @@
 #include <QLabel>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIConverter.h"
+#include "UIGlobalSession.h"
 #include "UISharedClipboardEditor.h"
 
 /* COM includes: */
@@ -146,7 +146,7 @@ void UISharedClipboardEditor::populateCombo()
         m_pCombo->clear();
 
         /* Load currently supported audio driver types: */
-        CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+        CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
         m_supportedValues = comProperties.GetSupportedClipboardModes();
 
         /* Make sure requested value if sane is present as well: */

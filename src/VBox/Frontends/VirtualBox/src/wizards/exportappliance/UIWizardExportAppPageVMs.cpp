@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageVMs.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class implementation.
  */
@@ -32,6 +32,7 @@
 /* GUI includes: */
 #include "QIRichTextLabel.h"
 #include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIWizardExportApp.h"
@@ -85,7 +86,7 @@ private:
 void UIWizardExportAppVMs::populateVMItems(QListWidget *pVMSelector, const QStringList &selectedVMNames)
 {
     /* Add all VM items into VM selector: */
-    foreach (const CMachine &comMachine, uiCommon().virtualBox().GetMachines())
+    foreach (const CMachine &comMachine, gpGlobalSession->virtualBox().GetMachines())
     {
         QPixmap pixIcon;
         QString strName;

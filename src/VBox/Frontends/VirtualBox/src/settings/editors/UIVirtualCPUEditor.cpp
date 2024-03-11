@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -34,7 +34,7 @@
 
 /* GUI includes: */
 #include "QIAdvancedSlider.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIVirtualCPUEditor.h"
 
 /* COM includes */
@@ -136,8 +136,8 @@ void UIVirtualCPUEditor::sltHandleSpinBoxChange()
 void UIVirtualCPUEditor::prepare()
 {
     /* Prepare common variables: */
-    const CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
-    const uint uHostCPUs = uiCommon().host().GetProcessorOnlineCoreCount();
+    const CSystemProperties comProperties = gpGlobalSession->virtualBox().GetSystemProperties();
+    const uint uHostCPUs = gpGlobalSession->host().GetProcessorOnlineCoreCount();
     m_uMinVCPUCount = comProperties.GetMinGuestCPUCount();
     m_uMaxVCPUCount = qMin(2 * uHostCPUs, (uint)comProperties.GetMaxGuestCPUCount());
 

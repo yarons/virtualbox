@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 103579 2024-02-26 17:35:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutPool.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -26,9 +26,9 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIActionPool.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIShortcutPool.h"
 
 
@@ -445,7 +445,7 @@ void UIShortcutPool::saveOverridesFor(const QString &strPoolExtraDataID)
                                           shortcut.primaryToPortableText());
     }
     /* Save overrides into the extra-data: */
-    uiCommon().virtualBox().SetExtraDataStringList(strPoolExtraDataID, overrides);
+    gpGlobalSession->virtualBox().SetExtraDataStringList(strPoolExtraDataID, overrides);
 }
 
 UIShortcut &UIShortcutPool::shortcut(const QString &strShortcutKey)

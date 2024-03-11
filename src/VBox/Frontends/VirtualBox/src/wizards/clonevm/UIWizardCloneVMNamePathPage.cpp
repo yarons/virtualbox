@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMNamePathPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPage class implementation.
  */
@@ -31,16 +31,16 @@
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
+#include "UIGlobalSession.h"
 #include "UIWizardCloneVM.h"
 #include "UIWizardCloneVMNamePathPage.h"
-#include "UICommon.h"
 
 /* COM includes: */
 #include "CVirtualBox.h"
 
 QString UIWizardCloneVMNamePathCommon::composeCloneFilePath(const QString &strCloneName, const QString &strGroup, const QString &strFolderPath)
 {
-    CVirtualBox vbox = uiCommon().virtualBox();
+    CVirtualBox vbox = gpGlobalSession->virtualBox();
     return QDir::toNativeSeparators(vbox.ComposeMachineFilename(strCloneName, strGroup, QString(), strFolderPath));
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -34,6 +34,7 @@
 #include "UIConverter.h"
 #include "UIErrorString.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIHostComboEditor.h"
 #include "UINotificationCenter.h"
 #include "UINotificationObjects.h"
@@ -3829,7 +3830,7 @@ CProgress UINotificationProgressSnapshotRestore::createProgress(COMResult &comRe
     {
         /* Acquire VM: */
         AssertReturn(!m_uMachineId.isNull(), CProgress());
-        CVirtualBox comVBox = uiCommon().virtualBox();
+        CVirtualBox comVBox = gpGlobalSession->virtualBox();
         m_comMachine = comVBox.FindMachine(m_uMachineId.toString());
         if (!comVBox.isOk())
         {
@@ -4633,7 +4634,7 @@ UINotificationProgressNewVersionChecker::UINotificationProgressNewVersionChecker
             this, &UINotificationProgressNewVersionChecker::sltHandleProgressFinished);
 
 #ifdef VBOX_WITH_UPDATE_AGENT
-    CHost comHost = uiCommon().host();
+    CHost comHost = gpGlobalSession->host();
     if (!comHost.isNull())
        m_comUpdateHost = comHost.GetUpdateHost();
 #endif /* VBOX_WITH_UPDATE_AGENT */

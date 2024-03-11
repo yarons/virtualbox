@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 103537 2024-02-22 15:58:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -34,7 +34,7 @@
 #include "QIDialog.h"
 #include "QIDialogButtonBox.h"
 #include "QIToolBar.h"
-#include "UICommon.h"
+#include "UIGlobalSession.h"
 #include "UIGuestControlConsole.h"
 #include "UIGuestControlTreeItem.h"
 #include "UIGuestProcessControlWidget.h"
@@ -546,7 +546,7 @@ void UIGuestProcessControlWidget::sltCleanupListener()
     m_pQtListener->getWrapped()->unregisterSources();
 
     /* Make sure VBoxSVC is available: */
-    if (!uiCommon().isVBoxSVCAvailable())
+    if (!gpGlobalSession->isVBoxSVCAvailable())
         return;
 
     /* Get CProgress event source: */

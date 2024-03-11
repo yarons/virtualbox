@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 101330 2023-10-03 14:19:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumItem.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -34,6 +34,7 @@
 #include "QIMessageBox.h"
 #include "UICommon.h"
 #include "UIExtraDataManager.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIMediumItem.h"
 #include "UIMessageCenter.h"
@@ -152,7 +153,7 @@ bool UIMediumItem::isMediumModifiable() const
         return false;
     foreach (const QUuid &uMachineId, medium().curStateMachineIds())
     {
-        CMachine comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
+        CMachine comMachine = gpGlobalSession->virtualBox().FindMachine(uMachineId.toString());
         if (comMachine.isNull())
             continue;
         if (comMachine.GetState() != KMachineState_PoweredOff &&
@@ -176,7 +177,7 @@ bool UIMediumItem::changeMediumType(KMediumType enmNewType)
     QList<AttachmentCache> attachmentCacheList;
     foreach (const QUuid &uMachineId, medium().curStateMachineIds())
     {
-        const CMachine &comMachine = uiCommon().virtualBox().FindMachine(uMachineId.toString());
+        const CMachine &comMachine = gpGlobalSession->virtualBox().FindMachine(uMachineId.toString());
         if (comMachine.isNull())
             continue;
         foreach (const CStorageController &comController, comMachine.GetStorageControllers())

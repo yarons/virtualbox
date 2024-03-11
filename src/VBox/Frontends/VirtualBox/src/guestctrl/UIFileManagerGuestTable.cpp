@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -37,12 +37,13 @@
 #include "UIActionPool.h"
 #include "UIConverter.h"
 #include "UICommon.h"
-#include "UIFileSystemModel.h"
 #include "UIErrorString.h"
+#include "UIFileSystemModel.h"
 #include "UIFileManager.h"
 #include "UIFileManagerHostTable.h"
 #include "UIFileManagerGuestTable.h"
 #include "UIFileTableNavigationWidget.h"
+#include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
 #include "UIPathOperations.h"
@@ -1375,7 +1376,7 @@ void UIFileManagerGuestTable::cleanupListener(ComObjPtr<UIMainEventListenerImpl>
     QtListener->getWrapped()->unregisterSources();
     QtListener.setNull();
     /* Make sure VBoxSVC is available: */
-    if (!uiCommon().isVBoxSVCAvailable())
+    if (!gpGlobalSession->isVBoxSVCAvailable())
         return;
 
     /* Unregister event listener for CProgress event source: */
