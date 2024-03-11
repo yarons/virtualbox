@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.cpp 101452 2023-10-16 12:55:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateDefs.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related implementations.
  */
@@ -31,9 +31,9 @@
 #include <QStringList>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UINotificationCenter.h"
 #include "UIUpdateDefs.h"
+#include "UIVersion.h"
 
 /* COM includes: */
 #include "CUpdateAgent.h"
@@ -130,7 +130,7 @@ VBoxUpdateData::VBoxUpdateData(const QString &strData /* = QString("never") */)
     /* Decide whether we need to check: */
     m_fCheckRequired =    (QDate::currentDate() >= date())
                        && (   !version().isValid()
-                           || version() != UIVersion(uiCommon().vboxVersionStringNormalized()));
+                           || version() != UIVersion(UIVersionInfo::vboxVersionStringNormalized()));
 }
 
 VBoxUpdateData::VBoxUpdateData(bool fCheckEnabled, UpdatePeriodType enmUpdatePeriod, KUpdateChannel enmUpdateChannel)
@@ -164,7 +164,7 @@ VBoxUpdateData::VBoxUpdateData(bool fCheckEnabled, UpdatePeriodType enmUpdatePer
     const QString strUpdateChannel = updateChannelName();
 
     /* Encode 'version' value: */
-    m_version = UIVersion(uiCommon().vboxVersionStringNormalized());
+    m_version = UIVersion(UIVersionInfo::vboxVersionStringNormalized());
     const QString strVersionValue = m_version.toString();
 
     /* Compose m_strData: */
@@ -173,7 +173,7 @@ VBoxUpdateData::VBoxUpdateData(bool fCheckEnabled, UpdatePeriodType enmUpdatePer
     /* Decide whether we need to check: */
     m_fCheckRequired =    (QDate::currentDate() >= date())
                        && (   !version().isValid()
-                           || version() != UIVersion(uiCommon().vboxVersionStringNormalized()));
+                           || version() != UIVersion(UIVersionInfo::vboxVersionStringNormalized()));
 }
 
 bool VBoxUpdateData::load(const CHost &comHost)

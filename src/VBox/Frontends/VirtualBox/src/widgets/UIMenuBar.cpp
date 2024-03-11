@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMenuBar.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -31,10 +31,10 @@
 #include <QPixmapCache>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIImageTools.h"
 #include "UIMenuBar.h"
+#include "UIVersion.h"
 
 
 UIMenuBar::UIMenuBar(QWidget *pParent /* = 0 */)
@@ -42,7 +42,7 @@ UIMenuBar::UIMenuBar(QWidget *pParent /* = 0 */)
     , m_fShowBetaLabel(false)
 {
     /* Check for beta versions: */
-    if (uiCommon().showBetaLabel())
+    if (UIVersionInfo::showBetaLabel())
         m_fShowBetaLabel = true;
 }
 

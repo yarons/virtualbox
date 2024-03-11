@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -72,6 +72,7 @@
 #include "UINotificationCenter.h"
 #include "UISoftKeyboard.h"
 #include "UITakeSnapshotDialog.h"
+#include "UIVersion.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVMLogViewerDialog.h"
 #include "UIVMInformationDialog.h"
@@ -2307,7 +2308,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
         UINotificationMessage::cannotAcquireVirtualBoxParameter(comVBox);
     else
     {
-        const QString strName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, uiCommon().vboxVersionStringNormalized());
+        const QString strName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, UIVersionInfo::vboxVersionStringNormalized());
         foreach (const CMedium &comMedium, comMedia)
         {
             /* Compare the name part ignoring the file case: */

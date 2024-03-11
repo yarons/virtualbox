@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderGuestAdditions.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIDownloaderGuestAdditions.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderGuestAdditions class implementation.
  */
@@ -33,7 +33,6 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
-#include "UICommon.h"
 #include "UIDownloaderGuestAdditions.h"
 #include "UIGlobalSession.h"
 #include "UIMessageCenter.h"
@@ -49,7 +48,7 @@
 UIDownloaderGuestAdditions::UIDownloaderGuestAdditions()
 {
     /* Get version number and adjust it for test and trunk builds. The server only has official releases. */
-    const QString strVersion = UIVersion(uiCommon().vboxVersionStringNormalized()).effectiveReleasedVersion().toString();
+    const QString strVersion = UIVersion(UIVersionInfo::vboxVersionStringNormalized()).effectiveReleasedVersion().toString();
 
     /* Prepare source/target: */
     const QString strSourceName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, strVersion);

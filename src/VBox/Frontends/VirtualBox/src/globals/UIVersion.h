@@ -1,4 +1,4 @@
-/* $Id: UIVersion.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVersion.h 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVersion class declaration.
  */
@@ -33,6 +33,9 @@
 
 /* Qt includes: */
 #include <QString>
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /** Represents VirtualBox version wrapper. */
 class UIVersion
@@ -99,6 +102,50 @@ private:
 
     /** Holds the object postfix. */
     QString  m_strPostfix;
+};
+
+/** Represents VirtualBox version info interface. */
+class SHARED_LIBRARY_STUFF UIVersionInfo
+{
+public:
+
+    /** Returns Qt runtime version string. */
+    static QString qtRTVersionString();
+    /** Returns Qt runtime version. */
+    static uint qtRTVersion();
+    /** Returns Qt runtime major version. */
+    static uint qtRTMajorVersion();
+    /** Returns Qt runtime minor version. */
+    static uint qtRTMinorVersion();
+    /** Returns Qt runtime revision number. */
+    static uint qtRTRevisionNumber();
+
+    /** Returns Qt compiled version string. */
+    static QString qtCTVersionString();
+    /** Returns Qt compiled version. */
+    static uint qtCTVersion();
+
+    /** Returns VBox version string. */
+    static QString vboxVersionString();
+    /** Returns normalized VBox version string. */
+    static QString vboxVersionStringNormalized();
+    /** Returns whether VBox version string contains BETA word. */
+    static bool isBeta();
+    /** Returns whether BETA label should be shown. */
+    static bool showBetaLabel();
+
+    /** Returns whether branding is active. */
+    static bool brandingIsActive(bool fForce = false);
+    /** Returns value for certain branding @a strKey from custom.ini file. */
+    static QString brandingGetKey(QString strKey);
+
+private:
+
+    /** Constructs version info: */
+    UIVersionInfo();
+
+    /** Holds the VBox branding config file path. */
+    static QString  s_strBrandingConfigFilePath;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIVersion_h */

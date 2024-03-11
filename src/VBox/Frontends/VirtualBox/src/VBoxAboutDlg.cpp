@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxAboutDlg.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -35,8 +35,8 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
-#include "UICommon.h"
 #include "UIIconPool.h"
+#include "UIVersion.h"
 #include "VBoxAboutDlg.h"
 #ifdef VBOX_WS_MAC
 # include "UIDesktopWidgetWatchdog.h"
@@ -137,8 +137,8 @@ void VBoxAboutDlg::prepare()
     QString strPath(":/about.png");
 
     /* Branding: Use a custom about splash picture if set: */
-    const QString strSplash = uiCommon().brandingGetKey("UI/AboutSplash");
-    if (uiCommon().brandingIsActive() && !strSplash.isEmpty())
+    const QString strSplash = UIVersionInfo::brandingGetKey("UI/AboutSplash");
+    if (UIVersionInfo::brandingIsActive() && !strSplash.isEmpty())
     {
         char szExecPath[1024];
         RTPathExecDir(szExecPath, 1024);
@@ -183,7 +183,7 @@ void VBoxAboutDlg::prepareLabel()
         QPalette palette;
         /* Branding: Set a different text color (because splash also could be white),
          * otherwise use white as default color: */
-        const QString strColor = uiCommon().brandingGetKey("UI/AboutTextColor");
+        const QString strColor = UIVersionInfo::brandingGetKey("UI/AboutTextColor");
         if (!strColor.isEmpty())
             palette.setColor(QPalette::WindowText, QColor(strColor).name());
         else
