@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103782 2024-03-11 17:25:09Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103784 2024-03-11 17:35:04Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -15318,6 +15318,35 @@ iemNativeEmitSimdFetchYregU64(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8
     uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxDstVar, &off);
 
     off = iemNativeEmitSimdLoadGprFromVecRegU64(pReNative, off, idxVarReg, idxSimdRegSrc, iQWord);
+
+    /* Free but don't flush the source register. */
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegSrc);
+    iemNativeVarRegisterRelease(pReNative, idxDstVar);
+
+    return off;
+}
+
+
+#define IEM_MC_FETCH_YREG_U32(a_u32Dst, a_iYRegSrc) \
+    off = iemNativeEmitSimdFetchYregU32(pReNative, off, a_u32Dst, a_iYRegSrc, 0)
+
+/** Emits code for IEM_MC_FETCH_YREG_U32. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdFetchYregU32(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxDstVar, uint8_t iYReg, uint8_t iDWord)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxDstVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxDstVar, sizeof(uint32_t));
+
+    uint8_t const idxSimdRegSrc = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(iYReg),
+                                                                            iDWord >= 4
+                                                                          ? kIemNativeGstSimdRegLdStSz_High128
+                                                                          : kIemNativeGstSimdRegLdStSz_Low128,
+                                                                          kIemNativeGstRegUse_ReadOnly);
+
+    iemNativeVarSetKindToStack(pReNative, idxDstVar);
+    uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxDstVar, &off);
+
+    off = iemNativeEmitSimdLoadGprFromVecRegU32(pReNative, off, idxVarReg, idxSimdRegSrc, iDWord);
 
     /* Free but don't flush the source register. */
     iemNativeSimdRegFreeTmp(pReNative, idxSimdRegSrc);
