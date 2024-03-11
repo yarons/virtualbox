@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 103273 2024-02-08 09:35:20Z knut.osmundsen@oracle.com $
+# $Id: tdCpuIemInstr1.py 103753 2024-03-11 08:19:17Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103273 $"
+__version__ = "$Revision: 103753 $"
 
 
 # Standard Python imports.
@@ -85,12 +85,8 @@ class tdCpuIemInstr1(vbox.TestDriver):
             #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-decoding-1'),
 
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-generated-1'),
-
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-2'),
-
-            # @todo r=aeichner Fails with IEM currently.
-            #IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-3'),
-
+            IemTestVm(self.oTestVmSet, self, 'bs3-cpu-instr-3'),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-state64-1'),
             IemTestVm(self.oTestVmSet, self, 'bs3-cpu-weird-1'),
             IemTestVm(self.oTestVmSet, self, 'bs3-fpustate-1'),
