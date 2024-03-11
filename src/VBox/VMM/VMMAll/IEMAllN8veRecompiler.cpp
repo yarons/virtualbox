@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103763 2024-03-11 12:47:57Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103769 2024-03-11 14:56:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5756,7 +5756,6 @@ static uint32_t iemNativeSimdRegAllocLoadVecRegFromVecRegSz(PIEMRECOMPILERSTATE 
         }
 
         pReNative->Core.aHstSimdRegs[idxHstSimdRegDst].enmLoaded = enmLoadSzDst;
-        return off;
     }
     else
     {
@@ -15264,7 +15263,7 @@ DECLHIDDEN(const char *) iemNativeDbgVCpuOffsetToName(uint32_t off)
 {
     static struct { uint32_t off; const char *pszName; } const s_aMembers[] =
     {
-#define ENTRY(a_Member) { RT_UOFFSETOF(VMCPUCC, a_Member), #a_Member }
+#define ENTRY(a_Member) { (uint32_t)RT_UOFFSETOF(VMCPUCC, a_Member), #a_Member } /* cast is for stupid MSC */
         ENTRY(fLocalForcedActions),
         ENTRY(iem.s.rcPassUp),
         ENTRY(iem.s.fExec),
