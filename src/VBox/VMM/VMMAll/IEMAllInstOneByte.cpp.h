@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstOneByte.cpp.h 103800 2024-03-11 22:31:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstOneByte.cpp.h 103801 2024-03-11 22:36:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1845,7 +1845,7 @@ FNIEMOP_DEF(iemOp_xor_Al_Ib)
 {
     IEMOP_MNEMONIC2(FIXED, XOR, xor, AL, Ib, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
     IEMOP_VERIFICATION_UNDEFINED_EFLAGS(X86_EFL_AF);
-    IEMOP_BODY_BINARY_AL_Ib(xor, 0);
+    IEMOP_BODY_BINARY_AL_Ib(xor, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
@@ -1858,7 +1858,7 @@ FNIEMOP_DEF(iemOp_xor_eAX_Iz)
 {
     IEMOP_MNEMONIC2(FIXED, XOR, xor, rAX, Iz, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZES);
     IEMOP_VERIFICATION_UNDEFINED_EFLAGS(X86_EFL_AF);
-    IEMOP_BODY_BINARY_rAX_Iz_RW(xor, 0);
+    IEMOP_BODY_BINARY_rAX_Iz_RW(xor, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
@@ -4451,7 +4451,7 @@ FNIEMOP_DEF_1(iemOp_Grp1_sub_Eb_Ib, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp1_xor_Eb_Ib, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(xor_Eb_Ib, "xor Eb,Ib");
-    IEMOP_BODY_BINARY_Eb_Ib_RW(xor, 0, 0);
+    IEMOP_BODY_BINARY_Eb_Ib_RW(xor, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64, 0);
 }
 
 
@@ -5024,7 +5024,7 @@ FNIEMOP_DEF_1(iemOp_Grp1_sub_Ev_Iz, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp1_xor_Ev_Iz, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(xor_Ev_Iz, "xor Ev,Iz");
-    IEMOP_BODY_BINARY_Ev_Iz_RW(xor, 0, 0);
+    IEMOP_BODY_BINARY_Ev_Iz_RW(xor, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64, 0);
 }
 
 
@@ -5582,7 +5582,7 @@ FNIEMOP_DEF_1(iemOp_Grp1_sub_Ev_Ib, uint8_t, bRm)
 FNIEMOP_DEF_1(iemOp_Grp1_xor_Ev_Ib, uint8_t, bRm)
 {
     IEMOP_MNEMONIC(xor_Ev_Ib, "xor Ev,Ib");
-    IEMOP_BODY_BINARY_Ev_Ib_RW(xor, 0, 0);
+    IEMOP_BODY_BINARY_Ev_Ib_RW(xor, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64, 0);
 }
 
 
