@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103779 2024-03-11 17:04:02Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103782 2024-03-11 17:25:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -15292,6 +15292,35 @@ iemNativeEmitSimdStoreXregU32(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8
 
     /* Free but don't flush the source register. */
     iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+    iemNativeVarRegisterRelease(pReNative, idxDstVar);
+
+    return off;
+}
+
+
+#define IEM_MC_FETCH_YREG_U64(a_u64Dst, a_iYRegSrc) \
+    off = iemNativeEmitSimdFetchYregU64(pReNative, off, a_u64Dst, a_iYRegSrc, 0)
+
+/** Emits code for IEM_MC_FETCH_YREG_U64. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdFetchYregU64(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxDstVar, uint8_t iYReg, uint8_t iQWord)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxDstVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxDstVar, sizeof(uint64_t));
+
+    uint8_t const idxSimdRegSrc = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(iYReg),
+                                                                            iQWord >= 2
+                                                                          ? kIemNativeGstSimdRegLdStSz_High128
+                                                                          : kIemNativeGstSimdRegLdStSz_Low128,
+                                                                          kIemNativeGstRegUse_ReadOnly);
+
+    iemNativeVarSetKindToStack(pReNative, idxDstVar);
+    uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxDstVar, &off);
+
+    off = iemNativeEmitSimdLoadGprFromVecRegU64(pReNative, off, idxVarReg, idxSimdRegSrc, iQWord);
+
+    /* Free but don't flush the source register. */
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegSrc);
     iemNativeVarRegisterRelease(pReNative, idxDstVar);
 
     return off;
