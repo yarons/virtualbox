@@ -1,4 +1,4 @@
-/* $Id: regops.c 102990 2024-01-22 17:13:50Z vadim.galitsyn@oracle.com $ */
+/* $Id: regops.c 103767 2024-03-11 14:23:25Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -2535,7 +2535,11 @@ static ssize_t vbsf_reg_read_iter_locking(struct kiocb *kio, struct iov_iter *it
             if (rc == 0) {
                 size_t iPage = cPages;
                 while (iPage-- > 0)
-                    pReq->PgLst.aPages[iPage] = page_to_phys(papPages[iPage]);
+                {
+                    RTGCPHYS64 * paDstPages = pReq->PgLst.aPages;
+                    paDstPages[iPage] = page_to_phys(papPages[iPage]);
+                }
+
                 pReq->PgLst.offFirstPage = (uint16_t)offPage0;
                 AssertStmt(cbChunk <= cbToRead, cbChunk = cbToRead);
             } else {
@@ -2749,7 +2753,10 @@ static ssize_t vbsf_reg_write_iter_locking(struct kiocb *kio, struct iov_iter *i
             if (rc == 0) {
                 size_t iPage = cPages;
                 while (iPage-- > 0)
-                    pReq->PgLst.aPages[iPage] = page_to_phys(papPages[iPage]);
+                {
+                    RTGCPHYS64 * paDstPages = pReq->PgLst.aPages;
+                    paDstPages[iPage] = page_to_phys(papPages[iPage]);
+                }
                 pReq->PgLst.offFirstPage = (uint16_t)offPage0;
                 AssertStmt(cbChunk <= cbToWrite, cbChunk = cbToWrite);
             } else {

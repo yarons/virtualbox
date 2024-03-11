@@ -1,4 +1,4 @@
-/* $Id: utils.c 103067 2024-01-25 15:31:01Z vadim.galitsyn@oracle.com $ */
+/* $Id: utils.c 103767 2024-03-11 14:23:25Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -190,10 +190,11 @@ int vbsf_nls_to_shflstring(struct vbsf_super_info *pSuperInfo, const char *pszNl
         if (cchNls + 1 < _64K) {
             pString = (PSHFLSTRING)kmalloc(SHFLSTRING_HEADER_SIZE + cchNls + 1, GFP_KERNEL);
             if (pString) {
+                char *pchDst = pString->String.ach;
                 pString->u16Length = (uint16_t)cchNls;
                 pString->u16Size   = (uint16_t)(cchNls + 1);
-                RT_BCOPY_UNFORTIFIED(pString->String.ach, pszNls, cchNls);
-                pString->String.ach[cchNls] = '\0';
+                RT_BCOPY_UNFORTIFIED(pchDst, pszNls, cchNls);
+                pchDst[cchNls] = '\0';
                 rc = 0;
             } else {
                 Log(("vbsf_nls_to_shflstring: failed to allocate %u bytes\n", SHFLSTRING_HEADER_SIZE + cchNls + 1));
