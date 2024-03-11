@@ -1,4 +1,4 @@
-/* $Id: VBoxLnxModInline.h 103791 2024-03-11 18:02:22Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxLnxModInline.h 103792 2024-03-11 18:05:14Z vadim.galitsyn@oracle.com $ */
 /** @file
  * A common code for VirtualBox Linux kernel modules.
  */
@@ -46,7 +46,7 @@ module_param_named(disabled, g_fDisabled, int, 0400);
  * Check if module loading was explicitly disabled.
  *
  * Usually module loading can be disabled by
- * specifying <mod_name>.disabled=1 in kernel command line.
+ * specifying mod_name.disabled=1 in kernel command line.
  *
  * @returns True if modules loading was disabled, False otherwise.
  */
