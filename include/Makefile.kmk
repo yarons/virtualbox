@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 100254 2023-06-23 08:49:13Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 103786 2024-03-11 17:43:32Z vadim.galitsyn@oracle.com $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -141,6 +141,7 @@ VBOX_HDRS_OMIT := \
 	VBox/dbus-calls.h \
 	VBox/xrandr-calls.h \
 	VBox/VBoxKeyboard.h \
+	VBox/VBoxLnxModInline.h \
 	VBox/vmm/pdmpcidevint.h \
 	VBox/vmm/vmmr3vtable-def.h \
 	VBox/vmm/cpumctx-x86-amd64.h \
