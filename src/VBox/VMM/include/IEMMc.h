@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 103613 2024-02-29 13:01:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 103778 2024-03-11 16:54:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -537,8 +537,6 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
     do { pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au64[0] = (uint32_t)(a_u32Value); \
          pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au64[1] = 0; \
     } while (0)
-#define IEM_MC_STORE_XREG_HI_U64(a_iXReg, a_u64Value) \
-    do { pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au64[1] = (a_u64Value); } while (0)
 
 #define IEM_MC_BROADCAST_XREG_U8_ZX_VLMAX(a_iXRegDst, a_u8Src) \
     do { uintptr_t const iXRegDstTmp    = (a_iXRegDst); \
