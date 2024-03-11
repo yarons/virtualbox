@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtensionPackManager.h 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class declaration.
  */
@@ -113,6 +113,8 @@ private:
         void prepareToolBar();
         /** Prepares tree-widget. */
         void prepareTreeWidget();
+        /** Prepare connections: */
+        void prepareConnections();
     /** @} */
 
     /** @name Loading stuff.

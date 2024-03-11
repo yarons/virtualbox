@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -103,9 +103,6 @@
 #include "CAudioAdapter.h"
 #include "CCloudMachine.h"
 #include "CConsole.h"
-#include "CExtPack.h"
-#include "CExtPackFile.h"
-#include "CExtPackManager.h"
 #include "CHostUSBDevice.h"
 #include "CHostVideoInputDevice.h"
 #include "CMachine.h"
@@ -2697,28 +2694,6 @@ QString UICommon::helpKeyword(const QObject *pObject)
     if (!pObject)
         return QString();
     return pObject->property("helpkeyword").toString();
-}
-
-bool UICommon::isExtentionPackInstalled() const
-{
-    const CVirtualBox comVBox = gpGlobalSession->virtualBox();
-    const CExtPackManager comEPManager = comVBox.GetExtensionPackManager();
-
-    if (!comVBox.isOk())
-        return false;
-
-    const QVector<CExtPack> extensionPacks = comEPManager.GetInstalledExtPacks();
-    if (!comEPManager.isOk())
-        return false;
-    foreach (const CExtPack &comExtensionPack, extensionPacks)
-    {
-        if (!comExtensionPack.isOk())
-            continue;
-        bool fUsable = comExtensionPack.GetUsable();
-        if (comExtensionPack.isOk() && fUsable)
-            return true;
-    }
-    return false;
 }
 
 bool UICommon::openURL(const QString &strUrl) const

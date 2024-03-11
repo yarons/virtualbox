@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -2400,12 +2400,6 @@ class SHARED_LIBRARY_STUFF UINotificationProgressExtensionPackInstall : public U
 {
     Q_OBJECT;
 
-signals:
-
-    /** Notifies listeners about extension pack installed.
-      * @param  strExtensionPackName  Brings extension pack name. */
-    void sigExtensionPackInstalled(const QString &strExtensionPackName);
-
 public:
 
     /** Constructs extension pack install notification-progress.
@@ -2427,11 +2421,6 @@ protected:
     /** Creates and returns started progress-wrapper. */
     virtual CProgress createProgress(COMResult &comResult) /* override final */;
 
-private slots:
-
-    /** Handles signal about progress being finished. */
-    void sltHandleProgressFinished();
-
 private:
 
     /** Holds the extension pack file to install. */
@@ -2448,12 +2437,6 @@ private:
 class SHARED_LIBRARY_STUFF UINotificationProgressExtensionPackUninstall : public UINotificationProgress
 {
     Q_OBJECT;
-
-signals:
-
-    /** Notifies listeners about extension pack uninstalled.
-      * @param  strExtensionPackName  Brings extension pack name. */
-    void sigExtensionPackUninstalled(const QString &strExtensionPackName);
 
 public:
 
@@ -2473,11 +2456,6 @@ protected:
     virtual QString details() const /* override final */;
     /** Creates and returns started progress-wrapper. */
     virtual CProgress createProgress(COMResult &comResult) /* override final */;
-
-private slots:
-
-    /** Handles signal about progress being finished. */
-    void sltHandleProgressFinished();
 
 private:
 

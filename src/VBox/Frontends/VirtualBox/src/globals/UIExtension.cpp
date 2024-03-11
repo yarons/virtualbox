@@ -1,4 +1,4 @@
-/* $Id: UIExtension.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtension.cpp 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace implementation.
  */
@@ -26,7 +26,6 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIExtension.h"
 #include "UIGlobalSession.h"
 #include "UINotificationCenter.h"
@@ -112,11 +111,36 @@ void UIExtension::install(QString const &strFilePath,
                                                            fReplaceIt,
                                                            strPackName,
                                                            strDisplayInfo);
-    QObject::connect(pNotification, &UINotificationProgressExtensionPackInstall::sigExtensionPackInstalled,
-                     &uiCommon(), &UICommon::sigExtensionPackInstalled);
     gpNotificationCenter->append(pNotification);
 
     /* Store the name: */
     if (pstrExtPackName)
         *pstrExtPackName = strPackName;
+}
+
+bool UIExtension::isExtentionPackInstalled()
+{
+    /* Acquire extension pack manager: */
+    const CVirtualBox comVBox = gpGlobalSession->virtualBox();
+    const CExtPackManager comEPManager = comVBox.GetExtensionPackManager();
+    if (!comVBox.isOk())
+        return false;
+
+    /* Acquire a list of extension packs: */
+    const QVector<CExtPack> extensionPacks = comEPManager.GetInstalledExtPacks();
+    if (!comEPManager.isOk())
+        return false;
+
+    /* Make sure at least one installed ext pack is usable: */
+    foreach (const CExtPack &comExtensionPack, extensionPacks)
+    {
+        if (!comExtensionPack.isOk())
+            continue;
+        const bool fUsable = comExtensionPack.GetUsable();
+        if (comExtensionPack.isOk() && fUsable)
+            return true;
+    }
+
+    /* False by default: */
+    return false;
 }

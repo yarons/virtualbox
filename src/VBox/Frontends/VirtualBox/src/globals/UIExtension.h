@@ -1,4 +1,4 @@
-/* $Id: UIExtension.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExtension.h 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtension namespace declaration.
  */
@@ -46,6 +46,9 @@ namespace UIExtension
                                       QString const &strDigest,
                                       QWidget *pParent,
                                       QString *pstrExtPackName);
+
+    /** Returns true if it can find at least one usable ext. pack. Else returns false. */
+    bool SHARED_LIBRARY_STUFF isExtentionPackInstalled();
 }
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIExtension_h */
