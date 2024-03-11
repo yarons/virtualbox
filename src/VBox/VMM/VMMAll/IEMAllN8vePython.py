@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 103756 2024-03-11 10:45:59Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 103768 2024-03-11 14:39:16Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 103756 $"
+__version__ = "$Revision: 103768 $"
 
 # Standard python imports:
 import copy;
@@ -658,7 +658,7 @@ def analyzeVariantForNativeRecomp(oVariation,
     return None;
 
 
-def displayStatistics(aoThreadedFuncs, sHostArch): # type (list(ThreadedFunction)) -> True
+def analyzeThreadedFunctionsForNativeRecomp(aoThreadedFuncs, sHostArch): # type (list(ThreadedFunction)) -> True
     """
     Displays statistics.
     """
@@ -666,11 +666,32 @@ def displayStatistics(aoThreadedFuncs, sHostArch): # type (list(ThreadedFunction
     cTotal  = 0;
     cNative = 0;
     for oThreadedFunction in aoThreadedFuncs:
+        cNativeVariations = 0;
         for oVariation in oThreadedFunction.aoVariations:
             cTotal += 1;
             oVariation.oNativeRecomp = analyzeVariantForNativeRecomp(oVariation, sHostArch);
             if oVariation.oNativeRecomp and oVariation.oNativeRecomp.isRecompilable():
-                cNative += 1;
+                cNativeVariations += 1;
+        cNative += cNativeVariations;
+
+        # If all variations can be recompiled natively, annotate the threaded
+        # function name accordingly so it'll be easy to spot in the stats.
+        if oThreadedFunction.sSubName:
+            if cNativeVariations == len(oThreadedFunction.aoVariations):
+                aoStmts = oThreadedFunction.oMcBlock.decode();
+                oStmt = iai.McStmt.findStmtByNames(aoStmts, {'IEM_MC_NATIVE_IF': True,});
+                if oStmt and NativeRecompFunctionVariation.kdOptionArchToVal[sHostArch] in oStmt.asArchitectures:
+                    oThreadedFunction.sSubName += '_ne';        # native emit
+                elif oThreadedFunction.sSubName.find('aimpl') >= 0:
+                    oThreadedFunction.sSubName += '_na';        # native aimpl
+                else:
+                    oThreadedFunction.sSubName += '_nn';        # native native
+            elif cNativeVariations == 0:
+                oThreadedFunction.sSubName += '_ntodo';         # native threaded todo
+            else:
+                oThreadedFunction.sSubName += '_nm';            # native mixed
+
+
     print('todo: %.1f%% / %u out of %u threaded function variations are recompilable'
           % (cNative * 100.0 / cTotal, cNative, cTotal), file = sys.stderr);
     if g_dUnsupportedMcStmtLastOneStats:
