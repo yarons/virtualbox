@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 103586 2024-02-27 12:29:53Z alexander.eichner@oracle.com $ */
+/* $Id: CPUMR3CpuId.cpp 103752 2024-03-11 08:12:36Z alexander.eichner@oracle.com $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2890,7 +2890,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                             && (  VM_IS_NEM_ENABLED(pVM)
                                 ? NEMHCGetFeatures(pVM) & NEM_FEAT_F_XSAVE_XRSTOR
                                 : VM_IS_EXEC_ENGINE_IEM(pVM)
-                                ? false /** @todo IEM and XSAVE @bugref{9898} */
+                                ? true
                                 : fNestedPagingAndFullGuestExec);
     uint64_t const fXStateHostMask = pVM->cpum.s.fXStateHostMask;
 
@@ -2900,7 +2900,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
      * unrestricted guest execution mode.  Not possible to force this one without
      * host support at the moment.
      */
-    rc = cpumR3CpuIdReadIsaExtCfgEx(pVM, pIsaExts, "XSAVE", &pConfig->enmXSave, fNestedPagingAndFullGuestExec,
+    rc = cpumR3CpuIdReadIsaExtCfgEx(pVM, pIsaExts, "XSAVE", &pConfig->enmXSave, true,
                                     fMayHaveXSave /*fAllowed*/);
     AssertLogRelRCReturn(rc, rc);
 
