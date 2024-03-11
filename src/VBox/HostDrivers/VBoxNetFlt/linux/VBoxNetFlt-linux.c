@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 102874 2024-01-15 12:08:04Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 103789 2024-03-11 17:53:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -73,6 +73,7 @@
 #include <VBox/intnetinline.h>
 #include <VBox/vmm/pdmnetinline.h>
 #include <VBox/param.h>
+#include <VBox/VBoxLnxModInline.h>
 #include <iprt/alloca.h>
 #include <iprt/assert.h>
 #include <iprt/spinlock.h>
@@ -273,6 +274,11 @@ unsigned dev_get_flags(const struct net_device *dev)
 static int __init VBoxNetFltLinuxInit(void)
 {
     int rc;
+
+    /* Check if modue loading was disabled. */
+    if (!vbox_mod_should_load())
+        return -EINVAL;
+
     /*
      * Initialize IPRT.
      */

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxNetAdp-linux.c 103789 2024-03-11 17:53:04Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -54,6 +54,7 @@
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+#include <VBox/VBoxLnxModInline.h>
 
 /*
 #include <iprt/assert.h>
@@ -529,6 +530,11 @@ int  vboxNetAdpOsInit(PVBOXNETADP pThis)
 static int __init VBoxNetAdpLinuxInit(void)
 {
     int rc;
+
+    /* Check if modue loading was disabled. */
+    if (!vbox_mod_should_load())
+        return -EINVAL;
+
     /*
      * Initialize IPRT.
      */
