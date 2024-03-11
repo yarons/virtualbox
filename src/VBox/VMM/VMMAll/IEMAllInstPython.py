@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103763 2024-03-11 12:47:57Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103770 2024-03-11 14:57:12Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103763 $"
+__version__ = "$Revision: 103770 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2994,9 +2994,9 @@ g_dMcStmtParsers = {
     'IEM_MC_CLEAR_FSW_EX':                                       (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_CLEAR_HIGH_GREG_U64':                                (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_CLEAR_XREG_U32_MASK':                                (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_CLEAR_YREG_128_UP':                                  (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_CLEAR_YREG_128_UP':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_COMMIT_EFLAGS':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_COPY_XREG_U128':                                     (McBlock.parseMcGeneric,           True,  True,  True,  ),
+    'IEM_MC_COPY_XREG_U128':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_COPY_YREG_U128_ZX_VLMAX':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_COPY_YREG_U256_ZX_VLMAX':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_COPY_YREG_U64_ZX_VLMAX':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
@@ -3085,8 +3085,8 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_SREG_ZX_U64':                                  (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_FETCH_XREG_U128':                                    (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_XREG_U16':                                     (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_FETCH_XREG_U32':                                     (McBlock.parseMcGeneric,           False, False, True,  ),
-    'IEM_MC_FETCH_XREG_U64':                                     (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_FETCH_XREG_U32':                                     (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_FETCH_XREG_U64':                                     (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_XREG_U8':                                      (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_XREG_XMM':                                     (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_XREG_PAIR_U128':                               (McBlock.parseMcGeneric,           False, False, False, ),
@@ -3332,7 +3332,7 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_XREG_U32':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_U32_U128':                                (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_U32_ZX_U128':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_STORE_XREG_U64':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_STORE_XREG_U64':                                     (McBlock.parseMcGeneric,           True,  True,  False,  ),
     'IEM_MC_STORE_XREG_U64_ZX_U128':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_U8':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_XMM':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
