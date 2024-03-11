@@ -1,4 +1,4 @@
-# $Id: .scm-settings 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# $Id: .scm-settings 103790 2024-03-11 17:56:59Z vadim.galitsyn@oracle.com $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -84,6 +84,7 @@
 /VBox/VBoxGuestLib.h:                   --license-mit
 /VBox/VBoxGuestLibSharedFolders.h:      --license-mit
 /VBox/VBoxGuestLibSharedFoldersInline.h: --license-mit
+/VBox/VBoxLnxModInline.h:               --license-mit
 /VBox/VMMDev.h:                         --license-mit
 /VBox/VMMDevCoreTypes.h:                --license-mit
 
