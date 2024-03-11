@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 103749 2024-03-10 13:36:04Z bela.lubkin@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 103751 2024-03-11 08:10:30Z alexander.eichner@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -348,7 +348,7 @@ static bool bs3CpuInstr3ConfigReconfigure(PBS3CPUINSTR3_CONFIG_SAVED_T pSavedCfg
         pExtCtx->fXcr0Saved |= XSAVE_C_SSE;
     else
         pExtCtx->fXcr0Saved &= ~XSAVE_C_SSE;
-    if (pConfig->fXcr0Avx)
+    if (pConfig->fXcr0Avx && g_afTypeSupports[T_AVX_256])
         pExtCtx->fXcr0Saved |= XSAVE_C_YMM;
     else
         pExtCtx->fXcr0Saved &= ~XSAVE_C_YMM;
