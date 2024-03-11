@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSession.cpp 103765 2024-03-11 13:52:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSession.cpp 103766 2024-03-11 13:56:54Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSession class implementation.
  */
@@ -33,6 +33,11 @@
 #include "UIGuestOSType.h"
 #include "UIMessageCenter.h"
 #include "UIVirtualBoxClientEventHandler.h"
+
+/* Other VBox includes: */
+#ifdef VBOX_WITH_XPCOM
+# include <iprt/path.h>
+#endif
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h> // for CLSID_VirtualBoxClient
