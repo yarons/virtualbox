@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 103539 2024-02-22 18:27:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -44,7 +44,7 @@
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KMachineState.h"
 
 /* Other VBox includes: */
 #include "VBox/com/ptr.h"

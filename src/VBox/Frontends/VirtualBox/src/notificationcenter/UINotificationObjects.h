@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 103781 2024-03-11 17:23:02Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationObjects.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -40,7 +40,6 @@
 #include "UINotificationObject.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CAppliance.h"
 #include "CCloudClient.h"
 #include "CCloudMachine.h"

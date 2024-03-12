@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachinePreview.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class declaration.
  */
@@ -40,7 +40,6 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 #include "CSession.h"
 

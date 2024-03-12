@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 98875 2023-03-08 09:40:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */
@@ -35,7 +35,6 @@
 #include <QWidget>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuest.h"
 #include "CEventListener.h"
 

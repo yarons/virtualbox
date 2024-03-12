@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 103347 2024-02-14 09:06:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -39,7 +39,6 @@
 #include <QHash>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuest.h"
 #include "CMachine.h"
 #include "CCloudMachine.h"

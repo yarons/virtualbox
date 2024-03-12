@@ -1,4 +1,4 @@
-/* $Id: UIFileSystemModel.h 102485 2023-12-05 17:37:02Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileSystemModel.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileSystemModel class declaration.
  */
@@ -38,7 +38,7 @@
 #include "UILibraryDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KFsObjType.h"
 
 class QMimeData;
 class UIFileSystemModel;

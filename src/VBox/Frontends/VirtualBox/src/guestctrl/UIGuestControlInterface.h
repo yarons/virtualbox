@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 100174 2023-06-14 08:13:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestControlInterface.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -37,8 +37,8 @@
 #include <QMap>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuest.h"
+#include "KFsObjType.h"
 
 class UIGuestControlSubCommandBase;
 class CommandData;

@@ -1,4 +1,4 @@
-/* $Id: UIAudioSettingsEditor.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioSettingsEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioSettingsEditor class declaration.
  */
@@ -36,7 +36,8 @@
 #include "UIPortForwardingTable.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KAudioControllerType.h"
+#include "KAudioDriverType.h"
 
 /* Forward declarations: */
 class QCheckBox;

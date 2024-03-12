@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 102111 2023-11-15 16:01:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserModel.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -39,7 +39,6 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCloudMachine.h"
 #include "CMachine.h"
 

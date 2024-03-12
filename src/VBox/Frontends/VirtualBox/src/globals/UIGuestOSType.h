@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 103703 2024-03-06 14:33:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -37,7 +37,6 @@
 #include <QVector>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuestOSType.h"
 
 /** Represents guest OS family info. */

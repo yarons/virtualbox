@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 103708 2024-03-06 16:13:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIFDCreationDialog.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -39,7 +39,6 @@
 #include "QIWithRetranslateUI.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMedium.h"
 #include "CMediumFormat.h"
 

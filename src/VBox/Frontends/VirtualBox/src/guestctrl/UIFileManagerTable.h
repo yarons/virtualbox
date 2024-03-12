@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 103651 2024-03-03 09:55:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerTable.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -38,8 +38,8 @@
 #include <QWidget>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuestSession.h"
+#include "KFsObjType.h"
 
 /* GUI includes: */
 #include "QIDialog.h"

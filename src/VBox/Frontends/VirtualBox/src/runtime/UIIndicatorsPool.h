@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 98491 2023-02-07 12:18:02Z sergey.dubov@oracle.com $ */
+/* $Id: UIIndicatorsPool.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
@@ -39,7 +39,7 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KDeviceActivity.h"
 
 /* Forward declarations: */
 class QTimer;
@@ -140,4 +140,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIIndicatorsPool_h */
-

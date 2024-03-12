@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSession.h 103766 2024-03-11 13:56:54Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSession.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSession class declaration.
  */
@@ -36,7 +36,6 @@
 #include <QReadWriteLock>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CHost.h"
 #include "CVirtualBox.h"
 #include "CVirtualBoxClient.h"

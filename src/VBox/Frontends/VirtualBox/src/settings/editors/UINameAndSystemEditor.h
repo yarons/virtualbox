@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 102162 2023-11-20 17:32:01Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -36,7 +36,6 @@
 #include "UIGuestOSType.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuestOSType.h"
 
 /* Forward declarations: */

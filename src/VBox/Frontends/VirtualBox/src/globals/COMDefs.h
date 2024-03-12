@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 101567 2023-10-24 00:25:14Z sergey.dubov@oracle.com $ */
+/* $Id: COMDefs.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -87,6 +87,7 @@
 #undef ASSERT
 
 /* Qt includes */
+#include <QMetaType>
 #include <QString>
 #include <QUuid>
 #include <QVector>
@@ -1160,4 +1161,3 @@ public:
 /** @} */
 
 #endif /* !FEQT_INCLUDED_SRC_globals_COMDefs_h */
-

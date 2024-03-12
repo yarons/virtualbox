@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -38,7 +38,6 @@
 #include "UIVirtualCPUEditor.h"
 
 /* COM includes */
-#include "COMEnums.h"
 #include "CSystemProperties.h"
 
 UIVirtualCPUEditor::UIVirtualCPUEditor(QWidget *pParent /* = 0 */)

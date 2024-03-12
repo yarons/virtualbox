@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.h 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class declaration.
  */
@@ -36,7 +36,8 @@
 #include "UIMachineSettingsPortForwardingDlg.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KNetworkAdapterType.h"
+#include "KNetworkAdapterPromiscModePolicy.h"
 
 /* Forward declarations: */
 class QCheckBox;

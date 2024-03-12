@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.h 98875 2023-03-08 09:40:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlDialog.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class declaration.
  */
@@ -39,7 +39,6 @@
 #include "QIWithRetranslateUI.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuest.h"
 
 /** QIManagerDialogFactory extension used as a factory for the Guest Control dialog. */

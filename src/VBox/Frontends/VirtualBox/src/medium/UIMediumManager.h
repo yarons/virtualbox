@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 99390 2023-04-13 15:46:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumManager.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -38,6 +38,9 @@
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
 #include "UIMediumDefs.h"
+
+/* COM includes: */
+#include "KMachineState.h"
 
 /* Forward declarations: */
 class QAbstractButton;

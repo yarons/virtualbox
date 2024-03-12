@@ -1,4 +1,4 @@
-/* $Id: UIPointingHIDEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIPointingHIDEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPointingHIDEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KPointingHIDType.h"
 
 /* Forward declarations: */
 class QComboBox;

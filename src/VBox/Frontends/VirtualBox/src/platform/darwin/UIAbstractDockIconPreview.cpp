@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.cpp 98421 2023-02-02 09:21:40Z sergey.dubov@oracle.com $ */
+/* $Id: UIAbstractDockIconPreview.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Realtime Dock Icon Preview
  */
@@ -39,7 +39,6 @@
 #include "UIMachineView.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 
 
 UIAbstractDockIconPreview::UIAbstractDockIconPreview(UIMachine *, const QPixmap &)

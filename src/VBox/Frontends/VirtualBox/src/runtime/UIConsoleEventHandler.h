@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 100606 2023-07-17 16:32:44Z andreas.loeffler@oracle.com $ */
+/* $Id: UIConsoleEventHandler.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -36,11 +36,14 @@
 #include <QRect>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
 #include "CUSBDevice.h"
 #include "CVirtualBoxErrorInfo.h"
+#include "KClipboardMode.h"
+#include "KDnDMode.h"
+#include "KGuestMonitorChangedEventType.h"
+#include "KMachineState.h"
 
 /* Forward declarations: */
 class UIConsoleEventHandlerProxy;

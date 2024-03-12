@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -59,6 +59,9 @@
 /* Other VBox includes: */
 #include <iprt/time.h>
 
+/* COM includes: */
+#include "KMouseButtonState.h"
+#include "KTouchContactState.h"
 
 /* Factory function to create mouse-handler: */
 UIMouseHandler* UIMouseHandler::create(UIMachineLogic *pMachineLogic,

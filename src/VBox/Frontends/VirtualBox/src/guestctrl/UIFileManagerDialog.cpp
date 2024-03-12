@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIFileManagerDialog.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -43,7 +43,6 @@
 #endif
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 
 /*********************************************************************************************************************************

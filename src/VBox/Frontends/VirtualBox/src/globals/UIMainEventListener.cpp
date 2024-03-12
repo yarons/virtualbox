@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMainEventListener.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -36,7 +36,6 @@
 #include "UIMousePointerShapeData.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCanShowWindowEvent.h"
 #include "CClipboardErrorEvent.h"
 #include "CClipboardModeChangedEvent.h"

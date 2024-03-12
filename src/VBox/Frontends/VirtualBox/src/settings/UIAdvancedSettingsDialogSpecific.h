@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 102140 2023-11-17 15:26:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
@@ -35,7 +35,6 @@
 #include "UIAdvancedSettingsDialog.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CConsole.h"
 #include "CMachine.h"
 #include "CSession.h"

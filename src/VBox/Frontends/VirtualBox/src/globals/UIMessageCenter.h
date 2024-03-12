@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 100389 2023-07-05 13:26:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMessageCenter.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -39,7 +39,6 @@
 #include "UIMediumDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CProgress.h"
 
 /* Forward declarations: */

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -36,7 +36,8 @@
 #include "UITextTable.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KParavirtProvider.h"
+#include "KVMExecutionEngine.h"
 
 /* Forward declarations: */
 class CCloudMachine;

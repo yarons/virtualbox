@@ -1,4 +1,4 @@
-/* $Id: UITpmEditor.h 101865 2023-11-06 12:28:34Z sergey.dubov@oracle.com $ */
+/* $Id: UITpmEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITpmEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KTpmType.h"
 
 /* Forward declarations: */
 class QComboBox;

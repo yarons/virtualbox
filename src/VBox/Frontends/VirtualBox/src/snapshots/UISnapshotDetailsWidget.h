@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -39,7 +39,6 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGraphicsAdapter.h"
 #include "CMachine.h"
 #include "CSnapshot.h"

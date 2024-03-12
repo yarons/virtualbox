@@ -1,4 +1,4 @@
-/* $Id: UIApplianceUnverifiedCertificateViewer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIApplianceUnverifiedCertificateViewer.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceUnverifiedCertificateViewer class implementation.
  */
@@ -36,7 +36,6 @@
 #include "UIApplianceUnverifiedCertificateViewer.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCertificate.h"
 
 

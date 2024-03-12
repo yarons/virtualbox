@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsGenerator.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -42,7 +42,6 @@
 #include "UITranslator.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CAudioAdapter.h"
 #include "CAudioSettings.h"
 #include "CBooleanFormValue.h"

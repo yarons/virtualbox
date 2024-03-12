@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardDiskEditors.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -58,7 +58,6 @@ class UIUserNamePasswordEditor;
 class UIMediumSizeEditor;
 
 /* Other VBox includes: */
-#include "COMEnums.h"
 #include "CMediumFormat.h"
 
 /** A set of static utility functions used by several wizard in the context of virtual media. */

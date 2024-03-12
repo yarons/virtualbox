@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachine.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -44,7 +44,18 @@
 #include "UITextTable.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KBitmapFormat.h"
+#include "KChipsetType.h"
+#include "KClipboardMode.h"
+#include "KDeviceActivity.h"
+#include "KDnDMode.h"
+#include "KGraphicsControllerType.h"
+#include "KGuestMonitorChangedEventType.h"
+#include "KGuestMonitorStatus.h"
+#include "KMachineState.h"
+#include "KParavirtProvider.h"
+#include "KPlatformArchitecture.h"
+#include "KVMExecutionEngine.h"
 
 /* Forward declarations: */
 class QWidget;

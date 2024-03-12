@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.cpp 102269 2023-11-22 18:50:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIHelpBrowserWidget.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class implementation.
  */
@@ -65,7 +65,6 @@
 
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CSystemProperties.h"
 
 

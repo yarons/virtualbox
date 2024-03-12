@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 101566 2023-10-24 00:14:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDMIMEData.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
@@ -35,7 +35,6 @@
 #include <QMimeData>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CConsole.h"
 #include "CDnDSource.h"
 #include "CGuest.h"

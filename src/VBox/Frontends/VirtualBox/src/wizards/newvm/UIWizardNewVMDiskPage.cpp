@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -46,7 +46,6 @@
 #include "UIWizardNewVM.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CSystemProperties.h"
 
 QUuid UIWizardNewVMDiskCommon::getWithFileOpenDialog(const QString &strOSTypeID,

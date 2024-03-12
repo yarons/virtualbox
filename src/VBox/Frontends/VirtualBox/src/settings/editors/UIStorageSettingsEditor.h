@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -40,7 +40,9 @@
 #include "UISettingsDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KChipsetType.h"
+#include "KPlatformArchitecture.h"
+#include "KStorageControllerType.h"
 
 /* Using declarations: */
 using namespace UISettingsDefs;

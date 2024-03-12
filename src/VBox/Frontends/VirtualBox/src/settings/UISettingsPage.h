@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 101051 2023-09-07 13:05:21Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -37,7 +37,6 @@
 #include "UISettingsDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CConsole.h"
 #include "CHost.h"
 #include "CMachine.h"

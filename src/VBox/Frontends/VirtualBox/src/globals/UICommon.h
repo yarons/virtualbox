@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -46,6 +46,8 @@
 /* COM includes: */
 #include "CMedium.h"
 #include "CSession.h"
+#include "KGraphicsControllerType.h"
+#include "KLockType.h"
 
 /* Forward declarations: */
 class QMenu;

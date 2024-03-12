@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIConsoleEventHandler.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -36,7 +36,6 @@
 #endif
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CConsole.h"
 #include "CEventListener.h"
 #include "CEventSource.h"

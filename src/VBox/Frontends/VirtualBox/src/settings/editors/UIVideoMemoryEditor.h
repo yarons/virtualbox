@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.h 101264 2023-09-26 10:51:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KGraphicsControllerType.h"
 
 /* Forward declarations: */
 class QGridLayout;

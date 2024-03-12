@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 103127 2024-01-31 06:40:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -35,7 +35,6 @@
 #include "UIVirtualMachineItem.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCloudMachine.h"
 
 /* Forward declarations: */

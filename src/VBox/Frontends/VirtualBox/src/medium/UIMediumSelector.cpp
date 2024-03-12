@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -53,7 +53,6 @@
 #include "QIToolBar.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 #include "CMediumAttachment.h"
 #include "CMediumFormat.h"

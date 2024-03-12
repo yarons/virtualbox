@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 102813 2024-01-10 12:27:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsModel.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -42,7 +42,6 @@
 #include "UIToolsItem.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 
 /* Forward declaration: */
 class QGraphicsItem;

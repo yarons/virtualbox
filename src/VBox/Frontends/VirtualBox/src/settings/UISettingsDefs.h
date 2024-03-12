@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISettingsDefs.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -40,8 +40,8 @@
 #include "UILibraryDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
-
+#include "KSessionState.h"
+#include "KMachineState.h"
 
 /** Settings configuration namespace. */
 namespace UISettingsDefs

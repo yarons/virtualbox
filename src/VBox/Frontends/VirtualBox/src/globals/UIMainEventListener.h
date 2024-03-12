@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 100737 2023-07-30 09:48:13Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMainEventListener.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -41,7 +41,6 @@
 #include "UILibraryDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CGuestProcess.h"
 #include "CGuestSession.h"
 #include "CMedium.h"
@@ -49,6 +48,12 @@
 #include "CNetworkAdapter.h"
 #include "CUSBDevice.h"
 #include "CVirtualBoxErrorInfo.h"
+#include "KClipboardMode.h"
+#include "KDnDMode.h"
+#include "KGuestMonitorChangedEventType.h"
+#include "KMachineState.h"
+#include "KSessionState.h"
+#include "KVBoxEventType.h"
 
 /* Other VBox includes: */
 #include <VBox/com/listeners.h> /** @todo This drags in VirtualBox.h! It may be possible avoid it for XPCOM, but not COM due to VBoxEventType_T. */

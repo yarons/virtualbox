@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 101452 2023-10-16 12:55:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateDefs.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -39,9 +39,8 @@
 #include "UIVersion.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CHost.h"
-
+#include "KUpdateChannel.h"
 
 /** Update period types. */
 enum UpdatePeriodType

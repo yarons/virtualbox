@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -36,7 +36,7 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KNetworkAttachmentType.h"
 
 /* Forward declarations: */
 class QComboBox;

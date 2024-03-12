@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 103339 2024-02-13 16:49:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumDefs.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -39,7 +39,8 @@
 #include "UILibraryDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KDeviceType.h"
+#include "KStorageBus.h"
 
 /* Forward declarations: */
 class CVirtualBox;

@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 103023 2024-01-24 13:28:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserAbstractModel.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -41,8 +41,9 @@
 #include "UIManagerDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCloudMachine.h" /* required for Qt6 / c++17 */
+#include "KMachineState.h"
+#include "KSessionState.h"
 
 /* Forward declaration: */
 class UIChooser;

@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 103164 2024-02-01 16:14:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCommon.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -33,7 +33,6 @@
 
 #include <QPainterPath>
 #include "UIProgressTask.h"
-#include "COMEnums.h"
 #include "CStringArray.h"
 #include "CCloudMachine.h"
 

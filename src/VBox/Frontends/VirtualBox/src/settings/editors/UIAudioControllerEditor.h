@@ -1,4 +1,4 @@
-/* $Id: UIAudioControllerEditor.h 101725 2023-11-03 13:13:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioControllerEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioControllerEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KAudioControllerType.h"
 
 /* Forward declarations: */
 class QComboBox;

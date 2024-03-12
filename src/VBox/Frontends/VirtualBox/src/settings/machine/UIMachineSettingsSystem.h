@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 103287 2024-02-08 18:09:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -30,6 +30,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* COM includes: */
+#include "KChipsetType.h"
 
 /* GUI includes: */
 #include "UISettingsPage.h"

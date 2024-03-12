@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGuestControlTreeItem.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -36,7 +36,6 @@
 #include "UIMainEventListener.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CEventListener.h"
 #include "CGuestSession.h"
 

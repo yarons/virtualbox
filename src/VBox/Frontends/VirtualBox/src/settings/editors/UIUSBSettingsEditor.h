@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class declaration.
  */
@@ -36,7 +36,7 @@
 #include "UIUSBFiltersEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KUSBControllerType.h"
 
 /* Forward declarations: */
 class QCheckBox;

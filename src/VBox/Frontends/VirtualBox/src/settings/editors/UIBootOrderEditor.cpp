@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -41,7 +41,6 @@
 #include "QITreeWidget.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 #include "CPlatform.h"
 #include "CPlatformProperties.h"

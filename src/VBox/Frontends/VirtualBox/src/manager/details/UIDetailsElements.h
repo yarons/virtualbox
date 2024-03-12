@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 103481 2024-02-20 16:37:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElements.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -39,7 +39,6 @@
 #include "UITask.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CCloudMachine.h"
 #include "CMachine.h"
 

@@ -1,4 +1,4 @@
-/* $Id: UIMedium.h 103705 2024-03-06 15:26:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIMedium.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMedium class declaration.
  */
@@ -40,7 +40,6 @@
 #include "UIMediumDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMedium.h"
 
 /** Storage medium cache used to

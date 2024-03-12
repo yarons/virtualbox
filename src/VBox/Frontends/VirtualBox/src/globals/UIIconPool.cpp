@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIIconPool.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -41,7 +41,6 @@
 #include "UIModalWindowManager.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 #include <VBox/com/VirtualBox.h> /* Need GUEST_OS_ID_STR_X86 and friends. */
 

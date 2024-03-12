@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.h 101865 2023-11-06 12:28:34Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class declaration.
  */
@@ -35,7 +35,7 @@
 #include "UIEditor.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+#include "KUSBControllerType.h"
 
 /* Forward declarations: */
 class QRadioButton;

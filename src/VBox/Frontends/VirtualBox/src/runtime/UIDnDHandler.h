@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 100347 2023-07-03 13:09:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDHandler.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -37,7 +37,6 @@
 #include <QStringList>
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CDnDTarget.h"
 #include "CDnDSource.h"
 

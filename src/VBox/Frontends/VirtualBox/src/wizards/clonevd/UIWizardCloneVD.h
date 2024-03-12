@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 99389 2023-04-13 12:43:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -35,7 +35,6 @@
 #include "UINativeWizard.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMedium.h"
 #include "CMediumFormat.h"
 

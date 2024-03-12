@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 102787 2024-01-08 15:59:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIToolPaneMachine.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -39,7 +39,6 @@
 #include "UIExtraDataDefs.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CMachine.h"
 
 /* Forward declarations: */

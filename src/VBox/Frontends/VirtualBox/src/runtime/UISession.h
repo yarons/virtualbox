@@ -1,4 +1,4 @@
-/* $Id: UISession.h 102599 2023-12-14 16:03:06Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -46,7 +46,6 @@
 #include "UITextTable.h"
 
 /* COM includes: */
-#include "COMEnums.h"
 #include "CConsole.h"
 #include "CDisplay.h"
 #include "CGuest.h"
@@ -55,6 +54,10 @@
 #include "CMachineDebugger.h"
 #include "CMouse.h"
 #include "CSession.h"
+#include "KChipsetType.h"
+#include "KGraphicsControllerType.h"
+#include "KGuestMonitorChangedEventType.h"
+#include "KPlatformArchitecture.h"
 
 /* Forward declarations: */
 class QMenu;
