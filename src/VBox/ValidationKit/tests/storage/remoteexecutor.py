@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 103587 2024-02-27 13:06:51Z ksenia.s.stepanova@oracle.com $
+# $Id: remoteexecutor.py 103806 2024-03-12 12:16:04Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103587 $"
+__version__ = "$Revision: 103806 $"
 
 
 # Standard Python imports.
@@ -308,8 +308,12 @@ class RemoteExecutor(object):
             fRc = self.oTxsSession.syncRmTree(sDir, cMsTimeout);
         else:
             try:
-                reporter.log("rmTree (%s) using shutil.rmtree function" % sDir);
-                shutil.rmtree(sDir);
+                if os.path.isfile(sDir):
+                    reporter.log("deleting file: %s" % sDir)
+                    os.remove(sDir)
+                else:
+                    reporter.log("rmTree (%s) using shutil.rmtree function" % sDir);
+                    shutil.rmtree(sDir);
             except:
                 fRc = False;
 

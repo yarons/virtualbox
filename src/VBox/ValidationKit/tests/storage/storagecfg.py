@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 103576 2024-02-26 17:02:26Z ksenia.s.stepanova@oracle.com $
+# $Id: storagecfg.py 103806 2024-03-12 12:16:04Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103576 $"
+__version__ = "$Revision: 103806 $"
 
 # Standard Python imports.
 import os;
@@ -223,6 +223,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
         reporter.log('lstPools: %s' % lstPools);
         if lstPools is not None:
             for sPool in lstPools:
+                fRc2 = fRc3 = False  # flags for volumes and pools destruction results
                 lstVolumes = self._getActiveVolumesInPoolStartingWith(oExec, sPool, sVolIdStart);
                 reporter.log('lstVolumes: %s' % lstVolumes)
                 if lstVolumes is not None:
@@ -230,17 +231,13 @@ class StorageConfigOsSolaris(StorageConfigOs):
                     reporter.log('destroying volumes starts');
                     for sVolume in lstVolumes:
                         fRc2 = oExec.execBinary('zfs', ('destroy', sVolume));
-                        if not fRc2:
-                            fRc = fRc2
                     reporter.log('destroying volumes ends');
 
-                    # Destroy the pool
-                    reporter.log('destroying pools starts');
-                    fRc2 = self.destroyPool(oExec, sPool);
-                    reporter.log('destroying pools ends');
-                    if not fRc2:
-                        fRc = fRc2;
-                else:
+                # Destroy the pool
+                reporter.log('destroying pools starts');
+                fRc3 = self.destroyPool(oExec, sPool);
+                reporter.log('destroying pools ends');
+                if not (fRc2 or fRc3):
                     fRc = False;
         else:
             fRc = False;

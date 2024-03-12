@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 103545 2024-02-23 11:48:53Z ksenia.s.stepanova@oracle.com $
+# $Id: tdStorageBenchmark1.py 103806 2024-03-12 12:16:04Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103545 $"
+__version__ = "$Revision: 103806 $"
 
 
 # Standard Python imports.
@@ -1455,8 +1455,8 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     if sMountPoint:
                         fMode = 0o777;
                         sDir  = os.path.join(sMountPoint, 'test');
-                        if self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', fMode):
-                            sMountPoint = sDir;
+                        if os.path.exists(sDir) or self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', fMode):
+                            sMountPoint = sDir
                         else:
                             reporter.error('Creating volume directory "%s" (mode %x) failed' % (sDir, fMode,));
                     else:
