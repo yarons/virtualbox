@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103750 2024-03-10 20:12:55Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103804 2024-03-12 11:54:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -174,10 +174,11 @@ AssertCompile(IEMNATIVE_FRAME_VAR_SLOTS == 32);
 # ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
 #  define IEMNATIVE_SIMD_REG_FIXED_TMP0    5 /* xmm5/ymm5 */
 #  if defined(IEMNATIVE_WITH_SIMD_REG_ACCESS_ALL_REGISTERS) || !defined(_MSC_VER)
-#   define IEMNATIVE_SIMD_REG_FIXED_MASK   0
+#   define IEMNATIVE_SIMD_REG_FIXED_MASK   RT_BIT_32(IEMNATIVE_SIMD_REG_FIXED_TMP0)
 #  else
 /** On Windows xmm6 through xmm15 are marked as callee saved. */
-#   define IEMNATIVE_SIMD_REG_FIXED_MASK   (UINT32_C(0xffc0))
+#   define IEMNATIVE_SIMD_REG_FIXED_MASK   (  UINT32_C(0xffc0)
+                                            | RT_BIT_32(IEMNATIVE_SIMD_REG_FIXED_TMP0))
 #  endif
 # endif
 
