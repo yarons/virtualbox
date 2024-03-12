@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103787 2024-03-11 17:47:32Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103805 2024-03-12 12:07:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -13103,7 +13103,7 @@ iemNativeEmitMemFetchStoreDataCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off
     /** @todo we could postpone this till we make the call and reload the
      * registers after returning from the call. Not sure if that's sensible or
      * not, though. */
-#ifndef IEMNATIVE_WITH_INSTRUCTION_COUNTING
+#ifndef IEMNATIVE_WITH_DELAYED_PC_UPDATING
     off = iemNativeRegFlushPendingWrites(pReNative, off);
 #else
     /* The program counter is treated differently for now. */
