@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103807 2024-03-12 19:43:31Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103809 2024-03-12 19:56:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1429,8 +1429,10 @@ DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAllocTmpForGuestRegIfAlreadyPresent(PIEM
 
 DECL_HIDDEN_THROW(uint32_t) iemNativeRegAllocArgs(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t cArgs);
 DECL_HIDDEN_THROW(uint8_t)  iemNativeRegAssignRc(PIEMRECOMPILERSTATE pReNative, uint8_t idxHstReg);
+#if (defined(IPRT_INCLUDED_x86_h) && defined(RT_ARCH_X86)) || (defined(IPRT_INCLUDED_armv8_h) && defined(RT_ARCH_ARM64))
 DECL_HIDDEN_THROW(uint32_t) iemNativeRegMoveOrSpillStackVar(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxVar,
                                                             uint32_t fForbiddenRegs = IEMNATIVE_CALL_VOLATILE_GREG_MASK);
+#endif
 DECLHIDDEN(void)            iemNativeRegFree(PIEMRECOMPILERSTATE pReNative, uint8_t idxHstReg) RT_NOEXCEPT;
 DECLHIDDEN(void)            iemNativeRegFreeTmp(PIEMRECOMPILERSTATE pReNative, uint8_t idxHstReg) RT_NOEXCEPT;
 DECLHIDDEN(void)            iemNativeRegFreeTmpImm(PIEMRECOMPILERSTATE pReNative, uint8_t idxHstReg) RT_NOEXCEPT;
