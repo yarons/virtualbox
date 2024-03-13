@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103835 2024-03-13 16:28:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103836 2024-03-13 17:22:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7081,7 +7081,7 @@ iemNativeEmitInvBitsGprEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t iGprDs
     pCodeBuf[off++] = 0xf7;
     pCodeBuf[off++] = X86_MODRM_MAKE(X86_MOD_REG, 2, iGprDst & 7);
 #elif defined(RT_ARCH_ARM64)
-    pCodeBuf[off++] = Armv8A64MkInstrOrn(iGprDst, iGprSrc, ARMV8_A64_REG_XZR, f64Bit);
+    pCodeBuf[off++] = Armv8A64MkInstrOrn(iGprDst, ARMV8_A64_REG_XZR, iGprSrc, f64Bit);
 #else
 # error "port me"
 #endif

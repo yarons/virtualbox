@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103835 2024-03-13 16:28:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103836 2024-03-13 17:22:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -1775,7 +1775,6 @@ iemNativeEmitIfMxcsrXcptPending(PIEMRECOMPILERSTATE pReNative, uint32_t off)
     uint8_t const idxGstMxcsrReg = iemNativeRegAllocTmpForGuestReg(pReNative, &off, kIemNativeGstReg_MxCsr,
                                                                    kIemNativeGstRegUse_Calculation);
     uint8_t const idxRegTmp      = iemNativeRegAllocTmp(pReNative, &off);
-
 
     /* mov tmp0, mxcsr */
     off = iemNativeEmitLoadGprFromGpr(pReNative, off, idxRegTmp, idxGstMxcsrReg);
