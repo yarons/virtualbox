@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103830 2024-03-13 14:13:14Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5052,7 +5052,6 @@ static uint8_t iemNativeSimdRegAllocFindFree(PIEMRECOMPILERSTATE pReNative, uint
         Assert(   (pReNative->Core.aHstSimdRegs[idxReg].fGstRegShadows & pReNative->Core.bmGstSimdRegShadows)
                == pReNative->Core.aHstSimdRegs[idxReg].fGstRegShadows);
         Assert(pReNative->Core.bmHstSimdRegsWithGstShadow & RT_BIT_32(idxReg));
-        Assert(pReNative->Core.aHstSimdRegs[idxReg].enmLoaded == kIemNativeGstSimdRegLdStSz_Invalid);
 
         /* We need to flush any pending guest register writes this host SIMD register shadows. */
         uint32_t fGstRegShadows = pReNative->Core.aHstSimdRegs[idxReg].fGstRegShadows;
