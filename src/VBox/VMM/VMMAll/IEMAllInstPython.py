@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103796 2024-03-11 20:45:21Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103813 2024-03-13 07:06:53Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103796 $"
+__version__ = "$Revision: 103813 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2906,7 +2906,7 @@ class McBlock(object):
 
 ## Temporary flag for enabling / disabling experimental MCs depending on the
 ## SIMD register allocator.
-g_fNativeSimd = False;
+g_fNativeSimd = True;
 
 ## IEM_MC_XXX -> parser + info dictionary.
 #

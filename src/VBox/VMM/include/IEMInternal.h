@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103796 2024-03-11 20:45:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 103813 2024-03-13 07:06:53Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -93,7 +93,7 @@ RT_C_DECLS_BEGIN
 #endif
 
 /** Enables the SIMD register allocator @bugref{10614}.  */
-#if defined(DOXYGEN_RUNNING) || 0
+#if defined(DOXYGEN_RUNNING) || 1
 # define IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
 #endif
 /** Enables access to even callee saved registers. */
