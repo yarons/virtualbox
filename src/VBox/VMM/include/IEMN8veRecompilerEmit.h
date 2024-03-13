@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103784 2024-03-11 17:35:04Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103814 2024-03-13 07:20:44Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7293,6 +7293,50 @@ iemNativeEmitSimdStoreGprToVecRegU32(PIEMRECOMPILERSTATE pReNative, uint32_t off
     off = iemNativeEmitSimdStoreGprToVecRegU32Ex(iemNativeInstrBufEnsure(pReNative, off, 7), off, iVecRegDst, iGprSrc, iDWord);
 #elif defined(RT_ARCH_ARM64)
     off = iemNativeEmitSimdStoreGprToVecRegU32Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iVecRegDst, iGprSrc, iDWord);
+#else
+# error "port me"
+#endif
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    return off;
+}
+
+
+/**
+ * Emits a vecdst[0:127] = 0 store.
+ */
+DECL_FORCE_INLINE(uint32_t)
+iemNativeEmitSimdZeroVecRegLowU128Ex(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t iVecReg)
+{
+#ifdef RT_ARCH_AMD64
+    /* pxor xmm, xmm */
+    pCodeBuf[off++] = X86_OP_PRF_SIZE_OP;
+    if (iVecReg >= 8)
+        pCodeBuf[off++] = X86_OP_REX_B | X86_OP_REX_R;
+    pCodeBuf[off++] = 0x0f;
+    pCodeBuf[off++] = 0xef;
+    pCodeBuf[off++] = X86_MODRM_MAKE(X86_MOD_REG, iVecReg & 7, iVecReg & 7);
+#elif defined(RT_ARCH_ARM64)
+    /* ASSUMES that there are two adjacent 128-bit registers available for the 256-bit value. */
+    Assert(!(iVecReg & 0x1));
+    /* eor vecreg, vecreg, vecreg */
+    pCodeBuf[off++] = Armv8A64MkVecInstrEor(iVecReg, iVecReg, iVecReg);
+#else
+# error "port me"
+#endif
+    return off;
+}
+
+
+/**
+ * Emits a vecdst[0:127] = 0 store.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdZeroVecRegLowU128(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iVecReg)
+{
+#ifdef RT_ARCH_AMD64
+    off = iemNativeEmitSimdZeroVecRegLowU128Ex(iemNativeInstrBufEnsure(pReNative, off, 5), off, iVecReg);
+#elif defined(RT_ARCH_ARM64)
+    off = iemNativeEmitSimdZeroVecRegLowU128Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iVecReg);
 #else
 # error "port me"
 #endif
