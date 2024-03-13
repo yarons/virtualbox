@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 103787 2024-03-11 17:47:32Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -487,6 +487,9 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
         Assert(!(  ((a_fEflInput) | (a_fEflOutput)) \
                  & ~(uint32_t)(X86_EFL_STATUS_BITS | X86_EFL_DF | X86_EFL_VM | X86_EFL_VIF | X86_EFL_IOPL))); \
     } while (0)
+#undef  IEM_MC_COMMIT_EFLAGS_OPT /* unused here */
+#define IEM_MC_COMMIT_EFLAGS_OPT_EX(a_EFlags, a_fEflInput, a_fEflOutput) \
+    IEM_MC_COMMIT_EFLAGS_EX(a_EFlags, a_fEflInput, a_fEflOutput)
 
 #define IEM_MC_ASSIGN_TO_SMALLER(a_VarDst, a_VarSrcEol)             NOP()
 

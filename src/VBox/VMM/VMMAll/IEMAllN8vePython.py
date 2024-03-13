@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 103768 2024-03-11 14:39:16Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 103768 $"
+__version__ = "$Revision: 103828 $"
 
 # Standard python imports:
 import copy;
@@ -121,6 +121,7 @@ g_dMcStmtThreaded = {
 
     'IEM_MC_REF_EFLAGS_EX':                                              (None, False, False, True,  ),
     'IEM_MC_COMMIT_EFLAGS_EX':                                           (None, True,  True,  True,  ),
+    'IEM_MC_COMMIT_EFLAGS_OPT_EX':                                       (None, True,  True,  True,  ),
     'IEM_MC_FETCH_EFLAGS_EX':                                            (None, False, False, True,  ),
     'IEM_MC_ASSERT_EFLAGS':                                              (None, True,  True,  True,  ),
 

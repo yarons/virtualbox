@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 103787 2024-03-11 17:47:32Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -218,6 +218,8 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
         pVCpu->cpum.GstCtx.eflags.u = (a_EFlags); \
         Assert(pVCpu->cpum.GstCtx.eflags.u & X86_EFL_1); \
     } while (0)
+#define IEM_MC_COMMIT_EFLAGS_OPT(a_EFlags)                               IEM_MC_COMMIT_EFLAGS(a_EFlags)
+#define IEM_MC_COMMIT_EFLAGS_OPT_EX(a_EFlags, a_fEflInput, a_fEflOutput) IEM_MC_COMMIT_EFLAGS_EX(a_EFlags, a_fEflInput, a_fEflOutput)
 
 /** ASSUMES the source variable not used after this statement. */
 #define IEM_MC_ASSIGN_TO_SMALLER(a_VarDst, a_VarSrcEol) (a_VarDst) = (a_VarSrcEol)

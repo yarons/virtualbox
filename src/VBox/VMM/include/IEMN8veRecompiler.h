@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103812 2024-03-12 22:52:12Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -48,6 +48,20 @@
 #if 1 || defined(DOXYGEN_RUNNING)
 # define IEMNATIVE_WITH_LIVENESS_ANALYSIS
 /*# define IEMLIVENESS_EXTENDED_LAYOUT*/
+#endif
+
+/** @def IEMNATIVE_WITH_EFLAGS_SKIPPING
+ * Enables skipping EFLAGS calculations/updating based on liveness info.  */
+#if (defined(IEMNATIVE_WITH_LIVENESS_ANALYSIS) && 1) || defined(DOXYGEN_RUNNING)
+# define IEMNATIVE_WITH_EFLAGS_SKIPPING
+#endif
+
+
+/** @def IEMNATIVE_STRICT_EFLAGS_SKIPPING
+ * Enables strict consistency checks around EFLAGS skipping.
+ * @note Only defined when IEMNATIVE_WITH_EFLAGS_SKIPPING is also defined. */
+#if (defined(VBOX_STRICT) && defined(IEMNATIVE_WITH_EFLAGS_SKIPPING)) || defined(DOXYGEN_RUNNING)
+# define IEMNATIVE_STRICT_EFLAGS_SKIPPING
 #endif
 
 #ifdef VBOX_WITH_STATISTICS
@@ -560,6 +574,7 @@ typedef IEMLIVENESSENTRY const *PCIEMLIVENESSENTRY;
 #endif
 
 #define IEMLIVENESSBIT_ALL_EFL_MASK             UINT64_C(0x003f800000000000)
+#define IEMLIVENESSBIT_STATUS_EFL_MASK          UINT64_C(0x003f000000000000)
 
 #ifndef IEMLIVENESS_EXTENDED_LAYOUT
 # define IEMLIVENESSBIT0_ALL_EFL_INPUT          IEMLIVENESSBIT_ALL_EFL_MASK
@@ -638,6 +653,12 @@ typedef IEMLIVENESSENTRY const *PCIEMLIVENESSENTRY;
  * include INPUT if the register is used in more than one place. */
 # define IEMLIVENESS_STATE_IS_CLOBBER_EXPECTED(a_uState) ((uint32_t)(a_uState) != IEMLIVENESS_STATE_UNUSED)
 
+/** Check if all status flags are going to be clobbered and doesn't need
+ *  calculating in the current step.
+ * @param a_pEntry  The current liveness entry. */
+# define IEMLIVENESS_STATE_ARE_STATUS_EFL_TO_BE_CLOBBERED(a_pCurEntry)  \
+    ( (((a_pCurEntry)->Bit0.bm64 | (a_pCurEntry)->Bit1.bm64) & IEMLIVENESSBIT_STATUS_EFL_MASK) == 0 )
+
 #else  /* IEMLIVENESS_EXTENDED_LAYOUT */
 /** The register is not used any more. */
 # define IEMLIVENESS_STATE_UNUSED           0
@@ -658,6 +679,12 @@ typedef IEMLIVENESSENTRY const *PCIEMLIVENESSENTRY;
     ( ((a_uState) & (IEMLIVENESS_STATE_WRITE | IEMLIVENESS_STATE_READ)) == (IEMLIVENESS_STATE_WRITE | IEMLIVENESS_STATE_READ) )
 # define IEMLIVENESS_STATE_IS_INPUT_EXPECTED(a_uState)   RT_BOOL((a_uState) & IEMLIVENESS_STATE_READ)
 # define IEMLIVENESS_STATE_IS_CLOBBER_EXPECTED(a_uState) RT_BOOL((a_uState) & IEMLIVENESS_STATE_WRITE)
+
+# define IEMLIVENESS_STATE_ARE_STATUS_EFL_TO_BE_CLOBBERED(a_pCurEntry)  \
+    (   ((a_pCurEntry)->aBits[IEMLIVENESS_BIT_WRITE].bm64 & IEMLIVENESSBIT_STATUS_EFL_MASK) == IEMLIVENESSBIT_STATUS_EFL_MASK \
+     && !(  ((a_pCurEntry)->aBits[IEMLIVENESS_BIT_READ].bm64 | (a_pCurEntry)->aBits[IEMLIVENESS_BIT_POT_XCPT_OR_CALL].bm64) \
+          & IEMLIVENESSBIT_STATUS_EFL_MASK) )
+
 #endif /* IEMLIVENESS_EXTENDED_LAYOUT */
 /** @} */
 
@@ -750,6 +777,20 @@ typedef IEMLIVENESSENTRY const *PCIEMLIVENESSENTRY;
     } while (0)
 #endif
 /** @} */
+
+/** @def IEMNATIVE_STRICT_EFLAGS_SKIPPING_EMIT_CHECK
+ * Checks that the EFLAGS bits specified by @a a_fEflNeeded are actually
+ * calculated and up to date.  This is to double check that we haven't skipped
+ * EFLAGS calculations when we actually need them.  NOP in non-strict builds.
+ * @note has to be placed in
+ */
+#ifdef IEMNATIVE_STRICT_EFLAGS_SKIPPING
+# define IEMNATIVE_STRICT_EFLAGS_SKIPPING_EMIT_CHECK(a_pReNative, a_off, a_fEflNeeded) \
+    do { (a_off) = iemNativeEmitEFlagsSkippingCheck(a_pReNative, a_off, a_fEflNeeded); } while (0)
+#else
+# define IEMNATIVE_STRICT_EFLAGS_SKIPPING_EMIT_CHECK(a_pReNative, a_off, a_fEflNeeded) do { } while (0)
+#endif
+
 
 /**
  * Guest registers that can be shadowed in GPRs.
@@ -1505,6 +1546,9 @@ DECL_HIDDEN_THROW(uint32_t) iemNativeEmitGuestSimdRegValueCheck(PIEMRECOMPILERST
                                                                 IEMNATIVEGSTSIMDREGLDSTSZ enmLoadSz);
 # endif
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitExecFlagsCheck(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t fExec);
+#endif
+#ifdef IEMNATIVE_STRICT_EFLAGS_SKIPPING
+DECL_HIDDEN_THROW(uint32_t) iemNativeEmitEFlagsSkippingCheck(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint32_t fEflNeeded);
 #endif
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCheckCallRetAndPassUp(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxInstr);
 DECL_HIDDEN_THROW(uint32_t) iemNativeEmitCallCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t cArgs, uint8_t cHiddenArgs);

@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 103739 2024-03-09 00:03:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -461,6 +461,10 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
         STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeRegFindFreeLivenessHelped,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Times liveness info helped finding the return register in iemNativeRegAllocFindFree.",
                         "/IEM/CPU%u/re/NativeRegFindFreeLivenessHelped", idCpu);
+
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeEflArithmeticSkipped,      STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "Skipped all status flag updating, arithmetic instruction",
+                        "/IEM/CPU%u/re/NativeEFlagsArithmeticSkipped", idCpu);
 
         STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeLivenessEflCfSkippable,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Skippable EFLAGS.CF updating",       "/IEM/CPU%u/re/NativeLivenessEFlagsCfSkippable", idCpu);
         STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeLivenessEflPfSkippable,    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Skippable EFLAGS.PF updating",       "/IEM/CPU%u/re/NativeLivenessEFlagsPfSkippable", idCpu);
