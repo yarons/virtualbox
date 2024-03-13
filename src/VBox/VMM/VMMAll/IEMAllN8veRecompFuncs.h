@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103825 2024-03-13 12:24:49Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103826 2024-03-13 12:49:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -6411,7 +6411,8 @@ iemNativeEmitMemCommitAndUnmap(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
      */
     /** @todo save+restore active registers and maybe guest shadows in miss
      *        scenario. */
-    off = iemNativeRegMoveAndFreeAndFlushAtCall(pReNative, off, 0 /* vacate all non-volatile regs */, RT_BIT_32(idxVarUnmapInfo));
+    off = iemNativeRegMoveAndFreeAndFlushAtCall(pReNative, off, 0 /* vacate all non-volatile regs */,
+                                                RT_BIT_32(IEMNATIVE_VAR_IDX_UNPACK(idxVarUnmapInfo)));
 
     /*
      * If idxVarUnmapInfo is zero, we can skip all this. Otherwise we'll have
