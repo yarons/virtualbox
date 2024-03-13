@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstThree0f38.cpp.h 103746 2024-03-09 12:30:34Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllInstThree0f38.cpp.h 103837 2024-03-13 19:52:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -913,10 +913,10 @@ FNIEMOP_DEF(iemOp_pabsd_Vx_Wx)
         IEM_MC_BEGIN(2, 0, IEM_MC_F_NOT_286_OR_OLDER, 0); \
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX_EX(fSse41); \
         IEM_MC_ARG(PRTUINT128U,                 puDst, 0); \
-        IEM_MC_ARG(uint64_t,    uSrc, 1); \
+        IEM_MC_ARG(uint ## a_SrcWidth ## _t,    uSrc, 1); \
         IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT();  \
         IEM_MC_PREPARE_SSE_USAGE();  \
-        IEM_MC_FETCH_XREG_U64(uSrc, IEM_GET_MODRM_RM(pVCpu, bRm), 0 /* a_iQword */); \
+        IEM_MC_FETCH_XREG_U ## a_SrcWidth (uSrc, IEM_GET_MODRM_RM(pVCpu, bRm), 0); \
         IEM_MC_REF_XREG_U128(puDst, IEM_GET_MODRM_REG(pVCpu, bRm)); \
         IEM_MC_CALL_VOID_AIMPL_2(IEM_SELECT_HOST_OR_FALLBACK(fSse41, \
                                                              iemAImpl_ ## a_Instr ## _u128, \
