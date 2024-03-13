@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103832 2024-03-13 14:49:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103838 2024-03-13 20:06:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -2938,6 +2938,9 @@ static PIEMRECOMPILERSTATE iemNativeReInit(PIEMRECOMPILERSTATE pReNative, PCIEMT
 #ifdef IEMNATIVE_WITH_DELAYED_PC_UPDATING
     pReNative->Core.offPc                  = 0;
     pReNative->Core.cInstrPcUpdateSkipped  = 0;
+#endif
+#ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
+    pReNative->fSimdRaiseXcptChecksEmitted = 0;
 #endif
     pReNative->Core.bmHstRegs              = IEMNATIVE_REG_FIXED_MASK
 #if IEMNATIVE_HST_GREG_COUNT < 32
