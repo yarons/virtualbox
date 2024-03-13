@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103831 2024-03-13 14:23:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103832 2024-03-13 14:49:29Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -5059,8 +5059,10 @@ static uint8_t iemNativeSimdRegAllocFindFree(PIEMRECOMPILERSTATE pReNative, uint
         do
         {
             if (fGstRegShadows & 0x1)
+            {
                 *poff = iemNativeSimdRegFlushPendingWrite(pReNative, *poff, IEMNATIVEGSTSIMDREG_SIMD(idxGstSimdReg));
-            Assert(!IEMNATIVE_SIMD_REG_STATE_IS_DIRTY_U256(pReNative, idxGstSimdReg));
+                Assert(!IEMNATIVE_SIMD_REG_STATE_IS_DIRTY_U256(pReNative, idxGstSimdReg));
+            }
             idxGstSimdReg++;
             fGstRegShadows >>= 1;
         } while (fGstRegShadows);
