@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103821 2024-03-13 10:54:07Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103822 2024-03-13 11:32:12Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7388,6 +7388,58 @@ iemNativeEmitSimdZeroVecRegHighU128(PIEMRECOMPILERSTATE pReNative, uint32_t off,
     off = iemNativeEmitSimdZeroVecRegHighU128Ex(iemNativeInstrBufEnsure(pReNative, off, 7), off, iVecReg);
 #elif defined(RT_ARCH_ARM64)
     off = iemNativeEmitSimdZeroVecRegHighU128Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iVecReg);
+#else
+# error "port me"
+#endif
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    return off;
+}
+
+
+/**
+ * Emits a vecdst[0:255] = 0 store.
+ */
+DECL_FORCE_INLINE(uint32_t)
+iemNativeEmitSimdZeroVecRegU256Ex(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8_t iVecReg)
+{
+#ifdef RT_ARCH_AMD64
+    /* vpxor ymm, ymm, ymm */
+    if (iVecReg < 8)
+    {
+        pCodeBuf[off++] = X86_OP_VEX2;
+        pCodeBuf[off++] = X86_OP_VEX2_BYTE1_MAKE(false, iVecReg, true, X86_OP_VEX3_BYTE2_P_066H);
+    }
+    else
+    {
+        pCodeBuf[off++] = X86_OP_VEX3;
+        pCodeBuf[off++] = X86_OP_VEX3_BYTE1_X | 0x01;
+        pCodeBuf[off++] = X86_OP_VEX3_BYTE2_MAKE(false, iVecReg, true, X86_OP_VEX3_BYTE2_P_066H);
+    }
+    pCodeBuf[off++] = 0xef;
+    pCodeBuf[off++] = X86_MODRM_MAKE(X86_MOD_REG, iVecReg & 7, iVecReg & 7);
+#elif defined(RT_ARCH_ARM64)
+    /* ASSUMES that there are two adjacent 128-bit registers available for the 256-bit value. */
+    Assert(!(iVecReg & 0x1));
+    /* eor vecreg, vecreg, vecreg */
+    pCodeBuf[off++] = Armv8A64MkVecInstrEor(iVecReg,     iVecReg,     iVecReg);
+    pCodeBuf[off++] = Armv8A64MkVecInstrEor(iVecReg + 1, iVecReg + 1, iVecReg + 1);
+#else
+# error "port me"
+#endif
+    return off;
+}
+
+
+/**
+ * Emits a vecdst[0:255] = 0 store.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdZeroVecRegU256(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iVecReg)
+{
+#ifdef RT_ARCH_AMD64
+    off = iemNativeEmitSimdZeroVecRegU256Ex(iemNativeInstrBufEnsure(pReNative, off, 5), off, iVecReg);
+#elif defined(RT_ARCH_ARM64)
+    off = iemNativeEmitSimdZeroVecRegU256Ex(iemNativeInstrBufEnsure(pReNative, off, 2), off, iVecReg);
 #else
 # error "port me"
 #endif
