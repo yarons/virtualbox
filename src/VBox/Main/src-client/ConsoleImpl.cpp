@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 103293 2024-02-09 14:35:42Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 103856 2024-03-14 14:52:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -488,8 +488,10 @@ HRESULT Console::FinalConstruct()
     pIfSecKeyHlp->pConsole              = this;
     mpIfSecKeyHlp = pIfSecKeyHlp;
 
+#ifdef VBOX_WITH_USB
     mRemoteUsbIf.pvUser                   = this;
     mRemoteUsbIf.pfnQueryRemoteUsbBackend = Console::i_usbQueryRemoteUsbBackend;
+#endif
 
     return BaseFinalConstruct();
 }
@@ -11861,8 +11863,10 @@ Console::i_vmm2User_QueryGenericObject(PCVMM2USERMETHODS pThis, PUVM pUVM, PCRTU
     if (UuidCopy == COM_IIDOF(ISnapshot))
         return ((MYVMM2USERMETHODS *)pThis)->pISnapshot;
 
+#ifdef VBOX_WITH_USB
     if (UuidCopy == REMOTEUSBIF_OID)
         return &pConsole->mRemoteUsbIf;
+#endif
 
     if (UuidCopy == EMULATEDUSBIF_OID)
         return pConsole->mEmulatedUSB->i_getEmulatedUsbIf();
