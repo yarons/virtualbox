@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103839 2024-03-14 09:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 103847 2024-03-14 11:29:54Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -5973,7 +5973,7 @@ DECLCALLBACK(int)   iemTbInit(PVMCC pVM, uint32_t cInitialTbs, uint32_t cMaxTbs,
 void                iemThreadedTbObsolete(PVMCPUCC pVCpu, PIEMTB pTb, bool fSafeToFree);
 void                iemTbAllocatorProcessDelayedFrees(PVMCPUCC pVCpu, PIEMTBALLOCATOR pTbAllocator);
 void                iemTbAllocatorFreeupNativeSpace(PVMCPUCC pVCpu, uint32_t cNeededInstrs);
-DECLHIDDEN(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT;
+DECLEXPORT(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT;
 DECLHIDDEN(void)    iemThreadedDisassembleTb(PCIEMTB pTb, PCDBGFINFOHLP pHlp) RT_NOEXCEPT;
 
 
