@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103850 2024-03-14 12:38:51Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103851 2024-03-14 13:00:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -7180,6 +7180,32 @@ iemNativeEmitSimdBroadcastXregU64ZxVlmax(PIEMRECOMPILERSTATE pReNative, uint32_t
     IEMNATIVE_SIMD_REG_STATE_SET_DIRTY_HI_U128(pReNative, iXReg);
 
     /* Free but don't flush the source register. */
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+    iemNativeVarRegisterRelease(pReNative, idxSrcVar);
+
+    return off;
+}
+
+
+#define IEM_MC_BROADCAST_YREG_U16_ZX_VLMAX(a_iYRegDst, a_u16Src) \
+    off = iemNativeEmitSimdBroadcastYregU16ZxVlmax(pReNative, off, a_iYRegDst, a_u16Src)
+
+/** Emits code for IEM_MC_BROADCAST_YREG_U16_ZX_VLMAX. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdBroadcastYregU16ZxVlmax(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iYReg, uint8_t idxSrcVar)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxSrcVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxSrcVar, sizeof(uint16_t));
+
+    uint8_t const idxSimdRegDst = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(iYReg),
+                                                                          kIemNativeGstSimdRegLdStSz_256, kIemNativeGstRegUse_ForFullWrite);
+
+    uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxSrcVar, &off);
+
+    off = iemNativeEmitSimdBroadcastGprToVecRegU16(pReNative, off, idxSimdRegDst, idxVarReg, true /*f256Bit*/);
+    IEMNATIVE_SIMD_REG_STATE_SET_DIRTY_LO_U128(pReNative, iYReg);
+    IEMNATIVE_SIMD_REG_STATE_SET_DIRTY_HI_U128(pReNative, iYReg);
+
     iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
     iemNativeVarRegisterRelease(pReNative, idxSrcVar);
 
