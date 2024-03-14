@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103846 2024-03-14 11:28:41Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103848 2024-03-14 11:44:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7600,8 +7600,8 @@ iemNativeEmitSimdLoadGprFromVecRegU8(PIEMRECOMPILERSTATE pReNative, uint32_t off
     /* ASSUMES that there are two adjacent 128-bit registers available for the 256-bit value. */
     Assert(!(iVecRegSrc & 0x1));
     /* Need to access the "high" 128-bit vector register. */
-    if (iByte >= 32)
-        off = iemNativeEmitSimdLoadGprFromVecRegU8Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iGprDst, iVecRegSrc + 1, iByte - 32);
+    if (iByte >= 16)
+        off = iemNativeEmitSimdLoadGprFromVecRegU8Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iGprDst, iVecRegSrc + 1, iByte - 16);
     else
         off = iemNativeEmitSimdLoadGprFromVecRegU8Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iGprDst, iVecRegSrc, iByte);
 #else
