@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103839 2024-03-14 09:05:23Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103854 2024-03-14 13:58:58Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -656,7 +656,7 @@ typedef IEMLIVENESSENTRY const *PCIEMLIVENESSENTRY;
 
 /** Check if all status flags are going to be clobbered and doesn't need
  *  calculating in the current step.
- * @param a_pEntry  The current liveness entry. */
+ * @param a_pCurEntry  The current liveness entry. */
 # define IEMLIVENESS_STATE_ARE_STATUS_EFL_TO_BE_CLOBBERED(a_pCurEntry)  \
     ( (((a_pCurEntry)->Bit0.bm64 | (a_pCurEntry)->Bit1.bm64) & IEMLIVENESSBIT_STATUS_EFL_MASK) == 0 )
 
