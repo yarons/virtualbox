@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103835 2024-03-13 16:28:30Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103839 2024-03-14 09:05:23Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103835 $"
+__version__ = "$Revision: 103839 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3138,7 +3138,7 @@ g_dMcStmtParsers = {
     'IEM_MC_IF_FPUREG_NOT_EMPTY':                                (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_FPUREG_NOT_EMPTY_REF_R80':                        (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_GREG_BIT_SET':                                    (McBlock.parseMcGenericCond,       True,  False, False, ),
-    'IEM_MC_IF_LOCAL_IS_Z':                                      (McBlock.parseMcGenericCond,       True,  False, False, ),
+    'IEM_MC_IF_LOCAL_IS_Z':                                      (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_MXCSR_XCPT_PENDING':                              (McBlock.parseMcGenericCond,       True,  True,  g_fNativeSimd),
     'IEM_MC_IF_RCX_IS_NZ':                                       (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_RCX_IS_NOT_ONE':                                  (McBlock.parseMcGenericCond,       True,  False, True,  ),
@@ -3235,7 +3235,7 @@ g_dMcStmtParsers = {
     'IEM_MC_PUSH_U32':                                           (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_PUSH_U32_SREG':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_PUSH_U64':                                           (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_RAISE_DIVIDE_ERROR':                                 (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_RAISE_DIVIDE_ERROR':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO':                          (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED':                    (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':                   (McBlock.parseMcGeneric,           True,  True,  True,  ),
