@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 103847 2024-03-14 11:29:54Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 103852 2024-03-14 13:06:27Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -1283,7 +1283,7 @@ void iemTbAllocatorFreeupNativeSpace(PVMCPUCC pVCpu, uint32_t cNeededInstrs)
  * @param   pszBuf  The output buffer.
  * @param   cbBuf   The output buffer size.  At least 32 bytes.
  */
-DECLEXPORT(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT
+DECLHIDDEN(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT
 {
     Assert(cbBuf >= 32);
     static RTSTRTUPLE const s_aModes[] =
