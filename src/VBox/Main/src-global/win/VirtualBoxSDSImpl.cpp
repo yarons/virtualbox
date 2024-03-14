@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 98280 2023-01-24 11:58:44Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxSDSImpl.cpp 103841 2024-03-14 10:27:23Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Global COM Class implementation.
  */
@@ -609,7 +609,7 @@ STDMETHODIMP VirtualBoxSDS::LaunchVMProcess(IN_BSTR aMachine, IN_BSTR aComment, 
             else
             {
                 hrc = VBOX_E_IPRT_ERROR;
-                LogRel(("VirtualBoxSDS::LaunchVMProcess: launchVM failed: %Rhrc (%Rrc)\n", hrc));
+                LogRel(("VirtualBoxSDS::LaunchVMProcess: launchVM failed: %Rhrc (%Rrc)\n", hrc, vrc));
             }
         }
         catch (...)
