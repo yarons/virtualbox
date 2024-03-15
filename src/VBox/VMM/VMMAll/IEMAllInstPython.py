@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103853 2024-03-14 13:12:03Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103862 2024-03-15 07:23:35Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103853 $"
+__version__ = "$Revision: 103862 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3138,7 +3138,7 @@ g_dMcStmtParsers = {
     'IEM_MC_IF_FPUREG_NOT_EMPTY':                                (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_FPUREG_NOT_EMPTY_REF_R80':                        (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_GREG_BIT_SET':                                    (McBlock.parseMcGenericCond,       True,  False, False, ),
-    'IEM_MC_IF_LOCAL_IS_Z':                                      (McBlock.parseMcGenericCond,       True,  False, True,  ),
+    'IEM_MC_IF_LOCAL_IS_Z':                                      (McBlock.parseMcGenericCond,       True,  False, False, ), # @todo r=aeichner One of the instructions corrupts the TLB on arm64
     'IEM_MC_IF_MXCSR_XCPT_PENDING':                              (McBlock.parseMcGenericCond,       True,  True,  g_fNativeSimd),
     'IEM_MC_IF_RCX_IS_NZ':                                       (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_RCX_IS_NOT_ONE':                                  (McBlock.parseMcGenericCond,       True,  False, True,  ),
