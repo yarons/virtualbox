@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.cpp 103868 2024-03-15 14:38:53Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class implementation.
  */
@@ -133,16 +133,14 @@ UIGuestOSTypeManager::UIGuestOSFamilyInfo
 UIGuestOSTypeManager::getFamilies(bool fListAll,
                                   KPlatformArchitecture enmArch /* = KPlatformArchitecture_None */) const
 {
-    /* Return all families by default: */
-    if (enmArch == KPlatformArchitecture_None)
-        return m_guestOSFamilies;
-
     /* Otherwise we'll have to prepare list by arch type: */
     UIGuestOSTypeManager::UIGuestOSFamilyInfo families;
     foreach (const UIFamilyInfo &fi, m_guestOSFamilies)
     {
         const KPlatformArchitecture enmCurrentArch = fi.m_enmArch;
-        if (   (enmCurrentArch == enmArch || enmCurrentArch == KPlatformArchitecture_None)
+        if (   (   enmCurrentArch == enmArch
+                || enmCurrentArch == KPlatformArchitecture_None
+                || enmArch == KPlatformArchitecture_None)
             && (fListAll || fi.m_fSupported))
             families << fi;
     }
@@ -154,16 +152,14 @@ UIGuestOSTypeManager::getSubtypesForFamilyId(const QString &strFamilyId,
                                              bool fListAll,
                                              KPlatformArchitecture enmArch /* = KPlatformArchitecture_None */) const
 {
-    /* Return all subtypes by default: */
-    if (enmArch == KPlatformArchitecture_None)
-        return m_guestOSSubtypes.value(strFamilyId);
-
     /* Otherwise we'll have to prepare list by arch type: */
     UIGuestOSSubtypeInfo subtypes;
     foreach (const UISubtypeInfo &si, m_guestOSSubtypes.value(strFamilyId))
     {
         const KPlatformArchitecture enmCurrentArch = si.m_enmArch;
-        if (   (enmCurrentArch == enmArch || enmCurrentArch == KPlatformArchitecture_None)
+        if (   (   enmCurrentArch == enmArch
+                || enmCurrentArch == KPlatformArchitecture_None
+                || enmArch == KPlatformArchitecture_None)
             && (fListAll || si.m_fSupported))
             subtypes << si;
     }
