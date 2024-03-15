@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 103871 2024-03-15 15:58:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -116,11 +116,11 @@ void UIGuestOSTypeSelectionButton::populateMenu()
             = gpGlobalSession->guestOSTypeManager().getSubtypesForFamilyId(fi.m_strId, true);
 
         if (distributions.isEmpty())
-            createOSTypeMenu(gpGlobalSession->guestOSTypeManager().getTypesForFamilyId(fi.m_strId), pSubMenu);
+            createOSTypeMenu(gpGlobalSession->guestOSTypeManager().getTypesForFamilyId(fi.m_strId, true), pSubMenu);
         else
         {
             foreach (const UISubtypeInfo &distribution, distributions)
-                createOSTypeMenu(gpGlobalSession->guestOSTypeManager().getTypesForSubtype(distribution.m_strName),
+                createOSTypeMenu(gpGlobalSession->guestOSTypeManager().getTypesForSubtype(distribution.m_strName, true),
                                  pSubMenu->addMenu(distribution.m_strName));
         }
     }

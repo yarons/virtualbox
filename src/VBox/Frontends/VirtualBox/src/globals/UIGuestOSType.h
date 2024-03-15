@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 103870 2024-03-15 15:53:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 103871 2024-03-15 15:58:13Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -200,9 +200,11 @@ public:
                                                 KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns a list of OS types for the @p strFamilyId. */
     UIGuestOSTypeInfo getTypesForFamilyId(const QString &strFamilyId,
+                                          bool fListAll,
                                           KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns a list of OS types for the @p strSubtype. */
     UIGuestOSTypeInfo getTypesForSubtype(const QString &strSubtype,
+                                         bool fListAll,
                                          KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
 
     /** Returns whether specified @a strOSTypeId is of DOS type. */
