@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 103602 2024-02-29 02:10:17Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 103867 2024-03-15 14:09:47Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -194,6 +194,11 @@ RT_C_DECLS_BEGIN
  * see the @ref pg_bs3kit "doc page" for more.
  *
  * @{ */
+
+/** Test repetitions necessary to make sure of engaging native recompilation.
+ * @note See iemTbCacheLookup() for the actual constant. */
+#define BS3_THRESHOLD_NATIVE_RECOMPILER     18
+
 
 /** @name Execution modes.
  * @{ */
