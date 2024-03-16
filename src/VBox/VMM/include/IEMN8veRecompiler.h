@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103865 2024-03-15 11:56:15Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103874 2024-03-16 01:17:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -397,7 +397,10 @@ typedef enum
 {
     kIemNativeLabelType_Invalid = 0,
     /*
-     * Labels w/o data, only once instance per TB:
+     * Labels w/o data, only once instance per TB.
+     *
+     * Note! Jumps to these requires instructions that are capable of spanning
+     *       the max TB length.
      */
     /* Simple labels comes first for indexing reasons. RaiseXx is order by the exception's numerical value(s). */
     kIemNativeLabelType_RaiseDe,            /**< Raise (throw) X86_XCPT_DE (00h). */
@@ -420,6 +423,8 @@ typedef enum
 
     /*
      * Labels with data, potentially multiple instances per TB:
+     *
+     * These are localized labels, so no fixed jump type restrictions here.
      */
     kIemNativeLabelType_FirstWithMultipleInstances,
     kIemNativeLabelType_If = kIemNativeLabelType_FirstWithMultipleInstances,
