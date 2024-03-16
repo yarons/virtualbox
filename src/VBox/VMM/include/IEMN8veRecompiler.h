@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103874 2024-03-16 01:17:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 103876 2024-03-16 02:11:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -420,6 +420,8 @@ typedef enum
     kIemNativeLabelType_ReturnBreak,
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
+    /** The last fixup for branches that can span almost the whole TB length. */
+    kIemNativeLabelType_LastWholeTbBranch = kIemNativeLabelType_NonZeroRetOrPassUp,
 
     /*
      * Labels with data, potentially multiple instances per TB:
