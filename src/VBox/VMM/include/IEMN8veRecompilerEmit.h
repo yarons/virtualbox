@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 103877 2024-03-16 02:36:30Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 103880 2024-03-17 11:03:50Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7724,7 +7724,7 @@ iemNativeEmitSimdLoadGprFromVecRegU8(PIEMRECOMPILERSTATE pReNative, uint32_t off
     Assert(iByte <= 32);
 
 #ifdef RT_ARCH_AMD64
-    off = iemNativeEmitSimdLoadGprFromVecRegU16Ex(iemNativeInstrBufEnsure(pReNative, off, 6), off, iGprDst, iVecRegSrc, iByte);
+    off = iemNativeEmitSimdLoadGprFromVecRegU8Ex(iemNativeInstrBufEnsure(pReNative, off, 6), off, iGprDst, iVecRegSrc, iByte);
 #elif defined(RT_ARCH_ARM64)
     /* ASSUMES that there are two adjacent 128-bit registers available for the 256-bit value. */
     Assert(!(iVecRegSrc & 0x1));

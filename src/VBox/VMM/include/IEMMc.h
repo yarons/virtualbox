@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 103828 2024-03-13 14:01:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 103880 2024-03-17 11:03:50Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -474,7 +474,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_FETCH_XREG_U16(a_u16Value, a_iXReg, a_iWord) \
     do { (a_u16Value) = pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au16[(a_iWord)]; } while (0)
 #define IEM_MC_FETCH_XREG_U8( a_u8Value,  a_iXReg, a_iByte) \
-    do { (a_u8Value)  = pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au16[(a_iByte)]; } while (0)
+    do { (a_u8Value)  = pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg)].au8[(a_iByte)]; } while (0)
 #define IEM_MC_FETCH_XREG_PAIR_U128(a_Dst, a_iXReg1, a_iXReg2) \
     do { (a_Dst).uSrc1.au64[0] = pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg1)].au64[0]; \
          (a_Dst).uSrc1.au64[1] = pVCpu->cpum.GstCtx.XState.x87.aXMM[(a_iXReg1)].au64[1]; \
