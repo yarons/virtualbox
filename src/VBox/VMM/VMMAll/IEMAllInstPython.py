@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103894 2024-03-18 13:48:31Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103898 2024-03-18 15:31:00Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103894 $"
+__version__ = "$Revision: 103898 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -404,6 +404,9 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]         opcodesub      ),
     'VEX_MR':       ( 'VEX.ModR/M', [ 'rm', 'reg' ],         '',            ),
     'VEX_MR_REG':   ( 'VEX.ModR/M', [ 'rm', 'reg' ],         '11 mr/reg',   ),
     'VEX_MR_MEM':   ( 'VEX.ModR/M', [ 'rm', 'reg' ],         '!11 mr/reg',  ),
+    'VEX_MRI':      ( 'VEX.ModR/M', [ 'rm', 'reg', 'imm' ],  '',            ),
+    'VEX_MRI_REG':  ( 'VEX.ModR/M', [ 'rm', 'reg', 'imm' ],  '11 mr/reg',   ),
+    'VEX_MRI_MEM':  ( 'VEX.ModR/M', [ 'rm', 'reg', 'imm' ],  '!11 mr/reg',  ),
     'VEX_M':        ( 'VEX.ModR/M', [ 'rm', ],               '' ),
     'VEX_M_REG':    ( 'VEX.ModR/M', [ 'rm', ],               '' ),
     'VEX_M_MEM':    ( 'VEX.ModR/M', [ 'rm', ],               '' ),
