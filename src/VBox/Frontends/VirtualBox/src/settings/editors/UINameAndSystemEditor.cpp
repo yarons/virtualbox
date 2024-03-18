@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103871 2024-03-15 15:58:13Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 103893 2024-03-18 12:48:07Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -342,8 +342,8 @@ void UINameAndSystemEditor::sltDistributionChanged(const QString &strDistributio
     /* If distribution list is empty, all the types of the family are added to type combo: */
     const UIGuestOSTypeManager::UIGuestOSTypeInfo types
          = m_strDistribution.isEmpty()
-         ? gpGlobalSession->guestOSTypeManager().getTypesForFamilyId(m_strFamilyId, false, enmArch)
-         : gpGlobalSession->guestOSTypeManager().getTypesForSubtype(m_strDistribution, false, enmArch);
+         ? gpGlobalSession->guestOSTypeManager().getTypesForFamilyId(m_strFamilyId, false /* including restricted? */, enmArch)
+         : gpGlobalSession->guestOSTypeManager().getTypesForSubtype(m_strDistribution, false /* including restricted? */, enmArch);
 
     /* Save the most recently used item: */
     m_familyToDistribution[m_strFamilyId] = m_strDistribution;
@@ -617,7 +617,7 @@ void UINameAndSystemEditor::populateFamilyCombo()
 
     /* Acquire family IDs: */
     const UIGuestOSTypeManager::UIGuestOSFamilyInfo families
-        = gpGlobalSession->guestOSTypeManager().getFamilies(false, enmArch);
+        = gpGlobalSession->guestOSTypeManager().getFamilies(false /* including restricted? */, enmArch);
 
     /* Block signals initially and clear the combo: */
     m_pComboFamily->blockSignals(true);
@@ -653,7 +653,7 @@ void UINameAndSystemEditor::populateDistributionCombo()
 
     /* Acquire a list of suitable sub-types: */
     const UIGuestOSTypeManager::UIGuestOSSubtypeInfo distributions
-        = gpGlobalSession->guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, false, enmArch);
+        = gpGlobalSession->guestOSTypeManager().getSubtypesForFamilyId(m_strFamilyId, false /* including restricted? */, enmArch);
     m_pLabelDistribution->setEnabled(!distributions.isEmpty());
     m_pComboDistribution->setEnabled(!distributions.isEmpty());
 
