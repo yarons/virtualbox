@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103899 2024-03-18 15:57:16Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103900 2024-03-18 16:08:54Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103899 $"
+__version__ = "$Revision: 103900 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -327,6 +327,7 @@ g_kdOpTypes = {
 
     # VEX.vvvv
     'By':           ( 'IDX_UseModRM',       'vvvv',   '%By',  'By',      'V',     ),
+    'Hdq':          ( 'IDX_UseModRM',       'vvvv',   '%Hdq', 'Hdq',     'V',     ),
     'Hps':          ( 'IDX_UseModRM',       'vvvv',   '%Hps', 'Hps',     'V',     ),
     'Hpd':          ( 'IDX_UseModRM',       'vvvv',   '%Hpd', 'Hpd',     'V',     ),
     'HssHi':        ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HssHi',   'V',     ),
@@ -596,6 +597,7 @@ g_kdHints = {
     'ignores_rexw':          '',                                        ##< Ignores REX.W.
     'ignores_op_sizes':      '',                                        ##< Shorthand for "ignores_oz_pfx | ignores_op_sizes".
     'vex_l_zero':            '',                                        ##< VEX.L must be 0.
+    'vex_l_one':             '',                                        ##< VEX.L must be 1.
     'vex_l_ignored':         '',                                        ##< VEX.L is ignored.
     'vex_v_zero':            '',                                        ##< VEX.V must be 0. (generate sub-table?)
     'lock_allowed':          '',                                        ##< Lock prefix allowed.
