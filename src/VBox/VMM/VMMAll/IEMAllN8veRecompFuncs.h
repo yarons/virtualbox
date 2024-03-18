@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103881 2024-03-18 08:45:06Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103891 2024-03-18 11:55:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -4790,7 +4790,7 @@ iemNativeEmitMemFetchStoreDataCommon(PIEMRECOMPILERSTATE pReNative, uint32_t off
     uint8_t  const idxRegValueStore  =    !TlbState.fSkip
                                        && enmOp == kIemNativeEmitMemOp_Store
                                        && pVarValue->enmKind != kIemNativeVarKind_Immediate
-                                     ? iemNativeVarRegisterAcquire(pReNative, idxVarValue, &off)
+                                     ? iemNativeVarRegisterAcquire(pReNative, idxVarValue, &off, true /*fInitialized*/)
                                      : UINT8_MAX;
     uint32_t const idxRegMemResult   = !TlbState.fSkip ? iemNativeRegAllocTmp(pReNative, &off) : UINT8_MAX;
     uint32_t const idxLabelTlbLookup = !TlbState.fSkip
