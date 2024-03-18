@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VSCSILunSbc.cpp 103882 2024-03-18 09:38:17Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -357,6 +357,7 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                                         |  (pVScsiReq->pbCDB[2] <<  8)
                                         | ((pVScsiReq->pbCDB[1] & 0x1f) << 16));
             cSectorTransfer = pVScsiReq->pbCDB[4];
+            cSectorTransfer = cSectorTransfer ? cSectorTransfer : 256;  /* Zero blocks means 256 */
             break;
         }
         case SCSI_READ_10:
@@ -387,6 +388,7 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                                         | (pVScsiReq->pbCDB[2] <<  8)
                                         | ((pVScsiReq->pbCDB[1] & 0x1f) << 16));
             cSectorTransfer = pVScsiReq->pbCDB[4];
+            cSectorTransfer = cSectorTransfer ? cSectorTransfer : 256;  /* Zero blocks means 256 */
             break;
         }
         case SCSI_WRITE_10:

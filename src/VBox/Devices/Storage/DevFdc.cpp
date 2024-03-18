@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 103291 2024-02-09 13:23:50Z alexander.eichner@oracle.com $ */
+/* $Id: DevFdc.cpp 103882 2024-03-18 09:38:17Z michal.necasek@oracle.com $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -790,7 +790,8 @@ static void fdctrl_write (fdctrl_t *fdctrl, uint32_t reg, uint32_t value)
         fdctrl_write_tape(fdctrl, value);
         break;
     case FD_REG_DSR:
-        fdctrl_write_rate(fdctrl, value);
+        fdctrl_write_data(fdctrl, value);
+//        fdctrl_write_rate(fdctrl, value);
         break;
     case FD_REG_FIFO:
         fdctrl_write_data(fdctrl, value);
@@ -1044,7 +1045,7 @@ static void fdctrl_write_rate(fdctrl_t *fdctrl, uint32_t value)
     /* Reset: autoclear */
     if (value & FD_DSR_SWRESET) {
         fdctrl->dor &= ~FD_DOR_nRESET;
-        fdctrl_reset(fdctrl, 1);
+//        fdctrl_reset(fdctrl, 1);
         fdctrl->dor |= FD_DOR_nRESET;
     }
     if (value & FD_DSR_PWRDOWN) {

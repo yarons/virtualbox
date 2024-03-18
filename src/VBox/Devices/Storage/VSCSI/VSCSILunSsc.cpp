@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSsc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VSCSILunSsc.cpp 103882 2024-03-18 09:38:17Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual SCSI driver: SSC LUN implementation (Streaming tape)
  */
@@ -217,6 +217,7 @@ static int vscsiLUNSSCReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
                                          | (pVScsiReq->pbCDB[3] <<  8)
                                          | (pVScsiReq->pbCDB[2] << 16));
             cBlocksTransfer = pVScsiReq->pbCDB[4];
+            cSectorTransfer = cSectorTransfer ? cSectorTransfer : 256;  /* Zero blocks means 256 */
             uTransferStart  = pVScsiLUNSSC->uCurPos;
             pVScsiLUNSSC->uCurPos += cbTransfer;
             break;
@@ -228,6 +229,7 @@ static int vscsiLUNSSCReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
                                          | (pVScsiReq->pbCDB[3] <<  8)
                                          | (pVScsiReq->pbCDB[2] << 16));
             cBlocksTransfer = pVScsiReq->pbCDB[4];
+            cSectorTransfer = cSectorTransfer ? cSectorTransfer : 256;  /* Zero blocks means 256 */
             uTransferStart  = pVScsiLUNSSC->uCurPos;
             pVScsiLUNSSC->uCurPos += cbTransfer;
             break;
