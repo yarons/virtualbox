@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103891 2024-03-18 11:55:23Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103894 2024-03-18 13:48:31Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -7502,6 +7502,58 @@ iemNativeEmitSimdClearXregU32Mask(PIEMRECOMPILERSTATE pReNative, uint32_t off, u
 
     /* Free but don't flush the destination register. */
     iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+
+    return off;
+}
+
+
+#define IEM_MC_FETCH_YREG_U256(a_u256Dst, a_iYRegSrc) \
+    off = iemNativeEmitSimdFetchYregU256(pReNative, off, a_u256Dst, a_iYRegSrc)
+
+
+/** Emits code for IEM_MC_FETCH_YREG_U256. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdFetchYregU256(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxDstVar, uint8_t iYRegSrc)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxDstVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxDstVar, sizeof(RTUINT256U));
+
+    uint8_t const idxSimdRegSrc = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(iYRegSrc),
+                                                                          kIemNativeGstSimdRegLdStSz_256, kIemNativeGstRegUse_ReadOnly);
+    uint8_t const idxVarReg = iemNativeVarSimdRegisterAcquire(pReNative, idxDstVar, &off);
+
+    off = iemNativeEmitSimdLoadVecRegFromVecRegU256(pReNative, off, idxVarReg, idxSimdRegSrc);
+
+    /* Free but don't flush the source register. */
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegSrc);
+    iemNativeVarSimdRegisterRelease(pReNative, idxDstVar);
+
+    return off;
+}
+
+
+#define IEM_MC_STORE_YREG_U256_ZX_VLMAX(a_iYRegDst, a_u256Src) \
+    off = iemNativeEmitSimdStoreYregU256ZxVlmax(pReNative, off, a_iYRegDst, a_u256Src)
+
+
+/** Emits code for IEM_MC_STORE_YREG_U256_ZX_VLMAX. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdStoreYregU256ZxVlmax(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iYRegDst, uint8_t idxSrcVar)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxSrcVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxSrcVar, sizeof(RTUINT256U));
+
+    uint8_t const idxSimdRegDst = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(iYRegDst),
+                                                                          kIemNativeGstSimdRegLdStSz_256, kIemNativeGstRegUse_ForFullWrite);
+    uint8_t const idxVarRegSrc  = iemNativeVarSimdRegisterAcquire(pReNative, idxSrcVar, &off, true /*fInitalized*/);
+
+    off = iemNativeEmitSimdLoadVecRegFromVecRegU256(pReNative, off, idxSimdRegDst, idxVarRegSrc);
+    IEMNATIVE_SIMD_REG_STATE_SET_DIRTY_LO_U128(pReNative, iYRegDst);
+    IEMNATIVE_SIMD_REG_STATE_SET_DIRTY_HI_U128(pReNative, iYRegDst);
+
+    /* Free but don't flush the source register. */
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+    iemNativeVarSimdRegisterRelease(pReNative, idxSrcVar);
 
     return off;
 }
