@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103852 2024-03-14 13:06:27Z bela.lubkin@oracle.com $ */
+/* $Id: IEMInternal.h 103888 2024-03-18 11:36:21Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1853,7 +1853,9 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeRegFindFreeLivenessHelped;
 
     /** Native recompiler: Number of times status flags calc has been skipped. */
-    STAMCOUNTER             StatNativeEflArithmeticSkipped;
+    STAMCOUNTER             StatNativeEflSkippedArithmetic;
+    /** Native recompiler: Number of times status flags calc has been skipped. */
+    STAMCOUNTER             StatNativeEflSkippedLogical;
 
     /** Native recompiler: Number of opportunities to skip EFLAGS.CF updating. */
     STAMCOUNTER             StatNativeLivenessEflCfSkippable;
@@ -1913,7 +1915,7 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeMaybeAvxXcptCheckOmitted;
 #endif
 
-    uint64_t                au64Padding[3];
+    uint64_t                au64Padding[2];
     /** @} */
 
     /** Data TLB.
