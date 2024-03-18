@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VSCSIDevice.cpp 103902 2024-03-18 17:11:22Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -59,13 +59,15 @@ DECLINLINE(bool) vscsiDeviceLunIsPresent(PVSCSIDEVICEINT pVScsiDevice, uint32_t 
  *
  * @returns Flag whether we could handle the request.
  * @param   pVScsiDevice    The virtual SCSI device instance.
- * @param   pVScsiReq       The SCSi request.
+ * @param   pVScsiReq       The SCSI request.
  * @param   prcReq          The final return value if the request was handled.
  */
 static bool vscsiDeviceReqProcess(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVScsiReq,
                                   int *prcReq)
 {
     bool fProcessed = true;
+
+    LogFlowFunc(("CDB: %.*Rhxs Cmd: %s\n", pVScsiReq->cbCDB, pVScsiReq->pbCDB, SCSICmdText(pVScsiReq->pbCDB[0])));
 
     switch (pVScsiReq->pbCDB[0])
     {

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103405 2024-02-17 02:05:12Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 103902 2024-03-18 17:11:22Z michal.necasek@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -107,6 +107,7 @@ if !defined(VBOX_ONLY_EXTPACKS)
  	Storage/VSCSI/VSCSISense.cpp \
  	Storage/VSCSI/VSCSIIoReq.cpp \
  	Storage/VSCSI/VSCSIVpdPagePool.cpp \
+ 	Storage/Debug.cpp \
  	build/VBoxDDUDeps.cpp
 
  ifdef VBOX_WITH_VSCSI_SSC
