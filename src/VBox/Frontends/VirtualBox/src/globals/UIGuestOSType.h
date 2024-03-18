@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSType.h 103893 2024-03-18 12:48:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSType.h 103906 2024-03-18 18:37:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSType class declaration.
  */
@@ -190,21 +190,31 @@ public:
     void reCacheGuestOSTypes();
 
     /** Returns a list of all families.
-      * @param  fListAll  Brings whether a list of all families is requested, supported otherwise. */
+      * @param  fListAll    Brings whether a list of all families is requested, supported otherwise.
+      * @param  exceptions  Brings the list of families to be included even if they are restricted. */
     UIGuestOSFamilyInfo getFamilies(bool fListAll = true,
+                                    const QStringList &exceptions = QStringList(),
                                     KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
     /** Returns the list of subtypes for @p strFamilyId. This may be an empty list.
-      * @param  fListAll  Brings whether a list of all subtypes is requested, supported otherwise. */
+      * @param  fListAll    Brings whether a list of all subtypes is requested, supported otherwise.
+      * @param  exceptions  Brings the list of subtypes to be included even if they are restricted. */
     UIGuestOSSubtypeInfo getSubtypesForFamilyId(const QString &strFamilyId,
                                                 bool fListAll = true,
+                                                const QStringList &exceptions = QStringList(),
                                                 KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
-    /** Returns a list of OS types for the @p strFamilyId. */
+    /** Returns a list of OS types for the @p strFamilyId.
+      * @param  fListAll    Brings whether a list of all types is requested, supported otherwise.
+      * @param  exceptions  Brings the list of types to be included even if they are restricted. */
     UIGuestOSTypeInfo getTypesForFamilyId(const QString &strFamilyId,
                                           bool fListAll = true,
+                                          const QStringList &exceptions = QStringList(),
                                           KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
-    /** Returns a list of OS types for the @p strSubtype. */
+    /** Returns a list of OS types for the @p strSubtype.
+      * @param  fListAll    Brings whether a list of all types is requested, supported otherwise.
+      * @param  exceptions  Brings the list of types to be included even if they are restricted. */
     UIGuestOSTypeInfo getTypesForSubtype(const QString &strSubtype,
                                          bool fListAll = true,
+                                         const QStringList &exceptions = QStringList(),
                                          KPlatformArchitecture enmArch = KPlatformArchitecture_None) const;
 
     /** Returns whether specified @a strOSTypeId is of DOS type. */
