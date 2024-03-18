@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103894 2024-03-18 13:48:31Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103895 2024-03-18 13:55:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -7445,7 +7445,7 @@ DECL_HIDDEN_THROW(uint8_t) iemNativeVarSimdRegisterAcquire(PIEMRECOMPILERSTATE p
      * calls causing less optimal code to be generated in the python script. */
 
     uint8_t const uArgNo = pVar->uArgNo;
-    Assert(uArgNo == UINT8_MAX); /* No SIMD registers as arguments for now. */
+    Assert(uArgNo == UINT8_MAX); RT_NOREF(uArgNo); /* No SIMD registers as arguments for now. */
 
     /* SIMD is bit simpler for now because there is no support for arguments. */
     if (   idxRegPref >= RT_ELEMENTS(pReNative->Core.aHstSimdRegs)
