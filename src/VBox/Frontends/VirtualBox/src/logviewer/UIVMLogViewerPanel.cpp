@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 102727 2023-12-29 14:48:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerPanel.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -39,7 +39,7 @@
 #include "UIVMLogViewerFilterWidget.h"
 #include "UIVMLogViewerBookmarksWidget.h"
 #include "UIVMLogViewerPreferencesWidget.h"
-
+#include "UITranslationEventListener.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
@@ -103,7 +103,9 @@ void UIVMLogViewerPaneContainer::prepare()
     connect(m_pPreferencesWidget, &UIVMLogViewerPreferencesWidget::sigResetToDefaults,
             this, &UIVMLogViewerPaneContainer::sigResetToDefaults);
 
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVMLogViewerPaneContainer::sltRetranslateUI);
 }
 
 void UIVMLogViewerPaneContainer::refreshSearch()
@@ -162,7 +164,7 @@ void UIVMLogViewerPaneContainer::setFontSizeInPoints(int fontSizeInPoints)
         m_pPreferencesWidget->setFontSizeInPoints(fontSizeInPoints);
 }
 
-void UIVMLogViewerPaneContainer::retranslateUi()
+void UIVMLogViewerPaneContainer::sltRetranslateUI()
 {
     setTabText(Page_Search, UIVMLogViewerWidget::tr("Find"));
     setTabText(Page_Filter, UIVMLogViewerWidget::tr("Filter"));
@@ -185,12 +187,8 @@ bool UIVMLogViewerPaneContainer::eventFilter(QObject *pObject, QEvent *pEvent)
 *********************************************************************************************************************************/
 
 UIVMLogViewerPane::UIVMLogViewerPane(QWidget *pParent, UIVMLogViewerWidget *pViewer)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_pViewer(pViewer)
-{
-}
-
-void UIVMLogViewerPane::retranslateUi()
 {
 }
 

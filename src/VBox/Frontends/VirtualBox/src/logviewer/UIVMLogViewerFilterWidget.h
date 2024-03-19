@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterWidget.h 100963 2023-08-23 19:03:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerFilterWidget.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -76,7 +76,6 @@ protected:
     virtual void prepareWidgets() RT_OVERRIDE;
     virtual void prepareConnections() RT_OVERRIDE;
 
-    void retranslateUi() RT_OVERRIDE;
     /** Handles Qt @a pEvent, used for keyboard processing. */
     bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
     void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
@@ -91,6 +90,7 @@ private slots:
     /** Executes the necessary code to handle filter's boolean operator change ('And', 'Or'). */
     void sltOperatorButtonChanged(QAbstractButton *pButton);
     void sltRemoveFilterTerm(const QString &termString);
+    void sltRetranslateUI();
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -40,6 +40,8 @@
 #include "UIIconPool.h"
 #include "UILoggingDefs.h"
 #include "UIShortcutPool.h"
+#include "UITranslationEventListener.h"
+#include "UIVMLogViewerDialog.h"
 #include "UIVMLogViewerDialog.h"
 #include "UIVMLogViewerWidget.h"
 #ifdef VBOX_WS_MAC
@@ -73,12 +75,14 @@ void UIVMLogViewerDialogFactory::create(QIManagerDialog *&pDialog, QWidget *pCen
 UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *pActionPool,
                                          const QList<QUuid> &machineIDs /* = QList<QUuid>() */,
                                          const QString &strMachineName /* = QString() */)
-    : QIWithRetranslateUI<QIManagerDialog>(pCenterWidget)
+    : QIManagerDialog(pCenterWidget)
     , m_pActionPool(pActionPool)
     , m_machineIDs(machineIDs)
     , m_iGeometrySaveTimerId(-1)
     , m_strMachineName(strMachineName)
 {
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVMLogViewerDialog::sltRetranslateUI);
 }
 
 UIVMLogViewerDialog::~UIVMLogViewerDialog()
@@ -93,7 +97,7 @@ void UIVMLogViewerDialog::setSelectedVMListItems(const QList<UIVirtualMachineIte
         pLogViewerWidget->setSelectedVMListItems(items);
 }
 
-void UIVMLogViewerDialog::retranslateUi()
+void UIVMLogViewerDialog::sltRetranslateUI()
 {
     /* Translate window title: */
     if (!m_strMachineName.isEmpty())
@@ -141,7 +145,7 @@ bool UIVMLogViewerDialog::event(QEvent *pEvent)
         default:
             break;
     }
-    return QIWithRetranslateUI<QIManagerDialog>::event(pEvent);
+    return QIManagerDialog::event(pEvent);
 }
 
 void UIVMLogViewerDialog::configure()
@@ -186,7 +190,7 @@ void UIVMLogViewerDialog::configureButtonBox()
 void UIVMLogViewerDialog::finalize()
 {
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
     loadDialogGeometry();
 }
 

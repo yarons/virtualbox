@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 103478 2024-02-20 15:01:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -42,7 +42,7 @@
 *********************************************************************************************************************************/
 
 UIVMLogTab::UIVMLogTab(QWidget *pParent, const QUuid &uMachineId, const QString &strMachineName)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_uMachineId(uMachineId)
     , m_strMachineName(strMachineName)
 {
@@ -99,7 +99,6 @@ int UIVMLogPage::defaultLogPageWidth() const
 void UIVMLogPage::prepare()
 {
     prepareWidgets();
-    retranslateUi();
 }
 
 void UIVMLogPage::prepareWidgets()
@@ -126,10 +125,6 @@ QTextDocument* UIVMLogPage::document()
     if (!m_pTextEdit)
         return 0;
     return m_pTextEdit->document();
-}
-
-void UIVMLogPage::retranslateUi()
-{
 }
 
 void UIVMLogPage::cleanup()

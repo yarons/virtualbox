@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchWidget.h 101092 2023-09-12 12:54:09Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerSearchWidget.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -75,7 +75,6 @@ protected:
 
     virtual void prepareWidgets() RT_OVERRIDE;
     virtual void prepareConnections() RT_OVERRIDE;
-    virtual void retranslateUi() RT_OVERRIDE;
     /** Handles Qt key-press @a pEevent. */
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
@@ -90,6 +89,7 @@ private slots:
     void sltCaseSentitiveCheckBox();
     void sltMatchWholeWordCheckBox();
     void sltSelectNextPreviousMatch();
+    void sltRetranslateUI();
 
 private:
 

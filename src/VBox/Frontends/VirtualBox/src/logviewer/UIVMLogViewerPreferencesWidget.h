@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPreferencesWidget.h 102727 2023-12-29 14:48:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -70,12 +70,11 @@ protected:
     virtual void prepareWidgets();
     virtual void prepareConnections();
 
-    /** Handles the translation event. */
-    void retranslateUi();
-
 private slots:
 
     void sltOpenFontDialog();
+    /** Handles the translation event. */
+    void sltRetranslateUI();
 
 private:
 

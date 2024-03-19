@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPaneContainer.h 101020 2023-09-05 12:10:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPaneContainer.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -38,7 +38,6 @@
 /* GUI includes: */
 #include "UIPaneContainer.h"
 #include "UIGuestControlDefs.h"
-#include "QIWithRetranslateUI.h"
 
 #include "CProgress.h"
 
@@ -79,10 +78,8 @@ public:
         Page_Max
     };
 
-
 protected:
 
-    virtual void retranslateUi() final override;
     virtual void contextMenuEvent(QContextMenuEvent *pEvent) final override;
 
 private slots:
@@ -104,6 +101,7 @@ private slots:
         void sltHandleWidgetFocusOut(QWidget *pWidget);
         void sltScrollToBottom(int iMin, int iMax);
     /** @} */
+    void sltRetranslateUI();
 
 private:
 

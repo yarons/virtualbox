@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksWidget.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerBookmarksWidget.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QStyle>
@@ -36,6 +37,7 @@
 /* GUI includes: */
 #include "QIToolButton.h"
 #include "UIIconPool.h"
+#include "UITranslationEventListener.h"
 #include "UIVMLogViewerBookmarksWidget.h"
 #include "UIVMLogViewerWidget.h"
 
@@ -54,7 +56,9 @@ UIVMLogViewerBookmarksWidget::UIVMLogViewerBookmarksWidget(QWidget *pParent, UIV
 {
     prepareWidgets();
     prepareConnections();
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVMLogViewerBookmarksWidget::sltRetranslateUI);
 }
 
 void UIVMLogViewerBookmarksWidget::updateBookmarkList(const QVector<UIVMLogBookmark>& bookmarkList)
@@ -194,10 +198,8 @@ void UIVMLogViewerBookmarksWidget::prepareConnections()
 }
 
 
-void UIVMLogViewerBookmarksWidget::retranslateUi()
+void UIVMLogViewerBookmarksWidget::sltRetranslateUI()
 {
-    UIVMLogViewerPane::retranslateUi();
-
     m_pDeleteCurrentButton->setToolTip(UIVMLogViewerWidget::tr("Delete the current bookmark"));
     m_pDeleteAllButton->setToolTip(UIVMLogViewerWidget::tr("Delete all bookmarks"));
     m_pNextButton->setToolTip(UIVMLogViewerWidget::tr("Go to the next bookmark"));

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 102732 2023-12-29 16:35:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMLogViewerDialog.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -72,7 +71,7 @@ protected:
 
 
 /** QIManagerDialog extension providing GUI with the dialog displaying machine logs. */
-class SHARED_LIBRARY_STUFF UIVMLogViewerDialog : public QIWithRetranslateUI<QIManagerDialog>
+class SHARED_LIBRARY_STUFF UIVMLogViewerDialog : public QIManagerDialog
 {
     Q_OBJECT;
 
@@ -93,7 +92,6 @@ protected:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
         virtual bool event(QEvent *pEvent) RT_OVERRIDE;
     /** @} */
 
@@ -127,6 +125,7 @@ private slots:
 
     /** Handles button-box button click. */
     void sltHandleButtonBoxClick(QAbstractButton *pButton);
+    void sltRetranslateUI();
 
 private:
 

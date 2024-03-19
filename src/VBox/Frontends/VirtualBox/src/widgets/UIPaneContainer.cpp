@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.cpp 102730 2023-12-29 16:08:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIPaneContainer.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -39,6 +39,7 @@
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
 #include "UIPaneContainer.h"
+#include "UITranslationEventListener.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
@@ -47,17 +48,19 @@
 #include <iprt/assert.h>
 
 UIPaneContainer::UIPaneContainer(QWidget *pParent, EmbedTo enmEmbedTo /* = EmbedTo_Stack */, bool fDetachAllowed /* = false */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_enmEmbedTo(enmEmbedTo)
     , m_fDetachAllowed(fDetachAllowed)
     , m_pTabWidget(0)
     , m_pButtonBox(0)
 {
     prepare();
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIPaneContainer::sltRetranslateUI);
 }
 
-void UIPaneContainer::retranslateUi()
+void UIPaneContainer::sltRetranslateUI()
 {
     if (m_pButtonBox)
     {
