@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 103914 2024-03-19 12:08:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -78,6 +78,7 @@
 #include "UIShortcutPool.h"
 #include "UIThreadPool.h"
 #include "UITranslator.h"
+#include "UITranslationEventListener.h"
 #include "UIVersion.h"
 #include "UIVirtualBoxClientEventHandler.h"
 #include "UIVirtualBoxEventHandler.h"
@@ -222,6 +223,7 @@ UICommon::UICommon(UIType enmType)
     , m_pThreadPool(0)
     , m_pThreadPoolCloud(0)
     , m_pMediumEnumerator(0)
+    , m_pTranlationEventListener(0)
 {
     /* Assign instance: */
     s_pInstance = this;
@@ -302,6 +304,8 @@ void UICommon::prepare()
         UITranslator::loadLanguage(strLanguageId);
 
     retranslateUi();
+
+    m_pTranlationEventListener = new UITranslationEventListener(this);
 
     connect(gEDataManager, &UIExtraDataManager::sigLanguageChange,
             this, &UICommon::sltGUILanguageChange);
