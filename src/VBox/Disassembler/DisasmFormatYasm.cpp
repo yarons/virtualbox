@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 103511 2024-02-22 01:16:10Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmFormatYasm.cpp 103928 2024-03-19 21:27:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -737,6 +737,8 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                             if (VEXREG_IS256B(pDis->x86.bVexDestReg)) PUT_SZ("dword "); \
                             else PUT_SZ("word "); \
                         } \
+                        else if (pOp->uOpcode == OP_MOVZX || pOp->uOpcode == OP_MOVSX) \
+                            PUT_SZ("word "); \
                         break; \
                     case OP_PARM_d: \
                         if (   OP_PARM_VTYPE(pParam->x86.fParam) == OP_PARM_W \
@@ -753,7 +755,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                             if (VEXREG_IS256B(pDis->x86.bVexDestReg)) PUT_SZ("oword "); \
                             else PUT_SZ("qword "); \
                         } \
-                       break; \
+                        break; \
                     case OP_PARM_ps: \
                     case OP_PARM_pd: \
                     case OP_PARM_x: if (VEXREG_IS256B(pDis->x86.bVexDestReg)) { PUT_SZ("yword "); break; } RT_FALL_THRU(); \
