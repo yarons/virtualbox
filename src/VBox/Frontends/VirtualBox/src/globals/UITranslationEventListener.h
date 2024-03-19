@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.h 103918 2024-03-19 13:44:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UITranslationEventListener.h 103920 2024-03-19 14:40:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class declaration.
  */
@@ -42,7 +42,7 @@ class SHARED_LIBRARY_STUFF UITranslationEventListener : public QObject
 
 signals:
 
-    void sigRetranslate();
+    void sigRetranslateUI();
 
 public:
 
@@ -58,6 +58,7 @@ protected:
 private:
 
     UITranslationEventListener(QObject *pParent = 0);
+    ~UITranslationEventListener();
 
     static UITranslationEventListener *s_pInstance;
     /** Returns the singleton instance. */
