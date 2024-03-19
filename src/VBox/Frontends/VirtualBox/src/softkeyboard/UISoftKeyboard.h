@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 103869 2024-03-15 14:44:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.h 103915 2024-03-19 12:34:07Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIWithRestorableGeometry.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -53,9 +52,8 @@ class QStackedWidget;
 
 /* Type definitions: */
 typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
-typedef QIWithRetranslateUI<QMainWindowWithRestorableGeometry> QMainWindowWithRestorableGeometryAndRetranslateUi;
 
-class UISoftKeyboard : public QMainWindowWithRestorableGeometryAndRetranslateUi
+class UISoftKeyboard : public QMainWindowWithRestorableGeometry
 {
     Q_OBJECT;
 
@@ -70,7 +68,6 @@ public:
 
 protected:
 
-    virtual void retranslateUi() RT_OVERRIDE;
     virtual bool shouldBeMaximized() const RT_OVERRIDE;
     virtual void closeEvent(QCloseEvent *event) RT_OVERRIDE;
     bool event(QEvent *pEvent) RT_OVERRIDE;
