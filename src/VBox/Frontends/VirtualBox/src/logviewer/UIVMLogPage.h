@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.h 103925 2024-03-19 20:01:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* Qt includes: */
+#include <QSet>
 #include <QWidget>
 #include <QUuid>
 
