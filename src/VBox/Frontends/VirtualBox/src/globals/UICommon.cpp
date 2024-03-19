@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103914 2024-03-19 12:08:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 103918 2024-03-19 13:44:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -305,7 +305,8 @@ void UICommon::prepare()
 
     retranslateUi();
 
-    m_pTranlationEventListener = new UITranslationEventListener(this);
+    /* Create translation event listener instance: */
+    UITranslationEventListener::create();
 
     connect(gEDataManager, &UIExtraDataManager::sigLanguageChange,
             this, &UICommon::sltGUILanguageChange);
@@ -841,6 +842,9 @@ void UICommon::cleanup()
 
     /* Destroy desktop-widget watchdog: */
     UIDesktopWidgetWatchdog::destroy();
+
+    /* Destroy translation event listener instance: */
+    UITranslationEventListener::destroy();
 
     m_fValid = false;
 

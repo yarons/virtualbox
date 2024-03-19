@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.h 103914 2024-03-19 12:08:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UITranslationEventListener.h 103918 2024-03-19 13:44:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class declaration.
  */
@@ -46,11 +46,27 @@ signals:
 
 public:
 
-    UITranslationEventListener(QObject *pParent = 0);
+    /** Creates message-center singleton. */
+    static void create();
+    /** Destroys message-center singleton. */
+    static void destroy();
 
 protected:
 
     bool eventFilter(QObject *pObject, QEvent *pEvent) override final;
+
+private:
+
+    UITranslationEventListener(QObject *pParent = 0);
+
+    static UITranslationEventListener *s_pInstance;
+    /** Returns the singleton instance. */
+    static UITranslationEventListener *instance();
+    /** Allows for shortcut access. */
+    friend UITranslationEventListener &translationEventListener();
+
 };
+
+inline UITranslationEventListener &translationEventListener() { return *UITranslationEventListener::instance(); }
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UITranslationEventListener_h */
