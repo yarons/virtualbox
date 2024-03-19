@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103911 2024-03-19 09:28:05Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 103912 2024-03-19 11:19:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6226,7 +6226,7 @@ iemNativeEmitGuestSimdRegValueCheck(PIEMRECOMPILERSTATE pReNative, uint32_t off,
     {
         uint32_t * const pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 5);
         /* eor vectmp0 + 1, vectmp0 + 1, idxSimdReg */
-        pu32CodeBuf[off++] = Armv8A64MkVecInstrEor(IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1, IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1, idxSimdReg);
+        pu32CodeBuf[off++] = Armv8A64MkVecInstrEor(IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1, IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1, idxSimdReg + 1);
         /* cnt vectmp0 + 1, vectmp0 + 1, #0*/
         pu32CodeBuf[off++] = Armv8A64MkVecInstrCnt(IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1, IEMNATIVE_SIMD_REG_FIXED_TMP0 + 1);
         /* umov tmp0, (vectmp0 + 1).D[0] */
