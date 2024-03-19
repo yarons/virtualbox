@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 103921 2024-03-19 15:38:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 103922 2024-03-19 16:10:02Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4980,6 +4980,16 @@ AssertCompile(IEM_OP_PRF_REX_X == RT_BIT_32(26));
  */
 #define IEM_GET_EFFECTIVE_VVVV(a_pVCpu) \
     (IEM_IS_64BIT_CODE(a_pVCpu) ? (a_pVCpu)->iem.s.uVex3rdReg : (a_pVCpu)->iem.s.uVex3rdReg & 7)
+
+
+/**
+ * Gets the register (reg) part of a the special 4th register byte used by
+ * vblendvps and vblendvpd.
+ *
+ * For use during decoding.
+ */
+#define IEM_GET_IMM8_REG(a_pVCpu, a_bRegImm8) \
+    (IEM_IS_64BIT_CODE(a_pVCpu) ? (a_bRegImm8) >> 4 : ((a_bRegImm8) >> 4) & 7)
 
 
 /**
