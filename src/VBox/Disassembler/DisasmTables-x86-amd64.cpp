@@ -1,4 +1,4 @@
-/* $Id: DisasmTables-x86-amd64.cpp 103717 2024-03-06 21:36:59Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmTables-x86-amd64.cpp 103927 2024-03-19 21:16:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -1429,12 +1429,12 @@ const DISOPCODE g_aThreeByteMapX86_660F38_0[16] =
 const DISOPCODE g_aThreeByteMapX86_660F38_1[16] =
 {
     /* 1 */
-    OP("pblendvb %Vdq,%Wdq",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PBLENDVB,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("pblendvb %Vdq,%Wdq,xmm0",  IDX_ParseModRM, IDX_UseModRM, IDX_ParseFixedReg, OP_PBLENDVB,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_REG_XMM0, DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     INVALID_OPCODE,
     INVALID_OPCODE,
-    OP("blendvps %Vdq,%Wdq",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BLENDVPS,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("blendvpd %Vdq,%Wdq",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BLENDVPD,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("blendvps %Vdq,%Wdq,xmm0",  IDX_ParseModRM, IDX_UseModRM, IDX_ParseFixedReg, OP_BLENDVPS,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_REG_XMM0, DISOPTYPE_HARMLESS),
+    OP("blendvpd %Vdq,%Wdq,xmm0",  IDX_ParseModRM, IDX_UseModRM, IDX_ParseFixedReg, OP_BLENDVPD,    OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_REG_XMM0, DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     OP("ptest %Vdq,%Wdq",           IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PTEST,       OP_PARM_Vdq,          OP_PARM_Wdq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE,

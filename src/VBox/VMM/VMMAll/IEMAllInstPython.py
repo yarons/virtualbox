@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103921 2024-03-19 15:38:20Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 103927 2024-03-19 21:16:27Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103921 $"
+__version__ = "$Revision: 103927 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -212,6 +212,7 @@ g_kdOpLocations = {
     'FS':       [],
     'GS':       [],
     'SS':       [],
+    'XMM0':     [],
 
     # fixed valures.
     '1':        [],
@@ -369,6 +370,7 @@ g_kdOpTypes = {
     # Fixed registers.
     'AL':           ( 'IDX_ParseFixedReg',  'AL',     'al',   'REG_AL',  '',      ),
     'REG_CL':       ( 'IDX_ParseFixedReg',  'CL',     'cl',   'REG_CL',  '',      ),
+    'REG_XMM0':     ( 'IDX_ParseFixedReg',  'XMM0',   'xmm0', 'REG_XMM0','',      ),
     'rAX':          ( 'IDX_ParseFixedReg',  'rAX',    '%eAX', 'REG_EAX', '',      ),
     'rDX':          ( 'IDX_ParseFixedReg',  'rDX',    '%eDX', 'REG_EDX', '',      ),
     'CS':           ( 'IDX_ParseFixedReg',  'CS',     'cs',   'REG_CS',  '',      ), # 8086: push CS
@@ -394,6 +396,9 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]                    opcodesu
     'RMI':          ( 'ModR/M',     [ 'reg', 'rm', 'imm' ],             '',            ),
     'RMI_REG':      ( 'ModR/M',     [ 'reg', 'rm', 'imm' ],             '11 mr/reg',   ),
     'RMI_MEM':      ( 'ModR/M',     [ 'reg', 'rm', 'imm' ],             '!11 mr/reg',  ),
+    'RM0':          ( 'ModR/M',     [ 'reg', 'rm', 'XMM0' ],            '',            ),
+    'RM0_REG':      ( 'ModR/M',     [ 'reg', 'rm', 'XMM0' ],            '11 mr/reg',   ),
+    'RM0_MEM':      ( 'ModR/M',     [ 'reg', 'rm', 'XMM0' ],            '!11 mr/reg',  ),
     'MR':           ( 'ModR/M',     [ 'rm', 'reg' ],                    '',            ),
     'MR_REG':       ( 'ModR/M',     [ 'rm', 'reg' ],                    '11 mr/reg',   ),
     'MR_MEM':       ( 'ModR/M',     [ 'rm', 'reg' ],                    '!11 mr/reg',  ),

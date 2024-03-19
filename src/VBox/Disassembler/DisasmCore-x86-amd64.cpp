@@ -1,4 +1,4 @@
-/* $Id: DisasmCore-x86-amd64.cpp 103717 2024-03-06 21:36:59Z knut.osmundsen@oracle.com $ */
+/* $Id: DisasmCore-x86-amd64.cpp 103927 2024-03-19 21:16:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1525,6 +1525,13 @@ static size_t ParseFixedReg(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis, PD
         pParam->x86.Base.idxFpuReg = (uint8_t)(pParam->x86.fParam - OP_PARM_REG_FP_START);
         pParam->fUse  |= DISUSE_REG_FP;
         pParam->x86.cb     = 10;
+    }
+    else if (pParam->x86.fParam <= OP_PARM_REG_SSE_END)
+    {
+        /* SSE registers. */
+        pParam->x86.Base.idxFpuReg = (uint8_t)(pParam->x86.fParam - OP_PARM_REG_SSE_END);
+        pParam->fUse  |= DISUSE_REG_XMM;
+        pParam->x86.cb = 16;
     }
     Assert(!(pParam->x86.fParam >= OP_PARM_REG_GEN64_START && pParam->x86.fParam <= OP_PARM_REG_GEN64_END));
 
