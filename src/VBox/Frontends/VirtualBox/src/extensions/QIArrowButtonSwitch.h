@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.h 103968 2024-03-20 15:35:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIArrowButtonSwitch.h 103969 2024-03-20 15:56:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowButtonSwitch class declaration.
  */
@@ -66,7 +66,7 @@ protected slots:
 protected:
 
     /** Handles key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
+    virtual void keyPressEvent(QKeyEvent *pEvent) override;
 
 private:
 
