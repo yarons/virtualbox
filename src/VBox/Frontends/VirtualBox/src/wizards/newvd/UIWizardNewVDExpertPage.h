@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.h 103970 2024-03-20 16:20:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -63,11 +63,11 @@ private:
 
     /** Prepare stuff. */
     void prepare();
-    void initializePage();
+    virtual void initializePage() override final;
 
     /** Validation stuff. */
-    bool isComplete() const;
-    bool validatePage();
+    virtual bool isComplete() const override final;
+    virtual bool validatePage() override final;
     void updateDiskWidgetsAfterMediumFormatChange();
 
    /** @name Widgets

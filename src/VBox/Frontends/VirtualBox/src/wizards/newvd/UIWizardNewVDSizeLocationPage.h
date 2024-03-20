@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.h 103970 2024-03-20 16:20:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class declaration.
  */
@@ -54,9 +54,9 @@ private slots:
 
 private:
 
-    void initializePage();
-    bool isComplete() const;
-    bool validatePage();
+    virtual void initializePage() override final;
+    virtual bool isComplete() const override final;
+    virtual bool validatePage() override final;
     void prepare();
 
     UIMediumSizeAndPathGroupBox *m_pMediumSizePathGroup;
