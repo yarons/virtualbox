@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.h 103962 2024-03-20 14:37:26Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class declaration.
  */
@@ -56,7 +56,7 @@ private slots:
 private:
 
     void prepare();
-    void initializePage();
+    void initializePage() override final;
 
     /** Validation stuff. */
     bool isComplete() const;
