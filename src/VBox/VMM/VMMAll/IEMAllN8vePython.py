@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 103942 2024-03-20 10:22:38Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 103945 2024-03-20 10:54:39Z alexander.eichner@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 103942 $"
+__version__ = "$Revision: 103945 $"
 
 # Standard python imports:
 import copy;
@@ -193,7 +193,7 @@ g_dMcStmtThreaded = {
     'IEM_MC_MEM_FLAT_MAP_U128_ATOMIC':                                   (None, True,  True,  True,  ),
     'IEM_MC_MEM_FLAT_MAP_U128_RW':                                       (None, True,  True,  True,  ),
     'IEM_MC_STORE_MEM_FLAT_U128':                                        (None, True,  True,  False, ),
-    'IEM_MC_STORE_MEM_FLAT_U128_NO_AC':                                  (None, True,  True,  False, ),
+    'IEM_MC_STORE_MEM_FLAT_U128_NO_AC':                                  (None, True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_MEM_FLAT_U128_ALIGN_SSE':                              (None, True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_MEM_FLAT_U16':                                         (None, True,  True,  True,  ),
     'IEM_MC_STORE_MEM_FLAT_U16_CONST':                                   (None, True,  True,  True,  ),
