@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 103549 2024-02-23 15:42:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVM.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -130,10 +130,10 @@ void UIWizardNewCloudVM::populatePages()
     }
 }
 
-void UIWizardNewCloudVM::retranslateUi()
+void UIWizardNewCloudVM::sltRetranslateUI()
 {
     /* Call to base-class: */
-    UINativeWizard::retranslateUi();
+    UINativeWizard::sltRetranslateUI();
 
     /* Translate wizard: */
     setWindowTitle(tr("Create Cloud Virtual Machine"));

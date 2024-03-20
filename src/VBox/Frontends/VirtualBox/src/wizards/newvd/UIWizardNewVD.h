@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -84,9 +84,12 @@ protected:
 
     virtual void populatePages() /* final override */;
 
+private slots:
+
+    virtual void sltRetranslateUI() override final;
+
 private:
 
-    void retranslateUi();
     /** Check medium capabilities and decide if medium variant page should be hidden. */
     void setMediumVariantPageVisibility();
     qulonglong m_uMediumVariant;

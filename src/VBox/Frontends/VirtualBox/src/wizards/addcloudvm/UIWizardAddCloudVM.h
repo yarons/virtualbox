@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVM.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardAddCloudVM.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVM class declaration.
  */
@@ -74,10 +74,10 @@ public:
 protected:
 
     /** Populates pages. */
-    virtual void populatePages() /* override final */;
+    virtual void populatePages() override final;
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override final */;
+    virtual void sltRetranslateUI() override final;
 
 private:
 

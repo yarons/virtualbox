@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -207,9 +207,9 @@ QUuid UIWizardNewVD::createVDWithWizard(QWidget *pParent,
     return uMediumId;
 }
 
-void UIWizardNewVD::retranslateUi()
+void UIWizardNewVD::sltRetranslateUI()
 {
-    UINativeWizard::retranslateUi();
+    UINativeWizard::sltRetranslateUI();
     setWindowTitle(tr("Create Virtual Hard Disk"));
 }
 

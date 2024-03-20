@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -83,10 +83,13 @@ protected:
 
     virtual void populatePages() /* final override */;
 
-private:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void sltRetranslateUI() RT_OVERRIDE;
+
+private:
+
     void setMediumVariantPageVisibility();
 
     /** @name Parameters needed during medium cloning

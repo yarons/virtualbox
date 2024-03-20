@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVM.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -180,10 +180,10 @@ protected:
 private slots:
 
     void sltHandleWizardCancel();
+    virtual void sltRetranslateUI() override final;
 
 private:
 
-    void retranslateUi();
     QString getNextControllerName(KStorageBus type);
     void setUnattendedPageVisible(bool fVisible);
     void deleteVirtualDisk();
