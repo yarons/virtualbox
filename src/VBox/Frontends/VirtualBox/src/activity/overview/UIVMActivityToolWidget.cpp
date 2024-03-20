@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.cpp 103943 2024-03-20 10:23:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class implementation.
  */
@@ -50,7 +50,7 @@
 
 UIVMActivityToolWidget::UIVMActivityToolWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                                                  bool fShowToolbar /* = true */, QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QTabWidget>(pParent)
+    : QTabWidget(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pActionPool(pActionPool)
     , m_fShowToolbar(fShowToolbar)
@@ -77,15 +77,6 @@ bool UIVMActivityToolWidget::isCurrentTool() const
 void UIVMActivityToolWidget::setIsCurrentTool(bool fIsCurrentTool)
 {
     m_fIsCurrentTool = fIsCurrentTool;
-}
-
-void UIVMActivityToolWidget::retranslateUi()
-{
-}
-
-void UIVMActivityToolWidget::showEvent(QShowEvent *pEvent)
-{
-    QIWithRetranslateUI<QTabWidget>::showEvent(pEvent);
 }
 
 void UIVMActivityToolWidget::prepare()

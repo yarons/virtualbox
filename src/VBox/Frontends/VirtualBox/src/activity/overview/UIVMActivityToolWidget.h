@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 102264 2023-11-22 15:54:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.h 103943 2024-03-20 10:23:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class UIActionPool;
@@ -46,7 +45,7 @@ class UIVirtualMachineItem;
 class CMachine;
 
 /** QTabWidget extension host machine activity widget(s) in the Manager UI. */
-class UIVMActivityToolWidget : public QIWithRetranslateUI<QTabWidget>
+class UIVMActivityToolWidget : public QTabWidget
 {
     Q_OBJECT;
 
@@ -68,14 +67,6 @@ public:
 #ifdef VBOX_WS_MAC
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-
-protected:
-
-    /** @name Event-handling stuff.
-      * @{ */
-        virtual void retranslateUi() RT_OVERRIDE;
-        virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
-    /** @} */
 
 private slots:
 
