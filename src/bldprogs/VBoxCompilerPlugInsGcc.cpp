@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 100875 2023-08-14 20:11:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 103960 2024-03-20 14:02:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
@@ -252,12 +252,12 @@ static const struct attribute_spec g_AttribSpecs[] =
         decl_required           : false,
         type_required           : true,
         function_type_required  : true,
-// gcc 7.3 at least moves this field to after "handler", and with 8.3 it is back
-#if RT_GNUC_PREREQ(4, 6) && !(RT_GNUC_PREREQ(7, 0) && !RT_GNUC_PREREQ(8, 0))
+// gcc 6.3 at least moves this field to after "handler", and with 8.3 it is back
+#if RT_GNUC_PREREQ(4, 6) && !(RT_GNUC_PREREQ(6, 3) && !RT_GNUC_PREREQ(8, 0))
         affects_type_identity   : false,
 #endif
         handler                 : AttributeHandler,
-#if RT_GNUC_PREREQ(7, 0) && !RT_GNUC_PREREQ(8, 0)
+#if RT_GNUC_PREREQ(6, 3) && !RT_GNUC_PREREQ(8, 0)
         affects_type_identity   : false,
 #endif
 #if RT_GNUC_PREREQ(8, 0)
@@ -271,11 +271,11 @@ static const struct attribute_spec g_AttribSpecs[] =
         decl_required           : false,
         type_required           : true,
         function_type_required  : true,
-#if RT_GNUC_PREREQ(4, 6) && !(RT_GNUC_PREREQ(7, 0) && !RT_GNUC_PREREQ(8, 0))
+#if RT_GNUC_PREREQ(4, 6) && !(RT_GNUC_PREREQ(6, 3) && !RT_GNUC_PREREQ(8, 0))
         affects_type_identity   : false,
 #endif
         handler                 : AttributeHandler,
-#if RT_GNUC_PREREQ(7, 0) && !RT_GNUC_PREREQ(8, 0)
+#if RT_GNUC_PREREQ(6, 3) && !RT_GNUC_PREREQ(8, 0)
         affects_type_identity   : false,
 #endif
 #if RT_GNUC_PREREQ(8, 0)
