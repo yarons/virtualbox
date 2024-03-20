@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 103950 2024-03-20 11:41:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -39,13 +39,14 @@
 #include "QIToolButton.h"
 #include "UIIconPool.h"
 #include "UIHostnameDomainNameEditor.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
 
 
 UIHostnameDomainNameEditor::UIHostnameDomainNameEditor(QWidget *pParent /*  = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_pHostnameLineEdit(0)
     , m_pDomainNameLineEdit(0)
     , m_pHostnameLabel(0)
@@ -122,7 +123,7 @@ void UIHostnameDomainNameEditor::setFirstColumnWidth(int iWidth)
         m_pMainLayout->setColumnMinimumWidth(0, iWidth);
 }
 
-void UIHostnameDomainNameEditor::retranslateUi()
+void UIHostnameDomainNameEditor::sltRetranslateUI()
 {
     if (m_pHostnameLabel)
         m_pHostnameLabel->setText(tr("Hostna&me:"));
@@ -179,7 +180,9 @@ void UIHostnameDomainNameEditor::prepare()
     connect(m_pDomainNameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltDomainChanged);
 
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIHostnameDomainNameEditor::sltRetranslateUI);
 }
 
 void UIHostnameDomainNameEditor::sltHostnameChanged()
