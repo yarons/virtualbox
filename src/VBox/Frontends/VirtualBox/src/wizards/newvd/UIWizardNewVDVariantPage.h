@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDVariantPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDVariantPage.h 103967 2024-03-20 15:13:39Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDVariantPage class declaration.
  */
@@ -54,8 +54,8 @@ private slots:
 
 private:
 
-    void initializePage();
-    bool isComplete() const;
+    void initializePage() override final;
+    bool isComplete() const override final;
     void prepare();
     void setWidgetVisibility(const CMediumFormat &mediumFormat);
 
