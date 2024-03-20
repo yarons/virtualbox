@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMModePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePage class implementation.
  */
@@ -61,10 +61,10 @@ void UIWizardCloneVMModePage::prepare()
     }
     pMainLayout->addStretch();
 
-    retranslateUi();
+    sltRetranslateUI();
 }
 
-void UIWizardCloneVMModePage::retranslateUi()
+void UIWizardCloneVMModePage::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardCloneVM::tr("Snapshots"));
@@ -104,7 +104,7 @@ void UIWizardCloneVMModePage::initializePage()
     if (m_pCloneModeGroupBox && !m_userModifiedParameters.contains("CloneMode"))
         wizardWindow<UIWizardCloneVM>()->setCloneMode(m_pCloneModeGroupBox->cloneMode());
 
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 bool UIWizardCloneVMModePage::validatePage()

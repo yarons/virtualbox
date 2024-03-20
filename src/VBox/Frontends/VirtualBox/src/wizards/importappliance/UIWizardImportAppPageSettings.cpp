@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -446,7 +446,7 @@ UIWizardImportApp *UIWizardImportAppPageSettings::wizard() const
     return qobject_cast<UIWizardImportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardImportAppPageSettings::retranslateUi()
+void UIWizardImportAppPageSettings::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardImportApp::tr("Appliance settings"));
@@ -498,7 +498,7 @@ void UIWizardImportAppPageSettings::initializePage()
     /* Make sure form-editor knows notification-center: */
     m_pFormEditor->setNotificationCenter(wizard()->notificationCenter());
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Choose initially focused widget: */
     if (wizard()->isSourceCloudOne())
@@ -630,7 +630,7 @@ void UIWizardImportAppPageSettings::handleApplianceCertificate()
             m_enmCertText = comCertificate.GetSelfSigned() ? kCertText_SelfSignedUnverified : kCertText_IssuedUnverified;
 
             /* Translate page early: */
-            retranslateUi();
+            sltRetranslateUI();
 
             /* Instantiate the dialog: */
             QPointer<UIApplianceUnverifiedCertificateViewer> pDialog =

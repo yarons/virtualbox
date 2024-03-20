@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class implementation.
  */
@@ -900,7 +900,7 @@ UIWizardExportApp *UIWizardExportAppPageFormat::wizard() const
     return qobject_cast<UIWizardExportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardExportAppPageFormat::retranslateUi()
+void UIWizardExportAppPageFormat::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardExportApp::tr("Format settings"));
@@ -1036,7 +1036,7 @@ void UIWizardExportAppPageFormat::initializePage()
     /* Populate MAC address policies: */
     populateMACAddressPolicies(m_pMACComboBox);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Choose initially focused widget: */
     if (wizard()->isFormatCloudOne())

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -431,7 +431,7 @@ UIWizardExportApp *UIWizardExportAppPageExpert::wizard() const
     return qobject_cast<UIWizardExportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardExportAppPageExpert::retranslateUi()
+void UIWizardExportAppPageExpert::sltRetranslateUI()
 {
     /* Translate objects: */
     m_strDefaultApplianceName = UIWizardExportApp::tr("Appliance");
@@ -553,7 +553,7 @@ void UIWizardExportAppPageExpert::initializePage()
     /* Populate MAC address policies: */
     populateMACAddressPolicies(m_pMACComboBox);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Fetch it, asynchronously: */
     QMetaObject::invokeMethod(this, "sltHandleFormatComboChange", Qt::QueuedConnection);

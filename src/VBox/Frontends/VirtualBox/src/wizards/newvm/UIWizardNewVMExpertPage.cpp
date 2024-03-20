@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -216,7 +216,7 @@ void UIWizardNewVMExpertPage::sltOSFamilyTypeChanged(const QString &strGuestOSFa
     wizardWindow<UIWizardNewVM>()->setGuestOSFamilyId(strGuestOSFamilyType);
 }
 
-void UIWizardNewVMExpertPage::retranslateUi()
+void UIWizardNewVMExpertPage::sltRetranslateUI()
 {
     if (m_pSkipUnattendedCheckBox)
     {
@@ -454,7 +454,7 @@ void UIWizardNewVMExpertPage::initializePage()
     setSkipCheckBoxEnable();
     disableEnableUnattendedRelatedWidgets(isUnattendedEnabled());
     updateDiskWidgetsAfterMediumFormatChange();
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Focus on the name field (rather than the help button): */
     if (m_pNameAndSystemEditor)

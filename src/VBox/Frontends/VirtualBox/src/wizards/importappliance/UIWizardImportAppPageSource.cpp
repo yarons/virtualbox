@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -650,7 +650,7 @@ UIWizardImportApp *UIWizardImportAppPageSource::wizard() const
     return qobject_cast<UIWizardImportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardImportAppPageSource::retranslateUi()
+void UIWizardImportAppPageSource::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardImportApp::tr("Appliance to import"));
@@ -749,7 +749,7 @@ void UIWizardImportAppPageSource::initializePage()
                     m_fImportFromOCIByDefault,
                     m_strSource);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Choose initially focused widget: */
     if (wizard()->isSourceCloudOne())

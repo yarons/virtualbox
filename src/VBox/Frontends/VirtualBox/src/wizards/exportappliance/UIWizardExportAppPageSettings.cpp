@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageSettings.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageSettings.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageSettings class implementation.
  */
@@ -165,7 +165,7 @@ UIWizardExportApp *UIWizardExportAppPageSettings::wizard() const
     return qobject_cast<UIWizardExportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardExportAppPageSettings::retranslateUi()
+void UIWizardExportAppPageSettings::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardExportApp::tr("Appliance settings"));
@@ -185,7 +185,7 @@ void UIWizardExportAppPageSettings::initializePage()
     /* Make sure form-editor knows notification-center: */
     m_pFormEditor->setNotificationCenter(wizard()->notificationCenter());
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Refresh settings widget state: */
     refreshStackedWidget(m_pSettingsWidget2, wizard()->isFormatCloudOne());

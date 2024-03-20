@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDFormatPage.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDFormatPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDFormatPage class declaration.
  */
@@ -58,11 +58,11 @@ public:
 private slots:
 
     void sltMediumFormatChanged();
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE;
 
 private:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
     void prepare(KDeviceType enmDeviceType);
 
     /** Prepares the page. */

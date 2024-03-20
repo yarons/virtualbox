@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMNamePathPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPage class implementation.
  */
@@ -53,7 +53,7 @@ UIWizardCloneVMNamePathPage::UIWizardCloneVMNamePathPage(const QString &strOrigi
     prepare(strDefaultPath);
 }
 
-void UIWizardCloneVMNamePathPage::retranslateUi()
+void UIWizardCloneVMNamePathPage::sltRetranslateUI()
 {
     setTitle(UIWizardCloneVM::tr("New machine name and path"));
 
@@ -78,7 +78,7 @@ void UIWizardCloneVMNamePathPage::initializePage()
 {
     UIWizardCloneVM *pWizard = wizardWindow<UIWizardCloneVM>();
     AssertReturnVoid(pWizard);
-    retranslateUi();
+    sltRetranslateUI();
     if (m_pNamePathEditor)
     {
         m_pNamePathEditor->setFocus();
@@ -137,7 +137,7 @@ void UIWizardCloneVMNamePathPage::prepare(const QString &strDefaultClonePath)
 
     pMainLayout->addStretch();
 
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 bool UIWizardCloneVMNamePathPage::isComplete() const

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMTypePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePage class implementation.
  */
@@ -72,7 +72,7 @@ void UIWizardCloneVMTypePage::sltCloneTypeChanged(bool fIsFullClone)
     pWizard->setCloneModePageVisible(fIsFullClone);
 }
 
-void UIWizardCloneVMTypePage::retranslateUi()
+void UIWizardCloneVMTypePage::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardCloneVM::tr("Clone type"));
@@ -97,7 +97,7 @@ void UIWizardCloneVMTypePage::retranslateUi()
 void UIWizardCloneVMTypePage::initializePage()
 {
     AssertReturnVoid(wizardWindow<UIWizardCloneVM>());
-    retranslateUi();
+    sltRetranslateUI();
     if (m_pCloneTypeGroupBox && !m_userModifiedParameters.contains("LinkedClone"))
         wizardWindow<UIWizardCloneVM>()->setLinkedClone(!m_pCloneTypeGroupBox->isFullClone());
 }

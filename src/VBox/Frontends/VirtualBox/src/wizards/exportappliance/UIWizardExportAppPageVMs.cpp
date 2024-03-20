@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageVMs.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class implementation.
  */
@@ -201,7 +201,7 @@ UIWizardExportApp *UIWizardExportAppPageVMs::wizard() const
     return qobject_cast<UIWizardExportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardExportAppPageVMs::retranslateUi()
+void UIWizardExportAppPageVMs::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardExportApp::tr("Virtual machines"));
@@ -217,7 +217,7 @@ void UIWizardExportAppPageVMs::initializePage()
     /* Populate VM items: */
     populateVMItems(m_pVMSelector, m_selectedVMNames);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Now, when we are ready, we can
      * fast traver to page 2 if requested: */

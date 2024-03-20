@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDPathSizePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class declaration.
  */
@@ -59,11 +59,11 @@ private slots:
     void sltSelectLocationButtonClicked();
     void sltMediumPathChanged(const QString &strPath);
     void sltMediumSizeChanged(qulonglong uSize);
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE;
 
 private:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
     void prepare(qulonglong uSourceDiskLogicaSize);
 
     /** Prepares the page. */

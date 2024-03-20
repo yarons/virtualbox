@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMUnattendedPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMUnattendedPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMUnattendedPage class implementation.
  */
@@ -108,7 +108,7 @@ void UIWizardNewVMUnattendedPage::createConnections()
 }
 
 
-void UIWizardNewVMUnattendedPage::retranslateUi()
+void UIWizardNewVMUnattendedPage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVM::tr("Unattended Guest OS Install Setup"));
     if (m_pLabel)
@@ -124,7 +124,7 @@ void UIWizardNewVMUnattendedPage::initializePage()
 {
     if (m_pAdditionalOptionsContainer)
         m_pAdditionalOptionsContainer->disableEnableProductKeyWidgets(isProductKeyWidgetEnabled());
-    retranslateUi();
+    sltRetranslateUI();
 
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard);

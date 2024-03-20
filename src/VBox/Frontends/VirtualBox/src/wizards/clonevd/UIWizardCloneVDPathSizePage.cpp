@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPathSizePage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVDPathSizePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPathSizePage class implementation.
  */
@@ -56,10 +56,10 @@ void UIWizardCloneVDPathSizePage::prepare(qulonglong uSourceDiskLogicaSize)
                 this, &UIWizardCloneVDPathSizePage::sltMediumSizeChanged);
     }
     pMainLayout->addStretch();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
-void UIWizardCloneVDPathSizePage::retranslateUi()
+void UIWizardCloneVDPathSizePage::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardCloneVD::tr("Location and size of the disk image"));
@@ -69,7 +69,7 @@ void UIWizardCloneVDPathSizePage::initializePage()
 {
     AssertReturnVoid(wizardWindow<UIWizardCloneVD>() && m_pMediumSizePathGroupBox);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
     UIWizardCloneVD *pWizard = wizardWindow<UIWizardCloneVD>();
     m_pMediumSizePathGroupBox->blockSignals(true);
 

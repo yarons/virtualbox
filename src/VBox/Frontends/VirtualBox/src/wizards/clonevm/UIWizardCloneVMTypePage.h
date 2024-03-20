@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMTypePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePage class declaration.
  */
@@ -52,10 +52,10 @@ public:
 private slots:
 
     void sltCloneTypeChanged(bool fIsFullClone);
+    virtual void sltRetranslateUI() override final;
 
 private:
 
-    void retranslateUi();
     void initializePage();
     void prepare();
     bool validatePage();

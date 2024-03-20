@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDFormatPage.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVDFormatPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDFormatPage class implementation.
  */
@@ -58,10 +58,10 @@ void UIWizardCloneVDFormatPage::prepare(KDeviceType enmDeviceType)
                 this, &UIWizardCloneVDFormatPage::sltMediumFormatChanged);
     }
     pMainLayout->addStretch();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
-void UIWizardCloneVDFormatPage::retranslateUi()
+void UIWizardCloneVDFormatPage::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardCloneVD::tr("Virtual Hard disk file type"));
@@ -76,7 +76,7 @@ void UIWizardCloneVDFormatPage::initializePage()
 {
     AssertReturnVoid(wizardWindow<UIWizardCloneVD>());
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
     if (!m_userModifiedParameters.contains("MediumFormat"))
     {
         if (m_pFormatGroupBox)

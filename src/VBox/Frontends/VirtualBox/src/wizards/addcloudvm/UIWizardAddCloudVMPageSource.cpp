@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -413,7 +413,7 @@ UIWizardAddCloudVM *UIWizardAddCloudVMPageSource::wizard() const
     return qobject_cast<UIWizardAddCloudVM*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardAddCloudVMPageSource::retranslateUi()
+void UIWizardAddCloudVMPageSource::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardAddCloudVM::tr("Source to add from"));
@@ -463,7 +463,7 @@ void UIWizardAddCloudVMPageSource::initializePage()
     /* Populate providers: */
     populateProviders(m_pProviderComboBox, wizard()->notificationCenter());
     /* Translate providers: */
-    retranslateUi();
+    sltRetranslateUI();
     /* Fetch it, asynchronously: */
     QMetaObject::invokeMethod(this, "sltHandleProviderComboChange", Qt::QueuedConnection);
     /* Make image list focused by default: */

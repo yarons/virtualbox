@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageSettings.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportAppPageSettings.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageSettings class declaration.
  */
@@ -80,14 +80,16 @@ protected:
     /** Returns wizard this page belongs to. */
     UIWizardExportApp *wizard() const;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override final */;
-
     /** Performs page initialization. */
-    virtual void initializePage() /* override final */;
+    virtual void initializePage() override final;
 
     /** Performs page validation. */
-    virtual bool validatePage() /* override final */;
+    virtual bool validatePage() override final;
+
+private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() override final;
 
 private:
 

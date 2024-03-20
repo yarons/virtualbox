@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class implementation.
  */
@@ -215,7 +215,7 @@ void UIWizardNewVMDiskPage::sltGetWithFileOpenDialog()
     }
 }
 
-void UIWizardNewVMDiskPage::retranslateUi()
+void UIWizardNewVMDiskPage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVM::tr("Virtual Hard disk"));
 
@@ -257,7 +257,7 @@ void UIWizardNewVMDiskPage::retranslateUi()
 
 void UIWizardNewVMDiskPage::initializePage()
 {
-    retranslateUi();
+    sltRetranslateUI();
 
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard);

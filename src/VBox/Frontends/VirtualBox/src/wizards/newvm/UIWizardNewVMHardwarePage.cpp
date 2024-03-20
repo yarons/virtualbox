@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class implementation.
  */
@@ -74,7 +74,7 @@ void UIWizardNewVMHardwarePage::createConnections()
     }
 }
 
-void UIWizardNewVMHardwarePage::retranslateUi()
+void UIWizardNewVMHardwarePage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVM::tr("Hardware"));
 
@@ -85,7 +85,7 @@ void UIWizardNewVMHardwarePage::retranslateUi()
 
 void UIWizardNewVMHardwarePage::initializePage()
 {
-    retranslateUi();
+    sltRetranslateUI();
 
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     if (pWizard && m_pHardwareWidgetContainer)

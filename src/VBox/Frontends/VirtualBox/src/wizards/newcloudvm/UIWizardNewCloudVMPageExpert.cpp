@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -202,7 +202,7 @@ UIWizardNewCloudVM *UIWizardNewCloudVMPageExpert::wizard() const
     return qobject_cast<UIWizardNewCloudVM*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardNewCloudVMPageExpert::retranslateUi()
+void UIWizardNewCloudVMPageExpert::sltRetranslateUI()
 {
     /* Translate tool-box: */
     if (m_pToolBox)
@@ -245,7 +245,7 @@ void UIWizardNewCloudVMPageExpert::initializePage()
     /* Populate providers: */
     populateProviders(m_pProviderComboBox, wizard()->notificationCenter());
     /* Translate providers: */
-    retranslateUi();
+    sltRetranslateUI();
     /* Make image list focused by default: */
     m_pSourceImageList->setFocus();
     /* Fetch it, asynchronously: */

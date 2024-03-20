@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDVariantPage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVDVariantPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDVariantPage class declaration.
  */
@@ -51,11 +51,11 @@ public:
 private slots:
 
     void sltMediumVariantChanged(qulonglong uVariant);
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE;
 
 private:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
     void prepare();
 
     /** Prepares the page. */

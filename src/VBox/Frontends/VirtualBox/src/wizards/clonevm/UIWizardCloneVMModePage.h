@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMModePage.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMModePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMModePage class declaration.
  */
@@ -57,11 +57,10 @@ public:
 private slots:
 
     void sltCloneModeChanged(KCloneMode enmCloneMode);
+    /** Translation stuff. */
+    virtual void sltRetranslateUI() override final;
 
 private:
-
-    /** Translation stuff. */
-    void retranslateUi();
 
     /** Prepare stuff. */
     void initializePage();

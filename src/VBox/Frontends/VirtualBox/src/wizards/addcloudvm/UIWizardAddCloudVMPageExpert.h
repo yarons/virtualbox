@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -54,9 +54,6 @@ protected:
     /** Returns wizard this page belongs to. */
     UIWizardAddCloudVM *wizard() const;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override final */;
-
     /** Performs page initialization. */
     virtual void initializePage() /* override final */;
 
@@ -78,6 +75,9 @@ private slots:
 
     /** Handles change in instance list. */
     void sltHandleSourceInstanceChange();
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() override final;
 
 private:
 

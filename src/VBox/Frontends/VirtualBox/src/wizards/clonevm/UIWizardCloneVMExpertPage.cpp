@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVMExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class implementation.
  */
@@ -92,10 +92,10 @@ void UIWizardCloneVMExpertPage::prepare(const QString &strOriginalName, const QS
         connect(m_pCloneTypeGroupBox, &UICloneVMCloneTypeGroupBox::sigFullCloneSelected,
                 this, &UIWizardCloneVMExpertPage::sltCloneTypeChanged);
 
-    retranslateUi();
+    sltRetranslateUI();
 }
 
-void UIWizardCloneVMExpertPage::retranslateUi()
+void UIWizardCloneVMExpertPage::sltRetranslateUI()
 {
     /* Translate widgets: */
     if (m_pNamePathGroupBox)
@@ -132,7 +132,7 @@ void UIWizardCloneVMExpertPage::initializePage()
 
     setCloneModeGroupBoxEnabled();
 
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIWizardCloneVMExpertPage::setCloneModeGroupBoxEnabled()

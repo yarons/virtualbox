@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -507,7 +507,7 @@ void UIWizardNewVMNameOSTypePage::sltOsTypeChanged()
         wizardWindow<UIWizardNewVM>()->setGuestOSTypeId(m_pNameAndSystemEditor->typeId());
 }
 
-void UIWizardNewVMNameOSTypePage::retranslateUi()
+void UIWizardNewVMNameOSTypePage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVM::tr("Virtual machine Name and Operating System"));
 
@@ -582,7 +582,7 @@ void UIWizardNewVMNameOSTypePage::initializePage()
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard);
 
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Initialize this page's widgets etc: */
     {

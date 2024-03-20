@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVDExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class implementation.
  */
@@ -135,7 +135,7 @@ void UIWizardCloneVDExpertPage::sltMediumPathChanged(const QString &strPath)
     emit completeChanged();
 }
 
-void UIWizardCloneVDExpertPage::retranslateUi()
+void UIWizardCloneVDExpertPage::sltRetranslateUI()
 {
     if (m_pFormatVariantGroupBox)
         m_pFormatVariantGroupBox->setTitle(UIWizardCloneVD::tr("Hard Disk File &Type and Variant"));
@@ -167,7 +167,7 @@ void UIWizardCloneVDExpertPage::initializePage()
     m_pMediumSizePathGroupBox->blockSignals(false);
 
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 bool UIWizardCloneVDExpertPage::isComplete() const

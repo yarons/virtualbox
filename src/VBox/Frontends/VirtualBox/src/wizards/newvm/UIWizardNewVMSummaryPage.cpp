@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class implementation.
  */
@@ -449,7 +449,7 @@ void UIWizardNewVMSummaryPage::createConnections()
 {
 }
 
-void UIWizardNewVMSummaryPage::retranslateUi()
+void UIWizardNewVMSummaryPage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVM::tr("Summary"));
     if (m_pLabel)
@@ -461,7 +461,7 @@ void UIWizardNewVMSummaryPage::retranslateUi()
 
 void UIWizardNewVMSummaryPage::initializePage()
 {
-    retranslateUi();
+    sltRetranslateUI();
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     AssertReturnVoid(pWizard && m_pModel);
     m_pModel->populateData(pWizard);

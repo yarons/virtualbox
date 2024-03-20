@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class declaration.
  */
@@ -109,14 +109,11 @@ protected:
     /** Returns wizard this page belongs to. */
     UIWizardImportApp *wizard() const;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override final */;
-
     /** Performs page initialization. */
-    virtual void initializePage() /* override final */;
+    virtual void initializePage() override final;
 
     /** Performs page validation. */
-    virtual bool validatePage() /* override final */;
+    virtual bool validatePage() override final;
 
 private slots:
 
@@ -129,6 +126,8 @@ private slots:
     void sltHandleMACImportPolicyComboChange();
     /** Handles import HDs as VDI check-box change. */
     void sltHandleImportHDsAsVDICheckBoxChange();
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() override final;
 
 private:
 

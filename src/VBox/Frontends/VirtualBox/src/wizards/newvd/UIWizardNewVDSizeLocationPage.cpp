@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class implementation.
  */
@@ -64,7 +64,7 @@ void UIWizardNewVDSizeLocationPage::prepare()
             this, &UIWizardNewVDSizeLocationPage::sltSelectLocationButtonClicked);
     pMainLayout->addWidget(m_pMediumSizePathGroup);
     pMainLayout->addStretch();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIWizardNewVDSizeLocationPage::sltSelectLocationButtonClicked()
@@ -104,7 +104,7 @@ void UIWizardNewVDSizeLocationPage::sltMediumPathChanged(const QString &strPath)
     emit completeChanged();
 }
 
-void UIWizardNewVDSizeLocationPage::retranslateUi()
+void UIWizardNewVDSizeLocationPage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVD::tr("File location and size"));
 }
@@ -139,7 +139,7 @@ void UIWizardNewVDSizeLocationPage::initializePage()
         m_pMediumSizePathGroup->blockSignals(false);
         pWizard->setMediumSize(m_pMediumSizePathGroup->mediumSize());
     }
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 bool UIWizardNewVDSizeLocationPage::isComplete() const

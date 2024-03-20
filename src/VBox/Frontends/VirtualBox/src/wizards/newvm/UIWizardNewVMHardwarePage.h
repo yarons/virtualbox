@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMHardwarePage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMHardwarePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMHardwarePage class declaration.
  */
@@ -54,15 +54,15 @@ private slots:
     void sltMemorySizeChanged(int iValue);
     void sltCPUCountChanged(int iCount);
     void sltEFIEnabledChanged(bool fEnabled);
+    virtual void sltRetranslateUI() override final;
 
 private:
 
     /** Prepare stuff. */
     void prepare();
     void createConnections();
-    virtual void retranslateUi() /* override final */;
-    virtual void initializePage() /* override final */;
-    virtual bool isComplete() const /* override final */;
+    virtual void initializePage() override final;
+    virtual bool isComplete() const override final;
 
     /** @name Widgets
       * @{ */

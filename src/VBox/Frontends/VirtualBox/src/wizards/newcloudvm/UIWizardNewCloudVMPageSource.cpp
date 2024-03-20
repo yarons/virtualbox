@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -477,7 +477,7 @@ UIWizardNewCloudVM *UIWizardNewCloudVMPageSource::wizard() const
     return qobject_cast<UIWizardNewCloudVM*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardNewCloudVMPageSource::retranslateUi()
+void UIWizardNewCloudVMPageSource::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardNewCloudVM::tr("Location to create"));
@@ -531,7 +531,7 @@ void UIWizardNewCloudVMPageSource::initializePage()
     /* Populate providers: */
     populateProviders(m_pProviderComboBox, wizard()->notificationCenter());
     /* Translate providers: */
-    retranslateUi();
+    sltRetranslateUI();
     /* Fetch it, asynchronously: */
     QMetaObject::invokeMethod(this, "sltHandleProviderComboChange", Qt::QueuedConnection);
     /* Make image list focused by default: */

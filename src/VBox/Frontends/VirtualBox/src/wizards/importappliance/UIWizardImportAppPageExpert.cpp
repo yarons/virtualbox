@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -359,7 +359,7 @@ UIWizardImportApp *UIWizardImportAppPageExpert::wizard() const
     return qobject_cast<UIWizardImportApp*>(UINativeWizardPage::wizard());
 }
 
-void UIWizardImportAppPageExpert::retranslateUi()
+void UIWizardImportAppPageExpert::sltRetranslateUI()
 {
     /* Translate tool-box: */
     if (m_pToolBox)
@@ -438,7 +438,7 @@ void UIWizardImportAppPageExpert::initializePage()
                     m_fImportFromOCIByDefault,
                     m_strSource);
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Choose initially focused widget: */
     if (wizard()->isSourceCloudOne())

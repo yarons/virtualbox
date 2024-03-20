@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDVariantPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVDVariantPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDVariantPage class implementation.
  */
@@ -75,11 +75,11 @@ void UIWizardCloneVDVariantPage::prepare()
                 this, &UIWizardCloneVDVariantPage::sltMediumVariantChanged);
 
     }
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 
-void UIWizardCloneVDVariantPage::retranslateUi()
+void UIWizardCloneVDVariantPage::sltRetranslateUI()
 {
     /* Translate page: */
     setTitle(UIWizardCloneVD::tr("Storage on physical hard disk"));
@@ -102,7 +102,7 @@ void UIWizardCloneVDVariantPage::initializePage()
 {
     AssertReturnVoid(wizardWindow<UIWizardCloneVD>());
     /* Translate page: */
-    retranslateUi();
+    sltRetranslateUI();
 
     setWidgetVisibility(wizardWindow<UIWizardCloneVD>()->mediumFormat());
     if (m_pVariantWidget)

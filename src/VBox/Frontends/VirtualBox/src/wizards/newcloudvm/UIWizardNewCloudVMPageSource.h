@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -114,9 +114,6 @@ protected:
     /** Returns wizard this page belongs to. */
     UIWizardNewCloudVM *wizard() const;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override final */;
-
     /** Performs page initialization. */
     virtual void initializePage() /* override final */;
 
@@ -141,6 +138,9 @@ private slots:
 
     /** Handles change in image list. */
     void sltHandleSourceImageChange();
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() override final;
 
 private:
 

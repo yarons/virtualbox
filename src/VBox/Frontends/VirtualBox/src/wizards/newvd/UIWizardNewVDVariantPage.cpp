@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDVariantPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVDVariantPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDVariantPage class implementation.
  */
@@ -68,10 +68,10 @@ void UIWizardNewVDVariantPage::prepare()
 
     connect(m_pVariantWidget, &UIDiskVariantWidget::sigMediumVariantChanged,
             this, &UIWizardNewVDVariantPage::sltMediumVariantChanged);
-    retranslateUi();
+    sltRetranslateUI();
 }
 
-void UIWizardNewVDVariantPage::retranslateUi()
+void UIWizardNewVDVariantPage::sltRetranslateUI()
 {
     setTitle(UIWizardNewVD::tr("Storage on physical hard disk"));
 
@@ -98,7 +98,7 @@ void UIWizardNewVDVariantPage::initializePage()
     AssertReturnVoid(pWizard && m_pVariantWidget);
     setWidgetVisibility(pWizard->mediumFormat());
     pWizard->setMediumVariant(m_pVariantWidget->mediumVariant());
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 bool UIWizardNewVDVariantPage::isComplete() const
