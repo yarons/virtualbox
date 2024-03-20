@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 103916 2024-03-19 13:11:09Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInline.h 103951 2024-03-20 11:59:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -4110,6 +4110,16 @@ AssertCompile(((3U + 1U) << 16) == X86_CR0_AM);
 #define TMPL_MEM_TYPE_ALIGN 0
 #define TMPL_MEM_TYPE_SIZE  32
 #define TMPL_MEM_FN_SUFF    U256NoAc
+#define TMPL_MEM_FMT_TYPE   "%.32Rhxs"
+#define TMPL_MEM_FMT_DESC   "qqword"
+#include "../VMMAll/IEMAllMemRWTmplInline.cpp.h"
+#undef TMPL_MEM_NO_MAPPING
+
+#define TMPL_MEM_NO_MAPPING
+#define TMPL_MEM_TYPE       RTUINT256U
+#define TMPL_MEM_TYPE_ALIGN 31
+#define TMPL_MEM_TYPE_SIZE  32
+#define TMPL_MEM_FN_SUFF    U256AlignedAvx
 #define TMPL_MEM_FMT_TYPE   "%.32Rhxs"
 #define TMPL_MEM_FMT_DESC   "qqword"
 #include "../VMMAll/IEMAllMemRWTmplInline.cpp.h"
