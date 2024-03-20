@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-3-template.mac 103931 2024-03-19 23:47:19Z knut.osmundsen@oracle.com $
+; $Id: bs3-cpu-instr-3-template.mac 103958 2024-03-20 13:49:38Z knut.osmundsen@oracle.com $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, assembly template.
 ;
@@ -2275,6 +2275,9 @@ EMIT_INSTR_PLUS_ICEBP_C64  vpextrw, FSxBX, XMM8, 0FFh
 
 ;
 ; [v]pextrw alternate encodings (SSE4.1 & AVX 0f3a variants)
+;
+; These default to 0f38 / VEX map 1 entry 0c5h in the assembler, this exercises
+; the 0f3a / VEX map 3 entry 15h variants.
 ;
 %ifndef EMIT_V_PEXTRW_ALT_INSTR_DEFINED
  %define EMIT_V_PEXTRW_ALT_INSTR_DEFINED
