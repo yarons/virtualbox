@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103919 2024-03-19 13:52:22Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103932 2024-03-20 07:19:50Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -7750,6 +7750,42 @@ iemNativeEmitSimdStoreYregU256ZxVlmax(PIEMRECOMPILERSTATE pReNative, uint32_t of
     return off;
 }
 
+
+#define IEM_MC_SSE_UPDATE_MXCSR(a_fMxcsr) \
+    off = iemNativeEmitSimdSseUpdateMxcsr(pReNative, off, a_fMxcsr)
+
+/** Emits code for IEM_MC_SSE_UPDATE_MXCSR. */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmitSimdSseUpdateMxcsr(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t idxMxCsrVar)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxMxCsrVar);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxMxCsrVar, sizeof(uint32_t));
+
+    uint8_t const idxRegMxCsr    = iemNativeRegAllocTmpForGuestReg(pReNative, &off, kIemNativeGstReg_MxCsr, kIemNativeGstRegUse_ForUpdate);
+    uint8_t const idxVarRegMxCsr = iemNativeVarRegisterAcquire(pReNative, idxMxCsrVar, &off, true /*fInitalized*/);
+    uint8_t const idxVarRegTmp   = iemNativeRegAllocTmp(pReNative, &off);
+
+    /** @todo r=aeichner I think it would be safe to spare the temporary register and trash
+     *                   the variable MXCSR register as it isn't used afterwards in the microcode block anyway.
+     *                   Needs verification though, so play it safe for now.
+     */
+    /* mov tmp, varmxcsr */
+    off = iemNativeEmitLoadGprFromGpr32(pReNative, off, idxVarRegTmp, idxVarRegMxCsr);
+    /* and tmp, X86_MXCSR_XCPT_FLAGS */
+    off = iemNativeEmitAndGpr32ByImm(pReNative, off, idxVarRegTmp, X86_MXCSR_XCPT_FLAGS);
+    /* or mxcsr, tmp */
+    off = iemNativeEmitOrGpr32ByGpr(pReNative, off, idxRegMxCsr, idxVarRegTmp);
+
+    /* Writeback the MXCSR register value (there is no delayed writeback for such registers at the moment). */
+    off = iemNativeEmitStoreGprToVCpuU32(pReNative, off, idxRegMxCsr, RT_UOFFSETOF_DYN(VMCPU, cpum.GstCtx.XState.x87.MXCSR));
+
+    /* Free but don't flush the MXCSR register. */
+    iemNativeRegFreeTmp(pReNative, idxRegMxCsr);
+    iemNativeVarRegisterRelease(pReNative, idxVarRegMxCsr);
+    iemNativeRegFreeTmp(pReNative, idxVarRegTmp);
+
+    return off;
+}
 
 
 /*********************************************************************************************************************************
