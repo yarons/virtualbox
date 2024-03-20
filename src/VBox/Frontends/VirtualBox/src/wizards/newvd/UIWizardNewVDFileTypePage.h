@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.h 103962 2024-03-20 14:37:26Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.h 103968 2024-03-20 15:35:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class declaration.
  */
@@ -59,7 +59,7 @@ private:
     void initializePage() override final;
 
     /** Validation stuff. */
-    bool isComplete() const;
+    bool isComplete() const override final;
 
     QIRichTextLabel *m_pLabel;
     UIDiskFormatsGroupBox *m_pFormatButtonGroup;
