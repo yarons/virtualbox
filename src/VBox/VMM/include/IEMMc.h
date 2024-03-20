@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 103909 2024-03-19 09:07:55Z bela.lubkin@oracle.com $ */
+/* $Id: IEMMc.h 103936 2024-03-20 08:45:51Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -1076,7 +1076,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 # define IEM_MC_FETCH_MEM_FLAT_U128_NO_AC(a_u128Dst, a_GCPtrMem) \
     iemMemFlatFetchDataU128Jmp(pVCpu, &(a_u128Dst), (a_GCPtrMem))
 # define IEM_MC_FETCH_MEM_FLAT_U128_ALIGN_SSE(a_u128Dst, a_GCPtrMem) \
-    iemMemFetchDataU128AlignedSseJmp(pVCpu, &(a_u128Dst), UINT8_MAX, (a_GCPtrMem))
+    iemMemFlatFetchDataU128AlignedSseJmp(pVCpu, &(a_u128Dst), (a_GCPtrMem))
 
 # define IEM_MC_FETCH_MEM_FLAT_XMM(a_XmmDst, a_GCPtrMem) \
     iemMemFlatFetchDataU128Jmp(pVCpu, &(a_XmmDst).uXmm, (a_GCPtrMem))
