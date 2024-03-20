@@ -1,4 +1,4 @@
-/* $Id: UIApplianceUnverifiedCertificateViewer.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIApplianceUnverifiedCertificateViewer.cpp 103947 2024-03-20 11:06:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceUnverifiedCertificateViewer class implementation.
  */
@@ -34,6 +34,7 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "UIApplianceUnverifiedCertificateViewer.h"
+#include "UITranslationEventListener.h"
 
 /* COM includes: */
 #include "CCertificate.h"
@@ -41,7 +42,7 @@
 
 UIApplianceUnverifiedCertificateViewer::UIApplianceUnverifiedCertificateViewer(QWidget *pParent,
                                                                                const CCertificate &comCertificate)
-    : QIWithRetranslateUI<QIDialog>(pParent)
+    : QIDialog(pParent)
     , m_comCertificate(comCertificate)
     , m_pTextLabel(0)
     , m_pTextBrowser(0)
@@ -91,10 +92,12 @@ void UIApplianceUnverifiedCertificateViewer::prepare()
     }
 
     /* Translate UI: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIApplianceUnverifiedCertificateViewer::sltRetranslateUI);
 }
 
-void UIApplianceUnverifiedCertificateViewer::retranslateUi()
+void UIApplianceUnverifiedCertificateViewer::sltRetranslateUI()
 {
     /* Translate dialog title: */
     setWindowTitle(tr("Unverifiable Certificate! Continue?"));

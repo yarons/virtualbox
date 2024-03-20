@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.h 103947 2024-03-20 11:06:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -36,8 +36,8 @@
 #include <QLineEdit>
 #include <QWidget>
 
-/* Local includes: */
-#include "QIWithRetranslateUI.h"
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QGridLayout;
@@ -82,7 +82,7 @@ private:
     bool m_fMarkForError;
 };
 
-class SHARED_LIBRARY_STUFF UIUserNamePasswordEditor : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIUserNamePasswordEditor : public QWidget
 {
 
     Q_OBJECT;
@@ -109,15 +109,12 @@ public:
     void setPlaceholderTextEnabled(bool fEnabled);
     void setLabelsVisible(bool fVisible);
 
-protected:
-
-    void retranslateUi();
-
 private slots:
 
     void sltHandlePasswordVisibility(bool fPasswordVisible);
     void sltUserNameChanged();
     void sltPasswordChanged();
+    void sltRetranslateUI();
 
 private:
 
