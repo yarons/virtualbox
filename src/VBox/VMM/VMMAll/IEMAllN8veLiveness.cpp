@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 103909 2024-03-19 09:07:55Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 103946 2024-03-20 11:01:32Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -908,9 +908,11 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 
 #define IEM_MC_STORE_MEM_U128(a_iSeg, a_GCPtrMem, a_u128Value)                                  IEM_LIVENESS_MEM(a_iSeg)
 #define IEM_MC_STORE_MEM_U128_ALIGN_SSE(a_iSeg, a_GCPtrMem, a_u128Value)                        IEM_LIVENESS_MEM(a_iSeg)
+#define IEM_MC_STORE_MEM_U128_NO_AC(a_iSeg, a_GCPtrMem, a_u128Value)                            IEM_LIVENESS_MEM(a_iSeg)
 
 #define IEM_MC_STORE_MEM_FLAT_U128(a_GCPtrMem, a_u128Value)                                     IEM_LIVENESS_MEM_FLAT()
 #define IEM_MC_STORE_MEM_FLAT_U128_ALIGN_SSE(a_GCPtrMem, a_u128Value)                           IEM_LIVENESS_MEM_FLAT()
+#define IEM_MC_STORE_MEM_FLAT_U128_NO_AC(a_GCPtrMem, a_u128Value)                               IEM_LIVENESS_MEM_FLAT()
 
 #define IEM_MC_STORE_MEM_U256(a_iSeg, a_GCPtrMem, a_u256Value)                                  IEM_LIVENESS_MEM(a_iSeg)
 #define IEM_MC_STORE_MEM_U256_ALIGN_AVX(a_iSeg, a_GCPtrMem, a_u256Value)                        IEM_LIVENESS_MEM(a_iSeg)
