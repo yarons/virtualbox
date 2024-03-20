@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103937 2024-03-20 08:50:52Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 103942 2024-03-20 10:22:38Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103937 $"
+__version__ = "$Revision: 103942 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3338,7 +3338,7 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_MEM_NEG_QNAN_R80_BY_REF':                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_MEM_U128':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_MEM_U128_NO_AC':                               (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_STORE_MEM_U128_ALIGN_SSE':                           (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_STORE_MEM_U128_ALIGN_SSE':                           (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_MEM_U16':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_STORE_MEM_U16_CONST':                                (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_STORE_MEM_U256':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
