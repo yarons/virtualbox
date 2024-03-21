@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPaneContainer.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPaneContainer.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -76,8 +76,8 @@ public:
 
 protected:
 
-    virtual void focusInEvent(QFocusEvent *pEvent) RT_OVERRIDE;
-    virtual void focusOutEvent(QFocusEvent *pEvent) RT_OVERRIDE;
+    virtual void focusInEvent(QFocusEvent *pEvent) RT_OVERRIDE RT_FINAL;
+    virtual void focusOutEvent(QFocusEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private slots:
 

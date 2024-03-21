@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.h 103579 2024-02-26 17:35:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutPool.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class declaration.
  */
@@ -161,7 +161,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -175,7 +175,7 @@ private:
     /** Constructs shortcut pool. */
     UIShortcutPool(UIType enmType);
     /** Destructs shortcut pool. */
-    virtual ~UIShortcutPool() RT_OVERRIDE;
+    virtual ~UIShortcutPool() RT_OVERRIDE RT_FINAL;
 
     /** Prepares all. */
     void prepare();

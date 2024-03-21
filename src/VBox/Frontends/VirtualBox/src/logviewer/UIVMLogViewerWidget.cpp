@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerWidget.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -126,7 +126,7 @@ public:
 
 protected:
 
-    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE RT_FINAL;
 };
 
 /*********************************************************************************************************************************

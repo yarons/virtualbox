@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINativeWizard.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -147,9 +147,9 @@ protected:
     virtual void populatePages() = 0;
 
     /** Handles key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** Handles close @a pEvent. */
-    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
+    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
     /** Performs wizard-specific cleanup in case of wizard-mode change
       * such as folder deletion in New VM wizard etc. */

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -144,7 +144,7 @@ private slots:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private:
 
@@ -189,7 +189,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -866,7 +866,7 @@ private:
     /** Constructs machine UI singleton. */
     UIMachine();
     /** Destructs machine UI singleton. */
-    virtual ~UIMachine() RT_OVERRIDE;
+    virtual ~UIMachine() RT_OVERRIDE RT_FINAL;
 
     /** Prepare routine. */
     bool prepare();

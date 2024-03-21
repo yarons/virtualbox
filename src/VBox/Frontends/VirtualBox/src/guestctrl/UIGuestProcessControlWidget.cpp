@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -80,7 +80,7 @@ public:
 
 protected:
 
-    void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
+    void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private slots:
 

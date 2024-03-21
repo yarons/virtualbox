@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialog.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class declaration.
  */
@@ -73,13 +73,13 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
     /** Handles show @a pEvent. */
-    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** Handles first show @a pEvent. */
     virtual void polishEvent(QShowEvent*);
     /** Handles close @a pEvent. */
-    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
+    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private slots:
 
