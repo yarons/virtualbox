@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapSetJmpAndRestoreWithExtCtx.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TrapSetJmpAndRestoreWithExtCtx.c 103980 2024-03-21 09:37:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Bs3TrapSetJmpAndRestoreWithExtCtx
  */
@@ -49,12 +49,7 @@ BS3_CMN_DEF(void, Bs3TrapSetJmpAndRestoreWithExtCtx,(PCBS3REGCTX pCtxRestore, PC
        (only a potential issue in 64-bit mode). */
     Bs3ExtCtxRestoreEx(pExtCtxRestore);
     if (Bs3TrapSetJmp(pTrapFrame))
-    {
-#if TMPL_BITS == 32
-        g_uBs3TrapEipHint = pCtxRestore->rip.u32;
-#endif
         Bs3RegCtxRestore(pCtxRestore, BS3REGCTXRESTORE_F_NO_V86_ASSIST);
-    }
     g_fBs3TrapNoV86Assist = false;
     Bs3ExtCtxSaveEx(pExtCtxTrap);
 }
