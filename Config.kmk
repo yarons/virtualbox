@@ -1,4 +1,4 @@
-# $Id: Config.kmk 103903 2024-03-18 17:44:36Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 103978 2024-03-21 03:32:41Z knut.osmundsen@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3632,6 +3632,9 @@ ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK
  if defined(VBOX_JAVAC)
 	$(QUIET)$(APPEND) '$@' 'VBOX_JAVA_VERSION    := $(call VBOX_JAVA_FIGURE_VERSION, $(VBOX_JAVAC))'
  endif
+	$(QUIET)$(APPEND) '$@' '#$(which $(VBOX_XSLTPROC))'
+	$(QUIET)$(APPEND) '$@' 'VBOX_XSLTPROC_VERSION        := $$(firstword $(shell $(VBOX_XSLTPROC) --version | $(SED) -e /libxslt/q | $(SED) -e 's/^.*libxslt \([0-9][0-9]*\)[^0-9]*.*/\1/' ) 0)'
+	$(QUIET)$(APPEND) '$@' 'VBOX_XSLTPROC_LIBXML_VERSION := $$(firstword $(shell $(VBOX_XSLTPROC) --version | $(SED) -e /libxml/q  | $(SED) -e 's/^.*libxml \([0-9][0-9]*\)[^0-9]*.*/\1/'  ) 0)'
 
 	$(QUIET)$(ECHO) '========= START OF $@ ========='
 	$(QUIET)$(CAT) $@
@@ -9224,7 +9227,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103903 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 103978 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
