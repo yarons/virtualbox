@@ -1,4 +1,4 @@
-/* $Id: d3d11render.cpp 100055 2023-06-02 15:33:58Z vitali.pelenjow@oracle.com $ */
+/* $Id: d3d11render.cpp 103983 2024-03-21 12:06:03Z vitali.pelenjow@oracle.com $ */
 /** @file
  * Gallium D3D testcase. Simple D3D11 tests.
  */
@@ -27,6 +27,10 @@
 
 #include "d3d11render.h"
 
+
+/*
+ * Utilities
+ */
 
 #if 0
 //
@@ -676,6 +680,7 @@ HRESULT D3D11RenderDrawIndexed::DoRender(D3D11DeviceProvider *pDP)
     return S_OK;
 }
 
+//#include "D3D11RenderVMCloud.txt"
 
 /*
  * "Public" interface.
@@ -695,6 +700,8 @@ D3D11Render *CreateRender(int iRenderId)
             return new D3D11RenderDoubleVB(true);
         case 4:
             return new D3D11RenderDrawIndexed();
+//        case 5:
+//            return new D3D11RenderTest();
         default:
             break;
     }
