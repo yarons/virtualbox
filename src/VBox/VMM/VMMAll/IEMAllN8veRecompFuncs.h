@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103985 2024-03-21 12:23:03Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103986 2024-03-21 12:24:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -1917,7 +1917,7 @@ iemNativeEmitIfGregBitSet(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t i
     uint8_t const idxGstFullReg = iemNativeRegAllocTmpForGuestReg(pReNative, &off, IEMNATIVEGSTREG_GPR(iGReg),
                                                                   kIemNativeGstRegUse_ReadOnly);
 
-    off = iemNativeEmitTestAnyBitsInGprAndJmpToLabelIfNoneSet(pReNative, off, idxGstFullReg, RT_BIT_64(iBitNo), pEntry->idxLabelElse);
+    off = iemNativeEmitTestBitInGprAndJmpToLabelIfNotSet(pReNative, off, idxGstFullReg, iBitNo, pEntry->idxLabelElse);
 
     iemNativeRegFreeTmp(pReNative, idxGstFullReg);
 
