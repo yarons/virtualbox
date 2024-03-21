@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolBox.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -100,7 +100,7 @@ public:
 protected:
 
     virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE;
-    virtual void retranslateUi() /* override final */;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

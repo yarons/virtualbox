@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISlidingWidget.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class declaration.
  */
@@ -76,7 +76,7 @@ public:
     UISlidingWidget(Qt::Orientation enmOrientation, QWidget *pParent = 0);
 
     /** Holds the minimum widget size. */
-    virtual QSize minimumSizeHint() const /* pverride */;
+    virtual QSize minimumSizeHint() const RT_OVERRIDE;
 
     /** Defines @a pWidget1 and @a pWidget2. */
     void setWidgets(QWidget *pWidget1, QWidget *pWidget2);

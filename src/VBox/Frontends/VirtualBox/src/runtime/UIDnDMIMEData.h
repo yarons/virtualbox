@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDnDMIMEData.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
@@ -99,9 +99,9 @@ public slots:
 protected:
     /** @name Overridden functions of QMimeData.
      * @{ */
-    virtual QStringList formats(void) const;
+    virtual QStringList formats(void) const RT_OVERRIDE;
 
-    virtual bool hasFormat(const QString &mimeType) const;
+    virtual bool hasFormat(const QString &mimeType) const RT_OVERRIDE;
 
     virtual QVariant retrieveData(const QString &strMIMEType, QMetaType metaType) const RT_OVERRIDE;
     /** @}  */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMNamePathPage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPage class declaration.
  */
@@ -67,10 +67,10 @@ private slots:
 
 private:
 
-    void initializePage();
+    void initializePage() RT_OVERRIDE;
     void prepare(const QString &strDefaultClonePath);
     /** Validation stuff */
-    bool isComplete() const;
+    bool isComplete() const RT_OVERRIDE;
 
     QIRichTextLabel *m_pMainLabel;
     UICloneVMNamePathEditor *m_pNamePathEditor;

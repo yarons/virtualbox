@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -143,12 +143,12 @@ public:
                  IVirtualBoxErrorInfo *aNext = NULL);
 
     // IVirtualBoxErrorInfo properties
-    STDMETHOD(COMGETTER(ResultCode))(LONG *aResultCode);
-    STDMETHOD(COMGETTER(ResultDetail))(LONG *aResultDetail);
-    STDMETHOD(COMGETTER(InterfaceID))(BSTR *aIID);
-    STDMETHOD(COMGETTER(Component))(BSTR *aComponent);
-    STDMETHOD(COMGETTER(Text))(BSTR *aText);
-    STDMETHOD(COMGETTER(Next))(IVirtualBoxErrorInfo **aNext);
+    STDMETHOD(COMGETTER(ResultCode))(LONG *aResultCode) RT_OVERRIDE;
+    STDMETHOD(COMGETTER(ResultDetail))(LONG *aResultDetail) RT_OVERRIDE;
+    STDMETHOD(COMGETTER(InterfaceID))(BSTR *aIID) RT_OVERRIDE;
+    STDMETHOD(COMGETTER(Component))(BSTR *aComponent) RT_OVERRIDE;
+    STDMETHOD(COMGETTER(Text))(BSTR *aText) RT_OVERRIDE;
+    STDMETHOD(COMGETTER(Next))(IVirtualBoxErrorInfo **aNext) RT_OVERRIDE;
 
     const char* getComponentName() const { return "VirtualBoxErrorInfo"; }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumItem.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -110,7 +110,7 @@ public:
     bool isUsedInSnapshots() const { return m_guiMedium.isUsedInSnapshots(); }
 
     /** Returns whether <i>this</i> item is less than @a other one. */
-    bool operator<(const QTreeWidgetItem &other) const;
+    bool operator<(const QTreeWidgetItem &other) const RT_OVERRIDE;
     /** Returns whether the medium can be modified. For
       * simplicity's sake this returns false if one of the attached vms is not
       * in PoweredOff or Aborted state. */

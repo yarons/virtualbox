@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterWidget.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerFilterWidget.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -85,7 +85,7 @@ protected:
     virtual void        mouseMoveEvent(QMouseEvent *) RT_OVERRIDE {}
     /* Override the mousePressEvent to control how selection is done: */
     virtual void        mousePressEvent(QMouseEvent * event) RT_OVERRIDE;
-    virtual void        mouseReleaseEvent(QMouseEvent *){}
+    virtual void        mouseReleaseEvent(QMouseEvent *) RT_OVERRIDE {}
     virtual void        paintEvent(QPaintEvent *event) RT_OVERRIDE;
 
 private slots:

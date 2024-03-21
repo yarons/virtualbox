@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotDetailsWidget.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -141,7 +141,7 @@ public:
     void setText(const QString &strText);
 
     /** Returns the minimum size-hint. */
-    QSize minimumSizeHint() const;
+    QSize minimumSizeHint() const RT_OVERRIDE;
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class implementation.
  */
@@ -130,7 +130,7 @@ protected:
 private:
 
     void prepare();
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
     UISearchLineEdit  *m_pSearchLineEdit;
     QIToolButton      *m_pNextButton;
     QIToolButton      *m_pPreviousButton;

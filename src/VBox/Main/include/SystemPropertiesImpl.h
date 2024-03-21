@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: SystemPropertiesImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 
 /** @file
  *
@@ -58,7 +58,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(VirtualBox *aParent);
-    void uninit();
+    void uninit() RT_OVERRIDE;
 
     // public methods for internal purposes only
     // (ensure there is a caller and a read lock before calling them!)
@@ -122,7 +122,7 @@ private:
     HRESULT setProxyMode(ProxyMode_T aProxyMode) RT_OVERRIDE;
     HRESULT getProxyURL(com::Utf8Str &aProxyURL) RT_OVERRIDE;
     HRESULT setProxyURL(const com::Utf8Str &aProxyURL) RT_OVERRIDE;
-    HRESULT getSupportedPlatformArchitectures(std::vector<PlatformArchitecture_T> &aSupportedPlatformArchitectures);
+    HRESULT getSupportedPlatformArchitectures(std::vector<PlatformArchitecture_T> &aSupportedPlatformArchitectures) RT_OVERRIDE;
     HRESULT getSupportedClipboardModes(std::vector<ClipboardMode_T> &aSupportedClipboardModes) RT_OVERRIDE;
     HRESULT getSupportedDnDModes(std::vector<DnDMode_T> &aSupportedDnDModes) RT_OVERRIDE;
     HRESULT getSupportedPointingHIDTypes(std::vector<PointingHIDType_T> &aSupportedPointingHIDTypes) RT_OVERRIDE;

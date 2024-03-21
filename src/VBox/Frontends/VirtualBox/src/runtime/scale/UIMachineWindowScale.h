@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineWindowScale.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -47,25 +47,25 @@ public:
 private:
 
     /** Prepare main-layout routine. */
-    void prepareMainLayout();
+    void prepareMainLayout() RT_OVERRIDE;
     /** Prepare notification-center routine. */
-    void prepareNotificationCenter();
+    void prepareNotificationCenter() RT_OVERRIDE;
 #ifdef VBOX_WS_MAC
     /** Prepare visual-state routine. */
-    void prepareVisualState();
+    void prepareVisualState() RT_OVERRIDE;
 #endif /* VBOX_WS_MAC */
     /** Load settings routine. */
-    void loadSettings();
+    void loadSettings() RT_OVERRIDE;
 
 #ifdef VBOX_WS_MAC
     /** Cleanup visual-state routine. */
-    void cleanupVisualState();
+    void cleanupVisualState() RT_OVERRIDE;
 #endif /* VBOX_WS_MAC */
     /** Cleanup notification-center routine. */
-    void cleanupNotificationCenter();
+    void cleanupNotificationCenter() RT_OVERRIDE;
 
     /** Updates visibility according to visual-state. */
-    void showInNecessaryMode();
+    void showInNecessaryMode() RT_OVERRIDE;
 
     /** Restores cached window geometry. */
     virtual void restoreCachedGeometry() RT_OVERRIDE;
@@ -76,7 +76,7 @@ private:
     virtual void normalizeGeometry(bool fAdjustPosition, bool fResizeToGuestDisplay) RT_OVERRIDE;
 
     /** Common @a pEvent handler. */
-    bool event(QEvent *pEvent);
+    bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Returns whether this window is maximized. */
     bool isMaximizedChecked();

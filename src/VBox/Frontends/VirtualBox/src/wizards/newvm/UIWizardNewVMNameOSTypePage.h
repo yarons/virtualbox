@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMNameOSTypePage class declaration.
  */
@@ -90,7 +90,7 @@ private:
     /** Prepare stuff. */
     void prepare();
     void createConnections();
-    void initializePage();
+    void initializePage() RT_OVERRIDE;
     QWidget *createNameOSTypeWidgets();
     void markWidgets() const;
     void setSkipCheckBoxEnable();

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMTypePage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMTypePage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMTypePage class declaration.
  */
@@ -56,9 +56,9 @@ private slots:
 
 private:
 
-    void initializePage();
+    void initializePage() RT_OVERRIDE;
     void prepare();
-    bool validatePage();
+    bool validatePage() RT_OVERRIDE;
 
     QIRichTextLabel *m_pLabel;
     bool m_fAdditionalInfo;

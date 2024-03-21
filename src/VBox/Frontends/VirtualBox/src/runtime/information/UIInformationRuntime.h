@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -61,7 +61,7 @@ public:
 
 protected:
 
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

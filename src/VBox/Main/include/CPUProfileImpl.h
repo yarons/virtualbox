@@ -1,4 +1,4 @@
-/* $Id: CPUProfileImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: CPUProfileImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for CPU profiles, VBoxSVC.
  */
@@ -48,7 +48,7 @@ public:
     HRESULT FinalConstruct();
     void    FinalRelease();
     HRESULT initFromDbEntry(struct CPUMDBENTRY const *a_pDbEntry) RT_NOEXCEPT;
-    void    uninit();
+    void    uninit() RT_OVERRIDE;
     /** @} */
 
     bool    i_match(CPUArchitecture_T a_enmArchitecture, CPUArchitecture_T a_enmSecondaryArch,

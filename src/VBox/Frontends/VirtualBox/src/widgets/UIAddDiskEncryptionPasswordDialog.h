@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class declaration.
  */
@@ -80,7 +80,7 @@ private slots:
     /** Performs passwords validation.
       * If all passwords are valid,
       * this slot calls to base-class. */
-    void accept();
+    void accept() RT_OVERRIDE;
 
 private:
 

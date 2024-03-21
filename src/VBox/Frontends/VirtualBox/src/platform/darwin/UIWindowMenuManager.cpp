@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWindowMenuManager.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -59,7 +59,7 @@ public:
     void removeWindow(QWidget *pWindow);
 
     /** Handles translation event. */
-    void retranslateUi();
+    virtual void retranslateUi();
 
     /** Updates toggle action states according to passed @a pActiveWindow. */
     void updateStatus(QWidget *pActiveWindow);

@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -60,7 +60,7 @@ public:
     KDeviceType deviceType() const;
 
     /** Performs item translation. */
-    void retranslateUi();
+    virtual void retranslateUi();
 
 private:
 
@@ -99,9 +99,9 @@ public slots:
 protected:
 
     /** Return size hint. */
-    virtual QSize sizeHint() const;
+    virtual QSize sizeHint() const RT_OVERRIDE;
     /** Return minimum size hint. */
-    virtual QSize minimumSizeHint() const;
+    virtual QSize minimumSizeHint() const RT_OVERRIDE;
 
     /** Handles translation event. */
     virtual void retranslateUi() RT_OVERRIDE;

@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class declaration.
  */
@@ -107,7 +107,7 @@ public slots:
     void setPath (const QString& aPath);
 
 protected:
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
     void choose();

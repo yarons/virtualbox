@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 103085 2024-01-26 16:17:43Z alexander.eichner@oracle.com $ */
+/* $Id: UIIndicatorsPool.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -685,7 +685,7 @@ protected slots:
 private slots:
 
     /** Handles state change. */
-    void setState(int iState)
+    void setState(int iState) RT_OVERRIDE
     {
         /* Update animation state: */
         switch (iState)
@@ -918,7 +918,7 @@ protected slots:
 private slots:
 
     /** Handles state change. */
-    void setState(int iState)
+    void setState(int iState) RT_OVERRIDE
     {
         if ((iState & UIMouseStateType_MouseAbsoluteDisabled) &&
             (iState & UIMouseStateType_MouseAbsolute) &&
@@ -1011,7 +1011,7 @@ public slots:
 private:
 
     /** Retranslation routine. */
-    void retranslateUi()
+    virtual void retranslateUi() RT_OVERRIDE
     {
         sltUpdateAppearance();
         setToolTip(QApplication::translate("UIMachineWindowNormal",

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -108,7 +108,7 @@ private:
 
     /** Prepare stuff. */
     void createConnections();
-    void initializePage();
+    void initializePage() RT_OVERRIDE;
     void initializeWidgets();
     /** Set the values of the widget if they depend on OS
       * type like recommended RAM size. The widgets whose values are
@@ -117,8 +117,8 @@ private:
     void cleanupPage();
 
     /** Validation stuff. */
-    bool isComplete() const;
-    bool validatePage();
+    bool isComplete() const RT_OVERRIDE;
+    bool validatePage() RT_OVERRIDE;
 
     bool isProductKeyWidgetEnabled() const;
     void disableEnableUnattendedRelatedWidgets(bool fEnabled);

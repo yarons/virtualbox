@@ -1,4 +1,4 @@
-/* $Id: HostDrivePartitionImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDrivePartitionImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - IHostDrivePartition implementation, VBoxSVC.
  */
@@ -47,7 +47,7 @@ public:
     /** @name Public initializer/uninitializer for internal purposes only.
      * @{ */
     HRESULT initFromDvmVol(RTDVMVOLUME hVol);
-    void uninit();
+    void uninit() RT_OVERRIDE;
     /** @} */
 
 private:

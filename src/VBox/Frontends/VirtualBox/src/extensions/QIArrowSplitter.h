@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIArrowSplitter.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowSplitter class declaration.
  */
@@ -65,7 +65,7 @@ public:
     QIArrowSplitter(QWidget *pParent = 0);
 
     /** Returns minimum size-hint. */
-    QSize minimumSizeHint() const;
+    QSize minimumSizeHint() const RT_OVERRIDE;
 
     /** Defines the @a strName for the switch-button. */
     void setName(const QString &strName);

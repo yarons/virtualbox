@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -180,7 +180,7 @@ protected:
     void setKeyboardHandler(UIKeyboardHandler *pKeyboardHandler);
     void setMouseHandler(UIMouseHandler *pMouseHandler);
     void addMachineWindow(UIMachineWindow *pMachineWindow);
-    void retranslateUi();
+    void retranslateUi() RT_OVERRIDE;
 #ifdef VBOX_WS_MAC
     bool isDockIconPreviewEnabled() const { return m_fIsDockIconEnabled; }
     void setDockIconPreviewEnabled(bool fIsDockIconPreviewEnabled) { m_fIsDockIconEnabled = fIsDockIconPreviewEnabled; }
@@ -221,7 +221,7 @@ protected:
     //virtual void cleanupRequiredFeatures() {}
 
     /* Handler: Event-filter stuff: */
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

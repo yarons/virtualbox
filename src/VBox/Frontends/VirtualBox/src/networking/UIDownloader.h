@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDownloader.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -111,7 +111,7 @@ protected:
     QString pathSHA256SumsFile() const { return m_strPathSHA256SumsFile; }
 
     /** Returns description of the current network operation. */
-    virtual QString description() const;
+    virtual QString description() const RT_OVERRIDE;
 
     /** Handles network-reply progress for @a iReceived bytes of @a iTotal. */
     virtual void processNetworkReplyProgress(qint64 iReceived, qint64 iTotal) RT_OVERRIDE;

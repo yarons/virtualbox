@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -71,7 +71,7 @@ public:
     SFTreeViewItem(SFTreeViewItem *pParent, FormatType enmFormat);
 
     /** Returns whether this item is less than the @a other one. */
-    bool operator<(const QTreeWidgetItem &other) const;
+    bool operator<(const QTreeWidgetItem &other) const RT_OVERRIDE;
 
     /** Returns child item number @a iIndex. */
     SFTreeViewItem *child(int iIndex) const;

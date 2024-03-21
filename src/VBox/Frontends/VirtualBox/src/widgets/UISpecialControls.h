@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISpecialControls.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISpecialControls declarations.
  */
@@ -146,7 +146,7 @@ public:
     ~UIHelpButton();
 
     /** Returns size-hint. */
-    QSize sizeHint() const;
+    QSize sizeHint() const RT_OVERRIDE;
 # endif /* VBOX_WS_MAC */
 
     /** Inits this button from pOther. */
@@ -155,11 +155,11 @@ public:
 protected:
 
     /** Handles translation event. */
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
 # ifdef VBOX_WS_MAC
     /** Handles button hit as certain @a position. */
-    bool hitButton(const QPoint &position) const;
+    bool hitButton(const QPoint &position) const RT_OVERRIDE;
 
     /** Handles paint @a pEvent. */
     virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;

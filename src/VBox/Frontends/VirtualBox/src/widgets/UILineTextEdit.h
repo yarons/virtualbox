@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UILineTextEdit.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class declaration.
  */
@@ -56,10 +56,10 @@ public:
     QString text() const;
 
 protected:
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
-    void open();
+    void open() RT_OVERRIDE;
 
 private:
     /* Private member vars */
@@ -87,7 +87,7 @@ public:
     QString text() const { return m_strText; }
 
 protected:
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
     void edit();

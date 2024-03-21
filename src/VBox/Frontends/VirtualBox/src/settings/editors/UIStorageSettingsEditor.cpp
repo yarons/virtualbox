@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -237,7 +237,7 @@ public:
     virtual ItemType rtti() const = 0;
 
     /** Returns child item with specified @a iIndex. */
-    virtual AbstractItem *childItem(int iIndex) const = 0;
+    virtual AbstractItem *childItem(int iIndex) const RT_OVERRIDE = 0;
     /** Returns child item with specified @a uId. */
     virtual AbstractItem *childItemById(const QUuid &uId) const = 0;
     /** Returns position of specified child @a pItem. */
@@ -742,7 +742,7 @@ public:
 private:
 
     /** Returns model flags for @a specifiedIndex. */
-    Qt::ItemFlags flags(const QModelIndex &specifiedIndex) const;
+    Qt::ItemFlags flags(const QModelIndex &specifiedIndex) const RT_OVERRIDE;
 
     /** Holds the parent editor this model belongs to. */
     UIStorageSettingsEditor *m_pParentEditor;

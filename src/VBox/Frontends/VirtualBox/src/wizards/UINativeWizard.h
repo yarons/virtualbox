@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINativeWizard.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -116,7 +116,7 @@ public slots:
 
     /** Executes wizard in window modal mode.
       * @note You shouldn't have to override it! */
-    virtual int exec() /* final */;
+    virtual int exec() RT_OVERRIDE RT_FINAL;
     /** Shows wizard in non-mode.
       * @note You shouldn't have to override it! */
     virtual void show() /* final */;

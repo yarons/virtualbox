@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxLicenseViewer.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class declaration.
  */
@@ -71,7 +71,7 @@ protected:
 private slots:
 
     /** Executes the dialog. */
-    int exec();
+    int exec() RT_OVERRIDE;
 
     /** Handles scroll-bar moving by a certain @a iValue. */
     void sltHandleScrollBarMoved(int iValue);

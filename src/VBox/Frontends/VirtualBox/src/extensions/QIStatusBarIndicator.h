@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIStatusBarIndicator.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface declaration.
  */
@@ -65,7 +65,7 @@ public:
     QIStatusBarIndicator(QWidget *pParent = 0);
 
     /** Returns size-hint. */
-    virtual QSize sizeHint() const { return m_size.isValid() ? m_size : QWidget::sizeHint(); }
+    virtual QSize sizeHint() const RT_OVERRIDE { return m_size.isValid() ? m_size : QWidget::sizeHint(); }
 
 protected:
 

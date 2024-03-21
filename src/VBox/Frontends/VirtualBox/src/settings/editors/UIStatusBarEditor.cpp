@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditor.cpp 101562 2023-10-23 16:55:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIStatusBarEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditor class implementation.
  */
@@ -83,7 +83,7 @@ public:
     IndicatorType type() const { return m_enmType; }
 
     /** Returns button size-hint. */
-    QSize sizeHint() const { return m_size; }
+    QSize sizeHint() const RT_OVERRIDE { return m_size; }
 
     /** Returns whether button is checked. */
     bool isChecked() const;

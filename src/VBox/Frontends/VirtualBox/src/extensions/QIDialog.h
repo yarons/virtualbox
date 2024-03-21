@@ -1,4 +1,4 @@
-/* $Id: QIDialog.h 100871 2023-08-14 13:21:44Z sergey.dubov@oracle.com $ */
+/* $Id: QIDialog.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialog class declaration.
  */
@@ -53,7 +53,7 @@ public:
     QIDialog(QWidget *pParent = 0, Qt::WindowFlags enmFlags = Qt::WindowFlags());
 
     /** Defines whether the dialog is @a fVisible. */
-    void setVisible(bool fVisible);
+    void setVisible(bool fVisible) RT_OVERRIDE;
 
 public slots:
 

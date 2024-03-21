@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIIndicatorsPool.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
@@ -110,7 +110,7 @@ private:
     void cleanup();
 
     /** Context-menu event handler. */
-    void contextMenuEvent(QContextMenuEvent *pEvent);
+    void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
 
     /** Returns position for passed @a indicatorType. */
     int indicatorPosition(IndicatorType indicatorType) const;

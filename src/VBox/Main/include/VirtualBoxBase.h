@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VirtualBoxBase.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -608,19 +608,19 @@ public:
     DECLARE_TRANSLATE_METHODS(cls)
 
 #define VIRTUALBOXBASE_ADD_VIRTUAL_COMPONENT_METHODS(cls, iface) \
-    virtual const IID& getClassIID() const \
+    virtual const IID &getClassIID() const RT_OVERRIDE \
     { \
         return cls::getStaticClassIID(); \
     } \
-    static const IID& getStaticClassIID() \
+    static const IID &getStaticClassIID() \
     { \
         return COM_IIDOF(iface); \
     } \
-    virtual const char* getComponentName() const \
+    virtual const char *getComponentName() const RT_OVERRIDE \
     { \
         return cls::getStaticComponentName(); \
     } \
-    static const char* getStaticComponentName() \
+    static const char *getStaticComponentName() \
     { \
         return #cls; \
     }
@@ -641,7 +641,7 @@ public:
 #else // !VBOX_WITH_XPCOM
   #define VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(cls, iface) \
     VIRTUALBOXBASE_ADD_VIRTUAL_COMPONENT_METHODS(cls, iface) \
-    STDMETHOD(InterfaceSupportsErrorInfo)(REFIID riid) \
+    STDMETHOD(InterfaceSupportsErrorInfo)(REFIID riid) RT_OVERRIDE \
     { \
         const ATL::_ATL_INTMAP_ENTRY* pEntries = cls::_GetEntries(); \
         Assert(pEntries); \

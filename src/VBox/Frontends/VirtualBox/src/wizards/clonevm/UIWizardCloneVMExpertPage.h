@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMExpertPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVMExpertPage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMExpertPage class declaration.
  */
@@ -66,12 +66,12 @@ private slots:
 private:
 
     /** Prepare stuff. */
-    void initializePage();
+    void initializePage() RT_OVERRIDE;
     void prepare(const QString &strOriginalName, const QString &strDefaultPath, bool fShowChildsOption);
 
     /** Validation stuff. */
-    bool isComplete() const;
-    bool validatePage();
+    bool isComplete() const RT_OVERRIDE;
+    bool validatePage() RT_OVERRIDE;
     void setCloneModeGroupBoxEnabled();
 
     UICloneVMNamePathEditor *m_pNamePathGroupBox;

@@ -1,4 +1,4 @@
-/* $Id: UIFileSystemModel.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileSystemModel.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileSystemModel class declaration.
  */
@@ -198,7 +198,7 @@ public:
     ~UIFileSystemModel();
 
     QVariant       data(const QModelIndex &index, int role) const RT_OVERRIDE;
-    bool           setData(const QModelIndex &index, const QVariant &value, int role);
+    bool           setData(const QModelIndex &index, const QVariant &value, int role) RT_OVERRIDE;
 
     Qt::ItemFlags  flags(const QModelIndex &index) const RT_OVERRIDE;
     QVariant       headerData(int section, Qt::Orientation orientation,

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -55,13 +55,13 @@ public:
 private slots:
 
     /* Handlers: Dialog stuff: */
-    void accept();
-    void reject();
+    void accept() RT_OVERRIDE;
+    void reject() RT_OVERRIDE;
 
 private:
 
     /* Handler: Translation stuff: */
-    void retranslateUi();
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /* Widgets: */
     UIPortForwardingTable *m_pTable;

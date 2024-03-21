@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103943 2024-03-20 10:23:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -382,7 +382,7 @@ public:
     int      columnCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;
     QVariant data(const QModelIndex &index, int role) const RT_OVERRIDE;
     void clearData();
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const RT_OVERRIDE;
     void setColumnCaptions(const QMap<int, QString>& captions);
     void setColumnVisible(const QMap<int, bool>& columnVisible);
     bool columnVisible(int iColumnId) const;

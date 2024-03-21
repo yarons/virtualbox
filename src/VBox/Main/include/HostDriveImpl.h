@@ -1,4 +1,4 @@
-/* $Id: HostDriveImpl.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: HostDriveImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Main - IHostDrive implementation, VBoxSVC.
  */
@@ -45,7 +45,7 @@ public:
     /** @name Public initializer/uninitializer for internal purposes only.
      * @{ */
     HRESULT initFromPathAndModel(const com::Utf8Str &drivePath, const com::Utf8Str &driveModel);
-    void uninit();
+    void uninit() RT_OVERRIDE;
     /** @} */
 
     com::Utf8Str i_getDrivePath() { return m.drivePath; }
