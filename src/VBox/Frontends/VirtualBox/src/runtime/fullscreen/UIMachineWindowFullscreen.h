@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.h 103989 2024-03-21 14:02:02Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -67,7 +67,7 @@ protected:
 
 #ifdef VBOX_WS_MAC
     /** Mac OS X: Handles native notifications @a strNativeNotificationName for 'fullscreen' window. */
-    void handleNativeNotification(const QString &strNativeNotificationName);
+    void handleNativeNotification(const QString &strNativeNotificationName)  RT_OVERRIDE RT_FINAL;
     /** Mac OS X: Returns whether window is in 'fullscreen' transition. */
     bool isInFullscreenTransition() const { return m_fIsInFullscreenTransition; }
 #endif /* VBOX_WS_MAC */
