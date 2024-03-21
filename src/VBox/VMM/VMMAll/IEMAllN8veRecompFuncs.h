@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 103979 2024-03-21 09:31:47Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 103985 2024-03-21 12:23:03Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -8207,7 +8207,7 @@ iemNativeEmitSimdSseUpdateMxcsr(PIEMRECOMPILERSTATE pReNative, uint32_t off, uin
 
     /* Free but don't flush the MXCSR register. */
     iemNativeRegFreeTmp(pReNative, idxRegMxCsr);
-    iemNativeVarRegisterRelease(pReNative, idxVarRegMxCsr);
+    iemNativeVarRegisterRelease(pReNative, idxMxCsrVar);
     iemNativeRegFreeTmp(pReNative, idxVarRegTmp);
 
     return off;
