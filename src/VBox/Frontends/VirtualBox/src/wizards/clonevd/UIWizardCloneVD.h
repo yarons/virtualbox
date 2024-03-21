@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 103971 2024-03-20 16:36:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVD.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -81,7 +81,7 @@ public:
 
 protected:
 
-    virtual void populatePages() final override;
+    virtual void populatePages() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

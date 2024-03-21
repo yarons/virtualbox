@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 103950 2024-03-20 11:41:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -208,8 +208,8 @@ signals:
 public:
 
     UIDiskFormatsGroupBox(bool fExpertMode, KDeviceType enmDeviceType, QWidget *pParent = 0);
-    virtual CMediumFormat mediumFormat() const /* override final */;
-    virtual void setMediumFormat(const CMediumFormat &mediumFormat) /* override final */;
+    virtual CMediumFormat mediumFormat() const RT_OVERRIDE RT_FINAL;
+    virtual void setMediumFormat(const CMediumFormat &mediumFormat) RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -235,8 +235,8 @@ signals:
 public:
 
     UIDiskFormatsComboBox(bool fExpertMode, KDeviceType enmDeviceType, QWidget *pParent = 0);
-    virtual CMediumFormat mediumFormat() const /* override final */;
-    virtual void setMediumFormat(const CMediumFormat &mediumFormat) /* override final */;
+    virtual CMediumFormat mediumFormat() const RT_OVERRIDE RT_FINAL;
+    virtual void setMediumFormat(const CMediumFormat &mediumFormat) RT_OVERRIDE RT_FINAL;
 
 private slots:
 

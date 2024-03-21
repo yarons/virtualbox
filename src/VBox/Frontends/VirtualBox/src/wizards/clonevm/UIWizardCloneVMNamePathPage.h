@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMNamePathPage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardCloneVMNamePathPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMNamePathPage class declaration.
  */
@@ -63,7 +63,7 @@ private slots:
     void sltMACAddressClonePolicyChanged(MACAddressClonePolicy enmMACAddressClonePolicy);
     void sltKeepDiskNamesToggled(bool fKeepDiskNames);
     void sltKeepHardwareUUIDsToggled(bool fKeepHardwareUUIDs);
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

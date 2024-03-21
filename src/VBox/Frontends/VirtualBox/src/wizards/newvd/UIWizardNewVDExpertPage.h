@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDExpertPage.h 103970 2024-03-20 16:20:17Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDExpertPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDExpertPage class declaration.
  */
@@ -57,17 +57,17 @@ private slots:
     void sltMediumPathChanged(const QString &strPath);
     void sltMediumSizeChanged(qulonglong uSize);
     /** Translation stuff. */
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
     /** Prepare stuff. */
     void prepare();
-    virtual void initializePage() override final;
+    virtual void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Validation stuff. */
-    virtual bool isComplete() const override final;
-    virtual bool validatePage() override final;
+    virtual bool isComplete() const RT_OVERRIDE RT_FINAL;
+    virtual bool validatePage() RT_OVERRIDE RT_FINAL;
     void updateDiskWidgetsAfterMediumFormatChange();
 
    /** @name Widgets

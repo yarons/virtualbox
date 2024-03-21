@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -171,7 +171,7 @@ void UIIndicatorScrollBar::clearMarkingsVector()
     m_markingsVector.clear();
 }
 
-void UIIndicatorScrollBar::paintEvent(QPaintEvent *pEvent) /* override */
+void UIIndicatorScrollBar::paintEvent(QPaintEvent *pEvent) /* RT_OVERRIDE */
 {
     QScrollBar::paintEvent(pEvent);
     /* Put a red line to mark the bookmark positions: */

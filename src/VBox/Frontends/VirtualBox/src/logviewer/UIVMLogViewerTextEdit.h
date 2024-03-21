@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerTextEdit.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -34,6 +34,7 @@
 class UILogScrollLabel;
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UIVMLogBookmark.h"
 
 /* Qt includes: */
@@ -86,11 +87,11 @@ public:
 
 protected:
 
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent) override;
-    virtual void resizeEvent(QResizeEvent *pEvent) override;
-    virtual void mouseMoveEvent(QMouseEvent *pEvent) override;
-    virtual void leaveEvent(QEvent * pEvent) override;
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) override;
+    virtual void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+    virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
+    virtual void leaveEvent(QEvent * pEvent) RT_OVERRIDE;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

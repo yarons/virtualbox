@@ -1,4 +1,4 @@
-/* $Id: UINotificationProgressTask.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationProgressTask.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationProgressTask class declaration.
  */
@@ -59,10 +59,10 @@ protected:
     /** Creates and returns started progress-wrapper required to init UIProgressObject.
       * @note  You don't need to reload it, it uses pParent's createProgress()
       *        which should be reloaded in your pParent sub-class. */
-    virtual CProgress createProgress() /* override final */;
+    virtual CProgress createProgress() RT_OVERRIDE RT_FINAL;
     /** Handles finished @a comProgress wrapper.
       * @note  You don't need to reload it. */
-    virtual void handleProgressFinished(CProgress &comProgress) /* override final */;
+    virtual void handleProgressFinished(CProgress &comProgress) RT_OVERRIDE RT_FINAL;
 
 private:
 

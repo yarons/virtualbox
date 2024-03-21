@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 103914 2024-03-19 12:08:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -525,7 +525,7 @@ private:
     /** Construcs global VirtualBox object of passed @a enmType. */
     UICommon(UIType enmType);
     /** Destrucs global VirtualBox object. */
-    virtual ~UICommon() /* override final */;
+    virtual ~UICommon() RT_OVERRIDE RT_FINAL;
 
     /** Prepares all. */
     void prepare();

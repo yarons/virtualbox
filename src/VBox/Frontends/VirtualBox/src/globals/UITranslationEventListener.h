@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.h 103920 2024-03-19 14:40:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UITranslationEventListener.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class declaration.
  */
@@ -53,7 +53,7 @@ public:
 
 protected:
 
-    bool eventFilter(QObject *pObject, QEvent *pEvent) override final;
+    bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private:
 

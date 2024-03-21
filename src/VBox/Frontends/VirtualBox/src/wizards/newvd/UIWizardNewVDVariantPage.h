@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDVariantPage.h 103967 2024-03-20 15:13:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDVariantPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDVariantPage class declaration.
  */
@@ -50,12 +50,12 @@ public:
 private slots:
 
     void sltMediumVariantChanged(qulonglong uVariant);
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
-    void initializePage() override final;
-    bool isComplete() const override final;
+    void initializePage() RT_OVERRIDE RT_FINAL;
+    bool isComplete() const RT_OVERRIDE RT_FINAL;
     void prepare();
     void setWidgetVisibility(const CMediumFormat &mediumFormat);
 

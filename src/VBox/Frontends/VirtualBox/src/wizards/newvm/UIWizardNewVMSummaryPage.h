@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMSummaryPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMSummaryPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMSummaryPage class declaration.
  */
@@ -49,15 +49,15 @@ public:
 
 private slots:
 
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
     void prepare();
     void createConnections();
-    virtual void initializePage() override final;
-    virtual bool isComplete() const override final;
-    virtual bool validatePage() override final;
+    virtual void initializePage() RT_OVERRIDE RT_FINAL;
+    virtual bool isComplete() const RT_OVERRIDE RT_FINAL;
+    virtual bool validatePage() RT_OVERRIDE RT_FINAL;
     /** @name Widgets
      * @{ */
        QIRichTextLabel *m_pLabel;

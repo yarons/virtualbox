@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageVMs.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class declaration.
  */
@@ -76,20 +76,20 @@ protected:
     UIWizardExportApp *wizard() const;
 
     /** Performs page initialization. */
-    virtual void initializePage() override final;
+    virtual void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Returns whether page is complete. */
-    virtual bool isComplete() const override final;
+    virtual bool isComplete() const RT_OVERRIDE RT_FINAL;
 
     /** Performs page validation. */
-    virtual bool validatePage() override final;
+    virtual bool validatePage() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
     /** Handles VM item selection change. */
     void sltHandleVMItemSelectionChanged();
     /** Handles translation event. */
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

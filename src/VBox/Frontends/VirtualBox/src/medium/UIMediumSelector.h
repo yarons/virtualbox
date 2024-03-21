@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMediumSelector.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -99,9 +99,9 @@ protected:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() final override;
-        void showEvent(QShowEvent *pEvent) final override;
-        bool event(QEvent *pEvent) final override;
+        virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
+        void showEvent(QShowEvent *pEvent) RT_OVERRIDE RT_FINAL;
+        bool event(QEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** @} */
 
 private slots:

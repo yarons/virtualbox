@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.cpp 101122 2023-09-14 15:59:37Z sergey.dubov@oracle.com $ */
+/* $Id: UINotificationCenter.cpp 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class implementation.
  */
@@ -63,7 +63,7 @@ public:
     UINotificationScrollArea(QWidget *pParent = 0);
 
     /** Returns minimum size-hint. */
-    virtual QSize minimumSizeHint() const /* override final */;
+    virtual QSize minimumSizeHint() const RT_OVERRIDE RT_FINAL;
 
     /** Assigns scrollable @a pWidget.
       * @note  Keep in mind that's an override, but NOT a virtual method. */
@@ -72,7 +72,7 @@ public:
 protected:
 
     /** Preprocesses @a pEvent for registered @a pWatched object. */
-    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) /* override final */;
+    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 };
 
 

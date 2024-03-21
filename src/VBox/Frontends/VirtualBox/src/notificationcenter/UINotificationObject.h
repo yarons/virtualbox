@@ -1,4 +1,4 @@
-/* $Id: UINotificationObject.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UINotificationObject.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationObject class declaration.
  */
@@ -157,7 +157,7 @@ public:
     /** Constructs notification-progress. */
     UINotificationProgress();
     /** Destructs notification-progress. */
-    virtual ~UINotificationProgress() /* override final */;
+    virtual ~UINotificationProgress() RT_OVERRIDE;
 
     /** Creates and returns started progress-wrapper. */
     virtual CProgress createProgress(COMResult &comResult) = 0;
@@ -229,7 +229,7 @@ public:
     /** Constructs notification-downloader. */
     UINotificationDownloader();
     /** Destructs notification-downloader. */
-    virtual ~UINotificationDownloader() /* override final */;
+    virtual ~UINotificationDownloader() RT_OVERRIDE;
 
     /** Creates and returns started downloader-wrapper. */
     virtual UIDownloader *createDownloader() = 0;

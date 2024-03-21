@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoCreator.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -63,8 +63,8 @@ public:
 
 private:
 
-    virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) override final;
-    virtual void retranslateUi() override;
+    virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point);// RT_OVERRIDE RT_FINAL;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
     QPointer<QMenu>        m_pSubMenu;
 };
 
@@ -119,7 +119,7 @@ public:
 
 protected:
 
-    virtual void retranslateUi() final override;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -210,7 +210,7 @@ public:
 
 protected:
 
-    virtual bool event(QEvent *pEvent) final override;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private slots:
 
@@ -223,7 +223,7 @@ private:
 
     bool saveVISOFile();
     void prepareWidgets(const QString& strVisoSavePath, const QString &strMachineName);
-    virtual void retranslateUi() final override;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
     void loadSettings();
     void saveDialogGeometry();
     void updateWindowTitle();

@@ -1,4 +1,4 @@
-/* $Id: QITreeView.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QITreeView.cpp 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class implementation.
  */
@@ -179,7 +179,7 @@ QAccessibleInterface *QIAccessibilityInterfaceForQITreeViewItem::child(int iInde
     return QAccessible::queryAccessibleInterface(pItem);
 }
 
-int QIAccessibilityInterfaceForQITreeViewItem::indexOfChild(const QAccessibleInterface *pChild) const /* override */
+int QIAccessibilityInterfaceForQITreeViewItem::indexOfChild(const QAccessibleInterface *pChild) const
 {
     /* Search for corresponding child: */
     for (int i = 0; i < childCount(); ++i)

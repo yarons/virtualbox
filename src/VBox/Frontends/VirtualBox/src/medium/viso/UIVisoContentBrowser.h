@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -109,7 +109,7 @@ public slots:
 
 protected:
 
-    void retranslateUi() final override;
+    void retranslateUi() RT_OVERRIDE RT_FINAL;
     void tableViewItemDoubleClick(const QModelIndex &index);
     void setPathFromNavigationWidget(const QString &strPath);
     void setTableRootIndex(QModelIndex index = QModelIndex());

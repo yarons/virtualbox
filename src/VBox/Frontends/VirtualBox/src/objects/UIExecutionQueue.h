@@ -1,4 +1,4 @@
-/* $Id: UIExecutionQueue.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIExecutionQueue.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExecutionQueue class declaration.
  */
@@ -34,6 +34,9 @@
 /* Qt includes: */
 #include <QObject>
 #include <QQueue>
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /** QObject subclass providing GUI with
   * interface for an execution step. */
@@ -74,7 +77,7 @@ public:
     /** Constructs execution queue passing @a pParent to the base-class. */
     UIExecutionQueue(QObject *pParent = 0);
     /** Destructs execution queue. */
-    virtual ~UIExecutionQueue() /* override final */;
+    virtual ~UIExecutionQueue() RT_OVERRIDE RT_FINAL;
 
     /** Enqueues pStep into queue. */
     void enqueue(UIExecutionStep *pStep);

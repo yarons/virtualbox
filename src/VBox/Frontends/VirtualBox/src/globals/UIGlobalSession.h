@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSession.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGlobalSession.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSession class declaration.
  */
@@ -108,7 +108,7 @@ private:
     /** Construcs global COM session object. */
     UIGlobalSession();
     /** Destrucs global COM session object. */
-    virtual ~UIGlobalSession() override final;
+    virtual ~UIGlobalSession() RT_OVERRIDE RT_FINAL;
 
     /** @name General COM stuff.
      * @{ */

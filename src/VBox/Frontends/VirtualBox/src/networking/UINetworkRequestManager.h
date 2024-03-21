@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkRequestManager.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestManager stuff declaration.
  */
@@ -79,7 +79,7 @@ protected:
     /** Constructs network manager. */
     UINetworkRequestManager();
     /** Destructs network manager. */
-    virtual ~UINetworkRequestManager() /* override final */;
+    virtual ~UINetworkRequestManager() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

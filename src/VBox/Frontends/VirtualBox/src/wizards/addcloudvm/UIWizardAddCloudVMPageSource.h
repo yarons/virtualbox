@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class declaration.
  */
@@ -118,7 +118,7 @@ private slots:
     void sltHandleSourceInstanceChange();
 
     /** Handles translation event. */
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

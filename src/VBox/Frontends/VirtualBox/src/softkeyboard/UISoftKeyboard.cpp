@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 103920 2024-03-19 14:40:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISoftKeyboard.cpp 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2341,7 +2341,7 @@ QSize UISoftKeyboardWidget::sizeHint() const
     return QSize(fScale * m_minimumSize.width(), fScale * m_minimumSize.height());
 }
 
-void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* override */
+void UISoftKeyboardWidget::paintEvent(QPaintEvent *pEvent) /* RT_OVERRIDE */
 {
     Q_UNUSED(pEvent);
     if (!m_layouts.contains(m_uCurrentLayoutId))

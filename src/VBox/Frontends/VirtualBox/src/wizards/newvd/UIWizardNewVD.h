@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 103966 2024-03-20 15:08:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -82,11 +82,11 @@ public:
 
 protected:
 
-    virtual void populatePages() final override;
+    virtual void populatePages() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

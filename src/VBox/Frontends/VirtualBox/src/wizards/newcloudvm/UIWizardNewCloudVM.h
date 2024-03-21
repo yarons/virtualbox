@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVM.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -83,12 +83,12 @@ public slots:
 protected:
 
     /** Populates pages. */
-    virtual void populatePages() override final;
+    virtual void populatePages() RT_OVERRIDE RT_FINAL;
 
 private slots:
 
     /** Handles translation event. */
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

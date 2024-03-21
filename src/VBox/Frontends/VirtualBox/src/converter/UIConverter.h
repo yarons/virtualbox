@@ -1,4 +1,4 @@
-/* $Id: UIConverter.h 103167 2024-02-01 17:22:35Z sergey.dubov@oracle.com $ */
+/* $Id: UIConverter.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIConverter declaration.
  */
@@ -83,7 +83,7 @@ private:
     /** Constructs converter. */
     UIConverter() { s_pInstance = this; }
     /** Destructs converter. */
-    virtual ~UIConverter() /* override final */ { s_pInstance = 0; }
+    virtual ~UIConverter() { s_pInstance = 0; }
 
     /** Holds the static instance. */
     static UIConverter *s_pInstance;

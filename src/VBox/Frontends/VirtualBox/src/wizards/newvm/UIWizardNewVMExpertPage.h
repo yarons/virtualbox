@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class declaration.
  */
@@ -94,7 +94,7 @@ private slots:
     void sltStartHeadlessChanged(bool fStartHeadless);
     void sltSelectedEditionChanged(ulong uEditionIndex);
     /** Translation stuff. */
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIApplianceImportEditorWidget.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -48,7 +48,7 @@ public:
     UIApplianceImportEditorWidget(QWidget *pParent = 0);
 
     /** Assigns @a comAppliance and populates widget contents. */
-    virtual void setAppliance(const CAppliance &comAppliance) /* override final */;
+    virtual void setAppliance(const CAppliance &comAppliance) RT_OVERRIDE RT_FINAL;
 
     /** Prepares import by pushing edited data back to appliance. */
     void prepareImport();

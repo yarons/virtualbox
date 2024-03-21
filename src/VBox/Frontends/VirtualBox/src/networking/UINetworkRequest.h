@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UINetworkRequest.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -73,7 +73,7 @@ public:
                      const QString &strTarget,
                      const UserDictionary &requestHeaders);
     /** Destructs network-request. */
-    virtual ~UINetworkRequest() /* override final */;
+    virtual ~UINetworkRequest() RT_OVERRIDE RT_FINAL;
 
     /** Returns the request reply. */
     UINetworkReply *reply() { return m_pReply; }

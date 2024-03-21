@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetCloudNetwork.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsWidgetCloudNetwork.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class declaration.
  */
@@ -76,7 +76,7 @@ public:
                             const QString &strProfileName,
                             const QString &strSubnetId);
     /** Destructs dialog. */
-    virtual ~UISubnetSelectionDialog() override final;
+    virtual ~UISubnetSelectionDialog() RT_OVERRIDE RT_FINAL;
 
     /** Returns cached subnet ID. */
     QString subnetId() const { return m_strSubnetId; }
@@ -84,15 +84,15 @@ public:
 public slots:
 
     /** Accepts dialog. */
-    virtual void accept() override final;
+    virtual void accept() RT_OVERRIDE RT_FINAL;
 
     /** Executes dialog. */
-    virtual int exec() override final;
+    virtual int exec() RT_OVERRIDE RT_FINAL;
 
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() override final;
+    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

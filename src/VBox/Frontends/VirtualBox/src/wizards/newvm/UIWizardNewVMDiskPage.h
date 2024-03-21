@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMDiskPage.h 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMDiskPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMDiskPage class declaration.
  */
@@ -78,7 +78,7 @@ private slots:
     void sltGetWithFileOpenDialog();
     void sltHandleSizeEditorChange(qulonglong uSize);
     void sltFixedCheckBoxToggled(bool fChecked);
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
@@ -89,8 +89,8 @@ private:
     QWidget *createDiskWidgets();
     QWidget *createMediumVariantWidgets(bool fWithLabels);
 
-    virtual void initializePage() override final;
-    virtual bool isComplete() const override final;
+    virtual void initializePage() RT_OVERRIDE RT_FINAL;
+    virtual bool isComplete() const RT_OVERRIDE RT_FINAL;
 
     void setEnableDiskSelectionWidgets(bool fEnabled);
     void setWidgetVisibility(const CMediumFormat &mediumFormat);

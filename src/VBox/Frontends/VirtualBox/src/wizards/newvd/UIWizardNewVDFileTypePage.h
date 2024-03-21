@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.h 103968 2024-03-20 15:35:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class declaration.
  */
@@ -51,15 +51,15 @@ public:
 private slots:
 
     void sltMediumFormatChanged();
-    virtual void sltRetranslateUI() override final;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
     void prepare();
-    void initializePage() override final;
+    void initializePage() RT_OVERRIDE RT_FINAL;
 
     /** Validation stuff. */
-    bool isComplete() const override final;
+    bool isComplete() const RT_OVERRIDE RT_FINAL;
 
     QIRichTextLabel *m_pLabel;
     UIDiskFormatsGroupBox *m_pFormatButtonGroup;
