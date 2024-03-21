@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerSeamless.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIKeyboardHandlerSeamless.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerSeamless class declaration.
  */
@@ -51,7 +51,7 @@ private:
 
 #ifndef VBOX_WS_MAC
     /** General event-filter. */
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 #endif /* !VBOX_WS_MAC */
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerFullscreen.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIKeyboardHandlerFullscreen.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerFullscreen class declaration.
  */
@@ -50,7 +50,7 @@ public:
 private:
 
     /** General event-filter. */
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_fullscreen_UIKeyboardHandlerFullscreen_h */

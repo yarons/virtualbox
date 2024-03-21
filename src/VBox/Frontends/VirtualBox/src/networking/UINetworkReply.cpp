@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkReply.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -111,7 +111,7 @@ private:
         int performMainRequest();
 
         /** Performs whole thread functionality. */
-        void run();
+        void run() RT_OVERRIDE RT_FINAL;
 
         /** Handles download progress callback.
           * @param  cbDownloadTotal  Brings the total amount of bytes to be received.

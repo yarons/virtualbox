@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.h 98520 2023-02-09 14:15:09Z sergey.dubov@oracle.com $ */
+/* $Id: UIMouseHandler.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class declaration.
  */
@@ -108,7 +108,7 @@ protected:
     UIMachine *uimachine() const;
 
     /* Event handler for registered machine-view(s): */
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
     /* Separate function to handle most of existing mouse-events: */
     bool mouseEvent(int iEventType, ulong uScreenId,
@@ -154,4 +154,3 @@ protected:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_UIMouseHandler_h */
-

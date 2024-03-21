@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103918 2024-03-19 13:44:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2651,7 +2651,7 @@ bool UICommon::openURL(const QString &strUrl) const
     private:
 
         /** Handles any Qt @a pEvent. */
-        bool event(QEvent *pEvent)
+        bool event(QEvent *pEvent) RT_OVERRIDE RT_FINAL
         {
             /* Handle service event: */
             if (pEvent->type() == QEvent::User)
@@ -2680,7 +2680,7 @@ bool UICommon::openURL(const QString &strUrl) const
     private:
 
         /** Executes thread task. */
-        void run()
+        void run() RT_OVERRIDE RT_FINAL
         {
             QApplication::postEvent(&m_client, new ServiceEvent(QDesktopServices::openUrl(m_strUrl)));
         }

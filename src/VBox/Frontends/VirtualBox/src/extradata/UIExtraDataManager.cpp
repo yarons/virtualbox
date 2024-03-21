@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -297,10 +297,10 @@ public:
 private:
 
     /** Size-hint calculation routine. */
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const  RT_OVERRIDE RT_FINAL;
 
     /** Paint routine. */
-    void paint(QPainter *pPainter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter *pPainter, const QStyleOptionViewItem &option, const QModelIndex &index) const RT_OVERRIDE RT_FINAL;
 
     /** Fetch pixmap info for passed QModelIndex. */
     static void fetchPixmapInfo(const QModelIndex &index, QPixmap &pixmap, QSize &pixmapSize);
@@ -449,7 +449,7 @@ protected:
     /** Returns true if the value of the item referred to by the given index left
       * is less than the value of the item referred to by the given index right,
       * otherwise returns false. */
-    bool lessThan(const QModelIndex &leftIdx, const QModelIndex &rightIdx) const
+    bool lessThan(const QModelIndex &leftIdx, const QModelIndex &rightIdx) const RT_OVERRIDE RT_FINAL
     {
         /* Compare by ID first: */
         const QUuid strID1 = leftIdx.data(Field_ID).toUuid();

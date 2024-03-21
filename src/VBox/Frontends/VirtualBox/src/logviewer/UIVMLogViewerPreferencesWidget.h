@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPreferencesWidget.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogViewerPreferencesWidget.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -67,8 +67,8 @@ public slots:
 
 protected:
 
-    virtual void prepareWidgets();
-    virtual void prepareConnections();
+    virtual void prepareWidgets() RT_OVERRIDE RT_FINAL;
+    virtual void prepareConnections() RT_OVERRIDE RT_FINAL;
 
 private slots:
 

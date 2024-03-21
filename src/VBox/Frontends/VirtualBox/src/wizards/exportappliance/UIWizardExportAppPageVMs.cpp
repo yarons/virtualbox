@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageVMs.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class implementation.
  */
@@ -60,7 +60,7 @@ public:
     {}
 
     /** Returns whether this item is less than @a other. */
-    bool operator<(const QListWidgetItem &other) const
+    bool operator<(const QListWidgetItem &other) const RT_OVERRIDE RT_FINAL
     {
         return text().toLower() < other.text().toLower();
     }

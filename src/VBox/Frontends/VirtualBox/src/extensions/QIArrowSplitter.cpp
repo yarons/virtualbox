@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIArrowSplitter.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowSplitter class implementation.
  */
@@ -56,9 +56,9 @@ public:
     QIDetailsBrowser(QWidget *pParent = 0);
 
     /** Returns minimum size-hint. */
-    QSize minimumSizeHint() const;
+    QSize minimumSizeHint() const RT_OVERRIDE RT_FINAL;
     /** Returns size-hint. */
-    QSize sizeHint() const;
+    QSize sizeHint() const RT_OVERRIDE RT_FINAL;
 
     /** Update scroll-bars. */
     void updateScrollBars();

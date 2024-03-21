@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneMessage.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupPaneMessage.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneMessage class declaration.
  */
@@ -70,7 +70,7 @@ public:
     void setText(const QString &strText);
 
     /** Returns the message minimum size-hint. */
-    QSize minimumSizeHint() const;
+    QSize minimumSizeHint() const RT_OVERRIDE RT_FINAL;
     /** Defines the message @a minimumSizeHint. */
     void setMinimumSizeHint(const QSize &minimumSizeHint);
     /** Lays the content out. */

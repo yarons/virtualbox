@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineViewScale.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class declaration.
  */
@@ -54,19 +54,19 @@ private slots:
 private:
 
     /* Event handlers: */
-    bool eventFilter(QObject *pWatched, QEvent *pEvent);
+    bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
     /** Applies machine-view scale-factor. */
-    void applyMachineViewScaleFactor();
+    void applyMachineViewScaleFactor() RT_OVERRIDE RT_FINAL;
 
     /** Resends guest size-hint. */
-    void resendSizeHint();
+    void resendSizeHint() RT_OVERRIDE RT_FINAL;
 
     /* Private helpers: */
-    QSize sizeHint() const;
-    QRect workingArea() const;
-    QSize calculateMaxGuestSize() const;
-    void updateSliders();
+    QSize sizeHint() const RT_OVERRIDE RT_FINAL;
+    QRect workingArea() const RT_OVERRIDE RT_FINAL;
+    QSize calculateMaxGuestSize() const RT_OVERRIDE RT_FINAL;
+    void updateSliders() RT_OVERRIDE RT_FINAL;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_scale_UIMachineViewScale_h */

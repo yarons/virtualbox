@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -81,7 +81,7 @@ public:
 
 private:
     /** Determines whether passed UIMediumItem is suitable by @a uID. */
-    bool isItSuitable(UIMediumItem *pItem) const { return pItem->id() == m_uID; }
+    bool isItSuitable(UIMediumItem *pItem) const  RT_OVERRIDE RT_FINAL { return pItem->id() == m_uID; }
     /** Holds the @a uID to compare to. */
     QUuid m_uID;
 };
@@ -95,7 +95,7 @@ public:
 
 private:
     /** Determines whether passed UIMediumItem is suitable by @a state. */
-    bool isItSuitable(UIMediumItem *pItem) const { return pItem->state() == m_state; }
+    bool isItSuitable(UIMediumItem *pItem) const  RT_OVERRIDE RT_FINAL { return pItem->state() == m_state; }
     /** Holds the @a state to compare to. */
     KMediumState m_state;
 };

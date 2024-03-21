@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicNormal.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -92,12 +92,12 @@ private:
     void prepareActionConnections() RT_OVERRIDE;
     void prepareMachineWindows() RT_OVERRIDE;
 #ifndef VBOX_WS_MAC
-    void prepareMenu();
+    void prepareMenu() RT_OVERRIDE RT_FINAL;
 #endif /* !VBOX_WS_MAC */
 
     /* Cleanup helpers: */
 #ifndef VBOX_WS_MAC
-    void cleanupMenu();
+    void cleanupMenu() RT_OVERRIDE RT_FINAL;
 #endif /* !VBOX_WS_MAC */
     void cleanupMachineWindows() RT_OVERRIDE;
     void cleanupActionConnections() RT_OVERRIDE;

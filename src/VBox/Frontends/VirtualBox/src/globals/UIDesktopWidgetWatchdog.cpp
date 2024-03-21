@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 103551 2024-02-23 16:09:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -154,9 +154,9 @@ private slots:
 private:
 
     /** Move @a pEvent handler. */
-    void moveEvent(QMoveEvent *pEvent);
+    void moveEvent(QMoveEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** Resize @a pEvent handler. */
-    void resizeEvent(QResizeEvent *pEvent);
+    void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
     /** Holds the index of the host-screen this window created for. */
     const int m_iHostScreenIndex;

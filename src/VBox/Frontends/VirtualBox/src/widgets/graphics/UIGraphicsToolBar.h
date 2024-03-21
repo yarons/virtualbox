@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsToolBar.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIGraphicsToolBar.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsToolBar class declaration.
  */
@@ -63,7 +63,7 @@ protected:
     typedef QPair<int, int> UIGraphicsToolBarIndex;
 
     /* Helpers: Layout stuff: */
-    QSizeF sizeHint(Qt::SizeHint which, const QSizeF &constraint = QSizeF()) const;
+    QSizeF sizeHint(Qt::SizeHint which, const QSizeF &constraint = QSizeF()) const  RT_OVERRIDE RT_FINAL;
 
 private:
 
@@ -75,4 +75,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsToolBar_h */
-

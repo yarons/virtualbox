@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItem.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -72,7 +72,7 @@ public:
 protected:
 
     /** Draws effect with passed @a pPainter. */
-    virtual void draw(QPainter *pPainter);
+    virtual void draw(QPainter *pPainter) RT_OVERRIDE RT_FINAL;;
 
 private:
 

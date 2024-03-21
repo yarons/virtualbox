@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIActionPool.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -219,7 +219,7 @@ public:
 protected:
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent);
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 103320 2024-02-12 16:40:52Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -162,7 +162,7 @@ public:
 
 protected:
 
-    virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const {}
+    virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const  RT_OVERRIDE RT_FINAL{}
 };
 
 
@@ -183,9 +183,9 @@ signals:
 public:
 
     UIVisoContentTableView(QWidget *pParent = 0);
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event) RT_OVERRIDE RT_FINAL;
+    void dropEvent(QDropEvent *event) RT_OVERRIDE RT_FINAL;
+    void dragMoveEvent(QDragMoveEvent *event) RT_OVERRIDE RT_FINAL;
     bool hasSelection() const;
 };
 

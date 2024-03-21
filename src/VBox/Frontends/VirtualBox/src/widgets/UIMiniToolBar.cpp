@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolBar.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -97,13 +97,13 @@ public:
 protected:
 
     /** Show @a pEvent handler. */
-    virtual void showEvent(QShowEvent *pEvent);
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** Polish @a pEvent handler. */
     virtual void polishEvent(QShowEvent *pEvent);
     /** Resize @a pEvent handler. */
-    virtual void resizeEvent(QResizeEvent *pEvent);
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** Paint @a pEvent handler. */
-    virtual void paintEvent(QPaintEvent *pEvent);
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
 private:
 

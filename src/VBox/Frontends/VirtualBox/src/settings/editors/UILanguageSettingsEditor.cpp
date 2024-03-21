@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -72,7 +72,7 @@ public:
     bool isBuiltIn() const { return m_fBuiltIn; }
 
     /** Returns whether this item is less than @a another one. */
-    bool operator<(const QTreeWidgetItem &another) const;
+    bool operator<(const QTreeWidgetItem &another) const RT_OVERRIDE RT_FINAL;
 
 private:
 

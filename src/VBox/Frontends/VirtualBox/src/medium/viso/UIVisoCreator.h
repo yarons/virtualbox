@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -63,7 +63,7 @@ public:
 
 private:
 
-    virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point);// RT_OVERRIDE RT_FINAL;
+    virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) RT_OVERRIDE RT_FINAL;
     virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
     QPointer<QMenu>        m_pSubMenu;
 };

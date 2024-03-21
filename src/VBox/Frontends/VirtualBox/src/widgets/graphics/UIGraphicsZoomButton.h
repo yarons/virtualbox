@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsZoomButton.h 103704 2024-03-06 15:15:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsZoomButton.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsZoomButton class declaration.
  */
@@ -77,14 +77,14 @@ public:
 protected:
 
     /* Data provider: */
-    QVariant data(int iKey) const;
+    QVariant data(int iKey) const RT_OVERRIDE RT_FINAL;
 
     /* Handler: Mouse hover: */
-    void hoverEnterEvent(QGraphicsSceneHoverEvent *pEvent);
-    void hoverLeaveEvent(QGraphicsSceneHoverEvent *pEvent);
+    void hoverEnterEvent(QGraphicsSceneHoverEvent *pEvent) RT_OVERRIDE RT_FINAL;
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent *pEvent) RT_OVERRIDE RT_FINAL;
 
     /* Paint stuff: */
-    void paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOption, QWidget *pWidget = 0);
+    void paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOption, QWidget *pWidget = 0) RT_OVERRIDE RT_FINAL;
 
 private:
 
@@ -106,4 +106,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsZoomButton_h */
-

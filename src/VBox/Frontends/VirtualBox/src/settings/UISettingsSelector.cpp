@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 103169 2024-02-01 17:51:58Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -195,7 +195,7 @@ public:
 private:
 
     /** Paints @a index item with specified @a option using specified @a pPainter. */
-    void paint(QPainter *pPainter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter *pPainter, const QStyleOptionViewItem &option, const QModelIndex &index) const RT_OVERRIDE RT_FINAL;
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSearchWidget.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -59,7 +59,7 @@ public:
         : m_enmSearchType(enmSearchType)
         , m_strSearchTerm(strSearchTerm){}
     virtual ~FilterByNameUUID(){}
-    virtual bool operator()(QTreeWidgetItem *pItem) const
+    virtual bool operator()(QTreeWidgetItem *pItem) const RT_OVERRIDE RT_FINAL
     {
         if (!pItem || m_strSearchTerm.isEmpty())
             return false;

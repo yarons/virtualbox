@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 100064 2023-06-04 09:10:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIKeyboardHandler.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -148,7 +148,7 @@ protected:
     UIMachine *uimachine() const;
 
     /* Event handler for registered machine-view(s): */
-    bool eventFilter(QObject *pWatchedObject, QEvent *pEvent);
+    bool eventFilter(QObject *pWatchedObject, QEvent *pEvent) RT_OVERRIDE;
 
 #if defined(VBOX_WS_MAC)
     /** Mac: Performs initial pre-processing of all the native keyboard events. */

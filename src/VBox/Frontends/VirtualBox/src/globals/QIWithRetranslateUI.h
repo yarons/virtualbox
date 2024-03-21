@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 99949 2023-05-24 09:15:37Z sergey.dubov@oracle.com $ */
+/* $Id: QIWithRetranslateUI.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -61,7 +61,7 @@ public:
 protected:
 
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE
     {
         /* If translation is NOT currently in progress handle
          * LanguageChange events for qApp or this object: */
@@ -105,7 +105,7 @@ public:
 protected:
 
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE
     {
         /* If translation is NOT currently in progress handle
          * LanguageChange events for qApp or this object: */
@@ -139,7 +139,7 @@ public:
 protected:
 
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE
     {
         /* If translation is NOT currently in progress handle
          * LanguageChange events for qApp or this object: */
@@ -182,7 +182,7 @@ public:
 protected:
 
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent)
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE RT_FINAL
     {
         /* If translation is NOT currently in progress handle
          * LanguageChange events for qApp or this object: */
@@ -201,4 +201,3 @@ protected:
 
 
 #endif /* !FEQT_INCLUDED_SRC_globals_QIWithRetranslateUI_h */
-

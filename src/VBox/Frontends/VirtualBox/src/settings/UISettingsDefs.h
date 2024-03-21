@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISettingsDefs.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -162,7 +162,7 @@ public:
       * We assume that cache object was updated if current and
       * initial data were both set and not equal to each other.
       * Takes into account all the children. */
-    bool wasUpdated() const
+    bool wasUpdated() const RT_OVERRIDE RT_FINAL
     {
         /* First of all, cache object is considered to be updated if parent data was updated: */
         bool fWasUpdated = UISettingsCache<ParentCacheData>::wasUpdated();

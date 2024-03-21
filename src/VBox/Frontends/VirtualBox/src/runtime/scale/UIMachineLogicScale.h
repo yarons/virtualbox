@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineLogicScale.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class declaration.
  */
@@ -73,12 +73,12 @@ private:
     void prepareActionConnections() RT_OVERRIDE;
     void prepareMachineWindows() RT_OVERRIDE;
 #ifndef RT_OS_DARWIN
-    void prepareMenu();
+    void prepareMenu() RT_OVERRIDE RT_FINAL;
 #endif /* !RT_OS_DARWIN */
 
     /* Cleanup helpers: */
 #ifndef RT_OS_DARWIN
-    void cleanupMenu();
+    void cleanupMenu() RT_OVERRIDE RT_FINAL;
 #endif /* !RT_OS_DARWIN */
     void cleanupMachineWindows() RT_OVERRIDE;
     void cleanupActionConnections() RT_OVERRIDE;

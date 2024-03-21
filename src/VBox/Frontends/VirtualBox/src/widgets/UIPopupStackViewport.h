@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIPopupStackViewport.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupStackViewport class declaration.
  */
@@ -81,7 +81,7 @@ public:
     void recallPopupPane(const QString &strID);
 
     /** Returns minimum size-hint. */
-    QSize minimumSizeHint() const { return m_minimumSizeHint; }
+    QSize minimumSizeHint() const RT_OVERRIDE RT_FINAL { return m_minimumSizeHint; }
 
 public slots:
 
@@ -116,4 +116,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIPopupStackViewport_h */
-

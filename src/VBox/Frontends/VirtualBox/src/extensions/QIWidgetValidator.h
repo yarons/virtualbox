@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.h 100959 2023-08-23 17:08:38Z sergey.dubov@oracle.com $ */
+/* $Id: QIWidgetValidator.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class declaration.
  */
@@ -145,7 +145,7 @@ public:
     virtual ~QIULongValidator() {}
 
     /** Performs validation for @a strInput at @a iPosition. */
-    State validate(QString &strInput, int &iPosition) const;
+    State validate(QString &strInput, int &iPosition) const RT_OVERRIDE RT_FINAL;
 
     /** Defines @a uBottom. */
     void setBottom(ulong uBottom) { setRange(uBottom, m_uTop); }

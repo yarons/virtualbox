@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIMachineWindowNormal.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -82,7 +82,7 @@ private:
 
 #ifndef VBOX_WS_MAC
     /** Prepare menu routine. */
-    void prepareMenu();
+    void prepareMenu()  RT_OVERRIDE RT_FINAL;
 #endif /* !VBOX_WS_MAC */
     /** Prepare status-bar routine. */
     void prepareStatusBar() RT_OVERRIDE;

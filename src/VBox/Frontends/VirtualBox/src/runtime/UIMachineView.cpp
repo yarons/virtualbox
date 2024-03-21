@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineView.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -112,7 +112,7 @@ public:
     {}
 
     /** Redirects all the native events to parent. */
-    bool nativeEventFilter(const QByteArray &eventType, void *pMessage, qintptr*)
+    bool nativeEventFilter(const QByteArray &eventType, void *pMessage, qintptr*) RT_OVERRIDE RT_FINAL
     {
         return m_pParent->nativeEventPreprocessor(eventType, pMessage);
     }
