@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104000 2024-03-22 15:37:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104007 2024-03-22 23:42:08Z knut.osmundsen@oracle.com $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -393,8 +393,10 @@ ifdef VBOX_WITH_BS3KIT
  	bs3-cpu-instr-2.c \
  	bs3-cpu-instr-2-asm.asm \
  	bs3-cpu-instr-2-data16.c16 \
+ 	bs3-cpu-instr-2-data16-amd.c16 \
  	bs3-cpu-instr-2-data16-intel.c16 \
  	bs3-cpu-instr-2-data64.c64 \
+ 	bs3-cpu-instr-2-data64-amd.c64 \
  	bs3-cpu-instr-2-data64-intel.c64 \
  	bs3kit/bs3-cmn-instantiate-x0.c16 \
  	bs3kit/bs3-cmn-instantiate.c32 \
