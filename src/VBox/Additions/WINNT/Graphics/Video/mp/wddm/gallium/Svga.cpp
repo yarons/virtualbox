@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 103714 2024-03-06 18:49:57Z vitali.pelenjow@oracle.com $ */
+/* $Id: Svga.cpp 103999 2024-03-22 12:38:39Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -1072,6 +1072,12 @@ static NTSTATUS svgaUpdateCommand(VBOXWDDM_EXT_VMSVGA *pSvga,
             }
         } break;
 
+        case SVGA_3D_CMD_READBACK_GB_SURFACE:
+        {
+            SVGA3dCmdReadbackGBSurface *p = (SVGA3dCmdReadbackGBSurface *)pCommand;
+            Status = SvgaProcessSurface(pSvga, &p->sid, pHOA);
+        } break;
+
         /*
          * Unsupported commands, which might include a sid.
          * The VBox VMSVGA device does not implement them and most of them are not used by SVGA driver.
@@ -1085,7 +1091,6 @@ static NTSTATUS svgaUpdateCommand(VBOXWDDM_EXT_VMSVGA *pSvga,
         case SVGA_3D_CMD_LOGICOPS_CLEARTYPEBLEND:
         case SVGA_3D_CMD_DEFINE_GB_SURFACE:
         case SVGA_3D_CMD_DESTROY_GB_SURFACE:
-        case SVGA_3D_CMD_READBACK_GB_SURFACE:
         case SVGA_3D_CMD_READBACK_GB_IMAGE:
         case SVGA_3D_CMD_READBACK_GB_IMAGE_PARTIAL:
         case SVGA_3D_CMD_INVALIDATE_GB_IMAGE_PARTIAL:

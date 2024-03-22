@@ -1,4 +1,4 @@
-/* $Id: VBoxSVGA.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxSVGA.c 103999 2024-03-22 12:38:39Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA hardware driver.
  */
@@ -26,6 +26,8 @@
  */
 
 #include <VBoxWddmUmHlp.h>
+
+#include <iprt/initterm.h>
 
 #include "svga_public.h"
 #include "svga_screen.h"
@@ -69,7 +71,7 @@ GaDrvGetSurfaceId(struct pipe_screen *pScreen, struct pipe_resource *pResource)
 
         if (pScreen->resource_get_handle(pScreen, NULL, pResource, &whandle, 0))
         {
-            u32Sid = (uint32_t)whandle.handle;
+            u32Sid = (uint32_t)(uintptr_t)whandle.handle;
         }
     }
 
@@ -113,6 +115,7 @@ GaDrvContextFlush(struct pipe_context *pPipeContext)
         pPipeContext->flush(pPipeContext, NULL, PIPE_FLUSH_END_OF_FRAME);
 }
 
+#ifndef VBOX_MESA_STATIC_DRIVER
 BOOL WINAPI DllMain(HINSTANCE hDLLInst,
                     DWORD fdwReason,
                     LPVOID lpvReserved)
@@ -124,7 +127,7 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst,
     switch (fdwReason)
     {
         case DLL_PROCESS_ATTACH:
-            //RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
+            RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
             D3DKMTLoad();
             break;
 
@@ -144,3 +147,4 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst,
 
     return fReturn;
 }
+#endif
