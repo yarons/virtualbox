@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 102837 2024-01-11 12:15:07Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestControl.h 104003 2024-03-22 16:13:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -48,6 +48,9 @@
 
 /* Everything defined in this file lives in this namespace. */
 namespace guestControl {
+
+/** Default timeout (in ms) for guest control operations. */
+#define GSTCTL_DEFAULT_TIMEOUT_MS   RT_MS_30SEC
 
 /**
  * Process status when executed in the guest.

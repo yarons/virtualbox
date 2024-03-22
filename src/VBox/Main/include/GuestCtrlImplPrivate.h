@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: GuestCtrlImplPrivate.h 104003 2024-03-22 16:13:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -911,7 +911,7 @@ public:
     GuestSessionStartupInfo(void)
         : mID(UINT32_MAX)
         , mIsInternal(false /* Non-internal session */)
-        , mOpenTimeoutMS(30 * 1000 /* 30s opening timeout */)
+        , mOpenTimeoutMS(GSTCTL_DEFAULT_TIMEOUT_MS)
         , mOpenFlags(0 /* No opening flags set */) { }
 
     /** The session's friendly name. Optional. */
