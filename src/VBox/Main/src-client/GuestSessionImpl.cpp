@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 102833 2024-01-11 09:18:25Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.cpp 104001 2024-03-22 16:03:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1989,7 +1989,7 @@ int GuestSession::i_fileOpen(const GuestFileOpenInfo &openInfo, ComObjPtr<GuestF
     if (RT_SUCCESS(vrc))
     {
         int vrcGuest = VERR_IPE_UNINITIALIZED_STATUS;
-        vrc = pFile->i_openFile(30 * 1000 /* 30s timeout */, &vrcGuest);
+        vrc = pFile->i_open(30 * 1000 /* 30s timeout */, &vrcGuest);
         if (   vrc == VERR_GSTCTL_GUEST_ERROR
             && pvrcGuest)
             *pvrcGuest = vrcGuest;

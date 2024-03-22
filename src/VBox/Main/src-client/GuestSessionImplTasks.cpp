@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 103244 2024-02-07 11:52:35Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 104001 2024-03-22 16:03:33Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -504,7 +504,7 @@ int GuestSessionTask::fileCopyFromGuestInner(const Utf8Str &strSrcFile, ComObjPt
 int GuestSessionTask::fileClose(const ComObjPtr<GuestFile> &file)
 {
     int vrcGuest;
-    int vrc = file->i_closeFile(&vrcGuest);
+    int vrc = file->i_close(&vrcGuest);
     if (RT_FAILURE(vrc))
     {
         Utf8Str strFilename;
