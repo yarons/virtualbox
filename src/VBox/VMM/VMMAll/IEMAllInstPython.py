@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 103995 2024-03-21 19:09:56Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104016 2024-03-23 22:46:33Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103995 $"
+__version__ = "$Revision: 104016 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2318,9 +2318,11 @@ class McBlock(object):
     def parseMcLocalEFlags(oSelf, sName, asParams):
         """ IEM_MC_LOCAL_EFLAGS"""
         oSelf.checkStmtParamCount(sName, asParams, 1);
-        oStmt = McStmtVar(sName, asParams, 'uint32_t', asParams[0]);
-        oSelf.aoLocals.append(oStmt);
-        return oStmt;
+        # Note! We split this one up into IEM_MC_LOCAL_VAR and IEM_MC_FETCH_EFLAGS just like with IEM_MC_ARG_LOCAL_EFLAGS.
+        oStmtLocal = McStmtVar('IEM_MC_LOCAL', ['uint32_t', asParams[0]], 'uint32_t', asParams[0]);
+        oSelf.aoLocals.append(oStmtLocal);
+        oStmtFetch = McStmt('IEM_MC_FETCH_EFLAGS', [asParams[0]]);
+        return (oStmtLocal, oStmtFetch,);
 
     @staticmethod
     def parseMcCallAImpl(oSelf, sName, asParams):

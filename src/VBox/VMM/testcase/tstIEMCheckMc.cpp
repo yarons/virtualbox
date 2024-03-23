@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 103922 2024-03-19 16:10:02Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 104016 2024-03-23 22:46:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -631,6 +631,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
     int RT_CONCAT(iVarCheck_,a_Name) = 0; \
     a_Type a_Name = (a_Value); \
     NOREF(a_Name)
+#define IEM_MC_LOCAL_EFLAGS(a_Name)                     IEM_MC_LOCAL(uint32_t, a_Name); IEM_MC_FETCH_EFLAGS(a_Name)
 #define IEM_MC_NOREF(a_Name)                            RT_NOREF_PV(a_Name)
 
 #define IEM_MC_ARG(a_Type, a_Name, a_iArg) (void)fMcBegin; \
