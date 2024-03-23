@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3ObjConverter.cpp 104010 2024-03-23 01:24:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -370,17 +370,17 @@ typedef OMFWRITE *POMFWRITER;
  */
 static POMFWRITER omfWriter_Create(const char *pszSrc, uint32_t cSegments, uint32_t cSymbols, FILE *pDst)
 {
-    POMFWRITER pThis = (POMFWRITER)calloc(sizeof(OMFWRITER), 1);
+    POMFWRITER pThis = (POMFWRITER)calloc(1, sizeof(OMFWRITER));
     if (pThis)
     {
         pThis->pszSrc        = pszSrc;
         pThis->idxNextName   = 1;       /* We start counting at 1. */
         pThis->cSegments     = cSegments;
-        pThis->paSegments    = (POMFTOSEGDEF)calloc(sizeof(OMFTOSEGDEF), cSegments);
+        pThis->paSegments    = (POMFTOSEGDEF)calloc(cSegments, sizeof(OMFTOSEGDEF));
         if (pThis->paSegments)
         {
             pThis->cSymbols  = cSymbols;
-            pThis->paSymbols = (POMFSYMBOL)calloc(sizeof(OMFSYMBOL), cSymbols);
+            pThis->paSymbols = (POMFSYMBOL)calloc(cSymbols, sizeof(OMFSYMBOL));
             if (pThis->paSymbols)
             {
                 pThis->pDst  = pDst;
@@ -5503,7 +5503,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 98103 $");
+                        printf("%s\n", "$Revision: 104010 $");
                         return 0;
 
                     case '?':
