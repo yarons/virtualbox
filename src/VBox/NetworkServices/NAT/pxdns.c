@@ -1,4 +1,4 @@
-/* $Id: pxdns.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pxdns.c 104011 2024-03-23 01:31:35Z knut.osmundsen@oracle.com $ */
 /** @file
  * NAT Network - DNS proxy.
  */
@@ -361,7 +361,7 @@ pxdns_create_resolver_sockaddrs(struct pxdns *pxdns, const char **nameservers)
         goto update_resolvers;
     }
 
-    resolvers = (union sockaddr_inet *)calloc(sizeof(resolvers[0]), nnames);
+    resolvers = (union sockaddr_inet *)calloc(nnames, sizeof(resolvers[0]));
     if (resolvers == NULL) {
         nresolvers = 0;
         goto update_resolvers;
