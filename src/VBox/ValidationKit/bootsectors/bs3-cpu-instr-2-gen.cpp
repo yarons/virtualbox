@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-gen.cpp 104006 2024-03-22 23:09:25Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-gen.cpp 104015 2024-03-23 02:04:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, Test Data Generator.
  */
@@ -567,7 +567,9 @@ int main(int argc, char **argv)
                                 RTStrmPrintf(pOut,  "    { " a_szFmt ", " a_szFmt ", " a_szFmt ", %#05RX16 },\n", \
                                              uSrc1, uSrc2, uResult, fEflOut); \
                             else \
-                            {   /* Seems that 'rol reg,Ib' (and possibly others) produces different OF results on intel. */ \
+                            { \
+                                /* Seems that 'rol reg,Ib' & 'ror reg,Ib' produces different OF results on intel. \
+                                   Observed on 8700B, 9980HK, 10980xe, 1260p, ++. */ \
                                 a_ValueType    uResultIb = 0; \
                                 uint32_t const fEflOutIb = a_Entry.a_pfnMemberIb(uSrc1, uSrc2, fEflIn, &uResultIb) \
                                                          & X86_EFL_STATUS_BITS; \
@@ -589,7 +591,9 @@ int main(int argc, char **argv)
                                     RTStrmPrintf(pOut,  "    { " a_szFmt ", " a_szFmt ", " a_szFmt ", %#05RX16 },\n", uSrc1, uSrc2, \
                                                  uResult, (uint16_t)(fEflOut | RT_BIT_32(BS3CPUINSTR2BIN_EFL_CARRY_IN_BIT))); \
                                 else \
-                                {   /* Seems that 'rol reg,Ib' (and possibly others) produces different OF results on intel. */ \
+                                { \
+                                    /* Seems that 'rol reg,Ib' & 'ror reg,Ib' produces different OF results on intel. \
+                                       Observed on 8700B, 9980HK, 10980xe, 1260p, ++. */ \
                                     a_ValueType    uResultIb = 0; \
                                     uint32_t const fEflOutIb = a_Entry.a_pfnMemberIb(uSrc1, uSrc2, fEflIn | X86_EFL_CF, &uResultIb) \
                                                              & X86_EFL_STATUS_BITS; \
