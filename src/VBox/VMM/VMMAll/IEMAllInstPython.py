@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104016 2024-03-23 22:46:33Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 104017 2024-03-23 23:24:52Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104016 $"
+__version__ = "$Revision: 104017 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2272,13 +2272,14 @@ class McBlock(object):
     def parseMcArgLocalEFlags(oSelf, sName, asParams):
         """ IEM_MC_ARG_LOCAL_EFLAGS """
         oSelf.checkStmtParamCount(sName, asParams, 3);
-        # Note! We split this one up into IEM_MC_LOCAL_VAR and IEM_MC_ARG_LOCAL_REF.
+        # Note! We split this one up into IEM_MC_LOCAL_VAR, IEM_MC_ARG_LOCAL_REF and IEM_MC_FETCH_EFLAGS.
         oStmtLocal = McStmtVar('IEM_MC_LOCAL', ['uint32_t', asParams[1],], 'uint32_t', asParams[1]);
         oSelf.aoLocals.append(oStmtLocal);
         oStmtArg   = McStmtArg('IEM_MC_ARG_LOCAL_REF', ['uint32_t *', asParams[0], asParams[1], asParams[2]],
                                'uint32_t *', asParams[0], int(asParams[2]), sRef = asParams[1], sRefType = 'local');
         oSelf.aoArgs.append(oStmtArg);
-        return (oStmtLocal, oStmtArg,);
+        oStmtFetch = McStmt('IEM_MC_FETCH_EFLAGS', [asParams[1]]);
+        return (oStmtLocal, oStmtArg, oStmtFetch,);
 
     @staticmethod
     def parseMcImplicitAvxAArgs(oSelf, sName, asParams):

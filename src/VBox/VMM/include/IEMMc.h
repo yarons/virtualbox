@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 104016 2024-03-23 22:46:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 104017 2024-03-23 23:24:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -204,7 +204,7 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_ARG_LOCAL_REF(a_Type, a_Name, a_Local, a_iArg)   a_Type const a_Name = &(a_Local)
 /** @note IEMAllInstPython.py duplicates the expansion. */
 #define IEM_MC_ARG_LOCAL_EFLAGS(a_pName, a_Name, a_iArg) \
-    uint32_t a_Name; \
+    uint32_t  a_Name  = pVCpu->cpum.GstCtx.eflags.u; \
     uint32_t *a_pName = &a_Name
 /** @note IEMAllInstPython.py duplicates the expansion. */
 #define IEM_MC_LOCAL_EFLAGS(a_Name)                     uint32_t a_Name = pVCpu->cpum.GstCtx.eflags.u

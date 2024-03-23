@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 104016 2024-03-23 22:46:33Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 104017 2024-03-23 23:24:52Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -664,7 +664,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
     AssertCompile((a_iArg) < cArgs); \
     int RT_CONCAT(iVarCheck_,a_Name) = 0; \
     int RT_CONCAT(iVarCheck_,a_pName) = 0; \
-    uint32_t a_Name; \
+    uint32_t  a_Name  = 0; \
     uint32_t *a_pName = &a_Name; \
     NOREF(a_pName)
 
