@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ $Revision: 98103 $ */
+/* $Id: vboximgMedia.cpp 104023 2024-03-24 18:32:04Z alexander.eichner@oracle.com $ $Revision: 104023 $ */
 /** @file
  * vboximgMedia.cpp - Disk Image Flattening FUSE Program.
  */
@@ -93,7 +93,8 @@ char *vboximgScaledSize(size_t size)
     uint64_t exp = 0;
     if (size > 0)
         exp = log2((double)size);
-    char scaledMagnitude = ((char []){ ' ', 'K', 'M', 'G', 'T', 'P' })[exp / 10];
+    static const char s_aMagnitude[] = { ' ', 'K', 'M', 'G', 'T', 'P' };
+    char scaledMagnitude = s_aMagnitude[exp / 10];
      /* This workaround is because IPRT RT*Printf* funcs don't handle floating point format specifiers */
     double cbScaled = (double)size / pow(2, (double)(((uint64_t)(exp / 10)) * 10));
     uint64_t intPart = cbScaled;
