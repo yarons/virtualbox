@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 104021 2024-03-24 16:27:34Z alexander.eichner@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 104019 $"
+__version__ = "$Revision: 104021 $"
 
 # Standard python imports:
 import copy;
@@ -387,8 +387,6 @@ class NativeRecompFunctionVariation(object):
                     # references).
                     #
                     asCallParams = oStmt.asParams[oStmt.idxParams:];
-                    if oStmt.sName.startswith('IEM_MC_CALL_AVX_AIMPL_'):
-                        asCallParams.insert(0, 'pXState');
                     for sParam in asCallParams:
                         oVarInfo = dVars.get(sParam);
                         if oVarInfo:

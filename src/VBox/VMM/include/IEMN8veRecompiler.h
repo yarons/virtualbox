@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104021 2024-03-24 16:27:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1942,6 +1942,8 @@ DECL_FORCE_INLINE(uint64_t) iemNativeCImplFlagsToGuestShadowFlushMask(uint32_t f
 #ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
 /** Number of hidden arguments for SSE_AIMPL calls. */
 # define IEM_SSE_AIMPL_HIDDEN_ARGS 1
+/** Number of hidden arguments for AVX_AIMPL calls. */
+# define IEM_AVX_AIMPL_HIDDEN_ARGS 1
 #endif
 
 
