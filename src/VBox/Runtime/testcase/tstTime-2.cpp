@@ -1,4 +1,4 @@
-/* $Id: tstTime-2.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: tstTime-2.cpp 104025 2024-03-24 18:33:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -46,7 +46,7 @@
 
 
 /* HACK ALERT! */
-#if defined(RT_OS_DARWIN) && defined(RT_ARCH_ARM64)
+#if (defined(RT_OS_DARWIN) || defined(RT_OS_LINUX)) && defined(RT_ARCH_ARM64)
 # undef  RTTimeNanoTSWorkerName
 # define RTTimeNanoTSWorkerName() "system"
 #endif
