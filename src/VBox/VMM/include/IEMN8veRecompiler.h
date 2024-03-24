@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1337,7 +1337,7 @@ typedef struct IEMRECOMPILERSTATE
     uint8_t                     cCondDepth;
 
     /** The argument count + hidden regs from the IEM_MC_BEGIN_EX statement. */
-    uint8_t                     cArgs;
+    uint8_t                     cArgsX;
     /** The IEM_CIMPL_F_XXX flags from the IEM_MC_BEGIN statement. */
     uint32_t                    fCImpl;
     /** The IEM_MC_F_XXX flags from the IEM_MC_BEGIN statement. */
@@ -2044,7 +2044,7 @@ DECL_FORCE_INLINE(uint8_t) iemNativeArgGetHiddenArgCount(PIEMRECOMPILERSTATE pRe
 {
     if (pReNative->fCImpl & IEM_CIMPL_F_CALLS_CIMPL)
         return IEM_CIMPL_HIDDEN_ARGS;
-    if (pReNative->fCImpl & IEM_CIMPL_F_CALLS_AIMPL_WITH_FXSTATE)
+    if (pReNative->fCImpl & (IEM_CIMPL_F_CALLS_AIMPL_WITH_FXSTATE | IEM_CIMPL_F_CALLS_AIMPL_WITH_XSTATE))
         return 1;
     return 0;
 }

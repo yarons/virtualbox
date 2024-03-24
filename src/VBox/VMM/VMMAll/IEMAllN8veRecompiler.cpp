@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 103993 2024-03-21 17:59:07Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -7624,7 +7624,8 @@ DECL_HIDDEN_THROW(uint8_t) iemNativeVarRegisterAcquire(PIEMRECOMPILERSTATE pReNa
     else if (   idxRegPref >= RT_ELEMENTS(pReNative->Core.aHstRegs)
              || (pReNative->Core.bmHstRegs & RT_BIT_32(idxRegPref)))
     {
-        uint32_t const fNotArgsMask = ~g_afIemNativeCallRegs[RT_MIN(pReNative->cArgs, IEMNATIVE_CALL_ARG_GREG_COUNT)];
+        /** @todo there must be a better way for this and boot cArgsX?   */
+        uint32_t const fNotArgsMask = ~g_afIemNativeCallRegs[RT_MIN(pReNative->cArgsX, IEMNATIVE_CALL_ARG_GREG_COUNT)];
         uint32_t const fRegs        = ~pReNative->Core.bmHstRegs
                                     & ~pReNative->Core.bmHstRegsWithGstShadow
                                     & (~IEMNATIVE_REG_FIXED_MASK & IEMNATIVE_HST_GREG_MASK)

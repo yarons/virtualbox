@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $
+# $Id: IEMAllN8vePython.py 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 104018 $"
+__version__ = "$Revision: 104019 $"
 
 # Standard python imports:
 import copy;
@@ -514,7 +514,19 @@ class NativeRecompFunctionVariation(object):
                                                                  + ['IEM_MC_F_WITHOUT_FLAGS',] ));
                     if self.oVariation.oParent.dsCImplFlags:
                         oNewStmt.asParams[1] = ' | '.join(sorted(self.oVariation.oParent.dsCImplFlags.keys()));
-                oNewStmt.asParams.append('%s' % (len(self.oVariation.oParent.oMcBlock.aoArgs),));
+                    if 'IEM_CIMPL_F_CALLS_CIMPL' in self.oVariation.oParent.dsCImplFlags:
+                        sArgs = '%s + IEM_CIMPL_HIDDEN_ARGS' % (len(self.oVariation.oParent.oMcBlock.aoArgs),);
+                    elif (   'IEM_CIMPL_F_CALLS_AIMPL_WITH_FXSTATE' in self.oVariation.oParent.dsCImplFlags
+                          or 'IEM_CIMPL_F_CALLS_AIMPL_WITH_XSTATE' in self.oVariation.oParent.dsCImplFlags):
+                        sArgs = '%s' % (len(self.oVariation.oParent.oMcBlock.aoArgs) + 1,);
+                    else:
+                        sArgs = '%s' % (len(self.oVariation.oParent.oMcBlock.aoArgs),);
+                elif not self.oVariation.oParent.oMcBlock.aoArgs:
+                    sArgs = '0';
+                else:
+                    self.raiseProblem('Have arguments but no IEM_CIMPL_F_CALLS_XXX falgs!');
+                oNewStmt.asParams.append(sArgs);
+
                 aoStmts[iStmt]  = oNewStmt;
                 oNewBeginExStmt = oNewStmt;
             elif isinstance(oStmt, iai.McStmtNativeIf):
