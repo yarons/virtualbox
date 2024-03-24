@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 103993 2024-03-21 17:59:07Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -1336,7 +1336,7 @@ typedef struct IEMRECOMPILERSTATE
     /** The current condition stack depth (aCondStack). */
     uint8_t                     cCondDepth;
 
-    /** The argument count + hidden regs from the IEM_MC_BEGIN statement. */
+    /** The argument count + hidden regs from the IEM_MC_BEGIN_EX statement. */
     uint8_t                     cArgs;
     /** The IEM_CIMPL_F_XXX flags from the IEM_MC_BEGIN statement. */
     uint32_t                    fCImpl;

@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 104017 2024-03-23 23:24:52Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -40,8 +40,8 @@
  * @{
  */
 
-#define IEM_MC_BEGIN(a_cArgs, a_cLocals, a_fMcFlags, a_fCImplFlags) {
-#define IEM_MC_END()                                                }
+#define IEM_MC_BEGIN(a_fMcFlags, a_fCImplFlags) {
+#define IEM_MC_END()                            }
 
 /** Internal macro. */
 #define IEM_MC_RETURN_ON_FAILURE(a_Expr) \

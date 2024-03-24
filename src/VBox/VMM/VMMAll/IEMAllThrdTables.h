@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 102879 2024-01-15 15:28:34Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -118,7 +118,7 @@
  * Override IEM_MC_BEGIN to take down the IEM_CIMPL_F_XXX flags.
  */
 #undef IEM_MC_BEGIN
-#define IEM_MC_BEGIN(a_cArgs, a_cLocals, a_fMcFlags, a_fCImplFlags) \
+#define IEM_MC_BEGIN(a_fMcFlags, a_fCImplFlags) \
     { \
         pVCpu->iem.s.fTbCurInstr = (a_fCImplFlags) /*| ((a_fMcFlags) << 20*/
 

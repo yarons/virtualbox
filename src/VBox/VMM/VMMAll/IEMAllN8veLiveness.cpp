@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 103949 2024-03-20 11:32:44Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -51,7 +51,7 @@
  * BEGIN & END as well as internal workers.
  */
 #ifndef IEMLIVENESS_EXTENDED_LAYOUT
-# define IEM_MC_BEGIN(a_cArgs, a_cLocals, a_fMcFlags, a_fCImplFlags) \
+# define IEM_MC_BEGIN_EX(a_fMcFlags, a_fCImplFlags, a_cArgs) \
     { \
         /* Define local variables that we use to accumulate the liveness state changes in. */ \
         IEMLIVENESSBIT  LiveStateBit0   = { 0 }; \
@@ -59,7 +59,7 @@
         IEMLIVENESSBIT  LiveMask        = { 0 }; \
         bool            fDoneXpctOrCall = false
 #else
-# define IEM_MC_BEGIN(a_cArgs, a_cLocals, a_fMcFlags, a_fCImplFlags) \
+# define IEM_MC_BEGIN_EX(a_fMcFlags, a_fCImplFlags, a_cArgs) \
     { \
         /* Define local variables that we use to accumulate the liveness state changes in. */ \
         IEMLIVENESSENTRY LiveState       = { { 0, 0, 0, 0 } }; \

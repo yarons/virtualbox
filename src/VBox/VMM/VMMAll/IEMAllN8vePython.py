@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 103995 2024-03-21 19:09:56Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 103995 $"
+__version__ = "$Revision: 104018 $"
 
 # Standard python imports:
 import copy;
@@ -498,21 +498,25 @@ class NativeRecompFunctionVariation(object):
         # Second, eliminate IEM_MC_NATIVE_IF statements.
         #
         iConvArgToLocal = 0;
-        cStmts = len(aoStmts);
-        iStmt  = 0;
+        oNewBeginExStmt = None;
+        cStmts          = len(aoStmts);
+        iStmt           = 0;
         while iStmt < cStmts:
             oStmt = aoStmts[iStmt];
             if oStmt.sName == 'IEM_MC_BEGIN':
+                oNewStmt = copy.deepcopy(oStmt);
+                oNewStmt.sName = 'IEM_MC_BEGIN_EX';
                 fWithoutFlags = (    self.oVariation.isWithFlagsCheckingAndClearingVariation()
                                  and self.oVariation.oParent.hasWithFlagsCheckingAndClearingVariation());
                 if fWithoutFlags or self.oVariation.oParent.dsCImplFlags:
-                    oNewStmt = copy.deepcopy(oStmt);
                     if fWithoutFlags:
-                        oNewStmt.asParams[2] = ' | '.join(sorted(  list(self.oVariation.oParent.oMcBlock.dsMcFlags.keys())
+                        oNewStmt.asParams[0] = ' | '.join(sorted(  list(self.oVariation.oParent.oMcBlock.dsMcFlags.keys())
                                                                  + ['IEM_MC_F_WITHOUT_FLAGS',] ));
                     if self.oVariation.oParent.dsCImplFlags:
-                        oNewStmt.asParams[3] = ' | '.join(sorted(self.oVariation.oParent.dsCImplFlags.keys()));
-                    aoStmts[iStmt] = oNewStmt;
+                        oNewStmt.asParams[1] = ' | '.join(sorted(self.oVariation.oParent.dsCImplFlags.keys()));
+                oNewStmt.asParams.append('%s' % (len(self.oVariation.oParent.oMcBlock.aoArgs),));
+                aoStmts[iStmt]  = oNewStmt;
+                oNewBeginExStmt = oNewStmt;
             elif isinstance(oStmt, iai.McStmtNativeIf):
                 if self.kdOptionArchToVal[self.sHostArch] in oStmt.asArchitectures:
                     iConvArgToLocal += 1;
@@ -525,6 +529,8 @@ class NativeRecompFunctionVariation(object):
                 continue;
 
             iStmt += 1;
+        if iConvArgToLocal > 0:
+            oNewBeginExStmt.asParams[2] = '0';
 
         #
         # If we encountered a IEM_MC_NATIVE_IF and took the native branch,
