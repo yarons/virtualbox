@@ -1,4 +1,4 @@
-/* $Id: ResourceAssignmentManager.cpp 102517 2023-12-07 10:28:20Z alexander.eichner@oracle.com $ */
+/* $Id: ResourceAssignmentManager.cpp 104028 2024-03-24 18:35:08Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -65,14 +65,14 @@ struct ResourceAssignmentManager::State
     struct MemoryRange
     {
         char          szDevName[32];
-        RTGCPHYS      GCPhysStart;
-        RTGCPHYS      GCPhysEnd;
+        RTGCPHYS      mGCPhysStart;
+        RTGCPHYS      mGCPhysEnd;
 
         MemoryRange(const char *pszName, RTGCPHYS GCPhysStart, RTGCPHYS GCPhysEnd)
         {
             RTStrCopy(this->szDevName, sizeof(szDevName), pszName);
-            this->GCPhysStart = GCPhysStart;
-            this->GCPhysEnd   = GCPhysEnd;
+            this->mGCPhysStart = GCPhysStart;
+            this->mGCPhysEnd   = GCPhysEnd;
         }
 
         bool operator==(const MemoryRange &a) const
