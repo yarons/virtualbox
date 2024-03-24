@@ -1,4 +1,4 @@
-/* $Id: main.cpp 103963 2024-03-20 14:49:38Z sergey.dubov@oracle.com $ */
+/* $Id: main.cpp 104026 2024-03-24 18:33:30Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -162,7 +162,7 @@ static Status MakeSureMultiThreadingIsSafe()
     return rc;
 }
 
-# if defined(RT_OS_LINUX) && defined(DEBUG)
+# if (defined(RT_OS_LINUX) && !defined(RT_ARCH_ARM64)) && defined(DEBUG)
 /** X11, Linux, Debug: The signal handler that prints out a backtrace of the call stack.
   * @remarks The code is taken from http://www.linuxjournal.com/article/6391. */
 static void BackTraceSignalHandler(int sig, siginfo_t *pInfo, void *pSecret)
@@ -471,7 +471,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* VBOX_WS_MAC */
 
 #ifdef VBOX_WS_NIX
-# if defined(RT_OS_LINUX) && defined(DEBUG)
+# if (defined(RT_OS_LINUX) && !defined(RT_ARCH_ARM64)) && defined(DEBUG)
         /* Install signal handler to backtrace the call stack: */
         InstallSignalHandler();
 # endif /* RT_OS_LINUX && DEBUG */
