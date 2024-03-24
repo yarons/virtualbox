@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMMc.h 104020 2024-03-24 01:19:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -1463,11 +1463,11 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
     iemMemStoreDataU256AlignedAvxJmp(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value))
 
 # define IEM_MC_STORE_MEM_FLAT_U256(a_GCPtrMem, a_u256Value) \
-    iemMemStoreDataU256Jmp(pVCpu, UINT8_MAX, (a_GCPtrMem), &(a_u256Value))
+    iemMemFlatStoreDataU256Jmp(pVCpu, (a_GCPtrMem), &(a_u256Value))
 # define IEM_MC_STORE_MEM_FLAT_U256_NO_AC(a_GCPtrMem, a_u256Value) \
-    iemMemStoreDataU256NoAcJmp(pVCpu, UINT8_MAX, (a_GCPtrMem), &(a_u256Value))
+    iemMemFlatStoreDataU256NoAcJmp(pVCpu, (a_GCPtrMem), &(a_u256Value))
 # define IEM_MC_STORE_MEM_FLAT_U256_ALIGN_AVX(a_GCPtrMem, a_u256Value) \
-    iemMemStoreDataU256AlignedAvxJmp(pVCpu, UINT8_MAX, (a_GCPtrMem), &(a_u256Value))
+    iemMemFlatStoreDataU256AlignedAvxJmp(pVCpu, (a_GCPtrMem), &(a_u256Value))
 #endif
 
 /* Regular stack push and pop: */
