@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINativeWizard.h 104038 2024-03-25 13:31:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class declaration.
  */
@@ -35,6 +35,7 @@
 #include <QDialog>
 #include <QMap>
 #include <QPointer>
+#include <QSet>
 
 /* GUI includes: */
 #include "UIExtraDataDefs.h"
