@@ -1,4 +1,4 @@
-/* $Id: UISerialSettingsEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UISerialSettingsEditor.cpp 104043 2024-03-25 14:34:19Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISerialSettingsEditor class implementation.
  */
@@ -209,13 +209,13 @@ void UISerialSettingsEditor::retranslateUi()
         m_pLabelIRQ->setText(tr("&IRQ:"));
     if (m_pLineEditIRQ)
         m_pLineEditIRQ->setToolTip(tr("Holds the IRQ number of this serial port. This should be a whole number between "
-                                      "<tt>0</tt> and <tt>255</tt>. Values greater than <tt>15</tt> may only be used if the "
+                                      "'0' and '255'. Values greater than '15' may only be used if the "
                                       "I/O APIC setting is enabled for this virtual machine."));
     if (m_pLabelIOAddress)
         m_pLabelIOAddress->setText(tr("I/O Po&rt:"));
     if (m_pLineEditIOAddress)
         m_pLineEditIOAddress->setToolTip(tr("Holds the base I/O port address of this serial port. Valid values are integer numbers "
-                                            "in range from <tt>0</tt> to <tt>0xFFFF</tt>."));
+                                            "in range from '0' to '0xFFFF'."));
     if (m_pLabelMode)
         m_pLabelMode->setText(tr("Port &Mode:"));
     if (m_pComboMode)
