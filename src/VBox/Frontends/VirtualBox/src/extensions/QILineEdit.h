@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 99177 2023-03-24 15:46:06Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.h 104041 2024-03-25 14:24:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -112,6 +112,7 @@ public:
     /** @name Pass through functions for QILineEdit.
       * @{ */
         void setText(const QString &strText);
+        void setToolTip(const QString &strText);
         QString text() const;
         void setValidator(const QValidator *pValidator);
         bool hasAcceptableInput() const;
