@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104035 2024-03-25 10:15:13Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104036 2024-03-25 12:56:46Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -69,11 +69,6 @@
 # define IEMNATIVE_WITH_INSTRUCTION_COUNTING
 #endif
 
-#ifdef DEBUG_aeichner
-/** @def IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
- * Delay the writeback or dirty registers as long as possible. */
-# define IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
-#endif
 
 /** @name Stack Frame Layout
  *
@@ -1505,6 +1500,12 @@ DECL_HIDDEN_THROW(void)     iemNativeDbgInfoAddGuestSimdRegShadowing(PIEMRECOMPI
                                                                      IEMNATIVEGSTSIMDREG enmGstSimdReg,
                                                                      uint8_t idxHstSimdReg = UINT8_MAX,
                                                                      uint8_t idxHstSimdRegPrev = UINT8_MAX);
+# endif
+# ifdef IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
+DECL_HIDDEN_THROW(void)     iemNaitveDbgInfoAddGuestRegDirty(PIEMRECOMPILERSTATE pReNative, bool fSimdReg,
+                                                             uint8_t idxGstReg, uint8_t idxHstReg);
+DECL_HIDDEN_THROW(void)     iemNaitveDbgInfoAddGuestRegWriteback(PIEMRECOMPILERSTATE pReNative, bool fSimdReg,
+                                                                 uint64_t fGstReg);
 # endif
 DECL_HIDDEN_THROW(void)     iemNativeDbgInfoAddDelayedPcUpdate(PIEMRECOMPILERSTATE pReNative,
                                                                uint32_t offPc, uint32_t cInstrSkipped);
