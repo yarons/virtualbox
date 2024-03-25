@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIBootOrderEditor.cpp 104042 2024-03-25 14:24:46Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -532,7 +532,7 @@ void UIBootOrderEditor::retranslateUi()
         m_pLabel->setText(tr("&Boot Order:"));
     if (m_pTable)
         m_pTable->setWhatsThis(tr("Defines the boot device order. Use the "
-                                  "checkboxes on the left to enable or disable individual boot devices."
+                                  "checkboxes on the left to enable or disable individual boot devices. "
                                   "Move items up and down to change the device order."));
     if (m_pMoveUp)
         m_pMoveUp->setToolTip(tr("Moves selected boot item up."));
