@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104034 2024-03-25 10:07:26Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104035 2024-03-25 10:15:13Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -69,9 +69,9 @@
 # define IEMNATIVE_WITH_INSTRUCTION_COUNTING
 #endif
 
+#ifdef DEBUG_aeichner
 /** @def IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
  * Delay the writeback or dirty registers as long as possible. */
-#ifdef DEBUG_aeichner
 # define IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
 #endif
 
