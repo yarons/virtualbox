@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.h 104037 2024-03-25 13:28:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class declaration.
  */
@@ -30,6 +30,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QSet>
 
 /* GUI includes: */
 #include "UINativeWizardPage.h"
