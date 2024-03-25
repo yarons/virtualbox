@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104019 2024-03-24 01:07:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104034 2024-03-25 10:07:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1049,7 +1049,9 @@ typedef union IEMTBDBGENTRY
     {
         /* kIemTbDbgEntryType_GuestRegShadowing. */
         uint32_t    uType         : 4;
-        uint32_t    uUnused       : 4;
+        /** Flag whether the register is marked as dirty. */
+        uint32_t    fDirty        : 1;
+        uint32_t    uUnused       : 3;
         /** The guest register being shadowed (IEMNATIVEGSTREG). */
         uint32_t    idxGstReg     : 8;
         /** The host new register number, UINT8_MAX if dropped. */
