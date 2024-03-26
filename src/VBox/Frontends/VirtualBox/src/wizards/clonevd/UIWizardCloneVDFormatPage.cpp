@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDFormatPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDFormatPage.cpp 104069 2024-03-26 18:02:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDFormatPage class implementation.
  */
@@ -64,7 +64,7 @@ void UIWizardCloneVDFormatPage::prepare(KDeviceType enmDeviceType)
 void UIWizardCloneVDFormatPage::sltRetranslateUI()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVD::tr("Virtual Hard disk file type"));
+    setTitle(UIWizardCloneVD::tr("Virtual hard disk file type"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardCloneVD::tr("Please choose the type of file that you would like to use "

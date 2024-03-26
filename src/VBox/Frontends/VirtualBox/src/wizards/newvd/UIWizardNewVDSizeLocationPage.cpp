@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDSizeLocationPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDSizeLocationPage.cpp 104069 2024-03-26 18:02:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDSizeLocationPage class implementation.
  */
@@ -106,7 +106,7 @@ void UIWizardNewVDSizeLocationPage::sltMediumPathChanged(const QString &strPath)
 
 void UIWizardNewVDSizeLocationPage::sltRetranslateUI()
 {
-    setTitle(UIWizardNewVD::tr("File location and size"));
+    setTitle(UIWizardNewVD::tr("Location and size of the disk image"));
 }
 
 void UIWizardNewVDSizeLocationPage::initializePage()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDFileTypePage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVDFileTypePage.cpp 104069 2024-03-26 18:02:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDFileTypePage class implementation.
  */
@@ -64,7 +64,7 @@ void UIWizardNewVDFileTypePage::sltMediumFormatChanged()
 
 void UIWizardNewVDFileTypePage::sltRetranslateUI()
 {
-    setTitle(UIWizardNewVD::tr("Virtual Hard disk file type"));
+    setTitle(UIWizardNewVD::tr("Virtual hard disk file type"));
     m_pLabel->setText(UIWizardNewVD::tr("Please choose the type of file that you would like to use "
                                         "for the new virtual hard disk. If you do not need to use it "
                                         "with other virtualization software you can leave this setting unchanged."));
