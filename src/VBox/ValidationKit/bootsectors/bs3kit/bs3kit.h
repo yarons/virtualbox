@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 103867 2024-03-15 14:09:47Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3kit.h 104066 2024-03-26 16:06:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -194,10 +194,6 @@ RT_C_DECLS_BEGIN
  * see the @ref pg_bs3kit "doc page" for more.
  *
  * @{ */
-
-/** Test repetitions necessary to make sure of engaging native recompilation.
- * @note See iemTbCacheLookup() for the actual constant. */
-#define BS3_THRESHOLD_NATIVE_RECOMPILER     18
 
 
 /** @name Execution modes.
@@ -3615,6 +3611,15 @@ BS3_CMN_PROTO_STUB(void, Bs3TrapUnsetJmp,(void));
  * The current test step.
  */
 extern uint16_t g_usBs3TestStep;
+
+/** Test repetitions necessary to make sure of engaging native recompilation.
+ * @note See iemTbCacheLookup() for the actual constant. */
+#define BS3_THRESHOLD_NATIVE_RECOMPILER     18
+
+/** The host configurable BS3_THRESHOLD_NATIVE_RECOMPILER value.
+ * The host configuration is read by Bs3TestInit, before that it has the same
+ * value as the compiletime constant. */
+extern uint16_t g_cBs3ThresholdNativeRecompiler;
 
 /**
  * Equivalent to RTTestCreate + RTTestBanner.

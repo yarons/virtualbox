@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-template.c 104015 2024-03-23 02:04:08Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2-template.c 104066 2024-03-26 16:06:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, C code template.
  */
@@ -969,8 +969,8 @@ RT_CONCAT(bs3CpuInstr2_CommonShiftU,a_cBits)(uint8_t bMode, PCBS3CPUINSTR2CMNSHI
         uint64_t RT_FAR * const     puMemPtrReg    = paTests[iTest].fDstMem ? &(&Ctx.rax)[idxDstReg & 15].u       : NULL; \
         uint64_t RT_FAR * const     puMemPtrRegExpt= paTests[iTest].fDstMem ? &(&CtxExpect.rax)[idxDstReg & 15].u : NULL; \
         unsigned                    cRecompOuter   = 0; \
-        unsigned const              cMaxRecompOuter= cBitsImm != 8 ? BS3_THRESHOLD_NATIVE_RECOMPILER + cTestData : 1; \
-        unsigned const              cMaxRecompInner= cBitsImm != 8 ? 1 : BS3_THRESHOLD_NATIVE_RECOMPILER; \
+        unsigned const              cMaxRecompOuter= cBitsImm != 8 ? g_cBs3ThresholdNativeRecompiler + cTestData : 1; \
+        unsigned const              cMaxRecompInner= cBitsImm != 8 ? 1 : g_cBs3ThresholdNativeRecompiler; \
         /*Bs3TestPrintf("\n"#a_cBits ": pfnWorker=%p cBitsImm=%d (%d)\n", paTests[iTest].pfnWorker, cBitsImm, paTests[iTest].cBitsImm);*/ \
         \
         Bs3RegCtxSetRipCsFromLnkPtr(&Ctx, paTests[iTest].pfnWorker); \

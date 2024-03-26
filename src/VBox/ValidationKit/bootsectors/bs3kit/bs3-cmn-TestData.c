@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestData.c 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cmn-TestData.c 104066 2024-03-26 16:06:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - Test Data.
  */
@@ -83,6 +83,10 @@ uint16_t    g_cusBs3SubTestsFailed = 0;
 
 /** The current test step. */
 uint16_t    g_usBs3TestStep;
+
+/** The host configurable BS3_THRESHOLD_NATIVE_RECOMPILER value. */
+uint16_t    g_cBs3ThresholdNativeRecompiler = BS3_THRESHOLD_NATIVE_RECOMPILER;
+
 
 /** VMMDEV_TESTING_UNIT_XXX -> string */
 char const  g_aszBs3TestUnitNames[][12] =
