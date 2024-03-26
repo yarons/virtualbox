@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 103857 2024-03-14 15:39:03Z ksenia.s.stepanova@oracle.com $
+# $Id: remoteexecutor.py 104063 2024-03-26 14:42:08Z ksenia.s.stepanova@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103857 $"
+__version__ = "$Revision: 104063 $"
 
 
 # Standard Python imports.
@@ -283,8 +283,8 @@ class RemoteExecutor(object):
             fRc = self.oTxsSession.syncMkDir(sDir, fMode, cMsTimeout, fIgnoreErrors=False);
         elif not os.path.isdir(sDir):
             reporter.log("if no txs session found and os.path.isdir is False do os.mkdir for %s" % sDir)
-            fRc = os.mkdir(sDir, fMode);
-
+            os.mkdir(sDir, fMode)  # os.mkdir function returns nothing
+            fRc = os.path.isdir(sDir)
         return fRc;
 
     def rmDir(self, sDir, cMsTimeout = 30000):
