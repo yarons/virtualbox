@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 104065 2024-03-26 15:48:19Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevTesting.cpp 104070 2024-03-26 20:17:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -931,6 +931,11 @@ vmmdevTestingIoRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t
                             pThis->offTestingData += 4;
                             break;
                     }
+                }
+                else if (pThis->offTestingData == pThis->cbReadableTestingData)
+                {
+                    *pu32 = VMMDEV_TESTING_QUERY_CFG_OKAY_TAIL;
+                    pThis->offTestingData += cb;
                 }
                 else
                     *pu32 = 0;
