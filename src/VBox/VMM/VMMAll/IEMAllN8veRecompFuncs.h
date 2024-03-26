@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 104052 2024-03-26 06:39:07Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 104053 2024-03-26 07:15:51Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -3163,6 +3163,9 @@ iemNativeEmitStoreGregU64Const(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
 
 #define IEM_MC_STORE_GREG_U64(a_iGReg, a_u64Value) \
     off = iemNativeEmitStoreGregU64(pReNative, off, a_iGReg, a_u64Value)
+
+#define IEM_MC_STORE_GREG_I64(a_iGReg, a_i64Value) \
+    off = iemNativeEmitStoreGregU64(pReNative, off, a_iGReg, a_i64Value)
 
 /** Emits code for IEM_MC_STORE_GREG_U64. */
 DECL_INLINE_THROW(uint32_t)
