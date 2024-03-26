@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2.c 104061 2024-03-26 14:25:12Z knut.osmundsen@oracle.com $ */
+/* $Id: bs3-cpu-instr-2.c 104062 2024-03-26 14:27:29Z knut.osmundsen@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, 16-bit C code.
  */
@@ -129,7 +129,7 @@ static const BS3TESTMODEENTRY g_aModeTests[] =
 # if 0/** @todo temporarily disabled till the flag handling in immediate variants have been solved on Intel. */
     BS3TESTMODEENTRY_CMN("rol", bs3CpuInstr2_rol),
     BS3TESTMODEENTRY_CMN("ror", bs3CpuInstr2_ror),
-# endif   
+# endif
     BS3TESTMODEENTRY_CMN("rcl", bs3CpuInstr2_rcl),
     BS3TESTMODEENTRY_CMN("rcr", bs3CpuInstr2_rcr),
 #endif
