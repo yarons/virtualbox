@@ -1,4 +1,4 @@
-/* $Id: UIVersion.cpp 104054 2024-03-26 08:52:58Z klaus.espenlaub@oracle.com $ */
+/* $Id: UIVersion.cpp 104055 2024-03-26 09:14:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVersion class implementation.
  */
@@ -221,7 +221,7 @@ bool UIVersionInfo::isBeta()
 bool UIVersionInfo::showBetaLabel()
 {
     return    isBeta()
-           && !gEDataManager->preventBetaBuildLavel();
+           && !gEDataManager->preventBetaBuildLabel();
 }
 
 /* static */

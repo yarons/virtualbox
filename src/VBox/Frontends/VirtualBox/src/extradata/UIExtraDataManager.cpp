@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 104055 2024-03-26 09:14:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2402,7 +2402,7 @@ void UIExtraDataManager::setNotificationCenterOrder(Qt::SortOrder enmOrder)
     setExtraDataString(GUI_NotificationCenter_Order, strValue);
 }
 
-bool UIExtraDataManager::preventBetaBuildLavel()
+bool UIExtraDataManager::preventBetaBuildLabel()
 {
     return isFeatureAllowed(GUI_PreventBetaLabel);
 }
