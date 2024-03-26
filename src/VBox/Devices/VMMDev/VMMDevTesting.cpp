@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevTesting.cpp 104065 2024-03-26 15:48:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -649,6 +649,13 @@ vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
 #else
                             pThis->TestingData.b = false;
 #endif
+                            break;
+                        }
+
+                        case VMMDEV_TESTING_CFG_THRESHOLD_NATIVE_RECOMPILER:
+                        {
+                            pThis->cbReadableTestingData = sizeof(pThis->TestingData.u16);
+                            pThis->TestingData.u16       = pThis->cTestingThresholdNativeRecompiler;
                             break;
                         }
                     }

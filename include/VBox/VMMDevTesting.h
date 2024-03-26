@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.h 103262 2024-02-08 00:00:32Z knut.osmundsen@oracle.com $ */
+/* $Id: VMMDevTesting.h 104065 2024-03-26 15:48:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -268,6 +268,10 @@
 #define VMMDEV_TESTING_CFG_IS_NEM_WINDOWS    UINT16_C(0x0101)
 /** Boolean (8-bit): Running in NEM on Darwin? */
 #define VMMDEV_TESTING_CFG_IS_NEM_DARWIN     UINT16_C(0x0102)
+/** Unsigned (16-bit): The override value for g_cBs3ThresholdNativeRecompiler.
+ * A value of zero means it is not configured and the default should be used. */
+#define VMMDEV_TESTING_CFG_THRESHOLD_NATIVE_RECOMPILER  UINT16_C(0x0103)
+
 /** @} */
 
 /** @} */
