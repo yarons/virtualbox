@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104049 2024-03-25 21:08:40Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104056 2024-03-26 10:07:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8196,6 +8196,30 @@ DECL_HIDDEN_THROW(uint8_t) iemNativeVarAllocConst(PIEMRECOMPILERSTATE pReNative,
         case sizeof(uint32_t):  uValue &= UINT64_C(0xffffffff); break;
     }
     iemNativeVarSetKindToConst(pReNative, idxVar, uValue);
+    return idxVar;
+}
+
+
+DECL_HIDDEN_THROW(uint8_t)  iemNativeVarAllocAssign(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, uint8_t cbType, uint8_t idxVarOther)
+{
+    uint8_t const idxVar = IEMNATIVE_VAR_IDX_PACK(iemNativeVarAllocInt(pReNative, cbType));
+    iemNativeVarSetKindToStack(pReNative, IEMNATIVE_VAR_IDX_PACK(idxVar));
+
+    uint8_t const idxVarOtherReg = iemNativeVarRegisterAcquire(pReNative, idxVarOther, poff, true /*fInitialized*/);
+    uint8_t const idxVarReg = iemNativeVarRegisterAcquire(pReNative, idxVar, poff);
+
+    *poff = iemNativeEmitLoadGprFromGpr(pReNative, *poff, idxVarReg, idxVarOtherReg);
+
+    /* Truncate the value to this variables size. */
+    switch (cbType)
+    {
+        case sizeof(uint8_t):   *poff = iemNativeEmitAndGpr32ByImm(pReNative, *poff, idxVarReg, UINT64_C(0xff)); break;
+        case sizeof(uint16_t):  *poff = iemNativeEmitAndGpr32ByImm(pReNative, *poff, idxVarReg, UINT64_C(0xffff)); break;
+        case sizeof(uint32_t):  *poff = iemNativeEmitAndGpr32ByImm(pReNative, *poff, idxVarReg, UINT64_C(0xffffffff)); break;
+    }
+
+    iemNativeVarRegisterRelease(pReNative, idxVarOther);
+    iemNativeVarRegisterRelease(pReNative, idxVar);
     return idxVar;
 }
 
