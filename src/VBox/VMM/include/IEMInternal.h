@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104064 2024-03-26 14:53:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104073 2024-03-27 01:23:05Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -992,7 +992,7 @@ typedef enum IEMTBDBGENTRYTYPE
     /** Info about a delayed RIP update. */
     kIemTbDbgEntryType_DelayedPcUpdate,
 #endif
-#ifdef IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
+#if defined(IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK) || defined(IEMNATIVE_WITH_SIMD_REG_ALLOCATOR)
     /** Info about a shadowed guest register becoming dirty. */
     kIemTbDbgEntryType_GuestRegDirty,
     /** Info about register writeback/flush oepration. */
@@ -1097,7 +1097,7 @@ typedef union IEMTBDBGENTRY
     } DelayedPcUpdate;
 #endif
 
-#ifdef IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK
+#if defined(IEMNATIVE_WITH_DELAYED_REGISTER_WRITEBACK) || defined(IEMNATIVE_WITH_SIMD_REG_ALLOCATOR)
     struct
     {
         /* kIemTbDbgEntryType_GuestRegDirty. */
