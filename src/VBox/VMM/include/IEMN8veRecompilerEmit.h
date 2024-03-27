@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104087 2024-03-27 14:23:52Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104088 2024-03-27 14:24:18Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -8178,7 +8178,7 @@ DECL_INLINE_THROW(uint32_t)
 iemNativeEmitSimdLoadVecRegLowU128FromVecRegHighU128(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iVecRegDst, uint8_t iVecRegSrc)
 {
 #ifdef RT_ARCH_AMD64
-    off = iemNativeEmitSimdLoadVecRegLowU128FromVecRegHighU128Ex(iemNativeInstrBufEnsure(pReNative, off, 5), off, iVecRegDst, iVecRegSrc);
+    off = iemNativeEmitSimdLoadVecRegLowU128FromVecRegHighU128Ex(iemNativeInstrBufEnsure(pReNative, off, 6), off, iVecRegDst, iVecRegSrc);
 #elif defined(RT_ARCH_ARM64)
     Assert(!(iVecRegDst & 0x1) && !(iVecRegSrc & 0x1));
     off = iemNativeEmitSimdLoadVecRegFromVecRegU128Ex(iemNativeInstrBufEnsure(pReNative, off, 1), off, iVecRegDst, iVecRegSrc + 1);
