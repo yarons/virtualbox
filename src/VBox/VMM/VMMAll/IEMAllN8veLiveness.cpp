@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104058 2024-03-26 13:41:59Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104076 2024-03-27 08:19:25Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -664,7 +664,11 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_FETCH_MREG_U64(a_u64Value, a_iMReg)                  NOP()
 #define IEM_MC_FETCH_MREG_U32(a_u32Value, a_iMReg, a_iDWord)        NOP()
 #define IEM_MC_FETCH_MREG_U16(a_u16Value, a_iMReg, a_iWord)         NOP()
+#define IEM_MC_FETCH_MREG_U8(a_u8Value, a_iMReg, a_iByte)           NOP()
 #define IEM_MC_STORE_MREG_U64(a_iMReg, a_u64Value)                  NOP()
+#define IEM_MC_STORE_MREG_U32(a_iMReg, a_iDword, a_u32Value)        NOP()
+#define IEM_MC_STORE_MREG_U16(a_iMReg, a_iWord, a_u16Value)         NOP()
+#define IEM_MC_STORE_MREG_U8(a_iMReg, a_iByte, a_u8Value)           NOP()
 #define IEM_MC_STORE_MREG_U32_ZX_U64(a_iMReg, a_u32Value)           NOP()
 #define IEM_MC_REF_MREG_U64(a_pu64Dst, a_iMReg)                     NOP()
 #define IEM_MC_REF_MREG_U64_CONST(a_pu64Dst, a_iMReg)               NOP()

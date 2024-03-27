@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104073 2024-03-27 01:23:05Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104076 2024-03-27 08:19:25Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3679,11 +3679,6 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_vshufps_u256_fallback,(PRTUINT256U puDst, PCRTU
 
 IEM_DECL_IMPL_DEF(void, iemAImpl_palignr_u64,(uint64_t *pu64Dst, uint64_t u64Src, uint8_t bEvil));
 IEM_DECL_IMPL_DEF(void, iemAImpl_palignr_u64_fallback,(uint64_t *pu64Dst, uint64_t u64Src, uint8_t bEvil));
-
-IEM_DECL_IMPL_DEF(void, iemAImpl_pinsrw_u64,(uint64_t *pu64Dst, uint16_t u16Src, uint8_t bEvil));
-IEM_DECL_IMPL_DEF(void, iemAImpl_pinsrw_u128,(PRTUINT128U puDst, uint16_t u16Src, uint8_t bEvil));
-IEM_DECL_IMPL_DEF(void, iemAImpl_vpinsrw_u128,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint16_t u16Src, uint8_t bEvil));
-IEM_DECL_IMPL_DEF(void, iemAImpl_vpinsrw_u128_fallback,(PRTUINT128U puDst, PCRTUINT128U puSrc, uint16_t u16Src, uint8_t bEvil));
 
 IEM_DECL_IMPL_DEF(void, iemAImpl_movmskps_u128,(uint8_t *pu8Dst, PCRTUINT128U puSrc));
 IEM_DECL_IMPL_DEF(void, iemAImpl_vmovmskps_u128,(uint8_t *pu8Dst, PCRTUINT128U puSrc));
