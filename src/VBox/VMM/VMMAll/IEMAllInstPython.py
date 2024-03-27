@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104076 2024-03-27 08:19:25Z bela.lubkin@oracle.com $
+# $Id: IEMAllInstPython.py 104087 2024-03-27 14:23:52Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104076 $"
+__version__ = "$Revision: 104087 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3353,13 +3353,13 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_XREG_R32':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_R64':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_U128':                                    (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_STORE_XREG_U16':                                     (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_STORE_XREG_U16':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_U32':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_U32_U128':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_U32_ZX_U128':                             (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_U64':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_U64_ZX_U128':                             (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
-    'IEM_MC_STORE_XREG_U8':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_STORE_XREG_U8':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_XMM':                                     (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_XREG_XMM_U32':                                 (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_XREG_XMM_U64':                                 (McBlock.parseMcGeneric,           True,  True,  False, ),
