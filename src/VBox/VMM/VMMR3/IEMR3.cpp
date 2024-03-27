@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 104064 2024-03-26 14:53:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 104095 2024-03-27 15:46:10Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -439,6 +439,10 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Branch target misses",                         "/IEM/CPU%u/re/CheckTbJmpMisses", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatCheckNeedCsLimChecking, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Needing CS.LIM checking TB after branch or on page crossing", "/IEM/CPU%u/re/CheckTbNeedCsLimChecking", idCpu);
+
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeExecMemInstrBufAllocFailed, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "Number of times the exec memory allocator failed to allocate a large enough buffer",
+                        "/IEM/CPU%u/re/NativeExecMemInstrBufAllocFailed", idCpu);
 
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeCallsRecompiled, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_CALLS_PER_TB,
                         "Number of threaded calls per TB that have been properly recompiled to native code",
