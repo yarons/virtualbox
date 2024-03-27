@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 104087 2024-03-27 14:23:52Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 104092 2024-03-27 14:44:51Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -7734,6 +7734,12 @@ iemNativeEmitSimdStoreXregU128(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint
 
 #define IEM_MC_STORE_XREG_U8(a_iXReg, a_iByte, a_u32Value) \
     off = iemNativeEmitSimdStoreXregUxx(pReNative, off, a_iXReg, a_u32Value, sizeof(uint8_t), a_iByte)
+
+#define IEM_MC_STORE_XREG_R32(a_iXReg, a_r32Value) \
+    off = iemNativeEmitSimdStoreXregUxx(pReNative, off, a_iXReg, a_r32Value, sizeof(RTFLOAT32U), 0 /*iElem*/)
+
+#define IEM_MC_STORE_XREG_R64(a_iXReg, a_r64Value) \
+    off = iemNativeEmitSimdStoreXregUxx(pReNative, off, a_iXReg, a_r64Value, sizeof(RTFLOAT64U), 0 /*iElem*/)
 
 /** Emits code for IEM_MC_STORE_XREG_U64/IEM_MC_STORE_XREG_U32/IEM_MC_STORE_XREG_U16/IEM_MC_STORE_XREG_U8. */
 DECL_INLINE_THROW(uint32_t)
