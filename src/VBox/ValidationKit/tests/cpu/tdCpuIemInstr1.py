@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuIemInstr1.py 104090 2024-03-27 14:29:07Z alexander.eichner@oracle.com $
+# $Id: tdCpuIemInstr1.py 104091 2024-03-27 14:29:41Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104090 $"
+__version__ = "$Revision: 104091 $"
 
 
 # Standard Python imports.
@@ -71,6 +71,7 @@ class IemTestVm(vboxtestvms.BootSectorTestVm):
 
     def _childVmReconfig(self, oTestDrv, oVM, oSession):
         _ = oTestDrv;
+        _ = oVM;
 
         # Make sure the testcase runs in a sensible timeframe but we still excercise the recompiler.
         fRc =         oSession.setExtraData('VBoxInternal/Devices/VMMDev/0/Config/TestingThresholdNativeRecompiler', '2');
