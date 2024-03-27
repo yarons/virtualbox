@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 104014 2024-03-23 01:59:22Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-linux.c 104096 2024-03-27 17:38:10Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1305,6 +1305,10 @@ RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv)
         return NULL;
     return pte_page(u.Entry);
 #else /* !defined(RT_ARCH_AMD64) && !defined(RT_ARCH_X86) */
+
+    if (is_vmalloc_addr(pv))
+        return vmalloc_to_page(pv);
+
     return virt_to_page(pv);
 #endif
 }
