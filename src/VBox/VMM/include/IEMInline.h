@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 103951 2024-03-20 11:59:02Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInline.h 104079 2024-03-27 10:30:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -1752,7 +1752,7 @@ DECL_FORCE_INLINE(void *) iemGRegRef(PVMCPUCC pVCpu, uint8_t iReg) RT_NOEXCEPT
  */
 DECL_FORCE_INLINE(uint8_t *) iemGRegRefU8(PVMCPUCC pVCpu, uint8_t iReg) RT_NOEXCEPT
 {
-    if (iReg < 4 || (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_REX))
+    if (iReg < 4 || (pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_REX | IEM_OP_PRF_VEX)))
     {
         Assert(iReg < 16);
         return &pVCpu->cpum.GstCtx.aGRegs[iReg].u8;
