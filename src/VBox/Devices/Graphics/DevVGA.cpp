@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 103419 2024-02-19 08:59:56Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA.cpp 104097 2024-03-27 17:44:17Z vadim.galitsyn@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6694,7 +6694,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
         if (pThis->fVmSvga3)
         {
             /* Register the MMIO register region. */
-            rc = PDMDevHlpPCIIORegionCreateMmio(pDevIns, pThis->pciRegions.iIO, 4096, PCI_ADDRESS_SPACE_MEM,
+            rc = PDMDevHlpPCIIORegionCreateMmio(pDevIns, pThis->pciRegions.iIO, 4096 * 1024, PCI_ADDRESS_SPACE_MEM,
                                                 vmsvga3MmioWrite, vmsvga3MmioRead, NULL /*pvUser*/,
                                                 IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_DWORD_ZEROED,
                                                 "VMSVGA3-MMIO", &pThis->hMmioSvga3);
