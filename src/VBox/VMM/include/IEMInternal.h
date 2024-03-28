@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104095 2024-03-27 15:46:10Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104100 2024-03-28 02:07:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1136,6 +1136,8 @@ typedef struct IEMTBDBG
 {
     /** Number of entries in aEntries. */
     uint32_t        cEntries;
+    /** The offset of the last kIemTbDbgEntryType_NativeOffset record. */
+    uint32_t        offNativeLast;
     /** Debug info entries. */
     RT_FLEXIBLE_ARRAY_EXTENSION
     IEMTBDBGENTRY   aEntries[RT_FLEXIBLE_ARRAY];
