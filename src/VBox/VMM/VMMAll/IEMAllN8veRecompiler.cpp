@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104109 2024-03-28 22:19:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104110 2024-03-28 22:26:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -508,12 +508,6 @@ static void *iemExecMemAllocatorAlloc(PVMCPU pVCpu, uint32_t cbReq, PIEMTB pTb)
     AssertMsgReturn(cbReq > 32 && cbReq < _512K, ("%#x\n", cbReq), NULL);
     STAM_PROFILE_START(&pExecMemAllocator->StatAlloc, a);
 
-    /*
-     * Adjust the request size so it'll accomodate a header, the aligned it
-     * up to a whole unit size.
-     */
-/** @todo this aint right wrt header. See iemExecMemAllocatorAllocInChunk   */
-    cbReq = RT_ALIGN_32(cbReq, IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE);
     for (unsigned iIteration = 0;; iIteration++)
     {
         if (cbReq <= pExecMemAllocator->cbFree)
@@ -562,7 +556,11 @@ static void *iemExecMemAllocatorAlloc(PVMCPU pVCpu, uint32_t cbReq, PIEMTB pTb)
          * Try prune native TBs once.
          */
         if (iIteration == 0)
-            iemTbAllocatorFreeupNativeSpace(pVCpu, cbReq / sizeof(IEMNATIVEINSTR));
+        {
+            /* No header included in the instruction count here. */
+            uint32_t const cNeededInstrs = RT_ALIGN_32(cbReq, IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE) / sizeof(IEMNATIVEINSTR));
+            iemTbAllocatorFreeupNativeSpace(pVCpu, cNeededInstrs);
+        }
         else
         {
             STAM_REL_COUNTER_INC(&pVCpu->iem.s.StatNativeExecMemInstrBufAllocFailed);
