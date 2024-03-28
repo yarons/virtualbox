@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99040 2023-03-18 21:03:42Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104102 2024-03-28 10:49:46Z sergey.dubov@oracle.com $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -58,6 +58,8 @@ ifndef VBOX_ONLY_SDK
  	$(VBOX_PATH_XPCOM_SRC)/xpcom/glue \
  	$(VBOX_PATH_XPCOM_SRC)/xpcom/build \
  	$(VBOX_JXPCOM_JDEST)
+ VBoxJXpcom_INCS.darwin += \
+ 	$(VBOX_JAVA_INC)/darwin \
  VBoxJXpcom_SOURCES = \
  	src/nsAppFileLocProviderProxy.cpp \
  	src/nsJavaWrapper.cpp \
