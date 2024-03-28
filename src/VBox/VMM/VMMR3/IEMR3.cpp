@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 104095 2024-03-27 15:46:10Z alexander.eichner@oracle.com $ */
+/* $Id: IEMR3.cpp 104108 2024-03-28 21:50:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -395,7 +395,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Time spent freeing up TBs when full at alloc", "/IEM/CPU%u/re/TbPruningAlloc", idCpu);
 # endif
         STAMR3RegisterF(pVM, (void *)&pTbAllocator->StatPruneNative,    STAMTYPE_PROFILE,   STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
-                        "Time spent freeing up native TBs when out of executable memory", "/IEM/CPU%u/re/TbPruningNative", idCpu);
+                        "Time spent freeing up native TBs when out of executable memory", "/IEM/CPU%u/re/ExecMem/TbPruningNative", idCpu);
         STAMR3RegisterF(pVM, (void *)&pTbAllocator->cAllocatedChunks,   STAMTYPE_U16,   STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Populated TB chunks",                          "/IEM/CPU%u/re/cTbChunks", idCpu);
         STAMR3RegisterF(pVM, (void *)&pTbAllocator->cMaxChunks,         STAMTYPE_U8,    STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
