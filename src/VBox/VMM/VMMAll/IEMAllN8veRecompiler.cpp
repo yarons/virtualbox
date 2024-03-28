@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104110 2024-03-28 22:26:33Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104112 2024-03-28 23:57:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -558,7 +558,7 @@ static void *iemExecMemAllocatorAlloc(PVMCPU pVCpu, uint32_t cbReq, PIEMTB pTb)
         if (iIteration == 0)
         {
             /* No header included in the instruction count here. */
-            uint32_t const cNeededInstrs = RT_ALIGN_32(cbReq, IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE) / sizeof(IEMNATIVEINSTR));
+            uint32_t const cNeededInstrs = RT_ALIGN_32(cbReq, IEMEXECMEM_ALT_SUB_ALLOC_UNIT_SIZE) / sizeof(IEMNATIVEINSTR);
             iemTbAllocatorFreeupNativeSpace(pVCpu, cNeededInstrs);
         }
         else
