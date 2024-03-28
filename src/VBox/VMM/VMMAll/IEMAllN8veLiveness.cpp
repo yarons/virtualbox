@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104076 2024-03-27 08:19:25Z bela.lubkin@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104099 2024-03-28 01:42:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -1027,6 +1027,8 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_NATIVE_EMIT_6(a_fnEmitter, a0, a1, a2, a3, a4, a5)                               NOP()
 #define IEM_MC_NATIVE_EMIT_7(a_fnEmitter, a0, a1, a2, a3, a4, a5, a6)                           NOP()
 #define IEM_MC_NATIVE_EMIT_8(a_fnEmitter, a0, a1, a2, a3, a4, a5, a6, a7)                       NOP()
+
+#define IEM_MC_NATIVE_SET_AMD64_HOST_REG_FOR_LOCAL(a_VarNm, a_idxHostReg)                       NOP()
 
 #define IEM_MC_CALL_VOID_AIMPL_0(a_pfn)                                                         NOP()
 #define IEM_MC_CALL_VOID_AIMPL_1(a_pfn, a0)                                                     NOP()

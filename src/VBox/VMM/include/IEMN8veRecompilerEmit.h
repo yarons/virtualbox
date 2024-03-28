@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104088 2024-03-27 14:24:18Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104099 2024-03-28 01:42:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -6371,7 +6371,9 @@ typedef enum IEMNATIVEINSTRCOND : uint8_t
     kIemNativeInstrCond_c,
     kIemNativeInstrCond_nc,
     kIemNativeInstrCond_e,
+    kIemNativeInstrCond_z = kIemNativeInstrCond_e,
     kIemNativeInstrCond_ne,
+    kIemNativeInstrCond_nz = kIemNativeInstrCond_ne,
     kIemNativeInstrCond_be,
     kIemNativeInstrCond_nbe,
     kIemNativeInstrCond_s,

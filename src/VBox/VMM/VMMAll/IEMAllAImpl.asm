@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 104076 2024-03-27 08:19:25Z bela.lubkin@oracle.com $
+; $Id: IEMAllAImpl.asm 104099 2024-03-28 01:42:59Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -37,6 +37,11 @@
 ;*********************************************************************************************************************************
 ;*  Defined Constants And Macros                                                                                                 *
 ;*********************************************************************************************************************************
+
+;;
+; This is handy for generating absolutly correct EFLAGS.
+%define IEM_AIMPL_WITH_LOAD_AND_SAVE_ALL_STATUS_FLAGS
+
 
 ;;
 ; RET XX / RET wrapper for fastcall.
@@ -273,10 +278,6 @@ GLOBALNAME_RAW NAME_FASTCALL(%1,%2,@), function, hidden
 
 
 ;;
-; This is handy for generating absolutly correct EFLAGS.
-;%define IEM_AIMPL_WITH_LOAD_AND_SAVE_ALL_STATUS_FLAGS
-
-;;
 ; Load the relevant flags from [%1] if there are undefined flags (%3).
 ;
 ; @remarks      Clobbers T0, stack. Changes EFLAGS.
@@ -397,7 +398,7 @@ GLOBALNAME_RAW NAME_FASTCALL(%1,%2,@), function, hidden
 ; @param        3       The mask of undefined flags to (maybe) save.
 ; @param        4       The mask of flags that are zeroed (and thus doesn't require loading, just clearing)
 ;
-%macro IEM_SAVE_FLAGS 3-4 0
+%macro IEM_SAVE_FLAGS 4 0
  %if (%2 | %3 | %4) != 0
         mov     T1_32, [%1]                                     ; flags
   %ifdef IEM_AIMPL_WITH_LOAD_AND_SAVE_ALL_STATUS_FLAGS
