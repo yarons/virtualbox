@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104103 2024-03-28 10:54:21Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104114 2024-03-29 01:57:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -6070,6 +6070,7 @@ extern const PFNIEMOP g_apfnIemThreadedRecompilerVecMap3[1024];
 DECLCALLBACK(int)   iemTbInit(PVMCC pVM, uint32_t cInitialTbs, uint32_t cMaxTbs,
                               uint64_t cbInitialExec, uint64_t cbMaxExec, uint32_t cbChunkExec);
 void                iemThreadedTbObsolete(PVMCPUCC pVCpu, PIEMTB pTb, bool fSafeToFree);
+DECLHIDDEN(void)    iemTbAllocatorFree(PVMCPUCC pVCpu, PIEMTB pTb);
 void                iemTbAllocatorProcessDelayedFrees(PVMCPUCC pVCpu, PIEMTBALLOCATOR pTbAllocator);
 void                iemTbAllocatorFreeupNativeSpace(PVMCPUCC pVCpu, uint32_t cNeededInstrs);
 DECLHIDDEN(const char *) iemTbFlagsToString(uint32_t fFlags, char *pszBuf, size_t cbBuf) RT_NOEXCEPT;
