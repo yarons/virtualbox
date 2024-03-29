@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103808 2024-03-12 19:50:11Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104115 2024-03-29 02:11:56Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -261,6 +261,7 @@ ifdef VBOX_WITH_IEM_RECOMPILER
  	VMMAll/IEMAllThrdFuncsBltIn.cpp
  ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER
   VBoxVMM_SOURCES += \
+  	VMMAll/IEMAllN8veExecMem.cpp \
   	VMMAll/IEMAllN8veRecompiler.cpp \
   	VMMAll/IEMAllN8veRecompFuncs1.cpp \
   	VMMAll/IEMAllN8veRecompFuncs2.cpp \
