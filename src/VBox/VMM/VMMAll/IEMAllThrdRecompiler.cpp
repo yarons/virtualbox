@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 104114 2024-03-29 01:57:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 104123 2024-03-30 01:12:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -884,6 +884,7 @@ static void iemTbAllocatorFreeInner(PVMCPUCC pVCpu, PIEMTBALLOCATOR pTbAllocator
             pTbAllocator->cNativeTbs -= 1;
             iemExecMemAllocatorFree(pVCpu, pTb->Native.paInstructions,
                                     pTb->Native.cInstructions * sizeof(pTb->Native.paInstructions[0]));
+            pVCpu, pTb->Native.paInstructions = NULL; /* required by iemExecMemAllocatorPrune */
             break;
 #endif
         default:
