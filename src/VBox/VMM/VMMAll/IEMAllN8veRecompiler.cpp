@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104115 2024-03-29 02:11:56Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104129 2024-04-02 12:37:36Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -2639,7 +2639,9 @@ iemNativeRegFlushPendingWrite(PIEMRECOMPILERSTATE pReNative, uint32_t off, IEMNA
 {
     uint8_t const idxHstReg = pReNative->Core.aidxGstRegShadows[enmGstReg];
 
-    Assert(enmGstReg >= kIemNativeGstReg_GprFirst && enmGstReg <= kIemNativeGstReg_GprLast);
+    Assert(   (   enmGstReg >= kIemNativeGstReg_GprFirst
+               && enmGstReg <= kIemNativeGstReg_GprLast)
+           || enmGstReg == kIemNativeGstReg_MxCsr);
     Assert(   idxHstReg != UINT8_MAX
            && pReNative->Core.bmGstRegShadowDirty & RT_BIT_64(enmGstReg));
     Log12(("iemNativeRegFlushPendingWrite: Clearing guest register %s shadowed by host %s (off=%#x)\n",
@@ -3323,9 +3325,9 @@ iemNativeRegAllocTmpForGuestReg(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, I
         /** @todo r=aeichner Implement for registers other than GPR as well. */
         if (   (   enmIntendedUse == kIemNativeGstRegUse_ForFullWrite
                 || enmIntendedUse == kIemNativeGstRegUse_ForUpdate)
-            && enmGstReg >= kIemNativeGstReg_GprFirst
-            && enmGstReg <= kIemNativeGstReg_GprLast
-            )
+            && (   (   enmGstReg >= kIemNativeGstReg_GprFirst
+                    && enmGstReg <= kIemNativeGstReg_GprLast)
+                || enmGstReg == kIemNativeGstReg_MxCsr))
         {
 # ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
             iemNativeDbgInfoAddNativeOffset(pReNative, *poff);
@@ -3355,9 +3357,9 @@ iemNativeRegAllocTmpForGuestReg(PIEMRECOMPILERSTATE pReNative, uint32_t *poff, I
     /** @todo r=aeichner Implement for registers other than GPR as well. */
     if (   (   enmIntendedUse == kIemNativeGstRegUse_ForFullWrite
             || enmIntendedUse == kIemNativeGstRegUse_ForUpdate)
-        && enmGstReg >= kIemNativeGstReg_GprFirst
-        && enmGstReg <= kIemNativeGstReg_GprLast
-        )
+        && (   (   enmGstReg >= kIemNativeGstReg_GprFirst
+                && enmGstReg <= kIemNativeGstReg_GprLast)
+            || enmGstReg == kIemNativeGstReg_MxCsr))
     {
 # ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
         iemNativeDbgInfoAddNativeOffset(pReNative, *poff);
