@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 104097 2024-03-27 17:44:17Z vadim.galitsyn@oracle.com $ */
+/* $Id: DevVGA.cpp 104130 2024-04-02 18:25:14Z michal.necasek@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -598,11 +598,7 @@ static uint32_t vga_ioport_read(PPDMDEVINS pDevIns, PVGASTATE pThis, uint32_t ad
     } else {
         switch(addr) {
         case 0x3c0:
-            if (pThis->ar_flip_flop == 0) {
-                val = pThis->ar_index;
-            } else {
-                val = 0;
-            }
+            val = pThis->ar_index;
             break;
         case 0x3c1:
             index = pThis->ar_index & 0x1f;
