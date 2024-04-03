@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104133 2024-04-03 12:03:22Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104135 2024-04-03 13:18:38Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -1101,9 +1101,8 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_CALL_MMX_AIMPL_3(a_pfnAImpl, a0, a1, a2)                                         NOP()
 #define IEM_MC_CALL_SSE_AIMPL_2(a_pfnAImpl, a0, a1)                                             IEM_LIVENESS_MXCSR_MODIFY()
 #define IEM_MC_CALL_SSE_AIMPL_3(a_pfnAImpl, a0, a1, a2)                                         IEM_LIVENESS_MXCSR_MODIFY()
-#define IEM_MC_CALL_AVX_AIMPL_2(a_pfnAImpl, a0, a1)                                             NOP()
-#define IEM_MC_CALL_AVX_AIMPL_3(a_pfnAImpl, a0, a1, a2)                                         NOP()
-#define IEM_MC_CALL_AVX_AIMPL_NEW_3(a_pfnAImpl, a0, a1, a2)                                     IEM_LIVENESS_MXCSR_MODIFY()
+#define IEM_MC_CALL_AVX_AIMPL_2(a_pfnAImpl, a0, a1)                                             IEM_LIVENESS_MXCSR_MODIFY()
+#define IEM_MC_CALL_AVX_AIMPL_3(a_pfnAImpl, a0, a1, a2)                                         IEM_LIVENESS_MXCSR_MODIFY()
 
 #define IEM_LIVENESS_ONE_STATUS_EFLAG_INPUT(a_fBit) \
     do { if (     (a_fBit) == X86_EFL_CF) IEM_LIVENESS_ONE_EFLAG_INPUT(fEflCf); \
