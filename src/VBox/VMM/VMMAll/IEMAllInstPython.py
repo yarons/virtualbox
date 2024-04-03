@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104135 2024-04-03 13:18:38Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104140 2024-04-03 14:56:11Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104135 $"
+__version__ = "$Revision: 104140 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2994,6 +2994,7 @@ g_dMcStmtParsers = {
     'IEM_MC_CALL_AIMPL_4':                                       (McBlock.parseMcCallAImpl,         True,  True,  True,  ),
     'IEM_MC_CALL_AVX_AIMPL_2':                                   (McBlock.parseMcCallAvxAImpl,      True,  True,  g_fNativeSimd),
     'IEM_MC_CALL_AVX_AIMPL_3':                                   (McBlock.parseMcCallAvxAImpl,      True,  True,  g_fNativeSimd),
+    'IEM_MC_CALL_AVX_AIMPL_NEW_3':                               (McBlock.parseMcCallAvxAImpl,      True,  True,  False, ),
     'IEM_MC_CALL_CIMPL_0':                                       (McBlock.parseMcCallCImpl,         True,  True,  False, ),
     'IEM_MC_CALL_CIMPL_1':                                       (McBlock.parseMcCallCImpl,         True,  True,  False, ),
     'IEM_MC_CALL_CIMPL_2':                                       (McBlock.parseMcCallCImpl,         True,  True,  False, ),
@@ -3051,7 +3052,7 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_GREG_U8_ZX_U32':                               (McBlock.parseMcGeneric,           False, False, True,  ), # thrd var
     'IEM_MC_FETCH_GREG_U8_ZX_U64':                               (McBlock.parseMcGeneric,           False, False, True,  ), # thrd var
     'IEM_MC_FETCH_GREG_PAIR_U32':                                (McBlock.parseMcGeneric,           False, False, False, ),
-    'IEM_MC_FETCH_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_FETCH_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_MEM_D80':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_I16':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_I32':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
@@ -3259,7 +3260,7 @@ g_dMcStmtParsers = {
     'IEM_MC_PUSH_U64':                                           (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_RAISE_DIVIDE_ERROR':                                 (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO':                          (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED':                    (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED':                    (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':                   (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_REF_EFLAGS':                                         (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_REF_FPUREG':                                         (McBlock.parseMcGeneric,           False, False, False, ),
@@ -3321,7 +3322,7 @@ g_dMcStmtParsers = {
     'IEM_MC_STORE_GREG_U8':                                      (McBlock.parseMcGeneric,           True,  True,  True,  ), # thrd var
     'IEM_MC_STORE_GREG_U8_CONST':                                (McBlock.parseMcGeneric,           True,  True,  True,  ), # thrd var
     'IEM_MC_STORE_GREG_PAIR_U32':                                (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_STORE_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_STORE_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_STORE_MEM_I16_CONST_BY_REF':                         (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_MEM_I32_CONST_BY_REF':                         (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_STORE_MEM_I64_CONST_BY_REF':                         (McBlock.parseMcGeneric,           True,  True,  False, ),
