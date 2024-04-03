@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 104135 2024-04-03 13:18:38Z alexander.eichner@oracle.com $
+; $Id: IEMAllAImpl.asm 104136 2024-04-03 13:22:57Z alexander.eichner@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -4896,7 +4896,7 @@ BEGINPROC_FASTCALL iemAImpl_v %+ %1 %+ _u128, 12
         vmovdqu  xmm0, [A2]
         vmovdqu  xmm1, [A3]
         v %+ %1  xmm0, xmm0, xmm1
-        vmovdqu  [A1 + IEMAVX128RESULT.uResult], xmm0
+        vmovdqu  [A1], xmm0
 
         SSE_AVX_ST_MXCSR R0_32, A0_32
         IEMIMPL_AVX_PROLOGUE
@@ -4911,7 +4911,7 @@ BEGINPROC_FASTCALL iemAImpl_v %+ %1 %+ _u256, 12
         vmovdqu  ymm0, [A2]
         vmovdqu  ymm1, [A3]
         v %+ %1  ymm0, ymm0, ymm1
-        vmovdqu  [A1 + IEMAVX256RESULT.uResult], ymm0
+        vmovdqu  [A1], ymm0
 
         SSE_AVX_ST_MXCSR R0_32, A0_32
         IEMIMPL_AVX_PROLOGUE
@@ -4926,7 +4926,7 @@ BEGINPROC_FASTCALL iemAImpl_v %+ %1 %+ _u128, 12
         vmovdqu  xmm0, [A2]
         vmovdqu  xmm1, [A3]
         v %+ %1  xmm0, xmm1
-        vmovdqu  [A1 + IEMAVX128RESULT.uResult], xmm0
+        vmovdqu  [A1], xmm0
 
         SSE_AVX_ST_MXCSR R0_32, A0_32
         IEMIMPL_AVX_PROLOGUE
@@ -4941,7 +4941,7 @@ BEGINPROC_FASTCALL iemAImpl_v %+ %1 %+ _u256, 12
         vmovdqu  ymm0, [A2]
         vmovdqu  ymm1, [A3]
         v %+ %1  ymm0, ymm1
-        vmovdqu  [A1 + IEMAVX256RESULT.uResult], ymm0
+        vmovdqu  [A1], ymm0
 
         SSE_AVX_ST_MXCSR R0_32, A0_32
         IEMIMPL_AVX_PROLOGUE
