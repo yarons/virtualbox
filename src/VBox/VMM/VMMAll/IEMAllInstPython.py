@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104141 2024-04-03 14:56:42Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104143 2024-04-03 16:41:14Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104141 $"
+__version__ = "$Revision: 104143 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3053,9 +3053,9 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_GREG_PAIR_U32':                                (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_FETCH_GREG_PAIR_U64':                                (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_MEM_D80':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_I16':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_I32':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_I64':                                      (McBlock.parseMcGeneric,           True,  True,  False,  ),
+    'IEM_MC_FETCH_MEM_I16':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_I32':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
+    'IEM_MC_FETCH_MEM_I64':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_R32':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_R64':                                      (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_R80':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
