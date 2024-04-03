@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 104133 2024-04-03 12:03:22Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 104134 2024-04-03 12:57:47Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -712,9 +712,9 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_STORE_YREG_U64_U256(a_iYRegDst, a_iQwDst, a_u256Value, a_iQwSrc) \
     do { uintptr_t const iYRegDstTmp    = (a_iYRegDst); \
          if ((a_iQwDst) < 2) \
-            pVCpu->cpum.GstCtx.XState.x87.aXMM[(iYRegDstTmp)].au64[(a_iQwDst)] = (a_u256Value).au64[(a_iQwDst)]; \
+            pVCpu->cpum.GstCtx.XState.x87.aXMM[(iYRegDstTmp)].au64[(a_iQwDst)] = (a_u256Value).au64[(a_iQwSrc)]; \
          else \
-            pVCpu->cpum.GstCtx.XState.u.YmmHi.aYmmHi[(iYRegDstTmp)].au64[(a_iQwDst) - 4] = (a_u256Value).au64[(a_iQwDst)]; \
+            pVCpu->cpum.GstCtx.XState.u.YmmHi.aYmmHi[(iYRegDstTmp)].au64[(a_iQwDst) - 2] = (a_u256Value).au64[(a_iQwSrc)]; \
     } while (0)
 #define IEM_MC_STORE_YREG_U64(a_iYRegDst, a_iQword, a_u64Value) \
     do { uintptr_t const iYRegDstTmp    = (a_iYRegDst); \
