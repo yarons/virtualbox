@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICommon.cpp 104158 2024-04-04 15:09:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2796,10 +2796,20 @@ void UICommon::sltHandleFontScaleFactorChanged(int iFontScaleFactor)
 {
     QFont appFont = qApp->font();
 
+    /* Let's round up some double var: */
+    auto roundUp = [](double dValue)
+    {
+        const int iValue = dValue;
+        return dValue > (double)iValue ? iValue + 1 : iValue;
+    };
+
+    /* Do we have pixel font? */
     if (iOriginalFontPixelSize != -1)
-        appFont.setPixelSize(iFontScaleFactor / 100.f * iOriginalFontPixelSize);
+        appFont.setPixelSize(roundUp(iFontScaleFactor / 100.f * iOriginalFontPixelSize));
+    /* Point font otherwise: */
     else
-        appFont.setPointSize(iFontScaleFactor / 100.f * iOriginalFontPointSize);
+        appFont.setPointSize(roundUp(iFontScaleFactor / 100.f * iOriginalFontPointSize));
+
     qApp->setFont(appFont);
 }
 
