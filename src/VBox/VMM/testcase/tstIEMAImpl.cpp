@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 104156 2024-04-04 12:05:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -989,14 +989,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 104150 $";
+    static char s_szRev[] = "$Revision: 104156 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 104156 2024-04-04 12:05:54Z alexander.eichner@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -7917,9 +7917,8 @@ static RTEXITCODE SseCompareF2XmmR32Imm8Generate(uint32_t cTests, const char * c
                                               | (iDaz ? X86_MXCSR_DAZ : 0)
                                               | (iFz  ? X86_MXCSR_FZ  : 0)
                                               | X86_MXCSR_XCPT_MASK;
-                            uint32_t fMxcsrM  = fMxcsrIn;
                             X86XMMREG ResM;
-                            pfn(&fMxcsrM, &ResM, &Src, bImm);
+                            uint32_t fMxcsrM    = pfn(fMxcsrIn, &ResM, &Src, bImm);
                             TestData.fMxcsrIn   = fMxcsrIn;
                             TestData.fMxcsrOut  = fMxcsrM;
                             TestData.bImm       = bImm;
@@ -7927,9 +7926,8 @@ static RTEXITCODE SseCompareF2XmmR32Imm8Generate(uint32_t cTests, const char * c
                             GenerateBinaryWrite(&BinOut, &TestData, sizeof(TestData));
 
                             fMxcsrIn &= ~X86_MXCSR_XCPT_MASK;
-                            uint32_t fMxcsrU  = fMxcsrIn;
                             X86XMMREG ResU;
-                            pfn(&fMxcsrU, &ResU, &Src, bImm);
+                            uint32_t fMxcsrU    = pfn(fMxcsrIn, &ResU, &Src, bImm);
                             TestData.fMxcsrIn   = fMxcsrIn;
                             TestData.fMxcsrOut  = fMxcsrU;
                             TestData.bImm       = bImm;
@@ -7940,9 +7938,8 @@ static RTEXITCODE SseCompareF2XmmR32Imm8Generate(uint32_t cTests, const char * c
                             if (fXcpt)
                             {
                                 fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | fXcpt;
-                                uint32_t fMxcsr1  = fMxcsrIn;
                                 X86XMMREG Res1;
-                                pfn(&fMxcsr1, &Res1, &Src, bImm);
+                                uint32_t fMxcsr1    = pfn(fMxcsrIn, &Res1, &Src, bImm);
                                 TestData.fMxcsrIn   = fMxcsrIn;
                                 TestData.fMxcsrOut  = fMxcsr1;
                                 TestData.bImm       = bImm;
@@ -7953,9 +7950,8 @@ static RTEXITCODE SseCompareF2XmmR32Imm8Generate(uint32_t cTests, const char * c
                                 {
                                     fXcpt |= fMxcsr1 & X86_MXCSR_XCPT_FLAGS;
                                     fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | (fXcpt << X86_MXCSR_XCPT_MASK_SHIFT);
-                                    uint32_t fMxcsr2  = fMxcsrIn;
                                     X86XMMREG Res2;
-                                    pfn(&fMxcsr2, &Res2, &Src, bImm);
+                                    uint32_t fMxcsr2    = pfn(fMxcsrIn, &Res2, &Src, bImm);
                                     TestData.fMxcsrIn   = fMxcsrIn;
                                     TestData.fMxcsrOut  = fMxcsr2;
                                     TestData.bImm       = bImm;
@@ -7967,9 +7963,8 @@ static RTEXITCODE SseCompareF2XmmR32Imm8Generate(uint32_t cTests, const char * c
                                         if (fUnmasked & fXcpt)
                                         {
                                             fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | ((fXcpt & ~fUnmasked) << X86_MXCSR_XCPT_MASK_SHIFT);
-                                            uint32_t fMxcsr3  = fMxcsrIn;
                                             X86XMMREG Res3;
-                                            pfn(&fMxcsr3, &Res3, &Src, bImm);
+                                            uint32_t fMxcsr3    = pfn(fMxcsrIn, &Res3, &Src, bImm);
                                             TestData.fMxcsrIn   = fMxcsrIn;
                                             TestData.fMxcsrOut  = fMxcsr3;
                                             TestData.bImm       = bImm;
@@ -8007,8 +8002,7 @@ static void SseCompareF2XmmR32Imm8Test(void)
 
                 Src.uSrc1 = paTests[iTest].InVal1;
                 Src.uSrc2 = paTests[iTest].InVal2;
-                uint32_t fMxcsr = paTests[iTest].fMxcsrIn;
-                pfn(&fMxcsr, &ValOut, &Src, paTests[iTest].bImm);
+                uint32_t fMxcsr = pfn(paTests[iTest].fMxcsrIn, &ValOut, &Src, paTests[iTest].bImm);
                 if (   fMxcsr != paTests[iTest].fMxcsrOut
                     || ValOut.au32[0] != paTests[iTest].OutVal.au32[0]
                     || ValOut.au32[1] != paTests[iTest].OutVal.au32[1]
@@ -8114,9 +8108,8 @@ static RTEXITCODE SseCompareF2XmmR64Imm8Generate(uint32_t cTests, const char * c
                                               | (iDaz ? X86_MXCSR_DAZ : 0)
                                               | (iFz  ? X86_MXCSR_FZ  : 0)
                                               | X86_MXCSR_XCPT_MASK;
-                            uint32_t fMxcsrM  = fMxcsrIn;
                             X86XMMREG ResM;
-                            pfn(&fMxcsrM, &ResM, &Src, bImm);
+                            uint32_t fMxcsrM    = pfn(fMxcsrIn, &ResM, &Src, bImm);
                             TestData.fMxcsrIn   = fMxcsrIn;
                             TestData.fMxcsrOut  = fMxcsrM;
                             TestData.bImm       = bImm;
@@ -8124,9 +8117,8 @@ static RTEXITCODE SseCompareF2XmmR64Imm8Generate(uint32_t cTests, const char * c
                             GenerateBinaryWrite(&BinOut, &TestData, sizeof(TestData));
 
                             fMxcsrIn &= ~X86_MXCSR_XCPT_MASK;
-                            uint32_t fMxcsrU  = fMxcsrIn;
                             X86XMMREG ResU;
-                            pfn(&fMxcsrU, &ResU, &Src, bImm);
+                            uint32_t fMxcsrU    = pfn(fMxcsrIn, &ResU, &Src, bImm);
                             TestData.fMxcsrIn   = fMxcsrIn;
                             TestData.fMxcsrOut  = fMxcsrU;
                             TestData.bImm       = bImm;
@@ -8137,9 +8129,8 @@ static RTEXITCODE SseCompareF2XmmR64Imm8Generate(uint32_t cTests, const char * c
                             if (fXcpt)
                             {
                                 fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | fXcpt;
-                                uint32_t fMxcsr1  = fMxcsrIn;
                                 X86XMMREG Res1;
-                                pfn(&fMxcsr1, &Res1, &Src, bImm);
+                                uint32_t fMxcsr1    = pfn(fMxcsrIn, &Res1, &Src, bImm);
                                 TestData.fMxcsrIn   = fMxcsrIn;
                                 TestData.fMxcsrOut  = fMxcsr1;
                                 TestData.bImm       = bImm;
@@ -8150,9 +8141,8 @@ static RTEXITCODE SseCompareF2XmmR64Imm8Generate(uint32_t cTests, const char * c
                                 {
                                     fXcpt |= fMxcsr1 & X86_MXCSR_XCPT_FLAGS;
                                     fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | (fXcpt << X86_MXCSR_XCPT_MASK_SHIFT);
-                                    uint32_t fMxcsr2  = fMxcsrIn;
                                     X86XMMREG Res2;
-                                    pfn(&fMxcsr2, &Res2, &Src, bImm);
+                                    uint32_t fMxcsr2    = pfn(fMxcsrIn, &Res2, &Src, bImm);
                                     TestData.fMxcsrIn   = fMxcsrIn;
                                     TestData.fMxcsrOut  = fMxcsr2;
                                     TestData.bImm       = bImm;
@@ -8164,9 +8154,8 @@ static RTEXITCODE SseCompareF2XmmR64Imm8Generate(uint32_t cTests, const char * c
                                         if (fUnmasked & fXcpt)
                                         {
                                             fMxcsrIn = (fMxcsrIn & ~X86_MXCSR_XCPT_MASK) | ((fXcpt & ~fUnmasked) << X86_MXCSR_XCPT_MASK_SHIFT);
-                                            uint32_t fMxcsr3  = fMxcsrIn;
                                             X86XMMREG Res3;
-                                            pfn(&fMxcsr3, &Res3, &Src, bImm);
+                                            uint32_t fMxcsr3    = pfn(fMxcsrIn, &Res3, &Src, bImm);
                                             TestData.fMxcsrIn   = fMxcsrIn;
                                             TestData.fMxcsrOut  = fMxcsr3;
                                             TestData.bImm       = bImm;
@@ -8204,8 +8193,7 @@ static void SseCompareF2XmmR64Imm8Test(void)
 
                 Src.uSrc1 = paTests[iTest].InVal1;
                 Src.uSrc2 = paTests[iTest].InVal2;
-                uint32_t fMxcsr = paTests[iTest].fMxcsrIn;
-                pfn(&fMxcsr, &ValOut, &Src, paTests[iTest].bImm);
+                uint32_t fMxcsr = pfn(paTests[iTest].fMxcsrIn, &ValOut, &Src, paTests[iTest].bImm);
                 if (   fMxcsr != paTests[iTest].fMxcsrOut
                     || ValOut.au64[0] != paTests[iTest].OutVal.au64[0]
                     || ValOut.au64[1] != paTests[iTest].OutVal.au64[1])
@@ -10309,7 +10297,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 104150 $";
+        static const char s_szRev[] = "$Revision: 104156 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;
