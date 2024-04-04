@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104155 2024-04-04 10:47:23Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -645,16 +645,16 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_SET_EFL_BIT(a_fBit) do { \
         if ((a_fBit) == X86_EFL_CF)      IEM_LIVENESS_ONE_EFLAG_INPUT(fEflCf); \
         else if ((a_fBit) == X86_EFL_DF) IEM_LIVENESS_ONE_EFLAG_INPUT(fEflOther); \
-        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAG_INPUT(); } \
+        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAGS_INPUT(); } \
     } while (0)
 #define IEM_MC_CLEAR_EFL_BIT(a_fBit) do { \
         if ((a_fBit) == X86_EFL_CF)      IEM_LIVENESS_ONE_EFLAG_INPUT(fEflCf); \
         else if ((a_fBit) == X86_EFL_DF) IEM_LIVENESS_ONE_EFLAG_INPUT(fEflOther); \
-        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAG_INPUT(); } \
+        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAGS_INPUT(); } \
     } while (0)
 #define IEM_MC_FLIP_EFL_BIT(a_fBit) do { \
         if ((a_fBit) == X86_EFL_CF)      IEM_LIVENESS_ONE_EFLAG_MODIFY(fEflCf); \
-        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAG_MODIFY(); } \
+        else { AssertFailed();           IEM_LIVENESS_ALL_EFLAGS_MODIFY(); } \
     } while (0)
 
 #define IEM_MC_CLEAR_FSW_EX()                                       IEM_LIVENESS_FCW_MODIFY()
