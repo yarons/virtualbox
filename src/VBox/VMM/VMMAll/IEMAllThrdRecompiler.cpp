@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 104123 2024-03-30 01:12:57Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 104153 2024-04-04 09:42:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -3003,6 +3003,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecRecompiler(PVMCC pVM, PVMCPUCC pVCpu)
                 }
             }
 #endif
+            pVCpu->iem.s.pCurTbR3 = NULL;
             return rcStrict;
         }
         IEM_CATCH_LONGJMP_END(pVCpu);
