@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPR3HardenedMain.cpp 104160 2024-04-04 15:43:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1343,6 +1343,13 @@ static void supR3HardenedGetFullExePath(void)
      */
     suplibHardenedStrCopy(g_szSupLibHardenedAppBinPath, g_szSupLibHardenedExePath);
     suplibHardenedPathStripFilename(g_szSupLibHardenedAppBinPath);
+
+    /* Make sure binary is located in known location (unix-like hosts only). */
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)
+    if (strncmp(RTPATH_APP_PRIVATE, g_szSupLibHardenedAppBinPath, sizeof(RTPATH_APP_PRIVATE)) != 0)
+        supR3HardenedFatal("supR3HardenedExecDir: refusing to start binary from unknown location %s\n",
+                           g_szSupLibHardenedAppBinPath);
+#endif
 
     g_offSupLibHardenedExecName = suplibHardenedStrLen(g_szSupLibHardenedAppBinPath);
     while (RTPATH_IS_SEP(g_szSupLibHardenedExePath[g_offSupLibHardenedExecName]))
