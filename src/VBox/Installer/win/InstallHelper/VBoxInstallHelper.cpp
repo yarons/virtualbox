@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 104164 2024-04-04 17:14:12Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 104165 2024-04-04 17:26:51Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -573,11 +573,10 @@ static int checkTargetDirOne(MSIHANDLE hModule, PTGTDIRSECCTX pCtx, const char *
 
                                     break;
                                 }
-
+#ifdef DEBUG
                                 case ACCESS_DENIED_ACE_TYPE: /* We're only interested in the ALLOW ACE. */
                                 {
                                     ACCESS_DENIED_ACE const *pAce = (ACCESS_DENIED_ACE *)pAceHdr;
-#ifdef DEBUG
                                     LPWSTR pwszSid = NULL;
                                     ConvertSidToStringSid((PSID)&pAce->SidStart, &pwszSid);
 
@@ -585,10 +584,12 @@ static int checkTargetDirOne(MSIHANDLE hModule, PTGTDIRSECCTX pCtx, const char *
                                                pwszSid ? pwszSid : L"<Allocation Error>", pAce->Mask);
 
                                     LocalFree(pwszSid);
-#endif /* DEBUG */
-                                    /* Ignore everything else. */
                                     break;
                                 }
+#endif /* DEBUG */
+                                default:
+                                    /* Ignore everything else. */
+                                    break;
                             }
                         }
                         else
