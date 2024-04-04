@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104143 2024-04-03 16:41:14Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104143 $"
+__version__ = "$Revision: 104150 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3090,8 +3090,6 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_MEM_XMM':                                      (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE':                            (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_FETCH_MEM_XMM_NO_AC':                                (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_U32':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_XMM_U64':                                  (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_ALIGN_SSE_AND_XREG_XMM':               (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_U32_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_FETCH_MEM_XMM_U64_AND_XREG_XMM':                     (McBlock.parseMcGeneric,           True,  True,  False, ),
@@ -3109,6 +3107,8 @@ g_dMcStmtParsers = {
     'IEM_MC_FETCH_SREG_U16':                                     (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_FETCH_SREG_ZX_U32':                                  (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_FETCH_SREG_ZX_U64':                                  (McBlock.parseMcGeneric,           False, False, True,  ),
+    'IEM_MC_FETCH_XREG_R32':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
+    'IEM_MC_FETCH_XREG_R64':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_XREG_U128':                                    (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_XREG_U16':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),
     'IEM_MC_FETCH_XREG_U32':                                     (McBlock.parseMcGeneric,           False, False, g_fNativeSimd),

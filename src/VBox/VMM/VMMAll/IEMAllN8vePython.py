@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 104143 2024-04-03 16:41:14Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 104143 $"
+__version__ = "$Revision: 104150 $"
 
 # Standard python imports:
 import copy;
@@ -163,8 +163,6 @@ g_dMcStmtThreaded = {
     'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U32':                                   (None, True,  True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_U8_ZX_U64':                                   (None, True,  True,  True,  ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_ALIGN_SSE':                               (None, True,  True,  g_fNativeSimd),
-    'IEM_MC_FETCH_MEM_FLAT_XMM_U32':                                     (None, True,  True,  False, ),
-    'IEM_MC_FETCH_MEM_FLAT_XMM_U64':                                     (None, True,  True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_U128_AND_XREG_U128':                          (None, True,  True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_ALIGN_SSE_AND_XREG_XMM':                  (None, True,  True,  False, ),
     'IEM_MC_FETCH_MEM_FLAT_XMM_U32_AND_XREG_XMM':                        (None, True,  True,  False, ),
