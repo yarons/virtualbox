@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 104162 2024-04-04 17:05:37Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 104164 2024-04-04 17:14:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -583,9 +583,9 @@ static int checkTargetDirOne(MSIHANDLE hModule, PTGTDIRSECCTX pCtx, const char *
 
                                     logStringF(hModule, "checkTargetDirOne:\t%ls fMask=%#x (generic %#x specific %#x)",
                                                pwszSid ? pwszSid : L"<Allocation Error>", pAce->Mask);
-#endif /* DEBUG */
-                                    LocalFree(pwszSid);
 
+                                    LocalFree(pwszSid);
+#endif /* DEBUG */
                                     /* Ignore everything else. */
                                     break;
                                 }
