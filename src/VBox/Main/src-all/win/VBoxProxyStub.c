@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 100550 2023-07-12 14:36:30Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxProxyStub.c 104154 2024-04-04 10:14:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2492,7 +2492,7 @@ static void vbpsUpdateWindowsService(VBPSREGSTATE *pState, const WCHAR *pwszVBox
                                           NULL /* pwszLoadOrderGroup */,
                                           NULL /* pdwTagId */,
                                           wszzDependencies,
-                                          NULL /* pwszServiceStartName */,
+                                          pwszServiceStartName /* pwszServiceStartName */,
                                           NULL /* pwszPassword */);
                 if (hService != NULL)
                 {
