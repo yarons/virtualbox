@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104135 2024-04-03 13:18:38Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104147 2024-04-04 01:21:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -505,10 +505,6 @@ typedef IEMTLBENTRY *PIEMTLBENTRY;
  */
 typedef struct IEMTLB
 {
-    /** The TLB entries.
-     * We've choosen 256 because that way we can obtain the result directly from a
-     * 8-bit register without an additional AND instruction. */
-    IEMTLBENTRY         aEntries[256];
     /** The TLB revision.
      * This is actually only 28 bits wide (see IEMTLBENTRY::uTag) and is incremented
      * by adding RT_BIT_64(36) to it.  When it wraps around and becomes zero, all
@@ -555,6 +551,11 @@ typedef struct IEMTLB
 #endif
     /** Alignment padding. */
     uint32_t            au32Padding[6];
+
+    /** The TLB entries.
+     * We've choosen 256 because that way we can obtain the result directly from a
+     * 8-bit register without an additional AND instruction. */
+    IEMTLBENTRY         aEntries[256];
 } IEMTLB;
 AssertCompileSizeAlignment(IEMTLB, 64);
 /** IEMTLB::uTlbRevision increment.  */
