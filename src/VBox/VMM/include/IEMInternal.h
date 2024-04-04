@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104151 2024-04-04 09:29:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1118,8 +1118,10 @@ typedef union IEMTBDBGENTRY
         uint32_t    uType         : 4;
         /** Flag whether this is about a SIMD (true) or general (false) register flush. */
         uint32_t    fSimdReg      : 1;
+        /** The mask shift. */
+        uint32_t    cShift        : 2;
         /** The guest register mask being written back. */
-        uint32_t    fGstReg       : 27;
+        uint32_t    fGstReg       : 25;
     } GuestRegWriteback;
 #endif
 
