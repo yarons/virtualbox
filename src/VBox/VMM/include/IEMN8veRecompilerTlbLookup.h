@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerTlbLookup.h 104147 2024-04-04 01:21:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerTlbLookup.h 104148 2024-04-04 01:24:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler TLB Lookup Code Emitter.
  */
@@ -82,8 +82,10 @@ typedef struct IEMNATIVEEMITTLBSTATE
 /** @def IEMNATIVE_WITH_TLB_LOOKUP_LOAD_STORE_PAIR
  * Use LDP and STDP to reduce number of instructions accessing memory at the
  * cost of using more registers.  This will typically reduce the number of
- * instructions emitted as well.  */
-//# define IEMNATIVE_WITH_TLB_LOOKUP_LOAD_STORE_PAIR
+ * instructions emitted as well.
+ * @todo Profile this and ensure that it performs the same or better.
+ */
+# define IEMNATIVE_WITH_TLB_LOOKUP_LOAD_STORE_PAIR
 # ifdef IEMNATIVE_WITH_TLB_LOOKUP_LOAD_STORE_PAIR
     uint8_t const   idxReg4;
     uint8_t const   idxReg5;
