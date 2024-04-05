@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104177 2024-04-05 12:22:54Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104183 2024-04-05 12:55:25Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -465,7 +465,6 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_MAYBE_RAISE_FSGSBASE_XCPT()                          IEM_LIVENESS_MARK_XCPT_OR_CALL(); IEM_LIVENESS_CR4_INPUT()
 #define IEM_MC_MAYBE_RAISE_NON_CANONICAL_ADDR_GP0(a_u64Addr)        IEM_LIVENESS_MARK_XCPT_OR_CALL()
 #define IEM_MC_MAYBE_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT()             IEM_LIVENESS_MARK_XCPT_OR_CALL(); IEM_LIVENESS_CR4_INPUT() /** @todo revisit when implemented. */
-#define IEM_MC_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT()                   IEM_LIVENESS_MARK_XCPT_OR_CALL(); IEM_LIVENESS_CR4_INPUT()
 
 #define IEM_MC_LOCAL(a_Type, a_Name)                                NOP()
 #define IEM_MC_LOCAL_ASSIGN(a_Type, a_Name, a_Value)                NOP()
@@ -1171,7 +1170,6 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80(a_pr80Dst0, a_iSt0, a_pr80Dst1, a_iSt1) {
 #define IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80_FIRST(a_pr80Dst0, a_iSt0, a_iSt1) {
 #define IEM_MC_IF_FCW_IM()                              {
-#define IEM_MC_IF_MXCSR_XCPT_PENDING()                  {
 
 #define IEM_MC_ELSE()                                   } /*else*/ {
 #define IEM_MC_ENDIF()                                  } do {} while (0)
