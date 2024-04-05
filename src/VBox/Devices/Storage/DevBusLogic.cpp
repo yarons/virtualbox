@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 101016 2023-09-05 09:08:39Z michal.necasek@oracle.com $ */
+/* $Id: DevBusLogic.cpp 104171 2024-04-05 09:08:56Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3221,7 +3221,8 @@ static int buslogicR3DeviceSCSIRequestSetup(PPDMDEVINS pDevIns, PBUSLOGIC pThis,
     blPhysReadMeta(pDevIns, pThis, GCPhysAddrCCB, &CCBGuest, sizeof(CCB32));
 
     uTargetIdCCB = pThis->fMbxIs24Bit ? CCBGuest.o.uTargetId : CCBGuest.n.uTargetId;
-    if (RT_LIKELY(uTargetIdCCB < RT_ELEMENTS(pThisCC->aDeviceStates)))
+    if (   RT_LIKELY(uTargetIdCCB < RT_ELEMENTS(pThisCC->aDeviceStates))
+        && CCBGuest.c.cbCDB <= RT_ELEMENTS(CCBGuest.c.abCDB))
     {
         PBUSLOGICDEVICE pTgtDev = &pThisCC->aDeviceStates[uTargetIdCCB];
 
@@ -3442,7 +3443,7 @@ static void buslogicR3ProcessBiosReq(PPDMDEVINS pDevIns, PBUSLOGIC pThis, PBUSLO
     PESCMD pCmd = (PESCMD)pThis->aCommandBuffer;
 
     if (RT_LIKELY(   pCmd->uTargetId < RT_ELEMENTS(pThisCC->aDeviceStates)
-                  && pCmd->cbCDB <= 16))
+                  && pCmd->cbCDB <= RT_ELEMENTS(pCmd->abCDB)))
     {
         PBUSLOGICDEVICE pTgtDev = &pThisCC->aDeviceStates[pCmd->uTargetId];
 
