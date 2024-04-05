@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104174 2024-04-05 10:21:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104177 2024-04-05 12:22:54Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -1083,7 +1083,6 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_READ()                                                   NOP()
 #define IEM_MC_ACTUALIZE_FPU_STATE_FOR_CHANGE()                                                 NOP()
 
-#define IEM_MC_STORE_SSE_RESULT(a_SseData, a_iXmmReg)                                           NOP() //IEM_LIVENESS_XREG_CLOBBER(a_iXmmReg)
 #define IEM_MC_SSE_UPDATE_MXCSR(a_fMxcsr)                                                       IEM_LIVENESS_MXCSR_MODIFY()
 
 #define IEM_MC_PREPARE_SSE_USAGE()                                                              NOP()
