@@ -1,4 +1,4 @@
-/* $Id: ebda.h 104142 2024-04-03 15:49:45Z michal.necasek@oracle.com $ */
+/* $Id: ebda.h 104194 2024-04-05 14:39:02Z michal.necasek@oracle.com $ */
 /** @file
  * PC BIOS - EBDA (Extended BIOS Data Area) Definition
  */
@@ -76,6 +76,8 @@
 
 #define BX_USE_ATADRV           1
 #define BX_ELTORITO_BOOT        1
+
+#define VBOX_IS_ATA_DEVICE(device_id) (device_id < BX_MAX_ATA_DEVICES)
 
 #ifdef VBOX_WITH_SCSI
     /* Enough for now */
