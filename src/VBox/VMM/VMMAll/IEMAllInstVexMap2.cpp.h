@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap2.cpp.h 104132 2024-04-03 09:22:06Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstVexMap2.cpp.h 104192 2024-04-05 13:38:14Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -218,7 +218,8 @@ FNIEMOP_STUB(iemOp_vtestpd_Vx_Wx);
 /*  Opcode VEX.0F38 0x12 - invalid */
 /*  Opcode VEX.66.0F38 0x12 - invalid */
 /*  Opcode VEX.0F38 0x13 - invalid */
-/*  Opcode VEX.66.0F38 0x13 - invalid (vex only). */
+/*  Opcode VEX.66.0F38 0x13 (vex only). */
+FNIEMOP_STUB(iemOp_vcvtph2ps_Vx_Wx);
 /*  Opcode VEX.0F38 0x14 - invalid */
 /*  Opcode VEX.66.0F38 0x14 - invalid (legacy only). */
 /*  Opcode VEX.0F38 0x15 - invalid */
@@ -2492,7 +2493,7 @@ const PFNIEMOP g_apfnVexMap2[] =
     /* 0x10 */  IEMOP_X4(iemOp_InvalidNeedRM),
     /* 0x11 */  IEMOP_X4(iemOp_InvalidNeedRM),
     /* 0x12 */  IEMOP_X4(iemOp_InvalidNeedRM),
-    /* 0x13 */  IEMOP_X4(iemOp_InvalidNeedRM),
+    /* 0x13 */  iemOp_InvalidNeedRM,        iemOp_vcvtph2ps_Vx_Wx,      iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
     /* 0x14 */  IEMOP_X4(iemOp_InvalidNeedRM),
     /* 0x15 */  IEMOP_X4(iemOp_InvalidNeedRM),
     /* 0x16 */  iemOp_InvalidNeedRM,        iemOp_vpermps_Vqq_Hqq_Wqq,  iemOp_InvalidNeedRM,        iemOp_InvalidNeedRM,
