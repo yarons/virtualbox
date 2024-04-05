@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 104161 2024-04-04 15:49:03Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2626,6 +2626,10 @@ int GuestSessionTaskUpdateAdditions::runFileOnGuest(GuestSession *pSession, Gues
 {
     AssertPtrReturn(pSession, VERR_INVALID_POINTER);
 
+#ifndef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
+    RT_NOREF(procInfo, fSilent);
+    return VERR_NOT_SUPPORTED;
+#else
     LogRel(("Running %s ...\n", procInfo.mName.c_str()));
 
     GuestProcessToolbox procToRun;
@@ -2670,6 +2674,7 @@ int GuestSessionTaskUpdateAdditions::runFileOnGuest(GuestSession *pSession, Gues
     }
 
     return vrc;
+#endif /* VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT */
 }
 
 /**

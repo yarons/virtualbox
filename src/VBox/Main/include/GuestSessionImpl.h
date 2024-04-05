@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 102654 2023-12-20 16:10:26Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImpl.h 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -362,8 +362,9 @@ public:
                                                   GuestSessionStatus_T *pSessionStatus, int *pvrcGuest);
     /** @}  */
 
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
     /** @name Public internal methods for supporting older Guest Additions via
-     *        VBoxService' built-in toolbox (< 7.1).
+     *        VBoxService' built-in toolbox (< 7.1). Deprecated, do not use anymore.
      * @{  */
     int                     i_directoryCreateViaToolbox(const Utf8Str &strPath, uint32_t uMode, uint32_t uFlags, int *pvrcGuest);
     int                     i_fileRemoveViaToolbox(const Utf8Str &strPath, int *pvrcGuest);
@@ -371,6 +372,7 @@ public:
                                                      uint32_t fMode, bool fSecure, int *pvrcGuest);
     int                     i_fsObjQueryInfoViaToolbox(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pvrcGuest);
     /** @}  */
+#endif /* VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT */
 
 public:
 

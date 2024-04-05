@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 104003 2024-03-22 16:13:12Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.cpp 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -371,7 +371,12 @@ int GuestDirectory::i_open(int *pvrcGuest)
     else
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
     {
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
         vrc = i_openViaToolbox(pvrcGuest);
+#else
+        RT_NOREF(pvrcGuest);
+        vrc = VERR_NOT_SUPPORTED;
+#endif
     }
 
     return vrc;
@@ -846,7 +851,12 @@ int GuestDirectory::i_close(int *pvrcGuest)
     else
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
     {
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
         vrc = i_closeViaToolbox(pvrcGuest);
+#else
+        RT_NOREF(pvrcGuest);
+        vrc = VERR_NOT_SUPPORTED;
+#endif
     }
 
     AssertPtr(mSession);
@@ -943,7 +953,12 @@ int GuestDirectory::i_readInternal(GuestFsObjData &objData, int *pvrcGuest)
     else
 #endif /* VBOX_WITH_GSTCTL_TOOLBOX_AS_CMDS */
     {
+#ifdef VBOX_WITH_GSTCTL_TOOLBOX_SUPPORT
         vrc = i_readInternalViaToolbox(objData, pvrcGuest);
+#else
+        RT_NOREF(objData, pvrcGuest);
+        vrc = VERR_NOT_SUPPORTED;
+#endif
     }
 
     LogFlowThisFunc(("Returning vrc=%Rrc\n", vrc));
