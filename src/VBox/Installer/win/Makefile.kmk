@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 101551 2023-10-23 12:17:39Z sergey.dubov@oracle.com $
+# $Id: Makefile.kmk 104202 2024-04-05 15:43:34Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -70,7 +70,6 @@ ifdef VBOX_INSTALLER_QUICK
  VBOX_WITH_NETADP               :=
  VBOX_WITH_NETFLT               :=
  VBOX_WITH_PYTHON               :=
- VBOX_WITH_SDS                  :=
  VBOX_WITH_WEBSERVICES          :=
  VBOX_WITH_UNATTENDED           :=
  VBOX_WITH_DOCS_PACKING         :=
