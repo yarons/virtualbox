@@ -1,4 +1,4 @@
-/* $Id: IEMMc.h 104183 2024-04-05 12:55:25Z alexander.eichner@oracle.com $ */
+/* $Id: IEMMc.h 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - IEM_MC_XXX.
  */
@@ -196,6 +196,8 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_ARG(a_Type, a_Name, a_iArg)              a_Type a_Name
 #define IEM_MC_ARG_CONST(a_Type, a_Name, a_Value, a_iArg)       a_Type const a_Name = (a_Value)
 #define IEM_MC_ARG_LOCAL_REF(a_Type, a_Name, a_Local, a_iArg)   a_Type const a_Name = &(a_Local)
+/** @note IEMAllInstPython.py duplicates the expansion. */
+#define IEM_MC_ARG_EFLAGS(a_Name, a_iArg)               uint32_t const a_Name = pVCpu->cpum.GstCtx.eflags.u
 /** @note IEMAllInstPython.py duplicates the expansion. */
 #define IEM_MC_ARG_LOCAL_EFLAGS(a_pName, a_Name, a_iArg) \
     uint32_t  a_Name  = pVCpu->cpum.GstCtx.eflags.u; \
@@ -2621,8 +2623,8 @@ AssertCompile(X86_CR4_FSGSBASE > UINT8_MAX);
 #define IEM_MC_CALL_VOID_AIMPL_2(a_pfn, a0, a1)           (a_pfn)((a0), (a1))
 #define IEM_MC_CALL_VOID_AIMPL_3(a_pfn, a0, a1, a2)       (a_pfn)((a0), (a1), (a2))
 #define IEM_MC_CALL_VOID_AIMPL_4(a_pfn, a0, a1, a2, a3)   (a_pfn)((a0), (a1), (a2), (a3))
-#define IEM_MC_CALL_AIMPL_3(a_rc, a_pfn, a0, a1, a2)      (a_rc) = (a_pfn)((a0), (a1), (a2))
-#define IEM_MC_CALL_AIMPL_4(a_rc, a_pfn, a0, a1, a2, a3)  (a_rc) = (a_pfn)((a0), (a1), (a2), (a3))
+#define IEM_MC_CALL_AIMPL_3(a_rcType, a_rc, a_pfn, a0, a1, a2)      a_rcType const a_rc = (a_pfn)((a0), (a1), (a2))
+#define IEM_MC_CALL_AIMPL_4(a_rcType, a_rc, a_pfn, a0, a1, a2, a3)  a_rcType const a_rc = (a_pfn)((a0), (a1), (a2), (a3))
 
 
 /** @def IEM_MC_CALL_CIMPL_HLP_RET

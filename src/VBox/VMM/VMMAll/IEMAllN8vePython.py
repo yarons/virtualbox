@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 104150 $"
+__version__ = "$Revision: 104195 $"
 
 # Standard python imports:
 import copy;
@@ -284,6 +284,9 @@ class NativeRecompFunctionVariation(object):
         #
         asVarsInScope = [];
         for oStmt in aoStmts:
+            if isinstance(oStmt, iai.McStmtCall) and oStmt.sName.startswith('IEM_MC_CALL_AIMPL_'):
+                oStmt = iai.McStmtVar(oStmt.sName, oStmt.asParams[0:2], oStmt.asParams[0], oStmt.asParams[1]);
+
             if isinstance(oStmt, iai.McStmtVar):
                 if oStmt.sVarName in dVars:
                     raise Exception('Duplicate variable: %s' % (oStmt.sVarName, ));

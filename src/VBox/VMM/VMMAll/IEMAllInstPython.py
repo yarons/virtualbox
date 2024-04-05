@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104183 2024-04-05 12:55:25Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104183 $"
+__version__ = "$Revision: 104195 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -2263,6 +2263,16 @@ class McBlock(object):
         return oStmt;
 
     @staticmethod
+    def parseMcArgEFlags(oSelf, sName, asParams):
+        """ IEM_MC_ARG_EFLAGS """
+        oSelf.checkStmtParamCount(sName, asParams, 2);
+        # Note! We split this one up into IEM_MC_ARG and IEM_MC_FETCH_EFLAGS.
+        oStmtArg   = McStmtArg('IEM_MC_ARG', ['uint32_t', asParams[0], asParams[1]], 'uint32_t', asParams[0], int(asParams[1]));
+        oSelf.aoArgs.append(oStmtArg);
+        oStmtFetch = McStmt('IEM_MC_FETCH_EFLAGS', [asParams[0]]);
+        return (oStmtArg, oStmtFetch,);
+
+    @staticmethod
     def parseMcArgLocalEFlags(oSelf, sName, asParams):
         """ IEM_MC_ARG_LOCAL_EFLAGS """
         oSelf.checkStmtParamCount(sName, asParams, 3);
@@ -2313,8 +2323,9 @@ class McBlock(object):
     def parseMcCallAImpl(oSelf, sName, asParams):
         """ IEM_MC_CALL_AIMPL_3|4 """
         cArgs = int(sName[-1]);
-        oSelf.checkStmtParamCount(sName, asParams, 2 + cArgs);
-        return McStmtCall(sName, asParams, 1, 0);
+        oSelf.checkStmtParamCount(sName, asParams, 3 + cArgs);
+        oSelf.aoLocals.append(McStmtVar('IEM_MC_LOCAL', [asParams[0], asParams[1]], asParams[0], asParams[1]));
+        return McStmtCall(sName, asParams, 2, 1);
 
     @staticmethod
     def parseMcCallVoidAImpl(oSelf, sName, asParams):
@@ -2973,6 +2984,7 @@ g_dMcStmtParsers = {
     'IEM_MC_AND_LOCAL_U8':                                       (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_ARG':                                                (McBlock.parseMcArg,               False, False, True,  ),
     'IEM_MC_ARG_CONST':                                          (McBlock.parseMcArgConst,          False, False, True,  ),
+    'IEM_MC_ARG_EFLAGS':                                         (McBlock.parseMcArgEFlags,         False, False, True,  ),
     'IEM_MC_ARG_LOCAL_EFLAGS':                                   (McBlock.parseMcArgLocalEFlags,    False, False, True,  ),
     'IEM_MC_ARG_LOCAL_REF':                                      (McBlock.parseMcArgLocalRef,       False, False, True,  ),
     'IEM_MC_ASSIGN_TO_SMALLER':                                  (McBlock.parseMcGeneric,           False, False, True,  ),

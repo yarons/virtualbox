@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veLiveness.cpp 104183 2024-04-05 12:55:25Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veLiveness.cpp 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Liveness Analysis.
  */
@@ -1037,8 +1037,8 @@ AssertCompile(IEMLIVENESS_STATE_INPUT == IEMLIVENESS_STATE_MASK);
 #define IEM_MC_CALL_VOID_AIMPL_2(a_pfn, a0, a1)                                                 NOP()
 #define IEM_MC_CALL_VOID_AIMPL_3(a_pfn, a0, a1, a2)                                             NOP()
 #define IEM_MC_CALL_VOID_AIMPL_4(a_pfn, a0, a1, a2, a3)                                         NOP()
-#define IEM_MC_CALL_AIMPL_3(a_rc, a_pfn, a0, a1, a2)                                            NOP()
-#define IEM_MC_CALL_AIMPL_4(a_rc, a_pfn, a0, a1, a2, a3)                                        NOP()
+#define IEM_MC_CALL_AIMPL_3(a_rcType, a_rc, a_pfn, a0, a1, a2)                                  NOP()
+#define IEM_MC_CALL_AIMPL_4(a_rcType, a_rc, a_pfn, a0, a1, a2, a3)                              NOP()
 
 #define IEM_MC_CALL_FPU_AIMPL_1(a_pfnAImpl, a0)                                                 NOP()
 #define IEM_MC_CALL_FPU_AIMPL_2(a_pfnAImpl, a0, a1)                                             NOP()
