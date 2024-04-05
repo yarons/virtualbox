@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
+# $Id: vboxconfig.sh 104187 2024-04-05 13:03:16Z brent.paulson@oracle.com $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -986,7 +986,7 @@ maybe_run_python_bindings_installer() {
             for PYTHON_BIN in $PYTHON_BINARIES; do
                 if [ "`$PYTHON_BIN -c 'import sys
 if sys.version_info >= (2, 6) and (sys.version_info < (3, 0) or sys.version_info >= (3, 3)):
-print(\"test\")' 2> /dev/null`" != "test" ]; then
+    print(\"test\")' 2> /dev/null`" != "test" ]; then
                     continue
                 fi
                 # Get python major/minor version, and skip if it was
