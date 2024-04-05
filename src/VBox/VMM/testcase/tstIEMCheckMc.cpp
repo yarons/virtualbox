@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 104150 2024-04-04 08:54:42Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 104174 2024-04-05 10:21:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -728,7 +728,6 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEM_MC_REF_EFLAGS(a_pEFlags)                    do { (a_pEFlags) = (uint32_t *)((uintptr_t)0);  CHK_PTYPE(uint32_t *, a_pEFlags);   CHK_VAR(a_pEFlags); (void)fMcBegin; } while (0)
 #define IEM_MC_REF_EFLAGS_EX(a_pEFlags, a_fEflInput, a_fEflOutput) IEM_MC_REF_EFLAGS(a_pEFlags)
 #define IEM_MC_REF_FPUREG(a_pr80Dst, a_iSt)             do { (a_pr80Dst) = (PRTFLOAT80U)((uintptr_t)0); CHK_PTYPE(PCRTFLOAT80U, a_pr80Dst); CHK_VAR(a_pr80Dst); AssertCompile((a_iSt) < 8); (void)fMcBegin; } while (0)
-#define IEM_MC_REF_MXCSR(a_pfMxcsr)                     do { (a_pfMxcsr) = (uint32_t *)((uintptr_t)0);  CHK_PTYPE(uint32_t *, a_pfMxcsr);   CHK_VAR(a_pfMxcsr); (void)fMcBegin; (void)fSseRead; } while (0)
 
 #define IEM_MC_ADD_GREG_U16(a_iGReg, a_u16Const)        do { CHK_GREG_IDX(a_iGReg); CHK_CONST(uint16_t, a_u16Const); (void)fMcBegin; } while (0)
 #define IEM_MC_ADD_GREG_U32(a_iGReg, a_u32Const)        do { CHK_GREG_IDX(a_iGReg); CHK_CONST(uint32_t, a_u32Const); (void)fMcBegin; } while (0)
