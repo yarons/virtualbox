@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 104156 2024-04-04 12:05:54Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 104173 2024-04-05 09:38:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -255,6 +255,7 @@ static const char  *g_apszExcludeTestPatterns[64];
 static uint64_t     g_cPicoSecBenchmark = 0;
 
 static unsigned     g_cVerbosity = 0;
+static bool         g_fVerboseSkipping = true;
 
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -989,14 +990,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 104156 $";
+    static char s_szRev[] = "$Revision: 104173 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 104156 2024-04-04 12:05:54Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 104173 2024-04-05 09:38:49Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1245,10 +1246,14 @@ static bool IsTestEnabled(const char *pszName)
 
 static bool SubTestAndCheckIfEnabled(const char *pszName)
 {
-    RTTestSub(g_hTest, pszName);
-    if (IsTestEnabled(pszName))
-        return true;
-    RTTestSkipped(g_hTest, g_cVerbosity > 0 ? "excluded" : NULL);
+    bool const fEnabled = IsTestEnabled(pszName);
+    if (g_fVerboseSkipping || fEnabled)
+    {
+        RTTestSub(g_hTest, pszName);
+        if (fEnabled)
+            return true;
+        RTTestSkipped(g_hTest, g_cVerbosity > 0 ? "excluded" : NULL);
+    }
     return false;
 }
 
@@ -10008,6 +10013,7 @@ int main(int argc, char **argv)
     bool                fCommonData   = true;
     uint32_t const      cDefaultTests = 96;
     uint32_t            cTests        = cDefaultTests;
+
     RTGETOPTDEF const   s_aOptions[]  =
     {
         // mode:
@@ -10036,6 +10042,7 @@ int main(int argc, char **argv)
         { "--number-of-tests",      'n', RTGETOPT_REQ_UINT32  },
         { "--verbose",              'v', RTGETOPT_REQ_NOTHING },
         { "--quiet",                'q', RTGETOPT_REQ_NOTHING },
+        { "--quiet-skipping",       'Q', RTGETOPT_REQ_NOTHING },
     };
 
     RTGETOPTSTATE State;
@@ -10129,9 +10136,12 @@ int main(int argc, char **argv)
             case 'v':
                 g_cVerbosity++;
                 break;
+            case 'Q':
+                g_fVerboseSkipping = false;
+                break;
 
             case 'h':
-                RTPrintf("usage: %s <-g|-t> [options]\n"
+                RTPrintf("usage: %Rbn <-g|-t> [options]\n"
                          "\n"
                          "Mode:\n"
                          "  -g, --generate\n"
@@ -10180,7 +10190,12 @@ int main(int argc, char **argv)
                          "  -v, --verbose\n"
                          "  -q, --quiet\n"
                          "    Noise level.  Default: --quiet\n"
-                         , argv[0], cDefaultTests);
+                         "  -Q, --quiet-skipping\n"
+                         "    Don't display skipped tests.\n"
+                         "\n"
+                         "Tip! When working on a single instruction, use the the -I and -Q options to\n"
+                         "     restrict the testing: %Rbn -tiQI \"shr_*\"\n"
+                         , argv[0], cDefaultTests, argv[0]);
                 return RTEXITCODE_SUCCESS;
             default:
                 return RTGetOptPrintError(rc, &ValueUnion);
@@ -10297,7 +10312,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 104156 $";
+        static const char s_szRev[] = "$Revision: 104173 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;
