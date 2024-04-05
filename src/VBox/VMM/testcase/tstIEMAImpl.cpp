@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 104207 2024-04-05 20:57:55Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 104208 2024-04-05 21:17:41Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -990,14 +990,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 104207 $";
+    static char s_szRev[] = "$Revision: 104208 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 104207 2024-04-05 20:57:55Z knut.osmundsen@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 104208 2024-04-05 21:17:41Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -1950,9 +1950,7 @@ static BINU16_T g_aBinU16[] =
     ENTRY_BIN_INTEL(bsr_u16, X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_SF | X86_EFL_OF),
     ENTRY_BIN_AMD(  imul_two_u16, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
     ENTRY_BIN_INTEL(imul_two_u16, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
-#if 0 /** @todo convert to new eflags format  */
     ENTRY_BIN(arpl),
-#endif
 };
 TEST_BINARY_OPS(16, uint16_t, "%#06x", BINU16_TEST_T, g_aBinU16)
 
@@ -1998,10 +1996,8 @@ static BINU32_T g_aBinU32[] =
     ENTRY_BIN_INTEL(bsr_u32, X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_SF | X86_EFL_OF),
     ENTRY_BIN_AMD(  imul_two_u32, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
     ENTRY_BIN_INTEL(imul_two_u32, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
-#if 0 /** @todo convert to new eflags format  */
     ENTRY_BIN(adcx_u32),
     ENTRY_BIN(adox_u32),
-#endif
 };
 TEST_BINARY_OPS(32, uint32_t, "%#010RX32", BINU32_TEST_T, g_aBinU32)
 
@@ -2047,10 +2043,8 @@ static BINU64_T g_aBinU64[] =
     ENTRY_BIN_INTEL(bsr_u64, X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_SF | X86_EFL_OF),
     ENTRY_BIN_AMD(  imul_two_u64, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
     ENTRY_BIN_INTEL(imul_two_u64, X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF),
-#if 0 /** @todo convert to new eflags format  */
     ENTRY_BIN(adcx_u64),
     ENTRY_BIN(adox_u64),
-#endif
 /** @todo popcnt */
 /** @todo tzcnt */
 /** @todo lzcnt */
@@ -10288,7 +10282,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 104207 $";
+        static const char s_szRev[] = "$Revision: 104208 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;
