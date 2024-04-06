@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104151 2024-04-04 09:29:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104210 2024-04-06 00:38:26Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6972,8 +6972,23 @@ DECL_HIDDEN_THROW(uint8_t) iemNativeVarRegisterAcquire(PIEMRECOMPILERSTATE pReNa
     else
     {
         Assert(idxStackSlot == UINT8_MAX);
-        AssertStmt(!fInitialized, IEMNATIVE_DO_LONGJMP(pReNative, VERR_IEM_VAR_NOT_INITIALIZED));
+        if (pVar->enmKind != kIemNativeVarKind_Immediate)
+            AssertStmt(!fInitialized, IEMNATIVE_DO_LONGJMP(pReNative, VERR_IEM_VAR_NOT_INITIALIZED));
+        else
+        {
+            /*
+             * Convert from immediate to stack/register.  This is currently only
+             * required by IEM_MC_ADD_LOCAL_S16_TO_EFF_ADDR, IEM_MC_ADD_LOCAL_S32_TO_EFF_ADDR
+             * and IEM_MC_ADD_LOCAL_S64_TO_EFF_ADDR in connection with BT, BTS, BTR, and BTC.
+             */
+            AssertStmt(fInitialized, IEMNATIVE_DO_LONGJMP(pReNative, VERR_IEM_VAR_NOT_INITIALIZED));
+            Log11(("iemNativeVarRegisterAcquire: idxVar=%#x idxReg=%u uValue=%RX64 converting from immediate to stack\n",
+                   idxVar, idxReg, pVar->u.uValue));
+            *poff = iemNativeEmitLoadGprImm64(pReNative, *poff, idxReg, pVar->u.uValue);
+            pVar->enmKind = kIemNativeVarKind_Stack;
+        }
     }
+
     pVar->fRegAcquired = true;
     return idxReg;
 }
