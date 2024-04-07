@@ -1,4 +1,4 @@
-/* $Id: xptc_arm64_vbox.h 104215 2024-04-07 18:37:57Z alexander.eichner@oracle.com $ */
+/* $Id: xptc_arm64_vbox.h 104218 2024-04-07 18:47:10Z alexander.eichner@oracle.com $ */
 /** @file
  * XPCOM - Common stuff for xptcinvoke/xptcstubs for arm64.
  */
@@ -29,6 +29,12 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
+#ifndef VBOX_INCLUDED_SRC_unix_xptc_arm64_vbox_h
+#define VBOX_INCLUDED_SRC_unix_xptc_arm64_vbox_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #if defined(RT_OS_DARWIN)
 # define NAME_PREFIX        _
 # define NAME_PREFIX_STR    "_"
@@ -81,3 +87,5 @@ NAME_PREFIX_STR "\\a_Name:\n"
 #endif
 ".endm\n"
 );
+
+#endif /* !VBOX_INCLUDED_SRC_unix_xptc_arm64_vbox_h */
