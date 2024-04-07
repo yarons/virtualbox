@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104210 2024-04-06 00:38:26Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104211 2024-04-07 13:01:10Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8299,6 +8299,7 @@ DECLHIDDEN(const char *) iemNativeDbgVCpuOffsetToName(uint32_t off)
         ENTRY(cpum.GstCtx.aXcr[0]),
         ENTRY(cpum.GstCtx.aXcr[1]),
 #ifdef IEMNATIVE_WITH_SIMD_REG_ALLOCATOR
+        ENTRY(cpum.GstCtx.XState.x87.MXCSR),
         ENTRY(cpum.GstCtx.XState.x87.aXMM[0]),
         ENTRY(cpum.GstCtx.XState.x87.aXMM[1]),
         ENTRY(cpum.GstCtx.XState.x87.aXMM[2]),
