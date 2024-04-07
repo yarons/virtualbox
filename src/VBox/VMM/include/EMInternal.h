@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 99923 2023-05-22 21:06:26Z knut.osmundsen@oracle.com $ */
+/* $Id: EMInternal.h 104217 2024-04-07 18:41:32Z alexander.eichner@oracle.com $ */
 /** @file
  * EM - Internal header file.
  */
@@ -198,7 +198,11 @@ typedef struct EMCPU
     {
         /** Padding used in the other rings.
          * This must be larger than jmp_buf on any supported platform. */
+#if defined(RT_OS_LINUX) && defined(RT_ARCH_ARM64)
+        char                achPaddingFatalLongJump[512];
+#else
         char                achPaddingFatalLongJump[256];
+#endif
 #ifdef IN_RING3
         /** Long buffer jump for fatal VM errors.
          * It will jump to before the outer EM loop is entered. */
