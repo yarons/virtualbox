@@ -1,4 +1,4 @@
-# $Id: .scm-settings 103790 2024-03-11 17:56:59Z vadim.galitsyn@oracle.com $
+# $Id: .scm-settings 104212 2024-04-07 16:27:42Z alexander.eichner@oracle.com $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -111,3 +111,5 @@
 /VBox/*.h: --guard-relative-to-dir VBox --guard-prefix VBOX_INCLUDED_
 /iprt/sanitized/*: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_ --treat-as h
 
+# /iprt/asmdefs-arm.mac needs to be treated as an C/C++ header file
+/iprt/asmdefs-arm.mac: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_ --treat-as h
