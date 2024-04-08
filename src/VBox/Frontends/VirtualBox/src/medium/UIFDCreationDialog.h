@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFDCreationDialog.h 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -35,9 +35,6 @@
 #include <QDialog>
 #include <QUuid>
 
-/* GUI Includes */
-#include "QIWithRetranslateUI.h"
-
 /* COM includes: */
 #include "CMedium.h"
 #include "CMediumFormat.h"
@@ -50,7 +47,7 @@ class QLabel;
 class UIFilePathSelector;
 
 /* A QDialog extension to get necessary setting from the user for floppy disk creation. */
-class SHARED_LIBRARY_STUFF UIFDCreationDialog : public QIWithRetranslateUI<QDialog>
+class SHARED_LIBRARY_STUFF UIFDCreationDialog : public QDialog
 {
     Q_OBJECT;
 
@@ -79,16 +76,13 @@ public slots:
     /** Creates the floppy disc image, asynchronously. */
     virtual void accept() RT_OVERRIDE;
 
-protected:
-
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
 
     /** Handles signal about @a comMedium was created. */
     void sltHandleMediumCreated(const CMedium &comMedium);
     void sltPathChanged(const QString &strPath);
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

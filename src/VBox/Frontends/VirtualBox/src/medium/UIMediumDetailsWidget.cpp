@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumDetailsWidget.cpp 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -48,13 +48,14 @@
 #include "UIMediumManager.h"
 #include "UIMediumSizeEditor.h"
 #include "UITranslator.h"
+#include "UITranslationEventListener.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
 
 
 UIMediumDetailsWidget::UIMediumDetailsWidget(UIMediumManagerWidget *pParent, EmbedTo enmEmbedding)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_pParent(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_oldData(UIDataMedium())
@@ -109,7 +110,7 @@ void UIMediumDetailsWidget::setOptionsEnabled(bool fEnabled)
     m_pTabWidget->widget(0)->setEnabled(fEnabled);
 }
 
-void UIMediumDetailsWidget::retranslateUi()
+void UIMediumDetailsWidget::sltRetranslateUI()
 {
     /* Translate tab-widget: */
     m_pTabWidget->setTabText(0, UIMediumManager::tr("&Attributes"));
@@ -217,7 +218,11 @@ void UIMediumDetailsWidget::prepare()
     prepareThis();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIMediumDetailsWidget::sltRetranslateUI);
+
 
     /* Update button states finally: */
     updateButtonStates();

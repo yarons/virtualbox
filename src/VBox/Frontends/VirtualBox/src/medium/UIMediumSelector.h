@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSelector.h 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -33,7 +33,6 @@
 
 /* GUI includes: */
 #include "QIMainDialog.h"
-#include "QIWithRetranslateUI.h"
 #include "QIWithRestorableGeometry.h"
 #include "UIMedium.h"
 #include "UIMediumDefs.h"
@@ -52,7 +51,7 @@ class UIMediumItem;
 class UIMediumSearchWidget;
 
 /** QIDialog extension providing GUI with a dialog to select an existing medium. */
-class SHARED_LIBRARY_STUFF UIMediumSelector : public QIWithRetranslateUI<QIWithRestorableGeometry<QIMainDialog> >
+class SHARED_LIBRARY_STUFF UIMediumSelector : public QIWithRestorableGeometry<QIMainDialog>
 {
 
     Q_OBJECT;
@@ -98,8 +97,6 @@ protected:
 
     /** @name Event-handling stuff.
       * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
         void showEvent(QShowEvent *pEvent) RT_OVERRIDE RT_FINAL;
         bool event(QEvent *pEvent) RT_OVERRIDE RT_FINAL;
     /** @} */
@@ -122,6 +119,8 @@ private slots:
     void sltHandleTreeContextMenuRequest(const QPoint &point);
     void sltHandleTreeExpandAllSignal();
     void sltHandleTreeCollapseAllSignal();
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 
