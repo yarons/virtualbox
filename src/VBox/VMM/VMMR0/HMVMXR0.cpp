@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 103289 2024-02-09 11:58:56Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMVMXR0.cpp 104219 2024-04-08 06:01:43Z ramshankar.venkataraman@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -379,13 +379,20 @@ static void hmR0VmxLazyLoadGuestMsrs(PVMCPUCC pVCpu)
         }
         else
         {
-            ASMWrMsr(MSR_K8_KERNEL_GS_BASE, pCtx->msrKERNELGSBASE);
-            ASMWrMsr(MSR_K8_LSTAR,          pCtx->msrLSTAR);
-            ASMWrMsr(MSR_K6_STAR,           pCtx->msrSTAR);
-            /* The system call flag mask register isn't as benign and accepting of all
-               values as the above, so mask it to avoid #GP'ing on corrupted input. */
-            Assert(!(pCtx->msrSFMASK & ~(uint64_t)UINT32_MAX));
-            ASMWrMsr(MSR_K8_SF_MASK,        pCtx->msrSFMASK & UINT32_MAX);
+            /* Avoid raising #GP caused by writing illegal values to these MSRs. */
+            if (   X86_IS_CANONICAL(pCtx->msrKERNELGSBASE)
+                && X86_IS_CANONICAL(pCtx->msrLSTAR))
+            {
+                ASMWrMsr(MSR_K8_KERNEL_GS_BASE, pCtx->msrKERNELGSBASE);
+                ASMWrMsr(MSR_K8_LSTAR,          pCtx->msrLSTAR);
+                ASMWrMsr(MSR_K6_STAR,           pCtx->msrSTAR);
+                /* The system call flag mask register isn't as benign and accepting of all
+                   values as the above, so mask it to avoid #GP'ing on corrupted input. */
+                Assert(!(pCtx->msrSFMASK & ~(uint64_t)UINT32_MAX));
+                ASMWrMsr(MSR_K8_SF_MASK,        pCtx->msrSFMASK & UINT32_MAX);
+            }
+            else
+                AssertMsgFailed(("Incompatible lazily-loaded guest MSR values\n"));
         }
     }
     pVCpu->hmr0.s.vmx.fLazyMsrs |= VMX_LAZY_MSRS_LOADED_GUEST;
