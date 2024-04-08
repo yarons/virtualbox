@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsWidgetNATNetwork.cpp 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class implementation.
  */
@@ -44,13 +44,14 @@
 #include "UINetworkManager.h"
 #include "UINetworkManagerUtils.h"
 #include "UINotificationCenter.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/cidr.h"
 
 
 UIDetailsWidgetNATNetwork::UIDetailsWidgetNATNetwork(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pTabWidget(0)
     , m_pLabelNetworkName(0)
@@ -150,7 +151,7 @@ void UIDetailsWidgetNATNetwork::updateButtonStates()
     emit sigDataChanged(m_oldData != m_newData);
 }
 
-void UIDetailsWidgetNATNetwork::retranslateUi()
+void UIDetailsWidgetNATNetwork::sltRetranslateUI()
 {
     /* Translate tab-widget: */
     if (m_pTabWidget)
@@ -303,7 +304,10 @@ void UIDetailsWidgetNATNetwork::prepare()
     prepareThis();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIDetailsWidgetNATNetwork::sltRetranslateUI);
 
     /* Update button states finally: */
     updateButtonStates();

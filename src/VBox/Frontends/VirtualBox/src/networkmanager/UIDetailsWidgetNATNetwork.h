@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetNATNetwork.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsWidgetNATNetwork.h 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetNATNetwork class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 #include "UIPortForwardingTable.h"
 
 /* Forward declarations: */
@@ -107,7 +106,7 @@ struct UIDataNATNetwork
 
 
 /** Network Manager: NAT network details-widget. */
-class UIDetailsWidgetNATNetwork : public QIWithRetranslateUI<QWidget>
+class UIDetailsWidgetNATNetwork : public QWidget
 {
     Q_OBJECT;
 
@@ -147,11 +146,6 @@ public:
         void updateButtonStates();
     /** @} */
 
-protected:
-
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
 
     /** @name Change handling stuff.
@@ -177,6 +171,8 @@ private slots:
         /** Handles button-box button click. */
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
     /** @} */
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 
@@ -261,4 +257,3 @@ private:
 
 
 #endif /* !FEQT_INCLUDED_SRC_networkmanager_UIDetailsWidgetNATNetwork_h */
-
