@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 104208 2024-04-05 21:17:41Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 104238 2024-04-08 20:15:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -990,14 +990,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 104208 $";
+    static char s_szRev[] = "$Revision: 104238 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 104208 2024-04-05 21:17:41Z knut.osmundsen@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 104238 2024-04-08 20:15:10Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -2782,18 +2782,16 @@ static RTEXITCODE ShiftU ## a_cBits ## Generate(uint32_t cTests, const char * co
         { \
             a_TestType Test; \
             Test.fEflIn    = RandEFlags(); \
-            Test.fEflOut   = Test.fEflIn; \
             Test.uDstIn    = RandU ## a_cBits ## Dst(iTest); \
             Test.uDstOut   = Test.uDstIn; \
             Test.uSrcIn    = 0; \
             Test.uMisc     = RandU8() & (a_cBits * 4 - 1); /* need to go way beyond the a_cBits limit */ \
-            a_aSubTests[iFn].pfnNative(&Test.uDstOut, Test.uMisc, &Test.fEflOut); \
+            Test.fEflOut   = a_aSubTests[iFn].pfnNative(Test.fEflIn, &Test.uDstOut, Test.uMisc); \
             GenerateBinaryWrite(&BinOut, &Test, sizeof(Test)); \
             \
             Test.fEflIn    = (~Test.fEflIn & X86_EFL_LIVE_MASK) | X86_EFL_RA1_MASK; \
-            Test.fEflOut   = Test.fEflIn; \
             Test.uDstOut   = Test.uDstIn; \
-            a_aSubTests[iFn].pfnNative(&Test.uDstOut, Test.uMisc, &Test.fEflOut); \
+            Test.fEflOut   = a_aSubTests[iFn].pfnNative(Test.fEflIn, &Test.uDstOut, Test.uMisc); \
             GenerateBinaryWrite(&BinOut, &Test, sizeof(Test)); \
         } \
         AssertReturn(GenerateBinaryClose(&BinOut), RTEXITCODE_FAILURE); \
@@ -2837,21 +2835,17 @@ static uint64_t ShiftU ## a_cBits ## Bench(uint32_t cIterations, PFNIEMAIMPLSHIF
     uint64_t const nsStart     = RTTimeNanoTS(); \
     for (uint32_t i = 0; i < cIterations; i++) \
     { \
-        uint32_t fBenchEfl = fEflIn; \
         a_uType  uBenchDst = uDstIn;  \
-        pfn(&uBenchDst, cShift, &fBenchEfl); \
+        pfn(fEflIn, &uBenchDst, cShift); \
         \
-        fBenchEfl = fEflIn; \
         uBenchDst = uDstIn;  \
-        pfn(&uBenchDst, cShift, &fBenchEfl); \
+        pfn(fEflIn, &uBenchDst, cShift); \
         \
-        fBenchEfl = fEflIn; \
         uBenchDst = uDstIn;  \
-        pfn(&uBenchDst, cShift, &fBenchEfl); \
+        pfn(fEflIn, &uBenchDst, cShift); \
         \
-        fBenchEfl = fEflIn; \
         uBenchDst = uDstIn;  \
-        pfn(&uBenchDst, cShift, &fBenchEfl); \
+        pfn(fEflIn, &uBenchDst, cShift); \
     } \
     return RTTimeNanoTS() - nsStart; \
 } \
@@ -2871,23 +2865,21 @@ static void ShiftU ## a_cBits ## Test(void) \
         { \
             for (uint32_t iTest = 0; iTest < cTests; iTest++ ) \
             { \
-                uint32_t fEfl = paTests[iTest].fEflIn; \
-                a_uType  uDst = paTests[iTest].uDstIn; \
-                pfn(&uDst, paTests[iTest].uMisc, &fEfl); \
-                if (   uDst != paTests[iTest].uDstOut \
-                    || fEfl != paTests[iTest].fEflOut ) \
+                a_uType  uDst    = paTests[iTest].uDstIn; \
+                uint32_t fEflOut = pfn(paTests[iTest].fEflIn, &uDst, paTests[iTest].uMisc); \
+                if (   uDst    != paTests[iTest].uDstOut \
+                    || fEflOut != paTests[iTest].fEflOut ) \
                     RTTestFailed(g_hTest, "#%u%s: efl=%#08x dst=" a_Fmt " shift=%2u -> efl=%#08x dst=" a_Fmt ", expected %#08x & " a_Fmt "%s\n", \
                                  iTest, iVar == 0 ? "" : "/n", \
                                  paTests[iTest].fEflIn, paTests[iTest].uDstIn, paTests[iTest].uMisc, \
-                                 fEfl, uDst, paTests[iTest].fEflOut, paTests[iTest].uDstOut, \
-                                 EFlagsDiff(fEfl, paTests[iTest].fEflOut)); \
+                                 fEflOut, uDst, paTests[iTest].fEflOut, paTests[iTest].uDstOut, \
+                                 EFlagsDiff(fEflOut, paTests[iTest].fEflOut)); \
                 else \
                 { \
                      *g_pu ## a_cBits  = paTests[iTest].uDstIn; \
-                     *g_pfEfl          = paTests[iTest].fEflIn; \
-                     pfn(g_pu ## a_cBits, paTests[iTest].uMisc, g_pfEfl); \
+                     fEflOut = pfn(paTests[iTest].fEflIn, g_pu ## a_cBits, paTests[iTest].uMisc); \
                      RTTEST_CHECK(g_hTest, *g_pu ## a_cBits == paTests[iTest].uDstOut); \
-                     RTTEST_CHECK(g_hTest, *g_pfEfl == paTests[iTest].fEflOut); \
+                     RTTEST_CHECK(g_hTest, fEflOut == paTests[iTest].fEflOut); \
                 } \
             } \
             \
@@ -10282,7 +10274,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 104208 $";
+        static const char s_szRev[] = "$Revision: 104238 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;
