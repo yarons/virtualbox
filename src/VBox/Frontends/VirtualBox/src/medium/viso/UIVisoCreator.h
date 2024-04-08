@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.h 104228 2024-04-08 12:40:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes declaration.
  */
@@ -56,15 +56,20 @@ class UIVisoSettingWidget;
 class UIVisoHostBrowser : public UIFileManagerHostTable
 {
 
+    Q_OBJECT;
+
 public:
 
     UIVisoHostBrowser(UIActionPool *pActionPool, QWidget *pParent = 0);
     void prepareMainMenu(QMenu *pMenu);
 
+private slots:
+
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
+
 private:
 
     virtual void createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) RT_OVERRIDE RT_FINAL;
-    virtual void retranslateUi() RT_OVERRIDE RT_FINAL;
     QPointer<QMenu>        m_pSubMenu;
 };
 

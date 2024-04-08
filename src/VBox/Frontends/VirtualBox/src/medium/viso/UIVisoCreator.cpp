@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 104228 2024-04-08 12:40:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -51,6 +51,7 @@
 #include "UIModalWindowManager.h"
 #include "UIPaneContainer.h"
 #include "UIShortcutPool.h"
+#include "UITranslationEventListener.h"
 #include "UIVisoCreator.h"
 #include "UIVisoContentBrowser.h"
 #ifdef VBOX_WS_MAC
@@ -104,6 +105,8 @@ private:
 UIVisoHostBrowser::UIVisoHostBrowser(UIActionPool *pActionPool, QWidget *pParent /* = 0 */)
     :UIFileManagerHostTable(pActionPool, pParent)
 {
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVisoHostBrowser::sltRetranslateUI);
 }
 
 void UIVisoHostBrowser::createFileViewContextMenu(const QWidget *pWidget, const QPoint &point)
@@ -144,13 +147,11 @@ void UIVisoHostBrowser::prepareMainMenu(QMenu *pMenu)
 }
 
 
-void UIVisoHostBrowser::retranslateUi()
+void UIVisoHostBrowser::sltRetranslateUI()
 {
-    UIFileManagerHostTable::retranslateUi();
+    UIFileManagerHostTable::sltRetranslateUI();
     if (m_pSubMenu)
         m_pSubMenu->setTitle(QApplication::translate("UIVisoCreatorWidget", "VISO Browser"));
-
-    //setFileTableLabelText(QApplication::translate("UIVisoCreatorWidget","VISO Content"));
 }
 
 
