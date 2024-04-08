@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 104165 2024-04-04 17:26:51Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxInstallHelper.cpp 104220 2024-04-08 10:06:01Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -577,6 +577,7 @@ static int checkTargetDirOne(MSIHANDLE hModule, PTGTDIRSECCTX pCtx, const char *
                                 case ACCESS_DENIED_ACE_TYPE: /* We're only interested in the ALLOW ACE. */
                                 {
                                     ACCESS_DENIED_ACE const *pAce = (ACCESS_DENIED_ACE *)pAceHdr;
+
                                     LPWSTR pwszSid = NULL;
                                     ConvertSidToStringSid((PSID)&pAce->SidStart, &pwszSid);
 
