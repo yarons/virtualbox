@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 104221 2024-04-08 10:18:11Z alexander.eichner@oracle.com $ */
+/* $Id: VSCSILunMmc.cpp 104222 2024-04-08 10:21:06Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1775,8 +1775,8 @@ static DECLCALLBACK(int) vscsiLunMmcMediumRemoved(PVSCSILUNINT pVScsiLun)
 
 
 /**
- * The supported operation codes for the SBC LUN type.
- * 
+ * The supported operation codes for the MMC LUN type.
+ *
  * @note This gives the minimum size required by our implementation
  *       which may be smaller than what the spec defines (for example
  *       we do not access the control byte at the end).

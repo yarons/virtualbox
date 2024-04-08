@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 104221 2024-04-08 10:18:11Z alexander.eichner@oracle.com $ */
+/* $Id: VSCSILunSbc.cpp 104222 2024-04-08 10:21:06Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -637,7 +637,7 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
 
 /**
  * The supported operation codes for the SBC LUN type.
- * 
+ *
  * @note This gives the minimum size required by our implementation
  *       which may be smaller than what the spec defines (for example
  *       we do not access the control byte at the end).
