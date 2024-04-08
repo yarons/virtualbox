@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 103630 2024-03-01 10:44:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 104235 2024-04-08 17:50:13Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1460,6 +1460,14 @@ int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLF
     AssertMsgReturn(idEvent != NIL_SHCLEVENTID, ("NIL event in context ID %#RX64\n", pCmdCtx->uContextID), VERR_WRONG_ORDER);
 
     PSHCLEVENT pEvent = ShClEventSourceGetFromId(&pClient->EventSrc, idEvent);
+#if defined(RT_OS_DARWIN)
+    /* We do not wait for guest clipboard availability event on macOS. Rather,
+     * we paste directly into pasteboard when guest sends its clipboard data. 
+     * Do not assert here. */
+    if (!RT_VALID_PTR(pEvent))
+        return VINF_SUCCESS;
+#endif
+
     AssertMsgReturn(pEvent != NULL, ("Event %#x not found\n", idEvent), VERR_NOT_FOUND);
 
     /*
