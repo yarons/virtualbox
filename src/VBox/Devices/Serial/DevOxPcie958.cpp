@@ -1,4 +1,4 @@
-/* $Id: DevOxPcie958.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevOxPcie958.cpp 104224 2024-04-08 10:52:25Z alexander.eichner@oracle.com $ */
 /** @file
  * DevOxPcie958 - Oxford Semiconductor OXPCIe958 PCI Express bridge to octal serial port emulation
  */
@@ -247,7 +247,7 @@ static VBOXSTRICTRC ox958UartRegRead(PPDMDEVINS pDevIns, PDEVOX958 pThis, POX958
     if (offUartReg >= OX958_REG_UART_DMA_REGION_OFFSET)
     {
         /* Access to the DMA registers. */
-        rc = VINF_SUCCESS;
+        rc = VINF_IOM_MMIO_UNUSED_00; /** @todo Misses implementation, just pretend there is nothing there yet. */
     }
     else /* Access UART registers. */
         rc = uartRegRead(pDevIns, &pUart->UartCore, &pUartCC->UartCore, offUartReg, (uint32_t *)pv, cb);
