@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 104235 2024-04-08 17:50:13Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 104236 2024-04-08 17:56:29Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1462,7 +1462,7 @@ int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx, SHCLF
     PSHCLEVENT pEvent = ShClEventSourceGetFromId(&pClient->EventSrc, idEvent);
 #if defined(RT_OS_DARWIN)
     /* We do not wait for guest clipboard availability event on macOS. Rather,
-     * we paste directly into pasteboard when guest sends its clipboard data. 
+     * we paste directly into pasteboard when guest sends its clipboard data.
      * Do not assert here. */
     if (!RT_VALID_PTR(pEvent))
         return VINF_SUCCESS;
