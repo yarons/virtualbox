@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSsc.cpp 103882 2024-03-18 09:38:17Z michal.necasek@oracle.com $ */
+/* $Id: VSCSILunSsc.cpp 104221 2024-04-08 10:18:11Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual SCSI driver: SSC LUN implementation (Streaming tape)
  */
@@ -452,6 +452,8 @@ VSCSILUNDESC g_VScsiLunTypeSsc =
     "SSC",
     /** cbLun */
     sizeof(VSCSILUNSSC),
+    /** pacbCdbOpc */
+    NULL,
     /** cSupOpcInfo */
     0,
     /** paSupOpcInfo */
