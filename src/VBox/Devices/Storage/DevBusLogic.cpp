@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 104191 2024-04-05 13:35:18Z michal.necasek@oracle.com $ */
+/* $Id: DevBusLogic.cpp 104233 2024-04-08 15:01:27Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -980,10 +980,12 @@ typedef struct ESCMD
     unsigned char   uReserved2 : 3;
     /** Length of the SCSI CDB. */
     uint8_t         cbCDB;
-    /** The SCSI CDB.  (A CDB can be 12 bytes long.)   */
-    uint8_t         abCDB[12];
+    /** The SCSI CDB.  (A CDB from our BIOS can be up to 16 bytes long
+     * which works with our emulation even though the original BusLogic HBA
+     * supports only 12 byte CDBs). */
+    uint8_t         abCDB[16];
 } ESCMD, *PESCMD;
-AssertCompileSize(ESCMD, 24);
+AssertCompileSize(ESCMD, 28);
 
 /**
  * Task state for a CCB request.
