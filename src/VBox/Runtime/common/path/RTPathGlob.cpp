@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: RTPathGlob.cpp 104258 2024-04-09 19:37:51Z klaus.espenlaub@oracle.com $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -495,6 +495,8 @@ static DECLCALLBACK(int) rtPathVarQuery_Path(uint32_t iItem, char *pszBuf, size_
                 break;
             RTMemTmpFree(pszPathFree);
             AssertReturn(cchActual >= cbPathBuf, VERR_INTERNAL_ERROR_3);
+            if (RT_FAILURE(rc) && iTry == 9)
+                return rc;
         }
         pszPath = pszPathFree;
     }
