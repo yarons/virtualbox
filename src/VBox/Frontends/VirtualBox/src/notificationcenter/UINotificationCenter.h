@@ -1,4 +1,4 @@
-/* $Id: UINotificationCenter.h 104245 2024-04-09 08:03:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINotificationCenter.h 104252 2024-04-09 12:38:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINotificationCenter class declaration.
  */
@@ -34,6 +34,7 @@
 /* Qt includes: */
 #include <QEventLoop>
 #include <QPointer>
+#include <QMap>
 #include <QUuid>
 #include <QWidget>
 
