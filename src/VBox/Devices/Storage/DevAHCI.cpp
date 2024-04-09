@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevAHCI.cpp 104253 2024-04-09 14:04:33Z alexander.eichner@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1912,7 +1912,7 @@ static VBOXSTRICTRC PortInvalid_r(PPDMDEVINS pDevIns, PAHCI pThis, PAHCIPORT pAh
 {
     RT_NOREF(pDevIns, pThis, pAhciPort, iReg, pu32Value);
     ahciLog(("%s: Read denied!!! iReg=%u\n", __FUNCTION__, iReg));
-    return VINF_SUCCESS;
+    return VINF_IOM_MMIO_UNUSED_00;
 }
 
 /**
