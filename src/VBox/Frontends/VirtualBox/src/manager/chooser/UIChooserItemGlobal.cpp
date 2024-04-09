@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 102423 2023-12-01 14:23:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIChooserNodeGlobal.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
+#include "UITranslationEventListener.h"
 #include "UIVirtualBoxManager.h"
 
 
@@ -121,7 +122,7 @@ void UIChooserItemGlobal::setHeightHint(int iHint)
     model()->updateLayout();
 }
 
-void UIChooserItemGlobal::retranslateUi()
+void UIChooserItemGlobal::sltRetranslateUI()
 {
 }
 
@@ -378,7 +379,9 @@ void UIChooserItemGlobal::prepare()
     updatePixmaps();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserItemGlobal::sltRetranslateUI);
 }
 
 void UIChooserItemGlobal::cleanup()

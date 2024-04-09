@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItem.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -38,7 +38,6 @@
 #include <QUuid>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UIManagerDefs.h"
 #include "UISettingsDefs.h"
 
@@ -50,7 +49,7 @@ class UIVirtualMachineItemLocal;
 using namespace UISettingsDefs;
 
 /** Virtual Machine item interface. A wrapper caching VM data. */
-class UIVirtualMachineItem : public QIWithRetranslateUI3<QObject>
+class UIVirtualMachineItem : public QObject
 {
     Q_OBJECT;
 

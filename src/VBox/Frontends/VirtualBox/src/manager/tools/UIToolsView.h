@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -33,13 +33,12 @@
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class UITools;
 
 /** QIGraphicsView extension used as VM Tools-pane view. */
-class UIToolsView : public QIWithRetranslateUI<QIGraphicsView>
+class UIToolsView : public QIGraphicsView
 {
     Q_OBJECT;
 
@@ -80,11 +79,16 @@ protected:
 
     /** @name Event handling stuff.
       * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
-
         /** Handles resize @a pEvent. */
         virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+    /** @} */
+
+private slots:
+
+    /** @name Event handling stuff.
+      * @{ */
+       /** Handles translation event. */
+       void sltRetranslateUI();
     /** @} */
 
 private:

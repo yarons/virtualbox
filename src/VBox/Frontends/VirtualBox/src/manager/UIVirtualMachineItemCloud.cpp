@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -36,6 +36,7 @@
 #include "UIIconPool.h"
 #include "UINotificationCenter.h"
 #include "UIProgressTask.h"
+#include "UITranslationEventListener.h"
 #include "UIThreadPool.h"
 #include "UIVirtualMachineItemCloud.h"
 
@@ -268,7 +269,9 @@ void UIVirtualMachineItemCloud::recache()
     recachePixmap();
 
     /* Retranslate finally: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVirtualMachineItemCloud::sltRetranslateUI);
 }
 
 void UIVirtualMachineItemCloud::recachePixmap()
@@ -340,7 +343,7 @@ bool UIVirtualMachineItemCloud::isItemCanBeSwitchedTo() const
     return false;
 }
 
-void UIVirtualMachineItemCloud::retranslateUi()
+void UIVirtualMachineItemCloud::sltRetranslateUI()
 {
     /* If machine is accessible: */
     if (accessible())

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.cpp 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAccessibleWidget>
+#include <QApplication>
 #include <QScrollBar>
 
 /* GUI includes: */
@@ -35,6 +36,7 @@
 #include "UIDetailsItem.h"
 #include "UIDetailsModel.h"
 #include "UIDetailsView.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -133,7 +135,7 @@ private:
 
 
 UIDetailsView::UIDetailsView(UIDetails *pParent)
-    : QIWithRetranslateUI<QIGraphicsView>(pParent)
+    : QIGraphicsView(pParent)
     , m_pDetails(pParent)
     , m_iMinimumWidthHint(0)
 {
@@ -158,7 +160,7 @@ void UIDetailsView::sltMinimumWidthHintChanged(int iHint)
     updateSceneRect();
 }
 
-void UIDetailsView::retranslateUi()
+void UIDetailsView::sltRetranslateUI()
 {
     /* Translate this: */
     setWhatsThis(tr("Contains a list of Virtual Machine details."));
@@ -167,7 +169,7 @@ void UIDetailsView::retranslateUi()
 void UIDetailsView::resizeEvent(QResizeEvent *pEvent)
 {
     /* Call to base-class: */
-    QIWithRetranslateUI<QIGraphicsView>::resizeEvent(pEvent);
+    QIGraphicsView::resizeEvent(pEvent);
     /* Notify listeners: */
     emit sigResized();
 
@@ -187,7 +189,9 @@ void UIDetailsView::prepare()
     updateSceneRect();
 
     /* Translate finally: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIDetailsView::sltRetranslateUI);
 }
 
 void UIDetailsView::prepareThis()

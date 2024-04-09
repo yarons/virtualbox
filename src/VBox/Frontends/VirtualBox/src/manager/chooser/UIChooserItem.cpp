@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItem.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -238,7 +238,7 @@ void UIChooserDisabledItemEffect::draw(QPainter *pPainter)
 
 UIChooserItem::UIChooserItem(UIChooserItem *pParent, UIChooserNode *pNode,
                              int iDefaultValue /* = 0 */, int iHoveredValue /* = 100 */)
-    : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
+    : QIGraphicsWidget(pParent)
     , m_pParent(pParent)
     , m_pNode(pNode)
     , m_fHovered(false)

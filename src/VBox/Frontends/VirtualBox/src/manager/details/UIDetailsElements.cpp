@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsElements.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -42,6 +42,7 @@
 #include "UIIconPool.h"
 #include "UIMachinePreview.h"
 #include "UIThreadPool.h"
+#include "UITranslationEventListener.h"
 
 /* COM includes: */
 #include "CAudioAdapter.h"
@@ -115,10 +116,12 @@ UIDetailsElementInterface::UIDetailsElementInterface(UIDetailsSet *pParent, Deta
             this, &UIDetailsElementInterface::sltUpdateAppearanceFinished);
 
     /* Translate finally: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIDetailsElementInterface::sltRetranslateUI);
 }
 
-void UIDetailsElementInterface::retranslateUi()
+void UIDetailsElementInterface::sltRetranslateUI()
 {
     /* Assign corresponding name: */
     setName(gpConverter->toString(elementType()));
@@ -175,7 +178,9 @@ UIDetailsElementPreview::UIDetailsElementPreview(UIDetailsSet *pParent, bool fOp
     }
 
     /* Translate finally: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIDetailsElementPreview::sltRetranslateUI);
 }
 
 void UIDetailsElementPreview::updateLayout()
@@ -203,7 +208,7 @@ void UIDetailsElementPreview::sltPreviewSizeHintChanged()
     model()->updateLayout();
 }
 
-void UIDetailsElementPreview::retranslateUi()
+void UIDetailsElementPreview::sltRetranslateUI()
 {
     /* Assign corresponding name: */
     setName(gpConverter->toString(elementType()));

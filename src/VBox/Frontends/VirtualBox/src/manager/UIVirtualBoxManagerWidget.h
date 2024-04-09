@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 103023 2024-01-24 13:28:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -36,7 +36,6 @@
 #include <QWidget>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UISlidingAnimation.h"
 #include "UIToolPaneGlobal.h"
 #include "UIToolPaneMachine.h"
@@ -54,7 +53,7 @@ class UIVirtualBoxManager;
 class UIVirtualMachineItem;
 
 /** QWidget extension used as VirtualBox Manager Widget instance. */
-class UIVirtualBoxManagerWidget : public QIWithRetranslateUI<QWidget>
+class UIVirtualBoxManagerWidget : public QWidget
 {
     Q_OBJECT;
 
@@ -260,15 +259,13 @@ public slots:
         void sltHandleToolBarContextMenuRequest(const QPoint &position);
     /** @} */
 
-protected:
+private slots:
 
     /** @name Event handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
+        void sltRetranslateUI();
     /** @} */
-
-private slots:
 
     /** @name General stuff.
       * @{ */

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 101559 2023-10-23 15:51:00Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserItemGroup.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -48,6 +48,7 @@
 #include "UIGraphicsScrollArea.h"
 #include "UIIconPool.h"
 #include "UIImageTools.h"
+#include "UITranslationEventListener.h"
 #include "UIVirtualBoxManager.h"
 #include "UIVirtualMachineItem.h"
 
@@ -205,7 +206,7 @@ QString UIChooserItemGroup::className()
     return "UIChooserItemGroup";
 }
 
-void UIChooserItemGroup::retranslateUi()
+void UIChooserItemGroup::sltRetranslateUI()
 {
     updateToggleButtonToolTip();
 }
@@ -1183,7 +1184,9 @@ void UIChooserItemGroup::prepare()
     copyContents(nodeToGroupType());
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserItemGroup::sltRetranslateUI);
 
     /* Initialize non-root items: */
     if (!isRoot())

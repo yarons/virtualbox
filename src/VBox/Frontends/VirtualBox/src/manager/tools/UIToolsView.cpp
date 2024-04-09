@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIToolsView.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -35,6 +35,7 @@
 #include "UIToolsItem.h"
 #include "UIToolsModel.h"
 #include "UIToolsView.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -114,7 +115,7 @@ private:
 
 
 UIToolsView::UIToolsView(UITools *pParent)
-    : QIWithRetranslateUI<QIGraphicsView>(pParent)
+    : QIGraphicsView(pParent)
     , m_pTools(pParent)
     , m_iMinimumWidthHint(0)
     , m_iMinimumHeightHint(0)
@@ -170,7 +171,7 @@ void UIToolsView::sltMinimumHeightHintChanged(int iHint)
     updateSceneRect();
 }
 
-void UIToolsView::retranslateUi()
+void UIToolsView::sltRetranslateUI()
 {
     /* Translate this: */
     setWhatsThis(tr("Contains a list of VirtualBox tools."));
@@ -196,7 +197,9 @@ void UIToolsView::prepare()
     updateSceneRect();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIToolsView::sltRetranslateUI);
 }
 
 void UIToolsView::preparePalette()
@@ -210,7 +213,7 @@ void UIToolsView::preparePalette()
 void UIToolsView::resizeEvent(QResizeEvent *pEvent)
 {
     /* Call to base-class: */
-    QIWithRetranslateUI<QIGraphicsView>::resizeEvent(pEvent);
+    QIGraphicsView::resizeEvent(pEvent);
     /* Notify listeners: */
     emit sigResized();
 }

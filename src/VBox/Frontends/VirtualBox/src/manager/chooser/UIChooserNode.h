@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNode.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -37,7 +37,6 @@
 #include <QString>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UIChooserDefs.h"
 #include "UIChooserItem.h"
 
@@ -51,7 +50,7 @@ class UIChooserNodeMachine;
 /** QObject subclass used as interface for invisible tree-view nodes.
   * These nodes can be of three types (group, global and machine node).
   * They can be used to compose a tree of nodes loaded from VBox setting. */
-class UIChooserNode : public QIWithRetranslateUI3<QObject>
+class UIChooserNode : public QObject
 {
     Q_OBJECT;
 

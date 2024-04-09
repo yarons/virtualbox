@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 101571 2023-10-24 00:48:20Z sergey.dubov@oracle.com $ */
+/* $Id: UIChooserNodeMachine.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -31,6 +31,7 @@
 /* GUI includes: */
 #include "UIChooserAbstractModel.h"
 #include "UIChooserNodeMachine.h"
+#include "UITranslationEventListener.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
 
@@ -46,7 +47,9 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
         parentNode()->addNode(this, iPosition);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserNodeMachine::sltRetranslateUI);
 }
 
 UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
@@ -68,7 +71,9 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
             static_cast<UIChooserAbstractModel*>(model()), &UIChooserAbstractModel::sltHandleCloudMachineRefreshFinished);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserNodeMachine::sltRetranslateUI);
 }
 
 UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
@@ -82,7 +87,9 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
         parentNode()->addNode(this, iPosition);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserNodeMachine::sltRetranslateUI);
 }
 
 UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
@@ -111,7 +118,9 @@ UIChooserNodeMachine::UIChooserNodeMachine(UIChooserNode *pParent,
         parentNode()->addNode(this, iPosition);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIChooserNodeMachine::sltRetranslateUI);
 }
 
 UIChooserNodeMachine::~UIChooserNodeMachine()
@@ -268,7 +277,7 @@ bool UIChooserNodeMachine::accessible() const
     return cache() ? cache()->accessible() : false;
 }
 
-void UIChooserNodeMachine::retranslateUi()
+void UIChooserNodeMachine::sltRetranslateUI()
 {
     /* Update internal stuff: */
     m_strDescription = tr("Virtual Machine");

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserNodeGroup.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
@@ -122,10 +122,10 @@ public:
     /** Returns node group id. */
     QUuid id() const;
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    void sltRetranslateUI();
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItemMachine.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -94,9 +94,6 @@ protected:
 
     /** @name Event-handling stuff.
       * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
-
         /** Handles show @a pEvent. */
         virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
@@ -190,6 +187,12 @@ private slots:
 
         /** Updates first row maximum width. */
         void sltUpdateFirstRowMaximumWidth() { updateFirstRowMaximumWidth(); }
+    /** @} */
+
+    /** @name Event handling stuff.
+     * @{ */
+       /** Handles translation event. */
+       void sltRetranslateUI();
     /** @} */
 
 private:

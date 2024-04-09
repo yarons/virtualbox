@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIChooserItemGroup.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -30,6 +30,9 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
+/* Qt includes: */
+#include <QWidget>
 
 /* GUI includes: */
 #include "UIChooserItem.h"
@@ -129,9 +132,6 @@ protected:
 
     /** @name Event-handling stuff.
       * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
-
         /** Handles show @a pEvent. */
         virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
@@ -235,6 +235,12 @@ private slots:
         void sltGroupToggleStart();
         /** Handles group toggle finish for group finally @a fToggled. */
         void sltGroupToggleFinish(bool fToggled);
+    /** @} */
+
+    /** @name Event handling stuff.
+      * @{ */
+        /** Handles translation event. */
+        void sltRetranslateUI();
     /** @} */
 
 private:

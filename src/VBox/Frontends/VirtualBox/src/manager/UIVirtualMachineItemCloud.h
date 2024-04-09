@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualMachineItemCloud.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -127,18 +127,16 @@ public:
         virtual bool isItemCanBeSwitchedTo() const RT_OVERRIDE;
     /** @} */
 
-protected:
+private slots:
 
     /** @name Event handling.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
+        void sltRetranslateUI();
     /** @} */
 
-private slots:
-
-        /** Handles signal about cloud VM info refresh progress is done. */
-        void sltHandleRefreshCloudMachineInfoDone();
+    /** Handles signal about cloud VM info refresh progress is done. */
+    void sltHandleRefreshCloudMachineInfoDone();
 
 private:
 

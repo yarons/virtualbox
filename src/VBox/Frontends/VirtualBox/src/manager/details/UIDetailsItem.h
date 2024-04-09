@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsItem.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIGraphicsWidget.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declaration: */
 class QGraphicsSceneHoverEvent;
@@ -60,7 +59,7 @@ enum UIDetailsItemType
 
 /** QIGraphicsWidget extension used as interface
   * for graphics details model/view architecture. */
-class UIDetailsItem : public QIWithRetranslateUI4<QIGraphicsWidget>
+class UIDetailsItem : public QIGraphicsWidget
 {
     Q_OBJECT;
 
@@ -147,14 +146,6 @@ public slots:
           * @param  iStepNumber  Brings the step number. */
     /** @} */
     virtual void sltBuildStep(const QUuid &uStepId, int iStepNumber);
-
-protected:
-
-    /** @name Event-handling stuff.
-      * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE {}
-    /** @} */
 
 private:
 

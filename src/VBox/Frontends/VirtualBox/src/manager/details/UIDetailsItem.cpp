@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsItem.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -201,7 +201,7 @@ private:
 *********************************************************************************************************************************/
 
 UIDetailsItem::UIDetailsItem(UIDetailsItem *pParent)
-    : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
+    : QIGraphicsWidget(pParent)
     , m_pParent(pParent)
 {
     /* Install Details-view item accessibility interface factory: */

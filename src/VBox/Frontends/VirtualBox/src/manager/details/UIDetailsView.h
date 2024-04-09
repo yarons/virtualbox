@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 102477 2023-12-05 13:54:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsView.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -33,13 +33,12 @@
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class UIDetails;
 
 /* Graphics details-view: */
-class UIDetailsView : public QIWithRetranslateUI<QIGraphicsView>
+class UIDetailsView : public QIGraphicsView
 {
     Q_OBJECT;
 
@@ -64,9 +63,6 @@ public slots:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles resize @a pEvent. */
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
@@ -74,6 +70,9 @@ private slots:
 
     /** Updates palette. */
     void sltUpdatePalette() { preparePalette(); }
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

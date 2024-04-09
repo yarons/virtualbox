@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIDetailsSet.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QPainter>
 #include <QStyle>
 #include <QStyleOptionGraphicsItem>

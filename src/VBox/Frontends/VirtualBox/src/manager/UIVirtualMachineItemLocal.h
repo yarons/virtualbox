@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVirtualMachineItemLocal.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemLocal class declaration.
  */
@@ -116,12 +116,12 @@ public:
         virtual bool isItemCanBeSwitchedTo() const RT_OVERRIDE;
     /** @} */
 
-protected:
+private slots:
 
     /** @name Event handling.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
+        void sltRetranslateUI();
     /** @} */
 
 private:
