@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 104253 2024-04-09 14:04:33Z alexander.eichner@oracle.com $ */
+/* $Id: DevAHCI.cpp 104254 2024-04-09 14:36:12Z alexander.eichner@oracle.com $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -2356,10 +2356,10 @@ ahciLegacyFakeWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t
 static DECLCALLBACK(VBOXSTRICTRC)
 ahciLegacyFakeRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb)
 {
-    /** @todo we should set *pu32 to something. */
-    RT_NOREF(pDevIns, pvUser, offPort, pu32, cb);
+    *pu32 = 0;
+    RT_NOREF(pDevIns, pvUser, offPort, cb);
     ASSERT_GUEST_MSG_FAILED(("Should not happen\n"));
-    return VINF_SUCCESS;
+    return VERR_IOM_IOPORT_UNUSED;
 }
 
 
