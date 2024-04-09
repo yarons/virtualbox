@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 103374 2024-02-14 22:10:00Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAllPhys.cpp 104256 2024-04-09 15:14:23Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2515,6 +2515,11 @@ static VBOXSTRICTRC pgmPhysReadHandler(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhy
 
             /* Release the PGM lock as MMIO handlers take the IOM lock. (deadlock prevention) */
             PGM_UNLOCK(pVM);
+            /* If the access origins with a device, make sure the buffer is initialized
+               as a guard against leaking heap, stack and other info via badly written
+               MMIO handling. @bugref{10651} */
+            if (enmOrigin == PGMACCESSORIGIN_DEVICE)
+                memset(pvBuf, 0xff, cb);
             rcStrict = pfnHandler(pVM, pVCpu, GCPhys, (void *)pvSrc, pvBuf, cb, PGMACCESSTYPE_READ, enmOrigin, uUser);
             PGM_LOCK_VOID(pVM);
 
