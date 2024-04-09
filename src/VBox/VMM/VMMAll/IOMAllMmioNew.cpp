@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: IOMAllMmioNew.cpp 104255 2024-04-09 15:12:40Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -446,7 +446,7 @@ static VBOXSTRICTRC iomMMIODoComplicatedRead(PVM pVM, CTX_SUFF(PIOMMMIOENTRY) pR
         /*
          * Do DWORD read from the device.
          */
-        uint32_t u32Value;
+        uint32_t u32Value = 0;
         VBOXSTRICTRC rcStrict2 = pRegEntry->pfnReadCallback(pRegEntry->pDevIns, pRegEntry->pvUser,
                                                             !(pRegEntry->fFlags & IOMMMIO_FLAGS_ABS)
                                                             ? offRegion & ~(RTGCPHYS)3 : GCPhys & ~(RTGCPHYS)3,
