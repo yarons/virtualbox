@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 103053 2024-01-25 09:16:55Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: VMXAllTemplate.cpp.h 104259 2024-04-09 23:34:18Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -9557,6 +9557,8 @@ HMVMX_EXIT_DECL vmxHCExitEptMisconfig(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransien
         /*
          * Frequent exit or something needing probing. Call EMHistoryExec.
          */
+        int rc2 = vmxHCImportGuestState<HMVMX_CPUMCTX_EXTRN_ALL, IEM_CPUMCTX_EXTRN_MUST_MASK>(pVCpu, pVmcsInfo, __FUNCTION__);
+        AssertRCReturn(rc2, rc2);
         Log4(("EptMisscfgExit/%u: %04x:%08RX64: %RGp -> EMHistoryExec\n",
               pVCpu->idCpu, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, GCPhys));
 
