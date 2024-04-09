@@ -1,4 +1,4 @@
-/* $Id: UITranslationEventListener.cpp 103920 2024-03-19 14:40:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UITranslationEventListener.cpp 104257 2024-04-09 18:49:31Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITranslationEventListener class implementation.
  */
@@ -81,7 +81,7 @@ bool UITranslationEventListener::eventFilter(QObject *pObject, QEvent *pEvent)
            && pEvent->type() == QEvent::LanguageChange)
     {
         //&& (pObject == qApp || pObject == this))
-        emit sigRetranslateUI();
+        //emit sigRetranslateUI();
     }
     /* Call to base-class: */
     return QObject::eventFilter(pObject, pEvent);
