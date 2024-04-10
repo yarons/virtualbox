@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.h 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWelcomePane.h 104267 2024-04-10 08:11:16Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QIcon>
+#include <QMap>
 #include <QWidget>
 
 /* GUI includes: */
