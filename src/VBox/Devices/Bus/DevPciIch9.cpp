@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPciIch9.cpp 104280 2024-04-10 16:48:47Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -730,6 +730,7 @@ DECL_HIDDEN_CALLBACK(VBOXSTRICTRC) devpciCommonMcfgMmioRead(PPDMDEVINS pDevIns, 
                 break;
             default:
                 ASSERT_GUEST_MSG_FAILED(("cb=%u off=%RGp\n", cb, off)); /** @todo how the heck should this work? Split it, right? */
+                rcStrict = VINF_IOM_MMIO_UNUSED_00;
                 break;
         }
     }

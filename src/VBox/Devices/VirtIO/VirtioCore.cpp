@@ -1,4 +1,4 @@
-/* $Id: VirtioCore.cpp 102875 2024-01-15 12:52:45Z alexander.eichner@oracle.com $ */
+/* $Id: VirtioCore.cpp 104280 2024-04-10 16:48:47Z aleksey.ilyushin@oracle.com $ */
 
 /** @file
  * VirtioCore - Virtio Core (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
@@ -862,6 +862,18 @@ DECLHIDDEN(int) virtioCoreR3VirtqAvailBufGet(PPDMDEVINS pDevIns, PVIRTIOCORE pVi
                     LogRelMax(64, ("(the above error has occured %u times so far)\n", ASMAtomicReadU32(&s_cMessages)));
                 ASMAtomicWriteU32(&s_cThreshold, ASMAtomicReadU32(&s_cThreshold) * 10);
             }
+            break;
+        }
+        /* Check if the limit has been reached for input chain (see section 2.4.4.1 of virtio 1.0 spec). */
+        if (cSegsIn >= RT_ELEMENTS(pVirtqBuf->aSegsIn))
+        {
+            LogRelMax(64, ("Too many input descriptors (cSegsIn=%u).\n", cSegsIn));
+            break;
+        }
+        /* Check if the limit has been reached for output chain (see section 2.4.4.1 of virtio 1.0 spec). */
+        if (cSegsOut >= RT_ELEMENTS(pVirtqBuf->aSegsOut))
+        {
+            LogRelMax(64, ("Too many output descriptors (cSegsOut=%u).\n", cSegsOut));
             break;
         }
         RT_UNTRUSTED_VALIDATED_FENCE();
@@ -1977,7 +1989,7 @@ static DECLCALLBACK(VBOXSTRICTRC) virtioMmioRead(PPDMDEVINS pDevIns, void *pvUse
 {
     PVIRTIOCORE   pVirtio   = PDMINS_2_DATA(pDevIns, PVIRTIOCORE);
     PVIRTIOCORECC pVirtioCC = PDMINS_2_DATA_CC(pDevIns, PVIRTIOCORECC);
-    AssertReturn(cb == 1 || cb == 2 || cb == 4, VERR_INVALID_PARAMETER);
+    AssertReturn(cb == 1 || cb == 2 || cb == 4, VINF_IOM_MMIO_UNUSED_FF);
     Assert(pVirtio == (PVIRTIOCORE)pvUser); RT_NOREF(pvUser);
 
     STAM_PROFILE_ADV_START(&pVirtio->CTX_SUFF(StatRead), a);
@@ -1999,6 +2011,7 @@ static DECLCALLBACK(VBOXSTRICTRC) virtioMmioRead(PPDMDEVINS pDevIns, void *pvUse
     else
     {
         ASSERT_GUEST_MSG_FAILED(("Bad read access to mapped capabilities region: off=%RGp cb=%u\n", off, cb));
+        memset(pv, 0xFF, cb);
         rcStrict = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS,
                                      "virtioMmioRead: Bad MMIO access to capabilities, offset=%RTiop cb=%08x\n", off, cb);
     }

@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: DevPCNet.cpp 104280 2024-04-10 16:48:47Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3813,7 +3813,9 @@ static DECLCALLBACK(VBOXSTRICTRC) pcnetR3MmioRead(PPDMDEVINS pDevIns, void *pvUs
             case 2:  rc = pcnetR3MmioReadU16(pDevIns, pThis, pThisCC, off, (uint16_t *)pv); break;
             case 4:  rc = pcnetR3MmioReadU32(pDevIns, pThis, pThisCC, off, (uint32_t *)pv); break;
             default:
+                memset(pv, 0, cb);
                 rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "pcnetR3MmioRead: unsupported op size: address=%RGp cb=%u\n", off, cb);
+                break;
         }
         STAM_PROFILE_ADV_STOP(&pThis->CTX_SUFF_Z(StatMMIORead), a);
     }
