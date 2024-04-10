@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 104238 2024-04-08 20:15:10Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 104263 2024-04-10 07:01:46Z ramshankar.venkataraman@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5062,6 +5062,46 @@ BEGINPROC_FASTCALL  iemAImpl_vptest_u256, 12
         IEMIMPL_SSE_EPILOGUE
         EPILOGUE_3_ARGS
 ENDPROC             iemAImpl_vptest_u256
+
+
+;; Template for the vtestp{s,d} instructions
+;
+; @param    1       The instruction
+;
+; @param    A0      Pointer to the first source operand (aka readonly destination).
+; @param    A1      Pointer to the second source operand.
+; @param    A2      Pointer to the EFLAGS register.
+;
+%macro IEMIMPL_VTESTP_SD 1
+BEGINPROC_FASTCALL  iemAImpl_ %+ %1 %+ _u128, 12
+        PROLOGUE_3_ARGS
+        IEMIMPL_AVX_PROLOGUE
+
+        vmovdqu xmm0, [A0]
+        vmovdqu xmm1, [A1]
+        %1 xmm0, xmm1
+        IEM_SAVE_FLAGS_OLD A2, X86_EFL_ZF | X86_EFL_CF, 0, X86_EFL_OF | X86_EFL_AF | X86_EFL_PF | X86_EFL_SF
+
+        IEMIMPL_AVX_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC             iemAImpl_ %+ %1 %+ _u128
+
+BEGINPROC_FASTCALL  iemAImpl_ %+ %1 %+ _u256, 12
+        PROLOGUE_3_ARGS
+        IEMIMPL_AVX_PROLOGUE
+
+        vmovdqu ymm0, [A0]
+        vmovdqu ymm1, [A1]
+        %1 ymm0, ymm1
+        IEM_SAVE_FLAGS_OLD A2, X86_EFL_ZF | X86_EFL_CF, 0, X86_EFL_OF | X86_EFL_AF | X86_EFL_PF | X86_EFL_SF
+
+        IEMIMPL_AVX_EPILOGUE
+        EPILOGUE_3_ARGS
+ENDPROC             iemAImpl_ %+ %1 %+ _u256
+%endmacro
+
+IEMIMPL_VTESTP_SD vtestps
+IEMIMPL_VTESTP_SD vtestpd
 
 
 ;;
