@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 104278 2024-04-10 13:52:25Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 104279 2024-04-10 14:22:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -1948,6 +1948,89 @@ iemNativeEmit_pxor_rv_u128(PIEMRECOMPILERSTATE pReNative, uint32_t off,
     PIEMNATIVEINSTR const pCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
 
     pCodeBuf[off++] = Armv8A64MkVecInstrEor(idxSimdRegDst, idxSimdRegDst, idxSimdRegSrc);
+#else
+# error "port me"
+#endif
+
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+    iemNativeVarRegisterRelease(pReNative, idxVarSrc);
+
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    return off;
+}
+
+
+/**
+ * Common emitter for the PAND, ANDPS, ANDPD instructions - guest register / guest register variant.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmit_pand_rr_u128(PIEMRECOMPILERSTATE pReNative, uint32_t off,
+                           uint8_t const idxSimdGstRegDst, uint8_t const idxSimdGstRegSrc)
+{
+    uint8_t const idxSimdRegDst = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(idxSimdGstRegDst),
+                                                                          kIemNativeGstSimdRegLdStSz_Low128, kIemNativeGstRegUse_ForUpdate);
+    uint8_t const idxSimdRegSrc = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(idxSimdGstRegSrc),
+                                                                          kIemNativeGstSimdRegLdStSz_Low128, kIemNativeGstRegUse_ReadOnly);
+
+#ifdef RT_ARCH_AMD64
+    PIEMNATIVEINSTR const pCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 5);
+
+    /* pand xmm, xmm */
+    pCodeBuf[off++] = X86_OP_PRF_SIZE_OP;
+    if (idxSimdRegDst >= 8 || idxSimdRegSrc >= 8)
+        pCodeBuf[off++] =   (idxSimdRegSrc >= 8 ? X86_OP_REX_B : 0)
+                          | (idxSimdRegDst >= 8 ? X86_OP_REX_R : 0);
+    pCodeBuf[off++] = 0x0f;
+    pCodeBuf[off++] = 0xdb;
+    pCodeBuf[off++] = X86_MODRM_MAKE(X86_MOD_REG, idxSimdRegDst & 7, idxSimdRegSrc & 7);
+
+#elif defined(RT_ARCH_ARM64)
+    PIEMNATIVEINSTR const pCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
+
+    pCodeBuf[off++] = Armv8A64MkVecInstrAnd(idxSimdRegDst, idxSimdRegDst, idxSimdRegSrc);
+#else
+# error "port me"
+#endif
+
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegDst);
+    iemNativeSimdRegFreeTmp(pReNative, idxSimdRegSrc);
+
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    return off;
+}
+
+
+/**
+ * Common emitter for the PAND, ANDPS, ANDPD instructions - guest register / recompiler variable variant.
+ */
+DECL_INLINE_THROW(uint32_t)
+iemNativeEmit_pand_rv_u128(PIEMRECOMPILERSTATE pReNative, uint32_t off,
+                           uint8_t const idxSimdGstRegDst, uint8_t const idxVarSrc)
+{
+    IEMNATIVE_ASSERT_VAR_IDX(pReNative, idxVarSrc);
+    IEMNATIVE_ASSERT_VAR_SIZE(pReNative, idxVarSrc, sizeof(RTUINT128U));
+
+    uint8_t const idxSimdRegDst = iemNativeSimdRegAllocTmpForGuestSimdReg(pReNative, &off, IEMNATIVEGSTSIMDREG_SIMD(idxSimdGstRegDst),
+                                                                          kIemNativeGstSimdRegLdStSz_Low128, kIemNativeGstRegUse_ForUpdate);
+    uint8_t const idxSimdRegSrc = iemNativeVarSimdRegisterAcquire(pReNative, idxVarSrc, &off, true /*fInitialized*/);
+
+
+#ifdef RT_ARCH_AMD64
+    PIEMNATIVEINSTR const pCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 5);
+
+    /* pand xmm, xmm */
+    pCodeBuf[off++] = X86_OP_PRF_SIZE_OP;
+    if (idxSimdRegDst >= 8 || idxSimdRegSrc >= 8)
+        pCodeBuf[off++] =   (idxSimdRegSrc >= 8 ? X86_OP_REX_B : 0)
+                          | (idxSimdRegDst >= 8 ? X86_OP_REX_R : 0);
+    pCodeBuf[off++] = 0x0f;
+    pCodeBuf[off++] = 0xdb;
+    pCodeBuf[off++] = X86_MODRM_MAKE(X86_MOD_REG, idxSimdRegDst & 7, idxSimdRegSrc & 7);
+
+#elif defined(RT_ARCH_ARM64)
+    PIEMNATIVEINSTR const pCodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
+
+    pCodeBuf[off++] = Armv8A64MkVecInstrAnd(idxSimdRegDst, idxSimdRegDst, idxSimdRegSrc);
 #else
 # error "port me"
 #endif
