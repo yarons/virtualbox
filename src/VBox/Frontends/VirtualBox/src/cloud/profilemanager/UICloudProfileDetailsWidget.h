@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudProfileDetailsWidget.h 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -38,7 +38,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -123,7 +122,7 @@ struct UIDataCloudProfile
 
 
 /** Cloud Profile details widget. */
-class UICloudProfileDetailsWidget : public QIWithRetranslateUI<QWidget>
+class UICloudProfileDetailsWidget : public QWidget
 {
     Q_OBJECT;
 
@@ -150,8 +149,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
     /** Handles editor translation. */
     void retranslateEditor();
     /** Handles buttons translation. */
@@ -169,6 +166,9 @@ private slots:
         /** Handles button-box button click. */
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
     /** @} */
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

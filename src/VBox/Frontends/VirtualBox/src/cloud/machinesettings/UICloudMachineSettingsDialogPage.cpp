@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialogPage.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialogPage.cpp 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialogPage class implementation.
  */
@@ -32,14 +32,14 @@
 /* GUI includes: */
 #include "UICloudMachineSettingsDialog.h"
 #include "UICloudMachineSettingsDialogPage.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
 
-
 UICloudMachineSettingsDialogPage::UICloudMachineSettingsDialogPage(QWidget *pParent,
                                                                    bool fFullScale /* = true */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_pParent(qobject_cast<UICloudMachineSettingsDialog*>(pParent))
     , m_fFullScale(fFullScale)
 {
@@ -64,7 +64,7 @@ void UICloudMachineSettingsDialogPage::makeSureDataCommitted()
     m_pFormEditor->makeSureEditorDataCommitted();
 }
 
-void UICloudMachineSettingsDialogPage::retranslateUi()
+void UICloudMachineSettingsDialogPage::sltRetranslateUI()
 {
     AssertPtrReturnVoid(m_pFormEditor.data());
     m_pFormEditor->setWhatsThis(UICloudMachineSettingsDialog::tr("Contains a list of cloud machine settings."));
@@ -99,7 +99,9 @@ void UICloudMachineSettingsDialogPage::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UICloudMachineSettingsDialogPage::sltRetranslateUI);
 }
 
 void UICloudMachineSettingsDialogPage::updateEditor()

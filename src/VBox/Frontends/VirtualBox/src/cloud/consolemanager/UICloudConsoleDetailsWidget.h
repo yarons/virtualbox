@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleDetailsWidget.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudConsoleDetailsWidget.h 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleDetailsWidget class declaration.
  */
@@ -37,7 +37,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -123,7 +122,7 @@ struct UIDataCloudConsoleProfile
 
 
 /** Cloud Console details widget. */
-class UICloudConsoleDetailsWidget : public QIWithRetranslateUI<QWidget>
+class UICloudConsoleDetailsWidget : public QWidget
 {
     Q_OBJECT;
 
@@ -154,11 +153,6 @@ public:
     /** Clears all the console data. */
     void clearData();
 
-protected:
-
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
 
     /** @name Change handling stuff.
@@ -177,6 +171,9 @@ private slots:
         /** Handles button-box button click. */
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
     /** @} */
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

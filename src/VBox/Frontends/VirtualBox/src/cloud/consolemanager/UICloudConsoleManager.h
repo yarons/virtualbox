@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UICloudConsoleManager.h 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class declaration.
  */
@@ -33,7 +33,6 @@
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
-#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QAbstractButton;
@@ -50,7 +49,7 @@ struct UIDataCloudConsoleProfile;
 
 
 /** QWidget extension providing GUI with the pane to control cloud console related functionality. */
-class UICloudConsoleManagerWidget : public QIWithRetranslateUI<QWidget>
+class UICloudConsoleManagerWidget : public QWidget
 {
     Q_OBJECT;
 
@@ -77,14 +76,6 @@ public:
     /** Returns the toolbar. */
     QIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-
-protected:
-
-    /** @name Event-handling stuff.
-      * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
-    /** @} */
 
 public slots:
 
@@ -124,6 +115,12 @@ private slots:
         void sltHandleContextMenuRequest(const QPoint &position);
         /** Handles tree-widget @a pItem change. */
         void sltHandleItemChange(QTreeWidgetItem *pItem);
+    /** @} */
+
+    /** @name Event-handling stuff.
+      * @{ */
+        /** Handles translation event. */
+        void sltRetranslateUI();
     /** @} */
 
 private:
@@ -235,7 +232,7 @@ protected:
 
 
 /** QIManagerDialog extension providing GUI with the dialog to control cloud console related functionality. */
-class UICloudConsoleManager : public QIWithRetranslateUI<QIManagerDialog>
+class UICloudConsoleManager : public QIManagerDialog
 {
     Q_OBJECT;
 
@@ -254,18 +251,18 @@ private slots:
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
     /** @} */
 
+    /** @name Event-handling stuff.
+      * @{ */
+        /** Handles translation event. */
+        void sltRetranslateUI();
+    /** @} */
+
 private:
 
     /** Constructs Cloud Console Manager dialog.
       * @param  pCenterWidget  Brings the widget reference to center according to.
       * @param  pActionPool    Brings the action-pool reference. */
     UICloudConsoleManager(QWidget *pCenterWidget, UIActionPool *pActionPool);
-
-    /** @name Event-handling stuff.
-      * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() RT_OVERRIDE;
-    /** @} */
 
     /** @name Prepare/cleanup cascade.
       * @{ */
