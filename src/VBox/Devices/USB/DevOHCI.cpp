@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 104276 2024-04-10 13:29:23Z michal.necasek@oracle.com $ */
+/* $Id: DevOHCI.cpp 104277 2024-04-10 13:42:59Z michal.necasek@oracle.com $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -692,7 +692,7 @@ typedef struct OHCIOPREG
 #define OHCI_INTR_START_OF_FRAME            RT_BIT(2)
 /** RD  - Resume detect. */
 #define OHCI_INTR_RESUME_DETECT             RT_BIT(3)
-/** UE  - ",erable error. */
+/** UE  - Unrecoverable error. */
 #define OHCI_INTR_UNRECOVERABLE_ERROR       RT_BIT(4)
 /** FNO - Frame number overflow. */
 #define OHCI_INTR_FRAMENUMBER_OVERFLOW      RT_BIT(5)
