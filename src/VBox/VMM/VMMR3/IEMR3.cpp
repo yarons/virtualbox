@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 104108 2024-03-28 21:50:41Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 104271 2024-04-10 10:35:14Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -575,13 +575,23 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Times liveness info helped finding the return register in iemNativeSimdRegAllocFindFree.",
                         "/IEM/CPU%u/re/NativeSimdRegFindFreeLivenessHelped", idCpu);
 
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeDeviceNotAvailXcptCheckPotential, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE() checks", "/IEM/CPU%u/re/NativeMaybeDeviceNotAvailXcptCheckPotential", idCpu);
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeSseXcptCheckPotential,            STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT() checks",     "/IEM/CPU%u/re/NativeMaybeSseXcptCheckPotential", idCpu);
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeAvxXcptCheckPotential,            STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT() checks",     "/IEM/CPU%u/re/NativeMaybeAvxXcptCheckPotential", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeDeviceNotAvailXcptCheckPotential, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE() checks",
+                        "/IEM/CPU%u/re/NativeMaybeDeviceNotAvailXcptCheckPotential", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeWaitDeviceNotAvailXcptCheckPotential, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE() checks",
+                        "/IEM/CPU%u/re/NativeMaybeWaitDeviceNotAvailXcptCheckPotential", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeSseXcptCheckPotential,            STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT() checks",
+                        "/IEM/CPU%u/re/NativeMaybeSseXcptCheckPotential", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeAvxXcptCheckPotential,            STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Potential IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT() checks",
+                        "/IEM/CPU%u/re/NativeMaybeAvxXcptCheckPotential", idCpu);
 
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeDeviceNotAvailXcptCheckOmitted,   STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE() checks omitted",   "/IEM/CPU%u/re/NativeMaybeDeviceNotAvailXcptCheckOmitted", idCpu);
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeSseXcptCheckOmitted,              STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT() checks omitted",       "/IEM/CPU%u/re/NativeMaybeSseXcptCheckOmitted", idCpu);
-        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeAvxXcptCheckOmitted,              STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT() checks omitted",       "/IEM/CPU%u/re/NativeMaybeAvxXcptCheckOmitted", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeDeviceNotAvailXcptCheckOmitted,   STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE() checks omitted",
+                        "/IEM/CPU%u/re/NativeMaybeDeviceNotAvailXcptCheckOmitted", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeWaitDeviceNotAvailXcptCheckOmitted,   STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE() checks omitted",
+                        "/IEM/CPU%u/re/NativeMaybeWaitDeviceNotAvailXcptCheckOmitted", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeSseXcptCheckOmitted,              STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT() checks omitted",
+                        "/IEM/CPU%u/re/NativeMaybeSseXcptCheckOmitted", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatNativeMaybeAvxXcptCheckOmitted,              STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "IEM_MC_MAYBE_RAISE_AVX_RELATED_XCPT() checks omitted",
+                        "/IEM/CPU%u/re/NativeMaybeAvxXcptCheckOmitted", idCpu);
 #endif
 
         /* Ratio of the status bit skippables. */
