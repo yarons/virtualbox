@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $
+# $Id: IEMAllInstPython.py 104270 2024-04-10 10:25:04Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104195 $"
+__version__ = "$Revision: 104270 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3193,7 +3193,7 @@ g_dMcStmtParsers = {
     'IEM_MC_MAYBE_RAISE_NON_CANONICAL_ADDR_GP0':                 (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_MAYBE_RAISE_SSE_AVX_SIMD_FP_OR_UD_XCPT':             (McBlock.parseMcGeneric,           True,  True,  g_fNativeSimd),
     'IEM_MC_MAYBE_RAISE_SSE_RELATED_XCPT':                       (McBlock.parseMcGeneric,           True,  True,  True,  ),
-    'IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE':              (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE':              (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_ATOMIC':                        (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_RW':                            (McBlock.parseMcGeneric,           True,  True,  True,  ),
     'IEM_MC_MEM_COMMIT_AND_UNMAP_RO':                            (McBlock.parseMcGeneric,           True,  True,  True,  ),
