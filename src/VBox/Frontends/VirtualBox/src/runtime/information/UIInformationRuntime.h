@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIInformationRuntime.h 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -34,9 +34,6 @@
 /* Qt includes: */
 #include <QWidget>
 
-/* GUI includes: */
-#include "QIWithRetranslateUI.h"
-
 /* COM includes: */
 #include "KClipboardMode.h"
 #include "KDnDMode.h"
@@ -50,7 +47,7 @@ class UIRuntimeInfoWidget;
 
 /** UIInformationRuntime class displays a table including some
   * run time attributes. */
-class UIInformationRuntime : public QIWithRetranslateUI<QWidget>
+class UIInformationRuntime : public QWidget
 {
     Q_OBJECT;
 
@@ -59,11 +56,9 @@ public:
     /** Constructs information-tab passing @a pParent to the base-class. */
     UIInformationRuntime(QWidget *pParent);
 
-protected:
-
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
+
+    virtual void sltRetranslateUI();
 
     /** @name These functions are connected to API events and implement necessary updates on the table.
       * @{ */

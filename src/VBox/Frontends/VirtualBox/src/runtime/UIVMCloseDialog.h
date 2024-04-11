@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIVMCloseDialog.h 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIDialog.h"
-#include "QIWithRetranslateUI.h"
 #include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
@@ -49,7 +48,7 @@ class QVBoxLayout;
 class UIMachine;
 
 /** QIDialog extension to handle Runtime UI close-event. */
-class UIVMCloseDialog : public QIWithRetranslateUI<QIDialog>
+class UIVMCloseDialog : public QIDialog
 {
     Q_OBJECT;
 
@@ -79,10 +78,10 @@ protected:
     /** Handles show @a pEvent. */
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
     /** Updates widgets availability. */
     void sltUpdateWidgetAvailability();

@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 103578 2024-02-26 17:29:33Z sergey.dubov@oracle.com $ */
+/* $Id: UIVMCloseDialog.cpp 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -47,12 +47,13 @@
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UIShortcutPool.h"
+#include "UITranslationEventListener.h"
 #include "UIVMCloseDialog.h"
 
 
 UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, UIMachine *pMachine,
                                  bool fIsACPIEnabled, MachineCloseAction restictedCloseActions)
-    : QIWithRetranslateUI<QIDialog>(pParent)
+    : QIDialog(pParent)
     , m_pMachine(pMachine)
     , m_fIsACPIEnabled(fIsACPIEnabled)
     , m_restictedCloseActions(restictedCloseActions)
@@ -92,7 +93,7 @@ bool UIVMCloseDialog::eventFilter(QObject *pObject, QEvent *pEvent)
         && pObject != m_pRadioButtonSave
         && pObject != m_pRadioButtonShutdown
         && pObject != m_pRadioButtonPowerOff)
-        return QIWithRetranslateUI<QIDialog>::eventFilter(pObject, pEvent);
+        return QIDialog::eventFilter(pObject, pEvent);
 
     /* For now we are interested in double-click events only: */
     if (pEvent->type() == QEvent::MouseButtonDblClick)
@@ -108,13 +109,13 @@ bool UIVMCloseDialog::eventFilter(QObject *pObject, QEvent *pEvent)
     }
 
     /* Call to base-class: */
-    return QIWithRetranslateUI<QIDialog>::eventFilter(pObject, pEvent);
+    return QIDialog::eventFilter(pObject, pEvent);
 }
 
 bool UIVMCloseDialog::event(QEvent *pEvent)
 {
     /* Pre-process in base-class: */
-    const bool fResult = QIWithRetranslateUI<QIDialog>::event(pEvent);
+    const bool fResult = QIDialog::event(pEvent);
 
     /* Post-process know event types: */
     switch (pEvent->type())
@@ -139,10 +140,10 @@ void UIVMCloseDialog::showEvent(QShowEvent *pEvent)
     updatePixmaps();
 
     /* Call to base-class: */
-    QIWithRetranslateUI<QIDialog>::showEvent(pEvent);
+    QIDialog::showEvent(pEvent);
 }
 
-void UIVMCloseDialog::retranslateUi()
+void UIVMCloseDialog::sltRetranslateUI()
 {
     /* Translate title: */
     setWindowTitle(tr("Close Virtual Machine"));
@@ -295,7 +296,9 @@ void UIVMCloseDialog::prepare()
     configure();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIVMCloseDialog::sltRetranslateUI);
 }
 
 void UIVMCloseDialog::prepareMainLayout()
