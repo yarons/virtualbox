@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstTwoByte0f.cpp.h 104292 2024-04-11 10:21:57Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllInstTwoByte0f.cpp.h 104294 2024-04-11 12:28:26Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -6611,7 +6611,7 @@ FNIEMOPRM_DEF(iemOp_Grp12_psllw_Nq_Ib)
 FNIEMOPRM_DEF(iemOp_Grp12_psllw_Ux_Ib)
 {
 //    IEMOP_MNEMONIC2(RI, PSLLW, psllw, Ux, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, 0);
-    SSE2_SHIFT_BODY_Imm(psllw, bRm, 0);
+    SSE2_SHIFT_BODY_Imm(psllw, bRm, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
@@ -6687,7 +6687,7 @@ FNIEMOPRM_DEF(iemOp_Grp13_pslld_Nq_Ib)
 FNIEMOPRM_DEF(iemOp_Grp13_pslld_Ux_Ib)
 {
 //    IEMOP_MNEMONIC2(RI, PSLLD, pslld, Ux, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, 0);
-    SSE2_SHIFT_BODY_Imm(pslld, bRm, 0);
+    SSE2_SHIFT_BODY_Imm(pslld, bRm, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
@@ -6755,7 +6755,7 @@ FNIEMOPRM_DEF(iemOp_Grp14_psllq_Nq_Ib)
 FNIEMOPRM_DEF(iemOp_Grp14_psllq_Ux_Ib)
 {
 //    IEMOP_MNEMONIC2(RI, PSLLQ, psllq, Ux, Ib, DISOPTYPE_HARMLESS | DISOPTYPE_X86_SSE, 0);
-    SSE2_SHIFT_BODY_Imm(psllq, bRm, 0);
+    SSE2_SHIFT_BODY_Imm(psllq, bRm, RT_ARCH_VAL_AMD64 | RT_ARCH_VAL_ARM64);
 }
 
 
