@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: fileio-win.cpp 104284 2024-04-11 00:04:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -1485,7 +1485,7 @@ RTR3DECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
 
 /* RTFileQueryFsSizes is implemented by ../nt/RTFileQueryFsSizes-nt.cpp */
 
-
+#if 0 /* RTFileDelete is implemented by ../nt/RTFileDelete-r3-nt.cpp */
 RTR3DECL(int)  RTFileDelete(const char *pszFilename)
 {
     PRTUTF16 pwszFilename;
@@ -1499,6 +1499,7 @@ RTR3DECL(int)  RTFileDelete(const char *pszFilename)
 
     return rc;
 }
+#endif
 
 
 RTDECL(int) RTFileRename(const char *pszSrc, const char *pszDst, unsigned fRename)

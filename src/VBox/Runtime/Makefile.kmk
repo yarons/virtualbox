@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103495 2024-02-21 14:30:50Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104284 2024-04-11 00:04:48Z knut.osmundsen@oracle.com $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1046,6 +1046,7 @@ RuntimeBaseR3_SOURCES.win = \
 	r3/nt/dirrel-r3-nt.cpp \
 	r3/nt/fs-nt.cpp \
 	r3/nt/pathint-nt.cpp \
+	r3/nt/RTFileDelete-r3-nt.cpp \
 	r3/nt/RTFileQueryFsSizes-nt.cpp \
 	r3/nt/RTFileSetMode-r3-nt.cpp \
 	r3/nt/RTPathQueryInfo-nt.cpp \
@@ -2646,6 +2647,7 @@ RuntimeBldProg_SOURCES.win = \
 	r3/nt/dirrel-r3-nt.cpp \
 	r3/nt/fs-nt.cpp \
 	r3/nt/pathint-nt.cpp \
+	r3/nt/RTFileDelete-r3-nt.cpp \
 	r3/nt/RTFileQueryFsSizes-nt.cpp \
 	r3/nt/RTFileSetMode-r3-nt.cpp \
 	r3/nt/RTPathQueryInfo-nt.cpp \
