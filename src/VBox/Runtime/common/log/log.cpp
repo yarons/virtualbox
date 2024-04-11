@@ -1,4 +1,4 @@
-/* $Id: log.cpp 104286 2024-04-11 01:56:27Z knut.osmundsen@oracle.com $ */
+/* $Id: log.cpp 104287 2024-04-11 02:09:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -233,6 +233,9 @@ typedef struct RTLOGGERINTERNAL
     /** Opaque directory context.
      * This is kept open while we have an open log file. */
     void                   *pvDirCtx;
+# if ARCH_BITS == 32
+    void                   *pvPadding32;
+# endif
 
     /** Handle to log file (if open) - only used by the default output interface to avoid additional layers of indirection. */
     RTFILE                  hFile;
