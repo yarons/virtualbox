@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPaneContainer.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerPaneContainer.cpp 104297 2024-04-11 13:20:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QCheckBox>
 #include <QHBoxLayout>
 #include <QMenu>

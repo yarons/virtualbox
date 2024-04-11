@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGuestProcessControlWidget.cpp 104297 2024-04-11 13:20:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -39,6 +39,7 @@
 #include "UIGuestControlTreeItem.h"
 #include "UIGuestProcessControlWidget.h"
 #include "UIIconPool.h"
+#include "UITranslationEventListener.h"
 
 /* COM includes: */
 #include "CGuest.h"
@@ -294,7 +295,7 @@ const bool UIGuestProcessControlWidget::s_fDeleteAfterUnregister = false;
 UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, const CGuest &comGuest,
                                                          QWidget *pParent, QString strMachineName /* = QString()*/,
                                                          bool fShowToolbar /* = false */)
-    :QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_comGuest(comGuest)
     , m_pMainLayout(0)
     , m_pTreeWidget(0)
@@ -309,7 +310,9 @@ UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, c
     prepareConnections();
     prepareToolBar();
     initGuestSessionTree();
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIGuestProcessControlWidget::sltRetranslateUI);
 }
 
 UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
@@ -317,7 +320,7 @@ UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
     sltCleanupListener();
 }
 
-void UIGuestProcessControlWidget::retranslateUi()
+void UIGuestProcessControlWidget::sltRetranslateUI()
 {
     if (m_pTreeWidget)
     {
