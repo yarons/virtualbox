@@ -1,4 +1,4 @@
-/* $Id: RTFileDelete-r3-nt.cpp 104284 2024-04-11 00:04:48Z knut.osmundsen@oracle.com $ */
+/* $Id: RTFileDelete-r3-nt.cpp 104285 2024-04-11 00:06:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - RTFileDelete, Native NT.
  */
@@ -104,10 +104,10 @@ RTDECL(int) RTFileDelete(const char *pszFilename)
              *
              * To delete symbolic links, use RTSymlinkDelete.
              *
-             * Alternative: We could model this on linux instead, and also allow
+             * Alternative: We could model this on linux instead and also allow
              * this function unlink symlinks, mount points and global reparse stuff,
              * but fail on any other reparse point.  This would make the APIs work
-             * more or less the same accross the platforms.  (Code is #if 0'ed below.)
+             * more or less the same across the platforms.  (Code is #if 0'ed below.)
              *
              * See @bugref{10632}.
              */
