@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImpl-arm64.S 104300 2024-04-11 21:04:40Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllAImpl-arm64.S 104301 2024-04-11 21:14:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, ARM64 variant.
  */
@@ -722,14 +722,11 @@ BEGINPROC_HIDDEN \a_Name
          */
 .ifne \a_cBits < 32
         and     w2, w2, #(\a_cBits - 1)
-        neg     w3, w2
-        and     w3, w3, #(\a_cBits - 1)
+        neg     w3, w2                          /* the count is MODed by the data size, so this is safe. */
         ldr\a_LdStSuff  w8, [x1]
-        lslv    w9, w8, w2
-        lsrv    w10, w8, w3
-        orr     w9, w9, w10
+        orr     w8, w8, w8, LSL #(32 - \a_cBits) /* place a copy of the value at the top of the register, ready to be roated in */
+        rorv    w9, w8, w2
         str\a_LdStSuff  w9, [x1]
-        and     w9, w9, #(RT_BIT_32(\a_cBits) - 1)
 .else
         neg     w3, w2                          /* the count is MODed by the data size, so this is safe. */
         ldr\a_LdStSuff  w8, [x1]
