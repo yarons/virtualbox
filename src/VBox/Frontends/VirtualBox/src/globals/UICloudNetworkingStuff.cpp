@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UICloudNetworkingStuff.cpp 104291 2024-04-11 09:40:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -24,6 +24,9 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+/* Qt includes: */
+#include <QVariant>
 
 /* GUI includes: */
 #include "UICloudNetworkingStuff.h"
