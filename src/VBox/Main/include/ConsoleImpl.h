@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 101477 2023-10-17 12:09:33Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImpl.h 104286 2024-04-11 01:56:27Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -1012,15 +1012,19 @@ private:
 #ifdef VBOX_WITH_FULL_VM_ENCRYPTION
     /** @name Encrypted log interface
      * @{ */
-    static DECLCALLBACK(int)    i_logEncryptedOpen(PCRTLOGOUTPUTIF pIf, void *pvUser, const char *pszFilename, uint32_t fFlags);
+    static DECLCALLBACK(int)    i_logEncryptedDirCtxOpen(PCRTLOGOUTPUTIF pIf, void *pvUser, const char *pszFilename, void **pvDirCtx);
+    static DECLCALLBACK(int)    i_logEncryptedDirCtxClose(PCRTLOGOUTPUTIF pIf, void *pvUser, void *pvDirCtx);
+    static DECLCALLBACK(int)    i_logEncryptedDelete(PCRTLOGOUTPUTIF pIf, void *pvUser, void *pvDirCtx, const char *pszFilename);
+    static DECLCALLBACK(int)    i_logEncryptedRename(PCRTLOGOUTPUTIF pIf, void *pvUser, void *pvDirCtx,
+                                                     const char *pszFilenameOld, const char *pszFilenameNew, uint32_t fFlags);
+    static DECLCALLBACK(int)    i_logEncryptedOpen(PCRTLOGOUTPUTIF pIf, void *pvUser, void *pvDirCtx, const char *pszFilename, uint32_t fFlags);
     static DECLCALLBACK(int)    i_logEncryptedClose(PCRTLOGOUTPUTIF pIf, void *pvUser);
-    static DECLCALLBACK(int)    i_logEncryptedDelete(PCRTLOGOUTPUTIF pIf, void *pvUser, const char *pszFilename);
-    static DECLCALLBACK(int)    i_logEncryptedRename(PCRTLOGOUTPUTIF pIf, void *pvUser, const char *pszFilenameOld,
-                                                     const char *pszFilenameNew, uint32_t fFlags);
     static DECLCALLBACK(int)    i_logEncryptedQuerySize(PCRTLOGOUTPUTIF pIf, void *pvUser, uint64_t *pcbSize);
     static DECLCALLBACK(int)    i_logEncryptedWrite(PCRTLOGOUTPUTIF pIf, void *pvUser, const void *pvBuf,
                                                     size_t cbWrite, size_t *pcbWritten);
     static DECLCALLBACK(int)    i_logEncryptedFlush(PCRTLOGOUTPUTIF pIf, void *pvUser);
+    /** The logging output interface for encrypted logs. */
+    static RTLOGOUTPUTIF const  s_ConsoleEncryptedLogOutputIf;
     /** @} */
 #endif
 
@@ -1214,8 +1218,6 @@ private:
     bool                                m_fEncryptedLog;
     /** The file handle of the encrypted log. */
     RTVFSFILE                           m_hVfsFileLog;
-    /** The logging output interface for encrypted logs. */
-    RTLOGOUTPUTIF                       m_LogOutputIf;
     /** The log file key ID. */
     Utf8Str                             m_strLogKeyId;
     /** The log file key store. */
