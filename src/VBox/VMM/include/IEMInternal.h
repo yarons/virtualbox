@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104298 2024-04-11 17:48:34Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104321 2024-04-12 15:08:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -919,16 +919,16 @@ typedef struct IEMTHRDEDCALLENTRY
 {
     /** The function to call (IEMTHREADEDFUNCS). */
     uint16_t    enmFunction;
+
     /** Instruction number in the TB (for statistics). */
     uint8_t     idxInstr;
-    uint8_t     uUnused0;
-
-    /** Offset into IEMTB::pabOpcodes. */
-    uint16_t    offOpcode;
     /** The opcode length. */
     uint8_t     cbOpcode;
-    /** Index in to IEMTB::aRanges. */
-    uint8_t     idxRange;
+    /** Offset into IEMTB::pabOpcodes. */
+    uint16_t    offOpcode;
+
+    /** Unused atm. */
+    uint16_t    uUnused0;
 
     /** Generic parameters. */
     uint64_t    auParams[3];

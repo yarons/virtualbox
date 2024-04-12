@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdTables.h 104018 2024-03-24 00:14:18Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdTables.h 104321 2024-04-12 15:08:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation, Instruction Tables.
  */
@@ -230,10 +230,9 @@
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
         pCall->idxInstr    = idxInstrMc2; \
-        pCall->uUnused0    = 0; \
-        pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
-        pCall->idxRange    = idxRangeMc2; \
+        pCall->offOpcode   = offOpcodeMc2; \
+        pCall->uUnused0    = 0; \
         pCall->auParams[0] = 0; \
         pCall->auParams[1] = 0; \
         pCall->auParams[2] = 0; \
@@ -246,10 +245,9 @@
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
         pCall->idxInstr    = idxInstrMc2; \
-        pCall->uUnused0    = 0; \
-        pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
-        pCall->idxRange    = idxRangeMc2; \
+        pCall->offOpcode   = offOpcodeMc2; \
+        pCall->uUnused0    = 0; \
         pCall->auParams[0] = a_uArg0; \
         pCall->auParams[1] = 0; \
         pCall->auParams[2] = 0; \
@@ -263,10 +261,9 @@
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
         pCall->idxInstr    = idxInstrMc2; \
-        pCall->uUnused0    = 0; \
-        pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
-        pCall->idxRange    = idxRangeMc2; \
+        pCall->offOpcode   = offOpcodeMc2; \
+        pCall->uUnused0    = 0; \
         pCall->auParams[0] = a_uArg0; \
         pCall->auParams[1] = a_uArg1; \
         pCall->auParams[2] = 0; \
@@ -281,10 +278,9 @@
         PIEMTHRDEDCALLENTRY const pCall = &pTb->Thrd.paCalls[pTb->Thrd.cCalls++]; \
         pCall->enmFunction = a_enmFunction; \
         pCall->idxInstr    = idxInstrMc2; \
-        pCall->uUnused0    = 0; \
         pCall->offOpcode   = offOpcodeMc2; \
         pCall->cbOpcode    = cbInstrMc2; \
-        pCall->idxRange    = idxRangeMc2; \
+        pCall->uUnused0    = 0; \
         pCall->auParams[0] = a_uArg0; \
         pCall->auParams[1] = a_uArg1; \
         pCall->auParams[2] = a_uArg2; \

@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veEmit-x86.h 104315 2024-04-12 13:34:10Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veEmit-x86.h 104321 2024-04-12 15:08:36Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, x86 Target - Code Emitters.
  */
@@ -2250,6 +2250,6 @@ IEMNATIVE_NATIVE_EMIT_ADD_SUB_U128(paddq, false /*a_fSub*/, kArmv8VecInstrArithS
 //IEMNATIVE_NATIVE_EMIT_ADD_SUB_U128(psubd, true  /*a_fSub*/, kArmv8VecInstrArithSz_32, 0xfa);
 //IEMNATIVE_NATIVE_EMIT_ADD_SUB_U128(psubq, true  /*a_fSub*/, kArmv8VecInstrArithSz_64, 0xfb);
 
-#endif
+#endif /* IEMNATIVE_WITH_SIMD_REG_ALLOCATOR */
 
 #endif /* !VMM_INCLUDED_SRC_VMMAll_target_x86_IEMAllN8veEmit_x86_h */
