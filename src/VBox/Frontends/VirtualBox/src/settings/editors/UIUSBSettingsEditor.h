@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class declaration.
  */
@@ -90,12 +90,10 @@ public:
         void setUsbFiltersOptionAvailable(bool fAvailable);
     /** @} */
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
     /** Handles feature toggling. */
     void sltHandleFeatureToggled();

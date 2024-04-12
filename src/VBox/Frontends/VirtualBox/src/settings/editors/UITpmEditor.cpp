@@ -1,4 +1,4 @@
-/* $Id: UITpmEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UITpmEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITpmEditor class implementation.
  */
@@ -76,7 +76,7 @@ void UITpmEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UITpmEditor::retranslateUi()
+void UITpmEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("&TPM:"));
@@ -141,7 +141,7 @@ void UITpmEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UITpmEditor::populateCombo()
@@ -173,6 +173,6 @@ void UITpmEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

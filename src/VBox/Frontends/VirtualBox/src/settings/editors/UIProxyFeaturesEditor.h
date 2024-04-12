@@ -1,4 +1,4 @@
-/* $Id: UIProxyFeaturesEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIProxyFeaturesEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProxyFeaturesEditor class declaration.
  */
@@ -71,12 +71,10 @@ public:
     /** Returns proxy host. */
     QString proxyHost() const;
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
     /** Handles proxy mode change. */
     void sltHandleProxyModeChanged();

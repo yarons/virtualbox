@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIFontScaleEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class declaration.
  */
@@ -63,11 +63,6 @@ public:
     void setFontScaleFactor(int iFontScaleFactor);
     int fontScaleFactor() const;
 
-protected:
-
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
 
     /** @name Internal slots handling respective widget's value update.
@@ -76,6 +71,9 @@ private slots:
         void sltScaleSliderValueChanged(int iValue);
         void sltMonitorComboIndexChanged(int iIndex);
     /** @} */
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

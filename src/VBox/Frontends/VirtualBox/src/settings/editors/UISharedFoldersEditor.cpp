@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UISharedFoldersEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QHeaderView>
 #include <QMenu>
 #include <QRegularExpression>
@@ -341,7 +342,7 @@ void UISharedFoldersEditor::setFoldersAvailable(UISharedFolderType enmType, bool
     updateRootItemsVisibility();
 }
 
-void UISharedFoldersEditor::retranslateUi()
+void UISharedFoldersEditor::sltRetranslateUI()
 {
     /* Translate tree-widget: */
     if (m_pTreeWidget)
@@ -627,7 +628,7 @@ void UISharedFoldersEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UISharedFoldersEditor::prepareWidgets()

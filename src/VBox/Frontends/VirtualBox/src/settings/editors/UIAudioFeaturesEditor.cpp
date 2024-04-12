@@ -1,4 +1,4 @@
-/* $Id: UIAudioFeaturesEditor.cpp 101498 2023-10-18 12:21:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioFeaturesEditor class implementation.
  */
@@ -94,7 +94,7 @@ void UIAudioFeaturesEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIAudioFeaturesEditor::retranslateUi()
+void UIAudioFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Extended Features:"));
@@ -139,5 +139,5 @@ void UIAudioFeaturesEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

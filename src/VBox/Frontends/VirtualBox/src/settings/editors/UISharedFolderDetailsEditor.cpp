@@ -1,4 +1,4 @@
-/* $Id: UISharedFolderDetailsEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFolderDetailsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFolderDetailsEditor class implementation.
  */
@@ -43,7 +43,7 @@ UISharedFolderDetailsEditor::UISharedFolderDetailsEditor(EditorType enmType,
                                                          bool fUsePermanent,
                                                          const QStringList &usedNames,
                                                          QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI2<QIDialog>(pParent)
+    : QIDialog(pParent)
     , m_enmType(enmType)
     , m_fUsePermanent(fUsePermanent)
     , m_usedNames(usedNames)
@@ -127,7 +127,7 @@ bool UISharedFolderDetailsEditor::isPermanent() const
     return m_fUsePermanent ? m_pCheckBoxPermanent->isChecked() : true;
 }
 
-void UISharedFolderDetailsEditor::retranslateUi()
+void UISharedFolderDetailsEditor::sltRetranslateUI()
 {
     switch (m_enmType)
     {
@@ -232,7 +232,7 @@ void UISharedFolderDetailsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Validate the initial field values: */
     sltValidate();

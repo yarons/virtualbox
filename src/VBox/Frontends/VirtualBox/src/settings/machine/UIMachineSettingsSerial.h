@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 101607 2023-10-26 14:14:46Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSerial.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -81,9 +81,6 @@ protected:
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
 
@@ -93,6 +90,8 @@ private slots:
     void sltHandlePortChange();
     /** Handles path change. */
     void sltHandlePathChange();
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

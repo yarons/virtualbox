@@ -1,4 +1,4 @@
-/* $Id: UIPointingHIDEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIPointingHIDEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPointingHIDEditor class implementation.
  */
@@ -76,7 +76,7 @@ void UIPointingHIDEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIPointingHIDEditor::retranslateUi()
+void UIPointingHIDEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("&Pointing Device:"));
@@ -137,7 +137,7 @@ void UIPointingHIDEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIPointingHIDEditor::populateCombo()
@@ -166,6 +166,6 @@ void UIPointingHIDEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

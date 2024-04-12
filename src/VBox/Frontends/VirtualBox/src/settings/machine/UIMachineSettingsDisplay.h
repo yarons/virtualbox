@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -101,9 +101,6 @@ protected:
     /** Defines TAB order for passed @a pWidget. */
     virtual void setOrderAfter(QWidget *pWidget) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
@@ -120,6 +117,8 @@ private slots:
     /** Handles 3D Acceleration feature state change. */
     void sltHandle3DAccelerationFeatureStateChange();
 #endif
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

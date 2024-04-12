@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -180,7 +180,7 @@ bool UIGlobalSettingsGeneral::validate(QList<UIValidationMessage> &messages)
     return fPass;
 }
 
-void UIGlobalSettingsGeneral::retranslateUi()
+void UIGlobalSettingsGeneral::sltRetranslateUI()
 {
     updateMinimumLayoutHint();
 }
@@ -200,7 +200,7 @@ void UIGlobalSettingsGeneral::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIGlobalSettingsGeneral::prepareWidgets()

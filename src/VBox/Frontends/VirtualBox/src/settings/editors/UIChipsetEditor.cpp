@@ -1,4 +1,4 @@
-/* $Id: UIChipsetEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIChipsetEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChipsetEditor class implementation.
  */
@@ -76,7 +76,7 @@ void UIChipsetEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIChipsetEditor::retranslateUi()
+void UIChipsetEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("&Chipset:"));
@@ -143,7 +143,7 @@ void UIChipsetEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIChipsetEditor::populateCombo()
@@ -175,6 +175,6 @@ void UIChipsetEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

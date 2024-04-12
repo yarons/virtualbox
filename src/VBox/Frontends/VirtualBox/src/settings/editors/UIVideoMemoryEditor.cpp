@@ -1,4 +1,4 @@
-/* $Id: UIVideoMemoryEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIVideoMemoryEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class implementation.
  */
@@ -167,7 +167,7 @@ void UIVideoMemoryEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIVideoMemoryEditor::retranslateUi()
+void UIVideoMemoryEditor::sltRetranslateUI()
 {
     if (m_pLabelMemory)
         m_pLabelMemory->setText(tr("Video &Memory:"));
@@ -309,7 +309,7 @@ void UIVideoMemoryEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIVideoMemoryEditor::updateRequirements()

@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialogSpecific.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialogSpecific.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialogSpecific class declaration.
  */
@@ -58,9 +58,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Loads the dialog data. */
     virtual bool load() RT_OVERRIDE;
     /** Saves the dialog data. */
@@ -70,6 +67,11 @@ protected:
     virtual QString titleExtension() const RT_OVERRIDE;
     /** Returns the dialog title. */
     virtual QString title() const RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 
@@ -109,9 +111,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Loads the dialog data. */
     virtual bool load() RT_OVERRIDE;
     /** Saves the dialog data. */
@@ -141,6 +140,8 @@ private slots:
     void sltMachineStateChanged(const QUuid &uMachineId, const KMachineState enmMachineState);
     /** Handles machine data change for machine with certain @a uMachineId. */
     void sltMachineDataChanged(const QUuid &uMachineId);
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

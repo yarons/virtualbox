@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.h 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class declaration.
  */
@@ -64,10 +64,10 @@ public:
     /** Defines minimum layout @a iIndent. */
     void setMinimumLayoutIndent(int iIndent);
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

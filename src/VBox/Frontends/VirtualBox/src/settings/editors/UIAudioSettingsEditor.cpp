@@ -1,4 +1,4 @@
-/* $Id: UIAudioSettingsEditor.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIAudioSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAudioSettingsEditor class implementation.
  */
@@ -132,7 +132,7 @@ void UIAudioSettingsEditor::setFeatureOptionsAvailable(bool fAvailable)
         m_pEditorAudioFeatures->setEnabled(fAvailable);
 }
 
-void UIAudioSettingsEditor::retranslateUi()
+void UIAudioSettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckboxFeature)
     {
@@ -165,7 +165,7 @@ void UIAudioSettingsEditor::prepare()
     updateFeatureAvailability();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIAudioSettingsEditor::prepareWidgets()

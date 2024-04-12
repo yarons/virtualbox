@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -861,7 +861,7 @@ QString UIShortcutConfigurationEditor::tabNameRuntime() const
     return m_pTabWidget->tabText(TableIndex_Runtime);
 }
 
-void UIShortcutConfigurationEditor::retranslateUi()
+void UIShortcutConfigurationEditor::sltRetranslateUI()
 {
     m_pTabWidget->setTabText(TableIndex_Manager, tr("&VirtualBox Manager"));
     m_pTabWidget->setTabText(TableIndex_Runtime, tr("Virtual &Machine"));
@@ -878,7 +878,7 @@ void UIShortcutConfigurationEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIShortcutConfigurationEditor::prepareWidgets()

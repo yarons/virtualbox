@@ -1,4 +1,4 @@
-/* $Id: UISnapshotFolderEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UISnapshotFolderEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotFolderEditor class implementation.
  */
@@ -87,7 +87,7 @@ void UISnapshotFolderEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UISnapshotFolderEditor::retranslateUi()
+void UISnapshotFolderEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("S&napshot Folder:"));
@@ -124,5 +124,5 @@ void UISnapshotFolderEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

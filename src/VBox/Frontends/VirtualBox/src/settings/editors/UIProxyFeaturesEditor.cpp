@@ -1,4 +1,4 @@
-/* $Id: UIProxyFeaturesEditor.cpp 102036 2023-11-09 13:50:03Z sergey.dubov@oracle.com $ */
+/* $Id: UIProxyFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProxyFeaturesEditor class implementation.
  */
@@ -109,7 +109,7 @@ QString UIProxyFeaturesEditor::proxyHost() const
     return m_pEditorHost ? m_pEditorHost->text() : m_strProxyHost;
 }
 
-void UIProxyFeaturesEditor::retranslateUi()
+void UIProxyFeaturesEditor::sltRetranslateUI()
 {
     /* Translate proxy mode editor: */
     if (m_pRadioButtonProxyAuto)
@@ -232,5 +232,5 @@ void UIProxyFeaturesEditor::prepare()
             this, &UIProxyFeaturesEditor::sigProxyHostChanged);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

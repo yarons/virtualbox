@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -277,7 +277,7 @@ void UIMachineSettingsNetwork::getFromCache()
         getFromCache(iSlot, m_pCache->child(iSlot));
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 
     /* Polish page finally: */
     polishPage();
@@ -334,7 +334,7 @@ bool UIMachineSettingsNetwork::validate(QList<UIValidationMessage> &messages)
     return fValid;
 }
 
-void UIMachineSettingsNetwork::retranslateUi()
+void UIMachineSettingsNetwork::sltRetranslateUI()
 {
     /* Sanity check: */
     if (!m_pTabWidget)
@@ -433,7 +433,7 @@ void UIMachineSettingsNetwork::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsNetwork::prepareWidgets()

@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHotKeyEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
@@ -33,10 +33,11 @@
 #include <QStyle>
 
 /* GUI includes; */
+#include "QIToolButton.h"
 #include "UIHostComboEditor.h"
 #include "UIHotKeyEditor.h"
 #include "UIIconPool.h"
-#include "QIToolButton.h"
+#include "UITranslationEventListener.h"
 
 
 /** QLineEdit extension representing hot-key editor. */
@@ -126,7 +127,7 @@ bool UIHotKeyLineEdit::isKeyEventIgnored(QKeyEvent *pEvent)
 *********************************************************************************************************************************/
 
 UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_fIsModifiersAllowed(false)
     , m_pMainLayout(new QHBoxLayout(this))
     , m_pButtonLayout(new QHBoxLayout)
@@ -170,7 +171,9 @@ UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     connect(m_pClearButton, &QToolButton::clicked, this, &UIHotKeyEditor::sltClear);
 
     /* Translate finally: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIHotKeyEditor::sltRetranslateUI);
 }
 
 void UIHotKeyEditor::sltReset()
@@ -236,7 +239,7 @@ bool UIHotKeyEditor::eventFilter(QObject *pWatched, QEvent *pEvent)
     return true;
 }
 
-void UIHotKeyEditor::retranslateUi()
+void UIHotKeyEditor::sltRetranslateUI()
 {
     m_pResetButton->setToolTip(tr("Reset shortcut to default"));
     m_pClearButton->setToolTip(tr("Unset shortcut"));

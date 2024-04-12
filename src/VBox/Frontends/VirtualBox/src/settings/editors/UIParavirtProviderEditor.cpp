@@ -1,4 +1,4 @@
-/* $Id: UIParavirtProviderEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIParavirtProviderEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIParavirtProviderEditor class implementation.
  */
@@ -76,7 +76,7 @@ void UIParavirtProviderEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIParavirtProviderEditor::retranslateUi()
+void UIParavirtProviderEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("&Paravirtualization Interface:"));
@@ -140,7 +140,7 @@ void UIParavirtProviderEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIParavirtProviderEditor::populateCombo()
@@ -172,6 +172,6 @@ void UIParavirtProviderEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

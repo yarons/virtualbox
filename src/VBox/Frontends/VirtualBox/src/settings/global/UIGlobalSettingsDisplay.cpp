@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -189,7 +189,7 @@ void UIGlobalSettingsDisplay::saveFromCacheTo(QVariant &data)
     UISettingsPageGlobal::uploadData(data);
 }
 
-void UIGlobalSettingsDisplay::retranslateUi()
+void UIGlobalSettingsDisplay::sltRetranslateUI()
 {
     updateMinimumLayoutHint();
 }
@@ -209,7 +209,7 @@ void UIGlobalSettingsDisplay::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIGlobalSettingsDisplay::prepareWidgets()

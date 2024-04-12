@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 103610 2024-02-29 09:35:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsGeneral.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -74,11 +74,13 @@ protected:
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

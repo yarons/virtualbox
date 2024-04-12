@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 101752 2023-11-03 15:56:43Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -85,9 +85,6 @@ protected:
     /** Defines TAB order for passed @a pWidget. */
     virtual void setOrderAfter(QWidget *pWidget) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
@@ -100,6 +97,8 @@ private slots:
     void sltHandleEncryptionCipherChanged();
     /** Handles encryption password change. */
     void sltHandleEncryptionPasswordChanged();
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

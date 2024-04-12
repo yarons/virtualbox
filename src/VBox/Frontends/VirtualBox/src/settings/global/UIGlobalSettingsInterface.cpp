@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -144,7 +144,7 @@ void UIGlobalSettingsInterface::saveFromCacheTo(QVariant &data)
     UISettingsPageGlobal::uploadData(data);
 }
 
-void UIGlobalSettingsInterface::retranslateUi()
+void UIGlobalSettingsInterface::sltRetranslateUI()
 {
 }
 
@@ -158,7 +158,7 @@ void UIGlobalSettingsInterface::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIGlobalSettingsInterface::prepareWidgets()

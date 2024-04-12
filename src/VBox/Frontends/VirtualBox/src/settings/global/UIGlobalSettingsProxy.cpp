@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsProxy.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -206,7 +206,7 @@ bool UIGlobalSettingsProxy::validate(QList<UIValidationMessage> &messages)
     return fPass;
 }
 
-void UIGlobalSettingsProxy::retranslateUi()
+void UIGlobalSettingsProxy::sltRetranslateUI()
 {
 }
 
@@ -220,7 +220,7 @@ void UIGlobalSettingsProxy::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIGlobalSettingsProxy::prepareWidgets()

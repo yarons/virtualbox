@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 101053 2023-09-07 13:50:15Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsLanguage.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -70,8 +70,9 @@ protected:
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
     virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
+private slots:
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

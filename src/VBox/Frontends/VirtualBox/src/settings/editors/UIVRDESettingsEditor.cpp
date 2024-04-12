@@ -1,4 +1,4 @@
-/* $Id: UIVRDESettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIVRDESettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVRDESettingsEditor class implementation.
  */
@@ -151,7 +151,7 @@ bool UIVRDESettingsEditor::isMultipleConnectionsAllowed() const
     return m_pCheckboxMultipleConnections ? m_pCheckboxMultipleConnections->isChecked() : m_fMultipleConnectionsAllowed;
 }
 
-void UIVRDESettingsEditor::retranslateUi()
+void UIVRDESettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckboxFeature)
     {
@@ -211,7 +211,7 @@ void UIVRDESettingsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIVRDESettingsEditor::prepareWidgets()

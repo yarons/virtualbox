@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.cpp 102037 2023-11-09 14:04:36Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class implementation.
  */
@@ -66,7 +66,7 @@ VBoxUpdateData UIUpdateSettingsEditor::value() const
     return VBoxUpdateData(isCheckEnabled(), updatePeriod(), updateChannel());
 }
 
-void UIUpdateSettingsEditor::retranslateUi()
+void UIUpdateSettingsEditor::sltRetranslateUI()
 {
     /* Translate check-box: */
     if (m_pCheckBox)
@@ -159,7 +159,7 @@ void UIUpdateSettingsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIUpdateSettingsEditor::prepareWidgets()

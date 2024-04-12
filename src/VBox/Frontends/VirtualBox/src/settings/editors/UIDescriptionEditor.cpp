@@ -1,4 +1,4 @@
-/* $Id: UIDescriptionEditor.cpp 102164 2023-11-20 17:56:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIDescriptionEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDescriptionEditor class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QTextEdit>
 #include <QVBoxLayout>
 
@@ -57,7 +58,7 @@ QString UIDescriptionEditor::value() const
     return m_pTextEdit ? m_pTextEdit->toPlainText() : m_strValue;
 }
 
-void UIDescriptionEditor::retranslateUi()
+void UIDescriptionEditor::sltRetranslateUI()
 {
     if (m_pTextEdit)
     {
@@ -108,5 +109,5 @@ void UIDescriptionEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

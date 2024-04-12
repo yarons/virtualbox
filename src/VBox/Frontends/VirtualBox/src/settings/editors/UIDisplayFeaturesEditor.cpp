@@ -1,4 +1,4 @@
-/* $Id: UIDisplayFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDisplayFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDisplayFeaturesEditor class implementation.
  */
@@ -97,7 +97,7 @@ void UIDisplayFeaturesEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIDisplayFeaturesEditor::retranslateUi()
+void UIDisplayFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Extended Features:"));
@@ -149,5 +149,5 @@ void UIDisplayFeaturesEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

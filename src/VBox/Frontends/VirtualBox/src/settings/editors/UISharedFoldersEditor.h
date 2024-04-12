@@ -1,4 +1,4 @@
-/* $Id: UISharedFoldersEditor.h 101075 2023-09-08 16:00:30Z sergey.dubov@oracle.com $ */
+/* $Id: UISharedFoldersEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISharedFoldersEditor class declaration.
  */
@@ -110,9 +110,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles show @a pEvent. */
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
@@ -120,6 +117,9 @@ protected:
     virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
 private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
     /** Performs request to adjust tree. */
     void sltAdjustTree();

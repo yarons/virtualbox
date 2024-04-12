@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolbarSettingsEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMiniToolbarSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMiniToolbarSettingsEditor class implementation.
  */
@@ -94,7 +94,7 @@ void UIMiniToolbarSettingsEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIMiniToolbarSettingsEditor::retranslateUi()
+void UIMiniToolbarSettingsEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Mini ToolBar:"));
@@ -147,5 +147,5 @@ void UIMiniToolbarSettingsEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

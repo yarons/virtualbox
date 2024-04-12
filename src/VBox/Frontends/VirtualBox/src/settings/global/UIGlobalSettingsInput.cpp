@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -36,7 +36,6 @@
 #include "UIShortcutConfigurationEditor.h"
 #include "UIShortcutPool.h"
 #include "UITranslator.h"
-
 
 /** Global settings: Input page data structure. */
 struct UIDataSettingsGlobalInput
@@ -203,7 +202,7 @@ bool UIGlobalSettingsInput::validate(QList<UIValidationMessage> &messages)
     return fPass;
 }
 
-void UIGlobalSettingsInput::retranslateUi()
+void UIGlobalSettingsInput::sltRetranslateUI()
 {
 }
 
@@ -217,7 +216,7 @@ void UIGlobalSettingsInput::prepare()
     prepareWidgets();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIGlobalSettingsInput::prepareWidgets()

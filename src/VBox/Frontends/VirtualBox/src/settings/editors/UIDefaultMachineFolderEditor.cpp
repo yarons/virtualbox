@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefaultMachineFolderEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class implementation.
  */
@@ -73,7 +73,7 @@ void UIDefaultMachineFolderEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIDefaultMachineFolderEditor::retranslateUi()
+void UIDefaultMachineFolderEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Default &Machine Folder:"));
@@ -114,5 +114,5 @@ void UIDefaultMachineFolderEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

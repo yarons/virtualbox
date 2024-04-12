@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsDisplay.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -751,7 +751,7 @@ void UIMachineSettingsDisplay::setOrderAfter(QWidget *pWidget)
     setTabOrder(m_pEditorVRDESettings, m_pEditorRecordingSettings);
 }
 
-void UIMachineSettingsDisplay::retranslateUi()
+void UIMachineSettingsDisplay::sltRetranslateUI()
 {
     /* Translate tab-widget: */
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabScreen), tr("&Screen"));
@@ -843,7 +843,7 @@ void UIMachineSettingsDisplay::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsDisplay::prepareWidgets()

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 103906 2024-03-18 18:37:37Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -273,7 +273,7 @@ int UINameAndSystemEditor::firstColumnWidth() const
     return iWidth;
 }
 
-void UINameAndSystemEditor::retranslateUi()
+void UINameAndSystemEditor::sltRetranslateUI()
 {
     if (m_pLabelName)
         m_pLabelName->setText(tr("&Name:"));
@@ -404,7 +404,7 @@ void UINameAndSystemEditor::prepare()
 {
     prepareWidgets();
     prepareConnections();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UINameAndSystemEditor::prepareWidgets()

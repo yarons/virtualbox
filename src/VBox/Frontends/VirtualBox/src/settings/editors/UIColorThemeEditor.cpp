@@ -1,4 +1,4 @@
-/* $Id: UIColorThemeEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIColorThemeEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIColorThemeEditor class implementation.
  */
@@ -61,7 +61,7 @@ UIColorThemeType UIColorThemeEditor::value() const
     return m_pCombo ? m_pCombo->currentData().value<UIColorThemeType>() : m_enmValue;
 }
 
-void UIColorThemeEditor::retranslateUi()
+void UIColorThemeEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Color &Theme:"));
@@ -116,7 +116,7 @@ void UIColorThemeEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIColorThemeEditor::populateCombo()
@@ -142,6 +142,6 @@ void UIColorThemeEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

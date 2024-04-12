@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -222,9 +222,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles show @a pEvent. */
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
@@ -233,6 +230,8 @@ protected:
 
 private slots:
 
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
     /** Handles enumeration of medium with @a uMediumId. */
     void sltHandleMediumEnumerated(const QUuid &uMediumId);
     /** Handles removing of medium with @a uMediumId. */

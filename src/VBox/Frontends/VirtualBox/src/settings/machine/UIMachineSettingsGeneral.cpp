@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsGeneral.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -458,7 +458,7 @@ void UIMachineSettingsGeneral::setOrderAfter(QWidget *pWidget)
         setTabOrder(m_pEditorDragAndDrop, m_pEditorDescription);
 }
 
-void UIMachineSettingsGeneral::retranslateUi()
+void UIMachineSettingsGeneral::sltRetranslateUI()
 {
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabBasic), tr("Basi&c"));
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabAdvanced), tr("A&dvanced"));
@@ -524,7 +524,7 @@ void UIMachineSettingsGeneral::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsGeneral::prepareWidgets()

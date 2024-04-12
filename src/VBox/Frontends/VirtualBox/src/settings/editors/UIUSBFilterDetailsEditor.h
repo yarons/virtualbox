@@ -1,4 +1,4 @@
-/* $Id: UIUSBFilterDetailsEditor.h 99178 2023-03-24 15:54:10Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFilterDetailsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFilterDetailsEditor class declaration.
  */
@@ -32,7 +32,6 @@
 #endif
 
 #include "QIDialog.h"
-#include "QIWithRetranslateUI.h"
 #include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
@@ -42,7 +41,7 @@ class QIDialogButtonBox;
 class QILineEdit;
 
 /** QIDialog subclass used as a USB filter editor. */
-class SHARED_LIBRARY_STUFF UIUSBFilterDetailsEditor : public QIWithRetranslateUI2<QIDialog>
+class SHARED_LIBRARY_STUFF UIUSBFilterDetailsEditor : public QIDialog
 {
     Q_OBJECT;
 
@@ -96,12 +95,10 @@ public:
     /** Returns port. */
     UIRemoteMode remoteMode() const;
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
+    void sltRetranslateUI();
 
     /** Performs validation for connected sender. */
     void sltRevalidate();

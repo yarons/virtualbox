@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsAudio.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -188,7 +188,7 @@ void UIMachineSettingsAudio::saveFromCacheTo(QVariant &data)
     UISettingsPageMachine::uploadData(data);
 }
 
-void UIMachineSettingsAudio::retranslateUi()
+void UIMachineSettingsAudio::sltRetranslateUI()
 {
 }
 
@@ -215,7 +215,7 @@ void UIMachineSettingsAudio::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsAudio::prepareWidgets()

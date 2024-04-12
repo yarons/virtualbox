@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class implementation.
  */
@@ -197,7 +197,7 @@ QStringList UINetworkAttachmentEditor::hostOnlyNetworks()
 }
 #endif /* VBOX_WITH_VMNET */
 
-void UINetworkAttachmentEditor::retranslateUi()
+void UINetworkAttachmentEditor::sltRetranslateUI()
 {
     /* Translate type label: */
     if (m_pLabelType)
@@ -346,7 +346,7 @@ void UINetworkAttachmentEditor::prepare()
     populateTypeCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UINetworkAttachmentEditor::populateTypeCombo()

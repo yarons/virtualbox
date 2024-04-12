@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 102526 2023-12-07 15:19:36Z sergey.dubov@oracle.com $ */
+/* $Id: UISettingsPage.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -26,8 +26,11 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QLabel>
 #include <QPainter>
+#include <QPainterPath>
+#include <QPaintEvent>
 #include <QStyle>
 #include <QVariant>
 #include <QVBoxLayout>
@@ -185,7 +188,7 @@ void UISettingsPageFrame::setName(const QString &strName)
         m_pLabelName->setText(m_strName);
 }
 
-void UISettingsPageFrame::retranslateUi()
+void UISettingsPageFrame::sltRetranslateUI()
 {
     // No NLS tags for now; We are receiving our name through the getter.
 }

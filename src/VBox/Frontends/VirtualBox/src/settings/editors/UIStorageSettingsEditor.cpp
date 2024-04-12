@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -28,6 +28,7 @@
 /* Qt includes: */
 #include <QAction>
 #include <QAbstractItemModel>
+#include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QCommonStyle>
@@ -3235,7 +3236,7 @@ void UIStorageSettingsEditor::getValue(QList<UIDataStorageController> &controlle
     }
 }
 
-void UIStorageSettingsEditor::retranslateUi()
+void UIStorageSettingsEditor::sltRetranslateUI()
 {
     m_pLabelSeparatorLeftPane->setText(tr("&Devices"));
     m_pLabelSeparatorEmpty->setText(tr("Information"));
@@ -4457,7 +4458,7 @@ void UIStorageSettingsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIStorageSettingsEditor::prepareWidgets()

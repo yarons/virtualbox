@@ -1,4 +1,4 @@
-/* $Id: UIAccelerationFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIAccelerationFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAccelerationFeaturesEditor class implementation.
  */
@@ -79,7 +79,7 @@ void UIAccelerationFeaturesEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIAccelerationFeaturesEditor::retranslateUi()
+void UIAccelerationFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Hardware Virtualization:"));
@@ -119,5 +119,5 @@ void UIAccelerationFeaturesEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

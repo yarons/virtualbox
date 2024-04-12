@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UIHotKeyEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class declaration.
  */
@@ -37,7 +37,6 @@
 #include <QWidget>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -108,7 +107,7 @@ Q_DECLARE_METATYPE(UIHotKey);
 
 
 /** QWidget subclass wrapping real hot-key editor. */
-class SHARED_LIBRARY_STUFF UIHotKeyEditor : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIHotKeyEditor : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(UIHotKey hotKey READ hotKey WRITE setHotKey USER true);
@@ -135,13 +134,15 @@ protected:
     /** Preprocesses any Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles key-press @a pEvent. */
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     /** Handles key-release @a pEvent. */
     virtual void keyReleaseEvent(QKeyEvent *pEvent) RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualCPUEditor.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualCPUEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualCPUEditor class implementation.
  */
@@ -80,7 +80,7 @@ void UIVirtualCPUEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIVirtualCPUEditor::retranslateUi()
+void UIVirtualCPUEditor::sltRetranslateUI()
 {
     if (m_pLabelVCPU)
         m_pLabelVCPU->setText(tr("&Processors:"));
@@ -220,5 +220,5 @@ void UIVirtualCPUEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

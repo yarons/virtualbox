@@ -1,4 +1,4 @@
-/* $Id: UIUpdateSettingsEditor.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIUpdateSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUpdateSettingsEditor class declaration.
  */
@@ -62,9 +62,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
@@ -74,6 +71,8 @@ private slots:
     void sltHandleUpdateToggle(bool fEnabled);
     /** Handles update period change. */
     void sltHandleUpdatePeriodChange();
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

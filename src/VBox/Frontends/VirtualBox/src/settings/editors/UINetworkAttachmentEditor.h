@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINetworkAttachmentEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -101,14 +101,13 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
 private slots:
 
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
     /** Handles current type change. */
     void sltHandleCurrentTypeChanged();
     /** Handles current name change. */

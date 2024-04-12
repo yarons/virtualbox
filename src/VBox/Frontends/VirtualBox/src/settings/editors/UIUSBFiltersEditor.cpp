@@ -1,4 +1,4 @@
-/* $Id: UIUSBFiltersEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBFiltersEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBFiltersEditor class implementation.
  */
@@ -26,7 +26,9 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QHeaderView>
+#include <QHelpEvent>
 #include <QMenu>
 #include <QRegularExpression>
 #include <QToolTip>
@@ -262,7 +264,7 @@ QList<UIDataUSBFilter> UIUSBFiltersEditor::value() const
     return result;
 }
 
-void UIUSBFiltersEditor::retranslateUi()
+void UIUSBFiltersEditor::sltRetranslateUI()
 {
     /* Tags: */
     m_strTrUSBFilterName = tr("New Filter %1", "usb");
@@ -519,7 +521,7 @@ void UIUSBFiltersEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIUSBFiltersEditor::prepareWidgets()

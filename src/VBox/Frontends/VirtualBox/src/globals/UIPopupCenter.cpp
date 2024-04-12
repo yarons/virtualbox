@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIPopupCenter.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -24,6 +24,9 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+/* Qt includes: */
+#include <QApplication>
 
 /* GUI includes: */
 #include "QIMessageBox.h"

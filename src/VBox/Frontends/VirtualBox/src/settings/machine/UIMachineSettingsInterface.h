@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -75,14 +75,16 @@ protected:
       * @note  This task WILL be performed in other than the GUI thread, no widget interactions! */
     virtual void saveFromCacheTo(QVariant &data) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

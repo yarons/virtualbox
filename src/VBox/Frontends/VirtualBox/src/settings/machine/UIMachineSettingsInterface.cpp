@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 103552 2024-02-23 16:31:29Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsInterface.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -332,7 +332,7 @@ void UIMachineSettingsInterface::saveFromCacheTo(QVariant &data)
     UISettingsPageMachine::uploadData(data);
 }
 
-void UIMachineSettingsInterface::retranslateUi()
+void UIMachineSettingsInterface::sltRetranslateUI()
 {
     updateMinimumLayoutHint();
 }
@@ -368,7 +368,7 @@ void UIMachineSettingsInterface::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsInterface::prepareWidgets()

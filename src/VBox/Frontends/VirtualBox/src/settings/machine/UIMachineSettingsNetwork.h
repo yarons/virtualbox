@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsNetwork.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -97,9 +97,6 @@ protected:
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles filter change. */
     virtual void handleFilterChange() RT_OVERRIDE;
 
@@ -110,6 +107,9 @@ private slots:
 
     /** Handles adapter alternative name change. */
     void sltHandleAlternativeNameChange();
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIDiskEncryptionSettingsEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIDiskEncryptionSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class implementation.
  */
@@ -99,7 +99,7 @@ QString UIDiskEncryptionSettingsEditor::password2() const
     return m_pEditorPassword2 ? m_pEditorPassword2->text() : m_strPassword2;
 }
 
-void UIDiskEncryptionSettingsEditor::retranslateUi()
+void UIDiskEncryptionSettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckboxFeature)
     {
@@ -149,7 +149,7 @@ void UIDiskEncryptionSettingsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIDiskEncryptionSettingsEditor::prepareWidgets()

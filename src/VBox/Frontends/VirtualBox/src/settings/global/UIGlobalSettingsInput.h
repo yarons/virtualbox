@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 101241 2023-09-22 15:40:32Z sergey.dubov@oracle.com $ */
+/* $Id: UIGlobalSettingsInput.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -74,8 +74,10 @@ protected:
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) RT_OVERRIDE;
 
+private slots:
+
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

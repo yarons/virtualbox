@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
 #include <QPainter>

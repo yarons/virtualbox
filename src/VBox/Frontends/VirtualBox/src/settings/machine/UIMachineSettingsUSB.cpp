@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsUSB.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -311,7 +311,7 @@ void UIMachineSettingsUSB::setOrderAfter(QWidget *pWidget)
     setTabOrder(pWidget, m_pEditorUsbSettings);
 }
 
-void UIMachineSettingsUSB::retranslateUi()
+void UIMachineSettingsUSB::sltRetranslateUI()
 {
 }
 
@@ -334,7 +334,7 @@ void UIMachineSettingsUSB::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsUSB::prepareWidgets()

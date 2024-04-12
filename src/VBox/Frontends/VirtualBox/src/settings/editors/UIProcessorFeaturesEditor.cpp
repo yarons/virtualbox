@@ -1,4 +1,4 @@
-/* $Id: UIProcessorFeaturesEditor.cpp 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIProcessorFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIProcessorFeaturesEditor class implementation.
  */
@@ -104,7 +104,7 @@ void UIProcessorFeaturesEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIProcessorFeaturesEditor::retranslateUi()
+void UIProcessorFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Extended Features:"));
@@ -157,5 +157,5 @@ void UIProcessorFeaturesEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

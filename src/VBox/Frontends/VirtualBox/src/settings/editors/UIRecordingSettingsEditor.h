@@ -1,4 +1,4 @@
-/* $Id: UIRecordingSettingsEditor.h 103315 2024-02-12 15:23:30Z sergey.dubov@oracle.com $ */
+/* $Id: UIRecordingSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIRecordingSettingsEditor class declaration.
  */
@@ -108,13 +108,11 @@ public:
     /** Returns enabled screens. */
     QVector<bool> screens() const;
 
-protected:
-
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
     /** Handles feature toggling. */
     void sltHandleFeatureToggled();
     /** Handles mode change. */

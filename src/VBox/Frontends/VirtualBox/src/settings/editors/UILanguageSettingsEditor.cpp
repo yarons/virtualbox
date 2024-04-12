@@ -1,4 +1,4 @@
-/* $Id: UILanguageSettingsEditor.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UILanguageSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UILanguageSettingsEditor class implementation.
  */
@@ -235,7 +235,7 @@ QString UILanguageSettingsEditor::value() const
     return pCurrentItem ? pCurrentItem->text(1) : m_strValue;
 }
 
-void UILanguageSettingsEditor::retranslateUi()
+void UILanguageSettingsEditor::sltRetranslateUI()
 {
     /* Translate tree-widget: */
     if (m_pTreeWidget)
@@ -359,7 +359,7 @@ void UILanguageSettingsEditor::prepare()
     connect(m_pTreeWidget, &QITreeWidget::currentItemChanged, this, &UILanguageSettingsEditor::sltHandleCurrentItemChange);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UILanguageSettingsEditor::reloadLanguageTree(const QString &strLanguageId)

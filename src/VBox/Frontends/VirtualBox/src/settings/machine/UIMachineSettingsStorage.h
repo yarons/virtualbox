@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineSettingsStorage.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -92,11 +92,13 @@ protected:
     /** Defines the configuration access @a enmLevel. */
     virtual void setConfigurationAccessLevel(ConfigurationAccessLevel enmLevel) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Performs final page polishing. */
     virtual void polishPage() RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
 private:
 

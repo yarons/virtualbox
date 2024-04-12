@@ -1,4 +1,4 @@
-/* $Id: UIDiskEncryptionSettingsEditor.h 101011 2023-09-04 18:09:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIDiskEncryptionSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDiskEncryptionSettingsEditor class declaration.
  */
@@ -77,12 +77,10 @@ public:
     /** Returns password 2. */
     QString password2() const;
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
-private slots:
+    virtual void sltRetranslateUI() RT_OVERRIDE RT_FINAL;
 
     /** Handles whether VRDE is @a fEnabled. */
     void sltHandleFeatureToggled(bool fEnabled);

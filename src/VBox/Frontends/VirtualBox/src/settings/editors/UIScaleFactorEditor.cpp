@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIScaleFactorEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -182,7 +182,7 @@ void UIScaleFactorEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIScaleFactorEditor::retranslateUi()
+void UIScaleFactorEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Scale &Factor:"));
@@ -293,7 +293,7 @@ void UIScaleFactorEditor::prepare()
     }
 
     prepareScaleFactorMinMaxValues();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIScaleFactorEditor::prepareScaleFactorMinMaxValues()

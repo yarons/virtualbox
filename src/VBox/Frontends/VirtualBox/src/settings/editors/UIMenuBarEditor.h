@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditor.h 101013 2023-09-04 18:43:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMenuBarEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditor class declaration.
  */
@@ -155,13 +155,13 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles paint @a pEvent. */
     virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
 private slots:
+
+    /** Handles translation event. */
+    virtual void sltRetranslateUI() RT_OVERRIDE;
 
     /** Handles configuration change. */
     void sltHandleConfigurationChange(const QUuid &uMachineID);

@@ -1,4 +1,4 @@
-/* $Id: UIVisualStateEditor.cpp 103710 2024-03-06 16:53:27Z sergey.dubov@oracle.com $ */
+/* $Id: UIVisualStateEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisualStateEditor class implementation.
  */
@@ -85,7 +85,7 @@ void UIVisualStateEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIVisualStateEditor::retranslateUi()
+void UIVisualStateEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Visual &State:"));
@@ -144,7 +144,7 @@ void UIVisualStateEditor::prepare()
     populateCombo();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIVisualStateEditor::populateCombo()
@@ -185,6 +185,6 @@ void UIVisualStateEditor::populateCombo()
             m_pCombo->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

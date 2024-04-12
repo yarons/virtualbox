@@ -1,4 +1,4 @@
-/* $Id: UIUSBControllerEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBControllerEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBControllerEditor class implementation.
  */
@@ -73,7 +73,7 @@ KUSBControllerType UIUSBControllerEditor::value() const
     return m_enmValue;
 }
 
-void UIUSBControllerEditor::retranslateUi()
+void UIUSBControllerEditor::sltRetranslateUI()
 {
     if (m_pRadioButtonUSB1)
     {
@@ -146,7 +146,7 @@ void UIUSBControllerEditor::prepare()
     updateButtonSet();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIUSBControllerEditor::updateButtonSet()

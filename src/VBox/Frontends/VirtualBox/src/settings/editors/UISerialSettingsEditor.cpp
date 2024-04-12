@@ -1,4 +1,4 @@
-/* $Id: UISerialSettingsEditor.cpp 104043 2024-03-25 14:34:19Z sergey.dubov@oracle.com $ */
+/* $Id: UISerialSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISerialSettingsEditor class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIConverter.h"
 #include "UIGlobalSession.h"
 #include "UISerialSettingsEditor.h"
+#include "UITranslator.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -190,7 +191,7 @@ QString UISerialSettingsEditor::path() const
     return m_pEditorPath ? QDir::toNativeSeparators(m_pEditorPath->text()) : QString();
 }
 
-void UISerialSettingsEditor::retranslateUi()
+void UISerialSettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckBoxPort)
     {
@@ -302,7 +303,7 @@ void UISerialSettingsEditor::prepare()
     prepareConnections();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UISerialSettingsEditor::prepareWidgets()

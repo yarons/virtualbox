@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 101867 2023-11-06 12:58:49Z sergey.dubov@oracle.com $ */
+/* $Id: UIEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -31,14 +31,17 @@
 # pragma once
 #endif
 
+/* Qt includes: */
+#include <QWidget>
+
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QTabWidget;
 
 /** QWidget sub-class used as editor interface. */
-class SHARED_LIBRARY_STUFF UIEditor : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIEditor : public QWidget
 {
     Q_OBJECT;
 
@@ -69,10 +72,12 @@ public:
                            const QString &strFilter,
                            const QMap<QString, QVariant> &flags);
 
-protected:
+protected slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE {}
+    virtual void sltRetranslateUI(){}
+
+protected:
 
     /** Returns editor description which could be used to filter it in. */
     virtual QStringList description() const;

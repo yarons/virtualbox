@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 103820 2024-03-13 10:30:05Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineSettingsSystem.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -612,7 +612,7 @@ void UIMachineSettingsSystem::setOrderAfter(QWidget *pWidget)
     setTabOrder(m_pEditorParavirtProvider, m_pEditorAccelerationFeatures);
 }
 
-void UIMachineSettingsSystem::retranslateUi()
+void UIMachineSettingsSystem::sltRetranslateUI()
 {
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabMotherboard), tr("&Motherboard"));
     m_pTabWidget->setTabText(m_pTabWidget->indexOf(m_pTabProcessor), tr("&Processor"));
@@ -678,7 +678,7 @@ void UIMachineSettingsSystem::prepare()
     updateOptionSet();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIMachineSettingsSystem::prepareWidgets()

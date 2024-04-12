@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISettingsSelector.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -30,9 +30,12 @@
 #include <QAccessibleWidget>
 #include <QAction>
 #include <QActionGroup>
+#include <QApplication>
 #include <QItemDelegate>
+#include <QGuiApplication>
 #include <QLayout>
 #include <QPainter>
+#include <QPainterPath>
 #include <QSortFilterProxyModel>
 #include <QTabWidget>
 #include <QToolButton>

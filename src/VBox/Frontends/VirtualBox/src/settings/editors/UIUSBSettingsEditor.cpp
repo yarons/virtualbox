@@ -1,4 +1,4 @@
-/* $Id: UIUSBSettingsEditor.cpp 101230 2023-09-21 20:17:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIUSBSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUSBSettingsEditor class implementation.
  */
@@ -101,7 +101,7 @@ void UIUSBSettingsEditor::setUsbFiltersOptionAvailable(bool fAvailable)
         m_pEditorFilters->setEnabled(fAvailable);
 }
 
-void UIUSBSettingsEditor::retranslateUi()
+void UIUSBSettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckboxFeature)
     {
@@ -126,7 +126,7 @@ void UIUSBSettingsEditor::prepare()
     updateFeatureAvailability();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIUSBSettingsEditor::prepareWidgets()

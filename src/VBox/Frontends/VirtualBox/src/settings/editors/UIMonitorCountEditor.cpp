@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCountEditor.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMonitorCountEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMonitorCountEditor class implementation.
  */
@@ -81,7 +81,7 @@ void UIMonitorCountEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIMonitorCountEditor::retranslateUi()
+void UIMonitorCountEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Mo&nitor Count:"));
@@ -203,5 +203,5 @@ void UIMonitorCountEditor::prepare()
                 this, &UIMonitorCountEditor::sltHandleSpinBoxChange);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }

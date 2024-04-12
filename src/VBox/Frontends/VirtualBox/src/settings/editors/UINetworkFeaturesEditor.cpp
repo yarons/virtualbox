@@ -1,4 +1,4 @@
-/* $Id: UINetworkFeaturesEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkFeaturesEditor class implementation.
  */
@@ -211,7 +211,7 @@ void UINetworkFeaturesEditor::generateMac()
     setMACAddress(gpGlobalSession->host().GenerateMACAddress());
 }
 
-void UINetworkFeaturesEditor::retranslateUi()
+void UINetworkFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabelAdapterType)
         m_pLabelAdapterType->setText(tr("Adapter &Type:"));
@@ -383,7 +383,7 @@ void UINetworkFeaturesEditor::prepare()
                 this, &UINetworkFeaturesEditor::sltOpenPortForwardingDlg);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UINetworkFeaturesEditor::populateAdapterTypeCombo()
@@ -415,7 +415,7 @@ void UINetworkFeaturesEditor::populateAdapterTypeCombo()
             m_pComboAdapterType->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }
 
@@ -448,6 +448,6 @@ void UINetworkFeaturesEditor::populatePromiscuousModeCombo()
             m_pComboPromiscuousMode->setCurrentIndex(iIndex);
 
         /* Retranslate finally: */
-        retranslateUi();
+        sltRetranslateUI();
     }
 }

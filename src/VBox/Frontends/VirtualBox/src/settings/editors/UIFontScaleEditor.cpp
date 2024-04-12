@@ -1,4 +1,4 @@
-/* $Id: UIFontScaleEditor.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: UIFontScaleEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFontScaleEditor class implementation.
  */
@@ -89,7 +89,7 @@ void UIFontScaleEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIFontScaleEditor::retranslateUi()
+void UIFontScaleEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("F&ont Scaling:"));
@@ -183,7 +183,7 @@ void UIFontScaleEditor::prepare()
     }
 
     prepareScaleFactorMinMax();
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UIFontScaleEditor::prepareScaleFactorMinMax()
@@ -228,4 +228,3 @@ void UIFontScaleEditor::setSpinBoxValue(int iValue)
         m_pScaleSpinBox->blockSignals(false);
     }
 }
-

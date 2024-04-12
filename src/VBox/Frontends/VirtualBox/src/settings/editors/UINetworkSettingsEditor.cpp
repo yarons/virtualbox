@@ -1,4 +1,4 @@
-/* $Id: UINetworkSettingsEditor.cpp 101717 2023-11-02 12:22:25Z sergey.dubov@oracle.com $ */
+/* $Id: UINetworkSettingsEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkSettingsEditor class implementation.
  */
@@ -204,7 +204,7 @@ void UINetworkSettingsEditor::setForwardingOptionsAvailable(bool fAvailable)
         m_pEditorNetworkFeatures->setForwardingOptionsAvailable(fAvailable);
 }
 
-void UINetworkSettingsEditor::retranslateUi()
+void UINetworkSettingsEditor::sltRetranslateUI()
 {
     if (m_pCheckboxFeature)
     {
@@ -258,7 +258,7 @@ void UINetworkSettingsEditor::prepare()
     updateFeatureAvailability();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
 
 void UINetworkSettingsEditor::prepareWidgets()

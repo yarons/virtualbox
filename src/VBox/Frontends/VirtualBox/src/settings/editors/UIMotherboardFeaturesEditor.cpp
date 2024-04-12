@@ -1,4 +1,4 @@
-/* $Id: UIMotherboardFeaturesEditor.cpp 102221 2023-11-21 17:25:50Z sergey.dubov@oracle.com $ */
+/* $Id: UIMotherboardFeaturesEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMotherboardFeaturesEditor class implementation.
  */
@@ -147,7 +147,7 @@ void UIMotherboardFeaturesEditor::setMinimumLayoutIndent(int iIndent)
         m_pLayout->setColumnMinimumWidth(0, iIndent);
 }
 
-void UIMotherboardFeaturesEditor::retranslateUi()
+void UIMotherboardFeaturesEditor::sltRetranslateUI()
 {
     if (m_pLabel)
         m_pLabel->setText(tr("Extended Features:"));
@@ -294,5 +294,5 @@ void UIMotherboardFeaturesEditor::prepare()
     sltHandleEnableSecureBootToggling();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
 }
