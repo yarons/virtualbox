@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104325 2024-04-12 19:01:35Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 104326 2024-04-12 19:12:29Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -1120,7 +1120,7 @@ else
 		--append $@.tmp $@.dump
 endif
 	$(QUIET)$(MV) -f $@.tmp $@
-	#$(QUIET)$(RM) -f $@.dump
+	$(QUIET)$(RM) -f $@.dump
 
 # 3. run it.
 $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run: \
