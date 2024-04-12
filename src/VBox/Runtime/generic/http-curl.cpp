@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 102916 2024-01-17 10:51:49Z alexander.eichner@oracle.com $ */
+/* $Id: http-curl.cpp 104308 2024-04-12 10:04:21Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2833,6 +2833,11 @@ static int rtHttpGetCalcStatus(PRTHTTPINTERNAL pThis, CURLcode rcCurl, uint32_t 
                 /* URL not found */
                 if (!puHttpStatus)
                     rc = VERR_HTTP_NOT_FOUND;
+                break;
+            case 501:
+                /* Requested function not supported */
+                if (!puHttpStatus)
+                    rc = VERR_HTTP_NOT_SUPPORTED;
                 break;
         }
 
