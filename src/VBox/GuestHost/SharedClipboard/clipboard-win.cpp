@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 103631 2024-03-01 11:00:38Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-win.cpp 104317 2024-04-12 14:11:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -1316,7 +1316,7 @@ int ShClWinTransferGetRootsFromClipboard(PSHCLWINCTX pWinCtx, PSHCLTRANSFER pTra
 
                 if (RT_SUCCESS(rc))
                 {
-                    rc = ShClTransferRootsInitFromStringList(pTransfer, pszList, cbList);
+                    rc = ShClTransferRootsSetFromStringList(pTransfer, pszList, cbList);
                     RTStrFree(pszList);
                 }
             }

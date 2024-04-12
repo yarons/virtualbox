@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 103630 2024-03-01 10:44:58Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 104317 2024-04-12 14:11:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -673,7 +673,7 @@ static DECLCALLBACK(int) shClSvcX11TransferIfaceHGRootListRead(PSHCLTXPROVIDERCT
                                       &pvData, &cbData);
     if (RT_SUCCESS(rc))
     {
-        rc = ShClTransferRootsInitFromStringList(pCtx->pTransfer, (const char *)pvData, cbData);
+        rc = ShClTransferRootsSetFromStringList(pCtx->pTransfer, (const char *)pvData, cbData);
         if (RT_SUCCESS(rc))
             LogRel2(("Shared Clipboard: Host reported %RU64 X11 root entries for transfer to guest\n",
                      ShClTransferRootsCount(pCtx->pTransfer)));

@@ -1,4 +1,4 @@
-/* $Id: tstClipboardHttpServer.cpp 104309 2024-04-12 10:07:34Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardHttpServer.cpp 104317 2024-04-12 14:11:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard HTTP server test case.
  */
@@ -105,7 +105,7 @@ static void tstCreateTransferSingle(RTTEST hTest, PSHCLTRANSFERCTX pTransferCtx,
     PSHCLTRANSFER pTx;
     RTTEST_CHECK_RC_OK(hTest, ShClTransferCreate(SHCLTRANSFERDIR_TO_REMOTE, SHCLSOURCE_LOCAL, NULL /* Callbacks */, &pTx));
     RTTEST_CHECK_RC_OK(hTest, ShClTransferSetProvider(pTx, pProvider));
-    RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsInitFromPath(pTx, pszPath));
+    RTTEST_CHECK_RC_OK(hTest, ShClTransferRootsSetFromPath(pTx, pszPath));
     RTTEST_CHECK_RC_OK(hTest, ShClTransferInit(pTx));
     RTTEST_CHECK_RC_OK(hTest, ShClTransferCtxRegister(pTransferCtx, pTx, NULL));
     RTTEST_CHECK_RC_OK(hTest, ShClTransferHttpServerRegisterTransfer(pSrv, pTx));
