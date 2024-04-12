@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veHlpA-arm64.S 104322 2024-04-12 15:18:43Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veHlpA-arm64.S 104324 2024-04-12 16:12:41Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler Assembly Helpers, ARM64 variant.
  */
@@ -37,6 +37,9 @@
 #define AssertCompile(a_Expr)
 #define INCLUDED_FROM_ARM64_ASSEMBLY
 #include "IEMN8veRecompiler.h"
+
+/** @todo r=aeichner This comes from IEMInternal.h */
+#define VBOX_WITH_IEM_NATIVE_RECOMPILER_LONGJMP
 
 #define IEM_HLP_FUNCTION_ALIGNMENT 0x20
 
