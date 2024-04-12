@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 103619 2024-02-29 19:10:26Z andreas.loeffler@oracle.com $ */
+/* $Id: SharedClipboard-transfers.h 104310 2024-04-12 10:10:49Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -1201,7 +1201,7 @@ int ShClTransferSetProvider(PSHCLTRANSFER pTransfer, PSHCLTXPROVIDER pProvider);
 int ShClTransferRootsInitFromStringListEx(PSHCLTRANSFER pTransfer, const char *pszRoots, size_t cbRoots, const char *pszSep);
 int ShClTransferRootsInitFromStringList(PSHCLTRANSFER pTransfer, const char *pszRoots, size_t cbRoots);
 int ShClTransferRootsInitFromStringListUnicode(PSHCLTRANSFER pTransfer, PRTUTF16 pwszRoots, size_t cbRoots);
-int ShClTransferRootsInitFromFile(PSHCLTRANSFER pTransfer, const char *pszFile);
+int ShClTransferRootsInitFromPath(PSHCLTRANSFER pTransfer, const char *pszPath);
 uint64_t ShClTransferRootsCount(PSHCLTRANSFER pTransfer);
 PCSHCLLISTENTRY ShClTransferRootsEntryGet(PSHCLTRANSFER pTransfer, uint64_t uIndex);
 int ShClTransferRootListRead(PSHCLTRANSFER pTransfer);
