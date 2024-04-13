@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompFuncs.h 104270 2024-04-10 10:25:04Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompFuncs.h 104333 2024-04-13 00:21:14Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler - Inlined Bits.
  */
@@ -993,7 +993,7 @@ iemNativeEmitMaybeRaiseFpuException(PIEMRECOMPILERSTATE pReNative, uint32_t off,
      *     return raisexcpt();
      */
     /* Test and jump. */
-    off = iemNativeEmitTestAnyBitsInGprAndJmpToLabelIfAnySet(pReNative, off, idxFpuFswReg, X86_FSW_ES, idxLabelRaiseMf);
+    off = iemNativeEmitTestBitInGprAndJmpToLabelIfSet(pReNative, off, idxFpuFswReg, X86_FSW_ES_BIT, idxLabelRaiseMf);
 
     /* Free but don't flush the FSW register. */
     iemNativeRegFreeTmp(pReNative, idxFpuFswReg);
