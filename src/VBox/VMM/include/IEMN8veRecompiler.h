@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104322 2024-04-12 15:18:43Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104332 2024-04-13 00:00:31Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -2491,10 +2491,12 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitPcWriteback(PIEMRECOMPILERSTATE pReNati
 
 
 #ifdef IEMNATIVE_WITH_RECOMPILER_PROLOGUE_SINGLETON
+/** @note iemNativeTbEntry returns VBOXSTRICTRC, but we don't declare it as
+ *        it saves us the trouble of a hidden parameter on MSC/amd64. */
 # ifdef RT_ARCH_AMD64
-extern "C" IEM_DECL_NATIVE_HLP_DEF(VBOXSTRICTRC, iemNativeTbEntry, (PVMCPUCC pVCpu, uintptr_t pTbInsn));
+extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEntry, (PVMCPUCC pVCpu, uintptr_t pfnTbBody));
 # elif defined(RT_ARCH_ARM64)
-extern "C" IEM_DECL_NATIVE_HLP_DEF(VBOXSTRICTRC, iemNativeTbEntry, (PVMCPUCC pVCpu, PCPUMCTX pCpumCtx, uintptr_t pTbInsn));
+extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEntry, (PVMCPUCC pVCpu, PCPUMCTX pCpumCtx, uintptr_t pfnTbBody));
 # endif
 #endif
 
