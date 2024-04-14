@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux-armv8.cpp 104334 2024-04-14 16:58:57Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-linux-armv8.cpp 104336 2024-04-14 17:01:32Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend arm64 version.
  */
@@ -479,7 +479,7 @@ static int nemR3LnxLogRegList(int fdVCpu)
 }
 
 
-DECL_FORCE_INLINE(int) nemR3LnxKvmSetQueryReg(PVMCPUCC pVCpu, bool fQuery, uint64_t idKvmReg, uint64_t *pu64)
+DECL_FORCE_INLINE(int) nemR3LnxKvmSetQueryReg(PVMCPUCC pVCpu, bool fQuery, uint64_t idKvmReg, const uint64_t *pu64)
 {
     struct kvm_one_reg Reg;
     Reg.id   = idKvmReg;
@@ -496,13 +496,13 @@ DECL_FORCE_INLINE(int) nemR3LnxKvmSetQueryReg(PVMCPUCC pVCpu, bool fQuery, uint6
     return RTErrConvertFromErrno(-rcLnx);
 }
 
-DECL_INLINE(int) nemR3LnxKvmQueryReg(PVMCPUCC pVCpu, uint64_t idKvmReg, uint64_t *pu64)
+DECLINLINE(int) nemR3LnxKvmQueryReg(PVMCPUCC pVCpu, uint64_t idKvmReg, uint64_t *pu64)
 {
     return nemR3LnxKvmSetQueryReg(pVCpu, true /*fQuery*/, idKvmReg, pu64);
 }
 
 
-DECL_FORCE_INLINE(int) nemR3LnxKvmSetReg(PVMCPUCC pVCpu, uint64_t idKvmReg, const uint64_t *pu64)
+DECLINLINE(int) nemR3LnxKvmSetReg(PVMCPUCC pVCpu, uint64_t idKvmReg, const uint64_t *pu64)
 {
     return nemR3LnxKvmSetQueryReg(pVCpu, false /*fQuery*/, idKvmReg, pu64);
 }
