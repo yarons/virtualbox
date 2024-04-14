@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 101496 2023-10-18 11:27:55Z alexander.eichner@oracle.com $ */
+/* $Id: NEMInternal.h 104335 2024-04-14 16:59:17Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -235,6 +235,10 @@ typedef struct NEM
     uint32_t                    cbVCpuMmap;
     /** KVM_CAP_NR_MEMSLOTS. */
     uint32_t                    cMaxMemSlots;
+# ifdef RT_ARCH_ARM64
+    /** KVM_CAP_ARM_VM_IPA_SIZE. */
+    uint32_t                    cIpaBits;
+# endif
     /** KVM_CAP_X86_ROBUST_SINGLESTEP. */
     bool                        fRobustSingleStep;
 
