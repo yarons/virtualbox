@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 104159 2024-04-04 15:35:39Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxNetFltRt-win.cpp 104337 2024-04-17 11:48:57Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
@@ -1134,17 +1134,16 @@ DECLHIDDEN(void) vboxNetFltWinQuFiniPacketQueue(PVBOXNETFLTINS pInstance)
  */
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinAllocSG(UINT cbPacket, PINTNETSG *ppSG)
 {
-    NDIS_STATUS Status;
-    PINTNETSG pSG;
-
     /* allocation:
      * 1. SG_PACKET - with one aSegs pointing to
      * 2. buffer of cbPacket containing the entire packet */
     AssertCompileSizeAlignment(INTNETSG, sizeof(PVOID));
-    Status = vboxNetFltWinMemAlloc((PVOID*)&pSG, cbPacket + RT_UOFFSETOF_DYN(INTNETSG, aSegs[1]));
+    PINTNETSG   pSG    = NULL;
+    UINT const  cbSg   = RT_UOFFSETOF_DYN(INTNETSG, aSegs[1]);
+    NDIS_STATUS Status = vboxNetFltWinMemAlloc((PVOID *)&pSG, cbSg + cbPacket);
     if (Status == NDIS_STATUS_SUCCESS)
     {
-        IntNetSgInitTemp(pSG, pSG + 1, cbPacket);
+        IntNetSgInitTemp(pSG, (uint8_t *)pSG + cbSg, cbPacket);
         LogFlow(("pSG created (%p)\n", pSG));
         *ppSG = pSG;
     }
