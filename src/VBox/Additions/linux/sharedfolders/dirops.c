@@ -1,4 +1,4 @@
-/* $Id: dirops.c 103067 2024-01-25 15:31:01Z vadim.galitsyn@oracle.com $ */
+/* $Id: dirops.c 104344 2024-04-17 13:19:20Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -486,13 +486,14 @@ static int vbsf_dir_read(struct file *dir, void *opaque, filldir_t filldir)
             uintptr_t const offEntryInBuf = (uintptr_t)pEntry - (uintptr_t)pBuf;
             uint16_t        cbSrcName;
             uint16_t        cchSrcName;
+            char            *ach = pEntry->name.String.ach;
             AssertLogRelMsgBreak(offEntryInBuf + RT_UOFFSETOF(SHFLDIRINFO, name.String) <= cbValid,
                                  ("%#llx + %#x vs %#x\n", offEntryInBuf, RT_UOFFSETOF(SHFLDIRINFO, name.String), cbValid));
             cbSrcName  = pEntry->name.u16Size;
             cchSrcName = pEntry->name.u16Length;
             AssertLogRelBreak(offEntryInBuf + RT_UOFFSETOF(SHFLDIRINFO, name.String) + cbSrcName <= cbValid);
             AssertLogRelBreak(cchSrcName < cbSrcName);
-            AssertLogRelBreak(*(pEntry->name.String.ach + cchSrcName) == '\0');
+            AssertLogRelBreak(ach[cchSrcName] == '\0');
 
             /*
              * Filter out '.' and '..' entires.
@@ -500,7 +501,7 @@ static int vbsf_dir_read(struct file *dir, void *opaque, filldir_t filldir)
             if (   cchSrcName > 2
                 || pEntry->name.String.ach[0] != '.'
                 || (   cchSrcName == 2
-                    && *(pEntry->name.String.ach + 1) != '.')) {
+                    && ach[1] != '.')) {
                 int const   d_type = vbsf_get_d_type(pEntry->Info.Attr.fMode);
                 ino_t const d_ino  = (ino_t)offPos + 0xbeef; /* very fake */
                 bool        fContinue;

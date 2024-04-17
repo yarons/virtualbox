@@ -1,4 +1,4 @@
-/* $Id: utils.c 103767 2024-03-11 14:23:25Z vadim.galitsyn@oracle.com $ */
+/* $Id: utils.c 104344 2024-04-17 13:19:20Z vadim.galitsyn@oracle.com $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -1047,10 +1047,11 @@ static int vbsf_make_path(const char *caller, struct vbsf_inode_info *sf_i,
     if (fRoot)
         RT_BCOPY_UNFORTIFIED(&tmp->String.utf8[0], d_name, d_len + 1);
     else {
-        RT_BCOPY_UNFORTIFIED(&tmp->String.utf8[0], p_name, p_len);
-        *(tmp->String.utf8 + p_len) = '/';
-        RT_BCOPY_UNFORTIFIED(tmp->String.utf8 + p_len + 1, d_name, d_len);
-        *(tmp->String.utf8 + p_len + 1 + d_len) = '\0';
+        uint8_t *pUtf8 = tmp->String.utf8;
+        RT_BCOPY_UNFORTIFIED(&pUtf8[0], p_name, p_len);
+        pUtf8[p_len] = '/';
+        RT_BCOPY_UNFORTIFIED(&pUtf8[p_len + 1], d_name, d_len);
+        pUtf8[p_len + 1 + d_len] = '\0';
     }
 
     *result = tmp;
