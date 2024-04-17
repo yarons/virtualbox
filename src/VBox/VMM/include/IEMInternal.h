@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104321 2024-04-12 15:08:36Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104340 2024-04-17 13:12:02Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2041,7 +2041,7 @@ typedef struct IEMCPU
 # ifdef VBOX_WITH_IEM_RECOMPILER
     /** Statistics per threaded function call.
      * Updated by both the threaded and native recompilers. */
-    uint32_t                acThreadedFuncStats[0x5160 /*20832*/];
+    uint32_t                acThreadedFuncStats[0x6000 /*24576*/];
 # endif
 #endif
 } IEMCPU;
