@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104341 2024-04-17 13:12:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104357 2024-04-17 21:57:03Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -823,6 +823,34 @@ iemNativeEmitStoreGprToVCpuU8(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8
 
 #elif defined(RT_ARCH_ARM64)
     off = iemNativeEmitGprByVCpuLdSt(pReNative, off, iGpr, offVCpu, kArmv8A64InstrLdStType_St_Byte, sizeof(uint8_t));
+
+#else
+# error "port me"
+#endif
+    return off;
+}
+
+
+/**
+ * Emits a store of an immediate value to a 64-bit VCpu field.
+ *
+ * @note Will allocate temporary registers on both ARM64 and AMD64.
+ */
+DECL_FORCE_INLINE_THROW(uint32_t)
+iemNativeEmitStoreImmToVCpuU64(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint64_t uImm, uint32_t offVCpu)
+{
+#ifdef RT_ARCH_AMD64
+    /* mov mem32, imm32 */
+    uint8_t const idxRegImm = iemNativeRegAllocTmpImm(pReNative, &off, uImm);
+    off = iemNativeEmitStoreGprToVCpuU64Ex(iemNativeInstrBufEnsure(pReNative, off, 7), off, idxRegImm, offVCpu);
+    IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
+    iemNativeRegFreeTmpImm(pReNative, idxRegImm);
+
+#elif defined(RT_ARCH_ARM64)
+    uint8_t const idxRegImm = uImm == 0 ? ARMV8_A64_REG_XZR : iemNativeRegAllocTmpImm(pReNative, &off, uImm);
+    off = iemNativeEmitGprByVCpuLdSt(pReNative, off, idxRegImm, offVCpu, kArmv8A64InstrLdStType_St_Dword, sizeof(uint64_t));
+    if (idxRegImm != ARMV8_A64_REG_XZR)
+        iemNativeRegFreeTmpImm(pReNative, idxRegImm);
 
 #else
 # error "port me"
