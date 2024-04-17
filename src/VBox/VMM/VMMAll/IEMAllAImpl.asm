@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 104353 2024-04-17 15:37:43Z knut.osmundsen@oracle.com $
+; $Id: IEMAllAImpl.asm 104354 2024-04-17 15:40:42Z knut.osmundsen@oracle.com $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -5972,7 +5972,7 @@ BEGINPROC_FASTCALL iemAImpl_pcmpistri_u128, 16
         mov     T2, A0                  ; A0 can be ecx/rcx in some calling conventions which gets overwritten later (T2 only available on AMD64)
         IEMIMPL_CALL_JUMP_TABLE_TARGET T1, A3, 8
 
-        IEM_SAVE_FLAGS_OLD A0, X86_EFL_CF | X86_EFL_ZF | X86_EFL_SF | X86_EFL_OF, 0, X86_EFL_AF | X86_EFL_PF
+        IEM_SAVE_FLAGS_OLD T2, X86_EFL_CF | X86_EFL_ZF | X86_EFL_SF | X86_EFL_OF, 0, X86_EFL_AF | X86_EFL_PF
         mov    R0_32, ecx
 
         IEMIMPL_SSE_EPILOGUE
