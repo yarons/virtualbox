@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 104159 2024-04-04 15:35:39Z vadim.galitsyn@oracle.com $ */
+/* $Id: SrvIntNetR0.cpp 104355 2024-04-17 18:22:32Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -2935,7 +2935,7 @@ static int intnetR0TrunkIfSendGsoFallback(PINTNETTRUNKIF pThis, PINTNETIF pIfSen
 
     union
     {
-        uint8_t     abBuf[sizeof(INTNETSG) + sizeof(INTNETSEG)];
+        uint8_t     abBuf[sizeof(INTNETSG) + 2 * sizeof(INTNETSEG)];
         INTNETSG    SG;
     } u;
 
