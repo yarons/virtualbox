@@ -1,4 +1,4 @@
-/* $Id: UIEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIEditor.h 104352 2024-04-17 15:21:11Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEditor class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QWidget>
+#include <QMap>
 
 /* GUI includes: */
 #include "UILibraryDefs.h"
