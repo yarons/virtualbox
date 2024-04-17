@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInterface.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIGlobalSettingsInterface.cpp 104356 2024-04-17 19:44:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInterface class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QVBoxLayout>
+#include <QVariant>
 
 /* GUI includes: */
 #include "UIColorThemeEditor.h"
