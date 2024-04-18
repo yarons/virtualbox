@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UISnapshotPane.h 104364 2024-04-18 17:47:20Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* Qt includes: */
+#include <QMap>
 #include <QUuid>
 #include <QWidget>
 
