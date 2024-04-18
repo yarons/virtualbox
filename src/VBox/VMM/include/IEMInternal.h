@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104362 2024-04-18 15:29:48Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104367 2024-04-18 22:38:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -31,14 +31,16 @@
 # pragma once
 #endif
 
-#include <VBox/vmm/cpum.h>
-#include <VBox/vmm/iem.h>
-#include <VBox/vmm/pgm.h>
-#include <VBox/vmm/stam.h>
-#include <VBox/param.h>
+#ifndef RT_IN_ASSEMBLER
+# include <VBox/vmm/cpum.h>
+# include <VBox/vmm/iem.h>
+# include <VBox/vmm/pgm.h>
+# include <VBox/vmm/stam.h>
+# include <VBox/param.h>
 
-#include <iprt/setjmp-without-sigmask.h>
-#include <iprt/list.h>
+# include <iprt/setjmp-without-sigmask.h>
+# include <iprt/list.h>
+#endif /* !RT_IN_ASSEMBLER */
 
 
 RT_C_DECLS_BEGIN
@@ -237,7 +239,11 @@ RT_C_DECLS_BEGIN
 
 //#define IEM_LOG_MEMORY_WRITES
 
-#if !defined(IN_TSTVMSTRUCT) && !defined(DOXYGEN_RUNNING)
+
+
+#ifndef RT_IN_ASSEMBLER /* the rest of the file */
+
+# if !defined(IN_TSTVMSTRUCT) && !defined(DOXYGEN_RUNNING)
 /** Instruction statistics.   */
 typedef struct IEMINSTRSTATS
 {
@@ -6190,6 +6196,8 @@ DECLHIDDEN(void *)  iemExecMemAllocatorAlloc(PVMCPU pVCpu, uint32_t cbReq, PIEMT
 DECLHIDDEN(void)    iemExecMemAllocatorReadyForUse(PVMCPUCC pVCpu, void *pv, size_t cb) RT_NOEXCEPT;
 void                iemExecMemAllocatorFree(PVMCPU pVCpu, void *pv, size_t cb) RT_NOEXCEPT;
 DECLASM(DECL_NO_RETURN(void)) iemNativeTbLongJmp(void *pvFramePointer, int rc) RT_NOEXCEPT;
+
+#endif /* !RT_IN_ASSEMBLER */
 
 
 /** @} */
