@@ -1,4 +1,4 @@
-﻿/* $Id: UIAdvancedSettingsDialog.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+﻿/* $Id: UIAdvancedSettingsDialog.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class implementation.
  */
@@ -29,12 +29,14 @@
 #include <QAbstractButton>
 #include <QAbstractScrollArea>
 #include <QAbstractSpinBox>
+#include <QApplication>
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QGridLayout>
 #include <QPainter>
+#include <QPainterPath>
 #include <QProgressBar>
 #include <QPropertyAnimation>
 #include <QPushButton>

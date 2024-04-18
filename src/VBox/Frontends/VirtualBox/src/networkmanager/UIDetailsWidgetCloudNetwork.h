@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetCloudNetwork.h 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsWidgetCloudNetwork.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class declaration.
  */
@@ -32,7 +32,7 @@
 #endif
 
 /* Qt includes: */
-#include <QWidget>
+#include <QDialog>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"

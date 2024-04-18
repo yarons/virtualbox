@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QAction>
 #include <QCheckBox>
 #include <QHeaderView>

@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserDialog.h 99973 2023-05-25 10:14:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpBrowserDialog.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserDialog class declaration.
  */
@@ -36,14 +36,12 @@
 
 /* GUI includes: */
 #include "QIWithRestorableGeometry.h"
-#include "QIWithRetranslateUI.h"
-
 
 /* Forward declarations: */
 class QLabel;
 class UIHelpBrowserWidget;
 
-class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRetranslateUI<QIWithRestorableGeometry<QMainWindow> >
+class SHARED_LIBRARY_STUFF UIHelpBrowserDialog : public QIWithRestorableGeometry<QMainWindow>
 {
     Q_OBJECT;
 
@@ -60,8 +58,6 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
     virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** @name Prepare/cleanup cascade.
@@ -79,6 +75,7 @@ private slots:
     void sltStatusBarMessage(const QString& strLink, int iTimeOut);
     void sltStatusBarVisibilityChange(bool fVisible);
     void sltZoomPercentageChanged(int iPercentage);
+    void sltRetranslateUI();
 
 private:
 

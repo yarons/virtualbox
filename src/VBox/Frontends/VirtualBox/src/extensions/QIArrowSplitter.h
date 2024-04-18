@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QIArrowSplitter.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowSplitter class declaration.
  */
@@ -35,7 +35,6 @@
 #include <QWidget>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -50,7 +49,7 @@ typedef QList<QStringPair> QStringPairList;
 
 /** QWidget extension
   * allowing to toggle visibility for any other child widget. */
-class SHARED_LIBRARY_STUFF QIArrowSplitter : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF QIArrowSplitter : public QWidget
 {
     Q_OBJECT;
 
@@ -90,10 +89,10 @@ public slots:
     /** Navigates through details-list forward. */
     void sltSwitchDetailsPageNext();
 
-protected:
+private slots:
 
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    void sltRetranslateUI();
 
 private:
 

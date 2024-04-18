@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIArrowButtonPress.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowButtonPress class implementation.
  */
@@ -30,18 +30,20 @@
 
 /* GUI includes: */
 #include "QIArrowButtonPress.h"
-
+#include "UITranslationEventListener.h"
 
 QIArrowButtonPress::QIArrowButtonPress(QIArrowButtonPress::ButtonType enmButtonType,
                                        QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI<QIRichToolButton>(pParent)
+    : QIRichToolButton(pParent)
     , m_enmButtonType(enmButtonType)
 {
     /* Retranslate UI: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+        this, &QIArrowButtonPress::sltRetranslateUI);
 }
 
-void QIArrowButtonPress::retranslateUi()
+void QIArrowButtonPress::sltRetranslateUI()
 {
     /* Retranslate: */
     switch (m_enmButtonType)
@@ -63,5 +65,5 @@ void QIArrowButtonPress::keyPressEvent(QKeyEvent *pEvent)
         default: break;
     }
     /* Call to base-class: */
-    QIWithRetranslateUI<QIRichToolButton>::keyPressEvent(pEvent);
+    QIRichToolButton::keyPressEvent(pEvent);
 }

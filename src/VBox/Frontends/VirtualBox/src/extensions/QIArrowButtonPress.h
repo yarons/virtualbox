@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIArrowButtonPress.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowButtonPress class declaration.
  */
@@ -33,13 +33,12 @@
 
 /* GUI includes: */
 #include "QIRichToolButton.h"
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /** QIRichToolButton extension
   * representing arrow tool-button with text-label,
   * can be used as back/next buttons in various places. */
-class SHARED_LIBRARY_STUFF QIArrowButtonPress : public QIWithRetranslateUI<QIRichToolButton>
+class SHARED_LIBRARY_STUFF QIArrowButtonPress : public QIRichToolButton
 {
     Q_OBJECT;
 
@@ -54,11 +53,13 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles key-press @a pEvent. */
     virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
+
+private slots:
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

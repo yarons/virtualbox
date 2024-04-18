@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.h 100070 2023-06-05 14:41:33Z sergey.dubov@oracle.com $ */
+/* $Id: VBoxAboutDlg.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class declaration.
  */
@@ -36,7 +36,6 @@
 #include <QPixmap>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -45,7 +44,7 @@ class QVBoxLayout;
 
 /** QDialog extension
   * used to show the About-VirtualBox dialog. */
-class SHARED_LIBRARY_STUFF VBoxAboutDlg : public QIWithRetranslateUI2<QDialog>
+class SHARED_LIBRARY_STUFF VBoxAboutDlg : public QDialog
 {
     Q_OBJECT;
 
@@ -63,8 +62,10 @@ protected:
     /** Handles paint @a pEvent. */
     virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
+private slots:
+
     /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
+    void sltRetranslateUI();
 
 private:
 

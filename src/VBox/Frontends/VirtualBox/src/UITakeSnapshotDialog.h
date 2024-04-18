@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 98779 2023-02-28 11:48:37Z sergey.dubov@oracle.com $ */
+/* $Id: UITakeSnapshotDialog.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* GUI includes: */
 #include "QIDialog.h"
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -47,7 +46,7 @@ class QIDialogButtonBox;
 class QILabel;
 
 /** QIDialog subclass for taking snapshot name/description. */
-class SHARED_LIBRARY_STUFF UITakeSnapshotDialog : public QIWithRetranslateUI<QIDialog>
+class SHARED_LIBRARY_STUFF UITakeSnapshotDialog : public QIDialog
 {
     Q_OBJECT;
 
@@ -73,13 +72,13 @@ protected:
     /** Handles any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
 
     /** Handles @a strName change signal. */
     void sltHandleNameChanged(const QString &strName);
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class declaration.
  */
@@ -31,9 +31,6 @@
 # pragma once
 #endif
 
-/* VBox includes */
-#include "QIWithRetranslateUI.h"
-
 /* Qt includes */
 #include <QComboBox>
 
@@ -47,7 +44,7 @@ class QAction;
 class QToolButton;
 
 
-class UIEmptyFilePathSelector: public QIWithRetranslateUI<QWidget>
+class UIEmptyFilePathSelector: public QWidget
 {
     Q_OBJECT;
 
@@ -106,10 +103,9 @@ signals:
 public slots:
     void setPath (const QString& aPath);
 
-protected:
-    virtual void retranslateUi() RT_OVERRIDE;
-
 private slots:
+
+    void sltRetranslateUI();
     void choose();
     void textChanged (const QString& aPath);
 
@@ -131,4 +127,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UIEmptyFilePathSelector_h */
-

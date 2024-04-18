@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -27,7 +27,9 @@
 
 /* Qt includes: */
 #include <QAction>
+#include <QApplication>
 #include <QComboBox>
+#include <QEvent>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QItemEditorFactory>
@@ -44,6 +46,7 @@
 #include "UIMessageCenter.h"
 #include "UIPortForwardingTable.h"
 #include "QIToolBar.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include <iprt/cidr.h>
@@ -959,10 +962,10 @@ bool UIPortForwardingTable::eventFilter(QObject *pObject, QEvent *pEvent)
         }
     }
     /* Call to base-class: */
-    return QIWithRetranslateUI<QWidget>::eventFilter(pObject, pEvent);
+    return QWidget::eventFilter(pObject, pEvent);
 }
 
-void UIPortForwardingTable::retranslateUi()
+void UIPortForwardingTable::sltRetranslateUI()
 {
     /* Table translations: */
     m_pTableView->setWhatsThis(tr("Contains a list of port forwarding rules."));
@@ -1068,7 +1071,9 @@ void UIPortForwardingTable::prepare()
     prepareLayout();
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIPortForwardingTable::sltRetranslateUI);
 }
 
 void UIPortForwardingTable::prepareLayout()

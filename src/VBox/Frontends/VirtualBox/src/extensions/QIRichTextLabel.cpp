@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 98312 2023-01-26 12:52:40Z sergey.dubov@oracle.com $ */
+/* $Id: QIRichTextLabel.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
@@ -36,6 +36,7 @@
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
@@ -103,7 +104,7 @@ QIRichTextLabel *UIAccessibilityInterfaceForQIRichTextLabel::label() const
 *********************************************************************************************************************************/
 
 QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_pTextBrowser()
     , m_pActionCopy(0)
     , m_fCopyAvailable(false)
@@ -163,7 +164,9 @@ QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+        this, &QIRichTextLabel::sltRetranslateUI);
 }
 
 QString QIRichTextLabel::text() const
@@ -285,7 +288,7 @@ void QIRichTextLabel::copy()
     }
 }
 
-void QIRichTextLabel::retranslateUi()
+void QIRichTextLabel::sltRetranslateUI()
 {
     if (m_pActionCopy)
         m_pActionCopy->setText(tr("&Copy"));

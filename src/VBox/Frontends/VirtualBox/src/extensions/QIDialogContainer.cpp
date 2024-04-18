@@ -1,4 +1,4 @@
-/* $Id: QIDialogContainer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIDialogContainer.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogContainer class implementation.
  */
@@ -34,13 +34,14 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "QIDialogContainer.h"
+#include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
 #include "iprt/assert.h"
 
 
 QIDialogContainer::QIDialogContainer(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = Qt::WindowFlags() */)
-    : QIWithRetranslateUI2<QDialog>(pParent, enmFlags)
+    : QDialog(pParent, enmFlags)
     , m_pLayout(0)
     , m_pWidget(0)
     , m_pProgressLabel(0)
@@ -73,7 +74,7 @@ void QIDialogContainer::setOkButtonEnabled(bool fEnabled)
     m_pButtonBox->button(QDialogButtonBox::Ok)->setEnabled(fEnabled);
 }
 
-void QIDialogContainer::retranslateUi()
+void QIDialogContainer::sltRetranslateUI()
 {
     m_pProgressLabel->setText(tr("Loading"));
 }
@@ -132,5 +133,7 @@ void QIDialogContainer::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &QIDialogContainer::sltRetranslateUI);
 }

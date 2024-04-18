@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIMessageCenter.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAbstractButton>
+#include <QApplication>
 #include <QDir>
 #include <QFileInfo>
 #include <QLocale>

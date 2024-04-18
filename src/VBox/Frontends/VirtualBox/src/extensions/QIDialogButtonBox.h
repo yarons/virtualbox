@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.h 99946 2023-05-24 06:53:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: QIDialogButtonBox.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogButtonBox class declaration.
  */
@@ -36,7 +36,6 @@
 #include <QPointer>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UILibraryDefs.h"
 
 /* Forward declarations: */
@@ -45,7 +44,7 @@ class QPushButton;
 class UIHelpButton;
 
 /** QDialogButtonBox subclass extending standard functionality. */
-class SHARED_LIBRARY_STUFF QIDialogButtonBox : public QIWithRetranslateUI<QDialogButtonBox>
+class SHARED_LIBRARY_STUFF QIDialogButtonBox : public QDialogButtonBox
 {
     Q_OBJECT;
 
@@ -87,9 +86,6 @@ public slots:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Handles show @a pEvent. */
     virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
@@ -98,6 +94,11 @@ protected:
 
     /** Searchs for empty @a pLayout space. */
     int findEmptySpace(QBoxLayout *pLayout) const;
+
+private slots:
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

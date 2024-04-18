@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QGridLayout>
 #include <QHeaderView>
 #include <QLabel>

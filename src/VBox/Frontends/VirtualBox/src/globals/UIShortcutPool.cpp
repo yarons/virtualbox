@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIShortcutPool.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -30,7 +30,7 @@
 #include "UIExtraDataManager.h"
 #include "UIGlobalSession.h"
 #include "UIShortcutPool.h"
-
+#include "UITranslationEventListener.h"
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;
@@ -253,7 +253,7 @@ QKeySequence UIShortcutPool::standardSequence(QKeySequence::StandardKey enmKey)
     return QKeySequence(enmKey);
 }
 
-void UIShortcutPool::retranslateUi()
+void UIShortcutPool::sltRetranslateUI()
 {
     /* Translate own defaults: */
     m_shortcuts[s_strShortcutKeyTemplateRuntime.arg("PopupMenu")]
@@ -326,6 +326,8 @@ void UIShortcutPool::prepareConnections()
             this, &UIShortcutPool::sltReloadSelectorShortcuts);
     connect(gEDataManager, &UIExtraDataManager::sigRuntimeUIShortcutChange,
             this, &UIShortcutPool::sltReloadMachineShortcuts);
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIShortcutPool::sltRetranslateUI);
 }
 
 void UIShortcutPool::loadDefaults()
@@ -452,4 +454,3 @@ UIShortcut &UIShortcutPool::shortcut(const QString &strShortcutKey)
 {
     return m_shortcuts[strShortcutKey];
 }
-

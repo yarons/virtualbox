@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSizeEditor.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIGlobalSession.h"
 #include "UIMediumSizeEditor.h"
 #include "UITranslator.h"
+#include "UITranslationEventListener.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
@@ -45,7 +46,7 @@
 const qulonglong UIMediumSizeEditor::m_uSectorSize = 512;
 
 UIMediumSizeEditor::UIMediumSizeEditor(QWidget *pParent, qulonglong uMinimumSize /* = _4M */)
-    : QIWithRetranslateUI<QWidget>(pParent)
+    : QWidget(pParent)
     , m_uSizeMin(uMinimumSize)
     , m_uSizeMax(gpGlobalSession->virtualBox().GetSystemProperties().GetInfoVDSize())
     , m_iSliderScale(calculateSliderScale(m_uSizeMax))
@@ -76,7 +77,7 @@ void UIMediumSizeEditor::setMediumSize(qulonglong uSize)
     m_pEditor->blockSignals(false);
 }
 
-void UIMediumSizeEditor::retranslateUi()
+void UIMediumSizeEditor::sltRetranslateUI()
 {
     /* Translate labels: */
     m_pLabelMinSize->setText(UITranslator::formatSize(m_uSizeMin));
@@ -209,7 +210,9 @@ void UIMediumSizeEditor::prepare()
     }
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIMediumSizeEditor::sltRetranslateUI);
 }
 
 /* static */

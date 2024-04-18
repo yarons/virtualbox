@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 103711 2024-03-06 17:44:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -42,10 +42,10 @@
 #include "QILineEdit.h"
 #include "UIEmptyFilePathSelector.h"
 #include "UIIconPool.h"
-
+#include "UITranslationEventListener.h"
 
 UIEmptyFilePathSelector::UIEmptyFilePathSelector (QWidget *aParent /* = NULL */)
-    : QIWithRetranslateUI<QWidget> (aParent)
+    : QWidget(aParent)
     , mPathWgt (NULL)
     , mLabel (NULL)
     , mMode (UIEmptyFilePathSelector::Mode_File_Open)
@@ -74,7 +74,9 @@ UIEmptyFilePathSelector::UIEmptyFilePathSelector (QWidget *aParent /* = NULL */)
 
     setEditable (false);
 
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIEmptyFilePathSelector::sltRetranslateUI);
 }
 
 void UIEmptyFilePathSelector::setMode (UIEmptyFilePathSelector::Mode aMode)
@@ -214,7 +216,7 @@ QString UIEmptyFilePathSelector::homeDir() const
     return mHomeDir;
 }
 
-void UIEmptyFilePathSelector::retranslateUi()
+void UIEmptyFilePathSelector::sltRetranslateUI()
 {
     if (!m_fButtonToolTipSet)
         mSelectButton->setToolTip(tr("Choose..."));

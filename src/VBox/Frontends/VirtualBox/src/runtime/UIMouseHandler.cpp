@@ -1,4 +1,4 @@
-﻿/* $Id: UIMouseHandler.cpp 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+﻿/* $Id: UIMouseHandler.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QtMath>
 #include <QMouseEvent>
 #include <QTimer>

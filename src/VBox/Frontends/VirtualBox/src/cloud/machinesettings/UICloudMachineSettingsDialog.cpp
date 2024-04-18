@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.cpp 104273 2024-04-10 12:24:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudMachineSettingsDialog.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QCloseEvent>
 #include <QPushButton>
 #include <QVBoxLayout>
 

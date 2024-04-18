@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 103893 2024-03-18 12:48:07Z sergey.dubov@oracle.com $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes */
+#include <QApplication>
 #include <QMenu>
 #include <QSignalMapper>
 #include <QStyle>
@@ -35,10 +36,10 @@
 #include "UIGuestOSType.h"
 #include "UIGuestOSTypeSelectionButton.h"
 #include "UIIconPool.h"
-
+#include "UITranslationEventListener.h"
 
 UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)
-    : QIWithRetranslateUI<QPushButton>(pParent)
+    : QPushButton(pParent)
 {
     /* Determine icon metric: */
     const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
@@ -61,7 +62,9 @@ UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)
         setMenu(m_pMainMenu);
 
     /* Apply language settings: */
-    retranslateUi();
+    sltRetranslateUI();
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIGuestOSTypeSelectionButton::sltRetranslateUI);
 }
 
 bool UIGuestOSTypeSelectionButton::isMenuShown() const
@@ -83,7 +86,7 @@ void UIGuestOSTypeSelectionButton::setOSTypeId(const QString &strOSTypeId)
     setText(gpGlobalSession->guestOSTypeManager().getDescription(m_strOSTypeId));
 }
 
-void UIGuestOSTypeSelectionButton::retranslateUi()
+void UIGuestOSTypeSelectionButton::sltRetranslateUI()
 {
     populateMenu();
 }
