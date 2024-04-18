@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 99173 2023-03-24 13:01:34Z alexander.rudnev@oracle.com $
+# $Id: Makefile.kmk 104360 2024-04-18 13:43:14Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -135,7 +135,7 @@ if defined(VBOX_SIGNING_MODE) && defined(VBOX_SIGN_ADDITIONS)
    	extract-timestamp-root --self-signed-roots-from-system, 1)
   endif
 
-  if $(intersects win_planb,$(VBOX_WITH_CORP_CODE_SIGNING))
+  if !$(intersects win, $(VBOX_WITH_CORP_CODE_SIGNING)) && $(intersects win_planb,$(VBOX_WITH_CORP_CODE_SIGNING))
    $(evalcall2 def_VBoxAdditionsInstCertFiles,vbox-sha256-r3.cer,$(VBOX_PATH_ADDITIONS)/VBoxDrvInst.exe, \
    	extract-exe-signer-cert, 1)
    VBOX_GA_CERT_ROOT_SHA2_R3 := vbox-sha256-r3-root.cer

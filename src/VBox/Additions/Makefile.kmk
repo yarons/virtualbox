@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104265 2024-04-10 07:31:59Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 104360 2024-04-18 13:43:14Z klaus.espenlaub@oracle.com $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -348,7 +348,7 @@ if defined(VBOX_WITH_ADDITIONS_ISO.win.amd64) || defined(VBOX_WITH_ADDITIONS_ISO
   ifdef VBOX_TSA_SHA2_URL_ARGS
    GUESTADDITIONS_FILESPEC.win += cert/vbox-sha256-timestamp-root.cer=$(VBOX_PATH_ADDITIONS.win)/vbox-sha256-timestamp-root.cer
   endif
-  if $(intersects win_planb,$(VBOX_WITH_CORP_CODE_SIGNING))
+  if !$(intersects win,$(VBOX_WITH_CORP_CODE_SIGNING)) && $(intersects win_planb,$(VBOX_WITH_CORP_CODE_SIGNING))
    GUESTADDITIONS_FILESPEC.win += \
    	cert/vbox-sha256-r3.cer=$(VBOX_PATH_ADDITIONS.win)/vbox-sha256-r3.cer \
    	cert/vbox-sha256-r3-root.cer=$(VBOX_PATH_ADDITIONS.win)/vbox-sha256-r3-root.cer \
