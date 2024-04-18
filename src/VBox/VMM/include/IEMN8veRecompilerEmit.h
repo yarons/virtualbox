@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104357 2024-04-17 21:57:03Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104359 2024-04-18 06:27:36Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -1121,18 +1121,18 @@ iemNativeEmitIncU32CounterInVCpuEx(PIEMNATIVEINSTR pCodeBuf, uint32_t off, uint8
     if (offVCpu < (unsigned)(_4K * cbData))
     {
         /* Use the unsigned variant of ldr Wt, [<Xn|SP>, #off]. */
-        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1,
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Word, idxTmp1,
                                                    IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
         pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
-        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1,
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Word, idxTmp1,
                                                    IEMNATIVE_REG_FIXED_PVMCPU, offVCpu / cbData);
     }
     else if (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx) < (unsigned)(_4K * cbData))
     {
-        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_Ld_Word, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
                                                    (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
         pCodeBuf[off++] = Armv8A64MkInstrAddUImm12(idxTmp1, idxTmp1, 1);
-        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Dword, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
+        pCodeBuf[off++] = Armv8A64MkInstrStLdRUOff(kArmv8A64InstrLdStType_St_Word, idxTmp1, IEMNATIVE_REG_FIXED_PCPUMCTX,
                                                    (offVCpu - RT_UOFFSETOF(VMCPU, cpum.GstCtx)) / cbData);
     }
     else
