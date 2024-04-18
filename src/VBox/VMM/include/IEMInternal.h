@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104361 2024-04-18 14:34:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104362 2024-04-18 15:29:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1908,6 +1908,8 @@ typedef struct IEMCPU
     STAMCOUNTER             StatCheckBranchMisses;
     /** Statistics: Times a jump or page crossing required a TB with CS.LIM checking. */
     STAMCOUNTER             StatCheckNeedCsLimChecking;
+    /** Statistics: Times a loop was detected within a TB.. */
+    STAMCOUNTER             StatTbLoopInTbDetected;
     /** Exec memory allocator statistics: Number of times allocaintg executable memory failed. */
     STAMCOUNTER             StatNativeExecMemInstrBufAllocFailed;
     /** Native TB statistics: Number of fully recompiled TBs. */
@@ -2068,7 +2070,7 @@ typedef struct IEMCPU
     /** Native recompiler: The TB finished executing jumping to the ObsoleteTb label. */
     STAMCOUNTER             StatNativeTbExitObsoleteTb;
 
-    uint64_t                au64Padding[5];
+    uint64_t                au64Padding[4];
     /** @} */
 
     /** Data TLB.

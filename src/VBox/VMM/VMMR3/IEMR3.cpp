@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 104361 2024-04-18 14:34:59Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 104362 2024-04-18 15:29:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -449,6 +449,10 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Branch target misses",                         "/IEM/CPU%u/re/CheckTbJmpMisses", idCpu);
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatCheckNeedCsLimChecking, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Needing CS.LIM checking TB after branch or on page crossing", "/IEM/CPU%u/re/CheckTbNeedCsLimChecking", idCpu);
+# ifdef VBOX_WITH_STATISTICS
+        STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatTbLoopInTbDetected, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "Detected loop within TB", "/IEM/CPU%u/re/LoopInTbDetected", idCpu);
+#endif
 
         STAMR3RegisterF(pVM, (void *)&pVCpu->iem.s.StatNativeExecMemInstrBufAllocFailed, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                         "Number of times the exec memory allocator failed to allocate a large enough buffer",
