@@ -1,4 +1,4 @@
-/* $Id: UIAdvancedSettingsDialog.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAdvancedSettingsDialog.h 104363 2024-04-18 17:10:19Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAdvancedSettingsDialog class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QMainWindow>
+#include <QVariant>
 
 /* GUI includes: */
 #include "UISettingsDefs.h"
@@ -43,7 +44,6 @@ class QProgressBar;
 class QShowEvent;
 class QStackedWidget;
 class QTimer;
-class QVariant;
 class QIDialogButtonBox;
 class UIFilterEditor;
 class UIModeCheckBox;
