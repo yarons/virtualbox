@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 103331 2024-02-13 10:45:22Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 104381 2024-04-19 18:13:02Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -239,6 +239,7 @@ SUPR3HardenedStatic_DEFS    += \
 	$(if $(VBOX_WITH_RAW_MODE),VBOX_WITH_RAW_MODE,) \
 	$(if $(VBOX_WITH_DRIVERLESS_NEM_FALLBACK),VBOX_WITH_DRIVERLESS_NEM_FALLBACK,) \
 	$(if $(VBOX_WITHOUT_DEBUGGER_CHECKS),VBOX_WITHOUT_DEBUGGER_CHECKS,) \
+	$(if $(VBOX_WITHOUT_HARDENING_INTEGRITY_CHECK),VBOX_WITHOUT_HARDENING_INTEGRITY_CHECK,) \
 	$(if $(VBOX_PERMIT_VISUAL_STUDIO_PROFILING),VBOX_PERMIT_VISUAL_STUDIO_PROFILING,) \
 	VBOX_PERMIT_MORE \
 	VBOX_PERMIT_EVEN_MORE

@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPHardenedVerify-win.h 104381 2024-04-19 18:13:02Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -147,8 +147,10 @@ DECLHIDDEN(int)  supHardenedWinVerifyImageByLdrMod(RTLDRMOD hLdrMod, PCRTUTF16 p
 #  define SUPHNTVI_F_REQUIRE_BUILD_CERT             RT_BIT(0)
 /** Require kernel code signing level. */
 #  define SUPHNTVI_F_REQUIRE_KERNEL_CODE_SIGNING    RT_BIT(1)
+#  ifndef VBOX_WITHOUT_HARDENING_INTEGRITY_CHECK
 /** Require the image to force the memory mapper to do signature checking. */
-#  define SUPHNTVI_F_REQUIRE_SIGNATURE_ENFORCEMENT  RT_BIT(2)
+#   define SUPHNTVI_F_REQUIRE_SIGNATURE_ENFORCEMENT  RT_BIT(2)
+#  endif
 /** Whether to allow image verification by catalog file. */
 #  define SUPHNTVI_F_ALLOW_CAT_FILE_VERIFICATION    RT_BIT(3)
 /** The file owner must be TrustedInstaller on Vista+. */
