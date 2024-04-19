@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104380 2024-04-19 14:50:20Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104383 2024-04-19 20:00:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -211,7 +211,7 @@ RT_C_DECLS_BEGIN
 /** @def IEM_WITH_THREE_0F_38
  * Includes the three byte opcode map for instrs starting with 0x0f 0x38. */
 #if !defined(IEM_WITH_THREE_0F_38) || defined(DOXYGEN_RUNNING) /* For doxygen, set in Config.kmk. */
-# ifdef IEM_WITHOUT_THREE_0F_38
+# ifndef IEM_WITHOUT_THREE_0F_38
 #  define IEM_WITH_THREE_0F_38
 # endif
 #endif
