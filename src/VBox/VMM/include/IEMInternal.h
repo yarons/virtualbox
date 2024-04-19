@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104378 2024-04-19 14:43:14Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104380 2024-04-19 14:50:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -319,22 +319,6 @@ typedef IEMINSTRSTATS *PIEMINSTRSTATS;
 #else
 # define IEM_SELECT_HOST_OR_FALLBACK(a_fCpumFeatureMember, a_pfnNative, a_pfnFallback) (a_pfnFallback)
 #endif
-
-
-/**
- * Extended operand mode that includes a representation of 8-bit.
- *
- * This is used for packing down modes when invoking some C instruction
- * implementations.
- */
-typedef enum IEMMODEX
-{
-    IEMMODEX_16BIT = IEMMODE_16BIT,
-    IEMMODEX_32BIT = IEMMODE_32BIT,
-    IEMMODEX_64BIT = IEMMODE_64BIT,
-    IEMMODEX_8BIT
-} IEMMODEX;
-AssertCompileSize(IEMMODEX, 4);
 
 
 /**
