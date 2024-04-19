@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 104381 2024-04-19 18:13:02Z klaus.espenlaub@oracle.com $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 104384 2024-04-19 22:03:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -2147,7 +2147,7 @@ static int supHardNtLdrCacheNewEntry(PSUPHNTLDRCACHEENTRY pEntry, const char *ps
      * for this image.
      */
     uint32_t fFlags = fDll
-                    ? SUPHNTVI_F_TRUSTED_INSTALLER_OWNER | SUPHNTVI_F_ALLOW_CAT_FILE_VERIFICATION
+                    ? SUPHNTVI_F_TRUSTED_INSTALLER_OR_SIMILAR_OWNER | SUPHNTVI_F_ALLOW_CAT_FILE_VERIFICATION
                     : SUPHNTVI_F_REQUIRE_BUILD_CERT;
     if (f32bitResourceDll)
         fFlags |= SUPHNTVI_F_IGNORE_ARCHITECTURE;
@@ -2394,7 +2394,7 @@ static int supHardNtVpCheckExe(PSUPHNTVPSTATE pThis)
                                    "NtQueryInformationProcess/ProcessImageInformation failed: %#x hProcess=%#x",
                                    rcNt, pThis->hProcess);
     }
-#ifndef VBOX_WITHOUT_HARDENING_INTEGRITY_CHECK
+#ifndef VBOX_WITHOUT_WINDOWS_KERNEL_CODE_SIGNING_CERT /* A kernel code signing cert is only via way to use /IntegrityCheck. */
     if ( !(ImageInfo.DllCharacteristics & IMAGE_DLLCHARACTERISTICS_FORCE_INTEGRITY))
         return supHardNtVpSetInfo2(pThis, VERR_SUP_VP_EXE_MISSING_FORCE_INTEGRITY,
                                    "EXE DllCharacteristics=%#x, expected IMAGE_DLLCHARACTERISTICS_FORCE_INTEGRITY to be set.",
