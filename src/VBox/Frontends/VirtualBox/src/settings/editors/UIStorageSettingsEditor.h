@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.h 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.h 104371 2024-04-19 07:29:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class declaration.
  */
@@ -53,6 +53,7 @@ class QComboBox;
 class QHBoxLayout;
 class QLabel;
 class QLineEdit;
+class QMenu;
 class QSpinBox;
 class QStackedWidget;
 class QVBoxLayout;
