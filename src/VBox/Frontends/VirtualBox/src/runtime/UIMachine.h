@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 103987 2024-03-21 12:33:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.h 104374 2024-04-19 09:45:23Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -58,6 +58,7 @@
 #include "KVMExecutionEngine.h"
 
 /* Forward declarations: */
+class QMenu;
 class QWidget;
 class UIActionPool;
 class UIFrameBuffer;
