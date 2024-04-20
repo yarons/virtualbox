@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 104388 2024-04-20 19:08:19Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 104389 2024-04-20 19:15:12Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1765,7 +1765,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
             /* 64KiB stacks are not supported at least linux.arm64 (thread creation fails). */
             size_t const cbStack = _128K;
 #else
-            size_t const cbStack = _64K
+            size_t const cbStack = _64K;
 #endif
             rc = PDMDrvHlpThreadCreate(pThis->pDrvIns, &pThis->pHostResThread,
                                        pThis, drvNATHostResThread, drvNATHostResWakeup,
