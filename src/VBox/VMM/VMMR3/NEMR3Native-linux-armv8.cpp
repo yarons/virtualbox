@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-linux-armv8.cpp 104385 2024-04-20 18:55:32Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3Native-linux-armv8.cpp 104387 2024-04-20 19:06:46Z alexander.eichner@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend arm64 version.
  */
@@ -1625,7 +1625,7 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
     for (unsigned iLoop = 0;; iLoop++)
     {
         /*
-         * Sync the interrupt state. 
+         * Sync the interrupt state.
          */
         rcStrict = nemHCLnxHandleInterruptFF(pVM, pVCpu);
         if (rcStrict == VINF_SUCCESS)
