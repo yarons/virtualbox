@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104378 2024-04-19 14:43:14Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104386 2024-04-20 19:05:54Z alexander.eichner@oracle.com $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -505,7 +505,8 @@ ifdef VBOX_WITH_VIRT_ARMV8
  VBoxVMMArm_LDFLAGS.darwin.arm64 = -framework Hypervisor
 
  VBoxVMMArm_SOURCES.linux.arm64 += \
- 	VMMR3/NEMR3Native-linux-armv8.cpp
+ 	VMMR3/NEMR3Native-linux-armv8.cpp \
+ 	VMMR3/GICR3Kvm.cpp
  VBoxVMMArm_DEFS.linux.arm64    += VBOX_WITH_NATIVE_NEM
 
  VBoxVMMArm_LIBS = \
