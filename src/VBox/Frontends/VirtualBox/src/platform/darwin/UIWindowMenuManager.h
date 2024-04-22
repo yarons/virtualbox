@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.h 104394 2024-04-22 13:07:03Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWindowMenuManager.h 104395 2024-04-22 13:19:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class declaration.
  */
@@ -34,6 +34,9 @@
 /* Qt includes: */
 #include <QHash>
 #include <QObject>
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QMenu;
