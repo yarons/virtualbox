@@ -1,4 +1,4 @@
-/* $Id: GICR3Kvm.cpp 104386 2024-04-20 19:05:54Z alexander.eichner@oracle.com $ */
+/* $Id: GICR3Kvm.cpp 104392 2024-04-22 11:09:21Z alexander.eichner@oracle.com $ */
 /** @file
  * GIC - Generic Interrupt Controller Architecture (GICv3) - KVM in kernel interface.
  */
@@ -52,6 +52,7 @@
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
