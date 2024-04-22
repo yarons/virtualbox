@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: UIWindowMenuManager.cpp 104394 2024-04-22 13:07:03Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -31,6 +31,7 @@
 #include <QMenu>
 
 /* GUI includes: */
+#include "UITranslationEventListener.h"
 #include "UIWindowMenuManager.h"
 
 /* Other VBox includes: */
@@ -289,7 +290,7 @@ void UIWindowMenuManager::removeWindow(QWidget *pWindow)
     m_windows.removeAll(pWindow);
 }
 
-void UIWindowMenuManager::retranslateUi()
+void UIWindowMenuManager::sltRetranslateUI()
 {
     /* Translate all the helpers: */
     foreach (UIMenuHelper *pHelper, m_helpers.values())
@@ -303,6 +304,8 @@ UIWindowMenuManager::UIWindowMenuManager()
 
     /* Install global event-filter: */
     qApp->installEventFilter(this);
+    connect(&translationEventListener(), &UITranslationEventListener::sigRetranslateUI,
+            this, &UIWindowMenuManager::sltRetranslateUI);
 }
 
 UIWindowMenuManager::~UIWindowMenuManager()
@@ -361,11 +364,11 @@ bool UIWindowMenuManager::eventFilter(QObject *pObject, QEvent *pEvent)
     {
         QWidget *pWidget = qobject_cast<QWidget*>(pObject);
         if (pWidget && m_helpers.contains(pWidget))
-            retranslateUi();
+            sltRetranslateUI();
     }
 
     /* Call to base-class: */
-    return QIWithRetranslateUI3<QObject>::eventFilter(pObject, pEvent);
+    return QObject::eventFilter(pObject, pEvent);
 }
 
 
