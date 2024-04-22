@@ -1,4 +1,4 @@
-/* $Id: UIShortcutConfigurationEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIShortcutConfigurationEditor.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutConfigurationEditor class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QHeaderView>
 #include <QItemEditorFactory>
 #include <QTabWidget>

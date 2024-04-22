@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAbstractTableModel>
+#include <QApplication>
 #include <QCheckBox>
 #include <QHeaderView>
 #include <QItemDelegate>

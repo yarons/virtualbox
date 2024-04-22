@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowSeamless.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -29,6 +29,7 @@
 #include <QMenu>
 #include <QSpacerItem>
 #include <QTimer>
+#include <QWindowStateChangeEvent>
 
 /* GUI includes: */
 #include "UIActionPoolRuntime.h"

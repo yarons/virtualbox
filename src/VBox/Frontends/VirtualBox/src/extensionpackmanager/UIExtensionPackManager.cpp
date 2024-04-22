@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 104245 2024-04-09 08:03:20Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtensionPackManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QDir>
 #include <QHeaderView>
 #include <QPushButton>

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 103771 2024-03-11 15:16:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneMachine.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QStackedLayout>
 #ifndef VBOX_WS_MAC
 # include <QStyle>

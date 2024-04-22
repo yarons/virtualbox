@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMenuBarEditor.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditor class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QAccessibleWidget>
+#include <QApplication>
 #include <QHBoxLayout>
 #include <QMenu>
 #include <QMenuBar>

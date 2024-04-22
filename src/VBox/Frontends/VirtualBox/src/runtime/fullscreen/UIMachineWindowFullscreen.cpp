@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 103538 2024-02-22 17:06:26Z sergey.dubov@oracle.com $ */
+/* $Id: UIMachineWindowFullscreen.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -28,6 +28,7 @@
 /* Qt includes: */
 #include <QMenu>
 #include <QTimer>
+#include <QWindowStateChangeEvent>
 #ifdef VBOX_WS_WIN
 # include <QWindow>
 #endif

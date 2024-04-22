@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 102518 2023-12-07 11:42:19Z knut.osmundsen@oracle.com $ */
+/* $Id: UIKeyboardHandler.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -41,6 +41,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QKeyEvent>
 #include <QTimer>
 

@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -37,7 +37,6 @@
 #include <QVector>
 
 /* GUI includes: */
-#include "QIWithRetranslateUI.h"
 #include "UIDefs.h"
 #include "UIExtraDataDefs.h"
 #include "UILibraryDefs.h"
@@ -471,7 +470,7 @@ private:
 
 /** Abstract QObject extension
   * representing action-pool interface and factory. */
-class SHARED_LIBRARY_STUFF UIActionPool : public QIWithRetranslateUI3<QObject>
+class SHARED_LIBRARY_STUFF UIActionPool : public QObject
 {
     Q_OBJECT;
 
@@ -612,9 +611,6 @@ protected:
     /** Handles any Qt @a pEvent */
     virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
-    /** Handles translation event. */
-    virtual void retranslateUi() RT_OVERRIDE;
-
     /** Adds action into corresponding menu. */
     bool addAction(UIMenu *pMenu, UIAction *pAction, bool fReallyAdd = true);
     /** Adds action's menu into corresponding menu list. */
@@ -664,6 +660,11 @@ protected:
 #endif
     /** Holds restricted action types of the Help menu. */
     QMap<UIActionRestrictionLevel, UIExtraDataMetaDefs::MenuHelpActionType>         m_restrictedActionsMenuHelp;
+
+private slots:
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 private:
 

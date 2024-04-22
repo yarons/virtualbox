@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QHeaderView>

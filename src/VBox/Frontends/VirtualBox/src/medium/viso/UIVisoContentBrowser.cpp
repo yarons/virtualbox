@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 104241 2024-04-09 05:23:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -27,6 +27,8 @@
 
 
 /* Qt includes: */
+#include <QApplication>
+#include <QDragMoveEvent>
 #include <QDir>
 #include <QItemDelegate>
 #include <QFileInfo>

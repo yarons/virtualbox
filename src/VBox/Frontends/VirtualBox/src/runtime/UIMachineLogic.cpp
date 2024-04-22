@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QActionGroup>
+#include <QApplication>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>

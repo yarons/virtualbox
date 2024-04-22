@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 104055 2024-03-26 09:14:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QFontDatabase>
 #include <QMetaEnum>
 #include <QMutex>

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 104297 2024-04-11 13:20:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QDateTime>
 #include <QFileInfo>
 #include <QHBoxLayout>

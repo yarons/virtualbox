@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIShortcutPool.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -24,6 +24,9 @@
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
+
+/* Qt includes: */
+#include <QApplication>
 
 /* GUI includes: */
 #include "UIActionPool.h"

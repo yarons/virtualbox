@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* Qt includes: */
 #include <QActionGroup>
+#include <QApplication>
 #include <QClipboard>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>

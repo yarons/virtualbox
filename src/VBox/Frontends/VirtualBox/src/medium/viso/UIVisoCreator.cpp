@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 104232 2024-04-08 14:20:52Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoCreator.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator classes implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QGroupBox>

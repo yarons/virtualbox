@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 103020 2024-01-24 12:44:48Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolPaneGlobal.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QStackedLayout>
 #ifndef VBOX_WS_MAC
 # include <QStyle>

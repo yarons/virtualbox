@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINetworkManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class implementation.
  */
@@ -26,6 +26,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QHeaderView>
 #include <QMenuBar>
 #include <QPushButton>
