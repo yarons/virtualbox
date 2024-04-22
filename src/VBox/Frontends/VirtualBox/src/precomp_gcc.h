@@ -1,4 +1,4 @@
-/* $Id: precomp_gcc.h 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $*/
+/* $Id: precomp_gcc.h 104397 2024-04-22 14:01:44Z serkan.bayraktar@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -172,9 +172,7 @@
 /* These two are freuqently used internal headers. */
 #include "UILibraryDefs.h"
 /*#include "QIWithRestorableGeometry.h" - broken as it includes iprt/log.h thru UIDefs.h via UICommon.h. */
-/*#include "QIWithRetranslateUI.h"      - broken as it includes iprt/log.h thru UIDefs.h via UITranslator.h. */
 
 #if defined(Log) || defined(LogIsEnabled)
 # error "Log() from iprt/log.h cannot be defined in the precompiled header!"
 #endif
-
