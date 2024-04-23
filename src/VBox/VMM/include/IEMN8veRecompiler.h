@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104383 2024-04-19 20:00:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104407 2024-04-23 23:16:04Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -471,6 +471,7 @@ typedef enum
     /* Manually defined labels. */
     kIemNativeLabelType_Return,
     kIemNativeLabelType_ReturnBreak,
+    kIemNativeLabelType_ReturnBreakFF,
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
     /** The last fixup for branches that can span almost the whole TB length. */
