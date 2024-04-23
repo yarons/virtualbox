@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 104405 2024-04-23 21:47:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 104406 2024-04-23 21:53:43Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -2823,6 +2823,8 @@ DECL_FORCE_INLINE(PIEMTB *) iemTbGetTbLookupEntryWithRip(PCIEMTB pTb, uint8_t uT
  */
 static VBOXSTRICTRC iemTbExec(PVMCPUCC pVCpu, PIEMTB pTb) IEM_NOEXCEPT_MAY_LONGJMP
 {
+    Assert(!(pVCpu->iem.s.GCPhysInstrBuf & (RTGCPHYS)GUEST_PAGE_OFFSET_MASK));
+
     /*
      * Set the current TB so CIMPL functions may get at it.
      */
