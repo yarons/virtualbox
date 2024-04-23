@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104403 2024-04-23 09:51:08Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104404 2024-04-23 13:13:54Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -4216,7 +4216,7 @@ iemNativeEmitAddGprImm(PIEMRECOMPILERSTATE pReNative, uint32_t off, uint8_t iGpr
     else
     {
         /* Use temporary register for the immediate. */
-        uint8_t iTmpReg = iemNativeRegAllocTmpImm(pReNative, &off, (uint64_t)iAddend);
+        uint8_t iTmpReg = iemNativeRegAllocTmpImm(pReNative, &off, (uint64_t)uAbsAddend);
 
         /* add gprdst, gprdst, tmpreg */
         uint32_t *pu32CodeBuf = iemNativeInstrBufEnsure(pReNative, off, 1);
