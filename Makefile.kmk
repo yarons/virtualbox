@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104242 2024-04-09 06:03:09Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 104417 2024-04-24 13:44:27Z sergey.dubov@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -335,7 +335,7 @@ if   !defined(VBOX_ONLY_ADDITIONS) \
     VBOX_QT_VERSION       := 5.15.2
     VBOX_QT_VERSION_MAJOR := 5
    else
-    VBOX_QT_VERSION       := 6.3.0
+    VBOX_QT_VERSION       := 6.5.3
     VBOX_QT_VERSION_MAJOR := 6
    endif
    ifdef VBOX_WITH_HARDENING
