@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104421 2024-04-24 14:35:14Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 104426 2024-04-24 15:39:28Z klaus.espenlaub@oracle.com $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -1237,7 +1237,7 @@ else
 	$(VBOX_SIGNTOOL) remove /s /q $(VBOX_WIN_INST_REPACK_DIR)/VBoxUSBMon.sys
 	$(CP) $(PATH_STAGE_BIN)/VMMR0.r0 $(VBOX_WIN_INST_REPACK_DIR)
 	$(VBOX_SIGNTOOL) remove /s /q $(VBOX_WIN_INST_REPACK_DIR)/VMMR0.r0
-	$(CP) $(PATH_STAGE_BIN)/VBoxDD0.r0 $(VBOX_WIN_INST_REPACK_DIR)
+	$(CP) $(PATH_STAGE_BIN)/VBoxDDR0.r0 $(VBOX_WIN_INST_REPACK_DIR)
 	$(VBOX_SIGNTOOL) remove /s /q $(VBOX_WIN_INST_REPACK_DIR)/VBoxDDR0.r0
 	cd $(VBOX_WIN_INST_REPACK_DIR) && ls -la
 	$(APPEND) -nt "$(VBOX_WIN_INST_REPACK_DIR)/PackDriversForSubmission_internal.cmd" \
