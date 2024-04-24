@@ -1,4 +1,4 @@
-/* $Id: IEMInline.h 104419 2024-04-24 14:32:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInline.h 104424 2024-04-24 14:49:27Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Inlined Functions.
  */
@@ -3610,7 +3610,7 @@ DECLINLINE(RTGCPTR) iemRegGetRspForPopEx(PCVMCPU pVCpu, PRTUINT64U pTmpRsp, uint
 /** Common body for iemRegRipNearReturnAndFinishClearingRF()
  * and iemRegRipNearReturnAndFinishNoFlags(). */
 template<bool a_fWithFlags>
-DECL_FORCE_INLINE(VBOXSTRICTRC) 
+DECL_FORCE_INLINE(VBOXSTRICTRC)
 iemRegRipNearReturnCommon(PVMCPUCC pVCpu, uint8_t cbInstr, uint16_t cbPop, IEMMODE enmEffOpSize) RT_NOEXCEPT
 {
     /* Fetch the new RIP from the stack. */
