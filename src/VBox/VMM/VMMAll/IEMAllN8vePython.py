@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllN8vePython.py 104420 2024-04-24 14:34:11Z alexander.eichner@oracle.com $
+# $Id: IEMAllN8vePython.py 104422 2024-04-24 14:36:28Z alexander.eichner@oracle.com $
 # pylint: disable=invalid-name
 
 """
@@ -34,7 +34,7 @@ along with this program; if not, see <https://www.gnu.org/licenses>.
 
 SPDX-License-Identifier: GPL-3.0-only
 """
-__version__ = "$Revision: 104420 $"
+__version__ = "$Revision: 104422 $"
 
 # Standard python imports:
 import copy;
@@ -116,7 +116,7 @@ g_dMcStmtThreaded = {
 
     'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC16':                      (None, True,  True,  True,  ),
     'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),
-    'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC64':                      (None, True,  True,  False, ), # @todo These should never be called - can be called on AMD but not on Intel, 'call ax' in 64-bit code is valid and should push a 16-bit IP IIRC. 
+    'IEM_MC_IND_CALL_U16_AND_FINISH_THREADED_PC64':                      (None, True,  True,  False, ), # @todo These should never be called - can be called on AMD but not on Intel, 'call ax' in 64-bit code is valid and should push a 16-bit IP IIRC.
     'IEM_MC_IND_CALL_U32_AND_FINISH_THREADED_PC16':                      (None, True,  True,  True,  ),
     'IEM_MC_IND_CALL_U32_AND_FINISH_THREADED_PC32':                      (None, True,  True,  True,  ),
     'IEM_MC_IND_CALL_U32_AND_FINISH_THREADED_PC64':                      (None, True,  True,  False, ), # @todo These should never be called - can't encode this.
