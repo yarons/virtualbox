@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstPython.py 104270 2024-04-10 10:25:04Z alexander.eichner@oracle.com $
+# $Id: IEMAllInstPython.py 104419 2024-04-24 14:32:29Z alexander.eichner@oracle.com $
 
 """
 IEM instruction extractor.
@@ -43,7 +43,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104270 $"
+__version__ = "$Revision: 104419 $"
 
 # pylint: disable=anomalous-backslash-in-string,too-many-lines
 
@@ -3179,6 +3179,9 @@ g_dMcStmtParsers = {
     'IEM_MC_IF_RCX_IS_NOT_ONE_AND_EFL_BIT_SET':                  (McBlock.parseMcGenericCond,       True,  False, True,  ),
     'IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80':                   (McBlock.parseMcGenericCond,       True,  True,  False, ),
     'IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80_FIRST':             (McBlock.parseMcGenericCond,       True,  True,  False, ),
+    'IEM_MC_IND_CALL_U16_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_IND_CALL_U32_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_IND_CALL_U64_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_INT_CLEAR_ZMM_256_UP':                               (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_LOCAL':                                              (McBlock.parseMcLocal,             False, False, True,  ),
     'IEM_MC_LOCAL_ASSIGN':                                       (McBlock.parseMcLocalAssign,       False, False, True,  ),
@@ -3298,9 +3301,13 @@ g_dMcStmtParsers = {
     'IEM_MC_REF_YREG_U128':                                      (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_YREG_U128_CONST':                                (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_REF_YREG_U64_CONST':                                 (McBlock.parseMcGeneric,           False, False, False, ),
+    'IEM_MC_REL_CALL_S16_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_REL_CALL_S32_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_REL_CALL_S64_AND_FINISH':                            (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_REL_JMP_S16_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_REL_JMP_S32_AND_FINISH':                             (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_REL_JMP_S8_AND_FINISH':                              (McBlock.parseMcGeneric,           True,  True,  False, ),
+    'IEM_MC_RETN_AND_FINISH':                                    (McBlock.parseMcGeneric,           True,  True,  False, ),
     'IEM_MC_RETURN_ON_FAILURE':                                  (McBlock.parseMcGeneric,           False, False, False, ),
     'IEM_MC_SAR_LOCAL_S16':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
     'IEM_MC_SAR_LOCAL_S32':                                      (McBlock.parseMcGeneric,           False, False, True,  ),
