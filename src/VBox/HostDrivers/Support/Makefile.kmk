@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104384 2024-04-19 22:03:10Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104436 2024-04-25 16:57:24Z klaus.espenlaub@oracle.com $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -787,6 +787,9 @@ if   !defined(VBOX_ONLY_DOCS) \
    	win/SUPHardenedVerifyImage-win.cpp \
    	win/SUPHardenedVerifyProcess-win.cpp \
    	$(VBOX_SUP_WIN_CERTS_FILE)
+   ifdef VBOX_WITHOUT_WINDOWS_KERNEL_CODE_SIGNING_CERT
+    VBoxDrv_DEFS.win     += VBOX_WITHOUT_WINDOWS_KERNEL_CODE_SIGNING_CERT
+   endif
   endif
   VBoxDrv_SOURCES         = \
   	SUPDrv.d \
