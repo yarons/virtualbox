@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 103117 2024-01-30 09:01:20Z alexander.eichner@oracle.com $ */
+/* $Id: ftp-server.cpp 104438 2024-04-25 19:54:41Z klaus.espenlaub@oracle.com $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  *
@@ -2269,7 +2269,7 @@ static int rtFtpServerCmdArgsParse(const char *pszCmdParms, uint8_t *pcArgs, cha
     int rc = RTGetOptArgvFromString(ppapszArgs, &cArgs, pszCmdParms, RTGETOPTARGV_CNV_QUOTE_MS_CRT, " " /* Separators */);
     if (RT_SUCCESS(rc))
     {
-        if ((unsigned int)cArgs <= UINT8_MAX)
+        if ((unsigned int)cArgs <= (unsigned int)UINT8_MAX)
         {
             *pcArgs = (uint8_t)cArgs;
         }
