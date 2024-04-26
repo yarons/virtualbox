@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitorPaneContainer.cpp 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitorPaneContainer.cpp 104446 2024-04-26 14:22:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -43,7 +43,7 @@ UIVMActivityMonitorPaneContainer::UIVMActivityMonitorPaneContainer(QWidget *pPar
     , m_pColorChangeButton0(0)
     , m_pColorChangeButton1(0)
     , m_pColorChangeReset0(0)
-    , m_pColorChangeReset1;
+    , m_pColorChangeReset1(0)
 {
     prepare();
 }
