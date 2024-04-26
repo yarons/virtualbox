@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 104419 2024-04-24 14:32:29Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMCheckMc.cpp 104439 2024-04-26 10:30:18Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -355,6 +355,8 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define iemAImpl_packuswb_u128          NULL
 #define iemAImpl_packusdw_u128          NULL
 
+#define iemAImpl_maskmovq_u64           NULL
+#define iemAImpl_maskmovdqu_u128        NULL
 
 #define iemAImpl_pand_u64               NULL
 #define iemAImpl_pandn_u64              NULL

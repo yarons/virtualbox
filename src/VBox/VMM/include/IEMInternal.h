@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104419 2024-04-24 14:32:29Z alexander.eichner@oracle.com $ */
+/* $Id: IEMInternal.h 104439 2024-04-26 10:30:18Z bela.lubkin@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -3652,6 +3652,8 @@ FNIEMAIMPLMEDIAPSHIFTU128 iemAImpl_pslldq_imm_u128, iemAImpl_psrldq_imm_u128;
 
 /** @name Media (SSE/MMX/AVX) operation: Move Byte Mask
  * @{ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_maskmovq_u64,(uint64_t *puMem, uint64_t const *puSrc, uint64_t const *puMsk));
+IEM_DECL_IMPL_DEF(void, iemAImpl_maskmovdqu_u128,(PRTUINT128U puMem, PCRTUINT128U puSrc, PCRTUINT128U puMsk));
 IEM_DECL_IMPL_DEF(void, iemAImpl_pmovmskb_u64,(uint64_t *pu64Dst, uint64_t const *puSrc));
 IEM_DECL_IMPL_DEF(void, iemAImpl_pmovmskb_u128,(uint64_t *pu64Dst, PCRTUINT128U puSrc));
 #ifndef IEM_WITHOUT_ASSEMBLY
