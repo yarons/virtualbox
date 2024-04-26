@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 101472 2023-10-17 11:45:00Z brent.paulson@oracle.com $ */
+/* $Id: ApplianceImplImport.cpp 104444 2024-04-26 14:08:06Z aleksey.ilyushin@oracle.com $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2635,6 +2635,14 @@ HRESULT Appliance::i_readOVFFile(TaskOVF *pTask, RTVFSIOSTREAM hVfsIosOvf, const
     void  *pvBufferedOvf;
     size_t cbBufferedOvf;
     int vrc = RTVfsIoStrmReadAll(hVfsIosOvf, &pvBufferedOvf, &cbBufferedOvf);
+    /*
+     * Get rid of trailing zeros if xml is encoded in UTF-8 only. This is needed because
+     * starting with libxml2 2.12.6 the parser will complain about extra zeroes beyond
+     * the xml string content.
+     */
+    size_t cbValidXmlBufLen = cbBufferedOvf;
+    if (*(uint8_t*)pvBufferedOvf == 0x3C)
+        cbValidXmlBufLen = RTStrNLen((const char *)pvBufferedOvf, cbBufferedOvf);
     uint32_t cRefs = RTVfsIoStrmRelease(hVfsIosOvf);     /* consumes stream handle.  */
     NOREF(cRefs);
     Assert(cRefs == 0);
@@ -2644,7 +2652,7 @@ HRESULT Appliance::i_readOVFFile(TaskOVF *pTask, RTVFSIOSTREAM hVfsIosOvf, const
     HRESULT hrc;
     try
     {
-        m->pReader = new ovf::OVFReader(pvBufferedOvf, cbBufferedOvf, pTask->locInfo.strPath);
+        m->pReader = new ovf::OVFReader(pvBufferedOvf, cbValidXmlBufLen, pTask->locInfo.strPath);
         hrc = S_OK;
     }
     catch (RTCError &rXcpt)      // includes all XML exceptions
