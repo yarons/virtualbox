@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitorPaneContainer.h 104446 2024-04-26 14:22:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitorPaneContainer.h 104448 2024-04-26 14:36:53Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitorPanel class declaration.
  */
@@ -63,8 +63,7 @@ private:
     QPushButton *m_pColorChangeButton0;
     QPushButton *m_pColorChangeButton1;
 
-    QPushButton *m_pColorChangeReset0;
-    QPushButton *m_pColorChangeReset1;
+
 };
 
 
