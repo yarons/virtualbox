@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -1031,6 +1031,7 @@ void UIVirtualBoxManagerWidget::updateToolbar()
             {
                 m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_Export));
                 m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_S_ToVMActivityOverview));
+                m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Activity_T_Preferences));
                 m_pToolBar->addSeparator();
                 m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Settings));
                 m_pToolBar->addAction(actionPool()->action(UIActionIndexMN_M_Machine_S_Discard));

@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManager.cpp 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -229,8 +229,6 @@ void UIFileManager::prepareObjects()
     for (int i = 0; i < m_pFileTableSplitter->count(); ++i)
         m_pFileTableSplitter->setCollapsible(i, false);
 
-    /** Vertical splitter has 3 widgets. Log panel as bottom most one, operations panel on top of it,
-     * and pTopWidget which contains everthing else: */
     m_pVerticalSplitter = new QSplitter;
     if (m_pVerticalSplitter)
     {

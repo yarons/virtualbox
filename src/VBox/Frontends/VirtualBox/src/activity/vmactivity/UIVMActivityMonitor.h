@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -159,11 +159,11 @@ public:
 
 public slots:
 
-        void sltExportMetricsToFile();
+    void sltExportMetricsToFile();
 
 protected slots:
 
-        virtual void sltRetranslateUI();
+    virtual void sltRetranslateUI();
 
 protected:
 
@@ -234,7 +234,6 @@ private:
 
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
-
     EmbedTo m_enmEmbedding;
 };
 

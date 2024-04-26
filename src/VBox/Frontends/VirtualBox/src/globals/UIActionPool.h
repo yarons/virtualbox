@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -105,6 +105,7 @@ enum UIActionIndex
     UIActionIndex_M_Activity,
     UIActionIndex_M_Activity_S_Export,
     UIActionIndex_M_Activity_S_ToVMActivityOverview,
+    UIActionIndex_M_Activity_T_Preferences,
 
     /* File Manager actions: */
     UIActionIndex_M_FileManager,

@@ -1,4 +1,4 @@
-/* $Id: UIPaneContainer.h 103923 2024-03-19 17:01:11Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPaneContainer.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -76,9 +76,7 @@ private:
 
     EmbedTo  m_enmEmbedTo;
     bool     m_fDetachAllowed;
-
     QTabWidget *m_pTabWidget;
-
     QIDialogButtonBox *m_pButtonBox;
 };
 

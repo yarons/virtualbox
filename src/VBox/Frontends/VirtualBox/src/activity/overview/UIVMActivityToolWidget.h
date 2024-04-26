@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 103943 2024-03-20 10:23:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -32,20 +32,23 @@
 #endif
 
 /* Qt includes: */
-#include <QTabWidget>
+#include <QWidget>
 #include <QUuid>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
 
 /* Forward declarations: */
-class UIActionPool;
-class QIToolBar;
-class UIVirtualMachineItem;
 class CMachine;
+class QIToolBar;
+class QTabWidget;
+class UIActionPool;
+class UIVirtualMachineItem;
+class UIVMActivityMonitorPaneContainer;
+
 
 /** QTabWidget extension host machine activity widget(s) in the Manager UI. */
-class UIVMActivityToolWidget : public QTabWidget
+class UIVMActivityToolWidget : public QWidget
 {
     Q_OBJECT;
 
@@ -72,6 +75,7 @@ private slots:
 
     void sltExportToFile();
     void sltCurrentTabChanged(int iIndex);
+    void sltTogglePreferencesPane(bool fChecked);
 
 private:
 
@@ -104,6 +108,8 @@ private:
     bool    m_fIsCurrentTool;
     QVector<QUuid> m_machineIds;
     QAction *m_pExportToFileAction;
+    UIVMActivityMonitorPaneContainer *m_pPaneContainer;
+    QTabWidget *m_pTabWidget;
 };
 
 
