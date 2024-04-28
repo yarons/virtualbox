@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 104449 2024-04-28 08:59:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.h 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -81,6 +81,8 @@ private slots:
 
 private:
 
+    void loadSettings();
+    void saveSettings();
     void setMachines(const QList<UIVirtualMachineItem*> &machines);
     /** @name Prepare/cleanup cascade.
       * @{ */
@@ -88,7 +90,6 @@ private:
         void prepareToolBar();
         void prepareActions();
         void updateColumnsMenu();
-        void loadSettings();
     /** @} */
 
     /** Remove tabs conaining machine monitors with ids @machineIdsToRemove. */

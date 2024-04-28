@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 102775 2024-01-05 15:27:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataDefs.cpp 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -267,6 +267,7 @@ const char *UIExtraDataDefs::GUI_HelpBrowser_ZoomPercentage = "GUI/HelpBrowserZo
 /* VM Activity Overview: */
 const char *UIExtraDataDefs::GUI_VMActivityOverview_HiddenColumns = "GUI/VMActivityOverviewHiddenColumns";
 const char *UIExtraDataDefs::GUI_VMActivityOverview_ShowAllMachines = "GUI/VMActivityOverviewShowAllMachines";
+const char *UIExtraDataDefs::GUI_VMActivityMonitor_DataSeriesColors = "GUI/VMActivityMonitorDataSeriesColors";
 
 const char *UIExtraDataDefs::GUI_MediumSelector_DialogGeometry = "GUI/MediumSelector/DialogGeometry";
 

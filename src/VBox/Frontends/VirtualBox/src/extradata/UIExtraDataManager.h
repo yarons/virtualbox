@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 104055 2024-03-26 09:14:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -867,12 +867,14 @@ public:
         QStringList helpBrowserBookmarks();
     /** @} */
 
-    /** @name Manager UI: VM Activity Overview
+    /** @name Manager UI: VM Activity Monitor and Overview
       * @{ */
         void setVMActivityOverviewHiddenColumnList(const QStringList &hiddenColumnList);
         QStringList VMActivityOverviewHiddenColumnList();
         bool VMActivityOverviewShowAllMachines();
         void setVMActivityOverviewShowAllMachines(bool fShow);
+        void setVMActivityMonitorDataSeriesColors(const QStringList &colorList);
+        QStringList VMActivityMonitorDataSeriesColors();
     /** @} */
 
     /** @name Medium Selector

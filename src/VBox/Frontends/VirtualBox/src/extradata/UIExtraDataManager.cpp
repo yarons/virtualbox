@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4804,6 +4804,16 @@ bool UIExtraDataManager::VMActivityOverviewShowAllMachines()
 void UIExtraDataManager::setVMActivityOverviewShowAllMachines(bool fShow)
 {
     setExtraDataString(GUI_VMActivityOverview_ShowAllMachines, toFeatureAllowed(fShow));
+}
+
+void UIExtraDataManager::setVMActivityMonitorDataSeriesColors(const QStringList &colorList)
+{
+    setExtraDataStringList(GUI_VMActivityMonitor_DataSeriesColors, colorList);
+}
+
+QStringList UIExtraDataManager::VMActivityMonitorDataSeriesColors()
+{
+    return extraDataStringList(GUI_VMActivityMonitor_DataSeriesColors);
 }
 
 QRect UIExtraDataManager::mediumSelectorDialogGeometry(QWidget *pWidget, QWidget *pParentWidget, const QRect &defaultGeometry)
