@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 104449 2024-04-28 08:59:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* Qt includes: */
+#include <QColor>
 #include <QWidget>
 #include <QMap>
 #include <QQueue>
@@ -156,6 +157,7 @@ public:
     UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent, int iMaximumQueueSize);
     virtual QUuid machineId() const = 0;
     virtual QString machineName() const = 0;
+    void setDataSeriesColor(int iIndex, const QColor &color);
 
 public slots:
 
@@ -183,6 +185,7 @@ protected:
     virtual void prepareWidgets();
     void prepareActions();
     void setInfoLabelWidth();
+
     QGridLayout            *m_pContainerLayout;
     QTimer                 *m_pTimer;
     quint64                 m_iTimeStep;
@@ -221,6 +224,7 @@ protected:
     /** @} */
     int m_iMaximumLabelLength;
     int m_iMaximumQueueSize;
+    QColor m_dataSeriesColor[DATA_SERIES_SIZE];
 
 private slots:
 

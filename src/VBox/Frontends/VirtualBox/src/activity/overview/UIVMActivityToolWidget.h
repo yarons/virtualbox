@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityToolWidget.h 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityToolWidget.h 104449 2024-04-28 08:59:22Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityToolWidget class declaration.
  */
@@ -32,6 +32,7 @@
 #endif
 
 /* Qt includes: */
+#include <QColor>
 #include <QWidget>
 #include <QUuid>
 
@@ -76,6 +77,7 @@ private slots:
     void sltExportToFile();
     void sltCurrentTabChanged(int iIndex);
     void sltTogglePreferencesPane(bool fChecked);
+    void sltDataSeriesColorChanged(int iIndex, const QColor &color);
 
 private:
 
@@ -110,6 +112,7 @@ private:
     QAction *m_pExportToFileAction;
     UIVMActivityMonitorPaneContainer *m_pPaneContainer;
     QTabWidget *m_pTabWidget;
+    QColor m_dataSeriesColor[2];
 };
 
 
