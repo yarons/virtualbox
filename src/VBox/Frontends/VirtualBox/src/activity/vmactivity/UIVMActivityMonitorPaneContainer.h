@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitorPaneContainer.h 104449 2024-04-28 08:59:22Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitorPaneContainer.h 104452 2024-04-29 05:33:17Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitorPanel class declaration.
  */
@@ -52,11 +52,13 @@ public:
 
     UIVMActivityMonitorPaneContainer(QWidget *pParent, EmbedTo enmEmbedTo = EmbedTo_Stack);
     void setDataSeriesColor(int iIndex, const QColor &color);
+    QColor dataSeriesColor(int iIndex) const;
 
 private slots:
 
     void sltRetranslateUI();
     void sltColorChangeButtonPressed();
+    void sltResetToDefaults();
 
 private:
     enum Tab
@@ -68,10 +70,9 @@ private:
     void colorPushButtons(QPushButton *pButton, const QColor &color);
     QString m_strTabText;
 
-
     QLabel *m_pColorLabel[2];
     QPushButton *m_pColorChangeButton[2];
-
+    QPushButton *m_pResetButton;
 
     QColor m_color[2];
 
