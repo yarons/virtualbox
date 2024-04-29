@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104430 2024-04-25 12:21:00Z knut.osmundsen@oracle.com $
+# $Id: Config.kmk 104453 2024-04-29 08:09:47Z andreas.loeffler@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2626,12 +2626,12 @@ VBOX_PATH_HTML_HELP_WORKSHOP ?= $(KBUILD_DEVTOOLS)/win.x86/HTML_Help_Workshop/v1
 # Path to the null soft installer.
 VBOX_PATH_NSIS ?= $(KBUILD_DEVTOOLS)/win.x86/nsis/v3.08-log
 
-# Windows install tools...
-# Note! The scripts has been moved to Bin in v8.0.
-VBOX_PATH_WIX       ?= $(KBUILD_DEVTOOLS)/win.x86/wix/v3.14.1
+# Windows Installer XML (WIX) toolset.
+VBOX_PATH_WIX       ?= $(KBUILD_DEVTOOLS)/win.x86/wix/v4.0.5
 ifdef VBOX_WITH_NEW_WINDOWS_SDK
  VBOX_PATH_MSITRAN  ?= $(PATH_SDK_$(VBOX_WINPSDK)_BIN)/../x86/MsiTran.Exe
  VBOX_PATH_MSIDB    ?= $(PATH_SDK_$(VBOX_WINPSDK)_BIN)/../x86/MsiDb.Exe
+ # Note! The scripts has been moved to Bin in v8.0.
  VBOX_PATH_WISUBSTG ?= $(PATH_SDK_$(VBOX_WINPSDK)_BIN)/WiSubStg.vbs
  VBOX_PATH_WISUMINFO ?= $(PATH_SDK_$(VBOX_WINPSDK)_BIN)/WiSumInf.vbs
 else
@@ -9237,7 +9237,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104430 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104453 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
