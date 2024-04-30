@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104451 2024-04-28 10:38:07Z serkan.bayraktar@oracle.com $
+# $Id: Makefile.kmk 104458 2024-04-30 08:36:19Z serkan.bayraktar@oracle.com $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -857,7 +857,7 @@ UICommon_QT_MOCHDRS = \
 	src/logviewer/UIVMLogViewerTextEdit.h \
 	src/logviewer/UIVMLogViewerWidget.h \
 	src/activity/vmactivity/UIVMActivityMonitor.h \
-	src/activity/vmactivity/UIVMActivityMonitorPaneContainer.h \
+	src/activity/vmactivity/UIVMActivityMonitorContainer.h \
 	src/activity/UIMonitorCommon.h \
 	src/medium/UIFDCreationDialog.h \
 	src/medium/UIMediumEnumerator.h \
@@ -1438,7 +1438,7 @@ UICommon_SOURCES = \
 	src/logviewer/UIVMLogViewerWidget.cpp \
 	src/activity/UIMonitorCommon.cpp \
 	src/activity/vmactivity/UIVMActivityMonitor.cpp \
-	src/activity/vmactivity/UIVMActivityMonitorPaneContainer.cpp \
+	src/activity/vmactivity/UIVMActivityMonitorContainer.cpp \
 	src/medium/UIFDCreationDialog.cpp \
 	src/medium/UIMedium.cpp \
 	src/medium/UIMediumDefs.cpp \
