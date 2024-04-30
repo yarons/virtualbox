@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 104463 2024-04-30 12:37:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 104465 2024-04-30 13:08:41Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -226,7 +226,7 @@ protected:
     int m_iMaximumLabelLength;
     int m_iMaximumQueueSize;
     QColor m_dataSeriesColor[DATA_SERIES_SIZE];
-
+    UIActionPool *m_pActionPool;
 private slots:
 
     /** Reads the metric values for several sources and calls corresponding update functions. */
@@ -240,7 +240,6 @@ private:
     /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
     EmbedTo m_enmEmbedding;
-    UIActionPool *m_pActionPool;
 };
 
 class  SHARED_LIBRARY_STUFF UIVMActivityMonitorLocal : public UIVMActivityMonitor
