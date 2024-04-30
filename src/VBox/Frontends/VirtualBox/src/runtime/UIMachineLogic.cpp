@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1653,7 +1653,7 @@ void UIMachineLogic::sltShowInformationDialog()
     /* Create instance if not yet created: */
     if (!m_pVMInformationDialog)
     {
-        m_pVMInformationDialog = new UIVMInformationDialog;
+        m_pVMInformationDialog = new UIVMInformationDialog(actionPool());
         connect(m_pVMInformationDialog, &UIVMInformationDialog::sigClose,
                 this, &UIMachineLogic::sltCloseInformationDialog);
     }

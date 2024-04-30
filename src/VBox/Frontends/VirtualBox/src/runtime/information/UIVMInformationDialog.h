@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMInformationDialog.h 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -44,6 +44,7 @@
 /* Forward declarations: */
 class QITabWidget;
 class QIDialogButtonBox;
+class UIActionPool;
 
 /* Type definitions: */
 typedef QIWithRestorableGeometry<QMainWindow> QMainWindowWithRestorableGeometry;
@@ -61,7 +62,7 @@ signals:
 public:
 
     /** Constructs information dialog. */
-    UIVMInformationDialog();
+    UIVMInformationDialog(UIActionPool *pActionPool);
 
     /** Returns whether the dialog should be maximized when geometry being restored. */
     virtual bool shouldBeMaximized() const RT_OVERRIDE;
@@ -115,6 +116,7 @@ private:
     int m_iGeometrySaveTimerId;
     QUuid m_uMachineId;
     QString m_strMachineName;
+    UIActionPool *m_pActionPool;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIVMInformationDialog_h */

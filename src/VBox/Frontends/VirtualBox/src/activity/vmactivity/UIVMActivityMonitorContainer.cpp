@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitorContainer.cpp 104458 2024-04-30 08:36:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitorContainer.cpp 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -319,7 +319,7 @@ void UIVMActivityMonitorContainer::addLocalMachine(const CMachine &comMachine)
     AssertReturnVoid(m_pTabWidget);
     if (!comMachine.isOk())
         return;
-    UIVMActivityMonitorLocal *pActivityMonitor = new UIVMActivityMonitorLocal(m_enmEmbedding, this, comMachine);
+    UIVMActivityMonitorLocal *pActivityMonitor = new UIVMActivityMonitorLocal(m_enmEmbedding, this, comMachine, m_pActionPool);
     if (m_pPaneContainer)
     {
         pActivityMonitor->setDataSeriesColor(0, m_pPaneContainer->dataSeriesColor(0));
@@ -333,7 +333,7 @@ void UIVMActivityMonitorContainer::addCloudMachine(const CCloudMachine &comMachi
     AssertReturnVoid(m_pTabWidget);
     if (!comMachine.isOk())
         return;
-    UIVMActivityMonitorCloud *pActivityMonitor = new UIVMActivityMonitorCloud(m_enmEmbedding, this, comMachine);
+    UIVMActivityMonitorCloud *pActivityMonitor = new UIVMActivityMonitorCloud(m_enmEmbedding, this, comMachine, m_pActionPool);
     if (m_pPaneContainer)
     {
         pActivityMonitor->setDataSeriesColor(0, m_pPaneContainer->dataSeriesColor(0));

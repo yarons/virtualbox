@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 104458 2024-04-30 08:36:19Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -41,6 +41,7 @@
 
 /* GUI includes: */
 #include "QIFileDialog.h"
+#include "UIActionPool.h"
 #include "UICommon.h"
 #include "UIConverter.h"
 #include "UIGlobalSession.h"
@@ -1070,7 +1071,7 @@ bool UIMetric::autoUpdateMaximum() const
 *   UIVMActivityMonitor implementation.                                                                              *
 *********************************************************************************************************************************/
 
-UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent, int iMaximumQueueSize)
+UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent, UIActionPool *pActionPool, int iMaximumQueueSize)
     : QWidget(pParent)
     , m_pContainerLayout(0)
     , m_pTimer(0)
@@ -1078,6 +1079,7 @@ UIVMActivityMonitor::UIVMActivityMonitor(EmbedTo enmEmbedding, QWidget *pParent,
     , m_iMaximumQueueSize(iMaximumQueueSize)
     , m_pMainLayout(0)
     , m_enmEmbedding(enmEmbedding)
+    , m_pActionPool(pActionPool)
 {
     uiCommon().setHelpKeyword(this, "vm-session-information");
     setContextMenuPolicy(Qt::CustomContextMenu);
@@ -1251,8 +1253,9 @@ void UIVMActivityMonitor::setDataSeriesColor(int iIndex, const QColor &color)
 *   UIVMActivityMonitorLocal definition.                                                                         *
 *********************************************************************************************************************************/
 
-UIVMActivityMonitorLocal::UIVMActivityMonitorLocal(EmbedTo enmEmbedding, QWidget *pParent, const CMachine &machine)
-    :UIVMActivityMonitor(enmEmbedding, pParent, 120 /* iMaximumQueueSize */)
+UIVMActivityMonitorLocal::UIVMActivityMonitorLocal(EmbedTo enmEmbedding, QWidget *pParent,
+                                                   const CMachine &machine, UIActionPool *pActionPool)
+    :UIVMActivityMonitor(enmEmbedding, pParent, pActionPool, 120 /* iMaximumQueueSize */)
     , m_fGuestAdditionsAvailable(false)
 {
     prepareMetrics();
@@ -1809,8 +1812,9 @@ void UIVMActivityMonitorLocal::resetDiskIOInfoLabel()
 *   UIVMActivityMonitorCloud definition.                                                                         *
 *********************************************************************************************************************************/
 
-UIVMActivityMonitorCloud::UIVMActivityMonitorCloud(EmbedTo enmEmbedding, QWidget *pParent, const CCloudMachine &machine)
-    :UIVMActivityMonitor(enmEmbedding, pParent, 60 /* iMaximumQueueSize */)
+UIVMActivityMonitorCloud::UIVMActivityMonitorCloud(EmbedTo enmEmbedding, QWidget *pParent,
+                                                   const CCloudMachine &machine, UIActionPool *pActionPool)
+    :UIVMActivityMonitor(enmEmbedding, pParent, pActionPool, 60 /* iMaximumQueueSize */)
     , m_pMachineStateUpdateTimer(0)
     , m_enmMachineState(KCloudMachineState_Invalid)
 {
