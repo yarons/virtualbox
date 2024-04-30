@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 104463 2024-04-30 12:37:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -1434,7 +1434,7 @@ QString UIVMActivityMonitorLocal::defaultMachineFolder() const
         return QString();
 }
 
-void UIVMActivityMonitorLocal::sltGuestAdditionsStateChange()
+void UIVMActivityMonitorLocal::guestAdditionsStateChange()
 {
     bool fGuestAdditionsAvailable = guestAdditionsAvailable("6.1");
     if (m_fGuestAdditionsAvailable == fGuestAdditionsAvailable)

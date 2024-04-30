@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 104463 2024-04-30 12:37:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -256,13 +256,7 @@ public:
     ~UIVMActivityMonitorLocal();
     virtual QUuid machineId() const RT_OVERRIDE;
     virtual QString machineName() const RT_OVERRIDE;
-
-public slots:
-
-    /** @name These functions are connected to API events and implement necessary updates.
-     * @{ */
-        void sltGuestAdditionsStateChange();
-    /** @} */
+    void guestAdditionsStateChange();
 
 protected slots:
 
