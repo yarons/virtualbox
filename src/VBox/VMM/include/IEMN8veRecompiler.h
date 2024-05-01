@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104407 2024-04-23 23:16:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104468 2024-05-01 00:43:28Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -472,6 +472,10 @@ typedef enum
     kIemNativeLabelType_Return,
     kIemNativeLabelType_ReturnBreak,
     kIemNativeLabelType_ReturnBreakFF,
+    kIemNativeLabelType_ReturnBreakViaLookup,
+    kIemNativeLabelType_ReturnBreakViaLookupWithIrq,
+    kIemNativeLabelType_ReturnBreakViaLookupWithTlb,
+    kIemNativeLabelType_ReturnBreakViaLookupWithTlbAndIrq,
     kIemNativeLabelType_ReturnWithFlags,
     kIemNativeLabelType_NonZeroRetOrPassUp,
     /** The last fixup for branches that can span almost the whole TB length. */
@@ -1413,6 +1417,8 @@ typedef struct IEMRECOMPILERSTATE
      */
     uint32_t                    fSimdRaiseXcptChecksEmitted;
 #endif
+    /** The call number of the last CheckIrq, UINT32_MAX if not seen. */
+    uint32_t                    idxLastCheckIrqCallNo;
 
     /** Core state requiring care with branches. */
     IEMNATIVECORESTATE          Core;
