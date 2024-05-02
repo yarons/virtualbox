@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers-http.cpp 104307 2024-04-12 08:55:20Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers-http.cpp 104472 2024-05-02 09:39:33Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Clipboard: HTTP server implementation for Shared Clipboard transfers on UNIX-y guests / hosts.
  */
@@ -783,8 +783,8 @@ int ShClTransferHttpServerStart(PSHCLHTTPSERVER pSrv, unsigned cMaxAttempts, uin
     if (RT_SUCCESS(rc))
     {
         uint16_t uPort;
-        unsigned i = 0;
-        for (i; i < cMaxAttempts; i++)
+        unsigned i;
+        for (i = 0; i < cMaxAttempts; i++)
         {
             /* Try some random ports >= 49152 (i.e. "dynamic ports", see RFC 6335)
              * -- required, as VBoxClient runs as a user process on the guest. */

@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 104317 2024-04-12 14:11:08Z andreas.loeffler@oracle.com $ */
+/* $Id: clipboard-transfers.cpp 104472 2024-05-02 09:39:33Z alexander.eichner@oracle.com $ */
 /** @file
  * Shared Clipboard: Common clipboard transfer handling code.
  */
@@ -3111,7 +3111,7 @@ int ShClTransferCtxUnregisterById(PSHCLTRANSFERCTX pTransferCtx, SHCLTRANSFERID 
 
     LogFlowFunc(("idTransfer=%RU32\n", idTransfer));
 
-    if (ASMBitTestAndClear(&pTransferCtx->bmTransferIds, idTransfer), ("idTransfer=%#x\n", idTransfer))
+    if (ASMBitTestAndClear(&pTransferCtx->bmTransferIds, idTransfer))
     {
         PSHCLTRANSFER pTransfer = shClTransferCtxGetTransferByIdInternal(pTransferCtx, idTransfer);
         if (pTransfer)
