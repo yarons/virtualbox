@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSettings.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardImportAppPageSettings.cpp 104496 2024-05-02 20:59:38Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSettings class implementation.
  */
@@ -466,9 +466,12 @@ void UIWizardImportAppPageSettings::sltRetranslateUI()
                                                                "on the items and disable others using the check boxes below."));
     }
 
-    /* Translate path selector label: */
+    /* Translate path selector stuff: */
     if (m_pLabelImportFilePath)
         m_pLabelImportFilePath->setText(UIWizardImportApp::tr("&Machine Base Folder:"));
+    if (m_pEditorImportFilePath)
+        m_pEditorImportFilePath->setToolTip(UIWizardImportApp::tr("Holds the path to the base virtual machine folder. "
+                                                                  "This folder is used when creating new virtual machine."));
 
     /* Translate MAC import policy label: */
     if (m_pLabelMACImportPolicy)
