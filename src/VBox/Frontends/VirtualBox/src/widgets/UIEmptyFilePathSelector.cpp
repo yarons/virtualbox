@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIEmptyFilePathSelector.cpp 104478 2024-05-02 11:24:29Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -179,6 +179,7 @@ void UIEmptyFilePathSelector::setChooseButtonToolTip(const QString &strToolTip)
 {
     m_fButtonToolTipSet = !strToolTip.isEmpty();
     mSelectButton->setToolTip(strToolTip);
+    mSelectButton->setText(strToolTip);
 }
 
 QString UIEmptyFilePathSelector::chooseButtonToolTip() const
@@ -219,7 +220,10 @@ QString UIEmptyFilePathSelector::homeDir() const
 void UIEmptyFilePathSelector::sltRetranslateUI()
 {
     if (!m_fButtonToolTipSet)
+    {
         mSelectButton->setToolTip(tr("Choose..."));
+        mSelectButton->setText(tr("Choose..."));
+    }
 }
 
 void UIEmptyFilePathSelector::choose()
