@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 98618 2023-02-17 12:40:37Z knut.osmundsen@oracle.com $ */
+/* $Id: pipe-win.cpp 104476 2024-05-02 11:22:33Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -508,13 +508,13 @@ RTDECL(int)  RTPipeFromNative(PRTPIPE phPipe, RTHCINTPTR hNativePipe, uint32_t f
                 AssertStmt(   Info.NamedPipeState == FILE_PIPE_CONNECTED_STATE
                            || Info.NamedPipeState == FILE_PIPE_CLOSING_STATE
                            || Info.NamedPipeState == FILE_PIPE_DISCONNECTED_STATE,
-                           VERR_INVALID_HANDLE);
+                           rc = VERR_INVALID_HANDLE);
                 AssertStmt(      Info.NamedPipeConfiguration
                               == (   Info.NamedPipeEnd == FILE_PIPE_SERVER_END
                                   ? (pThis->fRead ? FILE_PIPE_INBOUND  : FILE_PIPE_OUTBOUND)
                                   : (pThis->fRead ? FILE_PIPE_OUTBOUND : FILE_PIPE_INBOUND) )
                            || Info.NamedPipeConfiguration == FILE_PIPE_FULL_DUPLEX,
-                           VERR_INVALID_HANDLE);
+                           rc = VERR_INVALID_HANDLE);
                 if (   RT_SUCCESS(rc)
                     && hNative2 == INVALID_HANDLE_VALUE
                     && !g_pfnSetHandleInformation(hNative,
