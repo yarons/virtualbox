@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Obj2Hdr.cpp 103656 2024-03-04 09:24:10Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs3Obj2Hdr.cpp 104470 2024-05-02 08:42:51Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 Assembly Object file to C-Header converter.
  */
@@ -356,13 +356,21 @@ int main(int argc, char **argv)
             size_t cbFile;
             void  *pvFile;
             if (!readfile(pszArg, &pvFile, &cbFile))
+            {
+                if (pOutput)
+                    fclose(pOutput);
                 return RTEXITCODE_FAILURE;
+            }
 
             RTEXITCODE rcExit = ProcessObjectFile(pOutput, (uint8_t const *)pvFile, cbFile, pszArg);
 
             free(pvFile);
             if (rcExit != RTEXITCODE_SUCCESS)
+            {
+                if (pOutput)
+                    fclose(pOutput);
                 return rcExit;
+            }
         }
     }
 
