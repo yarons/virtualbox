@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 104477 2024-05-02 11:23:23Z alexander.eichner@oracle.com $ */
+/* $Id: NetIf-win.cpp 104479 2024-05-02 11:51:54Z alexander.eichner@oracle.com $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -924,7 +924,7 @@ int netIfNetworkInterfaceHelperServer(SVCHlpClient *aClient,
         default:
             AssertMsgFailedBreakStmt(
                 ("Invalid message code %d (%08lX)\n", aMsgCode, aMsgCode),
-                rc = VERR_GENERAL_FAILURE);
+                vrc = VERR_GENERAL_FAILURE);
     }
 
     LogFlowFunc(("vrc=%Rrc\n", vrc));
