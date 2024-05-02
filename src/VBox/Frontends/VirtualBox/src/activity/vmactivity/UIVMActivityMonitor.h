@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.h 104465 2024-04-30 13:08:41Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.h 104481 2024-05-02 14:26:42Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class declaration.
  */
@@ -291,6 +291,7 @@ private:
     void resetNetworkInfoLabel();
     void resetDiskIOInfoLabel();
     virtual void prepareWidgets() RT_OVERRIDE;
+    void configureCOMPerformanceCollector();
 
     bool m_fGuestAdditionsAvailable;
     CMachine m_comMachine;
@@ -298,6 +299,7 @@ private:
     CGuest m_comGuest;
 
     CPerformanceCollector m_performanceCollector;
+    bool                  m_fCOMPerformanceCollectorConfigured;
     CMachineDebugger      m_comMachineDebugger;
     /** VM Exit info label strings. */
     QString m_strVMExitInfoLabelTitle;
