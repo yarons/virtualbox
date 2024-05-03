@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 104503 2024-05-03 12:33:29Z alexander.eichner@oracle.com $ */
+/* $Id: USBProxyDevice-darwin.cpp 104504 2024-05-03 12:37:14Z alexander.eichner@oracle.com $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1247,7 +1247,7 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
     {
         irc = g_pfnIOServiceAuthorize(USBDevice, kIOServiceInteractionAllowed);
         if (irc != kIOReturnSuccess)
-            LogRel(("USB: Failed to get authorization for device '%s', capturing the device might now work: irc=%#x\n",
+            LogRel(("USB: Failed to get authorization for device '%s', capturing the device might not work: irc=%#x\n",
                     pszAddress, irc));
     }
 
