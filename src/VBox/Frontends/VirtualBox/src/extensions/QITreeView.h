@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: QITreeView.h 104513 2024-05-03 16:09:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -132,9 +132,6 @@ public:
     virtual int childCount() const { return 0; }
     /** Returns the child item with @a iIndex. */
     virtual QITreeViewItem *childItem(int /* iIndex */) const { return 0; }
-
-    /** Returns child rectangle. */
-    QRect visualRect(const QModelIndex &index) const RT_OVERRIDE { return QTreeView::visualRect(index); }
 
 protected slots:
 
