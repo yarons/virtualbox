@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 100927 2023-08-21 19:42:52Z knut.osmundsen@oracle.com $ */
+/* $Id: VM.cpp 104507 2024-05-03 13:58:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1093,9 +1093,6 @@ VMMR3_INT_DECL(void) VMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     DBGFR3Relocate(pVM, offDelta);
     PDMR3Relocate(pVM, offDelta);
     GIMR3Relocate(pVM, offDelta);
-#if !defined(VBOX_VMM_TARGET_ARMV8)
-    GCMR3Relocate(pVM, offDelta);
-#endif
 }
 
 

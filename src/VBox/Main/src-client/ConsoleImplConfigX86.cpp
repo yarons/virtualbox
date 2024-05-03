@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 103091 2024-01-26 16:38:30Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 104507 2024-05-03 13:58:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -79,7 +79,6 @@
 #include <VBox/vmm/pdmusb.h> /* For PDMR3UsbCreateEmulatedDevice. */
 #include <VBox/vmm/pdmdev.h> /* For PDMAPICMODE enum. */
 #include <VBox/vmm/pdmstorageifs.h>
-#include <VBox/vmm/gcm.h>
 #include <VBox/version.h>
 
 #include <VBox/com/com.h>
@@ -1068,20 +1067,16 @@ int Console::i_configConstructorX86(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Auto
         /*
          * Guest Compatibility Manager.
          */
-        PCFGMNODE   pGcmNode;
-        uint32_t    u32FixerSet = 0;
+        PCFGMNODE pGcmNode;
         InsertConfigNode(pRoot, "GCM", &pGcmNode);
-        /* OS/2 and Win9x guests can run DOS apps so they get
-         * the DOS specific fixes as well.
-         */
+        /* OS/2 and Win9x guests can run DOS apps so they get the DOS specific
+           fixes as well. */
+        if (fDosGuest || fOs2Guest || fW9xGuest)
+            InsertConfigInteger(pGcmNode, "DivByZeroDOS", 1);
         if (fOs2Guest)
-            u32FixerSet = GCMFIXER_DBZ_DOS | GCMFIXER_DBZ_OS2;
-        else if (fW9xGuest)
-            u32FixerSet = GCMFIXER_DBZ_DOS | GCMFIXER_DBZ_WIN9X;
-        else if (fDosGuest)
-            u32FixerSet = GCMFIXER_DBZ_DOS;
-        InsertConfigInteger(pGcmNode, "FixerSet", u32FixerSet);
-
+            InsertConfigInteger(pGcmNode, "DivByZeroOS2", 1);
+        if (fW9xGuest)
+            InsertConfigInteger(pGcmNode, "DivByZeroWin9x", 1);
 
         /*
          * MM values.
