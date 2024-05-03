@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 103423 2024-02-19 10:24:09Z knut.osmundsen@oracle.com $ */
+/* $Id: FsPerf.cpp 104497 2024-05-03 07:51:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -3346,11 +3346,7 @@ static void fsPerfRm(void)
 #endif
 
     /* Directories: */
-#if defined(RT_OS_WINDOWS)
-    RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE("."))),  VERR_ACCESS_DENIED);
-    RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE(".."))), VERR_ACCESS_DENIED);
-    RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE(""))),   VERR_ACCESS_DENIED);
-#elif defined(RT_OS_DARWIN) /* unlink() on xnu 16.7.0 is behaviour totally werid: */
+#if defined(RT_OS_DARWIN) /* unlink() on xnu 16.7.0 is behaviour totally werid: */
     RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE("."))),  VERR_INVALID_PARAMETER);
     RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE(".."))), VINF_SUCCESS /*WTF?!?*/);
     RTTESTI_CHECK_RC(RTFileDelete(InEmptyDir(RT_STR_TUPLE(""))),   VERR_ACCESS_DENIED);
@@ -6717,7 +6713,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 103423 $";
+                char szRev[] = "$Revision: 104497 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
