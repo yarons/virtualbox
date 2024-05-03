@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 104468 2024-05-01 00:43:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 104506 2024-05-03 13:08:49Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -30,7 +30,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_IEM_RE_NATIVE
-//#define IEM_WITH_OPAQUE_DECODER_STATE - need offCurInstrStart access for iemNativeHlpMemCodeNewPageTlbMiss and friends.
+#define IEM_WITH_OPAQUE_DECODER_STATE
 #define VMCPU_INCL_CPUM_GST_CTX
 #define VMM_INCLUDED_SRC_include_IEMMc_h /* block IEMMc.h inclusion. */
 #include <VBox/vmm/iem.h>
