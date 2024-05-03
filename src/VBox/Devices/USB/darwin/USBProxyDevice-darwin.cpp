@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 100108 2023-06-07 20:05:13Z alexander.eichner@oracle.com $ */
+/* $Id: USBProxyDevice-darwin.cpp 104500 2024-05-03 10:15:20Z alexander.eichner@oracle.com $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1215,6 +1215,13 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
         IOObjectRelease(USBDevices);
         return VERR_VUSB_DEVICE_NAME_NOT_FOUND;
     }
+
+    /*
+     * Ask for authorization (which only works with the com.apple.vm.device-access entitlement).
+     */
+    irc = IOServiceAuthorize(USBDevice, kIOServiceInteractionAllowed);
+    if (irc != kIOReturnSuccess)
+        LogRel(("Failed to get device authorization, capturing the device might now work: irc=%#x\n", irc));
 
     /*
      * Create a plugin interface for the device and query its IOUSBDeviceInterface.
