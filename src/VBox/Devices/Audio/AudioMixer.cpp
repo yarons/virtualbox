@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 103162 2024-02-01 13:23:46Z andreas.loeffler@oracle.com $ */
+/* $Id: AudioMixer.cpp 104499 2024-05-03 09:29:15Z andreas.loeffler@oracle.com $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -1559,6 +1559,8 @@ static int audioMixerSinkUpdateOutput(PAUDMIXSINK pSink)
     {
         if (cFramesToRead > 0)
         {
+            PAUDIOHLPFILE pFile = pSink->Dbg.pFile; /* Beacon for writing multiplexed data only once. */
+
             /*
              * For each of the enabled streams, convert cFramesToRead frames from
              * the mixing buffer and write that to the downstream driver.
@@ -1589,6 +1591,12 @@ static int audioMixerSinkUpdateOutput(PAUDMIXSINK pSink)
                         AudioMixBufPeek(&pSink->MixBuf, offSrcFrame, cSrcFramesPeeked, &cSrcFramesPeeked,
                                         &pMixStream->PeekState, pvBuf, cbBuf, &cbDstPeeked);
                         offSrcFrame += cSrcFramesPeeked;
+
+                        if (RT_UNLIKELY(pFile))
+                        {
+                            AudioHlpFileWrite(pFile, pvBuf, cbDstPeeked);
+                            pFile = NULL;
+                        }
 
                         /* Write it to the backend.  Since've checked that there is buffer
                            space available, this should always write the whole buffer unless
