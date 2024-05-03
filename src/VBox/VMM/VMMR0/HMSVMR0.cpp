@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 104511 2024-05-03 15:03:42Z knut.osmundsen@oracle.com $ */
+/* $Id: HMSVMR0.cpp 104512 2024-05-03 15:08:25Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -8364,13 +8364,10 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDE(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
 
     /* If the GCM #DE exception handler didn't succeed or wasn't needed, raise #DE. */
     if (RT_FAILURE(rc))
-    {
         hmR0SvmSetPendingXcptDE(pVCpu);
-        rc = VINF_SUCCESS;
-    }
 
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestDE);
-    return rc;
+    return VINF_SUCCESS;
 }
 
 
