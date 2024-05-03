@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.h 104515 2024-05-03 18:15:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -49,7 +49,7 @@ class QCheckBox;
 class QGridLayout;
 class QGroupBox;
 class QLabel;
-class QListWidget;
+class QIListWidget;
 class QStackedWidget;
 class QIComboBox;
 class QIToolButton;
@@ -145,7 +145,7 @@ private:
 
 
     /** Holds the VM selector instance. */
-    QListWidget *m_pVMSelector;
+    QIListWidget *m_pVMSelector;
 
 
     /** Holds the format layout. */
