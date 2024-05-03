@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 104505 2024-05-03 12:38:44Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -32,7 +32,6 @@
 #include <QHeaderView>
 #include <QMenu>
 #include <QVBoxLayout>
-#include <QTableWidget>
 #include <QTimer>
 
 /* GUI includes: */
@@ -43,6 +42,7 @@
 #include "UIGuestOSType.h"
 #include "UIMachine.h"
 #include "UITranslationEventListener.h"
+#include "QITableWidget.h"
 
 /* COM includes: */
 #include "CDisplay.h"
@@ -71,7 +71,7 @@ enum InfoRow
 *   UIRuntimeInfoWidget definition.                                                                                     *
 *********************************************************************************************************************************/
 /** A QTablWidget extention to show some runtime attributes */
-class UIRuntimeInfoWidget : public QTableWidget
+class UIRuntimeInfoWidget : public QITableWidget
 {
 
     Q_OBJECT;
@@ -146,7 +146,7 @@ private:
 *********************************************************************************************************************************/
 
 UIRuntimeInfoWidget::UIRuntimeInfoWidget(QWidget *pParent)
-    : QTableWidget(pParent)
+    : QITableWidget(pParent)
     , m_iMinimumWidth(0)
     , m_pTimer(0)
 {
