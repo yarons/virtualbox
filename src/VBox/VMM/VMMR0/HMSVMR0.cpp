@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 103194 2024-02-05 07:23:40Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: HMSVMR0.cpp 104511 2024-05-03 15:03:42Z knut.osmundsen@oracle.com $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -8358,14 +8358,8 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDE(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     if (pVCpu->hm.s.fGCMTrapXcptDE)
     {
         HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, HMSVM_CPUMCTX_EXTRN_ALL);
-        uint8_t cbInstr = 0;
-        VBOXSTRICTRC rcStrict = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx, NULL /* pDis */, &cbInstr);
-        if (rcStrict == VINF_SUCCESS)
-            rc = VINF_SUCCESS;      /* Restart instruction with modified guest register context. */
-        else if (rcStrict == VERR_NOT_FOUND)
-            rc = VERR_NOT_FOUND;    /* Deliver the exception. */
-        else
-            Assert(RT_FAILURE(VBOXSTRICTRC_VAL(rcStrict)));
+        rc = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx);
+        AssertMsg(rc == VINF_SUCCESS /* restart */ || rc == VERR_NOT_FOUND /* deliver exception */, ("rc=%Rrc\n", rc));
     }
 
     /* If the GCM #DE exception handler didn't succeed or wasn't needed, raise #DE. */
