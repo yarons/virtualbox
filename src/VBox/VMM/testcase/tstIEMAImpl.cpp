@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.cpp 104269 2024-04-10 09:42:20Z alexander.eichner@oracle.com $ */
+/* $Id: tstIEMAImpl.cpp 104521 2024-05-06 14:15:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase.
  */
@@ -990,14 +990,14 @@ const char *GenFormatI16(int16_t const *pi16)
 static void GenerateHeader(PRTSTREAM pOut, const char *pszCpuDesc, const char *pszCpuType)
 {
     /* We want to tag the generated source code with the revision that produced it. */
-    static char s_szRev[] = "$Revision: 104269 $";
+    static char s_szRev[] = "$Revision: 104521 $";
     const char *pszRev = RTStrStripL(strchr(s_szRev, ':') + 1);
     size_t      cchRev = 0;
     while (RT_C_IS_DIGIT(pszRev[cchRev]))
         cchRev++;
 
     RTStrmPrintf(pOut,
-                 "/* $Id: tstIEMAImpl.cpp 104269 2024-04-10 09:42:20Z alexander.eichner@oracle.com $ */\n"
+                 "/* $Id: tstIEMAImpl.cpp 104521 2024-05-06 14:15:45Z knut.osmundsen@oracle.com $ */\n"
                  "/** @file\n"
                  " * IEM Assembly Instruction Helper Testcase Data%s%s - r%.*s on %s.\n"
                  " */\n"
@@ -5556,6 +5556,13 @@ static void FpuUnaryTwoR80Test(void)
  */
 TYPEDEF_SUBTEST_TYPE(SSE_BINARY_R32_T, SSE_BINARY_TEST_T, PFNIEMAIMPLFPSSEF2U128);
 
+/** Ugly hack to keep it working after changing function arguments! */
+IEM_DECL_IMPL_DEF(uint32_t, iemAImpl_cvtps2pd_u128x,(uint32_t uMxCsrIn, PX86XMMREG pResult, PCX86XMMREG puSrc1, PCX86XMMREG puSrc2))
+{
+    RT_NOREF(puSrc1);
+    return iemAImpl_cvtps2pd_u128(uMxCsrIn, pResult, &puSrc2->au64[0]);
+}
+
 static SSE_BINARY_R32_T g_aSseBinaryR32[] =
 {
     ENTRY_BIN(addps_u128),
@@ -5568,7 +5575,7 @@ static SSE_BINARY_R32_T g_aSseBinaryR32[] =
     ENTRY_BIN(hsubps_u128),
     ENTRY_BIN(sqrtps_u128),
     ENTRY_BIN(addsubps_u128),
-    ENTRY_BIN(cvtps2pd_u128),
+    ENTRY_BIN(cvtps2pd_u128x), /* conversion hack */
 };
 
 #ifdef TSTIEMAIMPL_WITH_GENERATOR
@@ -10261,7 +10268,7 @@ int main(int argc, char **argv)
         RTMpGetDescription(NIL_RTCPUID, g_szCpuDesc, sizeof(g_szCpuDesc));
 
         /* For the revision, use the highest for this file and VBoxRT. */
-        static const char s_szRev[] = "$Revision: 104269 $";
+        static const char s_szRev[] = "$Revision: 104521 $";
         const char *pszRev = s_szRev;
         while (*pszRev && !RT_C_IS_DIGIT(*pszRev))
             pszRev++;

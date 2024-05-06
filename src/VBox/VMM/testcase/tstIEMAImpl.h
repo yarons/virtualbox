@@ -1,4 +1,4 @@
-/* $Id: tstIEMAImpl.h 103064 2024-01-25 14:41:25Z knut.osmundsen@oracle.com $ */
+/* $Id: tstIEMAImpl.h 104521 2024-05-06 14:15:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM Assembly Instruction Helper Testcase, Data Header File.
  */
@@ -943,7 +943,7 @@ TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          haddps_u
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          hsubps_u128              );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          sqrtps_u128              );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          addsubps_u128            );
-TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          cvtps2pd_u128            );
+TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_TEST_T,          cvtps2pd_u128x           );
 
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, addss_u128_r32           );
 TSTIEM_DECLARE_TEST_ARRAY_BIN(SseBinary,    SSE_BINARY_U128_R32_TEST_T, mulss_u128_r32           );

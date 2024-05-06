@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104506 2024-05-03 13:08:49Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104521 2024-05-06 14:15:45Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -4443,8 +4443,9 @@ FNIEMAIMPLFPSSEF2U128 iemAImpl_sqrtpd_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_rcpps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_addsubps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_addsubpd_u128;
+
 FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtpd2ps_u128;
-FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtps2pd_u128;
+IEM_DECL_IMPL_PROTO(uint32_t, iemAImpl_cvtps2pd_u128,(uint32_t uMxCsrIn, PX86XMMREG pResult, uint64_t const *pu64Src));
 
 FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtdq2ps_u128;
 FNIEMAIMPLFPSSEF2U128 iemAImpl_cvtps2dq_u128;
