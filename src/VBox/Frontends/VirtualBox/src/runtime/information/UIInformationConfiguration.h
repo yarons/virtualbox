@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 104290 2024-04-11 09:37:29Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.h 104520 2024-05-06 14:01:34Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -38,8 +38,7 @@
 #include "UITextTable.h"
 
 /* Forward declarations: */
-class QTableWidget;
-class QTableWidgetItem;
+class QITableWidget;
 class QTextDocument;
 class QVBoxLayout;
 
@@ -72,7 +71,7 @@ private:
     QString tableData() const;
 
     QVBoxLayout *m_pMainLayout;
-    QTableWidget *m_pTableWidget;
+    QITableWidget *m_pTableWidget;
     QAction *m_pCopyWholeTableAction;
 
     const int m_iColumCount;
