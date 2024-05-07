@@ -1,4 +1,4 @@
-/* $Id: UIDetailsWidgetCloudNetwork.cpp 104223 2024-04-08 10:30:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsWidgetCloudNetwork.cpp 104536 2024-05-07 16:12:41Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsWidgetCloudNetwork class implementation.
  */
@@ -270,7 +270,10 @@ void UIDetailsWidgetCloudNetwork::sltRetranslateUI()
     if (m_pEditorNetworkId)
         m_pEditorNetworkId->setToolTip(UINetworkManager::tr("Holds the id for this network."));
     if (m_pButtonNetworkId)
+    {
+        m_pButtonNetworkId->setText(UINetworkManager::tr("Select Network ID"));
         m_pButtonNetworkId->setToolTip(UINetworkManager::tr("Selects the id for this network."));
+    }
     if (m_pButtonBoxOptions)
     {
         m_pButtonBoxOptions->button(QDialogButtonBox::Cancel)->setText(UINetworkManager::tr("Reset"));
