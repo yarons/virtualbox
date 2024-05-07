@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageSource.cpp 104475 2024-05-02 11:08:41Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageSource.cpp 104533 2024-05-07 15:15:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageSource class implementation.
  */
@@ -672,9 +672,6 @@ void UIWizardImportAppPageSource::sltRetranslateUI()
                                             "To continue, select the file to import below."));
     }
 
-    if (m_pFileSelector)
-        m_pFileSelector->setToolTip(UIWizardImportApp::tr("Holds the path of the file selected for import."));
-
     /* Translate source label: */
     if (m_pSourceLabel)
         m_pSourceLabel->setText(UIWizardImportApp::tr("&Source:"));
@@ -699,6 +696,7 @@ void UIWizardImportAppPageSource::sltRetranslateUI()
         m_pFileLabel->setText(UIWizardImportApp::tr("&File:"));
     if (m_pFileSelector)
     {
+        m_pFileSelector->setLineEditToolTip(UIWizardImportApp::tr("Holds the path of the file selected for import."));
         m_pFileSelector->setChooseButtonToolTip(UIWizardImportApp::tr("Choose a virtual appliance file to import..."));
         m_pFileSelector->setFileDialogTitle(UIWizardImportApp::tr("Please choose a virtual appliance file to import"));
         m_pFileSelector->setFileFilters(UIWizardImportApp::tr("Open Virtualization Format (%1)").arg("*.ova *.ovf"));
