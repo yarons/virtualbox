@@ -1,4 +1,4 @@
-/* $Id: UnattendedOs2Installer.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: UnattendedOs2Installer.cpp 104535 2024-05-07 15:46:29Z andreas.loeffler@oracle.com $ */
 /** @file
  * UnattendedOs2Installer implementation.
  */
@@ -723,9 +723,9 @@ int UnattendedOs2Installer::patchOs2Ldr(uint8_t *pbFile, size_t cbFile, const ch
         {  s_abVariant1, s_abVariant1Mask, sizeof(s_abVariant1Mask), 0x840e - 0x840a, 0x8482 - 0x840a, 0, 0, 0 },
     };
 
-    PCOS2CODEPATTERN pPattern;
+    PCOS2CODEPATTERN pPattern = NULL;
     uint8_t *pbHit = findCodePattern(&s_aPatterns[0], RT_ELEMENTS(s_aPatterns), pbFile, cbFile, &pPattern);
-    if (pPattern)
+    if (pbHit)
     {
         uint8_t *pbJmpTarget = &pbHit[pPattern->uUser2];
         uint8_t *pbPatch = &pbHit[pPattern->uUser1];
