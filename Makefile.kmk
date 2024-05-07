@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104526 2024-05-07 08:17:32Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 104527 2024-05-07 08:22:15Z alexander.eichner@oracle.com $
 ## @file
 # Top level makefile.
 #
@@ -2527,7 +2527,7 @@ ifdef VBOX_WITH_PARFAIT
 	 -g $(PATH_OUT)/html \
 	 -c $(PATH_ROOT)/tools/parfait-vbox.conf \
 	 --exclude-from=$(PATH_ROOT)/tools/parfait-vbox-exclude.conf \
-	 --mrr-include-flagged=all --mrr-exclude-flagged=false,wontfix
+	 --mrr-include-flagged=all --mrr-exclude-flagged=false,wontfix \
 	 -z $(PATH_ROOT) \
 	 -r $(VBOX_SVN_REV) \
 	 $(PATH_OUT)/obj
