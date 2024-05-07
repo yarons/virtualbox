@@ -1,4 +1,4 @@
-/* $Id: DevHdaCodec.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DevHdaCodec.h 104529 2024-05-07 09:43:37Z andreas.loeffler@oracle.com $ */
 /** @file
  * Intel HD Audio Controller Emulation - Codec, Sigmatel/IDT STAC9220.
  */
@@ -836,11 +836,12 @@ typedef struct HDACODECCFG
 
     uint8_t         cTotalNodes;
     uint8_t         idxAdcVolsLineIn;
+    uint8_t         idxAdcVolsMicIn;
     uint8_t         idxDacLineOut;
 
     /** Align the lists below so they don't cross cache lines (assumes
      *  CODEC_NODES_MAX is 32). */
-    uint8_t const   abPadding1[CODEC_NODES_MAX - 15];
+    uint8_t const   abPadding1[CODEC_NODES_MAX - 16];
 
     /** @name Node classifications.
      * @note These are copies of the g_abStac9220Xxxx arrays in DevHdaCodec.cpp.
