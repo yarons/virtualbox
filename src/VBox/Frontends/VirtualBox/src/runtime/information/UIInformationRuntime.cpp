@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 104519 2024-05-06 13:40:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationRuntime.cpp 104530 2024-05-07 11:39:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -562,6 +562,8 @@ void UIInformationRuntime::sltRetranslateUI()
 {
     if (m_pCopyWholeTableAction)
         m_pCopyWholeTableAction->setText(QApplication::translate("UIVMInformationDialog", "Copy All"));
+    if (m_pRuntimeInfoWidget)
+        m_pRuntimeInfoWidget->setWhatsThis(QApplication::translate("UIVMInformationDialog", "Displays the runtime information of the guest system"));
 }
 
 void UIInformationRuntime::prepareObjects()
