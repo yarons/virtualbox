@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 103724 2024-03-07 10:22:33Z vadim.galitsyn@oracle.com $
+# $Id: utils.py 104532 2024-05-07 15:09:15Z ksenia.s.stepanova@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103724 $"
+__version__ = "$Revision: 104532 $"
 
 
 # Standard Python imports.
@@ -347,8 +347,11 @@ def getHostOsVersion():
         if rc == 0:
             # Python platform.release() is not reliable for newer server releases
             if oOsVersion.wProductType != 1:
-                if oOsVersion.dwMajorVersion == 10 and oOsVersion.dwMinorVersion == 0:
-                    sVersion = '2016Server';
+                if oOsVersion.dwMajorVersion == 10 and oOsVersion.dwMinorVersion == 0 \
+                                                   and oOsVersion.dwBuildNumber == 17763:
+                    sVersion = '2019Server'
+                elif oOsVersion.dwMajorVersion == 10 and oOsVersion.dwMinorVersion == 0:
+                    sVersion = '2016Server'; #todo: should probably add dwBuildNumber for it as well..
                 elif oOsVersion.dwMajorVersion == 6 and oOsVersion.dwMinorVersion == 3:
                     sVersion = '2012ServerR2';
                 elif oOsVersion.dwMajorVersion == 6 and oOsVersion.dwMinorVersion == 2:
