@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.h 103950 2024-03-20 11:41:04Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.h 104534 2024-05-07 15:20:21Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class declaration.
  */
@@ -82,7 +82,7 @@ private:
     void addLineEdit(int &iRow, QLabel *&pLabel, T *&pLineEdit, QGridLayout *pLayout);
 
     UIMarkableLineEdit *m_pHostnameLineEdit;
-    QILineEdit         *m_pDomainNameLineEdit;
+    UIMarkableLineEdit *m_pDomainNameLineEdit;
 
     QLabel *m_pHostnameLabel;
     QLabel *m_pDomainNameLabel;
