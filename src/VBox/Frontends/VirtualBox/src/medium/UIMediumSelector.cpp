@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 104528 2024-05-07 08:31:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -191,6 +191,7 @@ void UIMediumSelector::sltRetranslateUI()
 
     if (m_pTreeWidget)
     {
+        m_pTreeWidget->setWhatsThis(tr("A list of all registered media"));
         m_pTreeWidget->headerItem()->setText(0, tr("Name"));
         m_pTreeWidget->headerItem()->setText(1, tr("Virtual Size"));
         m_pTreeWidget->headerItem()->setText(2, tr("Actual Size"));
