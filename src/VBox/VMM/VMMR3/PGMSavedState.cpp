@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 99051 2023-03-19 16:40:06Z alexander.eichner@oracle.com $ */
+/* $Id: PGMSavedState.cpp 104557 2024-05-08 14:15:39Z alexander.eichner@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -765,6 +765,7 @@ static int pgmR3LoadMmio2Ranges(PVM pVM, PSSMHANDLE pSSM)
 
         RTGCPHYS cb;
         rc = SSMR3GetGCPhys(pSSM, &cb);
+        AssertLogRelRCReturn(rc, rc);
         AssertLogRelMsgReturn(!(cb & GUEST_PAGE_OFFSET_MASK), ("cb=%RGp %s\n", cb, szDesc), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
         /*
@@ -2563,6 +2564,7 @@ static int pgmR3LoadMemoryOld(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
                 while (GCPhys < pRam->GCPhys)
                 {
                     rc = pgmR3LoadPageToDevNullOld(pSSM);
+                    AssertLogRelRCReturn(rc, rc);
                     GCPhys += GUEST_PAGE_SIZE;
                 }
 
