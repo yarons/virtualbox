@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 104546 2024-05-08 12:20:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -236,7 +236,7 @@ QString UINameAndSystemEditor::typeId() const
 void UINameAndSystemEditor::markNameEditor(bool fError)
 {
     if (m_pEditorName)
-        m_pEditorName->mark(fError, fError ? tr("Invalid name") : QString("Name is valid"));
+        m_pEditorName->mark(fError, tr("Invalid guest machine name"), tr("Guest machine name is valid"));
 }
 
 void UINameAndSystemEditor::markImageEditor(bool fError, const QString &strErrorMessage)
