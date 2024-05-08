@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.h 104558 2024-05-08 14:49:25Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.h 104567 2024-05-08 16:46:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class declaration.
  */
@@ -37,6 +37,7 @@
 /* Forward declarations: */
 class QGridLayout;
 class QLabel;
+class QIListWidget;
 class UIToolBox;
 class UIWizardAddCloudVM;
 
@@ -102,7 +103,7 @@ private:
     /** Holds the source instance label instance. */
     QLabel       *m_pSourceInstanceLabel;
     /** Holds the source instance list instance. */
-    QListWidget  *m_pSourceInstanceList;
+    QIListWidget *m_pSourceInstanceList;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_addcloudvm_UIWizardAddCloudVMPageExpert_h */
