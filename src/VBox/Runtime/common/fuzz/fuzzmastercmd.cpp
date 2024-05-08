@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzzmastercmd.cpp 104549 2024-05-08 12:27:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -473,6 +473,8 @@ static int rtFuzzCmdMasterFuzzRunProcessEnvironment(PRTFUZZRUN pFuzzRun, RTJSONV
                                 rc = RTEnvPutEx(hEnv, pszVar);
                             RTJsonValueRelease(hVal);
                         }
+                        if (RT_FAILURE(rc))
+                            break;
                         rc = RTJsonIteratorNext(hEnvIt);
                     } while (RT_SUCCESS(rc));
 
@@ -548,6 +550,9 @@ static int rtFuzzCmdMasterFuzzRunProcessSanitizers(PRTFUZZRUN pFuzzRun, RTJSONVA
                         rc = rtFuzzCmdMasterErrorRc(pErrInfo, VERR_NOT_FOUND, "JSON request malformed: The sanitizer '%s' is not known", pszSan);
                     RTJsonValueRelease(hVal);
                 }
+                if (RT_FAILURE(rc))
+                    break;
+
                 rc = RTJsonIteratorNext(hSanIt);
             } while (RT_SUCCESS(rc));
 
@@ -983,6 +988,9 @@ static int rtFuzzCmdMasterFuzzRunProcessTgtRecFlags(PRTFUZZRUN pFuzzRun, RTJSONV
                         rc = rtFuzzCmdMasterErrorRc(pErrInfo, VERR_NOT_FOUND, "JSON request malformed: The recording flags '%s' is not known", pszTgtRec);
                     RTJsonValueRelease(hVal);
                 }
+                if (RT_FAILURE(rc))
+                    break;
+
                 rc = RTJsonIteratorNext(hTgtIt);
             } while (RT_SUCCESS(rc));
 
@@ -1787,7 +1795,6 @@ RTR3DECL(RTEXITCODE) RTFuzzCmdMaster(unsigned cArgs, char **papszArgs)
     {
         /* Option variables:  */
         bool fDaemonize = false;
-        bool fDaemonized = false;
         const char *pszLoadCfg = NULL;
         RTFUZZCMDMASTER This;
 
@@ -1832,7 +1839,6 @@ RTR3DECL(RTEXITCODE) RTFuzzCmdMaster(unsigned cArgs, char **papszArgs)
                     break;
 
                 case 'Z':
-                    fDaemonized = true;
                     fDaemonize = false;
                     break;
 

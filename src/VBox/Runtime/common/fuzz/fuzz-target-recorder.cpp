@@ -1,4 +1,4 @@
-/* $Id: fuzz-target-recorder.cpp 99739 2023-05-11 01:01:08Z knut.osmundsen@oracle.com $ */
+/* $Id: fuzz-target-recorder.cpp 104549 2024-05-08 12:27:24Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Fuzzing framework API, target state recorder.
  */
@@ -345,7 +345,10 @@ static int rtFuzzTgtRecScanStateForNewEdges(PRTFUZZTGTRECINT pThis, PRTFUZZTGTST
             cEdgesLeft--;
         }
 
-        rc = RTSemRWReleaseRead(pThis->hSemRwEdges); AssertRC(rc);
+        int rc2 = RTSemRWReleaseRead(pThis->hSemRwEdges); AssertRC(rc2);
+        if (   RT_FAILURE(rc2)
+            && RT_SUCCESS(rc))
+            rc = rc2;
     }
 
     return rc;
