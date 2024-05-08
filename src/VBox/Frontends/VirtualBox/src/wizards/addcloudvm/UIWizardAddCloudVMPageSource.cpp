@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 104551 2024-05-08 12:50:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -440,7 +440,11 @@ void UIWizardAddCloudVMPageSource::sltRetranslateUI()
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardAddCloudVM::tr("&Profile:"));
-    m_pProfileToolButton->setToolTip(UIWizardAddCloudVM::tr("Open cloud profile manager..."));
+    if (m_pProfileToolButton)
+    {
+        m_pProfileToolButton->setText(UIWizardAddCloudVM::tr("Cloud Profile Manager"));
+        m_pProfileToolButton->setToolTip(UIWizardAddCloudVM::tr("Opens cloud profile manager..."));
+    }
     m_pSourceInstanceLabel->setText(UIWizardAddCloudVM::tr("&Instances:"));
 
     /* Adjust label widths: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageFormat.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageFormat.cpp 104551 2024-05-08 12:50:28Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageFormat class implementation.
  */
@@ -1002,7 +1002,11 @@ void UIWizardExportAppPageFormat::sltRetranslateUI()
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardExportApp::tr("&Profile:"));
-    m_pProfileToolButton->setToolTip(UIWizardExportApp::tr("Open cloud profile manager..."));
+    if (m_pProfileToolButton)
+    {
+        m_pProfileToolButton->setText(UIWizardExportApp::tr("Cloud Profile Manager"));
+        m_pProfileToolButton->setToolTip(UIWizardExportApp::tr("Opens cloud profile manager..."));
+    }
 
     /* Translate option label: */
     m_pExportModeLabel->setText(UIWizardExportApp::tr("Machine Creation:"));
