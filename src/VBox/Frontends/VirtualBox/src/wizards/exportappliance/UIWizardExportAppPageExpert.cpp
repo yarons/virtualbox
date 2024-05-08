@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 104551 2024-05-08 12:50:28Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 104559 2024-05-08 15:14:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -515,6 +515,8 @@ void UIWizardExportAppPageExpert::sltRetranslateUI()
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardExportApp::tr("&Profile:"));
+    if (m_pProfileComboBox)
+        m_pProfileComboBox->setToolTip(UIWizardExportApp::tr("Selects cloud profile."));
     if (m_pProfileToolButton)
     {
         m_pProfileToolButton->setText(UIWizardExportApp::tr("Cloud Profile Manager"));

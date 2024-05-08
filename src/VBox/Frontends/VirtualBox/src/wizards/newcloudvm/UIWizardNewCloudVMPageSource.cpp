@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 104555 2024-05-08 13:20:58Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 104559 2024-05-08 15:14:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -491,6 +491,8 @@ void UIWizardNewCloudVMPageSource::sltRetranslateUI()
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardNewCloudVM::tr("&Profile:"));
+    if (m_pProfileComboBox)
+        m_pProfileComboBox->setToolTip(UIWizardNewCloudVM::tr("Selects cloud profile."));
     if (m_pProfileToolButton)
     {
         m_pProfileToolButton->setText(UIWizardNewCloudVM::tr("Cloud Profile Manager"));
