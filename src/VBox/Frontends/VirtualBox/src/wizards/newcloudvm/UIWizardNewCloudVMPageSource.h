@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 104563 2024-05-08 16:19:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 104566 2024-05-08 16:37:21Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -165,6 +165,7 @@ private:
     QIComboBox   *m_pProfileComboBox;
     /** Holds the profile management tool-button instance. */
     QIToolButton *m_pProfileToolButton;
+
     /** Holds the source image label instance. */
     QLabel       *m_pSourceImageLabel;
     /** Holds the source tab-bar instance. */
