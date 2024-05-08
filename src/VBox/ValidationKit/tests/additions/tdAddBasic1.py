@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 100700 2023-07-25 18:37:10Z dmitrii.grigorev@oracle.com $
+# $Id: tdAddBasic1.py 104545 2024-05-08 10:08:58Z andreas.loeffler@oracle.com $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100700 $"
+__version__ = "$Revision: 104545 $"
 
 # Standard Python imports.
 import os;
@@ -381,7 +381,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         # Install the public signing key.
         #
         if oTestVm.sKind not in ('WindowsNT4', 'Windows2000', 'WindowsXP', 'Windows2003'):
-            fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000,
+            fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 5 * 60 * 1000,
                                   '${CDROM}/%s/cert/VBoxCertUtil.exe' % (self.sGstPathGaPrefix,),
                                   ('${CDROM}/%s/cert/VBoxCertUtil.exe' % (self.sGstPathGaPrefix,),
                                    'add-trusted-publisher',
@@ -390,7 +390,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             if not fRc:
                 reporter.error('Error installing SHA1 certificate');
             else:
-                fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 1 * 60 * 1000,
+                fRc = self.txsRunTest(oTxsSession, 'VBoxCertUtil.exe', 5 * 60 * 1000,
                                       '${CDROM}/%s/cert/VBoxCertUtil.exe' % (self.sGstPathGaPrefix,),
                                       ('${CDROM}/%s/cert/VBoxCertUtil.exe' % (self.sGstPathGaPrefix,),
                                        'add-trusted-publisher',
