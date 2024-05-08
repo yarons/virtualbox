@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: pkzipvfs.cpp 104554 2024-05-08 12:59:09Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -532,7 +532,7 @@ static int rtZipPkzipParseCentrDirHeaderExtra(PRTZIPPKZIPREADER pThis, uint8_t *
         *penmCompMethod = (RTZIPPKZIP_COMP_METHOD)pThis->cdh.u16ComprMethod;
         *pcbCompressed  = rtZipPkzipReaderCompressed(pThis);
     }
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
@@ -874,9 +874,10 @@ static DECLCALLBACK(int) rtZipPkzipFssIosReadHelper(void *pvThis, void *pvBuf, s
     int rc = VINF_SUCCESS;
     if (!cbToRead)
         return rc;
-    if (   pThis->fPassZipType
-        && cbToRead > 0)
+    if (pThis->fPassZipType)
     {
+        Assert(cbToRead);
+
         uint8_t *pu8Buf = (uint8_t*)pvBuf;
         pu8Buf[0] = pThis->enmZipType;
         pvBuf = &pu8Buf[1];
