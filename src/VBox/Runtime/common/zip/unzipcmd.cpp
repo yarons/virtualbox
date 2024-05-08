@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: unzipcmd.cpp 104552 2024-05-08 12:56:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -340,6 +340,8 @@ static RTEXITCODE rtZipUnzipDoWithMembers(PRTZIPUNZIPCMDOPS pOpts, PFNDOWITHMEMB
 
                 RTFOFF cBytes = 0;
                 rcExit = pfnCallback(pOpts, hVfsObj, pszName, rcExit, &cBytes);
+                if (rcExit != RTEXITCODE_SUCCESS)
+                    break;
 
                 cBytesSum += cBytes;
                 cFiles++;
@@ -357,10 +359,7 @@ static RTEXITCODE rtZipUnzipDoWithMembers(PRTZIPUNZIPCMDOPS pOpts, PFNDOWITHMEMB
          */
         for (uint32_t iFile = 0; iFile <pOpts->cFiles; iFile++)
             if (!ASMBitTest(pbmFound, iFile))
-            {
-                RTMsgError("%s: Was not found in the archive", pOpts->papszFiles[iFile]);
-                rcExit = RTEXITCODE_FAILURE;
-            }
+                rcExit = RTMsgErrorExitFailure("%s: Was not found in the archive", pOpts->papszFiles[iFile]);
 
         RTVfsFsStrmRelease(hVfsFssIn);
     }
@@ -370,7 +369,7 @@ static RTEXITCODE rtZipUnzipDoWithMembers(PRTZIPUNZIPCMDOPS pOpts, PFNDOWITHMEMB
     *pcFiles = cFiles;
     *pcBytes = cBytesSum;
 
-    return RTEXITCODE_SUCCESS;
+    return rcExit;
 }
 
 
