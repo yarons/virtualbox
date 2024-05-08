@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 104547 2024-05-08 12:25:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 104563 2024-05-08 16:19:39Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -114,7 +114,7 @@ private:
     /** Holds the source tab-bar instance. */
     QTabBar      *m_pSourceTabBar;
     /** Holds the source image list instance. */
-    QListWidget  *m_pSourceImageList;
+    QIListWidget *m_pSourceImageList;
 
     /** Holds the Form Editor widget instance. */
     UIFormEditorWidget *m_pFormEditor;
