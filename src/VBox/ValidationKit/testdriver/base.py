@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 100845 2023-08-09 21:00:37Z knut.osmundsen@oracle.com $
+# $Id: base.py 104544 2024-05-08 10:05:22Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 100845 $"
+__version__ = "$Revision: 104544 $"
 
 
 # Standard Python imports.
@@ -1301,7 +1301,7 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
                 if cMsTimeout > cMsToDeadline:
                     reporter.log('adjusting timeout: %s ms -> %s ms (deadline)\n' % (cMsTimeout, cMsToDeadline,));
                     return cMsToDeadline;
-                reporter.log('adjustTimeoutMs: cMsTimeout (%s) > cMsToDeadline (%s)' % (cMsTimeout, cMsToDeadline,));
+                reporter.log('adjustTimeoutMs: cMsTimeout (%s) <= cMsToDeadline (%s)' % (cMsTimeout, cMsToDeadline,));
             else:
                 # Don't bother, we've passed the deadline.
                 reporter.log('adjustTimeoutMs: ooops! cMsToDeadline=%s (%s), timestampMilli()=%s, timestampSecond()=%s'
