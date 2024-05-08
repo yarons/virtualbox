@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 104563 2024-05-08 16:19:39Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 104564 2024-05-08 16:25:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -277,6 +277,9 @@ void UIWizardNewCloudVMPageExpert::sltRetranslateUI()
 
     /* Translate source image list: */
     m_pSourceImageList->setWhatsThis(UIWizardNewCloudVM::tr("Lists all the source images or boot volumes."));
+
+    /* Translate cloud VM properties table: */
+    m_pFormEditor->setWhatsThis(UIWizardNewCloudVM::tr("Lists all the cloud VM properties."));
 }
 
 void UIWizardNewCloudVMPageExpert::initializePage()

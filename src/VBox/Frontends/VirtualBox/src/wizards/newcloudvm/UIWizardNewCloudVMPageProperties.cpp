@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageProperties.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageProperties.cpp 104564 2024-05-08 16:25:22Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageProperties class implementation.
  */
@@ -105,6 +105,9 @@ void UIWizardNewCloudVMPageProperties::sltRetranslateUI()
                                              "influencing the resulting cloud VM instance.  You can change many of the "
                                              "properties shown by double-clicking on the items and disable others using the "
                                              "check boxes below."));
+
+    /* Translate cloud VM properties table: */
+    m_pFormEditor->setWhatsThis(UIWizardNewCloudVM::tr("Lists all the cloud VM properties."));
 }
 
 void UIWizardNewCloudVMPageProperties::initializePage()
