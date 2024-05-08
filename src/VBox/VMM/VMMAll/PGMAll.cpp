@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 103417 2024-02-19 08:44:55Z alexander.eichner@oracle.com $ */
+/* $Id: PGMAll.cpp 104548 2024-05-08 12:26:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1906,15 +1906,11 @@ int pgmShwSyncNestedPageLocked(PVMCPUCC pVCpu, RTGCPHYS GCPhys, uint32_t cPages,
 /**
  * Gets effective Guest OS page information.
  *
- * When GCPtr is in a big page, the function will return as if it was a normal
- * 4KB page. If the need for distinguishing between big and normal page becomes
- * necessary at a later point, a PGMGstGetPage() will be created for that
- * purpose.
- *
  * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   GCPtr       Guest Context virtual address of the page.
  * @param   pWalk       Where to store the page walk information.
+ * @thread  EMT(pVCpu)
  */
 VMMDECL(int) PGMGstGetPage(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk)
 {
