@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 104547 2024-05-08 12:25:11Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -36,6 +36,8 @@
 #include "UIWizardNewCloudVMPageProperties.h"
 
 /* Forward declarations: */
+class QGridLayout;
+class QLabel;
 class UIToolBox;
 class UIWizardNewCloudVM;
 
@@ -96,8 +98,14 @@ private:
     /** Holds the tool-box instance. */
     UIToolBox *m_pToolBox;
 
+    /** Holds the location layout instance. */
+    QGridLayout  *m_pLayoutProvider;
+    /** Holds the provider type label instance. */
+    QLabel       *m_pProviderLabel;
     /** Holds the location type combo-box instance. */
     QIComboBox   *m_pProviderComboBox;
+    /** Holds the profile label instance. */
+    QLabel       *m_pProfileLabel;
     /** Holds the profile combo-box instance. */
     QIComboBox   *m_pProfileComboBox;
     /** Holds the profile management tool-button instance. */
