@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageExpert.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageExpert.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageExpert class implementation.
  */
@@ -175,7 +175,7 @@ void UIWizardAddCloudVMPageExpert::sltRetranslateUI()
 
     /* Translate profile stuff: */
     if (m_pProfileToolButton)
-        m_pProfileToolButton->setToolTip(UIWizardAddCloudVM::tr("Open Cloud Profile Manager..."));
+        m_pProfileToolButton->setToolTip(UIWizardAddCloudVM::tr("Open cloud profile manager..."));
 
     /* Translate received values of Source combo-box.
      * We are enumerating starting from 0 for simplicity: */

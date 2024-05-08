@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 104547 2024-05-08 12:25:11Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -268,7 +268,7 @@ void UIWizardNewCloudVMPageExpert::sltRetranslateUI()
     if (m_pProfileLabel)
         m_pProfileLabel->setText(UIWizardNewCloudVM::tr("&Profile:"));
     if (m_pProfileToolButton)
-        m_pProfileToolButton->setToolTip(UIWizardNewCloudVM::tr("Open Cloud Profile Manager..."));
+        m_pProfileToolButton->setToolTip(UIWizardNewCloudVM::tr("Open cloud profile manager..."));
 
     /* Update tool-tips: */
     updateComboToolTip(m_pProviderComboBox);

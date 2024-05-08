@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -504,7 +504,7 @@ void UIWizardNewCloudVMPageSource::sltRetranslateUI()
 
     /* Translate profile stuff: */
     m_pProfileLabel->setText(UIWizardNewCloudVM::tr("&Profile:"));
-    m_pProfileToolButton->setToolTip(UIWizardNewCloudVM::tr("Open Cloud Profile Manager..."));
+    m_pProfileToolButton->setToolTip(UIWizardNewCloudVM::tr("Open cloud profile manager..."));
     m_pSourceImageLabel->setText(UIWizardNewCloudVM::tr("&Source:"));
 
     /* Translate source tab-bar: */

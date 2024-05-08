@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 104533 2024-05-07 15:15:24Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 104550 2024-05-08 12:35:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -445,7 +445,7 @@ void UIWizardImportAppPageExpert::sltRetranslateUI()
     if (m_pProfileLabel)
         m_pProfileLabel->setText(UIWizardImportApp::tr("&Profile:"));
     if (m_pProfileToolButton)
-        m_pProfileToolButton->setToolTip(UIWizardImportApp::tr("Open Cloud Profile Manager..."));
+        m_pProfileToolButton->setToolTip(UIWizardImportApp::tr("Open cloud profile manager..."));
     if (m_pProfileInstanceLabel)
         m_pProfileInstanceLabel->setText(UIWizardImportApp::tr("&Machines:"));
 
