@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.h 104555 2024-05-08 13:20:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class declaration.
  */
@@ -90,9 +90,6 @@ namespace UIWizardNewCloudVMSource
                                 UIWizardNewCloudVM *pWizard,
                                 QTabBar *pTabBar,
                                 const QString &strImageId);
-
-    /** Updates @a pCombo tool-tips. */
-    void updateComboToolTip(QIComboBox *pCombo);
 
     /** Returns current user data for @a pList specified. */
     QString currentListWidgetData(QListWidget *pList);

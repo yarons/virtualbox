@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardAddCloudVMPageSource.h 104555 2024-05-08 13:20:58Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class declaration.
  */
@@ -71,9 +71,6 @@ namespace UIWizardAddCloudVMSource
     void populateProfiles(QIComboBox *pCombo, UINotificationCenter *pCenter, const QString &strProviderShortName, const QString &strProfileName);
     /** Populates @a pList with profile instances available in @a comClient. */
     void populateProfileInstances(QListWidget *pList, UINotificationCenter *pCenter, const CCloudClient &comClient);
-
-    /** Updates @a pCombo tool-tips. */
-    void updateComboToolTip(QIComboBox *pCombo);
 
     /** Returns current user data for @a pList specified. */
     QStringList currentListWidgetData(QListWidget *pList);
