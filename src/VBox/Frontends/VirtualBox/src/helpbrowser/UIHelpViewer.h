@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.h 104576 2024-05-10 13:42:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class declaration.
  */
@@ -117,6 +117,7 @@ private slots:
     void sltFindInPageSearchTextChange(const QString &strSearchText);
     void sltToggleFindInPageWidget(bool fVisible);
     void sltCloseFindInPageWidget();
+    void sltUpdateHighlightedURL(const QUrl &url);
 
 private:
 
@@ -161,6 +162,7 @@ private:
     QLabel *m_pOverlayLabel;
     QGraphicsBlurEffect *m_pOverlayBlurEffect;
     int m_iZoomPercentage;
+    QUrl m_highlightedUrl;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_helpbrowser_UIHelpViewer_h */
