@@ -1,4 +1,4 @@
-/* $Id: x509-create-sign.cpp 104571 2024-05-10 05:06:25Z samantha.scholz@oracle.com $ */
+/* $Id: x509-create-sign.cpp 104572 2024-05-10 06:26:50Z samantha.scholz@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Certificate Creation and Signing.
  */
@@ -43,7 +43,6 @@
 #  include <io.h>
 # endif
 
-#include <stdio.h>
 #include <iprt/file.h>
 #include "internal/iprt.h"
 #include <iprt/crypto/x509.h>
