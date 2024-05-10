@@ -1,4 +1,4 @@
-/* $Id: x509-create-sign.cpp 104570 2024-05-10 04:58:46Z samantha.scholz@oracle.com $ */
+/* $Id: x509-create-sign.cpp 104571 2024-05-10 05:06:25Z samantha.scholz@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Certificate Creation and Signing.
  */
@@ -132,7 +132,9 @@ RTDECL(int) RTCrX509Certificate_Generate(const char *pszServerCertificate, const
     if ( RT_FAILURE(rc) )
         return rc;
     BIO_free(fp1);
+# ifdef _MSC_VER
     close(fd1);
+#endif
     RTFileClose(hKeyFile);
 
     RTFILE hCertFile;
@@ -152,7 +154,9 @@ RTDECL(int) RTCrX509Certificate_Generate(const char *pszServerCertificate, const
     if ( RT_FAILURE(rc) )
         return rc;
     BIO_free(fp2);
+# ifdef _MSC_VER
     close(fd2);
+#endif
     RTFileClose(hCertFile);
 
     X509_free(tempX509);
