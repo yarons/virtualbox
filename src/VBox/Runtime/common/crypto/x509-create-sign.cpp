@@ -1,4 +1,4 @@
-/* $Id: x509-create-sign.cpp 104573 2024-05-10 07:23:34Z samantha.scholz@oracle.com $ */
+/* $Id: x509-create-sign.cpp 104574 2024-05-10 07:25:42Z samantha.scholz@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Certificate Creation and Signing.
  */
@@ -64,7 +64,7 @@
 # include <openssl/x509.h>
 # include <openssl/bio.h>
 
-#if defined(RT_OS_OS2) && !defined(RTSTREAM_STANDALONE)
+#if defined(RT_OS_OS2)
 # define _O_WRONLY   O_WRONLY
 #endif
 
