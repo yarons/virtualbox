@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104577 2024-05-10 14:13:39Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 104578 2024-05-10 14:15:08Z klaus.espenlaub@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2779,14 +2779,8 @@ ifeq ($(KBUILD_TARGET),darwin)
    VBOX_DEF_MACOSX_VERSION_MIN := 10.6#  Snow Leopard
   else if1of ($(VBOX_GCC_TOOL), VBoxXcode62)
    VBOX_DEF_MACOSX_VERSION_MIN := 10.9#  Mavericks
-  else ifeq ($(KBUILD_TARGET_ARCH),arm64)
-   VBOX_DEF_MACOSX_VERSION_MIN := 11.0# The Jack Kerouac novel.
   else
-   if defined(VBOX_WITH_VMNET) && !defined(VBOX_ONLY_BUILD) # Force SDK 10.15 for VMNET
-    VBOX_DEF_MACOSX_VERSION_MIN := 10.15# Catalina
-   else
-    VBOX_DEF_MACOSX_VERSION_MIN := 10.13# High Sierra
-   endif
+   VBOX_DEF_MACOSX_VERSION_MIN := 11.0#  Big Sur
   endif
  endif
  VBOX_DEF_MACOSX_VERSION_MIN_NO_DOT := $(subst .,,$(VBOX_DEF_MACOSX_VERSION_MIN))
@@ -9242,7 +9236,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104577 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104578 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
