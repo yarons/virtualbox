@@ -1,4 +1,4 @@
-/* $Id: DnDPath.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DnDPath.cpp 104605 2024-05-13 16:02:45Z alexander.eichner@oracle.com $ */
 /** @file
  * DnD - Path handling.
  */
@@ -182,11 +182,8 @@ int DnDPathRebase(const char *pcszPath, const char *pcszBaseOld, const char *pcs
 
     /* Do we need to see if the given path is part of the old base? */
     size_t idxBase;
-    if (   pcszBaseOld
-        && RTPathStartsWith(pcszPath, pcszBaseOld))
-    {
+    if (RTPathStartsWith(pcszPath, pcszBaseOld))
         idxBase = strlen(pcszBaseOld);
-    }
     else
         idxBase = 0;
 

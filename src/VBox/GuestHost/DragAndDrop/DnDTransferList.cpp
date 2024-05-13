@@ -1,4 +1,4 @@
-/* $Id: DnDTransferList.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DnDTransferList.cpp 104605 2024-05-13 16:02:45Z alexander.eichner@oracle.com $ */
 /** @file
  * DnD - transfer list implemenation.
  */
@@ -542,6 +542,8 @@ static int dndTransferListAppendDirectory(PDNDTRANSFERLIST pList, char* pszPathA
                 && fPathIsRoot)
             {
                 rc = dndTransferListRootEntryAdd(pList, pszPathAbs);
+                if (RT_FAILURE(rc))
+                    break;
             }
         }
         else if (rc == VERR_NO_MORE_FILES)
