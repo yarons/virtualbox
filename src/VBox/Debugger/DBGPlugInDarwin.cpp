@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 103424 2024-02-19 10:25:36Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInDarwin.cpp 104609 2024-05-13 16:07:39Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -958,10 +958,9 @@ static DECLCALLBACK(int)  dbgDiggerDarwinInit(PUVM pUVM, PCVMMR3VTABLE pVMM, voi
                     /*
                      * Try add the module.
                      */
-                    LogRel(("OSXDig: kmod_info @%RGv: '%s' ver '%s', image @%#llx LB %#llx cbHdr=%#llx\n", AddrModInfo.FlatPtr,
-                            pszName, pszVersion, uImageAddr, cbImage, cbHdr));
                     rc = dbgDiggerDarwinAddModule(pThis, pUVM, pVMM, uImageAddr, pszName, NULL);
-
+                    LogRel(("OSXDig: kmod_info @%RGv: '%s' ver '%s', image @%#llx LB %#llx cbHdr=%#llx -> %Rrc\n", AddrModInfo.FlatPtr,
+                            pszName, pszVersion, uImageAddr, cbImage, cbHdr, rc));
 
                     /*
                      * Advance to the next kmod_info entry.
