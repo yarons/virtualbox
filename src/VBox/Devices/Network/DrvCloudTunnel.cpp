@@ -1,4 +1,4 @@
-/* $Id: DrvCloudTunnel.cpp 103346 2024-02-14 02:06:13Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvCloudTunnel.cpp 104584 2024-05-13 10:12:07Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvCloudTunnel - Cloud tunnel network transport driver
  *
@@ -871,7 +871,7 @@ static int drvCloudTunnelExecuteRemoteCommandNoOutput(PDRVCLOUDTUNNEL pThis, con
     }
     ssh_channel_free(channel);
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
@@ -976,7 +976,7 @@ static int drvCloudTunnelExecuteRemoteCommand(PDRVCLOUDTUNNEL pThis, const char 
     }
     ssh_channel_free(channel);
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
