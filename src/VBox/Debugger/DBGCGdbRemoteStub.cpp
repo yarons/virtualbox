@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 104613 2024-05-13 16:10:34Z alexander.eichner@oracle.com $ */
+/* $Id: DBGCGdbRemoteStub.cpp 104617 2024-05-13 17:55:32Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -2857,7 +2857,7 @@ DECL_HIDDEN_CALLBACK(int) dbgcGdbStubRunloop(PUVM pUVM, PCDBGCIO pIo, unsigned f
         {
             rc = DBGFR3Halt(pThis->Dbgc.pUVM, VMCPUID_ALL);
             if (RT_FAILURE(rc))
-                LogRel(("DBGC/Gdb: Failed to halt VM (%Rrc), debugger might behave unexpectedly\n"));
+                LogRel(("DBGC/Gdb: Failed to halt VM (%Rrc), debugger might behave unexpectedly\n", rc));
         }
 
         /*
