@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: tstDisasm-2.cpp 104616 2024-05-13 16:13:24Z alexander.eichner@oracle.com $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -554,7 +554,7 @@ int main(int argc, char **argv)
                     enmStyle = kAsmStyle_yasm;
                 else if (!strcmp(ValueUnion.psz, "masm"))
                 {
-                    enmStyle = kAsmStyle_masm;
+                    //enmStyle = kAsmStyle_masm; Unused right now
                     RTStrmPrintf(g_pStdErr, "%s: masm style isn't implemented yet\n", argv0);
                     return 1;
                 }
@@ -584,7 +584,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 101539 $\n");
+                RTPrintf("$Revision: 104616 $\n");
                 return 0;
 
             default:
