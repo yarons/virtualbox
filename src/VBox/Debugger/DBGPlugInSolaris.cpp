@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInSolaris.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInSolaris.cpp 104606 2024-05-13 16:05:27Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
@@ -528,9 +528,6 @@ static void dbgDiggerSolarisProcessModCtl32(PUVM pUVM, PCVMMR3VTABLE pVMM, PDBGD
     if (Module.hdr.e_shentsize != sizeof(Elf32_Shdr))
         return;
 
-    if (Module.hdr.e_shentsize != sizeof(Elf32_Shdr))
-        return;
-
     /* Basic validations of the rest of the stuff. */
     if (    !SOL32_VALID_ADDRESS(Module.shdrs)
         ||  !SOL32_VALID_ADDRESS(Module.symhdr)
@@ -677,9 +674,6 @@ static void dbgDiggerSolarisProcessModCtl64(PUVM pUVM, PCVMMR3VTABLE pVMM, PDBGD
     if (    Module.hdr.e_phentsize != sizeof(Elf64_Phdr)
         &&  Module.hdr.e_phentsize) //??
         return;
-    if (Module.hdr.e_shentsize != sizeof(Elf64_Shdr))
-        return;
-
     if (Module.hdr.e_shentsize != sizeof(Elf64_Shdr))
         return;
 
