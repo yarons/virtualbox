@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 100495 2023-07-11 06:43:42Z alexander.eichner@oracle.com $ */
+/* $Id: DevEFI.cpp 104587 2024-05-13 12:13:10Z alexander.eichner@oracle.com $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1225,6 +1225,8 @@ static int efiParseFirmware(PPDMDEVINS pDevIns, PDEVEFI pThis, PDEVEFIR3 pThisCC
         {
             /* Initialize the NVRAM content from the loaded ROM file as the NVRAM wasn't initialized yet. */
             rc = flashR3LoadFromBuf(&pThis->Flash, pThisCC->pu8EfiRom, pThisCC->cbNvram);
+            if (RT_FAILURE(rc))
+                return rc;
         }
         else if (RT_FAILURE(rc))
             return rc;
