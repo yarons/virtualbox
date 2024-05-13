@@ -1,4 +1,4 @@
-/* $Id: DrvGpioButton.cpp 101624 2023-10-27 13:44:50Z alexander.eichner@oracle.com $ */
+/* $Id: DrvGpioButton.cpp 104589 2024-05-13 12:14:37Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvGpioButton - Virtual GPIO driver for power/sleep button presses.
  */
@@ -237,6 +237,9 @@ static DECLCALLBACK(int) drvGpioButtonConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     rc = PDMDrvHlpTMTimerCreate(pDrvIns, TMCLOCK_VIRTUAL, drvGpioButtonTimerDepress, NULL,
                                 TMTIMER_FLAGS_NO_CRIT_SECT | TMTIMER_FLAGS_NO_RING0,
                                 "Button depress timer", &pThis->hTimerDepress);
+    if (RT_FAILURE(rc))
+        return PDMDRV_SET_ERROR(pDrvIns, rc,
+                                N_("Failed to create button depress timer"));
 
     return VINF_SUCCESS;
 }
