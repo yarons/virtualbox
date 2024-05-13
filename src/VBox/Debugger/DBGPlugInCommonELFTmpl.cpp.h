@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 104610 2024-05-13 16:08:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
@@ -318,6 +318,8 @@ int DBGDiggerCommonParseElfMod(PUVM pUVM, PCVMMR3VTABLE pVMM, const char *pszMod
                 continue;
 
             rc = RTDbgModSymbolAdd(hMod, pszSymbol, iSeg, offSeg, cbSym, 0 /*fFlags*/, NULL);
+            if (RT_FAILURE(rc))
+                LogRel(("%02x:%RGv %RGv %s!%s -> rc=%Rrc\n", paSyms[iSym].st_shndx, offSeg, cbSym, pszModName, pszSymbol, rc));
             Log(("%02x:%RGv %RGv %s!%s (rc=%Rrc)\n", paSyms[iSym].st_shndx, offSeg, cbSym, pszModName, pszSymbol, rc));
         }
         /*else: silently ignore */
