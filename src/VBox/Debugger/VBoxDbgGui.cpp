@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 103464 2024-02-20 02:35:20Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgGui.cpp 104615 2024-05-13 16:12:02Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -46,7 +46,7 @@
 
 VBoxDbgGui::VBoxDbgGui() :
     m_pDbgStats(NULL), m_pDbgConsole(NULL), m_pSession(NULL), m_pConsole(NULL),
-    m_pMachineDebugger(NULL), m_pMachine(NULL), m_pUVM(NULL), m_pVMM(NULL),
+    m_pMachineDebugger(NULL), m_pMachine(NULL), m_pVM(NULL), m_pUVM(NULL), m_pVMM(NULL),
     m_pParent(NULL), m_pMenu(NULL),
     m_x(0), m_y(0), m_cx(0), m_cy(0), m_xDesktop(0), m_yDesktop(0), m_cxDesktop(0), m_cyDesktop(0)
 {
