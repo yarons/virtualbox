@@ -1,4 +1,4 @@
-/* $Id: UIHelpViewer.h 104576 2024-05-10 13:42:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHelpViewer.h 104600 2024-05-13 14:26:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHelpViewer class declaration.
  */
@@ -142,6 +142,7 @@ private:
     void loadImage(const QUrl &imageFileUrl);
     void clearOverlay();
     void enableOverlay();
+    bool isImage(const QString &strLink);
 
     const QHelpEngine* m_pHelpEngine;
     UIFindInPageWidget *m_pFindInPageWidget;
