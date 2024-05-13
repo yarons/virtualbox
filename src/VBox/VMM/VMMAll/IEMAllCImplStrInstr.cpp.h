@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 104195 2024-04-05 14:45:23Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 104581 2024-05-13 09:22:34Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1128,9 +1128,6 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_lods_,OP_rAX,_m,ADDR_SIZE), int8_t, iEffSeg)
             cLeftPage--;
             IEM_CHECK_FF_CPU_HIGH_PRIORITY_POST_REPSTR_MAYBE_RETURN(pVM, pVCpu, uCounterReg == 0);
         } while ((int32_t)cLeftPage > 0);
-
-        if (rcStrict != VINF_SUCCESS)
-            break;
 
         /*
          * Next page.  Must check for interrupts and stuff here.
