@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 104389 2024-04-20 19:15:12Z alexander.eichner@oracle.com $ */
+/* $Id: DrvNAT.cpp 104583 2024-05-13 10:04:50Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -270,11 +270,9 @@ static DECLCALLBACK(int) drvNATRecvWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread
 {
     RT_NOREF(pThread);
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
-    int rc;
-    rc = RTSemEventSignal(pThis->EventRecv);
 
     STAM_COUNTER_INC(&pThis->StatNATRecvWakeups);
-    return VINF_SUCCESS;
+    return RTSemEventSignal(pThis->EventRecv);
 }
 
 
