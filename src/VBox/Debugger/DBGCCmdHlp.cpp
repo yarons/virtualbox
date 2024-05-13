@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 102855 2024-01-12 10:51:18Z michal.necasek@oracle.com $ */
+/* $Id: DBGCCmdHlp.cpp 104614 2024-05-13 16:11:26Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -1490,6 +1490,8 @@ static DECLCALLBACK(int) dbgcHlpRegPrintf(PDBGCCMDHLP pCmdHlp, VMCPUID idCpu, in
     char *pszRegs = strchr(szDisAndRegs, '\n');
     *pszRegs++ = '\0';
     rc = DBGCCmdHlpPrintf(pCmdHlp, "%s", pszRegs);
+    if (RT_FAILURE(rc))
+        return rc;
 
     /*
      * Disassemble one instruction at cs:[r|e]ip.
