@@ -1,4 +1,4 @@
-/* $Id: DevFlashCFI.cpp 100765 2023-08-01 10:34:42Z alexander.eichner@oracle.com $ */
+/* $Id: DevFlashCFI.cpp 104602 2024-05-13 15:18:26Z alexander.eichner@oracle.com $ */
 /** @file
  * DevFlashCFI - A simple Flash device implementing the Common Flash Interface
  * using the sepc from https://ia803103.us.archive.org/30/items/m30l0r7000t0/m30l0r7000t0.pdf
@@ -599,8 +599,12 @@ static DECLCALLBACK(int) flashR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
         if (RT_SUCCESS(rc))
         {
             if (cbFlash <= pThis->cbFlashSize)
+            {
                 rc = pThis->Lun0.pDrvVfs->pfnReadAll(pThis->Lun0.pDrvVfs, FLASH_CFI_VFS_NAMESPACE, pThis->pszFlashFile,
                                                      pThis->pbFlash, pThis->cbFlashSize);
+                if (RT_FAILURE(rc))
+                    return PDMDEV_SET_ERROR(pDevIns, rc, N_("Failed to read flash content from VFS layer\n"));
+            }
             else
                 return PDMDEV_SET_ERROR(pDevIns, VERR_BUFFER_OVERFLOW, N_("Configured flash size is too small to fit the saved NVRAM content"));
         }
