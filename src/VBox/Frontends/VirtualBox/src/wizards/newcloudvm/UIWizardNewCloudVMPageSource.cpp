@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageSource.cpp 104566 2024-05-08 16:37:21Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewCloudVMPageSource.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageSource class implementation.
  */
@@ -414,11 +414,7 @@ UIWizardNewCloudVMPageSource::UIWizardNewCloudVMPageSource()
                     /* Make source image list fit 50 symbols
                      * horizontally and 8 lines vertically: */
                     const QFontMetrics fm(m_pSourceImageList->font());
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
                     const int iFontWidth = fm.horizontalAdvance('x');
-#else
-                    const int iFontWidth = fm.width('x');
-#endif
                     const int iTotalWidth = 50 * iFontWidth;
                     const int iFontHeight = fm.height();
                     const int iTotalHeight = 8 * iFontHeight;

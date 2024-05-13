@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPortForwardingTable.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -773,12 +773,8 @@ QVariant UIPortForwardingModel::data(const QModelIndex &index, int iRole) const
                 case UIPortForwardingDataType_HostIp:
                 case UIPortForwardingDataType_GuestIp:
                 {
-                    QFontMetrics fm = qobject_cast<QWidget*>(parent())->fontMetrics();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+                    const QFontMetrics fm = qobject_cast<QWidget*>(parent())->fontMetrics();
                     return QSize(fm.horizontalAdvance(" 888.888.888.888 "), fm.height());
-#else
-                    return QSize(fm.width(" 888.888.888.888 "), fm.height());
-#endif
                 }
                 default: return QVariant();
             }

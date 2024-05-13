@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 104575 2024-05-10 13:35:32Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -187,13 +187,8 @@ QSize QILineEdit::fitTextWidth(const QString &strText) const
     // WORKAROUND:
     // The margins are based on qlineedit.cpp of Qt.
     // Maybe they where changed at some time in the future.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     QSize sc(fontMetrics().horizontalAdvance(strText) + 2 * 2,
              fontMetrics().xHeight()                  + 2 * 1);
-#else
-    QSize sc(fontMetrics().width(strText) + 2 * 2,
-             fontMetrics().xHeight()     + 2 * 1);
-#endif
     const QSize sa = style()->sizeFromContents(QStyle::CT_LineEdit, &sof, sc, this);
 
     return sa;

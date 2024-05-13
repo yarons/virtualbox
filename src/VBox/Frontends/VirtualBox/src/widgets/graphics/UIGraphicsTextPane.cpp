@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 103795 2024-03-11 19:36:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIGraphicsTextPane.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -205,18 +205,13 @@ void UIGraphicsTextPane::updateTextLayout(bool fFull /* = false */)
     bool fSingleColumnText = true;
     foreach (const UITextTableLine &line, m_text)
     {
-        bool fRightColumnPresent = !line.string2().isEmpty();
+        const bool fRightColumnPresent = !line.string2().isEmpty();
         if (fRightColumnPresent)
             fSingleColumnText = false;
-        QString strLeftLine = fRightColumnPresent ? line.string1() + ":" : line.string1();
-        QString strRightLine = line.string2();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+        const QString strLeftLine = fRightColumnPresent ? line.string1() + ":" : line.string1();
+        const QString strRightLine = line.string2();
         iMaximumLeftColumnWidth = qMax(iMaximumLeftColumnWidth, fm.horizontalAdvance(strLeftLine));
         iMaximumRightColumnWidth = qMax(iMaximumRightColumnWidth, fm.horizontalAdvance(strRightLine));
-#else
-        iMaximumLeftColumnWidth = qMax(iMaximumLeftColumnWidth, fm.width(strLeftLine));
-        iMaximumRightColumnWidth = qMax(iMaximumRightColumnWidth, fm.width(strRightLine));
-#endif
     }
     iMaximumLeftColumnWidth += 1;
     iMaximumRightColumnWidth += 1;
@@ -520,11 +515,7 @@ QString UIGraphicsTextPane::searchForHoveredAnchor(QPaintDevice *pPaintDevice, c
                 int iSymbolX = (int)layoutLine.cursorToX(iTextPosition);
                 QRect symbolRect = QRect(layoutPosition.x() + linePosition.x() + iSymbolX,
                                          layoutPosition.y() + linePosition.y(),
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
                                          fm.horizontalAdvance(strLayoutText[iTextPosition]) + 1,
-#else
-                                         fm.width(strLayoutText[iTextPosition]) + 1,
-#endif
                                          fm.height());
                 formatRegion += symbolRect;
             }

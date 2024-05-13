@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsElement.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -359,12 +359,8 @@ void UIDetailsElement::setName(const QString &strName)
 {
     /* Cache name: */
     m_strName = strName;
-    QFontMetrics fm(m_nameFont, model()->paintDevice());
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    const QFontMetrics fm(m_nameFont, model()->paintDevice());
     m_nameSize = QSize(fm.horizontalAdvance(m_strName), fm.height());
-#else
-    m_nameSize = QSize(fm.width(m_strName), fm.height());
-#endif
 
     /* Update linked values: */
     updateMinimumHeaderWidth();

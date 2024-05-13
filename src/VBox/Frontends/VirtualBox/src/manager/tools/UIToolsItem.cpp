@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 101560 2023-10-23 16:10:12Z sergey.dubov@oracle.com $ */
+/* $Id: UIToolsItem.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -644,11 +644,7 @@ void UIToolsItem::updateMinimumNameSize()
     const QFontMetrics fm(m_nameFont, pPaintDevice);
     const int iWidthOf15Letters = textWidthMonospace(m_nameFont, pPaintDevice, 15);
     const QString strNameCompressedTo15Letters = compressText(m_nameFont, pPaintDevice, m_strName, iWidthOf15Letters);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     const QSize minimumNameSize = QSize(fm.horizontalAdvance(strNameCompressedTo15Letters), fm.height());
-#else
-    const QSize minimumNameSize = QSize(fm.width(strNameCompressedTo15Letters), fm.height());
-#endif
 
     /* Update linked values: */
     if (m_minimumNameSize != minimumNameSize)
@@ -699,14 +695,10 @@ void UIToolsItem::updateVisibleName()
 int UIToolsItem::textWidthMonospace(const QFont &font, QPaintDevice *pPaintDevice, int iCount)
 {
     /* Return text width, based on font-metrics: */
-    QFontMetrics fm(font, pPaintDevice);
+    const QFontMetrics fm(font, pPaintDevice);
     QString strString;
     strString.fill('_', iCount);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     return fm.horizontalAdvance(strString);
-#else
-    return fm.width(strString);
-#endif
 }
 
 /* static */
@@ -717,25 +709,15 @@ QString UIToolsItem::compressText(const QFont &font, QPaintDevice *pPaintDevice,
         return strText;
 
     /* Check if passed text already fits maximum width: */
-    QFontMetrics fm(font, pPaintDevice);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    const QFontMetrics fm(font, pPaintDevice);
     if (fm.horizontalAdvance(strText) <= iWidth)
-#else
-    if (fm.width(strText) <= iWidth)
-#endif
         return strText;
 
     /* Truncate otherwise: */
-    QString strEllipsis = QString("...");
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-    int iEllipsisWidth = fm.horizontalAdvance(strEllipsis + " ");
+    const QString strEllipsis = QString("...");
+    const int iEllipsisWidth = fm.horizontalAdvance(strEllipsis + " ");
     while (!strText.isEmpty() && fm.horizontalAdvance(strText) + iEllipsisWidth > iWidth)
         strText.truncate(strText.size() - 1);
-#else
-    int iEllipsisWidth = fm.width(strEllipsis + " ");
-    while (!strText.isEmpty() && fm.width(strText) + iEllipsisWidth > iWidth)
-        strText.truncate(strText.size() - 1);
-#endif
     return strText + strEllipsis;
 }
 

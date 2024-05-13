@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: UISearchLineEdit.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIsearchLineEdit class definitions.
  */
@@ -56,21 +56,16 @@ void UISearchLineEdit::paintEvent(QPaintEvent *pEvent)
     }
     /* Draw the total match count and the current scrolled item's index on the right hand side of the line edit: */
     QPainter painter(this);
-    QFont pfont = font();
-    QString strText = QString("%1/%2").arg(QString::number(m_iScrollToIndex + 1)).arg(QString::number(m_iMatchCount));
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-    QSize textSize(QApplication::fontMetrics().horizontalAdvance(strText),
-                   QApplication::fontMetrics().height());
-#else
-    QSize textSize(QApplication::fontMetrics().width(strText),
-                   QApplication::fontMetrics().height());
-#endif
+    const QFont pfont = font();
+    const QString strText = QString("%1/%2").arg(QString::number(m_iScrollToIndex + 1)).arg(QString::number(m_iMatchCount));
+    const QSize textSize(QApplication::fontMetrics().horizontalAdvance(strText),
+                         QApplication::fontMetrics().height());
 
     /* Dont draw anything if we dont have enough space: */
     if (textSize.width() > 0.5 * width())
         return;
-    int iTopMargin = (height() - textSize.height()) / 2;
-    int iRightMargin = iTopMargin;
+    const int iTopMargin = (height() - textSize.height()) / 2;
+    const int iRightMargin = iTopMargin;
 
     QColor fontColor(Qt::black);
     painter.setPen(fontColor);

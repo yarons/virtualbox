@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -334,22 +334,17 @@ QSize UIChooserPaneDelegate::sizeHint(const QStyleOptionViewItem &option, const 
     fetchPixmapInfo(index, pixmap, pixmapSize);
 
     /* Calculate width: */
-    const int iWidth = m_iMargin +
-                       pixmapSize.width() +
-                       2 * m_iSpacing +
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-                       qMax(fm.horizontalAdvance(index.data(Field_Name).toString()),
-                            fm.horizontalAdvance(index.data(Field_ID).toString())) +
-#else
-                       qMax(fm.width(index.data(Field_Name).toString()),
-                            fm.width(index.data(Field_ID).toString())) +
-#endif
-                       m_iMargin;
+    const int iWidth = m_iMargin
+                     + pixmapSize.width()
+                     + 2 * m_iSpacing
+                     + qMax(fm.horizontalAdvance(index.data(Field_Name).toString()),
+                            fm.horizontalAdvance(index.data(Field_ID).toString()))
+                     + m_iMargin;
     /* Calculate height: */
-    const int iHeight = m_iMargin +
-                        qMax(pixmapSize.height(),
-                             fm.height() + m_iSpacing + fm.height()) +
-                        m_iMargin;
+    const int iHeight = m_iMargin
+                      + qMax(pixmapSize.height(),
+                             fm.height() + m_iSpacing + fm.height())
+                      + m_iMargin;
 
     /* Return result: */
     return QSize(iWidth, iHeight);

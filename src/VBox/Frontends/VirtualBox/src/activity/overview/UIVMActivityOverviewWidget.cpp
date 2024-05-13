@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -2105,14 +2105,10 @@ void UIVMActivityOverviewWidget::computeMinimumColumnWidths()
         int iColumnStringWidth = columnDataStringLengths.value(i, 0);
         int iColumnTitleWidth = m_columnTitles.value(i, QString()).length();
         int iMax = iColumnStringWidth > iColumnTitleWidth ? iColumnStringWidth : iColumnTitleWidth;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-        columnWidthsInPixels[i] = iMax * fontMetrics.horizontalAdvance('x') +
-#else
-        columnWidthsInPixels[i] = iMax * fontMetrics.width('x') +
-#endif
-            QApplication::style()->pixelMetric(QStyle::PM_LayoutLeftMargin) +
-            QApplication::style()->pixelMetric(QStyle::PM_LayoutRightMargin) +
-            m_iSortIndicatorWidth;
+        columnWidthsInPixels[i] = iMax * fontMetrics.horizontalAdvance('x')
+                                + QApplication::style()->pixelMetric(QStyle::PM_LayoutLeftMargin)
+                                + QApplication::style()->pixelMetric(QStyle::PM_LayoutRightMargin)
+                                + m_iSortIndicatorWidth;
     }
     m_pTableView->setMinimumColumnWidths(columnWidthsInPixels);
 }

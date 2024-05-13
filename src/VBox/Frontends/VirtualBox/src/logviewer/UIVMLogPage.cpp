@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 103940 2024-03-20 09:14:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMLogPage.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -172,13 +172,9 @@ int UIVMLogPage::defaultLogPageWidth() const
         return 0;
 
     /* Compute a width for 132 characters plus scrollbar and frame width: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-    int iDefaultWidth = m_pTextEdit->fontMetrics().horizontalAdvance(QChar('x')) * 132 +
-#else
-    int iDefaultWidth = m_pTextEdit->fontMetrics().width(QChar('x')) * 132 +
-#endif
-                        m_pTextEdit->verticalScrollBar()->width() +
-                        m_pTextEdit->frameWidth() * 2;
+    const int iDefaultWidth = m_pTextEdit->fontMetrics().horizontalAdvance(QChar('x')) * 132
+                            + m_pTextEdit->verticalScrollBar()->width()
+                            + m_pTextEdit->frameWidth() * 2;
 
     return iDefaultWidth;
 }

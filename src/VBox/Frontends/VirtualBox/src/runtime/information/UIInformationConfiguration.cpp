@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 104530 2024-05-07 11:39:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIInformationConfiguration.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -243,14 +243,10 @@ void UIInformationConfiguration::insertTitleRow(const QString &strTitle, const Q
 void UIInformationConfiguration::insertInfoRow(const QString strText1, const QString &strText2,
                                                const QFontMetrics &fontMetrics, int &iMaxColumn1Length)
 {
-    int iRow = m_pTableWidget->rowCount();
+    const int iRow = m_pTableWidget->rowCount();
     m_pTableWidget->insertRow(iRow);
     m_pTableWidget->setRowHeight(iRow, fontMetrics.height() + m_iRowTopMargin + m_iRowBottomMargin);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     iMaxColumn1Length = qMax(iMaxColumn1Length, fontMetrics.horizontalAdvance(strText1));
-#else
-    iMaxColumn1Length = qMax(iMaxColumn1Length, fontMetrics.width(strText1));
-#endif
     m_pTableWidget->setItem(iRow, 1, new QITableWidgetItem(strText1));
     m_pTableWidget->setItem(iRow, 2, new QITableWidgetItem(strText2));
 }

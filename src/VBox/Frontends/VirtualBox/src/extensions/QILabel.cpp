@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 103362 2024-02-14 16:50:56Z sergey.dubov@oracle.com $ */
+/* $Id: QILabel.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class implementation.
  */
@@ -334,11 +334,7 @@ QString QILabel::compressText(const QString &strText) const
             /* Remove the whole compact tag (also the text): */
             const QString strFlat = removeHtmlTags(QString(strWork).remove(strCompact));
             /* What size will the text have without the compact text: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
             const int iFlatWidth = fm.horizontalAdvance(strFlat);
-#else
-            const int iFlatWidth = fm.width(strFlat);
-#endif
             /* Create the shortened text: */
             const QString strNew = fm.elidedText(strElide, toTextElideMode(strElideMode), width() - (2 * HOR_PADDING) - iFlatWidth);
             /* Replace the compact part with the shortened text in the initial string: */

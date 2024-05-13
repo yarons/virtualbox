@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 104313 2024-04-12 13:10:30Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIChooserItemGlobal.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -515,12 +515,8 @@ void UIChooserItemGlobal::updateMinimumNameWidth()
     /* Calculate new minimum name width: */
     QPaintDevice *pPaintDevice = model()->paintDevice();
     const QFontMetrics fm(m_nameFont, pPaintDevice);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     const int iMinimumNameWidth = fm.horizontalAdvance(compressText(m_nameFont, pPaintDevice, name(),
                                                                     textWidth(m_nameFont, pPaintDevice, 15)));
-#else
-    const int iMinimumNameWidth = fm.width(compressText(m_nameFont, pPaintDevice, name(), textWidth(m_nameFont, pPaintDevice, 15)));
-#endif
 
     /* Is there something changed? */
     if (m_iMinimumNameWidth == iMinimumNameWidth)
