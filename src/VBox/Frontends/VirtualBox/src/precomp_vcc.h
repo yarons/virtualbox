@@ -1,4 +1,4 @@
-/* $Id: precomp_vcc.h 103369 2024-02-14 19:39:03Z sergey.dubov@oracle.com $*/
+/* $Id: precomp_vcc.h 104601 2024-05-13 14:26:57Z sergey.dubov@oracle.com $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -60,9 +60,6 @@
 #include <qcompilerdetection.h>
 #include <qconfig.h>
 #include <qcontainerfwd.h>
-#if QT_VERSION < QT_VERSION_CHECK(5, 8, 0)
-# include <qfeatures.h>
-#endif
 #include <qflags.h>
 #include <qgenericatomic.h>
 #include <qglobalstatic.h>
