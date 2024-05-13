@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemLocal.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualMachineItemLocal.cpp 104594 2024-05-13 12:40:24Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class implementation.
  */
@@ -85,11 +85,7 @@ void UIVirtualMachineItemLocal::recache()
         /* Determine snapshot attributes: */
         CSnapshot comSnapshot = m_comMachine.GetCurrentSnapshot();
         m_strSnapshotName = comSnapshot.isNull() ? QString() : comSnapshot.GetName();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
         m_lastStateChange.setSecsSinceEpoch(m_comMachine.GetLastStateChange() / 1000);
-#else
-        m_lastStateChange.setTime_t(m_comMachine.GetLastStateChange() / 1000);
-#endif
         m_cSnaphot = m_comMachine.GetSnapshotCount();
 
         /* Determine VM states: */
@@ -268,15 +264,9 @@ bool UIVirtualMachineItemLocal::isItemCanBeSwitchedTo() const
 void UIVirtualMachineItemLocal::sltRetranslateUI()
 {
     /* This is used in tool-tip generation: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
     const QString strDateTime = m_lastStateChange.date() == QDate::currentDate()
                               ? QLocale::system().toString(m_lastStateChange.time(), QLocale::ShortFormat)
                               : QLocale::system().toString(m_lastStateChange, QLocale::ShortFormat);
-#else
-    const QString strDateTime = (m_lastStateChange.date() == QDate::currentDate())
-                              ? m_lastStateChange.time().toString(Qt::LocalDate)
-                              : m_lastStateChange.toString(Qt::LocalDate);
-#endif
 
     /* If machine is accessible: */
     if (m_fAccessible)
