@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 104447 2024-04-26 14:29:44Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIActionPool.cpp 104592 2024-05-13 12:34:31Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -3646,12 +3646,8 @@ void UIActionPool::preparePool()
     m_menuUpdateHandlers[UIActionIndex_M_FileManager].ptf = &UIActionPool::updateMenuFileManager;
 
     /* Invalidate all known menus: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QList<int> const updateHandlerKeys = m_menuUpdateHandlers.keys();
+    const QList<int> const updateHandlerKeys = m_menuUpdateHandlers.keys();
     m_invalidations.unite(QSet<int>(updateHandlerKeys.begin(), updateHandlerKeys.end()));
-#else
-    m_invalidations.unite(m_menuUpdateHandlers.keys().toSet());
-#endif
 
     /* Apply language settings: */
     sltRetranslateUI();
