@@ -1,4 +1,4 @@
-/* $Id: DevTpm.cpp 104588 2024-05-13 12:14:03Z alexander.eichner@oracle.com $ */
+/* $Id: DevTpm.cpp 104593 2024-05-13 12:36:35Z alexander.eichner@oracle.com $ */
 /** @file
  * DevTpm - Trusted Platform Module emulation.
  *
@@ -1748,7 +1748,7 @@ static DECLCALLBACK(int) tpmR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         pThisCC->pDrvTpm = PDMIBASE_QUERY_INTERFACE(pThisCC->pDrvBase, PDMITPMCONNECTOR);
         AssertLogRelMsgReturn(pThisCC->pDrvTpm, ("TPM#%d: Driver is missing the TPM interface.\n", iInstance), VERR_PDM_MISSING_INTERFACE);
 
-        size_t cbBufDrv = pThisCC->pDrvTpm->pfnGetBufferSize(pThisCC->pDrvTpm);
+        uint32_t cbBufDrv = pThisCC->pDrvTpm->pfnGetBufferSize(pThisCC->pDrvTpm);
         pThis->cbCmdResp     = RT_MIN(cbBufDrv, TPM_DATA_BUFFER_SIZE_MAX);
         pThis->fLocChangeSup = pThisCC->pDrvTpm->pfnGetLocalityMax(pThisCC->pDrvTpm) > 0;
 
