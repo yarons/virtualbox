@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNetSniffer.cpp 104582 2024-05-13 10:00:06Z alexander.eichner@oracle.com $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -351,7 +351,7 @@ static DECLCALLBACK(int) drvNetSnifferAttach(PPDMDRVINS pDrvIns, uint32_t fFlags
         AssertMsgFailed(("Failed to attach to driver below! rc=%Rrc\n", rc));
 
     RTCritSectLeave(&pThis->XmitLock);
-    return VINF_SUCCESS;
+    return rc;
 }
 
 

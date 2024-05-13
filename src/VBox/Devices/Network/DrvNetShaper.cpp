@@ -1,4 +1,4 @@
-/* $Id: DrvNetShaper.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvNetShaper.cpp 104582 2024-05-13 10:00:06Z alexander.eichner@oracle.com $ */
 /** @file
  * NetShaperFilter - Network shaper filter driver.
  */
@@ -421,7 +421,7 @@ static DECLCALLBACK(int) drvR3NetShaperAttach(PPDMDRVINS pDrvIns, uint32_t fFlag
         AssertMsgFailed(("Failed to attach to driver below! rc=%Rrc\n", rc));
 
     PDMDrvHlpCritSectLeave(pDrvIns, &pThis->XmitLock);
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
