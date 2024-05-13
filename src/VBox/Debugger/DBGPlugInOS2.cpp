@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInOS2.cpp 104607 2024-05-13 16:06:17Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -1046,7 +1046,7 @@ static void dbgdiggerOS2ProcessModule(PUVM pUVM, PCVMMR3VTABLE pVMM, PDBGDIGGERO
     rc = RTDbgModSetTag(hDbgMod, DIG_OS2_MOD_TAG);
     if (RT_SUCCESS(rc))
     {
-        for (uint32_t i = 0; i < SwapMte.smte_objcnt; i++)
+        for (uint32_t i = 0; i < cSegments; i++)
             if (pBuf->aOtes[i].ote_base != 0)
             {
                 rc = RTDbgAsModuleLinkSeg(hAs, hDbgMod, i, pBuf->aOtes[i].ote_base, RTDBGASLINK_FLAGS_REPLACE /*fFlags*/);
