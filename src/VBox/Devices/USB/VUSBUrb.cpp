@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 103397 2024-02-16 10:10:27Z knut.osmundsen@oracle.com $ */
+/* $Id: VUSBUrb.cpp 104591 2024-05-13 12:23:09Z alexander.eichner@oracle.com $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -1125,7 +1125,6 @@ int vusbUrbSubmit(PVUSBURB pUrb)
     vusbUrbAssert(pUrb);
     Assert(pUrb->enmState == VUSBURBSTATE_ALLOCATED);
     PVUSBDEV pDev = pUrb->pVUsb->pDev;
-    PVUSBPIPE pPipe = NULL;
     Assert(pDev);
 
     /*
@@ -1160,13 +1159,11 @@ int vusbUrbSubmit(PVUSBURB pUrb)
     {
         case VUSBDIRECTION_IN:
             pEndPtDesc = pDev->aPipes[pUrb->EndPt].in;
-            pPipe = &pDev->aPipes[pUrb->EndPt];
             break;
         case VUSBDIRECTION_SETUP:
         case VUSBDIRECTION_OUT:
         default:
             pEndPtDesc = pDev->aPipes[pUrb->EndPt].out;
-            pPipe = &pDev->aPipes[pUrb->EndPt];
             break;
     }
     if (!pEndPtDesc)
