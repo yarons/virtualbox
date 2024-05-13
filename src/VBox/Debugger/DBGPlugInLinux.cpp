@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 101539 2023-10-22 02:43:09Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInLinux.cpp 104608 2024-05-13 16:07:01Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -2972,6 +2972,8 @@ static DECLCALLBACK(int)  dbgDiggerLinuxInit(PUVM pUVM, PCVMMR3VTABLE pVMM, void
         {
             static const uint8_t s_abNeedleOSuseX86[] = "nmi"; /* OpenSuSe 10.2 x86 */
             rc = dbgDiggerLinuxFindSymbolTableFromNeedle(pThis, pUVM, pVMM, s_abNeedleOSuseX86, sizeof(s_abNeedleOSuseX86) - 1);
+            if (RT_FAILURE(rc))
+                LogRel(("dbgDiggerLinuxInit: Failed to find symbol table from needle kobj, kobjec or nmi -> %Rrc\n", rc));
         }
     }
 
