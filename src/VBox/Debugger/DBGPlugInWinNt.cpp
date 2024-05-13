@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 104433 2024-04-25 14:13:49Z knut.osmundsen@oracle.com $ */
+/* $Id: DBGPlugInWinNt.cpp 104611 2024-05-13 16:09:29Z alexander.eichner@oracle.com $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -898,6 +898,8 @@ static void dbgDiggerWinNtProcessImage(PDBGDIGGERWINNT pThis, PUVM pUVM, PCVMMR3
             rc = RTDbgAsModuleLink(hAs, hDbgMod, pImageAddr->FlatPtr, RTDBGASLINK_FLAGS_REPLACE /*fFlags*/);
         else
             rc = VERR_INTERNAL_ERROR;
+        if (RT_FAILURE(rc))
+            LogRel(("DigWinNt: %s: Linking module into address space failed with %Rrc\n", pszName, rc));
         RTDbgModRelease(hDbgMod);
         RTDbgAsRelease(hAs);
     }
@@ -1490,8 +1492,8 @@ static DECLCALLBACK(bool)  dbgDiggerWinNtProbe(PUVM pUVM, PCVMMR3VTABLE pVMM, vo
     if (RT_FAILURE(rc))
         return false;
 
-    uint64_t uKrnlStart  = uStart;
-    uint64_t uKrnlEnd    = uEnd;
+    uint64_t uKrnlStart;
+    uint64_t uKrnlEnd;
     if (f64Bit)
     {
         uint64_t uHandler = u.a64Gates[X86_XCPT_PF].u16OffsetLow
