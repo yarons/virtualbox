@@ -1,4 +1,4 @@
-/* $Id: pxtcp.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pxtcp.c 104603 2024-05-13 15:19:03Z alexander.eichner@oracle.com $ */
 /** @file
  * NAT Network - TCP proxy.
  */
@@ -1747,8 +1747,7 @@ pxtcp_pmgr_pump(struct pollmgr_handler *handler, SOCKET fd, int revents)
 
         nread = pxtcp_sock_read(pxtcp, &stop_pollin);
         if (nread < 0) {
-            sockerr = -(int)nread;
-            DPRINTF0(("sock %d: POLLIN: %R[sockerr]\n", fd, sockerr));
+            DPRINTF0(("sock %d: POLLIN: %R[sockerr]\n", fd, -(int)nread));
             return pxtcp_schedule_reset(pxtcp);
         }
 
