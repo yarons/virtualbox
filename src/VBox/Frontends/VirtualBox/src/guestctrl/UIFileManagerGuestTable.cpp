@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFileManagerGuestTable.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -642,18 +642,13 @@ void UIFileManagerGuestTable::goToHomeDirectory()
     if (!startDirItem)
         return;
 
-    QString userHome = UIPathOperations::sanitize(m_comGuestSession.GetUserHome());
+    const QString strUserHome = UIPathOperations::sanitize(m_comGuestSession.GetUserHome());
     if (!m_comGuestSession.isOk())
     {
         emit sigLogOutput(UIErrorString::formatErrorInfo(m_comGuestSession), m_strTableName, FileManagerLogType_Error);
         return;
     }
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QStringList pathList = userHome.split(UIPathOperations::delimiter, Qt::SkipEmptyParts);
-#else
-    QStringList pathList = userHome.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
-#endif
-    goIntoDirectory(UIPathOperations::pathTrail(userHome));
+    goIntoDirectory(UIPathOperations::pathTrail(strUserHome));
 }
 
 bool UIFileManagerGuestTable::renameItem(UIFileSystemItem *item, const QString &strOldPath)

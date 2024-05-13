@@ -1,4 +1,4 @@
-/* $Id: UICloudConsoleManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UICloudConsoleManager.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICloudConsoleManager class implementation.
  */
@@ -1068,11 +1068,7 @@ UIItemCloudConsoleProfile *UICloudConsoleManagerWidget::searchProfileItem(const 
 QITreeWidgetItem *UICloudConsoleManagerWidget::searchItemByDefinition(const QString &strDefinition) const
 {
     /* Parse definition: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     const QStringList parts = strDefinition.split('/', Qt::SkipEmptyParts);
-#else
-    const QStringList parts = strDefinition.split('/', QString::SkipEmptyParts);
-#endif
     /* Depending on parts amount: */
     switch (parts.size())
     {

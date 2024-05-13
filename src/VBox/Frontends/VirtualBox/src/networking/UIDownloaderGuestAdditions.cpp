@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderGuestAdditions.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UIDownloaderGuestAdditions.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDownloaderGuestAdditions class implementation.
  */
@@ -92,11 +92,7 @@ void UIDownloaderGuestAdditions::handleVerifiedObject(UINetworkReply *pReply)
             break;
 
         /* Parse buffer contents to dictionary: */
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         const QStringList dictionary(QString(receivedData).split("\n", Qt::SkipEmptyParts));
-#else
-        const QStringList dictionary(QString(receivedData).split("\n", QString::SkipEmptyParts));
-#endif
         /* Make sure it's not empty: */
         if (dictionary.isEmpty())
             break;

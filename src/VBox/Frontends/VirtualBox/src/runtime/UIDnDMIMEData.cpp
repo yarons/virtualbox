@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 103496 2024-02-21 14:32:19Z sergey.dubov@oracle.com $ */
+/* $Id: UIDnDMIMEData.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -248,16 +248,11 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
         /* See: https://developer.apple.com/library/ios/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html */
         case QMetaType::QVariantList: /* Used on OS X for representing URI lists. */
         {
-            QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts);
-#else
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
-#endif
+            const QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
 
             QVariantList lstVariant;
 
-            Q_FOREACH(const QString& strCur, lstString)
+            Q_FOREACH(const QString& strCur, strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts))
             {
                 QVariant vaURL = QVariant::fromValue(QUrl(strCur));
                 Assert(vaURL.typeId() == QMetaType::QUrl);
@@ -271,12 +266,8 @@ int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
 
         case QMetaType::QStringList:
         {
-            QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts);
-#else
-            QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, QString::SkipEmptyParts);
-#endif
+            const QString strData = QString(reinterpret_cast<const char*>(vecData.constData()));
+            const QStringList lstString = strData.split(DND_PATH_SEPARATOR_STR, Qt::SkipEmptyParts);
 
             LogFlowFunc(("\tStringList has %d entries\n", lstString.size()));
 #ifdef DEBUG

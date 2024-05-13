@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.cpp 102378 2023-11-29 12:06:14Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIPathOperations.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIPathOperations class implementation.
  */
@@ -143,11 +143,7 @@ const QChar UIPathOperations::dosDelimiter = QChar('\\');
 
 /* static */ QStringList UIPathOperations::pathTrail(const QString &path)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     return path.split(UIPathOperations::delimiter, Qt::SkipEmptyParts);
-#else
-    return path.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
-#endif
 }
 
 /* static */ bool UIPathOperations::doesPathStartWithDriveLetter(const QString &path)

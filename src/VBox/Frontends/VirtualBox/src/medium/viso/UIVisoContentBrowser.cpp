@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVisoContentBrowser.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -884,22 +884,11 @@ void UIVisoContentBrowser::parseVisoFileContent(const QString &strFileName)
     QTextStream stream(&file);
     QString strFileContent = stream.readAll();
     strFileContent.replace(' ', '\n');
-    QStringList list;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    list = strFileContent.split("\n", Qt::SkipEmptyParts);
-#else
-    list = strFileContent.split("\n", QString::SkipEmptyParts);
-#endif
     QMap<QString, QString> fileEntries;
     QStringList removedEntries;
-    foreach (const QString &strPart, list)
+    foreach (const QString &strPart, strFileContent.split("\n", Qt::SkipEmptyParts))
     {
-        QStringList fileEntry;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        fileEntry = strPart.split("=", Qt::SkipEmptyParts);
-#else
-        fileEntry = strPart.split("=", QString::SkipEmptyParts);
-#endif
+        const QStringList fileEntry = strPart.split("=", Qt::SkipEmptyParts);
         /* We currently do not support different on-ISO names for different namespaces. */
         if (strPart.startsWith("/") && strPart.count('=') <= 1)
         {

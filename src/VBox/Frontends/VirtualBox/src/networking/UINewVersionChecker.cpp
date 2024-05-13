@@ -1,4 +1,4 @@
-/* $Id: UINewVersionChecker.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UINewVersionChecker.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINewVersionChecker class implementation.
  */
@@ -116,11 +116,7 @@ void UINewVersionChecker::processNetworkReplyFinished(UINetworkReply *pReply)
     /* Newer version of necessary package found: */
     if (strResponseData.indexOf(QRegularExpression("^\\d+\\.\\d+\\.\\d+(_[0-9A-Z]+)? \\S+$")) == 0)
     {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         const QStringList response = strResponseData.split(" ", Qt::SkipEmptyParts);
-#else
-        const QStringList response = strResponseData.split(" ", QString::SkipEmptyParts);
-#endif
         UINotificationMessage::showUpdateSuccess(response[0], response[1]);
     }
     /* No newer version of necessary package found: */
