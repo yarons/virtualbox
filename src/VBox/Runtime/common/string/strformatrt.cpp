@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 104624 2024-05-14 11:53:30Z andreas.loeffler@oracle.com $ */
+/* $Id: strformatrt.cpp 104625 2024-05-14 11:55:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1527,6 +1527,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     char const  chAddSafe = chVariant == 'p' ? '/'
                                           : chVariant == 'q' ? '+' /* '+' in queries is problematic, so no escape. */
                                           :                    '~' /* whatever */;
+                    size_t      cchOutput = 0;
                     const char *pszStr    = va_arg(*pArgs, char *);
                     ssize_t     cchStr;
                     ssize_t     offCur;
