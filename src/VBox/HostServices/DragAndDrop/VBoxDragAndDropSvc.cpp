@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDragAndDropSvc.cpp 104628 2024-05-14 12:14:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -105,6 +105,7 @@ public:
         : HGCM::AbstractService<DragAndDropService>(pHelpers)
         , m_pManager(NULL)
         , m_u32Mode(VBOX_DRAG_AND_DROP_MODE_OFF)
+        , m_fHostFeatures0(VBOX_DND_HF_NONE)
     {}
 
 protected:
