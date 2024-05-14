@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsreadahead.cpp 104626 2024-05-14 12:06:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -714,7 +714,7 @@ static DECLCALLBACK(int) rtVfsReadAheadThreadProc(RTTHREAD hThreadSelf, void *pv
          */
         rc = RTThreadUserWait(hThreadSelf, RT_MS_1MIN);
         if (RT_SUCCESS(rc))
-            rc = RTThreadUserReset(hThreadSelf);
+            RTThreadUserReset(hThreadSelf);
     }
 
     return VINF_SUCCESS;

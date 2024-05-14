@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 100908 2023-08-19 02:57:05Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsstdfile.cpp 104626 2024-05-14 12:06:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -317,7 +317,6 @@ static DECLCALLBACK(int) rtVfsStdFile_PollOne(void *pvThis, uint32_t fEvents, RT
         do
             rc = RTThreadSleep(cMillies);
         while (   rc == VERR_INTERRUPTED
-               && !fIntr
                && RTTimeMilliTS() - uMsStart < cMillies);
         if (rc == VERR_INTERRUPTED)
             rc = VERR_TIMEOUT;

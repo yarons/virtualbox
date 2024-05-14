@@ -1,4 +1,4 @@
-/* $Id: vfsiosmisc.cpp 101109 2023-09-13 14:20:17Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsiosmisc.cpp 104626 2024-05-14 12:06:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
@@ -117,6 +117,9 @@ RTDECL(int) RTVfsIoStrmValidateUtf8Encoding(RTVFSIOSTREAM hVfsIos, uint32_t fFla
             }
         }
 
+        if (RT_FAILURE(rc))
+            break;
+
         if (off < cbUsed)
         {
             cbUsed -= off;
@@ -129,6 +132,7 @@ RTDECL(int) RTVfsIoStrmValidateUtf8Encoding(RTVFSIOSTREAM hVfsIos, uint32_t fFla
      */
     if (poffError && RT_FAILURE(rc))
     {
+        /** @todo r=andy Implement this? */
     }
 
     return rc == VINF_EOF ? VINF_SUCCESS : rc;

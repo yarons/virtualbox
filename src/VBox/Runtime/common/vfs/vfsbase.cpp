@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 101108 2023-09-13 14:20:04Z knut.osmundsen@oracle.com $ */
+/* $Id: vfsbase.cpp 104626 2024-05-14 12:06:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -2028,7 +2028,6 @@ RTDECL(int) RTVfsUtilDummyPollOne(uint32_t fEvents, RTMSINTERVAL cMillies, bool 
         do
             rc = RTThreadSleep(cMillies);
         while (   rc == VERR_INTERRUPTED
-               && !fIntr
                && RTTimeMilliTS() - uMsStart < cMillies);
         if (rc == VERR_INTERRUPTED)
             rc = VERR_TIMEOUT;
@@ -3875,7 +3874,6 @@ RTDECL(int) RTVfsIoStrmPoll(RTVFSIOSTREAM hVfsIos, uint32_t fEvents, RTMSINTERVA
         do
             rc = RTThreadSleep(cMillies);
         while (   rc == VERR_INTERRUPTED
-               && !fIntr
                && RTTimeMilliTS() - uMsStart < cMillies);
         if (rc == VERR_INTERRUPTED)
             rc = VERR_TIMEOUT;
