@@ -1,4 +1,4 @@
-/* $Id: UIHostnameDomainNameEditor.cpp 104546 2024-05-08 12:20:28Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIHostnameDomainNameEditor.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIHostnameDomainNameEditor class implementation.
  */
@@ -137,7 +137,7 @@ void UIHostnameDomainNameEditor::sltRetranslateUI()
         m_pDomainNameLineEdit->setToolTip(tr("Holds the domain name."));
 }
 
-void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, UIMarkableLineEdit *&pLineEdit, QGridLayout *pLayout)
+void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, QILineEdit *&pLineEdit, QGridLayout *pLayout)
 {
     AssertReturnVoid(pLayout);
     if (pLabel || pLineEdit)
@@ -148,8 +148,9 @@ void UIHostnameDomainNameEditor::addLineEdit(int &iRow, QLabel *&pLabel, UIMarka
     pLabel->setAlignment(Qt::AlignRight);
     pLayout->addWidget(pLabel, iRow, 0, 1, 1);
 
-    pLineEdit = new UIMarkableLineEdit;
+    pLineEdit = new QILineEdit;
     AssertReturnVoid(pLineEdit);
+    pLineEdit->setMarkable(true);
 
     pLayout->addWidget(pLineEdit, iRow, 1, 1, 3);
     pLabel->setBuddy(pLineEdit);
@@ -173,9 +174,9 @@ void UIHostnameDomainNameEditor::prepare()
     m_pHostnameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
     m_pDomainNameLineEdit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[a-zA-Z0-9-.]{2,}[$a-zA-Z0-9-]"), this));
 
-    connect(m_pHostnameLineEdit, &UIMarkableLineEdit::textChanged,
+    connect(m_pHostnameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltHostnameChanged);
-    connect(m_pDomainNameLineEdit, &UIMarkableLineEdit::textChanged,
+    connect(m_pDomainNameLineEdit, &QILineEdit::textChanged,
             this, &UIHostnameDomainNameEditor::sltDomainChanged);
 
     sltRetranslateUI();

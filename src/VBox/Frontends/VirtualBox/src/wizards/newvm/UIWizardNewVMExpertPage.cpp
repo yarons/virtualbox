@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -467,7 +467,8 @@ void UIWizardNewVMExpertPage::markWidgets() const
     {
         m_pNameAndSystemEditor->markNameEditor(m_pNameAndSystemEditor->name().isEmpty());
         m_pNameAndSystemEditor->markImageEditor(!UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor),
-                                                UIWizardNewVM::tr("Invalid file path or unreadable file"));
+                                                UIWizardNewVM::tr("Invalid file path or unreadable file"),
+                                                UIWizardNewVM::tr("File path is valid"));
     }
     UIWizardNewVM *pWizard = wizardWindow<UIWizardNewVM>();
     if (pWizard && pWizard->installGuestAdditions() && m_pGAInstallationISOContainer)

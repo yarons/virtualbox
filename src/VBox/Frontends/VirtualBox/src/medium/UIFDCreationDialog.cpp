@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -185,7 +185,7 @@ void UIFDCreationDialog::sltHandleMediumCreated(const CMedium &comMedium)
 void UIFDCreationDialog::sltPathChanged(const QString &strPath)
 {
     bool fIsFileUnique = checkFilePath(strPath);
-    m_pFilePathSelector->mark(!fIsFileUnique, tr("File already exists"));
+    m_pFilePathSelector->mark(!fIsFileUnique, tr("File already exists"), tr("File path is valid"));
 
     if (m_pButtonBox && m_pButtonBox->button(QDialogButtonBox::Ok))
         m_pButtonBox->button(QDialogButtonBox::Ok)->setEnabled(fIsFileUnique);

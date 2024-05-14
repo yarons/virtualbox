@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 101563 2023-10-23 23:36:38Z sergey.dubov@oracle.com $ */
+/* $Id: QIComboBox.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -312,12 +312,13 @@ void QIComboBox::setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy)
     m_pComboBox->setSizeAdjustPolicy(enmPolicy);
 }
 
-void QIComboBox::mark(bool fError, const QString &strErrorMessage /* = QString() */)
+void QIComboBox::mark(bool fError, const QString &strErrorMessage, const QString &strNoErrorMessage)
 {
     AssertPtrReturnVoid(m_pComboBox);
     QILineEdit *pLineEdit = isEditable() ? qobject_cast<QILineEdit*>(m_pComboBox->lineEdit()) : 0;
+    setMarkable(true);
     if (pLineEdit)
-        pLineEdit->mark(fError, strErrorMessage);
+        pLineEdit->mark(fError, strErrorMessage, strNoErrorMessage);
 }
 
 void QIComboBox::insertSeparator(int iIndex)
@@ -384,6 +385,13 @@ void QIComboBox::setItemText(int iIndex, const QString &strText) const
     /* Redirect to combo-box: */
     AssertPtrReturnVoid(m_pComboBox);
     m_pComboBox->setItemText(iIndex, strText);
+}
+
+void QIComboBox::setMarkable(bool fMarkable)
+{
+    QILineEdit *pLineEdit = isEditable() ? qobject_cast<QILineEdit*>(m_pComboBox->lineEdit()) : 0;
+    if (pLineEdit)
+        pLineEdit->setMarkable(fMarkable);
 }
 
 void QIComboBox::prepare()

@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QIComboBox.h 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -129,10 +129,13 @@ public:
     /** Defines size adjust @a enmPolicy. */
     void setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy);
     /** Marks the line edit of the combobox. Refer to QILineEdit::mark(..). */
-    void mark(bool fError, const QString &strErrorMessage = QString());
+    void mark(bool fError, const QString &strErrorMessage, const QString &strNoErrorMessage);
 
     /** Inserts separator at position with specified @a iIndex. */
     void insertSeparator(int iIndex);
+
+    /** Calls QILineEdit member's setMarkable API. */
+    void setMarkable(bool fMarkable);
 
 public slots:
 

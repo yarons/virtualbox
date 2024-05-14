@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -719,7 +719,8 @@ void UIWizardNewVMNameOSTypePage::markWidgets() const
     {
         m_pNameAndSystemEditor->markNameEditor(m_pNameAndSystemEditor->name().isEmpty());
         m_pNameAndSystemEditor->markImageEditor(!UIWizardNewVMNameOSTypeCommon::checkISOFile(m_pNameAndSystemEditor),
-                                                UIWizardNewVM::tr("Invalid file path or unreadable file"));
+                                                UIWizardNewVM::tr("Invalid file path or unreadable file"),
+                                                UIWizardNewVM::tr("File path is valid"));
     }
 }
 

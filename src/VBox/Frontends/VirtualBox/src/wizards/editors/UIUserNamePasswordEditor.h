@@ -1,4 +1,4 @@
-/* $Id: UIUserNamePasswordEditor.h 103947 2024-03-20 11:06:21Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIUserNamePasswordEditor.h 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class declaration.
  */
@@ -44,7 +44,6 @@ class QGridLayout;
 class QLabel;
 class QILineEdit;
 class QIToolButton;
-class UIMarkableLineEdit;
 class UIPasswordLineEdit;
 
 class SHARED_LIBRARY_STUFF UIPasswordLineEdit : public QLineEdit
@@ -125,7 +124,7 @@ private:
     bool isUserNameComplete();
     bool isPasswordComplete();
 
-    UIMarkableLineEdit *m_pUserNameLineEdit;
+    QILineEdit         *m_pUserNameLineEdit;
     UIPasswordLineEdit *m_pPasswordLineEdit;
     UIPasswordLineEdit *m_pPasswordRepeatLineEdit;
 
