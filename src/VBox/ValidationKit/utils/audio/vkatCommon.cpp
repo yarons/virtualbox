@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 103570 2024-02-26 13:12:38Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatCommon.cpp 104622 2024-05-14 11:21:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Common code.
  */
@@ -604,7 +604,7 @@ int audioTestPlayTone(PAUDIOTESTIOOPTS pIoOpts, PAUDIOTESTENV pTstEnv, PAUDIOTES
                 uint64_t const cNsWritten = PDMAudioPropsBytesToNano64(pMix->pProps, offStream - cbPreBuffer);
                 uint64_t const cNsElapsed = nsNow - nsStarted;
                 if (cNsWritten > cNsElapsed + RT_NS_10MS)
-                    RTThreadSleep((cNsWritten - cNsElapsed - RT_NS_10MS / 2) / RT_NS_1MS);
+                    RTThreadSleep(uint32_t(cNsWritten - cNsElapsed - RT_NS_10MS / 2) / RT_NS_1MS);
             }
 
             uint32_t       cbWritten  = 0;

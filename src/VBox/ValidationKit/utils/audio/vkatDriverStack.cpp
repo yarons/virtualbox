@@ -1,4 +1,4 @@
-/* $Id: vkatDriverStack.cpp 103352 2024-02-14 13:29:07Z andreas.loeffler@oracle.com $ */
+/* $Id: vkatDriverStack.cpp 104622 2024-05-14 11:21:57Z andreas.loeffler@oracle.com $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Driver stack code.
  */
@@ -1360,7 +1360,7 @@ static int audioTestMixStreamTransfer(PAUDIOTESTDRVMIXSTREAM pMix)
                 cbToRead = PDMAudioPropsFramesToBytes(&pMix->pStream->Cfg.Props, cDstFrames);
             else
                 cbToRead = PDMAudioPropsFramesToBytes(&pMix->pStream->Cfg.Props,
-                                                        (uint64_t)cDstFrames * PDMAudioPropsHz(&pMix->pStream->Cfg.Props)
+                                                        cDstFrames * PDMAudioPropsHz(&pMix->pStream->Cfg.Props)
                                                       / PDMAudioPropsHz(&pMix->MixBuf.Props));
             cbToRead = RT_MIN(cbToRead, RT_MIN(cbReadable, cbBuf));
             if (!cbToRead)
