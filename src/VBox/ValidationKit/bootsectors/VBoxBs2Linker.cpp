@@ -1,4 +1,4 @@
-/* $Id: VBoxBs2Linker.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxBs2Linker.cpp 104619 2024-05-14 06:54:38Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 2 "linker".
  */
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
                     }
 
                     case 'V':
-                        printf("%s\n", "$Revision: 98103 $");
+                        printf("%s\n", "$Revision: 104619 $");
                         free(papszInputs);
                         return 0;
 
@@ -158,7 +158,6 @@ int main(int argc, char **argv)
 
     /* Copy the input files to the output file, with sector padding applied. */
     int rcExit = 0;
-    size_t off = 0;
     for (unsigned i = 0; i < cInputs && rcExit == 0; i++)
     {
 #if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
@@ -191,9 +190,7 @@ int main(int argc, char **argv)
                 }
 
                 /* Write the block to the output file. */
-                if (fwrite(abBuf, sizeof(uint8_t), cbRead, pOutput) == cbRead)
-                    off += cbRead;
-                else
+                if (fwrite(abBuf, sizeof(uint8_t), cbRead, pOutput) != cbRead)
                 {
                     fprintf(stderr, "error: fwrite failed\n");
                     rcExit = 1;
