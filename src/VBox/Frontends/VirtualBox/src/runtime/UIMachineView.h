@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 103988 2024-03-21 13:49:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineView.h 104630 2024-05-14 14:00:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -232,6 +232,9 @@ protected slots:
 
     /** Detaches COM. */
     void sltDetachCOM();
+
+    /** Handles translation event. */
+    void sltRetranslateUI();
 
 protected:
 
