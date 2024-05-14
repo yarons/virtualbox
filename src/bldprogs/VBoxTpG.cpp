@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxTpG.cpp 104620 2024-05-14 06:56:35Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -454,7 +454,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ \n"
+                    "; $Id: VBoxTpG.cpp 104620 2024-05-14 06:56:35Z alexander.eichner@oracle.com $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -978,7 +978,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 104620 2024-05-14 06:56:35Z alexander.eichner@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1087,7 +1087,6 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
                             "); \\\n"
                             "        } \\\n"
                             "        { \\\n" );
-            uint32_t iArg = 0;
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 if ((pArg->fType & (VTG_TYPE_FIXED_SIZED | VTG_TYPE_AUTO_CONV_PTR)) == VTG_TYPE_FIXED_SIZED)
@@ -1102,7 +1101,6 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
                                     "        AssertCompile(sizeof(%s) <= sizeof(uintptr_t)); \\\n",
                                     pArg->pszName,
                                     pArg->pszTracerType);
-                iArg++;
             }
             ScmStreamPrintf(pStrm,
                             "        } \\\n"
@@ -1186,7 +1184,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 103275 2024-02-08 11:56:18Z andreas.loeffler@oracle.com $ */\n"
+                    "/* $Id: VBoxTpG.cpp 104620 2024-05-14 06:56:35Z alexander.eichner@oracle.com $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2514,7 +2512,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 103275 $";
+                static const char s_szRev[] = "$Revision: 104620 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
