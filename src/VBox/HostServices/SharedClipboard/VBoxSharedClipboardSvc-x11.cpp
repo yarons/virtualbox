@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 104317 2024-04-12 14:11:08Z andreas.loeffler@oracle.com $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 104627 2024-05-14 12:13:09Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -298,9 +298,7 @@ int ShClBackendReadData(PSHCLBACKEND pBackend, PSHCLCLIENT pClient, PSHCLCLIENTC
     if (RT_SUCCESS(rc))
     {
         LogRel2(("Shared Clipboard: Read %RU32 bytes host X11 clipboard data\n", cbRead));
-
-        if (pcbActual)
-            *pcbActual = cbRead;
+        *pcbActual = cbRead;
     }
 
     if (RT_FAILURE(rc))
