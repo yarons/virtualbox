@@ -1,4 +1,4 @@
-/* $Id: PlatformX86Impl.cpp 101063 2023-09-08 12:41:13Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformX86Impl.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - x86 platform settings.
  */
@@ -402,8 +402,7 @@ HRESULT PlatformX86::setCPUProperty(CPUPropertyTypeX86_T aProperty, BOOL aValue)
         {
             m->bd.backup();
             m->bd->fX2APIC = !!aValue;
-            if (aValue)
-                m->bd->fAPIC = !!aValue;
+            m->bd->fAPIC   = !!aValue;
             break;
         }
 

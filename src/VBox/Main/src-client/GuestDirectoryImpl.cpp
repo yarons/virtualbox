@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestDirectoryImpl.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -946,7 +946,7 @@ int GuestDirectory::i_readInternal(GuestFsObjData &objData, int *pvrcGuest)
                     vrc = VERR_GSTCTL_GUEST_ERROR;
                 }
             }
-            else if (pEvent->HasGuestError() && pvrcGuest)
+            else if (pEvent->HasGuestError())
                 *pvrcGuest = pEvent->GuestResult();
         }
     }

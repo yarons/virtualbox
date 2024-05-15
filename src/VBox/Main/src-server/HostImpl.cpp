@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 101684 2023-10-31 12:39:45Z alexander.eichner@oracle.com $ */
+/* $Id: HostImpl.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -203,6 +203,7 @@ struct Host::Data
 {
     Data()
         :
+          pParent(NULL),
           fDVDDrivesListBuilt(false),
           fFloppyDrivesListBuilt(false),
           fPersistentConfigUpToDate(false)

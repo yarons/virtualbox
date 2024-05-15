@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 103420 2024-02-19 09:08:34Z andreas.loeffler@oracle.com $ */
+/* $Id: DrvAudioRec.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Video recording audio backend for Main.
  *
@@ -776,6 +776,9 @@ static int avRecSinkInit(PDRVAUDIORECORDING pThis, PAVRECSINK pSink, PAVRECCONTA
                     else
                         LogRel(("Recording: Error creating audio file '%s' (%Rrc)\n", pszFile, vrc));
                 }
+                break;
+        #else
+                vrc = VERR_NOT_SUPPORTED;
                 break;
         #endif
             }

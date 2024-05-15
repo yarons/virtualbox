@@ -1,4 +1,4 @@
-/* $Id: RecordingCodec.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingCodec.cpp 104635 2024-05-15 09:29:32Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording codec wrapper.
  */
@@ -194,6 +194,7 @@ static DECLCALLBACK(int) recordingCodecVPXEncode(PRECORDINGCODEC pCodec, PRECORD
                                      pCodec->Video.VPX.pu8YuvBuf, pVideoFrame->uWidth, pVideoFrame->uHeight,
                                      /* Source */
                                      pVideoFrame->pu8RGBBuf, pCodec->Parms.Video.uWidth, pCodec->Parms.Video.uHeight);
+    AssertRCReturn(vrc, vrc);
 
     PRECORDINGCODECVPX pVPX = &pCodec->Video.VPX;
 
