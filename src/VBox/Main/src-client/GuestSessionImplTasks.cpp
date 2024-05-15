@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 104636 2024-05-15 09:35:25Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.cpp 104637 2024-05-15 10:17:43Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -2635,6 +2635,7 @@ HRESULT GuestSessionTaskUpdateAdditions::setUpdateErrorMsg(HRESULT hrc, const Ut
  * @returns Returns \a hrc for convenience.
  * @param   hrc                 Progress operation result to set.
  * @param   strMsg              Message to set.
+ * @param   guestErrorInfo      Guest error info to use.
  */
 HRESULT GuestSessionTaskUpdateAdditions::setUpdateErrorMsg(HRESULT hrc, const Utf8Str &strMsg, const GuestErrorInfo &guestErrorInfo)
 {
