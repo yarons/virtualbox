@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.cpp 104639 2024-05-15 12:14:27Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIUserNamePasswordEditor class implementation.
  */
@@ -397,7 +397,11 @@ void UIMediumSizeAndPathGroupBox::sltRetranslateUI()
     if (m_fExpertMode)
         setTitle(tr("Hard Disk File Location and Size"));
     if (m_pLocationOpenButton)
+    {
         m_pLocationOpenButton->setToolTip(tr("Specify a location for new virtual hard disk file..."));
+        /* Some screen readers do no read tooltips: */
+        m_pLocationOpenButton->setText(tr("Specify a location for new virtual hard disk file..."));
+    }
 
     if (!m_fExpertMode && m_pLocationLabel)
         m_pLocationLabel->setText(tr("Please type the name of the new virtual hard disk file into the box below or "
