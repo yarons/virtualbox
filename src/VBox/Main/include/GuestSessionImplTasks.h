@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 104636 2024-05-15 09:35:25Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestSessionImplTasks.h 104640 2024-05-15 13:16:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -350,6 +350,41 @@ public:
 
     HRESULT Init(const Utf8Str &strTaskDesc);
     int Run(void);
+};
+
+/**
+ * Implementation for a Guest Additions update process for logging process output to the release log.
+ */
+class UpdateAdditionsProcess : public GuestProcessWrapper
+{
+public:
+
+    UpdateAdditionsProcess(void) { }
+
+    virtual ~UpdateAdditionsProcess();
+
+    int onOutputCallback(uint32_t uHandle, const BYTE *pbData, size_t cbData);
+
+protected:
+
+    /** Current line of stdout. */
+    Utf8Str mLineStdOut;
+    /** Current line of stderr. */
+    Utf8Str mLineStdErr;
+};
+
+/**
+ * Tweaked startup info for a guest Guest Additions update process.
+ */
+class UpdateAdditionsStartupInfo : public GuestProcessStartupInfo
+{
+public:
+
+    UpdateAdditionsStartupInfo(void)
+    {
+        /* We want to have stdout / stderr handled by default for update processes. */
+        mFlags = ProcessCreateFlag_WaitForStdOut | ProcessCreateFlag_WaitForStdErr;
+    }
 };
 
 /**

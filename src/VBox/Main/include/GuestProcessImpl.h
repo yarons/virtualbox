@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 104178 2024-04-05 12:23:48Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestProcessImpl.h 104640 2024-05-15 13:16:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -246,6 +246,16 @@ public:
     int getTerminationStatus(int32_t *piExitCode = NULL);
 
     int terminate(uint32_t uTimeoutMS, int *pvrcGuest);
+
+    int wait(int *pvrcGuest);
+
+public:
+
+    virtual int onOutputCallback(uint32_t uHandle, const std::vector<Utf8Str> &vecData);
+
+    virtual int onOutputCallback(uint32_t uHandle, const BYTE *pbData, size_t cbData);
+
+    virtual int onInputCallback(uint32_t uHandle, std::vector<Utf8Str> &vecData);
 
 protected:
 
