@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 104586 2024-05-13 12:12:44Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.cpp 104642 2024-05-15 13:44:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4805,6 +4805,16 @@ void UIExtraDataManager::setVMActivityMonitorDataSeriesColors(const QStringList 
 QStringList UIExtraDataManager::VMActivityMonitorDataSeriesColors()
 {
     return extraDataStringList(GUI_VMActivityMonitor_DataSeriesColors);
+}
+
+bool UIExtraDataManager::VMActivityMonitorShowVMExits()
+{
+    return isFeatureAllowed(GUI_VMActivityMonitor_ShowVMExits);
+}
+
+void UIExtraDataManager::setVMActivityMonitorShowVMExits(bool fShow)
+{
+    setExtraDataString(GUI_VMActivityMonitor_ShowVMExits, toFeatureAllowed(fShow));
 }
 
 QRect UIExtraDataManager::mediumSelectorDialogGeometry(QWidget *pWidget, QWidget *pParentWidget, const QRect &defaultGeometry)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 104450 2024-04-28 10:31:01Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataDefs.h 104642 2024-05-15 13:44:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -476,6 +476,7 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_HiddenColumns;
         SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityOverview_ShowAllMachines;
         SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityMonitor_DataSeriesColors;
+        SHARED_LIBRARY_STUFF extern const char *GUI_VMActivityMonitor_ShowVMExits;
     /** @} */
 
     /** @name Medium Selector stuff
