@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 103149 2024-01-31 15:41:31Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxServiceVMInfo.cpp 104644 2024-05-15 18:06:33Z alexander.eichner@oracle.com $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -312,7 +312,8 @@ static DECLCALLBACK(int) vbsvcVMInfoInit(void)
         if (RT_SUCCESS(rc2))
         {
             AssertPtr(pszValue);
-            g_uVMInfoUserIdleThresholdMS = RT_CLAMP(RTStrToUInt32(pszValue), 1000, UINT32_MAX - 1);
+            g_uVMInfoUserIdleThresholdMS = RTStrToUInt32(pszValue);
+            g_uVMInfoUserIdleThresholdMS = RT_CLAMP(g_uVMInfoUserIdleThresholdMS, 1000, UINT32_MAX - 1);
             RTStrFree(pszValue);
         }
     }
