@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 104640 2024-05-15 13:16:55Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestProcessImpl.h 104641 2024-05-15 13:34:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -251,7 +251,9 @@ public:
 
 public:
 
+#if 0 /* unused */
     virtual int onOutputCallback(uint32_t uHandle, const std::vector<Utf8Str> &vecData);
+#endif
 
     virtual int onOutputCallback(uint32_t uHandle, const BYTE *pbData, size_t cbData);
 

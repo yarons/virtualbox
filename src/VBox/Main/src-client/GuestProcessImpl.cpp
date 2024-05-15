@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 104640 2024-05-15 13:16:55Z andreas.loeffler@oracle.com $ */
+/* $Id: GuestProcessImpl.cpp 104641 2024-05-15 13:34:12Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2443,6 +2443,7 @@ int GuestProcessWrapper::terminate(uint32_t uTimeoutMS, int *pvrcGuest)
     return vrc;
 }
 
+#if 0 /* unused */
 /**
  * Default callback implementation for process output.
  *
@@ -2488,6 +2489,7 @@ int GuestProcessWrapper::onOutputCallback(uint32_t uHandle, const std::vector<Ut
 
     return vrc;
 }
+#endif
 
 /**
  * Default callback implementation for process output.
