@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: QILineEdit.cpp 104638 2024-05-15 12:13:49Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -136,7 +136,11 @@ void QILineEdit::resizeEvent(QResizeEvent *pResizeEvent)
     /* Call to base-class: */
     QLineEdit::resizeEvent(pResizeEvent);
     if (m_fMarkable)
+    {
+        m_pIconLabel->resize(m_pIconLabel->minimumSizeHint());
+        m_iIconMargin = (height() - m_pIconLabel->height()) / 2;
         moveIconLabel();
+    }
 }
 
 void QILineEdit::moveIconLabel()
