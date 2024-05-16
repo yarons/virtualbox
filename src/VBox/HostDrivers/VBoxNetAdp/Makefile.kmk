@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98414 2023-02-01 16:23:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104659 2024-05-16 09:54:44Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -107,6 +107,7 @@ ifeq ($(KBUILD_TARGET),win)
  #
  # VBoxNetAdp6.sys - The VirtualBox Adapter miniport driver.
  #
+ ifdef VBOX_WITH_VBOXDRV
  SYSMODS.win += VBoxNetAdp6
  VBoxNetAdp6_TEMPLATE = VBoxR0Drv
  if defined(VBOX_SIGNING_MODE)
@@ -158,7 +159,8 @@ ifeq ($(KBUILD_TARGET),win)
 	$(call MSG_TOOL,Inf2Cat,VBoxNetFlt-inf,$@,$<)
 	$(call VBOX_MAKE_CAT_FN, $(@D),$@)
 
- endif #  ifdef VBOX_SIGNING_MODE
+  endif #  ifdef VBOX_SIGNING_MODE
+ endif #  ifdef VBOX_WITH_VBOXDRV
 
 endif #ifeq ($(KBUILD_TARGET), win)
 

@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 98650 2023-02-20 13:00:56Z knut.osmundsen@oracle.com $ */
+/* $Id: SUPLib-win.cpp 104659 2024-05-16 09:54:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -868,6 +868,7 @@ DECLHIDDEN(int) suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t /* cPa
 DECLHIDDEN(bool) suplibOsIsNemSupportedWhenNoVtxOrAmdV(void)
 {
 # if ARCH_BITS == 64
+#  if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     /*
      * Check that we're in a VM.
      */
@@ -877,6 +878,7 @@ DECLHIDDEN(bool) suplibOsIsNemSupportedWhenNoVtxOrAmdV(void)
         return false;
     if (!(ASMCpuId_ECX(1) & X86_CPUID_FEATURE_ECX_HVP))
         return false;
+#  endif
 
     /*
      * Try load WinHvPlatform and resolve API for checking.

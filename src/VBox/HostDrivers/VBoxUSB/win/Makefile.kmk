@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 98414 2023-02-01 16:23:38Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104659 2024-05-16 09:54:44Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -38,9 +38,11 @@ SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 LIBRARIES.win += usbd
-SYSMODS.win   += VBoxUSB VBoxUSBMon
+ifdef VBOX_WITH_VBOXDRV
+ SYSMODS.win   += VBoxUSB VBoxUSBMon
+ INSTALLS.win  += install-infs
+endif
 PROGRAMS.win  += USBInstall USBUninstall USBTest
-INSTALLS.win  += install-infs
 
 #
 # usbd
