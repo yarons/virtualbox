@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 103005 2024-01-23 23:55:58Z knut.osmundsen@oracle.com $ */
+/* $Id: ldrPE.cpp 104680 2024-05-16 11:44:35Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -4242,6 +4242,10 @@ static int rtldrPEValidateFileHeader(PIMAGE_FILE_HEADER pFileHdr, uint32_t fFlag
         case IMAGE_FILE_MACHINE_AMD64:
             cbOptionalHeader = sizeof(IMAGE_OPTIONAL_HEADER64);
             *penmArch = RTLDRARCH_AMD64;
+            break;
+        case IMAGE_FILE_MACHINE_ARM64:
+            cbOptionalHeader = sizeof(IMAGE_OPTIONAL_HEADER64);
+            *penmArch = RTLDRARCH_ARM64;
             break;
 
         default:
