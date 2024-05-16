@@ -1,6 +1,6 @@
-; $Id: bs3-cpu-instr-4-asm.asm 104645 2024-05-16 07:06:33Z ramshankar.venkataraman@oracle.com $
+; $Id: bs3-cpu-instr-4-asm.asm 104649 2024-05-16 08:52:06Z ramshankar.venkataraman@oracle.com $
 ;; @file
-; BS3Kit - bs3-cpu-instr-4
+; BS3Kit - bs3-cpu-instr-4 - SSE, AVX FPU instructions.
 ;
 
 ;
