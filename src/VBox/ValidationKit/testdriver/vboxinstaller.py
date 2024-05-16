@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 99729 $"
+__version__ = "$Revision: 104689 $"
 
 
 # Standard Python imports.
@@ -1052,8 +1052,9 @@ class VBoxInstallerTestDriver(TestDriverBase):
                 reporter.logXcpt();
                 continue;
             #reporter.log('Info: %s=%s' % (sProdCode, sProdName));
-            if  sProdName.startswith('Oracle VM VirtualBox') \
-             or sProdName.startswith('Sun VirtualBox'):
+            if sProdName.startswith('Oracle VirtualBox') \
+            or sProdName.startswith('Oracle VM VirtualBox') \
+            or sProdName.startswith('Sun VirtualBox'):
                 asProdCodes.append([sProdCode, sProdName]);
 
         # Before we start uninstalling anything, just ruthlessly kill any cdb,
