@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-shader.cpp 103416 2024-02-19 08:06:54Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-shader.cpp 104658 2024-05-16 09:53:28Z alexander.eichner@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device - VGPU10+ (DX) shader utilities.
  */
@@ -41,7 +41,7 @@
 
 #include "DevVGA-SVGA3d-dx-shader.h"
 
-#ifdef RT_OS_WINDOWS
+#if defined(RT_OS_WINDOWS) && !defined(RT_ARCH_ARM64)
 #include <d3d11TokenizedProgramFormat.hpp>
 #else
 #define D3D11_SB_EXTENDED_OPCODE_RESOURCE_DIM 2
