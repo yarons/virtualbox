@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 104445 2024-04-26 14:09:35Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 104673 2024-05-16 10:54:04Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -680,19 +680,17 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pToolBar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
                         m_pToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
                         m_pToolBar->setUseTextLabels(true);
-#if defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32)
+#ifdef VBOX_WS_MAC
                         /* Branding stuff for Qt6 beta: */
                         if (UIVersionInfo::showBetaLabel())
                         {
-# ifdef VBOX_WS_MAC
                             m_pToolBar->emulateMacToolbar();
-# endif /* VBOX_WS_MAC */
                             m_pToolBar->enableBranding(UIIconPool::iconSet(":/explosion_hazard_32px.png"),
                                                        "Dev Preview", // do we need to make it NLS?
                                                        QColor(246, 179, 0),
                                                        74 /* width of BETA label */);
                         }
-#endif /* defined(RT_ARCH_ARM64) || defined(RT_ARCH_ARM32) */
+#endif /* VBOX_WS_MAC */
 
                         /* Add toolbar into layout: */
                         pLayoutRight->addWidget(m_pToolBar);
