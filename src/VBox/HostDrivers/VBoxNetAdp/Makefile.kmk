@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104667 2024-05-16 10:11:41Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 104668 2024-05-16 10:15:17Z alexander.eichner@oracle.com $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -227,5 +227,3 @@ ifeq ($(KBUILD_TARGET),freebsd)
 endif # freebsd
 
 include $(FILE_KBUILD_SUB_FOOTER)
-
-a
