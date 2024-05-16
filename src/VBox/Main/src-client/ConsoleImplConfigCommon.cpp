@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 101515 2023-10-20 10:47:48Z alexander.eichner@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -3155,7 +3155,7 @@ int Console::i_configNetwork(const char *pszDevice,
 #ifdef VBOX_WITH_CLOUD_NET
             case NetworkAttachmentType_Cloud:
             {
-                static const char *s_pszCloudExtPackName = "Oracle VM VirtualBox Extension Pack";
+                static const char *s_pszCloudExtPackName = VBOX_PUEL_PRODUCT;
                 /*
                  * Cloud network attachments do not work wihout installed extpack.
                  * Without extpack support they won't work either.

@@ -1,10 +1,10 @@
-/* $Id: UIDefs.cpp 103321 2024-02-12 17:11:53Z sergey.dubov@oracle.com $ */
+/* $Id: UIDefs.cpp 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -28,10 +28,13 @@
 /* GUI includes: */
 #include "UIDefs.h"
 
+/* Other VBox includes: */
+#include <VBox/version.h> /* VBOX_PUEL_PRODUCT */
+
 
 /* File name definitions: */
 const char* UIDefs::GUI_GuestAdditionsName = "VBoxGuestAdditions";
-const char* UIDefs::GUI_ExtPackName = "Oracle VM VirtualBox Extension Pack";
+const char* UIDefs::GUI_ExtPackName = VBOX_PUEL_PRODUCT;
 
 /* File extensions definitions: */
 QStringList UIDefs::VBoxFileExts = QStringList() << "xml" << "vbox";

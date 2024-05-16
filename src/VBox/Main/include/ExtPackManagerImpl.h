@@ -1,10 +1,10 @@
-/* $Id: ExtPackManagerImpl.h 101293 2023-09-27 14:20:49Z knut.osmundsen@oracle.com $ */
+/* $Id: ExtPackManagerImpl.h 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -33,6 +33,7 @@
 
 #include "VirtualBoxBase.h"
 #include <VBox/ExtPack/ExtPack.h>
+#include <VBox/version.h> /* VBOX_PUEL_PRODUCT */
 #include "ExtPackWrap.h"
 #include "ExtPackFileWrap.h"
 #include "ExtPackManagerWrap.h"
@@ -40,7 +41,7 @@
 
 
 /** The name of the oracle extension back. */
-#define ORACLE_PUEL_EXTPACK_NAME "Oracle VM VirtualBox Extension Pack"
+#define ORACLE_PUEL_EXTPACK_NAME VBOX_PUEL_PRODUCT
 
 
 #ifndef VBOX_COM_INPROC

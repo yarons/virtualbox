@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigX86.cpp 104516 2024-05-04 01:53:42Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplConfigX86.cpp 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2006-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -278,7 +278,7 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
      * distribution model.
      */
 # ifdef VBOX_WITH_EXTPACK
-    static const char *s_pszPCIRawExtPackName = "Oracle VM VirtualBox Extension Pack";
+    static const char *s_pszPCIRawExtPackName = VBOX_PUEL_PRODUCT;
     if (!mptrExtPackManager->i_isExtPackUsable(s_pszPCIRawExtPackName))
         /* Always fatal! */
         return pVMM->pfnVMR3SetError(pUVM, VERR_NOT_FOUND, RT_SRC_POS,
