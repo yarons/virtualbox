@@ -1,4 +1,4 @@
-' $Id: envSub.vbs 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+' $Id: envSub.vbs 104653 2024-05-16 09:46:31Z alexander.eichner@oracle.com $
 ''  @file
 ' VBScript worker for env.cmd
 '
@@ -93,7 +93,7 @@ function Main()
    if strRealArch = "" then strRealArch = Trim(EnvGet("PROCESSOR_ARCHITECTURE"))
    if strRealArch = "" then strRealArch = "amd64"
    strRealArch = LCase(strRealArch)
-   if strRealArch <> "amd64" and strRealArch <> "x86" then
+   if strRealArch <> "amd64" and strRealArch <> "x86" and strRealArch <> "arm64" then
       MsgError "Unsupported host architecture: " & strRealArch ' quits
    end if
 
