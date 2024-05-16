@@ -1,4 +1,4 @@
-/* $Id: ASMMemFill32-generic.cpp 104656 2024-05-16 09:52:13Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMemFill32-generic.cpp 104686 2024-05-16 12:37:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMMemZeroPage - generic C implementation.
  */
@@ -45,7 +45,7 @@
 #include <iprt/assert.h>
 
 
-DECLASM(void) ASMMemFill32(volatile void RT_FAR *pv, size_t cb, uint32_t u32) RT_NOTHROW_DEF
+RTDECL(void) ASMMemFill32(volatile void RT_FAR *pv, size_t cb, uint32_t u32) RT_NOTHROW_DEF
 {
     Assert(!(cb & 3));
     size_t cFills = cb / sizeof(uint32_t);

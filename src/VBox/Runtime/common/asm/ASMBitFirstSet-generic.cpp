@@ -1,4 +1,4 @@
-/* $Id: ASMBitFirstSet-generic.cpp 104656 2024-05-16 09:52:13Z alexander.eichner@oracle.com $ */
+/* $Id: ASMBitFirstSet-generic.cpp 104686 2024-05-16 12:37:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMBitFirstSet - generic C implementation.
  */
@@ -44,7 +44,7 @@
 #include <iprt/assert.h>
 
 
-DECLASM(int32_t) ASMBitFirstSet(const volatile void RT_FAR *pvBitmap, uint32_t cBits) RT_NOTHROW_DEF
+RTDECL(int32_t) ASMBitFirstSet(const volatile void RT_FAR *pvBitmap, uint32_t cBits) RT_NOTHROW_DEF
 {
     const volatile size_t RT_FAR *pu = (const volatile size_t RT_FAR *)pvBitmap;
     Assert(!(cBits & 31));

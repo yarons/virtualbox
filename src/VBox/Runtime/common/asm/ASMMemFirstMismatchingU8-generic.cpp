@@ -1,4 +1,4 @@
-/* $Id: ASMMemFirstMismatchingU8-generic.cpp 104656 2024-05-16 09:52:13Z alexander.eichner@oracle.com $ */
+/* $Id: ASMMemFirstMismatchingU8-generic.cpp 104686 2024-05-16 12:37:37Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - ASMMemFirstMismatchingU8 - generic C implementation.
  */
@@ -42,7 +42,7 @@
 #include "internal/iprt.h"
 
 
-DECLASM(void *) ASMMemFirstMismatchingU8(void const RT_FAR *pv, size_t cb, uint8_t u8) RT_NOTHROW_DEF
+RTDECL(void *) ASMMemFirstMismatchingU8(void const RT_FAR *pv, size_t cb, uint8_t u8) RT_NOTHROW_DEF
 {
     uint8_t const *pb = (uint8_t const RT_FAR *)pv;
     for (; cb; cb--, pb++)
