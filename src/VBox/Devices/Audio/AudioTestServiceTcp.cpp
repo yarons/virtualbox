@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceTcp.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: AudioTestServiceTcp.cpp 104693 2024-05-16 16:44:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * AudioTestServiceTcp - Audio test execution server, TCP/IP Transport Layer.
  */
@@ -463,11 +463,8 @@ static DECLCALLBACK(int) atsTcpWaitForConnect(PATSTRANSPORTINST pThis,  RTMSINTE
     }
     else
     {
-        if (pClient)
-        {
-            atsTcpFreeClient(pThis, pClient);
-            pClient = NULL;
-        }
+        atsTcpFreeClient(pThis, pClient);
+        pClient = NULL;
     }
 
     if (RT_FAILURE(rc))

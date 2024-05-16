@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 103363 2024-02-14 17:23:47Z andreas.loeffler@oracle.com $ */
+/* $Id: tstClipboardGH-X11.cpp 104693 2024-05-16 16:44:11Z andreas.loeffler@oracle.com $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -351,9 +351,9 @@ void XtFree(char *ptr)
 char *XGetAtomName(Display *display, Atom atom)
 {
     RT_NOREF(display);
-    const char *pcszName = NULL;
-    if (atom < 0x1000)
+    if (!atom)
         return NULL;
+    const char *pcszName = NULL;
     if (0x1000 <= atom && atom < 0x2000)
     {
         unsigned index = atom - 0x1000;
