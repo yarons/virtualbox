@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104677 2024-05-16 11:37:01Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 104678 2024-05-16 11:37:20Z alexander.eichner@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1950,7 +1950,7 @@ ifndef VBOX_GCC_TOOL
    TOOL_MINGW32_CFLAGS := $(UNDEFINED) # override -g
   else ifeq ($(KBUILD_TARGET_ARCH),amd64)
    VBOX_GCC_TOOL := MINGWW64
-  else_ifeq ($(KBUILD_TARGET_ARCH),arm64)
+  else ifeq ($(KBUILD_TARGET_ARCH),arm64)
    VBOX_GCC_TOOL := CLANGVCC143ARM64
   endif
  else ifeq ($(KBUILD_TARGET),os2)
@@ -9273,7 +9273,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104677 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104678 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
