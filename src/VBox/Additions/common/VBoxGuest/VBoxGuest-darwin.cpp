@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 104670 2024-05-16 10:42:46Z klaus.espenlaub@oracle.com $ */
+/* $Id: VBoxGuest-darwin.cpp 104687 2024-05-16 12:58:32Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -241,10 +241,10 @@ static struct cdevsw    g_DevCW =
     /*.d_select   = */ eno_select,
     /*.d_mmap     = */ eno_mmap,
     /*.d_strategy = */ eno_strat,
-#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101000
     /*.d_getc     = */ eno_getc,
     /*.d_putc     = */ eno_putc,
-#else /* Apple got it wrong in the 10.5 SDK */
+#else /* Apple got it wrong at least until the 10.9 SDK */
     /*.d_getc     = */ (void *)(uintptr_t)&enodev, //eno_getc,
     /*.d_putc     = */ (void *)(uintptr_t)&enodev, //eno_putc,
 #endif
