@@ -1,7 +1,7 @@
 #!/bin/sh
-# $Id: postinst-common.sh 98681 2023-02-21 16:01:22Z knut.osmundsen@oracle.com $
+# $Id: postinst-common.sh 104700 2024-05-17 08:56:11Z andreas.loeffler@oracle.com $
 ## @file
-# Oracle VM VirtualBox
+# Oracle VirtualBox
 # VirtualBox Linux post-installer common portions
 #
 

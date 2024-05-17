@@ -1,5 +1,5 @@
-# $Id: routines.sh 103028 2024-01-24 15:53:59Z andreas.loeffler@oracle.com $
-# Oracle VM VirtualBox
+# $Id: routines.sh 104700 2024-05-17 08:56:11Z andreas.loeffler@oracle.com $
+# Oracle VirtualBox
 # VirtualBox installer shell routines
 #
 
@@ -507,4 +507,3 @@ print("%s.%s" % (sys.version_info[0], sys.version_info[1]))' 2> /dev/null`"
 
     return 0
 }
-

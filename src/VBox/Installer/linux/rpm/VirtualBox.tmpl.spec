@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 104634 2024-05-14 21:21:07Z klaus.espenlaub@oracle.com $
+# $Id: VirtualBox.tmpl.spec 104700 2024-05-17 08:56:11Z andreas.loeffler@oracle.com $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -32,7 +32,7 @@
 %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$|^/usr/lib/python.*$|^.*\\.py$
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 
-Summary:   Oracle VM VirtualBox
+Summary:   Oracle VirtualBox
 Name:      %NAME%
 Version:   %BUILDVER%_%BUILDREL%
 Release:   1
