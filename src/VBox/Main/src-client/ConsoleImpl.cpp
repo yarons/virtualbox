@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 104286 2024-04-11 01:56:27Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImpl.cpp 104713 2024-05-17 14:45:27Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7653,8 +7653,11 @@ int Console::i_recordingStart(util::AutoWriteLock *pAutoLock /* = NULL */)
 
 /**
  * Stops recording. Does nothing if recording is not active.
+ *
+ * Note: This does *not* disable recording for a VM, in other words,
+ *       it does not change the VM's recording (enabled) setting.
  */
-int Console::i_recordingStop(util::AutoWriteLock *pAutoLock /* = NULL */)
+int Console::i_recordingStop(util::AutoWriteLock *)
 {
     if (!mRecording.mCtx.IsStarted())
         return VINF_SUCCESS;
@@ -7667,18 +7670,6 @@ int Console::i_recordingStop(util::AutoWriteLock *pAutoLock /* = NULL */)
         const size_t cStreams = mRecording.mCtx.GetStreamCount();
         for (unsigned uScreen = 0; uScreen < cStreams; ++uScreen)
             mDisplay->i_recordingScreenChanged(uScreen);
-
-        if (pAutoLock)
-            pAutoLock->release();
-
-        ComPtr<IRecordingSettings> pRecordSettings;
-        HRESULT hrc = mMachine->COMGETTER(RecordingSettings)(pRecordSettings.asOutParam());
-        ComAssertComRC(hrc);
-        hrc = pRecordSettings->COMSETTER(Enabled)(FALSE);
-        ComAssertComRC(hrc);
-
-        if (pAutoLock)
-            pAutoLock->acquire();
     }
 
     LogFlowFuncLeaveRC(vrc);
