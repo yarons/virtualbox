@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104694 $"
+__version__ = "$Revision: 104695 $"
 
 # Standard Python imports.
 import errno
@@ -5569,11 +5569,6 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         Tests updating the Guest Additions inside the guest.
 
         """
-
-        ## @todo currently disabled everywhere.
-        if self.oTstDrv.fpApiVer < 100.0:
-            reporter.log("Skipping updating GAs everywhere for now...");
-            return None;
 
         # Skip test for updating Guest Additions if we run on a too old (Windows) guest.
         ##
