@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104695 $"
+__version__ = "$Revision: 104696 $"
 
 # Standard Python imports.
 import errno
@@ -4045,18 +4045,6 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 if not sDirTemp:
                     fRc = reporter.error('Resulting directory is empty!');
                 else:
-                    ## @todo This does not work for some unknown reason.
-                    #try:
-                    #    if self.oTstDrv.fpApiVer >= 5.0:
-                    #        fExists = oCurGuestSession.directoryExists(sDirTemp, False);
-                    #    else:
-                    #        fExists = oCurGuestSession.directoryExists(sDirTemp);
-                    #except:
-                    #    fRc = reporter.errorXcpt('sDirTemp=%s' % (sDirTemp,));
-                    #else:
-                    #    if fExists is not True:
-                    #        fRc = reporter.error('Test #%d failed: Temporary directory "%s" does not exists (%s)'
-                    #                             % (i, sDirTemp, fExists));
                     try:
                         oFsObjInfo = oCurGuestSession.fsObjQueryInfo(sDirTemp, False);
                         eType = oFsObjInfo.type;
