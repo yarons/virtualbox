@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104707 2024-05-17 10:31:26Z klaus.espenlaub@oracle.com $
+# $Id: Config.kmk 104709 2024-05-17 12:51:17Z sergey.dubov@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1028,9 +1028,9 @@ VBOX_WITH_VMNET = 1
 ## @{
 # Enables the extension pack feature.
 VBOX_WITH_EXTPACK = 1
-# Enables separating code into the Oracle VM VirtualBox Extension Pack, dubbed PUEL.
+# Enables separating code into the Extension Pack, dubbed PUEL.
 VBOX_WITH_EXTPACK_PUEL = 1
-# Enables building+packing the Oracle VM VirtualBox Extension Pack, includes VBOX_WITH_EXTPACK_PUEL
+# Enables building+packing the Extension Pack, includes VBOX_WITH_EXTPACK_PUEL
 VBOX_WITH_EXTPACK_PUEL_BUILD = 1
 # Enable the BusMouse sample extension pack.
 #VBOX_WITH_EXTPACK_BUSMOUSESAMPLE = 1
@@ -9278,7 +9278,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104707 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104709 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
