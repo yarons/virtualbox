@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104696 $"
+__version__ = "$Revision: 104706 $"
 
 # Standard Python imports.
 import errno
@@ -5620,8 +5620,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             reporter.log('Testing #%d, sSrc="%s", afFlags="%s" ...' % (i, oCurTest.sSrc, oCurTest.afFlags,));
 
             oCurTest.setEnvironment(oSession, oTxsSession, oTestVm);
-            if not fRc:
-                break;
+
             fRc, _ = oCurTest.createSession('Test #%d' % (i,));
             if fRc is not True:
                 fRc = reporter.error('Test #%d failed: Could not create session' % (i,));
