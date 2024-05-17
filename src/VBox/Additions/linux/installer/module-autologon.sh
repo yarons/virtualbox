@@ -1,5 +1,5 @@
-# Oracle VM VirtualBox
-# $Id: module-autologon.sh 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+# Oracle VirtualBox
+# $Id: module-autologon.sh 104701 2024-05-17 08:59:13Z andreas.loeffler@oracle.com $
 ## @file
 # VirtualBox Linux Guest Additions installer - autologon module
 #
@@ -179,4 +179,3 @@ mod_autologon_config_save()
 MOD_AUTOLOGON_LIGHTDM_CONFIG='$MOD_AUTOLOGON_LIGHTDM_CONFIG'
 MOD_AUTOLOGON_LIGHTDM_GREETER_DIR='$MOD_AUTOLOGON_LIGHTDM_GREETER_DIR'"
 }
-

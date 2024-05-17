@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: vbox-greeter.cpp 104701 2024-05-17 08:59:13Z andreas.loeffler@oracle.com $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -1307,7 +1307,7 @@ int main(int argc, char **argv)
         pBtnMenu->add("Shutdown", "" /* Shortcut */, cb_btn_shutdown, &ctx, 0 /* Flags */);
 
     char szLabel[255];
-    RTStrPrintf(szLabel, sizeof(szLabel), "Oracle VM VirtualBox Guest Additions %sr%s",
+    RTStrPrintf(szLabel, sizeof(szLabel), "Oracle VirtualBox Guest Additions %sr%s",
                 RTBldCfgVersion(), RTBldCfgRevisionStr());
     Fl_Box *pLblInfo = new Fl_Box(FL_NO_BOX , 50, uOffsetY + 150,
                                   400, 20, szLabel);
@@ -1528,4 +1528,3 @@ DECLEXPORT(void) RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const cha
     RTAssertMsg1(pszExpr, uLine, pszFile, pszFunction);
 }
 #endif
-
