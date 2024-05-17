@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
+/* $Id: ExtPackManagerImpl.h 104702 2024-05-17 09:15:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -40,7 +40,7 @@
 #include <iprt/fs.h>
 
 
-/** The name of the oracle extension back. */
+/** The name of the Oracle extension pack. */
 #define ORACLE_PUEL_EXTPACK_NAME VBOX_PUEL_PRODUCT
 
 

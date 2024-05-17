@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 104692 2024-05-16 15:51:25Z sergey.dubov@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 104702 2024-05-17 09:15:08Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3161,7 +3161,8 @@ int Console::i_configNetwork(const char *pszDevice,
                  * Without extpack support they won't work either.
                  */
 # ifdef VBOX_WITH_EXTPACK
-                if (!mptrExtPackManager->i_isExtPackUsable(s_pszCloudExtPackName))
+                if (   !mptrExtPackManager->i_isExtPackUsable(s_pszCloudExtPackName)
+                    && !mptrExtPackManager->i_isExtPackUsable("Oracle VM VirtualBox Extension Pack")) /* Legacy name -- see @bugref{10690}. */
 # endif
                 {
                     return pVMM->pfnVMR3SetError(pUVM, VERR_NOT_FOUND, RT_SRC_POS,
