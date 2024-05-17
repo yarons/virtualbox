@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageVMs.cpp 104515 2024-05-03 18:15:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardExportAppPageVMs.cpp 104711 2024-05-17 13:28:07Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageVMs class implementation.
  */
@@ -60,11 +60,13 @@ public:
         , m_fInSaveState(fInSaveState)
     {}
 
+#if 0 /* unused */
     /** Returns whether this item is less than @a other. */
     bool operator<(const QIListWidgetItem &other) const
     {
         return text().toLower() < other.text().toLower();
     }
+#endif
 
     /** Returns the machine ID. */
     QUuid uuid() const { return m_uUuid; }
