@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 104544 2024-05-08 10:05:22Z andreas.loeffler@oracle.com $
+# $Id: base.py 104699 2024-05-17 08:42:47Z andreas.loeffler@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104544 $"
+__version__ = "$Revision: 104699 $"
 
 
 # Standard Python imports.
@@ -197,7 +197,7 @@ def __processSudoKill(uPid, iSignal, fSudo):
         os.kill(uPid, iSignal);
         return True;
     except:
-        reporter.logXcpt('uPid=%s' % (uPid,));
+        reporter.logXcpt('uPid=%s, iSignal=%d, fSudo=%s' % (uPid, iSignal, fSudo));
     return False;
 
 def processInterrupt(uPid, fSudo = False):
