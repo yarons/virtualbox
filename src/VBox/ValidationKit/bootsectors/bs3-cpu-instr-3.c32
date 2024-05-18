@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 104719 2024-05-18 01:14:23Z bela.lubkin@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 104720 2024-05-18 01:19:38Z bela.lubkin@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -922,11 +922,6 @@ static uint8_t bs3CpuInstr3_WorkerTestType1(uint8_t bMode, BS3CPUINSTR3_TEST1_T 
                                                  pszMode, idTestStep);
                             Ctx.cr2.u = 0;
                             Ctx.cr2Range = 0;
-
-                            if (paTests[iTest].enmRm == RM_MEM_DI)
-                            {
-                                Ctx.cr2Range = 0;
-                            }
 
                             if (   paTests[iTest].enmRm >= RM_MEM
                                 && Bs3MemCmp(puMemOpAlias, &uMemOpExpect, cbMemOp) != 0)
