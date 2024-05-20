@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstCommon.cpp.h 104206 2024-04-05 20:28:19Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllInstCommon.cpp.h 104732 2024-05-20 17:06:05Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, Common Bits.
  */
@@ -689,7 +689,7 @@ IEM_STATIC const IEMOPSHIFTDBLSIZES * const g_iemAImpl_shrd_eflags[] =
 };
 
 
-# ifndef IEM_WITHOUT_ASSEMBLY
+# if (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)) && !defined(IEM_WITHOUT_ASSEMBLY)
 /** Function table for the VPXOR instruction */
 IEM_STATIC const IEMOPMEDIAOPTF3 g_iemAImpl_vpand          = { iemAImpl_vpand_u128,   iemAImpl_vpand_u256 };
 /** Function table for the VPXORN instruction */
