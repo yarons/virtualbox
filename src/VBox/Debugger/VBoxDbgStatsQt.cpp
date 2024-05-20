@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 103474 2024-02-20 10:10:15Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxDbgStatsQt.cpp 104735 2024-05-20 17:19:14Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3165,7 +3165,7 @@ VBoxDbgStatsModel::loadFilterConfig(const char *a_pszConfig)
         if (psz)
             *psz++ = '\0';
         else
-            psz = strchr(psz, '\0');
+            psz = strchr(pszItem, '\0');
         pszItem = RTStrStrip(pszItem);
 
         /* Is it a path or a variable=value pair. */
