@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veExecMem.cpp 104146 2024-04-04 01:13:21Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veExecMem.cpp 104731 2024-05-20 16:48:55Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -669,6 +669,20 @@ DECLHIDDEN(void) iemExecMemAllocatorReadyForUse(PVMCPUCC pVCpu, void *pv, size_t
      */
     /* sys_dcache_flush(pv, cb); - not necessary */
     sys_icache_invalidate(pv, cb);
+#elif defined(RT_OS_LINUX)
+    RT_NOREF(pVCpu);
+
+    /* There is __builtin___clear_cache() but it flushes both the instruction and data cache, so do it manually. */
+    static uint32_t s_u32CtrEl0 = 0;
+    if (!s_u32CtrEl0)
+        asm volatile ("mrs %0, ctr_el0":"=r" (s_u32CtrEl0));
+    uintptr_t cbICacheLine = (uintptr_t)4 << (s_u32CtrEl0 & 0xf);
+
+    uintptr_t pb = (uintptr_t)pv & ~(cbICacheLine - 1);
+    for (; pb < (uintptr_t)pv + cb; pb += cbICacheLine)
+        asm volatile ("ic ivau, %0" : : "r" (pb) : "memory");
+
+    asm volatile ("dsb ish\n\t isb\n\t" : : : "memory");
 #else
     RT_NOREF(pVCpu, pv, cb);
 #endif
