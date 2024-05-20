@@ -1,4 +1,4 @@
-/* $Id: zero-alt.S 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: zero-alt.S 104733 2024-05-20 17:12:40Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Zero Memory, mach-o version (for arm/sparc).
  */
@@ -45,7 +45,9 @@
         .file       "zero-alt.S"
         .section    ".rodata"
 # define NAME(a) a
-# define NEED_HIDDEN
+# ifndef RT_ARCH_ARM64 /* RTSignTool references g_abRTZero4K from VBoxRT.so */
+#  define NEED_HIDDEN
+# endif
 #else
 # error "PORT ME!"
 #endif
