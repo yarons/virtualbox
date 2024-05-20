@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104737 2024-05-20 17:38:47Z alexander.eichner@oracle.com $
+# $Id: Makefile.kmk 104738 2024-05-20 17:45:07Z alexander.eichner@oracle.com $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -200,7 +200,7 @@ ifdef VBOX_WITH_VIRT_ARMV8
 endif
 
 ifdef VBOX_WITH_R0_MODULES
-# Do not remove relocation information of these binaries
+ # Do not remove relocation information of these binaries
  VBOX_LNX_STRIP_OBJ = \
  	VBoxDDR0.r0 \
  	VMMR0.r0
