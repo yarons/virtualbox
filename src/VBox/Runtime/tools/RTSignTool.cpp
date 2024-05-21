@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 104745 2024-05-21 12:52:09Z knut.osmundsen@oracle.com $ */
+/* $Id: RTSignTool.cpp 104746 2024-05-21 14:45:33Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -6234,6 +6234,8 @@ static RTEXITCODE HandleMakeTaInfo(int cArgs, char **papszArgs)
 /*********************************************************************************************************************************
 *   The 'create-self-signed-rsa-cert' command.                                                                                   *
 *********************************************************************************************************************************/
+#ifndef IPRT_IN_BUILD_TOOL
+
 static RTEXITCODE HelpCreateSelfSignedRsaCert(PRTSTREAM pStrm, RTSIGNTOOLHELP enmLevel)
 {
     RT_NOREF_PV(enmLevel);
@@ -6387,6 +6389,7 @@ static RTEXITCODE HandleCreateSelfSignedRsaCert(int cArgs, char **papszArgs)
                                  enmDigestType, cKeyBits, cSecsValidFor, pszOutCert, pszOutPrivKey, rc, &StaticErrInfo.Core);
 }
 
+#endif /* !IPRT_IN_BUILD_TOOL */
 
 
 /*
