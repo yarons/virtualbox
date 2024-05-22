@@ -1,4 +1,4 @@
-/* $Id: x509-create-sign.cpp 104745 2024-05-21 12:52:09Z knut.osmundsen@oracle.com $ */
+/* $Id: x509-create-sign.cpp 104755 2024-05-22 11:32:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Crypto - X.509, Certificate Creation.
  */
@@ -121,7 +121,7 @@ RTDECL(int) RTCrX509Certificate_GenerateSelfSignedRsa(RTDIGESTTYPE enmDigestType
         AssertStmt(rcOssl > 0, rc = RTErrInfoSet(pErrInfo, VERR_GENERAL_FAILURE, "X509_set_version failed"));
 
         /* The certificate is valid from now and the specifice number of seconds forwards: */
-# if OPENSSL_VERSION_NUMBER >= 0x30000000
+# if OPENSSL_VERSION_NUMBER >= 0x1010000f
         AssertStmt(X509_gmtime_adj(X509_getm_notBefore(pNewCert), 0),
                    rc = RTErrInfoSet(pErrInfo, VERR_GENERAL_FAILURE, "X509_gmtime_adj/before failed"));
         AssertStmt(X509_gmtime_adj(X509_getm_notAfter(pNewCert), cSecsValidFor),
@@ -169,7 +169,11 @@ RTDECL(int) RTCrX509Certificate_GenerateSelfSignedRsa(RTDIGESTTYPE enmDigestType
                  * Write out the result to the two files.
                  */
                 /* The certificate (not security sensitive). */
+# if OPENSSL_VERSION_NUMBER >= 0x1010000f
                 BIO * const pCertBio = BIO_new(BIO_s_mem());
+# else
+                BIO * const pCertBio = BIO_new(BIO_s_mem());
+# endif
                 if (pCertBio)
                 {
                     rcOssl = PEM_write_bio_X509(pCertBio, pNewCert);
