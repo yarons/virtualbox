@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 104750 2024-05-22 09:46:13Z knut.osmundsen@oracle.com $ */
+/* $Id: SystemPropertiesImpl.cpp 104753 2024-05-22 11:08:32Z knut.osmundsen@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1407,7 +1407,7 @@ HRESULT SystemProperties::getExecutionEnginesForVmCpuArchitecture(CPUArchitectur
         case CPUArchitecture_ARMv8_64:
         {
 #ifdef VBOX_WITH_VIRT_ARMV8
-            static const VMExecutionEngine_T aExecEngines[] =
+            static const VMExecutionEngine_T s_aExecEngines[] =
             {
                 VMExecutionEngine_Default,
 # ifdef VBOX_WITH_NATIVE_NEM
