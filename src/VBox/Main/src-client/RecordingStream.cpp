@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 104751 2024-05-22 09:46:55Z andreas.loeffler@oracle.com $ */
+/* $Id: RecordingStream.cpp 104752 2024-05-22 09:47:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -436,7 +436,7 @@ int RecordingStream::SendVideoFrame(uint32_t x, uint32_t y, uint32_t uPixelForma
 {
     AssertPtrReturn(m_pCtx, VERR_WRONG_ORDER);
 
-    if RT_UNLIKELY(!NeedsUpdate(msTimestamp))
+    if (RT_UNLIKELY(!NeedsUpdate(msTimestamp)))
         return VINF_RECORDING_THROTTLED;
 
     lock();
