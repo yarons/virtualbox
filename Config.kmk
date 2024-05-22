@@ -1,4 +1,4 @@
-# $Id: Config.kmk 104730 2024-05-20 16:22:53Z alexander.eichner@oracle.com $
+# $Id: Config.kmk 104749 2024-05-22 09:24:15Z valery.portnyagin@oracle.com $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5233,7 +5233,7 @@ endif
 
 ifdef VBOX_WITH_LIBVPX
  SDK_VBoxLibVpx                  := libvpx for dll linking.
- SDK_VBoxLibVpx_DEFAULT_INCS     := $(PATH_ROOT)/src/libs/libvpx-1.13.1
+ SDK_VBoxLibVpx_DEFAULT_INCS     := $(PATH_ROOT)/src/libs/libvpx-1.14.0
  SDK_VBoxLibVpx_INCS             ?= $(SDK_VBoxLibVpx_DEFAULT_INCS)
  SDK_VBoxLibVpx_LIBS             ?= $(PATH_STAGE_LIB)/VBox-libvpx$(VBOX_SUFF_LIB)
 endif
@@ -9298,7 +9298,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104730 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 104749 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
