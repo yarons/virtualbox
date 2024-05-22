@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 104759 2024-05-22 13:59:29Z vadim.galitsyn@oracle.com $ */
+/* $Id: clipboard-common.cpp 104760 2024-05-22 14:32:06Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -941,8 +941,11 @@ int ShClConvUtf16LFToCRLF(PCRTUTF16 pcwszSrc, size_t cwcSrc, PRTUTF16 pu16Dst, s
         {
             /* Insert '\r' in front of '\n', but avoid '\r\r\n' situations
                because it will result in extra empty lines on the other side. */
-            if (   i > 1
-                && pcwszSrc[i - 1] != VBOX_SHCL_CARRIAGERETURN)
+            if (   i == 0
+                || (   i > 1
+                    && pcwszSrc[i - 1] != VBOX_SHCL_CARRIAGERETURN
+                   )
+               )
             {
                 pu16Dst[j] = VBOX_SHCL_CARRIAGERETURN;
                 ++j;
@@ -960,8 +963,11 @@ int ShClConvUtf16LFToCRLF(PCRTUTF16 pcwszSrc, size_t cwcSrc, PRTUTF16 pu16Dst, s
         else if (pcwszSrc[i] == VBOX_SHCL_CARRIAGERETURN)
         {
             /* Set CR.r, but avoid '\r\r'. */
-            if (   i > 1
-                && pcwszSrc[i - 1] != VBOX_SHCL_CARRIAGERETURN)
+            if (   i == 0
+                || (   i > 1
+                    && pcwszSrc[i - 1] != VBOX_SHCL_CARRIAGERETURN
+                   )
+               )
             {
                 pu16Dst[j] = VBOX_SHCL_CARRIAGERETURN;
                 ++j;
