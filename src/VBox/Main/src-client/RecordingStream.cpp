@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 98278 2023-01-24 11:55:00Z knut.osmundsen@oracle.com $ */
+/* $Id: RecordingStream.cpp 104751 2024-05-22 09:46:55Z andreas.loeffler@oracle.com $ */
 /** @file
  * Recording stream code.
  */
@@ -418,9 +418,9 @@ int RecordingStream::SendAudioFrame(const void *pvData, size_t cbData, uint64_t 
 /**
  * Sends a raw (e.g. not yet encoded) video frame to the recording stream.
  *
- * @returns VBox status code. Will return VINF_RECORDING_LIMIT_REACHED if the stream's recording
- *          limit has been reached or VINF_RECORDING_THROTTLED if the frame is too early for the current
- *          FPS setting.
+ * @returns VBox status code.
+ * @retval  VINF_RECORDING_LIMIT_REACHED if the stream's recording limit has been reached.
+ * @retval  VINF_RECORDING_THROTTLED if the frame is too early for the current FPS setting.
  * @param   x                   Upper left (X) coordinate where the video frame starts.
  * @param   y                   Upper left (Y) coordinate where the video frame starts.
  * @param   uPixelFormat        Pixel format of the video frame.
@@ -435,7 +435,9 @@ int RecordingStream::SendVideoFrame(uint32_t x, uint32_t y, uint32_t uPixelForma
                                     uint32_t uSrcWidth, uint32_t uSrcHeight, uint8_t *puSrcData, uint64_t msTimestamp)
 {
     AssertPtrReturn(m_pCtx, VERR_WRONG_ORDER);
-    AssertReturn(NeedsUpdate(msTimestamp), VINF_RECORDING_THROTTLED); /* We ASSUME that the caller checked that first. */
+
+    if RT_UNLIKELY(!NeedsUpdate(msTimestamp))
+        return VINF_RECORDING_THROTTLED;
 
     lock();
 
