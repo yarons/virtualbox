@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 103857 2024-03-14 15:39:03Z ksenia.s.stepanova@oracle.com $
+# $Id: tdStorageBenchmark1.py 104769 2024-05-24 09:28:48Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 103857 $"
+__version__ = "$Revision: 104769 $"
 
 
 # Standard Python imports.
@@ -849,7 +849,10 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 oStorCfg.cleanup();
 
         if not fRc:
-            reporter.error('Failed to prepare host storage (fRamDisk=%s, cbPool=%d)' % (fRamDisk, cbPool,));
+            if cbPool is None:
+                reporter.error('Failed to prepare host storage (fRamDisk=%s)' % (fRamDisk,));
+            else:
+                reporter.error('Failed to prepare host storage (fRamDisk=%s, cbPool=%d)' % (fRamDisk, cbPool,));
         return sMountPoint;
 
     def cleanupStorage(self, oStorCfg):
