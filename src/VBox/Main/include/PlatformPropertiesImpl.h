@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 103977 2024-03-21 02:04:52Z knut.osmundsen@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 104780 2024-05-24 14:15:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -107,6 +107,8 @@ private:
     HRESULT getMaxInstancesOfStorageBus(ChipsetType_T aChipset,
                                         StorageBus_T aBus,
                                         ULONG *aMaxInstances) RT_OVERRIDE;
+    HRESULT getSupportedVRAMRange(GraphicsControllerType_T aGraphicsControllerType, BOOL fAccelerate3DEnabled,
+                                  ULONG *aMinMB, ULONG *aMaxMB, ULONG *aStrideSizeMB) RT_OVERRIDE;
     HRESULT getDeviceTypesForStorageBus(StorageBus_T aBus,
                                         std::vector<DeviceType_T> &aDeviceTypes) RT_OVERRIDE;
     HRESULT getStorageBusForControllerType(StorageControllerType_T aStorageControllerType,

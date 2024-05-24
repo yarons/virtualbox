@@ -1,4 +1,4 @@
-/* $Id: tstAPI.cpp 99775 2023-05-12 12:21:58Z alexander.eichner@oracle.com $ */
+/* $Id: tstAPI.cpp 104780 2024-05-24 14:15:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * tstAPI - test program for our COM/XPCOM interface
  */
@@ -1147,6 +1147,17 @@ int main(int argc, char *argv[])
     while (FALSE);
     RTPrintf("\n");
 #endif
+
+    do {
+        PlatformArchitecture_T platformArch = PlatformArchitecture_x86;
+        ComPtr<IPlatformProperties> platformProperties;
+        CHECK_ERROR_BREAK(virtualBox, GetPlatformProperties(platformArch, platformProperties.asOutParam()));
+        ULONG uMinMB, uMaxMB, uStrideMB;
+        CHECK_ERROR_BREAK(platformProperties, GetSupportedVRAMRange(GraphicsControllerType_VBoxVGA, TRUE /* fAccelerate3DEnabled */, &uMinMB, &uMaxMB, &uStrideMB));
+        ASSERT_BREAK(uMinMB && RT_IS_POWER_OF_TWO(uMinMB));
+        ASSERT_BREAK(uMaxMB && RT_IS_POWER_OF_TWO(uMaxMB));
+        ASSERT_BREAK(uStrideMB && RT_IS_POWER_OF_TWO(uStrideMB));
+    } while (0);
 
 #if 1
     do {
