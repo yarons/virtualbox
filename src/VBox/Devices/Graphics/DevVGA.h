@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 103457 2024-02-19 15:51:24Z alexander.eichner@oracle.com $ */
+/* $Id: DevVGA.h 104777 2024-05-24 13:19:52Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -66,6 +66,9 @@
 
 #ifdef VBOX_WITH_VMSVGA
 # include "DevVGA-SVGA.h"
+#else
+# include <VBox/vmm/pdmifs.h>
+# include <VBox/vmm/stam.h>
 #endif
 
 #include <iprt/list.h>
