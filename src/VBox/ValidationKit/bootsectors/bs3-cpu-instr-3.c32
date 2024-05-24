@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-3.c32 104741 2024-05-21 04:43:49Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: bs3-cpu-instr-3.c32 104776 2024-05-24 13:17:35Z alexander.eichner@oracle.com $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-3 - MMX, SSE and AVX instructions, C code template.
  */
@@ -13449,7 +13449,7 @@ static uint8_t bs3CpuInstr3_WorkerTestType5(uint8_t bMode, BS3CPUINSTR3_TEST5_T 
                                 BS3_ASSERT(paTests[iTest].enmRm >= RM_MEM);
                                 Bs3MemCpy(puMemOpAlias, &paValues[iVal].uSrc1, cbMemOp);
                                 if (paTests[iTest].iRegDst == UINT8_MAX)
-                                    BS3_ASSERT(fSseInstr);
+                                    BS3_ASSERT(fSseInstr || fAvxInstr);
                                 if (bXcptExpect != X86_XCPT_DB)
                                     uMemOpExpect = paValues[iVal].uSrc1;
                             }
