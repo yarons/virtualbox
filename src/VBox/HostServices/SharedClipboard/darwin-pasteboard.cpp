@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 103148 2024-01-31 15:26:12Z alexander.eichner@oracle.com $ */
+/* $Id: darwin-pasteboard.cpp 104773 2024-05-24 12:56:32Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -312,7 +312,7 @@ DECLHIDDEN(int) readFromPasteboard(PasteboardRef pPasteboard, uint32_t fFormat, 
                  */
                 Assert(cwcSrc == RTUtf16Len(pwszSrc));
                 size_t cwcDst = 0;
-                rc = ShClUtf16LFLenUtf8(pwszSrc, cwcSrc, &cwcDst);
+                rc = ShClUtf16CalcNormalizedEolToCRLFLength(pwszSrc, cwcSrc, &cwcDst);
                 if (RT_SUCCESS(rc))
                 {
                     cwcDst++; /* Add space for terminator. */
