@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 104773 2024-05-24 12:56:32Z vadim.galitsyn@oracle.com $ */
+/* $Id: clipboard-common.cpp 104775 2024-05-24 13:04:35Z vadim.galitsyn@oracle.com $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -863,7 +863,7 @@ int ShClUtf16CalcNormalizedEolToCRLFLength(PCRTUTF16 pcwszSrc, size_t cwSrc, siz
 #ifdef RT_OS_DARWIN
         /* Check for a single carriage return (MacOS) */
         if (   pcwszSrc[i] == VBOX_SHCL_CARRIAGERETURN
-            && (i + 1 >= cwcSrc || pcwszSrc[i + 1] != VBOX_SHCL_LINEFEED))
+            && (i + 1 >= cwSrc || pcwszSrc[i + 1] != VBOX_SHCL_LINEFEED))
         {
             ++cLen;
         }
