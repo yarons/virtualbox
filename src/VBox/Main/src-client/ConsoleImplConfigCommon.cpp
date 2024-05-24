@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 104702 2024-05-17 09:15:08Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 104779 2024-05-24 13:42:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5088,7 +5088,7 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             InsertConfigInteger(pCfg, "VmSvgaExposeLegacyVga", fExposeLegacyVga);
         }
 #else
-        RT_NOREF(enmGraphicsController);
+        RT_NOREF(enmGraphicsController, fForceVmSvga3, fExposeLegacyVga);
 #endif /* VBOX_WITH_VMSVGA */
 
         /* Custom VESA mode list */
