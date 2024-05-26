@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstVexMap3.cpp.h 104369 2024-04-19 07:23:34Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: IEMAllInstVexMap3.cpp.h 104784 2024-05-26 17:45:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Emulation, 0x0f 0x3a map.
  *
@@ -1785,6 +1785,7 @@ FNIEMOP_STUB(iemOp_vaeskeygen_Vdq_Wdq_Ib);
 FNIEMOP_DEF(iemOp_rorx_Gy_Ey_Ib)
 {
     IEMOP_MNEMONIC3(VEX_RMI, RORX, rorx, Gy, Ey, Ib, DISOPTYPE_HARMLESS, IEMOPHINT_VEX_L_ZERO | IEMOPHINT_VEX_V_ZERO);
+    IEMOP_HLP_IGNORE_VEX_W_PREFIX_IF_NOT_IN_64BIT();
     uint8_t bRm; IEM_OPCODE_GET_NEXT_U8(&bRm);
     if (IEM_IS_MODRM_REG_MODE(bRm))
     {
