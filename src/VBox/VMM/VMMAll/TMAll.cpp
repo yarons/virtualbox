@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 101088 2023-09-12 10:22:20Z knut.osmundsen@oracle.com $ */
+/* $Id: TMAll.cpp 104788 2024-05-27 10:20:07Z knut.osmundsen@oracle.com $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -712,8 +712,9 @@ void tmTimerQueuesSanityChecks(PVMCC pVM, const char *pszWhere)
 
 # ifdef IN_RING3
                 /* Go thru all the timers and check that the active ones all are in the active lists. */
-                uint32_t idxTimer = pQueue->cTimersAlloc;
-                uint32_t cFree    = 0;
+                int const rcAllocLock = PDMCritSectRwTryEnterShared(pVM, &pQueue->AllocLock);
+                uint32_t  idxTimer    = pQueue->cTimersAlloc;
+                uint32_t  cFree       = 0;
                 while (idxTimer-- > 0)
                 {
                     PTMTIMER const     pTimer   = &pQueue->paTimers[idxTimer];
@@ -778,7 +779,14 @@ void tmTimerQueuesSanityChecks(PVMCC pVM, const char *pszWhere)
                         Assert(((pTimer->hSelf >> TMTIMERHANDLE_QUEUE_IDX_SHIFT) & TMTIMERHANDLE_QUEUE_IDX_SMASK) == idxQueue);
                     }
                 }
-                Assert(cFree == pQueue->cTimersFree);
+                if (RT_SUCCESS(rcAllocLock))
+                {
+                    Assert(cFree == pQueue->cTimersFree);
+                    PDMCritSectRwLeaveShared(pVM, &pQueue->AllocLock);
+                }
+                else
+                    Assert(cFree >= pQueue->cTimersFree); /* Can be lower as the tmr3TimerCreate may run concurrent. */
+
 # endif /* IN_RING3 */
 
                 if (pQueue->enmClock == TMCLOCK_VIRTUAL_SYNC)
