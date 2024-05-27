@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104786 2024-05-27 08:42:44Z andreas.loeffler@oracle.com $
+# $Id: Makefile.kmk 104787 2024-05-27 08:48:03Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -568,7 +568,7 @@ if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_EXTPACKS) # Note this goes on f
  	$(VBOX_MAIN_APIWRAPPER_INCS) \
  	. \
  	$(VBOX_GRAPHICS_INCS)
- 	VBoxSVC_INCS.win = \
+ VBoxSVC_INCS.win        = \
  	$(VBoxCOM_0_OUTDIR)
  ifdef VBOX_WITH_USB
   VBoxSVC_INCS.os2 = \
