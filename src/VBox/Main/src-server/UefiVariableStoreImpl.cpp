@@ -1,4 +1,4 @@
-/* $Id: UefiVariableStoreImpl.cpp 104793 2024-05-27 18:56:45Z klaus.espenlaub@oracle.com $ */
+/* $Id: UefiVariableStoreImpl.cpp 104794 2024-05-27 19:17:25Z klaus.espenlaub@oracle.com $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -532,19 +532,24 @@ HRESULT UefiVariableStore::enrollDefaultMsSignatures(void)
                                          GuidMs, SignatureType_X509);
     if (SUCCEEDED(hrc))
     {
-        hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoft3rdCa, g_cbUefiMicrosoft3rdCa,
+        hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidGlobalVar, "KEK", g_abUefiMicrosoftKek2023, g_cbUefiMicrosoftKek2023,
                                              GuidMs, SignatureType_X509);
         if (SUCCEEDED(hrc))
         {
-            hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoft3rdCa2023, g_cbUefiMicrosoft3rdCa2023,
+            hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoft3rdCa, g_cbUefiMicrosoft3rdCa,
                                                  GuidMs, SignatureType_X509);
             if (SUCCEEDED(hrc))
             {
-                hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoftWinCa, g_cbUefiMicrosoftWinCa,
+                hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoft3rdCa2023, g_cbUefiMicrosoft3rdCa2023,
                                                      GuidMs, SignatureType_X509);
                 if (SUCCEEDED(hrc))
-                    hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoftWinCa2023, g_cbUefiMicrosoftWinCa2023,
+                {
+                    hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoftWinCa, g_cbUefiMicrosoftWinCa,
                                                          GuidMs, SignatureType_X509);
+                    if (SUCCEEDED(hrc))
+                        hrc = i_uefiVarStoreAddSignatureToDb(&EfiGuidSecurityDb, "db", g_abUefiMicrosoftWinCa2023, g_cbUefiMicrosoftWinCa2023,
+                                                             GuidMs, SignatureType_X509);
+                }
             }
         }
     }
