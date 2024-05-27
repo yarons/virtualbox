@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 104781 2024-05-24 14:19:43Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 104786 2024-05-27 08:42:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -31,12 +31,9 @@
 #include "LoggingNew.h"
 #include "Global.h"
 
-#include "VBox/vmm/pdmcritsect.h"            /* required by DevVGA.h */
-#include "VBox/param.h"                      /* Ditto. */
-#include "DevVGA.h"
-
 #include <iprt/cpp/utils.h>
 
+#include <VBox/graphics.h> /* For VRAM ranges. */
 #include <VBox/settings.h>
 
 // generated header

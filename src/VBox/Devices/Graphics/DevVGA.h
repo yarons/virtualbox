@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 104777 2024-05-24 13:19:52Z andreas.loeffler@oracle.com $ */
+/* $Id: DevVGA.h 104786 2024-05-27 08:42:44Z andreas.loeffler@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -71,21 +71,13 @@
 # include <VBox/vmm/stam.h>
 #endif
 
+#include <VBox/graphics.h> /* For VRAM ranges. */
+
 #include <iprt/list.h>
 
 
 /** Use VBE bytewise I/O. Only needed for Windows Longhorn/Vista betas and backwards compatibility. */
 #define VBE_BYTEWISE_IO
-
-#ifdef VBOX
-/** The default amount of VRAM. */
-# define VGA_VRAM_DEFAULT    (_4M)
-/** The maximum amount of VRAM. Limited by VBOX_MAX_ALLOC_PAGE_COUNT. */
-# define VGA_VRAM_MAX        (256 * _1M)
-/** The minimum amount of VRAM. */
-# define VGA_VRAM_MIN        (_1M)
-#endif
-
 
 /** @name Macros dealing with partial ring-0/raw-mode VRAM mappings.
  * @{ */
