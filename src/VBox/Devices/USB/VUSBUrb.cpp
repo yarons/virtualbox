@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 104591 2024-05-13 12:23:09Z alexander.eichner@oracle.com $ */
+/* $Id: VUSBUrb.cpp 104789 2024-05-27 11:18:19Z michal.necasek@oracle.com $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -231,7 +231,7 @@ static void vusbMsgCompletion(PVUSBURB pUrb)
 int vusbUrbErrorRhEx(PVUSBROOTHUB pRh, PVUSBURB pUrb)
 {
     PVUSBDEV pDev = pUrb->pVUsb->pDev;
-    LogFlow(("%s: vusbUrbErrorRh: pDev=%p[%s] rh=%p\n", pUrb->pszDesc, pDev, pDev->pUsbIns ? pDev->pUsbIns->pszName : "", pRh));
+    LogFlow(("%s: vusbUrbErrorRh: pDev=%p[%s] rh=%p\n", pUrb->pszDesc, pDev, pDev && pDev->pUsbIns ? pDev->pUsbIns->pszName : "", pRh));
     RT_NOREF(pDev);
     return pRh->pIRhPort->pfnXferError(pRh->pIRhPort, pUrb);
 }
