@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 104805 2024-05-28 16:19:55Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 104806 2024-05-28 17:21:07Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -1549,6 +1549,8 @@ static int vmsvga3dBmpWrite(const char *pszFilename, VMSVGA3D_MAPPED_SURFACE con
         fwrite(&hdrV4, 1, sizeof(hdrV4), f);
     }
     else
+#else
+    RT_NOREF(cBits);
 #endif
     {
         BMPFILEHDR fileHdr;
