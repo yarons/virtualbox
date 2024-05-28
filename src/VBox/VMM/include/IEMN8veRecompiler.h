@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompiler.h 104798 2024-05-28 07:04:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompiler.h 104802 2024-05-28 11:44:22Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Internals.
  */
@@ -450,7 +450,7 @@ AssertCompile(IEMNATIVE_FRAME_VAR_SLOTS == 32);
 
 
 /** TB exit reasons. */
-typedef enum 
+typedef enum
 {
     kIemNativeExitReason_Invalid = 0,
     kIemNativeExitReason_RaiseDe,                /**< Raise (throw) X86_XCPT_DE (00h). */
@@ -2585,7 +2585,7 @@ extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEntry, (PVMCPUCC pVCpu, PCPUM
 #endif
 
 #ifdef IEMNATIVE_WITH_RECOMPILER_EPILOGUE_SINGLETON
-/** The common epilog jumped to from a TB. 
+/** The common epilog jumped to from a TB.
  * @note This is not a callable function! */
 extern "C" IEM_DECL_NATIVE_HLP_DEF(int, iemNativeTbEpilog, (void));
 #endif
