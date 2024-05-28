@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 100517 2023-07-11 14:54:11Z michal.necasek@oracle.com $ */
+/* $Id: VUSBInternal.h 104804 2024-05-28 13:04:36Z brent.paulson@oracle.com $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -421,6 +421,8 @@ typedef struct VUSBROOTHUB
 
     /** Flag whether a frame is currently being processed. */
     volatile bool              fFrameProcessing;
+    /** Flag whether we are in the middle of saving the VM state. */
+    volatile bool              fSavingState;
 
 #if HC_ARCH_BITS == 32
     uint32_t                   Alignment1;
