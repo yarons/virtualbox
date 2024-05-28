@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104793 2024-05-27 18:56:45Z klaus.espenlaub@oracle.com $
+# $Id: Makefile.kmk 104800 2024-05-28 11:10:39Z andreas.loeffler@oracle.com $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -154,6 +154,9 @@ ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 endif
 ifdef VBOX_WITH_RECORDING
  VBOX_MAIN_DEFS += VBOX_WITH_RECORDING
+endif
+ifdef VBOX_WITH_STATISTICS
+ VBOX_MAIN_DEFS += VBOX_WITH_STATISTICS
 endif
 ifdef VBOX_WITH_SDS
  VBOX_MAIN_DEFS += VBOX_WITH_SDS
