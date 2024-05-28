@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 103574 2024-02-26 16:05:40Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104805 2024-05-28 16:19:55Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6549,6 +6549,13 @@ static void dxDbgLogVertexElement(DXGI_FORMAT Format, void const *pvElementData)
         {
             uint8_t const *pValues = (uint8_t const *)pvElementData;
             Log8(("{ /*8uint*/  %u, %u, %u, %u },",
+                 pValues[0], pValues[1], pValues[2], pValues[3]));
+            break;
+        }
+        case DXGI_FORMAT_B8G8R8A8_UNORM:
+        {
+            uint8_t const *pValues = (uint8_t const *)pvElementData;
+            Log8(("{ /*8unorm*/  %u, %u, %u, %u },",
                  pValues[0], pValues[1], pValues[2], pValues[3]));
             break;
         }

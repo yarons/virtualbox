@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 103469 2024-02-20 08:15:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 104805 2024-05-28 16:19:55Z vitali.pelenjow@oracle.com $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -1502,14 +1502,19 @@ static int vmsvga3dBmpWrite(const char *pszFilename, VMSVGA3D_MAPPED_SURFACE con
     int const w = pMap->cbRow / pMap->cbBlock;
     int const h = pMap->cRows;
 
-    const int cbBitmap = pMap->cbRow * pMap->cRows * 4;
+    int const cbBitmap = pMap->cbRow * pMap->cRows;
+    int const cBits = (   pMap->format == SVGA3D_R16G16B16A16_FLOAT
+                       || pMap->format == SVGA3D_R32G32B32A32_FLOAT)
+                    ? 32
+                    : pMap->cbBlock * 8;
 
     FILE *f = fopen(pszFilename, "wb");
     if (!f)
         return VERR_FILE_NOT_FOUND;
 
+    /* Always write 32 bit bitmap which can be displayed. */
 #ifdef RT_OS_WINDOWS
-    if (pMap->cbBlock == 4)
+    if (cBits == 32)
     {
         BMPFILEHDR fileHdr;
         RT_ZERO(fileHdr);
