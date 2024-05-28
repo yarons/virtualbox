@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104524 2024-05-07 06:50:25Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104797 2024-05-28 05:50:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -6220,7 +6220,7 @@ iemNativeEmitCheckGprCanonicalMaybeRaiseGp0(PIEMRECOMPILERSTATE pReNative, uint3
     off = iemNativeEmitShiftGprRight(pReNative, off, iTmpReg, 32);
     off = iemNativeEmitAddGpr32Imm(pReNative, off, iTmpReg, (int32_t)0x8000);
     off = iemNativeEmitShiftGprRight(pReNative, off, iTmpReg, 16);
-    off = iemNativeEmitJnzToNewLabel(pReNative, off, kIemNativeLabelType_RaiseGp0);
+    off = iemNativeEmitJnzTbExit(pReNative, off, kIemNativeExitReason_RaiseGp0);
 
     iemNativeRegFreeTmp(pReNative, iTmpReg);
 
@@ -6239,7 +6239,7 @@ iemNativeEmitCheckGprCanonicalMaybeRaiseGp0(PIEMRECOMPILERSTATE pReNative, uint3
     off = iemNativeEmitLoadGprImm64(pReNative, off, iTmpReg, UINT64_C(0x800000000000));
     off = iemNativeEmitAddTwoGprs(pReNative, off, iTmpReg, idxAddrReg);
     off = iemNativeEmitCmpArm64(pReNative, off, ARMV8_A64_REG_XZR, iTmpReg, true /*f64Bit*/, 48 /*cShift*/, kArmv8A64InstrShift_Lsr);
-    off = iemNativeEmitJnzToNewLabel(pReNative, off, kIemNativeLabelType_RaiseGp0);
+    off = iemNativeEmitJnzTbExit(pReNative, off, kIemNativeExitReason_RaiseGp0);
 
     iemNativeRegFreeTmp(pReNative, iTmpReg);
 
