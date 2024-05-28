@@ -1,4 +1,4 @@
-/* $Id: IEMN8veRecompilerEmit.h 104797 2024-05-28 05:50:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMN8veRecompilerEmit.h 104798 2024-05-28 07:04:30Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager - Native Recompiler Inlined Emitters.
  */
@@ -7659,6 +7659,16 @@ DECL_INLINE_THROW(uint32_t) iemNativeEmitJmpViaGpr(PIEMRECOMPILERSTATE pReNative
 #endif
     IEMNATIVE_ASSERT_INSTR_BUF_ENSURE(pReNative, off);
     return off;
+}
+
+
+/**
+ * Emits an indirect jump to an immediate 64-bit address (uses the temporary GPR).
+ */
+DECL_INLINE_THROW(uint32_t) iemNativeEmitJmpImm(PIEMRECOMPILERSTATE pReNative, uint32_t off, uintptr_t uPfn)
+{
+    off = iemNativeEmitLoadGprImm64(pReNative, off, IEMNATIVE_REG_FIXED_TMP0, uPfn);
+    return iemNativeEmitJmpViaGpr(pReNative, off, IEMNATIVE_REG_FIXED_TMP0);
 }
 
 
