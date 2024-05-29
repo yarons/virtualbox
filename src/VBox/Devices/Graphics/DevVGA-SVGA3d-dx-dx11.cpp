@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104811 2024-05-29 17:29:10Z vitali.pelenjow@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104812 2024-05-29 17:35:56Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1512,7 +1512,8 @@ static ID3D11Resource *dxResource(PVMSVGA3DSTATE pState, PVMSVGA3DSURFACE pSurfa
     return pBackendSurface->u.pResource;
 }
 
-
+// Not used
+#if 0
 static uint32_t dxGetRenderTargetViewSid(PVMSVGA3DDXCONTEXT pDXContext, uint32_t renderTargetViewId)
 {
     ASSERT_GUEST_RETURN(renderTargetViewId < pDXContext->cot.cRTView, SVGA_ID_INVALID);
@@ -1520,7 +1521,7 @@ static uint32_t dxGetRenderTargetViewSid(PVMSVGA3DDXCONTEXT pDXContext, uint32_t
     SVGACOTableDXRTViewEntry const *pRTViewEntry = &pDXContext->cot.paRTView[renderTargetViewId];
     return pRTViewEntry->sid;
 }
-
+#endif
 
 static int dxDefineStreamOutput(PVGASTATECC pThisCC, PVMSVGA3DDXCONTEXT pDXContext, SVGA3dStreamOutputId soid, SVGACOTableDXStreamOutputEntry const *pEntry, DXSHADER *pDXShader)
 {
