@@ -1,4 +1,4 @@
-; $Id: orgs.asm 100658 2023-07-20 07:43:52Z michal.necasek@oracle.com $
+; $Id: orgs.asm 104821 2024-05-30 12:15:04Z sergey.dubov@oracle.com $
 ;; @file
 ; ???
 ;
@@ -84,7 +84,7 @@ endif
 BIOS_REVISION   equ     1
 
 BIOS_BUILD_DATE equ     '06/23/99'
-BIOS_COPYRIGHT  equ     'Oracle VM VirtualBox BIOS'
+BIOS_COPYRIGHT  equ     'Oracle VirtualBox BIOS'
 
 BX_ROMBIOS32            equ     0
 BX_CALL_INT15_4F        equ     1
