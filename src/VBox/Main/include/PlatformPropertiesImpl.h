@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.h 104780 2024-05-24 14:15:44Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.h 104819 2024-05-30 09:17:47Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -66,6 +66,7 @@ public:
     // public static methods, for stuff which does not have a state
     static ULONG s_getMaxNetworkAdapters(ChipsetType_T aChipset);
     static ULONG s_getMaxNetworkAdaptersOfType(ChipsetType_T aChipset, NetworkAttachmentType_T aType);
+    static HRESULT s_getSupportedVRAMRange(GraphicsControllerType_T aGraphicsControllerType, BOOL fAccelerate3DEnabled, ULONG *aMinMB, ULONG *aMaxMB, ULONG *aStrideSizeMB);
 
 private:
 
