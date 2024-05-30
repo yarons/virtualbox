@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 104819 2024-05-30 09:17:47Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 104820 2024-05-30 09:41:59Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -903,8 +903,8 @@ HRESULT PlatformProperties::s_getSupportedVRAMRange(GraphicsControllerType_T aGr
 #undef MAKE_POWER_OF_TWO
 
     /* Finally, clamp the values to our schema definitions before returning. */
-    cbMin = RT_CLAMP(cbMin, (size_t)SchemaDefs::MinGuestVRAM, (size_t)SchemaDefs::MaxGuestVRAM);
-    cbMax = RT_CLAMP(cbMax, (size_t)SchemaDefs::MinGuestVRAM, (size_t)SchemaDefs::MaxGuestVRAM);
+    if (cbMax > SchemaDefs::MaxGuestVRAM)
+        cbMax = SchemaDefs::MaxGuestVRAM;
 
     *aMinMB = (ULONG)cbMin;
     *aMaxMB = (ULONG)cbMax;
