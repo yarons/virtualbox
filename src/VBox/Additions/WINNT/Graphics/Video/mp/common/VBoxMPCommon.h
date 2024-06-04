@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.h 99828 2023-05-17 13:48:57Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxMPCommon.h 104836 2024-06-04 16:06:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
@@ -65,6 +65,8 @@ VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PCWSTR pName, uint32_
 
 /* Pointer related */
 bool VBoxMPCmnUpdatePointerShape(PVBOXMP_COMMON pCommon, PVIDEO_POINTER_ATTRIBUTES pAttrs, uint32_t cbLength);
+int VBoxMPCmnReportCursorPositionEx(PVBOXMP_COMMON pCommon, PVIDEO_POINTER_POSITION pPos, uint32_t *pxHost, uint32_t *pyHost);
+int VBoxMPCmnReportCursorPosition(PVBOXMP_COMMON pCommon, PVIDEO_POINTER_POSITION pPos);
 
 RT_C_DECLS_END
 

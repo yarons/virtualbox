@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 99990 2023-05-26 13:39:41Z vitali.pelenjow@oracle.com $ */
+/* $Id: VBoxMPTypes.h 104836 2024-06-04 16:06:02Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -102,6 +102,10 @@ typedef struct _VBOXWDDM_POINTER_INFO
 
 typedef struct _VBOXWDDM_GLOBAL_POINTER_INFO
 {
+    /** Last updated X position. */
+    uint32_t iLastPosX;
+    /** Last updated Y position. */
+    uint32_t iLastPosY;
     uint32_t iLastReportedScreen;
 } VBOXWDDM_GLOBAL_POINTER_INFO, *PVBOXWDDM_GLOBAL_POINTER_INFO;
 
