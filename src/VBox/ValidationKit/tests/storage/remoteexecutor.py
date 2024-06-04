@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 104063 2024-03-26 14:42:08Z ksenia.s.stepanova@oracle.com $
+# $Id: remoteexecutor.py 104832 2024-06-04 09:19:43Z alexander.eichner@oracle.com $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -36,7 +36,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104063 $"
+__version__ = "$Revision: 104832 $"
 
 
 # Standard Python imports.
@@ -215,7 +215,7 @@ class RemoteExecutor(object):
                     reporter.log('%s [stderr]: %s' % (sExec, sLine.encode(encoding = 'UTF-8', errors = 'strict'),));
         else:
             fRc = False;
-        return (fRc, sOutput, sError);
+        return fRc, sOutput, sError;
 
     def execBinaryNoStdOut(self, sExec, asArgs, sInput = None):
         """
