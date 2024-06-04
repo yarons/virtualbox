@@ -1,4 +1,4 @@
-/* $Id: pointer.c 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: pointer.c 104834 2024-06-04 14:37:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -191,8 +191,7 @@ vbox_set_cursor_position(ScrnInfoPtr pScrn, int x, int y)
 {
     VBOXPtr pVBox = pScrn->driverPrivate;
 
-    /* This currently does nothing. */
-    VBoxHGSMICursorPosition(&pVBox->guestCtx, true, x, y, NULL, NULL);
+    VBoxHGSMIReportCursorPosition(&pVBox->guestCtx, true, x, y, NULL, NULL);
 }
 
 static void

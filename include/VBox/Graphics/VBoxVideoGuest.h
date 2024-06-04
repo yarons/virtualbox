@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoGuest.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VBoxVideoGuest.h 104834 2024-06-04 14:37:41Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - OS-independent guest structures.
  */
@@ -97,8 +97,8 @@ DECLHIDDEN(int)      VBoxHGSMIUpdatePointerShape(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                                  uint32_t cHeight,
                                                  uint8_t *pPixels,
                                                  uint32_t cbLength);
-DECLHIDDEN(int)      VBoxHGSMICursorPosition(PHGSMIGUESTCOMMANDCONTEXT pCtx, bool fReportPosition, uint32_t x, uint32_t y,
-                                             uint32_t *pxHost, uint32_t *pyHost);
+DECLHIDDEN(int)      VBoxHGSMIReportCursorPosition(PHGSMIGUESTCOMMANDCONTEXT pCtx, bool fReportPosition, uint32_t x, uint32_t y,
+                                                   uint32_t *pxHost, uint32_t *pyHost);
 
 /** @}  */
 
