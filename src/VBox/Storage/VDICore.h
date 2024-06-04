@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: VDICore.h 104835 2024-06-04 15:49:08Z sergey.dubov@oracle.com $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -53,7 +53,7 @@
 /** Image info, not handled anyhow.
  *  Must be less than 64 bytes in length, including the trailing 0.
  */
-#define VDI_IMAGE_FILE_INFO   "<<< Oracle VM VirtualBox Disk Image >>>\n"
+#define VDI_IMAGE_FILE_INFO   "<<< Oracle VirtualBox Disk Image >>>\n"
 
 /** The Sector size.
  * Currently we support only 512 bytes sectors.
