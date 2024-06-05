@@ -1,4 +1,4 @@
-/* $Id: DevEHCI.cpp 103317 2024-02-12 16:02:29Z michal.necasek@oracle.com $ */
+/* $Id: DevEHCI.cpp 104838 2024-06-05 00:38:48Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevEHCI - Enhanced Host Controller Interface for USB.
  */
@@ -4612,7 +4612,7 @@ static DECLCALLBACK(int) ehciLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
      * Note! Looks like someone remove the code that dealt with versions 1 thru 4,
      *       without adjust the above comment.
      */
-    if (uVersion == EHCI_SAVED_STATE_VERSION_PRE_TIMER_REMOVAL)
+    if (uVersion <= EHCI_SAVED_STATE_VERSION_PRE_TIMER_REMOVAL)
     {
         bool fActive1 = false;
         pHlp->pfnTimerSkipLoad(pSSM, &fActive1);
