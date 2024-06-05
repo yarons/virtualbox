@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv-os2.cpp 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -632,5 +632,12 @@ static void rtR0MemObjFixPageList(KernPageList_t *paPages, ULONG cPages, ULONG c
         } while (   iIn != iOut
                  && iIn > 0);
     }
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
+{
+    RT_NOREF(pMem);
+    return VERR_NOT_IMPLEMENTED;
 }
 

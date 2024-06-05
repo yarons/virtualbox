@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 104841 2024-06-05 01:00:55Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-nt.cpp 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -1298,5 +1298,12 @@ DECLHIDDEN(RTHCPHYS) rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, s
         case RTR0MEMOBJTYPE_RES_VIRT:
             return NIL_RTHCPHYS;
     }
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
+{
+    RT_NOREF(pMem);
+    return VERR_NOT_IMPLEMENTED;
 }
 

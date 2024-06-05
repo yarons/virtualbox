@@ -1,4 +1,4 @@
-/* $Id: memobj.h 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
+/* $Id: memobj.h 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects.
  */
@@ -536,6 +536,14 @@ DECLHIDDEN(int) rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub,
  * @param   iPage           The page number within the object (valid).
  */
 DECLHIDDEN(RTHCPHYS) rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, size_t iPage);
+
+/**
+ * Zero initialize an object without a ring-0 mapping.
+ *
+ * @returns IPRT status code.
+ * @param   pMem            The ring-0 memory object handle.
+ */
+DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem);
 
 DECLHIDDEN(PRTR0MEMOBJINTERNAL) rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *pv, size_t cb, const char *pszTag);
 DECLHIDDEN(void) rtR0MemObjDelete(PRTR0MEMOBJINTERNAL pMem);

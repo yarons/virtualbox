@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-netbsd.c 100357 2023-07-04 07:00:26Z alexander.eichner@oracle.com $ */
+/* $Id: memobj-r0drv-netbsd.c 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NetBSD.
  */
@@ -583,5 +583,12 @@ DECLHIDDEN(RTHCPHYS) rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, s
         default:
             return NIL_RTHCPHYS;
     }
+}
+
+
+DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
+{
+    RT_NOREF(pMem);
+    return VERR_NOT_IMPLEMENTED;
 }
 
