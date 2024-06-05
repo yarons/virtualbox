@@ -1,4 +1,4 @@
-/* $Id: IOMR3Mmio.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
+/* $Id: IOMR3Mmio.cpp 104857 2024-06-05 14:46:19Z knut.osmundsen@oracle.com $ */
 /** @file
  * IOM - Input / Output Monitor, MMIO related APIs.
  */
@@ -590,7 +590,7 @@ VMMR3_INT_DECL(int) IOMR3MmioUnmap(PVM pVM, PVMCPU pVCpu, PPDMDEVINS pDevIns, IO
             }
             else
             {
-                AssertLogRelMsgFailed(("Lookig for %RGp..%RGp (%s), found %RGp..%RGp (%s) instead!\n",
+                AssertLogRelMsgFailed(("Looking for %RGp..%RGp (%s), found %RGp..%RGp (%s) instead!\n",
                                        GCPhys, GCPhysLast, pRegEntry->pszDesc,
                                        pEntry->GCPhysFirst, pEntry->GCPhysLast, pVM->iom.s.paMmioRegs[pEntry->idx].pszDesc));
                 rc = VERR_IOM_MMIO_IPE_1;
