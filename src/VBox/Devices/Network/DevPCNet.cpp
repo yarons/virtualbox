@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 104280 2024-04-10 16:48:47Z aleksey.ilyushin@oracle.com $ */
+/* $Id: DevPCNet.cpp 104839 2024-06-05 00:40:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4393,7 +4393,8 @@ static DECLCALLBACK(int) pcnetR3LoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     {
         /* older saved states contain the shared memory region which was never used for ages. */
         void *pvSharedMMIOR3;
-        rc = PDMDevHlpMmio2Create(pDevIns, pDevIns->apPciDevs[0], 2, _512K, 0, "PCnetSh", &pvSharedMMIOR3, &pThis->hMmio2Shared);
+        rc = PDMDevHlpMmio2Create(pDevIns, pDevIns->apPciDevs[0], 2 << 16, _512K, 0, "PCnetSh",
+                                  &pvSharedMMIOR3, &pThis->hMmio2Shared);
         if (RT_FAILURE(rc))
             rc = PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                      N_("Failed to allocate the dummy shmem region for the PCnet device"));
