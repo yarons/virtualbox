@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 104786 2024-05-27 08:42:44Z andreas.loeffler@oracle.com $ */
+/* $Id: DevVGA.h 104846 2024-06-05 02:08:09Z knut.osmundsen@oracle.com $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -71,7 +71,13 @@
 # include <VBox/vmm/stam.h>
 #endif
 
-#include <VBox/graphics.h> /* For VRAM ranges. */
+#include <VBox/param.h> /* For VRAM ranges. */
+#ifdef VBOX_WITH_VMSVGA
+/* Make sure the param.h copy of the SVGA VRAM sizes matches the originals. */
+AssertCompile(VBOX_SVGA_VRAM_MIN_SIZE    == SVGA_VRAM_MIN_SIZE);
+AssertCompile(VBOX_SVGA_VRAM_MIN_SIZE_3D == SVGA_VRAM_MIN_SIZE_3D);
+AssertCompile(VBOX_SVGA_VRAM_MAX_SIZE    == SVGA_VRAM_MAX_SIZE);
+#endif
 
 #include <iprt/list.h>
 
