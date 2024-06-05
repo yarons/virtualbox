@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104798 2024-05-28 07:04:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104858 2024-06-05 18:10:20Z alexander.eichner@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -9706,7 +9706,8 @@ l_profile_again:
     if (pTbAllocator->pDelayedFreeHead)
         iemTbAllocatorProcessDelayedFrees(pVCpu, pVCpu->iem.s.pTbAllocatorR3);
 
-    PIEMNATIVEINSTR const paFinalInstrBuf = (PIEMNATIVEINSTR)iemExecMemAllocatorAlloc(pVCpu, off * sizeof(IEMNATIVEINSTR), pTb);
+    PIEMNATIVEINSTR paFinalInstrBufRx = NULL;
+    PIEMNATIVEINSTR const paFinalInstrBuf = (PIEMNATIVEINSTR)iemExecMemAllocatorAlloc(pVCpu, off * sizeof(IEMNATIVEINSTR), pTb, (void **)&paFinalInstrBufRx);
     AssertReturn(paFinalInstrBuf, pTb);
     memcpy(paFinalInstrBuf, pReNative->pInstrBuf, off * sizeof(paFinalInstrBuf[0]));
 
@@ -9767,14 +9768,14 @@ l_profile_again:
         AssertFailed();
     }
 
-    iemExecMemAllocatorReadyForUse(pVCpu, paFinalInstrBuf, off * sizeof(IEMNATIVEINSTR));
+    iemExecMemAllocatorReadyForUse(pVCpu, paFinalInstrBufRx, off * sizeof(IEMNATIVEINSTR));
     STAM_REL_PROFILE_ADD_PERIOD(&pVCpu->iem.s.StatTbNativeCode, off * sizeof(IEMNATIVEINSTR));
 
     /*
      * Convert the translation block.
      */
     RTMemFree(pTb->Thrd.paCalls);
-    pTb->Native.paInstructions  = paFinalInstrBuf;
+    pTb->Native.paInstructions  = paFinalInstrBufRx;
     pTb->Native.cInstructions   = off;
     pTb->fFlags                 = (pTb->fFlags & ~IEMTB_F_TYPE_MASK) | IEMTB_F_TYPE_NATIVE;
 #ifdef IEMNATIVE_WITH_TB_DEBUG_INFO
