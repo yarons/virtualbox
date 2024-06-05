@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 104797 2024-05-28 05:50:30Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 104856 2024-06-05 14:41:10Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -605,7 +605,7 @@ iemNativeEmitBltInCheckOpcodes(PIEMRECOMPILERSTATE pReNative, uint32_t off, PCIE
                 pbCodeBuf[off++] = 0x06 + BP_ON_OBSOLETION; \
                 offConsolidatedJump = off; \
                 if (BP_ON_OBSOLETION) pbCodeBuf[off++] = 0xcc; \
-                off = iemNativeEmitTbExitEx(pReNative, pCodeBuf, off, kIemNativeExitReason_ObsoleteTb); \
+                off = iemNativeEmitTbExitEx(pReNative, pbCodeBuf, off, kIemNativeExitReason_ObsoleteTb); \
             } \
         } while (0)
 
