@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 104779 2024-05-24 13:42:47Z andreas.loeffler@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 104845 2024-06-05 02:05:16Z knut.osmundsen@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5082,14 +5082,14 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             InsertConfigInteger(pCfg, "VMSVGA3dEnabled", f3DEnabled);
 # else
             LogRel(("VMSVGA3d not available in this build!\n"));
-# endif /* VBOX_WITH_VMSVGA3D */
+# endif
 
             InsertConfigInteger(pCfg, "VmSvga3", fForceVmSvga3);
             InsertConfigInteger(pCfg, "VmSvgaExposeLegacyVga", fExposeLegacyVga);
         }
 #else
         RT_NOREF(enmGraphicsController, fForceVmSvga3, fExposeLegacyVga);
-#endif /* VBOX_WITH_VMSVGA */
+#endif /* !VBOX_WITH_VMSVGA */
 
         /* Custom VESA mode list */
         unsigned cModes = 0;
