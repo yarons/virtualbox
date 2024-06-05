@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 104843 2024-06-05 01:09:28Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPhys.cpp 104854 2024-06-05 14:19:17Z ksenia.s.stepanova@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1110,6 +1110,7 @@ static uint32_t pgmR3PhysRamRangeFindOverlappingIndex(PVM pVM, RTGCPHYS GCPhys, 
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   pRam        The RAM range to insert into the lookup table.
+ * @param   GCPhys      The address of the first byte in the range.
  * @param   pidxLookup  Optional lookup table hint. This is updated.
  * @note    Caller must own PGM lock.
  */
