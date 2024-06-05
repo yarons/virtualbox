@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv.cpp 104849 2024-06-05 09:42:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -328,7 +328,7 @@ RTR0DECL(int) RTR0MemObjZeroInitialize(RTR0MEMOBJ hMemObj, bool fForce)
     }
     return VINF_SUCCESS;
 }
-RT_EXPORT_SYMBOL(RTR0MemObjWasZeroInitialized);
+RT_EXPORT_SYMBOL(RTR0MemObjZeroInitialize);
 
 
 RTR0DECL(int) RTR0MemObjFree(RTR0MEMOBJ MemObj, bool fFreeMappings)

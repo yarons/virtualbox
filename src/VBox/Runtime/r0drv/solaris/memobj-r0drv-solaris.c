@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 104849 2024-06-05 09:42:06Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -1221,10 +1221,10 @@ DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
     size_t               iPage;
     for (iPage = 0; iPage < cPages; iPage++)
     {
-        void          *pvPage;
+        void    *pvPage;
 
         /* Get the physical address of the page. */
-        RTHCPHYS const HCPhys = rtR0MemObjNativeGetPagePhysAddr(&pMemSolaris->Core, iPage);
+        RTHCPHYS HCPhys = rtR0MemObjNativeGetPagePhysAddr(&pMemSolaris->Core, iPage);
         AssertReturn(HCPhys != NIL_RTHCPHYS, VERR_INTERNAL_ERROR_3);
         Assert(!(HCPhys & PAGE_OFFSET_MASK));
 
