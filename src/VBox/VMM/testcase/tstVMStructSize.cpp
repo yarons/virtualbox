@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 99671 2023-05-08 13:10:56Z alexander.eichner@oracle.com $ */
+/* $Id: tstVMStructSize.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -324,7 +324,8 @@ int main()
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, GCPhys, sizeof(RTGCPHYS));
     CHECK_SIZE(PGMPAGE, 16);
     CHECK_MEMBER_ALIGNMENT(PGMRAMRANGE, aPages, 16);
-    CHECK_MEMBER_ALIGNMENT(PGMREGMMIO2RANGE, RamRange, 16);
+    CHECK_SIZE_ALIGNMENT(PGMREGMMIO2RANGE, 16);
+    CHECK_MEMBER_ALIGNMENT(PGMROMRANGE, aPages, 16);
 
     /* TM */
     CHECK_MEMBER_ALIGNMENT(TM, aTimerQueues, 64);

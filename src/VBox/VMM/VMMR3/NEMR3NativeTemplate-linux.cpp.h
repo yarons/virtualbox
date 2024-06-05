@@ -1,4 +1,4 @@
-/* $Id: NEMR3NativeTemplate-linux.cpp.h 104725 2024-05-20 15:31:01Z alexander.eichner@oracle.com $ */
+/* $Id: NEMR3NativeTemplate-linux.cpp.h 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Linux backend, common bits for x86 and arm64.
  */
@@ -926,6 +926,8 @@ VMMR3_INT_DECL(int)  NEMR3NotifyPhysRomRegisterLate(PVM pVM, RTGCPHYS GCPhys, RT
      * got a valid pvPages (typically isn't available during the early
      * notification, unless we're replacing RAM).
      */
+    /** @todo r=bird: if it's overlapping RAM, we shouldn't need an additional
+     *        registration, should we? */
     struct kvm_userspace_memory_region Region;
     Region.slot             = idSlot;
     Region.flags            = 0;

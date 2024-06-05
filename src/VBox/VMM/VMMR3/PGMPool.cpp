@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 103015 2024-01-24 00:59:13Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMPool.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -714,10 +714,11 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
     /*
      * Clear all the GCPhys links and rebuild the phys ext free list.
      */
-    for (PPGMRAMRANGE pRam = pPool->CTX_SUFF(pVM)->pgm.s.CTX_SUFF(pRamRangesX);
-         pRam;
-         pRam = pRam->CTX_SUFF(pNext))
+    uint32_t const idRamRangeMax = RT_MIN(pVM->pgm.s.idRamRangeMax, RT_ELEMENTS(pVM->pgm.s.apRamRanges) - 1U);
+    Assert(pVM->pgm.s.apRamRanges[0] == NULL);
+    for (uint32_t idx = 1; idx <= idRamRangeMax; idx++)
     {
+        PPGMRAMRANGE const pRam = pVM->pgm.s.apRamRanges[idx];
         iPage = pRam->cb >> GUEST_PAGE_SHIFT;
         while (iPage-- > 0)
             PGM_PAGE_SET_TRACKING(pVM, &pRam->aPages[iPage], 0);
