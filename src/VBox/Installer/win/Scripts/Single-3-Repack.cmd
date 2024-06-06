@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Single-3-Repack.cmd 100152 2023-06-12 10:28:42Z alexander.rudnev@oracle.com $
+rem $Id: Single-3-Repack.cmd 104863 2024-06-06 14:29:21Z sergey.dubov@oracle.com $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 or x86 drivers.
 rem
@@ -44,8 +44,8 @@ rem Parse arguments.
 rem
 set _MY_OPT_UNTAR_DIR=%_MY_SCRIPT_DIR%\..\
 for %%i in (%_MY_OPT_UNTAR_DIR%) do set _MY_OPT_UNTAR_DIR=%%~fi
-set _MY_OPT_EXTPACK=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%.vbox-extpack
-set _MY_OPT_EXTPACK_ENTERPRISE=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%-ENTERPRISE.vbox-extpack
+set _MY_OPT_EXTPACK=%_MY_OPT_UNTAR_DIR%\Oracle_VirtualBox_Extension_Pack-%_MY_VER_REV%.vbox-extpack
+set _MY_OPT_EXTPACK_ENTERPRISE=%_MY_OPT_UNTAR_DIR%\Oracle_VirtualBox_Extension_Pack-%_MY_VER_REV%-ENTERPRISE.vbox-extpack
 set _MY_OPT_BUILD_TYPE=@KBUILD_TYPE@
 set _MY_OPT_OUTDIR=%_MY_OPT_UNTAR_DIR%\output
 set _MY_OPT_SIGNED=
