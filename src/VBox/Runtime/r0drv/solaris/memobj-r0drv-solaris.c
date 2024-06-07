@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 104868 2024-06-07 12:56:50Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 104869 2024-06-07 13:10:12Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -1218,6 +1218,7 @@ DECLHIDDEN(RTHCPHYS) rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, s
 
 DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
 {
+#ifdef RT_ARCH_AMD64
     PRTR0MEMOBJSOL const pMemSolaris = (PRTR0MEMOBJSOL)pMem;
     size_t const         cPages      = pMemSolaris->Core.cb >> PAGE_SHIFT;
     size_t               iPage;
@@ -1240,5 +1241,9 @@ DECLHIDDEN(int) rtR0MemObjNativeZeroInitWithoutMapping(PRTR0MEMOBJINTERNAL pMem)
         RT_BZERO(pvPage, PAGE_SIZE);
     }
     return VINF_SUCCESS;
+#else
+    RT_NOREF(pMem);
+    return VERR_NOT_IMPLEMENTED;
+#endif
 }
 
