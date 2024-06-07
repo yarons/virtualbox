@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 104840 2024-06-05 00:59:51Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM.cpp 104870 2024-06-07 13:36:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -933,8 +933,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     rc = PDMR3CritSectInit(pVM, &pVM->pgm.s.CritSectX, RT_SRC_POS, "PGM");
     AssertRCReturn(rc, rc);
 
-    PGMR3PhysChunkInvalidateTLB(pVM);
-    pgmPhysInvalidatePageMapTLB(pVM);
+    pgmR3PhysChunkInvalidateTLB(pVM); /* includes pgmPhysInvalidatePageMapTLB call */
 
     /*
      * For the time being we sport a full set of handy pages in addition to the base

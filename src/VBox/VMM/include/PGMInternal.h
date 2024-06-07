@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 104859 2024-06-05 20:33:10Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 104870 2024-06-07 13:36:30Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3903,6 +3903,7 @@ int             pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPend
 #ifdef VBOX_STRICT
 DECLHIDDEN(bool) pgmPhysAssertRamRangesLocked(PVMCC pVM, bool fInUpdate, bool fRamRelaxed);
 #endif
+DECLHIDDEN(void)            pgmR3PhysChunkInvalidateTLB(PVM pVM);
 void            pgmPhysInvalidRamRangeTlbs(PVMCC pVM);
 void            pgmPhysInvalidatePageMapTLB(PVMCC pVM);
 void            pgmPhysInvalidatePageMapTLBEntry(PVMCC pVM, RTGCPHYS GCPhys);
