@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 104849 2024-06-05 09:42:06Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-solaris.c 104868 2024-06-07 12:56:50Z knut.osmundsen@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -52,6 +52,8 @@
 #include <iprt/string.h>
 #include "internal/memobj.h"
 #include "memobj-r0drv-solaris.h"
+
+extern caddr_t hat_kpm_pfn2va(pfn_t); /* Found in vm/hat.h on solaris 11.3, but not on older like 10u7. */
 
 
 /*********************************************************************************************************************************
