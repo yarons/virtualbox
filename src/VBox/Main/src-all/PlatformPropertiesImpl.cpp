@@ -1,4 +1,4 @@
-/* $Id: PlatformPropertiesImpl.cpp 104864 2024-06-07 08:45:19Z andreas.loeffler@oracle.com $ */
+/* $Id: PlatformPropertiesImpl.cpp 104865 2024-06-07 08:57:03Z andreas.loeffler@oracle.com $ */
 /** @file
  * VirtualBox COM class implementation - Platform properties.
  */
@@ -31,6 +31,7 @@
 #include "LoggingNew.h"
 #include "Global.h"
 
+#include <iprt/asm.h>
 #include <iprt/cpp/utils.h>
 
 #include <VBox/param.h> /* For VRAM ranges. */
