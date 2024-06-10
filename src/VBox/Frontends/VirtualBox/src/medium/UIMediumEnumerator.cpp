@@ -1,10 +1,10 @@
-/* $Id: UIMediumEnumerator.cpp 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumEnumerator.cpp 104880 2024-06-10 16:24:42Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
 
 /*
- * Copyright (C) 2013-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2013-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -108,6 +108,30 @@ private:
 /*********************************************************************************************************************************
 *   Class UIMediumEnumerator implementation.                                                                                     *
 *********************************************************************************************************************************/
+
+/* static */
+UIMediumEnumerator *UIMediumEnumerator::s_pInstance = 0;
+
+/* static */
+void UIMediumEnumerator::create()
+{
+    AssertReturnVoid(!s_pInstance);
+    s_pInstance = new UIMediumEnumerator;
+}
+
+/* static */
+void UIMediumEnumerator::destroy()
+{
+    AssertPtrReturnVoid(s_pInstance);
+    delete s_pInstance;
+    s_pInstance = 0;
+}
+
+/* static */
+UIMediumEnumerator *UIMediumEnumerator::instance()
+{
+    return s_pInstance;
+}
 
 UIMediumEnumerator::UIMediumEnumerator()
     : m_fFullMediumEnumerationRequested(false)
