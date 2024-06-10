@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 104532 2024-05-07 15:09:15Z ksenia.s.stepanova@oracle.com $
+# $Id: utils.py 104872 2024-06-10 09:22:12Z knut.osmundsen@oracle.com $
 # pylint: disable=too-many-lines
 
 """
@@ -39,7 +39,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104532 $"
+__version__ = "$Revision: 104872 $"
 
 
 # Standard Python imports.
@@ -2335,7 +2335,10 @@ def unpackTarFile(sArchive, sDstDir, fnLog, fnError = None, fnFilter = None):
                         if oTarInfo.isdir():
                             # Just make sure the user (we) got full access to dirs.  Don't bother getting it 100% right.
                             oTarInfo.mode |= 0x1c0; # (octal: 0700)
-                        oTarFile.extract(oTarInfo, sDstDir);
+                        if hasattr(tarfile, 'tar_filter'):
+                            oTarFile.extract(oTarInfo, sDstDir, filter = 'tar');
+                        else:
+                            oTarFile.extract(oTarInfo, sDstDir);
                     asMembers.append(os.path.join(sDstDir, oTarInfo.name.replace('/', os.path.sep)));
             except Exception as oXcpt:
                 fnError('Error unpacking "%s" member "%s" into "%s": %s' % (sArchive, oTarInfo.name, sDstDir, oXcpt));

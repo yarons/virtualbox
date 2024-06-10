@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 98651 2023-02-20 13:10:54Z knut.osmundsen@oracle.com $
+# $Id: tdAppliance1.py 104872 2024-06-10 09:22:12Z knut.osmundsen@oracle.com $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -37,7 +37,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 98651 $"
+__version__ = "$Revision: 104872 $"
 
 
 # Standard Python imports.
@@ -171,7 +171,10 @@ class SubTstDrvAppliance1(base.SubTestDriverBase):
         try:
             os.mkdir(sTmpDir, 0o755);
             oTarFile = tarfile.open(sOva, 'r:*'); # No 'with' support in 2.6.   pylint: disable=consider-using-with
-            oTarFile.extractall(sTmpDir);
+            if hasattr(tarfile, 'tar_filter'):
+                oTarFile.extractall(sTmpDir, filter = 'tar');
+            else:
+                oTarFile.extractall(sTmpDir);
             oTarFile.close();
         except:
             return reporter.errorXcpt('Unpacking "%s" to "%s" for OVF style importing failed' % (sOvf, sTmpDir,));
