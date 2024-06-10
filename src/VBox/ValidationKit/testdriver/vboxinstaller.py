@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104863 $"
+__version__ = "$Revision: 104879 $"
 
 
 # Standard Python imports.
@@ -1215,10 +1215,22 @@ class VBoxInstallerTestDriver(TestDriverBase):
         sExtPack = self._findFile('Oracle_VirtualBox_Extension_Pack.vbox-extpack');
         if sExtPack is None:
             sExtPack = self._findFile('Oracle_VirtualBox_Extension_Pack.*.vbox-extpack');
+        # legacy name check:
+        if sExtPack is None:
+            sExtPack = self._findFile('Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack');
+            if sExtPack is not None:
+                fLegacyName = True;
+        if sExtPack is None:
+            sExtPack = self._findFile('Oracle_VM_VirtualBox_Extension_Pack.*.vbox-extpack');
+            if sExtPack is not None:
+                fLegacyName = True;
         if sExtPack is None:
             return True;
 
-        sDstDir = os.path.join(sExtPackDir, 'Oracle_VirtualBox_Extension_Pack');
+        if not fLegacyName:
+            sDstDir = os.path.join(sExtPackDir, 'Oracle_VirtualBox_Extension_Pack');
+        else:
+            sDstDir = os.path.join(sExtPackDir, 'Oracle_VM_VirtualBox_Extension_Pack');
         reporter.log('Installing extension pack "%s" to "%s"...' % (sExtPack, sExtPackDir));
         fRc, _ = self._sudoExecuteSync([ self.getBinTool('vts_tar'),
                                          '--extract',
