@@ -1,4 +1,4 @@
-/* $Id: IEMAllThrdRecompiler.cpp 104469 2024-05-02 08:38:26Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllThrdRecompiler.cpp 104877 2024-06-10 15:15:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Instruction Decoding and Threaded Recompilation.
  *
@@ -3158,6 +3158,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecRecompiler(PVMCC pVM, PVMCPUCC pVCpu)
         }
         IEM_CATCH_LONGJMP_BEGIN(pVCpu, rcStrict);
         {
+            Assert(rcStrict != VINF_IEM_REEXEC_BREAK);
             pVCpu->iem.s.cLongJumps++;
 #ifdef VBOX_WITH_IEM_NATIVE_RECOMPILER_LONGJMP
             pVCpu->iem.s.pvTbFramePointerR3 = NULL;
