@@ -1,4 +1,4 @@
-/* $Id: PGM-armv8.cpp 104870 2024-06-07 13:36:30Z knut.osmundsen@oracle.com $ */
+/* $Id: PGM-armv8.cpp 104885 2024-06-11 12:37:11Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, ARMv8 variant. (Mixing stuff here, not good?)
  */
@@ -237,7 +237,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     rc = PDMR3CritSectInit(pVM, &pVM->pgm.s.CritSectX, RT_SRC_POS, "PGM");
     AssertRCReturn(rc, rc);
 
-    pgmR3PhysChunkInvalidateTLB(pVM); /* includes pgmPhysInvalidatePageMapTLB call */
+    pgmR3PhysChunkInvalidateTLB(pVM, false /*fInRendezvous*/); /* includes pgmPhysInvalidatePageMapTLB call */
 
     /*
      * For the time being we sport a full set of handy pages in addition to the base
