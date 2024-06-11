@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 104881 2024-06-11 09:05:04Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInline.h 104882 2024-06-11 09:24:44Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -189,7 +189,7 @@ DECLINLINE(int) pgmPhysGetPageWithHintEx(PVMCC pVM, RTGCPHYS GCPhys, PPPGMPAGE p
     RTGCPHYS     off;
     if (   !pRam
         || RT_UNLIKELY(   (off = GCPhys - (GCPhysFirst = pRam->GCPhys)) >= pRam->cb
-                       && GCPhys >= GCPhysFirst) )
+                       || GCPhys < GCPhysFirst) )
     {
         pRam = pVM->CTX_EXPR(pgm, pgmr0, pgm).s.apRamRangesTlb[PGM_RAMRANGE_TLB_IDX(GCPhys)];
         if (   !pRam
