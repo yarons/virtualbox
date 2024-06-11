@@ -40,7 +40,7 @@ terms and conditions of either the GPL or the CDDL or both.
 
 SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
 """
-__version__ = "$Revision: 104883 $"
+__version__ = "$Revision: 104884 $"
 
 
 # Standard Python imports.
@@ -1203,6 +1203,17 @@ class VBoxInstallerTestDriver(TestDriverBase):
         return None;
 
     ksExtPackBasenames = [ 'Oracle_VirtualBox_Extension_Pack', 'Oracle_VM_VirtualBox_Extension_Pack', ];
+
+    def _findExtPack(self):
+        """ Locates the extension pack file. """
+        for sExtPackBasename in self.ksExtPackBasenames:
+            sExtPack = self._findFile('%s.vbox-extpack' % (sExtPackBasename,));
+            if sExtPack is None:
+                sExtPack = self._findFile('%s.*.vbox-extpack' % (sExtPackBasename,));
+            if sExtPack is not None:
+                return (sExtPack, sExtPackBasename);
+        return (None, None);
+
     def _installExtPack(self):
         """ Installs the extension pack. """
         sVBox = self._getVBoxInstallPath(fFailIfNotFound = True);
@@ -1213,12 +1224,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         if self._uninstallAllExtPacks() is not True:
             return False;
 
-        for sExtPackBasename in self.ksExtPackBasenames:
-            sExtPack = self._findFile('%s.vbox-extpack' % (sExtPackBasename,));
-            if sExtPack is None:
-                sExtPack = self._findFile('%s.*.vbox-extpack' % (sExtPackBasename,));
-            if sExtPack is not None:
-                break;
+        (sExtPack, sExtPackBasename) = self._findExtPack();
         if sExtPack is None:
             return True;
 
