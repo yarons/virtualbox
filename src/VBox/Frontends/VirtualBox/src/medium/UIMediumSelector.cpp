@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSelector.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -164,7 +164,8 @@ int UIMediumSelector::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceT
         else
         {
             uSelectedMediumUuid = selectedMediumIds[0];
-            uiCommon().updateRecentlyUsedMediumListAndFolder(enmMediumType, gpMediumEnumerator->medium(uSelectedMediumUuid).location());
+            gpMediumEnumerator->updateRecentlyUsedMediumListAndFolder(enmMediumType,
+                                                                      gpMediumEnumerator->medium(uSelectedMediumUuid).location());
         }
     }
     delete pSelector;

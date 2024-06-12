@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIFilePathSelector.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -43,10 +43,10 @@
 #include "QILabel.h"
 #include "QILineEdit.h"
 #include "QIToolButton.h"
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIFilePathSelector.h"
+#include "UIMediumEnumerator.h"
 #include "UITranslationEventListener.h"
 
 /* Other VBox includes: */
@@ -113,7 +113,8 @@ UIFilePathSelector::UIFilePathSelector(QWidget *pParent /* = 0 */)
     /* Setup connections: */
     connect(this, &UIFilePathSelector::activated, this, &UIFilePathSelector::onActivated);
     connect(m_pCopyAction, &QAction::triggered, this, &UIFilePathSelector::copyToClipboard);
-    connect(&uiCommon(), &UICommon::sigRecentMediaListUpdated, this, &UIFilePathSelector::sltRecentMediaListUpdated);
+    connect(gpMediumEnumerator, &UIMediumEnumerator::sigRecentMediaListUpdated,
+            this, &UIFilePathSelector::sltRecentMediaListUpdated);
 
     /* Editable by default: */
     setEditable(true);

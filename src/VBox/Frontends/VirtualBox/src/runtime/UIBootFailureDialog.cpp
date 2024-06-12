@@ -1,4 +1,4 @@
-/* $Id: UIBootFailureDialog.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIBootFailureDialog.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIBootTimeErrorDialog class implementation.
  */
@@ -37,16 +37,16 @@
 
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
-#include "QIToolButton.h"
 #include "QIRichTextLabel.h"
+#include "QIToolButton.h"
 #include "UIBootFailureDialog.h"
-#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIExtraDataManager.h"
 #include "UIFilePathSelector.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
+#include "UIMediumEnumerator.h"
 #include "UIModalWindowManager.h"
 #include "UITranslationEventListener.h"
 
@@ -184,7 +184,7 @@ void UIBootFailureDialog::prepareWidgets()
         m_pBootImageSelector->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
         m_pBootImageSelector->setFileDialogFilters("ISO Images(*.iso *.ISO)");
         m_pBootImageSelector->setResetEnabled(false);
-        m_pBootImageSelector->setInitialPath(uiCommon().defaultFolderPathForType(UIMediumDeviceType_DVD));
+        m_pBootImageSelector->setInitialPath(UIMediumEnumerator::defaultFolderPathForType(UIMediumDeviceType_DVD));
         m_pBootImageSelector->setRecentMediaListType(UIMediumDeviceType_DVD);
         if (m_pBootImageLabel)
             m_pBootImageLabel->setBuddy(m_pBootImageSelector);

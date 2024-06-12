@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -28,6 +28,7 @@
 /* GUI includes: */
 #include "UICommon.h"
 #include "UIGlobalSession.h"
+#include "UIMediumEnumerator.h"
 #include "UIModalWindowManager.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVD.h"
@@ -178,7 +179,7 @@ QUuid UIWizardNewVD::createVDWithWizard(QWidget *pParent,
     /* Default path: */
     const QString strDefaultPath = !strMachineFolder.isEmpty()
                                  ? strMachineFolder
-                                 : uiCommon().defaultFolderPathForType(UIMediumDeviceType_HardDisk);
+                                 : UIMediumEnumerator::defaultFolderPathForType(UIMediumDeviceType_HardDisk);
 
     /* Default name: */
     const QString strDiskName = uiCommon().findUniqueFileName(strDefaultPath,

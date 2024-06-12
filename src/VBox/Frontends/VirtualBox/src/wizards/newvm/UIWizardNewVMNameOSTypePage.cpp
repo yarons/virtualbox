@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePage.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMNameOSTypePage.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -35,10 +35,10 @@
 
 /* GUI includes: */
 #include "QIRichTextLabel.h"
-#include "UICommon.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
+#include "UIMediumEnumerator.h"
 #include "UINameAndSystemEditor.h"
 #include "UINotificationCenter.h"
 #include "UIWizardNewVMNameOSTypePage.h"
@@ -629,7 +629,7 @@ void UIWizardNewVMNameOSTypePage::sltISOPathChanged(const QString &strPath)
     /* Update the global recent ISO path: */
     QFileInfo fileInfo(strPath);
     if (fileInfo.exists() && fileInfo.isReadable())
-        uiCommon().updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strPath);
+        gpMediumEnumerator->updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strPath);
 
     /* Populate the editions selector: */
     if (m_pNameAndSystemEditor)

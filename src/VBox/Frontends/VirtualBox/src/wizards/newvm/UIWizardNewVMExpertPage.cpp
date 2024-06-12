@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -33,7 +33,6 @@
 
 /* GUI includes: */
 #include "QIToolButton.h"
-#include "UICommon.h"
 #include "UIIconPool.h"
 #include "UIGlobalSession.h"
 #include "UIMediaComboBox.h"
@@ -176,7 +175,7 @@ void UIWizardNewVMExpertPage::sltISOPathChanged(const QString &strISOPath)
     /* Update the global recent ISO path: */
     QFileInfo fileInfo(strISOPath);
     if (fileInfo.exists() && fileInfo.isReadable())
-        uiCommon().updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strISOPath);
+        gpMediumEnumerator->updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType_DVD, strISOPath);
 
     /* Populate the editions selector: */
     if (m_pNameAndSystemEditor)
