@@ -1,4 +1,4 @@
-/* $Id: DrvIfsTraceInternal.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: DrvIfsTraceInternal.h 104894 2024-06-12 13:53:43Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox interface callback tracing driver - internal header.
  */
@@ -33,6 +33,7 @@
 
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmserialifs.h>
+#include <VBox/vmm/pdmtpmifs.h>
 
 #include <iprt/types.h>
 
@@ -47,16 +48,20 @@ typedef struct DRVIFTRACE
     PDMIBASE             IBase;
     PDMISERIALPORT       ISerialPort;
     PDMISERIALCONNECTOR  ISerialConnector;
+    PDMITPMPORT          ITpmPort;
+    PDMITPMCONNECTOR     ITpmConnector;
     /** @}  */
 
     /** @name Interfaces exposed by the driver below us.
      * @{ */
     PPDMISERIALCONNECTOR pISerialConBelow;
+    PPDMITPMCONNECTOR    pITpmConBelow;
     /** @} */
 
     /** @name Interfaces exposed by the driver/device above us.
      * @{ */
     PPDMISERIALPORT      pISerialPortAbove;
+    PPDMITPMPORT         pITpmPortAbove;
     /** @} */
 
     /** PDM device driver instance pointer. */
@@ -72,5 +77,6 @@ typedef DRVIFTRACE *PDRVIFTRACE;
 
 
 DECLHIDDEN(void) drvIfsTrace_SerialIfInit(PDRVIFTRACE pThis);
+DECLHIDDEN(void) drvIfsTrace_TpmIfInit(PDRVIFTRACE pThis);
 
 #endif /* !VBOX_INCLUDED_SRC_Trace_DrvIfsTraceInternal_h */
