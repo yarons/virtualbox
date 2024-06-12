@@ -1,4 +1,4 @@
-/* $Id: VBoxTraceLogDecoders.cpp 104895 2024-06-12 14:02:00Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxTraceLogDecoders.cpp 104896 2024-06-12 14:15:06Z alexander.eichner@oracle.com $ */
 /** @file
  * RTTraceLogDecoders - Implement decoders for the tracing driver.
  */
@@ -38,7 +38,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEFAULT
+#define LOG_GROUP RTLOGGROUP_DEFAULT
 #include <iprt/assert.h>
 #include <iprt/errcore.h>
 #include <iprt/log.h>
