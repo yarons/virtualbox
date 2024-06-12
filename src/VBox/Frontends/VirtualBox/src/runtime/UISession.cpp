@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 103793 2024-03-11 19:17:31Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -47,6 +47,7 @@
 #include "UIMachineView.h"
 #include "UIMachineWindow.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIMousePointerShapeData.h"
@@ -993,7 +994,7 @@ bool UISession::mountBootMedium(const QUuid &uMediumId)
         AssertMsgReturn(!comChosenAttachment.isNull(), ("Storage Controller is NOT properly configured!\n"), false);
 
         /* Get medium to mount: */
-        const UIMedium guiMedium = uiCommon().medium(uMediumId);
+        const UIMedium guiMedium = gpMediumEnumerator->medium(uMediumId);
         const CMedium comMedium = guiMedium.medium();
 
         /* Mount medium to the predefined port/device: */
@@ -2840,12 +2841,12 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType en
         AssertReturn(!uMediumId.isNull(), false);
 
         /* Try to find UIMedium among cached: */
-        guiMedium = uiCommon().medium(uMediumId);
+        guiMedium = gpMediumEnumerator->medium(uMediumId);
         if (guiMedium.isNull())
         {
             /* Cache new one if necessary: */
             guiMedium = UIMedium(comMedium, enmMediumType, KMediumState_Created);
-            uiCommon().createMedium(guiMedium);
+            gpMediumEnumerator->createMedium(guiMedium);
         }
     }
 
@@ -2927,7 +2928,7 @@ void UISession::recacheMachineMedia()
     }
 
     /* Start media enumeration: */
-    uiCommon().enumerateMedia(comMedia);
+    gpMediumEnumerator->enumerateMedia(comMedia);
 }
 
 /* static */

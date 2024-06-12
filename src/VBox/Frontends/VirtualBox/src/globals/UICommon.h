@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 104889 2024-06-12 12:24:18Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -304,21 +304,6 @@ public:
 
     /** @name COM: Virtual Media stuff.
      * @{ */
-        /** Enumerates passed @a comMedia. */
-        void enumerateMedia(const CMediumVector &comMedia = CMediumVector());
-        /** Calls refresh for each medium which has been already enumerated. */
-        void refreshMedia();
-        /** Returns whether full medium-enumeration is requested. */
-        bool isFullMediumEnumerationRequested() const;
-        /** Returns whether any medium-enumeration is in progress. */
-        bool isMediumEnumerationInProgress() const;
-        /** Returns enumerated medium with certain @a uMediumID. */
-        UIMedium medium(const QUuid &uMediumID) const;
-        /** Returns enumerated medium IDs. */
-        QList<QUuid> mediumIDs() const;
-        /** Creates medium on the basis of passed @a guiMedium description. */
-        void createMedium(const UIMedium &guiMedium);
-
         /** Opens external medium by passed @a strMediumLocation.
           * @param  enmMediumType      Brings the medium type.
           * @param  pParent            Brings the dialog parent.

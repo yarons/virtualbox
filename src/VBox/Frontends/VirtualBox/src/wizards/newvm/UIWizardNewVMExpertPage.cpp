@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMExpertPage.cpp 104631 2024-05-14 14:05:33Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardNewVMExpertPage.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMExpertPage class implementation.
  */
@@ -38,6 +38,7 @@
 #include "UIGlobalSession.h"
 #include "UIMediaComboBox.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UINameAndSystemEditor.h"
 #include "UINotificationCenter.h"
 #include "UIToolBox.h"
@@ -629,7 +630,7 @@ bool UIWizardNewVMExpertPage::isComplete() const
         }
     }
 
-    if (pWizard->diskSource() == SelectedDiskSource_Existing && uiCommon().medium(m_pDiskSelector->id()).isNull())
+    if (pWizard->diskSource() == SelectedDiskSource_Existing && gpMediumEnumerator->medium(m_pDiskSelector->id()).isNull())
     {
         m_pToolBox->setPageTitleIcon(ExpertToolboxItems_Disk,
                                      UIIconPool::iconSet(":/status_error_16px.png"), UIWizardNewVM::tr("No valid disk is selected"));

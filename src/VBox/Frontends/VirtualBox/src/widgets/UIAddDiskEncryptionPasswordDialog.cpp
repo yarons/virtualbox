@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 104358 2024-04-18 05:33:40Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -40,10 +40,10 @@
 /* GUI includes: */
 #include "QIDialogButtonBox.h"
 #include "QIStyledItemDelegate.h"
-#include "UICommon.h"
 #include "UIAddDiskEncryptionPasswordDialog.h"
 #include "UIIconPool.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UINotificationCenter.h"
 #include "UITranslationEventListener.h"
 
@@ -606,7 +606,7 @@ void UIAddDiskEncryptionPasswordDialog::prepare()
 bool UIAddDiskEncryptionPasswordDialog::isPasswordValid(const QUuid &uMediumId, const QString strPassword)
 {
     /* Look for the medium with passed ID: */
-    const UIMedium uimedium = uiCommon().medium(uMediumId);
+    const UIMedium uimedium = gpMediumEnumerator->medium(uMediumId);
     if (!uimedium.isNull())
     {
         /* Check wrapped medium for validity: */

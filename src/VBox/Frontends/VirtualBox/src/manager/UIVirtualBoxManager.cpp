@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -67,6 +67,7 @@
 #include "UIIconPool.h"
 #include "UILoggingDefs.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UIMediumManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
@@ -793,9 +794,9 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
 
     /* Look for at least one inaccessible medium: */
     bool fIsThereAnyInaccessibleMedium = false;
-    foreach (const QUuid &uMediumID, uiCommon().mediumIDs())
+    foreach (const QUuid &uMediumID, gpMediumEnumerator->mediumIDs())
     {
-        if (uiCommon().medium(uMediumID).state() == KMediumState_Inaccessible)
+        if (gpMediumEnumerator->medium(uMediumID).state() == KMediumState_Inaccessible)
         {
             fIsThereAnyInaccessibleMedium = true;
             break;
@@ -2381,7 +2382,7 @@ void UIVirtualBoxManager::prepare()
 
     /* Cache media data early if necessary: */
     if (uiCommon().agressiveCaching())
-        uiCommon().enumerateMedia();
+        gpMediumEnumerator->enumerateMedia();
 
     /* Prepare: */
     prepareIcon();

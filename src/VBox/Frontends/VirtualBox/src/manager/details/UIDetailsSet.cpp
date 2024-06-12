@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 104251 2024-04-09 12:36:47Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsSet.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -37,6 +37,7 @@
 #include "UIDetailsModel.h"
 #include "UIDetailsSet.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -662,7 +663,7 @@ void UIDetailsSet::sltMediumEnumerated(const QUuid &uId)
         return;
 
     /* Is this our medium changed? */
-    const UIMedium guiMedium = uiCommon().medium(uId);
+    const UIMedium guiMedium = gpMediumEnumerator->medium(uId);
     if (   guiMedium.isNull()
         || !guiMedium.machineIds().contains(m_comMachine.GetId()))
         return;

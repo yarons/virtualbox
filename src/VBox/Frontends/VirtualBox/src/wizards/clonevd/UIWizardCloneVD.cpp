@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 103961 2024-03-20 14:34:36Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -29,6 +29,7 @@
 #include "UICommon.h"
 #include "UIGlobalSession.h"
 #include "UIMedium.h"
+#include "UIMediumEnumerator.h"
 #include "UINotificationCenter.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDFormatPage.h"
@@ -53,7 +54,7 @@ UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const QUuid &uMediumId)
 #endif /* VBOX_WS_MAC */
 
     /* Init medium to be cloned: */
-    UIMedium uiMedium = uiCommon().medium(uMediumId);
+    UIMedium uiMedium = gpMediumEnumerator->medium(uMediumId);
     m_comSourceVirtualDisk = uiMedium.medium();
 
     /* Init device type: */
