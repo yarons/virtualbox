@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardNewVD.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -160,7 +160,7 @@ bool UIWizardNewVD::createVirtualDisk()
                                                                                                m_uMediumSize,
                                                                                                variants);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
-            &uiCommon(), &UICommon::sltHandleMediumCreated);
+            gpMediumEnumerator, &UIMediumEnumerator::sltHandleMediumCreated);
 
     m_uMediumId = comVirtualDisk.GetId();
 

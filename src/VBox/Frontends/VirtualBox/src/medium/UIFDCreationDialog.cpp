@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -132,7 +132,7 @@ void UIFDCreationDialog::accept()
     UINotificationProgressMediumCreate *pNotification =
         new UINotificationProgressMediumCreate(comMedium, m_pSizeCombo->currentData().toLongLong(), variants);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
-            &uiCommon(), &UICommon::sltHandleMediumCreated);
+            gpMediumEnumerator, &UIMediumEnumerator::sltHandleMediumCreated);
     connect(pNotification, &UINotificationProgressMediumCreate::sigMediumCreated,
             this, &UIFDCreationDialog::sltHandleMediumCreated);
     gpNotificationCenter->append(pNotification);

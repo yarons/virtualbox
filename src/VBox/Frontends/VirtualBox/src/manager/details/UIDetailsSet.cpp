@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIDetailsSet.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -32,7 +32,6 @@
 #include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIDetailsElements.h"
 #include "UIDetailsModel.h"
 #include "UIDetailsSet.h"
@@ -690,7 +689,7 @@ void UIDetailsSet::prepareConnections()
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigSnapshotRestore, this, &UIDetailsSet::sltMachineAttributesChange);
 
     /* Meidum-enumeration connections: */
-    connect(&uiCommon(), &UICommon::sigMediumEnumerated, this, &UIDetailsSet::sltMediumEnumerated);
+    connect(gpMediumEnumerator, &UIMediumEnumerator::sigMediumEnumerated, this, &UIDetailsSet::sltMediumEnumerated);
 }
 
 QVariant UIDetailsSet::data(int iKey) const

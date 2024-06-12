@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 104585 2024-05-13 11:37:59Z sergey.dubov@oracle.com $ */
+/* $Id: UIInformationConfiguration.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -39,11 +39,11 @@
 /* GUI includes: */
 #include "QITableWidget.h"
 #include "UIDetailsGenerator.h"
-#include "UICommon.h"
 #include "UIExtraDataManager.h"
 #include "UIIconPool.h"
 #include "UIInformationConfiguration.h"
 #include "UIMachine.h"
+#include "UIMediumEnumerator.h"
 #include "UITranslationEventListener.h"
 #include "UIVirtualBoxEventHandler.h"
 
@@ -64,7 +64,7 @@ UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent)
             this, &UIInformationConfiguration::sltRetranslateUI);
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineDataChange,
             this, &UIInformationConfiguration::sltMachineDataChanged);
-    connect(&uiCommon(), &UICommon::sigMediumEnumerationFinished,
+    connect(gpMediumEnumerator, &UIMediumEnumerator::sigMediumEnumerationFinished,
             this, &UIInformationConfiguration::sltMachineDataChanged);
 }
 

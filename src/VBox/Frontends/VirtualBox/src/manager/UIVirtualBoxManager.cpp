@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2507,7 +2507,7 @@ void UIVirtualBoxManager::prepareConnections()
     /* UICommon connections: */
     connect(&uiCommon(), &UICommon::sigAskToCommitData,
             this, &UIVirtualBoxManager::sltHandleCommitData);
-    connect(&uiCommon(), &UICommon::sigMediumEnumerationFinished,
+    connect(gpMediumEnumerator, &UIMediumEnumerator::sigMediumEnumerationFinished,
             this, &UIVirtualBoxManager::sltHandleMediumEnumerationFinish);
 
     /* Widget connections: */

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 104226 2024-04-08 12:07:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMediumManager.h 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -159,19 +159,19 @@ private slots:
 
     /** @name Medium operation stuff.
       * @{ */
-        /** Handles UICommon::sigMediumCreated signal. */
+        /** Handles UIMediumEnumerator::sigMediumCreated signal. */
         void sltHandleMediumCreated(const QUuid &uMediumID);
-        /** Handles UICommon::sigMediumDeleted signal. */
+        /** Handles UIMediumEnumerator::sigMediumDeleted signal. */
         void sltHandleMediumDeleted(const QUuid &uMediumID);
     /** @} */
 
     /** @name Medium enumeration stuff.
       * @{ */
-        /** Handles UICommon::sigMediumEnumerationStarted signal. */
+        /** Handles UIMediumEnumerator::sigMediumEnumerationStarted signal. */
         void sltHandleMediumEnumerationStart();
-        /** Handles UICommon::sigMediumEnumerated signal. */
+        /** Handles UIMediumEnumerator::sigMediumEnumerated signal. */
         void sltHandleMediumEnumerated(const QUuid &uMediumID);
-        /** Handles UICommon::sigMediumEnumerationFinished signal. */
+        /** Handles UIMediumEnumerator::sigMediumEnumerationFinished signal. */
         void sltHandleMediumEnumerationFinish();
         void sltHandleMachineStateChange(const QUuid &uId, const KMachineState state);
     /** @} */

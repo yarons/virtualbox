@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -353,6 +353,22 @@ void UIMediumEnumerator::updateRecentlyUsedMediumListAndFolder(UIMediumDeviceTyp
         default: break;
     }
     emit sigRecentMediaListUpdated(enmMediumType);
+}
+
+void UIMediumEnumerator::sltHandleMediumCreated(const CMedium &comMedium)
+{
+    /* Acquire device type: */
+    const KDeviceType enmDeviceType = comMedium.GetDeviceType();
+    if (!comMedium.isOk())
+        UINotificationMessage::cannotAcquireMediumParameter(comMedium);
+    else
+    {
+        /* Convert to medium type: */
+        const UIMediumDeviceType enmMediumType = mediumTypeToLocal(enmDeviceType);
+
+        /* Make sure we cached created medium in GUI: */
+        createMedium(UIMedium(comMedium, enmMediumType, KMediumState_Created));
+    }
 }
 
 void UIMediumEnumerator::sltRetranslateUI()

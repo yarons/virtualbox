@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIWizardCloneVD.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -26,7 +26,6 @@
  */
 
 /* GUI includes: */
-#include "UICommon.h"
 #include "UIGlobalSession.h"
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
@@ -102,7 +101,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
                                                                                            comVirtualDisk,
                                                                                            variants);
     connect(pNotification, &UINotificationProgressMediumCopy::sigMediumCopied,
-            &uiCommon(), &UICommon::sltHandleMediumCreated);
+            gpMediumEnumerator, &UIMediumEnumerator::sltHandleMediumCreated);
     gpNotificationCenter->append(pNotification);
 
     /* Positive: */

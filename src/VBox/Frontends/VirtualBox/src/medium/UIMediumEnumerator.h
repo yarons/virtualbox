@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.h 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -122,6 +122,11 @@ public:
       * @param  enmMediumType       Passes the medium type.
       * @param  strMediumLocation   Passes the medium location. */
     void updateRecentlyUsedMediumListAndFolder(UIMediumDeviceType enmMediumType, QString strMediumLocation);
+
+public slots:
+
+    /** Handles signal about @a comMedium was created. */
+    void sltHandleMediumCreated(const CMedium &comMedium);
 
 private slots:
 
