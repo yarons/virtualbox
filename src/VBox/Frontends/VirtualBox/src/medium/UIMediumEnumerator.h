@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 104887 2024-06-12 11:02:08Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.h 104888 2024-06-12 11:20:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -142,6 +142,19 @@ private:
 
     /** Constructs medium-enumerator object. */
     UIMediumEnumerator();
+
+    /** Subroutine for mediumIDs() call, executed under proper lock. */
+    QList<QUuid> mediumIDsSub() const;
+    /** Subroutine for medium() call, executed under proper lock. */
+    UIMedium mediumSub(const QUuid &uMediumID) const;
+
+    /** Subroutine for createMedium() call, executed under proper lock. */
+    void createMediumSub(const UIMedium &guiMedium);
+
+    /** Subroutine for enumerateMedia() call, executed under proper lock. */
+    void enumerateMediaSub(const CMediumVector &comMedia = CMediumVector());
+    /** Subroutine for enumerateMedia() call, executed under proper lock. */
+    void refreshMediaSub();
 
     /** Creates medium-enumeration task for certain @a guiMedium. */
     void createMediumEnumerationTask(const UIMedium &guiMedium);
