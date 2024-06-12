@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 104880 2024-06-10 16:24:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.h 104887 2024-06-12 11:02:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -79,6 +79,8 @@ public:
     static void destroy();
     /** Returns singleton instance. */
     static UIMediumEnumerator *instance();
+    /** Returns whether singleton intance really exists. */
+    static bool exists();
 
     /** Returns cached UIMedium ID list. */
     QList<QUuid> mediumIDs() const;

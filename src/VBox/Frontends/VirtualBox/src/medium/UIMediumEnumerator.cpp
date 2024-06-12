@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 104880 2024-06-10 16:24:42Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.cpp 104887 2024-06-12 11:02:08Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -130,7 +130,18 @@ void UIMediumEnumerator::destroy()
 /* static */
 UIMediumEnumerator *UIMediumEnumerator::instance()
 {
+    /* This is the fallback behavior, we need the lazy-init here
+     * only to make sure gpMediumEnumerator is never NULL. */
+    AssertPtr(s_pInstance);
+    if (!s_pInstance)
+        create();
     return s_pInstance;
+}
+
+/* static */
+bool UIMediumEnumerator::exists()
+{
+    return !!s_pInstance;
 }
 
 UIMediumEnumerator::UIMediumEnumerator()
