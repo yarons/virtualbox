@@ -1,4 +1,4 @@
-/* $Id: UIMediumTools.h 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTools.h 104902 2024-06-12 16:45:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class declaration.
  */
@@ -45,10 +45,22 @@ class QString;
 class QWidget;
 class UIActionPool;
 class CMachine;
+class CMedium;
 
 /** UIMediumTools namespace. */
 namespace UIMediumTools
 {
+    /** Generates details for passed @a comMedium.
+      * @param  fPredictDiff  Brings whether medium will be marked differencing on attaching.
+      * @param  fUseHtml      Brings whether HTML subsets should be used in the generated output. */
+    SHARED_LIBRARY_STUFF QString storageDetails(const CMedium &comMedium,
+                                                bool fPredictDiff,
+                                                bool fUseHtml = true);
+
+    /** Calculates @a cAmount of immutable images used by @a comMachine specified. */
+    SHARED_LIBRARY_STUFF bool acquireAmountOfImmutableImages(const CMachine &comMachine,
+                                                             ulong &cAmount);
+
     /** Opens external medium from passed @a strMediumLocation.
       * @param  enmMediumType      Brings the medium type.
       * @param  strMediumLocation  Brings the file path to load medium from.

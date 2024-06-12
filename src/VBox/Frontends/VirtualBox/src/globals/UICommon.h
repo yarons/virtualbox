@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 104902 2024-06-12 16:45:56Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -295,17 +295,6 @@ public:
         void notifyCloudMachineRegistered(const QString &strProviderShortName,
                                           const QString &strProfileName,
                                           const CCloudMachine &comMachine);
-    /** @} */
-
-    /** @name COM: Virtual Media stuff.
-     * @{ */
-        /** Generates details for passed @a comMedium.
-          * @param  fPredictDiff  Brings whether medium will be marked differencing on attaching.
-          * @param  fUseHtml      Brings whether HTML subsets should be used in the generated output. */
-        QString storageDetails(const CMedium &comMedium, bool fPredictDiff, bool fUseHtml = true);
-
-        /** Calculates @a cAmount of immutable images used by @a comMachine specified. */
-        static bool acquireAmountOfImmutableImages(const CMachine &comMachine, ulong &cAmount);
     /** @} */
 
     /** @name COM: USB stuff.
