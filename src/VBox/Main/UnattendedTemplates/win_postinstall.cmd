@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $
+rem $Id: win_postinstall.cmd 104906 2024-06-12 19:05:59Z klaus.espenlaub@oracle.com $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -159,6 +159,12 @@ echo *** Running custom user command ... >> %MY_LOG_FILE%
 echo *** Running: "@@VBOX_INSERT_POST_INSTALL_COMMAND@@" >> %MY_LOG_FILE%
 @@VBOX_INSERT_POST_INSTALL_COMMAND@@
 @@VBOX_COND_END@@
+
+rem
+rem Eject/rename no longer needed unattended install configuration and media.
+rem
+if exist a:\autounattend.xml ren a:\autounattend.xml autounattend-disabled.xml
+rem rem @todo eject DVD install media
 
 echo *** done >> %MY_LOG_FILE%
 
