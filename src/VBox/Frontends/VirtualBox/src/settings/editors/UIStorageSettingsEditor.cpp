@@ -1,4 +1,4 @@
-/* $Id: UIStorageSettingsEditor.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UIStorageSettingsEditor.cpp 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIStorageSettingsEditor class implementation.
  */
@@ -62,6 +62,7 @@
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
 #include "UIMediumSelector.h"
+#include "UIMediumTools.h"
 #include "UIMessageCenter.h"
 #include "UIStorageSettingsEditor.h"
 
@@ -3927,7 +3928,9 @@ void UIStorageSettingsEditor::sltChooseDiskFile()
 {
     const QString strMachineFolder(QFileInfo(m_strMachineSettingsFilePath).absolutePath());
 
-    QUuid uMediumId = uiCommon().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), QApplication::activeWindow(), strMachineFolder);
+    QUuid uMediumId = UIMediumTools::openMediumWithFileOpenDialog(m_pMediumIdHolder->type(),
+                                                                  QApplication::activeWindow(),
+                                                                  strMachineFolder);
     if (uMediumId.isNull())
         return;
     m_pMediumIdHolder->setId(uMediumId);
@@ -3953,7 +3956,7 @@ void UIStorageSettingsEditor::sltChooseRecentMedium()
         const QStringList mediumInfoList = pChooseRecentMediumAction->data().toString().split(',');
         const UIMediumDeviceType enmMediumType = (UIMediumDeviceType)mediumInfoList[0].toUInt();
         const QString strMediumLocation = mediumInfoList[1];
-        const QUuid uMediumId = uiCommon().openMedium(enmMediumType, strMediumLocation, this);
+        const QUuid uMediumId = UIMediumTools::openMedium(enmMediumType, strMediumLocation, this);
         if (!uMediumId.isNull())
             m_pMediumIdHolder->setId(uMediumId);
     }

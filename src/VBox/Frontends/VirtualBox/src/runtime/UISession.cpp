@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 104891 2024-06-12 12:41:04Z sergey.dubov@oracle.com $ */
+/* $Id: UISession.cpp 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -49,6 +49,7 @@
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
 #include "UIMessageCenter.h"
+#include "UIMediumTools.h"
 #include "UIModalWindowManager.h"
 #include "UIMousePointerShapeData.h"
 #include "UINotificationCenter.h"
@@ -1019,15 +1020,15 @@ void UISession::prepareStorageMenu(QMenu *pMenu,
                                    const QString &strControllerName, const StorageSlot &storageSlot)
 {
     CMachine comMachine = machine();
-    uiCommon().prepareStorageMenu(pMenu,
-                                  pListener, pszSlotName,
-                                  comMachine, strControllerName, storageSlot);
+    UIMediumTools::prepareStorageMenu(pMenu,
+                                      pListener, pszSlotName,
+                                      comMachine, strControllerName, storageSlot);
 }
 
 void UISession::updateMachineStorage(const UIMediumTarget &target, UIActionPool *pActionPool)
 {
     CMachine comMachine = machine();
-    uiCommon().updateMachineStorage(comMachine, target, pActionPool);
+    UIMediumTools::updateMachineStorage(comMachine, target, pActionPool);
 }
 
 void UISession::acquireWhetherUSBControllerEnabled(bool &fEnabled)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 104461 2024-04-30 12:06:43Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachineLogic.cpp 104901 2024-06-12 16:22:14Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -67,6 +67,7 @@
 #include "UIMachineView.h"
 #include "UIMachineWindow.h"
 #include "UIMedium.h"
+#include "UIMediumTools.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIMouseHandler.h"
@@ -3026,7 +3027,7 @@ void UIMachineLogic::showBootFailureDialog()
 
     QFileInfo bootMediumFileInfo(strISOPath);
     if (bootMediumFileInfo.exists() && bootMediumFileInfo.isReadable())
-        uimachine()->mountBootMedium(uiCommon().openMedium(UIMediumDeviceType_DVD, strISOPath));
+        uimachine()->mountBootMedium(UIMediumTools::openMedium(UIMediumDeviceType_DVD, strISOPath));
 
     if (iResult == static_cast<int>(UIBootFailureDialog::ReturnCode_Reset))
         reset(false);
