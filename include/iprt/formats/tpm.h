@@ -1,4 +1,4 @@
-/* $Id: tpm.h 104893 2024-06-12 13:52:28Z alexander.eichner@oracle.com $ */
+/* $Id: tpm.h 104905 2024-06-12 17:10:06Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT, TPM common definitions (this is actually a protocol and not a format).
  */
@@ -404,6 +404,12 @@ typedef TPMREQGETCAPABILITY *PTPMREQGETCAPABILITY;
 typedef const TPMREQGETCAPABILITY *PCTPMREQGETCAPABILITY;
 /** @} */
 
+
+/** @name Defines related to TPM2_CC_STARTUP
+ * @{ */
+#define TPM2_SU_CLEAR                       UINT16_C(0x0000)
+#define TPM2_SU_STATE                       UINT16_C(0x0001)
+/** @} */
 
 /** @name Defines related to TPM2_CC_GET_CAPABILITY.
  * @{ */
