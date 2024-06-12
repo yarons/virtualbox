@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104874 2024-06-10 10:09:38Z dmitrii.grigorev@oracle.com $ */
+/* $Id: DevVGA-SVGA3d-dx-dx11.cpp 104890 2024-06-12 12:28:21Z vitali.pelenjow@oracle.com $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -76,11 +76,6 @@
 #define DX_COMMON_STAGING_BUFFER
 /* Always flush after submitting a draw call for debugging. */
 //#define DX_FLUSH_AFTER_DRAW
-
-/* This is not available on non Windows hosts. */
-#ifndef D3D_RELEASE
-# define D3D_RELEASE(a_Ptr) do { if ((a_Ptr)) (a_Ptr)->Release(); (a_Ptr) = NULL; } while (0)
-#endif
 
 #define D3D_RELEASE_ARRAY(a_Count, a_papArray) do { \
     for (uint32_t i = 0; i < (a_Count); ++i) \
