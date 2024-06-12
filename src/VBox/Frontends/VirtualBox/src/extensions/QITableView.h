@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 98103 2023-01-17 14:15:46Z knut.osmundsen@oracle.com $ */
+/* $Id: QITableView.h 104897 2024-06-12 14:23:26Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -50,9 +50,9 @@ class SHARED_LIBRARY_STUFF QITableViewCell : public QObject
 
 public:
 
-    /** Constructs table-view cell for passed @a pParent. */
-    QITableViewCell(QITableViewRow *pParent)
-        : m_pRow(pParent)
+    /** Constructs table-view cell for passed @a pParentRow. */
+    QITableViewCell(QITableViewRow *pParentRow)
+        : m_pRow(pParentRow)
     {}
 
     /** Defines the parent @a pRow reference. */
@@ -77,9 +77,9 @@ class SHARED_LIBRARY_STUFF QITableViewRow : public QObject
 
 public:
 
-    /** Constructs table-view row for passed @a pParent. */
-    QITableViewRow(QITableView *pParent)
-        : m_pTable(pParent)
+    /** Constructs table-view row for passed @a pParentTable. */
+    QITableViewRow(QITableView *pParentTable)
+        : m_pTable(pParentTable)
     {}
 
     /** Defines the parent @a pTable reference. */
