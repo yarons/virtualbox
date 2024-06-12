@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 104880 2024-06-10 16:24:42Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.h 104889 2024-06-12 12:24:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -33,7 +33,6 @@
 
 /* Qt includes: */
 #include <QObject>
-#include <QReadWriteLock>
 
 /* GUI includes: */
 #include "UIDefs.h"
@@ -664,9 +663,6 @@ private:
 
     /** @name Media related stuff.
      * @{ */
-        /** Holds the medium enumerator cleanup protection token. */
-        mutable QReadWriteLock  m_meCleanupProtectionToken;
-
         /** List of medium names that should not appears in the recently used media extra data. */
         QStringList  m_recentMediaExcludeList;
     /** @} */

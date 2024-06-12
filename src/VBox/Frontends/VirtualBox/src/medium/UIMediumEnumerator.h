@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 104888 2024-06-12 11:20:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumEnumerator.h 104889 2024-06-12 12:24:18Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -33,6 +33,7 @@
 
 /* Qt includes: */
 #include <QObject>
+#include <QReadWriteLock>
 #include <QSet>
 
 /* GUI includes: */
@@ -183,6 +184,8 @@ private:
 
     /** Returns singleton instance. */
     static UIMediumEnumerator *s_pInstance;
+    /** Holds the cleanup protection token. */
+    static QReadWriteLock      s_guiCleanupProtectionToken;
 
     /** Holds whether full consolidated medium-enumeration process is requested. */
     bool  m_fFullMediumEnumerationRequested;
