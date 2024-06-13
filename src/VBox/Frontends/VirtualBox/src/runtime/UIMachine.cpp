@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 104393 2024-04-22 13:02:56Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.cpp 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -900,19 +900,19 @@ bool UIMachine::acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, Q
     return uisession()->acquireDeviceActivity(deviceTypes, states);
 }
 
-void UIMachine::acquireHardDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent)
+void UIMachine::acquireHardDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount)
 {
-    uisession()->acquireHardDiskStatusInfo(strInfo, fAttachmentsPresent);
+    uisession()->acquireHardDiskStatusInfo(strInfo, cAttachmentsCount);
 }
 
-void UIMachine::acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+void UIMachine::acquireOpticalDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount, uint &cAttachmentsMountedCount)
 {
-    uisession()->acquireOpticalDiskStatusInfo(strInfo, fAttachmentsPresent, fAttachmentsMounted);
+    uisession()->acquireOpticalDiskStatusInfo(strInfo, cAttachmentsCount, cAttachmentsMountedCount);
 }
 
-void UIMachine::acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted)
+void UIMachine::acquireFloppyDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount, uint &cAttachmentsMountedCount)
 {
-    uisession()->acquireFloppyDiskStatusInfo(strInfo, fAttachmentsPresent, fAttachmentsMounted);
+    uisession()->acquireFloppyDiskStatusInfo(strInfo, cAttachmentsCount, cAttachmentsMountedCount);
 }
 
 void UIMachine::acquireAudioStatusInfo(QString &strInfo, bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput)

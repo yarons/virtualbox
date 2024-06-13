@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 103803 2024-03-12 11:15:18Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIDetailsGenerator.h 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -89,13 +89,13 @@ namespace UIDetailsGenerator
                                                                            const UIExtraDataMetaDefs::DetailsElementOptionTypeDescription &fOptions);
 
     SHARED_LIBRARY_STUFF void acquireHardDiskStatusInfo(CMachine &comMachine, QString &strInfo,
-                                                        bool &fAttachmentsPresent);
+                                                        uint &cAttachmentsCount);
 
     SHARED_LIBRARY_STUFF void acquireOpticalDiskStatusInfo(CMachine &comMachine, QString &strInfo,
-                                                           bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+                                                           uint &cAttachmentsCount, uint &cAttachmentsMountedCount);
 
     SHARED_LIBRARY_STUFF void acquireFloppyDiskStatusInfo(CMachine &comMachine, QString &strInfo,
-                                                          bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+                                                          uint &cAttachmentsCount, uint &cAttachmentsMountedCount);
 
     SHARED_LIBRARY_STUFF void acquireAudioStatusInfo(CMachine &comMachine, QString &strInfo,
                                                      bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput);

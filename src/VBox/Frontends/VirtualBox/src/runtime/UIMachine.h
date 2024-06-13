@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 104374 2024-04-19 09:45:23Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIMachine.h 104917 2024-06-13 17:32:20Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -624,11 +624,11 @@ public:
         bool acquireDeviceActivity(const QVector<KDeviceType> &deviceTypes, QVector<KDeviceActivity> &states);
 
         /** Acquires status info for hard disk indicator. */
-        void acquireHardDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent);
+        void acquireHardDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount);
         /** Acquires status info for optical disk indicator. */
-        void acquireOpticalDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+        void acquireOpticalDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount, uint &cAttachmentsMountedCount);
         /** Acquires status info for floppy disk indicator. */
-        void acquireFloppyDiskStatusInfo(QString &strInfo, bool &fAttachmentsPresent, bool &fAttachmentsMounted);
+        void acquireFloppyDiskStatusInfo(QString &strInfo, uint &cAttachmentsCount, uint &cAttachmentsMountedCount);
         /** Acquires status info for audio indicator. */
         void acquireAudioStatusInfo(QString &strInfo, bool &fAudioEnabled, bool &fEnabledOutput, bool &fEnabledInput);
         /** Acquires status info for network indicator. */
