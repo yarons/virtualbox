@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 104913 2024-06-13 11:15:52Z knut.osmundsen@oracle.com $
+# $Id: Makefile.kmk 104914 2024-06-13 11:25:00Z knut.osmundsen@oracle.com $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1812,9 +1812,8 @@ if !defined(VBOX_ONLY_BUILD)
  VBoxTraceLogDecoders_LDFLAGS.linux = $(VBOX_GCC_NO_UNDEFINED)
  VBoxTraceLogDecoders_SOURCES       = \
  	Trace/VBoxTraceLogDecoders.cpp
- VBoxTraceLogDecoders_SOURCES.win   = \
- 	Trace/VBoxTraceLogDecoders.rc
  VBoxTraceLogDecoders_LIBS          = $(LIB_RUNTIME)
+ $(call VBOX_SET_VER_INFO_DLL,VBoxTraceLogDecoders,VirtualBox Tracelog decoder plugin)
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
