@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIVirtualBoxManager.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -68,6 +68,7 @@
 #include "UILoggingDefs.h"
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
+#include "UIMediumTools.h"
 #include "UIMediumManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
@@ -1263,7 +1264,7 @@ void UIVirtualBoxManager::sltOpenWizard(WizardType enmType)
                 break;
             case WizardType_NewVD:
             {
-                const QString strFolder = UIMediumEnumerator::defaultFolderPathForType(UIMediumDeviceType_HardDisk);
+                const QString strFolder = UIMediumTools::defaultFolderPathForType(UIMediumDeviceType_HardDisk);
                 const QString strDiskName = uiCommon().findUniqueFileName(strFolder, "NewVirtualDisk");
                 const CGuestOSType comGuestOSType = gpGlobalSession->virtualBox().GetGuestOSType("Other");
                 const qulonglong uDiskSize = comGuestOSType.GetRecommendedHDD();

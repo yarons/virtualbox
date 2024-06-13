@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 104899 2024-06-12 14:28:47Z sergey.dubov@oracle.com $ */
+/* $Id: UINameAndSystemEditor.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -36,7 +36,7 @@
 #include "UIGlobalSession.h"
 #include "UIIconPool.h"
 #include "UIFilePathSelector.h"
-#include "UIMediumEnumerator.h"
+#include "UIMediumTools.h"
 #include "UINameAndSystemEditor.h"
 
 /* COM includes: */
@@ -481,7 +481,7 @@ void UINameAndSystemEditor::prepareWidgets()
                 m_pSelectorImage->setResetEnabled(false);
                 m_pSelectorImage->setMode(UIFilePathSelector::Mode_File_Open);
                 m_pSelectorImage->setFileDialogFilters("ISO Images(*.iso *.ISO)");
-                m_pSelectorImage->setInitialPath(UIMediumEnumerator::defaultFolderPathForType(UIMediumDeviceType_DVD));
+                m_pSelectorImage->setInitialPath(UIMediumTools::defaultFolderPathForType(UIMediumDeviceType_DVD));
                 m_pSelectorImage->setRecentMediaListType(UIMediumDeviceType_DVD);
                 m_pLayout->addWidget(m_pSelectorImage, iRow, 1, 1, 2);
             }

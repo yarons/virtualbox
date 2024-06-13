@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIFDCreationDialog.cpp 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -41,6 +41,7 @@
 #include "UIIconPool.h"
 #include "UIMedium.h"
 #include "UIMediumEnumerator.h"
+#include "UIMediumTools.h"
 #include "UIMessageCenter.h"
 #include "UINotificationCenter.h"
 #include "UIModalWindowManager.h"
@@ -79,7 +80,7 @@ QUuid UIFDCreationDialog::createFloppyDisk(QWidget *pParent, const QString &strD
     QString strStartPath(strDefaultFolder);
 
     if (strStartPath.isEmpty())
-        strStartPath = UIMediumEnumerator::defaultFolderPathForType(UIMediumDeviceType_Floppy);
+        strStartPath = UIMediumTools::defaultFolderPathForType(UIMediumDeviceType_Floppy);
 
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
 

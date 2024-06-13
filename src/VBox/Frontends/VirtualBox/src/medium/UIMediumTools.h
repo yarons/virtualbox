@@ -1,4 +1,4 @@
-/* $Id: UIMediumTools.h 104902 2024-06-12 16:45:56Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumTools.h 104915 2024-06-13 13:18:04Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumTools class declaration.
  */
@@ -60,6 +60,12 @@ namespace UIMediumTools
     /** Calculates @a cAmount of immutable images used by @a comMachine specified. */
     SHARED_LIBRARY_STUFF bool acquireAmountOfImmutableImages(const CMachine &comMachine,
                                                              ulong &cAmount);
+
+    /** Searches extra data for the recently used folder path which corresponds to @a enmMediumType.
+      * When that search fails it looks for recent folder extra data for other medium types.
+      * As the last resort returns default vm folder path.
+      * @param  enmMediumType  Passes the medium type. */
+    SHARED_LIBRARY_STUFF QString defaultFolderPathForType(UIMediumDeviceType enmMediumType);
 
     /** Opens external medium from passed @a strMediumLocation.
       * @param  enmMediumType      Brings the medium type.
