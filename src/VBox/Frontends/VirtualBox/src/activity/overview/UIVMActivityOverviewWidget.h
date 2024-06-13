@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 103943 2024-03-20 10:23:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.h 104916 2024-06-13 15:26:58Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -53,6 +53,9 @@ class UIVirtualMachineItemCloud;
 class UIVMActivityOverviewHostStats;
 class UIVMActivityOverviewHostStatsWidget;
 class UIVMActivityOverviewTableView;
+class UIVMActivityOverviewAccessibleTableView;
+class UIActivityOverviewAccessibleModel;
+class UIActivityOverviewAccessibleProxyModel;
 
 /** QWidget extension to display a Linux top like utility that sort running vm wrt. resource allocations. */
 class UIVMActivityOverviewWidget : public QWidget
@@ -129,8 +132,12 @@ private:
       * @{ */
         QIToolBar *m_pToolBar;
         UIVMActivityOverviewTableView       *m_pTableView;
+        UIVMActivityOverviewAccessibleTableView    *m_pAccessibleTableView;
+
         UIActivityOverviewProxyModel        *m_pProxyModel;
+        UIActivityOverviewAccessibleProxyModel *m_pAccessibleProxyModel;
         UIActivityOverviewModel             *m_pModel;
+        UIActivityOverviewAccessibleModel   *m_pAccessibleModel;
         QMenu                              *m_pColumnVisibilityToggleMenu;
         /* The key is the column id (VMActivityOverviewColumn) and value is column title. */
         QMap<int, QString>                  m_columnTitles;
