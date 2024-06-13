@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 104908 2024-06-13 10:29:10Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityMonitor.cpp 104909 2024-06-13 10:30:10Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -597,12 +597,6 @@ void UIChart::paintEvent(QPaintEvent *pEvent)
                 float fX = (width() - m_iMarginRight) - ((data->size() - i - 1) * fBarWidth);
                 painter.drawPoint(fX, height() - (fHeight + m_iMarginBottom));
             }
-        }
-        if (m_fUseAreaChart && m_fIsAreaChartAllowed)
-        {
-            // painter.setOpacity(0.5);
-            // painter.drawImage(rect(), areaPixmap.toImage());
-            // painter.setOpacity(1.0);
         }
         /* Draw a horizontal and vertical line on data point under the mouse cursor
          * and draw the value on the left hand side of the chart: */
