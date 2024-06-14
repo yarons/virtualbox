@@ -1,4 +1,4 @@
-/* $Id: RTTraceLogTool.cpp 104920 2024-06-14 12:02:03Z alexander.eichner@oracle.com $ */
+/* $Id: RTTraceLogTool.cpp 104921 2024-06-14 12:04:58Z alexander.eichner@oracle.com $ */
 /** @file
  * IPRT - Utility for reading/receiving and dissecting trace logs.
  */
@@ -206,7 +206,6 @@ static int rtTraceLogToolReaderCreate(PRTTRACELOGRDR phTraceLogRdr, const char *
 
 
 static DECLCALLBACK(int) rtTraceLogToolDecoderHlpPrintf(PRTTRACELOGDECODERHLP pHlp, const char *pszFormat, ...)
-                                                       RT_IPRT_FORMAT_ATTR(3, 4)
 {
     RT_NOREF(pHlp);
     va_list Args;
@@ -218,7 +217,6 @@ static DECLCALLBACK(int) rtTraceLogToolDecoderHlpPrintf(PRTTRACELOGDECODERHLP pH
 
 
 static DECLCALLBACK(int) rtTraceLogToolDecoderHlpErrorMsg(PRTTRACELOGDECODERHLP pHlp, const char *pszFormat, ...)
-                                                         RT_IPRT_FORMAT_ATTR(3, 4)
 {
     RT_NOREF(pHlp);
     va_list Args;
@@ -359,7 +357,7 @@ int main(int argc, char **argv)
                          , RTPathFilename(argv[0]));
                 return RTEXITCODE_SUCCESS;
             case 'V':
-                RTPrintf("$Revision: 104920 $\n");
+                RTPrintf("$Revision: 104921 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'i':
