@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 104848 2024-06-05 09:38:20Z knut.osmundsen@oracle.com $ */
+/* $Id: memobj-r0drv-linux.c 104925 2024-06-14 15:43:17Z vadim.galitsyn@oracle.com $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1420,7 +1420,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3P
                                 fWrite,                 /* force write access. */
 # endif
                                 &pMemLnx->apPages[0]    /* Page array. */
-# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0)
+# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0) && !RTLNX_SUSE_MAJ_PREREQ(15, 6)
                                 , papVMAs               /* vmas */
 # endif
                                 );
@@ -1467,7 +1467,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3P
                                 fWrite,                 /* force write access. */
 # endif
                                 &pMemLnx->apPages[0]    /* Page array. */
-# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0)
+# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0) && !RTLNX_SUSE_MAJ_PREREQ(15, 6)
                                 , papVMAs               /* vmas */
 # endif
                                 );
