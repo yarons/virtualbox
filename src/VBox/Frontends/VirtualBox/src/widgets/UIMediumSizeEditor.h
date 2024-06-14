@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.h 104928 2024-06-14 15:51:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIMediumSizeEditor.h 104929 2024-06-14 16:13:09Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class declaration.
  */
@@ -67,6 +67,9 @@ public:
     void setScaledMaximum(qulonglong uMaximum);
     /** Defines scaled @a uValue. */
     void setScaledValue(qulonglong uValue);
+
+    /** Returns scaled value in readable format. */
+    QString scaledValueToString();
 
 private slots:
 
