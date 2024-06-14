@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 104046 2024-03-25 18:02:43Z vadim.galitsyn@oracle.com $ */
+/* $Id: VBoxNetFlt-linux.c 104927 2024-06-14 15:47:37Z vadim.galitsyn@oracle.com $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -47,7 +47,7 @@
 #if RTLNX_VER_MIN(2,6,24)
 # include <linux/nsproxy.h>
 #endif
-#if RTLNX_VER_MIN(6,4,10) || RTLNX_RHEL_RANGE(9,4, 9,99)
+#if RTLNX_VER_MIN(6,4,10) || RTLNX_RHEL_RANGE(9,4, 9,99) || RTLNX_SUSE_MAJ_PREREQ(15, 6)
 # include <net/gso.h>
 #endif
 #include <linux/netdevice.h>
