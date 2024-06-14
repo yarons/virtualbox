@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 104922 2024-06-14 15:13:48Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 104924 2024-06-14 15:17:00Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -419,7 +419,7 @@ QString UIActivityOverviewAccessibleCell::text() const
     return m_strText;
 }
 
-int UIActivityOverviewAccessibleCell::columnLength(int iColumnIndex) const
+int UIActivityOverviewAccessibleCell::columnLength(int /*iColumnIndex*/) const
 {
     return 0;
     //return m_columnData.value(iColumnIndex, QString()).length();
