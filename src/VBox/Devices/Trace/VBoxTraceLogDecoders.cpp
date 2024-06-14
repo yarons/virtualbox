@@ -1,4 +1,4 @@
-/* $Id: VBoxTraceLogDecoders.cpp 104918 2024-06-14 09:01:03Z alexander.eichner@oracle.com $ */
+/* $Id: VBoxTraceLogDecoders.cpp 104919 2024-06-14 09:12:05Z alexander.eichner@oracle.com $ */
 /** @file
  * RTTraceLogDecoders - Implement decoders for the tracing driver.
  */
@@ -80,7 +80,7 @@ static DECLCALLBACK(void) vboxTraceLogDecodeEvtTpmDecodeStartupShutdown(PCTPMREQ
 static struct
 {
     const char     *pszCap;
-    const uint32_t *paProperties;   
+    const uint32_t *paProperties;
 } s_aTpm2Caps[] =
 {
     { RT_STR(TPM2_CAP_ALGS),            NULL },
