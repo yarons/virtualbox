@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 104932 2024-06-15 00:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 104935 2024-06-15 01:40:08Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3905,6 +3905,7 @@ int             pgmPhysPageMap(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void 
 int             pgmPhysPageMapReadOnly(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void const **ppv);
 int             pgmPhysPageMapByPageID(PVMCC pVM, uint32_t idPage, RTHCPHYS HCPhys, void **ppv);
 int             pgmPhysGCPhys2R3Ptr(PVMCC pVM, RTGCPHYS GCPhys, PRTR3PTR pR3Ptr);
+int             pgmPhysGCPhys2CCPtrLockless(PVMCPUCC pVCpu, RTGCPHYS GCPhys, void **ppv);
 int             pgmPhysCr3ToHCPtr(PVM pVM, RTGCPHYS GCPhys, PRTR3PTR pR3Ptr);
 int             pgmPhysGCPhys2CCPtrInternalDepr(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void **ppv);
 int             pgmPhysGCPhys2CCPtrInternal(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void **ppv, PPGMPAGEMAPLOCK pLock);
