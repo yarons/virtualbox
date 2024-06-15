@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 104886 2024-06-11 14:29:28Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMInternal.h 104932 2024-06-15 00:29:39Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2809,6 +2809,7 @@ typedef struct PGMMODEDATAGST
     /** The guest mode type. */
     uint32_t                        uType;
     DECLCALLBACKMEMBER(int, pfnGetPage,(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk));
+    DECLCALLBACKMEMBER(int, pfnQueryPageFast,(PVMCPUCC pVCpu, RTGCPTR GCPtr, uint32_t fFlags, PPGMPTWALKFAST pWalk));
     DECLCALLBACKMEMBER(int, pfnModifyPage,(PVMCPUCC pVCpu, RTGCPTR GCPtr, size_t cbPages, uint64_t fFlags, uint64_t fMask));
     DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3));
     DECLCALLBACKMEMBER(int, pfnExit,(PVMCPUCC pVCpu));
