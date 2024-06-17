@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.cpp 104943 2024-06-17 15:56:46Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.cpp 104944 2024-06-17 15:56:59Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class implementation.
  */
@@ -194,6 +194,7 @@ void UIActivityOverviewAccessibleRowLocal::setFreeRAM(quint64 uFreeRAM)
 {
     m_uFreeRAM = uFreeRAM;
 }
+
 
 /*********************************************************************************************************************************
 *   UIVMActivityOverviewAccessibleTableView implementation.                                                                      *
