@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104932 2024-06-15 00:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104941 2024-06-17 13:14:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -2140,7 +2140,15 @@ typedef struct IEMCPU
     STAMCOUNTER             StatNativeTbExitDirectLinking2PendingIrq;
     /** @} */
 
-    uint64_t                au64Padding[5];
+    /** iemMemMap and iemMemMapJmp statistics.
+     *  @{ */
+    STAMCOUNTER             StatMemMapJmp;
+    STAMCOUNTER             StatMemMapNoJmp;
+    STAMCOUNTER             StatMemBounceBufferCrossPage;
+    STAMCOUNTER             StatMemBounceBufferMapPhys;
+    /** @} */
+
+    uint64_t                au64Padding[1];
     /** @} */
 
     /** Data TLB.

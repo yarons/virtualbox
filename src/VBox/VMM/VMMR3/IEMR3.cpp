@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 104468 2024-05-01 00:43:28Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMR3.cpp 104941 2024-06-17 13:14:56Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -729,6 +729,19 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
 
 
 # endif /* VBOX_WITH_IEM_NATIVE_RECOMPILER */
+
+
+# ifdef VBOX_WITH_STATISTICS
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatMemMapJmp,       STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "iemMemMapJmp calls",                   "/IEM/CPU%u/iemMemMapJmp", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatMemMapNoJmp,     STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "iemMemMap calls",                      "/IEM/CPU%u/iemMemMapNoJmp", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatMemBounceBufferCrossPage, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "iemMemBounceBufferMapCrossPage calls", "/IEM/CPU%u/iemMemMapBounceBufferCrossPage", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.StatMemBounceBufferMapPhys, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        "iemMemBounceBufferMapPhys calls",      "/IEM/CPU%u/iemMemMapBounceBufferMapPhys", idCpu);
+# endif
+
 
 #endif /* VBOX_WITH_IEM_RECOMPILER */
 
