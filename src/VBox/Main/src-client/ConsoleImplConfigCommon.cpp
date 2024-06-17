@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplConfigCommon.cpp 104845 2024-06-05 02:05:16Z knut.osmundsen@oracle.com $ */
+/* $Id: ConsoleImplConfigCommon.cpp 104946 2024-06-17 17:30:00Z andreas.loeffler@oracle.com $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1184,7 +1184,7 @@ int Console::i_unmountMediumFromGuest(PUVM pUVM, PCVMMR3VTABLE pVMM, StorageBus_
     else
     {
         PPDMIMOUNT pIMount = PDMIBASE_QUERY_INTERFACE(pBase, PDMIMOUNT);
-        AssertReturn(pIMount, VERR_INVALID_POINTER);
+        AssertPtrReturn(pIMount, VERR_INVALID_POINTER);
 
         /* Unmount the media (but do not eject the medium!) */
         vrc = pIMount->pfnUnmount(pIMount, fForceUnmount, false /*=fEject*/);
