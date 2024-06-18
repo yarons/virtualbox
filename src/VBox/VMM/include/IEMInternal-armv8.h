@@ -1,4 +1,4 @@
-/* $Id: IEMInternal-armv8.h 100966 2023-08-24 23:23:58Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal-armv8.h 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file, ARMv8 variant.
  */
@@ -335,7 +335,7 @@ typedef struct IEMTLB
     /** TLB misses. */
     uint32_t            cTlbMisses;
     /** Slow read path.  */
-    uint32_t            cTlbSlowReadPath;
+    uint32_t            cTlbSlowCodeReadPath;
 #if 0
     /** TLB misses because of tag mismatch. */
     uint32_t            cTlbMissesTag;

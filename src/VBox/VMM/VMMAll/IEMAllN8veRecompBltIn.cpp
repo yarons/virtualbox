@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompBltIn.cpp 104877 2024-06-10 15:15:11Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllN8veRecompBltIn.cpp 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler, Emitters for Built-In Threaded Functions.
  */
@@ -1305,7 +1305,7 @@ iemNativeEmitBltLoadTlbForNewPage(PIEMRECOMPILERSTATE pReNative, uint32_t off, P
                                             1 /*cbMem*/, 0 /*fAlignMask*/, IEM_ACCESS_TYPE_EXEC,
                                             idxLabelTlbLookup, idxLabelTlbMiss, idxRegGCPhys, offInstr);
 
-# ifdef VBOX_WITH_STATISTICS
+# ifdef IEM_WITH_TLB_STATISTICS
         off = iemNativeEmitIncStamCounterInVCpu(pReNative, off, TlbState.idxReg1, TlbState.idxReg2,
                                                 RT_UOFFSETOF(VMCPUCC, iem.s.StatNativeCodeTlbHitsForNewPageWithOffset));
 # endif
@@ -1599,7 +1599,7 @@ iemNativeEmitBltLoadTlbAfterBranch(PIEMRECOMPILERSTATE pReNative, uint32_t off, 
                                                   1 /*cbMem*/, 0 /*fAlignMask*/, IEM_ACCESS_TYPE_EXEC,
                                                   idxLabelTlbLookup, idxLabelTlbMiss, idxRegDummy);
 
-# ifdef VBOX_WITH_STATISTICS
+# ifdef IEM_WITH_TLB_STATISTICS
         off = iemNativeEmitIncStamCounterInVCpu(pReNative, off, TlbState.idxReg1, TlbState.idxReg2,
                                                 RT_UOFFSETOF(VMCPUCC, iem.s.StatNativeCodeTlbHitsForNewPage));
 # endif

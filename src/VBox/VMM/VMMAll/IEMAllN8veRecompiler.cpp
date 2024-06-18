@@ -1,4 +1,4 @@
-/* $Id: IEMAllN8veRecompiler.cpp 104858 2024-06-05 18:10:20Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAllN8veRecompiler.cpp 104956 2024-06-18 11:44:59Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Native Recompiler
  *
@@ -8608,11 +8608,22 @@ DECLHIDDEN(const char *) iemNativeDbgVCpuOffsetToName(uint32_t off)
 #endif
         ENTRY(iem.s.DataTlb.uTlbRevision),
         ENTRY(iem.s.DataTlb.uTlbPhysRev),
-        ENTRY(iem.s.DataTlb.cTlbHits),
+        ENTRY(iem.s.DataTlb.cTlbCoreHits),
+        ENTRY(iem.s.DataTlb.cTlbInlineCodeHits),
+        ENTRY(iem.s.DataTlb.cTlbNativeMissTag),
+        ENTRY(iem.s.DataTlb.cTlbNativeMissFlagsAndPhysRev),
+        ENTRY(iem.s.DataTlb.cTlbNativeMissAlignment),
+        ENTRY(iem.s.DataTlb.cTlbNativeMissCrossPage),
+        ENTRY(iem.s.DataTlb.cTlbNativeMissNonCanonical),
         ENTRY(iem.s.DataTlb.aEntries),
         ENTRY(iem.s.CodeTlb.uTlbRevision),
         ENTRY(iem.s.CodeTlb.uTlbPhysRev),
-        ENTRY(iem.s.CodeTlb.cTlbHits),
+        ENTRY(iem.s.CodeTlb.cTlbCoreHits),
+        ENTRY(iem.s.CodeTlb.cTlbNativeMissTag),
+        ENTRY(iem.s.CodeTlb.cTlbNativeMissFlagsAndPhysRev),
+        ENTRY(iem.s.CodeTlb.cTlbNativeMissAlignment),
+        ENTRY(iem.s.CodeTlb.cTlbNativeMissCrossPage),
+        ENTRY(iem.s.CodeTlb.cTlbNativeMissNonCanonical),
         ENTRY(iem.s.CodeTlb.aEntries),
         ENTRY(pVMR3),
         ENTRY(cpum.GstCtx.rax),
