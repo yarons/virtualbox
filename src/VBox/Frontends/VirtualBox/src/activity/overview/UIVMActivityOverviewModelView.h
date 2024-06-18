@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.h 104951 2024-06-18 10:00:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 104955 2024-06-18 11:18:38Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
@@ -143,8 +143,9 @@ public:
     virtual int childCount() const RT_OVERRIDE RT_FINAL;
 
     virtual QITableViewCell *childItem(int iIndex) const RT_OVERRIDE RT_FINAL;
-
+    int columnLength(int iColumnIndex) const;
     QString cellText(int iColumn) const;
+    virtual QString machineStateString() const = 0;
 
 protected:
 
@@ -153,6 +154,7 @@ protected:
     QMap<int, UIActivityOverviewAccessibleCell*> m_cells;
 
     QString m_strMachineName;
+    quint64  m_uTotalRAM;
 private:
 
     void initCells();
