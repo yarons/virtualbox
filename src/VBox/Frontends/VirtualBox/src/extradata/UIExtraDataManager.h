@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 104967 2024-06-19 18:43:01Z sergey.dubov@oracle.com $ */
+/* $Id: UIExtraDataManager.h 104968 2024-06-19 18:51:37Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -901,6 +901,8 @@ private:
     void prepareGlobalExtraDataMap();
     /** Prepare extra-data event-handler. */
     void prepareExtraDataEventHandler();
+    /** Prepare extra-data settings. */
+    void prepareExtraDataSettings();
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     // /** Prepare window. */
     // void prepareWindow();
