@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 104951 2024-06-18 10:00:39Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 104962 2024-06-19 11:36:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -1788,6 +1788,8 @@ void UIVMActivityOverviewWidget::setCloudMachineItems(const QList<UIVirtualMachi
 {
     if (m_pModel)
         m_pModel->setCloudMachineItems(cloudItems);
+    if (m_pAccessibleModel)
+        m_pAccessibleModel->setCloudMachineItems(cloudItems);
 }
 
 void UIVMActivityOverviewWidget::sltRetranslateUI()

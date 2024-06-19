@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.h 104955 2024-06-18 11:18:38Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 104962 2024-06-19 11:36:12Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
@@ -48,6 +48,8 @@
 class QTimer;
 class UIActivityOverviewAccessibleCell;
 class UIActivityOverviewAccessibleRow;
+class UIActivityOverviewAccessibleRowCloud;
+class UIVirtualMachineItemCloud;
 
 class UIVMActivityOverviewAccessibleTableView : public QITableView
 {
@@ -148,7 +150,7 @@ public:
     virtual QString machineStateString() const = 0;
 
 protected:
-
+    void updateCellText(int /*VMActivityOverviewColumn*/ iColumnIndex, const QString &strText);
     QUuid m_uMachineId;
     /* Key is VMActivityOverviewColumn enum item. */
     QMap<int, UIActivityOverviewAccessibleCell*> m_cells;
@@ -188,6 +190,7 @@ public:
     bool isCloudVM(int rowIndex) const;
     void setColumnVisible(const QMap<int, bool>& columnVisible);
     bool columnVisible(int iColumnId) const;
+    void setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems);
 
 private slots:
 
