@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 104962 2024-06-19 11:36:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 104963 2024-06-19 11:47:05Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -2149,9 +2149,13 @@ void UIVMActivityOverviewWidget::updateModelColumVisibilityCache()
 {
     if (m_pModel)
         m_pModel->setColumnVisible(m_columnVisible);
+    if (m_pAccessibleModel)
+        m_pAccessibleModel->setColumnVisible(m_columnVisible);
     /* Notify the table view for the changed column visibility: */
     if (m_pTableView)
         m_pTableView->updateColumVisibility();
+    if (m_pAccessibleTableView)
+        m_pAccessibleTableView->updateColumVisibility();
 }
 
 void UIVMActivityOverviewWidget::computeMinimumColumnWidths()
