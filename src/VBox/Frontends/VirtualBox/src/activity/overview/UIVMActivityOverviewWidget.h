@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 104916 2024-06-13 15:26:58Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewWidget.h 104964 2024-06-19 12:13:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -131,12 +131,8 @@ private:
     /** @name Misc members.
       * @{ */
         QIToolBar *m_pToolBar;
-        UIVMActivityOverviewTableView       *m_pTableView;
         UIVMActivityOverviewAccessibleTableView    *m_pAccessibleTableView;
-
-        UIActivityOverviewProxyModel        *m_pProxyModel;
         UIActivityOverviewAccessibleProxyModel *m_pAccessibleProxyModel;
-        UIActivityOverviewModel             *m_pModel;
         UIActivityOverviewAccessibleModel   *m_pAccessibleModel;
         QMenu                              *m_pColumnVisibilityToggleMenu;
         /* The key is the column id (VMActivityOverviewColumn) and value is column title. */

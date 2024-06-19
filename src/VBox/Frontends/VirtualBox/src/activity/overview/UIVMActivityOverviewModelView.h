@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewModelView.h 104962 2024-06-19 11:36:12Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIVMActivityOverviewModelView.h 104964 2024-06-19 12:13:28Z serkan.bayraktar@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewModelView class declaration.
  */
@@ -50,6 +50,26 @@ class UIActivityOverviewAccessibleCell;
 class UIActivityOverviewAccessibleRow;
 class UIActivityOverviewAccessibleRowCloud;
 class UIVirtualMachineItemCloud;
+
+/*********************************************************************************************************************************
+*   Class UIVMActivityOverviewHostStats definition.                                                                              *
+*********************************************************************************************************************************/
+/** A simple container to store host related performance values. */
+class UIVMActivityOverviewHostStats
+{
+
+public:
+
+    UIVMActivityOverviewHostStats();
+    quint64 m_iCPUUserLoad;
+    quint64 m_iCPUKernelLoad;
+    quint64 m_iCPUFreq;
+    quint64 m_iRAMTotal;
+    quint64 m_iRAMFree;
+    quint64 m_iFSTotal;
+    quint64 m_iFSFree;
+};
+
 
 class UIVMActivityOverviewAccessibleTableView : public QITableView
 {
@@ -173,6 +193,7 @@ class UIActivityOverviewAccessibleModel : public QAbstractTableModel
 signals:
 
     void sigDataUpdate();
+    void sigHostStatsUpdate(const UIVMActivityOverviewHostStats &stats);
 
 public:
 
@@ -191,6 +212,8 @@ public:
     void setColumnVisible(const QMap<int, bool>& columnVisible);
     bool columnVisible(int iColumnId) const;
     void setCloudMachineItems(const QList<UIVirtualMachineItemCloud*> &cloudItems);
+    QUuid itemUid(int iIndex);
+    const QMap<int, int> dataLengths() const;
 
 private slots:
 
@@ -205,6 +228,7 @@ private:
     void removeRow(const QUuid& uMachineId);
     void setupPerformanceCollector();
     void queryPerformanceCollector();
+    void getHostRAMStats();
     QVector<UIActivityOverviewAccessibleRow*> m_rows;
     QITableView *m_pTableView;
     QMap<int, QString> m_columnTitles;
@@ -218,7 +242,7 @@ private:
        QVector<QString> m_nameList;
        QVector<CUnknown> m_objectList;
     /** @} */
-
+    UIVMActivityOverviewHostStats m_hostStats;
 };
 
 
