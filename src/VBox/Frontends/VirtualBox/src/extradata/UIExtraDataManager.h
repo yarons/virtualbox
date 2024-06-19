@@ -1,10 +1,10 @@
-/* $Id: UIExtraDataManager.h 104642 2024-05-15 13:44:49Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIExtraDataManager.h 104967 2024-06-19 18:43:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
 
 /*
- * Copyright (C) 2010-2023 Oracle and/or its affiliates.
+ * Copyright (C) 2010-2024 Oracle and/or its affiliates.
  *
  * This file is part of VirtualBox base platform packages, as
  * available from https://www.virtualbox.org.
@@ -62,10 +62,10 @@ class SHARED_LIBRARY_STUFF UIExtraDataManager : public QObject
 {
     Q_OBJECT;
 
-    /** Extra-data Manager constructor. */
+    /** Constructs Extra-data Manager. */
     UIExtraDataManager();
-    /** Extra-data Manager destructor. */
-    ~UIExtraDataManager();
+    /** Destructs Extra-data Manager. */
+    virtual ~UIExtraDataManager();
 
 signals:
 
@@ -146,10 +146,12 @@ public:
     /** Global extra-data ID. */
     static const QUuid GlobalID;
 
+    /** Singleton object contructor. */
+    static void create();
+    /** Singleton object destructor. */
+    static void destroy();
     /** Static Extra-data Manager instance/constructor. */
     static UIExtraDataManager* instance();
-    /** Static Extra-data Manager destructor. */
-    static void destroy();
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
     /** Static show and raise API. */

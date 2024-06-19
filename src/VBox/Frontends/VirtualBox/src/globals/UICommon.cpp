@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 104904 2024-06-12 17:06:56Z sergey.dubov@oracle.com $ */
+/* $Id: UICommon.cpp 104967 2024-06-19 18:43:01Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -250,6 +250,9 @@ void UICommon::prepare()
         return;
     connect(gpGlobalSession, &UIGlobalSession::sigVBoxSVCAvailabilityChange,
             this, &UICommon::sltHandleVBoxSVCAvailabilityChange);
+
+    /* Create extra-data manager right after COM init: */
+    UIExtraDataManager::create();
 
     /* Prepare thread-pool instances: */
     m_pThreadPool = new UIThreadPool(3 /* worker count */, 5000 /* worker timeout */);
