@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 104910 2024-06-13 10:31:38Z ramshankar.venkataraman@oracle.com $ */
+/* $Id: PGMPhys.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -6296,7 +6296,7 @@ VMMDECL(void) PGMR3PhysSetA20(PVMCPU pVCpu, bool fEnable)
 #if 0 /* PGMGetPage will apply the A20 mask to the GCPhys it returns, so we must invalid both sides of the TLB. */
         IEMTlbInvalidateAllPhysical(pVCpu);
 #else
-        IEMTlbInvalidateAll(pVCpu);
+        IEMTlbInvalidateAllGlobal(pVCpu);
 #endif
         STAM_REL_COUNTER_INC(&pVCpu->pgm.s.cA20Changes);
     }

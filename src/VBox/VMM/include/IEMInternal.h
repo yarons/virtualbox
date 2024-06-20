@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 104984 2024-06-20 14:07:04Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMInternal.h 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -599,8 +599,16 @@ typedef struct IEMTLB
     /** Slow read path (code only).  */
     uint32_t            cTlbSlowCodeReadPath;
 
-    /** Alignment padding. */
-    uint32_t            au32Padding[5];
+    /** Regular TLB flush count. */
+    uint32_t            cTlsFlushes;
+    /** Global TLB flush count. */
+    uint32_t            cTlsGlobalFlushes;
+    /** Revision rollovers. */
+    uint32_t            cTlbRevisionRollovers;
+    /** Physical revision flushes. */
+    uint32_t            cTlbPhysRevFlushes;
+    /** Physical revision rollovers. */
+    uint32_t            cTlbPhysRevRollovers;
 
     /** The TLB entries. */
     IEMTLBENTRY         aEntries[IEMTLB_ENTRY_COUNT];

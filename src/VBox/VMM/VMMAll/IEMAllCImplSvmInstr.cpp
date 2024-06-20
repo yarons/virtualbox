@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp 100072 2023-06-05 15:17:42Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplSvmInstr.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -137,7 +137,7 @@ DECLINLINE(VBOXSTRICTRC) iemSvmWorldSwitch(PVMCPUCC pVCpu, uint8_t cbInstr)
     AssertRCReturn(rc, rc);
 
     /* Invalidate IEM TLBs now that we've forced a PGM mode change. */
-    IEMTlbInvalidateAll(pVCpu);
+    IEMTlbInvalidateAllGlobal(pVCpu);
 
     /* Inform CPUM (recompiler), can later be removed. */
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 104932 2024-06-15 00:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: PGMAll.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2681,7 +2681,10 @@ VMMDECL(int) PGMFlushTLB(PVMCPUCC pVCpu, uint64_t cr3, bool fGlobal)
             pgmGstFlushPaePdpes(pVCpu);
     }
 
-    IEMTlbInvalidateAll(pVCpu);
+    if (!fGlobal)
+        IEMTlbInvalidateAll(pVCpu);
+    else
+        IEMTlbInvalidateAllGlobal(pVCpu);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.Stats.CTX_MID_Z(Stat,FlushTLB), a);
     return rc;
 }

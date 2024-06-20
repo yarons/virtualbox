@@ -1,4 +1,4 @@
-/* $Id: IEMAll-armv8.cpp 103290 2024-02-09 12:57:17Z alexander.eichner@oracle.com $ */
+/* $Id: IEMAll-armv8.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - Interpreted Execution Manager, ARMv8 specific things.
  */
@@ -109,6 +109,12 @@ VMMDECL(VBOXSTRICTRC) IEMInjectTrpmEvent(PVMCPUCC pVCpu)
 
 
 VMM_INT_DECL(void) IEMTlbInvalidateAll(PVMCPUCC pVCpu)
+{
+    RT_NOREF(pVCpu);
+}
+
+
+VMM_INT_DECL(void) IEMTlbInvalidateAllGlobal(PVMCPUCC pVCpu)
 {
     RT_NOREF(pVCpu);
 }

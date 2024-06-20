@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp 104932 2024-06-15 00:29:39Z knut.osmundsen@oracle.com $ */
+/* $Id: IEMAllCImplVmxInstr.cpp 104990 2024-06-20 23:13:34Z knut.osmundsen@oracle.com $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1292,7 +1292,7 @@ static int iemVmxTransition(PVMCPUCC pVCpu, uint8_t cbInstr) RT_NOEXCEPT
         return rc;
 
     /* Invalidate IEM TLBs now that we've forced a PGM mode change. */
-    IEMTlbInvalidateAll(pVCpu);
+    IEMTlbInvalidateAllGlobal(pVCpu);
 
     /* Inform CPUM (recompiler), can later be removed. */
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);
