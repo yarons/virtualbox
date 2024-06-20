@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.cpp 103957 2024-03-20 13:41:59Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardCloneVDExpertPage.cpp 104985 2024-06-20 14:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class implementation.
  */
@@ -26,8 +26,10 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QDir>
 #include <QGridLayout>
+#include <QStyle>
 
 /* GUI includes: */
 #include "UINotificationCenter.h"
@@ -78,9 +80,16 @@ void UIWizardCloneVDExpertPage::prepare(KDeviceType enmDeviceType, qulonglong uS
     m_pFormatVariantGroupBox = new QGroupBox;
     if (m_pFormatVariantGroupBox)
     {
-        QHBoxLayout *pFormatVariantLayout = new QHBoxLayout(m_pFormatVariantGroupBox);
-        pFormatVariantLayout->addWidget(m_pFormatComboBox, 0, Qt::AlignTop);
-        pFormatVariantLayout->addWidget(m_pVariantWidget);
+        QGridLayout *pFormatVariantLayout = new QGridLayout(m_pFormatVariantGroupBox);
+#ifdef VBOX_WS_MAC
+        pFormatVariantLayout->setSpacing(2 * 5);
+#else
+        pFormatVariantLayout->setSpacing(2 * qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing));
+#endif
+        pFormatVariantLayout->setRowStretch(2, 1);
+        pFormatVariantLayout->setColumnStretch(0, 1);
+        pFormatVariantLayout->addWidget(m_pFormatComboBox, 0, 0);
+        pFormatVariantLayout->addWidget(m_pVariantWidget, 0, 1, 2, 1);
         pMainLayout->addWidget(m_pFormatVariantGroupBox);
     }
 }

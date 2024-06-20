@@ -1,4 +1,4 @@
-/* $Id: UIWizardDiskEditors.h 103982 2024-03-21 11:43:53Z serkan.bayraktar@oracle.com $ */
+/* $Id: UIWizardDiskEditors.h 104985 2024-06-20 14:26:50Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - UIWizardDiskEditors class declaration.
  */
@@ -32,12 +32,10 @@
 #endif
 
 /* Qt includes: */
+#include <QComboBox>
 #include <QIcon>
 #include <QGroupBox>
 #include <QVector>
-
-/* Local includes: */
-#include "QIComboBox.h"
 
 /* Forward declarations: */
 class CMediumFormat;
@@ -224,7 +222,7 @@ private:
     QVBoxLayout *m_pMainLayout;
 };
 
-class SHARED_LIBRARY_STUFF UIDiskFormatsComboBox : public QIComboBox, public UIDiskFormatBase
+class SHARED_LIBRARY_STUFF UIDiskFormatsComboBox : public QComboBox, public UIDiskFormatBase
 {
     Q_OBJECT;
 
