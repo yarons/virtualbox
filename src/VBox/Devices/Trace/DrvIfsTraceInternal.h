@@ -1,4 +1,4 @@
-/* $Id: DrvIfsTraceInternal.h 104894 2024-06-12 13:53:43Z alexander.eichner@oracle.com $ */
+/* $Id: DrvIfsTraceInternal.h 104976 2024-06-20 10:17:44Z alexander.eichner@oracle.com $ */
 /** @file
  * VBox interface callback tracing driver - internal header.
  */
@@ -68,8 +68,6 @@ typedef struct DRVIFTRACE
     PPDMDRVINS           pDrvIns;
     /** The trace log writer handle. */
     RTTRACELOGWR         hTraceLog;
-    /** Path of the trace log file. */
-    char                 *pszTraceFilePath;
 
 } DRVIFTRACE;
 /** Pointer to a interface tracing driver instance. */
