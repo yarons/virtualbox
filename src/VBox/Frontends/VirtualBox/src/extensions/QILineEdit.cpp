@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 104982 2024-06-20 13:28:23Z sergey.dubov@oracle.com $ */
+/* $Id: QILineEdit.cpp 104983 2024-06-20 13:33:10Z sergey.dubov@oracle.com $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class implementation.
  */
@@ -139,8 +139,7 @@ bool QILineEdit::event(QEvent *pEvent)
         case QEvent::Resize:
         {
             /* Update label position on each move/resize: */
-            if (m_fMarkable)
-                moveIconLabel();
+            moveIconLabel();
             break;
         }
         default:
